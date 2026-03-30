@@ -9,6 +9,7 @@
     "web": "expo start --web",
     "update": "expo install --fix",
     "eas:build:android": "npx eas-cli build --platform android --profile production",
+    "deploy:android": "npx eas-cli build --platform android --auto-submit --auto-submit",
     "eas:submit:android": "npx eas-cli submit --platform android --profile production"
   },
   "dependencies": {
