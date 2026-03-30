@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -39,10 +39,11 @@ export default function CabinCallGame() {
 	const [score, setScore] = useState(0);
 	const [streak, setStreak] = useState(0);
 	const [target, setTarget] = useState<Command>(() => randomCommand());
+	const scoreRef = useRef(0);
 
 	useEffect(() => {
 		if (secondsLeft <= 0) {
-			updateProgress("cabin-call", score);
+			updateProgress("cabin-call", scoreRef.current);
 			return;
 		}
 
@@ -51,7 +52,7 @@ export default function CabinCallGame() {
 		}, 1000);
 
 		return () => clearTimeout(timer);
-	}, [secondsLeft, score, updateProgress]);
+	}, [secondsLeft, updateProgress]);
 
 	const choices = useMemo(() => {
 		const decoys = COMMANDS.filter((item) => item.id !== target.id)
@@ -63,6 +64,7 @@ export default function CabinCallGame() {
 	const restart = () => {
 		setSecondsLeft(ROUND_SECONDS);
 		setScore(0);
+		scoreRef.current = 0;
 		setStreak(0);
 		setTarget(randomCommand());
 	};
@@ -74,10 +76,18 @@ export default function CabinCallGame() {
 		}
 
 		if (choice.id === target.id) {
-			setScore((prev) => prev + 10 + Math.min(10, streak * 2));
+			setScore((prev) => {
+				const next = prev + 10 + Math.min(10, streak * 2);
+				scoreRef.current = next;
+				return next;
+			});
 			setStreak((prev) => prev + 1);
 		} else {
-			setScore((prev) => Math.max(0, prev - 6));
+			setScore((prev) => {
+				const next = Math.max(0, prev - 6);
+				scoreRef.current = next;
+				return next;
+			});
 			setStreak(0);
 		}
 

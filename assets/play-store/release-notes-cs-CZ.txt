@@ -1,1 +1,1 @@
-Prvni verze na Google Play.\n- Nova znacka FlightMode\n- Vice miniher vcetne Sky Defense a Stack Sort\n- Relaxacni audio a dechova cviceni\n- Zvyseni stability a vykonu
+Co je noveho:\n- 4 nove jazyky: cinstina, korejstina, japonstina, hindstina (celkem 12)\n- Opraven casovac v Tap Rush a Cabin Call – odpocet nyni bezi spravne i pri rychlem klikani\n- 50 kvizovych otazek prelozeno do vsech podporovanych jazyku\n- Zvyseni stability a vykonu

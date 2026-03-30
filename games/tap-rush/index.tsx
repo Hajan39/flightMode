@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Alert, Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -18,14 +18,15 @@ export default function TapRushGame() {
 	const [isRunning, setIsRunning] = useState(false);
 	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
 	const [score, setScore] = useState(0);
+	const scoreRef = useRef(0);
 
 	useEffect(() => {
 		if (!isRunning) return;
 
 		if (secondsLeft <= 0) {
 			setIsRunning(false);
-			updateProgress("tap-rush", score);
-			Alert.alert(t("tapRushFinishedTitle"), t("tapRushFinishedMsg", { score }));
+			updateProgress("tap-rush", scoreRef.current);
+			Alert.alert(t("tapRushFinishedTitle"), t("tapRushFinishedMsg", { score: scoreRef.current }));
 			return;
 		}
 
@@ -34,7 +35,7 @@ export default function TapRushGame() {
 		}, 1000);
 
 		return () => clearTimeout(timeout);
-	}, [isRunning, score, secondsLeft, updateProgress]);
+	}, [isRunning, secondsLeft, updateProgress]);
 
 	const ctaLabel = useMemo(() => {
 		if (!isRunning && score === 0 && secondsLeft === ROUND_SECONDS)
@@ -49,11 +50,15 @@ export default function TapRushGame() {
 			return;
 		}
 		if (isRunning) {
-			setScore((prev) => prev + 1);
+			setScore((prev) => {
+				scoreRef.current = prev + 1;
+				return prev + 1;
+			});
 			return;
 		}
 		setSecondsLeft(ROUND_SECONDS);
 		setScore(0);
+		scoreRef.current = 0;
 		setIsRunning(true);
 	};
 

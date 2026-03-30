@@ -3,9 +3,13 @@ import { de } from "@/i18n/locales/de";
 import { en } from "@/i18n/locales/en";
 import { es } from "@/i18n/locales/es";
 import { fr } from "@/i18n/locales/fr";
+import { hi } from "@/i18n/locales/hi";
 import { it } from "@/i18n/locales/it";
+import { ja } from "@/i18n/locales/ja";
+import { ko } from "@/i18n/locales/ko";
 import { pl } from "@/i18n/locales/pl";
 import { pt } from "@/i18n/locales/pt";
+import { zh } from "@/i18n/locales/zh";
 import { getLocales } from "expo-localization";
 
 export const translations = {
@@ -14,9 +18,13 @@ export const translations = {
 	de,
 	es,
 	fr,
+	hi,
 	it,
+	ja,
+	ko,
 	pl,
 	pt,
+	zh,
 } as const;
 
 export type Language = keyof typeof translations;
@@ -35,9 +43,13 @@ export const supportedLanguages: Array<{
 	{ code: "de", label: "German", nativeLabel: "Deutsch" },
 	{ code: "es", label: "Spanish", nativeLabel: "Español" },
 	{ code: "fr", label: "French", nativeLabel: "Français" },
+	{ code: "hi", label: "Hindi", nativeLabel: "हिन्दी" },
 	{ code: "it", label: "Italian", nativeLabel: "Italiano" },
+	{ code: "ja", label: "Japanese", nativeLabel: "日本語" },
+	{ code: "ko", label: "Korean", nativeLabel: "한국어" },
 	{ code: "pl", label: "Polish", nativeLabel: "Polski" },
 	{ code: "pt", label: "Portuguese", nativeLabel: "Português" },
+	{ code: "zh", label: "Chinese", nativeLabel: "中文" },
 ];
 
 export const defaultLanguage: Language = "en";

@@ -1,1 +1,1 @@
-Initial Play Store release.\n- New FlightMode branding\n- Multiple mini-games including Sky Defense and Stack Sort\n- Relax audio and breathing tools\n- Performance and stability improvements
+What's new:\n- 4 new languages: Chinese, Korean, Japanese, Hindi (12 total)\n- Fixed timer in Tap Rush and Cabin Call – countdown now runs correctly during fast tapping\n- 50 quiz questions translated into all supported languages\n- Performance and stability improvements
