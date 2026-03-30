@@ -5,6 +5,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const { width: SCREEN_W } = Dimensions.get("window");
 const BOARD_GAP = 10;
@@ -50,6 +51,7 @@ export default function DuelTicTacToeGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
 	const [board, setBoard] = useState<CellValue[]>(Array(9).fill(null));
 	const [currentPlayer, setCurrentPlayer] = useState<"X" | "O">("X");
@@ -114,12 +116,12 @@ export default function DuelTicTacToeGame() {
 
 	const roundOver = winner !== null;
 	const statusText = matchWinner
-		? `Player ${matchWinner} wins the match!`
+		? t("tttMatchWin", { player: matchWinner })
 		: winner === null
-			? `Player ${currentPlayer}'s turn`
+			? t("tttTurn", { player: currentPlayer })
 			: winner === "draw"
-				? "Draw"
-				: `Player ${winner} wins this round`;
+				? t("tttDraw")
+				: t("tttRoundWin", { player: winner });
 
 	const statusColor = matchWinner
 		? theme.tint
@@ -151,12 +153,12 @@ export default function DuelTicTacToeGame() {
 				</View>
 				<View style={styles.divider}>
 					<Text style={[styles.drawCount, { color: theme.mutedText }]}>
-						{draws} draw{draws !== 1 ? "s" : ""}
+						{t("tttDrawCount", { count: draws })}
 					</Text>
 				</View>
 				<View style={[styles.scoreBlock, styles.scoreRight]}>
 					<Text style={[styles.scoreName, { color: theme.mutedText }]}>
-						Player O
+						{t("tttPlayerO")}
 					</Text>
 					<Text
 						style={[
@@ -174,28 +176,28 @@ export default function DuelTicTacToeGame() {
 
 			{/* ── Mode chips ── */}
 			<View style={styles.modeRow}>
-				{([2, 3] as const).map((t) => (
+				{([2, 3] as const).map((tw) => (
 					<Pressable
-						key={t}
+						key={tw}
 						style={[
 							styles.modeChip,
 							{
 								borderColor: theme.border,
-								backgroundColor: targetWins === t ? theme.tint : theme.card,
+								backgroundColor: targetWins === tw ? theme.tint : theme.card,
 							},
 						]}
 						onPress={() => {
-							setTargetWins(t);
+							setTargetWins(tw);
 							resetMatch();
 						}}
 					>
 						<Text
 							style={[
 								styles.modeText,
-								{ color: targetWins === t ? "#fff" : theme.mutedText },
+								{ color: targetWins === tw ? "#fff" : theme.mutedText },
 							]}
 						>
-							{t === 2 ? "Best of 3" : "Best of 5"}
+							{tw === 2 ? t("tttBestOf3") : t("tttBestOf5")}
 						</Text>
 					</Pressable>
 				))}
@@ -264,7 +266,7 @@ export default function DuelTicTacToeGame() {
 						{ color: matchWinner ? "#fff" : theme.text },
 					]}
 				>
-					{matchWinner ? "New Match" : roundOver ? "Next Round" : "Restart"}
+					{matchWinner ? t("tttNewMatch") : roundOver ? t("tttNextRound") : t("tttRestart")}
 				</Text>
 			</Pressable>
 		</View>

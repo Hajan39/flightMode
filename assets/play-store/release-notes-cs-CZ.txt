@@ -1,0 +1,1 @@
+Prvni verze na Google Play.\n- Nova znacka FlightMode\n- Vice miniher vcetne Sky Defense a Stack Sort\n- Relaxacni audio a dechova cviceni\n- Zvyseni stability a vykonu

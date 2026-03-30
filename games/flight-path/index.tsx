@@ -11,6 +11,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 /* ================================================================
    TYPES
@@ -444,6 +445,7 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
 export default function FlightPathGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
+	const { t } = useTranslation();
 	const updateProgress = useGameStore((s) => s.updateProgress);
 
 	const [boardSize, setBoardSize] = useState({ w: 300, h: 500 });
@@ -778,21 +780,19 @@ export default function FlightPathGame() {
 	if (!started) {
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>Flight Path</Text>
+				<Text style={s.title}>{t("flightPathTitle")}</Text>
 				<Text style={[s.desc, { color: theme.mutedText }]}>
-					Planes appear from all sides.{"\n"}Touch a plane, draw a route to
-					the centre runways.{"\n"}
-					Different planes — different speeds.{"\n"}
-					Avoid mid-air collisions!
+					{t("flightPathIntro")}
 				</Text>
 				<View style={s.typeList} lightColor="transparent" darkColor="transparent">
-					{PLANE_TYPES.map((t) => {
-						const rwyTag = t.minRunway === "long" ? "L" : t.minRunway === "medium" ? "M" : "S";
+					{PLANE_TYPES.map((pt) => {
+						const rwyTag = pt.minRunway === "long" ? "L" : pt.minRunway === "medium" ? "M" : "S";
+						const speedKey = pt.baseSpeed < 0.45 ? "flightPathSpeedSlow" : pt.baseSpeed < 0.8 ? "flightPathSpeedMedium" : "flightPathSpeedFast";
 						return (
-							<RNView key={t.key} style={s.typeRowWrap}>
-								<RNView style={[s.typeSwatch, { backgroundColor: t.bodyColor }]} />
+							<RNView key={pt.key} style={s.typeRowWrap}>
+								<RNView style={[s.typeSwatch, { backgroundColor: pt.bodyColor }]} />
 								<Text style={[s.typeRow, { color: theme.text }]}>
-									{t.label} — {t.baseSpeed < 0.45 ? "slow" : t.baseSpeed < 0.8 ? "medium" : "fast"} · x{t.scoreMul} · rwy {rwyTag}+
+									{pt.label} — {t(speedKey as never)} · x{pt.scoreMul} · {t("flightPathRunwayReq", { tag: rwyTag })}
 								</Text>
 							</RNView>
 						);
@@ -802,7 +802,7 @@ export default function FlightPathGame() {
 					style={[s.mainBtn, { backgroundColor: theme.tint }]}
 					onPress={() => setStarted(true)}
 				>
-					<Text style={s.mainBtnText}>START</Text>
+					<Text style={s.mainBtnText}>{t("start")}</Text>
 				</Pressable>
 			</View>
 		);
@@ -811,13 +811,13 @@ export default function FlightPathGame() {
 	if (gameOver) {
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>Mid-Air Collision!</Text>
-				<Text style={[s.finalScore, { color: theme.tint }]}>{score} pts</Text>
+				<Text style={s.title}>{t("flightPathGameOverTitle")}</Text>
+				<Text style={[s.finalScore, { color: theme.tint }]}>{t("flightPathPts", { score })}</Text>
 				<Text style={[s.finalLanded, { color: theme.mutedText }]}>
-					{landed} planes safely landed
+					{t("flightPathLandedSafe", { landed })}
 				</Text>
 				<Pressable style={[s.mainBtn, { backgroundColor: theme.tint }]} onPress={restart}>
-					<Text style={s.mainBtnText}>TRY AGAIN</Text>
+					<Text style={s.mainBtnText}>{t("flightPathTryAgain")}</Text>
 				</Pressable>
 			</View>
 		);
@@ -827,8 +827,8 @@ export default function FlightPathGame() {
 		<View style={s.root}>
 			{/* stats */}
 			<View style={s.statsRow}>
-				<Text style={[s.stat, { color: theme.tint }]}>Landed {landed}</Text>
-				<Text style={[s.stat, { color: theme.text }]}>Score {score}</Text>
+				<Text style={[s.stat, { color: theme.tint }]}>{t("flightPathLanded", { landed })}</Text>
+				<Text style={[s.stat, { color: theme.text }]}>{t("flightPathScore", { score })}</Text>
 				<Text style={[s.stat, { color: theme.mutedText }]}>
 					{planes.length}/{MAX_PLANES}
 				</Text>
@@ -942,7 +942,7 @@ export default function FlightPathGame() {
 			</RNView>
 
 			<Text style={[s.hint, { color: theme.mutedText }]}>
-				Touch plane → draw route to centre runway
+				{t("flightPathHint")}
 			</Text>
 		</View>
 	);

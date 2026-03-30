@@ -58,7 +58,7 @@ export default function TabLayout() {
 									}}
 									numberOfLines={1}
 								>
-									{activeLabelKey ? t(activeLabelKey) : "Audio"}
+									{activeLabelKey ? t(activeLabelKey) : t("audioFallback")}
 								</Text>
 								<Pressable onPress={stopSound} hitSlop={8}>
 									<Ionicons

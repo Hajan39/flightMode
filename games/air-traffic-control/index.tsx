@@ -5,6 +5,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 type Runway = "A" | "B" | "C";
 
@@ -32,6 +33,7 @@ export default function AirTrafficControlGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
 	const [flights, setFlights] = useState<Flight[]>([]);
 	const [score, setScore] = useState(0);
@@ -160,26 +162,26 @@ export default function AirTrafficControlGame() {
 	};
 
 	const pressureLabel = useMemo(() => {
-		if (landed < 5) return "LIGHT TRAFFIC";
-		if (landed < 12) return "BUSY AIRSPACE";
-		return "PEAK TRAFFIC";
-	}, [landed]);
+		if (landed < 5) return t("atcLightTraffic");
+		if (landed < 12) return t("atcBusyAirspace");
+		return t("atcPeakTraffic");
+	}, [landed, t]);
 
 	return (
 		<View style={styles.root}>
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>LANDED</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("atcLanded")}</Text>
 					<Text style={[styles.statValue, { color: theme.text }]}>{landed}</Text>
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>SCORE</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("atcScore")}</Text>
 					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>MISSES</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("atcMisses")}</Text>
 					<Text style={[styles.statValue, { color: theme.warning }]}>
 						{misses}/{MAX_MISSES}
 					</Text>
@@ -195,7 +197,7 @@ export default function AirTrafficControlGame() {
 				<Text style={[styles.headerEyebrow, { color: theme.mutedText }]}>
 					{pressureLabel}
 				</Text>
-				<Text style={styles.headerTitle}>Assign each flight to the correct runway before fuel runs out.</Text>
+				<Text style={styles.headerTitle}>{t("atcAssignHint")}</Text>
 			</View>
 
 			<FlatList
@@ -212,10 +214,10 @@ export default function AirTrafficControlGame() {
 						<View style={styles.flightTop} lightColor="transparent" darkColor="transparent">
 							<Text style={styles.callsign}>{item.callsign}</Text>
 							<Text style={[styles.fuelText, { color: item.fuel <= 3 ? theme.warning : theme.mutedText }]}>
-								Fuel {item.fuel}
+							{t("atcFuel", { fuel: item.fuel })}
 							</Text>
 						</View>
-						<Text style={[styles.targetRunway, { color: theme.text }]}>Target runway {item.runway}</Text>
+						<Text style={[styles.targetRunway, { color: theme.text }]}>{t("atcTargetRunway", { rwy: item.runway })}</Text>
 						<View style={styles.runwayRow} lightColor="transparent" darkColor="transparent">
 							{RUNWAYS.map((runway) => (
 								<Pressable
@@ -223,7 +225,7 @@ export default function AirTrafficControlGame() {
 									style={[styles.runwayChip, { backgroundColor: theme.card, borderColor: theme.border }]}
 									onPress={() => assignRunway(item.id, runway)}
 								>
-									<Text style={[styles.runwayChipText, { color: theme.tint }]}>RWY {runway}</Text>
+									<Text style={[styles.runwayChipText, { color: theme.tint }]}>{t("atcRwy", { rwy: runway })}</Text>
 								</Pressable>
 							))}
 						</View>
@@ -231,14 +233,14 @@ export default function AirTrafficControlGame() {
 				)}
 				ListEmptyComponent={
 					<View style={styles.emptyState}>
-						<Text style={[styles.emptyText, { color: theme.mutedText }]}>Inbound queue is clear. Next arrivals coming in...</Text>
+						<Text style={[styles.emptyText, { color: theme.mutedText }]}>{t("atcQueueEmpty")}</Text>
 					</View>
 				}
 			/>
 
 			{gameOver ? (
 				<Pressable style={[styles.restartButton, { backgroundColor: theme.tint }]} onPress={restart}>
-					<Text style={styles.restartText}>RESTART CONTROL</Text>
+					<Text style={styles.restartText}>{t("atcRestartControl")}</Text>
 				</Pressable>
 			) : null}
 		</View>

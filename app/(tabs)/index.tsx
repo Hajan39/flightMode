@@ -7,6 +7,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
+import type { TranslationKey } from "@/i18n/translations";
 import { getLocalizedText } from "@/i18n/translations";
 import {
 	useFlightStore,
@@ -17,29 +18,29 @@ import content from "@/data/content.json";
 import type { ContentItem } from "@/types/content";
 
 const articles = content as ContentItem[];
-const dailyChallenges = [
+const dailyChallenges: { id: string; nameKey: TranslationKey; descriptionKey: TranslationKey; icon: string }[] = [
 	{
 		id: "runway-landing",
-		name: "Runway Landing",
-		description: "Nail the timing and touch down in the runway zone.",
+		nameKey: "gameRunwayLandingName",
+		descriptionKey: "gameRunwayLandingDescription",
 		icon: "airplane-outline",
 	},
 	{
 		id: "cabin-call",
-		name: "Cabin Call",
-		description: "React fast to short cabin crew commands.",
+		nameKey: "gameCabinCallName",
+		descriptionKey: "gameCabinCallDescription",
 		icon: "megaphone-outline",
 	},
 	{
 		id: "reaction",
-		name: "Reaction Timer",
-		description: "Beat your response time before the next announcement.",
+		nameKey: "gameReactionName",
+		descriptionKey: "gameReactionDescription",
 		icon: "flash-outline",
 	},
 	{
 		id: "quiz",
-		name: "Flight Quiz",
-		description: "Quick travel trivia for the current leg of your trip.",
+		nameKey: "gameQuizName",
+		descriptionKey: "gameQuizDescription",
 		icon: "help-circle-outline",
 	},
 ];
@@ -227,10 +228,10 @@ export default function HomeScreen() {
 							size={22}
 							color={theme.tint}
 						/>
-						<Text style={styles.challengeTitle}>{challengeOfDay.name}</Text>
+						<Text style={styles.challengeTitle}>{t(challengeOfDay.nameKey)}</Text>
 					</View>
 					<Text style={[styles.challengeDescription, { color: theme.mutedText }]}>
-						{challengeOfDay.description}
+						{t(challengeOfDay.descriptionKey)}
 					</Text>
 					<View
 						style={styles.challengeCtaRow}
@@ -245,7 +246,7 @@ export default function HomeScreen() {
 				</View>
 			</Pressable>
 
-			<Text style={styles.sectionTitle}>Play Together</Text>
+			<Text style={styles.sectionTitle}>{t("playTogether")}</Text>
 			<View style={styles.playTogetherRow}>
 				<Pressable
 					style={[
@@ -255,9 +256,9 @@ export default function HomeScreen() {
 					onPress={() => router.push("/game/duel-tictactoe")}
 				>
 					<Ionicons name="people-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>Tic Tac Toe Duo</Text>
+					<Text style={styles.playTogetherTitle}>{t("gameDuelTicTacToeName")}</Text>
 					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						Best of 3/5 mode
+						{t("playTogetherBestOfMode")}
 					</Text>
 				</Pressable>
 
@@ -269,14 +270,14 @@ export default function HomeScreen() {
 					onPress={() => router.push("/game/duel-dice")}
 				>
 					<Ionicons name="dice-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>Dice Duel</Text>
+					<Text style={styles.playTogetherTitle}>{t("gameDuelDiceName")}</Text>
 					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						Pass-and-play
+						{t("playTogetherPassAndPlay")}
 					</Text>
 				</Pressable>
 			</View>
 
-			<Text style={styles.sectionTitle}>Featured for this flight</Text>
+			<Text style={styles.sectionTitle}>{t("featuredForFlight")}</Text>
 			{featuredArticles.map((article) => (
 				<Pressable
 					key={article.id}

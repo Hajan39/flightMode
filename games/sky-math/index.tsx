@@ -5,6 +5,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 type Question = {
 	text: string;
@@ -42,6 +43,7 @@ export default function SkyMathGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
 	const [index, setIndex] = useState(0);
 	const [score, setScore] = useState(0);
@@ -66,11 +68,11 @@ export default function SkyMathGame() {
 				setScore(nextScore);
 				updateProgress("sky-math", nextScore);
 				Alert.alert(
-					"Finished",
-					`Correct: ${Math.round(nextScore / 10)} of ${TOTAL_QUESTIONS}\nScore: ${nextScore}`,
+					t("skyMathFinished"),
+					t("skyMathResult", { correct: Math.round(nextScore / 10), total: TOTAL_QUESTIONS, score: nextScore }),
 					[
 						{
-							text: "Play again",
+							text: t("skyMathPlayAgain"),
 							onPress: () => {
 								setIndex(0);
 								setScore(0);
@@ -161,7 +163,7 @@ export default function SkyMathGame() {
 
 			{/* ── Score ── */}
 			<Text style={[styles.scoreText, { color: theme.mutedText }]}>
-				Score: {score}
+				{t("skyMathScore", { score })}
 			</Text>
 		</View>
 	);

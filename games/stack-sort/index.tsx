@@ -13,6 +13,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 /* ================================================================
    CONSTANTS
@@ -200,6 +201,7 @@ function ColumnView({
 	onPress,
 	colWidth,
 	label,
+	goalBadgeLabel,
 }: {
 	items: number[];
 	index: number;
@@ -208,6 +210,7 @@ function ColumnView({
 	onPress: (i: number) => void;
 	colWidth: number;
 	label?: string;
+	goalBadgeLabel: string;
 }) {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
@@ -241,7 +244,7 @@ function ColumnView({
 				{/* Badge */}
 				{isGoal && (
 					<RNView style={st.goalBadge}>
-						<Text style={st.goalBadgeText}>GOAL</Text>
+						<Text style={st.goalBadgeText}>{goalBadgeLabel}</Text>
 					</RNView>
 				)}
 				{label && !isGoal && (
@@ -307,6 +310,7 @@ function Stars({ count }: { count: number }) {
 export default function StackSortGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
+	const { t } = useTranslation();
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { width: screenW } = useWindowDimensions();
 
@@ -437,33 +441,30 @@ export default function StackSortGame() {
 	if (phase === "menu") {
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>Stack Sort</Text>
+				<Text style={s.title}>{t("stackSortTitle")}</Text>
 				<Text style={[s.desc, { color: theme.mutedText }]}>
-					Sort all numbers into the{" "}
-					<Text style={{ color: "#ffd700", fontWeight: "800" }}>GOAL</Text>
-					{"\n"}in order: 1 → 2 → 3 → …
+					{t("stackSortIntro")}
 				</Text>
 
 				<RNView style={s.rulesBox}>
 					<Text style={[s.ruleText, { color: theme.text }]}>
-						📌 Move only the <Text style={{ fontWeight: "800" }}>top</Text> number
+						{t("stackSortRuleTop")}
 					</Text>
 					<Text style={[s.ruleText, { color: theme.text }]}>
-						✅ Place on <Text style={{ fontWeight: "800" }}>empty</Text> or on a{" "}
-						<Text style={{ fontWeight: "800" }}>larger</Text> number
+						{t("stackSortRulePlace")}
 					</Text>
 					<Text style={[s.ruleText, { color: theme.text }]}>
-						🔒 Goal — numbers <Text style={{ fontWeight: "800" }}>locked</Text> once placed
+						{t("stackSortRuleGoalLock")}
 					</Text>
 					<Text style={[s.ruleText, { color: theme.text }]}>
-						🔀 Columns start <Text style={{ fontWeight: "800" }}>chaotic</Text> — sort them first!
+						{t("stackSortRuleChaos")}
 					</Text>
 					<Text style={[s.ruleText, { color: theme.text }]}>
-						↩️ Use <Text style={{ fontWeight: "800" }}>Undo</Text> if stuck
+						{t("stackSortRuleUndo")}
 					</Text>
 				</RNView>
 
-				<Text style={[s.levelLabel, { color: theme.mutedText }]}>SELECT LEVEL</Text>
+				<Text style={[s.levelLabel, { color: theme.mutedText }]}>{t("stackSortSelectLevel")}</Text>
 				<ScrollView
 					contentContainerStyle={s.levelGrid}
 					style={{ maxHeight: 240 }}
@@ -496,29 +497,29 @@ export default function StackSortGame() {
 		const stars = getStars(moves, numCount);
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>Level {level + 1} Complete!</Text>
+				<Text style={s.title}>{t("stackSortLevelComplete", { level: level + 1 })}</Text>
 				<Stars count={stars} />
-				<Text style={[s.movesText, { color: theme.mutedText }]}>{moves} moves</Text>
+				<Text style={[s.movesText, { color: theme.mutedText }]}>{t("stackSortMovesCount", { count: moves })}</Text>
 				<RNView style={s.btnRow}>
 					{level < LEVELS.length - 1 && (
 						<Pressable
 							style={[s.mainBtn, { backgroundColor: theme.tint }]}
 							onPress={() => startLevel(level + 1)}
 						>
-							<Text style={s.mainBtnText}>NEXT LEVEL</Text>
+							<Text style={s.mainBtnText}>{t("stackSortNextLevel")}</Text>
 						</Pressable>
 					)}
 					<Pressable
 						style={[s.mainBtn, { backgroundColor: theme.surface, borderWidth: 1, borderColor: theme.border }]}
 						onPress={() => startLevel(level)}
 					>
-						<Text style={[s.mainBtnText, { color: theme.text }]}>RETRY</Text>
+						<Text style={[s.mainBtnText, { color: theme.text }]}>{t("stackSortRetry")}</Text>
 					</Pressable>
 					<Pressable
 						style={[s.mainBtn, { backgroundColor: theme.surface, borderWidth: 1, borderColor: theme.border }]}
 						onPress={() => setPhase("menu")}
 					>
-						<Text style={[s.mainBtnText, { color: theme.text }]}>MENU</Text>
+						<Text style={[s.mainBtnText, { color: theme.text }]}>{t("stackSortMenu")}</Text>
 					</Pressable>
 				</RNView>
 			</View>
@@ -539,8 +540,8 @@ export default function StackSortGame() {
 		<View style={s.root}>
 			{/* HUD */}
 			<RNView style={s.hud}>
-				<Text style={[s.hudText, { color: theme.mutedText }]}>Lvl {level + 1}</Text>
-				<Text style={[s.hudText, { color: theme.text }]}>Moves: {moves}</Text>
+				<Text style={[s.hudText, { color: theme.mutedText }]}>{t("stackSortHudLevel", { level: level + 1 })}</Text>
+				<Text style={[s.hudText, { color: theme.text }]}>{t("stackSortHudMoves", { moves })}</Text>
 				<Text style={[s.hudText, { color: "#ffd700" }]}>
 					{goal.length}/{numCount}
 				</Text>
@@ -556,7 +557,7 @@ export default function StackSortGame() {
 							color: history.length > 0 ? theme.tint : theme.mutedText + "40",
 						}}
 					>
-						↩ Undo
+						{t("stackSortUndo")}
 					</Text>
 				</Pressable>
 			</RNView>
@@ -564,7 +565,7 @@ export default function StackSortGame() {
 			{/* Deadlock warning */}
 			{dead && (
 				<RNView style={s.deadBanner}>
-					<Text style={s.deadText}>No valid moves! Restart level</Text>
+					<Text style={s.deadText}>{t("stackSortDeadlock")}</Text>
 				</RNView>
 			)}
 
@@ -584,6 +585,7 @@ export default function StackSortGame() {
 							onPress={handleColumnPress}
 							colWidth={colWidth}
 							label={c.label}
+							goalBadgeLabel={t("stackSortGoal")}
 						/>
 					))}
 				</RNView>
@@ -608,13 +610,13 @@ export default function StackSortGame() {
 					style={[s.smallBtn, { borderColor: theme.border }]}
 					onPress={() => startLevel(level)}
 				>
-					<Text style={[s.smallBtnText, { color: theme.text }]}>🔄 Restart</Text>
+					<Text style={[s.smallBtnText, { color: theme.text }]}>{t("stackSortRestart")}</Text>
 				</Pressable>
 				<Pressable
 					style={[s.smallBtn, { borderColor: theme.border }]}
 					onPress={() => setPhase("menu")}
 				>
-					<Text style={[s.smallBtnText, { color: theme.text }]}>📋 Menu</Text>
+					<Text style={[s.smallBtnText, { color: theme.text }]}>{t("stackSortMenu")}</Text>
 				</Pressable>
 			</RNView>
 		</View>

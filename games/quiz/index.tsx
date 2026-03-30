@@ -5,134 +5,65 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
+import type { TranslationKey } from "@/i18n/translations";
 
 type QuizQuestion = {
 	question: string;
 	options: string[];
-	answer: string;
+	answerIndex: number;
 };
 
-const QUESTIONS: QuizQuestion[] = [
-	{
-		question:
-			"When should you usually arrive at the airport for an international flight?",
-		options: ["30 minutes", "1 hour", "2-3 hours", "Just before boarding"],
-		answer: "2-3 hours",
-	},
-	{
-		question: "What helps reduce jet lag after landing?",
-		options: [
-			"Strong coffee only",
-			"Morning sunlight",
-			"Skipping meals",
-			"Sleeping all day",
-		],
-		answer: "Morning sunlight",
-	},
-	{
-		question: "Which item is best to keep in your personal bag?",
-		options: [
-			"Heavy shoes",
-			"All souvenirs",
-			"Passport and charger",
-			"Checked-bag lock",
-		],
-		answer: "Passport and charger",
-	},
-	{
-		question: "What is the best hydration rule on long flights?",
-		options: ["Only soda", "Water regularly", "No drinks", "Only coffee"],
-		answer: "Water regularly",
-	},
-	{
-		question:
-			"If your connection is tight, what should you do first after landing?",
-		options: ["Browse shops", "Find transfer gate", "Take photos", "Call home"],
-		answer: "Find transfer gate",
-	},
-	{
-		question: "What is usually safest for valuables during a flight?",
-		options: [
-			"Put them in checked baggage",
-			"Keep them in your personal item",
-			"Ask cabin crew to store them",
-			"Leave them at the gate",
-		],
-		answer: "Keep them in your personal item",
-	},
-	{
-		question: "Which action helps reduce in-seat stiffness most?",
-		options: [
-			"Stay perfectly still",
-			"Do light movement every hour",
-			"Drink less water",
-			"Skip all stretching",
-		],
-		answer: "Do light movement every hour",
-	},
-	{
-		question: "When should you usually check your gate for updates?",
-		options: [
-			"Only the night before",
-			"After takeoff",
-			"Before boarding and after landing",
-			"Never",
-		],
-		answer: "Before boarding and after landing",
-	},
-	{
-		question: "For better sleep on a plane, which is most useful?",
-		options: [
-			"Very bright screen",
-			"Noise reduction",
-			"Extra caffeine",
-			"Heavy meal at midnight",
-		],
-		answer: "Noise reduction",
-	},
-	{
-		question: "What is a practical carry-on packing strategy?",
-		options: [
-			"Random items only",
-			"One outfit per bag",
-			"Roll clothes and use organizers",
-			"Pack all shoes first",
-		],
-		answer: "Roll clothes and use organizers",
-	},
-];
+const QUESTION_COUNT = 10;
+
+function getQuestions(t: (key: TranslationKey) => string): QuizQuestion[] {
+	return [
+		{ question: t("quizQ1"), options: [t("quizQ1a"), t("quizQ1b"), t("quizQ1c"), t("quizQ1d")], answerIndex: 2 },
+		{ question: t("quizQ2"), options: [t("quizQ2a"), t("quizQ2b"), t("quizQ2c"), t("quizQ2d")], answerIndex: 1 },
+		{ question: t("quizQ3"), options: [t("quizQ3a"), t("quizQ3b"), t("quizQ3c"), t("quizQ3d")], answerIndex: 2 },
+		{ question: t("quizQ4"), options: [t("quizQ4a"), t("quizQ4b"), t("quizQ4c"), t("quizQ4d")], answerIndex: 1 },
+		{ question: t("quizQ5"), options: [t("quizQ5a"), t("quizQ5b"), t("quizQ5c"), t("quizQ5d")], answerIndex: 1 },
+		{ question: t("quizQ6"), options: [t("quizQ6a"), t("quizQ6b"), t("quizQ6c"), t("quizQ6d")], answerIndex: 1 },
+		{ question: t("quizQ7"), options: [t("quizQ7a"), t("quizQ7b"), t("quizQ7c"), t("quizQ7d")], answerIndex: 1 },
+		{ question: t("quizQ8"), options: [t("quizQ8a"), t("quizQ8b"), t("quizQ8c"), t("quizQ8d")], answerIndex: 2 },
+		{ question: t("quizQ9"), options: [t("quizQ9a"), t("quizQ9b"), t("quizQ9c"), t("quizQ9d")], answerIndex: 1 },
+		{ question: t("quizQ10"), options: [t("quizQ10a"), t("quizQ10b"), t("quizQ10c"), t("quizQ10d")], answerIndex: 2 },
+	];
+}
 
 export default function QuizGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
+	const questions = useMemo(() => getQuestions(t), [t]);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [score, setScore] = useState(0);
 	const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
 	const currentQuestion = useMemo(
-		() => QUESTIONS[currentIndex],
-		[currentIndex],
+		() => questions[currentIndex],
+		[currentIndex, questions],
 	);
-	const progressFraction = (currentIndex + 1) / QUESTIONS.length;
+	const progressFraction = (currentIndex + 1) / questions.length;
 
 	const handleAnswer = (choice: string) => {
 		if (selectedOption !== null) return;
 
 		setSelectedOption(choice);
-		const isCorrect = choice === currentQuestion.answer;
+		const isCorrect = choice === currentQuestion.options[currentQuestion.answerIndex];
 		const nextScore = score + (isCorrect ? 10 : 0);
 
 		setTimeout(() => {
-			if (currentIndex >= QUESTIONS.length - 1) {
+			if (currentIndex >= questions.length - 1) {
 				updateProgress("quiz", nextScore);
 				Alert.alert(
-					"Quiz finished",
-					`Score: ${nextScore}\nCorrect: ${Math.round(nextScore / 10)}/${QUESTIONS.length}`,
+					t("quizFinished"),
+					t("quizResult", { score: nextScore, correct: Math.round(nextScore / 10), total: questions.length }),
 					[
 						{
-							text: "Play again",
+							text: t("quizPlayAgain"),
 							onPress: () => {
 								setCurrentIndex(0);
 								setScore(0);
@@ -150,6 +81,8 @@ export default function QuizGame() {
 		}, 750);
 	};
 
+	const correctAnswer = currentQuestion.options[currentQuestion.answerIndex];
+
 	return (
 		<View style={styles.root}>
 			<View style={styles.progressRow}>
@@ -162,7 +95,7 @@ export default function QuizGame() {
 					/>
 				</View>
 				<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-					{currentIndex + 1}/{QUESTIONS.length}
+					{currentIndex + 1}/{questions.length}
 				</Text>
 			</View>
 
@@ -180,7 +113,7 @@ export default function QuizGame() {
 			<View style={styles.options}>
 				{currentQuestion.options.map((option) => {
 					const isSelected = selectedOption === option;
-					const isCorrect = option === currentQuestion.answer;
+					const isCorrect = option === correctAnswer;
 					const showResult = selectedOption !== null;
 
 					const bg =
@@ -215,12 +148,12 @@ export default function QuizGame() {
 
 			{selectedOption !== null ? (
 				<Text style={[styles.answerHint, { color: theme.mutedText }]}>
-					Correct: {currentQuestion.answer}
+					{t("quizCorrectAnswer", { answer: correctAnswer })}
 				</Text>
 			) : null}
 
 			<Text style={[styles.scoreText, { color: theme.mutedText }]}>
-				Score: {score}
+				{t("quizScore", { score })}
 			</Text>
 		</View>
 	);

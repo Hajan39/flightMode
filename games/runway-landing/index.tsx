@@ -5,6 +5,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const ROUND_COUNT = 5;
 const RUNWAY_WIDTH = 280;
@@ -18,6 +19,7 @@ export default function RunwayLandingGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
 	const [round, setRound] = useState(1);
 	const [score, setScore] = useState(0);
@@ -90,14 +92,14 @@ export default function RunwayLandingGame() {
 		<View style={styles.root}>
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>ROUND</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("rlRound")}</Text>
 					<Text style={[styles.statValue, { color: theme.text }]}>
 						{currentRoundText}
 					</Text>
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>SCORE</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("rlScore")}</Text>
 					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
 				</View>
 			</View>
@@ -108,7 +110,7 @@ export default function RunwayLandingGame() {
 					{ backgroundColor: theme.card, borderColor: theme.border },
 				]}
 			>
-				<Text style={[styles.helper, { color: theme.mutedText }]}>Tap LAND in target zone</Text>
+				<Text style={[styles.helper, { color: theme.mutedText }]}>{t("rlTapHint")}</Text>
 				<View style={[styles.runway, { backgroundColor: theme.elevated }]}> 
 					<View
 						style={[
@@ -124,7 +126,7 @@ export default function RunwayLandingGame() {
 				style={[styles.button, { backgroundColor: theme.tint }]}
 				onPress={handleLand}
 			>
-				<Text style={styles.buttonText}>{finished ? "RESTART" : "LAND"}</Text>
+				<Text style={styles.buttonText}>{finished ? t("rlRestart") : t("rlLand")}</Text>
 			</Pressable>
 		</View>
 	);

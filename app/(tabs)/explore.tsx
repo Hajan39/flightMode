@@ -26,7 +26,7 @@ export default function ExploreScreen() {
 	const theme = Colors[colorScheme];
 	const { language, t } = useTranslation();
 	const [search, setSearch] = useState("");
-	const [activeCategory, setActiveCategory] = useState("All");
+	const [activeCategory, setActiveCategory] = useState("");
 	const [sortMode, setSortMode] = useState<SortMode>("recommended");
 
 	const localizedArticles = useMemo(
@@ -41,17 +41,18 @@ export default function ExploreScreen() {
 
 	const categories = useMemo(
 		() => [
-			"All",
+			t("exploreAll"),
 			...Array.from(new Set(localizedArticles.map((a) => a.categoryText))),
 		],
-		[localizedArticles],
+		[localizedArticles, t],
 	);
 
 	const filteredArticles = useMemo(() => {
 		const q = search.trim().toLowerCase();
+		const allLabel = t("exploreAll");
 		const filtered = localizedArticles.filter((item) => {
 			const categoryMatch =
-				activeCategory === "All" || item.categoryText === activeCategory;
+				activeCategory === "" || activeCategory === allLabel || item.categoryText === activeCategory;
 			const searchMatch =
 				q.length === 0 ||
 				item.titleText.toLowerCase().includes(q) ||
@@ -72,7 +73,7 @@ export default function ExploreScreen() {
 		}
 
 		return filtered;
-	}, [activeCategory, localizedArticles, search, sortMode]);
+	}, [activeCategory, localizedArticles, search, sortMode, t]);
 
 	return (
 		<View style={styles.container}>
@@ -87,7 +88,7 @@ export default function ExploreScreen() {
 					<TextInput
 						value={search}
 						onChangeText={setSearch}
-						placeholder="Search articles"
+						placeholder={t("exploreSearchPlaceholder")}
 						placeholderTextColor={theme.mutedText}
 						style={[styles.searchInput, { color: theme.text }]}
 					/>
@@ -127,10 +128,10 @@ export default function ExploreScreen() {
 					contentContainerStyle={styles.sortRow}
 				>
 					{[
-						{ key: "recommended", label: "Recommended" },
-						{ key: "read-short", label: "Shortest read" },
-						{ key: "read-long", label: "Longest read" },
-						{ key: "title", label: "Title" },
+						{ key: "recommended", labelKey: "exploreSortRecommended" as const },
+						{ key: "read-short", labelKey: "exploreSortShortestRead" as const },
+						{ key: "read-long", labelKey: "exploreSortLongestRead" as const },
+						{ key: "title", labelKey: "exploreSortTitle" as const },
 					].map((item) => (
 						<Pressable
 							key={item.key}
@@ -150,7 +151,7 @@ export default function ExploreScreen() {
 									sortMode === item.key && styles.categoryChipTextActive,
 								]}
 							>
-								{item.label}
+								{t(item.labelKey)}
 							</Text>
 						</Pressable>
 					))}

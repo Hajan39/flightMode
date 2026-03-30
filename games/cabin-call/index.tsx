@@ -6,20 +6,22 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
+import type { TranslationKey } from "@/i18n/translations";
 
 const ROUND_SECONDS = 30;
 
 type Command = {
 	id: string;
-	label: string;
+	labelKey: TranslationKey;
 	icon: string;
 };
 
 const COMMANDS: Command[] = [
-	{ id: "seatbelt", label: "Fasten seatbelt", icon: "shield-checkmark-outline" },
-	{ id: "tray", label: "Tray table up", icon: "restaurant-outline" },
-	{ id: "window", label: "Window shade open", icon: "sunny-outline" },
-	{ id: "phone", label: "Flight mode on", icon: "phone-portrait-outline" },
+	{ id: "seatbelt", labelKey: "ccCmdSeatbelt", icon: "shield-checkmark-outline" },
+	{ id: "tray", labelKey: "ccCmdTray", icon: "restaurant-outline" },
+	{ id: "window", labelKey: "ccCmdWindow", icon: "sunny-outline" },
+	{ id: "phone", labelKey: "ccCmdPhone", icon: "phone-portrait-outline" },
 ];
 
 function randomCommand(excludeId?: string) {
@@ -31,6 +33,7 @@ export default function CabinCallGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
 	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
 	const [score, setScore] = useState(0);
@@ -85,12 +88,12 @@ export default function CabinCallGame() {
 		<View style={styles.root}>
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>TIME</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("ccTime")}</Text>
 					<Text style={[styles.statValue, { color: theme.text }]}>{secondsLeft}</Text>
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>SCORE</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("ccScore")}</Text>
 					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
 				</View>
 			</View>
@@ -101,9 +104,9 @@ export default function CabinCallGame() {
 					{ backgroundColor: theme.card, borderColor: theme.border },
 				]}
 			>
-				<Text style={[styles.targetHint, { color: theme.mutedText }]}>Cabin crew says:</Text>
+				<Text style={[styles.targetHint, { color: theme.mutedText }]}>{t("ccCrewSays")}</Text>
 				<Ionicons name={target.icon as never} size={40} color={theme.tint} />
-				<Text style={styles.targetText}>{target.label}</Text>
+				<Text style={styles.targetText}>{t(target.labelKey)}</Text>
 			</View>
 
 			<View style={styles.choiceList}>
@@ -117,15 +120,15 @@ export default function CabinCallGame() {
 						onPress={() => handleChoice(choice)}
 					>
 						<Ionicons name={choice.icon as never} size={20} color={theme.tint} />
-						<Text style={styles.choiceText}>{choice.label}</Text>
+						<Text style={styles.choiceText}>{t(choice.labelKey)}</Text>
 					</Pressable>
 				))}
 			</View>
 
-			<Text style={[styles.streakText, { color: theme.mutedText }]}>Streak: {streak}</Text>
+			<Text style={[styles.streakText, { color: theme.mutedText }]}>{t("ccStreak", { streak })}</Text>
 			{secondsLeft <= 0 ? (
 				<Pressable style={[styles.button, { backgroundColor: theme.tint }]} onPress={restart}>
-					<Text style={styles.buttonText}>PLAY AGAIN</Text>
+					<Text style={styles.buttonText}>{t("ccPlayAgain")}</Text>
 				</Pressable>
 			) : null}
 		</View>

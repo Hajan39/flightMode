@@ -15,9 +15,9 @@ import { useGameStore } from "@/store/useGameStore";
 import { createDeck, checkMatch, calculateScore, type Card } from "./logic";
 
 const MEMORY_MODES = [
-	{ key: "quick", label: "Quick", pairs: 6, columns: 3 },
-	{ key: "standard", label: "Standard", pairs: 8, columns: 4 },
-	{ key: "long", label: "Long Haul", pairs: 10, columns: 4 },
+	{ key: "quick", labelKey: "memoryModeQuick", pairs: 6, columns: 3 },
+	{ key: "standard", labelKey: "memoryModeStandard", pairs: 8, columns: 4 },
+	{ key: "long", labelKey: "memoryModeLongHaul", pairs: 10, columns: 4 },
 ] as const;
 
 export default function MemoryGame() {
@@ -127,14 +127,14 @@ export default function MemoryGame() {
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
-						MOVES
+						{t("memoryMoves")}
 					</Text>
 					<Text style={[styles.statValue, { color: theme.text }]}>{moves}</Text>
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
-						PAIRS
+						{t("memoryPairs")}
 					</Text>
 					<Text style={[styles.statValue, { color: theme.tint }]}>
 						{matchedPairs}
@@ -166,7 +166,7 @@ export default function MemoryGame() {
 									{ color: isActive ? "#fff" : theme.mutedText },
 								]}
 							>
-								{mode.label}
+								{t(mode.labelKey)}
 							</Text>
 						</Pressable>
 					);

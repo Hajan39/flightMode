@@ -5,6 +5,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const ROUND_SECONDS = 20;
 
@@ -12,6 +13,7 @@ export default function TapRushGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
 	const [isRunning, setIsRunning] = useState(false);
 	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
@@ -23,7 +25,7 @@ export default function TapRushGame() {
 		if (secondsLeft <= 0) {
 			setIsRunning(false);
 			updateProgress("tap-rush", score);
-			Alert.alert("Round finished", `Your score: ${score}`);
+			Alert.alert(t("tapRushFinishedTitle"), t("tapRushFinishedMsg", { score }));
 			return;
 		}
 
@@ -36,10 +38,10 @@ export default function TapRushGame() {
 
 	const ctaLabel = useMemo(() => {
 		if (!isRunning && score === 0 && secondsLeft === ROUND_SECONDS)
-			return "Start";
-		if (isRunning) return "TAP!";
-		return "Play again";
-	}, [isRunning, score, secondsLeft]);
+			return t("tapRushStart");
+		if (isRunning) return t("tapRushTap");
+		return t("tapRushPlayAgain");
+	}, [isRunning, score, secondsLeft, t]);
 
 	const handleMainPress = () => {
 		if (!isRunning && secondsLeft === ROUND_SECONDS && score === 0) {
@@ -73,7 +75,7 @@ export default function TapRushGame() {
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
-						TIME
+						{t("tapRushTime")}
 					</Text>
 					<Text style={[styles.statValue, { color: theme.text }]}>
 						{secondsLeft}s
@@ -82,7 +84,7 @@ export default function TapRushGame() {
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
-						SCORE
+						{t("tapRushScore")}
 					</Text>
 					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
 				</View>

@@ -5,6 +5,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const ROUNDS = 7;
 const { width: SCREEN_W } = Dimensions.get("window");
@@ -41,6 +42,7 @@ export default function DuelDiceGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
 	const [round, setRound] = useState(1);
 	const [activePlayer, setActivePlayer] = useState<1 | 2>(1);
@@ -74,20 +76,21 @@ export default function DuelDiceGame() {
 	const winnerText = useMemo(() => {
 		if (!isFinished) return null;
 		if (playerOneRoundWins === playerTwoRoundWins) {
-			if (playerOneTotal === playerTwoTotal) return "Draw!";
+			if (playerOneTotal === playerTwoTotal) return t("diceDraw");
 			return playerOneTotal > playerTwoTotal
-				? "Player 1 wins!"
-				: "Player 2 wins!";
+				? t("dicePlayerWins", { player: "1" })
+				: t("dicePlayerWins", { player: "2" });
 		}
 		return playerOneRoundWins > playerTwoRoundWins
-			? "Player 1 wins!"
-			: "Player 2 wins!";
+			? t("dicePlayerWins", { player: "1" })
+			: t("dicePlayerWins", { player: "2" });
 	}, [
 		isFinished,
 		playerOneRoundWins,
 		playerTwoRoundWins,
 		playerOneTotal,
 		playerTwoTotal,
+		t,
 	]);
 
 	const finalizePlayerRoll = (player: 1 | 2, finalRoll: number) => {
@@ -106,14 +109,14 @@ export default function DuelDiceGame() {
 		const nextPlayerTwoTotal = playerTwoTotal + finalRoll;
 		setPlayerTwoTotal(nextPlayerTwoTotal);
 
-		let resultText = "Round draw";
+		let resultText = t("diceRoundDraw");
 
 		if (p1Roll !== null) {
 			if (p1Roll > finalRoll) {
-				resultText = "Player 1 wins the round";
+				resultText = t("dicePlayerWinsRound", { player: "1" });
 				setPlayerOneRoundWins((prev) => prev + 1);
 			} else if (finalRoll > p1Roll) {
-				resultText = "Player 2 wins the round";
+				resultText = t("dicePlayerWinsRound", { player: "2" });
 				setPlayerTwoRoundWins((prev) => prev + 1);
 			}
 		}
@@ -210,20 +213,20 @@ export default function DuelDiceGame() {
 		activePlayer === 2 && !isRolling && !isFinished && !inRoundTransition;
 
 	const p1Label = isFinished
-		? `${playerOneRoundWins} wins · ${playerOneTotal} pts`
+		? t("diceWinsPts", { wins: playerOneRoundWins, pts: playerOneTotal })
 		: p1Active
-			? "TAP TO ROLL"
+			? t("diceTapToRoll")
 			: currentRoundP1 !== null
-				? `Rolled ${currentRoundP1}`
-				: "Waiting...";
+				? t("diceRolled", { value: currentRoundP1 })
+				: t("diceWaiting");
 
 	const p2Label = isFinished
-		? `${playerTwoRoundWins} wins · ${playerTwoTotal} pts`
+		? t("diceWinsPts", { wins: playerTwoRoundWins, pts: playerTwoTotal })
 		: p2Active
-			? "TAP TO ROLL"
+			? t("diceTapToRoll")
 			: inRoundTransition
-				? `Rolled ${rollingValue ?? "-"}`
-				: "Waiting...";
+				? t("diceRolled", { value: rollingValue ?? "-" })
+				: t("diceWaiting");
 
 	return (
 		<View style={styles.root}>
@@ -258,7 +261,7 @@ export default function DuelDiceGame() {
 							{ color: theme.text, opacity: activePlayer === 1 ? 1 : 0.4 },
 						]}
 					>
-						P1
+						{t("diceP1")}
 					</Text>
 					<Text style={[styles.scoreValue, { color: theme.text }]}>
 						{playerOneRoundWins} – {playerTwoRoundWins}
@@ -269,7 +272,7 @@ export default function DuelDiceGame() {
 							{ color: theme.text, opacity: activePlayer === 2 ? 1 : 0.4 },
 						]}
 					>
-						P2
+						{t("diceP2")}
 					</Text>
 				</View>
 
@@ -304,8 +307,8 @@ export default function DuelDiceGame() {
 				>
 					{roundResult ??
 						(isFinished
-							? "Game over"
-							: `Round ${Math.min(round, ROUNDS)} of ${ROUNDS}`)}
+						? t("diceGameOver")
+						: t("diceRoundOf", { round: Math.min(round, ROUNDS), total: ROUNDS }))}
 				</Text>
 			</View>
 
@@ -338,14 +341,14 @@ export default function DuelDiceGame() {
 					</Text>
 					<View style={styles.finalScores}>
 						<Text style={[styles.finalLine, { color: theme.mutedText }]}>
-							Rounds: {playerOneRoundWins} – {playerTwoRoundWins}
-						</Text>
-						<Text style={[styles.finalLine, { color: theme.mutedText }]}>
-							Total: {playerOneTotal} – {playerTwoTotal}
-						</Text>
-					</View>
-					<Text style={[styles.autoRestartText, { color: theme.mutedText }]}>
-						Restarting in 2s...
+						{t("diceRounds", { p1: playerOneRoundWins, p2: playerTwoRoundWins })}
+					</Text>
+					<Text style={[styles.finalLine, { color: theme.mutedText }]}>
+						{t("diceTotal", { p1: playerOneTotal, p2: playerTwoTotal })}
+					</Text>
+				</View>
+				<Text style={[styles.autoRestartText, { color: theme.mutedText }]}>
+					{t("diceRestarting")}
 					</Text>
 				</View>
 			) : null}

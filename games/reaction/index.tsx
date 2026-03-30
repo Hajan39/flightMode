@@ -5,6 +5,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const WAIT_MIN_MS = 1200;
 const WAIT_MAX_MS = 4200;
@@ -21,6 +22,7 @@ export default function ReactionGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { t } = useTranslation();
 
 	const [phase, setPhase] = useState<Phase>("idle");
 	const [bestMs, setBestMs] = useState<number | null>(null);
@@ -54,7 +56,7 @@ export default function ReactionGame() {
 		if (phase === "waiting") {
 			if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
 			setPhase("idle");
-			Alert.alert("Too early!", "You tapped before green. Try again.");
+			Alert.alert(t("reactionTooEarlyTitle"), t("reactionTooEarlyMsg"));
 			return;
 		}
 
@@ -77,10 +79,10 @@ export default function ReactionGame() {
 
 	const padLabel =
 		phase === "idle"
-			? "TAP TO START"
+			? t("reactionTapToStart")
 			: phase === "waiting"
-				? "WAIT..."
-				: "TAP!";
+				? t("reactionWait")
+				: t("reactionTap");
 
 	const padTextColor = phase === "idle" ? theme.mutedText : "#fff";
 
@@ -90,21 +92,21 @@ export default function ReactionGame() {
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
-						LAST
+						{t("reactionLast")}
 					</Text>
 					<Text style={[styles.statValue, { color: theme.text }]}>
 						{lastMs === null ? "—" : `${lastMs}`}
 					</Text>
 					{lastMs !== null ? (
 						<Text style={[styles.statUnit, { color: theme.mutedText }]}>
-							ms
+							{t("reactionMs")}
 						</Text>
 					) : null}
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
-						BEST
+						{t("reactionBest")}
 					</Text>
 					<Text
 						style={[
@@ -116,7 +118,7 @@ export default function ReactionGame() {
 					</Text>
 					{bestMs !== null ? (
 						<Text style={[styles.statUnit, { color: theme.mutedText }]}>
-							ms
+							{t("reactionMs")}
 						</Text>
 					) : null}
 				</View>

@@ -11,6 +11,7 @@ import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 /* ================================================================
    CONSTANTS & TYPES
@@ -432,7 +433,34 @@ function RangeRing({ col, row, range, color }: { col: number; row: number; range
 export default function SkyDefenseGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
+	const { t } = useTranslation();
 	const updateProgress = useGameStore((s) => s.updateProgress);
+
+	const towerLabel = (key: TowerKind) => {
+		switch (key) {
+			case "radar":
+				return t("skyDefenseTowerRadar");
+			case "sam":
+				return t("skyDefenseTowerSam");
+			case "wind":
+				return t("skyDefenseTowerWind");
+			case "bolt":
+				return t("skyDefenseTowerBolt");
+		}
+	};
+
+	const difficultyLabel = (key: Difficulty) => {
+		switch (key) {
+			case "easy":
+				return t("skyDefenseDifficultyEasy");
+			case "normal":
+				return t("skyDefenseDifficultyNormal");
+			case "hard":
+				return t("skyDefenseDifficultyHard");
+			case "insane":
+				return t("skyDefenseDifficultyInsane");
+		}
+	};
 
 	/* --- state --- */
 	const [phase, setPhase] = useState<"start" | "playing" | "wave-clear" | "won" | "lost">("start");
@@ -699,17 +727,16 @@ export default function SkyDefenseGame() {
 	if (phase === "start") {
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>Sky Defense</Text>
+				<Text style={s.title}>{t("skyDefenseTitle")}</Text>
 				<Text style={[s.desc, { color: theme.mutedText }]}>
-					Storms approach the airport!{"\n"}Build towers to protect the runway.{"\n"}
-					Place towers on the grid, zap enemies{"\n"}before they reach the end.
+					{t("skyDefenseIntro")}
 				</Text>
 				<RNView style={s.towerInfo}>
 					{TOWER_DEFS.map((d) => (
 						<RNView key={d.key} style={s.towerInfoRow}>
 							<Text style={{ fontSize: 20 }}>{d.emoji}</Text>
 							<Text style={[s.towerInfoText, { color: theme.text }]}>
-								{d.label} — 💰{d.cost} · dmg {d.damage} · rng {d.range}
+								{towerLabel(d.key)} — {t("skyDefenseTowerStats", { cost: d.cost, damage: d.damage, range: d.range })}
 							</Text>
 						</RNView>
 					))}
@@ -719,13 +746,13 @@ export default function SkyDefenseGame() {
 						<RNView key={d.key} style={s.towerInfoRow}>
 							<Text style={{ fontSize: 18 }}>{d.emoji}</Text>
 							<Text style={[s.towerInfoText, { color: theme.mutedText }]}>
-								hp {d.hp} · spd {d.speed.toFixed(1)}
+								{t("skyDefenseEnemyStats", { hp: d.hp, speed: d.speed.toFixed(1) })}
 							</Text>
 						</RNView>
 					))}
 				</RNView>
 
-				<Text style={[s.diffLabel, { color: theme.mutedText }]}>SELECT DIFFICULTY</Text>
+				<Text style={[s.diffLabel, { color: theme.mutedText }]}>{t("skyDefenseSelectDifficulty")}</Text>
 				<RNView style={s.diffRow}>
 					{DIFFICULTIES.map((d) => (
 						<Pressable
@@ -737,9 +764,9 @@ export default function SkyDefenseGame() {
 							onPress={() => startGame(d)}
 						>
 							<Text style={{ fontSize: 20 }}>{d.emoji}</Text>
-							<Text style={[s.diffBtnLabel, { color: theme.text }]}>{d.label}</Text>
+							<Text style={[s.diffBtnLabel, { color: theme.text }]}>{difficultyLabel(d.key)}</Text>
 							<Text style={[s.diffBtnDesc, { color: theme.mutedText }]}>
-								{d.waveCount} waves
+								{t("skyDefenseWavesCount", { count: d.waveCount })}
 							</Text>
 							<Text style={[s.diffBtnDesc, { color: theme.mutedText }]}>
 								❤️{d.startLives} 💰{d.startGold}
@@ -755,13 +782,18 @@ export default function SkyDefenseGame() {
 	if (phase === "lost" || phase === "won") {
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>{phase === "won" ? "Airport Secured! ✈️" : "Airport Overrun! 💨"}</Text>
-				<Text style={[s.finalScore, { color: theme.tint }]}>{score} pts</Text>
+				<Text style={s.title}>{phase === "won" ? t("skyDefenseResultWin") : t("skyDefenseResultLose")}</Text>
+				<Text style={[s.finalScore, { color: theme.tint }]}>{t("skyDefenseScorePts", { score })}</Text>
 				<Text style={[s.desc, { color: theme.mutedText }]}>
-					{difficulty.emoji} {difficulty.label} · Wave {waveIdx + 1} / {wavesRef.current.length}
+					{t("skyDefenseDifficultyWave", {
+						emoji: difficulty.emoji,
+						label: difficultyLabel(difficulty.key),
+						wave: waveIdx + 1,
+						total: wavesRef.current.length,
+					})}
 				</Text>
 				<Pressable style={[s.mainBtn, { backgroundColor: theme.tint }]} onPress={restart}>
-					<Text style={s.mainBtnText}>PLAY AGAIN</Text>
+					<Text style={s.mainBtnText}>{t("playAgain")}</Text>
 				</Pressable>
 			</View>
 		);
@@ -776,7 +808,7 @@ export default function SkyDefenseGame() {
 				<Text style={[s.hudText, { color: theme.tint }]}>💰 {gold}</Text>
 				<Text style={[s.hudText, { color: theme.text }]}>🏆 {score}</Text>
 				<Text style={[s.hudText, { color: theme.mutedText }]}>
-					Wave {waveIdx + 1}/{wavesRef.current.length}
+					{t("skyDefenseWaveProgress", { wave: waveIdx + 1, total: wavesRef.current.length })}
 				</Text>
 			</RNView>
 
@@ -911,9 +943,9 @@ export default function SkyDefenseGame() {
 			{/* wave-clear overlay */}
 			{phase === "wave-clear" && (
 				<RNView style={s.overlay}>
-					<Text style={s.overlayTitle}>Wave {waveIdx + 1} Cleared!</Text>
+					<Text style={s.overlayTitle}>{t("skyDefenseWaveCleared", { wave: waveIdx + 1 })}</Text>
 					<Pressable style={[s.mainBtn, { backgroundColor: theme.tint }]} onPress={nextWave}>
-						<Text style={s.mainBtnText}>NEXT WAVE</Text>
+						<Text style={s.mainBtnText}>{t("skyDefenseNextWave")}</Text>
 					</Pressable>
 				</RNView>
 			)}
