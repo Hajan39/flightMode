@@ -119,7 +119,7 @@ interface WaveEntry {
 }
 type Wave = WaveEntry[];
 
-const WAVES: Wave[] = [
+const BASE_WAVES: Wave[] = [
 	[{ kind: "cloud", count: 6, interval: 20 }],
 	[{ kind: "cloud", count: 8, interval: 18 }, { kind: "storm", count: 2, interval: 25 }],
 	[{ kind: "storm", count: 6, interval: 20 }, { kind: "cloud", count: 4, interval: 15 }],
@@ -129,6 +129,41 @@ const WAVES: Wave[] = [
 	[{ kind: "tornado", count: 3, interval: 35 }, { kind: "storm", count: 8, interval: 14 }],
 	[{ kind: "tornado", count: 5, interval: 25 }, { kind: "hail", count: 6, interval: 16 }, { kind: "storm", count: 10, interval: 10 }],
 ];
+
+const EXTRA_WAVES: Wave[] = [
+	[{ kind: "tornado", count: 6, interval: 20 }, { kind: "hail", count: 8, interval: 12 }],
+	[{ kind: "tornado", count: 8, interval: 16 }, { kind: "storm", count: 12, interval: 8 }],
+	[{ kind: "tornado", count: 10, interval: 14 }, { kind: "hail", count: 10, interval: 10 }, { kind: "cloud", count: 15, interval: 6 }],
+	[{ kind: "tornado", count: 12, interval: 12 }, { kind: "hail", count: 12, interval: 8 }, { kind: "storm", count: 15, interval: 6 }],
+];
+
+/* ---------- difficulty presets ---------- */
+type Difficulty = "easy" | "normal" | "hard" | "insane";
+
+interface DifficultyPreset {
+	key: Difficulty;
+	label: string;
+	emoji: string;
+	hpMul: number;
+	spdMul: number;
+	rewardMul: number;
+	startGold: number;
+	startLives: number;
+	waveCount: number; // how many waves from BASE + EXTRA
+	desc: string;
+}
+
+const DIFFICULTIES: DifficultyPreset[] = [
+	{ key: "easy", label: "Easy", emoji: "🟢", hpMul: 0.7, spdMul: 0.8, rewardMul: 1.2, startGold: 80, startLives: 15, waveCount: 6, desc: "Fewer waves, weaker enemies" },
+	{ key: "normal", label: "Normal", emoji: "🟡", hpMul: 1.0, spdMul: 1.0, rewardMul: 1.0, startGold: 50, startLives: 10, waveCount: 8, desc: "Balanced challenge" },
+	{ key: "hard", label: "Hard", emoji: "🔴", hpMul: 1.5, spdMul: 1.2, rewardMul: 0.8, startGold: 40, startLives: 7, waveCount: 10, desc: "Tougher enemies, less gold" },
+	{ key: "insane", label: "Insane", emoji: "💀", hpMul: 2.2, spdMul: 1.4, rewardMul: 0.6, startGold: 30, startLives: 5, waveCount: 12, desc: "Only for the brave" },
+];
+
+function getWaves(preset: DifficultyPreset): Wave[] {
+	const all = [...BASE_WAVES, ...EXTRA_WAVES];
+	return all.slice(0, preset.waveCount);
+}
 
 /* ---------- runtime state ---------- */
 interface Enemy {
@@ -401,10 +436,12 @@ export default function SkyDefenseGame() {
 
 	/* --- state --- */
 	const [phase, setPhase] = useState<"start" | "playing" | "wave-clear" | "won" | "lost">("start");
+	const [difficulty, setDifficulty] = useState<DifficultyPreset>(DIFFICULTIES[1]);
 	const [gold, setGold] = useState(50);
 	const [lives, setLives] = useState(10);
 	const [score, setScore] = useState(0);
 	const [waveIdx, setWaveIdx] = useState(0);
+	const wavesRef = useRef<Wave[]>(BASE_WAVES);
 	const [enemies, setEnemies] = useState<Enemy[]>([]);
 	const [towers, setTowers] = useState<Tower[]>([]);
 	const [bullets, setBullets] = useState<Bullet[]>([]);
@@ -431,9 +468,9 @@ export default function SkyDefenseGame() {
 	/* --- wave setup --- */
 	const startWave = useCallback(
 		(wi: number) => {
-			const wave = WAVES[wi];
+			const wave = wavesRef.current[wi];
 			const queue: { kind: EnemyKind; tickAt: number }[] = [];
-			let t = 10; // small delay before first spawn
+			let t = 10;
 			for (const entry of wave) {
 				for (let i = 0; i < entry.count; i++) {
 					queue.push({ kind: entry.kind, tickAt: t });
@@ -461,13 +498,14 @@ export default function SkyDefenseGame() {
 
 			for (const sp of toSpawn) {
 				const def = ENEMY_DEFS[sp.kind];
+				const hp = Math.round(def.hp * difficulty.hpMul);
 				newEnemies.push({
 					id: nextId.current++,
 					kind: sp.kind,
-					hp: def.hp,
-					maxHp: def.hp,
-					speed: def.speed,
-					reward: def.reward,
+					hp,
+					maxHp: hp,
+					speed: def.speed * difficulty.spdMul,
+					reward: Math.round(def.reward * difficulty.rewardMul),
 					dist: 0,
 					emoji: def.emoji,
 					size: def.size,
@@ -581,7 +619,7 @@ export default function SkyDefenseGame() {
 			// wave done?
 			const allSpawned = spawnQueue.current.every((s) => s.tickAt <= t);
 			if (allSpawned && newEnemies.length === 0) {
-				if (waveIdx >= WAVES.length - 1) {
+				if (waveIdx >= wavesRef.current.length - 1) {
 					setPhase("won");
 					updateProgress("sky-defense", newScore);
 				} else {
@@ -622,8 +660,8 @@ export default function SkyDefenseGame() {
 	/* --- restart --- */
 	const restart = () => {
 		setPhase("start");
-		setGold(50);
-		setLives(10);
+		setGold(difficulty.startGold);
+		setLives(difficulty.startLives);
 		setScore(0);
 		setWaveIdx(0);
 		setEnemies([]);
@@ -632,6 +670,25 @@ export default function SkyDefenseGame() {
 		setSelectedTower(null);
 		spawnQueue.current = [];
 		tick.current = 0;
+	};
+
+	/* --- start game with difficulty --- */
+	const startGame = (preset: DifficultyPreset) => {
+		setDifficulty(preset);
+		setGold(preset.startGold);
+		setLives(preset.startLives);
+		setScore(0);
+		setWaveIdx(0);
+		setEnemies([]);
+		setTowers([]);
+		setBullets([]);
+		setSelectedTower(null);
+		spawnQueue.current = [];
+		tick.current = 0;
+		wavesRef.current = getWaves(preset);
+		setPhase("playing");
+		// start first wave after short delay
+		setTimeout(() => startWave(0), 50);
 	};
 
 	/* ================================================================
@@ -667,9 +724,29 @@ export default function SkyDefenseGame() {
 						</RNView>
 					))}
 				</RNView>
-				<Pressable style={[s.mainBtn, { backgroundColor: theme.tint }]} onPress={() => startWave(0)}>
-					<Text style={s.mainBtnText}>START</Text>
-				</Pressable>
+
+				<Text style={[s.diffLabel, { color: theme.mutedText }]}>SELECT DIFFICULTY</Text>
+				<RNView style={s.diffRow}>
+					{DIFFICULTIES.map((d) => (
+						<Pressable
+							key={d.key}
+							style={[
+								s.diffBtn,
+								{ backgroundColor: theme.card, borderColor: theme.border },
+							]}
+							onPress={() => startGame(d)}
+						>
+							<Text style={{ fontSize: 20 }}>{d.emoji}</Text>
+							<Text style={[s.diffBtnLabel, { color: theme.text }]}>{d.label}</Text>
+							<Text style={[s.diffBtnDesc, { color: theme.mutedText }]}>
+								{d.waveCount} waves
+							</Text>
+							<Text style={[s.diffBtnDesc, { color: theme.mutedText }]}>
+								❤️{d.startLives} 💰{d.startGold}
+							</Text>
+						</Pressable>
+					))}
+				</RNView>
 			</View>
 		);
 	}
@@ -681,7 +758,7 @@ export default function SkyDefenseGame() {
 				<Text style={s.title}>{phase === "won" ? "Airport Secured! ✈️" : "Airport Overrun! 💨"}</Text>
 				<Text style={[s.finalScore, { color: theme.tint }]}>{score} pts</Text>
 				<Text style={[s.desc, { color: theme.mutedText }]}>
-					Wave {waveIdx + 1} / {WAVES.length}
+					{difficulty.emoji} {difficulty.label} · Wave {waveIdx + 1} / {wavesRef.current.length}
 				</Text>
 				<Pressable style={[s.mainBtn, { backgroundColor: theme.tint }]} onPress={restart}>
 					<Text style={s.mainBtnText}>PLAY AGAIN</Text>
@@ -699,7 +776,7 @@ export default function SkyDefenseGame() {
 				<Text style={[s.hudText, { color: theme.tint }]}>💰 {gold}</Text>
 				<Text style={[s.hudText, { color: theme.text }]}>🏆 {score}</Text>
 				<Text style={[s.hudText, { color: theme.mutedText }]}>
-					Wave {waveIdx + 1}/{WAVES.length}
+					Wave {waveIdx + 1}/{wavesRef.current.length}
 				</Text>
 			</RNView>
 
@@ -905,4 +982,17 @@ const s = StyleSheet.create({
 		borderRadius: 8,
 	},
 	overlayTitle: { fontSize: 22, fontWeight: "900", color: "#fff", marginBottom: 8 },
+
+	diffLabel: { fontSize: 11, fontWeight: "800", letterSpacing: 1, marginBottom: 8 },
+	diffRow: { flexDirection: "row", gap: 8, flexWrap: "wrap", justifyContent: "center" },
+	diffBtn: {
+		width: 78,
+		paddingVertical: 10,
+		borderRadius: 10,
+		borderWidth: 1.5,
+		alignItems: "center",
+		gap: 2,
+	},
+	diffBtnLabel: { fontSize: 12, fontWeight: "800" },
+	diffBtnDesc: { fontSize: 9 },
 });

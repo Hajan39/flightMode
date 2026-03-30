@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import {
 	StyleSheet,
 	Pressable,
@@ -6,6 +6,7 @@ import {
 	Easing,
 	ScrollView,
 	View as RNView,
+	useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -17,7 +18,8 @@ import { useGameStore } from "@/store/useGameStore";
    CONSTANTS
    ================================================================ */
 
-const MAX_STACK = 4;
+const MAX_STACK = 5; // max items per column
+const MIN_COL_W = 46; // min width so numbers are always readable
 
 /** Level definitions: [numCount, columnCount, emptyColumns] */
 const LEVELS: [number, number, number][] = [
@@ -43,25 +45,15 @@ const LEVELS: [number, number, number][] = [
 	/* 20 */ [36, 11, 1],
 ];
 
-const STAR_THRESHOLDS = [1.5, 2.5]; // multiplier of numCount → 3★, 2★
+const STAR_THRESHOLDS = [1.8, 3.0]; // multiplier of numCount → 3★, 2★ (harder with chaos)
 
 /* ================================================================
-   COLORS per number (mod 12 palette, vibrant)
+   TILE COLORS (mod 12 palette)
    ================================================================ */
 
 const TILE_COLORS = [
-	"#ef5350", // 1  red
-	"#42a5f5", // 2  blue
-	"#66bb6a", // 3  green
-	"#ffa726", // 4  orange
-	"#ab47bc", // 5  purple
-	"#26c6da", // 6  cyan
-	"#ec407a", // 7  pink
-	"#8d6e63", // 8  brown
-	"#78909c", // 9  blue-grey
-	"#d4e157", // 10 lime
-	"#7e57c2", // 11 deep purple
-	"#29b6f6", // 12 light blue
+	"#ef5350", "#42a5f5", "#66bb6a", "#ffa726", "#ab47bc", "#26c6da",
+	"#ec407a", "#8d6e63", "#78909c", "#d4e157", "#7e57c2", "#29b6f6",
 ];
 
 function tileColor(n: number): string {
@@ -69,91 +61,64 @@ function tileColor(n: number): string {
 }
 
 /* ================================================================
-   SOLVABLE LEVEL GENERATOR
+   CHAOTIC LEVEL GENERATOR
    ================================================================ */
 
 /**
- * Generate a solvable puzzle by reverse-simulation:
- * Start from solved state and make random valid reverse moves.
+ * Pure random shuffle — numbers are dealt into columns without any
+ * ordering constraint. Columns may contain e.g. [5, 1, 8, 3].
+ * Player must sort within columns AND into the goal.
  */
 function generateLevel(
 	numCount: number,
 	columnCount: number,
 	emptyColumns: number,
-	seed?: number,
 ): number[][] {
-	// The "goal" has all numbers. We distribute them into columns.
-	// Approach: place numbers 1..numCount sequentially into random columns
-	// using reverse logic (pull from goal, place randomly obeying stack rules reversed).
-	//
-	// Simpler reliable approach: do a shuffled deal then verify solvability
-	// via reverse-construction:
-	//
-	// 1. Start with numbers [numCount, numCount-1, ..., 1] (goal feeds them out in reverse)
-	// 2. Place each number into a random valid column (top must be < current number, or empty)
-	// 3. This guarantees the puzzle is solvable (you can just reverse the placement)
+	const usable = columnCount - emptyColumns;
+	const cols: number[][] = Array.from({ length: columnCount }, () => []);
 
-	const cols: number[][] = [];
-	const usable = columnCount - emptyColumns; // columns that get numbers
-	for (let i = 0; i < columnCount; i++) cols.push([]);
-
-	// Simple seeded RNG
-	let s = seed ?? (Date.now() ^ (Math.random() * 0xffffffff));
-	const rng = () => {
-		s = (s * 1664525 + 1013904223) & 0x7fffffff;
-		return s / 0x7fffffff;
-	};
-
-	// Place numbers from numCount down to 1
-	// Rule: column.length < MAX_STACK and (empty or top > number)
-	// (This mirrors the forward rule: you can move X onto Y if Y > X)
-	for (let num = numCount; num >= 1; num--) {
-		// Collect valid target columns (only the first `usable` columns for initial deal)
-		const candidates: number[] = [];
-		for (let c = 0; c < usable; c++) {
-			if (cols[c].length >= MAX_STACK) continue;
-			if (cols[c].length === 0 || cols[c][cols[c].length - 1] > num) {
-				candidates.push(c);
-			}
-		}
-		if (candidates.length === 0) {
-			// Shouldn't happen with well-tuned params, but fallback: use any column with space
-			for (let c = 0; c < usable; c++) {
-				if (cols[c].length < MAX_STACK) {
-					candidates.push(c);
-					break;
-				}
-			}
-		}
-		const ci = candidates[Math.floor(rng() * candidates.length)];
-		cols[ci].push(num);
+	// Build shuffled deck
+	const deck: number[] = [];
+	for (let i = 1; i <= numCount; i++) deck.push(i);
+	// Fisher-Yates
+	for (let i = deck.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[deck[i], deck[j]] = [deck[j], deck[i]];
 	}
 
-	// Shuffle column order (keep empty columns at end)
-	const filled = cols.slice(0, usable);
-	// Fisher-Yates on filled
-	for (let i = filled.length - 1; i > 0; i--) {
-		const j = Math.floor(rng() * (i + 1));
-		[filled[i], filled[j]] = [filled[j], filled[i]];
+	// Deal round-robin into usable columns, respecting MAX_STACK
+	let ci = 0;
+	for (const num of deck) {
+		let tries = 0;
+		while (cols[ci % usable].length >= MAX_STACK) {
+			ci++;
+			tries++;
+			if (tries > usable) break;
+		}
+		cols[ci % usable].push(num);
+		ci++;
 	}
-	const result = [...filled];
-	for (let i = 0; i < emptyColumns; i++) result.push([]);
-	return result;
+
+	// Shuffle column order so empty ones aren't always at the end
+	for (let i = cols.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[cols[i], cols[j]] = [cols[j], cols[i]];
+	}
+
+	return cols;
 }
 
 /* ================================================================
    DEADLOCK DETECTION
    ================================================================ */
 
-function isDeadlocked(columns: number[][], goal: number[], numCount: number): boolean {
+function isDeadlocked(columns: number[][], goal: number[]): boolean {
 	const nextGoal = goal.length + 1;
 	for (let i = 0; i < columns.length; i++) {
 		const col = columns[i];
-		if (col.length === 0) return false; // empty column exists → not deadlocked
+		if (col.length === 0) return false;
 		const top = col[col.length - 1];
-		// Can put into goal?
 		if (top === nextGoal) return false;
-		// Can move to any other column?
 		for (let j = 0; j < columns.length; j++) {
 			if (i === j) continue;
 			if (columns[j].length >= MAX_STACK) continue;
@@ -165,7 +130,7 @@ function isDeadlocked(columns: number[][], goal: number[], numCount: number): bo
 }
 
 /* ================================================================
-   ANIMATED TILE
+   ANIMATED TILE — always visible, min width enforced
    ================================================================ */
 
 function Tile({
@@ -186,14 +151,12 @@ function Tile({
 
 	useEffect(() => {
 		if (selected) {
-			Animated.sequence([
-				Animated.timing(scale, {
-					toValue: 1.12,
-					duration: 120,
-					easing: Easing.out(Easing.back(2)),
-					useNativeDriver: true,
-				}),
-			]).start();
+			Animated.timing(scale, {
+				toValue: 1.15,
+				duration: 120,
+				easing: Easing.out(Easing.back(2)),
+				useNativeDriver: true,
+			}).start();
 		} else {
 			Animated.timing(scale, {
 				toValue: 1,
@@ -205,23 +168,20 @@ function Tile({
 
 	return (
 		<Animated.View
-			style={[
-				st.tile,
-				{
-					width: width - 6,
-					backgroundColor: bg,
-					borderColor: selected ? "#fff" : border,
-					borderWidth: selected ? 2 : 1.5,
-					transform: [{ scale }],
-				},
-			]}
+			style={{
+				width: width - 6,
+				height: 30,
+				borderRadius: 7,
+				alignItems: "center",
+				justifyContent: "center",
+				marginVertical: 1,
+				backgroundColor: bg,
+				borderColor: selected ? "#fff" : border,
+				borderWidth: selected ? 2 : 1.5,
+				transform: [{ scale }],
+			}}
 		>
-			<Text
-				style={[
-					st.tileText,
-					{ color: textColor, fontWeight: isGoal ? "900" : "800" },
-				]}
-			>
+			<Text style={{ fontSize: 14, fontWeight: "800", color: textColor }}>
 				{value}
 			</Text>
 		</Animated.View>
@@ -229,17 +189,17 @@ function Tile({
 }
 
 /* ================================================================
-   COLUMN COMPONENT
+   COLUMN COMPONENT — shows ALL tiles (no hidden items)
    ================================================================ */
 
-function Column({
+function ColumnView({
 	items,
 	index,
 	isSelected,
 	isGoal,
 	onPress,
 	colWidth,
-	valid,
+	label,
 }: {
 	items: number[];
 	index: number;
@@ -247,24 +207,10 @@ function Column({
 	isGoal: boolean;
 	onPress: (i: number) => void;
 	colWidth: number;
-	valid: boolean;
+	label?: string;
 }) {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
-	const shakeAnim = useRef(new Animated.Value(0)).current;
-
-	const doShake = useCallback(() => {
-		Animated.sequence([
-			Animated.timing(shakeAnim, { toValue: 8, duration: 50, useNativeDriver: true }),
-			Animated.timing(shakeAnim, { toValue: -8, duration: 50, useNativeDriver: true }),
-			Animated.timing(shakeAnim, { toValue: 4, duration: 50, useNativeDriver: true }),
-			Animated.timing(shakeAnim, { toValue: 0, duration: 50, useNativeDriver: true }),
-		]).start();
-	}, [shakeAnim]);
-
-	const handlePress = () => {
-		onPress(index);
-	};
 
 	const bgColor = isGoal
 		? "rgba(255,215,0,0.06)"
@@ -272,47 +218,68 @@ function Column({
 			? theme.accentSoft
 			: "transparent";
 	const borderColor = isGoal
-		? "#ffd70050"
+		? "#ffd70060"
 		: isSelected
 			? theme.tint
-			: theme.border + "60";
+			: theme.border + "50";
 
 	return (
-		<Pressable onPress={handlePress}>
-			<Animated.View
-				style={[
-					st.column,
-					{
-						width: colWidth,
-						backgroundColor: bgColor,
-						borderColor,
-						transform: [{ translateX: shakeAnim }],
-					},
-				]}
+		<Pressable onPress={() => onPress(index)}>
+			<RNView
+				style={{
+					width: colWidth,
+					borderWidth: 1.5,
+					borderRadius: 10,
+					padding: 3,
+					alignItems: "center",
+					justifyContent: "flex-end",
+					minHeight: 50,
+					backgroundColor: bgColor,
+					borderColor,
+				}}
 			>
+				{/* Badge */}
 				{isGoal && (
 					<RNView style={st.goalBadge}>
 						<Text style={st.goalBadgeText}>GOAL</Text>
 					</RNView>
 				)}
-				{/* empty slots */}
-				{Array.from({ length: MAX_STACK - items.length }).map((_, i) => (
+				{label && !isGoal && (
+					<Text
+						style={{
+							fontSize: 7,
+							fontWeight: "700",
+							color: theme.mutedText + "80",
+							position: "absolute",
+							top: 2,
+						}}
+					>
+						{label}
+					</Text>
+				)}
+				{/* All tiles — always visible */}
+				{items.length === 0 && (
 					<RNView
-						key={`e${i}`}
-						style={[st.emptySlot, { width: colWidth - 6 }]}
+						style={{
+							width: colWidth - 8,
+							height: 30,
+							borderRadius: 7,
+							borderWidth: 1,
+							borderColor: "rgba(255,255,255,0.06)",
+							borderStyle: "dashed",
+						}}
 					/>
-				))}
-				{/* tiles from bottom to top */}
+				)}
 				{items.map((val, i) => (
 					<Tile
-						key={`${val}`}
+						key={`${index}-${i}-${val}`}
 						value={val}
 						selected={isSelected && i === items.length - 1}
 						isGoal={isGoal}
 						width={colWidth}
 					/>
 				))}
-			</Animated.View>
+			</RNView>
 		</Pressable>
 	);
 }
@@ -324,8 +291,8 @@ function Column({
 function Stars({ count }: { count: number }) {
 	return (
 		<RNView style={{ flexDirection: "row", gap: 4, marginVertical: 4 }}>
-			{[1, 2, 3].map((s) => (
-				<Text key={s} style={{ fontSize: 26, opacity: s <= count ? 1 : 0.2 }}>
+			{[1, 2, 3].map((i) => (
+				<Text key={i} style={{ fontSize: 26, opacity: i <= count ? 1 : 0.2 }}>
 					⭐
 				</Text>
 			))}
@@ -341,15 +308,21 @@ export default function StackSortGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const { width: screenW } = useWindowDimensions();
 
-	const [phase, setPhase] = useState<"menu" | "playing" | "won" | "dead">("menu");
-	const [level, setLevel] = useState(0); // index into LEVELS
+	const [phase, setPhase] = useState<"menu" | "playing" | "won">("menu");
+	const [level, setLevel] = useState(0);
 	const [columns, setColumns] = useState<number[][]>([]);
 	const [goal, setGoal] = useState<number[]>([]);
 	const [selected, setSelected] = useState<number | null>(null);
 	const [moves, setMoves] = useState(0);
 	const [history, setHistory] = useState<{ columns: number[][]; goal: number[] }[]>([]);
 	const [numCount, setNumCount] = useState(0);
+
+	/* --- derived layout --- */
+	const totalCols = columns.length + 1; // +1 for goal
+	const maxPerRow = Math.max(3, Math.floor((screenW - 24) / (MIN_COL_W + 8)));
+	const colWidth = Math.max(MIN_COL_W, Math.floor((screenW - 24 - maxPerRow * 8) / maxPerRow));
 
 	/* --- start level --- */
 	const startLevel = useCallback((lvl: number) => {
@@ -369,30 +342,23 @@ export default function StackSortGame() {
 	const handleColumnPress = useCallback(
 		(colIdx: number) => {
 			if (phase !== "playing") return;
-
-			// Special: colIdx === -1 means goal column
 			const isGoalTap = colIdx === -1;
 
 			if (selected === null) {
-				// Select a source column (can't select goal or empty column)
 				if (isGoalTap) return;
 				if (columns[colIdx].length === 0) return;
 				setSelected(colIdx);
 				return;
 			}
 
-			// We have a source selected — try to move
 			const srcCol = columns[selected];
 			const top = srcCol[srcCol.length - 1];
-
-			// Save undo state
 			const snapshot = {
 				columns: columns.map((c) => [...c]),
 				goal: [...goal],
 			};
 
 			if (isGoalTap) {
-				// Move to goal — only if next expected number
 				const nextGoal = goal.length + 1;
 				if (top !== nextGoal) {
 					setSelected(null);
@@ -407,19 +373,15 @@ export default function StackSortGame() {
 				setHistory((h) => [...h, snapshot]);
 				setSelected(null);
 
-				// Check win
 				if (newGoal.length === numCount) {
 					setPhase("won");
-					// Score: stars based on moves
 					const stars = getStars(moves + 1, numCount);
 					updateProgress("stack-sort", stars * 100 + (level + 1));
 				}
 				return;
 			}
 
-			// Move to another column
 			if (colIdx === selected) {
-				// Deselect
 				setSelected(null);
 				return;
 			}
@@ -434,7 +396,6 @@ export default function StackSortGame() {
 				return;
 			}
 
-			// Valid move
 			const newCols = columns.map((c) => [...c]);
 			newCols[selected] = newCols[selected].slice(0, -1);
 			newCols[colIdx] = [...newCols[colIdx], top];
@@ -442,13 +403,6 @@ export default function StackSortGame() {
 			setMoves((m) => m + 1);
 			setHistory((h) => [...h, snapshot]);
 			setSelected(null);
-
-			// Check deadlock after move (async-ish: use new state)
-			setTimeout(() => {
-				if (isDeadlocked(newCols, goal, numCount)) {
-					// Don't immediately end — let player undo
-				}
-			}, 100);
 		},
 		[phase, columns, goal, selected, numCount, moves, level, updateProgress],
 	);
@@ -460,7 +414,7 @@ export default function StackSortGame() {
 		setColumns(prev.columns);
 		setGoal(prev.goal);
 		setHistory((h) => h.slice(0, -1));
-		setMoves((m) => m + 1); // undo costs a move
+		setMoves((m) => m + 1);
 		setSelected(null);
 	}, [history]);
 
@@ -471,12 +425,10 @@ export default function StackSortGame() {
 		return 1;
 	}
 
-	/* --- deadlocked? --- */
-	const dead = phase === "playing" && isDeadlocked(columns, goal, numCount) && history.length === 0;
-
-	/* --- column width --- */
-	const totalCols = columns.length + 1; // +1 for goal
-	const colWidth = Math.min(52, Math.floor((360 - totalCols * 4) / totalCols));
+	const dead =
+		phase === "playing" &&
+		isDeadlocked(columns, goal) &&
+		history.length === 0;
 
 	/* ================================================================
 	   RENDER — MENU
@@ -487,8 +439,9 @@ export default function StackSortGame() {
 			<View style={s.root}>
 				<Text style={s.title}>Stack Sort</Text>
 				<Text style={[s.desc, { color: theme.mutedText }]}>
-					Sort all numbers into the <Text style={{ color: "#ffd700", fontWeight: "800" }}>GOAL</Text> column
-					{"\n"}in order: 1 → 2 → 3 → ...
+					Sort all numbers into the{" "}
+					<Text style={{ color: "#ffd700", fontWeight: "800" }}>GOAL</Text>
+					{"\n"}in order: 1 → 2 → 3 → …
 				</Text>
 
 				<RNView style={s.rulesBox}>
@@ -496,10 +449,14 @@ export default function StackSortGame() {
 						📌 Move only the <Text style={{ fontWeight: "800" }}>top</Text> number
 					</Text>
 					<Text style={[s.ruleText, { color: theme.text }]}>
-						✅ Place on <Text style={{ fontWeight: "800" }}>empty</Text> or on a <Text style={{ fontWeight: "800" }}>larger</Text> number
+						✅ Place on <Text style={{ fontWeight: "800" }}>empty</Text> or on a{" "}
+						<Text style={{ fontWeight: "800" }}>larger</Text> number
 					</Text>
 					<Text style={[s.ruleText, { color: theme.text }]}>
-						🔒 Goal column — numbers are <Text style={{ fontWeight: "800" }}>locked</Text> once placed
+						🔒 Goal — numbers <Text style={{ fontWeight: "800" }}>locked</Text> once placed
+					</Text>
+					<Text style={[s.ruleText, { color: theme.text }]}>
+						🔀 Columns start <Text style={{ fontWeight: "800" }}>chaotic</Text> — sort them first!
 					</Text>
 					<Text style={[s.ruleText, { color: theme.text }]}>
 						↩️ Use <Text style={{ fontWeight: "800" }}>Undo</Text> if stuck
@@ -520,9 +477,7 @@ export default function StackSortGame() {
 							]}
 							onPress={() => startLevel(i)}
 						>
-							<Text style={[s.levelBtnText, { color: theme.text }]}>
-								{i + 1}
-							</Text>
+							<Text style={[s.levelBtnText, { color: theme.text }]}>{i + 1}</Text>
 							<Text style={{ fontSize: 8, color: theme.mutedText }}>
 								{LEVELS[i][0]}n
 							</Text>
@@ -543,9 +498,7 @@ export default function StackSortGame() {
 			<View style={s.root}>
 				<Text style={s.title}>Level {level + 1} Complete!</Text>
 				<Stars count={stars} />
-				<Text style={[s.movesText, { color: theme.mutedText }]}>
-					{moves} moves
-				</Text>
+				<Text style={[s.movesText, { color: theme.mutedText }]}>{moves} moves</Text>
 				<RNView style={s.btnRow}>
 					{level < LEVELS.length - 1 && (
 						<Pressable
@@ -573,18 +526,23 @@ export default function StackSortGame() {
 	}
 
 	/* ================================================================
-	   RENDER — PLAYING
+	   RENDER — PLAYING  (scattered grid layout)
 	   ================================================================ */
+
+	const allCols: { items: number[]; idx: number; isGoal: boolean; label: string }[] = [];
+	columns.forEach((col, i) => {
+		allCols.push({ items: col, idx: i, isGoal: false, label: `#${i + 1}` });
+	});
+	allCols.push({ items: goal, idx: -1, isGoal: true, label: "GOAL" });
 
 	return (
 		<View style={s.root}>
 			{/* HUD */}
 			<RNView style={s.hud}>
-				<Text style={[s.hudText, { color: theme.mutedText }]}>
-					Level {level + 1}
-				</Text>
-				<Text style={[s.hudText, { color: theme.text }]}>
-					Moves: {moves}
+				<Text style={[s.hudText, { color: theme.mutedText }]}>Lvl {level + 1}</Text>
+				<Text style={[s.hudText, { color: theme.text }]}>Moves: {moves}</Text>
+				<Text style={[s.hudText, { color: "#ffd700" }]}>
+					{goal.length}/{numCount}
 				</Text>
 				<Pressable
 					style={[s.undoBtn, { borderColor: theme.border }]}
@@ -592,10 +550,11 @@ export default function StackSortGame() {
 					disabled={history.length === 0}
 				>
 					<Text
-						style={[
-							s.undoBtnText,
-							{ color: history.length > 0 ? theme.tint : theme.mutedText + "40" },
-						]}
+						style={{
+							fontSize: 13,
+							fontWeight: "700",
+							color: history.length > 0 ? theme.tint : theme.mutedText + "40",
+						}}
 					>
 						↩ Undo
 					</Text>
@@ -605,72 +564,43 @@ export default function StackSortGame() {
 			{/* Deadlock warning */}
 			{dead && (
 				<RNView style={s.deadBanner}>
-					<Text style={s.deadText}>No valid moves! Use Undo or Restart</Text>
+					<Text style={s.deadText}>No valid moves! Restart level</Text>
 				</RNView>
 			)}
 
-			{/* Board */}
+			{/* Scattered grid board */}
 			<ScrollView
-				horizontal
-				contentContainerStyle={s.boardScroll}
-				showsHorizontalScrollIndicator={false}
+				style={{ flex: 1, width: "100%" }}
+				contentContainerStyle={{ paddingBottom: 16 }}
 			>
-				<RNView style={s.board}>
-					{/* Regular columns */}
-					{columns.map((col, i) => (
-						<Column
-							key={i}
-							items={col}
-							index={i}
-							isSelected={selected === i}
-							isGoal={false}
+				<RNView style={s.grid}>
+					{allCols.map((c) => (
+						<ColumnView
+							key={c.isGoal ? "goal" : c.idx}
+							items={c.items}
+							index={c.idx}
+							isSelected={selected === c.idx && !c.isGoal}
+							isGoal={c.isGoal}
 							onPress={handleColumnPress}
 							colWidth={colWidth}
-							valid={true}
+							label={c.label}
 						/>
 					))}
-
-					{/* Goal column */}
-					<Pressable onPress={() => handleColumnPress(-1)}>
-						<RNView
-							style={[
-								st.column,
-								{
-									width: colWidth,
-									backgroundColor: "rgba(255,215,0,0.06)",
-									borderColor: "#ffd70050",
-								},
-							]}
-						>
-							<RNView style={st.goalBadge}>
-								<Text style={st.goalBadgeText}>GOAL</Text>
-							</RNView>
-							{/* Show only last few + count */}
-							{goal.length > MAX_STACK ? (
-								<>
-									<RNView style={[st.emptySlot, { width: colWidth - 6 }]}>
-										<Text style={{ fontSize: 9, color: "#ffd700", fontWeight: "700" }}>
-											...{goal.length - 2} more
-										</Text>
-									</RNView>
-									{goal.slice(-2).map((val) => (
-										<Tile key={val} value={val} isGoal width={colWidth} />
-									))}
-								</>
-							) : (
-								<>
-									{Array.from({ length: MAX_STACK - goal.length }).map((_, i) => (
-										<RNView key={`ge${i}`} style={[st.emptySlot, { width: colWidth - 6 }]} />
-									))}
-									{goal.map((val) => (
-										<Tile key={val} value={val} isGoal width={colWidth} />
-									))}
-								</>
-							)}
-						</RNView>
-					</Pressable>
 				</RNView>
 			</ScrollView>
+
+			{/* Goal progress bar */}
+			<RNView style={s.progressWrap}>
+				<RNView
+					style={[
+						s.progressBar,
+						{ width: `${(goal.length / numCount) * 100}%` as never },
+					]}
+				/>
+				<Text style={s.progressText}>
+					{goal.length} / {numCount}
+				</Text>
+			</RNView>
 
 			{/* Bottom bar */}
 			<RNView style={s.bottomBar}>
@@ -687,57 +617,15 @@ export default function StackSortGame() {
 					<Text style={[s.smallBtnText, { color: theme.text }]}>📋 Menu</Text>
 				</Pressable>
 			</RNView>
-
-			{/* Goal progress bar */}
-			<RNView style={s.progressWrap}>
-				<RNView
-					style={[
-						s.progressBar,
-						{ width: `${(goal.length / numCount) * 100}%` as never },
-					]}
-				/>
-				<Text style={s.progressText}>
-					{goal.length} / {numCount}
-				</Text>
-			</RNView>
 		</View>
 	);
 }
 
 /* ================================================================
-   STYLES — Shared tile/column styles
+   STYLES — shared
    ================================================================ */
 
 const st = StyleSheet.create({
-	tile: {
-		height: 34,
-		borderRadius: 8,
-		alignItems: "center",
-		justifyContent: "center",
-		marginVertical: 1,
-	},
-	tileText: {
-		fontSize: 16,
-		fontWeight: "800",
-	},
-	column: {
-		borderWidth: 1.5,
-		borderRadius: 10,
-		padding: 3,
-		alignItems: "center",
-		justifyContent: "flex-end",
-		minHeight: MAX_STACK * 36 + 24,
-	},
-	emptySlot: {
-		height: 34,
-		borderRadius: 8,
-		marginVertical: 1,
-		borderWidth: 1,
-		borderColor: "rgba(255,255,255,0.05)",
-		borderStyle: "dashed",
-		alignItems: "center",
-		justifyContent: "center",
-	},
 	goalBadge: {
 		position: "absolute",
 		top: -10,
@@ -745,6 +633,7 @@ const st = StyleSheet.create({
 		paddingVertical: 1,
 		borderRadius: 4,
 		backgroundColor: "#ffd700",
+		zIndex: 2,
 	},
 	goalBadgeText: {
 		fontSize: 8,
@@ -754,7 +643,7 @@ const st = StyleSheet.create({
 });
 
 /* ================================================================
-   STYLES — Layout
+   STYLES — layout
    ================================================================ */
 
 const s = StyleSheet.create({
@@ -792,17 +681,16 @@ const s = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "space-between",
 		width: "100%",
-		paddingHorizontal: 8,
-		marginBottom: 8,
+		paddingHorizontal: 4,
+		marginBottom: 6,
 	},
-	hudText: { fontSize: 14, fontWeight: "700" },
+	hudText: { fontSize: 13, fontWeight: "700" },
 	undoBtn: {
-		paddingHorizontal: 12,
+		paddingHorizontal: 10,
 		paddingVertical: 4,
 		borderRadius: 8,
 		borderWidth: 1,
 	},
-	undoBtnText: { fontSize: 13, fontWeight: "700" },
 
 	deadBanner: {
 		backgroundColor: "rgba(239,83,80,0.15)",
@@ -813,33 +701,23 @@ const s = StyleSheet.create({
 	},
 	deadText: { color: "#ef5350", fontSize: 12, fontWeight: "700" },
 
-	boardScroll: { paddingHorizontal: 8 },
-	board: {
+	/* Scattered wrapped grid — columns flow across the screen in rows */
+	grid: {
 		flexDirection: "row",
-		gap: 6,
-		alignItems: "flex-end",
-		paddingTop: 16,
+		flexWrap: "wrap",
+		justifyContent: "center",
+		gap: 8,
+		paddingTop: 14,
+		paddingHorizontal: 4,
 	},
-
-	bottomBar: {
-		flexDirection: "row",
-		gap: 12,
-		marginTop: 12,
-	},
-	smallBtn: {
-		paddingHorizontal: 16,
-		paddingVertical: 8,
-		borderRadius: 8,
-		borderWidth: 1,
-	},
-	smallBtnText: { fontSize: 13, fontWeight: "600" },
 
 	progressWrap: {
-		width: "80%",
+		width: "85%",
 		height: 18,
 		borderRadius: 9,
 		backgroundColor: "rgba(255,215,0,0.1)",
-		marginTop: 10,
+		marginTop: 8,
+		marginBottom: 4,
 		overflow: "hidden",
 		justifyContent: "center",
 		alignItems: "center",
@@ -857,6 +735,20 @@ const s = StyleSheet.create({
 		fontWeight: "800",
 		color: "#ffd700",
 	},
+
+	bottomBar: {
+		flexDirection: "row",
+		gap: 12,
+		marginTop: 6,
+		marginBottom: 4,
+	},
+	smallBtn: {
+		paddingHorizontal: 16,
+		paddingVertical: 8,
+		borderRadius: 8,
+		borderWidth: 1,
+	},
+	smallBtnText: { fontSize: 13, fontWeight: "600" },
 
 	mainBtn: {
 		paddingHorizontal: 28,
