@@ -1,12 +1,22 @@
 import { cs } from "@/i18n/locales/cs";
 import { de } from "@/i18n/locales/de";
 import { en } from "@/i18n/locales/en";
+import { es } from "@/i18n/locales/es";
+import { fr } from "@/i18n/locales/fr";
+import { it } from "@/i18n/locales/it";
+import { pl } from "@/i18n/locales/pl";
+import { pt } from "@/i18n/locales/pt";
 import { getLocales } from "expo-localization";
 
 export const translations = {
 	en,
 	cs,
 	de,
+	es,
+	fr,
+	it,
+	pl,
+	pt,
 } as const;
 
 export type Language = keyof typeof translations;
@@ -23,6 +33,11 @@ export const supportedLanguages: Array<{
 	{ code: "en", label: "English", nativeLabel: "English" },
 	{ code: "cs", label: "Czech", nativeLabel: "Čeština" },
 	{ code: "de", label: "German", nativeLabel: "Deutsch" },
+	{ code: "es", label: "Spanish", nativeLabel: "Español" },
+	{ code: "fr", label: "French", nativeLabel: "Français" },
+	{ code: "it", label: "Italian", nativeLabel: "Italiano" },
+	{ code: "pl", label: "Polish", nativeLabel: "Polski" },
+	{ code: "pt", label: "Portuguese", nativeLabel: "Português" },
 ];
 
 export const defaultLanguage: Language = "en";
