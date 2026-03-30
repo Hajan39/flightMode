@@ -1,0 +1,178 @@
+import { useEffect, useMemo, useState } from "react";
+import { Pressable, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
+import { Text, View } from "@/components/Themed";
+import Colors from "@/constants/Colors";
+import { useColorScheme } from "@/components/useColorScheme";
+import { useGameStore } from "@/store/useGameStore";
+
+const ROUND_SECONDS = 30;
+
+type Command = {
+	id: string;
+	label: string;
+	icon: string;
+};
+
+const COMMANDS: Command[] = [
+	{ id: "seatbelt", label: "Fasten seatbelt", icon: "shield-checkmark-outline" },
+	{ id: "tray", label: "Tray table up", icon: "restaurant-outline" },
+	{ id: "window", label: "Window shade open", icon: "sunny-outline" },
+	{ id: "phone", label: "Flight mode on", icon: "phone-portrait-outline" },
+];
+
+function randomCommand(excludeId?: string) {
+	const pool = excludeId ? COMMANDS.filter((item) => item.id !== excludeId) : COMMANDS;
+	return pool[Math.floor(Math.random() * pool.length)];
+}
+
+export default function CabinCallGame() {
+	const colorScheme = useColorScheme();
+	const theme = Colors[colorScheme];
+	const updateProgress = useGameStore((s) => s.updateProgress);
+
+	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
+	const [score, setScore] = useState(0);
+	const [streak, setStreak] = useState(0);
+	const [target, setTarget] = useState<Command>(() => randomCommand());
+
+	useEffect(() => {
+		if (secondsLeft <= 0) {
+			updateProgress("cabin-call", score);
+			return;
+		}
+
+		const timer = setTimeout(() => {
+			setSecondsLeft((prev) => prev - 1);
+		}, 1000);
+
+		return () => clearTimeout(timer);
+	}, [secondsLeft, score, updateProgress]);
+
+	const choices = useMemo(() => {
+		const decoys = COMMANDS.filter((item) => item.id !== target.id)
+			.sort(() => Math.random() - 0.5)
+			.slice(0, 2);
+		return [target, ...decoys].sort(() => Math.random() - 0.5);
+	}, [target]);
+
+	const restart = () => {
+		setSecondsLeft(ROUND_SECONDS);
+		setScore(0);
+		setStreak(0);
+		setTarget(randomCommand());
+	};
+
+	const handleChoice = (choice: Command) => {
+		if (secondsLeft <= 0) {
+			restart();
+			return;
+		}
+
+		if (choice.id === target.id) {
+			setScore((prev) => prev + 10 + Math.min(10, streak * 2));
+			setStreak((prev) => prev + 1);
+		} else {
+			setScore((prev) => Math.max(0, prev - 6));
+			setStreak(0);
+		}
+
+		setTarget((prev) => randomCommand(prev.id));
+	};
+
+	return (
+		<View style={styles.root}>
+			<View style={styles.statsRow}>
+				<View style={styles.statBlock}>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>TIME</Text>
+					<Text style={[styles.statValue, { color: theme.text }]}>{secondsLeft}</Text>
+				</View>
+				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
+				<View style={styles.statBlock}>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>SCORE</Text>
+					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
+				</View>
+			</View>
+
+			<View
+				style={[
+					styles.targetCard,
+					{ backgroundColor: theme.card, borderColor: theme.border },
+				]}
+			>
+				<Text style={[styles.targetHint, { color: theme.mutedText }]}>Cabin crew says:</Text>
+				<Ionicons name={target.icon as never} size={40} color={theme.tint} />
+				<Text style={styles.targetText}>{target.label}</Text>
+			</View>
+
+			<View style={styles.choiceList}>
+				{choices.map((choice) => (
+					<Pressable
+						key={choice.id}
+						style={[
+							styles.choice,
+							{ backgroundColor: theme.elevated, borderColor: theme.border },
+						]}
+						onPress={() => handleChoice(choice)}
+					>
+						<Ionicons name={choice.icon as never} size={20} color={theme.tint} />
+						<Text style={styles.choiceText}>{choice.label}</Text>
+					</Pressable>
+				))}
+			</View>
+
+			<Text style={[styles.streakText, { color: theme.mutedText }]}>Streak: {streak}</Text>
+			{secondsLeft <= 0 ? (
+				<Pressable style={[styles.button, { backgroundColor: theme.tint }]} onPress={restart}>
+					<Text style={styles.buttonText}>PLAY AGAIN</Text>
+				</Pressable>
+			) : null}
+		</View>
+	);
+}
+
+const styles = StyleSheet.create({
+	root: { flex: 1, padding: 20, gap: 16, justifyContent: "center" },
+	statsRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	statBlock: { flex: 1, alignItems: "center", paddingVertical: 4, gap: 2 },
+	statLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	statValue: { fontSize: 40, fontWeight: "900", letterSpacing: -1 },
+	statDivider: { width: 1, height: 56 },
+	targetCard: {
+		borderRadius: 16,
+		borderWidth: 1,
+		paddingVertical: 20,
+		alignItems: "center",
+		gap: 8,
+	},
+	targetHint: { fontSize: 13, fontWeight: "600" },
+	targetText: { fontSize: 20, fontWeight: "800", textAlign: "center", paddingHorizontal: 12 },
+	choiceList: { gap: 10 },
+	choice: {
+		borderWidth: 1,
+		borderRadius: 12,
+		paddingHorizontal: 14,
+		paddingVertical: 14,
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 10,
+	},
+	choiceText: { fontSize: 15, fontWeight: "700" },
+	streakText: { textAlign: "center", fontSize: 13, fontWeight: "600" },
+	button: {
+		alignItems: "center",
+		paddingVertical: 14,
+		borderRadius: 14,
+	},
+	buttonText: { color: "#fff", fontSize: 16, fontWeight: "900", letterSpacing: 0.8 },
+});

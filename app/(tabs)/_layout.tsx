@@ -1,71 +1,121 @@
-import React from 'react';
-import { SymbolView } from 'expo-symbols';
-import { Link, Tabs } from 'expo-router';
-import { Platform, Pressable } from 'react-native';
+import { Pressable, Text, View } from "react-native";
+import { Tabs, useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import Colors from "@/constants/Colors";
+import { useColorScheme } from "@/components/useColorScheme";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useAudioStore } from "@/store/useAudioStore";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+	const colorScheme = useColorScheme();
+	const theme = Colors[colorScheme];
+	const { t } = useTranslation();
+	const router = useRouter();
+	const activeSoundId = useAudioStore((s) => s.activeSoundId);
+	const activeLabelKey = useAudioStore((s) => s.activeLabelKey);
+	const stopSound = useAudioStore((s) => s.stopSound);
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: 'chevron.left.forwardslash.chevron.right',
-                android: 'code',
-                web: 'code',
-              }}
-              tintColor={color}
-              size={28}
-            />
-          ),
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable style={{ marginRight: 15 }}>
-                {({ pressed }) => (
-                  <SymbolView
-                    name={{ ios: 'info.circle', android: 'info', web: 'info' }}
-                    size={25}
-                    tintColor={Colors[colorScheme].text}
-                    style={{ opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: 'chevron.left.forwardslash.chevron.right',
-                android: 'code',
-                web: 'code',
-              }}
-              tintColor={color}
-              size={28}
-            />
-          ),
-        }}
-      />
-    </Tabs>
-  );
+	return (
+		<Tabs
+			screenOptions={{
+				tabBarActiveTintColor: theme.tint,
+				tabBarInactiveTintColor: theme.tabIconDefault,
+				tabBarStyle: {
+					backgroundColor: theme.headerBackground,
+					borderTopColor: theme.border,
+				},
+				headerStyle: {
+					backgroundColor: theme.headerBackground,
+				},
+				headerTitleStyle: {
+					color: theme.text,
+				},
+				headerTintColor: theme.text,
+				sceneStyle: {
+					backgroundColor: theme.background,
+				},
+				headerShown: true,
+				headerRight: () => (
+					<View
+						style={{
+							flexDirection: "row",
+							alignItems: "center",
+							paddingRight: 16,
+							gap: 12,
+						}}
+					>
+						{activeSoundId ? (
+							<View
+								style={{ flexDirection: "row", alignItems: "center", gap: 6 }}
+							>
+								<Text
+									style={{
+										color: theme.tint,
+										fontSize: 12,
+										fontWeight: "700",
+										maxWidth: 84,
+									}}
+									numberOfLines={1}
+								>
+									{activeLabelKey ? t(activeLabelKey) : "Audio"}
+								</Text>
+								<Pressable onPress={stopSound} hitSlop={8}>
+									<Ionicons
+										name="stop-circle-outline"
+										size={22}
+										color={theme.tint}
+									/>
+								</Pressable>
+							</View>
+						) : null}
+						<Pressable onPress={() => router.push("/settings")} hitSlop={8}>
+							<Ionicons name="settings-outline" size={22} color={theme.text} />
+						</Pressable>
+					</View>
+				),
+			}}
+		>
+			<Tabs.Screen
+				name="index"
+				options={{
+					title: t("tabsHome"),
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons name="home-outline" size={size} color={color} />
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="games"
+				options={{
+					title: t("tabsGames"),
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons
+							name="game-controller-outline"
+							size={size}
+							color={color}
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="explore"
+				options={{
+					title: t("tabsExplore"),
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons name="compass-outline" size={size} color={color} />
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="relax"
+				options={{
+					title: t("tabsRelax"),
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons name="leaf-outline" size={size} color={color} />
+					),
+				}}
+			/>
+		</Tabs>
+	);
 }

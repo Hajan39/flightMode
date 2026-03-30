@@ -1,0 +1,124 @@
+[
+    {
+        "id": "travel-packing",
+        "title": {
+            "en": "Smart Packing Tips for Carry-On Only",
+            "cs": "Chytré balení jen s příručním zavazadlem",
+            "de": "Clevere Packtipps nur mit Handgepäck"
+        },
+        "category": {
+            "en": "Travel Tips",
+            "cs": "Cestovní tipy",
+            "de": "Reisetipps"
+        },
+        "readTime": 4,
+        "body": {
+            "en": "Traveling with just a carry-on saves time and money. Here are the essentials:\n\n1. Roll your clothes instead of folding — saves 30% more space.\n2. Wear your bulkiest items on the plane.\n3. Use packing cubes to organize by outfit or day.\n4. Bring a reusable water bottle — fill it after security.\n5. Keep electronics and chargers in one pouch.\n\nThe key is to plan outfits that mix and match. Stick to a color palette (e.g., navy, white, grey) so everything works together.\n\nPro tip: Always pack one extra pair of socks and underwear in your personal item, just in case your bag gets gate-checked.",
+            "cs": "Cestování jen s příručním zavazadlem šetří čas i peníze. Tady jsou základy:\n\n1. Oblečení roluj místo skládání — ušetříš až 30 % místa.\n2. Nejobjemnější věci si obleč už do letadla.\n3. Použij organizéry podle outfitů nebo dnů.\n4. Vezmi si znovupoužitelnou lahev a naplň ji po kontrole.\n5. Elektroniku a nabíječky měj v jednom pouzdře.\n\nZáklad je plánovat outfity tak, aby šly dobře kombinovat. Drž se jedné barevné palety, třeba námořnická, bílá a šedá.\n\nTip navíc: Do osobní tašky si vždy přibal jedny ponožky a spodní prádlo navíc, kdyby šlo zavazadlo nečekaně do podpalubí.",
+            "de": "Reisen nur mit Handgepäck spart Zeit und Geld. Das Wichtigste auf einen Blick:\n\n1. Rolle deine Kleidung statt sie zu falten — das spart bis zu 30 % Platz.\n2. Trage die sperrigsten Teile schon im Flugzeug.\n3. Nutze Packing Cubes, um nach Outfits oder Tagen zu sortieren.\n4. Nimm eine wiederverwendbare Flasche mit und fülle sie nach der Kontrolle auf.\n5. Bewahre Elektronik und Ladegeräte in einer Tasche auf.\n\nWichtig ist, Outfits so zu planen, dass sie sich gut kombinieren lassen. Bleibe bei einer Farbpalette, zum Beispiel Navy, Weiß und Grau.\n\nProfi-Tipp: Packe immer ein extra Paar Socken und Unterwäsche in deinen persönlichen Gegenstand, falls dein Gepäck doch aufgegeben werden muss."
+        }
+    },
+    {
+        "id": "jet-lag",
+        "title": {
+            "en": "How to Beat Jet Lag: A Practical Guide",
+            "cs": "Jak zvládnout jet lag: praktický průvodce",
+            "de": "Jetlag überwinden: ein praktischer Leitfaden"
+        },
+        "category": {
+            "en": "Health",
+            "cs": "Zdraví",
+            "de": "Gesundheit"
+        },
+        "readTime": 5,
+        "body": {
+            "en": "Jet lag happens when your internal clock is out of sync with your destination's time zone. Here's how to minimize it:\n\n**Before the flight:**\n- Gradually shift your sleep schedule 1 hour per day toward your destination's time.\n- Stay hydrated and avoid alcohol the day before.\n\n**During the flight:**\n- Set your watch to the destination time immediately.\n- Sleep if it's nighttime at your destination; stay awake if it's daytime.\n- Drink water regularly. Avoid caffeine close to your destination's bedtime.\n\n**After arrival:**\n- Get sunlight exposure in the morning — it resets your circadian rhythm.\n- Avoid napping for more than 20 minutes.\n- Eat meals at local times, even if you're not hungry.\n\nMost people adjust at a rate of about 1 time zone per day.",
+            "cs": "Jet lag vzniká, když se tvé vnitřní hodiny rozcházejí s časovým pásmem cílové destinace. Jak ho zmírnit:\n\n**Před letem:**\n- Posouvej spánek každý den asi o hodinu směrem k času v destinaci.\n- Dost pij a den před odletem omez alkohol.\n\n**Během letu:**\n- Hned si přepni hodinky na cílový čas.\n- Spi, pokud je v destinaci noc, a zůstaň vzhůru, pokud je den.\n- Pravidelně pij vodu. Kofein si nech dál od času, kdy budeš chtít v cíli spát.\n\n**Po příletu:**\n- Ráno se vystav dennímu světlu — pomůže přenastavit cirkadiánní rytmus.\n- Nezdřímni si na víc než 20 minut.\n- Jez podle místního času, i když ještě nemáš hlad.\n\nVětšina lidí se přizpůsobuje zhruba tempem jednoho časového pásma za den.",
+            "de": "Jetlag entsteht, wenn deine innere Uhr nicht mit der Zeitzone deines Reiseziels übereinstimmt. So kannst du ihn verringern:\n\n**Vor dem Flug:**\n- Verschiebe deinen Schlafrhythmus täglich um etwa eine Stunde in Richtung Zielzeit.\n- Trinke ausreichend und vermeide am Vortag Alkohol.\n\n**Während des Flugs:**\n- Stelle deine Uhr sofort auf die Zielzeit um.\n- Schlafe, wenn am Zielort Nacht ist, und bleibe wach, wenn dort Tag ist.\n- Trinke regelmäßig Wasser. Vermeide Koffein kurz vor der Schlafenszeit am Zielort.\n\n**Nach der Ankunft:**\n- Geh morgens ins Tageslicht — das hilft, den Biorhythmus neu zu synchronisieren.\n- Mache keine Nickerchen länger als 20 Minuten.\n- Iss zu den lokalen Essenszeiten, auch wenn du noch keinen Hunger hast.\n\nDie meisten Menschen passen sich etwa mit einer Zeitzone pro Tag an."
+        }
+    },
+    {
+        "id": "airplane-exercises",
+        "title": {
+            "en": "5 Simple Exercises You Can Do in Your Seat",
+            "cs": "5 jednoduchých cviků, které zvládneš v sedadle",
+            "de": "5 einfache Übungen direkt auf deinem Sitz"
+        },
+        "category": {
+            "en": "Health",
+            "cs": "Zdraví",
+            "de": "Gesundheit"
+        },
+        "readTime": 3,
+        "body": {
+            "en": "Sitting for hours on a plane can cause stiffness and even increase the risk of deep vein thrombosis (DVT). Try these simple exercises every hour:\n\n**1. Ankle Circles**\nLift your feet off the floor and rotate your ankles — 10 times each direction.\n\n**2. Seated Marching**\nLift your knees alternately as if marching in place. Do 20 reps.\n\n**3. Shoulder Rolls**\nRoll your shoulders forward 10 times, then backward 10 times.\n\n**4. Neck Stretches**\nSlowly tilt your head to each side, holding for 15 seconds.\n\n**5. Glute Squeezes**\nSqueeze your glutes and hold for 5 seconds. Repeat 15 times.\n\nThese exercises take less than 3 minutes and make a big difference on long flights.",
+            "cs": "Dlouhé sezení v letadle způsobuje ztuhlost a může zvýšit i riziko hluboké žilní trombózy. Zkus každou hodinu tyto jednoduché cviky:\n\n**1. Kroužení kotníky**\nZvedni nohy z podlahy a krouž kotníky 10x na každou stranu.\n\n**2. Pochod vsedě**\nStřídej zvedání kolen, jako bys pochodoval na místě. Udělej 20 opakování.\n\n**3. Kroužení rameny**\nZakruž rameny 10x dopředu a 10x dozadu.\n\n**4. Protažení krku**\nPomalu nakloň hlavu na každou stranu a vydrž 15 sekund.\n\n**5. Zatínání hýždí**\nZatni hýždě na 5 sekund. Opakuj 15x.\n\nTyto cviky zaberou méně než 3 minuty a při delších letech udělají velký rozdíl.",
+            "de": "Langes Sitzen im Flugzeug kann zu Steifheit führen und sogar das Risiko einer tiefen Venenthrombose erhöhen. Probiere jede Stunde diese einfachen Übungen aus:\n\n**1. Fußgelenk-Kreise**\nHebe die Füße leicht an und kreise mit den Fußgelenken — 10 Mal pro Richtung.\n\n**2. Marschieren im Sitzen**\nHebe abwechselnd die Knie, als würdest du auf der Stelle marschieren. 20 Wiederholungen.\n\n**3. Schulterrollen**\nRolle die Schultern 10 Mal nach vorn und 10 Mal nach hinten.\n\n**4. Nacken dehnen**\nNeige den Kopf langsam zu jeder Seite und halte die Position 15 Sekunden.\n\n**5. Gesäß anspannen**\nSpanne die Gesäßmuskeln 5 Sekunden lang an. Wiederhole das 15 Mal.\n\nDiese Übungen dauern weniger als 3 Minuten und machen auf langen Flügen einen spürbaren Unterschied."
+        }
+    },
+    {
+        "id": "flight-hydration",
+        "title": {
+            "en": "Hydration Plan for Long Flights"
+        },
+        "category": {
+            "en": "Health"
+        },
+        "readTime": 4,
+        "body": {
+            "en": "Cabin air is dry, so dehydration starts faster than you expect. A simple plan works best:\n\n1. Drink 250 ml of water every hour.\n2. Add one electrolyte drink every 4 to 5 hours.\n3. Limit coffee to one cup per 3 hours of flight.\n4. Skip alcohol until landing.\n\nIf you feel tired, dry lips, or headache, drink first and wait 10 minutes before adding caffeine."
+        }
+    },
+    {
+        "id": "airport-connection-checklist",
+        "title": {
+            "en": "Connection Flight Checklist"
+        },
+        "category": {
+            "en": "Travel Tips"
+        },
+        "readTime": 3,
+        "body": {
+            "en": "Tight transfer? Use this quick checklist before landing:\n\n- Screenshot your next boarding pass.\n- Check gate and terminal in the airline app.\n- Keep passport and essentials in an easy-access pocket.\n- Know your backup plan if the gate changes.\n\nAfter landing, move first, then make calls. Most missed connections happen because people stop too early."
+        }
+    },
+    {
+        "id": "sleep-on-plane",
+        "title": {
+            "en": "How to Sleep Better on a Plane"
+        },
+        "category": {
+            "en": "Relax"
+        },
+        "readTime": 5,
+        "body": {
+            "en": "Sleeping on a plane gets easier with a setup routine:\n\n1. Put phone in airplane mode and lower brightness.\n2. Use earplugs or noise canceling headphones.\n3. Add a neck pillow and light layer to stay warm.\n4. Do 4 cycles of slow box breathing.\n5. Avoid screens for 20 minutes before trying to sleep.\n\nEven a 40-minute nap can improve mood and reduce jet lag impact."
+        }
+    },
+    {
+        "id": "seat-comfort-setup",
+        "title": {
+            "en": "Seat Comfort Setup in 3 Minutes"
+        },
+        "category": {
+            "en": "Relax"
+        },
+        "readTime": 3,
+        "body": {
+            "en": "A quick setup can make the next few hours much easier:\n\n- Place your neck pillow before you feel stiffness.\n- Use a small rolled sweater for lower-back support.\n- Keep one foot slightly forward to reduce hip tension.\n- Relax shoulders every 20 minutes with one deep breath.\n\nSmall adjustments done early prevent discomfort later."
+        }
+    },
+    {
+        "id": "meal-timing-flight",
+        "title": {
+            "en": "Meal Timing to Feel Better After Landing"
+        },
+        "category": {
+            "en": "Health"
+        },
+        "readTime": 4,
+        "body": {
+            "en": "Food timing can help your body adapt faster:\n\n1. Eat a light meal before departure.\n2. During flight, choose protein and vegetables over heavy sugar.\n3. Have your first major meal at destination local lunchtime or dinner.\n4. Avoid very heavy meals 2 hours before planned sleep.\n\nThis routine supports energy and smoother adjustment to the new timezone."
+        }
+    }
+]
