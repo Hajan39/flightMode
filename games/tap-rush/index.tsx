@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Alert, Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
+import GameResult from "@/components/GameResult";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useHaptic } from "@/hooks/useHaptic";
 
 const ROUND_SECONDS = 20;
 
@@ -14,10 +16,12 @@ export default function TapRushGame() {
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 
 	const [isRunning, setIsRunning] = useState(false);
 	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
 	const [score, setScore] = useState(0);
+	const [showResult, setShowResult] = useState(false);
 	const scoreRef = useRef(0);
 
 	useEffect(() => {
@@ -25,8 +29,9 @@ export default function TapRushGame() {
 
 		if (secondsLeft <= 0) {
 			setIsRunning(false);
+			haptic.heavy();
 			updateProgress("tap-rush", scoreRef.current);
-			Alert.alert(t("tapRushFinishedTitle"), t("tapRushFinishedMsg", { score: scoreRef.current }));
+			setShowResult(true);
 			return;
 		}
 
@@ -50,6 +55,7 @@ export default function TapRushGame() {
 			return;
 		}
 		if (isRunning) {
+			haptic.tap();
 			setScore((prev) => {
 				scoreRef.current = prev + 1;
 				return prev + 1;
@@ -59,6 +65,7 @@ export default function TapRushGame() {
 		setSecondsLeft(ROUND_SECONDS);
 		setScore(0);
 		scoreRef.current = 0;
+		setShowResult(false);
 		setIsRunning(true);
 	};
 
@@ -115,6 +122,14 @@ export default function TapRushGame() {
 					{ctaLabel}
 				</Text>
 			</Pressable>
+
+			{showResult && (
+				<GameResult
+					title={t("tapRushFinishedTitle")}
+					score={score}
+					onPlayAgain={handleMainPress}
+				/>
+			)}
 		</View>
 	);
 }

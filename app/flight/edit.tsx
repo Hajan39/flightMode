@@ -16,6 +16,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useFlightStore } from "@/store/useFlightStore";
+import { useAchievementStore } from "@/store/useAchievementStore";
 
 export default function FlightEditScreen() {
 	const router = useRouter();
@@ -24,6 +25,7 @@ export default function FlightEditScreen() {
 	const { t } = useTranslation();
 	const setFlight = useFlightStore((s) => s.setFlight);
 	const existingFlight = useFlightStore((s) => s.flight);
+	const incrementFlights = useAchievementStore((s) => s.incrementFlights);
 
 	const [hours, setHours] = useState(
 		existingFlight ? String(Math.floor(existingFlight.duration / 60)) : "",
@@ -47,6 +49,7 @@ export default function FlightEditScreen() {
 			departureTime: Date.now(),
 			duration: totalMinutes,
 		});
+		if (!existingFlight) incrementFlights();
 
 		router.back();
 	};

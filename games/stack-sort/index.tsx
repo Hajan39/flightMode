@@ -14,6 +14,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useHaptic } from "@/hooks/useHaptic";
 
 /* ================================================================
    CONSTANTS
@@ -53,8 +54,18 @@ const STAR_THRESHOLDS = [1.8, 3.0]; // multiplier of numCount → 3★, 2★ (ha
    ================================================================ */
 
 const TILE_COLORS = [
-	"#ef5350", "#42a5f5", "#66bb6a", "#ffa726", "#ab47bc", "#26c6da",
-	"#ec407a", "#8d6e63", "#78909c", "#d4e157", "#7e57c2", "#29b6f6",
+	"#ef5350",
+	"#42a5f5",
+	"#66bb6a",
+	"#ffa726",
+	"#ab47bc",
+	"#26c6da",
+	"#ec407a",
+	"#8d6e63",
+	"#78909c",
+	"#d4e157",
+	"#7e57c2",
+	"#29b6f6",
 ];
 
 function tileColor(n: number): string {
@@ -311,6 +322,7 @@ export default function StackSortGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { width: screenW } = useWindowDimensions();
 
@@ -320,13 +332,18 @@ export default function StackSortGame() {
 	const [goal, setGoal] = useState<number[]>([]);
 	const [selected, setSelected] = useState<number | null>(null);
 	const [moves, setMoves] = useState(0);
-	const [history, setHistory] = useState<{ columns: number[][]; goal: number[] }[]>([]);
+	const [history, setHistory] = useState<
+		{ columns: number[][]; goal: number[] }[]
+	>([]);
 	const [numCount, setNumCount] = useState(0);
 
 	/* --- derived layout --- */
 	const totalCols = columns.length + 1; // +1 for goal
 	const maxPerRow = Math.max(3, Math.floor((screenW - 24) / (MIN_COL_W + 8)));
-	const colWidth = Math.max(MIN_COL_W, Math.floor((screenW - 24 - maxPerRow * 8) / maxPerRow));
+	const colWidth = Math.max(
+		MIN_COL_W,
+		Math.floor((screenW - 24 - maxPerRow * 8) / maxPerRow),
+	);
 
 	/* --- start level --- */
 	const startLevel = useCallback((lvl: number) => {
@@ -378,6 +395,7 @@ export default function StackSortGame() {
 				setSelected(null);
 
 				if (newGoal.length === numCount) {
+					haptic.heavy();
 					setPhase("won");
 					const stars = getStars(moves + 1, numCount);
 					updateProgress("stack-sort", stars * 100 + (level + 1));
@@ -404,6 +422,7 @@ export default function StackSortGame() {
 			newCols[selected] = newCols[selected].slice(0, -1);
 			newCols[colIdx] = [...newCols[colIdx], top];
 			setColumns(newCols);
+			haptic.tap();
 			setMoves((m) => m + 1);
 			setHistory((h) => [...h, snapshot]);
 			setSelected(null);
@@ -430,9 +449,7 @@ export default function StackSortGame() {
 	}
 
 	const dead =
-		phase === "playing" &&
-		isDeadlocked(columns, goal) &&
-		history.length === 0;
+		phase === "playing" && isDeadlocked(columns, goal) && history.length === 0;
 
 	/* ================================================================
 	   RENDER — MENU
@@ -464,7 +481,9 @@ export default function StackSortGame() {
 					</Text>
 				</RNView>
 
-				<Text style={[s.levelLabel, { color: theme.mutedText }]}>{t("stackSortSelectLevel")}</Text>
+				<Text style={[s.levelLabel, { color: theme.mutedText }]}>
+					{t("stackSortSelectLevel")}
+				</Text>
 				<ScrollView
 					contentContainerStyle={s.levelGrid}
 					style={{ maxHeight: 240 }}
@@ -478,7 +497,9 @@ export default function StackSortGame() {
 							]}
 							onPress={() => startLevel(i)}
 						>
-							<Text style={[s.levelBtnText, { color: theme.text }]}>{i + 1}</Text>
+							<Text style={[s.levelBtnText, { color: theme.text }]}>
+								{i + 1}
+							</Text>
 							<Text style={{ fontSize: 8, color: theme.mutedText }}>
 								{LEVELS[i][0]}n
 							</Text>
@@ -497,9 +518,13 @@ export default function StackSortGame() {
 		const stars = getStars(moves, numCount);
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>{t("stackSortLevelComplete", { level: level + 1 })}</Text>
+				<Text style={s.title}>
+					{t("stackSortLevelComplete", { level: level + 1 })}
+				</Text>
 				<Stars count={stars} />
-				<Text style={[s.movesText, { color: theme.mutedText }]}>{t("stackSortMovesCount", { count: moves })}</Text>
+				<Text style={[s.movesText, { color: theme.mutedText }]}>
+					{t("stackSortMovesCount", { count: moves })}
+				</Text>
 				<RNView style={s.btnRow}>
 					{level < LEVELS.length - 1 && (
 						<Pressable
@@ -510,16 +535,34 @@ export default function StackSortGame() {
 						</Pressable>
 					)}
 					<Pressable
-						style={[s.mainBtn, { backgroundColor: theme.surface, borderWidth: 1, borderColor: theme.border }]}
+						style={[
+							s.mainBtn,
+							{
+								backgroundColor: theme.surface,
+								borderWidth: 1,
+								borderColor: theme.border,
+							},
+						]}
 						onPress={() => startLevel(level)}
 					>
-						<Text style={[s.mainBtnText, { color: theme.text }]}>{t("stackSortRetry")}</Text>
+						<Text style={[s.mainBtnText, { color: theme.text }]}>
+							{t("stackSortRetry")}
+						</Text>
 					</Pressable>
 					<Pressable
-						style={[s.mainBtn, { backgroundColor: theme.surface, borderWidth: 1, borderColor: theme.border }]}
+						style={[
+							s.mainBtn,
+							{
+								backgroundColor: theme.surface,
+								borderWidth: 1,
+								borderColor: theme.border,
+							},
+						]}
 						onPress={() => setPhase("menu")}
 					>
-						<Text style={[s.mainBtnText, { color: theme.text }]}>{t("stackSortMenu")}</Text>
+						<Text style={[s.mainBtnText, { color: theme.text }]}>
+							{t("stackSortMenu")}
+						</Text>
 					</Pressable>
 				</RNView>
 			</View>
@@ -530,7 +573,12 @@ export default function StackSortGame() {
 	   RENDER — PLAYING  (scattered grid layout)
 	   ================================================================ */
 
-	const allCols: { items: number[]; idx: number; isGoal: boolean; label: string }[] = [];
+	const allCols: {
+		items: number[];
+		idx: number;
+		isGoal: boolean;
+		label: string;
+	}[] = [];
 	columns.forEach((col, i) => {
 		allCols.push({ items: col, idx: i, isGoal: false, label: `#${i + 1}` });
 	});
@@ -540,8 +588,12 @@ export default function StackSortGame() {
 		<View style={s.root}>
 			{/* HUD */}
 			<RNView style={s.hud}>
-				<Text style={[s.hudText, { color: theme.mutedText }]}>{t("stackSortHudLevel", { level: level + 1 })}</Text>
-				<Text style={[s.hudText, { color: theme.text }]}>{t("stackSortHudMoves", { moves })}</Text>
+				<Text style={[s.hudText, { color: theme.mutedText }]}>
+					{t("stackSortHudLevel", { level: level + 1 })}
+				</Text>
+				<Text style={[s.hudText, { color: theme.text }]}>
+					{t("stackSortHudMoves", { moves })}
+				</Text>
 				<Text style={[s.hudText, { color: "#ffd700" }]}>
 					{goal.length}/{numCount}
 				</Text>
@@ -610,13 +662,17 @@ export default function StackSortGame() {
 					style={[s.smallBtn, { borderColor: theme.border }]}
 					onPress={() => startLevel(level)}
 				>
-					<Text style={[s.smallBtnText, { color: theme.text }]}>{t("stackSortRestart")}</Text>
+					<Text style={[s.smallBtnText, { color: theme.text }]}>
+						{t("stackSortRestart")}
+					</Text>
 				</Pressable>
 				<Pressable
 					style={[s.smallBtn, { borderColor: theme.border }]}
 					onPress={() => setPhase("menu")}
 				>
-					<Text style={[s.smallBtnText, { color: theme.text }]}>{t("stackSortMenu")}</Text>
+					<Text style={[s.smallBtnText, { color: theme.text }]}>
+						{t("stackSortMenu")}
+					</Text>
 				</Pressable>
 			</RNView>
 		</View>
@@ -660,7 +716,12 @@ const s = StyleSheet.create({
 	movesText: { fontSize: 14, marginBottom: 8 },
 	rulesBox: { marginBottom: 14, gap: 4 },
 	ruleText: { fontSize: 12, lineHeight: 18 },
-	levelLabel: { fontSize: 11, fontWeight: "800", letterSpacing: 1, marginBottom: 6 },
+	levelLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		marginBottom: 6,
+	},
 	levelGrid: {
 		flexDirection: "row",
 		flexWrap: "wrap",

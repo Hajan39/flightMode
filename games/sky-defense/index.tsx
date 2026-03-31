@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import React, {
+	useState,
+	useRef,
+	useEffect,
+	useMemo,
+	useCallback,
+} from "react";
 import {
 	StyleSheet,
 	Pressable,
@@ -12,6 +18,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useHaptic } from "@/hooks/useHaptic";
 
 /* ================================================================
    CONSTANTS & TYPES
@@ -44,7 +51,10 @@ const PATH_GRID: Pt[] = [
 ];
 
 /** Convert grid coord to pixel center */
-const g2p = (g: Pt): Pt => ({ x: g.x * CELL + CELL / 2, y: g.y * CELL + CELL / 2 });
+const g2p = (g: Pt): Pt => ({
+	x: g.x * CELL + CELL / 2,
+	y: g.y * CELL + CELL / 2,
+});
 
 /** Path as pixel coords */
 const PATH_PX = PATH_GRID.map(g2p);
@@ -65,7 +75,9 @@ function getPathCells(): Set<string> {
 			cy += dy;
 		}
 	}
-	set.add(`${PATH_GRID[PATH_GRID.length - 1].x},${PATH_GRID[PATH_GRID.length - 1].y}`);
+	set.add(
+		`${PATH_GRID[PATH_GRID.length - 1].x},${PATH_GRID[PATH_GRID.length - 1].y}`,
+	);
 	return set;
 }
 const PATH_CELLS = getPathCells();
@@ -85,10 +97,46 @@ interface TowerDef {
 }
 
 const TOWER_DEFS: TowerDef[] = [
-	{ key: "radar", label: "Radar", cost: 15, range: 90, fireRate: 18, damage: 8, color: "#4fc3f7", emoji: "📡" },
-	{ key: "sam", label: "SAM", cost: 30, range: 120, fireRate: 30, damage: 25, color: "#ef5350", emoji: "🚀" },
-	{ key: "wind", label: "Wind", cost: 20, range: 80, fireRate: 12, damage: 5, color: "#66bb6a", emoji: "🌀" },
-	{ key: "bolt", label: "Bolt", cost: 40, range: 140, fireRate: 40, damage: 40, color: "#ffd54f", emoji: "⚡" },
+	{
+		key: "radar",
+		label: "Radar",
+		cost: 15,
+		range: 90,
+		fireRate: 18,
+		damage: 8,
+		color: "#4fc3f7",
+		emoji: "📡",
+	},
+	{
+		key: "sam",
+		label: "SAM",
+		cost: 30,
+		range: 120,
+		fireRate: 30,
+		damage: 25,
+		color: "#ef5350",
+		emoji: "🚀",
+	},
+	{
+		key: "wind",
+		label: "Wind",
+		cost: 20,
+		range: 80,
+		fireRate: 12,
+		damage: 5,
+		color: "#66bb6a",
+		emoji: "🌀",
+	},
+	{
+		key: "bolt",
+		label: "Bolt",
+		cost: 40,
+		range: 140,
+		fireRate: 40,
+		damage: 40,
+		color: "#ffd54f",
+		emoji: "⚡",
+	},
 ];
 
 const tdByKey = Object.fromEntries(TOWER_DEFS.map((d) => [d.key, d]));
@@ -109,7 +157,14 @@ const ENEMY_DEFS: Record<EnemyKind, EnemyDef> = {
 	cloud: { key: "cloud", hp: 30, speed: 0.8, reward: 5, emoji: "☁️", size: 22 },
 	storm: { key: "storm", hp: 60, speed: 0.6, reward: 10, emoji: "⛈️", size: 26 },
 	hail: { key: "hail", hp: 100, speed: 0.5, reward: 15, emoji: "🌨️", size: 28 },
-	tornado: { key: "tornado", hp: 200, speed: 0.4, reward: 30, emoji: "🌪️", size: 32 },
+	tornado: {
+		key: "tornado",
+		hp: 200,
+		speed: 0.4,
+		reward: 30,
+		emoji: "🌪️",
+		size: 32,
+	},
 };
 
 /* ---------- wave definitions ---------- */
@@ -122,20 +177,56 @@ type Wave = WaveEntry[];
 
 const BASE_WAVES: Wave[] = [
 	[{ kind: "cloud", count: 6, interval: 20 }],
-	[{ kind: "cloud", count: 8, interval: 18 }, { kind: "storm", count: 2, interval: 25 }],
-	[{ kind: "storm", count: 6, interval: 20 }, { kind: "cloud", count: 4, interval: 15 }],
-	[{ kind: "hail", count: 4, interval: 22 }, { kind: "storm", count: 4, interval: 18 }],
-	[{ kind: "hail", count: 6, interval: 18 }, { kind: "cloud", count: 6, interval: 12 }],
-	[{ kind: "tornado", count: 2, interval: 40 }, { kind: "hail", count: 5, interval: 18 }],
-	[{ kind: "tornado", count: 3, interval: 35 }, { kind: "storm", count: 8, interval: 14 }],
-	[{ kind: "tornado", count: 5, interval: 25 }, { kind: "hail", count: 6, interval: 16 }, { kind: "storm", count: 10, interval: 10 }],
+	[
+		{ kind: "cloud", count: 8, interval: 18 },
+		{ kind: "storm", count: 2, interval: 25 },
+	],
+	[
+		{ kind: "storm", count: 6, interval: 20 },
+		{ kind: "cloud", count: 4, interval: 15 },
+	],
+	[
+		{ kind: "hail", count: 4, interval: 22 },
+		{ kind: "storm", count: 4, interval: 18 },
+	],
+	[
+		{ kind: "hail", count: 6, interval: 18 },
+		{ kind: "cloud", count: 6, interval: 12 },
+	],
+	[
+		{ kind: "tornado", count: 2, interval: 40 },
+		{ kind: "hail", count: 5, interval: 18 },
+	],
+	[
+		{ kind: "tornado", count: 3, interval: 35 },
+		{ kind: "storm", count: 8, interval: 14 },
+	],
+	[
+		{ kind: "tornado", count: 5, interval: 25 },
+		{ kind: "hail", count: 6, interval: 16 },
+		{ kind: "storm", count: 10, interval: 10 },
+	],
 ];
 
 const EXTRA_WAVES: Wave[] = [
-	[{ kind: "tornado", count: 6, interval: 20 }, { kind: "hail", count: 8, interval: 12 }],
-	[{ kind: "tornado", count: 8, interval: 16 }, { kind: "storm", count: 12, interval: 8 }],
-	[{ kind: "tornado", count: 10, interval: 14 }, { kind: "hail", count: 10, interval: 10 }, { kind: "cloud", count: 15, interval: 6 }],
-	[{ kind: "tornado", count: 12, interval: 12 }, { kind: "hail", count: 12, interval: 8 }, { kind: "storm", count: 15, interval: 6 }],
+	[
+		{ kind: "tornado", count: 6, interval: 20 },
+		{ kind: "hail", count: 8, interval: 12 },
+	],
+	[
+		{ kind: "tornado", count: 8, interval: 16 },
+		{ kind: "storm", count: 12, interval: 8 },
+	],
+	[
+		{ kind: "tornado", count: 10, interval: 14 },
+		{ kind: "hail", count: 10, interval: 10 },
+		{ kind: "cloud", count: 15, interval: 6 },
+	],
+	[
+		{ kind: "tornado", count: 12, interval: 12 },
+		{ kind: "hail", count: 12, interval: 8 },
+		{ kind: "storm", count: 15, interval: 6 },
+	],
 ];
 
 /* ---------- difficulty presets ---------- */
@@ -155,10 +246,54 @@ interface DifficultyPreset {
 }
 
 const DIFFICULTIES: DifficultyPreset[] = [
-	{ key: "easy", label: "Easy", emoji: "🟢", hpMul: 0.7, spdMul: 0.8, rewardMul: 1.2, startGold: 80, startLives: 15, waveCount: 6, desc: "Fewer waves, weaker enemies" },
-	{ key: "normal", label: "Normal", emoji: "🟡", hpMul: 1.0, spdMul: 1.0, rewardMul: 1.0, startGold: 50, startLives: 10, waveCount: 8, desc: "Balanced challenge" },
-	{ key: "hard", label: "Hard", emoji: "🔴", hpMul: 1.5, spdMul: 1.2, rewardMul: 0.8, startGold: 40, startLives: 7, waveCount: 10, desc: "Tougher enemies, less gold" },
-	{ key: "insane", label: "Insane", emoji: "💀", hpMul: 2.2, spdMul: 1.4, rewardMul: 0.6, startGold: 30, startLives: 5, waveCount: 12, desc: "Only for the brave" },
+	{
+		key: "easy",
+		label: "Easy",
+		emoji: "🟢",
+		hpMul: 0.7,
+		spdMul: 0.8,
+		rewardMul: 1.2,
+		startGold: 80,
+		startLives: 15,
+		waveCount: 6,
+		desc: "Fewer waves, weaker enemies",
+	},
+	{
+		key: "normal",
+		label: "Normal",
+		emoji: "🟡",
+		hpMul: 1.0,
+		spdMul: 1.0,
+		rewardMul: 1.0,
+		startGold: 50,
+		startLives: 10,
+		waveCount: 8,
+		desc: "Balanced challenge",
+	},
+	{
+		key: "hard",
+		label: "Hard",
+		emoji: "🔴",
+		hpMul: 1.5,
+		spdMul: 1.2,
+		rewardMul: 0.8,
+		startGold: 40,
+		startLives: 7,
+		waveCount: 10,
+		desc: "Tougher enemies, less gold",
+	},
+	{
+		key: "insane",
+		label: "Insane",
+		emoji: "💀",
+		hpMul: 2.2,
+		spdMul: 1.4,
+		rewardMul: 0.6,
+		startGold: 30,
+		startLives: 5,
+		waveCount: 12,
+		desc: "Only for the brave",
+	},
 ];
 
 function getWaves(preset: DifficultyPreset): Wave[] {
@@ -241,10 +376,20 @@ function dist(a: Pt, b: Pt): number {
    BUILD THE PATH SVG-LIKE SEGMENTS FOR PRETTY RENDERING
    ================================================================ */
 
-function buildPathSegments(): { x1: number; y1: number; x2: number; y2: number }[] {
+function buildPathSegments(): {
+	x1: number;
+	y1: number;
+	x2: number;
+	y2: number;
+}[] {
 	const segs: { x1: number; y1: number; x2: number; y2: number }[] = [];
 	for (let i = 1; i < PATH_PX.length; i++) {
-		segs.push({ x1: PATH_PX[i - 1].x, y1: PATH_PX[i - 1].y, x2: PATH_PX[i].x, y2: PATH_PX[i].y });
+		segs.push({
+			x1: PATH_PX[i - 1].x,
+			y1: PATH_PX[i - 1].y,
+			x2: PATH_PX[i].x,
+			y2: PATH_PX[i].y,
+		});
 	}
 	return segs;
 }
@@ -310,7 +455,15 @@ function PathOverlay() {
 }
 
 /** HP bar above enemies */
-function HpBar({ hp, maxHp, size }: { hp: number; maxHp: number; size: number }) {
+function HpBar({
+	hp,
+	maxHp,
+	size,
+}: {
+	hp: number;
+	maxHp: number;
+	size: number;
+}) {
 	const pct = Math.max(0, hp / maxHp);
 	const barColor = pct > 0.5 ? "#66bb6a" : pct > 0.25 ? "#ffa726" : "#ef5350";
 	return (
@@ -406,7 +559,17 @@ function BulletSprite({ bullet }: { bullet: Bullet }) {
 }
 
 /** Range ring preview when selecting tower placement */
-function RangeRing({ col, row, range, color }: { col: number; row: number; range: number; color: string }) {
+function RangeRing({
+	col,
+	row,
+	range,
+	color,
+}: {
+	col: number;
+	row: number;
+	range: number;
+	color: string;
+}) {
 	const cx = col * CELL + CELL / 2;
 	const cy = row * CELL + CELL / 2;
 	return (
@@ -434,6 +597,7 @@ export default function SkyDefenseGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 	const updateProgress = useGameStore((s) => s.updateProgress);
 
 	const towerLabel = (key: TowerKind) => {
@@ -463,8 +627,12 @@ export default function SkyDefenseGame() {
 	};
 
 	/* --- state --- */
-	const [phase, setPhase] = useState<"start" | "playing" | "wave-clear" | "won" | "lost">("start");
-	const [difficulty, setDifficulty] = useState<DifficultyPreset>(DIFFICULTIES[1]);
+	const [phase, setPhase] = useState<
+		"start" | "playing" | "wave-clear" | "won" | "lost"
+	>("start");
+	const [difficulty, setDifficulty] = useState<DifficultyPreset>(
+		DIFFICULTIES[1],
+	);
 	const [gold, setGold] = useState(50);
 	const [lives, setLives] = useState(10);
 	const [score, setScore] = useState(0);
@@ -474,6 +642,11 @@ export default function SkyDefenseGame() {
 	const [towers, setTowers] = useState<Tower[]>([]);
 	const [bullets, setBullets] = useState<Bullet[]>([]);
 	const [selectedTower, setSelectedTower] = useState<TowerKind | null>(null);
+	const [placeCursor, setPlaceCursor] = useState<{
+		col: number;
+		row: number;
+	} | null>(null);
+	const [selectedPlaced, setSelectedPlaced] = useState<number | null>(null);
 
 	const nextId = useRef(1);
 	const spawnQueue = useRef<{ kind: EnemyKind; tickAt: number }[]>([]);
@@ -494,23 +667,20 @@ export default function SkyDefenseGame() {
 	scoreRef.current = score;
 
 	/* --- wave setup --- */
-	const startWave = useCallback(
-		(wi: number) => {
-			const wave = wavesRef.current[wi];
-			const queue: { kind: EnemyKind; tickAt: number }[] = [];
-			let t = 10;
-			for (const entry of wave) {
-				for (let i = 0; i < entry.count; i++) {
-					queue.push({ kind: entry.kind, tickAt: t });
-					t += entry.interval;
-				}
+	const startWave = useCallback((wi: number) => {
+		const wave = wavesRef.current[wi];
+		const queue: { kind: EnemyKind; tickAt: number }[] = [];
+		let t = 10;
+		for (const entry of wave) {
+			for (let i = 0; i < entry.count; i++) {
+				queue.push({ kind: entry.kind, tickAt: t });
+				t += entry.interval;
 			}
-			spawnQueue.current = queue;
-			tick.current = 0;
-			setPhase("playing");
-		},
-		[],
-	);
+		}
+		spawnQueue.current = queue;
+		tick.current = 0;
+		setPhase("playing");
+	}, []);
 
 	/* --- game loop --- */
 	useEffect(() => {
@@ -555,13 +725,19 @@ export default function SkyDefenseGame() {
 			const newLives = livesRef.current - leaked;
 
 			/* -- towers fire -- */
-			const newTowers = towersRef.current.map((tw) => ({ ...tw, cooldown: Math.max(0, tw.cooldown - 1) }));
+			const newTowers = towersRef.current.map((tw) => ({
+				...tw,
+				cooldown: Math.max(0, tw.cooldown - 1),
+			}));
 			let newBullets = [...bulletsRef.current];
 
 			for (const tw of newTowers) {
 				if (tw.cooldown > 0) continue;
 				const def = tdByKey[tw.kind];
-				const tPos: Pt = { x: tw.col * CELL + CELL / 2, y: tw.row * CELL + CELL / 2 };
+				const tPos: Pt = {
+					x: tw.col * CELL + CELL / 2,
+					y: tw.row * CELL + CELL / 2,
+				};
 				// find closest enemy in range
 				let best: Enemy | null = null;
 				let bestDist = Infinity;
@@ -600,7 +776,11 @@ export default function SkyDefenseGame() {
 					const dy = b.ty - b.y;
 					const d = Math.sqrt(dx * dx + dy * dy);
 					if (d < b.speed) return { ...b, x: b.tx, y: b.ty };
-					return { ...b, x: b.x + (dx / d) * b.speed, y: b.y + (dy / d) * b.speed };
+					return {
+						...b,
+						x: b.x + (dx / d) * b.speed,
+						y: b.y + (dy / d) * b.speed,
+					};
 				})
 				.filter((b) => {
 					if (Math.abs(b.x - b.tx) < 2 && Math.abs(b.y - b.ty) < 2) {
@@ -660,22 +840,40 @@ export default function SkyDefenseGame() {
 	}, [phase, waveIdx, updateProgress]);
 
 	/* --- place tower --- */
-	const handleBoardPress = (e: { nativeEvent: { locationX: number; locationY: number } }) => {
+	const handleBoardPress = (e: {
+		nativeEvent: { locationX: number; locationY: number };
+	}) => {
 		if (phase !== "playing" && phase !== "wave-clear") return;
-		if (!selectedTower) return;
 		const col = Math.floor(e.nativeEvent.locationX / CELL);
 		const row = Math.floor(e.nativeEvent.locationY / CELL);
 		if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return;
+
+		// Tap existing tower to see its range
+		const existing = towers.find((tw) => tw.col === col && tw.row === row);
+		if (existing) {
+			setSelectedPlaced(selectedPlaced === existing.id ? null : existing.id);
+			setPlaceCursor(null);
+			return;
+		}
+
+		setSelectedPlaced(null);
+		if (!selectedTower) return;
 		if (PATH_CELLS.has(`${col},${row}`)) return;
-		if (towers.some((t) => t.col === col && t.row === row)) return;
 
 		const def = tdByKey[selectedTower];
 		if (gold < def.cost) return;
 
-		const newTower: Tower = { id: nextId.current++, kind: selectedTower, col, row, cooldown: 0 };
+		const newTower: Tower = {
+			id: nextId.current++,
+			kind: selectedTower,
+			col,
+			row,
+			cooldown: 0,
+		};
+		haptic.tap();
 		setTowers((prev) => [...prev, newTower]);
 		setGold((g) => g - def.cost);
-		setSelectedTower(null);
+		setPlaceCursor(null);
 	};
 
 	/* --- next wave --- */
@@ -696,6 +894,8 @@ export default function SkyDefenseGame() {
 		setTowers([]);
 		setBullets([]);
 		setSelectedTower(null);
+		setPlaceCursor(null);
+		setSelectedPlaced(null);
 		spawnQueue.current = [];
 		tick.current = 0;
 	};
@@ -711,6 +911,8 @@ export default function SkyDefenseGame() {
 		setTowers([]);
 		setBullets([]);
 		setSelectedTower(null);
+		setPlaceCursor(null);
+		setSelectedPlaced(null);
 		spawnQueue.current = [];
 		tick.current = 0;
 		wavesRef.current = getWaves(preset);
@@ -736,7 +938,12 @@ export default function SkyDefenseGame() {
 						<RNView key={d.key} style={s.towerInfoRow}>
 							<Text style={{ fontSize: 20 }}>{d.emoji}</Text>
 							<Text style={[s.towerInfoText, { color: theme.text }]}>
-								{towerLabel(d.key)} — {t("skyDefenseTowerStats", { cost: d.cost, damage: d.damage, range: d.range })}
+								{towerLabel(d.key)} —{" "}
+								{t("skyDefenseTowerStats", {
+									cost: d.cost,
+									damage: d.damage,
+									range: d.range,
+								})}
 							</Text>
 						</RNView>
 					))}
@@ -746,13 +953,18 @@ export default function SkyDefenseGame() {
 						<RNView key={d.key} style={s.towerInfoRow}>
 							<Text style={{ fontSize: 18 }}>{d.emoji}</Text>
 							<Text style={[s.towerInfoText, { color: theme.mutedText }]}>
-								{t("skyDefenseEnemyStats", { hp: d.hp, speed: d.speed.toFixed(1) })}
+								{t("skyDefenseEnemyStats", {
+									hp: d.hp,
+									speed: d.speed.toFixed(1),
+								})}
 							</Text>
 						</RNView>
 					))}
 				</RNView>
 
-				<Text style={[s.diffLabel, { color: theme.mutedText }]}>{t("skyDefenseSelectDifficulty")}</Text>
+				<Text style={[s.diffLabel, { color: theme.mutedText }]}>
+					{t("skyDefenseSelectDifficulty")}
+				</Text>
 				<RNView style={s.diffRow}>
 					{DIFFICULTIES.map((d) => (
 						<Pressable
@@ -764,7 +976,9 @@ export default function SkyDefenseGame() {
 							onPress={() => startGame(d)}
 						>
 							<Text style={{ fontSize: 20 }}>{d.emoji}</Text>
-							<Text style={[s.diffBtnLabel, { color: theme.text }]}>{difficultyLabel(d.key)}</Text>
+							<Text style={[s.diffBtnLabel, { color: theme.text }]}>
+								{difficultyLabel(d.key)}
+							</Text>
 							<Text style={[s.diffBtnDesc, { color: theme.mutedText }]}>
 								{t("skyDefenseWavesCount", { count: d.waveCount })}
 							</Text>
@@ -782,8 +996,14 @@ export default function SkyDefenseGame() {
 	if (phase === "lost" || phase === "won") {
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>{phase === "won" ? t("skyDefenseResultWin") : t("skyDefenseResultLose")}</Text>
-				<Text style={[s.finalScore, { color: theme.tint }]}>{t("skyDefenseScorePts", { score })}</Text>
+				<Text style={s.title}>
+					{phase === "won"
+						? t("skyDefenseResultWin")
+						: t("skyDefenseResultLose")}
+				</Text>
+				<Text style={[s.finalScore, { color: theme.tint }]}>
+					{t("skyDefenseScorePts", { score })}
+				</Text>
 				<Text style={[s.desc, { color: theme.mutedText }]}>
 					{t("skyDefenseDifficultyWave", {
 						emoji: difficulty.emoji,
@@ -792,7 +1012,10 @@ export default function SkyDefenseGame() {
 						total: wavesRef.current.length,
 					})}
 				</Text>
-				<Pressable style={[s.mainBtn, { backgroundColor: theme.tint }]} onPress={restart}>
+				<Pressable
+					style={[s.mainBtn, { backgroundColor: theme.tint }]}
+					onPress={restart}
+				>
 					<Text style={s.mainBtnText}>{t("playAgain")}</Text>
 				</Pressable>
 			</View>
@@ -808,8 +1031,16 @@ export default function SkyDefenseGame() {
 				<Text style={[s.hudText, { color: theme.tint }]}>💰 {gold}</Text>
 				<Text style={[s.hudText, { color: theme.text }]}>🏆 {score}</Text>
 				<Text style={[s.hudText, { color: theme.mutedText }]}>
-					{t("skyDefenseWaveProgress", { wave: waveIdx + 1, total: wavesRef.current.length })}
+					{t("skyDefenseWaveProgress", {
+						wave: waveIdx + 1,
+						total: wavesRef.current.length,
+					})}
 				</Text>
+				{enemies.length > 0 && (
+					<Text style={[s.hudText, { color: theme.mutedText }]}>
+						👾 {enemies.length}
+					</Text>
+				)}
 			</RNView>
 
 			{/* Tower palette */}
@@ -824,14 +1055,22 @@ export default function SkyDefenseGame() {
 								s.paletteBtn,
 								{
 									borderColor: selected ? d.color : "rgba(255,255,255,0.15)",
-									backgroundColor: selected ? d.color + "25" : "rgba(255,255,255,0.04)",
+									backgroundColor: selected
+										? d.color + "25"
+										: "rgba(255,255,255,0.04)",
 									opacity: affordable ? 1 : 0.4,
 								},
 							]}
-							onPress={() => affordable && setSelectedTower(selected ? null : d.key)}
+							onPress={() => {
+								if (!affordable) return;
+								setSelectedTower(selected ? null : d.key);
+								setSelectedPlaced(null);
+							}}
 						>
 							<Text style={{ fontSize: 16 }}>{d.emoji}</Text>
-							<Text style={[s.paletteCost, { color: d.color }]}>💰{d.cost}</Text>
+							<Text style={[s.paletteCost, { color: d.color }]}>
+								💰{d.cost}
+							</Text>
 						</Pressable>
 					);
 				})}
@@ -916,11 +1155,28 @@ export default function SkyDefenseGame() {
 						<Text style={{ fontSize: 12 }}>✈️</Text>
 					</RNView>
 
-					{/* range ring preview */}
-					{selectedTower && (
-						<>
-							{/* show range for all placed towers of that kind */}
-						</>
+					{/* range ring for selected placed tower */}
+					{selectedPlaced != null &&
+						towers
+							.filter((tw) => tw.id === selectedPlaced)
+							.map((tw) => (
+								<RangeRing
+									key={`sel-${tw.id}`}
+									col={tw.col}
+									row={tw.row}
+									range={tdByKey[tw.kind].range}
+									color={tdByKey[tw.kind].color}
+								/>
+							))}
+
+					{/* range ring preview for new placement */}
+					{selectedTower && placeCursor && (
+						<RangeRing
+							col={placeCursor.col}
+							row={placeCursor.row}
+							range={tdByKey[selectedTower].range}
+							color={tdByKey[selectedTower].color}
+						/>
 					)}
 
 					{/* towers */}
@@ -943,8 +1199,18 @@ export default function SkyDefenseGame() {
 			{/* wave-clear overlay */}
 			{phase === "wave-clear" && (
 				<RNView style={s.overlay}>
-					<Text style={s.overlayTitle}>{t("skyDefenseWaveCleared", { wave: waveIdx + 1 })}</Text>
-					<Pressable style={[s.mainBtn, { backgroundColor: theme.tint }]} onPress={nextWave}>
+					<Text style={s.overlayTitle}>
+						{t("skyDefenseWaveCleared", { wave: waveIdx + 1 })}
+					</Text>
+					<RNView style={s.waveStats}>
+						<Text style={s.waveStatsText}>🏆 {score}</Text>
+						<Text style={s.waveStatsText}>💰 {gold}</Text>
+						<Text style={s.waveStatsText}>❤️ {lives}</Text>
+					</RNView>
+					<Pressable
+						style={[s.mainBtn, { backgroundColor: theme.tint }]}
+						onPress={nextWave}
+					>
 						<Text style={s.mainBtnText}>{t("skyDefenseNextWave")}</Text>
 					</Pressable>
 				</RNView>
@@ -958,11 +1224,21 @@ export default function SkyDefenseGame() {
    ================================================================ */
 
 const s = StyleSheet.create({
-	root: { flex: 1, alignItems: "center", justifyContent: "center", padding: 16 },
+	root: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+		padding: 16,
+	},
 	title: { fontSize: 28, fontWeight: "900", marginBottom: 8 },
 	desc: { fontSize: 13, textAlign: "center", lineHeight: 20, marginBottom: 12 },
 	finalScore: { fontSize: 38, fontWeight: "900", marginBottom: 4 },
-	mainBtn: { paddingHorizontal: 40, paddingVertical: 14, borderRadius: 12, marginTop: 16 },
+	mainBtn: {
+		paddingHorizontal: 40,
+		paddingVertical: 14,
+		borderRadius: 12,
+		marginTop: 16,
+	},
 	mainBtnText: { color: "#fff", fontWeight: "800", fontSize: 16 },
 	towerInfo: { marginBottom: 8, gap: 4 },
 	enemyInfo: { marginBottom: 12, gap: 2 },
@@ -1013,10 +1289,35 @@ const s = StyleSheet.create({
 		backgroundColor: "rgba(0,0,0,0.6)",
 		borderRadius: 8,
 	},
-	overlayTitle: { fontSize: 22, fontWeight: "900", color: "#fff", marginBottom: 8 },
+	overlayTitle: {
+		fontSize: 22,
+		fontWeight: "900",
+		color: "#fff",
+		marginBottom: 8,
+	},
+	waveStats: {
+		flexDirection: "row",
+		gap: 16,
+		marginBottom: 4,
+	},
+	waveStatsText: {
+		fontSize: 16,
+		fontWeight: "700",
+		color: "#fff",
+	},
 
-	diffLabel: { fontSize: 11, fontWeight: "800", letterSpacing: 1, marginBottom: 8 },
-	diffRow: { flexDirection: "row", gap: 8, flexWrap: "wrap", justifyContent: "center" },
+	diffLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		marginBottom: 8,
+	},
+	diffRow: {
+		flexDirection: "row",
+		gap: 8,
+		flexWrap: "wrap",
+		justifyContent: "center",
+	},
 	diffBtn: {
 		width: 78,
 		paddingVertical: 10,

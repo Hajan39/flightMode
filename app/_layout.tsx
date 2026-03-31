@@ -4,7 +4,7 @@ import {
 	ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
@@ -12,6 +12,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useSettingsStore } from "@/store/useSettingsStore";
+import { useAchievementStore } from "@/store/useAchievementStore";
+import AchievementToast from "@/components/AchievementToast";
 
 export {
 	// Catch any errors thrown by the Layout component.
@@ -55,6 +58,7 @@ function RootLayoutNav() {
 		<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
 			<SafeAreaProvider>
 				<RootStack />
+				<AchievementToast />
 			</SafeAreaProvider>
 		</ThemeProvider>
 	);
@@ -62,10 +66,27 @@ function RootLayoutNav() {
 
 function RootStack() {
 	const { t } = useTranslation();
+	const router = useRouter();
+	const segments = useSegments();
+	const isFirstLaunch = useSettingsStore((s) => s.isFirstLaunch);
+
+	useEffect(() => {
+		useAchievementStore.getState().updateStreak();
+	}, []);
+
+	useEffect(() => {
+		if (isFirstLaunch && segments[0] !== "onboarding") {
+			router.replace("/onboarding");
+		}
+	}, [isFirstLaunch, segments]);
 
 	return (
 		<Stack>
 			<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+			<Stack.Screen
+				name="onboarding"
+				options={{ headerShown: false, gestureEnabled: false }}
+			/>
 			<Stack.Screen name="game/[id]" options={{ title: t("stackGame") }} />
 			<Stack.Screen
 				name="content/[id]"
@@ -78,6 +99,10 @@ function RootStack() {
 			<Stack.Screen
 				name="settings"
 				options={{ title: t("stackSettings"), presentation: "modal" }}
+			/>
+			<Stack.Screen
+				name="profile"
+				options={{ title: t("stackProfile"), presentation: "modal" }}
 			/>
 		</Stack>
 	);

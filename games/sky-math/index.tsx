@@ -1,11 +1,13 @@
 import { useMemo, useState } from "react";
-import { Alert, Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
+import GameResult from "@/components/GameResult";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useHaptic } from "@/hooks/useHaptic";
 
 type Question = {
 	text: string;
@@ -44,11 +46,13 @@ export default function SkyMathGame() {
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 
 	const [index, setIndex] = useState(0);
 	const [score, setScore] = useState(0);
 	const [question, setQuestion] = useState<Question>(() => createQuestion());
 	const [selectedOption, setSelectedOption] = useState<number | null>(null);
+	const [showResult, setShowResult] = useState(false);
 
 	const progressLabel = useMemo(
 		() => `${index + 1} / ${TOTAL_QUESTIONS}`,
@@ -62,26 +66,13 @@ export default function SkyMathGame() {
 
 		const isCorrect = value === question.answer;
 		const nextScore = score + (isCorrect ? 10 : 0);
+		isCorrect ? haptic.success() : haptic.error();
 
 		setTimeout(() => {
 			if (index + 1 >= TOTAL_QUESTIONS) {
 				setScore(nextScore);
 				updateProgress("sky-math", nextScore);
-				Alert.alert(
-					t("skyMathFinished"),
-					t("skyMathResult", { correct: Math.round(nextScore / 10), total: TOTAL_QUESTIONS, score: nextScore }),
-					[
-						{
-							text: t("skyMathPlayAgain"),
-							onPress: () => {
-								setIndex(0);
-								setScore(0);
-								setSelectedOption(null);
-								setQuestion(createQuestion());
-							},
-						},
-					],
-				);
+				setShowResult(true);
 				return;
 			}
 
@@ -165,6 +156,25 @@ export default function SkyMathGame() {
 			<Text style={[styles.scoreText, { color: theme.mutedText }]}>
 				{t("skyMathScore", { score })}
 			</Text>
+
+			{showResult && (
+				<GameResult
+					title={t("skyMathFinished")}
+					score={score}
+					subtitle={t("skyMathResult", {
+						correct: Math.round(score / 10),
+						total: TOTAL_QUESTIONS,
+						score,
+					})}
+					onPlayAgain={() => {
+						setIndex(0);
+						setScore(0);
+						setSelectedOption(null);
+						setQuestion(createQuestion());
+						setShowResult(false);
+					}}
+				/>
+			)}
 		</View>
 	);
 }

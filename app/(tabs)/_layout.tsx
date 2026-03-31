@@ -6,6 +6,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAudioStore } from "@/store/useAudioStore";
+import { useAchievementStore } from "@/store/useAchievementStore";
 
 export default function TabLayout() {
 	const colorScheme = useColorScheme();
@@ -15,6 +16,7 @@ export default function TabLayout() {
 	const activeSoundId = useAudioStore((s) => s.activeSoundId);
 	const activeLabelKey = useAudioStore((s) => s.activeLabelKey);
 	const stopSound = useAudioStore((s) => s.stopSound);
+	const newUnlockedCount = useAchievementStore((s) => s.newUnlockedIds.length);
 
 	return (
 		<Tabs
@@ -69,6 +71,40 @@ export default function TabLayout() {
 								</Pressable>
 							</View>
 						) : null}
+						<Pressable onPress={() => router.push("/profile")} hitSlop={8}>
+							<View>
+								<Ionicons
+									name="person-circle-outline"
+									size={22}
+									color={theme.text}
+								/>
+								{newUnlockedCount > 0 && (
+									<View
+										style={{
+											position: "absolute",
+											top: -4,
+											right: -4,
+											backgroundColor: theme.tint,
+											borderRadius: 8,
+											minWidth: 16,
+											height: 16,
+											alignItems: "center",
+											justifyContent: "center",
+										}}
+									>
+										<Text
+											style={{
+												color: "#fff",
+												fontSize: 10,
+												fontWeight: "700",
+											}}
+										>
+											{newUnlockedCount}
+										</Text>
+									</View>
+								)}
+							</View>
+						</Pressable>
 						<Pressable onPress={() => router.push("/settings")} hitSlop={8}>
 							<Ionicons name="settings-outline" size={22} color={theme.text} />
 						</Pressable>

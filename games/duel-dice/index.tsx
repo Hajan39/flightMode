@@ -6,6 +6,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useHaptic } from "@/hooks/useHaptic";
 
 const ROUNDS = 7;
 const { width: SCREEN_W } = Dimensions.get("window");
@@ -43,6 +44,7 @@ export default function DuelDiceGame() {
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 
 	const [round, setRound] = useState(1);
 	const [activePlayer, setActivePlayer] = useState<1 | 2>(1);
@@ -140,6 +142,7 @@ export default function DuelDiceGame() {
 
 	const handleRoll = (player: 1 | 2) => {
 		if (isFinished || isRolling || player !== activePlayer) return;
+		haptic.tap();
 
 		setIsRolling(true);
 		setRollingValue(rollDie());
@@ -307,8 +310,11 @@ export default function DuelDiceGame() {
 				>
 					{roundResult ??
 						(isFinished
-						? t("diceGameOver")
-						: t("diceRoundOf", { round: Math.min(round, ROUNDS), total: ROUNDS }))}
+							? t("diceGameOver")
+							: t("diceRoundOf", {
+									round: Math.min(round, ROUNDS),
+									total: ROUNDS,
+								}))}
 				</Text>
 			</View>
 
@@ -341,14 +347,17 @@ export default function DuelDiceGame() {
 					</Text>
 					<View style={styles.finalScores}>
 						<Text style={[styles.finalLine, { color: theme.mutedText }]}>
-						{t("diceRounds", { p1: playerOneRoundWins, p2: playerTwoRoundWins })}
-					</Text>
-					<Text style={[styles.finalLine, { color: theme.mutedText }]}>
-						{t("diceTotal", { p1: playerOneTotal, p2: playerTwoTotal })}
-					</Text>
-				</View>
-				<Text style={[styles.autoRestartText, { color: theme.mutedText }]}>
-					{t("diceRestarting")}
+							{t("diceRounds", {
+								p1: playerOneRoundWins,
+								p2: playerTwoRoundWins,
+							})}
+						</Text>
+						<Text style={[styles.finalLine, { color: theme.mutedText }]}>
+							{t("diceTotal", { p1: playerOneTotal, p2: playerTwoTotal })}
+						</Text>
+					</View>
+					<Text style={[styles.autoRestartText, { color: theme.mutedText }]}>
+						{t("diceRestarting")}
 					</Text>
 				</View>
 			) : null}

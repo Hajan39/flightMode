@@ -6,6 +6,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useHaptic } from "@/hooks/useHaptic";
 
 const { width: SCREEN_W } = Dimensions.get("window");
 const BOARD_GAP = 10;
@@ -52,6 +53,7 @@ export default function DuelTicTacToeGame() {
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 
 	const [board, setBoard] = useState<CellValue[]>(Array(9).fill(null));
 	const [currentPlayer, setCurrentPlayer] = useState<"X" | "O">("X");
@@ -74,6 +76,7 @@ export default function DuelTicTacToeGame() {
 	const handlePress = (index: number) => {
 		if (board[index] !== null || winner !== null || matchWinner !== null)
 			return;
+		haptic.tap();
 
 		const next = [...board];
 		next[index] = currentPlayer;
@@ -84,14 +87,20 @@ export default function DuelTicTacToeGame() {
 			const nw = winsX + 1;
 			setWinsX(nw);
 			updateProgress("duel-tictactoe", nw);
-			if (nw >= targetWins) setMatchWinner("X");
+			if (nw >= targetWins) {
+				haptic.heavy();
+				setMatchWinner("X");
+			}
 			return;
 		}
 		if (resolved === "O") {
 			const nw = winsO + 1;
 			setWinsO(nw);
 			updateProgress("duel-tictactoe", nw);
-			if (nw >= targetWins) setMatchWinner("O");
+			if (nw >= targetWins) {
+				haptic.heavy();
+				setMatchWinner("O");
+			}
 			return;
 		}
 		if (resolved === "draw") {
@@ -266,7 +275,11 @@ export default function DuelTicTacToeGame() {
 						{ color: matchWinner ? "#fff" : theme.text },
 					]}
 				>
-					{matchWinner ? t("tttNewMatch") : roundOver ? t("tttNextRound") : t("tttRestart")}
+					{matchWinner
+						? t("tttNewMatch")
+						: roundOver
+							? t("tttNextRound")
+							: t("tttRestart")}
 				</Text>
 			</Pressable>
 		</View>

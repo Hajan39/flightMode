@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, Pressable, ScrollView } from "react-native";
+import Animated, {
+	FadeInDown,
+	useAnimatedStyle,
+	useSharedValue,
+	withTiming,
+	Easing,
+} from "react-native-reanimated";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
+import AnimatedPressable from "@/components/AnimatedPressable";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -18,7 +26,12 @@ import content from "@/data/content.json";
 import type { ContentItem } from "@/types/content";
 
 const articles = content as ContentItem[];
-const dailyChallenges: { id: string; nameKey: TranslationKey; descriptionKey: TranslationKey; icon: string }[] = [
+const dailyChallenges: {
+	id: string;
+	nameKey: TranslationKey;
+	descriptionKey: TranslationKey;
+	icon: string;
+}[] = [
 	{
 		id: "runway-landing",
 		nameKey: "gameRunwayLandingName",
@@ -87,13 +100,15 @@ export default function HomeScreen() {
 		}))
 		.filter((item) => preferredCategories.includes(item.categoryText))
 		.slice(0, 2);
-	const challengeOfDay = dailyChallenges[getDayOfYear(new Date()) % dailyChallenges.length];
+	const challengeOfDay =
+		dailyChallenges[getDayOfYear(new Date()) % dailyChallenges.length];
 
 	return (
 		<ScrollView style={styles.scroll} contentContainerStyle={styles.container}>
 			{/* Flight section */}
 			{flight ? (
-				<View
+				<Animated.View
+					entering={FadeInDown.duration(500).springify()}
 					style={[styles.flightCard, { backgroundColor: theme.accentSoft }]}
 				>
 					<View style={styles.flightHeader}>
@@ -116,15 +131,7 @@ export default function HomeScreen() {
 							{ backgroundColor: theme.progressTrack },
 						]}
 					>
-						<View
-							style={[
-								styles.progressFill,
-								{
-									width: `${Math.round(progress * 100)}%` as never,
-									backgroundColor: theme.tint,
-								},
-							]}
-						/>
+						<AnimatedProgressFill progress={progress} color={theme.tint} />
 					</View>
 					<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
 						{Math.round(progress * 100)}% —{" "}
@@ -147,9 +154,9 @@ export default function HomeScreen() {
 									: t("recommendationShort")}
 						</Text>
 					</View>
-				</View>
+				</Animated.View>
 			) : (
-				<Pressable
+				<AnimatedPressable
 					style={[
 						styles.addFlightCard,
 						{ borderColor: theme.border, backgroundColor: theme.card },
@@ -161,94 +168,106 @@ export default function HomeScreen() {
 					<Text style={[styles.addFlightSubtitle, { color: theme.mutedText }]}>
 						{t("trackFlightRecommendation")}
 					</Text>
-				</Pressable>
+				</AnimatedPressable>
 			)}
 
 			{/* Quick Actions */}
 			<Text style={styles.sectionTitle}>{t("quickActions")}</Text>
 			<View style={styles.actions}>
-				<Pressable
-					style={[
-						styles.actionButton,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/(tabs)/games")}
-				>
-					<Ionicons
-						name="game-controller-outline"
-						size={28}
-						color={theme.tint}
-					/>
-					<Text style={styles.actionLabel}>{t("play")}</Text>
-				</Pressable>
-
-				<Pressable
-					style={[
-						styles.actionButton,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/(tabs)/explore")}
-				>
-					<Ionicons name="compass-outline" size={28} color={theme.tint} />
-					<Text style={styles.actionLabel}>{t("explore")}</Text>
-				</Pressable>
-
-				<Pressable
-					style={[
-						styles.actionButton,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/(tabs)/relax")}
-				>
-					<Ionicons name="leaf-outline" size={28} color={theme.tint} />
-					<Text style={styles.actionLabel}>{t("relax")}</Text>
-				</Pressable>
-			</View>
-
-			<Text style={styles.sectionTitle}>{t("dailyChallenge")}</Text>
-			<Pressable
-				style={[
-					styles.challengeCard,
-					{ backgroundColor: theme.card, borderColor: theme.border },
-				]}
-				onPress={() => router.push(`/game/${challengeOfDay.id}` as never)}
-			>
-				<View
-					style={styles.challengeBody}
-					lightColor="transparent"
-					darkColor="transparent"
-				>
-					<View
-						style={styles.challengeTop}
-						lightColor="transparent"
-						darkColor="transparent"
+				<Animated.View entering={FadeInDown.delay(100).springify()}>
+					<AnimatedPressable
+						style={[
+							styles.actionButton,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/(tabs)/games")}
 					>
 						<Ionicons
-							name={challengeOfDay.icon as never}
-							size={22}
+							name="game-controller-outline"
+							size={28}
 							color={theme.tint}
 						/>
-						<Text style={styles.challengeTitle}>{t(challengeOfDay.nameKey)}</Text>
-					</View>
-					<Text style={[styles.challengeDescription, { color: theme.mutedText }]}>
-						{t(challengeOfDay.descriptionKey)}
-					</Text>
+						<Text style={styles.actionLabel}>{t("play")}</Text>
+					</AnimatedPressable>
+				</Animated.View>
+
+				<Animated.View entering={FadeInDown.delay(200).springify()}>
+					<AnimatedPressable
+						style={[
+							styles.actionButton,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/(tabs)/explore")}
+					>
+						<Ionicons name="compass-outline" size={28} color={theme.tint} />
+						<Text style={styles.actionLabel}>{t("explore")}</Text>
+					</AnimatedPressable>
+				</Animated.View>
+
+				<Animated.View entering={FadeInDown.delay(300).springify()}>
+					<AnimatedPressable
+						style={[
+							styles.actionButton,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/(tabs)/relax")}
+					>
+						<Ionicons name="leaf-outline" size={28} color={theme.tint} />
+						<Text style={styles.actionLabel}>{t("relax")}</Text>
+					</AnimatedPressable>
+				</Animated.View>
+			</View>
+
+			<Animated.View entering={FadeInDown.delay(350).springify()}>
+				<Text style={styles.sectionTitle}>{t("dailyChallenge")}</Text>
+				<AnimatedPressable
+					style={[
+						styles.challengeCard,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPress={() => router.push(`/game/${challengeOfDay.id}` as never)}
+				>
 					<View
-						style={styles.challengeCtaRow}
+						style={styles.challengeBody}
 						lightColor="transparent"
 						darkColor="transparent"
 					>
-						<Text style={[styles.challengeCta, { color: theme.tint }]}>
-							{t("dailyChallengeCta")}
+						<View
+							style={styles.challengeTop}
+							lightColor="transparent"
+							darkColor="transparent"
+						>
+							<Ionicons
+								name={challengeOfDay.icon as never}
+								size={22}
+								color={theme.tint}
+							/>
+							<Text style={styles.challengeTitle}>
+								{t(challengeOfDay.nameKey)}
+							</Text>
+						</View>
+						<Text
+							style={[styles.challengeDescription, { color: theme.mutedText }]}
+						>
+							{t(challengeOfDay.descriptionKey)}
 						</Text>
-						<Ionicons name="arrow-forward" size={16} color={theme.tint} />
+						<View
+							style={styles.challengeCtaRow}
+							lightColor="transparent"
+							darkColor="transparent"
+						>
+							<Text style={[styles.challengeCta, { color: theme.tint }]}>
+								{t("dailyChallengeCta")}
+							</Text>
+							<Ionicons name="arrow-forward" size={16} color={theme.tint} />
+						</View>
 					</View>
-				</View>
-			</Pressable>
+				</AnimatedPressable>
+			</Animated.View>
 
 			<Text style={styles.sectionTitle}>{t("playTogether")}</Text>
 			<View style={styles.playTogetherRow}>
-				<Pressable
+				<AnimatedPressable
 					style={[
 						styles.playTogetherCard,
 						{ backgroundColor: theme.card, borderColor: theme.border },
@@ -256,13 +275,15 @@ export default function HomeScreen() {
 					onPress={() => router.push("/game/duel-tictactoe")}
 				>
 					<Ionicons name="people-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>{t("gameDuelTicTacToeName")}</Text>
+					<Text style={styles.playTogetherTitle}>
+						{t("gameDuelTicTacToeName")}
+					</Text>
 					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
 						{t("playTogetherBestOfMode")}
 					</Text>
-				</Pressable>
+				</AnimatedPressable>
 
-				<Pressable
+				<AnimatedPressable
 					style={[
 						styles.playTogetherCard,
 						{ backgroundColor: theme.card, borderColor: theme.border },
@@ -274,12 +295,12 @@ export default function HomeScreen() {
 					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
 						{t("playTogetherPassAndPlay")}
 					</Text>
-				</Pressable>
+				</AnimatedPressable>
 			</View>
 
 			<Text style={styles.sectionTitle}>{t("featuredForFlight")}</Text>
 			{featuredArticles.map((article) => (
-				<Pressable
+				<AnimatedPressable
 					key={article.id}
 					style={[
 						styles.featuredCard,
@@ -301,10 +322,36 @@ export default function HomeScreen() {
 						</Text>
 					</View>
 					<Ionicons name="chevron-forward" size={20} color={theme.mutedText} />
-				</Pressable>
+				</AnimatedPressable>
 			))}
 		</ScrollView>
 	);
+}
+
+function AnimatedProgressFill({
+	progress,
+	color,
+}: {
+	progress: number;
+	color: string;
+}) {
+	const width = useSharedValue(0);
+
+	useEffect(() => {
+		width.value = withTiming(Math.round(progress * 100), {
+			duration: 800,
+			easing: Easing.out(Easing.cubic),
+		});
+	}, [progress]);
+
+	const fillStyle = useAnimatedStyle(() => ({
+		width: `${width.value}%`,
+		height: "100%",
+		backgroundColor: color,
+		borderRadius: 4,
+	}));
+
+	return <Animated.View style={fillStyle} />;
 }
 
 const styles = StyleSheet.create({

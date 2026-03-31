@@ -1,8 +1,10 @@
 import { StyleSheet, FlatList, Pressable } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
+import AnimatedPressable from "@/components/AnimatedPressable";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -115,43 +117,45 @@ export default function GamesScreen() {
 				data={games}
 				keyExtractor={(item) => item.id}
 				contentContainerStyle={styles.list}
-				renderItem={({ item }) => {
+				renderItem={({ item, index }) => {
 					const gameProgress = progress[item.id];
 					return (
-						<Pressable
-							style={[
-								styles.card,
-								{ backgroundColor: theme.card, borderColor: theme.border },
-							]}
-							onPress={() => router.push(`/game/${item.id}` as never)}
-						>
-							<Ionicons
-								name={item.icon as never}
-								size={32}
-								color={theme.tint}
-							/>
-							<View
-								style={styles.cardContent}
-								lightColor="transparent"
-								darkColor="transparent"
+						<Animated.View entering={FadeInDown.delay(index * 60).springify()}>
+							<AnimatedPressable
+								style={[
+									styles.card,
+									{ backgroundColor: theme.card, borderColor: theme.border },
+								]}
+								onPress={() => router.push(`/game/${item.id}` as never)}
 							>
-								<Text style={styles.cardTitle}>{item.name}</Text>
-								<Text style={[styles.cardDesc, { color: theme.mutedText }]}>
-									{item.description}
-								</Text>
-								<Text style={[styles.cardMeta, { color: theme.mutedText }]}>
-									~{t("minutesShort", { minutes: item.estimatedTime })}
-									{gameProgress
-										? ` · ${t("bestScorePlayed", { score: gameProgress.highScore, times: gameProgress.timesPlayed })}`
-										: ""}
-								</Text>
-							</View>
-							<Ionicons
-								name="chevron-forward"
-								size={20}
-								color={theme.mutedText}
-							/>
-						</Pressable>
+								<Ionicons
+									name={item.icon as never}
+									size={32}
+									color={theme.tint}
+								/>
+								<View
+									style={styles.cardContent}
+									lightColor="transparent"
+									darkColor="transparent"
+								>
+									<Text style={styles.cardTitle}>{item.name}</Text>
+									<Text style={[styles.cardDesc, { color: theme.mutedText }]}>
+										{item.description}
+									</Text>
+									<Text style={[styles.cardMeta, { color: theme.mutedText }]}>
+										~{t("minutesShort", { minutes: item.estimatedTime })}
+										{gameProgress
+											? ` · ${t("bestScorePlayed", { score: gameProgress.highScore, times: gameProgress.timesPlayed })}`
+											: ""}
+									</Text>
+								</View>
+								<Ionicons
+									name="chevron-forward"
+									size={20}
+									color={theme.mutedText}
+								/>
+							</AnimatedPressable>
+						</Animated.View>
 					);
 				}}
 			/>

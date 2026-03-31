@@ -10,6 +10,7 @@ import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
+import AnimatedPressable from "@/components/AnimatedPressable";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -52,7 +53,9 @@ export default function ExploreScreen() {
 		const allLabel = t("exploreAll");
 		const filtered = localizedArticles.filter((item) => {
 			const categoryMatch =
-				activeCategory === "" || activeCategory === allLabel || item.categoryText === activeCategory;
+				activeCategory === "" ||
+				activeCategory === allLabel ||
+				item.categoryText === activeCategory;
 			const searchMatch =
 				q.length === 0 ||
 				item.titleText.toLowerCase().includes(q) ||
@@ -162,32 +165,32 @@ export default function ExploreScreen() {
 				keyExtractor={(item) => item.id}
 				contentContainerStyle={styles.list}
 				renderItem={({ item }) => (
-					<Pressable
-						style={[
-							styles.card,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-						onPress={() => router.push(`/content/${item.id}` as never)}
-					>
-						<View
-							style={styles.cardBody}
-							lightColor="transparent"
-							darkColor="transparent"
+						<AnimatedPressable
+							style={[
+								styles.card,
+								{ backgroundColor: theme.card, borderColor: theme.border },
+							]}
+							onPress={() => router.push(`/content/${item.id}` as never)}
 						>
-							<Text style={[styles.category, { color: theme.tint }]}>
-								{item.categoryText}
-							</Text>
-							<Text style={styles.title}>{item.titleText}</Text>
-							<Text style={[styles.meta, { color: theme.mutedText }]}>
-								{t("minutesRead", { minutes: item.readTime })}
-							</Text>
-						</View>
-						<Ionicons
-							name="chevron-forward"
-							size={20}
-							color={theme.mutedText}
-						/>
-					</Pressable>
+							<View
+								style={styles.cardBody}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<Text style={[styles.category, { color: theme.tint }]}>
+									{item.categoryText}
+								</Text>
+								<Text style={styles.title}>{item.titleText}</Text>
+								<Text style={[styles.meta, { color: theme.mutedText }]}>
+									{t("minutesRead", { minutes: item.readTime })}
+								</Text>
+							</View>
+							<Ionicons
+								name="chevron-forward"
+								size={20}
+								color={theme.mutedText}
+							/>
+						</AnimatedPressable>
 				)}
 			/>
 		</View>

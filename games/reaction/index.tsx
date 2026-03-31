@@ -6,6 +6,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useHaptic } from "@/hooks/useHaptic";
 
 const WAIT_MIN_MS = 1200;
 const WAIT_MAX_MS = 4200;
@@ -23,6 +24,7 @@ export default function ReactionGame() {
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 
 	const [phase, setPhase] = useState<Phase>("idle");
 	const [bestMs, setBestMs] = useState<number | null>(null);
@@ -56,6 +58,7 @@ export default function ReactionGame() {
 		if (phase === "waiting") {
 			if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
 			setPhase("idle");
+			haptic.error();
 			Alert.alert(t("reactionTooEarlyTitle"), t("reactionTooEarlyMsg"));
 			return;
 		}
@@ -63,6 +66,7 @@ export default function ReactionGame() {
 		if (phase === "ready") {
 			const now = Date.now();
 			const ms = Math.max(0, now - (startedAtRef.current ?? now));
+			haptic.success();
 			setLastMs(ms);
 			setBestMs((prev) => (prev === null ? ms : Math.min(prev, ms)));
 			updateProgress("reaction", Math.max(0, 1000 - ms));

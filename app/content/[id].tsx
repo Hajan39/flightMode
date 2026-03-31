@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocalSearchParams, Stack } from "expo-router";
 import { StyleSheet, ScrollView } from "react-native";
 
@@ -8,6 +9,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import content from "@/data/content.json";
 import type { ContentItem } from "@/types/content";
+import { useAchievementStore } from "@/store/useAchievementStore";
 
 const articles = content as ContentItem[];
 
@@ -17,6 +19,11 @@ export default function ContentDetailScreen() {
 	const { language, t } = useTranslation();
 	const { id } = useLocalSearchParams<{ id: string }>();
 	const article = articles.find((a) => a.id === id);
+	const markArticleRead = useAchievementStore((s) => s.markArticleRead);
+
+	useEffect(() => {
+		if (id) markArticleRead(id);
+	}, [id]);
 
 	if (!article) {
 		return (

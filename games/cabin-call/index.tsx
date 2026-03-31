@@ -7,6 +7,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useHaptic } from "@/hooks/useHaptic";
 import type { TranslationKey } from "@/i18n/translations";
 
 const ROUND_SECONDS = 30;
@@ -18,14 +19,20 @@ type Command = {
 };
 
 const COMMANDS: Command[] = [
-	{ id: "seatbelt", labelKey: "ccCmdSeatbelt", icon: "shield-checkmark-outline" },
+	{
+		id: "seatbelt",
+		labelKey: "ccCmdSeatbelt",
+		icon: "shield-checkmark-outline",
+	},
 	{ id: "tray", labelKey: "ccCmdTray", icon: "restaurant-outline" },
 	{ id: "window", labelKey: "ccCmdWindow", icon: "sunny-outline" },
 	{ id: "phone", labelKey: "ccCmdPhone", icon: "phone-portrait-outline" },
 ];
 
 function randomCommand(excludeId?: string) {
-	const pool = excludeId ? COMMANDS.filter((item) => item.id !== excludeId) : COMMANDS;
+	const pool = excludeId
+		? COMMANDS.filter((item) => item.id !== excludeId)
+		: COMMANDS;
 	return pool[Math.floor(Math.random() * pool.length)];
 }
 
@@ -34,6 +41,7 @@ export default function CabinCallGame() {
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 
 	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
 	const [score, setScore] = useState(0);
@@ -76,6 +84,7 @@ export default function CabinCallGame() {
 		}
 
 		if (choice.id === target.id) {
+			haptic.success();
 			setScore((prev) => {
 				const next = prev + 10 + Math.min(10, streak * 2);
 				scoreRef.current = next;
@@ -98,12 +107,18 @@ export default function CabinCallGame() {
 		<View style={styles.root}>
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("ccTime")}</Text>
-					<Text style={[styles.statValue, { color: theme.text }]}>{secondsLeft}</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
+						{t("ccTime")}
+					</Text>
+					<Text style={[styles.statValue, { color: theme.text }]}>
+						{secondsLeft}
+					</Text>
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
-					<Text style={[styles.statLabel, { color: theme.mutedText }]}>{t("ccScore")}</Text>
+					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
+						{t("ccScore")}
+					</Text>
 					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
 				</View>
 			</View>
@@ -114,7 +129,9 @@ export default function CabinCallGame() {
 					{ backgroundColor: theme.card, borderColor: theme.border },
 				]}
 			>
-				<Text style={[styles.targetHint, { color: theme.mutedText }]}>{t("ccCrewSays")}</Text>
+				<Text style={[styles.targetHint, { color: theme.mutedText }]}>
+					{t("ccCrewSays")}
+				</Text>
 				<Ionicons name={target.icon as never} size={40} color={theme.tint} />
 				<Text style={styles.targetText}>{t(target.labelKey)}</Text>
 			</View>
@@ -129,15 +146,24 @@ export default function CabinCallGame() {
 						]}
 						onPress={() => handleChoice(choice)}
 					>
-						<Ionicons name={choice.icon as never} size={20} color={theme.tint} />
+						<Ionicons
+							name={choice.icon as never}
+							size={20}
+							color={theme.tint}
+						/>
 						<Text style={styles.choiceText}>{t(choice.labelKey)}</Text>
 					</Pressable>
 				))}
 			</View>
 
-			<Text style={[styles.streakText, { color: theme.mutedText }]}>{t("ccStreak", { streak })}</Text>
+			<Text style={[styles.streakText, { color: theme.mutedText }]}>
+				{t("ccStreak", { streak })}
+			</Text>
 			{secondsLeft <= 0 ? (
-				<Pressable style={[styles.button, { backgroundColor: theme.tint }]} onPress={restart}>
+				<Pressable
+					style={[styles.button, { backgroundColor: theme.tint }]}
+					onPress={restart}
+				>
 					<Text style={styles.buttonText}>{t("ccPlayAgain")}</Text>
 				</Pressable>
 			) : null}
@@ -169,7 +195,12 @@ const styles = StyleSheet.create({
 		gap: 8,
 	},
 	targetHint: { fontSize: 13, fontWeight: "600" },
-	targetText: { fontSize: 20, fontWeight: "800", textAlign: "center", paddingHorizontal: 12 },
+	targetText: {
+		fontSize: 20,
+		fontWeight: "800",
+		textAlign: "center",
+		paddingHorizontal: 12,
+	},
 	choiceList: { gap: 10 },
 	choice: {
 		borderWidth: 1,
@@ -187,5 +218,10 @@ const styles = StyleSheet.create({
 		paddingVertical: 14,
 		borderRadius: 14,
 	},
-	buttonText: { color: "#fff", fontSize: 16, fontWeight: "900", letterSpacing: 0.8 },
+	buttonText: {
+		color: "#fff",
+		fontSize: 16,
+		fontWeight: "900",
+		letterSpacing: 0.8,
+	},
 });

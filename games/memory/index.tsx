@@ -3,16 +3,17 @@ import {
 	StyleSheet,
 	Pressable,
 	FlatList,
-	Alert,
 	useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
+import GameResult from "@/components/GameResult";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import { createDeck, checkMatch, calculateScore, type Card } from "./logic";
+import { useHaptic } from "@/hooks/useHaptic";
 
 const MEMORY_MODES = [
 	{ key: "quick", labelKey: "memoryModeQuick", pairs: 6, columns: 3 },
@@ -25,17 +26,20 @@ export default function MemoryGame() {
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
 	const { width } = useWindowDimensions();
-	const [modeKey, setModeKey] = useState<(typeof MEMORY_MODES)[number]["key"]>(
-		"standard",
-	);
+	const [modeKey, setModeKey] =
+		useState<(typeof MEMORY_MODES)[number]["key"]>("standard");
 	const currentMode =
 		MEMORY_MODES.find((mode) => mode.key === modeKey) ?? MEMORY_MODES[1];
-	const [cards, setCards] = useState<Card[]>(() => createDeck(currentMode.pairs));
+	const [cards, setCards] = useState<Card[]>(() =>
+		createDeck(currentMode.pairs),
+	);
 	const [selected, setSelected] = useState<number[]>([]);
 	const [moves, setMoves] = useState(0);
 	const [matchedPairs, setMatchedPairs] = useState(0);
 	const [isChecking, setIsChecking] = useState(false);
+	const [finalScore, setFinalScore] = useState<number | null>(null);
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const haptic = useHaptic();
 	const cardSize = useMemo(() => {
 		const horizontalPadding = 40;
 		const gap = 10;
@@ -65,6 +69,7 @@ export default function MemoryGame() {
 			setMoves(newMoves);
 
 			if (checkMatch(newCards, newSelected[0], newSelected[1])) {
+				haptic.success();
 				const matched = newCards.map((c) =>
 					c.id === newSelected[0] || c.id === newSelected[1]
 						? { ...c, isMatched: true }
@@ -78,13 +83,10 @@ export default function MemoryGame() {
 				setMatchedPairs(newMatchedCount);
 
 				if (newMatchedCount === currentMode.pairs) {
+					haptic.heavy();
 					const score = calculateScore(newMoves, currentMode.pairs);
 					updateProgress("memory", score);
-					Alert.alert(
-						t("youWin"),
-						t("youWinMessage", { moves: newMoves, score }),
-						[{ text: t("playAgain"), onPress: resetGame }],
-					);
+					setFinalScore(score);
 				}
 			} else {
 				setTimeout(() => {
@@ -119,6 +121,7 @@ export default function MemoryGame() {
 		setMoves(0);
 		setMatchedPairs(0);
 		setIsChecking(false);
+		setFinalScore(null);
 	};
 
 	return (
@@ -221,6 +224,15 @@ export default function MemoryGame() {
 					{t("newGame")}
 				</Text>
 			</Pressable>
+
+			{finalScore !== null && (
+				<GameResult
+					title={t("youWin")}
+					score={finalScore}
+					subtitle={t("youWinMessage", { moves, score: finalScore })}
+					onPlayAgain={resetGame}
+				/>
+			)}
 		</View>
 	);
 }

@@ -1,13 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 import { StyleSheet, Pressable, ScrollView } from "react-native";
+import Animated, {
+	FadeInDown,
+	useAnimatedStyle,
+	useSharedValue,
+	withTiming,
+	Easing,
+} from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
+import AnimatedPressable from "@/components/AnimatedPressable";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useAudioStore } from "@/store/useAudioStore";
+import { useAchievementStore } from "@/store/useAchievementStore";
 
 const BREATHING_PHASES = [
 	{ key: "breatheIn" as TranslationKey, duration: 4 },
@@ -67,7 +76,9 @@ export default function RelaxScreen() {
 	const activeSoundId = useAudioStore((s) => s.activeSoundId);
 	const volume = useAudioStore((s) => s.volume);
 	const sleepTimerEndAt = useAudioStore((s) => s.sleepTimerEndAt);
-	const sleepTimerPresetMinutes = useAudioStore((s) => s.sleepTimerPresetMinutes);
+	const sleepTimerPresetMinutes = useAudioStore(
+		(s) => s.sleepTimerPresetMinutes,
+	);
 	const playSound = useAudioStore((s) => s.playSound);
 	const stopSound = useAudioStore((s) => s.stopSound);
 	const setVolume = useAudioStore((s) => s.setVolume);
@@ -109,6 +120,9 @@ export default function RelaxScreen() {
 		return () => clearInterval(tick);
 	}, [sleepTimerEndAt]);
 
+	const incrementRelax = useAchievementStore((s) => s.incrementRelax);
+	const markSoundPlayed = useAchievementStore((s) => s.markSoundPlayed);
+
 	const handleBreathToggle = () => {
 		if (isActive) {
 			setIsActive(false);
@@ -116,11 +130,13 @@ export default function RelaxScreen() {
 			setCountdown(BREATHING_PHASES[0].duration);
 		} else {
 			setIsActive(true);
+			incrementRelax();
 		}
 	};
 
 	const toggleSoundscape = (scape: SoundscapeDef) => {
 		playSound(scape.id, scape.labelKey, scape.source);
+		markSoundPlayed(scape.id);
 	};
 
 	const stopActiveSoundscape = () => {
@@ -136,26 +152,53 @@ export default function RelaxScreen() {
 
 	const phase = BREATHING_PHASES[phaseIndex];
 
+	// Breathing circle animation
+	const breathScale = useSharedValue(1);
+
+	useEffect(() => {
+		if (isActive) {
+			const dur = phase.duration * 1000;
+			// Inhale → grow, hold → stay, exhale → shrink, hold → stay
+			if (phase.key === ("breatheIn" as TranslationKey)) {
+				breathScale.value = withTiming(1.15, {
+					duration: dur,
+					easing: Easing.inOut(Easing.ease),
+				});
+			} else if (phase.key === ("breatheOut" as TranslationKey)) {
+				breathScale.value = withTiming(1, {
+					duration: dur,
+					easing: Easing.inOut(Easing.ease),
+				});
+			}
+		} else {
+			breathScale.value = withTiming(1, { duration: 300 });
+		}
+	}, [isActive, phase.key, phase.duration]);
+
+	const breathCircleStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: breathScale.value }],
+	}));
+
 	return (
 		<ScrollView
 			style={[styles.scroll, { backgroundColor: theme.background }]}
 			contentContainerStyle={styles.content}
 		>
 			{/* Breathing section */}
-			<View
+			<Animated.View
+				entering={FadeInDown.duration(500).springify()}
 				style={styles.breathingSection}
-				lightColor="transparent"
-				darkColor="transparent"
 			>
 				<Text style={styles.sectionTitle}>{t("breathingExercise")}</Text>
 				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
 					{t("boxBreathing")}
 				</Text>
 
-				<View
+				<Animated.View
 					style={[
 						styles.breathCircle,
 						{ borderColor: theme.tint, backgroundColor: theme.card },
+						breathCircleStyle,
 					]}
 				>
 					<Text style={[styles.phaseLabel, { color: theme.tint }]}>
@@ -164,9 +207,9 @@ export default function RelaxScreen() {
 					<Text style={[styles.countdown, { color: theme.tint }]}>
 						{isActive ? countdown : "—"}
 					</Text>
-				</View>
+				</Animated.View>
 
-				<Pressable
+				<AnimatedPressable
 					style={[styles.button, { backgroundColor: theme.tint }]}
 					onPress={handleBreathToggle}
 				>
@@ -178,14 +221,13 @@ export default function RelaxScreen() {
 					<Text style={styles.buttonText}>
 						{isActive ? t("stop") : t("start")}
 					</Text>
-				</Pressable>
-			</View>
+				</AnimatedPressable>
+			</Animated.View>
 
 			{/* Soundscapes section */}
-			<View
+			<Animated.View
+				entering={FadeInDown.delay(200).springify()}
 				style={styles.soundscapesSection}
-				lightColor="transparent"
-				darkColor="transparent"
 			>
 				<Text style={[styles.sectionLabel, { color: theme.mutedText }]}>
 					{t("soundscapes").toUpperCase()}
@@ -251,11 +293,11 @@ export default function RelaxScreen() {
 					lightColor="transparent"
 					darkColor="transparent"
 				>
-					<Text style={[styles.sectionLabel, { color: theme.mutedText }]}> 
+					<Text style={[styles.sectionLabel, { color: theme.mutedText }]}>
 						{t("sleepTimer").toUpperCase()}
 					</Text>
 					{sleepTimerEndAt ? (
-						<Text style={[styles.sleepTimerHint, { color: theme.mutedText }]}> 
+						<Text style={[styles.sleepTimerHint, { color: theme.mutedText }]}>
 							{t("sleepTimerStopsIn", { minutes: sleepMinutesLeft })}
 						</Text>
 					) : null}
@@ -300,46 +342,52 @@ export default function RelaxScreen() {
 					lightColor="transparent"
 					darkColor="transparent"
 				>
-					{SOUNDSCAPES.map((scape) => {
+					{SOUNDSCAPES.map((scape, scapeIndex) => {
 						const isActive = activeSoundId === scape.id;
 						return (
-							<Pressable
+							<Animated.View
 								key={scape.id}
-								style={({ pressed }) => [
-									styles.soundCard,
-									{
-										backgroundColor: isActive ? theme.accentSoft : theme.card,
-										borderColor: isActive ? theme.tint : theme.border,
-									},
-									pressed && { opacity: 0.75 },
-								]}
-								onPress={() => toggleSoundscape(scape)}
+								entering={FadeInDown.delay(300 + scapeIndex * 80).springify()}
 							>
-								<Ionicons
-									name={scape.icon as never}
-									size={32}
-									color={isActive ? theme.tint : theme.mutedText}
-								/>
-								<Text
+								<AnimatedPressable
 									style={[
-										styles.soundLabel,
-										{ color: isActive ? theme.tint : theme.text },
+										styles.soundCard,
+										{
+											backgroundColor: isActive ? theme.accentSoft : theme.card,
+											borderColor: isActive ? theme.tint : theme.border,
+										},
 									]}
+									onPress={() => toggleSoundscape(scape)}
 								>
-									{t(scape.labelKey)}
-								</Text>
-								{isActive && (
-									<View
-										style={[styles.playingDot, { backgroundColor: theme.tint }]}
-										lightColor={theme.tint}
-										darkColor={theme.tint}
+									<Ionicons
+										name={scape.icon as never}
+										size={32}
+										color={isActive ? theme.tint : theme.mutedText}
 									/>
-								)}
-							</Pressable>
+									<Text
+										style={[
+											styles.soundLabel,
+											{ color: isActive ? theme.tint : theme.text },
+										]}
+									>
+										{t(scape.labelKey)}
+									</Text>
+									{isActive && (
+										<View
+											style={[
+												styles.playingDot,
+												{ backgroundColor: theme.tint },
+											]}
+											lightColor={theme.tint}
+											darkColor={theme.tint}
+										/>
+									)}
+								</AnimatedPressable>
+							</Animated.View>
 						);
 					})}
 				</View>
-			</View>
+			</Animated.View>
 		</ScrollView>
 	);
 }
