@@ -349,6 +349,54 @@ export default function HomeScreen() {
 						{t("playTogetherPassAndPlay")}
 					</Text>
 				</AnimatedPressable>
+
+				<AnimatedPressable
+					style={[
+						styles.playTogetherCard,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPress={() => router.push("/game/cross-air-radar")}
+				>
+					<Ionicons name="radio-outline" size={22} color={theme.tint} />
+					<Text style={styles.playTogetherTitle}>
+						{t("gameCrossAirRadarName")}
+					</Text>
+					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+						{t("playTogetherCrossDevice")}
+					</Text>
+				</AnimatedPressable>
+
+				<AnimatedPressable
+					style={[
+						styles.playTogetherCard,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPress={() => router.push("/game/cross-code-breaker")}
+				>
+					<Ionicons name="lock-open-outline" size={22} color={theme.tint} />
+					<Text style={styles.playTogetherTitle}>
+						{t("gameCrossCodeBreakerName")}
+					</Text>
+					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+						{t("playTogetherCrossDevice")}
+					</Text>
+				</AnimatedPressable>
+
+				<AnimatedPressable
+					style={[
+						styles.playTogetherCard,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPress={() => router.push("/game/cross-liars-dice")}
+				>
+					<Ionicons name="skull-outline" size={22} color={theme.tint} />
+					<Text style={styles.playTogetherTitle}>
+						{t("gameCrossLiarsDiceName")}
+					</Text>
+					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+						{t("playTogetherCrossDevice")}
+					</Text>
+				</AnimatedPressable>
 			</ScrollView>
 
 			<Text style={styles.sectionTitle}>{t("featuredForFlight")}</Text>

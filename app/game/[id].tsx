@@ -153,6 +153,33 @@ export default function GameScreen() {
 		);
 	}
 
+	if (id === "cross-air-radar") {
+		const CrossAirRadar = require("@/games/cross-air-radar").default;
+		return (
+			<SafeAreaView edges={["left", "right", "bottom"]} style={styles.safeArea}>
+				<CrossAirRadar />
+			</SafeAreaView>
+		);
+	}
+
+	if (id === "cross-code-breaker") {
+		const CrossCodeBreaker = require("@/games/cross-code-breaker").default;
+		return (
+			<SafeAreaView edges={["left", "right", "bottom"]} style={styles.safeArea}>
+				<CrossCodeBreaker />
+			</SafeAreaView>
+		);
+	}
+
+	if (id === "cross-liars-dice") {
+		const CrossLiarsDice = require("@/games/cross-liars-dice").default;
+		return (
+			<SafeAreaView edges={["left", "right", "bottom"]} style={styles.safeArea}>
+				<CrossLiarsDice />
+			</SafeAreaView>
+		);
+	}
+
 	return (
 		<View style={styles.container}>
 			<Text>{t("gameNotFound", { id })}</Text>

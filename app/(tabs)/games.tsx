@@ -167,6 +167,30 @@ export default function GamesScreen() {
 			icon: "text-outline",
 			category: "multiplayer",
 		},
+		{
+			id: "cross-air-radar",
+			name: t("gameCrossAirRadarName"),
+			description: t("gameCrossAirRadarDescription"),
+			estimatedTime: 10,
+			icon: "radio-outline",
+			category: "multiplayer",
+		},
+		{
+			id: "cross-code-breaker",
+			name: t("gameCrossCodeBreakerName"),
+			description: t("gameCrossCodeBreakerDescription"),
+			estimatedTime: 8,
+			icon: "lock-open-outline",
+			category: "multiplayer",
+		},
+		{
+			id: "cross-liars-dice",
+			name: t("gameCrossLiarsDiceName"),
+			description: t("gameCrossLiarsDiceDescription"),
+			estimatedTime: 6,
+			icon: "skull-outline",
+			category: "multiplayer",
+		},
 	];
 
 	const filteredGames = useMemo(

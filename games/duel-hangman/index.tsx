@@ -7,60 +7,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useHaptic } from "@/hooks/useHaptic";
-
-/* ── Aviation-themed word pool (no network needed) ── */
-const WORD_POOL = [
-	"PILOT",
-	"FLIGHT",
-	"RUNWAY",
-	"TOWER",
-	"CABIN",
-	"RADAR",
-	"WINGS",
-	"CLOUD",
-	"STORM",
-	"JETLAG",
-	"BOARD",
-	"CARGO",
-	"CREW",
-	"HANGAR",
-	"TAXI",
-	"CLIMB",
-	"CRUISE",
-	"GLIDE",
-	"FLAPS",
-	"ROTOR",
-	"SPEED",
-	"ORBIT",
-	"DRIFT",
-	"NORTH",
-	"SOUTH",
-	"EAGLE",
-	"SONAR",
-	"GAUGE",
-	"BRAKE",
-	"ROUTE",
-	"TURBO",
-	"VAPOR",
-	"STALL",
-	"ARROW",
-	"PRIME",
-	"METAL",
-	"BLADE",
-	"SHOCK",
-	"BLAST",
-	"SURGE",
-	"FLAME",
-	"LUNAR",
-	"SOLAR",
-	"DELTA",
-	"ALPHA",
-	"BRAVO",
-	"OSCAR",
-	"HOTEL",
-	"INDIA",
-	"TANGO",
-];
+import { pickWord, type Difficulty } from "./words";
 
 const MAX_WRONG = 6;
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -70,9 +17,7 @@ const KEY_ROWS = [
 	ALPHABET.slice(18, 26),
 ];
 
-function pickWord(): string {
-	return WORD_POOL[Math.floor(Math.random() * WORD_POOL.length)];
-}
+const DIFFICULTIES: Difficulty[] = ["easy", "medium", "hard"];
 
 /* ── Hangman figure parts ── */
 const PARTS: ((color: string) => React.ReactNode)[] = [
@@ -172,16 +117,19 @@ export default function DuelHangmanGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
-	const { t } = useTranslation();
+	const { t, language } = useTranslation();
 	const haptic = useHaptic();
 
-	const [word, setWord] = useState(pickWord);
+	const [difficulty, setDifficulty] = useState<Difficulty>("medium");
+	const [word, setWord] = useState(() => pickWord(language, "medium"));
 	const [guessed, setGuessed] = useState<Set<string>>(new Set());
 	const [scoreP1, setScoreP1] = useState(0);
 	const [scoreP2, setScoreP2] = useState(0);
 	const [round, setRound] = useState(1);
 	const [guesser, setGuesser] = useState<1 | 2>(2); // P1 picks first, P2 guesses
-	const [phase, setPhase] = useState<"playing" | "result">("playing");
+	const [phase, setPhase] = useState<"difficulty" | "playing" | "result">(
+		"difficulty",
+	);
 
 	const wrongCount = useMemo(
 		() => [...guessed].filter((l) => !word.includes(l)).length,
@@ -230,7 +178,7 @@ export default function DuelHangmanGame() {
 		}
 		setRound((r) => r + 1);
 		setGuesser(guesser === 1 ? 2 : 1);
-		setWord(pickWord());
+		setWord(pickWord(language, difficulty));
 		setGuessed(new Set());
 	};
 
@@ -239,10 +187,53 @@ export default function DuelHangmanGame() {
 		setScoreP2(0);
 		setRound(1);
 		setGuesser(2);
-		setWord(pickWord());
+		setPhase("difficulty");
+		setGuessed(new Set());
+	};
+
+	const startGame = (d: Difficulty) => {
+		setDifficulty(d);
+		setWord(pickWord(language, d));
 		setGuessed(new Set());
 		setPhase("playing");
 	};
+
+	// Difficulty selector
+	if (phase === "difficulty") {
+		return (
+			<View style={styles.root}>
+				<Text style={styles.title}>{t("gameDuelHangmanName")}</Text>
+				<Text style={[styles.diffHint, { color: theme.mutedText }]}>
+					{t("hmPickDifficulty")}
+				</Text>
+				<RNView style={styles.diffRow}>
+					{DIFFICULTIES.map((d) => (
+						<Pressable
+							key={d}
+							onPress={() => startGame(d)}
+							style={[
+								styles.diffBtn,
+								{
+									backgroundColor: theme.card,
+									borderColor: theme.border,
+								},
+							]}
+						>
+							<Text style={[styles.diffEmoji]}>
+								{d === "easy" ? "✈️" : d === "medium" ? "🛩️" : "🚀"}
+							</Text>
+							<Text style={[styles.diffLabel, { color: theme.text }]}>
+								{t(`hmDiff${d.charAt(0).toUpperCase() + d.slice(1)}` as any)}
+							</Text>
+							<Text style={[styles.diffMeta, { color: theme.mutedText }]}>
+								{t(`hmDiff${d.charAt(0).toUpperCase() + d.slice(1)}Hint` as any)}
+							</Text>
+						</Pressable>
+					))}
+				</RNView>
+			</View>
+		);
+	}
 
 	// Final result
 	if (phase === "result") {
@@ -526,4 +517,18 @@ const styles = StyleSheet.create({
 	finalLabel: { fontSize: 12, fontWeight: "700" },
 	finalNum: { fontSize: 36, fontWeight: "900" },
 	finalVs: { fontSize: 16, fontWeight: "700" },
+	// Difficulty screen
+	diffHint: { fontSize: 14, textAlign: "center", marginBottom: 16 },
+	diffRow: { flexDirection: "row", gap: 12, marginTop: 4 },
+	diffBtn: {
+		flex: 1,
+		alignItems: "center",
+		gap: 6,
+		padding: 14,
+		borderWidth: 1,
+		borderRadius: 14,
+	},
+	diffEmoji: { fontSize: 28 },
+	diffLabel: { fontSize: 15, fontWeight: "800" },
+	diffMeta: { fontSize: 11, textAlign: "center" },
 });
