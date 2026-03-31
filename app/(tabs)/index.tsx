@@ -266,7 +266,12 @@ export default function HomeScreen() {
 			</Animated.View>
 
 			<Text style={styles.sectionTitle}>{t("playTogether")}</Text>
-			<View style={styles.playTogetherRow}>
+			<ScrollView
+				horizontal
+				showsHorizontalScrollIndicator={false}
+				style={styles.playTogetherRow}
+				contentContainerStyle={styles.playTogetherRowContent}
+			>
 				<AnimatedPressable
 					style={[
 						styles.playTogetherCard,
@@ -296,7 +301,55 @@ export default function HomeScreen() {
 						{t("playTogetherPassAndPlay")}
 					</Text>
 				</AnimatedPressable>
-			</View>
+
+				<AnimatedPressable
+					style={[
+						styles.playTogetherCard,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPress={() => router.push("/game/duel-connect4")}
+				>
+					<Ionicons name="apps-outline" size={22} color={theme.tint} />
+					<Text style={styles.playTogetherTitle}>
+						{t("gameDuelConnect4Name")}
+					</Text>
+					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+						{t("playTogetherBestOfMode")}
+					</Text>
+				</AnimatedPressable>
+
+				<AnimatedPressable
+					style={[
+						styles.playTogetherCard,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPress={() => router.push("/game/duel-emoji-find")}
+				>
+					<Ionicons name="search-outline" size={22} color={theme.tint} />
+					<Text style={styles.playTogetherTitle}>
+						{t("gameDuelEmojiFindName")}
+					</Text>
+					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+						{t("playTogetherSharedScreen")}
+					</Text>
+				</AnimatedPressable>
+
+				<AnimatedPressable
+					style={[
+						styles.playTogetherCard,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPress={() => router.push("/game/duel-hangman")}
+				>
+					<Ionicons name="text-outline" size={22} color={theme.tint} />
+					<Text style={styles.playTogetherTitle}>
+						{t("gameDuelHangmanName")}
+					</Text>
+					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+						{t("playTogetherPassAndPlay")}
+					</Text>
+				</AnimatedPressable>
+			</ScrollView>
 
 			<Text style={styles.sectionTitle}>{t("featuredForFlight")}</Text>
 			{featuredArticles.map((article) => (
@@ -457,12 +510,13 @@ const styles = StyleSheet.create({
 		fontWeight: "700",
 	},
 	playTogetherRow: {
-		flexDirection: "row",
-		gap: 10,
 		marginBottom: 4,
 	},
+	playTogetherRowContent: {
+		gap: 10,
+	},
 	playTogetherCard: {
-		flex: 1,
+		width: 130,
 		borderWidth: 1,
 		borderRadius: 12,
 		padding: 12,

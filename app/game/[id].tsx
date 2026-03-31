@@ -126,6 +126,33 @@ export default function GameScreen() {
 		);
 	}
 
+	if (id === "duel-connect4") {
+		const DuelConnect4 = require("@/games/duel-connect4").default;
+		return (
+			<SafeAreaView edges={["left", "right", "bottom"]} style={styles.safeArea}>
+				<DuelConnect4 />
+			</SafeAreaView>
+		);
+	}
+
+	if (id === "duel-emoji-find") {
+		const DuelEmojiFind = require("@/games/duel-emoji-find").default;
+		return (
+			<SafeAreaView edges={["left", "right", "bottom"]} style={styles.safeArea}>
+				<DuelEmojiFind />
+			</SafeAreaView>
+		);
+	}
+
+	if (id === "duel-hangman") {
+		const DuelHangman = require("@/games/duel-hangman").default;
+		return (
+			<SafeAreaView edges={["left", "right", "bottom"]} style={styles.safeArea}>
+				<DuelHangman />
+			</SafeAreaView>
+		);
+	}
+
 	return (
 		<View style={styles.container}>
 			<Text>{t("gameNotFound", { id })}</Text>
