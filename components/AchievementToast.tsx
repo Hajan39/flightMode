@@ -4,7 +4,6 @@ import Animated, {
 	SlideInDown,
 	SlideOutDown,
 	FadeIn,
-	FadeOut,
 } from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 

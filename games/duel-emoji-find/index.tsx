@@ -114,7 +114,6 @@ export default function DuelEmojiFindGame() {
 	const [roundScoreP1, setRoundScoreP1] = useState(0);
 	const [roundScoreP2, setRoundScoreP2] = useState(0);
 	const [foundCells, setFoundCells] = useState<Set<number>>(new Set());
-	const [lastFinder, setLastFinder] = useState<1 | 2 | null>(null);
 	const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 	const startRound = useCallback(() => {
@@ -125,26 +124,15 @@ export default function DuelEmojiFindGame() {
 		setRoundScoreP1(0);
 		setRoundScoreP2(0);
 		setFoundCells(new Set());
-		setLastFinder(null);
 		setPhase("playing");
 	}, []);
-
-	const nextTarget = useCallback(() => {
-		// Pick new target from unfound cells
-		const available = grid
-			.map((emoji, i) => ({ emoji, i }))
-			.filter(({ i }) => !foundCells.has(i));
-		if (available.length === 0) return;
-		const pick = available[Math.floor(Math.random() * available.length)];
-		setTarget(pick.emoji);
-	}, [grid, foundCells]);
 
 	useEffect(() => {
 		if (phase !== "playing") return;
 		timerRef.current = setInterval(() => {
 			setTimeLeft((prev) => {
 				if (prev <= 1) {
-					clearInterval(timerRef.current!);
+					if (timerRef.current) clearInterval(timerRef.current);
 					return 0;
 				}
 				return prev - 1;
@@ -173,7 +161,6 @@ export default function DuelEmojiFindGame() {
 			const newFound = new Set(foundCells);
 			newFound.add(index);
 			setFoundCells(newFound);
-			setLastFinder(player);
 
 			if (player === 1) setRoundScoreP1((s) => s + 10);
 			else setRoundScoreP2((s) => s + 10);

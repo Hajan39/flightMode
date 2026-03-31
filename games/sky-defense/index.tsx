@@ -1,4 +1,4 @@
-import React, {
+import {
 	useState,
 	useRef,
 	useEffect,
@@ -8,9 +8,7 @@ import React, {
 import {
 	StyleSheet,
 	Pressable,
-	Dimensions,
 	View as RNView,
-	LayoutChangeEvent,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";

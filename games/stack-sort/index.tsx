@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import {
 	StyleSheet,
 	Pressable,
@@ -338,7 +338,6 @@ export default function StackSortGame() {
 	const [numCount, setNumCount] = useState(0);
 
 	/* --- derived layout --- */
-	const totalCols = columns.length + 1; // +1 for goal
 	const maxPerRow = Math.max(3, Math.floor((screenW - 24) / (MIN_COL_W + 8)));
 	const colWidth = Math.max(
 		MIN_COL_W,

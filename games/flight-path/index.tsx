@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-	LayoutChangeEvent,
+	type LayoutChangeEvent,
 	PanResponder,
 	Pressable,
 	StyleSheet,

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Pressable, StyleSheet, ScrollView } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 

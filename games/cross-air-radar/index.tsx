@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { Dimensions, Pressable, StyleSheet } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
@@ -8,6 +8,7 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
+import type { TranslationKey } from "@/i18n/translations";
 import { useHaptic } from "@/hooks/useHaptic";
 
 const GRID = 8;
@@ -20,6 +21,12 @@ const SHIPS = [
 	{ id: "bomber", size: 4 },
 ] as const;
 const TOTAL_HP = 9; // 2+3+4
+
+const SHIP_LABELS: Record<string, TranslationKey> = {
+	scout: "arShipScout",
+	fighter: "arShipFighter",
+	bomber: "arShipBomber",
+};
 
 type Cell = "w" | "s" | "h" | "m"; // water, ship, hit, miss
 type Phase = "setup" | "battle" | "done";
@@ -56,11 +63,7 @@ export default function CrossAirRadarGame() {
 	const [oppHits, setOppHits] = useState(0);
 	const [winner, setWinner] = useState<"me" | "opp" | null>(null);
 
-	// Preview cells for ship placement
-	const previewCells = useMemo(() => {
-		if (phase !== "setup" || shipIdx >= SHIPS.length) return new Set<string>();
-		return new Set<string>();
-	}, [phase, shipIdx]);
+
 
 	const coord = (r: number, c: number) => `${COL[c]}${r + 1}`;
 
@@ -89,7 +92,7 @@ export default function CrossAirRadarGame() {
 			}
 
 			const next = fleet.map((row) => [...row]) as Cell[][];
-			cells.forEach(([rr, cc]) => (next[rr][cc] = "s"));
+			for (const [rr, cc] of cells) next[rr][cc] = "s";
 			setFleet(next);
 			setShipIdx((i) => i + 1);
 			haptic.tap();
@@ -289,9 +292,7 @@ export default function CrossAirRadarGame() {
 										{ color: i === shipIdx ? "#fff" : theme.text },
 									]}
 								>
-									{t(
-										`arShip${ship.id.charAt(0).toUpperCase() + ship.id.slice(1)}` as any,
-									)}{" "}
+									{t(SHIP_LABELS[ship.id])}{" "}
 									({ship.size})
 								</Text>
 							</View>

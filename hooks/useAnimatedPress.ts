@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import Animated, {
+import {
 	useAnimatedStyle,
 	useSharedValue,
 	withSpring,

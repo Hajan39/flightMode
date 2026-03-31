@@ -10,7 +10,6 @@ export default function SettingsScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const {
-		language,
 		languages,
 		resetLanguage,
 		setLanguage,

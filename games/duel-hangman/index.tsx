@@ -1,5 +1,10 @@
 import { useState, useMemo } from "react";
-import { Pressable, StyleSheet, View as RNView } from "react-native";
+import {
+	Dimensions,
+	Pressable,
+	StyleSheet,
+	View as RNView,
+} from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
@@ -8,6 +13,7 @@ import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useHaptic } from "@/hooks/useHaptic";
 import { pickWord, type Difficulty } from "./words";
+import type { TranslationKey } from "@/i18n/translations";
 
 const MAX_WRONG = 6;
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -18,6 +24,16 @@ const KEY_ROWS = [
 ];
 
 const DIFFICULTIES: Difficulty[] = ["easy", "medium", "hard"];
+const DIFF_LABELS: Record<Difficulty, TranslationKey> = {
+	easy: "hmDiffEasy",
+	medium: "hmDiffMedium",
+	hard: "hmDiffHard",
+};
+const DIFF_HINTS: Record<Difficulty, TranslationKey> = {
+	easy: "hmDiffEasyHint",
+	medium: "hmDiffMediumHint",
+	hard: "hmDiffHardHint",
+};
 
 /* ── Hangman figure parts ── */
 const PARTS: ((color: string) => React.ReactNode)[] = [
@@ -223,10 +239,10 @@ export default function DuelHangmanGame() {
 								{d === "easy" ? "✈️" : d === "medium" ? "🛩️" : "🚀"}
 							</Text>
 							<Text style={[styles.diffLabel, { color: theme.text }]}>
-								{t(`hmDiff${d.charAt(0).toUpperCase() + d.slice(1)}` as any)}
-							</Text>
-							<Text style={[styles.diffMeta, { color: theme.mutedText }]}>
-								{t(`hmDiff${d.charAt(0).toUpperCase() + d.slice(1)}Hint` as any)}
+							{t(DIFF_LABELS[d])}
+						</Text>
+						<Text style={[styles.diffMeta, { color: theme.mutedText }]}>
+							{t(DIFF_HINTS[d])}
 							</Text>
 						</Pressable>
 					))}
@@ -314,12 +330,19 @@ export default function DuelHangmanGame() {
 
 			{/* Word display */}
 			<RNView style={styles.wordRow}>
-				{word.split("").map((letter, i) => (
+				{word.split("").map((letter, i) => {
+					const screenW = Dimensions.get("window").width - 32;
+					const gap = word.length > 10 ? 4 : 8;
+					const slotW = Math.min(32, (screenW - (word.length - 1) * gap) / word.length);
+					const fontSize = slotW > 24 ? 24 : Math.max(14, slotW - 4);
+					return (
 					<RNView
 						key={`w-${i}`}
 						style={[
 							styles.letterSlot,
 							{
+								width: slotW,
+								marginHorizontal: gap / 2,
 								borderBottomColor: gameOver
 									? isWon
 										? "#66bb6a"
@@ -332,6 +355,7 @@ export default function DuelHangmanGame() {
 							style={[
 								styles.letterChar,
 								{
+									fontSize,
 									color: guessed.has(letter)
 										? theme.text
 										: gameOver
@@ -343,7 +367,8 @@ export default function DuelHangmanGame() {
 							{guessed.has(letter) || gameOver ? letter : "_"}
 						</Text>
 					</RNView>
-				))}
+					);
+				})}
 			</RNView>
 
 			{/* Wrong guesses count */}
@@ -476,17 +501,17 @@ const styles = StyleSheet.create({
 	},
 	wordRow: {
 		flexDirection: "row",
-		gap: 8,
+		flexWrap: "wrap",
+		justifyContent: "center",
 		marginBottom: 8,
 	},
 	letterSlot: {
-		width: 32,
 		height: 40,
 		alignItems: "center",
 		justifyContent: "flex-end",
 		borderBottomWidth: 3,
 	},
-	letterChar: { fontSize: 24, fontWeight: "900" },
+	letterChar: { fontWeight: "900" },
 	wrongHint: { fontSize: 12, fontWeight: "600", marginBottom: 10 },
 	keyboard: { gap: 6, width: "100%" },
 	keyRow: { flexDirection: "row", gap: 4, justifyContent: "center" },

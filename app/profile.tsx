@@ -195,7 +195,7 @@ function AchievementBadge({
 	unlocked,
 	theme,
 	t,
-	index,
+	index: _index,
 }: {
 	achievement: AchievementDef;
 	unlocked: boolean;
