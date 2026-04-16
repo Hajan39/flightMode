@@ -11,7 +11,7 @@
     "ota:preview": "npx eas-cli update --channel preview --message",
     "ota:production": "npx eas-cli update --channel production --message",
     "eas:build:android": "npx eas-cli build --platform android --profile production",
-    "deploy:android": "npx eas-cli build --platform android --auto-submit --auto-submit",
+    "deploy:android": "npx eas-cli build --platform android --auto-submit --profile production",
     "eas:submit:android": "npx eas-cli submit --platform android --profile production"
   },
   "dependencies": {
