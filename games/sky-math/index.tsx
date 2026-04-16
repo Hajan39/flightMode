@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -15,23 +15,82 @@ type Question = {
 	answer: number;
 };
 
-const TOTAL_QUESTIONS = 8;
+const TOTAL_QUESTIONS = 12;
 
 function randomInt(min: number, max: number): number {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function createQuestion(): Question {
-	const a = randomInt(3, 30);
-	const b = randomInt(2, 20);
-	const usePlus = Math.random() > 0.45;
-	const answer = usePlus ? a + b : a - b;
-	const text = usePlus ? `${a} + ${b}` : `${a} − ${b}`;
+/**
+ * Progressive difficulty based on question index (0-based):
+ * 0-3: simple add/sub with small numbers
+ * 4-7: larger numbers, occasional multiply
+ * 8-11: multiply/divide, bigger ranges, tighter decoys
+ */
+function createQuestion(questionIndex: number = 0): Question {
+	const phase = Math.floor(questionIndex / 4); // 0, 1, 2
+
+	let a: number, b: number, answer: number, text: string;
+	const decoySpread = Math.max(3, 9 - phase * 2);
+
+	if (phase <= 0) {
+		// Easy: add/subtract small numbers
+		a = randomInt(3, 30);
+		b = randomInt(2, 20);
+		const usePlus = Math.random() > 0.45;
+		answer = usePlus ? a + b : a - b;
+		text = usePlus ? `${a} + ${b}` : `${a} − ${b}`;
+	} else if (phase === 1) {
+		// Medium: bigger numbers or simple multiply
+		const op = Math.random();
+		if (op < 0.35) {
+			// multiply
+			a = randomInt(2, 12);
+			b = randomInt(2, 9);
+			answer = a * b;
+			text = `${a} × ${b}`;
+		} else if (op < 0.65) {
+			// add with bigger numbers
+			a = randomInt(15, 80);
+			b = randomInt(10, 50);
+			answer = a + b;
+			text = `${a} + ${b}`;
+		} else {
+			// subtract bigger
+			a = randomInt(30, 99);
+			b = randomInt(10, a - 1);
+			answer = a - b;
+			text = `${a} − ${b}`;
+		}
+	} else {
+		// Hard: multiply/divide, large ranges
+		const op = Math.random();
+		if (op < 0.4) {
+			// multiply larger
+			a = randomInt(4, 15);
+			b = randomInt(3, 12);
+			answer = a * b;
+			text = `${a} × ${b}`;
+		} else if (op < 0.7) {
+			// divide (always clean)
+			b = randomInt(2, 12);
+			answer = randomInt(2, 15);
+			a = b * answer;
+			text = `${a} ÷ ${b}`;
+		} else {
+			// big add/sub
+			a = randomInt(50, 200);
+			b = randomInt(20, 100);
+			const usePlus = Math.random() > 0.5;
+			answer = usePlus ? a + b : a - b;
+			text = usePlus ? `${a} + ${b}` : `${a} − ${b}`;
+		}
+	}
 
 	const options = new Set<number>([answer]);
 	while (options.size < 4) {
-		const noise = randomInt(-9, 9);
-		options.add(answer + noise);
+		const noise = randomInt(-decoySpread, decoySpread);
+		if (noise !== 0) options.add(answer + noise);
 	}
 
 	return {
@@ -50,14 +109,11 @@ export default function SkyMathGame() {
 
 	const [index, setIndex] = useState(0);
 	const [score, setScore] = useState(0);
-	const [question, setQuestion] = useState<Question>(() => createQuestion());
+	const [question, setQuestion] = useState<Question>(() => createQuestion(0));
 	const [selectedOption, setSelectedOption] = useState<number | null>(null);
 	const [showResult, setShowResult] = useState(false);
 
-	const progressLabel = useMemo(
-		() => `${index + 1} / ${TOTAL_QUESTIONS}`,
-		[index],
-	);
+	const progressLabel = `${index + 1} / ${TOTAL_QUESTIONS}`;
 	const progressFraction = (index + 1) / TOTAL_QUESTIONS;
 
 	const handleAnswer = (value: number) => {
@@ -79,7 +135,7 @@ export default function SkyMathGame() {
 			setScore(nextScore);
 			setIndex((prev) => prev + 1);
 			setSelectedOption(null);
-			setQuestion(createQuestion());
+			setQuestion(createQuestion(index + 1));
 		}, 550);
 	};
 
@@ -170,7 +226,7 @@ export default function SkyMathGame() {
 						setIndex(0);
 						setScore(0);
 						setSelectedOption(null);
-						setQuestion(createQuestion());
+						setQuestion(createQuestion(0));
 						setShowResult(false);
 					}}
 				/>

@@ -160,7 +160,7 @@ export default function RelaxScreen() {
 			const dur = phase.duration * 1000;
 			// Inhale → grow, hold → stay, exhale → shrink, hold → stay
 			if (phase.key === ("breatheIn" as TranslationKey)) {
-				breathScale.value = withTiming(1.15, {
+				breathScale.value = withTiming(1.3, {
 					duration: dur,
 					easing: Easing.inOut(Easing.ease),
 				});
@@ -348,6 +348,7 @@ export default function RelaxScreen() {
 							<Animated.View
 								key={scape.id}
 								entering={FadeInDown.delay(300 + scapeIndex * 80).springify()}
+								style={styles.soundCol}
 							>
 								<AnimatedPressable
 									style={[
@@ -500,8 +501,11 @@ const styles = StyleSheet.create({
 		flexWrap: "wrap",
 		gap: 12,
 	},
-	soundCard: {
+	soundCol: {
 		width: "47%",
+	},
+	soundCard: {
+		width: "100%",
 		borderWidth: 2,
 		borderRadius: 16,
 		padding: 20,

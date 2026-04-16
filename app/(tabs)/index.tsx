@@ -174,7 +174,10 @@ export default function HomeScreen() {
 			{/* Quick Actions */}
 			<Text style={styles.sectionTitle}>{t("quickActions")}</Text>
 			<View style={styles.actions}>
-				<Animated.View entering={FadeInDown.delay(100).springify()}>
+				<Animated.View
+					entering={FadeInDown.delay(100).springify()}
+					style={styles.actionCol}
+				>
 					<AnimatedPressable
 						style={[
 							styles.actionButton,
@@ -191,7 +194,10 @@ export default function HomeScreen() {
 					</AnimatedPressable>
 				</Animated.View>
 
-				<Animated.View entering={FadeInDown.delay(200).springify()}>
+				<Animated.View
+					entering={FadeInDown.delay(200).springify()}
+					style={styles.actionCol}
+				>
 					<AnimatedPressable
 						style={[
 							styles.actionButton,
@@ -204,7 +210,10 @@ export default function HomeScreen() {
 					</AnimatedPressable>
 				</Animated.View>
 
-				<Animated.View entering={FadeInDown.delay(300).springify()}>
+				<Animated.View
+					entering={FadeInDown.delay(300).springify()}
+					style={styles.actionCol}
+				>
 					<AnimatedPressable
 						style={[
 							styles.actionButton,
@@ -265,166 +274,176 @@ export default function HomeScreen() {
 				</AnimatedPressable>
 			</Animated.View>
 
-			<Text style={styles.sectionTitle}>{t("playTogether")}</Text>
-			<ScrollView
-				horizontal
-				showsHorizontalScrollIndicator={false}
-				style={styles.playTogetherRow}
-				contentContainerStyle={styles.playTogetherRowContent}
-			>
-				<AnimatedPressable
-					style={[
-						styles.playTogetherCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/game/duel-tictactoe")}
+			<Animated.View entering={FadeInDown.delay(400).springify()}>
+				<Text style={styles.sectionTitle}>{t("playTogether")}</Text>
+				<ScrollView
+					horizontal
+					showsHorizontalScrollIndicator={false}
+					style={styles.playTogetherRow}
+					contentContainerStyle={styles.playTogetherRowContent}
 				>
-					<Ionicons name="people-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>
-						{t("gameDuelTicTacToeName")}
-					</Text>
-					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						{t("playTogetherBestOfMode")}
-					</Text>
-				</AnimatedPressable>
-
-				<AnimatedPressable
-					style={[
-						styles.playTogetherCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/game/duel-dice")}
-				>
-					<Ionicons name="dice-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>{t("gameDuelDiceName")}</Text>
-					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						{t("playTogetherPassAndPlay")}
-					</Text>
-				</AnimatedPressable>
-
-				<AnimatedPressable
-					style={[
-						styles.playTogetherCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/game/duel-connect4")}
-				>
-					<Ionicons name="apps-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>
-						{t("gameDuelConnect4Name")}
-					</Text>
-					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						{t("playTogetherBestOfMode")}
-					</Text>
-				</AnimatedPressable>
-
-				<AnimatedPressable
-					style={[
-						styles.playTogetherCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/game/duel-emoji-find")}
-				>
-					<Ionicons name="search-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>
-						{t("gameDuelEmojiFindName")}
-					</Text>
-					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						{t("playTogetherSharedScreen")}
-					</Text>
-				</AnimatedPressable>
-
-				<AnimatedPressable
-					style={[
-						styles.playTogetherCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/game/duel-hangman")}
-				>
-					<Ionicons name="text-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>
-						{t("gameDuelHangmanName")}
-					</Text>
-					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						{t("playTogetherPassAndPlay")}
-					</Text>
-				</AnimatedPressable>
-
-				<AnimatedPressable
-					style={[
-						styles.playTogetherCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/game/cross-air-radar")}
-				>
-					<Ionicons name="radio-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>
-						{t("gameCrossAirRadarName")}
-					</Text>
-					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						{t("playTogetherCrossDevice")}
-					</Text>
-				</AnimatedPressable>
-
-				<AnimatedPressable
-					style={[
-						styles.playTogetherCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/game/cross-code-breaker")}
-				>
-					<Ionicons name="lock-open-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>
-						{t("gameCrossCodeBreakerName")}
-					</Text>
-					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						{t("playTogetherCrossDevice")}
-					</Text>
-				</AnimatedPressable>
-
-				<AnimatedPressable
-					style={[
-						styles.playTogetherCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push("/game/cross-liars-dice")}
-				>
-					<Ionicons name="skull-outline" size={22} color={theme.tint} />
-					<Text style={styles.playTogetherTitle}>
-						{t("gameCrossLiarsDiceName")}
-					</Text>
-					<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
-						{t("playTogetherCrossDevice")}
-					</Text>
-				</AnimatedPressable>
-			</ScrollView>
-
-			<Text style={styles.sectionTitle}>{t("featuredForFlight")}</Text>
-			{featuredArticles.map((article) => (
-				<AnimatedPressable
-					key={article.id}
-					style={[
-						styles.featuredCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-					onPress={() => router.push(`/content/${article.id}` as never)}
-				>
-					<View
-						lightColor="transparent"
-						darkColor="transparent"
-						style={styles.featuredBody}
+					<AnimatedPressable
+						style={[
+							styles.playTogetherCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/game/duel-tictactoe")}
 					>
-						<Text style={[styles.featuredCategory, { color: theme.tint }]}>
-							{article.categoryText}
+						<Ionicons name="people-outline" size={22} color={theme.tint} />
+						<Text style={styles.playTogetherTitle}>
+							{t("gameDuelTicTacToeName")}
 						</Text>
-						<Text style={styles.featuredTitle}>{article.titleText}</Text>
-						<Text style={[styles.featuredMeta, { color: theme.mutedText }]}>
-							~{t("minutesShort", { minutes: article.readTime })}
+						<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+							{t("playTogetherBestOfMode")}
 						</Text>
-					</View>
-					<Ionicons name="chevron-forward" size={20} color={theme.mutedText} />
-				</AnimatedPressable>
-			))}
+					</AnimatedPressable>
+
+					<AnimatedPressable
+						style={[
+							styles.playTogetherCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/game/duel-dice")}
+					>
+						<Ionicons name="dice-outline" size={22} color={theme.tint} />
+						<Text style={styles.playTogetherTitle}>
+							{t("gameDuelDiceName")}
+						</Text>
+						<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+							{t("playTogetherPassAndPlay")}
+						</Text>
+					</AnimatedPressable>
+
+					<AnimatedPressable
+						style={[
+							styles.playTogetherCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/game/duel-connect4")}
+					>
+						<Ionicons name="apps-outline" size={22} color={theme.tint} />
+						<Text style={styles.playTogetherTitle}>
+							{t("gameDuelConnect4Name")}
+						</Text>
+						<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+							{t("playTogetherBestOfMode")}
+						</Text>
+					</AnimatedPressable>
+
+					<AnimatedPressable
+						style={[
+							styles.playTogetherCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/game/duel-emoji-find")}
+					>
+						<Ionicons name="search-outline" size={22} color={theme.tint} />
+						<Text style={styles.playTogetherTitle}>
+							{t("gameDuelEmojiFindName")}
+						</Text>
+						<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+							{t("playTogetherSharedScreen")}
+						</Text>
+					</AnimatedPressable>
+
+					<AnimatedPressable
+						style={[
+							styles.playTogetherCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/game/duel-hangman")}
+					>
+						<Ionicons name="text-outline" size={22} color={theme.tint} />
+						<Text style={styles.playTogetherTitle}>
+							{t("gameDuelHangmanName")}
+						</Text>
+						<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+							{t("playTogetherPassAndPlay")}
+						</Text>
+					</AnimatedPressable>
+
+					<AnimatedPressable
+						style={[
+							styles.playTogetherCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/game/cross-air-radar")}
+					>
+						<Ionicons name="radio-outline" size={22} color={theme.tint} />
+						<Text style={styles.playTogetherTitle}>
+							{t("gameCrossAirRadarName")}
+						</Text>
+						<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+							{t("playTogetherCrossDevice")}
+						</Text>
+					</AnimatedPressable>
+
+					<AnimatedPressable
+						style={[
+							styles.playTogetherCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/game/cross-code-breaker")}
+					>
+						<Ionicons name="lock-open-outline" size={22} color={theme.tint} />
+						<Text style={styles.playTogetherTitle}>
+							{t("gameCrossCodeBreakerName")}
+						</Text>
+						<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+							{t("playTogetherCrossDevice")}
+						</Text>
+					</AnimatedPressable>
+
+					<AnimatedPressable
+						style={[
+							styles.playTogetherCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push("/game/cross-liars-dice")}
+					>
+						<Ionicons name="skull-outline" size={22} color={theme.tint} />
+						<Text style={styles.playTogetherTitle}>
+							{t("gameCrossLiarsDiceName")}
+						</Text>
+						<Text style={[styles.playTogetherMeta, { color: theme.mutedText }]}>
+							{t("playTogetherCrossDevice")}
+						</Text>
+					</AnimatedPressable>
+				</ScrollView>
+			</Animated.View>
+
+			<Animated.View entering={FadeInDown.delay(450).springify()}>
+				<Text style={styles.sectionTitle}>{t("featuredForFlight")}</Text>
+				{featuredArticles.map((article) => (
+					<AnimatedPressable
+						key={article.id}
+						style={[
+							styles.featuredCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push(`/content/${article.id}` as never)}
+					>
+						<View
+							lightColor="transparent"
+							darkColor="transparent"
+							style={styles.featuredBody}
+						>
+							<Text style={[styles.featuredCategory, { color: theme.tint }]}>
+								{article.categoryText}
+							</Text>
+							<Text style={styles.featuredTitle}>{article.titleText}</Text>
+							<Text style={[styles.featuredMeta, { color: theme.mutedText }]}>
+								~{t("minutesShort", { minutes: article.readTime })}
+							</Text>
+						</View>
+						<Ionicons
+							name="chevron-forward"
+							size={20}
+							color={theme.mutedText}
+						/>
+					</AnimatedPressable>
+				))}
+			</Animated.View>
 		</ScrollView>
 	);
 }
@@ -517,6 +536,7 @@ const styles = StyleSheet.create({
 	// Quick actions
 	sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 12 },
 	actions: { flexDirection: "row", gap: 12 },
+	actionCol: { flex: 1 },
 	actionButton: {
 		flex: 1,
 		alignItems: "center",

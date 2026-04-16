@@ -7,9 +7,19 @@ export const ko = {
 	stackArticle: "기사",
 	stackEditFlight: "항공편 편집",
 	stackSettings: "설정",
+	updateAvailableTitle: "업데이트 가능",
+	updateAvailableMessage:
+		"새 버전이 다운로드되었습니다. 다시 시작하시겠습니까?",
+	updateLater: "나중에",
+	updateRestart: "다시 시작",
 	language: "언어",
 	languageSystem: "시스템",
 	languageDevice: "기기: {{language}}",
+	theme: "테마",
+	themeSystem: "시스템",
+	themeLight: "라이트",
+	themeDark: "다크",
+	themeCrazy: "크레이지",
 	yourFlight: "내 항공편",
 	remainingTime: "{{hours}}시간 {{minutes}}분 남음",
 	recommendationLong: "긴 비행이 예정되어 있습니다. 콘텐츠나 휴식을 즐겨보세요",
@@ -102,6 +112,44 @@ export const ko = {
 	gameCrossCodeBreakerDescription: "비밀 4자리 코드를 해독하세요",
 	gameCrossLiarsDiceName: "거짓말 주사위",
 	gameCrossLiarsDiceDescription: "숨겨진 주사위로 블러프",
+	rulesMemory:
+		"🎯 목표\n• 최소 횟수로 모든 카드 쌍을 찾으세요.\n\n🃏 플레이 방법\n• 탭하여 턴마다 카드 2장을 뒤집습니다.\n• 일치하면 열린 채 유지됩니다.\n• 아니면 다시 뒤집힙니다 — 위치를 기억하세요!\n\n⭐ 점수\n• 적은 횟수 = 높은 점수.\n• 개인 기록을 경신해 보세요!",
+	rulesTouchdown:
+		"🎯 목표\n• 시간이 다 되기 전에 최대한 많이 탭하세요!\n\n👆 플레이 방법\n• 20초 동안 화면을 탭합니다.\n• 모든 탭이 점수에 카운트됩니다.\n\n⭐ 팁\n• 빠르고 가벼운 탭이 가장 효과적입니다.",
+	rulesSkyMath:
+		"🎯 목표\n• 수학 문제를 최대한 빨리 풀어보세요.\n\n🧮 플레이 방법\n• 화면에 수식이 나타납니다.\n• 선택지에서 정답을 고르세요.\n• 정답 = 점수. 오답 = 목숨 감소.\n\n⭐ 팁\n• 속도가 중요합니다 — 빠른 답변 = 더 많은 점수!",
+	rulesQuiz:
+		"🎯 목표\n• 여행과 항공 퀴즈 10문제에 답하세요.\n\n✈️ 플레이 방법\n• 질문을 읽고 답을 고르세요.\n• 시간이 다 되기 전에 답하세요.\n• 정답마다 점수 획득.\n\n⭐ 팁\n• 빨리 답할수록 더 많은 점수!",
+	rulesReaction:
+		"🎯 목표\n• 반사 신경 테스트 — 최대한 빨리 탭하세요!\n\n⚡ 플레이 방법\n• 화면이 초록색이 될 때까지 기다립니다.\n• 변하는 순간 즉시 탭!\n• 너무 빨리 탭하면 안 됩니다 — 부정 출발!\n\n⭐ 점수\n• 반응 시간(ms)이 점수입니다.\n• 낮을수록 좋습니다!",
+	rulesRunwayLanding:
+		"🎯 목표\n• 녹색 존에 정확히 착륙하세요.\n\n🛬 플레이 방법\n• 비행기가 활주로로 하강 중입니다.\n• 고도 표시기를 주의 깊게 관찰하세요.\n• 녹색 존에 들어오면 착륙을 탭합니다.\n\n⭐ 점수\n• 중심에 가까울수록 높은 점수.\n• 완벽한 착륙 = 최대 점수!",
+	rulesCabinCall:
+		"🎯 목표\n• 승무원의 명령을 최대한 빨리 따르세요.\n\n🧑‍✈️ 플레이 방법\n• 승무원이 동작을 지시합니다(벨트, 트레이 등).\n• 올바른 버튼을 최대한 빨리 탭합니다.\n• 속도로 보너스 점수.\n\n⭐ 팁\n• 집중하세요 — 명령이 점점 빨라집니다!",
+	rulesAirTrafficControl:
+		"🎯 목표\n• 모든 비행기를 올바른 활주로로 유도하세요.\n\n🗼 플레이 방법\n• 비행기가 왼쪽 대기열에 나타납니다.\n• 각 비행기를 맞는 활주로에 배정합니다.\n• 대기열이 넘치지 않게 하세요!\n\n⭐ 팁\n• 침착하게 — 점점 빨라집니다!",
+	rulesFlightPath:
+		"🎯 목표\n• 각 비행기를 활주로로 유도하세요.\n\n✏️ 플레이 방법\n• 비행기에서 활주로까지 경로를 그립니다.\n• 색상 매칭: 비행기 → 같은 색 활주로.\n• 경로가 교차하면 안 됩니다!\n\n⭐ 팁\n• 충돌을 피하려면 먼저 경로를 계획하세요.",
+	rulesSkyDefense:
+		"🎯 목표\n• 공항을 폭풍으로부터 보호하세요.\n\n🏗️ 플레이 방법\n• 그리드에 방어 타워를 배치합니다.\n• 타워가 범위 내 적을 자동 공격합니다.\n• 적이 경로를 따라 이동 — 제때 막으세요.\n\n⭐ 타워 종류\n• 📡 레이더 — 적을 감지하고 감속.\n• 🚀 SAM — 적에게 미사일 발사.",
+	rulesStackSort:
+		"🎯 목표\n• 모든 카드를 목표 열에 정렬하세요.\n\n🗂️ 플레이 방법\n• 카드를 탭하여 집어 올립니다.\n• 빈 자리나 더 큰 숫자의 카드 위에 놓습니다.\n• 목표 열의 카드는 오름차순이어야 합니다.\n\n⭐ 팁\n• 임시 슬롯을 전략적으로 활용하세요 — 미리 계획!",
+	rulesTicTacToe:
+		"🎯 목표\n• 자신의 표시 3개를 줄에 놓으세요!\n\n❌⭕ 플레이 방법\n• 두 플레이어가 한 기기에서 번갈아 플레이.\n• 플레이어 1은 ✕, 플레이어 2는 ○를 놓습니다.\n• 빈 칸에 표시를 놓으세요.\n\n🏆 승리\n• 먼저 3개를 줄에 놓으면(가로, 세로, 대각선) 승리.\n• 판이 다 차면 승자 없이 — 무승부!",
+	rulesDice:
+		"🎯 목표\n• 여러 라운드에서 최고 합계를 달성하세요.\n\n🎲 플레이 방법\n• 2~6명이 번갈아 주사위를 굴립니다.\n• 매 굴림 후 유지할 주사위를 선택.\n• 나머지를 다시 굴려 합계를 높이세요.\n\n🏆 승리\n• 모든 라운드 후 최고 총점이 승리!",
+	rulesConnect4:
+		"🎯 목표\n• 디스크 4개를 줄에 연결하세요.\n\n🔴🟡 플레이 방법\n• 두 플레이어가 번갈아 디스크를 떨어뜨립니다.\n• 열을 탭하여 디스크를 투입.\n• 가장 아래 빈 자리에 떨어집니다.\n\n🏆 승리\n• 먼저 4개를 연결하면 승리!\n• 유효: 가로 ↔, 세로 ↕, 대각선 ↗↘",
+	rulesEmojiFind:
+		"🎯 목표\n• 상대보다 먼저 목표 이모지를 찾으세요!\n\n🔍 플레이 방법\n• 2~6명이 한 기기에서 번갈아 플레이.\n• 목표 이모지가 상단에 표시됩니다.\n• 그리드에서 찾아서 탭!\n• 각 플레이어에게 라운드당 시간 제한.\n\n🏆 승리\n• 가장 빠른 발견자가 최다 점수.\n• 모든 라운드 후 최다 점수가 승리!",
+	rulesHangman:
+		"🎯 목표\n• 행맨이 완성되기 전에 숨겨진 단어를 맞추세요!\n\n🔤 플레이 방법\n• 2~6명 — 맞추는 사람이 매 라운드 교대.\n• 키보드의 글자를 탭하여 추측.\n• 맞는 글자 → 단어에 표시.\n• 틀린 글자 → 행맨의 일부가 그려짐.\n\n🏆 점수\n• 맞추는 사람이 단어 해결 시 10점.\n• 실패 시 나머지 모두 5점씩 획득.\n• 6번 틀리면 = 라운드 종료!",
+	rulesAirRadar:
+		"🎯 목표\n• 모든 적 항공기를 찾아 격침하세요!\n\n📡 플레이 방법\n• 각 플레이어가 그리드에 항공기 3대 배치.\n• 번갈아 적 그리드에 사격.\n• 🔴 명중 = 항공기에 적중.\n• ⚪ 빗나감 = 빈 바다.\n\n🏆 승리\n• 먼저 적 항공기 3대를 모두 격침하면 승리!",
+	rulesCodeBreaker:
+		"🎯 목표\n• 비밀 4자리 코드를 해독하세요!\n\n🔢 플레이 방법\n• 2~6명이 번갈아 추측.\n• 코드는 4개의 고유 숫자(0~9).\n• 매 추측 후 피드백:\n• 🟢 초록 핀 = 정확한 숫자, 정확한 위치.\n• 🟠 주황 핀 = 정확한 숫자, 잘못된 위치.\n• ⚫ 핀 없음 = 코드에 없는 숫자.\n\n🏆 점수\n• 적은 추측 = 더 많은 점수.\n• 먼저 코드를 해독하면 보너스!",
+	rulesLiarsDice:
+		"🎯 목표\n• 주사위가 남아있는 마지막 플레이어가 되세요!\n\n🎲 플레이 방법\n• 2~6명, 각자 주사위 5개로 시작.\n• 매 라운드 자신의 주사위를 비밀리 확인.\n• 플레이어가 번갈아 선언:\n→ \"테이블에 Y가 최소 X개 있다\"\n• 각 선언은 이전보다 높아야 합니다.\n• 선언이 거짓이라고 생각되면 \"거짓말!\"을 외치세요.\n\n🔍 공개\n• 선언이 거짓이면 → 선언자가 주사위 1개 잃음.\n• 사실이면 → 고발자가 주사위 1개 잃음.\n• 주사위를 모두 잃으면 = 탈락!\n\n🏆 마지막 남은 플레이어가 승리!",
 	skyDefenseTitle: "스카이 디펜스",
 	skyDefenseIntro:
 		"폭풍이 공항에 접근합니다!\n타워를 건설하여 활주로를 보호하세요.\n그리드에 타워를 배치하고 적을 처치하세요\n끝에 도달하기 전에.",
@@ -187,6 +235,10 @@ export const ko = {
 	ccCmdTray: "테이블 접기",
 	ccCmdWindow: "창문 가리개 열기",
 	ccCmdPhone: "비행기 모드 켜기",
+	ccCmdLight: "독서등 끄기",
+	ccCmdMusic: "채널 맞추기",
+	ccCmdBag: "가방 보관",
+	ccCmdWifi: "Wi-Fi 연결",
 	ccCrewSays: "승무원이 말합니다:",
 	ccStreak: "연속: {{streak}}",
 	ccPlayAgain: "다시 하기",
@@ -545,18 +597,12 @@ export const ko = {
 	arRotate: "회전",
 	arReady: "준비!",
 	arReset: "초기화",
-	arMyFleet: "내 함대",
-	arAttackMap: "공격 지도",
 	arHit: "명중!",
 	arMiss: "빗나감",
-	arAnnounce: "이 좌표를 상대에게 말하세요",
-	arTheyHit: "상대 답변: 명중",
-	arTheyMiss: "상대 답변: 빗나감",
-	arDefenseHint: "상대가 좌표를 말합니다 — 해당 셀을 탭하세요",
-	arHitsGiven: "준 명중",
-	arHitsTaken: "받은 명중",
-	arYouWin: "승리!",
-	arYouLose: "패배",
+	arHitsGiven: "명중",
+	arPlayerWins: "{{player}} 승리!",
+	arTurnTitle: "{{player}}의 차례",
+	arTapToFire: "셀을 탭하여 발사",
 	// Code Breaker
 	cbSetSecret: "비밀 코드를 설정하세요",
 	cbSecretHint: "고유한 4자리 숫자 (0–9)",
@@ -621,6 +667,10 @@ export const ko = {
 	exploreSortShortestRead: "짧은 읽기",
 	exploreSortLongestRead: "긴 읽기",
 	exploreSortTitle: "제목",
+	exploreNoResults: "기사를 찾을 수 없습니다",
+	// Onboarding
+	onboardingLanguageTitle: "언어 선택",
+	onboardingLanguageSubtitle: "사용할 언어를 선택하세요",
 	onboardingTitle1: "환영합니다",
 	onboardingSubtitle1: "게임, 휴식 등을 위한 기내 동반자",
 	onboardingTitle2: "오프라인 엔터테인먼트",
@@ -680,6 +730,28 @@ export const ko = {
 	achieveSpeedDemonDesc: "반응 시간 200ms 미만",
 	achieveTapChampionTitle: "탭 챔피언",
 	achieveTapChampionDesc: "Tap Rush에서 100+점",
+	passPhone: "폰을 넘겨주세요",
+	passPhoneTo: "{{player}}에게 폰을 넘겨주세요",
+	passPhoneReady: "준비됐어요",
+	passPhoneDontLook: "보지 마세요!",
+	hmPassToGuesser: "플레이어 {{player}}이(가) 다음에 추측합니다",
+	hmPassToGuesserHint: "단어를 고르는 사람은 화면을 보면 안 됩니다",
+	cbPassAfterSecret: "비밀 코드가 설정되었습니다!",
+	cbPassAfterSecretHint: "폰을 넘겨주세요 — 상대가 보지 못하게",
+	ldDiceRolled: "주사위가 준비되었습니다",
+	ldDiceRolledHint: "자신만 화면을 볼 수 있도록 하세요",
+	ldPeek: "내 주사위 보기",
+
 	achievePerfectLandingTitle: "퍼펙트 랜딩",
 	achievePerfectLandingDesc: "Runway Landing에서 500+점",
+	ldLosesDie: "주사위 하나를 잃었습니다!",
+	mpSelectPlayers: "몇 명이서 할까요?",
+	mpPlayerN: "플레이어 {{n}}",
+	diceWinsLabel: "승리",
+	dicePtsLabel: "점",
+	efHandoff: "{{seconds}}초 안에 최대한 많이 찾으세요!",
+	efGo: "시작!",
+	cbHandoffHint: "엿보지 마세요 — 본인만 화면을 봐야 해요",
+	cbNobodyCracked: "아무도 코드를 풀지 못했습니다!",
+	cbSecretWas: "비밀 코드는",
 } as const;

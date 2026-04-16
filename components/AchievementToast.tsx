@@ -22,6 +22,7 @@ export default function AchievementToast() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const newUnlockedIds = useAchievementStore((s) => s.newUnlockedIds);
+	const clearNewUnlocked = useAchievementStore((s) => s.clearNewUnlocked);
 	const [visible, setVisible] = useState<string | null>(null);
 	const [queue, setQueue] = useState<string[]>([]);
 
@@ -34,10 +35,11 @@ export default function AchievementToast() {
 				);
 				return [...prev, ...fresh];
 			});
+			clearNewUnlocked();
 		}
 	}, [newUnlockedIds]);
 
-	// Process queue
+	// Process queue – pick next item when nothing is visible
 	useEffect(() => {
 		if (visible || queue.length === 0) return;
 
@@ -45,13 +47,14 @@ export default function AchievementToast() {
 		setQueue((prev) => prev.slice(1));
 		setVisible(next);
 		haptic.heavy();
-
-		const timer = setTimeout(() => {
-			setVisible(null);
-		}, DISPLAY_MS);
-
-		return () => clearTimeout(timer);
 	}, [visible, queue]);
+
+	// Auto-dismiss after DISPLAY_MS (separate effect so cleanup doesn't kill the timer)
+	useEffect(() => {
+		if (!visible) return;
+		const timer = setTimeout(() => setVisible(null), DISPLAY_MS);
+		return () => clearTimeout(timer);
+	}, [visible]);
 
 	if (!visible) return null;
 

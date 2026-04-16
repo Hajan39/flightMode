@@ -7,9 +7,18 @@ export const pt = {
 	stackArticle: "Artigo",
 	stackEditFlight: "Editar voo",
 	stackSettings: "Configurações",
+	updateAvailableTitle: "Atualização disponível",
+	updateAvailableMessage: "Uma nova versão foi baixada. Reiniciar?",
+	updateLater: "Mais tarde",
+	updateRestart: "Reiniciar",
 	language: "Idioma",
 	languageSystem: "Sistema",
 	languageDevice: "Dispositivo: {{language}}",
+	theme: "Aparência",
+	themeSystem: "Sistema",
+	themeLight: "Claro",
+	themeDark: "Escuro",
+	themeCrazy: "Louco",
 	yourFlight: "Seu voo",
 	remainingTime: "{{hours}}h {{minutes}}m restantes",
 	recommendationLong:
@@ -107,6 +116,44 @@ export const pt = {
 	gameCrossCodeBreakerDescription: "Decifre o código secreto de 4 dígitos",
 	gameCrossLiarsDiceName: "Dados Mentirosos",
 	gameCrossLiarsDiceDescription: "Blefe com dados escondidos",
+	rulesMemory:
+		"🎯 Objetivo\n• Encontre todos os pares de cartas com o mínimo de jogadas.\n\n🃏 Como jogar\n• Toque para virar duas cartas por turno.\n• Se combinarem, ficam viradas.\n• Se não, voltam — lembre-se das posições!\n\n⭐ Pontuação\n• Menos jogadas = pontuação mais alta.\n• Tente bater seu recorde pessoal!",
+	rulesTouchdown:
+		"🎯 Objetivo\n• Toque o máximo de vezes antes que o tempo acabe!\n\n👆 Como jogar\n• Toque na tela por 20 segundos.\n• Cada toque conta para sua pontuação.\n\n⭐ Dica\n• Toques rápidos e leves funcionam melhor.",
+	rulesSkyMath:
+		"🎯 Objetivo\n• Resolva problemas de matemática o mais rápido possível.\n\n🧮 Como jogar\n• Uma equação aparece na tela.\n• Escolha a resposta correta entre as opções.\n• Correta = pontos. Errada = perde uma vida.\n\n⭐ Dica\n• Velocidade importa — respostas mais rápidas = mais pontos!",
+	rulesQuiz:
+		"🎯 Objetivo\n• Responda 10 perguntas sobre viagens e aviação.\n\n✈️ Como jogar\n• Leia a pergunta e escolha uma resposta.\n• Responda antes que o tempo acabe.\n• Cada resposta correta = pontos.\n\n⭐ Dica\n• Quanto mais rápido responder, mais pontos ganha!",
+	rulesReaction:
+		"🎯 Objetivo\n• Teste seus reflexos — toque o mais rápido possível!\n\n⚡ Como jogar\n• Espere a tela ficar verde.\n• Toque imediatamente quando mudar!\n• Não toque antes da hora — é uma largada falsa.\n\n⭐ Pontuação\n• Seu tempo de reação em ms é sua pontuação.\n• Menor = melhor!",
+	rulesRunwayLanding:
+		"🎯 Objetivo\n• Aterrisse com precisão na zona verde.\n\n🛬 Como jogar\n• Um avião desce em direção à pista.\n• Observe o indicador de altitude com atenção.\n• Toque ATERRISSAR quando estiver na zona verde.\n\n⭐ Pontuação\n• Quanto mais perto do centro, maior a pontuação.\n• Aterrissagem perfeita = pontos máximos!",
+	rulesCabinCall:
+		"🎯 Objetivo\n• Siga as ordens da tripulação o mais rápido possível.\n\n🧑‍✈️ Como jogar\n• A tripulação anuncia uma ação (cinto, bandeja, etc.).\n• Toque no botão correto o mais rápido possível.\n• Velocidade dá pontos bônus.\n\n⭐ Dica\n• Fique concentrado — as ordens aceleram!",
+	rulesAirTrafficControl:
+		"🎯 Objetivo\n• Direcione todos os aviões para as pistas corretas.\n\n🗼 Como jogar\n• Aviões aparecem na fila à esquerda.\n• Direcione cada avião para a pista certa.\n• Não deixe a fila transbordar!\n\n⭐ Dica\n• Mantenha a calma — vai acelerando!",
+	rulesFlightPath:
+		"🎯 Objetivo\n• Guie cada avião até sua pista.\n\n✏️ Como jogar\n• Desenhe uma rota do avião até a pista.\n• Combine cores: avião → pista da mesma cor.\n• As rotas não podem se cruzar!\n\n⭐ Dica\n• Planeje suas rotas antes de desenhar para evitar conflitos.",
+	rulesSkyDefense:
+		"🎯 Objetivo\n• Proteja o aeroporto das tempestades.\n\n🏗️ Como jogar\n• Coloque torres de defesa na grade.\n• Torres atacam automaticamente inimigos no alcance.\n• Inimigos seguem o caminho — pare-os a tempo.\n\n⭐ Tipos de torre\n• 📡 Radar — detecta e desacelera inimigos.\n• 🚀 SAM — dispara mísseis nos inimigos.",
+	rulesStackSort:
+		"🎯 Objetivo\n• Ordene todas as cartas na coluna alvo.\n\n🗂️ Como jogar\n• Toque em uma carta para pegá-la.\n• Coloque-a em espaço vazio ou sobre uma carta maior.\n• Cartas na coluna alvo devem estar em ordem crescente.\n\n⭐ Dica\n• Use os espaços temporários estrategicamente — planeje!",
+	rulesTicTacToe:
+		"🎯 Objetivo\n• Coloque três marcas em linha!\n\n❌⭕ Como jogar\n• Dois jogadores se alternam em um dispositivo.\n• Jogador 1 coloca ✕, Jogador 2 coloca ○.\n• Coloque sua marca em qualquer célula vazia.\n\n🏆 Vitória\n• O primeiro a fazer 3 em linha (horizontal, vertical ou diagonal) vence.\n• Se o tabuleiro encher sem vencedor — empate!",
+	rulesDice:
+		"🎯 Objetivo\n• Consiga o maior total em várias rodadas.\n\n🎲 Como jogar\n• 2–6 jogadores lançam dados alternadamente.\n• Após cada lançamento, escolha quais dados manter.\n• Relance o resto para melhorar seu total.\n\n🏆 Vitória\n• Maior pontuação total após todas as rodadas vence!",
+	rulesConnect4:
+		"🎯 Objetivo\n• Conecte 4 fichas em linha.\n\n🔴🟡 Como jogar\n• Dois jogadores se alternam para soltar fichas.\n• Toque em uma coluna para soltar sua ficha.\n• Ela cai no espaço livre mais baixo.\n\n🏆 Vitória\n• O primeiro a conectar 4 em linha vence!\n• Contam: horizontal ↔, vertical ↕, diagonal ↗↘",
+	rulesEmojiFind:
+		"🎯 Objetivo\n• Encontre o emoji alvo mais rápido que seu oponente!\n\n🔍 Como jogar\n• 2–6 jogadores se alternam em um dispositivo.\n• O emoji alvo é mostrado no topo.\n• Encontre-o na grade e toque nele!\n• Cada jogador tem um limite de tempo por rodada.\n\n🏆 Vitória\n• O mais rápido ganha mais pontos.\n• Quem tiver mais pontos após todas as rodadas vence!",
+	rulesHangman:
+		"🎯 Objetivo\n• Adivinhe a palavra oculta antes que o boneco esteja completo!\n\n🔤 Como jogar\n• 2–6 jogadores — o adivinhador muda a cada rodada.\n• Toque nas letras do teclado para adivinhar.\n• Letra correta → aparece na palavra.\n• Letra errada → uma parte do boneco é desenhada.\n\n🏆 Pontuação\n• Adivinhador ganha 10 pts ao resolver a palavra.\n• Se falhar, os outros ganham 5 pts cada.\n• 6 erros = fim da rodada!",
+	rulesAirRadar:
+		"🎯 Objetivo\n• Encontre e afunde todos os aviões inimigos!\n\n📡 Como jogar\n• Cada jogador posiciona 3 aviões em sua grade.\n• Alternam disparos na grade inimiga.\n• 🔴 Acerto = você atingiu um avião.\n• ⚪ Erro = água vazia.\n\n🏆 Vitória\n• O primeiro a afundar todos os 3 aviões inimigos vence!",
+	rulesCodeBreaker:
+		"🎯 Objetivo\n• Decifre o código secreto de 4 dígitos!\n\n🔢 Como jogar\n• 2–6 jogadores se alternam para adivinhar.\n• O código tem 4 dígitos únicos (0–9).\n• Após cada tentativa, você recebe dicas:\n• 🟢 Pino verde = dígito correto na posição correta.\n• 🟠 Pino laranja = dígito correto, posição errada.\n• ⚫ Sem pino = dígito não está no código.\n\n🏆 Pontuação\n• Menos tentativas = mais pontos.\n• O primeiro a decifrar o código recebe um bônus!",
+	rulesLiarsDice:
+		"🎯 Objetivo\n• Seja o último jogador com dados restantes!\n\n🎲 Como jogar\n• 2–6 jogadores, cada um começa com 5 dados.\n• Cada rodada, veja seus dados em segredo.\n• Jogadores se alternam em apostas:\n→ \"Há pelo menos X dados mostrando Y\"\n• Cada aposta deve ser maior que a anterior.\n• Diga \"Mentiroso!\" se achar que a aposta é falsa.\n\n🔍 Revelação\n• Se a aposta era mentira → o apostador perde um dado.\n• Se era verdade → o acusador perde um dado.\n• Perdeu todos os dados = eliminado!\n\n🏆 Último jogador em pé vence!",
 	skyDefenseTitle: "Defesa do céu",
 	skyDefenseIntro:
 		"Tempestades se aproximam do aeroporto!\nConstrua torres para proteger a pista.\nColoque torres na grade, elimine inimigos\nantes que alcancem o final.",
@@ -194,6 +241,10 @@ export const pt = {
 	ccCmdTray: "Mesa recolhida",
 	ccCmdWindow: "Persiana aberta",
 	ccCmdPhone: "Modo avião ativado",
+	ccCmdLight: "Desligar luz de leitura",
+	ccCmdMusic: "Sintonizar canal",
+	ccCmdBag: "Guardar bagagem",
+	ccCmdWifi: "Conectar Wi-Fi",
 	ccCrewSays: "Tripulação diz:",
 	ccStreak: "Sequência: {{streak}}",
 	ccPlayAgain: "JOGAR NOVAMENTE",
@@ -561,18 +612,12 @@ export const pt = {
 	arRotate: "Rotacionar",
 	arReady: "Pronto!",
 	arReset: "Reiniciar",
-	arMyFleet: "Minha frota",
-	arAttackMap: "Mapa de ataque",
 	arHit: "ACERTOU!",
 	arMiss: "ERROU",
-	arAnnounce: "Diga esta coordenada ao oponente",
-	arTheyHit: "Disseram: Acertou",
-	arTheyMiss: "Disseram: Errou",
-	arDefenseHint: "O oponente diz uma coordenada — toque nela",
-	arHitsGiven: "Acertos dados",
-	arHitsTaken: "Acertos recebidos",
-	arYouWin: "Você venceu!",
-	arYouLose: "Você perdeu",
+	arHitsGiven: "Acertos",
+	arPlayerWins: "{{player}} venceu!",
+	arTurnTitle: "Vez de {{player}}",
+	arTapToFire: "Toque em uma célula para atirar",
 	// Code Breaker
 	cbSetSecret: "Defina seu código secreto",
 	cbSecretHint: "4 dígitos únicos (0–9)",
@@ -637,6 +682,10 @@ export const pt = {
 	exploreSortShortestRead: "Leitura curta",
 	exploreSortLongestRead: "Leitura longa",
 	exploreSortTitle: "Título",
+	exploreNoResults: "Nenhum artigo encontrado",
+	// Onboarding
+	onboardingLanguageTitle: "Escolha o idioma",
+	onboardingLanguageSubtitle: "Selecione o idioma que deseja usar",
 	onboardingTitle1: "Bem-vindo a bordo",
 	onboardingSubtitle1: "Seu companheiro de voo para jogos, relaxamento e mais",
 	onboardingTitle2: "Entretenimento offline",
@@ -697,6 +746,28 @@ export const pt = {
 	achieveSpeedDemonDesc: "Tempo de reação abaixo de 200ms",
 	achieveTapChampionTitle: "Campeão de toque",
 	achieveTapChampionDesc: "100+ pontos em Tap Rush",
+	passPhone: "Passe o telefone",
+	passPhoneTo: "Passe o telefone para {{player}}",
+	passPhoneReady: "Estou pronto",
+	passPhoneDontLook: "Não olhe!",
+	hmPassToGuesser: "Jogador {{player}} adivinha agora",
+	hmPassToGuesserHint: "Quem escolhe a palavra não deve olhar a tela",
+	cbPassAfterSecret: "Seu código secreto está definido!",
+	cbPassAfterSecretHint: "Passe o telefone — não deixe o oponente ver",
+	ldDiceRolled: "Seus dados estão prontos",
+	ldDiceRolledHint: "Certifique-se de que só você vê a tela",
+	ldPeek: "Mostrar meus dados",
+
 	achievePerfectLandingTitle: "Pouso perfeito",
 	achievePerfectLandingDesc: "500+ pontos em Runway Landing",
+	ldLosesDie: "perde um dado!",
+	mpSelectPlayers: "Quantos jogadores?",
+	mpPlayerN: "Jogador {{n}}",
+	diceWinsLabel: "vitórias",
+	dicePtsLabel: "pts",
+	efHandoff: "Encontre o máximo em {{seconds}}s!",
+	efGo: "VAI!",
+	cbHandoffHint: "Não espie — só você deve ver a tela",
+	cbNobodyCracked: "Ninguém decifrou o código!",
+	cbSecretWas: "O código secreto era",
 } as const;

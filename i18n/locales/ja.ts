@@ -7,9 +7,19 @@ export const ja = {
 	stackArticle: "記事",
 	stackEditFlight: "フライト編集",
 	stackSettings: "設定",
+	updateAvailableTitle: "アップデートがあります",
+	updateAvailableMessage:
+		"新しいバージョンがダウンロードされました。再起動しますか？",
+	updateLater: "後で",
+	updateRestart: "再起動",
 	language: "言語",
 	languageSystem: "システム",
 	languageDevice: "デバイス: {{language}}",
+	theme: "外観",
+	themeSystem: "システム",
+	themeLight: "ライト",
+	themeDark: "ダーク",
+	themeCrazy: "クレイジー",
 	yourFlight: "あなたのフライト",
 	remainingTime: "残り {{hours}}時間 {{minutes}}分",
 	recommendationLong:
@@ -103,6 +113,44 @@ export const ja = {
 	gameCrossCodeBreakerDescription: "秘密の4桁コードを解読",
 	gameCrossLiarsDiceName: "嘘つきダイス",
 	gameCrossLiarsDiceDescription: "隠しダイスでブラフ",
+	rulesMemory:
+		"🎯 目標\n• 最少の手数で全てのカードペアを見つけよう。\n\n🃏 遊び方\n• タップして1ターンに2枚めくります。\n• 一致すれば表のまま残ります。\n• 不一致なら裏に戻ります — 位置を覚えて！\n\n⭐ スコア\n• 少ない手数 = 高得点。\n• 自己ベストを更新しよう！",
+	rulesTouchdown:
+		"🎯 目標\n• 時間切れ前にできるだけ多くタップ！\n\n👆 遊び方\n• 20秒間、画面をタップし続けます。\n• 全てのタップがスコアにカウント。\n\n⭐ コツ\n• 素早く軽いタップが効果的。",
+	rulesSkyMath:
+		"🎯 目標\n• 算数問題をできるだけ早く解こう。\n\n🧮 遊び方\n• 画面に計算式が表示されます。\n• 選択肢から正解を選んでください。\n• 正解 = ポイント。不正解 = ライフ減少。\n\n⭐ コツ\n• スピードが大事 — 速い回答 = 多くのポイント！",
+	rulesQuiz:
+		"🎯 目標\n• 旅行と航空のクイズ10問に答えよう。\n\n✈️ 遊び方\n• 問題を読んで回答を選択。\n• 時間切れ前に答えてください。\n• 正解ごとにポイント獲得。\n\n⭐ コツ\n• 速く答えるほど多くのポイント！",
+	rulesReaction:
+		"🎯 目標\n• 反射神経テスト — できるだけ早くタップ！\n\n⚡ 遊び方\n• 画面が緑になるのを待ちます。\n• 変わった瞬間にすぐタップ！\n• 早すぎはフライング — NG！\n\n⭐ スコア\n• 反応時間（ミリ秒）がスコアです。\n• 低い = 良い！",
+	rulesRunwayLanding:
+		"🎯 目標\n• 緑のゾーンに正確に着陸しよう。\n\n🛬 遊び方\n• 飛行機が滑走路に降下中。\n• 高度計を注意深く見てください。\n• 緑ゾーンに入ったら着陸をタップ。\n\n⭐ スコア\n• 中心に近いほど高得点。\n• 完璧な着陸 = 最大ポイント！",
+	rulesCabinCall:
+		"🎯 目標\n• 乗務員の指示にできるだけ早く従おう。\n\n🧑‍✈️ 遊び方\n• 乗務員がアクションを指示（シートベルト、テーブル等）。\n• 正しいボタンをできるだけ早くタップ。\n• スピードでボーナスポイント。\n\n⭐ コツ\n• 集中して — 指示はどんどん速くなる！",
+	rulesAirTrafficControl:
+		"🎯 目標\n• 全ての飛行機を正しい滑走路に誘導。\n\n🗼 遊び方\n• 飛行機が左側のキューに出現。\n• 各機を対応する滑走路に割り当て。\n• キューをオーバーフローさせないで！\n\n⭐ コツ\n• 落ち着いて — どんどん速くなる！",
+	rulesFlightPath:
+		"🎯 目標\n• 各飛行機をその滑走路に誘導。\n\n✏️ 遊び方\n• 飛行機から滑走路へルートを描きます。\n• 色を合わせて：飛行機 → 同じ色の滑走路。\n• ルートが交差してはいけません！\n\n⭐ コツ\n• 衝突を避けるため、描く前にルートを計画。",
+	rulesSkyDefense:
+		"🎯 目標\n• 空港を嵐から守ろう。\n\n🏗️ 遊び方\n• グリッドに防衛タワーを設置。\n• タワーは範囲内の敵を自動攻撃。\n• 敵は道を進む — 間に合うように止めて。\n\n⭐ タワー種類\n• 📡 レーダー — 敵を検知・減速。\n• 🚀 SAM — 敵にミサイル発射。",
+	rulesStackSort:
+		"🎯 目標\n• 全てのカードをゴール列に並べよう。\n\n🗂️ 遊び方\n• カードをタップして持ち上げます。\n• 空きスペースか大きい数のカードの上に置きます。\n• ゴール列は昇順でなければなりません。\n\n⭐ コツ\n• 一時スペースを戦略的に使おう — 先を考えて！",
+	rulesTicTacToe:
+		"🎯 目標\n• 自分のマークを3つ揃えよう！\n\n❌⭕ 遊び方\n• 2人が1台のデバイスで交互にプレイ。\n• プレイヤー1は✕、プレイヤー2は○を置きます。\n• 空いたマスにマークを置いてください。\n\n🏆 勝利\n• 先に3つ揃えた人（横・縦・斜め）の勝ち。\n• 盤面が埋まって勝者なし — 引き分け！",
+	rulesDice:
+		"🎯 目標\n• 複数ラウンドで最高合計を出そう。\n\n🎲 遊び方\n• 2〜6人が交互にダイスを振ります。\n• 毎回、残すダイスを選択。\n• 残りを振り直してより良い合計を狙おう。\n\n🏆 勝利\n• 全ラウンド後の最高合計スコアの勝ち！",
+	rulesConnect4:
+		"🎯 目標\n• 自分のディスクを4つ連続で揃えよう。\n\n🔴🟡 遊び方\n• 2人が交互にディスクを落とします。\n• 列をタップしてディスクを投入。\n• 一番下の空きスペースに落ちます。\n\n🏆 勝利\n• 先に4つ繋げた人の勝ち！\n• 有効：横 ↔、縦 ↕、斜め ↗↘",
+	rulesEmojiFind:
+		"🎯 目標\n• 対戦相手より先にターゲット絵文字を見つけよう！\n\n🔍 遊び方\n• 2〜6人が1台のデバイスで交互にプレイ。\n• ターゲット絵文字が上部に表示。\n• グリッドから見つけてタップ！\n• 各プレイヤーにラウンドごとの制限時間あり。\n\n🏆 勝利\n• 最速の発見者が最多ポイント。\n• 全ラウンド後の最多ポイントの勝ち！",
+	rulesHangman:
+		"🎯 目標\n• ハングマンが完成する前に隠された単語を当てよう！\n\n🔤 遊び方\n• 2〜6人 — 回答者はラウンドごとに交代。\n• キーボードの文字をタップして推測。\n• 正しい文字 → 単語に表示。\n• 間違い → ハングマンの一部が描かれる。\n\n🏆 スコア\n• 回答者は単語を解いて10ポイント。\n• 失敗すると他の全員が5ポイントずつ獲得。\n• 6回間違い = ラウンド終了！",
+	rulesAirRadar:
+		"🎯 目標\n• 全ての敵機を見つけて撃沈しよう！\n\n📡 遊び方\n• 各プレイヤーがグリッドに3機配置。\n• 交互に敵のグリッドを射撃。\n• 🔴 ヒット = 航空機に命中。\n• ⚪ ミス = 何もなし。\n\n🏆 勝利\n• 先に敵の3機全てを撃沈した人の勝ち！",
+	rulesCodeBreaker:
+		"🎯 目標\n• 秘密の4桁コードを解読しよう！\n\n🔢 遊び方\n• 2〜6人が交互に推測。\n• コードは4つのユニークな数字（0〜9）。\n• 毎回の推測後にフィードバック：\n• 🟢 緑ピン = 正しい数字が正しい位置。\n• 🟠 オレンジピン = 正しい数字、位置違い。\n• ⚫ ピンなし = その数字はコードにない。\n\n🏆 スコア\n• 少ない推測 = 多くのポイント。\n• 最初にコードを解読した人にボーナス！",
+	rulesLiarsDice:
+		"🎯 目標\n• ダイスが残っている最後のプレイヤーになろう！\n\n🎲 遊び方\n• 2〜6人、各5個のダイスでスタート。\n• 毎ラウンド、自分のダイスを秘密に確認。\n• プレイヤーが交互に宣言：\n→ 「テーブル上にYが少なくともX個ある」\n• 各宣言は前回より高くなければならない。\n• 宣言が嘘だと思ったら「ウソつき！」と叫ぼう。\n\n🔍 公開\n• 宣言が嘘なら → 宣言者がダイスを1つ失う。\n• 本当なら → 告発者がダイスを1つ失う。\n• 全てのダイスを失う = 脱落！\n\n🏆 最後に残ったプレイヤーの勝ち！",
 	skyDefenseTitle: "スカイディフェンス",
 	skyDefenseIntro:
 		"嵐が空港に近づいています！\nタワーを建設して滑走路を守りましょう。\nグリッドにタワーを配置して敵を倒しましょう\n終点に到達する前に。",
@@ -190,6 +238,10 @@ export const ja = {
 	ccCmdTray: "テーブルを収納",
 	ccCmdWindow: "窓のシェードを開ける",
 	ccCmdPhone: "機内モードをオン",
+	ccCmdLight: "読書灯を消す",
+	ccCmdMusic: "チャンネルを合わせる",
+	ccCmdBag: "手荷物を収納",
+	ccCmdWifi: "Wi-Fiに接続",
 	ccCrewSays: "乗務員の指示:",
 	ccStreak: "連続: {{streak}}",
 	ccPlayAgain: "もう一度",
@@ -549,18 +601,12 @@ export const ja = {
 	arRotate: "回転",
 	arReady: "準備完了！",
 	arReset: "リセット",
-	arMyFleet: "自分の艦隊",
-	arAttackMap: "攻撃マップ",
 	arHit: "命中！",
 	arMiss: "ミス",
-	arAnnounce: "この座標を相手に伝えてください",
-	arTheyHit: "相手の返答：命中",
-	arTheyMiss: "相手の返答：ミス",
-	arDefenseHint: "相手が座標を宣言 — そのセルをタップ",
-	arHitsGiven: "与えた命中",
-	arHitsTaken: "受けた命中",
-	arYouWin: "勝利！",
-	arYouLose: "敗北",
+	arHitsGiven: "命中",
+	arPlayerWins: "{{player}}の勝利！",
+	arTurnTitle: "{{player}}のターン",
+	arTapToFire: "セルをタップして攻撃",
 	// Code Breaker
 	cbSetSecret: "秘密のコードを設定",
 	cbSecretHint: "4つの異なる数字（0〜9）",
@@ -625,7 +671,10 @@ export const ja = {
 	exploreSortShortestRead: "短い順",
 	exploreSortLongestRead: "長い順",
 	exploreSortTitle: "タイトル",
+	exploreNoResults: "記事が見つかりません",
 	// Onboarding
+	onboardingLanguageTitle: "言語を選択",
+	onboardingLanguageSubtitle: "使用する言語を選択してください",
 	onboardingTitle1: "ようこそ",
 	onboardingSubtitle1: "ゲーム、リラックスなどの機内のお供",
 	onboardingTitle2: "オフラインエンターテイメント",
@@ -686,6 +735,28 @@ export const ja = {
 	achieveSpeedDemonDesc: "反応時間200ms以下",
 	achieveTapChampionTitle: "タップチャンピオン",
 	achieveTapChampionDesc: "Tap Rushで100+ポイント",
+	passPhone: "スマホを渡して",
+	passPhoneTo: "{{player}}にスマホを渡して",
+	passPhoneReady: "準備OK",
+	passPhoneDontLook: "見ないで！",
+	hmPassToGuesser: "プレイヤー{{player}}が次に推測します",
+	hmPassToGuesserHint: "単語を選ぶ人は画面を見ないでください",
+	cbPassAfterSecret: "秘密コードが設定されました！",
+	cbPassAfterSecretHint: "スマホを渡して — 相手に見せないで",
+	ldDiceRolled: "サイコロの準備ができました",
+	ldDiceRolledHint: "自分だけが画面を見ていることを確認して",
+	ldPeek: "サイコロを見る",
+
 	achievePerfectLandingTitle: "パーフェクトランディング",
 	achievePerfectLandingDesc: "Runway Landingで500+ポイント",
+	ldLosesDie: "サイコロを1つ失った！",
+	mpSelectPlayers: "何人でプレイ？",
+	mpPlayerN: "プレイヤー{{n}}",
+	diceWinsLabel: "勝ち",
+	dicePtsLabel: "点",
+	efHandoff: "{{seconds}}秒でできるだけ多く見つけよう！",
+	efGo: "スタート！",
+	cbHandoffHint: "覗かないで — 自分だけが画面を見てね",
+	cbNobodyCracked: "誰もコードを解読できなかった！",
+	cbSecretWas: "秘密のコードは",
 } as const;

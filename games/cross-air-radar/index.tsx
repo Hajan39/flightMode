@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+﻿import { useState } from "react";
 import { Dimensions, Pressable, StyleSheet } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
@@ -29,13 +29,23 @@ const SHIP_LABELS: Record<string, TranslationKey> = {
 };
 
 type Cell = "w" | "s" | "h" | "m"; // water, ship, hit, miss
-type Phase = "setup" | "battle" | "done";
-type Tab = "fleet" | "radar";
+type Phase =
+	| "setup1"
+	| "pass1"
+	| "setup2"
+	| "pass2"
+	| "turn"
+	| "passAttack"
+	| "done";
 
 const COL = "ABCDEFGH";
 
 const blank = (): Cell[][] =>
 	Array.from({ length: GRID }, () => Array(GRID).fill("w") as Cell[]);
+
+function cloneGrid(g: Cell[][]): Cell[][] {
+	return g.map((row) => [...row]);
+}
 
 export default function CrossAirRadarGame() {
 	const colorScheme = useColorScheme();
@@ -44,139 +54,144 @@ export default function CrossAirRadarGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
-	const [phase, setPhase] = useState<Phase>("setup");
-	const [tab, setTab] = useState<Tab>("fleet");
+	const [phase, setPhase] = useState<Phase>("setup1");
+	const [currentPlayer, setCurrentPlayer] = useState<1 | 2>(1);
 
-	// My fleet grid (my ships + opponent's attacks on me)
-	const [fleet, setFleet] = useState<Cell[][]>(blank);
-	// My attack grid (my attacks on opponent)
-	const [radar, setRadar] = useState<Cell[][]>(blank);
+	// Each player's fleet (ships placed) and attack grid (shots fired at opponent)
+	const [fleet1, setFleet1] = useState<Cell[][]>(blank);
+	const [fleet2, setFleet2] = useState<Cell[][]>(blank);
+	const [attacks1, setAttacks1] = useState<Cell[][]>(blank); // P1's shots on P2
+	const [attacks2, setAttacks2] = useState<Cell[][]>(blank); // P2's shots on P1
 
 	// Setup state
 	const [shipIdx, setShipIdx] = useState(0);
 	const [horiz, setHoriz] = useState(true);
 
 	// Battle state
-	const [selected, setSelected] = useState<[number, number] | null>(null);
-	const [lastHitResult, setLastHitResult] = useState<string | null>(null);
-	const [myHits, setMyHits] = useState(0);
-	const [oppHits, setOppHits] = useState(0);
-	const [winner, setWinner] = useState<"me" | "opp" | null>(null);
-
-
+	const [hitsP1, setHitsP1] = useState(0); // how many P1 landed on P2
+	const [hitsP2, setHitsP2] = useState(0); // how many P2 landed on P1
+	const [lastResult, setLastResult] = useState<string | null>(null);
+	const [winner, setWinner] = useState<1 | 2 | null>(null);
 
 	const coord = (r: number, c: number) => `${COL[c]}${r + 1}`;
 
-	// --- SETUP ---
-	const tryPlace = useCallback(
-		(r: number, c: number) => {
-			if (shipIdx >= SHIPS.length) return;
-			const size = SHIPS[shipIdx].size;
+	const activeFleet = currentPlayer === 1 ? fleet1 : fleet2;
+	const setActiveFleet = currentPlayer === 1 ? setFleet1 : setFleet2;
 
-			const tryDir = (h: boolean): [number, number][] | null => {
-				const cells: [number, number][] = [];
-				for (let i = 0; i < size; i++) {
-					const nr = h ? r : r + i;
-					const nc = h ? c + i : c;
-					if (nr >= GRID || nc >= GRID || fleet[nr][nc] === "s") return null;
-					cells.push([nr, nc]);
-				}
-				return cells;
-			};
+	// --- SETUP: place ships ---
+	const tryPlace = (r: number, c: number) => {
+		if (shipIdx >= SHIPS.length) return;
+		const fleet = activeFleet;
+		const size = SHIPS[shipIdx].size;
 
-			let cells = tryDir(horiz);
-			if (!cells) cells = tryDir(!horiz);
-			if (!cells) {
-				haptic.error();
-				return;
+		const tryDir = (h: boolean): [number, number][] | null => {
+			const cells: [number, number][] = [];
+			for (let i = 0; i < size; i++) {
+				const nr = h ? r : r + i;
+				const nc = h ? c + i : c;
+				if (nr >= GRID || nc >= GRID || fleet[nr][nc] === "s") return null;
+				cells.push([nr, nc]);
 			}
+			return cells;
+		};
 
-			const next = fleet.map((row) => [...row]) as Cell[][];
-			for (const [rr, cc] of cells) next[rr][cc] = "s";
-			setFleet(next);
-			setShipIdx((i) => i + 1);
-			haptic.tap();
-		},
-		[shipIdx, horiz, fleet, haptic],
-	);
+		let cells = tryDir(horiz);
+		if (!cells) cells = tryDir(!horiz);
+		if (!cells) {
+			haptic.error();
+			return;
+		}
+
+		const next = cloneGrid(fleet);
+		for (const [rr, cc] of cells) next[rr][cc] = "s";
+		setActiveFleet(next);
+		setShipIdx((i) => i + 1);
+		haptic.tap();
+	};
 
 	const resetSetup = () => {
-		setFleet(blank());
+		setActiveFleet(blank());
 		setShipIdx(0);
 		setHoriz(true);
 	};
 
-	// --- BATTLE: opponent attacks me ---
-	const handleFleetTap = useCallback(
-		(r: number, c: number) => {
-			const cell = fleet[r][c];
-			if (cell === "h" || cell === "m") return;
-			const isHit = cell === "s";
-			const next = fleet.map((row) => [...row]) as Cell[][];
-			next[r][c] = isHit ? "h" : "m";
-			setFleet(next);
+	const confirmSetup = () => {
+		if (phase === "setup1") {
+			setShipIdx(0);
+			setHoriz(true);
+			setPhase("pass1");
+		} else if (phase === "setup2") {
+			setShipIdx(0);
+			setHoriz(true);
+			setCurrentPlayer(1);
+			setPhase("pass2");
+		}
+	};
 
-			setLastHitResult(isHit ? `💥 ${t("arHit")}` : `💨 ${t("arMiss")}`);
-			(isHit ? haptic.error() : haptic.tap());
+	const handlePassDone = () => {
+		if (phase === "pass1") {
+			setCurrentPlayer(2);
+			setPhase("setup2");
+		} else if (phase === "pass2") {
+			setCurrentPlayer(1);
+			setPhase("turn");
+		} else if (phase === "passAttack") {
+			setPhase("turn");
+		}
+	};
 
-			if (isHit) {
-				const ns = oppHits + 1;
-				setOppHits(ns);
-				if (ns >= TOTAL_HP) {
-					setWinner("opp");
-					setPhase("done");
-					updateProgress("cross-air-radar", myHits * 10);
-				}
+	// --- BATTLE: fire ---
+	const handleFire = (r: number, c: number) => {
+		const attackGrid = currentPlayer === 1 ? attacks1 : attacks2;
+		const setAttackGrid = currentPlayer === 1 ? setAttacks1 : setAttacks2;
+		const opponentFleet = currentPlayer === 1 ? fleet2 : fleet1;
+
+		if (attackGrid[r][c] !== "w") return;
+
+		const isHit = opponentFleet[r][c] === "s";
+		const next = cloneGrid(attackGrid);
+		next[r][c] = isHit ? "h" : "m";
+		setAttackGrid(next);
+
+		if (isHit) {
+			haptic.success();
+			setLastResult(`đź’Ą ${t("arHit")} â€” ${coord(r, c)}`);
+			const setHits = currentPlayer === 1 ? setHitsP1 : setHitsP2;
+			const currentHits = currentPlayer === 1 ? hitsP1 : hitsP2;
+			const newHits = currentHits + 1;
+			setHits(newHits);
+			if (newHits >= TOTAL_HP) {
+				setWinner(currentPlayer);
+				updateProgress("cross-air-radar", newHits * 10);
+				setPhase("done");
+				return;
 			}
-			setTimeout(() => setLastHitResult(null), 2500);
-		},
-		[fleet, oppHits, myHits, haptic, t, updateProgress],
-	);
-
-	// --- BATTLE: I attack opponent ---
-	const handleRadarTap = useCallback(
-		(r: number, c: number) => {
-			if (radar[r][c] !== "w") return;
-			setSelected([r, c]);
+		} else {
 			haptic.tap();
-		},
-		[radar, haptic],
-	);
+			setLastResult(`đź’¨ ${t("arMiss")} â€” ${coord(r, c)}`);
+		}
 
-	const markResult = useCallback(
-		(hit: boolean) => {
-			if (!selected) return;
-			const [r, c] = selected;
-			const next = radar.map((row) => [...row]) as Cell[][];
-			next[r][c] = hit ? "h" : "m";
-			setRadar(next);
-			setSelected(null);
-			(hit ? haptic.success() : haptic.tap());
-
-			if (hit) {
-				const ns = myHits + 1;
-				setMyHits(ns);
-				if (ns >= TOTAL_HP) {
-					setWinner("me");
-					setPhase("done");
-					updateProgress("cross-air-radar", ns * 10);
-				}
-			}
-		},
-		[selected, radar, myHits, haptic, updateProgress],
-	);
+		// Switch turns after a short delay
+		setTimeout(() => {
+			setLastResult(null);
+			const nextP = currentPlayer === 1 ? 2 : 1;
+			setCurrentPlayer(nextP as 1 | 2);
+			setPhase("passAttack");
+		}, 1500);
+	};
 
 	const restart = () => {
-		setPhase("setup");
-		setFleet(blank());
-		setRadar(blank());
-		setTab("fleet");
+		setPhase("setup1");
+		setCurrentPlayer(1);
+		setFleet1(blank());
+		setFleet2(blank());
+		setAttacks1(blank());
+		setAttacks2(blank());
 		setShipIdx(0);
 		setHoriz(true);
-		setSelected(null);
-		setLastHitResult(null);
-		setMyHits(0);
-		setOppHits(0);
+		setHitsP1(0);
+		setHitsP2(0);
+		setLastResult(null);
 		setWinner(null);
 	};
 
@@ -215,15 +230,13 @@ export default function CrossAirRadarGame() {
 						if (showShips && cell === "s") bg = "#546e7a";
 						if (cell === "h") {
 							bg = "#ef5350";
-							content = "✕";
+							content = "âś•";
 						}
 						if (cell === "m") {
 							bg = theme.card;
-							content = "•";
+							content = "â€˘";
 							contentColor = theme.mutedText;
 						}
-
-						const isSel = selected && selected[0] === r && selected[1] === c;
 
 						return (
 							<Pressable
@@ -235,8 +248,8 @@ export default function CrossAirRadarGame() {
 										width: CELL,
 										height: CELL,
 										backgroundColor: bg,
-										borderColor: isSel ? theme.tint : theme.border,
-										borderWidth: isSel ? 2.5 : 1,
+										borderColor: theme.border,
+										borderWidth: 1,
 									},
 								]}
 							>
@@ -253,13 +266,53 @@ export default function CrossAirRadarGame() {
 		</View>
 	);
 
-	// --- PHASE: SETUP ---
-	if (phase === "setup") {
+	// --- PASS SCREEN ---
+	if (phase === "pass1" || phase === "pass2" || phase === "passAttack") {
+		const nextPlayer =
+			phase === "pass1" ? 2 : phase === "pass2" ? 1 : currentPlayer;
+		return (
+			<View style={styles.container}>
+				<Animated.View
+					entering={FadeInDown.duration(300)}
+					style={styles.passScreen}
+				>
+					<Text style={{ fontSize: 48, marginBottom: 16 }}>đź”’</Text>
+					<Text style={styles.title}>{t("passPhone")}</Text>
+					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
+						{t("passPhoneTo", {
+							player: nextPlayer === 1 ? t("c4Player1") : t("c4Player2"),
+						})}
+					</Text>
+					<Text
+						style={[styles.subtitle, { color: theme.mutedText, marginTop: 4 }]}
+					>
+						{t("passPhoneDontLook")}
+					</Text>
+					<Pressable
+						onPress={handlePassDone}
+						style={[
+							styles.primaryBtn,
+							{ backgroundColor: theme.tint, marginTop: 32 },
+						]}
+					>
+						<Text style={styles.primaryBtnText}>{t("passPhoneReady")}</Text>
+					</Pressable>
+				</Animated.View>
+			</View>
+		);
+	}
+
+	// --- SETUP ---
+	if (phase === "setup1" || phase === "setup2") {
+		const playerNum = phase === "setup1" ? 1 : 2;
 		const allPlaced = shipIdx >= SHIPS.length;
 		return (
 			<View style={styles.container}>
 				<Animated.View entering={FadeInDown.duration(300)}>
-					<Text style={styles.title}>{t("arSetupTitle")}</Text>
+					<Text style={styles.title}>
+						{playerNum === 1 ? t("c4Player1") : t("c4Player2")} â€”{" "}
+						{t("arSetupTitle")}
+					</Text>
 					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
 						{t("arSetupHint")}
 					</Text>
@@ -292,8 +345,7 @@ export default function CrossAirRadarGame() {
 										{ color: i === shipIdx ? "#fff" : theme.text },
 									]}
 								>
-									{t(SHIP_LABELS[ship.id])}{" "}
-									({ship.size})
+									{t(SHIP_LABELS[ship.id])} ({ship.size})
 								</Text>
 							</View>
 						))}
@@ -306,18 +358,18 @@ export default function CrossAirRadarGame() {
 							]}
 						>
 							<Text style={styles.rotateBtnText}>
-								{horiz ? "→" : "↓"} {t("arRotate")}
+								{horiz ? "â†’" : "â†“"} {t("arRotate")}
 							</Text>
 						</Pressable>
 					</Animated.View>
 				)}
 
-				{renderGrid(fleet, allPlaced ? () => {} : tryPlace, true)}
+				{renderGrid(activeFleet, allPlaced ? () => {} : tryPlace, true)}
 
 				<View style={styles.setupActions}>
 					{allPlaced ? (
 						<Pressable
-							onPress={() => setPhase("battle")}
+							onPress={confirmSetup}
 							style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 						>
 							<Text style={styles.primaryBtnText}>{t("arReady")}</Text>
@@ -333,110 +385,61 @@ export default function CrossAirRadarGame() {
 		);
 	}
 
-	// --- PHASE: DONE ---
+	// --- DONE ---
 	if (phase === "done") {
+		const winLabel = winner === 1 ? t("c4Player1") : t("c4Player2");
 		return (
 			<GameResult
-				title={winner === "me" ? t("arYouWin") : t("arYouLose")}
-				score={myHits * 10}
-				subtitle={`${t("arHitsGiven")}: ${myHits} · ${t("arHitsTaken")}: ${oppHits}`}
+				title={t("arPlayerWins", { player: winLabel })}
+				score={Math.max(hitsP1, hitsP2) * 10}
+				subtitle={`${t("c4Player1")}: ${hitsP1} Â· ${t("c4Player2")}: ${hitsP2}`}
 				onPlayAgain={restart}
 			/>
 		);
 	}
 
-	// --- PHASE: BATTLE ---
+	// --- BATTLE TURN ---
+	const attackGrid = currentPlayer === 1 ? attacks1 : attacks2;
+	const playerLabel = currentPlayer === 1 ? t("c4Player1") : t("c4Player2");
+
 	return (
 		<View style={styles.container}>
-			{/* Tab bar */}
-			<View style={styles.tabBar}>
-				{(["fleet", "radar"] as Tab[]).map((tb) => (
-					<Pressable
-						key={tb}
-						onPress={() => {
-							setTab(tb);
-							setSelected(null);
-						}}
-						style={[
-							styles.tabBtn,
-							{
-								backgroundColor: tab === tb ? theme.tint : theme.card,
-								borderColor: tab === tb ? theme.tint : theme.border,
-							},
-						]}
-					>
-						<Text
-							style={[
-								styles.tabBtnText,
-								{ color: tab === tb ? "#fff" : theme.text },
-							]}
-						>
-							{tb === "fleet" ? t("arMyFleet") : t("arAttackMap")}
-						</Text>
-					</Pressable>
-				))}
-			</View>
+			{/* Header */}
+			<Animated.View entering={FadeInDown.duration(200)}>
+				<Text style={styles.title}>
+					{t("arTurnTitle", { player: playerLabel })}
+				</Text>
+			</Animated.View>
 
 			{/* Scoreboard */}
 			<View style={styles.scoreboard}>
-				<Text style={[styles.scoreText, { color: theme.mutedText }]}>
-					{t("arHitsGiven")}: {myHits}/{TOTAL_HP}
+				<Text style={[styles.scoreText, { color: "#ef5350" }]}>
+					{t("c4Player1")}: {hitsP1}/{TOTAL_HP}
 				</Text>
-				<Text style={[styles.scoreText, { color: theme.mutedText }]}>
-					{t("arHitsTaken")}: {oppHits}/{TOTAL_HP}
+				<Text style={[styles.scoreText, { color: "#ffd54f" }]}>
+					{t("c4Player2")}: {hitsP2}/{TOTAL_HP}
 				</Text>
 			</View>
 
-			{/* Flash result for fleet defense */}
-			{lastHitResult && tab === "fleet" && (
+			{/* Flash result */}
+			{lastResult && (
 				<Animated.View
 					entering={ZoomIn.duration(200)}
 					style={styles.flashBadge}
 				>
-					<Text style={styles.flashBadgeText}>{lastHitResult}</Text>
+					<Text style={styles.flashBadgeText}>{lastResult}</Text>
 				</Animated.View>
 			)}
 
-			{/* Grid */}
-			{tab === "fleet"
-				? renderGrid(fleet, handleFleetTap, true)
-				: renderGrid(radar, handleRadarTap, false)}
-
-			{/* Attack controls */}
-			{tab === "radar" && selected && (
-				<Animated.View
-					entering={FadeInDown.duration(200)}
-					style={styles.attackControls}
-				>
-					<Text style={styles.coordBadge}>
-						{coord(selected[0], selected[1])}
-					</Text>
-					<Text style={[styles.announceHint, { color: theme.mutedText }]}>
-						{t("arAnnounce")}
-					</Text>
-					<View style={styles.hitMissRow}>
-						<Pressable
-							onPress={() => markResult(true)}
-							style={[styles.hitBtn, { backgroundColor: "#ef5350" }]}
-						>
-							<Text style={styles.hitMissText}>{t("arTheyHit")}</Text>
-						</Pressable>
-						<Pressable
-							onPress={() => markResult(false)}
-							style={[styles.missBtn, { backgroundColor: "#78909c" }]}
-						>
-							<Text style={styles.hitMissText}>{t("arTheyMiss")}</Text>
-						</Pressable>
-					</View>
-				</Animated.View>
-			)}
-
-			{/* Fleet defense hint */}
-			{tab === "fleet" && (
-				<Text style={[styles.defHint, { color: theme.mutedText }]}>
-					{t("arDefenseHint")}
+			{/* Attack hint */}
+			{!lastResult && (
+				<Text style={[styles.attackHint, { color: theme.mutedText }]}>
+					{t("arTapToFire")}
 				</Text>
 			)}
+
+			{/* Attack grid (opponent's waters) */}
+			{renderGrid(attackGrid, lastResult ? () => {} : handleFire, false)}
 		</View>
 	);
 }
@@ -450,6 +453,7 @@ const styles = StyleSheet.create({
 		marginTop: 4,
 		marginBottom: 8,
 	},
+	passScreen: { alignItems: "center", paddingTop: 40 },
 	// Ship tray
 	shipTray: {
 		flexDirection: "row",
@@ -488,27 +492,14 @@ const styles = StyleSheet.create({
 	labelText: { fontSize: 11, fontWeight: "700" },
 	cell: { borderRadius: 3, alignItems: "center", justifyContent: "center" },
 	cellContent: { fontSize: 16, fontWeight: "800" },
-	// Tab bar
-	tabBar: {
-		flexDirection: "row",
-		gap: 10,
-		marginBottom: 6,
-	},
-	tabBtn: {
-		flex: 1,
-		paddingVertical: 10,
-		borderRadius: 10,
-		borderWidth: 1,
-		alignItems: "center",
-	},
-	tabBtnText: { fontSize: 14, fontWeight: "700" },
 	// Scoreboard
 	scoreboard: {
 		flexDirection: "row",
 		gap: 20,
-		marginBottom: 4,
+		marginBottom: 6,
+		marginTop: 4,
 	},
-	scoreText: { fontSize: 13, fontWeight: "600" },
+	scoreText: { fontSize: 13, fontWeight: "700" },
 	// Flash badge
 	flashBadge: {
 		backgroundColor: "rgba(0,0,0,0.7)",
@@ -518,27 +509,6 @@ const styles = StyleSheet.create({
 		marginBottom: 4,
 	},
 	flashBadgeText: { color: "#fff", fontSize: 18, fontWeight: "800" },
-	// Attack controls
-	attackControls: { alignItems: "center", marginTop: 10, gap: 6 },
-	coordBadge: { fontSize: 28, fontWeight: "900" },
-	announceHint: { fontSize: 13 },
-	hitMissRow: { flexDirection: "row", gap: 12, marginTop: 4 },
-	hitBtn: {
-		paddingHorizontal: 24,
-		paddingVertical: 10,
-		borderRadius: 10,
-	},
-	missBtn: {
-		paddingHorizontal: 24,
-		paddingVertical: 10,
-		borderRadius: 10,
-	},
-	hitMissText: { color: "#fff", fontSize: 15, fontWeight: "700" },
-	// Defense hint
-	defHint: {
-		fontSize: 13,
-		textAlign: "center",
-		marginTop: 10,
-		paddingHorizontal: 24,
-	},
+	// Attack hint
+	attackHint: { fontSize: 13, marginBottom: 6 },
 });

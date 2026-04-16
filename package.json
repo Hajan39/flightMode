@@ -8,6 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "update": "expo install --fix",
+    "ota:preview": "npx eas-cli update --channel preview --message",
+    "ota:production": "npx eas-cli update --channel production --message",
     "eas:build:android": "npx eas-cli build --platform android --profile production",
     "deploy:android": "npx eas-cli build --platform android --auto-submit --auto-submit",
     "eas:submit:android": "npx eas-cli submit --platform android --profile production"
@@ -15,6 +17,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/native": "^7.1.33",
+    "babel-plugin-react-compiler": "^1.0.0",
     "expo": "~55.0.9",
     "expo-audio": "~55.0.9",
     "expo-av": "^16.0.8",
@@ -27,6 +30,7 @@
     "expo-splash-screen": "~55.0.13",
     "expo-status-bar": "~55.0.4",
     "expo-symbols": "~55.0.5",
+    "expo-updates": "~55.0.20",
     "expo-web-browser": "~55.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",

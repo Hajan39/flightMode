@@ -51,9 +51,14 @@ export default function ContentDetailScreen() {
 				<Text style={[styles.meta, { color: theme.mutedText }]}>
 					{t("minutesRead", { minutes: article.readTime })}
 				</Text>
-				<Text style={[styles.body, { color: theme.text }]}>
-					{getLocalizedText(article.body, language)}
-				</Text>
+				{getLocalizedText(article.body, language)
+					.split("\n")
+					.filter((p) => p.trim().length > 0)
+					.map((paragraph, i) => (
+						<Text key={i} style={[styles.body, { color: theme.text }]}>
+							{paragraph.trim()}
+						</Text>
+					))}
 			</ScrollView>
 		</>
 	);
@@ -66,5 +71,5 @@ const styles = StyleSheet.create({
 	category: { fontSize: 12, fontWeight: "600", textTransform: "uppercase" },
 	title: { fontSize: 22, fontWeight: "700", marginTop: 8 },
 	meta: { fontSize: 13, marginTop: 4, marginBottom: 20 },
-	body: { fontSize: 16, lineHeight: 24 },
+	body: { fontSize: 16, lineHeight: 24, marginBottom: 12 },
 });

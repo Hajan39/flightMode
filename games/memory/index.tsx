@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import {
 	StyleSheet,
 	Pressable,
@@ -40,14 +40,14 @@ export default function MemoryGame() {
 	const [finalScore, setFinalScore] = useState<number | null>(null);
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const haptic = useHaptic();
-	const cardSize = useMemo(() => {
+	const cardSize = (() => {
 		const horizontalPadding = 40;
 		const gap = 10;
 		const availableWidth = width - horizontalPadding;
 		return Math.floor(
 			(availableWidth - gap * (currentMode.columns - 1)) / currentMode.columns,
 		);
-	}, [currentMode.columns, width]);
+	})();
 
 	const handleCardPress = (id: number) => {
 		if (isChecking) return;

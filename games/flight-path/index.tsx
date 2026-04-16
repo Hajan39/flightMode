@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
 	type LayoutChangeEvent,
 	PanResponder,
@@ -496,7 +496,7 @@ export default function FlightPathGame() {
 	};
 
 	/* ---- RUNWAYS — centered, crossing, different lengths ---- */
-	const runways = useMemo<Runway[]>(() => {
+	const runways: Runway[] = (() => {
 		const { w, h } = boardSize;
 		const cx = w / 2;
 		const cy = h * 0.52;
@@ -533,14 +533,12 @@ export default function FlightPathGame() {
 				landingEnd: 1 as const,
 			},
 		];
-	}, [boardSize]);
+	})();
 	const runwaysRef = useRef(runways);
-	useEffect(() => {
-		runwaysRef.current = runways;
-	}, [runways]);
+	runwaysRef.current = runways;
 
 	/* spawn from edges */
-	const spawn = useCallback(() => {
+	const spawn = () => {
 		if (gameOverRef.current) return;
 		if (planesRef.current.length >= MAX_PLANES) return;
 
@@ -590,16 +588,19 @@ export default function FlightPathGame() {
 				landing: null,
 			},
 		]);
-	}, []);
+	};
 
-	const spawnMs = useMemo(() => Math.max(1400, 3500 - landed * 80), [landed]);
+	const spawnMs = Math.max(
+		900,
+		3500 - landed * 100 - Math.floor(landed / 5) * 80,
+	);
 
 	useEffect(() => {
 		if (!started || gameOver) return;
 		spawn();
 		const t = setInterval(spawn, spawnMs);
 		return () => clearInterval(t);
-	}, [started, gameOver, spawnMs, spawn]);
+	}, [started, gameOver, spawnMs]);
 
 	/* ---- GAME LOOP ---- */
 	useEffect(() => {
@@ -767,55 +768,57 @@ export default function FlightPathGame() {
 	}, [started, gameOver, updateProgress]);
 
 	/* PAN RESPONDER */
-	const panResponder = useMemo(
-		() =>
-			PanResponder.create({
-				onStartShouldSetPanResponder: () => true,
-				onMoveShouldSetPanResponder: () => selectedRef.current !== null,
-				onPanResponderGrant: (e) => {
-					if (gameOverRef.current) return;
-					const { locationX: lx, locationY: ly } = e.nativeEvent;
-					const touch: Pt = { x: lx, y: ly };
-					let best: Plane | null = null;
-					let bestD = Infinity;
-					for (const p of planesRef.current) {
-						const d = dist(p, touch);
-						if (d < (p.type.bodyH + p.type.wingW) * 1.8 && d < bestD) {
-							best = p;
-							bestD = d;
-						}
-					}
-					if (best) {
-						selectedRef.current = best.id;
-						drawRef.current = [{ x: best.x, y: best.y }];
-						setDrawPath([{ x: best.x, y: best.y }]);
-					}
-				},
-				onPanResponderMove: (e) => {
-					if (selectedRef.current === null) return;
-					const { locationX: lx, locationY: ly } = e.nativeEvent;
-					const pt: Pt = { x: lx, y: ly };
-					const prev = drawRef.current;
-					if (prev.length && dist(prev[prev.length - 1], pt) < PATH_MIN_DIST)
-						return;
-					drawRef.current = [...prev, pt];
-					setDrawPath([...drawRef.current]);
-				},
-				onPanResponderRelease: () => {
-					const id = selectedRef.current;
-					const path = [...drawRef.current];
-					if (id !== null && path.length > 2) {
-						setPlanes((prev) =>
-							prev.map((p) => (p.id === id ? { ...p, path, pathIdx: 0 } : p)),
-						);
-					}
-					selectedRef.current = null;
-					drawRef.current = [];
-					setDrawPath([]);
-				},
-			}),
-		[],
-	);
+	const panResponder = PanResponder.create({
+		onStartShouldSetPanResponder: () => true,
+		onMoveShouldSetPanResponder: () => selectedRef.current !== null,
+		onPanResponderGrant: (e) => {
+			if (gameOverRef.current) return;
+			const { locationX: lx, locationY: ly } = e.nativeEvent;
+			const touch: Pt = { x: lx, y: ly };
+			let best: Plane | null = null;
+			let bestD = Infinity;
+			for (const p of planesRef.current) {
+				const d = dist(p, touch);
+				if (d < (p.type.bodyH + p.type.wingW) * 1.8 && d < bestD) {
+					best = p;
+					bestD = d;
+				}
+			}
+			if (best) {
+				selectedRef.current = best.id;
+				const start: Pt = { x: best.x, y: best.y };
+				drawRef.current = [start];
+				setDrawPath([start]);
+				// Immediately assign the path so the plane starts following right away
+				setPlanes((prev) =>
+					prev.map((p) =>
+						p.id === best!.id ? { ...p, path: [start], pathIdx: 0 } : p,
+					),
+				);
+			}
+		},
+		onPanResponderMove: (e) => {
+			if (selectedRef.current === null) return;
+			const { locationX: lx, locationY: ly } = e.nativeEvent;
+			const pt: Pt = { x: lx, y: ly };
+			const prev = drawRef.current;
+			if (prev.length && dist(prev[prev.length - 1], pt) < PATH_MIN_DIST)
+				return;
+			const updated = [...prev, pt];
+			drawRef.current = updated;
+			setDrawPath([...updated]);
+			// Update the plane's path in real-time so it follows while drawing
+			const id = selectedRef.current;
+			setPlanes((prev) =>
+				prev.map((p) => (p.id === id ? { ...p, path: [...updated] } : p)),
+			);
+		},
+		onPanResponderRelease: () => {
+			selectedRef.current = null;
+			drawRef.current = [];
+			setDrawPath([]);
+		},
+	});
 
 	const restart = () => {
 		nextIdRef.current = 1;

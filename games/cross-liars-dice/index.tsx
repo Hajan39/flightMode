@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { Pressable, StyleSheet, ScrollView } from "react-native";
+﻿import { useState } from "react";
+import { Pressable, ScrollView, StyleSheet, View as RNView } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
 import { Text, View } from "@/components/Themed";
-import GameResult from "@/components/GameResult";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
@@ -13,15 +12,12 @@ import { useHaptic } from "@/hooks/useHaptic";
 const STARTING_DICE = 5;
 const FACES = [1, 2, 3, 4, 5, 6] as const;
 const DICE_EMOJI: Record<number, string> = {
-	1: "⚀",
-	2: "⚁",
-	3: "⚂",
-	4: "⚃",
-	5: "⚄",
-	6: "⚅",
+	1: "âš€", 2: "âš", 3: "âš‚", 4: "âš", 5: "âš„", 6: "âš…",
 };
+const MAX_PLAYERS = 6;
+const PLAYER_COLORS = ["#4FC3F7", "#FF8A65", "#81C784", "#CE93D8", "#FFD54F", "#4DD0E1"];
 
-type Phase = "roll" | "bid" | "reveal" | "roundEnd" | "done";
+type Phase = "setup" | "peek" | "bid" | "reveal" | "done";
 type Bid = { qty: number; face: number };
 
 function rollDice(count: number): number[] {
@@ -35,48 +31,80 @@ export default function CrossLiarsDiceGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
-	const [phase, setPhase] = useState<Phase>("roll");
+	/* setup */
+	const [playerCount, setPlayerCount] = useState(2);
+	const [phase, setPhase] = useState<Phase>("setup");
 
-	// Dice counts
-	const [myDiceCount, setMyDiceCount] = useState(STARTING_DICE);
-	const [oppDiceCount, setOppDiceCount] = useState(STARTING_DICE);
+	/* round state */
+	const [diceCounts, setDiceCounts] = useState<number[]>([]);
+	const [allDice, setAllDice] = useState<number[][]>([]);
+	const [roundNum, setRoundNum] = useState(1);
 
-	// My dice (rolled secretly)
-	const [myDice, setMyDice] = useState<number[]>([]);
+	/* peek */
+	const [currentPeeker, setCurrentPeeker] = useState(0);
+	const [showingDice, setShowingDice] = useState(false);
+	const [peekStartIndex, setPeekStartIndex] = useState(0);
 
-	// Current bid
+	/* bid */
+	const [currentBidder, setCurrentBidder] = useState(0);
 	const [currentBid, setCurrentBid] = useState<Bid | null>(null);
-	const [iMadeLast, setIMadeLast] = useState(false);
-
-	// Bid input
+	const [lastBidder, setLastBidder] = useState(-1);
 	const [bidQty, setBidQty] = useState(1);
 	const [bidFace, setBidFace] = useState(2);
 
-	// Reveal: enter opponent's dice to verify
-	const [oppDiceInput, setOppDiceInput] = useState<number[]>([]);
+	/* reveal */
 	const [revealResult, setRevealResult] = useState<{
 		liar: boolean;
 		total: number;
-		loser: "me" | "opp";
+		loser: number;
 	} | null>(null);
 
-	const [winner, setWinner] = useState<"me" | "opp" | null>(null);
-	const [roundNum, setRoundNum] = useState(1);
+	const totalDice = diceCounts.reduce((a, b) => a + b, 0);
 
-	const totalDice = myDiceCount + oppDiceCount;
+	function nextActive(from: number, counts?: number[]): number {
+		const dc = counts ?? diceCounts;
+		let idx = from;
+		for (let i = 0; i < playerCount; i++) {
+			idx = (idx + 1) % playerCount;
+			if (dc[idx] > 0) return idx;
+		}
+		return from;
+	}
 
-	// --- ROLL ---
-	const doRoll = () => {
-		setMyDice(rollDice(myDiceCount));
-		setPhase("bid");
+	function firstActive(counts?: number[]): number {
+		const dc = counts ?? diceCounts;
+		return dc.findIndex((c) => c > 0);
+	}
+
+	/* â”€â”€ actions â”€â”€ */
+	const startGame = () => {
+		const counts = Array(playerCount).fill(STARTING_DICE);
+		setDiceCounts(counts);
+		setAllDice(counts.map((c) => rollDice(c)));
+		setRoundNum(1);
+		setCurrentPeeker(0);
+		setPeekStartIndex(0);
+		setShowingDice(false);
 		setCurrentBid(null);
+		setLastBidder(-1);
 		setBidQty(1);
 		setBidFace(2);
-		setIMadeLast(false);
-		haptic.tap();
+		setRevealResult(null);
+		setPhase("peek");
 	};
 
-	// --- BID ---
+	const peekDone = () => {
+		setShowingDice(false);
+		const next = nextActive(currentPeeker);
+		if (next === peekStartIndex) {
+			/* everyone has peeked â€” start bidding */
+			setCurrentBidder(peekStartIndex);
+			setPhase("bid");
+		} else {
+			setCurrentPeeker(next);
+		}
+	};
+
 	const isValidBid = (qty: number, face: number): boolean => {
 		if (!currentBid) return true;
 		if (qty > currentBid.qty) return true;
@@ -90,232 +118,231 @@ export default function CrossLiarsDiceGame() {
 			return;
 		}
 		setCurrentBid({ qty: bidQty, face: bidFace });
-		setIMadeLast(true);
+		setLastBidder(currentBidder);
+		const next = nextActive(currentBidder);
+		setCurrentBidder(next);
 		haptic.tap();
 	};
 
-	// Record opponent's bid (they said it aloud)
-	const [oppBidQty, setOppBidQty] = useState(1);
-	const [oppBidFace, setOppBidFace] = useState(2);
-
-	const recordOppBid = () => {
-		if (!isValidBid(oppBidQty, oppBidFace)) {
-			haptic.error();
-			return;
-		}
-		setCurrentBid({ qty: oppBidQty, face: oppBidFace });
-		setIMadeLast(false);
-		haptic.tap();
-	};
-
-	// --- CALL LIAR ---
 	const callLiar = () => {
-		if (!currentBid) return;
-		setPhase("reveal");
-		setOppDiceInput([]);
-		setRevealResult(null);
-		haptic.heavy();
-	};
+		if (!currentBid || lastBidder < 0) return;
 
-	// --- REVEAL ---
-	const addOppDie = (face: number) => {
-		if (oppDiceInput.length >= oppDiceCount) return;
-		setOppDiceInput((prev) => [...prev, face]);
-		haptic.tap();
-	};
-
-	const removeLastOppDie = () => {
-		setOppDiceInput((prev) => prev.slice(0, -1));
-	};
-
-	const confirmReveal = () => {
-		if (oppDiceInput.length !== oppDiceCount) return;
-		if (!currentBid) return;
-
-		const allDice = [...myDice, ...oppDiceInput];
-		const total = allDice.filter((d) => d === currentBid.face).length;
+		const flat = allDice.flat();
+		const total = flat.filter((d) => d === currentBid.face).length;
 		const bidWasTrue = total >= currentBid.qty;
+		const loser = bidWasTrue ? currentBidder : lastBidder;
 
-		// Who called liar? The person who DIDN'T make the last bid.
-		// If I made the last bid and opponent calls liar: opponent challenged my bid
-		// If opponent made the last bid and I call liar: I challenged their bid
-		// The caller loses if bid was true; bid-maker loses if bid was false
-		const callerIsMe = !iMadeLast;
-		const liar = !bidWasTrue; // the bid was a lie
-		const loser: "me" | "opp" = liar
-			? iMadeLast
-				? "me"
-				: "opp" // bidder loses
-			: callerIsMe
-				? "me"
-				: "opp"; // caller loses
-
-		setRevealResult({ liar, total, loser });
-		(loser === "opp" ? haptic.success() : haptic.error());
+		setRevealResult({ liar: !bidWasTrue, total, loser });
+		setPhase("reveal");
+		loser === currentBidder ? haptic.error() : haptic.success();
 	};
 
 	const nextRound = () => {
 		if (!revealResult) return;
 		const { loser } = revealResult;
 
-		let newMy = myDiceCount;
-		let newOpp = oppDiceCount;
-		if (loser === "me") newMy--;
-		else newOpp--;
+		const newCounts = [...diceCounts];
+		newCounts[loser]--;
 
-		if (newMy <= 0) {
-			setMyDiceCount(0);
-			setWinner("opp");
-			setPhase("done");
-			updateProgress("cross-liars-dice", roundNum * 5);
-			return;
-		}
-		if (newOpp <= 0) {
-			setOppDiceCount(0);
-			setWinner("me");
-			setPhase("done");
+		const remaining = newCounts.filter((c) => c > 0).length;
+		if (remaining <= 1) {
+			setDiceCounts(newCounts);
 			updateProgress("cross-liars-dice", roundNum * 10);
+			setPhase("done");
 			return;
 		}
 
-		setMyDiceCount(newMy);
-		setOppDiceCount(newOpp);
+		setDiceCounts(newCounts);
+		setAllDice(newCounts.map((c) => (c > 0 ? rollDice(c) : [])));
 		setRoundNum((r) => r + 1);
-		setPhase("roll");
-		setMyDice([]);
 		setCurrentBid(null);
+		setLastBidder(-1);
+		setBidQty(1);
+		setBidFace(2);
 		setRevealResult(null);
-		setOppDiceInput([]);
+
+		/* loser peeks first (or next active if eliminated) */
+		const fp = newCounts[loser] > 0 ? loser : nextActive(loser, newCounts);
+		setCurrentPeeker(fp);
+		setPeekStartIndex(fp);
+		setShowingDice(false);
+		setPhase("peek");
 	};
 
 	const restart = () => {
-		setPhase("roll");
-		setMyDiceCount(STARTING_DICE);
-		setOppDiceCount(STARTING_DICE);
-		setMyDice([]);
-		setCurrentBid(null);
-		setIMadeLast(false);
-		setBidQty(1);
-		setBidFace(2);
-		setOppBidQty(1);
-		setOppBidFace(2);
-		setOppDiceInput([]);
-		setRevealResult(null);
-		setWinner(null);
-		setRoundNum(1);
+		setPhase("setup");
+		setPlayerCount(2);
 	};
 
-	// --- DONE ---
-	if (phase === "done") {
+	/* â”€â”€ SETUP â”€â”€ */
+	if (phase === "setup") {
 		return (
-			<GameResult
-				title={winner === "me" ? t("ldYouWin") : t("ldYouLose")}
-				score={winner === "me" ? roundNum * 10 : 0}
-				subtitle={`${t("ldRoundsPlayed")}: ${roundNum}`}
-				onPlayAgain={restart}
-			/>
+			<View style={styles.container}>
+				<Text style={styles.title}>{t("ldTitle")}</Text>
+				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
+					{t("mpSelectPlayers")}
+				</Text>
+				<RNView style={styles.countRow}>
+					{Array.from({ length: MAX_PLAYERS - 1 }, (_, i) => i + 2).map((n) => (
+						<Pressable
+							key={n}
+							style={[
+								styles.countBtn,
+								{
+									backgroundColor: playerCount === n ? theme.tint : theme.card,
+									borderColor: playerCount === n ? theme.tint : theme.border,
+								},
+							]}
+							onPress={() => setPlayerCount(n)}
+						>
+							<Text
+								style={[
+									styles.countBtnText,
+									{ color: playerCount === n ? "#fff" : theme.text },
+								]}
+							>
+								{n}
+							</Text>
+						</Pressable>
+					))}
+				</RNView>
+				<Pressable
+					onPress={startGame}
+					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
+				>
+					<Text style={styles.primaryBtnText}>{t("start")}</Text>
+				</Pressable>
+			</View>
 		);
 	}
 
-	// --- ROLL PHASE ---
-	if (phase === "roll") {
+	/* â”€â”€ PEEK â”€â”€ */
+	if (phase === "peek") {
+		const pColor = PLAYER_COLORS[currentPeeker];
+		const myDice = allDice[currentPeeker] ?? [];
 		return (
 			<View style={styles.container}>
-				<Animated.View
-					entering={FadeInDown.duration(300)}
-					style={styles.center}
-				>
-					<Text style={styles.title}>{t("ldTitle")}</Text>
+				<Animated.View entering={FadeInDown.duration(300)} style={styles.center}>
+					<Text style={{ fontSize: 48, marginBottom: 12 }}>đźŽ˛</Text>
+					<Text style={styles.title}>
+						{t("mpPlayerN", { n: currentPeeker + 1 })}
+					</Text>
 					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
-						{t("ldRound", { n: roundNum })}
+						{t("ldDiceRolledHint")}
 					</Text>
 
-					<View style={styles.diceCountRow}>
-						<View style={[styles.countBox, { borderColor: theme.border }]}>
-							<Text style={styles.countLabel}>{t("ldYou")}</Text>
-							<Text style={styles.countNum}>{myDiceCount} 🎲</Text>
-						</View>
-						<View style={[styles.countBox, { borderColor: theme.border }]}>
-							<Text style={styles.countLabel}>{t("ldOpp")}</Text>
-							<Text style={styles.countNum}>{oppDiceCount} 🎲</Text>
-						</View>
-					</View>
-
-					<Pressable
-						onPress={doRoll}
-						style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-					>
-						<Text style={styles.primaryBtnText}>{t("ldRoll")}</Text>
-					</Pressable>
+					{!showingDice ? (
+						<Pressable
+							onPress={() => { setShowingDice(true); haptic.tap(); }}
+							style={[styles.primaryBtn, { backgroundColor: pColor }]}
+						>
+							<Text style={styles.primaryBtnText}>{t("ldPeek")}</Text>
+						</Pressable>
+					) : (
+						<>
+							<RNView style={styles.diceRow}>
+								{myDice.map((d, i) => (
+									<Animated.View
+										key={i}
+										entering={ZoomIn.delay(i * 80).duration(200)}
+										style={[
+											styles.dieBox,
+											{ backgroundColor: theme.card, borderColor: pColor },
+										]}
+									>
+										<Text style={styles.dieText}>{DICE_EMOJI[d]}</Text>
+									</Animated.View>
+								))}
+							</RNView>
+							<Pressable
+								onPress={peekDone}
+								style={[styles.primaryBtn, { backgroundColor: pColor, marginTop: 20 }]}
+							>
+								<Text style={styles.primaryBtnText}>{t("passPhoneReady")}</Text>
+							</Pressable>
+						</>
+					)}
 				</Animated.View>
 			</View>
 		);
 	}
 
-	// --- BID PHASE ---
+	/* â”€â”€ BID â”€â”€ */
 	if (phase === "bid") {
+		const bColor = PLAYER_COLORS[currentBidder];
 		return (
-			<ScrollView
-				style={{ flex: 1 }}
-				contentContainerStyle={styles.scrollContent}
-			>
+			<ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scrollContent}>
 				<View style={styles.container}>
-					{/* My dice */}
-					<Text style={[styles.sectionLabel, { color: theme.mutedText }]}>
-						{t("ldYourDice")}
+					<Text style={styles.title}>{t("ldTitle")}</Text>
+					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
+						{t("ldRound", { n: roundNum })}
 					</Text>
-					<View style={styles.diceRow}>
-						{myDice.map((d, i) => (
-							<Animated.View
-								key={i}
-								entering={ZoomIn.delay(i * 80).duration(200)}
-								style={[
-									styles.dieBox,
-									{ backgroundColor: theme.card, borderColor: theme.border },
-								]}
-							>
-								<Text style={styles.dieText}>{DICE_EMOJI[d]}</Text>
-							</Animated.View>
-						))}
-					</View>
+
+					{/* Player dice counts */}
+					<RNView style={styles.diceCountRow}>
+						{diceCounts.map((c, i) =>
+							c > 0 ? (
+								<RNView
+									key={i}
+									style={[
+										styles.countBox,
+										{
+											borderColor: i === currentBidder ? PLAYER_COLORS[i] : theme.border,
+											borderWidth: i === currentBidder ? 2 : 1,
+										},
+									]}
+								>
+									<RNView style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
+									<Text style={styles.countNum}>{c}đźŽ˛</Text>
+								</RNView>
+							) : (
+								<RNView key={i} style={[styles.countBox, { borderColor: theme.border, opacity: 0.3 }]}>
+									<RNView style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
+									<Text style={styles.countNum}>đź’€</Text>
+								</RNView>
+							),
+						)}
+					</RNView>
+
+					<Text style={[styles.diceInfo, { color: theme.mutedText }]}>
+						{t("ldTotalDice", { total: totalDice })}
+					</Text>
 
 					{/* Current bid */}
-					<View style={styles.bidSection}>
+					<RNView style={styles.bidSection}>
 						<Text style={[styles.bidLabel, { color: theme.mutedText }]}>
 							{t("ldCurrentBid")}
 						</Text>
 						{currentBid ? (
 							<Text style={styles.bidValue}>
-								{currentBid.qty}× {DICE_EMOJI[currentBid.face]}{" "}
-								{iMadeLast ? `(${t("ldYou")})` : `(${t("ldOpp")})`}
+								{currentBid.qty}Ă— {DICE_EMOJI[currentBid.face]}{" "}
+								({t("mpPlayerN", { n: lastBidder + 1 })})
 							</Text>
 						) : (
 							<Text style={[styles.bidValue, { color: theme.mutedText }]}>
 								{t("ldNoBid")}
 							</Text>
 						)}
-					</View>
+					</RNView>
 
-					{/* Dice count info */}
-					<Text style={[styles.diceInfo, { color: theme.mutedText }]}>
-						{t("ldTotalDice", { total: totalDice })}
-					</Text>
+					{/* Active bidder indicator */}
+					<RNView style={[styles.bidderTag, { backgroundColor: bColor + "22", borderColor: bColor }]}>
+						<Text style={[styles.bidderTagText, { color: bColor }]}>
+							{t("mpPlayerN", { n: currentBidder + 1 })} â€” {t("ldMyBid")}
+						</Text>
+					</RNView>
 
-					{/* My bid controls */}
-					<View
-						style={[
-							styles.bidCard,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
+					{/* Bid controls */}
+					<RNView
+						style={[styles.bidCard, { backgroundColor: theme.card, borderColor: bColor }]}
 					>
-						<Text style={styles.bidCardTitle}>{t("ldMyBid")}</Text>
-						<View style={styles.spinnerRow}>
+						<RNView style={styles.spinnerRow}>
 							<Text style={styles.spinnerLabel}>{t("ldQuantity")}</Text>
 							<Pressable
 								onPress={() => setBidQty((q) => Math.max(1, q - 1))}
 								style={[styles.spinnerBtn, { borderColor: theme.border }]}
 							>
-								<Text style={styles.spinnerBtnText}>−</Text>
+								<Text style={styles.spinnerBtnText}>â’</Text>
 							</Pressable>
 							<Text style={styles.spinnerValue}>{bidQty}</Text>
 							<Pressable
@@ -324,8 +351,8 @@ export default function CrossLiarsDiceGame() {
 							>
 								<Text style={styles.spinnerBtnText}>+</Text>
 							</Pressable>
-						</View>
-						<View style={styles.faceRow}>
+						</RNView>
+						<RNView style={styles.faceRow}>
 							{FACES.map((f) => (
 								<Pressable
 									key={f}
@@ -333,8 +360,7 @@ export default function CrossLiarsDiceGame() {
 									style={[
 										styles.faceBtn,
 										{
-											backgroundColor:
-												bidFace === f ? theme.tint : "transparent",
+											backgroundColor: bidFace === f ? bColor : "transparent",
 											borderColor: theme.border,
 										},
 									]}
@@ -342,98 +368,25 @@ export default function CrossLiarsDiceGame() {
 									<Text style={styles.faceBtnText}>{DICE_EMOJI[f]}</Text>
 								</Pressable>
 							))}
-						</View>
+						</RNView>
 						<Pressable
 							onPress={placeBid}
 							style={[
 								styles.actionBtn,
-								{
-									backgroundColor: isValidBid(bidQty, bidFace)
-										? theme.tint
-										: theme.mutedText,
-								},
+								{ backgroundColor: isValidBid(bidQty, bidFace) ? bColor : theme.mutedText },
 							]}
 						>
 							<Text style={styles.actionBtnText}>{t("ldPlaceBid")}</Text>
 						</Pressable>
-					</View>
-
-					{/* Record opponent's bid */}
-					<View
-						style={[
-							styles.bidCard,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-					>
-						<Text style={styles.bidCardTitle}>{t("ldOppBid")}</Text>
-						<View style={styles.spinnerRow}>
-							<Text style={styles.spinnerLabel}>{t("ldQuantity")}</Text>
-							<Pressable
-								onPress={() => setOppBidQty((q) => Math.max(1, q - 1))}
-								style={[styles.spinnerBtn, { borderColor: theme.border }]}
-							>
-								<Text style={styles.spinnerBtnText}>−</Text>
-							</Pressable>
-							<Text style={styles.spinnerValue}>{oppBidQty}</Text>
-							<Pressable
-								onPress={() => setOppBidQty((q) => Math.min(totalDice, q + 1))}
-								style={[styles.spinnerBtn, { borderColor: theme.border }]}
-							>
-								<Text style={styles.spinnerBtnText}>+</Text>
-							</Pressable>
-						</View>
-						<View style={styles.faceRow}>
-							{FACES.map((f) => (
-								<Pressable
-									key={f}
-									onPress={() => setOppBidFace(f)}
-									style={[
-										styles.faceBtn,
-										{
-											backgroundColor:
-												oppBidFace === f ? "#ff9800" : "transparent",
-											borderColor: theme.border,
-										},
-									]}
-								>
-									<Text style={styles.faceBtnText}>{DICE_EMOJI[f]}</Text>
-								</Pressable>
-							))}
-						</View>
-						<Pressable
-							onPress={recordOppBid}
-							style={[
-								styles.actionBtn,
-								{
-									backgroundColor: isValidBid(oppBidQty, oppBidFace)
-										? "#ff9800"
-										: theme.mutedText,
-								},
-							]}
-						>
-							<Text style={styles.actionBtnText}>{t("ldRecordBid")}</Text>
-						</Pressable>
-					</View>
+					</RNView>
 
 					{/* Liar button */}
-					{currentBid && !iMadeLast && (
+					{currentBid && lastBidder >= 0 && (
 						<Pressable
 							onPress={callLiar}
 							style={[styles.liarBtn, { backgroundColor: "#ef5350" }]}
 						>
-							<Text style={styles.liarBtnText}>{t("ldLiar")}</Text>
-						</Pressable>
-					)}
-
-					{/* Hint: opponent can call liar */}
-					{currentBid && iMadeLast && (
-						<Pressable
-							onPress={callLiar}
-							style={[styles.liarHintBtn, { borderColor: "#ef5350" }]}
-						>
-							<Text style={[styles.liarHintText, { color: "#ef5350" }]}>
-								{t("ldOppCalledLiar")}
-							</Text>
+							<Text style={styles.liarBtnText}>đź¤Ą {t("ldLiar")}</Text>
 						</Pressable>
 					)}
 				</View>
@@ -441,127 +394,60 @@ export default function CrossLiarsDiceGame() {
 		);
 	}
 
-	// --- REVEAL PHASE ---
+	/* â”€â”€ REVEAL â”€â”€ */
 	if (phase === "reveal") {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.title}>{t("ldReveal")}</Text>
+				<Text style={styles.title}>{t("ldTitle")}</Text>
 
-				{/* My dice */}
-				<Text style={[styles.sectionLabel, { color: theme.mutedText }]}>
-					{t("ldYourDice")}
-				</Text>
-				<View style={styles.diceRow}>
-					{myDice.map((d, i) => (
-						<View
-							key={i}
-							style={[
-								styles.dieBox,
-								{ backgroundColor: theme.card, borderColor: theme.border },
-							]}
-						>
-							<Text style={styles.dieText}>{DICE_EMOJI[d]}</Text>
-						</View>
-					))}
-				</View>
-
-				{/* Current bid reminder */}
-				{currentBid && (
-					<Text style={[styles.bidReminder, { color: theme.mutedText }]}>
-						{t("ldBidWas", {
-							qty: currentBid.qty,
-							face: DICE_EMOJI[currentBid.face],
-						})}
-					</Text>
+				{/* All dice revealed */}
+				{allDice.map((dice, i) =>
+					dice.length > 0 ? (
+						<RNView key={i} style={styles.revealPlayerRow}>
+							<RNView style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
+							<Text style={[styles.revealPlayerName, { color: PLAYER_COLORS[i] }]}>
+								{t("mpPlayerN", { n: i + 1 })}
+							</Text>
+							<RNView style={styles.diceRow}>
+								{dice.map((d, j) => (
+									<RNView
+										key={j}
+										style={[
+											styles.dieBoxSmall,
+											{
+												backgroundColor: d === currentBid?.face ? "#ff9800" : theme.card,
+												borderColor: theme.border,
+											},
+										]}
+									>
+										<Text style={styles.dieTextSmall}>{DICE_EMOJI[d]}</Text>
+									</RNView>
+								))}
+							</RNView>
+						</RNView>
+					) : null,
 				)}
 
-				{/* Enter opponent's dice */}
-				{!revealResult && (
-					<>
-						<Text
-							style={[
-								styles.sectionLabel,
-								{ color: theme.mutedText, marginTop: 14 },
-							]}
-						>
-							{t("ldEnterOppDice", { count: oppDiceCount })}
-						</Text>
-						<View style={styles.diceRow}>
-							{Array.from({ length: oppDiceCount }).map((_, i) => (
-								<View
-									key={i}
-									style={[
-										styles.dieBox,
-										{
-											backgroundColor:
-												oppDiceInput[i] != null ? "#ff9800" : theme.card,
-											borderColor: theme.border,
-										},
-									]}
-								>
-									<Text style={styles.dieText}>
-										{oppDiceInput[i] != null
-											? DICE_EMOJI[oppDiceInput[i]]
-											: "?"}
-									</Text>
-								</View>
-							))}
-						</View>
-
-						<View style={styles.faceRow}>
-							{FACES.map((f) => (
-								<Pressable
-									key={f}
-									onPress={() => addOppDie(f)}
-									style={[styles.faceBtn, { borderColor: theme.border }]}
-								>
-									<Text style={styles.faceBtnText}>{DICE_EMOJI[f]}</Text>
-								</Pressable>
-							))}
-						</View>
-
-						<View style={styles.revealActions}>
-							<Pressable
-								onPress={removeLastOppDie}
-								style={[styles.smallBtn, { borderColor: theme.border }]}
-							>
-								<Text style={{ fontWeight: "700", color: "#ef5350" }}>⌫</Text>
-							</Pressable>
-							{oppDiceInput.length === oppDiceCount && (
-								<Pressable
-									onPress={confirmReveal}
-									style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-								>
-									<Text style={styles.primaryBtnText}>{t("ldConfirm")}</Text>
-								</Pressable>
-							)}
-						</View>
-					</>
+				{/* Bid reminder */}
+				{currentBid && (
+					<Text style={[styles.bidReminder, { color: theme.mutedText }]}>
+						{t("ldBidWas", { qty: currentBid.qty, face: DICE_EMOJI[currentBid.face] })}
+					</Text>
 				)}
 
 				{/* Result */}
 				{revealResult && (
-					<Animated.View
-						entering={ZoomIn.duration(300)}
-						style={styles.resultCard}
-					>
+					<Animated.View entering={ZoomIn.duration(300)} style={styles.resultCard}>
 						<Text style={styles.resultTitle}>
-							{revealResult.liar ? "🤥 " : "😤 "}
+							{revealResult.liar ? "đź¤Ą " : "đź¤ "}
 							{currentBid
-								? `${currentBid.qty}× ${DICE_EMOJI[currentBid.face]} → ${t("ldActual")}: ${revealResult.total}`
+								? `${currentBid.qty}Ă— ${DICE_EMOJI[currentBid.face]} â†’ ${t("ldActual")}: ${revealResult.total}`
 								: ""}
 						</Text>
 						<Text
-							style={[
-								styles.resultText,
-								{
-									color: revealResult.loser === "opp" ? "#4caf50" : "#ef5350",
-								},
-							]}
+							style={[styles.resultText, { color: PLAYER_COLORS[revealResult.loser] }]}
 						>
-							{revealResult.loser === "me"
-								? t("ldYouLoseDie")
-								: t("ldTheyLoseDie")}
+							{t("mpPlayerN", { n: revealResult.loser + 1 })} {t("ldLosesDie")}
 						</Text>
 						<Pressable
 							onPress={nextRound}
@@ -575,6 +461,43 @@ export default function CrossLiarsDiceGame() {
 		);
 	}
 
+	/* â”€â”€ DONE â”€â”€ */
+	if (phase === "done") {
+		const winner = diceCounts.findIndex((c) => c > 0);
+		return (
+			<View style={styles.container}>
+				<Text style={{ fontSize: 48, marginBottom: 12 }}>đźŹ†</Text>
+				<Text style={styles.title}>
+					{t("dicePlayerWins", { player: String(winner + 1) })}
+				</Text>
+				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
+					{t("ldRoundsPlayed")}: {roundNum}
+				</Text>
+
+				<RNView style={styles.finalTable}>
+					{diceCounts.map((c, i) => (
+						<RNView key={i} style={[styles.finalRow, { borderColor: theme.border + "44" }]}>
+							<RNView style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
+							<Text style={[styles.finalName, { color: theme.text }]}>
+								{t("mpPlayerN", { n: i + 1 })}
+							</Text>
+							<Text style={[styles.finalStatus, { color: c > 0 ? "#66bb6a" : "#ef5350" }]}>
+								{c > 0 ? "đźŹ†" : "đź’€"}
+							</Text>
+						</RNView>
+					))}
+				</RNView>
+
+				<Pressable
+					onPress={restart}
+					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
+				>
+					<Text style={styles.primaryBtnText}>{t("playAgain")}</Text>
+				</Pressable>
+			</View>
+		);
+	}
+
 	return null;
 }
 
@@ -583,137 +506,55 @@ const styles = StyleSheet.create({
 	scrollContent: { alignItems: "center", paddingBottom: 30 },
 	center: { alignItems: "center" },
 	title: { fontSize: 22, fontWeight: "800", textAlign: "center" },
-	subtitle: {
-		fontSize: 14,
-		textAlign: "center",
-		marginTop: 2,
-		marginBottom: 12,
-	},
-	// Dice counts
-	diceCountRow: {
-		flexDirection: "row",
-		gap: 20,
-		marginBottom: 20,
-	},
-	countBox: {
-		borderWidth: 1,
-		borderRadius: 10,
-		paddingHorizontal: 20,
-		paddingVertical: 10,
-		alignItems: "center",
-	},
-	countLabel: { fontSize: 13, fontWeight: "600" },
-	countNum: { fontSize: 22, fontWeight: "800", marginTop: 2 },
-	// Dice display
-	sectionLabel: { fontSize: 13, fontWeight: "700", marginBottom: 6 },
-	diceRow: { flexDirection: "row", gap: 8, marginBottom: 8 },
-	dieBox: {
-		width: 48,
-		height: 48,
-		borderRadius: 10,
-		borderWidth: 1.5,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	dieText: { fontSize: 26 },
+	subtitle: { fontSize: 14, textAlign: "center", marginTop: 2, marginBottom: 12 },
+	/* setup */
+	countRow: { flexDirection: "row", gap: 10, marginBottom: 20 },
+	countBtn: { width: 48, height: 48, borderRadius: 12, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
+	countBtnText: { fontSize: 20, fontWeight: "800" },
+	/* dice counts */
+	diceCountRow: { flexDirection: "row", gap: 8, marginBottom: 8, flexWrap: "wrap", justifyContent: "center" },
+	countBox: { borderWidth: 1, borderRadius: 10, paddingHorizontal: 10, paddingVertical: 6, alignItems: "center", flexDirection: "row", gap: 6 },
+	countNum: { fontSize: 16, fontWeight: "800" },
+	playerDot: { width: 10, height: 10, borderRadius: 5 },
 	diceInfo: { fontSize: 12, marginBottom: 8 },
-	// Bid section
+	/* dice display */
+	diceRow: { flexDirection: "row", gap: 8, marginBottom: 4, flexWrap: "wrap" },
+	dieBox: { width: 48, height: 48, borderRadius: 10, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
+	dieText: { fontSize: 26 },
+	dieBoxSmall: { width: 36, height: 36, borderRadius: 8, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+	dieTextSmall: { fontSize: 20 },
+	/* bid */
 	bidSection: { alignItems: "center", marginVertical: 8 },
 	bidLabel: { fontSize: 13, fontWeight: "700" },
 	bidValue: { fontSize: 20, fontWeight: "800", marginTop: 2 },
-	bidReminder: { fontSize: 14, fontWeight: "600", marginTop: 8 },
-	// Bid card
-	bidCard: {
-		width: "90%",
-		borderWidth: 1,
-		borderRadius: 12,
-		padding: 12,
-		marginTop: 10,
-		alignItems: "center",
-		gap: 8,
-	},
-	bidCardTitle: { fontSize: 15, fontWeight: "700" },
-	// Spinner
+	bidReminder: { fontSize: 14, fontWeight: "600", marginTop: 10 },
+	bidderTag: { paddingHorizontal: 16, paddingVertical: 6, borderRadius: 10, borderWidth: 1.5, marginBottom: 8 },
+	bidderTagText: { fontSize: 14, fontWeight: "800" },
+	bidCard: { width: "90%", borderWidth: 1.5, borderRadius: 12, padding: 12, alignItems: "center", gap: 8 },
 	spinnerRow: { flexDirection: "row", alignItems: "center", gap: 10 },
 	spinnerLabel: { fontSize: 13, fontWeight: "600" },
-	spinnerBtn: {
-		width: 36,
-		height: 36,
-		borderRadius: 8,
-		borderWidth: 1,
-		alignItems: "center",
-		justifyContent: "center",
-	},
+	spinnerBtn: { width: 36, height: 36, borderRadius: 8, borderWidth: 1, alignItems: "center", justifyContent: "center" },
 	spinnerBtnText: { fontSize: 20, fontWeight: "700" },
-	spinnerValue: {
-		fontSize: 22,
-		fontWeight: "800",
-		minWidth: 30,
-		textAlign: "center",
-	},
-	// Face selector
-	faceRow: {
-		flexDirection: "row",
-		gap: 6,
-		marginVertical: 6,
-	},
-	faceBtn: {
-		width: 44,
-		height: 44,
-		borderRadius: 10,
-		borderWidth: 1.5,
-		alignItems: "center",
-		justifyContent: "center",
-	},
+	spinnerValue: { fontSize: 22, fontWeight: "800", minWidth: 30, textAlign: "center" },
+	faceRow: { flexDirection: "row", gap: 6, marginVertical: 6 },
+	faceBtn: { width: 44, height: 44, borderRadius: 10, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
 	faceBtnText: { fontSize: 24 },
-	// Action buttons
-	actionBtn: {
-		paddingHorizontal: 24,
-		paddingVertical: 10,
-		borderRadius: 10,
-	},
+	actionBtn: { paddingHorizontal: 24, paddingVertical: 10, borderRadius: 10 },
 	actionBtnText: { color: "#fff", fontSize: 15, fontWeight: "700" },
-	primaryBtn: {
-		paddingHorizontal: 28,
-		paddingVertical: 12,
-		borderRadius: 12,
-		marginTop: 8,
-	},
+	primaryBtn: { paddingHorizontal: 28, paddingVertical: 12, borderRadius: 12, marginTop: 8 },
 	primaryBtnText: { color: "#fff", fontSize: 16, fontWeight: "800" },
-	smallBtn: {
-		paddingHorizontal: 16,
-		paddingVertical: 8,
-		borderRadius: 8,
-		borderWidth: 1,
-	},
-	// Liar button
-	liarBtn: {
-		paddingHorizontal: 36,
-		paddingVertical: 14,
-		borderRadius: 14,
-		marginTop: 16,
-	},
+	/* liar */
+	liarBtn: { paddingHorizontal: 36, paddingVertical: 14, borderRadius: 14, marginTop: 16 },
 	liarBtnText: { color: "#fff", fontSize: 20, fontWeight: "900" },
-	liarHintBtn: {
-		paddingHorizontal: 24,
-		paddingVertical: 12,
-		borderRadius: 12,
-		borderWidth: 2,
-		marginTop: 16,
-	},
-	liarHintText: { fontSize: 15, fontWeight: "700" },
-	// Reveal
-	revealActions: {
-		flexDirection: "row",
-		gap: 12,
-		alignItems: "center",
-		marginTop: 8,
-	},
-	resultCard: {
-		alignItems: "center",
-		marginTop: 16,
-		gap: 8,
-	},
+	/* reveal */
+	revealPlayerRow: { flexDirection: "row", alignItems: "center", gap: 8, marginVertical: 4, flexWrap: "wrap" },
+	revealPlayerName: { fontSize: 14, fontWeight: "700", minWidth: 70 },
+	resultCard: { alignItems: "center", marginTop: 16, gap: 8 },
 	resultTitle: { fontSize: 18, fontWeight: "700", textAlign: "center" },
 	resultText: { fontSize: 16, fontWeight: "800" },
+	/* done */
+	finalTable: { width: "100%", gap: 6, marginBottom: 16, paddingHorizontal: 16 },
+	finalRow: { flexDirection: "row", alignItems: "center", gap: 10, paddingVertical: 10, paddingHorizontal: 14, borderBottomWidth: 1 },
+	finalName: { fontSize: 16, fontWeight: "700", flex: 1 },
+	finalStatus: { fontSize: 24 },
 });

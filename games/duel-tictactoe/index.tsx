@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Dimensions, Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -63,15 +63,15 @@ export default function DuelTicTacToeGame() {
 	const [targetWins, setTargetWins] = useState(2);
 	const [matchWinner, setMatchWinner] = useState<"X" | "O" | null>(null);
 
-	const winner = useMemo(() => getWinner(board), [board]);
-	const winningLine = useMemo(() => {
+	const winner = getWinner(board);
+	const winningLine = (() => {
 		for (const line of LINES) {
 			const [a, b, c] = line;
 			if (board[a] && board[a] === board[b] && board[a] === board[c])
 				return line;
 		}
 		return null;
-	}, [board]);
+	})();
 
 	const handlePress = (index: number) => {
 		if (board[index] !== null || winner !== null || matchWinner !== null)
@@ -146,7 +146,7 @@ export default function DuelTicTacToeGame() {
 			<View style={styles.scoreStrip}>
 				<View style={styles.scoreBlock}>
 					<Text style={[styles.scoreName, { color: theme.mutedText }]}>
-						Player X
+						{t("tttPlayerX")}
 					</Text>
 					<Text
 						style={[

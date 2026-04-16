@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
 	Dimensions,
 	Pressable,
+	ScrollView,
 	StyleSheet,
 	View as RNView,
 } from "react-native";
@@ -22,60 +23,74 @@ const CELL_GAP = 6;
 const CELL_SIZE = Math.floor(
 	(SCREEN_W - 32 - CELL_GAP * (GRID_COLS - 1)) / GRID_COLS,
 );
-const ROUND_TIME = 30; // seconds per round
-const ROUNDS = 3;
+const BASE_ROUND_TIME = 30;
+const ROUNDS = 5;
+const MAX_PLAYERS = 6;
+
+const PLAYER_COLORS = [
+	"#ef5350",
+	"#ffd54f",
+	"#4FC3F7",
+	"#81C784",
+	"#CE93D8",
+	"#FF8A65",
+];
+
+function getRoundTime(round: number): number {
+	return Math.max(15, BASE_ROUND_TIME - (round - 1) * 3);
+}
 
 const EMOJI_POOL = [
-	"✈️",
-	"🛫",
-	"🛬",
-	"🚁",
-	"🛩️",
-	"🪂",
-	"🎒",
-	"🧳",
-	"🗺️",
-	"🌍",
-	"⛅",
-	"🌤️",
-	"☁️",
-	"🌈",
-	"⭐",
-	"🌙",
-	"🔭",
-	"🧭",
-	"⚡",
-	"🌊",
-	"🏔️",
-	"🏝️",
-	"🗼",
-	"🗽",
-	"🎡",
-	"🏰",
-	"⛩️",
-	"🕌",
-	"🎌",
-	"🚢",
-	"🚀",
-	"🛸",
-	"🎯",
-	"🎪",
-	"🎠",
-	"🎢",
-	"🚂",
-	"🚤",
-	"⛵",
-	"🏖️",
-	"🌴",
-	"🌺",
-	"🦅",
-	"🦜",
-	"🐬",
-	"🦋",
-	"🌻",
-	"🍀",
-	"💎",
-	"🔑",
+	"\u2708\uFE0F",
+	"\uD83D\uDEEB",
+	"\uD83D\uDEEC",
+	"\uD83D\uDE81",
+	"\uD83D\uDEE9\uFE0F",
+	"\uD83E\uDE82",
+	"\uD83C\uDF92",
+	"\uD83E\uDDF3",
+	"\uD83D\uDDFA\uFE0F",
+	"\uD83C\uDF0D",
+	"\u26C5",
+	"\uD83C\uDF24\uFE0F",
+	"\u2601\uFE0F",
+	"\uD83C\uDF08",
+	"\u2B50",
+	"\uD83C\uDF19",
+	"\uD83D\uDD2D",
+	"\uD83E\uDDED",
+	"\u26A1",
+	"\uD83C\uDF0A",
+	"\uD83C\uDFD4\uFE0F",
+	"\uD83C\uDFDD\uFE0F",
+	"\uD83D\uDDFC",
+	"\uD83D\uDDFD",
+	"\uD83C\uDFA1",
+	"\uD83C\uDFF0",
+	"\u26E9\uFE0F",
+	"\uD83D\uDD4C",
+	"\uD83C\uDF8C",
+	"\uD83D\uDEA2",
+	"\uD83D\uDE80",
+	"\uD83D\uDEF8",
+	"\uD83C\uDFAF",
+	"\uD83C\uDFAA",
+	"\uD83C\uDFA0",
+	"\uD83C\uDFA2",
+	"\uD83D\uDE82",
+	"\uD83D\uDEA4",
+	"\u26F5",
+	"\uD83C\uDFD6\uFE0F",
+	"\uD83C\uDF34",
+	"\uD83C\uDF3A",
+	"\uD83E\uDD85",
+	"\uD83E\uDD9C",
+	"\uD83D\uDC2C",
+	"\uD83E\uDD8B",
+	"\uD83C\uDF3B",
+	"\uD83C\uDF40",
+	"\uD83D\uDC8E",
+	"\uD83D\uDD11",
 ];
 
 function shuffleArray<T>(arr: T[]): T[] {
@@ -90,7 +105,6 @@ function shuffleArray<T>(arr: T[]): T[] {
 function generateRound(): { grid: string[]; target: string } {
 	const picked = shuffleArray(EMOJI_POOL).slice(0, TOTAL_CELLS);
 	const grid = shuffleArray(picked);
-	// Pick a target that appears exactly once
 	const target = grid[Math.floor(Math.random() * grid.length)];
 	return { grid, target };
 }
@@ -102,30 +116,41 @@ export default function DuelEmojiFindGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
+	/* setup */
+	const [playerCount, setPlayerCount] = useState(2);
 	const [phase, setPhase] = useState<
-		"ready" | "playing" | "roundEnd" | "finished"
-	>("ready");
+		"setup" | "handoff" | "playing" | "roundEnd" | "finished"
+	>("setup");
+
+	/* game */
 	const [round, setRound] = useState(1);
+	const [currentPlayer, setCurrentPlayer] = useState(0);
+	const [scores, setScores] = useState<number[]>([]);
+	const [roundScores, setRoundScores] = useState<number[]>([]);
 	const [grid, setGrid] = useState<string[]>([]);
 	const [target, setTarget] = useState("");
-	const [timeLeft, setTimeLeft] = useState(ROUND_TIME);
-	const [scoreP1, setScoreP1] = useState(0);
-	const [scoreP2, setScoreP2] = useState(0);
-	const [roundScoreP1, setRoundScoreP1] = useState(0);
-	const [roundScoreP2, setRoundScoreP2] = useState(0);
+	const [timeLeft, setTimeLeft] = useState(BASE_ROUND_TIME);
+	const [turnScore, setTurnScore] = useState(0);
 	const [foundCells, setFoundCells] = useState<Set<number>>(new Set());
 	const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-	const startRound = useCallback(() => {
+	const startGame = () => {
+		setScores(Array(playerCount).fill(0));
+		setRoundScores(Array(playerCount).fill(0));
+		setRound(1);
+		setCurrentPlayer(0);
+		setPhase("handoff");
+	};
+
+	const startTurn = () => {
 		const { grid: g, target: tgt } = generateRound();
 		setGrid(g);
 		setTarget(tgt);
-		setTimeLeft(ROUND_TIME);
-		setRoundScoreP1(0);
-		setRoundScoreP2(0);
+		setTimeLeft(getRoundTime(round));
+		setTurnScore(0);
 		setFoundCells(new Set());
 		setPhase("playing");
-	}, []);
+	};
 
 	useEffect(() => {
 		if (phase !== "playing") return;
@@ -143,16 +168,30 @@ export default function DuelEmojiFindGame() {
 		};
 	}, [phase]);
 
+	/* when time runs out */
 	useEffect(() => {
-		if (phase === "playing" && timeLeft === 0) {
-			// End round
-			setScoreP1((s) => s + roundScoreP1);
-			setScoreP2((s) => s + roundScoreP2);
+		if (phase !== "playing" || timeLeft > 0) return;
+		endTurn();
+	}, [timeLeft, phase]);
+
+	const endTurn = () => {
+		if (timerRef.current) clearInterval(timerRef.current);
+		const newRoundScores = [...roundScores];
+		newRoundScores[currentPlayer] = turnScore;
+		setRoundScores(newRoundScores);
+
+		const nextPlayer = currentPlayer + 1;
+		if (nextPlayer < playerCount) {
+			setCurrentPlayer(nextPlayer);
+			setPhase("handoff");
+		} else {
+			/* all players done � add round scores to totals */
+			setScores((prev) => prev.map((s, i) => s + newRoundScores[i]));
 			setPhase("roundEnd");
 		}
-	}, [timeLeft, phase, roundScoreP1, roundScoreP2]);
+	};
 
-	const handleCellPress = (index: number, player: 1 | 2) => {
+	const handleCellPress = (index: number) => {
 		if (phase !== "playing") return;
 		if (foundCells.has(index)) return;
 
@@ -161,21 +200,14 @@ export default function DuelEmojiFindGame() {
 			const newFound = new Set(foundCells);
 			newFound.add(index);
 			setFoundCells(newFound);
+			setTurnScore((s) => s + 10);
 
-			if (player === 1) setRoundScoreP1((s) => s + 10);
-			else setRoundScoreP2((s) => s + 10);
-
-			// Pick new target after brief delay
 			setTimeout(() => {
 				const available = grid
 					.map((emoji, i) => ({ emoji, i }))
 					.filter(({ i }) => !newFound.has(i));
 				if (available.length === 0) {
-					// All found, end round early
-					setScoreP1((s) => s + roundScoreP1 + (player === 1 ? 10 : 0));
-					setScoreP2((s) => s + roundScoreP2 + (player === 2 ? 10 : 0));
-					setPhase("roundEnd");
-					if (timerRef.current) clearInterval(timerRef.current);
+					endTurn();
 					return;
 				}
 				const pick = available[Math.floor(Math.random() * available.length)];
@@ -183,95 +215,127 @@ export default function DuelEmojiFindGame() {
 			}, 300);
 		} else {
 			haptic.error();
-			// penalty: -2 points
-			if (player === 1) setRoundScoreP1((s) => Math.max(0, s - 2));
-			else setRoundScoreP2((s) => Math.max(0, s - 2));
+			setTurnScore((s) => Math.max(0, s - 2));
 		}
 	};
 
 	const handleNextRound = () => {
 		if (round >= ROUNDS) {
-			const total1 = scoreP1;
-			const total2 = scoreP2;
-			updateProgress("duel-emoji-find", Math.max(total1, total2));
+			updateProgress("duel-emoji-find", Math.max(...scores));
 			setPhase("finished");
 			return;
 		}
 		setRound((r) => r + 1);
-		startRound();
+		setCurrentPlayer(0);
+		setRoundScores(Array(playerCount).fill(0));
+		setPhase("handoff");
 	};
 
-	const handleRestart = () => {
-		setRound(1);
-		setScoreP1(0);
-		setScoreP2(0);
-		setPhase("ready");
-	};
+	const pColor = (i: number) => PLAYER_COLORS[i % PLAYER_COLORS.length];
 
-	// Ready screen
-	if (phase === "ready") {
+	/* �� SETUP �� */
+	if (phase === "setup") {
 		return (
 			<View style={styles.root}>
 				<Text style={styles.title}>{t("efTitle")}</Text>
 				<Text style={[styles.desc, { color: theme.mutedText }]}>
 					{t("efDesc")}
 				</Text>
-				<RNView style={styles.readyInfo}>
-					<Text style={[styles.infoLine, { color: theme.text }]}>
-						🎯 {t("efRules1")}
-					</Text>
-					<Text style={[styles.infoLine, { color: theme.text }]}>
-						⏱️ {t("efRules2", { seconds: ROUND_TIME })}
-					</Text>
-					<Text style={[styles.infoLine, { color: theme.text }]}>
-						🏁 {t("efRules3", { rounds: ROUNDS })}
-					</Text>
+				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
+					{t("mpSelectPlayers")}
+				</Text>
+				<RNView style={styles.countRow}>
+					{Array.from({ length: MAX_PLAYERS - 1 }, (_, i) => i + 2).map((n) => (
+						<Pressable
+							key={n}
+							style={[
+								styles.countBtn,
+								{
+									backgroundColor: playerCount === n ? theme.tint : theme.card,
+									borderColor: playerCount === n ? theme.tint : theme.border,
+								},
+							]}
+							onPress={() => setPlayerCount(n)}
+						>
+							<Text
+								style={[
+									styles.countBtnText,
+									{ color: playerCount === n ? "#fff" : theme.text },
+								]}
+							>
+								{n}
+							</Text>
+						</Pressable>
+					))}
 				</RNView>
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
-					onPress={startRound}
+					onPress={startGame}
 				>
-					<Text style={styles.btnText}>{t("efStart")}</Text>
+					<Text style={styles.btnText}>{t("start")}</Text>
 				</Pressable>
 			</View>
 		);
 	}
 
-	// Finished screen
-	if (phase === "finished") {
-		const winner =
-			scoreP1 > scoreP2
-				? t("c4Player1")
-				: scoreP2 > scoreP1
-					? t("c4Player2")
-					: null;
+	/* �� HANDOFF �� */
+	if (phase === "handoff") {
 		return (
 			<View style={styles.root}>
-				<Text style={styles.title}>
-					{winner ? t("efWins", { player: winner }) : t("efDraw")}
+				<RNView
+					style={[
+						styles.handoffDot,
+						{ backgroundColor: pColor(currentPlayer) },
+					]}
+				/>
+				<Text style={[styles.title, { color: pColor(currentPlayer) }]}>
+					{t("mpPlayerN", { n: currentPlayer + 1 })}
 				</Text>
-				<RNView style={styles.finalScores}>
-					<RNView style={styles.finalBlock}>
-						<Text style={[styles.finalLabel, { color: theme.mutedText }]}>
-							{t("c4Player1")}
-						</Text>
-						<Text style={[styles.finalNum, { color: "#ef5350" }]}>
-							{scoreP1}
-						</Text>
-					</RNView>
-					<Text style={[styles.finalVs, { color: theme.mutedText }]}>vs</Text>
-					<RNView style={styles.finalBlock}>
-						<Text style={[styles.finalLabel, { color: theme.mutedText }]}>
-							{t("c4Player2")}
-						</Text>
-						<Text style={[styles.finalNum, { color: "#ffd54f" }]}>
-							{scoreP2}
-						</Text>
-					</RNView>
+				<Text style={[styles.desc, { color: theme.mutedText }]}>
+					{t("efHandoff", { seconds: getRoundTime(round) })}
+				</Text>
+				<Pressable
+					style={[styles.btn, { backgroundColor: pColor(currentPlayer) }]}
+					onPress={startTurn}
+				>
+					<Text style={styles.btnText}>{t("efGo")}</Text>
+				</Pressable>
+			</View>
+		);
+	}
+
+	/* �� FINISHED �� */
+	if (phase === "finished") {
+		const maxScore = Math.max(...scores);
+		const winners = scores
+			.map((s, i) => (s === maxScore ? i : -1))
+			.filter((i) => i >= 0);
+		const winnerName =
+			winners.length === 1
+				? t("dicePlayerWins", { player: String(winners[0] + 1) })
+				: t("diceDraw");
+		return (
+			<View style={styles.root}>
+				<Text style={styles.title}>{winnerName}</Text>
+				<RNView style={styles.finalTable}>
+					{scores.map((s, i) => (
+						<RNView
+							key={i}
+							style={[styles.finalRow, { borderColor: theme.border + "44" }]}
+						>
+							<RNView
+								style={[styles.playerDot, { backgroundColor: pColor(i) }]}
+							/>
+							<Text style={[styles.finalName, { color: theme.text }]}>
+								{t("mpPlayerN", { n: i + 1 })}
+							</Text>
+							<Text style={[styles.finalNum, { color: pColor(i) }]}>{s}</Text>
+						</RNView>
+					))}
 				</RNView>
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
-					onPress={handleRestart}
+					onPress={() => setPhase("setup")}
 				>
 					<Text style={styles.btnText}>{t("playAgain")}</Text>
 				</Pressable>
@@ -279,33 +343,30 @@ export default function DuelEmojiFindGame() {
 		);
 	}
 
-	// Round end
+	/* �� ROUND END �� */
 	if (phase === "roundEnd") {
 		return (
 			<View style={styles.root}>
 				<Text style={styles.title}>{t("efRoundOver", { round })}</Text>
-				<RNView style={styles.finalScores}>
-					<RNView style={styles.finalBlock}>
-						<Text style={[styles.finalLabel, { color: theme.mutedText }]}>
-							{t("c4Player1")}
-						</Text>
-						<Text style={[styles.finalNum, { color: "#ef5350" }]}>
-							+{roundScoreP1}
-						</Text>
-					</RNView>
-					<Text style={[styles.finalVs, { color: theme.mutedText }]}>–</Text>
-					<RNView style={styles.finalBlock}>
-						<Text style={[styles.finalLabel, { color: theme.mutedText }]}>
-							{t("c4Player2")}
-						</Text>
-						<Text style={[styles.finalNum, { color: "#ffd54f" }]}>
-							+{roundScoreP2}
-						</Text>
-					</RNView>
+				<RNView style={styles.finalTable}>
+					{roundScores.map((rs, i) => (
+						<RNView
+							key={i}
+							style={[styles.finalRow, { borderColor: theme.border + "44" }]}
+						>
+							<RNView
+								style={[styles.playerDot, { backgroundColor: pColor(i) }]}
+							/>
+							<Text style={[styles.finalName, { color: theme.text }]}>
+								{t("mpPlayerN", { n: i + 1 })}
+							</Text>
+							<Text style={[styles.roundPts, { color: pColor(i) }]}>+{rs}</Text>
+							<Text style={[styles.totalPts, { color: theme.mutedText }]}>
+								{scores[i]}
+							</Text>
+						</RNView>
+					))}
 				</RNView>
-				<Text style={[styles.totalHint, { color: theme.mutedText }]}>
-					{t("efTotal")}: {scoreP1} – {scoreP2}
-				</Text>
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
 					onPress={handleNextRound}
@@ -318,18 +379,22 @@ export default function DuelEmojiFindGame() {
 		);
 	}
 
-	// Playing screen
+	/* �� PLAYING �� */
 	const timerColor =
 		timeLeft <= 5 ? "#ef5350" : timeLeft <= 10 ? "#ffa726" : theme.text;
+	const curColor = pColor(currentPlayer);
 
 	return (
 		<View style={styles.root}>
 			{/* HUD */}
 			<RNView style={styles.hud}>
 				<RNView style={styles.hudBlock}>
-					<RNView style={[styles.hudDot, { backgroundColor: "#ef5350" }]} />
-					<Text style={[styles.hudScore, { color: "#ef5350" }]}>
-						{roundScoreP1}
+					<RNView style={[styles.hudDot, { backgroundColor: curColor }]} />
+					<Text style={[styles.hudLabel, { color: curColor }]}>
+						{t("mpPlayerN", { n: currentPlayer + 1 })}
+					</Text>
+					<Text style={[styles.hudScore, { color: curColor }]}>
+						{turnScore}
 					</Text>
 				</RNView>
 				<RNView style={styles.hudCenter}>
@@ -338,12 +403,6 @@ export default function DuelEmojiFindGame() {
 					</Text>
 					<Text style={[styles.roundHint, { color: theme.mutedText }]}>
 						{t("efRound", { round, total: ROUNDS })}
-					</Text>
-				</RNView>
-				<RNView style={styles.hudBlock}>
-					<RNView style={[styles.hudDot, { backgroundColor: "#ffd54f" }]} />
-					<Text style={[styles.hudScore, { color: "#ffd54f" }]}>
-						{roundScoreP2}
 					</Text>
 				</RNView>
 			</RNView>
@@ -361,45 +420,27 @@ export default function DuelEmojiFindGame() {
 				<Text style={styles.targetEmoji}>{target}</Text>
 			</RNView>
 
-			{/* Grid — P1 taps left half, P2 taps right half */}
-			<RNView style={styles.gridContainer}>
-				{/* P1 side indicator */}
-				<RNView style={styles.sideIndicators}>
-					<Text style={[styles.sideLabel, { color: "#ef5350" }]}>P1 ←</Text>
-					<Text style={[styles.sideLabel, { color: "#ffd54f" }]}>→ P2</Text>
-				</RNView>
-				<RNView style={styles.grid}>
-					{grid.map((emoji, i) => {
-						const found = foundCells.has(i);
-						return (
-							<RNView key={`cell-${i}`} style={styles.cellWrapper}>
-								{/* P1 tap zone (left half) */}
-								<Pressable
-									style={styles.halfLeft}
-									onPress={() => handleCellPress(i, 1)}
-								/>
-								{/* P2 tap zone (right half) */}
-								<Pressable
-									style={styles.halfRight}
-									onPress={() => handleCellPress(i, 2)}
-								/>
-								<RNView
-									style={[
-										styles.cellContent,
-										{
-											backgroundColor: found ? theme.card : theme.elevated,
-											borderColor: found ? theme.border : "transparent",
-											opacity: found ? 0.3 : 1,
-										},
-									]}
-									pointerEvents="none"
-								>
-									<Text style={styles.cellEmoji}>{emoji}</Text>
-								</RNView>
-							</RNView>
-						);
-					})}
-				</RNView>
+			{/* Grid */}
+			<RNView style={styles.grid}>
+				{grid.map((emoji, i) => {
+					const found = foundCells.has(i);
+					return (
+						<Pressable
+							key={`cell-${i}`}
+							style={[
+								styles.cell,
+								{
+									backgroundColor: found ? theme.card : theme.elevated,
+									borderColor: found ? theme.border : "transparent",
+									opacity: found ? 0.3 : 1,
+								},
+							]}
+							onPress={() => handleCellPress(i)}
+						>
+							<Text style={styles.cellEmoji}>{emoji}</Text>
+						</Pressable>
+					);
+				})}
 			</RNView>
 		</View>
 	);
@@ -413,9 +454,18 @@ const styles = StyleSheet.create({
 		padding: 16,
 	},
 	title: { fontSize: 24, fontWeight: "900", marginBottom: 8 },
+	subtitle: { fontSize: 16, fontWeight: "600", marginBottom: 12 },
 	desc: { fontSize: 13, textAlign: "center", marginBottom: 16, lineHeight: 20 },
-	readyInfo: { gap: 8, marginBottom: 20, alignItems: "flex-start" },
-	infoLine: { fontSize: 14, fontWeight: "600" },
+	countRow: { flexDirection: "row", gap: 10, marginBottom: 24 },
+	countBtn: {
+		width: 48,
+		height: 48,
+		borderRadius: 12,
+		borderWidth: 1.5,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	countBtnText: { fontSize: 20, fontWeight: "800" },
 	btn: {
 		paddingHorizontal: 32,
 		paddingVertical: 14,
@@ -423,6 +473,7 @@ const styles = StyleSheet.create({
 		marginTop: 12,
 	},
 	btnText: { color: "#fff", fontSize: 16, fontWeight: "800" },
+	handoffDot: { width: 40, height: 40, borderRadius: 20, marginBottom: 12 },
 	hud: {
 		flexDirection: "row",
 		alignItems: "center",
@@ -437,6 +488,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	hudDot: { width: 10, height: 10, borderRadius: 5 },
+	hudLabel: { fontSize: 11, fontWeight: "800" },
 	hudScore: { fontSize: 22, fontWeight: "900" },
 	hudCenter: { alignItems: "center" },
 	timerText: { fontSize: 28, fontWeight: "900" },
@@ -453,60 +505,33 @@ const styles = StyleSheet.create({
 	},
 	findLabel: { fontSize: 13, fontWeight: "700" },
 	targetEmoji: { fontSize: 32 },
-	gridContainer: { width: "100%" },
-	sideIndicators: {
-		flexDirection: "row",
-		justifyContent: "space-between",
-		paddingHorizontal: 4,
-		marginBottom: 4,
-	},
-	sideLabel: { fontSize: 11, fontWeight: "800" },
 	grid: {
 		flexDirection: "row",
 		flexWrap: "wrap",
 		gap: CELL_GAP,
 		justifyContent: "center",
 	},
-	cellWrapper: {
+	cell: {
 		width: CELL_SIZE,
 		height: CELL_SIZE,
-		position: "relative",
-	},
-	halfLeft: {
-		position: "absolute",
-		left: 0,
-		top: 0,
-		width: "50%",
-		height: "100%",
-		zIndex: 2,
-	},
-	halfRight: {
-		position: "absolute",
-		right: 0,
-		top: 0,
-		width: "50%",
-		height: "100%",
-		zIndex: 2,
-	},
-	cellContent: {
-		width: "100%",
-		height: "100%",
 		borderRadius: 10,
 		borderWidth: 1,
 		alignItems: "center",
 		justifyContent: "center",
 	},
 	cellEmoji: { fontSize: CELL_SIZE * 0.45 },
-	finalScores: {
+	finalTable: { width: "100%", gap: 6, marginBottom: 12 },
+	finalRow: {
 		flexDirection: "row",
 		alignItems: "center",
-		gap: 20,
-		marginTop: 8,
-		marginBottom: 4,
+		gap: 10,
+		paddingVertical: 10,
+		paddingHorizontal: 14,
+		borderBottomWidth: 1,
 	},
-	finalBlock: { alignItems: "center", gap: 2 },
-	finalLabel: { fontSize: 12, fontWeight: "700" },
-	finalNum: { fontSize: 36, fontWeight: "900" },
-	finalVs: { fontSize: 16, fontWeight: "700" },
-	totalHint: { fontSize: 14, fontWeight: "600", marginTop: 4 },
+	playerDot: { width: 10, height: 10, borderRadius: 5 },
+	finalName: { fontSize: 16, fontWeight: "700", flex: 1 },
+	finalNum: { fontSize: 24, fontWeight: "900" },
+	roundPts: { fontSize: 16, fontWeight: "800", width: 50, textAlign: "right" },
+	totalPts: { fontSize: 14, fontWeight: "600", width: 40, textAlign: "right" },
 });

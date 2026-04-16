@@ -40,10 +40,20 @@
     "plugins": [
       "expo-router",
       "expo-localization",
-      "expo-audio"
+      "expo-audio",
+      "expo-updates"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "updates": {
+      "url": "https://u.expo.dev/031e18e1-3a52-478c-8b3d-61b0057dc6a7",
+      "enabled": true,
+      "fallbackToCacheTimeout": 0,
+      "checkAutomatically": "ON_LOAD"
+    },
+    "runtimeVersion": {
+      "policy": "fingerprint"
     },
     "extra": {
       "router": {},

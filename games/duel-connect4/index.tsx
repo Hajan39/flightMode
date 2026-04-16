@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Dimensions, Pressable, StyleSheet } from "react-native";
 import { View as RNView } from "react-native";
 
@@ -116,12 +116,9 @@ export default function DuelConnect4Game() {
 	const [matchTarget, setMatchTarget] = useState(2);
 	const [matchWinner, setMatchWinner] = useState<Player | null>(null);
 
-	const winner = useMemo(() => checkWinner(board), [board]);
-	const winCells = useMemo(
-		() =>
-			winner && winner !== "draw" ? getWinCells(board) : new Set<string>(),
-		[board, winner],
-	);
+	const winner = checkWinner(board);
+	const winCells =
+		winner && winner !== "draw" ? getWinCells(board) : new Set<string>();
 
 	const handleDrop = (col: number) => {
 		if (winner !== null || matchWinner !== null) return;

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -42,12 +42,12 @@ export default function TapRushGame() {
 		return () => clearTimeout(timeout);
 	}, [isRunning, secondsLeft, updateProgress]);
 
-	const ctaLabel = useMemo(() => {
+	const ctaLabel = (() => {
 		if (!isRunning && score === 0 && secondsLeft === ROUND_SECONDS)
 			return t("tapRushStart");
 		if (isRunning) return t("tapRushTap");
 		return t("tapRushPlayAgain");
-	}, [isRunning, score, secondsLeft, t]);
+	})();
 
 	const handleMainPress = () => {
 		if (!isRunning && secondsLeft === ROUND_SECONDS && score === 0) {

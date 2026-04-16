@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -9,19 +9,22 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useHaptic } from "@/hooks/useHaptic";
 import GameResult from "@/components/GameResult";
 
-const ROUND_COUNT = 5;
+const ROUND_COUNT = 8;
 const RUNWAY_WIDTH = 280;
 const BASE_TARGET_WIDTH = 72;
 const BASE_SPEED = 8;
 
 /** Target zone shrinks slightly each round */
 function getTargetWidth(round: number) {
-	return Math.max(40, BASE_TARGET_WIDTH - (round - 1) * 5);
+	const step = round - 1;
+	const shrink = step * 4 + Math.floor(step / 2) * 2;
+	return Math.max(30, BASE_TARGET_WIDTH - shrink);
 }
 
 /** Marker speed increases each round */
 function getSpeed(round: number) {
-	return BASE_SPEED + (round - 1) * 1.5;
+	const step = round - 1;
+	return BASE_SPEED + step * 1.2 + Math.floor(step / 3) * 0.9;
 }
 
 function getTargetLeft(targetWidth: number) {
@@ -94,7 +97,7 @@ export default function RunwayLandingGame() {
 		};
 	}, [direction, speed, finished]);
 
-	const currentRoundText = useMemo(() => `${round}/${ROUND_COUNT}`, [round]);
+	const currentRoundText = `${round}/${ROUND_COUNT}`;
 
 	const qualityKey = (q: Quality) => {
 		switch (q) {
@@ -114,7 +117,7 @@ export default function RunwayLandingGame() {
 		setScore(0);
 		setMarkerX(0);
 		setDirection(1);
-		setTargetLeft(getTargetLeft(BASE_TARGET_WIDTH));
+		setTargetLeft(getTargetLeft(getTargetWidth(1)));
 		setFinished(false);
 		setLastPoints(null);
 		setLastQuality(null);
@@ -222,7 +225,7 @@ export default function RunwayLandingGame() {
 
 				{/* Speed indicator */}
 				<Text style={[styles.speedHint, { color: theme.mutedText }]}>
-					{"▸".repeat(Math.min(round, 5))}
+					{"▸".repeat(Math.min(round, ROUND_COUNT))}
 				</Text>
 			</View>
 

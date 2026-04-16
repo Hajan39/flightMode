@@ -7,9 +7,19 @@ export const en = {
 	stackArticle: "Article",
 	stackEditFlight: "Edit Flight",
 	stackSettings: "Settings",
+	updateAvailableTitle: "Update Available",
+	updateAvailableMessage:
+		"A new version has been downloaded. Restart to apply?",
+	updateLater: "Later",
+	updateRestart: "Restart",
 	language: "Language",
 	languageSystem: "System",
 	languageDevice: "Device: {{language}}",
+	theme: "Appearance",
+	themeSystem: "System",
+	themeLight: "Light",
+	themeDark: "Dark",
+	themeCrazy: "Crazy",
 	yourFlight: "Your Flight",
 	remainingTime: "{{hours}}h {{minutes}}m remaining",
 	recommendationLong: "Long flight ahead, try some content or relaxation",
@@ -104,6 +114,45 @@ export const en = {
 	gameCrossCodeBreakerDescription: "Crack the secret 4-digit code",
 	gameCrossLiarsDiceName: "Liar's Dice",
 	gameCrossLiarsDiceDescription: "Bluff with hidden dice",
+	// Game rules (shown via ? button)
+	rulesMemory:
+		"🎯 Goal\n• Match all pairs of cards with the fewest moves.\n\n🃏 How to Play\n• Tap to flip two cards per turn.\n• If the cards match, they stay face-up.\n• If not, they flip back — remember their positions!\n\n⭐ Scoring\n• Fewer moves = higher score.\n• Try to beat your personal best!",
+	rulesTouchdown:
+		"🎯 Goal\n• Tap as many times as you can before time runs out!\n\n👆 How to Play\n• Tap the screen repeatedly for 20 seconds.\n• Every single tap counts toward your score.\n\n⭐ Tip\n• Use quick, light taps for the best result.",
+	rulesSkyMath:
+		"🎯 Goal\n• Solve math problems as fast as you can.\n\n🧮 How to Play\n• A math equation appears on screen.\n• Pick the correct answer from the options.\n• Correct = points. Wrong = lose a life.\n\n⭐ Tip\n• Speed matters — faster answers earn more points!",
+	rulesQuiz:
+		"🎯 Goal\n• Answer 10 travel & aviation trivia questions.\n\n✈️ How to Play\n• Read the question and pick an answer.\n• Answer before the timer runs out.\n• Each correct answer earns points.\n\n⭐ Tip\n• The faster you answer, the more points you get!",
+	rulesReaction:
+		"🎯 Goal\n• Test your reflexes — tap as fast as possible!\n\n⚡ How to Play\n• Wait for the screen to turn green.\n• Tap immediately when it changes!\n• Don't tap too early — that's a false start.\n\n⭐ Scoring\n• Your reaction time in milliseconds is your score.\n• Lower = better!",
+	rulesRunwayLanding:
+		"🎯 Goal\n• Land the plane precisely in the green zone.\n\n🛬 How to Play\n• A plane descends toward the runway.\n• Watch the altitude indicator carefully.\n• Tap LAND when it enters the green target zone.\n\n⭐ Scoring\n• The closer to the center, the higher your score.\n• Perfect landing = maximum points!",
+	rulesCabinCall:
+		"🎯 Goal\n• Follow the cabin crew's commands quickly.\n\n🧑‍✈️ How to Play\n• The crew calls out an action (seatbelt, tray, etc.).\n• Tap the matching button as fast as you can.\n• Speed earns bonus points.\n\n⭐ Tip\n• Stay focused — commands get faster over time!",
+	rulesAirTrafficControl:
+		"🎯 Goal\n• Direct all incoming aircraft to the correct runways.\n\n🗼 How to Play\n• Planes appear in a queue on the left.\n• Assign each plane to the matching runway.\n• Don't let the queue overflow!\n\n⭐ Tip\n• Stay calm under pressure — it speeds up!",
+	rulesFlightPath:
+		"🎯 Goal\n• Guide each plane to its matching runway.\n\n✏️ How to Play\n• Draw a flight path from each plane to its runway.\n• Match colors: plane → same-color runway.\n• Paths must not cross or collide!\n\n⭐ Tip\n• Plan your routes before drawing to avoid conflicts.",
+	rulesSkyDefense:
+		"🎯 Goal\n• Protect the airport from incoming storms.\n\n🏗️ How to Play\n• Place defense towers on the grid.\n• Towers automatically attack enemies in range.\n• Enemies follow the path — stop them before the end.\n\n⭐ Tower Types\n• 📡 Radar — detects and slows enemies.\n• 🚀 SAM — fires missiles at enemies.",
+	rulesStackSort:
+		"🎯 Goal\n• Sort all numbered cards into the goal column.\n\n🗂️ How to Play\n• Tap a card to pick it up.\n• Place it on an empty slot, or on a card with a larger number.\n• Cards in the goal column must be in ascending order.\n\n⭐ Tip\n• Use the temporary slots strategically — plan ahead!",
+	rulesTicTacToe:
+		"🎯 Goal\n• Get three of your marks in a row!\n\n❌⭕ How to Play\n• Two players take turns on one device.\n• Player 1 places ✕, Player 2 places ○.\n• Place your mark on any empty cell.\n\n🏆 Winning\n• First to get 3 in a row (horizontal, vertical, or diagonal) wins.\n• If the board fills up with no winner — it's a draw!",
+	rulesDice:
+		"🎯 Goal\n• Roll the highest total over multiple rounds.\n\n🎲 How to Play\n• 2–6 players take turns rolling dice.\n• After each roll, choose which dice to keep.\n• Re-roll the rest to try for a better total.\n\n🏆 Winning\n• Highest total score after all rounds wins!",
+	rulesConnect4:
+		"🎯 Goal\n• Connect 4 of your discs in a row.\n\n🔴🟡 How to Play\n• Two players take turns dropping discs.\n• Tap a column to drop your disc.\n• It falls to the lowest empty slot.\n\n🏆 Winning\n• First to connect 4 in a row wins!\n• Rows count: horizontal ↔, vertical ↕, diagonal ↗↘",
+	rulesEmojiFind:
+		"🎯 Goal\n• Find the target emoji faster than your opponent!\n\n🔍 How to Play\n• 2–6 players take turns on one device.\n• A target emoji is shown at the top.\n• Find it in the grid and tap it!\n• Each player has a time limit per round.\n\n🏆 Winning\n• Fastest finder scores the most points.\n• Most points after all rounds wins!",
+	rulesHangman:
+		"🎯 Goal\n• Guess the hidden word before the hangman is complete!\n\n🔤 How to Play\n• 2–6 players — the guesser rotates each round.\n• Tap letters on the keyboard to guess.\n• Correct letter → it appears in the word.\n• Wrong letter → one part of the hangman is drawn.\n\n🏆 Scoring\n• Guesser gets 10 pts for solving the word.\n• If the guesser fails, all others get 5 pts each.\n• 6 wrong guesses = game over for that round!",
+	rulesAirRadar:
+		"🎯 Goal\n• Find and sink all enemy aircraft!\n\n📡 How to Play\n• Each player places 3 aircraft on their grid.\n• Take turns firing shots at the enemy grid.\n• 🔴 Hit = you struck an aircraft.\n• ⚪ Miss = empty water.\n\n🏆 Winning\n• The first player to sink all 3 enemy aircraft wins!",
+	rulesCodeBreaker:
+		"🎯 Goal\n• Crack the secret 4-digit code!\n\n🔢 How to Play\n• 2–6 players take turns guessing.\n• The code has 4 unique digits (0–9).\n• After each guess, you get feedback:\n• 🟢 Green peg = correct digit in the correct position.\n• 🟠 Orange peg = correct digit, wrong position.\n• ⚫ No peg = digit is not in the code.\n\n🏆 Scoring\n• Fewer guesses = more points.\n• First to crack the code gets a bonus!",
+	rulesLiarsDice:
+		"🎯 Goal\n• Be the last player with dice remaining!\n\n🎲 How to Play\n• 2–6 players each start with 5 dice.\n• Each round, peek at your dice secretly.\n• Players take turns making bids:\n→ \"There are at least X dice showing Y\"\n• Each bid must be higher than the last.\n• Say \"Liar!\" if you think the bid is false.\n\n🔍 Reveal\n• If the bid was a lie → bidder loses a die.\n• If the bid was true → caller loses a die.\n• Lose all dice = eliminated!\n\n🏆 Last player standing wins!",
 	skyDefenseTitle: "Sky Defense",
 	skyDefenseIntro:
 		"Storms approach the airport!\nBuild towers to protect the runway.\nPlace towers on the grid, zap enemies\nbefore they reach the end.",
@@ -193,6 +242,10 @@ export const en = {
 	ccCmdTray: "Tray table up",
 	ccCmdWindow: "Window shade open",
 	ccCmdPhone: "Flight mode on",
+	ccCmdLight: "Reading light off",
+	ccCmdMusic: "Tune to channel",
+	ccCmdBag: "Stow carry-on",
+	ccCmdWifi: "Connect Wi-Fi",
 	ccCrewSays: "Cabin crew says:",
 	ccStreak: "Streak: {{streak}}",
 	ccPlayAgain: "PLAY AGAIN",
@@ -562,18 +615,12 @@ export const en = {
 	arRotate: "Rotate",
 	arReady: "Ready!",
 	arReset: "Reset",
-	arMyFleet: "My Fleet",
-	arAttackMap: "Attack Map",
 	arHit: "HIT!",
 	arMiss: "MISS",
-	arAnnounce: "Say this coordinate to opponent",
-	arTheyHit: "They said: Hit",
-	arTheyMiss: "They said: Miss",
-	arDefenseHint: "Opponent calls a coordinate — tap that cell",
-	arHitsGiven: "Hits given",
-	arHitsTaken: "Hits taken",
-	arYouWin: "You win!",
-	arYouLose: "You lose",
+	arHitsGiven: "Hits",
+	arPlayerWins: "{{player}} wins!",
+	arTurnTitle: "{{player}}'s Turn",
+	arTapToFire: "Tap a cell to fire",
 	// Code Breaker
 	cbSetSecret: "Set your secret code",
 	cbSecretHint: "4 unique digits (0–9)",
@@ -640,7 +687,10 @@ export const en = {
 	exploreSortShortestRead: "Shortest read",
 	exploreSortLongestRead: "Longest read",
 	exploreSortTitle: "Title",
+	exploreNoResults: "No articles found",
 	// Onboarding
+	onboardingLanguageTitle: "Choose Your Language",
+	onboardingLanguageSubtitle: "Select the language you'd like to use",
 	onboardingTitle1: "Welcome Aboard",
 	onboardingSubtitle1: "Your in-flight companion for games, relax, and more",
 	onboardingTitle2: "Offline Entertainment",
@@ -706,4 +756,27 @@ export const en = {
 	achieveTapChampionDesc: "Score 100+ in Tap Rush",
 	achievePerfectLandingTitle: "Perfect Landing",
 	achievePerfectLandingDesc: "Score 500+ in Runway Landing",
+	// Handoff screens
+	passPhone: "Pass the phone",
+	passPhoneTo: "Hand the phone to {{player}}",
+	passPhoneReady: "I'm ready",
+	passPhoneDontLook: "Don't peek!",
+	hmPassToGuesser: "Player {{player}} is guessing next",
+	hmPassToGuesserHint: "The word picker should not look at the screen",
+	cbPassAfterSecret: "Your secret code is set!",
+	cbPassAfterSecretHint: "Pass the phone — don't let your opponent see it",
+	ldDiceRolled: "Your dice are ready",
+	ldDiceRolledHint: "Make sure only you can see the screen",
+	ldPeek: "Show my dice",
+	ldLosesDie: "loses a die!",
+	// Multiplayer shared
+	mpSelectPlayers: "How many players?",
+	mpPlayerN: "Player {{n}}",
+	diceWinsLabel: "wins",
+	dicePtsLabel: "pts",
+	efHandoff: "Find as many as you can in {{seconds}}s!",
+	efGo: "GO!",
+	cbHandoffHint: "Don't peek — only you should see the screen",
+	cbNobodyCracked: "Nobody cracked the code!",
+	cbSecretWas: "The secret was",
 } as const;

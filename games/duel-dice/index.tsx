@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Dimensions, Pressable, StyleSheet } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { Dimensions, Pressable, ScrollView, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
@@ -8,460 +8,370 @@ import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useHaptic } from "@/hooks/useHaptic";
 
-const ROUNDS = 7;
+const ROUNDS = 10;
 const { width: SCREEN_W } = Dimensions.get("window");
-const DIE_SIZE = SCREEN_W * 0.72;
+const DIE_SIZE = SCREEN_W * 0.52;
 const PIP_SIZE = DIE_SIZE * 0.14;
 const DIE_RADIUS = DIE_SIZE * 0.16;
+const MAX_PLAYERS = 6;
+
+const PLAYER_COLORS = [
+"#4FC3F7",
+"#FF8A65",
+"#81C784",
+"#CE93D8",
+"#FFD54F",
+"#4DD0E1",
+];
 
 const FACE_PIPS: Record<number, number[]> = {
-	1: [4],
-	2: [0, 8],
-	3: [0, 4, 8],
-	4: [0, 2, 6, 8],
-	5: [0, 2, 4, 6, 8],
-	6: [0, 2, 3, 5, 6, 8],
+1: [4],
+2: [0, 8],
+3: [0, 4, 8],
+4: [0, 2, 6, 8],
+5: [0, 2, 4, 6, 8],
+6: [0, 2, 3, 5, 6, 8],
 };
 
 const PIP_KEYS = [
-	"p0",
-	"p1",
-	"p2",
-	"p3",
-	"p4",
-	"p5",
-	"p6",
-	"p7",
-	"p8",
+"p0",
+"p1",
+"p2",
+"p3",
+"p4",
+"p5",
+"p6",
+"p7",
+"p8",
 ] as const;
 
 function rollDie(): number {
-	return Math.floor(Math.random() * 6) + 1;
+return Math.floor(Math.random() * 6) + 1;
 }
 
 export default function DuelDiceGame() {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const updateProgress = useGameStore((s) => s.updateProgress);
-	const { t } = useTranslation();
-	const haptic = useHaptic();
+const colorScheme = useColorScheme();
+const theme = Colors[colorScheme];
+const updateProgress = useGameStore((s) => s.updateProgress);
+const { t } = useTranslation();
+const haptic = useHaptic();
 
-	const [round, setRound] = useState(1);
-	const [activePlayer, setActivePlayer] = useState<1 | 2>(1);
-	const [playerOneTotal, setPlayerOneTotal] = useState(0);
-	const [playerTwoTotal, setPlayerTwoTotal] = useState(0);
-	const [playerOneRoundWins, setPlayerOneRoundWins] = useState(0);
-	const [playerTwoRoundWins, setPlayerTwoRoundWins] = useState(0);
-	const [currentRoundP1, setCurrentRoundP1] = useState<number | null>(null);
-	const [rollingValue, setRollingValue] = useState<number | null>(null);
-	const [isRolling, setIsRolling] = useState(false);
-	const [roundResult, setRoundResult] = useState<string | null>(null);
+const [playerCount, setPlayerCount] = useState(2);
+const [phase, setPhase] = useState<"setup" | "playing" | "done">("setup");
 
-	const rollingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
-		null,
-	);
-	const settleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const roundTransitionRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const finalResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+const [round, setRound] = useState(1);
+const [activePlayer, setActivePlayer] = useState(0);
+const [totals, setTotals] = useState<number[]>([]);
+const [roundWins, setRoundWins] = useState<number[]>([]);
+const [currentRolls, setCurrentRolls] = useState<(number | null)[]>([]);
+const [rollingValue, setRollingValue] = useState<number | null>(null);
+const [isRolling, setIsRolling] = useState(false);
+const [roundResult, setRoundResult] = useState<string | null>(null);
 
-	const isFinished = round > ROUNDS;
+const rollingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+const settleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+const roundTransitionRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	useEffect(() => {
-		return () => {
-			if (rollingIntervalRef.current) clearInterval(rollingIntervalRef.current);
-			if (settleTimeoutRef.current) clearTimeout(settleTimeoutRef.current);
-			if (roundTransitionRef.current) clearTimeout(roundTransitionRef.current);
-			if (finalResetRef.current) clearTimeout(finalResetRef.current);
-		};
-	}, []);
+useEffect(() => {
+return () => {
+if (rollingIntervalRef.current) clearInterval(rollingIntervalRef.current);
+if (settleTimeoutRef.current) clearTimeout(settleTimeoutRef.current);
+if (roundTransitionRef.current) clearTimeout(roundTransitionRef.current);
+};
+}, []);
 
-	const winnerText = useMemo(() => {
-		if (!isFinished) return null;
-		if (playerOneRoundWins === playerTwoRoundWins) {
-			if (playerOneTotal === playerTwoTotal) return t("diceDraw");
-			return playerOneTotal > playerTwoTotal
-				? t("dicePlayerWins", { player: "1" })
-				: t("dicePlayerWins", { player: "2" });
-		}
-		return playerOneRoundWins > playerTwoRoundWins
-			? t("dicePlayerWins", { player: "1" })
-			: t("dicePlayerWins", { player: "2" });
-	}, [
-		isFinished,
-		playerOneRoundWins,
-		playerTwoRoundWins,
-		playerOneTotal,
-		playerTwoTotal,
-		t,
-	]);
+const startGame = () => {
+const zeros = Array(playerCount).fill(0) as number[];
+setTotals(zeros);
+setRoundWins([...zeros]);
+setCurrentRolls(Array(playerCount).fill(null));
+setRound(1);
+setActivePlayer(0);
+setRollingValue(null);
+setIsRolling(false);
+setRoundResult(null);
+setPhase("playing");
+};
 
-	const finalizePlayerRoll = (player: 1 | 2, finalRoll: number) => {
-		setRollingValue(finalRoll);
-		setIsRolling(false);
+const finalizeRoll = (finalRoll: number) => {
+setRollingValue(finalRoll);
+setIsRolling(false);
 
-		if (player === 1) {
-			setPlayerOneTotal((prev) => prev + finalRoll);
-			setCurrentRoundP1(finalRoll);
-			setActivePlayer(2);
-			return;
-		}
+const pIdx = activePlayer;
+setTotals((prev) => {
+const next = [...prev];
+next[pIdx] += finalRoll;
+return next;
+});
 
-		const p1Roll = currentRoundP1;
-		const nextPlayerOneTotal = playerOneTotal;
-		const nextPlayerTwoTotal = playerTwoTotal + finalRoll;
-		setPlayerTwoTotal(nextPlayerTwoTotal);
+const newRolls = [...currentRolls];
+newRolls[pIdx] = finalRoll;
+setCurrentRolls(newRolls);
 
-		let resultText = t("diceRoundDraw");
+if (!newRolls.every((r) => r !== null)) {
+setActivePlayer(pIdx + 1);
+return;
+}
 
-		if (p1Roll !== null) {
-			if (p1Roll > finalRoll) {
-				resultText = t("dicePlayerWinsRound", { player: "1" });
-				setPlayerOneRoundWins((prev) => prev + 1);
-			} else if (finalRoll > p1Roll) {
-				resultText = t("dicePlayerWinsRound", { player: "2" });
-				setPlayerTwoRoundWins((prev) => prev + 1);
-			}
-		}
+const rolls = newRolls as number[];
+const maxRoll = Math.max(...rolls);
+const winners = rolls.map((r, i) => (r === maxRoll ? i : -1)).filter((i) => i >= 0);
 
-		setRoundResult(resultText);
+let resultText: string;
+if (winners.length >= playerCount) {
+resultText = t("diceRoundDraw");
+} else if (winners.length === 1) {
+resultText = t("dicePlayerWinsRound", { player: String(winners[0] + 1) });
+setRoundWins((prev) => {
+const next = [...prev];
+next[winners[0]]++;
+return next;
+});
+} else {
+resultText = t("diceRoundDraw");
+}
 
-		const nextRound = round + 1;
-		if (nextRound > ROUNDS) {
-			const sessionScore = Math.max(nextPlayerOneTotal, nextPlayerTwoTotal);
-			updateProgress("duel-dice", sessionScore);
-		}
+setRoundResult(resultText);
 
-		roundTransitionRef.current = setTimeout(() => {
-			setRound(nextRound);
-			setActivePlayer(1);
-			setCurrentRoundP1(null);
-			setRoundResult(null);
-			roundTransitionRef.current = null;
-		}, 2000);
-	};
+const nextRound = round + 1;
+if (nextRound > ROUNDS) {
+const updatedTotals = [...totals];
+updatedTotals[pIdx] += finalRoll;
+updateProgress("duel-dice", Math.max(...updatedTotals));
 
-	const handleRoll = (player: 1 | 2) => {
-		if (isFinished || isRolling || player !== activePlayer) return;
-		haptic.tap();
+roundTransitionRef.current = setTimeout(() => {
+setPhase("done");
+roundTransitionRef.current = null;
+}, 1800);
+} else {
+roundTransitionRef.current = setTimeout(() => {
+setRound(nextRound);
+setActivePlayer(0);
+setCurrentRolls(Array(playerCount).fill(null));
+setRoundResult(null);
+roundTransitionRef.current = null;
+}, 1800);
+}
+};
 
-		setIsRolling(true);
-		setRollingValue(rollDie());
+const handleRoll = () => {
+if (phase !== "playing" || isRolling || roundResult !== null) return;
+haptic.tap();
+setIsRolling(true);
+setRollingValue(rollDie());
+rollingIntervalRef.current = setInterval(() => setRollingValue(rollDie()), 90);
+settleTimeoutRef.current = setTimeout(() => {
+if (rollingIntervalRef.current) {
+clearInterval(rollingIntervalRef.current);
+rollingIntervalRef.current = null;
+}
+finalizeRoll(rollDie());
+}, 1100);
+};
 
-		rollingIntervalRef.current = setInterval(() => {
-			setRollingValue(rollDie());
-		}, 90);
+const visiblePips = rollingValue && FACE_PIPS[rollingValue] ? FACE_PIPS[rollingValue] : [];
+const canRoll = phase === "playing" && !isRolling && roundResult === null;
+const activeColor = PLAYER_COLORS[activePlayer % PLAYER_COLORS.length];
 
-		settleTimeoutRef.current = setTimeout(() => {
-			if (rollingIntervalRef.current) {
-				clearInterval(rollingIntervalRef.current);
-				rollingIntervalRef.current = null;
-			}
-			finalizePlayerRoll(player, rollDie());
-		}, 1100);
-	};
+const getWinner = (): string => {
+const maxWins = Math.max(...roundWins);
+const topByWins = roundWins.map((w, i) => (w === maxWins ? i : -1)).filter((i) => i >= 0);
+if (topByWins.length === 1)
+return t("dicePlayerWins", { player: String(topByWins[0] + 1) });
+const maxTotal = Math.max(...topByWins.map((i) => totals[i]));
+const topByTotal = topByWins.filter((i) => totals[i] === maxTotal);
+if (topByTotal.length === 1)
+return t("dicePlayerWins", { player: String(topByTotal[0] + 1) });
+return t("diceDraw");
+};
 
-	const resetMatch = useCallback(() => {
-		if (rollingIntervalRef.current) {
-			clearInterval(rollingIntervalRef.current);
-			rollingIntervalRef.current = null;
-		}
-		if (settleTimeoutRef.current) {
-			clearTimeout(settleTimeoutRef.current);
-			settleTimeoutRef.current = null;
-		}
-		if (roundTransitionRef.current) {
-			clearTimeout(roundTransitionRef.current);
-			roundTransitionRef.current = null;
-		}
-		if (finalResetRef.current) {
-			clearTimeout(finalResetRef.current);
-			finalResetRef.current = null;
-		}
+/* �� SETUP �� */
+if (phase === "setup") {
+return (
+<View style={styles.root}>
+<Text style={[styles.title, { color: theme.text }]}>
+{t("gameDuelDiceName")}
+</Text>
+<Text style={[styles.subtitle, { color: theme.mutedText }]}>
+{t("mpSelectPlayers")}
+</Text>
+<View style={styles.countRow}>
+{Array.from({ length: MAX_PLAYERS - 1 }, (_, i) => i + 2).map((n) => (
+<Pressable
+key={n}
+style={[
+styles.countBtn,
+{
+backgroundColor: playerCount === n ? theme.tint : theme.card,
+borderColor: playerCount === n ? theme.tint : theme.border,
+},
+]}
+onPress={() => setPlayerCount(n)}
+>
+<Text
+style={[
+styles.countBtnText,
+{ color: playerCount === n ? "#fff" : theme.text },
+]}
+>
+{n}
+</Text>
+</Pressable>
+))}
+</View>
+<Pressable
+style={[styles.startBtn, { backgroundColor: theme.tint }]}
+onPress={startGame}
+>
+<Text style={styles.startBtnText}>{t("start")}</Text>
+</Pressable>
+</View>
+);
+}
 
-		setRound(1);
-		setActivePlayer(1);
-		setPlayerOneTotal(0);
-		setPlayerTwoTotal(0);
-		setPlayerOneRoundWins(0);
-		setPlayerTwoRoundWins(0);
-		setCurrentRoundP1(null);
-		setRollingValue(null);
-		setIsRolling(false);
-		setRoundResult(null);
-	}, []);
+/* �� DONE �� */
+if (phase === "done") {
+return (
+<View style={styles.root}>
+<Text style={[styles.winnerText, { color: theme.text }]}>
+{getWinner()}
+</Text>
+<View style={styles.finalTable}>
+{Array.from({ length: playerCount }, (_, i) => (
+<View key={i} style={[styles.finalRow, { borderColor: theme.border + "44" }]}>
+<View style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
+<Text style={[styles.finalName, { color: theme.text }]}>
+{t("mpPlayerN", { n: i + 1 })}
+</Text>
+<Text style={[styles.finalStat, { color: theme.mutedText }]}>
+{roundWins[i]} {t("diceWinsLabel")}
+</Text>
+<Text style={[styles.finalStat, { color: theme.tint }]}>
+{totals[i]} {t("dicePtsLabel")}
+</Text>
+</View>
+))}
+</View>
+<Pressable
+style={[styles.startBtn, { backgroundColor: theme.tint }]}
+onPress={() => setPhase("setup")}
+>
+<Text style={styles.startBtnText}>{t("playAgain")}</Text>
+</Pressable>
+</View>
+);
+}
 
-	useEffect(() => {
-		if (!winnerText) return;
+/* �� PLAYING �� */
+return (
+<View style={styles.root}>
+<ScrollView
+horizontal
+showsHorizontalScrollIndicator={false}
+style={styles.scoreScroll}
+contentContainerStyle={styles.scoreContainer}
+>
+{Array.from({ length: playerCount }, (_, i) => {
+const isActive = i === activePlayer;
+const rolled = currentRolls[i];
+return (
+<View
+key={i}
+style={[
+styles.scoreCard,
+{
+borderColor: isActive ? PLAYER_COLORS[i] : theme.border + "44",
+backgroundColor: isActive ? PLAYER_COLORS[i] + "18" : "transparent",
+},
+]}
+>
+<View style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
+<Text
+style={[styles.scoreCardName, { color: isActive ? PLAYER_COLORS[i] : theme.mutedText }]}
+>
+P{i + 1}
+</Text>
+<Text style={[styles.scoreCardWins, { color: theme.text }]}>{roundWins[i]}W</Text>
+<Text style={[styles.scoreCardPts, { color: theme.mutedText }]}>{totals[i]}</Text>
+{rolled !== null && (
+<Text style={[styles.scoreCardRoll, { color: PLAYER_COLORS[i] }]}>
+{"\uD83C\uDFB2"}{rolled}
+</Text>
+)}
+</View>
+);
+})}
+</ScrollView>
 
-		finalResetRef.current = setTimeout(() => {
-			resetMatch();
-			finalResetRef.current = null;
-		}, 2000);
+<View style={styles.dieArea}>
+<View
+style={[
+styles.dieFace,
+{ borderColor: isRolling ? activeColor : theme.border, backgroundColor: theme.elevated },
+]}
+>
+{Array.from({ length: 9 }).map((_, i) => (
+<View key={PIP_KEYS[i]} style={styles.pipCell}>
+{visiblePips.includes(i) ? (
+<View style={[styles.pip, { backgroundColor: isRolling ? activeColor : theme.text }]} />
+) : null}
+</View>
+))}
+</View>
+<Text style={[styles.roundLabel, { color: roundResult ? theme.tint : theme.mutedText }]}>
+{roundResult ?? t("diceRoundOf", { round: Math.min(round, ROUNDS), total: ROUNDS })}
+</Text>
+</View>
 
-		return () => {
-			if (finalResetRef.current) {
-				clearTimeout(finalResetRef.current);
-				finalResetRef.current = null;
-			}
-		};
-	}, [winnerText, resetMatch]);
-
-	const visiblePips =
-		rollingValue && FACE_PIPS[rollingValue] ? FACE_PIPS[rollingValue] : [];
-
-	const inRoundTransition = roundResult !== null;
-	const p1Active =
-		activePlayer === 1 && !isRolling && !isFinished && !inRoundTransition;
-	const p2Active =
-		activePlayer === 2 && !isRolling && !isFinished && !inRoundTransition;
-
-	const p1Label = isFinished
-		? t("diceWinsPts", { wins: playerOneRoundWins, pts: playerOneTotal })
-		: p1Active
-			? t("diceTapToRoll")
-			: currentRoundP1 !== null
-				? t("diceRolled", { value: currentRoundP1 })
-				: t("diceWaiting");
-
-	const p2Label = isFinished
-		? t("diceWinsPts", { wins: playerTwoRoundWins, pts: playerTwoTotal })
-		: p2Active
-			? t("diceTapToRoll")
-			: inRoundTransition
-				? t("diceRolled", { value: rollingValue ?? "-" })
-				: t("diceWaiting");
-
-	return (
-		<View style={styles.root}>
-			{/* ─── Player 1 button ─── top, rotated 180° */}
-			<Pressable
-				style={[
-					styles.playerBtn,
-					styles.rotate180,
-					{
-						backgroundColor: p1Active ? theme.tint : theme.card,
-						borderColor: p1Active ? theme.tint : theme.border,
-					},
-				]}
-				onPress={() => handleRoll(1)}
-			>
-				<Text
-					style={[
-						styles.btnLabel,
-						{ color: p1Active ? "#fff" : theme.mutedText },
-					]}
-				>
-					{p1Label}
-				</Text>
-			</Pressable>
-
-			{/* ─── Center: die + score strip ─── */}
-			<View style={styles.center}>
-				<View style={styles.scoreStrip}>
-					<Text
-						style={[
-							styles.scorePlayer,
-							{ color: theme.text, opacity: activePlayer === 1 ? 1 : 0.4 },
-						]}
-					>
-						{t("diceP1")}
-					</Text>
-					<Text style={[styles.scoreValue, { color: theme.text }]}>
-						{playerOneRoundWins} – {playerTwoRoundWins}
-					</Text>
-					<Text
-						style={[
-							styles.scorePlayer,
-							{ color: theme.text, opacity: activePlayer === 2 ? 1 : 0.4 },
-						]}
-					>
-						{t("diceP2")}
-					</Text>
-				</View>
-
-				<View
-					style={[
-						styles.dieFace,
-						{
-							borderColor: isRolling ? theme.warning : theme.border,
-							backgroundColor: theme.elevated,
-						},
-					]}
-				>
-					{Array.from({ length: 9 }).map((_, i) => (
-						<View key={PIP_KEYS[i]} style={styles.pipCell}>
-							{visiblePips.includes(i) ? (
-								<View
-									style={[
-										styles.pip,
-										{ backgroundColor: isRolling ? theme.warning : theme.text },
-									]}
-								/>
-							) : null}
-						</View>
-					))}
-				</View>
-
-				<Text
-					style={[
-						styles.roundLabel,
-						{ color: roundResult ? theme.tint : theme.mutedText },
-					]}
-				>
-					{roundResult ??
-						(isFinished
-							? t("diceGameOver")
-							: t("diceRoundOf", {
-									round: Math.min(round, ROUNDS),
-									total: ROUNDS,
-								}))}
-				</Text>
-			</View>
-
-			{/* ─── Player 2 button ─── bottom */}
-			<Pressable
-				style={[
-					styles.playerBtn,
-					{
-						backgroundColor: p2Active ? theme.tint : theme.card,
-						borderColor: p2Active ? theme.tint : theme.border,
-					},
-				]}
-				onPress={() => handleRoll(2)}
-			>
-				<Text
-					style={[
-						styles.btnLabel,
-						{ color: p2Active ? "#fff" : theme.mutedText },
-					]}
-				>
-					{p2Label}
-				</Text>
-			</Pressable>
-
-			{/* ─── Winner overlay ─── */}
-			{winnerText ? (
-				<View style={[styles.overlay, { backgroundColor: theme.card + "ee" }]}>
-					<Text style={[styles.winnerText, { color: theme.text }]}>
-						{winnerText}
-					</Text>
-					<View style={styles.finalScores}>
-						<Text style={[styles.finalLine, { color: theme.mutedText }]}>
-							{t("diceRounds", {
-								p1: playerOneRoundWins,
-								p2: playerTwoRoundWins,
-							})}
-						</Text>
-						<Text style={[styles.finalLine, { color: theme.mutedText }]}>
-							{t("diceTotal", { p1: playerOneTotal, p2: playerTwoTotal })}
-						</Text>
-					</View>
-					<Text style={[styles.autoRestartText, { color: theme.mutedText }]}>
-						{t("diceRestarting")}
-					</Text>
-				</View>
-			) : null}
-		</View>
-	);
+<Pressable
+style={[
+styles.rollBtn,
+{
+backgroundColor: canRoll ? activeColor : theme.card,
+borderColor: canRoll ? activeColor : theme.border,
+},
+]}
+onPress={handleRoll}
+>
+<Text style={[styles.rollBtnText, { color: canRoll ? "#fff" : theme.mutedText }]}>
+{canRoll
+? `${t("mpPlayerN", { n: activePlayer + 1 })} \u2014 ${t("diceTapToRoll")}`
+: isRolling
+? `${t("mpPlayerN", { n: activePlayer + 1 })}\u2026`
+: t("diceWaiting")}
+</Text>
+</Pressable>
+</View>
+);
 }
 
 const styles = StyleSheet.create({
-	root: {
-		flex: 1,
-		paddingHorizontal: 0,
-		paddingVertical: 8,
-	},
-	/* ── Player buttons ── */
-	playerBtn: {
-		marginHorizontal: 12,
-		borderRadius: 16,
-		borderWidth: 1.5,
-		paddingVertical: 22,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	rotate180: {
-		transform: [{ rotate: "180deg" }],
-	},
-	btnLabel: {
-		fontSize: 18,
-		fontWeight: "800",
-		letterSpacing: 1.2,
-		textTransform: "uppercase",
-	},
-	/* ── Center area ── */
-	center: {
-		flex: 1,
-		alignItems: "center",
-		justifyContent: "center",
-		gap: 12,
-	},
-	scoreStrip: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 16,
-	},
-	scorePlayer: {
-		fontSize: 14,
-		fontWeight: "800",
-		letterSpacing: 1,
-		textTransform: "uppercase",
-	},
-	scoreValue: {
-		fontSize: 28,
-		fontWeight: "900",
-		letterSpacing: 2,
-	},
-	roundLabel: {
-		fontSize: 13,
-		fontWeight: "600",
-	},
-	/* ── Die ── */
-	dieFace: {
-		width: DIE_SIZE,
-		height: DIE_SIZE,
-		borderRadius: DIE_RADIUS,
-		borderWidth: 2,
-		padding: DIE_SIZE * 0.1,
-		flexDirection: "row",
-		flexWrap: "wrap",
-		transform: [{ rotate: "90deg" }],
-	},
-	pipCell: {
-		width: "33.33%",
-		height: "33.33%",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	pip: {
-		width: PIP_SIZE,
-		height: PIP_SIZE,
-		borderRadius: 999,
-	},
-	/* ── Winner overlay ── */
-	overlay: {
-		...StyleSheet.absoluteFillObject,
-		alignItems: "center",
-		justifyContent: "center",
-		gap: 16,
-		zIndex: 10,
-	},
-	winnerText: {
-		fontSize: 32,
-		fontWeight: "900",
-		letterSpacing: 1,
-	},
-	finalScores: {
-		alignItems: "center",
-		gap: 4,
-	},
-	finalLine: {
-		fontSize: 15,
-		fontWeight: "600",
-	},
-	autoRestartText: {
-		fontSize: 14,
-		fontWeight: "700",
-		marginTop: 8,
-	},
+root: { flex: 1, paddingHorizontal: 12, paddingVertical: 8, justifyContent: "center", alignItems: "center" },
+title: { fontSize: 28, fontWeight: "900", marginBottom: 8 },
+subtitle: { fontSize: 16, fontWeight: "600", marginBottom: 16 },
+countRow: { flexDirection: "row", gap: 10, marginBottom: 24 },
+countBtn: { width: 48, height: 48, borderRadius: 12, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
+countBtnText: { fontSize: 20, fontWeight: "800" },
+startBtn: { paddingHorizontal: 40, paddingVertical: 14, borderRadius: 12 },
+startBtnText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+winnerText: { fontSize: 32, fontWeight: "900", marginBottom: 20, textAlign: "center" },
+finalTable: { width: "100%", gap: 6, marginBottom: 24 },
+finalRow: { flexDirection: "row", alignItems: "center", gap: 10, paddingVertical: 10, paddingHorizontal: 14, borderBottomWidth: 1 },
+finalName: { fontSize: 16, fontWeight: "700", flex: 1 },
+finalStat: { fontSize: 14, fontWeight: "600", width: 65, textAlign: "right" },
+scoreScroll: { maxHeight: 70, flexGrow: 0 },
+scoreContainer: { gap: 8, paddingHorizontal: 4, alignItems: "center" },
+scoreCard: { alignItems: "center", paddingVertical: 6, paddingHorizontal: 10, borderRadius: 10, borderWidth: 1.5, minWidth: 52, gap: 1 },
+playerDot: { width: 10, height: 10, borderRadius: 5 },
+scoreCardName: { fontSize: 11, fontWeight: "800" },
+scoreCardWins: { fontSize: 13, fontWeight: "700" },
+scoreCardPts: { fontSize: 10, fontWeight: "600" },
+scoreCardRoll: { fontSize: 12, fontWeight: "800" },
+dieArea: { flex: 1, alignItems: "center", justifyContent: "center", gap: 12 },
+dieFace: { width: DIE_SIZE, height: DIE_SIZE, borderRadius: DIE_RADIUS, borderWidth: 2, padding: DIE_SIZE * 0.1, flexDirection: "row", flexWrap: "wrap" },
+pipCell: { width: "33.33%", height: "33.33%", alignItems: "center", justifyContent: "center" },
+pip: { width: PIP_SIZE, height: PIP_SIZE, borderRadius: 999 },
+roundLabel: { fontSize: 14, fontWeight: "600" },
+rollBtn: { borderRadius: 16, borderWidth: 1.5, paddingVertical: 22, alignItems: "center", justifyContent: "center", width: "100%", marginBottom: 8 },
+rollBtnText: { fontSize: 18, fontWeight: "800", letterSpacing: 1.2, textTransform: "uppercase" },
 });

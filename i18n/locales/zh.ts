@@ -7,9 +7,18 @@ export const zh = {
 	stackArticle: "文章",
 	stackEditFlight: "编辑航班",
 	stackSettings: "设置",
+	updateAvailableTitle: "可用更新",
+	updateAvailableMessage: "新版本已下载。立即重启？",
+	updateLater: "稍后",
+	updateRestart: "重启",
 	language: "语言",
 	languageSystem: "系统",
 	languageDevice: "设备：{{language}}",
+	theme: "外观",
+	themeSystem: "系统",
+	themeLight: "浅色",
+	themeDark: "深色",
+	themeCrazy: "疯狂",
 	yourFlight: "您的航班",
 	remainingTime: "剩余 {{hours}}小时 {{minutes}}分钟",
 	recommendationLong: "长途飞行，尝试一些内容或放松",
@@ -100,6 +109,44 @@ export const zh = {
 	gameCrossCodeBreakerDescription: "破解神秘的4位密码",
 	gameCrossLiarsDiceName: "骗子骰子",
 	gameCrossLiarsDiceDescription: "用隐藏的骰子虚张声势",
+	rulesMemory:
+		"🎯 目标\n• 用最少的步数找到所有卡牌配对。\n\n🃏 玩法\n• 点击翻开每回合两张牌。\n• 如果匹配，则保持翻开。\n• 如果不匹配，则翻回去 — 记住位置！\n\n⭐ 得分\n• 步数越少 = 分数越高。\n• 尝试打破你的个人记录！",
+	rulesTouchdown:
+		"🎯 目标\n• 在时间结束前尽可能多点击！\n\n👆 玩法\n• 点击屏幕20秒。\n• 每次点击都计入你的分数。\n\n⭐ 提示\n• 快速轻点效果最好。",
+	rulesSkyMath:
+		"🎯 目标\n• 尽快解决数学题。\n\n🧮 玩法\n• 屏幕上出现一道算式。\n• 从选项中选择正确答案。\n• 正确 = 得分。错误 = 失去一条命。\n\n⭐ 提示\n• 速度很重要 — 答得越快分数越高！",
+	rulesQuiz:
+		"🎯 目标\n• 回答10个旅行和航空问题。\n\n✈️ 玩法\n• 阅读问题并选择答案。\n• 在时间到之前作答。\n• 每个正确答案 = 得分。\n\n⭐ 提示\n• 答得越快，得分越多！",
+	rulesReaction:
+		"🎯 目标\n• 测试你的反应力 — 尽快点击！\n\n⚡ 玩法\n• 等待屏幕变绿。\n• 变色后立即点击！\n• 不要提前点击 — 那算抢跑。\n\n⭐ 得分\n• 你的反应时间（毫秒）就是你的分数。\n• 越低越好！",
+	rulesRunwayLanding:
+		"🎯 目标\n• 精确降落在绿色区域。\n\n🛬 玩法\n• 飞机正在向跑道下降。\n• 仔细观察高度指示器。\n• 进入绿色区域时点击着陆。\n\n⭐ 得分\n• 越接近中心，分数越高。\n• 完美着陆 = 最高分！",
+	rulesCabinCall:
+		"🎯 目标\n• 尽快执行机组人员的指令。\n\n🧑‍✈️ 玩法\n• 机组人员宣布动作（安全带、餐桌等）。\n• 尽快点击正确的按钮。\n• 速度越快奖励越多。\n\n⭐ 提示\n• 保持专注 — 指令会越来越快！",
+	rulesAirTrafficControl:
+		"🎯 目标\n• 将所有飞机引导到正确的跑道。\n\n🗼 玩法\n• 飞机出现在左侧队列中。\n• 将每架飞机分配到对应跑道。\n• 不要让队列溢出！\n\n⭐ 提示\n• 保持冷静 — 速度会加快！",
+	rulesFlightPath:
+		"🎯 目标\n• 引导每架飞机到其跑道。\n\n✏️ 玩法\n• 从飞机到跑道画出航线。\n• 颜色匹配：飞机 → 同色跑道。\n• 航线不能交叉！\n\n⭐ 提示\n• 先规划路线再画，避免冲突。",
+	rulesSkyDefense:
+		"🎯 目标\n• 保护机场免受风暴侵袭。\n\n🏗️ 玩法\n• 在网格上放置防御塔。\n• 塔会自动攻击范围内的敌人。\n• 敌人沿路径前进 — 及时阻止他们。\n\n⭐ 塔类型\n• 📡 雷达 — 探测并减速敌人。\n• 🚀 SAM — 向敌人发射导弹。",
+	rulesStackSort:
+		"🎯 目标\n• 将所有卡片排入目标列。\n\n🗂️ 玩法\n• 点击卡片拾取。\n• 放在空位或更大数字的卡片上。\n• 目标列中的卡片必须按升序排列。\n\n⭐ 提示\n• 战略性地使用临时位置 — 提前规划！",
+	rulesTicTacToe:
+		"🎯 目标\n• 将三个标记连成一线！\n\n❌⭕ 玩法\n• 两位玩家在一台设备上轮流对战。\n• 玩家1放置 ✕，玩家2放置 ○。\n• 在任意空格放置你的标记。\n\n🏆 获胜\n• 先连成3个（横、竖或斜）的获胜。\n• 如果棋盘填满无赢家 — 平局！",
+	rulesDice:
+		"🎯 目标\n• 在多轮中获得最高总和。\n\n🎲 玩法\n• 2–6位玩家轮流掷骰子。\n• 每次投掷后选择保留哪些骰子。\n• 重掷其余以提高总和。\n\n🏆 获胜\n• 所有轮次后最高总分获胜！",
+	rulesConnect4:
+		"🎯 目标\n• 将4个棋子连成一线。\n\n🔴🟡 玩法\n• 两位玩家轮流放入棋子。\n• 点击列投入你的棋子。\n• 它会落到最低的空位。\n\n🏆 获胜\n• 先连成4个的获胜！\n• 有效方向：横 ↔、竖 ↕、斜 ↗↘",
+	rulesEmojiFind:
+		"🎯 目标\n• 比对手更快找到目标表情！\n\n🔍 玩法\n• 2–6位玩家在一台设备上轮流对战。\n• 目标表情显示在顶部。\n• 在网格中找到它并点击！\n• 每位玩家每轮有时间限制。\n\n🏆 获胜\n• 最快找到的人得分最多。\n• 所有轮次后得分最多的获胜！",
+	rulesHangman:
+		"🎯 目标\n• 在吊人完成之前猜出隐藏的单词！\n\n🔤 玩法\n• 2–6位玩家 — 猜词者每轮轮换。\n• 点击键盘上的字母进行猜测。\n• 正确字母 → 出现在单词中。\n• 错误字母 → 画出吊人的一部分。\n\n🏆 得分\n• 猜词者猜对得10分。\n• 如果失败，其他人各得5分。\n• 6次错误 = 该轮结束！",
+	rulesAirRadar:
+		"🎯 目标\n• 找到并击沉所有敌机！\n\n📡 玩法\n• 每位玩家在网格上放置3架飞机。\n• 轮流向敌方网格开火。\n• 🔴 命中 = 击中了飞机。\n• ⚪ 未中 = 空水域。\n\n🏆 获胜\n• 先击沉全部3架敌机的获胜！",
+	rulesCodeBreaker:
+		"🎯 目标\n• 破解4位数秘密代码！\n\n🔢 玩法\n• 2–6位玩家轮流猜测。\n• 代码有4个不同数字（0–9）。\n• 每次猜测后获得反馈：\n• 🟢 绿色钉 = 正确数字在正确位置。\n• 🟠 橙色钉 = 正确数字，错误位置。\n• ⚫ 无钉 = 该数字不在代码中。\n\n🏆 得分\n• 猜测次数越少 = 分数越高。\n• 最先破解代码的获得奖励！",
+	rulesLiarsDice:
+		"🎯 目标\n• 成为最后一个还有骰子的玩家！\n\n🎲 玩法\n• 2–6位玩家，每人从5个骰子开始。\n• 每轮秘密查看自己的骰子。\n• 玩家轮流出价：\n→ \"桌上至少有X个显示Y的骰子\"\n• 每次出价必须高于上一次。\n• 如果认为出价是假的，就喊\"骗子！\"\n\n🔍 揭示\n• 如果出价是假的 → 出价者失去一个骰子。\n• 如果是真的 → 质疑者失去一个骰子。\n• 失去所有骰子 = 淘汰！\n\n🏆 最后站立的玩家获胜！",
 	skyDefenseTitle: "天空防御",
 	skyDefenseIntro:
 		"风暴逼近机场！\n建造防御塔保护跑道。\n在网格上放置防御塔，消灭敌人\n阻止它们到达终点。",
@@ -185,6 +232,10 @@ export const zh = {
 	ccCmdTray: "小桌板收起",
 	ccCmdWindow: "遮阳板打开",
 	ccCmdPhone: "飞行模式开启",
+	ccCmdLight: "关闭阅读灯",
+	ccCmdMusic: "调频道",
+	ccCmdBag: "收纳行李",
+	ccCmdWifi: "连接Wi-Fi",
 	ccCrewSays: "乘务员说：",
 	ccStreak: "连续：{{streak}}",
 	ccPlayAgain: "再玩一次",
@@ -542,18 +593,12 @@ export const zh = {
 	arRotate: "旋转",
 	arReady: "准备！",
 	arReset: "重置",
-	arMyFleet: "我的舰队",
-	arAttackMap: "攻击地图",
 	arHit: "命中！",
 	arMiss: "未中",
-	arAnnounce: "告诉对手这个坐标",
-	arTheyHit: "对手说：命中",
-	arTheyMiss: "对手说：未中",
-	arDefenseHint: "对手说出坐标 — 点击该格子",
-	arHitsGiven: "命中次数",
-	arHitsTaken: "被命中次数",
-	arYouWin: "你赢了！",
-	arYouLose: "你输了",
+	arHitsGiven: "命中",
+	arPlayerWins: "{{player}}获胜！",
+	arTurnTitle: "{{player}}的回合",
+	arTapToFire: "点击格子开火",
 	// Code Breaker
 	cbSetSecret: "设置你的密码",
 	cbSecretHint: "4个不同的数字（0–9）",
@@ -618,6 +663,10 @@ export const zh = {
 	exploreSortShortestRead: "最短阅读",
 	exploreSortLongestRead: "最长阅读",
 	exploreSortTitle: "标题",
+	exploreNoResults: "未找到文章",
+	// Onboarding
+	onboardingLanguageTitle: "选择语言",
+	onboardingLanguageSubtitle: "选择您想使用的语言",
 	onboardingTitle1: "欢迎登机",
 	onboardingSubtitle1: "您的机上伴侣 — 游戏、放松等",
 	onboardingTitle2: "离线娱乐",
@@ -677,6 +726,28 @@ export const zh = {
 	achieveSpeedDemonDesc: "反应时间低于200ms",
 	achieveTapChampionTitle: "点击冠军",
 	achieveTapChampionDesc: "Tap Rush中100+分",
+	passPhone: "递手机",
+	passPhoneTo: "把手机递给{{player}}",
+	passPhoneReady: "我准备好了",
+	passPhoneDontLook: "不要偷看！",
+	hmPassToGuesser: "玩家{{player}}下一个猜",
+	hmPassToGuesserHint: "选词的人不要看屏幕",
+	cbPassAfterSecret: "你的密码已设置！",
+	cbPassAfterSecretHint: "递手机 — 别让对手看到",
+	ldDiceRolled: "你的骰子准备好了",
+	ldDiceRolledHint: "确保只有你能看到屏幕",
+	ldPeek: "查看我的骰子",
+
 	achievePerfectLandingTitle: "完美着陆",
 	achievePerfectLandingDesc: "Runway Landing中500+分",
+	ldLosesDie: "失去一个骰子！",
+	mpSelectPlayers: "几个玩家？",
+	mpPlayerN: "玩家{{n}}",
+	diceWinsLabel: "胜场",
+	dicePtsLabel: "分",
+	efHandoff: "在{{seconds}}秒内尽可能多找！",
+	efGo: "开始！",
+	cbHandoffHint: "别偷看——只有你能看屏幕",
+	cbNobodyCracked: "没有人破解了密码！",
+	cbSecretWas: "密码是",
 } as const;

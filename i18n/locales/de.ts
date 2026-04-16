@@ -7,9 +7,19 @@ export const de = {
 	stackArticle: "Artikel",
 	stackEditFlight: "Flug bearbeiten",
 	stackSettings: "Einstellungen",
+	updateAvailableTitle: "Update verfügbar",
+	updateAvailableMessage:
+		"Eine neue Version wurde heruntergeladen. Jetzt neu starten?",
+	updateLater: "Später",
+	updateRestart: "Neu starten",
 	language: "Sprache",
 	languageSystem: "System",
 	languageDevice: "Gerät: {{language}}",
+	theme: "Darstellung",
+	themeSystem: "System",
+	themeLight: "Hell",
+	themeDark: "Dunkel",
+	themeCrazy: "Verrückt",
 	yourFlight: "Dein Flug",
 	remainingTime: "noch {{hours}} Std. {{minutes}} Min.",
 	recommendationLong:
@@ -107,6 +117,44 @@ export const de = {
 	gameCrossCodeBreakerDescription: "Knacke den geheimen 4-stelligen Code",
 	gameCrossLiarsDiceName: "Lügen-Würfel",
 	gameCrossLiarsDiceDescription: "Bluffe mit versteckten Würfeln",
+	rulesMemory:
+		"🎯 Ziel\n• Finde alle Kartenpaare mit möglichst wenigen Zügen.\n\n🃏 So wird gespielt\n• Tippe, um zwei Karten pro Zug umzudrehen.\n• Stimmen sie überein, bleiben sie offen.\n• Wenn nicht, drehen sie sich zurück — merke dir ihre Positionen!\n\n⭐ Punktzahl\n• Weniger Züge = höhere Punktzahl.\n• Versuche deinen persönlichen Rekord zu schlagen!",
+	rulesTouchdown:
+		"🎯 Ziel\n• Tippe so oft wie möglich, bevor die Zeit abläuft!\n\n👆 So wird gespielt\n• Tippe 20 Sekunden lang auf den Bildschirm.\n• Jeder einzelne Tipp zählt für dein Ergebnis.\n\n⭐ Tipp\n• Schnelle, leichte Tipps funktionieren am besten.",
+	rulesSkyMath:
+		"🎯 Ziel\n• Löse Rechenaufgaben so schnell wie möglich.\n\n🧮 So wird gespielt\n• Eine Rechenaufgabe erscheint auf dem Bildschirm.\n• Wähle die richtige Antwort aus den Optionen.\n• Richtig = Punkte. Falsch = ein Leben weniger.\n\n⭐ Tipp\n• Geschwindigkeit zählt — schnellere Antworten = mehr Punkte!",
+	rulesQuiz:
+		"🎯 Ziel\n• Beantworte 10 Fragen zu Reisen und Luftfahrt.\n\n✈️ So wird gespielt\n• Lies die Frage und wähle eine Antwort.\n• Antworte, bevor die Zeit abläuft.\n• Jede richtige Antwort = Punkte.\n\n⭐ Tipp\n• Je schneller du antwortest, desto mehr Punkte!",
+	rulesReaction:
+		"🎯 Ziel\n• Teste deine Reflexe — tippe so schnell wie möglich!\n\n⚡ So wird gespielt\n• Warte, bis der Bildschirm grün wird.\n• Tippe sofort, wenn sich die Farbe ändert!\n• Nicht zu früh tippen — das ist ein Fehlstart.\n\n⭐ Punktzahl\n• Deine Reaktionszeit in Millisekunden ist dein Ergebnis.\n• Niedriger = besser!",
+	rulesRunwayLanding:
+		"🎯 Ziel\n• Lande das Flugzeug präzise in der grünen Zone.\n\n🛬 So wird gespielt\n• Ein Flugzeug sinkt zur Landebahn.\n• Beobachte den Höhenindikator genau.\n• Tippe LANDEN, wenn es in der grünen Zone ist.\n\n⭐ Punktzahl\n• Je näher an der Mitte, desto höher die Punktzahl.\n• Perfekte Landung = maximale Punkte!",
+	rulesCabinCall:
+		"🎯 Ziel\n• Befolge die Anweisungen der Crew so schnell wie möglich.\n\n🧑‍✈️ So wird gespielt\n• Die Crew ruft eine Aktion (Gurt, Tisch usw.).\n• Tippe so schnell wie möglich auf die richtige Taste.\n• Schnelligkeit bringt Bonuspunkte.\n\n⭐ Tipp\n• Bleib konzentriert — die Anweisungen werden schneller!",
+	rulesAirTrafficControl:
+		"🎯 Ziel\n• Leite alle Flugzeuge zu den richtigen Landebahnen.\n\n🗼 So wird gespielt\n• Flugzeuge erscheinen in der Warteschlange links.\n• Weise jedes Flugzeug der passenden Landebahn zu.\n• Lass die Warteschlange nicht überlaufen!\n\n⭐ Tipp\n• Bleib ruhig — es wird schneller!",
+	rulesFlightPath:
+		"🎯 Ziel\n• Leite jedes Flugzeug zu seiner Landebahn.\n\n✏️ So wird gespielt\n• Zeichne eine Flugroute vom Flugzeug zur Landebahn.\n• Gleiche Farben: Flugzeug → gleichfarbige Landebahn.\n• Routen dürfen sich nicht kreuzen!\n\n⭐ Tipp\n• Plane deine Routen vorher, um Konflikte zu vermeiden.",
+	rulesSkyDefense:
+		"🎯 Ziel\n• Schütze den Flughafen vor herannahenden Stürmen.\n\n🏗️ So wird gespielt\n• Baue Verteidigungstürme auf dem Raster.\n• Türme greifen Feinde in Reichweite automatisch an.\n• Feinde folgen dem Pfad — stoppe sie rechtzeitig.\n\n⭐ Turmtypen\n• 📡 Radar — erkennt und verlangsamt Feinde.\n• 🚀 SAM — feuert Raketen auf Feinde.",
+	rulesStackSort:
+		"🎯 Ziel\n• Sortiere alle Karten in die Zielspalte.\n\n🗂️ So wird gespielt\n• Tippe auf eine Karte, um sie aufzunehmen.\n• Lege sie auf ein leeres Feld oder auf eine Karte mit höherem Wert.\n• Karten in der Zielspalte müssen aufsteigend sortiert sein.\n\n⭐ Tipp\n• Nutze die temporären Plätze strategisch — plane voraus!",
+	rulesTicTacToe:
+		"🎯 Ziel\n• Bringe drei deiner Zeichen in eine Reihe!\n\n❌⭕ So wird gespielt\n• Zwei Spieler wechseln sich auf einem Gerät ab.\n• Spieler 1 setzt ✕, Spieler 2 setzt ○.\n• Setze dein Zeichen auf ein leeres Feld.\n\n🏆 Gewinn\n• Wer zuerst 3 in einer Reihe hat (horizontal, vertikal oder diagonal), gewinnt.\n• Wenn das Brett voll ist ohne Gewinner — Unentschieden!",
+	rulesDice:
+		"🎯 Ziel\n• Würfle die höchste Summe über mehrere Runden.\n\n🎲 So wird gespielt\n• 2–6 Spieler würfeln abwechselnd.\n• Nach jedem Wurf wähle, welche Würfel du behältst.\n• Wirf den Rest neu für eine bessere Summe.\n\n🏆 Gewinn\n• Höchste Gesamtpunktzahl nach allen Runden gewinnt!",
+	rulesConnect4:
+		"🎯 Ziel\n• Verbinde 4 deiner Scheiben in einer Reihe.\n\n🔴🟡 So wird gespielt\n• Zwei Spieler werfen abwechselnd Scheiben ein.\n• Tippe auf eine Spalte, um deine Scheibe einzuwerfen.\n• Sie fällt auf den niedrigsten freien Platz.\n\n🏆 Gewinn\n• Wer zuerst 4 in einer Reihe verbindet, gewinnt!\n• Es zählen: horizontal ↔, vertikal ↕, diagonal ↗↘",
+	rulesEmojiFind:
+		"🎯 Ziel\n• Finde das Ziel-Emoji schneller als dein Gegner!\n\n🔍 So wird gespielt\n• 2–6 Spieler wechseln sich auf einem Gerät ab.\n• Ein Ziel-Emoji wird oben angezeigt.\n• Finde es im Raster und tippe darauf!\n• Jeder Spieler hat ein Zeitlimit pro Runde.\n\n🏆 Gewinn\n• Der schnellste Finder bekommt die meisten Punkte.\n• Die meisten Punkte nach allen Runden gewinnt!",
+	rulesHangman:
+		"🎯 Ziel\n• Errate das versteckte Wort, bevor der Galgenmann fertig ist!\n\n🔤 So wird gespielt\n• 2–6 Spieler — der Ratende wechselt jede Runde.\n• Tippe auf Buchstaben auf der Tastatur.\n• Richtiger Buchstabe → erscheint im Wort.\n• Falscher Buchstabe → ein Teil wird gezeichnet.\n\n🏆 Punktzahl\n• Ratender bekommt 10 Pkt. fürs Lösen.\n• Bei Scheitern bekommen alle anderen je 5 Pkt.\n• 6 falsche Tipps = Runde vorbei!",
+	rulesAirRadar:
+		"🎯 Ziel\n• Finde und versenke alle feindlichen Flugzeuge!\n\n📡 So wird gespielt\n• Jeder Spieler platziert 3 Flugzeuge auf seinem Raster.\n• Feuert abwechselnd Schüsse auf das gegnerische Raster.\n• 🔴 Treffer = du hast ein Flugzeug getroffen.\n• ⚪ Daneben = leeres Wasser.\n\n🏆 Gewinn\n• Wer zuerst alle 3 feindlichen Flugzeuge versenkt, gewinnt!",
+	rulesCodeBreaker:
+		"🎯 Ziel\n• Knacke den geheimen 4-stelligen Code!\n\n🔢 So wird gespielt\n• 2–6 Spieler raten abwechselnd.\n• Der Code hat 4 einzigartige Ziffern (0–9).\n• Nach jedem Tipp bekommst du Feedback:\n• 🟢 Grüner Stift = richtige Ziffer an richtiger Stelle.\n• 🟠 Oranger Stift = richtige Ziffer, falsche Stelle.\n• ⚫ Kein Stift = Ziffer nicht im Code.\n\n🏆 Punktzahl\n• Weniger Versuche = mehr Punkte.\n• Wer den Code zuerst knackt, bekommt einen Bonus!",
+	rulesLiarsDice:
+		"🎯 Ziel\n• Sei der letzte Spieler mit verbleibenden Würfeln!\n\n🎲 So wird gespielt\n• 2–6 Spieler, jeder startet mit 5 Würfeln.\n• Jede Runde schaust du dir deine Würfel geheim an.\n• Spieler bieten abwechselnd:\n→ 'Es gibt mindestens X Würfel mit dem Wert Y'\n• Jedes Gebot muss höher sein als das vorherige.\n• Sage 'Lügner!', wenn du glaubst, das Gebot ist falsch.\n\n🔍 Aufdecken\n• War das Gebot gelogen → Bieter verliert einen Würfel.\n• War es wahr → Rufer verliert einen Würfel.\n• Alle Würfel verloren = ausgeschieden!\n\n🏆 Letzter Spieler gewinnt!",
 	skyDefenseTitle: "Sky Defense",
 	skyDefenseIntro:
 		"Stürme nähern sich dem Flughafen!\nBaue Türme und schütze die Runway.\nPlatziere Türme auf dem Raster und stoppe Gegner,\nbevor sie das Ende erreichen.",
@@ -197,6 +245,10 @@ export const de = {
 	ccCmdTray: "Tisch hochklappen",
 	ccCmdWindow: "Fensterblende öffnen",
 	ccCmdPhone: "Flugmodus an",
+	ccCmdLight: "Leselampe aus",
+	ccCmdMusic: "Kanal einstellen",
+	ccCmdBag: "Handgepäck verstauen",
+	ccCmdWifi: "WLAN verbinden",
 	ccCrewSays: "Die Crew sagt:",
 	ccStreak: "Serie: {{streak}}",
 	ccPlayAgain: "NOCHMAL SPIELEN",
@@ -571,18 +623,12 @@ export const de = {
 	arRotate: "Drehen",
 	arReady: "Bereit!",
 	arReset: "Zurücksetzen",
-	arMyFleet: "Meine Flotte",
-	arAttackMap: "Angriffskarte",
 	arHit: "TREFFER!",
 	arMiss: "DANEBEN",
-	arAnnounce: "Sagen Sie dem Gegner diese Koordinate",
-	arTheyHit: "Sie sagten: Treffer",
-	arTheyMiss: "Sie sagten: Daneben",
-	arDefenseHint: "Gegner nennt Koordinate — tippen Sie darauf",
-	arHitsGiven: "Treffer erzielt",
-	arHitsTaken: "Treffer erhalten",
-	arYouWin: "Sie gewinnen!",
-	arYouLose: "Sie verlieren",
+	arHitsGiven: "Treffer",
+	arPlayerWins: "{{player}} gewinnt!",
+	arTurnTitle: "{{player}} ist dran",
+	arTapToFire: "Tippen Sie auf ein Feld zum Feuern",
 	// Code Breaker
 	cbSetSecret: "Geheimcode festlegen",
 	cbSecretHint: "4 einzigartige Ziffern (0–9)",
@@ -649,7 +695,11 @@ export const de = {
 	exploreSortShortestRead: "Kürzeste Lektüre",
 	exploreSortLongestRead: "Längste Lektüre",
 	exploreSortTitle: "Titel",
+	exploreNoResults: "Keine Artikel gefunden",
 	// Onboarding
+	onboardingLanguageTitle: "Sprache wählen",
+	onboardingLanguageSubtitle:
+		"Wählen Sie die Sprache, die Sie verwenden möchten",
 	onboardingTitle1: "Willkommen an Bord",
 	onboardingSubtitle1:
 		"Dein Begleiter an Bord für Spiele, Entspannung und mehr",
@@ -713,6 +763,30 @@ export const de = {
 	achieveSpeedDemonDesc: "Reaktionszeit unter 200ms",
 	achieveTapChampionTitle: "Tipp-Champion",
 	achieveTapChampionDesc: "100+ Punkte in Tap Rush",
+	passPhone: "Handy weitergeben",
+	passPhoneTo: "Gib das Handy an {{player}}",
+	passPhoneReady: "Ich bin bereit",
+	passPhoneDontLook: "Nicht gucken!",
+	hmPassToGuesser: "Spieler {{player}} rät als Nächstes",
+	hmPassToGuesserHint:
+		"Wer das Wort wählt, darf nicht auf den Bildschirm schauen",
+	cbPassAfterSecret: "Dein Geheimcode ist gesetzt!",
+	cbPassAfterSecretHint:
+		"Gib das Handy weiter — lass deinen Gegner nicht sehen",
+	ldDiceRolled: "Deine Würfel sind bereit",
+	ldDiceRolledHint: "Stell sicher, dass nur du den Bildschirm siehst",
+	ldPeek: "Meine Würfel zeigen",
+
 	achievePerfectLandingTitle: "Perfekte Landung",
 	achievePerfectLandingDesc: "500+ Punkte in Runway Landing",
+	ldLosesDie: "verliert einen Würfel!",
+	mpSelectPlayers: "Wie viele Spieler?",
+	mpPlayerN: "Spieler {{n}}",
+	diceWinsLabel: "Siege",
+	dicePtsLabel: "Pkt",
+	efHandoff: "Finde so viele wie möglich in {{seconds}}s!",
+	efGo: "LOS!",
+	cbHandoffHint: "Nicht spicken — nur du solltest den Bildschirm sehen",
+	cbNobodyCracked: "Niemand hat den Code geknackt!",
+	cbSecretWas: "Der Geheimcode war",
 } as const;

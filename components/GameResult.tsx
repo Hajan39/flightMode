@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet } from "react-native";
+import Animated, { FadeIn, ZoomIn } from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
@@ -24,8 +25,9 @@ export default function GameResult({
 	const { t } = useTranslation();
 
 	return (
-		<View style={styles.overlay}>
-			<View
+		<Animated.View entering={FadeIn.duration(250)} style={styles.overlay}>
+			<Animated.View
+				entering={ZoomIn.delay(100).springify()}
 				style={[
 					styles.card,
 					{ backgroundColor: theme.card, borderColor: theme.border },
@@ -46,8 +48,8 @@ export default function GameResult({
 					<Ionicons name="refresh" size={20} color="#fff" />
 					<Text style={styles.buttonText}>{t("playAgain")}</Text>
 				</Pressable>
-			</View>
-		</View>
+			</Animated.View>
+		</Animated.View>
 	);
 }
 
@@ -58,6 +60,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		padding: 32,
 		zIndex: 10,
+		backgroundColor: "rgba(0,0,0,0.4)",
 	},
 	card: {
 		width: "100%",

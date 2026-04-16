@@ -8,15 +8,18 @@ import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useHaptic } from "@/hooks/useHaptic";
 
+const TOTAL_ROUNDS = 5;
 const WAIT_MIN_MS = 1200;
 const WAIT_MAX_MS = 4200;
 
 type Phase = "idle" | "waiting" | "ready";
 
-function randomWaitMs() {
-	return (
-		Math.floor(Math.random() * (WAIT_MAX_MS - WAIT_MIN_MS + 1)) + WAIT_MIN_MS
-	);
+/** Wait window shrinks as rounds progress, making it less predictable */
+function randomWaitMs(roundNum: number) {
+	const shrink = Math.min(800, (roundNum - 1) * 200);
+	const min = WAIT_MIN_MS;
+	const max = Math.max(min + 400, WAIT_MAX_MS - shrink);
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export default function ReactionGame() {
@@ -29,6 +32,8 @@ export default function ReactionGame() {
 	const [phase, setPhase] = useState<Phase>("idle");
 	const [bestMs, setBestMs] = useState<number | null>(null);
 	const [lastMs, setLastMs] = useState<number | null>(null);
+	const [round, setRound] = useState(0);
+	const [results, setResults] = useState<number[]>([]);
 	const startedAtRef = useRef<number | null>(null);
 	const waitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -40,13 +45,15 @@ export default function ReactionGame() {
 
 	const startRound = () => {
 		if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
+		const nextRound = round + 1;
+		setRound(nextRound);
 		setPhase("waiting");
 		startedAtRef.current = null;
 
 		waitTimerRef.current = setTimeout(() => {
 			startedAtRef.current = Date.now();
 			setPhase("ready");
-		}, randomWaitMs());
+		}, randomWaitMs(nextRound));
 	};
 
 	const handleMainPress = () => {
@@ -58,6 +65,8 @@ export default function ReactionGame() {
 		if (phase === "waiting") {
 			if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
 			setPhase("idle");
+			setRound(0);
+			setResults([]);
 			haptic.error();
 			Alert.alert(t("reactionTooEarlyTitle"), t("reactionTooEarlyMsg"));
 			return;
@@ -69,8 +78,24 @@ export default function ReactionGame() {
 			haptic.success();
 			setLastMs(ms);
 			setBestMs((prev) => (prev === null ? ms : Math.min(prev, ms)));
+			const newResults = [...results, ms];
+			setResults(newResults);
 			updateProgress("reaction", Math.max(0, 1000 - ms));
-			setPhase("idle");
+
+			if (newResults.length >= TOTAL_ROUNDS) {
+				// Session complete — calculate average
+				const avg = Math.round(
+					newResults.reduce((a, b) => a + b, 0) / newResults.length,
+				);
+				updateProgress("reaction", Math.max(0, 1000 - avg));
+				setPhase("idle");
+				setRound(0);
+				setResults([]);
+			} else {
+				// Auto-start next round after brief pause
+				setPhase("idle");
+				setTimeout(() => startRound(), 600);
+			}
 		}
 	};
 
@@ -136,6 +161,11 @@ export default function ReactionGame() {
 				<Text style={[styles.padText, { color: padTextColor }]}>
 					{padLabel}
 				</Text>
+				{round > 0 && (
+					<Text style={[styles.roundHint, { color: padTextColor }]}>
+						{round}/{TOTAL_ROUNDS}
+					</Text>
+				)}
 			</Pressable>
 		</View>
 	);
@@ -168,4 +198,5 @@ const styles = StyleSheet.create({
 		minHeight: 240,
 	},
 	padText: { fontSize: 30, fontWeight: "900", letterSpacing: 2 },
+	roundHint: { fontSize: 14, fontWeight: "700", marginTop: 8, opacity: 0.8 },
 });

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -10,12 +10,14 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useHaptic } from "@/hooks/useHaptic";
 import type { TranslationKey } from "@/i18n/translations";
 
-const ROUND_SECONDS = 30;
+const ROUND_SECONDS = 40;
 
 type Command = {
 	id: string;
 	labelKey: TranslationKey;
 	icon: string;
+	/** Minimum score needed to unlock this command */
+	unlockAt: number;
 };
 
 const COMMANDS: Command[] = [
@@ -23,17 +25,53 @@ const COMMANDS: Command[] = [
 		id: "seatbelt",
 		labelKey: "ccCmdSeatbelt",
 		icon: "shield-checkmark-outline",
+		unlockAt: 0,
 	},
-	{ id: "tray", labelKey: "ccCmdTray", icon: "restaurant-outline" },
-	{ id: "window", labelKey: "ccCmdWindow", icon: "sunny-outline" },
-	{ id: "phone", labelKey: "ccCmdPhone", icon: "phone-portrait-outline" },
+	{
+		id: "tray",
+		labelKey: "ccCmdTray",
+		icon: "restaurant-outline",
+		unlockAt: 0,
+	},
+	{ id: "window", labelKey: "ccCmdWindow", icon: "sunny-outline", unlockAt: 0 },
+	{
+		id: "phone",
+		labelKey: "ccCmdPhone",
+		icon: "phone-portrait-outline",
+		unlockAt: 0,
+	},
+	{
+		id: "light",
+		labelKey: "ccCmdLight",
+		icon: "flashlight-outline",
+		unlockAt: 40,
+	},
+	{
+		id: "music",
+		labelKey: "ccCmdMusic",
+		icon: "musical-notes-outline",
+		unlockAt: 80,
+	},
+	{ id: "bag", labelKey: "ccCmdBag", icon: "bag-outline", unlockAt: 130 },
+	{ id: "wifi", labelKey: "ccCmdWifi", icon: "wifi-outline", unlockAt: 200 },
 ];
 
-function randomCommand(excludeId?: string) {
-	const pool = excludeId
-		? COMMANDS.filter((item) => item.id !== excludeId)
-		: COMMANDS;
+function getActiveCommands(currentScore: number): Command[] {
+	return COMMANDS.filter((cmd) => currentScore >= cmd.unlockAt);
+}
+
+function randomCommand(currentScore: number, excludeId?: string) {
+	const pool = getActiveCommands(currentScore).filter(
+		(item) => !excludeId || item.id !== excludeId,
+	);
 	return pool[Math.floor(Math.random() * pool.length)];
+}
+
+/** Number of decoy choices increases with score */
+function getDecoyCount(currentScore: number): number {
+	if (currentScore >= 150) return 4;
+	if (currentScore >= 80) return 3;
+	return 2;
 }
 
 export default function CabinCallGame() {
@@ -46,7 +84,7 @@ export default function CabinCallGame() {
 	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
 	const [score, setScore] = useState(0);
 	const [streak, setStreak] = useState(0);
-	const [target, setTarget] = useState<Command>(() => randomCommand());
+	const [target, setTarget] = useState<Command>(() => randomCommand(0));
 	const scoreRef = useRef(0);
 
 	useEffect(() => {
@@ -62,11 +100,24 @@ export default function CabinCallGame() {
 		return () => clearTimeout(timer);
 	}, [secondsLeft, updateProgress]);
 
-	const choices = useMemo(() => {
-		const decoys = COMMANDS.filter((item) => item.id !== target.id)
+	const [choices, setChoices] = useState<Command[]>(() => {
+		const active = getActiveCommands(0);
+		const numDecoys = getDecoyCount(0);
+		const decoys = active
+			.filter((item) => item.id !== target.id)
 			.sort(() => Math.random() - 0.5)
-			.slice(0, 2);
+			.slice(0, numDecoys);
 		return [target, ...decoys].sort(() => Math.random() - 0.5);
+	});
+
+	useEffect(() => {
+		const active = getActiveCommands(score);
+		const numDecoys = getDecoyCount(score);
+		const decoys = active
+			.filter((item) => item.id !== target.id)
+			.sort(() => Math.random() - 0.5)
+			.slice(0, numDecoys);
+		setChoices([target, ...decoys].sort(() => Math.random() - 0.5));
 	}, [target]);
 
 	const restart = () => {
@@ -74,7 +125,7 @@ export default function CabinCallGame() {
 		setScore(0);
 		scoreRef.current = 0;
 		setStreak(0);
-		setTarget(randomCommand());
+		setTarget(randomCommand(0));
 	};
 
 	const handleChoice = (choice: Command) => {
@@ -100,7 +151,7 @@ export default function CabinCallGame() {
 			setStreak(0);
 		}
 
-		setTarget((prev) => randomCommand(prev.id));
+		setTarget((prev) => randomCommand(scoreRef.current, prev.id));
 	};
 
 	return (

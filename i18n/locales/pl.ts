@@ -7,9 +7,18 @@ export const pl = {
 	stackArticle: "Artykuł",
 	stackEditFlight: "Edytuj lot",
 	stackSettings: "Ustawienia",
+	updateAvailableTitle: "Dostępna aktualizacja",
+	updateAvailableMessage: "Nowa wersja została pobrana. Uruchomić ponownie?",
+	updateLater: "Później",
+	updateRestart: "Uruchom ponownie",
 	language: "Język",
 	languageSystem: "Systemowy",
 	languageDevice: "Urządzenie: {{language}}",
+	theme: "Wygląd",
+	themeSystem: "System",
+	themeLight: "Jasny",
+	themeDark: "Ciemny",
+	themeCrazy: "Szalony",
 	yourFlight: "Twój lot",
 	remainingTime: "pozostało {{hours}}h {{minutes}}m",
 	recommendationLong: "Długi lot przed tobą, wypróbuj treści lub relaks",
@@ -105,6 +114,44 @@ export const pl = {
 	gameCrossCodeBreakerDescription: "Złam tajny 4-cyfrowy kod",
 	gameCrossLiarsDiceName: "Kości Kłamcy",
 	gameCrossLiarsDiceDescription: "Blefuj ukrytymi kośćmi",
+	rulesMemory:
+		"🎯 Cel\n• Znajdź wszystkie pary kart, używając jak najmniej ruchów.\n\n🃏 Jak grać\n• Tapnij, aby odkryć dwie karty na turę.\n• Jeśli pasują, zostają odkryte.\n• Jeśli nie, wracają — zapamiętaj ich pozycje!\n\n⭐ Punktacja\n• Mniej ruchów = wyższy wynik.\n• Spróbuj pobić swój rekord!",
+	rulesTouchdown:
+		"🎯 Cel\n• Tapnij jak najwięcej razy, zanim skończy się czas!\n\n👆 Jak grać\n• Tapuj na ekran przez 20 sekund.\n• Każde tapnięcie liczy się do wyniku.\n\n⭐ Wskazówka\n• Szybkie, lekkie tapnięcia działają najlepiej.",
+	rulesSkyMath:
+		"🎯 Cel\n• Rozwiązuj zadania matematyczne jak najszybciej.\n\n🧮 Jak grać\n• Na ekranie pojawia się równanie.\n• Wybierz poprawną odpowiedź z opcji.\n• Poprawna = punkty. Błędna = utrata życia.\n\n⭐ Wskazówka\n• Szybkość się liczy — szybsze odpowiedzi = więcej punktów!",
+	rulesQuiz:
+		"🎯 Cel\n• Odpowiedz na 10 pytań o podróżach i lotnictwie.\n\n✈️ Jak grać\n• Przeczytaj pytanie i wybierz odpowiedź.\n• Odpowiedz, zanim skończy się czas.\n• Każda poprawna odpowiedź = punkty.\n\n⭐ Wskazówka\n• Im szybciej odpowiesz, tym więcej punktów zdobędziesz!",
+	rulesReaction:
+		"🎯 Cel\n• Przetestuj swoje refleksy — tapnij jak najszybciej!\n\n⚡ Jak grać\n• Poczekaj, aż ekran stanie się zielony.\n• Tapnij natychmiast, gdy się zmieni!\n• Nie tapuj za wcześnie — to falstart.\n\n⭐ Punktacja\n• Twój czas reakcji w ms to twój wynik.\n• Niższy = lepszy!",
+	rulesRunwayLanding:
+		"🎯 Cel\n• Wyląduj precyzyjnie w zielonej strefie.\n\n🛬 Jak grać\n• Samolot zniża się do pasa startowego.\n• Uważnie obserwuj wskaźnik wysokości.\n• Tapnij LĄDUJ, gdy jest w zielonej strefie.\n\n⭐ Punktacja\n• Im bliżej centrum, tym wyższy wynik.\n• Idealne lądowanie = maksimum punktów!",
+	rulesCabinCall:
+		"🎯 Cel\n• Wykonuj polecenia załogi jak najszybciej.\n\n🧑‍✈️ Jak grać\n• Załoga ogłasza akcję (pas, stolik itp.).\n• Tapnij odpowiedni przycisk jak najszybciej.\n• Szybkość daje dodatkowe punkty.\n\n⭐ Wskazówka\n• Bądź skupiony — polecenia się przyspieszają!",
+	rulesAirTrafficControl:
+		"🎯 Cel\n• Skieruj wszystkie samoloty na właściwe pasy.\n\n🗼 Jak grać\n• Samoloty pojawiają się w kolejce po lewej.\n• Przypisz każdy samolot do odpowiedniego pasa.\n• Nie pozwól, by kolejka się przepełniła!\n\n⭐ Wskazówka\n• Zachowaj spokój — gra się przyspiesza!",
+	rulesFlightPath:
+		"🎯 Cel\n• Poprowadź każdy samolot do jego pasa.\n\n✏️ Jak grać\n• Narysuj trasę od samolotu do pasa.\n• Dopasuj kolory: samolot → pas tego samego koloru.\n• Trasy nie mogą się krzyżować!\n\n⭐ Wskazówka\n• Zaplanuj trasy przed rysowaniem, by uniknąć konfliktów.",
+	rulesSkyDefense:
+		"🎯 Cel\n• Chroń lotnisko przed nadchodzącymi burzami.\n\n🏗️ Jak grać\n• Umieszczaj wieże obronne na siatce.\n• Wieże automatycznie atakują wrogów w zasięgu.\n• Wrogowie idą ścieżką — zatrzymaj ich na czas.\n\n⭐ Typy wież\n• 📡 Radar — wykrywa i spowalnia wrogów.\n• 🚀 SAM — strzela rakietami we wrogów.",
+	rulesStackSort:
+		"🎯 Cel\n• Ułóż wszystkie karty w kolumnie docelowej.\n\n🗂️ Jak grać\n• Tapnij kartę, aby ją podnieść.\n• Połóż ją na pustym miejscu lub na karcie o wyższej wartości.\n• Karty w kolumnie docelowej muszą być rosnąco.\n\n⭐ Wskazówka\n• Używaj tymczasowych miejsc strategicznie — planuj!",
+	rulesTicTacToe:
+		"🎯 Cel\n• Ustaw trzy swoje znaki w rzędzie!\n\n❌⭕ Jak grać\n• Dwóch graczy zmienia się na jednym urządzeniu.\n• Gracz 1 stawia ✕, Gracz 2 stawia ○.\n• Postaw swój znak na dowolnym pustym polu.\n\n🏆 Wygrana\n• Kto pierwszy ustawi 3 w rzędzie (poziomo, pionowo lub po przekątnej), wygrywa.\n• Jeśli plansza się zapełni bez zwycięzcy — remis!",
+	rulesDice:
+		"🎯 Cel\n• Uzyskaj najwyższą sumę w wielu rundach.\n\n🎲 Jak grać\n• 2–6 graczy rzuca kośćmi na zmianę.\n• Po każdym rzucie wybierz, które kości zachować.\n• Rzuć resztę ponownie dla lepszej sumy.\n\n🏆 Wygrana\n• Najwyższy łączny wynik po wszystkich rundach wygrywa!",
+	rulesConnect4:
+		"🎯 Cel\n• Połącz 4 żetony w rzędzie.\n\n🔴🟡 Jak grać\n• Dwóch graczy na zmianę wrzuca żetony.\n• Tapnij kolumnę, aby wrzucić żeton.\n• Spada na najniższe wolne miejsce.\n\n🏆 Wygrana\n• Kto pierwszy połączy 4 w rzędzie, wygrywa!\n• Liczą się: poziomo ↔, pionowo ↕, po przekątnej ↗↘",
+	rulesEmojiFind:
+		"🎯 Cel\n• Znajdź docelowe emoji szybciej niż przeciwnik!\n\n🔍 Jak grać\n• 2–6 graczy zmienia się na jednym urządzeniu.\n• Docelowe emoji jest pokazane u góry.\n• Znajdź je w siatce i tapnij!\n• Każdy gracz ma limit czasu na rundę.\n\n🏆 Wygrana\n• Najszybszy zdobywa najwięcej punktów.\n• Najwięcej punktów po wszystkich rundach wygrywa!",
+	rulesHangman:
+		"🎯 Cel\n• Odgadnij ukryte słowo, zanim wisielec będzie kompletny!\n\n🔤 Jak grać\n• 2–6 graczy — zgadujący zmienia się co rundę.\n• Tapuj litery na klawiaturze, by zgadywać.\n• Poprawna litera → pojawia się w słowie.\n• Błędna litera → rysowana jest część wisielca.\n\n🏆 Punktacja\n• Zgadujący zdobywa 10 pkt za odgadnięcie słowa.\n• Jeśli nie odgadnie, inni dostają po 5 pkt.\n• 6 błędów = koniec rundy!",
+	rulesAirRadar:
+		"🎯 Cel\n• Znajdź i zatop wszystkie wrogie samoloty!\n\n📡 Jak grać\n• Każdy gracz umieszcza 3 samoloty na swojej siatce.\n• Na zmianę strzelają na siatkę przeciwnika.\n• 🔴 Trafienie = trafiłeś samolot.\n• ⚪ Pudło = pusta woda.\n\n🏆 Wygrana\n• Kto pierwszy zatopi wszystkie 3 wrogie samoloty, wygrywa!",
+	rulesCodeBreaker:
+		"🎯 Cel\n• Złam tajny 4-cyfrowy kod!\n\n🔢 Jak grać\n• 2–6 graczy zgaduje na zmianę.\n• Kod ma 4 unikalne cyfry (0–9).\n• Po każdej próbie dostajesz wskazówki:\n• 🟢 Zielony kołek = właściwa cyfra na właściwej pozycji.\n• 🟠 Pomarańczowy kołek = właściwa cyfra, zła pozycja.\n• ⚫ Brak kołka = cyfry nie ma w kodzie.\n\n🏆 Punktacja\n• Mniej prób = więcej punktów.\n• Kto pierwszy złamie kod, dostaje bonus!",
+	rulesLiarsDice:
+		"🎯 Cel\n• Bądź ostatnim graczem z pozostałymi kośćmi!\n\n🎲 Jak grać\n• 2–6 graczy, każdy zaczyna z 5 kośćmi.\n• Każdą rundę podglądasz swoje kości w tajemnicy.\n• Gracze na zmianę obstawiają:\n→ 'Na stole jest co najmniej X kości z wartością Y'\n• Każdy zakład musi być wyższy niż poprzedni.\n• Powiedz 'Kłamca!', jeśli uważasz, że zakład jest fałszywy.\n\n🔍 Ujawnienie\n• Jeśli zakład był kłamstwem → obstawiający traci kość.\n• Jeśli był prawdziwy → oskarżyciel traci kość.\n• Stracisz wszystkie kości = odpadasz!\n\n🏆 Ostatni gracz wygrywa!",
 	skyDefenseTitle: "Obrona nieba",
 	skyDefenseIntro:
 		"Burze zbliżają się do lotniska!\nBuduj wieże, aby chronić pas.\nUmieszczaj wieże na siatce, eliminuj wrogów\nzanim dotrą do końca.",
@@ -192,6 +239,10 @@ export const pl = {
 	ccCmdTray: "Stolik złożony",
 	ccCmdWindow: "Roleta otwarta",
 	ccCmdPhone: "Tryb samolotowy włączony",
+	ccCmdLight: "Wyłącz lampkę",
+	ccCmdMusic: "Nastaw kanał",
+	ccCmdBag: "Schowaj bagaż",
+	ccCmdWifi: "Połącz Wi-Fi",
 	ccCrewSays: "Załoga mówi:",
 	ccStreak: "Seria: {{streak}}",
 	ccPlayAgain: "ZAGRAJ PONOWNIE",
@@ -561,18 +612,12 @@ export const pl = {
 	arRotate: "Obróć",
 	arReady: "Gotowy!",
 	arReset: "Reset",
-	arMyFleet: "Moja flota",
-	arAttackMap: "Mapa ataku",
 	arHit: "TRAFIONY!",
 	arMiss: "PUDŁO",
-	arAnnounce: "Powiedz przeciwnikowi ten współrzędny",
-	arTheyHit: "Powiedzieli: Trafiony",
-	arTheyMiss: "Powiedzieli: Pudło",
-	arDefenseHint: "Przeciwnik podaje współrzędne — dotknij tej komórki",
-	arHitsGiven: "Trafienia dane",
-	arHitsTaken: "Trafienia otrzymane",
-	arYouWin: "Wygrałeś!",
-	arYouLose: "Przegrałeś",
+	arHitsGiven: "Trafienia",
+	arPlayerWins: "{{player}} wygrywa!",
+	arTurnTitle: "Tura: {{player}}",
+	arTapToFire: "Dotknij pola, aby strzelić",
 	// Code Breaker
 	cbSetSecret: "Ustaw swój tajny kod",
 	cbSecretHint: "4 unikalne cyfry (0–9)",
@@ -637,6 +682,11 @@ export const pl = {
 	exploreSortShortestRead: "Krótkie czytanie",
 	exploreSortLongestRead: "Długie czytanie",
 	exploreSortTitle: "Tytuł",
+	exploreNoResults: "Nie znaleziono artykułów",
+	// Onboarding
+	onboardingLanguageTitle: "Wybierz język",
+	onboardingLanguageSubtitle:
+		"Wybierz język, w którym chcesz korzystać z aplikacji",
 	onboardingTitle1: "Witaj na pokładzie",
 	onboardingSubtitle1: "Twój towarzysz lotu — gry, relaks i więcej",
 	onboardingTitle2: "Rozrywka offline",
@@ -697,6 +747,28 @@ export const pl = {
 	achieveSpeedDemonDesc: "Czas reakcji poniżej 200ms",
 	achieveTapChampionTitle: "Mistrz tapnięć",
 	achieveTapChampionDesc: "100+ punktów w Tap Rush",
+	passPhone: "Podaj telefon",
+	passPhoneTo: "Podaj telefon graczowi {{player}}",
+	passPhoneReady: "Jestem gotowy",
+	passPhoneDontLook: "Nie podglądaj!",
+	hmPassToGuesser: "Gracz {{player}} teraz zgaduje",
+	hmPassToGuesserHint: "Osoba wybierająca słowo nie powinna patrzeć na ekran",
+	cbPassAfterSecret: "Twój tajny kod jest ustawiony!",
+	cbPassAfterSecretHint: "Podaj telefon — nie pozwól przeciwnikowi zobaczyć",
+	ldDiceRolled: "Twoje kości są gotowe",
+	ldDiceRolledHint: "Upewnij się, że tylko ty widzisz ekran",
+	ldPeek: "Pokaż moje kości",
+
 	achievePerfectLandingTitle: "Idealne lądowanie",
 	achievePerfectLandingDesc: "500+ punktów w Runway Landing",
+	ldLosesDie: "traci kostkę!",
+	mpSelectPlayers: "Ilu graczy?",
+	mpPlayerN: "Gracz {{n}}",
+	diceWinsLabel: "zwycięstw",
+	dicePtsLabel: "pkt",
+	efHandoff: "Znajdź jak najwięcej w {{seconds}}s!",
+	efGo: "START!",
+	cbHandoffHint: "Nie podglądaj — tylko ty powinieneś widzieć ekran",
+	cbNobodyCracked: "Nikt nie złamał kodu!",
+	cbSecretWas: "Tajny kod to",
 } as const;

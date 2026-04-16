@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
 import AnimatedPressable from "@/components/AnimatedPressable";
+import LanguageDropdown from "@/components/LanguageDropdown";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -24,9 +25,10 @@ type PageProps = {
 	title: string;
 	subtitle: string;
 	theme: (typeof Colors)["dark"];
+	isLanguagePage?: boolean;
 };
 
-function Page({ icon, title, subtitle, theme }: PageProps) {
+function Page({ icon, title, subtitle, theme, isLanguagePage }: PageProps) {
 	return (
 		<View style={[styles.page, { width: SCREEN_WIDTH }]}>
 			<Animated.View
@@ -50,6 +52,14 @@ function Page({ icon, title, subtitle, theme }: PageProps) {
 			>
 				{subtitle}
 			</Animated.Text>
+			{isLanguagePage && (
+				<Animated.View
+					entering={FadeInDown.delay(550).springify()}
+					style={styles.languagePicker}
+				>
+					<LanguageDropdown showSystemOption={false} />
+				</Animated.View>
+			)}
 		</View>
 	);
 }
@@ -64,6 +74,12 @@ export default function OnboardingScreen() {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	const pages = [
+		{
+			icon: "language-outline",
+			title: t("onboardingLanguageTitle"),
+			subtitle: t("onboardingLanguageSubtitle"),
+			isLanguagePage: true,
+		},
 		{
 			icon: "airplane",
 			title: t("onboardingTitle1"),
@@ -182,6 +198,10 @@ const styles = StyleSheet.create({
 		fontWeight: "500",
 		textAlign: "center",
 		lineHeight: 22,
+	},
+	languagePicker: {
+		width: "100%",
+		marginTop: 8,
 	},
 	dotsRow: {
 		flexDirection: "row",

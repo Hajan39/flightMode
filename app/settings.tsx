@@ -1,7 +1,8 @@
-import { StyleSheet, ScrollView, Pressable } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { StyleSheet, ScrollView } from "react-native";
 
-import { Text, View } from "@/components/Themed";
+import { Text } from "@/components/Themed";
+import LanguageDropdown from "@/components/LanguageDropdown";
+import ThemeDropdown from "@/components/ThemeDropdown";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -9,14 +10,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 export default function SettingsScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
-	const {
-		languages,
-		resetLanguage,
-		setLanguage,
-		systemLanguage,
-		storedLanguage,
-		t,
-	} = useTranslation();
+	const { t } = useTranslation();
 
 	return (
 		<ScrollView
@@ -27,78 +21,15 @@ export default function SettingsScreen() {
 			<Text style={[styles.sectionLabel, { color: theme.mutedText }]}>
 				{t("language").toUpperCase()}
 			</Text>
-			<View
-				style={[
-					styles.card,
-					{ backgroundColor: theme.card, borderColor: theme.border },
-				]}
-				lightColor={theme.card}
-				darkColor={theme.card}
-			>
-				{/* System default option */}
-				<Pressable
-					style={({ pressed }) => [
-						styles.langRow,
-						{ borderBottomColor: theme.border, borderBottomWidth: 1 },
-						pressed && { opacity: 0.6 },
-					]}
-					onPress={resetLanguage}
-				>
-					<View
-						style={styles.langRowInner}
-						lightColor="transparent"
-						darkColor="transparent"
-					>
-						<Text style={[styles.langLabel, { color: theme.text }]}>
-							{t("languageSystem")}
-						</Text>
-						<Text style={[styles.langSub, { color: theme.mutedText }]}>
-							{t("languageDevice", { language: systemLanguage.toUpperCase() })}
-						</Text>
-					</View>
-					{storedLanguage === null && (
-						<Ionicons name="checkmark" size={20} color={theme.tint} />
-					)}
-				</Pressable>
+			<LanguageDropdown />
 
-				{/* Per-language options */}
-				{languages.map((option, index) => {
-					const isLast = index === languages.length - 1;
-					const isSelected = storedLanguage === option.code;
-					return (
-						<Pressable
-							key={option.code}
-							style={({ pressed }) => [
-								styles.langRow,
-								!isLast && {
-									borderBottomColor: theme.border,
-									borderBottomWidth: 1,
-								},
-								pressed && { opacity: 0.6 },
-							]}
-							onPress={() =>
-								setLanguage(option.code as Parameters<typeof setLanguage>[0])
-							}
-						>
-							<View
-								style={styles.langRowInner}
-								lightColor="transparent"
-								darkColor="transparent"
-							>
-								<Text style={[styles.langLabel, { color: theme.text }]}>
-									{option.nativeLabel}
-								</Text>
-								<Text style={[styles.langSub, { color: theme.mutedText }]}>
-									{option.label}
-								</Text>
-							</View>
-							{isSelected && (
-								<Ionicons name="checkmark" size={20} color={theme.tint} />
-							)}
-						</Pressable>
-					);
-				})}
-			</View>
+			{/* Theme section */}
+			<Text
+				style={[styles.sectionLabel, { color: theme.mutedText, marginTop: 16 }]}
+			>
+				{t("theme").toUpperCase()}
+			</Text>
+			<ThemeDropdown />
 		</ScrollView>
 	);
 }
@@ -118,27 +49,5 @@ const styles = StyleSheet.create({
 		letterSpacing: 0.8,
 		marginBottom: 4,
 		paddingHorizontal: 4,
-	},
-	card: {
-		borderRadius: 14,
-		borderWidth: 1,
-		overflow: "hidden",
-	},
-	langRow: {
-		flexDirection: "row",
-		alignItems: "center",
-		paddingHorizontal: 16,
-		paddingVertical: 14,
-	},
-	langRowInner: {
-		flex: 1,
-		gap: 2,
-	},
-	langLabel: {
-		fontSize: 16,
-		fontWeight: "500",
-	},
-	langSub: {
-		fontSize: 13,
 	},
 });

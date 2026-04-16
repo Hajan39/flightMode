@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import type { GameProgress } from "@/types/game";
-import { useAchievementStore } from "@/store/useAchievementStore";
 
 type GameState = {
 	progress: Record<string, GameProgress>;
@@ -28,6 +27,7 @@ export const useGameStore = create<GameState>()(
 						},
 					};
 				});
+				const { useAchievementStore } = require("@/store/useAchievementStore");
 				useAchievementStore.getState().checkAndUnlock();
 			},
 		}),

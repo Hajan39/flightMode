@@ -7,9 +7,18 @@ export const cs = {
 	stackArticle: "Článek",
 	stackEditFlight: "Upravit let",
 	stackSettings: "Nastavení",
+	updateAvailableTitle: "Aktualizace k dispozici",
+	updateAvailableMessage: "Nová verze byla stažena. Restartovat?",
+	updateLater: "Později",
+	updateRestart: "Restartovat",
 	language: "Jazyk",
 	languageSystem: "Systém",
 	languageDevice: "Zařízení: {{language}}",
+	theme: "Vzhled",
+	themeSystem: "Systém",
+	themeLight: "Světlý",
+	themeDark: "Tmavý",
+	themeCrazy: "Šílený",
 	yourFlight: "Tvůj let",
 	remainingTime: "zbývá {{hours}} h {{minutes}} min",
 	recommendationLong: "Dlouhý let před tebou, zkus obsah nebo relaxaci",
@@ -103,6 +112,44 @@ export const cs = {
 	gameCrossCodeBreakerDescription: "Prolomte tajný 4ciferný kód",
 	gameCrossLiarsDiceName: "Lhářovy kostky",
 	gameCrossLiarsDiceDescription: "Blafujte se skrytými kostkami",
+	rulesMemory:
+		"🎯 Cíl\n• Najděte všechny páry karet s co nejméně tahy.\n\n🃏 Jak hrát\n• Ťuknutím otočte dvě karty za tah.\n• Pokud se shodují, zůstanou otočené.\n• Pokud ne, otočí se zpět — pamatujte si je!\n\n⭐ Bodování\n• Méně tahů = vyšší skóre.\n• Pokuste se překonat svůj rekord!",
+	rulesTouchdown:
+		"🎯 Cíl\n• Ťukněte co nejvíckrát, než vyprší čas!\n\n👆 Jak hrát\n• Ťukejte na obrazovku 20 sekund.\n• Každý ťuk se počítá do skóre.\n\n⭐ Tip\n• Rychlé, lehké ťukání funguje nejlépe.",
+	rulesSkyMath:
+		"🎯 Cíl\n• Řešte příklady co nejrychleji.\n\n🧮 Jak hrát\n• Na obrazovce se zobrazí příklad.\n• Vyberte správnou odpověď z nabídky.\n• Správně = body. Špatně = ztráta života.\n\n⭐ Tip\n• Rychlost se počítá — rychlejší odpovědi = víc bodů!",
+	rulesQuiz:
+		"🎯 Cíl\n• Zodpovězte 10 otázek o cestování a letectví.\n\n✈️ Jak hrát\n• Přečtěte si otázku a vyberte odpověď.\n• Odpovězte, než vyprší čas.\n• Každá správná odpověď = body.\n\n⭐ Tip\n• Čím rychleji odpovíte, tím víc bodů získáte!",
+	rulesReaction:
+		"🎯 Cíl\n• Otestujte své reflexy — ťukněte co nejrychleji!\n\n⚡ Jak hrát\n• Počkejte, až obrazovka zezelená.\n• Okamžitě ťukněte, jakmile se změní!\n• Neťukejte předčasně — to je falešný start.\n\n⭐ Bodování\n• Váš reakční čas v milisekundách je vaše skóre.\n• Nižší = lepší!",
+	rulesRunwayLanding:
+		"🎯 Cíl\n• Přistát letadlem přesně v zelené zóně.\n\n🛬 Jak hrát\n• Letadlo klesá k ranveji.\n• Pozorně sledujte ukazatel výšky.\n• Ťukněte PŘISTÁT, když je v zelené zóně.\n\n⭐ Bodování\n• Čím blíže středu, tím vyšší skóre.\n• Perfektní přistání = maximum bodů!",
+	rulesCabinCall:
+		"🎯 Cíl\n• Plňte pokyny posádky co nejrychleji.\n\n🧑‍✈️ Jak hrát\n• Posádka zavolá akci (pás, stolek atd.).\n• Ťukněte na správné tlačítko co nejrychleji.\n• Rychlost přináší bonusové body.\n\n⭐ Tip\n• Soustřeďte se — pokyny se zrychlují!",
+	rulesAirTrafficControl:
+		"🎯 Cíl\n• Nasměrujte všechna letadla na správné ranveje.\n\n🗼 Jak hrát\n• Letadla se objeví ve frontě vlevo.\n• Přiřaďte každé letadlo ke správné ranveji.\n• Nenechte frontu přetéct!\n\n⭐ Tip\n• Zachovejte klid — hra se zrychluje!",
+	rulesFlightPath:
+		"🎯 Cíl\n• Naveďte každé letadlo na jeho ranvej.\n\n✏️ Jak hrát\n• Nakreslete trasu od letadla k ranveji.\n• Slaďte barvy: letadlo → stejnobarevná ranvej.\n• Trasy se nesmí křížit!\n\n⭐ Tip\n• Naplánujte si trasy předem, abyste předešli kolizím.",
+	rulesSkyDefense:
+		"🎯 Cíl\n• Ochraňte letiště před blížícími se bouřkami.\n\n🏗️ Jak hrát\n• Stavte obranné věže na mřížku.\n• Věže automaticky útočí na nepřátele v dosahu.\n• Nepřátelé jdou po cestě — zastavte je včas.\n\n⭐ Typy věží\n• 📡 Radar — detekuje a zpomaluje nepřátele.\n• 🚀 SAM — střílí rakety na nepřátele.",
+	rulesStackSort:
+		"🎯 Cíl\n• Seřaďte všechny karty do cílového sloupce.\n\n🗂️ Jak hrát\n• Ťukněte na kartu, abyste ji zvedli.\n• Položte ji na prázdné místo nebo na kartu s vyšším číslem.\n• V cílovém sloupci musí být karty vzestupně.\n\n⭐ Tip\n• Využívejte dočasné sloty strategicky — plánujte dopředu!",
+	rulesTicTacToe:
+		"🎯 Cíl\n• Dejte tři své značky do řady!\n\n❌⭕ Jak hrát\n• Dva hráči se střídají na jednom zařízení.\n• Hráč 1 dává ✕, Hráč 2 dává ○.\n• Umístěte značku na libovolné prázdné pole.\n\n🏆 Výhra\n• Kdo dá první 3 v řadě (vodorovně, svisle nebo úhlopříčně), vyhrává.\n• Pokud se deska zaplní bez vítěze — remíza!",
+	rulesDice:
+		"🎯 Cíl\n• Nahoďte nejvyšší součet za více kol.\n\n🎲 Jak hrát\n• 2–6 hráčů se střídá v hodu kostkami.\n• Po každém hodu si vyberte, které kostky si necháte.\n• Zbytek přehoďte a zkuste lepší součet.\n\n🏆 Výhra\n• Nejvyšší celkové skóre po všech kolech vyhrává!",
+	rulesConnect4:
+		"🎯 Cíl\n• Spojte 4 své žetony v řadě.\n\n🔴🟡 Jak hrát\n• Dva hráči se střídají ve vhazování žetonů.\n• Ťukněte na sloupec pro vhození žetonu.\n• Spadne na nejnižší prázdné místo.\n\n🏆 Výhra\n• Kdo první spojí 4 v řadě, vyhrává!\n• Počítají se: vodorovně ↔, svisle ↕, úhlopříčně ↗↘",
+	rulesEmojiFind:
+		"🎯 Cíl\n• Najděte cílové emoji rychleji než soupeř!\n\n🔍 Jak hrát\n• 2–6 hráčů se střídá na jednom zařízení.\n• Cílové emoji je zobrazeno nahoře.\n• Najděte ho v mřížce a ťukněte na něj!\n• Každý hráč má časový limit na kolo.\n\n🏆 Výhra\n• Nejrychlejší nálezce získá nejvíce bodů.\n• Nejvíc bodů po všech kolech vyhrává!",
+	rulesHangman:
+		"🎯 Cíl\n• Uhádněte skryté slovo, než bude oběšenec kompletní!\n\n🔤 Jak hrát\n• 2–6 hráčů — hádající se střídá každé kolo.\n• Ťukejte na písmena na klávesnici.\n• Správné písmeno → objeví se ve slově.\n• Špatné písmeno → nakreslí se část oběšence.\n\n🏆 Bodování\n• Hádající dostane 10 bodů za uhádnutí slova.\n• Pokud neuhádne, ostatní dostanou 5 bodů.\n• 6 špatných tipů = konec kola!",
+	rulesAirRadar:
+		"🎯 Cíl\n• Najděte a potopte všechna nepřátelská letadla!\n\n📡 Jak hrát\n• Každý hráč umístí 3 letadla na svou mřížku.\n• Střídejte se ve střelbě na soupeřovu mřížku.\n• 🔴 Zásah = trefili jste letadlo.\n• ⚪ Mimo = prázdná voda.\n\n🏆 Výhra\n• Kdo první potopí všechna 3 nepřátelská letadla, vyhrává!",
+	rulesCodeBreaker:
+		"🎯 Cíl\n• Prolomte tajný 4místný kód!\n\n🔢 Jak hrát\n• 2–6 hráčů se střídá v hádání.\n• Kód má 4 unikátní číslice (0–9).\n• Po každém tipu dostanete zpětnou vazbu:\n• 🟢 Zelený kolík = správná číslice na správné pozici.\n• 🟠 Oranžový kolík = správná číslice, špatná pozice.\n• ⚫ Žádný kolík = číslice není v kódu.\n\n🏆 Bodování\n• Méně tipů = více bodů.\n• Kdo první prolomí kód, dostane bonus!",
+	rulesLiarsDice:
+		"🎯 Cíl\n• Buďte posledním hráčem, kterému zbývají kostky!\n\n🎲 Jak hrát\n• 2–6 hráčů, každý začíná s 5 kostkami.\n• Každé kolo si tajně prohlédněte své kostky.\n• Hráči se střídají v sázkách:\n→ 'Na stole je alespoň X kostek s hodnotou Y'\n• Každá sázka musí být vyšší než předchozí.\n• Řekněte 'Lhář!', pokud myslíte, že sázka je lež.\n\n🔍 Odhalení\n• Pokud sázka byla lež → sázející ztrácí kostku.\n• Pokud byla pravda → volající ztrácí kostku.\n• Ztratíte všechny kostky = vypadáváte!\n\n🏆 Poslední hráč vyhrává!",
 	skyDefenseTitle: "Sky Defense",
 	skyDefenseIntro:
 		"K letišti se blíží bouře!\nPostav věže a chraň ranvej.\nRozmisťuj věže na mřížku a likviduj nepřátele\ndřív, než dorazí do cíle.",
@@ -191,6 +238,10 @@ export const cs = {
 	ccCmdTray: "Stolek nahoru",
 	ccCmdWindow: "Otevřít okénko",
 	ccCmdPhone: "Režim letadlo",
+	ccCmdLight: "Zhasnout čtecí světlo",
+	ccCmdMusic: "Naladit kanál",
+	ccCmdBag: "Uložit příruční zavazadlo",
+	ccCmdWifi: "Připojit Wi-Fi",
 	ccCrewSays: "Posádka říká:",
 	ccStreak: "Série: {{streak}}",
 	ccPlayAgain: "HRÁT ZNOVU",
@@ -558,18 +609,12 @@ export const cs = {
 	arRotate: "Otočit",
 	arReady: "Připraven!",
 	arReset: "Reset",
-	arMyFleet: "Moje flotila",
-	arAttackMap: "Mapa útoku",
 	arHit: "ZÁSAH!",
 	arMiss: "MIMO",
-	arAnnounce: "Řekněte soupeři tuto souřadnici",
-	arTheyHit: "Řekli: Zásah",
-	arTheyMiss: "Řekli: Mimo",
-	arDefenseHint: "Soupeř říká souřadnici — klepněte na ni",
-	arHitsGiven: "Dané zásahy",
-	arHitsTaken: "Přijaté zásahy",
-	arYouWin: "Vyhráli jste!",
-	arYouLose: "Prohráli jste",
+	arHitsGiven: "Zásahy",
+	arPlayerWins: "{{player}} vyhrál!",
+	arTurnTitle: "Tah: {{player}}",
+	arTapToFire: "Klepněte na pole a palte",
 	// Code Breaker
 	cbSetSecret: "Nastavte svůj tajný kód",
 	cbSecretHint: "4 unikátní číslice (0–9)",
@@ -636,7 +681,11 @@ export const cs = {
 	exploreSortShortestRead: "Nejkratší čtení",
 	exploreSortLongestRead: "Nejdelší čtení",
 	exploreSortTitle: "Název",
+	exploreNoResults: "Žádné články nenalezeny",
 	// Onboarding
+	onboardingLanguageTitle: "Vyberte jazyk",
+	onboardingLanguageSubtitle:
+		"Zvolte jazyk, ve kterém chcete aplikaci používat",
 	onboardingTitle1: "Vítejte na palubě",
 	onboardingSubtitle1: "Váš společník na palubě pro hry, relaxaci a více",
 	onboardingTitle2: "Offline zábava",
@@ -699,6 +748,28 @@ export const cs = {
 	achieveSpeedDemonDesc: "Reakční čas pod 200ms",
 	achieveTapChampionTitle: "Šampion v ťukání",
 	achieveTapChampionDesc: "Skóre 100+ v Tap Rush",
+	passPhone: "Předej telefon",
+	passPhoneTo: "Předej telefon hráči {{player}}",
+	passPhoneReady: "Jsem připraven",
+	passPhoneDontLook: "Nekukej!",
+	hmPassToGuesser: "Hráč {{player}} teď hádá",
+	hmPassToGuesserHint: "Ten, kdo vybírá slovo, se nesmí dívat na obrazovku",
+	cbPassAfterSecret: "Tvůj tajný kód je nastaven!",
+	cbPassAfterSecretHint: "Předej telefon — ať soupeř nevidí kód",
+	ldDiceRolled: "Tvoje kostky jsou připraveny",
+	ldDiceRolledHint: "Ujisti se, že na obrazovku vidíš jen ty",
+	ldPeek: "Ukázat moje kostky",
+
 	achievePerfectLandingTitle: "Perfektní přistání",
 	achievePerfectLandingDesc: "Skóre 500+ v Runway Landing",
+	ldLosesDie: "ztrácí kostku!",
+	mpSelectPlayers: "Kolik hráčů?",
+	mpPlayerN: "Hráč {{n}}",
+	diceWinsLabel: "výher",
+	dicePtsLabel: "bodů",
+	efHandoff: "Najdi co nejvíc za {{seconds}}s!",
+	efGo: "START!",
+	cbHandoffHint: "Nekukej — jen ty bys měl vidět obrazovku",
+	cbNobodyCracked: "Nikdo nerozluštil kód!",
+	cbSecretWas: "Tajný kód byl",
 } as const;

@@ -1,15 +1,5 @@
-import {
-	useState,
-	useRef,
-	useEffect,
-	useMemo,
-	useCallback,
-} from "react";
-import {
-	StyleSheet,
-	Pressable,
-	View as RNView,
-} from "react-native";
+import { useState, useRef, useEffect } from "react";
+import { StyleSheet, Pressable, View as RNView } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
@@ -225,6 +215,17 @@ const EXTRA_WAVES: Wave[] = [
 		{ kind: "hail", count: 12, interval: 8 },
 		{ kind: "storm", count: 15, interval: 6 },
 	],
+	[
+		{ kind: "tornado", count: 14, interval: 10 },
+		{ kind: "hail", count: 14, interval: 8 },
+		{ kind: "storm", count: 18, interval: 5 },
+		{ kind: "cloud", count: 20, interval: 4 },
+	],
+	[
+		{ kind: "tornado", count: 16, interval: 9 },
+		{ kind: "hail", count: 16, interval: 7 },
+		{ kind: "storm", count: 20, interval: 5 },
+	],
 ];
 
 /* ---------- difficulty presets ---------- */
@@ -289,7 +290,7 @@ const DIFFICULTIES: DifficultyPreset[] = [
 		rewardMul: 0.6,
 		startGold: 30,
 		startLives: 5,
-		waveCount: 12,
+		waveCount: 14,
 		desc: "Only for the brave",
 	},
 ];
@@ -398,7 +399,7 @@ function buildPathSegments(): {
 
 /** Visual path rendered with RN Views (thick rounded lines) */
 function PathOverlay() {
-	const segs = useMemo(buildPathSegments, []);
+	const segs = buildPathSegments();
 	return (
 		<>
 			{segs.map((seg, i) => {
@@ -665,7 +666,7 @@ export default function SkyDefenseGame() {
 	scoreRef.current = score;
 
 	/* --- wave setup --- */
-	const startWave = useCallback((wi: number) => {
+	const startWave = (wi: number) => {
 		const wave = wavesRef.current[wi];
 		const queue: { kind: EnemyKind; tickAt: number }[] = [];
 		let t = 10;
@@ -678,7 +679,7 @@ export default function SkyDefenseGame() {
 		spawnQueue.current = queue;
 		tick.current = 0;
 		setPhase("playing");
-	}, []);
+	};
 
 	/* --- game loop --- */
 	useEffect(() => {

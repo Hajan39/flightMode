@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from "react";
+﻿import { useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 
 import GameResult from "@/components/GameResult";
@@ -17,7 +17,7 @@ type QuizQuestion = {
 	answerIndex: number;
 };
 
-const QUESTION_COUNT = 10;
+const QUESTION_COUNT = 15;
 
 function getAllQuestions(t: (key: TranslationKey) => string): QuizQuestion[] {
 	return [
@@ -291,19 +291,15 @@ export default function QuizGame() {
 	const haptic = useHaptic();
 
 	const [seed, setSeed] = useState(0);
-	const questions = useMemo(
-		() => pickRandom(getAllQuestions(t), QUESTION_COUNT),
-		[t, seed],
+	const [questions, setQuestions] = useState(() =>
+		pickRandom(getAllQuestions(t), QUESTION_COUNT),
 	);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [score, setScore] = useState(0);
 	const [selectedOption, setSelectedOption] = useState<string | null>(null);
 	const [showResult, setShowResult] = useState(false);
 
-	const currentQuestion = useMemo(
-		() => questions[currentIndex],
-		[currentIndex, questions],
-	);
+	const currentQuestion = questions[currentIndex];
 	const progressFraction = (currentIndex + 1) / questions.length;
 
 	const handleAnswer = (choice: string) => {
@@ -414,7 +410,7 @@ export default function QuizGame() {
 						total: questions.length,
 					})}
 					onPlayAgain={() => {
-						setSeed((s) => s + 1);
+						setQuestions(pickRandom(getAllQuestions(t), QUESTION_COUNT));
 						setCurrentIndex(0);
 						setScore(0);
 						setSelectedOption(null);

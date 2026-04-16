@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
 	StyleSheet,
 	Pressable,
@@ -345,7 +345,7 @@ export default function StackSortGame() {
 	);
 
 	/* --- start level --- */
-	const startLevel = useCallback((lvl: number) => {
+	const startLevel = (lvl: number) => {
 		const [nc, cc, ec] = LEVELS[Math.min(lvl, LEVELS.length - 1)];
 		const cols = generateLevel(nc, cc, ec);
 		setNumCount(nc);
@@ -356,81 +356,78 @@ export default function StackSortGame() {
 		setHistory([]);
 		setLevel(lvl);
 		setPhase("playing");
-	}, []);
+	};
 
 	/* --- tap handler --- */
-	const handleColumnPress = useCallback(
-		(colIdx: number) => {
-			if (phase !== "playing") return;
-			const isGoalTap = colIdx === -1;
+	const handleColumnPress = (colIdx: number) => {
+		if (phase !== "playing") return;
+		const isGoalTap = colIdx === -1;
 
-			if (selected === null) {
-				if (isGoalTap) return;
-				if (columns[colIdx].length === 0) return;
-				setSelected(colIdx);
-				return;
-			}
+		if (selected === null) {
+			if (isGoalTap) return;
+			if (columns[colIdx].length === 0) return;
+			setSelected(colIdx);
+			return;
+		}
 
-			const srcCol = columns[selected];
-			const top = srcCol[srcCol.length - 1];
-			const snapshot = {
-				columns: columns.map((c) => [...c]),
-				goal: [...goal],
-			};
+		const srcCol = columns[selected];
+		const top = srcCol[srcCol.length - 1];
+		const snapshot = {
+			columns: columns.map((c) => [...c]),
+			goal: [...goal],
+		};
 
-			if (isGoalTap) {
-				const nextGoal = goal.length + 1;
-				if (top !== nextGoal) {
-					setSelected(null);
-					return;
-				}
-				const newCols = columns.map((c) => [...c]);
-				newCols[selected] = newCols[selected].slice(0, -1);
-				const newGoal = [...goal, top];
-				setColumns(newCols);
-				setGoal(newGoal);
-				setMoves((m) => m + 1);
-				setHistory((h) => [...h, snapshot]);
-				setSelected(null);
-
-				if (newGoal.length === numCount) {
-					haptic.heavy();
-					setPhase("won");
-					const stars = getStars(moves + 1, numCount);
-					updateProgress("stack-sort", stars * 100 + (level + 1));
-				}
-				return;
-			}
-
-			if (colIdx === selected) {
+		if (isGoalTap) {
+			const nextGoal = goal.length + 1;
+			if (top !== nextGoal) {
 				setSelected(null);
 				return;
 			}
-
-			const destCol = columns[colIdx];
-			if (destCol.length >= MAX_STACK) {
-				setSelected(null);
-				return;
-			}
-			if (destCol.length > 0 && destCol[destCol.length - 1] <= top) {
-				setSelected(null);
-				return;
-			}
-
 			const newCols = columns.map((c) => [...c]);
 			newCols[selected] = newCols[selected].slice(0, -1);
-			newCols[colIdx] = [...newCols[colIdx], top];
+			const newGoal = [...goal, top];
 			setColumns(newCols);
-			haptic.tap();
+			setGoal(newGoal);
 			setMoves((m) => m + 1);
 			setHistory((h) => [...h, snapshot]);
 			setSelected(null);
-		},
-		[phase, columns, goal, selected, numCount, moves, level, updateProgress],
-	);
+
+			if (newGoal.length === numCount) {
+				haptic.heavy();
+				setPhase("won");
+				const stars = getStars(moves + 1, numCount);
+				updateProgress("stack-sort", stars * 100 + (level + 1));
+			}
+			return;
+		}
+
+		if (colIdx === selected) {
+			setSelected(null);
+			return;
+		}
+
+		const destCol = columns[colIdx];
+		if (destCol.length >= MAX_STACK) {
+			setSelected(null);
+			return;
+		}
+		if (destCol.length > 0 && destCol[destCol.length - 1] <= top) {
+			setSelected(null);
+			return;
+		}
+
+		const newCols = columns.map((c) => [...c]);
+		newCols[selected] = newCols[selected].slice(0, -1);
+		newCols[colIdx] = [...newCols[colIdx], top];
+		setColumns(newCols);
+		haptic.tap();
+		setMoves((m) => m + 1);
+		setHistory((h) => [...h, snapshot]);
+		setSelected(null);
+	};
 
 	/* --- undo --- */
-	const undo = useCallback(() => {
+	const undo = () => {
 		if (history.length === 0) return;
 		const prev = history[history.length - 1];
 		setColumns(prev.columns);
@@ -438,7 +435,7 @@ export default function StackSortGame() {
 		setHistory((h) => h.slice(0, -1));
 		setMoves((m) => m + 1);
 		setSelected(null);
-	}, [history]);
+	};
 
 	/* --- stars --- */
 	function getStars(m: number, nc: number): number {

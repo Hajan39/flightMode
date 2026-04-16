@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FlatList, Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -19,6 +19,7 @@ type Flight = {
 
 const RUNWAYS: Runway[] = ["A", "B", "C"];
 const MAX_MISSES = 3;
+const MAX_LEVEL = 6;
 
 function randomRunway(): Runway {
 	return RUNWAYS[Math.floor(Math.random() * RUNWAYS.length)];
@@ -28,6 +29,23 @@ function createCallsign(id: number) {
 	const prefixes = ["FM", "SKY", "JET", "AT", "AIR"];
 	const prefix = prefixes[id % prefixes.length];
 	return `${prefix}-${100 + (id % 900)}`;
+}
+
+function getLevel(landed: number) {
+	return Math.min(MAX_LEVEL, Math.floor(landed / 5) + 1);
+}
+
+function getSpawnInterval(level: number) {
+	return Math.max(1100, 4200 - (level - 1) * 500);
+}
+
+function getMaxQueueSize(level: number) {
+	return Math.min(10, 5 + Math.floor(level / 2));
+}
+
+function getStartingFuel(level: number, id: number) {
+	const baseFuel = Math.max(3, 7 - Math.floor((level - 1) / 2));
+	return baseFuel + (id % 3);
 }
 
 export default function AirTrafficControlGame() {
@@ -45,6 +63,7 @@ export default function AirTrafficControlGame() {
 	const flightIdRef = useRef(1);
 	const scoreRef = useRef(0);
 	const missesRef = useRef(0);
+	const level = getLevel(landed);
 
 	useEffect(() => {
 		scoreRef.current = score;
@@ -54,17 +73,15 @@ export default function AirTrafficControlGame() {
 		missesRef.current = misses;
 	}, [misses]);
 
-	const spawnInterval = useMemo(
-		() => Math.max(1800, 4200 - landed * 90),
-		[landed],
-	);
+	const spawnInterval = getSpawnInterval(level);
+	const maxQueueSize = getMaxQueueSize(level);
 
 	useEffect(() => {
 		if (gameOver) return;
 
 		const timer = setInterval(() => {
 			setFlights((prev) => {
-				if (prev.length >= 6) {
+				if (prev.length >= maxQueueSize) {
 					return prev;
 				}
 
@@ -75,14 +92,14 @@ export default function AirTrafficControlGame() {
 						id,
 						callsign: createCallsign(id),
 						runway: randomRunway(),
-						fuel: 6 + (id % 5),
+						fuel: getStartingFuel(level, id),
 					},
 				];
 			});
 		}, spawnInterval);
 
 		return () => clearInterval(timer);
-	}, [gameOver, spawnInterval]);
+	}, [gameOver, spawnInterval, maxQueueSize, level]);
 
 	useEffect(() => {
 		if (gameOver) return;
@@ -140,7 +157,7 @@ export default function AirTrafficControlGame() {
 				if (flight.id !== flightId) return true;
 				resolved = true;
 				if (flight.runway === runway) {
-					points = 20 + flight.fuel * 3;
+					points = 18 + flight.fuel * 3 + level * 2;
 				} else {
 					wrong = true;
 				}
@@ -168,11 +185,12 @@ export default function AirTrafficControlGame() {
 		setLanded((prev) => prev + 1);
 	};
 
-	const pressureLabel = useMemo(() => {
-		if (landed < 5) return t("atcLightTraffic");
-		if (landed < 12) return t("atcBusyAirspace");
-		return t("atcPeakTraffic");
-	}, [landed, t]);
+	const pressureLabel =
+		level <= 2
+			? t("atcLightTraffic")
+			: level <= 4
+				? t("atcBusyAirspace")
+				: t("atcPeakTraffic");
 
 	return (
 		<View style={styles.root}>
@@ -210,7 +228,7 @@ export default function AirTrafficControlGame() {
 				]}
 			>
 				<Text style={[styles.headerEyebrow, { color: theme.mutedText }]}>
-					{pressureLabel}
+					{`${pressureLabel} • L${level}`}
 				</Text>
 				<Text style={styles.headerTitle}>{t("atcAssignHint")}</Text>
 			</View>

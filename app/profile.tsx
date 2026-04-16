@@ -26,6 +26,12 @@ const GAME_NAME_KEYS: Record<string, string> = {
 	"stack-sort": "gameStackSortName",
 	"duel-tictactoe": "gameDuelTicTacToeName",
 	"duel-dice": "gameDuelDiceName",
+	"duel-connect4": "gameDuelConnect4Name",
+	"duel-emoji-find": "gameDuelEmojiFindName",
+	"duel-hangman": "gameDuelHangmanName",
+	"cross-air-radar": "gameCrossAirRadarName",
+	"cross-code-breaker": "gameCrossCodeBreakerName",
+	"cross-liars-dice": "gameCrossLiarsDiceName",
 };
 
 export default function ProfileScreen() {

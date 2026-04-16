@@ -14,6 +14,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useOTAUpdate } from "@/hooks/useOTAUpdate";
 import AchievementToast from "@/components/AchievementToast";
 
 export {
@@ -69,6 +70,8 @@ function RootStack() {
 	const router = useRouter();
 	const segments = useSegments();
 	const isFirstLaunch = useSettingsStore((s) => s.isFirstLaunch);
+
+	useOTAUpdate(t as (key: string) => string);
 
 	useEffect(() => {
 		useAchievementStore.getState().updateStreak();

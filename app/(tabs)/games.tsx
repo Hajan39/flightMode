@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { StyleSheet, FlatList, Pressable, ScrollView } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useRouter } from "expo-router";
@@ -193,13 +193,10 @@ export default function GamesScreen() {
 		},
 	];
 
-	const filteredGames = useMemo(
-		() =>
-			activeCategory === "all"
-				? games
-				: games.filter((g) => g.category === activeCategory),
-		[activeCategory, games],
-	);
+	const filteredGames =
+		activeCategory === "all"
+			? games
+			: games.filter((g) => g.category === activeCategory);
 
 	return (
 		<View style={styles.container}>

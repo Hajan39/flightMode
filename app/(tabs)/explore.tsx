@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import {
 	StyleSheet,
 	FlatList,
@@ -30,25 +30,18 @@ export default function ExploreScreen() {
 	const [activeCategory, setActiveCategory] = useState("");
 	const [sortMode, setSortMode] = useState<SortMode>("recommended");
 
-	const localizedArticles = useMemo(
-		() =>
-			articles.map((item) => ({
-				...item,
-				titleText: getLocalizedText(item.title, language),
-				categoryText: getLocalizedText(item.category, language),
-			})),
-		[language],
-	);
+	const localizedArticles = articles.map((item) => ({
+		...item,
+		titleText: getLocalizedText(item.title, language),
+		categoryText: getLocalizedText(item.category, language),
+	}));
 
-	const categories = useMemo(
-		() => [
-			t("exploreAll"),
-			...Array.from(new Set(localizedArticles.map((a) => a.categoryText))),
-		],
-		[localizedArticles, t],
-	);
+	const categories = [
+		t("exploreAll"),
+		...Array.from(new Set(localizedArticles.map((a) => a.categoryText))),
+	];
 
-	const filteredArticles = useMemo(() => {
+	const filteredArticles = (() => {
 		const q = search.trim().toLowerCase();
 		const allLabel = t("exploreAll");
 		const filtered = localizedArticles.filter((item) => {
@@ -76,7 +69,7 @@ export default function ExploreScreen() {
 		}
 
 		return filtered;
-	}, [activeCategory, localizedArticles, search, sortMode, t]);
+	})();
 
 	return (
 		<View style={styles.container}>
@@ -163,34 +156,45 @@ export default function ExploreScreen() {
 			<FlatList
 				data={filteredArticles}
 				keyExtractor={(item) => item.id}
-				contentContainerStyle={styles.list}
+				contentContainerStyle={[
+					styles.list,
+					filteredArticles.length === 0 && styles.emptyList,
+				]}
+				ListEmptyComponent={
+					<View style={styles.emptyState}>
+						<Ionicons name="search-outline" size={48} color={theme.mutedText} />
+						<Text style={[styles.emptyText, { color: theme.mutedText }]}>
+							{t("exploreNoResults")}
+						</Text>
+					</View>
+				}
 				renderItem={({ item }) => (
-						<AnimatedPressable
-							style={[
-								styles.card,
-								{ backgroundColor: theme.card, borderColor: theme.border },
-							]}
-							onPress={() => router.push(`/content/${item.id}` as never)}
+					<AnimatedPressable
+						style={[
+							styles.card,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() => router.push(`/content/${item.id}` as never)}
+					>
+						<View
+							style={styles.cardBody}
+							lightColor="transparent"
+							darkColor="transparent"
 						>
-							<View
-								style={styles.cardBody}
-								lightColor="transparent"
-								darkColor="transparent"
-							>
-								<Text style={[styles.category, { color: theme.tint }]}>
-									{item.categoryText}
-								</Text>
-								<Text style={styles.title}>{item.titleText}</Text>
-								<Text style={[styles.meta, { color: theme.mutedText }]}>
-									{t("minutesRead", { minutes: item.readTime })}
-								</Text>
-							</View>
-							<Ionicons
-								name="chevron-forward"
-								size={20}
-								color={theme.mutedText}
-							/>
-						</AnimatedPressable>
+							<Text style={[styles.category, { color: theme.tint }]}>
+								{item.categoryText}
+							</Text>
+							<Text style={styles.title}>{item.titleText}</Text>
+							<Text style={[styles.meta, { color: theme.mutedText }]}>
+								{t("minutesRead", { minutes: item.readTime })}
+							</Text>
+						</View>
+						<Ionicons
+							name="chevron-forward"
+							size={20}
+							color={theme.mutedText}
+						/>
+					</AnimatedPressable>
 				)}
 			/>
 		</View>
@@ -250,6 +254,15 @@ const styles = StyleSheet.create({
 		color: "#fff",
 	},
 	list: { padding: 16 },
+	emptyList: { flex: 1 },
+	emptyState: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+		gap: 12,
+		paddingTop: 60,
+	},
+	emptyText: { fontSize: 15, fontWeight: "600", textAlign: "center" },
 	card: {
 		flexDirection: "row",
 		alignItems: "center",

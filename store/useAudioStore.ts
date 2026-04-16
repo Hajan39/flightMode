@@ -1,9 +1,11 @@
 import { createAudioPlayer } from "expo-audio";
+import { Platform } from "react-native";
 import { create } from "zustand";
 
 import type { TranslationKey } from "@/i18n/translations";
 
-const globalPlayer = createAudioPlayer(null);
+const globalPlayer =
+	Platform.OS !== "web" ? createAudioPlayer(null) : (null as any);
 let sleepTimerRef: ReturnType<typeof setTimeout> | null = null;
 
 type AudioState = {
@@ -25,6 +27,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
 	sleepTimerEndAt: null,
 	sleepTimerPresetMinutes: null,
 	playSound: (id, labelKey, source) => {
+		if (!globalPlayer) return;
 		if (get().activeSoundId === id) {
 			globalPlayer.pause();
 			set({ activeSoundId: null, activeLabelKey: null });
@@ -42,7 +45,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
 		}
 	},
 	stopSound: () => {
-		globalPlayer.pause();
+		globalPlayer?.pause();
 		if (sleepTimerRef) {
 			clearTimeout(sleepTimerRef);
 			sleepTimerRef = null;
@@ -51,7 +54,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
 	},
 	setVolume: (volume) => {
 		const normalized = Math.max(0, Math.min(1, volume));
-		globalPlayer.volume = normalized;
+		if (globalPlayer) globalPlayer.volume = normalized;
 		set({ volume: normalized });
 	},
 	setSleepTimer: (minutes) => {
@@ -67,7 +70,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
 
 		const endAt = Date.now() + minutes * 60_000;
 		sleepTimerRef = setTimeout(() => {
-			globalPlayer.pause();
+			globalPlayer?.pause();
 			sleepTimerRef = null;
 			set({
 				activeSoundId: null,
