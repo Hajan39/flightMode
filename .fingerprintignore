@@ -1,0 +1,3 @@
+# Bare native directories (generated on EAS, not present locally)
+android/**/*
+ios/**/*
