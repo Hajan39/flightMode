@@ -7,6 +7,7 @@ import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import "expo-insights";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
