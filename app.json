@@ -59,7 +59,7 @@
       "checkAutomatically": "ON_LOAD"
     },
     "runtimeVersion": {
-      "policy": "fingerprint"
+      "policy": "appVersion"
     },
     "extra": {
       "router": {},
