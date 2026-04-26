@@ -11,10 +11,6 @@ and this project adheres to Semantic Versioning.
 
 - Repaired mojibake and broken symbols across cross-device game UIs and compact article content.
 
-### Changed
-
-- OTA update publishing is now changelog-driven: update notes come from the `Unreleased` section instead of a separately typed message.
-
 
 ## [1.0.0] - 2026-04-23
 
