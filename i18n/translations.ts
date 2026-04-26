@@ -63,7 +63,10 @@ export function translate(
 	key: TranslationKey,
 	params?: TranslationParams,
 ): string {
-	const template: string = translations[language][key] ?? translations.en[key];
+	const languageTable = translations[language] as Partial<
+		Record<TranslationKey, string>
+	>;
+	const template: string = languageTable[key] ?? translations.en[key];
 
 	if (!params) {
 		return template;

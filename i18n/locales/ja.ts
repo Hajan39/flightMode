@@ -1,4 +1,4 @@
-export const ja = {
+﻿export const ja = {
 	tabsHome: "ホーム",
 	tabsGames: "ゲーム",
 	tabsExplore: "探索",
@@ -22,6 +22,7 @@ export const ja = {
 	themeCrazy: "クレイジー",
 	yourFlight: "あなたのフライト",
 	remainingTime: "残り {{hours}}時間 {{minutes}}分",
+	arrivalTime: "到着 {{time}}",
 	recommendationLong:
 		"長いフライトです。コンテンツを楽しんだり、リラックスしたりしましょう",
 	recommendationMid: "ゲームを楽しむのに最適な時間です！",
@@ -231,7 +232,7 @@ export const ja = {
 	rlGood: "グッド",
 	rlMiss: "ミス",
 	rlFinished: "着陸完了",
-	rlResult: "{{correct}} / {{total}} ラウンド",
+	rlResult: "合計スコア: {{score}}",
 	ccTime: "時間",
 	ccScore: "スコア",
 	ccCmdSeatbelt: "シートベルト着用",
@@ -759,4 +760,22 @@ export const ja = {
 	cbHandoffHint: "覗かないで — 自分だけが画面を見てね",
 	cbNobodyCracked: "誰もコードを解読できなかった！",
 	cbSecretWas: "秘密のコードは",
+	// Support
+	settingsSupport: "サポート",
+	settingsSupportHint: "バグを見つけたかご意見がありましたらお知らせください。",
+	settingsReportBug: "バグを報告",
+	settingsReportBugHint: "メールアプリを開きます",
+	settingsSuggestFeature: "機能を提案",
+	settingsSuggestFeatureHint: "アイデアを歓迎します",
+	settingsVersion: "バージョン",
+	// Games
+	gamesEmptyTitle: "ゲームが見つかりません",
+	gamesEmptyHint: "別のキーワードで検索するかフィルターを解除してください。",
+	difficultyEasy: "かんたん",
+	difficultyMedium: "ふつう",
+	difficultyHard: "むずかしい",
+	ccTimeUp: "時間切れ！",
+	ccTimeUpSubtitle: "連続: {{streak}} · スコア: {{score}}",
+	atcGameOver: "ゲームオーバー",
+	atcGameOverSubtitle: "着陸: {{landed}} · スコア: {{score}}",
 } as const;

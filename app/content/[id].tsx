@@ -23,12 +23,15 @@ export default function ContentDetailScreen() {
 
 	useEffect(() => {
 		if (id) markArticleRead(id);
-	}, [id]);
+	}, [id, markArticleRead]);
 
 	if (!article) {
 		return (
 			<View style={styles.container}>
-				<Text>{t("articleNotFound")}</Text>
+				<Text style={styles.notFoundTitle}>{t("articleNotFound")}</Text>
+				<Text style={[styles.notFoundHint, { color: theme.mutedText }]}>
+					{t("articleNotFoundHint")}
+				</Text>
 			</View>
 		);
 	}
@@ -51,14 +54,22 @@ export default function ContentDetailScreen() {
 				<Text style={[styles.meta, { color: theme.mutedText }]}>
 					{t("minutesRead", { minutes: article.readTime })}
 				</Text>
+				<Text style={[styles.readingHint, { color: theme.mutedText }]}>
+					{t("exploreReadingHint")}
+				</Text>
 				{getLocalizedText(article.body, language)
 					.split("\n")
 					.filter((p) => p.trim().length > 0)
-					.map((paragraph, i) => (
-						<Text key={i} style={[styles.body, { color: theme.text }]}>
-							{paragraph.trim()}
-						</Text>
-					))}
+					.map((paragraph) => {
+						const trimmed = paragraph.trim();
+						const paragraphKey = `${article.id}-${trimmed.slice(0, 24)}-${trimmed.length}`;
+
+						return (
+							<Text key={paragraphKey} style={[styles.body, { color: theme.text }]}>
+								{trimmed}
+							</Text>
+						);
+					})}
 			</ScrollView>
 		</>
 	);
@@ -66,10 +77,13 @@ export default function ContentDetailScreen() {
 
 const styles = StyleSheet.create({
 	container: { flex: 1, alignItems: "center", justifyContent: "center" },
+	notFoundTitle: { fontSize: 16, fontWeight: "600", textAlign: "center" },
+	notFoundHint: { fontSize: 13, textAlign: "center", marginTop: 6 },
 	scroll: { flex: 1 },
 	content: { padding: 20 },
 	category: { fontSize: 12, fontWeight: "600", textTransform: "uppercase" },
 	title: { fontSize: 22, fontWeight: "700", marginTop: 8 },
-	meta: { fontSize: 13, marginTop: 4, marginBottom: 20 },
+	meta: { fontSize: 13, marginTop: 4, marginBottom: 8 },
+	readingHint: { fontSize: 12, lineHeight: 16, marginBottom: 14 },
 	body: { fontSize: 16, lineHeight: 24, marginBottom: 12 },
 });

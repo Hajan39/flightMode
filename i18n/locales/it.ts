@@ -1,4 +1,4 @@
-export const it = {
+﻿export const it = {
 	tabsHome: "Home",
 	tabsGames: "Giochi",
 	tabsExplore: "Esplora",
@@ -21,6 +21,7 @@ export const it = {
 	themeCrazy: "Pazzo",
 	yourFlight: "Il tuo volo",
 	remainingTime: "{{hours}}h {{minutes}}m rimanenti",
+	arrivalTime: "Arrivo alle {{time}}",
 	recommendationLong: "Volo lungo in arrivo, prova dei contenuti o il relax",
 	recommendationMid: "Buon momento per un gioco veloce!",
 	recommendationShort: "Quasi arrivato, fai stretching e rilassati.",
@@ -233,7 +234,7 @@ export const it = {
 	rlGood: "BUONO",
 	rlMiss: "MANCATO",
 	rlFinished: "Atterraggio completato",
-	rlResult: "{{correct}} / {{total}} round",
+	rlResult: "Punteggio totale: {{score}}",
 	ccTime: "TEMPO",
 	ccScore: "PUNTEGGIO",
 	ccCmdSeatbelt: "Allaccia la cintura",
@@ -771,4 +772,22 @@ export const it = {
 	cbHandoffHint: "Non sbirciare — solo tu dovresti vedere lo schermo",
 	cbNobodyCracked: "Nessuno ha decifrato il codice!",
 	cbSecretWas: "Il codice segreto era",
+	// Support
+	settingsSupport: "Supporto",
+	settingsSupportHint: "Trovato un bug o hai idee? Faccelo sapere.",
+	settingsReportBug: "Segnala un bug",
+	settingsReportBugHint: "Apre l'app di posta",
+	settingsSuggestFeature: "Suggerisci una funzione",
+	settingsSuggestFeatureHint: "Le idee sono benvenute",
+	settingsVersion: "Versione",
+	// Games
+	gamesEmptyTitle: "Nessun gioco trovato",
+	gamesEmptyHint: "Prova un'altra ricerca o rimuovi il filtro.",
+	difficultyEasy: "Facile",
+	difficultyMedium: "Medio",
+	difficultyHard: "Difficile",
+	ccTimeUp: "Tempo scaduto!",
+	ccTimeUpSubtitle: "Serie: {{streak}} · Punteggio: {{score}}",
+	atcGameOver: "Fine del gioco",
+	atcGameOverSubtitle: "Atterrati: {{landed}} · Punteggio: {{score}}",
 } as const;

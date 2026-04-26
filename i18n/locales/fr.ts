@@ -1,4 +1,4 @@
-export const fr = {
+﻿export const fr = {
 	tabsHome: "Accueil",
 	tabsGames: "Jeux",
 	tabsExplore: "Explorer",
@@ -22,6 +22,7 @@ export const fr = {
 	themeCrazy: "Fou",
 	yourFlight: "Votre vol",
 	remainingTime: "{{hours}}h {{minutes}}m restantes",
+	arrivalTime: "Arrivée à {{time}}",
 	recommendationLong:
 		"Long vol à venir, essayez du contenu ou de la relaxation",
 	recommendationMid: "Bon moment pour un jeu rapide !",
@@ -237,7 +238,7 @@ export const fr = {
 	rlGood: "BIEN",
 	rlMiss: "RATÉ",
 	rlFinished: "Atterrissage terminé",
-	rlResult: "{{correct}} / {{total}} manches",
+	rlResult: "Score total : {{score}}",
 	ccTime: "TEMPS",
 	ccScore: "SCORE",
 	ccCmdSeatbelt: "Attachez votre ceinture",
@@ -786,4 +787,22 @@ export const fr = {
 	cbHandoffHint: "Ne regarde pas — toi seul devrait voir l'écran",
 	cbNobodyCracked: "Personne n'a craqué le code !",
 	cbSecretWas: "Le code secret était",
+	// Support
+	settingsSupport: "Support",
+	settingsSupportHint: "Trouvé un bug ou une idée ? Dites-le nous.",
+	settingsReportBug: "Signaler un bug",
+	settingsReportBugHint: "Ouvre l'application mail",
+	settingsSuggestFeature: "Suggérer une fonctionnalité",
+	settingsSuggestFeatureHint: "Les idées sont bienvenues",
+	settingsVersion: "Version",
+	// Games
+	gamesEmptyTitle: "Aucun jeu trouvé",
+	gamesEmptyHint: "Essayez une autre recherche ou effacez le filtre.",
+	difficultyEasy: "Facile",
+	difficultyMedium: "Moyen",
+	difficultyHard: "Difficile",
+	ccTimeUp: "Temps écoulé !",
+	ccTimeUpSubtitle: "Série : {{streak}} · Score : {{score}}",
+	atcGameOver: "Fin de partie",
+	atcGameOverSubtitle: "Atterrissages : {{landed}} · Score : {{score}}",
 } as const;

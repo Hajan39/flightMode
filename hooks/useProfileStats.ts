@@ -1,22 +1,7 @@
 import { useGameStore } from "@/store/useGameStore";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { achievements } from "@/data/achievements";
-
-const GAME_ESTIMATED_MINUTES: Record<string, number> = {
-	memory: 10,
-	"tap-rush": 2,
-	"sky-math": 3,
-	quiz: 4,
-	reaction: 1,
-	"runway-landing": 2,
-	"cabin-call": 3,
-	"air-traffic-control": 12,
-	"flight-path": 8,
-	"sky-defense": 10,
-	"stack-sort": 5,
-	"duel-tictactoe": 4,
-	"duel-dice": 3,
-};
+import { getGameById } from "@/data/games";
 
 export type ProfileStats = {
 	totalGamesPlayed: number;
@@ -44,7 +29,8 @@ export function useProfileStats(): ProfileStats {
 	const totalGamesPlayed = entries.reduce((sum, e) => sum + e.timesPlayed, 0);
 	const uniqueGamesPlayed = entries.length;
 	const estimatedMinutes = entries.reduce(
-		(sum, e) => sum + e.timesPlayed * (GAME_ESTIMATED_MINUTES[e.gameId] ?? 3),
+		(sum, e) =>
+			sum + e.timesPlayed * (getGameById(e.gameId)?.estimatedTime ?? 3),
 		0,
 	);
 

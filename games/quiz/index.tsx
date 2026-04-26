@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 
 import GameResult from "@/components/GameResult";
@@ -290,7 +290,6 @@ export default function QuizGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
-	const [seed, setSeed] = useState(0);
 	const [questions, setQuestions] = useState(() =>
 		pickRandom(getAllQuestions(t), QUESTION_COUNT),
 	);
@@ -301,6 +300,12 @@ export default function QuizGame() {
 
 	const currentQuestion = questions[currentIndex];
 	const progressFraction = (currentIndex + 1) / questions.length;
+
+	// Shuffle once per question so correct answer isn't always at position [1]
+	const shuffledOptions = useMemo(
+		() => [...currentQuestion.options].sort(() => Math.random() - 0.5),
+		[currentQuestion.options],
+	);
 
 	const handleAnswer = (choice: string) => {
 		if (selectedOption !== null) return;
@@ -355,7 +360,7 @@ export default function QuizGame() {
 			</View>
 
 			<View style={styles.options}>
-				{currentQuestion.options.map((option) => {
+				{shuffledOptions.map((option) => {
 					const isSelected = selectedOption === option;
 					const isCorrect = option === correctAnswer;
 					const showResult = selectedOption !== null;

@@ -23,6 +23,7 @@ export default function TapRushGame() {
 	const [score, setScore] = useState(0);
 	const [showResult, setShowResult] = useState(false);
 	const scoreRef = useRef(0);
+	const gameEndedAt = useRef(0);
 
 	useEffect(() => {
 		if (!isRunning) return;
@@ -31,6 +32,7 @@ export default function TapRushGame() {
 			setIsRunning(false);
 			haptic.heavy();
 			updateProgress("tap-rush", scoreRef.current);
+			gameEndedAt.current = Date.now();
 			setShowResult(true);
 			return;
 		}
@@ -50,6 +52,7 @@ export default function TapRushGame() {
 	})();
 
 	const handleMainPress = () => {
+		if (showResult && Date.now() - gameEndedAt.current < 700) return;
 		if (!isRunning && secondsLeft === ROUND_SECONDS && score === 0) {
 			setIsRunning(true);
 			return;

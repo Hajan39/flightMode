@@ -173,7 +173,7 @@ export default function RelaxScreen() {
 		} else {
 			breathScale.value = withTiming(1, { duration: 300 });
 		}
-	}, [isActive, phase.key, phase.duration]);
+	}, [isActive, phase.key, phase.duration, breathScale]);
 
 	const breathCircleStyle = useAnimatedStyle(() => ({
 		transform: [{ scale: breathScale.value }],
@@ -192,6 +192,9 @@ export default function RelaxScreen() {
 				<Text style={styles.sectionTitle}>{t("breathingExercise")}</Text>
 				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
 					{t("boxBreathing")}
+				</Text>
+				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+					{t("relaxBreathingHint")}
 				</Text>
 
 				<Animated.View
@@ -231,6 +234,9 @@ export default function RelaxScreen() {
 			>
 				<Text style={[styles.sectionLabel, { color: theme.mutedText }]}>
 					{t("soundscapes").toUpperCase()}
+				</Text>
+				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+					{t("relaxSoundscapesHint")}
 				</Text>
 				{activeSoundscape ? (
 					<View
@@ -295,6 +301,9 @@ export default function RelaxScreen() {
 				>
 					<Text style={[styles.sectionLabel, { color: theme.mutedText }]}>
 						{t("sleepTimer").toUpperCase()}
+					</Text>
+					<Text style={[styles.sleepTimerHint, { color: theme.mutedText }]}>
+						{t("relaxSleepTimerHint")}
 					</Text>
 					{sleepTimerEndAt ? (
 						<Text style={[styles.sleepTimerHint, { color: theme.mutedText }]}>
@@ -403,7 +412,13 @@ const styles = StyleSheet.create({
 		paddingVertical: 16,
 	},
 	sectionTitle: { fontSize: 22, fontWeight: "700", marginBottom: 4 },
-	subtitle: { fontSize: 14, marginBottom: 32 },
+	subtitle: { fontSize: 14, marginBottom: 8 },
+	sectionHint: {
+		fontSize: 13,
+		lineHeight: 18,
+		marginBottom: 20,
+		textAlign: "center",
+	},
 	breathCircle: {
 		width: 190,
 		height: 190,

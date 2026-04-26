@@ -3,6 +3,7 @@ import { Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
+import GameResult from "@/components/GameResult";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
@@ -210,14 +211,15 @@ export default function CabinCallGame() {
 			<Text style={[styles.streakText, { color: theme.mutedText }]}>
 				{t("ccStreak", { streak })}
 			</Text>
-			{secondsLeft <= 0 ? (
-				<Pressable
-					style={[styles.button, { backgroundColor: theme.tint }]}
-					onPress={restart}
-				>
-					<Text style={styles.buttonText}>{t("ccPlayAgain")}</Text>
-				</Pressable>
-			) : null}
+
+			{secondsLeft <= 0 && (
+				<GameResult
+					title={t("ccTimeUp")}
+					score={score}
+					subtitle={t("ccTimeUpSubtitle", { streak, score })}
+					onPlayAgain={restart}
+				/>
+			)}
 		</View>
 	);
 }

@@ -237,6 +237,7 @@ interface DifficultyPreset {
 	emoji: string;
 	hpMul: number;
 	spdMul: number;
+	spawnMul: number; // multiplier on spawn intervals (< 1 = faster spawning)
 	rewardMul: number;
 	startGold: number;
 	startLives: number;
@@ -251,6 +252,7 @@ const DIFFICULTIES: DifficultyPreset[] = [
 		emoji: "🟢",
 		hpMul: 0.7,
 		spdMul: 0.8,
+		spawnMul: 1.3,
 		rewardMul: 1.2,
 		startGold: 80,
 		startLives: 15,
@@ -263,6 +265,7 @@ const DIFFICULTIES: DifficultyPreset[] = [
 		emoji: "🟡",
 		hpMul: 1.0,
 		spdMul: 1.0,
+		spawnMul: 1.0,
 		rewardMul: 1.0,
 		startGold: 50,
 		startLives: 10,
@@ -273,23 +276,25 @@ const DIFFICULTIES: DifficultyPreset[] = [
 		key: "hard",
 		label: "Hard",
 		emoji: "🔴",
-		hpMul: 1.5,
-		spdMul: 1.2,
-		rewardMul: 0.8,
-		startGold: 40,
-		startLives: 7,
-		waveCount: 10,
+		hpMul: 2.2,
+		spdMul: 1.5,
+		spawnMul: 0.7,
+		rewardMul: 0.7,
+		startGold: 35,
+		startLives: 5,
+		waveCount: 12,
 		desc: "Tougher enemies, less gold",
 	},
 	{
 		key: "insane",
 		label: "Insane",
 		emoji: "💀",
-		hpMul: 2.2,
-		spdMul: 1.4,
+		hpMul: 3.0,
+		spdMul: 1.7,
+		spawnMul: 0.55,
 		rewardMul: 0.6,
 		startGold: 30,
-		startLives: 5,
+		startLives: 4,
 		waveCount: 14,
 		desc: "Only for the brave",
 	},
@@ -646,6 +651,8 @@ export default function SkyDefenseGame() {
 		row: number;
 	} | null>(null);
 	const [selectedPlaced, setSelectedPlaced] = useState<number | null>(null);
+	const [gameSpeed, setGameSpeed] = useState<1 | 2>(1);
+	const [countdown, setCountdown] = useState(0);
 
 	const nextId = useRef(1);
 	const spawnQueue = useRef<{ kind: EnemyKind; tickAt: number }[]>([]);
@@ -666,14 +673,15 @@ export default function SkyDefenseGame() {
 	scoreRef.current = score;
 
 	/* --- wave setup --- */
-	const startWave = (wi: number) => {
+	const startWave = (wi: number, preset?: DifficultyPreset) => {
+		const diff = preset ?? difficulty;
 		const wave = wavesRef.current[wi];
 		const queue: { kind: EnemyKind; tickAt: number }[] = [];
 		let t = 10;
 		for (const entry of wave) {
 			for (let i = 0; i < entry.count; i++) {
 				queue.push({ kind: entry.kind, tickAt: t });
-				t += entry.interval;
+				t += Math.max(4, Math.round(entry.interval * diff.spawnMul));
 			}
 		}
 		spawnQueue.current = queue;
@@ -833,10 +841,10 @@ export default function SkyDefenseGame() {
 					setPhase("wave-clear");
 				}
 			}
-		}, TICK);
+		}, TICK / gameSpeed);
 
 		return () => clearInterval(ivl);
-	}, [phase, waveIdx, updateProgress]);
+	}, [phase, waveIdx, updateProgress, gameSpeed, difficulty]);
 
 	/* --- place tower --- */
 	const handleBoardPress = (e: {
@@ -882,6 +890,20 @@ export default function SkyDefenseGame() {
 		startWave(wi);
 	};
 
+	const nextWaveRef = useRef(nextWave);
+	nextWaveRef.current = nextWave;
+	useEffect(() => {
+		if (phase !== "wave-clear") { setCountdown(0); return; }
+		setCountdown(5);
+		const iv = setInterval(() => {
+			setCountdown((c) => {
+				if (c <= 1) { clearInterval(iv); nextWaveRef.current(); return 0; }
+				return c - 1;
+			});
+		}, 1000);
+		return () => clearInterval(iv);
+	}, [phase]);
+
 	/* --- restart --- */
 	const restart = () => {
 		setPhase("start");
@@ -917,7 +939,7 @@ export default function SkyDefenseGame() {
 		wavesRef.current = getWaves(preset);
 		setPhase("playing");
 		// start first wave after short delay
-		setTimeout(() => startWave(0), 50);
+		setTimeout(() => startWave(0, preset), 50);
 	};
 
 	/* ================================================================
@@ -1040,6 +1062,14 @@ export default function SkyDefenseGame() {
 						👾 {enemies.length}
 					</Text>
 				)}
+				<Pressable
+					onPress={() => setGameSpeed((s) => (s === 1 ? 2 : 1))}
+					style={[s.hudBtn, { borderColor: gameSpeed === 2 ? theme.tint : theme.border }]}
+				>
+					<Text style={[s.hudText, { color: gameSpeed === 2 ? theme.tint : theme.mutedText }]}>
+						{gameSpeed === 1 ? "1×" : "2×"}
+					</Text>
+				</Pressable>
 			</RNView>
 
 			{/* Tower palette */}
@@ -1195,19 +1225,14 @@ export default function SkyDefenseGame() {
 				</RNView>
 			</Pressable>
 
-			{/* wave-clear overlay */}
+			{/* wave-clear banner — non-blocking, board stays interactive */}
 			{phase === "wave-clear" && (
-				<RNView style={s.overlay}>
-					<Text style={s.overlayTitle}>
-						{t("skyDefenseWaveCleared", { wave: waveIdx + 1 })}
+				<RNView style={[s.waveBanner, { backgroundColor: theme.card, borderColor: theme.border }]}>
+					<Text style={[s.waveBannerTitle, { color: theme.text }]}>
+						{t("skyDefenseWaveCleared", { wave: waveIdx + 1 })} — {countdown}s
 					</Text>
-					<RNView style={s.waveStats}>
-						<Text style={s.waveStatsText}>🏆 {score}</Text>
-						<Text style={s.waveStatsText}>💰 {gold}</Text>
-						<Text style={s.waveStatsText}>❤️ {lives}</Text>
-					</RNView>
 					<Pressable
-						style={[s.mainBtn, { backgroundColor: theme.tint }]}
+						style={[s.waveBannerBtn, { backgroundColor: theme.tint }]}
 						onPress={nextWave}
 					>
 						<Text style={s.mainBtnText}>{t("skyDefenseNextWave")}</Text>
@@ -1252,6 +1277,12 @@ const s = StyleSheet.create({
 		paddingHorizontal: 4,
 	},
 	hudText: { fontSize: 13, fontWeight: "700" },
+	hudBtn: {
+		borderWidth: 1,
+		borderRadius: 6,
+		paddingHorizontal: 6,
+		paddingVertical: 2,
+	},
 
 	palette: {
 		flexDirection: "row",
@@ -1277,32 +1308,22 @@ const s = StyleSheet.create({
 		borderColor: "rgba(255,255,255,0.08)",
 	},
 
-	overlay: {
-		position: "absolute",
-		top: 0,
-		left: 0,
-		right: 0,
-		bottom: 0,
-		alignItems: "center",
-		justifyContent: "center",
-		backgroundColor: "rgba(0,0,0,0.6)",
-		borderRadius: 8,
-	},
-	overlayTitle: {
-		fontSize: 22,
-		fontWeight: "900",
-		color: "#fff",
-		marginBottom: 8,
-	},
-	waveStats: {
+	waveBanner: {
 		flexDirection: "row",
-		gap: 16,
-		marginBottom: 4,
+		alignItems: "center",
+		justifyContent: "space-between",
+		width: BOARD_W,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 8,
+		borderWidth: 1,
+		marginTop: 4,
 	},
-	waveStatsText: {
-		fontSize: 16,
-		fontWeight: "700",
-		color: "#fff",
+	waveBannerTitle: { fontSize: 13, fontWeight: "700" },
+	waveBannerBtn: {
+		paddingHorizontal: 14,
+		paddingVertical: 6,
+		borderRadius: 8,
 	},
 
 	diffLabel: {

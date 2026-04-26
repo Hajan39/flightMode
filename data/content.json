@@ -59,66 +59,96 @@
     {
         "id": "flight-hydration",
         "title": {
-            "en": "Hydration Plan for Long Flights"
+            "en": "Hydration Plan for Long Flights",
+            "cs": "Hydratační plán pro dlouhé lety",
+            "de": "Hydrationsplan für lange Flüge"
         },
         "category": {
-            "en": "Health"
+            "en": "Health",
+            "cs": "Zdraví",
+            "de": "Gesundheit"
         },
         "readTime": 4,
         "body": {
-            "en": "Cabin air is dry, so dehydration starts faster than you expect. A simple plan works best:\n\n1. Drink 250 ml of water every hour.\n2. Add one electrolyte drink every 4 to 5 hours.\n3. Limit coffee to one cup per 3 hours of flight.\n4. Skip alcohol until landing.\n\nIf you feel tired, dry lips, or headache, drink first and wait 10 minutes before adding caffeine."
+            "en": "Cabin air is dry, so dehydration starts faster than you expect. A simple plan works best:\n\n1. Drink 250 ml of water every hour.\n2. Add one electrolyte drink every 4 to 5 hours.\n3. Limit coffee to one cup per 3 hours of flight.\n4. Skip alcohol until landing.\n\nIf you feel tired, dry lips, or headache, drink first and wait 10 minutes before adding caffeine.",
+            "cs": "Vzduch v kabině je suchý, takže dehydratace přichází rychleji, než čekáš. Pomůže jednoduchý plán:\n\n1. Každou hodinu vypij asi 250 ml vody.\n2. Každé 4–5 hodin přidej jeden iontový nápoj.\n3. Kávu omez zhruba na jeden šálek na 3 hodiny letu.\n4. Alkohol nech až po přistání.\n\nPokud cítíš únavu, suché rty nebo bolest hlavy, nejdřív se napij a s kofeinem počkej aspoň 10 minut.",
+            "de": "Die Kabinenluft ist trocken, daher beginnt Dehydrierung schneller als erwartet. Ein einfacher Plan hilft:\n\n1. Trinke jede Stunde etwa 250 ml Wasser.\n2. Ergänze alle 4–5 Stunden ein Elektrolytgetränk.\n3. Begrenze Kaffee auf etwa eine Tasse pro 3 Flugstunden.\n4. Verzichte bis zur Landung auf Alkohol.\n\nBei Müdigkeit, trockenen Lippen oder Kopfschmerzen: erst trinken und mit Koffein mindestens 10 Minuten warten."
         }
     },
     {
         "id": "airport-connection-checklist",
         "title": {
-            "en": "Connection Flight Checklist"
+            "en": "Connection Flight Checklist",
+            "cs": "Checklist pro přestupní let",
+            "de": "Checkliste für Anschlussflüge"
         },
         "category": {
-            "en": "Travel Tips"
+            "en": "Travel Tips",
+            "cs": "Cestovní tipy",
+            "de": "Reisetipps"
         },
         "readTime": 3,
         "body": {
-            "en": "Tight transfer? Use this quick checklist before landing:\n\n- Screenshot your next boarding pass.\n- Check gate and terminal in the airline app.\n- Keep passport and essentials in an easy-access pocket.\n- Know your backup plan if the gate changes.\n\nAfter landing, move first, then make calls. Most missed connections happen because people stop too early."
+            "en": "Tight transfer? Use this quick checklist before landing:\n\n- Screenshot your next boarding pass.\n- Check gate and terminal in the airline app.\n- Keep passport and essentials in an easy-access pocket.\n- Know your backup plan if the gate changes.\n\nAfter landing, move first, then make calls. Most missed connections happen because people stop too early.",
+            "cs": "Máš krátký přestup? Použij tento rychlý checklist ještě před přistáním:\n\n- Udělej screenshot dalšího boarding passu.\n- V aplikaci aerolinky zkontroluj gate a terminál.\n- Pas a důležité věci měj v lehce dostupné kapse.\n- Měj připravený záložní plán, kdyby se gate změnil.\n\nPo přistání se nejdřív rozběhni správným směrem a až potom volej. Hodně zmeškaných přestupů vzniká tím, že lidé příliš brzy zastaví.",
+            "de": "Kurzer Umstieg? Nutze diese schnelle Checkliste noch vor der Landung:\n\n- Mache einen Screenshot der nächsten Bordkarte.\n- Prüfe Gate und Terminal in der Airline-App.\n- Pass und wichtige Dinge in eine schnell erreichbare Tasche legen.\n- Einen Plan B haben, falls sich das Gate ändert.\n\nNach der Landung zuerst zügig losgehen, dann telefonieren. Viele verpasste Anschlüsse passieren, weil man zu früh stehen bleibt."
         }
     },
     {
         "id": "sleep-on-plane",
         "title": {
-            "en": "How to Sleep Better on a Plane"
+            "en": "How to Sleep Better on a Plane",
+            "cs": "Jak v letadle lépe usnout",
+            "de": "Besser im Flugzeug schlafen"
         },
         "category": {
-            "en": "Relax"
+            "en": "Relax",
+            "cs": "Relax",
+            "de": "Entspannung"
         },
         "readTime": 5,
         "body": {
-            "en": "Sleeping on a plane gets easier with a setup routine:\n\n1. Put phone in airplane mode and lower brightness.\n2. Use earplugs or noise canceling headphones.\n3. Add a neck pillow and light layer to stay warm.\n4. Do 4 cycles of slow box breathing.\n5. Avoid screens for 20 minutes before trying to sleep.\n\nEven a 40-minute nap can improve mood and reduce jet lag impact."
+            "en": "Sleeping on a plane gets easier with a setup routine:\n\n1. Put phone in airplane mode and lower brightness.\n2. Use earplugs or noise canceling headphones.\n3. Add a neck pillow and light layer to stay warm.\n4. Do 4 cycles of slow box breathing.\n5. Avoid screens for 20 minutes before trying to sleep.\n\nEven a 40-minute nap can improve mood and reduce jet lag impact.",
+            "cs": "Spánek v letadle je snazší, když máš krátkou rutinu:\n\n1. Dej telefon do režimu Letadlo a stáhni jas.\n2. Použij špunty do uší nebo sluchátka s potlačením hluku.\n3. Přidej cestovní polštářek a lehkou vrstvu oblečení.\n4. Udělej 4 cykly pomalého box breathing.\n5. Aspoň 20 minut před usnutím vynech obrazovky.\n\nI 40minutový spánek může zlepšit náladu a snížit dopad jet lagu.",
+            "de": "Schlafen im Flugzeug wird mit einer kleinen Routine deutlich leichter:\n\n1. Handy in den Flugmodus schalten und Helligkeit reduzieren.\n2. Ohrstöpsel oder Noise-Cancelling-Kopfhörer nutzen.\n3. Nackenkissen und leichte Schicht zum Warmhalten einpacken.\n4. Vier langsame Box-Breathing-Zyklen machen.\n5. 20 Minuten vor dem Einschlafen keine Bildschirme mehr.\n\nSchon ein 40-Minuten-Nickerchen kann Stimmung und Jetlag spürbar verbessern."
         }
     },
     {
         "id": "seat-comfort-setup",
         "title": {
-            "en": "Seat Comfort Setup in 3 Minutes"
+            "en": "Seat Comfort Setup in 3 Minutes",
+            "cs": "Pohodlí v sedadle za 3 minuty",
+            "de": "Sitzkomfort in 3 Minuten"
         },
         "category": {
-            "en": "Relax"
+            "en": "Relax",
+            "cs": "Relax",
+            "de": "Entspannung"
         },
         "readTime": 3,
         "body": {
-            "en": "A quick setup can make the next few hours much easier:\n\n- Place your neck pillow before you feel stiffness.\n- Use a small rolled sweater for lower-back support.\n- Keep one foot slightly forward to reduce hip tension.\n- Relax shoulders every 20 minutes with one deep breath.\n\nSmall adjustments done early prevent discomfort later."
+            "en": "A quick setup can make the next few hours much easier:\n\n- Place your neck pillow before you feel stiffness.\n- Use a small rolled sweater for lower-back support.\n- Keep one foot slightly forward to reduce hip tension.\n- Relax shoulders every 20 minutes with one deep breath.\n\nSmall adjustments done early prevent discomfort later.",
+            "cs": "Rychlé nastavení udělá další hodiny výrazně příjemnější:\n\n- Dej si krční polštářek ještě předtím, než ztuhneš.\n- Pro bedra použij malou srolovanou mikinu.\n- Jednu nohu nech lehce vpředu, snížíš napětí v kyčlích.\n- Každých 20 minut uvolni ramena jedním hlubokým nádechem.\n\nMalé úpravy na začátku často zabrání většímu nepohodlí později.",
+            "de": "Ein kurzes Setup macht die nächsten Flugstunden deutlich angenehmer:\n\n- Nackenkissen nutzen, bevor Verspannungen starten.\n- Eine kleine gerollte Jacke als Lendenstütze verwenden.\n- Einen Fuß leicht nach vorn stellen, um Hüftspannung zu reduzieren.\n- Alle 20 Minuten Schultern mit einem tiefen Atemzug lockern.\n\nKleine Anpassungen am Anfang verhindern später oft größere Beschwerden."
         }
     },
     {
         "id": "meal-timing-flight",
         "title": {
-            "en": "Meal Timing to Feel Better After Landing"
+            "en": "Meal Timing to Feel Better After Landing",
+            "cs": "Načasování jídla pro lepší pocit po přistání",
+            "de": "Essens-Timing für bessere Ankunft"
         },
         "category": {
-            "en": "Health"
+            "en": "Health",
+            "cs": "Zdraví",
+            "de": "Gesundheit"
         },
         "readTime": 4,
         "body": {
-            "en": "Food timing can help your body adapt faster:\n\n1. Eat a light meal before departure.\n2. During flight, choose protein and vegetables over heavy sugar.\n3. Have your first major meal at destination local lunchtime or dinner.\n4. Avoid very heavy meals 2 hours before planned sleep.\n\nThis routine supports energy and smoother adjustment to the new timezone."
+            "en": "Food timing can help your body adapt faster:\n\n1. Eat a light meal before departure.\n2. During flight, choose protein and vegetables over heavy sugar.\n3. Have your first major meal at destination local lunchtime or dinner.\n4. Avoid very heavy meals 2 hours before planned sleep.\n\nThis routine supports energy and smoother adjustment to the new timezone.",
+            "cs": "Načasování jídla pomáhá tělu rychleji se přizpůsobit:\n\n1. Před odletem si dej lehké jídlo.\n2. Během letu preferuj bílkoviny a zeleninu místo velké dávky cukru.\n3. První větší jídlo si dej podle místního času v cíli (oběd/večeře).\n4. Těžká jídla vynech 2 hodiny před plánovaným spánkem.\n\nTato rutina podpoří energii a plynulejší adaptaci na nové časové pásmo.",
+            "de": "Das Timing von Mahlzeiten kann die Anpassung deutlich beschleunigen:\n\n1. Vor dem Abflug eine leichte Mahlzeit essen.\n2. Im Flug eher Protein und Gemüse statt viel Zucker wählen.\n3. Die erste größere Mahlzeit zur lokalen Mittags- oder Abendzeit am Ziel essen.\n4. Sehr schwere Mahlzeiten 2 Stunden vor geplantem Schlaf meiden.\n\nDiese Routine unterstützt Energie und eine sanftere Umstellung auf die neue Zeitzone."
         }
     },
     {
@@ -181,14 +211,20 @@
     {
         "id": "meditation-anxious-flyers",
         "title": {
-            "en": "Meditation Techniques for Anxious Flyers"
+            "en": "Meditation Techniques for Anxious Flyers",
+            "cs": "Meditační techniky pro nervózní letce",
+            "de": "Meditationstechniken bei Flugangst"
         },
         "category": {
-            "en": "Relax"
+            "en": "Relax",
+            "cs": "Relax",
+            "de": "Entspannung"
         },
         "readTime": 5,
         "body": {
-            "en": "Flight anxiety is common — about 25% of people experience some level of nervousness. These meditation techniques can help:\n\n**1. Box Breathing (4-4-4-4)**\nInhale for 4 seconds, hold for 4, exhale for 4, hold for 4. Repeat 5 cycles.\n\n**2. Body Scan**\nClose your eyes. Starting from your toes, slowly move your attention upward, relaxing each muscle group.\n\n**3. 5-4-3-2-1 Grounding**\nName 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste.\n\n**4. Positive Visualization**\nPicture yourself arriving safely at your destination, stepping off the plane, smiling.\n\n**5. Progressive Muscle Relaxation**\nTense each muscle group for 5 seconds, then release. Start with hands, then arms, shoulders, face.\n\nPractice these on the ground first so they feel natural in the air."
+            "en": "Flight anxiety is common — about 25% of people experience some level of nervousness. These meditation techniques can help:\n\n**1. Box Breathing (4-4-4-4)**\nInhale for 4 seconds, hold for 4, exhale for 4, hold for 4. Repeat 5 cycles.\n\n**2. Body Scan**\nClose your eyes. Starting from your toes, slowly move your attention upward, relaxing each muscle group.\n\n**3. 5-4-3-2-1 Grounding**\nName 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste.\n\n**4. Positive Visualization**\nPicture yourself arriving safely at your destination, stepping off the plane, smiling.\n\n**5. Progressive Muscle Relaxation**\nTense each muscle group for 5 seconds, then release. Start with hands, then arms, shoulders, face.\n\nPractice these on the ground first so they feel natural in the air.",
+            "cs": "Strach z létání je běžný. Tyto techniky pomáhají snížit napětí:\n\n**1. Box breathing (4-4-4-4)**\nNádech 4 s, zadržení 4 s, výdech 4 s, zadržení 4 s. Opakuj 5 cyklů.\n\n**2. Body scan**\nZavři oči a postupně uvolňuj tělo od prstů na nohou směrem nahoru.\n\n**3. 5-4-3-2-1 grounding**\nPojmenuj 5 věcí, které vidíš, 4 kterých se dotkneš, 3 které slyšíš, 2 které cítíš čichem a 1 chuť.\n\n**4. Pozitivní vizualizace**\nPředstav si klidný přílet a bezpečné vystoupení z letadla.\n\n**5. Progresivní svalová relaxace**\nNa 5 sekund zatni svaly a pak je uvolni. Začni rukama, pak paže, ramena a obličej.\n\nNejlepší je trénovat už na zemi, aby ti techniky ve vzduchu přišly přirozené.",
+            "de": "Flugangst ist häufig. Diese Techniken helfen, spürbar ruhiger zu werden:\n\n**1. Box Breathing (4-4-4-4)**\n4 Sekunden einatmen, 4 halten, 4 ausatmen, 4 halten. 5 Zyklen wiederholen.\n\n**2. Body Scan**\nAugen schließen und die Aufmerksamkeit langsam von den Zehen nach oben führen, dabei jede Muskelgruppe entspannen.\n\n**3. 5-4-3-2-1 Grounding**\n5 Dinge sehen, 4 berühren, 3 hören, 2 riechen, 1 schmecken.\n\n**4. Positive Visualisierung**\nStell dir vor, wie du sicher ankommst und entspannt aussteigst.\n\n**5. Progressive Muskelentspannung**\nMuskeln 5 Sekunden anspannen, dann lösen: Hände, Arme, Schultern, Gesicht.\n\nAm besten vorher am Boden üben, damit es im Flug natürlich wirkt."
         }
     },
     {
@@ -213,66 +249,96 @@
     {
         "id": "best-airport-lounges",
         "title": {
-            "en": "Best Airport Lounges You Can Access Without Business Class"
+            "en": "Best Airport Lounges You Can Access Without Business Class",
+            "cs": "Nejlepší letištní lounge bez business class",
+            "de": "Top-Airport-Lounges ohne Business Class"
         },
         "category": {
-            "en": "Destinations"
+            "en": "Destinations",
+            "cs": "Destinace",
+            "de": "Reiseziele"
         },
         "readTime": 4,
         "body": {
-            "en": "You don't need a business class ticket to enjoy a lounge. Here's how:\n\n**1. Priority Pass**\nLounge membership programs like Priority Pass (from $99/year) give access to 1,300+ lounges worldwide.\n\n**2. Credit card perks**\nMany travel credit cards include lounge access as a benefit.\n\n**3. Day passes**\nSome lounges sell same-day access for $30–50.\n\n**Top lounges worth visiting:**\n- **Singapore Changi** — The Jewel, rooftop pool, butterfly garden\n- **Doha Hamad (DOH)** — Al Mourjan lounge with full dining\n- **Istanbul IST** — IGA lounge with a massive buffet\n- **Helsinki HEL** — Finnair lounge with a sauna\n- **Munich MUC** — Lufthansa lounge with brewery-fresh beer\n\nPro tip: Arrive early to actually enjoy the lounge — rushing defeats the purpose."
+            "en": "You don't need a business class ticket to enjoy a lounge. Here's how:\n\n**1. Priority Pass**\nLounge membership programs like Priority Pass (from $99/year) give access to 1,300+ lounges worldwide.\n\n**2. Credit card perks**\nMany travel credit cards include lounge access as a benefit.\n\n**3. Day passes**\nSome lounges sell same-day access for $30–50.\n\n**Top lounges worth visiting:**\n- **Singapore Changi** — The Jewel, rooftop pool, butterfly garden\n- **Doha Hamad (DOH)** — Al Mourjan lounge with full dining\n- **Istanbul IST** — IGA lounge with a massive buffet\n- **Helsinki HEL** — Finnair lounge with a sauna\n- **Munich MUC** — Lufthansa lounge with brewery-fresh beer\n\nPro tip: Arrive early to actually enjoy the lounge — rushing defeats the purpose.",
+            "cs": "Do lounge se dostaneš i bez business class:\n\n**1. Priority Pass**\nČlenství jako Priority Pass (od cca 99 USD/rok) otevírá přístup do tisíců lounge po světě.\n\n**2. Výhody kreditních karet**\nMnoho cestovních karet má vstup do lounge jako benefit.\n\n**3. Jednodenní vstupy**\nNěkteré lounge prodávají vstup na stejný den kolem 30–50 USD.\n\n**Lounge, které stojí za návštěvu:**\n- **Singapore Changi** — The Jewel, střešní bazén, motýlí zahrada\n- **Doha Hamad (DOH)** — Al Mourjan lounge s plným servisem\n- **Istanbul IST** — IGA lounge s velkým bufetem\n- **Helsinki HEL** — Finnair lounge se saunou\n- **Munich MUC** — Lufthansa lounge s čerstvým pivem\n\nTip: Přijď včas, jinak si lounge nestihneš užít.",
+            "de": "Auch ohne Business-Class-Ticket kannst du Lounges nutzen:\n\n**1. Priority Pass**\nProgramme wie Priority Pass (ab ca. 99 USD/Jahr) geben Zugang zu vielen Lounges weltweit.\n\n**2. Kreditkarten-Vorteile**\nViele Reisekreditkarten enthalten Lounge-Zugang als Benefit.\n\n**3. Tagespässe**\nManche Lounges verkaufen Same-Day-Zugang für etwa 30–50 USD.\n\n**Lohnende Lounges:**\n- **Singapore Changi** — The Jewel, Rooftop-Pool, Schmetterlingsgarten\n- **Doha Hamad (DOH)** — Al Mourjan Lounge mit vollem Dining\n- **Istanbul IST** — IGA Lounge mit großem Buffet\n- **Helsinki HEL** — Finnair Lounge mit Sauna\n- **Munich MUC** — Lufthansa Lounge mit frisch gezapftem Bier\n\nTipp: Früh da sein, sonst verpasst du den eigentlichen Lounge-Vorteil."
         }
     },
     {
         "id": "hidden-gems-airports",
         "title": {
-            "en": "Hidden Gems Near Major Airport Hubs"
+            "en": "Hidden Gems Near Major Airport Hubs",
+            "cs": "Skryté tipy u velkých letištních hubů",
+            "de": "Geheimtipps nahe großer Flughafen-Hubs"
         },
         "category": {
-            "en": "Destinations"
+            "en": "Destinations",
+            "cs": "Destinace",
+            "de": "Reiseziele"
         },
         "readTime": 4,
         "body": {
-            "en": "If you've got 6+ hours between flights, consider these hidden gems just minutes from major hubs:\n\n**Near London Heathrow (LHR):**\nWindsor Castle — 15 min by bus. Royal residence, beautiful gardens.\n\n**Near Tokyo Narita (NRT):**\nNaritasan Shinshoji Temple — 10 min walk from Narita Station. A 1,000-year-old temple complex.\n\n**Near Dubai (DXB):**\nDubai Creek — 25 min by metro. Traditional abra boats, spice souk, old Dubai charm.\n\n**Near Rome Fiumicino (FCO):**\nOstia Antica — 30 min by train. Ancient Roman ruins without the Colosseum crowds.\n\n**Near Seoul Incheon (ICN):**\nWolmido Island — Free shuttle + 20 min. Amusement park and seaside cafes.\n\nAlways check visa requirements before leaving the airport transit zone."
+            "en": "If you've got 6+ hours between flights, consider these hidden gems just minutes from major hubs:\n\n**Near London Heathrow (LHR):**\nWindsor Castle — 15 min by bus. Royal residence, beautiful gardens.\n\n**Near Tokyo Narita (NRT):**\nNaritasan Shinshoji Temple — 10 min walk from Narita Station. A 1,000-year-old temple complex.\n\n**Near Dubai (DXB):**\nDubai Creek — 25 min by metro. Traditional abra boats, spice souk, old Dubai charm.\n\n**Near Rome Fiumicino (FCO):**\nOstia Antica — 30 min by train. Ancient Roman ruins without the Colosseum crowds.\n\n**Near Seoul Incheon (ICN):**\nWolmido Island — Free shuttle + 20 min. Amusement park and seaside cafes.\n\nAlways check visa requirements before leaving the airport transit zone.",
+            "cs": "Máš mezi lety 6+ hodin? Zvaž tato místa blízko velkých hubů:\n\n**U London Heathrow (LHR):**\nWindsor Castle — cca 15 min autobusem.\n\n**U Tokyo Narita (NRT):**\nNaritasan Shinshoji Temple — asi 10 min pěšky od stanice Narita.\n\n**U Dubai (DXB):**\nDubai Creek — cca 25 min metrem.\n\n**U Rome Fiumicino (FCO):**\nOstia Antica — cca 30 min vlakem.\n\n**U Seoul Incheon (ICN):**\nWolmido Island — shuttle + asi 20 min.\n\nPřed opuštěním tranzitní zóny vždy ověř vízové podmínky.",
+            "de": "Bei 6+ Stunden Umsteigezeit lohnen sich diese Ziele nahe großer Hubs:\n\n**Bei London Heathrow (LHR):**\nWindsor Castle — ca. 15 Min mit dem Bus.\n\n**Bei Tokyo Narita (NRT):**\nNaritasan Shinshoji Tempel — etwa 10 Min zu Fuß von Narita Station.\n\n**Bei Dubai (DXB):**\nDubai Creek — ca. 25 Min mit der Metro.\n\n**Bei Rome Fiumicino (FCO):**\nOstia Antica — ca. 30 Min mit dem Zug.\n\n**Bei Seoul Incheon (ICN):**\nWolmido Island — Shuttle + etwa 20 Min.\n\nVor Verlassen der Transitzone immer die Visabedingungen prüfen."
         }
     },
     {
         "id": "noise-canceling-guide",
         "title": {
-            "en": "Best Noise-Canceling Headphones for Flying"
+            "en": "Best Noise-Canceling Headphones for Flying",
+            "cs": "Nejlepší sluchátka s potlačením hluku na létání",
+            "de": "Die besten Noise-Cancelling-Kopfhörer fürs Fliegen"
         },
         "category": {
-            "en": "Tech & Gadgets"
+            "en": "Tech & Gadgets",
+            "cs": "Technologie a gadgety",
+            "de": "Technik & Gadgets"
         },
         "readTime": 4,
         "body": {
-            "en": "Good headphones make a flight feel twice as short. Here's what to look for:\n\n**Key features:**\n- Active Noise Canceling (ANC) — blocks engine drone\n- Comfort for 8+ hours — look for memory foam ear cups\n- Battery life of at least 20 hours\n- Foldable design for packing\n\n**Budget tiers:**\n- **Under $100:** Good basic ANC, wired backup mode\n- **$100-250:** Strong ANC with app EQ, multipoint connection\n- **$250+:** Premium ANC, spatial audio, head tracking\n\n**Tips for flying:**\n- Enable airplane mode on your headphones if they have it.\n- Carry a 3.5 mm cable as backup for in-flight entertainment.\n- Use the noise canceling even without music — it reduces fatigue.\n\nWhatever you choose, test them before the trip so you know the controls."
+            "en": "Good headphones make a flight feel twice as short. Here's what to look for:\n\n**Key features:**\n- Active Noise Canceling (ANC) — blocks engine drone\n- Comfort for 8+ hours — look for memory foam ear cups\n- Battery life of at least 20 hours\n- Foldable design for packing\n\n**Budget tiers:**\n- **Under $100:** Good basic ANC, wired backup mode\n- **$100-250:** Strong ANC with app EQ, multipoint connection\n- **$250+:** Premium ANC, spatial audio, head tracking\n\n**Tips for flying:**\n- Enable airplane mode on your headphones if they have it.\n- Carry a 3.5 mm cable as backup for in-flight entertainment.\n- Use the noise canceling even without music — it reduces fatigue.\n\nWhatever you choose, test them before the trip so you know the controls.",
+            "cs": "Dobrá sluchátka udělají let výrazně příjemnější. Na co se zaměřit:\n\n**Klíčové vlastnosti:**\n- Aktivní potlačení hluku (ANC)\n- Pohodlí na 8+ hodin\n- Výdrž baterie alespoň 20 hodin\n- Skládací konstrukce\n\n**Cenové úrovně:**\n- **Do 100 USD:** základní ANC, často i kabelový režim\n- **100–250 USD:** silnější ANC, app EQ, multipoint\n- **250+ USD:** prémiové ANC, prostorový zvuk, head tracking\n\n**Tipy do letadla:**\n- Pokud to sluchátka umí, zapni režim letadlo.\n- Měj s sebou i 3,5mm kabel jako zálohu.\n- ANC používej i bez hudby, snižuje únavu.",
+            "de": "Gute Kopfhörer machen Flüge deutlich angenehmer. Darauf solltest du achten:\n\n**Wichtige Merkmale:**\n- Active Noise Cancelling (ANC)\n- Tragekomfort für 8+ Stunden\n- Mindestens 20 Stunden Akkulaufzeit\n- Faltbares Design\n\n**Budget-Stufen:**\n- **Unter 100 USD:** solides ANC, oft mit Kabel-Backup\n- **100–250 USD:** stärkeres ANC, App-EQ, Multipoint\n- **250+ USD:** Premium-ANC, Spatial Audio, Head Tracking\n\n**Flug-Tipps:**\n- Falls vorhanden, Flugmodus am Kopfhörer aktivieren.\n- 3,5-mm-Kabel als Backup dabeihaben.\n- ANC auch ohne Musik nutzen, das reduziert Ermüdung."
         }
     },
     {
         "id": "travel-apps",
         "title": {
-            "en": "Must-Have Travel Apps for Stress-Free Flying"
+            "en": "Must-Have Travel Apps for Stress-Free Flying",
+            "cs": "Nezbytné cestovní aplikace pro klidnější létání",
+            "de": "Must-have Reise-Apps für stressfreies Fliegen"
         },
         "category": {
-            "en": "Tech & Gadgets"
+            "en": "Tech & Gadgets",
+            "cs": "Technologie a gadgety",
+            "de": "Technik & Gadgets"
         },
         "readTime": 4,
         "body": {
-            "en": "These apps work offline or with minimal data and can save your trip:\n\n**Flight tracking:**\n- **Flighty** — Real-time gate changes, delay predictions\n- **FlightAware** — Track any flight live on a map\n\n**Navigation:**\n- **Google Maps** — Download offline maps before departure\n- **Citymapper** — Best for public transit in layover cities\n\n**Communication:**\n- **WhatsApp** — Works on airport Wi-Fi everywhere\n- **Google Translate** — Download language packs offline\n\n**Organization:**\n- **TripIt** — Automatically organizes confirmation emails into an itinerary\n- **PackPoint** — Suggests packing lists based on your trip\n\n**Entertainment:**\n- **Spotify/Podcasts** — Download playlists before departure\n- **Kindle** — Lighter than a paperback, holds hundreds of books\n\nDownload everything you need before leaving home Wi-Fi."
+            "en": "These apps work offline or with minimal data and can save your trip:\n\n**Flight tracking:**\n- **Flighty** — Real-time gate changes, delay predictions\n- **FlightAware** — Track any flight live on a map\n\n**Navigation:**\n- **Google Maps** — Download offline maps before departure\n- **Citymapper** — Best for public transit in layover cities\n\n**Communication:**\n- **WhatsApp** — Works on airport Wi-Fi everywhere\n- **Google Translate** — Download language packs offline\n\n**Organization:**\n- **TripIt** — Automatically organizes confirmation emails into an itinerary\n- **PackPoint** — Suggests packing lists based on your trip\n\n**Entertainment:**\n- **Spotify/Podcasts** — Download playlists before departure\n- **Kindle** — Lighter than a paperback, holds hundreds of books\n\nDownload everything you need before leaving home Wi-Fi.",
+            "cs": "Tyto aplikace fungují offline nebo s minimem dat a často zachrání cestu:\n\n**Sledování letů:**\n- **Flighty** — změny gate v reálném čase, predikce zpoždění\n- **FlightAware** — živé sledování letů na mapě\n\n**Navigace:**\n- **Google Maps** — stáhni offline mapy před odletem\n- **Citymapper** — skvělé MHD při přestupech\n\n**Komunikace:**\n- **WhatsApp** — funguje téměř všude přes letištní Wi‑Fi\n- **Google Translate** — stáhni jazykové balíčky offline\n\n**Organizace:**\n- **TripIt** — skládá potvrzení do jednoho itineráře\n- **PackPoint** — navrhne seznam věcí k zabalení\n\n**Zábava:**\n- **Spotify/Podcasts** — stáhni playlisty dopředu\n- **Kindle** — stovky knih bez váhy navíc\n\nVše důležité stahuj ještě doma na stabilní Wi‑Fi.",
+            "de": "Diese Apps funktionieren offline oder mit wenig Daten und helfen unterwegs enorm:\n\n**Flugtracking:**\n- **Flighty** — Gate-Änderungen live, Delay-Prognosen\n- **FlightAware** — jeden Flug live auf der Karte verfolgen\n\n**Navigation:**\n- **Google Maps** — Offline-Karten vor Abflug laden\n- **Citymapper** — ideal für ÖPNV in Umstiegsstädten\n\n**Kommunikation:**\n- **WhatsApp** — funktioniert gut über Flughafen-WLAN\n- **Google Translate** — Sprachpakete offline herunterladen\n\n**Organisation:**\n- **TripIt** — bündelt Buchungsbestätigungen zum Reiseplan\n- **PackPoint** — erstellt Packlisten passend zur Reise\n\n**Entertainment:**\n- **Spotify/Podcasts** — Playlists vorher downloaden\n- **Kindle** — hunderte Bücher ohne Zusatzgewicht\n\nAlles Wichtige am besten vorab im Heim-WLAN laden."
         }
     },
     {
         "id": "power-bank-guide",
         "title": {
-            "en": "Power Bank Guide: Stay Charged in the Air"
+            "en": "Power Bank Guide: Stay Charged in the Air",
+            "cs": "Powerbank průvodce: zůstaň nabitý i ve vzduchu",
+            "de": "Powerbank-Guide: Auch in der Luft geladen bleiben"
         },
         "category": {
-            "en": "Tech & Gadgets"
+            "en": "Tech & Gadgets",
+            "cs": "Technologie a gadgety",
+            "de": "Technik & Gadgets"
         },
         "readTime": 3,
         "body": {
-            "en": "Running out of battery mid-flight is avoidable. Key facts about power banks for air travel:\n\n**Airline rules:**\n- Must be in carry-on (never checked luggage).\n- Max 100 Wh (about 27,000 mAh at 3.7V) per bank without approval.\n- Most airlines allow two power banks per passenger.\n\n**What to buy:**\n- 10,000 mAh — 2 full phone charges, pocket-sized\n- 20,000 mAh — 4+ charges, good for tablets too\n- Look for USB-C PD for fast charging\n\n**Tips:**\n- Charge your power bank fully the night before.\n- Use airplane mode on your phone to extend battery life significantly.\n- A short cable (15 cm) keeps things tidy in a cramped seat."
+            "en": "Running out of battery mid-flight is avoidable. Key facts about power banks for air travel:\n\n**Airline rules:**\n- Must be in carry-on (never checked luggage).\n- Max 100 Wh (about 27,000 mAh at 3.7V) per bank without approval.\n- Most airlines allow two power banks per passenger.\n\n**What to buy:**\n- 10,000 mAh — 2 full phone charges, pocket-sized\n- 20,000 mAh — 4+ charges, good for tablets too\n- Look for USB-C PD for fast charging\n\n**Tips:**\n- Charge your power bank fully the night before.\n- Use airplane mode on your phone to extend battery life significantly.\n- A short cable (15 cm) keeps things tidy in a cramped seat.",
+            "cs": "Vybitá baterie během letu je zbytečný problém. Co je dobré vědět:\n\n**Pravidla aerolinek:**\n- Powerbanky musí být v příručním zavazadle (ne v odbaveném).\n- Bez schválení bývá limit 100 Wh (cca 27 000 mAh při 3,7 V).\n- Většina aerolinek povolí dvě powerbanky na osobu.\n\n**Co koupit:**\n- 10 000 mAh — asi 2 nabití telefonu, kapesní velikost\n- 20 000 mAh — 4+ nabití, vhodné i pro tablet\n- Hledej USB-C PD pro rychlé nabíjení\n\n**Tipy:**\n- Powerbanku nabij naplno večer před odletem.\n- Zapni v telefonu režim Letadlo, výrazně prodlouží výdrž.\n- Krátký kabel (cca 15 cm) je praktičtější v těsném sedadle.",
+            "de": "Ein leerer Akku im Flug ist vermeidbar. Die wichtigsten Punkte:\n\n**Airline-Regeln:**\n- Powerbanks gehören ins Handgepäck, nie ins Aufgabegepäck.\n- Ohne Freigabe gilt meist max. 100 Wh (ca. 27.000 mAh bei 3,7 V).\n- Viele Airlines erlauben zwei Powerbanks pro Person.\n\n**Was sinnvoll ist:**\n- 10.000 mAh — etwa 2 volle Handy-Ladungen, taschentauglich\n- 20.000 mAh — 4+ Ladungen, auch gut für Tablets\n- USB-C PD für schnelles Laden bevorzugen\n\n**Tipps:**\n- Powerbank am Vorabend vollständig laden.\n- Flugmodus am Handy spart deutlich Akku.\n- Ein kurzes Kabel (ca. 15 cm) ist im engen Sitz praktischer."
         }
     },
     {
@@ -297,27 +363,39 @@
     {
         "id": "black-box",
         "title": {
-            "en": "How Black Boxes Work"
+            "en": "How Black Boxes Work",
+            "cs": "Jak fungují černé skříňky",
+            "de": "Wie Black Boxes funktionieren"
         },
         "category": {
-            "en": "Fun Facts"
+            "en": "Fun Facts",
+            "cs": "Zajímavosti",
+            "de": "Wissenswertes"
         },
         "readTime": 4,
         "body": {
-            "en": "Every commercial airplane carries two \"black boxes\" — and they're actually bright orange.\n\n**Flight Data Recorder (FDR):**\nRecords 88+ parameters: altitude, speed, heading, engine thrust, control surface positions, and more. It stores the last 25 hours of flight data.\n\n**Cockpit Voice Recorder (CVR):**\nRecords ambient sounds in the cockpit plus radio communications. It loops every 2 hours, keeping only the most recent recording.\n\n**How they survive crashes:**\n- Housed in titanium or stainless steel\n- Can withstand 3,400 G of impact force\n- Survive temperatures of 1,100°C for 30 minutes\n- Can transmit underwater locator beacon for 30+ days\n- Waterproof to 6,000 meters depth\n\n**Why are they called black boxes?**\nNo one's sure. Early flight recorders may have had dark casings, or the term may come from engineering jargon for any sealed unit with unknown internals.\n\nThey're one of aviation's most critical safety tools — helping investigators understand exactly what happens in every incident."
+            "en": "Every commercial airplane carries two \"black boxes\" — and they're actually bright orange.\n\n**Flight Data Recorder (FDR):**\nRecords 88+ parameters: altitude, speed, heading, engine thrust, control surface positions, and more. It stores the last 25 hours of flight data.\n\n**Cockpit Voice Recorder (CVR):**\nRecords ambient sounds in the cockpit plus radio communications. It loops every 2 hours, keeping only the most recent recording.\n\n**How they survive crashes:**\n- Housed in titanium or stainless steel\n- Can withstand 3,400 G of impact force\n- Survive temperatures of 1,100°C for 30 minutes\n- Can transmit underwater locator beacon for 30+ days\n- Waterproof to 6,000 meters depth\n\n**Why are they called black boxes?**\nNo one's sure. Early flight recorders may have had dark casings, or the term may come from engineering jargon for any sealed unit with unknown internals.\n\nThey're one of aviation's most critical safety tools — helping investigators understand exactly what happens in every incident.",
+            "cs": "Každé dopravní letadlo má dvě „černé skříňky“ — ve skutečnosti jsou jasně oranžové.\n\n**Flight Data Recorder (FDR):**\nUkládá desítky letových parametrů (výška, rychlost, směr, tah motoru, polohy řízení) a drží přibližně posledních 25 hodin dat.\n\n**Cockpit Voice Recorder (CVR):**\nNahrává zvuky v kokpitu a rádiovou komunikaci. Přepisuje se v cyklu a drží poslední záznam.\n\n**Jak přežijí nehodu:**\n- titanové nebo ocelové pouzdro\n- odolnost proti extrémnímu přetížení\n- odolnost proti vysoké teplotě\n- podvodní lokátor na desítky dní\n\n**Proč „černé“ skříňky?**\nPůvod názvu není jistý. Možná šlo o starší tmavé kryty, nebo o technický slang.\n\nJsou to klíčové bezpečnostní nástroje, které pomáhají přesně rekonstruovat průběh incidentů.",
+            "de": "Jedes Verkehrsflugzeug hat zwei „Black Boxes“ — und sie sind in Wirklichkeit leuchtend orange.\n\n**Flight Data Recorder (FDR):**\nSpeichert viele Flugparameter wie Höhe, Geschwindigkeit, Kurs, Schub und Steuerflächenpositionen; typischerweise die letzten 25 Flugstunden.\n\n**Cockpit Voice Recorder (CVR):**\nNimmt Cockpit-Geräusche und Funkverkehr auf und überschreibt in Zyklen ältere Daten.\n\n**Warum sie Abstürze überstehen:**\n- Gehäuse aus Titan oder Edelstahl\n- hohe Stoßfestigkeit\n- hohe Hitzebeständigkeit\n- Unterwasser-Ortungssender für viele Tage\n\n**Warum heißen sie Black Boxes?**\nDie Herkunft ist nicht eindeutig. Möglicherweise wegen früher dunkler Gehäuse oder aus dem Ingenieurjargon.\n\nSie sind eines der wichtigsten Sicherheitswerkzeuge der Luftfahrt."
         }
     },
     {
         "id": "fastest-routes",
         "title": {
-            "en": "The Fastest Commercial Flight Routes in the World"
+            "en": "The Fastest Commercial Flight Routes in the World",
+            "cs": "Nejrychlejší komerční letecké trasy na světě",
+            "de": "Die schnellsten kommerziellen Flugrouten der Welt"
         },
         "category": {
-            "en": "Fun Facts"
+            "en": "Fun Facts",
+            "cs": "Zajímavosti",
+            "de": "Wissenswertes"
         },
         "readTime": 3,
         "body": {
-            "en": "These are some of the world's most remarkable commercial routes:\n\n**Longest nonstop flights:**\n1. Singapore → New York (SIN–JFK): ~18h 40min, 15,349 km\n2. Auckland → Doha (AKL–DOH): ~17h 30min, 14,535 km\n3. Perth → London (PER–LHR): ~17h 15min, 14,499 km\n\n**Shortest scheduled flights:**\n1. Westray → Papa Westray (Scotland): 1.5 minutes, 2.7 km\n2. Vienna → Bratislava: ~45 minutes including taxi\n\n**Fastest commercial aircraft in service:**\nThe Boeing 747-8 and Airbus A350 cruise near Mach 0.855 (~1,050 km/h).\n\n**Fun records:**\n- Fastest transatlantic by subsonic jet: 4h 56min (NY→London, helped by jet stream)\n- The Concorde could do London→New York in 3h 30min at Mach 2.04\n\nJet streams regularly shave 30-60 minutes off eastbound flights — that's why flying to Europe from the US is faster than coming back."
+            "en": "These are some of the world's most remarkable commercial routes:\n\n**Longest nonstop flights:**\n1. Singapore → New York (SIN–JFK): ~18h 40min, 15,349 km\n2. Auckland → Doha (AKL–DOH): ~17h 30min, 14,535 km\n3. Perth → London (PER–LHR): ~17h 15min, 14,499 km\n\n**Shortest scheduled flights:**\n1. Westray → Papa Westray (Scotland): 1.5 minutes, 2.7 km\n2. Vienna → Bratislava: ~45 minutes including taxi\n\n**Fastest commercial aircraft in service:**\nThe Boeing 747-8 and Airbus A350 cruise near Mach 0.855 (~1,050 km/h).\n\n**Fun records:**\n- Fastest transatlantic by subsonic jet: 4h 56min (NY→London, helped by jet stream)\n- The Concorde could do London→New York in 3h 30min at Mach 2.04\n\nJet streams regularly shave 30-60 minutes off eastbound flights — that's why flying to Europe from the US is faster than coming back.",
+            "cs": "Některé komerční linky jsou opravdu mimořádné:\n\n**Nejdelší přímé lety:**\n1. Singapore → New York (SIN–JFK): cca 18 h 40 min\n2. Auckland → Doha (AKL–DOH): cca 17 h 30 min\n3. Perth → London (PER–LHR): cca 17 h 15 min\n\n**Nejkratší pravidelné lety:**\n1. Westray → Papa Westray (Skotsko): asi 1,5 minuty\n2. Vienna → Bratislava: zhruba 45 minut včetně pojíždění\n\n**Nejrychlejší dnešní dopravní letadla:**\nBoeing 747-8 a Airbus A350 létají kolem Mach 0,855.\n\n**Zajímavé rekordy:**\n- velmi rychlý transatlantik podzvukem díky jet streamu\n- Concorde zvládal London → New York kolem 3 h 30 min\n\nJet stream běžně zkracuje lety na východ i o 30–60 minut.",
+            "de": "Einige kommerzielle Routen sind wirklich außergewöhnlich:\n\n**Längste Nonstop-Flüge:**\n1. Singapore → New York (SIN–JFK): ca. 18 h 40 min\n2. Auckland → Doha (AKL–DOH): ca. 17 h 30 min\n3. Perth → London (PER–LHR): ca. 17 h 15 min\n\n**Kürzeste Linienflüge:**\n1. Westray → Papa Westray (Schottland): etwa 1,5 Minuten\n2. Vienna → Bratislava: rund 45 Minuten inkl. Rollen\n\n**Schnellste heutige Verkehrsflugzeuge:**\nBoeing 747-8 und Airbus A350 fliegen nahe Mach 0,855.\n\n**Spannende Rekorde:**\n- sehr schneller Transatlantikflug dank Jetstream\n- Concorde schaffte London → New York in ca. 3 h 30 min\n\nJetstreams verkürzen Ostflüge regelmäßig um 30–60 Minuten."
         }
     },
     {

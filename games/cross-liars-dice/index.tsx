@@ -1,5 +1,10 @@
 ﻿import { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, View as RNView } from "react-native";
+import {
+	Pressable,
+	ScrollView,
+	StyleSheet,
+	View as RNView,
+} from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
 import { Text, View } from "@/components/Themed";
@@ -12,10 +17,22 @@ import { useHaptic } from "@/hooks/useHaptic";
 const STARTING_DICE = 5;
 const FACES = [1, 2, 3, 4, 5, 6] as const;
 const DICE_EMOJI: Record<number, string> = {
-	1: "âš€", 2: "âš", 3: "âš‚", 4: "âš", 5: "âš„", 6: "âš…",
+	1: "⚀",
+	2: "⚁",
+	3: "⚂",
+	4: "⚃",
+	5: "⚄",
+	6: "⚅",
 };
 const MAX_PLAYERS = 6;
-const PLAYER_COLORS = ["#4FC3F7", "#FF8A65", "#81C784", "#CE93D8", "#FFD54F", "#4DD0E1"];
+const PLAYER_COLORS = [
+	"#4FC3F7",
+	"#FF8A65",
+	"#81C784",
+	"#CE93D8",
+	"#FFD54F",
+	"#4DD0E1",
+];
 
 type Phase = "setup" | "peek" | "bid" | "reveal" | "done";
 type Bid = { qty: number; face: number };
@@ -76,7 +93,7 @@ export default function CrossLiarsDiceGame() {
 		return dc.findIndex((c) => c > 0);
 	}
 
-	/* â”€â”€ actions â”€â”€ */
+	/* actions */
 	const startGame = () => {
 		const counts = Array(playerCount).fill(STARTING_DICE);
 		setDiceCounts(counts);
@@ -97,7 +114,7 @@ export default function CrossLiarsDiceGame() {
 		setShowingDice(false);
 		const next = nextActive(currentPeeker);
 		if (next === peekStartIndex) {
-			/* everyone has peeked â€” start bidding */
+			/* everyone has peeked — start bidding */
 			setCurrentBidder(peekStartIndex);
 			setPhase("bid");
 		} else {
@@ -174,7 +191,7 @@ export default function CrossLiarsDiceGame() {
 		setPlayerCount(2);
 	};
 
-	/* â”€â”€ SETUP â”€â”€ */
+	/* SETUP */
 	if (phase === "setup") {
 		return (
 			<View style={styles.container}>
@@ -216,14 +233,17 @@ export default function CrossLiarsDiceGame() {
 		);
 	}
 
-	/* â”€â”€ PEEK â”€â”€ */
+	/* PEEK */
 	if (phase === "peek") {
 		const pColor = PLAYER_COLORS[currentPeeker];
 		const myDice = allDice[currentPeeker] ?? [];
 		return (
 			<View style={styles.container}>
-				<Animated.View entering={FadeInDown.duration(300)} style={styles.center}>
-					<Text style={{ fontSize: 48, marginBottom: 12 }}>đźŽ˛</Text>
+				<Animated.View
+					entering={FadeInDown.duration(300)}
+					style={styles.center}
+				>
+					<Text style={{ fontSize: 48, marginBottom: 12 }}>🎲</Text>
 					<Text style={styles.title}>
 						{t("mpPlayerN", { n: currentPeeker + 1 })}
 					</Text>
@@ -233,7 +253,10 @@ export default function CrossLiarsDiceGame() {
 
 					{!showingDice ? (
 						<Pressable
-							onPress={() => { setShowingDice(true); haptic.tap(); }}
+							onPress={() => {
+								setShowingDice(true);
+								haptic.tap();
+							}}
 							style={[styles.primaryBtn, { backgroundColor: pColor }]}
 						>
 							<Text style={styles.primaryBtnText}>{t("ldPeek")}</Text>
@@ -256,7 +279,10 @@ export default function CrossLiarsDiceGame() {
 							</RNView>
 							<Pressable
 								onPress={peekDone}
-								style={[styles.primaryBtn, { backgroundColor: pColor, marginTop: 20 }]}
+								style={[
+									styles.primaryBtn,
+									{ backgroundColor: pColor, marginTop: 20 },
+								]}
 							>
 								<Text style={styles.primaryBtnText}>{t("passPhoneReady")}</Text>
 							</Pressable>
@@ -267,11 +293,14 @@ export default function CrossLiarsDiceGame() {
 		);
 	}
 
-	/* â”€â”€ BID â”€â”€ */
+	/* BID */
 	if (phase === "bid") {
 		const bColor = PLAYER_COLORS[currentBidder];
 		return (
-			<ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scrollContent}>
+			<ScrollView
+				style={{ flex: 1 }}
+				contentContainerStyle={styles.scrollContent}
+			>
 				<View style={styles.container}>
 					<Text style={styles.title}>{t("ldTitle")}</Text>
 					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
@@ -287,18 +316,35 @@ export default function CrossLiarsDiceGame() {
 									style={[
 										styles.countBox,
 										{
-											borderColor: i === currentBidder ? PLAYER_COLORS[i] : theme.border,
+											borderColor:
+												i === currentBidder ? PLAYER_COLORS[i] : theme.border,
 											borderWidth: i === currentBidder ? 2 : 1,
 										},
 									]}
 								>
-									<RNView style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
-									<Text style={styles.countNum}>{c}đźŽ˛</Text>
+									<RNView
+										style={[
+											styles.playerDot,
+											{ backgroundColor: PLAYER_COLORS[i] },
+										]}
+									/>
+									<Text style={styles.countNum}>{c}🎲</Text>
 								</RNView>
 							) : (
-								<RNView key={i} style={[styles.countBox, { borderColor: theme.border, opacity: 0.3 }]}>
-									<RNView style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
-									<Text style={styles.countNum}>đź’€</Text>
+								<RNView
+									key={i}
+									style={[
+										styles.countBox,
+										{ borderColor: theme.border, opacity: 0.3 },
+									]}
+								>
+									<RNView
+										style={[
+											styles.playerDot,
+											{ backgroundColor: PLAYER_COLORS[i] },
+										]}
+									/>
+									<Text style={styles.countNum}>💀</Text>
 								</RNView>
 							),
 						)}
@@ -315,8 +361,8 @@ export default function CrossLiarsDiceGame() {
 						</Text>
 						{currentBid ? (
 							<Text style={styles.bidValue}>
-								{currentBid.qty}Ă— {DICE_EMOJI[currentBid.face]}{" "}
-								({t("mpPlayerN", { n: lastBidder + 1 })})
+								{currentBid.qty}× {DICE_EMOJI[currentBid.face]} (
+								{t("mpPlayerN", { n: lastBidder + 1 })})
 							</Text>
 						) : (
 							<Text style={[styles.bidValue, { color: theme.mutedText }]}>
@@ -326,15 +372,23 @@ export default function CrossLiarsDiceGame() {
 					</RNView>
 
 					{/* Active bidder indicator */}
-					<RNView style={[styles.bidderTag, { backgroundColor: bColor + "22", borderColor: bColor }]}>
+					<RNView
+						style={[
+							styles.bidderTag,
+							{ backgroundColor: bColor + "22", borderColor: bColor },
+						]}
+					>
 						<Text style={[styles.bidderTagText, { color: bColor }]}>
-							{t("mpPlayerN", { n: currentBidder + 1 })} â€” {t("ldMyBid")}
+							{t("mpPlayerN", { n: currentBidder + 1 })} — {t("ldMyBid")}
 						</Text>
 					</RNView>
 
 					{/* Bid controls */}
 					<RNView
-						style={[styles.bidCard, { backgroundColor: theme.card, borderColor: bColor }]}
+						style={[
+							styles.bidCard,
+							{ backgroundColor: theme.card, borderColor: bColor },
+						]}
 					>
 						<RNView style={styles.spinnerRow}>
 							<Text style={styles.spinnerLabel}>{t("ldQuantity")}</Text>
@@ -342,7 +396,7 @@ export default function CrossLiarsDiceGame() {
 								onPress={() => setBidQty((q) => Math.max(1, q - 1))}
 								style={[styles.spinnerBtn, { borderColor: theme.border }]}
 							>
-								<Text style={styles.spinnerBtnText}>â’</Text>
+								<Text style={styles.spinnerBtnText}>−</Text>
 							</Pressable>
 							<Text style={styles.spinnerValue}>{bidQty}</Text>
 							<Pressable
@@ -373,7 +427,11 @@ export default function CrossLiarsDiceGame() {
 							onPress={placeBid}
 							style={[
 								styles.actionBtn,
-								{ backgroundColor: isValidBid(bidQty, bidFace) ? bColor : theme.mutedText },
+								{
+									backgroundColor: isValidBid(bidQty, bidFace)
+										? bColor
+										: theme.mutedText,
+								},
 							]}
 						>
 							<Text style={styles.actionBtnText}>{t("ldPlaceBid")}</Text>
@@ -386,7 +444,7 @@ export default function CrossLiarsDiceGame() {
 							onPress={callLiar}
 							style={[styles.liarBtn, { backgroundColor: "#ef5350" }]}
 						>
-							<Text style={styles.liarBtnText}>đź¤Ą {t("ldLiar")}</Text>
+							<Text style={styles.liarBtnText}>🤥 {t("ldLiar")}</Text>
 						</Pressable>
 					)}
 				</View>
@@ -394,7 +452,7 @@ export default function CrossLiarsDiceGame() {
 		);
 	}
 
-	/* â”€â”€ REVEAL â”€â”€ */
+	/* REVEAL */
 	if (phase === "reveal") {
 		return (
 			<View style={styles.container}>
@@ -404,8 +462,15 @@ export default function CrossLiarsDiceGame() {
 				{allDice.map((dice, i) =>
 					dice.length > 0 ? (
 						<RNView key={i} style={styles.revealPlayerRow}>
-							<RNView style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
-							<Text style={[styles.revealPlayerName, { color: PLAYER_COLORS[i] }]}>
+							<RNView
+								style={[
+									styles.playerDot,
+									{ backgroundColor: PLAYER_COLORS[i] },
+								]}
+							/>
+							<Text
+								style={[styles.revealPlayerName, { color: PLAYER_COLORS[i] }]}
+							>
 								{t("mpPlayerN", { n: i + 1 })}
 							</Text>
 							<RNView style={styles.diceRow}>
@@ -415,7 +480,8 @@ export default function CrossLiarsDiceGame() {
 										style={[
 											styles.dieBoxSmall,
 											{
-												backgroundColor: d === currentBid?.face ? "#ff9800" : theme.card,
+												backgroundColor:
+													d === currentBid?.face ? "#ff9800" : theme.card,
 												borderColor: theme.border,
 											},
 										]}
@@ -431,21 +497,30 @@ export default function CrossLiarsDiceGame() {
 				{/* Bid reminder */}
 				{currentBid && (
 					<Text style={[styles.bidReminder, { color: theme.mutedText }]}>
-						{t("ldBidWas", { qty: currentBid.qty, face: DICE_EMOJI[currentBid.face] })}
+						{t("ldBidWas", {
+							qty: currentBid.qty,
+							face: DICE_EMOJI[currentBid.face],
+						})}
 					</Text>
 				)}
 
 				{/* Result */}
 				{revealResult && (
-					<Animated.View entering={ZoomIn.duration(300)} style={styles.resultCard}>
+					<Animated.View
+						entering={ZoomIn.duration(300)}
+						style={styles.resultCard}
+					>
 						<Text style={styles.resultTitle}>
-							{revealResult.liar ? "đź¤Ą " : "đź¤ "}
+							{revealResult.liar ? "🤥 " : "😤 "}
 							{currentBid
-								? `${currentBid.qty}Ă— ${DICE_EMOJI[currentBid.face]} â†’ ${t("ldActual")}: ${revealResult.total}`
+								? `${currentBid.qty}× ${DICE_EMOJI[currentBid.face]} → ${t("ldActual")}: ${revealResult.total}`
 								: ""}
 						</Text>
 						<Text
-							style={[styles.resultText, { color: PLAYER_COLORS[revealResult.loser] }]}
+							style={[
+								styles.resultText,
+								{ color: PLAYER_COLORS[revealResult.loser] },
+							]}
 						>
 							{t("mpPlayerN", { n: revealResult.loser + 1 })} {t("ldLosesDie")}
 						</Text>
@@ -461,12 +536,12 @@ export default function CrossLiarsDiceGame() {
 		);
 	}
 
-	/* â”€â”€ DONE â”€â”€ */
+	/* DONE */
 	if (phase === "done") {
 		const winner = diceCounts.findIndex((c) => c > 0);
 		return (
 			<View style={styles.container}>
-				<Text style={{ fontSize: 48, marginBottom: 12 }}>đźŹ†</Text>
+				<Text style={{ fontSize: 48, marginBottom: 12 }}>🏆</Text>
 				<Text style={styles.title}>
 					{t("dicePlayerWins", { player: String(winner + 1) })}
 				</Text>
@@ -476,13 +551,26 @@ export default function CrossLiarsDiceGame() {
 
 				<RNView style={styles.finalTable}>
 					{diceCounts.map((c, i) => (
-						<RNView key={i} style={[styles.finalRow, { borderColor: theme.border + "44" }]}>
-							<RNView style={[styles.playerDot, { backgroundColor: PLAYER_COLORS[i] }]} />
+						<RNView
+							key={i}
+							style={[styles.finalRow, { borderColor: theme.border + "44" }]}
+						>
+							<RNView
+								style={[
+									styles.playerDot,
+									{ backgroundColor: PLAYER_COLORS[i] },
+								]}
+							/>
 							<Text style={[styles.finalName, { color: theme.text }]}>
 								{t("mpPlayerN", { n: i + 1 })}
 							</Text>
-							<Text style={[styles.finalStatus, { color: c > 0 ? "#66bb6a" : "#ef5350" }]}>
-								{c > 0 ? "đźŹ†" : "đź’€"}
+							<Text
+								style={[
+									styles.finalStatus,
+									{ color: c > 0 ? "#66bb6a" : "#ef5350" },
+								]}
+							>
+								{c > 0 ? "🏆" : "💀"}
 							</Text>
 						</RNView>
 					))}
@@ -506,55 +594,155 @@ const styles = StyleSheet.create({
 	scrollContent: { alignItems: "center", paddingBottom: 30 },
 	center: { alignItems: "center" },
 	title: { fontSize: 22, fontWeight: "800", textAlign: "center" },
-	subtitle: { fontSize: 14, textAlign: "center", marginTop: 2, marginBottom: 12 },
+	subtitle: {
+		fontSize: 14,
+		textAlign: "center",
+		marginTop: 2,
+		marginBottom: 12,
+	},
 	/* setup */
 	countRow: { flexDirection: "row", gap: 10, marginBottom: 20 },
-	countBtn: { width: 48, height: 48, borderRadius: 12, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
+	countBtn: {
+		width: 48,
+		height: 48,
+		borderRadius: 12,
+		borderWidth: 1.5,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 	countBtnText: { fontSize: 20, fontWeight: "800" },
 	/* dice counts */
-	diceCountRow: { flexDirection: "row", gap: 8, marginBottom: 8, flexWrap: "wrap", justifyContent: "center" },
-	countBox: { borderWidth: 1, borderRadius: 10, paddingHorizontal: 10, paddingVertical: 6, alignItems: "center", flexDirection: "row", gap: 6 },
+	diceCountRow: {
+		flexDirection: "row",
+		gap: 8,
+		marginBottom: 8,
+		flexWrap: "wrap",
+		justifyContent: "center",
+	},
+	countBox: {
+		borderWidth: 1,
+		borderRadius: 10,
+		paddingHorizontal: 10,
+		paddingVertical: 6,
+		alignItems: "center",
+		flexDirection: "row",
+		gap: 6,
+	},
 	countNum: { fontSize: 16, fontWeight: "800" },
 	playerDot: { width: 10, height: 10, borderRadius: 5 },
 	diceInfo: { fontSize: 12, marginBottom: 8 },
 	/* dice display */
 	diceRow: { flexDirection: "row", gap: 8, marginBottom: 4, flexWrap: "wrap" },
-	dieBox: { width: 48, height: 48, borderRadius: 10, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
+	dieBox: {
+		width: 48,
+		height: 48,
+		borderRadius: 10,
+		borderWidth: 1.5,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 	dieText: { fontSize: 26 },
-	dieBoxSmall: { width: 36, height: 36, borderRadius: 8, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+	dieBoxSmall: {
+		width: 36,
+		height: 36,
+		borderRadius: 8,
+		borderWidth: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 	dieTextSmall: { fontSize: 20 },
 	/* bid */
 	bidSection: { alignItems: "center", marginVertical: 8 },
 	bidLabel: { fontSize: 13, fontWeight: "700" },
 	bidValue: { fontSize: 20, fontWeight: "800", marginTop: 2 },
 	bidReminder: { fontSize: 14, fontWeight: "600", marginTop: 10 },
-	bidderTag: { paddingHorizontal: 16, paddingVertical: 6, borderRadius: 10, borderWidth: 1.5, marginBottom: 8 },
+	bidderTag: {
+		paddingHorizontal: 16,
+		paddingVertical: 6,
+		borderRadius: 10,
+		borderWidth: 1.5,
+		marginBottom: 8,
+	},
 	bidderTagText: { fontSize: 14, fontWeight: "800" },
-	bidCard: { width: "90%", borderWidth: 1.5, borderRadius: 12, padding: 12, alignItems: "center", gap: 8 },
+	bidCard: {
+		width: "90%",
+		borderWidth: 1.5,
+		borderRadius: 12,
+		padding: 12,
+		alignItems: "center",
+		gap: 8,
+	},
 	spinnerRow: { flexDirection: "row", alignItems: "center", gap: 10 },
 	spinnerLabel: { fontSize: 13, fontWeight: "600" },
-	spinnerBtn: { width: 36, height: 36, borderRadius: 8, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+	spinnerBtn: {
+		width: 36,
+		height: 36,
+		borderRadius: 8,
+		borderWidth: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 	spinnerBtnText: { fontSize: 20, fontWeight: "700" },
-	spinnerValue: { fontSize: 22, fontWeight: "800", minWidth: 30, textAlign: "center" },
+	spinnerValue: {
+		fontSize: 22,
+		fontWeight: "800",
+		minWidth: 30,
+		textAlign: "center",
+	},
 	faceRow: { flexDirection: "row", gap: 6, marginVertical: 6 },
-	faceBtn: { width: 44, height: 44, borderRadius: 10, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
+	faceBtn: {
+		width: 44,
+		height: 44,
+		borderRadius: 10,
+		borderWidth: 1.5,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 	faceBtnText: { fontSize: 24 },
 	actionBtn: { paddingHorizontal: 24, paddingVertical: 10, borderRadius: 10 },
 	actionBtnText: { color: "#fff", fontSize: 15, fontWeight: "700" },
-	primaryBtn: { paddingHorizontal: 28, paddingVertical: 12, borderRadius: 12, marginTop: 8 },
+	primaryBtn: {
+		paddingHorizontal: 28,
+		paddingVertical: 12,
+		borderRadius: 12,
+		marginTop: 8,
+	},
 	primaryBtnText: { color: "#fff", fontSize: 16, fontWeight: "800" },
 	/* liar */
-	liarBtn: { paddingHorizontal: 36, paddingVertical: 14, borderRadius: 14, marginTop: 16 },
+	liarBtn: {
+		paddingHorizontal: 36,
+		paddingVertical: 14,
+		borderRadius: 14,
+		marginTop: 16,
+	},
 	liarBtnText: { color: "#fff", fontSize: 20, fontWeight: "900" },
 	/* reveal */
-	revealPlayerRow: { flexDirection: "row", alignItems: "center", gap: 8, marginVertical: 4, flexWrap: "wrap" },
+	revealPlayerRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 8,
+		marginVertical: 4,
+		flexWrap: "wrap",
+	},
 	revealPlayerName: { fontSize: 14, fontWeight: "700", minWidth: 70 },
 	resultCard: { alignItems: "center", marginTop: 16, gap: 8 },
 	resultTitle: { fontSize: 18, fontWeight: "700", textAlign: "center" },
 	resultText: { fontSize: 16, fontWeight: "800" },
 	/* done */
-	finalTable: { width: "100%", gap: 6, marginBottom: 16, paddingHorizontal: 16 },
-	finalRow: { flexDirection: "row", alignItems: "center", gap: 10, paddingVertical: 10, paddingHorizontal: 14, borderBottomWidth: 1 },
+	finalTable: {
+		width: "100%",
+		gap: 6,
+		marginBottom: 16,
+		paddingHorizontal: 16,
+	},
+	finalRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 10,
+		paddingVertical: 10,
+		paddingHorizontal: 14,
+		borderBottomWidth: 1,
+	},
 	finalName: { fontSize: 16, fontWeight: "700", flex: 1 },
 	finalStatus: { fontSize: 24 },
 });

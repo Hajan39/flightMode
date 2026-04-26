@@ -11,28 +11,7 @@ import type { TranslationKey } from "@/i18n/translations";
 import { useProfileStats } from "@/hooks/useProfileStats";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { achievements, type AchievementDef } from "@/data/achievements";
-
-const GAME_NAME_KEYS: Record<string, string> = {
-	memory: "gameMemoryName",
-	"tap-rush": "gameTapRushName",
-	"sky-math": "gameSkyMathName",
-	quiz: "gameQuizName",
-	reaction: "gameReactionName",
-	"runway-landing": "gameRunwayLandingName",
-	"cabin-call": "gameCabinCallName",
-	"air-traffic-control": "gameAirTrafficControlName",
-	"flight-path": "gameFlightPathName",
-	"sky-defense": "gameSkyDefenseName",
-	"stack-sort": "gameStackSortName",
-	"duel-tictactoe": "gameDuelTicTacToeName",
-	"duel-dice": "gameDuelDiceName",
-	"duel-connect4": "gameDuelConnect4Name",
-	"duel-emoji-find": "gameDuelEmojiFindName",
-	"duel-hangman": "gameDuelHangmanName",
-	"cross-air-radar": "gameCrossAirRadarName",
-	"cross-code-breaker": "gameCrossCodeBreakerName",
-	"cross-liars-dice": "gameCrossLiarsDiceName",
-};
+import { getGameById } from "@/data/games";
 
 export default function ProfileScreen() {
 	const colorScheme = useColorScheme();
@@ -44,7 +23,7 @@ export default function ProfileScreen() {
 
 	useEffect(() => {
 		clearNewUnlocked();
-	}, []);
+	}, [clearNewUnlocked]);
 
 	return (
 		<ScrollView
@@ -55,6 +34,9 @@ export default function ProfileScreen() {
 			<Animated.View entering={FadeInDown.duration(400).springify()}>
 				<Text style={[styles.sectionTitle, { color: theme.text }]}>
 					{t("profileStats")}
+				</Text>
+				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+					{t("profileStatsHint")}
 				</Text>
 				<View style={styles.statsGrid}>
 					<StatCard
@@ -110,6 +92,9 @@ export default function ProfileScreen() {
 						{stats.achievementsUnlocked}/{stats.achievementsTotal}
 					</Text>
 				</View>
+				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+					{t("profileAchievementsHint")}
+				</Text>
 				<View style={styles.achievementGrid}>
 					{achievements.map((a, i) => (
 						<AchievementBadge
@@ -130,6 +115,9 @@ export default function ProfileScreen() {
 					<Text style={[styles.sectionTitle, { color: theme.text }]}>
 						{t("profileHighScores")}
 					</Text>
+					<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+						{t("profileHighScoresHint")}
+					</Text>
 					{stats.topScores.map((entry, i) => (
 						<View
 							key={entry.gameId}
@@ -140,7 +128,7 @@ export default function ProfileScreen() {
 						>
 							<Text style={[styles.rank, { color: theme.tint }]}>#{i + 1}</Text>
 							<Text style={[styles.scoreName, { color: theme.text }]}>
-								{t(GAME_NAME_KEYS[entry.gameId] as never)}
+								{t(getGameById(entry.gameId)?.titleKey ?? "stackGame")}
 							</Text>
 							<Text style={[styles.scoreValue, { color: theme.tint }]}>
 								{entry.highScore}
@@ -161,7 +149,7 @@ export default function ProfileScreen() {
 					<Ionicons name="heart" size={20} color={theme.tint} />
 					<Text style={[styles.favoriteText, { color: theme.text }]}>
 						{t("profileFavorite")}:{" "}
-						{t(GAME_NAME_KEYS[stats.favoriteGameId] as never)}
+						{t(getGameById(stats.favoriteGameId)?.titleKey ?? "stackGame")}
 					</Text>
 				</View>
 			)}
@@ -245,7 +233,12 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		fontWeight: "700",
 		marginTop: 20,
-		marginBottom: 12,
+		marginBottom: 4,
+	},
+	sectionHint: {
+		fontSize: 12,
+		lineHeight: 16,
+		marginBottom: 10,
 	},
 	sectionHeader: {
 		flexDirection: "row",

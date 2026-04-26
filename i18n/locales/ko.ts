@@ -1,4 +1,4 @@
-export const ko = {
+﻿export const ko = {
 	tabsHome: "홈",
 	tabsGames: "게임",
 	tabsExplore: "탐색",
@@ -22,6 +22,7 @@ export const ko = {
 	themeCrazy: "크레이지",
 	yourFlight: "내 항공편",
 	remainingTime: "{{hours}}시간 {{minutes}}분 남음",
+	arrivalTime: "도착 {{time}}",
 	recommendationLong: "긴 비행이 예정되어 있습니다. 콘텐츠나 휴식을 즐겨보세요",
 	recommendationMid: "빠른 게임을 하기 좋은 시간입니다!",
 	recommendationShort: "거의 도착했습니다. 스트레칭하고 휴식하세요.",
@@ -149,7 +150,7 @@ export const ko = {
 	rulesCodeBreaker:
 		"🎯 목표\n• 비밀 4자리 코드를 해독하세요!\n\n🔢 플레이 방법\n• 2~6명이 번갈아 추측.\n• 코드는 4개의 고유 숫자(0~9).\n• 매 추측 후 피드백:\n• 🟢 초록 핀 = 정확한 숫자, 정확한 위치.\n• 🟠 주황 핀 = 정확한 숫자, 잘못된 위치.\n• ⚫ 핀 없음 = 코드에 없는 숫자.\n\n🏆 점수\n• 적은 추측 = 더 많은 점수.\n• 먼저 코드를 해독하면 보너스!",
 	rulesLiarsDice:
-		"🎯 목표\n• 주사위가 남아있는 마지막 플레이어가 되세요!\n\n🎲 플레이 방법\n• 2~6명, 각자 주사위 5개로 시작.\n• 매 라운드 자신의 주사위를 비밀리 확인.\n• 플레이어가 번갈아 선언:\n→ \"테이블에 Y가 최소 X개 있다\"\n• 각 선언은 이전보다 높아야 합니다.\n• 선언이 거짓이라고 생각되면 \"거짓말!\"을 외치세요.\n\n🔍 공개\n• 선언이 거짓이면 → 선언자가 주사위 1개 잃음.\n• 사실이면 → 고발자가 주사위 1개 잃음.\n• 주사위를 모두 잃으면 = 탈락!\n\n🏆 마지막 남은 플레이어가 승리!",
+		'🎯 목표\n• 주사위가 남아있는 마지막 플레이어가 되세요!\n\n🎲 플레이 방법\n• 2~6명, 각자 주사위 5개로 시작.\n• 매 라운드 자신의 주사위를 비밀리 확인.\n• 플레이어가 번갈아 선언:\n→ "테이블에 Y가 최소 X개 있다"\n• 각 선언은 이전보다 높아야 합니다.\n• 선언이 거짓이라고 생각되면 "거짓말!"을 외치세요.\n\n🔍 공개\n• 선언이 거짓이면 → 선언자가 주사위 1개 잃음.\n• 사실이면 → 고발자가 주사위 1개 잃음.\n• 주사위를 모두 잃으면 = 탈락!\n\n🏆 마지막 남은 플레이어가 승리!',
 	skyDefenseTitle: "스카이 디펜스",
 	skyDefenseIntro:
 		"폭풍이 공항에 접근합니다!\n타워를 건설하여 활주로를 보호하세요.\n그리드에 타워를 배치하고 적을 처치하세요\n끝에 도달하기 전에.",
@@ -228,7 +229,7 @@ export const ko = {
 	rlGood: "좋음",
 	rlMiss: "실패",
 	rlFinished: "착륙 완료",
-	rlResult: "{{correct}} / {{total}} 라운드",
+	rlResult: "총 점수: {{score}}",
 	ccTime: "시간",
 	ccScore: "점수",
 	ccCmdSeatbelt: "안전벨트 착용",
@@ -754,4 +755,22 @@ export const ko = {
 	cbHandoffHint: "엿보지 마세요 — 본인만 화면을 봐야 해요",
 	cbNobodyCracked: "아무도 코드를 풀지 못했습니다!",
 	cbSecretWas: "비밀 코드는",
+	// Support
+	settingsSupport: "지원",
+	settingsSupportHint: "버그를 발견했거나 의견이 있으신가요? 알려주세요.",
+	settingsReportBug: "버그 신고",
+	settingsReportBugHint: "메일 앱을 엽니다",
+	settingsSuggestFeature: "기능 제안",
+	settingsSuggestFeatureHint: "아이디어를 환영합니다",
+	settingsVersion: "버전",
+	// Games
+	gamesEmptyTitle: "게임을 찾을 수 없습니다",
+	gamesEmptyHint: "다른 검색어를 입력하거나 필터를 제거해 보세요.",
+	difficultyEasy: "쉬움",
+	difficultyMedium: "보통",
+	difficultyHard: "어려움",
+	ccTimeUp: "시간 초과!",
+	ccTimeUpSubtitle: "연속: {{streak}} · 점수: {{score}}",
+	atcGameOver: "게임 오버",
+	atcGameOverSubtitle: "착륙: {{landed}} · 점수: {{score}}",
 } as const;

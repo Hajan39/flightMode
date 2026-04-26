@@ -52,9 +52,7 @@
       "fallbackToCacheTimeout": 0,
       "checkAutomatically": "ON_LOAD"
     },
-    "runtimeVersion": {
-      "policy": "fingerprint"
-    },
+    "runtimeVersion": "4b8a7964e8a7b6cfdb09dd47431f26fefc524597",
     "extra": {
       "router": {},
       "eas": {

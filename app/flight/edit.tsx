@@ -44,9 +44,10 @@ export default function FlightEditScreen() {
 			return;
 		}
 
+		// Editing an active flight should keep its timeline; only duration changes.
 		setFlight({
 			id: existingFlight?.id ?? Date.now().toString(),
-			departureTime: Date.now(),
+			departureTime: existingFlight?.departureTime ?? Date.now(),
 			duration: totalMinutes,
 		});
 		if (!existingFlight) incrementFlights();

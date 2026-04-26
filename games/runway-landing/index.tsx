@@ -247,10 +247,7 @@ export default function RunwayLandingGame() {
 				<GameResult
 					title={t("rlFinished")}
 					score={score}
-					subtitle={t("rlResult", {
-						correct: ROUND_COUNT,
-						total: ROUND_COUNT,
-					})}
+					subtitle={t("rlResult", { score })}
 					onPlayAgain={restart}
 				/>
 			)}

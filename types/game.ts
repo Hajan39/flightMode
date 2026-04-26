@@ -7,6 +7,8 @@ export type GameProgress = {
 
 export type GameCategory = "brain" | "reflex" | "strategy" | "multiplayer";
 
+export type GameDifficulty = "easy" | "medium" | "hard";
+
 export type GameConfig = {
 	id: string;
 	name: string;
@@ -14,4 +16,5 @@ export type GameConfig = {
 	estimatedTime: number; // minutes
 	icon: string; // Ionicons icon name
 	category: GameCategory;
+	difficulty: GameDifficulty;
 };

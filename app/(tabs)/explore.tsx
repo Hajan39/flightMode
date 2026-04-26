@@ -30,7 +30,17 @@ export default function ExploreScreen() {
 	const [activeCategory, setActiveCategory] = useState("");
 	const [sortMode, setSortMode] = useState<SortMode>("recommended");
 
-	const localizedArticles = articles.map((item) => ({
+	const languageReadyArticles = articles.filter((item) =>
+		language === "en"
+			? true
+			: Boolean(
+					item.title[language] &&
+						item.category[language] &&
+						item.body[language],
+				),
+	);
+
+	const localizedArticles = languageReadyArticles.map((item) => ({
 		...item,
 		titleText: getLocalizedText(item.title, language),
 		categoryText: getLocalizedText(item.category, language),
@@ -89,6 +99,9 @@ export default function ExploreScreen() {
 						style={[styles.searchInput, { color: theme.text }]}
 					/>
 				</View>
+				<Text style={[styles.toolsHint, { color: theme.mutedText }]}>
+					{t("exploreToolsHint")}
+				</Text>
 				<ScrollView
 					horizontal
 					showsHorizontalScrollIndicator={false}
@@ -216,6 +229,11 @@ const styles = StyleSheet.create({
 		borderRadius: 12,
 		paddingHorizontal: 10,
 		paddingVertical: 8,
+	},
+	toolsHint: {
+		fontSize: 12,
+		lineHeight: 16,
+		marginTop: -2,
 	},
 	searchInput: {
 		flex: 1,

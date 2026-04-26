@@ -1,4 +1,4 @@
-export const de = {
+﻿export const de = {
 	tabsHome: "Start",
 	tabsGames: "Spiele",
 	tabsExplore: "Entdecken",
@@ -22,6 +22,7 @@ export const de = {
 	themeCrazy: "Verrückt",
 	yourFlight: "Dein Flug",
 	remainingTime: "noch {{hours}} Std. {{minutes}} Min.",
+	arrivalTime: "Ankunft um {{time}}",
 	recommendationLong:
 		"Ein langer Flug liegt vor dir, probiere Inhalte oder Entspannung aus",
 	recommendationMid: "Perfekte Zeit für ein schnelles Spiel!",
@@ -237,7 +238,7 @@ export const de = {
 	rlGood: "GUT",
 	rlMiss: "DANEBEN",
 	rlFinished: "Landung abgeschlossen",
-	rlResult: "{{correct}} / {{total}} Runden",
+	rlResult: "Gesamtpunktzahl: {{score}}",
 	// Cabin Call
 	ccTime: "ZEIT",
 	ccScore: "PUNKTE",
@@ -789,4 +790,22 @@ export const de = {
 	cbHandoffHint: "Nicht spicken — nur du solltest den Bildschirm sehen",
 	cbNobodyCracked: "Niemand hat den Code geknackt!",
 	cbSecretWas: "Der Geheimcode war",
+	// Support
+	settingsSupport: "Support",
+	settingsSupportHint: "Fehler gefunden oder Feedback? Meld dich!",
+	settingsReportBug: "Fehler melden",
+	settingsReportBugHint: "Öffnet die Mail-App",
+	settingsSuggestFeature: "Feature vorschlagen",
+	settingsSuggestFeatureHint: "Ideen sind willkommen",
+	settingsVersion: "Version",
+	// Games
+	gamesEmptyTitle: "Keine Spiele gefunden",
+	gamesEmptyHint: "Andere Suche eingeben oder Filter entfernen.",
+	difficultyEasy: "Einfach",
+	difficultyMedium: "Mittel",
+	difficultyHard: "Schwer",
+	ccTimeUp: "Zeit abgelaufen!",
+	ccTimeUpSubtitle: "Serie: {{streak}} · Punkte: {{score}}",
+	atcGameOver: "Spiel vorbei",
+	atcGameOverSubtitle: "Gelandet: {{landed}} · Punkte: {{score}}",
 } as const;

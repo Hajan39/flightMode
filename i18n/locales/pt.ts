@@ -1,4 +1,4 @@
-export const pt = {
+﻿export const pt = {
 	tabsHome: "Início",
 	tabsGames: "Jogos",
 	tabsExplore: "Explorar",
@@ -21,6 +21,7 @@ export const pt = {
 	themeCrazy: "Louco",
 	yourFlight: "Seu voo",
 	remainingTime: "{{hours}}h {{minutes}}m restantes",
+	arrivalTime: "Chegada às {{time}}",
 	recommendationLong:
 		"Voo longo pela frente, experimente conteúdo ou relaxamento",
 	recommendationMid: "Bom momento para um jogo rápido!",
@@ -153,7 +154,7 @@ export const pt = {
 	rulesCodeBreaker:
 		"🎯 Objetivo\n• Decifre o código secreto de 4 dígitos!\n\n🔢 Como jogar\n• 2–6 jogadores se alternam para adivinhar.\n• O código tem 4 dígitos únicos (0–9).\n• Após cada tentativa, você recebe dicas:\n• 🟢 Pino verde = dígito correto na posição correta.\n• 🟠 Pino laranja = dígito correto, posição errada.\n• ⚫ Sem pino = dígito não está no código.\n\n🏆 Pontuação\n• Menos tentativas = mais pontos.\n• O primeiro a decifrar o código recebe um bônus!",
 	rulesLiarsDice:
-		"🎯 Objetivo\n• Seja o último jogador com dados restantes!\n\n🎲 Como jogar\n• 2–6 jogadores, cada um começa com 5 dados.\n• Cada rodada, veja seus dados em segredo.\n• Jogadores se alternam em apostas:\n→ \"Há pelo menos X dados mostrando Y\"\n• Cada aposta deve ser maior que a anterior.\n• Diga \"Mentiroso!\" se achar que a aposta é falsa.\n\n🔍 Revelação\n• Se a aposta era mentira → o apostador perde um dado.\n• Se era verdade → o acusador perde um dado.\n• Perdeu todos os dados = eliminado!\n\n🏆 Último jogador em pé vence!",
+		'🎯 Objetivo\n• Seja o último jogador com dados restantes!\n\n🎲 Como jogar\n• 2–6 jogadores, cada um começa com 5 dados.\n• Cada rodada, veja seus dados em segredo.\n• Jogadores se alternam em apostas:\n→ "Há pelo menos X dados mostrando Y"\n• Cada aposta deve ser maior que a anterior.\n• Diga "Mentiroso!" se achar que a aposta é falsa.\n\n🔍 Revelação\n• Se a aposta era mentira → o apostador perde um dado.\n• Se era verdade → o acusador perde um dado.\n• Perdeu todos os dados = eliminado!\n\n🏆 Último jogador em pé vence!',
 	skyDefenseTitle: "Defesa do céu",
 	skyDefenseIntro:
 		"Tempestades se aproximam do aeroporto!\nConstrua torres para proteger a pista.\nColoque torres na grade, elimine inimigos\nantes que alcancem o final.",
@@ -234,7 +235,7 @@ export const pt = {
 	rlGood: "BOM",
 	rlMiss: "ERROU",
 	rlFinished: "Pouso concluído",
-	rlResult: "{{correct}} / {{total}} rodadas",
+	rlResult: "Pontuação total: {{score}}",
 	ccTime: "TEMPO",
 	ccScore: "PONTUAÇÃO",
 	ccCmdSeatbelt: "Aperte o cinto",
@@ -770,4 +771,22 @@ export const pt = {
 	cbHandoffHint: "Não espie — só você deve ver a tela",
 	cbNobodyCracked: "Ninguém decifrou o código!",
 	cbSecretWas: "O código secreto era",
+	// Support
+	settingsSupport: "Suporte",
+	settingsSupportHint: "Encontrou um erro ou tem sugestões? Fale conosco.",
+	settingsReportBug: "Reportar bug",
+	settingsReportBugHint: "Abre o app de e-mail",
+	settingsSuggestFeature: "Sugerir funcionalidade",
+	settingsSuggestFeatureHint: "Ideias são bem-vindas",
+	settingsVersion: "Versão",
+	// Games
+	gamesEmptyTitle: "Nenhum jogo encontrado",
+	gamesEmptyHint: "Tente outra pesquisa ou limpe o filtro.",
+	difficultyEasy: "Fácil",
+	difficultyMedium: "Médio",
+	difficultyHard: "Difícil",
+	ccTimeUp: "Tempo esgotado!",
+	ccTimeUpSubtitle: "Sequência: {{streak}} · Pontos: {{score}}",
+	atcGameOver: "Fim de jogo",
+	atcGameOverSubtitle: "Pousados: {{landed}} · Pontos: {{score}}",
 } as const;

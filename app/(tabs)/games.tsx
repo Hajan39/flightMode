@@ -1,5 +1,10 @@
-import { useState } from "react";
-import { StyleSheet, FlatList, Pressable, ScrollView } from "react-native";
+import { useMemo, useState } from "react";
+import {
+	StyleSheet,
+	FlatList,
+	ScrollView,
+	TextInput,
+} from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -9,16 +14,9 @@ import AnimatedPressable from "@/components/AnimatedPressable";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
+import { gameRegistry } from "@/data/games";
 import { useGameStore } from "@/store/useGameStore";
-import type { GameConfig, GameCategory } from "@/types/game";
-
-const CATEGORY_ICONS: Record<"all" | GameCategory, string> = {
-	all: "apps-outline",
-	brain: "bulb-outline",
-	reflex: "flash-outline",
-	strategy: "map-outline",
-	multiplayer: "people-outline",
-};
+import type { GameConfig, GameCategory, GameDifficulty } from "@/types/game";
 
 const CATEGORIES: ("all" | GameCategory)[] = [
 	"all",
@@ -27,6 +25,29 @@ const CATEGORIES: ("all" | GameCategory)[] = [
 	"strategy",
 	"multiplayer",
 ];
+
+function getCategoryColor(category: GameCategory, colorScheme: "light" | "dark" | "crazy") {
+	if (colorScheme === "crazy") {
+		if (category === "brain") return "#c084fc";
+		if (category === "reflex") return "#fbbf24";
+		if (category === "strategy") return "#4ade80";
+		return "#22d3ee";
+	}
+	const isDark = colorScheme === "dark";
+	if (category === "brain") return isDark ? "#8b5cf6" : "#6d28d9";
+	if (category === "reflex") return isDark ? "#f59e0b" : "#d97706";
+	if (category === "strategy") return isDark ? "#22c55e" : "#15803d";
+	return isDark ? "#06b6d4" : "#0891b2";
+}
+
+function getDifficultyColor(
+	difficulty: GameDifficulty,
+	theme: (typeof Colors)[keyof typeof Colors],
+): string {
+	if (difficulty === "easy") return theme.successBorder;
+	if (difficulty === "medium") return theme.warning;
+	return "#ef4444";
+}
 
 export default function GamesScreen() {
 	const router = useRouter();
@@ -37,169 +58,75 @@ export default function GamesScreen() {
 	const [activeCategory, setActiveCategory] = useState<"all" | GameCategory>(
 		"all",
 	);
+	const [search, setSearch] = useState("");
 
-	const games: GameConfig[] = [
-		{
-			id: "memory",
-			name: t("gameMemoryName"),
-			description: t("gameMemoryListDescription"),
-			estimatedTime: 10,
-			icon: "grid-outline",
-			category: "brain",
-		},
-		{
-			id: "tap-rush",
-			name: t("gameTapRushName"),
-			description: t("gameTapRushDescription"),
-			estimatedTime: 2,
-			icon: "finger-print-outline",
-			category: "reflex",
-		},
-		{
-			id: "sky-math",
-			name: t("gameSkyMathName"),
-			description: t("gameSkyMathDescription"),
-			estimatedTime: 3,
-			icon: "calculator-outline",
-			category: "brain",
-		},
-		{
-			id: "quiz",
-			name: t("gameQuizName"),
-			description: t("gameQuizDescription"),
-			estimatedTime: 4,
-			icon: "help-circle-outline",
-			category: "brain",
-		},
-		{
-			id: "reaction",
-			name: t("gameReactionName"),
-			description: t("gameReactionDescription"),
-			estimatedTime: 1,
-			icon: "flash-outline",
-			category: "reflex",
-		},
-		{
-			id: "runway-landing",
-			name: t("gameRunwayLandingName"),
-			description: t("gameRunwayLandingDescription"),
-			estimatedTime: 2,
-			icon: "airplane-outline",
-			category: "reflex",
-		},
-		{
-			id: "cabin-call",
-			name: t("gameCabinCallName"),
-			description: t("gameCabinCallDescription"),
-			estimatedTime: 3,
-			icon: "megaphone-outline",
-			category: "reflex",
-		},
-		{
-			id: "air-traffic-control",
-			name: t("gameAirTrafficControlName"),
-			description: t("gameAirTrafficControlDescription"),
-			estimatedTime: 12,
-			icon: "navigate-outline",
-			category: "strategy",
-		},
-		{
-			id: "flight-path",
-			name: t("gameFlightPathName"),
-			description: t("gameFlightPathDescription"),
-			estimatedTime: 8,
-			icon: "map-outline",
-			category: "strategy",
-		},
-		{
-			id: "sky-defense",
-			name: t("gameSkyDefenseName"),
-			description: t("gameSkyDefenseDescription"),
-			estimatedTime: 10,
-			icon: "shield-outline",
-			category: "strategy",
-		},
-		{
-			id: "stack-sort",
-			name: t("gameStackSortName"),
-			description: t("gameStackSortDescription"),
-			estimatedTime: 5,
-			icon: "layers-outline",
-			category: "brain",
-		},
-		{
-			id: "duel-tictactoe",
-			name: t("gameDuelTicTacToeName"),
-			description: t("gameDuelTicTacToeDescription"),
-			estimatedTime: 4,
-			icon: "people-outline",
-			category: "multiplayer",
-		},
-		{
-			id: "duel-dice",
-			name: t("gameDuelDiceName"),
-			description: t("gameDuelDiceDescription"),
-			estimatedTime: 3,
-			icon: "dice-outline",
-			category: "multiplayer",
-		},
-		{
-			id: "duel-connect4",
-			name: t("gameDuelConnect4Name"),
-			description: t("gameDuelConnect4Description"),
-			estimatedTime: 5,
-			icon: "apps-outline",
-			category: "multiplayer",
-		},
-		{
-			id: "duel-emoji-find",
-			name: t("gameDuelEmojiFindName"),
-			description: t("gameDuelEmojiFindDescription"),
-			estimatedTime: 4,
-			icon: "search-outline",
-			category: "multiplayer",
-		},
-		{
-			id: "duel-hangman",
-			name: t("gameDuelHangmanName"),
-			description: t("gameDuelHangmanDescription"),
-			estimatedTime: 5,
-			icon: "text-outline",
-			category: "multiplayer",
-		},
-		{
-			id: "cross-air-radar",
-			name: t("gameCrossAirRadarName"),
-			description: t("gameCrossAirRadarDescription"),
-			estimatedTime: 10,
-			icon: "radio-outline",
-			category: "multiplayer",
-		},
-		{
-			id: "cross-code-breaker",
-			name: t("gameCrossCodeBreakerName"),
-			description: t("gameCrossCodeBreakerDescription"),
-			estimatedTime: 8,
-			icon: "lock-open-outline",
-			category: "multiplayer",
-		},
-		{
-			id: "cross-liars-dice",
-			name: t("gameCrossLiarsDiceName"),
-			description: t("gameCrossLiarsDiceDescription"),
-			estimatedTime: 6,
-			icon: "skull-outline",
-			category: "multiplayer",
-		},
-	];
+	const games: GameConfig[] = gameRegistry.map((game) => ({
+		id: game.id,
+		name: t(game.titleKey),
+		description: t(game.descriptionKey),
+		estimatedTime: game.estimatedTime,
+		icon: game.icon,
+		category: game.category,
+		difficulty: game.difficulty,
+	}));
 
-	const filteredGames =
-		activeCategory === "all"
-			? games
-			: games.filter((g) => g.category === activeCategory);
+	const filteredGames = useMemo(() => {
+		const query = search.trim().toLowerCase();
+		const inCategory =
+			activeCategory === "all"
+				? games
+				: games.filter((g) => g.category === activeCategory);
+
+		const searchedGames =
+			query.length === 0
+				? inCategory
+				: inCategory.filter(
+						(game) =>
+							game.name.toLowerCase().includes(query) ||
+							game.description.toLowerCase().includes(query),
+					);
+
+		return [...searchedGames].sort((a, b) => {
+			const aProgress = progress[a.id];
+			const bProgress = progress[b.id];
+
+			if (aProgress && !bProgress) return -1;
+			if (!aProgress && bProgress) return 1;
+
+			if (aProgress && bProgress) {
+				if (aProgress.lastPlayed !== bProgress.lastPlayed) {
+					return bProgress.lastPlayed - aProgress.lastPlayed;
+				}
+				if (aProgress.highScore !== bProgress.highScore) {
+					return bProgress.highScore - aProgress.highScore;
+				}
+			}
+
+			if (a.estimatedTime !== b.estimatedTime) {
+				return a.estimatedTime - b.estimatedTime;
+			}
+
+			return a.name.localeCompare(b.name);
+		});
+	}, [activeCategory, games, progress, search]);
 
 	return (
 		<View style={styles.container}>
+			<View
+				style={[
+					styles.searchWrap,
+					{ backgroundColor: theme.card, borderColor: theme.border },
+				]}
+			>
+				<Ionicons name="search" size={16} color={theme.mutedText} />
+				<TextInput
+					value={search}
+					onChangeText={setSearch}
+					placeholder={t("gamesSearchPlaceholder")}
+					placeholderTextColor={theme.mutedText}
+					style={[styles.searchInput, { color: theme.text }]}
+				/>
+			</View>
 			<ScrollView
 				horizontal
 				showsHorizontalScrollIndicator={false}
@@ -209,9 +136,10 @@ export default function GamesScreen() {
 				{CATEGORIES.map((cat) => {
 					const isActive = cat === activeCategory;
 					return (
-						<Pressable
+						<AnimatedPressable
 							key={cat}
 							onPress={() => setActiveCategory(cat)}
+							scaleTo={0.95}
 							style={[
 								styles.filterChip,
 								{
@@ -220,12 +148,6 @@ export default function GamesScreen() {
 								},
 							]}
 						>
-							<Ionicons
-								name={CATEGORY_ICONS[cat] as never}
-								size={16}
-								color={isActive ? "#fff" : theme.mutedText}
-								style={{ marginRight: 4 }}
-							/>
 							<Text
 								style={[
 									styles.filterChipText,
@@ -234,7 +156,7 @@ export default function GamesScreen() {
 							>
 								{t(`categoryFilter_${cat}`)}
 							</Text>
-						</Pressable>
+						</AnimatedPressable>
 					);
 				})}
 			</ScrollView>
@@ -242,8 +164,21 @@ export default function GamesScreen() {
 				data={filteredGames}
 				keyExtractor={(item) => item.id}
 				contentContainerStyle={styles.list}
+				ListEmptyComponent={
+					<View
+						style={[styles.emptyState, { borderColor: theme.border }]}
+						lightColor="transparent"
+						darkColor="transparent"
+					>
+						<Text style={styles.emptyTitle}>{t("gamesEmptyTitle")}</Text>
+						<Text style={[styles.emptyHint, { color: theme.mutedText }]}>
+							{t("gamesEmptyHint")}
+						</Text>
+					</View>
+				}
 				renderItem={({ item, index }) => {
 					const gameProgress = progress[item.id];
+					const categoryColor = getCategoryColor(item.category, colorScheme);
 					return (
 						<Animated.View entering={FadeInDown.delay(index * 60).springify()}>
 							<AnimatedPressable
@@ -253,10 +188,18 @@ export default function GamesScreen() {
 								]}
 								onPress={() => router.push(`/game/${item.id}` as never)}
 							>
+								<View
+									style={[
+										styles.cardAccent,
+										{ backgroundColor: categoryColor },
+									]}
+									lightColor="transparent"
+									darkColor="transparent"
+								/>
 								<Ionicons
 									name={item.icon as never}
 									size={32}
-									color={theme.tint}
+									color={categoryColor}
 								/>
 								<View
 									style={styles.cardContent}
@@ -267,12 +210,82 @@ export default function GamesScreen() {
 									<Text style={[styles.cardDesc, { color: theme.mutedText }]}>
 										{item.description}
 									</Text>
-									<Text style={[styles.cardMeta, { color: theme.mutedText }]}>
-										~{t("minutesShort", { minutes: item.estimatedTime })}
-										{gameProgress
-											? ` · ${t("bestScorePlayed", { score: gameProgress.highScore, times: gameProgress.timesPlayed })}`
-											: ""}
-									</Text>
+									<View
+										style={styles.metaRow}
+										lightColor="transparent"
+										darkColor="transparent"
+									>
+										<View
+											style={[
+												styles.metaChip,
+												{ backgroundColor: theme.surface },
+											]}
+											lightColor="transparent"
+											darkColor="transparent"
+										>
+											<Ionicons
+												name="time-outline"
+												size={12}
+												color={theme.mutedText}
+											/>
+											<Text
+												style={[
+													styles.metaChipText,
+													{ color: theme.mutedText },
+												]}
+											>
+												~{t("minutesShort", { minutes: item.estimatedTime })}
+											</Text>
+										</View>
+										<View
+											style={[
+												styles.metaChip,
+												{
+													backgroundColor: getDifficultyColor(
+														item.difficulty,
+														theme,
+													),
+												},
+											]}
+											lightColor="transparent"
+											darkColor="transparent"
+										>
+											<Text style={[styles.metaChipText, { color: "#fff" }]}>
+												{t(
+													`difficulty${item.difficulty.charAt(0).toUpperCase()}${item.difficulty.slice(1)}` as never,
+												)}
+											</Text>
+										</View>
+										{gameProgress ? (
+											<View
+												style={[
+													styles.metaChip,
+													{ backgroundColor: theme.accentSoft },
+												]}
+												lightColor="transparent"
+												darkColor="transparent"
+											>
+												<Ionicons
+													name="trophy-outline"
+													size={12}
+													color={theme.tint}
+												/>
+												<Text
+													style={[styles.metaChipText, { color: theme.tint }]}
+												>
+													{gameProgress.highScore}
+												</Text>
+											</View>
+										) : null}
+									</View>
+									{gameProgress ? (
+										<Text style={[styles.cardMeta, { color: theme.mutedText }]}>
+											{t("bestScorePlayed", {
+												score: gameProgress.highScore,
+												times: gameProgress.timesPlayed,
+											})}
+										</Text>
+									) : null}
 								</View>
 								<Ionicons
 									name="chevron-forward"
@@ -291,21 +304,48 @@ export default function GamesScreen() {
 const styles = StyleSheet.create({
 	container: { flex: 1 },
 	filterBarScroll: { flexGrow: 0 },
+	searchWrap: {
+		marginHorizontal: 16,
+		marginTop: 10,
+		marginBottom: 8,
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 8,
+		borderWidth: 1,
+		borderRadius: 12,
+		paddingHorizontal: 10,
+		minHeight: 44,
+		paddingVertical: 6,
+	},
+	searchInput: {
+		flex: 1,
+		fontSize: 14,
+		lineHeight: 20,
+		height: 22,
+		paddingVertical: 0,
+		textAlignVertical: "center",
+	},
 	filterBar: {
 		paddingHorizontal: 16,
-		paddingTop: 12,
+		paddingTop: 0,
 		paddingBottom: 8,
 		gap: 8,
 	},
 	filterChip: {
 		flexDirection: "row",
 		alignItems: "center",
-		paddingHorizontal: 12,
-		paddingVertical: 6,
+		paddingHorizontal: 10,
+		paddingVertical: 7,
+		minHeight: 34,
 		borderRadius: 20,
 		borderWidth: 1,
 	},
-	filterChipText: { fontSize: 13, fontWeight: "600" },
+	filterChipText: {
+		fontSize: 13,
+		fontWeight: "600",
+		lineHeight: 18,
+		includeFontPadding: false,
+	},
 	list: { padding: 16 },
 	card: {
 		flexDirection: "row",
@@ -314,9 +354,50 @@ const styles = StyleSheet.create({
 		borderRadius: 12,
 		borderWidth: 1,
 		marginBottom: 12,
+		overflow: "hidden",
+	},
+	cardAccent: {
+		position: "absolute",
+		left: 0,
+		top: 0,
+		bottom: 0,
+		width: 4,
 	},
 	cardContent: { flex: 1, marginLeft: 12 },
 	cardTitle: { fontSize: 18, fontWeight: "600" },
 	cardDesc: { fontSize: 14, color: "#666", marginTop: 2 },
 	cardMeta: { fontSize: 12, color: "#999", marginTop: 4 },
+	metaRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		flexWrap: "wrap",
+		gap: 8,
+		marginTop: 8,
+	},
+	metaChip: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 4,
+		paddingHorizontal: 8,
+		paddingVertical: 4,
+		borderRadius: 999,
+	},
+	metaChipText: {
+		fontSize: 11,
+		fontWeight: "700",
+	},
+	emptyState: {
+		marginTop: 8,
+		padding: 16,
+		borderRadius: 12,
+		borderWidth: 1,
+	},
+	emptyTitle: {
+		fontSize: 16,
+		fontWeight: "700",
+	},
+	emptyHint: {
+		fontSize: 13,
+		marginTop: 4,
+	},
 });

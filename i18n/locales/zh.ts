@@ -1,4 +1,4 @@
-export const zh = {
+﻿export const zh = {
 	tabsHome: "首页",
 	tabsGames: "游戏",
 	tabsExplore: "探索",
@@ -21,6 +21,7 @@ export const zh = {
 	themeCrazy: "疯狂",
 	yourFlight: "您的航班",
 	remainingTime: "剩余 {{hours}}小时 {{minutes}}分钟",
+	arrivalTime: "到达时间 {{time}}",
 	recommendationLong: "长途飞行，尝试一些内容或放松",
 	recommendationMid: "来一局快速游戏吧！",
 	recommendationShort: "快到了，伸展一下放松心情。",
@@ -146,7 +147,7 @@ export const zh = {
 	rulesCodeBreaker:
 		"🎯 目标\n• 破解4位数秘密代码！\n\n🔢 玩法\n• 2–6位玩家轮流猜测。\n• 代码有4个不同数字（0–9）。\n• 每次猜测后获得反馈：\n• 🟢 绿色钉 = 正确数字在正确位置。\n• 🟠 橙色钉 = 正确数字，错误位置。\n• ⚫ 无钉 = 该数字不在代码中。\n\n🏆 得分\n• 猜测次数越少 = 分数越高。\n• 最先破解代码的获得奖励！",
 	rulesLiarsDice:
-		"🎯 目标\n• 成为最后一个还有骰子的玩家！\n\n🎲 玩法\n• 2–6位玩家，每人从5个骰子开始。\n• 每轮秘密查看自己的骰子。\n• 玩家轮流出价：\n→ \"桌上至少有X个显示Y的骰子\"\n• 每次出价必须高于上一次。\n• 如果认为出价是假的，就喊\"骗子！\"\n\n🔍 揭示\n• 如果出价是假的 → 出价者失去一个骰子。\n• 如果是真的 → 质疑者失去一个骰子。\n• 失去所有骰子 = 淘汰！\n\n🏆 最后站立的玩家获胜！",
+		'🎯 目标\n• 成为最后一个还有骰子的玩家！\n\n🎲 玩法\n• 2–6位玩家，每人从5个骰子开始。\n• 每轮秘密查看自己的骰子。\n• 玩家轮流出价：\n→ "桌上至少有X个显示Y的骰子"\n• 每次出价必须高于上一次。\n• 如果认为出价是假的，就喊"骗子！"\n\n🔍 揭示\n• 如果出价是假的 → 出价者失去一个骰子。\n• 如果是真的 → 质疑者失去一个骰子。\n• 失去所有骰子 = 淘汰！\n\n🏆 最后站立的玩家获胜！',
 	skyDefenseTitle: "天空防御",
 	skyDefenseIntro:
 		"风暴逼近机场！\n建造防御塔保护跑道。\n在网格上放置防御塔，消灭敌人\n阻止它们到达终点。",
@@ -225,7 +226,7 @@ export const zh = {
 	rlGood: "不错",
 	rlMiss: "偏了",
 	rlFinished: "着陆完成",
-	rlResult: "{{correct}} / {{total}} 回合",
+	rlResult: "总分：{{score}}",
 	ccTime: "时间",
 	ccScore: "得分",
 	ccCmdSeatbelt: "系好安全带",
@@ -750,4 +751,22 @@ export const zh = {
 	cbHandoffHint: "别偷看——只有你能看屏幕",
 	cbNobodyCracked: "没有人破解了密码！",
 	cbSecretWas: "密码是",
+	// Support
+	settingsSupport: "支持",
+	settingsSupportHint: "发现错误或有建议？告诉我们。",
+	settingsReportBug: "报告错误",
+	settingsReportBugHint: "打开邮件应用",
+	settingsSuggestFeature: "建议功能",
+	settingsSuggestFeatureHint: "欢迎提出想法",
+	settingsVersion: "版本",
+	// Games
+	gamesEmptyTitle: "未找到游戏",
+	gamesEmptyHint: "请尝试不同的搜索词或清除分类筛选。",
+	difficultyEasy: "简单",
+	difficultyMedium: "中等",
+	difficultyHard: "困难",
+	ccTimeUp: "时间到！",
+	ccTimeUpSubtitle: "连击：{{streak}} · 分数：{{score}}",
+	atcGameOver: "游戏结束",
+	atcGameOverSubtitle: "已降落：{{landed}} · 分数：{{score}}",
 } as const;

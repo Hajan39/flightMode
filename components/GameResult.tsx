@@ -4,6 +4,8 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
+import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { Radius, Shadow, Spacing } from "@/constants/Spacing";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -58,38 +60,34 @@ const styles = StyleSheet.create({
 		...StyleSheet.absoluteFillObject,
 		justifyContent: "center",
 		alignItems: "center",
-		padding: 32,
+		padding: Spacing["4xl"],
 		zIndex: 10,
 		backgroundColor: "rgba(0,0,0,0.4)",
 	},
 	card: {
 		width: "100%",
-		borderRadius: 20,
+		borderRadius: Radius.modal,
 		borderWidth: 1,
-		padding: 28,
+		padding: Spacing["3xl"],
 		alignItems: "center",
-		gap: 8,
-		shadowColor: "#000",
-		shadowOffset: { width: 0, height: 4 },
-		shadowOpacity: 0.12,
-		shadowRadius: 12,
-		elevation: 8,
+		gap: Spacing.sm,
+		...Shadow.modal,
 	},
-	title: { fontSize: 22, fontWeight: "800", marginTop: 4 },
-	score: { fontSize: 48, fontWeight: "900", letterSpacing: -1 },
-	subtitle: { fontSize: 14, fontWeight: "600", textAlign: "center" },
+	title: { ...TextStyle.cardTitle, fontSize: FontSize["2xl"], marginTop: Spacing.xs },
+	score: { fontSize: FontSize["5xl"], fontWeight: FontWeight.black, letterSpacing: -1 },
+	subtitle: { fontSize: FontSize.base, fontWeight: FontWeight.semibold, textAlign: "center" },
 	button: {
 		flexDirection: "row",
 		alignItems: "center",
-		gap: 8,
-		paddingHorizontal: 28,
-		paddingVertical: 14,
-		borderRadius: 14,
-		marginTop: 12,
+		gap: Spacing.sm,
+		paddingHorizontal: Spacing["3xl"],
+		paddingVertical: Spacing.md,
+		borderRadius: Radius.button,
+		marginTop: Spacing.md,
 	},
 	buttonText: {
 		color: "#fff",
-		fontSize: 16,
-		fontWeight: "700",
+		fontSize: FontSize.md,
+		fontWeight: FontWeight.bold,
 	},
 });

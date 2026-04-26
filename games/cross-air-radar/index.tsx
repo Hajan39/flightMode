@@ -1,6 +1,6 @@
 ﻿import { useState } from "react";
 import { Dimensions, Pressable, StyleSheet } from "react-native";
-import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
+import Animated, { FadeInDown, SlideInRight, ZoomIn } from "react-native-reanimated";
 
 import { Text, View } from "@/components/Themed";
 import GameResult from "@/components/GameResult";
@@ -39,6 +39,7 @@ type Phase =
 	| "done";
 
 const COL = "ABCDEFGH";
+const ROW = ["1", "2", "3", "4", "5", "6", "7", "8"] as const;
 
 const blank = (): Cell[][] =>
 	Array.from({ length: GRID }, () => Array(GRID).fill("w") as Cell[]);
@@ -155,7 +156,7 @@ export default function CrossAirRadarGame() {
 
 		if (isHit) {
 			haptic.success();
-			setLastResult(`đź’Ą ${t("arHit")} â€” ${coord(r, c)}`);
+			setLastResult(`💥 ${t("arHit")} — ${coord(r, c)}`);
 			const setHits = currentPlayer === 1 ? setHitsP1 : setHitsP2;
 			const currentHits = currentPlayer === 1 ? hitsP1 : hitsP2;
 			const newHits = currentHits + 1;
@@ -168,7 +169,7 @@ export default function CrossAirRadarGame() {
 			}
 		} else {
 			haptic.tap();
-			setLastResult(`đź’¨ ${t("arMiss")} â€” ${coord(r, c)}`);
+			setLastResult(`\u{1F4A8} ${t("arMiss")} — ${coord(r, c)}`);
 		}
 
 		// Switch turns after a short delay
@@ -215,54 +216,61 @@ export default function CrossAirRadarGame() {
 					</View>
 				))}
 			</View>
-			{grid.map((row, r) => (
-				<View key={r} style={styles.gridRow}>
-					<View style={[styles.labelCell, { width: CELL, height: CELL }]}>
-						<Text style={[styles.labelText, { color: theme.mutedText }]}>
-							{r + 1}
-						</Text>
+			{ROW.map((rowLabel) => {
+				const r = Number(rowLabel) - 1;
+				const row = grid[r];
+
+				return (
+					<View key={`row-${rowLabel}`} style={styles.gridRow}>
+						<View style={[styles.labelCell, { width: CELL, height: CELL }]}>
+							<Text style={[styles.labelText, { color: theme.mutedText }]}>
+								{rowLabel}
+							</Text>
+						</View>
+						{COL.split("").map((colLabel) => {
+							const c = COL.indexOf(colLabel);
+							const cell = row[c];
+							let bg = theme.card;
+							let content: string | null = null;
+							let contentColor = "#fff";
+
+							if (showShips && cell === "s") bg = "#546e7a";
+							if (cell === "h") {
+								bg = "#ef5350";
+								content = "✕";
+							}
+							if (cell === "m") {
+								bg = theme.card;
+								content = "•";
+								contentColor = theme.mutedText;
+							}
+
+							return (
+								<Pressable
+									key={colLabel}
+									onPress={() => onTap(r, c)}
+									style={[
+										styles.cell,
+										{
+											width: CELL,
+											height: CELL,
+											backgroundColor: bg,
+											borderColor: theme.border,
+											borderWidth: 1,
+										},
+									]}
+								>
+									{content && (
+										<Text style={[styles.cellContent, { color: contentColor }]}>
+											{content}
+										</Text>
+									)}
+								</Pressable>
+							);
+						})}
 					</View>
-					{row.map((cell, c) => {
-						let bg = theme.card;
-						let content: string | null = null;
-						let contentColor = "#fff";
-
-						if (showShips && cell === "s") bg = "#546e7a";
-						if (cell === "h") {
-							bg = "#ef5350";
-							content = "âś•";
-						}
-						if (cell === "m") {
-							bg = theme.card;
-							content = "â€˘";
-							contentColor = theme.mutedText;
-						}
-
-						return (
-							<Pressable
-								key={c}
-								onPress={() => onTap(r, c)}
-								style={[
-									styles.cell,
-									{
-										width: CELL,
-										height: CELL,
-										backgroundColor: bg,
-										borderColor: theme.border,
-										borderWidth: 1,
-									},
-								]}
-							>
-								{content && (
-									<Text style={[styles.cellContent, { color: contentColor }]}>
-										{content}
-									</Text>
-								)}
-							</Pressable>
-						);
-					})}
-				</View>
-			))}
+				);
+			})}
 		</View>
 	);
 
@@ -273,14 +281,14 @@ export default function CrossAirRadarGame() {
 		return (
 			<View style={styles.container}>
 				<Animated.View
-					entering={FadeInDown.duration(300)}
+					entering={SlideInRight.duration(260)}
 					style={styles.passScreen}
 				>
-					<Text style={{ fontSize: 48, marginBottom: 16 }}>đź”’</Text>
+					<Text style={{ fontSize: 48, marginBottom: 16 }}>🎮</Text>
 					<Text style={styles.title}>{t("passPhone")}</Text>
 					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
 						{t("passPhoneTo", {
-							player: nextPlayer === 1 ? t("c4Player1") : t("c4Player2"),
+							player: t("mpPlayerN", { n: nextPlayer }),
 						})}
 					</Text>
 					<Text
@@ -310,8 +318,7 @@ export default function CrossAirRadarGame() {
 			<View style={styles.container}>
 				<Animated.View entering={FadeInDown.duration(300)}>
 					<Text style={styles.title}>
-						{playerNum === 1 ? t("c4Player1") : t("c4Player2")} â€”{" "}
-						{t("arSetupTitle")}
+						{t("mpPlayerN", { n: playerNum })} {"—"} {t("arSetupTitle")}
 					</Text>
 					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
 						{t("arSetupHint")}
@@ -358,7 +365,7 @@ export default function CrossAirRadarGame() {
 							]}
 						>
 							<Text style={styles.rotateBtnText}>
-								{horiz ? "â†’" : "â†“"} {t("arRotate")}
+								{horiz ? "→" : "↓"} {t("arRotate")}
 							</Text>
 						</Pressable>
 					</Animated.View>
@@ -392,7 +399,7 @@ export default function CrossAirRadarGame() {
 			<GameResult
 				title={t("arPlayerWins", { player: winLabel })}
 				score={Math.max(hitsP1, hitsP2) * 10}
-				subtitle={`${t("c4Player1")}: ${hitsP1} Â· ${t("c4Player2")}: ${hitsP2}`}
+				subtitle={`${t("c4Player1")}: ${hitsP1} · ${t("c4Player2")}: ${hitsP2}`}
 				onPlayAgain={restart}
 			/>
 		);

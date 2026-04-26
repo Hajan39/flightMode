@@ -233,7 +233,7 @@ export default function DuelEmojiFindGame() {
 
 	const pColor = (i: number) => PLAYER_COLORS[i % PLAYER_COLORS.length];
 
-	/* �� SETUP �� */
+	/* SETUP */
 	if (phase === "setup") {
 		return (
 			<View style={styles.root}>
@@ -278,7 +278,7 @@ export default function DuelEmojiFindGame() {
 		);
 	}
 
-	/* �� HANDOFF �� */
+	/* HANDOFF */
 	if (phase === "handoff") {
 		return (
 			<View style={styles.root}>
@@ -304,7 +304,7 @@ export default function DuelEmojiFindGame() {
 		);
 	}
 
-	/* �� FINISHED �� */
+	/* FINISHED */
 	if (phase === "finished") {
 		const maxScore = Math.max(...scores);
 		const winners = scores
@@ -343,7 +343,7 @@ export default function DuelEmojiFindGame() {
 		);
 	}
 
-	/* �� ROUND END �� */
+	/* ROUND END */
 	if (phase === "roundEnd") {
 		return (
 			<View style={styles.root}>
@@ -379,7 +379,7 @@ export default function DuelEmojiFindGame() {
 		);
 	}
 
-	/* �� PLAYING �� */
+	/* PLAYING */
 	const timerColor =
 		timeLeft <= 5 ? "#ef5350" : timeLeft <= 10 ? "#ffa726" : theme.text;
 	const curColor = pColor(currentPlayer);

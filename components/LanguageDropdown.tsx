@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
 		overflow: "hidden",
 	},
 	dropdownScroll: {
-		flex: 1,
+		flexShrink: 1,
 	},
 	option: {
 		flexDirection: "row",

@@ -8,8 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "update": "expo install --fix",
-    "ota:preview": "npx eas-cli update --channel preview --message",
-    "ota:production": "npx eas-cli update --channel production --message",
+    "ota:preview": "node ./scripts/eas-update-from-changelog.js preview",
+    "ota:production": "node ./scripts/eas-update-from-changelog.js production",
     "eas:build:android": "npx eas-cli build --platform android --profile production",
     "deploy:android": "npx eas-cli build --platform android --auto-submit --profile production",
     "eas:submit:android": "npx eas-cli submit --platform android --profile production"

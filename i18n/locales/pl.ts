@@ -1,4 +1,4 @@
-export const pl = {
+﻿export const pl = {
 	tabsHome: "Główna",
 	tabsGames: "Gry",
 	tabsExplore: "Odkrywaj",
@@ -21,6 +21,7 @@ export const pl = {
 	themeCrazy: "Szalony",
 	yourFlight: "Twój lot",
 	remainingTime: "pozostało {{hours}}h {{minutes}}m",
+	arrivalTime: "Przylot o {{time}}",
 	recommendationLong: "Długi lot przed tobą, wypróbuj treści lub relaks",
 	recommendationMid: "Dobry moment na szybką grę!",
 	recommendationShort: "Prawie na miejscu, rozciągnij się i zrelaksuj.",
@@ -232,7 +233,7 @@ export const pl = {
 	rlGood: "DOBRZE",
 	rlMiss: "PUDŁO",
 	rlFinished: "Lądowanie zakończone",
-	rlResult: "{{correct}} / {{total}} rund",
+	rlResult: "Łączny wynik: {{score}}",
 	ccTime: "CZAS",
 	ccScore: "WYNIK",
 	ccCmdSeatbelt: "Zapnij pasy",
@@ -771,4 +772,22 @@ export const pl = {
 	cbHandoffHint: "Nie podglądaj — tylko ty powinieneś widzieć ekran",
 	cbNobodyCracked: "Nikt nie złamał kodu!",
 	cbSecretWas: "Tajny kod to",
+	// Support
+	settingsSupport: "Wsparcie",
+	settingsSupportHint: "Znalazłeś błąd lub masz pomysł? Daj nam znać.",
+	settingsReportBug: "Zgłoś błąd",
+	settingsReportBugHint: "Otwiera klienta poczty",
+	settingsSuggestFeature: "Zaproponuj funkcję",
+	settingsSuggestFeatureHint: "Pomysły są mile widziane",
+	settingsVersion: "Wersja",
+	// Games
+	gamesEmptyTitle: "Nie znaleziono gier",
+	gamesEmptyHint: "Spróbuj innego wyszukiwania lub usuń filtr.",
+	difficultyEasy: "Łatwy",
+	difficultyMedium: "Średni",
+	difficultyHard: "Trudny",
+	ccTimeUp: "Czas minął!",
+	ccTimeUpSubtitle: "Seria: {{streak}} · Wynik: {{score}}",
+	atcGameOver: "Koniec gry",
+	atcGameOverSubtitle: "Wylądowało: {{landed}} · Wynik: {{score}}",
 } as const;

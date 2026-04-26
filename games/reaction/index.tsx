@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Alert, Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
@@ -34,12 +34,15 @@ export default function ReactionGame() {
 	const [lastMs, setLastMs] = useState<number | null>(null);
 	const [round, setRound] = useState(0);
 	const [results, setResults] = useState<number[]>([]);
+	const [tooEarly, setTooEarly] = useState(false);
+	const tooEarlyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const startedAtRef = useRef<number | null>(null);
 	const waitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	useEffect(() => {
 		return () => {
 			if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
+			if (tooEarlyTimer.current) clearTimeout(tooEarlyTimer.current);
 		};
 	}, []);
 
@@ -68,7 +71,9 @@ export default function ReactionGame() {
 			setRound(0);
 			setResults([]);
 			haptic.error();
-			Alert.alert(t("reactionTooEarlyTitle"), t("reactionTooEarlyMsg"));
+			setTooEarly(true);
+			if (tooEarlyTimer.current) clearTimeout(tooEarlyTimer.current);
+			tooEarlyTimer.current = setTimeout(() => setTooEarly(false), 1500);
 			return;
 		}
 
@@ -153,6 +158,18 @@ export default function ReactionGame() {
 				</View>
 			</View>
 
+			{/* ── Too early banner ── */}
+			{tooEarly && (
+				<View style={[styles.tooEarlyBanner, { backgroundColor: theme.card, borderColor: "#cc4b5a" }]}>
+					<Text style={[styles.tooEarlyTitle, { color: "#cc4b5a" }]}>
+						{t("reactionTooEarlyTitle")}
+					</Text>
+					<Text style={[styles.tooEarlyMsg, { color: theme.mutedText }]}>
+						{t("reactionTooEarlyMsg")}
+					</Text>
+				</View>
+			)}
+
 			{/* ── Main pad ── */}
 			<Pressable
 				style={[styles.pad, { backgroundColor: padColor }]}
@@ -199,4 +216,15 @@ const styles = StyleSheet.create({
 	},
 	padText: { fontSize: 30, fontWeight: "900", letterSpacing: 2 },
 	roundHint: { fontSize: 14, fontWeight: "700", marginTop: 8, opacity: 0.8 },
+	/* ── Too early ── */
+	tooEarlyBanner: {
+		borderWidth: 1.5,
+		borderRadius: 14,
+		paddingVertical: 12,
+		paddingHorizontal: 16,
+		alignItems: "center",
+		gap: 4,
+	},
+	tooEarlyTitle: { fontSize: 16, fontWeight: "900", letterSpacing: 0.5 },
+	tooEarlyMsg: { fontSize: 13, fontWeight: "600" },
 });
