@@ -10,20 +10,18 @@ import {
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import content from "@/data/content.json";
+import { useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
-import type { ContentItem } from "@/types/content";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-
-const articles = content as ContentItem[];
 
 export default function ContentDetailScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { language, t } = useTranslation();
 	const { id } = useLocalSearchParams<{ id: string }>();
+	const articles = useContentItems();
 	const article = articles.find((a) => a.id === id);
 	const markArticleRead = useAchievementStore((s) => s.markArticleRead);
 	const [hasFinishedArticle, setHasFinishedArticle] = useState(false);

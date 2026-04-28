@@ -15,11 +15,12 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P1 (blizsi iterace)
 
-- doplnit event coverage pro dalsi hlavni flows: settings, profile, content discovery, home recommendations
-- pridat Expo Network dependency a centralni online/offline helper
-- pripravit Strapi content sync contract: content version, article list, destination packs, remote config
-- implementovat content version check + safe fallback na bundled `data/content.json`
-- navrhnout local cache strukturu pro stazeny content a assety
+- vyuzit centralni online/offline stav pro budouci analytics flush debug a Strapi sync gating
+- publikovat prvni Strapi article data a potvrdit field contract: `title`, `category`, `body`, `readTime`/`read_time`
+- otestovat article sync na realnych Strapi datech; public `find/findOne` uz vraci `200`, ale `/api/articles` je zatim prazdne
+- neposilat tajny Strapi API token do mobilni appky; pouzivat public read Articles nebo serverovy proxy endpoint
+- overit UX sync nastaveni na Androidu: Wi-Fi only, Wi-Fi + mobile data, off
+- rozsirit local cache strategii pro vetsi article assety, pokud clanky zacnou pouzivat remote media
 - pripravit analytics QA/debug mode pro lokalni overeni eventu bez produkcniho sumu
 
 ### P2 (stredni horizont)

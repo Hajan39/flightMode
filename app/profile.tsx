@@ -1,17 +1,18 @@
-import { useEffect } from "react";
-import { StyleSheet, ScrollView } from "react-native";
-import Animated, { FadeInDown } from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
+import { useEffect } from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useTranslation } from "@/hooks/useTranslation";
-import type { TranslationKey } from "@/i18n/translations";
-import { useProfileStats } from "@/hooks/useProfileStats";
-import { useAchievementStore } from "@/store/useAchievementStore";
+import Colors from "@/constants/Colors";
 import { achievements, type AchievementDef } from "@/data/achievements";
 import { getGameById } from "@/data/games";
+import { useProfileStats } from "@/hooks/useProfileStats";
+import { useTranslation } from "@/hooks/useTranslation";
+import type { TranslationKey } from "@/i18n/translations";
+import { useAchievementStore } from "@/store/useAchievementStore";
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 export default function ProfileScreen() {
 	const colorScheme = useColorScheme();
@@ -24,6 +25,14 @@ export default function ProfileScreen() {
 	useEffect(() => {
 		clearNewUnlocked();
 	}, [clearNewUnlocked]);
+
+	useEffect(() => {
+		captureAnalyticsEvent("profile_open", {
+			games_played: stats.totalGamesPlayed,
+			articles_read: stats.articlesRead,
+			achievements_unlocked: stats.achievementsUnlocked,
+		});
+	}, [stats.totalGamesPlayed, stats.articlesRead, stats.achievementsUnlocked]);
 
 	return (
 		<ScrollView

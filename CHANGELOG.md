@@ -11,15 +11,23 @@ and this project adheres to Semantic Versioning.
 
 - Added a guarded PostHog analytics foundation for anonymous product events.
 - Added first analytics events for app open, onboarding, flight setup, games, articles, relax, and ambient audio.
+- Added an Expo Network foundation for online/offline status and anonymous connectivity-change analytics.
+- Added an article sync foundation with optional remote endpoint caching and bundled-content fallback.
+- Added an article sync network preference for Wi-Fi only, Wi-Fi plus mobile data, or off.
+- Added anonymous analytics coverage for Settings, Profile, Home quick actions, Home article recommendations, and Explore discovery controls.
 
 ### Changed
 
 - Reframed product documentation around FlightMode as an offline travel assistant plus entertainment system.
+- Compactly grouped Settings into app preferences, article sync, and support sections as the screen grows.
+- Kept Strapi scope explicit: remote sync is for articles only, while the rest of the app remains local-first.
+- Made article sync tolerate a Strapi root URL and empty public Articles responses while keeping bundled article fallback.
 - Updated privacy documentation for anonymous product analytics and future online sync behavior.
 
 ### Fixed
 
 - Repaired mojibake and broken symbols across cross-device game UIs and compact article content.
+- Completed UI translation key coverage across all supported app languages.
 
 
 ## [1.0.0] - 2026-04-23

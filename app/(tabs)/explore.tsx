@@ -1,24 +1,23 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-	StyleSheet,
 	FlatList,
 	Pressable,
-	TextInput,
 	ScrollView,
+	StyleSheet,
+	TextInput,
 } from "react-native";
-import { useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 
-import { Text, View } from "@/components/Themed";
 import AnimatedPressable from "@/components/AnimatedPressable";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
+import { useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
-import content from "@/data/content.json";
-import type { ContentItem } from "@/types/content";
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
-const articles = content as ContentItem[];
 type SortMode = "recommended" | "read-short" | "read-long" | "title";
 
 export default function ExploreScreen() {
@@ -26,9 +25,30 @@ export default function ExploreScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { language, t } = useTranslation();
+	const articles = useContentItems();
 	const [search, setSearch] = useState("");
 	const [activeCategory, setActiveCategory] = useState("");
 	const [sortMode, setSortMode] = useState<SortMode>("recommended");
+
+	const handleSearchChange = (value: string) => {
+		setSearch(value);
+		captureAnalyticsEvent("content_search_changed", {
+			has_query: value.trim().length > 0,
+			query_length: value.trim().length,
+		});
+	};
+
+	const handleCategoryChange = (category: string) => {
+		setActiveCategory(category);
+		captureAnalyticsEvent("content_filter_changed", {
+			filter_type: category === t("exploreAll") ? "all" : "category",
+		});
+	};
+
+	const handleSortChange = (mode: SortMode) => {
+		setSortMode(mode);
+		captureAnalyticsEvent("content_sort_changed", { sort_mode: mode });
+	};
 
 	const languageReadyArticles = articles.filter((item) =>
 		language === "en"
@@ -93,7 +113,7 @@ export default function ExploreScreen() {
 					<Ionicons name="search" size={16} color={theme.mutedText} />
 					<TextInput
 						value={search}
-						onChangeText={setSearch}
+						onChangeText={handleSearchChange}
 						placeholder={t("exploreSearchPlaceholder")}
 						placeholderTextColor={theme.mutedText}
 						style={[styles.searchInput, { color: theme.text }]}
@@ -118,7 +138,7 @@ export default function ExploreScreen() {
 										activeCategory === category ? theme.tint : theme.card,
 								},
 							]}
-							onPress={() => setActiveCategory(category)}
+							onPress={() => handleCategoryChange(category)}
 						>
 							<Text
 								style={[
@@ -152,7 +172,7 @@ export default function ExploreScreen() {
 										sortMode === item.key ? theme.tint : theme.elevated,
 								},
 							]}
-							onPress={() => setSortMode(item.key as SortMode)}
+							onPress={() => handleSortChange(item.key as SortMode)}
 						>
 							<Text
 								style={[

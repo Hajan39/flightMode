@@ -1,32 +1,30 @@
-import { useState, useEffect } from "react";
-import { StyleSheet, Pressable, ScrollView } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import { Pressable, ScrollView, StyleSheet } from "react-native";
 import Animated, {
+	Easing,
 	FadeInDown,
 	useAnimatedStyle,
 	useSharedValue,
 	withTiming,
-	Easing,
 } from "react-native-reanimated";
-import { useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 
-import { Text, View } from "@/components/Themed";
 import AnimatedPressable from "@/components/AnimatedPressable";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
+import { dailyChallengeGames, playTogetherGames } from "@/data/games";
+import { useContentItems } from "@/hooks/useContentItems";
+import { useProfileStats } from "@/hooks/useProfileStats";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
-import { dailyChallengeGames, playTogetherGames } from "@/data/games";
-import { useProfileStats } from "@/hooks/useProfileStats";
 import {
-	useFlightStore,
 	getFlightProgress,
 	getRemainingMinutes,
+	useFlightStore,
 } from "@/store/useFlightStore";
-import content from "@/data/content.json";
-import type { ContentItem } from "@/types/content";
-
-const articles = content as ContentItem[];
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 function getDayOfYear(date: Date) {
 	const start = new Date(date.getFullYear(), 0, 0);
@@ -43,6 +41,7 @@ export default function HomeScreen() {
 	const flight = useFlightStore((s) => s.flight);
 	const clearFlight = useFlightStore((s) => s.clearFlight);
 	const stats = useProfileStats();
+	const articles = useContentItems();
 	const [, setTick] = useState(0);
 
 	// Re-render every 30s to update progress
@@ -90,6 +89,21 @@ export default function HomeScreen() {
 		.slice(0, 2);
 	const challengeOfDay =
 		dailyChallengeGames[getDayOfYear(new Date()) % dailyChallengeGames.length];
+
+	const openHomeAction = (target: "games" | "explore" | "relax" | "profile") => {
+		captureAnalyticsEvent("home_action_open", { target });
+		router.push(
+			target === "profile" ? "/profile" : (`/(tabs)/${target}` as never),
+		);
+	};
+
+	const openHomeRecommendation = (articleId: string, category: string) => {
+		captureAnalyticsEvent("home_recommendation_open", {
+			article_id: articleId,
+			category,
+		});
+		router.push(`/content/${articleId}` as never);
+	};
 
 	return (
 		<ScrollView style={styles.scroll} contentContainerStyle={styles.container}>
@@ -184,7 +198,7 @@ export default function HomeScreen() {
 							styles.actionButton,
 							{ backgroundColor: theme.card, borderColor: theme.border },
 						]}
-						onPress={() => router.push("/(tabs)/games")}
+						onPress={() => openHomeAction("games")}
 					>
 						<Ionicons
 							name="game-controller-outline"
@@ -204,7 +218,7 @@ export default function HomeScreen() {
 							styles.actionButton,
 							{ backgroundColor: theme.card, borderColor: theme.border },
 						]}
-						onPress={() => router.push("/(tabs)/explore")}
+						onPress={() => openHomeAction("explore")}
 					>
 						<Ionicons name="compass-outline" size={28} color={theme.tint} />
 						<Text style={styles.actionLabel}>{t("explore")}</Text>
@@ -220,7 +234,7 @@ export default function HomeScreen() {
 							styles.actionButton,
 							{ backgroundColor: theme.card, borderColor: theme.border },
 						]}
-						onPress={() => router.push("/(tabs)/relax")}
+						onPress={() => openHomeAction("relax")}
 					>
 						<Ionicons name="leaf-outline" size={28} color={theme.tint} />
 						<Text style={styles.actionLabel}>{t("relax")}</Text>
@@ -289,7 +303,7 @@ export default function HomeScreen() {
 					</View>
 					<AnimatedPressable
 						style={[styles.profileCta, { borderColor: theme.border }]}
-						onPress={() => router.push("/profile")}
+						onPress={() => openHomeAction("profile")}
 					>
 						<Ionicons
 							name="person-circle-outline"
@@ -404,7 +418,9 @@ export default function HomeScreen() {
 							styles.featuredCard,
 							{ backgroundColor: theme.card, borderColor: theme.border },
 						]}
-						onPress={() => router.push(`/content/${article.id}` as never)}
+						onPress={() =>
+							openHomeRecommendation(article.id, article.category.en)
+						}
 					>
 						<View
 							lightColor="transparent"

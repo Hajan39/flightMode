@@ -11,6 +11,18 @@ export type AnalyticsEventName =
 	| "relax_finish"
 	| "audio_play"
 	| "audio_stop"
+	| "settings_open"
+	| "profile_open"
+	| "home_action_open"
+	| "home_recommendation_open"
+	| "content_search_changed"
+	| "content_filter_changed"
+	| "content_sort_changed"
+	| "network_status_changed"
+	| "content_sync_start"
+	| "content_sync_success"
+	| "content_sync_failed"
+	| "sync_network_policy_changed"
 	| "premium_view";
 
 export type AnalyticsProperties = Record<
