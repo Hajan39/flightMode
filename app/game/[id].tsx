@@ -1,14 +1,15 @@
-import { useLocalSearchParams } from "expo-router";
-import { Stack } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
+import { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
-import { useColorScheme } from "@/components/useColorScheme";
-import { useTranslation } from "@/hooks/useTranslation";
 import GameRules from "@/components/GameRules";
+import { Text, View } from "@/components/Themed";
+import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
 import { getGameById } from "@/data/games";
+import { useTranslation } from "@/hooks/useTranslation";
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 export default function GameScreen() {
 	const { id } = useLocalSearchParams<{ id: string }>();
@@ -27,6 +28,17 @@ export default function GameScreen() {
 		: { title: t("stackGame") };
 
 	const GameComponent = game ? game.loadComponent() : null;
+
+	useEffect(() => {
+		if (!game) return;
+
+		captureAnalyticsEvent("game_start", {
+			game_id: game.id,
+			category: game.category,
+			difficulty: game.difficulty,
+			estimated_minutes: game.estimatedTime,
+		});
+	}, [game]);
 
 	if (!GameComponent) {
 		return (

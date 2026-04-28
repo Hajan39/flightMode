@@ -1,17 +1,16 @@
-import { StyleSheet, ScrollView, Pressable, Linking } from "react-native";
-import Constants from "expo-constants";
 import { Ionicons } from "@expo/vector-icons";
+import Constants from "expo-constants";
+import { Linking, Pressable, ScrollView, StyleSheet } from "react-native";
 
-import { Text, View } from "@/components/Themed";
 import LanguageDropdown from "@/components/LanguageDropdown";
+import { Text, View } from "@/components/Themed";
 import ThemeDropdown from "@/components/ThemeDropdown";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const SUPPORT_EMAIL = "support@eon-app.com";
-const appVersion =
-	Constants.expoConfig?.version ?? Constants.manifest?.version ?? "1.0.0";
+const appVersion = Constants.expoConfig?.version ?? "1.0.0";
 
 export default function SettingsScreen() {
 	const colorScheme = useColorScheme();

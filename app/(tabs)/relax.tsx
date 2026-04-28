@@ -1,22 +1,23 @@
-import { useState, useEffect, useRef } from "react";
-import { StyleSheet, Pressable, ScrollView } from "react-native";
-import Animated, {
-	FadeInDown,
-	useAnimatedStyle,
-	useSharedValue,
-	withTiming,
-	Easing,
-} from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
+import { useEffect, useRef, useState } from "react";
+import { Pressable, ScrollView, StyleSheet } from "react-native";
+import Animated, {
+    Easing,
+    FadeInDown,
+    useAnimatedStyle,
+    useSharedValue,
+    withTiming,
+} from "react-native-reanimated";
 
-import { Text, View } from "@/components/Themed";
 import AnimatedPressable from "@/components/AnimatedPressable";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
-import { useAudioStore } from "@/store/useAudioStore";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useAudioStore } from "@/store/useAudioStore";
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 const BREATHING_PHASES = [
 	{ key: "breatheIn" as TranslationKey, duration: 4 },
@@ -128,18 +129,28 @@ export default function RelaxScreen() {
 			setIsActive(false);
 			setPhaseIndex(0);
 			setCountdown(BREATHING_PHASES[0].duration);
+			captureAnalyticsEvent("relax_finish", { exercise: "box_breathing" });
 		} else {
 			setIsActive(true);
 			incrementRelax();
+			captureAnalyticsEvent("relax_start", { exercise: "box_breathing" });
 		}
 	};
 
 	const toggleSoundscape = (scape: SoundscapeDef) => {
+		const isStoppingActiveSoundscape = activeSoundId === scape.id;
 		playSound(scape.id, scape.labelKey, scape.source);
 		markSoundPlayed(scape.id);
+		captureAnalyticsEvent(
+			isStoppingActiveSoundscape ? "audio_stop" : "audio_play",
+			{ sound_id: scape.id },
+		);
 	};
 
 	const stopActiveSoundscape = () => {
+		if (activeSoundId) {
+			captureAnalyticsEvent("audio_stop", { sound_id: activeSoundId });
+		}
 		stopSound();
 	};
 

@@ -7,6 +7,16 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+
+- Added a guarded PostHog analytics foundation for anonymous product events.
+- Added first analytics events for app open, onboarding, flight setup, games, articles, relax, and ambient audio.
+
+### Changed
+
+- Reframed product documentation around FlightMode as an offline travel assistant plus entertainment system.
+- Updated privacy documentation for anonymous product analytics and future online sync behavior.
+
 ### Fixed
 
 - Repaired mojibake and broken symbols across cross-device game UIs and compact article content.

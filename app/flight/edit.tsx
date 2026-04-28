@@ -1,22 +1,23 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-	StyleSheet,
-	TextInput,
-	Pressable,
-	Alert,
-	KeyboardAvoidingView,
-	Platform,
-	ScrollView,
+    Alert,
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    ScrollView,
+    StyleSheet,
+    TextInput,
 } from "react-native";
-import { useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
 import { useTranslation } from "@/hooks/useTranslation";
-import { useFlightStore } from "@/store/useFlightStore";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useFlightStore } from "@/store/useFlightStore";
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 export default function FlightEditScreen() {
 	const router = useRouter();
@@ -26,6 +27,7 @@ export default function FlightEditScreen() {
 	const setFlight = useFlightStore((s) => s.setFlight);
 	const existingFlight = useFlightStore((s) => s.flight);
 	const incrementFlights = useAchievementStore((s) => s.incrementFlights);
+	const isEditingFlight = Boolean(existingFlight);
 
 	const [hours, setHours] = useState(
 		existingFlight ? String(Math.floor(existingFlight.duration / 60)) : "",
@@ -51,6 +53,9 @@ export default function FlightEditScreen() {
 			duration: totalMinutes,
 		});
 		if (!existingFlight) incrementFlights();
+		captureAnalyticsEvent(isEditingFlight ? "flight_edited" : "flight_added", {
+			duration_minutes: totalMinutes,
+		});
 
 		router.back();
 	};

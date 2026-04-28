@@ -1,15 +1,21 @@
-import { useEffect } from "react";
-import { useLocalSearchParams, Stack } from "expo-router";
-import { StyleSheet, ScrollView } from "react-native";
+import { Stack, useLocalSearchParams } from "expo-router";
+import { useEffect, useState } from "react";
+import {
+    type NativeScrollEvent,
+    type NativeSyntheticEvent,
+    ScrollView,
+    StyleSheet,
+} from "react-native";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
+import content from "@/data/content.json";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
-import content from "@/data/content.json";
-import type { ContentItem } from "@/types/content";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import type { ContentItem } from "@/types/content";
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 const articles = content as ContentItem[];
 
@@ -20,10 +26,44 @@ export default function ContentDetailScreen() {
 	const { id } = useLocalSearchParams<{ id: string }>();
 	const article = articles.find((a) => a.id === id);
 	const markArticleRead = useAchievementStore((s) => s.markArticleRead);
+	const [hasFinishedArticle, setHasFinishedArticle] = useState(false);
 
 	useEffect(() => {
 		if (id) markArticleRead(id);
 	}, [id, markArticleRead]);
+
+	useEffect(() => {
+		setHasFinishedArticle(false);
+	}, [id]);
+
+	useEffect(() => {
+		if (!article) return;
+
+		captureAnalyticsEvent("article_open", {
+			article_id: article.id,
+			category: getLocalizedText(article.category, language),
+			read_time_minutes: article.readTime,
+			language,
+		});
+	}, [article, language]);
+
+	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+		if (!article || hasFinishedArticle) return;
+
+		const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
+		const isNearBottom =
+			contentOffset.y + layoutMeasurement.height >= contentSize.height - 48;
+
+		if (!isNearBottom) return;
+
+		setHasFinishedArticle(true);
+		captureAnalyticsEvent("article_finish", {
+			article_id: article.id,
+			category: getLocalizedText(article.category, language),
+			read_time_minutes: article.readTime,
+			language,
+		});
+	};
 
 	if (!article) {
 		return (
@@ -44,6 +84,8 @@ export default function ContentDetailScreen() {
 			<ScrollView
 				style={[styles.scroll, { backgroundColor: theme.background }]}
 				contentContainerStyle={styles.content}
+				onScroll={handleScroll}
+				scrollEventThrottle={250}
 			>
 				<Text style={[styles.category, { color: theme.tint }]}>
 					{getLocalizedText(article.category, language)}

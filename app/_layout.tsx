@@ -4,23 +4,27 @@ import {
 	ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import "expo-insights";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import "expo-insights";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { useColorScheme } from "@/components/useColorScheme";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useSettingsStore } from "@/store/useSettingsStore";
-import { useAchievementStore } from "@/store/useAchievementStore";
-import { useOTAUpdate } from "@/hooks/useOTAUpdate";
 import AchievementToast from "@/components/AchievementToast";
+import {
+	AnalyticsBootstrap,
+	AnalyticsProvider,
+} from "@/components/AnalyticsProvider";
+import { useColorScheme } from "@/components/useColorScheme";
+import { useOTAUpdate } from "@/hooks/useOTAUpdate";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useAchievementStore } from "@/store/useAchievementStore";
+import { useSettingsStore } from "@/store/useSettingsStore";
 
 export {
 	// Catch any errors thrown by the Layout component.
-	ErrorBoundary,
+	ErrorBoundary
 } from "expo-router";
 
 export const unstable_settings = {
@@ -57,12 +61,15 @@ function RootLayoutNav() {
 	const colorScheme = useColorScheme();
 
 	return (
-		<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-			<SafeAreaProvider>
-				<RootStack />
-				<AchievementToast />
-			</SafeAreaProvider>
-		</ThemeProvider>
+		<AnalyticsProvider>
+			<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+				<SafeAreaProvider>
+					<AnalyticsBootstrap />
+					<RootStack />
+					<AchievementToast />
+				</SafeAreaProvider>
+			</ThemeProvider>
+		</AnalyticsProvider>
 	);
 }
 

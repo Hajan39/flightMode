@@ -1,22 +1,23 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
 import {
-	Dimensions,
-	type NativeScrollEvent,
-	type NativeSyntheticEvent,
-	ScrollView,
-	StyleSheet,
+    Dimensions,
+    type NativeScrollEvent,
+    type NativeSyntheticEvent,
+    ScrollView,
+    StyleSheet,
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
-import { useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 
-import { Text, View } from "@/components/Themed";
 import AnimatedPressable from "@/components/AnimatedPressable";
 import LanguageDropdown from "@/components/LanguageDropdown";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -103,6 +104,10 @@ export default function OnboardingScreen() {
 	};
 
 	const finish = () => {
+		captureAnalyticsEvent("onboarding_complete", {
+			page_index: activeIndex,
+			page_count: pages.length,
+		});
 		completeOnboarding();
 		router.replace("/(tabs)");
 	};
