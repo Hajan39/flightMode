@@ -1,51 +1,142 @@
 import { useState } from "react";
-import { Dimensions, Pressable, StyleSheet } from "react-native";
+import { Dimensions, Pressable, ScrollView, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
 
 const { width: SCREEN_W } = Dimensions.get("window");
 const BOARD_GAP = 10;
 const BOARD_PADDING = 20;
-const CELL_SIZE = (SCREEN_W - BOARD_PADDING * 2 - BOARD_GAP * 2) / 3;
+const CLASSIC_BOARD_SIZE = 3;
+const GROWING_START_SIZE = 5;
+const GROWING_MAX_SIZE = 30;
+const CLASSIC_WIN_LENGTH = 3;
+const GROWING_WIN_LENGTH = 5;
+const CLASSIC_CELL_SIZE = Math.min(
+	92,
+	Math.floor(
+		(SCREEN_W - BOARD_PADDING * 2 - BOARD_GAP * (CLASSIC_BOARD_SIZE - 1)) /
+			CLASSIC_BOARD_SIZE,
+	),
+);
+const GROWING_CELL_SIZE = Math.min(
+	56,
+	Math.floor(
+		(SCREEN_W - BOARD_PADDING * 2 - BOARD_GAP * (GROWING_START_SIZE - 1)) /
+			GROWING_START_SIZE,
+	),
+);
 
 type CellValue = "X" | "O" | null;
 type Winner = "X" | "O" | "draw" | null;
+type Player = "X" | "O";
+type BoardMode = "classic" | "growing";
+type Board = Record<string, Player>;
+type Bounds = {
+	minRow: number;
+	maxRow: number;
+	minCol: number;
+	maxCol: number;
+};
 
-const LINES: number[][] = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8],
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8],
-	[0, 4, 8],
-	[2, 4, 6],
-];
-
-const CELL_KEYS = [
-	"c0",
-	"c1",
-	"c2",
-	"c3",
-	"c4",
-	"c5",
-	"c6",
-	"c7",
-	"c8",
+const DIRECTIONS = [
+	[1, 0],
+	[0, 1],
+	[1, 1],
+	[1, -1],
 ] as const;
 
-function getWinner(board: CellValue[]): Winner {
-	for (const [a, b, c] of LINES) {
-		if (board[a] && board[a] === board[b] && board[a] === board[c])
-			return board[a];
+function createInitialBounds(mode: BoardMode): Bounds {
+	const size = mode === "classic" ? CLASSIC_BOARD_SIZE : GROWING_START_SIZE;
+	return {
+		minRow: 0,
+		maxRow: size - 1,
+		minCol: 0,
+		maxCol: size - 1,
+	};
+}
+
+function keyOf(row: number, col: number) {
+	return `${row}:${col}`;
+}
+
+function getCellsBetween(start: number, end: number) {
+	return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+}
+
+function getBoundsSize(bounds: Bounds) {
+	return {
+		rows: bounds.maxRow - bounds.minRow + 1,
+		cols: bounds.maxCol - bounds.minCol + 1,
+	};
+}
+
+function getWinningLine(
+	board: Board,
+	row: number,
+	col: number,
+	player: Player,
+	winLength: number,
+): string[] | null {
+	for (const [rowDir, colDir] of DIRECTIONS) {
+		const line: string[] = [keyOf(row, col)];
+
+		for (const sign of [-1, 1] as const) {
+			let nextRow = row + rowDir * sign;
+			let nextCol = col + colDir * sign;
+			const segment: string[] = [];
+
+			while (board[keyOf(nextRow, nextCol)] === player) {
+				segment.push(keyOf(nextRow, nextCol));
+				nextRow += rowDir * sign;
+				nextCol += colDir * sign;
+			}
+
+			if (sign === -1) {
+				line.unshift(...segment);
+			} else {
+				line.push(...segment);
+			}
+		}
+
+		if (line.length >= winLength) return line;
 	}
-	if (board.every((item) => item !== null)) return "draw";
+
 	return null;
+}
+
+function expandBounds(
+	bounds: Bounds,
+	row: number,
+	col: number,
+	mode: BoardMode,
+): Bounds {
+	if (mode === "classic") return bounds;
+
+	const next = { ...bounds };
+	const { rows, cols } = getBoundsSize(bounds);
+
+	if (row === bounds.minRow && rows < GROWING_MAX_SIZE) next.minRow -= 1;
+	if (row === bounds.maxRow && rows < GROWING_MAX_SIZE) next.maxRow += 1;
+	if (col === bounds.minCol && cols < GROWING_MAX_SIZE) next.minCol -= 1;
+	if (col === bounds.maxCol && cols < GROWING_MAX_SIZE) next.maxCol += 1;
+
+	return next;
+}
+
+function isBoardFull(board: Board, bounds: Bounds, mode: BoardMode) {
+	const { rows, cols } = getBoundsSize(bounds);
+	if (mode === "classic") return Object.keys(board).length >= rows * cols;
+
+	return (
+		rows === GROWING_MAX_SIZE &&
+		cols === GROWING_MAX_SIZE &&
+		Object.keys(board).length >= rows * cols
+	);
 }
 
 export default function DuelTicTacToeGame() {
@@ -55,37 +146,47 @@ export default function DuelTicTacToeGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
-	const [board, setBoard] = useState<CellValue[]>(Array(9).fill(null));
-	const [currentPlayer, setCurrentPlayer] = useState<"X" | "O">("X");
+	const [boardMode, setBoardMode] = useState<BoardMode>("classic");
+	const [board, setBoard] = useState<Board>({});
+	const [bounds, setBounds] = useState<Bounds>(() =>
+		createInitialBounds("classic"),
+	);
+	const [currentPlayer, setCurrentPlayer] = useState<Player>("X");
 	const [winsX, setWinsX] = useState(0);
 	const [winsO, setWinsO] = useState(0);
 	const [draws, setDraws] = useState(0);
 	const [targetWins, setTargetWins] = useState(2);
-	const [matchWinner, setMatchWinner] = useState<"X" | "O" | null>(null);
+	const [matchWinner, setMatchWinner] = useState<Player | null>(null);
+	const [roundWinner, setRoundWinner] = useState<Winner>(null);
+	const [winningLine, setWinningLine] = useState<string[]>([]);
 
-	const winner = getWinner(board);
-	const winningLine = (() => {
-		for (const line of LINES) {
-			const [a, b, c] = line;
-			if (board[a] && board[a] === board[b] && board[a] === board[c])
-				return line;
-		}
-		return null;
-	})();
+	const { rows, cols } = getBoundsSize(bounds);
+	const rowIndexes = getCellsBetween(bounds.minRow, bounds.maxRow);
+	const colIndexes = getCellsBetween(bounds.minCol, bounds.maxCol);
+	const cellSize =
+		boardMode === "classic" ? CLASSIC_CELL_SIZE : GROWING_CELL_SIZE;
+	const winLength =
+		boardMode === "classic" ? CLASSIC_WIN_LENGTH : GROWING_WIN_LENGTH;
+	const modeLabel = boardMode === "classic" ? "3x3" : `5+ | ${rows}x${cols}`;
 
-	const handlePress = (index: number) => {
-		if (board[index] !== null || winner !== null || matchWinner !== null)
+	const handlePress = (row: number, col: number) => {
+		const cellKey = keyOf(row, col);
+		if (board[cellKey] || roundWinner !== null || matchWinner !== null) {
 			return;
+		}
 		haptic.tap();
 
-		const next = [...board];
-		next[index] = currentPlayer;
+		const next = { ...board, [cellKey]: currentPlayer };
+		const nextBounds = expandBounds(bounds, row, col, boardMode);
 		setBoard(next);
+		setBounds(nextBounds);
 
-		const resolved = getWinner(next);
-		if (resolved === "X") {
+		const line = getWinningLine(next, row, col, currentPlayer, winLength);
+		if (line && currentPlayer === "X") {
 			const nw = winsX + 1;
 			setWinsX(nw);
+			setRoundWinner("X");
+			setWinningLine(line);
 			updateProgress("duel-tictactoe", nw);
 			if (nw >= targetWins) {
 				haptic.heavy();
@@ -93,9 +194,11 @@ export default function DuelTicTacToeGame() {
 			}
 			return;
 		}
-		if (resolved === "O") {
+		if (line && currentPlayer === "O") {
 			const nw = winsO + 1;
 			setWinsO(nw);
+			setRoundWinner("O");
+			setWinningLine(line);
 			updateProgress("duel-tictactoe", nw);
 			if (nw >= targetWins) {
 				haptic.heavy();
@@ -103,40 +206,51 @@ export default function DuelTicTacToeGame() {
 			}
 			return;
 		}
-		if (resolved === "draw") {
+		if (isBoardFull(next, nextBounds, boardMode)) {
+			setRoundWinner("draw");
 			setDraws((p) => p + 1);
 			return;
 		}
 		setCurrentPlayer((prev) => (prev === "X" ? "O" : "X"));
 	};
 
-	const resetBoard = () => {
-		setBoard(Array(9).fill(null));
+	const resetBoard = (mode = boardMode) => {
+		setBoard({});
+		setBounds(createInitialBounds(mode));
 		setCurrentPlayer("X");
+		setRoundWinner(null);
+		setWinningLine([]);
 	};
-	const resetMatch = () => {
-		setBoard(Array(9).fill(null));
+	const resetMatch = (mode = boardMode) => {
+		setBoard({});
+		setBounds(createInitialBounds(mode));
 		setCurrentPlayer("X");
 		setWinsX(0);
 		setWinsO(0);
 		setDraws(0);
 		setMatchWinner(null);
+		setRoundWinner(null);
+		setWinningLine([]);
+	};
+	const changeBoardMode = (mode: BoardMode) => {
+		setBoardMode(mode);
+		resetMatch(mode);
 	};
 
-	const roundOver = winner !== null;
+	const roundOver = roundWinner !== null;
 	const statusText = matchWinner
 		? t("tttMatchWin", { player: matchWinner })
-		: winner === null
+		: roundWinner === null
 			? t("tttTurn", { player: currentPlayer })
-			: winner === "draw"
+			: roundWinner === "draw"
 				? t("tttDraw")
-				: t("tttRoundWin", { player: winner });
+				: t("tttRoundWin", { player: roundWinner });
 
 	const statusColor = matchWinner
 		? theme.tint
-		: winner === "draw"
+		: roundWinner === "draw"
 			? theme.mutedText
-			: winner !== null
+			: roundWinner !== null
 				? theme.tint
 				: theme.text;
 
@@ -185,6 +299,31 @@ export default function DuelTicTacToeGame() {
 
 			{/* ── Mode chips ── */}
 			<View style={styles.modeRow}>
+				{(["classic", "growing"] as const).map((mode) => (
+					<Pressable
+						key={mode}
+						style={[
+							styles.modeChip,
+							{
+								borderColor: theme.border,
+								backgroundColor: boardMode === mode ? theme.tint : theme.card,
+							},
+						]}
+						onPress={() => changeBoardMode(mode)}
+					>
+						<Text
+							style={[
+								styles.modeText,
+								{ color: boardMode === mode ? "#fff" : theme.mutedText },
+							]}
+						>
+							{mode === "classic" ? "3x3" : "5+"}
+						</Text>
+					</Pressable>
+				))}
+			</View>
+
+			<View style={styles.modeRow}>
 				{([2, 3] as const).map((tw) => (
 					<Pressable
 						key={tw}
@@ -213,50 +352,86 @@ export default function DuelTicTacToeGame() {
 			</View>
 
 			{/* ── Status ── */}
-			<Text style={[styles.status, { color: statusColor }]}>{statusText}</Text>
+			<View style={styles.statusRow}>
+				<Text style={[styles.status, { color: statusColor }]}>
+					{statusText}
+				</Text>
+				<Text style={[styles.boardSize, { color: theme.mutedText }]}>
+					{modeLabel}
+				</Text>
+			</View>
 
 			{/* ── Board ── */}
-			<View style={styles.board}>
-				{board.map((value, index) => {
-					const isX = value === "X";
-					const isO = value === "O";
-					const isWinCell = winningLine?.includes(index) ?? false;
-					const cellBg = isWinCell
-						? theme.tint
-						: isX
-							? theme.accentSoft
-							: isO
-								? theme.card
-								: theme.elevated;
-					const cellBorder = isWinCell
-						? theme.tint
-						: isX
-							? theme.tint
-							: theme.border;
-					const textColor = isWinCell
-						? "#fff"
-						: isX
-							? theme.tint
-							: isO
-								? theme.mutedText
-								: "transparent";
-					return (
-						<Pressable
-							key={CELL_KEYS[index]}
-							style={[
-								styles.cell,
-								{ backgroundColor: cellBg, borderColor: cellBorder },
-								isWinCell && styles.cellWin,
-							]}
-							onPress={() => handlePress(index)}
-						>
-							<Text style={[styles.cellText, { color: textColor }]}>
-								{value ?? "·"}
-							</Text>
-						</Pressable>
-					);
-				})}
-			</View>
+			<ScrollView
+				style={[styles.boardViewport, { borderColor: theme.border }]}
+				contentContainerStyle={styles.boardViewportContent}
+				showsVerticalScrollIndicator={false}
+			>
+				<ScrollView horizontal showsHorizontalScrollIndicator={false}>
+					<View
+						style={[
+							styles.board,
+							{
+								width: cols * cellSize + (cols - 1) * BOARD_GAP,
+							},
+						]}
+					>
+						{rowIndexes.map((row) =>
+							colIndexes.map((col) => {
+								const cellKey = keyOf(row, col);
+								const value: CellValue = board[cellKey] ?? null;
+								const isX = value === "X";
+								const isO = value === "O";
+								const isWinCell = winningLine.includes(cellKey);
+								const cellBg = isWinCell
+									? theme.tint
+									: isX
+										? theme.accentSoft
+										: isO
+											? theme.card
+											: theme.elevated;
+								const cellBorder = isWinCell
+									? theme.tint
+									: isX
+										? theme.tint
+										: theme.border;
+								const textColor = isWinCell
+									? "#fff"
+									: isX
+										? theme.tint
+										: isO
+											? theme.mutedText
+											: "transparent";
+								return (
+									<Pressable
+										key={cellKey}
+										style={[
+											styles.cell,
+											{
+												backgroundColor: cellBg,
+												borderColor: cellBorder,
+												width: cellSize,
+												height: cellSize,
+											},
+											isWinCell && styles.cellWin,
+										]}
+										onPress={() => handlePress(row, col)}
+									>
+										<Text
+											style={[
+												styles.cellText,
+												{ color: textColor, fontSize: cellSize * 0.44 },
+											]}
+										>
+											{value ?? "·"}
+										</Text>
+									</Pressable>
+								);
+							}),
+						)}
+					</View>
+				</ScrollView>
+			</ScrollView>
 
 			{/* ── Action button ── */}
 			<Pressable
@@ -267,7 +442,13 @@ export default function DuelTicTacToeGame() {
 						borderColor: matchWinner ? theme.tint : theme.border,
 					},
 				]}
-				onPress={matchWinner ? resetMatch : resetBoard}
+				onPress={() => {
+					if (matchWinner) {
+						resetMatch();
+					} else {
+						resetBoard();
+					}
+				}}
 			>
 				<Text
 					style={[
@@ -315,18 +496,24 @@ const styles = StyleSheet.create({
 	},
 	modeText: { fontSize: 13, fontWeight: "700" },
 	/* ── Status ── */
+	statusRow: { gap: 3 },
 	status: { fontSize: 16, fontWeight: "700" },
+	boardSize: { fontSize: 12, fontWeight: "700" },
 	/* ── Board ── */
+	boardViewport: {
+		maxHeight: 390,
+		borderWidth: 1,
+		borderRadius: 18,
+	},
+	boardViewportContent: { padding: 10 },
 	board: { flexDirection: "row", flexWrap: "wrap", gap: BOARD_GAP },
 	cell: {
-		width: CELL_SIZE,
-		height: CELL_SIZE,
 		borderWidth: 1.5,
-		borderRadius: 16,
+		borderRadius: 12,
 		alignItems: "center",
 		justifyContent: "center",
 	},
-	cellText: { fontSize: CELL_SIZE * 0.44, fontWeight: "900" },
+	cellText: { fontWeight: "900" },
 	cellWin: { borderWidth: 3, transform: [{ scale: 1.06 }] },
 	/* ── Action ── */
 	actionBtn: {

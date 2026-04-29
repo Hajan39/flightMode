@@ -101,7 +101,7 @@
 	gameStackSortDescription:
 		"Ordene os números na coluna objetivo - um puzzle relaxante",
 	gameDuelTicTacToeName: "Jogo da Velha Duo",
-	gameDuelTicTacToeDescription: "Dois jogadores em um dispositivo",
+	gameDuelTicTacToeDescription: "Escolha 3x3 clássico ou 5 em linha crescente",
 	gameDuelDiceName: "Duelo de dados",
 	gameDuelDiceDescription: "Jogo de dados em turnos",
 	gameDuelConnect4Name: "Liga 4 Duo",
@@ -140,7 +140,7 @@
 	rulesStackSort:
 		"🎯 Objetivo\n• Ordene todas as cartas na coluna alvo.\n\n🗂️ Como jogar\n• Toque em uma carta para pegá-la.\n• Coloque-a em espaço vazio ou sobre uma carta maior.\n• Cartas na coluna alvo devem estar em ordem crescente.\n\n⭐ Dica\n• Use os espaços temporários estrategicamente — planeje!",
 	rulesTicTacToe:
-		"🎯 Objetivo\n• Coloque três marcas em linha!\n\n❌⭕ Como jogar\n• Dois jogadores se alternam em um dispositivo.\n• Jogador 1 coloca ✕, Jogador 2 coloca ○.\n• Coloque sua marca em qualquer célula vazia.\n\n🏆 Vitória\n• O primeiro a fazer 3 em linha (horizontal, vertical ou diagonal) vence.\n• Se o tabuleiro encher sem vencedor — empate!",
+		"🎯 Objetivo\n• Escolha 3x3 clássico ou cinco em linha crescente.\n\n❌⭕ Como jogar\n• Dois jogadores se alternam em um dispositivo.\n• Jogador 1 coloca ✕, Jogador 2 coloca ○.\n• Modo 3x3: faça 3 em linha.\n• Modo 5+: começa em 5x5, vence com 5 em linha e bordas expandem até 30x30.\n\n🏆 Vitória\n• Valem horizontal, vertical e diagonal.\n• Se o tabuleiro encher sem vencedor — empate!",
 	rulesDice:
 		"🎯 Objetivo\n• Consiga o maior total em várias rodadas.\n\n🎲 Como jogar\n• 2–6 jogadores lançam dados alternadamente.\n• Após cada lançamento, escolha quais dados manter.\n• Relance o resto para melhorar seu total.\n\n🏆 Vitória\n• Maior pontuação total após todas as rodadas vence!",
 	rulesConnect4:
@@ -773,7 +773,8 @@
 	cbSecretWas: "O código secreto era",
 	// Support
 	articleNotFoundHint: "Tente abrir novamente pelo Explorar.",
-	exploreBrowseHint: "Descubra leituras curtas e dicas práticas para esta viagem.",
+	exploreBrowseHint:
+		"Descubra leituras curtas e dicas práticas para esta viagem.",
 	exploreReadingHint: "Formato curto, feito para leitura focada durante o voo.",
 	exploreToolsHint: "Pesquise, filtre e ordene de acordo com seu foco atual.",
 	gameNotFoundHint: "Volte para Jogos e abra outro título.",
@@ -782,25 +783,32 @@
 	gamesSearchPlaceholder: "Pesquisar jogos",
 	homeDailyChallengeHint: "Uma rodada focada para manter sua sequência viva.",
 	homeFlightHint: "Temporizador de voo opcional e recomendações leves.",
-	homePlayTogetherHint: "Jogos rápidos estilo multiplayer em tela compartilhada ou por turnos.",
+	homePlayTogetherHint:
+		"Jogos rápidos estilo multiplayer em tela compartilhada ou por turnos.",
 	homeProgressHint: "Seu resumo local de progresso para esta viagem.",
 	homeQuickActionsHint: "Escolha o modo: jogar, explorar ou relaxar.",
-	profileAchievementsHint: "Marcos desbloqueados pelo uso constante durante o voo.",
-	profileHighScoresHint: "Seus melhores resultados de jogo no histórico de sessões.",
-	profileStatsHint: "Seu resumo de atividade entre jogar, ler, voo e relaxamento.",
+	profileAchievementsHint:
+		"Marcos desbloqueados pelo uso constante durante o voo.",
+	profileHighScoresHint:
+		"Seus melhores resultados de jogo no histórico de sessões.",
+	profileStatsHint:
+		"Seu resumo de atividade entre jogar, ler, voo e relaxamento.",
 	relaxBreathingHint: "Use um ciclo calmo para recuperar o foco.",
-	relaxSleepTimerHint: "Defina uma parada automática para o áudio terminar sozinho.",
+	relaxSleepTimerHint:
+		"Defina uma parada automática para o áudio terminar sozinho.",
 	relaxSoundscapesHint: "Escolha um som de fundo e mantenha-o constante.",
 	settingsAppPreferences: "Preferências do app",
 	settingsAppPreferencesHint: "Controle idioma e aparência em um só lugar.",
 	settingsLanguageHint: "Escolha como o texto do app é exibido.",
 	settingsThemeHint: "Mude o estilo visual conforme o ambiente e o humor.",
 	settingsSync: "Sync de artigos",
-	settingsSyncHint: "Escolha quando o FlightMode pode baixar novos artigos de viagem.",
+	settingsSyncHint:
+		"Escolha quando o FlightMode pode baixar novos artigos de viagem.",
 	settingsSyncWifiOnly: "Somente Wi-Fi",
 	settingsSyncWifiOnlyHint: "Recomendado. Sync apenas em Wi-Fi ou Ethernet.",
 	settingsSyncWifiAndMobile: "Wi-Fi + dados móveis",
-	settingsSyncWifiAndMobileHint: "Sync sempre que a internet estiver disponível.",
+	settingsSyncWifiAndMobileHint:
+		"Sync sempre que a internet estiver disponível.",
 	settingsSyncOff: "Desativado",
 	settingsSyncOffHint: "Use apenas artigos offline incluídos no app.",
 	settingsSupport: "Suporte",

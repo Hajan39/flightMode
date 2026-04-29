@@ -103,7 +103,8 @@
 	gameStackSortDescription:
 		"Sortiere Zahlen in die Zielspalte - ein entspanntes Puzzle",
 	gameDuelTicTacToeName: "Tic Tac Toe Duo",
-	gameDuelTicTacToeDescription: "Zwei Spieler auf einem Gerät",
+	gameDuelTicTacToeDescription:
+		"Wähle klassisch 3x3 oder wachsendes 5-in-Reihe",
 	gameDuelDiceName: "Dice Duel",
 	gameDuelDiceDescription: "Abwechselndes Würfelduell",
 	gameDuelConnect4Name: "4 Gewinnt Duo",
@@ -141,7 +142,7 @@
 	rulesStackSort:
 		"🎯 Ziel\n• Sortiere alle Karten in die Zielspalte.\n\n🗂️ So wird gespielt\n• Tippe auf eine Karte, um sie aufzunehmen.\n• Lege sie auf ein leeres Feld oder auf eine Karte mit höherem Wert.\n• Karten in der Zielspalte müssen aufsteigend sortiert sein.\n\n⭐ Tipp\n• Nutze die temporären Plätze strategisch — plane voraus!",
 	rulesTicTacToe:
-		"🎯 Ziel\n• Bringe drei deiner Zeichen in eine Reihe!\n\n❌⭕ So wird gespielt\n• Zwei Spieler wechseln sich auf einem Gerät ab.\n• Spieler 1 setzt ✕, Spieler 2 setzt ○.\n• Setze dein Zeichen auf ein leeres Feld.\n\n🏆 Gewinn\n• Wer zuerst 3 in einer Reihe hat (horizontal, vertikal oder diagonal), gewinnt.\n• Wenn das Brett voll ist ohne Gewinner — Unentschieden!",
+		"🎯 Ziel\n• Wähle klassisch 3x3 oder wachsendes Fünf-in-einer-Reihe.\n\n❌⭕ So wird gespielt\n• Zwei Spieler wechseln sich auf einem Gerät ab.\n• Spieler 1 setzt ✕, Spieler 2 setzt ○.\n• 3x3-Modus: 3 in einer Reihe gewinnen.\n• 5+-Modus: startet 5x5, 5 in einer Reihe gewinnen, Randzüge erweitern bis 30x30.\n\n🏆 Gewinn\n• Horizontal, vertikal und diagonal zählen.\n• Wenn das Brett voll ist ohne Gewinner — Unentschieden!",
 	rulesDice:
 		"🎯 Ziel\n• Würfle die höchste Summe über mehrere Runden.\n\n🎲 So wird gespielt\n• 2–6 Spieler würfeln abwechselnd.\n• Nach jedem Wurf wähle, welche Würfel du behältst.\n• Wirf den Rest neu für eine bessere Summe.\n\n🏆 Gewinn\n• Höchste Gesamtpunktzahl nach allen Runden gewinnt!",
 	rulesConnect4:
@@ -792,31 +793,39 @@
 	cbSecretWas: "Der Geheimcode war",
 	// Support
 	articleNotFoundHint: "Versuche, ihn erneut über Entdecken zu öffnen.",
-	exploreBrowseHint: "Entdecke kurze Lektüre und praktische Tipps für diese Reise.",
+	exploreBrowseHint:
+		"Entdecke kurze Lektüre und praktische Tipps für diese Reise.",
 	exploreReadingHint: "Kurzes Format für konzentriertes Lesen im Flug.",
 	exploreToolsHint: "Suche, filtere und sortiere passend zu deinem Fokus.",
 	gameNotFoundHint: "Geh zurück zu Spiele und starte einen anderen Titel.",
 	gamesBrowseHint: "Wähle ein Spiel, das zu deiner Zeit und Energie passt.",
-	gamesFilterHint: "Filtere nach Modus, um deine nächste kurze Session zu finden.",
+	gamesFilterHint:
+		"Filtere nach Modus, um deine nächste kurze Session zu finden.",
 	gamesSearchPlaceholder: "Spiele suchen",
-	homeDailyChallengeHint: "Ein fokussierter Lauf, um deine Serie am Leben zu halten.",
+	homeDailyChallengeHint:
+		"Ein fokussierter Lauf, um deine Serie am Leben zu halten.",
 	homeFlightHint: "Optionaler Flugtimer und leichte Empfehlungen.",
-	homePlayTogetherHint: "Kurze Multiplayer-artige Spiele auf gemeinsamem oder geteiltem Ablauf.",
+	homePlayTogetherHint:
+		"Kurze Multiplayer-artige Spiele auf gemeinsamem oder geteiltem Ablauf.",
 	homeProgressHint: "Dein lokaler Fortschrittsüberblick für diese Reise.",
 	homeQuickActionsHint: "Wähle deinen Modus: spielen, entdecken oder resetten.",
-	profileAchievementsHint: "Meilensteine, die durch regelmäßige Nutzung im Flug freigeschaltet werden.",
-	profileHighScoresHint: "Deine stärksten Spielergebnisse aus der Session-Historie.",
-	profileStatsHint: "Dein Aktivitätsüberblick über Spiele, Lesen, Flug und Entspannung.",
-	relaxBreathingHint: "Nutze einen ruhigen Zyklus, um deinen Fokus zurückzusetzen.",
+	profileAchievementsHint:
+		"Meilensteine, die durch regelmäßige Nutzung im Flug freigeschaltet werden.",
+	profileHighScoresHint:
+		"Deine stärksten Spielergebnisse aus der Session-Historie.",
+	profileStatsHint:
+		"Dein Aktivitätsüberblick über Spiele, Lesen, Flug und Entspannung.",
+	relaxBreathingHint:
+		"Nutze einen ruhigen Zyklus, um deinen Fokus zurückzusetzen.",
 	relaxSleepTimerHint: "Stelle Auto-Stopp ein, damit Audio von selbst endet.",
-	relaxSoundscapesHint: "Wähle einen Hintergrundsound und lass ihn ruhig laufen.",
+	relaxSoundscapesHint:
+		"Wähle einen Hintergrundsound und lass ihn ruhig laufen.",
 	settingsAppPreferences: "App-Einstellungen",
 	settingsAppPreferencesHint: "Sprache und Darstellung an einem Ort.",
 	settingsLanguageHint: "Wähle, wie der App-Text angezeigt wird.",
 	settingsThemeHint: "Passe den visuellen Stil an Umgebung und Stimmung an.",
 	settingsSync: "Artikelsync",
-	settingsSyncHint:
-		"Wähle, wann FlightMode neue Reiseartikel laden darf.",
+	settingsSyncHint: "Wähle, wann FlightMode neue Reiseartikel laden darf.",
 	settingsSyncWifiOnly: "Nur WLAN",
 	settingsSyncWifiOnlyHint: "Empfohlen. Sync nur über WLAN oder Ethernet.",
 	settingsSyncWifiAndMobile: "WLAN + mobile Daten",

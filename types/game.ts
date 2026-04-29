@@ -9,6 +9,12 @@ export type GameCategory = "brain" | "reflex" | "strategy" | "multiplayer";
 
 export type GameDifficulty = "easy" | "medium" | "hard";
 
+export type GamePlayMode =
+	| "bestOf"
+	| "passAndPlay"
+	| "sharedScreen"
+	| "crossDevice";
+
 export type GameConfig = {
 	id: string;
 	name: string;
@@ -17,4 +23,5 @@ export type GameConfig = {
 	icon: string; // Ionicons icon name
 	category: GameCategory;
 	difficulty: GameDifficulty;
+	playMode?: GamePlayMode;
 };

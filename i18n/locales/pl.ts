@@ -99,7 +99,7 @@
 	gameStackSortDescription:
 		"Posortuj liczby w kolumnie docelowej - relaksująca łamigłówka",
 	gameDuelTicTacToeName: "Kółko i krzyżyk Duo",
-	gameDuelTicTacToeDescription: "Dwóch graczy na jednym urządzeniu",
+	gameDuelTicTacToeDescription: "Wybierz klasyczne 3x3 lub rosnące 5 w rzędzie",
 	gameDuelDiceName: "Pojedynek kości",
 	gameDuelDiceDescription: "Gra w kości na zmianę",
 	gameDuelConnect4Name: "Czwórki Duo",
@@ -138,7 +138,7 @@
 	rulesStackSort:
 		"🎯 Cel\n• Ułóż wszystkie karty w kolumnie docelowej.\n\n🗂️ Jak grać\n• Tapnij kartę, aby ją podnieść.\n• Połóż ją na pustym miejscu lub na karcie o wyższej wartości.\n• Karty w kolumnie docelowej muszą być rosnąco.\n\n⭐ Wskazówka\n• Używaj tymczasowych miejsc strategicznie — planuj!",
 	rulesTicTacToe:
-		"🎯 Cel\n• Ustaw trzy swoje znaki w rzędzie!\n\n❌⭕ Jak grać\n• Dwóch graczy zmienia się na jednym urządzeniu.\n• Gracz 1 stawia ✕, Gracz 2 stawia ○.\n• Postaw swój znak na dowolnym pustym polu.\n\n🏆 Wygrana\n• Kto pierwszy ustawi 3 w rzędzie (poziomo, pionowo lub po przekątnej), wygrywa.\n• Jeśli plansza się zapełni bez zwycięzcy — remis!",
+		"🎯 Cel\n• Wybierz klasyczne 3x3 albo rosnące pięć w rzędzie.\n\n❌⭕ Jak grać\n• Dwóch graczy zmienia się na jednym urządzeniu.\n• Gracz 1 stawia ✕, Gracz 2 stawia ○.\n• Tryb 3x3: ustaw 3 w rzędzie.\n• Tryb 5+: start 5x5, wygrywa 5 w rzędzie, ruchy na krawędzi rozszerzają planszę do 30x30.\n\n🏆 Wygrana\n• Liczą się poziom, pion i przekątna.\n• Jeśli plansza się zapełni bez zwycięzcy — remis!",
 	rulesDice:
 		"🎯 Cel\n• Uzyskaj najwyższą sumę w wielu rundach.\n\n🎲 Jak grać\n• 2–6 graczy rzuca kośćmi na zmianę.\n• Po każdym rzucie wybierz, które kości zachować.\n• Rzuć resztę ponownie dla lepszej sumy.\n\n🏆 Wygrana\n• Najwyższy łączny wynik po wszystkich rundach wygrywa!",
 	rulesConnect4:
@@ -774,7 +774,8 @@
 	cbSecretWas: "Tajny kod to",
 	// Support
 	articleNotFoundHint: "Spróbuj otworzyć go ponownie z sekcji Odkrywaj.",
-	exploreBrowseHint: "Odkryj krótkie teksty i praktyczne wskazówki na tę podróż.",
+	exploreBrowseHint:
+		"Odkryj krótkie teksty i praktyczne wskazówki na tę podróż.",
 	exploreReadingHint: "Krótki format do skupionego czytania w locie.",
 	exploreToolsHint: "Szukaj, filtruj i sortuj zgodnie z aktualnym celem.",
 	gameNotFoundHint: "Wróć do Gier i uruchom inny tytuł.",
@@ -783,27 +784,32 @@
 	gamesSearchPlaceholder: "Szukaj gier",
 	homeDailyChallengeHint: "Jedno skupione podejście, aby utrzymać serię.",
 	homeFlightHint: "Opcjonalny timer lotu i lekkie rekomendacje.",
-	homePlayTogetherHint: "Szybkie gry w stylu multiplayer na wspólnym ekranie lub zmianach.",
+	homePlayTogetherHint:
+		"Szybkie gry w stylu multiplayer na wspólnym ekranie lub zmianach.",
 	homeProgressHint: "Lokalny podgląd postępów dla tej podróży.",
 	homeQuickActionsHint: "Wybierz tryb: graj, odkrywaj albo resetuj.",
-	profileAchievementsHint: "Kamienie milowe odblokowywane przez regularne używanie w locie.",
+	profileAchievementsHint:
+		"Kamienie milowe odblokowywane przez regularne używanie w locie.",
 	profileHighScoresHint: "Twoje najlepsze wyniki z historii sesji.",
 	profileStatsHint: "Podsumowanie aktywności: gry, czytanie, lot i relaks.",
 	relaxBreathingHint: "Użyj spokojnego cyklu, aby odzyskać skupienie.",
-	relaxSleepTimerHint: "Ustaw automatyczne zatrzymanie, aby audio samo się wyłączyło.",
+	relaxSleepTimerHint:
+		"Ustaw automatyczne zatrzymanie, aby audio samo się wyłączyło.",
 	relaxSoundscapesHint: "Wybierz dźwięk tła i utrzymaj go stabilnie.",
 	settingsAppPreferences: "Preferencje aplikacji",
 	settingsAppPreferencesHint: "Steruj językiem i wyglądem w jednym miejscu.",
 	settingsLanguageHint: "Wybierz sposób wyświetlania tekstu aplikacji.",
 	settingsThemeHint: "Zmień styl wizualny do otoczenia i nastroju.",
 	settingsSync: "Sync artykułów",
-	settingsSyncHint: "Wybierz, kiedy FlightMode może pobierać nowe artykuły podróżne.",
+	settingsSyncHint:
+		"Wybierz, kiedy FlightMode może pobierać nowe artykuły podróżne.",
 	settingsSyncWifiOnly: "Tylko Wi-Fi",
 	settingsSyncWifiOnlyHint: "Zalecane. Sync tylko przez Wi-Fi lub Ethernet.",
 	settingsSyncWifiAndMobile: "Wi-Fi + dane mobilne",
 	settingsSyncWifiAndMobileHint: "Sync zawsze, gdy internet jest dostępny.",
 	settingsSyncOff: "Wyłączone",
-	settingsSyncOffHint: "Używaj tylko artykułów offline dołączonych do aplikacji.",
+	settingsSyncOffHint:
+		"Używaj tylko artykułów offline dołączonych do aplikacji.",
 	settingsSupport: "Wsparcie",
 	settingsSupportHint: "Znalazłeś błąd lub masz pomysł? Daj nam znać.",
 	settingsReportBug: "Zgłoś błąd",

@@ -98,8 +98,8 @@
 	gameStackSortName: "スタックソート",
 	gameStackSortDescription:
 		"数字をゴール列に並べる - リラックスパズルチャレンジ",
-	gameDuelTicTacToeName: "三目並べデュオ",
-	gameDuelTicTacToeDescription: "1台のデバイスで2人対戦",
+	gameDuelTicTacToeName: "三目/五目デュオ",
+	gameDuelTicTacToeDescription: "3x3クラシックか広がる五目を選択",
 	gameDuelDiceName: "サイコロ対決",
 	gameDuelDiceDescription: "交互にサイコロを振るゲーム",
 	gameDuelConnect4Name: "コネクト4 デュオ",
@@ -137,7 +137,7 @@
 	rulesStackSort:
 		"🎯 目標\n• 全てのカードをゴール列に並べよう。\n\n🗂️ 遊び方\n• カードをタップして持ち上げます。\n• 空きスペースか大きい数のカードの上に置きます。\n• ゴール列は昇順でなければなりません。\n\n⭐ コツ\n• 一時スペースを戦略的に使おう — 先を考えて！",
 	rulesTicTacToe:
-		"🎯 目標\n• 自分のマークを3つ揃えよう！\n\n❌⭕ 遊び方\n• 2人が1台のデバイスで交互にプレイ。\n• プレイヤー1は✕、プレイヤー2は○を置きます。\n• 空いたマスにマークを置いてください。\n\n🏆 勝利\n• 先に3つ揃えた人（横・縦・斜め）の勝ち。\n• 盤面が埋まって勝者なし — 引き分け！",
+		"🎯 目標\n• 3x3クラシックか、広がる五目を選びます。\n\n❌⭕ 遊び方\n• 2人が1台のデバイスで交互にプレイ。\n• プレイヤー1は✕、プレイヤー2は○を置きます。\n• 3x3モード：3つ並べると勝ち。\n• 5+モード：5x5から始まり、5つ並べると勝ち。端に置くと最大30x30まで広がります。\n\n🏆 勝利\n• 横・縦・斜めが有効。\n• 盤面が埋まって勝者なし — 引き分け！",
 	rulesDice:
 		"🎯 目標\n• 複数ラウンドで最高合計を出そう。\n\n🎲 遊び方\n• 2〜6人が交互にダイスを振ります。\n• 毎回、残すダイスを選択。\n• 残りを振り直してより良い合計を狙おう。\n\n🏆 勝利\n• 全ラウンド後の最高合計スコアの勝ち！",
 	rulesConnect4:
@@ -762,7 +762,8 @@
 	cbSecretWas: "秘密のコードは",
 	// Support
 	articleNotFoundHint: "Exploreからもう一度開いてみてください。",
-	exploreBrowseHint: "この旅に役立つ短い読み物と実用的なヒントを見つけましょう。",
+	exploreBrowseHint:
+		"この旅に役立つ短い読み物と実用的なヒントを見つけましょう。",
 	exploreReadingHint: "機内で集中して読める短い形式です。",
 	exploreToolsHint: "今の目的に合わせて検索、絞り込み、並び替えできます。",
 	gameNotFoundHint: "Gamesに戻って別のタイトルを起動してください。",
@@ -771,7 +772,8 @@
 	gamesSearchPlaceholder: "ゲームを検索",
 	homeDailyChallengeHint: "連続記録を保つための集中プレイです。",
 	homeFlightHint: "任意のフライトタイマーと軽いおすすめです。",
-	homePlayTogetherHint: "共有画面や交互プレイ向けの短いマルチプレイ風ゲームです。",
+	homePlayTogetherHint:
+		"共有画面や交互プレイ向けの短いマルチプレイ風ゲームです。",
 	homeProgressHint: "この旅のローカル進行状況です。",
 	homeQuickActionsHint: "モードを選択: プレイ、探索、リセット。",
 	profileAchievementsHint: "機内での継続利用で解除されるマイルストーンです。",
@@ -785,7 +787,8 @@
 	settingsLanguageHint: "アプリのテキスト表示方法を選びます。",
 	settingsThemeHint: "周囲や気分に合わせて見た目を変えます。",
 	settingsSync: "記事の同期",
-	settingsSyncHint: "FlightModeが新しい旅行記事をダウンロードするタイミングを選びます。",
+	settingsSyncHint:
+		"FlightModeが新しい旅行記事をダウンロードするタイミングを選びます。",
 	settingsSyncWifiOnly: "Wi-Fiのみ",
 	settingsSyncWifiOnlyHint: "おすすめ。Wi-FiまたはEthernetでのみ同期します。",
 	settingsSyncWifiAndMobile: "Wi-Fi + モバイルデータ",

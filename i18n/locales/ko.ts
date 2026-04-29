@@ -97,8 +97,8 @@
 	gameSkyDefenseDescription: "타워를 건설하여 공항을 폭풍으로부터 보호하세요",
 	gameStackSortName: "스택 정렬",
 	gameStackSortDescription: "숫자를 목표 열에 정렬하세요 - 편안한 퍼즐 챌린지",
-	gameDuelTicTacToeName: "틱택토 듀오",
-	gameDuelTicTacToeDescription: "한 기기에서 두 명이 대전",
+	gameDuelTicTacToeName: "틱택토/오목 듀오",
+	gameDuelTicTacToeDescription: "3x3 클래식 또는 확장 오목 선택",
 	gameDuelDiceName: "주사위 대결",
 	gameDuelDiceDescription: "번갈아가며 주사위 게임",
 	gameDuelConnect4Name: "커넥트 4 듀오",
@@ -136,7 +136,7 @@
 	rulesStackSort:
 		"🎯 목표\n• 모든 카드를 목표 열에 정렬하세요.\n\n🗂️ 플레이 방법\n• 카드를 탭하여 집어 올립니다.\n• 빈 자리나 더 큰 숫자의 카드 위에 놓습니다.\n• 목표 열의 카드는 오름차순이어야 합니다.\n\n⭐ 팁\n• 임시 슬롯을 전략적으로 활용하세요 — 미리 계획!",
 	rulesTicTacToe:
-		"🎯 목표\n• 자신의 표시 3개를 줄에 놓으세요!\n\n❌⭕ 플레이 방법\n• 두 플레이어가 한 기기에서 번갈아 플레이.\n• 플레이어 1은 ✕, 플레이어 2는 ○를 놓습니다.\n• 빈 칸에 표시를 놓으세요.\n\n🏆 승리\n• 먼저 3개를 줄에 놓으면(가로, 세로, 대각선) 승리.\n• 판이 다 차면 승자 없이 — 무승부!",
+		"🎯 목표\n• 3x3 클래식 또는 확장 오목을 선택하세요.\n\n❌⭕ 플레이 방법\n• 두 플레이어가 한 기기에서 번갈아 플레이.\n• 플레이어 1은 ✕, 플레이어 2는 ○를 놓습니다.\n• 3x3 모드: 3개를 한 줄로 놓으면 승리.\n• 5+ 모드: 5x5에서 시작, 5개 한 줄로 승리, 가장자리 수는 30x30까지 확장.\n\n🏆 승리\n• 가로, 세로, 대각선이 유효합니다.\n• 보드가 다 차면 승자 없이 — 무승부!",
 	rulesDice:
 		"🎯 목표\n• 여러 라운드에서 최고 합계를 달성하세요.\n\n🎲 플레이 방법\n• 2~6명이 번갈아 주사위를 굴립니다.\n• 매 굴림 후 유지할 주사위를 선택.\n• 나머지를 다시 굴려 합계를 높이세요.\n\n🏆 승리\n• 모든 라운드 후 최고 총점이 승리!",
 	rulesConnect4:
@@ -757,7 +757,8 @@
 	cbSecretWas: "비밀 코드는",
 	// Support
 	articleNotFoundHint: "Explore에서 다시 열어 보세요.",
-	exploreBrowseHint: "이번 여행에 맞는 짧은 읽을거리와 실용적인 팁을 찾아보세요.",
+	exploreBrowseHint:
+		"이번 여행에 맞는 짧은 읽을거리와 실용적인 팁을 찾아보세요.",
 	exploreReadingHint: "비행 중 집중해서 읽기 좋은 짧은 형식입니다.",
 	exploreToolsHint: "현재 목표에 맞게 검색, 필터, 정렬하세요.",
 	gameNotFoundHint: "Games로 돌아가 다른 타이틀을 실행하세요.",
@@ -766,10 +767,12 @@
 	gamesSearchPlaceholder: "게임 검색",
 	homeDailyChallengeHint: "연속 기록을 유지하기 위한 집중 플레이입니다.",
 	homeFlightHint: "선택형 비행 타이머와 가벼운 추천입니다.",
-	homePlayTogetherHint: "공유 화면이나 번갈아 진행하는 빠른 멀티플레이 스타일 게임입니다.",
+	homePlayTogetherHint:
+		"공유 화면이나 번갈아 진행하는 빠른 멀티플레이 스타일 게임입니다.",
 	homeProgressHint: "이번 여행의 로컬 진행 상황 요약입니다.",
 	homeQuickActionsHint: "모드를 선택하세요: 플레이, 탐색, 리셋.",
-	profileAchievementsHint: "비행 중 꾸준한 사용으로 잠금 해제되는 이정표입니다.",
+	profileAchievementsHint:
+		"비행 중 꾸준한 사용으로 잠금 해제되는 이정표입니다.",
 	profileHighScoresHint: "세션 기록에서 나온 최고의 게임 점수입니다.",
 	profileStatsHint: "게임, 읽기, 비행, 휴식 활동 요약입니다.",
 	relaxBreathingHint: "차분한 한 사이클로 집중을 다시 맞추세요.",

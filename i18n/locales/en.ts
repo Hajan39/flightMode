@@ -120,7 +120,7 @@ export const en = {
 	gameStackSortDescription:
 		"Sort numbers into the goal column - a chill puzzle challenge",
 	gameDuelTicTacToeName: "Tic Tac Toe Duo",
-	gameDuelTicTacToeDescription: "Two players on one device",
+	gameDuelTicTacToeDescription: "Choose classic 3x3 or growing 5-in-a-row",
 	gameDuelDiceName: "Dice Duel",
 	gameDuelDiceDescription: "Pass-and-play dice match",
 	gameDuelConnect4Name: "Connect 4 Duo",
@@ -159,7 +159,7 @@ export const en = {
 	rulesStackSort:
 		"🎯 Goal\n• Sort all numbered cards into the goal column.\n\n🗂️ How to Play\n• Tap a card to pick it up.\n• Place it on an empty slot, or on a card with a larger number.\n• Cards in the goal column must be in ascending order.\n\n⭐ Tip\n• Use the temporary slots strategically — plan ahead!",
 	rulesTicTacToe:
-		"🎯 Goal\n• Get three of your marks in a row!\n\n❌⭕ How to Play\n• Two players take turns on one device.\n• Player 1 places ✕, Player 2 places ○.\n• Place your mark on any empty cell.\n\n🏆 Winning\n• First to get 3 in a row (horizontal, vertical, or diagonal) wins.\n• If the board fills up with no winner — it's a draw!",
+		"🎯 Goal\n• Choose classic 3x3 or growing five-in-a-row.\n\n❌⭕ How to Play\n• Two players take turns on one device.\n• Player 1 places ✕, Player 2 places ○.\n• 3x3 mode: get 3 in a row.\n• 5+ mode: start 5x5, get 5 in a row, and edge moves expand the board up to 30x30.\n\n🏆 Winning\n• Rows count horizontal, vertical, and diagonal.\n• If the board fills with no winner — it's a draw!",
 	rulesDice:
 		"🎯 Goal\n• Roll the highest total over multiple rounds.\n\n🎲 How to Play\n• 2–6 players take turns rolling dice.\n• After each roll, choose which dice to keep.\n• Re-roll the rest to try for a better total.\n\n🏆 Winning\n• Highest total score after all rounds wins!",
 	rulesConnect4:
@@ -749,7 +749,8 @@ export const en = {
 	settingsLanguageHint: "Choose how the app text is displayed.",
 	settingsThemeHint: "Switch the visual style to match your environment.",
 	settingsSync: "Article Sync",
-	settingsSyncHint: "Choose when FlightMode may download fresh travel articles.",
+	settingsSyncHint:
+		"Choose when FlightMode may download fresh travel articles.",
 	settingsSyncWifiOnly: "Wi-Fi only",
 	settingsSyncWifiOnlyHint: "Recommended. Sync only on Wi-Fi or Ethernet.",
 	settingsSyncWifiAndMobile: "Wi-Fi + mobile data",

@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Dimensions, Pressable, ScrollView, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
 
 const ROUNDS = 10;
 const { width: SCREEN_W } = Dimensions.get("window");
@@ -44,6 +44,12 @@ const PIP_KEYS = [
 	"p7",
 	"p8",
 ] as const;
+
+type DiceStanding = {
+	playerIndex: number;
+	wins: number;
+	total: number;
+};
 
 function rollDie(): number {
 	return Math.floor(Math.random() * 6) + 1;
@@ -181,6 +187,19 @@ export default function DuelDiceGame() {
 	const canRoll = phase === "playing" && !isRolling && roundResult === null;
 	const activeColor = PLAYER_COLORS[activePlayer % PLAYER_COLORS.length];
 
+	const getStandings = (): DiceStanding[] =>
+		totals
+			.map((total, playerIndex) => ({
+				playerIndex,
+				wins: roundWins[playerIndex] ?? 0,
+				total,
+			}))
+			.sort((a, b) => {
+				if (a.wins !== b.wins) return b.wins - a.wins;
+				if (a.total !== b.total) return b.total - a.total;
+				return a.playerIndex - b.playerIndex;
+			});
+
 	const getWinner = (): string => {
 		const maxWins = Math.max(...roundWins);
 		const topByWins = roundWins
@@ -241,32 +260,84 @@ export default function DuelDiceGame() {
 
 	/* DONE */
 	if (phase === "done") {
+		const standings = getStandings();
+
 		return (
-			<View style={styles.root}>
+			<ScrollView
+				style={styles.resultScroll}
+				contentContainerStyle={styles.resultContent}
+				showsVerticalScrollIndicator={false}
+			>
 				<Text style={[styles.winnerText, { color: theme.text }]}>
 					{getWinner()}
 				</Text>
+				<Text style={[styles.resultSubtitle, { color: theme.mutedText }]}>
+					{t("diceGameOver")}
+				</Text>
 				<View style={styles.finalTable}>
-					{Array.from({ length: playerCount }, (_, i) => (
+					{standings.map((standing, rank) => (
 						<View
-							key={i}
-							style={[styles.finalRow, { borderColor: theme.border + "44" }]}
+							key={standing.playerIndex}
+							style={[
+								styles.finalRow,
+								{
+									backgroundColor:
+										rank === 0
+											? `${PLAYER_COLORS[standing.playerIndex]}18`
+											: theme.card,
+									borderColor:
+										rank === 0
+											? PLAYER_COLORS[standing.playerIndex]
+											: theme.border,
+								},
+							]}
 						>
+							<Text style={[styles.finalRank, { color: theme.mutedText }]}>
+								#{rank + 1}
+							</Text>
 							<View
-								style={[
-									styles.playerDot,
-									{ backgroundColor: PLAYER_COLORS[i] },
-								]}
-							/>
-							<Text style={[styles.finalName, { color: theme.text }]}>
-								{t("mpPlayerN", { n: i + 1 })}
-							</Text>
-							<Text style={[styles.finalStat, { color: theme.mutedText }]}>
-								{roundWins[i]} {t("diceWinsLabel")}
-							</Text>
-							<Text style={[styles.finalStat, { color: theme.tint }]}>
-								{totals[i]} {t("dicePtsLabel")}
-							</Text>
+								style={styles.finalPlayer}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<View
+									style={[
+										styles.playerDot,
+										{ backgroundColor: PLAYER_COLORS[standing.playerIndex] },
+									]}
+								/>
+								<Text style={[styles.finalName, { color: theme.text }]}>
+									{t("mpPlayerN", { n: standing.playerIndex + 1 })}
+								</Text>
+							</View>
+							<View
+								style={styles.finalMetric}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<Text style={[styles.finalMetricValue, { color: theme.text }]}>
+									{standing.wins}
+								</Text>
+								<Text
+									style={[styles.finalMetricLabel, { color: theme.mutedText }]}
+								>
+									{t("diceWinsLabel")}
+								</Text>
+							</View>
+							<View
+								style={styles.finalMetric}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<Text style={[styles.finalMetricValue, { color: theme.tint }]}>
+									{standing.total}
+								</Text>
+								<Text
+									style={[styles.finalMetricLabel, { color: theme.mutedText }]}
+								>
+									{t("dicePtsLabel")}
+								</Text>
+							</View>
 						</View>
 					))}
 				</View>
@@ -276,7 +347,7 @@ export default function DuelDiceGame() {
 				>
 					<Text style={styles.startBtnText}>{t("playAgain")}</Text>
 				</Pressable>
-			</View>
+			</ScrollView>
 		);
 	}
 
@@ -292,49 +363,60 @@ export default function DuelDiceGame() {
 				{Array.from({ length: playerCount }, (_, i) => {
 					const isActive = i === activePlayer;
 					const rolled = currentRolls[i];
+					const playerColor = PLAYER_COLORS[i];
 					return (
 						<View
-							key={i}
+							key={`player-${i + 1}`}
 							style={[
 								styles.scoreCard,
 								{
-									borderColor: isActive
-										? PLAYER_COLORS[i]
-										: theme.border + "44",
-									backgroundColor: isActive
-										? PLAYER_COLORS[i] + "18"
-										: "transparent",
+									borderColor: isActive ? playerColor : theme.border + "44",
+									backgroundColor: isActive ? playerColor + "16" : theme.card,
 								},
 							]}
 						>
+							<View style={styles.scoreCardHeader}>
+								<View
+									style={[styles.playerDot, { backgroundColor: playerColor }]}
+								/>
+								<Text
+									style={[
+										styles.scoreCardName,
+										{ color: isActive ? playerColor : theme.mutedText },
+									]}
+								>
+									P{i + 1}
+								</Text>
+							</View>
 							<View
 								style={[
-									styles.playerDot,
-									{ backgroundColor: PLAYER_COLORS[i] },
-								]}
-							/>
-							<Text
-								style={[
-									styles.scoreCardName,
-									{ color: isActive ? PLAYER_COLORS[i] : theme.mutedText },
+									styles.rollBadge,
+									{
+										backgroundColor:
+											rolled !== null ? playerColor + "20" : theme.surface,
+										borderColor:
+											rolled !== null || isActive ? playerColor : theme.border,
+									},
 								]}
 							>
-								P{i + 1}
-							</Text>
-							<Text style={[styles.scoreCardWins, { color: theme.text }]}>
-								{roundWins[i]}W
-							</Text>
-							<Text style={[styles.scoreCardPts, { color: theme.mutedText }]}>
-								{totals[i]}
-							</Text>
-							{rolled !== null && (
 								<Text
-									style={[styles.scoreCardRoll, { color: PLAYER_COLORS[i] }]}
+									style={[
+										styles.rollBadgeText,
+										{
+											color:
+												rolled !== null || isActive
+													? playerColor
+													: theme.mutedText,
+										},
+									]}
 								>
-									{"\uD83C\uDFB2"}
-									{rolled}
+									{rolled ?? "-"}
 								</Text>
-							)}
+							</View>
+							<Text style={[styles.scoreCardMeta, { color: theme.mutedText }]}>
+								{roundWins[i]} {t("diceWinsLabel")} · {totals[i]}{" "}
+								{t("dicePtsLabel")}
+							</Text>
 						</View>
 					);
 				})}
@@ -423,39 +505,65 @@ const styles = StyleSheet.create({
 	countBtnText: { fontSize: 20, fontWeight: "800" },
 	startBtn: { paddingHorizontal: 40, paddingVertical: 14, borderRadius: 12 },
 	startBtnText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+	resultScroll: { flex: 1, width: "100%" },
+	resultContent: {
+		flexGrow: 1,
+		paddingHorizontal: 12,
+		paddingVertical: 18,
+		justifyContent: "center",
+		alignItems: "center",
+	},
 	winnerText: {
-		fontSize: 32,
+		fontSize: 28,
 		fontWeight: "900",
-		marginBottom: 20,
+		marginBottom: 4,
 		textAlign: "center",
 	},
-	finalTable: { width: "100%", gap: 6, marginBottom: 24 },
+	resultSubtitle: { fontSize: 13, fontWeight: "700", marginBottom: 14 },
+	finalTable: { width: "100%", gap: 8, marginBottom: 20 },
 	finalRow: {
 		flexDirection: "row",
 		alignItems: "center",
-		gap: 10,
+		gap: 8,
 		paddingVertical: 10,
-		paddingHorizontal: 14,
-		borderBottomWidth: 1,
-	},
-	finalName: { fontSize: 16, fontWeight: "700", flex: 1 },
-	finalStat: { fontSize: 14, fontWeight: "600", width: 65, textAlign: "right" },
-	scoreScroll: { maxHeight: 70, flexGrow: 0 },
-	scoreContainer: { gap: 8, paddingHorizontal: 4, alignItems: "center" },
-	scoreCard: {
-		alignItems: "center",
-		paddingVertical: 6,
 		paddingHorizontal: 10,
+		borderRadius: 14,
+		borderWidth: 1.5,
+	},
+	finalRank: {
+		width: 28,
+		fontSize: 13,
+		fontWeight: "900",
+		textAlign: "center",
+	},
+	finalPlayer: { flex: 1, flexDirection: "row", alignItems: "center", gap: 8 },
+	finalName: { fontSize: 15, fontWeight: "800", flexShrink: 1 },
+	finalMetric: { width: 54, alignItems: "flex-end" },
+	finalMetricValue: { fontSize: 16, fontWeight: "900" },
+	finalMetricLabel: { fontSize: 10, fontWeight: "700" },
+	scoreScroll: { maxHeight: 86, flexGrow: 0 },
+	scoreContainer: { gap: 8, paddingHorizontal: 4, alignItems: "stretch" },
+	scoreCard: {
+		alignItems: "stretch",
+		paddingVertical: 8,
+		paddingHorizontal: 9,
 		borderRadius: 10,
 		borderWidth: 1.5,
-		minWidth: 52,
-		gap: 1,
+		minWidth: 86,
+		gap: 5,
 	},
 	playerDot: { width: 10, height: 10, borderRadius: 5 },
-	scoreCardName: { fontSize: 11, fontWeight: "800" },
-	scoreCardWins: { fontSize: 13, fontWeight: "700" },
-	scoreCardPts: { fontSize: 10, fontWeight: "600" },
-	scoreCardRoll: { fontSize: 12, fontWeight: "800" },
+	scoreCardHeader: { flexDirection: "row", alignItems: "center", gap: 5 },
+	scoreCardName: { fontSize: 11, fontWeight: "900" },
+	rollBadge: {
+		minHeight: 28,
+		borderRadius: 8,
+		borderWidth: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	rollBadgeText: { fontSize: 18, fontWeight: "900" },
+	scoreCardMeta: { fontSize: 10, fontWeight: "700", textAlign: "center" },
 	dieArea: { flex: 1, alignItems: "center", justifyContent: "center", gap: 12 },
 	dieFace: {
 		width: DIE_SIZE,

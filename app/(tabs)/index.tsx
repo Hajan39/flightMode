@@ -24,7 +24,15 @@ import {
 	getRemainingMinutes,
 	useFlightStore,
 } from "@/store/useFlightStore";
+import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+
+function getPlayModeLabelKey(playMode?: GamePlayMode) {
+	if (playMode === "passAndPlay") return "playTogetherPassAndPlay";
+	if (playMode === "sharedScreen") return "playTogetherSharedScreen";
+	if (playMode === "crossDevice") return "playTogetherCrossDevice";
+	return "playTogetherBestOfMode";
+}
 
 function getDayOfYear(date: Date) {
 	const start = new Date(date.getFullYear(), 0, 0);
@@ -57,10 +65,9 @@ export default function HomeScreen() {
 	const remainingH = Math.floor(remainingRounded / 60);
 	const remainingM = remainingRounded % 60;
 	const arrivalTime = flight
-		? new Date(flight.departureTime + flight.duration * 60000).toLocaleTimeString(
-				[],
-				{ hour: "2-digit", minute: "2-digit" },
-			)
+		? new Date(
+				flight.departureTime + flight.duration * 60000,
+			).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 		: null;
 	const preferredCategoriesEn =
 		remaining > 120
@@ -90,7 +97,9 @@ export default function HomeScreen() {
 	const challengeOfDay =
 		dailyChallengeGames[getDayOfYear(new Date()) % dailyChallengeGames.length];
 
-	const openHomeAction = (target: "games" | "explore" | "relax" | "profile") => {
+	const openHomeAction = (
+		target: "games" | "explore" | "relax" | "profile",
+	) => {
 		captureAnalyticsEvent("home_action_open", { target });
 		router.push(
 			target === "profile" ? "/profile" : (`/(tabs)/${target}` as never),
@@ -396,13 +405,7 @@ export default function HomeScreen() {
 							<Text
 								style={[styles.playTogetherMeta, { color: theme.mutedText }]}
 							>
-								{game.id === "duel-dice" || game.id === "duel-hangman"
-									? t("playTogetherPassAndPlay")
-									: game.id === "duel-emoji-find"
-										? t("playTogetherSharedScreen")
-										: game.id.startsWith("cross-")
-											? t("playTogetherCrossDevice")
-											: t("playTogetherBestOfMode")}
+								{t(getPlayModeLabelKey(game.playMode))}
 							</Text>
 						</AnimatedPressable>
 					))}

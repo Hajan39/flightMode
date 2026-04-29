@@ -114,7 +114,7 @@ export const cs = {
 	gameStackSortDescription:
 		"Seřaď čísla do cílového sloupce - pohodová logická hra",
 	gameDuelTicTacToeName: "Piškvorky Duo",
-	gameDuelTicTacToeDescription: "Dva hráči na jednom zařízení",
+	gameDuelTicTacToeDescription: "Volba klasiky 3x3 nebo rostoucích piškvorek",
 	gameDuelDiceName: "Kostkový duel",
 	gameDuelDiceDescription: "Střídavý duel na kostkách",
 	gameDuelConnect4Name: "Connect 4 Duo",
@@ -152,7 +152,7 @@ export const cs = {
 	rulesStackSort:
 		"🎯 Cíl\n• Seřaďte všechny karty do cílového sloupce.\n\n🗂️ Jak hrát\n• Ťukněte na kartu, abyste ji zvedli.\n• Položte ji na prázdné místo nebo na kartu s vyšším číslem.\n• V cílovém sloupci musí být karty vzestupně.\n\n⭐ Tip\n• Využívejte dočasné sloty strategicky — plánujte dopředu!",
 	rulesTicTacToe:
-		"🎯 Cíl\n• Dejte tři své značky do řady!\n\n❌⭕ Jak hrát\n• Dva hráči se střídají na jednom zařízení.\n• Hráč 1 dává ✕, Hráč 2 dává ○.\n• Umístěte značku na libovolné prázdné pole.\n\n🏆 Výhra\n• Kdo dá první 3 v řadě (vodorovně, svisle nebo úhlopříčně), vyhrává.\n• Pokud se deska zaplní bez vítěze — remíza!",
+		"🎯 Cíl\n• Vyberte klasiku 3x3 nebo rostoucí pět v řadě.\n\n❌⭕ Jak hrát\n• Dva hráči se střídají na jednom zařízení.\n• Hráč 1 dává ✕, Hráč 2 dává ○.\n• Režim 3x3: dejte 3 značky do řady.\n• Režim 5+: začíná 5x5, hraje se na 5 v řadě a tah na okraj rozšíří desku až do 30x30.\n\n🏆 Výhra\n• Počítá se vodorovně, svisle i úhlopříčně.\n• Pokud se deska zaplní bez vítěze — remíza!",
 	rulesDice:
 		"🎯 Cíl\n• Nahoďte nejvyšší součet za více kol.\n\n🎲 Jak hrát\n• 2–6 hráčů se střídá v hodu kostkami.\n• Po každém hodu si vyberte, které kostky si necháte.\n• Zbytek přehoďte a zkuste lepší součet.\n\n🏆 Výhra\n• Nejvyšší celkové skóre po všech kolech vyhrává!",
 	rulesConnect4:

@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 
 import type { TranslationKey } from "@/i18n/translations";
-import type { GameCategory, GameDifficulty } from "@/types/game";
+import type { GameCategory, GameDifficulty, GamePlayMode } from "@/types/game";
 
 export type GameDefinition = {
 	id: string;
@@ -14,6 +14,7 @@ export type GameDefinition = {
 	difficulty: GameDifficulty;
 	isDailyChallenge?: boolean;
 	isPlayTogether?: boolean;
+	playMode?: GamePlayMode;
 	loadComponent: () => ComponentType;
 };
 
@@ -23,7 +24,7 @@ export const gameRegistry: GameDefinition[] = [
 		titleKey: "gameMemoryName",
 		descriptionKey: "gameMemoryListDescription",
 		rulesKey: "rulesMemory",
-		estimatedTime: 10,
+		estimatedTime: 5,
 		icon: "grid-outline",
 		category: "brain",
 		difficulty: "easy",
@@ -38,6 +39,7 @@ export const gameRegistry: GameDefinition[] = [
 		icon: "finger-print-outline",
 		category: "reflex",
 		difficulty: "easy",
+		isDailyChallenge: true,
 		loadComponent: () => require("@/games/tap-rush").default,
 	},
 	{
@@ -49,6 +51,7 @@ export const gameRegistry: GameDefinition[] = [
 		icon: "calculator-outline",
 		category: "brain",
 		difficulty: "medium",
+		isDailyChallenge: true,
 		loadComponent: () => require("@/games/sky-math").default,
 	},
 	{
@@ -60,7 +63,6 @@ export const gameRegistry: GameDefinition[] = [
 		icon: "help-circle-outline",
 		category: "brain",
 		difficulty: "medium",
-		isDailyChallenge: true,
 		loadComponent: () => require("@/games/quiz").default,
 	},
 	{
@@ -92,7 +94,7 @@ export const gameRegistry: GameDefinition[] = [
 		titleKey: "gameCabinCallName",
 		descriptionKey: "gameCabinCallDescription",
 		rulesKey: "rulesCabinCall",
-		estimatedTime: 3,
+		estimatedTime: 1,
 		icon: "megaphone-outline",
 		category: "reflex",
 		difficulty: "medium",
@@ -104,7 +106,7 @@ export const gameRegistry: GameDefinition[] = [
 		titleKey: "gameAirTrafficControlName",
 		descriptionKey: "gameAirTrafficControlDescription",
 		rulesKey: "rulesAirTrafficControl",
-		estimatedTime: 12,
+		estimatedTime: 8,
 		icon: "navigate-outline",
 		category: "strategy",
 		difficulty: "hard",
@@ -137,10 +139,10 @@ export const gameRegistry: GameDefinition[] = [
 		titleKey: "gameStackSortName",
 		descriptionKey: "gameStackSortDescription",
 		rulesKey: "rulesStackSort",
-		estimatedTime: 5,
+		estimatedTime: 7,
 		icon: "layers-outline",
 		category: "brain",
-		difficulty: "medium",
+		difficulty: "hard",
 		loadComponent: () => require("@/games/stack-sort").default,
 	},
 	{
@@ -148,11 +150,12 @@ export const gameRegistry: GameDefinition[] = [
 		titleKey: "gameDuelTicTacToeName",
 		descriptionKey: "gameDuelTicTacToeDescription",
 		rulesKey: "rulesTicTacToe",
-		estimatedTime: 4,
+		estimatedTime: 7,
 		icon: "people-outline",
 		category: "multiplayer",
-		difficulty: "easy",
+		difficulty: "medium",
 		isPlayTogether: true,
+		playMode: "sharedScreen",
 		loadComponent: () => require("@/games/duel-tictactoe").default,
 	},
 	{
@@ -165,6 +168,7 @@ export const gameRegistry: GameDefinition[] = [
 		category: "multiplayer",
 		difficulty: "easy",
 		isPlayTogether: true,
+		playMode: "passAndPlay",
 		loadComponent: () => require("@/games/duel-dice").default,
 	},
 	{
@@ -177,6 +181,7 @@ export const gameRegistry: GameDefinition[] = [
 		category: "multiplayer",
 		difficulty: "medium",
 		isPlayTogether: true,
+		playMode: "sharedScreen",
 		loadComponent: () => require("@/games/duel-connect4").default,
 	},
 	{
@@ -189,6 +194,7 @@ export const gameRegistry: GameDefinition[] = [
 		category: "multiplayer",
 		difficulty: "easy",
 		isPlayTogether: true,
+		playMode: "passAndPlay",
 		loadComponent: () => require("@/games/duel-emoji-find").default,
 	},
 	{
@@ -201,6 +207,7 @@ export const gameRegistry: GameDefinition[] = [
 		category: "multiplayer",
 		difficulty: "medium",
 		isPlayTogether: true,
+		playMode: "passAndPlay",
 		loadComponent: () => require("@/games/duel-hangman").default,
 	},
 	{
@@ -213,6 +220,7 @@ export const gameRegistry: GameDefinition[] = [
 		category: "multiplayer",
 		difficulty: "medium",
 		isPlayTogether: true,
+		playMode: "passAndPlay",
 		loadComponent: () => require("@/games/cross-air-radar").default,
 	},
 	{
@@ -225,6 +233,7 @@ export const gameRegistry: GameDefinition[] = [
 		category: "multiplayer",
 		difficulty: "hard",
 		isPlayTogether: true,
+		playMode: "passAndPlay",
 		loadComponent: () => require("@/games/cross-code-breaker").default,
 	},
 	{
@@ -232,11 +241,12 @@ export const gameRegistry: GameDefinition[] = [
 		titleKey: "gameCrossLiarsDiceName",
 		descriptionKey: "gameCrossLiarsDiceDescription",
 		rulesKey: "rulesLiarsDice",
-		estimatedTime: 6,
+		estimatedTime: 8,
 		icon: "skull-outline",
 		category: "multiplayer",
 		difficulty: "hard",
 		isPlayTogether: true,
+		playMode: "passAndPlay",
 		loadComponent: () => require("@/games/cross-liars-dice").default,
 	},
 ];

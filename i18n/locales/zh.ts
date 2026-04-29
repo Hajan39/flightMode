@@ -94,8 +94,8 @@
 	gameSkyDefenseDescription: "建造防御塔保护机场免受风暴侵袭",
 	gameStackSortName: "堆栈排序",
 	gameStackSortDescription: "将数字排序到目标列 - 轻松益智挑战",
-	gameDuelTicTacToeName: "井字棋对战",
-	gameDuelTicTacToeDescription: "双人同设备对战",
+	gameDuelTicTacToeName: "井字棋/五子棋对战",
+	gameDuelTicTacToeDescription: "选择3x3经典或扩展五子棋",
 	gameDuelDiceName: "骰子对决",
 	gameDuelDiceDescription: "轮流掷骰子比赛",
 	gameDuelConnect4Name: "四子棋双人",
@@ -133,7 +133,7 @@
 	rulesStackSort:
 		"🎯 目标\n• 将所有卡片排入目标列。\n\n🗂️ 玩法\n• 点击卡片拾取。\n• 放在空位或更大数字的卡片上。\n• 目标列中的卡片必须按升序排列。\n\n⭐ 提示\n• 战略性地使用临时位置 — 提前规划！",
 	rulesTicTacToe:
-		"🎯 目标\n• 将三个标记连成一线！\n\n❌⭕ 玩法\n• 两位玩家在一台设备上轮流对战。\n• 玩家1放置 ✕，玩家2放置 ○。\n• 在任意空格放置你的标记。\n\n🏆 获胜\n• 先连成3个（横、竖或斜）的获胜。\n• 如果棋盘填满无赢家 — 平局！",
+		"🎯 目标\n• 选择3x3经典或扩展五子棋。\n\n❌⭕ 玩法\n• 两位玩家在一台设备上轮流对战。\n• 玩家1放置 ✕，玩家2放置 ○。\n• 3x3模式：连成3个获胜。\n• 5+模式：从5x5开始，连成5个获胜，边缘落子会扩展到最多30x30。\n\n🏆 获胜\n• 横、竖、斜都有效。\n• 如果棋盘填满无赢家 — 平局！",
 	rulesDice:
 		"🎯 目标\n• 在多轮中获得最高总和。\n\n🎲 玩法\n• 2–6位玩家轮流掷骰子。\n• 每次投掷后选择保留哪些骰子。\n• 重掷其余以提高总和。\n\n🏆 获胜\n• 所有轮次后最高总分获胜！",
 	rulesConnect4:

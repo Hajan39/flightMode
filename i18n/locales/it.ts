@@ -101,7 +101,7 @@
 	gameStackSortDescription:
 		"Ordina i numeri nella colonna obiettivo - un puzzle rilassante",
 	gameDuelTicTacToeName: "Tris Duo",
-	gameDuelTicTacToeDescription: "Due giocatori su un dispositivo",
+	gameDuelTicTacToeDescription: "Scegli 3x3 classico o 5 in fila crescente",
 	gameDuelDiceName: "Duello di dadi",
 	gameDuelDiceDescription: "Partita a dadi a turni",
 	gameDuelConnect4Name: "Forza 4 Duo",
@@ -140,7 +140,7 @@
 	rulesStackSort:
 		"🎯 Obiettivo\n• Ordina tutte le carte nella colonna obiettivo.\n\n🗂️ Come giocare\n• Tocca una carta per prenderla.\n• Mettila su uno spazio vuoto o su una carta più grande.\n• Le carte nella colonna obiettivo devono essere in ordine crescente.\n\n⭐ Suggerimento\n• Usa gli spazi temporanei strategicamente — pianifica!",
 	rulesTicTacToe:
-		"🎯 Obiettivo\n• Metti tre dei tuoi simboli in fila!\n\n❌⭕ Come giocare\n• Due giocatori si alternano su un dispositivo.\n• Giocatore 1 mette ✕, Giocatore 2 mette ○.\n• Piazza il simbolo su una casella vuota.\n\n🏆 Vittoria\n• Il primo a fare 3 in fila (orizzontale, verticale o diagonale) vince.\n• Se la griglia è piena senza vincitore — pareggio!",
+		"🎯 Obiettivo\n• Scegli 3x3 classico o cinque in fila crescente.\n\n❌⭕ Come giocare\n• Due giocatori si alternano su un dispositivo.\n• Giocatore 1 mette ✕, Giocatore 2 mette ○.\n• Modalità 3x3: fai 3 in fila.\n• Modalità 5+: parte da 5x5, vinci con 5 in fila e i bordi espandono fino a 30x30.\n\n🏆 Vittoria\n• Contano orizzontale, verticale e diagonale.\n• Se la griglia si riempie senza vincitore — pareggio!",
 	rulesDice:
 		"🎯 Obiettivo\n• Ottieni il totale più alto su più round.\n\n🎲 Come giocare\n• 2–6 giocatori lanciano i dadi a turno.\n• Dopo ogni lancio, scegli quali dadi tenere.\n• Rilancia il resto per un totale migliore.\n\n🏆 Vittoria\n• Il punteggio totale più alto dopo tutti i round vince!",
 	rulesConnect4:
@@ -774,34 +774,44 @@
 	cbSecretWas: "Il codice segreto era",
 	// Support
 	articleNotFoundHint: "Prova ad aprirlo di nuovo da Esplora.",
-	exploreBrowseHint: "Scopri letture brevi e consigli pratici per questo viaggio.",
-	exploreReadingHint: "Formato breve, pensato per una lettura concentrata in volo.",
+	exploreBrowseHint:
+		"Scopri letture brevi e consigli pratici per questo viaggio.",
+	exploreReadingHint:
+		"Formato breve, pensato per una lettura concentrata in volo.",
 	exploreToolsHint: "Cerca, filtra e ordina in base al tuo focus attuale.",
 	gameNotFoundHint: "Torna ai Giochi e avvia un altro titolo.",
 	gamesBrowseHint: "Scegli un gioco adatto al tuo tempo e alla tua energia.",
-	gamesFilterHint: "Filtra per modalità per trovare la prossima sessione rapida.",
+	gamesFilterHint:
+		"Filtra per modalità per trovare la prossima sessione rapida.",
 	gamesSearchPlaceholder: "Cerca giochi",
 	homeDailyChallengeHint: "Una run concentrata per mantenere viva la serie.",
 	homeFlightHint: "Timer di volo opzionale e consigli leggeri.",
-	homePlayTogetherHint: "Giochi rapidi stile multiplayer su schermo condiviso o a turni.",
-	homeProgressHint: "La tua istantanea locale dei progressi per questo viaggio.",
+	homePlayTogetherHint:
+		"Giochi rapidi stile multiplayer su schermo condiviso o a turni.",
+	homeProgressHint:
+		"La tua istantanea locale dei progressi per questo viaggio.",
 	homeQuickActionsHint: "Scegli la modalità: gioca, esplora o rilassati.",
-	profileAchievementsHint: "Traguardi sbloccati con l'uso costante durante il volo.",
-	profileHighScoresHint: "I tuoi migliori risultati di gioco nello storico sessioni.",
+	profileAchievementsHint:
+		"Traguardi sbloccati con l'uso costante durante il volo.",
+	profileHighScoresHint:
+		"I tuoi migliori risultati di gioco nello storico sessioni.",
 	profileStatsHint: "La tua attività tra gioco, lettura, volo e relax.",
 	relaxBreathingHint: "Usa un ciclo calmo per ritrovare la concentrazione.",
-	relaxSleepTimerHint: "Imposta lo stop automatico così l'audio finisce da solo.",
+	relaxSleepTimerHint:
+		"Imposta lo stop automatico così l'audio finisce da solo.",
 	relaxSoundscapesHint: "Scegli un suono di sottofondo e mantienilo stabile.",
 	settingsAppPreferences: "Preferenze app",
 	settingsAppPreferencesHint: "Controlla lingua e aspetto in un solo posto.",
 	settingsLanguageHint: "Scegli come viene mostrato il testo dell'app.",
 	settingsThemeHint: "Cambia lo stile visivo in base all'ambiente e all'umore.",
 	settingsSync: "Sync articoli",
-	settingsSyncHint: "Scegli quando FlightMode può scaricare nuovi articoli di viaggio.",
+	settingsSyncHint:
+		"Scegli quando FlightMode può scaricare nuovi articoli di viaggio.",
 	settingsSyncWifiOnly: "Solo Wi-Fi",
 	settingsSyncWifiOnlyHint: "Consigliato. Sync solo su Wi-Fi o Ethernet.",
 	settingsSyncWifiAndMobile: "Wi-Fi + dati mobili",
-	settingsSyncWifiAndMobileHint: "Sync ogni volta che internet è raggiungibile.",
+	settingsSyncWifiAndMobileHint:
+		"Sync ogni volta che internet è raggiungibile.",
 	settingsSyncOff: "Disattivato",
 	settingsSyncOffHint: "Usa solo gli articoli offline inclusi nell'app.",
 	settingsSupport: "Supporto",

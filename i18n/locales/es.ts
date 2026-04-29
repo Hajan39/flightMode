@@ -101,7 +101,7 @@
 	gameStackSortDescription:
 		"Ordena números en la columna objetivo - un desafío puzzle relajado",
 	gameDuelTicTacToeName: "Tres en raya Duo",
-	gameDuelTicTacToeDescription: "Dos jugadores en un dispositivo",
+	gameDuelTicTacToeDescription: "Elige 3x3 clásico o 5 en raya creciente",
 	gameDuelDiceName: "Duelo de dados",
 	gameDuelDiceDescription: "Partida de dados por turnos",
 	gameDuelConnect4Name: "Conecta 4 Duo",
@@ -140,7 +140,7 @@
 	rulesStackSort:
 		"🎯 Objetivo\n• Ordena todas las cartas en la columna objetivo.\n\n🗂️ Cómo jugar\n• Toca una carta para levantarla.\n• Colócala en un espacio vacío o sobre una carta mayor.\n• Las cartas en la columna objetivo deben estar en orden ascendente.\n\n⭐ Consejo\n• ¡Usa los espacios temporales estratégicamente — planifica!",
 	rulesTicTacToe:
-		"🎯 Objetivo\n• ¡Coloca tres marcas en línea!\n\n❌⭕ Cómo jugar\n• Dos jugadores se turnan en un dispositivo.\n• Jugador 1 pone ✕, Jugador 2 pone ○.\n• Coloca tu marca en cualquier celda vacía.\n\n🏆 Victoria\n• El primero en hacer 3 en línea (horizontal, vertical o diagonal) gana.\n• Si el tablero se llena sin ganador — ¡empate!",
+		"🎯 Objetivo\n• Elige 3x3 clásico o cinco en raya creciente.\n\n❌⭕ Cómo jugar\n• Dos jugadores se turnan en un dispositivo.\n• Jugador 1 pone ✕, Jugador 2 pone ○.\n• Modo 3x3: consigue 3 en línea.\n• Modo 5+: empieza 5x5, gana con 5 en línea y los bordes expanden hasta 30x30.\n\n🏆 Victoria\n• Cuentan horizontal, vertical y diagonal.\n• Si el tablero se llena sin ganador — ¡empate!",
 	rulesDice:
 		"🎯 Objetivo\n• Consigue el mayor total en varias rondas.\n\n🎲 Cómo jugar\n• 2–6 jugadores lanzan dados por turnos.\n• Tras cada lanzamiento, elige qué dados quedarte.\n• Vuelve a lanzar el resto para mejorar tu total.\n\n🏆 Victoria\n• ¡La mayor puntuación total tras todas las rondas gana!",
 	rulesConnect4:
@@ -779,8 +779,10 @@
 	cbSecretWas: "El código secreto era",
 	// Support
 	articleNotFoundHint: "Intenta abrirlo de nuevo desde Explorar.",
-	exploreBrowseHint: "Descubre lecturas breves y consejos prácticos para este viaje.",
-	exploreReadingHint: "Formato corto, pensado para leer con concentración durante el vuelo.",
+	exploreBrowseHint:
+		"Descubre lecturas breves y consejos prácticos para este viaje.",
+	exploreReadingHint:
+		"Formato corto, pensado para leer con concentración durante el vuelo.",
 	exploreToolsHint: "Busca, filtra y ordena según tu foco actual.",
 	gameNotFoundHint: "Vuelve a Juegos e inicia otro título.",
 	gamesBrowseHint: "Elige un juego que encaje con tu tiempo y energía.",
@@ -788,25 +790,32 @@
 	gamesSearchPlaceholder: "Buscar juegos",
 	homeDailyChallengeHint: "Una partida enfocada para mantener viva tu racha.",
 	homeFlightHint: "Temporizador de vuelo opcional y recomendaciones ligeras.",
-	homePlayTogetherHint: "Juegos rápidos tipo multijugador en pantalla compartida o por turnos.",
+	homePlayTogetherHint:
+		"Juegos rápidos tipo multijugador en pantalla compartida o por turnos.",
 	homeProgressHint: "Tu resumen local de progreso para este viaje.",
 	homeQuickActionsHint: "Elige tu modo: jugar, explorar o reiniciar.",
-	profileAchievementsHint: "Hitos desbloqueados por uso constante durante el vuelo.",
-	profileHighScoresHint: "Tus mejores resultados de juego en el historial de sesiones.",
+	profileAchievementsHint:
+		"Hitos desbloqueados por uso constante durante el vuelo.",
+	profileHighScoresHint:
+		"Tus mejores resultados de juego en el historial de sesiones.",
 	profileStatsHint: "Resumen de actividad en juegos, lectura, vuelo y relax.",
 	relaxBreathingHint: "Usa un ciclo tranquilo para recuperar la concentración.",
-	relaxSleepTimerHint: "Configura una parada automática para que el audio termine solo.",
+	relaxSleepTimerHint:
+		"Configura una parada automática para que el audio termine solo.",
 	relaxSoundscapesHint: "Elige un sonido de fondo y mantenlo estable.",
 	settingsAppPreferences: "Preferencias de la app",
 	settingsAppPreferencesHint: "Controla idioma y apariencia en un solo lugar.",
 	settingsLanguageHint: "Elige cómo se muestra el texto de la app.",
 	settingsThemeHint: "Cambia el estilo visual según el entorno y tu ánimo.",
 	settingsSync: "Sincronización de artículos",
-	settingsSyncHint: "Elige cuándo FlightMode puede descargar artículos de viaje nuevos.",
+	settingsSyncHint:
+		"Elige cuándo FlightMode puede descargar artículos de viaje nuevos.",
 	settingsSyncWifiOnly: "Solo Wi-Fi",
-	settingsSyncWifiOnlyHint: "Recomendado. Sincroniza solo por Wi-Fi o Ethernet.",
+	settingsSyncWifiOnlyHint:
+		"Recomendado. Sincroniza solo por Wi-Fi o Ethernet.",
 	settingsSyncWifiAndMobile: "Wi-Fi + datos móviles",
-	settingsSyncWifiAndMobileHint: "Sincroniza siempre que internet esté disponible.",
+	settingsSyncWifiAndMobileHint:
+		"Sincroniza siempre que internet esté disponible.",
 	settingsSyncOff: "Desactivado",
 	settingsSyncOffHint: "Usar solo artículos offline incluidos en la app.",
 	settingsSupport: "Soporte",

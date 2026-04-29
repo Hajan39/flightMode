@@ -1,22 +1,52 @@
-import { useMemo, useState } from "react";
-import {
-	StyleSheet,
-	FlatList,
-	ScrollView,
-	TextInput,
-} from "react-native";
-import Animated, { FadeInDown } from "react-native-reanimated";
-import { useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-
-import { Text, View } from "@/components/Themed";
 import AnimatedPressable from "@/components/AnimatedPressable";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { gameRegistry } from "@/data/games";
+import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
-import type { GameConfig, GameCategory, GameDifficulty } from "@/types/game";
+import type { GameCategory, GameConfig, GamePlayMode } from "@/types/game";
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { useMemo, useState } from "react";
+import { FlatList, ScrollView, StyleSheet, TextInput } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
+
+type GameListItem = GameConfig & {
+	isDailyChallenge: boolean;
+	isPlayTogether: boolean;
+};
+
+type GameIntent = "all" | "quick" | "together" | "deep";
+
+function getPlayModeMeta(playMode?: GamePlayMode): {
+	labelKey:
+		| "playTogetherBestOfMode"
+		| "playTogetherPassAndPlay"
+		| "playTogetherSharedScreen"
+		| "playTogetherCrossDevice";
+	icon: keyof typeof Ionicons.glyphMap;
+} {
+	if (playMode === "passAndPlay") {
+		return {
+			labelKey: "playTogetherPassAndPlay",
+			icon: "swap-horizontal-outline",
+		};
+	}
+	if (playMode === "sharedScreen") {
+		return {
+			labelKey: "playTogetherSharedScreen",
+			icon: "phone-portrait-outline",
+		};
+	}
+	if (playMode === "crossDevice") {
+		return {
+			labelKey: "playTogetherCrossDevice",
+			icon: "phone-landscape-outline",
+		};
+	}
+	return { labelKey: "playTogetherBestOfMode", icon: "ribbon-outline" };
+}
 
 const CATEGORIES: ("all" | GameCategory)[] = [
 	"all",
@@ -25,29 +55,6 @@ const CATEGORIES: ("all" | GameCategory)[] = [
 	"strategy",
 	"multiplayer",
 ];
-
-function getCategoryColor(category: GameCategory, colorScheme: "light" | "dark" | "crazy") {
-	if (colorScheme === "crazy") {
-		if (category === "brain") return "#c084fc";
-		if (category === "reflex") return "#fbbf24";
-		if (category === "strategy") return "#4ade80";
-		return "#22d3ee";
-	}
-	const isDark = colorScheme === "dark";
-	if (category === "brain") return isDark ? "#8b5cf6" : "#6d28d9";
-	if (category === "reflex") return isDark ? "#f59e0b" : "#d97706";
-	if (category === "strategy") return isDark ? "#22c55e" : "#15803d";
-	return isDark ? "#06b6d4" : "#0891b2";
-}
-
-function getDifficultyColor(
-	difficulty: GameDifficulty,
-	theme: (typeof Colors)[keyof typeof Colors],
-): string {
-	if (difficulty === "easy") return theme.successBorder;
-	if (difficulty === "medium") return theme.warning;
-	return "#ef4444";
-}
 
 export default function GamesScreen() {
 	const router = useRouter();
@@ -58,9 +65,33 @@ export default function GamesScreen() {
 	const [activeCategory, setActiveCategory] = useState<"all" | GameCategory>(
 		"all",
 	);
+	const [activeIntent, setActiveIntent] = useState<GameIntent>("all");
 	const [search, setSearch] = useState("");
 
-	const games: GameConfig[] = gameRegistry.map((game) => ({
+	const intentFilters: Array<{
+		key: GameIntent;
+		label: string;
+		icon: keyof typeof Ionicons.glyphMap;
+	}> = [
+		{ key: "all", label: t("categoryFilter_all"), icon: "grid-outline" },
+		{
+			key: "quick",
+			label: `≤ ${t("minutesShort", { minutes: 3 })}`,
+			icon: "flash-outline",
+		},
+		{
+			key: "together",
+			label: t("categoryFilter_multiplayer"),
+			icon: "people-outline",
+		},
+		{
+			key: "deep",
+			label: `7+ ${t("minutesShort", { minutes: 7 }).replace("7 ", "")}`,
+			icon: "layers-outline",
+		},
+	];
+
+	const games: GameListItem[] = gameRegistry.map((game) => ({
 		id: game.id,
 		name: t(game.titleKey),
 		description: t(game.descriptionKey),
@@ -68,14 +99,25 @@ export default function GamesScreen() {
 		icon: game.icon,
 		category: game.category,
 		difficulty: game.difficulty,
+		playMode: game.playMode,
+		isDailyChallenge: Boolean(game.isDailyChallenge),
+		isPlayTogether: Boolean(game.isPlayTogether),
 	}));
 
 	const filteredGames = useMemo(() => {
 		const query = search.trim().toLowerCase();
+		const inIntent = games.filter((game) => {
+			if (activeIntent === "quick") return game.estimatedTime <= 3;
+			if (activeIntent === "together") return game.isPlayTogether;
+			if (activeIntent === "deep") {
+				return game.estimatedTime >= 7 || game.difficulty === "hard";
+			}
+			return true;
+		});
 		const inCategory =
 			activeCategory === "all"
-				? games
-				: games.filter((g) => g.category === activeCategory);
+				? inIntent
+				: inIntent.filter((g) => g.category === activeCategory);
 
 		const searchedGames =
 			query.length === 0
@@ -102,13 +144,21 @@ export default function GamesScreen() {
 				}
 			}
 
+			if (a.isDailyChallenge !== b.isDailyChallenge) {
+				return Number(b.isDailyChallenge) - Number(a.isDailyChallenge);
+			}
+
+			if (a.isPlayTogether !== b.isPlayTogether) {
+				return Number(b.isPlayTogether) - Number(a.isPlayTogether);
+			}
+
 			if (a.estimatedTime !== b.estimatedTime) {
 				return a.estimatedTime - b.estimatedTime;
 			}
 
 			return a.name.localeCompare(b.name);
 		});
-	}, [activeCategory, games, progress, search]);
+	}, [activeCategory, activeIntent, games, progress, search]);
 
 	return (
 		<View style={styles.container}>
@@ -127,6 +177,44 @@ export default function GamesScreen() {
 					style={[styles.searchInput, { color: theme.text }]}
 				/>
 			</View>
+			<ScrollView
+				horizontal
+				showsHorizontalScrollIndicator={false}
+				contentContainerStyle={styles.intentBar}
+				style={styles.filterBarScroll}
+			>
+				{intentFilters.map((intent) => {
+					const isActive = intent.key === activeIntent;
+					return (
+						<AnimatedPressable
+							key={intent.key}
+							onPress={() => setActiveIntent(intent.key)}
+							scaleTo={0.95}
+							style={[
+								styles.intentChip,
+								{
+									backgroundColor: isActive ? theme.tint : theme.card,
+									borderColor: isActive ? theme.tint : theme.border,
+								},
+							]}
+						>
+							<Ionicons
+								name={intent.icon}
+								size={14}
+								color={isActive ? "#fff" : theme.mutedText}
+							/>
+							<Text
+								style={[
+									styles.filterChipText,
+									{ color: isActive ? "#fff" : theme.text },
+								]}
+							>
+								{intent.label}
+							</Text>
+						</AnimatedPressable>
+					);
+				})}
+			</ScrollView>
 			<ScrollView
 				horizontal
 				showsHorizontalScrollIndicator={false}
@@ -178,7 +266,7 @@ export default function GamesScreen() {
 				}
 				renderItem={({ item, index }) => {
 					const gameProgress = progress[item.id];
-					const categoryColor = getCategoryColor(item.category, colorScheme);
+					const playModeMeta = getPlayModeMeta(item.playMode);
 					return (
 						<Animated.View entering={FadeInDown.delay(index * 60).springify()}>
 							<AnimatedPressable
@@ -191,7 +279,11 @@ export default function GamesScreen() {
 								<View
 									style={[
 										styles.cardAccent,
-										{ backgroundColor: categoryColor },
+										{
+											backgroundColor: item.isDailyChallenge
+												? theme.tint
+												: theme.border,
+										},
 									]}
 									lightColor="transparent"
 									darkColor="transparent"
@@ -199,14 +291,32 @@ export default function GamesScreen() {
 								<Ionicons
 									name={item.icon as never}
 									size={32}
-									color={categoryColor}
+									color={theme.mutedText}
 								/>
 								<View
 									style={styles.cardContent}
 									lightColor="transparent"
 									darkColor="transparent"
 								>
-									<Text style={styles.cardTitle}>{item.name}</Text>
+									<View
+										style={styles.cardTitleRow}
+										lightColor="transparent"
+										darkColor="transparent"
+									>
+										<Text style={styles.cardTitle}>{item.name}</Text>
+										{item.isDailyChallenge ? (
+											<View
+												style={[
+													styles.iconBadge,
+													{ backgroundColor: theme.accentSoft },
+												]}
+												lightColor="transparent"
+												darkColor="transparent"
+											>
+												<Ionicons name="flash" size={11} color={theme.tint} />
+											</View>
+										) : null}
+									</View>
 									<Text style={[styles.cardDesc, { color: theme.mutedText }]}>
 										{item.description}
 									</Text>
@@ -240,27 +350,51 @@ export default function GamesScreen() {
 										<View
 											style={[
 												styles.metaChip,
-												{
-													backgroundColor: getDifficultyColor(
-														item.difficulty,
-														theme,
-													),
-												},
+												{ backgroundColor: theme.surface },
 											]}
 											lightColor="transparent"
 											darkColor="transparent"
 										>
-											<Text style={[styles.metaChipText, { color: "#fff" }]}>
+											<Text
+												style={[
+													styles.metaChipText,
+													{ color: theme.mutedText },
+												]}
+											>
 												{t(
 													`difficulty${item.difficulty.charAt(0).toUpperCase()}${item.difficulty.slice(1)}` as never,
 												)}
 											</Text>
 										</View>
+										{item.isPlayTogether ? (
+											<View
+												style={[
+													styles.metaChip,
+													{ backgroundColor: theme.surface },
+												]}
+												lightColor="transparent"
+												darkColor="transparent"
+											>
+												<Ionicons
+													name={playModeMeta.icon}
+													size={12}
+													color={theme.mutedText}
+												/>
+												<Text
+													style={[
+														styles.metaChipText,
+														{ color: theme.mutedText },
+													]}
+												>
+													{t(playModeMeta.labelKey)}
+												</Text>
+											</View>
+										) : null}
 										{gameProgress ? (
 											<View
 												style={[
 													styles.metaChip,
-													{ backgroundColor: theme.accentSoft },
+													{ backgroundColor: theme.surface },
 												]}
 												lightColor="transparent"
 												darkColor="transparent"
@@ -268,10 +402,13 @@ export default function GamesScreen() {
 												<Ionicons
 													name="trophy-outline"
 													size={12}
-													color={theme.tint}
+													color={theme.mutedText}
 												/>
 												<Text
-													style={[styles.metaChipText, { color: theme.tint }]}
+													style={[
+														styles.metaChipText,
+														{ color: theme.mutedText },
+													]}
 												>
 													{gameProgress.highScore}
 												</Text>
@@ -331,6 +468,22 @@ const styles = StyleSheet.create({
 		paddingBottom: 8,
 		gap: 8,
 	},
+	intentBar: {
+		paddingHorizontal: 16,
+		paddingTop: 0,
+		paddingBottom: 6,
+		gap: 8,
+	},
+	intentChip: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 5,
+		paddingHorizontal: 11,
+		paddingVertical: 7,
+		minHeight: 34,
+		borderRadius: 20,
+		borderWidth: 1,
+	},
 	filterChip: {
 		flexDirection: "row",
 		alignItems: "center",
@@ -364,7 +517,20 @@ const styles = StyleSheet.create({
 		width: 4,
 	},
 	cardContent: { flex: 1, marginLeft: 12 },
+	cardTitleRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 6,
+		flexWrap: "wrap",
+	},
 	cardTitle: { fontSize: 18, fontWeight: "600" },
+	iconBadge: {
+		width: 20,
+		height: 20,
+		borderRadius: 10,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 	cardDesc: { fontSize: 14, color: "#666", marginTop: 2 },
 	cardMeta: { fontSize: 12, color: "#999", marginTop: 4 },
 	metaRow: {

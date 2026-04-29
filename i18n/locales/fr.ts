@@ -103,7 +103,8 @@
 	gameStackSortDescription:
 		"Triez les nombres dans la colonne objectif - un puzzle relaxant",
 	gameDuelTicTacToeName: "Morpion Duo",
-	gameDuelTicTacToeDescription: "Deux joueurs sur un appareil",
+	gameDuelTicTacToeDescription:
+		"Choisissez 3x3 classique ou 5 en ligne évolutif",
 	gameDuelDiceName: "Duel de dés",
 	gameDuelDiceDescription: "Partie de dés à tour de rôle",
 	gameDuelConnect4Name: "Puissance 4 Duo",
@@ -141,7 +142,7 @@
 	rulesStackSort:
 		"🎯 Objectif\n• Triez toutes les cartes dans la colonne cible.\n\n🗂️ Comment jouer\n• Tapez une carte pour la prendre.\n• Posez-la sur un espace vide ou sur une carte plus grande.\n• Les cartes dans la colonne cible doivent être en ordre croissant.\n\n⭐ Astuce\n• Utilisez les emplacements temporaires stratégiquement !",
 	rulesTicTacToe:
-		"🎯 Objectif\n• Alignez trois de vos symboles !\n\n❌⭕ Comment jouer\n• Deux joueurs alternent sur un même appareil.\n• Joueur 1 place ✕, Joueur 2 place ○.\n• Placez votre symbole sur une case vide.\n\n🏆 Victoire\n• Le premier à aligner 3 (horizontal, vertical ou diagonal) gagne.\n• Si la grille est pleine sans gagnant — match nul !",
+		"🎯 Objectif\n• Choisissez 3x3 classique ou cinq en ligne évolutif.\n\n❌⭕ Comment jouer\n• Deux joueurs alternent sur un même appareil.\n• Joueur 1 place ✕, Joueur 2 place ○.\n• Mode 3x3 : alignez 3 symboles.\n• Mode 5+ : départ 5x5, alignez 5 symboles, les coups au bord agrandissent jusqu'à 30x30.\n\n🏆 Victoire\n• Horizontal, vertical et diagonal comptent.\n• Si la grille est pleine sans gagnant — match nul !",
 	rulesDice:
 		"🎯 Objectif\n• Obtenez le meilleur total sur plusieurs manches.\n\n🎲 Comment jouer\n• 2–6 joueurs lancent les dés à tour de rôle.\n• Après chaque lancer, choisissez quels dés garder.\n• Relancez le reste pour améliorer votre total.\n\n🏆 Victoire\n• Le plus haut score total après toutes les manches gagne !",
 	rulesConnect4:
@@ -789,7 +790,8 @@
 	cbSecretWas: "Le code secret était",
 	// Support
 	articleNotFoundHint: "Essaie de l'ouvrir de nouveau depuis Explorer.",
-	exploreBrowseHint: "Découvre des lectures courtes et des conseils pratiques pour ce voyage.",
+	exploreBrowseHint:
+		"Découvre des lectures courtes et des conseils pratiques pour ce voyage.",
 	exploreReadingHint: "Format court, conçu pour une lecture concentrée en vol.",
 	exploreToolsHint: "Recherche, filtre et trie selon ton objectif du moment.",
 	gameNotFoundHint: "Retourne aux Jeux et lance un autre titre.",
@@ -798,27 +800,34 @@
 	gamesSearchPlaceholder: "Rechercher des jeux",
 	homeDailyChallengeHint: "Une partie ciblée pour garder ta série active.",
 	homeFlightHint: "Minuteur de vol optionnel et recommandations légères.",
-	homePlayTogetherHint: "Jeux rapides façon multijoueur sur écran partagé ou à tour de rôle.",
+	homePlayTogetherHint:
+		"Jeux rapides façon multijoueur sur écran partagé ou à tour de rôle.",
 	homeProgressHint: "Ton aperçu local de progression pour ce voyage.",
 	homeQuickActionsHint: "Choisis ton mode : jouer, explorer ou te recentrer.",
-	profileAchievementsHint: "Étapes débloquées par une utilisation régulière en vol.",
-	profileHighScoresHint: "Tes meilleurs résultats de jeu dans l'historique des sessions.",
+	profileAchievementsHint:
+		"Étapes débloquées par une utilisation régulière en vol.",
+	profileHighScoresHint:
+		"Tes meilleurs résultats de jeu dans l'historique des sessions.",
 	profileStatsHint: "Ton aperçu d'activité entre jeu, lecture, vol et détente.",
 	relaxBreathingHint: "Utilise un cycle calme pour retrouver ta concentration.",
-	relaxSleepTimerHint: "Définis un arrêt automatique pour que l'audio se coupe seul.",
+	relaxSleepTimerHint:
+		"Définis un arrêt automatique pour que l'audio se coupe seul.",
 	relaxSoundscapesHint: "Choisis un son de fond et garde-le stable.",
 	settingsAppPreferences: "Préférences de l'app",
 	settingsAppPreferencesHint: "Gère la langue et l'apparence au même endroit.",
 	settingsLanguageHint: "Choisis comment le texte de l'app s'affiche.",
-	settingsThemeHint: "Change le style visuel selon l'environnement et l'humeur.",
+	settingsThemeHint:
+		"Change le style visuel selon l'environnement et l'humeur.",
 	settingsSync: "Sync des articles",
-	settingsSyncHint: "Choisis quand FlightMode peut télécharger de nouveaux articles de voyage.",
+	settingsSyncHint:
+		"Choisis quand FlightMode peut télécharger de nouveaux articles de voyage.",
 	settingsSyncWifiOnly: "Wi-Fi seulement",
 	settingsSyncWifiOnlyHint: "Recommandé. Sync seulement en Wi-Fi ou Ethernet.",
 	settingsSyncWifiAndMobile: "Wi-Fi + données mobiles",
 	settingsSyncWifiAndMobileHint: "Sync dès qu'internet est accessible.",
 	settingsSyncOff: "Désactivé",
-	settingsSyncOffHint: "Utiliser seulement les articles hors ligne inclus dans l'app.",
+	settingsSyncOffHint:
+		"Utiliser seulement les articles hors ligne inclus dans l'app.",
 	settingsSupport: "Support",
 	settingsSupportHint: "Trouvé un bug ou une idée ? Dites-le nous.",
 	settingsReportBug: "Signaler un bug",

@@ -27,7 +27,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - 44 clanku v `data/content.json`
 - content lokalizace kompletni pro `en/cs/de`
 - UI translation keys jsou kompletni napric vsemi podporovanymi jazyky (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`)
-- games search + category filtry
+- games search + category filtry + intent filtry pro quick, play together a longer/deep hry
 - home dashboard s daily challenge, play together a flight utility kartou
 - relax: breathing + ambient audio + sleep timer
 - PostHog SDK foundation pro anonymni produktovou analytiku, pokud je nakonfigurovany `EXPO_PUBLIC_POSTHOG_KEY`
@@ -60,8 +60,11 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - Strapi se pouziva pouze jako volitelny zdroj clanku; hry, relax, flight utility, profile, settings a dalsi app data zustavaji lokalni
 - article sync endpoint je volitelny pres `EXPO_PUBLIC_STRAPI_CONTENT_URL` nebo `EXPO_PUBLIC_CONTENT_SYNC_URL`; `EXPO_PUBLIC_STRAPI_CONTENT_URL` muze byt Strapi root nebo primo `/api/articles`; bez endpointu app zustava ciste bundled/offline
 - app neobsahuje Strapi API token; pro public clanky preferujeme povolit public read endpoint, pripadne pouzit serverovy proxy endpoint, aby se tajny token nikdy neposilal do klienta
-- aktualni Strapi Articles endpoint `https://cheerful-approval-7e0a5ca32d.strapiapp.com/api/articles` vraci `200`, ale zatim `data: []`; sync proto zustava na bundled fallbacku, dokud nebudou publikovane clanky
+- potvrzeny Strapi Article contract pro app sync je `title`, `category`, `body` a `readTime` nebo `read_time`; textova pole mohou byt plain string nebo lokalizovany objekt s aspon `en`
+- aktualni Strapi Articles endpoint `https://cheerful-approval-7e0a5ca32d.strapiapp.com/api/articles` vraci `200`, ale zatim `data: []`; sync proto zustava na bundled fallbacku, dokud nebudou publikovane clanky; Strapi overeni neni aktualni hlavni fokus
 - content sync respektuje persisted user setting `syncNetworkPolicy`: Wi-Fi only, Wi-Fi + mobile data, nebo off; default je Wi-Fi only
+- analytics runtime byl uzivatelsky overeny; dalsi privacy krok je explicitni analytics consent/opt-out UX, ne cookie banner v browser smyslu
+- game quality pass zacal prvni kalibraci: `reaction` ma jednotny konec session, `duel-dice` ma prehlednejsi horni score strip a vysledkovou tabuli, `duel-tictactoe` ma volbu 3x3 a rostoucich 5+ piskvorek, `cross-air-radar` dovoluje pred potvrzenim presouvat polozenou flotilu, daily challenge pool preferuje kratke hry, Games tab ma intent discovery se ztlumenou barevnosti a cast metadata byla upravena podle realne delky/obtiznosti; multiplayer metadata uz rozlisuji shared-screen a pass-and-play flow
 - PostHog se vypne bez `EXPO_PUBLIC_POSTHOG_KEY` nebo pri `EXPO_PUBLIC_ANALYTICS_ENABLED=false`
 - PostHog options pouzivaji anonymous-only nastaveni: `personProfiles: "never"`, `disableGeoip: true`, bez autocapture, surveys, remote config a session replay
 - offline-first je zakladni constraint
@@ -97,10 +100,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ### Phase 1 (ted)
 
-- dokoncit PostHog event coverage pro hlavni user flows
-- doplnit network handling pres Expo Network
+- dokoncit analytics consent/opt-out UX a payload privacy kontrolu
+- udelat game quality pass napric vsemi 19 hrami a rozhodnout `keep/tune/rework/remove`
+- zkalibrovat herni obtiznosti, delky session a Games discovery podle realne navratovosti
 - navrhnout a pripadne pridat SQLite event queue/retry vrstvu, pokud bude potreba vetsi kontrola nez poskytuje PostHog SDK
-- potvrdit realny Strapi article field contract a publikovat prvni article data
 - udrzet privacy policy a event payloady v souladu s anonymni analytikou
 
 ### Phase 2

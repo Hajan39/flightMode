@@ -1,12 +1,12 @@
+import GameResult from "@/components/GameResult";
+import { Text, View } from "@/components/Themed";
+import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
+import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
-
-import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
-import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useHaptic } from "@/hooks/useHaptic";
 
 const TOTAL_ROUNDS = 5;
 const WAIT_MIN_MS = 1200;
@@ -34,6 +34,7 @@ export default function ReactionGame() {
 	const [lastMs, setLastMs] = useState<number | null>(null);
 	const [round, setRound] = useState(0);
 	const [results, setResults] = useState<number[]>([]);
+	const [finalScore, setFinalScore] = useState<number | null>(null);
 	const [tooEarly, setTooEarly] = useState(false);
 	const tooEarlyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const startedAtRef = useRef<number | null>(null);
@@ -48,6 +49,7 @@ export default function ReactionGame() {
 
 	const startRound = () => {
 		if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
+		setFinalScore(null);
 		const nextRound = round + 1;
 		setRound(nextRound);
 		setPhase("waiting");
@@ -85,14 +87,14 @@ export default function ReactionGame() {
 			setBestMs((prev) => (prev === null ? ms : Math.min(prev, ms)));
 			const newResults = [...results, ms];
 			setResults(newResults);
-			updateProgress("reaction", Math.max(0, 1000 - ms));
 
 			if (newResults.length >= TOTAL_ROUNDS) {
-				// Session complete — calculate average
 				const avg = Math.round(
 					newResults.reduce((a, b) => a + b, 0) / newResults.length,
 				);
-				updateProgress("reaction", Math.max(0, 1000 - avg));
+				const score = Math.max(0, 1000 - avg);
+				updateProgress("reaction", score);
+				setFinalScore(score);
 				setPhase("idle");
 				setRound(0);
 				setResults([]);
@@ -102,6 +104,16 @@ export default function ReactionGame() {
 				setTimeout(() => startRound(), 600);
 			}
 		}
+	};
+
+	const restart = () => {
+		if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
+		setPhase("idle");
+		setRound(0);
+		setResults([]);
+		setLastMs(null);
+		setFinalScore(null);
+		setTooEarly(false);
 	};
 
 	const padColor =
@@ -160,7 +172,12 @@ export default function ReactionGame() {
 
 			{/* ── Too early banner ── */}
 			{tooEarly && (
-				<View style={[styles.tooEarlyBanner, { backgroundColor: theme.card, borderColor: "#cc4b5a" }]}>
+				<View
+					style={[
+						styles.tooEarlyBanner,
+						{ backgroundColor: theme.card, borderColor: "#cc4b5a" },
+					]}
+				>
 					<Text style={[styles.tooEarlyTitle, { color: "#cc4b5a" }]}>
 						{t("reactionTooEarlyTitle")}
 					</Text>
@@ -184,6 +201,14 @@ export default function ReactionGame() {
 					</Text>
 				)}
 			</Pressable>
+
+			{finalScore !== null && (
+				<GameResult
+					title={t("gameReactionName")}
+					score={finalScore}
+					onPlayAgain={restart}
+				/>
+			)}
 		</View>
 	);
 }
