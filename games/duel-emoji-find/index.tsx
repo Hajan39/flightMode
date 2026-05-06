@@ -2,17 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import {
 	Dimensions,
 	Pressable,
-	ScrollView,
-	StyleSheet,
 	View as RNView,
+	StyleSheet,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
 
 const { width: SCREEN_W } = Dimensions.get("window");
 
@@ -133,6 +132,8 @@ export default function DuelEmojiFindGame() {
 	const [turnScore, setTurnScore] = useState(0);
 	const [foundCells, setFoundCells] = useState<Set<number>>(new Set());
 	const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+	const turnEndTimeRef = useRef<number | null>(null);
+	const endTurnRef = useRef<() => void>(() => {});
 
 	const startGame = () => {
 		setScores(Array(playerCount).fill(0));
@@ -144,9 +145,11 @@ export default function DuelEmojiFindGame() {
 
 	const startTurn = () => {
 		const { grid: g, target: tgt } = generateRound();
+		const roundSeconds = getRoundTime(round);
 		setGrid(g);
 		setTarget(tgt);
-		setTimeLeft(getRoundTime(round));
+		setTimeLeft(roundSeconds);
+		turnEndTimeRef.current = Date.now() + roundSeconds * 1000;
 		setTurnScore(0);
 		setFoundCells(new Set());
 		setPhase("playing");
@@ -154,28 +157,30 @@ export default function DuelEmojiFindGame() {
 
 	useEffect(() => {
 		if (phase !== "playing") return;
-		timerRef.current = setInterval(() => {
-			setTimeLeft((prev) => {
-				if (prev <= 1) {
-					if (timerRef.current) clearInterval(timerRef.current);
-					return 0;
-				}
-				return prev - 1;
-			});
-		}, 1000);
+
+		const tick = () => {
+			const endTime = turnEndTimeRef.current;
+			if (!endTime) return;
+			const remainingMs = endTime - Date.now();
+			setTimeLeft(Math.max(0, Math.ceil(remainingMs / 1000)));
+			if (remainingMs <= 0 && timerRef.current) {
+				clearInterval(timerRef.current);
+				timerRef.current = null;
+			}
+		};
+
+		tick();
+		timerRef.current = setInterval(tick, 100);
 		return () => {
 			if (timerRef.current) clearInterval(timerRef.current);
+			timerRef.current = null;
 		};
 	}, [phase]);
 
-	/* when time runs out */
-	useEffect(() => {
-		if (phase !== "playing" || timeLeft > 0) return;
-		endTurn();
-	}, [timeLeft, phase]);
-
 	const endTurn = () => {
 		if (timerRef.current) clearInterval(timerRef.current);
+		timerRef.current = null;
+		turnEndTimeRef.current = null;
 		const newRoundScores = [...roundScores];
 		newRoundScores[currentPlayer] = turnScore;
 		setRoundScores(newRoundScores);
@@ -190,6 +195,13 @@ export default function DuelEmojiFindGame() {
 			setPhase("roundEnd");
 		}
 	};
+	endTurnRef.current = endTurn;
+
+	/* when time runs out */
+	useEffect(() => {
+		if (phase !== "playing" || timeLeft > 0) return;
+		endTurnRef.current();
+	}, [timeLeft, phase]);
 
 	const handleCellPress = (index: number) => {
 		if (phase !== "playing") return;
@@ -320,7 +332,7 @@ export default function DuelEmojiFindGame() {
 				<RNView style={styles.finalTable}>
 					{scores.map((s, i) => (
 						<RNView
-							key={i}
+							key={`final-player-${i + 1}`}
 							style={[styles.finalRow, { borderColor: theme.border + "44" }]}
 						>
 							<RNView
@@ -351,7 +363,7 @@ export default function DuelEmojiFindGame() {
 				<RNView style={styles.finalTable}>
 					{roundScores.map((rs, i) => (
 						<RNView
-							key={i}
+							key={`round-player-${i + 1}`}
 							style={[styles.finalRow, { borderColor: theme.border + "44" }]}
 						>
 							<RNView
@@ -426,7 +438,7 @@ export default function DuelEmojiFindGame() {
 					const found = foundCells.has(i);
 					return (
 						<Pressable
-							key={`cell-${i}`}
+							key={`cell-${round}-${currentPlayer}-${emoji}`}
 							style={[
 								styles.cell,
 								{

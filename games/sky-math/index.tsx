@@ -1,19 +1,22 @@
-import { useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
-
-import { Text, View } from "@/components/Themed";
+import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
+import { useState } from "react";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
 type Question = {
 	text: string;
 	options: number[];
 	answer: number;
 };
+
+type SkyMathDifficulty = "easy" | "medium" | "hard";
 
 const TOTAL_QUESTIONS = 12;
 
@@ -27,8 +30,16 @@ function randomInt(min: number, max: number): number {
  * 4-7: larger numbers, occasional multiply
  * 8-11: multiply/divide, bigger ranges, tighter decoys
  */
-function createQuestion(questionIndex: number = 0): Question {
-	const phase = Math.floor(questionIndex / 4); // 0, 1, 2
+function createQuestion(
+	questionIndex: number = 0,
+	difficulty: SkyMathDifficulty = "medium",
+): Question {
+	const difficultyOffset =
+		difficulty === "easy" ? -1 : difficulty === "hard" ? 1 : 0;
+	const phase = Math.max(
+		0,
+		Math.min(2, Math.floor(questionIndex / 4) + difficultyOffset),
+	);
 
 	let a: number, b: number, answer: number, text: string;
 	const decoySpread = Math.max(3, 9 - phase * 2);
@@ -104,17 +115,45 @@ export default function SkyMathGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore(
+		(s) => s.progress["sky-math"]?.highScore ?? 0,
+	);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
 	const [index, setIndex] = useState(0);
 	const [score, setScore] = useState(0);
-	const [question, setQuestion] = useState<Question>(() => createQuestion(0));
+	const [difficulty, setDifficulty] = useState<SkyMathDifficulty>("medium");
+	const [question, setQuestion] = useState<Question>(() =>
+		createQuestion(0, "medium"),
+	);
 	const [selectedOption, setSelectedOption] = useState<number | null>(null);
 	const [showResult, setShowResult] = useState(false);
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 
 	const progressLabel = `${index + 1} / ${TOTAL_QUESTIONS}`;
 	const progressFraction = (index + 1) / TOTAL_QUESTIONS;
+
+	const restart = () => {
+		setIndex(0);
+		setScore(0);
+		setSelectedOption(null);
+		setQuestion(createQuestion(0, difficulty));
+		setShowResult(false);
+		setProgressInfo(null);
+	};
+
+	const handleDifficultyChange = (nextDifficulty: SkyMathDifficulty) => {
+		setDifficulty(nextDifficulty);
+		setIndex(0);
+		setScore(0);
+		setSelectedOption(null);
+		setQuestion(createQuestion(0, nextDifficulty));
+		setShowResult(false);
+		setProgressInfo(null);
+	};
 
 	const handleAnswer = (value: number) => {
 		if (selectedOption !== null) return;
@@ -127,7 +166,8 @@ export default function SkyMathGame() {
 		setTimeout(() => {
 			if (index + 1 >= TOTAL_QUESTIONS) {
 				setScore(nextScore);
-				updateProgress("sky-math", nextScore);
+				const info = updateProgress("sky-math", nextScore);
+				setProgressInfo(info);
 				setShowResult(true);
 				return;
 			}
@@ -135,12 +175,59 @@ export default function SkyMathGame() {
 			setScore(nextScore);
 			setIndex((prev) => prev + 1);
 			setSelectedOption(null);
-			setQuestion(createQuestion(index + 1));
+			setQuestion(createQuestion(index + 1, difficulty));
 		}, 550);
 	};
 
 	return (
 		<View style={styles.root}>
+			{/* ── Header controls ── */}
+			<RNView style={styles.headerRow}>
+				<RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+					<Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+						{t("gameBest")}
+					</Text>
+					<Text style={[styles.bestValue, { color: theme.tint }]}>
+						{storedBest}
+					</Text>
+				</RNView>
+				<GameControls onReset={restart} />
+			</RNView>
+
+			<RNView style={styles.diffRow}>
+				{(["easy", "medium", "hard"] as const).map((key) => {
+					const isActive = difficulty === key;
+					const labelKey =
+						key === "easy"
+							? "difficultyEasy"
+							: key === "medium"
+								? "difficultyMedium"
+								: "difficultyHard";
+					return (
+						<Pressable
+							key={key}
+							style={[
+								styles.diffChip,
+								{
+									backgroundColor: isActive ? theme.tint : theme.card,
+									borderColor: isActive ? theme.tint : theme.border,
+								},
+							]}
+							onPress={() => handleDifficultyChange(key)}
+						>
+							<Text
+								style={[
+									styles.diffChipText,
+									{ color: isActive ? "#fff" : theme.text },
+								]}
+							>
+								{t(labelKey)}
+							</Text>
+						</Pressable>
+					);
+				})}
+			</RNView>
+
 			{/* ── Progress ── */}
 			<View style={styles.progressRow}>
 				<View style={[styles.progressTrack, { backgroundColor: theme.card }]}>
@@ -217,18 +304,16 @@ export default function SkyMathGame() {
 				<GameResult
 					title={t("skyMathFinished")}
 					score={score}
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
 					subtitle={t("skyMathResult", {
 						correct: Math.round(score / 10),
 						total: TOTAL_QUESTIONS,
 						score,
 					})}
-					onPlayAgain={() => {
-						setIndex(0);
-						setScore(0);
-						setSelectedOption(null);
-						setQuestion(createQuestion(0));
-						setShowResult(false);
-					}}
+					onPlayAgain={restart}
 				/>
 			)}
 		</View>
@@ -237,6 +322,34 @@ export default function SkyMathGame() {
 
 const styles = StyleSheet.create({
 	root: { flex: 1, padding: 20, gap: 16 },
+	headerRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+	},
+	bestPill: {
+		flexDirection: "row",
+		alignItems: "baseline",
+		gap: 6,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+	},
+	bestLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	bestValue: { fontSize: 16, fontWeight: "900" },
+	diffRow: { flexDirection: "row", gap: 8 },
+	diffChip: {
+		borderWidth: 1,
+		borderRadius: 999,
+		paddingHorizontal: 12,
+		paddingVertical: 7,
+	},
+	diffChipText: { fontSize: 12, fontWeight: "700" },
 	/* ── Progress ── */
 	progressRow: { flexDirection: "row", alignItems: "center", gap: 10 },
 	progressTrack: {

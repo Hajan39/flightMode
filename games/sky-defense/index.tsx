@@ -1,12 +1,16 @@
-import { useState, useRef, useEffect } from "react";
-import { StyleSheet, Pressable, View as RNView } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
+import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
+import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
 
 /* ================================================================
    CONSTANTS & TYPES
@@ -603,6 +607,9 @@ export default function SkyDefenseGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore(
+		(s) => s.progress["sky-defense"]?.highScore ?? 0,
+	);
 
 	const towerLabel = (key: TowerKind) => {
 		switch (key) {
@@ -653,6 +660,11 @@ export default function SkyDefenseGame() {
 	const [selectedPlaced, setSelectedPlaced] = useState<number | null>(null);
 	const [gameSpeed, setGameSpeed] = useState<1 | 2>(1);
 	const [countdown, setCountdown] = useState(0);
+	const [paused, setPaused] = useState(false);
+	const [showRestartConfirm, setShowRestartConfirm] = useState(false);
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 
 	const nextId = useRef(1);
 	const spawnQueue = useRef<{ kind: EnemyKind; tickAt: number }[]>([]);
@@ -671,6 +683,17 @@ export default function SkyDefenseGame() {
 	goldRef.current = gold;
 	const scoreRef = useRef(score);
 	scoreRef.current = score;
+	const isGamePaused = paused || showRestartConfirm;
+
+	const updatePlaceCursor = (e: {
+		nativeEvent: { locationX: number; locationY: number };
+	}) => {
+		if (!selectedTower || isGamePaused) return;
+		const col = Math.floor(e.nativeEvent.locationX / CELL);
+		const row = Math.floor(e.nativeEvent.locationY / CELL);
+		if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return;
+		setPlaceCursor({ col, row });
+	};
 
 	/* --- wave setup --- */
 	const startWave = (wi: number, preset?: DifficultyPreset) => {
@@ -691,7 +714,7 @@ export default function SkyDefenseGame() {
 
 	/* --- game loop --- */
 	useEffect(() => {
-		if (phase !== "playing") return;
+		if (phase !== "playing" || isGamePaused) return;
 
 		const ivl = setInterval(() => {
 			tick.current++;
@@ -828,7 +851,9 @@ export default function SkyDefenseGame() {
 			/* -- check end conditions -- */
 			if (newLives <= 0) {
 				setPhase("lost");
-				updateProgress("sky-defense", newScore);
+				setProgressInfo(
+					updateProgress("sky-defense", newScore, { won: false }),
+				);
 				return;
 			}
 			// wave done?
@@ -836,7 +861,9 @@ export default function SkyDefenseGame() {
 			if (allSpawned && newEnemies.length === 0) {
 				if (waveIdx >= wavesRef.current.length - 1) {
 					setPhase("won");
-					updateProgress("sky-defense", newScore);
+					setProgressInfo(
+						updateProgress("sky-defense", newScore, { won: true }),
+					);
 				} else {
 					setPhase("wave-clear");
 				}
@@ -844,7 +871,7 @@ export default function SkyDefenseGame() {
 		}, TICK / gameSpeed);
 
 		return () => clearInterval(ivl);
-	}, [phase, waveIdx, updateProgress, gameSpeed, difficulty]);
+	}, [phase, waveIdx, updateProgress, gameSpeed, difficulty, isGamePaused]);
 
 	/* --- place tower --- */
 	const handleBoardPress = (e: {
@@ -893,19 +920,28 @@ export default function SkyDefenseGame() {
 	const nextWaveRef = useRef(nextWave);
 	nextWaveRef.current = nextWave;
 	useEffect(() => {
-		if (phase !== "wave-clear") { setCountdown(0); return; }
+		if (phase !== "wave-clear") {
+			setCountdown(0);
+			return;
+		}
+		if (showRestartConfirm) return;
 		setCountdown(5);
 		const iv = setInterval(() => {
 			setCountdown((c) => {
-				if (c <= 1) { clearInterval(iv); nextWaveRef.current(); return 0; }
+				if (c <= 1) {
+					clearInterval(iv);
+					nextWaveRef.current();
+					return 0;
+				}
 				return c - 1;
 			});
 		}, 1000);
 		return () => clearInterval(iv);
-	}, [phase]);
+	}, [phase, showRestartConfirm]);
 
 	/* --- restart --- */
 	const restart = () => {
+		setShowRestartConfirm(false);
 		setPhase("start");
 		setGold(difficulty.startGold);
 		setLives(difficulty.startLives);
@@ -917,8 +953,14 @@ export default function SkyDefenseGame() {
 		setSelectedTower(null);
 		setPlaceCursor(null);
 		setSelectedPlaced(null);
+		setPaused(false);
+		setProgressInfo(null);
 		spawnQueue.current = [];
 		tick.current = 0;
+	};
+
+	const requestRestart = () => {
+		setShowRestartConfirm(true);
 	};
 
 	/* --- start game with difficulty --- */
@@ -1017,28 +1059,25 @@ export default function SkyDefenseGame() {
 	if (phase === "lost" || phase === "won") {
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>
-					{phase === "won"
-						? t("skyDefenseResultWin")
-						: t("skyDefenseResultLose")}
-				</Text>
-				<Text style={[s.finalScore, { color: theme.tint }]}>
-					{t("skyDefenseScorePts", { score })}
-				</Text>
-				<Text style={[s.desc, { color: theme.mutedText }]}>
-					{t("skyDefenseDifficultyWave", {
+				<GameResult
+					title={
+						phase === "won"
+							? t("skyDefenseResultWin")
+							: t("skyDefenseResultLose")
+					}
+					score={score}
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
+					subtitle={t("skyDefenseDifficultyWave", {
 						emoji: difficulty.emoji,
 						label: difficultyLabel(difficulty.key),
 						wave: waveIdx + 1,
 						total: wavesRef.current.length,
 					})}
-				</Text>
-				<Pressable
-					style={[s.mainBtn, { backgroundColor: theme.tint }]}
-					onPress={restart}
-				>
-					<Text style={s.mainBtnText}>{t("playAgain")}</Text>
-				</Pressable>
+					onPlayAgain={restart}
+				/>
 			</View>
 		);
 	}
@@ -1046,6 +1085,21 @@ export default function SkyDefenseGame() {
 	/* -- playing / wave-clear -- */
 	return (
 		<View style={s.root}>
+			{/* Top controls row */}
+			<RNView style={s.topRow}>
+				<RNView style={[s.bestPill, { backgroundColor: theme.card }]}>
+					<Text style={[s.bestLabel, { color: theme.mutedText }]}>
+						{t("gameBest")}
+					</Text>
+					<Text style={[s.bestValue, { color: theme.tint }]}>{storedBest}</Text>
+				</RNView>
+				<GameControls
+					onPause={phase === "playing" ? () => setPaused(true) : undefined}
+					onReset={requestRestart}
+					isPaused={paused}
+				/>
+			</RNView>
+
 			{/* HUD */}
 			<RNView style={s.hud}>
 				<Text style={[s.hudText, { color: theme.text }]}>❤️ {lives}</Text>
@@ -1064,9 +1118,17 @@ export default function SkyDefenseGame() {
 				)}
 				<Pressable
 					onPress={() => setGameSpeed((s) => (s === 1 ? 2 : 1))}
-					style={[s.hudBtn, { borderColor: gameSpeed === 2 ? theme.tint : theme.border }]}
+					style={[
+						s.hudBtn,
+						{ borderColor: gameSpeed === 2 ? theme.tint : theme.border },
+					]}
 				>
-					<Text style={[s.hudText, { color: gameSpeed === 2 ? theme.tint : theme.mutedText }]}>
+					<Text
+						style={[
+							s.hudText,
+							{ color: gameSpeed === 2 ? theme.tint : theme.mutedText },
+						]}
+					>
 						{gameSpeed === 1 ? "1×" : "2×"}
 					</Text>
 				</Pressable>
@@ -1108,6 +1170,8 @@ export default function SkyDefenseGame() {
 			{/* Board */}
 			<Pressable onPress={handleBoardPress}>
 				<RNView
+					onTouchStart={updatePlaceCursor}
+					onTouchMove={updatePlaceCursor}
 					style={[
 						s.board,
 						{
@@ -1225,18 +1289,70 @@ export default function SkyDefenseGame() {
 				</RNView>
 			</Pressable>
 
-			{/* wave-clear banner — non-blocking, board stays interactive */}
 			{phase === "wave-clear" && (
-				<RNView style={[s.waveBanner, { backgroundColor: theme.card, borderColor: theme.border }]}>
-					<Text style={[s.waveBannerTitle, { color: theme.text }]}>
-						{t("skyDefenseWaveCleared", { wave: waveIdx + 1 })} — {countdown}s
-					</Text>
-					<Pressable
-						style={[s.waveBannerBtn, { backgroundColor: theme.tint }]}
-						onPress={nextWave}
+				<RNView style={s.waveModalBackdrop}>
+					<RNView
+						style={[
+							s.waveModalCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
 					>
-						<Text style={s.mainBtnText}>{t("skyDefenseNextWave")}</Text>
-					</Pressable>
+						<Text style={[s.waveModalTitle, { color: theme.text }]}>
+							{t("skyDefenseWaveCleared", { wave: waveIdx + 1 })}
+						</Text>
+						<Text style={[s.waveModalCountdown, { color: theme.mutedText }]}>
+							{countdown}s
+						</Text>
+						<Pressable
+							style={[s.waveModalBtn, { backgroundColor: theme.tint }]}
+							onPress={nextWave}
+						>
+							<Text style={s.mainBtnText}>{t("skyDefenseNextWave")}</Text>
+						</Pressable>
+					</RNView>
+				</RNView>
+			)}
+
+			<GamePauseOverlay
+				visible={paused}
+				onResume={() => setPaused(false)}
+				onRestart={requestRestart}
+			/>
+
+			{showRestartConfirm && (
+				<RNView style={s.confirmBackdrop}>
+					<RNView
+						style={[
+							s.confirmCard,
+							{ backgroundColor: theme.elevated, borderColor: theme.border },
+						]}
+					>
+						<Text style={[s.confirmTitle, { color: theme.text }]}>
+							{t("gameRestartConfirmTitle")}
+						</Text>
+						<Text style={[s.confirmText, { color: theme.mutedText }]}>
+							{t("gameRestartConfirmMessage")}
+						</Text>
+						<RNView style={s.confirmActions}>
+							<Pressable
+								onPress={() => setShowRestartConfirm(false)}
+								style={[
+									s.confirmSecondaryBtn,
+									{ borderColor: theme.border, backgroundColor: theme.card },
+								]}
+							>
+								<Text style={[s.confirmSecondaryText, { color: theme.text }]}>
+									{t("gameCancel")}
+								</Text>
+							</Pressable>
+							<Pressable
+								onPress={restart}
+								style={[s.confirmPrimaryBtn, { backgroundColor: theme.tint }]}
+							>
+								<Text style={s.mainBtnText}>{t("gameRestart")}</Text>
+							</Pressable>
+						</RNView>
+					</RNView>
 				</RNView>
 			)}
 		</View>
@@ -1254,6 +1370,28 @@ const s = StyleSheet.create({
 		justifyContent: "center",
 		padding: 16,
 	},
+	topRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+		width: "100%",
+		marginBottom: 8,
+	},
+	bestPill: {
+		flexDirection: "row",
+		alignItems: "baseline",
+		gap: 6,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+	},
+	bestLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	bestValue: { fontSize: 16, fontWeight: "900" },
 	title: { fontSize: 28, fontWeight: "900", marginBottom: 8 },
 	desc: { fontSize: 13, textAlign: "center", lineHeight: 20, marginBottom: 12 },
 	finalScore: { fontSize: 38, fontWeight: "900", marginBottom: 4 },
@@ -1264,6 +1402,57 @@ const s = StyleSheet.create({
 		marginTop: 16,
 	},
 	mainBtnText: { color: "#fff", fontWeight: "800", fontSize: 16 },
+	confirmBackdrop: {
+		...StyleSheet.absoluteFillObject,
+		zIndex: 30,
+		alignItems: "center",
+		justifyContent: "center",
+		paddingHorizontal: 24,
+		backgroundColor: "rgba(0,0,0,0.55)",
+	},
+	confirmCard: {
+		width: "100%",
+		maxWidth: 320,
+		borderWidth: 1,
+		borderRadius: 16,
+		paddingHorizontal: 18,
+		paddingVertical: 18,
+		gap: 10,
+	},
+	confirmTitle: {
+		fontSize: 18,
+		fontWeight: "900",
+		textAlign: "center",
+	},
+	confirmText: {
+		fontSize: 14,
+		lineHeight: 20,
+		textAlign: "center",
+	},
+	confirmActions: {
+		flexDirection: "row",
+		gap: 10,
+		marginTop: 4,
+	},
+	confirmPrimaryBtn: {
+		flex: 1,
+		paddingVertical: 10,
+		borderRadius: 10,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	confirmSecondaryBtn: {
+		flex: 1,
+		paddingVertical: 10,
+		borderRadius: 10,
+		borderWidth: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	confirmSecondaryText: {
+		fontSize: 15,
+		fontWeight: "700",
+	},
 	towerInfo: { marginBottom: 8, gap: 4 },
 	enemyInfo: { marginBottom: 12, gap: 2 },
 	towerInfoRow: { flexDirection: "row", alignItems: "center", gap: 8 },
@@ -1308,22 +1497,39 @@ const s = StyleSheet.create({
 		borderColor: "rgba(255,255,255,0.08)",
 	},
 
-	waveBanner: {
-		flexDirection: "row",
+	waveModalBackdrop: {
+		position: "absolute",
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
 		alignItems: "center",
-		justifyContent: "space-between",
-		width: BOARD_W,
-		paddingHorizontal: 12,
-		paddingVertical: 6,
-		borderRadius: 8,
-		borderWidth: 1,
-		marginTop: 4,
+		justifyContent: "center",
+		paddingHorizontal: 24,
 	},
-	waveBannerTitle: { fontSize: 13, fontWeight: "700" },
-	waveBannerBtn: {
-		paddingHorizontal: 14,
-		paddingVertical: 6,
-		borderRadius: 8,
+	waveModalCard: {
+		width: Math.min(BOARD_W - 24, 320),
+		alignItems: "center",
+		paddingHorizontal: 18,
+		paddingVertical: 18,
+		borderRadius: 14,
+		borderWidth: 1,
+		gap: 10,
+	},
+	waveModalTitle: {
+		fontSize: 18,
+		fontWeight: "800",
+		textAlign: "center",
+	},
+	waveModalCountdown: {
+		fontSize: 14,
+		fontWeight: "700",
+	},
+	waveModalBtn: {
+		paddingHorizontal: 16,
+		paddingVertical: 9,
+		borderRadius: 10,
+		marginTop: 2,
 	},
 
 	diffLabel: {

@@ -13,6 +13,7 @@ import AnimatedPressable from "@/components/AnimatedPressable";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
@@ -64,6 +65,7 @@ export default function RelaxScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
+	const haptic = useHaptic();
 
 	// Breathing state
 	const [isActive, setIsActive] = useState(false);
@@ -124,7 +126,22 @@ export default function RelaxScreen() {
 	const incrementRelax = useAchievementStore((s) => s.incrementRelax);
 	const markSoundPlayed = useAchievementStore((s) => s.markSoundPlayed);
 
+	// Haptic pulse on each breathing phase transition
+	const phaseStartedRef = useRef(false);
+	useEffect(() => {
+		if (!isActive) {
+			phaseStartedRef.current = false;
+			return;
+		}
+		if (!phaseStartedRef.current) {
+			phaseStartedRef.current = true;
+			return;
+		}
+		haptic.tap();
+	}, [phaseIndex, isActive, haptic]);
+
 	const handleBreathToggle = () => {
+		haptic.tap();
 		if (isActive) {
 			setIsActive(false);
 			setPhaseIndex(0);
@@ -138,6 +155,7 @@ export default function RelaxScreen() {
 	};
 
 	const toggleSoundscape = (scape: SoundscapeDef) => {
+		haptic.tap();
 		const isStoppingActiveSoundscape = activeSoundId === scape.id;
 		playSound(scape.id, scape.labelKey, scape.source);
 		markSoundPlayed(scape.id);
@@ -148,6 +166,7 @@ export default function RelaxScreen() {
 	};
 
 	const stopActiveSoundscape = () => {
+		haptic.tap();
 		if (activeSoundId) {
 			captureAnalyticsEvent("audio_stop", { sound_id: activeSoundId });
 		}
@@ -291,7 +310,7 @@ export default function RelaxScreen() {
 										borderColor: isSelected ? theme.tint : theme.border,
 									},
 								]}
-								onPress={() => setVolume(level)}
+								onPress={() => { haptic.tap(); setVolume(level); }}
 							>
 								<Text
 									style={[
@@ -342,7 +361,7 @@ export default function RelaxScreen() {
 											borderColor: isSelected ? theme.tint : theme.border,
 										},
 									]}
-									onPress={() => setSleepTimer(minutes)}
+									onPress={() => { haptic.tap(); setSleepTimer(minutes); }}
 								>
 									<Text
 										style={[

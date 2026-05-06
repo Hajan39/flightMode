@@ -1,22 +1,25 @@
 ﻿import { useEffect, useRef, useState } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, View as RNView, StyleSheet } from "react-native";
 import Animated, {
 	FadeInDown,
 	FadeOutLeft,
+	LinearTransition,
 	useAnimatedStyle,
 	useSharedValue,
 	withTiming,
-	LinearTransition,
 } from "react-native-reanimated";
 
-import { Text, View } from "@/components/Themed";
 import AnimatedPressable from "@/components/AnimatedPressable";
+import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
 
 type Runway = "A" | "B" | "C";
 
@@ -26,6 +29,7 @@ type Flight = {
 	runway: Runway;
 	fuel: number;
 	maxFuel: number;
+	expiresAt: number;
 };
 
 const RUNWAYS: Runway[] = ["A", "B", "C"];
@@ -123,7 +127,11 @@ function FlightCard({
 					]}
 				/>
 
-				<View style={styles.cardInner} lightColor="transparent" darkColor="transparent">
+				<View
+					style={styles.cardInner}
+					lightColor="transparent"
+					darkColor="transparent"
+				>
 					{/* Top row: callsign + fuel label */}
 					<View
 						style={styles.flightTop}
@@ -220,6 +228,9 @@ export default function AirTrafficControlGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore(
+		(s) => s.progress["air-traffic-control"]?.highScore ?? 0,
+	);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
@@ -228,9 +239,14 @@ export default function AirTrafficControlGame() {
 	const [landed, setLanded] = useState(0);
 	const [misses, setMisses] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
+	const [paused, setPaused] = useState(false);
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 	const flightIdRef = useRef(1);
 	const scoreRef = useRef(0);
 	const missesRef = useRef(0);
+	const pauseStartedAtRef = useRef<number | null>(null);
 	const level = getLevel(landed);
 
 	useEffect(() => {
@@ -245,13 +261,14 @@ export default function AirTrafficControlGame() {
 	const maxQueueSize = getMaxQueueSize(level);
 
 	useEffect(() => {
-		if (gameOver) return;
+		if (gameOver || paused) return;
 
 		const timer = setInterval(() => {
 			setFlights((prev) => {
 				if (prev.length >= maxQueueSize) return prev;
 				const id = flightIdRef.current++;
 				const startFuel = getStartingFuel(level, id);
+				const now = Date.now();
 				return [
 					...prev,
 					{
@@ -260,28 +277,38 @@ export default function AirTrafficControlGame() {
 						runway: randomRunway(),
 						fuel: startFuel,
 						maxFuel: startFuel,
+						expiresAt: now + startFuel * 1000,
 					},
 				];
 			});
 		}, spawnInterval);
 
 		return () => clearInterval(timer);
-	}, [gameOver, spawnInterval, maxQueueSize, level]);
+	}, [gameOver, spawnInterval, maxQueueSize, level, paused]);
 
 	useEffect(() => {
-		if (gameOver) return;
+		if (gameOver || paused) return;
 
 		const timer = setInterval(() => {
 			setFlights((prev) => {
+				const now = Date.now();
 				let lostThisTick = 0;
 				const nextFlights: Flight[] = [];
+				let changed = false;
 
 				for (const flight of prev) {
-					const nextFuel = flight.fuel - 1;
+					const nextFuel = Math.max(
+						0,
+						Math.ceil((flight.expiresAt - now) / 1000),
+					);
 					if (nextFuel <= 0) {
 						lostThisTick += 1;
+						changed = true;
 					} else {
-						nextFlights.push({ ...flight, fuel: nextFuel });
+						if (nextFuel !== flight.fuel) changed = true;
+						nextFlights.push(
+							nextFuel === flight.fuel ? flight : { ...flight, fuel: nextFuel },
+						);
 					}
 				}
 
@@ -290,18 +317,40 @@ export default function AirTrafficControlGame() {
 						const nextMisses = currentMisses + lostThisTick;
 						if (nextMisses >= MAX_MISSES) {
 							setGameOver(true);
-							updateProgress("air-traffic-control", scoreRef.current);
+							setProgressInfo(
+								updateProgress("air-traffic-control", scoreRef.current),
+							);
 						}
 						return nextMisses;
 					});
 				}
 
-				return nextFlights;
+				return changed ? nextFlights : prev;
 			});
-		}, 1000);
+		}, 100);
 
 		return () => clearInterval(timer);
-	}, [gameOver, updateProgress]);
+	}, [gameOver, updateProgress, paused]);
+
+	const pause = () => {
+		pauseStartedAtRef.current = Date.now();
+		setPaused(true);
+	};
+
+	const resume = () => {
+		const pauseStartedAt = pauseStartedAtRef.current;
+		pauseStartedAtRef.current = null;
+		if (pauseStartedAt) {
+			const pausedMs = Date.now() - pauseStartedAt;
+			setFlights((prev) =>
+				prev.map((flight) => ({
+					...flight,
+					expiresAt: flight.expiresAt + pausedMs,
+				})),
+			);
+		}
+		setPaused(false);
+	};
 
 	const restart = () => {
 		flightIdRef.current = 1;
@@ -310,6 +359,9 @@ export default function AirTrafficControlGame() {
 		setLanded(0);
 		setMisses(0);
 		setGameOver(false);
+		setPaused(false);
+		pauseStartedAtRef.current = null;
+		setProgressInfo(null);
 	};
 
 	const assignRunway = (flightId: number, runway: Runway) => {
@@ -324,7 +376,11 @@ export default function AirTrafficControlGame() {
 				if (flight.id !== flightId) return true;
 				resolved = true;
 				if (flight.runway === runway) {
-					points = 18 + flight.fuel * 3 + level * 2;
+					const currentFuel = Math.max(
+						0,
+						Math.ceil((flight.expiresAt - Date.now()) / 1000),
+					);
+					points = 18 + currentFuel * 3 + level * 2;
 				} else {
 					wrong = true;
 				}
@@ -340,7 +396,9 @@ export default function AirTrafficControlGame() {
 				const nextMisses = currentMisses + 1;
 				if (nextMisses >= MAX_MISSES) {
 					setGameOver(true);
-					updateProgress("air-traffic-control", scoreRef.current);
+					setProgressInfo(
+						updateProgress("air-traffic-control", scoreRef.current),
+					);
 				}
 				return nextMisses;
 			});
@@ -359,17 +417,38 @@ export default function AirTrafficControlGame() {
 				? t("atcBusyAirspace")
 				: t("atcPeakTraffic");
 
-	const missHearts = Array.from({ length: MAX_MISSES }, (_, i) => i < misses ? "💥" : "✈️");
+	const missHearts = Array.from({ length: MAX_MISSES }, (_, i) =>
+		i < misses ? "💥" : "✈️",
+	);
 
 	return (
 		<View style={styles.root}>
+			{/* Top: best + controls */}
+			<RNView style={styles.topRow}>
+				<RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+					<Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+						{t("gameBest")}
+					</Text>
+					<Text style={[styles.bestValue, { color: theme.tint }]}>
+						{storedBest}
+					</Text>
+				</RNView>
+				<GameControls
+					onPause={!gameOver ? pause : undefined}
+					onReset={restart}
+					isPaused={paused}
+				/>
+			</RNView>
+
 			{/* Stats row */}
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("atcLanded")}
 					</Text>
-					<Text style={[styles.statValue, { color: theme.text }]}>{landed}</Text>
+					<Text style={[styles.statValue, { color: theme.text }]}>
+						{landed}
+					</Text>
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
@@ -394,11 +473,19 @@ export default function AirTrafficControlGame() {
 					{ backgroundColor: theme.card, borderColor: theme.border },
 				]}
 			>
-				<View style={styles.headerRow} lightColor="transparent" darkColor="transparent">
+				<View
+					style={styles.headerRow}
+					lightColor="transparent"
+					darkColor="transparent"
+				>
 					<Text style={[styles.headerEyebrow, { color: theme.mutedText }]}>
 						{`${pressureLabel} · L${level}`}
 					</Text>
-					<View style={styles.runwayLegend} lightColor="transparent" darkColor="transparent">
+					<View
+						style={styles.runwayLegend}
+						lightColor="transparent"
+						darkColor="transparent"
+					>
 						{RUNWAYS.map((rwy) => (
 							<View
 								key={rwy}
@@ -406,8 +493,15 @@ export default function AirTrafficControlGame() {
 								lightColor="transparent"
 								darkColor="transparent"
 							>
-								<View style={[styles.legendDot, { backgroundColor: RUNWAY_COLORS[rwy] }]} />
-								<Text style={[styles.legendText, { color: theme.mutedText }]}>{rwy}</Text>
+								<View
+									style={[
+										styles.legendDot,
+										{ backgroundColor: RUNWAY_COLORS[rwy] },
+									]}
+								/>
+								<Text style={[styles.legendText, { color: theme.mutedText }]}>
+									{rwy}
+								</Text>
 							</View>
 						))}
 					</View>
@@ -443,16 +537,46 @@ export default function AirTrafficControlGame() {
 				<GameResult
 					title={t("atcGameOver")}
 					score={score}
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
 					subtitle={t("atcGameOverSubtitle", { landed, score })}
 					onPlayAgain={restart}
 				/>
 			)}
+
+			<GamePauseOverlay
+				visible={paused}
+				onResume={resume}
+				onRestart={restart}
+			/>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	root: { flex: 1, padding: 20, gap: 14 },
+	topRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+	},
+	bestPill: {
+		flexDirection: "row",
+		alignItems: "baseline",
+		gap: 6,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+	},
+	bestLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	bestValue: { fontSize: 16, fontWeight: "900" },
 	statsRow: {
 		flexDirection: "row",
 		alignItems: "center",

@@ -2,18 +2,19 @@ import { useState } from "react";
 import {
 	Dimensions,
 	Pressable,
-	StyleSheet,
 	View as RNView,
+	ScrollView,
+	StyleSheet,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
-import { pickWord, type Difficulty } from "./words";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
+import { useGameStore } from "@/store/useGameStore";
+import { type Difficulty, pickWord } from "./words";
 
 const MAX_WRONG = 6;
 const TOTAL_ROUNDS = 8;
@@ -151,7 +152,7 @@ export default function DuelHangmanGame() {
 	const haptic = useHaptic();
 
 	/* setup */
-	const [playerCount, setPlayerCount] = useState(2);
+	const [playerCount, setPlayerCount] = useState(1);
 	const [difficulty, setDifficulty] = useState<Difficulty>("medium");
 	const [phase, setPhase] = useState<
 		"setup" | "handoff" | "playing" | "result"
@@ -170,8 +171,11 @@ export default function DuelHangmanGame() {
 	const isWon = word ? word.split("").every((l) => guessed.has(l)) : false;
 	const isLost = wrongCount >= MAX_WRONG;
 	const gameOver = isWon || isLost;
-	const currentRoundDifficulty = getRoundDifficulty(difficulty, round);
 	const guesserColor = PLAYER_COLORS[guesser % PLAYER_COLORS.length];
+	const wordLetters = word.split("").map((letter, index) => ({
+		id: `${letter}-${index + 1}-${word.length}`,
+		letter,
+	}));
 
 	const startGame = (d: Difficulty) => {
 		setDifficulty(d);
@@ -237,7 +241,7 @@ export default function DuelHangmanGame() {
 					{t("mpSelectPlayers")}
 				</Text>
 				<RNView style={styles.countRow}>
-					{Array.from({ length: MAX_PLAYERS - 1 }, (_, i) => i + 2).map((n) => (
+					{Array.from({ length: MAX_PLAYERS }, (_, i) => i + 1).map((n) => (
 						<Pressable
 							key={n}
 							style={[
@@ -338,7 +342,7 @@ export default function DuelHangmanGame() {
 				<RNView style={styles.finalTable}>
 					{scores.map((s, i) => (
 						<RNView
-							key={i}
+							key={`result-player-${i + 1}`}
 							style={[
 								styles.finalTableRow,
 								{ borderColor: theme.border + "44" },
@@ -379,7 +383,7 @@ export default function DuelHangmanGame() {
 				<RNView style={styles.hudScores}>
 					{scores.map((s, i) => (
 						<RNView
-							key={i}
+							key={`hud-player-${i + 1}`}
 							style={[
 								styles.hudChip,
 								i === guesser && {
@@ -417,50 +421,57 @@ export default function DuelHangmanGame() {
 			</RNView>
 
 			{/* Word */}
-			<RNView style={styles.wordRow}>
-				{word.split("").map((letter, i) => {
-					const screenW = Dimensions.get("window").width - 32;
-					const gap = word.length > 10 ? 4 : 8;
-					const slotW = Math.min(
-						32,
-						(screenW - (word.length - 1) * gap) / word.length,
-					);
-					const fontSize = slotW > 24 ? 24 : Math.max(14, slotW - 4);
-					return (
-						<RNView
-							key={`w-${i}`}
-							style={[
-								styles.letterSlot,
-								{
-									width: slotW,
-									marginHorizontal: gap / 2,
-									borderBottomColor: gameOver
-										? isWon
-											? "#66bb6a"
-											: "#ef5350"
-										: guesserColor,
-								},
-							]}
-						>
-							<Text
+			<ScrollView
+				horizontal
+				showsHorizontalScrollIndicator={false}
+				contentContainerStyle={styles.wordScrollContent}
+				style={styles.wordScroll}
+			>
+				<RNView style={styles.wordRow}>
+					{wordLetters.map(({ id, letter }) => {
+						const screenW = Dimensions.get("window").width - 32;
+						const gap = word.length > 10 ? 4 : 8;
+						const slotW = Math.min(
+							32,
+							(screenW - (word.length - 1) * gap) / word.length,
+						);
+						const fontSize = slotW > 24 ? 24 : Math.max(14, slotW - 4);
+						return (
+							<RNView
+								key={id}
 								style={[
-									styles.letterChar,
+									styles.letterSlot,
 									{
-										fontSize,
-										color: guessed.has(letter)
-											? theme.text
-											: gameOver
-												? "#ef5350"
-												: "transparent",
+										width: slotW,
+										marginHorizontal: gap / 2,
+										borderBottomColor: gameOver
+											? isWon
+												? "#66bb6a"
+												: "#ef5350"
+											: guesserColor,
 									},
 								]}
 							>
-								{guessed.has(letter) || gameOver ? letter : "_"}
-							</Text>
-						</RNView>
-					);
-				})}
-			</RNView>
+								<Text
+									style={[
+										styles.letterChar,
+										{
+											fontSize,
+											color: guessed.has(letter)
+												? theme.text
+												: gameOver
+													? "#ef5350"
+													: "transparent",
+										},
+									]}
+								>
+									{guessed.has(letter) || gameOver ? letter : "_"}
+								</Text>
+							</RNView>
+						);
+					})}
+				</RNView>
+			</ScrollView>
 
 			<Text style={[styles.wrongHint, { color: theme.mutedText }]}>
 				{t("hmWrongCount", { count: wrongCount, max: MAX_WRONG })}
@@ -468,8 +479,8 @@ export default function DuelHangmanGame() {
 
 			{!gameOver ? (
 				<RNView style={styles.keyboard}>
-					{KEY_ROWS.map((row, ri) => (
-						<RNView key={`kr-${ri}`} style={styles.keyRow}>
+					{KEY_ROWS.map((row) => (
+						<RNView key={`kr-${row.join("")}`} style={styles.keyRow}>
 							{row.map((letter) => {
 								const used = guessed.has(letter);
 								const correct = used && word.includes(letter);
@@ -598,9 +609,17 @@ const styles = StyleSheet.create({
 	},
 	wordRow: {
 		flexDirection: "row",
-		flexWrap: "wrap",
+		flexWrap: "nowrap",
 		justifyContent: "center",
 		marginBottom: 8,
+	},
+	wordScroll: {
+		maxWidth: "100%",
+		marginBottom: 8,
+	},
+	wordScrollContent: {
+		flexGrow: 1,
+		justifyContent: "center",
 	},
 	letterSlot: {
 		height: 40,

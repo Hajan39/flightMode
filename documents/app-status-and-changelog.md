@@ -124,6 +124,30 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-05-06
+
+- opraven Tap Rush timer: konec kola se ted ridi realnym elapsed time misto retezenych JS timeoutu, takze velmi rychle tapovani uz neprodluzuje odpoctovy cas
+- upraven Tap Rush input: pocitani tapu se ted spousti uz na `PressIn` a haptika je omezena, aby se pri velmi rychlem klepani mene ztracely vstupy
+- opraveny dalsi timed hry stejnym principem: Cabin Call, Emoji Find a Air Traffic Control ted odpocitaji podle wall-clock deadline (`Date.now`) misto zavislosti na presnem vykonani sekundovych JS ticku, takze rychle klepani neprodluzuje cas/fuel
+- upraven layout hornich filtrovacich chipu v Games a Explore: radky maji stabilni vysku a explicitni mezery mezi chipy, takze se uz vizualne neprekryvaji
+- upraven Sky Defense wave-clear stav: informace o dalsi vlne je ted ve stredovem overlayi misto pod herni plochou, takze obraz uz mezi vlnami neposkakuje
+- doplneno potvrzeni restartu ve Sky Defense: top reset i restart z pause overlaye uz nejdriv oteviraji potvrzovaci dialog, aby nahodny tap nesmazal rozjetou hru
+- opraven preview range ve Sky Defense: pri vybranem toweru se pri dotyku a tahu po boardu aktualizuje `placeCursor`, takze pri mireni pred polozenim vidis dosah obrany
+- upraven Stack Sort progress: level select ted ukazuje drive ziskane hvezdy pro kazdy level a stary encoded vysledek se pri migraci prevede do nove `levelStars` historie
+- opraven Reaction result modal: misto interniho score `1000 - ms` ted ukazuje realny nejrychlejsi reaction time v milisekundach; restart/reset taky cisti stare session `bestMs`
+- doplneny obtiznosti pro Sky Math: prepnuti Easy/Medium/Hard meni generovani prikladu v cele 12-otazkove session
+- upraven Flight Path: pred spawnem se 2s zobrazuje varovny marker mista priletu a runwaye jsou striktne prirazene podle typu letadla (short=PROP, medium=JET, long=JUMBO/CARGO/FAST) s barevnym rozlisenim prijmu
+- upraven Duel Hangman: vyber poctu hracu ted podporuje i 1 hrace; zobrazeni hadaneho slova je drzeno v jednom radku (pri delce se posouva horizontalne misto zalomeni)
+- upraven Air Radar combat feedback: po dodelani celeho letadla se zobrazi hlaseni ktere letadlo bylo sestreleno; v HUD je navic prehled kolik zasahu a letadel jeste chybi do vyhry
+- upraveno pexeso (Memory): v result overlayi odstranena bounce animace score cisla
+
+## 2026-04-30
+
+- zaveden sjednoceny game UX system: novy `GameResult` overlay s Best / Last / Streak udajemi a "New Best!" odznakem, sdilene `GameControls` (pause + reset), `GamePauseOverlay` s Resume / Restart / Quit a `GameCountdown` 3-2-1 intro s haptickou odezvou
+- per-game progres rozsiren o `lastScore`, `currentStreak` a `bestStreak`; persistovany store ma migration na verzi 2, takze stare ulozeny stav nezarane
+- Reaction, Tap Rush, Sky Math, Cabin Call, Runway Landing, Memory, Quiz, Sky Defense, Air Traffic Control a Flight Path dostaly viditelnou Best plaketu, jednotny reset (a tam, kde to dava smysl, i pause), countdown pred timed koly a novy result screen
+- doplneno 12 sdilenych preklady pro game UX (`gameBest`, `gameLast`, `gameStreak`, `gameNewBest`, `gamePause`, `gameResume`, `gamePaused`, `gameRestart`, `gameQuit`, `gameReady`, `gameGo`, `gameTapToStart`) napric vsemi 12 podporovanymi jazyky
+
 ## 2026-04-28
 
 - produktovy smer zarovnan na contextual travel assistant + offline entertainment system

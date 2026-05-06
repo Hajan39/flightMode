@@ -1,19 +1,87 @@
-import { useState } from "react";
-import {
-	StyleSheet,
-	Pressable,
-	FlatList,
-	useWindowDimensions,
-} from "react-native";
-
-import { Text, View } from "@/components/Themed";
 import GameResult from "@/components/GameResult";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
+import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
-import { createDeck, checkMatch, calculateScore, type Card } from "./logic";
-import { useHaptic } from "@/hooks/useHaptic";
+import type { GameProgressUpdate } from "@/types/game";
+import { useEffect, useRef, useState } from "react";
+import {
+	FlatList,
+	Pressable,
+	StyleSheet,
+	useWindowDimensions,
+} from "react-native";
+import Animated, {
+	Easing,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
+import { type Card, calculateScore, checkMatch, createDeck } from "./logic";
+
+type Theme = (typeof Colors)[keyof typeof Colors];
+
+function FlipCard({
+	item,
+	cardSize,
+	theme,
+	onPress,
+}: {
+	item: Card;
+	cardSize: number;
+	theme: Theme;
+	onPress: (id: number) => void;
+}) {
+	const rotateY = useSharedValue(0);
+	const isShowing = item.isFlipped || item.isMatched;
+	const wasShowingRef = useRef(false);
+
+	useEffect(() => {
+		if (isShowing === wasShowingRef.current) return;
+		wasShowingRef.current = isShowing;
+		rotateY.value = withSequence(
+			withTiming(isShowing ? 90 : -90, {
+				duration: 130,
+				easing: Easing.in(Easing.quad),
+			}),
+			withTiming(0, { duration: 130, easing: Easing.out(Easing.quad) }),
+		);
+	}, [isShowing, rotateY]);
+
+	const animStyle = useAnimatedStyle(() => ({
+		transform: [{ rotateY: `${rotateY.value}deg` }],
+	}));
+
+	const bgColor = item.isMatched
+		? theme.successSurface
+		: isShowing
+			? theme.elevated
+			: theme.tint;
+
+	const borderProps = item.isMatched
+		? { borderColor: theme.successBorder, borderWidth: 2 }
+		: isShowing
+			? { borderColor: theme.tint, borderWidth: 2 }
+			: {};
+
+	return (
+		<Pressable onPress={() => onPress(item.id)}>
+			<Animated.View
+				style={[
+					styles.card,
+					{ width: cardSize, height: cardSize, backgroundColor: bgColor },
+					borderProps,
+					animStyle,
+				]}
+			>
+				<Text style={styles.cardText}>{isShowing ? item.emoji : "?"}</Text>
+			</Animated.View>
+		</Pressable>
+	);
+}
 
 const MEMORY_MODES = [
 	{ key: "quick", labelKey: "memoryModeQuick", pairs: 6, columns: 3 },
@@ -38,7 +106,11 @@ export default function MemoryGame() {
 	const [matchedPairs, setMatchedPairs] = useState(0);
 	const [isChecking, setIsChecking] = useState(false);
 	const [finalScore, setFinalScore] = useState<number | null>(null);
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore((s) => s.progress["memory"]?.highScore ?? 0);
 	const haptic = useHaptic();
 	const cardSize = (() => {
 		const horizontalPadding = 40;
@@ -85,7 +157,8 @@ export default function MemoryGame() {
 				if (newMatchedCount === currentMode.pairs) {
 					haptic.heavy();
 					const score = calculateScore(newMoves, currentMode.pairs);
-					updateProgress("memory", score);
+					const info = updateProgress("memory", score);
+					setProgressInfo(info);
 					setFinalScore(score);
 				}
 			} else {
@@ -122,6 +195,7 @@ export default function MemoryGame() {
 		setMatchedPairs(0);
 		setIsChecking(false);
 		setFinalScore(null);
+		setProgressInfo(null);
 	};
 
 	return (
@@ -186,29 +260,12 @@ export default function MemoryGame() {
 				columnWrapperStyle={styles.row}
 				scrollEnabled={currentMode.pairs >= 10}
 				renderItem={({ item }) => (
-					<Pressable
-						style={[
-							styles.card,
-							{ width: cardSize, height: cardSize },
-							{ backgroundColor: theme.tint },
-							item.isMatched && {
-								backgroundColor: theme.successSurface,
-								borderColor: theme.successBorder,
-								borderWidth: 2,
-							},
-							item.isFlipped &&
-								!item.isMatched && {
-									backgroundColor: theme.elevated,
-									borderColor: theme.tint,
-									borderWidth: 2,
-								},
-						]}
-						onPress={() => handleCardPress(item.id)}
-					>
-						<Text style={styles.cardText}>
-							{item.isFlipped || item.isMatched ? item.emoji : "?"}
-						</Text>
-					</Pressable>
+					<FlipCard
+						item={item}
+						cardSize={cardSize}
+						theme={theme}
+						onPress={handleCardPress}
+					/>
 				)}
 			/>
 
@@ -229,6 +286,11 @@ export default function MemoryGame() {
 				<GameResult
 					title={t("youWin")}
 					score={finalScore}
+					disableScoreBounce
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
 					subtitle={t("youWinMessage", { moves, score: finalScore })}
 					onPlayAgain={resetGame}
 				/>

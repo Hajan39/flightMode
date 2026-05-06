@@ -126,12 +126,15 @@ export default function ExploreScreen() {
 					horizontal
 					showsHorizontalScrollIndicator={false}
 					contentContainerStyle={styles.categoryRow}
+					style={styles.chipRowScroll}
 				>
 					{categories.map((category) => (
 						<Pressable
 							key={category}
 							style={[
 								styles.categoryChip,
+								category !== categories[categories.length - 1] &&
+									styles.chipSpacing,
 								{
 									borderColor: theme.border,
 									backgroundColor:
@@ -155,6 +158,7 @@ export default function ExploreScreen() {
 					horizontal
 					showsHorizontalScrollIndicator={false}
 					contentContainerStyle={styles.sortRow}
+					style={styles.chipRowScroll}
 				>
 					{[
 						{ key: "recommended", labelKey: "exploreSortRecommended" as const },
@@ -166,6 +170,7 @@ export default function ExploreScreen() {
 							key={item.key}
 							style={[
 								styles.sortChip,
+								item.key !== "title" && styles.chipSpacing,
 								{
 									borderColor: theme.border,
 									backgroundColor:
@@ -261,12 +266,19 @@ const styles = StyleSheet.create({
 		paddingVertical: 2,
 	},
 	categoryRow: {
-		gap: 8,
+		alignItems: "center",
 		paddingRight: 16,
 	},
 	sortRow: {
-		gap: 8,
+		alignItems: "center",
 		paddingRight: 16,
+	},
+	chipRowScroll: {
+		flexGrow: 0,
+		minHeight: 40,
+	},
+	chipSpacing: {
+		marginRight: 8,
 	},
 	categoryChip: {
 		borderWidth: 1,

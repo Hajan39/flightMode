@@ -181,7 +181,7 @@ export default function GamesScreen() {
 				horizontal
 				showsHorizontalScrollIndicator={false}
 				contentContainerStyle={styles.intentBar}
-				style={styles.filterBarScroll}
+				style={styles.intentBarScroll}
 			>
 				{intentFilters.map((intent) => {
 					const isActive = intent.key === activeIntent;
@@ -192,6 +192,8 @@ export default function GamesScreen() {
 							scaleTo={0.95}
 							style={[
 								styles.intentChip,
+								intent.key !== intentFilters[intentFilters.length - 1].key &&
+									styles.chipSpacing,
 								{
 									backgroundColor: isActive ? theme.tint : theme.card,
 									borderColor: isActive ? theme.tint : theme.border,
@@ -230,6 +232,7 @@ export default function GamesScreen() {
 							scaleTo={0.95}
 							style={[
 								styles.filterChip,
+								cat !== CATEGORIES[CATEGORIES.length - 1] && styles.chipSpacing,
 								{
 									backgroundColor: isActive ? theme.tint : theme.card,
 									borderColor: isActive ? theme.tint : theme.border,
@@ -440,7 +443,8 @@ export default function GamesScreen() {
 
 const styles = StyleSheet.create({
 	container: { flex: 1 },
-	filterBarScroll: { flexGrow: 0 },
+	intentBarScroll: { flexGrow: 0, minHeight: 42, marginBottom: 6 },
+	filterBarScroll: { flexGrow: 0, minHeight: 42, marginBottom: 4 },
 	searchWrap: {
 		marginHorizontal: 16,
 		marginTop: 10,
@@ -458,7 +462,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		fontSize: 14,
 		lineHeight: 20,
-		height: 22,
 		paddingVertical: 0,
 		textAlignVertical: "center",
 	},
@@ -466,14 +469,15 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 16,
 		paddingTop: 0,
 		paddingBottom: 8,
-		gap: 8,
+		alignItems: "center",
 	},
 	intentBar: {
 		paddingHorizontal: 16,
 		paddingTop: 0,
 		paddingBottom: 6,
-		gap: 8,
+		alignItems: "center",
 	},
+	chipSpacing: { marginRight: 8 },
 	intentChip: {
 		flexDirection: "row",
 		alignItems: "center",

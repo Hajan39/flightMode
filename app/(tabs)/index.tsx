@@ -117,7 +117,7 @@ export default function HomeScreen() {
 	return (
 		<ScrollView style={styles.scroll} contentContainerStyle={styles.container}>
 			<Animated.View entering={FadeInDown.delay(80).springify()}>
-				<Text style={styles.sectionTitle}>{t("yourFlight")}</Text>
+				<Text style={[styles.sectionTitle, { marginTop: 0 }]}>{t("yourFlight")}</Text>
 				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
 					{t("homeFlightHint")}
 				</Text>
@@ -334,10 +334,15 @@ export default function HomeScreen() {
 				<AnimatedPressable
 					style={[
 						styles.challengeCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
+						{ backgroundColor: theme.accentSoft, borderColor: theme.tint },
 					]}
 					onPress={() => router.push(`/game/${challengeOfDay.id}` as never)}
 				>
+					<View
+						style={[styles.challengeAccent, { backgroundColor: theme.tint }]}
+						lightColor="transparent"
+						darkColor="transparent"
+					/>
 					<View
 						style={styles.challengeBody}
 						lightColor="transparent"
@@ -536,7 +541,7 @@ const styles = StyleSheet.create({
 	},
 
 	// Quick actions
-	sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 4 },
+	sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 4, marginTop: 20 },
 	sectionHint: {
 		fontSize: 12,
 		lineHeight: 16,
@@ -593,7 +598,16 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 14,
 		padding: 16,
+		paddingLeft: 20,
 		marginBottom: 4,
+		overflow: "hidden",
+	},
+	challengeAccent: {
+		position: "absolute",
+		left: 0,
+		top: 0,
+		bottom: 0,
+		width: 4,
 	},
 	challengeBody: {
 		gap: 8,

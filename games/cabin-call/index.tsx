@@ -1,15 +1,17 @@
-import { useEffect, useRef, useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-
-import { Text, View } from "@/components/Themed";
+import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
+import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
+import { Ionicons } from "@expo/vector-icons";
+import { useEffect, useRef, useState } from "react";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
 const ROUND_SECONDS = 40;
 
@@ -17,7 +19,6 @@ type Command = {
 	id: string;
 	labelKey: TranslationKey;
 	icon: string;
-	/** Minimum score needed to unlock this command */
 	unlockAt: number;
 };
 
@@ -68,38 +69,58 @@ function randomCommand(currentScore: number, excludeId?: string) {
 	return pool[Math.floor(Math.random() * pool.length)];
 }
 
-/** Number of decoy choices increases with score */
 function getDecoyCount(currentScore: number): number {
 	if (currentScore >= 150) return 4;
 	if (currentScore >= 80) return 3;
 	return 2;
 }
 
+type Phase = "running" | "paused" | "over";
+
 export default function CabinCallGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore(
+		(s) => s.progress["cabin-call"]?.highScore ?? 0,
+	);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
+	const [phase, setPhase] = useState<Phase>("running");
 	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
 	const [score, setScore] = useState(0);
 	const [streak, setStreak] = useState(0);
 	const [target, setTarget] = useState<Command>(() => randomCommand(0));
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 	const scoreRef = useRef(0);
+	const endTimeRef = useRef<number | null>(Date.now() + ROUND_SECONDS * 1000);
 
 	useEffect(() => {
-		if (secondsLeft <= 0) {
-			updateProgress("cabin-call", scoreRef.current);
-			return;
-		}
+		if (phase !== "running") return;
 
-		const timer = setTimeout(() => {
-			setSecondsLeft((prev) => prev - 1);
-		}, 1000);
+		const tick = () => {
+			const endTime = endTimeRef.current;
+			if (!endTime) return;
 
-		return () => clearTimeout(timer);
-	}, [secondsLeft, updateProgress]);
+			const remainingMs = endTime - Date.now();
+			setSecondsLeft(Math.max(0, Math.ceil(remainingMs / 1000)));
+
+			if (remainingMs <= 0) {
+				endTimeRef.current = null;
+				const info = updateProgress("cabin-call", scoreRef.current);
+				setProgressInfo(info);
+				setPhase("over");
+				haptic.heavy();
+			}
+		};
+
+		tick();
+		const timer = setInterval(tick, 100);
+		return () => clearInterval(timer);
+	}, [phase, updateProgress, haptic]);
 
 	const [choices, setChoices] = useState<Command[]>(() => {
 		const active = getActiveCommands(0);
@@ -119,21 +140,31 @@ export default function CabinCallGame() {
 			.sort(() => Math.random() - 0.5)
 			.slice(0, numDecoys);
 		setChoices([target, ...decoys].sort(() => Math.random() - 0.5));
-	}, [target]);
+	}, [score, target]);
 
 	const restart = () => {
+		endTimeRef.current = Date.now() + ROUND_SECONDS * 1000;
 		setSecondsLeft(ROUND_SECONDS);
 		setScore(0);
 		scoreRef.current = 0;
 		setStreak(0);
 		setTarget(randomCommand(0));
+		setProgressInfo(null);
+		setPhase("running");
+	};
+
+	const pause = () => {
+		endTimeRef.current = null;
+		setPhase("paused");
+	};
+
+	const resume = () => {
+		endTimeRef.current = Date.now() + secondsLeft * 1000;
+		setPhase("running");
 	};
 
 	const handleChoice = (choice: Command) => {
-		if (secondsLeft <= 0) {
-			restart();
-			return;
-		}
+		if (phase !== "running") return;
 
 		if (choice.id === target.id) {
 			haptic.success();
@@ -144,6 +175,7 @@ export default function CabinCallGame() {
 			});
 			setStreak((prev) => prev + 1);
 		} else {
+			haptic.error();
 			setScore((prev) => {
 				const next = Math.max(0, prev - 6);
 				scoreRef.current = next;
@@ -157,25 +189,48 @@ export default function CabinCallGame() {
 
 	return (
 		<View style={styles.root}>
-			<View style={styles.statsRow}>
-				<View style={styles.statBlock}>
+			<RNView style={styles.headerRow}>
+				<RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+					<Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+						{t("gameBest")}
+					</Text>
+					<Text style={[styles.bestValue, { color: theme.tint }]}>
+						{storedBest}
+					</Text>
+				</RNView>
+				<GameControls
+					onPause={phase === "running" ? pause : undefined}
+					onReset={restart}
+					isPaused={phase === "paused"}
+				/>
+			</RNView>
+
+			<RNView style={styles.statsRow}>
+				<RNView style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("ccTime")}
 					</Text>
-					<Text style={[styles.statValue, { color: theme.text }]}>
+					<Text
+						style={[
+							styles.statValue,
+							{ color: secondsLeft <= 5 ? "#ef5350" : theme.text },
+						]}
+					>
 						{secondsLeft}
 					</Text>
-				</View>
-				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
-				<View style={styles.statBlock}>
+				</RNView>
+				<RNView
+					style={[styles.statDivider, { backgroundColor: theme.border }]}
+				/>
+				<RNView style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("ccScore")}
 					</Text>
 					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
-				</View>
-			</View>
+				</RNView>
+			</RNView>
 
-			<View
+			<RNView
 				style={[
 					styles.targetCard,
 					{ backgroundColor: theme.card, borderColor: theme.border },
@@ -186,9 +241,9 @@ export default function CabinCallGame() {
 				</Text>
 				<Ionicons name={target.icon as never} size={40} color={theme.tint} />
 				<Text style={styles.targetText}>{t(target.labelKey)}</Text>
-			</View>
+			</RNView>
 
-			<View style={styles.choiceList}>
+			<RNView style={styles.choiceList}>
 				{choices.map((choice) => (
 					<Pressable
 						key={choice.id}
@@ -206,16 +261,26 @@ export default function CabinCallGame() {
 						<Text style={styles.choiceText}>{t(choice.labelKey)}</Text>
 					</Pressable>
 				))}
-			</View>
+			</RNView>
 
 			<Text style={[styles.streakText, { color: theme.mutedText }]}>
 				{t("ccStreak", { streak })}
 			</Text>
 
-			{secondsLeft <= 0 && (
+			<GamePauseOverlay
+				visible={phase === "paused"}
+				onResume={resume}
+				onRestart={restart}
+			/>
+
+			{phase === "over" && (
 				<GameResult
 					title={t("ccTimeUp")}
 					score={score}
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
 					subtitle={t("ccTimeUpSubtitle", { streak, score })}
 					onPlayAgain={restart}
 				/>
@@ -226,6 +291,26 @@ export default function CabinCallGame() {
 
 const styles = StyleSheet.create({
 	root: { flex: 1, padding: 20, gap: 16, justifyContent: "center" },
+	headerRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+	},
+	bestPill: {
+		flexDirection: "row",
+		alignItems: "baseline",
+		gap: 6,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+	},
+	bestLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	bestValue: { fontSize: 16, fontWeight: "900" },
 	statsRow: {
 		flexDirection: "row",
 		alignItems: "center",
@@ -266,15 +351,4 @@ const styles = StyleSheet.create({
 	},
 	choiceText: { fontSize: 15, fontWeight: "700" },
 	streakText: { textAlign: "center", fontSize: 13, fontWeight: "600" },
-	button: {
-		alignItems: "center",
-		paddingVertical: 14,
-		borderRadius: 14,
-	},
-	buttonText: {
-		color: "#fff",
-		fontSize: 16,
-		fontWeight: "900",
-		letterSpacing: 0.8,
-	},
 });

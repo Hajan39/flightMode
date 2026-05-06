@@ -15,6 +15,7 @@ import LanguageDropdown from "@/components/LanguageDropdown";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -71,6 +72,7 @@ export default function OnboardingScreen() {
 	const router = useRouter();
 	const { t } = useTranslation();
 	const completeOnboarding = useSettingsStore((s) => s.completeOnboarding);
+	const haptic = useHaptic();
 	const scrollRef = useRef<ScrollView>(null);
 	const [activeIndex, setActiveIndex] = useState(0);
 
@@ -104,6 +106,7 @@ export default function OnboardingScreen() {
 	};
 
 	const finish = () => {
+		haptic.success();
 		captureAnalyticsEvent("onboarding_complete", {
 			page_index: activeIndex,
 			page_count: pages.length,
@@ -117,7 +120,7 @@ export default function OnboardingScreen() {
 	return (
 		<View style={[styles.root, { backgroundColor: theme.background }]}>
 			{/* Skip */}
-			<AnimatedPressable style={styles.skipBtn} onPress={finish}>
+			<AnimatedPressable style={styles.skipBtn} onPress={() => { haptic.tap(); finish(); }}>
 				<Text style={[styles.skipText, { color: theme.mutedText }]}>
 					{t("onboardingSkip")}
 				</Text>
@@ -161,6 +164,7 @@ export default function OnboardingScreen() {
 					if (isLast) {
 						finish();
 					} else {
+						haptic.tap();
 						scrollRef.current?.scrollTo({
 							x: (activeIndex + 1) * SCREEN_WIDTH,
 							animated: true,

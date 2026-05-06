@@ -1,15 +1,17 @@
 ﻿import { useMemo, useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
+import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
+import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
 
 type QuizQuestion = {
 	question: string;
@@ -287,6 +289,7 @@ export default function QuizGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore((s) => s.progress["quiz"]?.highScore ?? 0);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
@@ -297,6 +300,9 @@ export default function QuizGame() {
 	const [score, setScore] = useState(0);
 	const [selectedOption, setSelectedOption] = useState<string | null>(null);
 	const [showResult, setShowResult] = useState(false);
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 
 	const currentQuestion = questions[currentIndex];
 	const progressFraction = (currentIndex + 1) / questions.length;
@@ -318,7 +324,8 @@ export default function QuizGame() {
 
 		setTimeout(() => {
 			if (currentIndex >= questions.length - 1) {
-				updateProgress("quiz", nextScore);
+				const info = updateProgress("quiz", nextScore);
+				setProgressInfo(info);
 				setScore(nextScore);
 				setShowResult(true);
 				return;
@@ -332,8 +339,29 @@ export default function QuizGame() {
 
 	const correctAnswer = currentQuestion.options[currentQuestion.answerIndex];
 
+	const restart = () => {
+		setQuestions(pickRandom(getAllQuestions(t), QUESTION_COUNT));
+		setCurrentIndex(0);
+		setScore(0);
+		setSelectedOption(null);
+		setShowResult(false);
+		setProgressInfo(null);
+	};
+
 	return (
 		<View style={styles.root}>
+			<RNView style={styles.headerRow}>
+				<RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+					<Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+						{t("gameBest")}
+					</Text>
+					<Text style={[styles.bestValue, { color: theme.tint }]}>
+						{storedBest}
+					</Text>
+				</RNView>
+				<GameControls onReset={restart} />
+			</RNView>
+
 			<View style={styles.progressRow}>
 				<View style={[styles.progressTrack, { backgroundColor: theme.card }]}>
 					<View
@@ -409,18 +437,16 @@ export default function QuizGame() {
 				<GameResult
 					title={t("quizFinished")}
 					score={score}
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
 					subtitle={t("quizResult", {
 						score,
 						correct: Math.round(score / 10),
 						total: questions.length,
 					})}
-					onPlayAgain={() => {
-						setQuestions(pickRandom(getAllQuestions(t), QUESTION_COUNT));
-						setCurrentIndex(0);
-						setScore(0);
-						setSelectedOption(null);
-						setShowResult(false);
-					}}
+					onPlayAgain={restart}
 				/>
 			)}
 		</View>
@@ -429,6 +455,26 @@ export default function QuizGame() {
 
 const styles = StyleSheet.create({
 	root: { flex: 1, padding: 20, gap: 14 },
+	headerRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+	},
+	bestPill: {
+		flexDirection: "row",
+		alignItems: "baseline",
+		gap: 6,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+	},
+	bestLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	bestValue: { fontSize: 16, fontWeight: "900" },
 	progressRow: { flexDirection: "row", alignItems: "center", gap: 10 },
 	progressTrack: {
 		flex: 1,

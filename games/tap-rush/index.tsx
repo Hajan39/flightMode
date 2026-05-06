@@ -1,109 +1,166 @@
-import { useEffect, useRef, useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
-
-import { Text, View } from "@/components/Themed";
+import GameControls from "@/components/GameControls";
+import GameCountdown from "@/components/GameCountdown";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
-import Colors from "@/constants/Colors";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
+import { useEffect, useRef, useState } from "react";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
 const ROUND_SECONDS = 20;
+
+type Phase = "idle" | "countdown" | "running" | "paused" | "over";
 
 export default function TapRushGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore(
+		(s) => s.progress["tap-rush"]?.highScore ?? 0,
+	);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
-	const [isRunning, setIsRunning] = useState(false);
+	const [phase, setPhase] = useState<Phase>("idle");
 	const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
 	const [score, setScore] = useState(0);
-	const [showResult, setShowResult] = useState(false);
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 	const scoreRef = useRef(0);
-	const gameEndedAt = useRef(0);
+	const endTimeRef = useRef<number | null>(null);
+	const lastTapHapticAtRef = useRef(0);
 
 	useEffect(() => {
-		if (!isRunning) return;
+		if (phase !== "running") return;
 
-		if (secondsLeft <= 0) {
-			setIsRunning(false);
-			haptic.heavy();
-			updateProgress("tap-rush", scoreRef.current);
-			gameEndedAt.current = Date.now();
-			setShowResult(true);
-			return;
-		}
+		const tick = () => {
+			const endTime = endTimeRef.current;
+			if (!endTime) return;
 
-		const timeout = setTimeout(() => {
-			setSecondsLeft((prev) => prev - 1);
-		}, 1000);
+			const remainingMs = endTime - Date.now();
+			const nextSecondsLeft = Math.max(0, Math.ceil(remainingMs / 1000));
+			setSecondsLeft(nextSecondsLeft);
 
-		return () => clearTimeout(timeout);
-	}, [isRunning, secondsLeft, updateProgress]);
+			if (remainingMs <= 0) {
+				haptic.heavy();
+				const info = updateProgress("tap-rush", scoreRef.current);
+				setProgressInfo(info);
+				setPhase("over");
+			}
+		};
 
-	const ctaLabel = (() => {
-		if (!isRunning && score === 0 && secondsLeft === ROUND_SECONDS)
-			return t("tapRushStart");
-		if (isRunning) return t("tapRushTap");
-		return t("tapRushPlayAgain");
-	})();
+		tick();
+		const interval = setInterval(tick, 100);
 
-	const handleMainPress = () => {
-		if (showResult && Date.now() - gameEndedAt.current < 700) return;
-		if (!isRunning && secondsLeft === ROUND_SECONDS && score === 0) {
-			setIsRunning(true);
-			return;
-		}
-		if (isRunning) {
-			haptic.tap();
-			setScore((prev) => {
-				scoreRef.current = prev + 1;
-				return prev + 1;
-			});
-			return;
-		}
+		return () => clearInterval(interval);
+	}, [phase, updateProgress, haptic]);
+
+	const startCountdown = () => {
 		setSecondsLeft(ROUND_SECONDS);
 		setScore(0);
 		scoreRef.current = 0;
-		setShowResult(false);
-		setIsRunning(true);
+		endTimeRef.current = null;
+		setProgressInfo(null);
+		setPhase("countdown");
+	};
+
+	const handleTap = () => {
+		if (phase !== "running") return;
+
+		const now = Date.now();
+		if (now - lastTapHapticAtRef.current >= 60) {
+			lastTapHapticAtRef.current = now;
+			haptic.tap();
+		}
+
+		scoreRef.current += 1;
+		setScore(scoreRef.current);
+	};
+
+	const handlePause = () => {
+		if (phase === "running") setPhase("paused");
+	};
+	const handleResume = () => {
+		if (phase === "paused") setPhase("running");
+	};
+	const handleReset = () => {
+		setSecondsLeft(ROUND_SECONDS);
+		setScore(0);
+		scoreRef.current = 0;
+		endTimeRef.current = null;
+		setProgressInfo(null);
+		setPhase("idle");
 	};
 
 	const progress = secondsLeft / ROUND_SECONDS;
+	const isRunning = phase === "running";
+
+	const ctaLabel =
+		phase === "idle"
+			? t("gameTapToStart")
+			: isRunning
+				? t("tapRushTap")
+				: phase === "paused"
+					? t("gameResume")
+					: t("playAgain");
 
 	return (
 		<View style={styles.root}>
+			<RNView style={styles.headerRow}>
+				<RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+					<Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+						{t("gameBest")}
+					</Text>
+					<Text style={[styles.bestValue, { color: theme.tint }]}>
+						{storedBest}
+					</Text>
+				</RNView>
+				<GameControls
+					onPause={isRunning || phase === "paused" ? handlePause : undefined}
+					onReset={phase !== "idle" ? handleReset : undefined}
+					isPaused={phase === "paused"}
+				/>
+			</RNView>
+
 			{/* ── Time bar ── */}
-			<View style={[styles.timeTrack, { backgroundColor: theme.card }]}>
-				<View
+			<RNView style={[styles.timeTrack, { backgroundColor: theme.card }]}>
+				<RNView
 					style={[
 						styles.timeFill,
-						{ backgroundColor: theme.tint, flex: progress },
+						{
+							backgroundColor: secondsLeft <= 5 ? "#ef5350" : theme.tint,
+							flex: progress,
+						},
 					]}
 				/>
-			</View>
+			</RNView>
 
 			{/* ── Stats ── */}
-			<View style={styles.statsRow}>
-				<View style={styles.statBlock}>
+			<RNView style={styles.statsRow}>
+				<RNView style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("tapRushTime")}
 					</Text>
 					<Text style={[styles.statValue, { color: theme.text }]}>
 						{secondsLeft}s
 					</Text>
-				</View>
-				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
-				<View style={styles.statBlock}>
+				</RNView>
+				<RNView
+					style={[styles.statDivider, { backgroundColor: theme.border }]}
+				/>
+				<RNView style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("tapRushScore")}
 					</Text>
 					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
-				</View>
-			</View>
+				</RNView>
+			</RNView>
 
 			{/* ── Main tap area ── */}
 			<Pressable
@@ -114,7 +171,10 @@ export default function TapRushGame() {
 						borderColor: isRunning ? theme.tint : theme.border,
 					},
 				]}
-				onPress={handleMainPress}
+				onPressIn={isRunning ? handleTap : startCountdown}
+				disabled={
+					phase === "countdown" || phase === "paused" || phase === "over"
+				}
 			>
 				<Text
 					style={[
@@ -126,11 +186,34 @@ export default function TapRushGame() {
 				</Text>
 			</Pressable>
 
-			{showResult && (
+			{phase === "countdown" && (
+				<GameCountdown
+					onComplete={() => {
+						endTimeRef.current = Date.now() + ROUND_SECONDS * 1000;
+						setSecondsLeft(ROUND_SECONDS);
+						setPhase("running");
+					}}
+				/>
+			)}
+
+			<GamePauseOverlay
+				visible={phase === "paused"}
+				onResume={handleResume}
+				onRestart={() => {
+					handleReset();
+					startCountdown();
+				}}
+			/>
+
+			{phase === "over" && (
 				<GameResult
 					title={t("tapRushFinishedTitle")}
 					score={score}
-					onPlayAgain={handleMainPress}
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
+					onPlayAgain={startCountdown}
 				/>
 			)}
 		</View>
@@ -139,6 +222,26 @@ export default function TapRushGame() {
 
 const styles = StyleSheet.create({
 	root: { flex: 1, padding: 20, gap: 16, justifyContent: "center" },
+	headerRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+	},
+	bestPill: {
+		flexDirection: "row",
+		alignItems: "baseline",
+		gap: 6,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+	},
+	bestLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	bestValue: { fontSize: 16, fontWeight: "900" },
 	/* ── Time bar ── */
 	timeTrack: {
 		height: 6,

@@ -1,20 +1,20 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-	StyleSheet,
-	Pressable,
 	Animated,
 	Easing,
-	ScrollView,
+	Pressable,
 	View as RNView,
+	ScrollView,
+	StyleSheet,
 	useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
 
 /* ================================================================
    CONSTANTS
@@ -302,11 +302,11 @@ function ColumnView({
    STAR DISPLAY
    ================================================================ */
 
-function Stars({ count }: { count: number }) {
+function Stars({ count, size = 26 }: { count: number; size?: number }) {
 	return (
 		<RNView style={{ flexDirection: "row", gap: 4, marginVertical: 4 }}>
 			{[1, 2, 3].map((i) => (
-				<Text key={i} style={{ fontSize: 26, opacity: i <= count ? 1 : 0.2 }}>
+				<Text key={i} style={{ fontSize: size, opacity: i <= count ? 1 : 0.2 }}>
 					⭐
 				</Text>
 			))}
@@ -324,6 +324,9 @@ export default function StackSortGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const levelStars = useGameStore(
+		(s) => s.progress["stack-sort"]?.levelStars ?? {},
+	);
 	const { width: screenW } = useWindowDimensions();
 
 	const [phase, setPhase] = useState<"menu" | "playing" | "won">("menu");
@@ -396,7 +399,9 @@ export default function StackSortGame() {
 				haptic.heavy();
 				setPhase("won");
 				const stars = getStars(moves + 1, numCount);
-				updateProgress("stack-sort", stars * 100 + (level + 1));
+				updateProgress("stack-sort", stars, {
+					levelStarsPatch: { [String(level + 1)]: stars },
+				});
 			}
 			return;
 		}
@@ -486,7 +491,7 @@ export default function StackSortGame() {
 				>
 					{LEVELS.map((_, i) => (
 						<Pressable
-							key={i}
+							key={`level-${i + 1}-${LEVELS[i][0]}-${LEVELS[i][1]}-${LEVELS[i][2]}`}
 							style={[
 								s.levelBtn,
 								{ backgroundColor: theme.card, borderColor: theme.border },
@@ -496,6 +501,7 @@ export default function StackSortGame() {
 							<Text style={[s.levelBtnText, { color: theme.text }]}>
 								{i + 1}
 							</Text>
+							<Stars count={levelStars[String(i + 1)] ?? 0} size={10} />
 							<Text style={{ fontSize: 8, color: theme.mutedText }}>
 								{LEVELS[i][0]}n
 							</Text>

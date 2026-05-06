@@ -78,6 +78,15 @@ function sameCoord(a: [number, number], b: [number, number]) {
 	return a[0] === b[0] && a[1] === b[1];
 }
 
+function isShipSunk(attackGrid: Cell[][], placement: ShipPlacement) {
+	return placement.cells.every(([r, c]) => attackGrid[r][c] === "h");
+}
+
+function remainingShips(attackGrid: Cell[][], placements: ShipPlacement[]) {
+	return placements.filter((placement) => !isShipSunk(attackGrid, placement))
+		.length;
+}
+
 function cellFromGridEvent(
 	event: GestureResponderEvent,
 ): [number, number] | null {
@@ -277,6 +286,7 @@ export default function CrossAirRadarGame() {
 		const attackGrid = currentPlayer === 1 ? attacks1 : attacks2;
 		const setAttackGrid = currentPlayer === 1 ? setAttacks1 : setAttacks2;
 		const opponentFleet = currentPlayer === 1 ? fleet2 : fleet1;
+		const opponentPlacements = currentPlayer === 1 ? placements2 : placements1;
 
 		if (attackGrid[r][c] !== "w") return;
 
@@ -287,7 +297,15 @@ export default function CrossAirRadarGame() {
 
 		if (isHit) {
 			haptic.success();
-			setLastResult(`💥 ${t("arHit")} — ${coord(r, c)}`);
+			let resultText = `💥 ${t("arHit")} — ${coord(r, c)}`;
+
+			const hitPlacement = opponentPlacements.find((placement) =>
+				placement.cells.some((cell) => sameCoord(cell, [r, c])),
+			);
+			if (hitPlacement && isShipSunk(next, hitPlacement)) {
+				resultText = `🔥 ${t(SHIP_LABELS[hitPlacement.id])} sestreleno`;
+			}
+			setLastResult(resultText);
 			const setHits = currentPlayer === 1 ? setHitsP1 : setHitsP2;
 			const currentHits = currentPlayer === 1 ? hitsP1 : hitsP2;
 			const newHits = currentHits + 1;
@@ -591,7 +609,11 @@ export default function CrossAirRadarGame() {
 
 	// --- BATTLE TURN ---
 	const attackGrid = currentPlayer === 1 ? attacks1 : attacks2;
+	const opponentPlacements = currentPlayer === 1 ? placements2 : placements1;
 	const playerLabel = currentPlayer === 1 ? t("c4Player1") : t("c4Player2");
+	const currentHits = currentPlayer === 1 ? hitsP1 : hitsP2;
+	const hitsToWin = Math.max(0, TOTAL_HP - currentHits);
+	const shipsToWin = remainingShips(attackGrid, opponentPlacements);
 
 	return (
 		<View style={styles.container}>
@@ -609,6 +631,15 @@ export default function CrossAirRadarGame() {
 				</Text>
 				<Text style={[styles.scoreText, { color: "#ffd54f" }]}>
 					{t("c4Player2")}: {hitsP2}/{TOTAL_HP}
+				</Text>
+			</View>
+
+			<View style={styles.remainingRow}>
+				<Text style={[styles.remainingText, { color: theme.mutedText }]}>
+					🎯 {hitsToWin}
+				</Text>
+				<Text style={[styles.remainingText, { color: theme.mutedText }]}>
+					✈️ {shipsToWin}
 				</Text>
 			</View>
 
@@ -691,6 +722,15 @@ const styles = StyleSheet.create({
 		marginTop: 4,
 	},
 	scoreText: { fontSize: 13, fontWeight: "700" },
+	remainingRow: {
+		flexDirection: "row",
+		gap: 14,
+		marginBottom: 4,
+	},
+	remainingText: {
+		fontSize: 12,
+		fontWeight: "700",
+	},
 	// Flash badge
 	flashBadge: {
 		backgroundColor: "rgba(0,0,0,0.7)",

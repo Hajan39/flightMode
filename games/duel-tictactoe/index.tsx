@@ -367,7 +367,11 @@ export default function DuelTicTacToeGame() {
 				contentContainerStyle={styles.boardViewportContent}
 				showsVerticalScrollIndicator={false}
 			>
-				<ScrollView horizontal showsHorizontalScrollIndicator={false}>
+				<ScrollView
+					horizontal
+					showsHorizontalScrollIndicator={false}
+					contentContainerStyle={styles.boardHScrollContent}
+				>
 					<View
 						style={[
 							styles.board,
@@ -505,7 +509,17 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 18,
 	},
-	boardViewportContent: { padding: 10 },
+	boardViewportContent: {
+		flexGrow: 1,
+		alignItems: "center",
+		justifyContent: "center",
+		padding: 10,
+	},
+	boardHScrollContent: {
+		flexGrow: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 	board: { flexDirection: "row", flexWrap: "wrap", gap: BOARD_GAP },
 	cell: {
 		borderWidth: 1.5,
@@ -514,7 +528,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	cellText: { fontWeight: "900" },
-	cellWin: { borderWidth: 3, transform: [{ scale: 1.06 }] },
+	cellWin: { borderWidth: 3 },
 	/* ── Action ── */
 	actionBtn: {
 		borderWidth: 1.5,

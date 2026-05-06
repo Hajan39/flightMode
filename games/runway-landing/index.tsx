@@ -1,13 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
-
-import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
-import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useHaptic } from "@/hooks/useHaptic";
+import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
+import { Text, View } from "@/components/Themed";
+import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
+import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
+import { useEffect, useRef, useState } from "react";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
 const ROUND_COUNT = 8;
 const RUNWAY_WIDTH = 280;
@@ -57,6 +59,9 @@ export default function RunwayLandingGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore(
+		(s) => s.progress["runway-landing"]?.highScore ?? 0,
+	);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
@@ -69,6 +74,10 @@ export default function RunwayLandingGame() {
 		getTargetLeft(targetWidth),
 	);
 	const [finished, setFinished] = useState(false);
+	const [paused, setPaused] = useState(false);
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 	const [lastPoints, setLastPoints] = useState<number | null>(null);
 	const [lastQuality, setLastQuality] = useState<Quality | null>(null);
 	const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -76,7 +85,7 @@ export default function RunwayLandingGame() {
 	const speed = getSpeed(round);
 
 	useEffect(() => {
-		if (finished) return;
+		if (finished || paused) return;
 		intervalRef.current = setInterval(() => {
 			setMarkerX((prev) => {
 				const next = prev + direction * speed;
@@ -95,7 +104,7 @@ export default function RunwayLandingGame() {
 		return () => {
 			if (intervalRef.current) clearInterval(intervalRef.current);
 		};
-	}, [direction, speed, finished]);
+	}, [direction, speed, finished, paused]);
 
 	const currentRoundText = `${round}/${ROUND_COUNT}`;
 
@@ -119,8 +128,10 @@ export default function RunwayLandingGame() {
 		setDirection(1);
 		setTargetLeft(getTargetLeft(getTargetWidth(1)));
 		setFinished(false);
+		setPaused(false);
 		setLastPoints(null);
 		setLastQuality(null);
+		setProgressInfo(null);
 	};
 
 	const handleLand = () => {
@@ -147,7 +158,8 @@ export default function RunwayLandingGame() {
 
 		if (nextRound > ROUND_COUNT) {
 			setFinished(true);
-			updateProgress("runway-landing", nextScore);
+			const info = updateProgress("runway-landing", nextScore);
+			setProgressInfo(info);
 			return;
 		}
 
@@ -162,6 +174,22 @@ export default function RunwayLandingGame() {
 
 	return (
 		<View style={styles.root}>
+			<RNView style={styles.headerRow}>
+				<RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+					<Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+						{t("gameBest")}
+					</Text>
+					<Text style={[styles.bestValue, { color: theme.tint }]}>
+						{storedBest}
+					</Text>
+				</RNView>
+				<GameControls
+					onPause={!finished ? () => setPaused(true) : undefined}
+					onReset={restart}
+					isPaused={paused}
+				/>
+			</RNView>
+
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
@@ -247,16 +275,46 @@ export default function RunwayLandingGame() {
 				<GameResult
 					title={t("rlFinished")}
 					score={score}
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
 					subtitle={t("rlResult", { score })}
 					onPlayAgain={restart}
 				/>
 			)}
+
+			<GamePauseOverlay
+				visible={paused}
+				onResume={() => setPaused(false)}
+				onRestart={restart}
+			/>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	root: { flex: 1, padding: 20, gap: 16, justifyContent: "center" },
+	headerRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+	},
+	bestPill: {
+		flexDirection: "row",
+		alignItems: "baseline",
+		gap: 6,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+	},
+	bestLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	bestValue: { fontSize: 16, fontWeight: "900" },
 	statsRow: {
 		flexDirection: "row",
 		alignItems: "center",

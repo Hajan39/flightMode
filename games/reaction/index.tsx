@@ -1,3 +1,4 @@
+import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -5,12 +6,14 @@ import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 
 const TOTAL_ROUNDS = 5;
 const WAIT_MIN_MS = 1200;
 const WAIT_MAX_MS = 4200;
+const REACTION_SCORE_BASE = 1000;
 
 type Phase = "idle" | "waiting" | "ready";
 
@@ -22,10 +25,21 @@ function randomWaitMs(roundNum: number) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function encodeReactionScore(bestMs: number) {
+	return Math.max(0, REACTION_SCORE_BASE - bestMs);
+}
+
+function decodeReactionScore(score: number) {
+	return Math.max(0, REACTION_SCORE_BASE - score);
+}
+
 export default function ReactionGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBestScore = useGameStore(
+		(s) => s.progress["reaction"]?.highScore ?? 0,
+	);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 
@@ -35,6 +49,9 @@ export default function ReactionGame() {
 	const [round, setRound] = useState(0);
 	const [results, setResults] = useState<number[]>([]);
 	const [finalScore, setFinalScore] = useState<number | null>(null);
+	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+		null,
+	);
 	const [tooEarly, setTooEarly] = useState(false);
 	const tooEarlyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const startedAtRef = useRef<number | null>(null);
@@ -49,6 +66,10 @@ export default function ReactionGame() {
 
 	const startRound = () => {
 		if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
+		if (round === 0) {
+			setBestMs(null);
+			setLastMs(null);
+		}
 		setFinalScore(null);
 		const nextRound = round + 1;
 		setRound(nextRound);
@@ -72,6 +93,8 @@ export default function ReactionGame() {
 			setPhase("idle");
 			setRound(0);
 			setResults([]);
+			setBestMs(null);
+			setLastMs(null);
 			haptic.error();
 			setTooEarly(true);
 			if (tooEarlyTimer.current) clearTimeout(tooEarlyTimer.current);
@@ -89,12 +112,11 @@ export default function ReactionGame() {
 			setResults(newResults);
 
 			if (newResults.length >= TOTAL_ROUNDS) {
-				const avg = Math.round(
-					newResults.reduce((a, b) => a + b, 0) / newResults.length,
-				);
-				const score = Math.max(0, 1000 - avg);
-				updateProgress("reaction", score);
-				setFinalScore(score);
+				const runBestMs = Math.min(...newResults);
+				const score = encodeReactionScore(runBestMs);
+				const info = updateProgress("reaction", score);
+				setProgressInfo(info);
+				setFinalScore(runBestMs);
 				setPhase("idle");
 				setRound(0);
 				setResults([]);
@@ -111,8 +133,10 @@ export default function ReactionGame() {
 		setPhase("idle");
 		setRound(0);
 		setResults([]);
+		setBestMs(null);
 		setLastMs(null);
 		setFinalScore(null);
+		setProgressInfo(null);
 		setTooEarly(false);
 	};
 
@@ -134,6 +158,9 @@ export default function ReactionGame() {
 
 	return (
 		<View style={styles.root}>
+			{/* ── Header controls ── */}
+			<GameControls onReset={restart} />
+
 			{/* ── Stats ── */}
 			<View style={styles.statsRow}>
 				<View style={styles.statBlock}>
@@ -206,6 +233,15 @@ export default function ReactionGame() {
 				<GameResult
 					title={t("gameReactionName")}
 					score={finalScore}
+					best={decodeReactionScore(progressInfo?.best ?? storedBestScore)}
+					last={
+						progressInfo?.last
+							? decodeReactionScore(progressInfo.last)
+							: undefined
+					}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
+					formatScore={(value) => `${value} ${t("reactionMs")}`}
 					onPlayAgain={restart}
 				/>
 			)}

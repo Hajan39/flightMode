@@ -1,18 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
 	type LayoutChangeEvent,
 	PanResponder,
 	Pressable,
-	StyleSheet,
 	View as RNView,
+	StyleSheet,
 } from "react-native";
 
+import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
+import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
+import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
 
 /* ================================================================
    TYPES
@@ -137,6 +140,16 @@ type Plane = {
 	} | null;
 };
 
+type IncomingWarning = {
+	id: number;
+	x: number;
+	y: number;
+	angle: number;
+	type: PlaneType;
+	color: string;
+	inMs: number;
+};
+
 type Runway = {
 	/** center x */
 	cx: number;
@@ -151,16 +164,15 @@ type Runway = {
 	size: RwySize;
 	/** which endpoint index (0=A, 1=B) is the landing threshold */
 	landingEnd: 0 | 1;
+	/** accent color for runway acceptance family */
+	accentColor: string;
+	/** short readable accepted type label */
+	acceptsLabel: string;
 };
 
-/** Check if a runway is big enough for the given plane type */
-const RWY_SIZE_ORDER: Record<RwySize, number> = {
-	short: 0,
-	medium: 1,
-	long: 2,
-};
+/** Check if a runway matches the plane type family exactly */
 function canLandOn(plane: PlaneType, rwy: Runway): boolean {
-	return RWY_SIZE_ORDER[rwy.size] >= RWY_SIZE_ORDER[plane.minRunway];
+	return rwy.size === plane.minRunway;
 }
 
 /* ================================================================
@@ -173,6 +185,7 @@ const TICK = 33;
 const MAX_PLANES = 10;
 const TURN_RATE = 0.065;
 const BASE_PTS = 40;
+const SPAWN_WARNING_MS = 2000;
 /** how much of the runway (from each end) counts as entry zone (0–1, 0.25 = first quarter) */
 const RWY_ENTRY_ZONE = 0.25;
 /** how fast the landing animation progresses per tick (0→1) */
@@ -238,6 +251,51 @@ function pickType(landed: number): PlaneType {
 	if (r < 0.6) return PLANE_TYPES[2];
 	if (r < 0.8) return PLANE_TYPES[3];
 	return PLANE_TYPES[4];
+}
+
+function buildSpawnPlan(
+	board: { w: number; h: number },
+	id: number,
+	landed: number,
+) {
+	const { w, h } = board;
+	const side = Math.floor(Math.random() * 5);
+	let x: number, y: number, a: number;
+
+	if (side === 0) {
+		x = 40 + Math.random() * (w - 80);
+		y = -20;
+		a = Math.PI / 2 + (Math.random() - 0.5) * 0.6;
+	} else if (side === 1) {
+		x = -20;
+		y = 20 + Math.random() * (h * 0.5);
+		a = (Math.random() - 0.2) * 0.6;
+	} else if (side === 2) {
+		x = w + 20;
+		y = 20 + Math.random() * (h * 0.5);
+		a = Math.PI + (Math.random() - 0.5) * 0.6;
+	} else if (side === 3) {
+		x = -20;
+		y = -20;
+		a = Math.PI / 4 + (Math.random() - 0.5) * 0.3;
+	} else {
+		x = w + 20;
+		y = -20;
+		a = (3 * Math.PI) / 4 + (Math.random() - 0.5) * 0.3;
+	}
+
+	const type = pickType(landed);
+	const sv = 0.85 + Math.random() * 0.3;
+
+	return {
+		id,
+		x,
+		y,
+		a,
+		type,
+		speed: type.baseSpeed * sv,
+		color: TRAIL_COLORS[id % TRAIL_COLORS.length],
+	};
 }
 
 /* ================================================================
@@ -387,9 +445,9 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
 					width: len,
 					height: 12,
 					borderRadius: 2,
-					backgroundColor: "rgba(255,255,255,0.06)",
+					backgroundColor: `${rwy.accentColor}20`,
 					borderWidth: 1,
-					borderColor: "rgba(255,255,255,0.15)",
+					borderColor: `${rwy.accentColor}88`,
 					flexDirection: "row",
 					justifyContent: "space-evenly",
 					alignItems: "center",
@@ -397,12 +455,12 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
 			>
 				{Array.from({ length: DASHES }).map((_, i) => (
 					<RNView
-						key={i}
+						key={`${rwy.label}-dash-${i}`}
 						style={{
 							width: len / DASHES - 6,
 							height: 2,
 							borderRadius: 1,
-							backgroundColor: "rgba(255,255,255,0.45)",
+							backgroundColor: `${rwy.accentColor}CC`,
 						}}
 					/>
 				))}
@@ -415,7 +473,7 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
 					width: 6,
 					height: 14,
 					borderRadius: 1,
-					backgroundColor: "rgba(100,255,120,0.6)",
+					backgroundColor: `${rwy.accentColor}`,
 				}}
 			/>
 			{/* far end — dim marker */}
@@ -426,7 +484,7 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
 					width: 3,
 					height: 10,
 					borderRadius: 1,
-					backgroundColor: "rgba(255,200,50,0.3)",
+					backgroundColor: `${rwy.accentColor}66`,
 				}}
 			/>
 			{/* label */}
@@ -441,7 +499,7 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
 					transform: [{ rotate: `${-deg}deg` }],
 				}}
 			>
-				{rwy.label} {sizeTag}
+				{rwy.label} {sizeTag} · {rwy.acceptsLabel}
 			</Text>
 		</RNView>
 	);
@@ -457,28 +515,42 @@ export default function FlightPathGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const updateProgress = useGameStore((s) => s.updateProgress);
+	const storedBest = useGameStore(
+		(s) => s.progress["flight-path"]?.highScore ?? 0,
+	);
 
 	const [boardSize, setBoardSize] = useState({ w: 300, h: 500 });
 	const boardRef = useRef({ w: 300, h: 500 });
 
 	const [planes, setPlanes] = useState<Plane[]>([]);
+	const [incoming, setIncoming] = useState<IncomingWarning[]>([]);
 	const [drawPath, setDrawPath] = useState<Pt[]>([]);
 	const [score, setScore] = useState(0);
 	const [landed, setLanded] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
 	const [started, setStarted] = useState(false);
+	const [paused, setPaused] = useState(false);
+	const [progressInfo, setProgressInfo] = useState<
+		import("@/types/game").GameProgressUpdate | null
+	>(null);
 
 	const planesRef = useRef<Plane[]>([]);
+	const incomingRef = useRef<IncomingWarning[]>([]);
 	const selectedRef = useRef<number | null>(null);
 	const drawRef = useRef<Pt[]>([]);
 	const scoreRef = useRef(0);
 	const landedRef = useRef(0);
 	const gameOverRef = useRef(false);
 	const nextIdRef = useRef(1);
+	const hapticErrorRef = useRef(haptic.error);
+	hapticErrorRef.current = haptic.error;
 
 	useEffect(() => {
 		planesRef.current = planes;
 	}, [planes]);
+	useEffect(() => {
+		incomingRef.current = incoming;
+	}, [incoming]);
 	useEffect(() => {
 		scoreRef.current = score;
 	}, [score]);
@@ -511,6 +583,8 @@ export default function FlightPathGame() {
 				label: "09L",
 				size: "long" as RwySize,
 				landingEnd: 0 as const,
+				accentColor: "#FFD54F",
+				acceptsLabel: "JUMBO/CARGO/FAST",
 			},
 			// MEDIUM — ~55° diagonal, for jet+
 			{
@@ -521,6 +595,8 @@ export default function FlightPathGame() {
 				label: "27R",
 				size: "medium" as RwySize,
 				landingEnd: 0 as const,
+				accentColor: "#81C784",
+				acceptsLabel: "JET",
 			},
 			// SHORT — ~-40° diagonal, for prop (any can use)
 			{
@@ -531,64 +607,35 @@ export default function FlightPathGame() {
 				label: "14C",
 				size: "short" as RwySize,
 				landingEnd: 1 as const,
+				accentColor: "#64B5F6",
+				acceptsLabel: "PROP",
 			},
 		];
 	})();
 	const runwaysRef = useRef(runways);
 	runwaysRef.current = runways;
 
-	/* spawn from edges */
-	const spawn = () => {
+	/* schedule incoming telegraph from edges */
+	const scheduleIncoming = useCallback(() => {
 		if (gameOverRef.current) return;
-		if (planesRef.current.length >= MAX_PLANES) return;
-
-		const { w, h } = boardRef.current;
+		if (planesRef.current.length + incomingRef.current.length >= MAX_PLANES)
+			return;
 		const id = nextIdRef.current++;
-		const side = Math.floor(Math.random() * 5);
-		let x: number, y: number, a: number;
+		const plan = buildSpawnPlan(boardRef.current, id, landedRef.current);
 
-		if (side === 0) {
-			x = 40 + Math.random() * (w - 80);
-			y = -20;
-			a = Math.PI / 2 + (Math.random() - 0.5) * 0.6;
-		} else if (side === 1) {
-			x = -20;
-			y = 20 + Math.random() * (h * 0.5);
-			a = (Math.random() - 0.2) * 0.6;
-		} else if (side === 2) {
-			x = w + 20;
-			y = 20 + Math.random() * (h * 0.5);
-			a = Math.PI + (Math.random() - 0.5) * 0.6;
-		} else if (side === 3) {
-			x = -20;
-			y = -20;
-			a = Math.PI / 4 + (Math.random() - 0.5) * 0.3;
-		} else {
-			x = w + 20;
-			y = -20;
-			a = (3 * Math.PI) / 4 + (Math.random() - 0.5) * 0.3;
-		}
-
-		const type = pickType(landedRef.current);
-		const sv = 0.85 + Math.random() * 0.3;
-
-		setPlanes((prev) => [
+		setIncoming((prev) => [
 			...prev,
 			{
-				id,
-				x,
-				y,
-				angle: a,
-				targetAngle: a,
-				speed: type.baseSpeed * sv,
-				path: null,
-				pathIdx: 0,
-				color: TRAIL_COLORS[id % TRAIL_COLORS.length],
-				type,
-				landing: null,
+				id: plan.id,
+				x: plan.x,
+				y: plan.y,
+				angle: plan.a,
+				type: plan.type,
+				color: plan.color,
+				inMs: SPAWN_WARNING_MS,
 			},
 		]);
-	};
+	}, []);
 
 	const spawnMs = Math.max(
 		900,
@@ -596,15 +643,56 @@ export default function FlightPathGame() {
 	);
 
 	useEffect(() => {
-		if (!started || gameOver) return;
-		spawn();
-		const t = setInterval(spawn, spawnMs);
+		if (!started || gameOver || paused) return;
+		scheduleIncoming();
+		const t = setInterval(scheduleIncoming, spawnMs);
 		return () => clearInterval(t);
-	}, [started, gameOver, spawnMs]);
+	}, [started, gameOver, spawnMs, paused, scheduleIncoming]);
+
+	useEffect(() => {
+		if (!started || gameOver || paused) return;
+
+		const t = setInterval(() => {
+			const toSpawn: IncomingWarning[] = [];
+			setIncoming((prev) => {
+				const keep: IncomingWarning[] = [];
+				for (const item of prev) {
+					const nextMs = item.inMs - TICK;
+					if (nextMs <= 0) toSpawn.push(item);
+					else keep.push({ ...item, inMs: nextMs });
+				}
+				return keep;
+			});
+
+			if (toSpawn.length === 0) return;
+			setPlanes((prev) => {
+				const next = [...prev];
+				for (const incomingPlane of toSpawn) {
+					if (next.length >= MAX_PLANES) break;
+					next.push({
+						id: incomingPlane.id,
+						x: incomingPlane.x,
+						y: incomingPlane.y,
+						angle: incomingPlane.angle,
+						targetAngle: incomingPlane.angle,
+						speed: incomingPlane.type.baseSpeed * (0.85 + Math.random() * 0.3),
+						path: null,
+						pathIdx: 0,
+						color: incomingPlane.color,
+						type: incomingPlane.type,
+						landing: null,
+					});
+				}
+				return next;
+			});
+		}, TICK);
+
+		return () => clearInterval(t);
+	}, [started, gameOver, paused]);
 
 	/* ---- GAME LOOP ---- */
 	useEffect(() => {
-		if (!started || gameOver) return;
+		if (!started || gameOver || paused) return;
 
 		const tick = setInterval(() => {
 			const current = planesRef.current;
@@ -747,9 +835,9 @@ export default function FlightPathGame() {
 						(flying[i].type.collisionR + flying[j].type.collisionR) / 2;
 					if (dist(flying[i], flying[j]) < minD) {
 						gameOverRef.current = true;
-						haptic.error();
+						hapticErrorRef.current();
 						setGameOver(true);
-						updateProgress("flight-path", scoreRef.current);
+						setProgressInfo(updateProgress("flight-path", scoreRef.current));
 						setPlanes(next);
 						return;
 					}
@@ -765,7 +853,7 @@ export default function FlightPathGame() {
 		}, TICK);
 
 		return () => clearInterval(tick);
-	}, [started, gameOver, updateProgress]);
+	}, [started, gameOver, updateProgress, paused]);
 
 	/* PAN RESPONDER */
 	const panResponder = PanResponder.create({
@@ -787,12 +875,13 @@ export default function FlightPathGame() {
 			if (best) {
 				selectedRef.current = best.id;
 				const start: Pt = { x: best.x, y: best.y };
+				const selectedId = best.id;
 				drawRef.current = [start];
 				setDrawPath([start]);
 				// Immediately assign the path so the plane starts following right away
 				setPlanes((prev) =>
 					prev.map((p) =>
-						p.id === best!.id ? { ...p, path: [start], pathIdx: 0 } : p,
+						p.id === selectedId ? { ...p, path: [start], pathIdx: 0 } : p,
 					),
 				);
 			}
@@ -826,11 +915,14 @@ export default function FlightPathGame() {
 		drawRef.current = [];
 		gameOverRef.current = false;
 		setPlanes([]);
+		setIncoming([]);
 		setDrawPath([]);
 		setScore(0);
 		setLanded(0);
 		setGameOver(false);
 		setStarted(true);
+		setPaused(false);
+		setProgressInfo(null);
 	};
 
 	/* ================================================================
@@ -888,25 +980,37 @@ export default function FlightPathGame() {
 	if (gameOver) {
 		return (
 			<View style={s.root}>
-				<Text style={s.title}>{t("flightPathGameOverTitle")}</Text>
-				<Text style={[s.finalScore, { color: theme.tint }]}>
-					{t("flightPathPts", { score })}
-				</Text>
-				<Text style={[s.finalLanded, { color: theme.mutedText }]}>
-					{t("flightPathLandedSafe", { landed })}
-				</Text>
-				<Pressable
-					style={[s.mainBtn, { backgroundColor: theme.tint }]}
-					onPress={restart}
-				>
-					<Text style={s.mainBtnText}>{t("flightPathTryAgain")}</Text>
-				</Pressable>
+				<GameResult
+					title={t("flightPathGameOverTitle")}
+					score={score}
+					best={progressInfo?.best ?? storedBest}
+					last={progressInfo?.previousBest}
+					streak={progressInfo?.currentStreak}
+					isNewBest={progressInfo?.isNewBest}
+					subtitle={t("flightPathLandedSafe", { landed })}
+					onPlayAgain={restart}
+				/>
 			</View>
 		);
 	}
 
 	return (
 		<View style={s.root}>
+			{/* header: best + controls */}
+			<RNView style={s.headerRow}>
+				<RNView style={[s.bestPill, { backgroundColor: theme.card }]}>
+					<Text style={[s.bestLabel, { color: theme.mutedText }]}>
+						{t("gameBest")}
+					</Text>
+					<Text style={[s.bestValue, { color: theme.tint }]}>{storedBest}</Text>
+				</RNView>
+				<GameControls
+					onPause={!gameOver ? () => setPaused(true) : undefined}
+					onReset={restart}
+					isPaused={paused}
+				/>
+			</RNView>
+
 			{/* stats */}
 			<View style={s.statsRow}>
 				<Text style={[s.stat, { color: theme.tint }]}>
@@ -920,6 +1024,22 @@ export default function FlightPathGame() {
 				</Text>
 			</View>
 
+			<RNView style={s.runwayLegendRow}>
+				{runways.map((rwy) => (
+					<RNView key={`legend-${rwy.label}`} style={s.runwayLegendItem}>
+						<RNView
+							style={[
+								s.runwayLegendSwatch,
+								{ backgroundColor: rwy.accentColor },
+							]}
+						/>
+						<Text style={[s.runwayLegendText, { color: theme.mutedText }]}>
+							{rwy.label}: {rwy.acceptsLabel}
+						</Text>
+					</RNView>
+				))}
+			</RNView>
+
 			{/* board */}
 			<RNView
 				style={[s.board, { borderColor: theme.border }]}
@@ -929,7 +1049,7 @@ export default function FlightPathGame() {
 				{/* radar rings */}
 				{[0.25, 0.5, 0.75].map((r) => (
 					<RNView
-						key={r}
+						key={`ring-${r}`}
 						pointerEvents="none"
 						style={[
 							s.radarRing,
@@ -958,6 +1078,32 @@ export default function FlightPathGame() {
 					<RunwayStrip key={rwy.label} rwy={rwy} />
 				))}
 
+				{/* incoming telegraph markers (spawn in ~2s) */}
+				{incoming.map((inc) => {
+					const sec = Math.max(1, Math.ceil(inc.inMs / 1000));
+					return (
+						<RNView
+							key={`inc-${inc.id}`}
+							pointerEvents="none"
+							style={{
+								position: "absolute",
+								left: inc.x - 16,
+								top: inc.y - 16,
+								width: 32,
+								height: 32,
+								borderRadius: 16,
+								borderWidth: 2,
+								borderColor: inc.type.bodyColor,
+								backgroundColor: `${inc.type.bodyColor}22`,
+								alignItems: "center",
+								justifyContent: "center",
+							}}
+						>
+							<Text style={s.incomingText}>{sec}s</Text>
+						</RNView>
+					);
+				})}
+
 				{/* assigned path trails */}
 				{planes.map((p) => {
 					if (!p.path) return null;
@@ -984,9 +1130,9 @@ export default function FlightPathGame() {
 				{/* drawing trail */}
 				{drawPath
 					.filter((_, i) => i % 2 === 0)
-					.map((pt, i) => (
+					.map((pt) => (
 						<RNView
-							key={`d-${i}`}
+							key={`d-${pt.x.toFixed(1)}-${pt.y.toFixed(1)}`}
 							pointerEvents="none"
 							style={[
 								s.dot,
@@ -1041,6 +1187,12 @@ export default function FlightPathGame() {
 			<Text style={[s.hint, { color: theme.mutedText }]}>
 				{t("flightPathHint")}
 			</Text>
+
+			<GamePauseOverlay
+				visible={paused}
+				onResume={() => setPaused(false)}
+				onRestart={restart}
+			/>
 		</View>
 	);
 }
@@ -1056,6 +1208,28 @@ const s = StyleSheet.create({
 		alignItems: "center",
 		paddingHorizontal: 16,
 	},
+	headerRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+		width: "100%",
+		marginBottom: 8,
+	},
+	bestPill: {
+		flexDirection: "row",
+		alignItems: "baseline",
+		gap: 6,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+	},
+	bestLabel: {
+		fontSize: 11,
+		fontWeight: "800",
+		letterSpacing: 1,
+		textTransform: "uppercase",
+	},
+	bestValue: { fontSize: 16, fontWeight: "900" },
 	title: { fontSize: 28, fontWeight: "800", marginBottom: 12 },
 	desc: { fontSize: 15, textAlign: "center", lineHeight: 22, marginBottom: 14 },
 	typeList: { marginBottom: 18, gap: 5 },
@@ -1075,6 +1249,27 @@ const s = StyleSheet.create({
 		paddingVertical: 8,
 	},
 	stat: { fontSize: 15, fontWeight: "700" },
+	runwayLegendRow: {
+		flexDirection: "row",
+		width: "100%",
+		justifyContent: "space-between",
+		paddingHorizontal: 8,
+		paddingBottom: 6,
+	},
+	runwayLegendItem: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 4,
+	},
+	runwayLegendSwatch: {
+		width: 8,
+		height: 8,
+		borderRadius: 2,
+	},
+	runwayLegendText: {
+		fontSize: 9,
+		fontWeight: "700",
+	},
 
 	board: {
 		flex: 1,
@@ -1113,6 +1308,11 @@ const s = StyleSheet.create({
 		color: "rgba(255,255,255,0.35)",
 		letterSpacing: 0.5,
 		marginTop: -2,
+	},
+	incomingText: {
+		fontSize: 9,
+		fontWeight: "900",
+		color: "#fff",
 	},
 
 	hint: { fontSize: 12, textAlign: "center", paddingVertical: 6 },

@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -27,7 +27,11 @@ export default function GameScreen() {
 			}
 		: { title: t("stackGame") };
 
-	const GameComponent = game ? game.loadComponent() : null;
+	const GameComponent = useMemo(
+		() => (game ? game.loadComponent() : null),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[game?.id],
+	);
 
 	useEffect(() => {
 		if (!game) return;
@@ -57,7 +61,10 @@ export default function GameScreen() {
 	return (
 		<>
 			<Stack.Screen options={headerOptions} />
-			<SafeAreaView edges={["left", "right", "bottom"]} style={styles.safeArea}>
+			<SafeAreaView
+				edges={["left", "right", "bottom"]}
+				style={[styles.safeArea, { backgroundColor: theme.background }]}
+			>
 				<GameComponent />
 			</SafeAreaView>
 		</>
