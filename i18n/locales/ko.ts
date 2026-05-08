@@ -812,6 +812,10 @@
 	settingsSuggestFeature: "기능 제안",
 	settingsSuggestFeatureHint: "아이디어를 환영합니다",
 	settingsVersion: "버전",
+	settingsPrivacy: "개인정보",
+	settingsAnalyticsLabel: "익명 사용 통계",
+	settingsAnalyticsHint:
+		"익명 사용 데이터로 FlightMode 개선에 도움을 주세요. 개인 정보는 수집되지 않습니다.",
 	// Games
 	gamesEmptyTitle: "게임을 찾을 수 없습니다",
 	gamesEmptyHint: "다른 검색어를 입력하거나 필터를 제거해 보세요.",

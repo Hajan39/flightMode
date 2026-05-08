@@ -805,6 +805,10 @@
 	settingsSuggestFeature: "建议功能",
 	settingsSuggestFeatureHint: "欢迎提出想法",
 	settingsVersion: "版本",
+	settingsPrivacy: "隐私",
+	settingsAnalyticsLabel: "匿名使用统计",
+	settingsAnalyticsHint:
+		"通过匿名使用数据帮助改进FlightMode。不会收集任何个人信息。",
 	// Games
 	gamesEmptyTitle: "未找到游戏",
 	gamesEmptyHint: "请尝试不同的搜索词或清除分类筛选。",
