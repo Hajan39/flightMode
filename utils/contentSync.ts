@@ -120,7 +120,23 @@ function normalizeContentItem(item: RemoteContentItem) {
 
 	if (!id || !title || !category || !body || !readTime) return null;
 
-	return { id, title, category, readTime, body };
+	const image = extractImageUrl(source.image);
+
+	return { id, title, category, readTime, body, ...(image ? { image } : {}) };
+}
+
+function extractImageUrl(value: unknown): string | null {
+	if (typeof value === "string" && value.startsWith("http")) return value;
+	// Sanity image asset: { asset: { url: string } } or { asset: { _ref: string } }
+	if (value && typeof value === "object") {
+		const v = value as Record<string, unknown>;
+		if (v.asset && typeof v.asset === "object") {
+			const asset = v.asset as Record<string, unknown>;
+			if (typeof asset.url === "string") return asset.url;
+		}
+		if (typeof v.url === "string" && v.url.startsWith("http")) return v.url;
+	}
+	return null;
 }
 
 function getLatestItemVersion(items: RemoteContentItem[]) {
