@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
 
 import { useImageCacheStore } from "@/store/useImageCacheStore";
-import { useContentStore } from "@/store/useContentStore";
 import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { useContentItems } from "@/hooks/useContentItems";
 import { downloadImage } from "@/utils/imageSync";
 
 export default function ImageSyncBootstrap() {
-	const items = useContentStore((s) => s.items);
+	const items = useContentItems();
 	const cache = useImageCacheStore((s) => s.cache);
 	const setCached = useImageCacheStore((s) => s.setCached);
 	const networkType = useNetworkStore((s) => s.type);
@@ -16,7 +16,6 @@ export default function ImageSyncBootstrap() {
 	const cancelledRef = useRef(false);
 
 	useEffect(() => {
-		if (!items) return;
 		if (!canSyncOnNetwork({ type: networkType, isInternetReachable }, syncNetworkPolicy)) return;
 
 		const pending = items
