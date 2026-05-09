@@ -780,6 +780,10 @@ export const en = {
 	settingsSuggestFeature: "Suggest a Feature",
 	settingsSuggestFeatureHint: "Ideas welcome",
 	settingsVersion: "Version",
+	settingsPrivacy: "Privacy",
+	settingsAnalyticsLabel: "Anonymous Analytics",
+	settingsAnalyticsHint:
+		"Help improve FlightMode with anonymous usage data. No personal information is ever collected.",
 	// Achievement Toast
 	achievementUnlocked: "Achievement Unlocked!",
 	// Achievement Titles & Descriptions

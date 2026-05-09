@@ -11,11 +11,13 @@ type SettingsState = {
 	language: Language | null;
 	themeMode: ThemeMode;
 	syncNetworkPolicy: SyncNetworkPolicy;
+	analyticsEnabled: boolean;
 	completeOnboarding: () => void;
 	setLanguage: (language: Language) => void;
 	resetLanguage: () => void;
 	setThemeMode: (mode: ThemeMode) => void;
 	setSyncNetworkPolicy: (policy: SyncNetworkPolicy) => void;
+	setAnalyticsEnabled: (enabled: boolean) => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -25,12 +27,15 @@ export const useSettingsStore = create<SettingsState>()(
 			language: null,
 			themeMode: "system" as ThemeMode,
 			syncNetworkPolicy: "wifi_only" as SyncNetworkPolicy,
+			analyticsEnabled: true,
 			completeOnboarding: () => set({ isFirstLaunch: false }),
 			setLanguage: (language) => set({ language }),
 			resetLanguage: () => set({ language: null }),
 			setThemeMode: (themeMode) => set({ themeMode }),
 			setSyncNetworkPolicy: (syncNetworkPolicy) =>
 				set({ syncNetworkPolicy }),
+			setAnalyticsEnabled: (analyticsEnabled) =>
+				set({ analyticsEnabled }),
 		}),
 		{
 			name: "settings",

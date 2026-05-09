@@ -7,7 +7,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P0 (aktivni)
 
-- pridat explicitni analytics consent/opt-out UX; v mobilni appce nejde o cookie banner, ale o jasne povoleni anonymni analytiky
+- ~~pridat explicitni analytics consent/opt-out UX~~ — hotovo: toggle v Settings > Privacy
 - udelat game quality pass napric vsemi 19 hrami: smysluplnost, obtiznost, delka session, opakovatelnost, jasnost pravidel a mobile ergonomie
 - rozdelit hry do rozhodovacich skupin: `keep`, `tune`, `rework`, `maybe remove/replace`
 - dokoncit kalibraci metadata her (`difficulty`, `estimatedTime`, `category`, `isDailyChallenge`, `isPlayTogether`) podle realneho gameplaye, ne jen podle nazvu hry

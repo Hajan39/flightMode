@@ -817,6 +817,10 @@
 	settingsSuggestFeature: "機能を提案",
 	settingsSuggestFeatureHint: "アイデアを歓迎します",
 	settingsVersion: "バージョン",
+	settingsPrivacy: "プライバシー",
+	settingsAnalyticsLabel: "匿名の使用統計",
+	settingsAnalyticsHint:
+		"匿名の使用データでFlightModeの改善にご協力ください。個人情報は一切収集しません。",
 	// Games
 	gamesEmptyTitle: "ゲームが見つかりません",
 	gamesEmptyHint: "別のキーワードで検索するかフィルターを解除してください。",

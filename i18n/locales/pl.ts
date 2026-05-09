@@ -832,6 +832,10 @@
 	settingsSuggestFeature: "Zaproponuj funkcję",
 	settingsSuggestFeatureHint: "Pomysły są mile widziane",
 	settingsVersion: "Wersja",
+	settingsPrivacy: "Prywatność",
+	settingsAnalyticsLabel: "Anonimowe statystyki",
+	settingsAnalyticsHint:
+		"Pomóż ulepszyć FlightMode, udostępniając anonimowe dane użytkowania. Żadne dane osobowe nie są zbierane.",
 	// Games
 	gamesEmptyTitle: "Nie znaleziono gier",
 	gamesEmptyHint: "Spróbuj innego wyszukiwania lub usuń filtr.",

@@ -6,4 +6,5 @@ export type ContentItem = {
   category: LocalizedText;
   readTime: number; // minutes
   body: LocalizedText;
+  image?: string; // remote CDN URL, downloaded to local cache when on WiFi
 };

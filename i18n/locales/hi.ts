@@ -807,6 +807,10 @@
 	settingsSuggestFeature: "सुविधा सुझाएं",
 	settingsSuggestFeatureHint: "विचार स्वागत हैं",
 	settingsVersion: "संस्करण",
+	settingsPrivacy: "गोपनीयता",
+	settingsAnalyticsLabel: "गुमनाम विश्लेषण",
+	settingsAnalyticsHint:
+		"अनाम उपयोग डेटा से FlightMode को बेहतर बनाने में मदद करें। कोई व्यक्तिगत जानकारी एकत्र नहीं की जाती।",
 	// Games
 	gamesEmptyTitle: "कोई गेम नहीं मिला",
 	gamesEmptyHint: "कोई दूसरी खोज आज़माएं या फ़िल्टर हटाएं।",
