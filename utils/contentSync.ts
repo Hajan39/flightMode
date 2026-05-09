@@ -1,201 +1,145 @@
 import type { LocalizedText } from "@/i18n/translations";
 import type { ContentItem } from "@/types/content";
 
-const STRAPI_CONTENT_URL = process.env.EXPO_PUBLIC_STRAPI_CONTENT_URL;
-const GENERIC_CONTENT_SYNC_URL = process.env.EXPO_PUBLIC_CONTENT_SYNC_URL;
-const CONTENT_SYNC_URL = STRAPI_CONTENT_URL ?? GENERIC_CONTENT_SYNC_URL;
+const SANITY_PROJECT_ID = process.env.EXPO_PUBLIC_SANITY_PROJECT_ID;
+const SANITY_DATASET = process.env.EXPO_PUBLIC_SANITY_DATASET ?? "production";
+
+const SANITY_GROQ = `*[_type == "article"] | order(_updatedAt desc) {
+  _id,
+  _updatedAt,
+  rawSlug,
+  locale,
+  title,
+  articleType,
+  readTime,
+  "body": pt::text(content),
+  "image": image.asset->url
+}`;
 
 export type ContentSyncResult = {
 	version: string;
 	items: ContentItem[];
 };
 
-type RemoteContentPayload = {
-	version?: unknown;
-	items?: unknown;
-	articles?: unknown;
-	data?: unknown;
-	meta?: { version?: unknown; pagination?: unknown };
+type SanityArticleDoc = {
+	_id: string;
+	_updatedAt: string;
+	rawSlug?: string | null;
+	locale?: string | null;
+	title?: string | null;
+	articleType?: string | null;
+	readTime?: number | null;
+	body?: string | null;
+	image?: string | null;
 };
 
-type RemoteContentItem = {
-	id?: unknown;
-	documentId?: unknown;
-	attributes?: Record<string, unknown>;
-	title?: unknown;
-	category?: unknown;
-	readTime?: unknown;
-	read_time?: unknown;
-	body?: unknown;
-	updatedAt?: unknown;
-	publishedAt?: unknown;
-	createdAt?: unknown;
+type SanityQueryResult = {
+	result: SanityArticleDoc[];
 };
 
 export function hasContentSyncEndpoint() {
-	return Boolean(CONTENT_SYNC_URL);
+	return Boolean(SANITY_PROJECT_ID);
 }
 
 export async function fetchSyncedContent(
 	currentVersion: string | null,
 ): Promise<ContentSyncResult | null> {
-	if (!CONTENT_SYNC_URL) return null;
+	if (!SANITY_PROJECT_ID) return null;
 
-	const url = buildContentSyncUrl(CONTENT_SYNC_URL);
-	if (currentVersion) {
-		url.searchParams.set("currentVersion", currentVersion);
-	}
+	const url = `https://${SANITY_PROJECT_ID}.apicdn.sanity.io/v2021-10-21/data/query/${SANITY_DATASET}?query=${encodeURIComponent(SANITY_GROQ)}`;
 
-	const response = await fetch(url.toString(), {
+	const response = await fetch(url, {
 		headers: { Accept: "application/json" },
 	});
-
-	if (response.status === 304) return null;
 
 	if (!response.ok) {
 		throw new Error(`Content sync failed with status ${response.status}`);
 	}
 
-	return normalizeContentPayload((await response.json()) as RemoteContentPayload);
+	const { result: docs } = (await response.json()) as SanityQueryResult;
+
+	if (!Array.isArray(docs) || docs.length === 0) return null;
+
+	const newVersion = docs[0]?._updatedAt ?? String(Date.now());
+	if (currentVersion && currentVersion === newVersion) return null;
+
+	const items = normalizeSanityDocs(docs);
+	if (items.length === 0) return null;
+
+	return { version: newVersion, items };
 }
 
-export function normalizeContentPayload(
-	payload: RemoteContentPayload,
-): ContentSyncResult | null {
-	const rawItems = getRawItems(payload);
-	const items = rawItems.map(normalizeContentItem).filter(Boolean) as ContentItem[];
+function normalizeSanityDocs(docs: SanityArticleDoc[]): ContentItem[] {
+	const groups = new Map<string, SanityArticleDoc[]>();
 
-	if (items.length === 0) {
-		return null;
-	}
-
-	const version =
-		stringOrNull(payload.version) ??
-		stringOrNull(payload.meta?.version) ??
-		getLatestItemVersion(rawItems) ??
-		String(Date.now());
-
-	return { version, items };
-}
-
-function buildContentSyncUrl(value: string) {
-	const url = new URL(value);
-
-	if (STRAPI_CONTENT_URL) {
-		const normalizedPath = url.pathname.replace(/\/+$/, "");
-
-		if (normalizedPath === "" || normalizedPath === "/api") {
-			url.pathname = "/api/articles";
-		}
-
-		if (!url.searchParams.has("pagination[pageSize]")) {
-			url.searchParams.set("pagination[pageSize]", "100");
-		}
-
-		if (!url.searchParams.has("sort")) {
-			url.searchParams.set("sort", "updatedAt:desc");
+	for (const doc of docs) {
+		const key = doc.rawSlug ?? doc._id;
+		const group = groups.get(key);
+		if (group) {
+			group.push(doc);
+		} else {
+			groups.set(key, [doc]);
 		}
 	}
 
-	return url;
-}
-
-function getRawItems(payload: RemoteContentPayload): RemoteContentItem[] {
-	const source = payload.items ?? payload.articles ?? payload.data;
-
-	if (!Array.isArray(source)) {
-		throw new Error("Content sync response must include an items array");
+	const items: ContentItem[] = [];
+	for (const [key, group] of groups) {
+		const item = buildContentItem(key, group);
+		if (item) items.push(item);
 	}
-
-	return source as RemoteContentItem[];
+	return items;
 }
 
-function normalizeContentItem(item: RemoteContentItem) {
-	const source = item.attributes ?? item;
-	const id = idOrNull(item.id) ?? idOrNull(item.documentId) ?? idOrNull(source.id);
-	const title = normalizeLocalizedText(source.title);
-	const category = normalizeLocalizedText(source.category);
-	const body = normalizeLocalizedText(source.body);
-	const readTime = numberOrNull(source.readTime) ?? numberOrNull(source.read_time);
+function buildContentItem(
+	key: string,
+	group: SanityArticleDoc[],
+): ContentItem | null {
+	const byLocale = new Map(group.map((doc) => [doc.locale ?? "en", doc]));
+	const primary = byLocale.get("en") ?? group[0];
+	if (!primary) return null;
 
-	if (!id || !title || !category || !body || !readTime) return null;
+	const title = mergeLocalizedField(byLocale, (doc) => doc.title);
+	const body = mergeLocalizedField(byLocale, (doc) => doc.body);
 
-	const image = extractImageUrl(source.image);
+	if (!title || !body) return null;
 
-	return { id, title, category, readTime, body, ...(image ? { image } : {}) };
+	const readTime =
+		primary.readTime ??
+		group.find((d) => d.readTime != null)?.readTime ??
+		estimateReadTime(primary.body ?? "");
+
+	const category: LocalizedText = {
+		en: primary.articleType ?? "article",
+	};
+
+	const image = group.find((d) => d.image)?.image ?? undefined;
+
+	return { id: key, title, category, readTime, body, ...(image ? { image } : {}) };
 }
 
-function extractImageUrl(value: unknown): string | null {
-	if (typeof value === "string" && value.startsWith("http")) return value;
-	// Sanity image asset: { asset: { url: string } } or { asset: { _ref: string } }
-	if (value && typeof value === "object") {
-		const v = value as Record<string, unknown>;
-		if (v.asset && typeof v.asset === "object") {
-			const asset = v.asset as Record<string, unknown>;
-			if (typeof asset.url === "string") return asset.url;
+function mergeLocalizedField(
+	byLocale: Map<string, SanityArticleDoc>,
+	getValue: (doc: SanityArticleDoc) => string | null | undefined,
+): LocalizedText | null {
+	const entries: Record<string, string> = {};
+
+	for (const [locale, doc] of byLocale) {
+		const value = getValue(doc);
+		if (value && value.trim().length > 0) {
+			entries[locale] = value.trim();
 		}
-		if (typeof v.url === "string" && v.url.startsWith("http")) return v.url;
-	}
-	return null;
-}
-
-function getLatestItemVersion(items: RemoteContentItem[]) {
-	const timestamps = items
-		.map((item) => {
-			const source = item.attributes ?? item;
-			return (
-				stringOrNull(source.updatedAt) ??
-				stringOrNull(source.publishedAt) ??
-				stringOrNull(source.createdAt)
-			);
-		})
-		.filter((value): value is string => Boolean(value));
-
-	return timestamps[0] ?? null;
-}
-
-function normalizeLocalizedText(value: unknown): LocalizedText | null {
-	if (typeof value === "string" && value.trim().length > 0) {
-		return { en: value };
 	}
 
-	if (!value || typeof value !== "object") return null;
-
-	const entries = Object.entries(value).filter(
-		(entry): entry is [string, string] =>
-			typeof entry[1] === "string" && entry[1].trim().length > 0,
-	);
-
-	const localized = Object.fromEntries(entries) as Partial<LocalizedText>;
-
-	if (!localized.en) return null;
-
-	return localized as LocalizedText;
-}
-
-function stringOrNull(value: unknown) {
-	return typeof value === "string" && value.trim().length > 0
-		? value
-		: null;
-}
-
-function idOrNull(value: unknown) {
-	if (typeof value === "number" && Number.isFinite(value)) {
-		return String(value);
+	if (!entries.en) {
+		const fallback = Object.values(entries)[0];
+		if (!fallback) return null;
+		entries.en = fallback;
 	}
 
-	return stringOrNull(value);
+	return entries as LocalizedText;
 }
 
-function numberOrNull(value: unknown) {
-	if (typeof value === "number" && Number.isFinite(value) && value > 0) {
-		return value;
-	}
-
-	if (typeof value === "string") {
-		const parsed = Number(value);
-		return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
-	}
-
-	return null;
+function estimateReadTime(text: string): number {
+	const words = text.trim().split(/\s+/).filter(Boolean).length;
+	return Math.max(1, Math.round(words / 200));
 }
