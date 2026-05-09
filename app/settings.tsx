@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { useEffect, useRef, type ReactNode } from "react";
-import { Linking, Pressable, ScrollView, StyleSheet } from "react-native";
+import { Linking, Pressable, ScrollView, StyleSheet, Switch } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import LanguageDropdown from "@/components/LanguageDropdown";
@@ -59,6 +59,8 @@ export default function SettingsScreen() {
 	const setSyncNetworkPolicy = useSettingsStore(
 		(s) => s.setSyncNetworkPolicy,
 	);
+	const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
+	const setAnalyticsEnabled = useSettingsStore((s) => s.setAnalyticsEnabled);
 	const hasTrackedOpenRef = useRef(false);
 
 	const handleSyncPolicyChange = (policy: SyncNetworkPolicy) => {
@@ -156,6 +158,55 @@ export default function SettingsScreen() {
 								</Pressable>
 							);
 						})}
+					</View>
+				</SettingsSection>
+
+				<SettingsSection
+					title={t("settingsPrivacy")}
+					theme={theme}
+				>
+					<View
+						style={[
+							styles.optionCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+					>
+						<View
+							style={[styles.analyticsRow]}
+							lightColor="transparent"
+							darkColor="transparent"
+						>
+							<View
+								style={styles.analyticsRowLeft}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<Ionicons
+									name="bar-chart-outline"
+									size={20}
+									color={analyticsEnabled ? theme.tint : theme.mutedText}
+								/>
+								<View lightColor="transparent" darkColor="transparent">
+									<Text style={styles.optionRowTitle}>
+										{t("settingsAnalyticsLabel")}
+									</Text>
+									<Text
+										style={[styles.optionRowHint, { color: theme.mutedText }]}
+									>
+										{t("settingsAnalyticsHint")}
+									</Text>
+								</View>
+							</View>
+							<Switch
+								value={analyticsEnabled}
+								onValueChange={setAnalyticsEnabled}
+								trackColor={{
+									false: theme.border,
+									true: theme.tint,
+								}}
+								thumbColor="#fff"
+							/>
+						</View>
 					</View>
 				</SettingsSection>
 
@@ -332,6 +383,20 @@ const styles = StyleSheet.create({
 	},
 	preferenceControl: {
 		flex: 1,
+	},
+	analyticsRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
+		paddingHorizontal: 12,
+		paddingVertical: 10,
+	},
+	analyticsRowLeft: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 12,
+		flex: 1,
+		paddingRight: 12,
 	},
 	supportCard: {
 		borderRadius: 14,

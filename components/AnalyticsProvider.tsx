@@ -54,8 +54,14 @@ export function AnalyticsBootstrap() {
 
 function PostHogSink({ children }: PropsWithChildren) {
 	const posthog = usePostHog();
+	const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
 
 	useEffect(() => {
+		if (!analyticsEnabled) {
+			disableAnalytics();
+			return;
+		}
+
 		setAnalyticsSink((eventName, properties) => {
 			try {
 				posthog.capture(eventName, properties);
@@ -65,7 +71,7 @@ function PostHogSink({ children }: PropsWithChildren) {
 		});
 
 		return () => setAnalyticsSink(null);
-	}, [posthog]);
+	}, [posthog, analyticsEnabled]);
 
 	return <>{children}</>;
 }

@@ -63,7 +63,8 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - potvrzeny Strapi Article contract pro app sync je `title`, `category`, `body` a `readTime` nebo `read_time`; textova pole mohou byt plain string nebo lokalizovany objekt s aspon `en`
 - aktualni Strapi Articles endpoint `https://cheerful-approval-7e0a5ca32d.strapiapp.com/api/articles` vraci `200`, ale zatim `data: []`; sync proto zustava na bundled fallbacku, dokud nebudou publikovane clanky; Strapi overeni neni aktualni hlavni fokus
 - content sync respektuje persisted user setting `syncNetworkPolicy`: Wi-Fi only, Wi-Fi + mobile data, nebo off; default je Wi-Fi only
-- analytics runtime byl uzivatelsky overeny; dalsi privacy krok je explicitni analytics consent/opt-out UX, ne cookie banner v browser smyslu
+- analytics runtime byl uzivatelsky overeny; analytics opt-out toggle je dostupny v Settings pod sekcí Privacy; default je zapnuto (anonymni, bez osobnich dat)
+- vsech 44 bundlovanych clanku v `data/content.json` bylo rozsireno z 56–237 slov na 350–415 slov (EN), ekvivalentne v cestine a nemcine; kazdy clanek ma strukturovane sekce (must-see, jidlo, doprava, prakticke tipy, vylety) pro kvalitatnej offline cteni
 - game quality pass zacal prvni kalibraci: `reaction` ma jednotny konec session, `duel-dice` ma prehlednejsi horni score strip a vysledkovou tabuli, `duel-tictactoe` ma volbu 3x3 a rostoucich 5+ piskvorek, `cross-air-radar` dovoluje pred potvrzenim presouvat polozenou flotilu, daily challenge pool preferuje kratke hry, Games tab ma intent discovery se ztlumenou barevnosti a cast metadata byla upravena podle realne delky/obtiznosti; multiplayer metadata uz rozlisuji shared-screen a pass-and-play flow
 - PostHog se vypne bez `EXPO_PUBLIC_POSTHOG_KEY` nebo pri `EXPO_PUBLIC_ANALYTICS_ENABLED=false`
 - PostHog options pouzivaji anonymous-only nastaveni: `personProfiles: "never"`, `disableGeoip: true`, bez autocapture, surveys, remote config a session replay
@@ -123,6 +124,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - advanced personalization
 
 ## 4. Changelog
+
+## 2026-05-08
+
+- doplnen analytics opt-out toggle v Settings pod novou sekcí Privacy; preference je persistovana pres AsyncStorage a funguje pro vsech 12 jazyku; AnalyticsProvider reaktivne zapina/vypina PostHog sink bez nutnosti restartu appky
 
 ## 2026-05-06
 

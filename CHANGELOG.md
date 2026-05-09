@@ -9,6 +9,15 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added analytics opt-out toggle in Settings under a new Privacy section. Users can disable anonymous usage statistics at any time; the preference is persisted across sessions. Available in all 12 supported languages.
+- Expanded all 44 bundled articles in `data/content.json` from 56–237 words to 350–415 words each (EN), with equivalent expansions in Czech and German. All articles now include structured sections (must-see spots, food tips, getting around, practical tips, day trips) for a richer offline reading experience.
+
+### Changed
+
+- `AnalyticsProvider` now reads `analyticsEnabled` from the settings store and immediately disables or re-enables the PostHog sink when the user changes the preference — no app restart required.
+
+### Added
+
 - Added a unified game UX system: animated `GameResult` with Best / Last / Streak chips and a "New Best!" badge, shared `GameControls` (pause + reset icon row), `GamePauseOverlay`, and a 3-2-1 `GameCountdown` overlay with haptic ticks.
 - Added `lastScore`, `currentStreak`, and `bestStreak` fields to per-game progress, with a backwards-compatible persisted-store migration.
 - Added shared game UX translations (`gameBest`, `gameLast`, `gameStreak`, `gameNewBest`, `gamePause`, `gameResume`, `gamePaused`, `gameRestart`, `gameQuit`, `gameReady`, `gameGo`, `gameTapToStart`) across all 12 supported locales.

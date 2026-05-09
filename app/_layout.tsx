@@ -17,6 +17,7 @@ import {
     AnalyticsProvider,
 } from "@/components/AnalyticsProvider";
 import ContentSyncBootstrap from "@/components/ContentSyncBootstrap";
+import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useOTAUpdate } from "@/hooks/useOTAUpdate";
@@ -69,6 +70,7 @@ function RootLayoutNav() {
 					<AnalyticsBootstrap />
 					<NetworkStatusBootstrap />
 					<ContentSyncBootstrap />
+					<ImageSyncBootstrap />
 					<RootStack />
 					<AchievementToast />
 				</SafeAreaProvider>

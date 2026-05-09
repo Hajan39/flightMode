@@ -1,15 +1,19 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import {
+    Image,
     type NativeScrollEvent,
     type NativeSyntheticEvent,
     ScrollView,
     StyleSheet,
+    useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { Radius } from "@/constants/Spacing";
+import { useArticleImage } from "@/hooks/useArticleImage";
 import { useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
@@ -25,6 +29,8 @@ export default function ContentDetailScreen() {
 	const article = articles.find((a) => a.id === id);
 	const markArticleRead = useAchievementStore((s) => s.markArticleRead);
 	const [hasFinishedArticle, setHasFinishedArticle] = useState(false);
+	const { width } = useWindowDimensions();
+	const heroImage = useArticleImage(article?.image);
 
 	useEffect(() => {
 		if (id) markArticleRead(id);
@@ -85,6 +91,13 @@ export default function ContentDetailScreen() {
 				onScroll={handleScroll}
 				scrollEventThrottle={250}
 			>
+				{heroImage && (
+					<Image
+						source={heroImage}
+						style={[styles.heroImage, { width: width - 40, height: Math.round((width - 40) * 0.5625) }]}
+						resizeMode="cover"
+					/>
+				)}
 				<Text style={[styles.category, { color: theme.tint }]}>
 					{getLocalizedText(article.category, language)}
 				</Text>
@@ -121,6 +134,7 @@ const styles = StyleSheet.create({
 	notFoundHint: { fontSize: 13, textAlign: "center", marginTop: 6 },
 	scroll: { flex: 1 },
 	content: { padding: 20 },
+	heroImage: { borderRadius: Radius.md, marginBottom: 16 },
 	category: { fontSize: 12, fontWeight: "600", textTransform: "uppercase" },
 	title: { fontSize: 22, fontWeight: "700", marginTop: 8 },
 	meta: { fontSize: 13, marginTop: 4, marginBottom: 8 },

@@ -12,7 +12,8 @@ const SANITY_GROQ = `*[_type == "article"] | order(_updatedAt desc) {
   title,
   articleType,
   readTime,
-  "body": pt::text(content)
+  "body": pt::text(content),
+  "image": image.asset->url
 }`;
 
 export type ContentSyncResult = {
@@ -29,6 +30,7 @@ type SanityArticleDoc = {
 	articleType?: string | null;
 	readTime?: number | null;
 	body?: string | null;
+	image?: string | null;
 };
 
 type SanityQueryResult = {
@@ -110,7 +112,9 @@ function buildContentItem(
 		en: primary.articleType ?? "article",
 	};
 
-	return { id: key, title, category, readTime, body };
+	const image = group.find((d) => d.image)?.image ?? undefined;
+
+	return { id: key, title, category, readTime, body, ...(image ? { image } : {}) };
 }
 
 function mergeLocalizedField(

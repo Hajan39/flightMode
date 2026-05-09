@@ -764,6 +764,10 @@ export const cs = {
 	settingsSuggestFeature: "Navrhnout funkci",
 	settingsSuggestFeatureHint: "Nápady jsou vítány",
 	settingsVersion: "Verze",
+	settingsPrivacy: "Soukromí",
+	settingsAnalyticsLabel: "Anonymní analytika",
+	settingsAnalyticsHint:
+		"Pomoz zlepšit FlightMode anonymními daty o používání. Žádné osobní údaje se neodesílají.",
 	// Games screen
 	gamesEmptyTitle: "Žádné hry nenalezeny",
 	gamesEmptyHint: "Zkus jiný výraz nebo zruš filtr kategorie.",
