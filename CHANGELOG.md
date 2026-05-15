@@ -28,6 +28,10 @@ and this project adheres to Semantic Versioning.
 - Added an article sync network preference for Wi-Fi only, Wi-Fi plus mobile data, or off.
 - Added anonymous analytics coverage for Settings, Profile, Home quick actions, Home article recommendations, and Explore discovery controls.
 - Added intent-based Games filters for quick, play-together, and longer sessions.
+- Added retention-oriented analytics events: `second_session_started`, `first_session_completed`, and `flight_setup_completed`.
+- Added local-notification foundation with `expo-notifications`, Android channel bootstrap, reminder scheduling after flight setup, and reminder open tracking.
+- Added a subtle support CTA in Settings that links to Buy Me a Coffee using supporter-oriented copy (`Become a supporter`) and supporting helper text.
+- Added support-funnel analytics events: `support_opened`, `support_clicked`, and `support_completed`.
 
 ### Changed
 
@@ -44,6 +48,9 @@ and this project adheres to Semantic Versioning.
 - Added multiplayer play-mode metadata so shared-screen and pass-and-play games are labeled consistently in Home and Games discovery.
 - Reworked Tic Tac Toe Duo with selectable 3x3 classic and 5+ growing-board modes up to 30x30.
 - Updated privacy documentation for anonymous product analytics and future online sync behavior.
+- Expanded `app_open` event payload with `app_open_count` and `is_returning_user` to support D1/D7 retention analysis.
+- Flight setup now supports planning departure date and time, instead of always defaulting departure to immediate `now`.
+- Local reminder scheduling now targets planned departure (`-3h` preferred, then `-30m`, else `+5m` fallback).
 
 ### Added
 

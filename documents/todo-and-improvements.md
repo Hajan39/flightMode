@@ -18,6 +18,9 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 ### P1 (blizsi iterace)
 
 - vyuzit centralni online/offline stav pro budouci analytics flush debug a Strapi sync gating
+- navazat na novou retention event vrstvu (`app_open_count`, `second_session_started`, `first_session_completed`, `flight_setup_completed`) a postavit nad ni tydne vyhodnocovane D1/D7 dashboardy
+- po nasazeni support CTA vyhodnotit funnel `support_opened -> support_clicked -> support_completed` a upravit copy/umisteni podle konverzi
+- rozsireni local reminders z aktualni foundation (3h po flight setupu) na realny pre-flight ritual, az flight setup bude mit bud explicitni departure datetime, nebo offset pred odletem
 - publikovat prvni Strapi article data podle potvrzeneho contractu: `title`, `category`, `body`, `readTime` nebo `read_time`
 - otestovat article sync na realnych Strapi datech; public `find/findOne` uz vraci `200`, ale `/api/articles` je zatim prazdne
 - overit, ze Home, Explore a Article Detail zobrazuji remote clanky a ze offline fallback zustava funkcni

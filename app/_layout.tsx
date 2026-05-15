@@ -1,7 +1,7 @@
 import {
-    DarkTheme,
-    DefaultTheme,
-    ThemeProvider,
+	DarkTheme,
+	DefaultTheme,
+	ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import "expo-insights";
@@ -13,12 +13,13 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import AchievementToast from "@/components/AchievementToast";
 import {
-    AnalyticsBootstrap,
-    AnalyticsProvider,
+	AnalyticsBootstrap,
+	AnalyticsProvider,
 } from "@/components/AnalyticsProvider";
 import ContentSyncBootstrap from "@/components/ContentSyncBootstrap";
 import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
+import NotificationBootstrap from "@/components/NotificationBootstrap";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useOTAUpdate } from "@/hooks/useOTAUpdate";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -26,8 +27,8 @@ import { useAchievementStore } from "@/store/useAchievementStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 
 export {
-    // Catch any errors thrown by the Layout component.
-    ErrorBoundary
+	// Catch any errors thrown by the Layout component.
+	ErrorBoundary,
 } from "expo-router";
 
 export const unstable_settings = {
@@ -69,6 +70,7 @@ function RootLayoutNav() {
 				<SafeAreaProvider>
 					<AnalyticsBootstrap />
 					<NetworkStatusBootstrap />
+					<NotificationBootstrap />
 					<ContentSyncBootstrap />
 					<ImageSyncBootstrap />
 					<RootStack />

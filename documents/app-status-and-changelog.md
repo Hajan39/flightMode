@@ -34,6 +34,9 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - Expo Network foundation pro online/offline stav v root bootstrapu
 - article sync foundation: remote JSON/Strapi-compatible endpoint pres env, persisted cache, fallback na bundled `data/content.json`
 - zakladni eventy: `app_open`, `onboarding_complete`, `flight_added`, `flight_edited`, `game_start`, `game_finish`, `article_open`, `article_finish`, `relax_start`, `relax_finish`, `audio_play`, `audio_stop`, `settings_open`, `profile_open`, `home_action_open`, `home_recommendation_open`, `content_search_changed`, `content_filter_changed`, `content_sort_changed`, `network_status_changed`, `content_sync_start`, `content_sync_success`, `content_sync_failed`
+- retention eventy: `second_session_started`, `first_session_completed`, `flight_setup_completed`
+- reminder eventy: `reminder_scheduled`, `reminder_permission_denied`, `reminder_opened`
+- support funnel eventy: `support_opened`, `support_clicked`, `support_completed`
 
 ### Co aplikace ted nema
 
@@ -60,6 +63,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - Strapi se pouziva pouze jako volitelny zdroj clanku; hry, relax, flight utility, profile, settings a dalsi app data zustavaji lokalni
 - article sync endpoint je volitelny pres `EXPO_PUBLIC_STRAPI_CONTENT_URL` nebo `EXPO_PUBLIC_CONTENT_SYNC_URL`; `EXPO_PUBLIC_STRAPI_CONTENT_URL` muze byt Strapi root nebo primo `/api/articles`; bez endpointu app zustava ciste bundled/offline
 - app neobsahuje Strapi API token; pro public clanky preferujeme povolit public read endpoint, pripadne pouzit serverovy proxy endpoint, aby se tajny token nikdy neposilal do klienta
+- local reminders jsou zapnute pres `expo-notifications`: root bootstrap konfiguruje Android channel a response listener; flight setup planuje reminder relativne k odletu (preferuje 3h pred odletem, fallback 30min pred odletem, jinak +5 min od ulozeni)
 - potvrzeny Strapi Article contract pro app sync je `title`, `category`, `body` a `readTime` nebo `read_time`; textova pole mohou byt plain string nebo lokalizovany objekt s aspon `en`
 - aktualni Strapi Articles endpoint `https://cheerful-approval-7e0a5ca32d.strapiapp.com/api/articles` vraci `200`, ale zatim `data: []`; sync proto zustava na bundled fallbacku, dokud nebudou publikovane clanky; Strapi overeni neni aktualni hlavni fokus
 - content sync respektuje persisted user setting `syncNetworkPolicy`: Wi-Fi only, Wi-Fi + mobile data, nebo off; default je Wi-Fi only
@@ -128,6 +132,23 @@ Aktualne je nejsilnejsi implementovana vrstva:
 ## 2026-05-08
 
 - doplnen analytics opt-out toggle v Settings pod novou sekcí Privacy; preference je persistovana pres AsyncStorage a funguje pro vsech 12 jazyku; AnalyticsProvider reaktivne zapina/vypina PostHog sink bez nutnosti restartu appky
+
+## 2026-05-06
+
+## 2026-05-13
+
+## 2026-05-15
+
+- do Settings support sekce pridany nenasilny support CTA flow: titul "Bavi te FlightMode?", helper text "Podpor dalsi vyvoj", a akcni polozka "Stan se podporovatelem" (Buy Me a Coffee link)
+- doplnen support funnel analytics tracking: `support_opened` pri otevreni Settings, `support_clicked` po kliknuti na support CTA, `support_completed` pri navratu do appky po odchodu na support odkaz
+
+- doplnena retention instrumentation vrstva: `app_open` ted nese `app_open_count` a `is_returning_user`; pri druhem otevreni se posila `second_session_started`
+- doplnen `first_session_completed` marker napric hlavnimi offline aktivitami (game finish, article finish, relax finish)
+- doplnen `flight_setup_completed` event po ulozeni flight setupu/editace
+- pridana local-notification foundation pres `expo-notifications`: Android channel bootstrap, notification handler a tracking `reminder_opened` po tapnuti na reminder
+- flight setup se po ulozeni pokusi naplanovat local reminder za 3 hodiny; vysledek jde do analytics jako `reminder_scheduled` nebo `reminder_permission_denied`
+- flight setup ted podporuje planovani odletu: uzivatel zadava datum + cas odletu a ulozeny `departureTime` je konkretni planovany timestamp misto automatickeho `now`
+- local reminder scheduling je navazany na planovany odlet, ne na fixni offset od okamziku ulozeni
 
 ## 2026-05-06
 

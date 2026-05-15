@@ -1,5 +1,6 @@
 import type { GameProgress, GameProgressUpdate } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { trackFirstSessionCompleted } from "@/utils/firstSession";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
@@ -107,6 +108,7 @@ export const useGameStore = create<GameState>()(
 					is_new_best: isNewBest,
 					streak: currentStreak,
 				});
+				trackFirstSessionCompleted("game");
 				const { useAchievementStore } = require("@/store/useAchievementStore");
 				useAchievementStore.getState().checkAndUnlock();
 

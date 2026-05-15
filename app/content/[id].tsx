@@ -1,12 +1,12 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import {
-    Image,
-    type NativeScrollEvent,
-    type NativeSyntheticEvent,
-    ScrollView,
-    StyleSheet,
-    useWindowDimensions,
+	Image,
+	type NativeScrollEvent,
+	type NativeSyntheticEvent,
+	ScrollView,
+	StyleSheet,
+	useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -19,6 +19,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { trackFirstSessionCompleted } from "@/utils/firstSession";
 
 export default function ContentDetailScreen() {
 	const colorScheme = useColorScheme();
@@ -67,6 +68,7 @@ export default function ContentDetailScreen() {
 			read_time_minutes: article.readTime,
 			language,
 		});
+		trackFirstSessionCompleted("content");
 	};
 
 	if (!article) {
@@ -118,7 +120,10 @@ export default function ContentDetailScreen() {
 						const paragraphKey = `${article.id}-${trimmed.slice(0, 24)}-${trimmed.length}`;
 
 						return (
-							<Text key={paragraphKey} style={[styles.body, { color: theme.text }]}>
+							<Text
+								key={paragraphKey}
+								style={[styles.body, { color: theme.text }]}
+							>
 								{trimmed}
 							</Text>
 						);

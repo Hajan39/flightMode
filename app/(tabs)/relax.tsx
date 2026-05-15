@@ -2,11 +2,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import Animated, {
-    Easing,
-    FadeInDown,
-    useAnimatedStyle,
-    useSharedValue,
-    withTiming,
+	Easing,
+	FadeInDown,
+	useAnimatedStyle,
+	useSharedValue,
+	withTiming,
 } from "react-native-reanimated";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
@@ -19,6 +19,7 @@ import type { TranslationKey } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useAudioStore } from "@/store/useAudioStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { trackFirstSessionCompleted } from "@/utils/firstSession";
 
 const BREATHING_PHASES = [
 	{ key: "breatheIn" as TranslationKey, duration: 4 },
@@ -147,6 +148,7 @@ export default function RelaxScreen() {
 			setPhaseIndex(0);
 			setCountdown(BREATHING_PHASES[0].duration);
 			captureAnalyticsEvent("relax_finish", { exercise: "box_breathing" });
+			trackFirstSessionCompleted("relax");
 		} else {
 			setIsActive(true);
 			incrementRelax();
@@ -310,7 +312,10 @@ export default function RelaxScreen() {
 										borderColor: isSelected ? theme.tint : theme.border,
 									},
 								]}
-								onPress={() => { haptic.tap(); setVolume(level); }}
+								onPress={() => {
+									haptic.tap();
+									setVolume(level);
+								}}
 							>
 								<Text
 									style={[
@@ -361,7 +366,10 @@ export default function RelaxScreen() {
 											borderColor: isSelected ? theme.tint : theme.border,
 										},
 									]}
-									onPress={() => { haptic.tap(); setSleepTimer(minutes); }}
+									onPress={() => {
+										haptic.tap();
+										setSleepTimer(minutes);
+									}}
 								>
 									<Text
 										style={[
