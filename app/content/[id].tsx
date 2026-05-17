@@ -38,6 +38,7 @@ export default function ContentDetailScreen() {
 	}, [id, markArticleRead]);
 
 	useEffect(() => {
+		if (!id) return;
 		setHasFinishedArticle(false);
 	}, [id]);
 
