@@ -1,0 +1,106 @@
+name: Release Main
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  decide:
+    name: Decide Release Lane
+    runs-on: ubuntu-latest
+    outputs:
+      should_build: ${{ steps.filter.outputs.should_build }}
+      lane: ${{ steps.lane.outputs.value }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect Breaking-Sensitive Changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          filters: |
+            should_build:
+              - 'app.json'
+              - 'app.config.js'
+              - 'app.config.ts'
+              - 'eas.json'
+              - 'package.json'
+              - 'package-lock.json'
+              - 'babel.config.js'
+              - 'metro.config.js'
+              - 'plugins/**'
+              - 'android/**'
+              - 'ios/**'
+
+      - name: Set Lane Output
+        id: lane
+        run: |
+          if [ "${{ steps.filter.outputs.should_build }}" = "true" ]; then
+            echo "value=build" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=ota" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Print Decision
+        run: |
+          echo "Release lane: ${{ steps.lane.outputs.value }}"
+          echo "Breaking-sensitive change detected: ${{ steps.filter.outputs.should_build }}"
+
+  build_and_deploy:
+    name: Build + Submit Android
+    needs: decide
+    if: needs.decide.outputs.should_build == 'true'
+    runs-on: ubuntu-latest
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build and Submit (production)
+        run: npx eas-cli build --platform android --auto-submit --profile production --non-interactive
+
+  ota_production:
+    name: OTA Production
+    needs: decide
+    if: needs.decide.outputs.should_build != 'true'
+    runs-on: ubuntu-latest
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Publish OTA from CHANGELOG Unreleased
+        run: npm run ota:production
