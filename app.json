@@ -47,7 +47,8 @@
       "expo-router",
       "expo-localization",
       "expo-audio",
-      "expo-updates"
+      "expo-updates",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true

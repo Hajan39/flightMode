@@ -1,71 +1,89 @@
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
-import { useEffect, useRef, type ReactNode } from "react";
-import { Linking, Pressable, ScrollView, StyleSheet, Switch } from "react-native";
+import { type ReactNode, useEffect, useRef } from "react";
+import {
+	AppState,
+	Linking,
+	Pressable,
+	ScrollView,
+	StyleSheet,
+	Switch,
+} from "react-native";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import LanguageDropdown from "@/components/LanguageDropdown";
-import { Text, View } from "@/components/Themed";
 import ThemeDropdown from "@/components/ThemeDropdown";
+import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useTranslation } from "@/hooks/useTranslation";
 import {
-	useSettingsStore,
 	type SyncNetworkPolicy,
+	useSettingsStore,
 } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 const SUPPORT_EMAIL = "support@eon-app.com";
+const BMAC_URL = "https://buymeacoffee.com/dszwy4b";
 const appVersion = Constants.expoConfig?.version ?? "1.0.0";
 
 const syncOptions: Array<{
 	value: SyncNetworkPolicy;
 	labelKey:
-		| "settingsSyncWifiOnly"
-		| "settingsSyncWifiAndMobile"
-		| "settingsSyncOff";
+	| "settingsSyncWifiOnly"
+	| "settingsSyncWifiAndMobile"
+	| "settingsSyncOff";
 	hintKey:
-		| "settingsSyncWifiOnlyHint"
-		| "settingsSyncWifiAndMobileHint"
-		| "settingsSyncOffHint";
+	| "settingsSyncWifiOnlyHint"
+	| "settingsSyncWifiAndMobileHint"
+	| "settingsSyncOffHint";
 	icon: keyof typeof Ionicons.glyphMap;
 }> = [
-	{
-		value: "wifi_only",
-		labelKey: "settingsSyncWifiOnly",
-		hintKey: "settingsSyncWifiOnlyHint",
-		icon: "wifi-outline",
-	},
-	{
-		value: "wifi_and_mobile",
-		labelKey: "settingsSyncWifiAndMobile",
-		hintKey: "settingsSyncWifiAndMobileHint",
-		icon: "cellular-outline",
-	},
-	{
-		value: "off",
-		labelKey: "settingsSyncOff",
-		hintKey: "settingsSyncOffHint",
-		icon: "cloud-offline-outline",
-	},
-];
+		{
+			value: "wifi_only",
+			labelKey: "settingsSyncWifiOnly",
+			hintKey: "settingsSyncWifiOnlyHint",
+			icon: "wifi-outline",
+		},
+		{
+			value: "wifi_and_mobile",
+			labelKey: "settingsSyncWifiAndMobile",
+			hintKey: "settingsSyncWifiAndMobileHint",
+			icon: "cellular-outline",
+		},
+		{
+			value: "off",
+			labelKey: "settingsSyncOff",
+			hintKey: "settingsSyncOffHint",
+			icon: "cloud-offline-outline",
+		},
+	];
 
 export default function SettingsScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
 	const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
-	const setSyncNetworkPolicy = useSettingsStore(
-		(s) => s.setSyncNetworkPolicy,
-	);
+	const setSyncNetworkPolicy = useSettingsStore((s) => s.setSyncNetworkPolicy);
 	const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
 	const setAnalyticsEnabled = useSettingsStore((s) => s.setAnalyticsEnabled);
 	const hasTrackedOpenRef = useRef(false);
+	const supportClickTimestampRef = useRef<number | null>(null);
+	const appStateRef = useRef(AppState.currentState);
 
 	const handleSyncPolicyChange = (policy: SyncNetworkPolicy) => {
 		setSyncNetworkPolicy(policy);
 		captureAnalyticsEvent("sync_network_policy_changed", { policy });
+	};
+
+	const handleSupportOpen = () => {
+		supportClickTimestampRef.current = Date.now();
+		captureAnalyticsEvent("support_clicked", {
+			placement: "settings",
+			provider: "buymeacoffee",
+		});
+		void Linking.openURL(BMAC_URL);
 	};
 
 	useEffect(() => {
@@ -75,21 +93,44 @@ export default function SettingsScreen() {
 		captureAnalyticsEvent("settings_open", {
 			sync_network_policy: syncNetworkPolicy,
 		});
+		captureAnalyticsEvent("support_opened", {
+			placement: "settings",
+			provider: "buymeacoffee",
+		});
 	}, [syncNetworkPolicy]);
+
+	useEffect(() => {
+		const subscription = AppState.addEventListener("change", (nextState) => {
+			const previousState = appStateRef.current;
+			appStateRef.current = nextState;
+
+			const supportClickTimestamp = supportClickTimestampRef.current;
+			const returnedToApp =
+				previousState !== "active" &&
+				nextState === "active" &&
+				supportClickTimestamp !== null;
+
+			if (!returnedToApp) return;
+
+			captureAnalyticsEvent("support_completed", {
+				placement: "settings",
+				provider: "buymeacoffee",
+				completion_signal: "returned_to_app",
+				seconds_away: Math.round((Date.now() - supportClickTimestamp) / 1000),
+			});
+			supportClickTimestampRef.current = null;
+		});
+
+		return () => subscription.remove();
+	}, []);
 
 	return (
 		<SafeAreaView
 			style={[styles.safeArea, { backgroundColor: theme.background }]}
 			edges={["bottom"]}
 		>
-			<ScrollView
-				style={styles.scroll}
-				contentContainerStyle={styles.content}
-			>
-				<SettingsSection
-					title={t("settingsAppPreferences")}
-					theme={theme}
-				>
+			<ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
+				<SettingsSection title={t("settingsAppPreferences")} theme={theme}>
 					<SettingControlRow
 						icon="language-outline"
 						label={t("language")}
@@ -106,10 +147,7 @@ export default function SettingsScreen() {
 					</SettingControlRow>
 				</SettingsSection>
 
-				<SettingsSection
-					title={t("settingsSync")}
-					theme={theme}
-				>
+				<SettingsSection title={t("settingsSync")} theme={theme}>
 					<View
 						style={[
 							styles.optionCard,
@@ -142,9 +180,14 @@ export default function SettingsScreen() {
 											color={isSelected ? theme.tint : theme.mutedText}
 										/>
 										<View lightColor="transparent" darkColor="transparent">
-											<Text style={styles.optionRowTitle}>{t(option.labelKey)}</Text>
+											<Text style={styles.optionRowTitle}>
+												{t(option.labelKey)}
+											</Text>
 											<Text
-												style={[styles.optionRowHint, { color: theme.mutedText }]}
+												style={[
+													styles.optionRowHint,
+													{ color: theme.mutedText },
+												]}
 											>
 												{t(option.hintKey)}
 											</Text>
@@ -161,10 +204,7 @@ export default function SettingsScreen() {
 					</View>
 				</SettingsSection>
 
-				<SettingsSection
-					title={t("settingsPrivacy")}
-					theme={theme}
-				>
+				<SettingsSection title={t("settingsPrivacy")} theme={theme}>
 					<View
 						style={[
 							styles.optionCard,
@@ -212,6 +252,7 @@ export default function SettingsScreen() {
 
 				<SettingsSection
 					title={t("settingsSupport")}
+					hint={t("settingsSupportHint")}
 					theme={theme}
 				>
 					<View
@@ -241,7 +282,11 @@ export default function SettingsScreen() {
 									{t("settingsReportBug")}
 								</Text>
 							</View>
-							<Ionicons name="chevron-forward" size={16} color={theme.mutedText} />
+							<Ionicons
+								name="chevron-forward"
+								size={16}
+								color={theme.mutedText}
+							/>
 						</Pressable>
 
 						<Pressable
@@ -265,8 +310,59 @@ export default function SettingsScreen() {
 									{t("settingsSuggestFeature")}
 								</Text>
 							</View>
-							<Ionicons name="chevron-forward" size={16} color={theme.mutedText} />
+							<Ionicons
+								name="chevron-forward"
+								size={16}
+								color={theme.mutedText}
+							/>
 						</Pressable>
+
+						<Pressable
+							style={({ pressed }) => [
+								styles.supportRow,
+								{ borderBottomColor: theme.border, opacity: pressed ? 0.6 : 1 },
+							]}
+							onPress={handleSupportOpen}
+						>
+							<View
+								style={styles.supportRowLeft}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<Ionicons name="cafe-outline" size={20} color={theme.tint} />
+								<Text style={styles.supportRowTitle}>
+									{t("settingsBecomeSupporter")}
+								</Text>
+							</View>
+							<Ionicons
+								name="chevron-forward"
+								size={16}
+								color={theme.mutedText}
+							/>
+						</Pressable>
+
+						<View
+							style={[styles.supportRow, { borderBottomColor: theme.border }]}
+							lightColor="transparent"
+							darkColor="transparent"
+						>
+							<View
+								style={styles.supportRowLeft}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<Ionicons
+									name="heart-outline"
+									size={20}
+									color={theme.mutedText}
+								/>
+								<Text
+									style={[styles.supportRowTitle, { color: theme.mutedText }]}
+								>
+									{t("settingsSupportDevelopment")}
+								</Text>
+							</View>
+						</View>
 
 						<View
 							style={[styles.supportRow, styles.supportRowLast]}
@@ -302,18 +398,31 @@ export default function SettingsScreen() {
 
 type SettingsSectionProps = {
 	title: string;
+	hint?: string;
 	theme: (typeof Colors)["dark"];
 	children: ReactNode;
 };
 
-function SettingsSection({ title, theme, children }: SettingsSectionProps) {
+function SettingsSection({
+	title,
+	hint,
+	theme,
+	children,
+}: SettingsSectionProps) {
 	return (
-		<View style={styles.section} lightColor="transparent" darkColor="transparent">
-			<Text
-				style={[styles.sectionLabel, { color: theme.mutedText }]}
-			>
+		<View
+			style={styles.section}
+			lightColor="transparent"
+			darkColor="transparent"
+		>
+			<Text style={[styles.sectionLabel, { color: theme.mutedText }]}>
 				{title.toUpperCase()}
 			</Text>
+			{hint ? (
+				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+					{hint}
+				</Text>
+			) : null}
 			{children}
 		</View>
 	);
@@ -326,9 +435,18 @@ type SettingControlRowProps = {
 	children: ReactNode;
 };
 
-function SettingControlRow({ icon, label, theme, children }: SettingControlRowProps) {
+function SettingControlRow({
+	icon,
+	label,
+	theme,
+	children,
+}: SettingControlRowProps) {
 	return (
-		<View style={styles.preferenceRow} lightColor="transparent" darkColor="transparent">
+		<View
+			style={styles.preferenceRow}
+			lightColor="transparent"
+			darkColor="transparent"
+		>
 			<View
 				style={styles.preferenceLabelWrap}
 				lightColor="transparent"
@@ -337,7 +455,11 @@ function SettingControlRow({ icon, label, theme, children }: SettingControlRowPr
 				<Ionicons name={icon} size={18} color={theme.tint} />
 				<Text style={styles.preferenceLabel}>{label}</Text>
 			</View>
-			<View style={styles.preferenceControl} lightColor="transparent" darkColor="transparent">
+			<View
+				style={styles.preferenceControl}
+				lightColor="transparent"
+				darkColor="transparent"
+			>
 				{children}
 			</View>
 		</View>
@@ -365,6 +487,12 @@ const styles = StyleSheet.create({
 		fontWeight: "600",
 		letterSpacing: 0.8,
 		paddingHorizontal: 2,
+	},
+	sectionHint: {
+		fontSize: 12,
+		lineHeight: 17,
+		paddingHorizontal: 2,
+		marginTop: -3,
 	},
 	preferenceRow: {
 		flexDirection: "row",

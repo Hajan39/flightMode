@@ -1,11 +1,11 @@
 import { PostHogProvider, usePostHog } from "posthog-react-native";
-import { useEffect, type PropsWithChildren } from "react";
+import { type PropsWithChildren, useEffect, useRef } from "react";
 
 import { useSettingsStore } from "@/store/useSettingsStore";
 import {
-    captureAnalyticsEvent,
-    disableAnalytics,
-    setAnalyticsSink,
+	captureAnalyticsEvent,
+	disableAnalytics,
+	setAnalyticsSink,
 } from "@/utils/analytics";
 
 const postHogKey = process.env.EXPO_PUBLIC_POSTHOG_KEY;
@@ -38,16 +38,33 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
 
 export function AnalyticsBootstrap() {
 	const isFirstLaunch = useSettingsStore((state) => state.isFirstLaunch);
+	const incrementAppOpenCount = useSettingsStore(
+		(state) => state.incrementAppOpenCount,
+	);
 	const language = useSettingsStore((state) => state.language);
 	const themeMode = useSettingsStore((state) => state.themeMode);
+	const hasTrackedAppOpenRef = useRef(false);
 
 	useEffect(() => {
+		if (hasTrackedAppOpenRef.current) return;
+		hasTrackedAppOpenRef.current = true;
+
+		const appOpenCount = incrementAppOpenCount();
+
 		captureAnalyticsEvent("app_open", {
 			is_first_launch: isFirstLaunch,
+			app_open_count: appOpenCount,
+			is_returning_user: appOpenCount > 1,
 			language: language ?? "system",
 			theme_mode: themeMode,
 		});
-	}, []);
+
+		if (appOpenCount === 2) {
+			captureAnalyticsEvent("second_session_started", {
+				language: language ?? "system",
+			});
+		}
+	}, [incrementAppOpenCount, isFirstLaunch, language, themeMode]);
 
 	return null;
 }

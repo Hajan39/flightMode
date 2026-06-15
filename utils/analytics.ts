@@ -1,14 +1,20 @@
 export type AnalyticsEventName =
 	| "app_open"
+	| "second_session_started"
 	| "onboarding_complete"
 	| "flight_added"
 	| "flight_edited"
+	| "flight_setup_completed"
 	| "game_start"
 	| "game_finish"
+	| "first_session_completed"
 	| "article_open"
 	| "article_finish"
 	| "relax_start"
 	| "relax_finish"
+	| "reminder_scheduled"
+	| "reminder_permission_denied"
+	| "reminder_opened"
 	| "audio_play"
 	| "audio_stop"
 	| "settings_open"
@@ -23,6 +29,9 @@ export type AnalyticsEventName =
 	| "content_sync_success"
 	| "content_sync_failed"
 	| "sync_network_policy_changed"
+	| "support_opened"
+	| "support_clicked"
+	| "support_completed"
 	| "premium_view";
 
 export type AnalyticsProperties = Record<
