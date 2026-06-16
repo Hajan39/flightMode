@@ -114,6 +114,17 @@ export const gameRegistry: GameDefinition[] = [
 		loadComponent: () => require("@/games/whack-mole").default,
 	},
 	{
+		id: "higher-lower",
+		titleKey: "gameHigherLowerName",
+		descriptionKey: "gameHigherLowerDescription",
+		rulesKey: "rulesHigherLower",
+		estimatedTime: 1,
+		icon: "swap-vertical-outline",
+		category: "reflex",
+		difficulty: "easy",
+		loadComponent: () => require("@/games/higher-lower").default,
+	},
+	{
 		id: "runway-landing",
 		titleKey: "gameRunwayLandingName",
 		descriptionKey: "gameRunwayLandingDescription",
