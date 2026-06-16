@@ -23,7 +23,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - tabs: Home, Games, Explore, Relax
 - profile + achievements + local stats
 - settings kompaktne seskupene na app preferences, article sync a support
-- 19 offline miniher s centralni registry v `data/games.ts`
+- 20 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Color Clash — Stroop test)
 - 44 clanku v `data/content.json`
 - content lokalizace kompletni pro `en/cs/de`
 - UI translation keys jsou kompletni napric vsemi podporovanymi jazyky (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`)

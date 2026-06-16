@@ -839,4 +839,17 @@
 	ccTimeUpSubtitle: "連続: {{streak}} · スコア: {{score}}",
 	atcGameOver: "ゲームオーバー",
 	atcGameOverSubtitle: "着陸: {{landed}} · スコア: {{score}}",
+	// Color Clash
+	gameColorClashName: "カラークラッシュ",
+	gameColorClashDescription: "単語と色が一致したらタップ",
+	gameColorClashListDescription: "集中力テスト — 単語を無視して色を信じよう",
+	rulesColorClash: "色の名前がランダムな色で表示されます。書かれた単語とインクの色が一致するときだけタップしてください（例：赤で書かれた「赤」）。一致しない場合はタップしないで！20ラウンドで正解1点。",
+	colorClashScore: "スコア",
+	colorClashHint: "単語＝色のときだけタップ",
+	colorRed: "赤",
+	colorBlue: "青",
+	colorGreen: "緑",
+	colorYellow: "黄",
+	colorPurple: "紫",
+	colorOrange: "橙",
 } as const;

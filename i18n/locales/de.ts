@@ -878,4 +878,17 @@
 	ccTimeUpSubtitle: "Serie: {{streak}} · Punkte: {{score}}",
 	atcGameOver: "Spiel vorbei",
 	atcGameOverSubtitle: "Gelandet: {{landed}} · Punkte: {{score}}",
+	// Color Clash
+	gameColorClashName: "Farbduell",
+	gameColorClashDescription: "Tippe wenn Wort und Farbe übereinstimmen",
+	gameColorClashListDescription: "Konzentrationstest — ignoriere das Wort, vertrau der Farbe",
+	rulesColorClash: "Ein Farbwort erscheint in einer zufälligen Schriftfarbe. Tippe nur wenn das geschriebene Wort und die Schriftfarbe übereinstimmen (z.B. ROT in Rot). Wenn nicht — nicht tippen! 1 Punkt pro richtige Antwort, 20 Runden.",
+	colorClashScore: "Punkte",
+	colorClashHint: "Tippe nur wenn Wort = Farbe",
+	colorRed: "Rot",
+	colorBlue: "Blau",
+	colorGreen: "Grün",
+	colorYellow: "Gelb",
+	colorPurple: "Lila",
+	colorOrange: "Orange",
 } as const;

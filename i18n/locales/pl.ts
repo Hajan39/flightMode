@@ -854,4 +854,17 @@
 	ccTimeUpSubtitle: "Seria: {{streak}} · Wynik: {{score}}",
 	atcGameOver: "Koniec gry",
 	atcGameOverSubtitle: "Wylądowało: {{landed}} · Wynik: {{score}}",
+	// Color Clash
+	gameColorClashName: "Zderzenie Kolorów",
+	gameColorClashDescription: "Stuknij gdy słowo i kolor się zgadzają",
+	gameColorClashListDescription: "Test koncentracji — zignoruj słowo, zaufaj kolorowi",
+	rulesColorClash: "Pojawia się słowo koloru w losowym kolorze atramentu. Stuknij tylko gdy napisane słowo i kolor atramentu się zgadzają (np. CZERWONY napisany na czerwono). Jeśli nie — nie stukaj! 1 punkt za poprawną odpowiedź w 20 rundach.",
+	colorClashScore: "Wynik",
+	colorClashHint: "Stuknij tylko gdy słowo = kolor",
+	colorRed: "Czerwony",
+	colorBlue: "Niebieski",
+	colorGreen: "Zielony",
+	colorYellow: "Żółty",
+	colorPurple: "Fioletowy",
+	colorOrange: "Pomarańczowy",
 } as const;

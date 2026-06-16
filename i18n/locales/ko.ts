@@ -834,4 +834,17 @@
 	ccTimeUpSubtitle: "연속: {{streak}} · 점수: {{score}}",
 	atcGameOver: "게임 오버",
 	atcGameOverSubtitle: "착륙: {{landed}} · 점수: {{score}}",
+	// Color Clash
+	gameColorClashName: "컬러 충돌",
+	gameColorClashDescription: "단어와 색이 일치할 때 탭하세요",
+	gameColorClashListDescription: "집중력 테스트 — 단어를 무시하고 색을 믿으세요",
+	rulesColorClash: "색 이름이 무작위 잉크 색으로 표시됩니다. 쓰여진 단어와 잉크 색이 일치할 때만 탭하세요(예: 빨간 잉크로 쓴 '빨강'). 일치하지 않으면 탭하지 마세요! 20라운드에서 정답 1점.",
+	colorClashScore: "점수",
+	colorClashHint: "단어 = 색일 때만 탭",
+	colorRed: "빨강",
+	colorBlue: "파랑",
+	colorGreen: "초록",
+	colorYellow: "노랑",
+	colorPurple: "보라",
+	colorOrange: "주황",
 } as const;

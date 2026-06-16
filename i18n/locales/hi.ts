@@ -829,4 +829,17 @@
 	ccTimeUpSubtitle: "स्ट्रीक: {{streak}} · स्कोर: {{score}}",
 	atcGameOver: "गेम ओवर",
 	atcGameOverSubtitle: "लैंड: {{landed}} · स्कोर: {{score}}",
+	// Color Clash
+	gameColorClashName: "रंग संघर्ष",
+	gameColorClashDescription: "जब शब्द और रंग मेल खाएं तो टैप करें",
+	gameColorClashListDescription: "एकाग्रता परीक्षण — शब्द को अनदेखा करें, रंग पर भरोसा करें",
+	rulesColorClash: "एक रंग का शब्द यादृच्छिक स्याही के रंग में दिखाई देता है। केवल तभी टैप करें जब लिखा शब्द और स्याही का रंग मेल खाएं (जैसे लाल रंग में लाल)। यदि नहीं मेल खाते — टैप न करें! 20 राउंड में प्रत्येक सही उत्तर के लिए 1 अंक।",
+	colorClashScore: "स्कोर",
+	colorClashHint: "टैप करें केवल जब शब्द = रंग",
+	colorRed: "लाल",
+	colorBlue: "नीला",
+	colorGreen: "हरा",
+	colorYellow: "पीला",
+	colorPurple: "बैंगनी",
+	colorOrange: "नारंगी",
 } as const;

@@ -858,4 +858,17 @@ export const en = {
 	cbHandoffHint: "Don't peek — only you should see the screen",
 	cbNobodyCracked: "Nobody cracked the code!",
 	cbSecretWas: "The secret was",
+	// Color Clash
+	gameColorClashName: "Color Clash",
+	gameColorClashDescription: "Tap when word and color match",
+	gameColorClashListDescription: "Focus test — ignore the word, trust the color",
+	rulesColorClash: "A color word appears in a random ink color. Tap only when the written word and the ink color match (e.g. RED written in red). If they don't match — don't tap! Score 1 point per correct response across 20 rounds.",
+	colorClashScore: "Score",
+	colorClashHint: "Tap only when word = color",
+	colorRed: "Red",
+	colorBlue: "Blue",
+	colorGreen: "Green",
+	colorYellow: "Yellow",
+	colorPurple: "Purple",
+	colorOrange: "Orange",
 } as const;

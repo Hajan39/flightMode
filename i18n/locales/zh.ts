@@ -827,4 +827,17 @@
 	ccTimeUpSubtitle: "连击：{{streak}} · 分数：{{score}}",
 	atcGameOver: "游戏结束",
 	atcGameOverSubtitle: "已降落：{{landed}} · 分数：{{score}}",
+	// Color Clash
+	gameColorClashName: "颜色冲突",
+	gameColorClashDescription: "当文字和颜色一致时点击",
+	gameColorClashListDescription: "专注力测试 — 忽略文字，相信颜色",
+	rulesColorClash: "一个颜色词以随机墨水颜色显示。只有当文字内容和墨水颜色一致时才点击（例如：红色字体写的「红」）。不一致时不要点击！20轮中每答对一次得1分。",
+	colorClashScore: "得分",
+	colorClashHint: "只在文字=颜色时点击",
+	colorRed: "红",
+	colorBlue: "蓝",
+	colorGreen: "绿",
+	colorYellow: "黄",
+	colorPurple: "紫",
+	colorOrange: "橙",
 } as const;

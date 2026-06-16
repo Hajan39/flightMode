@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added Color Clash (Stroop test) game: 20 rounds, 1.8 s per round, animated progress bar, correct-tap/skip scoring, feedback flash, full haptic feedback, and GameResult overlay. Registered as a brain/medium daily-challenge game. Translation keys added across all 12 supported locales.
 - Added analytics opt-out toggle in Settings under a new Privacy section. Users can disable anonymous usage statistics at any time; the preference is persisted across sessions. Available in all 12 supported languages.
 - Expanded all 44 bundled articles in `data/content.json` from 56–237 words to 350–415 words each (EN), with equivalent expansions in Czech and German. All articles now include structured sections (must-see spots, food tips, getting around, practical tips, day trips) for a richer offline reading experience.
 

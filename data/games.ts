@@ -78,6 +78,18 @@ export const gameRegistry: GameDefinition[] = [
 		loadComponent: () => require("@/games/reaction").default,
 	},
 	{
+		id: "color-clash",
+		titleKey: "gameColorClashName",
+		descriptionKey: "gameColorClashDescription",
+		rulesKey: "rulesColorClash",
+		estimatedTime: 2,
+		icon: "color-palette-outline",
+		category: "brain",
+		difficulty: "medium",
+		isDailyChallenge: true,
+		loadComponent: () => require("@/games/color-clash").default,
+	},
+	{
 		id: "runway-landing",
 		titleKey: "gameRunwayLandingName",
 		descriptionKey: "gameRunwayLandingDescription",

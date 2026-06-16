@@ -855,4 +855,17 @@
 	ccTimeUpSubtitle: "Sequência: {{streak}} · Pontos: {{score}}",
 	atcGameOver: "Fim de jogo",
 	atcGameOverSubtitle: "Pousados: {{landed}} · Pontos: {{score}}",
+	// Color Clash
+	gameColorClashName: "Choque de Cores",
+	gameColorClashDescription: "Toque quando a palavra e a cor coincidirem",
+	gameColorClashListDescription: "Teste de concentração — ignore a palavra, confie na cor",
+	rulesColorClash: "Uma palavra de cor aparece numa cor de tinta aleatória. Toque apenas quando a palavra escrita e a cor da tinta coincidirem (ex. VERMELHO escrito em vermelho). Se não coincidir — não toque! 1 ponto por resposta correcta em 20 rondas.",
+	colorClashScore: "Pontuação",
+	colorClashHint: "Toque só se palavra = cor",
+	colorRed: "Vermelho",
+	colorBlue: "Azul",
+	colorGreen: "Verde",
+	colorYellow: "Amarelo",
+	colorPurple: "Roxo",
+	colorOrange: "Laranja",
 } as const;

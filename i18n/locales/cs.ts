@@ -853,4 +853,17 @@ export const cs = {
 	cbHandoffHint: "Nekukej — jen ty bys měl vidět obrazovku",
 	cbNobodyCracked: "Nikdo nerozluštil kód!",
 	cbSecretWas: "Tajný kód byl",
+	// Color Clash
+	gameColorClashName: "Barevný střet",
+	gameColorClashDescription: "Klepni, když slovo a barva souhlasí",
+	gameColorClashListDescription: "Test soustředění — ignoruj slovo, věř barvě",
+	rulesColorClash: "Zobrazí se barevné slovo v náhodné barvě písma. Klepni pouze tehdy, když zapsané slovo a barva písma souhlasí (např. ČERVENÁ napsaná červeně). Pokud nesouhlasí — neklepej! Za každou správnou odpověď získáš bod z celkových 20 kol.",
+	colorClashScore: "Skóre",
+	colorClashHint: "Klepni pouze pokud slovo = barva",
+	colorRed: "Červená",
+	colorBlue: "Modrá",
+	colorGreen: "Zelená",
+	colorYellow: "Žlutá",
+	colorPurple: "Fialová",
+	colorOrange: "Oranžová",
 } as const;

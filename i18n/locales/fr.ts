@@ -873,4 +873,17 @@
 	ccTimeUpSubtitle: "Série : {{streak}} · Score : {{score}}",
 	atcGameOver: "Fin de partie",
 	atcGameOverSubtitle: "Atterrissages : {{landed}} · Score : {{score}}",
+	// Color Clash
+	gameColorClashName: "Choc des Couleurs",
+	gameColorClashDescription: "Appuie quand le mot et la couleur correspondent",
+	gameColorClashListDescription: "Test de concentration — ignore le mot, fais confiance à la couleur",
+	rulesColorClash: "Un mot couleur apparaît dans une couleur d'encre aléatoire. Appuie uniquement quand le mot écrit et la couleur d'encre correspondent (ex. ROUGE écrit en rouge). Sinon — ne touche pas ! 1 point par bonne réponse sur 20 manches.",
+	colorClashScore: "Score",
+	colorClashHint: "Appuie seulement si mot = couleur",
+	colorRed: "Rouge",
+	colorBlue: "Bleu",
+	colorGreen: "Vert",
+	colorYellow: "Jaune",
+	colorPurple: "Violet",
+	colorOrange: "Orange",
 } as const;
