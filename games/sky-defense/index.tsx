@@ -1403,7 +1403,7 @@ const s = StyleSheet.create({
 	},
 	mainBtnText: { color: "#fff", fontWeight: "800", fontSize: 16 },
 	confirmBackdrop: {
-		...StyleSheet.absoluteFillObject,
+		...StyleSheet.absoluteFill,
 		zIndex: 30,
 		alignItems: "center",
 		justifyContent: "center",
