@@ -86,7 +86,7 @@ void Text;
 
 const styles = StyleSheet.create({
 	overlay: {
-		...StyleSheet.absoluteFillObject,
+		...StyleSheet.absoluteFill,
 		zIndex: 15,
 		alignItems: "center",
 		justifyContent: "center",
