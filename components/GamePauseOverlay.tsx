@@ -100,7 +100,7 @@ export default function GamePauseOverlay({
 
 const styles = StyleSheet.create({
 	overlay: {
-		...StyleSheet.absoluteFillObject,
+		...StyleSheet.absoluteFill,
 		zIndex: 20,
 		alignItems: "center",
 		justifyContent: "center",

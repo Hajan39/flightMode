@@ -200,4 +200,38 @@ export const achievements: AchievementDef[] = [
 		category: "special",
 		condition: (s) => (s.gameProgress["runway-landing"]?.highScore ?? 0) >= 500,
 	},
+	// ── Sky Defense ──
+	{
+		id: "sky-guardian",
+		titleKey: "achieveSkyGuardianTitle",
+		descriptionKey: "achieveSkyGuardianDesc",
+		icon: "shield-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["sky-defense"]?.highScore ?? 0) >= 100,
+	},
+	{
+		id: "sky-commander",
+		titleKey: "achieveSkyCommanderTitle",
+		descriptionKey: "achieveSkyCommanderDesc",
+		icon: "shield-checkmark-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["sky-defense"]?.highScore ?? 0) >= 500,
+	},
+	// ── Air Traffic Control ──
+	{
+		id: "tower-operator",
+		titleKey: "achieveTowerOperatorTitle",
+		descriptionKey: "achieveTowerOperatorDesc",
+		icon: "radio-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["air-traffic-control"]?.highScore ?? 0) >= 150,
+	},
+	{
+		id: "air-boss",
+		titleKey: "achieveAirBossTitle",
+		descriptionKey: "achieveAirBossDesc",
+		icon: "aperture-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["air-traffic-control"]?.highScore ?? 0) >= 500,
+	},
 ];

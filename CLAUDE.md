@@ -20,9 +20,9 @@ No test runner or lint script is configured. Validate with TypeScript Problems p
 
 ## Architecture
 
-**Stack:** Expo 55 · React Native 0.83 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · PostHog
+**Stack:** Expo 56 · React Native 0.85 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · PostHog
 
-**App version:** 1.0.2 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
+**App version:** 1.2.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile and settings are modal stack screens. Onboarding flow at `app/onboarding.tsx`.
 
@@ -54,7 +54,7 @@ Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
 ## Games
 
-19 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+27 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -81,8 +81,16 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `cross-air-radar` | multiplayer | medium | Pass-and-play; Battleship-style |
 | `cross-code-breaker` | multiplayer | hard | Pass-and-play; Mastermind |
 | `cross-liars-dice` | multiplayer | hard | Pass-and-play |
+| `twenty-forty-eight` | brain | hard | 2048 sliding-tile puzzle; 15 min |
+| `minesweeper` | strategy | medium | Classic mine-sweeping; 10 min |
+| `word-scramble` | brain | medium | Unscramble aviation words; daily challenge |
+| `color-clash` | brain | medium | Stroop test; daily challenge |
+| `simon-says` | brain | medium | Memory sequence; daily challenge |
+| `whack-mole` | reflex | easy | Tap moles; daily challenge |
+| `higher-lower` | reflex | easy | Predict numbers |
+| `odd-one-out` | brain | easy | Find the odd emoji; daily challenge |
 
-**Daily challenge games:** `tap-rush`, `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `memory`
+**Daily challenge games:** `tap-rush`, `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `memory`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`
 
 **Play modes:** `bestOf` · `passAndPlay` · `sharedScreen` · `crossDevice`
 
@@ -146,9 +154,6 @@ Event queue (max 100) is buffered until the PostHog sink is ready. `components/A
 - Hook dependency warnings across multiple files
 - Index-based list keys in several components
 - `any` in `useAudioStore`
-- `GameRules` contains a regex that triggers a lint/compile warning
-- `hooks/useProfileStats.ts` missing some games in estimated-minutes mapping
-- Flight edit resets `departureTime`
 
 Don't fix these silently during unrelated work.
 

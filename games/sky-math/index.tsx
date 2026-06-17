@@ -1,4 +1,5 @@
 import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -129,6 +130,7 @@ export default function SkyMathGame() {
 	);
 	const [selectedOption, setSelectedOption] = useState<number | null>(null);
 	const [showResult, setShowResult] = useState(false);
+	const [isPaused, setIsPaused] = useState(false);
 	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
 		null,
 	);
@@ -142,6 +144,7 @@ export default function SkyMathGame() {
 		setSelectedOption(null);
 		setQuestion(createQuestion(0, difficulty));
 		setShowResult(false);
+		setIsPaused(false);
 		setProgressInfo(null);
 	};
 
@@ -152,11 +155,12 @@ export default function SkyMathGame() {
 		setSelectedOption(null);
 		setQuestion(createQuestion(0, nextDifficulty));
 		setShowResult(false);
+		setIsPaused(false);
 		setProgressInfo(null);
 	};
 
 	const handleAnswer = (value: number) => {
-		if (selectedOption !== null) return;
+		if (selectedOption !== null || isPaused) return;
 		setSelectedOption(value);
 
 		const isCorrect = value === question.answer;
@@ -191,8 +195,18 @@ export default function SkyMathGame() {
 						{storedBest}
 					</Text>
 				</RNView>
-				<GameControls onReset={restart} />
+				<GameControls
+					onPause={() => setIsPaused(true)}
+					onReset={restart}
+					isPaused={isPaused}
+				/>
 			</RNView>
+
+			<GamePauseOverlay
+				visible={isPaused}
+				onResume={() => setIsPaused(false)}
+				onRestart={restart}
+			/>
 
 			<RNView style={styles.diffRow}>
 				{(["easy", "medium", "hard"] as const).map((key) => {

@@ -2,6 +2,7 @@
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 
 import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 
 import { Text, View } from "@/components/Themed";
@@ -300,6 +301,7 @@ export default function QuizGame() {
 	const [score, setScore] = useState(0);
 	const [selectedOption, setSelectedOption] = useState<string | null>(null);
 	const [showResult, setShowResult] = useState(false);
+	const [isPaused, setIsPaused] = useState(false);
 	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
 		null,
 	);
@@ -314,7 +316,7 @@ export default function QuizGame() {
 	);
 
 	const handleAnswer = (choice: string) => {
-		if (selectedOption !== null) return;
+		if (selectedOption !== null || isPaused) return;
 
 		setSelectedOption(choice);
 		const isCorrect =
@@ -345,6 +347,7 @@ export default function QuizGame() {
 		setScore(0);
 		setSelectedOption(null);
 		setShowResult(false);
+		setIsPaused(false);
 		setProgressInfo(null);
 	};
 
@@ -359,8 +362,18 @@ export default function QuizGame() {
 						{storedBest}
 					</Text>
 				</RNView>
-				<GameControls onReset={restart} />
+				<GameControls
+					onPause={() => setIsPaused(true)}
+					onReset={restart}
+					isPaused={isPaused}
+				/>
 			</RNView>
+
+			<GamePauseOverlay
+				visible={isPaused}
+				onResume={() => setIsPaused(false)}
+				onRestart={restart}
+			/>
 
 			<View style={styles.progressRow}>
 				<View style={[styles.progressTrack, { backgroundColor: theme.card }]}>

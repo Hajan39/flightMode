@@ -251,6 +251,31 @@ export default function HomeScreen() {
 				</Animated.View>
 			</View>
 
+			{stats.totalGamesPlayed === 0 && (
+				<Animated.View entering={FadeInDown.delay(320).springify()}>
+					<View
+						style={[
+							styles.welcomeCard,
+							{ backgroundColor: theme.accentSoft, borderColor: theme.tint },
+						]}
+					>
+						<Ionicons name="game-controller-outline" size={28} color={theme.tint} />
+						<Text style={[styles.welcomeTitle, { color: theme.text }]}>
+							{t("homeWelcomeTitle")}
+						</Text>
+						<Text style={[styles.welcomeHint, { color: theme.mutedText }]}>
+							{t("homeWelcomeHint")}
+						</Text>
+						<Pressable
+							onPress={() => router.push("/(tabs)/games" as never)}
+							style={[styles.welcomeBtn, { backgroundColor: theme.tint }]}
+						>
+							<Text style={styles.welcomeBtnText}>{t("homeWelcomeCta")}</Text>
+						</Pressable>
+					</View>
+				</Animated.View>
+			)}
+
 			<Animated.View entering={FadeInDown.delay(330).springify()}>
 				<Text style={styles.sectionTitle}>{t("profileStats")}</Text>
 				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
@@ -521,6 +546,25 @@ const styles = StyleSheet.create({
 		backgroundColor: "transparent",
 	},
 	recommendationText: { fontSize: 13, color: "#666", flex: 1 },
+
+	// New-user welcome card
+	welcomeCard: {
+		alignItems: "center",
+		padding: 20,
+		borderRadius: 16,
+		borderWidth: 1.5,
+		gap: 8,
+		marginBottom: 6,
+	},
+	welcomeTitle: { fontSize: 18, fontWeight: "700" },
+	welcomeHint: { fontSize: 13, textAlign: "center", lineHeight: 19 },
+	welcomeBtn: {
+		marginTop: 4,
+		paddingHorizontal: 24,
+		paddingVertical: 10,
+		borderRadius: 20,
+	},
+	welcomeBtnText: { color: "#fff", fontSize: 14, fontWeight: "700" },
 
 	// Add flight card (no flight)
 	addFlightCard: {

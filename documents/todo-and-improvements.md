@@ -8,6 +8,11 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 ### P0 (aktivni)
 
 - ~~pridat explicitni analytics consent/opt-out UX~~ — hotovo: toggle v Settings > Privacy
+- ~~achievement tiery pro sky-defense a air-traffic-control~~ — hotovo: Sky Guardian/Commander (100/500+), Tower Operator/Air Boss (150/500+)
+- ~~GameRules emoji regex debt~~ — hotovo: `/^\p{Extended_Pictographic}/u`
+- ~~pauza v quiz a sky-math~~ — hotovo: GamePauseOverlay + GameControls zapojeny do obou her
+- ~~Home empty-state pro noveho uzivatele~~ — hotovo: welcome card s CTA na Games tab
+- ~~achievement_unlocked analytics event~~ — hotovo: `checkAndUnlock()` posila event pro kazdy novy unlock
 - udelat game quality pass napric vsemi 19 hrami: smysluplnost, obtiznost, delka session, opakovatelnost, jasnost pravidel a mobile ergonomie
 - rozdelit hry do rozhodovacich skupin: `keep`, `tune`, `rework`, `maybe remove/replace`
 - dokoncit kalibraci metadata her (`difficulty`, `estimatedTime`, `category`, `isDailyChallenge`, `isPlayTogether`) podle realneho gameplaye, ne jen podle nazvu hry
