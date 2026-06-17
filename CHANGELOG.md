@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added skill achievements for hard strategy games: Sky Guardian (score 100+ in Sky Defense), Sky Commander (score 500+ in Sky Defense), Tower Operator (score 150+ in Air Traffic Control), Air Boss (score 500+ in Air Traffic Control). All 4 achievements translated across all 12 supported locales.
 - Added Color Clash game (Stroop test): 20-round brain game where a color word appears in random ink — tap only when word and color match. Animated progress bar, feedback flash, haptics.
 - Added Simon Says game: classic memory sequence — 4 colored buttons flash in growing order, repeat exactly with 3 lives. Score = longest sequence completed.
 - Added Whack-a-Mole game: 3×3 grid, 30-second wall-clock timer, tap moles before they vanish. Speed and mole count increase over time.

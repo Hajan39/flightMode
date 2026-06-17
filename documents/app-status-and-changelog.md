@@ -129,6 +129,18 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-06-17
+
+- redesignovan flight setup formular: datum chips (Dnes / Zítra / +2 dny) + day stepper nahrazuji free-text datum input; hodina/minuta steppery nahrazuji free-text cas input; pridano volitelne pole pro flight number
+- flight number se uklada do flight store a zobrazuje se na Home flight karte; neni zahrnuto v analytics payloadech
+- zobrazen label lokalni timezone pod time stepperem
+- pridana pauza do Quiz a Sky Math her (GamePauseOverlay + GameControls)
+- pridan uvitaci card na Home pro noveho uzivatele (0 odehranych her) s CTA na Games tab
+- zjednodusena GameRules emoji regex na `/^\p{Extended_Pictographic}/u`
+- doplnen `achievement_unlocked` analytics event do `checkAndUnlock()` v `useAchievementStore`
+- pridany 4 nove achievementy pro tezke hry: Sky Guardian (100+ v Sky Defense), Sky Commander (500+ v Sky Defense), Tower Operator (150+ v Air Traffic Control), Air Boss (500+ v Air Traffic Control)
+- nove achievement preklady ve vsech 12 locale souborech
+
 ## 2026-05-08
 
 - doplnen analytics opt-out toggle v Settings pod novou sekcí Privacy; preference je persistovana pres AsyncStorage a funguje pro vsech 12 jazyku; AnalyticsProvider reaktivne zapina/vypina PostHog sink bez nutnosti restartu appky
