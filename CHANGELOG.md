@@ -9,6 +9,15 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added Color Clash game (Stroop test): 20-round brain game where a color word appears in random ink — tap only when word and color match. Animated progress bar, feedback flash, haptics.
+- Added Simon Says game: classic memory sequence — 4 colored buttons flash in growing order, repeat exactly with 3 lives. Score = longest sequence completed.
+- Added Whack-a-Mole game: 3×3 grid, 30-second wall-clock timer, tap moles before they vanish. Speed and mole count increase over time.
+- Added Higher or Lower game: 10-round reflex game predicting whether the next number (1–12) is higher or lower. Instant feedback, haptics, streak tracking.
+- Added Odd One Out game: 15-round visual puzzle — find the one emoji that doesn't belong in the grid. Grid grows from 3×3 to 5×4, time shrinks each round.
+
+### Added
+
+- Added Color Clash (Stroop test) game: 20 rounds, 1.8 s per round, animated progress bar, correct-tap/skip scoring, feedback flash, full haptic feedback, and GameResult overlay. Registered as a brain/medium daily-challenge game. Translation keys added across all 12 supported locales.
 - Added analytics opt-out toggle in Settings under a new Privacy section. Users can disable anonymous usage statistics at any time; the preference is persisted across sessions. Available in all 12 supported languages.
 - Expanded all 44 bundled articles in `data/content.json` from 56–237 words to 350–415 words each (EN), with equivalent expansions in Czech and German. All articles now include structured sections (must-see spots, food tips, getting around, practical tips, day trips) for a richer offline reading experience.
 

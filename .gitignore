@@ -36,6 +36,9 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# Claude Code worktrees (temporary agent workspaces)
+.claude/worktrees/
+
 # generated native folders
 /ios
 /android
