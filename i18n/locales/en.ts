@@ -849,6 +849,42 @@ export const en = {
 	achieveTowerOperatorDesc: "Score 150+ in Air Traffic Control",
 	achieveAirBossTitle: "Air Boss",
 	achieveAirBossDesc: "Score 500+ in Air Traffic Control",
+	// 2048
+	gameTwentyFortyEightName: "2048",
+	gameTwentyFortyEightDescription: "Slide and merge tiles to reach 2048",
+	rulesTwentyFortyEight:
+		"🎯 Goal\n• Slide tiles to combine them and reach the 2048 tile!\n\n🔢 How to Play\n• Tap a direction button to slide all tiles.\n• Tiles with the same number merge into one.\n• A new tile appears after each valid move.\n\n⭐ Scoring\n• Each merge adds the result tile's value to your score.\n• Aim for the highest tile possible!",
+	tfeScore: "Score",
+	tfeMoves: "Moves",
+	tfeBestTile: "Best",
+	tfeSwipeHint: "Tap arrows to move tiles",
+	tfeGameOver: "No moves left!",
+	tfeYouWin: "You reached 2048! 🎉",
+	// Minesweeper
+	gameMinesweeperName: "Minesweeper",
+	gameMinesweeperDescription: "Reveal all safe tiles, avoid the mines",
+	rulesMinesweeper:
+		"🎯 Goal\n• Reveal every safe tile without triggering a mine!\n\n💣 How to Play\n• Tap a tile to reveal it.\n• Numbers show how many mines are adjacent.\n• Long-press a tile to flag a suspected mine.\n• The first tap is always safe.\n\n⭐ Scoring\n• Win fast for a higher score!",
+	msFlags: "Flags",
+	msMines: "Mines",
+	msTime: "Time",
+	msGameOver: "Boom! 💥",
+	msYouWin: "Board Cleared! ✅",
+	msRevealHint: "Tap to reveal · Hold to flag",
+	msBeginner: "Beginner",
+	msExpert: "Expert",
+	// Word Scramble
+	gameWordScrambleName: "Word Scramble",
+	gameWordScrambleDescription: "Unscramble aviation words before time runs out",
+	rulesWordScramble:
+		"🎯 Goal\n• Unscramble all the aviation words!\n\n🔤 How to Play\n• Letters appear in a shuffled order.\n• Tap each letter in the correct sequence to spell the word.\n• You have 30 seconds per word.\n• Tap Skip to pass — limited skips available!\n\n⭐ Scoring\n• Correct answer: 10 points.\n• Speed bonus: up to 5 extra points.",
+	wsRound: "Round",
+	wsSkip: "Skip",
+	wsSkipsLeft: "Skips: {{n}}",
+	wsCorrect: "Correct! ✓",
+	wsTimeUp: "Time's Up!",
+	wsWellDone: "Well Done!",
+	wsTapLetters: "Tap letters in order",
 	// Handoff screens
 	passPhone: "Pass the phone",
 	passPhoneTo: "Hand the phone to {{player}}",

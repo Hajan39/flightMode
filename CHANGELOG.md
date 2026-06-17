@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added 2048 game (`twenty-forty-eight`): classic sliding-tile puzzle — slide tiles in 4 directions, merge equal tiles, reach 2048. Score = sum of merged tile values. D-pad controls, pause support, full GameResult with best/streak tracking.
+- Added Minesweeper game: 9×9 grid, 10 mines — tap to reveal, long-press to flag. First tap always safe (mines generated after). Flood-fill reveal for empty cells. Score = 1000 − elapsed×5 on win, 0 on loss. Wall-clock timer.
+- Added Word Scramble game (`word-scramble`): 12 rounds, 30 seconds each — tap scrambled aviation-word letters in correct order to spell the word. 10 pts per word + up to 5 speed bonus. 3 skips per game. Pause support. Daily challenge eligible.
+- All 3 new games fully translated across all 12 supported locales.
 - Added skill achievements for hard strategy games: Sky Guardian (score 100+ in Sky Defense), Sky Commander (score 500+ in Sky Defense), Tower Operator (score 150+ in Air Traffic Control), Air Boss (score 500+ in Air Traffic Control). All 4 achievements translated across all 12 supported locales.
 - Added Color Clash game (Stroop test): 20-round brain game where a color word appears in random ink — tap only when word and color match. Animated progress bar, feedback flash, haptics.
 - Added Simon Says game: classic memory sequence — 4 colored buttons flash in growing order, repeat exactly with 3 lives. Score = longest sequence completed.
