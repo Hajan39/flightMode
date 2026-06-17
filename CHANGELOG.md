@@ -14,6 +14,17 @@ and this project adheres to Semantic Versioning.
 - Added Whack-a-Mole game: 3×3 grid, 30-second wall-clock timer, tap moles before they vanish. Speed and mole count increase over time.
 - Added Higher or Lower game: 10-round reflex game predicting whether the next number (1–12) is higher or lower. Instant feedback, haptics, streak tracking.
 - Added Odd One Out game: 15-round visual puzzle — find the one emoji that doesn't belong in the grid. Grid grows from 3×3 to 5×4, time shrinks each round.
+- Redesigned flight setup form: date chips (Today / Tomorrow / +2 days) + day stepper replace free-text date input; hour/minute steppers replace free-text time input; optional flight number field added. No native dependency added — fully OTA-safe.
+- Added timezone label below departure time stepper so users know which timezone is being used.
+- Added pause (GamePauseOverlay) to Flight Quiz and Sky Math games — both now support resume / restart / quit via pause menu.
+- Added welcome card on Home screen for first-time users (0 games played) pointing them to the games list.
+- Added `achievement_unlocked` analytics event fired for every achievement as it unlocks.
+
+### Changed
+
+- Simplified GameRules emoji-header regex from verbose Unicode-range pattern to `/^\p{Extended_Pictographic}/u` — functionally equivalent, no lint warning.
+- Flight number is now saved with the flight when entered and displayed on the Home flight card (it was an unused field in the type before).
+- Removed stale known-debt items from CLAUDE.md: departureTime reset (already fixed), GameRules regex (now fixed), estimated-minutes mapping in useProfileStats (already complete).
 
 ### Added
 

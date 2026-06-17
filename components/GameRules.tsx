@@ -33,7 +33,7 @@ function RulesContent({ text, textColor, mutedColor }: { text: string; textColor
 				if (!trimmed) return <RNView key={i} style={styles.spacer} />;
 
 				// Section header — starts with emoji (non-ASCII) and rest is bold
-				if (/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2700}-\u{27BF}\u{FE00}-\u{FEFF}\u{1FA00}-\u{1FAFF}]/u.test(trimmed)) {
+				if (/^\p{Extended_Pictographic}/u.test(trimmed)) {
 					return (
 						<Text key={i} style={[styles.sectionHeader, { color: textColor }]}>
 							{trimmed}

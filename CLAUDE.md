@@ -20,9 +20,9 @@ No test runner or lint script is configured. Validate with TypeScript Problems p
 
 ## Architecture
 
-**Stack:** Expo 55 · React Native 0.83 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · PostHog
+**Stack:** Expo 56 · React Native 0.85 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · PostHog
 
-**App version:** 1.0.2 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
+**App version:** 1.1.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile and settings are modal stack screens. Onboarding flow at `app/onboarding.tsx`.
 
@@ -146,9 +146,6 @@ Event queue (max 100) is buffered until the PostHog sink is ready. `components/A
 - Hook dependency warnings across multiple files
 - Index-based list keys in several components
 - `any` in `useAudioStore`
-- `GameRules` contains a regex that triggers a lint/compile warning
-- `hooks/useProfileStats.ts` missing some games in estimated-minutes mapping
-- Flight edit resets `departureTime`
 
 Don't fix these silently during unrelated work.
 

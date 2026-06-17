@@ -3,6 +3,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { achievements, type AchievementState } from "@/data/achievements";
 import { useGameStore } from "@/store/useGameStore";
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 type AchievementStoreState = {
 	unlockedIds: string[];
@@ -63,6 +64,11 @@ export const useAchievementStore = create<AchievementStoreState>()(
 						unlockedIds: [...state.unlockedIds, ...newlyUnlocked],
 						newUnlockedIds: [...state.newUnlockedIds, ...newlyUnlocked],
 					});
+					for (const id of newlyUnlocked) {
+						captureAnalyticsEvent("achievement_unlocked", {
+							achievement_id: id,
+						});
+					}
 				}
 			},
 

@@ -32,7 +32,8 @@ export type AnalyticsEventName =
 	| "support_opened"
 	| "support_clicked"
 	| "support_completed"
-	| "premium_view";
+	| "premium_view"
+	| "achievement_unlocked";
 
 export type AnalyticsProperties = Record<
 	string,
