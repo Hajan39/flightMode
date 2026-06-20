@@ -947,4 +947,58 @@ gameOddOneOutName: "Znajdź Intruza",
 	homeWelcomeTitle: "Gotowy do gry?",
 	homeWelcomeHint: "Wszystkie gry działają offline.",
 	homeWelcomeCta: "Przeglądaj wszystkie gry",
+
+	// Word Guess
+	gameWordGuessName: "Zgadnij słowo",
+	gameWordGuessDescription: "Zgadnij ukryte słowo lotnicze w 6 próbach.",
+	rulesWordGuess: "Zgadnij 5-literowe słowo lotnicze w 6 próbach. Po każdej próbie kafelki zmieniają kolor: zielony = właściwe miejsce, żółty = złe miejsce, szary = litera nie występuje.",
+	wgGuess: "Próba",
+	wgAttemptsLeft: "Pozostałe próby: {{count}}",
+	wgNotInWordList: "Słowo nie znajduje się na liście",
+	wgCorrectWord: "Właściwe słowo: {{word}}",
+	wgTypeAWord: "Wpisz 5-literowe słowo...",
+	wgSubmit: "Zatwierdź",
+
+	// Sudoku
+	gameSudokuName: "Sudoku",
+	gameSudokuDescription: "Klasyczne sudoku 9×9 na spokojne chwile na pokładzie.",
+	rulesSudoku: "Wypełnij siatkę 9×9 tak, aby każdy wiersz, kolumna i kwadrat 3×3 zawierały cyfry 1–9 dokładnie raz. Dotknij komórki, aby ją wybrać, a następnie wpisz cyfrę.",
+	sdkHints: "Podpowiedzi",
+	sdkHintsLeft: "Podpowiedzi: {{count}}",
+	sdkTime: "Czas",
+	sdkDifficulty: "Trudność",
+	sdkEasy: "Łatwy",
+	sdkMedium: "Średni",
+	sdkHard: "Trudny",
+	sdkCongrats: "Gratulacje!",
+	sdkSolve: "Rozwiąż",
+	sdkSelectDifficulty: "Wybierz trudność",
+
+	// Snake
+	gameSnakeName: "Wąż",
+	gameSnakeDescription: "Steruj wężem i zbieraj jedzenie – klasyk na lot.",
+	rulesSnake: "Przesuń, by sterować wężem. Zbieraj jedzenie, by rosnąć i zdobywać punkty. Unikaj ścian i własnego ciała. Jak długo wytrzymasz?",
+	snkScore: "Wynik",
+	snkHighScore: "Najlepszy wynik",
+	snkGameOver: "Koniec gry",
+	snkEatHint: "Zbieraj jedzenie, by rosnąć!",
+	snkLength: "Długość",
+
+	// Achievements
+	achieveWordSolverTitle: "Rozwiązywacz słów",
+	achieveWordSolverDesc: "Rozwiąż 3 zagadki słowne",
+	achieveWordMasterTitle: "Mistrz słów",
+	achieveWordMasterDesc: "Rozwiąż 10 zagadek słownych",
+	achieveSudokuNoviceTitle: "Nowicjusz sudoku",
+	achieveSudokuNoviceDesc: "Ukończ 1 grę sudoku",
+	achieveSudokuMasterTitle: "Mistrz sudoku",
+	achieveSudokuMasterDesc: "Ukończ 5 gier sudoku",
+	achieveSnakeCharmerTitle: "Zaklinacz węży",
+	achieveSnakeCharmerDesc: "Zdobądź 10 punktów w wężu",
+
+	// UX
+	homeArticlesEmpty: "Brak artykułów do wyświetlenia",
+	homeArticlesEmptyHint: "Spróbuj zmienić filtr lub wróć później.",
+	gamesFilteredEmpty: "Żadna gra nie pasuje do filtru",
+	gamesClearFilters: "Wyczyść filtry",
 } as const;

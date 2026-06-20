@@ -927,4 +927,58 @@ gameOddOneOutName: "다른 거 찾기",
 	homeWelcomeTitle: "플레이 준비됐나요?",
 	homeWelcomeHint: "모든 게임이 오프라인에서 작동합니다.",
 	homeWelcomeCta: "모든 게임 보기",
+
+	// Word Guess
+	gameWordGuessName: "단어 맞추기",
+	gameWordGuessDescription: "6번의 시도로 숨겨진 항공 단어를 맞혀보세요.",
+	rulesWordGuess: "6번의 시도로 5글자 항공 단어를 맞혀보세요. 시도할 때마다 타일이 색으로 바뀝니다: 초록 = 정확한 위치, 노랑 = 다른 위치, 회색 = 없는 글자.",
+	wgGuess: "시도",
+	wgAttemptsLeft: "남은 시도: {{count}}",
+	wgNotInWordList: "단어 목록에 없는 단어입니다",
+	wgCorrectWord: "정답: {{word}}",
+	wgTypeAWord: "5글자 단어 입력...",
+	wgSubmit: "확인",
+
+	// Sudoku
+	gameSudokuName: "스도쿠",
+	gameSudokuDescription: "비행 중 여유로운 시간을 위한 클래식 9×9 스도쿠.",
+	rulesSudoku: "9×9 격자를 채워 각 행, 열, 3×3 사각형에 1~9가 정확히 한 번씩 들어가도록 하세요. 셀을 탭해 선택한 후 숫자를 입력하세요.",
+	sdkHints: "힌트",
+	sdkHintsLeft: "힌트: {{count}}",
+	sdkTime: "시간",
+	sdkDifficulty: "난이도",
+	sdkEasy: "쉬움",
+	sdkMedium: "보통",
+	sdkHard: "어려움",
+	sdkCongrats: "축하합니다!",
+	sdkSolve: "풀기",
+	sdkSelectDifficulty: "난이도 선택",
+
+	// Snake
+	gameSnakeName: "뱀 게임",
+	gameSnakeDescription: "뱀을 조종해 먹이를 먹어보세요 – 비행의 클래식.",
+	rulesSnake: "스와이프로 뱀을 조종하세요. 먹이를 먹어 성장하고 점수를 쌓으세요. 벽과 자신의 몸에 닿지 마세요. 얼마나 오래 버틸 수 있나요?",
+	snkScore: "점수",
+	snkHighScore: "최고 점수",
+	snkGameOver: "게임 오버",
+	snkEatHint: "먹이를 먹어 성장하세요!",
+	snkLength: "길이",
+
+	// Achievements
+	achieveWordSolverTitle: "단어 해결사",
+	achieveWordSolverDesc: "단어 퍼즐 3개 풀기",
+	achieveWordMasterTitle: "단어 마스터",
+	achieveWordMasterDesc: "단어 퍼즐 10개 풀기",
+	achieveSudokuNoviceTitle: "스도쿠 초보",
+	achieveSudokuNoviceDesc: "스도쿠 1게임 완료",
+	achieveSudokuMasterTitle: "스도쿠 마스터",
+	achieveSudokuMasterDesc: "스도쿠 5게임 완료",
+	achieveSnakeCharmerTitle: "뱀 조련사",
+	achieveSnakeCharmerDesc: "뱀 게임에서 10점 달성",
+
+	// UX
+	homeArticlesEmpty: "표시할 기사가 없습니다",
+	homeArticlesEmptyHint: "필터를 변경하거나 나중에 다시 확인하세요.",
+	gamesFilteredEmpty: "필터와 일치하는 게임이 없습니다",
+	gamesClearFilters: "필터 초기화",
 } as const;

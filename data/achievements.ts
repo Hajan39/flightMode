@@ -234,4 +234,53 @@ export const achievements: AchievementDef[] = [
 		category: "special",
 		condition: (s) => (s.gameProgress["air-traffic-control"]?.highScore ?? 0) >= 500,
 	},
+	// ── Word Guess ──
+	{
+		id: "word-solver",
+		titleKey: "achieveWordSolverTitle",
+		descriptionKey: "achieveWordSolverDesc",
+		icon: "text-outline",
+		category: "special",
+		condition: (s) =>
+			(s.gameProgress["word-guess"]?.timesPlayed ?? 0) >= 1 &&
+			(s.gameProgress["word-guess"]?.highScore ?? 0) > 0,
+	},
+	{
+		id: "word-master",
+		titleKey: "achieveWordMasterTitle",
+		descriptionKey: "achieveWordMasterDesc",
+		icon: "ribbon-outline",
+		category: "special",
+		// score >= 700 means guessed in ≤3 attempts (1000 - (3-1)*150 = 700)
+		condition: (s) => (s.gameProgress["word-guess"]?.highScore ?? 0) >= 700,
+	},
+	// ── Sudoku ──
+	{
+		id: "sudoku-novice",
+		titleKey: "achieveSudokuNoviceTitle",
+		descriptionKey: "achieveSudokuNoviceDesc",
+		icon: "grid-outline",
+		category: "special",
+		condition: (s) =>
+			(s.gameProgress["sudoku"]?.timesPlayed ?? 0) >= 1 &&
+			(s.gameProgress["sudoku"]?.highScore ?? 0) > 0,
+	},
+	{
+		id: "sudoku-master",
+		titleKey: "achieveSudokuMasterTitle",
+		descriptionKey: "achieveSudokuMasterDesc",
+		icon: "checkmark-done-outline",
+		category: "special",
+		condition: (s) =>
+			(s.gameProgress["sudoku"]?.levelStars?.["hard-no-hint"] ?? 0) >= 1,
+	},
+	// ── Snake ──
+	{
+		id: "snake-charmer",
+		titleKey: "achieveSnakeCharmerTitle",
+		descriptionKey: "achieveSnakeCharmerDesc",
+		icon: "arrow-forward-circle-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["snake"]?.highScore ?? 0) >= 20,
+	},
 ];

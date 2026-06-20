@@ -323,29 +323,37 @@ export default function FlightEditScreen() {
 							})}
 						</View>
 						<View style={styles.dayStepperRow}>
-							<Pressable
-								onPress={() => setDepartureDate(offsetDate(departureDate, -1))}
-								hitSlop={8}
-								style={[
-									styles.dayStepBtn,
-									{ borderColor: theme.border, backgroundColor: theme.card },
-								]}
-							>
-								<Text style={[styles.dayArrow, { color: theme.tint }]}>‹</Text>
-							</Pressable>
-							<Text style={[styles.dayLabel, { color: theme.text }]}>
-								{departureDate}
-							</Text>
-							<Pressable
-								onPress={() => setDepartureDate(offsetDate(departureDate, +1))}
-								hitSlop={8}
-								style={[
-									styles.dayStepBtn,
-									{ borderColor: theme.border, backgroundColor: theme.card },
-								]}
-							>
-								<Text style={[styles.dayArrow, { color: theme.tint }]}>›</Text>
-							</Pressable>
+							{(() => {
+								const canGoBack = dayOffsetFromToday(departureDate) > 0;
+								const canGoForward = dayOffsetFromToday(departureDate) < 14;
+								return (
+									<>
+										<Pressable
+											onPress={() => canGoBack && setDepartureDate(offsetDate(departureDate, -1))}
+											hitSlop={8}
+											style={[
+												styles.dayStepBtn,
+												{ borderColor: theme.border, backgroundColor: theme.card, opacity: canGoBack ? 1 : 0.4 },
+											]}
+										>
+											<Ionicons name="chevron-back-outline" size={20} color={theme.tint} />
+										</Pressable>
+										<Text style={[styles.dayLabel, { color: theme.text }]}>
+											{departureDate}
+										</Text>
+										<Pressable
+											onPress={() => canGoForward && setDepartureDate(offsetDate(departureDate, +1))}
+											hitSlop={8}
+											style={[
+												styles.dayStepBtn,
+												{ borderColor: theme.border, backgroundColor: theme.card, opacity: canGoForward ? 1 : 0.4 },
+											]}
+										>
+											<Ionicons name="chevron-forward-outline" size={20} color={theme.tint} />
+										</Pressable>
+									</>
+								);
+							})()}
 						</View>
 					</View>
 

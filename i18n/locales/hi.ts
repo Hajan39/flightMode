@@ -922,4 +922,58 @@ gameOddOneOutName: "अलग खोजो",
 	homeWelcomeTitle: "खेलने के लिए तैयार?",
 	homeWelcomeHint: "सभी खेल ऑफ़लाइन काम करते हैं।",
 	homeWelcomeCta: "सभी खेल देखें",
+
+	// Word Guess
+	gameWordGuessName: "शब्द अनुमान",
+	gameWordGuessDescription: "6 प्रयासों में छिपे विमानन शब्द का अनुमान लगाएं।",
+	rulesWordGuess: "6 प्रयासों में 5-अक्षर का विमानन शब्द अनुमान लगाएं। हर प्रयास के बाद टाइलें रंग बदलती हैं: हरा = सही जगह, पीला = गलत जगह, धूसर = अक्षर नहीं है।",
+	wgGuess: "प्रयास",
+	wgAttemptsLeft: "शेष प्रयास: {{count}}",
+	wgNotInWordList: "शब्द सूची में नहीं है",
+	wgCorrectWord: "सही शब्द: {{word}}",
+	wgTypeAWord: "5-अक्षर का शब्द टाइप करें...",
+	wgSubmit: "जमा करें",
+
+	// Sudoku
+	gameSudokuName: "सुडोकू",
+	gameSudokuDescription: "उड़ान के शांत पलों के लिए क्लासिक 9×9 सुडोकू।",
+	rulesSudoku: "9×9 ग्रिड भरें ताकि हर पंक्ति, स्तंभ और 3×3 वर्ग में 1-9 अंक ठीक एक बार हों। सेल चुनने के लिए टैप करें, फिर अंक दर्ज करें।",
+	sdkHints: "संकेत",
+	sdkHintsLeft: "संकेत: {{count}}",
+	sdkTime: "समय",
+	sdkDifficulty: "कठिनाई",
+	sdkEasy: "आसान",
+	sdkMedium: "मध्यम",
+	sdkHard: "कठिन",
+	sdkCongrats: "बधाई हो!",
+	sdkSolve: "हल करें",
+	sdkSelectDifficulty: "कठिनाई चुनें",
+
+	// Snake
+	gameSnakeName: "साँप",
+	gameSnakeDescription: "साँप को नियंत्रित करें और खाना इकट्ठा करें – उड़ान के लिए क्लासिक।",
+	rulesSnake: "साँप को नियंत्रित करने के लिए स्वाइप करें। बढ़ने और अंक पाने के लिए खाना इकट्ठा करें। दीवारों और अपने शरीर से बचें। कितनी देर टिकेंगे?",
+	snkScore: "स्कोर",
+	snkHighScore: "सर्वश्रेष्ठ स्कोर",
+	snkGameOver: "खेल समाप्त",
+	snkEatHint: "बढ़ने के लिए खाना खाएं!",
+	snkLength: "लंबाई",
+
+	// Achievements
+	achieveWordSolverTitle: "शब्द सुलझाने वाला",
+	achieveWordSolverDesc: "3 शब्द पहेलियाँ सुलझाएं",
+	achieveWordMasterTitle: "शब्द उस्ताद",
+	achieveWordMasterDesc: "10 शब्द पहेलियाँ सुलझाएं",
+	achieveSudokuNoviceTitle: "सुडोकू नौसिखिया",
+	achieveSudokuNoviceDesc: "1 सुडोकू खेल पूरा करें",
+	achieveSudokuMasterTitle: "सुडोकू उस्ताद",
+	achieveSudokuMasterDesc: "5 सुडोकू खेल पूरे करें",
+	achieveSnakeCharmerTitle: "साँप वश करने वाला",
+	achieveSnakeCharmerDesc: "साँप में 10 अंक प्राप्त करें",
+
+	// UX
+	homeArticlesEmpty: "दिखाने के लिए कोई लेख नहीं",
+	homeArticlesEmptyHint: "फ़िल्टर बदलें या बाद में वापस आएं।",
+	gamesFilteredEmpty: "फ़िल्टर से मेल खाने वाले कोई खेल नहीं",
+	gamesClearFilters: "फ़िल्टर साफ़ करें",
 } as const;

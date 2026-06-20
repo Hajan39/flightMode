@@ -948,4 +948,58 @@ gameOddOneOutName: "O Intruso",
 	homeWelcomeTitle: "Pronto para jogar?",
 	homeWelcomeHint: "Todos os jogos funcionam offline.",
 	homeWelcomeCta: "Ver todos os jogos",
+
+	// Word Guess
+	gameWordGuessName: "Adivinhar a palavra",
+	gameWordGuessDescription: "Adivinhe a palavra de aviação escondida em 6 tentativas.",
+	rulesWordGuess: "Adivinhe a palavra de aviação de 5 letras em 6 tentativas. Após cada tentativa as peças ficam coloridas: verde = lugar certo, amarelo = lugar errado, cinza = letra ausente.",
+	wgGuess: "Tentativa",
+	wgAttemptsLeft: "Tentativas restantes: {{count}}",
+	wgNotInWordList: "Palavra não está na lista",
+	wgCorrectWord: "Palavra correta: {{word}}",
+	wgTypeAWord: "Digite uma palavra de 5 letras...",
+	wgSubmit: "Confirmar",
+
+	// Sudoku
+	gameSudokuName: "Sudoku",
+	gameSudokuDescription: "Sudoku clássico 9×9 para os momentos tranquilos a bordo.",
+	rulesSudoku: "Preencha a grelha 9×9 de forma que cada linha, coluna e quadrado 3×3 contenha os números de 1 a 9 exatamente uma vez. Toque numa célula para a selecionar e depois introduza um número.",
+	sdkHints: "Dicas",
+	sdkHintsLeft: "Dicas: {{count}}",
+	sdkTime: "Tempo",
+	sdkDifficulty: "Dificuldade",
+	sdkEasy: "Fácil",
+	sdkMedium: "Médio",
+	sdkHard: "Difícil",
+	sdkCongrats: "Parabéns!",
+	sdkSolve: "Resolver",
+	sdkSelectDifficulty: "Escolher dificuldade",
+
+	// Snake
+	gameSnakeName: "Cobra",
+	gameSnakeDescription: "Controla a cobra e recolhe comida – um clássico para o voo.",
+	rulesSnake: "Desliza para controlar a cobra. Recolhe comida para crescer e ganhar pontos. Evita as paredes e o próprio corpo. Quanto tempo aguentas?",
+	snkScore: "Pontuação",
+	snkHighScore: "Melhor pontuação",
+	snkGameOver: "Fim de jogo",
+	snkEatHint: "Come para crescer!",
+	snkLength: "Comprimento",
+
+	// Achievements
+	achieveWordSolverTitle: "Solucionador de palavras",
+	achieveWordSolverDesc: "Resolver 3 puzzles de palavras",
+	achieveWordMasterTitle: "Mestre das palavras",
+	achieveWordMasterDesc: "Resolver 10 puzzles de palavras",
+	achieveSudokuNoviceTitle: "Novato em sudoku",
+	achieveSudokuNoviceDesc: "Completar 1 jogo de sudoku",
+	achieveSudokuMasterTitle: "Mestre do sudoku",
+	achieveSudokuMasterDesc: "Completar 5 jogos de sudoku",
+	achieveSnakeCharmerTitle: "Encantador de cobras",
+	achieveSnakeCharmerDesc: "Atingir 10 pontos na cobra",
+
+	// UX
+	homeArticlesEmpty: "Nenhum artigo para exibir",
+	homeArticlesEmptyHint: "Tenta mudar o filtro ou volta mais tarde.",
+	gamesFilteredEmpty: "Nenhum jogo corresponde ao filtro",
+	gamesClearFilters: "Limpar filtros",
 } as const;

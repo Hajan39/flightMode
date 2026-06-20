@@ -54,7 +54,7 @@ Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
 ## Games
 
-27 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+30 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -89,8 +89,11 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `whack-mole` | reflex | easy | Tap moles; daily challenge |
 | `higher-lower` | reflex | easy | Predict numbers |
 | `odd-one-out` | brain | easy | Find the odd emoji; daily challenge |
+| `word-guess` | brain | medium | Wordle-style; daily challenge |
+| `sudoku` | brain | hard | 9×9 logic puzzle; 15 hardcoded puzzles |
+| `snake` | reflex | medium | Classic snake; D-pad controls |
 
-**Daily challenge games:** `tap-rush`, `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `memory`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`
+**Daily challenge games:** `tap-rush`, `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `memory`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess`
 
 **Play modes:** `bestOf` · `passAndPlay` · `sharedScreen` · `crossDevice`
 

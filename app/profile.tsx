@@ -219,7 +219,7 @@ function AchievementBadge({
 		>
 			<Ionicons
 				name={achievement.icon as never}
-				size={28}
+				size={26}
 				color={unlocked ? theme.tint : theme.mutedText}
 			/>
 			<Text
@@ -230,6 +230,12 @@ function AchievementBadge({
 				numberOfLines={2}
 			>
 				{t(achievement.titleKey)}
+			</Text>
+			<Text
+				style={[styles.badgeDesc, { color: theme.mutedText }]}
+				numberOfLines={2}
+			>
+				{t(achievement.descriptionKey)}
 			</Text>
 		</View>
 	);
@@ -276,15 +282,15 @@ const styles = StyleSheet.create({
 		gap: 10,
 	},
 	badge: {
-		width: "22%",
-		aspectRatio: 1,
+		width: "46%",
 		borderRadius: 12,
 		borderWidth: 1,
 		alignItems: "center",
-		justifyContent: "center",
-		padding: 6,
+		padding: 12,
+		gap: 6,
 	},
-	badgeTitle: { fontSize: 9, textAlign: "center", marginTop: 4 },
+	badgeTitle: { fontSize: 13, textAlign: "center", fontWeight: "600" },
+	badgeDesc: { fontSize: 11, textAlign: "center", lineHeight: 15 },
 	scoreRow: {
 		flexDirection: "row",
 		alignItems: "center",

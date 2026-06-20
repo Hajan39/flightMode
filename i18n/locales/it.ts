@@ -952,4 +952,58 @@ gameOddOneOutName: "L'Intruso",
 	homeWelcomeTitle: "Pronto a giocare?",
 	homeWelcomeHint: "Tutti i giochi funzionano offline.",
 	homeWelcomeCta: "Esplora tutti i giochi",
+
+	// Word Guess
+	gameWordGuessName: "Indovina la parola",
+	gameWordGuessDescription: "Indovina la parola aviazione nascosta in 6 tentativi.",
+	rulesWordGuess: "Indovina la parola di aviazione di 5 lettere in 6 tentativi. Dopo ogni tentativo le tessere si colorano: verde = posto giusto, giallo = posto sbagliato, grigio = lettera assente.",
+	wgGuess: "Tentativo",
+	wgAttemptsLeft: "Tentativi rimasti: {{count}}",
+	wgNotInWordList: "Parola non nella lista",
+	wgCorrectWord: "Parola corretta: {{word}}",
+	wgTypeAWord: "Inserisci una parola di 5 lettere...",
+	wgSubmit: "Conferma",
+
+	// Sudoku
+	gameSudokuName: "Sudoku",
+	gameSudokuDescription: "Sudoku classico 9×9 per i momenti tranquilli a bordo.",
+	rulesSudoku: "Riempi la griglia 9×9 in modo che ogni riga, colonna e quadrato 3×3 contenga i numeri da 1 a 9 esattamente una volta. Tocca una cella per selezionarla, poi inserisci un numero.",
+	sdkHints: "Suggerimenti",
+	sdkHintsLeft: "Suggerimenti: {{count}}",
+	sdkTime: "Tempo",
+	sdkDifficulty: "Difficoltà",
+	sdkEasy: "Facile",
+	sdkMedium: "Medio",
+	sdkHard: "Difficile",
+	sdkCongrats: "Congratulazioni!",
+	sdkSolve: "Risolvi",
+	sdkSelectDifficulty: "Scegli la difficoltà",
+
+	// Snake
+	gameSnakeName: "Serpente",
+	gameSnakeDescription: "Controlla il serpente e raccogli cibo – un classico per il volo.",
+	rulesSnake: "Scorri per controllare il serpente. Raccogli cibo per crescere e fare punti. Evita muri e il tuo stesso corpo. Quanto durerai?",
+	snkScore: "Punteggio",
+	snkHighScore: "Punteggio più alto",
+	snkGameOver: "Fine partita",
+	snkEatHint: "Mangia per crescere!",
+	snkLength: "Lunghezza",
+
+	// Achievements
+	achieveWordSolverTitle: "Risolutore di parole",
+	achieveWordSolverDesc: "Risolvi 3 enigmi di parole",
+	achieveWordMasterTitle: "Maestro delle parole",
+	achieveWordMasterDesc: "Risolvi 10 enigmi di parole",
+	achieveSudokuNoviceTitle: "Principiante di sudoku",
+	achieveSudokuNoviceDesc: "Completa 1 partita di sudoku",
+	achieveSudokuMasterTitle: "Maestro del sudoku",
+	achieveSudokuMasterDesc: "Completa 5 partite di sudoku",
+	achieveSnakeCharmerTitle: "Incantatore di serpenti",
+	achieveSnakeCharmerDesc: "Raggiungi 10 punti nel serpente",
+
+	// UX
+	homeArticlesEmpty: "Nessun articolo da visualizzare",
+	homeArticlesEmptyHint: "Prova a cambiare il filtro o torna più tardi.",
+	gamesFilteredEmpty: "Nessun gioco corrisponde al filtro",
+	gamesClearFilters: "Rimuovi filtri",
 } as const;

@@ -341,9 +341,30 @@ export default function RelaxScreen() {
 						{t("relaxSleepTimerHint")}
 					</Text>
 					{sleepTimerEndAt ? (
-						<Text style={[styles.sleepTimerHint, { color: theme.mutedText }]}>
-							{t("sleepTimerStopsIn", { minutes: sleepMinutesLeft })}
-						</Text>
+						<>
+							<Text style={[styles.sleepTimerHint, { color: theme.mutedText }]}>
+								{t("sleepTimerStopsIn", { minutes: sleepMinutesLeft })}
+							</Text>
+							<View
+								style={[styles.sleepProgressTrack, { backgroundColor: theme.border }]}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<View
+									style={[
+										styles.sleepProgressFill,
+										{
+											backgroundColor: theme.tint,
+											width: `${Math.round(Math.min(1, Math.max(0, sleepTimerPresetMinutes
+												? 1 - (sleepTimerEndAt - now) / (sleepTimerPresetMinutes * 60_000)
+												: 0)) * 100)}%`,
+										},
+									]}
+									lightColor="transparent"
+									darkColor="transparent"
+								/>
+							</View>
+						</>
 					) : null}
 					<View
 						style={styles.sleepTimerRow}
@@ -534,6 +555,16 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		marginBottom: 8,
 		paddingHorizontal: 4,
+	},
+	sleepProgressTrack: {
+		height: 4,
+		borderRadius: 2,
+		marginBottom: 10,
+		overflow: "hidden",
+	},
+	sleepProgressFill: {
+		height: 4,
+		borderRadius: 2,
 	},
 	sleepTimerRow: {
 		flexDirection: "row",

@@ -475,6 +475,26 @@ export default function HomeScreen() {
 						/>
 					</AnimatedPressable>
 				))}
+				{featuredArticles.length === 0 && (
+					<View
+						style={[
+							styles.articlesEmptyCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+					>
+						<Ionicons
+							name="document-text-outline"
+							size={28}
+							color={theme.mutedText}
+						/>
+						<Text style={[styles.articlesEmptyTitle, { color: theme.mutedText }]}>
+							{t("homeArticlesEmpty")}
+						</Text>
+						<Text style={[styles.articlesEmptyHint, { color: theme.mutedText }]}>
+							{t("homeArticlesEmptyHint")}
+						</Text>
+					</View>
+				)}
 			</Animated.View>
 		</ScrollView>
 	);
@@ -514,7 +534,6 @@ const styles = StyleSheet.create({
 	flightCard: {
 		padding: 20,
 		borderRadius: 16,
-		backgroundColor: "#f0f8ff",
 		marginBottom: 24,
 	},
 	flightHeader: {
@@ -528,16 +547,10 @@ const styles = StyleSheet.create({
 	progressBar: {
 		height: 8,
 		borderRadius: 4,
-		backgroundColor: "#ddd",
 		overflow: "hidden",
 		marginBottom: 8,
 	},
-	progressFill: {
-		height: "100%",
-		backgroundColor: "#2f95dc",
-		borderRadius: 4,
-	},
-	progressLabel: { fontSize: 13, color: "#666" },
+	progressLabel: { fontSize: 13 },
 	recommendation: {
 		flexDirection: "row",
 		alignItems: "center",
@@ -545,7 +558,7 @@ const styles = StyleSheet.create({
 		marginTop: 12,
 		backgroundColor: "transparent",
 	},
-	recommendationText: { fontSize: 13, color: "#666", flex: 1 },
+	recommendationText: { fontSize: 13, flex: 1 },
 
 	// New-user welcome card
 	welcomeCard: {
@@ -572,17 +585,26 @@ const styles = StyleSheet.create({
 		padding: 24,
 		borderRadius: 16,
 		borderWidth: 2,
-		borderColor: "#ddd",
 		borderStyle: "dashed",
 		marginBottom: 6,
 	},
 	addFlightTitle: { fontSize: 18, fontWeight: "700", marginTop: 12 },
 	addFlightSubtitle: {
 		fontSize: 13,
-		color: "#999",
 		marginTop: 4,
 		textAlign: "center",
 	},
+	// Featured articles empty state
+	articlesEmptyCard: {
+		borderWidth: 1,
+		borderRadius: 12,
+		padding: 20,
+		alignItems: "center",
+		gap: 8,
+		marginTop: 10,
+	},
+	articlesEmptyTitle: { fontSize: 14, fontWeight: "600", textAlign: "center" },
+	articlesEmptyHint: { fontSize: 12, textAlign: "center", lineHeight: 17 },
 
 	// Quick actions
 	sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 4, marginTop: 20 },

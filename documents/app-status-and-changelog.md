@@ -23,7 +23,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - tabs: Home, Games, Explore, Relax
 - profile + achievements + local stats
 - settings kompaktne seskupene na app preferences, article sync a support
-- 20 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Color Clash — Stroop test)
+- 30 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Word Guess, Sudoku, Snake)
 - 44 clanku v `data/content.json`
 - content lokalizace kompletni pro `en/cs/de`
 - UI translation keys jsou kompletni napric vsemi podporovanymi jazyky (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`)
@@ -128,6 +128,17 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - advanced personalization
 
 ## 4. Changelog
+
+## 2026-06-20
+
+- pridany 3 nove hry: Word Guess (Wordle-style, denni vyzva), Sudoku (9×9, 15 hádanek easy/medium/hard), Snake (18×18, D-pad ovladani)
+- pridano 5 novych achievementu: Word Solver, Word Master, Sudoku Novice, Sudoku Master, Snake Charmer
+- UX: achievement badges na Profile zmenseny na 2 sloupce s popis — driv nescitelne male
+- UX: hardcoded barvy (#f0f8ff, #ddd, #666, #999) na Home screen nahrazeny theme tokeny — opraveno v dark a crazy tematech
+- UX: prazdny stav v Games je filtrace-aware — pri aktivnich filtrech ukazuje "Zadne hry" a tlacitko "Vycistit filtry"
+- UX: day stepper v Flight Edit pouziva Ionicons sipky misto znakoveho textu; sipky se zakazuji na hranicich (dnes / +14 dni)
+- UX: na Relax obrazovce je tenky progress bar pod odpocetem sleep timeru
+- vsechny nove prekladove klice rozsireny do vsech 12 locale souboru
 
 ## 2026-06-17
 

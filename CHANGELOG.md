@@ -9,6 +9,17 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added Word Guess game (`word-guess`): Wordle-style 5-letter word game — guess the hidden word in 6 tries, with green/yellow/gray tile feedback and a full QWERTY keyboard. Daily word picked from an aviation + common-word pool. Scoring: 1000 − attempt×150. Brain/medium/4 min, daily challenge eligible.
+- Added Sudoku game (`sudoku`): classic 9×9 number puzzle with 15 pre-verified puzzles across easy/medium/hard difficulties. Cell highlighting, conflict detection in red, 3 hints per game, wall-clock timer, and pause support. Scoring: max(500, 5000 − elapsed×8 − hints×200). Brain/hard/12 min.
+- Added Snake game (`snake`): 18×18 grid — steer the snake with a D-pad, eat food to grow, avoid walls and your own tail. Speed increases with score. Reflex/medium/5 min.
+- Added 5 new achievements: Word Solver (first Word Guess win), Word Master (win in ≤3 attempts), Sudoku Novice (first Sudoku win), Sudoku Master (hard difficulty, no hints), Snake Charmer (score ≥ 20 in Snake).
+- UX: Achievement badges on Profile screen enlarged to 2-column layout with title and description — badges were previously too small to read.
+- UX: Home screen hardcoded colors (`#f0f8ff`, `#ddd`, `#666`, `#999`) replaced with theme tokens — fixes broken appearance in dark and crazy themes.
+- UX: Games screen empty state is now filter-aware — shows a different message and a "Clear filters" button when filters are active and no games match.
+- UX: Flight edit day stepper now uses Ionicons chevron icons instead of text arrows, with back/forward buttons disabled when at the date boundary (today / +14 days).
+- UX: Relax screen shows a thin progress bar below the sleep timer countdown so users can see how much time is left at a glance.
+- All 3 new games and all new achievements fully translated across all 12 supported locales.
+
 - Added 2048 game (`twenty-forty-eight`): classic sliding-tile puzzle — slide tiles in 4 directions, merge equal tiles, reach 2048. Score = sum of merged tile values. D-pad controls, pause support, full GameResult with best/streak tracking.
 - Added Minesweeper game: 9×9 grid, 10 mines — tap to reveal, long-press to flag. First tap always safe (mines generated after). Flood-fill reveal for empty cells. Score = 1000 − elapsed×5 on win, 0 on loss. Wall-clock timer.
 - Added Word Scramble game (`word-scramble`): 12 rounds, 30 seconds each — tap scrambled aviation-word letters in correct order to spell the word. 10 pts per word + up to 5 speed bonus. 3 skips per game. Pause support. Daily challenge eligible.

@@ -954,4 +954,59 @@ gameOddOneOutName: "Odd One Out",
 	homeWelcomeTitle: "Ready to play?",
 	homeWelcomeHint: "All games work fully offline — no internet needed.",
 	homeWelcomeCta: "Browse all games",
+	// Word Guess (Wordle-style)
+	gameWordGuessName: "Word Guess",
+	gameWordGuessDescription: "Guess the 5-letter word in 6 tries",
+	rulesWordGuess:
+		"🎯 Goal\n• Guess the hidden 5-letter word within 6 attempts.\n\n🟩 How to Play\n• Type a 5-letter word and submit.\n• Green = correct letter, correct position.\n• Yellow = letter is in the word, wrong position.\n• Gray = letter not in the word.\n\n⭐ Scoring\n• Score = 1000 − (attempts − 1) × 150\n• Fewer guesses = higher score!",
+	wgGuess: "GUESS",
+	wgAttemptsLeft: "{{count}} attempts left",
+	wgNotInWordList: "Not in word list",
+	wgCorrectWord: "The word was {{word}}",
+	wgTypeAWord: "Type a 5-letter word",
+	wgSubmit: "Submit",
+	// Sudoku
+	gameSudokuName: "Sudoku",
+	gameSudokuDescription: "Fill the 9×9 grid with digits 1–9",
+	rulesSudoku:
+		"🎯 Goal\n• Fill every row, column, and 3×3 box with the digits 1–9.\n\n🔢 How to Play\n• Tap a cell to select it, then tap a number to fill it.\n• Gray cells are pre-filled clues — they cannot be changed.\n• Red numbers indicate a conflict.\n• Use Hint to reveal one correct cell (3 hints per game).\n\n⭐ Scoring\n• Score = max(500, 5000 − seconds×8 − hintsUsed×200)\n• Solve faster with fewer hints!",
+	sdkHints: "Hints",
+	sdkHintsLeft: "{{count}} hints left",
+	sdkTime: "Time",
+	sdkDifficulty: "Difficulty",
+	sdkEasy: "Easy",
+	sdkMedium: "Medium",
+	sdkHard: "Hard",
+	sdkCongrats: "Puzzle Solved!",
+	sdkSolve: "Use Hint",
+	sdkSelectDifficulty: "Select Difficulty",
+	// Snake
+	gameSnakeName: "Snake",
+	gameSnakeDescription: "Eat food, grow longer, don't crash!",
+	rulesSnake:
+		"🎯 Goal\n• Eat as much food as possible without hitting a wall or yourself!\n\n🐍 How to Play\n• Use the D-pad to steer the snake.\n• Each food item eaten grows the snake by one tile.\n• Hitting a wall or your own body ends the game.\n\n⭐ Scoring\n• Score = number of apples eaten.\n• Speed increases as you grow!",
+	snkScore: "Score",
+	snkHighScore: "Best",
+	snkGameOver: "Game Over",
+	snkEatHint: "Eat the apple to grow",
+	snkLength: "Length",
+	// Achievement keys — Word Guess
+	achieveWordSolverTitle: "Word Solver",
+	achieveWordSolverDesc: "Win your first Word Guess",
+	achieveWordMasterTitle: "Word Master",
+	achieveWordMasterDesc: "Guess the word in 3 or fewer attempts",
+	// Achievement keys — Sudoku
+	achieveSudokuNoviceTitle: "Sudoku Novice",
+	achieveSudokuNoviceDesc: "Complete your first Sudoku puzzle",
+	achieveSudokuMasterTitle: "Sudoku Master",
+	achieveSudokuMasterDesc: "Solve a hard Sudoku with no hints",
+	// Achievement keys — Snake
+	achieveSnakeCharmerTitle: "Snake Charmer",
+	achieveSnakeCharmerDesc: "Score 20 or more in Snake",
+	// UX — home empty states
+	homeArticlesEmpty: "No articles ready for your flight",
+	homeArticlesEmptyHint: "Visit Explore to save content for offline reading",
+	// UX — games filter empty state
+	gamesFilteredEmpty: "No games match your filters",
+	gamesClearFilters: "Clear filters",
 } as const;

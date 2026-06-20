@@ -971,4 +971,58 @@ gameOddOneOutName: "Finde den Außenseiter",
 	homeWelcomeTitle: "Bereit zu spielen?",
 	homeWelcomeHint: "Alle Spiele funktionieren vollständig offline.",
 	homeWelcomeCta: "Alle Spiele durchsuchen",
+
+	// Word Guess
+	gameWordGuessName: "Wort raten",
+	gameWordGuessDescription: "Errate ein verstecktes Luftfahrt-Wort in 6 Versuchen.",
+	rulesWordGuess: "Errate das 5-buchstabige Luftfahrt-Wort in 6 Versuchen. Nach jedem Versuch färben sich die Kacheln: Grün = richtige Stelle, Gelb = falsche Stelle, Grau = Buchstabe nicht vorhanden.",
+	wgGuess: "Versuch",
+	wgAttemptsLeft: "Verbleibende Versuche: {{count}}",
+	wgNotInWordList: "Wort nicht in der Liste",
+	wgCorrectWord: "Richtiges Wort: {{word}}",
+	wgTypeAWord: "5-buchstabiges Wort eingeben...",
+	wgSubmit: "Bestätigen",
+
+	// Sudoku
+	gameSudokuName: "Sudoku",
+	gameSudokuDescription: "Klassisches 9×9-Sudoku für ruhige Momente an Bord.",
+	rulesSudoku: "Fülle das 9×9-Gitter so aus, dass jede Zeile, Spalte und jedes 3×3-Quadrat die Zahlen 1–9 genau einmal enthält. Tippe auf eine Zelle zum Auswählen, dann gib eine Zahl ein.",
+	sdkHints: "Hinweise",
+	sdkHintsLeft: "Hinweise: {{count}}",
+	sdkTime: "Zeit",
+	sdkDifficulty: "Schwierigkeit",
+	sdkEasy: "Einfach",
+	sdkMedium: "Mittel",
+	sdkHard: "Schwer",
+	sdkCongrats: "Herzlichen Glückwunsch!",
+	sdkSolve: "Lösen",
+	sdkSelectDifficulty: "Schwierigkeit wählen",
+
+	// Snake
+	gameSnakeName: "Schlange",
+	gameSnakeDescription: "Steuere die Schlange und sammle Futter – ein Klassiker für den Flug.",
+	rulesSnake: "Wische, um die Schlange zu steuern. Sammle Futter zum Wachsen und für Punkte. Vermeide Wände und deinen eigenen Körper. Wie lange hältst du durch?",
+	snkScore: "Punkte",
+	snkHighScore: "Highscore",
+	snkGameOver: "Spiel vorbei",
+	snkEatHint: "Futter sammeln zum Wachsen!",
+	snkLength: "Länge",
+
+	// Achievements
+	achieveWordSolverTitle: "Wortlöser",
+	achieveWordSolverDesc: "Löse 3 Worträtsel",
+	achieveWordMasterTitle: "Wortmeister",
+	achieveWordMasterDesc: "Löse 10 Worträtsel",
+	achieveSudokuNoviceTitle: "Sudoku-Neuling",
+	achieveSudokuNoviceDesc: "Schließe 1 Sudoku-Spiel ab",
+	achieveSudokuMasterTitle: "Sudoku-Meister",
+	achieveSudokuMasterDesc: "Schließe 5 Sudoku-Spiele ab",
+	achieveSnakeCharmerTitle: "Schlangenbeschwörer",
+	achieveSnakeCharmerDesc: "Erreiche 10 Punkte bei Schlange",
+
+	// UX
+	homeArticlesEmpty: "Keine Artikel zum Anzeigen",
+	homeArticlesEmptyHint: "Filter ändern oder später wiederkommen.",
+	gamesFilteredEmpty: "Keine Spiele entsprechen dem Filter",
+	gamesClearFilters: "Filter zurücksetzen",
 } as const;

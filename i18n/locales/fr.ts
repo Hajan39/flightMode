@@ -966,4 +966,58 @@ gameOddOneOutName: "L'Intrus",
 	homeWelcomeTitle: "Prêt à jouer ?",
 	homeWelcomeHint: "Tous les jeux fonctionnent hors ligne.",
 	homeWelcomeCta: "Voir tous les jeux",
+
+	// Word Guess
+	gameWordGuessName: "Deviner le mot",
+	gameWordGuessDescription: "Devinez le mot aviation caché en 6 essais.",
+	rulesWordGuess: "Devinez le mot d'aviation de 5 lettres en 6 essais. Après chaque essai les tuiles se colorent : vert = bonne place, jaune = mauvaise place, gris = lettre absente.",
+	wgGuess: "Essai",
+	wgAttemptsLeft: "Essais restants : {{count}}",
+	wgNotInWordList: "Mot absent de la liste",
+	wgCorrectWord: "Mot correct : {{word}}",
+	wgTypeAWord: "Saisir un mot de 5 lettres…",
+	wgSubmit: "Valider",
+
+	// Sudoku
+	gameSudokuName: "Sudoku",
+	gameSudokuDescription: "Sudoku classique 9×9 pour les moments calmes à bord.",
+	rulesSudoku: "Remplissez la grille 9×9 de sorte que chaque ligne, colonne et carré 3×3 contienne les chiffres 1 à 9 exactement une fois. Touchez une cellule pour la sélectionner, puis saisissez un chiffre.",
+	sdkHints: "Indices",
+	sdkHintsLeft: "Indices : {{count}}",
+	sdkTime: "Temps",
+	sdkDifficulty: "Difficulté",
+	sdkEasy: "Facile",
+	sdkMedium: "Moyen",
+	sdkHard: "Difficile",
+	sdkCongrats: "Félicitations !",
+	sdkSolve: "Résoudre",
+	sdkSelectDifficulty: "Choisir la difficulté",
+
+	// Snake
+	gameSnakeName: "Serpent",
+	gameSnakeDescription: "Guidez le serpent et ramassez de la nourriture – un classique pour le vol.",
+	rulesSnake: "Glissez pour diriger le serpent. Ramassez de la nourriture pour grandir et marquer des points. Évitez les murs et votre propre corps. Jusqu'où irez-vous ?",
+	snkScore: "Score",
+	snkHighScore: "Meilleur score",
+	snkGameOver: "Fin de partie",
+	snkEatHint: "Mangez pour grandir !",
+	snkLength: "Longueur",
+
+	// Achievements
+	achieveWordSolverTitle: "Solveur de mots",
+	achieveWordSolverDesc: "Résoudre 3 énigmes de mots",
+	achieveWordMasterTitle: "Maître des mots",
+	achieveWordMasterDesc: "Résoudre 10 énigmes de mots",
+	achieveSudokuNoviceTitle: "Novice en sudoku",
+	achieveSudokuNoviceDesc: "Terminer 1 partie de sudoku",
+	achieveSudokuMasterTitle: "Maître du sudoku",
+	achieveSudokuMasterDesc: "Terminer 5 parties de sudoku",
+	achieveSnakeCharmerTitle: "Charmeur de serpents",
+	achieveSnakeCharmerDesc: "Atteindre 10 points au serpent",
+
+	// UX
+	homeArticlesEmpty: "Aucun article à afficher",
+	homeArticlesEmptyHint: "Essayez de changer le filtre ou revenez plus tard.",
+	gamesFilteredEmpty: "Aucun jeu ne correspond au filtre",
+	gamesClearFilters: "Effacer les filtres",
 } as const;

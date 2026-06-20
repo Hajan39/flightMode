@@ -932,4 +932,58 @@ gameOddOneOutName: "仲間外れ探し",
 	homeWelcomeTitle: "プレイしますか？",
 	homeWelcomeHint: "すべてのゲームはオフラインで動作します。",
 	homeWelcomeCta: "ゲームをすべて見る",
+
+	// Word Guess
+	gameWordGuessName: "ワード当て",
+	gameWordGuessDescription: "6回の試行で隠れた航空用語を当てよう。",
+	rulesWordGuess: "6回の試行で5文字の航空用語を当てよう。試行ごとにタイルが色付く：緑＝正しい位置、黄＝違う位置、灰＝文字なし。",
+	wgGuess: "試行",
+	wgAttemptsLeft: "残り試行回数：{{count}}",
+	wgNotInWordList: "単語リストにありません",
+	wgCorrectWord: "正解：{{word}}",
+	wgTypeAWord: "5文字の単語を入力...",
+	wgSubmit: "確定",
+
+	// Sudoku
+	gameSudokuName: "数独",
+	gameSudokuDescription: "機内のひとときに楽しむクラシックな9×9数独。",
+	rulesSudoku: "9×9のグリッドを埋めて、各行・列・3×3ブロックに1〜9の数字が1回ずつ入るようにしよう。セルをタップして選択し、数字を入力。",
+	sdkHints: "ヒント",
+	sdkHintsLeft: "ヒント：{{count}}",
+	sdkTime: "時間",
+	sdkDifficulty: "難易度",
+	sdkEasy: "かんたん",
+	sdkMedium: "ふつう",
+	sdkHard: "むずかしい",
+	sdkCongrats: "おめでとう！",
+	sdkSolve: "解く",
+	sdkSelectDifficulty: "難易度を選択",
+
+	// Snake
+	gameSnakeName: "スネーク",
+	gameSnakeDescription: "スネークを操って食べ物を集めよう – フライトのクラシック。",
+	rulesSnake: "スワイプでスネークを操作。食べ物を集めて成長しポイントを獲得。壁と自分の体に当たらないように。どこまで続けられる？",
+	snkScore: "スコア",
+	snkHighScore: "ハイスコア",
+	snkGameOver: "ゲームオーバー",
+	snkEatHint: "食べ物を集めて成長しよう！",
+	snkLength: "長さ",
+
+	// Achievements
+	achieveWordSolverTitle: "ワードソルバー",
+	achieveWordSolverDesc: "ワードパズルを3問解く",
+	achieveWordMasterTitle: "ワードマスター",
+	achieveWordMasterDesc: "ワードパズルを10問解く",
+	achieveSudokuNoviceTitle: "数独初心者",
+	achieveSudokuNoviceDesc: "数独を1ゲームクリア",
+	achieveSudokuMasterTitle: "数独マスター",
+	achieveSudokuMasterDesc: "数独を5ゲームクリア",
+	achieveSnakeCharmerTitle: "スネークチャーマー",
+	achieveSnakeCharmerDesc: "スネークで10点獲得",
+
+	// UX
+	homeArticlesEmpty: "表示する記事がありません",
+	homeArticlesEmptyHint: "フィルターを変更するか、後でもう一度確認してください。",
+	gamesFilteredEmpty: "フィルターに一致するゲームがありません",
+	gamesClearFilters: "フィルターをクリア",
 } as const;

@@ -920,4 +920,58 @@ gameOddOneOutName: "找不同",
 	homeWelcomeTitle: "准备好玩了吗？",
 	homeWelcomeHint: "所有游戏均可离线游玩。",
 	homeWelcomeCta: "浏览所有游戏",
+
+	// Word Guess
+	gameWordGuessName: "猜单词",
+	gameWordGuessDescription: "6次机会猜出隐藏的航空单词。",
+	rulesWordGuess: "在6次尝试内猜出5个字母的航空单词。每次尝试后方块会变色：绿色=位置正确，黄色=位置错误，灰色=字母不存在。",
+	wgGuess: "尝试",
+	wgAttemptsLeft: "剩余次数：{{count}}",
+	wgNotInWordList: "单词不在列表中",
+	wgCorrectWord: "正确答案：{{word}}",
+	wgTypeAWord: "输入5个字母的单词...",
+	wgSubmit: "确认",
+
+	// Sudoku
+	gameSudokuName: "数独",
+	gameSudokuDescription: "经典9×9数独，适合在机上享受宁静时光。",
+	rulesSudoku: "填写9×9网格，使每行、每列和每个3×3方块都包含1到9的数字各一次。点击单元格选中它，然后输入数字。",
+	sdkHints: "提示",
+	sdkHintsLeft: "提示：{{count}}",
+	sdkTime: "时间",
+	sdkDifficulty: "难度",
+	sdkEasy: "简单",
+	sdkMedium: "中等",
+	sdkHard: "困难",
+	sdkCongrats: "恭喜！",
+	sdkSolve: "解答",
+	sdkSelectDifficulty: "选择难度",
+
+	// Snake
+	gameSnakeName: "贪吃蛇",
+	gameSnakeDescription: "控制蛇收集食物——飞行中的经典游戏。",
+	rulesSnake: "滑动控制蛇的方向。收集食物让蛇变长并获得分数。避开墙壁和自己的身体。你能坚持多久？",
+	snkScore: "分数",
+	snkHighScore: "最高分",
+	snkGameOver: "游戏结束",
+	snkEatHint: "吃食物让蛇变长！",
+	snkLength: "长度",
+
+	// Achievements
+	achieveWordSolverTitle: "单词解谜者",
+	achieveWordSolverDesc: "解出3个单词谜题",
+	achieveWordMasterTitle: "单词大师",
+	achieveWordMasterDesc: "解出10个单词谜题",
+	achieveSudokuNoviceTitle: "数独新手",
+	achieveSudokuNoviceDesc: "完成1局数独",
+	achieveSudokuMasterTitle: "数独大师",
+	achieveSudokuMasterDesc: "完成5局数独",
+	achieveSnakeCharmerTitle: "驯蛇师",
+	achieveSnakeCharmerDesc: "在贪吃蛇中达到10分",
+
+	// UX
+	homeArticlesEmpty: "暂无文章",
+	homeArticlesEmptyHint: "尝试更改筛选条件或稍后再来。",
+	gamesFilteredEmpty: "没有游戏符合筛选条件",
+	gamesClearFilters: "清除筛选",
 } as const;

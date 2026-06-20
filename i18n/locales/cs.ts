@@ -946,4 +946,58 @@ gameOddOneOutName: "Hledej Vetřelce",
 	homeWelcomeTitle: "Připraveni hrát?",
 	homeWelcomeHint: "Všechny hry fungují offline – bez internetu.",
 	homeWelcomeCta: "Procházet hry",
+
+	// Word Guess
+	gameWordGuessName: "Hádej slovo",
+	gameWordGuessDescription: "Uhodni skryté letecké slovo za 6 pokusů.",
+	rulesWordGuess: "Uhodni 5písmenné letecké slovo za 6 pokusů. Po každém pokusu se dlaždice zbarví: zelená = správné místo, žlutá = špatné místo, šedá = písmeno se nevyskytuje.",
+	wgGuess: "Pokus",
+	wgAttemptsLeft: "Zbývající pokusy: {{count}}",
+	wgNotInWordList: "Slovo není v seznamu",
+	wgCorrectWord: "Správné slovo: {{word}}",
+	wgTypeAWord: "Zadej 5písmenné slovo...",
+	wgSubmit: "Potvrdit",
+
+	// Sudoku
+	gameSudokuName: "Sudoku",
+	gameSudokuDescription: "Klasické sudoku 9×9 pro klidné chvíle na palubě.",
+	rulesSudoku: "Vyplň mřížku 9×9 tak, aby každý řádek, sloupec a čtverec 3×3 obsahoval čísla 1–9 právě jednou. Klepnutím na buňku ji vyber, pak zadej číslo.",
+	sdkHints: "Nápovědy",
+	sdkHintsLeft: "Nápovědy: {{count}}",
+	sdkTime: "Čas",
+	sdkDifficulty: "Obtížnost",
+	sdkEasy: "Lehká",
+	sdkMedium: "Střední",
+	sdkHard: "Těžká",
+	sdkCongrats: "Gratulujeme!",
+	sdkSolve: "Vyřešit",
+	sdkSelectDifficulty: "Vyber obtížnost",
+
+	// Snake
+	gameSnakeName: "Had",
+	gameSnakeDescription: "Ovládej hada a sbírej jídlo – klasika pro let.",
+	rulesSnake: "Tahem ovládej hada. Sbírej jídlo pro růst a body. Nenaraz do stěn ani do vlastního těla. Jak dlouho vydržíš?",
+	snkScore: "Skóre",
+	snkHighScore: "Nejlepší skóre",
+	snkGameOver: "Konec hry",
+	snkEatHint: "Sbírej jídlo pro růst!",
+	snkLength: "Délka",
+
+	// Achievements
+	achieveWordSolverTitle: "Řešitel slov",
+	achieveWordSolverDesc: "Vyřeš 3 slovní hádanky",
+	achieveWordMasterTitle: "Mistr slov",
+	achieveWordMasterDesc: "Vyřeš 10 slovních hádanek",
+	achieveSudokuNoviceTitle: "Nováček sudoku",
+	achieveSudokuNoviceDesc: "Dokonči 1 hru sudoku",
+	achieveSudokuMasterTitle: "Mistr sudoku",
+	achieveSudokuMasterDesc: "Dokonči 5 her sudoku",
+	achieveSnakeCharmerTitle: "Hadí kouzelník",
+	achieveSnakeCharmerDesc: "Dosáhni skóre 10 v hadovi",
+
+	// UX
+	homeArticlesEmpty: "Žádné články k zobrazení",
+	homeArticlesEmptyHint: "Zkus změnit filtr nebo se vrať později.",
+	gamesFilteredEmpty: "Žádné hry neodpovídají filtru",
+	gamesClearFilters: "Zrušit filtry",
 } as const;

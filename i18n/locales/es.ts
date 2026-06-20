@@ -955,4 +955,58 @@ gameOddOneOutName: "El Intruso",
 	homeWelcomeTitle: "¿Listo para jugar?",
 	homeWelcomeHint: "Todos los juegos funcionan sin conexión.",
 	homeWelcomeCta: "Ver todos los juegos",
+
+	// Word Guess
+	gameWordGuessName: "Adivina la palabra",
+	gameWordGuessDescription: "Adivina la palabra aviación oculta en 6 intentos.",
+	rulesWordGuess: "Adivina la palabra de aviación de 5 letras en 6 intentos. Tras cada intento las fichas se colorean: verde = lugar correcto, amarillo = lugar incorrecto, gris = la letra no está.",
+	wgGuess: "Intento",
+	wgAttemptsLeft: "Intentos restantes: {{count}}",
+	wgNotInWordList: "La palabra no está en la lista",
+	wgCorrectWord: "Palabra correcta: {{word}}",
+	wgTypeAWord: "Escribe una palabra de 5 letras...",
+	wgSubmit: "Confirmar",
+
+	// Sudoku
+	gameSudokuName: "Sudoku",
+	gameSudokuDescription: "Sudoku clásico 9×9 para los momentos tranquilos a bordo.",
+	rulesSudoku: "Rellena la cuadrícula 9×9 de modo que cada fila, columna y cuadrado 3×3 contenga los números del 1 al 9 exactamente una vez. Toca una celda para seleccionarla y luego introduce un número.",
+	sdkHints: "Pistas",
+	sdkHintsLeft: "Pistas: {{count}}",
+	sdkTime: "Tiempo",
+	sdkDifficulty: "Dificultad",
+	sdkEasy: "Fácil",
+	sdkMedium: "Media",
+	sdkHard: "Difícil",
+	sdkCongrats: "¡Felicidades!",
+	sdkSolve: "Resolver",
+	sdkSelectDifficulty: "Elige la dificultad",
+
+	// Snake
+	gameSnakeName: "Serpiente",
+	gameSnakeDescription: "Controla la serpiente y recoge comida – un clásico para el vuelo.",
+	rulesSnake: "Desliza para controlar la serpiente. Recoge comida para crecer y ganar puntos. Evita las paredes y tu propio cuerpo. ¿Cuánto aguantarás?",
+	snkScore: "Puntuación",
+	snkHighScore: "Récord",
+	snkGameOver: "Fin del juego",
+	snkEatHint: "¡Come para crecer!",
+	snkLength: "Longitud",
+
+	// Achievements
+	achieveWordSolverTitle: "Resolvedor de palabras",
+	achieveWordSolverDesc: "Resuelve 3 acertijos de palabras",
+	achieveWordMasterTitle: "Maestro de palabras",
+	achieveWordMasterDesc: "Resuelve 10 acertijos de palabras",
+	achieveSudokuNoviceTitle: "Novato en sudoku",
+	achieveSudokuNoviceDesc: "Completa 1 juego de sudoku",
+	achieveSudokuMasterTitle: "Maestro del sudoku",
+	achieveSudokuMasterDesc: "Completa 5 juegos de sudoku",
+	achieveSnakeCharmerTitle: "Encantador de serpientes",
+	achieveSnakeCharmerDesc: "Consigue 10 puntos en serpiente",
+
+	// UX
+	homeArticlesEmpty: "No hay artículos para mostrar",
+	homeArticlesEmptyHint: "Intenta cambiar el filtro o vuelve más tarde.",
+	gamesFilteredEmpty: "Ningún juego coincide con el filtro",
+	gamesClearFilters: "Borrar filtros",
 } as const;

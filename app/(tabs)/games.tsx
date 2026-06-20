@@ -9,7 +9,7 @@ import type { GameCategory, GameConfig, GamePlayMode } from "@/types/game";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useMemo, useState } from "react";
-import { FlatList, ScrollView, StyleSheet, TextInput } from "react-native";
+import { FlatList, Pressable, ScrollView, StyleSheet, TextInput } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 type GameListItem = GameConfig & {
@@ -67,6 +67,9 @@ export default function GamesScreen() {
 	);
 	const [activeIntent, setActiveIntent] = useState<GameIntent>("all");
 	const [search, setSearch] = useState("");
+
+	const hasActiveFilter =
+		activeIntent !== "all" || activeCategory !== "all" || search.trim().length > 0;
 
 	const intentFilters: Array<{
 		key: GameIntent;
@@ -261,10 +264,28 @@ export default function GamesScreen() {
 						lightColor="transparent"
 						darkColor="transparent"
 					>
-						<Text style={styles.emptyTitle}>{t("gamesEmptyTitle")}</Text>
-						<Text style={[styles.emptyHint, { color: theme.mutedText }]}>
-							{t("gamesEmptyHint")}
+						<Text style={styles.emptyTitle}>
+							{hasActiveFilter ? t("gamesFilteredEmpty") : t("gamesEmptyTitle")}
 						</Text>
+						{!hasActiveFilter && (
+							<Text style={[styles.emptyHint, { color: theme.mutedText }]}>
+								{t("gamesEmptyHint")}
+							</Text>
+						)}
+						{hasActiveFilter && (
+							<Pressable
+								onPress={() => {
+									setSearch("");
+									setActiveCategory("all");
+									setActiveIntent("all");
+								}}
+								style={[styles.clearFiltersBtn, { backgroundColor: theme.tint }]}
+							>
+								<Text style={styles.clearFiltersBtnText}>
+									{t("gamesClearFilters")}
+								</Text>
+							</Pressable>
+						)}
 					</View>
 				}
 				renderItem={({ item, index }) => {
@@ -569,5 +590,17 @@ const styles = StyleSheet.create({
 	emptyHint: {
 		fontSize: 13,
 		marginTop: 4,
+	},
+	clearFiltersBtn: {
+		marginTop: 12,
+		paddingHorizontal: 18,
+		paddingVertical: 9,
+		borderRadius: 20,
+		alignSelf: "flex-start",
+	},
+	clearFiltersBtnText: {
+		color: "#fff",
+		fontSize: 13,
+		fontWeight: "700",
 	},
 });
