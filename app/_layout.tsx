@@ -1,8 +1,3 @@
-import {
-	DarkTheme,
-	DefaultTheme,
-	ThemeProvider,
-} from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import "expo-insights";
 import { Stack, useRouter, useSegments } from "expo-router";
@@ -21,6 +16,7 @@ import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
 import NotificationBootstrap from "@/components/NotificationBootstrap";
 import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
 import { useOTAUpdate } from "@/hooks/useOTAUpdate";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
@@ -62,21 +58,17 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-	const colorScheme = useColorScheme();
-
 	return (
 		<AnalyticsProvider>
-			<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-				<SafeAreaProvider>
-					<AnalyticsBootstrap />
-					<NetworkStatusBootstrap />
-					<NotificationBootstrap />
-					<ContentSyncBootstrap />
-					<ImageSyncBootstrap />
-					<RootStack />
-					<AchievementToast />
-				</SafeAreaProvider>
-			</ThemeProvider>
+			<SafeAreaProvider>
+				<AnalyticsBootstrap />
+				<NetworkStatusBootstrap />
+				<NotificationBootstrap />
+				<ContentSyncBootstrap />
+				<ImageSyncBootstrap />
+				<RootStack />
+				<AchievementToast />
+			</SafeAreaProvider>
 		</AnalyticsProvider>
 	);
 }
@@ -86,6 +78,8 @@ function RootStack() {
 	const router = useRouter();
 	const segments = useSegments();
 	const isFirstLaunch = useSettingsStore((s) => s.isFirstLaunch);
+	const colorScheme = useColorScheme();
+	const theme = Colors[colorScheme];
 
 	useOTAUpdate(t as (key: string) => string);
 
@@ -100,7 +94,13 @@ function RootStack() {
 	}, [isFirstLaunch, segments]);
 
 	return (
-		<Stack>
+		<Stack
+			screenOptions={{
+				headerStyle: { backgroundColor: theme.card },
+				headerTintColor: theme.text,
+				headerShadowVisible: false,
+			}}
+		>
 			<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 			<Stack.Screen
 				name="onboarding"
