@@ -79,7 +79,7 @@ function RootStack() {
 	const segments = useSegments();
 	const isFirstLaunch = useSettingsStore((s) => s.isFirstLaunch);
 	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
+	const theme = Colors[colorScheme] ?? Colors.light;
 
 	useOTAUpdate(t as (key: string) => string);
 

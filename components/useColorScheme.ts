@@ -6,10 +6,10 @@ export type ResolvedScheme = "light" | "dark" | "crazy";
 export const useColorScheme = (): ResolvedScheme => {
 	const themeMode = useSettingsStore((s) => s.themeMode);
 	const coreScheme = useColorSchemeCore();
-	const systemScheme = coreScheme === "unspecified" ? "light" : coreScheme;
+	const systemScheme: ResolvedScheme = coreScheme === "dark" ? "dark" : "light";
 
-	if (themeMode === "system") {
+	if (!themeMode || themeMode === "system") {
 		return systemScheme;
 	}
-	return themeMode;
+	return themeMode as ResolvedScheme;
 };
