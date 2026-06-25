@@ -27,11 +27,15 @@ export default function GameScreen() {
 			}
 		: { title: t("stackGame") };
 
-	const GameComponent = useMemo(
-		() => (game ? game.loadComponent() : null),
+	const GameComponent = useMemo(() => {
+		if (!game) return null;
+		try {
+			return game.loadComponent();
+		} catch {
+			return null;
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[game?.id],
-	);
+	}, [game?.id]);
 
 	useEffect(() => {
 		if (!game) return;

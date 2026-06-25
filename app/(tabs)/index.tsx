@@ -65,9 +65,12 @@ export default function HomeScreen() {
 	const remainingH = Math.floor(remainingRounded / 60);
 	const remainingM = remainingRounded % 60;
 	const arrivalTime = flight
-		? new Date(
-				flight.departureTime + flight.duration * 60000,
-			).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+		? (() => {
+				const d = new Date(flight.departureTime + flight.duration * 60000);
+				const h = String(d.getHours()).padStart(2, "0");
+				const m = String(d.getMinutes()).padStart(2, "0");
+				return `${h}:${m}`;
+			})()
 		: null;
 	const preferredCategoriesEn =
 		remaining > 120
