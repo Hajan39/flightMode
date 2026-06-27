@@ -12,6 +12,7 @@ import { captureAnalyticsEvent } from "@/utils/analytics";
 export function logFatalError(
 	error: unknown,
 	source: "render" | "global" | "promise",
+	context?: string,
 ) {
 	const err =
 		error instanceof Error ? error : new Error(String(error ?? "unknown"));
@@ -25,14 +26,17 @@ export function logFatalError(
 		.join("\n")
 		.slice(0, 1000);
 
+	const where = context ? `${source}:${context}` : source;
+
 	// Goes to Android logcat → visible in Play Console Pre-launch report.
 	// Tagged so it is easy to grep for in device logs.
 	// eslint-disable-next-line no-console
-	console.error(`[FlightMode][fatal][${source}] ${name}: ${message}\n${stackHead}`);
+	console.error(`[FlightMode][fatal][${where}] ${name}: ${message}\n${stackHead}`);
 
 	try {
 		captureAnalyticsEvent("app_error", {
 			source,
+			context: context ?? null,
 			error_name: name,
 			error_message: message,
 			stack_head: stackHead,

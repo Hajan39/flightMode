@@ -16,6 +16,7 @@ import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
 import NotificationBootstrap from "@/components/NotificationBootstrap";
 import RootErrorBoundary from "@/components/RootErrorBoundary";
+import SafeBoundary from "@/components/SafeBoundary";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useOTAUpdate } from "@/hooks/useOTAUpdate";
@@ -64,16 +65,33 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+	// Each non-visual bootstrap is isolated: if one throws while mounting it is
+	// logged and skipped (renders null) instead of crashing app startup. The
+	// navigation tree (RootStack) is intentionally left to the root
+	// ErrorBoundary so a navigation crash shows the recoverable retry screen
+	// rather than a blank screen.
 	return (
 		<AnalyticsProvider>
 			<SafeAreaProvider>
-				<AnalyticsBootstrap />
-				<NetworkStatusBootstrap />
-				<NotificationBootstrap />
-				<ContentSyncBootstrap />
-				<ImageSyncBootstrap />
+				<SafeBoundary name="AnalyticsBootstrap">
+					<AnalyticsBootstrap />
+				</SafeBoundary>
+				<SafeBoundary name="NetworkStatusBootstrap">
+					<NetworkStatusBootstrap />
+				</SafeBoundary>
+				<SafeBoundary name="NotificationBootstrap">
+					<NotificationBootstrap />
+				</SafeBoundary>
+				<SafeBoundary name="ContentSyncBootstrap">
+					<ContentSyncBootstrap />
+				</SafeBoundary>
+				<SafeBoundary name="ImageSyncBootstrap">
+					<ImageSyncBootstrap />
+				</SafeBoundary>
 				<RootStack />
-				<AchievementToast />
+				<SafeBoundary name="AchievementToast">
+					<AchievementToast />
+				</SafeBoundary>
 			</SafeAreaProvider>
 		</AnalyticsProvider>
 	);
