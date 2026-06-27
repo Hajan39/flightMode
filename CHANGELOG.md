@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Stability: added a custom root error boundary plus a global JS error handler. Uncaught errors are now logged to Android logcat (visible in the Play Console pre-launch report) and to analytics (`app_error`, technical fields only), and the user sees a recoverable "Something went wrong / Try again" screen instead of a silent crash.
+
 - Added Word Guess game (`word-guess`): Wordle-style 5-letter word game — guess the hidden word in 6 tries, with green/yellow/gray tile feedback and a full QWERTY keyboard. Daily word picked from an aviation + common-word pool. Scoring: 1000 − attempt×150. Brain/medium/4 min, daily challenge eligible.
 - Added Sudoku game (`sudoku`): classic 9×9 number puzzle with 15 pre-verified puzzles across easy/medium/hard difficulties. Cell highlighting, conflict detection in red, 3 hints per game, wall-clock timer, and pause support. Scoring: max(500, 5000 − elapsed×8 − hints×200). Brain/hard/12 min.
 - Added Snake game (`snake`): 18×18 grid — steer the snake with a D-pad, eat food to grow, avoid walls and your own tail. Speed increases with score. Reflex/medium/5 min.

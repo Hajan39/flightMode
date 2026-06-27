@@ -15,17 +15,23 @@ import ContentSyncBootstrap from "@/components/ContentSyncBootstrap";
 import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
 import NotificationBootstrap from "@/components/NotificationBootstrap";
+import RootErrorBoundary from "@/components/RootErrorBoundary";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useOTAUpdate } from "@/hooks/useOTAUpdate";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { installGlobalErrorHandler } from "@/utils/errorLogging";
 
-export {
-	// Catch any errors thrown by the Layout component.
-	ErrorBoundary,
-} from "expo-router";
+// Record uncaught JS errors that a React error boundary cannot catch
+// (async callbacks, native module init). Installed at module load — before
+// any component renders — so the earliest startup errors are captured.
+installGlobalErrorHandler();
+
+// Custom error boundary (logs to logcat + analytics, shows a recoverable
+// screen) replacing expo-router's default silent boundary.
+export const ErrorBoundary = RootErrorBoundary;
 
 export const unstable_settings = {
 	initialRouteName: "(tabs)",
