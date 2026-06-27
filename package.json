@@ -12,6 +12,7 @@
     "ota:production": "node ./scripts/eas-update-from-changelog.js production",
     "eas:build:android": "npx eas-cli build --platform android --profile production",
     "deploy:android": "npx eas-cli build --platform android --auto-submit --profile production",
+    "deploy:internal": "npx eas-cli build --platform android --profile production --auto-submit-with-profile internal",
     "eas:submit:android": "npx eas-cli submit --platform android --profile production"
   },
   "dependencies": {
