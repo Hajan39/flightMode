@@ -1,6 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dimensions, Pressable, StyleSheet } from "react-native";
 import { View as RNView } from "react-native";
+import Animated, {
+	FadeInDown,
+	ZoomIn,
+	useAnimatedStyle,
+	useSharedValue,
+	withRepeat,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
@@ -100,6 +109,43 @@ function getWinCells(board: Board): Set<string> {
 		}
 	}
 	return cells;
+}
+
+function Disc({ color, isWin }: { color: string; isWin: boolean }) {
+	const scale = useSharedValue(1);
+
+	useEffect(() => {
+		if (isWin) {
+			scale.value = withRepeat(
+				withSequence(
+					withTiming(1.12, { duration: 200 }),
+					withTiming(1, { duration: 200 }),
+				),
+				3,
+			);
+		} else {
+			scale.value = 1;
+		}
+	}, [isWin, scale]);
+
+	const animatedStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: scale.value }],
+	}));
+
+	return (
+		<Animated.View
+			entering={FadeInDown.duration(160)}
+			style={[
+				styles.disc,
+				{
+					backgroundColor: color,
+					borderColor: isWin ? "#fff" : "transparent",
+					borderWidth: isWin ? 2 : 0,
+				},
+				animatedStyle,
+			]}
+		/>
+	);
 }
 
 export default function DuelConnect4Game() {
@@ -272,6 +318,7 @@ export default function DuelConnect4Game() {
 						<Pressable
 							key={`col-${c}`}
 							style={styles.colBtn}
+							hitSlop={{ top: 14, bottom: 14, left: 0, right: 0 }}
 							onPress={() => handleDrop(c)}
 						>
 							{!roundOver && !matchWinner && (
@@ -298,17 +345,15 @@ export default function DuelConnect4Game() {
 										styles.cell,
 										{
 											backgroundColor:
-												cell === 0
-													? colorScheme === "dark"
-														? "#0d1236"
-														: "#e8eaf6"
-													: PLAYER_COLORS[cell as Player],
-											borderColor: isWin ? "#fff" : "transparent",
-											borderWidth: isWin ? 2 : 0,
+												colorScheme === "dark" ? "#0d1236" : "#e8eaf6",
 										},
 									]}
 									onPress={() => handleDrop(c)}
-								/>
+								>
+									{cell !== 0 && (
+										<Disc color={PLAYER_COLORS[cell as Player]} isWin={isWin} />
+									)}
+								</Pressable>
 							);
 						})}
 					</RNView>
@@ -391,6 +436,13 @@ const styles = StyleSheet.create({
 	},
 	row: { flexDirection: "row", gap: GAP, marginBottom: GAP },
 	cell: {
+		width: CELL_SIZE,
+		height: CELL_SIZE,
+		borderRadius: CELL_SIZE / 2,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	disc: {
 		width: CELL_SIZE,
 		height: CELL_SIZE,
 		borderRadius: CELL_SIZE / 2,

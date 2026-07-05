@@ -1,5 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Dimensions, Pressable, ScrollView, StyleSheet } from "react-native";
+import Animated, {
+	FadeIn,
+	ZoomIn,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -74,6 +82,12 @@ export default function DuelDiceGame() {
 	const [isRolling, setIsRolling] = useState(false);
 	const [roundResult, setRoundResult] = useState<string | null>(null);
 
+	const dieScale = useSharedValue(1);
+	const dieRotate = useSharedValue(0);
+	const dieAnimatedStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: dieScale.value }, { rotate: `${dieRotate.value}deg` }],
+	}));
+
 	const rollingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
 		null,
 	);
@@ -104,6 +118,16 @@ export default function DuelDiceGame() {
 	const finalizeRoll = (finalRoll: number) => {
 		setRollingValue(finalRoll);
 		setIsRolling(false);
+
+		dieScale.value = withSequence(
+			withTiming(1.12, { duration: 90 }),
+			withTiming(1, { duration: 130 }),
+		);
+		dieRotate.value = withSequence(
+			withTiming(-6, { duration: 60 }),
+			withTiming(6, { duration: 70 }),
+			withTiming(0, { duration: 70 }),
+		);
 
 		const pIdx = activePlayer;
 		setTotals((prev) => {
@@ -399,19 +423,24 @@ export default function DuelDiceGame() {
 									},
 								]}
 							>
-								<Text
-									style={[
-										styles.rollBadgeText,
-										{
-											color:
-												rolled !== null || isActive
-													? playerColor
-													: theme.mutedText,
-										},
-									]}
-								>
-									{rolled ?? "-"}
-								</Text>
+								{rolled !== null ? (
+									<Animated.Text
+										key={`rolled-${rolled}`}
+										entering={ZoomIn.duration(160)}
+										style={[styles.rollBadgeText, { color: playerColor }]}
+									>
+										{rolled}
+									</Animated.Text>
+								) : (
+									<Text
+										style={[
+											styles.rollBadgeText,
+											{ color: isActive ? playerColor : theme.mutedText },
+										]}
+									>
+										-
+									</Text>
+								)}
 							</View>
 							<Text style={[styles.scoreCardMeta, { color: theme.mutedText }]}>
 								{roundWins[i]} {t("diceWinsLabel")} · {totals[i]}{" "}
@@ -423,13 +452,14 @@ export default function DuelDiceGame() {
 			</ScrollView>
 
 			<View style={styles.dieArea}>
-				<View
+				<Animated.View
 					style={[
 						styles.dieFace,
 						{
 							borderColor: isRolling ? activeColor : theme.border,
 							backgroundColor: theme.elevated,
 						},
+						dieAnimatedStyle,
 					]}
 				>
 					{Array.from({ length: 9 }).map((_, i) => (
@@ -444,8 +474,10 @@ export default function DuelDiceGame() {
 							) : null}
 						</View>
 					))}
-				</View>
-				<Text
+				</Animated.View>
+				<Animated.Text
+					key={roundResult ?? `round-${round}`}
+					entering={FadeIn.duration(180)}
 					style={[
 						styles.roundLabel,
 						{ color: roundResult ? theme.tint : theme.mutedText },
@@ -453,7 +485,7 @@ export default function DuelDiceGame() {
 				>
 					{roundResult ??
 						t("diceRoundOf", { round: Math.min(round, ROUNDS), total: ROUNDS })}
-				</Text>
+				</Animated.Text>
 			</View>
 
 			<Pressable

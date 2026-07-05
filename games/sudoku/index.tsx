@@ -1,9 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { type ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import {
+  Animated,
   Pressable,
   StyleSheet,
+  type StyleProp,
   useWindowDimensions,
   View as RNView,
+  type ViewStyle,
 } from "react-native";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -479,6 +482,47 @@ function formatTime(seconds: number): string {
 }
 
 // ---------------------------------------------------------------------------
+// Animated pressables
+// ---------------------------------------------------------------------------
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+/** Pressable with a subtle press-in bounce (numpad keys). */
+function BouncyPressable({
+  style,
+  disabled,
+  onPress,
+  children,
+}: {
+  style?: StyleProp<ViewStyle>;
+  disabled?: boolean;
+  onPress?: () => void;
+  children?: ReactNode;
+}) {
+  const scale = useRef(new Animated.Value(1)).current;
+
+  const springTo = (toValue: number) =>
+    Animated.spring(scale, {
+      toValue,
+      damping: 14,
+      stiffness: 320,
+      useNativeDriver: true,
+    }).start();
+
+  return (
+    <AnimatedPressable
+      onPress={onPress}
+      disabled={disabled}
+      onPressIn={() => springTo(0.88)}
+      onPressOut={() => springTo(1)}
+      style={[style, { transform: [{ scale }] }]}
+    >
+      {children}
+    </AnimatedPressable>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
@@ -507,6 +551,33 @@ export default function SudokuGame() {
   // Wall-clock timer refs
   const startTimeRef = useRef<number>(0);
   const pausedAccumulatedRef = useRef<number>(0);
+
+  // ── Animations ──────────────────────────────────────────────────────────
+  const selectPulse = useRef(new Animated.Value(1)).current;
+  const gridShake = useRef(new Animated.Value(0)).current;
+
+  // Subtle pop when a cell becomes selected
+  useEffect(() => {
+    if (selectedCell === null) return;
+    selectPulse.setValue(0.85);
+    Animated.spring(selectPulse, {
+      toValue: 1,
+      damping: 13,
+      stiffness: 300,
+      useNativeDriver: true,
+    }).start();
+  }, [selectedCell, selectPulse]);
+
+  // Horizontal shake on invalid entry
+  const triggerShake = useCallback(() => {
+    gridShake.setValue(0);
+    Animated.sequence([
+      Animated.timing(gridShake, { toValue: 6, duration: 40, useNativeDriver: true }),
+      Animated.timing(gridShake, { toValue: -6, duration: 60, useNativeDriver: true }),
+      Animated.timing(gridShake, { toValue: 4, duration: 60, useNativeDriver: true }),
+      Animated.timing(gridShake, { toValue: 0, duration: 40, useNativeDriver: true }),
+    ]).start();
+  }, [gridShake]);
 
   // ── Timer ───────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -592,6 +663,7 @@ export default function SudokuGame() {
 
         const newErrors = computeErrors(next, solution);
         setErrors(newErrors);
+        if (newErrors.has(selectedCell)) triggerShake();
 
         const won = next.every((v, i) => v === solution[i]);
         if (won) {
@@ -612,7 +684,7 @@ export default function SudokuGame() {
         return next;
       });
     },
-    [phase, selectedCell, clues, solution, elapsedSeconds, hintsUsed, haptic, updateProgress],
+    [phase, selectedCell, clues, solution, elapsedSeconds, hintsUsed, haptic, updateProgress, triggerShake],
   );
 
   // ── Erase ────────────────────────────────────────────────────────────────
@@ -850,7 +922,7 @@ export default function SudokuGame() {
       </RNView>
 
       {/* ── Grid ── */}
-      <RNView
+      <Animated.View
         style={[
           styles.grid,
           {
@@ -858,6 +930,7 @@ export default function SudokuGame() {
             borderColor: theme.text,
             borderTopWidth: 2,
             borderLeftWidth: 2,
+            transform: [{ translateX: gridShake }],
           },
         ]}
       >
@@ -894,7 +967,7 @@ export default function SudokuGame() {
           const borderBottomWidth = getCellBorderBottom(idx);
 
           return (
-            <Pressable
+            <AnimatedPressable
               key={idx}
               onPress={() => handleCellPress(idx)}
               disabled={isClue || !isInteractive}
@@ -910,6 +983,7 @@ export default function SudokuGame() {
                   borderRightWidth === 2 ? theme.text : theme.border,
                 borderBottomColor:
                   borderBottomWidth === 2 ? theme.text : theme.border,
+                transform: isSelected ? [{ scale: selectPulse }] : undefined,
               }}
             >
               {value !== 0 ? (
@@ -923,15 +997,15 @@ export default function SudokuGame() {
                   {value}
                 </Text>
               ) : null}
-            </Pressable>
+            </AnimatedPressable>
           );
         })}
-      </RNView>
+      </Animated.View>
 
       {/* ── Numpad ── */}
       <RNView style={styles.numpad}>
         {([1, 2, 3, 4, 5, 6, 7, 8, 9] as const).map((n) => (
-          <Pressable
+          <BouncyPressable
             key={n}
             onPress={() => handleNumberInput(n)}
             disabled={!isInteractive || selectedCell === null}
@@ -945,11 +1019,11 @@ export default function SudokuGame() {
             ]}
           >
             <Text style={[styles.numBtnText, { color: theme.text }]}>{n}</Text>
-          </Pressable>
+          </BouncyPressable>
         ))}
 
         {/* Erase button */}
-        <Pressable
+        <BouncyPressable
           onPress={handleErase}
           disabled={!isInteractive || selectedCell === null}
           style={[
@@ -962,7 +1036,7 @@ export default function SudokuGame() {
           ]}
         >
           <Text style={[styles.numBtnText, { color: theme.mutedText }]}>✕</Text>
-        </Pressable>
+        </BouncyPressable>
       </RNView>
 
       {/* ── Hint button ── */}

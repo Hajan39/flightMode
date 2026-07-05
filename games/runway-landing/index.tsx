@@ -10,6 +10,13 @@ import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import Animated, {
+	ZoomIn,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 const ROUND_COUNT = 8;
 const RUNWAY_WIDTH = 280;
@@ -84,6 +91,12 @@ export default function RunwayLandingGame() {
 	const feedbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const speed = getSpeed(round);
 
+	// Touchdown feedback: subtle pulse on the runway card
+	const runwayPulse = useSharedValue(1);
+	const runwayPulseStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: runwayPulse.value }],
+	}));
+
 	useEffect(() => {
 		if (finished || paused) return;
 		intervalRef.current = setInterval(() => {
@@ -149,6 +162,11 @@ export default function RunwayLandingGame() {
 		else if (quality === "miss") haptic.error();
 		else haptic.heavy();
 
+		runwayPulse.value = withSequence(
+			withTiming(quality === "miss" ? 0.98 : 1.03, { duration: 90 }),
+			withTiming(1, { duration: 140 }),
+		);
+
 		setScore(nextScore);
 		setLastPoints(points);
 		setLastQuality(quality);
@@ -208,23 +226,26 @@ export default function RunwayLandingGame() {
 				</View>
 			</View>
 
-			<View
+			<Animated.View
 				style={[
 					styles.runwayCard,
 					{ backgroundColor: theme.card, borderColor: theme.border },
+					runwayPulseStyle,
 				]}
 			>
 				{/* Quality feedback or hint */}
 				{lastQuality ? (
-					<Text
-						style={[
-							styles.qualityText,
-							{ color: getQualityColor(lastQuality) },
-						]}
-					>
-						{qualityKey(lastQuality)}{" "}
-						<Text style={styles.qualityPoints}>+{lastPoints}</Text>
-					</Text>
+					<Animated.View entering={ZoomIn.duration(150)}>
+						<Text
+							style={[
+								styles.qualityText,
+								{ color: getQualityColor(lastQuality) },
+							]}
+						>
+							{qualityKey(lastQuality)}{" "}
+							<Text style={styles.qualityPoints}>+{lastPoints}</Text>
+						</Text>
+					</Animated.View>
 				) : (
 					<Text style={[styles.helper, { color: theme.mutedText }]}>
 						{t("rlTapHint")}
@@ -255,7 +276,7 @@ export default function RunwayLandingGame() {
 				<Text style={[styles.speedHint, { color: theme.mutedText }]}>
 					{"▸".repeat(Math.min(round, ROUND_COUNT))}
 				</Text>
-			</View>
+			</Animated.View>
 
 			<Pressable
 				style={[

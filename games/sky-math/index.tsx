@@ -8,8 +8,16 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import Animated, {
+	Easing,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withSpring,
+	withTiming,
+} from "react-native-reanimated";
 
 type Question = {
 	text: string;

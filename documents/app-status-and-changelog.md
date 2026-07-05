@@ -23,7 +23,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - tabs: Home, Games, Explore, Relax
 - profile + achievements + local stats
 - settings kompaktne seskupene na app preferences, article sync a support
-- 30 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Word Guess, Sudoku, Snake)
+- 31 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Cabin Lights, Word Guess, Sudoku, Snake)
 - 44 clanku v `data/content.json`
 - content lokalizace kompletni pro `en/cs/de`
 - UI translation keys jsou kompletni napric vsemi podporovanymi jazyky (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`)
@@ -129,7 +129,16 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
-## 2026-06-20
+## 2026-07-05
+
+- pridana nova hra Cabin Lights (`cabin-lights`): Lights Out puzzle — klepnutim prepinas svetlo + sousedy, cil zhasnout vse; 5 kol, deska roste 3×3 → 5×5, scramble generovany nahodnymi tapy (vzdy resitelne); skore 100/kolo + bonus za efektivitu tahu; brain/medium/5 min; prelozeno do vsech 12 jazyku
+- game quality audit vsech 30 stavajicich her (logika, temata, UX) — opraveny nalezene chyby:
+  - Whack-a-Mole: pauza nezastavovala herni cas (wall-clock deadliny se ted posouvaji o delku pauzy)
+  - Air Traffic Control a 2048: dvojite volani `updateProgress()` pri soubehu dvou end-game podminek (pridan synchronni guard)
+  - Cross Air Radar: hardcoded ceske "sestreleno" ve vsech jazycich → novy lokalizovany klic `arShipDown`
+  - Connect 4 a Hangman: male dotykove plochy (18px / 34px) rozsireny pres `hitSlop` na ≥44px bez zmeny layoutu
+- fix: `expo-notifications` se v Expo Go uz nenacita (SDK 53+ tam push odstranil) — lazy require + guard, dev/prod buildy beze zmeny
+- zbyvajici nalezy auditu (hardcoded barvy mimo theme paletu v ~15 hrach, male klavesy ve word-guess) zapsany do todo-and-improvements.md
 
 - pridany 3 nove hry: Word Guess (Wordle-style, denni vyzva), Sudoku (9×9, 15 hádanek easy/medium/hard), Snake (18×18, D-pad ovladani)
 - pridano 5 novych achievementu: Word Solver, Word Master, Sudoku Novice, Sudoku Master, Snake Charmer

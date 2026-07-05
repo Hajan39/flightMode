@@ -499,6 +499,7 @@ export default function DuelHangmanGame() {
 												opacity: used ? 0.5 : 1,
 											},
 										]}
+										hitSlop={{ top: 3, bottom: 3, left: 2, right: 2 }}
 										onPress={() => handleGuess(letter)}
 										disabled={used}
 									>

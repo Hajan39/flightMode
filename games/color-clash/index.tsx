@@ -96,6 +96,11 @@ export default function ColorClashGame() {
 
 	// Animated progress bar (1 → 0 over ROUND_MS)
 	const progressAnim = useRef(new Animated.Value(1)).current;
+	// Word pop-in on each new round
+	const wordAnim = useRef(new Animated.Value(1)).current;
+	// Feedback: pulse (scale) on correct, shake (translateX) on wrong/miss
+	const feedbackPulseAnim = useRef(new Animated.Value(1)).current;
+	const feedbackShakeAnim = useRef(new Animated.Value(0)).current;
 
 	// ── Refs to avoid stale closures ───────────────────────────────────────────
 	const roundRef = useRef(0);
@@ -169,6 +174,15 @@ export default function ColorClashGame() {
 			setFeedbackKind(null);
 			setPhaseSync("playing");
 
+			// Word pop-in
+			wordAnim.setValue(0);
+			Animated.spring(wordAnim, {
+				toValue: 1,
+				speed: 24,
+				bounciness: 8,
+				useNativeDriver: true,
+			}).start();
+
 			// Animate progress bar 1 → 0
 			progressAnim.setValue(1);
 			const anim = Animated.timing(progressAnim, {
@@ -199,8 +213,52 @@ export default function ColorClashGame() {
 				}
 			}, ROUND_MS);
 		},
-		[haptic, progressAnim, setPhaseSync, showFeedback],
+		[haptic, progressAnim, wordAnim, setPhaseSync, showFeedback],
 	);
+
+	// ── Feedback flash animation: pulse on correct/skip, shake on wrong/miss ──
+	useEffect(() => {
+		if (!feedbackKind) return;
+		if (feedbackKind === "correct" || feedbackKind === "skip") {
+			feedbackPulseAnim.setValue(1);
+			Animated.sequence([
+				Animated.timing(feedbackPulseAnim, {
+					toValue: 1.12,
+					duration: 100,
+					useNativeDriver: true,
+				}),
+				Animated.timing(feedbackPulseAnim, {
+					toValue: 1,
+					duration: 130,
+					useNativeDriver: true,
+				}),
+			]).start();
+		} else {
+			feedbackShakeAnim.setValue(0);
+			Animated.sequence([
+				Animated.timing(feedbackShakeAnim, {
+					toValue: -8,
+					duration: 50,
+					useNativeDriver: true,
+				}),
+				Animated.timing(feedbackShakeAnim, {
+					toValue: 8,
+					duration: 60,
+					useNativeDriver: true,
+				}),
+				Animated.timing(feedbackShakeAnim, {
+					toValue: -4,
+					duration: 50,
+					useNativeDriver: true,
+				}),
+				Animated.timing(feedbackShakeAnim, {
+					toValue: 0,
+					duration: 40,
+					useNativeDriver: true,
+				}),
+			]).start();
+		}
+	}, [feedbackKind, feedbackPulseAnim, feedbackShakeAnim]);
 
 	// ── Handle player tap ──────────────────────────────────────────────────────
 	const handleTap = () => {

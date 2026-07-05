@@ -12,6 +12,13 @@ import type { GameProgressUpdate } from "@/types/game";
 import { Ionicons } from "@expo/vector-icons";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import Animated, {
+	FadeInDown,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 const ROUND_SECONDS = 40;
 
@@ -98,6 +105,13 @@ export default function CabinCallGame() {
 	const scoreRef = useRef(0);
 	const endTimeRef = useRef<number | null>(Date.now() + ROUND_SECONDS * 1000);
 
+	// Feedback animation: subtle pulse on correct, shake on wrong
+	const cardScale = useSharedValue(1);
+	const cardShake = useSharedValue(0);
+	const cardFeedbackStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: cardScale.value }, { translateX: cardShake.value }],
+	}));
+
 	useEffect(() => {
 		if (phase !== "running") return;
 
@@ -168,6 +182,10 @@ export default function CabinCallGame() {
 
 		if (choice.id === target.id) {
 			haptic.success();
+			cardScale.value = withSequence(
+				withTiming(1.04, { duration: 100 }),
+				withTiming(1, { duration: 130 }),
+			);
 			setScore((prev) => {
 				const next = prev + 10 + Math.min(10, streak * 2);
 				scoreRef.current = next;
@@ -176,6 +194,11 @@ export default function CabinCallGame() {
 			setStreak((prev) => prev + 1);
 		} else {
 			haptic.error();
+			cardShake.value = withSequence(
+				withTiming(-6, { duration: 50 }),
+				withTiming(6, { duration: 50 }),
+				withTiming(0, { duration: 50 }),
+			);
 			setScore((prev) => {
 				const next = Math.max(0, prev - 6);
 				scoreRef.current = next;
@@ -230,18 +253,25 @@ export default function CabinCallGame() {
 				</RNView>
 			</RNView>
 
-			<RNView
+			<Animated.View
 				style={[
 					styles.targetCard,
 					{ backgroundColor: theme.card, borderColor: theme.border },
+					cardFeedbackStyle,
 				]}
 			>
 				<Text style={[styles.targetHint, { color: theme.mutedText }]}>
 					{t("ccCrewSays")}
 				</Text>
-				<Ionicons name={target.icon as never} size={40} color={theme.tint} />
-				<Text style={styles.targetText}>{t(target.labelKey)}</Text>
-			</RNView>
+				<Animated.View
+					key={target.id}
+					entering={FadeInDown.duration(180)}
+					style={styles.targetContent}
+				>
+					<Ionicons name={target.icon as never} size={40} color={theme.tint} />
+					<Text style={styles.targetText}>{t(target.labelKey)}</Text>
+				</Animated.View>
+			</Animated.View>
 
 			<RNView style={styles.choiceList}>
 				{choices.map((choice) => (
@@ -333,6 +363,7 @@ const styles = StyleSheet.create({
 		gap: 8,
 	},
 	targetHint: { fontSize: 13, fontWeight: "600" },
+	targetContent: { alignItems: "center", gap: 8 },
 	targetText: {
 		fontSize: 20,
 		fontWeight: "800",

@@ -3,12 +3,20 @@ import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useFadeIn } from "@/hooks/useFadeIn";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
+import Animated, {
+	Easing,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 const TOTAL_ROUNDS = 5;
 const WAIT_MIN_MS = 1200;
@@ -31,6 +39,33 @@ function encodeReactionScore(bestMs: number) {
 
 function decodeReactionScore(score: number) {
 	return Math.max(0, REACTION_SCORE_BASE - score);
+}
+
+/** Extracted so useFadeIn re-runs on every mount of the banner */
+function TooEarlyBanner({
+	theme,
+	title,
+	message,
+}: {
+	theme: (typeof Colors)[keyof typeof Colors];
+	title: string;
+	message: string;
+}) {
+	const fadeIn = useFadeIn(0, 200);
+	return (
+		<Animated.View
+			style={[
+				styles.tooEarlyBanner,
+				{ backgroundColor: theme.card, borderColor: "#cc4b5a" },
+				fadeIn,
+			]}
+		>
+			<Text style={[styles.tooEarlyTitle, { color: "#cc4b5a" }]}>{title}</Text>
+			<Text style={[styles.tooEarlyMsg, { color: theme.mutedText }]}>
+				{message}
+			</Text>
+		</Animated.View>
+	);
 }
 
 export default function ReactionGame() {
@@ -56,6 +91,34 @@ export default function ReactionGame() {
 	const tooEarlyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const startedAtRef = useRef<number | null>(null);
 	const waitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	const padScale = useSharedValue(1);
+	const lastStatScale = useSharedValue(1);
+
+	const padAnimStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: padScale.value }],
+	}));
+	const lastStatAnimStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: lastStatScale.value }],
+	}));
+
+	// Quick pulse when the pad turns "go"
+	useEffect(() => {
+		if (phase !== "ready") return;
+		padScale.value = withSequence(
+			withTiming(1.03, { duration: 90, easing: Easing.out(Easing.quad) }),
+			withTiming(1, { duration: 130, easing: Easing.out(Easing.quad) }),
+		);
+	}, [phase, padScale]);
+
+	// Pop the "last" reaction time when a new result lands
+	useEffect(() => {
+		if (lastMs === null) return;
+		lastStatScale.value = withSequence(
+			withTiming(1.15, { duration: 90, easing: Easing.out(Easing.quad) }),
+			withTiming(1, { duration: 130, easing: Easing.out(Easing.quad) }),
+		);
+	}, [lastMs, lastStatScale]);
 
 	useEffect(() => {
 		return () => {
@@ -167,9 +230,11 @@ export default function ReactionGame() {
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("reactionLast")}
 					</Text>
-					<Text style={[styles.statValue, { color: theme.text }]}>
-						{lastMs === null ? "—" : `${lastMs}`}
-					</Text>
+					<Animated.View style={lastStatAnimStyle}>
+						<Text style={[styles.statValue, { color: theme.text }]}>
+							{lastMs === null ? "—" : `${lastMs}`}
+						</Text>
+					</Animated.View>
 					{lastMs !== null ? (
 						<Text style={[styles.statUnit, { color: theme.mutedText }]}>
 							{t("reactionMs")}
@@ -199,35 +264,29 @@ export default function ReactionGame() {
 
 			{/* ── Too early banner ── */}
 			{tooEarly && (
-				<View
-					style={[
-						styles.tooEarlyBanner,
-						{ backgroundColor: theme.card, borderColor: "#cc4b5a" },
-					]}
-				>
-					<Text style={[styles.tooEarlyTitle, { color: "#cc4b5a" }]}>
-						{t("reactionTooEarlyTitle")}
-					</Text>
-					<Text style={[styles.tooEarlyMsg, { color: theme.mutedText }]}>
-						{t("reactionTooEarlyMsg")}
-					</Text>
-				</View>
+				<TooEarlyBanner
+					theme={theme}
+					title={t("reactionTooEarlyTitle")}
+					message={t("reactionTooEarlyMsg")}
+				/>
 			)}
 
 			{/* ── Main pad ── */}
-			<Pressable
-				style={[styles.pad, { backgroundColor: padColor }]}
-				onPress={handleMainPress}
-			>
-				<Text style={[styles.padText, { color: padTextColor }]}>
-					{padLabel}
-				</Text>
-				{round > 0 && (
-					<Text style={[styles.roundHint, { color: padTextColor }]}>
-						{round}/{TOTAL_ROUNDS}
+			<Animated.View style={[styles.padWrap, padAnimStyle]}>
+				<Pressable
+					style={[styles.pad, { backgroundColor: padColor }]}
+					onPress={handleMainPress}
+				>
+					<Text style={[styles.padText, { color: padTextColor }]}>
+						{padLabel}
 					</Text>
-				)}
-			</Pressable>
+					{round > 0 && (
+						<Text style={[styles.roundHint, { color: padTextColor }]}>
+							{round}/{TOTAL_ROUNDS}
+						</Text>
+					)}
+				</Pressable>
+			</Animated.View>
 
 			{finalScore !== null && (
 				<GameResult
@@ -268,6 +327,7 @@ const styles = StyleSheet.create({
 	statUnit: { fontSize: 13, fontWeight: "600", marginTop: -4 },
 	statDivider: { width: 1, height: 56 },
 	/* ── Pad ── */
+	padWrap: { flex: 1 },
 	pad: {
 		flex: 1,
 		borderRadius: 24,

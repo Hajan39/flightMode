@@ -137,6 +137,17 @@ export const gameRegistry: GameDefinition[] = [
 		loadComponent: () => require("@/games/odd-one-out").default,
 	},
 	{
+		id: "cabin-lights",
+		titleKey: "gameCabinLightsName",
+		descriptionKey: "gameCabinLightsDescription",
+		rulesKey: "rulesCabinLights",
+		estimatedTime: 5,
+		icon: "bulb-outline",
+		category: "brain",
+		difficulty: "medium",
+		loadComponent: () => require("@/games/cabin-lights").default,
+	},
+	{
 		id: "runway-landing",
 		titleKey: "gameRunwayLandingName",
 		descriptionKey: "gameRunwayLandingDescription",

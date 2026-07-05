@@ -6,6 +6,7 @@ import Animated, {
 	LinearTransition,
 	useAnimatedStyle,
 	useSharedValue,
+	withSequence,
 	withTiming,
 } from "react-native-reanimated";
 
@@ -244,6 +245,7 @@ export default function AirTrafficControlGame() {
 		null,
 	);
 	const flightIdRef = useRef(1);
+	const gameOverRef = useRef(false);
 	const scoreRef = useRef(0);
 	const missesRef = useRef(0);
 	const pauseStartedAtRef = useRef<number | null>(null);
@@ -256,6 +258,35 @@ export default function AirTrafficControlGame() {
 	useEffect(() => {
 		missesRef.current = misses;
 	}, [misses]);
+
+	/* --- subtle feedback animations (discrete events only) --- */
+	const scoreScale = useSharedValue(1);
+	const heartsShake = useSharedValue(0);
+
+	useEffect(() => {
+		if (score === 0) return;
+		scoreScale.value = withSequence(
+			withTiming(1.18, { duration: 100 }),
+			withTiming(1, { duration: 140 }),
+		);
+	}, [score, scoreScale]);
+
+	useEffect(() => {
+		if (misses === 0) return;
+		heartsShake.value = withSequence(
+			withTiming(-4, { duration: 50 }),
+			withTiming(4, { duration: 50 }),
+			withTiming(-3, { duration: 50 }),
+			withTiming(0, { duration: 50 }),
+		);
+	}, [misses, heartsShake]);
+
+	const scoreStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: scoreScale.value }],
+	}));
+	const heartsStyle = useAnimatedStyle(() => ({
+		transform: [{ translateX: heartsShake.value }],
+	}));
 
 	const spawnInterval = getSpawnInterval(level);
 	const maxQueueSize = getMaxQueueSize(level);
@@ -315,7 +346,8 @@ export default function AirTrafficControlGame() {
 				if (lostThisTick > 0) {
 					setMisses((currentMisses) => {
 						const nextMisses = currentMisses + lostThisTick;
-						if (nextMisses >= MAX_MISSES) {
+						if (nextMisses >= MAX_MISSES && !gameOverRef.current) {
+							gameOverRef.current = true;
 							setGameOver(true);
 							setProgressInfo(
 								updateProgress("air-traffic-control", scoreRef.current),
@@ -354,6 +386,7 @@ export default function AirTrafficControlGame() {
 
 	const restart = () => {
 		flightIdRef.current = 1;
+		gameOverRef.current = false;
 		setFlights([]);
 		setScore(0);
 		setLanded(0);
@@ -394,7 +427,8 @@ export default function AirTrafficControlGame() {
 			haptic.error();
 			setMisses((currentMisses) => {
 				const nextMisses = currentMisses + 1;
-				if (nextMisses >= MAX_MISSES) {
+				if (nextMisses >= MAX_MISSES && !gameOverRef.current) {
+					gameOverRef.current = true;
 					setGameOver(true);
 					setProgressInfo(
 						updateProgress("air-traffic-control", scoreRef.current),
@@ -455,14 +489,20 @@ export default function AirTrafficControlGame() {
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("atcScore")}
 					</Text>
-					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
+					<Animated.View style={scoreStyle}>
+						<Text style={[styles.statValue, { color: theme.tint }]}>
+							{score}
+						</Text>
+					</Animated.View>
 				</View>
 				<View style={[styles.statDivider, { backgroundColor: theme.border }]} />
 				<View style={styles.statBlock}>
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("atcMisses")}
 					</Text>
-					<Text style={styles.heartRow}>{missHearts.join(" ")}</Text>
+					<Animated.View style={heartsStyle}>
+						<Text style={styles.heartRow}>{missHearts.join(" ")}</Text>
+					</Animated.View>
 				</View>
 			</View>
 

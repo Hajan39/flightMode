@@ -10,8 +10,15 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet, View as RNView, useWindowDimensions } from "react-native";
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withSequence,
+  withTiming,
+} from "react-native-reanimated";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -193,6 +200,78 @@ function isGameOver(grid: Grid): boolean {
 }
 
 // ---------------------------------------------------------------------------
+// Tile (animated cell)
+// ---------------------------------------------------------------------------
+
+function Tile({
+  value,
+  cellSize,
+  borderColor,
+}: {
+  value: number;
+  cellSize: number;
+  borderColor: string;
+}) {
+  const scale = useSharedValue(1);
+  const prevValueRef = useRef(value);
+
+  useEffect(() => {
+    const prev = prevValueRef.current;
+    prevValueRef.current = value;
+    if (value === 0 || value === prev) return;
+    if (prev === 0) {
+      // Tile appeared in this cell (new tile or slid in): quick pop-in
+      scale.value = 0.6;
+      scale.value = withTiming(1, { duration: 140, easing: Easing.out(Easing.quad) });
+    } else if (value > prev) {
+      // Cell value grew: merge pulse
+      scale.value = withSequence(
+        withTiming(1.15, { duration: 100, easing: Easing.out(Easing.quad) }),
+        withTiming(1, { duration: 110, easing: Easing.in(Easing.quad) }),
+      );
+    }
+  }, [value, scale]);
+
+  const animStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
+  const [bgColor, textColor] = getTileColors(value);
+  const isTransparent = value === 0;
+
+  return (
+    <Animated.View
+      style={[
+        styles.cell,
+        {
+          width: cellSize,
+          height: cellSize,
+          borderRadius: Radius.sm,
+          backgroundColor: isTransparent ? "transparent" : bgColor,
+          borderWidth: isTransparent ? 1 : 0,
+          borderColor,
+        },
+        animStyle,
+      ]}
+    >
+      {value !== 0 ? (
+        <Text
+          style={[
+            styles.cellText,
+            {
+              color: textColor,
+              fontSize: getTileFontSize(value),
+            },
+          ]}
+        >
+          {value}
+        </Text>
+      ) : null}
+    </Animated.View>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
@@ -218,6 +297,8 @@ export default function TwentyFortyEightGame() {
 
   // Track whether we've already triggered a win to avoid double-recording
   const winFiredRef = useRef(false);
+  // Track whether the game has already ended to avoid double updateProgress
+  const gameOverRef = useRef(false);
 
   // Derived cell size based on screen width
   const gridWidth = screenWidth - Spacing.lg * 2;
@@ -235,11 +316,14 @@ export default function TwentyFortyEightGame() {
     setWinMessage(null);
     setPaused(false);
     winFiredRef.current = false;
+    gameOverRef.current = false;
     setPhase("playing");
   }, []);
 
   const endGame = useCallback(
     (finalScore: number, won: boolean) => {
+      if (gameOverRef.current) return;
+      gameOverRef.current = true;
       const update = updateProgress("twenty-forty-eight", finalScore, { won });
       setResult(update);
       setPhase("over");
@@ -316,40 +400,14 @@ export default function TwentyFortyEightGame() {
       >
         {grid.map((row, rIdx) => (
           <RNView key={rIdx} style={[styles.gridRow, { gap: GAP }]}>
-            {row.map((value, cIdx) => {
-              const [bgColor, textColor] = getTileColors(value);
-              const isTransparent = value === 0;
-              return (
-                <RNView
-                  key={cIdx}
-                  style={[
-                    styles.cell,
-                    {
-                      width: cellSize,
-                      height: cellSize,
-                      borderRadius: Radius.sm,
-                      backgroundColor: isTransparent ? "transparent" : bgColor,
-                      borderWidth: isTransparent ? 1 : 0,
-                      borderColor: theme.border,
-                    },
-                  ]}
-                >
-                  {value !== 0 ? (
-                    <Text
-                      style={[
-                        styles.cellText,
-                        {
-                          color: textColor,
-                          fontSize: getTileFontSize(value),
-                        },
-                      ]}
-                    >
-                      {value}
-                    </Text>
-                  ) : null}
-                </RNView>
-              );
-            })}
+            {row.map((value, cIdx) => (
+              <Tile
+                key={cIdx}
+                value={value}
+                cellSize={cellSize}
+                borderColor={theme.border}
+              />
+            ))}
           </RNView>
         ))}
       </RNView>

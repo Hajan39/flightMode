@@ -1,12 +1,35 @@
-import * as Notifications from "expo-notifications";
+import Constants, { ExecutionEnvironment } from "expo-constants";
 import { Platform } from "react-native";
 
 const FLIGHT_REMINDER_CHANNEL_ID = "flight-reminders";
 const FLIGHT_REMINDER_KIND = "flight_ready";
 
+// expo-notifications was removed from Expo Go on Android in SDK 53 —
+// even importing the module logs a runtime error there. Notifications are
+// optional, so we skip the whole subsystem in Expo Go and only load the
+// module lazily in development/production builds.
+const isExpoGo =
+	Constants.executionEnvironment === ExecutionEnvironment.StoreClient;
+
+export const notificationsSupported = !isExpoGo;
+
+type NotificationsModule = typeof import("expo-notifications");
+
+let cachedModule: NotificationsModule | null | undefined;
+
+function getNotifications(): NotificationsModule | null {
+	if (cachedModule === undefined) {
+		cachedModule = notificationsSupported
+			? // eslint-disable-next-line @typescript-eslint/no-require-imports
+				(require("expo-notifications") as NotificationsModule)
+			: null;
+	}
+	return cachedModule;
+}
+
 let handlerConfigured = false;
 
-function ensureNotificationHandler() {
+function ensureNotificationHandler(Notifications: NotificationsModule) {
 	if (handlerConfigured) return;
 
 	Notifications.setNotificationHandler({
@@ -22,7 +45,10 @@ function ensureNotificationHandler() {
 }
 
 export async function initializeNotifications() {
-	ensureNotificationHandler();
+	const Notifications = getNotifications();
+	if (!Notifications) return;
+
+	ensureNotificationHandler(Notifications);
 
 	if (Platform.OS === "android") {
 		await Notifications.setNotificationChannelAsync(
@@ -35,7 +61,33 @@ export async function initializeNotifications() {
 	}
 }
 
+export function addNotificationResponseListener(
+	onReminderOpened: (reminderKind: string) => void,
+): (() => void) | null {
+	const Notifications = getNotifications();
+	if (!Notifications) return null;
+
+	const subscription = Notifications.addNotificationResponseReceivedListener(
+		(response) => {
+			const data = response.notification.request.content.data;
+			const reminderKind =
+				data && typeof data === "object"
+					? (data as Record<string, unknown>).reminder_kind
+					: undefined;
+
+			if (typeof reminderKind !== "string") return;
+
+			onReminderOpened(reminderKind);
+		},
+	);
+
+	return () => subscription.remove();
+}
+
 export async function requestNotificationPermission() {
+	const Notifications = getNotifications();
+	if (!Notifications) return false;
+
 	const isGranted = (value: unknown) => {
 		if (!value || typeof value !== "object") return false;
 
@@ -58,6 +110,11 @@ export async function requestNotificationPermission() {
 }
 
 export async function scheduleFlightReadyReminder(departureTime: number) {
+	const Notifications = getNotifications();
+	if (!Notifications) {
+		return { scheduled: false as const, reason: "unsupported" as const };
+	}
+
 	await initializeNotifications();
 
 	const hasPermission = await requestNotificationPermission();

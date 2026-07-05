@@ -1,5 +1,12 @@
 ﻿import { useMemo, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import Animated, {
+	FadeInDown,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -309,6 +316,13 @@ export default function QuizGame() {
 	const currentQuestion = questions[currentIndex];
 	const progressFraction = (currentIndex + 1) / questions.length;
 
+	// Feedback animation: subtle pulse on correct, shake on wrong
+	const cardScale = useSharedValue(1);
+	const cardShake = useSharedValue(0);
+	const cardFeedbackStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: cardScale.value }, { translateX: cardShake.value }],
+	}));
+
 	// Shuffle once per question so correct answer isn't always at position [1]
 	const shuffledOptions = useMemo(
 		() => [...currentQuestion.options].sort(() => Math.random() - 0.5),
@@ -323,6 +337,19 @@ export default function QuizGame() {
 			choice === currentQuestion.options[currentQuestion.answerIndex];
 		const nextScore = score + (isCorrect ? 10 : 0);
 		isCorrect ? haptic.success() : haptic.error();
+
+		if (isCorrect) {
+			cardScale.value = withSequence(
+				withTiming(1.03, { duration: 100 }),
+				withTiming(1, { duration: 130 }),
+			);
+		} else {
+			cardShake.value = withSequence(
+				withTiming(-6, { duration: 50 }),
+				withTiming(6, { duration: 50 }),
+				withTiming(0, { duration: 50 }),
+			);
+		}
 
 		setTimeout(() => {
 			if (currentIndex >= questions.length - 1) {
@@ -389,16 +416,19 @@ export default function QuizGame() {
 				</Text>
 			</View>
 
-			<View
+			<Animated.View
+				key={currentIndex}
+				entering={FadeInDown.duration(200)}
 				style={[
 					styles.questionCard,
 					{ backgroundColor: theme.card, borderColor: theme.border },
+					cardFeedbackStyle,
 				]}
 			>
 				<Text style={[styles.questionText, { color: theme.text }]}>
 					{currentQuestion.question}
 				</Text>
-			</View>
+			</Animated.View>
 
 			<View style={styles.options}>
 				{shuffledOptions.map((option) => {

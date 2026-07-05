@@ -1,5 +1,20 @@
-import { useState } from "react";
-import { Dimensions, Pressable, ScrollView, StyleSheet } from "react-native";
+import { useEffect, useState } from "react";
+import {
+	Dimensions,
+	Pressable,
+	ScrollView,
+	StyleSheet,
+	type StyleProp,
+	type TextStyle,
+} from "react-native";
+import Animated, {
+	ZoomIn,
+	useAnimatedStyle,
+	useSharedValue,
+	withRepeat,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -136,6 +151,45 @@ function isBoardFull(board: Board, bounds: Bounds, mode: BoardMode) {
 		rows === GROWING_MAX_SIZE &&
 		cols === GROWING_MAX_SIZE &&
 		Object.keys(board).length >= rows * cols
+	);
+}
+
+function CellMark({
+	value,
+	isWin,
+	style,
+}: {
+	value: Player;
+	isWin: boolean;
+	style: StyleProp<TextStyle>;
+}) {
+	const scale = useSharedValue(1);
+
+	useEffect(() => {
+		if (isWin) {
+			scale.value = withRepeat(
+				withSequence(
+					withTiming(1.15, { duration: 180 }),
+					withTiming(1, { duration: 180 }),
+				),
+				3,
+			);
+		} else {
+			scale.value = 1;
+		}
+	}, [isWin, scale]);
+
+	const animatedStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: scale.value }],
+	}));
+
+	return (
+		<Animated.Text
+			entering={ZoomIn.duration(160)}
+			style={[style, animatedStyle]}
+		>
+			{value}
+		</Animated.Text>
 	);
 }
 
@@ -421,14 +475,25 @@ export default function DuelTicTacToeGame() {
 										]}
 										onPress={() => handlePress(row, col)}
 									>
-										<Text
-											style={[
-												styles.cellText,
-												{ color: textColor, fontSize: cellSize * 0.44 },
-											]}
-										>
-											{value ?? "·"}
-										</Text>
+										{value ? (
+											<CellMark
+												value={value}
+												isWin={isWinCell}
+												style={[
+													styles.cellText,
+													{ color: textColor, fontSize: cellSize * 0.44 },
+												]}
+											/>
+										) : (
+											<Text
+												style={[
+													styles.cellText,
+													{ color: textColor, fontSize: cellSize * 0.44 },
+												]}
+											>
+												·
+											</Text>
+										)}
 									</Pressable>
 								);
 							}),

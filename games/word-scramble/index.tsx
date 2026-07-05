@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Pressable, View as RNView, StyleSheet } from "react-native";
+import { Animated, Pressable, View as RNView, StyleSheet } from "react-native";
+import ReAnimated from "react-native-reanimated";
 
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -9,6 +10,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Shadow, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useAnimatedPress } from "@/hooks/useAnimatedPress";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -70,6 +72,48 @@ type LetterTile = {
   used: boolean;
 };
 
+// ─── Letter tile with press bounce ────────────────────────────────────────────
+
+const AnimatedPressable = ReAnimated.createAnimatedComponent(Pressable);
+
+type ScrambleTileProps = {
+  tile: LetterTile;
+  disabled: boolean;
+  onPress: () => void;
+  theme: (typeof Colors)["light"];
+};
+
+function ScrambleTile({ tile, disabled, onPress, theme }: ScrambleTileProps) {
+  const { onPressIn, onPressOut, animatedStyle } = useAnimatedPress(0.88);
+
+  return (
+    <AnimatedPressable
+      onPress={onPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      disabled={disabled}
+      style={[
+        styles.tile,
+        {
+          backgroundColor: tile.used ? theme.surface : theme.tint,
+          borderColor: tile.used ? theme.border : theme.tint,
+          opacity: tile.used ? 0.3 : 1,
+        },
+        animatedStyle,
+      ]}
+    >
+      <Text
+        style={[
+          styles.tileLetter,
+          { color: tile.used ? theme.mutedText : "#ffffff" },
+        ]}
+      >
+        {tile.letter}
+      </Text>
+    </AnimatedPressable>
+  );
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function WordScrambleGame() {
@@ -97,6 +141,12 @@ export default function WordScrambleGame() {
   const timerDeadline = useRef<number>(0);
   const pausedTimeRemaining = useRef<number>(ROUND_SECONDS);
   const timerInterval = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // ── Animations ──
+  // New-word tiles pop-in (single container animation)
+  const tilesAnim = useRef(new Animated.Value(1)).current;
+  // Solved-word pulse on the answer row
+  const solvedAnim = useRef(new Animated.Value(1)).current;
 
   // ─── Timer ───────────────────────────────────────────────────────────────────
 
@@ -175,6 +225,36 @@ export default function WordScrambleGame() {
   useEffect(() => {
     return () => stopTimer();
   }, [stopTimer]);
+
+  // New-word tiles pop-in whenever the round (or word list) changes
+  useEffect(() => {
+    if (words.length === 0) return;
+    tilesAnim.setValue(0);
+    Animated.spring(tilesAnim, {
+      toValue: 1,
+      speed: 22,
+      bounciness: 8,
+      useNativeDriver: true,
+    }).start();
+  }, [roundIndex, words, tilesAnim]);
+
+  // Solved-word pulse on the answer row
+  useEffect(() => {
+    if (phase !== "correct-flash") return;
+    solvedAnim.setValue(1);
+    Animated.sequence([
+      Animated.timing(solvedAnim, {
+        toValue: 1.08,
+        duration: 110,
+        useNativeDriver: true,
+      }),
+      Animated.timing(solvedAnim, {
+        toValue: 1,
+        duration: 140,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [phase, solvedAnim]);
 
   // ─── Start game ──────────────────────────────────────────────────────────────
 
@@ -459,35 +539,37 @@ export default function WordScrambleGame() {
       )}
 
       {/* Scrambled letter tiles */}
-      <RNView style={styles.tilesContainer}>
-        {tiles.map((tile) => (
-          <Pressable
-            key={tile.id}
-            onPress={() => handleTileTap(tile.id)}
-            disabled={tile.used || phase !== "playing"}
-            style={[
-              styles.tile,
+      <Animated.View
+        style={[
+          styles.tilesContainer,
+          {
+            opacity: tilesAnim,
+            transform: [
               {
-                backgroundColor: tile.used ? theme.surface : theme.tint,
-                borderColor: tile.used ? theme.border : theme.tint,
-                opacity: tile.used ? 0.3 : 1,
+                scale: tilesAnim.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [0.92, 1],
+                }),
               },
-            ]}
-          >
-            <Text
-              style={[
-                styles.tileLetter,
-                { color: tile.used ? theme.mutedText : "#ffffff" },
-              ]}
-            >
-              {tile.letter}
-            </Text>
-          </Pressable>
+            ],
+          },
+        ]}
+      >
+        {tiles.map((tile) => (
+          <ScrambleTile
+            key={tile.id}
+            tile={tile}
+            disabled={tile.used || phase !== "playing"}
+            onPress={() => handleTileTap(tile.id)}
+            theme={theme}
+          />
         ))}
-      </RNView>
+      </Animated.View>
 
       {/* Answer boxes */}
-      <RNView style={styles.answerContainer}>
+      <Animated.View
+        style={[styles.answerContainer, { transform: [{ scale: solvedAnim }] }]}
+      >
         {currentWord.split("").map((_, i) => {
           const filled = answer[i];
           return (
@@ -526,7 +608,7 @@ export default function WordScrambleGame() {
             </RNView>
           );
         })}
-      </RNView>
+      </Animated.View>
 
       {/* Action buttons: Backspace + Skip */}
       <RNView style={styles.actionsRow}>

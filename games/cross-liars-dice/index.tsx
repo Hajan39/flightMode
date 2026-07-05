@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
+import AnimatedPressable from "@/components/AnimatedPressable";
 import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -440,12 +441,13 @@ export default function CrossLiarsDiceGame() {
 
 					{/* Liar button */}
 					{currentBid && lastBidder >= 0 && (
-						<Pressable
+						<AnimatedPressable
+							scaleTo={0.92}
 							onPress={callLiar}
 							style={[styles.liarBtn, { backgroundColor: "#ef5350" }]}
 						>
 							<Text style={styles.liarBtnText}>🤥 {t("ldLiar")}</Text>
-						</Pressable>
+						</AnimatedPressable>
 					)}
 				</View>
 			</ScrollView>
@@ -461,7 +463,11 @@ export default function CrossLiarsDiceGame() {
 				{/* All dice revealed */}
 				{allDice.map((dice, i) =>
 					dice.length > 0 ? (
-						<RNView key={i} style={styles.revealPlayerRow}>
+						<Animated.View
+							key={i}
+							entering={FadeInDown.delay(i * 50).duration(200)}
+							style={styles.revealPlayerRow}
+						>
 							<RNView
 								style={[
 									styles.playerDot,
@@ -475,8 +481,9 @@ export default function CrossLiarsDiceGame() {
 							</Text>
 							<RNView style={styles.diceRow}>
 								{dice.map((d, j) => (
-									<RNView
+									<Animated.View
 										key={j}
+										entering={ZoomIn.delay(i * 50 + j * 30).duration(150)}
 										style={[
 											styles.dieBoxSmall,
 											{
@@ -487,10 +494,10 @@ export default function CrossLiarsDiceGame() {
 										]}
 									>
 										<Text style={styles.dieTextSmall}>{DICE_EMOJI[d]}</Text>
-									</RNView>
+									</Animated.View>
 								))}
 							</RNView>
-						</RNView>
+						</Animated.View>
 					) : null,
 				)}
 

@@ -11,6 +11,13 @@ import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import Animated, {
+	Easing,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 const ROUND_SECONDS = 20;
 
@@ -35,6 +42,16 @@ export default function TapRushGame() {
 	const scoreRef = useRef(0);
 	const endTimeRef = useRef<number | null>(null);
 	const lastTapHapticAtRef = useRef(0);
+
+	const tapAreaScale = useSharedValue(1);
+	const scoreScale = useSharedValue(1);
+
+	const tapAreaAnimStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: tapAreaScale.value }],
+	}));
+	const scoreAnimStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: scoreScale.value }],
+	}));
 
 	useEffect(() => {
 		if (phase !== "running") return;
@@ -81,6 +98,16 @@ export default function TapRushGame() {
 
 		scoreRef.current += 1;
 		setScore(scoreRef.current);
+
+		// Quick bounce on the tap area + score bump
+		tapAreaScale.value = withSequence(
+			withTiming(0.97, { duration: 50, easing: Easing.out(Easing.quad) }),
+			withTiming(1, { duration: 100, easing: Easing.out(Easing.quad) }),
+		);
+		scoreScale.value = withSequence(
+			withTiming(1.18, { duration: 70, easing: Easing.out(Easing.quad) }),
+			withTiming(1, { duration: 120, easing: Easing.out(Easing.quad) }),
+		);
 	};
 
 	const handlePause = () => {
@@ -158,33 +185,39 @@ export default function TapRushGame() {
 					<Text style={[styles.statLabel, { color: theme.mutedText }]}>
 						{t("tapRushScore")}
 					</Text>
-					<Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
+					<Animated.View style={scoreAnimStyle}>
+						<Text style={[styles.statValue, { color: theme.tint }]}>
+							{score}
+						</Text>
+					</Animated.View>
 				</RNView>
 			</RNView>
 
 			{/* ── Main tap area ── */}
-			<Pressable
-				style={[
-					styles.tapArea,
-					{
-						backgroundColor: isRunning ? theme.tint : theme.elevated,
-						borderColor: isRunning ? theme.tint : theme.border,
-					},
-				]}
-				onPressIn={isRunning ? handleTap : startCountdown}
-				disabled={
-					phase === "countdown" || phase === "paused" || phase === "over"
-				}
-			>
-				<Text
+			<Animated.View style={[styles.tapAreaWrap, tapAreaAnimStyle]}>
+				<Pressable
 					style={[
-						styles.tapLabel,
-						{ color: isRunning ? "#fff" : theme.mutedText },
+						styles.tapArea,
+						{
+							backgroundColor: isRunning ? theme.tint : theme.elevated,
+							borderColor: isRunning ? theme.tint : theme.border,
+						},
 					]}
+					onPressIn={isRunning ? handleTap : startCountdown}
+					disabled={
+						phase === "countdown" || phase === "paused" || phase === "over"
+					}
 				>
-					{ctaLabel}
-				</Text>
-			</Pressable>
+					<Text
+						style={[
+							styles.tapLabel,
+							{ color: isRunning ? "#fff" : theme.mutedText },
+						]}
+					>
+						{ctaLabel}
+					</Text>
+				</Pressable>
+			</Animated.View>
 
 			{phase === "countdown" && (
 				<GameCountdown
@@ -267,6 +300,7 @@ const styles = StyleSheet.create({
 	statValue: { fontSize: 40, fontWeight: "900", letterSpacing: -1 },
 	statDivider: { width: 1, height: 50 },
 	/* ── Tap area ── */
+	tapAreaWrap: { flex: 1 },
 	tapArea: {
 		flex: 1,
 		borderRadius: 24,

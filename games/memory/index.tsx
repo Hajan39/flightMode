@@ -2,6 +2,7 @@ import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAnimatedPress } from "@/hooks/useAnimatedPress";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -36,8 +37,10 @@ function FlipCard({
 	onPress: (id: number) => void;
 }) {
 	const rotateY = useSharedValue(0);
+	const scale = useSharedValue(1);
 	const isShowing = item.isFlipped || item.isMatched;
 	const wasShowingRef = useRef(false);
+	const wasMatchedRef = useRef(item.isMatched);
 
 	useEffect(() => {
 		if (isShowing === wasShowingRef.current) return;
@@ -51,8 +54,19 @@ function FlipCard({
 		);
 	}, [isShowing, rotateY]);
 
+	useEffect(() => {
+		if (item.isMatched === wasMatchedRef.current) return;
+		wasMatchedRef.current = item.isMatched;
+		if (!item.isMatched) return;
+		// Small celebratory pulse when the pair is matched
+		scale.value = withSequence(
+			withTiming(1.1, { duration: 110, easing: Easing.out(Easing.quad) }),
+			withTiming(1, { duration: 130, easing: Easing.in(Easing.quad) }),
+		);
+	}, [item.isMatched, scale]);
+
 	const animStyle = useAnimatedStyle(() => ({
-		transform: [{ rotateY: `${rotateY.value}deg` }],
+		transform: [{ rotateY: `${rotateY.value}deg` }, { scale: scale.value }],
 	}));
 
 	const bgColor = item.isMatched
@@ -112,6 +126,7 @@ export default function MemoryGame() {
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const storedBest = useGameStore((s) => s.progress["memory"]?.highScore ?? 0);
 	const haptic = useHaptic();
+	const resetPress = useAnimatedPress();
 	const cardSize = (() => {
 		const horizontalPadding = 40;
 		const gap = 10;
@@ -270,17 +285,21 @@ export default function MemoryGame() {
 			/>
 
 			{/* ── New game ── */}
-			<Pressable
-				style={[
-					styles.resetBtn,
-					{ backgroundColor: theme.card, borderColor: theme.border },
-				]}
-				onPress={resetGame}
-			>
-				<Text style={[styles.resetText, { color: theme.text }]}>
-					{t("newGame")}
-				</Text>
-			</Pressable>
+			<Animated.View style={resetPress.animatedStyle}>
+				<Pressable
+					style={[
+						styles.resetBtn,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPressIn={resetPress.onPressIn}
+					onPressOut={resetPress.onPressOut}
+					onPress={resetGame}
+				>
+					<Text style={[styles.resetText, { color: theme.text }]}>
+						{t("newGame")}
+					</Text>
+				</Pressable>
+			</Animated.View>
 
 			{finalScore !== null && (
 				<GameResult

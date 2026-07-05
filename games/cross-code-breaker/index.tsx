@@ -13,6 +13,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import { useGameStore } from "@/store/useGameStore";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useAnimatedPress } from "@/hooks/useAnimatedPress";
 
 const CODE_LEN = 4;
 const MAX_GUESSES = 10;
@@ -65,6 +66,7 @@ export default function CrossCodeBreakerGame() {
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
+	const submitPress = useAnimatedPress(0.93);
 
 	/* setup */
 	const [playerCount, setPlayerCount] = useState(2);
@@ -216,7 +218,7 @@ export default function CrossCodeBreakerGame() {
 		</RNView>
 	);
 
-	const renderPegs = (bulls: number, cows: number) => {
+	const renderPegs = (bulls: number, cows: number, animate = false) => {
 		const pegs: ("bull" | "cow" | "miss")[] = [];
 		for (let i = 0; i < bulls; i++) pegs.push("bull");
 		for (let i = 0; i < cows; i++) pegs.push("cow");
@@ -224,8 +226,11 @@ export default function CrossCodeBreakerGame() {
 		return (
 			<RNView style={styles.pegRow}>
 				{pegs.map((p, i) => (
-					<RNView
+					<Animated.View
 						key={i}
+						entering={
+							animate ? ZoomIn.delay(i * 40).duration(150) : undefined
+						}
 						style={[
 							styles.peg,
 							{
@@ -494,9 +499,14 @@ export default function CrossCodeBreakerGame() {
 				</RNView>
 
 				{guessInput.length === CODE_LEN && !lastResult && (
-					<Animated.View entering={ZoomIn.duration(200)}>
+					<Animated.View
+						entering={ZoomIn.duration(200)}
+						style={submitPress.animatedStyle}
+					>
 						<Pressable
 							onPress={submitGuess}
+							onPressIn={submitPress.onPressIn}
+							onPressOut={submitPress.onPressOut}
 							style={[styles.primaryBtn, { backgroundColor: pColor }]}
 						>
 							<Text style={styles.primaryBtnText}>{t("cbCheck")}</Text>
@@ -510,7 +520,7 @@ export default function CrossCodeBreakerGame() {
 						entering={ZoomIn.duration(200)}
 						style={styles.resultBox}
 					>
-						{renderPegs(lastResult.bulls, lastResult.cows)}
+						{renderPegs(lastResult.bulls, lastResult.cows, true)}
 						<Text style={[styles.resultSubtext, { color: theme.mutedText }]}>
 							{lastResult.bulls}🎯 {lastResult.cows}🐄
 						</Text>
@@ -539,8 +549,9 @@ export default function CrossCodeBreakerGame() {
 							{t("cbHistory")}
 						</Text>
 						{myHistory.map((entry, idx) => (
-							<RNView
+							<Animated.View
 								key={idx}
+								entering={FadeInDown.duration(200)}
 								style={[
 									styles.historyRow,
 									{ backgroundColor: theme.card, borderColor: theme.border },
@@ -551,7 +562,7 @@ export default function CrossCodeBreakerGame() {
 									{entry.digits.join(" ")}
 								</Text>
 								{renderPegs(entry.bulls, entry.cows)}
-							</RNView>
+							</Animated.View>
 						))}
 					</RNView>
 				)}

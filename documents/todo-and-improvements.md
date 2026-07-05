@@ -25,6 +25,9 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 - vyuzit centralni online/offline stav pro budouci analytics flush debug a Strapi sync gating
 - navazat na novou retention event vrstvu (`app_open_count`, `second_session_started`, `first_session_completed`, `flight_setup_completed`) a postavit nad ni tydne vyhodnocovane D1/D7 dashboardy
 - po nasazeni support CTA vyhodnotit funnel `support_opened -> support_clicked -> support_completed` a upravit copy/umisteni podle konverzi
+- theme sweep napric hrami (nalez z game auditu 2026-07-05): ~15 her pouziva hardcoded barvy mimo theme paletu (typicky #ef5350/#cc4b5a cervene, #fff texty na tint pozadi, kvalita/difficulty barvy v runway-landing, sudoku, snake, word-guess, 2048, flight-path, ATC, sky-defense, minesweeper adjacency, higher-lower, odd-one-out, whack-mole, cabin-call, duel-emoji-find, cross-air-radar) — funkcni, ale nekonzistentni v dark/crazy tematech; zvazit pridani `error`/`errorSurface` tokenu do Colors.ts a jednorazovy sweep
+- word-guess: klavesy ~36px sirky pod 44px minimem — sirku nelze zvetsit bez redesignu radku, zvazit hitSlop nebo vyssi klavesy
+- color-clash: round timer je jednorazovy setTimeout(ROUND_MS) bez wall-clock deadline korekce — hranicni vuci timer rule, nizka priorita
 - rozsireni local reminders z aktualni foundation (3h po flight setupu) na realny pre-flight ritual, az flight setup bude mit bud explicitni departure datetime, nebo offset pred odletem
 - publikovat prvni Strapi article data podle potvrzeneho contractu: `title`, `category`, `body`, `readTime` nebo `read_time`
 - otestovat article sync na realnych Strapi datech; public `find/findOne` uz vraci `200`, ale `/api/articles` je zatim prazdne

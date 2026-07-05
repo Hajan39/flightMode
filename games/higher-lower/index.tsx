@@ -9,6 +9,13 @@ import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet, View as RNView } from "react-native";
+import Animated, {
+	ZoomIn,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 const TOTAL_ROUNDS = 10;
 const MIN_NUM = 1;
@@ -46,6 +53,13 @@ export default function HigherLowerGame() {
 	const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
 		null,
 	);
+
+	// Feedback animation: subtle pulse on correct, shake on wrong
+	const cardScale = useSharedValue(1);
+	const cardShake = useSharedValue(0);
+	const cardFeedbackStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: cardScale.value }, { translateX: cardShake.value }],
+	}));
 
 	const scoreRef = useRef(0);
 	const roundRef = useRef(0);
@@ -89,6 +103,10 @@ export default function HigherLowerGame() {
 
 		if (isCorrect) {
 			haptic.success();
+			cardScale.value = withSequence(
+				withTiming(1.04, { duration: 100 }),
+				withTiming(1, { duration: 130 }),
+			);
 			scoreRef.current += 1;
 			setScore(scoreRef.current);
 			if (guess === "higher") {
@@ -98,6 +116,11 @@ export default function HigherLowerGame() {
 			}
 		} else {
 			haptic.error();
+			cardShake.value = withSequence(
+				withTiming(-6, { duration: 50 }),
+				withTiming(6, { duration: 50 }),
+				withTiming(0, { duration: 50 }),
+			);
 			if (guess === "higher") {
 				setHigherFlash("wrong");
 			} else {
@@ -182,10 +205,11 @@ export default function HigherLowerGame() {
 			</RNView>
 
 			{/* ── Number card ── */}
-			<RNView
+			<Animated.View
 				style={[
 					styles.numberCard,
 					{ backgroundColor: theme.elevated, borderColor: theme.border },
+					cardFeedbackStyle,
 				]}
 			>
 				{phase === "idle" ? (
@@ -199,9 +223,14 @@ export default function HigherLowerGame() {
 					</>
 				) : (
 					<>
-						<Text style={[styles.numberText, { color: theme.text }]}>
-							{currentNumber}
-						</Text>
+						<Animated.View
+							key={`${round}-${currentNumber}`}
+							entering={ZoomIn.duration(150)}
+						>
+							<Text style={[styles.numberText, { color: theme.text }]}>
+								{currentNumber}
+							</Text>
+						</Animated.View>
 						{previousNumber !== null && (
 							<Text style={[styles.previousHint, { color: theme.mutedText }]}>
 								{t("hlPrevious").replace("{{n}}", String(previousNumber))}
@@ -209,7 +238,7 @@ export default function HigherLowerGame() {
 						)}
 					</>
 				)}
-			</RNView>
+			</Animated.View>
 
 			{/* ── Buttons ── */}
 			<RNView style={styles.buttonsRow}>

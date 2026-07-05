@@ -59,6 +59,7 @@ export default function WhackMoleGame() {
 	const moleIdRef = useRef(0);
 	const activeMolesRef = useRef<MoleState[]>([]);
 	const phaseRef = useRef<Phase>("idle");
+	const pauseStartRef = useRef<number | null>(null);
 	const tickIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 	const moleSpawnTimersRef = useRef<Map<number, ReturnType<typeof setTimeout>>>(
 		new Map(),
@@ -236,11 +237,35 @@ export default function WhackMoleGame() {
 	};
 
 	const handlePause = () => {
-		if (phase === "running") setPhase("paused");
+		if (phase !== "running") return;
+		pauseStartRef.current = Date.now();
+		clearAllMoleTimers();
+		setPhase("paused");
 	};
 
 	const handleResume = () => {
-		if (phase === "paused") setPhase("running");
+		if (phase !== "paused") return;
+		const pausedMs =
+			pauseStartRef.current !== null ? Date.now() - pauseStartRef.current : 0;
+		pauseStartRef.current = null;
+		if (endTimeRef.current !== null) endTimeRef.current += pausedMs;
+		// Shift mole deadlines by the pause duration and reschedule their expiry
+		const now = Date.now();
+		const shiftedMoles = activeMolesRef.current.map((m) => ({
+			...m,
+			expiresAt: m.expiresAt + pausedMs,
+		}));
+		shiftedMoles.forEach((mole) => {
+			const expireTimerId = setTimeout(() => {
+				if (phaseRef.current !== "running") return;
+				setActiveMoles((prev) => prev.filter((m) => m.id !== mole.id));
+				// Spawn a replacement after a short gap
+				spawnMole(150);
+			}, Math.max(0, mole.expiresAt - now));
+			moleSpawnTimersRef.current.set(mole.id, expireTimerId);
+		});
+		setActiveMoles(shiftedMoles);
+		setPhase("running");
 	};
 
 	// Clean up on unmount

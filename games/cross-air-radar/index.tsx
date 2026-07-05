@@ -303,7 +303,7 @@ export default function CrossAirRadarGame() {
 				placement.cells.some((cell) => sameCoord(cell, [r, c])),
 			);
 			if (hitPlacement && isShipSunk(next, hitPlacement)) {
-				resultText = `🔥 ${t(SHIP_LABELS[hitPlacement.id])} sestreleno`;
+				resultText = `🔥 ${t(SHIP_LABELS[hitPlacement.id])} — ${t("arShipDown")}`;
 			}
 			setLastResult(resultText);
 			const setHits = currentPlayer === 1 ? setHitsP1 : setHitsP2;
@@ -442,9 +442,11 @@ export default function CrossAirRadarGame() {
 									]}
 								>
 									{content && (
-										<Text style={[styles.cellContent, { color: contentColor }]}>
-											{content}
-										</Text>
+										<Animated.View entering={ZoomIn.duration(180)}>
+											<Text style={[styles.cellContent, { color: contentColor }]}>
+												{content}
+											</Text>
+										</Animated.View>
 									)}
 								</Pressable>
 							);
@@ -465,7 +467,12 @@ export default function CrossAirRadarGame() {
 					entering={SlideInRight.duration(260)}
 					style={styles.passScreen}
 				>
-					<Text style={{ fontSize: 48, marginBottom: 16 }}>🎮</Text>
+					<Animated.Text
+						entering={ZoomIn.delay(80).springify().damping(12)}
+						style={{ fontSize: 48, marginBottom: 16 }}
+					>
+						🎮
+					</Animated.Text>
 					<Text style={styles.title}>{t("passPhone")}</Text>
 					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
 						{t("passPhoneTo", {

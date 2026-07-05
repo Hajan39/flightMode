@@ -9,6 +9,16 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added Cabin Lights game (`cabin-lights`): Lights Out puzzle — tap a cabin light to toggle it and its neighbors, turn everything off to clear the round. 5 rounds with boards growing from 3×3 to 5×5; scrambles are generated from random taps so every puzzle is solvable. Scoring: 100 per round + move-efficiency bonus. Brain/medium/5 min. Fully translated across all 12 supported locales.
+
+### Fixed
+
+- Whack-a-Mole: pausing did not stop the game clock — wall-clock deadlines (round end + mole lifetimes) are now shifted by the pause duration on resume, so paused time no longer counts against the round.
+- Air Traffic Control & 2048: game-over could fire `updateProgress()` twice for a single game (two end conditions racing in the same tick), inflating `timesPlayed` and streaks — both now guard with a synchronous game-over flag.
+- Cross Air Radar: "sunk ship" message showed hardcoded Czech text ("sestreleno") in all 12 languages — replaced with the localized `arShipDown` key.
+- Connect 4 & Hangman: enlarged effective touch targets (column drop buttons ~18px, keyboard keys ~34px) via `hitSlop` to meet the 44px minimum without changing layout.
+- Notifications: `expo-notifications` is now loaded lazily and skipped entirely in Expo Go (SDK 53+ removed push support there), removing the startup error; dev/production builds unaffected.
+
 - Stability: added a custom root error boundary plus a global JS error handler. Uncaught errors are now logged to Android logcat (visible in the Play Console pre-launch report) and to analytics (`app_error`, technical fields only), and the user sees a recoverable "Something went wrong / Try again" screen instead of a silent crash.
 - Stability: each startup bootstrap (analytics, network, notifications, content sync, image sync) and the achievement toast is now isolated in its own error boundary — a failure in one non-critical subsystem is logged (with the subsystem name) and skipped instead of crashing app startup.
 

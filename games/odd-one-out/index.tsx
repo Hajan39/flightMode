@@ -103,6 +103,11 @@ export default function OddOneOutGame() {
 
 	// Animated progress bar (1 → 0)
 	const progressAnim = useRef(new Animated.Value(1)).current;
+	// Grid entrance (fade/scale-in as one container — cheap for up to 20 cells)
+	const gridAnim = useRef(new Animated.Value(1)).current;
+	// Tapped-cell feedback: pulse (scale) + shake (translateX)
+	const cellPulseAnim = useRef(new Animated.Value(1)).current;
+	const cellShakeAnim = useRef(new Animated.Value(0)).current;
 
 	// ── Refs ──────────────────────────────────────────────────────────────────
 	const phaseRef = useRef<Phase>("idle");
@@ -162,6 +167,15 @@ export default function OddOneOutGame() {
 			setRoundData(data);
 			setPhaseSync("playing");
 
+			// New-round grid entrance (single container animation)
+			gridAnim.setValue(0);
+			Animated.spring(gridAnim, {
+				toValue: 1,
+				speed: 24,
+				bounciness: 6,
+				useNativeDriver: true,
+			}).start();
+
 			// Animate progress bar 1 → 0 over round duration
 			const roundMs = getRoundMs(roundNum);
 			progressAnim.setValue(1);
@@ -188,7 +202,7 @@ export default function OddOneOutGame() {
 				}, FEEDBACK_MS);
 			}, Math.max(0, deadline - Date.now()));
 		},
-		[haptic, progressAnim, setPhaseSync, advanceAfterFeedback],
+		[haptic, progressAnim, gridAnim, setPhaseSync, advanceAfterFeedback],
 	);
 
 	// ── Handle cell tap ───────────────────────────────────────────────────────
@@ -207,9 +221,47 @@ export default function OddOneOutGame() {
 			scoreRef.current += 1;
 			setScore(scoreRef.current);
 			setFeedbackKind("correct");
+			// Correct cell pulse
+			cellPulseAnim.setValue(1);
+			Animated.sequence([
+				Animated.timing(cellPulseAnim, {
+					toValue: 1.18,
+					duration: 110,
+					useNativeDriver: true,
+				}),
+				Animated.timing(cellPulseAnim, {
+					toValue: 1,
+					duration: 130,
+					useNativeDriver: true,
+				}),
+			]).start();
 		} else {
 			haptic.error();
 			setFeedbackKind("wrong");
+			// Wrong cell shake
+			cellShakeAnim.setValue(0);
+			Animated.sequence([
+				Animated.timing(cellShakeAnim, {
+					toValue: -6,
+					duration: 50,
+					useNativeDriver: true,
+				}),
+				Animated.timing(cellShakeAnim, {
+					toValue: 6,
+					duration: 60,
+					useNativeDriver: true,
+				}),
+				Animated.timing(cellShakeAnim, {
+					toValue: -3,
+					duration: 50,
+					useNativeDriver: true,
+				}),
+				Animated.timing(cellShakeAnim, {
+					toValue: 0,
+					duration: 40,
+					useNativeDriver: true,
+				}),
+			]).start();
 		}
 
 		setPhaseSync("feedback");
@@ -318,7 +370,23 @@ export default function OddOneOutGame() {
 			) : (
 				<RNView style={styles.gridWrapper}>
 					{roundData && (
-						<RNView style={[styles.gridContainer, { gap: CELL_GAP }]}>
+						<Animated.View
+							style={[
+								styles.gridContainer,
+								{
+									gap: CELL_GAP,
+									opacity: gridAnim,
+									transform: [
+										{
+											scale: gridAnim.interpolate({
+												inputRange: [0, 1],
+												outputRange: [0.94, 1],
+											}),
+										},
+									],
+								},
+							]}
+						>
 							{Array.from({ length: rows }, (_, row) => (
 								<RNView key={row} style={[styles.gridRow, { gap: CELL_GAP }]}>
 									{Array.from({ length: cols }, (_, col) => {
@@ -358,20 +426,28 @@ export default function OddOneOutGame() {
 													},
 												]}
 											>
-												<Text
+												<Animated.Text
 													style={[
 														styles.cellEmoji,
 														{ fontSize: emojiFontSize },
+														isTapped
+															? {
+																	transform: [
+																		{ scale: cellPulseAnim },
+																		{ translateX: cellShakeAnim },
+																	],
+																}
+															: null,
 													]}
 												>
 													{emoji}
-												</Text>
+												</Animated.Text>
 											</Pressable>
 										);
 									})}
 								</RNView>
 							))}
-						</RNView>
+						</Animated.View>
 					)}
 					{phase === "feedback" && feedbackKind === "timeout" && (
 						<RNView

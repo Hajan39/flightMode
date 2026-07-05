@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import Animated, { ZoomIn } from "react-native-reanimated";
 
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -525,7 +526,8 @@ function TowerSprite({ tower }: { tower: Tower }) {
 	const cx = tower.col * CELL;
 	const cy = tower.row * CELL;
 	return (
-		<RNView
+		<Animated.View
+			entering={ZoomIn.duration(200)}
 			style={{
 				position: "absolute",
 				left: cx + 2,
@@ -541,7 +543,7 @@ function TowerSprite({ tower }: { tower: Tower }) {
 			}}
 		>
 			<Text style={{ fontSize: 18 }}>{def.emoji}</Text>
-		</RNView>
+		</Animated.View>
 	);
 }
 

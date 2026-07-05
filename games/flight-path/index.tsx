@@ -6,6 +6,13 @@ import {
 	View as RNView,
 	StyleSheet,
 } from "react-native";
+import Animated, {
+	FadeInDown,
+	useAnimatedStyle,
+	useSharedValue,
+	withSequence,
+	withTiming,
+} from "react-native-reanimated";
 
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -561,6 +568,19 @@ export default function FlightPathGame() {
 		gameOverRef.current = gameOver;
 	}, [gameOver]);
 
+	/* landed-counter pop — fires only on the discrete landing event */
+	const landedScale = useSharedValue(1);
+	useEffect(() => {
+		if (landed === 0) return;
+		landedScale.value = withSequence(
+			withTiming(1.25, { duration: 100 }),
+			withTiming(1, { duration: 140 }),
+		);
+	}, [landed, landedScale]);
+	const landedStyle = useAnimatedStyle(() => ({
+		transform: [{ scale: landedScale.value }],
+	}));
+
 	const onBoardLayout = (e: LayoutChangeEvent) => {
 		const { width, height } = e.nativeEvent.layout;
 		setBoardSize({ w: width, h: height });
@@ -941,7 +961,7 @@ export default function FlightPathGame() {
 					lightColor="transparent"
 					darkColor="transparent"
 				>
-					{PLANE_TYPES.map((pt) => {
+					{PLANE_TYPES.map((pt, i) => {
 						const rwyTag =
 							pt.minRunway === "long"
 								? "L"
@@ -955,7 +975,11 @@ export default function FlightPathGame() {
 									? "flightPathSpeedMedium"
 									: "flightPathSpeedFast";
 						return (
-							<RNView key={pt.key} style={s.typeRowWrap}>
+							<Animated.View
+								key={pt.key}
+								entering={FadeInDown.delay(i * 40).duration(200)}
+								style={s.typeRowWrap}
+							>
 								<RNView
 									style={[s.typeSwatch, { backgroundColor: pt.bodyColor }]}
 								/>
@@ -963,7 +987,7 @@ export default function FlightPathGame() {
 									{pt.label} — {t(speedKey as never)} · x{pt.scoreMul} ·{" "}
 									{t("flightPathRunwayReq", { tag: rwyTag })}
 								</Text>
-							</RNView>
+							</Animated.View>
 						);
 					})}
 				</View>
@@ -1013,9 +1037,11 @@ export default function FlightPathGame() {
 
 			{/* stats */}
 			<View style={s.statsRow}>
-				<Text style={[s.stat, { color: theme.tint }]}>
-					{t("flightPathLanded", { landed })}
-				</Text>
+				<Animated.View style={landedStyle}>
+					<Text style={[s.stat, { color: theme.tint }]}>
+						{t("flightPathLanded", { landed })}
+					</Text>
+				</Animated.View>
 				<Text style={[s.stat, { color: theme.text }]}>
 					{t("flightPathScore", { score })}
 				</Text>
