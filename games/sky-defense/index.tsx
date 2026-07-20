@@ -692,12 +692,36 @@ export default function SkyDefenseGame() {
 	const endedRef = useRef(false);
 	const isGamePaused = paused || showRestartConfirm;
 
+	// Board origin in window coordinates. Tower placement is derived from the
+	// touch's absolute pageX/pageY minus this origin — NOT from the event's
+	// locationX/Y, which is relative to whichever child (enemy, tower, grid
+	// line) was actually under the finger and would land the tower on the
+	// wrong cell when tapping over on-board elements.
+	const boardViewRef = useRef<RNView>(null);
+	const boardOriginRef = useRef({ x: 0, y: 0 });
+	const measureBoard = () => {
+		boardViewRef.current?.measureInWindow((x, y) => {
+			boardOriginRef.current = { x, y };
+		});
+	};
+
+	const cellFromEvent = (e: {
+		nativeEvent: { pageX: number; pageY: number };
+	}) => {
+		const col = Math.floor(
+			(e.nativeEvent.pageX - boardOriginRef.current.x) / CELL,
+		);
+		const row = Math.floor(
+			(e.nativeEvent.pageY - boardOriginRef.current.y) / CELL,
+		);
+		return { col, row };
+	};
+
 	const updatePlaceCursor = (e: {
-		nativeEvent: { locationX: number; locationY: number };
+		nativeEvent: { pageX: number; pageY: number };
 	}) => {
 		if (!selectedTower || isGamePaused) return;
-		const col = Math.floor(e.nativeEvent.locationX / CELL);
-		const row = Math.floor(e.nativeEvent.locationY / CELL);
+		const { col, row } = cellFromEvent(e);
 		if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return;
 		setPlaceCursor({ col, row });
 	};
@@ -885,11 +909,10 @@ export default function SkyDefenseGame() {
 
 	/* --- place tower --- */
 	const handleBoardPress = (e: {
-		nativeEvent: { locationX: number; locationY: number };
+		nativeEvent: { pageX: number; pageY: number };
 	}) => {
 		if (phase !== "playing" && phase !== "wave-clear") return;
-		const col = Math.floor(e.nativeEvent.locationX / CELL);
-		const row = Math.floor(e.nativeEvent.locationY / CELL);
+		const { col, row } = cellFromEvent(e);
 		if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return;
 
 		// Tap existing tower to see its range
@@ -1182,6 +1205,8 @@ export default function SkyDefenseGame() {
 			{/* Board */}
 			<Pressable onPress={handleBoardPress}>
 				<RNView
+					ref={boardViewRef}
+					onLayout={measureBoard}
 					onTouchStart={updatePlaceCursor}
 					onTouchMove={updatePlaceCursor}
 					style={[

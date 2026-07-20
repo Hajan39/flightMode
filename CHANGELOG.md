@@ -19,6 +19,7 @@ and this project adheres to Semantic Versioning.
 - Stack Sort: undo incremented the move counter instead of cancelling the undone move, inflating the star penalty — now decrements.
 - Fixed setTimeout leaks (setState-on-unmounted risk) in reaction, memory, sky-math, quiz, and cross-air-radar — timers are tracked in refs and cleared on unmount/restart.
 - Localization: Sudoku difficulty time hints ("~10/20/30 min") and the Word Scramble in-round score pill (mislabeled "BEST") now use localized keys across all 12 languages.
+- Sky Defense: placing a tower could land it on the wrong cell when tapping over an on-board element (enemy, existing tower, grid line) — placement used the tap's element-relative coordinates. Now derived from the board's measured window position and the touch's absolute coordinates, so towers land exactly where tapped.
 - Cross Air Radar: "sunk ship" message showed hardcoded Czech text ("sestreleno") in all 12 languages — replaced with the localized `arShipDown` key.
 - Connect 4 & Hangman: enlarged effective touch targets (column drop buttons ~18px, keyboard keys ~34px) via `hitSlop` to meet the 44px minimum without changing layout.
 - Notifications: `expo-notifications` is now loaded lazily and skipped entirely in Expo Go (SDK 53+ removed push support there), removing the startup error; dev/production builds unaffected.
