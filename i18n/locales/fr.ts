@@ -1062,4 +1062,16 @@ gameOddOneOutName: "L'Intrus",
 	preflightRefreshing: "Actualisation…",
 	preflightUpToDate: "Le contenu est à jour",
 	homePreflightCta: "Prêt à voler ?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "Qu'aimez-vous ?",
+	onboardingPrefsSubtitle: "Choisissez ce que vous aimez — nous vous suggérerons des jeux. Vous pouvez passer.",
+	// New-to-try + destinations
+	homeNewToTry: "Nouveaux à essayer",
+	stackDestinations: "Destinations",
+	destinationsSubtitle: "Conseils pratiques pour votre destination",
+	destinationsTips: "conseils",
+	destinationsEmpty: "Aucune destination pour l'instant",
+	homeDestinationsTitle: "Où vous allez",
+	homeDestinationsHint: "Conseils aéroport et ville pour votre destination",
+	homeDestinationsCta: "Voir les conseils de destination",
 } as const;

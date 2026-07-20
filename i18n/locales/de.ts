@@ -1067,4 +1067,16 @@ gameOddOneOutName: "Finde den Außenseiter",
 	preflightRefreshing: "Wird aktualisiert…",
 	preflightUpToDate: "Inhalte sind aktuell",
 	homePreflightCta: "Startklar?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "Was macht dir Spaß?",
+	onboardingPrefsSubtitle: "Wähle, was dir gefällt — wir schlagen dir Spiele vor. Du kannst das überspringen.",
+	// New-to-try + destinations
+	homeNewToTry: "Neu ausprobieren",
+	stackDestinations: "Reiseziele",
+	destinationsSubtitle: "Praktische Tipps für dein Reiseziel",
+	destinationsTips: "Tipps",
+	destinationsEmpty: "Noch keine Reiseziele",
+	homeDestinationsTitle: "Wohin es geht",
+	homeDestinationsHint: "Flughafen- & Stadttipps für dein Ziel",
+	homeDestinationsCta: "Reisetipps ansehen",
 } as const;

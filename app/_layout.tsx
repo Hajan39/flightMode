@@ -151,6 +151,10 @@ function RootStack() {
 				name="preflight"
 				options={{ title: t("stackPreflight"), presentation: "modal" }}
 			/>
+			<Stack.Screen
+				name="destinations"
+				options={{ title: t("stackDestinations") }}
+			/>
 		</Stack>
 	);
 }

@@ -1042,4 +1042,16 @@ gameOddOneOutName: "Hledej Vetřelce",
 	preflightRefreshing: "Aktualizuji…",
 	preflightUpToDate: "Obsah je aktuální",
 	homePreflightCta: "Připraven na let?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "Co tě baví?",
+	onboardingPrefsSubtitle: "Vyber, co tě baví — doporučíme ti hry. Můžeš přeskočit.",
+	// New-to-try + destinations
+	homeNewToTry: "Nové k vyzkoušení",
+	stackDestinations: "Destinace",
+	destinationsSubtitle: "Praktické tipy pro tvůj cíl",
+	destinationsTips: "tipů",
+	destinationsEmpty: "Zatím žádné destinace",
+	homeDestinationsTitle: "Kam letíš",
+	homeDestinationsHint: "Tipy na letiště a město v cíli",
+	homeDestinationsCta: "Procházet tipy k destinacím",
 } as const;

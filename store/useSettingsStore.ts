@@ -1,4 +1,5 @@
 import type { Language } from "@/i18n/translations";
+import type { GameCategory } from "@/types/game";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
@@ -14,6 +15,8 @@ type SettingsState = {
 	themeMode: ThemeMode;
 	syncNetworkPolicy: SyncNetworkPolicy;
 	analyticsEnabled: boolean;
+	/** Game categories the user picked during onboarding; biases recommendations. Empty = no preference. */
+	preferredCategories: GameCategory[];
 	completeOnboarding: () => void;
 	incrementAppOpenCount: () => number;
 	markFirstSessionCompleted: () => void;
@@ -22,6 +25,7 @@ type SettingsState = {
 	setThemeMode: (mode: ThemeMode) => void;
 	setSyncNetworkPolicy: (policy: SyncNetworkPolicy) => void;
 	setAnalyticsEnabled: (enabled: boolean) => void;
+	togglePreferredCategory: (category: GameCategory) => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -34,6 +38,7 @@ export const useSettingsStore = create<SettingsState>()(
 			themeMode: "system" as ThemeMode,
 			syncNetworkPolicy: "wifi_only" as SyncNetworkPolicy,
 			analyticsEnabled: true,
+			preferredCategories: [] as GameCategory[],
 			completeOnboarding: () => set({ isFirstLaunch: false }),
 			incrementAppOpenCount: () => {
 				let nextCount = 1;
@@ -49,6 +54,12 @@ export const useSettingsStore = create<SettingsState>()(
 			setThemeMode: (themeMode) => set({ themeMode }),
 			setSyncNetworkPolicy: (syncNetworkPolicy) => set({ syncNetworkPolicy }),
 			setAnalyticsEnabled: (analyticsEnabled) => set({ analyticsEnabled }),
+			togglePreferredCategory: (category) =>
+				set((state) => ({
+					preferredCategories: state.preferredCategories.includes(category)
+						? state.preferredCategories.filter((c) => c !== category)
+						: [...state.preferredCategories, category],
+				})),
 		}),
 		{
 			name: "settings",

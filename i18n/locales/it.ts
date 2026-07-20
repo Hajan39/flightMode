@@ -1048,4 +1048,16 @@ gameOddOneOutName: "L'Intruso",
 	preflightRefreshing: "Aggiornamento…",
 	preflightUpToDate: "I contenuti sono aggiornati",
 	homePreflightCta: "Pronto al volo?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "Cosa ti piace?",
+	onboardingPrefsSubtitle: "Scegli ciò che ti piace: ti suggeriremo dei giochi. Puoi saltare.",
+	// New-to-try + destinations
+	homeNewToTry: "Da provare",
+	stackDestinations: "Destinazioni",
+	destinationsSubtitle: "Consigli pratici per la tua destinazione",
+	destinationsTips: "consigli",
+	destinationsEmpty: "Ancora nessuna destinazione",
+	homeDestinationsTitle: "Dove sei diretto",
+	homeDestinationsHint: "Consigli su aeroporto e città per la tua destinazione",
+	homeDestinationsCta: "Sfoglia i consigli sulle destinazioni",
 } as const;

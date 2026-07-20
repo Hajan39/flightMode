@@ -9,6 +9,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { getGameById } from "@/data/games";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useDiscoveryStore } from "@/store/useDiscoveryStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 export default function GameScreen() {
@@ -17,6 +18,12 @@ export default function GameScreen() {
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
 	const game = id ? getGameById(id) : undefined;
+	const markGameSeen = useDiscoveryStore((s) => s.markGameSeen);
+
+	// Mark the game as seen so it drops out of the Home "New to try" row.
+	useEffect(() => {
+		if (id) markGameSeen(id);
+	}, [id, markGameSeen]);
 
 	const headerOptions = game
 		? {

@@ -30,6 +30,10 @@ import {
 	useFlightStore,
 } from "@/store/useFlightStore";
 import { useGameStore } from "@/store/useGameStore";
+import { useDiscoveryStore } from "@/store/useDiscoveryStore";
+import { useSettingsStore } from "@/store/useSettingsStore";
+import NewToTryRow from "@/components/NewToTryRow";
+import type { GameCategory } from "@/types/game";
 import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
@@ -49,7 +53,11 @@ function getDayOfYear(date: Date) {
 
 // Recommend solo games sized to the time left in the flight:
 // short hop → quick games, medium → mid-length, long haul → deep/hard games.
-function pickFlightGames(remainingMin: number) {
+// Within a bucket, games in the user's preferred categories are surfaced first.
+function pickFlightGames(
+	remainingMin: number,
+	preferred: GameCategory[],
+) {
 	const solo = gameRegistry.filter((g) => !g.isPlayTogether);
 	let pool: typeof solo;
 	if (remainingMin <= 15) {
@@ -58,6 +66,13 @@ function pickFlightGames(remainingMin: number) {
 		pool = solo.filter((g) => g.estimatedTime > 3 && g.estimatedTime < 7);
 	} else {
 		pool = solo.filter((g) => g.estimatedTime >= 7 || g.difficulty === "hard");
+	}
+	if (preferred.length > 0) {
+		pool = [...pool].sort(
+			(a, b) =>
+				Number(preferred.includes(b.category)) -
+				Number(preferred.includes(a.category)),
+		);
 	}
 	return pool.slice(0, 4);
 }
@@ -72,6 +87,8 @@ export default function HomeScreen() {
 	const stats = useProfileStats();
 	const articles = useContentItems();
 	const gameProgress = useGameStore((s) => s.progress);
+	const preferredCategories = useSettingsStore((s) => s.preferredCategories);
+	const markGameSeen = useDiscoveryStore((s) => s.markGameSeen);
 	const [, setTick] = useState(0);
 
 	// Recently played games, most recent first — powers the "Jump back in" row.
@@ -94,7 +111,10 @@ export default function HomeScreen() {
 
 	const progress = flight ? getFlightProgress(flight) : 0;
 	const remaining = flight ? getRemainingMinutes(flight) : 0;
-	const flightGames = flight && remaining > 0 ? pickFlightGames(remaining) : [];
+	const flightGames =
+		flight && remaining > 0
+			? pickFlightGames(remaining, preferredCategories)
+			: [];
 	const remainingRounded = Math.round(remaining);
 	const remainingH = Math.floor(remainingRounded / 60);
 	const remainingM = remainingRounded % 60;
@@ -544,6 +564,18 @@ export default function HomeScreen() {
 				</AnimatedPressable>
 			</Animated.View>
 
+			<Animated.View entering={FadeInDown.delay(370).springify()}>
+				<NewToTryRow
+					title={t("homeNewToTry")}
+					renderTitle={t}
+					onOpenGame={(gameId) => {
+						markGameSeen(gameId);
+						captureAnalyticsEvent("home_action_open", { target: "games" });
+						router.push(`/game/${gameId}` as never);
+					}}
+				/>
+			</Animated.View>
+
 			<Animated.View entering={FadeInDown.delay(400).springify()}>
 				<Text style={styles.sectionTitle}>{t("playTogether")}</Text>
 				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
@@ -578,6 +610,30 @@ export default function HomeScreen() {
 						</AnimatedPressable>
 					))}
 				</ScrollView>
+			</Animated.View>
+
+			<Animated.View entering={FadeInDown.delay(430).springify()}>
+				<Text style={styles.sectionTitle}>{t("homeDestinationsTitle")}</Text>
+				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+					{t("homeDestinationsHint")}
+				</Text>
+				<AnimatedPressable
+					style={[
+						styles.featuredCard,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+					onPress={() => router.push("/destinations")}
+				>
+					<Ionicons name="earth-outline" size={22} color={theme.tint} />
+					<View
+						lightColor="transparent"
+						darkColor="transparent"
+						style={styles.featuredBody}
+					>
+						<Text style={styles.featuredTitle}>{t("homeDestinationsCta")}</Text>
+					</View>
+					<Ionicons name="chevron-forward" size={20} color={theme.mutedText} />
+				</AnimatedPressable>
 			</Animated.View>
 
 			<Animated.View entering={FadeInDown.delay(450).springify()}>

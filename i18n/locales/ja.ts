@@ -1028,4 +1028,16 @@ gameOddOneOutName: "仲間外れ探し",
 	preflightRefreshing: "更新中…",
 	preflightUpToDate: "コンテンツは最新です",
 	homePreflightCta: "準備できた？",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "何が好きですか？",
+	onboardingPrefsSubtitle: "好きなものを選ぶと、ゲームを提案します。スキップもできます。",
+	// New-to-try + destinations
+	homeNewToTry: "初めてのゲーム",
+	stackDestinations: "旅行先",
+	destinationsSubtitle: "旅行先の実用的なヒント",
+	destinationsTips: "件のヒント",
+	destinationsEmpty: "まだ旅行先がありません",
+	homeDestinationsTitle: "行き先",
+	homeDestinationsHint: "目的地の空港と街のヒント",
+	homeDestinationsCta: "旅行先のヒントを見る",
 } as const;

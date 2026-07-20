@@ -1018,4 +1018,16 @@ gameOddOneOutName: "अलग खोजो",
 	preflightRefreshing: "रिफ़्रेश हो रहा है…",
 	preflightUpToDate: "सामग्री अद्यतित है",
 	homePreflightCta: "उड़ान के लिए तैयार?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "आपको क्या पसंद है?",
+	onboardingPrefsSubtitle: "जो पसंद है चुनें — हम आपके लिए खेल सुझाएंगे। आप छोड़ सकते हैं।",
+	// New-to-try + destinations
+	homeNewToTry: "आज़माने के लिए नया",
+	stackDestinations: "गंतव्य",
+	destinationsSubtitle: "आपके गंतव्य के लिए व्यावहारिक सुझाव",
+	destinationsTips: "सुझाव",
+	destinationsEmpty: "अभी कोई गंतव्य नहीं",
+	homeDestinationsTitle: "आप कहाँ जा रहे हैं",
+	homeDestinationsHint: "आपके गंतव्य के लिए हवाई अड्डा और शहर सुझाव",
+	homeDestinationsCta: "गंतव्य सुझाव देखें",
 } as const;

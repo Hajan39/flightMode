@@ -1051,4 +1051,16 @@ gameOddOneOutName: "El Intruso",
 	preflightRefreshing: "Actualizando…",
 	preflightUpToDate: "El contenido está actualizado",
 	homePreflightCta: "¿Listo para volar?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "¿Qué te gusta?",
+	onboardingPrefsSubtitle: "Elige lo que te gusta y te sugeriremos juegos. Puedes omitirlo.",
+	// New-to-try + destinations
+	homeNewToTry: "Nuevos para probar",
+	stackDestinations: "Destinos",
+	destinationsSubtitle: "Consejos prácticos para tu destino",
+	destinationsTips: "consejos",
+	destinationsEmpty: "Aún no hay destinos",
+	homeDestinationsTitle: "A dónde vas",
+	homeDestinationsHint: "Consejos de aeropuerto y ciudad para tu destino",
+	homeDestinationsCta: "Ver consejos de destinos",
 } as const;

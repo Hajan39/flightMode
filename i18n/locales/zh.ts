@@ -1014,4 +1014,16 @@ gameOddOneOutName: "找不同",
 	preflightRefreshing: "正在刷新…",
 	preflightUpToDate: "内容已是最新",
 	homePreflightCta: "准备好起飞了吗？",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "你喜欢什么？",
+	onboardingPrefsSubtitle: "选择你喜欢的，我们会为你推荐游戏。可以跳过。",
+	// New-to-try + destinations
+	homeNewToTry: "尝试新游戏",
+	stackDestinations: "目的地",
+	destinationsSubtitle: "为你的目的地提供实用贴士",
+	destinationsTips: "条贴士",
+	destinationsEmpty: "暂无目的地",
+	homeDestinationsTitle: "你的目的地",
+	homeDestinationsHint: "目的地机场与城市贴士",
+	homeDestinationsCta: "浏览目的地贴士",
 } as const;

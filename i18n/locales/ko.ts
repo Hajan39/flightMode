@@ -1023,4 +1023,16 @@ gameOddOneOutName: "다른 거 찾기",
 	preflightRefreshing: "새로고침 중…",
 	preflightUpToDate: "콘텐츠가 최신 상태입니다",
 	homePreflightCta: "비행 준비됐나요?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "무엇을 좋아하세요?",
+	onboardingPrefsSubtitle: "좋아하는 것을 선택하면 게임을 추천해 드려요. 건너뛸 수 있어요.",
+	// New-to-try + destinations
+	homeNewToTry: "새로 해보기",
+	stackDestinations: "여행지",
+	destinationsSubtitle: "여행지를 위한 실용적인 팁",
+	destinationsTips: "개 팁",
+	destinationsEmpty: "아직 여행지가 없습니다",
+	homeDestinationsTitle: "가는 곳",
+	homeDestinationsHint: "목적지 공항 & 도시 팁",
+	homeDestinationsCta: "여행지 팁 보기",
 } as const;

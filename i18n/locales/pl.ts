@@ -1043,4 +1043,16 @@ gameOddOneOutName: "Znajdź Intruza",
 	preflightRefreshing: "Odświeżanie…",
 	preflightUpToDate: "Zawartość jest aktualna",
 	homePreflightCta: "Gotowy do lotu?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "Co lubisz?",
+	onboardingPrefsSubtitle: "Wybierz, co lubisz — zaproponujemy gry. Możesz to pominąć.",
+	// New-to-try + destinations
+	homeNewToTry: "Nowe do wypróbowania",
+	stackDestinations: "Cele podróży",
+	destinationsSubtitle: "Praktyczne wskazówki dla Twojego celu",
+	destinationsTips: "wskazówek",
+	destinationsEmpty: "Brak celów podróży",
+	homeDestinationsTitle: "Dokąd lecisz",
+	homeDestinationsHint: "Wskazówki o lotnisku i mieście w celu podróży",
+	homeDestinationsCta: "Przeglądaj wskazówki o celach",
 } as const;

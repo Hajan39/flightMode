@@ -1051,4 +1051,16 @@ gameOddOneOutName: "Odd One Out",
 	preflightRefreshing: "Refreshing…",
 	preflightUpToDate: "Content is up to date",
 	homePreflightCta: "Ready to fly?",
+	// Onboarding — game preferences step
+	onboardingPrefsTitle: "What do you enjoy?",
+	onboardingPrefsSubtitle: "Pick what you like — we'll suggest games for you. You can skip this.",
+	// New-to-try + destinations
+	homeNewToTry: "New to try",
+	stackDestinations: "Destinations",
+	destinationsSubtitle: "Practical tips for where you're headed",
+	destinationsTips: "tips",
+	destinationsEmpty: "No destinations yet",
+	homeDestinationsTitle: "Where you're headed",
+	homeDestinationsHint: "Airport & city tips for your destination",
+	homeDestinationsCta: "Browse destination tips",
 } as const;

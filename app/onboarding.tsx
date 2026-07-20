@@ -18,9 +18,53 @@ import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import type { GameCategory } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
+
+const PREF_CATEGORIES: GameCategory[] = [
+	"brain",
+	"reflex",
+	"strategy",
+	"multiplayer",
+];
+
+function CategoryPicker({ theme }: { theme: (typeof Colors)["dark"] }) {
+	const { t } = useTranslation();
+	const preferred = useSettingsStore((s) => s.preferredCategories);
+	const toggle = useSettingsStore((s) => s.togglePreferredCategory);
+	const haptic = useHaptic();
+	return (
+		<View style={styles.prefWrap} lightColor="transparent" darkColor="transparent">
+			{PREF_CATEGORIES.map((cat) => {
+				const active = preferred.includes(cat);
+				return (
+					<AnimatedPressable
+						key={cat}
+						onPress={() => {
+							haptic.tap();
+							toggle(cat);
+						}}
+						style={[
+							styles.prefChip,
+							{
+								backgroundColor: active ? theme.tint : theme.card,
+								borderColor: active ? theme.tint : theme.border,
+							},
+						]}
+					>
+						<Text
+							style={[styles.prefChipText, { color: active ? "#fff" : theme.text }]}
+						>
+							{t(`categoryFilter_${cat}`)}
+						</Text>
+					</AnimatedPressable>
+				);
+			})}
+		</View>
+	);
+}
 
 type PageProps = {
 	icon: string;
@@ -28,9 +72,17 @@ type PageProps = {
 	subtitle: string;
 	theme: (typeof Colors)["dark"];
 	isLanguagePage?: boolean;
+	isPreferencesPage?: boolean;
 };
 
-function Page({ icon, title, subtitle, theme, isLanguagePage }: PageProps) {
+function Page({
+	icon,
+	title,
+	subtitle,
+	theme,
+	isLanguagePage,
+	isPreferencesPage,
+}: PageProps) {
 	return (
 		<View style={[styles.page, { width: SCREEN_WIDTH }]}>
 			<Animated.View
@@ -60,6 +112,11 @@ function Page({ icon, title, subtitle, theme, isLanguagePage }: PageProps) {
 					style={styles.languagePicker}
 				>
 					<LanguageDropdown showSystemOption={false} />
+				</Animated.View>
+			)}
+			{isPreferencesPage && (
+				<Animated.View entering={FadeInDown.delay(550).springify()}>
+					<CategoryPicker theme={theme} />
 				</Animated.View>
 			)}
 		</View>
@@ -92,6 +149,12 @@ export default function OnboardingScreen() {
 			icon: "game-controller-outline",
 			title: t("onboardingTitle2"),
 			subtitle: t("onboardingSubtitle2"),
+		},
+		{
+			icon: "heart-outline",
+			title: t("onboardingPrefsTitle"),
+			subtitle: t("onboardingPrefsSubtitle"),
+			isPreferencesPage: true,
 		},
 		{
 			icon: "compass-outline",
@@ -212,6 +275,21 @@ const styles = StyleSheet.create({
 		width: "100%",
 		marginTop: 8,
 	},
+	prefWrap: {
+		flexDirection: "row",
+		flexWrap: "wrap",
+		justifyContent: "center",
+		gap: 10,
+		marginTop: 20,
+		paddingHorizontal: 8,
+	},
+	prefChip: {
+		paddingHorizontal: 18,
+		paddingVertical: 12,
+		borderRadius: 22,
+		borderWidth: 1,
+	},
+	prefChipText: { fontSize: 15, fontWeight: "600" },
 	dotsRow: {
 		flexDirection: "row",
 		justifyContent: "center",

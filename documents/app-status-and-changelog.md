@@ -132,6 +132,9 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-20
 
+- destinace & tipy na letiste (`app/destinations.tsx`, `data/destinations.ts`): prohlizeci obrazovka s praktickymi tipy (doprava z letiste, pohyb po meste, jidlo, penize, etiketa) pro 8 destinaci, dostupna z karty "Where you're headed" na Home; bundled offline obsah (EN), chrome lokalizovany do 12 jazyku
+- Home "New to try" radek: hry, ktere uzivatel jeste neotevrel (max 4) — fresh obsah pro kazdy let (lepsi nez denni streak pro narazove pouziti); sledovano v novem `useDiscoveryStore`
+- onboarding personalizace: novy krok "What do you enjoy?" pro vyber oblibenych kategorii her (skippable); ovlivnuje razeni doporuceni "Games for your flight"; ulozeno v settings
 - per-flight reframe (app je narazova, ne denni): Home i Profil ukazuji "Flights" misto "Day Streak"; Profil ma "Games Tried" misto streak dlazdice; achievementy streak-3/streak-7 prepracovany z dennich streaku na navraty za dalsi lety — "Round Trip" (2. let, klicovy retention moment) a "Seasoned Flyer" (5 letu); `streakDays` zustava ve store, ale uz se nikde nezobrazuje ani nepouziva pro achievementy
 
 - pre-flight readiness screen (`app/preflight.tsx`): modal z Home ("Ready to fly?"), potvrzuje offline dostupnost her/clanku/relaxu s zivymi pocty, ukazuje stav site a pri online nabizi "Download latest content"; 13 klicu × 12 jazyku
