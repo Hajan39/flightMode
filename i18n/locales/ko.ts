@@ -1005,4 +1005,7 @@ gameOddOneOutName: "다른 거 찾기",
 	homeJumpBackIn: "다시 시작",
 	homeJumpBackInHint: "이어서 플레이하기",
 	homeBestScore: "최고 {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "비행에 맞는 게임",
+	homeGamesForFlightHint: "남은 비행 시간에 맞춰서",
 } as const;

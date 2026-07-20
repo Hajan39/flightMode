@@ -1049,4 +1049,7 @@ gameOddOneOutName: "Finde den Außenseiter",
 	homeJumpBackIn: "Weiterspielen",
 	homeJumpBackInHint: "Mach weiter, wo du aufgehört hast",
 	homeBestScore: "Bestwert {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "Spiele für deinen Flug",
+	homeGamesForFlightHint: "Passend zur verbleibenden Flugzeit",
 } as const;

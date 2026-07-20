@@ -1033,4 +1033,7 @@ gameOddOneOutName: "Odd One Out",
 	homeJumpBackIn: "Jump back in",
 	homeJumpBackInHint: "Pick up where you left off",
 	homeBestScore: "Best {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "Games for your flight",
+	homeGamesForFlightHint: "Sized to your remaining flight time",
 } as const;

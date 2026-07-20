@@ -1024,4 +1024,7 @@ gameOddOneOutName: "Hledej Vetřelce",
 	homeJumpBackIn: "Zpět do hry",
 	homeJumpBackInHint: "Pokračuj tam, kde jsi skončil",
 	homeBestScore: "Nejlépe {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "Hry na tvůj let",
+	homeGamesForFlightHint: "Vybrané podle zbývajícího času letu",
 } as const;

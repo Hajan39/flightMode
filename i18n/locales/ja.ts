@@ -1010,4 +1010,7 @@ gameOddOneOutName: "仲間外れ探し",
 	homeJumpBackIn: "続きから",
 	homeJumpBackInHint: "続きからプレイ",
 	homeBestScore: "ベスト {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "フライト向けのゲーム",
+	homeGamesForFlightHint: "残りのフライト時間に合わせて",
 } as const;

@@ -1000,4 +1000,7 @@ gameOddOneOutName: "अलग खोजो",
 	homeJumpBackIn: "फिर से खेलें",
 	homeJumpBackInHint: "जहाँ छोड़ा था वहीं से शुरू करें",
 	homeBestScore: "सर्वश्रेष्ठ {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "आपकी उड़ान के लिए खेल",
+	homeGamesForFlightHint: "आपके शेष उड़ान समय के अनुसार",
 } as const;

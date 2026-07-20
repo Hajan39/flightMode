@@ -16,6 +16,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import {
 	dailyChallengeGames,
+	gameRegistry,
 	getGameById,
 	playTogetherGames,
 } from "@/data/games";
@@ -44,6 +45,21 @@ function getDayOfYear(date: Date) {
 	const diff = date.getTime() - start.getTime();
 	const oneDay = 1000 * 60 * 60 * 24;
 	return Math.floor(diff / oneDay);
+}
+
+// Recommend solo games sized to the time left in the flight:
+// short hop → quick games, medium → mid-length, long haul → deep/hard games.
+function pickFlightGames(remainingMin: number) {
+	const solo = gameRegistry.filter((g) => !g.isPlayTogether);
+	let pool: typeof solo;
+	if (remainingMin <= 15) {
+		pool = solo.filter((g) => g.estimatedTime <= 3);
+	} else if (remainingMin <= 90) {
+		pool = solo.filter((g) => g.estimatedTime > 3 && g.estimatedTime < 7);
+	} else {
+		pool = solo.filter((g) => g.estimatedTime >= 7 || g.difficulty === "hard");
+	}
+	return pool.slice(0, 4);
 }
 
 export default function HomeScreen() {
@@ -78,6 +94,7 @@ export default function HomeScreen() {
 
 	const progress = flight ? getFlightProgress(flight) : 0;
 	const remaining = flight ? getRemainingMinutes(flight) : 0;
+	const flightGames = flight && remaining > 0 ? pickFlightGames(remaining) : [];
 	const remainingRounded = Math.round(remaining);
 	const remainingH = Math.floor(remainingRounded / 60);
 	const remainingM = remainingRounded % 60;
@@ -211,6 +228,48 @@ export default function HomeScreen() {
 					</AnimatedPressable>
 				)}
 			</Animated.View>
+
+			{/* Games sized to remaining flight time */}
+			{flightGames.length > 0 && (
+				<Animated.View entering={FadeInDown.delay(85).springify()}>
+					<Text style={styles.sectionTitle}>{t("homeGamesForFlight")}</Text>
+					<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+						{t("homeGamesForFlightHint")}
+					</Text>
+					<ScrollView
+						horizontal
+						showsHorizontalScrollIndicator={false}
+						style={styles.playTogetherRow}
+						contentContainerStyle={styles.playTogetherRowContent}
+					>
+						{flightGames.map((def) => (
+							<AnimatedPressable
+								key={def.id}
+								style={[
+									styles.playTogetherCard,
+									{ backgroundColor: theme.card, borderColor: theme.border },
+								]}
+								onPress={() => {
+									captureAnalyticsEvent("home_action_open", { target: "games" });
+									router.push(`/game/${def.id}` as never);
+								}}
+							>
+								<Ionicons
+									name={def.icon as never}
+									size={22}
+									color={theme.tint}
+								/>
+								<Text style={styles.playTogetherTitle}>{t(def.titleKey)}</Text>
+								<Text
+									style={[styles.playTogetherMeta, { color: theme.mutedText }]}
+								>
+									{t("minutesShort", { minutes: def.estimatedTime })}
+								</Text>
+							</AnimatedPressable>
+						))}
+					</ScrollView>
+				</Animated.View>
+			)}
 
 			{/* Jump back in — recently played */}
 			{recentGames.length > 0 && (

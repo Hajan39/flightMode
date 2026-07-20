@@ -1026,4 +1026,7 @@ gameOddOneOutName: "O Intruso",
 	homeJumpBackIn: "Voltar ao jogo",
 	homeJumpBackInHint: "Continue de onde parou",
 	homeBestScore: "Melhor {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "Jogos para o seu voo",
+	homeGamesForFlightHint: "Ajustados ao tempo de voo restante",
 } as const;

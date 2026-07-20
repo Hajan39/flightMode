@@ -1030,4 +1030,7 @@ gameOddOneOutName: "L'Intruso",
 	homeJumpBackIn: "Riprendi",
 	homeJumpBackInHint: "Riprendi da dove eri",
 	homeBestScore: "Migliore {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "Giochi per il tuo volo",
+	homeGamesForFlightHint: "Adatti al tempo di volo rimanente",
 } as const;

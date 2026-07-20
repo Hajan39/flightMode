@@ -996,4 +996,7 @@ gameOddOneOutName: "找不同",
 	homeJumpBackIn: "继续游戏",
 	homeJumpBackInHint: "从上次的地方继续",
 	homeBestScore: "最佳 {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "为你的航班挑选的游戏",
+	homeGamesForFlightHint: "根据剩余飞行时间挑选",
 } as const;

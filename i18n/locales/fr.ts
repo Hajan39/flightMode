@@ -1044,4 +1044,7 @@ gameOddOneOutName: "L'Intrus",
 	homeJumpBackIn: "Reprendre",
 	homeJumpBackInHint: "Reprenez où vous en étiez",
 	homeBestScore: "Record {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "Jeux pour votre vol",
+	homeGamesForFlightHint: "Adaptés au temps de vol restant",
 } as const;

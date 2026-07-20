@@ -1025,4 +1025,7 @@ gameOddOneOutName: "Znajdź Intruza",
 	homeJumpBackIn: "Wróć do gry",
 	homeJumpBackInHint: "Kontynuuj od miejsca przerwania",
 	homeBestScore: "Rekord {{score}}",
+	// Home — flight-aware game recommendations
+	homeGamesForFlight: "Gry na Twój lot",
+	homeGamesForFlightHint: "Dopasowane do pozostałego czasu lotu",
 } as const;
