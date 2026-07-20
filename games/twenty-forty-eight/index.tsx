@@ -552,7 +552,6 @@ export default function TwentyFortyEightGame() {
       {phase === "over" && result ? (
         <GameResult
           title={winMessage ? t("tfeYouWin") : t("tfeGameOver")}
-          subtitle={winMessage ? undefined : undefined}
           score={score}
           best={result.best}
           last={result.last !== score ? result.last : undefined}
