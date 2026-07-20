@@ -28,7 +28,8 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - content lokalizace kompletni pro `en/cs/de`
 - UI translation keys jsou kompletni napric vsemi podporovanymi jazyky (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`)
 - games search + category filtry + intent filtry pro quick, play together a longer/deep hry
-- home dashboard s daily challenge, play together a flight utility kartou
+- home dashboard s daily challenge, play together a flight utility kartou; navic flight-aware sekce "Games for your flight" (hry podle zbyvajiciho casu letu), "Jump back in" (naposledy hrane hry) a CTA na pre-flight readiness screen
+- pre-flight readiness screen (modal): potvrzeni offline dostupnosti (hry/clanky/relax s pocty), stav site a pri online rucni "Download latest content"
 - relax: breathing + ambient audio + sleep timer
 - PostHog SDK foundation pro anonymni produktovou analytiku, pokud je nakonfigurovany `EXPO_PUBLIC_POSTHOG_KEY`
 - Expo Network foundation pro online/offline stav v root bootstrapu
@@ -128,6 +129,15 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - advanced personalization
 
 ## 4. Changelog
+
+## 2026-07-20
+
+- pre-flight readiness screen (`app/preflight.tsx`): modal z Home ("Ready to fly?"), potvrzuje offline dostupnost her/clanku/relaxu s zivymi pocty, ukazuje stav site a pri online nabizi "Download latest content"; 13 klicu × 12 jazyku
+- Home: nova sekce "Games for your flight" — doporuci solo hry podle zbyvajiciho casu letu (kratky → rychle, dlouhy → hluboke/hard); bez backendu, z `estimatedTime`/`difficulty`
+- Home: nova sekce "Jump back in" — naposledy hrane hry (nejnovejsi prvni, max 4) s nejlepsim skore pro rychle pokracovani; skryta pro nove uzivatele
+- polish: lokalizovane a11y labely D-padu (2048, Snake) do 12 jazyku; nove sematicke tokeny `danger`/`dangerSurface`/`dangerBorder` ve vsech tematech, nasazene na wrong-answer plochy (quiz, sky-math, odd-one-out, reaction) a low-time casovace (tap-rush, whack-mole, cabin-call, emoji-find) — drive fixni tmave-cervene hexy spatne citelne na light tematu
+- dependency alignment se stability opravami: react/react-dom 19.2.3, typescript 6.0.3, odebran nepouzity `expo-av`; pridana root error boundary + globalni JS error handler + izolace bootstrap komponent; eas.json ma internal-testing submit profil pro pre-launch report
+- Sky Defense: oprava umistovani veze na spatnou bunku (souradnice odvozeny z absolutni pozice plochy misto element-relative locationX)
 
 ## 2026-07-05
 
