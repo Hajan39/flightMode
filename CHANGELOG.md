@@ -15,6 +15,10 @@ and this project adheres to Semantic Versioning.
 
 - Whack-a-Mole: pausing did not stop the game clock — wall-clock deadlines (round end + mole lifetimes) are now shifted by the pause duration on resume, so paused time no longer counts against the round.
 - Air Traffic Control & 2048: game-over could fire `updateProgress()` twice for a single game (two end conditions racing in the same tick), inflating `timesPlayed` and streaks — both now guard with a synchronous game-over flag.
+- Extended the double-`updateProgress` fix to 7 more games found in an audit (runway-landing, flight-path, sky-defense, sky-math, quiz, word-guess, sudoku): each could double-record a single game via a stale-state guard, a game-loop tick landing before interval cleanup, or side effects run inside a setState updater — all now use a synchronous guard / call updateProgress outside updaters.
+- Stack Sort: undo incremented the move counter instead of cancelling the undone move, inflating the star penalty — now decrements.
+- Fixed setTimeout leaks (setState-on-unmounted risk) in reaction, memory, sky-math, quiz, and cross-air-radar — timers are tracked in refs and cleared on unmount/restart.
+- Localization: Sudoku difficulty time hints ("~10/20/30 min") and the Word Scramble in-round score pill (mislabeled "BEST") now use localized keys across all 12 languages.
 - Cross Air Radar: "sunk ship" message showed hardcoded Czech text ("sestreleno") in all 12 languages — replaced with the localized `arShipDown` key.
 - Connect 4 & Hangman: enlarged effective touch targets (column drop buttons ~18px, keyboard keys ~34px) via `hitSlop` to meet the 44px minimum without changing layout.
 - Notifications: `expo-notifications` is now loaded lazily and skipped entirely in Expo Go (SDK 53+ removed push support there), removing the startup error; dev/production builds unaffected.
