@@ -89,7 +89,18 @@ export default function RunwayLandingGame() {
 	const [lastQuality, setLastQuality] = useState<Quality | null>(null);
 	const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 	const feedbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+	// Synchronous game-over guard: React state (`finished`) does not flush
+	// between two fast taps on the final round, so guard scoring with a ref to
+	// prevent updateProgress() firing twice.
+	const finishedRef = useRef(false);
 	const speed = getSpeed(round);
+
+	// Cancel any pending feedback timer on unmount.
+	useEffect(() => {
+		return () => {
+			if (feedbackTimer.current) clearTimeout(feedbackTimer.current);
+		};
+	}, []);
 
 	// Touchdown feedback: subtle pulse on the runway card
 	const runwayPulse = useSharedValue(1);
@@ -135,6 +146,8 @@ export default function RunwayLandingGame() {
 	};
 
 	const restart = () => {
+		if (feedbackTimer.current) clearTimeout(feedbackTimer.current);
+		finishedRef.current = false;
 		setRound(1);
 		setScore(0);
 		setMarkerX(0);
@@ -148,7 +161,7 @@ export default function RunwayLandingGame() {
 	};
 
 	const handleLand = () => {
-		if (finished) return;
+		if (finished || finishedRef.current) return;
 
 		const center = markerX + 6;
 		const targetCenter = targetLeft + targetWidth / 2;
@@ -175,6 +188,7 @@ export default function RunwayLandingGame() {
 		if (feedbackTimer.current) clearTimeout(feedbackTimer.current);
 
 		if (nextRound > ROUND_COUNT) {
+			finishedRef.current = true;
 			setFinished(true);
 			const info = updateProgress("runway-landing", nextScore);
 			setProgressInfo(info);

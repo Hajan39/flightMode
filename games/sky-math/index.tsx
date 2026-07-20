@@ -8,7 +8,7 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, {
 	Easing,
@@ -146,7 +146,21 @@ export default function SkyMathGame() {
 	const progressLabel = `${index + 1} / ${TOTAL_QUESTIONS}`;
 	const progressFraction = (index + 1) / TOTAL_QUESTIONS;
 
+	// Synchronous re-entry guard: `selectedOption` state does not flush between
+	// two near-simultaneous taps, so a ref prevents double-advance / a double
+	// updateProgress on the final question.
+	const answeringRef = useRef(false);
+	const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	useEffect(() => {
+		return () => {
+			if (advanceTimer.current) clearTimeout(advanceTimer.current);
+		};
+	}, []);
+
 	const restart = () => {
+		if (advanceTimer.current) clearTimeout(advanceTimer.current);
+		answeringRef.current = false;
 		setIndex(0);
 		setScore(0);
 		setSelectedOption(null);
@@ -157,6 +171,8 @@ export default function SkyMathGame() {
 	};
 
 	const handleDifficultyChange = (nextDifficulty: SkyMathDifficulty) => {
+		if (advanceTimer.current) clearTimeout(advanceTimer.current);
+		answeringRef.current = false;
 		setDifficulty(nextDifficulty);
 		setIndex(0);
 		setScore(0);
@@ -168,14 +184,15 @@ export default function SkyMathGame() {
 	};
 
 	const handleAnswer = (value: number) => {
-		if (selectedOption !== null || isPaused) return;
+		if (answeringRef.current || selectedOption !== null || isPaused) return;
+		answeringRef.current = true;
 		setSelectedOption(value);
 
 		const isCorrect = value === question.answer;
 		const nextScore = score + (isCorrect ? 10 : 0);
 		isCorrect ? haptic.success() : haptic.error();
 
-		setTimeout(() => {
+		advanceTimer.current = setTimeout(() => {
 			if (index + 1 >= TOTAL_QUESTIONS) {
 				setScore(nextScore);
 				const info = updateProgress("sky-math", nextScore);
@@ -188,6 +205,7 @@ export default function SkyMathGame() {
 			setIndex((prev) => prev + 1);
 			setSelectedOption(null);
 			setQuestion(createQuestion(index + 1, difficulty));
+			answeringRef.current = false;
 		}, 550);
 	};
 

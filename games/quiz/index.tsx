@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, {
 	FadeInDown,
@@ -316,6 +316,17 @@ export default function QuizGame() {
 	const currentQuestion = questions[currentIndex];
 	const progressFraction = (currentIndex + 1) / questions.length;
 
+	// Synchronous re-entry guard so two near-simultaneous taps cannot
+	// double-advance or fire updateProgress twice on the last question.
+	const answeringRef = useRef(false);
+	const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	useEffect(() => {
+		return () => {
+			if (advanceTimer.current) clearTimeout(advanceTimer.current);
+		};
+	}, []);
+
 	// Feedback animation: subtle pulse on correct, shake on wrong
 	const cardScale = useSharedValue(1);
 	const cardShake = useSharedValue(0);
@@ -330,7 +341,8 @@ export default function QuizGame() {
 	);
 
 	const handleAnswer = (choice: string) => {
-		if (selectedOption !== null || isPaused) return;
+		if (answeringRef.current || selectedOption !== null || isPaused) return;
+		answeringRef.current = true;
 
 		setSelectedOption(choice);
 		const isCorrect =
@@ -351,7 +363,7 @@ export default function QuizGame() {
 			);
 		}
 
-		setTimeout(() => {
+		advanceTimer.current = setTimeout(() => {
 			if (currentIndex >= questions.length - 1) {
 				const info = updateProgress("quiz", nextScore);
 				setProgressInfo(info);
@@ -363,12 +375,15 @@ export default function QuizGame() {
 			setScore(nextScore);
 			setSelectedOption(null);
 			setCurrentIndex((prev) => prev + 1);
+			answeringRef.current = false;
 		}, 750);
 	};
 
 	const correctAnswer = currentQuestion.options[currentQuestion.answerIndex];
 
 	const restart = () => {
+		if (advanceTimer.current) clearTimeout(advanceTimer.current);
+		answeringRef.current = false;
 		setQuestions(pickRandom(getAllQuestions(t), QUESTION_COUNT));
 		setCurrentIndex(0);
 		setScore(0);

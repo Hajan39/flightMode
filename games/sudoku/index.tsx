@@ -551,6 +551,9 @@ export default function SudokuGame() {
   // Wall-clock timer refs
   const startTimeRef = useRef<number>(0);
   const pausedAccumulatedRef = useRef<number>(0);
+  // Synchronous solved guard so the two win paths (number input, hint) can
+  // never both record the game.
+  const solvedRef = useRef(false);
 
   // ── Animations ──────────────────────────────────────────────────────────
   const selectPulse = useRef(new Animated.Value(1)).current;
@@ -612,6 +615,7 @@ export default function SudokuGame() {
       startTimeRef.current = Date.now();
       setElapsedSeconds(0);
       setSelectedDifficulty(difficulty);
+      solvedRef.current = false;
       setPhase("playing");
       haptic.tap();
     },
@@ -657,34 +661,32 @@ export default function SudokuGame() {
 
       haptic.tap();
 
-      setBoard((prev) => {
-        const next = [...prev];
-        next[selectedCell] = num;
+      const next = [...board];
+      next[selectedCell] = num;
+      setBoard(next);
 
-        const newErrors = computeErrors(next, solution);
-        setErrors(newErrors);
-        if (newErrors.has(selectedCell)) triggerShake();
+      const newErrors = computeErrors(next, solution);
+      setErrors(newErrors);
+      if (newErrors.has(selectedCell)) triggerShake();
 
-        const won = next.every((v, i) => v === solution[i]);
-        if (won) {
-          haptic.success();
-          const finalScore = Math.max(
-            500,
-            5000 - elapsedSeconds * 8 - hintsUsed * 200,
-          );
-          const extraOpts =
-            selectedDifficulty === "hard" && hintsUsed === 0
-              ? { won: true, levelStarsPatch: { "hard-no-hint": 1 as const } }
-              : { won: true };
-          const update = updateProgress("sudoku", finalScore, extraOpts);
-          setResult(update);
-          setPhase("over");
-        }
-
-        return next;
-      });
+      const won = next.every((v, i) => v === solution[i]);
+      if (won && !solvedRef.current) {
+        solvedRef.current = true;
+        haptic.success();
+        const finalScore = Math.max(
+          500,
+          5000 - elapsedSeconds * 8 - hintsUsed * 200,
+        );
+        const extraOpts =
+          selectedDifficulty === "hard" && hintsUsed === 0
+            ? { won: true, levelStarsPatch: { "hard-no-hint": 1 as const } }
+            : { won: true };
+        const update = updateProgress("sudoku", finalScore, extraOpts);
+        setResult(update);
+        setPhase("over");
+      }
     },
-    [phase, selectedCell, clues, solution, elapsedSeconds, hintsUsed, haptic, updateProgress, triggerShake],
+    [phase, selectedCell, clues, solution, board, elapsedSeconds, hintsUsed, selectedDifficulty, haptic, updateProgress, triggerShake],
   );
 
   // ── Erase ────────────────────────────────────────────────────────────────
@@ -722,22 +724,20 @@ export default function SudokuGame() {
     setHintsUsed((h) => h + 1);
     setSelectedCell(target);
 
-    setBoard((prev) => {
-      const next = [...prev];
-      next[target] = solution[target];
-      setErrors(computeErrors(next, solution));
+    const next = [...board];
+    next[target] = solution[target];
+    setBoard(next);
+    setErrors(computeErrors(next, solution));
 
-      const won = next.every((v, i) => v === solution[i]);
-      if (won) {
-        const usedAfter = hintsUsed + 1;
-        const finalScore = Math.max(500, 5000 - elapsedSeconds * 8 - usedAfter * 200);
-        const update = updateProgress("sudoku", finalScore, { won: true });
-        setResult(update);
-        setPhase("over");
-      }
-
-      return next;
-    });
+    const won = next.every((v, i) => v === solution[i]);
+    if (won && !solvedRef.current) {
+      solvedRef.current = true;
+      const usedAfter = hintsUsed + 1;
+      const finalScore = Math.max(500, 5000 - elapsedSeconds * 8 - usedAfter * 200);
+      const update = updateProgress("sudoku", finalScore, { won: true });
+      setResult(update);
+      setPhase("over");
+    }
   }, [
     phase,
     hintsLeft,

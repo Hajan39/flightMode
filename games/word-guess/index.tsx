@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, useWindowDimensions, View as RNView } from "react-native";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
@@ -155,6 +155,20 @@ export default function WordGuessGame() {
   const [won, setWon] = useState(false);
   const [result, setResult] = useState<GameProgressUpdate | null>(null);
 
+  // Refs mirror the latest state so the ENTER handler can read current values
+  // and call handleSubmit directly, instead of nesting it inside setState
+  // updaters (which are impure and double-invoke updateProgress in StrictMode).
+  const currentInputRef = useRef(currentInput);
+  const guessesRef = useRef(guesses);
+  const keyboardStateRef = useRef(keyboardState);
+  const currentAttemptRef = useRef(currentAttempt);
+  useEffect(() => {
+    currentInputRef.current = currentInput;
+    guessesRef.current = guesses;
+    keyboardStateRef.current = keyboardState;
+    currentAttemptRef.current = currentAttempt;
+  }, [currentInput, guesses, keyboardState, currentAttempt]);
+
   // Derived sizing
   const cellSize = Math.floor((screenWidth - 80) / 5);
   const keyWidth = Math.floor((screenWidth - 24) / 10);
@@ -240,17 +254,14 @@ export default function WordGuessGame() {
       }
 
       if (key === "ENTER") {
-        // Capture current state snapshot and pass to handleSubmit
-        setCurrentInput((prevInput) => {
-          setGuesses((prevGuesses) => {
-            setKeyboardState((prevKb) => {
-              handleSubmit(prevInput, currentAttempt, prevGuesses, prevKb);
-              return prevKb;
-            });
-            return prevGuesses;
-          });
-          return prevInput;
-        });
+        // Read the latest state from refs and submit directly — no setState
+        // updater side effects.
+        handleSubmit(
+          currentInputRef.current,
+          currentAttemptRef.current,
+          guessesRef.current,
+          keyboardStateRef.current,
+        );
         return;
       }
 

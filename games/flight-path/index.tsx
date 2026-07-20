@@ -715,6 +715,11 @@ export default function FlightPathGame() {
 		if (!started || gameOver || paused) return;
 
 		const tick = setInterval(() => {
+			// Synchronous game-over guard: the interval keeps firing until the
+			// effect cleanup clears it after `gameOver` state flushes; without
+			// this a second tick would re-detect the collision and fire
+			// updateProgress twice.
+			if (gameOverRef.current) return;
 			const current = planesRef.current;
 			const rwys = runwaysRef.current;
 			const { w, h } = boardRef.current;

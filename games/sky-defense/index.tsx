@@ -685,6 +685,11 @@ export default function SkyDefenseGame() {
 	goldRef.current = gold;
 	const scoreRef = useRef(score);
 	scoreRef.current = score;
+	// Synchronous game-over guard: the game-loop interval keeps firing until
+	// effect cleanup clears it after the phase state flushes, so a tick landing
+	// in that window would re-detect the terminal condition and fire
+	// updateProgress twice.
+	const endedRef = useRef(false);
 	const isGamePaused = paused || showRestartConfirm;
 
 	const updatePlaceCursor = (e: {
@@ -719,6 +724,7 @@ export default function SkyDefenseGame() {
 		if (phase !== "playing" || isGamePaused) return;
 
 		const ivl = setInterval(() => {
+			if (endedRef.current) return;
 			tick.current++;
 			const t = tick.current;
 
@@ -852,6 +858,7 @@ export default function SkyDefenseGame() {
 
 			/* -- check end conditions -- */
 			if (newLives <= 0) {
+				endedRef.current = true;
 				setPhase("lost");
 				setProgressInfo(
 					updateProgress("sky-defense", newScore, { won: false }),
@@ -862,6 +869,7 @@ export default function SkyDefenseGame() {
 			const allSpawned = spawnQueue.current.every((s) => s.tickAt <= t);
 			if (allSpawned && newEnemies.length === 0) {
 				if (waveIdx >= wavesRef.current.length - 1) {
+					endedRef.current = true;
 					setPhase("won");
 					setProgressInfo(
 						updateProgress("sky-defense", newScore, { won: true }),
@@ -959,6 +967,7 @@ export default function SkyDefenseGame() {
 		setProgressInfo(null);
 		spawnQueue.current = [];
 		tick.current = 0;
+		endedRef.current = false;
 	};
 
 	const requestRestart = () => {
@@ -980,6 +989,7 @@ export default function SkyDefenseGame() {
 		setSelectedPlaced(null);
 		spawnQueue.current = [];
 		tick.current = 0;
+		endedRef.current = false;
 		wavesRef.current = getWaves(preset);
 		setPhase("playing");
 		// start first wave after short delay
