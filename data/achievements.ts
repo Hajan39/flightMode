@@ -155,22 +155,23 @@ export const achievements: AchievementDef[] = [
 		category: "traveler",
 		condition: (s) => s.totalFlights >= 10,
 	},
-	// ── Streak ──
+	// ── Return / loyalty (per-flight, not daily — this is a bursty app) ──
 	{
 		id: "streak-3",
 		titleKey: "achieveStreak3Title",
 		descriptionKey: "achieveStreak3Desc",
-		icon: "flame-outline",
-		category: "streak",
-		condition: (s) => s.streakDays >= 3,
+		icon: "repeat-outline",
+		category: "traveler",
+		// The key retention moment: did the user come back for another flight?
+		condition: (s) => s.totalFlights >= 2,
 	},
 	{
 		id: "streak-7",
 		titleKey: "achieveStreak7Title",
 		descriptionKey: "achieveStreak7Desc",
-		icon: "bonfire-outline",
-		category: "streak",
-		condition: (s) => s.streakDays >= 7,
+		icon: "medal-outline",
+		category: "traveler",
+		condition: (s) => s.totalFlights >= 5,
 	},
 	// ── Special ──
 	{

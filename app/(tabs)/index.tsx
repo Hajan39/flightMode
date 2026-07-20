@@ -450,12 +450,12 @@ export default function HomeScreen() {
 							darkColor="transparent"
 						>
 							<Text style={[styles.progressStatValue, { color: theme.text }]}>
-								{stats.streakDays}
+								{stats.totalFlights}
 							</Text>
 							<Text
 								style={[styles.progressStatLabel, { color: theme.mutedText }]}
 							>
-								{t("profileStreak")}
+								{t("profileFlights")}
 							</Text>
 						</View>
 						<View

@@ -61,9 +61,9 @@ export default function ProfileScreen() {
 						theme={theme}
 					/>
 					<StatCard
-						icon="flame-outline"
-						value={stats.streakDays}
-						label={t("profileStreak")}
+						icon="grid-outline"
+						value={stats.uniqueGamesPlayed}
+						label={t("profileGamesTried")}
 						theme={theme}
 					/>
 					<StatCard

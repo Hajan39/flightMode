@@ -132,6 +132,8 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-20
 
+- per-flight reframe (app je narazova, ne denni): Home i Profil ukazuji "Flights" misto "Day Streak"; Profil ma "Games Tried" misto streak dlazdice; achievementy streak-3/streak-7 prepracovany z dennich streaku na navraty za dalsi lety — "Round Trip" (2. let, klicovy retention moment) a "Seasoned Flyer" (5 letu); `streakDays` zustava ve store, ale uz se nikde nezobrazuje ani nepouziva pro achievementy
+
 - pre-flight readiness screen (`app/preflight.tsx`): modal z Home ("Ready to fly?"), potvrzuje offline dostupnost her/clanku/relaxu s zivymi pocty, ukazuje stav site a pri online nabizi "Download latest content"; 13 klicu × 12 jazyku
 - Home: nova sekce "Games for your flight" — doporuci solo hry podle zbyvajiciho casu letu (kratky → rychle, dlouhy → hluboke/hard); bez backendu, z `estimatedTime`/`difficulty`
 - Home: nova sekce "Jump back in" — naposledy hrane hry (nejnovejsi prvni, max 4) s nejlepsim skore pro rychle pokracovani; skryta pro nove uzivatele

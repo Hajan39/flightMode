@@ -17,6 +17,7 @@ and this project adheres to Semantic Versioning.
 
 ### Changed
 
+- Reframed progress around flights instead of daily streaks, matching the app's bursty, per-flight usage (you fly occasionally, not daily). Home and Profile now headline "Flights" (and Profile shows "Games Tried") instead of a "Day Streak" that would almost always read 0–1. The two former daily-streak achievements were repurposed to reward returning for more flights — "Round Trip" (2nd flight, the key retention moment) and "Seasoned Flyer" (5 flights) — instead of near-impossible 7-consecutive-day goals.
 - Accessibility & theming polish: the 2048 and Snake D-pad direction buttons now expose localized accessibility labels (all 12 languages) instead of hardcoded English. Added semantic `danger` / `dangerSurface` / `dangerBorder` theme tokens and adopted them for wrong-answer surfaces (Quiz, Sky Math, Odd One Out, Reaction) and low-time timers (Tap Rush, Whack-a-Mole, Cabin Call, Emoji Find) — these previously used fixed dark-red hex that looked wrong on the light theme.
 - Removed dead `subtitle` prop in the 2048 result overlay.
 
