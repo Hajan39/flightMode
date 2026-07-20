@@ -812,6 +812,7 @@
 	wsCorrect: "정답! ✓",
 	wsTimeUp: "시간 초과!",
 	wsWellDone: "잘했어요!",
+	wsScore: "점수",
 	wsTapLetters: "순서대로 글자 탭",
 	ldLosesDie: "주사위 하나를 잃었습니다!",
 	mpSelectPlayers: "몇 명이서 할까요?",

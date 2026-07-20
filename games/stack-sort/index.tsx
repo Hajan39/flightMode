@@ -438,7 +438,9 @@ export default function StackSortGame() {
 		setColumns(prev.columns);
 		setGoal(prev.goal);
 		setHistory((h) => h.slice(0, -1));
-		setMoves((m) => m + 1);
+		// Undo reverts the last move, so it should cancel that move from the
+		// count — not add another (which inflated the star penalty).
+		setMoves((m) => Math.max(0, m - 1));
 		setSelected(null);
 	};
 

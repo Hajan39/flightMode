@@ -834,7 +834,10 @@ export default function SudokuGame() {
                 {diffLabel(d)}
               </Text>
               <Text style={[styles.diffBtnSub, { color: theme.mutedText }]}>
-                {d === "easy" ? "~10 min" : d === "medium" ? "~20 min" : "~30 min"}
+                ~
+                {t("minutesShort", {
+                  minutes: d === "easy" ? 10 : d === "medium" ? 20 : 30,
+                })}
               </Text>
             </Pressable>
           ))}

@@ -6,7 +6,7 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
 	Dimensions,
 	type GestureResponderEvent,
@@ -121,6 +121,13 @@ export default function CrossAirRadarGame() {
 	const [horiz, setHoriz] = useState(true);
 	const [selectedShip, setSelectedShip] = useState<ShipId | null>(null);
 	const draggedShipRef = useRef<ShipId | null>(null);
+	const turnTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	useEffect(() => {
+		return () => {
+			if (turnTimer.current) clearTimeout(turnTimer.current);
+		};
+	}, []);
 
 	// Battle state
 	const [hitsP1, setHitsP1] = useState(0); // how many P1 landed on P2
@@ -322,7 +329,7 @@ export default function CrossAirRadarGame() {
 		}
 
 		// Switch turns after a short delay
-		setTimeout(() => {
+		turnTimer.current = setTimeout(() => {
 			setLastResult(null);
 			const nextP = currentPlayer === 1 ? 2 : 1;
 			setCurrentPlayer(nextP as 1 | 2);
@@ -331,6 +338,7 @@ export default function CrossAirRadarGame() {
 	};
 
 	const restart = () => {
+		if (turnTimer.current) clearTimeout(turnTimer.current);
 		setPhase("setup1");
 		setCurrentPlayer(1);
 		setFleet1(blank());

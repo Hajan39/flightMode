@@ -889,6 +889,7 @@ export const cs = {
 	wsCorrect: "Správně! ✓",
 	wsTimeUp: "Čas vypršel!",
 	wsWellDone: "Výborně!",
+	wsScore: "Skóre",
 	wsTapLetters: "Klepej na písmena postupně",
 	ldLosesDie: "ztrácí kostku!",
 	mpSelectPlayers: "Kolik hráčů?",

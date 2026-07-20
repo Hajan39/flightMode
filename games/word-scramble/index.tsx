@@ -470,7 +470,7 @@ export default function WordScrambleGame() {
           {/* Score */}
           <RNView style={[styles.statPill, { backgroundColor: theme.card }]}>
             <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("gameBest").toUpperCase()}
+              {t("wsScore").toUpperCase()}
             </Text>
             <Text style={[styles.statValue, { color: theme.tint }]}>
               {score}

@@ -834,6 +834,7 @@
 	wsCorrect: "¡Correcto! ✓",
 	wsTimeUp: "¡Tiempo!",
 	wsWellDone: "¡Muy bien!",
+	wsScore: "Puntuación",
 	wsTapLetters: "Toca las letras en orden",
 	ldLosesDie: "¡pierde un dado!",
 	mpSelectPlayers: "¿Cuántos jugadores?",

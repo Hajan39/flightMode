@@ -91,6 +91,7 @@ export default function ReactionGame() {
 	const tooEarlyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const startedAtRef = useRef<number | null>(null);
 	const waitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const nextRoundTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const padScale = useSharedValue(1);
 	const lastStatScale = useSharedValue(1);
@@ -124,6 +125,7 @@ export default function ReactionGame() {
 		return () => {
 			if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
 			if (tooEarlyTimer.current) clearTimeout(tooEarlyTimer.current);
+			if (nextRoundTimer.current) clearTimeout(nextRoundTimer.current);
 		};
 	}, []);
 
@@ -186,13 +188,14 @@ export default function ReactionGame() {
 			} else {
 				// Auto-start next round after brief pause
 				setPhase("idle");
-				setTimeout(() => startRound(), 600);
+				nextRoundTimer.current = setTimeout(() => startRound(), 600);
 			}
 		}
 	};
 
 	const restart = () => {
 		if (waitTimerRef.current) clearTimeout(waitTimerRef.current);
+		if (nextRoundTimer.current) clearTimeout(nextRoundTimer.current);
 		setPhase("idle");
 		setRound(0);
 		setResults([]);

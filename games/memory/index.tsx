@@ -127,6 +127,13 @@ export default function MemoryGame() {
 	const storedBest = useGameStore((s) => s.progress["memory"]?.highScore ?? 0);
 	const haptic = useHaptic();
 	const resetPress = useAnimatedPress();
+	const flipBackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	useEffect(() => {
+		return () => {
+			if (flipBackTimer.current) clearTimeout(flipBackTimer.current);
+		};
+	}, []);
 	const cardSize = (() => {
 		const horizontalPadding = 40;
 		const gap = 10;
@@ -177,7 +184,7 @@ export default function MemoryGame() {
 					setFinalScore(score);
 				}
 			} else {
-				setTimeout(() => {
+				flipBackTimer.current = setTimeout(() => {
 					setCards((prev) =>
 						prev.map((c) =>
 							c.id === newSelected[0] || c.id === newSelected[1]
@@ -195,6 +202,7 @@ export default function MemoryGame() {
 	const changeMode = (nextModeKey: (typeof MEMORY_MODES)[number]["key"]) => {
 		const nextMode = MEMORY_MODES.find((mode) => mode.key === nextModeKey);
 		if (!nextMode) return;
+		if (flipBackTimer.current) clearTimeout(flipBackTimer.current);
 		setModeKey(nextModeKey);
 		setCards(createDeck(nextMode.pairs));
 		setSelected([]);
@@ -204,6 +212,7 @@ export default function MemoryGame() {
 	};
 
 	const resetGame = () => {
+		if (flipBackTimer.current) clearTimeout(flipBackTimer.current);
 		setCards(createDeck(currentMode.pairs));
 		setSelected([]);
 		setMoves(0);

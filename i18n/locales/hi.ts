@@ -810,6 +810,7 @@
 	wsCorrect: "सही! ✓",
 	wsTimeUp: "समय खत्म!",
 	wsWellDone: "शाबाश!",
+	wsScore: "स्कोर",
 	wsTapLetters: "क्रम में अक्षर दबाएं",
 	ldLosesDie: "एक पासा खो दिया!",
 	mpSelectPlayers: "कितने खिलाड़ी?",

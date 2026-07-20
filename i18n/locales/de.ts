@@ -849,6 +849,7 @@
 	wsCorrect: "Richtig! ✓",
 	wsTimeUp: "Zeit abgelaufen!",
 	wsWellDone: "Gut gemacht!",
+	wsScore: "Punkte",
 	wsTapLetters: "Buchstaben der Reihe nach antippen",
 	ldLosesDie: "verliert einen Würfel!",
 	mpSelectPlayers: "Wie viele Spieler?",

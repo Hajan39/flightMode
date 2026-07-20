@@ -829,6 +829,7 @@
 	wsCorrect: "Poprawnie! ✓",
 	wsTimeUp: "Czas minął!",
 	wsWellDone: "Świetnie!",
+	wsScore: "Wynik",
 	wsTapLetters: "Stukaj litery po kolei",
 	ldLosesDie: "traci kostkę!",
 	mpSelectPlayers: "Ilu graczy?",

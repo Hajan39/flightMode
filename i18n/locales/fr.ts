@@ -846,6 +846,7 @@
 	wsCorrect: "Correct ! ✓",
 	wsTimeUp: "Temps écoulé !",
 	wsWellDone: "Bien joué !",
+	wsScore: "Score",
 	wsTapLetters: "Appuie sur les lettres dans l'ordre",
 	ldLosesDie: "perd un dé !",
 	mpSelectPlayers: "Combien de joueurs ?",

@@ -817,6 +817,7 @@
 	wsCorrect: "正解！ ✓",
 	wsTimeUp: "時間切れ！",
 	wsWellDone: "よくできました！",
+	wsScore: "スコア",
 	wsTapLetters: "順番に文字をタップ",
 	ldLosesDie: "サイコロを1つ失った！",
 	mpSelectPlayers: "何人でプレイ？",

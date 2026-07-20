@@ -808,6 +808,7 @@
 	wsCorrect: "正确！ ✓",
 	wsTimeUp: "时间到！",
 	wsWellDone: "做得好！",
+	wsScore: "得分",
 	wsTapLetters: "按顺序点击字母",
 	ldLosesDie: "失去一个骰子！",
 	mpSelectPlayers: "几个玩家？",

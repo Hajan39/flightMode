@@ -884,6 +884,7 @@ export const en = {
 	wsCorrect: "Correct! ✓",
 	wsTimeUp: "Time's Up!",
 	wsWellDone: "Well Done!",
+	wsScore: "Score",
 	wsTapLetters: "Tap letters in order",
 	// Handoff screens
 	passPhone: "Pass the phone",
