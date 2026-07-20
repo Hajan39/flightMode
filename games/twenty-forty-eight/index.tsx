@@ -433,7 +433,7 @@ export default function TwentyFortyEightGame() {
             style={dpadBtnStyle}
             onPress={() => handleMove("up")}
             disabled={disabled}
-            accessibilityLabel="Move up"
+            accessibilityLabel={t("a11yMoveUp")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▲</Text>
           </Pressable>
@@ -444,7 +444,7 @@ export default function TwentyFortyEightGame() {
             style={dpadBtnStyle}
             onPress={() => handleMove("left")}
             disabled={disabled}
-            accessibilityLabel="Move left"
+            accessibilityLabel={t("a11yMoveLeft")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>◀</Text>
           </Pressable>
@@ -453,7 +453,7 @@ export default function TwentyFortyEightGame() {
             style={dpadBtnStyle}
             onPress={() => handleMove("right")}
             disabled={disabled}
-            accessibilityLabel="Move right"
+            accessibilityLabel={t("a11yMoveRight")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▶</Text>
           </Pressable>
@@ -464,7 +464,7 @@ export default function TwentyFortyEightGame() {
             style={dpadBtnStyle}
             onPress={() => handleMove("down")}
             disabled={disabled}
-            accessibilityLabel="Move down"
+            accessibilityLabel={t("a11yMoveDown")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▼</Text>
           </Pressable>

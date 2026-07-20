@@ -1015,4 +1015,9 @@ gameOddOneOutName: "Hledej Vetřelce",
 	homeArticlesEmptyHint: "Zkus změnit filtr nebo se vrať později.",
 	gamesFilteredEmpty: "Žádné hry neodpovídají filtru",
 	gamesClearFilters: "Zrušit filtry",
+	// A11y — D-pad move labels
+	a11yMoveUp: "Pohyb nahoru",
+	a11yMoveDown: "Pohyb dolů",
+	a11yMoveLeft: "Pohyb doleva",
+	a11yMoveRight: "Pohyb doprava",
 } as const;

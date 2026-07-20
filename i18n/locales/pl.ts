@@ -1016,4 +1016,9 @@ gameOddOneOutName: "Znajdź Intruza",
 	homeArticlesEmptyHint: "Spróbuj zmienić filtr lub wróć później.",
 	gamesFilteredEmpty: "Żadna gra nie pasuje do filtru",
 	gamesClearFilters: "Wyczyść filtry",
+	// A11y — D-pad move labels
+	a11yMoveUp: "Ruch w górę",
+	a11yMoveDown: "Ruch w dół",
+	a11yMoveLeft: "Ruch w lewo",
+	a11yMoveRight: "Ruch w prawo",
 } as const;

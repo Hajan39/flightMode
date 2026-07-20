@@ -987,4 +987,9 @@ gameOddOneOutName: "找不同",
 	homeArticlesEmptyHint: "尝试更改筛选条件或稍后再来。",
 	gamesFilteredEmpty: "没有游戏符合筛选条件",
 	gamesClearFilters: "清除筛选",
+	// A11y — D-pad move labels
+	a11yMoveUp: "向上移动",
+	a11yMoveDown: "向下移动",
+	a11yMoveLeft: "向左移动",
+	a11yMoveRight: "向右移动",
 } as const;

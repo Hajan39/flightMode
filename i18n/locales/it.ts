@@ -1021,4 +1021,9 @@ gameOddOneOutName: "L'Intruso",
 	homeArticlesEmptyHint: "Prova a cambiare il filtro o torna più tardi.",
 	gamesFilteredEmpty: "Nessun gioco corrisponde al filtro",
 	gamesClearFilters: "Rimuovi filtri",
+	// A11y — D-pad move labels
+	a11yMoveUp: "Muovi su",
+	a11yMoveDown: "Muovi giù",
+	a11yMoveLeft: "Muovi a sinistra",
+	a11yMoveRight: "Muovi a destra",
 } as const;

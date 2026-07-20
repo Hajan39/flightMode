@@ -306,7 +306,7 @@ export default function WhackMoleGame() {
 					style={[
 						styles.timeFill,
 						{
-							backgroundColor: secondsLeft <= 5 ? "#ef5350" : theme.tint,
+							backgroundColor: secondsLeft <= 5 ? theme.danger : theme.tint,
 							flex: progress,
 						},
 					]}

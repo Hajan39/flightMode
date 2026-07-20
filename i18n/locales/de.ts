@@ -1040,4 +1040,9 @@ gameOddOneOutName: "Finde den Außenseiter",
 	homeArticlesEmptyHint: "Filter ändern oder später wiederkommen.",
 	gamesFilteredEmpty: "Keine Spiele entsprechen dem Filter",
 	gamesClearFilters: "Filter zurücksetzen",
+	// A11y — D-pad move labels
+	a11yMoveUp: "Nach oben",
+	a11yMoveDown: "Nach unten",
+	a11yMoveLeft: "Nach links",
+	a11yMoveRight: "Nach rechts",
 } as const;

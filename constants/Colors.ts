@@ -21,6 +21,9 @@ export default {
 		inputBackground: "#ffffff",
 		headerBackground: "#ffffff",
 		warning: "#f5a623",
+		danger: "#d32f2f",
+		dangerSurface: "#fdecea",
+		dangerBorder: "#e5484d",
 	},
 	dark: {
 		text: "#f3f7fa",
@@ -40,6 +43,9 @@ export default {
 		inputBackground: "#13202a",
 		headerBackground: "#0d1720",
 		warning: "#ffcc66",
+		danger: "#ef5350",
+		dangerSurface: "#4d1f24",
+		dangerBorder: "#cc4b5a",
 	},
 	crazy: {
 		text: "#ffffff",
@@ -59,5 +65,8 @@ export default {
 		inputBackground: "#250045",
 		headerBackground: "#1a0033",
 		warning: "#ffe135",
+		danger: "#ff5d8f",
+		dangerSurface: "#3d0a1f",
+		dangerBorder: "#ff4d7d",
 	},
 };

@@ -991,4 +991,9 @@ gameOddOneOutName: "अलग खोजो",
 	homeArticlesEmptyHint: "फ़िल्टर बदलें या बाद में वापस आएं।",
 	gamesFilteredEmpty: "फ़िल्टर से मेल खाने वाले कोई खेल नहीं",
 	gamesClearFilters: "फ़िल्टर साफ़ करें",
+	// A11y — D-pad move labels
+	a11yMoveUp: "ऊपर जाएँ",
+	a11yMoveDown: "नीचे जाएँ",
+	a11yMoveLeft: "बाएँ जाएँ",
+	a11yMoveRight: "दाएँ जाएँ",
 } as const;

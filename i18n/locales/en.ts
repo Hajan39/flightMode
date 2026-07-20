@@ -1024,4 +1024,9 @@ gameOddOneOutName: "Odd One Out",
 	// UX — games filter empty state
 	gamesFilteredEmpty: "No games match your filters",
 	gamesClearFilters: "Clear filters",
+	// A11y — D-pad move labels
+	a11yMoveUp: "Move up",
+	a11yMoveDown: "Move down",
+	a11yMoveLeft: "Move left",
+	a11yMoveRight: "Move right",
 } as const;

@@ -161,7 +161,7 @@ export default function TapRushGame() {
 					style={[
 						styles.timeFill,
 						{
-							backgroundColor: secondsLeft <= 5 ? "#ef5350" : theme.tint,
+							backgroundColor: secondsLeft <= 5 ? theme.danger : theme.tint,
 							flex: progress,
 						},
 					]}

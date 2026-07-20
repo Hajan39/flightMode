@@ -404,11 +404,11 @@ export default function OddOneOutGame() {
 												cellBg = theme.successSurface;
 												cellBorder = theme.successBorder;
 											} else if (isTapped && feedbackKind === "wrong") {
-												cellBg = "#4d1f24";
-												cellBorder = "#cc4b5a";
+												cellBg = theme.dangerSurface;
+												cellBorder = theme.dangerBorder;
 											} else if (feedbackKind === "timeout" && isOdd) {
-												cellBg = "#4d1f24";
-												cellBorder = "#cc4b5a";
+												cellBg = theme.dangerSurface;
+												cellBorder = theme.dangerBorder;
 											}
 										}
 
@@ -453,10 +453,10 @@ export default function OddOneOutGame() {
 						<RNView
 							style={[
 								styles.timeoutBanner,
-								{ backgroundColor: theme.card, borderColor: "#cc4b5a" },
+								{ backgroundColor: theme.card, borderColor: theme.dangerBorder },
 							]}
 						>
-							<Text style={[styles.timeoutText, { color: "#cc4b5a" }]}>
+							<Text style={[styles.timeoutText, { color: theme.danger }]}>
 								{t("oddTimeUp")}
 							</Text>
 						</RNView>

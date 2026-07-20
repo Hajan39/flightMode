@@ -56,11 +56,11 @@ function TooEarlyBanner({
 		<Animated.View
 			style={[
 				styles.tooEarlyBanner,
-				{ backgroundColor: theme.card, borderColor: "#cc4b5a" },
+				{ backgroundColor: theme.card, borderColor: theme.dangerBorder },
 				fadeIn,
 			]}
 		>
-			<Text style={[styles.tooEarlyTitle, { color: "#cc4b5a" }]}>{title}</Text>
+			<Text style={[styles.tooEarlyTitle, { color: theme.danger }]}>{title}</Text>
 			<Text style={[styles.tooEarlyMsg, { color: theme.mutedText }]}>
 				{message}
 			</Text>

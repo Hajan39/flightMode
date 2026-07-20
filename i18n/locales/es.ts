@@ -1024,4 +1024,9 @@ gameOddOneOutName: "El Intruso",
 	homeArticlesEmptyHint: "Intenta cambiar el filtro o vuelve más tarde.",
 	gamesFilteredEmpty: "Ningún juego coincide con el filtro",
 	gamesClearFilters: "Borrar filtros",
+	// A11y — D-pad move labels
+	a11yMoveUp: "Mover arriba",
+	a11yMoveDown: "Mover abajo",
+	a11yMoveLeft: "Mover a la izquierda",
+	a11yMoveRight: "Mover a la derecha",
 } as const;

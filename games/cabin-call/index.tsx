@@ -236,7 +236,7 @@ export default function CabinCallGame() {
 					<Text
 						style={[
 							styles.statValue,
-							{ color: secondsLeft <= 5 ? "#ef5350" : theme.text },
+							{ color: secondsLeft <= 5 ? theme.danger : theme.text },
 						]}
 					>
 						{secondsLeft}

@@ -11,6 +11,11 @@ and this project adheres to Semantic Versioning.
 
 - Added Cabin Lights game (`cabin-lights`): Lights Out puzzle — tap a cabin light to toggle it and its neighbors, turn everything off to clear the round. 5 rounds with boards growing from 3×3 to 5×5; scrambles are generated from random taps so every puzzle is solvable. Scoring: 100 per round + move-efficiency bonus. Brain/medium/5 min. Fully translated across all 12 supported locales.
 
+### Changed
+
+- Accessibility & theming polish: the 2048 and Snake D-pad direction buttons now expose localized accessibility labels (all 12 languages) instead of hardcoded English. Added semantic `danger` / `dangerSurface` / `dangerBorder` theme tokens and adopted them for wrong-answer surfaces (Quiz, Sky Math, Odd One Out, Reaction) and low-time timers (Tap Rush, Whack-a-Mole, Cabin Call, Emoji Find) — these previously used fixed dark-red hex that looked wrong on the light theme.
+- Removed dead `subtitle` prop in the 2048 result overlay.
+
 ### Fixed
 
 - Whack-a-Mole: pausing did not stop the game clock — wall-clock deadlines (round end + mole lifetimes) are now shifted by the pause duration on resume, so paused time no longer counts against the round.

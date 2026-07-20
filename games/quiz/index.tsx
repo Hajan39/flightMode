@@ -455,13 +455,13 @@ export default function QuizGame() {
 						showResult && isCorrect
 							? theme.successSurface
 							: showResult && isSelected && !isCorrect
-								? "#4d1f24"
+								? theme.dangerSurface
 								: theme.elevated;
 					const border =
 						showResult && isCorrect
 							? theme.successBorder
 							: showResult && isSelected && !isCorrect
-								? "#cc4b5a"
+								? theme.dangerBorder
 								: theme.border;
 
 					return (

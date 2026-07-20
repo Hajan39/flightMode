@@ -1001,4 +1001,9 @@ gameOddOneOutName: "仲間外れ探し",
 	homeArticlesEmptyHint: "フィルターを変更するか、後でもう一度確認してください。",
 	gamesFilteredEmpty: "フィルターに一致するゲームがありません",
 	gamesClearFilters: "フィルターをクリア",
+	// A11y — D-pad move labels
+	a11yMoveUp: "上へ移動",
+	a11yMoveDown: "下へ移動",
+	a11yMoveLeft: "左へ移動",
+	a11yMoveRight: "右へ移動",
 } as const;

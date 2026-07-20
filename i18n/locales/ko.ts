@@ -996,4 +996,9 @@ gameOddOneOutName: "다른 거 찾기",
 	homeArticlesEmptyHint: "필터를 변경하거나 나중에 다시 확인하세요.",
 	gamesFilteredEmpty: "필터와 일치하는 게임이 없습니다",
 	gamesClearFilters: "필터 초기화",
+	// A11y — D-pad move labels
+	a11yMoveUp: "위로 이동",
+	a11yMoveDown: "아래로 이동",
+	a11yMoveLeft: "왼쪽으로 이동",
+	a11yMoveRight: "오른쪽으로 이동",
 } as const;

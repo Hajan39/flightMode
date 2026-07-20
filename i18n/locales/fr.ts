@@ -1035,4 +1035,9 @@ gameOddOneOutName: "L'Intrus",
 	homeArticlesEmptyHint: "Essayez de changer le filtre ou revenez plus tard.",
 	gamesFilteredEmpty: "Aucun jeu ne correspond au filtre",
 	gamesClearFilters: "Effacer les filtres",
+	// A11y — D-pad move labels
+	a11yMoveUp: "Déplacer vers le haut",
+	a11yMoveDown: "Déplacer vers le bas",
+	a11yMoveLeft: "Déplacer à gauche",
+	a11yMoveRight: "Déplacer à droite",
 } as const;

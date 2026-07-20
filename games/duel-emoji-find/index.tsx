@@ -393,7 +393,7 @@ export default function DuelEmojiFindGame() {
 
 	/* PLAYING */
 	const timerColor =
-		timeLeft <= 5 ? "#ef5350" : timeLeft <= 10 ? "#ffa726" : theme.text;
+		timeLeft <= 5 ? theme.danger : timeLeft <= 10 ? theme.warning : theme.text;
 	const curColor = pColor(currentPlayer);
 
 	return (
