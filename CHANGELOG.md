@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Home: added a "Jump back in" row that surfaces your most recently played games (newest first, up to 4) for one-tap resume, showing each game's best score. Hidden for brand-new users with no play history. Fully localized across all 12 languages.
+
 - Added Cabin Lights game (`cabin-lights`): Lights Out puzzle — tap a cabin light to toggle it and its neighbors, turn everything off to clear the round. 5 rounds with boards growing from 3×3 to 5×5; scrambles are generated from random taps so every puzzle is solvable. Scoring: 100 per round + move-efficiency bonus. Brain/medium/5 min. Fully translated across all 12 supported locales.
 
 ### Changed

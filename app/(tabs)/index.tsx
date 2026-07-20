@@ -14,7 +14,11 @@ import AnimatedPressable from "@/components/AnimatedPressable";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import { dailyChallengeGames, playTogetherGames } from "@/data/games";
+import {
+	dailyChallengeGames,
+	getGameById,
+	playTogetherGames,
+} from "@/data/games";
 import { useContentItems } from "@/hooks/useContentItems";
 import { useProfileStats } from "@/hooks/useProfileStats";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -24,6 +28,7 @@ import {
 	getRemainingMinutes,
 	useFlightStore,
 } from "@/store/useFlightStore";
+import { useGameStore } from "@/store/useGameStore";
 import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
@@ -50,7 +55,19 @@ export default function HomeScreen() {
 	const clearFlight = useFlightStore((s) => s.clearFlight);
 	const stats = useProfileStats();
 	const articles = useContentItems();
+	const gameProgress = useGameStore((s) => s.progress);
 	const [, setTick] = useState(0);
+
+	// Recently played games, most recent first — powers the "Jump back in" row.
+	const recentGames = Object.values(gameProgress)
+		.filter((p) => p.timesPlayed > 0)
+		.sort((a, b) => b.lastPlayed - a.lastPlayed)
+		.slice(0, 4)
+		.map((p) => ({ def: getGameById(p.gameId), progress: p }))
+		.filter(
+			(x): x is { def: NonNullable<typeof x.def>; progress: typeof x.progress } =>
+				Boolean(x.def),
+		);
 
 	// Re-render every 30s to update progress
 	useEffect(() => {
@@ -194,6 +211,50 @@ export default function HomeScreen() {
 					</AnimatedPressable>
 				)}
 			</Animated.View>
+
+			{/* Jump back in — recently played */}
+			{recentGames.length > 0 && (
+				<Animated.View entering={FadeInDown.delay(90).springify()}>
+					<Text style={styles.sectionTitle}>{t("homeJumpBackIn")}</Text>
+					<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+						{t("homeJumpBackInHint")}
+					</Text>
+					<ScrollView
+						horizontal
+						showsHorizontalScrollIndicator={false}
+						style={styles.playTogetherRow}
+						contentContainerStyle={styles.playTogetherRowContent}
+					>
+						{recentGames.map(({ def, progress }) => (
+							<AnimatedPressable
+								key={def.id}
+								style={[
+									styles.playTogetherCard,
+									{ backgroundColor: theme.card, borderColor: theme.border },
+								]}
+								onPress={() => {
+									captureAnalyticsEvent("home_action_open", { target: "games" });
+									router.push(`/game/${def.id}` as never);
+								}}
+							>
+								<Ionicons
+									name={def.icon as never}
+									size={22}
+									color={theme.tint}
+								/>
+								<Text style={styles.playTogetherTitle}>{t(def.titleKey)}</Text>
+								<Text
+									style={[styles.playTogetherMeta, { color: theme.mutedText }]}
+								>
+									{progress.highScore > 0
+										? t("homeBestScore", { score: progress.highScore })
+										: t(def.descriptionKey)}
+								</Text>
+							</AnimatedPressable>
+						))}
+					</ScrollView>
+				</Animated.View>
+			)}
 
 			{/* Quick Actions */}
 			<Text style={styles.sectionTitle}>{t("quickActions")}</Text>

@@ -996,4 +996,8 @@ gameOddOneOutName: "अलग खोजो",
 	a11yMoveDown: "नीचे जाएँ",
 	a11yMoveLeft: "बाएँ जाएँ",
 	a11yMoveRight: "दाएँ जाएँ",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "फिर से खेलें",
+	homeJumpBackInHint: "जहाँ छोड़ा था वहीं से शुरू करें",
+	homeBestScore: "सर्वश्रेष्ठ {{score}}",
 } as const;

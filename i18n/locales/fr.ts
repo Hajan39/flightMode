@@ -1040,4 +1040,8 @@ gameOddOneOutName: "L'Intrus",
 	a11yMoveDown: "Déplacer vers le bas",
 	a11yMoveLeft: "Déplacer à gauche",
 	a11yMoveRight: "Déplacer à droite",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "Reprendre",
+	homeJumpBackInHint: "Reprenez où vous en étiez",
+	homeBestScore: "Record {{score}}",
 } as const;

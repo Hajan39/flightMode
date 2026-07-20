@@ -992,4 +992,8 @@ gameOddOneOutName: "找不同",
 	a11yMoveDown: "向下移动",
 	a11yMoveLeft: "向左移动",
 	a11yMoveRight: "向右移动",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "继续游戏",
+	homeJumpBackInHint: "从上次的地方继续",
+	homeBestScore: "最佳 {{score}}",
 } as const;

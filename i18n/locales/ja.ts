@@ -1006,4 +1006,8 @@ gameOddOneOutName: "仲間外れ探し",
 	a11yMoveDown: "下へ移動",
 	a11yMoveLeft: "左へ移動",
 	a11yMoveRight: "右へ移動",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "続きから",
+	homeJumpBackInHint: "続きからプレイ",
+	homeBestScore: "ベスト {{score}}",
 } as const;

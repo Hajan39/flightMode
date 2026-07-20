@@ -1001,4 +1001,8 @@ gameOddOneOutName: "다른 거 찾기",
 	a11yMoveDown: "아래로 이동",
 	a11yMoveLeft: "왼쪽으로 이동",
 	a11yMoveRight: "오른쪽으로 이동",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "다시 시작",
+	homeJumpBackInHint: "이어서 플레이하기",
+	homeBestScore: "최고 {{score}}",
 } as const;

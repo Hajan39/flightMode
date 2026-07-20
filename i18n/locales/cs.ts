@@ -1020,4 +1020,8 @@ gameOddOneOutName: "Hledej Vetřelce",
 	a11yMoveDown: "Pohyb dolů",
 	a11yMoveLeft: "Pohyb doleva",
 	a11yMoveRight: "Pohyb doprava",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "Zpět do hry",
+	homeJumpBackInHint: "Pokračuj tam, kde jsi skončil",
+	homeBestScore: "Nejlépe {{score}}",
 } as const;

@@ -1045,4 +1045,8 @@ gameOddOneOutName: "Finde den Außenseiter",
 	a11yMoveDown: "Nach unten",
 	a11yMoveLeft: "Nach links",
 	a11yMoveRight: "Nach rechts",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "Weiterspielen",
+	homeJumpBackInHint: "Mach weiter, wo du aufgehört hast",
+	homeBestScore: "Bestwert {{score}}",
 } as const;

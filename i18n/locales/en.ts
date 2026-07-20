@@ -1029,4 +1029,8 @@ gameOddOneOutName: "Odd One Out",
 	a11yMoveDown: "Move down",
 	a11yMoveLeft: "Move left",
 	a11yMoveRight: "Move right",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "Jump back in",
+	homeJumpBackInHint: "Pick up where you left off",
+	homeBestScore: "Best {{score}}",
 } as const;

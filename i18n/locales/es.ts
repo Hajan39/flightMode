@@ -1029,4 +1029,8 @@ gameOddOneOutName: "El Intruso",
 	a11yMoveDown: "Mover abajo",
 	a11yMoveLeft: "Mover a la izquierda",
 	a11yMoveRight: "Mover a la derecha",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "Seguir jugando",
+	homeJumpBackInHint: "Retoma donde lo dejaste",
+	homeBestScore: "Mejor {{score}}",
 } as const;

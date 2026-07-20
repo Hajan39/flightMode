@@ -1026,4 +1026,8 @@ gameOddOneOutName: "L'Intruso",
 	a11yMoveDown: "Muovi giù",
 	a11yMoveLeft: "Muovi a sinistra",
 	a11yMoveRight: "Muovi a destra",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "Riprendi",
+	homeJumpBackInHint: "Riprendi da dove eri",
+	homeBestScore: "Migliore {{score}}",
 } as const;

@@ -1021,4 +1021,8 @@ gameOddOneOutName: "Znajdź Intruza",
 	a11yMoveDown: "Ruch w dół",
 	a11yMoveLeft: "Ruch w lewo",
 	a11yMoveRight: "Ruch w prawo",
+	// Home — jump back in (recently played)
+	homeJumpBackIn: "Wróć do gry",
+	homeJumpBackInHint: "Kontynuuj od miejsca przerwania",
+	homeBestScore: "Rekord {{score}}",
 } as const;
