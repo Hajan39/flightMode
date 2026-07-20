@@ -1029,4 +1029,18 @@ gameOddOneOutName: "O Intruso",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "Jogos para o seu voo",
 	homeGamesForFlightHint: "Ajustados ao tempo de voo restante",
+	// Pre-flight readiness screen
+	stackPreflight: "Pronto para voar",
+	preflightHeroTitle: "Tudo pronto para voar",
+	preflightHeroSubtitle: "Tudo abaixo funciona sem internet — mesmo em modo avião.",
+	preflightReadyLabel: "Disponível offline",
+	preflightGamesCount: "{{count}} jogos",
+	preflightArticlesCount: "{{count}} artigos",
+	preflightRelax: "Respiração e sons ambientes",
+	preflightNetworkOnline: "Online",
+	preflightNetworkOffline: "Offline — e tudo bem",
+	preflightRefresh: "Baixar conteúdo mais recente",
+	preflightRefreshing: "Atualizando…",
+	preflightUpToDate: "O conteúdo está atualizado",
+	homePreflightCta: "Pronto para voar?",
 } as const;

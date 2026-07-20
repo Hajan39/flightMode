@@ -1036,4 +1036,18 @@ gameOddOneOutName: "Odd One Out",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "Games for your flight",
 	homeGamesForFlightHint: "Sized to your remaining flight time",
+	// Pre-flight readiness screen
+	stackPreflight: "Flight readiness",
+	preflightHeroTitle: "You're ready to fly",
+	preflightHeroSubtitle: "Everything below works without internet — even in airplane mode.",
+	preflightReadyLabel: "Ready offline",
+	preflightGamesCount: "{{count}} games",
+	preflightArticlesCount: "{{count}} articles",
+	preflightRelax: "Breathing & ambient sounds",
+	preflightNetworkOnline: "Online",
+	preflightNetworkOffline: "Offline — and that's fine",
+	preflightRefresh: "Download latest content",
+	preflightRefreshing: "Refreshing…",
+	preflightUpToDate: "Content is up to date",
+	homePreflightCta: "Ready to fly?",
 } as const;

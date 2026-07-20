@@ -1028,4 +1028,18 @@ gameOddOneOutName: "Znajdź Intruza",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "Gry na Twój lot",
 	homeGamesForFlightHint: "Dopasowane do pozostałego czasu lotu",
+	// Pre-flight readiness screen
+	stackPreflight: "Gotowość do lotu",
+	preflightHeroTitle: "Wszystko gotowe do lotu",
+	preflightHeroSubtitle: "Wszystko poniżej działa bez internetu — nawet w trybie samolotowym.",
+	preflightReadyLabel: "Dostępne offline",
+	preflightGamesCount: "{{count}} gier",
+	preflightArticlesCount: "{{count}} artykułów",
+	preflightRelax: "Oddech i dźwięki otoczenia",
+	preflightNetworkOnline: "Online",
+	preflightNetworkOffline: "Offline — i to jest OK",
+	preflightRefresh: "Pobierz najnowszą zawartość",
+	preflightRefreshing: "Odświeżanie…",
+	preflightUpToDate: "Zawartość jest aktualna",
+	homePreflightCta: "Gotowy do lotu?",
 } as const;

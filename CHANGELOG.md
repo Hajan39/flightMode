@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Pre-flight readiness screen (`app/preflight.tsx`): a modal reachable from a "Ready to fly?" button in the Home flight section. Confirms that games, articles, and relax mode are all available offline (with live counts), shows current network status, and — when online — offers a one-tap "Download latest content" to refresh the optional remote content cache before going offline. Directly serves the offline-companion north star. Fully localized (13 keys × 12 languages).
 - Home: added a "Games for your flight" row (shown only when a flight is set) that recommends solo games sized to the time left — quick games (≤3 min) for short hops, mid-length for medium flights, and deep/hard games for long hauls. No backend; derived from each game's estimated time and difficulty. Fully localized across all 12 languages.
 - Home: added a "Jump back in" row that surfaces your most recently played games (newest first, up to 4) for one-tap resume, showing each game's best score. Hidden for brand-new users with no play history. Fully localized across all 12 languages.
 

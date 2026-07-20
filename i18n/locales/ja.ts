@@ -1013,4 +1013,18 @@ gameOddOneOutName: "仲間外れ探し",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "フライト向けのゲーム",
 	homeGamesForFlightHint: "残りのフライト時間に合わせて",
+	// Pre-flight readiness screen
+	stackPreflight: "フライト準備",
+	preflightHeroTitle: "準備完了です",
+	preflightHeroSubtitle: "以下はすべてインターネットなしで動作します（機内モードでも）。",
+	preflightReadyLabel: "オフラインで利用可能",
+	preflightGamesCount: "{{count}} 個のゲーム",
+	preflightArticlesCount: "{{count}} 記事",
+	preflightRelax: "呼吸と環境音",
+	preflightNetworkOnline: "オンライン",
+	preflightNetworkOffline: "オフライン — 問題ありません",
+	preflightRefresh: "最新コンテンツをダウンロード",
+	preflightRefreshing: "更新中…",
+	preflightUpToDate: "コンテンツは最新です",
+	homePreflightCta: "準備できた？",
 } as const;

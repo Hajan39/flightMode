@@ -227,6 +227,21 @@ export default function HomeScreen() {
 						</Text>
 					</AnimatedPressable>
 				)}
+
+				<AnimatedPressable
+					style={[styles.preflightCta, { borderColor: theme.border }]}
+					onPress={() => router.push("/preflight")}
+				>
+					<Ionicons
+						name="shield-checkmark-outline"
+						size={18}
+						color={theme.tint}
+					/>
+					<Text style={[styles.preflightCtaText, { color: theme.tint }]}>
+						{t("homePreflightCta")}
+					</Text>
+					<Ionicons name="chevron-forward" size={16} color={theme.mutedText} />
+				</AnimatedPressable>
 			</Animated.View>
 
 			{/* Games sized to remaining flight time */}
@@ -717,6 +732,17 @@ const styles = StyleSheet.create({
 		marginTop: 4,
 		textAlign: "center",
 	},
+	preflightCta: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 8,
+		borderWidth: 1,
+		borderRadius: 12,
+		paddingVertical: 12,
+		paddingHorizontal: 16,
+		marginTop: 12,
+	},
+	preflightCtaText: { flex: 1, fontSize: 14, fontWeight: "600" },
 	// Featured articles empty state
 	articlesEmptyCard: {
 		borderWidth: 1,

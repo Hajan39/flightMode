@@ -1047,4 +1047,18 @@ gameOddOneOutName: "L'Intrus",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "Jeux pour votre vol",
 	homeGamesForFlightHint: "Adaptés au temps de vol restant",
+	// Pre-flight readiness screen
+	stackPreflight: "Prêt à voler",
+	preflightHeroTitle: "Vous êtes prêt à voler",
+	preflightHeroSubtitle: "Tout ci-dessous fonctionne sans internet, même en mode avion.",
+	preflightReadyLabel: "Disponible hors ligne",
+	preflightGamesCount: "{{count}} jeux",
+	preflightArticlesCount: "{{count}} articles",
+	preflightRelax: "Respiration et sons d'ambiance",
+	preflightNetworkOnline: "En ligne",
+	preflightNetworkOffline: "Hors ligne — et c'est parfait",
+	preflightRefresh: "Télécharger le contenu récent",
+	preflightRefreshing: "Actualisation…",
+	preflightUpToDate: "Le contenu est à jour",
+	homePreflightCta: "Prêt à voler ?",
 } as const;

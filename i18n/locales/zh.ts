@@ -999,4 +999,18 @@ gameOddOneOutName: "找不同",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "为你的航班挑选的游戏",
 	homeGamesForFlightHint: "根据剩余飞行时间挑选",
+	// Pre-flight readiness screen
+	stackPreflight: "飞行准备",
+	preflightHeroTitle: "一切就绪，可以起飞",
+	preflightHeroSubtitle: "以下所有内容无需联网即可使用——即使在飞行模式下。",
+	preflightReadyLabel: "离线可用",
+	preflightGamesCount: "{{count}} 个游戏",
+	preflightArticlesCount: "{{count}} 篇文章",
+	preflightRelax: "呼吸练习与环境音",
+	preflightNetworkOnline: "在线",
+	preflightNetworkOffline: "离线——没问题",
+	preflightRefresh: "下载最新内容",
+	preflightRefreshing: "正在刷新…",
+	preflightUpToDate: "内容已是最新",
+	homePreflightCta: "准备好起飞了吗？",
 } as const;

@@ -147,6 +147,10 @@ function RootStack() {
 				name="profile"
 				options={{ title: t("stackProfile"), presentation: "modal" }}
 			/>
+			<Stack.Screen
+				name="preflight"
+				options={{ title: t("stackPreflight"), presentation: "modal" }}
+			/>
 		</Stack>
 	);
 }

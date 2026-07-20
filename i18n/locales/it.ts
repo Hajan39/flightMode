@@ -1033,4 +1033,18 @@ gameOddOneOutName: "L'Intruso",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "Giochi per il tuo volo",
 	homeGamesForFlightHint: "Adatti al tempo di volo rimanente",
+	// Pre-flight readiness screen
+	stackPreflight: "Pronto al volo",
+	preflightHeroTitle: "Sei pronto a volare",
+	preflightHeroSubtitle: "Tutto qui sotto funziona senza internet, anche in modalità aereo.",
+	preflightReadyLabel: "Disponibile offline",
+	preflightGamesCount: "{{count}} giochi",
+	preflightArticlesCount: "{{count}} articoli",
+	preflightRelax: "Respirazione e suoni ambientali",
+	preflightNetworkOnline: "Online",
+	preflightNetworkOffline: "Offline — e va bene così",
+	preflightRefresh: "Scarica i contenuti più recenti",
+	preflightRefreshing: "Aggiornamento…",
+	preflightUpToDate: "I contenuti sono aggiornati",
+	homePreflightCta: "Pronto al volo?",
 } as const;

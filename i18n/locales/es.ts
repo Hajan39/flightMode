@@ -1036,4 +1036,18 @@ gameOddOneOutName: "El Intruso",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "Juegos para tu vuelo",
 	homeGamesForFlightHint: "Ajustados al tiempo de vuelo restante",
+	// Pre-flight readiness screen
+	stackPreflight: "Listo para volar",
+	preflightHeroTitle: "Estás listo para volar",
+	preflightHeroSubtitle: "Todo lo de abajo funciona sin internet, incluso en modo avión.",
+	preflightReadyLabel: "Disponible sin conexión",
+	preflightGamesCount: "{{count}} juegos",
+	preflightArticlesCount: "{{count}} artículos",
+	preflightRelax: "Respiración y sonidos ambientales",
+	preflightNetworkOnline: "En línea",
+	preflightNetworkOffline: "Sin conexión, y no pasa nada",
+	preflightRefresh: "Descargar contenido más reciente",
+	preflightRefreshing: "Actualizando…",
+	preflightUpToDate: "El contenido está actualizado",
+	homePreflightCta: "¿Listo para volar?",
 } as const;

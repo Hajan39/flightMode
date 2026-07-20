@@ -1008,4 +1008,18 @@ gameOddOneOutName: "다른 거 찾기",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "비행에 맞는 게임",
 	homeGamesForFlightHint: "남은 비행 시간에 맞춰서",
+	// Pre-flight readiness screen
+	stackPreflight: "비행 준비",
+	preflightHeroTitle: "비행 준비 완료",
+	preflightHeroSubtitle: "아래 모든 것은 인터넷 없이도 작동합니다 — 비행기 모드에서도.",
+	preflightReadyLabel: "오프라인 사용 가능",
+	preflightGamesCount: "게임 {{count}}개",
+	preflightArticlesCount: "기사 {{count}}개",
+	preflightRelax: "호흡 & 주변 사운드",
+	preflightNetworkOnline: "온라인",
+	preflightNetworkOffline: "오프라인 — 괜찮습니다",
+	preflightRefresh: "최신 콘텐츠 다운로드",
+	preflightRefreshing: "새로고침 중…",
+	preflightUpToDate: "콘텐츠가 최신 상태입니다",
+	homePreflightCta: "비행 준비됐나요?",
 } as const;

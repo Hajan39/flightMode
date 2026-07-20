@@ -1052,4 +1052,18 @@ gameOddOneOutName: "Finde den Außenseiter",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "Spiele für deinen Flug",
 	homeGamesForFlightHint: "Passend zur verbleibenden Flugzeit",
+	// Pre-flight readiness screen
+	stackPreflight: "Flugbereitschaft",
+	preflightHeroTitle: "Du bist startklar",
+	preflightHeroSubtitle: "Alles unten funktioniert ohne Internet — auch im Flugmodus.",
+	preflightReadyLabel: "Offline verfügbar",
+	preflightGamesCount: "{{count}} Spiele",
+	preflightArticlesCount: "{{count}} Artikel",
+	preflightRelax: "Atmung & Umgebungsklänge",
+	preflightNetworkOnline: "Online",
+	preflightNetworkOffline: "Offline — und das ist in Ordnung",
+	preflightRefresh: "Neueste Inhalte laden",
+	preflightRefreshing: "Wird aktualisiert…",
+	preflightUpToDate: "Inhalte sind aktuell",
+	homePreflightCta: "Startklar?",
 } as const;

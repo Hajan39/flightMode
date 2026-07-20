@@ -1003,4 +1003,18 @@ gameOddOneOutName: "अलग खोजो",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "आपकी उड़ान के लिए खेल",
 	homeGamesForFlightHint: "आपके शेष उड़ान समय के अनुसार",
+	// Pre-flight readiness screen
+	stackPreflight: "उड़ान की तैयारी",
+	preflightHeroTitle: "आप उड़ान के लिए तैयार हैं",
+	preflightHeroSubtitle: "नीचे सब कुछ बिना इंटरनेट के काम करता है — हवाई जहाज़ मोड में भी।",
+	preflightReadyLabel: "ऑफ़लाइन उपलब्ध",
+	preflightGamesCount: "{{count}} खेल",
+	preflightArticlesCount: "{{count}} लेख",
+	preflightRelax: "श्वास और परिवेशी ध्वनियाँ",
+	preflightNetworkOnline: "ऑनलाइन",
+	preflightNetworkOffline: "ऑफ़लाइन — और यह ठीक है",
+	preflightRefresh: "नवीनतम सामग्री डाउनलोड करें",
+	preflightRefreshing: "रिफ़्रेश हो रहा है…",
+	preflightUpToDate: "सामग्री अद्यतित है",
+	homePreflightCta: "उड़ान के लिए तैयार?",
 } as const;

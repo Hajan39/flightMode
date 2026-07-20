@@ -1027,4 +1027,18 @@ gameOddOneOutName: "Hledej Vetřelce",
 	// Home — flight-aware game recommendations
 	homeGamesForFlight: "Hry na tvůj let",
 	homeGamesForFlightHint: "Vybrané podle zbývajícího času letu",
+	// Pre-flight readiness screen
+	stackPreflight: "Připravenost na let",
+	preflightHeroTitle: "Jsi připraven na let",
+	preflightHeroSubtitle: "Vše níže funguje bez internetu — i v režimu letadlo.",
+	preflightReadyLabel: "Dostupné offline",
+	preflightGamesCount: "{{count}} her",
+	preflightArticlesCount: "{{count}} článků",
+	preflightRelax: "Dýchání a zvuky prostředí",
+	preflightNetworkOnline: "Online",
+	preflightNetworkOffline: "Offline — a to je v pořádku",
+	preflightRefresh: "Stáhnout nejnovější obsah",
+	preflightRefreshing: "Aktualizuji…",
+	preflightUpToDate: "Obsah je aktuální",
+	homePreflightCta: "Připraven na let?",
 } as const;
