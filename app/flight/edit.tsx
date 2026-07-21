@@ -179,8 +179,15 @@ export default function FlightEditScreen() {
 
 	function adjustDurationMinute(delta: number) {
 		let next = durationMins + delta;
-		if (next < 0) next = 55;
-		if (next >= 60) next = 0;
+		let h = durationHours;
+		if (next < 0) {
+			next = 55;
+			h = Math.max(0, h - 1); // borrow an hour
+		} else if (next >= 60) {
+			next = 0;
+			h = Math.min(24, h + 1); // carry an hour
+		}
+		setHours(String(h));
 		setMinutes(pad2(next));
 	}
 

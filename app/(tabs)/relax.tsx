@@ -139,7 +139,11 @@ export default function RelaxScreen() {
 			return;
 		}
 		haptic.tap();
-	}, [phaseIndex, isActive, haptic]);
+		// `haptic` is intentionally omitted: useHaptic() returns a fresh object
+		// each render, and the component re-renders every second (countdown), so
+		// including it would fire the pulse every second instead of once per phase.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [phaseIndex, isActive]);
 
 	const handleBreathToggle = () => {
 		haptic.tap();

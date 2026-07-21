@@ -268,7 +268,7 @@ export default function SettingsScreen() {
 							]}
 							onPress={() =>
 								Linking.openURL(
-									`mailto:${SUPPORT_EMAIL}?subject=EON%20Bug%20Report`,
+									`mailto:${SUPPORT_EMAIL}?subject=FlightMode%20Bug%20Report`,
 								)
 							}
 						>
@@ -296,7 +296,7 @@ export default function SettingsScreen() {
 							]}
 							onPress={() =>
 								Linking.openURL(
-									`mailto:${SUPPORT_EMAIL}?subject=EON%20Feature%20Suggestion`,
+									`mailto:${SUPPORT_EMAIL}?subject=FlightMode%20Feature%20Suggestion`,
 								)
 							}
 						>

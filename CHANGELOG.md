@@ -7,6 +7,15 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed (code/UX review — wave A)
+
+- Relax: the breathing exercise buzzed the haptic every second instead of once per phase (an unstable `useHaptic` value in the effect deps combined with the per-second re-render); it now pulses once per phase transition.
+- Content: `useContentItems` now merges the optional remote sync cache over the bundled articles by id (remote overrides/adds, bundled preserved) instead of replacing the whole set — a partial remote response can no longer make offline articles disappear. Matches the documented contract.
+- Flight setup: the duration minute stepper now carries/borrows into the hours field (2h 00m − 5m → 1h 55m) instead of wrapping minutes in place.
+- Android: removed the unused `RECORD_AUDIO` permission and added it to `blockedPermissions` (the app only plays audio, never records).
+- Settings: support-email subjects said "EON …" (stale template brand) — corrected to "FlightMode …". (Note: `SUPPORT_EMAIL` still points at `support@eon-app.com` and needs the real FlightMode address.)
+- Repo hygiene: removed a stray committed `tsc-errors.txt` artifact and git-ignored it; refreshed CLAUDE.md (documented the discovery/image-cache stores and destinations/preflight routes, corrected the cabin-call description, cleared a resolved known-debt note).
+
 ### Added
 
 - Tests: extracted Minesweeper's pure board logic to `games/minesweeper/logic.ts` (mine placement with a first-tap-safe guarantee + injectable RNG, adjacency counts, flood reveal, win check, flag count) and unit-tested it across seeds (exact mine count, first tap and neighbours always safe, adjacency correctness, flood never reveals a mine, all-empty flood → win). Test suite is now 279 tests across 13 suites.

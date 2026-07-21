@@ -27,7 +27,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **App version:** 1.2.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
-**Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile and settings are modal stack screens. Onboarding flow at `app/onboarding.tsx`.
+**Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, and `app/preflight.tsx` (offline-readiness) are modal stack screens; `app/destinations.tsx` (destination tips) is a pushed card screen. Onboarding flow at `app/onboarding.tsx`.
 
 **Tab screens:**
 - `(tabs)/index.tsx` — Home (daily challenge, quick actions, flight utility, recommendations)
@@ -43,6 +43,8 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `store/useAudioStore.ts` — ambient audio player, sleep timer; **not persisted** (has `any` typing debt)
 - `store/useNetworkStore.ts` — online/offline + network type; **not persisted**
 - `store/useContentStore.ts` — optional remote article sync; persists items/version/lastSyncAt only
+- `store/useDiscoveryStore.ts` — `seenGameIds` for the Home "New to try" row (persisted)
+- `store/useImageCacheStore.ts` — remote article image cache (url → local uri)
 
 **Styling:** React Native `StyleSheet` + inline styles. Design tokens:
 - `constants/Colors.ts` — theme palettes: `light`, `dark`, `crazy` (text, background, tint, card, surface, elevated, border, mutedText, etc.)
@@ -71,7 +73,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `sky-math` | brain | medium | Math quiz; daily challenge |
 | `quiz` | brain | medium | Trivia |
 | `runway-landing` | reflex | medium | Landing minigame; daily challenge |
-| `cabin-call` | reflex | medium | Audio identification; daily challenge |
+| `cabin-call` | reflex | medium | Crew-command icon matching (visual, not audio); daily challenge |
 | `air-traffic-control` | strategy | hard | Flight routing |
 | `flight-path` | strategy | hard | Plane-type runway matching |
 | `sky-defense` | strategy | hard | Tower defense |
@@ -145,7 +147,7 @@ Event queue (max 100) is buffered until the PostHog sink is ready. `components/A
 ## Shared Hooks
 
 - `hooks/useTranslation.ts` — `t()` + language management
-- `hooks/useProfileStats.ts` — derived stats from game + achievement stores (note: missing some games in estimated-minutes mapping — known debt)
+- `hooks/useProfileStats.ts` — derived stats from game + achievement stores (estimated-minutes uses the registry `estimatedTime` for every game)
 - `hooks/useContentItems.ts` — merged content (bundled + remote)
 - `hooks/useOTAUpdate.ts` — Expo OTA update integration
 - `hooks/useHaptic.ts` — haptic feedback (tap, success, heavy, etc.)
