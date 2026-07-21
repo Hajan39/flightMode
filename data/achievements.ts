@@ -293,4 +293,13 @@ export const achievements: AchievementDef[] = [
 		category: "special",
 		condition: (s) => (s.gameProgress["sliding-puzzle"]?.highScore ?? 0) >= 2000,
 	},
+	// ── Cargo Catch ──
+	{
+		id: "cargo-captain",
+		titleKey: "achieveCargoCaptainTitle",
+		descriptionKey: "achieveCargoCaptainDesc",
+		icon: "cube-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["cargo-catch"]?.highScore ?? 0) >= 25,
+	},
 ];

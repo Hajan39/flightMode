@@ -398,6 +398,17 @@ export const gameRegistry: GameDefinition[] = [
 		difficulty: "medium",
 		loadComponent: () => require("@/games/sliding-puzzle").default,
 	},
+	{
+		id: "cargo-catch",
+		titleKey: "gameCargoCatchName",
+		descriptionKey: "gameCargoCatchDescription",
+		rulesKey: "rulesCargoCatch",
+		estimatedTime: 2,
+		icon: "cube-outline",
+		category: "reflex",
+		difficulty: "medium",
+		loadComponent: () => require("@/games/cargo-catch").default,
+	},
 ];
 
 export const gamesById = Object.fromEntries(

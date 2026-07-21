@@ -1048,4 +1048,12 @@ gameOddOneOutName: "다른 거 찾기",
 	spSolved: "완성!",
 	achievePuzzleSliderTitle: "슬라이드 마스터",
 	achievePuzzleSliderDesc: "슬라이딩 퍼즐을 2000점 이상으로 완성하세요.",
+	// Cargo Catch game
+	gameCargoCatchName: "카고 캐치",
+	gameCargoCatchDescription: "카트를 밀어 떨어지는 화물을 잡으세요 — 폭탄은 피하고!",
+	rulesCargoCatch: "카트를 좌우로 움직여 좋은 화물을 잡으세요(각 +1). 폭탄은 피하세요 — 잡으면 생명 하나가 사라집니다. 생명 3개, 60초. 화물을 놓쳐도 괜찮아요. 점점 빨라집니다!",
+	ccLives: "생명",
+	ccTimeLeft: "시간",
+	achieveCargoCaptainTitle: "화물 선장",
+	achieveCargoCaptainDesc: "한 판에서 화물 25개를 잡으세요.",
 } as const;

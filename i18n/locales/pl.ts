@@ -1068,4 +1068,12 @@ gameOddOneOutName: "Znajdź Intruza",
 	spSolved: "Rozwiązano!",
 	achievePuzzleSliderTitle: "Mistrz przesuwania",
 	achievePuzzleSliderDesc: "Rozwiąż przesuwankę z wynikiem 2000 lub więcej.",
+	// Cargo Catch game
+	gameCargoCatchName: "Łap ładunek",
+	gameCargoCatchDescription: "Przesuwaj wózek, aby łapać spadający ładunek — i unikaj bomb!",
+	rulesCargoCatch: "Przesuwaj wózek w lewo i prawo, aby łapać dobry ładunek (+1 każdy). Unikaj bomb — każda kosztuje życie. Masz 3 życia i 60 sekund. Pominięcie ładunku jest OK. Robi się coraz szybciej!",
+	ccLives: "ŻYCIA",
+	ccTimeLeft: "CZAS",
+	achieveCargoCaptainTitle: "Kapitan ładunku",
+	achieveCargoCaptainDesc: "Złap 25 skrzyń w jednej rozgrywce Łap ładunek.",
 } as const;

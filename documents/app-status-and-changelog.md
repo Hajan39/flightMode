@@ -132,6 +132,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-20
 
+- nova hra Cargo Catch (`cargo-catch`): reflexni — posouvej vozik a chytej padajici naklad (+1), vyhybej se bombam (kazda = zivot); 3 zivoty, 60s wall-clock, ramp obtiznosti; achievement "Cargo Captain" (25); reflex/medium; 12 jazyku (celkem 33 her)
+- testy: Word Guess cista logika vyextrahovana do `games/word-guess/logic.ts` + unit testy green/yellow/gray vcetne double-letter, integrita word poolu; opraveno neslovo "GROUN" → "PROPS"
+- CI: GitHub Actions workflow (`.github/workflows/ci.yml`) — `tsc --noEmit` + `npm test` na kazdy push a PR
+- destinace rozsireny z 14 na 19 (Soul, Kahira, Mexico City, Kapske Mesto, Viden)
 - nova hra Sliding Puzzle (`sliding-puzzle`): klasicky 4×4 15-puzzle, garantovane resitelny shuffle, tahy + wall-clock casovac, pauza, countdown; achievement "Slide Master"; brain/medium/5 min; 12 jazyku (celkem 32 her)
 - testy: zavedeny Jest (`jest-expo`) + `npm test` a 123 pure-logic/data testu v `__tests__/` — parita klicu vsech 12 jazyku, integrita registru her a achievementu, destinace, validita vsech 15 Sudoku puzzlu (puzzly vyextrahovany do `games/sudoku/puzzles.ts`)
 - destinace rozsireny z 8 na 14 (Londyn, Singapur, Istanbul, Sydney, Lisabon, Reykjavik)

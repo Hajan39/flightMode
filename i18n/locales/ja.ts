@@ -1053,4 +1053,12 @@ gameOddOneOutName: "仲間外れ探し",
 	spSolved: "クリア！",
 	achievePuzzleSliderTitle: "スライドマスター",
 	achievePuzzleSliderDesc: "スライドパズルを2000点以上でクリアする。",
+	// Cargo Catch game
+	gameCargoCatchName: "カーゴキャッチ",
+	gameCargoCatchDescription: "カートを動かして落ちてくる荷物をキャッチ — 爆弾は避けよう！",
+	rulesCargoCatch: "カートを左右に動かして良い荷物をキャッチ（各+1）。爆弾は避ける — 取ると1ライフ失う。ライフは3、制限は60秒。荷物を逃してもOK。だんだん速くなるよ！",
+	ccLives: "ライフ",
+	ccTimeLeft: "タイム",
+	achieveCargoCaptainTitle: "カーゴキャプテン",
+	achieveCargoCaptainDesc: "1回のカーゴキャッチで25個の荷物をキャッチする。",
 } as const;

@@ -1073,4 +1073,12 @@ gameOddOneOutName: "L'Intruso",
 	spSolved: "Risolto!",
 	achievePuzzleSliderTitle: "Maestro dello scorrimento",
 	achievePuzzleSliderDesc: "Risolvi il rompicapo scorrevole con un punteggio di 2000 o più.",
+	// Cargo Catch game
+	gameCargoCatchName: "Acchiappa carico",
+	gameCargoCatchDescription: "Fai scorrere il carrello per prendere il carico che cade — ed evita le bombe!",
+	rulesCargoCatch: "Muovi il carrello a sinistra e a destra per prendere il carico buono (+1 ciascuno). Evita le bombe: ognuna costa una vita. Hai 3 vite e 60 secondi. Perdere il carico va bene. Accelera!",
+	ccLives: "VITE",
+	ccTimeLeft: "TEMPO",
+	achieveCargoCaptainTitle: "Capitano del carico",
+	achieveCargoCaptainDesc: "Prendi 25 casse in una sola partita di Acchiappa carico.",
 } as const;

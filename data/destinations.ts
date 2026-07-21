@@ -490,6 +490,171 @@ export const destinations: Destination[] = [
 			},
 		],
 	},
+	{
+		id: "seoul",
+		city: "Seoul",
+		country: "South Korea",
+		emoji: "🏙️",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Incheon (ICN) the AREX Airport Railroad Express reaches Seoul Station in about 45 minutes; official taxis and airport limousine buses serve every district.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Buy a rechargeable T-money card and tap it on the vast, cheap subway and buses. Trains are signposted in English and run frequently until around midnight.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Korean BBQ, bibimbap, and late-night street food are excellent and affordable. Side dishes (banchan) are free and refillable, and tap water is safe to drink.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the won and cards are accepted almost everywhere, even for tiny purchases. Tipping is not customary and is often politely declined.",
+			},
+			{
+				icon: "hand-left-outline",
+				label: "Etiquette",
+				text: "Give and receive money or objects with both hands, especially with elders. Remove your shoes when entering homes and many traditional restaurants.",
+			},
+		],
+	},
+	{
+		id: "cairo",
+		city: "Cairo",
+		country: "Egypt",
+		emoji: "🐫",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "There is no train from Cairo Airport, so use an official white taxi or a ride-hailing app like Uber or Careem, which are metered and avoid haggling.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The metro is cheap and beats the heavy traffic, with dedicated women-only carriages in the middle of each train. Agree fares before any street-taxi ride.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try koshari, ful medames, and falafel (taameya) from busy local spots. Stick to bottled water and avoid raw salads washed in tap water.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the Egyptian pound; carry small notes as small tips (baksheesh) are expected for most services. Cards work in hotels but cash rules elsewhere.",
+			},
+			{
+				icon: "shirt-outline",
+				label: "Etiquette",
+				text: "Dress modestly by covering shoulders and knees, and women should carry a scarf for mosques. Ask before photographing people, and remove your shoes to enter mosques.",
+			},
+		],
+	},
+	{
+		id: "mexico-city",
+		city: "Mexico City",
+		country: "Mexico",
+		emoji: "🌮",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Use the authorized airport taxis booked at the fixed-price booths, or a ride-hailing app rather than hailing a cab outside. The metro is nearby but not luggage-friendly.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The metro and Metrobús are very cheap — load a rechargeable card for both. The city sits at 2,240m, so take the first day slowly while you adjust to the altitude.",
+			},
+			{
+				icon: "fast-food-outline",
+				label: "Food",
+				text: "Tacos al pastor, tamales, and quesadillas from busy street stalls are superb value. Drink bottled water and choose stalls with a steady local crowd.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the peso; keep cash for markets and street food where cards aren't taken. Tipping 10–15% at restaurants is expected for table service.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Use registered taxis or ride-hailing apps rather than flagging cabs, especially at night. Keep valuables out of sight on crowded metro lines and markets.",
+			},
+		],
+	},
+	{
+		id: "cape-town",
+		city: "Cape Town",
+		country: "South Africa",
+		emoji: "🏔️",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "The MyCiTi bus links the airport to the city centre, or use a metered taxi or a ride-hailing app like Uber, which are reliable and affordable.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Load a myconnect card for the MyCiTi buses, though renting a car or using apps is easiest for Table Mountain and the coast. Public transit is limited after dark.",
+			},
+			{
+				icon: "wine-outline",
+				label: "Food",
+				text: "Enjoy a braai (barbecue), fresh seafood, and day trips to the nearby Winelands. Tap water is safe to drink, and restaurants offer excellent value.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the rand and cards are widely accepted. Tipping 10–15% is standard in restaurants, and it's normal to tip petrol attendants and car guards a few rand.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Avoid walking alone after dark and don't display phones or valuables in the open. Use ride-hailing apps at night and check local advice before hiking trails alone.",
+			},
+		],
+	},
+	{
+		id: "vienna",
+		city: "Vienna",
+		country: "Austria",
+		emoji: "🎻",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The City Airport Train (CAT) reaches Wien Mitte in about 16 minutes, while the S7 suburban train is slower but much cheaper. Official taxis wait outside arrivals.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The U-Bahn, trams, and buses are punctual and extensive — a 24, 48, or 72-hour pass is great value. Validate your ticket before your first ride to avoid a fine.",
+			},
+			{
+				icon: "cafe-outline",
+				label: "Food",
+				text: "Try Wiener schnitzel, a sausage from a Würstelstand, and a coffee-house Sachertorte. Lingering for hours over one coffee is a cherished local tradition.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Austria uses the euro; carry some cash as smaller cafés and stands can be card-shy. Round up or add about 5–10% and hand the tip to the server directly.",
+			},
+			{
+				icon: "hand-left-outline",
+				label: "Etiquette",
+				text: "A polite 'Grüß Gott' greeting is customary when entering shops. Punctuality is valued, and being quiet and orderly on public transport is expected.",
+			},
+		],
+	},
 ];
 
 /** Look up a single destination by its id. */

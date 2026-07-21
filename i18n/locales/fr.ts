@@ -1087,4 +1087,12 @@ gameOddOneOutName: "L'Intrus",
 	spSolved: "Résolu !",
 	achievePuzzleSliderTitle: "Maître du taquin",
 	achievePuzzleSliderDesc: "Résolvez le taquin avec un score de 2000 ou plus.",
+	// Cargo Catch game
+	gameCargoCatchName: "Attrape-cargo",
+	gameCargoCatchDescription: "Faites glisser le chariot pour attraper le fret qui tombe — et évitez les bombes !",
+	rulesCargoCatch: "Déplacez le chariot à gauche et à droite pour attraper le bon fret (+1 chacun). Évitez les bombes : chacune coûte une vie. Vous avez 3 vies et 60 secondes. Manquer du fret n'est pas grave. Ça accélère !",
+	ccLives: "VIES",
+	ccTimeLeft: "TEMPS",
+	achieveCargoCaptainTitle: "Capitaine de fret",
+	achieveCargoCaptainDesc: "Attrapez 25 caisses en une seule partie d'Attrape-cargo.",
 } as const;

@@ -1043,4 +1043,12 @@ gameOddOneOutName: "अलग खोजो",
 	spSolved: "हल हो गया!",
 	achievePuzzleSliderTitle: "स्लाइड मास्टर",
 	achievePuzzleSliderDesc: "स्लाइडिंग पहेली को 2000 या अधिक अंकों से हल करें।",
+	// Cargo Catch game
+	gameCargoCatchName: "कार्गो कैच",
+	gameCargoCatchDescription: "गिरते कार्गो को पकड़ने के लिए गाड़ी सरकाएँ — और बमों से बचें!",
+	rulesCargoCatch: "अच्छा कार्गो पकड़ने के लिए गाड़ी को बाएँ-दाएँ ले जाएँ (+1 प्रत्येक)। बमों से बचें — हर एक से एक जान जाती है। आपके पास 3 जान और 60 सेकंड हैं। कार्गो छूटना ठीक है। यह तेज़ होता जाता है!",
+	ccLives: "जान",
+	ccTimeLeft: "समय",
+	achieveCargoCaptainTitle: "कार्गो कप्तान",
+	achieveCargoCaptainDesc: "एक ही कार्गो कैच राउंड में 25 बक्से पकड़ें।",
 } as const;

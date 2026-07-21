@@ -1039,4 +1039,12 @@ gameOddOneOutName: "找不同",
 	spSolved: "完成！",
 	achievePuzzleSliderTitle: "滑块大师",
 	achievePuzzleSliderDesc: "以 2000 分或以上完成滑块拼图。",
+	// Cargo Catch game
+	gameCargoCatchName: "接货物",
+	gameCargoCatchDescription: "滑动小车接住掉落的货物——并躲开炸弹！",
+	rulesCargoCatch: "左右移动小车接住好货物（每个+1）。躲开炸弹——每接一个失去一条命。你有 3 条命和 60 秒。漏接货物没关系。速度会越来越快！",
+	ccLives: "生命",
+	ccTimeLeft: "时间",
+	achieveCargoCaptainTitle: "货运船长",
+	achieveCargoCaptainDesc: "在一局接货物中接住 25 个箱子。",
 } as const;

@@ -1092,4 +1092,12 @@ gameOddOneOutName: "Finde den Außenseiter",
 	spSolved: "Gelöst!",
 	achievePuzzleSliderTitle: "Schiebemeister",
 	achievePuzzleSliderDesc: "Löse das Schiebepuzzle mit 2000 Punkten oder mehr.",
+	// Cargo Catch game
+	gameCargoCatchName: "Fracht fangen",
+	gameCargoCatchDescription: "Schiebe den Ladewagen, um fallende Fracht zu fangen — und weiche den Bomben aus!",
+	rulesCargoCatch: "Bewege den Wagen nach links und rechts, um gute Fracht zu fangen (+1 pro Stück). Weiche Bomben aus — jede kostet ein Leben. Du hast 3 Leben und 60 Sekunden. Fracht zu verpassen ist okay. Es wird schneller!",
+	ccLives: "LEBEN",
+	ccTimeLeft: "ZEIT",
+	achieveCargoCaptainTitle: "Frachtkapitän",
+	achieveCargoCaptainDesc: "Fange 25 Kisten in einem Durchgang von Fracht fangen.",
 } as const;

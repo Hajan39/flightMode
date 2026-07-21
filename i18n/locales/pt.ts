@@ -1069,4 +1069,12 @@ gameOddOneOutName: "O Intruso",
 	spSolved: "Resolvido!",
 	achievePuzzleSliderTitle: "Mestre deslizante",
 	achievePuzzleSliderDesc: "Resolva o quebra-cabeça deslizante com 2000 pontos ou mais.",
+	// Cargo Catch game
+	gameCargoCatchName: "Pega carga",
+	gameCargoCatchDescription: "Deslize o carrinho para pegar a carga que cai — e desvie das bombas!",
+	rulesCargoCatch: "Mova o carrinho para a esquerda e direita para pegar carga boa (+1 cada). Evite bombas — cada uma custa uma vida. Você tem 3 vidas e 60 segundos. Perder carga tudo bem. Fica mais rápido!",
+	ccLives: "VIDAS",
+	ccTimeLeft: "TEMPO",
+	achieveCargoCaptainTitle: "Capitão de carga",
+	achieveCargoCaptainDesc: "Pegue 25 caixas numa única partida de Pega carga.",
 } as const;

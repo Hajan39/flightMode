@@ -57,7 +57,7 @@ Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
 ## Games
 
-32 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+33 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -97,6 +97,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `snake` | reflex | medium | Classic snake; D-pad controls |
 | `cabin-lights` | brain | medium | Lights Out puzzle; 5 rounds 3×3→5×5 |
 | `sliding-puzzle` | brain | medium | Classic 15-puzzle (4×4 sliding tiles) |
+| `cargo-catch` | reflex | medium | Catch falling cargo, dodge bombs; 60s |
 
 **Daily challenge games:** `tap-rush`, `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess` (derived from `isDailyChallenge` in `data/games.ts` — do not hand-maintain)
 

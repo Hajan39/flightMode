@@ -1067,4 +1067,12 @@ gameOddOneOutName: "Hledej Vetřelce",
 	spSolved: "Vyřešeno!",
 	achievePuzzleSliderTitle: "Mistr posouvání",
 	achievePuzzleSliderDesc: "Vyřeš posuvné puzzle se skóre 2000 nebo více.",
+	// Cargo Catch game
+	gameCargoCatchName: "Chytání nákladu",
+	gameCargoCatchDescription: "Posouvej vozík a chytej padající náklad — a vyhýbej se bombám!",
+	rulesCargoCatch: "Posouvej vozík doleva a doprava a chytej dobrý náklad (+1 za každý). Vyhýbej se bombám — každá tě stojí život. Máš 3 životy a 60 sekund. Minout náklad nevadí. Zrychluje se to!",
+	ccLives: "ŽIVOTY",
+	ccTimeLeft: "ČAS",
+	achieveCargoCaptainTitle: "Kapitán nákladu",
+	achieveCargoCaptainDesc: "Chyť 25 beden v jednom kole Chytání nákladu.",
 } as const;

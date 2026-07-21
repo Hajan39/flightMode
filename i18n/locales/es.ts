@@ -1076,4 +1076,12 @@ gameOddOneOutName: "El Intruso",
 	spSolved: "¡Resuelto!",
 	achievePuzzleSliderTitle: "Maestro deslizante",
 	achievePuzzleSliderDesc: "Resuelve el puzzle deslizante con 2000 puntos o más.",
+	// Cargo Catch game
+	gameCargoCatchName: "Atrapa carga",
+	gameCargoCatchDescription: "Desliza el carrito para atrapar la carga que cae — ¡y esquiva las bombas!",
+	rulesCargoCatch: "Mueve el carrito a izquierda y derecha para atrapar carga buena (+1 cada una). Evita las bombas: cada una cuesta una vida. Tienes 3 vidas y 60 segundos. Fallar carga no pasa nada. ¡Se acelera!",
+	ccLives: "VIDAS",
+	ccTimeLeft: "TIEMPO",
+	achieveCargoCaptainTitle: "Capitán de carga",
+	achieveCargoCaptainDesc: "Atrapa 25 cajas en una sola partida de Atrapa carga.",
 } as const;

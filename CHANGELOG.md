@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added Cargo Catch game (`cargo-catch`): a reflex game — slide the loader cart left/right to catch falling cargo (+1 each) and dodge bombs (each costs a life). 3 lives, 60-second wall-clock round, difficulty ramps up. New "Cargo Captain" achievement (catch 25). Reflex/medium/2 min. Fully localized across all 12 languages. (Total games: 33.)
+- Tests: added Word Guess logic tests — extracted the pure marking logic to `games/word-guess/logic.ts` and unit-tested green/yellow/gray resolution including double-letter edge cases, plus word-pool integrity (all 5-letter, unique). Also fixed a non-word ("GROUN") in the daily word pool → "PROPS".
+- CI: added a GitHub Actions workflow (`.github/workflows/ci.yml`) that runs `npx tsc --noEmit` and `npm test` on every push and pull request.
+- Expanded destinations from 14 to 19 (added Seoul, Cairo, Mexico City, Cape Town, Vienna).
 - Added Sliding Puzzle game (`sliding-puzzle`): the classic 4×4 15-puzzle — tap a tile next to the empty space to slide it, arrange 1–15 to solve. Guaranteed-solvable shuffle (random valid slides from solved), move + wall-clock timer, pause support, 3-2-1 countdown. Scoring rewards fewer moves and less time. New "Slide Master" achievement. Brain/medium/5 min. Fully localized across all 12 languages. (Total games: 32.)
 - Test suite: introduced Jest (`jest-expo`) with `npm test` and 123 pure-logic/data tests in `__tests__/` — locale key parity across all 12 languages (no missing/extra/empty keys), game-registry integrity (every game's title/description/rules keys exist, valid metadata), achievement integrity, destinations integrity, and Sudoku puzzle validity (all 15 solutions are valid grids with matching clues). Sudoku puzzles were extracted to `games/sudoku/puzzles.ts` to make them testable.
 - Expanded destinations from 8 to 14 (added London, Singapore, Istanbul, Sydney, Lisbon, Reykjavík), each with 5 practical tips.

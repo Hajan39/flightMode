@@ -1076,4 +1076,12 @@ gameOddOneOutName: "Odd One Out",
 	spSolved: "Solved!",
 	achievePuzzleSliderTitle: "Slide Master",
 	achievePuzzleSliderDesc: "Solve the Sliding Puzzle with a score of 2000 or more.",
+	// Cargo Catch game
+	gameCargoCatchName: "Cargo Catch",
+	gameCargoCatchDescription: "Slide the loader cart to catch falling cargo — and dodge the bombs!",
+	rulesCargoCatch: "Move the cart left and right to catch good cargo (+1 each). Avoid bombs — each one you catch costs a life. You have 3 lives and 60 seconds. Missing cargo is fine. It gets faster as you go!",
+	ccLives: "LIVES",
+	ccTimeLeft: "TIME",
+	achieveCargoCaptainTitle: "Cargo Captain",
+	achieveCargoCaptainDesc: "Catch 25 crates in a single Cargo Catch run.",
 } as const;
