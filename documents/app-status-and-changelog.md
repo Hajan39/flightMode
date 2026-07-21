@@ -132,6 +132,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-20
 
+- depth iterace: Sudoku ciste helpery vyextrahovany do `games/sudoku/logic.ts` (souradnice, isPeer, computeErrors, isSolved, formatTime) + unit testy; test integrity obsahu (44 clanku: unikatni id, kladny readTime, neprazdne en/cs/de); destinace 29 → 34 (Madrid, Stockholm, Dilli, Osaka, Curych); suite 237 testu / 11 suites
 - nova hra Word Search (`word-search`, novy zanr): najdi 6 skrytych leteckych slov v 8×8 mrizce (H/V/D, dopredu i pozpatku), vyber tapem prvni + posledni pismeno; achievement "Word Hunter"; cista grid logika v `games/word-search/logic.ts` + unit testy (citelnost umisteni pres seedy, detekce primky); +5 destinaci (29: Berlin, Kjoto, Rio, Ateny, Hanoj); suite 173 testu (celkem 34 her)
 - depth iterace (bez nove hry — pokryti zanru je siroke): destinace rozsireny z 19 na 24 (Bali, Marrakech, Buenos Aires, Praha, Toronto); flight-recommendation logika vyextrahovana do `utils/flightRecommendations.ts` + testy; testy `useGameStore` (best/streak/levelStars/reset); AsyncStorage jest mock (`jest.setup.js`) — suite 156 testu
 - nova hra Cargo Catch (`cargo-catch`): reflexni — posouvej vozik a chytej padajici naklad (+1), vyhybej se bombam (kazda = zivot); 3 zivoty, 60s wall-clock, ramp obtiznosti; achievement "Cargo Captain" (25); reflex/medium; 12 jazyku (celkem 33 her)

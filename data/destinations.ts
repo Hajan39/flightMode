@@ -985,6 +985,171 @@ export const destinations: Destination[] = [
 			},
 		],
 	},
+	{
+		id: "madrid",
+		city: "Madrid",
+		country: "Spain",
+		emoji: "🐻",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Barajas the Metro Line 8 reaches the city in about 20 minutes, or the Cercanías C-1 train links to Atocha and Chamartín. Official taxis charge a fixed flat fare to the centre — use the marked rank.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The metro is fast, cheap, and extensive — buy a rechargeable Multi card that also works on buses. The centre is compact and walkable, and trains run until around 1:30am.",
+			},
+			{
+				icon: "wine-outline",
+				label: "Food",
+				text: "Locals eat late — lunch around 2:30pm and dinner after 9pm. Hop between tapas bars, where a drink sometimes comes with a free small plate, and try cocido and churros con chocolate.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Spain uses the euro and cards are accepted almost everywhere, but keep coins for small bars. Tipping is modest — round up or leave a euro or two for good service.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Madrid is generally safe, but watch for pickpockets on the metro and around Puerta del Sol and Gran Vía. Summers are very hot, so plan indoor activities during the midday peak.",
+			},
+		],
+	},
+	{
+		id: "stockholm",
+		city: "Stockholm",
+		country: "Sweden",
+		emoji: "⛴️",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The Arlanda Express train reaches the centre in about 20 minutes but is pricey; slower Flygbussarna coaches and commuter trains are cheaper. Official taxis have a fixed fare to the city — always agree it first.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The Tunnelbana metro, buses, trams, and ferries share one SL ticket — tap a contactless card or buy in the SL app. The metro's art-filled stations are a sight in themselves.",
+			},
+			{
+				icon: "cafe-outline",
+				label: "Food",
+				text: "Take a fika — a coffee and cinnamon bun (kanelbulle) break — as locals do daily. Try Swedish meatballs, herring, and lunch specials (dagens lunch) for the best value.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the krona, not the euro, and Sweden is almost entirely cashless — cards and phones work everywhere. Tipping is not expected as service is included, though rounding up is welcome.",
+			},
+			{
+				icon: "hand-left-outline",
+				label: "Etiquette",
+				text: "Swedes value quiet, personal space, and orderly queues, so keep your voice down on transit. Remove your shoes when entering someone's home, and expect a relaxed, punctual approach to plans.",
+			},
+		],
+	},
+	{
+		id: "delhi",
+		city: "Delhi",
+		country: "India",
+		emoji: "🛺",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The Airport Express (Orange Line) metro reaches New Delhi station in about 20 minutes and beats the traffic. Otherwise use the prepaid taxi booth or a ride-hailing app rather than hailing a cab.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The metro is clean, cheap, and air-conditioned, with women-only carriages at the front of each train. Buy a token or a rechargeable card, and agree fares before any auto-rickshaw ride or use the meter.",
+			},
+			{
+				icon: "fast-food-outline",
+				label: "Food",
+				text: "Street food like chaat, parathas, and kebabs is superb — choose busy stalls with high turnover. Stick to bottled water, avoid raw salads and ice from unknown vendors, and ease into the spice.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the rupee; carry small notes for markets, rickshaws, and street food that are cash-only. Tipping around 10% is customary in restaurants, and small tips for helpers are appreciated.",
+			},
+			{
+				icon: "shirt-outline",
+				label: "Etiquette",
+				text: "Dress modestly by covering shoulders and knees, especially at temples where you must also remove your shoes. Use your right hand to eat and pass items, and ask before photographing people.",
+			},
+		],
+	},
+	{
+		id: "osaka",
+		city: "Osaka",
+		country: "Japan",
+		emoji: "🏯",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Kansai (KIX) the JR Haruka express reaches Shin-Osaka in about 50 minutes, while the Nankai Rapi:t serves Namba. From the closer Itami (ITM) airport the monorail and buses reach the centre quickly.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Buy an ICOCA or Suica IC card and tap it on the subway, JR loop line, and buses. The Midosuji subway line links most major districts, and the compact centre is easy to walk.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Osaka is Japan's street-food capital — don't miss takoyaki, okonomiyaki, and kushikatsu around Dotonbori. There's a no-double-dipping rule for the shared kushikatsu sauce, and tap water is safe to drink.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Carry some cash, as many small eateries and stalls are cash-only, though IC cards and contactless are widely accepted. Tipping is not practiced and can cause confusion.",
+			},
+			{
+				icon: "hand-left-outline",
+				label: "Etiquette",
+				text: "Keep your voice low on trains and don't eat while walking. Stand on the right of escalators — the opposite of Tokyo — and remove your shoes when entering homes or traditional restaurants.",
+			},
+		],
+	},
+	{
+		id: "zurich",
+		city: "Zurich",
+		country: "Switzerland",
+		emoji: "🏔️",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "Frequent trains link Zurich Airport to the main station (Hauptbahnhof) in about 10 minutes. Official taxis are available but expensive, so the train is the fast, cheap choice into town.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "Trams, buses, and S-Bahn trains share one ZVV ticket — buy it from machines or the app before boarding. The compact centre is very walkable, and everything runs precisely on time.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try cheese fondue, raclette, and rösti, and the local Zürcher Geschnetzeltes veal dish. Eating out is expensive, so lunch menus (Mittagsmenü) offer better value and tap water is clean and free.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Switzerland uses the Swiss franc, not the euro, and cards are accepted almost everywhere. Service is included, so tipping is minimal — simply round up to the nearest franc for good service.",
+			},
+			{
+				icon: "hand-left-outline",
+				label: "Etiquette",
+				text: "A polite 'Grüezi' greeting is customary when entering shops, and punctuality is taken seriously. Sundays are quiet with most shops closed, and loud noise or recycling is frowned upon then.",
+			},
+		],
+	},
 ];
 
 /** Look up a single destination by its id. */

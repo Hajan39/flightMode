@@ -22,6 +22,14 @@ import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 
 import { PUZZLES } from "./puzzles";
+import {
+  computeErrors,
+  formatTime,
+  getCol,
+  getRow,
+  isPeer,
+  isSolved,
+} from "./logic";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -34,31 +42,7 @@ type Phase = "idle" | "selecting" | "playing" | "paused" | "over";
 // Helpers
 // ---------------------------------------------------------------------------
 
-const getRow = (i: number) => Math.floor(i / 9);
-const getCol = (i: number) => i % 9;
-const getBox = (i: number) =>
-  Math.floor(getRow(i) / 3) * 3 + Math.floor(getCol(i) / 3);
-
-function isPeer(a: number, b: number): boolean {
-  return (
-    a !== b &&
-    (getRow(a) === getRow(b) || getCol(a) === getCol(b) || getBox(a) === getBox(b))
-  );
-}
-
-function computeErrors(board: number[], solution: number[]): Set<number> {
-  const errs = new Set<number>();
-  board.forEach((v, i) => {
-    if (v !== 0 && v !== solution[i]) errs.add(i);
-  });
-  return errs;
-}
-
-function formatTime(seconds: number): string {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
+// Pure helpers live in ./logic (unit-tested).
 
 // ---------------------------------------------------------------------------
 // Animated pressables
@@ -248,7 +232,7 @@ export default function SudokuGame() {
       setErrors(newErrors);
       if (newErrors.has(selectedCell)) triggerShake();
 
-      const won = next.every((v, i) => v === solution[i]);
+      const won = isSolved(next, solution);
       if (won && !solvedRef.current) {
         solvedRef.current = true;
         haptic.success();
@@ -308,7 +292,7 @@ export default function SudokuGame() {
     setBoard(next);
     setErrors(computeErrors(next, solution));
 
-    const won = next.every((v, i) => v === solution[i]);
+    const won = isSolved(next, solution);
     if (won && !solvedRef.current) {
       solvedRef.current = true;
       const usedAfter = hintsUsed + 1;
