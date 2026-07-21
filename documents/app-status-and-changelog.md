@@ -132,6 +132,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-20
 
+- depth iterace (bez nove hry — pokryti zanru je siroke): destinace rozsireny z 19 na 24 (Bali, Marrakech, Buenos Aires, Praha, Toronto); flight-recommendation logika vyextrahovana do `utils/flightRecommendations.ts` + testy; testy `useGameStore` (best/streak/levelStars/reset); AsyncStorage jest mock (`jest.setup.js`) — suite 156 testu
 - nova hra Cargo Catch (`cargo-catch`): reflexni — posouvej vozik a chytej padajici naklad (+1), vyhybej se bombam (kazda = zivot); 3 zivoty, 60s wall-clock, ramp obtiznosti; achievement "Cargo Captain" (25); reflex/medium; 12 jazyku (celkem 33 her)
 - testy: Word Guess cista logika vyextrahovana do `games/word-guess/logic.ts` + unit testy green/yellow/gray vcetne double-letter, integrita word poolu; opraveno neslovo "GROUN" → "PROPS"
 - CI: GitHub Actions workflow (`.github/workflows/ci.yml`) — `tsc --noEmit` + `npm test` na kazdy push a PR

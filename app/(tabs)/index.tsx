@@ -16,7 +16,6 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import {
 	dailyChallengeGames,
-	gameRegistry,
 	getGameById,
 	playTogetherGames,
 } from "@/data/games";
@@ -34,8 +33,8 @@ import { useDiscoveryStore } from "@/store/useDiscoveryStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import NewToTryRow from "@/components/NewToTryRow";
 import { getDestinationById } from "@/data/destinations";
-import type { GameCategory } from "@/types/game";
 import type { GamePlayMode } from "@/types/game";
+import { pickFlightGames } from "@/utils/flightRecommendations";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 function getPlayModeLabelKey(playMode?: GamePlayMode) {
@@ -50,32 +49,6 @@ function getDayOfYear(date: Date) {
 	const diff = date.getTime() - start.getTime();
 	const oneDay = 1000 * 60 * 60 * 24;
 	return Math.floor(diff / oneDay);
-}
-
-// Recommend solo games sized to the time left in the flight:
-// short hop → quick games, medium → mid-length, long haul → deep/hard games.
-// Within a bucket, games in the user's preferred categories are surfaced first.
-function pickFlightGames(
-	remainingMin: number,
-	preferred: GameCategory[],
-) {
-	const solo = gameRegistry.filter((g) => !g.isPlayTogether);
-	let pool: typeof solo;
-	if (remainingMin <= 15) {
-		pool = solo.filter((g) => g.estimatedTime <= 3);
-	} else if (remainingMin <= 90) {
-		pool = solo.filter((g) => g.estimatedTime > 3 && g.estimatedTime < 7);
-	} else {
-		pool = solo.filter((g) => g.estimatedTime >= 7 || g.difficulty === "hard");
-	}
-	if (preferred.length > 0) {
-		pool = [...pool].sort(
-			(a, b) =>
-				Number(preferred.includes(b.category)) -
-				Number(preferred.includes(a.category)),
-		);
-	}
-	return pool.slice(0, 4);
 }
 
 export default function HomeScreen() {

@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Tests: extracted the flight-time game recommendation logic to `utils/flightRecommendations.ts` and added unit tests (bucket selection by remaining time, preferred-category ordering, play-together exclusion, limit). Added `useGameStore` tests covering new-best, streak grow/reset, `levelStarsPatch` max-merge, and per-game reset. Wired an AsyncStorage jest mock (`jest.setup.js`) so persisted stores are testable. Suite is now 156 tests.
+- Expanded destinations from 19 to 24 (added Bali, Marrakech, Buenos Aires, Prague, Toronto).
+
 - Added Cargo Catch game (`cargo-catch`): a reflex game — slide the loader cart left/right to catch falling cargo (+1 each) and dodge bombs (each costs a life). 3 lives, 60-second wall-clock round, difficulty ramps up. New "Cargo Captain" achievement (catch 25). Reflex/medium/2 min. Fully localized across all 12 languages. (Total games: 33.)
 - Tests: added Word Guess logic tests — extracted the pure marking logic to `games/word-guess/logic.ts` and unit-tested green/yellow/gray resolution including double-letter edge cases, plus word-pool integrity (all 5-letter, unique). Also fixed a non-word ("GROUN") in the daily word pool → "PROPS".
 - CI: added a GitHub Actions workflow (`.github/workflows/ci.yml`) that runs `npx tsc --noEmit` and `npm test` on every push and pull request.

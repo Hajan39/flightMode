@@ -655,6 +655,171 @@ export const destinations: Destination[] = [
 			},
 		],
 	},
+	{
+		id: "bali",
+		city: "Denpasar (Bali)",
+		country: "Indonesia",
+		emoji: "🏝️",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Ngurah Rai (Denpasar) airport has no train, so use the official taxi counter or a ride-hailing app like Grab or Gojek. Many hotels offer cheap pickups worth arranging in advance.",
+			},
+			{
+				icon: "car-outline",
+				label: "Getting around",
+				text: "There is no public transit network, so hire a private driver, rent a scooter, or use ride-hailing apps. Traffic is heavy, so allow extra time between areas like Seminyak, Ubud, and Uluwatu.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Local warungs serve cheap, tasty nasi goreng, satay, and babi guling. Stick to bottled water and busy stalls, and be cautious with ice from unknown vendors.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the rupiah; carry cash for warungs and markets, as cards aren't accepted everywhere. Tipping isn't expected, but rounding up or leaving 5–10% is appreciated.",
+			},
+			{
+				icon: "shirt-outline",
+				label: "Etiquette",
+				text: "Dress modestly at temples and wear a sarong, which is often provided at the entrance. Never touch anyone's head, and step around the small daily offerings (canang sari) left on the ground.",
+			},
+		],
+	},
+	{
+		id: "marrakech",
+		city: "Marrakech",
+		country: "Morocco",
+		emoji: "🕌",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Marrakech Menara airport is a short ride from the medina; agree the taxi fare before setting off or use a metered petit taxi. Bus 19 is a cheap alternative to the main squares.",
+			},
+			{
+				icon: "walk-outline",
+				label: "Getting around",
+				text: "The medina is a walkable maze best explored on foot, while petit taxis handle longer trips — insist on the meter or agree a price first. Expect narrow lanes shared with scooters and handcarts.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try tagine, couscous, and fresh mint tea, with Jemaa el-Fna's evening food stalls a lively option. Stick to bottled water and busy stalls for the safest street food.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the dirham and cash rules in the souks, where haggling is expected. Small tips for guides, waiters, and helpers are customary, so keep coins handy.",
+			},
+			{
+				icon: "shirt-outline",
+				label: "Etiquette",
+				text: "Dress modestly by covering shoulders and knees, especially away from tourist zones. Ask before photographing people, and expect persistent offers of 'help' with directions that end in a tip request.",
+			},
+		],
+	},
+	{
+		id: "buenos-aires",
+		city: "Buenos Aires",
+		country: "Argentina",
+		emoji: "💃",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "From Ezeiza airport use an official remis or the Manuel Tienda León shuttle rather than unmarked cabs; ride-hailing apps also work well. The closer Aeroparque airport handles most domestic flights.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Buy a rechargeable SUBE card to use on the subte (subway), buses, and trains. The subte is cheap and fast, though it closes relatively early at night.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Don't miss the steak (bife), empanadas, and dulce de leche, and note that locals dine late after 9pm. A cover charge (cubierto) is normal, and tap water is safe to drink.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The peso's value shifts fast, so check current rates; carrying some US dollars in cash can fetch a favorable exchange. Tipping around 10% in cash is customary, as it often can't be added to cards.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Keep valuables out of sight and stay alert around crowded areas and transit. Use official taxis or apps at night, and be wary of anyone 'helpfully' pointing out a stain on your clothes.",
+			},
+		],
+	},
+	{
+		id: "prague",
+		city: "Prague",
+		country: "Czechia",
+		emoji: "🏰",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Václav Havel airport has no train, so take the Airport Express bus to the main train station or bus 119 to the metro. Use the official AAA taxi rank rather than drivers who approach you.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "A single time-based ticket covers the metro, trams, and buses — validate it in the yellow machine when you board. The three metro lines and historic trams cover the city well.",
+			},
+			{
+				icon: "wine-outline",
+				label: "Food",
+				text: "Try goulash, svíčková, and roast pork with dumplings, washed down with famously cheap, excellent beer. Skip the tourist-trap restaurants right on Old Town Square for better value.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Czechia uses the koruna, not the euro, so pay in crowns and decline poor 'dynamic currency conversion' on cards. Tipping around 10% is normal — tell the server the total rather than leaving it on the table.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Watch for pickpockets on tram 22 and around Charles Bridge, and only change money at proper banks or ATMs, never street exchangers. Always check the taxi meter is running.",
+			},
+		],
+	},
+	{
+		id: "toronto",
+		city: "Toronto",
+		country: "Canada",
+		emoji: "🍁",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The UP Express train links Pearson airport to downtown Union Station in about 25 minutes. Official taxis and ride-hailing apps also serve every terminal.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Tap a contactless card or a Presto card on the TTC subway, streetcars, and buses. The subway is straightforward, though streetcars can be slow in heavy traffic.",
+			},
+			{
+				icon: "fast-food-outline",
+				label: "Food",
+				text: "Toronto's diversity means superb, affordable eats — dim sum, roti, and global street food. Try a peameal bacon sandwich at St. Lawrence Market, and tap water is safe to drink.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the Canadian dollar and cards are accepted almost everywhere; note that sales tax is added at checkout. Tipping 15–20% at restaurants and bars is expected.",
+			},
+			{
+				icon: "walk-outline",
+				label: "Local note",
+				text: "Canadians queue politely and say 'sorry' and 'thank you' freely. Winters are bitterly cold, so use the underground PATH network to walk between downtown buildings.",
+			},
+		],
+	},
 ];
 
 /** Look up a single destination by its id. */
