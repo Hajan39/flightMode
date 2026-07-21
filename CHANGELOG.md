@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Tests: extracted Snake's pure movement logic to `games/snake/logic.ts` (`step` for move/grow/collision, `placeFood` with an injectable RNG, `opposite`, `getIntervalMs`) and unit-tested it — wall/self collision, growth on eating, speed ramp, food placement never on the snake, board-full → -1. Test suite is now 252 tests across 12 suites.
+- Expanded destinations from 34 to 39 (added Lima, Nairobi, Vancouver, Copenhagen, Kuala Lumpur).
+
 - Tests: extracted Sudoku's pure helpers to `games/sudoku/logic.ts` (cell coordinates, peer check, conflict detection, solved check, time format) and unit-tested them; added a bundled-content integrity test (every article in `data/content.json` has a unique id, positive read time, and non-empty en/cs/de title/category/body). Test suite is now 237 tests across 11 suites.
 - Expanded destinations from 29 to 34 (added Madrid, Stockholm, Delhi, Osaka, Zurich).
 

@@ -21,40 +21,22 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 
+import {
+  CELL_COUNT,
+  type Direction,
+  GRID_COLS,
+  GRID_ROWS,
+  getIntervalMs,
+  opposite,
+  placeFood,
+  step,
+} from "./logic";
+
 // ---------------------------------------------------------------------------
-// Constants
+// Types (grid/movement logic lives in ./logic, unit-tested)
 // ---------------------------------------------------------------------------
 
-const GRID_COLS = 18;
-const GRID_ROWS = 18;
-const CELL_COUNT = GRID_COLS * GRID_ROWS;
-const BASE_INTERVAL_MS = 300;
-const MIN_INTERVAL_MS = 120;
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-type Direction = "up" | "down" | "left" | "right";
 type Phase = "idle" | "countdown" | "playing" | "paused" | "over";
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-function getIntervalMs(s: number): number {
-  return Math.max(MIN_INTERVAL_MS, BASE_INTERVAL_MS - s * 6);
-}
-
-function placeFood(snake: number[]): number {
-  const snakeSet = new Set(snake);
-  const empty: number[] = [];
-  for (let i = 0; i < CELL_COUNT; i++) {
-    if (!snakeSet.has(i)) empty.push(i);
-  }
-  if (empty.length === 0) return -1; // board full — win condition
-  return empty[Math.floor(Math.random() * empty.length)];
-}
 
 // ---------------------------------------------------------------------------
 // Component
@@ -152,40 +134,13 @@ export default function SnakeGame() {
     const currentFood = foodRef.current;
     const currentScore = scoreRef.current;
 
-    const head = currentSnake[0];
-    const headRow = Math.floor(head / GRID_COLS);
-    const headCol = head % GRID_COLS;
-
-    let newRow = headRow;
-    let newCol = headCol;
-    if (dir === "up") newRow--;
-    else if (dir === "down") newRow++;
-    else if (dir === "left") newCol--;
-    else newCol++;
-
-    // Wall collision
-    if (
-      newRow < 0 ||
-      newRow >= GRID_ROWS ||
-      newCol < 0 ||
-      newCol >= GRID_COLS
-    ) {
+    const result = step(currentSnake, dir, currentFood);
+    if (result.dead) {
       handleGameOver();
       return;
     }
-
-    const newHead = newRow * GRID_COLS + newCol;
-
-    // Self collision (exclude last tail segment — it moves away this tick)
-    if (currentSnake.slice(0, -1).includes(newHead)) {
-      handleGameOver();
-      return;
-    }
-
-    const ateFood = newHead === currentFood;
-    const newSnake = ateFood
-      ? [newHead, ...currentSnake] // grow
-      : [newHead, ...currentSnake.slice(0, -1)]; // move
+    const newSnake = result.snake;
+    const ateFood = result.ate;
 
     snakeRef.current = newSnake;
     setSnake(newSnake);
@@ -253,13 +208,7 @@ export default function SnakeGame() {
   // ---------------------------------------------------------------------------
   const handleDirectionPress = useCallback((newDir: Direction) => {
     if (phaseRef.current !== "playing") return;
-    const opposite: Record<Direction, Direction> = {
-      up: "down",
-      down: "up",
-      left: "right",
-      right: "left",
-    };
-    if (newDir === opposite[directionRef.current]) return;
+    if (newDir === opposite(directionRef.current)) return;
     directionRef.current = newDir;
   }, []);
 

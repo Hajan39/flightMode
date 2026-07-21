@@ -1150,6 +1150,171 @@ export const destinations: Destination[] = [
 			},
 		],
 	},
+	{
+		id: "lima",
+		city: "Lima",
+		country: "Peru",
+		emoji: "🦙",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Jorge Chávez airport has no train, so use the official taxi counter inside arrivals or a ride-hailing app rather than drivers who approach you. Traffic to Miraflores can take an hour, so allow extra time.",
+			},
+			{
+				icon: "car-outline",
+				label: "Getting around",
+				text: "The Metropolitano bus rapid-transit line is cheap and beats the traffic along key corridors — load a rechargeable card. Ride-hailing apps are cheap and safer than flagging street taxis.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Lima is a world food capital — don't miss ceviche, lomo saltado, and a pisco sour. Eat ceviche at lunchtime when the fish is freshest, and stick to bottled water.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the sol; carry small notes for taxis and markets as cards aren't taken everywhere. Tipping around 10% is customary in restaurants, and rounding up elsewhere is appreciated.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Keep valuables out of sight and use ride-hailing apps rather than street taxis, especially after dark. Stick to well-trodden districts like Miraflores and Barranco and stay alert in crowds.",
+			},
+		],
+	},
+	{
+		id: "nairobi",
+		city: "Nairobi",
+		country: "Kenya",
+		emoji: "🦁",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Jomo Kenyatta airport has no train link, so use an official taxi or a ride-hailing app like Uber or Bolt, which are metered and avoid haggling. Traffic is heavy, so allow plenty of time.",
+			},
+			{
+				icon: "car-outline",
+				label: "Getting around",
+				text: "Ride-hailing apps are cheap, reliable, and easier than the informal matatu minibuses. Traffic jams are severe, so plan trips outside peak hours and keep doors locked in slow traffic.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try nyama choma (grilled meat), ugali, and sukuma wiki at busy local spots. Stick to bottled water, and sample Kenyan coffee and chai (spiced tea) while you are here.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the shilling, and mobile money (M-Pesa) is used everywhere, though cash is handy too. Tipping around 10% in restaurants is appreciated, as is a small tip for guides.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Don't display phones, jewellery, or cash, and use ride-hailing apps after dark rather than walking. Keep car windows up and doors locked in traffic, and check local advice before exploring on foot.",
+			},
+		],
+	},
+	{
+		id: "vancouver",
+		city: "Vancouver",
+		country: "Canada",
+		emoji: "🏔️",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The Canada Line SkyTrain links the airport to downtown in about 25 minutes and runs frequently. Official taxis and ride-hailing apps also serve the terminal, though the train avoids bridge traffic.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Tap a contactless card or a Compass card on the driverless SkyTrain, buses, and the SeaBus ferry. Downtown is compact and walkable, and the SeaBus to North Vancouver is a scenic, cheap ride.",
+			},
+			{
+				icon: "fast-food-outline",
+				label: "Food",
+				text: "Vancouver's diversity shines in its sushi, dim sum, and Asian night-market eats, plus fresh Pacific seafood. Tap water is clean and safe, and food trucks downtown offer great-value lunches.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the Canadian dollar and cards are accepted almost everywhere; note that sales tax is added at checkout. Tipping 15–20% at restaurants and bars is expected.",
+			},
+			{
+				icon: "walk-outline",
+				label: "Local note",
+				text: "Canadians queue politely and say 'sorry' and 'thank you' freely. Rain is frequent, so pack a waterproof jacket, and take advantage of the seawall for walking and cycling.",
+			},
+		],
+	},
+	{
+		id: "copenhagen",
+		city: "Copenhagen",
+		country: "Denmark",
+		emoji: "🚲",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The Metro (M2) and trains link the airport to the city centre in about 15 minutes and run very frequently. Buy a ticket from the machines or tap a contactless card before boarding.",
+			},
+			{
+				icon: "bicycle-outline",
+				label: "Getting around",
+				text: "Copenhagen is a cyclist's city, and renting a bike is often the fastest way around. The Metro, buses, and harbour buses share one ticket, and the compact centre is very walkable.",
+			},
+			{
+				icon: "cafe-outline",
+				label: "Food",
+				text: "Try smørrebrød (open sandwiches), pastries, and hot dogs from a pølsevogn stand. Eating out is pricey, so the street-food halls and lunch specials offer better value, and tap water is free and safe.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the krone, not the euro, and Denmark is nearly cashless — cards and phones work everywhere. Service is included, so tipping is not expected, though rounding up for great service is welcome.",
+			},
+			{
+				icon: "warning-outline",
+				label: "Local note",
+				text: "Never walk or stand in the busy blue bike lanes and always look for cyclists before crossing. Danes value quiet and personal space, so keep your voice down on public transport.",
+			},
+		],
+	},
+	{
+		id: "kuala-lumpur",
+		city: "Kuala Lumpur",
+		country: "Malaysia",
+		emoji: "🕌",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The KLIA Ekspres train reaches KL Sentral in about 30 minutes, the fastest route into the city. Official taxis use a fixed-price coupon system, and ride-hailing apps like Grab are cheap and reliable.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "The LRT, MRT, and monorail cover the centre — tap a Touch 'n Go card or buy a token. Distances feel long and it gets hot and humid, so lean on the trains and cheap Grab rides.",
+			},
+			{
+				icon: "fast-food-outline",
+				label: "Food",
+				text: "Hawker stalls and food courts serve superb, cheap nasi lemak, char kway teow, and satay. Stick to busy stalls, drink bottled water, and cool off with a teh tarik (pulled milk tea).",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the ringgit; carry small notes for hawker stalls and markets, though cards and e-wallets are widely used. Tipping isn't expected, as many restaurants add a service charge to the bill.",
+			},
+			{
+				icon: "shirt-outline",
+				label: "Etiquette",
+				text: "Dress modestly at mosques — cover shoulders and knees, and women should carry a scarf; robes are often provided. Remove your shoes before entering mosques and homes, and use your right hand to eat and pass items.",
+			},
+		],
+	},
 ];
 
 /** Look up a single destination by its id. */
