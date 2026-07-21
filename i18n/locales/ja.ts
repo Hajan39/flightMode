@@ -1040,4 +1040,8 @@ gameOddOneOutName: "仲間外れ探し",
 	homeDestinationsTitle: "行き先",
 	homeDestinationsHint: "目的地の空港と街のヒント",
 	homeDestinationsCta: "旅行先のヒントを見る",
+	// Flight destination link
+	flightDestinationLabel: "行き先（任意）",
+	flightDestinationNone: "なし",
+	homeDestinationTipsFor: "{{city}}のヒント",
 } as const;

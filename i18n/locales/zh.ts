@@ -1026,4 +1026,8 @@ gameOddOneOutName: "找不同",
 	homeDestinationsTitle: "你的目的地",
 	homeDestinationsHint: "目的地机场与城市贴士",
 	homeDestinationsCta: "浏览目的地贴士",
+	// Flight destination link
+	flightDestinationLabel: "目的地（可选）",
+	flightDestinationNone: "无",
+	homeDestinationTipsFor: "{{city}} 贴士",
 } as const;

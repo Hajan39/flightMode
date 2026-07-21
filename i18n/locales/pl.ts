@@ -1055,4 +1055,8 @@ gameOddOneOutName: "Znajdź Intruza",
 	homeDestinationsTitle: "Dokąd lecisz",
 	homeDestinationsHint: "Wskazówki o lotnisku i mieście w celu podróży",
 	homeDestinationsCta: "Przeglądaj wskazówki o celach",
+	// Flight destination link
+	flightDestinationLabel: "Cel podróży (opcjonalnie)",
+	flightDestinationNone: "Brak",
+	homeDestinationTipsFor: "Wskazówki dla {{city}}",
 } as const;

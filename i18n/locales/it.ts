@@ -1060,4 +1060,8 @@ gameOddOneOutName: "L'Intruso",
 	homeDestinationsTitle: "Dove sei diretto",
 	homeDestinationsHint: "Consigli su aeroporto e città per la tua destinazione",
 	homeDestinationsCta: "Sfoglia i consigli sulle destinazioni",
+	// Flight destination link
+	flightDestinationLabel: "Destinazione (facoltativo)",
+	flightDestinationNone: "Nessuna",
+	homeDestinationTipsFor: "Consigli per {{city}}",
 } as const;

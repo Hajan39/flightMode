@@ -1035,4 +1035,8 @@ gameOddOneOutName: "다른 거 찾기",
 	homeDestinationsTitle: "가는 곳",
 	homeDestinationsHint: "목적지 공항 & 도시 팁",
 	homeDestinationsCta: "여행지 팁 보기",
+	// Flight destination link
+	flightDestinationLabel: "여행지 (선택)",
+	flightDestinationNone: "없음",
+	homeDestinationTipsFor: "{{city}} 팁",
 } as const;

@@ -1079,4 +1079,8 @@ gameOddOneOutName: "Finde den Außenseiter",
 	homeDestinationsTitle: "Wohin es geht",
 	homeDestinationsHint: "Flughafen- & Stadttipps für dein Ziel",
 	homeDestinationsCta: "Reisetipps ansehen",
+	// Flight destination link
+	flightDestinationLabel: "Reiseziel (optional)",
+	flightDestinationNone: "Keins",
+	homeDestinationTipsFor: "Tipps für {{city}}",
 } as const;

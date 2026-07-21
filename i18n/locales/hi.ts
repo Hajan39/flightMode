@@ -1030,4 +1030,8 @@ gameOddOneOutName: "अलग खोजो",
 	homeDestinationsTitle: "आप कहाँ जा रहे हैं",
 	homeDestinationsHint: "आपके गंतव्य के लिए हवाई अड्डा और शहर सुझाव",
 	homeDestinationsCta: "गंतव्य सुझाव देखें",
+	// Flight destination link
+	flightDestinationLabel: "गंतव्य (वैकल्पिक)",
+	flightDestinationNone: "कोई नहीं",
+	homeDestinationTipsFor: "{{city}} के लिए सुझाव",
 } as const;

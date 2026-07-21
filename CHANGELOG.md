@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Flight ↔ destination link: the flight setup form now has an optional destination picker (the 8 bundled destinations). When set, Home's destination card becomes "Tips for {city}" and deep-links straight into that destination's tips (auto-expanded via a `focus` param). Ties the flight tracker and destination tips into one per-flight flow. New keys localized across all 12 languages.
 - Destinations & airport tips (`app/destinations.tsx`, `data/destinations.ts`): a browsable screen of practical tips (airport-to-city transport, getting around, food, money, local etiquette) for 8 popular destinations, reachable from a "Where you're headed" card on Home. Bundled offline content (English). Screen chrome localized across all 12 languages.
 - Home "New to try" row: surfaces games you haven't opened yet (up to 4) so each flight has something fresh — a better fit than daily streaks for occasional use. Games drop out once opened (tracked in a new `useDiscoveryStore`). Localized in all 12 languages.
 - Onboarding personalization: a new "What do you enjoy?" step lets users pick preferred game categories (Logic/Speed/Strategy/Multiplayer, skippable). The choice biases the "Games for your flight" recommendations toward those categories. Stored in settings; localized in all 12 languages.

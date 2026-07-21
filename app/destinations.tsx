@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -15,9 +16,12 @@ export default function DestinationsScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
-	const [expandedId, setExpandedId] = useState<string | null>(
-		destinations[0]?.id ?? null,
-	);
+	const { focus } = useLocalSearchParams<{ focus?: string }>();
+	const focusedId =
+		focus && destinations.some((d) => d.id === focus)
+			? focus
+			: (destinations[0]?.id ?? null);
+	const [expandedId, setExpandedId] = useState<string | null>(focusedId);
 
 	const toggle = (id: string) => {
 		setExpandedId((current) => (current === id ? null : id));

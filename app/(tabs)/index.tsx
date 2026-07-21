@@ -33,6 +33,7 @@ import { useGameStore } from "@/store/useGameStore";
 import { useDiscoveryStore } from "@/store/useDiscoveryStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import NewToTryRow from "@/components/NewToTryRow";
+import { getDestinationById } from "@/data/destinations";
 import type { GameCategory } from "@/types/game";
 import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -115,6 +116,9 @@ export default function HomeScreen() {
 		flight && remaining > 0
 			? pickFlightGames(remaining, preferredCategories)
 			: [];
+	const flightDestination = flight?.destinationId
+		? getDestinationById(flight.destinationId)
+		: undefined;
 	const remainingRounded = Math.round(remaining);
 	const remainingH = Math.floor(remainingRounded / 60);
 	const remainingM = remainingRounded % 60;
@@ -620,17 +624,36 @@ export default function HomeScreen() {
 				<AnimatedPressable
 					style={[
 						styles.featuredCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
+						{
+							backgroundColor: flightDestination
+								? theme.accentSoft
+								: theme.card,
+							borderColor: flightDestination ? theme.tint : theme.border,
+						},
 					]}
-					onPress={() => router.push("/destinations")}
+					onPress={() =>
+						router.push(
+							flightDestination
+								? (`/destinations?focus=${flightDestination.id}` as never)
+								: ("/destinations" as never),
+						)
+					}
 				>
-					<Ionicons name="earth-outline" size={22} color={theme.tint} />
+					{flightDestination ? (
+						<Text style={{ fontSize: 22 }}>{flightDestination.emoji}</Text>
+					) : (
+						<Ionicons name="earth-outline" size={22} color={theme.tint} />
+					)}
 					<View
 						lightColor="transparent"
 						darkColor="transparent"
 						style={styles.featuredBody}
 					>
-						<Text style={styles.featuredTitle}>{t("homeDestinationsCta")}</Text>
+						<Text style={styles.featuredTitle}>
+							{flightDestination
+								? t("homeDestinationTipsFor", { city: flightDestination.city })
+								: t("homeDestinationsCta")}
+						</Text>
 					</View>
 					<Ionicons name="chevron-forward" size={20} color={theme.mutedText} />
 				</AnimatedPressable>

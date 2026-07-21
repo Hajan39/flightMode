@@ -132,6 +132,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-20
 
+- flight ↔ destinace propojeni: flight setup ma nepovinny picker cile (8 destinaci); kdyz je nastaveny, karta na Home je "Tips for {city}" a odkazuje primo na tipy dane destinace (auto-expand pres `focus` param); Flight typ ma nove `destinationId`
 - destinace & tipy na letiste (`app/destinations.tsx`, `data/destinations.ts`): prohlizeci obrazovka s praktickymi tipy (doprava z letiste, pohyb po meste, jidlo, penize, etiketa) pro 8 destinaci, dostupna z karty "Where you're headed" na Home; bundled offline obsah (EN), chrome lokalizovany do 12 jazyku
 - Home "New to try" radek: hry, ktere uzivatel jeste neotevrel (max 4) — fresh obsah pro kazdy let (lepsi nez denni streak pro narazove pouziti); sledovano v novem `useDiscoveryStore`
 - onboarding personalizace: novy krok "What do you enjoy?" pro vyber oblibenych kategorii her (skippable); ovlivnuje razeni doporuceni "Games for your flight"; ulozeno v settings

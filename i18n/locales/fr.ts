@@ -1074,4 +1074,8 @@ gameOddOneOutName: "L'Intrus",
 	homeDestinationsTitle: "Où vous allez",
 	homeDestinationsHint: "Conseils aéroport et ville pour votre destination",
 	homeDestinationsCta: "Voir les conseils de destination",
+	// Flight destination link
+	flightDestinationLabel: "Destination (facultatif)",
+	flightDestinationNone: "Aucune",
+	homeDestinationTipsFor: "Conseils pour {{city}}",
 } as const;

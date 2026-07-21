@@ -1054,4 +1054,8 @@ gameOddOneOutName: "Hledej Vetřelce",
 	homeDestinationsTitle: "Kam letíš",
 	homeDestinationsHint: "Tipy na letiště a město v cíli",
 	homeDestinationsCta: "Procházet tipy k destinacím",
+	// Flight destination link
+	flightDestinationLabel: "Cíl cesty (nepovinné)",
+	flightDestinationNone: "Žádný",
+	homeDestinationTipsFor: "Tipy pro {{city}}",
 } as const;

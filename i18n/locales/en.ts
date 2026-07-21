@@ -1063,4 +1063,8 @@ gameOddOneOutName: "Odd One Out",
 	homeDestinationsTitle: "Where you're headed",
 	homeDestinationsHint: "Airport & city tips for your destination",
 	homeDestinationsCta: "Browse destination tips",
+	// Flight destination link
+	flightDestinationLabel: "Destination (optional)",
+	flightDestinationNone: "None",
+	homeDestinationTipsFor: "Tips for {{city}}",
 } as const;

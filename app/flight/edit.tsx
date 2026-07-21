@@ -14,6 +14,7 @@ import {
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { destinations } from "@/data/destinations";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useFlightStore } from "@/store/useFlightStore";
@@ -148,6 +149,9 @@ export default function FlightEditScreen() {
 	const [flightNumber, setFlightNumber] = useState(
 		existingFlight?.flightNumber ?? "",
 	);
+	const [destinationId, setDestinationId] = useState<string | undefined>(
+		existingFlight?.destinationId,
+	);
 
 	// Parse current clock for steppers
 	const clockMatch = /^(\d{2}):(\d{2})$/.exec(departureClock);
@@ -208,6 +212,7 @@ export default function FlightEditScreen() {
 			departureTime,
 			duration: totalMinutes,
 			flightNumber: flightNumber.trim() || undefined,
+			destinationId,
 		});
 		if (!existingFlight) incrementFlights();
 		captureAnalyticsEvent(isEditingFlight ? "flight_edited" : "flight_added", {
@@ -284,6 +289,65 @@ export default function FlightEditScreen() {
 							autoCorrect={false}
 							maxLength={8}
 						/>
+					</View>
+
+					{/* Destination (optional) — links flight to bundled tips */}
+					<View style={styles.fieldGroup}>
+						<Text style={[styles.fieldLabel, { color: theme.mutedText }]}>
+							{t("flightDestinationLabel")}
+						</Text>
+						<ScrollView
+							horizontal
+							showsHorizontalScrollIndicator={false}
+							contentContainerStyle={styles.destRow}
+						>
+							<Pressable
+								onPress={() => setDestinationId(undefined)}
+								style={[
+									styles.destChip,
+									{
+										borderColor: !destinationId ? theme.tint : theme.border,
+										backgroundColor: !destinationId ? theme.tint : theme.card,
+									},
+								]}
+							>
+								<Text
+									style={[
+										styles.chipText,
+										{ color: !destinationId ? "#fff" : theme.text },
+									]}
+								>
+									{t("flightDestinationNone")}
+								</Text>
+							</Pressable>
+							{destinations.map((d) => {
+								const active = destinationId === d.id;
+								return (
+									<Pressable
+										key={d.id}
+										onPress={() =>
+											setDestinationId(active ? undefined : d.id)
+										}
+										style={[
+											styles.destChip,
+											{
+												borderColor: active ? theme.tint : theme.border,
+												backgroundColor: active ? theme.tint : theme.card,
+											},
+										]}
+									>
+										<Text
+											style={[
+												styles.chipText,
+												{ color: active ? "#fff" : theme.text },
+											]}
+										>
+											{d.emoji} {d.city}
+										</Text>
+									</Pressable>
+								);
+							})}
+						</ScrollView>
 					</View>
 
 					{/* Departure Date — quick chips + day stepper */}
@@ -491,6 +555,13 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	chipText: { fontSize: 13, fontWeight: "700" },
+	destRow: { gap: 8, paddingRight: 8 },
+	destChip: {
+		paddingVertical: 10,
+		paddingHorizontal: 14,
+		borderRadius: 10,
+		borderWidth: 1,
+	},
 	// Day stepper
 	dayStepperRow: {
 		flexDirection: "row",

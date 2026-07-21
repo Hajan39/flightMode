@@ -1056,4 +1056,8 @@ gameOddOneOutName: "O Intruso",
 	homeDestinationsTitle: "Para onde você vai",
 	homeDestinationsHint: "Dicas de aeroporto e cidade para o seu destino",
 	homeDestinationsCta: "Ver dicas de destinos",
+	// Flight destination link
+	flightDestinationLabel: "Destino (opcional)",
+	flightDestinationNone: "Nenhum",
+	homeDestinationTipsFor: "Dicas para {{city}}",
 } as const;
