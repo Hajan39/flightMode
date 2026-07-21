@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed (UX review — wave B)
+
+- Dark-theme contrast: added a per-theme `onTint` foreground token (dark uses a near-black navy on its pale-blue tint) and adopted it for every primary button and active filter/category/preference chip across Onboarding, Flight setup, Relax, Games, Explore, and Home. Previously white text sat on the light dark-theme tint (~1.6:1, well below WCAG); it's now high-contrast in all three themes.
+
 ### Fixed (code/UX review — wave A)
 
 - Relax: the breathing exercise buzzed the haptic every second instead of once per phase (an unstable `useHaptic` value in the effect deps combined with the per-second re-render); it now pulses once per phase transition.

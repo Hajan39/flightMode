@@ -405,7 +405,7 @@ export default function HomeScreen() {
 							onPress={() => router.push("/(tabs)/games" as never)}
 							style={[styles.welcomeBtn, { backgroundColor: theme.tint }]}
 						>
-							<Text style={styles.welcomeBtnText}>{t("homeWelcomeCta")}</Text>
+							<Text style={[styles.welcomeBtnText, { color: theme.onTint }]}>{t("homeWelcomeCta")}</Text>
 						</Pressable>
 					</View>
 				</Animated.View>

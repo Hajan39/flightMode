@@ -255,9 +255,9 @@ export default function RelaxScreen() {
 					<Ionicons
 						name={isActive ? "stop-circle-outline" : "play-circle-outline"}
 						size={28}
-						color="#fff"
+						color={theme.onTint}
 					/>
-					<Text style={styles.buttonText}>
+					<Text style={[styles.buttonText, { color: theme.onTint }]}>
 						{isActive ? t("stop") : t("start")}
 					</Text>
 				</AnimatedPressable>
@@ -324,7 +324,7 @@ export default function RelaxScreen() {
 								<Text
 									style={[
 										styles.volumeChipText,
-										{ color: isSelected ? "#fff" : theme.mutedText },
+										{ color: isSelected ? theme.onTint : theme.mutedText },
 									]}
 								>
 									VOL {Math.round(level * 100)}%
@@ -399,7 +399,7 @@ export default function RelaxScreen() {
 									<Text
 										style={[
 											styles.sleepTimerChipText,
-											{ color: isSelected ? "#fff" : theme.mutedText },
+											{ color: isSelected ? theme.onTint : theme.mutedText },
 										]}
 									>
 										{minutes === null ? t("sleepTimerOff") : `${minutes}m`}

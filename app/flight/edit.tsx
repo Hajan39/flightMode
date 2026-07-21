@@ -321,7 +321,7 @@ export default function FlightEditScreen() {
 								<Text
 									style={[
 										styles.chipText,
-										{ color: !destinationId ? "#fff" : theme.text },
+										{ color: !destinationId ? theme.onTint : theme.text },
 									]}
 								>
 									{t("flightDestinationNone")}
@@ -346,7 +346,7 @@ export default function FlightEditScreen() {
 										<Text
 											style={[
 												styles.chipText,
-												{ color: active ? "#fff" : theme.text },
+												{ color: active ? theme.onTint : theme.text },
 											]}
 										>
 											{d.emoji} {d.city}
@@ -384,7 +384,7 @@ export default function FlightEditScreen() {
 										<Text
 											style={[
 												styles.chipText,
-												{ color: active ? "#fff" : theme.text },
+												{ color: active ? theme.onTint : theme.text },
 											]}
 										>
 											{t(chip.labelKey)}
@@ -505,8 +505,8 @@ export default function FlightEditScreen() {
 						style={[styles.button, { backgroundColor: theme.tint }]}
 						onPress={handleSave}
 					>
-						<Ionicons name="checkmark-circle-outline" size={22} color="#fff" />
-						<Text style={styles.buttonText}>{t("startFlight")}</Text>
+						<Ionicons name="checkmark-circle-outline" size={22} color={theme.onTint} />
+						<Text style={[styles.buttonText, { color: theme.onTint }]}>{t("startFlight")}</Text>
 					</Pressable>
 				</View>
 			</ScrollView>

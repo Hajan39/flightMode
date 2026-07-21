@@ -206,12 +206,12 @@ export default function GamesScreen() {
 							<Ionicons
 								name={intent.icon}
 								size={14}
-								color={isActive ? "#fff" : theme.mutedText}
+								color={isActive ? theme.onTint : theme.mutedText}
 							/>
 							<Text
 								style={[
 									styles.filterChipText,
-									{ color: isActive ? "#fff" : theme.text },
+									{ color: isActive ? theme.onTint : theme.text },
 								]}
 							>
 								{intent.label}
@@ -245,7 +245,7 @@ export default function GamesScreen() {
 							<Text
 								style={[
 									styles.filterChipText,
-									{ color: isActive ? "#fff" : theme.text },
+									{ color: isActive ? theme.onTint : theme.text },
 								]}
 							>
 								{t(`categoryFilter_${cat}`)}
@@ -281,7 +281,7 @@ export default function GamesScreen() {
 								}}
 								style={[styles.clearFiltersBtn, { backgroundColor: theme.tint }]}
 							>
-								<Text style={styles.clearFiltersBtnText}>
+								<Text style={[styles.clearFiltersBtnText, { color: theme.onTint }]}>
 									{t("gamesClearFilters")}
 								</Text>
 							</Pressable>

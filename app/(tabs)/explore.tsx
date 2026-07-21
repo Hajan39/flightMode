@@ -146,7 +146,7 @@ export default function ExploreScreen() {
 							<Text
 								style={[
 									styles.categoryChipText,
-									activeCategory === category && styles.categoryChipTextActive,
+									activeCategory === category && { color: theme.onTint },
 								]}
 							>
 								{category}
@@ -182,7 +182,7 @@ export default function ExploreScreen() {
 							<Text
 								style={[
 									styles.sortChipText,
-									sortMode === item.key && styles.categoryChipTextActive,
+									sortMode === item.key && { color: theme.onTint },
 								]}
 							>
 								{t(item.labelKey)}

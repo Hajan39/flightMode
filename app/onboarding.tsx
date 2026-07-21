@@ -55,7 +55,7 @@ function CategoryPicker({ theme }: { theme: (typeof Colors)["dark"] }) {
 						]}
 					>
 						<Text
-							style={[styles.prefChipText, { color: active ? "#fff" : theme.text }]}
+							style={[styles.prefChipText, { color: active ? theme.onTint : theme.text }]}
 						>
 							{t(`categoryFilter_${cat}`)}
 						</Text>
@@ -235,7 +235,7 @@ export default function OnboardingScreen() {
 					}
 				}}
 			>
-				<Text style={styles.ctaText}>
+				<Text style={[styles.ctaText, { color: theme.onTint }]}>
 					{isLast ? t("onboardingGetStarted") : t("onboardingNext")}
 				</Text>
 			</AnimatedPressable>
