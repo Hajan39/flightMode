@@ -24,6 +24,9 @@ import {
 } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
+// TODO: placeholder from a template — replace with the real FlightMode support
+// address before release. Bug-report / feature-suggestion mails currently route
+// to an unowned domain.
 const SUPPORT_EMAIL = "support@eon-app.com";
 const BMAC_URL = "https://buymeacoffee.com/dszwy4b";
 const appVersion = Constants.expoConfig?.version ?? "1.0.0";
