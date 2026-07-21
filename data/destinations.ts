@@ -1315,6 +1315,171 @@ export const destinations: Destination[] = [
 			},
 		],
 	},
+	{
+		id: "doha",
+		city: "Doha",
+		country: "Qatar",
+		emoji: "🕌",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Hamad International the driverless Doha Metro Red Line reaches the centre cheaply in about 20 minutes. Official Karwa taxis and the Uber app also serve the terminal.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Buy a rechargeable Travel Card for the spotless, air-conditioned Metro and connecting tram. Distances are large and it gets extremely hot, so plan indoor and evening activities.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try machboos, grilled meats, and mezze, with Souq Waqif a lively spot for local eats. During Ramadan, eating or drinking in public during daylight is restricted, and tap water is safe to drink.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the Qatari riyal; cards are accepted widely but keep cash for taxis and the souq. A 10% tip is appreciated but not obligatory, as service is often already added.",
+			},
+			{
+				icon: "shirt-outline",
+				label: "Etiquette",
+				text: "Dress modestly in public — cover shoulders and knees, especially in malls and mosques. Public displays of affection and drinking outside licensed venues can bring fines.",
+			},
+		],
+	},
+	{
+		id: "warsaw",
+		city: "Warsaw",
+		country: "Poland",
+		emoji: "🏰",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Chopin airport the S2 and S3 trains and city buses reach the centre in about 20–30 minutes on a standard transit ticket. Official taxis and ride-hailing apps also wait outside arrivals.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "One time-based ticket covers the metro, trams, and buses — validate it in the yellow machine when you board. The two metro lines and trams cover the compact centre well.",
+			},
+			{
+				icon: "wine-outline",
+				label: "Food",
+				text: "Try pierogi, żurek soup, and hearty pork dishes at a milk bar (bar mleczny) for great-value meals. Tap water is safe to drink, and vodka is the traditional accompaniment.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Poland uses the złoty, not the euro, so pay in zloty and decline poor 'dynamic currency conversion' on cards. Tipping around 10% is normal — tell the server the total rather than leaving it on the table.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Warsaw is generally safe, but watch for pickpockets on crowded trams and around the central station. Only change money at proper banks or kantor exchanges, never poorly rated street booths.",
+			},
+		],
+	},
+	{
+		id: "budapest",
+		city: "Budapest",
+		country: "Hungary",
+		emoji: "🏛️",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Ferenc Liszt airport has no train, so take the 100E Airport Express bus straight to the centre or bus 200E to the metro. Use the official Főtaxi rank rather than drivers who approach you.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "A single time-based ticket covers the metro, trams, and buses — validate it when you board or risk a fine. The four metro lines and scenic tram 2 along the Danube cover the city well.",
+			},
+			{
+				icon: "wine-outline",
+				label: "Food",
+				text: "Try goulash, chicken paprikash, and chimney cake (kürtőskalács), and browse the Great Market Hall. Skip the tourist-trap spots on the main tourist streets for better, cheaper meals.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Hungary uses the forint, not the euro, so pay in forint and decline poor 'dynamic currency conversion' on cards. Tipping around 10% is customary — tell the server the total rather than leaving it on the table.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Watch for pickpockets on crowded trams and around major sights, and only use ATMs or proper exchange offices. Be wary of overpriced bars and 'friendly' strangers who invite you for a drink.",
+			},
+		],
+	},
+	{
+		id: "san-francisco",
+		city: "San Francisco",
+		country: "United States",
+		emoji: "🌉",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From SFO the BART train reaches downtown in about 30 minutes and runs frequently. Official taxis and ride-hailing apps also serve the terminals, though BART avoids highway traffic.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Tap a contactless card or a Clipper card on Muni buses, streetcars, cable cars, and BART. The city is compact but very hilly, so use transit or apps to spare your legs.",
+			},
+			{
+				icon: "fast-food-outline",
+				label: "Food",
+				text: "The food is superb and diverse — try the Mission's burritos, Chinatown dim sum, and Ferry Building stalls. Portions are large, so sharing is common, and tap water is safe to drink.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Tipping is expected: 18–20% at sit-down restaurants and a dollar or two per drink at bars. Listed prices don't include sales tax, which is added at checkout.",
+			},
+			{
+				icon: "walk-outline",
+				label: "Local note",
+				text: "The weather is famously changeable and foggy, so carry a warm layer even in summer. Stay alert with phones and valuables in busy areas, and avoid leaving anything visible in parked cars.",
+			},
+		],
+	},
+	{
+		id: "auckland",
+		city: "Auckland",
+		country: "New Zealand",
+		emoji: "⛵",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Auckland airport has no train, so take the AirportLink bus to the Puhinui train station or the SkyDrive coach to the city. Official taxis and ride-hailing apps also serve the terminals.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Load an AT HOP card for buses, trains, and the harbour ferries, which cap fares and save money. The compact centre is walkable, and the ferry to Devonport is a cheap, scenic trip.",
+			},
+			{
+				icon: "cafe-outline",
+				label: "Food",
+				text: "The café culture is excellent, so try a flat white and brunch, plus fresh seafood and Pacific eats. Tap water is clean and safe, and the multicultural food halls offer great value.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the New Zealand dollar and cards are accepted almost everywhere, often with a small surcharge. Tipping is not expected, though rounding up for great service is appreciated.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "The sun is fierce thanks to a thin ozone layer — wear sunscreen and a hat even on cool days. At beaches, always swim between the flags where lifeguards patrol.",
+			},
+		],
+	},
 ];
 
 /** Look up a single destination by its id. */

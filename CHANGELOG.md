@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Tests: extracted Minesweeper's pure board logic to `games/minesweeper/logic.ts` (mine placement with a first-tap-safe guarantee + injectable RNG, adjacency counts, flood reveal, win check, flag count) and unit-tested it across seeds (exact mine count, first tap and neighbours always safe, adjacency correctness, flood never reveals a mine, all-empty flood → win). Test suite is now 279 tests across 13 suites.
+- Expanded destinations from 39 to 44 (added Doha, Warsaw, Budapest, San Francisco, Auckland).
+
 - Tests: extracted Snake's pure movement logic to `games/snake/logic.ts` (`step` for move/grow/collision, `placeFood` with an injectable RNG, `opposite`, `getIntervalMs`) and unit-tested it — wall/self collision, growth on eating, speed ramp, food placement never on the snake, board-full → -1. Test suite is now 252 tests across 12 suites.
 - Expanded destinations from 34 to 39 (added Lima, Nairobi, Vancouver, Copenhagen, Kuala Lumpur).
 
