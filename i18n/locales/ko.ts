@@ -87,8 +87,6 @@
 	youWin: "승리!",
 	youWinMessage: "이동: {{moves}}\n점수: {{score}}",
 	gameMemoryListDescription: "빠른, 표준, 장거리 모드",
-	gameTapRushName: "탭 러시",
-	gameTapRushDescription: "20초 동안 최대한 빠르게 탭하세요",
 	gameSkyMathName: "스카이 수학",
 	gameSkyMathDescription: "빠른 암산 문제",
 	gameQuizName: "비행 퀴즈",
@@ -127,8 +125,6 @@
 	gameCrossLiarsDiceDescription: "숨겨진 주사위로 블러프",
 	rulesMemory:
 		"🎯 목표\n• 최소 횟수로 모든 카드 쌍을 찾으세요.\n\n🃏 플레이 방법\n• 탭하여 턴마다 카드 2장을 뒤집습니다.\n• 일치하면 열린 채 유지됩니다.\n• 아니면 다시 뒤집힙니다 — 위치를 기억하세요!\n\n⭐ 점수\n• 적은 횟수 = 높은 점수.\n• 개인 기록을 경신해 보세요!",
-	rulesTouchdown:
-		"🎯 목표\n• 시간이 다 되기 전에 최대한 많이 탭하세요!\n\n👆 플레이 방법\n• 20초 동안 화면을 탭합니다.\n• 모든 탭이 점수에 카운트됩니다.\n\n⭐ 팁\n• 빠르고 가벼운 탭이 가장 효과적입니다.",
 	rulesSkyMath:
 		"🎯 목표\n• 수학 문제를 최대한 빨리 풀어보세요.\n\n🧮 플레이 방법\n• 화면에 수식이 나타납니다.\n• 선택지에서 정답을 고르세요.\n• 정답 = 점수. 오답 = 목숨 감소.\n\n⭐ 팁\n• 속도가 중요합니다 — 빠른 답변 = 더 많은 점수!",
 	rulesQuiz:
@@ -278,13 +274,9 @@
 	reactionTap: "탭!",
 	reactionTooEarlyTitle: "너무 빨리!",
 	reactionTooEarlyMsg: "초록색 전에 탭했습니다. 다시 시도하세요.",
-	tapRushTime: "시간",
 	tapRushScore: "점수",
 	tapRushStart: "시작",
-	tapRushTap: "탭!",
 	tapRushPlayAgain: "다시 하기",
-	tapRushFinishedTitle: "라운드 종료",
-	tapRushFinishedMsg: "당신의 점수: {{score}}",
 	skyMathScore: "점수: {{score}}",
 	skyMathFinished: "완료",
 	skyMathResult: "정답: {{correct}} / {{total}}\n점수: {{score}}",
@@ -757,8 +749,6 @@
 	achieveStreak7Desc: "5번의 비행에 FlightMode 함께하기",
 	achieveSpeedDemonTitle: "스피드 데몬",
 	achieveSpeedDemonDesc: "반응 시간 200ms 미만",
-	achieveTapChampionTitle: "탭 챔피언",
-	achieveTapChampionDesc: "Tap Rush에서 100+점",
 	passPhone: "폰을 넘겨주세요",
 	passPhoneTo: "{{player}}에게 폰을 넘겨주세요",
 	passPhoneReady: "준비됐어요",

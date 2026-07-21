@@ -31,18 +31,6 @@ export const gameRegistry: GameDefinition[] = [
 		loadComponent: () => require("@/games/memory").default,
 	},
 	{
-		id: "tap-rush",
-		titleKey: "gameTapRushName",
-		descriptionKey: "gameTapRushDescription",
-		rulesKey: "rulesTouchdown",
-		estimatedTime: 2,
-		icon: "finger-print-outline",
-		category: "reflex",
-		difficulty: "easy",
-		isDailyChallenge: true,
-		loadComponent: () => require("@/games/tap-rush").default,
-	},
-	{
 		id: "sky-math",
 		titleKey: "gameSkyMathName",
 		descriptionKey: "gameSkyMathDescription",

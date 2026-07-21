@@ -90,8 +90,6 @@
 	youWinMessage: "Züge: {{moves}}\nPunktzahl: {{score}}",
 	gameMemoryListDescription:
 		"Schneller, Standard- oder Langstrecken-Memory-Modus",
-	gameTapRushName: "Tap Rush",
-	gameTapRushDescription: "Tippe 20 Sekunden lang so schnell wie möglich",
 	gameSkyMathName: "Sky Math",
 	gameSkyMathDescription: "Löse schnelle Mathe-Runden",
 	gameQuizName: "Flug-Quiz",
@@ -133,8 +131,6 @@
 	gameCrossLiarsDiceDescription: "Bluffe mit versteckten Würfeln",
 	rulesMemory:
 		"🎯 Ziel\n• Finde alle Kartenpaare mit möglichst wenigen Zügen.\n\n🃏 So wird gespielt\n• Tippe, um zwei Karten pro Zug umzudrehen.\n• Stimmen sie überein, bleiben sie offen.\n• Wenn nicht, drehen sie sich zurück — merke dir ihre Positionen!\n\n⭐ Punktzahl\n• Weniger Züge = höhere Punktzahl.\n• Versuche deinen persönlichen Rekord zu schlagen!",
-	rulesTouchdown:
-		"🎯 Ziel\n• Tippe so oft wie möglich, bevor die Zeit abläuft!\n\n👆 So wird gespielt\n• Tippe 20 Sekunden lang auf den Bildschirm.\n• Jeder einzelne Tipp zählt für dein Ergebnis.\n\n⭐ Tipp\n• Schnelle, leichte Tipps funktionieren am besten.",
 	rulesSkyMath:
 		"🎯 Ziel\n• Löse Rechenaufgaben so schnell wie möglich.\n\n🧮 So wird gespielt\n• Eine Rechenaufgabe erscheint auf dem Bildschirm.\n• Wähle die richtige Antwort aus den Optionen.\n• Richtig = Punkte. Falsch = ein Leben weniger.\n\n⭐ Tipp\n• Geschwindigkeit zählt — schnellere Antworten = mehr Punkte!",
 	rulesQuiz:
@@ -292,13 +288,9 @@
 	reactionTooEarlyTitle: "Zu früh!",
 	reactionTooEarlyMsg: "Du hast vor Grün getippt. Versuch es nochmal.",
 	// Tap Rush
-	tapRushTime: "ZEIT",
 	tapRushScore: "PUNKTE",
 	tapRushStart: "Start",
-	tapRushTap: "TIPP!",
 	tapRushPlayAgain: "Nochmal",
-	tapRushFinishedTitle: "Runde vorbei",
-	tapRushFinishedMsg: "Dein Ergebnis: {{score}}",
 	// Sky Math
 	skyMathScore: "Punkte: {{score}}",
 	skyMathFinished: "Fertig",
@@ -792,8 +784,6 @@
 	achieveStreak7Desc: "Nimm FlightMode auf 5 Flüge mit",
 	achieveSpeedDemonTitle: "Blitzschnell",
 	achieveSpeedDemonDesc: "Reaktionszeit unter 200ms",
-	achieveTapChampionTitle: "Tipp-Champion",
-	achieveTapChampionDesc: "100+ Punkte in Tap Rush",
 	passPhone: "Handy weitergeben",
 	passPhoneTo: "Gib das Handy an {{player}}",
 	passPhoneReady: "Ich bin bereit",

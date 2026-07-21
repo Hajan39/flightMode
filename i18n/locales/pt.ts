@@ -88,8 +88,6 @@
 	youWin: "Você venceu!",
 	youWinMessage: "Movimentos: {{moves}}\nPontuação: {{score}}",
 	gameMemoryListDescription: "Modo rápido, padrão ou longo percurso",
-	gameTapRushName: "Tap Rush",
-	gameTapRushDescription: "Toque o mais rápido possível em 20 segundos",
 	gameSkyMathName: "Sky Math",
 	gameSkyMathDescription: "Resolva cálculos rápidos",
 	gameQuizName: "Quiz de voo",
@@ -131,8 +129,6 @@
 	gameCrossLiarsDiceDescription: "Blefe com dados escondidos",
 	rulesMemory:
 		"🎯 Objetivo\n• Encontre todos os pares de cartas com o mínimo de jogadas.\n\n🃏 Como jogar\n• Toque para virar duas cartas por turno.\n• Se combinarem, ficam viradas.\n• Se não, voltam — lembre-se das posições!\n\n⭐ Pontuação\n• Menos jogadas = pontuação mais alta.\n• Tente bater seu recorde pessoal!",
-	rulesTouchdown:
-		"🎯 Objetivo\n• Toque o máximo de vezes antes que o tempo acabe!\n\n👆 Como jogar\n• Toque na tela por 20 segundos.\n• Cada toque conta para sua pontuação.\n\n⭐ Dica\n• Toques rápidos e leves funcionam melhor.",
 	rulesSkyMath:
 		"🎯 Objetivo\n• Resolva problemas de matemática o mais rápido possível.\n\n🧮 Como jogar\n• Uma equação aparece na tela.\n• Escolha a resposta correta entre as opções.\n• Correta = pontos. Errada = perde uma vida.\n\n⭐ Dica\n• Velocidade importa — respostas mais rápidas = mais pontos!",
 	rulesQuiz:
@@ -284,13 +280,9 @@
 	reactionTap: "TOQUE!",
 	reactionTooEarlyTitle: "Muito cedo!",
 	reactionTooEarlyMsg: "Você tocou antes do verde. Tente novamente.",
-	tapRushTime: "TEMPO",
 	tapRushScore: "PONTUAÇÃO",
 	tapRushStart: "Começar",
-	tapRushTap: "TOQUE!",
 	tapRushPlayAgain: "Jogar novamente",
-	tapRushFinishedTitle: "Rodada terminada",
-	tapRushFinishedMsg: "Sua pontuação: {{score}}",
 	skyMathScore: "Pontuação: {{score}}",
 	skyMathFinished: "Terminado",
 	skyMathResult: "Corretas: {{correct}} de {{total}}\nPontuação: {{score}}",
@@ -773,8 +765,6 @@
 	achieveStreak7Desc: "Leve o FlightMode em 5 voos",
 	achieveSpeedDemonTitle: "Demônio da velocidade",
 	achieveSpeedDemonDesc: "Tempo de reação abaixo de 200ms",
-	achieveTapChampionTitle: "Campeão de toque",
-	achieveTapChampionDesc: "100+ pontos em Tap Rush",
 	passPhone: "Passe o telefone",
 	passPhoneTo: "Passe o telefone para {{player}}",
 	passPhoneReady: "Estou pronto",

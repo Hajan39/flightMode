@@ -102,8 +102,6 @@ export const cs = {
 	youWin: "Výhra!",
 	youWinMessage: "Tahy: {{moves}}\nSkóre: {{score}}",
 	gameMemoryListDescription: "Rychlý, standardní nebo long-haul režim pexesa",
-	gameTapRushName: "Tap Rush",
-	gameTapRushDescription: "Klepej co nejrychleji po dobu 20 sekund",
 	gameSkyMathName: "Sky Math",
 	gameSkyMathDescription: "Vyřeš rychlá matematická kola",
 	gameQuizName: "Letový kvíz",
@@ -143,8 +141,6 @@ export const cs = {
 	gameCrossLiarsDiceDescription: "Blafujte se skrytými kostkami",
 	rulesMemory:
 		"🎯 Cíl\n• Najděte všechny páry karet s co nejméně tahy.\n\n🃏 Jak hrát\n• Ťuknutím otočte dvě karty za tah.\n• Pokud se shodují, zůstanou otočené.\n• Pokud ne, otočí se zpět — pamatujte si je!\n\n⭐ Bodování\n• Méně tahů = vyšší skóre.\n• Pokuste se překonat svůj rekord!",
-	rulesTouchdown:
-		"🎯 Cíl\n• Ťukněte co nejvíckrát, než vyprší čas!\n\n👆 Jak hrát\n• Ťukejte na obrazovku 20 sekund.\n• Každý ťuk se počítá do skóre.\n\n⭐ Tip\n• Rychlé, lehké ťukání funguje nejlépe.",
 	rulesSkyMath:
 		"🎯 Cíl\n• Řešte příklady co nejrychleji.\n\n🧮 Jak hrát\n• Na obrazovce se zobrazí příklad.\n• Vyberte správnou odpověď z nabídky.\n• Správně = body. Špatně = ztráta života.\n\n⭐ Tip\n• Rychlost se počítá — rychlejší odpovědi = víc bodů!",
 	rulesQuiz:
@@ -299,13 +295,9 @@ export const cs = {
 	reactionTooEarlyTitle: "Příliš brzy!",
 	reactionTooEarlyMsg: "Klepnul jsi před zelenou. Zkus to znovu.",
 	// Tap Rush
-	tapRushTime: "ČAS",
 	tapRushScore: "SKÓRE",
 	tapRushStart: "Start",
-	tapRushTap: "KLEPEJ!",
 	tapRushPlayAgain: "Hrát znovu",
-	tapRushFinishedTitle: "Kolo skončilo",
-	tapRushFinishedMsg: "Tvé skóre: {{score}}",
 	// Sky Math
 	skyMathScore: "Skóre: {{score}}",
 	skyMathFinished: "Hotovo",
@@ -834,8 +826,6 @@ export const cs = {
 	achieveStreak7Desc: "Vezmi FlightMode na 5 letů",
 	achieveSpeedDemonTitle: "Rychlý jako blesk",
 	achieveSpeedDemonDesc: "Reakční čas pod 200ms",
-	achieveTapChampionTitle: "Šampion v ťukání",
-	achieveTapChampionDesc: "Skóre 100+ v Tap Rush",
 	passPhone: "Předej telefon",
 	passPhoneTo: "Předej telefon hráči {{player}}",
 	passPhoneReady: "Jsem připraven",

@@ -88,8 +88,6 @@
 	youWin: "勝利!",
 	youWinMessage: "手数: {{moves}}\nスコア: {{score}}",
 	gameMemoryListDescription: "クイック、スタンダード、ロングフライトモード",
-	gameTapRushName: "タップラッシュ",
-	gameTapRushDescription: "20秒間でできるだけ速くタップ",
 	gameSkyMathName: "スカイマス",
 	gameSkyMathDescription: "素早い暗算チャレンジ",
 	gameQuizName: "フライトクイズ",
@@ -128,8 +126,6 @@
 	gameCrossLiarsDiceDescription: "隠しダイスでブラフ",
 	rulesMemory:
 		"🎯 目標\n• 最少の手数で全てのカードペアを見つけよう。\n\n🃏 遊び方\n• タップして1ターンに2枚めくります。\n• 一致すれば表のまま残ります。\n• 不一致なら裏に戻ります — 位置を覚えて！\n\n⭐ スコア\n• 少ない手数 = 高得点。\n• 自己ベストを更新しよう！",
-	rulesTouchdown:
-		"🎯 目標\n• 時間切れ前にできるだけ多くタップ！\n\n👆 遊び方\n• 20秒間、画面をタップし続けます。\n• 全てのタップがスコアにカウント。\n\n⭐ コツ\n• 素早く軽いタップが効果的。",
 	rulesSkyMath:
 		"🎯 目標\n• 算数問題をできるだけ早く解こう。\n\n🧮 遊び方\n• 画面に計算式が表示されます。\n• 選択肢から正解を選んでください。\n• 正解 = ポイント。不正解 = ライフ減少。\n\n⭐ コツ\n• スピードが大事 — 速い回答 = 多くのポイント！",
 	rulesQuiz:
@@ -282,13 +278,9 @@
 	reactionTooEarlyTitle: "早すぎます！",
 	reactionTooEarlyMsg:
 		"緑になる前にタップしました。もう一度やり直してください。",
-	tapRushTime: "時間",
 	tapRushScore: "スコア",
 	tapRushStart: "開始",
-	tapRushTap: "タップ!",
 	tapRushPlayAgain: "もう一度",
-	tapRushFinishedTitle: "ラウンド終了",
-	tapRushFinishedMsg: "あなたのスコア: {{score}}",
 	skyMathScore: "スコア: {{score}}",
 	skyMathFinished: "完了",
 	skyMathResult: "正解: {{correct}} / {{total}}\nスコア: {{score}}",
@@ -762,8 +754,6 @@
 	achieveStreak7Desc: "5回のフライトでFlightModeを使う",
 	achieveSpeedDemonTitle: "スピードデーモン",
 	achieveSpeedDemonDesc: "反応時間200ms以下",
-	achieveTapChampionTitle: "タップチャンピオン",
-	achieveTapChampionDesc: "Tap Rushで100+ポイント",
 	passPhone: "スマホを渡して",
 	passPhoneTo: "{{player}}にスマホを渡して",
 	passPhoneReady: "準備OK",

@@ -89,8 +89,6 @@
 	youWin: "Vous avez gagné !",
 	youWinMessage: "Coups : {{moves}}\nScore : {{score}}",
 	gameMemoryListDescription: "Mode mémoire rapide, standard ou long courrier",
-	gameTapRushName: "Tap Rush",
-	gameTapRushDescription: "Tapez le plus vite possible en 20 secondes",
 	gameSkyMathName: "Sky Math",
 	gameSkyMathDescription: "Résolvez des calculs rapides",
 	gameQuizName: "Quiz de vol",
@@ -133,8 +131,6 @@
 	gameCrossLiarsDiceDescription: "Bluffez avec des dés cachés",
 	rulesMemory:
 		"🎯 Objectif\n• Trouvez toutes les paires de cartes avec le moins de coups possible.\n\n🃏 Comment jouer\n• Tapez pour retourner deux cartes par tour.\n• Si elles correspondent, elles restent face visible.\n• Sinon, elles se retournent — mémorisez leurs positions !\n\n⭐ Score\n• Moins de coups = meilleur score.\n• Essayez de battre votre record !",
-	rulesTouchdown:
-		"🎯 Objectif\n• Tapez autant de fois que possible avant la fin du temps !\n\n👆 Comment jouer\n• Tapez sur l'écran pendant 20 secondes.\n• Chaque tape compte pour votre score.\n\n⭐ Astuce\n• Des tapes rapides et légères marchent le mieux.",
 	rulesSkyMath:
 		"🎯 Objectif\n• Résolvez les problèmes de maths le plus vite possible.\n\n🧮 Comment jouer\n• Une équation apparaît à l'écran.\n• Choisissez la bonne réponse parmi les options.\n• Correct = points. Faux = une vie en moins.\n\n⭐ Astuce\n• La vitesse compte — réponses plus rapides = plus de points !",
 	rulesQuiz:
@@ -289,13 +285,9 @@
 	reactionTap: "TAPEZ !",
 	reactionTooEarlyTitle: "Trop tôt !",
 	reactionTooEarlyMsg: "Vous avez tapé avant le vert. Réessayez.",
-	tapRushTime: "TEMPS",
 	tapRushScore: "SCORE",
 	tapRushStart: "Démarrer",
-	tapRushTap: "TAPEZ !",
 	tapRushPlayAgain: "Rejouer",
-	tapRushFinishedTitle: "Manche terminée",
-	tapRushFinishedMsg: "Votre score : {{score}}",
 	skyMathScore: "Score : {{score}}",
 	skyMathFinished: "Terminé",
 	skyMathResult: "Correct : {{correct}} sur {{total}}\nScore : {{score}}",
@@ -790,8 +782,6 @@
 	achieveStreak7Desc: "Emportez FlightMode sur 5 vols",
 	achieveSpeedDemonTitle: "Démon de vitesse",
 	achieveSpeedDemonDesc: "Temps de réaction inférieur à 200ms",
-	achieveTapChampionTitle: "Champion du tap",
-	achieveTapChampionDesc: "100+ points en Tap Rush",
 	passPhone: "Passe le téléphone",
 	passPhoneTo: "Passe le téléphone à {{player}}",
 	passPhoneReady: "Je suis prêt",

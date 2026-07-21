@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Removed
+
+- Removed the `tap-rush` game — pure fast-tapping with no targeting, a strict subset of Whack-a-Mole, so it was a redundant duplicate. Dropped its game module, registry entry, the `tap-champion` achievement, and its now-unused translation keys (across all 12 locales; the shared `tapRushScore` key is retained — Higher or Lower reuses it). Catalog is now 33 games. No other games were cut — the rest are distinct mechanics we're keeping.
+
 ### Changed (UX review — wave B)
 
 - Home decluttered: removed the "Quick Actions" row (it duplicated the bottom tab bar) and promoted the Daily Flight Challenge to directly under the flight card, so the core retention hook is near the top instead of buried mid-scroll.

@@ -86,8 +86,6 @@
 	youWin: "आप जीते!",
 	youWinMessage: "चालें: {{moves}}\nस्कोर: {{score}}",
 	gameMemoryListDescription: "क्विक, स्टैंडर्ड, लॉन्ग-हॉल मोड",
-	gameTapRushName: "टैप रश",
-	gameTapRushDescription: "20 सेकंड में जितनी तेज़ी से हो सके टैप करें",
 	gameSkyMathName: "स्काई मैथ",
 	gameSkyMathDescription: "त्वरित मानसिक गणित चुनौती",
 	gameQuizName: "फ्लाइट क्विज़",
@@ -125,8 +123,6 @@
 	gameCrossLiarsDiceDescription: "छुपे पासों से ब्लर्फ करें",
 	rulesMemory:
 		"🎯 लक्ष्य\n• सबसे कम चालों में सभी कार्ड जोड़े खोजें।\n\n🃏 कैसे खेलें\n• प्रति टर्न दो कार्ड पलटने के लिए टैप करें।\n• अगर मेल खाते हैं, तो खुले रहते हैं।\n• अगर नहीं, तो वापस पलट जाते हैं — उनकी जगह याद रखें!\n\n⭐ स्कोरिंग\n• कम चालें = अधिक स्कोर।\n• अपना रिकॉर्ड तोड़ने की कोशिश करें!",
-	rulesTouchdown:
-		"🎯 लक्ष्य\n• समय खत्म होने से पहले जितना हो सके टैप करें!\n\n👆 कैसे खेलें\n• 20 सेकंड तक स्क्रीन पर टैप करें।\n• हर टैप आपके स्कोर में गिना जाता है।\n\n⭐ टिप\n• तेज, हल्के टैप सबसे अच्छे काम करते हैं।",
 	rulesSkyMath:
 		"🎯 लक्ष्य\n• गणित के सवाल जितनी तेजी से हो सके हल करें।\n\n🧮 कैसे खेलें\n• स्क्रीन पर एक समीकरण दिखता है।\n• विकल्पों में से सही उत्तर चुनें।\n• सही = अंक। गलत = एक जीवन कम।\n\n⭐ टिप\n• तेजी मायने रखती है — तेज जवाब = ज्यादा अंक!",
 	rulesQuiz:
@@ -276,13 +272,9 @@
 	reactionTap: "टैप!",
 	reactionTooEarlyTitle: "बहुत जल्दी!",
 	reactionTooEarlyMsg: "हरे से पहले टैप किया। फिर से प्रयास करें।",
-	tapRushTime: "समय",
 	tapRushScore: "स्कोर",
 	tapRushStart: "शुरू",
-	tapRushTap: "टैप!",
 	tapRushPlayAgain: "फिर खेलें",
-	tapRushFinishedTitle: "राउंड समाप्त",
-	tapRushFinishedMsg: "आपका स्कोर: {{score}}",
 	skyMathScore: "स्कोर: {{score}}",
 	skyMathFinished: "समाप्त",
 	skyMathResult: "सही: {{correct}} / {{total}}\nस्कोर: {{score}}",
@@ -755,8 +747,6 @@
 	achieveStreak7Desc: "5 उड़ानों में FlightMode साथ रखें",
 	achieveSpeedDemonTitle: "स्पीड डेमन",
 	achieveSpeedDemonDesc: "200ms से कम प्रतिक्रिया समय",
-	achieveTapChampionTitle: "टैप चैंपियन",
-	achieveTapChampionDesc: "Tap Rush में 100+ अंक",
 	passPhone: "फ़ोन दे दो",
 	passPhoneTo: "फ़ोन {{player}} को दो",
 	passPhoneReady: "मैं तैयार हूँ",

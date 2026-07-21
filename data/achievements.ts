@@ -186,14 +186,6 @@ export const achievements: AchievementDef[] = [
 		},
 	},
 	{
-		id: "tap-champion",
-		titleKey: "achieveTapChampionTitle",
-		descriptionKey: "achieveTapChampionDesc",
-		icon: "finger-print-outline",
-		category: "special",
-		condition: (s) => (s.gameProgress["tap-rush"]?.highScore ?? 0) >= 100,
-	},
-	{
 		id: "perfect-landing",
 		titleKey: "achievePerfectLandingTitle",
 		descriptionKey: "achievePerfectLandingDesc",

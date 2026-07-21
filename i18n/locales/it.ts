@@ -87,8 +87,6 @@
 	youWin: "Hai vinto!",
 	youWinMessage: "Mosse: {{moves}}\nPunteggio: {{score}}",
 	gameMemoryListDescription: "Modalità rapida, standard o lungo raggio",
-	gameTapRushName: "Tap Rush",
-	gameTapRushDescription: "Tocca il più velocemente possibile in 20 secondi",
 	gameSkyMathName: "Sky Math",
 	gameSkyMathDescription: "Risolvi calcoli rapidi",
 	gameQuizName: "Quiz di volo",
@@ -131,8 +129,6 @@
 	gameCrossLiarsDiceDescription: "Bluffa con i dadi nascosti",
 	rulesMemory:
 		"🎯 Obiettivo\n• Trova tutte le coppie di carte con il minor numero di mosse.\n\n🃏 Come giocare\n• Tocca per girare due carte per turno.\n• Se corrispondono, restano scoperte.\n• Se no, si rigirano — ricorda le posizioni!\n\n⭐ Punteggio\n• Meno mosse = punteggio più alto.\n• Prova a battere il tuo record!",
-	rulesTouchdown:
-		"🎯 Obiettivo\n• Tocca quante più volte possibile prima che scada il tempo!\n\n👆 Come giocare\n• Tocca lo schermo per 20 secondi.\n• Ogni tocco conta per il tuo punteggio.\n\n⭐ Suggerimento\n• Tocchi rapidi e leggeri funzionano meglio.",
 	rulesSkyMath:
 		"🎯 Obiettivo\n• Risolvi problemi di matematica il più velocemente possibile.\n\n🧮 Come giocare\n• Un'equazione appare sullo schermo.\n• Scegli la risposta corretta tra le opzioni.\n• Corretta = punti. Sbagliata = perdi una vita.\n\n⭐ Suggerimento\n• La velocità conta — risposte più veloci = più punti!",
 	rulesQuiz:
@@ -284,13 +280,9 @@
 	reactionTap: "TOCCA!",
 	reactionTooEarlyTitle: "Troppo presto!",
 	reactionTooEarlyMsg: "Hai toccato prima del verde. Riprova.",
-	tapRushTime: "TEMPO",
 	tapRushScore: "PUNTEGGIO",
 	tapRushStart: "Inizia",
-	tapRushTap: "TOCCA!",
 	tapRushPlayAgain: "Gioca ancora",
-	tapRushFinishedTitle: "Round terminato",
-	tapRushFinishedMsg: "Il tuo punteggio: {{score}}",
 	skyMathScore: "Punteggio: {{score}}",
 	skyMathFinished: "Finito",
 	skyMathResult: "Corrette: {{correct}} su {{total}}\nPunteggio: {{score}}",
@@ -775,8 +767,6 @@
 	achieveStreak7Desc: "Porta FlightMode su 5 voli",
 	achieveSpeedDemonTitle: "Demone della velocità",
 	achieveSpeedDemonDesc: "Tempo di reazione sotto 200ms",
-	achieveTapChampionTitle: "Campione di tap",
-	achieveTapChampionDesc: "100+ punti in Tap Rush",
 	passPhone: "Passa il telefono",
 	passPhoneTo: "Passa il telefono a {{player}}",
 	passPhoneReady: "Sono pronto",

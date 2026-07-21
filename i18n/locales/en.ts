@@ -108,8 +108,6 @@ export const en = {
 	youWin: "You Win!",
 	youWinMessage: "Moves: {{moves}}\nScore: {{score}}",
 	gameMemoryListDescription: "Quick, standard, or long-haul memory mode",
-	gameTapRushName: "Tap Rush",
-	gameTapRushDescription: "Tap as fast as possible in 20 seconds",
 	gameSkyMathName: "Sky Math",
 	gameSkyMathDescription: "Solve quick math rounds",
 	gameQuizName: "Flight Quiz",
@@ -150,8 +148,6 @@ export const en = {
 	// Game rules (shown via ? button)
 	rulesMemory:
 		"🎯 Goal\n• Match all pairs of cards with the fewest moves.\n\n🃏 How to Play\n• Tap to flip two cards per turn.\n• If the cards match, they stay face-up.\n• If not, they flip back — remember their positions!\n\n⭐ Scoring\n• Fewer moves = higher score.\n• Try to beat your personal best!",
-	rulesTouchdown:
-		"🎯 Goal\n• Tap as many times as you can before time runs out!\n\n👆 How to Play\n• Tap the screen repeatedly for 20 seconds.\n• Every single tap counts toward your score.\n\n⭐ Tip\n• Use quick, light taps for the best result.",
 	rulesSkyMath:
 		"🎯 Goal\n• Solve math problems as fast as you can.\n\n🧮 How to Play\n• A math equation appears on screen.\n• Pick the correct answer from the options.\n• Correct = points. Wrong = lose a life.\n\n⭐ Tip\n• Speed matters — faster answers earn more points!",
 	rulesQuiz:
@@ -312,13 +308,9 @@ export const en = {
 	reactionTooEarlyTitle: "Too early!",
 	reactionTooEarlyMsg: "You tapped before green. Try again.",
 	// Tap Rush
-	tapRushTime: "TIME",
 	tapRushScore: "SCORE",
 	tapRushStart: "Start",
-	tapRushTap: "TAP!",
 	tapRushPlayAgain: "Play again",
-	tapRushFinishedTitle: "Round finished",
-	tapRushFinishedMsg: "Your score: {{score}}",
 	// Sky Math
 	skyMathScore: "Score: {{score}}",
 	skyMathFinished: "Finished",
@@ -838,8 +830,6 @@ export const en = {
 	achieveStreak7Desc: "Keep FlightMode along for 5 flights",
 	achieveSpeedDemonTitle: "Speed Demon",
 	achieveSpeedDemonDesc: "Reaction time under 200ms",
-	achieveTapChampionTitle: "Tap Champion",
-	achieveTapChampionDesc: "Score 100+ in Tap Rush",
 	achievePerfectLandingTitle: "Perfect Landing",
 	achievePerfectLandingDesc: "Score 500+ in Runway Landing",
 	achieveSkyGuardianTitle: "Sky Guardian",

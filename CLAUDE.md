@@ -59,7 +59,7 @@ Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
 ## Games
 
-34 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+33 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -68,7 +68,6 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | ID | Category | Difficulty | Notes |
 |---|---|---|---|
 | `memory` | brain | easy | Card matching |
-| `tap-rush` | reflex | easy | Speed tapping; daily challenge |
 | `reaction` | reflex | easy | Reaction timer; daily challenge |
 | `sky-math` | brain | medium | Math quiz; daily challenge |
 | `quiz` | brain | medium | Trivia |
@@ -102,7 +101,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `cargo-catch` | reflex | medium | Catch falling cargo, dodge bombs; 60s |
 | `word-search` | brain | medium | Find hidden words in an 8×8 letter grid |
 
-**Daily challenge games:** `tap-rush`, `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess` (derived from `isDailyChallenge` in `data/games.ts` — do not hand-maintain)
+**Daily challenge games:** `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess` (derived from `isDailyChallenge` in `data/games.ts` — do not hand-maintain)
 
 **Play modes:** `bestOf` · `passAndPlay` · `sharedScreen` · `crossDevice`
 

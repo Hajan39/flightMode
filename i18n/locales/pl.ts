@@ -87,8 +87,6 @@
 	youWin: "Wygrałeś!",
 	youWinMessage: "Ruchy: {{moves}}\nWynik: {{score}}",
 	gameMemoryListDescription: "Tryb szybki, standardowy lub długodystansowy",
-	gameTapRushName: "Tap Rush",
-	gameTapRushDescription: "Stuknij jak najszybciej w 20 sekund",
 	gameSkyMathName: "Sky Math",
 	gameSkyMathDescription: "Rozwiązuj szybkie obliczenia",
 	gameQuizName: "Quiz lotniczy",
@@ -129,8 +127,6 @@
 	gameCrossLiarsDiceDescription: "Blefuj ukrytymi kośćmi",
 	rulesMemory:
 		"🎯 Cel\n• Znajdź wszystkie pary kart, używając jak najmniej ruchów.\n\n🃏 Jak grać\n• Tapnij, aby odkryć dwie karty na turę.\n• Jeśli pasują, zostają odkryte.\n• Jeśli nie, wracają — zapamiętaj ich pozycje!\n\n⭐ Punktacja\n• Mniej ruchów = wyższy wynik.\n• Spróbuj pobić swój rekord!",
-	rulesTouchdown:
-		"🎯 Cel\n• Tapnij jak najwięcej razy, zanim skończy się czas!\n\n👆 Jak grać\n• Tapuj na ekran przez 20 sekund.\n• Każde tapnięcie liczy się do wyniku.\n\n⭐ Wskazówka\n• Szybkie, lekkie tapnięcia działają najlepiej.",
 	rulesSkyMath:
 		"🎯 Cel\n• Rozwiązuj zadania matematyczne jak najszybciej.\n\n🧮 Jak grać\n• Na ekranie pojawia się równanie.\n• Wybierz poprawną odpowiedź z opcji.\n• Poprawna = punkty. Błędna = utrata życia.\n\n⭐ Wskazówka\n• Szybkość się liczy — szybsze odpowiedzi = więcej punktów!",
 	rulesQuiz:
@@ -282,13 +278,9 @@
 	reactionTap: "STUKNIJ!",
 	reactionTooEarlyTitle: "Za wcześnie!",
 	reactionTooEarlyMsg: "Stuknąłeś przed zielonym. Spróbuj ponownie.",
-	tapRushTime: "CZAS",
 	tapRushScore: "WYNIK",
 	tapRushStart: "Start",
-	tapRushTap: "STUKNIJ!",
 	tapRushPlayAgain: "Zagraj ponownie",
-	tapRushFinishedTitle: "Runda zakończona",
-	tapRushFinishedMsg: "Twój wynik: {{score}}",
 	skyMathScore: "Wynik: {{score}}",
 	skyMathFinished: "Zakończono",
 	skyMathResult: "Poprawne: {{correct}} z {{total}}\nWynik: {{score}}",
@@ -774,8 +766,6 @@
 	achieveStreak7Desc: "Zabierz FlightMode na 5 lotów",
 	achieveSpeedDemonTitle: "Demon prędkości",
 	achieveSpeedDemonDesc: "Czas reakcji poniżej 200ms",
-	achieveTapChampionTitle: "Mistrz tapnięć",
-	achieveTapChampionDesc: "100+ punktów w Tap Rush",
 	passPhone: "Podaj telefon",
 	passPhoneTo: "Podaj telefon graczowi {{player}}",
 	passPhoneReady: "Jestem gotowy",

@@ -86,8 +86,6 @@
 	youWin: "你赢了！",
 	youWinMessage: "步数：{{moves}}\n得分：{{score}}",
 	gameMemoryListDescription: "快速、标准或长途模式",
-	gameTapRushName: "极速点击",
-	gameTapRushDescription: "20秒内尽可能快地点击",
 	gameSkyMathName: "空中数学",
 	gameSkyMathDescription: "快速计算题",
 	gameQuizName: "飞行问答",
@@ -124,8 +122,6 @@
 	gameCrossLiarsDiceDescription: "用隐藏的骰子虚张声势",
 	rulesMemory:
 		"🎯 目标\n• 用最少的步数找到所有卡牌配对。\n\n🃏 玩法\n• 点击翻开每回合两张牌。\n• 如果匹配，则保持翻开。\n• 如果不匹配，则翻回去 — 记住位置！\n\n⭐ 得分\n• 步数越少 = 分数越高。\n• 尝试打破你的个人记录！",
-	rulesTouchdown:
-		"🎯 目标\n• 在时间结束前尽可能多点击！\n\n👆 玩法\n• 点击屏幕20秒。\n• 每次点击都计入你的分数。\n\n⭐ 提示\n• 快速轻点效果最好。",
 	rulesSkyMath:
 		"🎯 目标\n• 尽快解决数学题。\n\n🧮 玩法\n• 屏幕上出现一道算式。\n• 从选项中选择正确答案。\n• 正确 = 得分。错误 = 失去一条命。\n\n⭐ 提示\n• 速度很重要 — 答得越快分数越高！",
 	rulesQuiz:
@@ -275,13 +271,9 @@
 	reactionTap: "点击！",
 	reactionTooEarlyTitle: "太早了！",
 	reactionTooEarlyMsg: "你在变绿之前点击了。再试一次。",
-	tapRushTime: "时间",
 	tapRushScore: "得分",
 	tapRushStart: "开始",
-	tapRushTap: "点击！",
 	tapRushPlayAgain: "再玩一次",
-	tapRushFinishedTitle: "回合结束",
-	tapRushFinishedMsg: "你的得分：{{score}}",
 	skyMathScore: "得分：{{score}}",
 	skyMathFinished: "完成",
 	skyMathResult: "正确：{{correct}} / {{total}}\n得分：{{score}}",
@@ -753,8 +745,6 @@
 	achieveStreak7Desc: "在 5 次航班中使用 FlightMode",
 	achieveSpeedDemonTitle: "速度恶魔",
 	achieveSpeedDemonDesc: "反应时间低于200ms",
-	achieveTapChampionTitle: "点击冠军",
-	achieveTapChampionDesc: "Tap Rush中100+分",
 	passPhone: "递手机",
 	passPhoneTo: "把手机递给{{player}}",
 	passPhoneReady: "我准备好了",

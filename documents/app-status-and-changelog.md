@@ -132,6 +132,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-20
 
+- code/UX review + opravy: odstraněn duplicitní `tap-rush` (podmnožina Whack-a-Mole) → 33 her; dark-theme kontrast (`onTint` token); Home zeštíhlená (pryč Quick Actions, Daily Challenge nahoru); a11y (GameControls + flight-close labely); haptika dýchání, useContentItems merge, minutový stepper carry, RECORD_AUDIO odebrán, EON→FlightMode, smazán tsc-errors.txt; doc drift v CLAUDE.md
 - depth iterace: Minesweeper board logika vyextrahovana do `games/minesweeper/logic.ts` (mine placement s first-tap-safe + inject RNG, adjacency, flood reveal, win check) + unit testy pres seedy; destinace 39 → 44 (Doha, Varsava, Budapest, San Francisco, Auckland); suite 279 testu / 13 suites
 - depth iterace: Snake pohybova logika vyextrahovana do `games/snake/logic.ts` (`step` pohyb/rust/kolize, `placeFood` s inject RNG, `opposite`, `getIntervalMs`) + unit testy; destinace 34 → 39 (Lima, Nairobi, Vancouver, Kodan, Kuala Lumpur); suite 252 testu / 12 suites
 - depth iterace: Sudoku ciste helpery vyextrahovany do `games/sudoku/logic.ts` (souradnice, isPeer, computeErrors, isSolved, formatTime) + unit testy; test integrity obsahu (44 clanku: unikatni id, kladny readTime, neprazdne en/cs/de); destinace 29 → 34 (Madrid, Stockholm, Dilli, Osaka, Curych); suite 237 testu / 11 suites
