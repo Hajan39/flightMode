@@ -302,4 +302,13 @@ export const achievements: AchievementDef[] = [
 		category: "special",
 		condition: (s) => (s.gameProgress["cargo-catch"]?.highScore ?? 0) >= 25,
 	},
+	// ── Word Search ──
+	{
+		id: "word-hunter",
+		titleKey: "achieveWordHunterTitle",
+		descriptionKey: "achieveWordHunterDesc",
+		icon: "search-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["word-search"]?.highScore ?? 0) >= 1500,
+	},
 ];

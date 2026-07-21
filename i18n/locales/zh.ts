@@ -1047,4 +1047,12 @@ gameOddOneOutName: "找不同",
 	ccTimeLeft: "时间",
 	achieveCargoCaptainTitle: "货运船长",
 	achieveCargoCaptainDesc: "在一局接货物中接住 25 个箱子。",
+	// Word Search game
+	gameWordSearchName: "找单词",
+	gameWordSearchDescription: "在字母网格中找出隐藏的航空单词",
+	rulesWordSearch: "点击单词的第一个字母，再点最后一个字母。单词横向、纵向或斜向隐藏——正向或反向。找出全部六个！",
+	wsFound: "已找到",
+	wsWords: "单词",
+	achieveWordHunterTitle: "单词猎人",
+	achieveWordHunterDesc: "在找单词中获得 1500 分或以上。",
 } as const;

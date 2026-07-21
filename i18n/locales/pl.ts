@@ -1076,4 +1076,12 @@ gameOddOneOutName: "Znajdź Intruza",
 	ccTimeLeft: "CZAS",
 	achieveCargoCaptainTitle: "Kapitan ładunku",
 	achieveCargoCaptainDesc: "Złap 25 skrzyń w jednej rozgrywce Łap ładunek.",
+	// Word Search game
+	gameWordSearchName: "Wykreślanka",
+	gameWordSearchDescription: "Znajdź ukryte słowa lotnicze w siatce liter",
+	rulesWordSearch: "Dotknij pierwszej litery słowa, a potem ostatniej. Słowa ukrywają się poziomo, pionowo lub po skosie — w przód i w tył. Znajdź wszystkie sześć!",
+	wsFound: "Znalezione",
+	wsWords: "Słowa",
+	achieveWordHunterTitle: "Łowca słów",
+	achieveWordHunterDesc: "Zdobądź 1500 lub więcej w Wykreślance.",
 } as const;

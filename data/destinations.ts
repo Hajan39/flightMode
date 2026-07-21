@@ -820,6 +820,171 @@ export const destinations: Destination[] = [
 			},
 		],
 	},
+	{
+		id: "berlin",
+		city: "Berlin",
+		country: "Germany",
+		emoji: "🐻",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Brandenburg (BER) the FEX airport express and S-Bahn (S9/S45) reach the centre in about 30–45 minutes. Buy a ticket covering zones ABC before boarding.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The U-Bahn, S-Bahn, trams, and buses share one ticket — validate paper ones in the platform machines. There are no barriers, but inspectors do fine riders without a valid ticket.",
+			},
+			{
+				icon: "cafe-outline",
+				label: "Food",
+				text: "Try currywurst, döner kebab, and hearty brunch spots across Kreuzberg and Neukölln. Tap water is safe, though restaurants usually serve bottled water by default.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Germany uses the euro and Berlin is surprisingly cash-friendly, so carry some for smaller bars and imbiss stands. Round up or add about 5–10%, telling the server the total as you pay.",
+			},
+			{
+				icon: "walk-outline",
+				label: "Local note",
+				text: "Never walk in the red-paved bike lanes and wait for the green Ampelmann before crossing, even on empty streets. Sundays are quiet, as most shops and supermarkets close.",
+			},
+		],
+	},
+	{
+		id: "kyoto",
+		city: "Kyoto",
+		country: "Japan",
+		emoji: "⛩️",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "Most visitors arrive via Osaka's Kansai (KIX) airport, where the JR Haruka express reaches Kyoto Station in about 75 minutes. From there taxis and city buses fan out across the city.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Buy an ICOCA or Suica IC card and tap it on buses and subways; buses are best for temples but get crowded. Pay as you exit city buses, and cycling the flat backstreets is a joy.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try kaiseki, tofu cuisine, matcha sweets, and the food stalls of Nishiki Market. Slurping noodles is fine, and tap water is clean and safe to drink.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Carry cash, as many temples, small eateries, and older shops are cash-only, though IC cards work widely. Tipping is not practiced and may cause polite confusion.",
+			},
+			{
+				icon: "hand-left-outline",
+				label: "Etiquette",
+				text: "Remove your shoes where indicated at temples and traditional inns, and keep quiet in shrines. Do not photograph geisha in Gion without permission — it is disrespectful and sometimes fined.",
+			},
+		],
+	},
+	{
+		id: "rio-de-janeiro",
+		city: "Rio de Janeiro",
+		country: "Brazil",
+		emoji: "🏖️",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "From Galeão (GIG) there is no train, so use the official BRT/premium airport bus or a ride-hailing app like Uber rather than unmarked cabs. Agree or app-book fares before setting off.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The metro is clean, safe, and cheap along the beach neighborhoods — buy a rechargeable card. Ride-hailing apps fill the gaps, and the tram (bondinho) to Santa Teresa is a scenic ride.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try feijoada, pão de queijo, açaí bowls, and per-kilo buffets (comida a quilo) for great value. Stick to bottled or filtered water, and sip a fresh coconut on the beach.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the real; cards are widely accepted but keep some cash for beach kiosks and markets. A 10% service charge is usually added to restaurant bills, so extra tipping is optional.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Leave valuables in the hotel and take only what you need to the beach — carry a little cash to hand over if mugged. Avoid displaying phones or jewellery, and use apps for transport after dark.",
+			},
+		],
+	},
+	{
+		id: "athens",
+		city: "Athens",
+		country: "Greece",
+		emoji: "🏛️",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "Metro Line 3 links the airport to Syntagma in the centre in about 40 minutes; the X95 express bus runs 24/7 as a cheaper option. Official taxis charge a fixed flat day fare to the centre.",
+			},
+			{
+				icon: "subway-outline",
+				label: "Getting around",
+				text: "The clean, modern metro reaches most sights — buy and validate a ticket or rechargeable Ath.ena card before boarding. The historic centre around the Acropolis is compact and walkable.",
+			},
+			{
+				icon: "wine-outline",
+				label: "Food",
+				text: "Fill up on souvlaki, gyros, mezze, and fresh Greek salad at neighbourhood tavernas away from Plaka's tourist strips. Tap water in Athens is safe to drink.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Greece uses the euro and cards are widely accepted, but keep coins for kiosks (periptera) and small tavernas. Tipping is modest — round up or leave 5–10% for good service.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Watch for pickpockets on the metro and around Monastiraki and Omonia, especially in crowds. Wear sturdy shoes, as the marble paths near the Acropolis get very slippery when wet.",
+			},
+		],
+	},
+	{
+		id: "hanoi",
+		city: "Hanoi",
+		country: "Vietnam",
+		emoji: "🛵",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Noi Bai airport has no train, so use the official taxi rank, an airport minibus, or a ride-hailing app like Grab. Agree the fare or book in-app first to avoid overcharging.",
+			},
+			{
+				icon: "car-outline",
+				label: "Getting around",
+				text: "The Old Quarter is best explored on foot, with Grab cars and motorbike taxis (xe om) for longer trips. Public buses are cheap but tricky, and a metro line is slowly expanding.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Don't miss pho, bun cha, banh mi, and egg coffee from busy street-side stalls on tiny plastic stools. Stick to bottled water and be cautious with ice from unknown vendors.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the dong; carry small notes as street food, markets, and taxis are largely cash-only. Tipping isn't expected, but rounding up or leaving small change is appreciated.",
+			},
+			{
+				icon: "hand-left-outline",
+				label: "Etiquette",
+				text: "To cross the chaotic streets, walk slowly and steadily so scooters can flow around you. Dress modestly and remove your shoes at temples, and use both hands to pass items to elders.",
+			},
+		],
+	},
 ];
 
 /** Look up a single destination by its id. */

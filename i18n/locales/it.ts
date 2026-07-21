@@ -1081,4 +1081,12 @@ gameOddOneOutName: "L'Intruso",
 	ccTimeLeft: "TEMPO",
 	achieveCargoCaptainTitle: "Capitano del carico",
 	achieveCargoCaptainDesc: "Prendi 25 casse in una sola partita di Acchiappa carico.",
+	// Word Search game
+	gameWordSearchName: "Trova parole",
+	gameWordSearchDescription: "Trova parole di aviazione nascoste nella griglia",
+	rulesWordSearch: "Tocca la prima lettera di una parola, poi l'ultima. Le parole si nascondono in orizzontale, verticale o diagonale — dritte o al contrario. Trovale tutte e sei!",
+	wsFound: "Trovate",
+	wsWords: "Parole",
+	achieveWordHunterTitle: "Cacciatore di parole",
+	achieveWordHunterDesc: "Ottieni 1500 o più in Trova parole.",
 } as const;

@@ -409,6 +409,17 @@ export const gameRegistry: GameDefinition[] = [
 		difficulty: "medium",
 		loadComponent: () => require("@/games/cargo-catch").default,
 	},
+	{
+		id: "word-search",
+		titleKey: "gameWordSearchName",
+		descriptionKey: "gameWordSearchDescription",
+		rulesKey: "rulesWordSearch",
+		estimatedTime: 4,
+		icon: "search-outline",
+		category: "brain",
+		difficulty: "medium",
+		loadComponent: () => require("@/games/word-search").default,
+	},
 ];
 
 export const gamesById = Object.fromEntries(

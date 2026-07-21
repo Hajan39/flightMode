@@ -1084,4 +1084,12 @@ gameOddOneOutName: "Odd One Out",
 	ccTimeLeft: "TIME",
 	achieveCargoCaptainTitle: "Cargo Captain",
 	achieveCargoCaptainDesc: "Catch 25 crates in a single Cargo Catch run.",
+	// Word Search game
+	gameWordSearchName: "Word Search",
+	gameWordSearchDescription: "Find hidden aviation words in the letter grid",
+	rulesWordSearch: "Tap the first letter of a word, then its last letter. Words hide horizontally, vertically, or diagonally — forwards or backwards. Find all six to win!",
+	wsFound: "Found",
+	wsWords: "Words",
+	achieveWordHunterTitle: "Word Hunter",
+	achieveWordHunterDesc: "Score 1500 or more in Word Search.",
 } as const;

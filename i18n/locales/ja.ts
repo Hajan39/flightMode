@@ -1061,4 +1061,12 @@ gameOddOneOutName: "仲間外れ探し",
 	ccTimeLeft: "タイム",
 	achieveCargoCaptainTitle: "カーゴキャプテン",
 	achieveCargoCaptainDesc: "1回のカーゴキャッチで25個の荷物をキャッチする。",
+	// Word Search game
+	gameWordSearchName: "ワードサーチ",
+	gameWordSearchDescription: "文字グリッドに隠れた航空用語を探そう",
+	rulesWordSearch: "単語の最初の文字をタップし、次に最後の文字をタップ。単語は横・縦・斜めに、前向きにも後ろ向きにも隠れています。6つすべて見つけよう！",
+	wsFound: "発見",
+	wsWords: "単語",
+	achieveWordHunterTitle: "ワードハンター",
+	achieveWordHunterDesc: "ワードサーチで1500点以上を取る。",
 } as const;

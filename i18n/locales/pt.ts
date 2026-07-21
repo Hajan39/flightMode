@@ -1077,4 +1077,12 @@ gameOddOneOutName: "O Intruso",
 	ccTimeLeft: "TEMPO",
 	achieveCargoCaptainTitle: "Capitão de carga",
 	achieveCargoCaptainDesc: "Pegue 25 caixas numa única partida de Pega carga.",
+	// Word Search game
+	gameWordSearchName: "Caça-palavras",
+	gameWordSearchDescription: "Encontre palavras de aviação escondidas na grade",
+	rulesWordSearch: "Toque na primeira letra de uma palavra e depois na última. As palavras se escondem na horizontal, vertical ou diagonal — para frente ou para trás. Encontre todas as seis!",
+	wsFound: "Encontradas",
+	wsWords: "Palavras",
+	achieveWordHunterTitle: "Caçador de palavras",
+	achieveWordHunterDesc: "Marque 1500 ou mais no Caça-palavras.",
 } as const;

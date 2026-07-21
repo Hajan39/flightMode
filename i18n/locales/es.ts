@@ -1084,4 +1084,12 @@ gameOddOneOutName: "El Intruso",
 	ccTimeLeft: "TIEMPO",
 	achieveCargoCaptainTitle: "Capitán de carga",
 	achieveCargoCaptainDesc: "Atrapa 25 cajas en una sola partida de Atrapa carga.",
+	// Word Search game
+	gameWordSearchName: "Sopa de letras",
+	gameWordSearchDescription: "Encuentra palabras de aviación ocultas en la cuadrícula",
+	rulesWordSearch: "Toca la primera letra de una palabra y luego la última. Las palabras se ocultan en horizontal, vertical o diagonal, hacia adelante o atrás. ¡Encuentra las seis!",
+	wsFound: "Encontradas",
+	wsWords: "Palabras",
+	achieveWordHunterTitle: "Cazapalabras",
+	achieveWordHunterDesc: "Consigue 1500 o más en Sopa de letras.",
 } as const;

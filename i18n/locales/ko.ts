@@ -1056,4 +1056,12 @@ gameOddOneOutName: "다른 거 찾기",
 	ccTimeLeft: "시간",
 	achieveCargoCaptainTitle: "화물 선장",
 	achieveCargoCaptainDesc: "한 판에서 화물 25개를 잡으세요.",
+	// Word Search game
+	gameWordSearchName: "단어 찾기",
+	gameWordSearchDescription: "글자 격자에서 숨은 항공 단어를 찾으세요",
+	rulesWordSearch: "단어의 첫 글자를 탭한 다음 마지막 글자를 탭하세요. 단어는 가로, 세로, 대각선으로 — 정방향과 역방향으로 숨어 있습니다. 여섯 개를 모두 찾으세요!",
+	wsFound: "찾음",
+	wsWords: "단어",
+	achieveWordHunterTitle: "단어 사냥꾼",
+	achieveWordHunterDesc: "단어 찾기에서 1500점 이상을 획득하세요.",
 } as const;

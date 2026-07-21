@@ -1075,4 +1075,12 @@ gameOddOneOutName: "Hledej Vetřelce",
 	ccTimeLeft: "ČAS",
 	achieveCargoCaptainTitle: "Kapitán nákladu",
 	achieveCargoCaptainDesc: "Chyť 25 beden v jednom kole Chytání nákladu.",
+	// Word Search game
+	gameWordSearchName: "Hledání slov",
+	gameWordSearchDescription: "Najdi skrytá letecká slova v mřížce písmen",
+	rulesWordSearch: "Klepni na první písmeno slova a pak na poslední. Slova jsou skrytá vodorovně, svisle nebo úhlopříčně — dopředu i pozpátku. Najdi všech šest!",
+	wsFound: "Nalezeno",
+	wsWords: "Slova",
+	achieveWordHunterTitle: "Lovec slov",
+	achieveWordHunterDesc: "Získej 1500 nebo více v Hledání slov.",
 } as const;

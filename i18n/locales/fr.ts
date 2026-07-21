@@ -1095,4 +1095,12 @@ gameOddOneOutName: "L'Intrus",
 	ccTimeLeft: "TEMPS",
 	achieveCargoCaptainTitle: "Capitaine de fret",
 	achieveCargoCaptainDesc: "Attrapez 25 caisses en une seule partie d'Attrape-cargo.",
+	// Word Search game
+	gameWordSearchName: "Mots mêlés",
+	gameWordSearchDescription: "Trouvez des mots d'aviation cachés dans la grille",
+	rulesWordSearch: "Touchez la première lettre d'un mot, puis la dernière. Les mots se cachent à l'horizontale, à la verticale ou en diagonale — à l'endroit ou à l'envers. Trouvez les six !",
+	wsFound: "Trouvés",
+	wsWords: "Mots",
+	achieveWordHunterTitle: "Chasseur de mots",
+	achieveWordHunterDesc: "Marquez 1500 ou plus aux Mots mêlés.",
 } as const;

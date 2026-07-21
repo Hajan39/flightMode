@@ -1051,4 +1051,12 @@ gameOddOneOutName: "अलग खोजो",
 	ccTimeLeft: "समय",
 	achieveCargoCaptainTitle: "कार्गो कप्तान",
 	achieveCargoCaptainDesc: "एक ही कार्गो कैच राउंड में 25 बक्से पकड़ें।",
+	// Word Search game
+	gameWordSearchName: "शब्द खोज",
+	gameWordSearchDescription: "अक्षर ग्रिड में छिपे विमानन शब्द खोजें",
+	rulesWordSearch: "किसी शब्द के पहले अक्षर पर टैप करें, फिर अंतिम पर। शब्द क्षैतिज, ऊर्ध्वाधर या तिरछे छिपे होते हैं — आगे या पीछे। सभी छह खोजें!",
+	wsFound: "मिले",
+	wsWords: "शब्द",
+	achieveWordHunterTitle: "शब्द शिकारी",
+	achieveWordHunterDesc: "शब्द खोज में 1500 या अधिक अंक पाएं।",
 } as const;

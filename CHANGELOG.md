@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Added Word Search game (`word-search`): a new genre — find 6 hidden aviation words in an 8×8 letter grid (horizontal, vertical, or diagonal; forwards or backwards). Tap the first and last letter to select. New "Word Hunter" achievement. The grid logic (`games/word-search/logic.ts`) is pure and unit-tested (placement readability across seeds, straight-line detection). Brain/medium/4 min. Fully localized across all 12 languages. (Total games: 34.)
 - Tests: extracted the flight-time game recommendation logic to `utils/flightRecommendations.ts` and added unit tests (bucket selection by remaining time, preferred-category ordering, play-together exclusion, limit). Added `useGameStore` tests covering new-best, streak grow/reset, `levelStarsPatch` max-merge, and per-game reset. Wired an AsyncStorage jest mock (`jest.setup.js`) so persisted stores are testable. Suite is now 156 tests.
 - Expanded destinations from 19 to 24 (added Bali, Marrakech, Buenos Aires, Prague, Toronto).
 

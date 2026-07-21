@@ -1100,4 +1100,12 @@ gameOddOneOutName: "Finde den Außenseiter",
 	ccTimeLeft: "ZEIT",
 	achieveCargoCaptainTitle: "Frachtkapitän",
 	achieveCargoCaptainDesc: "Fange 25 Kisten in einem Durchgang von Fracht fangen.",
+	// Word Search game
+	gameWordSearchName: "Wortsuche",
+	gameWordSearchDescription: "Finde versteckte Luftfahrtwörter im Buchstabengitter",
+	rulesWordSearch: "Tippe den ersten Buchstaben eines Wortes an, dann den letzten. Wörter verstecken sich waagerecht, senkrecht oder diagonal — vorwärts und rückwärts. Finde alle sechs!",
+	wsFound: "Gefunden",
+	wsWords: "Wörter",
+	achieveWordHunterTitle: "Wortjäger",
+	achieveWordHunterDesc: "Erreiche 1500 oder mehr in der Wortsuche.",
 } as const;
