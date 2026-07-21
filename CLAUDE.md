@@ -14,9 +14,12 @@ npm run ota:preview -- "message"    # OTA update to preview channel
 npm run ota:production -- "message" # OTA update to production channel
 npm run eas:build:android           # EAS native build
 npm run deploy:android              # EAS build + auto-submit
+npm run deploy:internal             # EAS build + submit to Internal testing (generates pre-launch report)
+
+npm test                            # Jest (jest-expo) — pure logic/data tests in __tests__/
 ```
 
-No test runner or lint script is configured. Validate with TypeScript Problems panel.
+Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/` (locale parity, game-registry & achievement integrity, destinations, Sudoku puzzle validity) — run `npm test`. These do NOT render RN components. No lint script; also validate with `npx tsc --noEmit`.
 
 ## Architecture
 
@@ -54,7 +57,7 @@ Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
 ## Games
 
-31 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+32 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -93,6 +96,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `sudoku` | brain | hard | 9×9 logic puzzle; 15 hardcoded puzzles |
 | `snake` | reflex | medium | Classic snake; D-pad controls |
 | `cabin-lights` | brain | medium | Lights Out puzzle; 5 rounds 3×3→5×5 |
+| `sliding-puzzle` | brain | medium | Classic 15-puzzle (4×4 sliding tiles) |
 
 **Daily challenge games:** `tap-rush`, `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess` (derived from `isDailyChallenge` in `data/games.ts` — do not hand-maintain)
 

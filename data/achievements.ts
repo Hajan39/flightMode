@@ -284,4 +284,13 @@ export const achievements: AchievementDef[] = [
 		category: "special",
 		condition: (s) => (s.gameProgress["snake"]?.highScore ?? 0) >= 20,
 	},
+	// ── Sliding Puzzle ──
+	{
+		id: "puzzle-slider",
+		titleKey: "achievePuzzleSliderTitle",
+		descriptionKey: "achievePuzzleSliderDesc",
+		icon: "grid-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["sliding-puzzle"]?.highScore ?? 0) >= 2000,
+	},
 ];

@@ -1039,4 +1039,13 @@ gameOddOneOutName: "다른 거 찾기",
 	flightDestinationLabel: "여행지 (선택)",
 	flightDestinationNone: "없음",
 	homeDestinationTipsFor: "{{city}} 팁",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "슬라이딩 퍼즐",
+	gameSlidingPuzzleDescription: "번호 타일을 1부터 15까지 순서대로 밀어 맞추세요.",
+	rulesSlidingPuzzle: "빈 칸 옆의 타일을 탭해서 밀어요. 모든 타일을 1–15 순서로 맞추세요. 이동과 시간이 적을수록 높은 점수.",
+	spMoves: "이동",
+	spTime: "시간",
+	spSolved: "완성!",
+	achievePuzzleSliderTitle: "슬라이드 마스터",
+	achievePuzzleSliderDesc: "슬라이딩 퍼즐을 2000점 이상으로 완성하세요.",
 } as const;

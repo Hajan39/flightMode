@@ -1083,4 +1083,13 @@ gameOddOneOutName: "Finde den Außenseiter",
 	flightDestinationLabel: "Reiseziel (optional)",
 	flightDestinationNone: "Keins",
 	homeDestinationTipsFor: "Tipps für {{city}}",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "Schiebepuzzle",
+	gameSlidingPuzzleDescription: "Schiebe die nummerierten Kacheln in die Reihenfolge 1 bis 15.",
+	rulesSlidingPuzzle: "Tippe eine Kachel neben dem leeren Feld an, um sie zu schieben. Ordne alle Kacheln von 1 bis 15. Weniger Züge und Zeit bedeuten mehr Punkte.",
+	spMoves: "Züge",
+	spTime: "Zeit",
+	spSolved: "Gelöst!",
+	achievePuzzleSliderTitle: "Schiebemeister",
+	achievePuzzleSliderDesc: "Löse das Schiebepuzzle mit 2000 Punkten oder mehr.",
 } as const;

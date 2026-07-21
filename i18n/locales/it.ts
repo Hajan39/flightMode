@@ -1064,4 +1064,13 @@ gameOddOneOutName: "L'Intruso",
 	flightDestinationLabel: "Destinazione (facoltativo)",
 	flightDestinationNone: "Nessuna",
 	homeDestinationTipsFor: "Consigli per {{city}}",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "Rompicapo scorrevole",
+	gameSlidingPuzzleDescription: "Fai scorrere le tessere numerate in ordine, da 1 a 15.",
+	rulesSlidingPuzzle: "Tocca una tessera vicino allo spazio vuoto per farla scorrere. Ordina tutte le tessere da 1 a 15. Meno mosse e tempo = punteggio più alto.",
+	spMoves: "Mosse",
+	spTime: "Tempo",
+	spSolved: "Risolto!",
+	achievePuzzleSliderTitle: "Maestro dello scorrimento",
+	achievePuzzleSliderDesc: "Risolvi il rompicapo scorrevole con un punteggio di 2000 o più.",
 } as const;

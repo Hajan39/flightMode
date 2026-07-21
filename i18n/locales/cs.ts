@@ -1058,4 +1058,13 @@ gameOddOneOutName: "Hledej Vetřelce",
 	flightDestinationLabel: "Cíl cesty (nepovinné)",
 	flightDestinationNone: "Žádný",
 	homeDestinationTipsFor: "Tipy pro {{city}}",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "Posuvné puzzle",
+	gameSlidingPuzzleDescription: "Posouvej očíslované dlaždice do pořadí 1 až 15.",
+	rulesSlidingPuzzle: "Klepni na dlaždici vedle prázdného místa a posuň ji. Seřaď všechny dlaždice v pořadí 1–15. Méně tahů a času = vyšší skóre.",
+	spMoves: "Tahy",
+	spTime: "Čas",
+	spSolved: "Vyřešeno!",
+	achievePuzzleSliderTitle: "Mistr posouvání",
+	achievePuzzleSliderDesc: "Vyřeš posuvné puzzle se skóre 2000 nebo více.",
 } as const;

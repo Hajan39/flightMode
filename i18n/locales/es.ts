@@ -1067,4 +1067,13 @@ gameOddOneOutName: "El Intruso",
 	flightDestinationLabel: "Destino (opcional)",
 	flightDestinationNone: "Ninguno",
 	homeDestinationTipsFor: "Consejos para {{city}}",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "Puzzle deslizante",
+	gameSlidingPuzzleDescription: "Desliza las fichas numeradas en orden, del 1 al 15.",
+	rulesSlidingPuzzle: "Toca una ficha junto al espacio vacío para deslizarla. Ordena todas las fichas del 1 al 15. Menos movimientos y tiempo dan más puntos.",
+	spMoves: "Movimientos",
+	spTime: "Tiempo",
+	spSolved: "¡Resuelto!",
+	achievePuzzleSliderTitle: "Maestro deslizante",
+	achievePuzzleSliderDesc: "Resuelve el puzzle deslizante con 2000 puntos o más.",
 } as const;

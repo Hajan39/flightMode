@@ -1067,4 +1067,13 @@ gameOddOneOutName: "Odd One Out",
 	flightDestinationLabel: "Destination (optional)",
 	flightDestinationNone: "None",
 	homeDestinationTipsFor: "Tips for {{city}}",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "Sliding Puzzle",
+	gameSlidingPuzzleDescription: "Slide the numbered tiles into order, 1 to 15.",
+	rulesSlidingPuzzle: "Tap a tile next to the empty space to slide it. Arrange all tiles in order 1–15 to solve the puzzle. Fewer moves and less time means a higher score.",
+	spMoves: "Moves",
+	spTime: "Time",
+	spSolved: "Solved!",
+	achievePuzzleSliderTitle: "Slide Master",
+	achievePuzzleSliderDesc: "Solve the Sliding Puzzle with a score of 2000 or more.",
 } as const;

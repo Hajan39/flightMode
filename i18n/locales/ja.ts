@@ -1044,4 +1044,13 @@ gameOddOneOutName: "仲間外れ探し",
 	flightDestinationLabel: "行き先（任意）",
 	flightDestinationNone: "なし",
 	homeDestinationTipsFor: "{{city}}のヒント",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "スライドパズル",
+	gameSlidingPuzzleDescription: "番号タイルを1から15の順に並べよう。",
+	rulesSlidingPuzzle: "空きマスの隣のタイルをタップして動かします。すべてのタイルを1〜15の順に並べましょう。手数と時間が少ないほど高得点。",
+	spMoves: "手数",
+	spTime: "時間",
+	spSolved: "クリア！",
+	achievePuzzleSliderTitle: "スライドマスター",
+	achievePuzzleSliderDesc: "スライドパズルを2000点以上でクリアする。",
 } as const;

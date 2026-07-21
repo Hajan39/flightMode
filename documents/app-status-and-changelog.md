@@ -132,6 +132,9 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-20
 
+- nova hra Sliding Puzzle (`sliding-puzzle`): klasicky 4×4 15-puzzle, garantovane resitelny shuffle, tahy + wall-clock casovac, pauza, countdown; achievement "Slide Master"; brain/medium/5 min; 12 jazyku (celkem 32 her)
+- testy: zavedeny Jest (`jest-expo`) + `npm test` a 123 pure-logic/data testu v `__tests__/` — parita klicu vsech 12 jazyku, integrita registru her a achievementu, destinace, validita vsech 15 Sudoku puzzlu (puzzly vyextrahovany do `games/sudoku/puzzles.ts`)
+- destinace rozsireny z 8 na 14 (Londyn, Singapur, Istanbul, Sydney, Lisabon, Reykjavik)
 - flight ↔ destinace propojeni: flight setup ma nepovinny picker cile (8 destinaci); kdyz je nastaveny, karta na Home je "Tips for {city}" a odkazuje primo na tipy dane destinace (auto-expand pres `focus` param); Flight typ ma nove `destinationId`
 - destinace & tipy na letiste (`app/destinations.tsx`, `data/destinations.ts`): prohlizeci obrazovka s praktickymi tipy (doprava z letiste, pohyb po meste, jidlo, penize, etiketa) pro 8 destinaci, dostupna z karty "Where you're headed" na Home; bundled offline obsah (EN), chrome lokalizovany do 12 jazyku
 - Home "New to try" radek: hry, ktere uzivatel jeste neotevrel (max 4) — fresh obsah pro kazdy let (lepsi nez denni streak pro narazove pouziti); sledovano v novem `useDiscoveryStore`

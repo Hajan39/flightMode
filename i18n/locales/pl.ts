@@ -1059,4 +1059,13 @@ gameOddOneOutName: "Znajdź Intruza",
 	flightDestinationLabel: "Cel podróży (opcjonalnie)",
 	flightDestinationNone: "Brak",
 	homeDestinationTipsFor: "Wskazówki dla {{city}}",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "Przesuwanka",
+	gameSlidingPuzzleDescription: "Przesuwaj ponumerowane płytki w kolejności od 1 do 15.",
+	rulesSlidingPuzzle: "Dotknij płytki obok pustego miejsca, aby ją przesunąć. Ułóż wszystkie płytki od 1 do 15. Mniej ruchów i czasu = wyższy wynik.",
+	spMoves: "Ruchy",
+	spTime: "Czas",
+	spSolved: "Rozwiązano!",
+	achievePuzzleSliderTitle: "Mistrz przesuwania",
+	achievePuzzleSliderDesc: "Rozwiąż przesuwankę z wynikiem 2000 lub więcej.",
 } as const;

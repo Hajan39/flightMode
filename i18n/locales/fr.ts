@@ -1078,4 +1078,13 @@ gameOddOneOutName: "L'Intrus",
 	flightDestinationLabel: "Destination (facultatif)",
 	flightDestinationNone: "Aucune",
 	homeDestinationTipsFor: "Conseils pour {{city}}",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "Taquin",
+	gameSlidingPuzzleDescription: "Faites glisser les tuiles numérotées dans l'ordre, de 1 à 15.",
+	rulesSlidingPuzzle: "Touchez une tuile près de l'espace vide pour la faire glisser. Rangez toutes les tuiles de 1 à 15. Moins de coups et de temps = meilleur score.",
+	spMoves: "Coups",
+	spTime: "Temps",
+	spSolved: "Résolu !",
+	achievePuzzleSliderTitle: "Maître du taquin",
+	achievePuzzleSliderDesc: "Résolvez le taquin avec un score de 2000 ou plus.",
 } as const;

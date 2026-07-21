@@ -1060,4 +1060,13 @@ gameOddOneOutName: "O Intruso",
 	flightDestinationLabel: "Destino (opcional)",
 	flightDestinationNone: "Nenhum",
 	homeDestinationTipsFor: "Dicas para {{city}}",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "Quebra-cabeça deslizante",
+	gameSlidingPuzzleDescription: "Deslize as peças numeradas em ordem, de 1 a 15.",
+	rulesSlidingPuzzle: "Toque numa peça ao lado do espaço vazio para deslizá-la. Organize todas as peças de 1 a 15. Menos movimentos e tempo = pontuação maior.",
+	spMoves: "Movimentos",
+	spTime: "Tempo",
+	spSolved: "Resolvido!",
+	achievePuzzleSliderTitle: "Mestre deslizante",
+	achievePuzzleSliderDesc: "Resolva o quebra-cabeça deslizante com 2000 pontos ou mais.",
 } as const;

@@ -292,6 +292,204 @@ export const destinations: Destination[] = [
 			},
 		],
 	},
+	{
+		id: "london",
+		city: "London",
+		country: "United Kingdom",
+		emoji: "🎡",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Heathrow the Piccadilly line is the cheapest route into the centre, while the Elizabeth line is faster; Gatwick, Stansted, and Luton have their own express trains to central stations.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Just tap a contactless card or phone on the Tube and buses — daily fares cap automatically, so no travelcard is needed. Stand on the right on escalators.",
+			},
+			{
+				icon: "cafe-outline",
+				label: "Food",
+				text: "Beyond pubs, try the diverse food markets like Borough or Brick Lane for great-value meals. Tap water is free and safe, and you must ask for it in restaurants.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the pound sterling and cards are accepted almost everywhere. Restaurants often add a 12.5% service charge — check the bill so you don't tip twice.",
+			},
+			{
+				icon: "walk-outline",
+				label: "Local note",
+				text: "Look right first when crossing — traffic drives on the left. Queuing is taken seriously, so join the back of the line and never push in.",
+			},
+		],
+	},
+	{
+		id: "singapore",
+		city: "Singapore",
+		country: "Singapore",
+		emoji: "🦁",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Changi the MRT reaches the city in about 40 minutes and is very cheap; official metered taxis and ride-hailing apps like Grab are reliable alternatives.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Tap a contactless card or phone straight onto the spotless, air-conditioned MRT and buses. The network is easy to navigate and signposted in English.",
+			},
+			{
+				icon: "fast-food-outline",
+				label: "Food",
+				text: "Hawker centres serve outstanding, cheap meals like Hainanese chicken rice and laksa. Reserve a table by leaving a packet of tissues on it, as locals do.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the Singapore dollar and cards are accepted widely. Tipping is not customary, and a 10% service charge is usually already included on bills.",
+			},
+			{
+				icon: "warning-outline",
+				label: "Local note",
+				text: "Laws are strictly enforced: littering, jaywalking, and eating or drinking on the MRT bring fines. Chewing gum is banned from sale, so don't bring large quantities.",
+			},
+		],
+	},
+	{
+		id: "istanbul",
+		city: "Istanbul",
+		country: "Türkiye",
+		emoji: "🕌",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "From Istanbul Airport (IST) the M11 metro connects to the wider network, or the HAVAIST bus reaches central districts. If taking a taxi, insist the meter is running.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Buy an Istanbulkart and tap it on metros, trams, buses, and ferries. Crossing the Bosphorus by ferry between the European and Asian sides is cheap and scenic.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try street simit, kebabs, and mezes, and finish with strong Turkish tea or coffee. Stick to bottled water, as the tap water is not recommended for drinking.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the Turkish lira; carry cash for markets and small eateries. Tipping around 10% is customary in restaurants for good service.",
+			},
+			{
+				icon: "shirt-outline",
+				label: "Etiquette",
+				text: "Cover shoulders and knees to enter mosques, and women should carry a scarf for their head. Remove your shoes at the entrance and avoid visiting during prayer times.",
+			},
+		],
+	},
+	{
+		id: "sydney",
+		city: "Sydney",
+		country: "Australia",
+		emoji: "🌉",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The Airport Link train reaches the city centre in about 15 minutes but carries a station access fee. Official taxis and ride-hailing apps queue outside each terminal.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Tap a contactless card or phone on trains, buses, light rail, and ferries — fares cap daily and weekly. The ferry to Manly is a cheap, spectacular harbour trip.",
+			},
+			{
+				icon: "cafe-outline",
+				label: "Food",
+				text: "Sydney's café culture is world-class, so try a flat white and brunch. Fresh seafood at the Fish Market and multicultural eats across the suburbs are excellent value.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the Australian dollar and cards are accepted almost everywhere. Tipping is not expected, though rounding up for great service is appreciated.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "The sun is intense — wear sunscreen and a hat even on cool days. At beaches, always swim between the red-and-yellow flags where lifeguards patrol.",
+			},
+		],
+	},
+	{
+		id: "lisbon",
+		city: "Lisbon",
+		country: "Portugal",
+		emoji: "🚋",
+		tips: [
+			{
+				icon: "train-outline",
+				label: "From the airport",
+				text: "The red metro line links the airport to the centre in about 20 minutes. Official taxis and ride-hailing apps are affordable, and the airport is unusually close to town.",
+			},
+			{
+				icon: "card-outline",
+				label: "Getting around",
+				text: "Load a rechargeable Viva Viagem card for the metro, buses, and historic trams. The city is hilly, so use the funiculars and the Santa Justa lift to save your legs.",
+			},
+			{
+				icon: "wine-outline",
+				label: "Food",
+				text: "Try grilled sardines, bacalhau (salt cod), and a warm pastel de nata custard tart. Neighbourhood tascas away from tourist zones serve hearty, cheap lunches.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "Portugal uses the euro and cards are widely accepted, but keep coins for small cafés. Tipping is modest — rounding up or leaving 5–10% is plenty.",
+			},
+			{
+				icon: "shield-checkmark-outline",
+				label: "Safety",
+				text: "Lisbon is very safe, but pickpockets work the crowded 28 tram and metro. Wear sturdy shoes, as the classic calçada cobblestones get slippery when wet.",
+			},
+		],
+	},
+	{
+		id: "reykjavik",
+		city: "Reykjavík",
+		country: "Iceland",
+		emoji: "🌋",
+		tips: [
+			{
+				icon: "car-outline",
+				label: "From the airport",
+				text: "Keflavík airport is about 45 minutes from the city, linked by the Flybus and Airport Direct coaches rather than a train. Many visitors rent a car to explore beyond town.",
+			},
+			{
+				icon: "walk-outline",
+				label: "Getting around",
+				text: "Central Reykjavík is small and easily walkable, with city buses (Strætó) filling the gaps. There is no metro, so a rental car is best for the Golden Circle and ring road.",
+			},
+			{
+				icon: "restaurant-outline",
+				label: "Food",
+				text: "Try lamb soup, fresh seafood, and a classic hot dog (pylsur) with all the toppings. Eating out is pricey, so tap water — some of the purest anywhere — is free and delicious.",
+			},
+			{
+				icon: "cash-outline",
+				label: "Money & tipping",
+				text: "The currency is the Icelandic króna, but Iceland is nearly cashless — cards work everywhere, even for tiny purchases. Tipping is not expected as service is included.",
+			},
+			{
+				icon: "warning-outline",
+				label: "Safety",
+				text: "Weather changes fast, so pack windproof, waterproof layers year-round. Check road and aurora conditions before driving, and always shower before entering geothermal pools.",
+			},
+		],
+	},
 ];
 
 /** Look up a single destination by its id. */

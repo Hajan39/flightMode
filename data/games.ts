@@ -387,6 +387,17 @@ export const gameRegistry: GameDefinition[] = [
 		difficulty: "medium",
 		loadComponent: () => require("@/games/snake").default,
 	},
+	{
+		id: "sliding-puzzle",
+		titleKey: "gameSlidingPuzzleName",
+		descriptionKey: "gameSlidingPuzzleDescription",
+		rulesKey: "rulesSlidingPuzzle",
+		estimatedTime: 5,
+		icon: "grid-outline",
+		category: "brain",
+		difficulty: "medium",
+		loadComponent: () => require("@/games/sliding-puzzle").default,
+	},
 ];
 
 export const gamesById = Object.fromEntries(

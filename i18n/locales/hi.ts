@@ -1034,4 +1034,13 @@ gameOddOneOutName: "अलग खोजो",
 	flightDestinationLabel: "गंतव्य (वैकल्पिक)",
 	flightDestinationNone: "कोई नहीं",
 	homeDestinationTipsFor: "{{city}} के लिए सुझाव",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "स्लाइडिंग पहेली",
+	gameSlidingPuzzleDescription: "क्रमांकित टाइलों को 1 से 15 के क्रम में सरकाएँ।",
+	rulesSlidingPuzzle: "खाली जगह के पास वाली टाइल पर टैप करके उसे सरकाएँ। सभी टाइलों को 1–15 क्रम में लगाएँ। कम चाल और समय = अधिक अंक।",
+	spMoves: "चालें",
+	spTime: "समय",
+	spSolved: "हल हो गया!",
+	achievePuzzleSliderTitle: "स्लाइड मास्टर",
+	achievePuzzleSliderDesc: "स्लाइडिंग पहेली को 2000 या अधिक अंकों से हल करें।",
 } as const;

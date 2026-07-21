@@ -1030,4 +1030,13 @@ gameOddOneOutName: "找不同",
 	flightDestinationLabel: "目的地（可选）",
 	flightDestinationNone: "无",
 	homeDestinationTipsFor: "{{city}} 贴士",
+	// Sliding Puzzle game
+	gameSlidingPuzzleName: "滑块拼图",
+	gameSlidingPuzzleDescription: "将编号方块滑动排成 1 到 15 的顺序。",
+	rulesSlidingPuzzle: "点击空格旁边的方块使其滑动。将所有方块按 1–15 排序即可完成。步数和用时越少，得分越高。",
+	spMoves: "步数",
+	spTime: "时间",
+	spSolved: "完成！",
+	achievePuzzleSliderTitle: "滑块大师",
+	achievePuzzleSliderDesc: "以 2000 分或以上完成滑块拼图。",
 } as const;
