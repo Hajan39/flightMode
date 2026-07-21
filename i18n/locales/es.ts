@@ -1092,4 +1092,5 @@ gameOddOneOutName: "El Intruso",
 	wsWords: "Palabras",
 	achieveWordHunterTitle: "Cazapalabras",
 	achieveWordHunterDesc: "Consigue 1500 o más en Sopa de letras.",
+	a11yClearFlight: "Borrar vuelo",
 } as const;

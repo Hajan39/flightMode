@@ -1064,4 +1064,5 @@ gameOddOneOutName: "다른 거 찾기",
 	wsWords: "단어",
 	achieveWordHunterTitle: "단어 사냥꾼",
 	achieveWordHunterDesc: "단어 찾기에서 1500점 이상을 획득하세요.",
+	a11yClearFlight: "비행 지우기",
 } as const;

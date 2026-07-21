@@ -1089,4 +1089,5 @@ gameOddOneOutName: "L'Intruso",
 	wsWords: "Parole",
 	achieveWordHunterTitle: "Cacciatore di parole",
 	achieveWordHunterDesc: "Ottieni 1500 o più in Trova parole.",
+	a11yClearFlight: "Rimuovi volo",
 } as const;

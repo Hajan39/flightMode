@@ -2,6 +2,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
 import { Ionicons } from "@expo/vector-icons";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 
@@ -29,6 +30,7 @@ export default function GameControls({
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const haptic = useHaptic();
+	const { t } = useTranslation();
 
 	if ((!onPause || hidePause) && (!onReset || hideReset)) return null;
 
@@ -51,7 +53,7 @@ export default function GameControls({
 						styles.btn,
 						{ backgroundColor: theme.card, borderColor: theme.border },
 					]}
-					accessibilityLabel={isPaused ? "Resume" : "Pause"}
+					accessibilityLabel={isPaused ? t("gameResume") : t("gamePause")}
 				>
 					<Ionicons
 						name={isPaused ? "play" : "pause"}
@@ -68,7 +70,7 @@ export default function GameControls({
 						styles.btn,
 						{ backgroundColor: theme.card, borderColor: theme.border },
 					]}
-					accessibilityLabel="Reset"
+					accessibilityLabel={t("gameRestart")}
 				>
 					<Ionicons name="refresh" size={18} color={theme.text} />
 				</Pressable>

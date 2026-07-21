@@ -1059,4 +1059,5 @@ gameOddOneOutName: "अलग खोजो",
 	wsWords: "शब्द",
 	achieveWordHunterTitle: "शब्द शिकारी",
 	achieveWordHunterDesc: "शब्द खोज में 1500 या अधिक अंक पाएं।",
+	a11yClearFlight: "उड़ान हटाएँ",
 } as const;

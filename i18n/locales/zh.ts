@@ -1055,4 +1055,5 @@ gameOddOneOutName: "找不同",
 	wsWords: "单词",
 	achieveWordHunterTitle: "单词猎人",
 	achieveWordHunterDesc: "在找单词中获得 1500 分或以上。",
+	a11yClearFlight: "清除航班",
 } as const;

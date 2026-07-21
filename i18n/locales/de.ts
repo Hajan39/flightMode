@@ -1108,4 +1108,5 @@ gameOddOneOutName: "Finde den Außenseiter",
 	wsWords: "Wörter",
 	achieveWordHunterTitle: "Wortjäger",
 	achieveWordHunterDesc: "Erreiche 1500 oder mehr in der Wortsuche.",
+	a11yClearFlight: "Flug entfernen",
 } as const;

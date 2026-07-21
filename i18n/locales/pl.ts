@@ -1084,4 +1084,5 @@ gameOddOneOutName: "Znajdź Intruza",
 	wsWords: "Słowa",
 	achieveWordHunterTitle: "Łowca słów",
 	achieveWordHunterDesc: "Zdobądź 1500 lub więcej w Wykreślance.",
+	a11yClearFlight: "Wyczyść lot",
 } as const;

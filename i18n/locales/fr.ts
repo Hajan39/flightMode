@@ -1103,4 +1103,5 @@ gameOddOneOutName: "L'Intrus",
 	wsWords: "Mots",
 	achieveWordHunterTitle: "Chasseur de mots",
 	achieveWordHunterDesc: "Marquez 1500 ou plus aux Mots mêlés.",
+	a11yClearFlight: "Effacer le vol",
 } as const;

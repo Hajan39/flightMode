@@ -1085,4 +1085,5 @@ gameOddOneOutName: "O Intruso",
 	wsWords: "Palavras",
 	achieveWordHunterTitle: "Caçador de palavras",
 	achieveWordHunterDesc: "Marque 1500 ou mais no Caça-palavras.",
+	a11yClearFlight: "Limpar voo",
 } as const;

@@ -1092,4 +1092,5 @@ gameOddOneOutName: "Odd One Out",
 	wsWords: "Words",
 	achieveWordHunterTitle: "Word Hunter",
 	achieveWordHunterDesc: "Score 1500 or more in Word Search.",
+	a11yClearFlight: "Clear flight",
 } as const;

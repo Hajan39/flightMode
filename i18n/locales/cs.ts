@@ -1083,4 +1083,5 @@ gameOddOneOutName: "Hledej Vetřelce",
 	wsWords: "Slova",
 	achieveWordHunterTitle: "Lovec slov",
 	achieveWordHunterDesc: "Získej 1500 nebo více v Hledání slov.",
+	a11yClearFlight: "Zrušit let",
 } as const;

@@ -1069,4 +1069,5 @@ gameOddOneOutName: "仲間外れ探し",
 	wsWords: "単語",
 	achieveWordHunterTitle: "ワードハンター",
 	achieveWordHunterDesc: "ワードサーチで1500点以上を取る。",
+	a11yClearFlight: "フライトを消去",
 } as const;

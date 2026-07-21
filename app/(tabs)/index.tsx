@@ -164,7 +164,11 @@ export default function HomeScreen() {
 							<Text style={styles.flightTitle}>
 								{flight.flightNumber ?? t("yourFlight")}
 							</Text>
-							<Pressable onPress={clearFlight}>
+							<Pressable
+								onPress={clearFlight}
+								hitSlop={10}
+								accessibilityLabel={t("a11yClearFlight")}
+							>
 								<Ionicons
 									name="close-circle-outline"
 									size={20}
@@ -238,6 +242,61 @@ export default function HomeScreen() {
 						{t("homePreflightCta")}
 					</Text>
 					<Ionicons name="chevron-forward" size={16} color={theme.mutedText} />
+				</AnimatedPressable>
+			</Animated.View>
+
+			<Animated.View entering={FadeInDown.delay(350).springify()}>
+				<Text style={styles.sectionTitle}>{t("dailyChallenge")}</Text>
+				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+					{t("homeDailyChallengeHint")}
+				</Text>
+				<AnimatedPressable
+					style={[
+						styles.challengeCard,
+						{ backgroundColor: theme.accentSoft, borderColor: theme.tint },
+					]}
+					onPress={() => router.push(`/game/${challengeOfDay.id}` as never)}
+				>
+					<View
+						style={[styles.challengeAccent, { backgroundColor: theme.tint }]}
+						lightColor="transparent"
+						darkColor="transparent"
+					/>
+					<View
+						style={styles.challengeBody}
+						lightColor="transparent"
+						darkColor="transparent"
+					>
+						<View
+							style={styles.challengeTop}
+							lightColor="transparent"
+							darkColor="transparent"
+						>
+							<Ionicons
+								name={challengeOfDay.icon as never}
+								size={22}
+								color={theme.tint}
+							/>
+							<Text style={styles.challengeTitle}>
+								{t(challengeOfDay.titleKey)}
+							</Text>
+						</View>
+						<Text
+							style={[styles.challengeDescription, { color: theme.mutedText }]}
+						>
+							{t(challengeOfDay.descriptionKey)}
+						</Text>
+						<View
+							style={styles.challengeCtaRow}
+							lightColor="transparent"
+							darkColor="transparent"
+						>
+							<Text style={[styles.challengeCta, { color: theme.tint }]}>
+								{t("dailyChallengeCta")}
+							</Text>
+							<Ionicons name="arrow-forward" size={16} color={theme.tint} />
+						</View>
+					</View>
 				</AnimatedPressable>
 			</Animated.View>
 
@@ -327,64 +386,6 @@ export default function HomeScreen() {
 				</Animated.View>
 			)}
 
-			{/* Quick Actions */}
-			<Text style={styles.sectionTitle}>{t("quickActions")}</Text>
-			<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-				{t("homeQuickActionsHint")}
-			</Text>
-			<View style={styles.actions}>
-				<Animated.View
-					entering={FadeInDown.delay(100).springify()}
-					style={styles.actionCol}
-				>
-					<AnimatedPressable
-						style={[
-							styles.actionButton,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-						onPress={() => openHomeAction("games")}
-					>
-						<Ionicons
-							name="game-controller-outline"
-							size={28}
-							color={theme.tint}
-						/>
-						<Text style={styles.actionLabel}>{t("play")}</Text>
-					</AnimatedPressable>
-				</Animated.View>
-
-				<Animated.View
-					entering={FadeInDown.delay(200).springify()}
-					style={styles.actionCol}
-				>
-					<AnimatedPressable
-						style={[
-							styles.actionButton,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-						onPress={() => openHomeAction("explore")}
-					>
-						<Ionicons name="compass-outline" size={28} color={theme.tint} />
-						<Text style={styles.actionLabel}>{t("explore")}</Text>
-					</AnimatedPressable>
-				</Animated.View>
-
-				<Animated.View
-					entering={FadeInDown.delay(300).springify()}
-					style={styles.actionCol}
-				>
-					<AnimatedPressable
-						style={[
-							styles.actionButton,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-						onPress={() => openHomeAction("relax")}
-					>
-						<Ionicons name="leaf-outline" size={28} color={theme.tint} />
-						<Text style={styles.actionLabel}>{t("relax")}</Text>
-					</AnimatedPressable>
-				</Animated.View>
-			</View>
 
 			{stats.totalGamesPlayed === 0 && (
 				<Animated.View entering={FadeInDown.delay(320).springify()}>
@@ -486,60 +487,6 @@ export default function HomeScreen() {
 				</View>
 			</Animated.View>
 
-			<Animated.View entering={FadeInDown.delay(350).springify()}>
-				<Text style={styles.sectionTitle}>{t("dailyChallenge")}</Text>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("homeDailyChallengeHint")}
-				</Text>
-				<AnimatedPressable
-					style={[
-						styles.challengeCard,
-						{ backgroundColor: theme.accentSoft, borderColor: theme.tint },
-					]}
-					onPress={() => router.push(`/game/${challengeOfDay.id}` as never)}
-				>
-					<View
-						style={[styles.challengeAccent, { backgroundColor: theme.tint }]}
-						lightColor="transparent"
-						darkColor="transparent"
-					/>
-					<View
-						style={styles.challengeBody}
-						lightColor="transparent"
-						darkColor="transparent"
-					>
-						<View
-							style={styles.challengeTop}
-							lightColor="transparent"
-							darkColor="transparent"
-						>
-							<Ionicons
-								name={challengeOfDay.icon as never}
-								size={22}
-								color={theme.tint}
-							/>
-							<Text style={styles.challengeTitle}>
-								{t(challengeOfDay.titleKey)}
-							</Text>
-						</View>
-						<Text
-							style={[styles.challengeDescription, { color: theme.mutedText }]}
-						>
-							{t(challengeOfDay.descriptionKey)}
-						</Text>
-						<View
-							style={styles.challengeCtaRow}
-							lightColor="transparent"
-							darkColor="transparent"
-						>
-							<Text style={[styles.challengeCta, { color: theme.tint }]}>
-								{t("dailyChallengeCta")}
-							</Text>
-							<Ionicons name="arrow-forward" size={16} color={theme.tint} />
-						</View>
-					</View>
-				</AnimatedPressable>
-			</Animated.View>
 
 			<Animated.View entering={FadeInDown.delay(370).springify()}>
 				<NewToTryRow

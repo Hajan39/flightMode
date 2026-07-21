@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ### Changed (UX review — wave B)
 
+- Home decluttered: removed the "Quick Actions" row (it duplicated the bottom tab bar) and promoted the Daily Flight Challenge to directly under the flight card, so the core retention hook is near the top instead of buried mid-scroll.
+- Accessibility: the shared Game controls now expose localized Resume/Pause/Restart labels (were hardcoded English) across all 12 languages, and the Home flight-card close button gained a larger touch target (hitSlop) and a localized "Clear flight" label.
 - Dark-theme contrast: added a per-theme `onTint` foreground token (dark uses a near-black navy on its pale-blue tint) and adopted it for every primary button and active filter/category/preference chip across Onboarding, Flight setup, Relax, Games, Explore, and Home. Previously white text sat on the light dark-theme tint (~1.6:1, well below WCAG); it's now high-contrast in all three themes.
 
 ### Fixed (code/UX review — wave A)
