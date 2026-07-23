@@ -74,6 +74,11 @@ export default function WordGuessGame() {
   const guessesRef = useRef(guesses);
   const keyboardStateRef = useRef(keyboardState);
   const currentAttemptRef = useRef(currentAttempt);
+  // Synchronous re-entry guard: rapid double-ENTER can both fire before the
+  // refs above resync (they only refresh via the effect below, after commit),
+  // which would otherwise re-run handleSubmit on stale state and double-call
+  // updateProgress or double-advance currentAttempt.
+  const submittingRef = useRef(false);
   useEffect(() => {
     currentInputRef.current = currentInput;
     guessesRef.current = guesses;
@@ -104,6 +109,7 @@ export default function WordGuessGame() {
     setWon(false);
     setResult(null);
     setPhase("playing");
+    submittingRef.current = false;
   }, []);
 
   // ---------------------------------------------------------------------------
@@ -112,12 +118,16 @@ export default function WordGuessGame() {
 
   const handleSubmit = useCallback(
     (input: string[], attempt: number, guessList: GuessRow[], kbState: Record<string, LetterState>) => {
+      if (submittingRef.current) return;
+
       if (input.length < 5) {
         setErrorMessage(t("wgTypeAWord"));
         setTimeout(() => setErrorMessage(null), 1500);
         haptic.error();
         return;
       }
+
+      submittingRef.current = true;
 
       const word = input.join("");
       const states = checkGuess(word, targetWord);
@@ -151,6 +161,7 @@ export default function WordGuessGame() {
       } else {
         haptic.tap();
         setCurrentAttempt((a) => a + 1);
+        submittingRef.current = false;
       }
     },
     [targetWord, haptic, t, updateProgress],
@@ -202,7 +213,7 @@ export default function WordGuessGame() {
   function getCellTextColor(state: LetterState, isCurrentRow: boolean): string {
     if (isCurrentRow) return theme.text;
     switch (state) {
-      case "correct": return "#ffffff";
+      case "correct": return theme.onTint;
       case "present": return "#ffffff";
       case "absent": return theme.mutedText;
       default: return theme.text;
@@ -227,7 +238,7 @@ export default function WordGuessGame() {
   function getKeyTextColor(key: string): string {
     const state = keyboardState[key];
     switch (state) {
-      case "correct": return "#ffffff";
+      case "correct": return theme.onTint;
       case "present": return "#ffffff";
       case "absent": return theme.mutedText;
       default: return theme.text;
@@ -251,8 +262,10 @@ export default function WordGuessGame() {
           <Pressable
             style={[styles.startBtn, { backgroundColor: theme.tint }]}
             onPress={startGame}
+            accessibilityRole="button"
+            accessibilityLabel={t("gameTapToStart")}
           >
-            <Text style={styles.startBtnText}>{t("gameTapToStart")}</Text>
+            <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
           </Pressable>
         </RNView>
       </View>
@@ -357,6 +370,7 @@ export default function WordGuessGame() {
                       },
                     ]}
                     onPress={() => handleKey(key)}
+                    accessibilityRole="button"
                     accessibilityLabel={key}
                   >
                     <Text
@@ -455,7 +469,6 @@ const styles = StyleSheet.create({
   },
   startBtnText: {
     ...TextStyle.buttonPrimary,
-    color: "#ffffff",
   },
   // Grid
   grid: {
