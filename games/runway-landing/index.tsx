@@ -302,8 +302,10 @@ export default function RunwayLandingGame() {
 				]}
 				onPress={handleLand}
 				disabled={finished}
+				accessibilityRole="button"
+				accessibilityLabel={t("rlLand")}
 			>
-				<Text style={styles.buttonText}>{t("rlLand")}</Text>
+				<Text style={[styles.buttonText, { color: theme.onTint }]}>{t("rlLand")}</Text>
 			</Pressable>
 
 			{finished && (
@@ -402,7 +404,6 @@ const styles = StyleSheet.create({
 		borderRadius: 14,
 	},
 	buttonText: {
-		color: "#fff",
 		fontSize: 20,
 		fontWeight: "900",
 		letterSpacing: 1,

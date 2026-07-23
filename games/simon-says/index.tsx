@@ -28,6 +28,13 @@ const BUTTON_COLORS: Record<ButtonId, { dim: string; lit: string }> = {
 	3: { dim: "#6B5900", lit: "#E6C200" }, // yellow
 };
 
+const BUTTON_LABEL_KEYS: Record<ButtonId, "colorRed" | "colorBlue" | "colorGreen" | "colorYellow"> = {
+	0: "colorRed",
+	1: "colorBlue",
+	2: "colorGreen",
+	3: "colorYellow",
+};
+
 type Phase = "idle" | "showing" | "input" | "done";
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -255,7 +262,7 @@ export default function SimonSaysGame() {
 									style={[
 										styles.dot,
 										{
-											backgroundColor: i < lives ? "#E53935" : theme.border,
+											backgroundColor: i < lives ? theme.danger : theme.border,
 										},
 									]}
 								/>
@@ -311,6 +318,8 @@ export default function SimonSaysGame() {
 								},
 							]}
 							onPress={() => handleButtonPress(btnId)}
+							accessibilityRole="button"
+							accessibilityLabel={t(BUTTON_LABEL_KEYS[btnId])}
 						/>
 					);
 				})}
@@ -318,7 +327,12 @@ export default function SimonSaysGame() {
 
 			{/* Idle start hint */}
 			{isIdle && finalScore === null && (
-				<Pressable style={styles.startArea} onPress={startGame}>
+				<Pressable
+					style={styles.startArea}
+					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("gameTapToStart")}
+				>
 					<Text style={[styles.startText, { color: theme.mutedText }]}>
 						{t("gameTapToStart")}
 					</Text>

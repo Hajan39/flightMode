@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useEffect } from "react";
 import { ScrollView, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { Text, View } from "@/components/Themed";
@@ -35,134 +36,139 @@ export default function ProfileScreen() {
 	}, [stats.totalGamesPlayed, stats.articlesRead, stats.achievementsUnlocked]);
 
 	return (
-		<ScrollView
-			style={[styles.container, { backgroundColor: theme.background }]}
-			contentContainerStyle={styles.content}
+		<SafeAreaView
+			style={[styles.safeArea, { backgroundColor: theme.background }]}
+			edges={["bottom"]}
 		>
-			{/* ── Stats Cards ── */}
-			<Animated.View entering={FadeInDown.duration(400).springify()}>
-				<Text style={[styles.sectionTitle, { color: theme.text }]}>
-					{t("profileStats")}
-				</Text>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("profileStatsHint")}
-				</Text>
-				<View style={styles.statsGrid}>
-					<StatCard
-						icon="game-controller-outline"
-						value={stats.totalGamesPlayed}
-						label={t("profileGamesPlayed")}
-						theme={theme}
-					/>
-					<StatCard
-						icon="time-outline"
-						value={stats.estimatedMinutes}
-						label={t("profileMinutes")}
-						theme={theme}
-					/>
-					<StatCard
-						icon="grid-outline"
-						value={stats.uniqueGamesPlayed}
-						label={t("profileGamesTried")}
-						theme={theme}
-					/>
-					<StatCard
-						icon="airplane-outline"
-						value={stats.totalFlights}
-						label={t("profileFlights")}
-						theme={theme}
-					/>
-					<StatCard
-						icon="book-outline"
-						value={stats.articlesRead}
-						label={t("profileArticles")}
-						theme={theme}
-					/>
-					<StatCard
-						icon="leaf-outline"
-						value={stats.totalRelaxSessions}
-						label={t("profileRelaxSessions")}
-						theme={theme}
-					/>
-				</View>
-			</Animated.View>
-
-			{/* ── Achievements Grid ── */}
-			<Animated.View entering={FadeInDown.delay(200).springify()}>
-				<View
-					style={styles.sectionHeader}
-					lightColor="transparent"
-					darkColor="transparent"
-				>
+			<ScrollView
+				style={styles.container}
+				contentContainerStyle={styles.content}
+			>
+				{/* ── Stats Cards ── */}
+				<Animated.View entering={FadeInDown.duration(400).springify()}>
 					<Text style={[styles.sectionTitle, { color: theme.text }]}>
-						{t("profileAchievements")}
-					</Text>
-					<Text style={[styles.counter, { color: theme.mutedText }]}>
-						{stats.achievementsUnlocked}/{stats.achievementsTotal}
-					</Text>
-				</View>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("profileAchievementsHint")}
-				</Text>
-				<View style={styles.achievementGrid}>
-					{achievements.map((a, i) => (
-						<AchievementBadge
-							key={a.id}
-							achievement={a}
-							unlocked={unlockedIds.includes(a.id)}
-							theme={theme}
-							t={t}
-							index={i}
-						/>
-					))}
-				</View>
-			</Animated.View>
-
-			{/* ── High Scores ── */}
-			{stats.topScores.length > 0 && (
-				<Animated.View entering={FadeInDown.delay(350).springify()}>
-					<Text style={[styles.sectionTitle, { color: theme.text }]}>
-						{t("profileHighScores")}
+						{t("profileStats")}
 					</Text>
 					<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-						{t("profileHighScoresHint")}
+						{t("profileStatsHint")}
 					</Text>
-					{stats.topScores.map((entry, i) => (
-						<View
-							key={entry.gameId}
-							style={[
-								styles.scoreRow,
-								{ backgroundColor: theme.card, borderColor: theme.border },
-							]}
-						>
-							<Text style={[styles.rank, { color: theme.tint }]}>#{i + 1}</Text>
-							<Text style={[styles.scoreName, { color: theme.text }]}>
-								{t(getGameById(entry.gameId)?.titleKey ?? "stackGame")}
-							</Text>
-							<Text style={[styles.scoreValue, { color: theme.tint }]}>
-								{entry.highScore}
-							</Text>
-						</View>
-					))}
+					<View style={styles.statsGrid}>
+						<StatCard
+							icon="game-controller-outline"
+							value={stats.totalGamesPlayed}
+							label={t("profileGamesPlayed")}
+							theme={theme}
+						/>
+						<StatCard
+							icon="time-outline"
+							value={stats.estimatedMinutes}
+							label={t("profileMinutes")}
+							theme={theme}
+						/>
+						<StatCard
+							icon="grid-outline"
+							value={stats.uniqueGamesPlayed}
+							label={t("profileGamesTried")}
+							theme={theme}
+						/>
+						<StatCard
+							icon="airplane-outline"
+							value={stats.totalFlights}
+							label={t("profileFlights")}
+							theme={theme}
+						/>
+						<StatCard
+							icon="book-outline"
+							value={stats.articlesRead}
+							label={t("profileArticles")}
+							theme={theme}
+						/>
+						<StatCard
+							icon="leaf-outline"
+							value={stats.totalRelaxSessions}
+							label={t("profileRelaxSessions")}
+							theme={theme}
+						/>
+					</View>
 				</Animated.View>
-			)}
 
-			{/* ── Favorite Game ── */}
-			{stats.favoriteGameId && (
-				<View
-					style={[
-						styles.favoriteCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-				>
-					<Ionicons name="heart" size={20} color={theme.tint} />
-					<Text style={[styles.favoriteText, { color: theme.text }]}>
-						{t("profileFavorite")}:{" "}
-						{t(getGameById(stats.favoriteGameId)?.titleKey ?? "stackGame")}
+				{/* ── Achievements Grid ── */}
+				<Animated.View entering={FadeInDown.delay(200).springify()}>
+					<View
+						style={styles.sectionHeader}
+						lightColor="transparent"
+						darkColor="transparent"
+					>
+						<Text style={[styles.sectionTitle, { color: theme.text }]}>
+							{t("profileAchievements")}
+						</Text>
+						<Text style={[styles.counter, { color: theme.mutedText }]}>
+							{stats.achievementsUnlocked}/{stats.achievementsTotal}
+						</Text>
+					</View>
+					<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+						{t("profileAchievementsHint")}
 					</Text>
-				</View>
-			)}
-		</ScrollView>
+					<View style={styles.achievementGrid}>
+						{achievements.map((a, i) => (
+							<AchievementBadge
+								key={a.id}
+								achievement={a}
+								unlocked={unlockedIds.includes(a.id)}
+								theme={theme}
+								t={t}
+								index={i}
+							/>
+						))}
+					</View>
+				</Animated.View>
+
+				{/* ── High Scores ── */}
+				{stats.topScores.length > 0 && (
+					<Animated.View entering={FadeInDown.delay(350).springify()}>
+						<Text style={[styles.sectionTitle, { color: theme.text }]}>
+							{t("profileHighScores")}
+						</Text>
+						<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+							{t("profileHighScoresHint")}
+						</Text>
+						{stats.topScores.map((entry, i) => (
+							<View
+								key={entry.gameId}
+								style={[
+									styles.scoreRow,
+									{ backgroundColor: theme.card, borderColor: theme.border },
+								]}
+							>
+								<Text style={[styles.rank, { color: theme.tint }]}>#{i + 1}</Text>
+								<Text style={[styles.scoreName, { color: theme.text }]}>
+									{t(getGameById(entry.gameId)?.titleKey ?? "stackGame")}
+								</Text>
+								<Text style={[styles.scoreValue, { color: theme.tint }]}>
+									{entry.highScore}
+								</Text>
+							</View>
+						))}
+					</Animated.View>
+				)}
+
+				{/* ── Favorite Game ── */}
+				{stats.favoriteGameId && (
+					<View
+						style={[
+							styles.favoriteCard,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+					>
+						<Ionicons name="heart" size={20} color={theme.tint} />
+						<Text style={[styles.favoriteText, { color: theme.text }]}>
+							{t("profileFavorite")}:{" "}
+							{t(getGameById(stats.favoriteGameId)?.titleKey ?? "stackGame")}
+						</Text>
+					</View>
+				)}
+			</ScrollView>
+		</SafeAreaView>
 	);
 }
 
@@ -242,6 +248,7 @@ function AchievementBadge({
 }
 
 const styles = StyleSheet.create({
+	safeArea: { flex: 1 },
 	container: { flex: 1 },
 	content: { padding: 16, paddingBottom: 40 },
 	sectionTitle: {

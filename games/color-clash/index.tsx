@@ -368,6 +368,14 @@ export default function ColorClashGame() {
 			<Pressable
 				style={[styles.mainArea, { backgroundColor: bgColor }]}
 				onPress={handleTap}
+				accessibilityRole="button"
+				accessibilityLabel={
+					isIdle && finalScore === null
+						? t("gameTapToStart")
+						: trial
+							? t(trial.word)
+							: undefined
+				}
 			>
 				{isIdle && finalScore === null ? (
 					<>

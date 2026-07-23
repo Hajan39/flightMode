@@ -999,8 +999,10 @@ export default function FlightPathGame() {
 				<Pressable
 					style={[s.mainBtn, { backgroundColor: theme.tint }]}
 					onPress={() => setStarted(true)}
+					accessibilityRole="button"
+					accessibilityLabel={t("start")}
 				>
-					<Text style={s.mainBtnText}>{t("start")}</Text>
+					<Text style={[s.mainBtnText, { color: theme.onTint }]}>{t("start")}</Text>
 				</Pressable>
 			</View>
 		);
@@ -1270,7 +1272,7 @@ const s = StyleSheet.create({
 	finalScore: { fontSize: 36, fontWeight: "800", marginBottom: 4 },
 	finalLanded: { fontSize: 15, marginBottom: 24 },
 	mainBtn: { paddingHorizontal: 40, paddingVertical: 14, borderRadius: 12 },
-	mainBtnText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+	mainBtnText: { fontWeight: "700", fontSize: 16 },
 
 	statsRow: {
 		flexDirection: "row",

@@ -282,6 +282,8 @@ export default function CabinCallGame() {
 							{ backgroundColor: theme.elevated, borderColor: theme.border },
 						]}
 						onPress={() => handleChoice(choice)}
+						accessibilityRole="button"
+						accessibilityLabel={t(choice.labelKey)}
 					>
 						<Ionicons
 							name={choice.icon as never}

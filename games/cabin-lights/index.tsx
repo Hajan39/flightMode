@@ -207,6 +207,8 @@ export default function CabinLightsGame() {
 						{ backgroundColor: theme.elevated, borderColor: theme.border },
 					]}
 					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("gameTapToStart")}
 				>
 					<Text style={styles.idleEmoji}>💡</Text>
 					<Text style={[styles.idleTitle, { color: theme.text }]}>
@@ -276,6 +278,8 @@ export default function CabinLightsGame() {
 								},
 							]}
 							onPress={() => startRound(round + 1)}
+							accessibilityRole="button"
+							accessibilityLabel={t("cabinLightsNextRound")}
 						>
 							<Text style={[styles.nextButtonTitle, { color: theme.text }]}>
 								{t("cabinLightsRoundClear")}

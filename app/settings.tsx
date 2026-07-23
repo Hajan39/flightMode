@@ -171,6 +171,9 @@ export default function SettingsScreen() {
 										},
 									]}
 									onPress={() => handleSyncPolicyChange(option.value)}
+									accessibilityRole="button"
+									accessibilityLabel={t(option.labelKey)}
+									accessibilityState={{ selected: isSelected }}
 								>
 									<View
 										style={styles.optionRowLeft}
@@ -248,6 +251,8 @@ export default function SettingsScreen() {
 									true: theme.tint,
 								}}
 								thumbColor="#fff"
+								accessibilityRole="switch"
+								accessibilityLabel={t("settingsAnalyticsLabel")}
 							/>
 						</View>
 					</View>
@@ -274,6 +279,8 @@ export default function SettingsScreen() {
 									`mailto:${SUPPORT_EMAIL}?subject=FlightMode%20Bug%20Report`,
 								)
 							}
+							accessibilityRole="button"
+							accessibilityLabel={t("settingsReportBug")}
 						>
 							<View
 								style={styles.supportRowLeft}
@@ -302,6 +309,8 @@ export default function SettingsScreen() {
 									`mailto:${SUPPORT_EMAIL}?subject=FlightMode%20Feature%20Suggestion`,
 								)
 							}
+							accessibilityRole="button"
+							accessibilityLabel={t("settingsSuggestFeature")}
 						>
 							<View
 								style={styles.supportRowLeft}
@@ -326,6 +335,8 @@ export default function SettingsScreen() {
 								{ borderBottomColor: theme.border, opacity: pressed ? 0.6 : 1 },
 							]}
 							onPress={handleSupportOpen}
+							accessibilityRole="button"
+							accessibilityLabel={t("settingsBecomeSupporter")}
 						>
 							<View
 								style={styles.supportRowLeft}

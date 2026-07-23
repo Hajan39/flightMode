@@ -425,7 +425,7 @@ export default function CrossAirRadarGame() {
 							if (showShips && cell === "s") bg = "#546e7a";
 							if (isSelected) bg = theme.tint;
 							if (cell === "h") {
-								bg = "#ef5350";
+								bg = theme.danger;
 								content = "✕";
 							}
 							if (cell === "m") {
@@ -494,12 +494,14 @@ export default function CrossAirRadarGame() {
 					</Text>
 					<Pressable
 						onPress={handlePassDone}
+						accessibilityRole="button"
+						accessibilityLabel={t("passPhoneReady")}
 						style={[
 							styles.primaryBtn,
 							{ backgroundColor: theme.tint, marginTop: 32 },
 						]}
 					>
-						<Text style={styles.primaryBtnText}>{t("passPhoneReady")}</Text>
+						<Text style={[styles.primaryBtnText, { color: theme.onTint }]}>{t("passPhoneReady")}</Text>
 					</Pressable>
 				</Animated.View>
 			</View>
@@ -562,7 +564,7 @@ export default function CrossAirRadarGame() {
 								<Text
 									style={[
 										styles.shipChipText,
-										{ color: isSelected || isCurrent ? "#fff" : theme.text },
+										{ color: isSelected || isCurrent ? theme.onTint : theme.text },
 									]}
 								>
 									{t(SHIP_LABELS[ship.id])} ({ship.size})
@@ -573,6 +575,8 @@ export default function CrossAirRadarGame() {
 
 					<Pressable
 						onPress={() => setHoriz((h) => !h)}
+						accessibilityRole="button"
+						accessibilityLabel={t("arRotate")}
 						style={[
 							styles.rotateBtn,
 							{ backgroundColor: theme.card, borderColor: theme.border },
@@ -594,12 +598,18 @@ export default function CrossAirRadarGame() {
 					{allPlaced ? (
 						<Pressable
 							onPress={confirmSetup}
+							accessibilityRole="button"
+							accessibilityLabel={t("arReady")}
 							style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 						>
-							<Text style={styles.primaryBtnText}>{t("arReady")}</Text>
+							<Text style={[styles.primaryBtnText, { color: theme.onTint }]}>{t("arReady")}</Text>
 						</Pressable>
 					) : null}
-					<Pressable onPress={resetSetup}>
+					<Pressable
+						onPress={resetSetup}
+						accessibilityRole="button"
+						accessibilityLabel={t("arReset")}
+					>
 						<Text style={[styles.linkText, { color: theme.tint }]}>
 							{t("arReset")}
 						</Text>
@@ -720,7 +730,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 12,
 		borderRadius: 12,
 	},
-	primaryBtnText: { color: "#fff", fontSize: 16, fontWeight: "800" },
+	primaryBtnText: { fontSize: 16, fontWeight: "800" },
 	linkText: { fontSize: 14, fontWeight: "600" },
 	// Grid
 	gridWrap: { marginTop: 4 },

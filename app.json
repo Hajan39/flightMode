@@ -7,11 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "flightmode",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#07111F"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.hajan39.flightmode",
@@ -27,7 +22,6 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false,
       "permissions": [
         "android.permission.FOREGROUND_SERVICE",
         "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
@@ -48,7 +42,8 @@
       "expo-localization",
       "expo-audio",
       "expo-updates",
-      "expo-asset"
+      "expo-asset",
+      "expo-splash-screen"
     ],
     "experiments": {
       "typedRoutes": true

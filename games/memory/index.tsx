@@ -260,11 +260,14 @@ export default function MemoryGame() {
 								},
 							]}
 							onPress={() => changeMode(mode.key)}
+							accessibilityRole="button"
+							accessibilityLabel={t(mode.labelKey)}
+							accessibilityState={{ selected: isActive }}
 						>
 							<Text
 								style={[
 									styles.modeChipText,
-									{ color: isActive ? "#fff" : theme.mutedText },
+									{ color: isActive ? theme.onTint : theme.mutedText },
 								]}
 							>
 								{t(mode.labelKey)}
@@ -303,6 +306,8 @@ export default function MemoryGame() {
 					onPressIn={resetPress.onPressIn}
 					onPressOut={resetPress.onPressOut}
 					onPress={resetGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("newGame")}
 				>
 					<Text style={[styles.resetText, { color: theme.text }]}>
 						{t("newGame")}

@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
 	FlatList,
 	Pressable,
@@ -14,6 +14,7 @@ import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useContentItems } from "@/hooks/useContentItems";
+import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -29,6 +30,7 @@ export default function ExploreScreen() {
 	const [search, setSearch] = useState("");
 	const [activeCategory, setActiveCategory] = useState("");
 	const [sortMode, setSortMode] = useState<SortMode>("recommended");
+	const { capStyle } = useTabletLayout();
 
 	const handleSearchChange = (value: string) => {
 		setSearch(value);
@@ -50,26 +52,37 @@ export default function ExploreScreen() {
 		captureAnalyticsEvent("content_sort_changed", { sort_mode: mode });
 	};
 
-	const languageReadyArticles = articles.filter((item) =>
-		language === "en"
-			? true
-			: Boolean(
-					item.title[language] &&
-						item.category[language] &&
-						item.body[language],
-				),
+	const languageReadyArticles = useMemo(
+		() =>
+			articles.filter((item) =>
+				language === "en"
+					? true
+					: Boolean(
+							item.title[language] &&
+								item.category[language] &&
+								item.body[language],
+						),
+			),
+		[articles, language],
 	);
 
-	const localizedArticles = languageReadyArticles.map((item) => ({
-		...item,
-		titleText: getLocalizedText(item.title, language),
-		categoryText: getLocalizedText(item.category, language),
-	}));
+	const localizedArticles = useMemo(
+		() =>
+			languageReadyArticles.map((item) => ({
+				...item,
+				titleText: getLocalizedText(item.title, language),
+				categoryText: getLocalizedText(item.category, language),
+			})),
+		[languageReadyArticles, language],
+	);
 
-	const categories = [
-		t("exploreAll"),
-		...Array.from(new Set(localizedArticles.map((a) => a.categoryText))),
-	];
+	const categories = useMemo(
+		() => [
+			t("exploreAll"),
+			...Array.from(new Set(localizedArticles.map((a) => a.categoryText))),
+		],
+		[localizedArticles, t],
+	);
 
 	const filteredArticles = (() => {
 		const q = search.trim().toLowerCase();
@@ -103,144 +116,147 @@ export default function ExploreScreen() {
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.topTools}>
-				<View
-					style={[
-						styles.searchWrap,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-				>
-					<Ionicons name="search" size={16} color={theme.mutedText} />
-					<TextInput
-						value={search}
-						onChangeText={handleSearchChange}
-						placeholder={t("exploreSearchPlaceholder")}
-						placeholderTextColor={theme.mutedText}
-						style={[styles.searchInput, { color: theme.text }]}
-					/>
-				</View>
-				<Text style={[styles.toolsHint, { color: theme.mutedText }]}>
-					{t("exploreToolsHint")}
-				</Text>
-				<ScrollView
-					horizontal
-					showsHorizontalScrollIndicator={false}
-					contentContainerStyle={styles.categoryRow}
-					style={styles.chipRowScroll}
-				>
-					{categories.map((category) => (
-						<Pressable
-							key={category}
-							style={[
-								styles.categoryChip,
-								category !== categories[categories.length - 1] &&
-									styles.chipSpacing,
-								{
-									borderColor: theme.border,
-									backgroundColor:
-										activeCategory === category ? theme.tint : theme.card,
-								},
-							]}
-							onPress={() => handleCategoryChange(category)}
-						>
-							<Text
-								style={[
-									styles.categoryChipText,
-									activeCategory === category && { color: theme.onTint },
-								]}
-							>
-								{category}
-							</Text>
-						</Pressable>
-					))}
-				</ScrollView>
-				<ScrollView
-					horizontal
-					showsHorizontalScrollIndicator={false}
-					contentContainerStyle={styles.sortRow}
-					style={styles.chipRowScroll}
-				>
-					{[
-						{ key: "recommended", labelKey: "exploreSortRecommended" as const },
-						{ key: "read-short", labelKey: "exploreSortShortestRead" as const },
-						{ key: "read-long", labelKey: "exploreSortLongestRead" as const },
-						{ key: "title", labelKey: "exploreSortTitle" as const },
-					].map((item) => (
-						<Pressable
-							key={item.key}
-							style={[
-								styles.sortChip,
-								item.key !== "title" && styles.chipSpacing,
-								{
-									borderColor: theme.border,
-									backgroundColor:
-										sortMode === item.key ? theme.tint : theme.elevated,
-								},
-							]}
-							onPress={() => handleSortChange(item.key as SortMode)}
-						>
-							<Text
-								style={[
-									styles.sortChipText,
-									sortMode === item.key && { color: theme.onTint },
-								]}
-							>
-								{t(item.labelKey)}
-							</Text>
-						</Pressable>
-					))}
-				</ScrollView>
-			</View>
-			<FlatList
-				data={filteredArticles}
-				keyExtractor={(item) => item.id}
-				contentContainerStyle={[
-					styles.list,
-					filteredArticles.length === 0 && styles.emptyList,
-				]}
-				ListEmptyComponent={
-					<View style={styles.emptyState}>
-						<Ionicons name="search-outline" size={48} color={theme.mutedText} />
-						<Text style={[styles.emptyText, { color: theme.mutedText }]}>
-							{t("exploreNoResults")}
-						</Text>
-					</View>
-				}
-				renderItem={({ item }) => (
-					<AnimatedPressable
+			<View style={[styles.tabletCap, capStyle]}>
+				<View style={styles.topTools}>
+					<View
 						style={[
-							styles.card,
+							styles.searchWrap,
 							{ backgroundColor: theme.card, borderColor: theme.border },
 						]}
-						onPress={() => router.push(`/content/${item.id}` as never)}
 					>
-						<View
-							style={styles.cardBody}
-							lightColor="transparent"
-							darkColor="transparent"
-						>
-							<Text style={[styles.category, { color: theme.tint }]}>
-								{item.categoryText}
-							</Text>
-							<Text style={styles.title}>{item.titleText}</Text>
-							<Text style={[styles.meta, { color: theme.mutedText }]}>
-								{t("minutesRead", { minutes: item.readTime })}
+						<Ionicons name="search" size={16} color={theme.mutedText} />
+						<TextInput
+							value={search}
+							onChangeText={handleSearchChange}
+							placeholder={t("exploreSearchPlaceholder")}
+							placeholderTextColor={theme.mutedText}
+							style={[styles.searchInput, { color: theme.text }]}
+						/>
+					</View>
+					<Text style={[styles.toolsHint, { color: theme.mutedText }]}>
+						{t("exploreToolsHint")}
+					</Text>
+					<ScrollView
+						horizontal
+						showsHorizontalScrollIndicator={false}
+						contentContainerStyle={styles.categoryRow}
+						style={styles.chipRowScroll}
+					>
+						{categories.map((category) => (
+							<Pressable
+								key={category}
+								style={[
+									styles.categoryChip,
+									category !== categories[categories.length - 1] &&
+										styles.chipSpacing,
+									{
+										borderColor: theme.border,
+										backgroundColor:
+											activeCategory === category ? theme.tint : theme.card,
+									},
+								]}
+								onPress={() => handleCategoryChange(category)}
+							>
+								<Text
+									style={[
+										styles.categoryChipText,
+										activeCategory === category && { color: theme.onTint },
+									]}
+								>
+									{category}
+								</Text>
+							</Pressable>
+						))}
+					</ScrollView>
+					<ScrollView
+						horizontal
+						showsHorizontalScrollIndicator={false}
+						contentContainerStyle={styles.sortRow}
+						style={styles.chipRowScroll}
+					>
+						{[
+							{ key: "recommended", labelKey: "exploreSortRecommended" as const },
+							{ key: "read-short", labelKey: "exploreSortShortestRead" as const },
+							{ key: "read-long", labelKey: "exploreSortLongestRead" as const },
+							{ key: "title", labelKey: "exploreSortTitle" as const },
+						].map((item) => (
+							<Pressable
+								key={item.key}
+								style={[
+									styles.sortChip,
+									item.key !== "title" && styles.chipSpacing,
+									{
+										borderColor: theme.border,
+										backgroundColor:
+											sortMode === item.key ? theme.tint : theme.elevated,
+									},
+								]}
+								onPress={() => handleSortChange(item.key as SortMode)}
+							>
+								<Text
+									style={[
+										styles.sortChipText,
+										sortMode === item.key && { color: theme.onTint },
+									]}
+								>
+									{t(item.labelKey)}
+								</Text>
+							</Pressable>
+						))}
+					</ScrollView>
+				</View>
+				<FlatList
+					data={filteredArticles}
+					keyExtractor={(item) => item.id}
+					contentContainerStyle={[
+						styles.list,
+						filteredArticles.length === 0 && styles.emptyList,
+					]}
+					ListEmptyComponent={
+						<View style={styles.emptyState}>
+							<Ionicons name="search-outline" size={48} color={theme.mutedText} />
+							<Text style={[styles.emptyText, { color: theme.mutedText }]}>
+								{t("exploreNoResults")}
 							</Text>
 						</View>
-						<Ionicons
-							name="chevron-forward"
-							size={20}
-							color={theme.mutedText}
-						/>
-					</AnimatedPressable>
-				)}
-			/>
+					}
+					renderItem={({ item }) => (
+						<AnimatedPressable
+							style={[
+								styles.card,
+								{ backgroundColor: theme.card, borderColor: theme.border },
+							]}
+							onPress={() => router.push(`/content/${item.id}` as never)}
+						>
+							<View
+								style={styles.cardBody}
+								lightColor="transparent"
+								darkColor="transparent"
+							>
+								<Text style={[styles.category, { color: theme.tint }]}>
+									{item.categoryText}
+								</Text>
+								<Text style={styles.title}>{item.titleText}</Text>
+								<Text style={[styles.meta, { color: theme.mutedText }]}>
+									{t("minutesRead", { minutes: item.readTime })}
+								</Text>
+							</View>
+							<Ionicons
+								name="chevron-forward"
+								size={20}
+								color={theme.mutedText}
+							/>
+						</AnimatedPressable>
+					)}
+				/>
+			</View>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: { flex: 1 },
+	tabletCap: { flex: 1 },
 	topTools: {
 		paddingHorizontal: 16,
 		paddingTop: 16,

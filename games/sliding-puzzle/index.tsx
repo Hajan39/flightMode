@@ -222,8 +222,10 @@ export default function SlidingPuzzleGame() {
           <Pressable
             style={[styles.startBtn, { backgroundColor: theme.tint }]}
             onPress={prepareBoard}
+            accessibilityRole="button"
+            accessibilityLabel={t("gameTapToStart")}
           >
-            <Text style={styles.startBtnText}>{t("gameTapToStart")}</Text>
+            <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
           </Pressable>
         </RNView>
       </View>
@@ -304,7 +306,7 @@ export default function SlidingPuzzleGame() {
                   ]}
                 >
                   {!isEmpty ? (
-                    <Text style={styles.cellText}>{value}</Text>
+                    <Text style={[styles.cellText, { color: theme.onTint }]}>{value}</Text>
                   ) : null}
                 </Pressable>
               );
@@ -419,7 +421,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   cellText: {
-    color: "#fff",
     fontSize: FontSize.xl,
     fontWeight: FontWeight.black,
     textAlign: "center",
@@ -432,6 +433,5 @@ const styles = StyleSheet.create({
   },
   startBtnText: {
     ...TextStyle.buttonPrimary,
-    color: "#fff",
   },
 });

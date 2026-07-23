@@ -92,6 +92,8 @@ function ScrambleTile({ tile, disabled, onPress, theme }: ScrambleTileProps) {
       onPressIn={onPressIn}
       onPressOut={onPressOut}
       disabled={disabled}
+      accessibilityRole="button"
+      accessibilityLabel={tile.letter}
       style={[
         styles.tile,
         {
@@ -105,7 +107,7 @@ function ScrambleTile({ tile, disabled, onPress, theme }: ScrambleTileProps) {
       <Text
         style={[
           styles.tileLetter,
-          { color: tile.used ? theme.mutedText : "#ffffff" },
+          { color: tile.used ? theme.mutedText : theme.onTint },
         ]}
       >
         {tile.letter}
@@ -402,7 +404,7 @@ export default function WordScrambleGame() {
       ? theme.tint
       : timeRemaining > 8
         ? theme.warning
-        : "#ef4444";
+        : theme.danger;
 
   const isCorrectFlash = phase === "correct-flash";
   const isTimeUpFlash = phase === "time-up-flash";
@@ -422,8 +424,10 @@ export default function WordScrambleGame() {
           <Pressable
             style={[styles.startButton, { backgroundColor: theme.tint }]}
             onPress={startGame}
+            accessibilityRole="button"
+            accessibilityLabel={t("gameTapToStart")}
           >
-            <Text style={styles.startButtonText}>{t("gameTapToStart")}</Text>
+            <Text style={[styles.startButtonText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
           </Pressable>
         </View>
       </View>
@@ -511,10 +515,10 @@ export default function WordScrambleGame() {
             {
               backgroundColor: isCorrectFlash
                 ? theme.successSurface
-                : "#4d1f1f",
+                : theme.dangerSurface,
               borderColor: isCorrectFlash
                 ? theme.successBorder
-                : "#cc4b4b",
+                : theme.dangerBorder,
             },
           ]}
         >
@@ -522,7 +526,7 @@ export default function WordScrambleGame() {
             style={[
               styles.flashText,
               {
-                color: isCorrectFlash ? theme.successBorder : "#ef4444",
+                color: isCorrectFlash ? theme.successBorder : theme.danger,
               },
             ]}
           >
@@ -615,6 +619,8 @@ export default function WordScrambleGame() {
         <Pressable
           onPress={handleBackspace}
           disabled={phase !== "playing" || answer.length === 0}
+          accessibilityRole="button"
+          accessibilityLabel="Backspace"
           style={[
             styles.actionBtn,
             {
@@ -632,6 +638,8 @@ export default function WordScrambleGame() {
         <Pressable
           onPress={handleSkip}
           disabled={phase !== "playing" || skipsRemaining <= 0}
+          accessibilityRole="button"
+          accessibilityLabel={t("wsSkip")}
           style={[
             styles.actionBtn,
             styles.skipBtn,
@@ -701,7 +709,6 @@ const styles = StyleSheet.create({
     ...Shadow.card,
   },
   startButtonText: {
-    color: "#ffffff",
     ...TextStyle.buttonPrimary,
   },
 

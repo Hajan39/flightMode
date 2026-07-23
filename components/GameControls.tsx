@@ -54,6 +54,7 @@ export default function GameControls({
 						{ backgroundColor: theme.card, borderColor: theme.border },
 					]}
 					accessibilityLabel={isPaused ? t("gameResume") : t("gamePause")}
+					accessibilityRole="button"
 				>
 					<Ionicons
 						name={isPaused ? "play" : "pause"}
@@ -71,6 +72,7 @@ export default function GameControls({
 						{ backgroundColor: theme.card, borderColor: theme.border },
 					]}
 					accessibilityLabel={t("gameRestart")}
+					accessibilityRole="button"
 				>
 					<Ionicons name="refresh" size={18} color={theme.text} />
 				</Pressable>

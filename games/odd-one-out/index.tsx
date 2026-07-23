@@ -359,6 +359,8 @@ export default function OddOneOutGame() {
 						{ backgroundColor: theme.elevated, borderColor: theme.border },
 					]}
 					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("gameTapToStart")}
 				>
 					<Text style={[styles.idleTitle, { color: theme.text }]}>
 						{t("gameTapToStart")}

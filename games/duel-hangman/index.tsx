@@ -252,11 +252,14 @@ export default function DuelHangmanGame() {
 								},
 							]}
 							onPress={() => setPlayerCount(n)}
+							accessibilityRole="button"
+							accessibilityLabel={t("mpPlayerN", { n })}
+							accessibilityState={{ selected: playerCount === n }}
 						>
 							<Text
 								style={[
 									styles.countBtnText,
-									{ color: playerCount === n ? "#fff" : theme.text },
+									{ color: playerCount === n ? theme.onTint : theme.text },
 								]}
 							>
 								{n}
@@ -272,6 +275,8 @@ export default function DuelHangmanGame() {
 						<Pressable
 							key={d}
 							onPress={() => startGame(d)}
+							accessibilityRole="button"
+							accessibilityLabel={t(DIFF_LABELS[d])}
 							style={[
 								styles.diffBtn,
 								{ backgroundColor: theme.card, borderColor: theme.border },
@@ -319,6 +324,8 @@ export default function DuelHangmanGame() {
 				<Pressable
 					style={[styles.btn, { backgroundColor: guesserColor, marginTop: 32 }]}
 					onPress={startRound}
+					accessibilityRole="button"
+					accessibilityLabel={t("passPhoneReady")}
 				>
 					<Text style={styles.btnText}>{t("passPhoneReady")}</Text>
 				</Pressable>
@@ -366,6 +373,8 @@ export default function DuelHangmanGame() {
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
 					onPress={() => setPhase("setup")}
+					accessibilityRole="button"
+					accessibilityLabel={t("playAgain")}
 				>
 					<Text style={styles.btnText}>{t("playAgain")}</Text>
 				</Pressable>
@@ -374,7 +383,7 @@ export default function DuelHangmanGame() {
 	}
 
 	/* PLAYING */
-	const figureColor = colorScheme === "dark" ? "#fff" : "#1a1a2e";
+	const figureColor = theme.text;
 
 	return (
 		<View style={styles.root}>
@@ -446,8 +455,8 @@ export default function DuelHangmanGame() {
 										marginHorizontal: gap / 2,
 										borderBottomColor: gameOver
 											? isWon
-												? "#66bb6a"
-												: "#ef5350"
+												? theme.successBorder
+												: theme.danger
 											: guesserColor,
 									},
 								]}
@@ -460,7 +469,7 @@ export default function DuelHangmanGame() {
 											color: guessed.has(letter)
 												? theme.text
 												: gameOver
-													? "#ef5350"
+													? theme.danger
 													: "transparent",
 										},
 									]}
@@ -492,9 +501,9 @@ export default function DuelHangmanGame() {
 											styles.key,
 											{
 												backgroundColor: correct
-													? "#66bb6a"
+													? theme.successBorder
 													: wrong
-														? "#ef5350"
+														? theme.danger
 														: theme.elevated,
 												opacity: used ? 0.5 : 1,
 											},
@@ -502,6 +511,8 @@ export default function DuelHangmanGame() {
 										hitSlop={{ top: 3, bottom: 3, left: 2, right: 2 }}
 										onPress={() => handleGuess(letter)}
 										disabled={used}
+										accessibilityRole="button"
+										accessibilityLabel={letter}
 									>
 										<Text
 											style={[
@@ -522,7 +533,7 @@ export default function DuelHangmanGame() {
 					<Text
 						style={[
 							styles.gameOverText,
-							{ color: isWon ? "#66bb6a" : "#ef5350" },
+							{ color: isWon ? theme.successBorder : theme.danger },
 						]}
 					>
 						{isWon ? t("hmCorrect") : t("hmFailed", { word })}
@@ -530,6 +541,8 @@ export default function DuelHangmanGame() {
 					<Pressable
 						style={[styles.btn, { backgroundColor: theme.tint }]}
 						onPress={nextRound}
+						accessibilityRole="button"
+						accessibilityLabel={round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
 					>
 						<Text style={styles.btnText}>
 							{round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}

@@ -254,11 +254,14 @@ export default function SkyMathGame() {
 								},
 							]}
 							onPress={() => handleDifficultyChange(key)}
+							accessibilityRole="button"
+							accessibilityLabel={t(labelKey)}
+							accessibilityState={{ selected: isActive }}
 						>
 							<Text
 								style={[
 									styles.diffChipText,
-									{ color: isActive ? "#fff" : theme.text },
+									{ color: isActive ? theme.onTint : theme.text },
 								]}
 							>
 								{t(labelKey)}

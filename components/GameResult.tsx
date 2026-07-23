@@ -17,6 +17,7 @@ import Colors from "@/constants/Colors";
 import { Radius, Shadow, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useReduceMotion } from "@/hooks/useReduceMotion";
 import { useTranslation } from "@/hooks/useTranslation";
 
 type Props = {
@@ -58,6 +59,7 @@ export default function GameResult({
 	const { t } = useTranslation();
 	const router = useRouter();
 	const haptic = useHaptic();
+	const reduceMotion = useReduceMotion();
 
 	const scoreScale = useSharedValue(1);
 	const scoreStyle = useAnimatedStyle(() => ({
@@ -67,7 +69,7 @@ export default function GameResult({
 	useEffect(() => {
 		// Delay so animation + haptic fire when card is fully visible (~450ms after mount)
 		const timer = setTimeout(() => {
-			if (!disableScoreBounce) {
+			if (!disableScoreBounce && !reduceMotion) {
 				scoreScale.value = withSequence(
 					withSpring(1.15, { damping: 8, stiffness: 180 }),
 					withSpring(1, { damping: 10, stiffness: 220 }),
@@ -77,7 +79,7 @@ export default function GameResult({
 			else haptic.heavy();
 		}, 450);
 		return () => clearTimeout(timer);
-	}, [disableScoreBounce, haptic, isNewBest, scoreScale]);
+	}, [disableScoreBounce, haptic, isNewBest, reduceMotion, scoreScale]);
 
 	const handleQuit = () => {
 		haptic.tap();
@@ -103,7 +105,11 @@ export default function GameResult({
 			style={styles.overlay}
 		>
 			<Animated.View
-				entering={ZoomIn.delay(380).springify().damping(14)}
+				entering={
+					reduceMotion
+						? FadeIn.delay(380).duration(180)
+						: ZoomIn.delay(380).springify().damping(14)
+				}
 				style={[
 					styles.card,
 					{ backgroundColor: theme.elevated, borderColor: theme.border },
@@ -111,7 +117,11 @@ export default function GameResult({
 			>
 				{isNewBest ? (
 					<Animated.View
-						entering={ZoomIn.delay(280).springify()}
+						entering={
+							reduceMotion
+								? FadeIn.delay(280).duration(180)
+								: ZoomIn.delay(280).springify()
+						}
 						style={[styles.newBestBadge, { backgroundColor: theme.tint }]}
 					>
 						<Ionicons name="sparkles" size={14} color="#fff" />
@@ -293,7 +303,7 @@ const styles = StyleSheet.create({
 		gap: 2,
 	},
 	statLabel: {
-		fontSize: 10,
+		fontSize: FontSize.xs,
 		fontWeight: FontWeight.extrabold,
 		letterSpacing: 1,
 		textTransform: "uppercase",

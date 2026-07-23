@@ -14,6 +14,7 @@ import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
@@ -67,6 +68,7 @@ export default function RelaxScreen() {
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
 	const haptic = useHaptic();
+	const { capStyle } = useTabletLayout();
 
 	// Breathing state
 	const [isActive, setIsActive] = useState(false);
@@ -218,7 +220,7 @@ export default function RelaxScreen() {
 	return (
 		<ScrollView
 			style={[styles.scroll, { backgroundColor: theme.background }]}
-			contentContainerStyle={styles.content}
+			contentContainerStyle={[styles.content, capStyle]}
 		>
 			{/* Breathing section */}
 			<Animated.View

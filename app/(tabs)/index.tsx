@@ -14,6 +14,7 @@ import AnimatedPressable from "@/components/AnimatedPressable";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { Radius, Shadow, Spacing } from "@/constants/Spacing";
 import {
 	dailyChallengeGames,
 	getGameById,
@@ -21,6 +22,7 @@ import {
 } from "@/data/games";
 import { useContentItems } from "@/hooks/useContentItems";
 import { useProfileStats } from "@/hooks/useProfileStats";
+import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import {
@@ -63,6 +65,7 @@ export default function HomeScreen() {
 	const gameProgress = useGameStore((s) => s.progress);
 	const preferredCategories = useSettingsStore((s) => s.preferredCategories);
 	const markGameSeen = useDiscoveryStore((s) => s.markGameSeen);
+	const { capStyle } = useTabletLayout();
 	const [, setTick] = useState(0);
 
 	// Recently played games, most recent first — powers the "Jump back in" row.
@@ -149,15 +152,19 @@ export default function HomeScreen() {
 	};
 
 	return (
-		<ScrollView style={styles.scroll} contentContainerStyle={styles.container}>
+		<ScrollView
+			style={styles.scroll}
+			contentContainerStyle={[styles.container, capStyle]}
+		>
 			<Animated.View entering={FadeInDown.delay(80).springify()}>
 				<Text style={[styles.sectionTitle, { marginTop: 0 }]}>{t("yourFlight")}</Text>
 				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
 					{t("homeFlightHint")}
 				</Text>
 				{flight ? (
+					<View style={[styles.flightShell, { backgroundColor: theme.border + "30" }]}>
 					<View
-						style={[styles.flightCard, { backgroundColor: theme.accentSoft }]}
+						style={[styles.flightCard, { backgroundColor: theme.accentSoft }, Shadow.card]}
 					>
 						<View style={styles.flightHeader}>
 							<Ionicons name="airplane" size={20} color={theme.tint} />
@@ -211,6 +218,7 @@ export default function HomeScreen() {
 							</Text>
 						</View>
 					</View>
+					</View>
 				) : (
 					<AnimatedPressable
 						style={[
@@ -241,7 +249,9 @@ export default function HomeScreen() {
 					<Text style={[styles.preflightCtaText, { color: theme.tint }]}>
 						{t("homePreflightCta")}
 					</Text>
-					<Ionicons name="chevron-forward" size={16} color={theme.mutedText} />
+					<View style={[styles.iconCircle, { backgroundColor: theme.surface }]}>
+						<Ionicons name="chevron-forward" size={14} color={theme.mutedText} />
+					</View>
 				</AnimatedPressable>
 			</Animated.View>
 
@@ -254,6 +264,7 @@ export default function HomeScreen() {
 					style={[
 						styles.challengeCard,
 						{ backgroundColor: theme.accentSoft, borderColor: theme.tint },
+						Shadow.card,
 					]}
 					onPress={() => router.push(`/game/${challengeOfDay.id}` as never)}
 				>
@@ -665,13 +676,24 @@ function AnimatedProgressFill({
 
 const styles = StyleSheet.create({
 	scroll: { flex: 1 },
-	container: { padding: 20, paddingBottom: 40 },
+	container: { padding: Spacing["2xl"], paddingBottom: Spacing["4xl"] + 16 },
 
-	// Flight card (active flight)
+	// Flight card (active flight) — double-bezel: outer shell + inner core
+	flightShell: {
+		borderRadius: Radius.xl + 4,
+		padding: 4,
+		marginBottom: Spacing["2xl"],
+	},
 	flightCard: {
-		padding: 20,
-		borderRadius: 16,
-		marginBottom: 24,
+		padding: Spacing.xl,
+		borderRadius: Radius.xl,
+	},
+	iconCircle: {
+		width: 26,
+		height: 26,
+		borderRadius: 13,
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	flightHeader: {
 		flexDirection: "row",
@@ -700,11 +722,12 @@ const styles = StyleSheet.create({
 	// New-user welcome card
 	welcomeCard: {
 		alignItems: "center",
-		padding: 20,
-		borderRadius: 16,
+		padding: Spacing.xl,
+		borderRadius: Radius.xl,
 		borderWidth: 1.5,
 		gap: 8,
 		marginBottom: 6,
+		...Shadow.card,
 	},
 	welcomeTitle: { fontSize: 18, fontWeight: "700" },
 	welcomeHint: { fontSize: 13, textAlign: "center", lineHeight: 19 },
@@ -719,8 +742,8 @@ const styles = StyleSheet.create({
 	// Add flight card (no flight)
 	addFlightCard: {
 		alignItems: "center",
-		padding: 24,
-		borderRadius: 16,
+		padding: Spacing["2xl"],
+		borderRadius: Radius.xl,
 		borderWidth: 2,
 		borderStyle: "dashed",
 		marginBottom: 6,
@@ -755,7 +778,7 @@ const styles = StyleSheet.create({
 	articlesEmptyHint: { fontSize: 12, textAlign: "center", lineHeight: 17 },
 
 	// Quick actions
-	sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 4, marginTop: 20 },
+	sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 4, marginTop: Spacing["3xl"] },
 	sectionHint: {
 		fontSize: 12,
 		lineHeight: 16,
@@ -773,10 +796,11 @@ const styles = StyleSheet.create({
 	actionLabel: { fontSize: 14, fontWeight: "600", marginTop: 8 },
 	progressSnapshotCard: {
 		borderWidth: 1,
-		borderRadius: 14,
-		padding: 14,
+		borderRadius: Radius.panel,
+		padding: Spacing.lg,
 		gap: 12,
 		marginBottom: 6,
+		...Shadow.card,
 	},
 	progressSnapshotStats: {
 		flexDirection: "row",
@@ -810,9 +834,9 @@ const styles = StyleSheet.create({
 	},
 	challengeCard: {
 		borderWidth: 1,
-		borderRadius: 14,
-		padding: 16,
-		paddingLeft: 20,
+		borderRadius: Radius.panel + 4,
+		padding: Spacing.lg,
+		paddingLeft: Spacing.xl,
 		marginBottom: 4,
 		overflow: "hidden",
 	},
@@ -858,9 +882,10 @@ const styles = StyleSheet.create({
 	playTogetherCard: {
 		width: 130,
 		borderWidth: 1,
-		borderRadius: 12,
-		padding: 12,
+		borderRadius: Radius.panel,
+		padding: Spacing.md,
 		gap: 6,
+		...Shadow.card,
 	},
 	playTogetherTitle: {
 		fontSize: 14,
@@ -872,11 +897,12 @@ const styles = StyleSheet.create({
 	featuredCard: {
 		marginTop: 10,
 		borderWidth: 1,
-		borderRadius: 12,
-		padding: 14,
+		borderRadius: Radius.panel,
+		padding: Spacing.lg,
 		flexDirection: "row",
 		alignItems: "center",
 		gap: 10,
+		...Shadow.card,
 	},
 	featuredBody: {
 		flex: 1,

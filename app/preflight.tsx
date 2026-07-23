@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { ScrollView, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
 import { Text, View } from "@/components/Themed";
@@ -63,94 +64,99 @@ export default function PreflightScreen() {
 	const articleCount = articles.length;
 
 	return (
-		<ScrollView
+		<SafeAreaView
 			style={[styles.screen, { backgroundColor: theme.background }]}
-			contentContainerStyle={styles.container}
+			edges={["bottom"]}
 		>
-			<View
-				style={styles.hero}
-				lightColor="transparent"
-				darkColor="transparent"
+			<ScrollView
+				style={styles.screen}
+				contentContainerStyle={styles.container}
 			>
 				<View
-					style={[styles.heroIcon, { backgroundColor: theme.accentSoft }]}
+					style={styles.hero}
 					lightColor="transparent"
 					darkColor="transparent"
 				>
-					<Ionicons name="airplane" size={34} color={theme.tint} />
+					<View
+						style={[styles.heroIcon, { backgroundColor: theme.accentSoft }]}
+						lightColor="transparent"
+						darkColor="transparent"
+					>
+						<Ionicons name="airplane" size={34} color={theme.tint} />
+					</View>
+					<Text style={styles.heroTitle}>{t("preflightHeroTitle")}</Text>
+					<Text style={[styles.heroSub, { color: theme.mutedText }]}>
+						{t("preflightHeroSubtitle")}
+					</Text>
 				</View>
-				<Text style={styles.heroTitle}>{t("preflightHeroTitle")}</Text>
-				<Text style={[styles.heroSub, { color: theme.mutedText }]}>
-					{t("preflightHeroSubtitle")}
-				</Text>
-			</View>
-
-			<View
-				style={styles.list}
-				lightColor="transparent"
-				darkColor="transparent"
-			>
-				<ReadyRow
-					icon="game-controller-outline"
-					label={t("preflightGamesCount", { count: gameCount })}
-					sublabel={t("preflightReadyLabel")}
-					theme={theme}
-				/>
-				<ReadyRow
-					icon="document-text-outline"
-					label={t("preflightArticlesCount", { count: articleCount })}
-					sublabel={t("preflightReadyLabel")}
-					theme={theme}
-				/>
-				<ReadyRow
-					icon="leaf-outline"
-					label={t("preflightRelax")}
-					sublabel={t("preflightReadyLabel")}
-					theme={theme}
-				/>
-			</View>
-
-			{/* Network status */}
-			<View
-				style={[
-					styles.networkRow,
-					{
-						backgroundColor: online ? theme.successSurface : theme.card,
-						borderColor: online ? theme.successBorder : theme.border,
-					},
-				]}
-			>
-				<Ionicons
-					name={online ? "wifi" : "airplane-outline"}
-					size={18}
-					color={online ? theme.successBorder : theme.mutedText}
-				/>
-				<Text style={[styles.networkText, { color: theme.text }]}>
-					{online ? t("preflightNetworkOnline") : t("preflightNetworkOffline")}
-				</Text>
-			</View>
-
-			{/* Optional: refresh remote content while still online */}
-			{online && (
-				<AnimatedPressable
-					disabled={syncStatus === "syncing"}
-					onPress={() => void syncContent()}
+	
+				<View
+					style={styles.list}
+					lightColor="transparent"
+					darkColor="transparent"
+				>
+					<ReadyRow
+						icon="game-controller-outline"
+						label={t("preflightGamesCount", { count: gameCount })}
+						sublabel={t("preflightReadyLabel")}
+						theme={theme}
+					/>
+					<ReadyRow
+						icon="document-text-outline"
+						label={t("preflightArticlesCount", { count: articleCount })}
+						sublabel={t("preflightReadyLabel")}
+						theme={theme}
+					/>
+					<ReadyRow
+						icon="leaf-outline"
+						label={t("preflightRelax")}
+						sublabel={t("preflightReadyLabel")}
+						theme={theme}
+					/>
+				</View>
+	
+				{/* Network status */}
+				<View
 					style={[
-						styles.refreshBtn,
-						{ backgroundColor: theme.tint, opacity: syncStatus === "syncing" ? 0.6 : 1 },
+						styles.networkRow,
+						{
+							backgroundColor: online ? theme.successSurface : theme.card,
+							borderColor: online ? theme.successBorder : theme.border,
+						},
 					]}
 				>
-					<Ionicons name="cloud-download-outline" size={18} color="#fff" />
-					<Text style={styles.refreshText}>
-						{syncStatus === "syncing"
-							? t("preflightRefreshing")
-							: syncStatus === "success" || syncStatus === "skipped"
-								? t("preflightUpToDate")
-								: t("preflightRefresh")}
+					<Ionicons
+						name={online ? "wifi" : "airplane-outline"}
+						size={18}
+						color={online ? theme.successBorder : theme.mutedText}
+					/>
+					<Text style={[styles.networkText, { color: theme.text }]}>
+						{online ? t("preflightNetworkOnline") : t("preflightNetworkOffline")}
 					</Text>
-				</AnimatedPressable>
-			)}
-		</ScrollView>
+				</View>
+	
+				{/* Optional: refresh remote content while still online */}
+				{online && (
+					<AnimatedPressable
+						disabled={syncStatus === "syncing"}
+						onPress={() => void syncContent()}
+						style={[
+							styles.refreshBtn,
+							{ backgroundColor: theme.tint, opacity: syncStatus === "syncing" ? 0.6 : 1 },
+						]}
+					>
+						<Ionicons name="cloud-download-outline" size={18} color="#fff" />
+						<Text style={styles.refreshText}>
+							{syncStatus === "syncing"
+								? t("preflightRefreshing")
+								: syncStatus === "success" || syncStatus === "skipped"
+									? t("preflightUpToDate")
+									: t("preflightRefresh")}
+						</Text>
+					</AnimatedPressable>
+				)}
+			</ScrollView>
+		</SafeAreaView>
 	);
 }
 

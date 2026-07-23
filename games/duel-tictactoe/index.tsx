@@ -364,11 +364,14 @@ export default function DuelTicTacToeGame() {
 							},
 						]}
 						onPress={() => changeBoardMode(mode)}
+						accessibilityRole="button"
+						accessibilityLabel={mode === "classic" ? "3x3" : "5+"}
+						accessibilityState={{ selected: boardMode === mode }}
 					>
 						<Text
 							style={[
 								styles.modeText,
-								{ color: boardMode === mode ? "#fff" : theme.mutedText },
+								{ color: boardMode === mode ? theme.onTint : theme.mutedText },
 							]}
 						>
 							{mode === "classic" ? "3x3" : "5+"}
@@ -392,11 +395,14 @@ export default function DuelTicTacToeGame() {
 							setTargetWins(tw);
 							resetMatch();
 						}}
+						accessibilityRole="button"
+						accessibilityLabel={tw === 2 ? t("tttBestOf3") : t("tttBestOf5")}
+						accessibilityState={{ selected: targetWins === tw }}
 					>
 						<Text
 							style={[
 								styles.modeText,
-								{ color: targetWins === tw ? "#fff" : theme.mutedText },
+								{ color: targetWins === tw ? theme.onTint : theme.mutedText },
 							]}
 						>
 							{tw === 2 ? t("tttBestOf3") : t("tttBestOf5")}
@@ -454,7 +460,7 @@ export default function DuelTicTacToeGame() {
 										? theme.tint
 										: theme.border;
 								const textColor = isWinCell
-									? "#fff"
+									? theme.onTint
 									: isX
 										? theme.tint
 										: isO
@@ -518,11 +524,19 @@ export default function DuelTicTacToeGame() {
 						resetBoard();
 					}
 				}}
+				accessibilityRole="button"
+				accessibilityLabel={
+					matchWinner
+						? t("tttNewMatch")
+						: roundOver
+							? t("tttNextRound")
+							: t("tttRestart")
+				}
 			>
 				<Text
 					style={[
 						styles.actionText,
-						{ color: matchWinner ? "#fff" : theme.text },
+						{ color: matchWinner ? theme.onTint : theme.text },
 					]}
 				>
 					{matchWinner

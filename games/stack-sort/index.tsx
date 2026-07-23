@@ -499,6 +499,8 @@ export default function StackSortGame() {
 								{ backgroundColor: theme.card, borderColor: theme.border },
 							]}
 							onPress={() => startLevel(i)}
+							accessibilityRole="button"
+							accessibilityLabel={`Level ${i + 1}`}
 						>
 							<Text style={[s.levelBtnText, { color: theme.text }]}>
 								{i + 1}
@@ -534,8 +536,10 @@ export default function StackSortGame() {
 						<Pressable
 							style={[s.mainBtn, { backgroundColor: theme.tint }]}
 							onPress={() => startLevel(level + 1)}
+							accessibilityRole="button"
+							accessibilityLabel={t("stackSortNextLevel")}
 						>
-							<Text style={s.mainBtnText}>{t("stackSortNextLevel")}</Text>
+							<Text style={[s.mainBtnText, { color: theme.onTint }]}>{t("stackSortNextLevel")}</Text>
 						</Pressable>
 					)}
 					<Pressable
@@ -548,6 +552,8 @@ export default function StackSortGame() {
 							},
 						]}
 						onPress={() => startLevel(level)}
+						accessibilityRole="button"
+						accessibilityLabel={t("stackSortRetry")}
 					>
 						<Text style={[s.mainBtnText, { color: theme.text }]}>
 							{t("stackSortRetry")}
@@ -563,6 +569,8 @@ export default function StackSortGame() {
 							},
 						]}
 						onPress={() => setPhase("menu")}
+						accessibilityRole="button"
+						accessibilityLabel={t("stackSortMenu")}
 					>
 						<Text style={[s.mainBtnText, { color: theme.text }]}>
 							{t("stackSortMenu")}
@@ -605,6 +613,8 @@ export default function StackSortGame() {
 					style={[s.undoBtn, { borderColor: theme.border }]}
 					onPress={undo}
 					disabled={history.length === 0}
+					accessibilityRole="button"
+					accessibilityLabel={t("stackSortUndo")}
 				>
 					<Text
 						style={{
@@ -621,7 +631,7 @@ export default function StackSortGame() {
 			{/* Deadlock warning */}
 			{dead && (
 				<RNView style={s.deadBanner}>
-					<Text style={s.deadText}>{t("stackSortDeadlock")}</Text>
+					<Text style={[s.deadText, { color: theme.danger }]}>{t("stackSortDeadlock")}</Text>
 				</RNView>
 			)}
 
@@ -665,6 +675,8 @@ export default function StackSortGame() {
 				<Pressable
 					style={[s.smallBtn, { borderColor: theme.border }]}
 					onPress={() => startLevel(level)}
+					accessibilityRole="button"
+					accessibilityLabel={t("stackSortRestart")}
 				>
 					<Text style={[s.smallBtnText, { color: theme.text }]}>
 						{t("stackSortRestart")}
@@ -673,6 +685,8 @@ export default function StackSortGame() {
 				<Pressable
 					style={[s.smallBtn, { borderColor: theme.border }]}
 					onPress={() => setPhase("menu")}
+					accessibilityRole="button"
+					accessibilityLabel={t("stackSortMenu")}
 				>
 					<Text style={[s.smallBtnText, { color: theme.text }]}>
 						{t("stackSortMenu")}
@@ -766,7 +780,7 @@ const s = StyleSheet.create({
 		paddingVertical: 6,
 		marginBottom: 6,
 	},
-	deadText: { color: "#ef5350", fontSize: 12, fontWeight: "700" },
+	deadText: { fontSize: 12, fontWeight: "700" },
 
 	/* Scattered wrapped grid — columns flow across the screen in rows */
 	grid: {
@@ -823,6 +837,6 @@ const s = StyleSheet.create({
 		borderRadius: 12,
 		marginTop: 4,
 	},
-	mainBtnText: { color: "#fff", fontWeight: "800", fontSize: 15 },
+	mainBtnText: { fontWeight: "800", fontSize: 15 },
 	btnRow: { gap: 8, alignItems: "center", marginTop: 8 },
 });

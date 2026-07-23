@@ -268,11 +268,14 @@ export default function DuelEmojiFindGame() {
 								},
 							]}
 							onPress={() => setPlayerCount(n)}
+							accessibilityRole="button"
+							accessibilityLabel={t("mpPlayerN", { n })}
+							accessibilityState={{ selected: playerCount === n }}
 						>
 							<Text
 								style={[
 									styles.countBtnText,
-									{ color: playerCount === n ? "#fff" : theme.text },
+									{ color: playerCount === n ? theme.onTint : theme.text },
 								]}
 							>
 								{n}
@@ -283,6 +286,8 @@ export default function DuelEmojiFindGame() {
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
 					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("start")}
 				>
 					<Text style={styles.btnText}>{t("start")}</Text>
 				</Pressable>
@@ -309,6 +314,8 @@ export default function DuelEmojiFindGame() {
 				<Pressable
 					style={[styles.btn, { backgroundColor: pColor(currentPlayer) }]}
 					onPress={startTurn}
+					accessibilityRole="button"
+					accessibilityLabel={t("efGo")}
 				>
 					<Text style={styles.btnText}>{t("efGo")}</Text>
 				</Pressable>
@@ -348,6 +355,8 @@ export default function DuelEmojiFindGame() {
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
 					onPress={() => setPhase("setup")}
+					accessibilityRole="button"
+					accessibilityLabel={t("playAgain")}
 				>
 					<Text style={styles.btnText}>{t("playAgain")}</Text>
 				</Pressable>
@@ -382,6 +391,8 @@ export default function DuelEmojiFindGame() {
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
 					onPress={handleNextRound}
+					accessibilityRole="button"
+					accessibilityLabel={round >= ROUNDS ? t("efSeeResult") : t("efNextRound")}
 				>
 					<Text style={styles.btnText}>
 						{round >= ROUNDS ? t("efSeeResult") : t("efNextRound")}

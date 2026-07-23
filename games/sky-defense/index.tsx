@@ -1072,6 +1072,8 @@ export default function SkyDefenseGame() {
 								{ backgroundColor: theme.card, borderColor: theme.border },
 							]}
 							onPress={() => startGame(d)}
+							accessibilityRole="button"
+							accessibilityLabel={difficultyLabel(d.key)}
 						>
 							<Text style={{ fontSize: 20 }}>{d.emoji}</Text>
 							<Text style={[s.diffBtnLabel, { color: theme.text }]}>
@@ -1153,6 +1155,8 @@ export default function SkyDefenseGame() {
 				)}
 				<Pressable
 					onPress={() => setGameSpeed((s) => (s === 1 ? 2 : 1))}
+					accessibilityRole="button"
+					accessibilityLabel={gameSpeed === 1 ? "Set 2x speed" : "Set 1x speed"}
 					style={[
 						s.hudBtn,
 						{ borderColor: gameSpeed === 2 ? theme.tint : theme.border },
@@ -1192,6 +1196,9 @@ export default function SkyDefenseGame() {
 								setSelectedTower(selected ? null : d.key);
 								setSelectedPlaced(null);
 							}}
+							accessibilityRole="button"
+							accessibilityLabel={towerLabel(d.key)}
+							accessibilityState={{ selected, disabled: !affordable }}
 						>
 							<Text style={{ fontSize: 16 }}>{d.emoji}</Text>
 							<Text style={[s.paletteCost, { color: d.color }]}>
@@ -1343,8 +1350,10 @@ export default function SkyDefenseGame() {
 						<Pressable
 							style={[s.waveModalBtn, { backgroundColor: theme.tint }]}
 							onPress={nextWave}
+							accessibilityRole="button"
+							accessibilityLabel={t("skyDefenseNextWave")}
 						>
-							<Text style={s.mainBtnText}>{t("skyDefenseNextWave")}</Text>
+							<Text style={[s.mainBtnText, { color: theme.onTint }]}>{t("skyDefenseNextWave")}</Text>
 						</Pressable>
 					</RNView>
 				</RNView>
@@ -1373,6 +1382,8 @@ export default function SkyDefenseGame() {
 						<RNView style={s.confirmActions}>
 							<Pressable
 								onPress={() => setShowRestartConfirm(false)}
+								accessibilityRole="button"
+								accessibilityLabel={t("gameCancel")}
 								style={[
 									s.confirmSecondaryBtn,
 									{ borderColor: theme.border, backgroundColor: theme.card },
@@ -1384,9 +1395,11 @@ export default function SkyDefenseGame() {
 							</Pressable>
 							<Pressable
 								onPress={restart}
+								accessibilityRole="button"
+								accessibilityLabel={t("gameRestart")}
 								style={[s.confirmPrimaryBtn, { backgroundColor: theme.tint }]}
 							>
-								<Text style={s.mainBtnText}>{t("gameRestart")}</Text>
+								<Text style={[s.mainBtnText, { color: theme.onTint }]}>{t("gameRestart")}</Text>
 							</Pressable>
 						</RNView>
 					</RNView>
@@ -1438,7 +1451,7 @@ const s = StyleSheet.create({
 		borderRadius: 12,
 		marginTop: 16,
 	},
-	mainBtnText: { color: "#fff", fontWeight: "800", fontSize: 16 },
+	mainBtnText: { fontWeight: "800", fontSize: 16 },
 	confirmBackdrop: {
 		...StyleSheet.absoluteFill,
 		zIndex: 30,

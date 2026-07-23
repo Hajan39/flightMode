@@ -472,6 +472,8 @@ export default function QuizGame() {
 								{ backgroundColor: bg, borderColor: border },
 							]}
 							onPress={() => handleAnswer(option)}
+							accessibilityRole="button"
+							accessibilityLabel={option}
 						>
 							<Text style={[styles.optionText, { color: theme.text }]}>
 								{option}

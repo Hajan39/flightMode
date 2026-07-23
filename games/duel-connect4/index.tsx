@@ -287,11 +287,14 @@ export default function DuelConnect4Game() {
 							setMatchTarget(tw);
 							resetMatch();
 						}}
+						accessibilityRole="button"
+						accessibilityLabel={tw === 2 ? t("c4BestOf3") : t("c4BestOf5")}
+						accessibilityState={{ selected: matchTarget === tw }}
 					>
 						<Text
 							style={[
 								styles.modeText,
-								{ color: matchTarget === tw ? "#fff" : theme.mutedText },
+								{ color: matchTarget === tw ? theme.onTint : theme.mutedText },
 							]}
 						>
 							{tw === 2 ? t("c4BestOf3") : t("c4BestOf5")}
@@ -320,6 +323,8 @@ export default function DuelConnect4Game() {
 							style={styles.colBtn}
 							hitSlop={{ top: 14, bottom: 14, left: 0, right: 0 }}
 							onPress={() => handleDrop(c)}
+							accessibilityRole="button"
+							accessibilityLabel={`Drop in column ${c + 1}`}
 						>
 							{!roundOver && !matchWinner && (
 								<RNView
@@ -365,16 +370,20 @@ export default function DuelConnect4Game() {
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
 					onPress={resetBoard}
+					accessibilityRole="button"
+					accessibilityLabel={t("c4NextRound")}
 				>
-					<Text style={styles.btnText}>{t("c4NextRound")}</Text>
+					<Text style={[styles.btnText, { color: theme.onTint }]}>{t("c4NextRound")}</Text>
 				</Pressable>
 			)}
 			{matchWinner && (
 				<Pressable
 					style={[styles.btn, { backgroundColor: theme.tint }]}
 					onPress={resetMatch}
+					accessibilityRole="button"
+					accessibilityLabel={t("c4NewMatch")}
 				>
-					<Text style={styles.btnText}>{t("c4NewMatch")}</Text>
+					<Text style={[styles.btnText, { color: theme.onTint }]}>{t("c4NewMatch")}</Text>
 				</Pressable>
 			)}
 		</View>
@@ -453,5 +462,5 @@ const styles = StyleSheet.create({
 		borderRadius: 12,
 		marginTop: 14,
 	},
-	btnText: { color: "#fff", fontSize: 16, fontWeight: "800" },
+	btnText: { fontSize: 16, fontWeight: "800" },
 });

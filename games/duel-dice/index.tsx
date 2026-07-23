@@ -260,11 +260,14 @@ export default function DuelDiceGame() {
 								},
 							]}
 							onPress={() => setPlayerCount(n)}
+							accessibilityRole="button"
+							accessibilityLabel={t("mpPlayerN", { n })}
+							accessibilityState={{ selected: playerCount === n }}
 						>
 							<Text
 								style={[
 									styles.countBtnText,
-									{ color: playerCount === n ? "#fff" : theme.text },
+									{ color: playerCount === n ? theme.onTint : theme.text },
 								]}
 							>
 								{n}
@@ -275,8 +278,10 @@ export default function DuelDiceGame() {
 				<Pressable
 					style={[styles.startBtn, { backgroundColor: theme.tint }]}
 					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("start")}
 				>
-					<Text style={styles.startBtnText}>{t("start")}</Text>
+					<Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("start")}</Text>
 				</Pressable>
 			</View>
 		);
@@ -368,8 +373,10 @@ export default function DuelDiceGame() {
 				<Pressable
 					style={[styles.startBtn, { backgroundColor: theme.tint }]}
 					onPress={() => setPhase("setup")}
+					accessibilityRole="button"
+					accessibilityLabel={t("playAgain")}
 				>
-					<Text style={styles.startBtnText}>{t("playAgain")}</Text>
+					<Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("playAgain")}</Text>
 				</Pressable>
 			</ScrollView>
 		);
@@ -497,6 +504,8 @@ export default function DuelDiceGame() {
 					},
 				]}
 				onPress={handleRoll}
+				accessibilityRole="button"
+				accessibilityLabel={t("diceTapToRoll")}
 			>
 				<Text
 					style={[
@@ -536,7 +545,7 @@ const styles = StyleSheet.create({
 	},
 	countBtnText: { fontSize: 20, fontWeight: "800" },
 	startBtn: { paddingHorizontal: 40, paddingVertical: 14, borderRadius: 12 },
-	startBtnText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+	startBtnText: { fontWeight: "700", fontSize: 16 },
 	resultScroll: { flex: 1, width: "100%" },
 	resultContent: {
 		flexGrow: 1,

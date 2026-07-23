@@ -224,9 +224,12 @@ export default function SudokuGame() {
 
       haptic.tap();
 
-      const next = [...board];
-      next[selectedCell] = num;
-      setBoard(next);
+      let next: number[] = [];
+      setBoard((prev) => {
+        next = [...prev];
+        next[selectedCell] = num;
+        return next;
+      });
 
       const newErrors = computeErrors(next, solution);
       setErrors(newErrors);
@@ -249,7 +252,7 @@ export default function SudokuGame() {
         setPhase("over");
       }
     },
-    [phase, selectedCell, clues, solution, board, elapsedSeconds, hintsUsed, selectedDifficulty, haptic, updateProgress, triggerShake],
+    [phase, selectedCell, clues, solution, elapsedSeconds, hintsUsed, selectedDifficulty, haptic, updateProgress, triggerShake],
   );
 
   // ── Erase ────────────────────────────────────────────────────────────────
@@ -337,9 +340,9 @@ export default function SudokuGame() {
   };
 
   const diffColor = (d: Difficulty): string => {
-    if (d === "easy") return "#22c55e";
-    if (d === "medium") return "#f59e0b";
-    return "#ef4444";
+    if (d === "easy") return theme.successBorder;
+    if (d === "medium") return theme.warning;
+    return theme.danger;
   };
 
   // =========================================================================
@@ -362,7 +365,7 @@ export default function SudokuGame() {
             setPhase("selecting");
           }}
         >
-          <Text style={styles.startBtnText}>{t("gameTapToStart")}</Text>
+          <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
         </Pressable>
       </View>
     );
@@ -392,6 +395,8 @@ export default function SudokuGame() {
                 },
               ]}
               onPress={() => startDifficulty(d)}
+              accessibilityRole="button"
+              accessibilityLabel={diffLabel(d)}
             >
               <Text style={[styles.diffBtnLabel, { color: diffColor(d) }]}>
                 {diffLabel(d)}
@@ -524,7 +529,7 @@ export default function SudokuGame() {
 
           let textColor = theme.text;
           if (isError) {
-            textColor = "#ef4444";
+            textColor = theme.danger;
           } else if (!isClue && value !== 0) {
             textColor = theme.tint;
           }
@@ -689,7 +694,6 @@ const styles = StyleSheet.create({
   },
   startBtnText: {
     ...TextStyle.buttonPrimary,
-    color: "#fff",
   },
   selectTitle: {
     fontSize: FontSize.xl,

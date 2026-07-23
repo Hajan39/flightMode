@@ -342,6 +342,8 @@ export default function WhackMoleGame() {
 						{ backgroundColor: theme.elevated, borderColor: theme.border },
 					]}
 					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("gameTapToStart")}
 				>
 					<Text style={[styles.idleEmoji]}>🐹</Text>
 					<Text style={[styles.idleLabel, { color: theme.mutedText }]}>

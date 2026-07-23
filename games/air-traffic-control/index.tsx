@@ -70,7 +70,15 @@ function getStartingFuel(level: number, id: number) {
 	return baseFuel + (id % 3);
 }
 
-function FuelBar({ fuel, maxFuel }: { fuel: number; maxFuel: number }) {
+function FuelBar({
+	fuel,
+	maxFuel,
+	theme,
+}: {
+	fuel: number;
+	maxFuel: number;
+	theme: (typeof Colors)[keyof typeof Colors];
+}) {
 	const ratio = Math.max(0, fuel / maxFuel);
 	const width = useSharedValue(ratio);
 
@@ -81,7 +89,11 @@ function FuelBar({ fuel, maxFuel }: { fuel: number; maxFuel: number }) {
 	const barStyle = useAnimatedStyle(() => ({
 		width: `${width.value * 100}%`,
 		backgroundColor:
-			ratio > 0.5 ? "#22c55e" : ratio > 0.25 ? "#f59e0b" : "#ef4444",
+			ratio > 0.5
+				? theme.successBorder
+				: ratio > 0.25
+					? theme.warning
+					: theme.danger,
 	}));
 
 	return (
@@ -116,7 +128,7 @@ function FlightCard({
 					styles.flightCard,
 					{
 						backgroundColor: theme.elevated,
-						borderColor: isCritical ? "#ef4444" : theme.border,
+						borderColor: isCritical ? theme.danger : theme.border,
 					},
 				]}
 			>
@@ -143,7 +155,7 @@ function FlightCard({
 						<Text
 							style={[
 								styles.fuelText,
-								{ color: isCritical ? "#ef4444" : theme.mutedText },
+								{ color: isCritical ? theme.danger : theme.mutedText },
 							]}
 						>
 							{t("atcFuel", { fuel: item.fuel })}
@@ -151,7 +163,7 @@ function FlightCard({
 					</View>
 
 					{/* Fuel bar */}
-					<FuelBar fuel={item.fuel} maxFuel={item.maxFuel} />
+					<FuelBar fuel={item.fuel} maxFuel={item.maxFuel} theme={theme} />
 
 					{/* Target runway label */}
 					<View
@@ -206,6 +218,8 @@ function FlightCard({
 										},
 									]}
 									onPress={() => onAssign(item.id, runway)}
+									accessibilityRole="button"
+									accessibilityLabel={t("atcRwy", { rwy: runway })}
 								>
 									<Text
 										style={[

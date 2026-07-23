@@ -212,11 +212,14 @@ export default function CrossLiarsDiceGame() {
 								},
 							]}
 							onPress={() => setPlayerCount(n)}
+							accessibilityRole="button"
+							accessibilityLabel={t("mpPlayerN", { n })}
+							accessibilityState={{ selected: playerCount === n }}
 						>
 							<Text
 								style={[
 									styles.countBtnText,
-									{ color: playerCount === n ? "#fff" : theme.text },
+									{ color: playerCount === n ? theme.onTint : theme.text },
 								]}
 							>
 								{n}
@@ -226,6 +229,8 @@ export default function CrossLiarsDiceGame() {
 				</RNView>
 				<Pressable
 					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("start")}
 					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 				>
 					<Text style={styles.primaryBtnText}>{t("start")}</Text>
@@ -258,6 +263,8 @@ export default function CrossLiarsDiceGame() {
 								setShowingDice(true);
 								haptic.tap();
 							}}
+							accessibilityRole="button"
+							accessibilityLabel={t("ldPeek")}
 							style={[styles.primaryBtn, { backgroundColor: pColor }]}
 						>
 							<Text style={styles.primaryBtnText}>{t("ldPeek")}</Text>
@@ -280,6 +287,8 @@ export default function CrossLiarsDiceGame() {
 							</RNView>
 							<Pressable
 								onPress={peekDone}
+								accessibilityRole="button"
+								accessibilityLabel={t("passPhoneReady")}
 								style={[
 									styles.primaryBtn,
 									{ backgroundColor: pColor, marginTop: 20 },
@@ -395,6 +404,8 @@ export default function CrossLiarsDiceGame() {
 							<Text style={styles.spinnerLabel}>{t("ldQuantity")}</Text>
 							<Pressable
 								onPress={() => setBidQty((q) => Math.max(1, q - 1))}
+								accessibilityRole="button"
+								accessibilityLabel="Decrease quantity"
 								style={[styles.spinnerBtn, { borderColor: theme.border }]}
 							>
 								<Text style={styles.spinnerBtnText}>−</Text>
@@ -402,6 +413,8 @@ export default function CrossLiarsDiceGame() {
 							<Text style={styles.spinnerValue}>{bidQty}</Text>
 							<Pressable
 								onPress={() => setBidQty((q) => Math.min(totalDice, q + 1))}
+								accessibilityRole="button"
+								accessibilityLabel="Increase quantity"
 								style={[styles.spinnerBtn, { borderColor: theme.border }]}
 							>
 								<Text style={styles.spinnerBtnText}>+</Text>
@@ -412,6 +425,9 @@ export default function CrossLiarsDiceGame() {
 								<Pressable
 									key={f}
 									onPress={() => setBidFace(f)}
+									accessibilityRole="button"
+									accessibilityLabel={`Face ${f}`}
+									accessibilityState={{ selected: bidFace === f }}
 									style={[
 										styles.faceBtn,
 										{
@@ -426,6 +442,8 @@ export default function CrossLiarsDiceGame() {
 						</RNView>
 						<Pressable
 							onPress={placeBid}
+							accessibilityRole="button"
+							accessibilityLabel={t("ldPlaceBid")}
 							style={[
 								styles.actionBtn,
 								{
@@ -444,7 +462,9 @@ export default function CrossLiarsDiceGame() {
 						<AnimatedPressable
 							scaleTo={0.92}
 							onPress={callLiar}
-							style={[styles.liarBtn, { backgroundColor: "#ef5350" }]}
+							accessibilityRole="button"
+							accessibilityLabel={t("ldLiar")}
+							style={[styles.liarBtn, { backgroundColor: theme.danger }]}
 						>
 							<Text style={styles.liarBtnText}>🤥 {t("ldLiar")}</Text>
 						</AnimatedPressable>
@@ -488,7 +508,7 @@ export default function CrossLiarsDiceGame() {
 											styles.dieBoxSmall,
 											{
 												backgroundColor:
-													d === currentBid?.face ? "#ff9800" : theme.card,
+													d === currentBid?.face ? theme.warning : theme.card,
 												borderColor: theme.border,
 											},
 										]}
@@ -533,6 +553,8 @@ export default function CrossLiarsDiceGame() {
 						</Text>
 						<Pressable
 							onPress={nextRound}
+							accessibilityRole="button"
+							accessibilityLabel={t("ldNextRound")}
 							style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 						>
 							<Text style={styles.primaryBtnText}>{t("ldNextRound")}</Text>
@@ -574,7 +596,7 @@ export default function CrossLiarsDiceGame() {
 							<Text
 								style={[
 									styles.finalStatus,
-									{ color: c > 0 ? "#66bb6a" : "#ef5350" },
+									{ color: c > 0 ? theme.successBorder : theme.danger },
 								]}
 							>
 								{c > 0 ? "🏆" : "💀"}
@@ -585,6 +607,8 @@ export default function CrossLiarsDiceGame() {
 
 				<Pressable
 					onPress={restart}
+					accessibilityRole="button"
+					accessibilityLabel={t("playAgain")}
 					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 				>
 					<Text style={styles.primaryBtnText}>{t("playAgain")}</Text>

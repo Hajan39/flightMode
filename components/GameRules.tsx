@@ -81,6 +81,8 @@ export default function GameRules({ titleKey, rulesKey, inline }: Props) {
 					{ backgroundColor: theme.card, borderColor: theme.border },
 				]}
 				hitSlop={10}
+				accessibilityRole="button"
+				accessibilityLabel="Game rules"
 			>
 				<Text style={[styles.helpText, { color: theme.tint }]}>?</Text>
 			</Pressable>
@@ -109,6 +111,8 @@ export default function GameRules({ titleKey, rulesKey, inline }: Props) {
 						<Pressable
 							onPress={() => setVisible(false)}
 							style={[styles.closeBtn, { backgroundColor: theme.tint }]}
+							accessibilityRole="button"
+							accessibilityLabel="Close rules"
 						>
 							<Text style={styles.closeBtnText}>OK</Text>
 						</Pressable>

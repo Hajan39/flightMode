@@ -283,10 +283,10 @@ export default function WordSearchGame() {
     let color = theme.text;
     if (isFound) {
       bg = theme.tint;
-      color = "#ffffff";
+      color = theme.onTint;
     } else if (isSelected) {
       bg = theme.warning;
-      color = "#ffffff";
+      color = theme.onTint;
     }
 
     return (
@@ -384,7 +384,7 @@ export default function WordSearchGame() {
                   style={[
                     styles.wordChipText,
                     {
-                      color: found ? "#ffffff" : theme.text,
+                      color: found ? theme.onTint : theme.text,
                       textDecorationLine: found ? "line-through" : "none",
                     },
                   ]}

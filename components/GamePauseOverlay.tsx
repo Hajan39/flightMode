@@ -4,6 +4,7 @@ import Colors from "@/constants/Colors";
 import { Radius, Shadow, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useReduceMotion } from "@/hooks/useReduceMotion";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
@@ -28,6 +29,7 @@ export default function GamePauseOverlay({
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const router = useRouter();
+	const reduceMotion = useReduceMotion();
 
 	if (!visible) return null;
 
@@ -48,7 +50,9 @@ export default function GamePauseOverlay({
 	return (
 		<Animated.View entering={FadeIn.duration(180)} style={styles.overlay}>
 			<Animated.View
-				entering={ZoomIn.springify().damping(14)}
+				entering={
+					reduceMotion ? FadeIn.duration(180) : ZoomIn.springify().damping(14)
+				}
 				style={[
 					styles.card,
 					{ backgroundColor: theme.elevated, borderColor: theme.border },
@@ -62,6 +66,8 @@ export default function GamePauseOverlay({
 					<Pressable
 						onPress={handleResume}
 						style={[styles.btnPrimary, { backgroundColor: theme.tint }]}
+						accessibilityRole="button"
+						accessibilityLabel={t("gameResume")}
 					>
 						<Ionicons name="play" size={20} color="#fff" />
 						<Text style={styles.btnPrimaryText}>{t("gameResume")}</Text>
@@ -73,6 +79,8 @@ export default function GamePauseOverlay({
 								styles.btnSecondary,
 								{ borderColor: theme.border, backgroundColor: theme.card },
 							]}
+							accessibilityRole="button"
+							accessibilityLabel={t("gameRestart")}
 						>
 							<Ionicons name="refresh" size={18} color={theme.text} />
 							<Text style={[styles.btnSecondaryText, { color: theme.text }]}>
@@ -86,6 +94,8 @@ export default function GamePauseOverlay({
 							styles.btnSecondary,
 							{ borderColor: theme.border, backgroundColor: theme.card },
 						]}
+						accessibilityRole="button"
+						accessibilityLabel={t("gameQuit")}
 					>
 						<Ionicons name="close" size={18} color={theme.mutedText} />
 						<Text style={[styles.btnSecondaryText, { color: theme.text }]}>

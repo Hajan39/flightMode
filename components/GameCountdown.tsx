@@ -14,6 +14,7 @@ import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useReduceMotion } from "@/hooks/useReduceMotion";
 import { useTranslation } from "@/hooks/useTranslation";
 
 type Props = {
@@ -32,18 +33,24 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
 	const haptic = useHaptic();
+	const reduceMotion = useReduceMotion();
 
 	const [value, setValue] = useState<number | "GO">(from);
-	const scale = useSharedValue(0.4);
+	const scale = useSharedValue(reduceMotion ? 1 : 0.4);
 	const animStyle = useAnimatedStyle(() => ({
 		transform: [{ scale: scale.value }],
 	}));
 
 	useEffect(() => {
-		scale.value = withSequence(
-			withSpring(1.1, { damping: 8, stiffness: 200 }),
-			withTiming(0.9, { duration: 600 }),
-		);
+		if (reduceMotion) {
+			// Reduce Motion: text still communicates 3-2-1-GO, just without the scale bounce.
+			scale.value = 1;
+		} else {
+			scale.value = withSequence(
+				withSpring(1.1, { damping: 8, stiffness: 200 }),
+				withTiming(0.9, { duration: 600 }),
+			);
+		}
 		if (value === "GO") {
 			haptic.success();
 			const id = setTimeout(onComplete, 450);
@@ -58,8 +65,8 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
 			});
 		}, 750);
 		return () => clearTimeout(id);
-		// Driven by `value` only; haptic + onComplete are stable refs in callers.
-	}, [value]); // eslint-disable-line react-hooks/exhaustive-deps
+		// Driven by `value` (+ reduceMotion for the bounce toggle); haptic + onComplete are stable refs in callers.
+	}, [value, reduceMotion]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<Animated.View

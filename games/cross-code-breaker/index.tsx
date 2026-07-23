@@ -236,9 +236,9 @@ export default function CrossCodeBreakerGame() {
 							{
 								backgroundColor:
 									p === "bull"
-										? "#4caf50"
+										? theme.successBorder
 										: p === "cow"
-											? "#ff9800"
+											? theme.warning
 											: theme.border,
 							},
 						]}
@@ -268,11 +268,14 @@ export default function CrossCodeBreakerGame() {
 								},
 							]}
 							onPress={() => setPlayerCount(n)}
+							accessibilityRole="button"
+							accessibilityLabel={t("mpPlayerN", { n })}
+							accessibilityState={{ selected: playerCount === n }}
 						>
 							<Text
 								style={[
 									styles.countBtnText,
-									{ color: playerCount === n ? "#fff" : theme.text },
+									{ color: playerCount === n ? theme.onTint : theme.text },
 								]}
 							>
 								{n}
@@ -282,6 +285,8 @@ export default function CrossCodeBreakerGame() {
 				</RNView>
 				<Pressable
 					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("start")}
 					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 				>
 					<Text style={styles.primaryBtnText}>{t("start")}</Text>
@@ -315,6 +320,8 @@ export default function CrossCodeBreakerGame() {
 							setGuessInput([]);
 							setLastResult(null);
 						}}
+						accessibilityRole="button"
+						accessibilityLabel={t("passPhoneReady")}
 						style={[
 							styles.primaryBtn,
 							{ backgroundColor: pColor, marginTop: 20 },
@@ -365,6 +372,8 @@ export default function CrossCodeBreakerGame() {
 
 				<Pressable
 					onPress={nextRound}
+					accessibilityRole="button"
+					accessibilityLabel={round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
 					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 				>
 					<Text style={styles.primaryBtnText}>
@@ -414,6 +423,8 @@ export default function CrossCodeBreakerGame() {
 
 				<Pressable
 					onPress={restart}
+					accessibilityRole="button"
+					accessibilityLabel={t("playAgain")}
 					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 				>
 					<Text style={styles.primaryBtnText}>{t("playAgain")}</Text>
@@ -477,6 +488,8 @@ export default function CrossCodeBreakerGame() {
 								<Pressable
 									key={d}
 									onPress={() => addDigit(d)}
+									accessibilityRole="button"
+									accessibilityLabel={String(d)}
 									style={[
 										styles.numKey,
 										{ backgroundColor: theme.card, borderColor: theme.border },
@@ -489,12 +502,14 @@ export default function CrossCodeBreakerGame() {
 					))}
 					<Pressable
 						onPress={() => setGuessInput((p) => p.slice(0, -1))}
+						accessibilityRole="button"
+						accessibilityLabel="Backspace"
 						style={[
 							styles.deleteKey,
 							{ backgroundColor: theme.card, borderColor: theme.border },
 						]}
 					>
-						<Text style={[styles.numKeyText, { color: "#ef5350" }]}>⌫</Text>
+						<Text style={[styles.numKeyText, { color: theme.danger }]}>⌫</Text>
 					</Pressable>
 				</RNView>
 
@@ -507,6 +522,8 @@ export default function CrossCodeBreakerGame() {
 							onPress={submitGuess}
 							onPressIn={submitPress.onPressIn}
 							onPressOut={submitPress.onPressOut}
+							accessibilityRole="button"
+							accessibilityLabel={t("cbCheck")}
 							style={[styles.primaryBtn, { backgroundColor: pColor }]}
 						>
 							<Text style={styles.primaryBtnText}>{t("cbCheck")}</Text>
@@ -527,6 +544,8 @@ export default function CrossCodeBreakerGame() {
 						{pendingNext !== null ? (
 							<Pressable
 								onPress={continueToNextPlayer}
+								accessibilityRole="button"
+								accessibilityLabel={t("passPhone")}
 								style={[styles.primaryBtn, { backgroundColor: pColor }]}
 							>
 								<Text style={styles.primaryBtnText}>{t("passPhone")}</Text>
@@ -534,6 +553,8 @@ export default function CrossCodeBreakerGame() {
 						) : (
 							<Pressable
 								onPress={confirmRoundEnd}
+								accessibilityRole="button"
+								accessibilityLabel={t("hmSeeResult")}
 								style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 							>
 								<Text style={styles.primaryBtnText}>{t("hmSeeResult")}</Text>

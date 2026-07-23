@@ -408,6 +408,7 @@ export default function CargoCatchGame() {
 					onPress={() => moveCart(-1)}
 					disabled={disabled}
 					hitSlop={8}
+					accessibilityRole="button"
 					accessibilityLabel={t("a11yMoveLeft")}
 				>
 					<Text style={[styles.moveArrow, { color: theme.text }]}>◀</Text>
@@ -417,6 +418,7 @@ export default function CargoCatchGame() {
 					onPress={() => moveCart(1)}
 					disabled={disabled}
 					hitSlop={8}
+					accessibilityRole="button"
 					accessibilityLabel={t("a11yMoveRight")}
 				>
 					<Text style={[styles.moveArrow, { color: theme.text }]}>▶</Text>
@@ -443,8 +445,10 @@ export default function CargoCatchGame() {
 					<Pressable
 						style={[styles.startBtn, { backgroundColor: theme.tint }]}
 						onPress={startGame}
+						accessibilityRole="button"
+						accessibilityLabel={t("gameReady")}
 					>
-						<Text style={styles.startBtnText}>{t("gameReady")}</Text>
+						<Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameReady")}</Text>
 					</Pressable>
 				</RNView>
 			</View>
@@ -591,7 +595,6 @@ const styles = StyleSheet.create({
 		borderRadius: Radius.pill,
 	},
 	startBtnText: {
-		color: "#fff",
 		fontSize: FontSize.md,
 		fontWeight: FontWeight.bold,
 	},

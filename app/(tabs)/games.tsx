@@ -3,6 +3,7 @@ import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { gameRegistry } from "@/data/games";
+import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameCategory, GameConfig, GamePlayMode } from "@/types/game";
@@ -67,6 +68,7 @@ export default function GamesScreen() {
 	);
 	const [activeIntent, setActiveIntent] = useState<GameIntent>("all");
 	const [search, setSearch] = useState("");
+	const { capStyle } = useTabletLayout();
 
 	const hasActiveFilter =
 		activeIntent !== "all" || activeCategory !== "all" || search.trim().length > 0;
@@ -94,18 +96,22 @@ export default function GamesScreen() {
 		},
 	];
 
-	const games: GameListItem[] = gameRegistry.map((game) => ({
-		id: game.id,
-		name: t(game.titleKey),
-		description: t(game.descriptionKey),
-		estimatedTime: game.estimatedTime,
-		icon: game.icon,
-		category: game.category,
-		difficulty: game.difficulty,
-		playMode: game.playMode,
-		isDailyChallenge: Boolean(game.isDailyChallenge),
-		isPlayTogether: Boolean(game.isPlayTogether),
-	}));
+	const games: GameListItem[] = useMemo(
+		() =>
+			gameRegistry.map((game) => ({
+				id: game.id,
+				name: t(game.titleKey),
+				description: t(game.descriptionKey),
+				estimatedTime: game.estimatedTime,
+				icon: game.icon,
+				category: game.category,
+				difficulty: game.difficulty,
+				playMode: game.playMode,
+				isDailyChallenge: Boolean(game.isDailyChallenge),
+				isPlayTogether: Boolean(game.isPlayTogether),
+			})),
+		[t],
+	);
 
 	const filteredGames = useMemo(() => {
 		const query = search.trim().toLowerCase();
@@ -165,305 +171,308 @@ export default function GamesScreen() {
 
 	return (
 		<View style={styles.container}>
-			<View
-				style={[
-					styles.searchWrap,
-					{ backgroundColor: theme.card, borderColor: theme.border },
-				]}
-			>
-				<Ionicons name="search" size={16} color={theme.mutedText} />
-				<TextInput
-					value={search}
-					onChangeText={setSearch}
-					placeholder={t("gamesSearchPlaceholder")}
-					placeholderTextColor={theme.mutedText}
-					style={[styles.searchInput, { color: theme.text }]}
-				/>
-			</View>
-			<ScrollView
-				horizontal
-				showsHorizontalScrollIndicator={false}
-				contentContainerStyle={styles.intentBar}
-				style={styles.intentBarScroll}
-			>
-				{intentFilters.map((intent) => {
-					const isActive = intent.key === activeIntent;
-					return (
-						<AnimatedPressable
-							key={intent.key}
-							onPress={() => setActiveIntent(intent.key)}
-							scaleTo={0.95}
-							style={[
-								styles.intentChip,
-								intent.key !== intentFilters[intentFilters.length - 1].key &&
-									styles.chipSpacing,
-								{
-									backgroundColor: isActive ? theme.tint : theme.card,
-									borderColor: isActive ? theme.tint : theme.border,
-								},
-							]}
-						>
-							<Ionicons
-								name={intent.icon}
-								size={14}
-								color={isActive ? theme.onTint : theme.mutedText}
-							/>
-							<Text
-								style={[
-									styles.filterChipText,
-									{ color: isActive ? theme.onTint : theme.text },
-								]}
-							>
-								{intent.label}
-							</Text>
-						</AnimatedPressable>
-					);
-				})}
-			</ScrollView>
-			<ScrollView
-				horizontal
-				showsHorizontalScrollIndicator={false}
-				contentContainerStyle={styles.filterBar}
-				style={styles.filterBarScroll}
-			>
-				{CATEGORIES.map((cat) => {
-					const isActive = cat === activeCategory;
-					return (
-						<AnimatedPressable
-							key={cat}
-							onPress={() => setActiveCategory(cat)}
-							scaleTo={0.95}
-							style={[
-								styles.filterChip,
-								cat !== CATEGORIES[CATEGORIES.length - 1] && styles.chipSpacing,
-								{
-									backgroundColor: isActive ? theme.tint : theme.card,
-									borderColor: isActive ? theme.tint : theme.border,
-								},
-							]}
-						>
-							<Text
-								style={[
-									styles.filterChipText,
-									{ color: isActive ? theme.onTint : theme.text },
-								]}
-							>
-								{t(`categoryFilter_${cat}`)}
-							</Text>
-						</AnimatedPressable>
-					);
-				})}
-			</ScrollView>
-			<FlatList
-				data={filteredGames}
-				keyExtractor={(item) => item.id}
-				contentContainerStyle={styles.list}
-				ListEmptyComponent={
-					<View
-						style={[styles.emptyState, { borderColor: theme.border }]}
-						lightColor="transparent"
-						darkColor="transparent"
-					>
-						<Text style={styles.emptyTitle}>
-							{hasActiveFilter ? t("gamesFilteredEmpty") : t("gamesEmptyTitle")}
-						</Text>
-						{!hasActiveFilter && (
-							<Text style={[styles.emptyHint, { color: theme.mutedText }]}>
-								{t("gamesEmptyHint")}
-							</Text>
-						)}
-						{hasActiveFilter && (
-							<Pressable
-								onPress={() => {
-									setSearch("");
-									setActiveCategory("all");
-									setActiveIntent("all");
-								}}
-								style={[styles.clearFiltersBtn, { backgroundColor: theme.tint }]}
-							>
-								<Text style={[styles.clearFiltersBtnText, { color: theme.onTint }]}>
-									{t("gamesClearFilters")}
-								</Text>
-							</Pressable>
-						)}
-					</View>
-				}
-				renderItem={({ item, index }) => {
-					const gameProgress = progress[item.id];
-					const playModeMeta = getPlayModeMeta(item.playMode);
-					return (
-						<Animated.View entering={FadeInDown.delay(index * 60).springify()}>
+			<View style={[styles.tabletCap, capStyle]}>
+				<View
+					style={[
+						styles.searchWrap,
+						{ backgroundColor: theme.card, borderColor: theme.border },
+					]}
+				>
+					<Ionicons name="search" size={16} color={theme.mutedText} />
+					<TextInput
+						value={search}
+						onChangeText={setSearch}
+						placeholder={t("gamesSearchPlaceholder")}
+						placeholderTextColor={theme.mutedText}
+						style={[styles.searchInput, { color: theme.text }]}
+					/>
+				</View>
+				<ScrollView
+					horizontal
+					showsHorizontalScrollIndicator={false}
+					contentContainerStyle={styles.intentBar}
+					style={styles.intentBarScroll}
+				>
+					{intentFilters.map((intent) => {
+						const isActive = intent.key === activeIntent;
+						return (
 							<AnimatedPressable
+								key={intent.key}
+								onPress={() => setActiveIntent(intent.key)}
+								scaleTo={0.95}
 								style={[
-									styles.card,
-									{ backgroundColor: theme.card, borderColor: theme.border },
+									styles.intentChip,
+									intent.key !== intentFilters[intentFilters.length - 1].key &&
+										styles.chipSpacing,
+									{
+										backgroundColor: isActive ? theme.tint : theme.card,
+										borderColor: isActive ? theme.tint : theme.border,
+									},
 								]}
-								onPress={() => router.push(`/game/${item.id}` as never)}
 							>
-								<View
-									style={[
-										styles.cardAccent,
-										{
-											backgroundColor: item.isDailyChallenge
-												? theme.tint
-												: theme.border,
-										},
-									]}
-									lightColor="transparent"
-									darkColor="transparent"
-								/>
 								<Ionicons
-									name={item.icon as never}
-									size={32}
-									color={theme.mutedText}
+									name={intent.icon}
+									size={14}
+									color={isActive ? theme.onTint : theme.mutedText}
 								/>
-								<View
-									style={styles.cardContent}
-									lightColor="transparent"
-									darkColor="transparent"
+								<Text
+									style={[
+										styles.filterChipText,
+										{ color: isActive ? theme.onTint : theme.text },
+									]}
+								>
+									{intent.label}
+								</Text>
+							</AnimatedPressable>
+						);
+					})}
+				</ScrollView>
+				<ScrollView
+					horizontal
+					showsHorizontalScrollIndicator={false}
+					contentContainerStyle={styles.filterBar}
+					style={styles.filterBarScroll}
+				>
+					{CATEGORIES.map((cat) => {
+						const isActive = cat === activeCategory;
+						return (
+							<AnimatedPressable
+								key={cat}
+								onPress={() => setActiveCategory(cat)}
+								scaleTo={0.95}
+								style={[
+									styles.filterChip,
+									cat !== CATEGORIES[CATEGORIES.length - 1] && styles.chipSpacing,
+									{
+										backgroundColor: isActive ? theme.tint : theme.card,
+										borderColor: isActive ? theme.tint : theme.border,
+									},
+								]}
+							>
+								<Text
+									style={[
+										styles.filterChipText,
+										{ color: isActive ? theme.onTint : theme.text },
+									]}
+								>
+									{t(`categoryFilter_${cat}`)}
+								</Text>
+							</AnimatedPressable>
+						);
+					})}
+				</ScrollView>
+				<FlatList
+					data={filteredGames}
+					keyExtractor={(item) => item.id}
+					contentContainerStyle={styles.list}
+					ListEmptyComponent={
+						<View
+							style={[styles.emptyState, { borderColor: theme.border }]}
+							lightColor="transparent"
+							darkColor="transparent"
+						>
+							<Text style={styles.emptyTitle}>
+								{hasActiveFilter ? t("gamesFilteredEmpty") : t("gamesEmptyTitle")}
+							</Text>
+							{!hasActiveFilter && (
+								<Text style={[styles.emptyHint, { color: theme.mutedText }]}>
+									{t("gamesEmptyHint")}
+								</Text>
+							)}
+							{hasActiveFilter && (
+								<Pressable
+									onPress={() => {
+										setSearch("");
+										setActiveCategory("all");
+										setActiveIntent("all");
+									}}
+									style={[styles.clearFiltersBtn, { backgroundColor: theme.tint }]}
+								>
+									<Text style={[styles.clearFiltersBtnText, { color: theme.onTint }]}>
+										{t("gamesClearFilters")}
+									</Text>
+								</Pressable>
+							)}
+						</View>
+					}
+					renderItem={({ item, index }) => {
+						const gameProgress = progress[item.id];
+						const playModeMeta = getPlayModeMeta(item.playMode);
+						return (
+							<Animated.View entering={FadeInDown.delay(index * 60).springify()}>
+								<AnimatedPressable
+									style={[
+										styles.card,
+										{ backgroundColor: theme.card, borderColor: theme.border },
+									]}
+									onPress={() => router.push(`/game/${item.id}` as never)}
 								>
 									<View
-										style={styles.cardTitleRow}
+										style={[
+											styles.cardAccent,
+											{
+												backgroundColor: item.isDailyChallenge
+													? theme.tint
+													: theme.border,
+											},
+										]}
 										lightColor="transparent"
 										darkColor="transparent"
-									>
-										<Text style={styles.cardTitle}>{item.name}</Text>
-										{item.isDailyChallenge ? (
-											<View
-												style={[
-													styles.iconBadge,
-													{ backgroundColor: theme.accentSoft },
-												]}
-												lightColor="transparent"
-												darkColor="transparent"
-											>
-												<Ionicons name="flash" size={11} color={theme.tint} />
-											</View>
-										) : null}
-									</View>
-									<Text style={[styles.cardDesc, { color: theme.mutedText }]}>
-										{item.description}
-									</Text>
+									/>
+									<Ionicons
+										name={item.icon as never}
+										size={32}
+										color={theme.mutedText}
+									/>
 									<View
-										style={styles.metaRow}
+										style={styles.cardContent}
 										lightColor="transparent"
 										darkColor="transparent"
 									>
 										<View
-											style={[
-												styles.metaChip,
-												{ backgroundColor: theme.surface },
-											]}
+											style={styles.cardTitleRow}
 											lightColor="transparent"
 											darkColor="transparent"
 										>
-											<Ionicons
-												name="time-outline"
-												size={12}
-												color={theme.mutedText}
-											/>
-											<Text
-												style={[
-													styles.metaChipText,
-													{ color: theme.mutedText },
-												]}
-											>
-												~{t("minutesShort", { minutes: item.estimatedTime })}
-											</Text>
+											<Text style={styles.cardTitle}>{item.name}</Text>
+											{item.isDailyChallenge ? (
+												<View
+													style={[
+														styles.iconBadge,
+														{ backgroundColor: theme.accentSoft },
+													]}
+													lightColor="transparent"
+													darkColor="transparent"
+												>
+													<Ionicons name="flash" size={11} color={theme.tint} />
+												</View>
+											) : null}
 										</View>
+										<Text style={[styles.cardDesc, { color: theme.mutedText }]}>
+											{item.description}
+										</Text>
 										<View
-											style={[
-												styles.metaChip,
-												{ backgroundColor: theme.surface },
-											]}
+											style={styles.metaRow}
 											lightColor="transparent"
 											darkColor="transparent"
 										>
-											<Text
+											<View
 												style={[
-													styles.metaChipText,
-													{ color: theme.mutedText },
+													styles.metaChip,
+													{ backgroundColor: theme.surface },
 												]}
+												lightColor="transparent"
+												darkColor="transparent"
 											>
-												{t(
-													`difficulty${item.difficulty.charAt(0).toUpperCase()}${item.difficulty.slice(1)}` as never,
-												)}
-											</Text>
+												<Ionicons
+													name="time-outline"
+													size={12}
+													color={theme.mutedText}
+												/>
+												<Text
+													style={[
+														styles.metaChipText,
+														{ color: theme.mutedText },
+													]}
+												>
+													~{t("minutesShort", { minutes: item.estimatedTime })}
+												</Text>
+											</View>
+											<View
+												style={[
+													styles.metaChip,
+													{ backgroundColor: theme.surface },
+												]}
+												lightColor="transparent"
+												darkColor="transparent"
+											>
+												<Text
+													style={[
+														styles.metaChipText,
+														{ color: theme.mutedText },
+													]}
+												>
+													{t(
+														`difficulty${item.difficulty.charAt(0).toUpperCase()}${item.difficulty.slice(1)}` as never,
+													)}
+												</Text>
+											</View>
+											{item.isPlayTogether ? (
+												<View
+													style={[
+														styles.metaChip,
+														{ backgroundColor: theme.surface },
+													]}
+													lightColor="transparent"
+													darkColor="transparent"
+												>
+													<Ionicons
+														name={playModeMeta.icon}
+														size={12}
+														color={theme.mutedText}
+													/>
+													<Text
+														style={[
+															styles.metaChipText,
+															{ color: theme.mutedText },
+														]}
+													>
+														{t(playModeMeta.labelKey)}
+													</Text>
+												</View>
+											) : null}
+											{gameProgress ? (
+												<View
+													style={[
+														styles.metaChip,
+														{ backgroundColor: theme.surface },
+													]}
+													lightColor="transparent"
+													darkColor="transparent"
+												>
+													<Ionicons
+														name="trophy-outline"
+														size={12}
+														color={theme.mutedText}
+													/>
+													<Text
+														style={[
+															styles.metaChipText,
+															{ color: theme.mutedText },
+														]}
+													>
+														{gameProgress.highScore}
+													</Text>
+												</View>
+											) : null}
 										</View>
-										{item.isPlayTogether ? (
-											<View
-												style={[
-													styles.metaChip,
-													{ backgroundColor: theme.surface },
-												]}
-												lightColor="transparent"
-												darkColor="transparent"
-											>
-												<Ionicons
-													name={playModeMeta.icon}
-													size={12}
-													color={theme.mutedText}
-												/>
-												<Text
-													style={[
-														styles.metaChipText,
-														{ color: theme.mutedText },
-													]}
-												>
-													{t(playModeMeta.labelKey)}
-												</Text>
-											</View>
-										) : null}
 										{gameProgress ? (
-											<View
-												style={[
-													styles.metaChip,
-													{ backgroundColor: theme.surface },
-												]}
-												lightColor="transparent"
-												darkColor="transparent"
-											>
-												<Ionicons
-													name="trophy-outline"
-													size={12}
-													color={theme.mutedText}
-												/>
-												<Text
-													style={[
-														styles.metaChipText,
-														{ color: theme.mutedText },
-													]}
-												>
-													{gameProgress.highScore}
-												</Text>
-											</View>
+											<Text style={[styles.cardMeta, { color: theme.mutedText }]}>
+												{t("bestScorePlayed", {
+													score: gameProgress.highScore,
+													times: gameProgress.timesPlayed,
+												})}
+											</Text>
 										) : null}
 									</View>
-									{gameProgress ? (
-										<Text style={[styles.cardMeta, { color: theme.mutedText }]}>
-											{t("bestScorePlayed", {
-												score: gameProgress.highScore,
-												times: gameProgress.timesPlayed,
-											})}
-										</Text>
-									) : null}
-								</View>
-								<Ionicons
-									name="chevron-forward"
-									size={20}
-									color={theme.mutedText}
-								/>
-							</AnimatedPressable>
-						</Animated.View>
-					);
-				}}
-			/>
+									<Ionicons
+										name="chevron-forward"
+										size={20}
+										color={theme.mutedText}
+									/>
+								</AnimatedPressable>
+							</Animated.View>
+						);
+					}}
+				/>
+			</View>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: { flex: 1 },
+	tabletCap: { flex: 1 },
 	intentBarScroll: { flexGrow: 0, minHeight: 42, marginBottom: 6 },
 	filterBarScroll: { flexGrow: 0, minHeight: 42, marginBottom: 4 },
 	searchWrap: {

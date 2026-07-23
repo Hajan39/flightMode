@@ -167,8 +167,8 @@ export default function HigherLowerGame() {
 	const isPlaying = phase === "playing" || phase === "feedback";
 
 	const getButtonColor = (flash: ButtonFlash, activeColor: string): string => {
-		if (flash === "correct") return "#2e9f5b";
-		if (flash === "wrong") return "#e53935";
+		if (flash === "correct") return theme.successBorder;
+		if (flash === "wrong") return theme.danger;
 		return activeColor;
 	};
 
@@ -248,19 +248,21 @@ export default function HigherLowerGame() {
 						{
 							backgroundColor: getButtonColor(
 								higherFlash,
-								isPlaying ? "#2e9f5b" : theme.elevated,
+								isPlaying ? theme.successBorder : theme.elevated,
 							),
-							borderColor: isPlaying ? "#2e9f5b" : theme.border,
+							borderColor: isPlaying ? theme.successBorder : theme.border,
 							opacity: phase === "feedback" ? 0.85 : 1,
 						},
 					]}
 					onPress={() => handleGuess("higher")}
 					disabled={phase !== "playing"}
+					accessibilityRole="button"
+					accessibilityLabel={t("hlHigher")}
 				>
 					<Text
 						style={[
 							styles.guessButtonText,
-							{ color: isPlaying ? "#fff" : theme.mutedText },
+							{ color: isPlaying ? theme.onTint : theme.mutedText },
 						]}
 					>
 						{t("hlHigher")}
@@ -273,19 +275,21 @@ export default function HigherLowerGame() {
 						{
 							backgroundColor: getButtonColor(
 								lowerFlash,
-								isPlaying ? "#2f95dc" : theme.elevated,
+								isPlaying ? theme.tint : theme.elevated,
 							),
-							borderColor: isPlaying ? "#2f95dc" : theme.border,
+							borderColor: isPlaying ? theme.tint : theme.border,
 							opacity: phase === "feedback" ? 0.85 : 1,
 						},
 					]}
 					onPress={() => handleGuess("lower")}
 					disabled={phase !== "playing"}
+					accessibilityRole="button"
+					accessibilityLabel={t("hlLower")}
 				>
 					<Text
 						style={[
 							styles.guessButtonText,
-							{ color: isPlaying ? "#fff" : theme.mutedText },
+							{ color: isPlaying ? theme.onTint : theme.mutedText },
 						]}
 					>
 						{t("hlLower")}
@@ -298,8 +302,10 @@ export default function HigherLowerGame() {
 				<Pressable
 					style={[styles.startButton, { backgroundColor: theme.tint }]}
 					onPress={startGame}
+					accessibilityRole="button"
+					accessibilityLabel={t("gameTapToStart")}
 				>
-					<Text style={styles.startButtonText}>{t("gameTapToStart")}</Text>
+					<Text style={[styles.startButtonText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
 				</Pressable>
 			)}
 
@@ -388,7 +394,6 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	startButtonText: {
-		color: "#fff",
 		fontSize: 18,
 		fontWeight: "900",
 		letterSpacing: 1,

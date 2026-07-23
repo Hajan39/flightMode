@@ -333,6 +333,7 @@ export default function SnakeGame() {
             style={dpadBtnStyle}
             onPress={() => handleDirectionPress("up")}
             disabled={disabled}
+            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveUp")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▲</Text>
@@ -344,6 +345,7 @@ export default function SnakeGame() {
             style={dpadBtnStyle}
             onPress={() => handleDirectionPress("left")}
             disabled={disabled}
+            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveLeft")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>◀</Text>
@@ -353,6 +355,7 @@ export default function SnakeGame() {
             style={dpadBtnStyle}
             onPress={() => handleDirectionPress("right")}
             disabled={disabled}
+            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveRight")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▶</Text>
@@ -364,6 +367,7 @@ export default function SnakeGame() {
             style={dpadBtnStyle}
             onPress={() => handleDirectionPress("down")}
             disabled={disabled}
+            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveDown")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▼</Text>
@@ -390,8 +394,10 @@ export default function SnakeGame() {
           <Pressable
             style={[styles.startBtn, { backgroundColor: theme.tint }]}
             onPress={startGame}
+            accessibilityRole="button"
+            accessibilityLabel={t("gameReady")}
           >
-            <Text style={styles.startBtnText}>{t("gameReady")}</Text>
+            <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameReady")}</Text>
           </Pressable>
         </RNView>
       </View>
@@ -485,7 +491,6 @@ const styles = StyleSheet.create({
     borderRadius: Radius.pill,
   },
   startBtnText: {
-    color: "#fff",
     fontSize: FontSize.md,
     fontWeight: FontWeight.bold,
   },

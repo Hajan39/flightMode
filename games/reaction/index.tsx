@@ -279,6 +279,8 @@ export default function ReactionGame() {
 				<Pressable
 					style={[styles.pad, { backgroundColor: padColor }]}
 					onPress={handleMainPress}
+					accessibilityRole="button"
+					accessibilityLabel={padLabel}
 				>
 					<Text style={[styles.padText, { color: padTextColor }]}>
 						{padLabel}

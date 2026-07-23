@@ -433,6 +433,7 @@ export default function TwentyFortyEightGame() {
             style={dpadBtnStyle}
             onPress={() => handleMove("up")}
             disabled={disabled}
+            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveUp")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▲</Text>
@@ -444,6 +445,7 @@ export default function TwentyFortyEightGame() {
             style={dpadBtnStyle}
             onPress={() => handleMove("left")}
             disabled={disabled}
+            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveLeft")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>◀</Text>
@@ -453,6 +455,7 @@ export default function TwentyFortyEightGame() {
             style={dpadBtnStyle}
             onPress={() => handleMove("right")}
             disabled={disabled}
+            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveRight")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▶</Text>
@@ -464,6 +467,7 @@ export default function TwentyFortyEightGame() {
             style={dpadBtnStyle}
             onPress={() => handleMove("down")}
             disabled={disabled}
+            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveDown")}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▼</Text>
@@ -483,8 +487,10 @@ export default function TwentyFortyEightGame() {
         <Pressable
           style={[styles.startBtn, { backgroundColor: theme.tint }]}
           onPress={startGame}
+          accessibilityRole="button"
+          accessibilityLabel={t("gameTapToStart")}
         >
-          <Text style={styles.startBtnText}>{t("gameTapToStart")}</Text>
+          <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
         </Pressable>
         <Text style={[styles.hint, { color: theme.mutedText }]}>
           {t("tfeSwipeHint")}
@@ -658,6 +664,5 @@ const styles = StyleSheet.create({
   },
   startBtnText: {
     ...TextStyle.buttonPrimary,
-    color: "#fff",
   },
 });

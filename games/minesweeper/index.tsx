@@ -211,7 +211,7 @@ export default function MinesweeperGame() {
 
     if (cell.isRevealed) {
       if (cell.isMine) {
-        bg = "#e53935";
+        bg = theme.danger;
         content = <Text style={styles.cellEmoji}>💣</Text>;
       } else if (cell.adjacentMines > 0) {
         bg = theme.surface ?? theme.card;
