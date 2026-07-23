@@ -2,14 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
-import Animated, {
-	FadeIn,
-	useAnimatedStyle,
-	useSharedValue,
-	withSequence,
-	withSpring,
-	ZoomIn,
-} from "react-native-reanimated";
+import Animated, { FadeIn, ZoomIn } from "react-native-reanimated";
 
 import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -37,8 +30,6 @@ type Props = {
 	streak?: number;
 	/** Optional formatter for any numeric stat (score / best / last). */
 	formatScore?: (value: number) => string;
-	/** Disable score-number bounce animation for calmer result screens. */
-	disableScoreBounce?: boolean;
 };
 
 export default function GameResult({
@@ -52,7 +43,6 @@ export default function GameResult({
 	last,
 	streak,
 	formatScore,
-	disableScoreBounce,
 }: Props) {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
@@ -61,25 +51,14 @@ export default function GameResult({
 	const haptic = useHaptic();
 	const reduceMotion = useReduceMotion();
 
-	const scoreScale = useSharedValue(1);
-	const scoreStyle = useAnimatedStyle(() => ({
-		transform: [{ scale: scoreScale.value }],
-	}));
-
 	useEffect(() => {
-		// Delay so animation + haptic fire when card is fully visible (~450ms after mount)
+		// Delay so the haptic fires when the card is fully visible (~450ms after mount)
 		const timer = setTimeout(() => {
-			if (!disableScoreBounce && !reduceMotion) {
-				scoreScale.value = withSequence(
-					withSpring(1.15, { damping: 8, stiffness: 180 }),
-					withSpring(1, { damping: 10, stiffness: 220 }),
-				);
-			}
 			if (isNewBest) haptic.success();
 			else haptic.heavy();
 		}, 450);
 		return () => clearTimeout(timer);
-	}, [disableScoreBounce, haptic, isNewBest, reduceMotion, scoreScale]);
+	}, [haptic, isNewBest]);
 
 	const handleQuit = () => {
 		haptic.tap();
@@ -108,7 +87,7 @@ export default function GameResult({
 				entering={
 					reduceMotion
 						? FadeIn.delay(380).duration(180)
-						: ZoomIn.delay(380).springify().damping(14)
+						: ZoomIn.delay(380).duration(220)
 				}
 				style={[
 					styles.card,
@@ -120,7 +99,7 @@ export default function GameResult({
 						entering={
 							reduceMotion
 								? FadeIn.delay(280).duration(180)
-								: ZoomIn.delay(280).springify()
+								: ZoomIn.delay(280).duration(200)
 						}
 						style={[styles.newBestBadge, { backgroundColor: theme.tint }]}
 					>
@@ -133,11 +112,9 @@ export default function GameResult({
 
 				<Text style={[styles.title, { color: theme.text }]}>{title}</Text>
 
-				<Animated.Text
-					style={[styles.score, { color: theme.tint }, scoreStyle]}
-				>
+				<Text style={[styles.score, { color: theme.tint }]}>
 					{fmt(score)}
-				</Animated.Text>
+				</Text>
 
 				{subtitle ? (
 					<Text style={[styles.subtitle, { color: theme.mutedText }]}>

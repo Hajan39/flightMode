@@ -4,12 +4,11 @@ import Colors from "@/constants/Colors";
 import { Radius, Shadow, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
-import { useReduceMotion } from "@/hooks/useReduceMotion";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
-import Animated, { FadeIn, ZoomIn } from "react-native-reanimated";
+import Animated, { FadeIn } from "react-native-reanimated";
 
 type Props = {
 	visible: boolean;
@@ -29,7 +28,6 @@ export default function GamePauseOverlay({
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const router = useRouter();
-	const reduceMotion = useReduceMotion();
 
 	if (!visible) return null;
 
@@ -50,9 +48,7 @@ export default function GamePauseOverlay({
 	return (
 		<Animated.View entering={FadeIn.duration(180)} style={styles.overlay}>
 			<Animated.View
-				entering={
-					reduceMotion ? FadeIn.duration(180) : ZoomIn.springify().damping(14)
-				}
+				entering={FadeIn.duration(180)}
 				style={[
 					styles.card,
 					{ backgroundColor: theme.elevated, borderColor: theme.border },

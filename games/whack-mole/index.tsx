@@ -10,7 +10,12 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+	Pressable,
+	View as RNView,
+	StyleSheet,
+	useWindowDimensions,
+} from "react-native";
 
 const GAME_DURATION_MS = 30_000;
 const GRID_SIZE = 9;
@@ -45,6 +50,10 @@ export default function WhackMoleGame() {
 	);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
+	const { width: screenWidth } = useWindowDimensions();
+	// 3 columns, 10px gap, 20px screen padding either side — fixed size so
+	// cells don't collapse/jump when a mole's text content mounts.
+	const cellSize = Math.floor((screenWidth - 40 - 20) / 3);
 
 	const [phase, setPhase] = useState<Phase>("idle");
 	const [secondsLeft, setSecondsLeft] = useState(30);
@@ -361,6 +370,8 @@ export default function WhackMoleGame() {
 								style={[
 									styles.cell,
 									{
+										width: cellSize,
+										height: cellSize,
 										backgroundColor: isActive ? theme.tint : theme.card,
 										borderColor: isActive ? theme.tint : theme.border,
 									},
@@ -484,8 +495,6 @@ const styles = StyleSheet.create({
 		alignContent: "center",
 	},
 	cell: {
-		width: "30%",
-		aspectRatio: 1,
 		borderRadius: 20,
 		borderWidth: 1.5,
 		alignItems: "center",

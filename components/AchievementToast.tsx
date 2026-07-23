@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import Animated, {
-	SlideInDown,
-	SlideOutDown,
-	FadeIn,
-	FadeOut,
-} from "react-native-reanimated";
+import Animated, { SlideInDown, SlideOutDown, FadeIn } from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 
 import { useColorScheme } from "@/components/useColorScheme";
@@ -15,7 +10,6 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { achievements } from "@/data/achievements";
 import { useHaptic } from "@/hooks/useHaptic";
-import { useReduceMotion } from "@/hooks/useReduceMotion";
 
 const DISPLAY_MS = 3000;
 
@@ -24,7 +18,6 @@ export default function AchievementToast() {
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
 	const haptic = useHaptic();
-	const reduceMotion = useReduceMotion();
 	const newUnlockedIds = useAchievementStore((s) => s.newUnlockedIds);
 	const clearNewUnlocked = useAchievementStore((s) => s.clearNewUnlocked);
 	const [visible, setVisible] = useState<string | null>(null);
@@ -67,12 +60,8 @@ export default function AchievementToast() {
 
 	return (
 		<Animated.View
-			entering={
-				reduceMotion
-					? FadeIn.duration(180)
-					: SlideInDown.springify().damping(18)
-			}
-			exiting={reduceMotion ? FadeOut.duration(180) : SlideOutDown.duration(300)}
+			entering={SlideInDown.duration(220)}
+			exiting={SlideOutDown.duration(220)}
 			style={[
 				styles.container,
 				{

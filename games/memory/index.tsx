@@ -319,7 +319,6 @@ export default function MemoryGame() {
 				<GameResult
 					title={t("youWin")}
 					score={finalScore}
-					disableScoreBounce
 					best={progressInfo?.best ?? storedBest}
 					last={progressInfo?.previousBest}
 					streak={progressInfo?.currentStreak}
