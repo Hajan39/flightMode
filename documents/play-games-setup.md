@@ -14,6 +14,7 @@ Cloud accounts and a native dev build — things that can't be done from the rep
 | `store/useAchievementStore.ts` | Fire-and-forget push to PGS after each local unlock. |
 | `components/PlayGamesBootstrap.tsx` | Kicks off silent sign-in on launch (mounted in `app/_layout.tsx`). |
 | `plugins/withPlayGames.js` | Expo config plugin: adds the `app_id` string, the manifest metadata, **and the `play-services-games-v2` gradle dependency** (links the SDK into the AAB). Wired in `app.json` with the real app id `944569415010`. |
+| `modules/play-games/` | Local Android-only Expo module (Kotlin) wrapping Play Games v2 — sign-in, unlock/increment achievement, show overlay. Autolinked from `./modules`. |
 | `__tests__/playGamesAchievements.test.ts` | Fails CI if the map drifts from `data/achievements.ts`. |
 
 Everything is behind try/catch. The local (offline) achievement unlock is always
@@ -84,30 +85,32 @@ So once this build ships to a track, you get: the Google Play Games sign-in on
 launch, the Play Games gate satisfied, and Sidekick eligibility. What you do NOT
 yet get is **pushing achievement unlocks from our JS** — that needs Step 5.
 
-## Step 5 — Native bridge for achievement unlocks (remaining)
+## Step 5 — Native bridge for achievement unlocks ✅ SCAFFOLDED (needs a build to verify)
 
-The wrapper resolves its native module in `utils/playGames.ts → resolveNativeModule()`,
-currently by `require("react-native-google-play-game-services")` (absent → no-op).
-Auto sign-in (Step 4) works without it, but `unlockPlayGamesAchievement()` /
-`showPlayGamesAchievements()` stay no-ops until a native module is linked.
+A custom **local Expo module** at `modules/play-games/` (New-Architecture-safe,
+Android-only) now wraps Play Games Services v2 — no unmaintained community lib.
 
-⚠️ The community lib is **unmaintained, RN-0.40-era, no New Architecture / Fabric
-support** — FlightMode runs the New Architecture (Expo SDK 56 default), so adding
-it as-is risks the EAS build. Pick one:
+- `modules/play-games/android/.../PlayGamesModule.kt` — exposes `signInSilently`,
+  `isAuthenticated`, `unlockAchievement`, `incrementAchievement`, `showAchievements`
+  over `com.google.android.gms.games.PlayGames` (v2). Defensive: no current
+  Activity → resolves false/no-op, never throws.
+- `modules/play-games/expo-module.config.json` + `android/build.gradle` — autolinked
+  automatically (Expo scans `./modules`); verified via `expo-modules-autolinking`.
+- `utils/playGames.ts → resolveNativeModule()` now resolves it via
+  `requireNativeModule("PlayGames")`; still a clean no-op on iOS / web / Expo Go.
 
-- **Preferred:** write a small custom Expo native module (Kotlin) over the
-  already-linked **Play Games Services v2** SDK, exposing `signInSilently`,
-  `unlockAchievement`, `showAchievements` — then point `resolveNativeModule()` at
-  it. (The gradle dependency is already added by `withPlayGames.js`, so the module
-  just wraps the API.)
-- **Or:** vet a maintained New-Arch-safe package and adapt `NativePlayGames` /
-  `resolveNativeModule()` to its surface.
+**Verified here:** TypeScript, tests, autolinking discovery of the module.
+**NOT verifiable from the repo sandbox:** the Kotlin actually compiling against the
+v2 SDK and the Gradle build succeeding — that's what the internal/dev build proves.
+If the native build fails it'll be in `:play-games:compileDebugKotlin` or the
+Gradle config — grab that log and it's a quick fix.
 
-Also fill in the `CgkI…` ids in `data/playGamesAchievements.ts` (Step 3) — until
-a row has an id, that achievement won't be pushed even once the bridge exists.
-
-The wrapper's `NativePlayGames` type documents exactly the methods needed — keep
-the adapter to that one function so nothing else in the app changes.
+Remaining before achievements actually appear in Play Games:
+- Fill the `CgkI…` ids in `data/playGamesAchievements.ts` (Step 3). Until a row has
+  an id it won't be pushed, even though the bridge now exists.
+- Run a dev/internal build on a device with a Play Games test account and confirm
+  an unlock shows the Play Games toast + `showPlayGamesAchievements()` opens the
+  overlay.
 
 ## Step 6 — Verify (never Expo Go)
 

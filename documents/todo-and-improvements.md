@@ -146,6 +146,10 @@ Podminky splneny: minSdk 24 (>=23), release je AAB.
 - `data/playGamesAchievements.ts` — mapa `localAchievementId -> Play ID` (vsech 30 achievementu, zatim `null`).
 - `store/useAchievementStore.ts` — po lokalnim unlocku fire-and-forget push do PGS (`void unlock...`), guarded.
 - `components/PlayGamesBootstrap.tsx` — silent sign-in on launch (mounted v `app/_layout.tsx`, no-op bez modulu).
+- `modules/play-games/` — lokalni Android-only Expo modul (Kotlin nad Play Games v2): sign-in, unlock/
+  increment achievement, overlay. New-Arch-safe, autolinkovany z `./modules`. `resolveNativeModule()`
+  v `utils/playGames.ts` ho bere pres `requireNativeModule("PlayGames")`. Kotlin/Gradle build overitelny
+  az v nativnim buildu (`:play-games:compileDebugKotlin`).
 - `plugins/withPlayGames.js` — Expo config plugin: pridava `app_id` string, manifest meta-data
   `com.google.android.gms.games.APP_ID` a **gradle dependency `play-services-games-v2:21.0.0`**
   (zalinkuje SDK do AAB). Realne app id `944569415010` ve `app.json` `extra.playGamesAppId`.

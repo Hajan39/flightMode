@@ -30,25 +30,26 @@ let signInAttempted = false;
  * exposes a different surface.
  */
 type NativePlayGames = {
-	signIn?: () => Promise<unknown>;
-	signInSilently?: () => Promise<unknown>;
+	signInSilently?: () => Promise<boolean>;
 	isAuthenticated?: () => Promise<boolean>;
-	unlockAchievement?: (playId: string) => Promise<unknown>;
-	incrementAchievement?: (playId: string, steps: number) => Promise<unknown>;
-	showAchievements?: () => Promise<unknown>;
+	unlockAchievement?: (playId: string) => Promise<void>;
+	incrementAchievement?: (playId: string, steps: number) => Promise<void>;
+	showAchievements?: () => Promise<void>;
 };
 
 /**
  * Returns the linked native PGS module, or null if none is present.
  *
- * Intentionally wrapped in try/catch: `require` of an unlinked native module
- * throws in JS-only environments (Expo Go, tests, web), and that's expected.
+ * Resolves the local Expo module `modules/play-games` (registered natively as
+ * "PlayGames"). Intentionally wrapped in try/catch: `requireNativeModule` throws
+ * in JS-only environments (Expo Go, tests, web) and on iOS (the module is
+ * Android-only), and that's the expected no-op path.
  */
 function resolveNativeModule(): NativePlayGames | null {
 	try {
 		// eslint-disable-next-line @typescript-eslint/no-var-requires
-		const mod = require("react-native-google-play-game-services");
-		return (mod?.default ?? mod ?? null) as NativePlayGames | null;
+		const { requireNativeModule } = require("expo-modules-core");
+		return requireNativeModule("PlayGames") as NativePlayGames;
 	} catch {
 		return null;
 	}
@@ -83,10 +84,9 @@ export async function initPlayGames(): Promise<void> {
 
 	try {
 		if (native.signInSilently) {
-			await native.signInSilently();
-			signedIn = true;
+			signedIn = Boolean(await native.signInSilently());
 		} else if (native.isAuthenticated) {
-			signedIn = await native.isAuthenticated();
+			signedIn = Boolean(await native.isAuthenticated());
 		}
 	} catch {
 		// Silent sign-in can legitimately fail (user never linked Play Games,
