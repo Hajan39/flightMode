@@ -129,6 +129,28 @@ Validation steps:
 - dalsi UX polish multiplayer discovery flow
 - vybrat 1-2 retention experimenty (napr. continue playing)
 
+## 1b. Google Play Games (PGS) + Sidekick — plan (native, follow-up po 1.3.0)
+
+**Sidekick (bez kodu, hned):** v Play Console pri uploadu 1.3.0 AAB zapnout "Sidekick is on by default"
+(Testing > Advanced settings > Play Games Sidekick), vyplnit Sidekick SDK registracni formular
+(schvaleni ~1-2 tydny). Ziska overlay utility (screenshot, nahravani, streaky). Splnuje Level Up vyzvu.
+Podminky splneny: minSdk 24 (>=23), release je AAB.
+
+**Plne PGS propojeni (sign-in + achievementy) — NEcpat do release buildu:**
+Duvod: jedina komunitni lib `react-native-google-play-game-services` je neudrzovana, RN 0.40-era,
+BEZ New Architecture/Fabric a BEZ Expo config pluginu → vysoke riziko rozbiti EAS buildu (SDK 56/RN 0.85).
+
+Kdyz na to dojde, delat na samostatne vetvi + dev buildu:
+1. **Tvoje strana (Play Console + Google Cloud):** zalozit PGS projekt, OAuth 2.0 klient s SHA-1
+   z app-signing klice, nadefinovat achievementy (namapovat na `data/achievements.ts` — ~24 kusu),
+   ziskat jejich Play achievement ID.
+2. **Kod:** Expo config plugin (app-id metadata + gradle deps + manifest), `utils/playGames.ts`
+   wrapper (silent sign-in on launch, `unlockAchievement(playId)`), mapa `localAchievementId -> playId`,
+   napojit v `store/useAchievementStore.ts` `checkAndUnlock()` (po lokalnim unlocku pushnout i do PGS).
+   Vse guarded try/catch — PGS vypadek nikdy nesmi shodit offline UX.
+3. **Overeni:** `eas build --profile development` + dev client, otestovat sign-in a unlock na zarizeni
+   s Play Store; teprve pak do produkce. Nikdy nespoléhat na Expo Go (PGS tam nefunguje).
+
 ## 2. Proposed Improvements (cekaji na schvaleni)
 
 - flight utility naming/UX pass (bez API integrace)
