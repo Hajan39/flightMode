@@ -2,8 +2,10 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { achievements, type AchievementState } from "@/data/achievements";
+import { getPlayGamesAchievementId } from "@/data/playGamesAchievements";
 import { useGameStore } from "@/store/useGameStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { unlockPlayGamesAchievement } from "@/utils/playGames";
 
 type AchievementStoreState = {
 	unlockedIds: string[];
@@ -68,6 +70,10 @@ export const useAchievementStore = create<AchievementStoreState>()(
 						captureAnalyticsEvent("achievement_unlocked", {
 							achievement_id: id,
 						});
+						// Best-effort mirror to Google Play Games. Fire-and-forget:
+						// no await, and the wrapper swallows every error so a PGS
+						// hiccup can never affect the local (offline) unlock above.
+						void unlockPlayGamesAchievement(getPlayGamesAchievementId(id));
 					}
 				}
 			},

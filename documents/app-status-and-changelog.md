@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-07-25
+
+- Google Play Games Services (PGS) — kod-strana scaffolding (inertni, guarded, neovlivnuje soucasne chovani): `utils/playGames.ts` wrapper (dynamicky resolve nativniho modulu → no-op v Expo Go / iOS / web / soucasnem release buildu), `data/playGamesAchievements.ts` mapa `localAchievementId → Play ID` (30 achievementu, zatim null), fire-and-forget push po lokalnim unlocku v `useAchievementStore`, `PlayGamesBootstrap` (silent sign-in on launch), `plugins/withPlayGames.js` config plugin (no-op bez app id), CI test proti driftu mapy. Aktivace vyzaduje Play Console/Google Cloud setup + nativni modul v dev buildu — postup v `documents/play-games-setup.md`. Suite 281 testu / 14 suites.
+
 ## 2026-07-20
 
 - code/UX review + opravy: odstraněn duplicitní `tap-rush` (podmnožina Whack-a-Mole) → 33 her; dark-theme kontrast (`onTint` token); Home zeštíhlená (pryč Quick Actions, Daily Challenge nahoru); a11y (GameControls + flight-close labely); haptika dýchání, useContentItems merge, minutový stepper carry, RECORD_AUDIO odebrán, EON→FlightMode, smazán tsc-errors.txt; doc drift v CLAUDE.md

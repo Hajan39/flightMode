@@ -15,6 +15,7 @@ import ContentSyncBootstrap from "@/components/ContentSyncBootstrap";
 import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
 import NotificationBootstrap from "@/components/NotificationBootstrap";
+import PlayGamesBootstrap from "@/components/PlayGamesBootstrap";
 import RootErrorBoundary from "@/components/RootErrorBoundary";
 import SafeBoundary from "@/components/SafeBoundary";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -87,6 +88,9 @@ function RootLayoutNav() {
 				</SafeBoundary>
 				<SafeBoundary name="ImageSyncBootstrap">
 					<ImageSyncBootstrap />
+				</SafeBoundary>
+				<SafeBoundary name="PlayGamesBootstrap">
+					<PlayGamesBootstrap />
 				</SafeBoundary>
 				<RootStack />
 				<SafeBoundary name="AchievementToast">

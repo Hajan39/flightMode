@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+
+- Google Play Games Services (PGS) scaffolding — inert and guarded, so it ships without affecting current behavior. A `utils/playGames.ts` wrapper resolves its native module dynamically at runtime and is a no-op in Expo Go / iOS / web / the current release build; after any local achievement unlock the app now best-effort mirrors it to Play Games (fire-and-forget, never blocks or crashes offline UX). Includes a `localAchievementId → Play ID` map (`data/playGamesAchievements.ts`, values pending), a launch-time silent sign-in bootstrap, an Expo config plugin for the PGS app-id manifest metadata (no-op until an id is configured), and a CI test guarding the map against drift. Activating PGS still needs Play Console/Google Cloud setup + a native module in a dev build — see `documents/play-games-setup.md`.
+
 ### Removed
 
 - Removed the `tap-rush` game — pure fast-tapping with no targeting, a strict subset of Whack-a-Mole, so it was a redundant duplicate. Dropped its game module, registry entry, the `tap-champion` achievement, and its now-unused translation keys (across all 12 locales; the shared `tapRushScore` key is retained — Higher or Lower reuses it). Catalog is now 33 games. No other games were cut — the rest are distinct mechanics we're keeping.

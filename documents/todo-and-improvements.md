@@ -136,20 +136,27 @@ Validation steps:
 (schvaleni ~1-2 tydny). Ziska overlay utility (screenshot, nahravani, streaky). Splnuje Level Up vyzvu.
 Podminky splneny: minSdk 24 (>=23), release je AAB.
 
-**Plne PGS propojeni (sign-in + achievementy) — NEcpat do release buildu:**
-Duvod: jedina komunitni lib `react-native-google-play-game-services` je neudrzovana, RN 0.40-era,
-BEZ New Architecture/Fabric a BEZ Expo config pluginu → vysoke riziko rozbiti EAS buildu (SDK 56/RN 0.85).
+**Plne PGS propojeni (sign-in + achievementy):**
 
-Kdyz na to dojde, delat na samostatne vetvi + dev buildu:
-1. **Tvoje strana (Play Console + Google Cloud):** zalozit PGS projekt, OAuth 2.0 klient s SHA-1
-   z app-signing klice, nadefinovat achievementy (namapovat na `data/achievements.ts` — ~24 kusu),
-   ziskat jejich Play achievement ID.
-2. **Kod:** Expo config plugin (app-id metadata + gradle deps + manifest), `utils/playGames.ts`
-   wrapper (silent sign-in on launch, `unlockAchievement(playId)`), mapa `localAchievementId -> playId`,
-   napojit v `store/useAchievementStore.ts` `checkAndUnlock()` (po lokalnim unlocku pushnout i do PGS).
-   Vse guarded try/catch — PGS vypadek nikdy nesmi shodit offline UX.
-3. **Overeni:** `eas build --profile development` + dev client, otestovat sign-in a unlock na zarizeni
-   s Play Store; teprve pak do produkce. Nikdy nespoléhat na Expo Go (PGS tam nefunguje).
+**HOTOVO (kod-strana, inertni scaffolding — commitnuto, tsc+testy zelene):**
+- `utils/playGames.ts` — guarded wrapper: `initPlayGames()` (silent sign-in), `unlockPlayGamesAchievement()`,
+  `showPlayGamesAchievements()`, `isPlayGamesAvailable()`. Nativni modul se resolvuje **dynamicky za behu**
+  (`require` v try/catch), takze v Expo Go / iOS / web / soucasnem release buildu je to **cisty no-op**
+  a nikdy nespadne. → NEpridavame zatim nativni balik do `package.json`, aby to nerozbilo release build.
+- `data/playGamesAchievements.ts` — mapa `localAchievementId -> Play ID` (vsech 30 achievementu, zatim `null`).
+- `store/useAchievementStore.ts` — po lokalnim unlocku fire-and-forget push do PGS (`void unlock...`), guarded.
+- `components/PlayGamesBootstrap.tsx` — silent sign-in on launch (mounted v `app/_layout.tsx`, no-op bez modulu).
+- `plugins/withPlayGames.js` — Expo config plugin: vlozi `com.google.android.gms.games.APP_ID` meta-data
+  do manifestu z `expo.extra.playGamesAppId`. **No-op kdyz app id chybi** → nerozbije prebuild.
+- `__tests__/playGamesAchievements.test.ts` — hlida ze mapa nedivergovala od `data/achievements.ts`.
+
+**ZBYVA (vyzaduje tvoje kredencialy + dev build — nelze udelat ze sandboxu):** viz `documents/play-games-setup.md`.
+Shrnuti: (1) Play Console PGS projekt + OAuth 2.0 klient se SHA-1 z app-signing klice; (2) nadefinovat
+30 achievementu a jejich `CgkI...` ID doplnit do `data/playGamesAchievements.ts`; (3) doplnit numericke
+app id do `app.json` `extra.playGamesAppId` + pridat `"./plugins/withPlayGames"` do `plugins`; (4) vyresit
+nativni modul (New-Arch-safe: bud vlastni nativni modul, nebo maintained balik) a napojit v
+`resolveNativeModule()`; (5) overit `eas build --profile development` + dev client na zarizeni s Play Store.
+Vse guarded — PGS vypadek nikdy nesmi shodit offline UX. Nikdy nespoléhat na Expo Go (PGS tam nefunguje).
 
 ## 2. Proposed Improvements (cekaji na schvaleni)
 
