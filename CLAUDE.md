@@ -25,7 +25,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **Stack:** Expo 56 · React Native 0.85 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · PostHog
 
-**App version:** 1.2.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
+**App version:** 1.3.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, and `app/preflight.tsx` (offline-readiness) are modal stack screens; `app/destinations.tsx` (destination tips) is a pushed card screen. Onboarding flow at `app/onboarding.tsx`.
 
