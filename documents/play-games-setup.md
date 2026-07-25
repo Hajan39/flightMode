@@ -13,7 +13,7 @@ Cloud accounts and a native dev build — things that can't be done from the rep
 | `data/playGamesAchievements.ts` | `localAchievementId → Play ID` map (all 30 achievements, values currently `null`). |
 | `store/useAchievementStore.ts` | Fire-and-forget push to PGS after each local unlock. |
 | `components/PlayGamesBootstrap.tsx` | Kicks off silent sign-in on launch (mounted in `app/_layout.tsx`). |
-| `plugins/withPlayGames.js` | Expo config plugin that injects the PGS app-id manifest metadata. |
+| `plugins/withPlayGames.js` | Expo config plugin: adds the `app_id` string, the manifest metadata, **and the `play-services-games-v2` gradle dependency** (links the SDK into the AAB). Wired in `app.json` with the real app id `944569415010`. |
 | `__tests__/playGamesAchievements.test.ts` | Fails CI if the map drifts from `data/achievements.ts`. |
 
 Everything is behind try/catch. The local (offline) achievement unlock is always
@@ -53,37 +53,58 @@ You can do these incrementally — any row left `null` just won't be pushed to
 Play (its local unlock still works). CI's `playGamesAchievements.test.ts`
 enforces the `CgkI` prefix so a typo/placeholder fails the build.
 
-## Step 4 — Wire the app id into the build
+## Step 4 — Link the SDK into the build ✅ DONE
 
-In `app.json`:
+Done in the repo (`plugins/withPlayGames.js` + `app.json`):
 
 ```jsonc
 "plugins": [ /* ...existing... */, "./plugins/withPlayGames" ],
-"extra": {
-  "playGamesAppId": "1234567890",   // the numeric id from Step 1
-  // ...existing extra...
-}
+"extra": { "playGamesAppId": "944569415010" }
 ```
 
-Until `playGamesAppId` is set the plugin is a no-op, so add it in the same change
-as the id. **This touches `app.json` + `plugins/`, which the `release-main`
-`decide` job routes to a full native build (correct — PGS needs one).**
+At prebuild the config plugin now:
+- adds `<string name="app_id">944569415010</string>` to `strings.xml`,
+- adds the `com.google.android.gms.games.APP_ID` → `@string/app_id` manifest
+  meta-data, and
+- adds `implementation 'com.google.android.gms:play-services-games-v2:21.0.0'`
+  to `app/build.gradle` — **this is what puts the SDK into the AAB**, satisfying
+  Play Console's "Add the Play Games Services SDK to your APK" gate.
 
-## Step 5 — The native module (the real remaining engineering)
+**This touches `app.json` + `plugins/`, so `release-main`'s `decide` job routes it
+to a full native build** — exactly what's needed to get the SDK into the
+production AAB. (⚠️ The native EAS build can't be run/verified from the repo
+sandbox; verify via an internal build or the pre-launch report before trusting
+the production submit — see Step 6.)
+
+### What this alone gives you
+
+Play Games Services **v2 auto-initializes and auto-signs-in** the player on launch
+purely from the linked SDK + `APP_ID` metadata — **no JS/native bridge required**.
+So once this build ships to a track, you get: the Google Play Games sign-in on
+launch, the Play Games gate satisfied, and Sidekick eligibility. What you do NOT
+yet get is **pushing achievement unlocks from our JS** — that needs Step 5.
+
+## Step 5 — Native bridge for achievement unlocks (remaining)
 
 The wrapper resolves its native module in `utils/playGames.ts → resolveNativeModule()`,
-currently by `require("react-native-google-play-game-services")`.
+currently by `require("react-native-google-play-game-services")` (absent → no-op).
+Auto sign-in (Step 4) works without it, but `unlockPlayGamesAchievement()` /
+`showPlayGamesAchievements()` stay no-ops until a native module is linked.
 
-⚠️ That community lib is **unmaintained, RN-0.40-era, and has no New Architecture /
-Fabric support** — FlightMode runs the New Architecture (Expo SDK 56 default), so
-adding it as-is risks breaking the EAS build. Pick one:
+⚠️ The community lib is **unmaintained, RN-0.40-era, no New Architecture / Fabric
+support** — FlightMode runs the New Architecture (Expo SDK 56 default), so adding
+it as-is risks the EAS build. Pick one:
 
-- **Preferred:** write a small custom Expo native module (Kotlin) wrapping the
-  official **Play Games Services v2** SDK (`com.google.android.gms:play-services-games-v2`),
-  exposing `signInSilently`, `unlockAchievement`, `showAchievements`. Then point
-  `resolveNativeModule()` at it.
-- **Or:** vet a maintained third-party package that supports New Arch, and adapt
-  `NativePlayGames` / `resolveNativeModule()` to its API surface.
+- **Preferred:** write a small custom Expo native module (Kotlin) over the
+  already-linked **Play Games Services v2** SDK, exposing `signInSilently`,
+  `unlockAchievement`, `showAchievements` — then point `resolveNativeModule()` at
+  it. (The gradle dependency is already added by `withPlayGames.js`, so the module
+  just wraps the API.)
+- **Or:** vet a maintained New-Arch-safe package and adapt `NativePlayGames` /
+  `resolveNativeModule()` to its surface.
+
+Also fill in the `CgkI…` ids in `data/playGamesAchievements.ts` (Step 3) — until
+a row has an id, that achievement won't be pushed even once the bridge exists.
 
 The wrapper's `NativePlayGames` type documents exactly the methods needed — keep
 the adapter to that one function so nothing else in the app changes.

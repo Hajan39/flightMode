@@ -146,8 +146,11 @@ Podminky splneny: minSdk 24 (>=23), release je AAB.
 - `data/playGamesAchievements.ts` — mapa `localAchievementId -> Play ID` (vsech 30 achievementu, zatim `null`).
 - `store/useAchievementStore.ts` — po lokalnim unlocku fire-and-forget push do PGS (`void unlock...`), guarded.
 - `components/PlayGamesBootstrap.tsx` — silent sign-in on launch (mounted v `app/_layout.tsx`, no-op bez modulu).
-- `plugins/withPlayGames.js` — Expo config plugin: vlozi `com.google.android.gms.games.APP_ID` meta-data
-  do manifestu z `expo.extra.playGamesAppId`. **No-op kdyz app id chybi** → nerozbije prebuild.
+- `plugins/withPlayGames.js` — Expo config plugin: pridava `app_id` string, manifest meta-data
+  `com.google.android.gms.games.APP_ID` a **gradle dependency `play-services-games-v2:21.0.0`**
+  (zalinkuje SDK do AAB). Realne app id `944569415010` ve `app.json` `extra.playGamesAppId`.
+  → SDK je v produkcnim AAB (splnuje Play gate) + v2 auto-init = automaticky sign-in pri startu.
+  **No-op kdyz app id chybi** → nerozbije prebuild.
 - `__tests__/playGamesAchievements.test.ts` — hlida ze mapa nedivergovala od `data/achievements.ts`.
 
 **ZBYVA (vyzaduje tvoje kredencialy + dev build — nelze udelat ze sandboxu):** viz `documents/play-games-setup.md`.

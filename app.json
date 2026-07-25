@@ -43,7 +43,8 @@
       "expo-audio",
       "expo-updates",
       "expo-asset",
-      "expo-splash-screen"
+      "expo-splash-screen",
+      "./plugins/withPlayGames"
     ],
     "experiments": {
       "typedRoutes": true
@@ -59,6 +60,7 @@
     },
     "extra": {
       "router": {},
+      "playGamesAppId": "944569415010",
       "eas": {
         "projectId": "031e18e1-3a52-478c-8b3d-61b0057dc6a7"
       }

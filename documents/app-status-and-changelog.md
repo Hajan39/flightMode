@@ -132,6 +132,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-07-25
 
+- Google Play Games SDK zalinkovan do Android buildu: `withPlayGames` config plugin pridava `app_id` string, manifest meta-data `com.google.android.gms.games.APP_ID` a gradle dependency `play-services-games-v2:21.0.0`; realne app id `944569415010` ve `app.json` `extra.playGamesAppId`. Tim je SDK v produkcnim AAB (splnuje Play Console pozadavek "add the Play Games SDK to your APK") a diky auto-init v2 se hrac automaticky prihlasi do Play Games pri startu bez dalsiho kodu. Pushovani achievement unlocku z JS jeste vyzaduje nativni bridge (tracked). Zmena app.json+plugins → dalsi release na main jde plnym nativnim buildem. Postup: `documents/play-games-setup.md`.
 - Google Play Games Services (PGS) — kod-strana scaffolding (inertni, guarded, neovlivnuje soucasne chovani): `utils/playGames.ts` wrapper (dynamicky resolve nativniho modulu → no-op v Expo Go / iOS / web / soucasnem release buildu), `data/playGamesAchievements.ts` mapa `localAchievementId → Play ID` (30 achievementu, zatim null), fire-and-forget push po lokalnim unlocku v `useAchievementStore`, `PlayGamesBootstrap` (silent sign-in on launch), `plugins/withPlayGames.js` config plugin (no-op bez app id), CI test proti driftu mapy. Aktivace vyzaduje Play Console/Google Cloud setup + nativni modul v dev buildu — postup v `documents/play-games-setup.md`. Suite 281 testu / 14 suites.
 
 ## 2026-07-20
