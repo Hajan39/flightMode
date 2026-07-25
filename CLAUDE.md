@@ -153,12 +153,24 @@ Event queue (max 100) is buffered until the PostHog sink is ready. `components/A
 - `hooks/useFadeIn.ts` — fade-in animation
 - `hooks/useAnimatedPress.ts` — animated press feedback
 
+## Release Automation (CI/CD)
+
+GitHub Actions in `.github/workflows/`:
+
+- **`ci.yml`** — on every push and PR: `npx tsc --noEmit` + `npm test`. This is the quality gate; keep it green.
+- **`release-main.yml`** — on push to **`main`** (or manual `workflow_dispatch`): a `decide` job inspects the diff and **auto-picks the release lane**:
+  - **Build lane** (if any *breaking-sensitive* file changed: `app.json`, `app.config.*`, `eas.json`, `package.json`, `package-lock.json`, `babel.config.js`, `metro.config.js`, `plugins/**`, `android/**`, `ios/**`) → `eas build --platform android --auto-submit --profile production` (native AAB + submit to the production track as draft; version code auto-increments via `autoIncrement`).
+  - **OTA lane** (only JS/TS, translations, data, compatible assets changed) → `npm run ota:production` (derives the message from `CHANGELOG.md` `Unreleased`).
+  - Requires the `EXPO_TOKEN` repo secret.
+- **`claude.yml` / `claude-code-review.yml`** — Claude Code GitHub app hooks.
+
+**Implication: merging to `main` auto-releases.** So the OTA-vs-native-build safety decision is automated — you never need to hand-pick. Just make sure `CHANGELOG.md` `Unreleased` is current before merging (the OTA lane uses it as the update message). To release without merging to main, or to test first, use `npm run deploy:internal` (build → internal testing track → pre-launch report).
+
 ## OTA Publish Rules
 
-- Only publish when user explicitly asks
-- Update `CHANGELOG.md` `Unreleased` section **before** publishing
-- Use `npm run ota:preview` / `npm run ota:production` — scripts derive EAS message from `Unreleased`
-- OTA is safe only for JS/TS, translations, compatible asset fixes — never for native dependency or `app.json` changes
+- Publishing happens automatically via `release-main.yml` on push to `main` (see above). Manual `npm run ota:preview` / `npm run ota:production` is for out-of-band publishes.
+- Update `CHANGELOG.md` `Unreleased` section **before** merging/publishing — the scripts derive the EAS message from it.
+- OTA is safe only for JS/TS, translations, compatible asset fixes — never for native dependency or `app.json` changes. The `release-main` `decide` job enforces this automatically by routing native/config changes to a full build instead of OTA.
 
 ## Known Debt
 
