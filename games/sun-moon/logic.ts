@@ -139,6 +139,11 @@ function placementValid(
  * rules, stopping early at `cap`. Backtracking over the first blank cell with
  * triple/half-count pruning. `countSolutions(givens, size) === 1` means the
  * puzzle has a unique solution.
+ *
+ * Precondition: the givens themselves must be rule-consistent. Placement
+ * validation only inspects lines through newly placed cells, so a violation
+ * made entirely of given cells (e.g. a pre-existing SSS run) is not detected
+ * here — the level test suite enforces givens ⊂ a valid solution instead.
  */
 export function countSolutions(
 	givens: string[],

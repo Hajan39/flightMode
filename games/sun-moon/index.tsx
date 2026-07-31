@@ -15,6 +15,11 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import { LEVELS } from "./levels";
+
+// Stable fallback: returning a fresh `{}` from a Zustand selector makes
+// getSnapshot produce a new reference every call, which loops React's
+// useSyncExternalStore until it throws on first open (no progress entry yet).
+const EMPTY_LEVEL_STARS: Record<string, number> = {};
 import {
 	cellIndex,
 	findConflicts,
@@ -78,9 +83,9 @@ export default function SunMoonGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const updateProgress = useGameStore((s) => s.updateProgress);
-	const levelStars = useGameStore(
-		(s) => s.progress["sun-moon"]?.levelStars ?? {},
-	);
+	const levelStars =
+		useGameStore((s) => s.progress["sun-moon"]?.levelStars) ??
+		EMPTY_LEVEL_STARS;
 	const { width: screenW } = useWindowDimensions();
 
 	const [phase, setPhase] = useState<Phase>("menu");
@@ -148,9 +153,9 @@ export default function SunMoonGame() {
 		setCells(nextCells);
 
 		if (isSolvedGrid(nextCells, size)) {
-			const stars = getStars(
-				nextValue !== "." && nextConflicts.size > 0 ? mistakes + 1 : mistakes,
-			);
+			// A solved grid has zero conflicts by definition, so the winning
+			// placement can never have been a mistake — `mistakes` is final here.
+			const stars = getStars(mistakes);
 			setWonStars(stars);
 			haptic.success();
 			updateProgress("sun-moon", stars, {

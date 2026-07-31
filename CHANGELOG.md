@@ -28,6 +28,10 @@ and this project adheres to Semantic Versioning.
 - Accessibility: the shared Game controls now expose localized Resume/Pause/Restart labels (were hardcoded English) across all 12 languages, and the Home flight-card close button gained a larger touch target (hitSlop) and a localized "Clear flight" label.
 - Dark-theme contrast: added a per-theme `onTint` foreground token (dark uses a near-black navy on its pale-blue tint) and adopted it for every primary button and active filter/category/preference chip across Onboarding, Flight setup, Relax, Games, Explore, and Home. Previously white text sat on the light dark-theme tint (~1.6:1, well below WCAG); it's now high-contrast in all three themes.
 
+### Fixed
+
+- First-open crash in level-based games: selecting `levelStars ?? {}` from the Zustand store returned a fresh object on every snapshot while the game had no progress entry yet (i.e., for every player opening the game for the first time), which loops React's `useSyncExternalStore` until it throws "Maximum update depth exceeded". Reproduced against the app's exact React 19 + Zustand 5 versions and fixed by selecting the raw `levelStars` reference with a stable module-level `{}` fallback — in the three new logic games and in Stack Sort, which shipped with the same latent bug.
+
 ### Fixed (code/UX review — wave A)
 
 - Relax: the breathing exercise buzzed the haptic every second instead of once per phase (an unstable `useHaptic` value in the effect deps combined with the per-second re-render); it now pulses once per phase transition.

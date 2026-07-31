@@ -78,7 +78,11 @@ describe("sun-moon countSolutions", () => {
 	});
 
 	test("an unsolvable givens set counts zero solutions", () => {
-		// Row of three suns can never be completed legally.
+		// Note: the SSS triple itself is inside the givens and is NOT what the
+		// solver rejects (placement validation only checks lines through newly
+		// placed cells). This counts 0 because the column budgets make the
+		// remaining suns arithmetically impossible: cols 0-2 each already hold
+		// an S (max 2 per column in 4x4), and rows 1-3 each need 2 suns.
 		expect(countSolutions(["SSS.", "....", "....", "...."], 4)).toBe(0);
 	});
 });

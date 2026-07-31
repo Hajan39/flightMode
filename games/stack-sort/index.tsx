@@ -16,6 +16,11 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 
+// Stable fallback: returning a fresh `{}` from a Zustand selector makes
+// getSnapshot produce a new reference every call, which loops React's
+// useSyncExternalStore until it throws on first open (no progress entry yet).
+const EMPTY_LEVEL_STARS: Record<string, number> = {};
+
 /* ================================================================
    CONSTANTS
    ================================================================ */
@@ -324,9 +329,9 @@ export default function StackSortGame() {
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const updateProgress = useGameStore((s) => s.updateProgress);
-	const levelStars = useGameStore(
-		(s) => s.progress["stack-sort"]?.levelStars ?? {},
-	);
+	const levelStars =
+		useGameStore((s) => s.progress["stack-sort"]?.levelStars) ??
+		EMPTY_LEVEL_STARS;
 	const { width: screenW } = useWindowDimensions();
 
 	const [phase, setPhase] = useState<"menu" | "playing" | "won">("menu");

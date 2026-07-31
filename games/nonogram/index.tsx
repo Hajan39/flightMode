@@ -17,6 +17,11 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 
 import { NONOGRAM_LEVELS, type NonogramLevel } from "./levels";
+
+// Stable fallback: returning a fresh `{}` from a Zustand selector makes
+// getSnapshot produce a new reference every call, which loops React's
+// useSyncExternalStore until it throws on first open (no progress entry yet).
+const EMPTY_LEVEL_STARS: Record<string, number> = {};
 import {
 	deriveClues,
 	EMPTY,
@@ -120,9 +125,8 @@ export default function NonogramGame() {
 	const haptic = useHaptic();
 	const { width: screenW } = useWindowDimensions();
 	const updateProgress = useGameStore((s) => s.updateProgress);
-	const levelStars = useGameStore(
-		(s) => s.progress.nonogram?.levelStars ?? {},
-	);
+	const levelStars =
+		useGameStore((s) => s.progress.nonogram?.levelStars) ?? EMPTY_LEVEL_STARS;
 
 	const [phase, setPhase] = useState<Phase>("menu");
 	const [level, setLevel] = useState<NonogramLevel>(NONOGRAM_LEVELS[0]);
@@ -184,33 +188,6 @@ export default function NonogramGame() {
 			});
 		}
 	};
-
-	/* --- layout --- */
-	const size = level.size;
-	const maxRowClues = Math.max(1, ...clues.rows.map((r) => r.length));
-	const maxColClues = Math.max(1, ...clues.cols.map((c) => c.length));
-	const rowGutterW = maxRowClues * CLUE_DIGIT_W + Spacing.sm;
-	const colGutterH = maxColClues * CLUE_LINE_H + Spacing.xs;
-	const groupGaps = Math.floor((size - 1) / 5) * GROUP_GAP;
-	const cellSize = Math.min(
-		MAX_CELL,
-		Math.floor(
-			(screenW - Spacing.lg * 2 - rowGutterW - groupGaps - size * 2) / size,
-		),
-	);
-
-	const rowSatisfied = clues.rows.map((clue, r) =>
-		isLineSatisfied(
-			clue,
-			grid[r].map((s) => s === FILLED),
-		),
-	);
-	const colSatisfied = clues.cols.map((clue, c) =>
-		isLineSatisfied(
-			clue,
-			grid.map((row) => row[c] === FILLED),
-		),
-	);
 
 	/* ================================================================
 	   RENDER — MENU
@@ -329,6 +306,33 @@ export default function NonogramGame() {
 			</View>
 		);
 	}
+
+	/* --- layout --- */
+	const size = level.size;
+	const maxRowClues = Math.max(1, ...clues.rows.map((r) => r.length));
+	const maxColClues = Math.max(1, ...clues.cols.map((c) => c.length));
+	const rowGutterW = maxRowClues * CLUE_DIGIT_W + Spacing.sm;
+	const colGutterH = maxColClues * CLUE_LINE_H + Spacing.xs;
+	const groupGaps = Math.floor((size - 1) / 5) * GROUP_GAP;
+	const cellSize = Math.min(
+		MAX_CELL,
+		Math.floor(
+			(screenW - Spacing.lg * 2 - rowGutterW - groupGaps - size * 2) / size,
+		),
+	);
+
+	const rowSatisfied = clues.rows.map((clue, r) =>
+		isLineSatisfied(
+			clue,
+			grid[r].map((s) => s === FILLED),
+		),
+	);
+	const colSatisfied = clues.cols.map((clue, c) =>
+		isLineSatisfied(
+			clue,
+			grid.map((row) => row[c] === FILLED),
+		),
+	);
 
 	/* ================================================================
 	   RENDER — PLAYING
