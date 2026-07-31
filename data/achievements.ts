@@ -303,4 +303,38 @@ export const achievements: AchievementDef[] = [
 		category: "special",
 		condition: (s) => (s.gameProgress["word-search"]?.highScore ?? 0) >= 1500,
 	},
+	// ── Logic games (levels cleared = levelStars entries with ≥1 star) ──
+	{
+		id: "ground-controller",
+		titleKey: "achieveGroundControllerTitle",
+		descriptionKey: "achieveGroundControllerDesc",
+		icon: "move-outline",
+		category: "special",
+		condition: (s) =>
+			Object.values(s.gameProgress["runway-jam"]?.levelStars ?? {}).filter(
+				(stars) => stars >= 1,
+			).length >= 5,
+	},
+	{
+		id: "pixel-artist",
+		titleKey: "achievePixelArtistTitle",
+		descriptionKey: "achievePixelArtistDesc",
+		icon: "image-outline",
+		category: "special",
+		condition: (s) =>
+			Object.values(s.gameProgress["nonogram"]?.levelStars ?? {}).filter(
+				(stars) => stars >= 1,
+			).length >= 5,
+	},
+	{
+		id: "equilibrium",
+		titleKey: "achieveEquilibriumTitle",
+		descriptionKey: "achieveEquilibriumDesc",
+		icon: "contrast-outline",
+		category: "special",
+		condition: (s) =>
+			Object.values(s.gameProgress["sun-moon"]?.levelStars ?? {}).filter(
+				(stars) => stars >= 1,
+			).length >= 5,
+	},
 ];

@@ -1,0 +1,183 @@
+// Runway Jam levels — 12 hardcoded, deterministic Rush Hour-style layouts.
+// Piece 0 is the plane (horizontal, length 2, row 2); the exit is the right
+// edge of row 2. Every `minMoves` is the proven optimum (see solveBFS) and
+// is verified by __tests__/runwayJamLogic.test.ts.
+//
+// Tiers: levels 1-4 easy (<= 8 moves), 5-8 medium, 9-12 hard (>= 12 moves).
+
+import type { Level } from "@/games/runway-jam/logic";
+
+export const LEVELS: Level[] = [
+	{
+		id: 1,
+		minMoves: 2,
+		pieces: [
+			{ id: 0, row: 2, col: 0, len: 2, horiz: true },
+			{ id: 1, row: 0, col: 4, len: 3, horiz: false },
+			{ id: 2, row: 4, col: 1, len: 2, horiz: true },
+		],
+	},
+	{
+		id: 2,
+		minMoves: 4,
+		pieces: [
+			{ id: 0, row: 2, col: 2, len: 2, horiz: true },
+			{ id: 1, row: 4, col: 3, len: 3, horiz: true },
+			{ id: 2, row: 1, col: 1, len: 2, horiz: false },
+			{ id: 3, row: 2, col: 5, len: 2, horiz: false },
+			{ id: 4, row: 1, col: 4, len: 3, horiz: false },
+		],
+	},
+	{
+		id: 3,
+		minMoves: 6,
+		pieces: [
+			{ id: 0, row: 2, col: 0, len: 2, horiz: true },
+			{ id: 1, row: 0, col: 2, len: 3, horiz: false },
+			{ id: 2, row: 3, col: 3, len: 3, horiz: true },
+			{ id: 3, row: 5, col: 0, len: 2, horiz: true },
+			{ id: 4, row: 0, col: 5, len: 3, horiz: false },
+		],
+	},
+	{
+		id: 4,
+		minMoves: 8,
+		pieces: [
+			{ id: 0, row: 2, col: 0, len: 2, horiz: true },
+			{ id: 1, row: 3, col: 0, len: 3, horiz: false },
+			{ id: 2, row: 4, col: 4, len: 2, horiz: false },
+			{ id: 3, row: 0, col: 2, len: 3, horiz: true },
+			{ id: 4, row: 1, col: 2, len: 2, horiz: false },
+			{ id: 5, row: 3, col: 1, len: 3, horiz: true },
+			{ id: 6, row: 0, col: 5, len: 2, horiz: false },
+			{ id: 7, row: 3, col: 4, len: 2, horiz: true },
+		],
+	},
+	{
+		id: 5,
+		minMoves: 9,
+		pieces: [
+			{ id: 0, row: 2, col: 1, len: 2, horiz: true },
+			{ id: 1, row: 5, col: 3, len: 3, horiz: true },
+			{ id: 2, row: 3, col: 2, len: 2, horiz: false },
+			{ id: 3, row: 0, col: 3, len: 3, horiz: false },
+			{ id: 4, row: 4, col: 0, len: 2, horiz: false },
+			{ id: 5, row: 1, col: 5, len: 3, horiz: false },
+			{ id: 6, row: 1, col: 0, len: 2, horiz: false },
+			{ id: 7, row: 3, col: 3, len: 2, horiz: true },
+		],
+	},
+	{
+		id: 6,
+		minMoves: 10,
+		pieces: [
+			{ id: 0, row: 2, col: 0, len: 2, horiz: true },
+			{ id: 1, row: 4, col: 0, len: 2, horiz: false },
+			{ id: 2, row: 1, col: 5, len: 2, horiz: false },
+			{ id: 3, row: 4, col: 2, len: 3, horiz: true },
+			{ id: 4, row: 0, col: 4, len: 3, horiz: false },
+			{ id: 5, row: 1, col: 2, len: 2, horiz: false },
+			{ id: 6, row: 0, col: 1, len: 3, horiz: true },
+			{ id: 7, row: 3, col: 1, len: 2, horiz: false },
+			{ id: 8, row: 5, col: 4, len: 2, horiz: true },
+		],
+	},
+	{
+		id: 7,
+		minMoves: 10,
+		pieces: [
+			{ id: 0, row: 2, col: 0, len: 2, horiz: true },
+			{ id: 1, row: 3, col: 1, len: 3, horiz: true },
+			{ id: 2, row: 0, col: 4, len: 2, horiz: false },
+			{ id: 3, row: 4, col: 2, len: 2, horiz: false },
+			{ id: 4, row: 1, col: 5, len: 2, horiz: false },
+			{ id: 5, row: 5, col: 3, len: 3, horiz: true },
+			{ id: 6, row: 0, col: 1, len: 2, horiz: false },
+			{ id: 7, row: 3, col: 0, len: 3, horiz: false },
+			{ id: 8, row: 0, col: 3, len: 3, horiz: false },
+			{ id: 9, row: 4, col: 3, len: 3, horiz: true },
+		],
+	},
+	{
+		id: 8,
+		minMoves: 11,
+		pieces: [
+			{ id: 0, row: 2, col: 1, len: 2, horiz: true },
+			{ id: 1, row: 1, col: 1, len: 2, horiz: true },
+			{ id: 2, row: 1, col: 3, len: 2, horiz: false },
+			{ id: 3, row: 5, col: 3, len: 3, horiz: true },
+			{ id: 4, row: 4, col: 4, len: 2, horiz: true },
+			{ id: 5, row: 0, col: 1, len: 2, horiz: true },
+			{ id: 6, row: 4, col: 2, len: 2, horiz: false },
+			{ id: 7, row: 0, col: 4, len: 3, horiz: false },
+			{ id: 8, row: 3, col: 4, len: 2, horiz: true },
+			{ id: 9, row: 2, col: 0, len: 3, horiz: false },
+		],
+	},
+	{
+		id: 9,
+		minMoves: 12,
+		pieces: [
+			{ id: 0, row: 2, col: 1, len: 2, horiz: true },
+			{ id: 1, row: 4, col: 2, len: 3, horiz: true },
+			{ id: 2, row: 0, col: 1, len: 2, horiz: true },
+			{ id: 3, row: 3, col: 0, len: 3, horiz: true },
+			{ id: 4, row: 2, col: 5, len: 3, horiz: false },
+			{ id: 5, row: 0, col: 3, len: 2, horiz: false },
+			{ id: 6, row: 5, col: 3, len: 3, horiz: true },
+			{ id: 7, row: 0, col: 4, len: 2, horiz: true },
+			{ id: 8, row: 3, col: 3, len: 2, horiz: true },
+			{ id: 9, row: 1, col: 4, len: 2, horiz: false },
+		],
+	},
+	{
+		id: 10,
+		minMoves: 13,
+		pieces: [
+			{ id: 0, row: 2, col: 0, len: 2, horiz: true },
+			{ id: 1, row: 1, col: 2, len: 3, horiz: false },
+			{ id: 2, row: 3, col: 1, len: 2, horiz: false },
+			{ id: 3, row: 3, col: 4, len: 2, horiz: false },
+			{ id: 4, row: 3, col: 0, len: 2, horiz: false },
+			{ id: 5, row: 5, col: 1, len: 3, horiz: true },
+			{ id: 6, row: 0, col: 2, len: 3, horiz: true },
+			{ id: 7, row: 0, col: 0, len: 2, horiz: false },
+			{ id: 8, row: 1, col: 5, len: 3, horiz: false },
+			{ id: 9, row: 4, col: 2, len: 2, horiz: true },
+			{ id: 10, row: 0, col: 1, len: 2, horiz: false },
+		],
+	},
+	{
+		id: 11,
+		minMoves: 14,
+		pieces: [
+			{ id: 0, row: 2, col: 0, len: 2, horiz: true },
+			{ id: 1, row: 1, col: 1, len: 2, horiz: true },
+			{ id: 2, row: 5, col: 3, len: 2, horiz: true },
+			{ id: 3, row: 0, col: 0, len: 2, horiz: false },
+			{ id: 4, row: 3, col: 2, len: 2, horiz: false },
+			{ id: 5, row: 2, col: 5, len: 3, horiz: false },
+			{ id: 6, row: 0, col: 3, len: 3, horiz: true },
+			{ id: 7, row: 1, col: 3, len: 2, horiz: false },
+			{ id: 8, row: 3, col: 1, len: 3, horiz: false },
+			{ id: 9, row: 0, col: 1, len: 2, horiz: true },
+			{ id: 10, row: 3, col: 3, len: 2, horiz: true },
+		],
+	},
+	{
+		id: 12,
+		minMoves: 15,
+		pieces: [
+			{ id: 0, row: 2, col: 1, len: 2, horiz: true },
+			{ id: 1, row: 2, col: 5, len: 3, horiz: false },
+			{ id: 2, row: 4, col: 1, len: 3, horiz: true },
+			{ id: 3, row: 0, col: 5, len: 2, horiz: false },
+			{ id: 4, row: 3, col: 3, len: 2, horiz: true },
+			{ id: 5, row: 3, col: 0, len: 3, horiz: false },
+			{ id: 6, row: 0, col: 0, len: 3, horiz: true },
+			{ id: 7, row: 0, col: 3, len: 2, horiz: true },
+			{ id: 8, row: 3, col: 1, len: 2, horiz: true },
+			{ id: 9, row: 1, col: 4, len: 2, horiz: false },
+		],
+	},
+];

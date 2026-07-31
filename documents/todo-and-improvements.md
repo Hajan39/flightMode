@@ -7,6 +7,11 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P0 (aktivni)
 
+- ~~logicke hry s urovnemi (rozvoj logickeho mysleni)~~ — hotovo: `runway-jam` (Rush Hour, 12 levelu, BFS-verifikovane),
+  `nonogram` (picross, 10 puzzlu, line-solver dokazuje guess-free resitelnost), `sun-moon` (Takuzu, 12 levelu,
+  presne 1 reseni per level). Kazdy level overen solverem v unit testech. Follow-up napady: dalsi level packy
+  (levely jsou data-only), hint system, denni logicka vyzva.
+
 - ~~pridat explicitni analytics consent/opt-out UX~~ — hotovo: toggle v Settings > Privacy
 - ~~achievement tiery pro sky-defense a air-traffic-control~~ — hotovo: Sky Guardian/Commander (100/500+), Tower Operator/Air Boss (150/500+)
 - ~~GameRules emoji regex debt~~ — hotovo: `/^\p{Extended_Pictographic}/u`

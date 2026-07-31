@@ -59,7 +59,7 @@ Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
 ## Games
 
-33 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+36 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -100,6 +100,9 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `sliding-puzzle` | brain | medium | Classic 15-puzzle (4×4 sliding tiles) |
 | `cargo-catch` | reflex | medium | Catch falling cargo, dodge bombs; 60s |
 | `word-search` | brain | medium | Find hidden words in an 8×8 letter grid |
+| `runway-jam` | strategy | medium | Rush Hour-style sliding logic; 12 BFS-verified levels, per-level stars |
+| `nonogram` | brain | hard | Picross "Sky Pixels"; 10 line-logic-solvable puzzles (5×5→10×10) |
+| `sun-moon` | brain | medium | Takuzu/Binairo balance puzzle; 12 unique-solution levels (4×4→8×8) |
 
 **Daily challenge games:** `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess` (derived from `isDailyChallenge` in `data/games.ts` — do not hand-maintain)
 

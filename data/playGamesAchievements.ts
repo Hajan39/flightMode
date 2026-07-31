@@ -54,6 +54,10 @@ export const playGamesAchievementIds: Record<string, string | null> = {
 	"puzzle-slider": null,
 	"cargo-captain": null,
 	"word-hunter": null,
+	// ── Logic games ──
+	"ground-controller": null,
+	"pixel-artist": null,
+	equilibrium: null,
 };
 
 /** Returns the Play Games achievement id for a local id, or null if unmapped. */
