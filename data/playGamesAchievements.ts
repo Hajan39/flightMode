@@ -62,5 +62,9 @@ export const playGamesAchievementIds: Record<string, string | null> = {
 
 /** Returns the Play Games achievement id for a local id, or null if unmapped. */
 export function getPlayGamesAchievementId(localId: string): string | null {
+	// Own-property check so ids like "constructor" can't hit Object.prototype.
+	if (!Object.prototype.hasOwnProperty.call(playGamesAchievementIds, localId)) {
+		return null;
+	}
 	return playGamesAchievementIds[localId] ?? null;
 }

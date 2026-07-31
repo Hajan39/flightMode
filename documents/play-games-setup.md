@@ -93,7 +93,11 @@ Android-only) now wraps Play Games Services v2 — no unmaintained community lib
 - `modules/play-games/android/.../PlayGamesModule.kt` — exposes `signInSilently`,
   `isAuthenticated`, `unlockAchievement`, `incrementAchievement`, `showAchievements`
   over `com.google.android.gms.games.PlayGames` (v2). Defensive: no current
-  Activity → resolves false/no-op, never throws.
+  Activity → resolves false/no-op, never throws; `PlayGamesSdk.initialize` is
+  try/caught (missing APP_ID meta-data must not crash launch). `signInSilently`
+  is TRULY silent — it only reads the v2 automatic sign-in result and never
+  triggers the interactive prompt (an interactive flow would be a separate,
+  user-initiated method).
 - `modules/play-games/expo-module.config.json` + `android/build.gradle` — autolinked
   automatically (Expo scans `./modules`); verified via `expo-modules-autolinking`.
 - `utils/playGames.ts → resolveNativeModule()` now resolves it via

@@ -162,7 +162,7 @@ GitHub Actions in `.github/workflows/`:
 
 - **`ci.yml`** — on every push and PR: `npx tsc --noEmit` + `npm test`. This is the quality gate; keep it green.
 - **`release-main.yml`** — on push to **`main`** (or manual `workflow_dispatch`): a `decide` job inspects the diff and **auto-picks the release lane**:
-  - **Build lane** (if any *breaking-sensitive* file changed: `app.json`, `app.config.*`, `eas.json`, `package.json`, `package-lock.json`, `babel.config.js`, `metro.config.js`, `plugins/**`, `android/**`, `ios/**`) → `eas build --platform android --auto-submit --profile production` (native AAB + submit to the production track as draft; version code auto-increments via `autoIncrement`).
+  - **Build lane** (if any *breaking-sensitive* file changed: `app.json`, `app.config.*`, `eas.json`, `package.json`, `package-lock.json`, `babel.config.js`, `metro.config.js`, `plugins/**`, `modules/**`, `android/**`, `ios/**`) → `eas build --platform android --auto-submit --profile production` (native AAB + submit to the production track as draft; version code auto-increments via `autoIncrement`).
   - **OTA lane** (only JS/TS, translations, data, compatible assets changed) → `npm run ota:production` (derives the message from `CHANGELOG.md` `Unreleased`).
   - Requires the `EXPO_TOKEN` repo secret.
 - **`claude.yml` / `claude-code-review.yml`** — Claude Code GitHub app hooks.

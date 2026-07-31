@@ -42,6 +42,7 @@ jobs:
               - 'babel.config.js'
               - 'metro.config.js'
               - 'plugins/**'
+              - 'modules/**'
               - 'android/**'
               - 'ios/**'
 

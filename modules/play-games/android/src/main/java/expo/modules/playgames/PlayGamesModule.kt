@@ -24,8 +24,16 @@ class PlayGamesModule : Module() {
 
     OnCreate {
       // v2 also auto-initializes from the APP_ID manifest metadata, but calling
-      // this explicitly is safe and makes intent clear.
-      appContext.reactContext?.let { PlayGamesSdk.initialize(it) }
+      // this explicitly is safe and makes intent clear. Guarded: initialize()
+      // throws IllegalStateException when the APP_ID meta-data is missing
+      // (e.g. a build without the withPlayGames config plugin applied), and an
+      // OnCreate throw would be an uncaught native exception at startup.
+      try {
+        appContext.reactContext?.let { PlayGamesSdk.initialize(it) }
+      } catch (_: Exception) {
+        // PGS stays uninitialized; later client calls fail into rejected
+        // promises which the JS wrapper swallows. Never crash launch.
+      }
     }
 
     AsyncFunction("isAuthenticated") { promise: Promise ->
@@ -46,17 +54,15 @@ class PlayGamesModule : Module() {
         promise.resolve(false)
         return@AsyncFunction
       }
-      val client = PlayGames.getGamesSignInClient(activity)
-      client.isAuthenticated.addOnCompleteListener { task ->
-        if (task.isSuccessful && task.result?.isAuthenticated == true) {
-          promise.resolve(true)
-        } else {
-          // Not yet authenticated — attempt an interactive/one-tap sign-in.
-          client.signIn().addOnCompleteListener { res ->
-            promise.resolve(res.isSuccessful && res.result?.isAuthenticated == true)
-          }
+      // Truly silent: only read the automatic sign-in result. Never call the
+      // interactive signIn() here — this runs on every app launch, and users
+      // who declined Play Games must not get a prompt on each cold start.
+      // (An interactive flow, if ever wanted, belongs behind an explicit
+      // user-initiated button wired to a separate method.)
+      PlayGames.getGamesSignInClient(activity).isAuthenticated
+        .addOnCompleteListener { task ->
+          promise.resolve(task.isSuccessful && task.result?.isAuthenticated == true)
         }
-      }
     }
 
     AsyncFunction("unlockAchievement") { playId: String, promise: Promise ->
@@ -89,8 +95,19 @@ class PlayGamesModule : Module() {
       }
       PlayGames.getAchievementsClient(activity).achievementsIntent
         .addOnSuccessListener { intent ->
-          activity.startActivity(intent)
-          promise.resolve(null)
+          // Listener bodies aren't promise-wrapped by the module DSL, so a
+          // throw here (e.g. finishing/destroyed activity) must be caught to
+          // avoid an uncaught main-thread exception.
+          try {
+            activity.startActivity(intent)
+            promise.resolve(null)
+          } catch (e: Exception) {
+            promise.reject(
+              "ERR_SHOW_ACHIEVEMENTS",
+              e.message ?: "Failed to open the Play Games achievements overlay",
+              e,
+            )
+          }
         }
         .addOnFailureListener { e ->
           promise.reject(
