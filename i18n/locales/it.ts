@@ -1107,4 +1107,12 @@ gameOddOneOutName: "L'Intruso",
 	sunMoonSolved: "Perfettamente in equilibrio!",
 	achieveEquilibriumTitle: "Equilibrio",
 	achieveEquilibriumDesc: "Bilancia 5 livelli di Sole e luna.",
+	// Logic games update: hints + a11y
+	hint: "Indizio",
+	a11yRowCol: "Riga {{row}}, colonna {{col}}",
+	rjamA11yPlane: "Aereo",
+	rjamA11yVehicle: "Veicolo {{id}}",
+	sunMoonSun: "Sole",
+	sunMoonMoon: "Luna",
+	sunMoonEmpty: "Vuoto",
 } as const;

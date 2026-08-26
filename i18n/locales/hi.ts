@@ -1077,4 +1077,12 @@ gameOddOneOutName: "अलग खोजो",
 	sunMoonSolved: "एकदम संतुलित!",
 	achieveEquilibriumTitle: "संतुलन",
 	achieveEquilibriumDesc: "सूरज और चाँद के 5 स्तर संतुलित करें।",
+	// Logic games update: hints + a11y
+	hint: "संकेत",
+	a11yRowCol: "पंक्ति {{row}}, स्तंभ {{col}}",
+	rjamA11yPlane: "विमान",
+	rjamA11yVehicle: "वाहन {{id}}",
+	sunMoonSun: "सूरज",
+	sunMoonMoon: "चाँद",
+	sunMoonEmpty: "खाली",
 } as const;

@@ -1126,4 +1126,12 @@ gameOddOneOutName: "Finde den Außenseiter",
 	sunMoonSolved: "Perfekt ausbalanciert!",
 	achieveEquilibriumTitle: "Gleichgewicht",
 	achieveEquilibriumDesc: "Löse 5 Level von Sonne & Mond.",
+	// Logic games update: hints + a11y
+	hint: "Tipp",
+	a11yRowCol: "Reihe {{row}}, Spalte {{col}}",
+	rjamA11yPlane: "Flugzeug",
+	rjamA11yVehicle: "Fahrzeug {{id}}",
+	sunMoonSun: "Sonne",
+	sunMoonMoon: "Mond",
+	sunMoonEmpty: "Leer",
 } as const;

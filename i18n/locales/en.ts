@@ -1110,4 +1110,12 @@ gameOddOneOutName: "Odd One Out",
 	sunMoonSolved: "Perfectly balanced!",
 	achieveEquilibriumTitle: "Equilibrium",
 	achieveEquilibriumDesc: "Balance 5 Sun & Moon levels.",
+	// Logic games update: hints + a11y
+	hint: "Hint",
+	a11yRowCol: "Row {{row}}, column {{col}}",
+	rjamA11yPlane: "Plane",
+	rjamA11yVehicle: "Vehicle {{id}}",
+	sunMoonSun: "Sun",
+	sunMoonMoon: "Moon",
+	sunMoonEmpty: "Empty",
 } as const;

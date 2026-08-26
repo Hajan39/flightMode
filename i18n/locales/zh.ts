@@ -1073,4 +1073,12 @@ gameOddOneOutName: "找不同",
 	sunMoonSolved: "完美平衡!",
 	achieveEquilibriumTitle: "平衡大师",
 	achieveEquilibriumDesc: "通关5个太阳与月亮关卡。",
+	// Logic games update: hints + a11y
+	hint: "提示",
+	a11yRowCol: "第 {{row}} 行,第 {{col}} 列",
+	rjamA11yPlane: "飞机",
+	rjamA11yVehicle: "车辆 {{id}}",
+	sunMoonSun: "太阳",
+	sunMoonMoon: "月亮",
+	sunMoonEmpty: "空",
 } as const;

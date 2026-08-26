@@ -1101,4 +1101,12 @@ gameOddOneOutName: "Hledej Vetřelce",
 	sunMoonSolved: "Dokonale vyvážené!",
 	achieveEquilibriumTitle: "Rovnováha",
 	achieveEquilibriumDesc: "Vyvaž 5 úrovní Slunce a měsíce.",
+	// Logic games update: hints + a11y
+	hint: "Nápověda",
+	a11yRowCol: "Řádek {{row}}, sloupec {{col}}",
+	rjamA11yPlane: "Letadlo",
+	rjamA11yVehicle: "Vozidlo {{id}}",
+	sunMoonSun: "Slunce",
+	sunMoonMoon: "Měsíc",
+	sunMoonEmpty: "Prázdné",
 } as const;

@@ -1082,4 +1082,12 @@ gameOddOneOutName: "다른 거 찾기",
 	sunMoonSolved: "완벽한 균형!",
 	achieveEquilibriumTitle: "균형",
 	achieveEquilibriumDesc: "해와 달 5개 레벨을 클리어하세요.",
+	// Logic games update: hints + a11y
+	hint: "힌트",
+	a11yRowCol: "{{row}}행 {{col}}열",
+	rjamA11yPlane: "비행기",
+	rjamA11yVehicle: "차량 {{id}}",
+	sunMoonSun: "해",
+	sunMoonMoon: "달",
+	sunMoonEmpty: "빈칸",
 } as const;

@@ -1121,4 +1121,12 @@ gameOddOneOutName: "L'Intrus",
 	sunMoonSolved: "Parfaitement équilibré !",
 	achieveEquilibriumTitle: "Équilibre",
 	achieveEquilibriumDesc: "Équilibre 5 niveaux de Soleil et lune.",
+	// Logic games update: hints + a11y
+	hint: "Indice",
+	a11yRowCol: "Ligne {{row}}, colonne {{col}}",
+	rjamA11yPlane: "Avion",
+	rjamA11yVehicle: "Véhicule {{id}}",
+	sunMoonSun: "Soleil",
+	sunMoonMoon: "Lune",
+	sunMoonEmpty: "Vide",
 } as const;

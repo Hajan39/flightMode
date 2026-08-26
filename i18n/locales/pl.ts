@@ -1102,4 +1102,12 @@ gameOddOneOutName: "Znajdź Intruza",
 	sunMoonSolved: "Idealna równowaga!",
 	achieveEquilibriumTitle: "Równowaga",
 	achieveEquilibriumDesc: "Zrównoważ 5 poziomów Słońca i księżyca.",
+	// Logic games update: hints + a11y
+	hint: "Podpowiedź",
+	a11yRowCol: "Wiersz {{row}}, kolumna {{col}}",
+	rjamA11yPlane: "Samolot",
+	rjamA11yVehicle: "Pojazd {{id}}",
+	sunMoonSun: "Słońce",
+	sunMoonMoon: "Księżyc",
+	sunMoonEmpty: "Puste",
 } as const;

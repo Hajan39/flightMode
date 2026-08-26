@@ -1087,4 +1087,12 @@ gameOddOneOutName: "仲間外れ探し",
 	sunMoonSolved: "完璧なバランス!",
 	achieveEquilibriumTitle: "均衡",
 	achieveEquilibriumDesc: "太陽と月を5レベルクリア。",
+	// Logic games update: hints + a11y
+	hint: "ヒント",
+	a11yRowCol: "{{row}}行 {{col}}列",
+	rjamA11yPlane: "飛行機",
+	rjamA11yVehicle: "車両 {{id}}",
+	sunMoonSun: "太陽",
+	sunMoonMoon: "月",
+	sunMoonEmpty: "空白",
 } as const;

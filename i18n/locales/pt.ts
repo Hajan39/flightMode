@@ -1103,4 +1103,12 @@ gameOddOneOutName: "O Intruso",
 	sunMoonSolved: "Perfeitamente equilibrado!",
 	achieveEquilibriumTitle: "Equilíbrio",
 	achieveEquilibriumDesc: "Equilibre 5 níveis de Sol e lua.",
+	// Logic games update: hints + a11y
+	hint: "Dica",
+	a11yRowCol: "Linha {{row}}, coluna {{col}}",
+	rjamA11yPlane: "Avião",
+	rjamA11yVehicle: "Veículo {{id}}",
+	sunMoonSun: "Sol",
+	sunMoonMoon: "Lua",
+	sunMoonEmpty: "Vazio",
 } as const;
