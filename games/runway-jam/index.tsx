@@ -14,10 +14,12 @@ import { LEVELS } from "@/games/runway-jam/levels";
 import {
 	GRID_SIZE,
 	PLANE_ID,
+	type Move,
 	type Piece,
 	applyMove,
 	buildGrid,
 	isSolved,
+	nextOptimalMove,
 } from "@/games/runway-jam/logic";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -65,6 +67,16 @@ function getStars(moves: number, minMoves: number): number {
 	return 1;
 }
 
+/** Star rule with hints: using any hint caps the result at 2★. */
+function getFinalStars(
+	moves: number,
+	minMoves: number,
+	hintsUsed: number,
+): number {
+	const stars = getStars(moves, minMoves);
+	return hintsUsed > 0 ? Math.min(stars, 2) : stars;
+}
+
 /* ================================================================
    STAR DISPLAY
    ================================================================ */
@@ -101,6 +113,8 @@ export default function RunwayJamGame() {
 	const [pieces, setPieces] = useState<Piece[]>([]);
 	const [moves, setMoves] = useState(0);
 	const [selectedId, setSelectedId] = useState<number | null>(null);
+	const [hintsUsed, setHintsUsed] = useState(0);
+	const [hintMove, setHintMove] = useState<Move | null>(null);
 
 	const level = LEVELS[levelIdx];
 
@@ -117,6 +131,8 @@ export default function RunwayJamGame() {
 		setPieces(LEVELS[idx].pieces.map((p) => ({ ...p })));
 		setMoves(0);
 		setSelectedId(null);
+		setHintsUsed(0);
+		setHintMove(null);
 		setPhase("playing");
 	};
 
@@ -125,10 +141,11 @@ export default function RunwayJamGame() {
 		setPieces(next);
 		setMoves(nextMoves);
 		setSelectedId(null);
+		setHintMove(null);
 
 		if (isSolved(next)) {
 			haptic.success();
-			const stars = getStars(nextMoves, level.minMoves);
+			const stars = getFinalStars(nextMoves, level.minMoves, hintsUsed);
 			updateProgress("runway-jam", stars, {
 				won: true,
 				levelStarsPatch: { [String(level.id)]: stars },
@@ -144,6 +161,15 @@ export default function RunwayJamGame() {
 		if (phase !== "playing") return;
 		haptic.tap();
 		setSelectedId((prev) => (prev === id ? null : id));
+	};
+
+	const handleHintPress = () => {
+		if (phase !== "playing") return;
+		const move = nextOptimalMove(pieces);
+		if (!move) return;
+		haptic.tap();
+		setHintMove(move);
+		setHintsUsed((prev) => prev + 1);
 	};
 
 	/**
@@ -279,8 +305,10 @@ export default function RunwayJamGame() {
 	   RENDER — PLAYING / WON
 	   ================================================================ */
 
-	const stars = getStars(moves, level.minMoves);
+	const stars = getFinalStars(moves, level.minMoves, hintsUsed);
 	const exitTop = BOARD_PADDING + 2 * cellStep + cellSize / 2 - 12;
+	const hintCellKey =
+		hintMove !== null ? hintMove.row * GRID_SIZE + hintMove.col : null;
 
 	return (
 		<View style={s.root}>
@@ -295,6 +323,21 @@ export default function RunwayJamGame() {
 				<Text style={[s.hudText, { color: theme.tint }]}>
 					{t("rjamTarget", { count: level.minMoves })}
 				</Text>
+				<Pressable
+					style={[
+						s.hintBtn,
+						{ borderColor: theme.tint, opacity: phase !== "playing" ? 0.4 : 1 },
+					]}
+					onPress={handleHintPress}
+					disabled={phase !== "playing"}
+					accessibilityRole="button"
+					accessibilityLabel={t("hint")}
+					accessibilityState={{ disabled: phase !== "playing" }}
+				>
+					<Text style={[s.hintBtnText, { color: theme.tint }]}>
+						💡 {t("hint")}
+					</Text>
+				</Pressable>
 			</RNView>
 
 			{/* Board */}
@@ -314,11 +357,12 @@ export default function RunwayJamGame() {
 					const row = Math.floor(i / GRID_SIZE);
 					const col = i % GRID_SIZE;
 					const lit = highlighted.has(i);
+					const hinted = hintCellKey === i;
 					return (
 						<Pressable
 							key={`cell-${row}-${col}`}
 							onPress={() => handleCellPress(row, col)}
-							accessibilityLabel={`Cell ${row + 1}, ${col + 1}`}
+							accessibilityLabel={t("a11yRowCol", { row: row + 1, col: col + 1 })}
 							style={{
 								position: "absolute",
 								left: BOARD_PADDING + col * cellStep,
@@ -326,9 +370,14 @@ export default function RunwayJamGame() {
 								width: cellSize,
 								height: cellSize,
 								borderRadius: 6,
-								backgroundColor: lit ? theme.accentSoft : theme.surface,
-								borderWidth: lit ? 1.5 : 0,
+								backgroundColor: hinted
+									? theme.tint + "55"
+									: lit
+										? theme.accentSoft
+										: theme.surface,
+								borderWidth: hinted ? 2 : lit ? 1.5 : 0,
 								borderColor: theme.tint,
+								borderStyle: hinted ? "dashed" : "solid",
 							}}
 						/>
 					);
@@ -338,6 +387,7 @@ export default function RunwayJamGame() {
 				{pieces.map((piece) => {
 					const isPlane = piece.id === PLANE_ID;
 					const selected = selectedId === piece.id;
+					const hinted = hintMove !== null && hintMove.id === piece.id;
 					const w = piece.horiz
 						? piece.len * cellSize + (piece.len - 1) * CELL_GAP
 						: cellSize;
@@ -351,7 +401,9 @@ export default function RunwayJamGame() {
 							onPress={() => handlePiecePress(piece.id)}
 							accessibilityRole="button"
 							accessibilityLabel={
-								isPlane ? "Plane" : `Vehicle ${piece.id}`
+								isPlane
+									? t("rjamA11yPlane")
+									: t("rjamA11yVehicle", { id: piece.id })
 							}
 							accessibilityState={{ selected }}
 							style={{
@@ -362,8 +414,13 @@ export default function RunwayJamGame() {
 								height: h,
 								borderRadius: 8,
 								backgroundColor: color + (isPlane ? "" : "cc"),
-								borderWidth: selected ? 3 : 1.5,
-								borderColor: selected ? theme.text : color,
+								borderWidth: hinted ? 3 : selected ? 3 : 1.5,
+								borderColor: hinted
+									? theme.tint
+									: selected
+										? theme.text
+										: color,
+								borderStyle: hinted ? "dashed" : "solid",
 								alignItems: "center",
 								justifyContent: "center",
 							}}
@@ -531,6 +588,13 @@ const s = StyleSheet.create({
 		marginBottom: 12,
 	},
 	hudText: { fontSize: 13, fontWeight: "700" },
+	hintBtn: {
+		paddingHorizontal: 10,
+		paddingVertical: 5,
+		borderRadius: 8,
+		borderWidth: 1.5,
+	},
+	hintBtnText: { fontSize: 12, fontWeight: "700" },
 
 	board: {
 		borderRadius: 14,

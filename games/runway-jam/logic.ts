@@ -21,6 +21,15 @@ export type Level = {
 	pieces: Piece[];
 };
 
+export type Move = {
+	/** Id of the piece to move (0 = plane). */
+	id: number;
+	/** Target origin row (top-most / left-most cell). */
+	row: number;
+	/** Target origin column (top-most / left-most cell). */
+	col: number;
+};
+
 export const GRID_SIZE = 6;
 export const PLANE_ID = 0;
 export const PLANE_ROW = 2;
@@ -187,6 +196,56 @@ export function solveBFS(pieces: Piece[]): number | null {
 					visited.add(key);
 					if (isSolved(moved)) return depth;
 					next.push(moved);
+				}
+			}
+		}
+		frontier = next;
+	}
+
+	return null;
+}
+
+/**
+ * First move of one shortest solution — the same BFS as `solveBFS`, with
+ * first-move tracking. Returns `null` when the board is already solved,
+ * unsolvable, or the layout is invalid.
+ */
+export function nextOptimalMove(pieces: Piece[]): Move | null {
+	if (validateLevel(pieces) !== null) return null;
+
+	const start = [...pieces].sort((a, b) => a.id - b.id);
+	const keyOf = (state: Piece[]) =>
+		state.map((p) => (p.horiz ? p.col : p.row)).join(",");
+
+	if (isSolved(start)) return null;
+
+	const visited = new Set<string>([keyOf(start)]);
+	let frontier: { state: Piece[]; first: Move }[] = [];
+
+	// Depth 1: seed the frontier, remembering each branch's first move.
+	for (const piece of start) {
+		for (const pos of reachablePositions(start, piece.id)) {
+			const moved = applyMove(start, piece.id, pos.row, pos.col);
+			const key = keyOf(moved);
+			if (visited.has(key)) continue;
+			visited.add(key);
+			const first: Move = { id: piece.id, row: pos.row, col: pos.col };
+			if (isSolved(moved)) return first;
+			frontier.push({ state: moved, first });
+		}
+	}
+
+	while (frontier.length > 0) {
+		const next: { state: Piece[]; first: Move }[] = [];
+		for (const { state, first } of frontier) {
+			for (const piece of state) {
+				for (const pos of reachablePositions(state, piece.id)) {
+					const moved = applyMove(state, piece.id, pos.row, pos.col);
+					const key = keyOf(moved);
+					if (visited.has(key)) continue;
+					visited.add(key);
+					if (isSolved(moved)) return first;
+					next.push({ state: moved, first });
 				}
 			}
 		}

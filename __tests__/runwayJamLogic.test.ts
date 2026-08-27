@@ -4,16 +4,17 @@ import {
 	PLANE_ID,
 	applyMove,
 	isSolved,
+	nextOptimalMove,
 	reachablePositions,
 	solveBFS,
 	validateLevel,
 } from "@/games/runway-jam/logic";
 
 describe("runway jam levels", () => {
-	test("there are exactly 12 levels with sequential ids", () => {
-		expect(LEVELS).toHaveLength(12);
+	test("there are exactly 18 levels with sequential ids", () => {
+		expect(LEVELS).toHaveLength(18);
 		expect(LEVELS.map((l) => l.id)).toEqual(
-			Array.from({ length: 12 }, (_, i) => i + 1),
+			Array.from({ length: 18 }, (_, i) => i + 1),
 		);
 	});
 
@@ -41,11 +42,49 @@ describe("runway jam levels", () => {
 		},
 	);
 
-	test("tier bounds hold (1-4 easy <= 8, 9-12 hard >= 12)", () => {
+	test("tier bounds hold (1-4 easy <= 8, 9-12 hard >= 12, 13-18 expert >= 16)", () => {
 		for (const level of LEVELS) {
 			if (level.id <= 4) expect(level.minMoves).toBeLessThanOrEqual(8);
 			if (level.id >= 9) expect(level.minMoves).toBeGreaterThanOrEqual(12);
+			if (level.id >= 13) expect(level.minMoves).toBeGreaterThanOrEqual(16);
 		}
+	});
+
+	test("expert tier (13-18) minMoves is non-decreasing", () => {
+		const expert = LEVELS.filter((l) => l.id >= 13);
+		expect(expert).toHaveLength(6);
+		for (let i = 1; i < expert.length; i++) {
+			expect(expert[i].minMoves).toBeGreaterThanOrEqual(
+				expert[i - 1].minMoves,
+			);
+		}
+	});
+});
+
+describe("runway jam nextOptimalMove", () => {
+	test.each(LEVELS.map((l) => [l.id, l] as const))(
+		"level %i is solved by repeated hints in exactly minMoves moves",
+		(_id, level) => {
+			let state = level.pieces.map((p) => ({ ...p }));
+			let moves = 0;
+			while (!isSolved(state)) {
+				const move = nextOptimalMove(state);
+				expect(move).not.toBeNull();
+				if (move === null) return;
+				state = applyMove(state, move.id, move.row, move.col);
+				moves++;
+				expect(moves).toBeLessThanOrEqual(level.minMoves);
+			}
+			expect(moves).toBe(level.minMoves);
+		},
+	);
+
+	test("returns null on a solved board", () => {
+		const solved = [
+			{ id: PLANE_ID, row: 2, col: GRID_SIZE - 2, len: 2, horiz: true },
+		];
+		expect(isSolved(solved)).toBe(true);
+		expect(nextOptimalMove(solved)).toBeNull();
 	});
 });
 
