@@ -4,6 +4,7 @@ import {
 	deriveClues,
 	EMPTY,
 	FILLED,
+	findForcedCell,
 	isLineSatisfied,
 	runsOf,
 	solveByLineLogic,
@@ -115,8 +116,8 @@ describe("nonogram levels", () => {
 		);
 	});
 
-	test("there are 10 levels tiered 5×5 (1–4), 8×8 (5–7), 10×10 (8–10)", () => {
-		expect(NONOGRAM_LEVELS).toHaveLength(10);
+	test("there are 15 levels tiered 5×5 (1–4), 8×8 (5–7), 10×10 (8–15)", () => {
+		expect(NONOGRAM_LEVELS).toHaveLength(15);
 		for (const level of NONOGRAM_LEVELS) {
 			const expectedSize = level.id <= 4 ? 5 : level.id <= 7 ? 8 : 10;
 			expect(level.size).toBe(expectedSize);
@@ -166,4 +167,60 @@ describe("nonogram levels", () => {
 			expect(solved).toEqual(level.solution);
 		},
 	);
+});
+
+describe("nonogram findForcedCell", () => {
+	const emptyGrid = (size: number): CellState[][] =>
+		Array.from({ length: size }, () =>
+			new Array<CellState>(size).fill(UNKNOWN),
+		);
+
+	test.each(NONOGRAM_LEVELS.map((l) => [l.id, l] as const))(
+		"level %i: first hint from an empty grid matches the stored solution",
+		(_id, level) => {
+			const clues = deriveClues(level.solution);
+			const forced = findForcedCell(clues, emptyGrid(level.size));
+			expect(forced).not.toBeNull();
+			if (!forced) return;
+			expect(forced.state === FILLED || forced.state === EMPTY).toBe(true);
+			const solutionState =
+				level.solution[forced.r][forced.c] === "#" ? FILLED : EMPTY;
+			expect(forced.state).toBe(solutionState);
+		},
+	);
+
+	test.each(NONOGRAM_LEVELS.map((l) => [l.id, l] as const))(
+		"level %i: repeatedly applying hints from empty solves the whole puzzle",
+		(_id, level) => {
+			const clues = deriveClues(level.solution);
+			const grid = emptyGrid(level.size);
+			const maxSteps = level.size * level.size;
+			for (let step = 0; step < maxSteps; step++) {
+				const forced = findForcedCell(clues, grid);
+				if (!forced) break;
+				// Every deduction must target an unknown cell and be correct.
+				expect(grid[forced.r][forced.c]).toBe(UNKNOWN);
+				const solutionState =
+					level.solution[forced.r][forced.c] === "#" ? FILLED : EMPTY;
+				expect(forced.state).toBe(solutionState);
+				grid[forced.r][forced.c] = forced.state;
+			}
+			// Hint-by-hint solving must reach the same full grid as
+			// solveByLineLogic (equivalence: no cell left undecided).
+			const picture = grid.map((row) =>
+				row.map((cell) => (cell === FILLED ? "#" : ".")).join(""),
+			);
+			expect(grid.flat()).not.toContain(UNKNOWN);
+			expect(picture).toEqual(level.solution);
+		},
+	);
+
+	test("returns null on a completed grid", () => {
+		const level = NONOGRAM_LEVELS[0];
+		const clues = deriveClues(level.solution);
+		const grid: CellState[][] = level.solution.map((row) =>
+			[...row].map((ch) => (ch === "#" ? FILLED : EMPTY)),
+		);
+		expect(findForcedCell(clues, grid)).toBeNull();
+	});
 });

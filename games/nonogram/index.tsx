@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
 	Pressable,
 	View as RNView,
@@ -28,6 +28,7 @@ import {
 	FILLED,
 	UNKNOWN,
 	countFilledCells,
+	findForcedCell,
 	isLineSatisfied,
 	type CellState,
 } from "./logic";
@@ -58,6 +59,12 @@ function starsForMistakes(mistakes: number): number {
 	if (mistakes === 0) return 3;
 	if (mistakes <= 2) return 2;
 	return 1;
+}
+
+/** Final stars: mistake tiers, capped at 2 when any hint was used. */
+function starsForResult(mistakes: number, hintsUsed: number): number {
+	const stars = starsForMistakes(mistakes);
+	return hintsUsed > 0 ? Math.min(stars, 2) : stars;
 }
 
 /* ================================================================
@@ -133,9 +140,28 @@ export default function NonogramGame() {
 	const [grid, setGrid] = useState<CellState[][]>(() => makeEmptyGrid(5));
 	const [mode, setMode] = useState<Mode>("fill");
 	const [mistakes, setMistakes] = useState(0);
+	const [hintsUsed, setHintsUsed] = useState(0);
+	const [hintCell, setHintCell] = useState<{ r: number; c: number } | null>(
+		null,
+	);
+	const hintTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const clues = useMemo(() => deriveClues(level.solution), [level]);
 	const totalFilled = useMemo(() => countFilledCells(level.solution), [level]);
+
+	// Guard: disabled when line logic can't force any cell (shouldn't happen
+	// mid-solve — every level is line-solvable — but bad user marks could).
+	const hintAvailable = useMemo(
+		() => phase === "playing" && findForcedCell(clues, grid) !== null,
+		[phase, clues, grid],
+	);
+
+	useEffect(
+		() => () => {
+			if (hintTimer.current) clearTimeout(hintTimer.current);
+		},
+		[],
+	);
 
 	/* --- start level --- */
 	const startLevel = useCallback((lvl: NonogramLevel) => {
@@ -143,8 +169,40 @@ export default function NonogramGame() {
 		setGrid(makeEmptyGrid(lvl.size));
 		setMode("fill");
 		setMistakes(0);
+		setHintsUsed(0);
+		setHintCell(null);
+		if (hintTimer.current) clearTimeout(hintTimer.current);
 		setPhase("playing");
 	}, []);
+
+	/* --- shared win check (tap + hint paths both end here, exactly once) --- */
+	const finishIfSolved = (next: CellState[][], hintsNow: number) => {
+		const filledCount = next.flat().filter((s) => s === FILLED).length;
+		if (filledCount !== totalFilled) return;
+		haptic.heavy();
+		setPhase("won");
+		const stars = starsForResult(mistakes, hintsNow);
+		updateProgress("nonogram", stars, {
+			won: true,
+			levelStarsPatch: { [String(level.id)]: stars },
+		});
+	};
+
+	/* --- hint: apply one logically forced cell (never a mistake) --- */
+	const handleHint = () => {
+		if (phase !== "playing") return;
+		const forced = findForcedCell(clues, grid);
+		if (!forced) return;
+		haptic.tap();
+		const next = grid.map((row) => [...row]);
+		next[forced.r][forced.c] = forced.state;
+		setGrid(next);
+		setHintsUsed((h) => h + 1);
+		setHintCell({ r: forced.r, c: forced.c });
+		if (hintTimer.current) clearTimeout(hintTimer.current);
+		hintTimer.current = setTimeout(() => setHintCell(null), 900);
+		finishIfSolved(next, hintsUsed + 1);
+	};
 
 	/* --- win check + tap handler --- */
 	const handleCellPress = (r: number, c: number) => {
@@ -176,17 +234,7 @@ export default function NonogramGame() {
 		haptic.tap();
 		next[r][c] = FILLED;
 		setGrid(next);
-
-		const filledCount = next.flat().filter((s) => s === FILLED).length;
-		if (filledCount === totalFilled) {
-			haptic.heavy();
-			setPhase("won");
-			const stars = starsForMistakes(mistakes);
-			updateProgress("nonogram", stars, {
-				won: true,
-				levelStarsPatch: { [String(level.id)]: stars },
-			});
-		}
+		finishIfSolved(next, hintsUsed);
 	};
 
 	/* ================================================================
@@ -241,7 +289,7 @@ export default function NonogramGame() {
 	   ================================================================ */
 
 	if (phase === "won") {
-		const stars = starsForMistakes(mistakes);
+		const stars = starsForResult(mistakes, hintsUsed);
 		const nextLevel = NONOGRAM_LEVELS.find((l) => l.id === level.id + 1);
 		return (
 			<View style={s.root}>
@@ -442,19 +490,23 @@ export default function NonogramGame() {
 								key={`cell-${r}-${c}`}
 								onPress={() => handleCellPress(r, c)}
 								accessibilityRole="button"
-								accessibilityLabel={`Row ${r + 1}, column ${c + 1}`}
+								accessibilityLabel={t("a11yRowCol", { row: r + 1, col: c + 1 })}
 								style={[
 									{
 										width: cellSize,
 										height: cellSize,
 										borderRadius: 4,
-										borderWidth: 1,
+										borderWidth:
+											hintCell?.r === r && hintCell?.c === c ? 2.5 : 1,
 										alignItems: "center",
 										justifyContent: "center",
 										backgroundColor:
 											cell === FILLED ? theme.tint : theme.elevated,
 										borderColor:
-											cell === FILLED ? theme.tint : theme.border,
+											(hintCell?.r === r && hintCell?.c === c) ||
+											cell === FILLED
+												? theme.tint
+												: theme.border,
 									},
 									cellOuter(c),
 								]}
@@ -520,6 +572,25 @@ export default function NonogramGame() {
 						]}
 					>
 						✕ {t("nonoMark")}
+					</Text>
+				</Pressable>
+				<Pressable
+					style={[
+						s.modeBtn,
+						{
+							backgroundColor: theme.surface,
+							borderColor: theme.border,
+							opacity: hintAvailable ? 1 : 0.4,
+						},
+					]}
+					onPress={handleHint}
+					disabled={!hintAvailable}
+					accessibilityRole="button"
+					accessibilityState={{ disabled: !hintAvailable }}
+					accessibilityLabel={t("hint")}
+				>
+					<Text style={[s.modeBtnText, { color: theme.text }]}>
+						💡 {t("hint")}
 					</Text>
 				</Pressable>
 			</RNView>

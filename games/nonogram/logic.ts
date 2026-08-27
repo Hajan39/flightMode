@@ -166,6 +166,48 @@ export function solveLine(
 	return result;
 }
 
+/** A single cell deduction produced by `findForcedCell`. */
+export type ForcedCell = { r: number; c: number; state: CellState };
+
+/**
+ * Runs one pass of line deduction over the current grid and returns ONE cell
+ * that is currently UNKNOWN but logically forced by a row or column clue.
+ * Prefers a FILLED deduction over an EMPTY one when both exist; otherwise
+ * returns the first deduction found (rows scanned before columns, reading
+ * order). Returns null when no cell is forced — e.g. the grid is complete.
+ * Lines that currently contradict their clue (bad user marks) are skipped.
+ */
+export function findForcedCell(
+	clues: Clues,
+	grid: CellState[][],
+): ForcedCell | null {
+	const size = grid.length;
+	let firstEmpty: ForcedCell | null = null;
+
+	for (let r = 0; r < size; r++) {
+		const solved = solveLine(clues.rows[r], grid[r]);
+		if (!solved) continue;
+		for (let c = 0; c < size; c++) {
+			if (grid[r][c] !== UNKNOWN || solved[c] === UNKNOWN) continue;
+			if (solved[c] === FILLED) return { r, c, state: FILLED };
+			if (!firstEmpty) firstEmpty = { r, c, state: EMPTY };
+		}
+	}
+
+	for (let c = 0; c < size; c++) {
+		const column = grid.map((row) => row[c]);
+		const solved = solveLine(clues.cols[c], column);
+		if (!solved) continue;
+		for (let r = 0; r < size; r++) {
+			if (grid[r][c] !== UNKNOWN || solved[r] === UNKNOWN) continue;
+			if (solved[r] === FILLED) return { r, c, state: FILLED };
+			if (!firstEmpty) firstEmpty = { r, c, state: EMPTY };
+		}
+	}
+
+	return firstEmpty;
+}
+
 /**
  * Solves a whole puzzle using row/column line logic only, iterating to a
  * fixpoint. Returns the solved picture in the same "#"/"." string format as
