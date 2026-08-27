@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
 	Pressable,
 	View as RNView,
@@ -23,6 +23,7 @@ const EMPTY_LEVEL_STARS: Record<string, number> = {};
 import {
 	cellIndex,
 	findConflicts,
+	getHintCell,
 	isSolvedGrid,
 	parseRows,
 	type SunMoonCell,
@@ -94,6 +95,16 @@ export default function SunMoonGame() {
 	const [givenMask, setGivenMask] = useState<boolean[]>([]);
 	const [mistakes, setMistakes] = useState(0);
 	const [wonStars, setWonStars] = useState(0);
+	const [hintsUsed, setHintsUsed] = useState(0);
+	const [hintIdx, setHintIdx] = useState<number | null>(null);
+	const hintTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	useEffect(
+		() => () => {
+			if (hintTimeout.current) clearTimeout(hintTimeout.current);
+		},
+		[],
+	);
 
 	const level = LEVELS[levelIdx];
 	const size = level.size;
@@ -113,12 +124,54 @@ export default function SunMoonGame() {
 	/* --- start level --- */
 	const startLevel = (idx: number) => {
 		const start = parseRows(LEVELS[idx].givens);
+		if (hintTimeout.current) clearTimeout(hintTimeout.current);
 		setLevelIdx(idx);
 		setCells(start);
 		setGivenMask(start.map((cell) => cell !== "."));
 		setMistakes(0);
 		setWonStars(0);
+		setHintsUsed(0);
+		setHintIdx(null);
 		setPhase("playing");
+	};
+
+	/* --- shared win flow (tap + hint paths) --- */
+	const finishIfSolved = (
+		nextCells: SunMoonCell[],
+		usedHint: boolean,
+	): boolean => {
+		if (!isSolvedGrid(nextCells, size)) return false;
+		// A solved grid has zero conflicts by definition, so the winning
+		// placement can never have been a mistake — `mistakes` is final here.
+		const withHints = usedHint || hintsUsed > 0;
+		const stars = withHints ? Math.min(getStars(mistakes), 2) : getStars(mistakes);
+		setWonStars(stars);
+		haptic.success();
+		updateProgress("sun-moon", stars, {
+			won: true,
+			levelStarsPatch: { [String(level.id)]: stars },
+		});
+		setPhase("won");
+		return true;
+	};
+
+	/* --- hint: fill the first wrong/blank cell with the correct symbol --- */
+	const handleHint = () => {
+		if (phase !== "playing") return;
+		const hint = getHintCell(cells, level);
+		if (!hint) return;
+
+		const nextCells = [...cells];
+		nextCells[hint.index] = hint.value;
+		setCells(nextCells);
+		setHintsUsed((h) => h + 1);
+		haptic.tap();
+
+		setHintIdx(hint.index);
+		if (hintTimeout.current) clearTimeout(hintTimeout.current);
+		hintTimeout.current = setTimeout(() => setHintIdx(null), 900);
+
+		finishIfSolved(nextCells, true);
 	};
 
 	/* --- tap handler: cycle blank → ☀️ → 🌙 → blank --- */
@@ -151,19 +204,7 @@ export default function SunMoonGame() {
 		}
 
 		setCells(nextCells);
-
-		if (isSolvedGrid(nextCells, size)) {
-			// A solved grid has zero conflicts by definition, so the winning
-			// placement can never have been a mistake — `mistakes` is final here.
-			const stars = getStars(mistakes);
-			setWonStars(stars);
-			haptic.success();
-			updateProgress("sun-moon", stars, {
-				won: true,
-				levelStarsPatch: { [String(level.id)]: stars },
-			});
-			setPhase("won");
-		}
+		finishIfSolved(nextCells, false);
 	};
 
 	/* ================================================================
@@ -309,6 +350,24 @@ export default function SunMoonGame() {
 						{t("sunMoonConflicts", { count: conflicts.size })}
 					</Text>
 				</RNView>
+				<Pressable
+					style={[
+						s.pill,
+						{
+							backgroundColor: theme.card,
+							opacity: phase !== "playing" ? 0.4 : 1,
+						},
+					]}
+					onPress={handleHint}
+					disabled={phase !== "playing"}
+					accessibilityRole="button"
+					accessibilityLabel={t("hint")}
+					accessibilityState={{ disabled: phase !== "playing" }}
+				>
+					<Text style={[s.pillText, { color: theme.tint }]}>
+						💡 {t("hint")}
+					</Text>
+				</Pressable>
 			</RNView>
 
 			{/* Board */}
@@ -325,31 +384,41 @@ export default function SunMoonGame() {
 								const value = cells[idx];
 								const isGiven = givenMask[idx];
 								const isConflict = conflicts.has(idx);
-								const symbolName =
-									value === "S" ? "sun" : value === "M" ? "moon" : "empty";
+								const isHinted = hintIdx === idx;
+								const symbolLabel = t(
+									value === "S"
+										? "sunMoonSun"
+										: value === "M"
+											? "sunMoonMoon"
+											: "sunMoonEmpty",
+								);
 								return (
 									<Pressable
 										key={idx}
 										onPress={() => handleCellPress(idx)}
 										disabled={isGiven}
 										accessibilityRole="button"
-										accessibilityLabel={`Row ${row + 1}, column ${col + 1}: ${symbolName}`}
+										accessibilityLabel={`${t("a11yRowCol", { row: row + 1, col: col + 1 })}: ${symbolLabel}`}
 										accessibilityState={{ disabled: isGiven }}
 										style={[
 											s.cell,
 											{
 												width: cellSize,
 												height: cellSize,
-												backgroundColor: isConflict
-													? theme.dangerSurface
-													: isGiven
-														? theme.surface
-														: theme.elevated,
-												borderColor: isConflict
-													? theme.dangerBorder
-													: isGiven
-														? theme.border
-														: theme.tint + "50",
+												backgroundColor: isHinted
+													? theme.tint + "40"
+													: isConflict
+														? theme.dangerSurface
+														: isGiven
+															? theme.surface
+															: theme.elevated,
+												borderColor: isHinted
+													? theme.tint
+													: isConflict
+														? theme.dangerBorder
+														: isGiven
+															? theme.border
+															: theme.tint + "50",
 											},
 										]}
 									>

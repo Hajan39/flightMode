@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- Logic-games update — hints, more levels, localized accessibility:
+  - **Hint system** in all three logic games, each powered by the game's own solver: Runway Jam suggests the next optimal move (from the BFS solution), Sky Pixels reveals one logically-forced cell (line deduction from the current grid), Sun & Moon reveals one cell of the unique solution. Using any hint caps the level at 2 stars.
+  - **More levels**, all solver-verified like the originals: Runway Jam +6 expert levels (13–18, optimal ≥ 16 moves), Sky Pixels +5 new 10×10 pictures (11–15, guess-free line-solvable), Sun & Moon +4 harder 8×8 levels (13–16, up to 52/64 blanks, exactly one solution each).
+  - **Localized accessibility labels** in the logic games (previously hardcoded English piece/cell labels) — new `hint` + a11y keys in all 12 languages.
 - Three new logic games focused on deductive thinking, each with hand-tuned levels whose solvability is proven by solver-backed unit tests (catalog: 33 → 36 games):
   - **Runway Jam** (`runway-jam`, strategy/medium) — Rush Hour-style sliding puzzle: free your plane's taxi path. 12 levels; a BFS solver verifies every level is solvable and that its stored optimal move count is exact (3 stars = optimal).
   - **Sky Pixels** (`nonogram`, brain/hard) — classic picross with aviation pixel art. 10 puzzles (5×5 → 10×10); a line-logic solver proves every puzzle is solvable without guessing, which also guarantees a unique solution.

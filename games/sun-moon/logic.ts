@@ -1,5 +1,7 @@
-// Pure, dependency-free Sun & Moon (Takuzu/Binairo) helpers — extracted from
-// the component so they can be unit-tested without React Native.
+// Pure Sun & Moon (Takuzu/Binairo) helpers — extracted from the component so
+// they can be unit-tested without React Native.
+
+import type { SunMoonLevel } from "./levels";
 
 /** A single cell: sun, moon, or blank. */
 export type SunMoonCell = "S" | "M" | ".";
@@ -132,6 +134,25 @@ function placementValid(
 		if (at(i, col) === value) colCount++;
 	}
 	return rowCount <= half && colCount <= half;
+}
+
+/**
+ * Hint: the first cell (row-major) whose current value differs from the
+ * level's stored solution — blank or wrong symbol alike — together with the
+ * correct symbol for it. Returns null when every cell already matches the
+ * solution (i.e. the grid is complete and correct).
+ */
+export function getHintCell(
+	cells: string[],
+	level: SunMoonLevel,
+): { index: number; value: "S" | "M" } | null {
+	const solutionCells = parseRows(level.solution);
+	for (let i = 0; i < solutionCells.length; i++) {
+		if (cells[i] !== solutionCells[i]) {
+			return { index: i, value: solutionCells[i] as "S" | "M" };
+		}
+	}
+	return null;
 }
 
 /**

@@ -2,10 +2,12 @@ import { LEVELS } from "@/games/sun-moon/levels";
 import {
 	countSolutions,
 	findConflicts,
+	getHintCell,
 	isComplete,
 	isSolvedGrid,
 	parseRows,
 	serializeRows,
+	type SunMoonCell,
 } from "@/games/sun-moon/logic";
 
 describe("sun-moon parse/serialize", () => {
@@ -94,8 +96,8 @@ describe("sun-moon levels integrity", () => {
 		expect(ids).toEqual(Array.from({ length: LEVELS.length }, (_, i) => i + 1));
 	});
 
-	test("has 12 levels tiered 4x4 / 6x6 / 8x8", () => {
-		expect(LEVELS).toHaveLength(12);
+	test("has 16 levels tiered 4x4 / 6x6 / 8x8", () => {
+		expect(LEVELS).toHaveLength(16);
 		for (const lvl of LEVELS) {
 			const expectedSize = lvl.id <= 4 ? 4 : lvl.id <= 8 ? 6 : 8;
 			expect(lvl.size).toBe(expectedSize);
@@ -151,6 +153,54 @@ describe("sun-moon levels integrity", () => {
 			expect(blanksOf(LEVELS[i].givens)).toBeGreaterThan(
 				blanksOf(LEVELS[i - 1].givens),
 			);
+		}
+	});
+
+	test("expansion levels 13-16 are 8x8 and blanker than levels 9-12", () => {
+		const blanksOf = (rows: string[]) =>
+			rows.join("").split("").filter((ch) => ch === ".").length;
+		const expansion = LEVELS.filter((lvl) => lvl.id >= 13);
+		expect(expansion).toHaveLength(4);
+		for (const lvl of expansion) {
+			expect(lvl.size).toBe(8);
+			expect(blanksOf(lvl.givens)).toBeGreaterThan(44);
+		}
+	});
+});
+
+describe("sun-moon getHintCell", () => {
+	test("repeatedly applying hints solves every level from its givens", () => {
+		for (const lvl of LEVELS) {
+			const cells: SunMoonCell[] = parseRows(lvl.givens);
+			const solutionCells = parseRows(lvl.solution);
+			// Each hint fills/corrects one cell, so at most size² steps.
+			for (let step = 0; step <= lvl.size * lvl.size; step++) {
+				const hint = getHintCell(cells, lvl);
+				if (hint === null) break;
+				expect(hint.value).toBe(solutionCells[hint.index]);
+				cells[hint.index] = hint.value;
+			}
+			expect(cells).toEqual(solutionCells);
+			expect(findConflicts(cells, lvl.size).size).toBe(0);
+			expect(isSolvedGrid(cells, lvl.size)).toBe(true);
+			expect(getHintCell(cells, lvl)).toBeNull();
+		}
+	});
+
+	test("corrects a deliberately wrong cell with the solution value", () => {
+		const lvl = LEVELS[0];
+		const cells: SunMoonCell[] = parseRows(lvl.solution);
+		const wrongIdx = 5;
+		cells[wrongIdx] = cells[wrongIdx] === "S" ? "M" : "S";
+		const hint = getHintCell(cells, lvl);
+		expect(hint).not.toBeNull();
+		expect(hint?.index).toBe(wrongIdx);
+		expect(hint?.value).toBe(parseRows(lvl.solution)[wrongIdx]);
+	});
+
+	test("returns null on the solved grid", () => {
+		for (const lvl of LEVELS) {
+			expect(getHintCell(parseRows(lvl.solution), lvl)).toBeNull();
 		}
 	});
 });
