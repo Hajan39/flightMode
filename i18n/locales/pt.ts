@@ -1285,4 +1285,6 @@ gameOddOneOutName: "O Intruso",
 	converterRatesLive: "Taxas atualizadas · {{date}}",
 	converterRatesRefresh: "Atualizar taxas agora",
 	converterRatesUpdating: "Atualizando…",
+	converterAllCurrencies: "Todas as moedas",
+	converterSearchCurrency: "Buscar código ou nome…",
 } as const;

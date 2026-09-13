@@ -1283,4 +1283,6 @@ gameOddOneOutName: "Hledej Vetřelce",
 	converterRatesLive: "Aktuální kurzy · aktualizováno {{date}}",
 	converterRatesRefresh: "Aktualizovat kurzy",
 	converterRatesUpdating: "Aktualizuji…",
+	converterAllCurrencies: "Všechny měny",
+	converterSearchCurrency: "Hledat kód nebo název…",
 } as const;

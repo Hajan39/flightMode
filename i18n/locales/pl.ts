@@ -1284,4 +1284,6 @@ gameOddOneOutName: "Znajdź Intruza",
 	converterRatesLive: "Aktualne kursy · zaktualizowano {{date}}",
 	converterRatesRefresh: "Zaktualizuj kursy teraz",
 	converterRatesUpdating: "Aktualizuję…",
+	converterAllCurrencies: "Wszystkie waluty",
+	converterSearchCurrency: "Szukaj kodu lub nazwy…",
 } as const;

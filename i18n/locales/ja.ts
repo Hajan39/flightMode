@@ -1269,4 +1269,6 @@ gameOddOneOutName: "仲間外れ探し",
 	converterRatesLive: "最新レート · 更新 {{date}}",
 	converterRatesRefresh: "レートを今更新",
 	converterRatesUpdating: "更新中…",
+	converterAllCurrencies: "すべての通貨",
+	converterSearchCurrency: "コードまたは名前で検索…",
 } as const;

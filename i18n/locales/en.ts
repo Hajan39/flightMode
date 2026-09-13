@@ -1292,4 +1292,6 @@ gameOddOneOutName: "Odd One Out",
 	converterRatesLive: "Live rates · updated {{date}}",
 	converterRatesRefresh: "Update rates now",
 	converterRatesUpdating: "Updating…",
+	converterAllCurrencies: "All currencies",
+	converterSearchCurrency: "Search code or name…",
 } as const;

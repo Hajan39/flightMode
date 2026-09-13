@@ -1259,4 +1259,6 @@ gameOddOneOutName: "अलग खोजो",
 	converterRatesLive: "लाइव दरें · अपडेट {{date}}",
 	converterRatesRefresh: "दरें अभी अपडेट करें",
 	converterRatesUpdating: "अपडेट हो रहा है…",
+	converterAllCurrencies: "सभी मुद्राएँ",
+	converterSearchCurrency: "कोड या नाम खोजें…",
 } as const;

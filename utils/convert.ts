@@ -1,4 +1,5 @@
 import { currencies, getCurrency, type Currency } from "@/data/currencies";
+import { currencySymbols, zeroDecimalCurrencies } from "@/data/currencyNames";
 
 /**
  * Pure conversion helpers for the offline converter screen.
@@ -25,13 +26,15 @@ export function convertCurrency(
 
 /** Format an amount for display, honouring zero-decimal currencies. */
 export function formatCurrency(amount: number, code: string): string {
-	const currency = getCurrency(code);
-	const decimals = currency?.zeroDecimals ? 0 : 2;
+	const upper = code.toUpperCase();
+	const currency = getCurrency(upper);
+	const zero = currency?.zeroDecimals ?? zeroDecimalCurrencies.has(upper);
+	const decimals = zero ? 0 : 2;
 	const rounded = amount.toFixed(decimals);
 	// Thousands separator with a plain space — locale-neutral and readable.
 	const [intPart, fracPart] = rounded.split(".");
 	const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-	const symbol = currency?.symbol ?? code.toUpperCase();
+	const symbol = currency?.symbol ?? currencySymbols[upper] ?? upper;
 	return fracPart ? `${symbol} ${grouped}.${fracPart}` : `${symbol} ${grouped}`;
 }
 

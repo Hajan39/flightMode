@@ -65,6 +65,17 @@ describe("getEffectiveCurrencies / provenance", () => {
 		expect(getEffectiveCurrencies(null, currencies)).toBe(currencies);
 	});
 
+	test("appends provider-only currencies with names, sorted after the bundle", () => {
+		const effective = getEffectiveCurrencies({ EUR: 0.9, PHP: 56, NOK: 10.5, XXX: 1 }, currencies);
+		const codes = effective.map((c) => c.code);
+		expect(codes.slice(0, currencies.length)).toEqual(currencies.map((c) => c.code));
+		expect(codes.slice(currencies.length)).toEqual(["NOK", "PHP", "XXX"]);
+		const php = effective.find((c) => c.code === "PHP")!;
+		expect(php.nameEn).toBe("Philippine Peso");
+		expect(php.symbol).toBe("₱");
+		expect(php.perUsd).toBe(56);
+	});
+
 	test("provenance flags live vs bundled", () => {
 		expect(getRatesProvenance({ rates: null, ratesAsOf: null }).live).toBe(false);
 		expect(getRatesProvenance({ rates: { USD: 1 }, ratesAsOf: "2026-09-13" })).toEqual({ live: true, asOf: "2026-09-13" });

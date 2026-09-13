@@ -1255,4 +1255,6 @@ gameOddOneOutName: "找不同",
 	converterRatesLive: "实时汇率 · 更新于 {{date}}",
 	converterRatesRefresh: "立即更新汇率",
 	converterRatesUpdating: "更新中…",
+	converterAllCurrencies: "全部货币",
+	converterSearchCurrency: "搜索代码或名称…",
 } as const;

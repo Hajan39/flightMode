@@ -1302,4 +1302,6 @@ gameOddOneOutName: "L'Intrus",
 	converterRatesLive: "Taux à jour · mis à jour le {{date}}",
 	converterRatesRefresh: "Mettre à jour les taux",
 	converterRatesUpdating: "Mise à jour…",
+	converterAllCurrencies: "Toutes les devises",
+	converterSearchCurrency: "Rechercher un code ou un nom…",
 } as const;

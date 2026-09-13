@@ -1307,4 +1307,6 @@ gameOddOneOutName: "Finde den Außenseiter",
 	converterRatesLive: "Aktuelle Kurse · aktualisiert {{date}}",
 	converterRatesRefresh: "Kurse jetzt aktualisieren",
 	converterRatesUpdating: "Aktualisiere…",
+	converterAllCurrencies: "Alle Währungen",
+	converterSearchCurrency: "Code oder Name suchen…",
 } as const;

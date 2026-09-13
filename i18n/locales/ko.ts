@@ -1264,4 +1264,6 @@ gameOddOneOutName: "다른 거 찾기",
 	converterRatesLive: "실시간 환율 · 업데이트 {{date}}",
 	converterRatesRefresh: "지금 환율 업데이트",
 	converterRatesUpdating: "업데이트 중…",
+	converterAllCurrencies: "모든 통화",
+	converterSearchCurrency: "코드 또는 이름 검색…",
 } as const;

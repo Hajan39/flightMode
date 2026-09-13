@@ -1289,4 +1289,6 @@ gameOddOneOutName: "L'Intruso",
 	converterRatesLive: "Tassi aggiornati · {{date}}",
 	converterRatesRefresh: "Aggiorna i tassi ora",
 	converterRatesUpdating: "Aggiornamento…",
+	converterAllCurrencies: "Tutte le valute",
+	converterSearchCurrency: "Cerca codice o nome…",
 } as const;

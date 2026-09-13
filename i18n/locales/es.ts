@@ -1292,4 +1292,6 @@ gameOddOneOutName: "El Intruso",
 	converterRatesLive: "Tipos en vivo · actualizado {{date}}",
 	converterRatesRefresh: "Actualizar tipos ahora",
 	converterRatesUpdating: "Actualizando…",
+	converterAllCurrencies: "Todas las monedas",
+	converterSearchCurrency: "Buscar código o nombre…",
 } as const;
