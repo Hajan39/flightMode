@@ -11,6 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
+import LanguageBadge from "@/components/LanguageBadge";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -20,7 +21,7 @@ import {
 	getGameById,
 	playTogetherGames,
 } from "@/data/games";
-import { useContentItems } from "@/hooks/useContentItems";
+import { hasLanguage, useContentItems } from "@/hooks/useContentItems";
 import { useProfileStats } from "@/hooks/useProfileStats";
 import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -113,21 +114,12 @@ export default function HomeScreen() {
 				? ["Travel Tips", "Health"]
 				: ["Travel Tips", "Relax"];
 
-	const languageReadyArticles = articles.filter((item) =>
-		language === "en"
-			? true
-			: Boolean(
-					item.title[language] &&
-						item.category[language] &&
-						item.body[language],
-				),
-	);
-
-	const featuredArticles = languageReadyArticles
+	const featuredArticles = articles
 		.map((item) => ({
 			...item,
 			titleText: getLocalizedText(item.title, language),
 			categoryText: getLocalizedText(item.category, language),
+			isFallback: !hasLanguage(item, language),
 		}))
 		.filter((item) => preferredCategoriesEn.includes(item.category.en))
 		.slice(0, 2);
@@ -608,9 +600,16 @@ export default function HomeScreen() {
 							darkColor="transparent"
 							style={styles.featuredBody}
 						>
-							<Text style={[styles.featuredCategory, { color: theme.tint }]}>
-								{article.categoryText}
-							</Text>
+							<View
+								lightColor="transparent"
+								darkColor="transparent"
+								style={styles.featuredCategoryRow}
+							>
+								<Text style={[styles.featuredCategory, { color: theme.tint }]}>
+									{article.categoryText}
+								</Text>
+								{article.isFallback ? <LanguageBadge /> : null}
+							</View>
 							<Text style={styles.featuredTitle}>{article.titleText}</Text>
 							<Text style={[styles.featuredMeta, { color: theme.mutedText }]}>
 								~{t("minutesShort", { minutes: article.readTime })}
@@ -907,6 +906,7 @@ const styles = StyleSheet.create({
 	featuredBody: {
 		flex: 1,
 	},
+	featuredCategoryRow: { flexDirection: "row", alignItems: "center", gap: 6 },
 	featuredCategory: {
 		fontSize: 12,
 		fontWeight: "700",

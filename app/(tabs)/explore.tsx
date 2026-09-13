@@ -10,10 +10,11 @@ import {
 } from "react-native";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
+import LanguageBadge from "@/components/LanguageBadge";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import { useContentItems } from "@/hooks/useContentItems";
+import { hasLanguage, useContentItems } from "@/hooks/useContentItems";
 import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
@@ -52,28 +53,17 @@ export default function ExploreScreen() {
 		captureAnalyticsEvent("content_sort_changed", { sort_mode: mode });
 	};
 
-	const languageReadyArticles = useMemo(
-		() =>
-			articles.filter((item) =>
-				language === "en"
-					? true
-					: Boolean(
-							item.title[language] &&
-								item.category[language] &&
-								item.body[language],
-						),
-			),
-		[articles, language],
-	);
-
+	// Articles missing the active language fall back to English (with a badge)
+	// instead of disappearing — 9 of 12 UI languages have no localized articles.
 	const localizedArticles = useMemo(
 		() =>
-			languageReadyArticles.map((item) => ({
+			articles.map((item) => ({
 				...item,
 				titleText: getLocalizedText(item.title, language),
 				categoryText: getLocalizedText(item.category, language),
+				isFallback: !hasLanguage(item, language),
 			})),
-		[languageReadyArticles, language],
+		[articles, language],
 	);
 
 	const categories = useMemo(
@@ -233,9 +223,16 @@ export default function ExploreScreen() {
 								lightColor="transparent"
 								darkColor="transparent"
 							>
-								<Text style={[styles.category, { color: theme.tint }]}>
-									{item.categoryText}
-								</Text>
+								<View
+									style={styles.cardCategoryRow}
+									lightColor="transparent"
+									darkColor="transparent"
+								>
+									<Text style={[styles.category, { color: theme.tint }]}>
+										{item.categoryText}
+									</Text>
+									{item.isFallback ? <LanguageBadge /> : null}
+								</View>
 								<Text style={styles.title}>{item.titleText}</Text>
 								<Text style={[styles.meta, { color: theme.mutedText }]}>
 									{t("minutesRead", { minutes: item.readTime })}
@@ -255,6 +252,7 @@ export default function ExploreScreen() {
 }
 
 const styles = StyleSheet.create({
+	cardCategoryRow: { flexDirection: "row", alignItems: "center", gap: 6 },
 	container: { flex: 1 },
 	tabletCap: { flex: 1 },
 	topTools: {

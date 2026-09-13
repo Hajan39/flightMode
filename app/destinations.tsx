@@ -91,7 +91,7 @@ export default function DestinationsScreen() {
 								>
 									{destination.tips.map((tip, index) => (
 										<View
-											key={`${destination.id}-${tip.label}`}
+											key={`${destination.id}-${tip.labelKey}`}
 											style={[
 												styles.tipRow,
 												index === 0 && styles.tipRowFirst,
@@ -122,7 +122,7 @@ export default function DestinationsScreen() {
 												crazyColor="transparent"
 											>
 												<Text style={[styles.tipLabel, { color: theme.text }]}>
-													{tip.label}
+													{t(tip.labelKey)}
 												</Text>
 												<Text
 													style={[styles.tipBody, { color: theme.mutedText }]}

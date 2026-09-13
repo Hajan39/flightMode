@@ -14,7 +14,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius } from "@/constants/Spacing";
 import { useArticleImage } from "@/hooks/useArticleImage";
-import { useContentItems } from "@/hooks/useContentItems";
+import { hasLanguage, useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
@@ -32,6 +32,7 @@ export default function ContentDetailScreen() {
 	const [hasFinishedArticle, setHasFinishedArticle] = useState(false);
 	const { width } = useWindowDimensions();
 	const heroImage = useArticleImage(article?.image);
+	const isFallback = article ? !hasLanguage(article, language) : false;
 
 	useEffect(() => {
 		if (id) markArticleRead(id);
@@ -50,8 +51,9 @@ export default function ContentDetailScreen() {
 			category: getLocalizedText(article.category, language),
 			read_time_minutes: article.readTime,
 			language,
+			is_fallback: isFallback,
 		});
-	}, [article, language]);
+	}, [article, language, isFallback]);
 
 	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
 		if (!article || hasFinishedArticle) return;
@@ -68,6 +70,7 @@ export default function ContentDetailScreen() {
 			category: getLocalizedText(article.category, language),
 			read_time_minutes: article.readTime,
 			language,
+			is_fallback: isFallback,
 		});
 		trackFirstSessionCompleted("content");
 	};
@@ -109,6 +112,7 @@ export default function ContentDetailScreen() {
 				</Text>
 				<Text style={[styles.meta, { color: theme.mutedText }]}>
 					{t("minutesRead", { minutes: article.readTime })}
+					{isFallback ? ` · ${t("contentFallbackNotice")}` : ""}
 				</Text>
 				<Text style={[styles.readingHint, { color: theme.mutedText }]}>
 					{t("exploreReadingHint")}

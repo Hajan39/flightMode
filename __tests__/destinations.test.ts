@@ -1,4 +1,10 @@
+import { currencies } from "@/data/currencies";
 import { destinations, getDestinationById } from "@/data/destinations";
+import { phraseLanguages } from "@/data/phrases";
+import { en } from "@/i18n/locales/en";
+
+const enKeys = new Set(Object.keys(en));
+const currencyCodes = new Set(currencies.map((c) => c.code));
 
 describe("destinations integrity", () => {
 	test("every destination has a unique id", () => {
@@ -15,9 +21,24 @@ describe("destinations integrity", () => {
 			expect(d.tips.length).toBeGreaterThanOrEqual(3);
 			for (const tip of d.tips) {
 				expect(tip.icon.length).toBeGreaterThan(0);
-				expect(tip.label.length).toBeGreaterThan(0);
+				expect(enKeys.has(tip.labelKey)).toBe(true);
 				expect(tip.text.length).toBeGreaterThan(0);
 			}
+		},
+	);
+
+	test.each(destinations.map((d) => [d.id, d] as const))(
+		"%s has valid timezone, offset, phrase language and currency",
+		(_id, d) => {
+			// Node ships full ICU, so an invalid IANA name throws here.
+			expect(
+				() => new Intl.DateTimeFormat("en", { timeZone: d.timezone }),
+			).not.toThrow();
+			expect(d.utcOffsetMinutes).toBeGreaterThanOrEqual(-720);
+			expect(d.utcOffsetMinutes).toBeLessThanOrEqual(840);
+			expect(Math.abs(d.utcOffsetMinutes % 15)).toBe(0);
+			expect(phraseLanguages[d.phraseLanguage]).toBeDefined();
+			expect(currencyCodes.has(d.currencyCode)).toBe(true);
 		},
 	);
 

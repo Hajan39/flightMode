@@ -5,6 +5,7 @@ import { achievements, type AchievementState } from "@/data/achievements";
 import { getPlayGamesAchievementId } from "@/data/playGamesAchievements";
 import { useGameStore } from "@/store/useGameStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { addDays, toLocalDateKey } from "@/utils/dates";
 import { unlockPlayGamesAchievement } from "@/utils/playGames";
 
 type AchievementStoreState = {
@@ -25,8 +26,8 @@ type AchievementStoreState = {
 	clearNewUnlocked: () => void;
 };
 
-function todayISO(): string {
-	return new Date().toISOString().slice(0, 10);
+function todayKey(): string {
+	return toLocalDateKey(new Date());
 }
 
 export const useAchievementStore = create<AchievementStoreState>()(
@@ -103,16 +104,14 @@ export const useAchievementStore = create<AchievementStoreState>()(
 			},
 
 			updateStreak: () => {
-				const today = todayISO();
+				const today = todayKey();
 				const state = get();
 				if (state.lastActiveDate === today) return;
 
-				const yesterday = new Date();
-				yesterday.setDate(yesterday.getDate() - 1);
-				const yesterdayISO = yesterday.toISOString().slice(0, 10);
+				const yesterdayKey = toLocalDateKey(addDays(new Date(), -1));
 
 				const newStreak =
-					state.lastActiveDate === yesterdayISO ? state.streakDays + 1 : 1;
+					state.lastActiveDate === yesterdayKey ? state.streakDays + 1 : 1;
 
 				set({
 					lastActiveDate: today,

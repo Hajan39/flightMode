@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import bundledContent from "@/data/content.json";
+import type { Language } from "@/i18n/translations";
 import { useContentStore } from "@/store/useContentStore";
 import type { ContentItem } from "@/types/content";
 
@@ -26,4 +27,23 @@ export function useContentItems() {
 
 export function getBundledContentItems() {
 	return bundledItems;
+}
+
+/** True when the article is fully available (title, category, body) in `language`. */
+export function hasLanguage(item: ContentItem, language: Language): boolean {
+	if (language === "en") return true;
+	return Boolean(
+		item.title[language] && item.category[language] && item.body[language],
+	);
+}
+
+/**
+ * Language the article will actually be rendered in: the active language when
+ * it is available, otherwise English (the guaranteed baseline of every item).
+ */
+export function getArticleDisplayLanguage(
+	item: ContentItem,
+	language: Language,
+): Language {
+	return hasLanguage(item, language) ? language : "en";
 }

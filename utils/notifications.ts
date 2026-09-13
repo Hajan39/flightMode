@@ -1,6 +1,9 @@
 import Constants, { ExecutionEnvironment } from "expo-constants";
 import { Platform } from "react-native";
 
+import { getDeviceLanguage, translate } from "@/i18n/translations";
+import { useSettingsStore } from "@/store/useSettingsStore";
+
 const FLIGHT_REMINDER_CHANNEL_ID = "flight-reminders";
 const FLIGHT_REMINDER_KIND = "flight_ready";
 
@@ -29,6 +32,11 @@ function getNotifications(): NotificationsModule | null {
 
 let handlerConfigured = false;
 
+/** Stored language > device language — same order as `useTranslation`. */
+function currentLanguage() {
+	return useSettingsStore.getState().language ?? getDeviceLanguage();
+}
+
 function ensureNotificationHandler(Notifications: NotificationsModule) {
 	if (handlerConfigured) return;
 
@@ -54,7 +62,7 @@ export async function initializeNotifications() {
 		await Notifications.setNotificationChannelAsync(
 			FLIGHT_REMINDER_CHANNEL_ID,
 			{
-				name: "Flight reminders",
+				name: translate(currentLanguage(), "notifChannelFlightReminders"),
 				importance: Notifications.AndroidImportance.DEFAULT,
 			},
 		);
@@ -152,8 +160,8 @@ export async function scheduleFlightReadyReminder(departureTime: number) {
 	const fireDate = new Date(fireAt);
 	const identifier = await Notifications.scheduleNotificationAsync({
 		content: {
-			title: "Your flight entertainment is ready",
-			body: "Long flight ahead? Relax mode and offline games are ready.",
+			title: translate(currentLanguage(), "notifFlightReadyTitle"),
+			body: translate(currentLanguage(), "notifFlightReadyBody"),
 			data: {
 				reminder_kind: FLIGHT_REMINDER_KIND,
 				departure_time: departureTime,
