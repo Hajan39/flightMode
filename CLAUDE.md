@@ -29,7 +29,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, `app/preflight.tsx` (offline-readiness), `app/checklist.tsx` (travel checklist) and `app/converter.tsx` (currency/units) are modal stack screens; `app/destinations.tsx` (destination tips) and `app/phrasebook.tsx` are pushed card screens. Onboarding flow at `app/onboarding.tsx`.
 
-**Travel tools (all offline):** `data/destinations.ts` carries `timezone`, `utcOffsetMinutes`, `phraseLanguage`, `currencyCode` per city; `utils/timezone.ts` (destination local time + jet-lag plan, Intl with offset fallback), `data/checklist.ts` + `store/useChecklistStore.ts`, `data/phrases.ts` (24 languages × 12 phrases), `data/currencies.ts` + `utils/convert.ts` (approximate rates — refresh `ratesAsOf` per release).
+**Travel tools (all offline):** `data/destinations.ts` carries `timezone`, `utcOffsetMinutes`, `phraseLanguage`, `currencyCode` per city; `utils/timezone.ts` (destination local time + jet-lag plan, Intl with offset fallback), `data/checklist.ts` + `store/useChecklistStore.ts`, `data/phrases.ts` (24 languages × 12 phrases), `data/currencies.ts` + `utils/convert.ts` (bundled approximate rates = offline baseline), `store/useRatesStore.ts` + `utils/ratesSync.ts` + `components/RatesSyncBootstrap.tsx` (live rates from open.er-api.com when online, 12 h cooldown, sync-policy gated; `getEffectiveCurrencies()` overlays them on the bundle).
 
 **Tab screens:**
 - `(tabs)/index.tsx` — Home (daily challenge, quick actions, flight utility, recommendations)
@@ -49,6 +49,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `store/useImageCacheStore.ts` — remote article image cache (url → local uri)
 - `store/useChecklistStore.ts` — travel checklist ticks per flight + custom items (persisted)
 - `store/usePlayersStore.ts` — multiplayer seat names + last player count (persisted)
+- `store/useRatesStore.ts` — live exchange rates + `ratesAsOf`/`lastSyncAt` (persisted; status not persisted)
 
 **Styling:** React Native `StyleSheet` + inline styles. Design tokens:
 - `constants/Colors.ts` — theme palettes: `light`, `dark`, `crazy` (text, background, tint, card, surface, elevated, border, mutedText, etc.)

@@ -10,10 +10,12 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
-import { currencies, getCurrency, ratesAsOf } from "@/data/currencies";
+import { getCurrency } from "@/data/currencies";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useNetworkStore } from "@/store/useNetworkStore";
+import { getEffectiveCurrencies, getRatesProvenance, useRatesStore } from "@/store/useRatesStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import {
 	convertCurrency,
@@ -59,6 +61,13 @@ export default function ConverterScreen() {
 	const incrementConverterUses = useAchievementStore(
 		(s) => s.incrementConverterUses,
 	);
+	const liveRates = useRatesStore((s) => s.rates);
+	const liveAsOf = useRatesStore((s) => s.ratesAsOf);
+	const ratesStatus = useRatesStore((s) => s.status);
+	const syncRates = useRatesStore((s) => s.syncRates);
+	const online = useNetworkStore((s) => s.isInternetReachable) === true;
+	const currencies = useMemo(() => getEffectiveCurrencies(liveRates), [liveRates]);
+	const provenance = getRatesProvenance({ rates: liveRates, ratesAsOf: liveAsOf });
 
 	const [kind, setKind] = useState<Kind>("currency");
 	const [amount, setAmount] = useState("100");
@@ -84,13 +93,13 @@ export default function ConverterScreen() {
 	const result = useMemo(() => {
 		if (value === null) return null;
 		if (kind === "currency") {
-			const converted = convertCurrency(value, from, to);
+			const converted = convertCurrency(value, from, to, currencies);
 			return converted === null ? null : formatCurrency(converted, to);
 		}
 		const converted = convertUnit(value, kind, direction);
 		const [metric, imperial] = unitLabels[kind];
 		return `${formatUnit(converted)} ${direction === "metricToImperial" ? imperial : metric}`;
-	}, [value, kind, from, to, direction]);
+	}, [value, kind, from, to, direction, currencies]);
 
 	// Debounced usage event + one-time achievement counter.
 	useEffect(() => {
@@ -287,11 +296,29 @@ export default function ConverterScreen() {
 				{kind === "currency" ? (
 					<View style={styles.footer} lightColor="transparent" darkColor="transparent">
 						<Text style={[styles.footerText, { color: theme.mutedText }]}>
-							{t("converterRatesAsOf", { date: ratesAsOf })}
+							{provenance.live
+								? t("converterRatesLive", { date: provenance.asOf })
+								: t("converterRatesAsOf", { date: provenance.asOf })}
 						</Text>
 						<Text style={[styles.footerText, { color: theme.mutedText }]}>
 							{t("converterRatesDisclaimer")}
 						</Text>
+						{online ? (
+							<Pressable
+								onPress={() => {
+									haptic.tap();
+									void syncRates({ force: true });
+								}}
+								disabled={ratesStatus === "syncing"}
+								accessibilityRole="button"
+								style={[styles.refreshBtn, { borderColor: theme.border, opacity: ratesStatus === "syncing" ? 0.6 : 1 }]}
+							>
+								<Ionicons name="cloud-download-outline" size={16} color={theme.tint} />
+								<Text style={[styles.refreshText, { color: theme.tint }]}>
+									{ratesStatus === "syncing" ? t("converterRatesUpdating") : t("converterRatesRefresh")}
+								</Text>
+							</Pressable>
+						) : null}
 					</View>
 				) : null}
 			</ScrollView>
@@ -356,4 +383,16 @@ const styles = StyleSheet.create({
 	result: { fontSize: FontSize["3xl"], fontWeight: FontWeight.black, letterSpacing: -0.5 },
 	footer: { gap: 2, paddingHorizontal: Spacing.xs },
 	footerText: { fontSize: FontSize.xs, lineHeight: 16 },
+	refreshBtn: {
+		flexDirection: "row",
+		alignItems: "center",
+		alignSelf: "flex-start",
+		gap: 6,
+		borderWidth: 1,
+		borderRadius: Radius.pill,
+		paddingHorizontal: Spacing.md,
+		paddingVertical: 6,
+		marginTop: Spacing.sm,
+	},
+	refreshText: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold },
 });

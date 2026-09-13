@@ -16,6 +16,7 @@ import {
 } from "@/store/useChecklistStore";
 import { useContentStore } from "@/store/useContentStore";
 import { useNetworkStore } from "@/store/useNetworkStore";
+import { useRatesStore } from "@/store/useRatesStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 function ReadyRow({
@@ -79,6 +80,7 @@ export default function PreflightScreen() {
 	const isInternetReachable = useNetworkStore((s) => s.isInternetReachable);
 	const syncStatus = useContentStore((s) => s.status);
 	const syncContent = useContentStore((s) => s.syncContent);
+	const syncRates = useRatesStore((s) => s.syncRates);
 
 	const online = isInternetReachable === true;
 	const gameCount = gameRegistry.length;
@@ -174,7 +176,10 @@ export default function PreflightScreen() {
 				{online && (
 					<AnimatedPressable
 						disabled={syncStatus === "syncing"}
-						onPress={() => void syncContent()}
+						onPress={() => {
+							void syncContent();
+							void syncRates({ force: true });
+						}}
 						style={[
 							styles.refreshBtn,
 							{ backgroundColor: theme.tint, opacity: syncStatus === "syncing" ? 0.6 : 1 },

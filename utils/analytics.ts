@@ -44,6 +44,8 @@ export type AnalyticsEventName =
 	| "phrasebook_language_changed"
 	| "converter_open"
 	| "converter_used"
+	| "rates_sync_success"
+	| "rates_sync_failed"
 	| "app_error";
 
 export type AnalyticsProperties = Record<

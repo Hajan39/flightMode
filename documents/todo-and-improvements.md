@@ -11,7 +11,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 - ~~fallback clanku na EN pro jazyky bez lokalizace~~ — hotovo 2026-09-13
 - **doplnit realny support e-mail v `app/settings.tsx`** (stale placeholder `support@eon-app.com`)
 - **Expo SDK 57**: overit EAS preview build (`--profile preview`) na zarizeni pred rolloutem Play draftu — reanimated 4.5 layout animace, `withPlayGames` plugin, notifikace, audio
-- Travel tools follow-upy: aktualizovat `data/currencies.ts` `ratesAsOf` pri kazdem release; `utcOffsetMinutes` fallback ignoruje DST (Intl cesta je DST-aware); zvazit per-destinaci polozky checklistu; pridat `zh` do frazniku (dnes 24 jazyku destinaci, cinstina chybi, protoze zadna bundlovana destinace neni v Cine)
+- Travel tools follow-upy: bundlovane kurzy v `data/currencies.ts` jsou jen offline baseline (live sync z open.er-api.com), presto `ratesAsOf` obcas obnovit; `utcOffsetMinutes` fallback ignoruje DST (Intl cesta je DST-aware); zvazit per-destinaci polozky checklistu; pridat `zh` do frazniku (dnes 24 jazyku destinaci, cinstina chybi, protoze zadna bundlovana destinace neni v Cine)
 - Nove MP hry: otestovat `split-duel` otoceny panel na Androidu i iOS (transform 180° + hit-testing), Seat Neighbor otazky prelozit do zbylych 9 jazyku (dnes en/cs/de + fallback)
 
 - ~~logicke hry s urovnemi (rozvoj logickeho mysleni)~~ — hotovo: `runway-jam` (Rush Hour, 12 levelu, BFS-verifikovane),

@@ -1280,4 +1280,7 @@ gameOddOneOutName: "Hledej Vetřelce",
 	rulesSplitDuel: "🎯 Cíl\n• Kdo první vyhraje 3 kola (max 5 kol).\n\n📱 Příprava\n• Položte telefon naplocho mezi sebe. Horní půlka je otočená k soupeři.\n\n⚡ Kola\n• Oba vidíte stejnou výzvu ve stejný okamžik.\n• Klepni, když má kolečko danou barvu, najdi lišící se ikonu, vyřeš příklad nebo klepni, až panel zezelená — první správný dotyk vyhrává.\n• Předčasný nebo špatný dotyk = prohra kola.\n• Drž & pusť: drž tlačítko a pusť co nejblíž cílovému času.",
 	rulesSeatNeighbor: "🎯 Cíl\n• Nasbírejte spolu co nejvíc Sync bodů v 8 kolech.\n\n🧠 Mind Meld (5 kol)\n• Jeden hádá, jak by druhý odpověděl na cestovatelskou otázku, pak si předáte telefon a druhý odpoví doopravdy.\n• Stejná odpověď = +1 Sync.\n\n🤔 Radši bys (3 kola)\n• Oba vyberete tajně. Shoda = +1 Sync.\n\n💞 Výsledek\n• 0–2 Cizinci · 3–4 Sousedé · 5–6 Parťáci · 7–8 Spřízněné duše",
 	rulesEmojiStory: "📖 Příběh\n• Aplikace začne cestovatelskou scénou. Příběh má 3 dějství: Odlet, Turbulence, Přistání.\n\n✍️ Tvůj tah\n• Vyber spojku (Pak, Ale, Náhle…) a 1–2 emoji z ruky o 6 dlaždicích.\n• Předej telefon dalšímu vypravěči.\n\n🗳️ Hlasování\n• Po každém dějství každý tajně hlasuje pro příspěvek, který se mu líbil nejvíc (nikdy ne vlastní). Každý hlas = 1 bod.\n• Režim jen příběh hlasování vynechá — na konci si dílo přečtěte nahlas.\n\n🏆 Nejvíc hlasů po 3 dějstvích vyhrává.",
+	converterRatesLive: "Aktuální kurzy · aktualizováno {{date}}",
+	converterRatesRefresh: "Aktualizovat kurzy",
+	converterRatesUpdating: "Aktualizuji…",
 } as const;
