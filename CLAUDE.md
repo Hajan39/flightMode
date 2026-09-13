@@ -27,7 +27,9 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **App version:** 1.4.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
-**Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, and `app/preflight.tsx` (offline-readiness) are modal stack screens; `app/destinations.tsx` (destination tips) is a pushed card screen. Onboarding flow at `app/onboarding.tsx`.
+**Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, `app/preflight.tsx` (offline-readiness), `app/checklist.tsx` (travel checklist) and `app/converter.tsx` (currency/units) are modal stack screens; `app/destinations.tsx` (destination tips) and `app/phrasebook.tsx` are pushed card screens. Onboarding flow at `app/onboarding.tsx`.
+
+**Travel tools (all offline):** `data/destinations.ts` carries `timezone`, `utcOffsetMinutes`, `phraseLanguage`, `currencyCode` per city; `utils/timezone.ts` (destination local time + jet-lag plan, Intl with offset fallback), `data/checklist.ts` + `store/useChecklistStore.ts`, `data/phrases.ts` (24 languages × 12 phrases), `data/currencies.ts` + `utils/convert.ts` (approximate rates — refresh `ratesAsOf` per release).
 
 **Tab screens:**
 - `(tabs)/index.tsx` — Home (daily challenge, quick actions, flight utility, recommendations)
@@ -45,6 +47,8 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `store/useContentStore.ts` — optional remote article sync; persists items/version/lastSyncAt only
 - `store/useDiscoveryStore.ts` — `seenGameIds` for the Home "New to try" row (persisted)
 - `store/useImageCacheStore.ts` — remote article image cache (url → local uri)
+- `store/useChecklistStore.ts` — travel checklist ticks per flight + custom items (persisted)
+- `store/usePlayersStore.ts` — multiplayer seat names + last player count (persisted)
 
 **Styling:** React Native `StyleSheet` + inline styles. Design tokens:
 - `constants/Colors.ts` — theme palettes: `light`, `dark`, `crazy` (text, background, tint, card, surface, elevated, border, mutedText, etc.)
@@ -53,13 +57,13 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
-**Localization:** `hooks/useTranslation.ts` → `i18n/locales/*.ts`. 12 languages (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`). Language preference order: stored > system > en. Content (`data/content.json`) is fully localized for `en/cs/de` only.
+**Localization:** `hooks/useTranslation.ts` → `i18n/locales/*.ts`. 12 languages (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`). Language preference order: stored > system > en. Content (`data/content.json`) is fully localized for `en/cs/de` only; other languages render articles in English with an `EN` badge (`hasLanguage()` in `hooks/useContentItems.ts`). Destination tip labels are localized via `labelKey`; tip text stays English.
 
 **Types:** `types/game.ts` (GameProgress, GameConfig, GameCategory, GameDifficulty, GamePlayMode), `types/flight.ts` (Flight), `types/content.ts` (ContentItem).
 
 ## Games
 
-36 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+39 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -85,6 +89,9 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `cross-air-radar` | multiplayer | medium | Pass-and-play; Battleship-style |
 | `cross-code-breaker` | multiplayer | hard | Pass-and-play; Mastermind |
 | `cross-liars-dice` | multiplayer | hard | Pass-and-play |
+| `split-duel` | multiplayer | easy | Shared-screen, simultaneous: phone flat between players, top pane rotated 180°; 5 reflex mini-rounds, first to 3 |
+| `seat-neighbor` | multiplayer | easy | Pass-and-play icebreaker for 2: mind-meld + would-you-rather, shared Sync score (cooperative, `updateProgress` directly) |
+| `emoji-story` | multiplayer | easy | Pass-and-play 2–6: emoji story chain in 3 acts, connector words, secret voting; story-only mode |
 | `twenty-forty-eight` | brain | hard | 2048 sliding-tile puzzle; 15 min |
 | `minesweeper` | strategy | medium | Classic mine-sweeping; 10 min |
 | `word-scramble` | brain | medium | Unscramble aviation words; daily challenge |
@@ -115,6 +122,13 @@ Shared game UX components (use these, don't reinvent):
 - `components/GameCountdown.tsx` — 3-2-1-GO overlay with haptic ticks
 - `components/GameRules.tsx` — rules display (has a regex that triggers a lint warning — known debt)
 
+Multiplayer (pass-and-play / shared-screen) components in `components/multiplayer/` — every multiplayer game uses them:
+- `PlayerSetup` — player count (2–6 or `fixedCount`), optional per-seat names (persisted in `store/usePlayersStore.ts`), game options via `children` (`OptionChips`)
+- `TurnBanner`, `PlayerScoreStrip`, `PassDeviceOverlay` (opaque hand-off; `secret` adds "Don't peek"), `MatchResult` (leaderboard: Rematch / Change players / Quit)
+- `hooks/useMatchPlayers.ts` → `MatchPlayer { index, name, color, isHost }`; seat colors are `PlayerColors` in `constants/Colors.ts`
+
+**Multiplayer scoring convention:** call `recordMatch(gameId, standings)` from `utils/multiplayerScoring.ts` **once per match**. It records the host's (seat 0 = device owner) score and `won = host is the sole winner` (draw = not won), so `highScore`/streaks stay meaningful. Cooperative games (`seat-neighbor`) call `updateProgress` directly with the shared score.
+
 **To add a game:**
 1. Create `games/<id>/index.tsx`
 2. Register in `data/games.ts`
@@ -134,7 +148,7 @@ Remote endpoint is optional via `EXPO_PUBLIC_STRAPI_CONTENT_URL` or `EXPO_PUBLIC
 
 ## Achievements
 
-Defined in `data/achievements.ts`. Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
+Defined in `data/achievements.ts` (47 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
 
 `useAchievementStore` tracks: `unlockedIds`, `newUnlockedIds` (cleared by `AchievementToast`), `totalFlights`, `totalRelaxSessions`, `articlesRead`, `soundsPlayed`, `lastActiveDate`, `streakDays`.
 

@@ -9,6 +9,30 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **Expo SDK 57 upgrade** (React Native 0.86.3, reanimated 4.5.1, worklets 0.10.1, jest-expo 57, posthog-react-native 4.71, zustand 5.0.15). App version 1.3.0 → **1.4.0** so SDK 57 OTAs land on a fresh runtime. React Compiler now enabled via `app.json` `experiments.reactCompiler` (manual babel plugin removed).
+- **Travel tools (offline):**
+  - **Travel checklist** (`app/checklist.tsx`) — 5 sections / 27 default items (before departure, documents, carry-on, at arrival, connection) + your own items; ticks reset per new flight, custom items persist. Reachable from Home and the Pre-flight screen.
+  - **Destination local time + jet lag** — the Home flight card shows "Now in {city}" and local arrival time (+1 day aware); a jet-lag card gives the hour shift, direction and a concrete on-plane sleep window / stay-awake advice (`utils/timezone.ts`, Intl time zones with bundled-offset fallback).
+  - **Phrasebook** (`app/phrasebook.tsx`) — 12 survival phrases in 24 destination languages with romanization for non-Latin scripts; deep-linked from destinations and Home.
+  - **Converter** (`app/converter.tsx`) — currency (33 bundled approximate rates, dated) + °C/°F, km/mi, kg/lb.
+  - Destinations gain `timezone`, `utcOffsetMinutes`, `phraseLanguage`, `currencyCode`; each destination card links to its phrasebook and currency.
+  - 5 traveler achievements: Ready to Fly, Packing Pro, Time Traveler, Polyglot, Currency Savvy.
+- **Multiplayer foundation** (`components/multiplayer/`): `PlayerSetup` with persisted player names, `TurnBanner`, `PlayerScoreStrip`, `PassDeviceOverlay` (opaque, "don't peek" mode), `MatchResult` leaderboard with Rematch / Change players / Quit, and a host-based scoring convention (`utils/multiplayerScoring.recordMatch`) so multiplayer best scores and streaks finally mean something.
+- **Three new multiplayer games** (catalog 36 → 39): **Split Duel** (shared-screen, simultaneous — phone flat between players, top half rotated, 5 reflex mini-rounds), **Seat Neighbor** (2-player icebreaker: mind-meld + would-you-rather, shared Sync score with tiers, 60 questions), **Turbulence Tales** (2–6 players build an emoji travel story in 3 acts and vote for the best twist; story-only mode). 7 new achievements incl. cross-game Good Host / Undefeated Host.
+- Articles missing the active UI language now fall back to English with an `EN` badge instead of disappearing (9 of 12 languages previously saw an empty Explore tab).
+
+### Changed
+
+- All 8 existing multiplayer games migrated to the shared multiplayer components and design tokens: player names, consistent setup → play → leaderboard flow, match options only in setup (no more silent match reset), draw haptics, translated accessibility labels, tap-to-skip turn delays, connect4 winner check memoized, emoji-find pause + timer cleanup, liars-dice secret hand-off before every peek.
+- Destination tip labels are localized (`labelKey`), tip text remains English.
+- Removed 71 dead or duplicated multiplayer translation keys from all 12 locales.
+
+### Fixed
+
+- Day streak used the UTC date — now uses the device's local calendar day (travellers no longer lose a streak at UTC midnight).
+- "Screen not found" page and the flight-ready notification were hardcoded English — now translated.
+- `preflight.tsx` dead `SOUNDSCAPE_COUNT` constant removed.
+
 - Logic-games update — hints, more levels, localized accessibility:
   - **Hint system** in all three logic games, each powered by the game's own solver: Runway Jam suggests the next optimal move (from the BFS solution), Sky Pixels reveals one logically-forced cell (line deduction from the current grid), Sun & Moon reveals one cell of the unique solution. Using any hint caps the level at 2 stars.
   - **More levels**, all solver-verified like the originals: Runway Jam +6 expert levels (13–18, optimal ≥ 16 moves), Sky Pixels +5 new 10×10 pictures (11–15, guess-free line-solvable), Sun & Moon +4 harder 8×8 levels (13–16, up to 52/64 blanks, exactly one solution each).

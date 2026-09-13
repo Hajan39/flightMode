@@ -23,9 +23,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - tabs: Home, Games, Explore, Relax
 - profile + achievements + local stats
 - settings kompaktne seskupene na app preferences, article sync a support
-- 31 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Cabin Lights, Word Guess, Sudoku, Snake)
+- 39 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Split Duel, Soused ze sedacky, Turbulentni pribehy); 11 her pro vice hracu nad sdilenymi komponentami `components/multiplayer/`
+- cestovni nastroje offline: checklist per let (`app/checklist.tsx`), lokalni cas v destinaci + jet-lag karta na Home, fraznik 24 jazyku (`app/phrasebook.tsx`), prevodnik men a jednotek (`app/converter.tsx`)
 - 44 clanku v `data/content.json`
-- content lokalizace kompletni pro `en/cs/de`
+- content lokalizace kompletni pro `en/cs/de`; ostatni jazyky vidi clanky anglicky s badge `EN` (drive 0 clanku)
 - UI translation keys jsou kompletni napric vsemi podporovanymi jazyky (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`)
 - games search + category filtry + intent filtry pro quick, play together a longer/deep hry
 - home dashboard s daily challenge, play together a flight utility kartou; navic flight-aware sekce "Games for your flight" (hry podle zbyvajiciho casu letu), "Jump back in" (naposledy hrane hry) a CTA na pre-flight readiness screen
@@ -46,7 +47,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - custom SQLite analytics event queue
 - flight API integraci
 - airport detection nebo location permissions
-- push/local notifications
+- vlastni kurzovni listek online (prevodnik ma bundlovane priblizne kurzy s datem)
 - sitovy multiplayer
 - serverovou personalizaci
 - monetization/premium unlock
@@ -129,6 +130,14 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - advanced personalization
 
 ## 4. Changelog
+
+## 2026-09-13
+
+- Expo SDK 57 (RN 0.86.3, reanimated 4.5.1), verze appky 1.4.0, React Compiler pres `app.json`; cisty lockfile, `expo-doctor` 21/21
+- Cestovni nastroje offline: **checklist** (5 sekci / 27 polozek + vlastni, reset per let, `useChecklistStore`), **cas v destinaci + jet lag** (destinace maji `timezone`/`utcOffsetMinutes`, `utils/timezone.ts`, karta na Home s doporucenim spanku), **fraznik** (24 jazyku × 12 frazi, romanizace), **prevodnik** (33 men priblizne + °C/°F, km/mi, kg/lb); 5 novych traveler achievementu; vstupy z Home ("Travel tools"), Preflight a karet destinaci
+- Fallback clanku na EN s badge pro 9 jazyku bez lokalizovaneho obsahu; lokalizovane labely tipu destinaci; prelozeny not-found a notifikace; streak podle lokalniho dne (ne UTC)
+- Multiplayer sjednoceni: `components/multiplayer/` (PlayerSetup se jmeny hracu, TurnBanner, PlayerScoreStrip, PassDeviceOverlay, MatchResult), `usePlayersStore`, `PlayerColors`, scoring konvence `recordMatch` (host = sedadlo 0); vsech 8 MP her migrovano (tokeny, i18n uniky, a11y, draw haptika, rematch se stejnym nastavenim); smazano 71 mrtvych klicu
+- 3 nove MP hry: **Split Duel** (sharedScreen, simultanni, horni pulka otocena o 180°), **Soused ze sedacky** (icebreaker pro 2, Sync skore, 60 otazek en/cs/de), **Turbulentni pribehy** (emoji story chain 2–6 hracu, hlasovani); 7 achievementu; katalog 36 → 39; suite 625 testu / 22 suites
 
 ## 2026-07-25
 

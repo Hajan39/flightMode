@@ -7,6 +7,13 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P0 (aktivni)
 
+- ~~sjednotit 8 multiplayer her na sdilene komponenty + design tokeny~~ — hotovo 2026-09-13 (`components/multiplayer/`, `recordMatch` konvence)
+- ~~fallback clanku na EN pro jazyky bez lokalizace~~ — hotovo 2026-09-13
+- **doplnit realny support e-mail v `app/settings.tsx`** (stale placeholder `support@eon-app.com`)
+- **Expo SDK 57**: overit EAS preview build (`--profile preview`) na zarizeni pred rolloutem Play draftu — reanimated 4.5 layout animace, `withPlayGames` plugin, notifikace, audio
+- Travel tools follow-upy: aktualizovat `data/currencies.ts` `ratesAsOf` pri kazdem release; `utcOffsetMinutes` fallback ignoruje DST (Intl cesta je DST-aware); zvazit per-destinaci polozky checklistu; pridat `zh` do frazniku (dnes 24 jazyku destinaci, cinstina chybi, protoze zadna bundlovana destinace neni v Cine)
+- Nove MP hry: otestovat `split-duel` otoceny panel na Androidu i iOS (transform 180° + hit-testing), Seat Neighbor otazky prelozit do zbylych 9 jazyku (dnes en/cs/de + fallback)
+
 - ~~logicke hry s urovnemi (rozvoj logickeho mysleni)~~ — hotovo: `runway-jam` (Rush Hour, 12 levelu, BFS-verifikovane),
   `nonogram` (picross, 10 puzzlu, line-solver dokazuje guess-free resitelnost), `sun-moon` (Takuzu, 12 levelu,
   presne 1 reseni per level). Kazdy level overen solverem v unit testech. Follow-up napady: dalsi level packy
@@ -92,7 +99,9 @@ Audit checklist pro kazdou hru:
 7. ma opakovatelnost: nahoda, progres, mastery, duel dynamiku nebo kratky challenge loop?
 8. neni pravidlove nebo vizualne moc narocna pro letadlo/offline casual kontext?
 
-### Later Implementation Slice: Strapi Articles
+### Later Implementation Slice: Article sync (kod je Sanity, ne Strapi)
+
+> Pozn. 2026-09-13: `utils/contentSync.ts` je implementovany proti **Sanity** (`EXPO_PUBLIC_SANITY_PROJECT_ID`), nikoliv Strapi — nize uvedene kroky o Strapi jsou zastarale a je treba je prepsat podle realneho backendu.
 
 Strapi collection type: `Article`.
 
