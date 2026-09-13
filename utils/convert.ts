@@ -28,9 +28,9 @@ export function formatCurrency(amount: number, code: string): string {
 	const currency = getCurrency(code);
 	const decimals = currency?.zeroDecimals ? 0 : 2;
 	const rounded = amount.toFixed(decimals);
-	// Thousands separator with a thin space — locale-neutral and readable.
+	// Thousands separator with a plain space — locale-neutral and readable.
 	const [intPart, fracPart] = rounded.split(".");
-	const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+	const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 	const symbol = currency?.symbol ?? code.toUpperCase();
 	return fracPart ? `${symbol} ${grouped}.${fracPart}` : `${symbol} ${grouped}`;
 }

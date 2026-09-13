@@ -58,6 +58,12 @@ export const playGamesAchievementIds: Record<string, string | null> = {
 	"ground-controller": null,
 	"pixel-artist": null,
 	equilibrium: null,
+	// ── Travel tools ──
+	"checklist-ready": null,
+	"checklist-veteran": null,
+	"time-traveler": null,
+	polyglot: null,
+	"currency-savvy": null,
 };
 
 /** Returns the Play Games achievement id for a local id, or null if unmapped. */

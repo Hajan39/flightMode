@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -9,24 +10,36 @@ import Colors from "@/constants/Colors";
 import { gameRegistry } from "@/data/games";
 import { useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
+import {
+	getChecklistProgress,
+	useChecklistStore,
+} from "@/store/useChecklistStore";
 import { useContentStore } from "@/store/useContentStore";
 import { useNetworkStore } from "@/store/useNetworkStore";
-
-const SOUNDSCAPE_COUNT = 4; // rain / white noise / ocean / cabin — see relax.tsx
+import { captureAnalyticsEvent } from "@/utils/analytics";
 
 function ReadyRow({
 	icon,
 	label,
 	sublabel,
 	theme,
+	onPress,
+	done = true,
 }: {
 	icon: keyof typeof Ionicons.glyphMap;
 	label: string;
 	sublabel: string;
 	theme: (typeof Colors)["dark"];
+	/** When set the row becomes a link (chevron instead of checkmark unless `done`). */
+	onPress?: () => void;
+	done?: boolean;
 }) {
+	const Wrapper = onPress ? AnimatedPressable : View;
 	return (
-		<View style={[styles.row, { borderColor: theme.border }]}>
+		<Wrapper
+			style={[styles.row, { borderColor: theme.border }]}
+			{...(onPress ? { onPress, accessibilityRole: "button" as const } : {})}
+		>
 			<View
 				style={[styles.rowIcon, { backgroundColor: theme.accentSoft }]}
 				lightColor="transparent"
@@ -44,8 +57,12 @@ function ReadyRow({
 					{sublabel}
 				</Text>
 			</View>
-			<Ionicons name="checkmark-circle" size={22} color={theme.successBorder} />
-		</View>
+			{onPress && !done ? (
+				<Ionicons name="chevron-forward" size={22} color={theme.mutedText} />
+			) : (
+				<Ionicons name="checkmark-circle" size={22} color={theme.successBorder} />
+			)}
+		</Wrapper>
 	);
 }
 
@@ -53,8 +70,12 @@ export default function PreflightScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
+	const router = useRouter();
 
 	const articles = useContentItems();
+	const checkedIds = useChecklistStore((s) => s.checkedIds);
+	const customItems = useChecklistStore((s) => s.customItems);
+	const checklist = getChecklistProgress({ checkedIds, customItems });
 	const isInternetReachable = useNetworkStore((s) => s.isInternetReachable);
 	const syncStatus = useContentStore((s) => s.status);
 	const syncContent = useContentStore((s) => s.syncContent);
@@ -112,6 +133,20 @@ export default function PreflightScreen() {
 						label={t("preflightRelax")}
 						sublabel={t("preflightReadyLabel")}
 						theme={theme}
+					/>
+					<ReadyRow
+						icon="checkbox-outline"
+						label={t("preflightChecklistRow")}
+						sublabel={t("checklistProgress", {
+							done: checklist.done,
+							total: checklist.total,
+						})}
+						theme={theme}
+						done={checklist.total > 0 && checklist.done >= checklist.total}
+						onPress={() => {
+							captureAnalyticsEvent("checklist_open", { source: "preflight" });
+							router.push("/checklist" as never);
+						}}
 					/>
 				</View>
 	

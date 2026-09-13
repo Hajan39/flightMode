@@ -14,12 +14,14 @@ import {
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import { destinations } from "@/data/destinations";
+import { destinations, getDestinationById } from "@/data/destinations";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useChecklistStore } from "@/store/useChecklistStore";
 import { useFlightStore } from "@/store/useFlightStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { scheduleFlightReadyReminder } from "@/utils/notifications";
+import { getJetlagPlan } from "@/utils/timezone";
 
 function pad2(value: number) {
 	return String(value).padStart(2, "0");
@@ -214,14 +216,29 @@ export default function FlightEditScreen() {
 			return;
 		}
 
+		const flightId = existingFlight?.id ?? Date.now().toString();
 		setFlight({
-			id: existingFlight?.id ?? Date.now().toString(),
+			id: flightId,
 			departureTime,
 			duration: totalMinutes,
 			flightNumber: flightNumber.trim() || undefined,
 			destinationId,
 		});
-		if (!existingFlight) incrementFlights();
+		if (!existingFlight) {
+			incrementFlights();
+			// A new flight starts with a fresh checklist (custom items survive).
+			useChecklistStore.getState().resetForFlight(flightId, "new_flight");
+		}
+		const destination = destinationId ? getDestinationById(destinationId) : undefined;
+		if (destination) {
+			const plan = getJetlagPlan({
+				departureTime,
+				duration: totalMinutes,
+				nowMs: departureTime,
+				destination,
+			});
+			useAchievementStore.getState().recordTimezoneShift(plan.shiftHours);
+		}
 		captureAnalyticsEvent(isEditingFlight ? "flight_edited" : "flight_added", {
 			duration_minutes: totalMinutes,
 			departure_time: departureTime,

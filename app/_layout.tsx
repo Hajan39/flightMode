@@ -159,6 +159,18 @@ function RootStack() {
 				name="destinations"
 				options={{ title: t("stackDestinations") }}
 			/>
+			<Stack.Screen
+				name="checklist"
+				options={{ title: t("stackChecklist"), presentation: "modal" }}
+			/>
+			<Stack.Screen
+				name="converter"
+				options={{ title: t("stackConverter"), presentation: "modal" }}
+			/>
+			<Stack.Screen
+				name="phrasebook"
+				options={{ title: t("stackPhrasebook") }}
+			/>
 		</Stack>
 	);
 }

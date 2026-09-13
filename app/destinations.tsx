@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,12 +10,14 @@ import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
 import { destinations } from "@/data/destinations";
+import { getPhraseLanguage } from "@/data/phrases";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export default function DestinationsScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
+	const router = useRouter();
 	const { focus } = useLocalSearchParams<{ focus?: string }>();
 	const focusedId =
 		focus && destinations.some((d) => d.id === focus)
@@ -132,6 +134,47 @@ export default function DestinationsScreen() {
 											</View>
 										</View>
 									))}
+									<View
+										style={styles.toolsRow}
+										lightColor="transparent"
+										darkColor="transparent"
+										crazyColor="transparent"
+									>
+										{destination.phraseLanguage !== "en" ? (
+											<Pressable
+												style={[styles.toolBtn, { borderColor: theme.border, backgroundColor: theme.surface }]}
+												onPress={() =>
+													router.push(
+														`/phrasebook?lang=${destination.phraseLanguage}&source=destinations` as never,
+													)
+												}
+												accessibilityRole="button"
+											>
+												<Ionicons name="chatbubbles-outline" size={16} color={theme.tint} />
+												<Text style={[styles.toolText, { color: theme.text }]} numberOfLines={1}>
+													{t("destinationsPhrasebookCta", {
+														language:
+															getPhraseLanguage(destination.phraseLanguage)?.nativeName ??
+															destination.phraseLanguage,
+													})}
+												</Text>
+											</Pressable>
+										) : null}
+										<Pressable
+											style={[styles.toolBtn, { borderColor: theme.border, backgroundColor: theme.surface }]}
+											onPress={() =>
+												router.push(
+													`/converter?currency=${destination.currencyCode}&source=destinations` as never,
+												)
+											}
+											accessibilityRole="button"
+										>
+											<Ionicons name="swap-horizontal-outline" size={16} color={theme.tint} />
+											<Text style={[styles.toolText, { color: theme.text }]} numberOfLines={1}>
+												{t("destinationsConverterCta", { currency: destination.currencyCode })}
+											</Text>
+										</Pressable>
+									</View>
 								</View>
 							)}
 						</View>
@@ -219,6 +262,23 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	tipText: { flex: 1 },
+	toolsRow: {
+		flexDirection: "row",
+		gap: Spacing.sm,
+		paddingVertical: Spacing.md,
+	},
+	toolBtn: {
+		flex: 1,
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+		gap: 6,
+		borderWidth: 1,
+		borderRadius: Radius.card,
+		paddingVertical: Spacing.sm + 2,
+		paddingHorizontal: Spacing.sm,
+	},
+	toolText: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold, flexShrink: 1 },
 	tipLabel: {
 		fontSize: FontSize.base,
 		fontWeight: FontWeight.semibold,

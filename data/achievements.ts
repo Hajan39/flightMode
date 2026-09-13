@@ -8,6 +8,10 @@ export type AchievementState = {
 	totalRelaxSessions: number;
 	soundsPlayed: string[];
 	streakDays: number;
+	checklistsCompleted: number;
+	maxTimezoneShiftHours: number;
+	phraseLanguagesViewed: string[];
+	converterUses: number;
 };
 
 export type AchievementDef = {
@@ -154,6 +158,46 @@ export const achievements: AchievementDef[] = [
 		icon: "globe-outline",
 		category: "traveler",
 		condition: (s) => s.totalFlights >= 10,
+	},
+	{
+		id: "checklist-ready",
+		titleKey: "achieveChecklistReadyTitle",
+		descriptionKey: "achieveChecklistReadyDesc",
+		icon: "checkbox-outline",
+		category: "traveler",
+		condition: (s) => s.checklistsCompleted >= 1,
+	},
+	{
+		id: "checklist-veteran",
+		titleKey: "achieveChecklistVeteranTitle",
+		descriptionKey: "achieveChecklistVeteranDesc",
+		icon: "checkmark-done-outline",
+		category: "traveler",
+		condition: (s) => s.checklistsCompleted >= 3,
+	},
+	{
+		id: "time-traveler",
+		titleKey: "achieveTimeTravelerTitle",
+		descriptionKey: "achieveTimeTravelerDesc",
+		icon: "time-outline",
+		category: "traveler",
+		condition: (s) => s.maxTimezoneShiftHours >= 6,
+	},
+	{
+		id: "polyglot",
+		titleKey: "achievePolyglotTitle",
+		descriptionKey: "achievePolyglotDesc",
+		icon: "language-outline",
+		category: "traveler",
+		condition: (s) => s.phraseLanguagesViewed.length >= 3,
+	},
+	{
+		id: "currency-savvy",
+		titleKey: "achieveCurrencySavvyTitle",
+		descriptionKey: "achieveCurrencySavvyDesc",
+		icon: "cash-outline",
+		category: "traveler",
+		condition: (s) => s.converterUses >= 1,
 	},
 	// ── Return / loyalty (per-flight, not daily — this is a bursty app) ──
 	{

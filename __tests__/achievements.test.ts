@@ -10,6 +10,10 @@ const emptyState: AchievementState = {
 	totalRelaxSessions: 0,
 	soundsPlayed: [],
 	streakDays: 0,
+	checklistsCompleted: 0,
+	maxTimezoneShiftHours: 0,
+	phraseLanguagesViewed: [],
+	converterUses: 0,
 };
 
 describe("achievements integrity", () => {

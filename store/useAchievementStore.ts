@@ -17,7 +17,15 @@ type AchievementStoreState = {
 	soundsPlayed: string[];
 	lastActiveDate: string | null;
 	streakDays: number;
+	checklistsCompleted: number;
+	maxTimezoneShiftHours: number;
+	phraseLanguagesViewed: string[];
+	converterUses: number;
 	checkAndUnlock: () => void;
+	incrementChecklistsCompleted: () => void;
+	recordTimezoneShift: (hours: number) => void;
+	markPhraseLanguageViewed: (code: string) => void;
+	incrementConverterUses: () => void;
 	markArticleRead: (id: string) => void;
 	incrementRelax: () => void;
 	incrementFlights: () => void;
@@ -41,6 +49,10 @@ export const useAchievementStore = create<AchievementStoreState>()(
 			soundsPlayed: [],
 			lastActiveDate: null,
 			streakDays: 0,
+			checklistsCompleted: 0,
+			maxTimezoneShiftHours: 0,
+			phraseLanguagesViewed: [],
+			converterUses: 0,
 
 			checkAndUnlock: () => {
 				const state = get();
@@ -52,6 +64,10 @@ export const useAchievementStore = create<AchievementStoreState>()(
 					totalRelaxSessions: state.totalRelaxSessions,
 					soundsPlayed: state.soundsPlayed,
 					streakDays: state.streakDays,
+					checklistsCompleted: state.checklistsCompleted,
+					maxTimezoneShiftHours: state.maxTimezoneShiftHours,
+					phraseLanguagesViewed: state.phraseLanguagesViewed,
+					converterUses: state.converterUses,
 				};
 
 				const newlyUnlocked: string[] = [];
@@ -117,6 +133,30 @@ export const useAchievementStore = create<AchievementStoreState>()(
 					lastActiveDate: today,
 					streakDays: newStreak,
 				});
+				get().checkAndUnlock();
+			},
+
+			incrementChecklistsCompleted: () => {
+				set((s) => ({ checklistsCompleted: s.checklistsCompleted + 1 }));
+				get().checkAndUnlock();
+			},
+
+			recordTimezoneShift: (hours) => {
+				const abs = Math.abs(hours);
+				if (abs <= get().maxTimezoneShiftHours) return;
+				set({ maxTimezoneShiftHours: abs });
+				get().checkAndUnlock();
+			},
+
+			markPhraseLanguageViewed: (code) => {
+				const state = get();
+				if (state.phraseLanguagesViewed.includes(code)) return;
+				set({ phraseLanguagesViewed: [...state.phraseLanguagesViewed, code] });
+				get().checkAndUnlock();
+			},
+
+			incrementConverterUses: () => {
+				set((s) => ({ converterUses: s.converterUses + 1 }));
 				get().checkAndUnlock();
 			},
 

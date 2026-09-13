@@ -11,6 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
+import JetlagCard from "@/components/JetlagCard";
 import LanguageBadge from "@/components/LanguageBadge";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -32,13 +33,19 @@ import {
 	useFlightStore,
 } from "@/store/useFlightStore";
 import { useGameStore } from "@/store/useGameStore";
+import {
+	getChecklistProgress,
+	useChecklistStore,
+} from "@/store/useChecklistStore";
 import { useDiscoveryStore } from "@/store/useDiscoveryStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import NewToTryRow from "@/components/NewToTryRow";
 import { getDestinationById } from "@/data/destinations";
+import { getPhraseLanguage } from "@/data/phrases";
 import type { GamePlayMode } from "@/types/game";
 import { pickFlightGames } from "@/utils/flightRecommendations";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { formatTimeInZone, getDayOffset } from "@/utils/timezone";
 
 function getPlayModeLabelKey(playMode?: GamePlayMode) {
 	if (playMode === "passAndPlay") return "playTogetherPassAndPlay";
@@ -66,8 +73,16 @@ export default function HomeScreen() {
 	const gameProgress = useGameStore((s) => s.progress);
 	const preferredCategories = useSettingsStore((s) => s.preferredCategories);
 	const markGameSeen = useDiscoveryStore((s) => s.markGameSeen);
+	const checklistChecked = useChecklistStore((s) => s.checkedIds);
+	const checklistCustom = useChecklistStore((s) => s.customItems);
+	const checklistProgress = getChecklistProgress({
+		checkedIds: checklistChecked,
+		customItems: checklistCustom,
+	});
 	const { capStyle } = useTabletLayout();
-	const [, setTick] = useState(0);
+	const [tick, setTick] = useState(0);
+	// `tick` only exists to re-render every 30 s; read it so the clock lines refresh.
+	const nowMs = Date.now() + tick * 0;
 
 	// Recently played games, most recent first — powers the "Jump back in" row.
 	const recentGames = Object.values(gameProgress)
@@ -99,14 +114,27 @@ export default function HomeScreen() {
 	const remainingRounded = Math.round(remaining);
 	const remainingH = Math.floor(remainingRounded / 60);
 	const remainingM = remainingRounded % 60;
-	const arrivalTime = flight
+	const arrivalMs = flight
+		? flight.departureTime + flight.duration * 60000
+		: null;
+	const arrivalTime = arrivalMs
 		? (() => {
-				const d = new Date(flight.departureTime + flight.duration * 60000);
+				const d = new Date(arrivalMs);
 				const h = String(d.getHours()).padStart(2, "0");
 				const m = String(d.getMinutes()).padStart(2, "0");
 				return `${h}:${m}`;
 			})()
 		: null;
+	const destinationNow =
+		flightDestination ? formatTimeInZone(nowMs, flightDestination) : null;
+	const arrivalLocal =
+		flightDestination && arrivalMs
+			? (() => {
+					const time = formatTimeInZone(arrivalMs, flightDestination);
+					const dayOffset = getDayOffset(arrivalMs, flightDestination, nowMs);
+					return dayOffset > 0 ? `${time} ${t("nextDaySuffix")}` : time;
+				})()
+			: null;
 	const preferredCategoriesEn =
 		remaining > 120
 			? ["Relax", "Health"]
@@ -127,9 +155,14 @@ export default function HomeScreen() {
 		dailyChallengeGames[getDayOfYear(new Date()) % dailyChallengeGames.length];
 
 	const openHomeAction = (
-		target: "games" | "explore" | "relax" | "profile",
+		target: "games" | "explore" | "relax" | "profile" | "phrasebook" | "converter",
+		href?: string,
 	) => {
 		captureAnalyticsEvent("home_action_open", { target });
+		if (href) {
+			router.push(href as never);
+			return;
+		}
 		router.push(
 			target === "profile" ? "/profile" : (`/(tabs)/${target}` as never),
 		);
@@ -191,10 +224,23 @@ export default function HomeScreen() {
 								minutes: remainingM,
 							})}
 						</Text>
-						{arrivalTime && (
+						{arrivalTime && !arrivalLocal && (
 							<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
 								{t("arrivalTime", { time: arrivalTime })}
 							</Text>
+						)}
+						{flightDestination && destinationNow && arrivalLocal && (
+							<>
+								<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
+									{t("destinationLocalTime", {
+										city: flightDestination.city,
+										time: destinationNow,
+									})}
+								</Text>
+								<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
+									{t("arrivalTimeLocal", { time: arrivalLocal })}
+								</Text>
+							</>
 						)}
 
 						<View style={styles.recommendation}>
@@ -210,6 +256,9 @@ export default function HomeScreen() {
 							</Text>
 						</View>
 					</View>
+					{flightDestination ? (
+						<JetlagCard flight={flight} destination={flightDestination} nowMs={nowMs} />
+					) : null}
 					</View>
 				) : (
 					<AnimatedPressable
@@ -240,6 +289,25 @@ export default function HomeScreen() {
 					/>
 					<Text style={[styles.preflightCtaText, { color: theme.tint }]}>
 						{t("homePreflightCta")}
+					</Text>
+					<View style={[styles.iconCircle, { backgroundColor: theme.surface }]}>
+						<Ionicons name="chevron-forward" size={14} color={theme.mutedText} />
+					</View>
+				</AnimatedPressable>
+
+				<AnimatedPressable
+					style={[styles.preflightCta, { borderColor: theme.border }]}
+					onPress={() => {
+						captureAnalyticsEvent("checklist_open", { source: "home" });
+						router.push("/checklist" as never);
+					}}
+				>
+					<Ionicons name="checkbox-outline" size={18} color={theme.tint} />
+					<Text style={[styles.preflightCtaText, { color: theme.tint }]}>
+						{t("homeChecklistCta", {
+							done: checklistProgress.done,
+							total: checklistProgress.total,
+						})}
 					</Text>
 					<View style={[styles.iconCircle, { backgroundColor: theme.surface }]}>
 						<Ionicons name="chevron-forward" size={14} color={theme.mutedText} />
@@ -582,6 +650,59 @@ export default function HomeScreen() {
 				</AnimatedPressable>
 			</Animated.View>
 
+			<Animated.View entering={FadeInDown.delay(440).springify()}>
+				<Text style={styles.sectionTitle}>{t("homeToolsTitle")}</Text>
+				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+					{t("homeToolsHint")}
+				</Text>
+				<View style={styles.actions}>
+					<AnimatedPressable
+						style={[
+							styles.actionButton,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() =>
+							openHomeAction(
+								"phrasebook",
+								flightDestination && flightDestination.phraseLanguage !== "en"
+									? `/phrasebook?lang=${flightDestination.phraseLanguage}&source=home`
+									: "/phrasebook?source=home",
+							)
+						}
+					>
+						<Ionicons name="chatbubbles-outline" size={24} color={theme.tint} />
+						<Text style={styles.actionLabel}>{t("homePhrasebook")}</Text>
+						<Text style={[styles.actionSub, { color: theme.mutedText }]}>
+							{flightDestination && flightDestination.phraseLanguage !== "en"
+								? getPhraseLanguage(flightDestination.phraseLanguage)?.nativeName
+								: t("homeToolsPhrasebookHint")}
+						</Text>
+					</AnimatedPressable>
+					<AnimatedPressable
+						style={[
+							styles.actionButton,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+						onPress={() =>
+							openHomeAction(
+								"converter",
+								flightDestination
+									? `/converter?currency=${flightDestination.currencyCode}&source=home`
+									: "/converter?source=home",
+							)
+						}
+					>
+						<Ionicons name="swap-horizontal-outline" size={24} color={theme.tint} />
+						<Text style={styles.actionLabel}>{t("homeConverter")}</Text>
+						<Text style={[styles.actionSub, { color: theme.mutedText }]}>
+							{flightDestination
+								? flightDestination.currencyCode
+								: t("homeToolsConverterHint")}
+						</Text>
+					</AnimatedPressable>
+				</View>
+			</Animated.View>
+
 			<Animated.View entering={FadeInDown.delay(450).springify()}>
 				<Text style={styles.sectionTitle}>{t("featuredForFlight")}</Text>
 				{featuredArticles.map((article) => (
@@ -793,6 +914,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 	},
 	actionLabel: { fontSize: 14, fontWeight: "600", marginTop: 8 },
+	actionSub: { fontSize: 12, marginTop: 2, textAlign: "center" },
 	progressSnapshotCard: {
 		borderWidth: 1,
 		borderRadius: Radius.panel,

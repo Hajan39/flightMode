@@ -34,6 +34,16 @@ export type AnalyticsEventName =
 	| "support_completed"
 	| "premium_view"
 	| "achievement_unlocked"
+	| "jetlag_card_shown"
+	| "checklist_open"
+	| "checklist_item_toggled"
+	| "checklist_custom_added"
+	| "checklist_completed"
+	| "checklist_reset"
+	| "phrasebook_open"
+	| "phrasebook_language_changed"
+	| "converter_open"
+	| "converter_used"
 	| "app_error";
 
 export type AnalyticsProperties = Record<
