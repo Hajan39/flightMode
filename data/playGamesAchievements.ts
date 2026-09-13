@@ -58,6 +58,14 @@ export const playGamesAchievementIds: Record<string, string | null> = {
 	"ground-controller": null,
 	"pixel-artist": null,
 	equilibrium: null,
+	// ── Multiplayer ──
+	"in-sync": null,
+	icebreaker: null,
+	"split-second": null,
+	storyteller: null,
+	"crowd-favorite": null,
+	"good-host": null,
+	"undefeated-host": null,
 	// ── Travel tools ──
 	"checklist-ready": null,
 	"checklist-veteran": null,

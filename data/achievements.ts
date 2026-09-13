@@ -1,5 +1,6 @@
 import type { TranslationKey } from "@/i18n/translations";
 import type { GameProgress } from "@/types/game";
+import { MULTIPLAYER_GAME_IDS } from "@/utils/multiplayerScoring";
 
 export type AchievementState = {
 	gameProgress: Record<string, GameProgress>;
@@ -346,6 +347,68 @@ export const achievements: AchievementDef[] = [
 		icon: "search-outline",
 		category: "special",
 		condition: (s) => (s.gameProgress["word-search"]?.highScore ?? 0) >= 1500,
+	},
+	// ── Multiplayer ──
+	{
+		id: "in-sync",
+		titleKey: "achieveInSyncTitle",
+		descriptionKey: "achieveInSyncDesc",
+		icon: "heart-circle-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["seat-neighbor"]?.highScore ?? 0) >= 7,
+	},
+	{
+		id: "icebreaker",
+		titleKey: "achieveIcebreakerTitle",
+		descriptionKey: "achieveIcebreakerDesc",
+		icon: "chatbubbles-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["seat-neighbor"]?.timesPlayed ?? 0) >= 3,
+	},
+	{
+		id: "split-second",
+		titleKey: "achieveSplitSecondTitle",
+		descriptionKey: "achieveSplitSecondDesc",
+		icon: "flash-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["split-duel"]?.bestStreak ?? 0) >= 3,
+	},
+	{
+		id: "storyteller",
+		titleKey: "achieveStorytellerTitle",
+		descriptionKey: "achieveStorytellerDesc",
+		icon: "book-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["emoji-story"]?.timesPlayed ?? 0) >= 3,
+	},
+	{
+		id: "crowd-favorite",
+		titleKey: "achieveCrowdFavoriteTitle",
+		descriptionKey: "achieveCrowdFavoriteDesc",
+		icon: "star-half-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["emoji-story"]?.highScore ?? 0) >= 5,
+	},
+	{
+		id: "good-host",
+		titleKey: "achieveGoodHostTitle",
+		descriptionKey: "achieveGoodHostDesc",
+		icon: "people-outline",
+		category: "special",
+		condition: (s) =>
+			MULTIPLAYER_GAME_IDS.reduce(
+				(sum, id) => sum + (s.gameProgress[id]?.timesPlayed ?? 0),
+				0,
+			) >= 10,
+	},
+	{
+		id: "undefeated-host",
+		titleKey: "achieveUndefeatedHostTitle",
+		descriptionKey: "achieveUndefeatedHostDesc",
+		icon: "medal-outline",
+		category: "special",
+		condition: (s) =>
+			MULTIPLAYER_GAME_IDS.some((id) => (s.gameProgress[id]?.bestStreak ?? 0) >= 3),
 	},
 	// ── Logic games (levels cleared = levelStars entries with ≥1 star) ──
 	{
