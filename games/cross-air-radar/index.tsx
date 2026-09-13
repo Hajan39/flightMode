@@ -1,27 +1,35 @@
-﻿import GameResult from "@/components/GameResult";
+import { useEffect, useRef, useState } from "react";
+import {
+	type GestureResponderEvent,
+	Pressable,
+	View as RNView,
+	StyleSheet,
+	useWindowDimensions,
+} from "react-native";
+import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
+
+import GameControls from "@/components/GameControls";
+import {
+	MatchResult,
+	PassDeviceOverlay,
+	PlayerScoreStrip,
+	PlayerSetup,
+	TurnBanner,
+} from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { Radius, Spacing } from "@/constants/Spacing";
+import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
+import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
-import { useGameStore } from "@/store/useGameStore";
-import { useEffect, useRef, useState } from "react";
-import {
-	Dimensions,
-	type GestureResponderEvent,
-	Pressable,
-	StyleSheet,
-} from "react-native";
-import Animated, {
-	FadeInDown,
-	SlideInRight,
-	ZoomIn,
-} from "react-native-reanimated";
+import type { GameProgressUpdate } from "@/types/game";
+import { recordMatch } from "@/utils/multiplayerScoring";
 
+const GAME_ID = "cross-air-radar";
 const GRID = 8;
-const { width: SW } = Dimensions.get("window");
-const CELL = Math.floor((SW - 52) / (GRID + 1));
 
 const SHIPS = [
 	{ id: "scout", size: 2 },
@@ -45,13 +53,13 @@ const SHIP_LABELS: Record<string, TranslationKey> = {
 };
 
 type Cell = "w" | "s" | "h" | "m"; // water, ship, hit, miss
+type Seat = 0 | 1;
 type Phase =
-	| "setup1"
-	| "pass1"
-	| "setup2"
-	| "pass2"
+	| "players"
+	| "setup" // active seat places ships
+	| "passSetup" // hand to the other seat for their setup
+	| "passBattle" // hand to the seat whose turn it is
 	| "turn"
-	| "passAttack"
 	| "done";
 
 const COL = "ABCDEFGH";
@@ -67,9 +75,7 @@ function cloneGrid(g: Cell[][]): Cell[][] {
 function gridFromPlacements(placements: ShipPlacement[]): Cell[][] {
 	const grid = blank();
 	for (const placement of placements) {
-		for (const [r, c] of placement.cells) {
-			grid[r][c] = "s";
-		}
+		for (const [r, c] of placement.cells) grid[r][c] = "s";
 	}
 	return grid;
 }
@@ -83,38 +89,26 @@ function isShipSunk(attackGrid: Cell[][], placement: ShipPlacement) {
 }
 
 function remainingShips(attackGrid: Cell[][], placements: ShipPlacement[]) {
-	return placements.filter((placement) => !isShipSunk(attackGrid, placement))
-		.length;
-}
-
-function cellFromGridEvent(
-	event: GestureResponderEvent,
-): [number, number] | null {
-	const x = event.nativeEvent.locationX - CELL;
-	const y = event.nativeEvent.locationY - CELL;
-	const c = Math.floor(x / CELL);
-	const r = Math.floor(y / CELL);
-	if (r < 0 || c < 0 || r >= GRID || c >= GRID) return null;
-	return [r, c];
+	return placements.filter((placement) => !isShipSunk(attackGrid, placement)).length;
 }
 
 export default function CrossAirRadarGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
-	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
+	const { width } = useWindowDimensions();
+	const cell = Math.floor((Math.min(width, 520) - 52) / (GRID + 1));
 
-	const [phase, setPhase] = useState<Phase>("setup1");
-	const [currentPlayer, setCurrentPlayer] = useState<1 | 2>(1);
+	const [players, setPlayers] = useState<MatchPlayer[]>([]);
+	const [phase, setPhase] = useState<Phase>("players");
+	const [currentSeat, setCurrentSeat] = useState<Seat>(0);
 
-	// Each player's fleet (ships placed) and attack grid (shots fired at opponent)
-	const [fleet1, setFleet1] = useState<Cell[][]>(blank);
-	const [fleet2, setFleet2] = useState<Cell[][]>(blank);
-	const [placements1, setPlacements1] = useState<ShipPlacement[]>([]);
-	const [placements2, setPlacements2] = useState<ShipPlacement[]>([]);
-	const [attacks1, setAttacks1] = useState<Cell[][]>(blank); // P1's shots on P2
-	const [attacks2, setAttacks2] = useState<Cell[][]>(blank); // P2's shots on P1
+	// Per seat: fleet grid, placements, and shots fired at the opponent.
+	const [fleets, setFleets] = useState<[Cell[][], Cell[][]]>([blank(), blank()]);
+	const [placements, setPlacements] = useState<[ShipPlacement[], ShipPlacement[]]>([[], []]);
+	const [attacks, setAttacks] = useState<[Cell[][], Cell[][]]>([blank(), blank()]);
+	const [hits, setHits] = useState<[number, number]>([0, 0]);
 
 	// Setup state
 	const [shipIdx, setShipIdx] = useState(0);
@@ -123,238 +117,200 @@ export default function CrossAirRadarGame() {
 	const draggedShipRef = useRef<ShipId | null>(null);
 	const turnTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+	const [lastResult, setLastResult] = useState<string | null>(null);
+	const [winner, setWinner] = useState<Seat | null>(null);
+	const [progress, setProgress] = useState<GameProgressUpdate | undefined>();
+
 	useEffect(() => {
 		return () => {
 			if (turnTimer.current) clearTimeout(turnTimer.current);
 		};
 	}, []);
 
-	// Battle state
-	const [hitsP1, setHitsP1] = useState(0); // how many P1 landed on P2
-	const [hitsP2, setHitsP2] = useState(0); // how many P2 landed on P1
-	const [lastResult, setLastResult] = useState<string | null>(null);
-	const [winner, setWinner] = useState<1 | 2 | null>(null);
-
 	const coord = (r: number, c: number) => `${COL[c]}${r + 1}`;
+	const other = (seat: Seat): Seat => (seat === 0 ? 1 : 0);
 
-	const activeFleet = currentPlayer === 1 ? fleet1 : fleet2;
-	const setActiveFleet = currentPlayer === 1 ? setFleet1 : setFleet2;
-	const activePlacements = currentPlayer === 1 ? placements1 : placements2;
-	const setActivePlacements =
-		currentPlayer === 1 ? setPlacements1 : setPlacements2;
+	const setSeatFleet = (seat: Seat, grid: Cell[][]) =>
+		setFleets((prev) => (seat === 0 ? [grid, prev[1]] : [prev[0], grid]));
+	const setSeatPlacements = (seat: Seat, list: ShipPlacement[]) =>
+		setPlacements((prev) => (seat === 0 ? [list, prev[1]] : [prev[0], list]));
+
+	const activePlacements = placements[currentSeat];
+
+	const cellFromGridEvent = (event: GestureResponderEvent): [number, number] | null => {
+		const x = event.nativeEvent.locationX - cell;
+		const y = event.nativeEvent.locationY - cell;
+		const c = Math.floor(x / cell);
+		const r = Math.floor(y / cell);
+		if (r < 0 || c < 0 || r >= GRID || c >= GRID) return null;
+		return [r, c];
+	};
 
 	// --- SETUP: place ships ---
 	const buildPlacementCells = (
 		r: number,
 		c: number,
 		size: number,
-		existingPlacements: ShipPlacement[],
+		existing: ShipPlacement[],
 	): [number, number][] | null => {
 		const occupied = new Set(
-			existingPlacements.flatMap((placement) =>
-				placement.cells.map(([rr, cc]) => `${rr}:${cc}`),
-			),
+			existing.flatMap((p) => p.cells.map(([rr, cc]) => `${rr}:${cc}`)),
 		);
-
 		const tryDir = (h: boolean): [number, number][] | null => {
 			const cells: [number, number][] = [];
 			for (let i = 0; i < size; i++) {
 				const nr = h ? r : r + i;
 				const nc = h ? c + i : c;
-				if (nr >= GRID || nc >= GRID || occupied.has(`${nr}:${nc}`)) {
-					return null;
-				}
+				if (nr >= GRID || nc >= GRID || occupied.has(`${nr}:${nc}`)) return null;
 				cells.push([nr, nc]);
 			}
 			return cells;
 		};
-
-		let cells = tryDir(horiz);
-		if (!cells) {
-			cells = tryDir(!horiz);
-		}
-		return cells;
+		return tryDir(horiz) ?? tryDir(!horiz);
 	};
 
 	const getPlacementAt = (r: number, c: number) =>
-		activePlacements.find((item) =>
-			item.cells.some((cell) => sameCoord(cell, [r, c])),
-		);
+		activePlacements.find((item) => item.cells.some((x) => sameCoord(x, [r, c])));
 
 	const selectShipAt = (r: number, c: number) => {
 		const placement = getPlacementAt(r, c);
 		if (!placement) return false;
-		setSelectedShip((current) =>
-			current === placement.id ? null : placement.id,
-		);
+		setSelectedShip((current) => (current === placement.id ? null : placement.id));
 		haptic.tap();
 		return true;
-	};
-
-	const startShipDrag = (r: number, c: number) => {
-		const placement = getPlacementAt(r, c);
-		if (!placement) return;
-		draggedShipRef.current = placement.id;
-		setSelectedShip(placement.id);
-		haptic.tap();
-	};
-
-	const dropShipDrag = (r: number, c: number) => {
-		const draggedShip = draggedShipRef.current;
-		if (draggedShip) {
-			moveShip(draggedShip, r, c);
-		}
 	};
 
 	const moveShip = (shipId: ShipId, r: number, c: number) => {
 		const ship = SHIPS.find((item) => item.id === shipId);
 		if (!ship) return false;
-
 		const others = activePlacements.filter((item) => item.id !== shipId);
 		const cells = buildPlacementCells(r, c, ship.size, others);
 		if (!cells) {
 			haptic.error();
 			return true;
 		}
-
-		const nextPlacements = [...others, { id: shipId, cells }];
-		setActivePlacements(nextPlacements);
-		setActiveFleet(gridFromPlacements(nextPlacements));
+		const next = [...others, { id: shipId, cells }];
+		setSeatPlacements(currentSeat, next);
+		setSeatFleet(currentSeat, gridFromPlacements(next));
 		setSelectedShip(null);
 		draggedShipRef.current = null;
 		haptic.success();
 		return true;
 	};
 
-	const tryMoveSelected = (r: number, c: number) => {
-		if (!selectedShip) return false;
-		return moveShip(selectedShip, r, c);
-	};
-
 	const tryPlace = (r: number, c: number) => {
-		if (selectedShip && tryMoveSelected(r, c)) return;
+		if (selectedShip && moveShip(selectedShip, r, c)) return;
 		if (selectShipAt(r, c)) return;
 		if (shipIdx >= SHIPS.length) return;
-
 		const ship = SHIPS[shipIdx];
 		const cells = buildPlacementCells(r, c, ship.size, activePlacements);
 		if (!cells) {
 			haptic.error();
 			return;
 		}
-
-		const nextPlacements = [...activePlacements, { id: ship.id, cells }];
-		setActivePlacements(nextPlacements);
-		setActiveFleet(gridFromPlacements(nextPlacements));
+		const next = [...activePlacements, { id: ship.id, cells }];
+		setSeatPlacements(currentSeat, next);
+		setSeatFleet(currentSeat, gridFromPlacements(next));
 		setShipIdx((i) => i + 1);
 		haptic.tap();
 	};
 
-	const resetSetup = () => {
-		setActiveFleet(blank());
-		setActivePlacements([]);
+	const resetSetupState = () => {
 		setShipIdx(0);
 		setHoriz(true);
 		setSelectedShip(null);
 		draggedShipRef.current = null;
 	};
 
+	const resetSetup = () => {
+		setSeatFleet(currentSeat, blank());
+		setSeatPlacements(currentSeat, []);
+		resetSetupState();
+	};
+
 	const confirmSetup = () => {
-		if (phase === "setup1") {
-			setShipIdx(0);
-			setHoriz(true);
-			setSelectedShip(null);
-			draggedShipRef.current = null;
-			setPhase("pass1");
-		} else if (phase === "setup2") {
-			setShipIdx(0);
-			setHoriz(true);
-			setSelectedShip(null);
-			draggedShipRef.current = null;
-			setCurrentPlayer(1);
-			setPhase("pass2");
+		haptic.tap();
+		resetSetupState();
+		if (currentSeat === 0) {
+			setCurrentSeat(1);
+			setPhase("passSetup");
+		} else {
+			setCurrentSeat(0);
+			setPhase("passBattle");
 		}
 	};
 
-	const handlePassDone = () => {
-		if (phase === "pass1") {
-			setCurrentPlayer(2);
-			setPhase("setup2");
-		} else if (phase === "pass2") {
-			setCurrentPlayer(1);
-			setPhase("turn");
-		} else if (phase === "passAttack") {
-			setPhase("turn");
-		}
+	const startMatch = (matchPlayers: MatchPlayer[]) => {
+		if (turnTimer.current) clearTimeout(turnTimer.current);
+		setPlayers(matchPlayers);
+		setCurrentSeat(0);
+		setFleets([blank(), blank()]);
+		setPlacements([[], []]);
+		setAttacks([blank(), blank()]);
+		setHits([0, 0]);
+		setLastResult(null);
+		setWinner(null);
+		setProgress(undefined);
+		resetSetupState();
+		setPhase("setup");
 	};
 
-	// --- BATTLE: fire ---
+	// --- BATTLE ---
 	const handleFire = (r: number, c: number) => {
-		const attackGrid = currentPlayer === 1 ? attacks1 : attacks2;
-		const setAttackGrid = currentPlayer === 1 ? setAttacks1 : setAttacks2;
-		const opponentFleet = currentPlayer === 1 ? fleet2 : fleet1;
-		const opponentPlacements = currentPlayer === 1 ? placements2 : placements1;
-
+		const attackGrid = attacks[currentSeat];
+		const opponent = other(currentSeat);
 		if (attackGrid[r][c] !== "w") return;
 
-		const isHit = opponentFleet[r][c] === "s";
+		const isHit = fleets[opponent][r][c] === "s";
 		const next = cloneGrid(attackGrid);
 		next[r][c] = isHit ? "h" : "m";
-		setAttackGrid(next);
+		setAttacks((prev) => (currentSeat === 0 ? [next, prev[1]] : [prev[0], next]));
 
 		if (isHit) {
 			haptic.success();
-			let resultText = `💥 ${t("arHit")} — ${coord(r, c)}`;
-
-			const hitPlacement = opponentPlacements.find((placement) =>
-				placement.cells.some((cell) => sameCoord(cell, [r, c])),
+			let resultText = `💥 ${t("arHit")} · ${coord(r, c)}`;
+			const hitPlacement = placements[opponent].find((p) =>
+				p.cells.some((x) => sameCoord(x, [r, c])),
 			);
 			if (hitPlacement && isShipSunk(next, hitPlacement)) {
-				resultText = `🔥 ${t(SHIP_LABELS[hitPlacement.id])} — ${t("arShipDown")}`;
+				resultText = `🔥 ${t(SHIP_LABELS[hitPlacement.id])} ${t("arShipDown")}`;
 			}
 			setLastResult(resultText);
-			const setHits = currentPlayer === 1 ? setHitsP1 : setHitsP2;
-			const currentHits = currentPlayer === 1 ? hitsP1 : hitsP2;
-			const newHits = currentHits + 1;
-			setHits(newHits);
-			if (newHits >= TOTAL_HP) {
-				setWinner(currentPlayer);
-				updateProgress("cross-air-radar", newHits * 10);
+			const nextHits: [number, number] = [...hits] as [number, number];
+			nextHits[currentSeat] += 1;
+			setHits(nextHits);
+			if (nextHits[currentSeat] >= TOTAL_HP) {
+				setWinner(currentSeat);
+				setProgress(
+					recordMatch(
+						GAME_ID,
+						nextHits.map((h) => ({ score: h * 10 })),
+						{ bonusIfWon: 10 },
+					),
+				);
 				setPhase("done");
 				return;
 			}
 		} else {
 			haptic.tap();
-			setLastResult(`\u{1F4A8} ${t("arMiss")} — ${coord(r, c)}`);
+			setLastResult(`💨 ${t("arMiss")} · ${coord(r, c)}`);
 		}
 
-		// Switch turns after a short delay
 		turnTimer.current = setTimeout(() => {
+			turnTimer.current = null;
 			setLastResult(null);
-			const nextP = currentPlayer === 1 ? 2 : 1;
-			setCurrentPlayer(nextP as 1 | 2);
-			setPhase("passAttack");
-		}, 1500);
+			setCurrentSeat(opponent);
+			setPhase("passBattle");
+		}, 1400);
 	};
 
-	const restart = () => {
-		if (turnTimer.current) clearTimeout(turnTimer.current);
-		setPhase("setup1");
-		setCurrentPlayer(1);
-		setFleet1(blank());
-		setFleet2(blank());
-		setPlacements1([]);
-		setPlacements2([]);
-		setAttacks1(blank());
-		setAttacks2(blank());
-		setShipIdx(0);
-		setHoriz(true);
-		setSelectedShip(null);
-		draggedShipRef.current = null;
-		setHitsP1(0);
-		setHitsP2(0);
+	const skipTurnDelay = () => {
+		if (!turnTimer.current) return;
+		clearTimeout(turnTimer.current);
+		turnTimer.current = null;
 		setLastResult(null);
-		setWinner(null);
+		setCurrentSeat(other(currentSeat));
+		setPhase("passBattle");
 	};
 
 	// --- RENDER GRID ---
@@ -362,178 +318,118 @@ export default function CrossAirRadarGame() {
 		grid: Cell[][],
 		onTap: (r: number, c: number) => void,
 		showShips: boolean,
+		ownerColor: string,
 		selectedCells: [number, number][] = [],
 		dragHandlers?: GridDragHandlers,
 	) => (
-		<View
+		<RNView
 			style={styles.gridWrap}
 			onStartShouldSetResponderCapture={(event) => {
-				const cell = cellFromGridEvent(event);
-				return cell ? Boolean(dragHandlers?.canStart(cell[0], cell[1])) : false;
+				const hit = cellFromGridEvent(event);
+				return hit ? Boolean(dragHandlers?.canStart(hit[0], hit[1])) : false;
 			}}
 			onMoveShouldSetResponderCapture={() => Boolean(draggedShipRef.current)}
 			onResponderGrant={(event) => {
-				const cell = cellFromGridEvent(event);
-				if (cell) dragHandlers?.onStart(cell[0], cell[1]);
+				const hit = cellFromGridEvent(event);
+				if (hit) dragHandlers?.onStart(hit[0], hit[1]);
 			}}
 			onResponderRelease={(event) => {
-				const cell = cellFromGridEvent(event);
-				if (cell) {
-					dragHandlers?.onDrop(cell[0], cell[1]);
-				} else {
-					draggedShipRef.current = null;
-				}
+				const hit = cellFromGridEvent(event);
+				if (hit) dragHandlers?.onDrop(hit[0], hit[1]);
+				else draggedShipRef.current = null;
 			}}
 			onResponderTerminate={() => {
 				draggedShipRef.current = null;
 			}}
 		>
-			<View style={styles.gridRow}>
-				<View style={[styles.labelCell, { width: CELL, height: CELL }]} />
+			<RNView style={styles.gridRow}>
+				<RNView style={[styles.labelCell, { width: cell, height: cell }]} />
 				{COL.split("").map((l) => (
-					<View
-						key={l}
-						style={[styles.labelCell, { width: CELL, height: CELL }]}
-					>
-						<Text style={[styles.labelText, { color: theme.mutedText }]}>
-							{l}
-						</Text>
-					</View>
+					<RNView key={l} style={[styles.labelCell, { width: cell, height: cell }]}>
+						<Text style={[styles.labelText, { color: theme.mutedText }]}>{l}</Text>
+					</RNView>
 				))}
-			</View>
+			</RNView>
 			{ROW.map((rowLabel) => {
 				const r = Number(rowLabel) - 1;
 				const row = grid[r];
-
 				return (
-					<View key={`row-${rowLabel}`} style={styles.gridRow}>
-						<View style={[styles.labelCell, { width: CELL, height: CELL }]}>
-							<Text style={[styles.labelText, { color: theme.mutedText }]}>
-								{rowLabel}
-							</Text>
-						</View>
+					<RNView key={`row-${rowLabel}`} style={styles.gridRow}>
+						<RNView style={[styles.labelCell, { width: cell, height: cell }]}>
+							<Text style={[styles.labelText, { color: theme.mutedText }]}>{rowLabel}</Text>
+						</RNView>
 						{COL.split("").map((colLabel) => {
 							const c = COL.indexOf(colLabel);
-							const cell = row[c];
-							const isSelected = selectedCells.some((coord) =>
-								sameCoord(coord, [r, c]),
-							);
+							const value = row[c];
+							const isSelected = selectedCells.some((x) => sameCoord(x, [r, c]));
 							let bg = theme.card;
 							let content: string | null = null;
 							let contentColor = "#fff";
-
-							if (showShips && cell === "s") bg = "#546e7a";
+							if (showShips && value === "s") bg = ownerColor;
 							if (isSelected) bg = theme.tint;
-							if (cell === "h") {
+							if (value === "h") {
 								bg = theme.danger;
 								content = "✕";
 							}
-							if (cell === "m") {
+							if (value === "m") {
 								bg = theme.card;
 								content = "•";
 								contentColor = theme.mutedText;
 							}
-
 							return (
 								<Pressable
 									key={colLabel}
 									onPress={() => onTap(r, c)}
+									accessibilityRole="button"
+									accessibilityLabel={coord(r, c)}
 									style={[
 										styles.cell,
-										{
-											width: CELL,
-											height: CELL,
-											backgroundColor: bg,
-											borderColor: theme.border,
-											borderWidth: 1,
-										},
+										{ width: cell, height: cell, backgroundColor: bg, borderColor: theme.border },
 									]}
 								>
-									{content && (
+									{content ? (
 										<Animated.View entering={ZoomIn.duration(180)}>
-											<Text style={[styles.cellContent, { color: contentColor }]}>
-												{content}
-											</Text>
+											<Text style={[styles.cellContent, { color: contentColor }]}>{content}</Text>
 										</Animated.View>
-									)}
+									) : null}
 								</Pressable>
 							);
 						})}
-					</View>
+					</RNView>
 				);
 			})}
-		</View>
+		</RNView>
 	);
 
-	// --- PASS SCREEN ---
-	if (phase === "pass1" || phase === "pass2" || phase === "passAttack") {
-		const nextPlayer =
-			phase === "pass1" ? 2 : phase === "pass2" ? 1 : currentPlayer;
+	if (phase === "players") {
 		return (
-			<View style={styles.container}>
-				<Animated.View
-					entering={SlideInRight.duration(260)}
-					style={styles.passScreen}
-				>
-					<Animated.Text
-						entering={ZoomIn.delay(80).springify().damping(12)}
-						style={{ fontSize: 48, marginBottom: 16 }}
-					>
-						🎮
-					</Animated.Text>
-					<Text style={styles.title}>{t("passPhone")}</Text>
-					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
-						{t("passPhoneTo", {
-							player: t("mpPlayerN", { n: nextPlayer }),
-						})}
-					</Text>
-					<Text
-						style={[styles.subtitle, { color: theme.mutedText, marginTop: 4 }]}
-					>
-						{t("passPhoneDontLook")}
-					</Text>
-					<Pressable
-						onPress={handlePassDone}
-						accessibilityRole="button"
-						accessibilityLabel={t("passPhoneReady")}
-						style={[
-							styles.primaryBtn,
-							{ backgroundColor: theme.tint, marginTop: 32 },
-						]}
-					>
-						<Text style={[styles.primaryBtnText, { color: theme.onTint }]}>{t("passPhoneReady")}</Text>
-					</Pressable>
-				</Animated.View>
-			</View>
+			<PlayerSetup
+				title={t("gameCrossAirRadarName")}
+				subtitle={t("arSetupHint")}
+				fixedCount={2}
+				onStart={startMatch}
+			/>
 		);
 	}
 
+	const me = players[currentSeat];
+	const opponentSeat = other(currentSeat);
+
 	// --- SETUP ---
-	if (phase === "setup1" || phase === "setup2") {
-		const playerNum = phase === "setup1" ? 1 : 2;
+	if (phase === "setup" || phase === "passSetup") {
 		const allPlaced = activePlacements.length >= SHIPS.length;
 		const selectedCells =
-			activePlacements.find((placement) => placement.id === selectedShip)
-				?.cells ?? [];
+			activePlacements.find((p) => p.id === selectedShip)?.cells ?? [];
 		return (
 			<View style={styles.container}>
-				<Animated.View entering={FadeInDown.duration(300)}>
-					<Text style={styles.title}>
-						{t("mpPlayerN", { n: playerNum })} {"—"} {t("arSetupTitle")}
-					</Text>
-					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
-						{t("arSetupHint")}
-					</Text>
-				</Animated.View>
+				<RNView style={styles.topRow}>
+					<TurnBanner player={me} label={`${me.name} · ${t("arSetupTitle")}`} compact />
+					<GameControls onReset={() => startMatch(players)} />
+				</RNView>
 
-				<Animated.View
-					entering={FadeInDown.delay(100).duration(300)}
-					style={styles.shipTray}
-				>
+				<Animated.View entering={FadeInDown.delay(100).duration(300)} style={styles.shipTray}>
 					{SHIPS.map((ship, i) => {
-						const isPlaced = activePlacements.some(
-							(placement) => placement.id === ship.id,
-						);
+						const isPlaced = activePlacements.some((p) => p.id === ship.id);
 						const isSelected = selectedShip === ship.id;
 						const isCurrent = !allPlaced && i === shipIdx;
 						return (
@@ -541,30 +437,24 @@ export default function CrossAirRadarGame() {
 								key={ship.id}
 								onPress={() => {
 									if (isPlaced) {
-										setSelectedShip((current) =>
-											current === ship.id ? null : ship.id,
-										);
+										setSelectedShip((current) => (current === ship.id ? null : ship.id));
 										haptic.tap();
 									}
 								}}
+								accessibilityRole="button"
+								accessibilityState={{ selected: isSelected }}
 								style={[
 									styles.shipChip,
 									{
-										backgroundColor: isSelected
-											? theme.tint
-											: isPlaced
-												? theme.surface
-												: isCurrent
-													? theme.tint
-													: theme.card,
-										borderColor: isSelected ? theme.tint : theme.border,
+										backgroundColor: isSelected || isCurrent ? me.color : isPlaced ? theme.surface : theme.card,
+										borderColor: isSelected || isCurrent ? me.color : theme.border,
 									},
 								]}
 							>
 								<Text
 									style={[
 										styles.shipChipText,
-										{ color: isSelected || isCurrent ? theme.onTint : theme.text },
+										{ color: isSelected || isCurrent ? "#0b1620" : theme.text },
 									]}
 								>
 									{t(SHIP_LABELS[ship.id])} ({ship.size})
@@ -572,199 +462,143 @@ export default function CrossAirRadarGame() {
 							</Pressable>
 						);
 					})}
-
 					<Pressable
-						onPress={() => setHoriz((h) => !h)}
+						onPress={() => {
+							haptic.tap();
+							setHoriz((h) => !h);
+						}}
 						accessibilityRole="button"
 						accessibilityLabel={t("arRotate")}
-						style={[
-							styles.rotateBtn,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
+						style={[styles.shipChip, { backgroundColor: theme.card, borderColor: theme.border }]}
 					>
-						<Text style={styles.rotateBtnText}>
+						<Text style={[styles.shipChipText, { color: theme.text }]}>
 							{horiz ? "→" : "↓"} {t("arRotate")}
 						</Text>
 					</Pressable>
 				</Animated.View>
 
-				{renderGrid(activeFleet, tryPlace, true, selectedCells, {
+				{renderGrid(fleets[currentSeat], tryPlace, true, me.color, selectedCells, {
 					canStart: (r, c) => Boolean(getPlacementAt(r, c)),
-					onStart: startShipDrag,
-					onDrop: dropShipDrag,
+					onStart: (r, c) => {
+						const placement = getPlacementAt(r, c);
+						if (!placement) return;
+						draggedShipRef.current = placement.id;
+						setSelectedShip(placement.id);
+						haptic.tap();
+					},
+					onDrop: (r, c) => {
+						const dragged = draggedShipRef.current;
+						if (dragged) moveShip(dragged, r, c);
+					},
 				})}
 
-				<View style={styles.setupActions}>
+				<RNView style={styles.setupActions}>
 					{allPlaced ? (
 						<Pressable
 							onPress={confirmSetup}
 							accessibilityRole="button"
 							accessibilityLabel={t("arReady")}
-							style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
+							style={[styles.primaryBtn, { backgroundColor: me.color }]}
 						>
-							<Text style={[styles.primaryBtnText, { color: theme.onTint }]}>{t("arReady")}</Text>
+							<Text style={styles.primaryBtnText}>{t("arReady")}</Text>
 						</Pressable>
 					) : null}
-					<Pressable
-						onPress={resetSetup}
-						accessibilityRole="button"
-						accessibilityLabel={t("arReset")}
-					>
-						<Text style={[styles.linkText, { color: theme.tint }]}>
-							{t("arReset")}
-						</Text>
+					<Pressable onPress={resetSetup} accessibilityRole="button" accessibilityLabel={t("arReset")}>
+						<Text style={[styles.linkText, { color: theme.tint }]}>{t("arReset")}</Text>
 					</Pressable>
-				</View>
+				</RNView>
+
+				<PassDeviceOverlay
+					visible={phase === "passSetup"}
+					toPlayer={me}
+					secret
+					hint={t("arSetupHint")}
+					onReady={() => setPhase("setup")}
+				/>
 			</View>
 		);
 	}
 
-	// --- DONE ---
-	if (phase === "done") {
-		const winLabel = winner === 1 ? t("c4Player1") : t("c4Player2");
-		return (
-			<GameResult
-				title={t("arPlayerWins", { player: winLabel })}
-				score={Math.max(hitsP1, hitsP2) * 10}
-				subtitle={`${t("c4Player1")}: ${hitsP1} · ${t("c4Player2")}: ${hitsP2}`}
-				onPlayAgain={restart}
-			/>
-		);
-	}
-
-	// --- BATTLE TURN ---
-	const attackGrid = currentPlayer === 1 ? attacks1 : attacks2;
-	const opponentPlacements = currentPlayer === 1 ? placements2 : placements1;
-	const playerLabel = currentPlayer === 1 ? t("c4Player1") : t("c4Player2");
-	const currentHits = currentPlayer === 1 ? hitsP1 : hitsP2;
-	const hitsToWin = Math.max(0, TOTAL_HP - currentHits);
-	const shipsToWin = remainingShips(attackGrid, opponentPlacements);
+	// --- BATTLE ---
+	const attackGrid = attacks[currentSeat];
+	const hitsToWin = Math.max(0, TOTAL_HP - hits[currentSeat]);
+	const shipsToWin = remainingShips(attackGrid, placements[opponentSeat]);
 
 	return (
 		<View style={styles.container}>
-			{/* Header */}
-			<Animated.View entering={FadeInDown.duration(200)}>
-				<Text style={styles.title}>
-					{t("arTurnTitle", { player: playerLabel })}
-				</Text>
-			</Animated.View>
+			<RNView style={styles.topRow}>
+				<TurnBanner player={me} label={t("arTurnTitle", { player: me.name })} compact />
+				<GameControls onReset={() => startMatch(players)} />
+			</RNView>
 
-			{/* Scoreboard */}
-			<View style={styles.scoreboard}>
-				<Text style={[styles.scoreText, { color: "#ef5350" }]}>
-					{t("c4Player1")}: {hitsP1}/{TOTAL_HP}
-				</Text>
-				<Text style={[styles.scoreText, { color: "#ffd54f" }]}>
-					{t("c4Player2")}: {hitsP2}/{TOTAL_HP}
-				</Text>
-			</View>
+			<PlayerScoreStrip
+				players={players}
+				scores={hits}
+				activeIndex={currentSeat}
+				format={(v) => `${v}/${TOTAL_HP}`}
+			/>
 
-			<View style={styles.remainingRow}>
-				<Text style={[styles.remainingText, { color: theme.mutedText }]}>
-					🎯 {hitsToWin}
-				</Text>
-				<Text style={[styles.remainingText, { color: theme.mutedText }]}>
-					✈️ {shipsToWin}
-				</Text>
-			</View>
+			<RNView style={styles.remainingRow}>
+				<Text style={[styles.remainingText, { color: theme.mutedText }]}>🎯 {hitsToWin}</Text>
+				<Text style={[styles.remainingText, { color: theme.mutedText }]}>✈️ {shipsToWin}</Text>
+			</RNView>
 
-			{/* Flash result */}
-			{lastResult && (
-				<Animated.View
-					entering={ZoomIn.duration(200)}
-					style={styles.flashBadge}
-				>
-					<Text style={styles.flashBadgeText}>{lastResult}</Text>
-				</Animated.View>
+			{lastResult ? (
+				<Pressable onPress={skipTurnDelay} accessibilityRole="button">
+					<Animated.View entering={ZoomIn.duration(200)} style={[styles.flashBadge, { backgroundColor: theme.elevated, borderColor: me.color }]}>
+						<Text style={[styles.flashBadgeText, { color: theme.text }]}>{lastResult}</Text>
+					</Animated.View>
+				</Pressable>
+			) : (
+				<Text style={[styles.attackHint, { color: theme.mutedText }]}>{t("arTapToFire")}</Text>
 			)}
 
-			{/* Attack hint */}
-			{!lastResult && (
-				<Text style={[styles.attackHint, { color: theme.mutedText }]}>
-					{t("arTapToFire")}
-				</Text>
-			)}
+			{renderGrid(attackGrid, lastResult ? () => {} : handleFire, false, me.color)}
 
-			{/* Attack grid (opponent's waters) */}
-			{renderGrid(attackGrid, lastResult ? () => {} : handleFire, false)}
+			<PassDeviceOverlay
+				visible={phase === "passBattle"}
+				toPlayer={me}
+				secret
+				onReady={() => setPhase("turn")}
+			/>
+
+			{phase === "done" && winner !== null ? (
+				<MatchResult
+					standings={players.map((p, i) => ({
+						player: p,
+						score: hits[i],
+						detail: `${SHIPS.length - remainingShips(attacks[i], placements[other(i as Seat)])} ✈️ ${t("arShipDown")}`,
+					}))}
+					winnerIndex={winner}
+					scoreLabel={t("arHitsGiven")}
+					progress={progress}
+					onRematch={() => startMatch(players)}
+					onChangePlayers={() => setPhase("players")}
+				/>
+			) : null}
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	container: { flex: 1, alignItems: "center", paddingTop: 8 },
-	title: { fontSize: 22, fontWeight: "800", textAlign: "center" },
-	subtitle: {
-		fontSize: 14,
-		textAlign: "center",
-		marginTop: 4,
-		marginBottom: 8,
-	},
-	passScreen: { alignItems: "center", paddingTop: 40 },
-	// Ship tray
-	shipTray: {
-		flexDirection: "row",
-		flexWrap: "wrap",
-		gap: 8,
-		justifyContent: "center",
-		marginBottom: 10,
-	},
-	shipChip: {
-		paddingHorizontal: 12,
-		paddingVertical: 6,
-		borderRadius: 8,
-		borderWidth: 1,
-	},
-	shipChipText: { fontSize: 13, fontWeight: "600" },
-	rotateBtn: {
-		paddingHorizontal: 12,
-		paddingVertical: 6,
-		borderRadius: 8,
-		borderWidth: 1,
-	},
-	rotateBtnText: { fontSize: 13, fontWeight: "700" },
-	// Setup actions
-	setupActions: { alignItems: "center", gap: 10, marginTop: 12 },
-	primaryBtn: {
-		paddingHorizontal: 32,
-		paddingVertical: 12,
-		borderRadius: 12,
-	},
-	primaryBtnText: { fontSize: 16, fontWeight: "800" },
-	linkText: { fontSize: 14, fontWeight: "600" },
-	// Grid
-	gridWrap: { marginTop: 4 },
+	container: { flex: 1, alignItems: "stretch", paddingTop: Spacing.sm, paddingHorizontal: Spacing.md, gap: Spacing.sm },
+	topRow: { flexDirection: "row", alignItems: "center", gap: Spacing.sm },
+	shipTray: { flexDirection: "row", flexWrap: "wrap", gap: Spacing.sm, justifyContent: "center" },
+	shipChip: { paddingHorizontal: Spacing.md, paddingVertical: 6, borderRadius: Radius.sm + 2, borderWidth: 1 },
+	shipChipText: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold },
+	setupActions: { alignItems: "center", gap: Spacing.sm + 2, marginTop: Spacing.sm },
+	primaryBtn: { paddingHorizontal: Spacing["4xl"], paddingVertical: Spacing.md, borderRadius: Radius.card },
+	primaryBtnText: { ...TextStyle.buttonSecondary, color: "#0b1620" },
+	linkText: { fontSize: FontSize.base, fontWeight: FontWeight.semibold },
+	gridWrap: { marginTop: Spacing.xs, alignSelf: "center" },
 	gridRow: { flexDirection: "row" },
 	labelCell: { alignItems: "center", justifyContent: "center" },
-	labelText: { fontSize: 11, fontWeight: "700" },
-	cell: { borderRadius: 3, alignItems: "center", justifyContent: "center" },
-	cellContent: { fontSize: 16, fontWeight: "800" },
-	// Scoreboard
-	scoreboard: {
-		flexDirection: "row",
-		gap: 20,
-		marginBottom: 6,
-		marginTop: 4,
-	},
-	scoreText: { fontSize: 13, fontWeight: "700" },
-	remainingRow: {
-		flexDirection: "row",
-		gap: 14,
-		marginBottom: 4,
-	},
-	remainingText: {
-		fontSize: 12,
-		fontWeight: "700",
-	},
-	// Flash badge
-	flashBadge: {
-		backgroundColor: "rgba(0,0,0,0.7)",
-		paddingHorizontal: 20,
-		paddingVertical: 8,
-		borderRadius: 10,
-		marginBottom: 4,
-	},
-	flashBadgeText: { color: "#fff", fontSize: 18, fontWeight: "800" },
-	// Attack hint
-	attackHint: { fontSize: 13, marginBottom: 6 },
+	labelText: { fontSize: FontSize.xs, fontWeight: FontWeight.bold },
+	cell: { borderRadius: 3, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+	cellContent: { fontSize: FontSize.md, fontWeight: FontWeight.extrabold },
+	remainingRow: { flexDirection: "row", gap: Spacing.lg, justifyContent: "center" },
+	remainingText: { fontSize: FontSize.sm, fontWeight: FontWeight.bold },
+	flashBadge: { alignSelf: "center", borderWidth: 1.5, paddingHorizontal: Spacing.xl, paddingVertical: Spacing.sm, borderRadius: Radius.md },
+	flashBadgeText: { fontSize: FontSize.lg, fontWeight: FontWeight.extrabold },
+	attackHint: { ...TextStyle.hint, textAlign: "center" },
 });

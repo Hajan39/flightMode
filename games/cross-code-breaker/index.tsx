@@ -1,48 +1,43 @@
-﻿import { useState } from "react";
-import {
-	Pressable,
-	ScrollView,
-	StyleSheet,
-	View as RNView,
-} from "react-native";
+import { useState } from "react";
+import { Pressable, View as RNView, ScrollView, StyleSheet } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
+import GameControls from "@/components/GameControls";
+import {
+	MatchResult,
+	PassDeviceOverlay,
+	PlayerScoreStrip,
+	PlayerSetup,
+	TurnBanner,
+} from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useGameStore } from "@/store/useGameStore";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useHaptic } from "@/hooks/useHaptic";
+import Colors from "@/constants/Colors";
+import { Radius, Spacing } from "@/constants/Spacing";
+import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useAnimatedPress } from "@/hooks/useAnimatedPress";
+import { useHaptic } from "@/hooks/useHaptic";
+import type { MatchPlayer } from "@/hooks/useMatchPlayers";
+import { useTranslation } from "@/hooks/useTranslation";
+import type { GameProgressUpdate } from "@/types/game";
+import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
 
+const GAME_ID = "cross-code-breaker";
 const CODE_LEN = 4;
 const MAX_GUESSES = 10;
 const TOTAL_ROUNDS = 3;
-const MAX_PLAYERS = 6;
-const PLAYER_COLORS = [
-	"#4FC3F7",
-	"#FF8A65",
-	"#81C784",
-	"#CE93D8",
-	"#FFD54F",
-	"#4DD0E1",
-];
 
 type Phase = "setup" | "handoff" | "playing" | "roundEnd" | "done";
 type GuessEntry = { digits: number[]; bulls: number; cows: number };
 
-function calcBullsCows(
-	secret: number[],
-	guess: number[],
-): { bulls: number; cows: number } {
+function calcBullsCows(secret: number[], guess: number[]): { bulls: number; cows: number } {
 	let bulls = 0;
 	let cows = 0;
 	const sCount = Array(10).fill(0);
 	const gCount = Array(10).fill(0);
 	for (let i = 0; i < CODE_LEN; i++) {
-		if (secret[i] === guess[i]) {
-			bulls++;
-		} else {
+		if (secret[i] === guess[i]) bulls++;
+		else {
 			sCount[secret[i]]++;
 			gCount[guess[i]]++;
 		}
@@ -60,50 +55,49 @@ function generateSecret(): number[] {
 	return digits.slice(0, CODE_LEN);
 }
 
+const SLOT_KEYS = ["s0", "s1", "s2", "s3"] as const;
+const PEG_KEYS = ["p0", "p1", "p2", "p3"] as const;
+
 export default function CrossCodeBreakerGame() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
-	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t } = useTranslation();
 	const haptic = useHaptic();
 	const submitPress = useAnimatedPress(0.93);
 
-	/* setup */
-	const [playerCount, setPlayerCount] = useState(2);
+	const [players, setPlayers] = useState<MatchPlayer[]>([]);
 	const [phase, setPhase] = useState<Phase>("setup");
-
-	/* round state */
 	const [secret, setSecret] = useState<number[]>([]);
 	const [round, setRound] = useState(1);
 	const [currentPlayer, setCurrentPlayer] = useState(0);
 	const [histories, setHistories] = useState<GuessEntry[][]>([]);
 	const [scores, setScores] = useState<number[]>([]);
 	const [roundWinner, setRoundWinner] = useState<number | null>(null);
-
-	/* input */
 	const [guessInput, setGuessInput] = useState<number[]>([]);
-	const [lastResult, setLastResult] = useState<{
-		bulls: number;
-		cows: number;
-	} | null>(null);
+	const [lastResult, setLastResult] = useState<{ bulls: number; cows: number } | null>(null);
 	const [pendingNext, setPendingNext] = useState<number | null>(null);
+	const [progress, setProgress] = useState<GameProgressUpdate | undefined>();
 
-	const pColor = PLAYER_COLORS[currentPlayer];
+	const current = players[Math.min(currentPlayer, Math.max(0, players.length - 1))];
+	const pColor = current?.color ?? theme.tint;
 
-	const startGame = () => {
-		setScores(Array(playerCount).fill(0));
-		setRound(1);
-		startNewRound(playerCount);
-	};
-
-	const startNewRound = (pc: number) => {
+	const startNewRound = (count: number) => {
 		setSecret(generateSecret());
-		setHistories(Array.from({ length: pc }, () => []));
+		setHistories(Array.from({ length: count }, () => []));
 		setCurrentPlayer(0);
 		setRoundWinner(null);
 		setGuessInput([]);
 		setLastResult(null);
+		setPendingNext(null);
 		setPhase("handoff");
+	};
+
+	const startMatch = (matchPlayers: MatchPlayer[]) => {
+		setPlayers(matchPlayers);
+		setScores(Array(matchPlayers.length).fill(0));
+		setRound(1);
+		setProgress(undefined);
+		startNewRound(matchPlayers.length);
 	};
 
 	const addDigit = (d: number) => {
@@ -119,7 +113,6 @@ export default function CrossCodeBreakerGame() {
 	const submitGuess = () => {
 		if (guessInput.length !== CODE_LEN) return;
 		const result = calcBullsCows(secret, guessInput);
-
 		const newHistories = histories.map((h, i) =>
 			i === currentPlayer ? [...h, { digits: [...guessInput], ...result }] : h,
 		);
@@ -130,35 +123,28 @@ export default function CrossCodeBreakerGame() {
 			haptic.success();
 			setRoundWinner(currentPlayer);
 			const guessCount = newHistories[currentPlayer].length;
-			setScores((prev) => {
-				const next = [...prev];
-				next[currentPlayer] += Math.max(
-					10,
-					(MAX_GUESSES - guessCount + 1) * 10,
-				);
-				return next;
-			});
-			// result visible briefly before roundEnd button press
+			setScores((prev) =>
+				prev.map((s, i) =>
+					i === currentPlayer ? s + Math.max(10, (MAX_GUESSES - guessCount + 1) * 10) : s,
+				),
+			);
 			return;
 		}
 
 		haptic.tap();
-
 		const allMaxed = newHistories.every((h) => h.length >= MAX_GUESSES);
 		if (allMaxed) {
 			setPendingNext(null);
 			return;
 		}
-
-		let next = (currentPlayer + 1) % playerCount;
-		while (newHistories[next].length >= MAX_GUESSES) {
-			next = (next + 1) % playerCount;
-		}
+		let next = (currentPlayer + 1) % players.length;
+		while (newHistories[next].length >= MAX_GUESSES) next = (next + 1) % players.length;
 		setPendingNext(next);
 	};
 
 	const continueToNextPlayer = () => {
 		if (pendingNext === null) return;
+		haptic.tap();
 		setCurrentPlayer(pendingNext);
 		setGuessInput([]);
 		setLastResult(null);
@@ -167,36 +153,27 @@ export default function CrossCodeBreakerGame() {
 	};
 
 	const confirmRoundEnd = () => {
-		setLastResult(null);
-		setPhase("roundEnd");
-	};
-
-	const confirmAllMaxed = () => {
+		haptic.tap();
 		setLastResult(null);
 		setPhase("roundEnd");
 	};
 
 	const nextRound = () => {
+		haptic.tap();
 		if (round >= TOTAL_ROUNDS) {
-			updateProgress("cross-code-breaker", Math.max(...scores));
+			setProgress(recordMatch(GAME_ID, scores.map((score) => ({ score }))));
 			setPhase("done");
 			return;
 		}
 		setRound((r) => r + 1);
-		startNewRound(playerCount);
+		startNewRound(players.length);
 	};
 
-	const restart = () => {
-		setPhase("setup");
-		setPlayerCount(2);
-	};
-
-	/* render helpers */
 	const renderCode = (digits: number[], highlight: string) => (
 		<RNView style={styles.codeRow}>
-			{Array.from({ length: CODE_LEN }).map((_, i) => (
+			{SLOT_KEYS.map((key, i) => (
 				<RNView
-					key={i}
+					key={key}
 					style={[
 						styles.codeSlot,
 						{
@@ -206,10 +183,7 @@ export default function CrossCodeBreakerGame() {
 					]}
 				>
 					<Text
-						style={[
-							styles.codeDigit,
-							{ color: digits[i] != null ? "#fff" : theme.mutedText },
-						]}
+						style={[styles.codeDigit, { color: digits[i] != null ? "#0b1620" : theme.mutedText }]}
 					>
 						{digits[i] != null ? digits[i] : "—"}
 					</Text>
@@ -227,19 +201,13 @@ export default function CrossCodeBreakerGame() {
 			<RNView style={styles.pegRow}>
 				{pegs.map((p, i) => (
 					<Animated.View
-						key={i}
-						entering={
-							animate ? ZoomIn.delay(i * 40).duration(150) : undefined
-						}
+						key={PEG_KEYS[i]}
+						entering={animate ? ZoomIn.delay(i * 40).duration(150) : undefined}
 						style={[
 							styles.peg,
 							{
 								backgroundColor:
-									p === "bull"
-										? theme.successBorder
-										: p === "cow"
-											? theme.warning
-											: theme.border,
+									p === "bull" ? theme.successBorder : p === "cow" ? theme.warning : theme.border,
 							},
 						]}
 					/>
@@ -248,464 +216,224 @@ export default function CrossCodeBreakerGame() {
 		);
 	};
 
-	/* SETUP */
 	if (phase === "setup") {
 		return (
-			<View style={styles.container}>
-				<Text style={styles.title}>{t("gameCrossCodeBreakerName")}</Text>
-				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
-					{t("mpSelectPlayers")}
-				</Text>
-				<RNView style={styles.countRow}>
-					{Array.from({ length: MAX_PLAYERS - 1 }, (_, i) => i + 2).map((n) => (
-						<Pressable
-							key={n}
-							style={[
-								styles.countBtn,
-								{
-									backgroundColor: playerCount === n ? theme.tint : theme.card,
-									borderColor: playerCount === n ? theme.tint : theme.border,
-								},
-							]}
-							onPress={() => setPlayerCount(n)}
-							accessibilityRole="button"
-							accessibilityLabel={t("mpPlayerN", { n })}
-							accessibilityState={{ selected: playerCount === n }}
-						>
-							<Text
-								style={[
-									styles.countBtnText,
-									{ color: playerCount === n ? theme.onTint : theme.text },
-								]}
-							>
-								{n}
-							</Text>
-						</Pressable>
-					))}
-				</RNView>
-				<Pressable
-					onPress={startGame}
-					accessibilityRole="button"
-					accessibilityLabel={t("start")}
-					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-				>
-					<Text style={styles.primaryBtnText}>{t("start")}</Text>
-				</Pressable>
-			</View>
+			<PlayerSetup
+				title={t("gameCrossCodeBreakerName")}
+				subtitle={t("cbSecretHint")}
+				minPlayers={2}
+				onStart={startMatch}
+			/>
 		);
 	}
 
-	/* HANDOFF */
-	if (phase === "handoff") {
-		return (
-			<View style={styles.container}>
-				<Animated.View
-					entering={FadeInDown.duration(300)}
-					style={styles.center}
-				>
-					<Text style={{ fontSize: 48, marginBottom: 12 }}>🔒</Text>
-					<Text style={[styles.title, { color: pColor }]}>
-						{t("mpPlayerN", { n: currentPlayer + 1 })}
-					</Text>
-					<Text style={[styles.subtitle, { color: theme.mutedText }]}>
-						{t("cbHandoffHint")}
-					</Text>
-					<Text style={[styles.guessCount, { color: theme.mutedText }]}>
-						{t("cbGuessesUsed")}: {histories[currentPlayer]?.length ?? 0}/
-						{MAX_GUESSES}
-					</Text>
-					<Pressable
-						onPress={() => {
-							setPhase("playing");
-							setGuessInput([]);
-							setLastResult(null);
-						}}
-						accessibilityRole="button"
-						accessibilityLabel={t("passPhoneReady")}
-						style={[
-							styles.primaryBtn,
-							{ backgroundColor: pColor, marginTop: 20 },
-						]}
-					>
-						<Text style={styles.primaryBtnText}>{t("passPhoneReady")}</Text>
-					</Pressable>
-				</Animated.View>
-			</View>
-		);
-	}
-
-	/* ROUND END */
-	if (phase === "roundEnd") {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.title}>
-					{roundWinner != null
-						? t("dicePlayerWins", { player: String(roundWinner + 1) })
-						: t("cbNobodyCracked")}
-				</Text>
-				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
-					{t("cbSecretWas")}: {secret.join(" ")}
-				</Text>
-
-				{/* Scores */}
-				<RNView style={styles.scoreTable}>
-					{scores.map((s, i) => (
-						<RNView
-							key={i}
-							style={[styles.scoreRow, { borderColor: theme.border + "44" }]}
-						>
-							<RNView
-								style={[
-									styles.playerDot,
-									{ backgroundColor: PLAYER_COLORS[i] },
-								]}
-							/>
-							<Text style={[styles.scoreName, { color: theme.text }]}>
-								{t("mpPlayerN", { n: i + 1 })}
-							</Text>
-							<Text style={[styles.scoreNum, { color: PLAYER_COLORS[i] }]}>
-								{s}
-							</Text>
-						</RNView>
-					))}
-				</RNView>
-
-				<Pressable
-					onPress={nextRound}
-					accessibilityRole="button"
-					accessibilityLabel={round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
-					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-				>
-					<Text style={styles.primaryBtnText}>
-						{round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
-					</Text>
-				</Pressable>
-			</View>
-		);
-	}
-
-	/* DONE */
-	if (phase === "done") {
-		const maxScore = Math.max(...scores);
-		const winners = scores
-			.map((s, i) => (s === maxScore ? i : -1))
-			.filter((i) => i >= 0);
-		const winnerName =
-			winners.length === 1
-				? t("dicePlayerWins", { player: String(winners[0] + 1) })
-				: t("diceDraw");
-		return (
-			<View style={styles.container}>
-				<Text style={{ fontSize: 48, marginBottom: 12 }}>🏆</Text>
-				<Text style={styles.title}>{winnerName}</Text>
-
-				<RNView style={styles.scoreTable}>
-					{scores.map((s, i) => (
-						<RNView
-							key={i}
-							style={[styles.scoreRow, { borderColor: theme.border + "44" }]}
-						>
-							<RNView
-								style={[
-									styles.playerDot,
-									{ backgroundColor: PLAYER_COLORS[i] },
-								]}
-							/>
-							<Text style={[styles.scoreName, { color: theme.text }]}>
-								{t("mpPlayerN", { n: i + 1 })}
-							</Text>
-							<Text style={[styles.scoreNum, { color: PLAYER_COLORS[i] }]}>
-								{s}
-							</Text>
-						</RNView>
-					))}
-				</RNView>
-
-				<Pressable
-					onPress={restart}
-					accessibilityRole="button"
-					accessibilityLabel={t("playAgain")}
-					style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-				>
-					<Text style={styles.primaryBtnText}>{t("playAgain")}</Text>
-				</Pressable>
-			</View>
-		);
-	}
-
-	/* PLAYING */
 	const myHistory = histories[currentPlayer] ?? [];
 
 	return (
 		<View style={styles.container}>
-			{/* HUD */}
-			<RNView style={styles.hud}>
-				<RNView style={styles.hudScores}>
-					{scores.map((s, i) => (
-						<RNView
-							key={i}
-							style={[
-								styles.hudChip,
-								i === currentPlayer && {
-									borderColor: PLAYER_COLORS[i],
-									borderWidth: 1.5,
-								},
-							]}
-						>
-							<RNView
-								style={[styles.hudDot, { backgroundColor: PLAYER_COLORS[i] }]}
-							/>
-							<Text style={[styles.hudNum, { color: PLAYER_COLORS[i] }]}>
-								{s}
-							</Text>
-						</RNView>
-					))}
-				</RNView>
-				<Text style={[styles.roundLabel, { color: theme.mutedText }]}>
-					{t("hmRound", { round, total: TOTAL_ROUNDS })}
-				</Text>
-				<Text style={[styles.guesserLabel, { color: pColor }]}>
-					{t("mpPlayerN", { n: currentPlayer + 1 })} — {myHistory.length}/
-					{MAX_GUESSES}
-				</Text>
+			<RNView style={styles.topRow}>
+				<TurnBanner
+					player={current}
+					compact
+					label={
+						phase === "roundEnd"
+							? roundWinner != null
+								? t("mpWinsRound", { player: players[roundWinner].name })
+								: t("cbNobodyCracked")
+							: `${current.name} · ${myHistory.length}/${MAX_GUESSES}`
+					}
+					right={
+						<Text style={[styles.roundChip, { color: theme.mutedText }]}>
+							{t("mpRoundOf", { round, total: TOTAL_ROUNDS })}
+						</Text>
+					}
+				/>
+				<GameControls onReset={() => startMatch(players)} />
 			</RNView>
 
-			<ScrollView
-				style={styles.scrollArea}
-				contentContainerStyle={styles.scrollContent}
-			>
-				{/* Guess input */}
-				{renderCode(guessInput, pColor)}
+			<PlayerScoreStrip
+				players={players}
+				scores={scores}
+				activeIndex={phase === "playing" ? currentPlayer : undefined}
+				detail={(i) => `${histories[i]?.length ?? 0}/${MAX_GUESSES}`}
+			/>
 
-				{/* Numpad */}
-				<RNView style={styles.numpad}>
-					{[
-						[1, 2, 3, 4, 5],
-						[6, 7, 8, 9, 0],
-					].map((row, ri) => (
-						<RNView key={ri} style={styles.numRow}>
-							{row.map((d) => (
-								<Pressable
-									key={d}
-									onPress={() => addDigit(d)}
-									accessibilityRole="button"
-									accessibilityLabel={String(d)}
-									style={[
-										styles.numKey,
-										{ backgroundColor: theme.card, borderColor: theme.border },
-									]}
-								>
-									<Text style={styles.numKeyText}>{d}</Text>
-								</Pressable>
-							))}
-						</RNView>
-					))}
+			{phase === "roundEnd" ? (
+				<RNView style={styles.roundEnd}>
+					<Text style={[styles.secretLabel, { color: theme.mutedText }]}>{t("cbSecretWas")}</Text>
+					{renderCode(secret, roundWinner != null ? players[roundWinner].color : theme.tint)}
 					<Pressable
-						onPress={() => setGuessInput((p) => p.slice(0, -1))}
+						onPress={nextRound}
 						accessibilityRole="button"
-						accessibilityLabel="Backspace"
-						style={[
-							styles.deleteKey,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
+						accessibilityLabel={round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
+						style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
 					>
-						<Text style={[styles.numKeyText, { color: theme.danger }]}>⌫</Text>
+						<Text style={[styles.primaryBtnText, { color: theme.onTint }]}>
+							{round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
+						</Text>
 					</Pressable>
 				</RNView>
+			) : (
+				<ScrollView style={styles.scrollArea} contentContainerStyle={styles.scrollContent}>
+					{renderCode(guessInput, pColor)}
 
-				{guessInput.length === CODE_LEN && !lastResult && (
-					<Animated.View
-						entering={ZoomIn.duration(200)}
-						style={submitPress.animatedStyle}
-					>
+					<RNView style={styles.numpad}>
+						{[
+							[1, 2, 3, 4, 5],
+							[6, 7, 8, 9, 0],
+						].map((row) => (
+							<RNView key={`row-${row[0]}`} style={styles.numRow}>
+								{row.map((d) => (
+									<Pressable
+										key={d}
+										onPress={() => addDigit(d)}
+										disabled={lastResult !== null}
+										accessibilityRole="button"
+										accessibilityLabel={String(d)}
+										style={[
+											styles.numKey,
+											{
+												backgroundColor: guessInput.includes(d) ? `${pColor}33` : theme.card,
+												borderColor: theme.border,
+											},
+										]}
+									>
+										<Text style={styles.numKeyText}>{d}</Text>
+									</Pressable>
+								))}
+							</RNView>
+						))}
 						<Pressable
-							onPress={submitGuess}
-							onPressIn={submitPress.onPressIn}
-							onPressOut={submitPress.onPressOut}
+							onPress={() => {
+								haptic.tap();
+								setGuessInput((p) => p.slice(0, -1));
+							}}
+							disabled={lastResult !== null}
 							accessibilityRole="button"
-							accessibilityLabel={t("cbCheck")}
-							style={[styles.primaryBtn, { backgroundColor: pColor }]}
+							accessibilityLabel={t("a11yBackspace")}
+							style={[styles.deleteKey, { backgroundColor: theme.card, borderColor: theme.border }]}
 						>
-							<Text style={styles.primaryBtnText}>{t("cbCheck")}</Text>
+							<Text style={[styles.numKeyText, { color: theme.danger }]}>⌫</Text>
 						</Pressable>
-					</Animated.View>
-				)}
+					</RNView>
 
-				{/* Last result */}
-				{lastResult && (
-					<Animated.View
-						entering={ZoomIn.duration(200)}
-						style={styles.resultBox}
-					>
-						{renderPegs(lastResult.bulls, lastResult.cows, true)}
-						<Text style={[styles.resultSubtext, { color: theme.mutedText }]}>
-							{lastResult.bulls}🎯 {lastResult.cows}🐄
-						</Text>
-						{pendingNext !== null ? (
+					{guessInput.length === CODE_LEN && !lastResult ? (
+						<Animated.View entering={ZoomIn.duration(200)} style={submitPress.animatedStyle}>
 							<Pressable
-								onPress={continueToNextPlayer}
+								onPress={submitGuess}
+								onPressIn={submitPress.onPressIn}
+								onPressOut={submitPress.onPressOut}
 								accessibilityRole="button"
-								accessibilityLabel={t("passPhone")}
+								accessibilityLabel={t("cbCheck")}
 								style={[styles.primaryBtn, { backgroundColor: pColor }]}
 							>
-								<Text style={styles.primaryBtnText}>{t("passPhone")}</Text>
+								<Text style={styles.primaryBtnText}>{t("cbCheck")}</Text>
 							</Pressable>
-						) : (
-							<Pressable
-								onPress={confirmRoundEnd}
-								accessibilityRole="button"
-								accessibilityLabel={t("hmSeeResult")}
-								style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-							>
-								<Text style={styles.primaryBtnText}>{t("hmSeeResult")}</Text>
-							</Pressable>
-						)}
-					</Animated.View>
-				)}
+						</Animated.View>
+					) : null}
 
-				{/* History */}
-				{myHistory.length > 0 && (
-					<RNView style={styles.historySection}>
-						<Text style={[styles.historyTitle, { color: theme.mutedText }]}>
-							{t("cbHistory")}
-						</Text>
-						{myHistory.map((entry, idx) => (
-							<Animated.View
-								key={idx}
-								entering={FadeInDown.duration(200)}
-								style={[
-									styles.historyRow,
-									{ backgroundColor: theme.card, borderColor: theme.border },
-								]}
-							>
-								<Text style={styles.historyIdx}>{idx + 1}.</Text>
-								<Text style={styles.historyDigits}>
-									{entry.digits.join(" ")}
-								</Text>
-								{renderPegs(entry.bulls, entry.cows)}
-							</Animated.View>
-						))}
-					</RNView>
-				)}
-			</ScrollView>
+					{lastResult ? (
+						<Animated.View entering={ZoomIn.duration(200)} style={styles.resultBox}>
+							{renderPegs(lastResult.bulls, lastResult.cows, true)}
+							<Text style={[styles.resultSubtext, { color: theme.mutedText }]}>
+								{lastResult.bulls}🎯 {lastResult.cows}🐄
+							</Text>
+							{roundWinner !== null ? (
+								<Text style={[styles.cracked, { color: theme.successBorder }]}>{t("cbYouCracked")}</Text>
+							) : null}
+							{pendingNext !== null && roundWinner === null ? (
+								<Pressable
+									onPress={continueToNextPlayer}
+									accessibilityRole="button"
+									accessibilityLabel={t("passPhone")}
+									style={[styles.primaryBtn, { backgroundColor: pColor }]}
+								>
+									<Text style={styles.primaryBtnText}>{t("passPhone")}</Text>
+								</Pressable>
+							) : (
+								<Pressable
+									onPress={confirmRoundEnd}
+									accessibilityRole="button"
+									accessibilityLabel={t("hmSeeResult")}
+									style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
+								>
+									<Text style={[styles.primaryBtnText, { color: theme.onTint }]}>{t("hmSeeResult")}</Text>
+								</Pressable>
+							)}
+						</Animated.View>
+					) : null}
+
+					{myHistory.length > 0 ? (
+						<RNView style={styles.historySection}>
+							<Text style={[styles.historyTitle, { color: theme.mutedText }]}>{t("cbMyGuesses")}</Text>
+							{myHistory.map((entry, idx) => (
+								<Animated.View
+									key={`${entry.digits.join("")}-${idx}`}
+									entering={FadeInDown.duration(200)}
+									style={[styles.historyRow, { backgroundColor: theme.card, borderColor: theme.border }]}
+								>
+									<Text style={[styles.historyIdx, { color: theme.mutedText }]}>{idx + 1}.</Text>
+									<Text style={styles.historyDigits}>{entry.digits.join(" ")}</Text>
+									{renderPegs(entry.bulls, entry.cows)}
+								</Animated.View>
+							))}
+						</RNView>
+					) : null}
+				</ScrollView>
+			)}
+
+			<PassDeviceOverlay
+				visible={phase === "handoff"}
+				toPlayer={current}
+				secret
+				hint={`${t("cbHandoffHint")} · ${t("cbGuessesUsed")}: ${myHistory.length}/${MAX_GUESSES}`}
+				onReady={() => {
+					setPhase("playing");
+					setGuessInput([]);
+					setLastResult(null);
+				}}
+			/>
+
+			{phase === "done" ? (
+				<MatchResult
+					standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
+					winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
+					scoreLabel={t("mpPoints")}
+					progress={progress}
+					onRematch={() => startMatch(players)}
+					onChangePlayers={() => setPhase("setup")}
+				/>
+			) : null}
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	container: { flex: 1, alignItems: "center", paddingTop: 10 },
-	center: { alignItems: "center" },
-	title: { fontSize: 22, fontWeight: "800", textAlign: "center" },
-	subtitle: {
-		fontSize: 14,
-		textAlign: "center",
-		marginTop: 4,
-		marginBottom: 12,
-	},
-	/* setup */
-	countRow: { flexDirection: "row", gap: 10, marginBottom: 20 },
-	countBtn: {
-		width: 48,
-		height: 48,
-		borderRadius: 12,
-		borderWidth: 1.5,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	countBtnText: { fontSize: 20, fontWeight: "800" },
-	/* hud */
-	hud: { width: "100%", alignItems: "center", marginBottom: 4, gap: 2 },
-	hudScores: { flexDirection: "row", gap: 8, justifyContent: "center" },
-	hudChip: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 4,
-		paddingHorizontal: 8,
-		paddingVertical: 4,
-		borderRadius: 8,
-	},
-	hudDot: { width: 8, height: 8, borderRadius: 4 },
-	hudNum: { fontSize: 18, fontWeight: "900" },
-	roundLabel: { fontSize: 11, fontWeight: "700" },
-	guesserLabel: { fontSize: 13, fontWeight: "800" },
-	guessCount: { fontSize: 13, fontWeight: "600" },
-	/* code */
-	codeRow: { flexDirection: "row", gap: 10, marginVertical: 10 },
-	codeSlot: {
-		width: 50,
-		height: 56,
-		borderRadius: 10,
-		borderWidth: 1.5,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	codeDigit: { fontSize: 26, fontWeight: "800" },
-	/* numpad */
-	numpad: { alignItems: "center", gap: 6, marginVertical: 8 },
+	container: { flex: 1, alignItems: "stretch", paddingTop: Spacing.sm, paddingHorizontal: Spacing.md, gap: Spacing.sm },
+	topRow: { flexDirection: "row", alignItems: "center", gap: Spacing.sm },
+	roundChip: { ...TextStyle.chipLabel },
+	codeRow: { flexDirection: "row", gap: Spacing.sm + 2, marginVertical: Spacing.sm + 2, justifyContent: "center" },
+	codeSlot: { width: 52, height: 58, borderRadius: Radius.md, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
+	codeDigit: { fontSize: FontSize["3xl"] - 2, fontWeight: FontWeight.extrabold },
+	numpad: { alignItems: "center", gap: 6, marginVertical: Spacing.sm },
 	numRow: { flexDirection: "row", gap: 6 },
-	numKey: {
-		width: 50,
-		height: 44,
-		borderRadius: 8,
-		borderWidth: 1,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	numKeyText: { fontSize: 20, fontWeight: "700" },
-	deleteKey: {
-		paddingHorizontal: 20,
-		paddingVertical: 8,
-		borderRadius: 8,
-		borderWidth: 1,
-		alignSelf: "flex-end",
-	},
-	/* buttons */
-	primaryBtn: {
-		paddingHorizontal: 28,
-		paddingVertical: 12,
-		borderRadius: 12,
-		marginTop: 8,
-	},
-	primaryBtnText: { color: "#fff", fontSize: 16, fontWeight: "800" },
-	/* pegs */
+	numKey: { width: 52, height: 46, borderRadius: Radius.sm + 2, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+	numKeyText: { fontSize: FontSize.xl, fontWeight: FontWeight.bold },
+	deleteKey: { paddingHorizontal: Spacing.xl, paddingVertical: Spacing.sm, borderRadius: Radius.sm + 2, borderWidth: 1, alignSelf: "flex-end" },
+	primaryBtn: { paddingHorizontal: Spacing["3xl"], paddingVertical: Spacing.md, borderRadius: Radius.card, marginTop: Spacing.sm, alignSelf: "center" },
+	primaryBtnText: { ...TextStyle.buttonSecondary, color: "#0b1620" },
 	pegRow: { flexDirection: "row", gap: 4 },
 	peg: { width: 14, height: 14, borderRadius: 7 },
-	/* result */
-	resultBox: { alignItems: "center", marginVertical: 8, gap: 6 },
-	resultSubtext: { fontSize: 13, fontWeight: "600" },
-	/* history */
-	historySection: { width: "90%", marginTop: 14, gap: 4 },
-	historyTitle: { fontSize: 13, fontWeight: "700", marginBottom: 4 },
-	historyRow: {
-		flexDirection: "row",
-		alignItems: "center",
-		borderWidth: 1,
-		borderRadius: 8,
-		paddingHorizontal: 10,
-		paddingVertical: 6,
-		gap: 8,
-	},
-	historyIdx: { fontSize: 13, fontWeight: "600", width: 24 },
-	historyDigits: { fontSize: 16, fontWeight: "700", flex: 1, letterSpacing: 4 },
-	/* scores */
-	playerDot: { width: 10, height: 10, borderRadius: 5 },
-	scoreTable: {
-		width: "100%",
-		gap: 6,
-		marginBottom: 16,
-		paddingHorizontal: 16,
-	},
-	scoreRow: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 10,
-		paddingVertical: 10,
-		paddingHorizontal: 14,
-		borderBottomWidth: 1,
-	},
-	scoreName: { fontSize: 16, fontWeight: "700", flex: 1 },
-	scoreNum: { fontSize: 24, fontWeight: "900" },
-	/* scroll */
-	scrollArea: { flex: 1, width: "100%" },
-	scrollContent: { alignItems: "center", paddingBottom: 20 },
+	resultBox: { alignItems: "center", marginVertical: Spacing.sm, gap: 6 },
+	resultSubtext: { ...TextStyle.hint },
+	cracked: { fontSize: FontSize.md, fontWeight: FontWeight.extrabold },
+	historySection: { alignSelf: "stretch", marginTop: Spacing.md, gap: 4 },
+	historyTitle: { ...TextStyle.statLabel, marginBottom: 4 },
+	historyRow: { flexDirection: "row", alignItems: "center", borderWidth: 1, borderRadius: Radius.sm + 2, paddingHorizontal: Spacing.sm + 2, paddingVertical: 6, gap: Spacing.sm },
+	historyIdx: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold, width: 24 },
+	historyDigits: { fontSize: FontSize.md, fontWeight: FontWeight.bold, flex: 1, letterSpacing: 4 },
+	roundEnd: { flex: 1, alignItems: "center", justifyContent: "center", gap: Spacing.md },
+	secretLabel: { ...TextStyle.statLabel },
+	scrollArea: { flex: 1 },
+	scrollContent: { alignItems: "center", paddingBottom: Spacing.xl },
 });

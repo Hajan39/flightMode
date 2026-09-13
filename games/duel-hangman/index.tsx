@@ -1,41 +1,42 @@
 import { useState } from "react";
 import {
-	Dimensions,
 	Pressable,
 	View as RNView,
 	ScrollView,
 	StyleSheet,
+	useWindowDimensions,
 } from "react-native";
 
+import GameControls from "@/components/GameControls";
+import GameResult from "@/components/GameResult";
+import {
+	MatchResult,
+	OptionChips,
+	PassDeviceOverlay,
+	PlayerScoreStrip,
+	PlayerSetup,
+	TurnBanner,
+} from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { Radius, Spacing } from "@/constants/Spacing";
+import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
+import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
+import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
 import { type Difficulty, pickWord } from "./words";
 
+const GAME_ID = "duel-hangman";
 const MAX_WRONG = 6;
 const TOTAL_ROUNDS = 8;
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const KEY_ROWS = [
-	ALPHABET.slice(0, 9),
-	ALPHABET.slice(9, 18),
-	ALPHABET.slice(18, 26),
-];
-const MAX_PLAYERS = 6;
+const KEY_ROWS = [ALPHABET.slice(0, 9), ALPHABET.slice(9, 18), ALPHABET.slice(18, 26)];
 
-const PLAYER_COLORS = [
-	"#ef5350",
-	"#ffd54f",
-	"#4FC3F7",
-	"#81C784",
-	"#CE93D8",
-	"#FF8A65",
-];
-
-const DIFFICULTIES: Difficulty[] = ["easy", "medium", "hard"];
 const DIFF_LABELS: Record<Difficulty, TranslationKey> = {
 	easy: "hmDiffEasy",
 	medium: "hmDiffMedium",
@@ -51,9 +52,7 @@ const DIFFICULTY_ORDER: Difficulty[] = ["easy", "medium", "hard"];
 function getRoundDifficulty(base: Difficulty, round: number): Difficulty {
 	const baseIndex = DIFFICULTY_ORDER.indexOf(base);
 	const ramp = Math.floor((round - 1) / 3);
-	return DIFFICULTY_ORDER[
-		Math.min(DIFFICULTY_ORDER.length - 1, baseIndex + ramp)
-	];
+	return DIFFICULTY_ORDER[Math.min(DIFFICULTY_ORDER.length - 1, baseIndex + ramp)];
 }
 
 /* Hangman figure parts */
@@ -61,88 +60,27 @@ const PARTS: ((color: string) => React.ReactNode)[] = [
 	(c) => (
 		<RNView
 			key="head"
-			style={{
-				position: "absolute",
-				top: 30,
-				left: 44,
-				width: 24,
-				height: 24,
-				borderRadius: 12,
-				borderWidth: 2.5,
-				borderColor: c,
-			}}
+			style={{ position: "absolute", top: 30, left: 44, width: 24, height: 24, borderRadius: 12, borderWidth: 2.5, borderColor: c }}
 		/>
 	),
 	(c) => (
-		<RNView
-			key="body"
-			style={{
-				position: "absolute",
-				top: 54,
-				left: 55,
-				width: 2.5,
-				height: 30,
-				backgroundColor: c,
-			}}
-		/>
+		<RNView key="body" style={{ position: "absolute", top: 54, left: 55, width: 2.5, height: 30, backgroundColor: c }} />
 	),
 	(c) => (
-		<RNView
-			key="larm"
-			style={{
-				position: "absolute",
-				top: 60,
-				left: 40,
-				width: 16,
-				height: 2.5,
-				backgroundColor: c,
-				transform: [{ rotate: "30deg" }],
-			}}
-		/>
+		<RNView key="larm" style={{ position: "absolute", top: 60, left: 40, width: 16, height: 2.5, backgroundColor: c, transform: [{ rotate: "30deg" }] }} />
 	),
 	(c) => (
-		<RNView
-			key="rarm"
-			style={{
-				position: "absolute",
-				top: 60,
-				left: 57,
-				width: 16,
-				height: 2.5,
-				backgroundColor: c,
-				transform: [{ rotate: "-30deg" }],
-			}}
-		/>
+		<RNView key="rarm" style={{ position: "absolute", top: 60, left: 57, width: 16, height: 2.5, backgroundColor: c, transform: [{ rotate: "-30deg" }] }} />
 	),
 	(c) => (
-		<RNView
-			key="lleg"
-			style={{
-				position: "absolute",
-				top: 82,
-				left: 42,
-				width: 16,
-				height: 2.5,
-				backgroundColor: c,
-				transform: [{ rotate: "-30deg" }],
-			}}
-		/>
+		<RNView key="lleg" style={{ position: "absolute", top: 82, left: 42, width: 16, height: 2.5, backgroundColor: c, transform: [{ rotate: "-30deg" }] }} />
 	),
 	(c) => (
-		<RNView
-			key="rleg"
-			style={{
-				position: "absolute",
-				top: 82,
-				left: 54,
-				width: 16,
-				height: 2.5,
-				backgroundColor: c,
-				transform: [{ rotate: "30deg" }],
-			}}
-		/>
+		<RNView key="rleg" style={{ position: "absolute", top: 82, left: 54, width: 16, height: 2.5, backgroundColor: c, transform: [{ rotate: "30deg" }] }} />
 	),
 ];
+
+type Phase = "setup" | "handoff" | "playing" | "result";
 
 export default function DuelHangmanGame() {
 	const colorScheme = useColorScheme();
@@ -150,40 +88,46 @@ export default function DuelHangmanGame() {
 	const updateProgress = useGameStore((s) => s.updateProgress);
 	const { t, language } = useTranslation();
 	const haptic = useHaptic();
+	const { width } = useWindowDimensions();
 
-	/* setup */
-	const [playerCount, setPlayerCount] = useState(1);
+	const [players, setPlayers] = useState<MatchPlayer[]>([]);
 	const [difficulty, setDifficulty] = useState<Difficulty>("medium");
-	const [phase, setPhase] = useState<
-		"setup" | "handoff" | "playing" | "result"
-	>("setup");
-
-	/* game */
+	const [phase, setPhase] = useState<Phase>("setup");
 	const [word, setWord] = useState("");
 	const [guessed, setGuessed] = useState<Set<string>>(new Set());
 	const [scores, setScores] = useState<number[]>([]);
 	const [round, setRound] = useState(1);
-	const [guesser, setGuesser] = useState(0); // 0-indexed
+	const [guesser, setGuesser] = useState(0);
+	const [progress, setProgress] = useState<GameProgressUpdate | undefined>();
 
-	const wrongCount = word
-		? [...guessed].filter((l) => !word.includes(l)).length
-		: 0;
+	const solo = players.length === 1;
+	const wrongCount = word ? [...guessed].filter((l) => !word.includes(l)).length : 0;
 	const isWon = word ? word.split("").every((l) => guessed.has(l)) : false;
 	const isLost = wrongCount >= MAX_WRONG;
 	const gameOver = isWon || isLost;
-	const guesserColor = PLAYER_COLORS[guesser % PLAYER_COLORS.length];
+	const current = players[Math.min(guesser, Math.max(0, players.length - 1))];
+	const guesserColor = current?.color ?? theme.tint;
 	const wordLetters = word.split("").map((letter, index) => ({
 		id: `${letter}-${index + 1}-${word.length}`,
 		letter,
 	}));
 
-	const startGame = (d: Difficulty) => {
-		setDifficulty(d);
-		setScores(Array(playerCount).fill(0));
+	const startMatch = (matchPlayers: MatchPlayer[]) => {
+		setPlayers(matchPlayers);
+		setScores(Array(matchPlayers.length).fill(0));
 		setRound(1);
 		setGuesser(0);
 		setGuessed(new Set());
-		setPhase("handoff");
+		setWord("");
+		setProgress(undefined);
+		// Solo: nothing to hide, skip the hand-off.
+		if (matchPlayers.length === 1) {
+			const diff = getRoundDifficulty(difficulty, 1);
+			setWord(pickWord(language, diff));
+			setPhase("playing");
+		} else {
+			setPhase("handoff");
+		}
 	};
 
 	const startRound = () => {
@@ -199,228 +143,98 @@ export default function DuelHangmanGame() {
 		next.add(letter);
 		setGuessed(next);
 
-		if (word.includes(letter)) {
-			haptic.success();
-		} else {
-			haptic.error();
-		}
+		if (word.includes(letter)) haptic.success();
+		else haptic.error();
 
 		const won = word.split("").every((l) => next.has(l));
 		const lost = [...next].filter((l) => !word.includes(l)).length >= MAX_WRONG;
 
 		if (won) {
-			setScores((prev) => {
-				const next = [...prev];
-				next[guesser] += 10;
-				return next;
-			});
-		} else if (lost) {
-			/* others each get 5 points */
+			setScores((prev) => prev.map((s, i) => (i === guesser ? s + 10 : s)));
+		} else if (lost && !solo) {
+			// Everyone else scores when the guesser fails.
 			setScores((prev) => prev.map((s, i) => (i === guesser ? s : s + 5)));
 		}
 	};
 
 	const nextRound = () => {
+		haptic.tap();
 		if (round >= TOTAL_ROUNDS) {
-			updateProgress("duel-hangman", Math.max(...scores));
+			if (solo) {
+				setProgress(updateProgress(GAME_ID, scores[0], { won: scores[0] > 0 }));
+			} else {
+				setProgress(recordMatch(GAME_ID, scores.map((score) => ({ score }))));
+			}
 			setPhase("result");
 			return;
 		}
-		setRound((r) => r + 1);
-		setGuesser((g) => (g + 1) % playerCount);
+		const nextRoundNo = round + 1;
+		setRound(nextRoundNo);
+		setGuesser((g) => (g + 1) % players.length);
 		setGuessed(new Set());
-		setPhase("handoff");
+		if (solo) {
+			setWord(pickWord(language, getRoundDifficulty(difficulty, nextRoundNo)));
+			setPhase("playing");
+		} else {
+			setPhase("handoff");
+		}
 	};
 
-	/* SETUP */
 	if (phase === "setup") {
 		return (
-			<View style={styles.root}>
-				<Text style={styles.title}>{t("gameDuelHangmanName")}</Text>
-				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
-					{t("mpSelectPlayers")}
-				</Text>
-				<RNView style={styles.countRow}>
-					{Array.from({ length: MAX_PLAYERS }, (_, i) => i + 1).map((n) => (
-						<Pressable
-							key={n}
-							style={[
-								styles.countBtn,
-								{
-									backgroundColor: playerCount === n ? theme.tint : theme.card,
-									borderColor: playerCount === n ? theme.tint : theme.border,
-								},
-							]}
-							onPress={() => setPlayerCount(n)}
-							accessibilityRole="button"
-							accessibilityLabel={t("mpPlayerN", { n })}
-							accessibilityState={{ selected: playerCount === n }}
-						>
-							<Text
-								style={[
-									styles.countBtnText,
-									{ color: playerCount === n ? theme.onTint : theme.text },
-								]}
-							>
-								{n}
-							</Text>
-						</Pressable>
-					))}
-				</RNView>
-				<Text style={[styles.diffHint, { color: theme.mutedText }]}>
-					{t("hmPickDifficulty")}
-				</Text>
-				<RNView style={styles.diffRow}>
-					{DIFFICULTIES.map((d) => (
-						<Pressable
-							key={d}
-							onPress={() => startGame(d)}
-							accessibilityRole="button"
-							accessibilityLabel={t(DIFF_LABELS[d])}
-							style={[
-								styles.diffBtn,
-								{ backgroundColor: theme.card, borderColor: theme.border },
-							]}
-						>
-							<Text style={styles.diffEmoji}>
-								{d === "easy"
-									? "\u2708\uFE0F"
-									: d === "medium"
-										? "\uD83D\uDEE9\uFE0F"
-										: "\uD83D\uDE80"}
-							</Text>
-							<Text style={[styles.diffLabel, { color: theme.text }]}>
-								{t(DIFF_LABELS[d])}
-							</Text>
-							<Text style={[styles.diffMeta, { color: theme.mutedText }]}>
-								{t(DIFF_HINTS[d])}
-							</Text>
-						</Pressable>
-					))}
-				</RNView>
-			</View>
+			<PlayerSetup
+				title={t("gameDuelHangmanName")}
+				minPlayers={1}
+				onStart={startMatch}
+			>
+				<OptionChips
+					label={t("hmPickDifficulty")}
+					value={difficulty}
+					onChange={setDifficulty}
+					options={DIFFICULTY_ORDER.map((d) => ({
+						value: d,
+						label: t(DIFF_LABELS[d]),
+						hint: t(DIFF_HINTS[d]),
+					}))}
+				/>
+			</PlayerSetup>
 		);
 	}
 
-	/* HANDOFF */
-	if (phase === "handoff") {
-		return (
-			<View style={styles.root}>
-				<Text style={{ fontSize: 48, marginBottom: 16 }}>{"\uD83D\uDD04"}</Text>
-				<Text style={styles.title}>{t("passPhone")}</Text>
-				<Text
-					style={[
-						styles.guesserHint,
-						{ color: guesserColor, fontSize: 18, marginTop: 8 },
-					]}
-				>
-					{t("hmPassToGuesser", { player: String(guesser + 1) })}
-				</Text>
-				<Text
-					style={[styles.diffHint, { color: theme.mutedText, marginTop: 8 }]}
-				>
-					{t("hmPassToGuesserHint")}
-				</Text>
-				<Pressable
-					style={[styles.btn, { backgroundColor: guesserColor, marginTop: 32 }]}
-					onPress={startRound}
-					accessibilityRole="button"
-					accessibilityLabel={t("passPhoneReady")}
-				>
-					<Text style={styles.btnText}>{t("passPhoneReady")}</Text>
-				</Pressable>
-			</View>
-		);
-	}
-
-	/* RESULT */
-	if (phase === "result") {
-		const maxScore = Math.max(...scores);
-		const winners = scores
-			.map((s, i) => (s === maxScore ? i : -1))
-			.filter((i) => i >= 0);
-		const winnerName =
-			winners.length === 1
-				? t("dicePlayerWins", { player: String(winners[0] + 1) })
-				: t("diceDraw");
-		return (
-			<View style={styles.root}>
-				<Text style={styles.title}>{winnerName}</Text>
-				<RNView style={styles.finalTable}>
-					{scores.map((s, i) => (
-						<RNView
-							key={`result-player-${i + 1}`}
-							style={[
-								styles.finalTableRow,
-								{ borderColor: theme.border + "44" },
-							]}
-						>
-							<RNView
-								style={[
-									styles.playerDot,
-									{ backgroundColor: PLAYER_COLORS[i] },
-								]}
-							/>
-							<Text style={[styles.finalName, { color: theme.text }]}>
-								{t("mpPlayerN", { n: i + 1 })}
-							</Text>
-							<Text style={[styles.finalNum, { color: PLAYER_COLORS[i] }]}>
-								{s}
-							</Text>
-						</RNView>
-					))}
-				</RNView>
-				<Pressable
-					style={[styles.btn, { backgroundColor: theme.tint }]}
-					onPress={() => setPhase("setup")}
-					accessibilityRole="button"
-					accessibilityLabel={t("playAgain")}
-				>
-					<Text style={styles.btnText}>{t("playAgain")}</Text>
-				</Pressable>
-			</View>
-		);
-	}
-
-	/* PLAYING */
 	const figureColor = theme.text;
+	const screenW = Math.min(width, 520) - Spacing.lg * 2;
+	const gap = word.length > 10 ? 4 : 8;
+	const slotW = word.length
+		? Math.min(32, (screenW - (word.length - 1) * gap) / word.length)
+		: 32;
+	const fontSize = slotW > 24 ? 24 : Math.max(14, slotW - 4);
 
 	return (
 		<View style={styles.root}>
-			{/* HUD */}
-			<RNView style={styles.hud}>
-				<RNView style={styles.hudScores}>
-					{scores.map((s, i) => (
-						<RNView
-							key={`hud-player-${i + 1}`}
-							style={[
-								styles.hudChip,
-								i === guesser && {
-									borderColor: PLAYER_COLORS[i],
-									borderWidth: 1.5,
-								},
-							]}
-						>
-							<RNView
-								style={[styles.hudDot, { backgroundColor: PLAYER_COLORS[i] }]}
-							/>
-							<Text style={[styles.hudNum, { color: PLAYER_COLORS[i] }]}>
-								{s}
+			<RNView style={styles.topRow}>
+				{current ? (
+					<TurnBanner
+						player={current}
+						compact
+						label={solo ? undefined : t("hmGuesserNamed", { player: current.name })}
+						right={
+							<Text style={[styles.roundChip, { color: theme.mutedText }]}>
+								{t("mpRoundOf", { round, total: TOTAL_ROUNDS })}
 							</Text>
-						</RNView>
-					))}
-				</RNView>
-				<RNView style={styles.hudCenter}>
-					<Text style={[styles.roundText, { color: theme.mutedText }]}>
-						{t("hmRound", { round, total: TOTAL_ROUNDS })}
-					</Text>
-					<Text style={[styles.guesserHint, { color: guesserColor }]}>
-						{t("hmGuesser", { player: String(guesser + 1) })}
-					</Text>
-				</RNView>
+						}
+					/>
+				) : null}
+				<GameControls onReset={() => startMatch(players)} />
 			</RNView>
 
-			{/* Gallows */}
+			{!solo ? (
+				<PlayerScoreStrip players={players} scores={scores} activeIndex={guesser} />
+			) : (
+				<Text style={[styles.soloScore, { color: theme.tint }]}>
+					{scores[0] ?? 0} {t("mpPoints")}
+				</Text>
+			)}
+
 			<RNView style={styles.gallowsBox}>
 				<RNView style={[styles.gallowBase, { backgroundColor: figureColor }]} />
 				<RNView style={[styles.gallowPole, { backgroundColor: figureColor }]} />
@@ -429,7 +243,6 @@ export default function DuelHangmanGame() {
 				{PARTS.slice(0, wrongCount).map((fn) => fn(figureColor))}
 			</RNView>
 
-			{/* Word */}
 			<ScrollView
 				horizontal
 				showsHorizontalScrollIndicator={false}
@@ -437,48 +250,39 @@ export default function DuelHangmanGame() {
 				style={styles.wordScroll}
 			>
 				<RNView style={styles.wordRow}>
-					{wordLetters.map(({ id, letter }) => {
-						const screenW = Dimensions.get("window").width - 32;
-						const gap = word.length > 10 ? 4 : 8;
-						const slotW = Math.min(
-							32,
-							(screenW - (word.length - 1) * gap) / word.length,
-						);
-						const fontSize = slotW > 24 ? 24 : Math.max(14, slotW - 4);
-						return (
-							<RNView
-								key={id}
+					{wordLetters.map(({ id, letter }) => (
+						<RNView
+							key={id}
+							style={[
+								styles.letterSlot,
+								{
+									width: slotW,
+									marginHorizontal: gap / 2,
+									borderBottomColor: gameOver
+										? isWon
+											? theme.successBorder
+											: theme.danger
+										: guesserColor,
+								},
+							]}
+						>
+							<Text
 								style={[
-									styles.letterSlot,
+									styles.letterChar,
 									{
-										width: slotW,
-										marginHorizontal: gap / 2,
-										borderBottomColor: gameOver
-											? isWon
-												? theme.successBorder
-												: theme.danger
-											: guesserColor,
+										fontSize,
+										color: guessed.has(letter)
+											? theme.text
+											: gameOver
+												? theme.danger
+												: "transparent",
 									},
 								]}
 							>
-								<Text
-									style={[
-										styles.letterChar,
-										{
-											fontSize,
-											color: guessed.has(letter)
-												? theme.text
-												: gameOver
-													? theme.danger
-													: "transparent",
-										},
-									]}
-								>
-									{guessed.has(letter) || gameOver ? letter : "_"}
-								</Text>
-							</RNView>
-						);
-					})}
+								{guessed.has(letter) || gameOver ? letter : "_"}
+							</Text>
+						</RNView>
+					))}
 				</RNView>
 			</ScrollView>
 
@@ -514,12 +318,7 @@ export default function DuelHangmanGame() {
 										accessibilityRole="button"
 										accessibilityLabel={letter}
 									>
-										<Text
-											style={[
-												styles.keyText,
-												{ color: used ? "#fff" : theme.text },
-											]}
-										>
+										<Text style={[styles.keyText, { color: used ? "#fff" : theme.text }]}>
 											{letter}
 										</Text>
 									</Pressable>
@@ -544,142 +343,70 @@ export default function DuelHangmanGame() {
 						accessibilityRole="button"
 						accessibilityLabel={round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
 					>
-						<Text style={styles.btnText}>
+						<Text style={[styles.btnText, { color: theme.onTint }]}>
 							{round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
 						</Text>
 					</Pressable>
 				</RNView>
 			)}
+
+			{current ? (
+				<PassDeviceOverlay
+					visible={phase === "handoff"}
+					toPlayer={current}
+					secret
+					hint={t("hmPassToGuesserHint")}
+					onReady={startRound}
+				/>
+			) : null}
+
+			{phase === "result" && solo ? (
+				<GameResult
+					title={t("gameDuelHangmanName")}
+					score={scores[0]}
+					isNewBest={progress?.isNewBest}
+					best={progress?.best}
+					last={progress?.previousBest}
+					streak={progress?.currentStreak}
+					onPlayAgain={() => startMatch(players)}
+				/>
+			) : null}
+			{phase === "result" && !solo ? (
+				<MatchResult
+					standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
+					winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
+					scoreLabel={t("mpPoints")}
+					progress={progress}
+					onRematch={() => startMatch(players)}
+					onChangePlayers={() => setPhase("setup")}
+				/>
+			) : null}
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	root: { flex: 1, alignItems: "center", padding: 16, paddingTop: 8 },
-	title: { fontSize: 24, fontWeight: "900", marginBottom: 8 },
-	subtitle: { fontSize: 16, fontWeight: "600", marginBottom: 12 },
-	countRow: { flexDirection: "row", gap: 10, marginBottom: 20 },
-	countBtn: {
-		width: 48,
-		height: 48,
-		borderRadius: 12,
-		borderWidth: 1.5,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	countBtnText: { fontSize: 20, fontWeight: "800" },
-	hud: { width: "100%", alignItems: "center", marginBottom: 4, gap: 4 },
-	hudScores: { flexDirection: "row", gap: 8, justifyContent: "center" },
-	hudChip: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 4,
-		paddingHorizontal: 8,
-		paddingVertical: 4,
-		borderRadius: 8,
-	},
-	hudDot: { width: 8, height: 8, borderRadius: 4 },
-	hudNum: { fontSize: 18, fontWeight: "900" },
-	hudCenter: { alignItems: "center" },
-	roundText: { fontSize: 11, fontWeight: "700" },
-	guesserHint: { fontSize: 13, fontWeight: "800" },
-	gallowsBox: {
-		width: 112,
-		height: 120,
-		position: "relative",
-		marginBottom: 8,
-	},
-	gallowBase: {
-		position: "absolute",
-		bottom: 0,
-		left: 10,
-		width: 60,
-		height: 3,
-		borderRadius: 1.5,
-	},
-	gallowPole: {
-		position: "absolute",
-		bottom: 0,
-		left: 25,
-		width: 3,
-		height: 110,
-		borderRadius: 1.5,
-	},
-	gallowTop: {
-		position: "absolute",
-		top: 0,
-		left: 25,
-		width: 33,
-		height: 3,
-		borderRadius: 1.5,
-	},
-	gallowRope: {
-		position: "absolute",
-		top: 3,
-		left: 55,
-		width: 2.5,
-		height: 27,
-		borderRadius: 1,
-	},
-	wordRow: {
-		flexDirection: "row",
-		flexWrap: "nowrap",
-		justifyContent: "center",
-		marginBottom: 8,
-	},
-	wordScroll: {
-		maxWidth: "100%",
-		marginBottom: 8,
-	},
-	wordScrollContent: {
-		flexGrow: 1,
-		justifyContent: "center",
-	},
-	letterSlot: {
-		height: 40,
-		alignItems: "center",
-		justifyContent: "flex-end",
-		borderBottomWidth: 3,
-	},
-	letterChar: { fontWeight: "900" },
-	wrongHint: { fontSize: 12, fontWeight: "600", marginBottom: 10 },
-	keyboard: { gap: 6, width: "100%" },
+	root: { flex: 1, alignItems: "stretch", padding: Spacing.lg, paddingTop: Spacing.sm, gap: Spacing.sm },
+	topRow: { flexDirection: "row", alignItems: "center", gap: Spacing.sm },
+	roundChip: { ...TextStyle.chipLabel },
+	soloScore: { ...TextStyle.statValueMedium, textAlign: "center" },
+	gallowsBox: { width: 112, height: 120, position: "relative", alignSelf: "center", marginTop: Spacing.xs },
+	gallowBase: { position: "absolute", bottom: 0, left: 10, width: 60, height: 3, borderRadius: 1.5 },
+	gallowPole: { position: "absolute", bottom: 0, left: 25, width: 3, height: 110, borderRadius: 1.5 },
+	gallowTop: { position: "absolute", top: 0, left: 25, width: 33, height: 3, borderRadius: 1.5 },
+	gallowRope: { position: "absolute", top: 3, left: 55, width: 2.5, height: 27, borderRadius: 1 },
+	wordRow: { flexDirection: "row", flexWrap: "nowrap", justifyContent: "center" },
+	wordScroll: { maxWidth: "100%", flexGrow: 0 },
+	wordScrollContent: { flexGrow: 1, justifyContent: "center" },
+	letterSlot: { height: 40, alignItems: "center", justifyContent: "flex-end", borderBottomWidth: 3 },
+	letterChar: { fontWeight: FontWeight.black },
+	wrongHint: { ...TextStyle.hint, textAlign: "center" },
+	keyboard: { gap: 6, width: "100%", marginTop: Spacing.xs },
 	keyRow: { flexDirection: "row", gap: 4, justifyContent: "center" },
-	key: {
-		width: 34,
-		height: 40,
-		borderRadius: 8,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	keyText: { fontSize: 15, fontWeight: "700" },
-	gameOverRow: { alignItems: "center", gap: 12, marginTop: 8 },
-	gameOverText: { fontSize: 16, fontWeight: "700", textAlign: "center" },
-	btn: { paddingHorizontal: 32, paddingVertical: 14, borderRadius: 12 },
-	btnText: { color: "#fff", fontSize: 16, fontWeight: "800" },
-	playerDot: { width: 10, height: 10, borderRadius: 5 },
-	finalTable: { width: "100%", gap: 6, marginBottom: 16 },
-	finalTableRow: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 10,
-		paddingVertical: 10,
-		paddingHorizontal: 14,
-		borderBottomWidth: 1,
-	},
-	finalName: { fontSize: 16, fontWeight: "700", flex: 1 },
-	finalNum: { fontSize: 24, fontWeight: "900" },
-	diffHint: { fontSize: 14, textAlign: "center", marginBottom: 16 },
-	diffRow: { flexDirection: "row", gap: 12, marginTop: 4 },
-	diffBtn: {
-		flex: 1,
-		alignItems: "center",
-		gap: 6,
-		padding: 14,
-		borderWidth: 1,
-		borderRadius: 14,
-	},
-	diffEmoji: { fontSize: 28 },
-	diffLabel: { fontSize: 15, fontWeight: "800" },
-	diffMeta: { fontSize: 11, textAlign: "center" },
+	key: { width: 34, height: 44, borderRadius: Radius.sm + 2, alignItems: "center", justifyContent: "center" },
+	keyText: { fontSize: FontSize.md - 1, fontWeight: FontWeight.bold },
+	gameOverRow: { alignItems: "center", gap: Spacing.md, marginTop: Spacing.sm },
+	gameOverText: { fontSize: FontSize.md, fontWeight: FontWeight.bold, textAlign: "center" },
+	btn: { paddingHorizontal: Spacing["4xl"], paddingVertical: Spacing.lg, borderRadius: Radius.button },
+	btnText: { ...TextStyle.buttonSecondary },
 });

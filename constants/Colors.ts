@@ -73,3 +73,19 @@ export default {
 		dangerBorder: "#ff4d7d",
 	},
 };
+
+/**
+ * Seat colors for pass-and-play / shared-screen games. Index = seat; seat 0 is
+ * the device owner ("host"). Shared by every multiplayer game so a player keeps
+ * the same color from setup to leaderboard.
+ */
+export const PlayerColors = [
+	"#4FC3F7",
+	"#FF8A65",
+	"#81C784",
+	"#CE93D8",
+	"#FFD54F",
+	"#4DD0E1",
+] as const;
+
+export const MAX_MATCH_PLAYERS = PlayerColors.length;
