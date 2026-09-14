@@ -145,7 +145,7 @@ Multiplayer (pass-and-play / shared-screen) components in `components/multiplaye
 
 ## Content
 
-44 bundled articles in `data/content.json` (localized en/cs/de). Served through `hooks/useContentItems.ts` which merges bundled data with optional remote sync cache (`store/useContentStore.ts`).
+44 bundled articles in `data/content.json` (all in en/cs/de; the 14 Travel Tips + Health ones also in es/fr/it/pl/pt). Served through `hooks/useContentItems.ts` which merges bundled data with optional remote sync cache (`store/useContentStore.ts`).
 
 Remote endpoint is optional via `EXPO_PUBLIC_STRAPI_CONTENT_URL` or `EXPO_PUBLIC_CONTENT_SYNC_URL`; app is fully offline without it. Sync respects `syncNetworkPolicy` (wifi_only / wifi_and_mobile / off) and has a 30-minute cooldown between syncs.
 
