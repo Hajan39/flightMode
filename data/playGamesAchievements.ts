@@ -66,6 +66,7 @@ export const playGamesAchievementIds: Record<string, string | null> = {
 	"crowd-favorite": null,
 	"good-host": null,
 	"undefeated-host": null,
+	"quick-thinker": null,
 	// ── Travel tools ──
 	"checklist-ready": null,
 	"checklist-veteran": null,

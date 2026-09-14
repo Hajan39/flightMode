@@ -410,6 +410,14 @@ export const achievements: AchievementDef[] = [
 		condition: (s) =>
 			MULTIPLAYER_GAME_IDS.some((id) => (s.gameProgress[id]?.bestStreak ?? 0) >= 3),
 	},
+	{
+		id: "quick-thinker",
+		titleKey: "achieveQuickThinkerTitle",
+		descriptionKey: "achieveQuickThinkerDesc",
+		icon: "flash-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["category-blitz"]?.highScore ?? 0) >= 30,
+	},
 	// ── Logic games (levels cleared = levelStars entries with ≥1 star) ──
 	{
 		id: "ground-controller",
