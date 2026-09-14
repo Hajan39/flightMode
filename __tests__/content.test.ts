@@ -42,3 +42,38 @@ describe("bundled content (data/content.json)", () => {
 		},
 	);
 });
+
+describe("article translations", () => {
+	test("every present language has non-empty title, category and body", () => {
+		for (const item of content) {
+			for (const lang of Object.keys(item.title)) {
+				expect(item.title[lang]?.trim().length ?? 0).toBeGreaterThan(0);
+				expect(item.category[lang]?.trim().length ?? 0).toBeGreaterThan(0);
+				expect(item.body[lang]?.trim().length ?? 0).toBeGreaterThan(0);
+			}
+		}
+	});
+
+	test("a category translates the same way across articles", () => {
+		const seen = new Map<string, string>();
+		for (const item of content) {
+			for (const [lang, value] of Object.entries(item.category)) {
+				const key = `${item.category.en}|${lang}`;
+				const previous = seen.get(key);
+				if (previous !== undefined) expect(value).toBe(previous);
+				seen.set(key, value);
+			}
+		}
+	});
+
+	test("Travel Tips and Health are localized into the Latin-script languages", () => {
+		const required = ["en", "cs", "de", "es", "fr", "it", "pl", "pt"];
+		for (const item of content) {
+			if (item.category.en !== "Travel Tips" && item.category.en !== "Health") continue;
+			for (const lang of required) {
+				expect(Object.keys(item.title)).toContain(lang);
+				expect(Object.keys(item.body)).toContain(lang);
+			}
+		}
+	});
+});
