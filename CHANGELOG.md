@@ -9,6 +9,11 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **Post-landing mode** — for 48 h after arrival Home leads with a "You've landed in {city}" card (destination local time, one-tap phrasebook / converter / arrival tips) followed by the checklist and travel tools; games move below. Driven by `utils/flightPhase.ts` (`none | preflight | inflight | landed`).
+- **Jet-lag sleep reminder** — a local notification 10 minutes before the suggested on-plane sleep window, scheduled when the flight is saved and cancelled when it's cleared.
+- **Destination-specific checklist items** — 33 cities add a "For {city}" block (IC card, cash-only, ESTA/eTA, modest dress, tap water, mosquito repellent, sunscreen, layers, rain gear, transit card, tipping cash, power adapter); they count toward the progress and the completion achievement.
+- **Category Blitz** (catalog 39 → 40) — pass-and-play for 2–6: each player gets a category and 20 seconds to name as many things as possible out loud while the others judge; 40 categories ship as translation keys, so it works in all 12 languages. New achievement: Quick Thinker.
+- **Home currency** — a skippable onboarding step and a settings row; the converter starts from it instead of re-deriving the device locale. The currency chips + searchable picker are now one shared `components/CurrencyPicker`.
 - **Expo SDK 57 upgrade** (React Native 0.86.3, reanimated 4.5.1, worklets 0.10.1, jest-expo 57, posthog-react-native 4.71, zustand 5.0.15). App version 1.3.0 → **1.4.0** so SDK 57 OTAs land on a fresh runtime. React Compiler now enabled via `app.json` `experiments.reactCompiler` (manual babel plugin removed).
 - **Travel tools (offline):**
   - **Travel checklist** (`app/checklist.tsx`) — 5 sections / 27 default items (before departure, documents, carry-on, at arrival, connection) + your own items; ticks reset per new flight, custom items persist. Reachable from Home and the Pre-flight screen.
@@ -23,6 +28,9 @@ and this project adheres to Semantic Versioning.
 
 ### Changed
 
+- **Home refactor** — the 1000-line `app/(tabs)/index.tsx` is now a ~315-line orchestrator plus `components/home/*`; the three near-identical horizontal game rows share one `GameCardRow`. No UX change.
+- Seat Neighbor's 60-question bank is now translated into all 12 languages (previously en/cs/de with an English fallback).
+- The 14 Travel Tips and Health articles are translated into es/fr/it/pl/pt (8 languages total); the remaining 30 still fall back to English with the EN badge.
 - All 8 existing multiplayer games migrated to the shared multiplayer components and design tokens: player names, consistent setup → play → leaderboard flow, match options only in setup (no more silent match reset), draw haptics, translated accessibility labels, tap-to-skip turn delays, connect4 winner check memoized, emoji-find pause + timer cleanup, liars-dice secret hand-off before every peek.
 - Destination tip labels are localized (`labelKey`), tip text remains English.
 - Removed 71 dead or duplicated multiplayer translation keys from all 12 locales.

@@ -29,7 +29,9 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, `app/preflight.tsx` (offline-readiness), `app/checklist.tsx` (travel checklist) and `app/converter.tsx` (currency/units) are modal stack screens; `app/destinations.tsx` (destination tips) and `app/phrasebook.tsx` are pushed card screens. Onboarding flow at `app/onboarding.tsx`.
 
-**Travel tools (all offline):** `data/destinations.ts` carries `timezone`, `utcOffsetMinutes`, `phraseLanguage`, `currencyCode` per city; `utils/timezone.ts` (destination local time + jet-lag plan, Intl with offset fallback), `data/checklist.ts` + `store/useChecklistStore.ts`, `data/phrases.ts` (24 languages × 12 phrases), `data/currencies.ts` + `utils/convert.ts` (bundled approximate rates = offline baseline), `store/useRatesStore.ts` + `utils/ratesSync.ts` + `components/RatesSyncBootstrap.tsx` (live rates from open.er-api.com when online, 12 h cooldown, sync-policy gated; `getEffectiveCurrencies()` overlays them on the bundle and appends provider-only codes named via `data/currencyNames.ts`).
+**Home:** `app/(tabs)/index.tsx` is an orchestrator; every section lives in `components/home/*` (`HomeSection` wrapper + shared `homeStyles`, `FlightCard`, `LandedCard`, `GameCardRow`, `HomeCtaRow`, `DailyChallengeCard`, `WelcomeCard`, `StatsSnapshot`, `DestinationCard`, `TravelToolsRow`, `FeaturedArticles`). Section order depends on `useFlightPhase()` (`utils/flightPhase.ts`): `none | preflight | inflight | landed` — for 48 h after arrival Home leads with the destination, not the flight.
+
+**Travel tools (all offline):** `data/destinations.ts` carries `timezone`, `utcOffsetMinutes`, `phraseLanguage`, `currencyCode` per city; `utils/timezone.ts` (destination local time + jet-lag plan, Intl with offset fallback), `data/checklist.ts` + `store/useChecklistStore.ts` (destinations can add a "For {city}" block via `checklistExtras`), `data/phrases.ts` (24 languages × 12 phrases), `data/currencies.ts` + `utils/convert.ts` (bundled approximate rates = offline baseline), `store/useRatesStore.ts` + `utils/ratesSync.ts` + `components/RatesSyncBootstrap.tsx` (live rates from open.er-api.com when online, 12 h cooldown, sync-policy gated; `getEffectiveCurrencies()` overlays them on the bundle and appends provider-only codes named via `data/currencyNames.ts`).
 
 **Tab screens:**
 - `(tabs)/index.tsx` — Home (daily challenge, quick actions, flight utility, recommendations)
@@ -50,6 +52,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `store/useChecklistStore.ts` — travel checklist ticks per flight + custom items (persisted)
 - `store/usePlayersStore.ts` — multiplayer seat names + last player count (persisted)
 - `store/useRatesStore.ts` — live exchange rates + `ratesAsOf`/`lastSyncAt` (persisted; status not persisted)
+- `store/useSettingsStore.ts` also holds `homeCurrency` (converter default, set in onboarding/settings)
 
 **Styling:** React Native `StyleSheet` + inline styles. Design tokens:
 - `constants/Colors.ts` — theme palettes: `light`, `dark`, `crazy` (text, background, tint, card, surface, elevated, border, mutedText, etc.)
@@ -58,13 +61,13 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
-**Localization:** `hooks/useTranslation.ts` → `i18n/locales/*.ts`. 12 languages (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`). Language preference order: stored > system > en. Content (`data/content.json`) is fully localized for `en/cs/de` only; other languages render articles in English with an `EN` badge (`hasLanguage()` in `hooks/useContentItems.ts`). Destination tip labels are localized via `labelKey`; tip text stays English.
+**Localization:** `hooks/useTranslation.ts` → `i18n/locales/*.ts`. 12 languages (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`). Language preference order: stored > system > en. Content (`data/content.json`): all 44 articles in `en/cs/de`, the 14 Travel Tips + Health ones also in `es/fr/it/pl/pt`; other languages render articles in English with an `EN` badge (`hasLanguage()` in `hooks/useContentItems.ts`). Destination tip labels are localized via `labelKey`; tip text stays English.
 
 **Types:** `types/game.ts` (GameProgress, GameConfig, GameCategory, GameDifficulty, GamePlayMode), `types/flight.ts` (Flight), `types/content.ts` (ContentItem).
 
 ## Games
 
-39 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+40 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -93,6 +96,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `split-duel` | multiplayer | easy | Shared-screen, simultaneous: phone flat between players, top pane rotated 180°; 5 reflex mini-rounds, first to 3 |
 | `seat-neighbor` | multiplayer | easy | Pass-and-play icebreaker for 2: mind-meld + would-you-rather, shared Sync score (cooperative, `updateProgress` directly) |
 | `emoji-story` | multiplayer | easy | Pass-and-play 2–6: emoji story chain in 3 acts, connector words, secret voting; story-only mode |
+| `category-blitz` | multiplayer | easy | Pass-and-play 2–6: name as many things in a category as you can in 20 s, the others judge; 3 rounds each |
 | `twenty-forty-eight` | brain | hard | 2048 sliding-tile puzzle; 15 min |
 | `minesweeper` | strategy | medium | Classic mine-sweeping; 10 min |
 | `word-scramble` | brain | medium | Unscramble aviation words; daily challenge |
@@ -149,7 +153,7 @@ Remote endpoint is optional via `EXPO_PUBLIC_STRAPI_CONTENT_URL` or `EXPO_PUBLIC
 
 ## Achievements
 
-Defined in `data/achievements.ts` (47 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
+Defined in `data/achievements.ts` (48 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
 
 `useAchievementStore` tracks: `unlockedIds`, `newUnlockedIds` (cleared by `AchievementToast`), `totalFlights`, `totalRelaxSessions`, `articlesRead`, `soundsPlayed`, `lastActiveDate`, `streakDays`.
 
