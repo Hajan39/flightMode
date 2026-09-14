@@ -1,22 +1,22 @@
-import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { Pressable, ScrollView, StyleSheet } from "react-native";
-import Animated, {
-	Easing,
-	FadeInDown,
-	useAnimatedStyle,
-	useSharedValue,
-	withTiming,
-} from "react-native-reanimated";
+import { ScrollView, StyleSheet } from "react-native";
 
-import AnimatedPressable from "@/components/AnimatedPressable";
-import JetlagCard from "@/components/JetlagCard";
-import LanguageBadge from "@/components/LanguageBadge";
-import { Text, View } from "@/components/Themed";
-import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
-import { Radius, Shadow, Spacing } from "@/constants/Spacing";
+import DailyChallengeCard from "@/components/home/DailyChallengeCard";
+import DestinationCard from "@/components/home/DestinationCard";
+import FeaturedArticles, {
+	type FeaturedArticle,
+} from "@/components/home/FeaturedArticles";
+import FlightCard from "@/components/home/FlightCard";
+import GameCardRow, { type GameCardItem } from "@/components/home/GameCardRow";
+import HomeCtaRow from "@/components/home/HomeCtaRow";
+import HomeSection from "@/components/home/HomeSection";
+import StatsSnapshot from "@/components/home/StatsSnapshot";
+import TravelToolsRow from "@/components/home/TravelToolsRow";
+import WelcomeCard from "@/components/home/WelcomeCard";
+import NewToTryRow from "@/components/NewToTryRow";
+import { Spacing } from "@/constants/Spacing";
+import { getDestinationById } from "@/data/destinations";
 import {
 	dailyChallengeGames,
 	getGameById,
@@ -28,24 +28,16 @@ import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import {
-	getFlightProgress,
-	getRemainingMinutes,
-	useFlightStore,
-} from "@/store/useFlightStore";
-import { useGameStore } from "@/store/useGameStore";
-import {
 	getChecklistProgress,
 	useChecklistStore,
 } from "@/store/useChecklistStore";
 import { useDiscoveryStore } from "@/store/useDiscoveryStore";
+import { getRemainingMinutes, useFlightStore } from "@/store/useFlightStore";
+import { useGameStore } from "@/store/useGameStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
-import NewToTryRow from "@/components/NewToTryRow";
-import { getDestinationById } from "@/data/destinations";
-import { getPhraseLanguage } from "@/data/phrases";
 import type { GamePlayMode } from "@/types/game";
-import { pickFlightGames } from "@/utils/flightRecommendations";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-import { formatTimeInZone, getDayOffset } from "@/utils/timezone";
+import { pickFlightGames } from "@/utils/flightRecommendations";
 
 function getPlayModeLabelKey(playMode?: GamePlayMode) {
 	if (playMode === "passAndPlay") return "playTogetherPassAndPlay";
@@ -63,8 +55,6 @@ function getDayOfYear(date: Date) {
 
 export default function HomeScreen() {
 	const router = useRouter();
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
 	const { language, t } = useTranslation();
 	const flight = useFlightStore((s) => s.flight);
 	const clearFlight = useFlightStore((s) => s.clearFlight);
@@ -84,75 +74,22 @@ export default function HomeScreen() {
 	// `tick` only exists to re-render every 30 s; read it so the clock lines refresh.
 	const nowMs = Date.now() + tick * 0;
 
-	// Recently played games, most recent first — powers the "Jump back in" row.
-	const recentGames = Object.values(gameProgress)
-		.filter((p) => p.timesPlayed > 0)
-		.sort((a, b) => b.lastPlayed - a.lastPlayed)
-		.slice(0, 4)
-		.map((p) => ({ def: getGameById(p.gameId), progress: p }))
-		.filter(
-			(x): x is { def: NonNullable<typeof x.def>; progress: typeof x.progress } =>
-				Boolean(x.def),
-		);
-
 	// Re-render every 30s to update progress
 	useEffect(() => {
 		if (!flight) return;
-		const interval = setInterval(() => setTick((t) => t + 1), 30000);
+		const interval = setInterval(() => setTick((prev) => prev + 1), 30000);
 		return () => clearInterval(interval);
 	}, [flight]);
 
-	const progress = flight ? getFlightProgress(flight) : 0;
 	const remaining = flight ? getRemainingMinutes(flight) : 0;
-	const flightGames =
-		flight && remaining > 0
-			? pickFlightGames(remaining, preferredCategories)
-			: [];
 	const flightDestination = flight?.destinationId
 		? getDestinationById(flight.destinationId)
 		: undefined;
-	const remainingRounded = Math.round(remaining);
-	const remainingH = Math.floor(remainingRounded / 60);
-	const remainingM = remainingRounded % 60;
-	const arrivalMs = flight
-		? flight.departureTime + flight.duration * 60000
-		: null;
-	const arrivalTime = arrivalMs
-		? (() => {
-				const d = new Date(arrivalMs);
-				const h = String(d.getHours()).padStart(2, "0");
-				const m = String(d.getMinutes()).padStart(2, "0");
-				return `${h}:${m}`;
-			})()
-		: null;
-	const destinationNow =
-		flightDestination ? formatTimeInZone(nowMs, flightDestination) : null;
-	const arrivalLocal =
-		flightDestination && arrivalMs
-			? (() => {
-					const time = formatTimeInZone(arrivalMs, flightDestination);
-					const dayOffset = getDayOffset(arrivalMs, flightDestination, nowMs);
-					return dayOffset > 0 ? `${time} ${t("nextDaySuffix")}` : time;
-				})()
-			: null;
-	const preferredCategoriesEn =
-		remaining > 120
-			? ["Relax", "Health"]
-			: remaining > 30
-				? ["Travel Tips", "Health"]
-				: ["Travel Tips", "Relax"];
 
-	const featuredArticles = articles
-		.map((item) => ({
-			...item,
-			titleText: getLocalizedText(item.title, language),
-			categoryText: getLocalizedText(item.category, language),
-			isFallback: !hasLanguage(item, language),
-		}))
-		.filter((item) => preferredCategoriesEn.includes(item.category.en))
-		.slice(0, 2);
-	const challengeOfDay =
-		dailyChallengeGames[getDayOfYear(new Date()) % dailyChallengeGames.length];
+	const openGame = (gameId: string) => {
+		captureAnalyticsEvent("home_action_open", { target: "games" });
+		router.push(`/game/${gameId}` as never);
+	};
 
 	const openHomeAction = (
 		target: "games" | "explore" | "relax" | "profile" | "phrasebook" | "converter",
@@ -176,452 +113,177 @@ export default function HomeScreen() {
 		router.push(`/content/${articleId}` as never);
 	};
 
+	// Games sized to the remaining flight time.
+	const flightGameItems: GameCardItem[] =
+		flight && remaining > 0
+			? pickFlightGames(remaining, preferredCategories).map((def) => ({
+					id: def.id,
+					icon: def.icon,
+					title: t(def.titleKey),
+					meta: t("minutesShort", { minutes: def.estimatedTime }),
+				}))
+			: [];
+
+	// Recently played games, most recent first.
+	const recentGameItems: GameCardItem[] = Object.values(gameProgress)
+		.filter((p) => p.timesPlayed > 0)
+		.sort((a, b) => b.lastPlayed - a.lastPlayed)
+		.slice(0, 4)
+		.map((p) => ({ def: getGameById(p.gameId), progress: p }))
+		.filter(
+			(x): x is { def: NonNullable<typeof x.def>; progress: typeof x.progress } =>
+				Boolean(x.def),
+		)
+		.map(({ def, progress }) => ({
+			id: def.id,
+			icon: def.icon,
+			title: t(def.titleKey),
+			meta:
+				progress.highScore > 0
+					? t("homeBestScore", { score: progress.highScore })
+					: t(def.descriptionKey),
+		}));
+
+	const playTogetherItems: GameCardItem[] = playTogetherGames.map((game) => ({
+		id: game.id,
+		icon: game.icon,
+		title: t(game.titleKey),
+		meta: t(getPlayModeLabelKey(game.playMode)),
+	}));
+
+	const preferredCategoriesEn =
+		remaining > 120
+			? ["Relax", "Health"]
+			: remaining > 30
+				? ["Travel Tips", "Health"]
+				: ["Travel Tips", "Relax"];
+
+	const featuredArticles: FeaturedArticle[] = articles
+		.filter((item) => preferredCategoriesEn.includes(item.category.en))
+		.slice(0, 2)
+		.map((item) => ({
+			id: item.id,
+			titleText: getLocalizedText(item.title, language),
+			categoryText: getLocalizedText(item.category, language),
+			categoryEn: item.category.en,
+			readTime: item.readTime,
+			isFallback: !hasLanguage(item, language),
+		}));
+
+	const challengeOfDay =
+		dailyChallengeGames[getDayOfYear(new Date()) % dailyChallengeGames.length];
+
 	return (
 		<ScrollView
 			style={styles.scroll}
 			contentContainerStyle={[styles.container, capStyle]}
 		>
-			<Animated.View entering={FadeInDown.delay(80).springify()}>
-				<Text style={[styles.sectionTitle, { marginTop: 0 }]}>{t("yourFlight")}</Text>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("homeFlightHint")}
-				</Text>
-				{flight ? (
-					<View style={[styles.flightShell, { backgroundColor: theme.border + "30" }]}>
-					<View
-						style={[styles.flightCard, { backgroundColor: theme.accentSoft }, Shadow.card]}
-					>
-						<View style={styles.flightHeader}>
-							<Ionicons name="airplane" size={20} color={theme.tint} />
-							<Text style={styles.flightTitle}>
-								{flight.flightNumber ?? t("yourFlight")}
-							</Text>
-							<Pressable
-								onPress={clearFlight}
-								hitSlop={10}
-								accessibilityLabel={t("a11yClearFlight")}
-							>
-								<Ionicons
-									name="close-circle-outline"
-									size={20}
-									color={theme.mutedText}
-								/>
-							</Pressable>
-						</View>
-
-						<View
-							style={[
-								styles.progressBar,
-								{ backgroundColor: theme.progressTrack },
-							]}
-						>
-							<AnimatedProgressFill progress={progress} color={theme.tint} />
-						</View>
-						<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-							{Math.round(progress * 100)}% —{" "}
-							{t("remainingTime", {
-								hours: remainingH,
-								minutes: remainingM,
-							})}
-						</Text>
-						{arrivalTime && !arrivalLocal && (
-							<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-								{t("arrivalTime", { time: arrivalTime })}
-							</Text>
-						)}
-						{flightDestination && destinationNow && arrivalLocal && (
-							<>
-								<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-									{t("destinationLocalTime", {
-										city: flightDestination.city,
-										time: destinationNow,
-									})}
-								</Text>
-								<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-									{t("arrivalTimeLocal", { time: arrivalLocal })}
-								</Text>
-							</>
-						)}
-
-						<View style={styles.recommendation}>
-							<Ionicons name="bulb-outline" size={16} color={theme.warning} />
-							<Text
-								style={[styles.recommendationText, { color: theme.mutedText }]}
-							>
-								{remaining > 120
-									? t("recommendationLong")
-									: remaining > 30
-										? t("recommendationMid")
-										: t("recommendationShort")}
-							</Text>
-						</View>
-					</View>
-					{flightDestination ? (
-						<JetlagCard flight={flight} destination={flightDestination} nowMs={nowMs} />
-					) : null}
-					</View>
-				) : (
-					<AnimatedPressable
-						style={[
-							styles.addFlightCard,
-							{ borderColor: theme.border, backgroundColor: theme.card },
-						]}
-						onPress={() => router.push("/flight/edit")}
-					>
-						<Ionicons name="airplane-outline" size={30} color={theme.tint} />
-						<Text style={styles.addFlightTitle}>{t("addYourFlight")}</Text>
-						<Text
-							style={[styles.addFlightSubtitle, { color: theme.mutedText }]}
-						>
-							{t("trackFlightRecommendation")}
-						</Text>
-					</AnimatedPressable>
-				)}
-
-				<AnimatedPressable
-					style={[styles.preflightCta, { borderColor: theme.border }]}
+			<HomeSection delay={80} title={t("yourFlight")} hint={t("homeFlightHint")} first>
+				<FlightCard
+					flight={flight}
+					destination={flightDestination}
+					nowMs={nowMs}
+					onClear={clearFlight}
+					onAddFlight={() => router.push("/flight/edit")}
+				/>
+				<HomeCtaRow
+					icon="shield-checkmark-outline"
+					label={t("homePreflightCta")}
 					onPress={() => router.push("/preflight")}
-				>
-					<Ionicons
-						name="shield-checkmark-outline"
-						size={18}
-						color={theme.tint}
-					/>
-					<Text style={[styles.preflightCtaText, { color: theme.tint }]}>
-						{t("homePreflightCta")}
-					</Text>
-					<View style={[styles.iconCircle, { backgroundColor: theme.surface }]}>
-						<Ionicons name="chevron-forward" size={14} color={theme.mutedText} />
-					</View>
-				</AnimatedPressable>
-
-				<AnimatedPressable
-					style={[styles.preflightCta, { borderColor: theme.border }]}
+				/>
+				<HomeCtaRow
+					icon="checkbox-outline"
+					label={t("homeChecklistCta", {
+						done: checklistProgress.done,
+						total: checklistProgress.total,
+					})}
 					onPress={() => {
 						captureAnalyticsEvent("checklist_open", { source: "home" });
 						router.push("/checklist" as never);
 					}}
-				>
-					<Ionicons name="checkbox-outline" size={18} color={theme.tint} />
-					<Text style={[styles.preflightCtaText, { color: theme.tint }]}>
-						{t("homeChecklistCta", {
-							done: checklistProgress.done,
-							total: checklistProgress.total,
-						})}
-					</Text>
-					<View style={[styles.iconCircle, { backgroundColor: theme.surface }]}>
-						<Ionicons name="chevron-forward" size={14} color={theme.mutedText} />
-					</View>
-				</AnimatedPressable>
-			</Animated.View>
+				/>
+			</HomeSection>
 
-			<Animated.View entering={FadeInDown.delay(350).springify()}>
-				<Text style={styles.sectionTitle}>{t("dailyChallenge")}</Text>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("homeDailyChallengeHint")}
-				</Text>
-				<AnimatedPressable
-					style={[
-						styles.challengeCard,
-						{ backgroundColor: theme.accentSoft, borderColor: theme.tint },
-						Shadow.card,
-					]}
+			<HomeSection
+				delay={350}
+				title={t("dailyChallenge")}
+				hint={t("homeDailyChallengeHint")}
+			>
+				<DailyChallengeCard
+					game={challengeOfDay}
 					onPress={() => router.push(`/game/${challengeOfDay.id}` as never)}
+				/>
+			</HomeSection>
+
+			{flightGameItems.length > 0 && (
+				<HomeSection
+					delay={85}
+					title={t("homeGamesForFlight")}
+					hint={t("homeGamesForFlightHint")}
 				>
-					<View
-						style={[styles.challengeAccent, { backgroundColor: theme.tint }]}
-						lightColor="transparent"
-						darkColor="transparent"
-					/>
-					<View
-						style={styles.challengeBody}
-						lightColor="transparent"
-						darkColor="transparent"
-					>
-						<View
-							style={styles.challengeTop}
-							lightColor="transparent"
-							darkColor="transparent"
-						>
-							<Ionicons
-								name={challengeOfDay.icon as never}
-								size={22}
-								color={theme.tint}
-							/>
-							<Text style={styles.challengeTitle}>
-								{t(challengeOfDay.titleKey)}
-							</Text>
-						</View>
-						<Text
-							style={[styles.challengeDescription, { color: theme.mutedText }]}
-						>
-							{t(challengeOfDay.descriptionKey)}
-						</Text>
-						<View
-							style={styles.challengeCtaRow}
-							lightColor="transparent"
-							darkColor="transparent"
-						>
-							<Text style={[styles.challengeCta, { color: theme.tint }]}>
-								{t("dailyChallengeCta")}
-							</Text>
-							<Ionicons name="arrow-forward" size={16} color={theme.tint} />
-						</View>
-					</View>
-				</AnimatedPressable>
-			</Animated.View>
-
-			{/* Games sized to remaining flight time */}
-			{flightGames.length > 0 && (
-				<Animated.View entering={FadeInDown.delay(85).springify()}>
-					<Text style={styles.sectionTitle}>{t("homeGamesForFlight")}</Text>
-					<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-						{t("homeGamesForFlightHint")}
-					</Text>
-					<ScrollView
-						horizontal
-						showsHorizontalScrollIndicator={false}
-						style={styles.playTogetherRow}
-						contentContainerStyle={styles.playTogetherRowContent}
-					>
-						{flightGames.map((def) => (
-							<AnimatedPressable
-								key={def.id}
-								style={[
-									styles.playTogetherCard,
-									{ backgroundColor: theme.card, borderColor: theme.border },
-								]}
-								onPress={() => {
-									captureAnalyticsEvent("home_action_open", { target: "games" });
-									router.push(`/game/${def.id}` as never);
-								}}
-							>
-								<Ionicons
-									name={def.icon as never}
-									size={22}
-									color={theme.tint}
-								/>
-								<Text style={styles.playTogetherTitle}>{t(def.titleKey)}</Text>
-								<Text
-									style={[styles.playTogetherMeta, { color: theme.mutedText }]}
-								>
-									{t("minutesShort", { minutes: def.estimatedTime })}
-								</Text>
-							</AnimatedPressable>
-						))}
-					</ScrollView>
-				</Animated.View>
+					<GameCardRow items={flightGameItems} onOpenGame={openGame} />
+				</HomeSection>
 			)}
 
-			{/* Jump back in — recently played */}
-			{recentGames.length > 0 && (
-				<Animated.View entering={FadeInDown.delay(90).springify()}>
-					<Text style={styles.sectionTitle}>{t("homeJumpBackIn")}</Text>
-					<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-						{t("homeJumpBackInHint")}
-					</Text>
-					<ScrollView
-						horizontal
-						showsHorizontalScrollIndicator={false}
-						style={styles.playTogetherRow}
-						contentContainerStyle={styles.playTogetherRowContent}
-					>
-						{recentGames.map(({ def, progress }) => (
-							<AnimatedPressable
-								key={def.id}
-								style={[
-									styles.playTogetherCard,
-									{ backgroundColor: theme.card, borderColor: theme.border },
-								]}
-								onPress={() => {
-									captureAnalyticsEvent("home_action_open", { target: "games" });
-									router.push(`/game/${def.id}` as never);
-								}}
-							>
-								<Ionicons
-									name={def.icon as never}
-									size={22}
-									color={theme.tint}
-								/>
-								<Text style={styles.playTogetherTitle}>{t(def.titleKey)}</Text>
-								<Text
-									style={[styles.playTogetherMeta, { color: theme.mutedText }]}
-								>
-									{progress.highScore > 0
-										? t("homeBestScore", { score: progress.highScore })
-										: t(def.descriptionKey)}
-								</Text>
-							</AnimatedPressable>
-						))}
-					</ScrollView>
-				</Animated.View>
+			{recentGameItems.length > 0 && (
+				<HomeSection
+					delay={90}
+					title={t("homeJumpBackIn")}
+					hint={t("homeJumpBackInHint")}
+				>
+					<GameCardRow items={recentGameItems} onOpenGame={openGame} />
+				</HomeSection>
 			)}
-
 
 			{stats.totalGamesPlayed === 0 && (
-				<Animated.View entering={FadeInDown.delay(320).springify()}>
-					<View
-						style={[
-							styles.welcomeCard,
-							{ backgroundColor: theme.accentSoft, borderColor: theme.tint },
-						]}
-					>
-						<Ionicons name="game-controller-outline" size={28} color={theme.tint} />
-						<Text style={[styles.welcomeTitle, { color: theme.text }]}>
-							{t("homeWelcomeTitle")}
-						</Text>
-						<Text style={[styles.welcomeHint, { color: theme.mutedText }]}>
-							{t("homeWelcomeHint")}
-						</Text>
-						<Pressable
-							onPress={() => router.push("/(tabs)/games" as never)}
-							style={[styles.welcomeBtn, { backgroundColor: theme.tint }]}
-						>
-							<Text style={[styles.welcomeBtnText, { color: theme.onTint }]}>{t("homeWelcomeCta")}</Text>
-						</Pressable>
-					</View>
-				</Animated.View>
+				<HomeSection delay={320}>
+					<WelcomeCard onPress={() => router.push("/(tabs)/games" as never)} />
+				</HomeSection>
 			)}
 
-			<Animated.View entering={FadeInDown.delay(330).springify()}>
-				<Text style={styles.sectionTitle}>{t("profileStats")}</Text>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("homeProgressHint")}
-				</Text>
-				<View
-					style={[
-						styles.progressSnapshotCard,
-						{ backgroundColor: theme.card, borderColor: theme.border },
-					]}
-				>
-					<View
-						style={styles.progressSnapshotStats}
-						lightColor="transparent"
-						darkColor="transparent"
-					>
-						<View
-							style={styles.progressStatItem}
-							lightColor="transparent"
-							darkColor="transparent"
-						>
-							<Text style={[styles.progressStatValue, { color: theme.text }]}>
-								{stats.totalGamesPlayed}
-							</Text>
-							<Text
-								style={[styles.progressStatLabel, { color: theme.mutedText }]}
-							>
-								{t("profileGamesPlayed")}
-							</Text>
-						</View>
-						<View
-							style={styles.progressStatItem}
-							lightColor="transparent"
-							darkColor="transparent"
-						>
-							<Text style={[styles.progressStatValue, { color: theme.text }]}>
-								{stats.totalFlights}
-							</Text>
-							<Text
-								style={[styles.progressStatLabel, { color: theme.mutedText }]}
-							>
-								{t("profileFlights")}
-							</Text>
-						</View>
-						<View
-							style={styles.progressStatItem}
-							lightColor="transparent"
-							darkColor="transparent"
-						>
-							<Text style={[styles.progressStatValue, { color: theme.text }]}>
-								{stats.achievementsUnlocked}/{stats.achievementsTotal}
-							</Text>
-							<Text
-								style={[styles.progressStatLabel, { color: theme.mutedText }]}
-							>
-								{t("profileAchievements")}
-							</Text>
-						</View>
-					</View>
-					<AnimatedPressable
-						style={[styles.profileCta, { borderColor: theme.border }]}
-						onPress={() => openHomeAction("profile")}
-					>
-						<Ionicons
-							name="person-circle-outline"
-							size={18}
-							color={theme.tint}
-						/>
-						<Text style={[styles.profileCtaText, { color: theme.tint }]}>
-							{t("stackProfile")}
-						</Text>
-					</AnimatedPressable>
-				</View>
-			</Animated.View>
+			<HomeSection
+				delay={330}
+				title={t("profileStats")}
+				hint={t("homeProgressHint")}
+			>
+				<StatsSnapshot
+					gamesPlayed={stats.totalGamesPlayed}
+					flights={stats.totalFlights}
+					achievementsUnlocked={stats.achievementsUnlocked}
+					achievementsTotal={stats.achievementsTotal}
+					onOpenProfile={() => openHomeAction("profile")}
+				/>
+			</HomeSection>
 
-
-			<Animated.View entering={FadeInDown.delay(370).springify()}>
+			<HomeSection delay={370}>
 				<NewToTryRow
 					title={t("homeNewToTry")}
 					renderTitle={t}
 					onOpenGame={(gameId) => {
 						markGameSeen(gameId);
-						captureAnalyticsEvent("home_action_open", { target: "games" });
-						router.push(`/game/${gameId}` as never);
+						openGame(gameId);
 					}}
 				/>
-			</Animated.View>
+			</HomeSection>
 
-			<Animated.View entering={FadeInDown.delay(400).springify()}>
-				<Text style={styles.sectionTitle}>{t("playTogether")}</Text>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("homePlayTogetherHint")}
-				</Text>
-				<ScrollView
-					horizontal
-					showsHorizontalScrollIndicator={false}
-					style={styles.playTogetherRow}
-					contentContainerStyle={styles.playTogetherRowContent}
-				>
-					{playTogetherGames.map((game) => (
-						<AnimatedPressable
-							key={game.id}
-							style={[
-								styles.playTogetherCard,
-								{ backgroundColor: theme.card, borderColor: theme.border },
-							]}
-							onPress={() => router.push(`/game/${game.id}` as never)}
-						>
-							<Ionicons
-								name={game.icon as never}
-								size={22}
-								color={theme.tint}
-							/>
-							<Text style={styles.playTogetherTitle}>{t(game.titleKey)}</Text>
-							<Text
-								style={[styles.playTogetherMeta, { color: theme.mutedText }]}
-							>
-								{t(getPlayModeLabelKey(game.playMode))}
-							</Text>
-						</AnimatedPressable>
-					))}
-				</ScrollView>
-			</Animated.View>
+			<HomeSection
+				delay={400}
+				title={t("playTogether")}
+				hint={t("homePlayTogetherHint")}
+			>
+				<GameCardRow
+					items={playTogetherItems}
+					onOpenGame={(gameId) => router.push(`/game/${gameId}` as never)}
+				/>
+			</HomeSection>
 
-			<Animated.View entering={FadeInDown.delay(430).springify()}>
-				<Text style={styles.sectionTitle}>{t("homeDestinationsTitle")}</Text>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("homeDestinationsHint")}
-				</Text>
-				<AnimatedPressable
-					style={[
-						styles.featuredCard,
-						{
-							backgroundColor: flightDestination
-								? theme.accentSoft
-								: theme.card,
-							borderColor: flightDestination ? theme.tint : theme.border,
-						},
-					]}
+			<HomeSection
+				delay={430}
+				title={t("homeDestinationsTitle")}
+				hint={t("homeDestinationsHint")}
+			>
+				<DestinationCard
+					destination={flightDestination}
 					onPress={() =>
 						router.push(
 							flightDestination
@@ -629,418 +291,28 @@ export default function HomeScreen() {
 								: ("/destinations" as never),
 						)
 					}
-				>
-					{flightDestination ? (
-						<Text style={{ fontSize: 22 }}>{flightDestination.emoji}</Text>
-					) : (
-						<Ionicons name="earth-outline" size={22} color={theme.tint} />
-					)}
-					<View
-						lightColor="transparent"
-						darkColor="transparent"
-						style={styles.featuredBody}
-					>
-						<Text style={styles.featuredTitle}>
-							{flightDestination
-								? t("homeDestinationTipsFor", { city: flightDestination.city })
-								: t("homeDestinationsCta")}
-						</Text>
-					</View>
-					<Ionicons name="chevron-forward" size={20} color={theme.mutedText} />
-				</AnimatedPressable>
-			</Animated.View>
+				/>
+			</HomeSection>
 
-			<Animated.View entering={FadeInDown.delay(440).springify()}>
-				<Text style={styles.sectionTitle}>{t("homeToolsTitle")}</Text>
-				<Text style={[styles.sectionHint, { color: theme.mutedText }]}>
-					{t("homeToolsHint")}
-				</Text>
-				<View style={styles.actions}>
-					<AnimatedPressable
-						style={[
-							styles.actionButton,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-						onPress={() =>
-							openHomeAction(
-								"phrasebook",
-								flightDestination && flightDestination.phraseLanguage !== "en"
-									? `/phrasebook?lang=${flightDestination.phraseLanguage}&source=home`
-									: "/phrasebook?source=home",
-							)
-						}
-					>
-						<Ionicons name="chatbubbles-outline" size={24} color={theme.tint} />
-						<Text style={styles.actionLabel}>{t("homePhrasebook")}</Text>
-						<Text style={[styles.actionSub, { color: theme.mutedText }]}>
-							{flightDestination && flightDestination.phraseLanguage !== "en"
-								? getPhraseLanguage(flightDestination.phraseLanguage)?.nativeName
-								: t("homeToolsPhrasebookHint")}
-						</Text>
-					</AnimatedPressable>
-					<AnimatedPressable
-						style={[
-							styles.actionButton,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-						onPress={() =>
-							openHomeAction(
-								"converter",
-								flightDestination
-									? `/converter?currency=${flightDestination.currencyCode}&source=home`
-									: "/converter?source=home",
-							)
-						}
-					>
-						<Ionicons name="swap-horizontal-outline" size={24} color={theme.tint} />
-						<Text style={styles.actionLabel}>{t("homeConverter")}</Text>
-						<Text style={[styles.actionSub, { color: theme.mutedText }]}>
-							{flightDestination
-								? flightDestination.currencyCode
-								: t("homeToolsConverterHint")}
-						</Text>
-					</AnimatedPressable>
-				</View>
-			</Animated.View>
+			<HomeSection delay={440} title={t("homeToolsTitle")} hint={t("homeToolsHint")}>
+				<TravelToolsRow
+					destination={flightDestination}
+					onOpenPhrasebook={(href) => openHomeAction("phrasebook", href)}
+					onOpenConverter={(href) => openHomeAction("converter", href)}
+				/>
+			</HomeSection>
 
-			<Animated.View entering={FadeInDown.delay(450).springify()}>
-				<Text style={styles.sectionTitle}>{t("featuredForFlight")}</Text>
-				{featuredArticles.map((article) => (
-					<AnimatedPressable
-						key={article.id}
-						style={[
-							styles.featuredCard,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-						onPress={() =>
-							openHomeRecommendation(article.id, article.category.en)
-						}
-					>
-						<View
-							lightColor="transparent"
-							darkColor="transparent"
-							style={styles.featuredBody}
-						>
-							<View
-								lightColor="transparent"
-								darkColor="transparent"
-								style={styles.featuredCategoryRow}
-							>
-								<Text style={[styles.featuredCategory, { color: theme.tint }]}>
-									{article.categoryText}
-								</Text>
-								{article.isFallback ? <LanguageBadge /> : null}
-							</View>
-							<Text style={styles.featuredTitle}>{article.titleText}</Text>
-							<Text style={[styles.featuredMeta, { color: theme.mutedText }]}>
-								~{t("minutesShort", { minutes: article.readTime })}
-							</Text>
-						</View>
-						<Ionicons
-							name="chevron-forward"
-							size={20}
-							color={theme.mutedText}
-						/>
-					</AnimatedPressable>
-				))}
-				{featuredArticles.length === 0 && (
-					<View
-						style={[
-							styles.articlesEmptyCard,
-							{ backgroundColor: theme.card, borderColor: theme.border },
-						]}
-					>
-						<Ionicons
-							name="document-text-outline"
-							size={28}
-							color={theme.mutedText}
-						/>
-						<Text style={[styles.articlesEmptyTitle, { color: theme.mutedText }]}>
-							{t("homeArticlesEmpty")}
-						</Text>
-						<Text style={[styles.articlesEmptyHint, { color: theme.mutedText }]}>
-							{t("homeArticlesEmptyHint")}
-						</Text>
-					</View>
-				)}
-			</Animated.View>
+			<HomeSection delay={450} title={t("featuredForFlight")}>
+				<FeaturedArticles
+					articles={featuredArticles}
+					onOpenArticle={openHomeRecommendation}
+				/>
+			</HomeSection>
 		</ScrollView>
 	);
-}
-
-function AnimatedProgressFill({
-	progress,
-	color,
-}: {
-	progress: number;
-	color: string;
-}) {
-	const width = useSharedValue(0);
-
-	useEffect(() => {
-		width.value = withTiming(Math.round(progress * 100), {
-			duration: 800,
-			easing: Easing.out(Easing.cubic),
-		});
-	}, [progress, width]);
-
-	const fillStyle = useAnimatedStyle(() => ({
-		width: `${width.value}%`,
-		height: "100%",
-		backgroundColor: color,
-		borderRadius: 4,
-	}));
-
-	return <Animated.View style={fillStyle} />;
 }
 
 const styles = StyleSheet.create({
 	scroll: { flex: 1 },
 	container: { padding: Spacing["2xl"], paddingBottom: Spacing["4xl"] + 16 },
-
-	// Flight card (active flight) — double-bezel: outer shell + inner core
-	flightShell: {
-		borderRadius: Radius.xl + 4,
-		padding: 4,
-		marginBottom: Spacing["2xl"],
-	},
-	flightCard: {
-		padding: Spacing.xl,
-		borderRadius: Radius.xl,
-	},
-	iconCircle: {
-		width: 26,
-		height: 26,
-		borderRadius: 13,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	flightHeader: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 8,
-		marginBottom: 16,
-		backgroundColor: "transparent",
-	},
-	flightTitle: { flex: 1, fontSize: 18, fontWeight: "700" },
-	progressBar: {
-		height: 8,
-		borderRadius: 4,
-		overflow: "hidden",
-		marginBottom: 8,
-	},
-	progressLabel: { fontSize: 13 },
-	recommendation: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 6,
-		marginTop: 12,
-		backgroundColor: "transparent",
-	},
-	recommendationText: { fontSize: 13, flex: 1 },
-
-	// New-user welcome card
-	welcomeCard: {
-		alignItems: "center",
-		padding: Spacing.xl,
-		borderRadius: Radius.xl,
-		borderWidth: 1.5,
-		gap: 8,
-		marginBottom: 6,
-		...Shadow.card,
-	},
-	welcomeTitle: { fontSize: 18, fontWeight: "700" },
-	welcomeHint: { fontSize: 13, textAlign: "center", lineHeight: 19 },
-	welcomeBtn: {
-		marginTop: 4,
-		paddingHorizontal: 24,
-		paddingVertical: 10,
-		borderRadius: 20,
-	},
-	welcomeBtnText: { color: "#fff", fontSize: 14, fontWeight: "700" },
-
-	// Add flight card (no flight)
-	addFlightCard: {
-		alignItems: "center",
-		padding: Spacing["2xl"],
-		borderRadius: Radius.xl,
-		borderWidth: 2,
-		borderStyle: "dashed",
-		marginBottom: 6,
-	},
-	addFlightTitle: { fontSize: 18, fontWeight: "700", marginTop: 12 },
-	addFlightSubtitle: {
-		fontSize: 13,
-		marginTop: 4,
-		textAlign: "center",
-	},
-	preflightCta: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 8,
-		borderWidth: 1,
-		borderRadius: 12,
-		paddingVertical: 12,
-		paddingHorizontal: 16,
-		marginTop: 12,
-	},
-	preflightCtaText: { flex: 1, fontSize: 14, fontWeight: "600" },
-	// Featured articles empty state
-	articlesEmptyCard: {
-		borderWidth: 1,
-		borderRadius: 12,
-		padding: 20,
-		alignItems: "center",
-		gap: 8,
-		marginTop: 10,
-	},
-	articlesEmptyTitle: { fontSize: 14, fontWeight: "600", textAlign: "center" },
-	articlesEmptyHint: { fontSize: 12, textAlign: "center", lineHeight: 17 },
-
-	// Quick actions
-	sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 4, marginTop: Spacing["3xl"] },
-	sectionHint: {
-		fontSize: 12,
-		lineHeight: 16,
-		marginBottom: 10,
-	},
-	actions: { flexDirection: "row", gap: 12 },
-	actionCol: { flex: 1 },
-	actionButton: {
-		flex: 1,
-		alignItems: "center",
-		padding: 20,
-		borderRadius: 16,
-		borderWidth: 1,
-	},
-	actionLabel: { fontSize: 14, fontWeight: "600", marginTop: 8 },
-	actionSub: { fontSize: 12, marginTop: 2, textAlign: "center" },
-	progressSnapshotCard: {
-		borderWidth: 1,
-		borderRadius: Radius.panel,
-		padding: Spacing.lg,
-		gap: 12,
-		marginBottom: 6,
-		...Shadow.card,
-	},
-	progressSnapshotStats: {
-		flexDirection: "row",
-		gap: 10,
-	},
-	progressStatItem: {
-		flex: 1,
-		alignItems: "center",
-	},
-	progressStatValue: {
-		fontSize: 18,
-		fontWeight: "800",
-	},
-	progressStatLabel: {
-		fontSize: 11,
-		textAlign: "center",
-		marginTop: 2,
-	},
-	profileCta: {
-		borderWidth: 1,
-		borderRadius: 10,
-		paddingVertical: 10,
-		alignItems: "center",
-		justifyContent: "center",
-		flexDirection: "row",
-		gap: 6,
-	},
-	profileCtaText: {
-		fontSize: 13,
-		fontWeight: "700",
-	},
-	challengeCard: {
-		borderWidth: 1,
-		borderRadius: Radius.panel + 4,
-		padding: Spacing.lg,
-		paddingLeft: Spacing.xl,
-		marginBottom: 4,
-		overflow: "hidden",
-	},
-	challengeAccent: {
-		position: "absolute",
-		left: 0,
-		top: 0,
-		bottom: 0,
-		width: 4,
-	},
-	challengeBody: {
-		gap: 8,
-	},
-	challengeTop: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 10,
-	},
-	challengeTitle: {
-		fontSize: 17,
-		fontWeight: "700",
-	},
-	challengeDescription: {
-		fontSize: 14,
-		lineHeight: 20,
-	},
-	challengeCtaRow: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 6,
-		marginTop: 2,
-	},
-	challengeCta: {
-		fontSize: 13,
-		fontWeight: "700",
-	},
-	playTogetherRow: {
-		marginBottom: 4,
-	},
-	playTogetherRowContent: {
-		gap: 10,
-	},
-	playTogetherCard: {
-		width: 130,
-		borderWidth: 1,
-		borderRadius: Radius.panel,
-		padding: Spacing.md,
-		gap: 6,
-		...Shadow.card,
-	},
-	playTogetherTitle: {
-		fontSize: 14,
-		fontWeight: "700",
-	},
-	playTogetherMeta: {
-		fontSize: 12,
-	},
-	featuredCard: {
-		marginTop: 10,
-		borderWidth: 1,
-		borderRadius: Radius.panel,
-		padding: Spacing.lg,
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 10,
-		...Shadow.card,
-	},
-	featuredBody: {
-		flex: 1,
-	},
-	featuredCategoryRow: { flexDirection: "row", alignItems: "center", gap: 6 },
-	featuredCategory: {
-		fontSize: 12,
-		fontWeight: "700",
-		textTransform: "uppercase",
-	},
-	featuredTitle: {
-		fontSize: 15,
-		fontWeight: "700",
-		marginTop: 4,
-	},
-	featuredMeta: {
-		fontSize: 12,
-		marginTop: 4,
-	},
 });
