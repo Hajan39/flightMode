@@ -29,6 +29,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import {
 	getChecklistProgress,
+	getCurrentDestinationItemIds,
 	useChecklistStore,
 } from "@/store/useChecklistStore";
 import { useDiscoveryStore } from "@/store/useDiscoveryStore";
@@ -66,10 +67,10 @@ export default function HomeScreen() {
 	const markGameSeen = useDiscoveryStore((s) => s.markGameSeen);
 	const checklistChecked = useChecklistStore((s) => s.checkedIds);
 	const checklistCustom = useChecklistStore((s) => s.customItems);
-	const checklistProgress = getChecklistProgress({
-		checkedIds: checklistChecked,
-		customItems: checklistCustom,
-	});
+	const checklistProgress = getChecklistProgress(
+		{ checkedIds: checklistChecked, customItems: checklistCustom },
+		getCurrentDestinationItemIds(),
+	);
 	const { capStyle } = useTabletLayout();
 	const [tick, setTick] = useState(0);
 	// `tick` only exists to re-render every 30 s; read it so the clock lines refresh.

@@ -17,13 +17,26 @@ import {
 } from "@/store/useChecklistStore";
 
 type Props = {
+	/** Template section, or a synthetic one for the destination block. */
 	section: SectionDef;
 	customItems: CustomChecklistItem[];
+	/** Destination-specific rows inserted before the custom ones. */
+	extraItems?: { id: string; labelKey: SectionDef["items"][number]["labelKey"] }[];
+	/** Destination sections have no "add your own" field. */
+	hideAddField?: boolean;
+	/** Overrides `t(section.titleKey)` — used for the interpolated "For {city}". */
+	sectionTitle?: string;
 };
 
 type Row = { id: string; label: string; isCustom: boolean };
 
-export default function ChecklistSection({ section, customItems }: Props) {
+export default function ChecklistSection({
+	section,
+	customItems,
+	extraItems = [],
+	hideAddField,
+	sectionTitle,
+}: Props) {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
 	const { t } = useTranslation();
@@ -36,6 +49,11 @@ export default function ChecklistSection({ section, customItems }: Props) {
 
 	const rows: Row[] = [
 		...section.items.map((item) => ({
+			id: item.id,
+			label: t(item.labelKey),
+			isCustom: false,
+		})),
+		...extraItems.map((item) => ({
 			id: item.id,
 			label: t(item.labelKey),
 			isCustom: false,
@@ -89,7 +107,7 @@ export default function ChecklistSection({ section, customItems }: Props) {
 						color={theme.tint}
 					/>
 				</View>
-				<Text style={styles.title}>{t(section.titleKey)}</Text>
+				<Text style={styles.title}>{sectionTitle ?? t(section.titleKey)}</Text>
 				<Text style={[styles.count, { color: theme.mutedText }]}>
 					{done}/{rows.length}
 				</Text>
@@ -134,6 +152,7 @@ export default function ChecklistSection({ section, customItems }: Props) {
 				);
 			})}
 
+			{hideAddField ? null : (
 			<View style={styles.addRow} lightColor="transparent" darkColor="transparent">
 				<TextInput
 					value={draft}
@@ -168,6 +187,7 @@ export default function ChecklistSection({ section, customItems }: Props) {
 					<Ionicons name="add" size={20} color={theme.onTint} />
 				</Pressable>
 			</View>
+			)}
 		</View>
 	);
 }

@@ -12,6 +12,7 @@ import { useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
 import {
 	getChecklistProgress,
+	getCurrentDestinationItemIds,
 	useChecklistStore,
 } from "@/store/useChecklistStore";
 import { useContentStore } from "@/store/useContentStore";
@@ -76,7 +77,10 @@ export default function PreflightScreen() {
 	const articles = useContentItems();
 	const checkedIds = useChecklistStore((s) => s.checkedIds);
 	const customItems = useChecklistStore((s) => s.customItems);
-	const checklist = getChecklistProgress({ checkedIds, customItems });
+	const checklist = getChecklistProgress(
+		{ checkedIds, customItems },
+		getCurrentDestinationItemIds(),
+	);
 	const isInternetReachable = useNetworkStore((s) => s.isInternetReachable);
 	const syncStatus = useContentStore((s) => s.status);
 	const syncContent = useContentStore((s) => s.syncContent);

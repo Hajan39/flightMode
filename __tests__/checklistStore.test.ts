@@ -2,6 +2,7 @@ import { checklistSections, defaultItemIds } from "@/data/checklist";
 import { en } from "@/i18n/locales/en";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import {
+	destinationItemId,
 	getChecklistProgress,
 	isChecklistComplete,
 	MAX_CUSTOM_ITEM_LENGTH,
@@ -80,6 +81,23 @@ describe("useChecklistStore", () => {
 		expect(s.checkedIds).toEqual([]);
 		expect(s.completedFlightId).toBeNull();
 		expect(s.customItems).toHaveLength(1);
+	});
+
+	test("destination extras add to the total and count when ticked", () => {
+		const extras = ["checklistItemIcCard", "checklistItemCashCountry"].map(
+			destinationItemId,
+		);
+		const before = getChecklistProgress(useChecklistStore.getState(), extras);
+		expect(before.total).toBe(defaultItemIds.length + extras.length);
+		expect(before.done).toBe(0);
+		useChecklistStore.getState().toggleItem(extras[0]);
+		const after = getChecklistProgress(useChecklistStore.getState(), extras);
+		expect(after.done).toBe(1);
+		// Completing every default while an extra is open is not "complete".
+		for (const id of defaultItemIds) useChecklistStore.getState().toggleItem(id);
+		expect(isChecklistComplete(useChecklistStore.getState(), extras)).toBe(false);
+		useChecklistStore.getState().toggleItem(extras[1]);
+		expect(isChecklistComplete(useChecklistStore.getState(), extras)).toBe(true);
 	});
 
 	test("progress counts defaults + customs", () => {

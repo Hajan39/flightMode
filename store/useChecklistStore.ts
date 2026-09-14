@@ -3,7 +3,9 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 import { type ChecklistSectionId, defaultItemIds } from "@/data/checklist";
+import { getDestinationById } from "@/data/destinations";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useFlightStore } from "@/store/useFlightStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 export const MAX_CUSTOM_ITEM_LENGTH = 60;
@@ -35,19 +37,39 @@ type ChecklistState = {
 
 type ProgressInput = Pick<ChecklistState, "checkedIds" | "customItems">;
 
-/** `{ done, total }` over default + custom items. */
-export function getChecklistProgress(state: ProgressInput) {
+/** Stable id for a destination-specific item (derived from the flight, not stored). */
+export function destinationItemId(labelKey: string) {
+	return `dest-${labelKey}`;
+}
+
+/**
+ * `{ done, total }` over default + destination + custom items. `extraIds` comes
+ * from the current flight's destination, so it changes with the flight.
+ */
+export function getChecklistProgress(state: ProgressInput, extraIds: string[] = []) {
 	const allIds = new Set([
 		...defaultItemIds,
+		...extraIds,
 		...state.customItems.map((item) => item.id),
 	]);
 	const done = state.checkedIds.filter((id) => allIds.has(id)).length;
 	return { done, total: allIds.size };
 }
 
-export function isChecklistComplete(state: ProgressInput) {
-	const { done, total } = getChecklistProgress(state);
+export function isChecklistComplete(state: ProgressInput, extraIds: string[] = []) {
+	const { done, total } = getChecklistProgress(state, extraIds);
 	return total > 0 && done >= total;
+}
+
+/**
+ * Checklist item ids contributed by the current flight's destination.
+ * Derived from the flight store so every caller (Home, Preflight, the store
+ * itself) counts the same set.
+ */
+export function getCurrentDestinationItemIds(): string[] {
+	const destinationId = useFlightStore.getState().flight?.destinationId;
+	const destination = destinationId ? getDestinationById(destinationId) : undefined;
+	return (destination?.checklistExtras ?? []).map(destinationItemId);
 }
 
 export const useChecklistStore = create<ChecklistState>()(
@@ -75,7 +97,7 @@ export const useChecklistStore = create<ChecklistState>()(
 				const next = get();
 				if (
 					!checked &&
-					isChecklistComplete(next) &&
+					isChecklistComplete(next, getCurrentDestinationItemIds()) &&
 					next.completedFlightId !== next.flightId
 				) {
 					set({ completedFlightId: next.flightId });

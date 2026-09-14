@@ -39,6 +39,9 @@ describe("destinations integrity", () => {
 			expect(Math.abs(d.utcOffsetMinutes % 15)).toBe(0);
 			expect(phraseLanguages[d.phraseLanguage]).toBeDefined();
 			expect(currencyCodes.has(d.currencyCode)).toBe(true);
+			for (const key of d.checklistExtras ?? []) {
+				expect(enKeys.has(key)).toBe(true);
+			}
 		},
 	);
 

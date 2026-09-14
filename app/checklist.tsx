@@ -17,9 +17,11 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
-import { checklistSections } from "@/data/checklist";
+import { type ChecklistSection as SectionDef, checklistSections } from "@/data/checklist";
+import { getDestinationById } from "@/data/destinations";
 import { useTranslation } from "@/hooks/useTranslation";
 import {
+	destinationItemId,
 	getChecklistProgress,
 	useChecklistStore,
 } from "@/store/useChecklistStore";
@@ -35,7 +37,49 @@ export default function ChecklistScreen() {
 	const customItems = useChecklistStore((s) => s.customItems);
 	const resetForFlight = useChecklistStore((s) => s.resetForFlight);
 
-	const { done, total } = getChecklistProgress({ checkedIds, customItems });
+	const destination = flight?.destinationId
+		? getDestinationById(flight.destinationId)
+		: undefined;
+	const destinationExtras = (destination?.checklistExtras ?? []).map((labelKey) => ({
+		id: destinationItemId(labelKey),
+		labelKey,
+	}));
+	/**
+	 * Rendered blocks: the fixed templates, with a synthetic destination block
+	 * ("For Tokyo") inserted right before "At arrival" when the flight has one.
+	 */
+	type Block = {
+		key: string;
+		section: SectionDef;
+		title?: string;
+		extraItems?: typeof destinationExtras;
+		hideAddField?: boolean;
+	};
+	const blocks: Block[] = checklistSections.flatMap((section) => {
+		const own: Block = { key: section.id, section };
+		if (section.id !== "atArrival" || !destination || destinationExtras.length === 0) {
+			return [own];
+		}
+		return [
+			{
+				key: "destination",
+				section: {
+					id: "atArrival",
+					titleKey: "checklistSectionForCity",
+					icon: "location-outline",
+					items: [],
+				},
+				title: t("checklistSectionForCity", { city: destination.city }),
+				extraItems: destinationExtras,
+				hideAddField: true,
+			},
+			own,
+		];
+	});
+	const { done, total } = getChecklistProgress(
+		{ checkedIds, customItems },
+		destinationExtras.map((item) => item.id),
+	);
 	const ratio = total > 0 ? done / total : 0;
 	const allDone = total > 0 && done >= total;
 
@@ -125,13 +169,20 @@ export default function ChecklistScreen() {
 						</View>
 
 						<View style={styles.list} lightColor="transparent" darkColor="transparent">
-							{checklistSections.map((section) => (
+							{blocks.map((block) => (
 								<ChecklistSection
-									key={section.id}
-									section={section}
-									customItems={customItems.filter(
-										(item) => item.sectionId === section.id,
-									)}
+									key={block.key}
+									section={block.section}
+									sectionTitle={block.title}
+									extraItems={block.extraItems}
+									hideAddField={block.hideAddField}
+									customItems={
+										block.key === "destination"
+											? []
+											: customItems.filter(
+													(item) => item.sectionId === block.section.id,
+												)
+									}
 								/>
 							))}
 						</View>
