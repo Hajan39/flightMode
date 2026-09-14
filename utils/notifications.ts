@@ -6,6 +6,7 @@ import { useSettingsStore } from "@/store/useSettingsStore";
 
 const FLIGHT_REMINDER_CHANNEL_ID = "flight-reminders";
 const FLIGHT_REMINDER_KIND = "flight_ready";
+const JETLAG_SLEEP_KIND = "jetlag_sleep";
 
 // expo-notifications was removed from Expo Go on Android in SDK 53 —
 // even importing the module logs a runtime error there. Notifications are
@@ -117,6 +118,80 @@ export async function requestNotificationPermission() {
 	return isGranted(next);
 }
 
+/** Cancels every pending reminder tagged with `reminder_kind === kind`. */
+async function cancelRemindersOfKind(
+	Notifications: NotificationsModule,
+	kind: string,
+) {
+	const scheduled = await Notifications.getAllScheduledNotificationsAsync();
+	await Promise.all(
+		scheduled
+			.filter(
+				(item) =>
+					item.content.data &&
+					typeof item.content.data === "object" &&
+					(item.content.data as Record<string, unknown>).reminder_kind === kind,
+			)
+			.map((item) =>
+				Notifications.cancelScheduledNotificationAsync(item.identifier),
+			),
+	);
+}
+
+/**
+ * Nudges the traveller 10 minutes before the suggested on-plane sleep window
+ * (see `getJetlagReminderFireAt`). Safe to call repeatedly — it replaces any
+ * previously scheduled jet-lag reminder.
+ */
+export async function scheduleJetlagSleepReminder(fireAt: number, city: string) {
+	const Notifications = getNotifications();
+	if (!Notifications) {
+		return { scheduled: false as const, reason: "unsupported" as const };
+	}
+
+	await initializeNotifications();
+
+	const hasPermission = await requestNotificationPermission();
+	if (!hasPermission) {
+		return { scheduled: false as const, reason: "permission_denied" as const };
+	}
+
+	await cancelRemindersOfKind(Notifications, JETLAG_SLEEP_KIND);
+
+	if (fireAt <= Date.now() + 2 * 60 * 1000) {
+		return { scheduled: false as const, reason: "too_late" as const };
+	}
+
+	const fireDate = new Date(fireAt);
+	const language = currentLanguage();
+	const identifier = await Notifications.scheduleNotificationAsync({
+		content: {
+			title: translate(language, "notifJetlagSleepTitle"),
+			body: translate(language, "notifJetlagSleepBody", { city }),
+			data: { reminder_kind: JETLAG_SLEEP_KIND },
+		},
+		trigger: {
+			type: Notifications.SchedulableTriggerInputTypes.DATE,
+			date: fireDate,
+			channelId:
+				Platform.OS === "android" ? FLIGHT_REMINDER_CHANNEL_ID : undefined,
+		},
+	});
+
+	return {
+		scheduled: true as const,
+		identifier,
+		scheduledFor: fireDate.getTime(),
+	};
+}
+
+/** Drops the jet-lag reminder — used when the flight is cleared. */
+export async function cancelJetlagSleepReminder() {
+	const Notifications = getNotifications();
+	if (!Notifications) return;
+	await cancelRemindersOfKind(Notifications, JETLAG_SLEEP_KIND);
+}
+
 export async function scheduleFlightReadyReminder(departureTime: number) {
 	const Notifications = getNotifications();
 	if (!Notifications) {
@@ -130,20 +205,7 @@ export async function scheduleFlightReadyReminder(departureTime: number) {
 		return { scheduled: false as const, reason: "permission_denied" as const };
 	}
 
-	const scheduled = await Notifications.getAllScheduledNotificationsAsync();
-	await Promise.all(
-		scheduled
-			.filter(
-				(item) =>
-					item.content.data &&
-					typeof item.content.data === "object" &&
-					(item.content.data as Record<string, unknown>).reminder_kind ===
-						FLIGHT_REMINDER_KIND,
-			)
-			.map((item) =>
-				Notifications.cancelScheduledNotificationAsync(item.identifier),
-			),
-	);
+	await cancelRemindersOfKind(Notifications, FLIGHT_REMINDER_KIND);
 
 	const now = Date.now();
 	const threeHoursBefore = departureTime - 3 * 60 * 60 * 1000;

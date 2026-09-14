@@ -1271,4 +1271,6 @@ gameOddOneOutName: "仲間外れ探し",
 	converterRatesUpdating: "更新中…",
 	converterAllCurrencies: "すべての通貨",
 	converterSearchCurrency: "コードまたは名前で検索…",
+	notifJetlagSleepTitle: "休む時間です 😴",
+	notifJetlagSleepBody: "{{city}}には朝到着します。今眠ると明日がぐっと楽になります。",
 } as const;

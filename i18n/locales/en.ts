@@ -1294,4 +1294,6 @@ gameOddOneOutName: "Odd One Out",
 	converterRatesUpdating: "Updating…",
 	converterAllCurrencies: "All currencies",
 	converterSearchCurrency: "Search code or name…",
+	notifJetlagSleepTitle: "Time to rest 😴",
+	notifJetlagSleepBody: "You land in {{city}} in the morning — sleeping now makes tomorrow much easier.",
 } as const;

@@ -38,6 +38,7 @@ import { useSettingsStore } from "@/store/useSettingsStore";
 import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { pickFlightGames } from "@/utils/flightRecommendations";
+import { cancelJetlagSleepReminder } from "@/utils/notifications";
 
 function getPlayModeLabelKey(playMode?: GamePlayMode) {
 	if (playMode === "passAndPlay") return "playTogetherPassAndPlay";
@@ -183,7 +184,10 @@ export default function HomeScreen() {
 					flight={flight}
 					destination={flightDestination}
 					nowMs={nowMs}
-					onClear={clearFlight}
+					onClear={() => {
+						clearFlight();
+						void cancelJetlagSleepReminder();
+					}}
 					onAddFlight={() => router.push("/flight/edit")}
 				/>
 				<HomeCtaRow

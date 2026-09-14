@@ -2,7 +2,9 @@ import {
 	formatTimeInZone,
 	getDayOffset,
 	getJetlagPlan,
+	getJetlagReminderFireAt,
 	getZoneOffsetMinutes,
+	type JetlagPlan,
 	type ZoneRef,
 } from "@/utils/timezone";
 
@@ -141,5 +143,35 @@ describe("getJetlagPlan", () => {
 		expect(plan.severity).toBe("none");
 		expect(plan.adviceKey).toBe("jetlagAdviceNone");
 		expect(plan.sleepWindow).toBeNull();
+	});
+});
+
+describe("getJetlagReminderFireAt", () => {
+	const base: JetlagPlan = {
+		shiftHours: 8,
+		direction: "east",
+		severity: "severe",
+		arrivalLocalHour: 7,
+		sleepWindow: null,
+		adviceKey: "jetlagAdviceSleepBeforeArrival",
+	};
+
+	test("fires 10 minutes before the sleep window opens", () => {
+		const start = Date.UTC(2026, 0, 15, 18, 0);
+		const plan = { ...base, sleepWindow: { startMs: start, endMs: start + 4 * 3600_000 } };
+		expect(getJetlagReminderFireAt(plan, start - 3600_000)).toBe(start - 10 * 60_000);
+	});
+
+	test("null without a window", () => {
+		expect(getJetlagReminderFireAt(base, Date.now())).toBeNull();
+	});
+
+	test("null when the window is already here or too close", () => {
+		const start = Date.UTC(2026, 0, 15, 18, 0);
+		const plan = { ...base, sleepWindow: { startMs: start, endMs: start + 3600_000 } };
+		expect(getJetlagReminderFireAt(plan, start)).toBeNull();
+		// 10 min lead minus a 2 min floor → a now 9 minutes before the window is too late
+		expect(getJetlagReminderFireAt(plan, start - 9 * 60_000)).toBeNull();
+		expect(getJetlagReminderFireAt(plan, start - 13 * 60_000)).toBe(start - 10 * 60_000);
 	});
 });

@@ -1291,4 +1291,6 @@ gameOddOneOutName: "L'Intruso",
 	converterRatesUpdating: "Aggiornamento…",
 	converterAllCurrencies: "Tutte le valute",
 	converterSearchCurrency: "Cerca codice o nome…",
+	notifJetlagSleepTitle: "È ora di riposare 😴",
+	notifJetlagSleepBody: "Atterri a {{city}} di mattina: dormire ora renderà domani molto più facile.",
 } as const;

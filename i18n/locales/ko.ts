@@ -1266,4 +1266,6 @@ gameOddOneOutName: "다른 거 찾기",
 	converterRatesUpdating: "업데이트 중…",
 	converterAllCurrencies: "모든 통화",
 	converterSearchCurrency: "코드 또는 이름 검색…",
+	notifJetlagSleepTitle: "쉴 시간이에요 😴",
+	notifJetlagSleepBody: "{{city}}에 아침에 도착합니다. 지금 자두면 내일이 훨씬 수월해요.",
 } as const;

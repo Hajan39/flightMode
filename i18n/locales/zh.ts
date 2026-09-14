@@ -1257,4 +1257,6 @@ gameOddOneOutName: "找不同",
 	converterRatesUpdating: "更新中…",
 	converterAllCurrencies: "全部货币",
 	converterSearchCurrency: "搜索代码或名称…",
+	notifJetlagSleepTitle: "该休息了 😴",
+	notifJetlagSleepBody: "您将在早晨抵达{{city}}——现在睡一会儿，明天会轻松很多。",
 } as const;

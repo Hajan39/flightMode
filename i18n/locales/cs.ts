@@ -1285,4 +1285,6 @@ gameOddOneOutName: "Hledej Vetřelce",
 	converterRatesUpdating: "Aktualizuji…",
 	converterAllCurrencies: "Všechny měny",
 	converterSearchCurrency: "Hledat kód nebo název…",
+	notifJetlagSleepTitle: "Čas na odpočinek 😴",
+	notifJetlagSleepBody: "V {{city}} přistáváte ráno — spánek teď vám zítřek hodně usnadní.",
 } as const;

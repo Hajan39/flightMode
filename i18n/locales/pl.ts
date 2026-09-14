@@ -1286,4 +1286,6 @@ gameOddOneOutName: "Znajdź Intruza",
 	converterRatesUpdating: "Aktualizuję…",
 	converterAllCurrencies: "Wszystkie waluty",
 	converterSearchCurrency: "Szukaj kodu lub nazwy…",
+	notifJetlagSleepTitle: "Czas na odpoczynek 😴",
+	notifJetlagSleepBody: "Lądujesz w {{city}} rano — sen teraz bardzo ułatwi jutro.",
 } as const;

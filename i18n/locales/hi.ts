@@ -1261,4 +1261,6 @@ gameOddOneOutName: "अलग खोजो",
 	converterRatesUpdating: "अपडेट हो रहा है…",
 	converterAllCurrencies: "सभी मुद्राएँ",
 	converterSearchCurrency: "कोड या नाम खोजें…",
+	notifJetlagSleepTitle: "आराम का समय 😴",
+	notifJetlagSleepBody: "आप सुबह {{city}} पहुँचेंगे — अभी सोने से कल बहुत आसान होगा।",
 } as const;

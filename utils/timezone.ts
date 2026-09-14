@@ -146,6 +146,24 @@ export type JetlagPlan = {
 	adviceKey: JetlagAdviceKey;
 };
 
+/** Lead time before the suggested sleep window starts. */
+const JETLAG_REMINDER_LEAD_MS = 10 * 60_000;
+
+/**
+ * When to nudge the traveller that the on-plane sleep window is starting:
+ * 10 minutes before it. Returns null when there is no window or the moment
+ * has already passed (a reminder less than 2 minutes out is not worth it).
+ */
+export function getJetlagReminderFireAt(
+	plan: JetlagPlan,
+	nowMs: number,
+): number | null {
+	if (!plan.sleepWindow) return null;
+	const fireAt = plan.sleepWindow.startMs - JETLAG_REMINDER_LEAD_MS;
+	if (fireAt <= nowMs + 2 * 60_000) return null;
+	return fireAt;
+}
+
 export type JetlagInput = {
 	departureTime: number;
 	/** Flight duration in minutes. */

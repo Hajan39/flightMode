@@ -20,8 +20,12 @@ import { useAchievementStore } from "@/store/useAchievementStore";
 import { useChecklistStore } from "@/store/useChecklistStore";
 import { useFlightStore } from "@/store/useFlightStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-import { scheduleFlightReadyReminder } from "@/utils/notifications";
-import { getJetlagPlan } from "@/utils/timezone";
+import {
+	cancelJetlagSleepReminder,
+	scheduleFlightReadyReminder,
+	scheduleJetlagSleepReminder,
+} from "@/utils/notifications";
+import { getJetlagPlan, getJetlagReminderFireAt } from "@/utils/timezone";
 
 function pad2(value: number) {
 	return String(value).padStart(2, "0");
@@ -238,6 +242,26 @@ export default function FlightEditScreen() {
 				destination,
 			});
 			useAchievementStore.getState().recordTimezoneShift(plan.shiftHours);
+
+			// Nudge the traveller when the suggested on-plane sleep window opens.
+			const sleepFireAt = getJetlagReminderFireAt(plan, Date.now());
+			if (sleepFireAt) {
+				const sleepResult = await scheduleJetlagSleepReminder(
+					sleepFireAt,
+					destination.city,
+				);
+				if (sleepResult.scheduled) {
+					captureAnalyticsEvent("reminder_scheduled", {
+						reminder_kind: "jetlag_sleep",
+						scheduled_for: sleepResult.scheduledFor,
+						departure_time: departureTime,
+					});
+				}
+			} else {
+				void cancelJetlagSleepReminder();
+			}
+		} else {
+			void cancelJetlagSleepReminder();
 		}
 		captureAnalyticsEvent(isEditingFlight ? "flight_edited" : "flight_added", {
 			duration_minutes: totalMinutes,

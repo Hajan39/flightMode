@@ -1309,4 +1309,6 @@ gameOddOneOutName: "Finde den Außenseiter",
 	converterRatesUpdating: "Aktualisiere…",
 	converterAllCurrencies: "Alle Währungen",
 	converterSearchCurrency: "Code oder Name suchen…",
+	notifJetlagSleepTitle: "Zeit zum Ausruhen 😴",
+	notifJetlagSleepBody: "Du landest morgens in {{city}} — jetzt zu schlafen macht morgen viel leichter.",
 } as const;

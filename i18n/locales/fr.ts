@@ -1304,4 +1304,6 @@ gameOddOneOutName: "L'Intrus",
 	converterRatesUpdating: "Mise à jour…",
 	converterAllCurrencies: "Toutes les devises",
 	converterSearchCurrency: "Rechercher un code ou un nom…",
+	notifJetlagSleepTitle: "L'heure de se reposer 😴",
+	notifJetlagSleepBody: "Vous atterrissez à {{city}} le matin : dormir maintenant facilitera beaucoup demain.",
 } as const;

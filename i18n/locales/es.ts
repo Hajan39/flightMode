@@ -1294,4 +1294,6 @@ gameOddOneOutName: "El Intruso",
 	converterRatesUpdating: "Actualizando…",
 	converterAllCurrencies: "Todas las monedas",
 	converterSearchCurrency: "Buscar código o nombre…",
+	notifJetlagSleepTitle: "Hora de descansar 😴",
+	notifJetlagSleepBody: "Aterrizas en {{city}} por la mañana: dormir ahora hará el día siguiente mucho más fácil.",
 } as const;
