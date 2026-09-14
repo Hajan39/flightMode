@@ -1345,4 +1345,7 @@ gameOddOneOutName: "다른 거 찾기",
 	cbzCatWaysToRelax: "휴식하는 방법",
 	achieveQuickThinkerTitle: "순발력 천재",
 	achieveQuickThinkerDesc: "카테고리 블리츠 한 판에서 30개 답하기",
+	onboardingCurrencyTitle: "기본 통화",
+	onboardingCurrencySubtitle: "오프라인 변환기의 기준이 됩니다. 언제든 바꿀 수 있어요.",
+	settingsHomeCurrency: "기본 통화",
 } as const;

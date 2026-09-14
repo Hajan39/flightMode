@@ -9,6 +9,8 @@
  * (`__tests__/currencies.test.ts` enforces it).
  */
 
+import { getLocales } from "expo-localization";
+
 export const ratesAsOf = "2026-09-01";
 
 export const baseCurrency = "USD";
@@ -65,6 +67,19 @@ export const currencies: Currency[] = [
 export const currenciesByCode: Record<string, Currency> = Object.fromEntries(
 	currencies.map((c) => [c.code, c]),
 );
+
+/** Codes offered as quick chips before the traveller searches the full list. */
+export const POPULAR_CURRENCIES = [
+	"USD", "EUR", "GBP", "CHF", "CZK", "PLN", "SEK", "NOK", "DKK", "HUF",
+	"JPY", "CNY", "KRW", "INR", "AUD", "CAD", "NZD", "SGD", "AED", "BRL",
+	"MXN", "ZAR", "TRY", "THB",
+];
+
+/** ISO code from the device locale, falling back to USD. */
+export function deviceCurrencyCode(): string {
+	const code = getLocales()[0]?.currencyCode?.toUpperCase();
+	return code && /^[A-Z]{3}$/.test(code) ? code : "USD";
+}
 
 export function getCurrency(code: string | undefined | null): Currency | undefined {
 	if (!code) return undefined;

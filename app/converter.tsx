@@ -1,8 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
-import { getLocales } from "expo-localization";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { FlatList, Modal, Pressable, ScrollView, StyleSheet, TextInput } from "react-native";
+import { Pressable, ScrollView, StyleSheet, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Text, View } from "@/components/Themed";
@@ -10,10 +9,12 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
-import { currencies as bundledCurrencies, type Currency, getCurrency } from "@/data/currencies";
+import CurrencyPicker from "@/components/CurrencyPicker";
+import { deviceCurrencyCode, getCurrency } from "@/data/currencies";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useSettingsStore } from "@/store/useSettingsStore";
 import { useNetworkStore } from "@/store/useNetworkStore";
 import { getEffectiveCurrencies, getRatesProvenance, useRatesStore } from "@/store/useRatesStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -44,11 +45,6 @@ const KIND_LABEL_KEYS = {
 	weight: "converterWeight",
 } as const;
 
-function deviceCurrency(): string {
-	const code = getLocales()[0]?.currencyCode?.toUpperCase();
-	return code && getCurrency(code) ? code : "USD";
-}
-
 export default function ConverterScreen() {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
@@ -69,33 +65,17 @@ export default function ConverterScreen() {
 	const currencies = useMemo(() => getEffectiveCurrencies(liveRates), [liveRates]);
 	const provenance = getRatesProvenance({ rates: liveRates, ratesAsOf: liveAsOf });
 
+	const homeCurrency = useSettingsStore((s) => s.homeCurrency);
+	const home = homeCurrency ?? deviceCurrencyCode();
 	const [kind, setKind] = useState<Kind>("currency");
 	const [amount, setAmount] = useState("100");
-	const [from, setFrom] = useState(deviceCurrency);
+	const [from, setFrom] = useState(home);
 	const [to, setTo] = useState(() => {
-		const param = getCurrency(currency)?.code;
-		const home = deviceCurrency();
+		const param = getCurrency(currency)?.code ?? currency?.toUpperCase();
 		return param && param !== home ? param : home === "EUR" ? "USD" : "EUR";
 	});
 	const [direction, setDirection] = useState<UnitDirection>("metricToImperial");
 	const countedRef = useRef(false);
-	const [picker, setPicker] = useState<"from" | "to" | null>(null);
-	const [pickerQuery, setPickerQuery] = useState("");
-	const bundledCodes = useMemo(() => new Set(bundledCurrencies.map((c) => c.code)), []);
-	const pickerItems = useMemo(() => {
-		const q = pickerQuery.trim().toLowerCase();
-		if (!q) return currencies;
-		return currencies.filter(
-			(c) => c.code.toLowerCase().includes(q) || c.nameEn.toLowerCase().includes(q),
-		);
-	}, [currencies, pickerQuery]);
-	const selectFromPicker = (code: string) => {
-		haptic.tap();
-		if (picker === "from") setFrom(code);
-		else if (picker === "to") setTo(code);
-		setPicker(null);
-		setPickerQuery("");
-	};
 
 	useEffect(() => {
 		captureAnalyticsEvent("converter_open", {
@@ -155,75 +135,6 @@ export default function ConverterScreen() {
 		kind === "currency"
 			? to
 			: unitLabels[kind][direction === "metricToImperial" ? 1 : 0];
-
-	const renderCurrencyChips = (
-		selected: string,
-		onSelect: (code: string) => void,
-		which: "from" | "to",
-	) => {
-		// Chips = bundled (popular) currencies; the selected extra one is pinned first.
-		const selectedExtra = currencies.find((c) => c.code === selected && !bundledCodes.has(c.code));
-		const chips: Currency[] = [
-			...(selectedExtra ? [selectedExtra] : []),
-			...currencies.filter((c) => bundledCodes.has(c.code)),
-		];
-		const hasExtra = currencies.length > bundledCodes.size;
-		return (
-		<ScrollView
-			horizontal
-			showsHorizontalScrollIndicator={false}
-			contentContainerStyle={styles.chipRow}
-		>
-			{hasExtra ? (
-				<Pressable
-					onPress={() => {
-						haptic.tap();
-						setPicker(which);
-					}}
-					accessibilityRole="button"
-					accessibilityLabel={t("converterAllCurrencies")}
-					style={[styles.chip, styles.moreChip, { borderColor: theme.tint, backgroundColor: theme.card }]}
-				>
-					<Ionicons name="search" size={14} color={theme.tint} />
-					<Text style={[styles.chipText, { color: theme.tint }]}>
-						{t("converterAllCurrencies")} · {currencies.length}
-					</Text>
-				</Pressable>
-			) : null}
-			{chips.map((c) => {
-				const isActive = c.code === selected;
-				return (
-					<Pressable
-						key={c.code}
-						onPress={() => {
-							haptic.tap();
-							onSelect(c.code);
-						}}
-						accessibilityRole="button"
-						accessibilityState={{ selected: isActive }}
-						accessibilityLabel={c.nameEn}
-						style={[
-							styles.chip,
-							{
-								borderColor: isActive ? theme.tint : theme.border,
-								backgroundColor: isActive ? theme.tint : theme.card,
-							},
-						]}
-					>
-						<Text
-							style={[
-								styles.chipText,
-								{ color: isActive ? theme.onTint : theme.text },
-							]}
-						>
-							{c.code}
-						</Text>
-					</Pressable>
-				);
-			})}
-		</ScrollView>
-		);
-	};
 
 	return (
 		<SafeAreaView
@@ -300,7 +211,7 @@ export default function ConverterScreen() {
 							<Text style={[styles.label, { color: theme.mutedText }]}>
 								{t("converterFrom")}
 							</Text>
-							{renderCurrencyChips(from, setFrom, "from")}
+							<CurrencyPicker selected={from} onSelect={setFrom} />
 						</>
 					) : null}
 
@@ -321,7 +232,7 @@ export default function ConverterScreen() {
 							<Text style={[styles.label, { color: theme.mutedText }]}>
 								{t("converterTo")}
 							</Text>
-							{renderCurrencyChips(to, setTo, "to")}
+							<CurrencyPicker selected={to} onSelect={setTo} />
 						</>
 					) : null}
 
@@ -366,74 +277,6 @@ export default function ConverterScreen() {
 				) : null}
 			</ScrollView>
 
-			<Modal
-				visible={picker !== null}
-				animationType="slide"
-				presentationStyle="pageSheet"
-				onRequestClose={() => setPicker(null)}
-			>
-				<SafeAreaView style={[styles.screen, { backgroundColor: theme.background }]} edges={["top", "bottom"]}>
-					<View style={styles.pickerHeader} lightColor="transparent" darkColor="transparent">
-						<TextInput
-							value={pickerQuery}
-							onChangeText={setPickerQuery}
-							placeholder={t("converterSearchCurrency")}
-							placeholderTextColor={theme.mutedText}
-							autoFocus
-							autoCapitalize="characters"
-							autoCorrect={false}
-							accessibilityLabel={t("converterSearchCurrency")}
-							style={[
-								styles.pickerSearch,
-								{ backgroundColor: theme.inputBackground, borderColor: theme.border, color: theme.text },
-							]}
-						/>
-						<Pressable
-							onPress={() => {
-								haptic.tap();
-								setPicker(null);
-								setPickerQuery("");
-							}}
-							accessibilityRole="button"
-							accessibilityLabel={t("gameCancel")}
-							hitSlop={8}
-						>
-							<Ionicons name="close" size={24} color={theme.mutedText} />
-						</Pressable>
-					</View>
-					<FlatList
-						data={pickerItems}
-						keyExtractor={(c) => c.code}
-						keyboardShouldPersistTaps="handled"
-						contentContainerStyle={styles.pickerList}
-						renderItem={({ item }) => {
-							const isActive = item.code === (picker === "from" ? from : to);
-							return (
-								<Pressable
-									onPress={() => selectFromPicker(item.code)}
-									accessibilityRole="button"
-									accessibilityState={{ selected: isActive }}
-									style={[
-										styles.pickerRow,
-										{ backgroundColor: isActive ? theme.accentSoft : theme.card, borderColor: isActive ? theme.tint : theme.border },
-									]}
-								>
-									<Text style={[styles.pickerCode, { color: theme.tint }]}>{item.code}</Text>
-									<Text style={[styles.pickerName, { color: theme.text }]} numberOfLines={1}>
-										{item.nameEn}
-									</Text>
-									<Text style={[styles.pickerSymbol, { color: theme.mutedText }]}>{item.symbol}</Text>
-								</Pressable>
-							);
-						}}
-						ListEmptyComponent={
-							<Text style={[styles.footerText, { color: theme.mutedText, textAlign: "center" }]}>
-								{t("exploreNoResults")}
-							</Text>
-						}
-					/>
-				</SafeAreaView>
-			</Modal>
 		</SafeAreaView>
 	);
 }
@@ -472,44 +315,6 @@ const styles = StyleSheet.create({
 		fontSize: FontSize["2xl"],
 		fontWeight: FontWeight.bold,
 	},
-	chipRow: { gap: Spacing.sm, paddingVertical: 2 },
-	chip: {
-		borderWidth: 1,
-		borderRadius: Radius.pill,
-		paddingHorizontal: Spacing.md,
-		paddingVertical: 6,
-	},
-	chipText: { fontSize: FontSize.sm, fontWeight: FontWeight.bold },
-	moreChip: { flexDirection: "row", alignItems: "center", gap: 4 },
-	pickerHeader: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: Spacing.md,
-		paddingHorizontal: Spacing.lg,
-		paddingVertical: Spacing.md,
-	},
-	pickerSearch: {
-		flex: 1,
-		borderWidth: 1,
-		borderRadius: Radius.card,
-		paddingHorizontal: Spacing.md,
-		paddingVertical: Spacing.sm + 2,
-		fontSize: FontSize.md,
-	},
-	pickerList: { paddingHorizontal: Spacing.lg, paddingBottom: Spacing["4xl"], gap: Spacing.sm },
-	pickerRow: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: Spacing.md,
-		borderWidth: 1,
-		borderRadius: Radius.card,
-		paddingHorizontal: Spacing.md,
-		paddingVertical: Spacing.md,
-		minHeight: 48,
-	},
-	pickerCode: { width: 48, fontSize: FontSize.base, fontWeight: FontWeight.black },
-	pickerName: { flex: 1, fontSize: FontSize.base, fontWeight: FontWeight.semibold },
-	pickerSymbol: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold },
 	swapBtn: {
 		flexDirection: "row",
 		alignSelf: "center",

@@ -1373,4 +1373,7 @@ gameOddOneOutName: "Odd One Out",
 	cbzCatWaysToRelax: "Ways to relax",
 	achieveQuickThinkerTitle: "Quick Thinker",
 	achieveQuickThinkerDesc: "Score 30 answers in one Category Blitz match",
+	onboardingCurrencyTitle: "Your home currency",
+	onboardingCurrencySubtitle: "The offline converter will start from it. You can change it anytime.",
+	settingsHomeCurrency: "Home currency",
 } as const;

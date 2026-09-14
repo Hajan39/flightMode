@@ -1370,4 +1370,7 @@ gameOddOneOutName: "L'Intruso",
 	cbzCatWaysToRelax: "Modi per rilassarsi",
 	achieveQuickThinkerTitle: "Mente veloce",
 	achieveQuickThinkerDesc: "Ottieni 30 risposte in una partita di Raffica di categorie",
+	onboardingCurrencyTitle: "La tua valuta di casa",
+	onboardingCurrencySubtitle: "Il convertitore offline partirà da questa. Puoi cambiarla quando vuoi.",
+	settingsHomeCurrency: "Valuta di casa",
 } as const;

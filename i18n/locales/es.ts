@@ -1373,4 +1373,7 @@ gameOddOneOutName: "El Intruso",
 	cbzCatWaysToRelax: "Formas de relajarse",
 	achieveQuickThinkerTitle: "Mente rápida",
 	achieveQuickThinkerDesc: "Consigue 30 respuestas en una partida de Ráfaga de categorías",
+	onboardingCurrencyTitle: "Tu moneda habitual",
+	onboardingCurrencySubtitle: "El conversor sin conexión partirá de ella. Puedes cambiarla cuando quieras.",
+	settingsHomeCurrency: "Moneda habitual",
 } as const;

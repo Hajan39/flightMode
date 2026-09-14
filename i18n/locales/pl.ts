@@ -1365,4 +1365,7 @@ gameOddOneOutName: "Znajdź Intruza",
 	cbzCatWaysToRelax: "Sposoby na relaks",
 	achieveQuickThinkerTitle: "Bystry umysł",
 	achieveQuickThinkerDesc: "Zdobądź 30 odpowiedzi w jednym meczu",
+	onboardingCurrencyTitle: "Twoja waluta domowa",
+	onboardingCurrencySubtitle: "Przelicznik offline będzie od niej startował. Możesz ją zmienić w każdej chwili.",
+	settingsHomeCurrency: "Waluta domowa",
 } as const;

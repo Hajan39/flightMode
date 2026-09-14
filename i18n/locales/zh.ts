@@ -1336,4 +1336,7 @@ gameOddOneOutName: "找不同",
 	cbzCatWaysToRelax: "放松的方式",
 	achieveQuickThinkerTitle: "思维敏捷",
 	achieveQuickThinkerDesc: "在一局词类闪电战中说出30个答案",
+	onboardingCurrencyTitle: "你的常用货币",
+	onboardingCurrencySubtitle: "离线换算器将以此为起点，可随时更改。",
+	settingsHomeCurrency: "常用货币",
 } as const;

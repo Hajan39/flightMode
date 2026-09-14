@@ -1383,4 +1383,7 @@ gameOddOneOutName: "L'Intrus",
 	cbzCatWaysToRelax: "Façons de se détendre",
 	achieveQuickThinkerTitle: "Esprit vif",
 	achieveQuickThinkerDesc: "Marquez 30 réponses dans une partie de Blitz des catégories",
+	onboardingCurrencyTitle: "Votre devise habituelle",
+	onboardingCurrencySubtitle: "Le convertisseur hors ligne partira de celle-ci. Modifiable à tout moment.",
+	settingsHomeCurrency: "Devise habituelle",
 } as const;

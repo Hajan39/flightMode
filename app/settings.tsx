@@ -12,8 +12,10 @@ import {
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import CurrencyPicker from "@/components/CurrencyPicker";
 import LanguageDropdown from "@/components/LanguageDropdown";
 import ThemeDropdown from "@/components/ThemeDropdown";
+import { deviceCurrencyCode, POPULAR_CURRENCIES } from "@/data/currencies";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -69,6 +71,8 @@ export default function SettingsScreen() {
 	const { t } = useTranslation();
 	const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
 	const setSyncNetworkPolicy = useSettingsStore((s) => s.setSyncNetworkPolicy);
+	const homeCurrency = useSettingsStore((s) => s.homeCurrency);
+	const setHomeCurrency = useSettingsStore((s) => s.setHomeCurrency);
 	const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
 	const setAnalyticsEnabled = useSettingsStore((s) => s.setAnalyticsEnabled);
 	const hasTrackedOpenRef = useRef(false);
@@ -148,6 +152,28 @@ export default function SettingsScreen() {
 					>
 						<ThemeDropdown />
 					</SettingControlRow>
+					<View
+						style={[
+							styles.currencyRow,
+							{ backgroundColor: theme.card, borderColor: theme.border },
+						]}
+					>
+						<View
+							style={styles.currencyLabelRow}
+							lightColor="transparent"
+							darkColor="transparent"
+						>
+							<Ionicons name="cash-outline" size={18} color={theme.tint} />
+							<Text style={[styles.currencyLabel, { color: theme.text }]}>
+								{t("settingsHomeCurrency")}
+							</Text>
+						</View>
+						<CurrencyPicker
+							selected={homeCurrency ?? deviceCurrencyCode()}
+							onSelect={setHomeCurrency}
+							chipCodes={POPULAR_CURRENCIES}
+						/>
+					</View>
 				</SettingsSection>
 
 				<SettingsSection title={t("settingsSync")} theme={theme}>
@@ -481,6 +507,15 @@ function SettingControlRow({
 }
 
 const styles = StyleSheet.create({
+	currencyRow: {
+		borderWidth: 1,
+		borderRadius: 12,
+		padding: 14,
+		gap: 10,
+		marginTop: 10,
+	},
+	currencyLabelRow: { flexDirection: "row", alignItems: "center", gap: 10 },
+	currencyLabel: { fontSize: 15, fontWeight: "600" },
 	safeArea: {
 		flex: 1,
 	},

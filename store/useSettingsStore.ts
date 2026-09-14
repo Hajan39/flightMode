@@ -17,6 +17,8 @@ type SettingsState = {
 	analyticsEnabled: boolean;
 	/** Game categories the user picked during onboarding; biases recommendations. Empty = no preference. */
 	preferredCategories: GameCategory[];
+	/** ISO 4217 code the converter starts from; null = derive from the device locale. */
+	homeCurrency: string | null;
 	completeOnboarding: () => void;
 	incrementAppOpenCount: () => number;
 	markFirstSessionCompleted: () => void;
@@ -26,6 +28,7 @@ type SettingsState = {
 	setSyncNetworkPolicy: (policy: SyncNetworkPolicy) => void;
 	setAnalyticsEnabled: (enabled: boolean) => void;
 	togglePreferredCategory: (category: GameCategory) => void;
+	setHomeCurrency: (code: string) => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -39,6 +42,7 @@ export const useSettingsStore = create<SettingsState>()(
 			syncNetworkPolicy: "wifi_only" as SyncNetworkPolicy,
 			analyticsEnabled: true,
 			preferredCategories: [] as GameCategory[],
+			homeCurrency: null as string | null,
 			completeOnboarding: () => set({ isFirstLaunch: false }),
 			incrementAppOpenCount: () => {
 				let nextCount = 1;
@@ -53,6 +57,7 @@ export const useSettingsStore = create<SettingsState>()(
 			resetLanguage: () => set({ language: null }),
 			setThemeMode: (themeMode) => set({ themeMode }),
 			setSyncNetworkPolicy: (syncNetworkPolicy) => set({ syncNetworkPolicy }),
+			setHomeCurrency: (code) => set({ homeCurrency: code.toUpperCase() }),
 			setAnalyticsEnabled: (analyticsEnabled) => set({ analyticsEnabled }),
 			togglePreferredCategory: (category) =>
 				set((state) => ({

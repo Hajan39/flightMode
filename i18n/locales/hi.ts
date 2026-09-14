@@ -1340,4 +1340,7 @@ gameOddOneOutName: "अलग खोजो",
 	cbzCatWaysToRelax: "आराम करने के तरीके",
 	achieveQuickThinkerTitle: "तेज़ दिमाग़",
 	achieveQuickThinkerDesc: "एक कैटेगरी ब्लिट्ज़ मैच में 30 उत्तर",
+	onboardingCurrencyTitle: "आपकी घरेलू मुद्रा",
+	onboardingCurrencySubtitle: "ऑफ़लाइन कनवर्टर इसी से शुरू होगा। कभी भी बदलें।",
+	settingsHomeCurrency: "घरेलू मुद्रा",
 } as const;

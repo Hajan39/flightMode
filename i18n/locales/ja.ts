@@ -1350,4 +1350,7 @@ gameOddOneOutName: "仲間外れ探し",
 	cbzCatWaysToRelax: "リラックスの方法",
 	achieveQuickThinkerTitle: "頭の回転が速い人",
 	achieveQuickThinkerDesc: "カテゴリー・ブリッツ1試合で30答える",
+	onboardingCurrencyTitle: "普段使う通貨",
+	onboardingCurrencySubtitle: "オフライン換算ツールの基準になります。いつでも変更できます。",
+	settingsHomeCurrency: "基準通貨",
 } as const;

@@ -1366,4 +1366,7 @@ gameOddOneOutName: "O Intruso",
 	cbzCatWaysToRelax: "Formas de relaxar",
 	achieveQuickThinkerTitle: "Raciocínio rápido",
 	achieveQuickThinkerDesc: "Marque 30 respostas em uma partida de Blitz de categorias",
+	onboardingCurrencyTitle: "Sua moeda de origem",
+	onboardingCurrencySubtitle: "O conversor offline vai partir dela. Você pode mudar quando quiser.",
+	settingsHomeCurrency: "Moeda de origem",
 } as const;

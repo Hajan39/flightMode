@@ -1388,4 +1388,7 @@ gameOddOneOutName: "Finde den Außenseiter",
 	cbzCatWaysToRelax: "Wege zu entspannen",
 	achieveQuickThinkerTitle: "Schnelldenker",
 	achieveQuickThinkerDesc: "Erziele 30 Antworten in einem Kategorien-Blitz",
+	onboardingCurrencyTitle: "Deine Heimatwährung",
+	onboardingCurrencySubtitle: "Der Offline-Umrechner startet damit. Jederzeit änderbar.",
+	settingsHomeCurrency: "Heimatwährung",
 } as const;

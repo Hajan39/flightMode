@@ -17,6 +17,8 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
+import CurrencyPicker from "@/components/CurrencyPicker";
+import { deviceCurrencyCode, POPULAR_CURRENCIES } from "@/data/currencies";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import type { GameCategory } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -73,7 +75,23 @@ type PageProps = {
 	theme: (typeof Colors)["dark"];
 	isLanguagePage?: boolean;
 	isPreferencesPage?: boolean;
+	isCurrencyPage?: boolean;
 };
+
+/** Home-currency step: chips + the shared searchable picker. */
+function HomeCurrencyPicker() {
+	const homeCurrency = useSettingsStore((s) => s.homeCurrency);
+	const setHomeCurrency = useSettingsStore((s) => s.setHomeCurrency);
+	const selected = homeCurrency ?? deviceCurrencyCode();
+
+	return (
+		<CurrencyPicker
+			selected={selected}
+			onSelect={setHomeCurrency}
+			chipCodes={POPULAR_CURRENCIES}
+		/>
+	);
+}
 
 function Page({
 	icon,
@@ -82,6 +100,7 @@ function Page({
 	theme,
 	isLanguagePage,
 	isPreferencesPage,
+	isCurrencyPage,
 }: PageProps) {
 	return (
 		<View style={[styles.page, { width: SCREEN_WIDTH }]}>
@@ -117,6 +136,14 @@ function Page({
 			{isPreferencesPage && (
 				<Animated.View entering={FadeInDown.delay(550).springify()}>
 					<CategoryPicker theme={theme} />
+				</Animated.View>
+			)}
+			{isCurrencyPage && (
+				<Animated.View
+					entering={FadeInDown.delay(550).springify()}
+					style={styles.currencyPicker}
+				>
+					<HomeCurrencyPicker />
 				</Animated.View>
 			)}
 		</View>
@@ -155,6 +182,12 @@ export default function OnboardingScreen() {
 			title: t("onboardingPrefsTitle"),
 			subtitle: t("onboardingPrefsSubtitle"),
 			isPreferencesPage: true,
+		},
+		{
+			icon: "cash-outline",
+			title: t("onboardingCurrencyTitle"),
+			subtitle: t("onboardingCurrencySubtitle"),
+			isCurrencyPage: true,
 		},
 		{
 			icon: "compass-outline",
@@ -270,6 +303,11 @@ const styles = StyleSheet.create({
 		fontWeight: "500",
 		textAlign: "center",
 		lineHeight: 22,
+	},
+	currencyPicker: {
+		marginTop: 24,
+		alignSelf: "stretch",
+		paddingHorizontal: 12,
 	},
 	languagePicker: {
 		width: "100%",

@@ -1364,4 +1364,7 @@ gameOddOneOutName: "Hledej Vetřelce",
 	cbzCatWaysToRelax: "Způsoby, jak relaxovat",
 	achieveQuickThinkerTitle: "Bystrá hlava",
 	achieveQuickThinkerDesc: "Nasbírejte 30 odpovědí v jedné hře Kategorie na čas",
+	onboardingCurrencyTitle: "Tvoje domácí měna",
+	onboardingCurrencySubtitle: "Offline převodník z ní bude vycházet. Kdykoli ji můžeš změnit.",
+	settingsHomeCurrency: "Domácí měna",
 } as const;
