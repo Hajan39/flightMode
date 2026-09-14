@@ -23,7 +23,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - tabs: Home, Games, Explore, Relax
 - profile + achievements + local stats
 - settings kompaktne seskupene na app preferences, article sync a support
-- 40 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Split Duel, Soused ze sedacky, Turbulentni pribehy); 11 her pro vice hracu nad sdilenymi komponentami `components/multiplayer/`
+- 41 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Split Duel, Soused ze sedacky, Turbulentni pribehy); 11 her pro vice hracu nad sdilenymi komponentami `components/multiplayer/`
 - cestovni nastroje offline: checklist per let (`app/checklist.tsx`), lokalni cas v destinaci + jet-lag karta na Home, fraznik 24 jazyku (`app/phrasebook.tsx`), prevodnik men a jednotek (`app/converter.tsx`)
 - 44 clanku v `data/content.json`
 - content lokalizace kompletni pro `en/cs/de`; ostatni jazyky vidi clanky anglicky s badge `EN` (drive 0 clanku)
@@ -135,6 +135,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - Post-landing rezim na Home: 48 h po priletu vede karta „Pristal jsi v {city}" (lokalni cas, fraznik/prevodnik/tipy jednim tapem), pak checklist a cestovni nastroje, hry az dole (`utils/flightPhase.ts`, `hooks/useFlightPhase.ts`)
 - Jetlag notifikace 10 minut pred doporucenym oknem spanku (planovana pri ulozeni letu, rusena pri smazani letu)
 - Checklist polozky per destinace: 33 mest ma blok „Pro {city}" (IC karta, hotovost, ESTA/eTA, oblekani, voda z kohoutku, repelent, opalovaci krem, vrstvy, destnik, dopravni karta, drobne na spropitne, adapter); pocitaji se do progressu i achievementu
+- Nova hra **Zkouska turbulenci** (`tilt-balance`, katalog 40 → 41): prvni hra na akcelerometr — drz telefon naplocho a udrz kulicku ve zmensujicim se kruhu proti poryvum; solo i pass-and-play 1–6; pridan `expo-sensors` (+ iOS motion permission pres config plugin), bez senzoru se zobrazi vysvetlujici obrazovka; achievement Pevna ruka
 - Nova hra **Kategorie na cas** (`category-blitz`, katalog 39 → 40): 20 s na vyjmenovani co nejvic veci z kategorie, ostatni rozhoduji; 40 kategorii jako i18n klice (funguje ve vsech 12 jazycich); achievement Bystra hlava
 - Domaci mena v onboardingu a nastaveni; prevodnik z ni vychazi; sdilena komponenta `CurrencyPicker` (chipy + vyhledavani)
 - Home refactor: 1000 radku rozdeleno do `components/home/*`, `index.tsx` je orchestrator (~315 radku), bez zmeny UX

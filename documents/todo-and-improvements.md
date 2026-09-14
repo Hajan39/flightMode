@@ -16,7 +16,8 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 - ~~Seat Neighbor otazky do zbylych 9 jazyku~~ — hotovo 2026-09-14 (vsech 12 jazyku)
 - ~~post-landing rezim, jetlag notifikace, checklist per destinace, Category Blitz, domaci mena~~ — hotovo 2026-09-14
 - Zbyvajici clanky (30 z 44, hlavne Destinations) prelozit do es/fr/it/pl/pt; pak zvazit ja/ko/zh/hi
-- Dalsi napady na 2P hry, ktere nevznikly: Tug of War (split-screen, ciste JS) a Word Chain (vyzaduje slovniky per jazyk, proto odlozeno); tilt-based hra by vyzadovala `expo-sensors` = nativni build
+- Dalsi napady na 2P hry, ktere nevznikly: Tug of War (split-screen, ciste JS) a Word Chain (vyzaduje slovniky per jazyk, proto odlozeno)
+- `tilt-balance` overit na zarizeni: citlivost naklonu, orientace os na Androidu vs iOS, chovani bez senzoru (web/simulator) — fyzika je otestovana jednotkove, ale kalibrace chce realny telefon
 
 - ~~logicke hry s urovnemi (rozvoj logickeho mysleni)~~ — hotovo: `runway-jam` (Rush Hour, 12 levelu, BFS-verifikovane),
   `nonogram` (picross, 10 puzzlu, line-solver dokazuje guess-free resitelnost), `sun-moon` (Takuzu, 12 levelu,

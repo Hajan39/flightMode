@@ -95,4 +95,5 @@ export const MULTIPLAYER_GAME_IDS = [
 	"seat-neighbor",
 	"emoji-story",
 	"category-blitz",
+	"tilt-balance",
 ] as const;

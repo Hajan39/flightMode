@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **Turbulence Test** (catalog 40 → 41) — the app's first motion game: hold the phone flat and keep a ball inside a ring that shrinks while random turbulence gusts push it around. Solo high score or pass-and-play for up to 6. Adds `expo-sensors` (iOS motion permission declared via the config plugin) and degrades to an explanatory screen where no accelerometer exists. New achievement: Steady Hands.
 - **Post-landing mode** — for 48 h after arrival Home leads with a "You've landed in {city}" card (destination local time, one-tap phrasebook / converter / arrival tips) followed by the checklist and travel tools; games move below. Driven by `utils/flightPhase.ts` (`none | preflight | inflight | landed`).
 - **Jet-lag sleep reminder** — a local notification 10 minutes before the suggested on-plane sleep window, scheduled when the flight is saved and cancelled when it's cleared.
 - **Destination-specific checklist items** — 33 cities add a "For {city}" block (IC card, cash-only, ESTA/eTA, modest dress, tap water, mosquito repellent, sunscreen, layers, rain gear, transit card, tipping cash, power adapter); they count toward the progress and the completion achievement.

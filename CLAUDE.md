@@ -23,7 +23,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 ## Architecture
 
-**Stack:** Expo 57 · React Native 0.86 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · PostHog
+**Stack:** Expo 57 · React Native 0.86 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · expo-sensors · PostHog
 
 **App version:** 1.4.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
@@ -67,7 +67,7 @@ Four theme modes: `system / light / dark / crazy`. No NativeWind.
 
 ## Games
 
-40 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+41 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -97,6 +97,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `seat-neighbor` | multiplayer | easy | Pass-and-play icebreaker for 2: mind-meld + would-you-rather, shared Sync score (cooperative, `updateProgress` directly) |
 | `emoji-story` | multiplayer | easy | Pass-and-play 2–6: emoji story chain in 3 acts, connector words, secret voting; story-only mode |
 | `category-blitz` | multiplayer | easy | Pass-and-play 2–6: name as many things in a category as you can in 20 s, the others judge; 3 rounds each |
+| `tilt-balance` | reflex | medium | Accelerometer (`expo-sensors`): hold the phone flat, keep the ball in a shrinking ring against turbulence gusts; solo or pass-and-play 1–6. Falls back to an explanatory screen when no motion sensor is available |
 | `twenty-forty-eight` | brain | hard | 2048 sliding-tile puzzle; 15 min |
 | `minesweeper` | strategy | medium | Classic mine-sweeping; 10 min |
 | `word-scramble` | brain | medium | Unscramble aviation words; daily challenge |
@@ -153,7 +154,7 @@ Remote endpoint is optional via `EXPO_PUBLIC_STRAPI_CONTENT_URL` or `EXPO_PUBLIC
 
 ## Achievements
 
-Defined in `data/achievements.ts` (48 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
+Defined in `data/achievements.ts` (49 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
 
 `useAchievementStore` tracks: `unlockedIds`, `newUnlockedIds` (cleared by `AchievementToast`), `totalFlights`, `totalRelaxSessions`, `articlesRead`, `soundsPlayed`, `lastActiveDate`, `streakDays`.
 

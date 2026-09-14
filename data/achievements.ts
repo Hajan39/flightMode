@@ -418,6 +418,14 @@ export const achievements: AchievementDef[] = [
 		category: "special",
 		condition: (s) => (s.gameProgress["category-blitz"]?.highScore ?? 0) >= 30,
 	},
+	{
+		id: "steady-hands",
+		titleKey: "achieveSteadyHandsTitle",
+		descriptionKey: "achieveSteadyHandsDesc",
+		icon: "hand-left-outline",
+		category: "special",
+		condition: (s) => (s.gameProgress["tilt-balance"]?.highScore ?? 0) >= 40,
+	},
 	// ── Logic games (levels cleared = levelStars entries with ≥1 star) ──
 	{
 		id: "ground-controller",
