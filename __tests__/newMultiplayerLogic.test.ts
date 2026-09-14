@@ -13,6 +13,7 @@ import {
 	resolveHold,
 } from "@/games/split-duel/logic";
 import { en } from "@/i18n/locales/en";
+import { type Language, translations } from "@/i18n/translations";
 
 const enKeys = new Set(Object.keys(en));
 
@@ -86,16 +87,18 @@ describe("split-duel logic", () => {
 });
 
 describe("seat-neighbor", () => {
-	test("question bank: ≥60 unique ids, en text, ≥2 options, both kinds present", () => {
+	test("question bank: ≥60 unique ids, all 12 languages, ≥2 options, both kinds present", () => {
 		const ids = seatNeighborQuestions.map((q) => q.id);
 		expect(ids.length).toBeGreaterThanOrEqual(60);
 		expect(new Set(ids).size).toBe(ids.length);
+		const langs = Object.keys(translations) as Language[];
 		for (const q of seatNeighborQuestions) {
-			expect(q.prompt.en.length).toBeGreaterThan(0);
-			expect(q.prompt.cs?.length ?? 0).toBeGreaterThan(0);
-			expect(q.prompt.de?.length ?? 0).toBeGreaterThan(0);
+			for (const lang of langs) {
+				expect(q.prompt[lang]?.trim().length ?? 0).toBeGreaterThan(0);
+				for (const o of q.options) expect(o[lang]?.trim().length ?? 0).toBeGreaterThan(0);
+			}
 			expect(q.options.length).toBeGreaterThanOrEqual(2);
-			for (const o of q.options) expect(o.en.length).toBeGreaterThan(0);
+			expect(new Set(q.options.map((o) => o.en)).size).toBe(q.options.length);
 		}
 		expect(seatNeighborQuestions.filter((q) => q.kind === "mindMeld").length).toBeGreaterThanOrEqual(5);
 		expect(seatNeighborQuestions.filter((q) => q.kind === "wyr").length).toBeGreaterThanOrEqual(3);
