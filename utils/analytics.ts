@@ -20,6 +20,7 @@ export type AnalyticsEventName =
 	| "settings_open"
 	| "profile_open"
 	| "home_action_open"
+	| "home_phase_shown"
 	| "home_recommendation_open"
 	| "content_search_changed"
 	| "content_filter_changed"

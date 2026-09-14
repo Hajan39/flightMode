@@ -11,6 +11,7 @@ import FlightCard from "@/components/home/FlightCard";
 import GameCardRow, { type GameCardItem } from "@/components/home/GameCardRow";
 import HomeCtaRow from "@/components/home/HomeCtaRow";
 import HomeSection from "@/components/home/HomeSection";
+import LandedCard from "@/components/home/LandedCard";
 import StatsSnapshot from "@/components/home/StatsSnapshot";
 import TravelToolsRow from "@/components/home/TravelToolsRow";
 import WelcomeCard from "@/components/home/WelcomeCard";
@@ -23,6 +24,7 @@ import {
 	playTogetherGames,
 } from "@/data/games";
 import { hasLanguage, useContentItems } from "@/hooks/useContentItems";
+import { useFlightPhase } from "@/hooks/useFlightPhase";
 import { useProfileStats } from "@/hooks/useProfileStats";
 import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -87,6 +89,17 @@ export default function HomeScreen() {
 	const flightDestination = flight?.destinationId
 		? getDestinationById(flight.destinationId)
 		: undefined;
+	const phase = useFlightPhase(nowMs);
+	const landed = phase === "landed";
+
+	useEffect(() => {
+		captureAnalyticsEvent("home_phase_shown", { phase });
+	}, [phase]);
+
+	const clearFlightAndReminder = () => {
+		clearFlight();
+		void cancelJetlagSleepReminder();
+	};
 
 	const openGame = (gameId: string) => {
 		captureAnalyticsEvent("home_action_open", { target: "games" });
@@ -180,34 +193,103 @@ export default function HomeScreen() {
 			style={styles.scroll}
 			contentContainerStyle={[styles.container, capStyle]}
 		>
-			<HomeSection delay={80} title={t("yourFlight")} hint={t("homeFlightHint")} first>
-				<FlightCard
-					flight={flight}
-					destination={flightDestination}
-					nowMs={nowMs}
-					onClear={() => {
-						clearFlight();
-						void cancelJetlagSleepReminder();
-					}}
-					onAddFlight={() => router.push("/flight/edit")}
-				/>
-				<HomeCtaRow
-					icon="shield-checkmark-outline"
-					label={t("homePreflightCta")}
-					onPress={() => router.push("/preflight")}
-				/>
-				<HomeCtaRow
-					icon="checkbox-outline"
-					label={t("homeChecklistCta", {
-						done: checklistProgress.done,
-						total: checklistProgress.total,
-					})}
-					onPress={() => {
-						captureAnalyticsEvent("checklist_open", { source: "home" });
-						router.push("/checklist" as never);
-					}}
-				/>
-			</HomeSection>
+			{/* After landing the screen is about the destination, not the flight. */}
+			{landed && flightDestination ? (
+				<HomeSection
+					delay={80}
+					title={t("homeLandedSection")}
+					hint={t("homeLandedHint")}
+					first
+				>
+					<LandedCard
+						destination={flightDestination}
+						nowMs={nowMs}
+						onClear={clearFlightAndReminder}
+						onOpenPhrasebook={() =>
+							openHomeAction(
+								"phrasebook",
+								`/phrasebook?lang=${flightDestination.phraseLanguage}&source=landed`,
+							)
+						}
+						onOpenConverter={() =>
+							openHomeAction(
+								"converter",
+								`/converter?currency=${flightDestination.currencyCode}&source=landed`,
+							)
+						}
+						onOpenTips={() =>
+							router.push(`/destinations?focus=${flightDestination.id}` as never)
+						}
+					/>
+					<HomeCtaRow
+						icon="checkbox-outline"
+						label={t("homeChecklistCta", {
+							done: checklistProgress.done,
+							total: checklistProgress.total,
+						})}
+						onPress={() => {
+							captureAnalyticsEvent("checklist_open", { source: "home" });
+							router.push("/checklist" as never);
+						}}
+					/>
+				</HomeSection>
+			) : (
+				<HomeSection delay={80} title={t("yourFlight")} hint={t("homeFlightHint")} first>
+					<FlightCard
+						flight={flight}
+						destination={flightDestination}
+						nowMs={nowMs}
+						landed={landed}
+						onClear={clearFlightAndReminder}
+						onAddFlight={() => router.push("/flight/edit")}
+					/>
+					<HomeCtaRow
+						icon="shield-checkmark-outline"
+						label={t("homePreflightCta")}
+						onPress={() => router.push("/preflight")}
+					/>
+					<HomeCtaRow
+						icon="checkbox-outline"
+						label={t("homeChecklistCta", {
+							done: checklistProgress.done,
+							total: checklistProgress.total,
+						})}
+						onPress={() => {
+							captureAnalyticsEvent("checklist_open", { source: "home" });
+							router.push("/checklist" as never);
+						}}
+					/>
+				</HomeSection>
+			)}
+
+			{/* Landed: travel tools and destination tips come before the games. */}
+			{landed ? (
+				<>
+					<HomeSection delay={100} title={t("homeToolsTitle")} hint={t("homeToolsHint")}>
+						<TravelToolsRow
+							destination={flightDestination}
+							onOpenPhrasebook={(href) => openHomeAction("phrasebook", href)}
+							onOpenConverter={(href) => openHomeAction("converter", href)}
+						/>
+					</HomeSection>
+					<HomeSection
+						delay={120}
+						title={t("homeDestinationsTitle")}
+						hint={t("homeDestinationsHint")}
+					>
+						<DestinationCard
+							destination={flightDestination}
+							onPress={() =>
+								router.push(
+									flightDestination
+										? (`/destinations?focus=${flightDestination.id}` as never)
+										: ("/destinations" as never),
+								)
+							}
+						/>
+					</HomeSection>
+				</>
+			) : null}
 
 			<HomeSection
 				delay={350}
@@ -282,6 +364,7 @@ export default function HomeScreen() {
 				/>
 			</HomeSection>
 
+			{landed ? null : (
 			<HomeSection
 				delay={430}
 				title={t("homeDestinationsTitle")}
@@ -298,7 +381,9 @@ export default function HomeScreen() {
 					}
 				/>
 			</HomeSection>
+			)}
 
+			{landed ? null : (
 			<HomeSection delay={440} title={t("homeToolsTitle")} hint={t("homeToolsHint")}>
 				<TravelToolsRow
 					destination={flightDestination}
@@ -306,6 +391,7 @@ export default function HomeScreen() {
 					onOpenConverter={(href) => openHomeAction("converter", href)}
 				/>
 			</HomeSection>
+			)}
 
 			<HomeSection delay={450} title={t("featuredForFlight")}>
 				<FeaturedArticles

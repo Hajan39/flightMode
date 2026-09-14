@@ -27,6 +27,8 @@ type Props = {
 	nowMs: number;
 	onClear: () => void;
 	onAddFlight: () => void;
+	/** After arrival: show "Landed" instead of a progress readout. */
+	landed?: boolean;
 };
 
 /** Active-flight card (progress, clocks, jet lag) or the "add your flight" prompt. */
@@ -36,6 +38,7 @@ export default function FlightCard({
 	nowMs,
 	onClear,
 	onAddFlight,
+	landed,
 }: Props) {
 	const colorScheme = useColorScheme();
 	const theme = Colors[colorScheme];
@@ -105,8 +108,12 @@ export default function FlightCard({
 					<AnimatedProgressFill progress={progress} color={theme.tint} />
 				</View>
 				<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-					{Math.round(progress * 100)}% —{" "}
-					{t("remainingTime", { hours: remainingH, minutes: remainingM })}
+					{landed
+						? t("flightLanded")
+						: `${Math.round(progress * 100)}% — ${t("remainingTime", {
+								hours: remainingH,
+								minutes: remainingM,
+							})}`}
 				</Text>
 				{!arrivalLocal && (
 					<Text style={[styles.progressLabel, { color: theme.mutedText }]}>
@@ -127,6 +134,7 @@ export default function FlightCard({
 					</>
 				)}
 
+				{landed ? null : (
 				<View style={styles.recommendation}>
 					<Ionicons name="bulb-outline" size={16} color={theme.warning} />
 					<Text style={[styles.recommendationText, { color: theme.mutedText }]}>
@@ -137,6 +145,7 @@ export default function FlightCard({
 								: t("recommendationShort")}
 					</Text>
 				</View>
+				)}
 			</View>
 			{destination ? (
 				<JetlagCard flight={flight} destination={destination} nowMs={nowMs} />
