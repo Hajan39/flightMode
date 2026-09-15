@@ -38,6 +38,7 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- Android: blocked the unused `ACTIVITY_RECOGNITION` permission that `expo-sensors` merges into the manifest for its Pedometer API. FlightMode only reads the accelerometer (Turbulence Test), which needs no permission — so the entry is stripped via `blockedPermissions`, and no Play Console permission declaration is needed.
 - Day streak used the UTC date — now uses the device's local calendar day (travellers no longer lose a streak at UTC midnight).
 - "Screen not found" page and the flight-ready notification were hardcoded English — now translated.
 - `preflight.tsx` dead `SOUNDSCAPE_COUNT` constant removed.
