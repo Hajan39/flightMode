@@ -60,3 +60,30 @@ describe("sudoku puzzle bank", () => {
 		},
 	);
 });
+
+describe("sudoku transformPuzzle", () => {
+	// eslint-disable-next-line @typescript-eslint/no-require-imports
+	const { transformPuzzle } = require("@/games/sudoku/logic");
+
+	test.each(PUZZLES.map((p, i) => [i, p] as const))(
+		"variant of puzzle #%i stays valid with the same clue count",
+		(_i, puzzle) => {
+			let seed = 7;
+			const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+			const v = transformPuzzle(puzzle, rand);
+			for (let i = 0; i < 9; i++) {
+				expect(isValidGroup(row(v.solution, i))).toBe(true);
+				expect(isValidGroup(col(v.solution, i))).toBe(true);
+				expect(isValidGroup(box(v.solution, i))).toBe(true);
+			}
+			for (let i = 0; i < 81; i++) {
+				if (v.clues[i] !== 0) expect(v.clues[i]).toBe(v.solution[i]);
+			}
+			expect(v.clues.filter((c: number) => c !== 0).length).toBe(
+				puzzle.clues.filter((c) => c !== 0).length,
+			);
+			expect(v.difficulty).toBe(puzzle.difficulty);
+			expect(v.solution).not.toEqual(puzzle.solution);
+		},
+	);
+});

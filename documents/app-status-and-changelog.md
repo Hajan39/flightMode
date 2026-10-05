@@ -132,6 +132,8 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-10-05
 
+- sudoku: kazda hra je nahodna symetricka varianta jednoho z 15 overenych puzzlu (nekonecno variant, stejna obtiznost)
+
 - Letovy pas v profilu: razitko za kazdy odletany let + soucty (lety, hodiny ve vzduchu, mesta, zeme) a sdileni textoveho souhrnu s odkazem na Play Store; historie letu v `useFlightStore.log`
 
 - clanky se synchronizuji z `content/feed.json` (raw.githubusercontent.com, nula nakladu); Sanity klient (nikdy nenakonfigurovany) odstranen

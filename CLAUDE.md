@@ -107,7 +107,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `higher-lower` | reflex | easy | Predict numbers |
 | `odd-one-out` | brain | easy | Find the odd emoji; daily challenge |
 | `word-guess` | brain | medium | Wordle-style; daily challenge |
-| `sudoku` | brain | hard | 9×9 logic puzzle; 15 hardcoded puzzles |
+| `sudoku` | brain | hard | 9×9 logic puzzle; 15 verified bank puzzles, each served as a random symmetry variant (`transformPuzzle`) |
 | `snake` | reflex | medium | Classic snake; D-pad controls |
 | `cabin-lights` | brain | medium | Lights Out puzzle; 5 rounds 3×3→5×5 |
 | `sliding-puzzle` | brain | medium | Classic 15-puzzle (4×4 sliding tiles) |

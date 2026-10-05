@@ -29,6 +29,7 @@ import {
   getRow,
   isPeer,
   isSolved,
+  transformPuzzle,
 } from "./logic";
 
 // ---------------------------------------------------------------------------
@@ -165,7 +166,7 @@ export default function SudokuGame() {
   const startDifficulty = useCallback(
     (difficulty: Difficulty) => {
       const pool = PUZZLES.filter((p) => p.difficulty === difficulty);
-      const puzzle = pool[Math.floor(Math.random() * pool.length)];
+      const puzzle = transformPuzzle(pool[Math.floor(Math.random() * pool.length)]);
 
       setClues([...puzzle.clues]);
       setSolution([...puzzle.solution]);

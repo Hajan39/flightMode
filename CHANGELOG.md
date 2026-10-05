@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **Sudoku never repeats** — every game is a fresh variant of one of the 15 verified puzzles (digit relabelling, row/column/band/stack permutation, transpose). Validity, the unique solution and the difficulty are preserved by construction, so there's no solver and no new puzzle data.
 - **Flight Passport** (Profile) — a stamp for every departed flight (destination emoji, city, date, duration) plus lifetime totals: flights, hours in the air, cities, countries. "Share my passport" sends a short text summary with the Play Store link. Flights are now kept in `useFlightStore.log` after the active flight is cleared (persist v1 seeds it with the currently saved flight); the flight number is never stored there.
 - **Live article feed (free, no backend)** — articles now sync from `content/feed.json` served straight from the public GitHub repo (raw.githubusercontent.com). Publishing a guide is a commit to that file; content-only pushes skip the release workflow. Remote items override bundled ones by id and invalid items are dropped; offline the bundled 44 articles remain. First feed: city guides for Kyoto, Sydney and Bali (en/cs/de). Replaces the never-configured Sanity client.
 - **City guide button** — a destination card links to its article (`destination-<id>`) when one exists, bundled or synced.
