@@ -165,7 +165,7 @@ export default function RelaxScreen() {
 	const toggleSoundscape = (scape: SoundscapeDef) => {
 		haptic.tap();
 		const isStoppingActiveSoundscape = activeSoundId === scape.id;
-		playSound(scape.id, scape.labelKey, scape.source);
+		playSound(scape.id, scape.labelKey, scape.source, t(scape.labelKey));
 		markSoundPlayed(scape.id);
 		captureAnalyticsEvent(
 			isStoppingActiveSoundscape ? "audio_stop" : "audio_play",
