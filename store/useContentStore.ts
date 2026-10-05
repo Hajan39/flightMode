@@ -1,4 +1,3 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -7,6 +6,7 @@ import { useSettingsStore } from "@/store/useSettingsStore";
 import type { ContentItem } from "@/types/content";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { fetchSyncedContent, hasContentSyncEndpoint } from "@/utils/contentSync";
+import { fileStorage } from "@/utils/fileStorage";
 
 const CONTENT_SYNC_MIN_INTERVAL_MS = 30 * 60 * 1000;
 
@@ -104,7 +104,8 @@ export const useContentStore = create<ContentState>()(
 		}),
 		{
 			name: "content_sync",
-			storage: createJSONStorage(() => AsyncStorage),
+			// The feed can grow past what Android AsyncStorage can hold — keep it in a file.
+			storage: createJSONStorage(() => fileStorage),
 			partialize: (state) => ({
 				items: state.items,
 				version: state.version,
