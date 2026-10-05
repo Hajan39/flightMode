@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { useState } from "react";
 import {
 	Alert,
@@ -10,6 +10,8 @@ import {
 	StyleSheet,
 	TextInput,
 } from "react-native";
+
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -138,6 +140,7 @@ export default function FlightEditScreen() {
 	const existingFlight = useFlightStore((s) => s.flight);
 	const incrementFlights = useAchievementStore((s) => s.incrementFlights);
 	const isEditingFlight = Boolean(existingFlight);
+	const insets = useSafeAreaInsets();
 	const initialDepartureTime = existingFlight?.departureTime ?? Date.now();
 
 	const [hours, setHours] = useState(
@@ -299,8 +302,12 @@ export default function FlightEditScreen() {
 			behavior={Platform.OS === "ios" ? "padding" : "height"}
 			keyboardVerticalOffset={Platform.OS === "ios" ? 96 : 24}
 		>
+			<Stack.Screen
+				options={{ title: isEditingFlight ? t("stackEditFlight") : t("addYourFlight") }}
+			/>
 			<ScrollView
-				contentContainerStyle={styles.scrollContent}
+				// Edge-to-edge: keep the CTA above the system navigation bar.
+				contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom }]}
 				keyboardShouldPersistTaps="handled"
 			>
 				<View style={styles.container}>
