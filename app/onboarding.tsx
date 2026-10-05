@@ -88,7 +88,8 @@ function HomeCurrencyPicker() {
 		<CurrencyPicker
 			selected={selected}
 			onSelect={setHomeCurrency}
-			chipCodes={POPULAR_CURRENCIES}
+			// Selected (device) currency first — the chip row scrolls, so CZK etc. would be off-screen.
+			chipCodes={[selected, ...POPULAR_CURRENCIES.filter((c) => c !== selected)]}
 		/>
 	);
 }
@@ -261,6 +262,9 @@ export default function OnboardingScreen() {
 						finish();
 					} else {
 						haptic.tap();
+						// Android fires onMomentumScrollEnd late (or not at all) for a
+						// programmatic scroll — update the index here so dots + CTA follow.
+						setActiveIndex(activeIndex + 1);
 						scrollRef.current?.scrollTo({
 							x: (activeIndex + 1) * SCREEN_WIDTH,
 							animated: true,

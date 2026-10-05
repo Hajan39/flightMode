@@ -9,6 +9,9 @@ import { fetchSyncedContent, hasContentSyncEndpoint } from "@/utils/contentSync"
 import { fileStorage } from "@/utils/fileStorage";
 
 const CONTENT_SYNC_MIN_INTERVAL_MS = 30 * 60 * 1000;
+/** After a failure, wait before retrying — the bootstrap effect re-runs on every status change. */
+const RETRY_AFTER_FAILURE_MS = 5 * 60 * 1000;
+let lastFailureAt = 0;
 
 type ContentSyncStatus = "idle" | "syncing" | "success" | "error" | "skipped";
 
@@ -52,6 +55,8 @@ export const useContentStore = create<ContentState>()(
 					return;
 				}
 
+				if (Date.now() - lastFailureAt < RETRY_AFTER_FAILURE_MS) return;
+
 				set({ status: "syncing", lastError: null });
 				captureAnalyticsEvent("content_sync_start", {
 					current_version: state.version,
@@ -89,6 +94,7 @@ export const useContentStore = create<ContentState>()(
 				} catch (error) {
 					const message =
 						error instanceof Error ? error.message : "Unknown content sync error";
+					lastFailureAt = Date.now();
 					set({ status: "error", lastError: message });
 					captureAnalyticsEvent("content_sync_failed", { reason: message });
 				}
