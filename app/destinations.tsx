@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -11,6 +11,7 @@ import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
 import { destinations } from "@/data/destinations";
 import { getPhraseLanguage } from "@/data/phrases";
+import { useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export default function DestinationsScreen() {
@@ -24,6 +25,8 @@ export default function DestinationsScreen() {
 			? focus
 			: (destinations[0]?.id ?? null);
 	const [expandedId, setExpandedId] = useState<string | null>(focusedId);
+	const articles = useContentItems();
+	const guideIds = useMemo(() => new Set(articles.map((a) => a.id)), [articles]);
 
 	const toggle = (id: string) => {
 		setExpandedId((current) => (current === id ? null : id));
@@ -134,6 +137,20 @@ export default function DestinationsScreen() {
 											</View>
 										</View>
 									))}
+									{guideIds.has(`destination-${destination.id}`) ? (
+										<Pressable
+											style={[styles.toolBtn, styles.guideBtn, { borderColor: theme.tint, backgroundColor: theme.accentSoft }]}
+											onPress={() =>
+												router.push(`/content/destination-${destination.id}` as never)
+											}
+											accessibilityRole="button"
+										>
+											<Ionicons name="book-outline" size={16} color={theme.tint} />
+											<Text style={[styles.toolText, { color: theme.text }]} numberOfLines={1}>
+												{t("destinationsGuideCta", { city: destination.city })}
+											</Text>
+										</Pressable>
+									) : null}
 									<View
 										style={styles.toolsRow}
 										lightColor="transparent"
@@ -278,6 +295,7 @@ const styles = StyleSheet.create({
 		paddingVertical: Spacing.sm + 2,
 		paddingHorizontal: Spacing.sm,
 	},
+	guideBtn: { flex: 0, marginTop: Spacing.md },
 	toolText: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold, flexShrink: 1 },
 	tipLabel: {
 		fontSize: FontSize.base,

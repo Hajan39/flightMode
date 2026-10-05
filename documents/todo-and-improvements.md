@@ -9,7 +9,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 - ~~sjednotit 8 multiplayer her na sdilene komponenty + design tokeny~~ — hotovo 2026-09-13 (`components/multiplayer/`, `recordMatch` konvence)
 - ~~fallback clanku na EN pro jazyky bez lokalizace~~ — hotovo 2026-09-13
-- **doplnit realny support e-mail v `app/settings.tsx`** (stale placeholder `support@eon-app.com`)
+- ~~support e-mail~~ — hotovo 2026-10-05: `flightmode.app@proton.me` (settings + privacy policy); stejnou adresu nastavit jako kontakt vyvojare v Play Console
 - **Expo SDK 57**: overit EAS preview build (`--profile preview`) na zarizeni pred rolloutem Play draftu — reanimated 4.5 layout animace, `withPlayGames` plugin, notifikace, audio
 - Travel tools follow-upy: bundlovane kurzy v `data/currencies.ts` jsou jen offline baseline (live sync z open.er-api.com), presto `ratesAsOf` obcas obnovit; `utcOffsetMinutes` fallback ignoruje DST (Intl cesta je DST-aware); zvazit per-destinaci polozky checklistu; pridat `zh` do frazniku (dnes 24 jazyku destinaci, cinstina chybi, protoze zadna bundlovana destinace neni v Cine)
 - Nove MP hry: otestovat `split-duel` otoceny panel na Androidu i iOS (transform 180° + hit-testing) — jedina vec, kterou nelze overit bez zarizeni
@@ -36,6 +36,8 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 - doladit Games discovery podle realneho pouzivani po prvni implementaci intent filtru: quick, play together, longer/deep
 - zkontrolovat, ze analytics payloady neobsahuji flight number, presnou lokaci, email, jmeno ani volny text
 - rozhodnout, jestli PostHog SDK offline persistence staci, nebo jestli pridat vlastni SQLite event queue
+
+- online feed `content/feed.json`: doplnit pruvodce pro zbyvajicich ~18 destinaci bez clanku (mexico-city, cape-town, buenos-aires, toronto, rio, hanoi, stockholm, delhi, osaka, zurich, lima, nairobi, vancouver, kuala-lumpur, doha, warsaw, san-francisco, auckland); obrazky jen s overenymi URL
 
 ### P1 (blizsi iterace)
 

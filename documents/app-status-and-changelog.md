@@ -34,7 +34,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - relax: breathing + ambient audio + sleep timer
 - PostHog SDK foundation pro anonymni produktovou analytiku, pokud je nakonfigurovany `EXPO_PUBLIC_POSTHOG_KEY`
 - Expo Network foundation pro online/offline stav v root bootstrapu
-- article sync foundation: remote JSON/Strapi-compatible endpoint pres env, persisted cache, fallback na bundled `data/content.json`
+- article sync: staticky feed `content/feed.json` z verejneho GitHub repa (zdarma, bez backendu), persisted cache, fallback na bundled `data/content.json`; karta destinace odkazuje na clanek `destination-<id>`
 - zakladni eventy: `app_open`, `onboarding_complete`, `flight_added`, `flight_edited`, `game_start`, `game_finish`, `article_open`, `article_finish`, `relax_start`, `relax_finish`, `audio_play`, `audio_stop`, `settings_open`, `profile_open`, `home_action_open`, `home_recommendation_open`, `content_search_changed`, `content_filter_changed`, `content_sort_changed`, `network_status_changed`, `content_sync_start`, `content_sync_success`, `content_sync_failed`
 - retention eventy: `second_session_started`, `first_session_completed`, `flight_setup_completed`
 - reminder eventy: `reminder_scheduled`, `reminder_permission_denied`, `reminder_opened`
@@ -129,6 +129,12 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - advanced personalization
 
 ## 4. Changelog
+
+## 2026-10-05
+
+- clanky se synchronizuji z `content/feed.json` (raw.githubusercontent.com, nula nakladu); Sanity klient (nikdy nenakonfigurovany) odstranen
+- prvni online pruvodci: Kjoto, Sydney, Bali (en/cs/de); tlacitko "Pruvodce" na karte destinace
+- `release-main.yml` ignoruje `content/**`, publikace clanku nespousti release
 
 ## 2026-09-14
 

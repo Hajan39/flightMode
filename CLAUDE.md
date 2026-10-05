@@ -148,9 +148,9 @@ Multiplayer (pass-and-play / shared-screen) components in `components/multiplaye
 
 44 bundled articles in `data/content.json` (all in en/cs/de; the 14 Travel Tips + Health ones also in es/fr/it/pl/pt). Served through `hooks/useContentItems.ts` which merges bundled data with optional remote sync cache (`store/useContentStore.ts`).
 
-Remote endpoint is optional via `EXPO_PUBLIC_STRAPI_CONTENT_URL` or `EXPO_PUBLIC_CONTENT_SYNC_URL`; app is fully offline without it. Sync respects `syncNetworkPolicy` (wifi_only / wifi_and_mobile / off) and has a 30-minute cooldown between syncs.
+Remote articles come from **`content/feed.json`** (`{ version, items: ContentItem[] }`) fetched from raw.githubusercontent.com on `main` (override via `EXPO_PUBLIC_CONTENT_FEED_URL`). Publishing = commit to that file and bump `version`; `release-main.yml` ignores `content/**`, and `__tests__/content.test.ts` validates the feed in CI. App is fully offline without it. Sync respects `syncNetworkPolicy` (wifi_only / wifi_and_mobile / off) and has a 30-minute cooldown between syncs.
 
-`utils/contentSync.ts` handles fetch + normalization of both Strapi and generic JSON schemas.
+`utils/contentSync.ts` fetches and validates the feed (`parseContentFeed`); invalid items are dropped, remote items override bundled ones by id. Destination articles use the id `destination-<destinationId>` and are linked from the destination card.
 
 ## Achievements
 
@@ -241,7 +241,7 @@ Goal: user opens app *before* the flight.
 Goal: automatic behavior — "I'm flying → I open FlightMode"
 - Streaks, daily challenges
 - Better personalization
-- Content updates via Strapi
+- Content updates via the `content/feed.json` feed
 
 **Phase 4 — Monetization**
 Only after retention is proven.

@@ -77,3 +77,32 @@ describe("article translations", () => {
 		}
 	});
 });
+
+describe("remote content feed (content/feed.json)", () => {
+	// eslint-disable-next-line @typescript-eslint/no-require-imports
+	const feed = require("../content/feed.json") as { version: string; items: ContentItem[] };
+	// eslint-disable-next-line @typescript-eslint/no-require-imports
+	const { parseContentFeed } = require("@/utils/contentSync");
+
+	test("every feed item passes the app's own validation", () => {
+		const parsed = parseContentFeed(feed, null);
+		expect(parsed.items).toHaveLength(feed.items.length);
+	});
+
+	test("feed items are localized in en/cs/de with unique ids", () => {
+		expect(new Set(feed.items.map((a) => a.id)).size).toBe(feed.items.length);
+		for (const a of feed.items) {
+			for (const lang of ["en", "cs", "de"]) {
+				expect(a.title[lang]?.trim()).toBeTruthy();
+				expect(a.body[lang]?.trim()).toBeTruthy();
+			}
+		}
+	});
+
+	test("an unchanged version is a no-op and malformed items are dropped", () => {
+		expect(parseContentFeed(feed, feed.version)).toBeNull();
+		const parsed = parseContentFeed({ version: "x", items: [feed.items[0], { id: "broken" }] }, null);
+		expect(parsed.items.map((a: ContentItem) => a.id)).toEqual([feed.items[0].id]);
+		expect(() => parseContentFeed({ items: [] }, null)).toThrow();
+	});
+});

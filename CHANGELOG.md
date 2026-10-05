@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **Live article feed (free, no backend)** — articles now sync from `content/feed.json` served straight from the public GitHub repo (raw.githubusercontent.com). Publishing a guide is a commit to that file; content-only pushes skip the release workflow. Remote items override bundled ones by id and invalid items are dropped; offline the bundled 44 articles remain. First feed: city guides for Kyoto, Sydney and Bali (en/cs/de). Replaces the never-configured Sanity client.
+- **City guide button** — a destination card links to its article (`destination-<id>`) when one exists, bundled or synced.
 - **Turbulence Test** (catalog 40 → 41) — the app's first motion game: hold the phone flat and keep a ball inside a ring that shrinks while random turbulence gusts push it around. Solo high score or pass-and-play for up to 6. Adds `expo-sensors` (iOS motion permission declared via the config plugin) and degrades to an explanatory screen where no accelerometer exists. New achievement: Steady Hands.
 - **Post-landing mode** — for 48 h after arrival Home leads with a "You've landed in {city}" card (destination local time, one-tap phrasebook / converter / arrival tips) followed by the checklist and travel tools; games move below. Driven by `utils/flightPhase.ts` (`none | preflight | inflight | landed`).
 - **Jet-lag sleep reminder** — a local notification 10 minutes before the suggested on-plane sleep window, scheduled when the flight is saved and cancelled when it's cleared.
@@ -38,6 +40,7 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- Settings: bug-report / feature-suggestion mails went to the template placeholder `support@eon-app.com`; they now go to `flightmode.app@proton.me` (also the privacy-policy contact).
 - Android: blocked the unused `ACTIVITY_RECOGNITION` permission that `expo-sensors` merges into the manifest for its Pedometer API. FlightMode only reads the accelerometer (Turbulence Test), which needs no permission — so the entry is stripped via `blockedPermissions`, and no Play Console permission declaration is needed.
 - Day streak used the UTC date — now uses the device's local calendar day (travellers no longer lose a streak at UTC midnight).
 - "Screen not found" page and the flight-ready notification were hardcoded English — now translated.
