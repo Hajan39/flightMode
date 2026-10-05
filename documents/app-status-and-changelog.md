@@ -140,7 +140,8 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - Letovy pas v profilu: razitko za kazdy odletany let + soucty (lety, hodiny ve vzduchu, mesta, zeme) a sdileni textoveho souhrnu s odkazem na Play Store; historie letu v `useFlightStore.log`
 
 - clanky se synchronizuji z `content/feed.json` (raw.githubusercontent.com, nula nakladu); Sanity klient (nikdy nenakonfigurovany) odstranen
-- prvni online pruvodci: Kjoto, Sydney, Bali (en/cs/de); tlacitko "Pruvodce" na karte destinace
+- online feed: 365 pruvodcu mesty (en/cs/de) — vsech 44 destinaci + hlavni mesta a druha mesta Evropy, Afriky, Ameriky a Karibiku, Asie a Oceanie; tlacitko "Pruvodce" na karte destinace
+- cache synchronizovanych clanku je v souboru (`utils/fileStorage.ts`), ne v AsyncStorage (Android limit ~2 MB na hodnotu)
 - `release-main.yml` ignoruje `content/**`, publikace clanku nespousti release
 
 ## 2026-09-14
