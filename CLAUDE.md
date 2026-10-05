@@ -60,7 +60,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `constants/Spacing.ts` — `Spacing` (xs–4xl) and `Radius` and `Shadow` presets
 - `constants/Typography.ts` — `FontSize`, `FontWeight`, `TextStyle` presets (statLabel, cardTitle, buttonPrimary, etc.)
 
-Four theme modes: `system / light / dark / crazy`. No NativeWind.
+Theme modes: `system / light / dark / crazy` (free) + `midnight / sunset` (Plus). No NativeWind.
 
 **Localization:** `hooks/useTranslation.ts` → `i18n/locales/*.ts`. 12 languages (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`). Language preference order: stored > system > en. Content (`data/content.json`): all 44 articles in `en/cs/de`, the 14 Travel Tips + Health ones also in `es/fr/it/pl/pt`; other languages render articles in English with an `EN` badge (`hasLanguage()` in `hooks/useContentItems.ts`). Destination tip labels are localized via `labelKey`; tip text stays English.
 

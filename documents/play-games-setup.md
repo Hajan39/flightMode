@@ -10,7 +10,7 @@ Cloud accounts and a native dev build — things that can't be done from the rep
 | File | Role |
 |---|---|
 | `utils/playGames.ts` | Guarded wrapper: silent sign-in + `unlockPlayGamesAchievement()`. No-op when no native module is linked. |
-| `data/playGamesAchievements.ts` | `localAchievementId → Play ID` map (all 30 achievements, values currently `null`). |
+| `data/playGamesAchievements.ts` | `localAchievementId → Play ID` map (all 48 achievements, values currently `null`). |
 | `store/useAchievementStore.ts` | Fire-and-forget push to PGS after each local unlock. |
 | `components/PlayGamesBootstrap.tsx` | Kicks off silent sign-in on launch (mounted in `app/_layout.tsx`). |
 | `plugins/withPlayGames.js` | Expo config plugin: adds the `app_id` string, the manifest metadata, **and the `play-services-games-v2` gradle dependency** (links the SDK into the AAB). Wired in `app.json` with the real app id `944569415010`. |
@@ -40,10 +40,18 @@ the source of truth; PGS is a best-effort mirror.
 
 ## Step 3 — Define the achievements
 
-In Play Games Services → **Achievements**, create one achievement per row of
-`data/playGamesAchievements.ts` (30 total). Titles/descriptions can mirror our
-i18n strings. Each gets a `CgkI...` id — paste it as the value for the matching
-local id:
+Don't type them by hand — generate the bulk-import package (all 48 achievements,
+English default + 11 localizations, 20 points each = 960 ≤ 1000 cap):
+
+```bash
+node scripts/export-pgs-achievements.js        # → build/pgs-achievements/*.csv + build/pgs-achievements-ids.txt
+# zip the two CSVs (no folder inside the zip), e.g. PowerShell:
+Compress-Archive build/pgs-achievements/*.csv build/pgs-achievements.zip -Force
+```
+
+Play Games Services → **Achievements → Import achievements** → upload the zip.
+Each achievement then gets a `CgkI...` id — paste it as the value for the matching
+local id (`build/pgs-achievements-ids.txt` maps local id ↔ English name):
 
 ```ts
 // data/playGamesAchievements.ts

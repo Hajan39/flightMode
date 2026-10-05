@@ -715,7 +715,7 @@
 	achieveGameExplorerTitle: "Explorateur de jeux",
 	achieveGameExplorerDesc: "Joue à 5 jeux différents",
 	achieveGameMasterTitle: "Maître des jeux",
-	achieveGameMasterDesc: "Joue aux 13 jeux",
+	achieveGameMasterDesc: "Joue à 13 jeux différents",
 	achieveMarathonTitle: "Marathon",
 	achieveMarathonDesc: "Joue 50 jeux au total",
 	achieveHighScorerTitle: "Meilleur score",

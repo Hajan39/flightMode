@@ -682,7 +682,7 @@
 	achieveGameExplorerTitle: "게임 탐험가",
 	achieveGameExplorerDesc: "5가지 게임 플레이",
 	achieveGameMasterTitle: "게임 마스터",
-	achieveGameMasterDesc: "13게임 모두 플레이",
+	achieveGameMasterDesc: "13가지 게임 플레이",
 	achieveMarathonTitle: "마라톤",
 	achieveMarathonDesc: "총 50회 플레이",
 	achieveHighScorerTitle: "하이스코어러",

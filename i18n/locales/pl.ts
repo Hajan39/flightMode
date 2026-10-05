@@ -699,7 +699,7 @@
 	achieveGameExplorerTitle: "Odkrywca gier",
 	achieveGameExplorerDesc: "Zagraj w 5 różnych gier",
 	achieveGameMasterTitle: "Mistrz gier",
-	achieveGameMasterDesc: "Zagraj we wszystkie 13 gier",
+	achieveGameMasterDesc: "Zagraj w 13 różnych gier",
 	achieveMarathonTitle: "Maraton",
 	achieveMarathonDesc: "Zagraj łącznie 50 gier",
 	achieveHighScorerTitle: "Rekordzista",

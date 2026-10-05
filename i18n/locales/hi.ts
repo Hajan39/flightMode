@@ -680,7 +680,7 @@
 	achieveGameExplorerTitle: "खेल खोजी",
 	achieveGameExplorerDesc: "5 अलग-अलग खेल खेलें",
 	achieveGameMasterTitle: "खेल मास्टर",
-	achieveGameMasterDesc: "सभी 13 खेल खेलें",
+	achieveGameMasterDesc: "13 अलग-अलग खेल खेलें",
 	achieveMarathonTitle: "मैराथन",
 	achieveMarathonDesc: "कुल 50 खेल खेलें",
 	achieveHighScorerTitle: "हाई स्कोरर",

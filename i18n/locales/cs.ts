@@ -759,7 +759,7 @@ export const cs = {
 	achieveGameExplorerTitle: "Průzkumník her",
 	achieveGameExplorerDesc: "Zahraj 5 různých her",
 	achieveGameMasterTitle: "Mistr her",
-	achieveGameMasterDesc: "Zahraj všech 13 her",
+	achieveGameMasterDesc: "Zahraj 13 různých her",
 	achieveMarathonTitle: "Maraton",
 	achieveMarathonDesc: "Odehraj 50 her celkem",
 	achieveHighScorerTitle: "Rekordman",

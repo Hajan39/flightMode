@@ -763,7 +763,7 @@ export const en = {
 	achieveGameExplorerTitle: "Game Explorer",
 	achieveGameExplorerDesc: "Play 5 different games",
 	achieveGameMasterTitle: "Game Master",
-	achieveGameMasterDesc: "Play all 13 games",
+	achieveGameMasterDesc: "Play 13 different games",
 	achieveMarathonTitle: "Marathon",
 	achieveMarathonDesc: "Play 50 games total",
 	achieveHighScorerTitle: "High Scorer",

@@ -687,7 +687,7 @@
 	achieveGameExplorerTitle: "ゲーム探検家",
 	achieveGameExplorerDesc: "5種類のゲームをプレイ",
 	achieveGameMasterTitle: "ゲームマスター",
-	achieveGameMasterDesc: "13種類全てをプレイ",
+	achieveGameMasterDesc: "13種類のゲームをプレイ",
 	achieveMarathonTitle: "マラソン",
 	achieveMarathonDesc: "合計50回プレイ",
 	achieveHighScorerTitle: "ハイスコアラー",

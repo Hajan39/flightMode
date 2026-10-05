@@ -46,3 +46,6 @@ yarn-error.*
 
 # stray tsc output
 tsc-errors.txt
+
+# Generated Play Games achievements import (scripts/export-pgs-achievements.js)
+/build/pgs-achievements*

@@ -717,7 +717,7 @@
 	achieveGameExplorerTitle: "Spiele-Entdecker",
 	achieveGameExplorerDesc: "Spiele 5 verschiedene Spiele",
 	achieveGameMasterTitle: "Spiele-Meister",
-	achieveGameMasterDesc: "Spiele alle 13 Spiele",
+	achieveGameMasterDesc: "Spiele 13 verschiedene Spiele",
 	achieveMarathonTitle: "Marathon",
 	achieveMarathonDesc: "Spiele insgesamt 50 Spiele",
 	achieveHighScorerTitle: "Highscorer",

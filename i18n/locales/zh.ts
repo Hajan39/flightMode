@@ -678,7 +678,7 @@
 	achieveGameExplorerTitle: "游戏探索者",
 	achieveGameExplorerDesc: "玩5种不同游戏",
 	achieveGameMasterTitle: "游戏大师",
-	achieveGameMasterDesc: "玩全邐13种游戏",
+	achieveGameMasterDesc: "玩13种不同游戏",
 	achieveMarathonTitle: "马拉松",
 	achieveMarathonDesc: "总共玩50局",
 	achieveHighScorerTitle: "高分王",
