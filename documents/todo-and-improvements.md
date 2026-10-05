@@ -37,7 +37,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 - zkontrolovat, ze analytics payloady neobsahuji flight number, presnou lokaci, email, jmeno ani volny text
 - rozhodnout, jestli PostHog SDK offline persistence staci, nebo jestli pridat vlastni SQLite event queue
 
-- online feed `content/feed.json`: doplnit pruvodce pro zbyvajicich ~18 destinaci bez clanku (mexico-city, cape-town, buenos-aires, toronto, rio, hanoi, stockholm, delhi, osaka, zurich, lima, nairobi, vancouver, kuala-lumpur, doha, warsaw, san-francisco, auckland); obrazky jen s overenymi URL
+- online feed `content/feed.json`: pruvodci ke vsem 44 destinacim hotovi (21 ve feedu); dalsi vlna: vsechny staty Evropy/Afriky (hlavni mesto + 1), Amerika + Karibik, Oceanie + Pacifik, Asie (vic mest na stat)
 
 - **Play Billing — co je treba udelat v Play Console (bez toho nakupy nefunguji):** (1) Nastaveni > Platebni profil: zalozit merchant ucet (zdarma); (2) Monetizace > Produkty > Jednorazove produkty: vytvorit `flightmode_plus` (doporuceno ~3,99 EUR) a `tip_small` / `tip_medium` / `tip_large` (napr. 1,99 / 4,99 / 9,99 EUR), aktivovat; (3) nahrat build s `expo-iap` (build lane) do Internal testing a pridat license testery; (4) overit nakup, obnoveni na druhem zarizeni a opakovane spropitne. Do Data safety doplnit "Purchase history" (zpracovava Google).
 - Plus follow-upy (jen nove veci, nic nezamykat): expertni level packy pro runway-jam / nonogram / sun-moon, dalsi ambientni zvuky, alternativni ikona aplikace
