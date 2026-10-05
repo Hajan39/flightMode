@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **App version 1.4.0 → 1.5.0** — `expo-iap` and `expo-store-review` are new native modules; `runtimeVersion` follows the app version, so 1.5.0 OTAs never reach a 1.4.0 binary without them.
+
 - **FlightMode Plus + tip jar (Google Play Billing, `expo-iap`)** — new `app/plus.tsx` (Settings → "FlightMode Plus & tips") replaces the external Buy Me a Coffee link. Plus is a one-time purchase (`flightmode_plus`) that unlocks two new themes (Midnight true-black, Sunset) and a profile badge; three consumable tips (`tip_small`/`tip_medium`/`tip_large`) unlock nothing. Nothing that was free becomes paid. Entitlement is cached in `store/useSupporterStore.ts` (works offline) and restored on launch via `components/BillingBootstrap.tsx`; every billing call is a guarded no-op in Expo Go / web. **Native change → build lane.**
 - **In-app review prompt** (`expo-store-review`) — after a new best score, for users with 3+ app opens, at most once per 60 days (`utils/reviewPrompt.ts`). **Native change → build lane.**
 - **Sudoku never repeats** — every game is a fresh variant of one of the 15 verified puzzles (digit relabelling, row/column/band/stack permutation, transpose). Validity, the unique solution and the difficulty are preserved by construction, so there's no solver and no new puzzle data.
