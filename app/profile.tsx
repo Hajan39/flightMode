@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
+import PassportSection from "@/components/PassportSection";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -90,6 +91,10 @@ export default function ProfileScreen() {
 							theme={theme}
 						/>
 					</View>
+				</Animated.View>
+
+				<Animated.View entering={FadeInDown.delay(100).springify()}>
+					<PassportSection />
 				</Animated.View>
 
 				{/* ── Achievements Grid ── */}

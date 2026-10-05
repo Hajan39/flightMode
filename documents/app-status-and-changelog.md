@@ -132,6 +132,8 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-10-05
 
+- Letovy pas v profilu: razitko za kazdy odletany let + soucty (lety, hodiny ve vzduchu, mesta, zeme) a sdileni textoveho souhrnu s odkazem na Play Store; historie letu v `useFlightStore.log`
+
 - clanky se synchronizuji z `content/feed.json` (raw.githubusercontent.com, nula nakladu); Sanity klient (nikdy nenakonfigurovany) odstranen
 - prvni online pruvodci: Kjoto, Sydney, Bali (en/cs/de); tlacitko "Pruvodce" na karte destinace
 - `release-main.yml` ignoruje `content/**`, publikace clanku nespousti release
