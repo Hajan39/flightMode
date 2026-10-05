@@ -132,6 +132,9 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-10-05
 
+- FlightMode Plus (jednorazovy nakup) + spropitne pres Google Play Billing (`expo-iap`), obrazovka `app/plus.tsx` nahrazuje externi odkaz Buy Me a Coffee; Plus odemyka temata Midnight/Sunset a odznak v profilu, nic z free verze se nezamyka
+- vyzva k hodnoceni v Google Play po novem rekordu (3+ otevreni, max 1x za 60 dni)
+
 - sudoku: kazda hra je nahodna symetricka varianta jednoho z 15 overenych puzzlu (nekonecno variant, stejna obtiznost)
 
 - Letovy pas v profilu: razitko za kazdy odletany let + soucty (lety, hodiny ve vzduchu, mesta, zeme) a sdileni textoveho souhrnu s odkazem na Play Store; historie letu v `useFlightStore.log`

@@ -51,6 +51,7 @@
           "motionPermission": "FlightMode uses device motion only while you play the tilt game. Nothing is recorded or sent anywhere."
         }
       ],
+      "expo-iap",
       "./plugins/withPlayGames"
     ],
     "experiments": {

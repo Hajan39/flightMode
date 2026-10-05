@@ -1,8 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
+import { useRouter } from "expo-router";
 import { type ReactNode, useEffect, useRef } from "react";
 import {
-	AppState,
 	Linking,
 	Pressable,
 	ScrollView,
@@ -27,7 +27,6 @@ import {
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 const SUPPORT_EMAIL = "flightmode.app@proton.me";
-const BMAC_URL = "https://buymeacoffee.com/dszwy4b";
 const appVersion = Constants.expoConfig?.version ?? "1.0.0";
 
 const syncOptions: Array<{
@@ -73,8 +72,7 @@ export default function SettingsScreen() {
 	const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
 	const setAnalyticsEnabled = useSettingsStore((s) => s.setAnalyticsEnabled);
 	const hasTrackedOpenRef = useRef(false);
-	const supportClickTimestampRef = useRef<number | null>(null);
-	const appStateRef = useRef(AppState.currentState);
+	const router = useRouter();
 
 	const handleSyncPolicyChange = (policy: SyncNetworkPolicy) => {
 		setSyncNetworkPolicy(policy);
@@ -82,12 +80,7 @@ export default function SettingsScreen() {
 	};
 
 	const handleSupportOpen = () => {
-		supportClickTimestampRef.current = Date.now();
-		captureAnalyticsEvent("support_clicked", {
-			placement: "settings",
-			provider: "buymeacoffee",
-		});
-		void Linking.openURL(BMAC_URL);
+		router.push("/plus" as never);
 	};
 
 	useEffect(() => {
@@ -97,36 +90,7 @@ export default function SettingsScreen() {
 		captureAnalyticsEvent("settings_open", {
 			sync_network_policy: syncNetworkPolicy,
 		});
-		captureAnalyticsEvent("support_opened", {
-			placement: "settings",
-			provider: "buymeacoffee",
-		});
 	}, [syncNetworkPolicy]);
-
-	useEffect(() => {
-		const subscription = AppState.addEventListener("change", (nextState) => {
-			const previousState = appStateRef.current;
-			appStateRef.current = nextState;
-
-			const supportClickTimestamp = supportClickTimestampRef.current;
-			const returnedToApp =
-				previousState !== "active" &&
-				nextState === "active" &&
-				supportClickTimestamp !== null;
-
-			if (!returnedToApp) return;
-
-			captureAnalyticsEvent("support_completed", {
-				placement: "settings",
-				provider: "buymeacoffee",
-				completion_signal: "returned_to_app",
-				seconds_away: Math.round((Date.now() - supportClickTimestamp) / 1000),
-			});
-			supportClickTimestampRef.current = null;
-		});
-
-		return () => subscription.remove();
-	}, []);
 
 	return (
 		<SafeAreaView
@@ -366,7 +330,7 @@ export default function SettingsScreen() {
 								lightColor="transparent"
 								darkColor="transparent"
 							>
-								<Ionicons name="cafe-outline" size={20} color={theme.tint} />
+								<Ionicons name="airplane-outline" size={20} color={theme.tint} />
 								<Text style={styles.supportRowTitle}>
 									{t("settingsBecomeSupporter")}
 								</Text>

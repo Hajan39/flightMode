@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-export type ThemeMode = "system" | "light" | "dark" | "crazy";
+export type ThemeMode = "system" | "light" | "dark" | "crazy" | "midnight" | "sunset";
 export type SyncNetworkPolicy = "wifi_only" | "wifi_and_mobile" | "off";
 
 type SettingsState = {
@@ -19,6 +19,8 @@ type SettingsState = {
 	preferredCategories: GameCategory[];
 	/** ISO 4217 code the converter starts from; null = derive from the device locale. */
 	homeCurrency: string | null;
+	/** Last time we asked Google Play for an in-app review (ms); null = never. */
+	lastReviewPromptAt: number | null;
 	completeOnboarding: () => void;
 	incrementAppOpenCount: () => number;
 	markFirstSessionCompleted: () => void;
@@ -29,6 +31,7 @@ type SettingsState = {
 	setAnalyticsEnabled: (enabled: boolean) => void;
 	togglePreferredCategory: (category: GameCategory) => void;
 	setHomeCurrency: (code: string) => void;
+	markReviewPrompted: () => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -43,6 +46,7 @@ export const useSettingsStore = create<SettingsState>()(
 			analyticsEnabled: true,
 			preferredCategories: [] as GameCategory[],
 			homeCurrency: null as string | null,
+			lastReviewPromptAt: null as number | null,
 			completeOnboarding: () => set({ isFirstLaunch: false }),
 			incrementAppOpenCount: () => {
 				let nextCount = 1;
@@ -59,6 +63,7 @@ export const useSettingsStore = create<SettingsState>()(
 			setSyncNetworkPolicy: (syncNetworkPolicy) => set({ syncNetworkPolicy }),
 			setHomeCurrency: (code) => set({ homeCurrency: code.toUpperCase() }),
 			setAnalyticsEnabled: (analyticsEnabled) => set({ analyticsEnabled }),
+			markReviewPrompted: () => set({ lastReviewPromptAt: Date.now() }),
 			togglePreferredCategory: (category) =>
 				set((state) => ({
 					preferredCategories: state.preferredCategories.includes(category)

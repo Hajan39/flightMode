@@ -14,6 +14,7 @@ import { useProfileStats } from "@/hooks/useProfileStats";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useSupporterStore } from "@/store/useSupporterStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 export default function ProfileScreen() {
@@ -23,6 +24,7 @@ export default function ProfileScreen() {
 	const stats = useProfileStats();
 	const unlockedIds = useAchievementStore((s) => s.unlockedIds);
 	const clearNewUnlocked = useAchievementStore((s) => s.clearNewUnlocked);
+	const plus = useSupporterStore((s) => s.plus);
 
 	useEffect(() => {
 		clearNewUnlocked();
@@ -47,6 +49,14 @@ export default function ProfileScreen() {
 			>
 				{/* ── Stats Cards ── */}
 				<Animated.View entering={FadeInDown.duration(400).springify()}>
+					{plus ? (
+						<View style={[styles.plusBadge, { borderColor: theme.tint, backgroundColor: theme.accentSoft }]}>
+							<Ionicons name="ribbon" size={16} color={theme.tint} />
+							<Text style={[styles.plusBadgeText, { color: theme.text }]}>
+								{t("profilePlusBadge")}
+							</Text>
+						</View>
+					) : null}
 					<Text style={[styles.sectionTitle, { color: theme.text }]}>
 						{t("profileStats")}
 					</Text>
@@ -256,6 +266,18 @@ const styles = StyleSheet.create({
 	safeArea: { flex: 1 },
 	container: { flex: 1 },
 	content: { padding: 16, paddingBottom: 40 },
+	plusBadge: {
+		flexDirection: "row",
+		alignItems: "center",
+		alignSelf: "flex-start",
+		gap: 6,
+		borderWidth: 1,
+		borderRadius: 999,
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		marginTop: 12,
+	},
+	plusBadgeText: { fontSize: 13, fontWeight: "700" },
 	sectionTitle: {
 		fontSize: 18,
 		fontWeight: "700",

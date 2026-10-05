@@ -4,7 +4,7 @@
  */
 import { Text as DefaultText, View as DefaultView } from "react-native";
 
-import { useColorScheme } from "./useColorScheme";
+import { baseScheme, useColorScheme } from "./useColorScheme";
 
 import Colors from "@/constants/Colors";
 
@@ -24,7 +24,7 @@ export function useThemeColor(
 		keyof typeof Colors.crazy,
 ) {
 	const theme = useColorScheme();
-	const colorFromProps = props[theme];
+	const colorFromProps = props[baseScheme(theme)];
 
 	if (colorFromProps) {
 		return colorFromProps;

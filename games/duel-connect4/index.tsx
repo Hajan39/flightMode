@@ -18,7 +18,7 @@ import {
 	TurnBanner,
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
-import { useColorScheme } from "@/components/useColorScheme";
+import { baseScheme, useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { TextStyle } from "@/constants/Typography";
@@ -212,8 +212,8 @@ export default function DuelConnect4Game() {
 			: winner === "draw"
 				? t("mpRoundDraw")
 				: t("mpWinsRound", { player: players[winner].name });
-	const boardBg = colorScheme === "dark" ? "#1a237e" : "#283593";
-	const holeBg = colorScheme === "dark" ? "#0d1236" : "#e8eaf6";
+	const boardBg = baseScheme(colorScheme) === "dark" ? "#1a237e" : "#283593";
+	const holeBg = baseScheme(colorScheme) === "dark" ? "#0d1236" : "#e8eaf6";
 
 	return (
 		<View style={styles.root}>

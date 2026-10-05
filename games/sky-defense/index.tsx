@@ -6,7 +6,7 @@ import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
-import { useColorScheme } from "@/components/useColorScheme";
+import { baseScheme, useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -1221,7 +1221,7 @@ export default function SkyDefenseGame() {
 						{
 							width: BOARD_W,
 							height: BOARD_H,
-							backgroundColor: colorScheme === "dark" ? "#0a1520" : "#e6eef4",
+							backgroundColor: baseScheme(colorScheme) === "dark" ? "#0a1520" : "#e6eef4",
 						},
 					]}
 				>

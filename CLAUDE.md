@@ -52,7 +52,8 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `store/useChecklistStore.ts` — travel checklist ticks per flight + custom items (persisted)
 - `store/usePlayersStore.ts` — multiplayer seat names + last player count (persisted)
 - `store/useRatesStore.ts` — live exchange rates + `ratesAsOf`/`lastSyncAt` (persisted; status not persisted)
-- `store/useSettingsStore.ts` also holds `homeCurrency` (converter default, set in onboarding/settings)
+- `store/useSupporterStore.ts` — FlightMode Plus entitlement (`plus`) + tip count (persisted, cached offline)
+- `store/useSettingsStore.ts` also holds `lastReviewPromptAt` (in-app review gate) and `homeCurrency` (converter default, set in onboarding/settings)
 
 **Styling:** React Native `StyleSheet` + inline styles. Design tokens:
 - `constants/Colors.ts` — theme palettes: `light`, `dark`, `crazy` (text, background, tint, card, surface, elevated, border, mutedText, etc.)
@@ -157,6 +158,12 @@ Remote articles come from **`content/feed.json`** (`{ version, items: ContentIte
 Defined in `data/achievements.ts` (49 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
 
 `useAchievementStore` tracks: `unlockedIds`, `newUnlockedIds` (cleared by `AchievementToast`), `totalFlights`, `totalRelaxSessions`, `articlesRead`, `soundsPlayed`, `lastActiveDate`, `streakDays`.
+
+## Monetization (Plus + tips)
+
+Google Play Billing via `expo-iap`, wrapped in `utils/billing.ts` (guarded: no-op without the native module). Products (Play Console one-time products): `flightmode_plus` (non-consumable, acknowledged), `tip_small` / `tip_medium` / `tip_large` (consumed). UI: `app/plus.tsx`. Plus perks today: themes `midnight` + `sunset` (`PLUS_THEMES` in `components/useColorScheme.ts`; they fall back to the system scheme without Plus, and per-scheme `Themed` overrides resolve via `baseScheme()` → `dark`) and a profile badge. **Rule: never gate anything that is free today** — Plus only adds new extras. No receipt server: entitlement is trusted client-side (`ponytail:` note in `utils/billing.ts`).
+
+In-app review: `utils/reviewPrompt.ts`, fired from `GameResult` on a new best.
 
 ## Analytics
 

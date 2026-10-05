@@ -15,6 +15,7 @@ import ContentSyncBootstrap from "@/components/ContentSyncBootstrap";
 import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
 import NotificationBootstrap from "@/components/NotificationBootstrap";
+import BillingBootstrap from "@/components/BillingBootstrap";
 import PlayGamesBootstrap from "@/components/PlayGamesBootstrap";
 import RatesSyncBootstrap from "@/components/RatesSyncBootstrap";
 import RootErrorBoundary from "@/components/RootErrorBoundary";
@@ -93,6 +94,9 @@ function RootLayoutNav() {
 				<SafeBoundary name="ImageSyncBootstrap">
 					<ImageSyncBootstrap />
 				</SafeBoundary>
+				<SafeBoundary name="BillingBootstrap">
+					<BillingBootstrap />
+				</SafeBoundary>
 				<SafeBoundary name="PlayGamesBootstrap">
 					<PlayGamesBootstrap />
 				</SafeBoundary>
@@ -170,6 +174,10 @@ function RootStack() {
 			<Stack.Screen
 				name="converter"
 				options={{ title: t("stackConverter"), presentation: "modal" }}
+			/>
+			<Stack.Screen
+				name="plus"
+				options={{ title: "FlightMode Plus", presentation: "modal" }}
 			/>
 			<Stack.Screen
 				name="phrasebook"
