@@ -44,6 +44,9 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 - **Play Billing — co je treba udelat v Play Console (bez toho nakupy nefunguji):** (1) Nastaveni > Platebni profil: zalozit merchant ucet (zdarma); (2) Monetizace > Produkty > Jednorazove produkty: vytvorit `flightmode_plus` (doporuceno ~3,99 EUR) a `tip_small` / `tip_medium` / `tip_large` (napr. 1,99 / 4,99 / 9,99 EUR), aktivovat; (3) nahrat build s `expo-iap` (build lane) do Internal testing a pridat license testery; (4) overit nakup, obnoveni na druhem zarizeni a opakovane spropitne. Do Data safety doplnit "Purchase history" (zpracovava Google).
 - Plus follow-upy (jen nove veci, nic nezamykat): expertni level packy pro runway-jam / nonogram / sun-moon, dalsi ambientni zvuky, alternativni ikona aplikace
 
+- **Nalezy z kontroly na zarizeni (2026-10-06, Samsung, cs):** nazvy destinaci v cestine anglicky (Tokyo, Paris, New York; "Ted v Tokyo" misto "v Tokiu") — zvazit lokalizovane nazvy mest; pravidla her v cs misi tykani/vykani (opravena jen cast); nazvy her v popisech uspechu anglicky (Runway Landing, Sky Defense, Air Traffic Control); mrizka uspechu v profilu nevyuziva celou sirku; Play Games pri prvnim spusteni hned vyskoci s vyzvou k profilu (zvazit odlozeni az po onboardingu)
+- lokalni release build na Windows: JDK 17 (~.jdksjdk-17), kratka cesta pres `subst X: C:Trask_devHAJAN` (CMake limit 260 znaku), `./gradlew assembleRelease -PreactNativeArchitectures=arm64-v8a`
+
 ### P1 (blizsi iterace)
 
 - vyuzit centralni online/offline stav pro budouci analytics flush debug a Strapi sync gating
