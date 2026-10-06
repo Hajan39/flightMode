@@ -19,6 +19,9 @@ import { fetchLatestRates } from "@/utils/ratesSync";
 
 /** Rates move slowly; one refresh per half day is plenty. */
 const RATES_SYNC_MIN_INTERVAL_MS = 12 * 60 * 60 * 1000;
+/** After a failure, wait before retrying — the bootstrap effect re-runs on every status change. */
+const RETRY_AFTER_FAILURE_MS = 5 * 60 * 1000;
+let lastFailureAt = 0;
 
 type RatesSyncStatus = "idle" | "syncing" | "success" | "error" | "skipped";
 
@@ -71,6 +74,12 @@ export const useRatesStore = create<RatesState>()(
         if (state.status === "syncing") {
           return;
         }
+        if (
+          !opts?.force &&
+          Date.now() - lastFailureAt < RETRY_AFTER_FAILURE_MS
+        ) {
+          return;
+        }
 
         set({ lastError: null, status: "syncing" });
         try {
@@ -89,6 +98,7 @@ export const useRatesStore = create<RatesState>()(
         } catch (error) {
           const message =
             error instanceof Error ? error.message : "rates sync failed";
+          lastFailureAt = Date.now();
           set({ lastError: message, status: "error" });
           captureAnalyticsEvent("rates_sync_failed", { reason: message });
         }

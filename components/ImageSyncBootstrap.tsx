@@ -1,18 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useContentItems } from "@/hooks/useContentItems";
 import { useImageCacheStore } from "@/store/useImageCacheStore";
 import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { downloadImage } from "@/utils/imageSync";
 
+/** URLs that failed this session — retried on the next app launch, not in a loop. */
+const failedUrls = new Set<string>();
+
 export default function ImageSyncBootstrap() {
   const items = useContentItems();
-  const cache = useImageCacheStore((s) => s.cache);
-  const setCached = useImageCacheStore((s) => s.setCached);
   const networkType = useNetworkStore((s) => s.type);
   const isInternetReachable = useNetworkStore((s) => s.isInternetReachable);
   const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
-  const cancelledRef = useRef(false);
 
   useEffect(() => {
     if (
@@ -24,46 +24,47 @@ export default function ImageSyncBootstrap() {
       return;
     }
 
-    const pending = items
-      .filter((item) => item.image && !cache[item.image])
-      .map((item) => item.image as string);
-
+    // Read the cache imperatively: depending on it would restart this effect
+    // after every download and pile up concurrent download loops.
+    const { cache, setCached } = useImageCacheStore.getState();
+    const pending = [
+      ...new Set(
+        items
+          .map((item) => item.image)
+          .filter(
+            (url): url is string => !!url && !cache[url] && !failedUrls.has(url)
+          )
+      ),
+    ];
     if (pending.length === 0) {
       return;
     }
 
-    cancelledRef.current = false;
-
+    let cancelled = false; // per run, so a newer run can't revive an old one
     // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void (async () => {
       for (const url of pending) {
-        // biome-ignore lint/suspicious/noUnnecessaryConditions: the effect cleanup flips this ref while the async loop runs
-        if (cancelledRef.current) {
+        if (cancelled) {
           break;
         }
         try {
-          // biome-ignore lint/performance/noAwaitInLoops: downloads run sequentially on purpose to be gentle on in-flight networks
+          // biome-ignore lint/performance/noAwaitInLoops: sequential on purpose — gentle on the network, and cancellable between downloads
           const localUri = await downloadImage(url);
           if (localUri) {
             setCached(url, localUri);
+          } else {
+            failedUrls.add(url);
           }
         } catch {
-          // Ignore: a failed image download is non-fatal; the article renders without it.
+          failedUrls.add(url);
         }
       }
     })();
 
     return () => {
-      cancelledRef.current = true;
+      cancelled = true;
     };
-  }, [
-    items,
-    networkType,
-    isInternetReachable,
-    syncNetworkPolicy,
-    cache,
-    setCached,
-  ]);
+  }, [items, networkType, isInternetReachable, syncNetworkPolicy]);
 
   return null;
 }

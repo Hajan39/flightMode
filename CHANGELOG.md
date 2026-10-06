@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed
+
+- **App froze on Wi-Fi (100 % JS CPU, ~1 GB RAM)**: article-image sync restarted after every downloaded image and revived cancelled loops, retrying failed images forever. Exchange-rate sync also retried in a tight loop after a failed request; it now backs off for 5 minutes.
+
 ### Added
 
 - **Strict linting via Ultracite (Biome)** — `biome.jsonc` extends the strict core + react + jest presets; `npm run check` / `npm run fix`; CI now runs `biome ci` (errors fail the build). The whole codebase was brought to zero lint errors (~4,900 findings resolved: auto-fixes plus manual refactors — nested ternaries, variable shadowing, leaked JSX renders, hoisted regexes, explicit increments). Deliberate deviations are documented inline in `biome.jsonc`; pre-existing debt (hook deps, index keys, complexity hotspots) is tracked as warnings instead of being hidden.
