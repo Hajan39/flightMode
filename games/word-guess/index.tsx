@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, useWindowDimensions, View as RNView } from "react-native";
+import {
+  Pressable,
+  View as RNView,
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
+} from "react-native";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -37,11 +43,11 @@ const PRESENT_COLOR = "#c9a227";
 
 type Phase = "idle" | "playing" | "over";
 
-type GuessRow = {
+interface GuessRow {
   letters: string[];
   states: LetterState[];
   submitted: boolean;
-};
+}
 
 // ---------------------------------------------------------------------------
 // Component
@@ -54,7 +60,9 @@ export default function WordGuessGame() {
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
 
-  const storedBest = useGameStore((s) => s.progress["word-guess"]?.highScore ?? 0);
+  const storedBest = useGameStore(
+    (s) => s.progress["word-guess"]?.highScore ?? 0
+  );
   const updateProgress = useGameStore((s) => s.updateProgress);
 
   const [phase, setPhase] = useState<Phase>("idle");
@@ -62,7 +70,9 @@ export default function WordGuessGame() {
   const [currentAttempt, setCurrentAttempt] = useState(0);
   const [currentInput, setCurrentInput] = useState<string[]>([]);
   const [guesses, setGuesses] = useState<GuessRow[]>([]);
-  const [keyboardState, setKeyboardState] = useState<Record<string, LetterState>>({});
+  const [keyboardState, setKeyboardState] = useState<
+    Record<string, LetterState>
+  >({});
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [won, setWon] = useState(false);
   const [result, setResult] = useState<GameProgressUpdate | null>(null);
@@ -98,9 +108,9 @@ export default function WordGuessGame() {
     const word = WORD_POOL[getDayOfYear() % WORD_POOL.length];
     setTargetWord(word);
     setGuesses(
-      Array(6)
+      new Array(6)
         .fill(null)
-        .map(() => ({ letters: [], states: [], submitted: false })),
+        .map(() => ({ letters: [], states: [], submitted: false }))
     );
     setCurrentAttempt(0);
     setCurrentInput([]);
@@ -117,8 +127,15 @@ export default function WordGuessGame() {
   // ---------------------------------------------------------------------------
 
   const handleSubmit = useCallback(
-    (input: string[], attempt: number, guessList: GuessRow[], kbState: Record<string, LetterState>) => {
-      if (submittingRef.current) return;
+    (
+      input: string[],
+      attempt: number,
+      guessList: GuessRow[],
+      kbState: Record<string, LetterState>
+    ) => {
+      if (submittingRef.current) {
+        return;
+      }
 
       if (input.length < 5) {
         setErrorMessage(t("wgTypeAWord"));
@@ -133,9 +150,7 @@ export default function WordGuessGame() {
       const states = checkGuess(word, targetWord);
 
       const newGuesses = guessList.map((row, i) =>
-        i === attempt
-          ? { letters: [...input], states, submitted: true }
-          : row,
+        i === attempt ? { letters: [...input], states, submitted: true } : row
       );
       setGuesses(newGuesses);
 
@@ -164,12 +179,14 @@ export default function WordGuessGame() {
         submittingRef.current = false;
       }
     },
-    [targetWord, haptic, t, updateProgress],
+    [targetWord, haptic, t, updateProgress]
   );
 
   const handleKey = useCallback(
     (key: string) => {
-      if (phase !== "playing") return;
+      if (phase !== "playing") {
+        return;
+      }
 
       if (key === "⌫") {
         setCurrentInput((prev) => prev.slice(0, -1));
@@ -183,7 +200,7 @@ export default function WordGuessGame() {
           currentInputRef.current,
           currentAttemptRef.current,
           guessesRef.current,
-          keyboardStateRef.current,
+          keyboardStateRef.current
         );
         return;
       }
@@ -193,7 +210,7 @@ export default function WordGuessGame() {
         setCurrentInput((prev) => [...prev, key]);
       }
     },
-    [phase, currentInput.length, currentAttempt, haptic, handleSubmit],
+    [phase, currentInput.length, haptic, handleSubmit]
   );
 
   // ---------------------------------------------------------------------------
@@ -201,47 +218,73 @@ export default function WordGuessGame() {
   // ---------------------------------------------------------------------------
 
   function getCellBg(state: LetterState, isCurrentRow: boolean): string {
-    if (isCurrentRow) return theme.card;
+    if (isCurrentRow) {
+      return theme.card;
+    }
     switch (state) {
-      case "correct": return theme.tint;
-      case "present": return PRESENT_COLOR;
-      case "absent": return theme.surface;
-      default: return theme.card;
+      case "correct":
+        return theme.tint;
+      case "present":
+        return PRESENT_COLOR;
+      case "absent":
+        return theme.surface;
+      default:
+        return theme.card;
     }
   }
 
   function getCellTextColor(state: LetterState, isCurrentRow: boolean): string {
-    if (isCurrentRow) return theme.text;
+    if (isCurrentRow) {
+      return theme.text;
+    }
     switch (state) {
-      case "correct": return theme.onTint;
-      case "present": return "#ffffff";
-      case "absent": return theme.mutedText;
-      default: return theme.text;
+      case "correct":
+        return theme.onTint;
+      case "present":
+        return "#ffffff";
+      case "absent":
+        return theme.mutedText;
+      default:
+        return theme.text;
     }
   }
 
-  function getCellBorderColor(state: LetterState, hasLetter: boolean, isCurrentRow: boolean): string {
-    if (isCurrentRow && hasLetter) return theme.tint;
+  function getCellBorderColor(
+    _state: LetterState,
+    hasLetter: boolean,
+    isCurrentRow: boolean
+  ): string {
+    if (isCurrentRow && hasLetter) {
+      return theme.tint;
+    }
     return theme.border;
   }
 
   function getKeyBg(key: string): string {
     const state = keyboardState[key];
     switch (state) {
-      case "correct": return theme.tint;
-      case "present": return PRESENT_COLOR;
-      case "absent": return theme.elevated;
-      default: return theme.card;
+      case "correct":
+        return theme.tint;
+      case "present":
+        return PRESENT_COLOR;
+      case "absent":
+        return theme.elevated;
+      default:
+        return theme.card;
     }
   }
 
   function getKeyTextColor(key: string): string {
     const state = keyboardState[key];
     switch (state) {
-      case "correct": return theme.onTint;
-      case "present": return "#ffffff";
-      case "absent": return theme.mutedText;
-      default: return theme.text;
+      case "correct":
+        return theme.onTint;
+      case "present":
+        return "#ffffff";
+      case "absent":
+        return theme.mutedText;
+      default:
+        return theme.text;
     }
   }
 
@@ -260,12 +303,14 @@ export default function WordGuessGame() {
             {t("gameWordGuessDescription")}
           </Text>
           <Pressable
-            style={[styles.startBtn, { backgroundColor: theme.tint }]}
-            onPress={startGame}
-            accessibilityRole="button"
             accessibilityLabel={t("gameTapToStart")}
+            accessibilityRole="button"
+            onPress={startGame}
+            style={[styles.startBtn, { backgroundColor: theme.tint }]}
           >
-            <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
+            <Text style={[styles.startBtnText, { color: theme.onTint }]}>
+              {t("gameTapToStart")}
+            </Text>
           </Pressable>
         </RNView>
       </View>
@@ -280,7 +325,7 @@ export default function WordGuessGame() {
     <View style={[styles.root, { backgroundColor: theme.background }]}>
       {/* Controls row — reset button only, no pause for word game */}
       <RNView style={styles.controlsRow}>
-        <GameControls onReset={startGame} hidePause />
+        <GameControls hidePause onReset={startGame} />
       </RNView>
 
       <ScrollView
@@ -294,50 +339,52 @@ export default function WordGuessGame() {
             const isCurrentRow = rowIdx === currentAttempt && !row.submitted;
             return (
               <RNView key={rowIdx} style={styles.row}>
-                {Array(5)
-                  .fill(null)
-                  .map((_, colIdx) => {
-                    const letter = row.submitted
-                      ? row.letters[colIdx]
-                      : isCurrentRow
-                        ? currentInput[colIdx]
-                        : undefined;
-                    const state: LetterState = row.submitted
-                      ? row.states[colIdx]
-                      : "empty";
-                    const hasLetter = letter !== undefined;
-                    const bgColor = getCellBg(state, isCurrentRow);
-                    const textColor = getCellTextColor(state, isCurrentRow);
-                    const borderColor = getCellBorderColor(state, hasLetter, isCurrentRow);
+                {new Array(5).fill(null).map((_, colIdx) => {
+                  const letter = row.submitted
+                    ? row.letters[colIdx]
+                    : isCurrentRow
+                      ? currentInput[colIdx]
+                      : undefined;
+                  const state: LetterState = row.submitted
+                    ? row.states[colIdx]
+                    : "empty";
+                  const hasLetter = letter !== undefined;
+                  const bgColor = getCellBg(state, isCurrentRow);
+                  const textColor = getCellTextColor(state, isCurrentRow);
+                  const borderColor = getCellBorderColor(
+                    state,
+                    hasLetter,
+                    isCurrentRow
+                  );
 
-                    return (
-                      <RNView
-                        key={colIdx}
+                  return (
+                    <RNView
+                      key={colIdx}
+                      style={[
+                        styles.cell,
+                        {
+                          backgroundColor: bgColor,
+                          borderColor,
+                          borderRadius: Radius.sm,
+                          height: cellSize,
+                          width: cellSize,
+                        },
+                      ]}
+                    >
+                      <Text
                         style={[
-                          styles.cell,
+                          styles.cellText,
                           {
-                            width: cellSize,
-                            height: cellSize,
-                            backgroundColor: bgColor,
-                            borderColor: borderColor,
-                            borderRadius: Radius.sm,
+                            color: textColor,
+                            fontSize: Math.floor(cellSize * 0.45),
                           },
                         ]}
                       >
-                        <Text
-                          style={[
-                            styles.cellText,
-                            {
-                              color: textColor,
-                              fontSize: Math.floor(cellSize * 0.45),
-                            },
-                          ]}
-                        >
-                          {letter ?? ""}
-                        </Text>
-                      </RNView>
-                    );
-                  })}
+                        {letter ?? ""}
+                      </Text>
+                    </RNView>
+                  );
+                })}
               </RNView>
             );
           })}
@@ -360,18 +407,18 @@ export default function WordGuessGame() {
                 const isWide = key === "ENTER" || key === "⌫";
                 return (
                   <Pressable
+                    accessibilityLabel={key}
+                    accessibilityRole="button"
                     key={key}
+                    onPress={() => handleKey(key)}
                     style={[
                       styles.key,
                       {
-                        width: isWide ? Math.floor(keyWidth * 1.5) : keyWidth,
                         backgroundColor: getKeyBg(key),
                         borderColor: theme.border,
+                        width: isWide ? Math.floor(keyWidth * 1.5) : keyWidth,
                       },
                     ]}
-                    onPress={() => handleKey(key)}
-                    accessibilityRole="button"
-                    accessibilityLabel={key}
                   >
                     <Text
                       style={[
@@ -395,27 +442,27 @@ export default function WordGuessGame() {
       {/* Result overlay */}
       {phase === "over" && result ? (
         <GameResult
-          title={t("gameWordGuessName")}
-          subtitle={
-            won
-              ? `${currentAttempt + 1}/6`
-              : t("wgCorrectWord", { word: targetWord })
-          }
-          score={won ? 1000 - currentAttempt * 150 : 0}
           best={result.best ?? storedBest}
+          isNewBest={result.isNewBest}
           last={
             result.last !== undefined &&
             result.last !== (won ? 1000 - currentAttempt * 150 : 0)
               ? result.last
               : undefined
           }
+          onPlayAgain={startGame}
+          score={won ? 1000 - currentAttempt * 150 : 0}
           streak={
             result.currentStreak && result.currentStreak > 0
               ? result.currentStreak
               : undefined
           }
-          isNewBest={result.isNewBest}
-          onPlayAgain={startGame}
+          subtitle={
+            won
+              ? `${currentAttempt + 1}/6`
+              : t("wgCorrectWord", { word: targetWord })
+          }
+          title={t("gameWordGuessName")}
         />
       ) : null}
     </View>
@@ -427,96 +474,96 @@ export default function WordGuessGame() {
 // ---------------------------------------------------------------------------
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
+  cell: {
+    alignItems: "center",
+    borderWidth: 2,
+    justifyContent: "center",
+  },
+  cellText: {
+    fontWeight: FontWeight.black,
+    letterSpacing: 1,
+    textAlign: "center",
   },
   controlsRow: {
-    paddingHorizontal: Spacing.lg,
-    paddingTop: Spacing.sm,
     alignItems: "flex-end",
-  },
-  scrollContent: {
-    flexGrow: 1,
-    alignItems: "center",
     paddingHorizontal: Spacing.lg,
     paddingTop: Spacing.sm,
-    paddingBottom: Spacing.xl,
-    gap: Spacing.sm,
+  },
+  errorText: {
+    ...TextStyle.hint,
+    textAlign: "center",
+  },
+  // Grid
+  grid: {
+    alignItems: "center",
+    gap: Spacing.xs,
   },
   // Idle
   idleContent: {
-    flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    flex: 1,
     gap: Spacing.lg,
+    justifyContent: "center",
     paddingHorizontal: Spacing["4xl"],
+  },
+  idleDesc: {
+    ...TextStyle.hint,
+    lineHeight: 20,
+    textAlign: "center",
   },
   idleTitle: {
     fontSize: FontSize["2xl"],
     fontWeight: FontWeight.black,
     textAlign: "center",
   },
-  idleDesc: {
-    ...TextStyle.hint,
-    textAlign: "center",
-    lineHeight: 20,
-  },
-  startBtn: {
-    marginTop: Spacing.sm,
-    paddingHorizontal: Spacing["4xl"],
-    paddingVertical: Spacing.lg,
-    borderRadius: Radius.button,
-  },
-  startBtnText: {
-    ...TextStyle.buttonPrimary,
-  },
-  // Grid
-  grid: {
-    gap: Spacing.xs,
+  key: {
     alignItems: "center",
+    borderRadius: Radius.sm,
+    borderWidth: 1,
+    height: 42,
+    justifyContent: "center",
+  },
+  // Keyboard
+  keyboard: {
+    alignSelf: "stretch",
+    gap: Spacing.xs,
+  },
+  keyboardRow: {
+    flexDirection: "row",
+    gap: 4,
+    justifyContent: "center",
+  },
+  keyText: {
+    fontWeight: FontWeight.bold,
+  },
+  // Message row
+  messageRow: {
+    alignItems: "center",
+    height: 20,
+    justifyContent: "center",
+  },
+  root: {
+    flex: 1,
   },
   row: {
     flexDirection: "row",
     gap: Spacing.xs,
   },
-  cell: {
-    borderWidth: 2,
+  scrollContent: {
     alignItems: "center",
-    justifyContent: "center",
+    flexGrow: 1,
+    gap: Spacing.sm,
+    paddingBottom: Spacing.xl,
+    paddingHorizontal: Spacing.lg,
+    paddingTop: Spacing.sm,
   },
-  cellText: {
-    fontWeight: FontWeight.black,
-    textAlign: "center",
-    letterSpacing: 1,
+  startBtn: {
+    borderRadius: Radius.button,
+    marginTop: Spacing.sm,
+    paddingHorizontal: Spacing["4xl"],
+    paddingVertical: Spacing.lg,
   },
-  // Message row
-  messageRow: {
-    height: 20,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  errorText: {
-    ...TextStyle.hint,
-    textAlign: "center",
-  },
-  // Keyboard
-  keyboard: {
-    gap: Spacing.xs,
-    alignSelf: "stretch",
-  },
-  keyboardRow: {
-    flexDirection: "row",
-    justifyContent: "center",
-    gap: 4,
-  },
-  key: {
-    height: 42,
-    borderRadius: Radius.sm,
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  keyText: {
-    fontWeight: FontWeight.bold,
+  startBtnText: {
+    ...TextStyle.buttonPrimary,
   },
 });

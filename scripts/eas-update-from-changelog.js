@@ -6,103 +6,105 @@ const branch = process.argv[2];
 const allowedBranches = new Set(["preview", "production"]);
 
 if (!allowedBranches.has(branch)) {
-	console.error("Usage: node ./scripts/eas-update-from-changelog.js <preview|production>");
-	process.exit(1);
+  console.error(
+    "Usage: node ./scripts/eas-update-from-changelog.js <preview|production>"
+  );
+  process.exit(1);
 }
 
-const repoRoot = path.resolve(__dirname, "..");
+const repoRoot = path.resolve(import.meta.dirname, "..");
 const changelogPath = path.join(repoRoot, "CHANGELOG.md");
 
 function readChangelog() {
-	return fs.readFileSync(changelogPath, "utf8");
+  return fs.readFileSync(changelogPath, "utf8");
 }
 
 function getUnreleasedSection(changelog) {
-	const match = changelog.match(
-		/^## \[Unreleased\]\s*\n([\s\S]*?)(?=^## \[|\Z)/m,
-	);
+  const match = changelog.match(
+    /^## \[Unreleased\]\s*\n([\s\S]*?)(?=^## \[|Z)/m
+  );
 
-	if (!match) {
-		throw new Error("Missing ## [Unreleased] section in CHANGELOG.md");
-	}
+  if (!match) {
+    throw new Error("Missing ## [Unreleased] section in CHANGELOG.md");
+  }
 
-	return match[1].trim();
+  return match[1].trim();
 }
 
 function buildUpdateMessage(unreleasedSection) {
-	const lines = unreleasedSection
-		.split(/\r?\n/)
-		.map((line) => line.trim())
-		.filter(Boolean);
+  const lines = unreleasedSection
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
 
-	const sections = [];
-	let currentHeading = null;
-	let currentItems = [];
+  const sections = [];
+  let currentHeading = null;
+  let currentItems = [];
 
-	const flush = () => {
-		if (currentHeading && currentItems.length > 0) {
-			sections.push(`${currentHeading}: ${currentItems.join("; ")}`);
-		}
-		currentItems = [];
-	};
+  const flush = () => {
+    if (currentHeading && currentItems.length > 0) {
+      sections.push(`${currentHeading}: ${currentItems.join("; ")}`);
+    }
+    currentItems = [];
+  };
 
-	for (const line of lines) {
-		if (line.startsWith("### ")) {
-			flush();
-			currentHeading = line.replace(/^###\s+/, "").trim();
-			continue;
-		}
+  for (const line of lines) {
+    if (line.startsWith("### ")) {
+      flush();
+      currentHeading = line.replace(/^###\s+/, "").trim();
+      continue;
+    }
 
-		if (line.startsWith("- ")) {
-			currentItems.push(line.slice(2).trim());
-		}
-	}
+    if (line.startsWith("- ")) {
+      currentItems.push(line.slice(2).trim());
+    }
+  }
 
-	flush();
+  flush();
 
-	if (sections.length === 0) {
-		throw new Error(
-			"CHANGELOG.md Unreleased section does not contain any bullet items to publish",
-		);
-	}
+  if (sections.length === 0) {
+    throw new Error(
+      "CHANGELOG.md Unreleased section does not contain any bullet items to publish"
+    );
+  }
 
-	return sections.join(" | ");
+  return sections.join(" | ");
 }
 
 let message;
 
 try {
-	message = buildUpdateMessage(getUnreleasedSection(readChangelog()));
+  message = buildUpdateMessage(getUnreleasedSection(readChangelog()));
 } catch (error) {
-	console.error(error.message);
-	process.exit(1);
+  console.error(error.message);
+  process.exit(1);
 }
 
 console.log(`Using changelog-derived update message for ${branch}:`);
 console.log(message);
 
 const result = spawnSync(
-	process.platform === "win32" ? "npx.cmd" : "npx",
-	[
-		"eas-cli",
-		"update",
-		"--branch",
-		branch,
-		"--environment",
-		branch,
-		"--message",
-		message,
-		"--non-interactive",
-		"--json",
-	],
-	{
-		cwd: repoRoot,
-		stdio: "inherit",
-	},
+  process.platform === "win32" ? "npx.cmd" : "npx",
+  [
+    "eas-cli",
+    "update",
+    "--branch",
+    branch,
+    "--environment",
+    branch,
+    "--message",
+    message,
+    "--non-interactive",
+    "--json",
+  ],
+  {
+    cwd: repoRoot,
+    stdio: "inherit",
+  }
 );
 
 if (typeof result.status === "number") {
-	process.exit(result.status);
+  process.exit(result.status);
 }
 
 process.exit(1);

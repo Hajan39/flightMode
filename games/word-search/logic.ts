@@ -5,10 +5,17 @@
 // injected `rng` (never Math.random) so tests can pass a seeded generator.
 
 /** A placed word and the flat grid indices its letters occupy, in reading order. */
-export type Placement = { word: string; cells: number[] };
+export interface Placement {
+  cells: number[];
+  word: string;
+}
 
 /** A generated puzzle: a size×size grid of single uppercase letters. */
-export type Puzzle = { size: number; grid: string[]; placements: Placement[] };
+export interface Puzzle {
+  grid: string[];
+  placements: Placement[];
+  size: number;
+}
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -37,9 +44,11 @@ function sign(n: number): number {
 export function lineBetween(
   start: number,
   end: number,
-  size: number,
+  size: number
 ): number[] | null {
-  if (size <= 0) return null;
+  if (size <= 0) {
+    return null;
+  }
   const total = size * size;
   if (
     start < 0 ||
@@ -57,7 +66,9 @@ export function lineBetween(
   const endRow = Math.floor(end / size);
   const endCol = end % size;
 
-  if (start === end) return [start];
+  if (start === end) {
+    return [start];
+  }
 
   const dRow = endRow - startRow;
   const dCol = endCol - startCol;
@@ -66,14 +77,16 @@ export function lineBetween(
   const isVertical = dCol === 0;
   const isDiagonal = Math.abs(dRow) === Math.abs(dCol);
 
-  if (!isHorizontal && !isVertical && !isDiagonal) return null;
+  if (!(isHorizontal || isVertical || isDiagonal)) {
+    return null;
+  }
 
   const steps = Math.max(Math.abs(dRow), Math.abs(dCol));
   const stepRow = sign(dRow);
   const stepCol = sign(dCol);
 
   const cells: number[] = [];
-  for (let i = 0; i <= steps; i++) {
+  for (let i = 0; i <= steps; i += 1) {
     const r = startRow + stepRow * i;
     const c = startCol + stepCol * i;
     cells.push(r * size + c);
@@ -84,7 +97,9 @@ export function lineBetween(
 /** Concatenates the letters found at `cells` in the given grid. */
 export function readCells(grid: string[], cells: number[]): string {
   let out = "";
-  for (const cell of cells) out += grid[cell] ?? "";
+  for (const cell of cells) {
+    out += grid[cell] ?? "";
+  }
   return out;
 }
 
@@ -103,25 +118,29 @@ function tryPlaceWord(
   grid: string[],
   word: string,
   size: number,
-  rng: () => number,
+  rng: () => number
 ): Placement | null {
   const len = word.length;
-  if (len === 0 || len > size) return null;
+  if (len === 0 || len > size) {
+    return null;
+  }
 
   const MAX_ATTEMPTS = 200;
-  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
     const [dRow, dCol] = DIRECTIONS[randInt(rng, DIRECTIONS.length)];
     const startRow = randInt(rng, size);
     const startCol = randInt(rng, size);
 
     const endRow = startRow + dRow * (len - 1);
     const endCol = startCol + dCol * (len - 1);
-    if (endRow < 0 || endRow >= size || endCol < 0 || endCol >= size) continue;
+    if (endRow < 0 || endRow >= size || endCol < 0 || endCol >= size) {
+      continue;
+    }
 
     // Verify every cell is empty or already holds the matching letter.
     const cells: number[] = [];
     let ok = true;
-    for (let i = 0; i < len; i++) {
+    for (let i = 0; i < len; i += 1) {
       const r = startRow + dRow * i;
       const c = startCol + dCol * i;
       const idx = r * size + c;
@@ -132,11 +151,15 @@ function tryPlaceWord(
       }
       cells.push(idx);
     }
-    if (!ok) continue;
+    if (!ok) {
+      continue;
+    }
 
     // Commit.
-    for (let i = 0; i < len; i++) grid[cells[i]] = word[i];
-    return { word, cells };
+    for (let i = 0; i < len; i += 1) {
+      grid[cells[i]] = word[i];
+    }
+    return { cells, word };
   }
   return null;
 }
@@ -152,7 +175,7 @@ function tryPlaceWord(
 export function buildPuzzle(
   words: string[],
   size: number,
-  rng: () => number,
+  rng: () => number
 ): Puzzle {
   const grid: string[] = new Array(size * size).fill("");
   const placements: Placement[] = [];
@@ -160,13 +183,17 @@ export function buildPuzzle(
   for (const raw of words) {
     const word = raw.toUpperCase();
     const placement = tryPlaceWord(grid, word, size, rng);
-    if (placement) placements.push(placement);
+    if (placement) {
+      placements.push(placement);
+    }
   }
 
   // Fill remaining empty cells with random letters.
-  for (let i = 0; i < grid.length; i++) {
-    if (grid[i] === "") grid[i] = LETTERS[randInt(rng, LETTERS.length)];
+  for (let i = 0; i < grid.length; i += 1) {
+    if (grid[i] === "") {
+      grid[i] = LETTERS[randInt(rng, LETTERS.length)];
+    }
   }
 
-  return { size, grid, placements };
+  return { grid, placements, size };
 }

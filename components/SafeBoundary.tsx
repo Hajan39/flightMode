@@ -2,18 +2,20 @@ import { Component, type ReactNode } from "react";
 
 import { logFatalError } from "@/utils/errorLogging";
 
-type Props = {
-	/** Label included in logs to identify which subsystem failed. */
-	name: string;
-	children: ReactNode;
-	/**
-	 * What to render if the children throw. Defaults to `null` — correct for
-	 * non-visual bootstrap components, whose failure must never take down the app.
-	 */
-	fallback?: ReactNode;
-};
+interface Props {
+  children: ReactNode;
+  /**
+   * What to render if the children throw. Defaults to `null` — correct for
+   * non-visual bootstrap components, whose failure must never take down the app.
+   */
+  fallback?: ReactNode;
+  /** Label included in logs to identify which subsystem failed. */
+  name: string;
+}
 
-type State = { hasError: boolean };
+interface State {
+  hasError: boolean;
+}
 
 /**
  * Isolating error boundary for non-critical subsystems (bootstrap side-effect
@@ -23,20 +25,20 @@ type State = { hasError: boolean };
  * those are handled by each component's own try/catch and the global handler.
  */
 export default class SafeBoundary extends Component<Props, State> {
-	state: State = { hasError: false };
+  state: State = { hasError: false };
 
-	static getDerivedStateFromError(): State {
-		return { hasError: true };
-	}
+  static getDerivedStateFromError(): State {
+    return { hasError: true };
+  }
 
-	componentDidCatch(error: unknown) {
-		logFatalError(error, "render", this.props.name);
-	}
+  componentDidCatch(error: unknown) {
+    logFatalError(error, "render", this.props.name);
+  }
 
-	render() {
-		if (this.state.hasError) {
-			return this.props.fallback ?? null;
-		}
-		return this.props.children;
-	}
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback ?? null;
+    }
+    return this.props.children;
+  }
 }

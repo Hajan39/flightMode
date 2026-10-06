@@ -1,3 +1,10 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  Pressable,
+  View as RNView,
+  StyleSheet,
+  useWindowDimensions,
+} from "react-native";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -8,20 +15,17 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Pressable, StyleSheet, View as RNView, useWindowDimensions } from "react-native";
 
 import {
   type Cell,
-  checkWin,
   COLS,
+  checkWin,
   countFlagged,
   floodReveal,
-  makeEmptyBoard,
   MINE_COUNT,
+  makeEmptyBoard,
   placeMines,
   revealAllMines,
-  ROWS,
 } from "./logic";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -55,7 +59,9 @@ export default function MinesweeperGame() {
   const { width, height } = useWindowDimensions();
   const haptic = useHaptic();
 
-  const storedBest = useGameStore((s) => s.progress["minesweeper"]?.highScore ?? 0);
+  const storedBest = useGameStore(
+    (s) => s.progress.minesweeper?.highScore ?? 0
+  );
   const updateProgress = useGameStore((s) => s.updateProgress);
 
   const [board, setBoard] = useState<Cell[][]>(makeEmptyBoard);
@@ -63,7 +69,9 @@ export default function MinesweeperGame() {
   const [outcome, setOutcome] = useState<Outcome>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [flaggedCount, setFlaggedCount] = useState(0);
-  const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(null);
+  const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+    null
+  );
   const [finalScore, setFinalScore] = useState<number | null>(null);
 
   const startTimeRef = useRef<number | null>(null);
@@ -78,16 +86,16 @@ export default function MinesweeperGame() {
     }
   }, []);
 
-  useEffect(() => {
-    return () => stopTimer();
-  }, [stopTimer]);
+  useEffect(() => () => stopTimer(), [stopTimer]);
 
   const startTimer = useCallback(() => {
     startTimeRef.current = Date.now();
     setElapsedSeconds(0);
     timerRef.current = setInterval(() => {
       if (startTimeRef.current !== null) {
-        setElapsedSeconds(Math.floor((Date.now() - startTimeRef.current) / 1000));
+        setElapsedSeconds(
+          Math.floor((Date.now() - startTimeRef.current) / 1000)
+        );
       }
     }, 1000);
   }, []);
@@ -115,13 +123,17 @@ export default function MinesweeperGame() {
 
   const handlePress = useCallback(
     (row: number, col: number) => {
-      if (phase === "over") return;
+      if (phase === "over") {
+        return;
+      }
 
       setBoard((prev) => {
         const cell = prev[row][col];
 
         // Flagged or already revealed → ignore tap
-        if (cell.isFlagged || cell.isRevealed) return prev;
+        if (cell.isFlagged || cell.isRevealed) {
+          return prev;
+        }
 
         // ── First tap: plant mines then reveal ────────────────────────────
         if (phase === "idle") {
@@ -175,18 +187,22 @@ export default function MinesweeperGame() {
         return revealed;
       });
     },
-    [phase, haptic, startTimer, stopTimer, updateProgress],
+    [phase, haptic, startTimer, stopTimer, updateProgress]
   );
 
   // ── Handle flag ────────────────────────────────────────────────────────────
 
   const handleLongPress = useCallback(
     (row: number, col: number) => {
-      if (phase === "over" || phase === "idle") return;
+      if (phase === "over" || phase === "idle") {
+        return;
+      }
 
       setBoard((prev) => {
         const cell = prev[row][col];
-        if (cell.isRevealed) return prev;
+        if (cell.isRevealed) {
+          return prev;
+        }
 
         const next = prev.map((r) => r.map((c) => ({ ...c })));
         const toggled = !cell.isFlagged;
@@ -198,7 +214,7 @@ export default function MinesweeperGame() {
         return next;
       });
     },
-    [phase, haptic],
+    [phase, haptic]
   );
 
   // ── Render cell ────────────────────────────────────────────────────────────
@@ -242,20 +258,20 @@ export default function MinesweeperGame() {
 
     return (
       <Pressable
-        key={key}
-        onPress={() => handlePress(row, col)}
-        onLongPress={() => handleLongPress(row, col)}
         delayLongPress={350}
         disabled={isDisabled && phase !== "idle"}
+        key={key}
+        onLongPress={() => handleLongPress(row, col)}
+        onPress={() => handlePress(row, col)}
         style={[
           styles.cell,
           {
-            width: cellSize,
-            height: cellSize,
             backgroundColor: bg,
             borderColor: cell.isRevealed ? "transparent" : theme.border,
-            borderWidth: cell.isRevealed ? 0 : 1,
             borderRadius: Radius.sm,
+            borderWidth: cell.isRevealed ? 0 : 1,
+            height: cellSize,
+            width: cellSize,
           },
         ]}
       >
@@ -310,7 +326,7 @@ export default function MinesweeperGame() {
         </RNView>
 
         {/* Controls: reset only, no pause */}
-        <GameControls onReset={resetGame} hidePause />
+        <GameControls hidePause onReset={resetGame} />
       </RNView>
 
       {/* ── Board ── */}
@@ -334,13 +350,13 @@ export default function MinesweeperGame() {
       {/* ── Game result overlay ── */}
       {phase === "over" && finalScore !== null && (
         <GameResult
-          title={outcome === "win" ? t("msYouWin") : t("msGameOver")}
-          score={finalScore}
           best={progressInfo?.best ?? storedBest}
-          last={progressInfo?.previousBest}
-          streak={progressInfo?.currentStreak}
           isNewBest={progressInfo?.isNewBest}
+          last={progressInfo?.previousBest}
           onPlayAgain={resetGame}
+          score={finalScore}
+          streak={progressInfo?.currentStreak}
+          title={outcome === "win" ? t("msYouWin") : t("msGameOver")}
         />
       )}
     </View>
@@ -350,56 +366,17 @@ export default function MinesweeperGame() {
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    paddingHorizontal: Spacing.lg,
-    paddingVertical: Spacing.md,
-    gap: Spacing.md,
-    alignItems: "center",
-  },
-  // ── Header ──
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "stretch",
-    justifyContent: "space-between",
-  },
-  statsRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: Spacing.sm,
-  },
-  statBlock: {
-    alignItems: "center",
-    minWidth: 56,
-    gap: 1,
-  },
-  statLabel: {
-    fontSize: 10,
-    fontWeight: "800",
-    letterSpacing: 1,
-    textTransform: "uppercase",
-  },
-  statValue: {
-    fontSize: 18,
-    fontWeight: "900",
-    letterSpacing: -0.5,
-  },
-  statDivider: {
-    width: 1,
-    height: 36,
-  },
-  // ── Board ──
-  boardWrapper: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   board: {
     flexDirection: "column",
   },
   boardRow: {
     flexDirection: "row",
+  },
+  // ── Board ──
+  boardWrapper: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
   },
   // ── Cell ──
   cell: {
@@ -407,20 +384,59 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     overflow: "hidden",
   },
+  cellEmoji: {
+    fontSize: 14,
+    lineHeight: 18,
+  },
   cellNumber: {
     fontSize: 13,
     fontWeight: "900",
     lineHeight: 16,
   },
-  cellEmoji: {
-    fontSize: 14,
-    lineHeight: 18,
+  // ── Header ──
+  header: {
+    alignItems: "center",
+    alignSelf: "stretch",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   // ── Hint ──
   hintText: {
     fontSize: 13,
     fontWeight: "600",
-    textAlign: "center",
     paddingBottom: Spacing.sm,
+    textAlign: "center",
+  },
+  root: {
+    alignItems: "center",
+    flex: 1,
+    gap: Spacing.md,
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.md,
+  },
+  statBlock: {
+    alignItems: "center",
+    gap: 1,
+    minWidth: 56,
+  },
+  statDivider: {
+    height: 36,
+    width: 1,
+  },
+  statLabel: {
+    fontSize: 10,
+    fontWeight: "800",
+    letterSpacing: 1,
+    textTransform: "uppercase",
+  },
+  statsRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: Spacing.sm,
+  },
+  statValue: {
+    fontSize: 18,
+    fontWeight: "900",
+    letterSpacing: -0.5,
   },
 });

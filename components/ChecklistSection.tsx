@@ -11,236 +11,257 @@ import type { ChecklistSection as SectionDef } from "@/data/checklist";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import {
-	type CustomChecklistItem,
-	MAX_CUSTOM_ITEM_LENGTH,
-	useChecklistStore,
+  type CustomChecklistItem,
+  MAX_CUSTOM_ITEM_LENGTH,
+  useChecklistStore,
 } from "@/store/useChecklistStore";
 
-type Props = {
-	/** Template section, or a synthetic one for the destination block. */
-	section: SectionDef;
-	customItems: CustomChecklistItem[];
-	/** Destination-specific rows inserted before the custom ones. */
-	extraItems?: { id: string; labelKey: SectionDef["items"][number]["labelKey"] }[];
-	/** Destination sections have no "add your own" field. */
-	hideAddField?: boolean;
-	/** Overrides `t(section.titleKey)` — used for the interpolated "For {city}". */
-	sectionTitle?: string;
-};
+interface Props {
+  customItems: CustomChecklistItem[];
+  /** Destination-specific rows inserted before the custom ones. */
+  extraItems?: {
+    id: string;
+    labelKey: SectionDef["items"][number]["labelKey"];
+  }[];
+  /** Destination sections have no "add your own" field. */
+  hideAddField?: boolean;
+  /** Template section, or a synthetic one for the destination block. */
+  section: SectionDef;
+  /** Overrides `t(section.titleKey)` — used for the interpolated "For {city}". */
+  sectionTitle?: string;
+}
 
-type Row = { id: string; label: string; isCustom: boolean };
+interface Row {
+  id: string;
+  isCustom: boolean;
+  label: string;
+}
 
 export default function ChecklistSection({
-	section,
-	customItems,
-	extraItems = [],
-	hideAddField,
-	sectionTitle,
+  section,
+  customItems,
+  extraItems = [],
+  hideAddField,
+  sectionTitle,
 }: Props) {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { t } = useTranslation();
-	const haptic = useHaptic();
-	const checkedIds = useChecklistStore((s) => s.checkedIds);
-	const toggleItem = useChecklistStore((s) => s.toggleItem);
-	const addCustomItem = useChecklistStore((s) => s.addCustomItem);
-	const removeCustomItem = useChecklistStore((s) => s.removeCustomItem);
-	const [draft, setDraft] = useState("");
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { t } = useTranslation();
+  const haptic = useHaptic();
+  const checkedIds = useChecklistStore((s) => s.checkedIds);
+  const toggleItem = useChecklistStore((s) => s.toggleItem);
+  const addCustomItem = useChecklistStore((s) => s.addCustomItem);
+  const removeCustomItem = useChecklistStore((s) => s.removeCustomItem);
+  const [draft, setDraft] = useState("");
 
-	const rows: Row[] = [
-		...section.items.map((item) => ({
-			id: item.id,
-			label: t(item.labelKey),
-			isCustom: false,
-		})),
-		...extraItems.map((item) => ({
-			id: item.id,
-			label: t(item.labelKey),
-			isCustom: false,
-		})),
-		...customItems.map((item) => ({
-			id: item.id,
-			label: item.label,
-			isCustom: true,
-		})),
-	];
-	const done = rows.filter((row) => checkedIds.includes(row.id)).length;
+  const rows: Row[] = [
+    ...section.items.map((item) => ({
+      id: item.id,
+      isCustom: false,
+      label: t(item.labelKey),
+    })),
+    ...extraItems.map((item) => ({
+      id: item.id,
+      isCustom: false,
+      label: t(item.labelKey),
+    })),
+    ...customItems.map((item) => ({
+      id: item.id,
+      isCustom: true,
+      label: item.label,
+    })),
+  ];
+  const done = rows.filter((row) => checkedIds.includes(row.id)).length;
 
-	const submitDraft = () => {
-		if (draft.trim().length === 0) return;
-		addCustomItem(section.id, draft);
-		haptic.tap();
-		setDraft("");
-	};
+  const submitDraft = () => {
+    if (draft.trim().length === 0) {
+      return;
+    }
+    addCustomItem(section.id, draft);
+    haptic.tap();
+    setDraft("");
+  };
 
-	const confirmDelete = (row: Row) => {
-		Alert.alert(
-			t("checklistDeleteCustomTitle"),
-			t("checklistDeleteCustomMessage"),
-			[
-				{ text: t("gameCancel"), style: "cancel" },
-				{
-					text: t("checklistDeleteCustomConfirm"),
-					style: "destructive",
-					onPress: () => removeCustomItem(row.id),
-				},
-			],
-		);
-	};
+  const confirmDelete = (row: Row) => {
+    Alert.alert(
+      t("checklistDeleteCustomTitle"),
+      t("checklistDeleteCustomMessage"),
+      [
+        { style: "cancel", text: t("gameCancel") },
+        {
+          onPress: () => removeCustomItem(row.id),
+          style: "destructive",
+          text: t("checklistDeleteCustomConfirm"),
+        },
+      ]
+    );
+  };
 
-	return (
-		<View
-			style={[
-				styles.card,
-				{ backgroundColor: theme.card, borderColor: theme.border },
-			]}
-		>
-			<View style={styles.header} lightColor="transparent" darkColor="transparent">
-				<View
-					style={[styles.headerIcon, { backgroundColor: theme.accentSoft }]}
-					lightColor="transparent"
-					darkColor="transparent"
-				>
-					<Ionicons
-						name={section.icon as keyof typeof Ionicons.glyphMap}
-						size={18}
-						color={theme.tint}
-					/>
-				</View>
-				<Text style={styles.title}>{sectionTitle ?? t(section.titleKey)}</Text>
-				<Text style={[styles.count, { color: theme.mutedText }]}>
-					{done}/{rows.length}
-				</Text>
-			</View>
+  return (
+    <View
+      style={[
+        styles.card,
+        { backgroundColor: theme.card, borderColor: theme.border },
+      ]}
+    >
+      <View
+        darkColor="transparent"
+        lightColor="transparent"
+        style={styles.header}
+      >
+        <View
+          darkColor="transparent"
+          lightColor="transparent"
+          style={[styles.headerIcon, { backgroundColor: theme.accentSoft }]}
+        >
+          <Ionicons
+            color={theme.tint}
+            name={section.icon as keyof typeof Ionicons.glyphMap}
+            size={18}
+          />
+        </View>
+        <Text style={styles.title}>{sectionTitle ?? t(section.titleKey)}</Text>
+        <Text style={[styles.count, { color: theme.mutedText }]}>
+          {done}/{rows.length}
+        </Text>
+      </View>
 
-			{rows.map((row) => {
-				const checked = checkedIds.includes(row.id);
-				return (
-					<Pressable
-						key={row.id}
-						style={styles.row}
-						onPress={() => {
-							haptic.tap();
-							toggleItem(row.id);
-						}}
-						onLongPress={row.isCustom ? () => confirmDelete(row) : undefined}
-						accessibilityRole="checkbox"
-						accessibilityState={{ checked }}
-						accessibilityLabel={row.label}
-						hitSlop={4}
-					>
-						<Ionicons
-							name={checked ? "checkbox" : "square-outline"}
-							size={22}
-							color={checked ? theme.tint : theme.mutedText}
-						/>
-						<Text
-							style={[
-								styles.rowLabel,
-								checked && {
-									color: theme.mutedText,
-									textDecorationLine: "line-through",
-								},
-							]}
-						>
-							{row.label}
-						</Text>
-						{row.isCustom ? (
-							<Ionicons name="person-outline" size={14} color={theme.mutedText} />
-						) : null}
-					</Pressable>
-				);
-			})}
+      {rows.map((row) => {
+        const checked = checkedIds.includes(row.id);
+        return (
+          <Pressable
+            accessibilityLabel={row.label}
+            accessibilityRole="checkbox"
+            accessibilityState={{ checked }}
+            hitSlop={4}
+            key={row.id}
+            onLongPress={row.isCustom ? () => confirmDelete(row) : undefined}
+            onPress={() => {
+              haptic.tap();
+              toggleItem(row.id);
+            }}
+            style={styles.row}
+          >
+            <Ionicons
+              color={checked ? theme.tint : theme.mutedText}
+              name={checked ? "checkbox" : "square-outline"}
+              size={22}
+            />
+            <Text
+              style={[
+                styles.rowLabel,
+                checked && {
+                  color: theme.mutedText,
+                  textDecorationLine: "line-through",
+                },
+              ]}
+            >
+              {row.label}
+            </Text>
+            {row.isCustom ? (
+              <Ionicons
+                color={theme.mutedText}
+                name="person-outline"
+                size={14}
+              />
+            ) : null}
+          </Pressable>
+        );
+      })}
 
-			{hideAddField ? null : (
-			<View style={styles.addRow} lightColor="transparent" darkColor="transparent">
-				<TextInput
-					value={draft}
-					onChangeText={setDraft}
-					onSubmitEditing={submitDraft}
-					placeholder={t("checklistAddPlaceholder")}
-					placeholderTextColor={theme.mutedText}
-					maxLength={MAX_CUSTOM_ITEM_LENGTH}
-					returnKeyType="done"
-					style={[
-						styles.input,
-						{
-							backgroundColor: theme.inputBackground,
-							borderColor: theme.border,
-							color: theme.text,
-						},
-					]}
-				/>
-				<Pressable
-					onPress={submitDraft}
-					disabled={draft.trim().length === 0}
-					accessibilityRole="button"
-					accessibilityLabel={t("checklistAdd")}
-					style={[
-						styles.addBtn,
-						{
-							backgroundColor: theme.tint,
-							opacity: draft.trim().length === 0 ? 0.4 : 1,
-						},
-					]}
-				>
-					<Ionicons name="add" size={20} color={theme.onTint} />
-				</Pressable>
-			</View>
-			)}
-		</View>
-	);
+      {hideAddField ? null : (
+        <View
+          darkColor="transparent"
+          lightColor="transparent"
+          style={styles.addRow}
+        >
+          <TextInput
+            maxLength={MAX_CUSTOM_ITEM_LENGTH}
+            onChangeText={setDraft}
+            onSubmitEditing={submitDraft}
+            placeholder={t("checklistAddPlaceholder")}
+            placeholderTextColor={theme.mutedText}
+            returnKeyType="done"
+            style={[
+              styles.input,
+              {
+                backgroundColor: theme.inputBackground,
+                borderColor: theme.border,
+                color: theme.text,
+              },
+            ]}
+            value={draft}
+          />
+          <Pressable
+            accessibilityLabel={t("checklistAdd")}
+            accessibilityRole="button"
+            disabled={draft.trim().length === 0}
+            onPress={submitDraft}
+            style={[
+              styles.addBtn,
+              {
+                backgroundColor: theme.tint,
+                opacity: draft.trim().length === 0 ? 0.4 : 1,
+              },
+            ]}
+          >
+            <Ionicons color={theme.onTint} name="add" size={20} />
+          </Pressable>
+        </View>
+      )}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-	card: {
-		borderWidth: 1,
-		borderRadius: Radius.panel,
-		padding: Spacing.lg,
-		gap: Spacing.xs,
-	},
-	header: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: Spacing.md,
-		marginBottom: Spacing.sm,
-	},
-	headerIcon: {
-		width: 32,
-		height: 32,
-		borderRadius: 16,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	title: { flex: 1, fontSize: FontSize.md, fontWeight: FontWeight.bold },
-	count: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold },
-	row: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: Spacing.md,
-		paddingVertical: Spacing.sm + 2,
-		minHeight: 44,
-	},
-	rowLabel: { flex: 1, fontSize: FontSize.base, lineHeight: 20 },
-	addRow: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: Spacing.sm,
-		marginTop: Spacing.sm,
-	},
-	input: {
-		flex: 1,
-		borderWidth: 1,
-		borderRadius: Radius.card,
-		paddingHorizontal: Spacing.md,
-		paddingVertical: Spacing.sm + 2,
-		fontSize: FontSize.base,
-	},
-	addBtn: {
-		width: 40,
-		height: 40,
-		borderRadius: Radius.card,
-		alignItems: "center",
-		justifyContent: "center",
-	},
+  addBtn: {
+    alignItems: "center",
+    borderRadius: Radius.card,
+    height: 40,
+    justifyContent: "center",
+    width: 40,
+  },
+  addRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: Spacing.sm,
+    marginTop: Spacing.sm,
+  },
+  card: {
+    borderRadius: Radius.panel,
+    borderWidth: 1,
+    gap: Spacing.xs,
+    padding: Spacing.lg,
+  },
+  count: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold },
+  header: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: Spacing.md,
+    marginBottom: Spacing.sm,
+  },
+  headerIcon: {
+    alignItems: "center",
+    borderRadius: 16,
+    height: 32,
+    justifyContent: "center",
+    width: 32,
+  },
+  input: {
+    borderRadius: Radius.card,
+    borderWidth: 1,
+    flex: 1,
+    fontSize: FontSize.base,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.sm + 2,
+  },
+  row: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: Spacing.md,
+    minHeight: 44,
+    paddingVertical: Spacing.sm + 2,
+  },
+  rowLabel: { flex: 1, fontSize: FontSize.base, lineHeight: 20 },
+  title: { flex: 1, fontSize: FontSize.md, fontWeight: FontWeight.bold },
 });

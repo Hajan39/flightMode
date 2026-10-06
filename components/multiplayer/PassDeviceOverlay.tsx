@@ -12,128 +12,137 @@ import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useReduceMotion } from "@/hooks/useReduceMotion";
 import { useTranslation } from "@/hooks/useTranslation";
 
-type Props = {
-	visible: boolean;
-	toPlayer: MatchPlayer;
-	/** Fully opaque + "Don't peek!" copy for games with hidden information. */
-	secret?: boolean;
-	/** Optional game-specific hint line under the title. */
-	hint?: string;
-	readyLabel?: string;
-	onReady: () => void;
-};
+interface Props {
+  /** Optional game-specific hint line under the title. */
+  hint?: string;
+  onReady: () => void;
+  readyLabel?: string;
+  /** Fully opaque + "Don't peek!" copy for games with hidden information. */
+  secret?: boolean;
+  toPlayer: MatchPlayer;
+  visible: boolean;
+}
 
 /**
  * Fullscreen hand-off screen for pass-and-play games. Always opaque so the
  * board underneath is hidden; `secret` adds the privacy warning.
  */
 export default function PassDeviceOverlay({
-	visible,
-	toPlayer,
-	secret,
-	hint,
-	readyLabel,
-	onReady,
+  visible,
+  toPlayer,
+  secret,
+  hint,
+  readyLabel,
+  onReady,
 }: Props) {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { t } = useTranslation();
-	const haptic = useHaptic();
-	const reduceMotion = useReduceMotion();
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { t } = useTranslation();
+  const haptic = useHaptic();
+  const reduceMotion = useReduceMotion();
 
-	if (!visible) return null;
+  if (!visible) {
+    return null;
+  }
 
-	const handleReady = () => {
-		haptic.tap();
-		onReady();
-	};
+  const handleReady = () => {
+    haptic.tap();
+    onReady();
+  };
 
-	return (
-		<Animated.View
-			entering={
-				reduceMotion ? FadeIn.duration(160) : SlideInRight.duration(260)
-			}
-			style={[styles.overlay, { backgroundColor: theme.background }]}
-			accessibilityViewIsModal
-		>
-			<RNView style={[styles.dot, { backgroundColor: toPlayer.color }]}>
-				<Ionicons name="phone-portrait-outline" size={40} color="#0b1620" />
-			</RNView>
-			<Text style={[styles.eyebrow, { color: theme.mutedText }]}>
-				{t("passPhone")}
-			</Text>
-			<Text style={[styles.title, { color: theme.text }]}>
-				{t("passPhoneTo", { player: toPlayer.name })}
-			</Text>
-			{secret ? (
-				<RNView
-					style={[
-						styles.secretPill,
-						{ backgroundColor: theme.dangerSurface, borderColor: theme.dangerBorder },
-					]}
-				>
-					<Ionicons name="eye-off-outline" size={16} color={theme.danger} />
-					<Text style={[styles.secretText, { color: theme.danger }]}>
-						{t("passPhoneDontLook")}
-					</Text>
-				</RNView>
-			) : null}
-			{hint ? (
-				<Text style={[styles.hint, { color: theme.mutedText }]}>{hint}</Text>
-			) : null}
-			<Pressable
-				onPress={handleReady}
-				style={[styles.btn, { backgroundColor: toPlayer.color }]}
-				accessibilityRole="button"
-				accessibilityLabel={readyLabel ?? t("passPhoneReady")}
-			>
-				<Text style={styles.btnText}>{readyLabel ?? t("passPhoneReady")}</Text>
-			</Pressable>
-		</Animated.View>
-	);
+  return (
+    <Animated.View
+      accessibilityViewIsModal
+      entering={
+        reduceMotion ? FadeIn.duration(160) : SlideInRight.duration(260)
+      }
+      style={[styles.overlay, { backgroundColor: theme.background }]}
+    >
+      <RNView style={[styles.dot, { backgroundColor: toPlayer.color }]}>
+        <Ionicons color="#0b1620" name="phone-portrait-outline" size={40} />
+      </RNView>
+      <Text style={[styles.eyebrow, { color: theme.mutedText }]}>
+        {t("passPhone")}
+      </Text>
+      <Text style={[styles.title, { color: theme.text }]}>
+        {t("passPhoneTo", { player: toPlayer.name })}
+      </Text>
+      {secret ? (
+        <RNView
+          style={[
+            styles.secretPill,
+            {
+              backgroundColor: theme.dangerSurface,
+              borderColor: theme.dangerBorder,
+            },
+          ]}
+        >
+          <Ionicons color={theme.danger} name="eye-off-outline" size={16} />
+          <Text style={[styles.secretText, { color: theme.danger }]}>
+            {t("passPhoneDontLook")}
+          </Text>
+        </RNView>
+      ) : null}
+      {hint ? (
+        <Text style={[styles.hint, { color: theme.mutedText }]}>{hint}</Text>
+      ) : null}
+      <Pressable
+        accessibilityLabel={readyLabel ?? t("passPhoneReady")}
+        accessibilityRole="button"
+        onPress={handleReady}
+        style={[styles.btn, { backgroundColor: toPlayer.color }]}
+      >
+        <Text style={styles.btnText}>{readyLabel ?? t("passPhoneReady")}</Text>
+      </Pressable>
+    </Animated.View>
+  );
 }
 
 const styles = StyleSheet.create({
-	overlay: {
-		...StyleSheet.absoluteFill,
-		zIndex: 30,
-		alignItems: "center",
-		justifyContent: "center",
-		padding: Spacing["4xl"],
-		gap: Spacing.md,
-	},
-	dot: {
-		width: 96,
-		height: 96,
-		borderRadius: 48,
-		alignItems: "center",
-		justifyContent: "center",
-		marginBottom: Spacing.sm,
-	},
-	eyebrow: { ...TextStyle.statLabel },
-	title: {
-		fontSize: FontSize["2xl"],
-		fontWeight: FontWeight.black,
-		textAlign: "center",
-	},
-	secretPill: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 6,
-		borderWidth: 1,
-		borderRadius: Radius.pill,
-		paddingHorizontal: Spacing.md,
-		paddingVertical: 6,
-	},
-	secretText: { fontSize: FontSize.sm, fontWeight: FontWeight.bold },
-	hint: { ...TextStyle.hint, textAlign: "center", paddingHorizontal: Spacing.md },
-	btn: {
-		marginTop: Spacing.lg,
-		paddingHorizontal: Spacing["4xl"],
-		paddingVertical: Spacing.lg,
-		borderRadius: Radius.button,
-		alignSelf: "stretch",
-		alignItems: "center",
-	},
-	btnText: { ...TextStyle.buttonPrimary, color: "#0b1620" },
+  btn: {
+    alignItems: "center",
+    alignSelf: "stretch",
+    borderRadius: Radius.button,
+    marginTop: Spacing.lg,
+    paddingHorizontal: Spacing["4xl"],
+    paddingVertical: Spacing.lg,
+  },
+  btnText: { ...TextStyle.buttonPrimary, color: "#0b1620" },
+  dot: {
+    alignItems: "center",
+    borderRadius: 48,
+    height: 96,
+    justifyContent: "center",
+    marginBottom: Spacing.sm,
+    width: 96,
+  },
+  eyebrow: { ...TextStyle.statLabel },
+  hint: {
+    ...TextStyle.hint,
+    paddingHorizontal: Spacing.md,
+    textAlign: "center",
+  },
+  overlay: {
+    ...StyleSheet.absoluteFill,
+    alignItems: "center",
+    gap: Spacing.md,
+    justifyContent: "center",
+    padding: Spacing["4xl"],
+    zIndex: 30,
+  },
+  secretPill: {
+    alignItems: "center",
+    borderRadius: Radius.pill,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 6,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: 6,
+  },
+  secretText: { fontSize: FontSize.sm, fontWeight: FontWeight.bold },
+  title: {
+    fontSize: FontSize["2xl"],
+    fontWeight: FontWeight.black,
+    textAlign: "center",
+  },
 });

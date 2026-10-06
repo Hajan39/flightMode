@@ -2,31 +2,167 @@
 // can be unit-tested (green/yellow/gray marking incl. double letters, word pool
 // integrity) without pulling in React Native.
 
-export type LetterState = "correct" | "present" | "absent" | "empty" | "pending";
+export type LetterState =
+  | "correct"
+  | "present"
+  | "absent"
+  | "empty"
+  | "pending";
 
 const AVIATION_WORDS = [
-  "PILOT", "PLANE", "RADAR", "CABIN", "TOWER", "CARGO", "FLAPS", "CLOUD",
-  "GATES", "ROUTE", "DELTA", "PITCH", "CLEAR", "CLIMB", "GLIDE", "HOVER",
-  "ORBIT", "SKIES", "VAPOR", "GAUGE", "CHUTE", "SONIC", "BOOST", "WINDS",
-  "FRONT", "NIGHT", "SKIDS", "TAXIS", "PYLON", "BRACE", "VISOR", "QUEUE",
-  "TRAIL", "FUMES", "BRAKE", "SPEED", "LIGHT", "LAPSE", "STORM", "PROPS",
+  "PILOT",
+  "PLANE",
+  "RADAR",
+  "CABIN",
+  "TOWER",
+  "CARGO",
+  "FLAPS",
+  "CLOUD",
+  "GATES",
+  "ROUTE",
+  "DELTA",
+  "PITCH",
+  "CLEAR",
+  "CLIMB",
+  "GLIDE",
+  "HOVER",
+  "ORBIT",
+  "SKIES",
+  "VAPOR",
+  "GAUGE",
+  "CHUTE",
+  "SONIC",
+  "BOOST",
+  "WINDS",
+  "FRONT",
+  "NIGHT",
+  "SKIDS",
+  "TAXIS",
+  "PYLON",
+  "BRACE",
+  "VISOR",
+  "QUEUE",
+  "TRAIL",
+  "FUMES",
+  "BRAKE",
+  "SPEED",
+  "LIGHT",
+  "LAPSE",
+  "STORM",
+  "PROPS",
 ];
 
 const COMMON_WORDS = [
-  "RAISE", "HOUSE", "LIGHT", "PLACE", "STAND", "THINK", "FOUND", "GREAT",
-  "OFTEN", "ABOVE", "EVERY", "THOSE", "STILL", "SINCE", "THREE", "WHILE",
-  "MIGHT", "AFTER", "WATER", "ABOUT", "AGAIN", "WORLD", "NIGHT", "PHONE",
-  "BLACK", "WHITE", "YOUNG", "SMALL", "HEART", "MUSIC", "DRIVE", "WRITE",
-  "PAPER", "SHARE", "CHAIR", "SMILE", "FIELD", "DREAM", "BREAK",
-  "CLOCK", "FLOOR", "POINT", "POWER", "BREAD", "EARTH", "GLASS", "GRADE",
-  "GRACE", "PEACE", "PRIZE", "QUEEN", "SPACE", "SPARK", "STAGE", "STAKE",
-  "STARE", "STORY", "STYLE", "SUITE", "SWEAR", "SWEET", "SWORD", "SWORE",
-  "TABLE", "TASTE", "TEACH", "TEARS", "TEETH", "THANK", "THEME", "THICK",
-  "THING", "THORN", "THOSE", "THROW", "TIGHT", "TIRED", "TODAY", "TOKEN",
-  "TAKEN", "TOUGH", "TOWEL", "TRACK", "TRADE", "TRAIN", "TREAT", "TREND",
-  "TRIBE", "TRICK", "TRIED", "BRING", "BUILD", "BUILT", "BURST", "BUYER",
-  "CARGO", "CARRY", "CAUSE", "CEASE", "CEDAR", "CHALK", "CHAOS",
-  "CHECK", "CHESS", "CHIEF", "CHILD", "CLAIM", "CLASS", "CLEAN", "CLERK",
+  "RAISE",
+  "HOUSE",
+  "LIGHT",
+  "PLACE",
+  "STAND",
+  "THINK",
+  "FOUND",
+  "GREAT",
+  "OFTEN",
+  "ABOVE",
+  "EVERY",
+  "THOSE",
+  "STILL",
+  "SINCE",
+  "THREE",
+  "WHILE",
+  "MIGHT",
+  "AFTER",
+  "WATER",
+  "ABOUT",
+  "AGAIN",
+  "WORLD",
+  "NIGHT",
+  "PHONE",
+  "BLACK",
+  "WHITE",
+  "YOUNG",
+  "SMALL",
+  "HEART",
+  "MUSIC",
+  "DRIVE",
+  "WRITE",
+  "PAPER",
+  "SHARE",
+  "CHAIR",
+  "SMILE",
+  "FIELD",
+  "DREAM",
+  "BREAK",
+  "CLOCK",
+  "FLOOR",
+  "POINT",
+  "POWER",
+  "BREAD",
+  "EARTH",
+  "GLASS",
+  "GRADE",
+  "GRACE",
+  "PEACE",
+  "PRIZE",
+  "QUEEN",
+  "SPACE",
+  "SPARK",
+  "STAGE",
+  "STAKE",
+  "STARE",
+  "STORY",
+  "STYLE",
+  "SUITE",
+  "SWEAR",
+  "SWEET",
+  "SWORD",
+  "SWORE",
+  "TABLE",
+  "TASTE",
+  "TEACH",
+  "TEARS",
+  "TEETH",
+  "THANK",
+  "THEME",
+  "THICK",
+  "THING",
+  "THORN",
+  "THOSE",
+  "THROW",
+  "TIGHT",
+  "TIRED",
+  "TODAY",
+  "TOKEN",
+  "TAKEN",
+  "TOUGH",
+  "TOWEL",
+  "TRACK",
+  "TRADE",
+  "TRAIN",
+  "TREAT",
+  "TREND",
+  "TRIBE",
+  "TRICK",
+  "TRIED",
+  "BRING",
+  "BUILD",
+  "BUILT",
+  "BURST",
+  "BUYER",
+  "CARGO",
+  "CARRY",
+  "CAUSE",
+  "CEASE",
+  "CEDAR",
+  "CHALK",
+  "CHAOS",
+  "CHECK",
+  "CHESS",
+  "CHIEF",
+  "CHILD",
+  "CLAIM",
+  "CLASS",
+  "CLEAN",
+  "CLERK",
 ];
 
 export const WORD_POOL = [
@@ -47,11 +183,11 @@ export function getDayOfYear(): number {
  * than it actually occurs in the target.
  */
 export function checkGuess(guess: string, target: string): LetterState[] {
-  const states: LetterState[] = Array(5).fill("absent");
+  const states: LetterState[] = new Array(5).fill("absent");
   const targetChars = target.split("");
 
   // Pass 1: greens
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i += 1) {
     if (guess[i] === target[i]) {
       states[i] = "correct";
       targetChars[i] = ""; // consumed
@@ -59,8 +195,10 @@ export function checkGuess(guess: string, target: string): LetterState[] {
   }
 
   // Pass 2: yellows
-  for (let i = 0; i < 5; i++) {
-    if (states[i] === "correct") continue;
+  for (let i = 0; i < 5; i += 1) {
+    if (states[i] === "correct") {
+      continue;
+    }
     const idx = targetChars.indexOf(guess[i]);
     if (idx !== -1) {
       states[i] = "present";
@@ -72,17 +210,17 @@ export function checkGuess(guess: string, target: string): LetterState[] {
 }
 
 export const PRIORITY: Record<LetterState, number> = {
-  correct: 3,
-  present: 2,
   absent: 1,
+  correct: 3,
   empty: 0,
   pending: 0,
+  present: 2,
 };
 
 export function mergeKeyboard(
   existing: Record<string, LetterState>,
   newStates: LetterState[],
-  letters: string[],
+  letters: string[]
 ): Record<string, LetterState> {
   const next = { ...existing };
   letters.forEach((letter, i) => {

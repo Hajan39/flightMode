@@ -11,25 +11,30 @@ export const FILLED = 1;
 export type CellState = typeof UNKNOWN | typeof EMPTY | typeof FILLED;
 
 /** Number clues for every row and column, in reading order. */
-export type Clues = { rows: number[][]; cols: number[][] };
+export interface Clues {
+  cols: number[][];
+  rows: number[][];
+}
 
 /**
  * Returns the run-lengths of consecutive `true` values in a line.
  * An all-empty line yields `[]` (the UI renders that as "0").
  */
 export function runsOf(line: boolean[]): number[] {
-	const runs: number[] = [];
-	let current = 0;
-	for (const filled of line) {
-		if (filled) {
-			current++;
-		} else if (current > 0) {
-			runs.push(current);
-			current = 0;
-		}
-	}
-	if (current > 0) runs.push(current);
-	return runs;
+  const runs: number[] = [];
+  let current = 0;
+  for (const filled of line) {
+    if (filled) {
+      current += 1;
+    } else if (current > 0) {
+      runs.push(current);
+      current = 0;
+    }
+  }
+  if (current > 0) {
+    runs.push(current);
+  }
+  return runs;
 }
 
 /**
@@ -37,22 +42,26 @@ export function runsOf(line: boolean[]): number[] {
  * `solution` is a list of equal-length strings using "#" (filled) / "." (empty).
  */
 export function deriveClues(solution: string[]): Clues {
-	const size = solution.length;
-	const rows = solution.map((row) => runsOf([...row].map((ch) => ch === "#")));
-	const cols: number[][] = [];
-	for (let c = 0; c < size; c++) {
-		cols.push(runsOf(solution.map((row) => row[c] === "#")));
-	}
-	return { rows, cols };
+  const size = solution.length;
+  const rows = solution.map((row) => runsOf([...row].map((ch) => ch === "#")));
+  const cols: number[][] = [];
+  for (let c = 0; c < size; c += 1) {
+    cols.push(runsOf(solution.map((row) => row[c] === "#")));
+  }
+  return { cols, rows };
 }
 
 /** Total number of filled cells a clue set implies (sum of all row runs). */
 export function countFilledCells(solution: string[]): number {
-	let count = 0;
-	for (const row of solution) {
-		for (const ch of row) if (ch === "#") count++;
-	}
-	return count;
+  let count = 0;
+  for (const row of solution) {
+    for (const ch of row) {
+      if (ch === "#") {
+        count += 1;
+      }
+    }
+  }
+  return count;
 }
 
 /**
@@ -60,10 +69,12 @@ export function countFilledCells(solution: string[]): number {
  * `clue` may be `[]` for an empty line.
  */
 export function isLineSatisfied(clue: number[], filled: boolean[]): boolean {
-	const runs = runsOf(filled);
-	const expected = clue.filter((n) => n > 0);
-	if (runs.length !== expected.length) return false;
-	return runs.every((run, i) => run === expected[i]);
+  const runs = runsOf(filled);
+  const expected = clue.filter((n) => n > 0);
+  if (runs.length !== expected.length) {
+    return false;
+  }
+  return runs.every((run, i) => run === expected[i]);
 }
 
 /**
@@ -74,100 +85,127 @@ export function isLineSatisfied(clue: number[], filled: boolean[]): boolean {
  * (a contradiction). Lines are ≤ 10 cells, so direct enumeration is cheap.
  */
 export function solveLine(
-	clue: number[],
-	cells: CellState[],
+  clue: number[],
+  cells: CellState[]
 ): CellState[] | null {
-	const n = cells.length;
-	const runs = clue.filter((c) => c > 0);
+  const n = cells.length;
+  const runs = clue.filter((c) => c > 0);
 
-	// canBeFilled / canBeEmpty per cell, across all valid placements.
-	const canFill = new Array<boolean>(n).fill(false);
-	const canEmpty = new Array<boolean>(n).fill(false);
-	let found = false;
+  // canBeFilled / canBeEmpty per cell, across all valid placements.
+  const canFill = new Array<boolean>(n).fill(false);
+  const canEmpty = new Array<boolean>(n).fill(false);
+  let found = false;
 
-	const line = new Array<boolean>(n).fill(false);
+  const line = new Array<boolean>(n).fill(false);
 
-	const emit = () => {
-		found = true;
-		for (let i = 0; i < n; i++) {
-			if (line[i]) canFill[i] = true;
-			else canEmpty[i] = true;
-		}
-	};
+  const emit = () => {
+    found = true;
+    for (let i = 0; i < n; i += 1) {
+      if (line[i]) {
+        canFill[i] = true;
+      } else {
+        canEmpty[i] = true;
+      }
+    }
+  };
 
-	// Places runs[runIdx..] starting at cell `start`; cells before `start`
-	// are already decided in `line`.
-	const place = (runIdx: number, start: number): void => {
-		if (runIdx === runs.length) {
-			// Remaining cells must all be empty.
-			for (let i = start; i < n; i++) {
-				if (cells[i] === FILLED) return;
-			}
-			for (let i = start; i < n; i++) line[i] = false;
-			emit();
-			return;
-		}
+  // Places runs[runIdx..] starting at cell `start`; cells before `start`
+  // are already decided in `line`.
+  const place = (runIdx: number, start: number): void => {
+    if (runIdx === runs.length) {
+      // Remaining cells must all be empty.
+      for (let i = start; i < n; i += 1) {
+        if (cells[i] === FILLED) {
+          return;
+        }
+      }
+      for (let i = start; i < n; i += 1) {
+        line[i] = false;
+      }
+      emit();
+      return;
+    }
 
-		const len = runs[runIdx];
-		const restLen = runs
-			.slice(runIdx + 1)
-			.reduce((sum, r) => sum + r + 1, 0);
-		const lastStart = n - restLen - len;
+    const len = runs[runIdx];
+    const restLen = runs.slice(runIdx + 1).reduce((sum, r) => sum + r + 1, 0);
+    const lastStart = n - restLen - len;
 
-		for (let pos = start; pos <= lastStart; pos++) {
-			// Cell just before the run (gap) must not be forced-filled — the
-			// loop naturally covers this: any skipped cell must allow empty.
-			if (pos > start && cells[pos - 1] === FILLED) break;
+    for (let pos = start; pos <= lastStart; pos += 1) {
+      // Cell just before the run (gap) must not be forced-filled — the
+      // loop naturally covers this: any skipped cell must allow empty.
+      if (pos > start && cells[pos - 1] === FILLED) {
+        break;
+      }
 
-			// Cells start..pos-1 are gaps (empty).
-			let ok = true;
-			for (let i = start; i < pos; i++) {
-				if (cells[i] === FILLED) {
-					ok = false;
-					break;
-				}
-			}
-			if (!ok) continue;
+      // Cells start..pos-1 are gaps (empty).
+      let ok = true;
+      for (let i = start; i < pos; i += 1) {
+        if (cells[i] === FILLED) {
+          ok = false;
+          break;
+        }
+      }
+      if (!ok) {
+        continue;
+      }
 
-			// The run itself must not overlap a known-empty cell.
-			for (let i = pos; i < pos + len; i++) {
-				if (cells[i] === EMPTY) {
-					ok = false;
-					break;
-				}
-			}
-			if (!ok) continue;
+      // The run itself must not overlap a known-empty cell.
+      for (let i = pos; i < pos + len; i += 1) {
+        if (cells[i] === EMPTY) {
+          ok = false;
+          break;
+        }
+      }
+      if (!ok) {
+        continue;
+      }
 
-			// Separator after the run (when another run follows).
-			const after = pos + len;
-			const needsGap = runIdx < runs.length - 1;
-			if (needsGap && cells[after] === FILLED) continue;
+      // Separator after the run (when another run follows).
+      const after = pos + len;
+      const needsGap = runIdx < runs.length - 1;
+      if (needsGap && cells[after] === FILLED) {
+        continue;
+      }
 
-			for (let i = start; i < pos; i++) line[i] = false;
-			for (let i = pos; i < pos + len; i++) line[i] = true;
-			if (needsGap) {
-				line[after] = false;
-				place(runIdx + 1, after + 1);
-			} else {
-				place(runIdx + 1, after);
-			}
-		}
-	};
+      for (let i = start; i < pos; i += 1) {
+        line[i] = false;
+      }
+      for (let i = pos; i < pos + len; i += 1) {
+        line[i] = true;
+      }
+      if (needsGap) {
+        line[after] = false;
+        place(runIdx + 1, after + 1);
+      } else {
+        place(runIdx + 1, after);
+      }
+    }
+  };
 
-	place(0, 0);
-	if (!found) return null;
+  place(0, 0);
+  if (!found) {
+    return null;
+  }
 
-	const result: CellState[] = new Array(n);
-	for (let i = 0; i < n; i++) {
-		if (canFill[i] && !canEmpty[i]) result[i] = FILLED;
-		else if (canEmpty[i] && !canFill[i]) result[i] = EMPTY;
-		else result[i] = UNKNOWN;
-	}
-	return result;
+  const result: CellState[] = new Array(n);
+  for (let i = 0; i < n; i += 1) {
+    if (canFill[i] && !canEmpty[i]) {
+      result[i] = FILLED;
+    } else if (canEmpty[i] && !canFill[i]) {
+      result[i] = EMPTY;
+    } else {
+      result[i] = UNKNOWN;
+    }
+  }
+  return result;
 }
 
 /** A single cell deduction produced by `findForcedCell`. */
-export type ForcedCell = { r: number; c: number; state: CellState };
+export interface ForcedCell {
+  c: number;
+  r: number;
+  state: CellState;
+}
 
 /**
  * Runs one pass of line deduction over the current grid and returns ONE cell
@@ -178,34 +216,50 @@ export type ForcedCell = { r: number; c: number; state: CellState };
  * Lines that currently contradict their clue (bad user marks) are skipped.
  */
 export function findForcedCell(
-	clues: Clues,
-	grid: CellState[][],
+  clues: Clues,
+  grid: CellState[][]
 ): ForcedCell | null {
-	const size = grid.length;
-	let firstEmpty: ForcedCell | null = null;
+  const size = grid.length;
+  let firstEmpty: ForcedCell | null = null;
 
-	for (let r = 0; r < size; r++) {
-		const solved = solveLine(clues.rows[r], grid[r]);
-		if (!solved) continue;
-		for (let c = 0; c < size; c++) {
-			if (grid[r][c] !== UNKNOWN || solved[c] === UNKNOWN) continue;
-			if (solved[c] === FILLED) return { r, c, state: FILLED };
-			if (!firstEmpty) firstEmpty = { r, c, state: EMPTY };
-		}
-	}
+  for (let r = 0; r < size; r += 1) {
+    const solved = solveLine(clues.rows[r], grid[r]);
+    if (!solved) {
+      continue;
+    }
+    for (let c = 0; c < size; c += 1) {
+      if (grid[r][c] !== UNKNOWN || solved[c] === UNKNOWN) {
+        continue;
+      }
+      if (solved[c] === FILLED) {
+        return { c, r, state: FILLED };
+      }
+      if (!firstEmpty) {
+        firstEmpty = { c, r, state: EMPTY };
+      }
+    }
+  }
 
-	for (let c = 0; c < size; c++) {
-		const column = grid.map((row) => row[c]);
-		const solved = solveLine(clues.cols[c], column);
-		if (!solved) continue;
-		for (let r = 0; r < size; r++) {
-			if (grid[r][c] !== UNKNOWN || solved[r] === UNKNOWN) continue;
-			if (solved[r] === FILLED) return { r, c, state: FILLED };
-			if (!firstEmpty) firstEmpty = { r, c, state: EMPTY };
-		}
-	}
+  for (let c = 0; c < size; c += 1) {
+    const column = grid.map((row) => row[c]);
+    const solved = solveLine(clues.cols[c], column);
+    if (!solved) {
+      continue;
+    }
+    for (let r = 0; r < size; r += 1) {
+      if (grid[r][c] !== UNKNOWN || solved[r] === UNKNOWN) {
+        continue;
+      }
+      if (solved[r] === FILLED) {
+        return { c, r, state: FILLED };
+      }
+      if (!firstEmpty) {
+        firstEmpty = { c, r, state: EMPTY };
+      }
+    }
+  }
 
-	return firstEmpty;
+  return firstEmpty;
 }
 
 /**
@@ -216,42 +270,48 @@ export function findForcedCell(
  * is unique.
  */
 export function solveByLineLogic(clues: Clues, size: number): string[] | null {
-	const grid: CellState[][] = Array.from({ length: size }, () =>
-		new Array<CellState>(size).fill(UNKNOWN),
-	);
+  const grid: CellState[][] = Array.from({ length: size }, () =>
+    new Array<CellState>(size).fill(UNKNOWN)
+  );
 
-	let changed = true;
-	while (changed) {
-		changed = false;
+  let changed = true;
+  while (changed) {
+    changed = false;
 
-		for (let r = 0; r < size; r++) {
-			const solved = solveLine(clues.rows[r], grid[r]);
-			if (!solved) return null;
-			for (let c = 0; c < size; c++) {
-				if (solved[c] !== UNKNOWN && grid[r][c] !== solved[c]) {
-					grid[r][c] = solved[c];
-					changed = true;
-				}
-			}
-		}
+    for (let r = 0; r < size; r += 1) {
+      const solved = solveLine(clues.rows[r], grid[r]);
+      if (!solved) {
+        return null;
+      }
+      for (let c = 0; c < size; c += 1) {
+        if (solved[c] !== UNKNOWN && grid[r][c] !== solved[c]) {
+          grid[r][c] = solved[c];
+          changed = true;
+        }
+      }
+    }
 
-		for (let c = 0; c < size; c++) {
-			const column = grid.map((row) => row[c]);
-			const solved = solveLine(clues.cols[c], column);
-			if (!solved) return null;
-			for (let r = 0; r < size; r++) {
-				if (solved[r] !== UNKNOWN && grid[r][c] !== solved[r]) {
-					grid[r][c] = solved[r];
-					changed = true;
-				}
-			}
-		}
-	}
+    for (let c = 0; c < size; c += 1) {
+      const column = grid.map((row) => row[c]);
+      const solved = solveLine(clues.cols[c], column);
+      if (!solved) {
+        return null;
+      }
+      for (let r = 0; r < size; r += 1) {
+        if (solved[r] !== UNKNOWN && grid[r][c] !== solved[r]) {
+          grid[r][c] = solved[r];
+          changed = true;
+        }
+      }
+    }
+  }
 
-	for (const row of grid) {
-		if (row.includes(UNKNOWN)) return null;
-	}
-	return grid.map((row) =>
-		row.map((cell) => (cell === FILLED ? "#" : ".")).join(""),
-	);
+  for (const row of grid) {
+    if (row.includes(UNKNOWN)) {
+      return null;
+    }
+  }
+  return grid.map((row) =>
+    row.map((cell) => (cell === FILLED ? "#" : ".")).join("")
+  );
 }

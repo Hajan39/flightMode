@@ -1,0 +1,81 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/jest"
+  ],
+  "linter": {
+    "rules": {
+      "performance": {
+        // React Compiler is enabled (app.json experiments.reactCompiler) and
+        // auto-memoizes inline JSX props, so banning arrows-in-props would
+        // force ~280 useCallback refactors the compiler already makes moot.
+        "noJsxPropsBind": "off"
+      },
+      "style": {
+        // Expo Router route files ([id].tsx, (tabs)/…) and the established
+        // PascalCase component convention both violate the preset's naming
+        // scheme; renaming 100+ files would churn history for zero value.
+        "useFilenamingConvention": "off"
+      },
+      "suspicious": {
+        // Games use deliberate bit-math: seeded RNG (mulberry32), BFS state
+        // hashing, grid bitmasks. Rewriting it non-bitwise would be slower
+        // and less clear.
+        "noBitwiseOperators": "off",
+        // Pre-existing known debt (see CLAUDE.md): index keys in static,
+        // never-reordered lists. Visible as warnings; fix opportunistically.
+        "noArrayIndexKey": "warn"
+      },
+      "correctness": {
+        // Pre-existing known debt (see CLAUDE.md): hook dependency gaps.
+        // Blind autofixes change behavior (effects re-run), so these stay
+        // warnings to be fixed deliberately, file by file.
+        "useExhaustiveDependencies": "warn"
+      },
+      "complexity": {
+        // Long-lived, solver-/test-covered game loops exceed the default
+        // cognitive-complexity budget; refactoring working games wholesale
+        // is riskier than the metric is worth. Tracked as warnings.
+        "noExcessiveCognitiveComplexity": "warn"
+      }
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "useSortedKeys": "on"
+      }
+    }
+  },
+  "overrides": [
+    {
+      // Locale files are feature-grouped with section comments on purpose;
+      // alphabetical sorting would strand the comments and destroy the
+      // grouping that keeps 1000-key files navigable.
+      "includes": ["i18n/locales/**"],
+      "assist": {
+        "actions": {
+          "source": {
+            "useSortedKeys": "off"
+          }
+        }
+      }
+    },
+    {
+      // Node-land CommonJS (Expo config plugin + Jest setup), not app code.
+      "includes": ["plugins/**", "jest.setup.js"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noCommonJs": "off"
+          },
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import {
-	Image,
-	type NativeScrollEvent,
-	type NativeSyntheticEvent,
-	ScrollView,
-	StyleSheet,
-	useWindowDimensions,
+  Image,
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -22,132 +22,145 @@ import { captureAnalyticsEvent } from "@/utils/analytics";
 import { trackFirstSessionCompleted } from "@/utils/firstSession";
 
 export default function ContentDetailScreen() {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { language, t } = useTranslation();
-	const { id } = useLocalSearchParams<{ id: string }>();
-	const articles = useContentItems();
-	const article = articles.find((a) => a.id === id);
-	const markArticleRead = useAchievementStore((s) => s.markArticleRead);
-	const [hasFinishedArticle, setHasFinishedArticle] = useState(false);
-	const { width } = useWindowDimensions();
-	const heroImage = useArticleImage(article?.image);
-	const isFallback = article ? !hasLanguage(article, language) : false;
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { language, t } = useTranslation();
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const articles = useContentItems();
+  const article = articles.find((a) => a.id === id);
+  const markArticleRead = useAchievementStore((s) => s.markArticleRead);
+  const [hasFinishedArticle, setHasFinishedArticle] = useState(false);
+  const { width } = useWindowDimensions();
+  const heroImage = useArticleImage(article?.image);
+  const isFallback = article ? !hasLanguage(article, language) : false;
 
-	useEffect(() => {
-		if (id) markArticleRead(id);
-	}, [id, markArticleRead]);
+  useEffect(() => {
+    if (id) {
+      markArticleRead(id);
+    }
+  }, [id, markArticleRead]);
 
-	useEffect(() => {
-		if (!id) return;
-		setHasFinishedArticle(false);
-	}, [id]);
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    setHasFinishedArticle(false);
+  }, [id]);
 
-	useEffect(() => {
-		if (!article) return;
+  useEffect(() => {
+    if (!article) {
+      return;
+    }
 
-		captureAnalyticsEvent("article_open", {
-			article_id: article.id,
-			category: getLocalizedText(article.category, language),
-			read_time_minutes: article.readTime,
-			language,
-			is_fallback: isFallback,
-		});
-	}, [article, language, isFallback]);
+    captureAnalyticsEvent("article_open", {
+      article_id: article.id,
+      category: getLocalizedText(article.category, language),
+      is_fallback: isFallback,
+      language,
+      read_time_minutes: article.readTime,
+    });
+  }, [article, language, isFallback]);
 
-	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-		if (!article || hasFinishedArticle) return;
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    if (!article || hasFinishedArticle) {
+      return;
+    }
 
-		const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
-		const isNearBottom =
-			contentOffset.y + layoutMeasurement.height >= contentSize.height - 48;
+    const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
+    const isNearBottom =
+      contentOffset.y + layoutMeasurement.height >= contentSize.height - 48;
 
-		if (!isNearBottom) return;
+    if (!isNearBottom) {
+      return;
+    }
 
-		setHasFinishedArticle(true);
-		captureAnalyticsEvent("article_finish", {
-			article_id: article.id,
-			category: getLocalizedText(article.category, language),
-			read_time_minutes: article.readTime,
-			language,
-			is_fallback: isFallback,
-		});
-		trackFirstSessionCompleted("content");
-	};
+    setHasFinishedArticle(true);
+    captureAnalyticsEvent("article_finish", {
+      article_id: article.id,
+      category: getLocalizedText(article.category, language),
+      is_fallback: isFallback,
+      language,
+      read_time_minutes: article.readTime,
+    });
+    trackFirstSessionCompleted("content");
+  };
 
-	if (!article) {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.notFoundTitle}>{t("articleNotFound")}</Text>
-				<Text style={[styles.notFoundHint, { color: theme.mutedText }]}>
-					{t("articleNotFoundHint")}
-				</Text>
-			</View>
-		);
-	}
+  if (!article) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.notFoundTitle}>{t("articleNotFound")}</Text>
+        <Text style={[styles.notFoundHint, { color: theme.mutedText }]}>
+          {t("articleNotFoundHint")}
+        </Text>
+      </View>
+    );
+  }
 
-	return (
-		<>
-			<Stack.Screen
-				options={{ title: getLocalizedText(article.title, language) }}
-			/>
-			<ScrollView
-				style={[styles.scroll, { backgroundColor: theme.background }]}
-				contentContainerStyle={styles.content}
-				onScroll={handleScroll}
-				scrollEventThrottle={250}
-			>
-				{heroImage && (
-					<Image
-						source={heroImage}
-						style={[styles.heroImage, { width: width - 40, height: Math.round((width - 40) * 0.5625) }]}
-						resizeMode="cover"
-					/>
-				)}
-				<Text style={[styles.category, { color: theme.tint }]}>
-					{getLocalizedText(article.category, language)}
-				</Text>
-				<Text style={styles.title}>
-					{getLocalizedText(article.title, language)}
-				</Text>
-				<Text style={[styles.meta, { color: theme.mutedText }]}>
-					{t("minutesRead", { minutes: article.readTime })}
-					{isFallback ? ` · ${t("contentFallbackNotice")}` : ""}
-				</Text>
-				<Text style={[styles.readingHint, { color: theme.mutedText }]}>
-					{t("exploreReadingHint")}
-				</Text>
-				{getLocalizedText(article.body, language)
-					.split("\n")
-					.filter((p) => p.trim().length > 0)
-					.map((paragraph) => {
-						const trimmed = paragraph.trim();
-						const paragraphKey = `${article.id}-${trimmed.slice(0, 24)}-${trimmed.length}`;
+  return (
+    <>
+      <Stack.Screen
+        options={{ title: getLocalizedText(article.title, language) }}
+      />
+      <ScrollView
+        contentContainerStyle={styles.content}
+        onScroll={handleScroll}
+        scrollEventThrottle={250}
+        style={[styles.scroll, { backgroundColor: theme.background }]}
+      >
+        {heroImage && (
+          <Image
+            resizeMode="cover"
+            source={heroImage}
+            style={[
+              styles.heroImage,
+              { height: Math.round((width - 40) * 0.5625), width: width - 40 },
+            ]}
+          />
+        )}
+        <Text style={[styles.category, { color: theme.tint }]}>
+          {getLocalizedText(article.category, language)}
+        </Text>
+        <Text style={styles.title}>
+          {getLocalizedText(article.title, language)}
+        </Text>
+        <Text style={[styles.meta, { color: theme.mutedText }]}>
+          {t("minutesRead", { minutes: article.readTime })}
+          {isFallback ? ` · ${t("contentFallbackNotice")}` : ""}
+        </Text>
+        <Text style={[styles.readingHint, { color: theme.mutedText }]}>
+          {t("exploreReadingHint")}
+        </Text>
+        {getLocalizedText(article.body, language)
+          .split("\n")
+          .filter((p) => p.trim().length > 0)
+          .map((paragraph) => {
+            const trimmed = paragraph.trim();
+            const paragraphKey = `${article.id}-${trimmed.slice(0, 24)}-${trimmed.length}`;
 
-						return (
-							<Text
-								key={paragraphKey}
-								style={[styles.body, { color: theme.text }]}
-							>
-								{trimmed}
-							</Text>
-						);
-					})}
-			</ScrollView>
-		</>
-	);
+            return (
+              <Text
+                key={paragraphKey}
+                style={[styles.body, { color: theme.text }]}
+              >
+                {trimmed}
+              </Text>
+            );
+          })}
+      </ScrollView>
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
-	container: { flex: 1, alignItems: "center", justifyContent: "center" },
-	notFoundTitle: { fontSize: 16, fontWeight: "600", textAlign: "center" },
-	notFoundHint: { fontSize: 13, textAlign: "center", marginTop: 6 },
-	scroll: { flex: 1 },
-	content: { padding: 20 },
-	heroImage: { borderRadius: Radius.md, marginBottom: 16 },
-	category: { fontSize: 12, fontWeight: "600", textTransform: "uppercase" },
-	title: { fontSize: 22, fontWeight: "700", marginTop: 8 },
-	meta: { fontSize: 13, marginTop: 4, marginBottom: 8 },
-	readingHint: { fontSize: 12, lineHeight: 16, marginBottom: 14 },
-	body: { fontSize: 16, lineHeight: 24, marginBottom: 12 },
+  body: { fontSize: 16, lineHeight: 24, marginBottom: 12 },
+  category: { fontSize: 12, fontWeight: "600", textTransform: "uppercase" },
+  container: { alignItems: "center", flex: 1, justifyContent: "center" },
+  content: { padding: 20 },
+  heroImage: { borderRadius: Radius.md, marginBottom: 16 },
+  meta: { fontSize: 13, marginBottom: 8, marginTop: 4 },
+  notFoundHint: { fontSize: 13, marginTop: 6, textAlign: "center" },
+  notFoundTitle: { fontSize: 16, fontWeight: "600", textAlign: "center" },
+  readingHint: { fontSize: 12, lineHeight: 16, marginBottom: 14 },
+  scroll: { flex: 1 },
+  title: { fontSize: 22, fontWeight: "700", marginTop: 8 },
 });

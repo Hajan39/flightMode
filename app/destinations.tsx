@@ -14,288 +14,317 @@ import { getPhraseLanguage } from "@/data/phrases";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export default function DestinationsScreen() {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { t } = useTranslation();
-	const router = useRouter();
-	const { focus } = useLocalSearchParams<{ focus?: string }>();
-	const focusedId =
-		focus && destinations.some((d) => d.id === focus)
-			? focus
-			: (destinations[0]?.id ?? null);
-	const [expandedId, setExpandedId] = useState<string | null>(focusedId);
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { t } = useTranslation();
+  const router = useRouter();
+  const { focus } = useLocalSearchParams<{ focus?: string }>();
+  const focusedId =
+    focus && destinations.some((d) => d.id === focus)
+      ? focus
+      : (destinations[0]?.id ?? null);
+  const [expandedId, setExpandedId] = useState<string | null>(focusedId);
 
-	const toggle = (id: string) => {
-		setExpandedId((current) => (current === id ? null : id));
-	};
+  const toggle = (id: string) => {
+    setExpandedId((current) => (current === id ? null : id));
+  };
 
-	return (
-		<SafeAreaView
-			style={[styles.safe, { backgroundColor: theme.background }]}
-			edges={["bottom"]}
-		>
-			<ScrollView
-				style={styles.scroll}
-				contentContainerStyle={styles.content}
-				showsVerticalScrollIndicator={false}
-			>
-				<Text style={[styles.subtitle, { color: theme.mutedText }]}>
-					{t("destinationsSubtitle")}
-				</Text>
+  return (
+    <SafeAreaView
+      edges={["bottom"]}
+      style={[styles.safe, { backgroundColor: theme.background }]}
+    >
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+        style={styles.scroll}
+      >
+        <Text style={[styles.subtitle, { color: theme.mutedText }]}>
+          {t("destinationsSubtitle")}
+        </Text>
 
-				{destinations.map((destination) => {
-					const isExpanded = expandedId === destination.id;
-					const tipCount = destination.tips.length;
-					const tipLabel = t("destinationsTips");
+        {destinations.map((destination) => {
+          const isExpanded = expandedId === destination.id;
+          const tipCount = destination.tips.length;
+          const tipLabel = t("destinationsTips");
 
-					return (
-						<View
-							key={destination.id}
-							style={[
-								styles.card,
-								{ backgroundColor: theme.card, borderColor: theme.border },
-							]}
-						>
-							<Pressable
-								style={styles.cardHeader}
-								onPress={() => toggle(destination.id)}
-								accessibilityRole="button"
-								accessibilityState={{ expanded: isExpanded }}
-							>
-								<Text style={styles.emoji}>{destination.emoji}</Text>
-								<View
-									style={styles.headerText}
-									lightColor="transparent"
-									darkColor="transparent"
-									crazyColor="transparent"
-								>
-									<Text style={styles.city}>{destination.city}</Text>
-									<Text style={[styles.country, { color: theme.mutedText }]}>
-										{destination.country}
-									</Text>
-								</View>
-								<Text style={[styles.tipCount, { color: theme.tint }]}>
-									{tipCount} {tipLabel}
-								</Text>
-								<Ionicons
-									name={isExpanded ? "chevron-up" : "chevron-down"}
-									size={20}
-									color={theme.mutedText}
-								/>
-							</Pressable>
+          return (
+            <View
+              key={destination.id}
+              style={[
+                styles.card,
+                { backgroundColor: theme.card, borderColor: theme.border },
+              ]}
+            >
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ expanded: isExpanded }}
+                onPress={() => toggle(destination.id)}
+                style={styles.cardHeader}
+              >
+                <Text style={styles.emoji}>{destination.emoji}</Text>
+                <View
+                  crazyColor="transparent"
+                  darkColor="transparent"
+                  lightColor="transparent"
+                  style={styles.headerText}
+                >
+                  <Text style={styles.city}>{destination.city}</Text>
+                  <Text style={[styles.country, { color: theme.mutedText }]}>
+                    {destination.country}
+                  </Text>
+                </View>
+                <Text style={[styles.tipCount, { color: theme.tint }]}>
+                  {tipCount} {tipLabel}
+                </Text>
+                <Ionicons
+                  color={theme.mutedText}
+                  name={isExpanded ? "chevron-up" : "chevron-down"}
+                  size={20}
+                />
+              </Pressable>
 
-							{isExpanded && (
-								<View
-									style={[styles.tips, { borderTopColor: theme.border }]}
-									lightColor="transparent"
-									darkColor="transparent"
-									crazyColor="transparent"
-								>
-									{destination.tips.map((tip, index) => (
-										<View
-											key={`${destination.id}-${tip.labelKey}`}
-											style={[
-												styles.tipRow,
-												index === 0 && styles.tipRowFirst,
-											]}
-											lightColor="transparent"
-											darkColor="transparent"
-											crazyColor="transparent"
-										>
-											<View
-												style={[
-													styles.tipIcon,
-													{ backgroundColor: theme.accentSoft },
-												]}
-												lightColor={theme.accentSoft}
-												darkColor={theme.accentSoft}
-												crazyColor={theme.accentSoft}
-											>
-												<Ionicons
-													name={tip.icon as keyof typeof Ionicons.glyphMap}
-													size={18}
-													color={theme.tint}
-												/>
-											</View>
-											<View
-												style={styles.tipText}
-												lightColor="transparent"
-												darkColor="transparent"
-												crazyColor="transparent"
-											>
-												<Text style={[styles.tipLabel, { color: theme.text }]}>
-													{t(tip.labelKey)}
-												</Text>
-												<Text
-													style={[styles.tipBody, { color: theme.mutedText }]}
-												>
-													{tip.text}
-												</Text>
-											</View>
-										</View>
-									))}
-									<View
-										style={styles.toolsRow}
-										lightColor="transparent"
-										darkColor="transparent"
-										crazyColor="transparent"
-									>
-										{destination.phraseLanguage !== "en" ? (
-											<Pressable
-												style={[styles.toolBtn, { borderColor: theme.border, backgroundColor: theme.surface }]}
-												onPress={() =>
-													router.push(
-														`/phrasebook?lang=${destination.phraseLanguage}&source=destinations` as never,
-													)
-												}
-												accessibilityRole="button"
-											>
-												<Ionicons name="chatbubbles-outline" size={16} color={theme.tint} />
-												<Text style={[styles.toolText, { color: theme.text }]} numberOfLines={1}>
-													{t("destinationsPhrasebookCta", {
-														language:
-															getPhraseLanguage(destination.phraseLanguage)?.nativeName ??
-															destination.phraseLanguage,
-													})}
-												</Text>
-											</Pressable>
-										) : null}
-										<Pressable
-											style={[styles.toolBtn, { borderColor: theme.border, backgroundColor: theme.surface }]}
-											onPress={() =>
-												router.push(
-													`/converter?currency=${destination.currencyCode}&source=destinations` as never,
-												)
-											}
-											accessibilityRole="button"
-										>
-											<Ionicons name="swap-horizontal-outline" size={16} color={theme.tint} />
-											<Text style={[styles.toolText, { color: theme.text }]} numberOfLines={1}>
-												{t("destinationsConverterCta", { currency: destination.currencyCode })}
-											</Text>
-										</Pressable>
-									</View>
-								</View>
-							)}
-						</View>
-					);
-				})}
+              {isExpanded && (
+                <View
+                  crazyColor="transparent"
+                  darkColor="transparent"
+                  lightColor="transparent"
+                  style={[styles.tips, { borderTopColor: theme.border }]}
+                >
+                  {destination.tips.map((tip, index) => (
+                    <View
+                      crazyColor="transparent"
+                      darkColor="transparent"
+                      key={`${destination.id}-${tip.labelKey}`}
+                      lightColor="transparent"
+                      style={[styles.tipRow, index === 0 && styles.tipRowFirst]}
+                    >
+                      <View
+                        crazyColor={theme.accentSoft}
+                        darkColor={theme.accentSoft}
+                        lightColor={theme.accentSoft}
+                        style={[
+                          styles.tipIcon,
+                          { backgroundColor: theme.accentSoft },
+                        ]}
+                      >
+                        <Ionicons
+                          color={theme.tint}
+                          name={tip.icon as keyof typeof Ionicons.glyphMap}
+                          size={18}
+                        />
+                      </View>
+                      <View
+                        crazyColor="transparent"
+                        darkColor="transparent"
+                        lightColor="transparent"
+                        style={styles.tipText}
+                      >
+                        <Text style={[styles.tipLabel, { color: theme.text }]}>
+                          {t(tip.labelKey)}
+                        </Text>
+                        <Text
+                          style={[styles.tipBody, { color: theme.mutedText }]}
+                        >
+                          {tip.text}
+                        </Text>
+                      </View>
+                    </View>
+                  ))}
+                  <View
+                    crazyColor="transparent"
+                    darkColor="transparent"
+                    lightColor="transparent"
+                    style={styles.toolsRow}
+                  >
+                    {destination.phraseLanguage === "en" ? null : (
+                      <Pressable
+                        accessibilityRole="button"
+                        onPress={() =>
+                          router.push(
+                            `/phrasebook?lang=${destination.phraseLanguage}&source=destinations` as never
+                          )
+                        }
+                        style={[
+                          styles.toolBtn,
+                          {
+                            backgroundColor: theme.surface,
+                            borderColor: theme.border,
+                          },
+                        ]}
+                      >
+                        <Ionicons
+                          color={theme.tint}
+                          name="chatbubbles-outline"
+                          size={16}
+                        />
+                        <Text
+                          numberOfLines={1}
+                          style={[styles.toolText, { color: theme.text }]}
+                        >
+                          {t("destinationsPhrasebookCta", {
+                            language:
+                              getPhraseLanguage(destination.phraseLanguage)
+                                ?.nativeName ?? destination.phraseLanguage,
+                          })}
+                        </Text>
+                      </Pressable>
+                    )}
+                    <Pressable
+                      accessibilityRole="button"
+                      onPress={() =>
+                        router.push(
+                          `/converter?currency=${destination.currencyCode}&source=destinations` as never
+                        )
+                      }
+                      style={[
+                        styles.toolBtn,
+                        {
+                          backgroundColor: theme.surface,
+                          borderColor: theme.border,
+                        },
+                      ]}
+                    >
+                      <Ionicons
+                        color={theme.tint}
+                        name="swap-horizontal-outline"
+                        size={16}
+                      />
+                      <Text
+                        numberOfLines={1}
+                        style={[styles.toolText, { color: theme.text }]}
+                      >
+                        {t("destinationsConverterCta", {
+                          currency: destination.currencyCode,
+                        })}
+                      </Text>
+                    </Pressable>
+                  </View>
+                </View>
+              )}
+            </View>
+          );
+        })}
 
-				{destinations.length === 0 && (
-					<View style={styles.empty}>
-						<Ionicons
-							name="airplane-outline"
-							size={48}
-							color={theme.mutedText}
-						/>
-						<Text style={[styles.emptyText, { color: theme.mutedText }]}>
-							{t("destinationsEmpty")}
-						</Text>
-					</View>
-				)}
-			</ScrollView>
-		</SafeAreaView>
-	);
+        {destinations.length === 0 && (
+          <View style={styles.empty}>
+            <Ionicons
+              color={theme.mutedText}
+              name="airplane-outline"
+              size={48}
+            />
+            <Text style={[styles.emptyText, { color: theme.mutedText }]}>
+              {t("destinationsEmpty")}
+            </Text>
+          </View>
+        )}
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-	safe: { flex: 1 },
-	scroll: { flex: 1 },
-	content: {
-		padding: Spacing.lg,
-		paddingBottom: Spacing["4xl"],
-	},
-	subtitle: {
-		fontSize: FontSize.sm,
-		lineHeight: 18,
-		marginBottom: Spacing.lg,
-	},
-	card: {
-		borderWidth: 1,
-		borderRadius: Radius.panel,
-		marginBottom: Spacing.md,
-		overflow: "hidden",
-	},
-	cardHeader: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: Spacing.md,
-		padding: Spacing.lg,
-	},
-	emoji: {
-		fontSize: FontSize["2xl"],
-	},
-	headerText: { flex: 1 },
-	city: {
-		fontSize: FontSize.lg,
-		fontWeight: FontWeight.bold,
-	},
-	country: {
-		fontSize: FontSize.sm,
-		marginTop: 2,
-	},
-	tipCount: {
-		fontSize: FontSize.xs,
-		fontWeight: FontWeight.bold,
-		textTransform: "uppercase",
-		letterSpacing: 0.5,
-	},
-	tips: {
-		borderTopWidth: 1,
-		paddingHorizontal: Spacing.lg,
-		paddingBottom: Spacing.sm,
-	},
-	tipRow: {
-		flexDirection: "row",
-		alignItems: "flex-start",
-		gap: Spacing.md,
-		paddingVertical: Spacing.md,
-	},
-	tipRowFirst: {
-		paddingTop: Spacing.lg,
-	},
-	tipIcon: {
-		width: 34,
-		height: 34,
-		borderRadius: Radius.sm,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	tipText: { flex: 1 },
-	toolsRow: {
-		flexDirection: "row",
-		gap: Spacing.sm,
-		paddingVertical: Spacing.md,
-	},
-	toolBtn: {
-		flex: 1,
-		flexDirection: "row",
-		alignItems: "center",
-		justifyContent: "center",
-		gap: 6,
-		borderWidth: 1,
-		borderRadius: Radius.card,
-		paddingVertical: Spacing.sm + 2,
-		paddingHorizontal: Spacing.sm,
-	},
-	toolText: { fontSize: FontSize.sm, fontWeight: FontWeight.semibold, flexShrink: 1 },
-	tipLabel: {
-		fontSize: FontSize.base,
-		fontWeight: FontWeight.semibold,
-		marginBottom: 2,
-	},
-	tipBody: {
-		fontSize: FontSize.sm,
-		lineHeight: 19,
-	},
-	empty: {
-		alignItems: "center",
-		justifyContent: "center",
-		gap: Spacing.md,
-		paddingTop: Spacing["4xl"],
-	},
-	emptyText: {
-		fontSize: FontSize.md,
-		fontWeight: FontWeight.semibold,
-	},
+  card: {
+    borderRadius: Radius.panel,
+    borderWidth: 1,
+    marginBottom: Spacing.md,
+    overflow: "hidden",
+  },
+  cardHeader: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: Spacing.md,
+    padding: Spacing.lg,
+  },
+  city: {
+    fontSize: FontSize.lg,
+    fontWeight: FontWeight.bold,
+  },
+  content: {
+    padding: Spacing.lg,
+    paddingBottom: Spacing["4xl"],
+  },
+  country: {
+    fontSize: FontSize.sm,
+    marginTop: 2,
+  },
+  emoji: {
+    fontSize: FontSize["2xl"],
+  },
+  empty: {
+    alignItems: "center",
+    gap: Spacing.md,
+    justifyContent: "center",
+    paddingTop: Spacing["4xl"],
+  },
+  emptyText: {
+    fontSize: FontSize.md,
+    fontWeight: FontWeight.semibold,
+  },
+  headerText: { flex: 1 },
+  safe: { flex: 1 },
+  scroll: { flex: 1 },
+  subtitle: {
+    fontSize: FontSize.sm,
+    lineHeight: 18,
+    marginBottom: Spacing.lg,
+  },
+  tipBody: {
+    fontSize: FontSize.sm,
+    lineHeight: 19,
+  },
+  tipCount: {
+    fontSize: FontSize.xs,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 0.5,
+    textTransform: "uppercase",
+  },
+  tipIcon: {
+    alignItems: "center",
+    borderRadius: Radius.sm,
+    height: 34,
+    justifyContent: "center",
+    width: 34,
+  },
+  tipLabel: {
+    fontSize: FontSize.base,
+    fontWeight: FontWeight.semibold,
+    marginBottom: 2,
+  },
+  tipRow: {
+    alignItems: "flex-start",
+    flexDirection: "row",
+    gap: Spacing.md,
+    paddingVertical: Spacing.md,
+  },
+  tipRowFirst: {
+    paddingTop: Spacing.lg,
+  },
+  tips: {
+    borderTopWidth: 1,
+    paddingBottom: Spacing.sm,
+    paddingHorizontal: Spacing.lg,
+  },
+  tipText: { flex: 1 },
+  toolBtn: {
+    alignItems: "center",
+    borderRadius: Radius.card,
+    borderWidth: 1,
+    flex: 1,
+    flexDirection: "row",
+    gap: 6,
+    justifyContent: "center",
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: Spacing.sm + 2,
+  },
+  toolsRow: {
+    flexDirection: "row",
+    gap: Spacing.sm,
+    paddingVertical: Spacing.md,
+  },
+  toolText: {
+    flexShrink: 1,
+    fontSize: FontSize.sm,
+    fontWeight: FontWeight.semibold,
+  },
 });

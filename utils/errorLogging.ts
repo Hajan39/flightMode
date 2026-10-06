@@ -10,40 +10,42 @@ import { captureAnalyticsEvent } from "@/utils/analytics";
  * free-form user text — see analytics hard rules.
  */
 export function logFatalError(
-	error: unknown,
-	source: "render" | "global" | "promise",
-	context?: string,
+  error: unknown,
+  source: "render" | "global" | "promise",
+  context?: string
 ) {
-	const err =
-		error instanceof Error ? error : new Error(String(error ?? "unknown"));
+  const err =
+    error instanceof Error ? error : new Error(String(error ?? "unknown"));
 
-	const name = err.name || "Error";
-	const message = (err.message || "").slice(0, 300);
-	// Keep only the first few stack frames; full stacks are noisy and large.
-	const stackHead = (err.stack || "")
-		.split("\n")
-		.slice(0, 6)
-		.join("\n")
-		.slice(0, 1000);
+  const name = err.name || "Error";
+  const message = (err.message || "").slice(0, 300);
+  // Keep only the first few stack frames; full stacks are noisy and large.
+  const stackHead = (err.stack || "")
+    .split("\n")
+    .slice(0, 6)
+    .join("\n")
+    .slice(0, 1000);
 
-	const where = context ? `${source}:${context}` : source;
+  const where = context ? `${source}:${context}` : source;
 
-	// Goes to Android logcat → visible in Play Console Pre-launch report.
-	// Tagged so it is easy to grep for in device logs.
-	// eslint-disable-next-line no-console
-	console.error(`[FlightMode][fatal][${where}] ${name}: ${message}\n${stackHead}`);
+  // Goes to Android logcat → visible in Play Console Pre-launch report.
+  // Tagged so it is easy to grep for in device logs.
+  // eslint-disable-next-line no-console
+  console.error(
+    `[FlightMode][fatal][${where}] ${name}: ${message}\n${stackHead}`
+  );
 
-	try {
-		captureAnalyticsEvent("app_error", {
-			source,
-			context: context ?? null,
-			error_name: name,
-			error_message: message,
-			stack_head: stackHead,
-		});
-	} catch {
-		// Logging must never throw on top of the original error.
-	}
+  try {
+    captureAnalyticsEvent("app_error", {
+      context: context ?? null,
+      error_message: message,
+      error_name: name,
+      source,
+      stack_head: stackHead,
+    });
+  } catch {
+    // Logging must never throw on top of the original error.
+  }
 }
 
 let installed = false;
@@ -55,26 +57,32 @@ let installed = false;
  * (dev red box / runtime termination) still runs after we log.
  */
 export function installGlobalErrorHandler() {
-	if (installed) return;
-	installed = true;
+  if (installed) {
+    return;
+  }
+  installed = true;
 
-	const globalErrorUtils = (
-		globalThis as {
-			ErrorUtils?: {
-				getGlobalHandler?: () => (error: unknown, isFatal?: boolean) => void;
-				setGlobalHandler?: (
-					handler: (error: unknown, isFatal?: boolean) => void,
-				) => void;
-			};
-		}
-	).ErrorUtils;
+  const globalErrorUtils = (
+    globalThis as {
+      ErrorUtils?: {
+        getGlobalHandler?: () => (error: unknown, isFatal?: boolean) => void;
+        setGlobalHandler?: (
+          handler: (error: unknown, isFatal?: boolean) => void
+        ) => void;
+      };
+    }
+  ).ErrorUtils;
 
-	if (!globalErrorUtils?.setGlobalHandler) return;
+  if (!globalErrorUtils?.setGlobalHandler) {
+    return;
+  }
 
-	const previous = globalErrorUtils.getGlobalHandler?.();
+  const previous = globalErrorUtils.getGlobalHandler?.();
 
-	globalErrorUtils.setGlobalHandler((error, isFatal) => {
-		logFatalError(error, "global");
-		if (previous) previous(error, isFatal);
-	});
+  globalErrorUtils.setGlobalHandler((error, isFatal) => {
+    logFatalError(error, "global");
+    if (previous) {
+      previous(error, isFatal);
+    }
+  });
 }

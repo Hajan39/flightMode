@@ -1,17 +1,10 @@
-import { Text, View } from "@/components/Themed";
-import { useColorScheme } from "@/components/useColorScheme";
-import GameControls from "@/components/GameControls";
-import GamePauseOverlay from "@/components/GamePauseOverlay";
-import GameResult from "@/components/GameResult";
-import Colors from "@/constants/Colors";
-import { Radius, Spacing } from "@/constants/Spacing";
-import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
-import { useHaptic } from "@/hooks/useHaptic";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useGameStore } from "@/store/useGameStore";
-import type { GameProgressUpdate } from "@/types/game";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Pressable, StyleSheet, View as RNView, useWindowDimensions } from "react-native";
+import {
+  Pressable,
+  View as RNView,
+  StyleSheet,
+  useWindowDimensions,
+} from "react-native";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -19,6 +12,18 @@ import Animated, {
   withSequence,
   withTiming,
 } from "react-native-reanimated";
+import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
+import GameResult from "@/components/GameResult";
+import { Text, View } from "@/components/Themed";
+import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
+import { Radius, Spacing } from "@/constants/Spacing";
+import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useHaptic } from "@/hooks/useHaptic";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useGameStore } from "@/store/useGameStore";
+import type { GameProgressUpdate } from "@/types/game";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -47,14 +52,22 @@ const TILE_COLORS: Record<number, [string, string]> = {
 const HIGH_TILE_COLORS: [string, string] = ["#3c3a32", "#ffffff"];
 
 function getTileColors(value: number): [string, string] {
-  if (value === 0) return TILE_COLORS[0];
+  if (value === 0) {
+    return TILE_COLORS[0];
+  }
   return TILE_COLORS[value] ?? HIGH_TILE_COLORS;
 }
 
 function getTileFontSize(value: number): number {
-  if (value < 100) return FontSize.xl;
-  if (value < 1000) return FontSize.lg;
-  if (value < 10000) return FontSize.md;
+  if (value < 100) {
+    return FontSize.xl;
+  }
+  if (value < 1000) {
+    return FontSize.lg;
+  }
+  if (value < 10_000) {
+    return FontSize.md;
+  }
   return FontSize.sm;
 }
 
@@ -65,14 +78,16 @@ function getTileFontSize(value: number): number {
 type Grid = number[][];
 
 function createEmptyGrid(): Grid {
-  return Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(0));
+  return Array.from({ length: GRID_SIZE }, () => new Array(GRID_SIZE).fill(0));
 }
 
 function getEmptyCells(grid: Grid): [number, number][] {
   const cells: [number, number][] = [];
-  for (let r = 0; r < GRID_SIZE; r++) {
-    for (let c = 0; c < GRID_SIZE; c++) {
-      if (grid[r][c] === 0) cells.push([r, c]);
+  for (let r = 0; r < GRID_SIZE; r += 1) {
+    for (let c = 0; c < GRID_SIZE; c += 1) {
+      if (grid[r][c] === 0) {
+        cells.push([r, c]);
+      }
     }
   }
   return cells;
@@ -80,7 +95,9 @@ function getEmptyCells(grid: Grid): [number, number][] {
 
 function addRandomTile(grid: Grid): Grid {
   const empty = getEmptyCells(grid);
-  if (empty.length === 0) return grid;
+  if (empty.length === 0) {
+    return grid;
+  }
   const [r, c] = empty[Math.floor(Math.random() * empty.length)];
   const value = Math.random() < 0.9 ? 2 : 4;
   const next = grid.map((row) => [...row]);
@@ -99,7 +116,11 @@ function createInitialGrid(): Grid {
  * Slide a single row/line toward the left (index 0).
  * Returns { line, score, moved }.
  */
-function slideLine(line: number[]): { line: number[]; score: number; moved: boolean } {
+function slideLine(line: number[]): {
+  line: number[];
+  score: number;
+  moved: boolean;
+} {
   const filtered = line.filter((v) => v !== 0);
   let score = 0;
   let moved = false;
@@ -113,73 +134,89 @@ function slideLine(line: number[]): { line: number[]; score: number; moved: bool
       i += 2;
     } else {
       merged.push(filtered[i]);
-      i++;
+      i += 1;
     }
   }
   // Pad with zeros
-  while (merged.length < GRID_SIZE) merged.push(0);
+  while (merged.length < GRID_SIZE) {
+    merged.push(0);
+  }
   // Check if anything changed
-  for (let j = 0; j < GRID_SIZE; j++) {
+  for (let j = 0; j < GRID_SIZE; j += 1) {
     if (merged[j] !== line[j]) {
       moved = true;
       break;
     }
   }
-  return { line: merged, score, moved };
+  return { line: merged, moved, score };
 }
 
 type Direction = "left" | "right" | "up" | "down";
 
 function applyMove(
   grid: Grid,
-  direction: Direction,
+  direction: Direction
 ): { grid: Grid; score: number; moved: boolean } {
   let totalScore = 0;
   let anyMoved = false;
   const next = createEmptyGrid();
 
   if (direction === "left") {
-    for (let r = 0; r < GRID_SIZE; r++) {
+    for (let r = 0; r < GRID_SIZE; r += 1) {
       const { line, score, moved } = slideLine(grid[r]);
       next[r] = line;
       totalScore += score;
-      if (moved) anyMoved = true;
+      if (moved) {
+        anyMoved = true;
+      }
     }
   } else if (direction === "right") {
-    for (let r = 0; r < GRID_SIZE; r++) {
+    for (let r = 0; r < GRID_SIZE; r += 1) {
       const reversed = [...grid[r]].reverse();
       const { line, score, moved } = slideLine(reversed);
       next[r] = line.reverse();
       totalScore += score;
-      if (moved) anyMoved = true;
+      if (moved) {
+        anyMoved = true;
+      }
     }
   } else if (direction === "up") {
-    for (let c = 0; c < GRID_SIZE; c++) {
+    for (let c = 0; c < GRID_SIZE; c += 1) {
       const col = grid.map((row) => row[c]);
       const { line, score, moved } = slideLine(col);
-      for (let r = 0; r < GRID_SIZE; r++) next[r][c] = line[r];
+      for (let r = 0; r < GRID_SIZE; r += 1) {
+        next[r][c] = line[r];
+      }
       totalScore += score;
-      if (moved) anyMoved = true;
+      if (moved) {
+        anyMoved = true;
+      }
     }
   } else {
     // down
-    for (let c = 0; c < GRID_SIZE; c++) {
+    for (let c = 0; c < GRID_SIZE; c += 1) {
       const col = grid.map((row) => row[c]).reverse();
       const { line, score, moved } = slideLine(col);
       const reversed = line.reverse();
-      for (let r = 0; r < GRID_SIZE; r++) next[r][c] = reversed[r];
+      for (let r = 0; r < GRID_SIZE; r += 1) {
+        next[r][c] = reversed[r];
+      }
       totalScore += score;
-      if (moved) anyMoved = true;
+      if (moved) {
+        anyMoved = true;
+      }
     }
   }
 
-  return { grid: next, score: totalScore, moved: anyMoved };
+  return { grid: next, moved: anyMoved, score: totalScore };
 }
 
 function hasWon(grid: Grid): boolean {
-  for (let r = 0; r < GRID_SIZE; r++) {
-    for (let c = 0; c < GRID_SIZE; c++) {
-      if (grid[r][c] >= 2048) return true;
+  for (let r = 0; r < GRID_SIZE; r += 1) {
+    for (let c = 0; c < GRID_SIZE; c += 1) {
+      if (grid[r][c] >= 2048) {
+        return true;
+      }
     }
   }
   return false;
@@ -187,13 +224,19 @@ function hasWon(grid: Grid): boolean {
 
 function isGameOver(grid: Grid): boolean {
   // Any empty cell?
-  if (getEmptyCells(grid).length > 0) return false;
+  if (getEmptyCells(grid).length > 0) {
+    return false;
+  }
   // Any adjacent equal tiles?
-  for (let r = 0; r < GRID_SIZE; r++) {
-    for (let c = 0; c < GRID_SIZE; c++) {
+  for (let r = 0; r < GRID_SIZE; r += 1) {
+    for (let c = 0; c < GRID_SIZE; c += 1) {
       const v = grid[r][c];
-      if (c + 1 < GRID_SIZE && grid[r][c + 1] === v) return false;
-      if (r + 1 < GRID_SIZE && grid[r + 1][c] === v) return false;
+      if (c + 1 < GRID_SIZE && grid[r][c + 1] === v) {
+        return false;
+      }
+      if (r + 1 < GRID_SIZE && grid[r + 1][c] === v) {
+        return false;
+      }
     }
   }
   return true;
@@ -218,16 +261,21 @@ function Tile({
   useEffect(() => {
     const prev = prevValueRef.current;
     prevValueRef.current = value;
-    if (value === 0 || value === prev) return;
+    if (value === 0 || value === prev) {
+      return;
+    }
     if (prev === 0) {
       // Tile appeared in this cell (new tile or slid in): quick pop-in
       scale.value = 0.6;
-      scale.value = withTiming(1, { duration: 140, easing: Easing.out(Easing.quad) });
+      scale.value = withTiming(1, {
+        duration: 140,
+        easing: Easing.out(Easing.quad),
+      });
     } else if (value > prev) {
       // Cell value grew: merge pulse
       scale.value = withSequence(
         withTiming(1.15, { duration: 100, easing: Easing.out(Easing.quad) }),
-        withTiming(1, { duration: 110, easing: Easing.in(Easing.quad) }),
+        withTiming(1, { duration: 110, easing: Easing.in(Easing.quad) })
       );
     }
   }, [value, scale]);
@@ -244,17 +292,17 @@ function Tile({
       style={[
         styles.cell,
         {
-          width: cellSize,
-          height: cellSize,
-          borderRadius: Radius.sm,
           backgroundColor: isTransparent ? "transparent" : bgColor,
-          borderWidth: isTransparent ? 1 : 0,
           borderColor,
+          borderRadius: Radius.sm,
+          borderWidth: isTransparent ? 1 : 0,
+          height: cellSize,
+          width: cellSize,
         },
         animStyle,
       ]}
     >
-      {value !== 0 ? (
+      {value === 0 ? null : (
         <Text
           style={[
             styles.cellText,
@@ -266,7 +314,7 @@ function Tile({
         >
           {value}
         </Text>
-      ) : null}
+      )}
     </Animated.View>
   );
 }
@@ -284,7 +332,9 @@ export default function TwentyFortyEightGame() {
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
 
-  const storedBest = useGameStore((s) => s.progress["twenty-forty-eight"]?.highScore ?? 0);
+  const storedBest = useGameStore(
+    (s) => s.progress["twenty-forty-eight"]?.highScore ?? 0
+  );
   const updateProgress = useGameStore((s) => s.updateProgress);
 
   const [phase, setPhase] = useState<Phase>("idle");
@@ -302,7 +352,8 @@ export default function TwentyFortyEightGame() {
 
   // Derived cell size based on screen width
   const gridWidth = screenWidth - Spacing.lg * 2;
-  const cellSize = (gridWidth - GAP * (GRID_SIZE - 1) - PADDING * 2) / GRID_SIZE;
+  const cellSize =
+    (gridWidth - GAP * (GRID_SIZE - 1) - PADDING * 2) / GRID_SIZE;
 
   // ---------------------------------------------------------------------------
   // Game lifecycle
@@ -322,13 +373,15 @@ export default function TwentyFortyEightGame() {
 
   const endGame = useCallback(
     (finalScore: number, won: boolean) => {
-      if (gameOverRef.current) return;
+      if (gameOverRef.current) {
+        return;
+      }
       gameOverRef.current = true;
       const update = updateProgress("twenty-forty-eight", finalScore, { won });
       setResult(update);
       setPhase("over");
     },
-    [updateProgress],
+    [updateProgress]
   );
 
   // ---------------------------------------------------------------------------
@@ -337,12 +390,20 @@ export default function TwentyFortyEightGame() {
 
   const handleMove = useCallback(
     (direction: Direction) => {
-      if (phase !== "playing" || paused) return;
+      if (phase !== "playing" || paused) {
+        return;
+      }
 
       setGrid((currentGrid) => {
-        const { grid: nextGrid, score: gained, moved } = applyMove(currentGrid, direction);
+        const {
+          grid: nextGrid,
+          score: gained,
+          moved,
+        } = applyMove(currentGrid, direction);
 
-        if (!moved) return currentGrid;
+        if (!moved) {
+          return currentGrid;
+        }
 
         haptic.tap();
 
@@ -377,42 +438,40 @@ export default function TwentyFortyEightGame() {
         return withNew;
       });
     },
-    [phase, paused, haptic, t, endGame],
+    [phase, paused, haptic, t, endGame]
   );
 
   // ---------------------------------------------------------------------------
   // Render helpers
   // ---------------------------------------------------------------------------
 
-  const renderGrid = () => {
-    return (
-      <RNView
-        style={[
-          styles.grid,
-          {
-            backgroundColor: theme.surface,
-            borderColor: theme.border,
-            width: gridWidth,
-            padding: PADDING,
-            gap: GAP,
-          },
-        ]}
-      >
-        {grid.map((row, rIdx) => (
-          <RNView key={rIdx} style={[styles.gridRow, { gap: GAP }]}>
-            {row.map((value, cIdx) => (
-              <Tile
-                key={cIdx}
-                value={value}
-                cellSize={cellSize}
-                borderColor={theme.border}
-              />
-            ))}
-          </RNView>
-        ))}
-      </RNView>
-    );
-  };
+  const renderGrid = () => (
+    <RNView
+      style={[
+        styles.grid,
+        {
+          backgroundColor: theme.surface,
+          borderColor: theme.border,
+          gap: GAP,
+          padding: PADDING,
+          width: gridWidth,
+        },
+      ]}
+    >
+      {grid.map((row, rIdx) => (
+        <RNView key={rIdx} style={[styles.gridRow, { gap: GAP }]}>
+          {row.map((value, cIdx) => (
+            <Tile
+              borderColor={theme.border}
+              cellSize={cellSize}
+              key={cIdx}
+              value={value}
+            />
+          ))}
+        </RNView>
+      ))}
+    </RNView>
+  );
 
   const renderDPad = () => {
     const disabled = phase !== "playing" || paused;
@@ -430,11 +489,11 @@ export default function TwentyFortyEightGame() {
         {/* Up */}
         <RNView style={styles.dpadRow}>
           <Pressable
-            style={dpadBtnStyle}
-            onPress={() => handleMove("up")}
-            disabled={disabled}
-            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveUp")}
+            accessibilityRole="button"
+            disabled={disabled}
+            onPress={() => handleMove("up")}
+            style={dpadBtnStyle}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▲</Text>
           </Pressable>
@@ -442,21 +501,21 @@ export default function TwentyFortyEightGame() {
         {/* Left / Right */}
         <RNView style={styles.dpadRow}>
           <Pressable
-            style={dpadBtnStyle}
-            onPress={() => handleMove("left")}
-            disabled={disabled}
-            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveLeft")}
+            accessibilityRole="button"
+            disabled={disabled}
+            onPress={() => handleMove("left")}
+            style={dpadBtnStyle}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>◀</Text>
           </Pressable>
           <RNView style={styles.dpadCenter} />
           <Pressable
-            style={dpadBtnStyle}
-            onPress={() => handleMove("right")}
-            disabled={disabled}
-            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveRight")}
+            accessibilityRole="button"
+            disabled={disabled}
+            onPress={() => handleMove("right")}
+            style={dpadBtnStyle}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▶</Text>
           </Pressable>
@@ -464,11 +523,11 @@ export default function TwentyFortyEightGame() {
         {/* Down */}
         <RNView style={styles.dpadRow}>
           <Pressable
-            style={dpadBtnStyle}
-            onPress={() => handleMove("down")}
-            disabled={disabled}
-            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveDown")}
+            accessibilityRole="button"
+            disabled={disabled}
+            onPress={() => handleMove("down")}
+            style={dpadBtnStyle}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▼</Text>
           </Pressable>
@@ -485,12 +544,14 @@ export default function TwentyFortyEightGame() {
     return (
       <View style={[styles.container, { backgroundColor: theme.background }]}>
         <Pressable
-          style={[styles.startBtn, { backgroundColor: theme.tint }]}
-          onPress={startGame}
-          accessibilityRole="button"
           accessibilityLabel={t("gameTapToStart")}
+          accessibilityRole="button"
+          onPress={startGame}
+          style={[styles.startBtn, { backgroundColor: theme.tint }]}
         >
-          <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
+          <Text style={[styles.startBtnText, { color: theme.onTint }]}>
+            {t("gameTapToStart")}
+          </Text>
         </Pressable>
         <Text style={[styles.hint, { color: theme.mutedText }]}>
           {t("tfeSwipeHint")}
@@ -508,13 +569,25 @@ export default function TwentyFortyEightGame() {
       {/* Top bar: stats + controls */}
       <RNView style={styles.topBar}>
         <RNView style={styles.statsRow}>
-          <RNView style={[styles.statBox, { backgroundColor: theme.card, borderColor: theme.border }]}>
+          <RNView
+            style={[
+              styles.statBox,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
+          >
             <Text style={[styles.statLabel, { color: theme.mutedText }]}>
               {t("tfeScore")}
             </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>{score}</Text>
+            <Text style={[styles.statValue, { color: theme.text }]}>
+              {score}
+            </Text>
           </RNView>
-          <RNView style={[styles.statBox, { backgroundColor: theme.card, borderColor: theme.border }]}>
+          <RNView
+            style={[
+              styles.statBox,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
+          >
             <Text style={[styles.statLabel, { color: theme.mutedText }]}>
               {t("tfeBestTile")}
             </Text>
@@ -522,17 +595,24 @@ export default function TwentyFortyEightGame() {
               {Math.max(storedBest, score)}
             </Text>
           </RNView>
-          <RNView style={[styles.statBox, { backgroundColor: theme.card, borderColor: theme.border }]}>
+          <RNView
+            style={[
+              styles.statBox,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
+          >
             <Text style={[styles.statLabel, { color: theme.mutedText }]}>
               {t("tfeMoves")}
             </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>{moveCount}</Text>
+            <Text style={[styles.statValue, { color: theme.text }]}>
+              {moveCount}
+            </Text>
           </RNView>
         </RNView>
         <GameControls
+          isPaused={paused}
           onPause={() => setPaused((p) => !p)}
           onReset={startGame}
-          isPaused={paused}
         />
       </RNView>
 
@@ -549,21 +629,21 @@ export default function TwentyFortyEightGame() {
 
       {/* Pause overlay */}
       <GamePauseOverlay
-        visible={paused}
-        onResume={() => setPaused(false)}
         onRestart={startGame}
+        onResume={() => setPaused(false)}
+        visible={paused}
       />
 
       {/* Result overlay */}
       {phase === "over" && result ? (
         <GameResult
-          title={winMessage ? t("tfeYouWin") : t("tfeGameOver")}
-          score={score}
           best={result.best}
-          last={result.last !== score ? result.last : undefined}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
           isNewBest={result.isNewBest}
+          last={result.last === score ? undefined : result.last}
           onPlayAgain={startGame}
+          score={score}
+          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+          title={winMessage ? t("tfeYouWin") : t("tfeGameOver")}
         />
       ) : null}
     </View>
@@ -577,51 +657,6 @@ export default function TwentyFortyEightGame() {
 const DPAD_BTN_SIZE = 56;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    gap: Spacing.lg,
-    paddingHorizontal: Spacing.lg,
-    paddingVertical: Spacing.xl,
-  },
-  topBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    alignSelf: "stretch",
-  },
-  statsRow: {
-    flexDirection: "row",
-    gap: Spacing.sm,
-  },
-  statBox: {
-    alignItems: "center",
-    paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.xs,
-    borderRadius: Radius.card,
-    borderWidth: 1,
-    minWidth: 64,
-  },
-  statLabel: {
-    ...TextStyle.statLabel,
-  },
-  statValue: {
-    fontSize: FontSize.lg,
-    fontWeight: FontWeight.black,
-    letterSpacing: -0.5,
-  },
-  hint: {
-    ...TextStyle.hint,
-    textAlign: "center",
-  },
-  grid: {
-    borderRadius: Radius.card,
-    borderWidth: 1,
-  },
-  gridRow: {
-    flexDirection: "row",
-  },
   cell: {
     alignItems: "center",
     justifyContent: "center",
@@ -630,39 +665,84 @@ const styles = StyleSheet.create({
     fontWeight: FontWeight.black,
     textAlign: "center",
   },
+  container: {
+    alignItems: "center",
+    flex: 1,
+    gap: Spacing.lg,
+    justifyContent: "center",
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.xl,
+  },
   // D-pad
   dpad: {
     alignItems: "center",
     gap: Spacing.xs,
   },
-  dpadRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: Spacing.xs,
-  },
-  dpadCenter: {
-    width: DPAD_BTN_SIZE,
-    height: DPAD_BTN_SIZE,
-  },
-  dpadBtn: {
-    width: DPAD_BTN_SIZE,
-    height: DPAD_BTN_SIZE,
-    borderRadius: Radius.button,
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   dpadArrow: {
     fontSize: FontSize.xl,
     fontWeight: FontWeight.bold,
   },
+  dpadBtn: {
+    alignItems: "center",
+    borderRadius: Radius.button,
+    borderWidth: 1,
+    height: DPAD_BTN_SIZE,
+    justifyContent: "center",
+    width: DPAD_BTN_SIZE,
+  },
+  dpadCenter: {
+    height: DPAD_BTN_SIZE,
+    width: DPAD_BTN_SIZE,
+  },
+  dpadRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: Spacing.xs,
+  },
+  grid: {
+    borderRadius: Radius.card,
+    borderWidth: 1,
+  },
+  gridRow: {
+    flexDirection: "row",
+  },
+  hint: {
+    ...TextStyle.hint,
+    textAlign: "center",
+  },
   // Idle / start
   startBtn: {
+    borderRadius: Radius.button,
     paddingHorizontal: Spacing["4xl"],
     paddingVertical: Spacing.lg,
-    borderRadius: Radius.button,
   },
   startBtnText: {
     ...TextStyle.buttonPrimary,
+  },
+  statBox: {
+    alignItems: "center",
+    borderRadius: Radius.card,
+    borderWidth: 1,
+    minWidth: 64,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs,
+  },
+  statLabel: {
+    ...TextStyle.statLabel,
+  },
+  statsRow: {
+    flexDirection: "row",
+    gap: Spacing.sm,
+  },
+  statValue: {
+    fontSize: FontSize.lg,
+    fontWeight: FontWeight.black,
+    letterSpacing: -0.5,
+  },
+  topBar: {
+    alignItems: "center",
+    alignSelf: "stretch",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

@@ -10,9 +10,9 @@ import { initPlayGames } from "@/utils/playGames";
  * (Expo Go, iOS, web, current release build), so mounting this is always safe.
  */
 export default function PlayGamesBootstrap() {
-	useEffect(() => {
-		void initPlayGames();
-	}, []);
+  useEffect(() => {
+    void initPlayGames();
+  }, []);
 
-	return null;
+  return null;
 }

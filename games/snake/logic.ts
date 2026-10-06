@@ -12,23 +12,23 @@ export type Direction = "up" | "down" | "left" | "right";
 
 /** Tick interval shrinks as the score grows (faster snake), with a floor. */
 export function getIntervalMs(score: number): number {
-	return Math.max(MIN_INTERVAL_MS, BASE_INTERVAL_MS - score * 6);
+  return Math.max(MIN_INTERVAL_MS, BASE_INTERVAL_MS - score * 6);
 }
 
 const OPPOSITE: Record<Direction, Direction> = {
-	up: "down",
-	down: "up",
-	left: "right",
-	right: "left",
+  down: "up",
+  left: "right",
+  right: "left",
+  up: "down",
 };
 
 export function opposite(dir: Direction): Direction {
-	return OPPOSITE[dir];
+  return OPPOSITE[dir];
 }
 
 export type StepResult =
-	| { dead: true }
-	| { dead: false; snake: number[]; ate: boolean };
+  | { dead: true }
+  | { dead: false; snake: number[]; ate: boolean };
 
 /**
  * Advance the snake one cell in `dir`. Returns `{ dead: true }` on a wall or
@@ -36,44 +36,55 @@ export type StepResult =
  * whether it ate. `snake[0]` is the head. The tail cell is excluded from the
  * self-collision check because it moves away this tick.
  */
-export function step(snake: number[], dir: Direction, food: number): StepResult {
-	const head = snake[0];
-	const row = Math.floor(head / GRID_COLS);
-	const col = head % GRID_COLS;
+export function step(
+  snake: number[],
+  dir: Direction,
+  food: number
+): StepResult {
+  const head = snake[0];
+  const row = Math.floor(head / GRID_COLS);
+  const col = head % GRID_COLS;
 
-	let nr = row;
-	let nc = col;
-	if (dir === "up") nr--;
-	else if (dir === "down") nr++;
-	else if (dir === "left") nc--;
-	else nc++;
+  let nr = row;
+  let nc = col;
+  if (dir === "up") {
+    nr -= 1;
+  } else if (dir === "down") {
+    nr += 1;
+  } else if (dir === "left") {
+    nc -= 1;
+  } else {
+    nc += 1;
+  }
 
-	if (nr < 0 || nr >= GRID_ROWS || nc < 0 || nc >= GRID_COLS) {
-		return { dead: true };
-	}
+  if (nr < 0 || nr >= GRID_ROWS || nc < 0 || nc >= GRID_COLS) {
+    return { dead: true };
+  }
 
-	const newHead = nr * GRID_COLS + nc;
-	if (snake.slice(0, -1).includes(newHead)) {
-		return { dead: true };
-	}
+  const newHead = nr * GRID_COLS + nc;
+  if (snake.slice(0, -1).includes(newHead)) {
+    return { dead: true };
+  }
 
-	const ate = newHead === food;
-	const newSnake = ate
-		? [newHead, ...snake]
-		: [newHead, ...snake.slice(0, -1)];
-	return { dead: false, snake: newSnake, ate };
+  const ate = newHead === food;
+  const newSnake = ate ? [newHead, ...snake] : [newHead, ...snake.slice(0, -1)];
+  return { ate, dead: false, snake: newSnake };
 }
 
 /** Random empty cell for new food; -1 when the board is full (win). */
 export function placeFood(
-	snake: number[],
-	rng: () => number = Math.random,
+  snake: number[],
+  rng: () => number = Math.random
 ): number {
-	const snakeSet = new Set(snake);
-	const empty: number[] = [];
-	for (let i = 0; i < CELL_COUNT; i++) {
-		if (!snakeSet.has(i)) empty.push(i);
-	}
-	if (empty.length === 0) return -1;
-	return empty[Math.floor(rng() * empty.length)];
+  const snakeSet = new Set(snake);
+  const empty: number[] = [];
+  for (let i = 0; i < CELL_COUNT; i += 1) {
+    if (!snakeSet.has(i)) {
+      empty.push(i);
+    }
+  }
+  if (empty.length === 0) {
+    return -1;
+  }
+  return empty[Math.floor(rng() * empty.length)];
 }

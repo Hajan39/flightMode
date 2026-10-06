@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  Animated,
   Pressable,
+  View as RNView,
   StyleSheet,
   useWindowDimensions,
-  View as RNView,
 } from "react-native";
 
 import GameControls from "@/components/GameControls";
@@ -49,9 +48,7 @@ export default function SnakeGame() {
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
 
-  const storedBest = useGameStore(
-    (s) => s.progress["snake"]?.highScore ?? 0,
-  );
+  const storedBest = useGameStore((s) => s.progress.snake?.highScore ?? 0);
   const updateProgress = useGameStore((s) => s.updateProgress);
 
   // ---------------------------------------------------------------------------
@@ -88,11 +85,14 @@ export default function SnakeGame() {
   // ---------------------------------------------------------------------------
   // Cleanup on unmount
   // ---------------------------------------------------------------------------
-  useEffect(() => {
-    return () => {
-      if (intervalRef.current !== null) clearInterval(intervalRef.current);
-    };
-  }, []);
+  useEffect(
+    () => () => {
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+      }
+    },
+    []
+  );
 
   // ---------------------------------------------------------------------------
   // Game over
@@ -118,10 +118,12 @@ export default function SnakeGame() {
   // Restart interval — always calls the latest tick via tickRef
   // ---------------------------------------------------------------------------
   const restartInterval = useCallback((currentScore: number) => {
-    if (intervalRef.current !== null) clearInterval(intervalRef.current);
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+    }
     intervalRef.current = setInterval(
       () => tickRef.current(),
-      getIntervalMs(currentScore),
+      getIntervalMs(currentScore)
     );
   }, []);
 
@@ -207,8 +209,12 @@ export default function SnakeGame() {
   // Direction handling — prevent 180° reversal
   // ---------------------------------------------------------------------------
   const handleDirectionPress = useCallback((newDir: Direction) => {
-    if (phaseRef.current !== "playing") return;
-    if (newDir === opposite(directionRef.current)) return;
+    if (phaseRef.current !== "playing") {
+      return;
+    }
+    if (newDir === opposite(directionRef.current)) {
+      return;
+    }
     directionRef.current = newDir;
   }, []);
 
@@ -217,14 +223,18 @@ export default function SnakeGame() {
   // ---------------------------------------------------------------------------
   const handlePause = useCallback(() => {
     if (phaseRef.current === "playing") {
-      if (intervalRef.current !== null) clearInterval(intervalRef.current);
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+      }
       phaseRef.current = "paused";
       setPhase("paused");
     }
   }, []);
 
   const handleResume = useCallback(() => {
-    if (phaseRef.current !== "paused") return;
+    if (phaseRef.current !== "paused") {
+      return;
+    }
     phaseRef.current = "playing";
     setPhase("playing");
     restartInterval(scoreRef.current);
@@ -281,9 +291,9 @@ export default function SnakeGame() {
       style={[
         styles.grid,
         {
-          width: actualGridSize,
-          height: cellSize * GRID_ROWS,
           borderColor: theme.border,
+          height: cellSize * GRID_ROWS,
+          width: actualGridSize,
         },
       ]}
     >
@@ -296,17 +306,16 @@ export default function SnakeGame() {
           <RNView
             key={idx}
             style={{
-              width: cellSize,
-              height: cellSize,
               backgroundColor: isHead
                 ? theme.tint
                 : isBody
-                  ? (theme.tint + "99" as string)
+                  ? (`${theme.tint}99` as string)
                   : isFood
                     ? "#ef4444"
                     : theme.surface,
-              borderRadius:
-                isHead || isBody ? Math.floor(cellSize / 4) : 0,
+              borderRadius: isHead || isBody ? Math.floor(cellSize / 4) : 0,
+              height: cellSize,
+              width: cellSize,
             }}
           />
         );
@@ -330,11 +339,11 @@ export default function SnakeGame() {
         {/* Up */}
         <RNView style={styles.dpadRow}>
           <Pressable
-            style={dpadBtnStyle}
-            onPress={() => handleDirectionPress("up")}
-            disabled={disabled}
-            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveUp")}
+            accessibilityRole="button"
+            disabled={disabled}
+            onPress={() => handleDirectionPress("up")}
+            style={dpadBtnStyle}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▲</Text>
           </Pressable>
@@ -342,21 +351,21 @@ export default function SnakeGame() {
         {/* Left / Right */}
         <RNView style={styles.dpadRow}>
           <Pressable
-            style={dpadBtnStyle}
-            onPress={() => handleDirectionPress("left")}
-            disabled={disabled}
-            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveLeft")}
+            accessibilityRole="button"
+            disabled={disabled}
+            onPress={() => handleDirectionPress("left")}
+            style={dpadBtnStyle}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>◀</Text>
           </Pressable>
           <RNView style={styles.dpadCenter} />
           <Pressable
-            style={dpadBtnStyle}
-            onPress={() => handleDirectionPress("right")}
-            disabled={disabled}
-            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveRight")}
+            accessibilityRole="button"
+            disabled={disabled}
+            onPress={() => handleDirectionPress("right")}
+            style={dpadBtnStyle}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▶</Text>
           </Pressable>
@@ -364,11 +373,11 @@ export default function SnakeGame() {
         {/* Down */}
         <RNView style={styles.dpadRow}>
           <Pressable
-            style={dpadBtnStyle}
-            onPress={() => handleDirectionPress("down")}
-            disabled={disabled}
-            accessibilityRole="button"
             accessibilityLabel={t("a11yMoveDown")}
+            accessibilityRole="button"
+            disabled={disabled}
+            onPress={() => handleDirectionPress("down")}
+            style={dpadBtnStyle}
           >
             <Text style={[styles.dpadArrow, { color: theme.text }]}>▼</Text>
           </Pressable>
@@ -392,12 +401,14 @@ export default function SnakeGame() {
             {t("snkEatHint")}
           </Text>
           <Pressable
-            style={[styles.startBtn, { backgroundColor: theme.tint }]}
-            onPress={startGame}
-            accessibilityRole="button"
             accessibilityLabel={t("gameReady")}
+            accessibilityRole="button"
+            onPress={startGame}
+            style={[styles.startBtn, { backgroundColor: theme.tint }]}
           >
-            <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameReady")}</Text>
+            <Text style={[styles.startBtnText, { color: theme.onTint }]}>
+              {t("gameReady")}
+            </Text>
           </Pressable>
         </RNView>
       </View>
@@ -414,9 +425,9 @@ export default function SnakeGame() {
       <RNView style={styles.hudRow}>
         {renderHud()}
         <GameControls
+          isPaused={phase === "paused"}
           onPause={handlePause}
           onReset={startGame}
-          isPaused={phase === "paused"}
         />
       </RNView>
 
@@ -433,25 +444,25 @@ export default function SnakeGame() {
 
       {/* Pause overlay */}
       <GamePauseOverlay
-        visible={phase === "paused"}
-        onResume={handleResume}
         onRestart={startGame}
+        onResume={handleResume}
+        visible={phase === "paused"}
       />
 
       {/* Result overlay */}
       {phase === "over" && result ? (
         <GameResult
-          title={t("snkGameOver")}
-          score={score}
           best={result.best ?? storedBest}
-          last={result.last !== score ? result.last : undefined}
+          isNewBest={result.isNewBest}
+          last={result.last === score ? undefined : result.last}
+          onPlayAgain={startGame}
+          score={score}
           streak={
             result.currentStreak && result.currentStreak > 0
               ? result.currentStreak
               : undefined
           }
-          isNewBest={result.isNewBest}
-          onPlayAgain={startGame}
+          title={t("snkGameOver")}
         />
       ) : null}
     </View>
@@ -465,56 +476,86 @@ export default function SnakeGame() {
 const DPAD_BTN_SIZE = 52;
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-  },
-  // Idle
-  idleContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    gap: Spacing.lg,
-    padding: Spacing.xl,
-  },
-  title: {
-    fontSize: FontSize["4xl"],
-    fontWeight: FontWeight.extrabold,
-    textAlign: "center",
-  },
   description: {
     fontSize: FontSize.sm,
     textAlign: "center",
   },
+  // D-pad
+  dpad: {
+    alignItems: "center",
+    gap: Spacing.xs,
+    marginTop: Spacing.md,
+  },
+  dpadArrow: {
+    fontSize: FontSize.xl,
+  },
+  dpadBtn: {
+    alignItems: "center",
+    borderRadius: Radius.md,
+    borderWidth: 1,
+    height: DPAD_BTN_SIZE,
+    justifyContent: "center",
+    width: DPAD_BTN_SIZE,
+  },
+  dpadCenter: {
+    height: DPAD_BTN_SIZE,
+    width: DPAD_BTN_SIZE,
+  },
+  dpadRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: Spacing.xs,
+  },
+  // Grid
+  grid: {
+    alignSelf: "center",
+    borderRadius: Radius.sm,
+    borderWidth: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    overflow: "hidden",
+  },
+  hud: {
+    flex: 1,
+    flexDirection: "row",
+    gap: Spacing.sm,
+    marginRight: Spacing.sm,
+  },
+  // HUD row
+  hudRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingBottom: Spacing.xs,
+    paddingHorizontal: Spacing.lg,
+    paddingTop: Spacing.sm,
+  },
+  // Idle
+  idleContainer: {
+    alignItems: "center",
+    flex: 1,
+    gap: Spacing.lg,
+    justifyContent: "center",
+    padding: Spacing.xl,
+  },
+  root: {
+    flex: 1,
+  },
   startBtn: {
+    borderRadius: Radius.pill,
     paddingHorizontal: Spacing.xl * 2,
     paddingVertical: Spacing.md,
-    borderRadius: Radius.pill,
   },
   startBtnText: {
     fontSize: FontSize.md,
     fontWeight: FontWeight.bold,
   },
-  // HUD row
-  hudRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: Spacing.lg,
-    paddingTop: Spacing.sm,
-    paddingBottom: Spacing.xs,
-  },
-  hud: {
-    flexDirection: "row",
-    gap: Spacing.sm,
-    flex: 1,
-    marginRight: Spacing.sm,
-  },
   statBox: {
-    flex: 1,
+    alignItems: "center",
     borderRadius: Radius.md,
     borderWidth: 1,
+    flex: 1,
     padding: Spacing.sm,
-    alignItems: "center",
   },
   statLabel: {
     fontSize: FontSize.xs,
@@ -524,39 +565,9 @@ const styles = StyleSheet.create({
     fontSize: FontSize.xl,
     fontWeight: FontWeight.extrabold,
   },
-  // Grid
-  grid: {
-    alignSelf: "center",
-    borderWidth: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    overflow: "hidden",
-    borderRadius: Radius.sm,
-  },
-  // D-pad
-  dpad: {
-    alignItems: "center",
-    marginTop: Spacing.md,
-    gap: Spacing.xs,
-  },
-  dpadRow: {
-    flexDirection: "row",
-    gap: Spacing.xs,
-    alignItems: "center",
-  },
-  dpadCenter: {
-    width: DPAD_BTN_SIZE,
-    height: DPAD_BTN_SIZE,
-  },
-  dpadBtn: {
-    width: DPAD_BTN_SIZE,
-    height: DPAD_BTN_SIZE,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  dpadArrow: {
-    fontSize: FontSize.xl,
+  title: {
+    fontSize: FontSize["4xl"],
+    fontWeight: FontWeight.extrabold,
+    textAlign: "center",
   },
 });

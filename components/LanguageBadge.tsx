@@ -12,34 +12,34 @@ import { useTranslation } from "@/hooks/useTranslation";
  * active UI language and is therefore displayed in English.
  */
 export default function LanguageBadge() {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { t } = useTranslation();
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { t } = useTranslation();
 
-	return (
-		<View
-			style={[styles.badge, { backgroundColor: theme.surface }]}
-			lightColor={theme.surface}
-			darkColor={theme.surface}
-			crazyColor={theme.surface}
-			accessibilityLabel={t("contentFallbackNotice")}
-		>
-			<Text style={[styles.text, { color: theme.mutedText }]}>
-				{t("contentFallbackBadge")}
-			</Text>
-		</View>
-	);
+  return (
+    <View
+      accessibilityLabel={t("contentFallbackNotice")}
+      crazyColor={theme.surface}
+      darkColor={theme.surface}
+      lightColor={theme.surface}
+      style={[styles.badge, { backgroundColor: theme.surface }]}
+    >
+      <Text style={[styles.text, { color: theme.mutedText }]}>
+        {t("contentFallbackBadge")}
+      </Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-	badge: {
-		paddingHorizontal: 6,
-		paddingVertical: 2,
-		borderRadius: Radius.pill,
-	},
-	text: {
-		fontSize: FontSize.xs - 1,
-		fontWeight: FontWeight.bold,
-		letterSpacing: 0.5,
-	},
+  badge: {
+    borderRadius: Radius.pill,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+  },
+  text: {
+    fontSize: FontSize.xs - 1,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 0.5,
+  },
 });

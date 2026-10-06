@@ -1,11 +1,17 @@
-import { type ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   Animated,
   Pressable,
-  StyleSheet,
-  type StyleProp,
-  useWindowDimensions,
   View as RNView,
+  type StyleProp,
+  StyleSheet,
+  useWindowDimensions,
   type ViewStyle,
 } from "react-native";
 import GameControls from "@/components/GameControls";
@@ -20,8 +26,6 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
-
-import { PUZZLES } from "./puzzles";
 import {
   computeErrors,
   formatTime,
@@ -30,6 +34,7 @@ import {
   isPeer,
   isSolved,
 } from "./logic";
+import { PUZZLES } from "./puzzles";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -66,16 +71,16 @@ function BouncyPressable({
 
   const springTo = (toValue: number) =>
     Animated.spring(scale, {
-      toValue,
       damping: 14,
       stiffness: 320,
+      toValue,
       useNativeDriver: true,
     }).start();
 
   return (
     <AnimatedPressable
-      onPress={onPress}
       disabled={disabled}
+      onPress={onPress}
       onPressIn={() => springTo(0.88)}
       onPressOut={() => springTo(1)}
       style={[style, { transform: [{ scale }] }]}
@@ -100,10 +105,11 @@ export default function SudokuGame() {
 
   // ── Phase & game state ──────────────────────────────────────────────────
   const [phase, setPhase] = useState<Phase>("idle");
-  const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty | null>(null);
-  const [board, setBoard] = useState<number[]>(Array(81).fill(0));
-  const [clues, setClues] = useState<number[]>(Array(81).fill(0));
-  const [solution, setSolution] = useState<number[]>(Array(81).fill(0));
+  const [selectedDifficulty, setSelectedDifficulty] =
+    useState<Difficulty | null>(null);
+  const [board, setBoard] = useState<number[]>(new Array(81).fill(0));
+  const [clues, setClues] = useState<number[]>(new Array(81).fill(0));
+  const [solution, setSolution] = useState<number[]>(new Array(81).fill(0));
   const [selectedCell, setSelectedCell] = useState<number | null>(null);
   const [errors, setErrors] = useState<Set<number>>(new Set());
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -124,12 +130,14 @@ export default function SudokuGame() {
 
   // Subtle pop when a cell becomes selected
   useEffect(() => {
-    if (selectedCell === null) return;
+    if (selectedCell === null) {
+      return;
+    }
     selectPulse.setValue(0.85);
     Animated.spring(selectPulse, {
-      toValue: 1,
       damping: 13,
       stiffness: 300,
+      toValue: 1,
       useNativeDriver: true,
     }).start();
   }, [selectedCell, selectPulse]);
@@ -138,20 +146,38 @@ export default function SudokuGame() {
   const triggerShake = useCallback(() => {
     gridShake.setValue(0);
     Animated.sequence([
-      Animated.timing(gridShake, { toValue: 6, duration: 40, useNativeDriver: true }),
-      Animated.timing(gridShake, { toValue: -6, duration: 60, useNativeDriver: true }),
-      Animated.timing(gridShake, { toValue: 4, duration: 60, useNativeDriver: true }),
-      Animated.timing(gridShake, { toValue: 0, duration: 40, useNativeDriver: true }),
+      Animated.timing(gridShake, {
+        duration: 40,
+        toValue: 6,
+        useNativeDriver: true,
+      }),
+      Animated.timing(gridShake, {
+        duration: 60,
+        toValue: -6,
+        useNativeDriver: true,
+      }),
+      Animated.timing(gridShake, {
+        duration: 60,
+        toValue: 4,
+        useNativeDriver: true,
+      }),
+      Animated.timing(gridShake, {
+        duration: 40,
+        toValue: 0,
+        useNativeDriver: true,
+      }),
     ]).start();
   }, [gridShake]);
 
   // ── Timer ───────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (phase !== "playing") return;
+    if (phase !== "playing") {
+      return;
+    }
     const interval = setInterval(() => {
       setElapsedSeconds(
         pausedAccumulatedRef.current +
-          Math.floor((Date.now() - startTimeRef.current) / 1000),
+          Math.floor((Date.now() - startTimeRef.current) / 1000)
       );
     }, 1000);
     return () => clearInterval(interval);
@@ -182,7 +208,7 @@ export default function SudokuGame() {
       setPhase("playing");
       haptic.tap();
     },
-    [haptic],
+    [haptic]
   );
 
   // ── Reset to idle ────────────────────────────────────────────────────────
@@ -195,8 +221,9 @@ export default function SudokuGame() {
 
   // ── Pause / resume ───────────────────────────────────────────────────────
   const handlePause = useCallback(() => {
-    pausedAccumulatedRef.current +=
-      Math.floor((Date.now() - startTimeRef.current) / 1000);
+    pausedAccumulatedRef.current += Math.floor(
+      (Date.now() - startTimeRef.current) / 1000
+    );
     setPhase("paused");
   }, []);
 
@@ -208,19 +235,27 @@ export default function SudokuGame() {
   // ── Cell tap ─────────────────────────────────────────────────────────────
   const handleCellPress = useCallback(
     (idx: number) => {
-      if (phase !== "playing") return;
-      if (clues[idx] !== 0) return;
+      if (phase !== "playing") {
+        return;
+      }
+      if (clues[idx] !== 0) {
+        return;
+      }
       haptic.tap();
       setSelectedCell((prev) => (prev === idx ? null : idx));
     },
-    [phase, clues, haptic],
+    [phase, clues, haptic]
   );
 
   // ── Number input ─────────────────────────────────────────────────────────
   const handleNumberInput = useCallback(
     (num: number) => {
-      if (phase !== "playing" || selectedCell === null) return;
-      if (clues[selectedCell] !== 0) return;
+      if (phase !== "playing" || selectedCell === null) {
+        return;
+      }
+      if (clues[selectedCell] !== 0) {
+        return;
+      }
 
       haptic.tap();
 
@@ -233,7 +268,9 @@ export default function SudokuGame() {
 
       const newErrors = computeErrors(next, solution);
       setErrors(newErrors);
-      if (newErrors.has(selectedCell)) triggerShake();
+      if (newErrors.has(selectedCell)) {
+        triggerShake();
+      }
 
       const won = isSolved(next, solution);
       if (won && !solvedRef.current) {
@@ -241,24 +278,39 @@ export default function SudokuGame() {
         haptic.success();
         const finalScore = Math.max(
           500,
-          5000 - elapsedSeconds * 8 - hintsUsed * 200,
+          5000 - elapsedSeconds * 8 - hintsUsed * 200
         );
         const extraOpts =
           selectedDifficulty === "hard" && hintsUsed === 0
-            ? { won: true, levelStarsPatch: { "hard-no-hint": 1 as const } }
+            ? { levelStarsPatch: { "hard-no-hint": 1 as const }, won: true }
             : { won: true };
         const update = updateProgress("sudoku", finalScore, extraOpts);
         setResult(update);
         setPhase("over");
       }
     },
-    [phase, selectedCell, clues, solution, elapsedSeconds, hintsUsed, selectedDifficulty, haptic, updateProgress, triggerShake],
+    [
+      phase,
+      selectedCell,
+      clues,
+      solution,
+      elapsedSeconds,
+      hintsUsed,
+      selectedDifficulty,
+      haptic,
+      updateProgress,
+      triggerShake,
+    ]
   );
 
   // ── Erase ────────────────────────────────────────────────────────────────
   const handleErase = useCallback(() => {
-    if (phase !== "playing" || selectedCell === null) return;
-    if (clues[selectedCell] !== 0) return;
+    if (phase !== "playing" || selectedCell === null) {
+      return;
+    }
+    if (clues[selectedCell] !== 0) {
+      return;
+    }
     haptic.tap();
     setBoard((prev) => {
       const next = [...prev];
@@ -270,13 +322,17 @@ export default function SudokuGame() {
 
   // ── Hint ─────────────────────────────────────────────────────────────────
   const handleHint = useCallback(() => {
-    if (phase !== "playing" || hintsLeft <= 0) return;
+    if (phase !== "playing" || hintsLeft <= 0) {
+      return;
+    }
 
     const emptyIndices = board
       .map((v, i) => (v === 0 && clues[i] === 0 ? i : -1))
       .filter((i) => i !== -1);
 
-    if (emptyIndices.length === 0) return;
+    if (emptyIndices.length === 0) {
+      return;
+    }
 
     const target =
       selectedCell !== null &&
@@ -299,7 +355,10 @@ export default function SudokuGame() {
     if (won && !solvedRef.current) {
       solvedRef.current = true;
       const usedAfter = hintsUsed + 1;
-      const finalScore = Math.max(500, 5000 - elapsedSeconds * 8 - usedAfter * 200);
+      const finalScore = Math.max(
+        500,
+        5000 - elapsedSeconds * 8 - usedAfter * 200
+      );
       const update = updateProgress("sudoku", finalScore, { won: true });
       setResult(update);
       setPhase("over");
@@ -320,28 +379,44 @@ export default function SudokuGame() {
   // ── Border widths for 3×3 box lines ─────────────────────────────────────
   const getCellBorderRight = (idx: number): number => {
     const col = getCol(idx);
-    if (col === 8) return 0;
-    if (col === 2 || col === 5) return 2;
+    if (col === 8) {
+      return 0;
+    }
+    if (col === 2 || col === 5) {
+      return 2;
+    }
     return 0.5;
   };
 
   const getCellBorderBottom = (idx: number): number => {
     const row = getRow(idx);
-    if (row === 8) return 0;
-    if (row === 2 || row === 5) return 2;
+    if (row === 8) {
+      return 0;
+    }
+    if (row === 2 || row === 5) {
+      return 2;
+    }
     return 0.5;
   };
 
   // ── Difficulty helpers ───────────────────────────────────────────────────
   const diffLabel = (d: Difficulty): string => {
-    if (d === "easy") return t("sdkEasy");
-    if (d === "medium") return t("sdkMedium");
+    if (d === "easy") {
+      return t("sdkEasy");
+    }
+    if (d === "medium") {
+      return t("sdkMedium");
+    }
     return t("sdkHard");
   };
 
   const diffColor = (d: Difficulty): string => {
-    if (d === "easy") return theme.successBorder;
-    if (d === "medium") return theme.warning;
+    if (d === "easy") {
+      return theme.successBorder;
+    }
+    if (d === "medium") {
+      return theme.warning;
+    }
     return theme.danger;
   };
 
@@ -351,7 +426,9 @@ export default function SudokuGame() {
 
   if (phase === "idle") {
     return (
-      <View style={[styles.centerContainer, { backgroundColor: theme.background }]}>
+      <View
+        style={[styles.centerContainer, { backgroundColor: theme.background }]}
+      >
         <Text style={[styles.idleTitle, { color: theme.text }]}>
           {t("gameSudokuName")}
         </Text>
@@ -359,13 +436,15 @@ export default function SudokuGame() {
           {t("gameSudokuDescription")}
         </Text>
         <Pressable
-          style={[styles.startBtn, { backgroundColor: theme.tint }]}
           onPress={() => {
             haptic.tap();
             setPhase("selecting");
           }}
+          style={[styles.startBtn, { backgroundColor: theme.tint }]}
         >
-          <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
+          <Text style={[styles.startBtnText, { color: theme.onTint }]}>
+            {t("gameTapToStart")}
+          </Text>
         </Pressable>
       </View>
     );
@@ -378,14 +457,19 @@ export default function SudokuGame() {
   if (phase === "selecting") {
     const difficulties: Difficulty[] = ["easy", "medium", "hard"];
     return (
-      <View style={[styles.centerContainer, { backgroundColor: theme.background }]}>
+      <View
+        style={[styles.centerContainer, { backgroundColor: theme.background }]}
+      >
         <Text style={[styles.selectTitle, { color: theme.text }]}>
           {t("sdkSelectDifficulty")}
         </Text>
         <RNView style={styles.diffRow}>
           {difficulties.map((d) => (
             <Pressable
+              accessibilityLabel={diffLabel(d)}
+              accessibilityRole="button"
               key={d}
+              onPress={() => startDifficulty(d)}
               style={[
                 styles.diffBtn,
                 {
@@ -394,9 +478,6 @@ export default function SudokuGame() {
                   borderWidth: 2,
                 },
               ]}
-              onPress={() => startDifficulty(d)}
-              accessibilityRole="button"
-              accessibilityLabel={diffLabel(d)}
             >
               <Text style={[styles.diffBtnLabel, { color: diffColor(d) }]}>
                 {diffLabel(d)}
@@ -434,12 +515,12 @@ export default function SudokuGame() {
     <View style={[styles.playContainer, { backgroundColor: theme.background }]}>
       {/* ── HUD ── */}
       <RNView style={styles.hudRow}>
-        {selectedDifficulty !== null ? (
+        {selectedDifficulty === null ? null : (
           <RNView
             style={[
               styles.diffChip,
               {
-                backgroundColor: diffColor(selectedDifficulty) + "22",
+                backgroundColor: `${diffColor(selectedDifficulty)}22`,
                 borderColor: diffColor(selectedDifficulty),
               },
             ]}
@@ -453,7 +534,7 @@ export default function SudokuGame() {
               {diffLabel(selectedDifficulty)}
             </Text>
           </RNView>
-        ) : null}
+        )}
 
         <RNView style={styles.hudRight}>
           <RNView
@@ -485,9 +566,9 @@ export default function SudokuGame() {
           </RNView>
 
           <GameControls
+            isPaused={phase === "paused"}
             onPause={handlePause}
             onReset={resetToIdle}
-            isPaused={phase === "paused"}
           />
         </RNView>
       </RNView>
@@ -497,11 +578,11 @@ export default function SudokuGame() {
         style={[
           styles.grid,
           {
-            width: cellSize * 9,
             borderColor: theme.text,
-            borderTopWidth: 2,
             borderLeftWidth: 2,
+            borderTopWidth: 2,
             transform: [{ translateX: gridShake }],
+            width: cellSize * 9,
           },
         ]}
       >
@@ -510,7 +591,9 @@ export default function SudokuGame() {
           const isError = errors.has(idx);
           const isSelected = selectedCell === idx;
           const isPeerCell =
-            selectedCell !== null && selectedCell !== idx && isPeer(selectedCell, idx);
+            selectedCell !== null &&
+            selectedCell !== idx &&
+            isPeer(selectedCell, idx);
           const isMatchingNumber =
             selectedCell !== null &&
             value !== 0 &&
@@ -520,9 +603,9 @@ export default function SudokuGame() {
 
           let cellBg = theme.background;
           if (isSelected) {
-            cellBg = theme.tint + "44";
+            cellBg = `${theme.tint}44`;
           } else if (isMatchingNumber) {
-            cellBg = theme.tint + "22";
+            cellBg = `${theme.tint}22`;
           } else if (isPeerCell) {
             cellBg = theme.surface;
           }
@@ -539,35 +622,35 @@ export default function SudokuGame() {
 
           return (
             <AnimatedPressable
+              disabled={isClue || !isInteractive}
               key={idx}
               onPress={() => handleCellPress(idx)}
-              disabled={isClue || !isInteractive}
               style={{
-                width: cellSize,
-                height: cellSize,
                 alignItems: "center",
-                justifyContent: "center",
                 backgroundColor: cellBg,
-                borderRightWidth,
+                borderBottomColor:
+                  borderBottomWidth === 2 ? theme.text : theme.border,
                 borderBottomWidth,
                 borderRightColor:
                   borderRightWidth === 2 ? theme.text : theme.border,
-                borderBottomColor:
-                  borderBottomWidth === 2 ? theme.text : theme.border,
+                borderRightWidth,
+                height: cellSize,
+                justifyContent: "center",
                 transform: isSelected ? [{ scale: selectPulse }] : undefined,
+                width: cellSize,
               }}
             >
-              {value !== 0 ? (
+              {value === 0 ? null : (
                 <Text
                   style={{
+                    color: textColor,
                     fontSize: cellSize > 38 ? FontSize.md : FontSize.sm,
                     fontWeight: isClue ? FontWeight.black : FontWeight.bold,
-                    color: textColor,
                   }}
                 >
                   {value}
                 </Text>
-              ) : null}
+              )}
             </AnimatedPressable>
           );
         })}
@@ -577,9 +660,9 @@ export default function SudokuGame() {
       <RNView style={styles.numpad}>
         {([1, 2, 3, 4, 5, 6, 7, 8, 9] as const).map((n) => (
           <BouncyPressable
+            disabled={!isInteractive || selectedCell === null}
             key={n}
             onPress={() => handleNumberInput(n)}
-            disabled={!isInteractive || selectedCell === null}
             style={[
               styles.numBtn,
               {
@@ -595,8 +678,8 @@ export default function SudokuGame() {
 
         {/* Erase button */}
         <BouncyPressable
-          onPress={handleErase}
           disabled={!isInteractive || selectedCell === null}
+          onPress={handleErase}
           style={[
             styles.numBtn,
             {
@@ -612,12 +695,12 @@ export default function SudokuGame() {
 
       {/* ── Hint button ── */}
       <Pressable
-        onPress={handleHint}
         disabled={!isInteractive || hintsLeft <= 0}
+        onPress={handleHint}
         style={[
           styles.hintBtn,
           {
-            backgroundColor: hintsLeft > 0 ? theme.tint + "18" : theme.surface,
+            backgroundColor: hintsLeft > 0 ? `${theme.tint}18` : theme.surface,
             borderColor: hintsLeft > 0 ? theme.tint : theme.border,
             opacity: !isInteractive || hintsLeft <= 0 ? 0.5 : 1,
           },
@@ -635,26 +718,31 @@ export default function SudokuGame() {
 
       {/* ── Pause overlay ── */}
       <GamePauseOverlay
-        visible={phase === "paused"}
-        onResume={handleResume}
         onRestart={resetToIdle}
+        onResume={handleResume}
+        visible={phase === "paused"}
       />
 
       {/* ── Result overlay ── */}
       {phase === "over" && result !== null ? (
         <GameResult
-          title={t("sdkCongrats")}
-          score={Math.max(500, 5000 - elapsedSeconds * 8 - hintsUsed * 200)}
           best={result.best}
-          last={result.last !== Math.max(500, 5000 - elapsedSeconds * 8 - hintsUsed * 200) ? result.last : undefined}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
           isNewBest={result.isNewBest}
-          onPlayAgain={resetToIdle}
-          subtitle={
-            selectedDifficulty !== null
-              ? `${formatTime(elapsedSeconds)} · ${diffLabel(selectedDifficulty)}`
-              : formatTime(elapsedSeconds)
+          last={
+            result.last ===
+            Math.max(500, 5000 - elapsedSeconds * 8 - hintsUsed * 200)
+              ? undefined
+              : result.last
           }
+          onPlayAgain={resetToIdle}
+          score={Math.max(500, 5000 - elapsedSeconds * 8 - hintsUsed * 200)}
+          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+          subtitle={
+            selectedDifficulty === null
+              ? formatTime(elapsedSeconds)
+              : `${formatTime(elapsedSeconds)} · ${diffLabel(selectedDifficulty)}`
+          }
+          title={t("sdkCongrats")}
         />
       ) : null}
     </View>
@@ -666,53 +754,28 @@ export default function SudokuGame() {
 // ---------------------------------------------------------------------------
 
 const styles = StyleSheet.create({
+  backLink: {
+    fontSize: FontSize.sm,
+    fontWeight: FontWeight.semibold,
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.sm,
+  },
   // ── Idle / Select ──────────────────────────────────────────────────────
   centerContainer: {
-    flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    flex: 1,
     gap: Spacing.xl,
+    justifyContent: "center",
     paddingHorizontal: Spacing["2xl"],
   },
-  idleTitle: {
-    fontSize: FontSize["2xl"],
-    fontWeight: FontWeight.black,
-    letterSpacing: 1,
-    textAlign: "center",
-  },
-  idleDesc: {
-    fontSize: FontSize.base,
-    textAlign: "center",
-    lineHeight: FontSize.base * 1.5,
-    maxWidth: 280,
-  },
-  startBtn: {
-    paddingHorizontal: Spacing["4xl"],
-    paddingVertical: Spacing.lg,
-    borderRadius: Radius.button,
-    marginTop: Spacing.sm,
-  },
-  startBtnText: {
-    ...TextStyle.buttonPrimary,
-  },
-  selectTitle: {
-    fontSize: FontSize.xl,
-    fontWeight: FontWeight.black,
-    letterSpacing: 0.5,
-    textAlign: "center",
-  },
-  diffRow: {
-    flexDirection: "row",
-    gap: Spacing.md,
-  },
   diffBtn: {
-    flex: 1,
     alignItems: "center",
-    paddingVertical: Spacing.lg,
-    paddingHorizontal: Spacing.sm,
     borderRadius: Radius.card,
+    flex: 1,
     gap: Spacing.xs,
     minWidth: 88,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: Spacing.lg,
   },
   diffBtnLabel: {
     fontSize: FontSize.md,
@@ -723,52 +786,55 @@ const styles = StyleSheet.create({
     fontSize: FontSize.xs,
     fontWeight: FontWeight.semibold,
   },
-  backLink: {
-    fontSize: FontSize.sm,
-    fontWeight: FontWeight.semibold,
-    paddingVertical: Spacing.sm,
-    paddingHorizontal: Spacing.lg,
-  },
-
-  // ── Playing ────────────────────────────────────────────────────────────
-  playContainer: {
-    flex: 1,
-    alignItems: "center",
-    paddingHorizontal: Spacing.lg,
-    paddingTop: Spacing.md,
-    paddingBottom: Spacing.lg,
-    gap: Spacing.md,
-  },
-  hudRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    alignSelf: "stretch",
-  },
-  hudRight: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: Spacing.sm,
-    flex: 1,
-    justifyContent: "flex-end",
-  },
   diffChip: {
-    paddingHorizontal: Spacing.sm,
-    paddingVertical: 5,
     borderRadius: Radius.pill,
     borderWidth: 1.5,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: 5,
   },
   diffChipText: {
     ...TextStyle.chipLabel,
     textTransform: "uppercase",
   },
+  diffRow: {
+    flexDirection: "row",
+    gap: Spacing.md,
+  },
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  hintBtn: {
+    borderRadius: Radius.button,
+    borderWidth: 1.5,
+    paddingHorizontal: Spacing.xl,
+    paddingVertical: Spacing.sm,
+  },
+  hintBtnText: {
+    fontSize: FontSize.sm,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 0.3,
+  },
+  hudRight: {
+    alignItems: "center",
+    flex: 1,
+    flexDirection: "row",
+    gap: Spacing.sm,
+    justifyContent: "flex-end",
+  },
+  hudRow: {
+    alignItems: "center",
+    alignSelf: "stretch",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   hudStat: {
     alignItems: "center",
-    paddingHorizontal: Spacing.sm,
-    paddingVertical: Spacing.xs,
     borderRadius: Radius.card,
     borderWidth: 1,
     minWidth: 56,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: Spacing.xs,
   },
   hudStatLabel: {
     ...TextStyle.statLabel,
@@ -778,38 +844,60 @@ const styles = StyleSheet.create({
     fontWeight: FontWeight.black,
     letterSpacing: 0.5,
   },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+  idleDesc: {
+    fontSize: FontSize.base,
+    lineHeight: FontSize.base * 1.5,
+    maxWidth: 280,
+    textAlign: "center",
   },
-  numpad: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: Spacing.xs,
-    paddingHorizontal: Spacing.xs,
+  idleTitle: {
+    fontSize: FontSize["2xl"],
+    fontWeight: FontWeight.black,
+    letterSpacing: 1,
+    textAlign: "center",
   },
   numBtn: {
-    width: 40,
-    height: 42,
+    alignItems: "center",
     borderRadius: Radius.sm,
     borderWidth: 1,
-    alignItems: "center",
+    height: 42,
     justifyContent: "center",
+    width: 40,
   },
   numBtnText: {
     fontSize: FontSize.md,
     fontWeight: FontWeight.bold,
   },
-  hintBtn: {
-    paddingHorizontal: Spacing.xl,
-    paddingVertical: Spacing.sm,
-    borderRadius: Radius.button,
-    borderWidth: 1.5,
+  numpad: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: Spacing.xs,
+    justifyContent: "center",
+    paddingHorizontal: Spacing.xs,
   },
-  hintBtnText: {
-    fontSize: FontSize.sm,
-    fontWeight: FontWeight.bold,
-    letterSpacing: 0.3,
+
+  // ── Playing ────────────────────────────────────────────────────────────
+  playContainer: {
+    alignItems: "center",
+    flex: 1,
+    gap: Spacing.md,
+    paddingBottom: Spacing.lg,
+    paddingHorizontal: Spacing.lg,
+    paddingTop: Spacing.md,
+  },
+  selectTitle: {
+    fontSize: FontSize.xl,
+    fontWeight: FontWeight.black,
+    letterSpacing: 0.5,
+    textAlign: "center",
+  },
+  startBtn: {
+    borderRadius: Radius.button,
+    marginTop: Spacing.sm,
+    paddingHorizontal: Spacing["4xl"],
+    paddingVertical: Spacing.lg,
+  },
+  startBtnText: {
+    ...TextStyle.buttonPrimary,
   },
 });

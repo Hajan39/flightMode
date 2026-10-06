@@ -9,44 +9,44 @@ import { FontSize, FontWeight } from "@/constants/Typography";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export default function NotFoundScreen() {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { t } = useTranslation();
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { t } = useTranslation();
 
-	return (
-		<>
-			<Stack.Screen options={{ title: t("notFoundTitle") }} />
-			<View style={styles.container}>
-				<Text style={styles.title}>{t("notFoundBody")}</Text>
+  return (
+    <>
+      <Stack.Screen options={{ title: t("notFoundTitle") }} />
+      <View style={styles.container}>
+        <Text style={styles.title}>{t("notFoundBody")}</Text>
 
-				<Link href="/" style={styles.link}>
-					<Text style={[styles.linkText, { color: theme.tint }]}>
-						{t("notFoundGoHome")}
-					</Text>
-				</Link>
-			</View>
-		</>
-	);
+        <Link href="/" style={styles.link}>
+          <Text style={[styles.linkText, { color: theme.tint }]}>
+            {t("notFoundGoHome")}
+          </Text>
+        </Link>
+      </View>
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: "center",
-		justifyContent: "center",
-		padding: Spacing.xl,
-	},
-	title: {
-		fontSize: FontSize.xl,
-		fontWeight: FontWeight.bold,
-		textAlign: "center",
-	},
-	link: {
-		marginTop: Spacing.lg,
-		paddingVertical: Spacing.lg,
-	},
-	linkText: {
-		fontSize: FontSize.base,
-		fontWeight: FontWeight.semibold,
-	},
+  container: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+    padding: Spacing.xl,
+  },
+  link: {
+    marginTop: Spacing.lg,
+    paddingVertical: Spacing.lg,
+  },
+  linkText: {
+    fontSize: FontSize.base,
+    fontWeight: FontWeight.semibold,
+  },
+  title: {
+    fontSize: FontSize.xl,
+    fontWeight: FontWeight.bold,
+    textAlign: "center",
+  },
 });

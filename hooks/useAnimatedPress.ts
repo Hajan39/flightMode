@@ -1,7 +1,7 @@
 import {
-	useAnimatedStyle,
-	useSharedValue,
-	withSpring,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
 } from "react-native-reanimated";
 
 /**
@@ -9,19 +9,19 @@ import {
  * Usage: <AnimatedPressable onPressIn={onPressIn} onPressOut={onPressOut} style={animatedStyle}>
  */
 export function useAnimatedPress(scaleTo = 0.97) {
-	const scale = useSharedValue(1);
+  const scale = useSharedValue(1);
 
-	const onPressIn = () => {
-		scale.value = withSpring(scaleTo, { damping: 15, stiffness: 200 });
-	};
+  const onPressIn = () => {
+    scale.value = withSpring(scaleTo, { damping: 15, stiffness: 200 });
+  };
 
-	const onPressOut = () => {
-		scale.value = withSpring(1, { damping: 15, stiffness: 200 });
-	};
+  const onPressOut = () => {
+    scale.value = withSpring(1, { damping: 15, stiffness: 200 });
+  };
 
-	const animatedStyle = useAnimatedStyle(() => ({
-		transform: [{ scale: scale.value }],
-	}));
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
 
-	return { onPressIn, onPressOut, animatedStyle };
+  return { animatedStyle, onPressIn, onPressOut };
 }

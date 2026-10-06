@@ -14,27 +14,33 @@ const bundledItems = bundledContent as ContentItem[];
  * response can never make offline content vanish).
  */
 export function useContentItems() {
-	const remote = useContentStore((state) => state.items);
-	return useMemo(() => {
-		if (!remote || remote.length === 0) return bundledItems;
-		const byId = new Map<string, ContentItem>(
-			bundledItems.map((item) => [item.id, item]),
-		);
-		for (const item of remote) byId.set(item.id, item);
-		return Array.from(byId.values());
-	}, [remote]);
+  const remote = useContentStore((state) => state.items);
+  return useMemo(() => {
+    if (!remote || remote.length === 0) {
+      return bundledItems;
+    }
+    const byId = new Map<string, ContentItem>(
+      bundledItems.map((item) => [item.id, item])
+    );
+    for (const item of remote) {
+      byId.set(item.id, item);
+    }
+    return Array.from(byId.values());
+  }, [remote]);
 }
 
 export function getBundledContentItems() {
-	return bundledItems;
+  return bundledItems;
 }
 
 /** True when the article is fully available (title, category, body) in `language`. */
 export function hasLanguage(item: ContentItem, language: Language): boolean {
-	if (language === "en") return true;
-	return Boolean(
-		item.title[language] && item.category[language] && item.body[language],
-	);
+  if (language === "en") {
+    return true;
+  }
+  return Boolean(
+    item.title[language] && item.category[language] && item.body[language]
+  );
 }
 
 /**
@@ -42,8 +48,8 @@ export function hasLanguage(item: ContentItem, language: Language): boolean {
  * it is available, otherwise English (the guaranteed baseline of every item).
  */
 export function getArticleDisplayLanguage(
-	item: ContentItem,
-	language: Language,
+  item: ContentItem,
+  language: Language
 ): Language {
-	return hasLanguage(item, language) ? language : "en";
+  return hasLanguage(item, language) ? language : "en";
 }

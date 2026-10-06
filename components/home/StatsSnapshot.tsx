@@ -8,92 +8,98 @@ import Colors from "@/constants/Colors";
 import { Radius, Shadow, Spacing } from "@/constants/Spacing";
 import { useTranslation } from "@/hooks/useTranslation";
 
-type Props = {
-	gamesPlayed: number;
-	flights: number;
-	achievementsUnlocked: number;
-	achievementsTotal: number;
-	onOpenProfile: () => void;
-};
+interface Props {
+  achievementsTotal: number;
+  achievementsUnlocked: number;
+  flights: number;
+  gamesPlayed: number;
+  onOpenProfile: () => void;
+}
 
 /** Three-stat snapshot card with a profile link. */
 export default function StatsSnapshot({
-	gamesPlayed,
-	flights,
-	achievementsUnlocked,
-	achievementsTotal,
-	onOpenProfile,
+  gamesPlayed,
+  flights,
+  achievementsUnlocked,
+  achievementsTotal,
+  onOpenProfile,
 }: Props) {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { t } = useTranslation();
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { t } = useTranslation();
 
-	const stats = [
-		{ key: "games", value: String(gamesPlayed), label: t("profileGamesPlayed") },
-		{ key: "flights", value: String(flights), label: t("profileFlights") },
-		{
-			key: "achievements",
-			value: `${achievementsUnlocked}/${achievementsTotal}`,
-			label: t("profileAchievements"),
-		},
-	];
+  const stats = [
+    {
+      key: "games",
+      label: t("profileGamesPlayed"),
+      value: String(gamesPlayed),
+    },
+    { key: "flights", label: t("profileFlights"), value: String(flights) },
+    {
+      key: "achievements",
+      label: t("profileAchievements"),
+      value: `${achievementsUnlocked}/${achievementsTotal}`,
+    },
+  ];
 
-	return (
-		<View
-			style={[
-				styles.card,
-				{ backgroundColor: theme.card, borderColor: theme.border },
-			]}
-		>
-			<View style={styles.row} lightColor="transparent" darkColor="transparent">
-				{stats.map((stat) => (
-					<View
-						key={stat.key}
-						style={styles.item}
-						lightColor="transparent"
-						darkColor="transparent"
-					>
-						<Text style={[styles.value, { color: theme.text }]}>{stat.value}</Text>
-						<Text style={[styles.label, { color: theme.mutedText }]}>
-							{stat.label}
-						</Text>
-					</View>
-				))}
-			</View>
-			<AnimatedPressable
-				style={[styles.profileCta, { borderColor: theme.border }]}
-				onPress={onOpenProfile}
-			>
-				<Ionicons name="person-circle-outline" size={18} color={theme.tint} />
-				<Text style={[styles.profileCtaText, { color: theme.tint }]}>
-					{t("stackProfile")}
-				</Text>
-			</AnimatedPressable>
-		</View>
-	);
+  return (
+    <View
+      style={[
+        styles.card,
+        { backgroundColor: theme.card, borderColor: theme.border },
+      ]}
+    >
+      <View darkColor="transparent" lightColor="transparent" style={styles.row}>
+        {stats.map((stat) => (
+          <View
+            darkColor="transparent"
+            key={stat.key}
+            lightColor="transparent"
+            style={styles.item}
+          >
+            <Text style={[styles.value, { color: theme.text }]}>
+              {stat.value}
+            </Text>
+            <Text style={[styles.label, { color: theme.mutedText }]}>
+              {stat.label}
+            </Text>
+          </View>
+        ))}
+      </View>
+      <AnimatedPressable
+        onPress={onOpenProfile}
+        style={[styles.profileCta, { borderColor: theme.border }]}
+      >
+        <Ionicons color={theme.tint} name="person-circle-outline" size={18} />
+        <Text style={[styles.profileCtaText, { color: theme.tint }]}>
+          {t("stackProfile")}
+        </Text>
+      </AnimatedPressable>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-	card: {
-		borderWidth: 1,
-		borderRadius: Radius.panel,
-		padding: Spacing.lg,
-		gap: 12,
-		marginBottom: 6,
-		...Shadow.card,
-	},
-	row: { flexDirection: "row", gap: 10 },
-	item: { flex: 1, alignItems: "center" },
-	value: { fontSize: 18, fontWeight: "800" },
-	label: { fontSize: 11, textAlign: "center", marginTop: 2 },
-	profileCta: {
-		borderWidth: 1,
-		borderRadius: 10,
-		paddingVertical: 10,
-		alignItems: "center",
-		justifyContent: "center",
-		flexDirection: "row",
-		gap: 6,
-	},
-	profileCtaText: { fontSize: 13, fontWeight: "700" },
+  card: {
+    borderRadius: Radius.panel,
+    borderWidth: 1,
+    gap: 12,
+    marginBottom: 6,
+    padding: Spacing.lg,
+    ...Shadow.card,
+  },
+  item: { alignItems: "center", flex: 1 },
+  label: { fontSize: 11, marginTop: 2, textAlign: "center" },
+  profileCta: {
+    alignItems: "center",
+    borderRadius: 10,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 6,
+    justifyContent: "center",
+    paddingVertical: 10,
+  },
+  profileCtaText: { fontSize: 13, fontWeight: "700" },
+  row: { flexDirection: "row", gap: 10 },
+  value: { fontSize: 18, fontWeight: "800" },
 });

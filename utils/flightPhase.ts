@@ -11,12 +11,18 @@ export type FlightPhase = "none" | "preflight" | "inflight" | "landed";
 export const LANDED_WINDOW_MS = 48 * 60 * 60 * 1000;
 
 export function getFlightPhase(
-	flight: Flight | null | undefined,
-	nowMs: number,
+  flight: Flight | null | undefined,
+  nowMs: number
 ): FlightPhase {
-	if (!flight) return "none";
-	const arrivalMs = flight.departureTime + flight.duration * 60_000;
-	if (nowMs < flight.departureTime) return "preflight";
-	if (nowMs < arrivalMs) return "inflight";
-	return nowMs - arrivalMs < LANDED_WINDOW_MS ? "landed" : "none";
+  if (!flight) {
+    return "none";
+  }
+  const arrivalMs = flight.departureTime + flight.duration * 60_000;
+  if (nowMs < flight.departureTime) {
+    return "preflight";
+  }
+  if (nowMs < arrivalMs) {
+    return "inflight";
+  }
+  return nowMs - arrivalMs < LANDED_WINDOW_MS ? "landed" : "none";
 }

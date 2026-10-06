@@ -1,62 +1,62 @@
 export type AnalyticsEventName =
-	| "app_open"
-	| "second_session_started"
-	| "onboarding_complete"
-	| "flight_added"
-	| "flight_edited"
-	| "flight_setup_completed"
-	| "game_start"
-	| "game_finish"
-	| "first_session_completed"
-	| "article_open"
-	| "article_finish"
-	| "relax_start"
-	| "relax_finish"
-	| "reminder_scheduled"
-	| "reminder_permission_denied"
-	| "reminder_opened"
-	| "audio_play"
-	| "audio_stop"
-	| "settings_open"
-	| "profile_open"
-	| "home_action_open"
-	| "home_phase_shown"
-	| "home_recommendation_open"
-	| "content_search_changed"
-	| "content_filter_changed"
-	| "content_sort_changed"
-	| "network_status_changed"
-	| "content_sync_start"
-	| "content_sync_success"
-	| "content_sync_failed"
-	| "sync_network_policy_changed"
-	| "support_opened"
-	| "support_clicked"
-	| "support_completed"
-	| "premium_view"
-	| "achievement_unlocked"
-	| "jetlag_card_shown"
-	| "checklist_open"
-	| "checklist_item_toggled"
-	| "checklist_custom_added"
-	| "checklist_completed"
-	| "checklist_reset"
-	| "phrasebook_open"
-	| "phrasebook_language_changed"
-	| "converter_open"
-	| "converter_used"
-	| "rates_sync_success"
-	| "rates_sync_failed"
-	| "app_error";
+  | "app_open"
+  | "second_session_started"
+  | "onboarding_complete"
+  | "flight_added"
+  | "flight_edited"
+  | "flight_setup_completed"
+  | "game_start"
+  | "game_finish"
+  | "first_session_completed"
+  | "article_open"
+  | "article_finish"
+  | "relax_start"
+  | "relax_finish"
+  | "reminder_scheduled"
+  | "reminder_permission_denied"
+  | "reminder_opened"
+  | "audio_play"
+  | "audio_stop"
+  | "settings_open"
+  | "profile_open"
+  | "home_action_open"
+  | "home_phase_shown"
+  | "home_recommendation_open"
+  | "content_search_changed"
+  | "content_filter_changed"
+  | "content_sort_changed"
+  | "network_status_changed"
+  | "content_sync_start"
+  | "content_sync_success"
+  | "content_sync_failed"
+  | "sync_network_policy_changed"
+  | "support_opened"
+  | "support_clicked"
+  | "support_completed"
+  | "premium_view"
+  | "achievement_unlocked"
+  | "jetlag_card_shown"
+  | "checklist_open"
+  | "checklist_item_toggled"
+  | "checklist_custom_added"
+  | "checklist_completed"
+  | "checklist_reset"
+  | "phrasebook_open"
+  | "phrasebook_language_changed"
+  | "converter_open"
+  | "converter_used"
+  | "rates_sync_success"
+  | "rates_sync_failed"
+  | "app_error";
 
 export type AnalyticsProperties = Record<
-	string,
-	string | number | boolean | null | undefined
+  string,
+  string | number | boolean | null | undefined
 >;
 
 type AnalyticsSink = (
-	eventName: AnalyticsEventName,
-	properties?: Record<string, string | number | boolean>,
+  eventName: AnalyticsEventName,
+  properties?: Record<string, string | number | boolean>
 ) => void;
 
 const MAX_PENDING_EVENTS = 100;
@@ -64,54 +64,60 @@ const MAX_PENDING_EVENTS = 100;
 let sink: AnalyticsSink | null = null;
 let disabled = false;
 let pendingEvents: Array<{
-	eventName: AnalyticsEventName;
-	properties?: Record<string, string | number | boolean>;
+  eventName: AnalyticsEventName;
+  properties?: Record<string, string | number | boolean>;
 }> = [];
 
 function sanitizeProperties(properties?: AnalyticsProperties) {
-	if (!properties) return undefined;
+  if (!properties) {
+    return;
+  }
 
-	return Object.fromEntries(
-		Object.entries(properties).filter(
-			(entry): entry is [string, string | number | boolean] =>
-				entry[1] !== null && entry[1] !== undefined,
-		),
-	);
+  return Object.fromEntries(
+    Object.entries(properties).filter(
+      (entry): entry is [string, string | number | boolean] =>
+        entry[1] !== null && entry[1] !== undefined
+    )
+  );
 }
 
 export function setAnalyticsSink(nextSink: AnalyticsSink | null) {
-	sink = nextSink;
-	disabled = false;
+  sink = nextSink;
+  disabled = false;
 
-	if (!sink) return;
+  if (!sink) {
+    return;
+  }
 
-	const eventsToFlush = pendingEvents;
-	pendingEvents = [];
-	for (const event of eventsToFlush) {
-		sink(event.eventName, event.properties);
-	}
+  const eventsToFlush = pendingEvents;
+  pendingEvents = [];
+  for (const event of eventsToFlush) {
+    sink(event.eventName, event.properties);
+  }
 }
 
 export function disableAnalytics() {
-	disabled = true;
-	sink = null;
-	pendingEvents = [];
+  disabled = true;
+  sink = null;
+  pendingEvents = [];
 }
 
 export function captureAnalyticsEvent(
-	eventName: AnalyticsEventName,
-	properties?: AnalyticsProperties,
+  eventName: AnalyticsEventName,
+  properties?: AnalyticsProperties
 ) {
-	if (disabled) return;
+  if (disabled) {
+    return;
+  }
 
-	const sanitizedProperties = sanitizeProperties(properties);
+  const sanitizedProperties = sanitizeProperties(properties);
 
-	if (sink) {
-		sink(eventName, sanitizedProperties);
-		return;
-	}
+  if (sink) {
+    sink(eventName, sanitizedProperties);
+    return;
+  }
 
-	if (pendingEvents.length < MAX_PENDING_EVENTS) {
-		pendingEvents.push({ eventName, properties: sanitizedProperties });
-	}
+  if (pendingEvents.length < MAX_PENDING_EVENTS) {
+    pendingEvents.push({ eventName, properties: sanitizedProperties });
+  }
 }

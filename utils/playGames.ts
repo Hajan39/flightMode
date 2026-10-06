@@ -29,13 +29,13 @@ let signInAttempted = false;
  * Only these calls are used; adapt `resolveNativeModule()` if a chosen library
  * exposes a different surface.
  */
-type NativePlayGames = {
-	signInSilently?: () => Promise<boolean>;
-	isAuthenticated?: () => Promise<boolean>;
-	unlockAchievement?: (playId: string) => Promise<void>;
-	incrementAchievement?: (playId: string, steps: number) => Promise<void>;
-	showAchievements?: () => Promise<void>;
-};
+interface NativePlayGames {
+  incrementAchievement?: (playId: string, steps: number) => Promise<void>;
+  isAuthenticated?: () => Promise<boolean>;
+  showAchievements?: () => Promise<void>;
+  signInSilently?: () => Promise<boolean>;
+  unlockAchievement?: (playId: string) => Promise<void>;
+}
 
 /**
  * Returns the linked native PGS module, or null if none is present.
@@ -46,29 +46,31 @@ type NativePlayGames = {
  * Android-only), and that's the expected no-op path.
  */
 function resolveNativeModule(): NativePlayGames | null {
-	try {
-		// eslint-disable-next-line @typescript-eslint/no-var-requires
-		const { requireNativeModule } = require("expo-modules-core");
-		return requireNativeModule("PlayGames") as NativePlayGames;
-	} catch {
-		return null;
-	}
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { requireNativeModule } = require("expo-modules-core");
+    return requireNativeModule("PlayGames") as NativePlayGames;
+  } catch {
+    return null;
+  }
 }
 
 let cachedNative: NativePlayGames | null | undefined;
 function getNative(): NativePlayGames | null {
-	if (cachedNative === undefined) cachedNative = resolveNativeModule();
-	return cachedNative;
+  if (cachedNative === undefined) {
+    cachedNative = resolveNativeModule();
+  }
+  return cachedNative;
 }
 
 /** True when a native PGS module is actually linked into this binary. */
 export function isPlayGamesAvailable(): boolean {
-	return getNative() !== null;
+  return getNative() !== null;
 }
 
 /** True after a successful (silent or interactive) sign-in this session. */
 export function isPlayGamesSignedIn(): boolean {
-	return signedIn;
+  return signedIn;
 }
 
 /**
@@ -76,23 +78,27 @@ export function isPlayGamesSignedIn(): boolean {
  * again lazily before pushing an achievement. Never throws.
  */
 export async function initPlayGames(): Promise<void> {
-	if (signInAttempted) return;
-	signInAttempted = true;
+  if (signInAttempted) {
+    return;
+  }
+  signInAttempted = true;
 
-	const native = getNative();
-	if (!native) return;
+  const native = getNative();
+  if (!native) {
+    return;
+  }
 
-	try {
-		if (native.signInSilently) {
-			signedIn = Boolean(await native.signInSilently());
-		} else if (native.isAuthenticated) {
-			signedIn = Boolean(await native.isAuthenticated());
-		}
-	} catch {
-		// Silent sign-in can legitimately fail (user never linked Play Games,
-		// no network, etc.). That's fine — we stay signed out and no-op.
-		signedIn = false;
-	}
+  try {
+    if (native.signInSilently) {
+      signedIn = Boolean(await native.signInSilently());
+    } else if (native.isAuthenticated) {
+      signedIn = Boolean(await native.isAuthenticated());
+    }
+  } catch {
+    // Silent sign-in can legitimately fail (user never linked Play Games,
+    // no network, etc.). That's fine — we stay signed out and no-op.
+    signedIn = false;
+  }
 }
 
 /**
@@ -101,31 +107,45 @@ export async function initPlayGames(): Promise<void> {
  * Play Console (see `data/playGamesAchievements.ts`); pass null/empty to skip.
  */
 export async function unlockPlayGamesAchievement(
-	playId: string | null | undefined,
+  playId: string | null | undefined
 ): Promise<void> {
-	if (!playId) return;
+  if (!playId) {
+    return;
+  }
 
-	const native = getNative();
-	if (!native?.unlockAchievement) return;
+  const native = getNative();
+  if (!native?.unlockAchievement) {
+    return;
+  }
 
-	try {
-		if (!signedIn) await initPlayGames();
-		if (!signedIn) return;
-		await native.unlockAchievement(playId);
-	} catch {
-		// Best-effort. A failed push must never surface to the user.
-	}
+  try {
+    if (!signedIn) {
+      await initPlayGames();
+    }
+    if (!signedIn) {
+      return;
+    }
+    await native.unlockAchievement(playId);
+  } catch {
+    // Best-effort. A failed push must never surface to the user.
+  }
 }
 
 /** Open the native Play Games achievements overlay, if available. Never throws. */
 export async function showPlayGamesAchievements(): Promise<void> {
-	const native = getNative();
-	if (!native?.showAchievements) return;
-	try {
-		if (!signedIn) await initPlayGames();
-		if (!signedIn) return;
-		await native.showAchievements();
-	} catch {
-		// no-op
-	}
+  const native = getNative();
+  if (!native?.showAchievements) {
+    return;
+  }
+  try {
+    if (!signedIn) {
+      await initPlayGames();
+    }
+    if (!signedIn) {
+      return;
+    }
+    await native.showAchievements();
+  } catch {
+    // no-op
+  }
 }

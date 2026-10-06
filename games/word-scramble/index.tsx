@@ -19,11 +19,30 @@ import type { GameProgressUpdate } from "@/types/game";
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const WORD_POOL = [
-  "AIRPORT", "RUNWAY", "CAPTAIN", "BOARDING", "COCKPIT",
-  "ALTITUDE", "AIRCRAFT", "HORIZON", "NAVIGATE", "VELOCITY",
-  "TAKEOFF", "LANDING", "CUSTOMS", "LUGGAGE", "JOURNEY",
-  "COMPASS", "TURBULENCE", "PASSPORT", "TERMINAL", "DEPARTURE",
-  "ARRIVAL", "BAGGAGE", "SEATBELT", "WINDOW",
+  "AIRPORT",
+  "RUNWAY",
+  "CAPTAIN",
+  "BOARDING",
+  "COCKPIT",
+  "ALTITUDE",
+  "AIRCRAFT",
+  "HORIZON",
+  "NAVIGATE",
+  "VELOCITY",
+  "TAKEOFF",
+  "LANDING",
+  "CUSTOMS",
+  "LUGGAGE",
+  "JOURNEY",
+  "COMPASS",
+  "TURBULENCE",
+  "PASSPORT",
+  "TERMINAL",
+  "DEPARTURE",
+  "ARRIVAL",
+  "BAGGAGE",
+  "SEATBELT",
+  "WINDOW",
 ];
 
 const ROUND_COUNT = 12;
@@ -37,7 +56,7 @@ const TIMER_TICK_MS = 100;
 /** Fisher-Yates shuffle, returns a new array. */
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
+  for (let i = a.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
@@ -51,7 +70,7 @@ function scrambleWord(word: string): string[] {
   let attempts = 0;
   while (scrambled.join("") === word && attempts < 20) {
     scrambled = shuffle(letters);
-    attempts++;
+    attempts += 1;
   }
   return scrambled;
 }
@@ -63,37 +82,43 @@ function pickWords(): string[] {
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Phase = "idle" | "playing" | "paused" | "correct-flash" | "time-up-flash" | "over";
+type Phase =
+  | "idle"
+  | "playing"
+  | "paused"
+  | "correct-flash"
+  | "time-up-flash"
+  | "over";
 
-type LetterTile = {
+interface LetterTile {
   /** Position index in the scrambled array (stable key). */
   id: number;
   letter: string;
   used: boolean;
-};
+}
 
 // ─── Letter tile with press bounce ────────────────────────────────────────────
 
 const AnimatedPressable = ReAnimated.createAnimatedComponent(Pressable);
 
-type ScrambleTileProps = {
-  tile: LetterTile;
+interface ScrambleTileProps {
   disabled: boolean;
   onPress: () => void;
   theme: (typeof Colors)["light"];
-};
+  tile: LetterTile;
+}
 
 function ScrambleTile({ tile, disabled, onPress, theme }: ScrambleTileProps) {
   const { onPressIn, onPressOut, animatedStyle } = useAnimatedPress(0.88);
 
   return (
     <AnimatedPressable
+      accessibilityLabel={tile.letter}
+      accessibilityRole="button"
+      disabled={disabled}
       onPress={onPress}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
-      disabled={disabled}
-      accessibilityRole="button"
-      accessibilityLabel={tile.letter}
       style={[
         styles.tile,
         {
@@ -125,7 +150,7 @@ export default function WordScrambleGame() {
   const haptic = useHaptic();
   const updateProgress = useGameStore((s) => s.updateProgress);
   const storedBest = useGameStore(
-    (s) => s.progress["word-scramble"]?.highScore ?? 0,
+    (s) => s.progress["word-scramble"]?.highScore ?? 0
   );
 
   // ── Game state ──
@@ -133,11 +158,15 @@ export default function WordScrambleGame() {
   const [words, setWords] = useState<string[]>([]);
   const [roundIndex, setRoundIndex] = useState(0);
   const [tiles, setTiles] = useState<LetterTile[]>([]);
-  const [answer, setAnswer] = useState<Array<{ tileId: number; letter: string }>>([]);
+  const [answer, setAnswer] = useState<
+    Array<{ tileId: number; letter: string }>
+  >([]);
   const [score, setScore] = useState(0);
   const [skipsRemaining, setSkipsRemaining] = useState(MAX_SKIPS);
   const [timeRemaining, setTimeRemaining] = useState(ROUND_SECONDS);
-  const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(null);
+  const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
+    null
+  );
 
   // ── Refs ──
   const timerDeadline = useRef<number>(0);
@@ -164,11 +193,14 @@ export default function WordScrambleGame() {
       stopTimer();
       timerDeadline.current = Date.now() + seconds * 1000;
       timerInterval.current = setInterval(() => {
-        const remaining = Math.max(0, (timerDeadline.current - Date.now()) / 1000);
+        const remaining = Math.max(
+          0,
+          (timerDeadline.current - Date.now()) / 1000
+        );
         setTimeRemaining(remaining);
       }, TIMER_TICK_MS);
     },
-    [stopTimer],
+    [stopTimer]
   );
 
   // ─── Round setup ─────────────────────────────────────────────────────────────
@@ -187,13 +219,18 @@ export default function WordScrambleGame() {
       setPhase("playing");
       startTimer(ROUND_SECONDS);
     },
-    [startTimer],
+    [startTimer]
   );
 
   // ─── Time-up handler ─────────────────────────────────────────────────────────
 
   const handleTimeUp = useCallback(
-    (currentRoundIndex: number, currentWords: string[], currentScore: number, currentSkips: number) => {
+    (
+      currentRoundIndex: number,
+      currentWords: string[],
+      currentScore: number,
+      _currentSkips: number
+    ) => {
       stopTimer();
       haptic.heavy();
       setPhase("time-up-flash");
@@ -210,49 +247,61 @@ export default function WordScrambleGame() {
         }
       }, 800);
     },
-    [haptic, setupRound, stopTimer, updateProgress],
+    [haptic, setupRound, stopTimer, updateProgress]
   );
 
   // ─── Timer effect: watch for time reaching 0 ──────────────────────────────────
 
   useEffect(() => {
-    if (phase !== "playing") return;
+    if (phase !== "playing") {
+      return;
+    }
     if (timeRemaining <= 0) {
       // Snapshot current state values via refs to avoid stale closures
       handleTimeUp(roundIndex, words, score, skipsRemaining);
     }
-  }, [timeRemaining, phase, handleTimeUp, roundIndex, words, score, skipsRemaining]);
+  }, [
+    timeRemaining,
+    phase,
+    handleTimeUp,
+    roundIndex,
+    words,
+    score,
+    skipsRemaining,
+  ]);
 
   // Cleanup on unmount
-  useEffect(() => {
-    return () => stopTimer();
-  }, [stopTimer]);
+  useEffect(() => () => stopTimer(), [stopTimer]);
 
   // New-word tiles pop-in whenever the round (or word list) changes
   useEffect(() => {
-    if (words.length === 0) return;
+    if (words.length === 0) {
+      return;
+    }
     tilesAnim.setValue(0);
     Animated.spring(tilesAnim, {
-      toValue: 1,
-      speed: 22,
       bounciness: 8,
+      speed: 22,
+      toValue: 1,
       useNativeDriver: true,
     }).start();
-  }, [roundIndex, words, tilesAnim]);
+  }, [words, tilesAnim]);
 
   // Solved-word pulse on the answer row
   useEffect(() => {
-    if (phase !== "correct-flash") return;
+    if (phase !== "correct-flash") {
+      return;
+    }
     solvedAnim.setValue(1);
     Animated.sequence([
       Animated.timing(solvedAnim, {
-        toValue: 1.08,
         duration: 110,
+        toValue: 1.08,
         useNativeDriver: true,
       }),
       Animated.timing(solvedAnim, {
-        toValue: 1,
         duration: 140,
+        toValue: 1,
         useNativeDriver: true,
       }),
     ]).start();
@@ -274,16 +323,20 @@ export default function WordScrambleGame() {
 
   const handleTileTap = useCallback(
     (tileId: number) => {
-      if (phase !== "playing") return;
+      if (phase !== "playing") {
+        return;
+      }
 
       const tappedTile = tiles.find((t) => t.id === tileId);
-      if (!tappedTile || tappedTile.used) return;
+      if (!tappedTile || tappedTile.used) {
+        return;
+      }
 
       haptic.tap();
 
-      const newAnswer = [...answer, { tileId, letter: tappedTile.letter }];
+      const newAnswer = [...answer, { letter: tappedTile.letter, tileId }];
       const newTiles = tiles.map((t) =>
-        t.id === tileId ? { ...t, used: true } : t,
+        t.id === tileId ? { ...t, used: true } : t
       );
 
       const currentWord = words[roundIndex];
@@ -328,22 +381,35 @@ export default function WordScrambleGame() {
       }
     },
     [
-      phase, tiles, answer, words, roundIndex,
-      score, timeRemaining,
-      haptic, stopTimer, setupRound, updateProgress,
-    ],
+      phase,
+      tiles,
+      answer,
+      words,
+      roundIndex,
+      score,
+      timeRemaining,
+      haptic,
+      stopTimer,
+      setupRound,
+      updateProgress,
+    ]
   );
 
   // ─── Backspace ───────────────────────────────────────────────────────────────
 
   const handleBackspace = useCallback(() => {
-    if (phase !== "playing" || answer.length === 0) return;
+    if (phase !== "playing" || answer.length === 0) {
+      return;
+    }
 
     haptic.tap();
-    const last = answer[answer.length - 1];
+    const last = answer.at(-1);
+    if (!last) {
+      return;
+    }
     const newAnswer = answer.slice(0, -1);
     const newTiles = tiles.map((t) =>
-      t.id === last.tileId ? { ...t, used: false } : t,
+      t.id === last.tileId ? { ...t, used: false } : t
     );
     setAnswer(newAnswer);
     setTiles(newTiles);
@@ -352,7 +418,9 @@ export default function WordScrambleGame() {
   // ─── Skip ────────────────────────────────────────────────────────────────────
 
   const handleSkip = useCallback(() => {
-    if (phase !== "playing" || skipsRemaining <= 0) return;
+    if (phase !== "playing" || skipsRemaining <= 0) {
+      return;
+    }
 
     haptic.tap();
     stopTimer();
@@ -369,21 +437,35 @@ export default function WordScrambleGame() {
       setupRound(words, nextIndex);
     }
   }, [
-    phase, skipsRemaining, roundIndex, words, score,
-    haptic, stopTimer, setupRound, updateProgress,
+    phase,
+    skipsRemaining,
+    roundIndex,
+    words,
+    score,
+    haptic,
+    stopTimer,
+    setupRound,
+    updateProgress,
   ]);
 
   // ─── Pause / Resume ──────────────────────────────────────────────────────────
 
   const handlePause = useCallback(() => {
-    if (phase !== "playing") return;
+    if (phase !== "playing") {
+      return;
+    }
     stopTimer();
-    pausedTimeRemaining.current = Math.max(0, (timerDeadline.current - Date.now()) / 1000);
+    pausedTimeRemaining.current = Math.max(
+      0,
+      (timerDeadline.current - Date.now()) / 1000
+    );
     setPhase("paused");
   }, [phase, stopTimer]);
 
   const handleResume = useCallback(() => {
-    if (phase !== "paused") return;
+    if (phase !== "paused") {
+      return;
+    }
     startTimer(pausedTimeRemaining.current);
     setPhase("playing");
   }, [phase, startTimer]);
@@ -422,12 +504,14 @@ export default function WordScrambleGame() {
             {t("wsTapLetters")}
           </Text>
           <Pressable
-            style={[styles.startButton, { backgroundColor: theme.tint }]}
-            onPress={startGame}
-            accessibilityRole="button"
             accessibilityLabel={t("gameTapToStart")}
+            accessibilityRole="button"
+            onPress={startGame}
+            style={[styles.startButton, { backgroundColor: theme.tint }]}
           >
-            <Text style={[styles.startButtonText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
+            <Text style={[styles.startButtonText, { color: theme.onTint }]}>
+              {t("gameTapToStart")}
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -440,13 +524,13 @@ export default function WordScrambleGame() {
     return (
       <View style={styles.root}>
         <GameResult
-          title={t("wsWellDone")}
-          score={score}
           best={progressInfo?.best ?? storedBest}
-          last={progressInfo?.previousBest}
-          streak={progressInfo?.currentStreak}
           isNewBest={progressInfo?.isNewBest ?? false}
+          last={progressInfo?.previousBest}
           onPlayAgain={handleRestart}
+          score={score}
+          streak={progressInfo?.currentStreak}
+          title={t("wsWellDone")}
         />
       </View>
     );
@@ -483,14 +567,16 @@ export default function WordScrambleGame() {
         </RNView>
 
         <GameControls
+          isPaused={phase === "paused"}
           onPause={phase === "playing" ? handlePause : undefined}
           onReset={handleRestart}
-          isPaused={phase === "paused"}
         />
       </RNView>
 
       {/* Timer bar */}
-      <RNView style={[styles.timerTrack, { backgroundColor: theme.progressTrack }]}>
+      <RNView
+        style={[styles.timerTrack, { backgroundColor: theme.progressTrack }]}
+      >
         <RNView
           style={[
             styles.timerFill,
@@ -561,11 +647,11 @@ export default function WordScrambleGame() {
       >
         {tiles.map((tile) => (
           <ScrambleTile
-            key={tile.id}
-            tile={tile}
             disabled={tile.used || phase !== "playing"}
+            key={tile.id}
             onPress={() => handleTileTap(tile.id)}
             theme={theme}
+            tile={tile}
           />
         ))}
       </Animated.View>
@@ -617,10 +703,10 @@ export default function WordScrambleGame() {
       {/* Action buttons: Backspace + Skip */}
       <RNView style={styles.actionsRow}>
         <Pressable
-          onPress={handleBackspace}
-          disabled={phase !== "playing" || answer.length === 0}
-          accessibilityRole="button"
           accessibilityLabel="Backspace"
+          accessibilityRole="button"
+          disabled={phase !== "playing" || answer.length === 0}
+          onPress={handleBackspace}
           style={[
             styles.actionBtn,
             {
@@ -630,16 +716,14 @@ export default function WordScrambleGame() {
             },
           ]}
         >
-          <Text style={[styles.actionBtnText, { color: theme.text }]}>
-            ⌫
-          </Text>
+          <Text style={[styles.actionBtnText, { color: theme.text }]}>⌫</Text>
         </Pressable>
 
         <Pressable
-          onPress={handleSkip}
-          disabled={phase !== "playing" || skipsRemaining <= 0}
-          accessibilityRole="button"
           accessibilityLabel={t("wsSkip")}
+          accessibilityRole="button"
+          disabled={phase !== "playing" || skipsRemaining <= 0}
+          onPress={handleSkip}
           style={[
             styles.actionBtn,
             styles.skipBtn,
@@ -666,9 +750,9 @@ export default function WordScrambleGame() {
 
       {/* Pause overlay */}
       <GamePauseOverlay
-        visible={phase === "paused"}
-        onResume={handleResume}
         onRestart={handleRestart}
+        onResume={handleResume}
+        visible={phase === "paused"}
       />
     </View>
   );
@@ -677,131 +761,35 @@ export default function WordScrambleGame() {
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    padding: Spacing.lg,
-    gap: Spacing.md,
-  },
-
-  // ── Idle ──
-  idleContainer: {
-    flex: 1,
+  actionBtn: {
     alignItems: "center",
-    justifyContent: "center",
-    gap: Spacing.xl,
-  },
-  idleTitle: {
-    fontSize: FontSize["3xl"],
-    fontWeight: FontWeight.black,
-    letterSpacing: -0.5,
-    textAlign: "center",
-  },
-  idleSubtitle: {
-    fontSize: FontSize.base,
-    fontWeight: FontWeight.semibold,
-    textAlign: "center",
-  },
-  startButton: {
-    paddingHorizontal: Spacing["4xl"],
-    paddingVertical: Spacing.lg,
     borderRadius: Radius.button,
-    marginTop: Spacing.md,
-    ...Shadow.card,
-  },
-  startButtonText: {
-    ...TextStyle.buttonPrimary,
-  },
-
-  // ── Header ──
-  headerRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  headerStats: {
-    flexDirection: "row",
-    gap: Spacing.sm,
-  },
-  statPill: {
-    flexDirection: "row",
-    alignItems: "baseline",
-    gap: Spacing.xs,
-    paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.xs + 2,
-    borderRadius: Radius.pill,
-  },
-  statLabel: {
-    ...TextStyle.statLabel,
-  },
-  statValue: {
-    fontSize: FontSize.lg,
-    fontWeight: FontWeight.black,
-  },
-  statTotal: {
-    fontSize: FontSize.sm,
-    fontWeight: FontWeight.semibold,
-  },
-
-  // ── Timer ──
-  timerTrack: {
-    height: 6,
-    borderRadius: Radius.pill,
-    overflow: "hidden",
-  },
-  timerFill: {
-    height: "100%",
-    borderRadius: Radius.pill,
-  },
-  timerText: {
-    fontSize: FontSize.sm,
-    fontWeight: FontWeight.bold,
-    textAlign: "right",
-    marginTop: -Spacing.xs,
-  },
-
-  // ── Flash ──
-  flashBanner: {
     borderWidth: 1,
-    borderRadius: Radius.card,
-    paddingVertical: Spacing.sm,
-    paddingHorizontal: Spacing.lg,
-    alignItems: "center",
-  },
-  flashText: {
-    fontSize: FontSize.md,
-    fontWeight: FontWeight.black,
-    letterSpacing: 1,
-  },
-
-  // ── Hint ──
-  hintText: {
-    fontSize: FontSize.xs,
-    fontWeight: FontWeight.semibold,
-    textAlign: "center",
-    letterSpacing: 0.5,
-    textTransform: "uppercase",
-  },
-
-  // ── Scrambled tiles ──
-  tilesContainer: {
     flexDirection: "row",
-    flexWrap: "wrap",
+    gap: Spacing.xs,
+    justifyContent: "center",
+    paddingHorizontal: Spacing.xl,
+    paddingVertical: Spacing.sm + 2,
+  },
+  actionBtnText: {
+    fontSize: FontSize.lg,
+    fontWeight: FontWeight.bold,
+  },
+
+  // ── Action buttons ──
+  actionsRow: {
+    flexDirection: "row",
     gap: Spacing.sm,
     justifyContent: "center",
-    paddingVertical: Spacing.sm,
+    marginTop: Spacing.xs,
   },
-  tile: {
-    width: 44,
-    height: 44,
-    borderRadius: Radius.md,
-    borderWidth: 1.5,
+  answerBox: {
     alignItems: "center",
+    borderRadius: Radius.sm,
+    borderWidth: 1.5,
+    height: 42,
     justifyContent: "center",
-    ...Shadow.card,
-  },
-  tileLetter: {
-    fontSize: FontSize.lg,
-    fontWeight: FontWeight.black,
+    width: 36,
   },
 
   // ── Answer boxes ──
@@ -812,42 +800,70 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: Spacing.sm,
   },
-  answerBox: {
-    width: 36,
-    height: 42,
-    borderRadius: Radius.sm,
-    borderWidth: 1.5,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   answerLetter: {
     fontSize: FontSize.md,
     fontWeight: FontWeight.black,
   },
 
-  // ── Action buttons ──
-  actionsRow: {
+  // ── Flash ──
+  flashBanner: {
+    alignItems: "center",
+    borderRadius: Radius.card,
+    borderWidth: 1,
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.sm,
+  },
+  flashText: {
+    fontSize: FontSize.md,
+    fontWeight: FontWeight.black,
+    letterSpacing: 1,
+  },
+
+  // ── Header ──
+  headerRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  headerStats: {
     flexDirection: "row",
     gap: Spacing.sm,
-    justifyContent: "center",
-    marginTop: Spacing.xs,
   },
-  actionBtn: {
-    flexDirection: "row",
+
+  // ── Hint ──
+  hintText: {
+    fontSize: FontSize.xs,
+    fontWeight: FontWeight.semibold,
+    letterSpacing: 0.5,
+    textAlign: "center",
+    textTransform: "uppercase",
+  },
+
+  // ── Idle ──
+  idleContainer: {
     alignItems: "center",
+    flex: 1,
+    gap: Spacing.xl,
     justifyContent: "center",
-    paddingVertical: Spacing.sm + 2,
-    paddingHorizontal: Spacing.xl,
-    borderRadius: Radius.button,
-    borderWidth: 1,
-    gap: Spacing.xs,
+  },
+  idleSubtitle: {
+    fontSize: FontSize.base,
+    fontWeight: FontWeight.semibold,
+    textAlign: "center",
+  },
+  idleTitle: {
+    fontSize: FontSize["3xl"],
+    fontWeight: FontWeight.black,
+    letterSpacing: -0.5,
+    textAlign: "center",
+  },
+  root: {
+    flex: 1,
+    gap: Spacing.md,
+    padding: Spacing.lg,
   },
   skipBtn: {
     paddingHorizontal: Spacing["2xl"],
-  },
-  actionBtnText: {
-    fontSize: FontSize.lg,
-    fontWeight: FontWeight.bold,
   },
   skipCount: {
     fontSize: FontSize.md,
@@ -856,8 +872,76 @@ const styles = StyleSheet.create({
   skipsLabel: {
     fontSize: FontSize.xs,
     fontWeight: FontWeight.semibold,
+    letterSpacing: 0.5,
     textAlign: "center",
     textTransform: "uppercase",
-    letterSpacing: 0.5,
+  },
+  startButton: {
+    borderRadius: Radius.button,
+    marginTop: Spacing.md,
+    paddingHorizontal: Spacing["4xl"],
+    paddingVertical: Spacing.lg,
+    ...Shadow.card,
+  },
+  startButtonText: {
+    ...TextStyle.buttonPrimary,
+  },
+  statLabel: {
+    ...TextStyle.statLabel,
+  },
+  statPill: {
+    alignItems: "baseline",
+    borderRadius: Radius.pill,
+    flexDirection: "row",
+    gap: Spacing.xs,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs + 2,
+  },
+  statTotal: {
+    fontSize: FontSize.sm,
+    fontWeight: FontWeight.semibold,
+  },
+  statValue: {
+    fontSize: FontSize.lg,
+    fontWeight: FontWeight.black,
+  },
+  tile: {
+    alignItems: "center",
+    borderRadius: Radius.md,
+    borderWidth: 1.5,
+    height: 44,
+    justifyContent: "center",
+    width: 44,
+    ...Shadow.card,
+  },
+  tileLetter: {
+    fontSize: FontSize.lg,
+    fontWeight: FontWeight.black,
+  },
+
+  // ── Scrambled tiles ──
+  tilesContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: Spacing.sm,
+    justifyContent: "center",
+    paddingVertical: Spacing.sm,
+  },
+  timerFill: {
+    borderRadius: Radius.pill,
+    height: "100%",
+  },
+  timerText: {
+    fontSize: FontSize.sm,
+    fontWeight: FontWeight.bold,
+    marginTop: -Spacing.xs,
+    textAlign: "right",
+  },
+
+  // ── Timer ──
+  timerTrack: {
+    borderRadius: Radius.pill,
+    height: 6,
+    overflow: "hidden",
   },
 });

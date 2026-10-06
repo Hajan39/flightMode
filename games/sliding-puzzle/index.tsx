@@ -1,3 +1,10 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  Pressable,
+  View as RNView,
+  StyleSheet,
+  useWindowDimensions,
+} from "react-native";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -11,8 +18,6 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Pressable, View as RNView, StyleSheet, useWindowDimensions } from "react-native";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -34,14 +39,18 @@ type Board = number[]; // flat length-16 array; EMPTY (0) marks the gap
 function solvedBoard(): Board {
   // [1, 2, 3, ..., 15, 0]
   const b: Board = [];
-  for (let i = 1; i < TOTAL; i++) b.push(i);
+  for (let i = 1; i < TOTAL; i += 1) {
+    b.push(i);
+  }
   b.push(EMPTY);
   return b;
 }
 
 function isSolved(board: Board): boolean {
-  for (let i = 0; i < TOTAL - 1; i++) {
-    if (board[i] !== i + 1) return false;
+  for (let i = 0; i < TOTAL - 1; i += 1) {
+    if (board[i] !== i + 1) {
+      return false;
+    }
   }
   return board[TOTAL - 1] === EMPTY;
 }
@@ -51,10 +60,18 @@ function neighborIndices(idx: number): number[] {
   const row = Math.floor(idx / SIZE);
   const col = idx % SIZE;
   const out: number[] = [];
-  if (row > 0) out.push(idx - SIZE); // up
-  if (row < SIZE - 1) out.push(idx + SIZE); // down
-  if (col > 0) out.push(idx - 1); // left
-  if (col < SIZE - 1) out.push(idx + 1); // right
+  if (row > 0) {
+    out.push(idx - SIZE); // up
+  }
+  if (row < SIZE - 1) {
+    out.push(idx + SIZE); // down
+  }
+  if (col > 0) {
+    out.push(idx - 1); // left
+  }
+  if (col < SIZE - 1) {
+    out.push(idx + 1); // right
+  }
   return out;
 }
 
@@ -68,7 +85,7 @@ function makeShuffledBoard(): Board {
   const board = solvedBoard();
   let emptyIdx = TOTAL - 1;
   let prevEmpty = -1;
-  for (let step = 0; step < SHUFFLE_MOVES; step++) {
+  for (let step = 0; step < SHUFFLE_MOVES; step += 1) {
     const options = neighborIndices(emptyIdx).filter((n) => n !== prevEmpty);
     const pick = options[Math.floor(Math.random() * options.length)];
     board[emptyIdx] = board[pick];
@@ -77,7 +94,9 @@ function makeShuffledBoard(): Board {
     emptyIdx = pick;
   }
   // Extremely unlikely, but never hand the player an already-solved board.
-  if (isSolved(board)) return makeShuffledBoard();
+  if (isSolved(board)) {
+    return makeShuffledBoard();
+  }
   return board;
 }
 
@@ -125,11 +144,13 @@ export default function SlidingPuzzleGame() {
 
   // ── Wall-clock timer ──────────────────────────────────────────────────────
   useEffect(() => {
-    if (phase !== "playing") return;
+    if (phase !== "playing") {
+      return;
+    }
     const interval = setInterval(() => {
       setElapsedSeconds(
         pausedAccumulatedRef.current +
-          Math.floor((Date.now() - startTimeRef.current) / 1000),
+          Math.floor((Date.now() - startTimeRef.current) / 1000)
       );
     }, 500);
     return () => clearInterval(interval);
@@ -158,7 +179,7 @@ export default function SlidingPuzzleGame() {
 
   const handlePause = useCallback(() => {
     pausedAccumulatedRef.current += Math.floor(
-      (Date.now() - startTimeRef.current) / 1000,
+      (Date.now() - startTimeRef.current) / 1000
     );
     setPhase("paused");
   }, []);
@@ -172,11 +193,17 @@ export default function SlidingPuzzleGame() {
 
   const handleTilePress = useCallback(
     (idx: number) => {
-      if (phase !== "playing") return;
-      if (board[idx] === EMPTY) return;
+      if (phase !== "playing") {
+        return;
+      }
+      if (board[idx] === EMPTY) {
+        return;
+      }
 
       const emptyIdx = board.indexOf(EMPTY);
-      if (!neighborIndices(idx).includes(emptyIdx)) return; // not adjacent
+      if (!neighborIndices(idx).includes(emptyIdx)) {
+        return; // not adjacent
+      }
 
       haptic.tap();
 
@@ -197,12 +224,14 @@ export default function SlidingPuzzleGame() {
         const finalScore = computeScore(nextMoves, winElapsed);
         setScore(finalScore);
         haptic.success();
-        const update = updateProgress("sliding-puzzle", finalScore, { won: true });
+        const update = updateProgress("sliding-puzzle", finalScore, {
+          won: true,
+        });
         setResult(update);
         setPhase("over");
       }
     },
-    [phase, board, moves, haptic, updateProgress],
+    [phase, board, moves, haptic, updateProgress]
   );
 
   // ---------------------------------------------------------------------------
@@ -220,12 +249,14 @@ export default function SlidingPuzzleGame() {
             {t("gameSlidingPuzzleDescription")}
           </Text>
           <Pressable
-            style={[styles.startBtn, { backgroundColor: theme.tint }]}
-            onPress={prepareBoard}
-            accessibilityRole="button"
             accessibilityLabel={t("gameTapToStart")}
+            accessibilityRole="button"
+            onPress={prepareBoard}
+            style={[styles.startBtn, { backgroundColor: theme.tint }]}
           >
-            <Text style={[styles.startBtnText, { color: theme.onTint }]}>{t("gameTapToStart")}</Text>
+            <Text style={[styles.startBtnText, { color: theme.onTint }]}>
+              {t("gameTapToStart")}
+            </Text>
           </Pressable>
         </RNView>
       </View>
@@ -244,15 +275,23 @@ export default function SlidingPuzzleGame() {
       <RNView style={styles.topBar}>
         <RNView style={styles.statsRow}>
           <RNView
-            style={[styles.statBox, { backgroundColor: theme.card, borderColor: theme.border }]}
+            style={[
+              styles.statBox,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
           >
             <Text style={[styles.statLabel, { color: theme.mutedText }]}>
               {t("spMoves")}
             </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>{moves}</Text>
+            <Text style={[styles.statValue, { color: theme.text }]}>
+              {moves}
+            </Text>
           </RNView>
           <RNView
-            style={[styles.statBox, { backgroundColor: theme.card, borderColor: theme.border }]}
+            style={[
+              styles.statBox,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
           >
             <Text style={[styles.statLabel, { color: theme.mutedText }]}>
               {t("spTime")}
@@ -263,9 +302,9 @@ export default function SlidingPuzzleGame() {
           </RNView>
         </RNView>
         <GameControls
+          isPaused={phase === "paused"}
           onPause={handlePause}
           onReset={prepareBoard}
-          isPaused={phase === "paused"}
         />
       </RNView>
 
@@ -276,9 +315,9 @@ export default function SlidingPuzzleGame() {
           {
             backgroundColor: theme.surface,
             borderColor: theme.border,
-            width: gridWidth,
-            padding: PADDING,
             gap: GAP,
+            padding: PADDING,
+            width: gridWidth,
           },
         ]}
       >
@@ -290,24 +329,26 @@ export default function SlidingPuzzleGame() {
               const isEmpty = value === EMPTY;
               return (
                 <Pressable
+                  disabled={isEmpty || !interactive}
                   key={col}
                   onPress={() => handleTilePress(idx)}
-                  disabled={isEmpty || !interactive}
                   style={[
                     styles.cell,
                     {
-                      width: cellSize,
-                      height: cellSize,
-                      borderRadius: Radius.sm,
                       backgroundColor: isEmpty ? "transparent" : theme.tint,
-                      borderWidth: isEmpty ? 1 : 0,
                       borderColor: theme.border,
+                      borderRadius: Radius.sm,
+                      borderWidth: isEmpty ? 1 : 0,
+                      height: cellSize,
+                      width: cellSize,
                     },
                   ]}
                 >
-                  {!isEmpty ? (
-                    <Text style={[styles.cellText, { color: theme.onTint }]}>{value}</Text>
-                  ) : null}
+                  {isEmpty ? null : (
+                    <Text style={[styles.cellText, { color: theme.onTint }]}>
+                      {value}
+                    </Text>
+                  )}
                 </Pressable>
               );
             })}
@@ -327,22 +368,22 @@ export default function SlidingPuzzleGame() {
 
       {/* Pause overlay */}
       <GamePauseOverlay
-        visible={phase === "paused"}
-        onResume={handleResume}
         onRestart={prepareBoard}
+        onResume={handleResume}
+        visible={phase === "paused"}
       />
 
       {/* Result overlay */}
       {phase === "over" && result ? (
         <GameResult
-          title={t("spSolved")}
-          score={score}
           best={result.best}
-          last={result.last !== score ? result.last : undefined}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
           isNewBest={result.isNewBest}
+          last={result.last === score ? undefined : result.last}
           onPlayAgain={prepareBoard}
+          score={score}
+          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
           subtitle={`${moves} ${t("spMoves")} · ${formatTime(elapsedSeconds)}`}
+          title={t("spSolved")}
         />
       ) : null}
     </View>
@@ -354,68 +395,6 @@ export default function SlidingPuzzleGame() {
 // ---------------------------------------------------------------------------
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    gap: Spacing.lg,
-    paddingHorizontal: Spacing.lg,
-    paddingVertical: Spacing.xl,
-  },
-  idleContainer: {
-    alignItems: "center",
-    gap: Spacing.lg,
-    paddingHorizontal: Spacing["2xl"],
-  },
-  title: {
-    fontSize: FontSize["2xl"],
-    fontWeight: FontWeight.black,
-    letterSpacing: 1,
-    textAlign: "center",
-  },
-  description: {
-    fontSize: FontSize.base,
-    textAlign: "center",
-    lineHeight: FontSize.base * 1.5,
-    maxWidth: 280,
-  },
-  topBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    alignSelf: "stretch",
-  },
-  statsRow: {
-    flexDirection: "row",
-    gap: Spacing.sm,
-  },
-  statBox: {
-    alignItems: "center",
-    paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.xs,
-    borderRadius: Radius.card,
-    borderWidth: 1,
-    minWidth: 72,
-  },
-  statLabel: {
-    ...TextStyle.statLabel,
-  },
-  statValue: {
-    fontSize: FontSize.lg,
-    fontWeight: FontWeight.black,
-    letterSpacing: -0.5,
-  },
-  hint: {
-    ...TextStyle.hint,
-    textAlign: "center",
-  },
-  grid: {
-    borderRadius: Radius.card,
-    borderWidth: 1,
-  },
-  gridRow: {
-    flexDirection: "row",
-  },
   cell: {
     alignItems: "center",
     justifyContent: "center",
@@ -425,13 +404,75 @@ const styles = StyleSheet.create({
     fontWeight: FontWeight.black,
     textAlign: "center",
   },
+  container: {
+    alignItems: "center",
+    flex: 1,
+    gap: Spacing.lg,
+    justifyContent: "center",
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.xl,
+  },
+  description: {
+    fontSize: FontSize.base,
+    lineHeight: FontSize.base * 1.5,
+    maxWidth: 280,
+    textAlign: "center",
+  },
+  grid: {
+    borderRadius: Radius.card,
+    borderWidth: 1,
+  },
+  gridRow: {
+    flexDirection: "row",
+  },
+  hint: {
+    ...TextStyle.hint,
+    textAlign: "center",
+  },
+  idleContainer: {
+    alignItems: "center",
+    gap: Spacing.lg,
+    paddingHorizontal: Spacing["2xl"],
+  },
   startBtn: {
-    paddingHorizontal: Spacing["4xl"],
-    paddingVertical: Spacing.lg,
     borderRadius: Radius.button,
     marginTop: Spacing.sm,
+    paddingHorizontal: Spacing["4xl"],
+    paddingVertical: Spacing.lg,
   },
   startBtnText: {
     ...TextStyle.buttonPrimary,
+  },
+  statBox: {
+    alignItems: "center",
+    borderRadius: Radius.card,
+    borderWidth: 1,
+    minWidth: 72,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs,
+  },
+  statLabel: {
+    ...TextStyle.statLabel,
+  },
+  statsRow: {
+    flexDirection: "row",
+    gap: Spacing.sm,
+  },
+  statValue: {
+    fontSize: FontSize.lg,
+    fontWeight: FontWeight.black,
+    letterSpacing: -0.5,
+  },
+  title: {
+    fontSize: FontSize["2xl"],
+    fontWeight: FontWeight.black,
+    letterSpacing: 1,
+    textAlign: "center",
+  },
+  topBar: {
+    alignItems: "center",
+    alignSelf: "stretch",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

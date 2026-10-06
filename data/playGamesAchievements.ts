@@ -18,69 +18,69 @@
  */
 
 export const playGamesAchievementIds: Record<string, string | null> = {
-	// ── Player ──
-	"first-game": null,
-	"game-explorer": null,
-	"game-master": null,
-	marathon: null,
-	"high-scorer": null,
-	// ── Quiz ──
-	"quiz-ace": null,
-	"know-it-all": null,
-	scholar: null,
-	// ── Relax ──
-	"deep-breath": null,
-	"zen-master": null,
-	soundscaper: null,
-	// ── Traveler ──
-	bookworm: null,
-	explorer: null,
-	"frequent-flyer": null,
-	globetrotter: null,
-	"streak-3": null,
-	"streak-7": null,
-	// ── Special ──
-	"speed-demon": null,
-	"perfect-landing": null,
-	"sky-guardian": null,
-	"sky-commander": null,
-	"tower-operator": null,
-	"air-boss": null,
-	"word-solver": null,
-	"word-master": null,
-	"sudoku-novice": null,
-	"sudoku-master": null,
-	"snake-charmer": null,
-	"puzzle-slider": null,
-	"cargo-captain": null,
-	"word-hunter": null,
-	// ── Logic games ──
-	"ground-controller": null,
-	"pixel-artist": null,
-	equilibrium: null,
-	// ── Multiplayer ──
-	"in-sync": null,
-	icebreaker: null,
-	"split-second": null,
-	storyteller: null,
-	"crowd-favorite": null,
-	"good-host": null,
-	"undefeated-host": null,
-	"quick-thinker": null,
-	"steady-hands": null,
-	// ── Travel tools ──
-	"checklist-ready": null,
-	"checklist-veteran": null,
-	"time-traveler": null,
-	polyglot: null,
-	"currency-savvy": null,
+  "air-boss": null,
+  // ── Traveler ──
+  bookworm: null,
+  "cargo-captain": null,
+  // ── Travel tools ──
+  "checklist-ready": null,
+  "checklist-veteran": null,
+  "crowd-favorite": null,
+  "currency-savvy": null,
+  // ── Relax ──
+  "deep-breath": null,
+  equilibrium: null,
+  explorer: null,
+  // ── Player ──
+  "first-game": null,
+  "frequent-flyer": null,
+  "game-explorer": null,
+  "game-master": null,
+  globetrotter: null,
+  "good-host": null,
+  // ── Logic games ──
+  "ground-controller": null,
+  "high-scorer": null,
+  icebreaker: null,
+  // ── Multiplayer ──
+  "in-sync": null,
+  "know-it-all": null,
+  marathon: null,
+  "perfect-landing": null,
+  "pixel-artist": null,
+  polyglot: null,
+  "puzzle-slider": null,
+  "quick-thinker": null,
+  // ── Quiz ──
+  "quiz-ace": null,
+  scholar: null,
+  "sky-commander": null,
+  "sky-guardian": null,
+  "snake-charmer": null,
+  soundscaper: null,
+  // ── Special ──
+  "speed-demon": null,
+  "split-second": null,
+  "steady-hands": null,
+  storyteller: null,
+  "streak-3": null,
+  "streak-7": null,
+  "sudoku-master": null,
+  "sudoku-novice": null,
+  "time-traveler": null,
+  "tower-operator": null,
+  "undefeated-host": null,
+  "word-hunter": null,
+  "word-master": null,
+  "word-solver": null,
+  "zen-master": null,
 };
 
 /** Returns the Play Games achievement id for a local id, or null if unmapped. */
 export function getPlayGamesAchievementId(localId: string): string | null {
-	// Own-property check so ids like "constructor" can't hit Object.prototype.
-	if (!Object.prototype.hasOwnProperty.call(playGamesAchievementIds, localId)) {
-		return null;
-	}
-	return playGamesAchievementIds[localId] ?? null;
+  // Own-property check so ids like "constructor" can't hit Object.prototype.
+  if (!Object.hasOwn(playGamesAchievementIds, localId)) {
+    return null;
+  }
+  return playGamesAchievementIds[localId] ?? null;
 }

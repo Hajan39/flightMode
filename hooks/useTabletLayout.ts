@@ -11,13 +11,17 @@ export const TABLET_MAX_WIDTH = 640;
  * content-container style.
  */
 export function useTabletLayout() {
-	const { width } = useWindowDimensions();
-	const isTablet = width >= TABLET_BREAKPOINT;
+  const { width } = useWindowDimensions();
+  const isTablet = width >= TABLET_BREAKPOINT;
 
-	return {
-		isTablet,
-		capStyle: isTablet
-			? { width: "100%" as const, maxWidth: TABLET_MAX_WIDTH, alignSelf: "center" as const }
-			: null,
-	};
+  return {
+    capStyle: isTablet
+      ? {
+          alignSelf: "center" as const,
+          maxWidth: TABLET_MAX_WIDTH,
+          width: "100%" as const,
+        }
+      : null,
+    isTablet,
+  };
 }

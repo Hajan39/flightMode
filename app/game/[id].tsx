@@ -13,80 +13,85 @@ import { useDiscoveryStore } from "@/store/useDiscoveryStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 export default function GameScreen() {
-	const { id } = useLocalSearchParams<{ id: string }>();
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { t } = useTranslation();
-	const game = id ? getGameById(id) : undefined;
-	const markGameSeen = useDiscoveryStore((s) => s.markGameSeen);
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { t } = useTranslation();
+  const game = id ? getGameById(id) : undefined;
+  const markGameSeen = useDiscoveryStore((s) => s.markGameSeen);
 
-	// Mark the game as seen so it drops out of the Home "New to try" row.
-	useEffect(() => {
-		if (id) markGameSeen(id);
-	}, [id, markGameSeen]);
+  // Mark the game as seen so it drops out of the Home "New to try" row.
+  useEffect(() => {
+    if (id) {
+      markGameSeen(id);
+    }
+  }, [id, markGameSeen]);
 
-	const headerOptions = game
-		? {
-				title: t(game.titleKey),
-				headerRight: () => (
-					<GameRules titleKey={game.titleKey} rulesKey={game.rulesKey} inline />
-				),
-			}
-		: { title: t("stackGame") };
+  const headerOptions = game
+    ? {
+        headerRight: () => (
+          <GameRules inline rulesKey={game.rulesKey} titleKey={game.titleKey} />
+        ),
+        title: t(game.titleKey),
+      }
+    : { title: t("stackGame") };
 
-	const GameComponent = useMemo(() => {
-		if (!game) return null;
-		try {
-			return game.loadComponent();
-		} catch {
-			return null;
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [game?.id]);
+  const GameComponent = useMemo(() => {
+    if (!game) {
+      return null;
+    }
+    try {
+      return game.loadComponent();
+    } catch {
+      return null;
+    }
+  }, [game]);
 
-	useEffect(() => {
-		if (!game) return;
+  useEffect(() => {
+    if (!game) {
+      return;
+    }
 
-		captureAnalyticsEvent("game_start", {
-			game_id: game.id,
-			category: game.category,
-			difficulty: game.difficulty,
-			estimated_minutes: game.estimatedTime,
-		});
-	}, [game]);
+    captureAnalyticsEvent("game_start", {
+      category: game.category,
+      difficulty: game.difficulty,
+      estimated_minutes: game.estimatedTime,
+      game_id: game.id,
+    });
+  }, [game]);
 
-	if (!GameComponent) {
-		return (
-			<>
-				<Stack.Screen options={headerOptions} />
-				<View style={styles.container}>
-					<Text style={styles.notFoundTitle}>{t("gameNotFound", { id })}</Text>
-					<Text style={[styles.notFoundHint, { color: theme.mutedText }]}>
-						{t("gameNotFoundHint")}
-					</Text>
-				</View>
-			</>
-		);
-	}
+  if (!GameComponent) {
+    return (
+      <>
+        <Stack.Screen options={headerOptions} />
+        <View style={styles.container}>
+          <Text style={styles.notFoundTitle}>{t("gameNotFound", { id })}</Text>
+          <Text style={[styles.notFoundHint, { color: theme.mutedText }]}>
+            {t("gameNotFoundHint")}
+          </Text>
+        </View>
+      </>
+    );
+  }
 
-	return (
-		<>
-			<Stack.Screen options={headerOptions} />
-			<SafeAreaView
-				edges={["left", "right", "bottom"]}
-				style={[styles.safeArea, { backgroundColor: theme.background }]}
-			>
-				<GameComponent />
-			</SafeAreaView>
-		</>
-	);
+  return (
+    <>
+      <Stack.Screen options={headerOptions} />
+      <SafeAreaView
+        edges={["left", "right", "bottom"]}
+        style={[styles.safeArea, { backgroundColor: theme.background }]}
+      >
+        <GameComponent />
+      </SafeAreaView>
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
-	safeArea: {
-		flex: 1,
-	},
-	container: { flex: 1, alignItems: "center", justifyContent: "center" },
-	notFoundTitle: { fontSize: 16, fontWeight: "600", textAlign: "center" },
-	notFoundHint: { fontSize: 13, textAlign: "center", marginTop: 6 },
+  container: { alignItems: "center", flex: 1, justifyContent: "center" },
+  notFoundHint: { fontSize: 13, marginTop: 6, textAlign: "center" },
+  notFoundTitle: { fontSize: 16, fontWeight: "600", textAlign: "center" },
+  safeArea: {
+    flex: 1,
+  },
 });

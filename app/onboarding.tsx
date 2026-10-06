@@ -2,23 +2,23 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
 import {
-    Dimensions,
-    type NativeScrollEvent,
-    type NativeSyntheticEvent,
-    ScrollView,
-    StyleSheet,
+  Dimensions,
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
+  ScrollView,
+  StyleSheet,
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
+import CurrencyPicker from "@/components/CurrencyPicker";
 import LanguageDropdown from "@/components/LanguageDropdown";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { deviceCurrencyCode, POPULAR_CURRENCIES } from "@/data/currencies";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
-import CurrencyPicker from "@/components/CurrencyPicker";
-import { deviceCurrencyCode, POPULAR_CURRENCIES } from "@/data/currencies";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import type { GameCategory } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -26,325 +26,338 @@ import { captureAnalyticsEvent } from "@/utils/analytics";
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const PREF_CATEGORIES: GameCategory[] = [
-	"brain",
-	"reflex",
-	"strategy",
-	"multiplayer",
+  "brain",
+  "reflex",
+  "strategy",
+  "multiplayer",
 ];
 
 function CategoryPicker({ theme }: { theme: (typeof Colors)["dark"] }) {
-	const { t } = useTranslation();
-	const preferred = useSettingsStore((s) => s.preferredCategories);
-	const toggle = useSettingsStore((s) => s.togglePreferredCategory);
-	const haptic = useHaptic();
-	return (
-		<View style={styles.prefWrap} lightColor="transparent" darkColor="transparent">
-			{PREF_CATEGORIES.map((cat) => {
-				const active = preferred.includes(cat);
-				return (
-					<AnimatedPressable
-						key={cat}
-						onPress={() => {
-							haptic.tap();
-							toggle(cat);
-						}}
-						style={[
-							styles.prefChip,
-							{
-								backgroundColor: active ? theme.tint : theme.card,
-								borderColor: active ? theme.tint : theme.border,
-							},
-						]}
-					>
-						<Text
-							style={[styles.prefChipText, { color: active ? theme.onTint : theme.text }]}
-						>
-							{t(`categoryFilter_${cat}`)}
-						</Text>
-					</AnimatedPressable>
-				);
-			})}
-		</View>
-	);
+  const { t } = useTranslation();
+  const preferred = useSettingsStore((s) => s.preferredCategories);
+  const toggle = useSettingsStore((s) => s.togglePreferredCategory);
+  const haptic = useHaptic();
+  return (
+    <View
+      darkColor="transparent"
+      lightColor="transparent"
+      style={styles.prefWrap}
+    >
+      {PREF_CATEGORIES.map((cat) => {
+        const active = preferred.includes(cat);
+        return (
+          <AnimatedPressable
+            key={cat}
+            onPress={() => {
+              haptic.tap();
+              toggle(cat);
+            }}
+            style={[
+              styles.prefChip,
+              {
+                backgroundColor: active ? theme.tint : theme.card,
+                borderColor: active ? theme.tint : theme.border,
+              },
+            ]}
+          >
+            <Text
+              style={[
+                styles.prefChipText,
+                { color: active ? theme.onTint : theme.text },
+              ]}
+            >
+              {t(`categoryFilter_${cat}`)}
+            </Text>
+          </AnimatedPressable>
+        );
+      })}
+    </View>
+  );
 }
 
-type PageProps = {
-	icon: string;
-	title: string;
-	subtitle: string;
-	theme: (typeof Colors)["dark"];
-	isLanguagePage?: boolean;
-	isPreferencesPage?: boolean;
-	isCurrencyPage?: boolean;
-};
+interface PageProps {
+  icon: string;
+  isCurrencyPage?: boolean;
+  isLanguagePage?: boolean;
+  isPreferencesPage?: boolean;
+  subtitle: string;
+  theme: (typeof Colors)["dark"];
+  title: string;
+}
 
 /** Home-currency step: chips + the shared searchable picker. */
 function HomeCurrencyPicker() {
-	const homeCurrency = useSettingsStore((s) => s.homeCurrency);
-	const setHomeCurrency = useSettingsStore((s) => s.setHomeCurrency);
-	const selected = homeCurrency ?? deviceCurrencyCode();
+  const homeCurrency = useSettingsStore((s) => s.homeCurrency);
+  const setHomeCurrency = useSettingsStore((s) => s.setHomeCurrency);
+  const selected = homeCurrency ?? deviceCurrencyCode();
 
-	return (
-		<CurrencyPicker
-			selected={selected}
-			onSelect={setHomeCurrency}
-			chipCodes={POPULAR_CURRENCIES}
-		/>
-	);
+  return (
+    <CurrencyPicker
+      chipCodes={POPULAR_CURRENCIES}
+      onSelect={setHomeCurrency}
+      selected={selected}
+    />
+  );
 }
 
 function Page({
-	icon,
-	title,
-	subtitle,
-	theme,
-	isLanguagePage,
-	isPreferencesPage,
-	isCurrencyPage,
+  icon,
+  title,
+  subtitle,
+  theme,
+  isLanguagePage,
+  isPreferencesPage,
+  isCurrencyPage,
 }: PageProps) {
-	return (
-		<View style={[styles.page, { width: SCREEN_WIDTH }]}>
-			<Animated.View
-				entering={ZoomIn.delay(200).springify()}
-				style={[
-					styles.iconCircle,
-					{ backgroundColor: theme.accentSoft, borderColor: theme.border },
-				]}
-			>
-				<Ionicons name={icon as never} size={56} color={theme.tint} />
-			</Animated.View>
-			<Animated.Text
-				entering={FadeInDown.delay(350).springify()}
-				style={[styles.title, { color: theme.text }]}
-			>
-				{title}
-			</Animated.Text>
-			<Animated.Text
-				entering={FadeInDown.delay(450).springify()}
-				style={[styles.subtitle, { color: theme.mutedText }]}
-			>
-				{subtitle}
-			</Animated.Text>
-			{isLanguagePage && (
-				<Animated.View
-					entering={FadeInDown.delay(550).springify()}
-					style={styles.languagePicker}
-				>
-					<LanguageDropdown showSystemOption={false} />
-				</Animated.View>
-			)}
-			{isPreferencesPage && (
-				<Animated.View entering={FadeInDown.delay(550).springify()}>
-					<CategoryPicker theme={theme} />
-				</Animated.View>
-			)}
-			{isCurrencyPage && (
-				<Animated.View
-					entering={FadeInDown.delay(550).springify()}
-					style={styles.currencyPicker}
-				>
-					<HomeCurrencyPicker />
-				</Animated.View>
-			)}
-		</View>
-	);
+  return (
+    <View style={[styles.page, { width: SCREEN_WIDTH }]}>
+      <Animated.View
+        entering={ZoomIn.delay(200).springify()}
+        style={[
+          styles.iconCircle,
+          { backgroundColor: theme.accentSoft, borderColor: theme.border },
+        ]}
+      >
+        <Ionicons color={theme.tint} name={icon as never} size={56} />
+      </Animated.View>
+      <Animated.Text
+        entering={FadeInDown.delay(350).springify()}
+        style={[styles.title, { color: theme.text }]}
+      >
+        {title}
+      </Animated.Text>
+      <Animated.Text
+        entering={FadeInDown.delay(450).springify()}
+        style={[styles.subtitle, { color: theme.mutedText }]}
+      >
+        {subtitle}
+      </Animated.Text>
+      {isLanguagePage && (
+        <Animated.View
+          entering={FadeInDown.delay(550).springify()}
+          style={styles.languagePicker}
+        >
+          <LanguageDropdown showSystemOption={false} />
+        </Animated.View>
+      )}
+      {isPreferencesPage && (
+        <Animated.View entering={FadeInDown.delay(550).springify()}>
+          <CategoryPicker theme={theme} />
+        </Animated.View>
+      )}
+      {isCurrencyPage && (
+        <Animated.View
+          entering={FadeInDown.delay(550).springify()}
+          style={styles.currencyPicker}
+        >
+          <HomeCurrencyPicker />
+        </Animated.View>
+      )}
+    </View>
+  );
 }
 
 export default function OnboardingScreen() {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const router = useRouter();
-	const { t } = useTranslation();
-	const completeOnboarding = useSettingsStore((s) => s.completeOnboarding);
-	const haptic = useHaptic();
-	const scrollRef = useRef<ScrollView>(null);
-	const [activeIndex, setActiveIndex] = useState(0);
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const router = useRouter();
+  const { t } = useTranslation();
+  const completeOnboarding = useSettingsStore((s) => s.completeOnboarding);
+  const haptic = useHaptic();
+  const scrollRef = useRef<ScrollView>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-	const pages = [
-		{
-			icon: "language-outline",
-			title: t("onboardingLanguageTitle"),
-			subtitle: t("onboardingLanguageSubtitle"),
-			isLanguagePage: true,
-		},
-		{
-			icon: "airplane",
-			title: t("onboardingTitle1"),
-			subtitle: t("onboardingSubtitle1"),
-		},
-		{
-			icon: "game-controller-outline",
-			title: t("onboardingTitle2"),
-			subtitle: t("onboardingSubtitle2"),
-		},
-		{
-			icon: "heart-outline",
-			title: t("onboardingPrefsTitle"),
-			subtitle: t("onboardingPrefsSubtitle"),
-			isPreferencesPage: true,
-		},
-		{
-			icon: "cash-outline",
-			title: t("onboardingCurrencyTitle"),
-			subtitle: t("onboardingCurrencySubtitle"),
-			isCurrencyPage: true,
-		},
-		{
-			icon: "compass-outline",
-			title: t("onboardingTitle3"),
-			subtitle: t("onboardingSubtitle3"),
-		},
-	];
+  const pages = [
+    {
+      icon: "language-outline",
+      isLanguagePage: true,
+      subtitle: t("onboardingLanguageSubtitle"),
+      title: t("onboardingLanguageTitle"),
+    },
+    {
+      icon: "airplane",
+      subtitle: t("onboardingSubtitle1"),
+      title: t("onboardingTitle1"),
+    },
+    {
+      icon: "game-controller-outline",
+      subtitle: t("onboardingSubtitle2"),
+      title: t("onboardingTitle2"),
+    },
+    {
+      icon: "heart-outline",
+      isPreferencesPage: true,
+      subtitle: t("onboardingPrefsSubtitle"),
+      title: t("onboardingPrefsTitle"),
+    },
+    {
+      icon: "cash-outline",
+      isCurrencyPage: true,
+      subtitle: t("onboardingCurrencySubtitle"),
+      title: t("onboardingCurrencyTitle"),
+    },
+    {
+      icon: "compass-outline",
+      subtitle: t("onboardingSubtitle3"),
+      title: t("onboardingTitle3"),
+    },
+  ];
 
-	const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-		const index = Math.round(e.nativeEvent.contentOffset.x / SCREEN_WIDTH);
-		setActiveIndex(index);
-	};
+  const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const index = Math.round(e.nativeEvent.contentOffset.x / SCREEN_WIDTH);
+    setActiveIndex(index);
+  };
 
-	const finish = () => {
-		haptic.success();
-		captureAnalyticsEvent("onboarding_complete", {
-			page_index: activeIndex,
-			page_count: pages.length,
-		});
-		completeOnboarding();
-		router.replace("/(tabs)");
-	};
+  const finish = () => {
+    haptic.success();
+    captureAnalyticsEvent("onboarding_complete", {
+      page_count: pages.length,
+      page_index: activeIndex,
+    });
+    completeOnboarding();
+    router.replace("/(tabs)");
+  };
 
-	const isLast = activeIndex === pages.length - 1;
+  const isLast = activeIndex === pages.length - 1;
 
-	return (
-		<View style={[styles.root, { backgroundColor: theme.background }]}>
-			{/* Skip */}
-			<AnimatedPressable style={styles.skipBtn} onPress={() => { haptic.tap(); finish(); }}>
-				<Text style={[styles.skipText, { color: theme.mutedText }]}>
-					{t("onboardingSkip")}
-				</Text>
-			</AnimatedPressable>
+  return (
+    <View style={[styles.root, { backgroundColor: theme.background }]}>
+      {/* Skip */}
+      <AnimatedPressable
+        onPress={() => {
+          haptic.tap();
+          finish();
+        }}
+        style={styles.skipBtn}
+      >
+        <Text style={[styles.skipText, { color: theme.mutedText }]}>
+          {t("onboardingSkip")}
+        </Text>
+      </AnimatedPressable>
 
-			{/* Pages */}
-			<ScrollView
-				ref={scrollRef}
-				horizontal
-				pagingEnabled
-				showsHorizontalScrollIndicator={false}
-				onMomentumScrollEnd={handleScroll}
-				style={styles.scroller}
-			>
-				{pages.map((p, i) => (
-					<Page key={i} {...p} theme={theme} />
-				))}
-			</ScrollView>
+      {/* Pages */}
+      <ScrollView
+        horizontal
+        onMomentumScrollEnd={handleScroll}
+        pagingEnabled
+        ref={scrollRef}
+        showsHorizontalScrollIndicator={false}
+        style={styles.scroller}
+      >
+        {pages.map((p, i) => (
+          <Page key={i} {...p} theme={theme} />
+        ))}
+      </ScrollView>
 
-			{/* Dots */}
-			<View style={styles.dotsRow}>
-				{pages.map((_, i) => (
-					<View
-						key={i}
-						style={[
-							styles.dot,
-							{
-								backgroundColor:
-									i === activeIndex ? theme.tint : theme.progressTrack,
-								width: i === activeIndex ? 24 : 8,
-							},
-						]}
-					/>
-				))}
-			</View>
+      {/* Dots */}
+      <View style={styles.dotsRow}>
+        {pages.map((_, i) => (
+          <View
+            key={i}
+            style={[
+              styles.dot,
+              {
+                backgroundColor:
+                  i === activeIndex ? theme.tint : theme.progressTrack,
+                width: i === activeIndex ? 24 : 8,
+              },
+            ]}
+          />
+        ))}
+      </View>
 
-			{/* CTA */}
-			<AnimatedPressable
-				style={[styles.ctaBtn, { backgroundColor: theme.tint }]}
-				onPress={() => {
-					if (isLast) {
-						finish();
-					} else {
-						haptic.tap();
-						scrollRef.current?.scrollTo({
-							x: (activeIndex + 1) * SCREEN_WIDTH,
-							animated: true,
-						});
-					}
-				}}
-			>
-				<Text style={[styles.ctaText, { color: theme.onTint }]}>
-					{isLast ? t("onboardingGetStarted") : t("onboardingNext")}
-				</Text>
-			</AnimatedPressable>
-		</View>
-	);
+      {/* CTA */}
+      <AnimatedPressable
+        onPress={() => {
+          if (isLast) {
+            finish();
+          } else {
+            haptic.tap();
+            scrollRef.current?.scrollTo({
+              animated: true,
+              x: (activeIndex + 1) * SCREEN_WIDTH,
+            });
+          }
+        }}
+        style={[styles.ctaBtn, { backgroundColor: theme.tint }]}
+      >
+        <Text style={[styles.ctaText, { color: theme.onTint }]}>
+          {isLast ? t("onboardingGetStarted") : t("onboardingNext")}
+        </Text>
+      </AnimatedPressable>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-	root: { flex: 1, paddingBottom: 48 },
-	skipBtn: { position: "absolute", top: 56, right: 20, zIndex: 10 },
-	skipText: { fontSize: 15, fontWeight: "600" },
-	scroller: { flex: 1 },
-	page: {
-		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
-		paddingHorizontal: 40,
-		gap: 16,
-	},
-	iconCircle: {
-		width: 120,
-		height: 120,
-		borderRadius: 60,
-		borderWidth: 1,
-		justifyContent: "center",
-		alignItems: "center",
-		marginBottom: 8,
-	},
-	title: { fontSize: 26, fontWeight: "900", textAlign: "center" },
-	subtitle: {
-		fontSize: 15,
-		fontWeight: "500",
-		textAlign: "center",
-		lineHeight: 22,
-	},
-	currencyPicker: {
-		marginTop: 24,
-		alignSelf: "stretch",
-		paddingHorizontal: 12,
-	},
-	languagePicker: {
-		width: "100%",
-		marginTop: 8,
-	},
-	prefWrap: {
-		flexDirection: "row",
-		flexWrap: "wrap",
-		justifyContent: "center",
-		gap: 10,
-		marginTop: 20,
-		paddingHorizontal: 8,
-	},
-	prefChip: {
-		paddingHorizontal: 18,
-		paddingVertical: 12,
-		borderRadius: 22,
-		borderWidth: 1,
-	},
-	prefChipText: { fontSize: 15, fontWeight: "600" },
-	dotsRow: {
-		flexDirection: "row",
-		justifyContent: "center",
-		gap: 8,
-		marginBottom: 24,
-	},
-	dot: { width: 8, height: 8, borderRadius: 4 },
-	ctaBtn: {
-		marginHorizontal: 20,
-		paddingVertical: 16,
-		borderRadius: 14,
-		alignItems: "center",
-	},
-	ctaText: {
-		color: "#fff",
-		fontSize: 17,
-		fontWeight: "900",
-		letterSpacing: 0.5,
-	},
+  ctaBtn: {
+    alignItems: "center",
+    borderRadius: 14,
+    marginHorizontal: 20,
+    paddingVertical: 16,
+  },
+  ctaText: {
+    color: "#fff",
+    fontSize: 17,
+    fontWeight: "900",
+    letterSpacing: 0.5,
+  },
+  currencyPicker: {
+    alignSelf: "stretch",
+    marginTop: 24,
+    paddingHorizontal: 12,
+  },
+  dot: { borderRadius: 4, height: 8, width: 8 },
+  dotsRow: {
+    flexDirection: "row",
+    gap: 8,
+    justifyContent: "center",
+    marginBottom: 24,
+  },
+  iconCircle: {
+    alignItems: "center",
+    borderRadius: 60,
+    borderWidth: 1,
+    height: 120,
+    justifyContent: "center",
+    marginBottom: 8,
+    width: 120,
+  },
+  languagePicker: {
+    marginTop: 8,
+    width: "100%",
+  },
+  page: {
+    alignItems: "center",
+    flex: 1,
+    gap: 16,
+    justifyContent: "center",
+    paddingHorizontal: 40,
+  },
+  prefChip: {
+    borderRadius: 22,
+    borderWidth: 1,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+  },
+  prefChipText: { fontSize: 15, fontWeight: "600" },
+  prefWrap: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    justifyContent: "center",
+    marginTop: 20,
+    paddingHorizontal: 8,
+  },
+  root: { flex: 1, paddingBottom: 48 },
+  scroller: { flex: 1 },
+  skipBtn: { position: "absolute", right: 20, top: 56, zIndex: 10 },
+  skipText: { fontSize: 15, fontWeight: "600" },
+  subtitle: {
+    fontSize: 15,
+    fontWeight: "500",
+    lineHeight: 22,
+    textAlign: "center",
+  },
+  title: { fontSize: 26, fontWeight: "900", textAlign: "center" },
 });

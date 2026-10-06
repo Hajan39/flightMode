@@ -14,33 +14,33 @@ import { type Challenge, COLOR_HEX, type ColorId } from "./logic";
 
 export type PaneStatus = "idle" | "countdown" | "live" | "won" | "lost" | "tie";
 
-export type PaneProps = {
-	player: MatchPlayer;
-	challenge: Challenge | null;
-	status: PaneStatus;
-	/** 3,2,1 during countdown. */
-	countdown: number;
-	/** Current disc color for the "color" challenge. */
-	discColor: ColorId | null;
-	/** True once the "green" challenge has turned green. */
-	greenOn: boolean;
-	/** Live hold duration for the "hold" challenge (ms), null when not holding. */
-	holdMs: number | null;
-	/** Reaction time to show on a won pane. */
-	reactionMs: number | null;
-	wins: number;
-	onTap: (payload?: number) => void;
-	onHoldStart: () => void;
-	onHoldEnd: () => void;
-};
+export interface PaneProps {
+  challenge: Challenge | null;
+  /** 3,2,1 during countdown. */
+  countdown: number;
+  /** Current disc color for the "color" challenge. */
+  discColor: ColorId | null;
+  /** True once the "green" challenge has turned green. */
+  greenOn: boolean;
+  /** Live hold duration for the "hold" challenge (ms), null when not holding. */
+  holdMs: number | null;
+  onHoldEnd: () => void;
+  onHoldStart: () => void;
+  onTap: (payload?: number) => void;
+  player: MatchPlayer;
+  /** Reaction time to show on a won pane. */
+  reactionMs: number | null;
+  status: PaneStatus;
+  wins: number;
+}
 
 const COLOR_KEYS: Record<ColorId, TranslationKey> = {
-	red: "sdColorRed",
-	blue: "sdColorBlue",
-	green: "sdColorGreen",
-	yellow: "sdColorYellow",
-	purple: "sdColorPurple",
-	orange: "sdColorOrange",
+  blue: "sdColorBlue",
+  green: "sdColorGreen",
+  orange: "sdColorOrange",
+  purple: "sdColorPurple",
+  red: "sdColorRed",
+  yellow: "sdColorYellow",
 };
 
 /**
@@ -48,218 +48,311 @@ const COLOR_KEYS: Record<ColorId, TranslationKey> = {
  * same props; the top one is rotated 180° so it faces the other player.
  */
 export default function DuelPane({
-	player,
-	challenge,
-	status,
-	countdown,
-	discColor,
-	greenOn,
-	holdMs,
-	reactionMs,
-	wins,
-	onTap,
-	onHoldStart,
-	onHoldEnd,
+  player,
+  challenge,
+  status,
+  countdown,
+  discColor,
+  greenOn,
+  holdMs,
+  reactionMs,
+  wins,
+  onTap,
+  onHoldStart,
+  onHoldEnd,
 }: PaneProps) {
-	const colorScheme = useColorScheme();
-	const theme = Colors[colorScheme];
-	const { t } = useTranslation();
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme];
+  const { t } = useTranslation();
 
-	const resultBg =
-		status === "won"
-			? `${player.color}33`
-			: status === "lost"
-				? `${theme.danger}22`
-				: status === "tie"
-					? theme.surface
-					: theme.card;
+  const resultBg =
+    status === "won"
+      ? `${player.color}33`
+      : status === "lost"
+        ? `${theme.danger}22`
+        : status === "tie"
+          ? theme.surface
+          : theme.card;
 
-	const renderBody = () => {
-		if (status === "idle") {
-			return (
-				<Text style={[styles.big, { color: theme.mutedText }]}>{t("sdGetReady")}</Text>
-			);
-		}
-		if (status === "countdown") {
-			return (
-				<Animated.Text
-					key={countdown}
-					entering={ZoomIn.duration(160)}
-					style={[styles.countdown, { color: player.color }]}
-				>
-					{countdown > 0 ? countdown : t("gameGo")}
-				</Animated.Text>
-			);
-		}
-		if (status !== "live") {
-			const label =
-				status === "won" ? t("sdRoundWon") : status === "lost" ? t("sdRoundLost") : t("sdRoundTie");
-			return (
-				<Animated.View entering={FadeIn.duration(160)} style={styles.center}>
-					<Text style={[styles.big, { color: status === "won" ? player.color : status === "lost" ? theme.danger : theme.mutedText }]}>
-						{status === "won" ? "🏆 " : status === "lost" ? "✖ " : "🤝 "}
-						{label}
-					</Text>
-					{status === "won" && reactionMs !== null ? (
-						<Text style={[styles.sub, { color: theme.mutedText }]}>
-							{t("sdReaction", { ms: Math.round(reactionMs) })}
-						</Text>
-					) : null}
-				</Animated.View>
-			);
-		}
-		if (!challenge) return null;
+  const renderBody = () => {
+    if (status === "idle") {
+      return (
+        <Text style={[styles.big, { color: theme.mutedText }]}>
+          {t("sdGetReady")}
+        </Text>
+      );
+    }
+    if (status === "countdown") {
+      return (
+        <Animated.Text
+          entering={ZoomIn.duration(160)}
+          key={countdown}
+          style={[styles.countdown, { color: player.color }]}
+        >
+          {countdown > 0 ? countdown : t("gameGo")}
+        </Animated.Text>
+      );
+    }
+    if (status !== "live") {
+      const label =
+        status === "won"
+          ? t("sdRoundWon")
+          : status === "lost"
+            ? t("sdRoundLost")
+            : t("sdRoundTie");
+      return (
+        <Animated.View entering={FadeIn.duration(160)} style={styles.center}>
+          <Text
+            style={[
+              styles.big,
+              {
+                color:
+                  status === "won"
+                    ? player.color
+                    : status === "lost"
+                      ? theme.danger
+                      : theme.mutedText,
+              },
+            ]}
+          >
+            {status === "won" ? "🏆 " : status === "lost" ? "✖ " : "🤝 "}
+            {label}
+          </Text>
+          {status === "won" && reactionMs !== null ? (
+            <Text style={[styles.sub, { color: theme.mutedText }]}>
+              {t("sdReaction", { ms: Math.round(reactionMs) })}
+            </Text>
+          ) : null}
+        </Animated.View>
+      );
+    }
+    if (!challenge) {
+      return null;
+    }
 
-		switch (challenge.kind) {
-			case "color":
-				return (
-					<Pressable style={styles.fill} onPress={() => onTap()} accessibilityRole="button">
-						<Text style={[styles.prompt, { color: theme.text }]}>
-							{t("sdTapWhen", { color: t(COLOR_KEYS[challenge.target]) })}
-						</Text>
-						<RNView
-							style={[
-								styles.disc,
-								{ backgroundColor: discColor ? COLOR_HEX[discColor] : theme.surface },
-							]}
-						/>
-					</Pressable>
-				);
-			case "odd":
-				return (
-					<RNView style={styles.center}>
-						<Text style={[styles.prompt, { color: theme.text }]}>{t("sdFindOdd")}</Text>
-						<RNView style={styles.grid}>
-							{challenge.grid.map((emoji, i) => (
-								<Pressable
-									key={`${i}-${emoji}`}
-									onPress={() => onTap(i)}
-									style={[styles.gridCell, { backgroundColor: theme.card, borderColor: theme.border }]}
-									accessibilityRole="button"
-								>
-									<Text style={styles.gridEmoji}>{emoji}</Text>
-								</Pressable>
-							))}
-						</RNView>
-					</RNView>
-				);
-			case "hold":
-				return (
-					<RNView style={styles.center}>
-						<Text style={[styles.prompt, { color: theme.text }]}>
-							{t("sdHoldRelease", { seconds: (challenge.targetMs / 1000).toFixed(1) })}
-						</Text>
-						<Pressable
-							onPressIn={onHoldStart}
-							onPressOut={onHoldEnd}
-							style={[
-								styles.holdBtn,
-								{
-									backgroundColor: holdMs !== null ? player.color : theme.card,
-									borderColor: player.color,
-								},
-							]}
-							accessibilityRole="button"
-						>
-							<Text style={[styles.holdText, { color: holdMs !== null ? "#0b1620" : theme.text }]}>
-								{holdMs !== null ? t("sdHolding") : t("sdHold")}
-							</Text>
-						</Pressable>
-					</RNView>
-				);
-			case "math":
-				return (
-					<RNView style={styles.center}>
-						<Text style={[styles.mathPrompt, { color: theme.text }]}>{challenge.prompt}</Text>
-						<RNView style={styles.optionRow}>
-							{challenge.options.map((opt) => (
-								<Pressable
-									key={opt}
-									onPress={() => onTap(opt)}
-									style={[styles.optionBtn, { backgroundColor: theme.card, borderColor: theme.border }]}
-									accessibilityRole="button"
-								>
-									<Text style={[styles.optionText, { color: theme.text }]}>{opt}</Text>
-								</Pressable>
-							))}
-						</RNView>
-					</RNView>
-				);
-			case "green":
-				return (
-					<Pressable
-						style={[
-							styles.fill,
-							{ backgroundColor: greenOn ? COLOR_HEX.green : theme.surface, borderRadius: Radius.panel },
-						]}
-						onPress={() => onTap()}
-						accessibilityRole="button"
-					>
-						<Text style={[styles.prompt, { color: greenOn ? "#0b1620" : theme.text }]}>
-							{greenOn ? t("sdTapNow") : t("sdTapGreen")}
-						</Text>
-					</Pressable>
-				);
-		}
-	};
+    switch (challenge.kind) {
+      case "color":
+        return (
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => onTap()}
+            style={styles.fill}
+          >
+            <Text style={[styles.prompt, { color: theme.text }]}>
+              {t("sdTapWhen", { color: t(COLOR_KEYS[challenge.target]) })}
+            </Text>
+            <RNView
+              style={[
+                styles.disc,
+                {
+                  backgroundColor: discColor
+                    ? COLOR_HEX[discColor]
+                    : theme.surface,
+                },
+              ]}
+            />
+          </Pressable>
+        );
+      case "odd":
+        return (
+          <RNView style={styles.center}>
+            <Text style={[styles.prompt, { color: theme.text }]}>
+              {t("sdFindOdd")}
+            </Text>
+            <RNView style={styles.grid}>
+              {challenge.grid.map((emoji, i) => (
+                <Pressable
+                  accessibilityRole="button"
+                  key={`${i}-${emoji}`}
+                  onPress={() => onTap(i)}
+                  style={[
+                    styles.gridCell,
+                    { backgroundColor: theme.card, borderColor: theme.border },
+                  ]}
+                >
+                  <Text style={styles.gridEmoji}>{emoji}</Text>
+                </Pressable>
+              ))}
+            </RNView>
+          </RNView>
+        );
+      case "hold":
+        return (
+          <RNView style={styles.center}>
+            <Text style={[styles.prompt, { color: theme.text }]}>
+              {t("sdHoldRelease", {
+                seconds: (challenge.targetMs / 1000).toFixed(1),
+              })}
+            </Text>
+            <Pressable
+              accessibilityRole="button"
+              onPressIn={onHoldStart}
+              onPressOut={onHoldEnd}
+              style={[
+                styles.holdBtn,
+                {
+                  backgroundColor: holdMs === null ? theme.card : player.color,
+                  borderColor: player.color,
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.holdText,
+                  { color: holdMs === null ? theme.text : "#0b1620" },
+                ]}
+              >
+                {holdMs === null ? t("sdHold") : t("sdHolding")}
+              </Text>
+            </Pressable>
+          </RNView>
+        );
+      case "math":
+        return (
+          <RNView style={styles.center}>
+            <Text style={[styles.mathPrompt, { color: theme.text }]}>
+              {challenge.prompt}
+            </Text>
+            <RNView style={styles.optionRow}>
+              {challenge.options.map((opt) => (
+                <Pressable
+                  accessibilityRole="button"
+                  key={opt}
+                  onPress={() => onTap(opt)}
+                  style={[
+                    styles.optionBtn,
+                    { backgroundColor: theme.card, borderColor: theme.border },
+                  ]}
+                >
+                  <Text style={[styles.optionText, { color: theme.text }]}>
+                    {opt}
+                  </Text>
+                </Pressable>
+              ))}
+            </RNView>
+          </RNView>
+        );
+      case "green":
+        return (
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => onTap()}
+            style={[
+              styles.fill,
+              {
+                backgroundColor: greenOn ? COLOR_HEX.green : theme.surface,
+                borderRadius: Radius.panel,
+              },
+            ]}
+          >
+            <Text
+              style={[
+                styles.prompt,
+                { color: greenOn ? "#0b1620" : theme.text },
+              ]}
+            >
+              {greenOn ? t("sdTapNow") : t("sdTapGreen")}
+            </Text>
+          </Pressable>
+        );
+    }
+  };
 
-	return (
-		<RNView style={[styles.pane, { borderColor: player.color, backgroundColor: resultBg }]}>
-			<RNView style={styles.header}>
-				<RNView style={[styles.dot, { backgroundColor: player.color }]} />
-				<Text style={[styles.name, { color: theme.text }]} numberOfLines={1}>
-					{player.name}
-				</Text>
-				<Text style={[styles.wins, { color: player.color }]}>
-					{"●".repeat(wins)}
-					<Text style={{ color: theme.border }}>{"●".repeat(Math.max(0, 3 - wins))}</Text>
-				</Text>
-			</RNView>
-			<RNView style={styles.body}>{renderBody()}</RNView>
-		</RNView>
-	);
+  return (
+    <RNView
+      style={[
+        styles.pane,
+        { backgroundColor: resultBg, borderColor: player.color },
+      ]}
+    >
+      <RNView style={styles.header}>
+        <RNView style={[styles.dot, { backgroundColor: player.color }]} />
+        <Text numberOfLines={1} style={[styles.name, { color: theme.text }]}>
+          {player.name}
+        </Text>
+        <Text style={[styles.wins, { color: player.color }]}>
+          {"●".repeat(wins)}
+          <Text style={{ color: theme.border }}>
+            {"●".repeat(Math.max(0, 3 - wins))}
+          </Text>
+        </Text>
+      </RNView>
+      <RNView style={styles.body}>{renderBody()}</RNView>
+    </RNView>
+  );
 }
 
 const styles = StyleSheet.create({
-	pane: {
-		flex: 1,
-		borderWidth: 2,
-		borderRadius: Radius.panel,
-		padding: Spacing.md,
-		gap: Spacing.sm,
-	},
-	header: { flexDirection: "row", alignItems: "center", gap: Spacing.sm },
-	dot: { width: 10, height: 10, borderRadius: 5 },
-	name: { flex: 1, fontSize: FontSize.sm, fontWeight: FontWeight.bold },
-	wins: { fontSize: FontSize.sm, letterSpacing: 2 },
-	body: { flex: 1 },
-	fill: { flex: 1, alignItems: "center", justifyContent: "center", gap: Spacing.md },
-	center: { flex: 1, alignItems: "center", justifyContent: "center", gap: Spacing.sm },
-	big: { fontSize: FontSize.xl, fontWeight: FontWeight.black, textAlign: "center" },
-	sub: { ...TextStyle.hint },
-	countdown: { fontSize: FontSize["5xl"], fontWeight: FontWeight.black },
-	prompt: { fontSize: FontSize.md, fontWeight: FontWeight.bold, textAlign: "center" },
-	disc: { width: 96, height: 96, borderRadius: 48 },
-	grid: { width: 174, flexDirection: "row", flexWrap: "wrap", gap: 6, justifyContent: "center" },
-	gridCell: { width: 54, height: 54, borderRadius: Radius.md, borderWidth: 1, alignItems: "center", justifyContent: "center" },
-	gridEmoji: { fontSize: 26 },
-	holdBtn: {
-		width: 160,
-		paddingVertical: Spacing.lg,
-		borderRadius: Radius.button,
-		borderWidth: 2,
-		alignItems: "center",
-	},
-	holdText: { ...TextStyle.buttonSecondary },
-	mathPrompt: { fontSize: FontSize["3xl"], fontWeight: FontWeight.black },
-	optionRow: { flexDirection: "row", gap: Spacing.md },
-	optionBtn: {
-		minWidth: 84,
-		paddingVertical: Spacing.md,
-		paddingHorizontal: Spacing.lg,
-		borderRadius: Radius.button,
-		borderWidth: 1.5,
-		alignItems: "center",
-	},
-	optionText: { fontSize: FontSize["2xl"], fontWeight: FontWeight.black },
+  big: {
+    fontSize: FontSize.xl,
+    fontWeight: FontWeight.black,
+    textAlign: "center",
+  },
+  body: { flex: 1 },
+  center: {
+    alignItems: "center",
+    flex: 1,
+    gap: Spacing.sm,
+    justifyContent: "center",
+  },
+  countdown: { fontSize: FontSize["5xl"], fontWeight: FontWeight.black },
+  disc: { borderRadius: 48, height: 96, width: 96 },
+  dot: { borderRadius: 5, height: 10, width: 10 },
+  fill: {
+    alignItems: "center",
+    flex: 1,
+    gap: Spacing.md,
+    justifyContent: "center",
+  },
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 6,
+    justifyContent: "center",
+    width: 174,
+  },
+  gridCell: {
+    alignItems: "center",
+    borderRadius: Radius.md,
+    borderWidth: 1,
+    height: 54,
+    justifyContent: "center",
+    width: 54,
+  },
+  gridEmoji: { fontSize: 26 },
+  header: { alignItems: "center", flexDirection: "row", gap: Spacing.sm },
+  holdBtn: {
+    alignItems: "center",
+    borderRadius: Radius.button,
+    borderWidth: 2,
+    paddingVertical: Spacing.lg,
+    width: 160,
+  },
+  holdText: { ...TextStyle.buttonSecondary },
+  mathPrompt: { fontSize: FontSize["3xl"], fontWeight: FontWeight.black },
+  name: { flex: 1, fontSize: FontSize.sm, fontWeight: FontWeight.bold },
+  optionBtn: {
+    alignItems: "center",
+    borderRadius: Radius.button,
+    borderWidth: 1.5,
+    minWidth: 84,
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.md,
+  },
+  optionRow: { flexDirection: "row", gap: Spacing.md },
+  optionText: { fontSize: FontSize["2xl"], fontWeight: FontWeight.black },
+  pane: {
+    borderRadius: Radius.panel,
+    borderWidth: 2,
+    flex: 1,
+    gap: Spacing.sm,
+    padding: Spacing.md,
+  },
+  prompt: {
+    fontSize: FontSize.md,
+    fontWeight: FontWeight.bold,
+    textAlign: "center",
+  },
+  sub: { ...TextStyle.hint },
+  wins: { fontSize: FontSize.sm, letterSpacing: 2 },
 });
