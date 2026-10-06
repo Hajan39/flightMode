@@ -53,6 +53,7 @@ and this project adheres to Semantic Versioning.
 - **Articles showed raw markdown** (`**Heading**`, `- **Name** —`): the article screen now renders headings, bullets and inline bold, and keeps the last paragraph above the navigation bar.
 - Onboarding: on Android the dots and the Next/Get started button lagged one page behind (late `onMomentumScrollEnd` for programmatic scroll).
 - Currency chips (onboarding, settings, converter) always show the selected currency first instead of off-screen.
+- **Sudoku grid broke on some screen widths** (the 9th column wrapped because the outer border was not counted in the width) and had no right/bottom outer border; the hint button showed a raw `{{count}}` placeholder.
 - Flight screen: the Start button no longer sits under the navigation bar; the title says "Add flight" for a new flight. Passport stamps are no longer clipped.
 - Czech copy: unified informal address in onboarding, Passport, Plus and a few game strings.
 

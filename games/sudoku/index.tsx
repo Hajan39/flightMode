@@ -498,10 +498,12 @@ export default function SudokuGame() {
         style={[
           styles.grid,
           {
-            width: cellSize * 9,
+            width: cellSize * 9 + 4, // + left/right outer borders (RN counts borders in width)
             borderColor: theme.text,
             borderTopWidth: 2,
             borderLeftWidth: 2,
+            borderRightWidth: 2,
+            borderBottomWidth: 2,
             transform: [{ translateX: gridShake }],
           },
         ]}
@@ -630,7 +632,7 @@ export default function SudokuGame() {
             { color: hintsLeft > 0 ? theme.tint : theme.mutedText },
           ]}
         >
-          {t("sdkHints")} ({hintsLeft} {t("sdkHintsLeft")})
+          {t("sdkHintsLeft", { count: hintsLeft })}
         </Text>
       </Pressable>
 
