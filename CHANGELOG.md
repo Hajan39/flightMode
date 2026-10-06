@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed
+
+- **App froze on Wi-Fi (100 % JS CPU, ~1 GB RAM)**: article-image sync restarted after every downloaded image and revived cancelled loops, retrying failed images forever. Exchange-rate sync also retried in a tight loop after a failed request; it now backs off for 5 minutes.
+
 ### Added
 
 - **Turbulence Test** (catalog 40 → 41) — the app's first motion game: hold the phone flat and keep a ball inside a ring that shrinks while random turbulence gusts push it around. Solo high score or pass-and-play for up to 6. Adds `expo-sensors` (iOS motion permission declared via the config plugin) and degrades to an explanatory screen where no accelerometer exists. New achievement: Steady Hands.
