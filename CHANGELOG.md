@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **Strict linting via Ultracite (Biome)** — `biome.jsonc` extends the strict core + react + jest presets; `npm run check` / `npm run fix`; CI now runs `biome ci` (errors fail the build). The whole codebase was brought to zero lint errors (~4,900 findings resolved: auto-fixes plus manual refactors — nested ternaries, variable shadowing, leaked JSX renders, hoisted regexes, explicit increments). Deliberate deviations are documented inline in `biome.jsonc`; pre-existing debt (hook deps, index keys, complexity hotspots) is tracked as warnings instead of being hidden.
+
 - **Turbulence Test** (catalog 40 → 41) — the app's first motion game: hold the phone flat and keep a ball inside a ring that shrinks while random turbulence gusts push it around. Solo high score or pass-and-play for up to 6. Adds `expo-sensors` (iOS motion permission declared via the config plugin) and degrades to an explanatory screen where no accelerometer exists. New achievement: Steady Hands.
 - **Post-landing mode** — for 48 h after arrival Home leads with a "You've landed in {city}" card (destination local time, one-tap phrasebook / converter / arrival tips) followed by the checklist and travel tools; games move below. Driven by `utils/flightPhase.ts` (`none | preflight | inflight | landed`).
 - **Jet-lag sleep reminder** — a local notification 10 minutes before the suggested on-plane sleep window, scheduled when the flight is saved and cancelled when it's cleared.

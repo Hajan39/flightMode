@@ -17,9 +17,11 @@ npm run deploy:android              # EAS build + auto-submit
 npm run deploy:internal             # EAS build + submit to Internal testing (generates pre-launch report)
 
 npm test                            # Jest (jest-expo) — pure logic/data tests in __tests__/
+npm run check                       # Ultracite/Biome lint (strict preset; CI fails on errors)
+npm run fix                         # Ultracite/Biome lint with auto-fix
 ```
 
-Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/` (locale parity, game-registry & achievement integrity, destinations, Sudoku puzzle validity) — run `npm test`. These do NOT render RN components. No lint script; also validate with `npx tsc --noEmit`.
+Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/` (locale parity, game-registry & achievement integrity, destinations, Sudoku puzzle validity) — run `npm test`. These do NOT render RN components. Linting is **Ultracite** (strict Biome preset, `biome.jsonc`) — run `npm run check`; also validate with `npx tsc --noEmit`. The biome.jsonc documents every deliberate deviation (React Compiler makes noJsxPropsBind moot, Expo Router filenames, bitwise math in game solvers, feature-grouped locale files); don't add new rule exceptions without a stated reason.
 
 ## Architecture
 
@@ -180,7 +182,7 @@ Event queue (max 100) is buffered until the PostHog sink is ready. `components/A
 
 GitHub Actions in `.github/workflows/`:
 
-- **`ci.yml`** — on every push and PR: `npx tsc --noEmit` + `npm test`. This is the quality gate; keep it green.
+- **`ci.yml`** — on every push and PR: `npx tsc --noEmit` + `npx biome ci .` (lint errors fail, warnings don't) + `npm test`. This is the quality gate; keep it green.
 - **`release-main.yml`** — on push to **`main`** (or manual `workflow_dispatch`): a `decide` job inspects the diff and **auto-picks the release lane**:
   - **Build lane** (if any *breaking-sensitive* file changed: `app.json`, `app.config.*`, `eas.json`, `package.json`, `package-lock.json`, `babel.config.js`, `metro.config.js`, `plugins/**`, `modules/**`, `android/**`, `ios/**`) → `eas build --platform android --auto-submit --profile production` (native AAB + submit to the production track as draft; version code auto-increments via `autoIncrement`).
   - **OTA lane** (only JS/TS, translations, data, compatible assets changed) → `npm run ota:production` (derives the message from `CHANGELOG.md` `Unreleased`).
@@ -197,8 +199,11 @@ GitHub Actions in `.github/workflows/`:
 
 ## Known Debt
 
-- Hook dependency warnings across multiple files
-- Index-based list keys in several components
+Tracked as **Biome warnings** (not errors) so they're visible on every `npm run check` without blocking CI:
+
+- Hook dependency gaps (`useExhaustiveDependencies`) — fix deliberately, file by file; autofixes change behavior
+- Index-based list keys (`noArrayIndexKey`)
+- Cognitive-complexity hotspots in long-lived game loops (`noExcessiveCognitiveComplexity`)
 - `any` in `useAudioStore`
 
 Don't fix these silently during unrelated work.

@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-10-06
+
+- zavedeny striktni lint: Ultracite (Biome preset, core+react+jest) — `npm run check` / `npm run fix`, `biome ci` v CI (errors blokuji, warnings ne); cela codebase dovedena na 0 lint erroru (~4900 nalezu: autofixy + rucni refaktory — vnorene ternary, shadowing, leaked JSX render, hoisted regexy, explicitni inkrementy); zamerne odchylky dokumentovane primo v `biome.jsonc`; predchozi dluh (hook deps, index keys, komplexita) tracked jako warningy
+
 ## 2026-09-14
 
 - Post-landing rezim na Home: 48 h po priletu vede karta „Pristal jsi v {city}" (lokalni cas, fraznik/prevodnik/tipy jednim tapem), pak checklist a cestovni nastroje, hry az dole (`utils/flightPhase.ts`, `hooks/useFlightPhase.ts`)
