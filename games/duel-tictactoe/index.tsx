@@ -303,15 +303,13 @@ export default function DuelTicTacToeGame() {
   const nextRound = () => {
     haptic.tap();
     // Loser of the last round (or the other player after a draw) starts.
-    setCurrentPlayer(
-      roundWinner === "draw" || roundWinner === null
-        ? currentPlayer === 0
-          ? 1
-          : 0
-        : roundWinner === 0
-          ? 1
-          : 0
-    );
+    let starter: Player;
+    if (roundWinner === "draw" || roundWinner === null) {
+      starter = currentPlayer === 0 ? 1 : 0;
+    } else {
+      starter = roundWinner === 0 ? 1 : 0;
+    }
+    setCurrentPlayer(starter);
     resetBoard();
   };
 
@@ -352,12 +350,12 @@ export default function DuelTicTacToeGame() {
 
   const current = players[currentPlayer];
   const roundOver = roundWinner !== null;
-  const statusText =
-    roundWinner === null
-      ? undefined
-      : roundWinner === "draw"
-        ? t("mpRoundDraw")
-        : t("mpWinsRound", { player: players[roundWinner].name });
+  let statusText: string | undefined;
+  if (roundWinner === "draw") {
+    statusText = t("mpRoundDraw");
+  } else if (roundWinner !== null) {
+    statusText = t("mpWinsRound", { player: players[roundWinner].name });
+  }
 
   return (
     <View style={styles.root}>
@@ -411,6 +409,12 @@ export default function DuelTicTacToeGame() {
                 const hasMark = owner !== undefined;
                 const isWinCell = winningLine.includes(cellKey);
                 const ownerColor = hasMark ? players[owner].color : undefined;
+                let cellBackground: string | undefined = theme.elevated;
+                if (isWinCell) {
+                  cellBackground = ownerColor;
+                } else if (hasMark) {
+                  cellBackground = `${ownerColor}22`;
+                }
                 return (
                   <Pressable
                     accessibilityLabel={hasMark ? MARKS[owner] : undefined}
@@ -420,11 +424,7 @@ export default function DuelTicTacToeGame() {
                     style={[
                       styles.cell,
                       {
-                        backgroundColor: isWinCell
-                          ? ownerColor
-                          : hasMark
-                            ? `${ownerColor}22`
-                            : theme.elevated,
+                        backgroundColor: cellBackground,
                         borderColor: hasMark ? ownerColor : theme.border,
                         height: cellSize,
                         width: cellSize,

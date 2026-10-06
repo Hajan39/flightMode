@@ -106,9 +106,9 @@ export default function RunwayJamGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const updateProgress = useGameStore((s) => s.updateProgress);
+  const updateProgress = useGameStore((state) => state.updateProgress);
   const levelStars =
-    useGameStore((s) => s.progress["runway-jam"]?.levelStars) ??
+    useGameStore((state) => state.progress["runway-jam"]?.levelStars) ??
     EMPTY_LEVEL_STARS;
   const { width: screenW } = useWindowDimensions();
 
@@ -251,7 +251,11 @@ export default function RunwayJamGame() {
     if (piece) {
       const grid = buildGrid(pieces);
       if (piece.horiz) {
-        for (let c = piece.col - 1; c >= 0 && grid[piece.row][c] === -1; c -= 1) {
+        for (
+          let c = piece.col - 1;
+          c >= 0 && grid[piece.row][c] === -1;
+          c -= 1
+        ) {
           highlighted.add(piece.row * GRID_SIZE + c);
         }
         for (
@@ -262,7 +266,11 @@ export default function RunwayJamGame() {
           highlighted.add(piece.row * GRID_SIZE + c);
         }
       } else {
-        for (let r = piece.row - 1; r >= 0 && grid[r][piece.col] === -1; r -= 1) {
+        for (
+          let r = piece.row - 1;
+          r >= 0 && grid[r][piece.col] === -1;
+          r -= 1
+        ) {
           highlighted.add(r * GRID_SIZE + piece.col);
         }
         for (
@@ -380,6 +388,15 @@ export default function RunwayJamGame() {
           const col = i % GRID_SIZE;
           const lit = highlighted.has(i);
           const hinted = hintCellKey === i;
+          let cellBackground = theme.surface;
+          let cellBorderWidth = 0;
+          if (hinted) {
+            cellBackground = `${theme.tint}55`;
+            cellBorderWidth = 2;
+          } else if (lit) {
+            cellBackground = theme.accentSoft;
+            cellBorderWidth = 1.5;
+          }
           return (
             <Pressable
               accessibilityLabel={t("a11yRowCol", {
@@ -389,15 +406,11 @@ export default function RunwayJamGame() {
               key={`cell-${row}-${col}`}
               onPress={() => handleCellPress(row, col)}
               style={{
-                backgroundColor: hinted
-                  ? `${theme.tint}55`
-                  : lit
-                    ? theme.accentSoft
-                    : theme.surface,
+                backgroundColor: cellBackground,
                 borderColor: theme.tint,
                 borderRadius: 6,
                 borderStyle: hinted ? "dashed" : "solid",
-                borderWidth: hinted ? 2 : lit ? 1.5 : 0,
+                borderWidth: cellBorderWidth,
                 height: cellSize,
                 left: BOARD_PADDING + col * cellStep,
                 position: "absolute",
@@ -420,6 +433,16 @@ export default function RunwayJamGame() {
             ? cellSize
             : piece.len * cellSize + (piece.len - 1) * CELL_GAP;
           const color = isPlane ? theme.tint : vehicleColor(piece.id);
+          let pieceBorderColor = color;
+          if (hinted) {
+            pieceBorderColor = theme.tint;
+          } else if (selected) {
+            pieceBorderColor = theme.text;
+          }
+          let pieceBorderWidth = 1.5;
+          if (hinted || selected) {
+            pieceBorderWidth = 3;
+          }
           return (
             <Pressable
               accessibilityLabel={
@@ -434,14 +457,10 @@ export default function RunwayJamGame() {
               style={{
                 alignItems: "center",
                 backgroundColor: color + (isPlane ? "" : "cc"),
-                borderColor: hinted
-                  ? theme.tint
-                  : selected
-                    ? theme.text
-                    : color,
+                borderColor: pieceBorderColor,
                 borderRadius: 8,
                 borderStyle: hinted ? "dashed" : "solid",
-                borderWidth: hinted ? 3 : selected ? 3 : 1.5,
+                borderWidth: pieceBorderWidth,
                 height: h,
                 justifyContent: "center",
                 left: BOARD_PADDING + piece.col * cellStep,

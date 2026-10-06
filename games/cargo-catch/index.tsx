@@ -99,7 +99,7 @@ export default function CargoCatchGame() {
   const nextSpawnAtRef = useRef<number>(0);
   const pauseStartRef = useRef<number | null>(null);
   const itemIdRef = useRef(0);
-  const gameOverRef = useRef(false);
+  const gameOverRef = useRef<boolean>(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // ---- Board layout ----
@@ -232,7 +232,9 @@ export default function CargoCatchGame() {
   }, [endGame, haptic, spawnItem]);
 
   // Stable ref to the latest tick so the interval never goes stale.
-  const tickRef = useRef<() => void>(() => {});
+  const tickRef = useRef<() => void>(() => {
+    // no-op until the effect below installs the real tick
+  });
   useEffect(() => {
     tickRef.current = tick;
   }, [tick]);
@@ -567,7 +569,7 @@ export default function CargoCatchGame() {
       {/* Result */}
       {phase === "over" && result ? (
         <GameResult
-          best={result.best ?? storedBest}
+          best={result.best}
           isNewBest={result.isNewBest}
           last={result.last === score ? undefined : result.last}
           onPlayAgain={startGame}

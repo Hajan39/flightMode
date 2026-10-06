@@ -145,7 +145,9 @@ export default function DuelEmojiFindGame() {
   const retargetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const turnEndTimeRef = useRef<number | null>(null);
   const pausedRemainingRef = useRef<number | null>(null);
-  const endTurnRef = useRef<() => void>(() => {});
+  const endTurnRef = useRef<() => void>(() => {
+    // no-op until the effect below installs the real endTurn
+  });
 
   const clearTimers = () => {
     if (timerRef.current) {
@@ -314,8 +316,12 @@ export default function DuelEmojiFindGame() {
   }
 
   const current = players[Math.min(currentPlayer, players.length - 1)];
-  const timerColor =
-    timeLeft <= 5 ? theme.danger : timeLeft <= 10 ? theme.warning : theme.text;
+  let timerColor = theme.text;
+  if (timeLeft <= 5) {
+    timerColor = theme.danger;
+  } else if (timeLeft <= 10) {
+    timerColor = theme.warning;
+  }
 
   return (
     <View style={styles.root}>

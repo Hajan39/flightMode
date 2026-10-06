@@ -105,7 +105,7 @@ export default function ColorClashGame() {
   // ── Refs to avoid stale closures ───────────────────────────────────────────
   const roundRef = useRef(0);
   const scoreRef = useRef(0);
-  const tappedRef = useRef(false);
+  const tappedRef = useRef<boolean>(false);
   const phaseRef = useRef<Phase>("idle");
   const trialRef = useRef<Trial | null>(null);
 
@@ -136,6 +136,9 @@ export default function ColorClashGame() {
   );
 
   // ── Show brief feedback flash ──────────────────────────────────────────────
+  // startRoundByNum is declared below and is stable; deliberately omitted
+  // from the deps to break the callback cycle (adding it is a TDZ error).
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional omission, see comment
   const showFeedback = useCallback(
     (kind: FeedbackKind, roundNum: number) => {
       if (progressAnimRef.current) {
@@ -168,7 +171,6 @@ export default function ColorClashGame() {
     // startRoundByNum is declared below and is stable; it's deliberately
     // omitted from the deps to break the circular reference between the
     // two callbacks (adding it is a TDZ error — it doesn't exist yet here).
-    // biome-ignore lint/correctness/useExhaustiveDependencies: intentional, see above
     [setPhaseSync, updateProgress]
   );
 
@@ -371,13 +373,20 @@ export default function ColorClashGame() {
     return theme.elevated;
   })();
 
+  let tapAreaLabel: string | undefined;
+  if (isIdle && finalScore === null) {
+    tapAreaLabel = t("gameTapToStart");
+  } else if (trial) {
+    tapAreaLabel = t(trial.word);
+  }
+
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <View style={styles.root}>
       <GameControls onReset={restart} />
 
       {/* Score / round header */}
-      {isPlaying && (
+      {isPlaying ? (
         <View style={styles.header}>
           <Text style={[styles.headerLabel, { color: theme.mutedText }]}>
             {t("colorClashScore")}
@@ -389,10 +398,10 @@ export default function ColorClashGame() {
             {round + 1}/{TOTAL_ROUNDS}
           </Text>
         </View>
-      )}
+      ) : null}
 
       {/* Progress bar */}
-      {isPlaying && (
+      {isPlaying ? (
         <View style={[styles.progressTrack, { backgroundColor: theme.border }]}>
           <Animated.View
             style={[
@@ -404,17 +413,11 @@ export default function ColorClashGame() {
             ]}
           />
         </View>
-      )}
+      ) : null}
 
       {/* Main tap area */}
       <Pressable
-        accessibilityLabel={
-          isIdle && finalScore === null
-            ? t("gameTapToStart")
-            : trial
-              ? t(trial.word)
-              : undefined
-        }
+        accessibilityLabel={tapAreaLabel}
         accessibilityRole="button"
         onPress={handleTap}
         style={[styles.mainArea, { backgroundColor: bgColor }]}

@@ -229,19 +229,19 @@ export default function ReactionGame() {
     setTooEarly(false);
   };
 
-  const padColor =
-    phase === "ready"
-      ? "#2e9f5b"
-      : phase === "waiting"
-        ? theme.warning
-        : theme.elevated;
+  let padColor = theme.elevated;
+  if (phase === "ready") {
+    padColor = "#2e9f5b";
+  } else if (phase === "waiting") {
+    padColor = theme.warning;
+  }
 
-  const padLabel =
-    phase === "idle"
-      ? t("reactionTapToStart")
-      : phase === "waiting"
-        ? t("reactionWait")
-        : t("reactionTap");
+  let padLabel = t("reactionTap");
+  if (phase === "idle") {
+    padLabel = t("reactionTapToStart");
+  } else if (phase === "waiting") {
+    padLabel = t("reactionWait");
+  }
 
   const padTextColor = phase === "idle" ? theme.mutedText : "#fff";
 
@@ -289,13 +289,13 @@ export default function ReactionGame() {
       </View>
 
       {/* ── Too early banner ── */}
-      {tooEarly && (
+      {tooEarly ? (
         <TooEarlyBanner
           message={t("reactionTooEarlyMsg")}
           theme={theme}
           title={t("reactionTooEarlyTitle")}
         />
-      )}
+      ) : null}
 
       {/* ── Main pad ── */}
       <Animated.View style={[styles.padWrap, padAnimStyle]}>

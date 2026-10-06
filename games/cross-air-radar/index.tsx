@@ -511,6 +511,12 @@ export default function CrossAirRadarGame() {
             const isPlaced = activePlacements.some((p) => p.id === ship.id);
             const isSelected = selectedShip === ship.id;
             const isCurrent = !allPlaced && i === shipIdx;
+            let chipBackground = theme.card;
+            if (isSelected || isCurrent) {
+              chipBackground = me.color;
+            } else if (isPlaced) {
+              chipBackground = theme.surface;
+            }
             return (
               <Pressable
                 accessibilityRole="button"
@@ -527,12 +533,7 @@ export default function CrossAirRadarGame() {
                 style={[
                   styles.shipChip,
                   {
-                    backgroundColor:
-                      isSelected || isCurrent
-                        ? me.color
-                        : isPlaced
-                          ? theme.surface
-                          : theme.card,
+                    backgroundColor: chipBackground,
                     borderColor:
                       isSelected || isCurrent ? me.color : theme.border,
                   },
@@ -680,7 +681,11 @@ export default function CrossAirRadarGame() {
 
       {renderGrid(
         attackGrid,
-        lastResult ? () => {} : handleFire,
+        lastResult
+          ? () => {
+              // firing is locked while the last shot's result is shown
+            }
+          : handleFire,
         false,
         me.color
       )}

@@ -242,7 +242,7 @@ export default function CabinLightsGame() {
           <RNView style={[styles.grid, { gap: CELL_GAP }]}>
             {Array.from({ length: size }, (_, row) => (
               <RNView key={row} style={[styles.gridRow, { gap: CELL_GAP }]}>
-                {Array.from({ length: size }, (_, col) => {
+                {Array.from({ length: size }, (_unused, col) => {
                   const index = row * size + col;
                   const isOn = board[index];
                   return (

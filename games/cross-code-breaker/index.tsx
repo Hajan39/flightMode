@@ -242,23 +242,23 @@ export default function CrossCodeBreakerGame() {
     }
     return (
       <RNView style={styles.pegRow}>
-        {pegs.map((p, i) => (
-          <Animated.View
-            entering={animate ? ZoomIn.delay(i * 40).duration(150) : undefined}
-            key={PEG_KEYS[i]}
-            style={[
-              styles.peg,
-              {
-                backgroundColor:
-                  p === "bull"
-                    ? theme.successBorder
-                    : p === "cow"
-                      ? theme.warning
-                      : theme.border,
-              },
-            ]}
-          />
-        ))}
+        {pegs.map((p, i) => {
+          let pegColor = theme.border;
+          if (p === "bull") {
+            pegColor = theme.successBorder;
+          } else if (p === "cow") {
+            pegColor = theme.warning;
+          }
+          return (
+            <Animated.View
+              entering={
+                animate ? ZoomIn.delay(i * 40).duration(150) : undefined
+              }
+              key={PEG_KEYS[i]}
+              style={[styles.peg, { backgroundColor: pegColor }]}
+            />
+          );
+        })}
       </RNView>
     );
   };
@@ -276,18 +276,20 @@ export default function CrossCodeBreakerGame() {
 
   const myHistory = histories[currentPlayer] ?? [];
 
+  let bannerLabel = `${current.name} · ${myHistory.length}/${MAX_GUESSES}`;
+  if (phase === "roundEnd") {
+    bannerLabel =
+      roundWinner === null
+        ? t("cbNobodyCracked")
+        : t("mpWinsRound", { player: players[roundWinner].name });
+  }
+
   return (
     <View style={styles.container}>
       <RNView style={styles.topRow}>
         <TurnBanner
           compact
-          label={
-            phase === "roundEnd"
-              ? roundWinner === null
-                ? t("cbNobodyCracked")
-                : t("mpWinsRound", { player: players[roundWinner].name })
-              : `${current.name} · ${myHistory.length}/${MAX_GUESSES}`
-          }
+          label={bannerLabel}
           player={current}
           right={
             <Text style={[styles.roundChip, { color: theme.mutedText }]}>

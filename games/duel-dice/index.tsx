@@ -261,6 +261,13 @@ export default function DuelDiceGame() {
   const current = players[Math.min(activePlayer, players.length - 1)];
   const activeColor = current.color;
 
+  let rollLabel = t("diceWaiting");
+  if (canRoll) {
+    rollLabel = `${current.name} — ${t("diceTapToRoll")}`;
+  } else if (isRolling) {
+    rollLabel = `${current.name}…`;
+  }
+
   return (
     <View style={styles.root}>
       <RNView style={styles.topRow}>
@@ -353,11 +360,7 @@ export default function DuelDiceGame() {
             { color: canRoll ? "#0b1620" : theme.mutedText },
           ]}
         >
-          {canRoll
-            ? `${current.name} — ${t("diceTapToRoll")}`
-            : isRolling
-              ? `${current.name}…`
-              : t("diceWaiting")}
+          {rollLabel}
         </Text>
       </Pressable>
 

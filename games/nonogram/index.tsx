@@ -139,9 +139,10 @@ export default function NonogramGame() {
   const { t } = useTranslation();
   const haptic = useHaptic();
   const { width: screenW } = useWindowDimensions();
-  const updateProgress = useGameStore((s) => s.updateProgress);
+  const updateProgress = useGameStore((state) => state.updateProgress);
   const levelStars =
-    useGameStore((s) => s.progress.nonogram?.levelStars) ?? EMPTY_LEVEL_STARS;
+    useGameStore((state) => state.progress.nonogram?.levelStars) ??
+    EMPTY_LEVEL_STARS;
 
   const [phase, setPhase] = useState<Phase>("menu");
   const [level, setLevel] = useState<NonogramLevel>(NONOGRAM_LEVELS[0]);
@@ -189,7 +190,7 @@ export default function NonogramGame() {
 
   /* --- shared win check (tap + hint paths both end here, exactly once) --- */
   const finishIfSolved = (next: CellState[][], hintsNow: number) => {
-    const filledCount = next.flat().filter((s) => s === FILLED).length;
+    const filledCount = next.flat().filter((cell) => cell === FILLED).length;
     if (filledCount !== totalFilled) {
       return;
     }
@@ -382,7 +383,7 @@ export default function NonogramGame() {
   }
 
   /* --- layout --- */
-  const size = level.size;
+  const { size } = level;
   const maxRowClues = Math.max(1, ...clues.rows.map((r) => r.length));
   const maxColClues = Math.max(1, ...clues.cols.map((c) => c.length));
   const rowGutterW = maxRowClues * CLUE_DIGIT_W + Spacing.sm;
@@ -398,7 +399,7 @@ export default function NonogramGame() {
   const rowSatisfied = clues.rows.map((clue, r) =>
     isLineSatisfied(
       clue,
-      grid[r].map((s) => s === FILLED)
+      grid[r].map((cell) => cell === FILLED)
     )
   );
   const colSatisfied = clues.cols.map((clue, c) =>

@@ -257,11 +257,13 @@ function pickType(landed: number): PlaneType {
   }
   if (landed < 10) {
     const r = Math.random();
-    return r < 0.3
-      ? PLANE_TYPES[0]
-      : r < 0.65
-        ? PLANE_TYPES[1]
-        : PLANE_TYPES[2];
+    if (r < 0.3) {
+      return PLANE_TYPES[0];
+    }
+    if (r < 0.65) {
+      return PLANE_TYPES[1];
+    }
+    return PLANE_TYPES[2];
   }
   const r = Math.random();
   if (r < 0.15) {
@@ -393,7 +395,7 @@ function DrawnPlane({
         }}
       />
       {/* tail fin (optional) */}
-      {hasTail && (
+      {hasTail ? (
         <RNView
           style={{
             borderLeftColor: "transparent",
@@ -409,9 +411,9 @@ function DrawnPlane({
             width: wingW * 0.9,
           }}
         />
-      )}
+      ) : null}
       {/* selection ring */}
-      {selected && (
+      {selected ? (
         <RNView
           style={{
             borderColor: "#fff",
@@ -422,7 +424,7 @@ function DrawnPlane({
             width: outerSize - 4,
           }}
         />
-      )}
+      ) : null}
       {/* guide ring when unselected */}
       {!selected && (
         <RNView
@@ -449,7 +451,12 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
   const deg = (rwy.rotation * 180) / Math.PI;
   const len = rwy.halfLen * 2;
   const DASHES = Math.max(3, Math.round(len / 14));
-  const sizeTag = rwy.size === "long" ? "L" : rwy.size === "medium" ? "M" : "S";
+  let sizeTag = "S";
+  if (rwy.size === "long") {
+    sizeTag = "L";
+  } else if (rwy.size === "medium") {
+    sizeTag = "M";
+  }
 
   return (
     <RNView
@@ -540,9 +547,9 @@ export default function FlightPathGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const updateProgress = useGameStore((s) => s.updateProgress);
+  const updateProgress = useGameStore((state) => state.updateProgress);
   const storedBest = useGameStore(
-    (s) => s.progress["flight-path"]?.highScore ?? 0
+    (state) => state.progress["flight-path"]?.highScore ?? 0
   );
 
   const [boardSize, setBoardSize] = useState({ h: 500, w: 300 });
@@ -566,7 +573,7 @@ export default function FlightPathGame() {
   const drawRef = useRef<Pt[]>([]);
   const scoreRef = useRef(0);
   const landedRef = useRef(0);
-  const gameOverRef = useRef(false);
+  const gameOverRef = useRef<boolean>(false);
   const nextIdRef = useRef(1);
   const hapticErrorRef = useRef(haptic.error);
   hapticErrorRef.current = haptic.error;
@@ -692,8 +699,8 @@ export default function FlightPathGame() {
       return;
     }
     scheduleIncoming();
-    const t = setInterval(scheduleIncoming, spawnMs);
-    return () => clearInterval(t);
+    const intervalId = setInterval(scheduleIncoming, spawnMs);
+    return () => clearInterval(intervalId);
   }, [started, gameOver, spawnMs, paused, scheduleIncoming]);
 
   useEffect(() => {
@@ -701,7 +708,7 @@ export default function FlightPathGame() {
       return;
     }
 
-    const t = setInterval(() => {
+    const telegraphId = setInterval(() => {
       const toSpawn: IncomingWarning[] = [];
       setIncoming((prev) => {
         const keep: IncomingWarning[] = [];
@@ -743,7 +750,7 @@ export default function FlightPathGame() {
       });
     }, TICK);
 
-    return () => clearInterval(t);
+    return () => clearInterval(telegraphId);
   }, [started, gameOver, paused]);
 
   /* ---- GAME LOOP ---- */
@@ -760,7 +767,7 @@ export default function FlightPathGame() {
       if (gameOverRef.current) {
         return;
       }
-      const current = planesRef.current;
+      const { current } = planesRef;
       const rwys = runwaysRef.current;
       const { w, h } = boardRef.current;
       const next: Plane[] = [];
@@ -914,7 +921,7 @@ export default function FlightPathGame() {
       }
 
       if (landedThisTick > 0) {
-        setScore((s) => s + landedPts);
+        setScore((cur) => cur + landedPts);
         setLanded((l) => l + landedThisTick);
       }
 
@@ -972,8 +979,8 @@ export default function FlightPathGame() {
       setDrawPath([...updated]);
       // Update the plane's path in real-time so it follows while drawing
       const id = selectedRef.current;
-      setPlanes((prev) =>
-        prev.map((p) => (p.id === id ? { ...p, path: [...updated] } : p))
+      setPlanes((planesPrev) =>
+        planesPrev.map((p) => (p.id === id ? { ...p, path: [...updated] } : p))
       );
     },
     onPanResponderRelease: () => {
@@ -1017,18 +1024,18 @@ export default function FlightPathGame() {
           style={s.typeList}
         >
           {PLANE_TYPES.map((pt, i) => {
-            const rwyTag =
-              pt.minRunway === "long"
-                ? "L"
-                : pt.minRunway === "medium"
-                  ? "M"
-                  : "S";
-            const speedKey =
-              pt.baseSpeed < 0.45
-                ? "flightPathSpeedSlow"
-                : pt.baseSpeed < 0.8
-                  ? "flightPathSpeedMedium"
-                  : "flightPathSpeedFast";
+            let rwyTag = "S";
+            if (pt.minRunway === "long") {
+              rwyTag = "L";
+            } else if (pt.minRunway === "medium") {
+              rwyTag = "M";
+            }
+            let speedKey = "flightPathSpeedFast";
+            if (pt.baseSpeed < 0.45) {
+              speedKey = "flightPathSpeedSlow";
+            } else if (pt.baseSpeed < 0.8) {
+              speedKey = "flightPathSpeedMedium";
+            }
             return (
               <Animated.View
                 entering={FadeInDown.delay(i * 40).duration(200)}

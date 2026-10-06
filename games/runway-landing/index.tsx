@@ -63,7 +63,8 @@ function getQualityColor(q: Quality): string {
       return "#66bb6a";
     case "good":
       return "#ffa726";
-    case "miss":
+    default:
+      // "miss" — Quality has no other members
       return "#ef5350";
   }
 }
@@ -153,7 +154,8 @@ export default function RunwayLandingGame() {
         return t("rlGreat");
       case "good":
         return t("rlGood");
-      case "miss":
+      default:
+        // "miss" — Quality has no other members
         return t("rlMiss");
     }
   };
@@ -333,7 +335,7 @@ export default function RunwayLandingGame() {
         </Text>
       </Pressable>
 
-      {finished && (
+      {finished ? (
         <GameResult
           best={progressInfo?.best ?? storedBest}
           isNewBest={progressInfo?.isNewBest}
@@ -344,7 +346,7 @@ export default function RunwayLandingGame() {
           subtitle={t("rlResult", { score })}
           title={t("rlFinished")}
         />
-      )}
+      ) : null}
 
       <GamePauseOverlay
         onRestart={restart}

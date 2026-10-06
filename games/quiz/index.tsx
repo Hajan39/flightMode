@@ -318,7 +318,7 @@ export default function QuizGame() {
 
   // Synchronous re-entry guard so two near-simultaneous taps cannot
   // double-advance or fire updateProgress twice on the last question.
-  const answeringRef = useRef(false);
+  const answeringRef = useRef<boolean>(false);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(
@@ -353,7 +353,11 @@ export default function QuizGame() {
     const isCorrect =
       choice === currentQuestion.options[currentQuestion.answerIndex];
     const nextScore = score + (isCorrect ? 10 : 0);
-    isCorrect ? haptic.success() : haptic.error();
+    if (isCorrect) {
+      haptic.success();
+    } else {
+      haptic.error();
+    }
 
     if (isCorrect) {
       cardScale.value = withSequence(
@@ -456,20 +460,17 @@ export default function QuizGame() {
         {shuffledOptions.map((option) => {
           const isSelected = selectedOption === option;
           const isCorrect = option === correctAnswer;
-          const showResult = selectedOption !== null;
+          const showAnswer = selectedOption !== null;
 
-          const bg =
-            showResult && isCorrect
-              ? theme.successSurface
-              : showResult && isSelected && !isCorrect
-                ? theme.dangerSurface
-                : theme.elevated;
-          const border =
-            showResult && isCorrect
-              ? theme.successBorder
-              : showResult && isSelected && !isCorrect
-                ? theme.dangerBorder
-                : theme.border;
+          let bg = theme.elevated;
+          let borderCol = theme.border;
+          if (showAnswer && isCorrect) {
+            bg = theme.successSurface;
+            borderCol = theme.successBorder;
+          } else if (showAnswer && isSelected && !isCorrect) {
+            bg = theme.dangerSurface;
+            borderCol = theme.dangerBorder;
+          }
 
           return (
             <Pressable
@@ -479,7 +480,7 @@ export default function QuizGame() {
               onPress={() => handleAnswer(option)}
               style={[
                 styles.optionBtn,
-                { backgroundColor: bg, borderColor: border },
+                { backgroundColor: bg, borderColor: borderCol },
               ]}
             >
               <Text style={[styles.optionText, { color: theme.text }]}>
@@ -500,7 +501,7 @@ export default function QuizGame() {
         {t("quizScore", { score })}
       </Text>
 
-      {showResult && (
+      {showResult ? (
         <GameResult
           best={progressInfo?.best ?? storedBest}
           isNewBest={progressInfo?.isNewBest}
@@ -515,7 +516,7 @@ export default function QuizGame() {
           })}
           title={t("quizFinished")}
         />
-      )}
+      ) : null}
     </View>
   );
 }

@@ -149,6 +149,9 @@ export default function OddOneOutGame() {
   );
 
   // ── After feedback flash, advance ─────────────────────────────────────────
+  // startRoundByNum is declared below and is stable; deliberately omitted
+  // from the deps to break the callback cycle (adding it is a TDZ error).
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional omission, see comment
   const advanceAfterFeedback = useCallback(
     (nextRound: number, currentScore: number) => {
       if (nextRound > TOTAL_ROUNDS) {
@@ -167,7 +170,6 @@ export default function OddOneOutGame() {
     // startRoundByNum is declared below and is stable; it's deliberately
     // omitted from the deps to break the circular reference between the
     // two callbacks (adding it is a TDZ error — it doesn't exist yet here).
-    // biome-ignore lint/correctness/useExhaustiveDependencies: intentional, see above
     [setPhaseSync, updateProgress]
   );
 
@@ -355,7 +357,12 @@ export default function OddOneOutGame() {
   const CELL_GAP = 8;
   const gridWidth = width - GRID_PADDING * 2;
   const cellSize = Math.floor((gridWidth - CELL_GAP * (cols - 1)) / cols);
-  const emojiFontSize = cols <= 3 ? 32 : cols <= 4 ? 26 : 22;
+  let emojiFontSize = 22;
+  if (cols <= 3) {
+    emojiFontSize = 32;
+  } else if (cols <= 4) {
+    emojiFontSize = 26;
+  }
 
   const isIdle = phase === "idle";
   const isPlaying = phase === "playing";
@@ -418,7 +425,7 @@ export default function OddOneOutGame() {
         </Pressable>
       ) : (
         <RNView style={styles.gridWrapper}>
-          {roundData && (
+          {roundData ? (
             <Animated.View
               style={[
                 styles.gridContainer,
@@ -438,7 +445,7 @@ export default function OddOneOutGame() {
             >
               {Array.from({ length: rows }, (_, row) => (
                 <RNView key={row} style={[styles.gridRow, { gap: CELL_GAP }]}>
-                  {Array.from({ length: cols }, (_, col) => {
+                  {Array.from({ length: cols }, (_unused, col) => {
                     const index = row * cols + col;
                     const emoji = roundData.grid[index];
                     const isTapped = feedbackIndex === index;
@@ -497,7 +504,7 @@ export default function OddOneOutGame() {
                 </RNView>
               ))}
             </Animated.View>
-          )}
+          ) : null}
           {phase === "feedback" && feedbackKind === "timeout" && (
             <RNView
               style={[

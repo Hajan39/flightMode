@@ -162,8 +162,12 @@ export default function CategoryBlitzGame() {
   }
 
   const turnScore = counts[turnIndex] ?? 0;
-  const timerColor =
-    timeLeft <= 5 ? theme.danger : timeLeft <= 10 ? theme.warning : theme.text;
+  let timerColor = theme.text;
+  if (timeLeft <= 5) {
+    timerColor = theme.danger;
+  } else if (timeLeft <= 10) {
+    timerColor = theme.warning;
+  }
 
   return (
     <View style={styles.root}>

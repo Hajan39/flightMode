@@ -86,13 +86,15 @@ function FuelBar({
     width.value = withTiming(ratio, { duration: 600 });
   }, [ratio, width]);
 
+  let fuelColor = theme.danger;
+  if (ratio > 0.5) {
+    fuelColor = theme.successBorder;
+  } else if (ratio > 0.25) {
+    fuelColor = theme.warning;
+  }
+
   const barStyle = useAnimatedStyle(() => ({
-    backgroundColor:
-      ratio > 0.5
-        ? theme.successBorder
-        : ratio > 0.25
-          ? theme.warning
-          : theme.danger,
+    backgroundColor: fuelColor,
     width: `${width.value * 100}%`,
   }));
 
@@ -477,12 +479,12 @@ export default function AirTrafficControlGame() {
     setLanded((prev) => prev + 1);
   };
 
-  const pressureLabel =
-    level <= 2
-      ? t("atcLightTraffic")
-      : level <= 4
-        ? t("atcBusyAirspace")
-        : t("atcPeakTraffic");
+  let pressureLabel = t("atcPeakTraffic");
+  if (level <= 2) {
+    pressureLabel = t("atcLightTraffic");
+  } else if (level <= 4) {
+    pressureLabel = t("atcBusyAirspace");
+  }
 
   const missHearts = Array.from({ length: MAX_MISSES }, (_, i) =>
     i < misses ? "💥" : "✈️"
@@ -606,7 +608,7 @@ export default function AirTrafficControlGame() {
         )}
       />
 
-      {gameOver && (
+      {gameOver ? (
         <GameResult
           best={progressInfo?.best ?? storedBest}
           isNewBest={progressInfo?.isNewBest}
@@ -617,7 +619,7 @@ export default function AirTrafficControlGame() {
           subtitle={t("atcGameOverSubtitle", { landed, score })}
           title={t("atcGameOver")}
         />
-      )}
+      ) : null}
 
       <GamePauseOverlay
         onRestart={restart}

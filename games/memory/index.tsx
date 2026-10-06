@@ -75,17 +75,15 @@ function FlipCard({
     transform: [{ rotateY: `${rotateY.value}deg` }, { scale: scale.value }],
   }));
 
-  const bgColor = item.isMatched
-    ? theme.successSurface
-    : isShowing
-      ? theme.elevated
-      : theme.tint;
-
-  const borderProps = item.isMatched
-    ? { borderColor: theme.successBorder, borderWidth: 2 }
-    : isShowing
-      ? { borderColor: theme.tint, borderWidth: 2 }
-      : {};
+  let bgColor = theme.tint;
+  let borderProps: { borderColor?: string; borderWidth?: number } = {};
+  if (item.isMatched) {
+    bgColor = theme.successSurface;
+    borderProps = { borderColor: theme.successBorder, borderWidth: 2 };
+  } else if (isShowing) {
+    bgColor = theme.elevated;
+    borderProps = { borderColor: theme.tint, borderWidth: 2 };
+  }
 
   return (
     <Pressable onPress={() => onPress(item.id)}>

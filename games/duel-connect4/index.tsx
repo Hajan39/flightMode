@@ -224,9 +224,13 @@ export default function DuelConnect4Game() {
     haptic.tap();
     setBoard(createBoard());
     // The player who did NOT win the last round starts.
-    setCurrentPlayer(
-      winner === 0 ? 1 : winner === 1 ? 0 : currentPlayer === 0 ? 1 : 0
-    );
+    let starter: Player = currentPlayer === 0 ? 1 : 0;
+    if (winner === 0) {
+      starter = 1;
+    } else if (winner === 1) {
+      starter = 0;
+    }
+    setCurrentPlayer(starter);
   };
 
   if (phase === "setup") {
@@ -250,12 +254,12 @@ export default function DuelConnect4Game() {
   }
 
   const current = players[currentPlayer];
-  const statusLabel =
-    winner === null
-      ? undefined
-      : winner === "draw"
-        ? t("mpRoundDraw")
-        : t("mpWinsRound", { player: players[winner].name });
+  let statusLabel: string | undefined;
+  if (winner === "draw") {
+    statusLabel = t("mpRoundDraw");
+  } else if (winner !== null) {
+    statusLabel = t("mpWinsRound", { player: players[winner].name });
+  }
   const boardBg = colorScheme === "dark" ? "#1a237e" : "#283593";
   const holeBg = colorScheme === "dark" ? "#0d1236" : "#e8eaf6";
 

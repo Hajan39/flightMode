@@ -90,7 +90,7 @@ export default function EmojiStoryGame() {
   const _usedTiles = new Set(contributions.flatMap((c) => c.tiles));
 
   const startMatch = (matchPlayers: MatchPlayer[]) => {
-    const travel = tileDecks.travel;
+    const { travel } = tileDecks;
     const emoji = travel[Math.floor(Math.random() * travel.length)];
     const frameKey =
       storyFrameKeys[Math.floor(Math.random() * storyFrameKeys.length)];
@@ -110,13 +110,15 @@ export default function EmojiStoryGame() {
 
   const toggleTile = (tile: string) => {
     haptic.tap();
-    setSelectedTiles((prev) =>
-      prev.includes(tile)
-        ? prev.filter((x) => x !== tile)
-        : prev.length >= MAX_TILES_PER_TURN
-          ? [...prev.slice(1), tile]
-          : [...prev, tile]
-    );
+    setSelectedTiles((prev) => {
+      if (prev.includes(tile)) {
+        return prev.filter((x) => x !== tile);
+      }
+      if (prev.length >= MAX_TILES_PER_TURN) {
+        return [...prev.slice(1), tile];
+      }
+      return [...prev, tile];
+    });
   };
 
   const confirmTurn = () => {
@@ -252,20 +254,21 @@ export default function EmojiStoryGame() {
 
   const actLabel = t(actKeys[Math.min(currentAct, ACTS - 1)]);
 
+  let bannerLabel: string | undefined;
+  if (phase === "vote" || phase === "passVote") {
+    bannerLabel = t("esVoteBest");
+  } else if (phase === "actEnd") {
+    bannerLabel = t("esActDone", { act: actLabel });
+  } else if (phase === "readout") {
+    bannerLabel = t("esReadStory");
+  }
+
   return (
     <View style={styles.root}>
       <RNView style={styles.topRow}>
         <TurnBanner
           compact
-          label={
-            phase === "vote" || phase === "passVote"
-              ? t("esVoteBest")
-              : phase === "actEnd"
-                ? t("esActDone", { act: actLabel })
-                : phase === "readout"
-                  ? t("esReadStory")
-                  : undefined
-          }
+          label={bannerLabel}
           player={
             phase === "vote" || phase === "passVote" ? players[voter] : author
           }

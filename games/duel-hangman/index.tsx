@@ -178,6 +178,11 @@ export default function DuelHangmanGame() {
   const gameOver = isWon || isLost;
   const current = players[Math.min(guesser, Math.max(0, players.length - 1))];
   const guesserColor = current?.color ?? theme.tint;
+  let slotBorderColor = guesserColor;
+  if (gameOver) {
+    slotBorderColor = isWon ? theme.successBorder : theme.danger;
+  }
+  const hiddenLetterColor = gameOver ? theme.danger : "transparent";
   const wordLetters = word.split("").map((letter, index) => ({
     id: `${letter}-${index + 1}-${word.length}`,
     letter,
@@ -343,11 +348,7 @@ export default function DuelHangmanGame() {
               style={[
                 styles.letterSlot,
                 {
-                  borderBottomColor: gameOver
-                    ? isWon
-                      ? theme.successBorder
-                      : theme.danger
-                    : guesserColor,
+                  borderBottomColor: slotBorderColor,
                   marginHorizontal: gap / 2,
                   width: slotW,
                 },
@@ -357,11 +358,7 @@ export default function DuelHangmanGame() {
                 style={[
                   styles.letterChar,
                   {
-                    color: guessed.has(letter)
-                      ? theme.text
-                      : gameOver
-                        ? theme.danger
-                        : "transparent",
+                    color: guessed.has(letter) ? theme.text : hiddenLetterColor,
                     fontSize,
                   },
                 ]}
@@ -408,6 +405,12 @@ export default function DuelHangmanGame() {
                 const used = guessed.has(letter);
                 const correct = used && word.includes(letter);
                 const wrong = used && !word.includes(letter);
+                let keyBackground = theme.elevated;
+                if (correct) {
+                  keyBackground = theme.successBorder;
+                } else if (wrong) {
+                  keyBackground = theme.danger;
+                }
                 return (
                   <Pressable
                     accessibilityLabel={letter}
@@ -419,11 +422,7 @@ export default function DuelHangmanGame() {
                     style={[
                       styles.key,
                       {
-                        backgroundColor: correct
-                          ? theme.successBorder
-                          : wrong
-                            ? theme.danger
-                            : theme.elevated,
+                        backgroundColor: keyBackground,
                         opacity: used ? 0.5 : 1,
                       },
                     ]}

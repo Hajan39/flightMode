@@ -212,18 +212,19 @@ export default function CrossLiarsDiceGame() {
   const peeker = players[currentPeeker];
   const bidder = players[currentBidder];
 
+  let bannerLabel: string | undefined;
+  if (phase === "peek" || phase === "passPeek") {
+    bannerLabel = `${peeker.name} · ${t("ldYourDice")}`;
+  } else if (phase === "reveal" && revealResult) {
+    bannerLabel = `${players[revealResult.loser].name} ${t("ldLosesDie")}`;
+  }
+
   return (
     <View style={styles.container}>
       <RNView style={styles.topRow}>
         <TurnBanner
           compact
-          label={
-            phase === "peek" || phase === "passPeek"
-              ? `${peeker.name} · ${t("ldYourDice")}`
-              : phase === "reveal" && revealResult
-                ? `${players[revealResult.loser].name} ${t("ldLosesDie")}`
-                : undefined
-          }
+          label={bannerLabel}
           player={phase === "peek" || phase === "passPeek" ? peeker : bidder}
           right={
             <Text style={[styles.roundChip, { color: theme.mutedText }]}>
