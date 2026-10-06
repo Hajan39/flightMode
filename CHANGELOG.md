@@ -50,7 +50,10 @@ and this project adheres to Semantic Versioning.
 
 - **App froze on Wi-Fi (100 % JS CPU, ~1 GB RAM)**: `ImageSyncBootstrap` re-ran after every downloaded article image and shared one cancel flag across runs, so download loops piled up and failed images were retried forever. Now one loop per change, the cache is read imperatively and failed URLs wait for the next launch.
 - Content and rates sync retried in a tight loop after a failed request (the bootstrap re-runs on every status change); a failure now backs off for 5 minutes.
-- Onboarding: on Android the dots and the Next/Get started button lagged one page behind (late `onMomentumScrollEnd` for programmatic scroll). The home-currency step now shows the device currency as the first chip.
+- **Articles showed raw markdown** (`**Heading**`, `- **Name** —`): the article screen now renders headings, bullets and inline bold, and keeps the last paragraph above the navigation bar.
+- Onboarding: on Android the dots and the Next/Get started button lagged one page behind (late `onMomentumScrollEnd` for programmatic scroll).
+- Currency chips (onboarding, settings, converter) always show the selected currency first instead of off-screen.
+- Flight screen: the Start button no longer sits under the navigation bar; the title says "Add flight" for a new flight. Passport stamps are no longer clipped.
 - Czech copy: unified informal address in onboarding, Passport, Plus and a few game strings.
 
 - Settings: bug-report / feature-suggestion mails went to the template placeholder `support@eon-app.com`; they now go to `flightmode.app@proton.me` (also the privacy-policy contact).

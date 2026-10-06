@@ -81,7 +81,7 @@ export default function PassportSection() {
 								})}
 							</Text>
 							<Text style={[styles.stampMeta, { color: theme.mutedText }]}>
-								{Math.floor(stamp.duration / 60)}h {stamp.duration % 60}m
+								{Math.floor(stamp.duration / 60)} h {stamp.duration % 60} min
 							</Text>
 						</View>
 					))}
@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
 	total: { flex: 1, alignItems: "center" },
 	totalValue: { fontSize: FontSize.xl, fontWeight: FontWeight.bold },
 	totalLabel: { fontSize: FontSize.xs, marginTop: 2 },
-	stamps: { gap: Spacing.sm, paddingVertical: Spacing.md },
+	// Padding so the rotated, dashed stamps are not clipped by the scroll view.
+	stamps: { gap: Spacing.sm, padding: Spacing.sm, paddingVertical: Spacing.md },
 	stamp: {
 		width: 96,
 		alignItems: "center",

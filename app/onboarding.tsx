@@ -88,8 +88,7 @@ function HomeCurrencyPicker() {
 		<CurrencyPicker
 			selected={selected}
 			onSelect={setHomeCurrency}
-			// Selected (device) currency first — the chip row scrolls, so CZK etc. would be off-screen.
-			chipCodes={[selected, ...POPULAR_CURRENCIES.filter((c) => c !== selected)]}
+			chipCodes={POPULAR_CURRENCIES}
 		/>
 	);
 }

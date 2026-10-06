@@ -45,12 +45,12 @@ export default function CurrencyPicker({ selected, onSelect, chipCodes }: Props)
 		() => new Set(chipCodes ?? bundledCurrencies.map((c) => c.code)),
 		[chipCodes],
 	);
-	const selectedExtra = currencies.find(
-		(c) => c.code === selected && !chipSet.has(c.code),
-	);
+	// The selected currency always leads — the chip row scrolls, so it would
+	// otherwise sit off-screen (e.g. CZK behind USD/EUR/GBP/CHF).
+	const selectedCurrency = currencies.find((c) => c.code === selected);
 	const chips: Currency[] = [
-		...(selectedExtra ? [selectedExtra] : []),
-		...currencies.filter((c) => chipSet.has(c.code)),
+		...(selectedCurrency ? [selectedCurrency] : []),
+		...currencies.filter((c) => chipSet.has(c.code) && c.code !== selected),
 	];
 	const hasExtra = currencies.length > chipSet.size;
 

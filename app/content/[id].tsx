@@ -9,6 +9,8 @@ import {
 	useWindowDimensions,
 } from "react-native";
 
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -31,6 +33,7 @@ export default function ContentDetailScreen() {
 	const markArticleRead = useAchievementStore((s) => s.markArticleRead);
 	const [hasFinishedArticle, setHasFinishedArticle] = useState(false);
 	const { width } = useWindowDimensions();
+	const insets = useSafeAreaInsets();
 	const heroImage = useArticleImage(article?.image);
 	const isFallback = article ? !hasLanguage(article, language) : false;
 
@@ -93,7 +96,7 @@ export default function ContentDetailScreen() {
 			/>
 			<ScrollView
 				style={[styles.scroll, { backgroundColor: theme.background }]}
-				contentContainerStyle={styles.content}
+				contentContainerStyle={[styles.content, { paddingBottom: 20 + insets.bottom }]}
 				onScroll={handleScroll}
 				scrollEventThrottle={250}
 			>
@@ -123,13 +126,34 @@ export default function ContentDetailScreen() {
 					.map((paragraph) => {
 						const trimmed = paragraph.trim();
 						const paragraphKey = `${article.id}-${trimmed.slice(0, 24)}-${trimmed.length}`;
+						// Article bodies use a tiny markdown subset: "**Heading**" lines,
+						// "- " bullets and inline **bold**.
+						const heading = /^\*\*(.+)\*\*$/.exec(trimmed);
+						if (heading) {
+							return (
+								<Text key={paragraphKey} style={[styles.heading, { color: theme.text }]}>
+									{heading[1]}
+								</Text>
+							);
+						}
+						const isBullet = trimmed.startsWith("- ");
+						const text = isBullet ? trimmed.slice(2) : trimmed;
 
 						return (
 							<Text
 								key={paragraphKey}
-								style={[styles.body, { color: theme.text }]}
+								style={[styles.body, isBullet && styles.bullet, { color: theme.text }]}
 							>
-								{trimmed}
+								{isBullet ? "•  " : null}
+								{text.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
+									part.startsWith("**") && part.endsWith("**") ? (
+										<Text key={i} style={styles.bold}>
+											{part.slice(2, -2)}
+										</Text>
+									) : (
+										part
+									),
+								)}
 							</Text>
 						);
 					})}
@@ -150,4 +174,7 @@ const styles = StyleSheet.create({
 	meta: { fontSize: 13, marginTop: 4, marginBottom: 8 },
 	readingHint: { fontSize: 12, lineHeight: 16, marginBottom: 14 },
 	body: { fontSize: 16, lineHeight: 24, marginBottom: 12 },
+	heading: { fontSize: 18, fontWeight: "700", marginTop: 8, marginBottom: 8 },
+	bullet: { paddingLeft: 4 },
+	bold: { fontWeight: "700" },
 });

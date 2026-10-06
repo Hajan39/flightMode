@@ -298,7 +298,8 @@ export default function FlightEditScreen() {
 
 	return (
 		<KeyboardAvoidingView
-			style={styles.keyboardContainer}
+			// Edge-to-edge: keep the CTA above the system navigation bar.
+			style={[styles.keyboardContainer, { paddingBottom: insets.bottom }]}
 			behavior={Platform.OS === "ios" ? "padding" : "height"}
 			keyboardVerticalOffset={Platform.OS === "ios" ? 96 : 24}
 		>
@@ -306,8 +307,7 @@ export default function FlightEditScreen() {
 				options={{ title: isEditingFlight ? t("stackEditFlight") : t("addYourFlight") }}
 			/>
 			<ScrollView
-				// Edge-to-edge: keep the CTA above the system navigation bar.
-				contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom }]}
+				contentContainerStyle={styles.scrollContent}
 				keyboardShouldPersistTaps="handled"
 			>
 				<View style={styles.container}>
