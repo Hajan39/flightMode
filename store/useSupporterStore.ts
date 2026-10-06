@@ -2,13 +2,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-type SupporterState = {
+interface SupporterState {
+  addTip: () => void;
   /** FlightMode Plus entitlement, cached so it works offline. */
   plus: boolean;
-  tips: number;
   setPlus: (plus: boolean) => void;
-  addTip: () => void;
-};
+  tips: number;
+}
 
 export const useSupporterStore = create<SupporterState>()(
   persist(

@@ -1,22 +1,22 @@
 import { getDestinationById } from "@/data/destinations";
 import type { LoggedFlight } from "@/types/flight";
 
-export type PassportStamp = {
-  id: string;
+export interface PassportStamp {
+  city: string | null;
   departureTime: number;
   duration: number;
-  city: string | null;
   emoji: string;
-};
+  id: string;
+}
 
-export type PassportSummary = {
-  flights: number;
-  minutesInAir: number;
+export interface PassportSummary {
   cities: number;
   countries: number;
+  flights: number;
+  minutesInAir: number;
   /** Newest first; only flights that have already departed. */
   stamps: PassportStamp[];
-};
+}
 
 /** Upsert by id so editing the active flight never double-counts it. */
 export function upsertLoggedFlight(

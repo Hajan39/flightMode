@@ -9,6 +9,7 @@ import { initBilling } from "@/utils/billing";
  */
 export default function BillingBootstrap() {
   useEffect(() => {
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void initBilling();
   }, []);
 

@@ -49,6 +49,8 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- **Plus analytics inflated on every launch**: restoring purchases at startup re-reported `support_completed` for every Plus owner on every app start (and re-acknowledged the already-acknowledged purchase). Restores now re-grant entitlements silently; only real checkouts report.
+- **Play Console achievements export produced empty CSVs**: its parser depended on the key order in `data/achievements.ts`, which the formatter now sorts. It now reads keys order-independently and fails loudly if the parsed count doesn't match or the 1000-point cap is exceeded (`scripts/export-pgs-achievements.mjs`).
 - **OTA publish script crashed on start** (`scripts/eas-update-from-changelog`): it mixed `require()` with `import.meta.dirname`, so Node parsed it as ESM and failed on line 1, breaking the release OTA lane. Converted to ESM (`.mjs`).
 - **App froze on Wi-Fi (100 % JS CPU, ~1 GB RAM)**: `ImageSyncBootstrap` re-ran after every downloaded article image and shared one cancel flag across runs, so download loops piled up and failed images were retried forever. Now one loop per change, the cache is read imperatively and failed URLs wait for the next launch.
 - Content and rates sync retried in a tight loop after a failed request (the bootstrap re-runs on every status change); a failure now backs off for 5 minutes.

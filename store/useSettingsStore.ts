@@ -13,32 +13,32 @@ export type ThemeMode =
   | "sunset";
 export type SyncNetworkPolicy = "wifi_only" | "wifi_and_mobile" | "off";
 
-type SettingsState = {
-  isFirstLaunch: boolean;
-  appOpenCount: number;
-  hasCompletedFirstSession: boolean;
-  language: Language | null;
-  themeMode: ThemeMode;
-  syncNetworkPolicy: SyncNetworkPolicy;
+interface SettingsState {
   analyticsEnabled: boolean;
-  /** Game categories the user picked during onboarding; biases recommendations. Empty = no preference. */
-  preferredCategories: GameCategory[];
+  appOpenCount: number;
+  completeOnboarding: () => void;
+  hasCompletedFirstSession: boolean;
   /** ISO 4217 code the converter starts from; null = derive from the device locale. */
   homeCurrency: string | null;
+  incrementAppOpenCount: () => number;
+  isFirstLaunch: boolean;
+  language: Language | null;
   /** Last time we asked Google Play for an in-app review (ms); null = never. */
   lastReviewPromptAt: number | null;
-  completeOnboarding: () => void;
-  incrementAppOpenCount: () => number;
   markFirstSessionCompleted: () => void;
-  setLanguage: (language: Language) => void;
-  resetLanguage: () => void;
-  setThemeMode: (mode: ThemeMode) => void;
-  setSyncNetworkPolicy: (policy: SyncNetworkPolicy) => void;
-  setAnalyticsEnabled: (enabled: boolean) => void;
-  togglePreferredCategory: (category: GameCategory) => void;
-  setHomeCurrency: (code: string) => void;
   markReviewPrompted: () => void;
-};
+  /** Game categories the user picked during onboarding; biases recommendations. Empty = no preference. */
+  preferredCategories: GameCategory[];
+  resetLanguage: () => void;
+  setAnalyticsEnabled: (enabled: boolean) => void;
+  setHomeCurrency: (code: string) => void;
+  setLanguage: (language: Language) => void;
+  setSyncNetworkPolicy: (policy: SyncNetworkPolicy) => void;
+  setThemeMode: (mode: ThemeMode) => void;
+  syncNetworkPolicy: SyncNetworkPolicy;
+  themeMode: ThemeMode;
+  togglePreferredCategory: (category: GameCategory) => void;
+}
 
 export const useSettingsStore = create<SettingsState>()(
   persist(

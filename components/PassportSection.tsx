@@ -29,6 +29,7 @@ export default function PassportSection() {
       cities: summary.cities,
       flights: summary.flights,
     });
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void Share.share({
       message: t("passportShareMessage", {
         cities: summary.cities,

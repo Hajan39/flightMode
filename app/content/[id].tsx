@@ -23,6 +23,10 @@ import { useAchievementStore } from "@/store/useAchievementStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { trackFirstSessionCompleted } from "@/utils/firstSession";
 
+// Article bodies use a tiny markdown subset: "**Heading**" lines and inline **bold**.
+const HEADING_RE = /^\*\*(.+)\*\*$/;
+const BOLD_SPLIT_RE = /(\*\*[^*]+\*\*)/;
+
 export default function ContentDetailScreen() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
@@ -144,7 +148,7 @@ export default function ContentDetailScreen() {
             const paragraphKey = `${article.id}-${trimmed.slice(0, 24)}-${trimmed.length}`;
             // Article bodies use a tiny markdown subset: "**Heading**" lines,
             // "- " bullets and inline **bold**.
-            const heading = /^\*\*(.+)\*\*$/.exec(trimmed);
+            const heading = HEADING_RE.exec(trimmed);
             if (heading) {
               return (
                 <Text
@@ -168,7 +172,7 @@ export default function ContentDetailScreen() {
                 ]}
               >
                 {isBullet ? "•  " : null}
-                {text.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
+                {text.split(BOLD_SPLIT_RE).map((part, i) =>
                   part.startsWith("**") && part.endsWith("**") ? (
                     <Text key={i} style={styles.bold}>
                       {part.slice(2, -2)}

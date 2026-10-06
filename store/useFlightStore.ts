@@ -4,13 +4,13 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import type { Flight, LoggedFlight } from "@/types/flight";
 import { upsertLoggedFlight } from "@/utils/passport";
 
-type FlightState = {
+interface FlightState {
+  clearFlight: () => void;
   flight: Flight | null;
   /** Flight Passport: every flight ever saved, survives clearFlight(). */
   log: LoggedFlight[];
   setFlight: (flight: Flight) => void;
-  clearFlight: () => void;
-};
+}
 
 export const useFlightStore = create<FlightState>()(
   persist(

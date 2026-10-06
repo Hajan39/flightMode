@@ -14,24 +14,24 @@ import { useReduceMotion } from "@/hooks/useReduceMotion";
 import { useTranslation } from "@/hooks/useTranslation";
 import { maybeRequestReview } from "@/utils/reviewPrompt";
 
-type Props = {
-  title: string;
-  score: number;
-  subtitle?: string;
+interface Props {
+  /** All-time best score for this game. */
+  best?: number;
+  /** Optional formatter for any numeric stat (score / best / last). */
+  formatScore?: (value: number) => string;
+  /** When true, displays a "🎉 New Best!" badge above the score. */
+  isNewBest?: boolean;
+  /** Score from previous round, if different from current. */
+  last?: number;
   onPlayAgain: () => void;
   /** Called when the user taps "Quit". Defaults to router.back(). */
   onQuit?: () => void;
-  /** When true, displays a "🎉 New Best!" badge above the score. */
-  isNewBest?: boolean;
-  /** All-time best score for this game. */
-  best?: number;
-  /** Score from previous round, if different from current. */
-  last?: number;
+  score: number;
   /** Current win streak. */
   streak?: number;
-  /** Optional formatter for any numeric stat (score / best / last). */
-  formatScore?: (value: number) => string;
-};
+  subtitle?: string;
+  title: string;
+}
 
 export default function GameResult({
   title,
@@ -63,7 +63,8 @@ export default function GameResult({
     }, 450);
     // A new best is the happiest moment to ask for a store review.
     const reviewTimer = isNewBest
-      ? setTimeout(() => void maybeRequestReview(), 1500)
+      ? // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
+        setTimeout(() => void maybeRequestReview(), 1500)
       : undefined;
     return () => {
       clearTimeout(timer);

@@ -44,7 +44,7 @@ Don't type them by hand — generate the bulk-import package (all 48 achievement
 English default + 11 localizations, 20 points each = 960 ≤ 1000 cap):
 
 ```bash
-node scripts/export-pgs-achievements.js        # → build/pgs-achievements/*.csv + build/pgs-achievements-ids.txt
+node scripts/export-pgs-achievements.mjs       # → build/pgs-achievements/*.csv + build/pgs-achievements-ids.txt
 # zip the two CSVs (no folder inside the zip), e.g. PowerShell:
 Compress-Archive build/pgs-achievements/*.csv build/pgs-achievements.zip -Force
 ```

@@ -41,12 +41,14 @@ export default function ImageSyncBootstrap() {
     }
 
     let cancelled = false; // per run, so a newer run can't revive an old one
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void (async () => {
       for (const url of pending) {
         if (cancelled) {
           break;
         }
         try {
+          // biome-ignore lint/performance/noAwaitInLoops: sequential on purpose — gentle on the network, and cancellable between downloads
           const localUri = await downloadImage(url);
           if (localUri) {
             setCached(url, localUri);

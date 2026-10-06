@@ -1,11 +1,16 @@
 const mockFiles = new Map<string, string>();
 jest.mock("expo-file-system/legacy", () => ({
-  deleteAsync: async (uri: string) => void mockFiles.delete(uri),
+  deleteAsync: (uri: string) => {
+    mockFiles.delete(uri);
+    return Promise.resolve();
+  },
   documentDirectory: "file:///docs/",
   getInfoAsync: async (uri: string) => ({ exists: mockFiles.has(uri) }),
   readAsStringAsync: async (uri: string) => mockFiles.get(uri),
-  writeAsStringAsync: async (uri: string, value: string) =>
-    void mockFiles.set(uri, value),
+  writeAsStringAsync: (uri: string, value: string) => {
+    mockFiles.set(uri, value);
+    return Promise.resolve();
+  },
 }));
 
 import AsyncStorage from "@react-native-async-storage/async-storage";

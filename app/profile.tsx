@@ -175,7 +175,7 @@ export default function ProfileScreen() {
         )}
 
         {/* ── Favorite Game ── */}
-        {stats.favoriteGameId && (
+        {stats.favoriteGameId ? (
           <View
             style={[
               styles.favoriteCard,
@@ -188,7 +188,7 @@ export default function ProfileScreen() {
               {t(getGameById(stats.favoriteGameId)?.titleKey ?? "stackGame")}
             </Text>
           </View>
-        )}
+        ) : null}
       </ScrollView>
     </SafeAreaView>
   );

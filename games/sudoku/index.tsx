@@ -42,6 +42,13 @@ import { PUZZLES } from "./puzzles";
 // ---------------------------------------------------------------------------
 
 type Difficulty = "easy" | "medium" | "hard";
+
+/** Rough solve time shown on the difficulty picker. */
+const DIFFICULTY_MINUTES: Record<Difficulty, number> = {
+  easy: 10,
+  hard: 30,
+  medium: 20,
+};
 type Phase = "idle" | "selecting" | "playing" | "paused" | "over";
 
 // ---------------------------------------------------------------------------
@@ -108,9 +115,9 @@ export default function SudokuGame() {
   const [phase, setPhase] = useState<Phase>("idle");
   const [selectedDifficulty, setSelectedDifficulty] =
     useState<Difficulty | null>(null);
-  const [board, setBoard] = useState<number[]>(Array(81).fill(0));
-  const [clues, setClues] = useState<number[]>(Array(81).fill(0));
-  const [solution, setSolution] = useState<number[]>(Array(81).fill(0));
+  const [board, setBoard] = useState<number[]>(new Array(81).fill(0));
+  const [clues, setClues] = useState<number[]>(new Array(81).fill(0));
+  const [solution, setSolution] = useState<number[]>(new Array(81).fill(0));
   const [selectedCell, setSelectedCell] = useState<number | null>(null);
   const [errors, setErrors] = useState<Set<number>>(new Set());
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -488,7 +495,7 @@ export default function SudokuGame() {
               <Text style={[styles.diffBtnSub, { color: theme.mutedText }]}>
                 ~
                 {t("minutesShort", {
-                  minutes: d === "easy" ? 10 : d === "medium" ? 20 : 30,
+                  minutes: DIFFICULTY_MINUTES[d],
                 })}
               </Text>
             </Pressable>
@@ -523,7 +530,7 @@ export default function SudokuGame() {
             style={[
               styles.diffChip,
               {
-                backgroundColor: diffColor(selectedDifficulty) + "22",
+                backgroundColor: `${diffColor(selectedDifficulty)}22`,
                 borderColor: diffColor(selectedDifficulty),
               },
             ]}
@@ -608,9 +615,9 @@ export default function SudokuGame() {
 
           let cellBg = theme.background;
           if (isSelected) {
-            cellBg = theme.tint + "44";
+            cellBg = `${theme.tint}44`;
           } else if (isMatchingNumber) {
-            cellBg = theme.tint + "22";
+            cellBg = `${theme.tint}22`;
           } else if (isPeerCell) {
             cellBg = theme.surface;
           }
@@ -705,7 +712,7 @@ export default function SudokuGame() {
         style={[
           styles.hintBtn,
           {
-            backgroundColor: hintsLeft > 0 ? theme.tint + "18" : theme.surface,
+            backgroundColor: hintsLeft > 0 ? `${theme.tint}18` : theme.surface,
             borderColor: hintsLeft > 0 ? theme.tint : theme.border,
             opacity: !isInteractive || hintsLeft <= 0 ? 0.5 : 1,
           },

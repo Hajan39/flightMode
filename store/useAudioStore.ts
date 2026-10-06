@@ -4,8 +4,7 @@ import { create } from "zustand";
 
 import type { TranslationKey } from "@/i18n/translations";
 
-const globalPlayer =
-  Platform.OS === "web" ? (null as any) : createAudioPlayer(null);
+const globalPlayer = Platform.OS === "web" ? null : createAudioPlayer(null);
 let sleepTimerRef: ReturnType<typeof setTimeout> | null = null;
 let backgroundModeSet = false;
 
@@ -18,6 +17,7 @@ let backgroundModeSet = false;
 function startBackgroundPlayback(title: string) {
   if (!backgroundModeSet) {
     backgroundModeSet = true;
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void setAudioModeAsync({
       interruptionMode: "doNotMix",
       playsInSilentMode: true,
@@ -27,7 +27,7 @@ function startBackgroundPlayback(title: string) {
     });
   }
   try {
-    globalPlayer.setActiveForLockScreen(true, { artist: "FlightMode", title });
+    globalPlayer?.setActiveForLockScreen(true, { artist: "FlightMode", title });
   } catch {
     // Older native build without lock-screen support — foreground playback still works.
   }
@@ -41,22 +41,22 @@ function stopBackgroundPlayback() {
   }
 }
 
-type AudioState = {
-  activeSoundId: string | null;
+interface AudioState {
   activeLabelKey: TranslationKey | null;
-  volume: number;
-  sleepTimerEndAt: number | null;
-  sleepTimerPresetMinutes: number | null;
+  activeSoundId: string | null;
   playSound: (
     id: string,
     labelKey: TranslationKey,
     source: number,
     title?: string
   ) => void;
-  stopSound: () => void;
-  setVolume: (volume: number) => void;
   setSleepTimer: (minutes: number | null) => void;
-};
+  setVolume: (volume: number) => void;
+  sleepTimerEndAt: number | null;
+  sleepTimerPresetMinutes: number | null;
+  stopSound: () => void;
+  volume: number;
+}
 
 export const useAudioStore = create<AudioState>((set, get) => ({
   activeLabelKey: null,

@@ -18,15 +18,15 @@ let lastFailureAt = 0;
 
 type ContentSyncStatus = "idle" | "syncing" | "success" | "error" | "skipped";
 
-type ContentState = {
+interface ContentState {
+  clearSyncedContent: () => void;
   items: ContentItem[] | null;
-  version: string | null;
+  lastError: string | null;
   lastSyncAt: number | null;
   status: ContentSyncStatus;
-  lastError: string | null;
   syncContent: () => Promise<void>;
-  clearSyncedContent: () => void;
-};
+  version: string | null;
+}
 
 export const useContentStore = create<ContentState>()(
   persist(
@@ -46,7 +46,7 @@ export const useContentStore = create<ContentState>()(
       syncContent: async () => {
         const state = get();
         const networkState = useNetworkStore.getState();
-        const syncNetworkPolicy = useSettingsStore.getState().syncNetworkPolicy;
+        const { syncNetworkPolicy } = useSettingsStore.getState();
 
         if (
           !(

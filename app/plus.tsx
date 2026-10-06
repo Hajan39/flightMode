@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import type { Product } from "expo-iap";
-import { useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -59,6 +59,7 @@ export default function PlusScreen() {
       provider: "play_billing",
     });
     let alive = true;
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void fetchSupporterProducts().then((list) => {
       if (alive) {
         setProducts(list);
@@ -79,6 +80,60 @@ export default function PlusScreen() {
     setRestoreResult(await restorePurchases());
     setRestoring(false);
   };
+
+  let purchaseBlock: ReactNode;
+  if (products === null) {
+    purchaseBlock = (
+      <ActivityIndicator color={theme.tint} style={styles.loader} />
+    );
+  } else if (plus) {
+    purchaseBlock = (
+      <View
+        style={[
+          styles.owned,
+          {
+            backgroundColor: theme.successSurface,
+            borderColor: theme.successBorder,
+          },
+        ]}
+      >
+        <Ionicons
+          color={theme.successBorder}
+          name="checkmark-circle"
+          size={20}
+        />
+        <Text style={styles.ownedText}>{t("plusOwned")}</Text>
+      </View>
+    );
+  } else {
+    purchaseBlock = (
+      <Pressable
+        accessibilityRole="button"
+        disabled={!plusPrice}
+        onPress={() =>
+          // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
+          void buySupporterProduct(PLUS_SKU)
+        }
+        style={[
+          styles.buy,
+          { backgroundColor: theme.tint, opacity: plusPrice ? 1 : 0.5 },
+        ]}
+      >
+        <Text style={[styles.buyText, { color: theme.onTint }]}>
+          {plusPrice
+            ? t("plusBuy", { price: plusPrice })
+            : t("plusUnavailable")}
+        </Text>
+      </Pressable>
+    );
+  }
+
+  let restoreLabel = t("plusRestore");
+  if (restoring) {
+    restoreLabel = "…";
+  } else if (restoreResult === false) {
+    restoreLabel = t("plusRestoreNone");
+  }
 
   return (
     <SafeAreaView
@@ -112,42 +167,7 @@ export default function PlusScreen() {
           </View>
         ))}
 
-        {products === null ? (
-          <ActivityIndicator color={theme.tint} style={styles.loader} />
-        ) : plus ? (
-          <View
-            style={[
-              styles.owned,
-              {
-                backgroundColor: theme.successSurface,
-                borderColor: theme.successBorder,
-              },
-            ]}
-          >
-            <Ionicons
-              color={theme.successBorder}
-              name="checkmark-circle"
-              size={20}
-            />
-            <Text style={styles.ownedText}>{t("plusOwned")}</Text>
-          </View>
-        ) : (
-          <Pressable
-            accessibilityRole="button"
-            disabled={!plusPrice}
-            onPress={() => void buySupporterProduct(PLUS_SKU)}
-            style={[
-              styles.buy,
-              { backgroundColor: theme.tint, opacity: plusPrice ? 1 : 0.5 },
-            ]}
-          >
-            <Text style={[styles.buyText, { color: theme.onTint }]}>
-              {plusPrice
-                ? t("plusBuy", { price: plusPrice })
-                : t("plusUnavailable")}
-            </Text>
-          </Pressable>
-        )}
+        {purchaseBlock}
 
         <Text style={[styles.sectionTitle, { color: theme.text }]}>
           {t("plusTipTitle")}
@@ -166,7 +186,10 @@ export default function PlusScreen() {
               accessibilityRole="button"
               disabled={!price(sku)}
               key={sku}
-              onPress={() => void buySupporterProduct(sku)}
+              onPress={() =>
+                // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
+                void buySupporterProduct(sku)
+              }
               style={[
                 styles.tip,
                 {
@@ -187,15 +210,14 @@ export default function PlusScreen() {
         {storeReady ? (
           <Pressable
             disabled={restoring}
-            onPress={() => void handleRestore()}
+            onPress={() =>
+              // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
+              void handleRestore()
+            }
             style={styles.restore}
           >
             <Text style={[styles.restoreText, { color: theme.mutedText }]}>
-              {restoring
-                ? "…"
-                : restoreResult === false
-                  ? t("plusRestoreNone")
-                  : t("plusRestore")}
+              {restoreLabel}
             </Text>
           </Pressable>
         ) : null}

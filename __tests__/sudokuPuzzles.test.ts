@@ -73,15 +73,17 @@ describe("sudoku transformPuzzle", () => {
     "variant of puzzle #%i stays valid with the same clue count",
     (_i, puzzle) => {
       let seed = 7;
-      const rand = () =>
-        (seed = (seed * 16_807) % 2_147_483_647) / 2_147_483_647;
+      const rand = () => {
+        seed = (seed * 16_807) % 2_147_483_647;
+        return seed / 2_147_483_647;
+      };
       const v = transformPuzzle(puzzle, rand);
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 9; i += 1) {
         expect(isValidGroup(row(v.solution, i))).toBe(true);
         expect(isValidGroup(col(v.solution, i))).toBe(true);
         expect(isValidGroup(box(v.solution, i))).toBe(true);
       }
-      for (let i = 0; i < 81; i++) {
+      for (let i = 0; i < 81; i += 1) {
         if (v.clues[i] !== 0) {
           expect(v.clues[i]).toBe(v.solution[i]);
         }

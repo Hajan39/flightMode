@@ -75,15 +75,15 @@ function CategoryPicker({ theme }: { theme: (typeof Colors)["dark"] }) {
   );
 }
 
-type PageProps = {
+interface PageProps {
   icon: string;
-  title: string;
-  subtitle: string;
-  theme: (typeof Colors)["dark"];
+  isCurrencyPage?: boolean;
   isLanguagePage?: boolean;
   isPreferencesPage?: boolean;
-  isCurrencyPage?: boolean;
-};
+  subtitle: string;
+  theme: (typeof Colors)["dark"];
+  title: string;
+}
 
 /** Home-currency step: chips + the shared searchable picker. */
 function HomeCurrencyPicker() {
@@ -132,27 +132,27 @@ function Page({
       >
         {subtitle}
       </Animated.Text>
-      {isLanguagePage && (
+      {isLanguagePage ? (
         <Animated.View
           entering={FadeInDown.delay(550).springify()}
           style={styles.languagePicker}
         >
           <LanguageDropdown showSystemOption={false} />
         </Animated.View>
-      )}
-      {isPreferencesPage && (
+      ) : null}
+      {isPreferencesPage ? (
         <Animated.View entering={FadeInDown.delay(550).springify()}>
           <CategoryPicker theme={theme} />
         </Animated.View>
-      )}
-      {isCurrencyPage && (
+      ) : null}
+      {isCurrencyPage ? (
         <Animated.View
           entering={FadeInDown.delay(550).springify()}
           style={styles.currencyPicker}
         >
           <HomeCurrencyPicker />
         </Animated.View>
-      )}
+      ) : null}
     </View>
   );
 }

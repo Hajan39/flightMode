@@ -9,15 +9,15 @@ const CONTENT_FEED_URL =
   process.env.EXPO_PUBLIC_CONTENT_FEED_URL ??
   "https://raw.githubusercontent.com/Hajan39/flightMode/main/content/feed.json";
 
-export type ContentSyncResult = {
-  version: string;
+export interface ContentSyncResult {
   items: ContentItem[];
-};
+  version: string;
+}
 
-type ContentFeed = {
-  version?: unknown;
+interface ContentFeed {
   items?: unknown;
-};
+  version?: unknown;
+}
 
 export function hasContentSyncEndpoint() {
   return CONTENT_FEED_URL.length > 0;

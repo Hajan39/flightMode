@@ -71,7 +71,7 @@ export default function SettingsScreen() {
   const setHomeCurrency = useSettingsStore((s) => s.setHomeCurrency);
   const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
   const setAnalyticsEnabled = useSettingsStore((s) => s.setAnalyticsEnabled);
-  const hasTrackedOpenRef = useRef(false);
+  const hasTrackedOpenRef = useRef<boolean>(false);
   const router = useRouter();
 
   const handleSyncPolicyChange = (policy: SyncNetworkPolicy) => {
@@ -403,12 +403,12 @@ export default function SettingsScreen() {
   );
 }
 
-type SettingsSectionProps = {
-  title: string;
+interface SettingsSectionProps {
+  children: ReactNode;
   hint?: string;
   theme: (typeof Colors)["dark"];
-  children: ReactNode;
-};
+  title: string;
+}
 
 function SettingsSection({
   title,
@@ -435,12 +435,12 @@ function SettingsSection({
   );
 }
 
-type SettingControlRowProps = {
+interface SettingControlRowProps {
+  children: ReactNode;
   icon: keyof typeof Ionicons.glyphMap;
   label: string;
   theme: (typeof Colors)["dark"];
-  children: ReactNode;
-};
+}
 
 function SettingControlRow({
   icon,

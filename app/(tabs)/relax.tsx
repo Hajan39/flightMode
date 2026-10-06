@@ -29,12 +29,12 @@ const BREATHING_PHASES = [
   { duration: 4, key: "hold" as TranslationKey },
 ] as const;
 
-type SoundscapeDef = {
+interface SoundscapeDef {
+  icon: string;
   id: string;
   labelKey: TranslationKey;
-  icon: string;
   source: number;
-};
+}
 
 const SOUNDSCAPES: SoundscapeDef[] = [
   {
@@ -134,7 +134,7 @@ export default function RelaxScreen() {
   const markSoundPlayed = useAchievementStore((s) => s.markSoundPlayed);
 
   // Haptic pulse on each breathing phase transition
-  const phaseStartedRef = useRef(false);
+  const phaseStartedRef = useRef<boolean>(false);
   useEffect(() => {
     if (!isActive) {
       phaseStartedRef.current = false;
@@ -434,7 +434,7 @@ export default function RelaxScreen() {
           style={styles.soundGrid}
         >
           {SOUNDSCAPES.map((scape, scapeIndex) => {
-            const isActive = activeSoundId === scape.id;
+            const isScapeActive = activeSoundId === scape.id;
             return (
               <Animated.View
                 entering={FadeInDown.delay(300 + scapeIndex * 80).springify()}
@@ -446,25 +446,27 @@ export default function RelaxScreen() {
                   style={[
                     styles.soundCard,
                     {
-                      backgroundColor: isActive ? theme.accentSoft : theme.card,
-                      borderColor: isActive ? theme.tint : theme.border,
+                      backgroundColor: isScapeActive
+                        ? theme.accentSoft
+                        : theme.card,
+                      borderColor: isScapeActive ? theme.tint : theme.border,
                     },
                   ]}
                 >
                   <Ionicons
-                    color={isActive ? theme.tint : theme.mutedText}
+                    color={isScapeActive ? theme.tint : theme.mutedText}
                     name={scape.icon as never}
                     size={32}
                   />
                   <Text
                     style={[
                       styles.soundLabel,
-                      { color: isActive ? theme.tint : theme.text },
+                      { color: isScapeActive ? theme.tint : theme.text },
                     ]}
                   >
                     {t(scape.labelKey)}
                   </Text>
-                  {isActive && (
+                  {isScapeActive && (
                     <View
                       darkColor={theme.tint}
                       lightColor={theme.tint}

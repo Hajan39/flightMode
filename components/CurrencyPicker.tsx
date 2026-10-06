@@ -23,12 +23,12 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getEffectiveCurrencies, useRatesStore } from "@/store/useRatesStore";
 
-type Props = {
-  selected: string;
-  onSelect: (code: string) => void;
+interface Props {
   /** Bundled codes stay as quick chips; everything else lives in the modal. */
   chipCodes?: string[];
-};
+  onSelect: (code: string) => void;
+  selected: string;
+}
 
 /**
  * Currency chips + a searchable "All currencies" modal. Shared by the

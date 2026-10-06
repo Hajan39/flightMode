@@ -1,5 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as FileSystem from "expo-file-system/legacy";
+import {
+  deleteAsync,
+  documentDirectory,
+  getInfoAsync,
+  readAsStringAsync,
+  writeAsStringAsync,
+} from "expo-file-system/legacy";
 import type { StateStorage } from "zustand/middleware";
 
 /**
@@ -15,13 +21,13 @@ export const fileStorage: StateStorage = {
     if (!uri) {
       return AsyncStorage.getItem(name);
     }
-    const info = await FileSystem.getInfoAsync(uri);
+    const info = await getInfoAsync(uri);
     if (info.exists) {
-      return FileSystem.readAsStringAsync(uri);
+      return readAsStringAsync(uri);
     }
     const legacy = await AsyncStorage.getItem(name);
     if (legacy !== null) {
-      await FileSystem.writeAsStringAsync(uri, legacy);
+      await writeAsStringAsync(uri, legacy);
       await AsyncStorage.removeItem(name);
     }
     return legacy;
@@ -31,19 +37,17 @@ export const fileStorage: StateStorage = {
     if (!uri) {
       return AsyncStorage.removeItem(name);
     }
-    await FileSystem.deleteAsync(uri, { idempotent: true });
+    await deleteAsync(uri, { idempotent: true });
   },
   async setItem(name, value) {
     const uri = fileUri(name);
     if (!uri) {
       return AsyncStorage.setItem(name, value);
     }
-    await FileSystem.writeAsStringAsync(uri, value);
+    await writeAsStringAsync(uri, value);
   },
 };
 
 function fileUri(name: string): string | null {
-  return FileSystem.documentDirectory
-    ? `${FileSystem.documentDirectory}persist_${name}.json`
-    : null;
+  return documentDirectory ? `${documentDirectory}persist_${name}.json` : null;
 }

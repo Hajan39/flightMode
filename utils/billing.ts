@@ -36,7 +36,16 @@ function loadIap(): ExpoIap | null {
   return iap;
 }
 
-async function handlePurchase(purchase: Purchase) {
+/**
+ * `source` separates a real checkout ("purchase") from a store re-sync at
+ * launch / manual restore ("restore"): restores re-grant entitlements but must
+ * not re-report `support_completed`, or every Plus owner would send the event
+ * on every app start.
+ */
+async function handlePurchase(
+  purchase: Purchase,
+  source: "purchase" | "restore"
+) {
   const lib = loadIap();
   if (!lib || purchase.purchaseState !== "purchased") {
     return;
@@ -49,15 +58,26 @@ async function handlePurchase(purchase: Purchase) {
   } else {
     return;
   }
-  captureAnalyticsEvent("support_completed", {
-    placement: "plus",
-    product: purchase.productId,
-    provider: "play_billing",
-  });
+  if (source === "purchase") {
+    captureAnalyticsEvent("support_completed", {
+      placement: "plus",
+      product: purchase.productId,
+      provider: "play_billing",
+    });
+  }
+  // Plus is acknowledged once; re-finishing an acknowledged purchase on every
+  // restore is a pointless store round-trip.
+  if (
+    !isTip &&
+    "isAcknowledgedAndroid" in purchase &&
+    purchase.isAcknowledgedAndroid
+  ) {
+    return;
+  }
   // Tips are consumed so they can be bought again; Plus is acknowledged once.
-  await lib
-    .finishTransaction({ isConsumable: isTip, purchase })
-    .catch(() => {});
+  await lib.finishTransaction({ isConsumable: isTip, purchase }).catch(() => {
+    // Best effort: an unfinished purchase is retried by the next restore.
+  });
 }
 
 /** Connects once, listens for purchases and restores Plus. Safe to call repeatedly. */
@@ -69,7 +89,10 @@ export function initBilling(): Promise<boolean> {
   connected ??= (async () => {
     try {
       await lib.initConnection();
-      lib.purchaseUpdatedListener((purchase) => void handlePurchase(purchase));
+      lib.purchaseUpdatedListener(
+        // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
+        (purchase) => void handlePurchase(purchase, "purchase")
+      );
       await restorePurchases();
       return true;
     } catch {
@@ -89,7 +112,8 @@ export async function restorePurchases(): Promise<boolean> {
   try {
     const purchases = await lib.getAvailablePurchases();
     for (const purchase of purchases) {
-      await handlePurchase(purchase);
+      // biome-ignore lint/performance/noAwaitInLoops: sequential on purpose — finish each Play transaction one at a time
+      await handlePurchase(purchase, "restore");
     }
     return purchases.some(
       (p) => p.productId === PLUS_SKU && p.purchaseState === "purchased"
