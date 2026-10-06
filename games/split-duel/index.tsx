@@ -64,7 +64,7 @@ export default function SplitDuelGame() {
   >([null, null]);
   const [progress, setProgress] = useState<GameProgressUpdate | undefined>();
 
-  const resolvedRef = useRef(false);
+  const resolvedRef = useRef<boolean>(false);
   const roundStartRef = useRef(0);
   const holdStartRef = useRef<[number | null, number | null]>([null, null]);
   const heldRef = useRef<[number | null, number | null]>([null, null]);
@@ -245,6 +245,9 @@ export default function SplitDuelGame() {
         resolveRound(greenOn ? seat : other, greenOn ? reaction : undefined);
         return;
       case "hold":
+        return;
+      default:
+        // Exhaustive over Challenge["kind"] — unreachable.
         return;
     }
   };

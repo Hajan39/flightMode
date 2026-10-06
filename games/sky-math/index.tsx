@@ -19,6 +19,12 @@ interface Question {
 
 type SkyMathDifficulty = "easy" | "medium" | "hard";
 
+const DIFFICULTY_LABEL_KEYS = {
+  easy: "difficultyEasy",
+  hard: "difficultyHard",
+  medium: "difficultyMedium",
+} as const;
+
 const TOTAL_QUESTIONS = 12;
 
 function randomInt(min: number, max: number): number {
@@ -35,8 +41,12 @@ function createQuestion(
   questionIndex = 0,
   difficulty: SkyMathDifficulty = "medium"
 ): Question {
-  const difficultyOffset =
-    difficulty === "easy" ? -1 : difficulty === "hard" ? 1 : 0;
+  let difficultyOffset = 0;
+  if (difficulty === "easy") {
+    difficultyOffset = -1;
+  } else if (difficulty === "hard") {
+    difficultyOffset = 1;
+  }
   const phase = Math.max(
     0,
     Math.min(2, Math.floor(questionIndex / 4) + difficultyOffset)
@@ -143,7 +153,7 @@ export default function SkyMathGame() {
   // Synchronous re-entry guard: `selectedOption` state does not flush between
   // two near-simultaneous taps, so a ref prevents double-advance / a double
   // updateProgress on the final question.
-  const answeringRef = useRef(false);
+  const answeringRef = useRef<boolean>(false);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(
@@ -193,7 +203,11 @@ export default function SkyMathGame() {
 
     const isCorrect = value === question.answer;
     const nextScore = score + (isCorrect ? 10 : 0);
-    isCorrect ? haptic.success() : haptic.error();
+    if (isCorrect) {
+      haptic.success();
+    } else {
+      haptic.error();
+    }
 
     advanceTimer.current = setTimeout(() => {
       if (index + 1 >= TOTAL_QUESTIONS) {
@@ -240,12 +254,7 @@ export default function SkyMathGame() {
       <RNView style={styles.diffRow}>
         {(["easy", "medium", "hard"] as const).map((key) => {
           const isActive = difficulty === key;
-          const labelKey =
-            key === "easy"
-              ? "difficultyEasy"
-              : key === "medium"
-                ? "difficultyMedium"
-                : "difficultyHard";
+          const labelKey = DIFFICULTY_LABEL_KEYS[key];
           return (
             <Pressable
               accessibilityLabel={t(labelKey)}
@@ -309,20 +318,17 @@ export default function SkyMathGame() {
         {question.options.map((option) => {
           const isSelected = selectedOption === option;
           const isCorrect = option === question.answer;
-          const showResult = selectedOption !== null;
+          const revealAnswers = selectedOption !== null;
 
-          const bg =
-            showResult && isCorrect
-              ? theme.successSurface
-              : showResult && isSelected && !isCorrect
-                ? theme.dangerSurface
-                : theme.elevated;
-          const border =
-            showResult && isCorrect
-              ? theme.successBorder
-              : showResult && isSelected && !isCorrect
-                ? theme.dangerBorder
-                : theme.border;
+          let bg = theme.elevated;
+          let { border } = theme;
+          if (revealAnswers && isCorrect) {
+            bg = theme.successSurface;
+            border = theme.successBorder;
+          } else if (revealAnswers && isSelected && !isCorrect) {
+            bg = theme.dangerSurface;
+            border = theme.dangerBorder;
+          }
 
           return (
             <Pressable
@@ -346,7 +352,7 @@ export default function SkyMathGame() {
         {t("skyMathScore", { score })}
       </Text>
 
-      {showResult && (
+      {showResult ? (
         <GameResult
           best={progressInfo?.best ?? storedBest}
           isNewBest={progressInfo?.isNewBest}
@@ -361,7 +367,7 @@ export default function SkyMathGame() {
           })}
           title={t("skyMathFinished")}
         />
-      )}
+      ) : null}
     </View>
   );
 }

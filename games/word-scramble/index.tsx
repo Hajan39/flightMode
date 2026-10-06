@@ -327,7 +327,7 @@ export default function WordScrambleGame() {
         return;
       }
 
-      const tappedTile = tiles.find((t) => t.id === tileId);
+      const tappedTile = tiles.find((tile) => tile.id === tileId);
       if (!tappedTile || tappedTile.used) {
         return;
       }
@@ -335,8 +335,8 @@ export default function WordScrambleGame() {
       haptic.tap();
 
       const newAnswer = [...answer, { letter: tappedTile.letter, tileId }];
-      const newTiles = tiles.map((t) =>
-        t.id === tileId ? { ...t, used: true } : t
+      const newTiles = tiles.map((tile) =>
+        tile.id === tileId ? { ...tile, used: true } : tile
       );
 
       const currentWord = words[roundIndex];
@@ -373,7 +373,7 @@ export default function WordScrambleGame() {
           // but handle gracefully: reset answer and re-enable tiles)
           haptic.error();
           setAnswer([]);
-          setTiles(tiles.map((t) => ({ ...t, used: false })));
+          setTiles(tiles.map((tile) => ({ ...tile, used: false })));
         }
       } else {
         setAnswer(newAnswer);
@@ -408,8 +408,8 @@ export default function WordScrambleGame() {
       return;
     }
     const newAnswer = answer.slice(0, -1);
-    const newTiles = tiles.map((t) =>
-      t.id === last.tileId ? { ...t, used: false } : t
+    const newTiles = tiles.map((tile) =>
+      tile.id === last.tileId ? { ...tile, used: false } : tile
     );
     setAnswer(newAnswer);
     setTiles(newTiles);
@@ -481,12 +481,12 @@ export default function WordScrambleGame() {
 
   const currentWord = words[roundIndex] ?? "";
   const timerProgress = timeRemaining / ROUND_SECONDS; // 1.0 → 0.0
-  const timerColor =
-    timeRemaining > 15
-      ? theme.tint
-      : timeRemaining > 8
-        ? theme.warning
-        : theme.danger;
+  let timerColor = theme.danger;
+  if (timeRemaining > 15) {
+    timerColor = theme.tint;
+  } else if (timeRemaining > 8) {
+    timerColor = theme.warning;
+  }
 
   const isCorrectFlash = phase === "correct-flash";
   const isTimeUpFlash = phase === "time-up-flash";
@@ -594,7 +594,7 @@ export default function WordScrambleGame() {
       </Text>
 
       {/* Flash feedback */}
-      {(isCorrectFlash || isTimeUpFlash) && (
+      {isCorrectFlash || isTimeUpFlash ? (
         <RNView
           style={[
             styles.flashBanner,
@@ -619,7 +619,7 @@ export default function WordScrambleGame() {
             {isCorrectFlash ? t("wsCorrect") : t("wsTimeUp")}
           </Text>
         </RNView>
-      )}
+      ) : null}
 
       {/* Hint text */}
       {phase === "playing" && (
@@ -662,22 +662,22 @@ export default function WordScrambleGame() {
       >
         {currentWord.split("").map((_, i) => {
           const filled = answer[i];
+          let boxBg = theme.surface;
+          let boxBorder = theme.border;
+          let letterColor = theme.border;
+          if (filled) {
+            boxBg = isCorrectFlash ? theme.successSurface : theme.elevated;
+            boxBorder = isCorrectFlash ? theme.successBorder : theme.tint;
+            letterColor = isCorrectFlash ? theme.successBorder : theme.text;
+          }
           return (
             <RNView
               key={i}
               style={[
                 styles.answerBox,
                 {
-                  backgroundColor: filled
-                    ? isCorrectFlash
-                      ? theme.successSurface
-                      : theme.elevated
-                    : theme.surface,
-                  borderColor: filled
-                    ? isCorrectFlash
-                      ? theme.successBorder
-                      : theme.tint
-                    : theme.border,
+                  backgroundColor: boxBg,
+                  borderColor: boxBorder,
                 },
               ]}
             >
@@ -685,11 +685,7 @@ export default function WordScrambleGame() {
                 style={[
                   styles.answerLetter,
                   {
-                    color: filled
-                      ? isCorrectFlash
-                        ? theme.successBorder
-                        : theme.text
-                      : theme.border,
+                    color: letterColor,
                   },
                 ]}
               >

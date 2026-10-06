@@ -112,7 +112,9 @@ export default function SnakeGame() {
 
   // Stable ref so restartInterval can always call the latest tick without
   // creating a circular dependency in useCallback dependency arrays.
-  const tickRef = useRef<() => void>(() => {});
+  const tickRef = useRef<() => void>(() => {
+    // Placeholder until the real tick callback is assigned below.
+  });
 
   // ---------------------------------------------------------------------------
   // Restart interval — always calls the latest tick via tickRef
@@ -136,13 +138,13 @@ export default function SnakeGame() {
     const currentFood = foodRef.current;
     const currentScore = scoreRef.current;
 
-    const result = step(currentSnake, dir, currentFood);
-    if (result.dead) {
+    const stepResult = step(currentSnake, dir, currentFood);
+    if (stepResult.dead) {
       handleGameOver();
       return;
     }
-    const newSnake = result.snake;
-    const ateFood = result.ate;
+    const newSnake = stepResult.snake;
+    const ateFood = stepResult.ate;
 
     snakeRef.current = newSnake;
     setSnake(newSnake);
@@ -302,17 +304,20 @@ export default function SnakeGame() {
         const isBody = !isHead && snakeSet.has(idx);
         const isFood = idx === food;
 
+        let cellColor = theme.surface as string;
+        if (isHead) {
+          cellColor = theme.tint;
+        } else if (isBody) {
+          cellColor = `${theme.tint}99`;
+        } else if (isFood) {
+          cellColor = "#ef4444";
+        }
+
         return (
           <RNView
             key={idx}
             style={{
-              backgroundColor: isHead
-                ? theme.tint
-                : isBody
-                  ? (`${theme.tint}99` as string)
-                  : isFood
-                    ? "#ef4444"
-                    : theme.surface,
+              backgroundColor: cellColor,
               borderRadius: isHead || isBody ? Math.floor(cellSize / 4) : 0,
               height: cellSize,
               width: cellSize,
@@ -452,16 +457,12 @@ export default function SnakeGame() {
       {/* Result overlay */}
       {phase === "over" && result ? (
         <GameResult
-          best={result.best ?? storedBest}
+          best={result.best}
           isNewBest={result.isNewBest}
           last={result.last === score ? undefined : result.last}
           onPlayAgain={startGame}
           score={score}
-          streak={
-            result.currentStreak && result.currentStreak > 0
-              ? result.currentStreak
-              : undefined
-          }
+          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
           title={t("snkGameOver")}
         />
       ) : null}

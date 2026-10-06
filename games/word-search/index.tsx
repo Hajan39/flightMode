@@ -111,7 +111,7 @@ export default function WordSearchGame() {
   const startTimeRef = useRef<number>(Date.now());
   const accumulatedRef = useRef<number>(0); // seconds banked across pauses
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const solvedRef = useRef(false); // guards single updateProgress call
+  const solvedRef = useRef<boolean>(false); // guards single updateProgress call
   const shakeAnim = useRef(new Animated.Value(0)).current;
 
   // ── Timer ──

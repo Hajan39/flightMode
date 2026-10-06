@@ -60,9 +60,6 @@ export default function WordGuessGame() {
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
 
-  const storedBest = useGameStore(
-    (s) => s.progress["word-guess"]?.highScore ?? 0
-  );
   const updateProgress = useGameStore((s) => s.updateProgress);
 
   const [phase, setPhase] = useState<Phase>("idle");
@@ -88,7 +85,7 @@ export default function WordGuessGame() {
   // refs above resync (they only refresh via the effect below, after commit),
   // which would otherwise re-run handleSubmit on stale state and double-call
   // updateProgress or double-advance currentAttempt.
-  const submittingRef = useRef(false);
+  const submittingRef = useRef<boolean>(false);
   useEffect(() => {
     currentInputRef.current = currentInput;
     guessesRef.current = guesses;
@@ -340,11 +337,12 @@ export default function WordGuessGame() {
             return (
               <RNView key={rowIdx} style={styles.row}>
                 {new Array(5).fill(null).map((_, colIdx) => {
-                  const letter = row.submitted
-                    ? row.letters[colIdx]
-                    : isCurrentRow
-                      ? currentInput[colIdx]
-                      : undefined;
+                  let letter: string | undefined;
+                  if (row.submitted) {
+                    letter = row.letters[colIdx];
+                  } else if (isCurrentRow) {
+                    letter = currentInput[colIdx];
+                  }
                   const state: LetterState = row.submitted
                     ? row.states[colIdx]
                     : "empty";
@@ -442,13 +440,12 @@ export default function WordGuessGame() {
       {/* Result overlay */}
       {phase === "over" && result ? (
         <GameResult
-          best={result.best ?? storedBest}
+          best={result.best}
           isNewBest={result.isNewBest}
           last={
-            result.last !== undefined &&
-            result.last !== (won ? 1000 - currentAttempt * 150 : 0)
-              ? result.last
-              : undefined
+            result.last === (won ? 1000 - currentAttempt * 150 : 0)
+              ? undefined
+              : result.last
           }
           onPlayAgain={startGame}
           score={won ? 1000 - currentAttempt * 150 : 0}

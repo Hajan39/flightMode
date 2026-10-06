@@ -88,9 +88,9 @@ export default function SunMoonGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const updateProgress = useGameStore((s) => s.updateProgress);
+  const updateProgress = useGameStore((state) => state.updateProgress);
   const levelStars =
-    useGameStore((s) => s.progress["sun-moon"]?.levelStars) ??
+    useGameStore((state) => state.progress["sun-moon"]?.levelStars) ??
     EMPTY_LEVEL_STARS;
   const { width: screenW } = useWindowDimensions();
 
@@ -114,7 +114,7 @@ export default function SunMoonGame() {
   );
 
   const level = LEVELS[levelIdx];
-  const size = level.size;
+  const { size } = level;
 
   const conflicts = useMemo(() => findConflicts(cells, size), [cells, size]);
 
@@ -399,19 +399,30 @@ export default function SunMoonGame() {
               key={row}
               style={{ flexDirection: "row", gap: CELL_GAP }}
             >
-              {Array.from({ length: size }, (_, col) => {
+              {Array.from({ length: size }, (_unused, col) => {
                 const idx = cellIndex(row, col, size);
                 const value = cells[idx];
                 const isGiven = givenMask[idx];
                 const isConflict = conflicts.has(idx);
                 const isHinted = hintIdx === idx;
-                const symbolLabel = t(
-                  value === "S"
-                    ? "sunMoonSun"
-                    : value === "M"
-                      ? "sunMoonMoon"
-                      : "sunMoonEmpty"
-                );
+                let symbolLabel = t("sunMoonEmpty");
+                if (value === "S") {
+                  symbolLabel = t("sunMoonSun");
+                } else if (value === "M") {
+                  symbolLabel = t("sunMoonMoon");
+                }
+                let cellBg: string = theme.elevated;
+                let cellBorder = `${theme.tint}50`;
+                if (isHinted) {
+                  cellBg = `${theme.tint}40`;
+                  cellBorder = theme.tint;
+                } else if (isConflict) {
+                  cellBg = theme.dangerSurface;
+                  cellBorder = theme.dangerBorder;
+                } else if (isGiven) {
+                  cellBg = theme.surface;
+                  cellBorder = theme.border;
+                }
                 return (
                   <Pressable
                     accessibilityLabel={`${t("a11yRowCol", { col: col + 1, row: row + 1 })}: ${symbolLabel}`}
@@ -423,20 +434,8 @@ export default function SunMoonGame() {
                     style={[
                       s.cell,
                       {
-                        backgroundColor: isHinted
-                          ? `${theme.tint}40`
-                          : isConflict
-                            ? theme.dangerSurface
-                            : isGiven
-                              ? theme.surface
-                              : theme.elevated,
-                        borderColor: isHinted
-                          ? theme.tint
-                          : isConflict
-                            ? theme.dangerBorder
-                            : isGiven
-                              ? theme.border
-                              : `${theme.tint}50`,
+                        backgroundColor: cellBg,
+                        borderColor: cellBorder,
                         height: cellSize,
                         width: cellSize,
                       },

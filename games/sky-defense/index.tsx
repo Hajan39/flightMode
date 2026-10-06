@@ -365,8 +365,8 @@ function totalPathLen(): number {
 const TOTAL_PATH_LEN = totalPathLen();
 
 /** Position on path given distance traveled */
-function posOnPath(dist: number): Pt {
-  let rem = dist;
+function posOnPath(distance: number): Pt {
+  let rem = distance;
   for (let i = 1; i < PATH_PX.length; i += 1) {
     const dx = PATH_PX[i].x - PATH_PX[i - 1].x;
     const dy = PATH_PX[i].y - PATH_PX[i - 1].y;
@@ -479,7 +479,12 @@ function HpBar({
   size: number;
 }) {
   const pct = Math.max(0, hp / maxHp);
-  const barColor = pct > 0.5 ? "#66bb6a" : pct > 0.25 ? "#ffa726" : "#ef5350";
+  let barColor = "#ef5350";
+  if (pct > 0.5) {
+    barColor = "#66bb6a";
+  } else if (pct > 0.25) {
+    barColor = "#ffa726";
+  }
   return (
     <RNView
       style={{
@@ -613,9 +618,9 @@ export default function SkyDefenseGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const updateProgress = useGameStore((s) => s.updateProgress);
+  const updateProgress = useGameStore((state) => state.updateProgress);
   const storedBest = useGameStore(
-    (s) => s.progress["sky-defense"]?.highScore ?? 0
+    (state) => state.progress["sky-defense"]?.highScore ?? 0
   );
 
   const towerLabel = (key: TowerKind) => {
@@ -628,6 +633,9 @@ export default function SkyDefenseGame() {
         return t("skyDefenseTowerWind");
       case "bolt":
         return t("skyDefenseTowerBolt");
+      default:
+        // Exhaustive over TowerKind — unreachable.
+        return key satisfies never;
     }
   };
 
@@ -641,6 +649,9 @@ export default function SkyDefenseGame() {
         return t("skyDefenseDifficultyHard");
       case "insane":
         return t("skyDefenseDifficultyInsane");
+      default:
+        // Exhaustive over Difficulty — unreachable.
+        return key satisfies never;
     }
   };
 
@@ -694,7 +705,7 @@ export default function SkyDefenseGame() {
   // effect cleanup clears it after the phase state flushes, so a tick landing
   // in that window would re-detect the terminal condition and fire
   // updateProgress twice.
-  const endedRef = useRef(false);
+  const endedRef = useRef<boolean>(false);
   const isGamePaused = paused || showRestartConfirm;
 
   // Board origin in window coordinates. Tower placement is derived from the
@@ -740,11 +751,11 @@ export default function SkyDefenseGame() {
     const diff = preset ?? difficulty;
     const wave = wavesRef.current[wi];
     const queue: { kind: EnemyKind; tickAt: number }[] = [];
-    let t = 10;
+    let spawnTick = 10;
     for (const entry of wave) {
       for (let i = 0; i < entry.count; i += 1) {
-        queue.push({ kind: entry.kind, tickAt: t });
-        t += Math.max(4, Math.round(entry.interval * diff.spawnMul));
+        queue.push({ kind: entry.kind, tickAt: spawnTick });
+        spawnTick += Math.max(4, Math.round(entry.interval * diff.spawnMul));
       }
     }
     spawnQueue.current = queue;
@@ -763,10 +774,12 @@ export default function SkyDefenseGame() {
         return;
       }
       tick.current += 1;
-      const t = tick.current;
+      const curTick = tick.current;
 
       /* -- spawn -- */
-      const toSpawn = spawnQueue.current.filter((s) => s.tickAt === t);
+      const toSpawn = spawnQueue.current.filter(
+        (entry) => entry.tickAt === curTick
+      );
       let newEnemies = [...enemiesRef.current];
 
       for (const sp of toSpawn) {
@@ -911,7 +924,9 @@ export default function SkyDefenseGame() {
         return;
       }
       // wave done?
-      const allSpawned = spawnQueue.current.every((s) => s.tickAt <= t);
+      const allSpawned = spawnQueue.current.every(
+        (entry) => entry.tickAt <= curTick
+      );
       if (allSpawned && newEnemies.length === 0) {
         if (waveIdx >= wavesRef.current.length - 1) {
           endedRef.current = true;
@@ -1190,7 +1205,7 @@ export default function SkyDefenseGame() {
         <Pressable
           accessibilityLabel={gameSpeed === 1 ? "Set 2x speed" : "Set 1x speed"}
           accessibilityRole="button"
-          onPress={() => setGameSpeed((s) => (s === 1 ? 2 : 1))}
+          onPress={() => setGameSpeed((speed) => (speed === 1 ? 2 : 1))}
           style={[
             s.hudBtn,
             { borderColor: gameSpeed === 2 ? theme.tint : theme.border },
@@ -1343,14 +1358,14 @@ export default function SkyDefenseGame() {
               ))}
 
           {/* range ring preview for new placement */}
-          {selectedTower && placeCursor && (
+          {selectedTower && placeCursor ? (
             <RangeRing
               col={placeCursor.col}
               color={tdByKey[selectedTower].color}
               range={tdByKey[selectedTower].range}
               row={placeCursor.row}
             />
-          )}
+          ) : null}
 
           {/* towers */}
           {towers.map((tw) => (
@@ -1403,7 +1418,7 @@ export default function SkyDefenseGame() {
         visible={paused}
       />
 
-      {showRestartConfirm && (
+      {showRestartConfirm ? (
         <RNView style={s.confirmBackdrop}>
           <RNView
             style={[
@@ -1444,7 +1459,7 @@ export default function SkyDefenseGame() {
             </RNView>
           </RNView>
         </RNView>
-      )}
+      ) : null}
     </View>
   );
 }

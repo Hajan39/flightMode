@@ -65,14 +65,14 @@ export default function DuelPane({
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
 
-  const resultBg =
-    status === "won"
-      ? `${player.color}33`
-      : status === "lost"
-        ? `${theme.danger}22`
-        : status === "tie"
-          ? theme.surface
-          : theme.card;
+  let resultBg: string = theme.card;
+  if (status === "won") {
+    resultBg = `${player.color}33`;
+  } else if (status === "lost") {
+    resultBg = `${theme.danger}22`;
+  } else if (status === "tie") {
+    resultBg = theme.surface;
+  }
 
   const renderBody = () => {
     if (status === "idle") {
@@ -94,28 +94,22 @@ export default function DuelPane({
       );
     }
     if (status !== "live") {
-      const label =
-        status === "won"
-          ? t("sdRoundWon")
-          : status === "lost"
-            ? t("sdRoundLost")
-            : t("sdRoundTie");
+      let label = t("sdRoundTie");
+      let labelColor: string = theme.mutedText;
+      let icon = "🤝 ";
+      if (status === "won") {
+        label = t("sdRoundWon");
+        labelColor = player.color;
+        icon = "🏆 ";
+      } else if (status === "lost") {
+        label = t("sdRoundLost");
+        labelColor = theme.danger;
+        icon = "✖ ";
+      }
       return (
         <Animated.View entering={FadeIn.duration(160)} style={styles.center}>
-          <Text
-            style={[
-              styles.big,
-              {
-                color:
-                  status === "won"
-                    ? player.color
-                    : status === "lost"
-                      ? theme.danger
-                      : theme.mutedText,
-              },
-            ]}
-          >
-            {status === "won" ? "🏆 " : status === "lost" ? "✖ " : "🤝 "}
+          <Text style={[styles.big, { color: labelColor }]}>
+            {icon}
             {label}
           </Text>
           {status === "won" && reactionMs !== null ? (
@@ -255,6 +249,9 @@ export default function DuelPane({
             </Text>
           </Pressable>
         );
+      default:
+        // Exhaustive over Challenge["kind"] — unreachable.
+        return null;
     }
   };
 

@@ -83,7 +83,9 @@ export default function WhackMoleGame() {
   phaseRef.current = phase;
 
   const clearAllMoleTimers = useCallback(() => {
-    moleSpawnTimersRef.current.forEach((timer) => clearTimeout(timer));
+    for (const timer of moleSpawnTimersRef.current.values()) {
+      clearTimeout(timer);
+    }
     moleSpawnTimersRef.current.clear();
   }, []);
 
@@ -304,7 +306,7 @@ export default function WhackMoleGame() {
       ...m,
       expiresAt: m.expiresAt + pausedMs,
     }));
-    shiftedMoles.forEach((mole) => {
+    for (const mole of shiftedMoles) {
       const expireTimerId = setTimeout(
         () => {
           if (phaseRef.current !== "running") {
@@ -317,7 +319,7 @@ export default function WhackMoleGame() {
         Math.max(0, mole.expiresAt - now)
       );
       moleSpawnTimersRef.current.set(mole.id, expireTimerId);
-    });
+    }
     setActiveMoles(shiftedMoles);
     setPhase("running");
   };

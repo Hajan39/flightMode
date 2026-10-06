@@ -346,9 +346,9 @@ export default function TwentyFortyEightGame() {
   const [winMessage, setWinMessage] = useState<string | null>(null);
 
   // Track whether we've already triggered a win to avoid double-recording
-  const winFiredRef = useRef(false);
+  const winFiredRef = useRef<boolean>(false);
   // Track whether the game has already ended to avoid double updateProgress
-  const gameOverRef = useRef(false);
+  const gameOverRef = useRef<boolean>(false);
 
   // Derived cell size based on screen width
   const gridWidth = screenWidth - Spacing.lg * 2;

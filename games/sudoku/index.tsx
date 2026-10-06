@@ -41,6 +41,13 @@ import { PUZZLES } from "./puzzles";
 // ---------------------------------------------------------------------------
 
 type Difficulty = "easy" | "medium" | "hard";
+
+/** Rough solve-time estimate shown on the difficulty picker. */
+const DIFF_MINUTES: Record<Difficulty, number> = {
+  easy: 10,
+  hard: 30,
+  medium: 20,
+};
 type Phase = "idle" | "selecting" | "playing" | "paused" | "over";
 
 // ---------------------------------------------------------------------------
@@ -483,10 +490,7 @@ export default function SudokuGame() {
                 {diffLabel(d)}
               </Text>
               <Text style={[styles.diffBtnSub, { color: theme.mutedText }]}>
-                ~
-                {t("minutesShort", {
-                  minutes: d === "easy" ? 10 : d === "medium" ? 20 : 30,
-                })}
+                ~{t("minutesShort", { minutes: DIFF_MINUTES[d] })}
               </Text>
             </Pressable>
           ))}

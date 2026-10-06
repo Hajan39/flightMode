@@ -169,6 +169,9 @@ export function makeChallenge(
       return makeMathChallenge(rng);
     case "green":
       return makeGreenChallenge(rng);
+    default:
+      // Exhaustive over ChallengeKind — unreachable.
+      return kind satisfies never;
   }
 }
 

@@ -323,7 +323,7 @@ export default function SlidingPuzzleGame() {
       >
         {Array.from({ length: SIZE }, (_, row) => (
           <RNView key={row} style={[styles.gridRow, { gap: GAP }]}>
-            {Array.from({ length: SIZE }, (_, col) => {
+            {Array.from({ length: SIZE }, (_unused, col) => {
               const idx = row * SIZE + col;
               const value = board[idx];
               const isEmpty = value === EMPTY;

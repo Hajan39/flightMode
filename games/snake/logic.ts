@@ -41,7 +41,7 @@ export function step(
   dir: Direction,
   food: number
 ): StepResult {
-  const head = snake[0];
+  const [head] = snake;
   const row = Math.floor(head / GRID_COLS);
   const col = head % GRID_COLS;
 

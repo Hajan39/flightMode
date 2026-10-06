@@ -247,16 +247,15 @@ function ColumnView({
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
 
-  const bgColor = isGoal
-    ? "rgba(255,215,0,0.06)"
-    : isSelected
-      ? theme.accentSoft
-      : "transparent";
-  const borderColor = isGoal
-    ? "#ffd70060"
-    : isSelected
-      ? theme.tint
-      : `${theme.border}50`;
+  let bgColor = "transparent";
+  let borderColor = `${theme.border}50`;
+  if (isGoal) {
+    bgColor = "rgba(255,215,0,0.06)";
+    borderColor = "#ffd70060";
+  } else if (isSelected) {
+    bgColor = theme.accentSoft;
+    borderColor = theme.tint;
+  }
 
   return (
     <Pressable onPress={() => onPress(index)}>
@@ -274,11 +273,11 @@ function ColumnView({
         }}
       >
         {/* Badge */}
-        {isGoal && (
+        {isGoal ? (
           <RNView style={st.goalBadge}>
             <Text style={st.goalBadgeText}>{goalBadgeLabel}</Text>
           </RNView>
-        )}
+        ) : null}
         {label && !isGoal && (
           <Text
             style={{
@@ -344,9 +343,9 @@ export default function StackSortGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const updateProgress = useGameStore((s) => s.updateProgress);
+  const updateProgress = useGameStore((state) => state.updateProgress);
   const levelStars =
-    useGameStore((s) => s.progress["stack-sort"]?.levelStars) ??
+    useGameStore((state) => state.progress["stack-sort"]?.levelStars) ??
     EMPTY_LEVEL_STARS;
   const { width: screenW } = useWindowDimensions();
 
@@ -672,13 +671,13 @@ export default function StackSortGame() {
       </RNView>
 
       {/* Deadlock warning */}
-      {dead && (
+      {dead ? (
         <RNView style={s.deadBanner}>
           <Text style={[s.deadText, { color: theme.danger }]}>
             {t("stackSortDeadlock")}
           </Text>
         </RNView>
-      )}
+      ) : null}
 
       {/* Scattered grid board */}
       <ScrollView

@@ -156,16 +156,13 @@ export default function SeatNeighborGame() {
   const current = players[picker];
   const _guesserName = players[round.guesser].name;
   const answererName = players[round.answerer].name;
-  const bannerLabel =
-    phase === "reveal"
-      ? picks[0] === picks[1]
-        ? t("snMatch")
-        : t("snNoMatch")
-      : isMindMeld
-        ? picker === round.guesser
-          ? t("snGuessFor", { player: answererName })
-          : t("snAnswerTruth")
-        : t("snWyrIntro");
+  const matchLabel = picks[0] === picks[1] ? t("snMatch") : t("snNoMatch");
+  const mindMeldPrompt =
+    picker === round.guesser
+      ? t("snGuessFor", { player: answererName })
+      : t("snAnswerTruth");
+  const pickLabel = isMindMeld ? mindMeldPrompt : t("snWyrIntro");
+  const bannerLabel = phase === "reveal" ? matchLabel : pickLabel;
 
   return (
     <View style={styles.root}>
@@ -246,6 +243,13 @@ export default function SeatNeighborGame() {
               {([0, 1] as Seat[]).map((seat) => {
                 const p = players[seat];
                 const pick = picks[seat];
+                let roleSuffix = "";
+                if (isMindMeld) {
+                  roleSuffix =
+                    seat === round.guesser
+                      ? ` · ${t("snGuessLabel")}`
+                      : ` · ${t("snTruthLabel")}`;
+                }
                 return (
                   <Animated.View
                     entering={ZoomIn.delay(seat * 180).duration(220)}
@@ -260,11 +264,7 @@ export default function SeatNeighborGame() {
                       style={[styles.revealName, { color: p.color }]}
                     >
                       {p.name}
-                      {isMindMeld
-                        ? seat === round.guesser
-                          ? ` · ${t("snGuessLabel")}`
-                          : ` · ${t("snTruthLabel")}`
-                        : ""}
+                      {roleSuffix}
                     </Text>
                     <Text style={[styles.revealAnswer, { color: theme.text }]}>
                       {pick === null
@@ -314,13 +314,7 @@ export default function SeatNeighborGame() {
       </ScrollView>
 
       <PassDeviceOverlay
-        hint={
-          isMindMeld && picker === round.guesser
-            ? t("snGuessFor", { player: answererName })
-            : isMindMeld
-              ? t("snAnswerTruth")
-              : t("snWyrHint")
-        }
+        hint={isMindMeld ? mindMeldPrompt : t("snWyrHint")}
         onReady={() => setPhase("pick")}
         secret
         toPlayer={current}
