@@ -50,7 +50,7 @@ export default function PassportSection() {
 				style={[styles.totals, { backgroundColor: theme.card, borderColor: theme.border }]}
 			>
 				<Total value={summary.flights} label={t("passportFlights")} theme={theme} />
-				<Total value={hours} label={t("passportHours")} theme={theme} />
+				<Total value={hours.toLocaleString(language)} label={t("passportHours")} theme={theme} />
 				<Total value={summary.cities} label={t("passportCities")} theme={theme} />
 				<Total value={summary.countries} label={t("passportCountries")} theme={theme} />
 			</View>
@@ -107,7 +107,7 @@ function Total({
 	label,
 	theme,
 }: {
-	value: number;
+	value: number | string;
 	label: string;
 	theme: (typeof Colors)["light"];
 }) {
