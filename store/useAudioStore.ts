@@ -4,8 +4,7 @@ import { create } from "zustand";
 
 import type { TranslationKey } from "@/i18n/translations";
 
-const globalPlayer =
-  Platform.OS === "web" ? (null as any) : createAudioPlayer(null);
+const globalPlayer = Platform.OS === "web" ? null : createAudioPlayer(null);
 let sleepTimerRef: ReturnType<typeof setTimeout> | null = null;
 
 interface AudioState {

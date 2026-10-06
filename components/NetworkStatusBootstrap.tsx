@@ -1,4 +1,9 @@
-import * as Network from "expo-network";
+import {
+  addNetworkStateListener,
+  getNetworkStateAsync,
+  type NetworkState,
+  NetworkStateType,
+} from "expo-network";
 import { useEffect, useRef } from "react";
 
 import {
@@ -9,8 +14,8 @@ import { captureAnalyticsEvent } from "@/utils/analytics";
 
 type NetworkSource = "initial" | "listener";
 
-function normalizeNetworkType(type?: Network.NetworkStateType) {
-  return (type ?? Network.NetworkStateType.UNKNOWN) as NetworkConnectionType;
+function normalizeNetworkType(type?: NetworkStateType) {
+  return (type ?? NetworkStateType.UNKNOWN) as NetworkConnectionType;
 }
 
 function buildNetworkKey(state: {
@@ -28,10 +33,7 @@ export default function NetworkStatusBootstrap() {
   useEffect(() => {
     let isMounted = true;
 
-    const applyNetworkState = (
-      state: Network.NetworkState,
-      source: NetworkSource
-    ) => {
+    const applyNetworkState = (state: NetworkState, source: NetworkSource) => {
       const nextState = {
         isConnected: state.isConnected ?? null,
         isInternetReachable: state.isInternetReachable ?? null,
@@ -54,7 +56,7 @@ export default function NetworkStatusBootstrap() {
       });
     };
 
-    Network.getNetworkStateAsync()
+    getNetworkStateAsync()
       .then((state) => {
         if (isMounted) {
           applyNetworkState(state, "initial");
@@ -67,13 +69,13 @@ export default function NetworkStatusBootstrap() {
 
         applyNetworkState(
           {
-            type: Network.NetworkStateType.UNKNOWN,
+            type: NetworkStateType.UNKNOWN,
           },
           "initial"
         );
       });
 
-    const subscription = Network.addNetworkStateListener((state) => {
+    const subscription = addNetworkStateListener((state) => {
       applyNetworkState(state, "listener");
     });
 

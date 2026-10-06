@@ -106,6 +106,7 @@ export default function HomeScreen() {
 
   const clearFlightAndReminder = () => {
     clearFlight();
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void cancelJetlagSleepReminder();
   };
 
@@ -182,12 +183,12 @@ export default function HomeScreen() {
     title: t(game.titleKey),
   }));
 
-  const preferredCategoriesEn =
-    remaining > 120
-      ? ["Relax", "Health"]
-      : remaining > 30
-        ? ["Travel Tips", "Health"]
-        : ["Travel Tips", "Relax"];
+  let preferredCategoriesEn = ["Travel Tips", "Relax"];
+  if (remaining > 120) {
+    preferredCategoriesEn = ["Relax", "Health"];
+  } else if (remaining > 30) {
+    preferredCategoriesEn = ["Travel Tips", "Health"];
+  }
 
   const featuredArticles: FeaturedArticle[] = articles
     .filter((item) => preferredCategoriesEn.includes(item.category.en))

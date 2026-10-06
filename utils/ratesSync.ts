@@ -15,6 +15,8 @@ export interface RatesSnapshot {
   rates: Record<string, number>;
 }
 
+const CURRENCY_CODE = /^[A-Z]{3}$/;
+
 /** Validate + normalize a provider payload; returns null on anything unexpected. */
 export function parseRatesPayload(payload: unknown): RatesSnapshot | null {
   if (!payload || typeof payload !== "object") {
@@ -40,7 +42,7 @@ export function parseRatesPayload(payload: unknown): RatesSnapshot | null {
       typeof value === "number" &&
       Number.isFinite(value) &&
       value > 0 &&
-      /^[A-Z]{3}$/.test(code)
+      CURRENCY_CODE.test(code)
     ) {
       rates[code] = value;
     }

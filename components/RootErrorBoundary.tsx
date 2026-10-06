@@ -13,6 +13,15 @@ import { logFatalError } from "@/utils/errorLogging";
  * colors — no theme store, no translations, no app hooks — because the error it
  * renders may originate from exactly those subsystems.
  */
+
+/** Defensive: thrown values are not guaranteed to be Error instances at runtime. */
+function describeError(error: unknown): string {
+  if (!(error instanceof Error)) {
+    return "Unknown error";
+  }
+  const prefix = error.name ? `${error.name}: ` : "";
+  return `${prefix}${error.message}`;
+}
 export default function RootErrorBoundary({
   error,
   retry,
@@ -31,10 +40,15 @@ export default function RootErrorBoundary({
           is safe.
         </Text>
         <Text numberOfLines={4} style={styles.detail}>
-          {error?.name ? `${error.name}: ` : ""}
-          {error?.message ?? "Unknown error"}
+          {describeError(error)}
         </Text>
-        <Pressable onPress={() => void retry()} style={styles.button}>
+        <Pressable
+          onPress={() => {
+            // Intentional fire-and-forget: nothing to do with retry()'s promise.
+            retry();
+          }}
+          style={styles.button}
+        >
           <Text style={styles.buttonText}>Try again</Text>
         </Pressable>
       </ScrollView>

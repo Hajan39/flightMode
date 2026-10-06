@@ -27,6 +27,7 @@ export default function ContentSyncBootstrap() {
       return;
     }
 
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void syncContent();
   }, [
     networkType,

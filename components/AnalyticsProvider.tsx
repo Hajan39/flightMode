@@ -46,6 +46,7 @@ export function AnalyticsBootstrap() {
   const hasTrackedAppOpenRef = useRef(false);
 
   useEffect(() => {
+    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref flips to true below; this guards StrictMode/effect re-runs
     if (hasTrackedAppOpenRef.current) {
       return;
     }

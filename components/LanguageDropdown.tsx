@@ -60,7 +60,7 @@ export default function LanguageDropdown({ showSystemOption = true }: Props) {
             ]}
           >
             <ScrollView bounces={false} style={styles.dropdownScroll}>
-              {showSystemOption && (
+              {showSystemOption ? (
                 <Pressable
                   onPress={() => {
                     resetLanguage();
@@ -92,7 +92,7 @@ export default function LanguageDropdown({ showSystemOption = true }: Props) {
                     <Ionicons color={theme.tint} name="checkmark" size={20} />
                   )}
                 </Pressable>
-              )}
+              ) : null}
 
               {languages.map((option, index) => {
                 const isLast = index === languages.length - 1;
@@ -131,9 +131,9 @@ export default function LanguageDropdown({ showSystemOption = true }: Props) {
                         {option.label}
                       </Text>
                     </View>
-                    {isSelected && (
+                    {isSelected ? (
                       <Ionicons color={theme.tint} name="checkmark" size={20} />
-                    )}
+                    ) : null}
                   </Pressable>
                 );
               })}

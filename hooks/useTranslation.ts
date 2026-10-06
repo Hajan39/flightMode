@@ -1,11 +1,12 @@
 import {
   getDeviceLanguage,
-  type Language,
   supportedLanguages,
   type TranslationKey,
   translate,
 } from "@/i18n/translations";
 import { useSettingsStore } from "@/store/useSettingsStore";
+
+export type { Language } from "@/i18n/translations";
 
 export function useTranslation() {
   const storedLanguage = useSettingsStore((state) => state.language);
@@ -25,5 +26,3 @@ export function useTranslation() {
       translate(language, key, params),
   };
 }
-
-export type { Language };

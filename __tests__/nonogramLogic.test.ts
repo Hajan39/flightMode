@@ -13,6 +13,8 @@ import {
   UNKNOWN,
 } from "@/games/nonogram/logic";
 
+const SOLUTION_ROW = /^[#.]+$/;
+
 describe("nonogram runsOf", () => {
   test("empty line yields no runs", () => {
     expect(runsOf([false, false, false])).toEqual([]);
@@ -119,7 +121,12 @@ describe("nonogram levels", () => {
   test("there are 15 levels tiered 5×5 (1–4), 8×8 (5–7), 10×10 (8–15)", () => {
     expect(NONOGRAM_LEVELS).toHaveLength(15);
     for (const level of NONOGRAM_LEVELS) {
-      const expectedSize = level.id <= 4 ? 5 : level.id <= 7 ? 8 : 10;
+      let expectedSize = 10;
+      if (level.id <= 4) {
+        expectedSize = 5;
+      } else if (level.id <= 7) {
+        expectedSize = 8;
+      }
       expect(level.size).toBe(expectedSize);
     }
   });
@@ -130,7 +137,7 @@ describe("nonogram levels", () => {
       expect(level.solution).toHaveLength(level.size);
       for (const row of level.solution) {
         expect(row).toHaveLength(level.size);
-        expect(row).toMatch(/^[#.]+$/);
+        expect(row).toMatch(SOLUTION_ROW);
       }
     }
   );
@@ -220,7 +227,7 @@ describe("nonogram findForcedCell", () => {
   );
 
   test("returns null on a completed grid", () => {
-    const level = NONOGRAM_LEVELS[0];
+    const [level] = NONOGRAM_LEVELS;
     const clues = deriveClues(level.solution);
     const grid: CellState[][] = level.solution.map((row) =>
       [...row].map((ch) => (ch === "#" ? FILLED : EMPTY))

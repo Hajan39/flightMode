@@ -10,6 +10,9 @@ import {
   serializeRows,
 } from "@/games/sun-moon/logic";
 
+const SOLUTION_ROW = /^[SM]+$/;
+const GIVENS_ROW = /^[SM.]+$/;
+
 describe("sun-moon parse/serialize", () => {
   test("round-trips level rows", () => {
     const rows = ["SM..", "..MS", "SM.M", "M.S."];
@@ -99,7 +102,12 @@ describe("sun-moon levels integrity", () => {
   test("has 16 levels tiered 4x4 / 6x6 / 8x8", () => {
     expect(LEVELS).toHaveLength(16);
     for (const lvl of LEVELS) {
-      const expectedSize = lvl.id <= 4 ? 4 : lvl.id <= 8 ? 6 : 8;
+      let expectedSize = 8;
+      if (lvl.id <= 4) {
+        expectedSize = 4;
+      } else if (lvl.id <= 8) {
+        expectedSize = 6;
+      }
       expect(lvl.size).toBe(expectedSize);
     }
   });
@@ -113,10 +121,10 @@ describe("sun-moon levels integrity", () => {
       expect(solution).toHaveLength(size);
       expect(givens).toHaveLength(size);
       for (const row of solution) {
-        expect(row).toMatch(/^[SM]+$/);
+        expect(row).toMatch(SOLUTION_ROW);
       }
       for (const row of givens) {
-        expect(row).toMatch(/^[SM.]+$/);
+        expect(row).toMatch(GIVENS_ROW);
       }
       for (const row of [...solution, ...givens]) {
         expect(row).toHaveLength(size);
@@ -205,7 +213,7 @@ describe("sun-moon getHintCell", () => {
   });
 
   test("corrects a deliberately wrong cell with the solution value", () => {
-    const lvl = LEVELS[0];
+    const [lvl] = LEVELS;
     const cells: SunMoonCell[] = parseRows(lvl.solution);
     const wrongIdx = 5;
     cells[wrongIdx] = cells[wrongIdx] === "S" ? "M" : "S";

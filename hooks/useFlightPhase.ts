@@ -1,5 +1,8 @@
 import { useFlightStore } from "@/store/useFlightStore";
-import { type FlightPhase, getFlightPhase } from "@/utils/flightPhase";
+import type { FlightPhase } from "@/utils/flightPhase";
+import { getFlightPhase } from "@/utils/flightPhase";
+
+export type { FlightPhase } from "@/utils/flightPhase";
 
 /**
  * Current journey phase for the stored flight. `nowMs` comes from the caller
@@ -9,5 +12,3 @@ export function useFlightPhase(nowMs: number): FlightPhase {
   const flight = useFlightStore((s) => s.flight);
   return getFlightPhase(flight, nowMs);
 }
-
-export type { FlightPhase };

@@ -27,6 +27,9 @@ import {
 } from "@/utils/notifications";
 import { getJetlagPlan, getJetlagReminderFireAt } from "@/utils/timezone";
 
+const DATE_INPUT = /^(\d{4})-(\d{2})-(\d{2})$/;
+const TIME_INPUT = /^(\d{2}):(\d{2})$/;
+
 function pad2(value: number) {
   return String(value).padStart(2, "0");
 }
@@ -42,8 +45,8 @@ function toTimeInputValue(timestamp: number) {
 }
 
 function parseLocalDateTime(dateInput: string, timeInput: string) {
-  const dateMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateInput.trim());
-  const timeMatch = /^(\d{2}):(\d{2})$/.exec(timeInput.trim());
+  const dateMatch = DATE_INPUT.exec(dateInput.trim());
+  const timeMatch = TIME_INPUT.exec(timeInput.trim());
   if (!(dateMatch && timeMatch)) {
     return null;
   }
@@ -73,7 +76,7 @@ function parseLocalDateTime(dateInput: string, timeInput: string) {
 }
 
 function offsetDate(baseDate: string, delta: number): string {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(baseDate);
+  const match = DATE_INPUT.exec(baseDate);
   if (!match) {
     return baseDate;
   }
@@ -85,7 +88,7 @@ function offsetDate(baseDate: string, delta: number): string {
 function dayOffsetFromToday(dateStr: string): number {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr);
+  const match = DATE_INPUT.exec(dateStr);
   if (!match) {
     return -1;
   }
@@ -168,7 +171,7 @@ export default function FlightEditScreen() {
   );
 
   // Parse current clock for steppers
-  const clockMatch = /^(\d{2}):(\d{2})$/.exec(departureClock);
+  const clockMatch = TIME_INPUT.exec(departureClock);
   const clockHour = clockMatch ? Number(clockMatch[1]) : 0;
   const clockMinute = clockMatch ? Number(clockMatch[2]) : 0;
 
@@ -268,9 +271,11 @@ export default function FlightEditScreen() {
           });
         }
       } else {
+        // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
         void cancelJetlagSleepReminder();
       }
     } else {
+      // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
       void cancelJetlagSleepReminder();
     }
     captureAnalyticsEvent(isEditingFlight ? "flight_edited" : "flight_added", {

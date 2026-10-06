@@ -78,8 +78,11 @@ describe("fetchLatestRates", () => {
 describe("getEffectiveCurrencies / provenance", () => {
   test("overrides perUsd only where live data exists, keeps names", () => {
     const effective = getEffectiveCurrencies({ EUR: 0.5 }, currencies);
-    const eur = effective.find((c) => c.code === "EUR")!;
-    const czk = effective.find((c) => c.code === "CZK")!;
+    const eur = effective.find((c) => c.code === "EUR");
+    const czk = effective.find((c) => c.code === "CZK");
+    if (!(eur && czk)) {
+      throw new Error("EUR/CZK missing from effective currencies");
+    }
     expect(eur.perUsd).toBe(0.5);
     expect(eur.nameEn).toBe("Euro");
     expect(czk.perUsd).toBe(currencies.find((c) => c.code === "CZK")?.perUsd);
@@ -96,7 +99,10 @@ describe("getEffectiveCurrencies / provenance", () => {
       currencies.map((c) => c.code)
     );
     expect(codes.slice(currencies.length)).toEqual(["NOK", "PHP", "XXX"]);
-    const php = effective.find((c) => c.code === "PHP")!;
+    const php = effective.find((c) => c.code === "PHP");
+    if (!php) {
+      throw new Error("PHP missing from effective currencies");
+    }
     expect(php.nameEn).toBe("Philippine Peso");
     expect(php.symbol).toBe("₱");
     expect(php.perUsd).toBe(56);

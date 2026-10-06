@@ -26,10 +26,13 @@ export default function PhrasebookScreen() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { lang, source } = useLocalSearchParams<{
+  const params = useLocalSearchParams<{
     lang?: string;
     source?: string;
   }>();
+  // Route params are optional at runtime; keep the nullable types explicit.
+  const lang: string | undefined = params.lang;
+  const source: string | undefined = params.source;
   const markPhraseLanguageViewed = useAchievementStore(
     (s) => s.markPhraseLanguageViewed
   );

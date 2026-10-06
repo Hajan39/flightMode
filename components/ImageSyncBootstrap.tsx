@@ -34,17 +34,22 @@ export default function ImageSyncBootstrap() {
 
     cancelledRef.current = false;
 
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void (async () => {
       for (const url of pending) {
+        // biome-ignore lint/suspicious/noUnnecessaryConditions: the effect cleanup flips this ref while the async loop runs
         if (cancelledRef.current) {
           break;
         }
         try {
+          // biome-ignore lint/performance/noAwaitInLoops: downloads run sequentially on purpose to be gentle on in-flight networks
           const localUri = await downloadImage(url);
           if (localUri) {
             setCached(url, localUri);
           }
-        } catch {}
+        } catch {
+          // Ignore: a failed image download is non-fatal; the article renders without it.
+        }
       }
     })();
 

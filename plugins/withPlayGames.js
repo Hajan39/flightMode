@@ -36,6 +36,7 @@ const {
 const PLAY_GAMES_V2_VERSION = "21.0.0";
 const APP_ID_STRING_NAME = "app_id";
 const GAMES_APP_ID_META = "com.google.android.gms.games.APP_ID";
+const DEPENDENCIES_BLOCK_OPEN = /dependencies\s*\{/;
 
 function getAppId(config) {
   const appId = config.extra?.playGamesAppId;
@@ -76,14 +77,14 @@ const withGamesGradleDependency = (config) =>
         "withPlayGames: expected a Groovy build.gradle; cannot add the Play Games dependency."
       );
     }
-    const contents = cfg.modResults.contents;
+    const { contents } = cfg.modResults;
     if (contents.includes("play-services-games-v2")) {
       return cfg; // already present — keep idempotent
     }
     const dependency = `    implementation 'com.google.android.gms:play-services-games-v2:${PLAY_GAMES_V2_VERSION}'`;
     // Insert as the first line inside the app-level `dependencies { … }` block.
     cfg.modResults.contents = contents.replace(
-      /dependencies\s*\{/,
+      DEPENDENCIES_BLOCK_OPEN,
       (match) => `${match}\n${dependency}`
     );
     return cfg;

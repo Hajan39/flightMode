@@ -50,7 +50,10 @@ describe("convertUnit", () => {
 describe("convertCurrency", () => {
   test("identity and via-USD conversion", () => {
     expect(convertCurrency(10, "USD", "USD")).toBe(10);
-    const jpy = currencies.find((c) => c.code === "JPY")!;
+    const jpy = currencies.find((c) => c.code === "JPY");
+    if (!jpy) {
+      throw new Error("JPY missing from bundled currencies");
+    }
     expect(convertCurrency(1, "USD", "JPY")).toBeCloseTo(jpy.perUsd);
     expect(convertCurrency(jpy.perUsd, "JPY", "USD")).toBeCloseTo(1);
   });

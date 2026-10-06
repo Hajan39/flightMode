@@ -612,9 +612,15 @@ export const phraseLanguages: Record<PhraseLanguageCode, PhraseLanguage> = {
 /** All phrase languages in display order (English first, then alphabetical by English name). */
 export const phraseLanguageList: PhraseLanguage[] = Object.values(
   phraseLanguages
-).sort((a, b) =>
-  a.code === "en" ? -1 : b.code === "en" ? 1 : a.nameEn.localeCompare(b.nameEn)
-);
+).sort((a, b) => {
+  if (a.code === "en") {
+    return -1;
+  }
+  if (b.code === "en") {
+    return 1;
+  }
+  return a.nameEn.localeCompare(b.nameEn);
+});
 
 export function getPhraseLanguage(
   code: string | undefined | null

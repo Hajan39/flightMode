@@ -23,6 +23,7 @@ export default function RatesSyncBootstrap() {
     ) {
       return;
     }
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void syncRates();
   }, [networkType, isInternetReachable, syncNetworkPolicy, status, syncRates]);
 

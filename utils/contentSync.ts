@@ -152,7 +152,7 @@ function mergeLocalizedField(
   }
 
   if (!entries.en) {
-    const fallback = Object.values(entries)[0];
+    const [fallback] = Object.values(entries);
     if (!fallback) {
       return null;
     }
@@ -162,7 +162,9 @@ function mergeLocalizedField(
   return entries as LocalizedText;
 }
 
+const WHITESPACE = /\s+/;
+
 function estimateReadTime(text: string): number {
-  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const words = text.trim().split(WHITESPACE).filter(Boolean).length;
   return Math.max(1, Math.round(words / 200));
 }

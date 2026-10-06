@@ -33,7 +33,7 @@ describe("sudoku isPeer", () => {
 });
 
 describe("sudoku computeErrors", () => {
-  const solution = PUZZLES[0].solution;
+  const { solution } = PUZZLES[0];
 
   test("no errors when the board matches the solution", () => {
     expect(computeErrors(solution, solution).size).toBe(0);
@@ -53,7 +53,7 @@ describe("sudoku computeErrors", () => {
 });
 
 describe("sudoku isSolved", () => {
-  const solution = PUZZLES[0].solution;
+  const { solution } = PUZZLES[0];
   test("true when identical", () => {
     expect(isSolved([...solution], solution)).toBe(true);
   });

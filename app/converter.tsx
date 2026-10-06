@@ -53,10 +53,13 @@ export default function ConverterScreen() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { currency, source } = useLocalSearchParams<{
+  const params = useLocalSearchParams<{
     currency?: string;
     source?: string;
   }>();
+  // Route params are optional at runtime; keep the nullable types explicit.
+  const currency: string | undefined = params.currency;
+  const source: string | undefined = params.source;
   const incrementConverterUses = useAchievementStore(
     (s) => s.incrementConverterUses
   );
@@ -81,7 +84,10 @@ export default function ConverterScreen() {
   const [from, setFrom] = useState(home);
   const [to, setTo] = useState(() => {
     const param = getCurrency(currency)?.code ?? currency?.toUpperCase();
-    return param && param !== home ? param : home === "EUR" ? "USD" : "EUR";
+    if (param && param !== home) {
+      return param;
+    }
+    return home === "EUR" ? "USD" : "EUR";
   });
   const [direction, setDirection] = useState<UnitDirection>("metricToImperial");
   const countedRef = useRef(false);
@@ -126,6 +132,7 @@ export default function ConverterScreen() {
             ? to
             : unitLabels[kind][direction === "metricToImperial" ? 1 : 0],
       });
+      // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref flips to true below; this is a one-time-per-mount guard
       if (!countedRef.current) {
         countedRef.current = true;
         incrementConverterUses();
@@ -296,6 +303,7 @@ export default function ConverterScreen() {
                 disabled={ratesStatus === "syncing"}
                 onPress={() => {
                   haptic.tap();
+                  // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
                   void syncRates({ force: true });
                 }}
                 style={[

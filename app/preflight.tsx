@@ -94,6 +94,13 @@ export default function PreflightScreen() {
   const gameCount = gameRegistry.length;
   const articleCount = articles.length;
 
+  let refreshLabel = t("preflightRefresh");
+  if (syncStatus === "syncing") {
+    refreshLabel = t("preflightRefreshing");
+  } else if (syncStatus === "success" || syncStatus === "skipped") {
+    refreshLabel = t("preflightUpToDate");
+  }
+
   return (
     <SafeAreaView
       edges={["bottom"]}
@@ -187,7 +194,9 @@ export default function PreflightScreen() {
           <AnimatedPressable
             disabled={syncStatus === "syncing"}
             onPress={() => {
+              // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
               void syncContent();
+              // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
               void syncRates({ force: true });
             }}
             style={[
@@ -199,13 +208,7 @@ export default function PreflightScreen() {
             ]}
           >
             <Ionicons color="#fff" name="cloud-download-outline" size={18} />
-            <Text style={styles.refreshText}>
-              {syncStatus === "syncing"
-                ? t("preflightRefreshing")
-                : syncStatus === "success" || syncStatus === "skipped"
-                  ? t("preflightUpToDate")
-                  : t("preflightRefresh")}
-            </Text>
+            <Text style={styles.refreshText}>{refreshLabel}</Text>
           </AnimatedPressable>
         )}
       </ScrollView>

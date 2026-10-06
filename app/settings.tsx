@@ -90,10 +90,12 @@ export default function SettingsScreen() {
       placement: "settings",
       provider: "buymeacoffee",
     });
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void Linking.openURL(BMAC_URL);
   };
 
   useEffect(() => {
+    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref flips to true below; this guards StrictMode/effect re-runs
     if (hasTrackedOpenRef.current) {
       return;
     }

@@ -57,8 +57,16 @@ export function convertUnit(
       return toImperial ? value / 1.609_344 : value * 1.609_344;
     case "weight":
       return toImperial ? value / 0.453_592_37 : value * 0.453_592_37;
+    default:
+      // Unreachable: UnitKind is exhaustive above.
+      return value;
   }
 }
+
+/** Trailing ".0"/".00" after toFixed. */
+const TRAILING_ZERO_DECIMALS = /\.0+$/;
+/** Trailing zeros after a non-zero decimal part. */
+const TRAILING_ZEROS = /(\.\d*?)0+$/;
 
 /** Unit labels for each kind: [metric, imperial]. */
 export const unitLabels: Record<UnitKind, [string, string]> = {
@@ -73,11 +81,16 @@ export function formatUnit(value: number): string {
     return "–";
   }
   const abs = Math.abs(value);
-  const decimals = abs >= 100 ? 0 : abs >= 10 ? 1 : 2;
+  let decimals = 2;
+  if (abs >= 100) {
+    decimals = 0;
+  } else if (abs >= 10) {
+    decimals = 1;
+  }
   return value
     .toFixed(decimals)
-    .replace(/\.0+$/, "")
-    .replace(/(\.\d*?)0+$/, "$1");
+    .replace(TRAILING_ZERO_DECIMALS, "")
+    .replace(TRAILING_ZEROS, "$1");
 }
 
 /** Whole days since the rates snapshot (0 when the date is unparseable). */

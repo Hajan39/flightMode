@@ -1,5 +1,7 @@
 import { buildPuzzle, lineBetween, readCells } from "@/games/word-search/logic";
 
+const SINGLE_UPPERCASE_LETTER = /^[A-Z]$/;
+
 // Deterministic PRNG so buildPuzzle is reproducible in tests.
 function mulberry32(seed: number): () => number {
   let a = seed;
@@ -47,7 +49,7 @@ describe("word-search buildPuzzle", () => {
     expect(puzzle.size).toBe(SIZE);
     expect(puzzle.grid).toHaveLength(SIZE * SIZE);
     for (const cell of puzzle.grid) {
-      expect(cell).toMatch(/^[A-Z]$/);
+      expect(cell).toMatch(SINGLE_UPPERCASE_LETTER);
     }
   });
 

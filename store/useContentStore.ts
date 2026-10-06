@@ -43,7 +43,7 @@ export const useContentStore = create<ContentState>()(
       syncContent: async () => {
         const state = get();
         const networkState = useNetworkStore.getState();
-        const syncNetworkPolicy = useSettingsStore.getState().syncNetworkPolicy;
+        const { syncNetworkPolicy } = useSettingsStore.getState();
 
         if (
           !(

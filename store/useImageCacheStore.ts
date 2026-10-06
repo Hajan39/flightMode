@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as FileSystem from "expo-file-system/legacy";
+import { deleteAsync, documentDirectory } from "expo-file-system/legacy";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -14,8 +14,8 @@ export const useImageCacheStore = create<ImageCacheState>()(
     (set) => ({
       cache: {},
       clearCache: async () => {
-        const dir = `${FileSystem.documentDirectory}article_images/`;
-        await FileSystem.deleteAsync(dir, { idempotent: true });
+        const dir = `${documentDirectory}article_images/`;
+        await deleteAsync(dir, { idempotent: true });
         set({ cache: {} });
       },
       setCached: (url, localUri) =>

@@ -132,27 +132,27 @@ function Page({
       >
         {subtitle}
       </Animated.Text>
-      {isLanguagePage && (
+      {isLanguagePage ? (
         <Animated.View
           entering={FadeInDown.delay(550).springify()}
           style={styles.languagePicker}
         >
           <LanguageDropdown showSystemOption={false} />
         </Animated.View>
-      )}
-      {isPreferencesPage && (
+      ) : null}
+      {isPreferencesPage ? (
         <Animated.View entering={FadeInDown.delay(550).springify()}>
           <CategoryPicker theme={theme} />
         </Animated.View>
-      )}
-      {isCurrencyPage && (
+      ) : null}
+      {isCurrencyPage ? (
         <Animated.View
           entering={FadeInDown.delay(550).springify()}
           style={styles.currencyPicker}
         >
           <HomeCurrencyPicker />
         </Animated.View>
-      )}
+      ) : null}
     </View>
   );
 }

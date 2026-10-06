@@ -1,13 +1,17 @@
-const { spawnSync } = require("node:child_process");
-const fs = require("node:fs");
-const path = require("node:path");
+import { spawnSync } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
 
-const branch = process.argv[2];
+const [, , branch] = process.argv;
 const allowedBranches = new Set(["preview", "production"]);
+
+const UNRELEASED_SECTION = /^## \[Unreleased\]\s*\n([\s\S]*?)(?=^## \[|Z)/m;
+const LINE_BREAK = /\r?\n/;
+const HEADING_PREFIX = /^###\s+/;
 
 if (!allowedBranches.has(branch)) {
   console.error(
-    "Usage: node ./scripts/eas-update-from-changelog.js <preview|production>"
+    "Usage: node ./scripts/eas-update-from-changelog.mjs <preview|production>"
   );
   process.exit(1);
 }
@@ -20,9 +24,7 @@ function readChangelog() {
 }
 
 function getUnreleasedSection(changelog) {
-  const match = changelog.match(
-    /^## \[Unreleased\]\s*\n([\s\S]*?)(?=^## \[|Z)/m
-  );
+  const match = changelog.match(UNRELEASED_SECTION);
 
   if (!match) {
     throw new Error("Missing ## [Unreleased] section in CHANGELOG.md");
@@ -33,7 +35,7 @@ function getUnreleasedSection(changelog) {
 
 function buildUpdateMessage(unreleasedSection) {
   const lines = unreleasedSection
-    .split(/\r?\n/)
+    .split(LINE_BREAK)
     .map((line) => line.trim())
     .filter(Boolean);
 
@@ -51,7 +53,7 @@ function buildUpdateMessage(unreleasedSection) {
   for (const line of lines) {
     if (line.startsWith("### ")) {
       flush();
-      currentHeading = line.replace(/^###\s+/, "").trim();
+      currentHeading = line.replace(HEADING_PREFIX, "").trim();
       continue;
     }
 

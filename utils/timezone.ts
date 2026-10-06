@@ -129,7 +129,13 @@ export function getDayOffset(
     getDeviceOffsetMinutes(referenceMs)
   ).dayKey;
   const diff = Math.round((target - reference) / 86_400_000);
-  return diff > 0 ? 1 : diff < 0 ? -1 : 0;
+  if (diff > 0) {
+    return 1;
+  }
+  if (diff < 0) {
+    return -1;
+  }
+  return 0;
 }
 
 export type JetlagDirection = "east" | "west" | "none";
@@ -206,10 +212,18 @@ export function getJetlagPlan(input: JetlagInput): JetlagPlan {
   const abs = Math.abs(shiftHours);
   const arrivalLocalHour = getHourInZone(arrivalMs, destination, opts);
 
-  const direction: JetlagDirection =
-    abs < 2 ? "none" : shiftHours > 0 ? "east" : "west";
-  const severity: JetlagSeverity =
-    abs < 2 ? "none" : abs < 5 ? "mild" : abs < 8 ? "moderate" : "severe";
+  let direction: JetlagDirection = "none";
+  if (abs >= 2) {
+    direction = shiftHours > 0 ? "east" : "west";
+  }
+  let severity: JetlagSeverity = "severe";
+  if (abs < 2) {
+    severity = "none";
+  } else if (abs < 5) {
+    severity = "mild";
+  } else if (abs < 8) {
+    severity = "moderate";
+  }
 
   if (direction === "none") {
     return {

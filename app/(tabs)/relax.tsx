@@ -140,6 +140,7 @@ export default function RelaxScreen() {
       phaseStartedRef.current = false;
       return;
     }
+    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref flips to true below; it skips the pulse on the first phase after activation
     if (!phaseStartedRef.current) {
       phaseStartedRef.current = true;
       return;
@@ -434,7 +435,7 @@ export default function RelaxScreen() {
           style={styles.soundGrid}
         >
           {SOUNDSCAPES.map((scape, scapeIndex) => {
-            const isActive = activeSoundId === scape.id;
+            const isSoundActive = activeSoundId === scape.id;
             return (
               <Animated.View
                 entering={FadeInDown.delay(300 + scapeIndex * 80).springify()}
@@ -446,25 +447,27 @@ export default function RelaxScreen() {
                   style={[
                     styles.soundCard,
                     {
-                      backgroundColor: isActive ? theme.accentSoft : theme.card,
-                      borderColor: isActive ? theme.tint : theme.border,
+                      backgroundColor: isSoundActive
+                        ? theme.accentSoft
+                        : theme.card,
+                      borderColor: isSoundActive ? theme.tint : theme.border,
                     },
                   ]}
                 >
                   <Ionicons
-                    color={isActive ? theme.tint : theme.mutedText}
+                    color={isSoundActive ? theme.tint : theme.mutedText}
                     name={scape.icon as never}
                     size={32}
                   />
                   <Text
                     style={[
                       styles.soundLabel,
-                      { color: isActive ? theme.tint : theme.text },
+                      { color: isSoundActive ? theme.tint : theme.text },
                     ]}
                   >
                     {t(scape.labelKey)}
                   </Text>
-                  {isActive && (
+                  {isSoundActive && (
                     <View
                       darkColor={theme.tint}
                       lightColor={theme.tint}

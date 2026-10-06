@@ -4,6 +4,8 @@ import {
   playGamesAchievementIds,
 } from "@/data/playGamesAchievements";
 
+const PLAY_ID_PREFIX = /^CgkI/;
+
 const localIds = new Set(achievements.map((a) => a.id));
 const mapIds = new Set(Object.keys(playGamesAchievementIds));
 
@@ -27,7 +29,7 @@ describe("Play Games achievement mapping integrity", () => {
       expect((playId as string).length).toBeGreaterThan(0);
       // Not a hard requirement of Play, but every real id we've seen begins
       // with "CgkI" — catches accidental placeholder/typo values.
-      expect(playId).toMatch(/^CgkI/);
+      expect(playId).toMatch(PLAY_ID_PREFIX);
     }
   });
 

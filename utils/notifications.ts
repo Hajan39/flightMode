@@ -84,7 +84,7 @@ export function addNotificationResponseListener(
 
   const subscription = Notifications.addNotificationResponseReceivedListener(
     (response) => {
-      const data = response.notification.request.content.data;
+      const { data } = response.notification.request.content;
       const reminderKind =
         data && typeof data === "object"
           ? (data as Record<string, unknown>).reminder_kind

@@ -81,6 +81,7 @@ export const useAchievementStore = create<AchievementStoreState>()(
             // Best-effort mirror to Google Play Games. Fire-and-forget:
             // no await, and the wrapper swallows every error so a PGS
             // hiccup can never affect the local (offline) unlock above.
+            // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
             void unlockPlayGamesAchievement(getPlayGamesAchievementId(id));
           }
         }

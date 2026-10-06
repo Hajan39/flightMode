@@ -1,4 +1,8 @@
-import * as Updates from "expo-updates";
+import {
+  checkForUpdateAsync,
+  fetchUpdateAsync,
+  reloadAsync,
+} from "expo-updates";
 import { useEffect } from "react";
 import { Alert, Platform } from "react-native";
 
@@ -8,32 +12,33 @@ import { Alert, Platform } from "react-native";
  */
 export function useOTAUpdate(t: (key: string) => string) {
   useEffect(() => {
+    // biome-ignore lint/correctness/noUndeclaredVariables: __DEV__ is a React Native global
     if (__DEV__) {
       return; // skip in development
     }
 
     async function checkForUpdate() {
       try {
-        const update = await Updates.checkForUpdateAsync();
+        const update = await checkForUpdateAsync();
         if (!update.isAvailable) {
           return;
         }
 
-        const result = await Updates.fetchUpdateAsync();
+        const result = await fetchUpdateAsync();
         if (!result.isNew) {
           return;
         }
 
         if (Platform.OS === "web") {
           // Web: just reload
-          Updates.reloadAsync();
+          reloadAsync();
           return;
         }
 
         Alert.alert(t("updateAvailableTitle"), t("updateAvailableMessage"), [
           { style: "cancel", text: t("updateLater") },
           {
-            onPress: () => Updates.reloadAsync(),
+            onPress: () => reloadAsync(),
             text: t("updateRestart"),
           },
         ]);

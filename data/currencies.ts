@@ -138,10 +138,12 @@ export const POPULAR_CURRENCIES = [
   "THB",
 ];
 
+const ISO_CURRENCY_CODE = /^[A-Z]{3}$/;
+
 /** ISO code from the device locale, falling back to USD. */
 export function deviceCurrencyCode(): string {
   const code = getLocales()[0]?.currencyCode?.toUpperCase();
-  return code && /^[A-Z]{3}$/.test(code) ? code : "USD";
+  return code && ISO_CURRENCY_CODE.test(code) ? code : "USD";
 }
 
 export function getCurrency(

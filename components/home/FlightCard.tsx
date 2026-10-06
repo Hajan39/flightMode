@@ -83,6 +83,13 @@ export default function FlightCard({
       })()
     : null;
 
+  let recommendation = t("recommendationShort");
+  if (remaining > 120) {
+    recommendation = t("recommendationLong");
+  } else if (remaining > 30) {
+    recommendation = t("recommendationMid");
+  }
+
   return (
     <View
       style={[styles.flightShell, { backgroundColor: `${theme.border}30` }]}
@@ -130,7 +137,7 @@ export default function FlightCard({
             {t("arrivalTime", { time: arrivalTime })}
           </Text>
         )}
-        {destination && destinationNow && arrivalLocal && (
+        {destination && destinationNow && arrivalLocal ? (
           <>
             <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
               {t("destinationLocalTime", {
@@ -142,7 +149,7 @@ export default function FlightCard({
               {t("arrivalTimeLocal", { time: arrivalLocal })}
             </Text>
           </>
-        )}
+        ) : null}
 
         {landed ? null : (
           <View style={styles.recommendation}>
@@ -150,11 +157,7 @@ export default function FlightCard({
             <Text
               style={[styles.recommendationText, { color: theme.mutedText }]}
             >
-              {remaining > 120
-                ? t("recommendationLong")
-                : remaining > 30
-                  ? t("recommendationMid")
-                  : t("recommendationShort")}
+              {recommendation}
             </Text>
           </View>
         )}

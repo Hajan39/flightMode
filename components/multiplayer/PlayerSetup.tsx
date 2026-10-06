@@ -11,7 +11,7 @@ import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
 
 import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors, { MAX_MATCH_PLAYERS, PlayerColors } from "@/constants/Colors";
+import Colors, { MAX_MATCH_PLAYERS } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
@@ -296,8 +296,6 @@ export function OptionChips<T extends string | number>({
     </RNView>
   );
 }
-
-export { PlayerColors };
 
 const styles = StyleSheet.create({
   block: { gap: Spacing.sm },

@@ -1,5 +1,7 @@
 import { checkGuess, getDayOfYear, WORD_POOL } from "@/games/word-guess/logic";
 
+const FIVE_UPPERCASE_LETTERS = /^[A-Z]{5}$/;
+
 describe("word-guess checkGuess", () => {
   test("all correct for an exact match", () => {
     expect(checkGuess("PILOT", "PILOT")).toEqual([
@@ -63,7 +65,7 @@ describe("word-guess checkGuess", () => {
 describe("word-guess WORD_POOL", () => {
   test("every word is exactly 5 uppercase A–Z letters", () => {
     for (const w of WORD_POOL) {
-      expect(w).toMatch(/^[A-Z]{5}$/);
+      expect(w).toMatch(FIVE_UPPERCASE_LETTERS);
     }
   });
 

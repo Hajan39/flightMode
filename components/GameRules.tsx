@@ -19,6 +19,9 @@ interface Props {
   titleKey: TranslationKey;
 }
 
+/** A rules section header starts with an emoji. */
+const SECTION_HEADER = /^\p{Extended_Pictographic}/u;
+
 /**
  * Renders rules text with section headers (lines starting with emoji + bold text)
  * and bullet lines (lines starting with "  • " or "  ‣ ").
@@ -43,7 +46,7 @@ function RulesContent({
         }
 
         // Section header — starts with emoji (non-ASCII) and rest is bold
-        if (/^\p{Extended_Pictographic}/u.test(trimmed)) {
+        if (SECTION_HEADER.test(trimmed)) {
           return (
             <Text key={i} style={[styles.sectionHeader, { color: textColor }]}>
               {trimmed}
@@ -109,7 +112,9 @@ export default function GameRules({ titleKey, rulesKey, inline }: Props) {
       >
         <Pressable onPress={() => setVisible(false)} style={styles.overlay}>
           <Pressable
-            onPress={() => {}}
+            onPress={() => {
+              // Intentionally empty: absorbs taps so pressing the card doesn't close the modal.
+            }}
             style={[styles.card, { backgroundColor: theme.elevated }]}
           >
             <Text style={[styles.title, { color: theme.text }]}>

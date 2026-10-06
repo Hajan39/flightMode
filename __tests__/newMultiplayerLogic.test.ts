@@ -77,7 +77,10 @@ describe("split-duel logic", () => {
       expect(c.steps[0].color).not.toBe(c.target);
       expect(c.steps.filter((s) => s.color === c.target)).toHaveLength(1);
       expect(colorAt(c, 0)).toBe(c.steps[0].color);
-      const targetStep = c.steps.find((s) => s.color === c.target)!;
+      const targetStep = c.steps.find((s) => s.color === c.target);
+      if (!targetStep) {
+        throw new Error("target color missing from timeline");
+      }
       expect(colorAt(c, targetStep.atMs + 10)).toBe(c.target);
     }
   });

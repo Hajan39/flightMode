@@ -11,6 +11,7 @@ import { initPlayGames } from "@/utils/playGames";
  */
 export default function PlayGamesBootstrap() {
   useEffect(() => {
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void initPlayGames();
   }, []);
 

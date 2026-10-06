@@ -10,7 +10,6 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
@@ -86,14 +85,11 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
           animStyle,
         ]}
       >
-        {value === "GO" ? t("gameGo") : value}
+        {value === "GO" ? t("gameGo") : String(value)}
       </Animated.Text>
     </Animated.View>
   );
 }
-
-// keep `Text` referenced (used for theme typography parity)
-void Text;
 
 const styles = StyleSheet.create({
   overlay: {

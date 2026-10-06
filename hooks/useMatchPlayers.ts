@@ -19,7 +19,9 @@ export interface MatchPlayer {
  */
 export function useMatchPlayers(count: number): MatchPlayer[] {
   const seats = usePlayersStore((s) => s.seats);
-  const { t, language } = useTranslation();
+  // `useTranslation` subscribes to the language setting, so names
+  // re-localize when the UI language changes (`t` is recreated per render).
+  const { t } = useTranslation();
 
   return useMemo(
     () =>
@@ -32,8 +34,6 @@ export function useMatchPlayers(count: number): MatchPlayer[] {
           name: stored.length > 0 ? stored : t("mpPlayerN", { n: index + 1 }),
         };
       }),
-    // `language` is read so names re-localize when the UI language changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [count, seats, t]
   );
 }

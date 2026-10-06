@@ -46,7 +46,7 @@ export default function AchievementToast() {
       return;
     }
 
-    const next = queue[0];
+    const [next] = queue;
     setQueue((prev) => prev.slice(1));
     setVisible(next);
     haptic.heavy();

@@ -71,7 +71,7 @@ describe("useChecklistStore", () => {
 
   test("removeCustomItem also clears its tick", () => {
     useChecklistStore.getState().addCustomItem("documents", "Vaccination card");
-    const id = useChecklistStore.getState().customItems[0].id;
+    const { id } = useChecklistStore.getState().customItems[0];
     useChecklistStore.getState().toggleItem(id);
     expect(useChecklistStore.getState().checkedIds).toContain(id);
     useChecklistStore.getState().removeCustomItem(id);

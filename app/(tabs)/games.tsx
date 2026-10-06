@@ -218,7 +218,8 @@ export default function GamesScreen() {
                 scaleTo={0.95}
                 style={[
                   styles.intentChip,
-                  intent.key !== intentFilters.at(-1)?.key && styles.chipSpacing,
+                  intent.key !== intentFilters.at(-1)?.key &&
+                    styles.chipSpacing,
                   {
                     backgroundColor: isActive ? theme.tint : theme.card,
                     borderColor: isActive ? theme.tint : theme.border,
@@ -296,7 +297,7 @@ export default function GamesScreen() {
                   {t("gamesEmptyHint")}
                 </Text>
               )}
-              {hasActiveFilter && (
+              {hasActiveFilter ? (
                 <Pressable
                   onPress={() => {
                     setSearch("");
@@ -317,7 +318,7 @@ export default function GamesScreen() {
                     {t("gamesClearFilters")}
                   </Text>
                 </Pressable>
-              )}
+              ) : null}
             </View>
           }
           renderItem={({ item, index }) => {
