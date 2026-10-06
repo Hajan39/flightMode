@@ -1,12 +1,13 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Modal, Pressable, StyleSheet } from "react-native";
-
 import { Text, View } from "@/components/Themed";
-import { useColorScheme } from "@/components/useColorScheme";
+import { PLUS_THEMES, useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useTranslation } from "@/hooks/useTranslation";
 import { type ThemeMode, useSettingsStore } from "@/store/useSettingsStore";
+import { useSupporterStore } from "@/store/useSupporterStore";
 
 const themeOptions: Array<{
   mode: ThemeMode;
@@ -17,6 +18,8 @@ const themeOptions: Array<{
   { icon: "sunny-outline", labelKey: "themeLight", mode: "light" },
   { icon: "moon-outline", labelKey: "themeDark", mode: "dark" },
   { icon: "color-palette-outline", labelKey: "themeCrazy", mode: "crazy" },
+  { icon: "planet-outline", labelKey: "themeMidnight", mode: "midnight" },
+  { icon: "partly-sunny-outline", labelKey: "themeSunset", mode: "sunset" },
 ];
 
 export default function ThemeDropdown() {
@@ -26,6 +29,8 @@ export default function ThemeDropdown() {
   const themeMode = useSettingsStore((s) => s.themeMode);
   const setThemeMode = useSettingsStore((s) => s.setThemeMode);
   const [open, setOpen] = useState(false);
+  const plus = useSupporterStore((s) => s.plus);
+  const router = useRouter();
 
   const current =
     themeOptions.find((o) => o.mode === themeMode) ?? themeOptions[0];
@@ -66,8 +71,12 @@ export default function ThemeDropdown() {
                 <Pressable
                   key={option.mode}
                   onPress={() => {
-                    setThemeMode(option.mode);
                     setOpen(false);
+                    if (PLUS_THEMES.has(option.mode) && !plus) {
+                      router.push("/plus" as never);
+                      return;
+                    }
+                    setThemeMode(option.mode);
                   }}
                   style={({ pressed }) => [
                     styles.option,
@@ -92,6 +101,16 @@ export default function ThemeDropdown() {
                   {isSelected && (
                     <Ionicons color={theme.tint} name="checkmark" size={20} />
                   )}
+                  {PLUS_THEMES.has(option.mode) && !plus ? (
+                    <Text
+                      style={[
+                        styles.plusBadge,
+                        { borderColor: theme.tint, color: theme.tint },
+                      ]}
+                    >
+                      PLUS
+                    </Text>
+                  ) : null}
                 </Pressable>
               );
             })}
@@ -128,6 +147,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 32,
+  },
+  plusBadge: {
+    borderRadius: 6,
+    borderWidth: 1,
+    fontSize: 10,
+    fontWeight: "700",
+    paddingHorizontal: 5,
+    paddingVertical: 1,
   },
   trigger: {
     alignItems: "center",

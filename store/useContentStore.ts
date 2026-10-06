@@ -1,4 +1,3 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -10,20 +9,24 @@ import {
   fetchSyncedContent,
   hasContentSyncEndpoint,
 } from "@/utils/contentSync";
+import { fileStorage } from "@/utils/fileStorage";
 
 const CONTENT_SYNC_MIN_INTERVAL_MS = 30 * 60 * 1000;
+/** After a failure, wait before retrying — the bootstrap effect re-runs on every status change. */
+const RETRY_AFTER_FAILURE_MS = 5 * 60 * 1000;
+let lastFailureAt = 0;
 
 type ContentSyncStatus = "idle" | "syncing" | "success" | "error" | "skipped";
 
-interface ContentState {
-  clearSyncedContent: () => void;
+type ContentState = {
   items: ContentItem[] | null;
-  lastError: string | null;
+  version: string | null;
   lastSyncAt: number | null;
   status: ContentSyncStatus;
+  lastError: string | null;
   syncContent: () => Promise<void>;
-  version: string | null;
-}
+  clearSyncedContent: () => void;
+};
 
 export const useContentStore = create<ContentState>()(
   persist(
@@ -43,7 +46,7 @@ export const useContentStore = create<ContentState>()(
       syncContent: async () => {
         const state = get();
         const networkState = useNetworkStore.getState();
-        const { syncNetworkPolicy } = useSettingsStore.getState();
+        const syncNetworkPolicy = useSettingsStore.getState().syncNetworkPolicy;
 
         if (
           !(
@@ -60,6 +63,10 @@ export const useContentStore = create<ContentState>()(
           Date.now() - state.lastSyncAt < CONTENT_SYNC_MIN_INTERVAL_MS
         ) {
           set({ lastError: null, status: "skipped" });
+          return;
+        }
+
+        if (Date.now() - lastFailureAt < RETRY_AFTER_FAILURE_MS) {
           return;
         }
 
@@ -102,6 +109,7 @@ export const useContentStore = create<ContentState>()(
             error instanceof Error
               ? error.message
               : "Unknown content sync error";
+          lastFailureAt = Date.now();
           set({ lastError: message, status: "error" });
           captureAnalyticsEvent("content_sync_failed", { reason: message });
         }
@@ -115,7 +123,8 @@ export const useContentStore = create<ContentState>()(
         lastSyncAt: state.lastSyncAt,
         version: state.version,
       }),
-      storage: createJSONStorage(() => AsyncStorage),
+      // The feed can grow past what Android AsyncStorage can hold — keep it in a file.
+      storage: createJSONStorage(() => fileStorage),
     }
   )
 );

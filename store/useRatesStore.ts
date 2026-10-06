@@ -25,17 +25,17 @@ let lastFailureAt = 0;
 
 type RatesSyncStatus = "idle" | "syncing" | "success" | "error" | "skipped";
 
-interface RatesState {
-  clearRates: () => void;
-  lastError: string | null;
-  lastSyncAt: number | null;
+type RatesState = {
   /** Live rates from the last successful sync (per 1 USD), or null = bundled only. */
   rates: Record<string, number> | null;
   ratesAsOf: string | null;
+  lastSyncAt: number | null;
   status: RatesSyncStatus;
+  lastError: string | null;
   /** `force` ignores the cooldown (manual refresh button). */
   syncRates: (opts?: { force?: boolean }) => Promise<void>;
-}
+  clearRates: () => void;
+};
 
 export const useRatesStore = create<RatesState>()(
   persist(

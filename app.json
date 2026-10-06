@@ -2,7 +2,7 @@
   "expo": {
     "name": "FlightMode",
     "slug": "flight-mode",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "flightmode",
@@ -51,6 +51,7 @@
           "motionPermission": "FlightMode uses device motion only while you play the tilt game. Nothing is recorded or sent anywhere."
         }
       ],
+      "expo-iap",
       "./plugins/withPlayGames"
     ],
     "experiments": {

@@ -75,15 +75,15 @@ function CategoryPicker({ theme }: { theme: (typeof Colors)["dark"] }) {
   );
 }
 
-interface PageProps {
+type PageProps = {
   icon: string;
-  isCurrencyPage?: boolean;
-  isLanguagePage?: boolean;
-  isPreferencesPage?: boolean;
+  title: string;
   subtitle: string;
   theme: (typeof Colors)["dark"];
-  title: string;
-}
+  isLanguagePage?: boolean;
+  isPreferencesPage?: boolean;
+  isCurrencyPage?: boolean;
+};
 
 /** Home-currency step: chips + the shared searchable picker. */
 function HomeCurrencyPicker() {
@@ -132,27 +132,27 @@ function Page({
       >
         {subtitle}
       </Animated.Text>
-      {isLanguagePage ? (
+      {isLanguagePage && (
         <Animated.View
           entering={FadeInDown.delay(550).springify()}
           style={styles.languagePicker}
         >
           <LanguageDropdown showSystemOption={false} />
         </Animated.View>
-      ) : null}
-      {isPreferencesPage ? (
+      )}
+      {isPreferencesPage && (
         <Animated.View entering={FadeInDown.delay(550).springify()}>
           <CategoryPicker theme={theme} />
         </Animated.View>
-      ) : null}
-      {isCurrencyPage ? (
+      )}
+      {isCurrencyPage && (
         <Animated.View
           entering={FadeInDown.delay(550).springify()}
           style={styles.currencyPicker}
         >
           <HomeCurrencyPicker />
         </Animated.View>
-      ) : null}
+      )}
     </View>
   );
 }
@@ -273,6 +273,9 @@ export default function OnboardingScreen() {
             finish();
           } else {
             haptic.tap();
+            // Android fires onMomentumScrollEnd late (or not at all) for a
+            // programmatic scroll — update the index here so dots + CTA follow.
+            setActiveIndex(activeIndex + 1);
             scrollRef.current?.scrollTo({
               animated: true,
               x: (activeIndex + 1) * SCREEN_WIDTH,

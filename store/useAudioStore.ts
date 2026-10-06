@@ -1,33 +1,73 @@
-import { createAudioPlayer } from "expo-audio";
+import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
 import { Platform } from "react-native";
 import { create } from "zustand";
 
 import type { TranslationKey } from "@/i18n/translations";
 
-const globalPlayer = Platform.OS === "web" ? null : createAudioPlayer(null);
+const globalPlayer =
+  Platform.OS === "web" ? (null as any) : createAudioPlayer(null);
 let sleepTimerRef: ReturnType<typeof setTimeout> | null = null;
+let backgroundModeSet = false;
 
-interface AudioState {
-  activeLabelKey: TranslationKey | null;
+/**
+ * Keep soundscapes playing with the screen off (the main in-flight use: sleep
+ * with rain / white noise + sleep timer). On Android the lock-screen media
+ * notification is what keeps the media-playback foreground service alive —
+ * without it playback stops after ~3 minutes in the background.
+ */
+function startBackgroundPlayback(title: string) {
+  if (!backgroundModeSet) {
+    backgroundModeSet = true;
+    void setAudioModeAsync({
+      interruptionMode: "doNotMix",
+      playsInSilentMode: true,
+      shouldPlayInBackground: true,
+    }).catch(() => {
+      backgroundModeSet = false;
+    });
+  }
+  try {
+    globalPlayer.setActiveForLockScreen(true, { artist: "FlightMode", title });
+  } catch {
+    // Older native build without lock-screen support — foreground playback still works.
+  }
+}
+
+function stopBackgroundPlayback() {
+  try {
+    globalPlayer?.setActiveForLockScreen(false);
+  } catch {
+    // ignore
+  }
+}
+
+type AudioState = {
   activeSoundId: string | null;
-  playSound: (id: string, labelKey: TranslationKey, source: number) => void;
-  setSleepTimer: (minutes: number | null) => void;
-  setVolume: (volume: number) => void;
+  activeLabelKey: TranslationKey | null;
+  volume: number;
   sleepTimerEndAt: number | null;
   sleepTimerPresetMinutes: number | null;
+  playSound: (
+    id: string,
+    labelKey: TranslationKey,
+    source: number,
+    title?: string
+  ) => void;
   stopSound: () => void;
-  volume: number;
-}
+  setVolume: (volume: number) => void;
+  setSleepTimer: (minutes: number | null) => void;
+};
 
 export const useAudioStore = create<AudioState>((set, get) => ({
   activeLabelKey: null,
   activeSoundId: null,
-  playSound: (id, labelKey, source) => {
+  playSound: (id, labelKey, source, title) => {
     if (!globalPlayer) {
       return;
     }
     if (get().activeSoundId === id) {
       globalPlayer.pause();
+      stopBackgroundPlayback();
       set({ activeLabelKey: null, activeSoundId: null });
       return;
     }
@@ -37,6 +77,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
       globalPlayer.loop = true;
       globalPlayer.volume = get().volume;
       globalPlayer.play();
+      startBackgroundPlayback(title ?? "FlightMode");
       set({ activeLabelKey: labelKey, activeSoundId: id });
     } catch {
       set({ activeLabelKey: null, activeSoundId: null });
@@ -56,6 +97,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
     const endAt = Date.now() + minutes * 60_000;
     sleepTimerRef = setTimeout(() => {
       globalPlayer?.pause();
+      stopBackgroundPlayback();
       sleepTimerRef = null;
       set({
         activeLabelKey: null,
@@ -78,6 +120,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
   sleepTimerPresetMinutes: null,
   stopSound: () => {
     globalPlayer?.pause();
+    stopBackgroundPlayback();
     if (sleepTimerRef) {
       clearTimeout(sleepTimerRef);
       sleepTimerRef = null;

@@ -29,12 +29,12 @@ const BREATHING_PHASES = [
   { duration: 4, key: "hold" as TranslationKey },
 ] as const;
 
-interface SoundscapeDef {
-  icon: string;
+type SoundscapeDef = {
   id: string;
   labelKey: TranslationKey;
+  icon: string;
   source: number;
-}
+};
 
 const SOUNDSCAPES: SoundscapeDef[] = [
   {
@@ -140,7 +140,6 @@ export default function RelaxScreen() {
       phaseStartedRef.current = false;
       return;
     }
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref flips to true below; it skips the pulse on the first phase after activation
     if (!phaseStartedRef.current) {
       phaseStartedRef.current = true;
       return;
@@ -150,7 +149,7 @@ export default function RelaxScreen() {
     // each render, and the component re-renders every second (countdown), so
     // including it would fire the pulse every second instead of once per phase.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isActive, haptic.tap]);
+  }, [phaseIndex, isActive]);
 
   const handleBreathToggle = () => {
     haptic.tap();
@@ -170,7 +169,7 @@ export default function RelaxScreen() {
   const toggleSoundscape = (scape: SoundscapeDef) => {
     haptic.tap();
     const isStoppingActiveSoundscape = activeSoundId === scape.id;
-    playSound(scape.id, scape.labelKey, scape.source);
+    playSound(scape.id, scape.labelKey, scape.source, t(scape.labelKey));
     markSoundPlayed(scape.id);
     captureAnalyticsEvent(
       isStoppingActiveSoundscape ? "audio_stop" : "audio_play",
@@ -435,7 +434,7 @@ export default function RelaxScreen() {
           style={styles.soundGrid}
         >
           {SOUNDSCAPES.map((scape, scapeIndex) => {
-            const isSoundActive = activeSoundId === scape.id;
+            const isActive = activeSoundId === scape.id;
             return (
               <Animated.View
                 entering={FadeInDown.delay(300 + scapeIndex * 80).springify()}
@@ -447,27 +446,25 @@ export default function RelaxScreen() {
                   style={[
                     styles.soundCard,
                     {
-                      backgroundColor: isSoundActive
-                        ? theme.accentSoft
-                        : theme.card,
-                      borderColor: isSoundActive ? theme.tint : theme.border,
+                      backgroundColor: isActive ? theme.accentSoft : theme.card,
+                      borderColor: isActive ? theme.tint : theme.border,
                     },
                   ]}
                 >
                   <Ionicons
-                    color={isSoundActive ? theme.tint : theme.mutedText}
+                    color={isActive ? theme.tint : theme.mutedText}
                     name={scape.icon as never}
                     size={32}
                   />
                   <Text
                     style={[
                       styles.soundLabel,
-                      { color: isSoundActive ? theme.tint : theme.text },
+                      { color: isActive ? theme.tint : theme.text },
                     ]}
                   >
                     {t(scape.labelKey)}
                   </Text>
-                  {isSoundActive && (
+                  {isActive && (
                     <View
                       darkColor={theme.tint}
                       lightColor={theme.tint}

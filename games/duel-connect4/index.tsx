@@ -23,7 +23,7 @@ import {
   TurnBanner,
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
-import { useColorScheme } from "@/components/useColorScheme";
+import { baseScheme, useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { TextStyle } from "@/constants/Typography";
@@ -53,11 +53,11 @@ const DIRECTIONS = [
 ] as const;
 
 function createBoard(): Board {
-  return Array.from({ length: ROWS }, () => new Array(COLS).fill(-1) as Cell[]);
+  return Array.from({ length: ROWS }, () => Array(COLS).fill(-1) as Cell[]);
 }
 
 function dropPiece(board: Board, col: number, player: Player): Board | null {
-  for (let r = ROWS - 1; r >= 0; r -= 1) {
+  for (let r = ROWS - 1; r >= 0; r--) {
     if (board[r][col] === -1) {
       const next = board.map((row) => [...row]) as Board;
       next[r][col] = player;
@@ -74,15 +74,15 @@ function evaluate(board: Board): {
 } {
   const winCells = new Set<string>();
   let winner: RoundWinner = null;
-  for (let r = 0; r < ROWS; r += 1) {
-    for (let c = 0; c < COLS; c += 1) {
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
       const p = board[r][c];
       if (p === -1) {
         continue;
       }
       for (const [dr, dc] of DIRECTIONS) {
         const line: string[] = [`${r},${c}`];
-        for (let i = 1; i < 4; i += 1) {
+        for (let i = 1; i < 4; i++) {
           const nr = r + dr * i;
           const nc = c + dc * i;
           if (nr < 0 || nr >= ROWS || nc < 0 || nc >= COLS) {
@@ -224,13 +224,9 @@ export default function DuelConnect4Game() {
     haptic.tap();
     setBoard(createBoard());
     // The player who did NOT win the last round starts.
-    let starter: Player = currentPlayer === 0 ? 1 : 0;
-    if (winner === 0) {
-      starter = 1;
-    } else if (winner === 1) {
-      starter = 0;
-    }
-    setCurrentPlayer(starter);
+    setCurrentPlayer(
+      winner === 0 ? 1 : winner === 1 ? 0 : currentPlayer === 0 ? 1 : 0
+    );
   };
 
   if (phase === "setup") {
@@ -254,14 +250,14 @@ export default function DuelConnect4Game() {
   }
 
   const current = players[currentPlayer];
-  let statusLabel: string | undefined;
-  if (winner === "draw") {
-    statusLabel = t("mpRoundDraw");
-  } else if (winner !== null) {
-    statusLabel = t("mpWinsRound", { player: players[winner].name });
-  }
-  const boardBg = colorScheme === "dark" ? "#1a237e" : "#283593";
-  const holeBg = colorScheme === "dark" ? "#0d1236" : "#e8eaf6";
+  const statusLabel =
+    winner === null
+      ? undefined
+      : winner === "draw"
+        ? t("mpRoundDraw")
+        : t("mpWinsRound", { player: players[winner].name });
+  const boardBg = baseScheme(colorScheme) === "dark" ? "#1a237e" : "#283593";
+  const holeBg = baseScheme(colorScheme) === "dark" ? "#0d1236" : "#e8eaf6";
 
   return (
     <View style={styles.root}>

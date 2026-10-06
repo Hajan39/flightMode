@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -11,6 +11,7 @@ import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
 import { destinations } from "@/data/destinations";
 import { getPhraseLanguage } from "@/data/phrases";
+import { useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export default function DestinationsScreen() {
@@ -24,6 +25,11 @@ export default function DestinationsScreen() {
       ? focus
       : (destinations[0]?.id ?? null);
   const [expandedId, setExpandedId] = useState<string | null>(focusedId);
+  const articles = useContentItems();
+  const guideIds = useMemo(
+    () => new Set(articles.map((a) => a.id)),
+    [articles]
+  );
 
   const toggle = (id: string) => {
     setExpandedId((current) => (current === id ? null : id));
@@ -131,6 +137,36 @@ export default function DestinationsScreen() {
                       </View>
                     </View>
                   ))}
+                  {guideIds.has(`destination-${destination.id}`) ? (
+                    <Pressable
+                      accessibilityRole="button"
+                      onPress={() =>
+                        router.push(
+                          `/content/destination-${destination.id}` as never
+                        )
+                      }
+                      style={[
+                        styles.toolBtn,
+                        styles.guideBtn,
+                        {
+                          backgroundColor: theme.accentSoft,
+                          borderColor: theme.tint,
+                        },
+                      ]}
+                    >
+                      <Ionicons
+                        color={theme.tint}
+                        name="book-outline"
+                        size={16}
+                      />
+                      <Text
+                        numberOfLines={1}
+                        style={[styles.toolText, { color: theme.text }]}
+                      >
+                        {t("destinationsGuideCta", { city: destination.city })}
+                      </Text>
+                    </Pressable>
+                  ) : null}
                   <View
                     crazyColor="transparent"
                     darkColor="transparent"
@@ -261,6 +297,7 @@ const styles = StyleSheet.create({
     fontSize: FontSize.md,
     fontWeight: FontWeight.semibold,
   },
+  guideBtn: { flex: 0, marginTop: Spacing.md },
   headerText: { flex: 1 },
   safe: { flex: 1 },
   scroll: { flex: 1 },

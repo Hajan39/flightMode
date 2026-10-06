@@ -4,13 +4,13 @@
  */
 import { Text as DefaultText, View as DefaultView } from "react-native";
 import Colors from "@/constants/Colors";
-import { useColorScheme } from "./useColorScheme";
+import { baseScheme, useColorScheme } from "./useColorScheme";
 
-interface ThemeProps {
-  crazyColor?: string;
-  darkColor?: string;
+type ThemeProps = {
   lightColor?: string;
-}
+  darkColor?: string;
+  crazyColor?: string;
+};
 
 export type TextProps = ThemeProps & DefaultText["props"];
 export type ViewProps = ThemeProps & DefaultView["props"];
@@ -22,7 +22,7 @@ export function useThemeColor(
     keyof typeof Colors.crazy
 ) {
   const theme = useColorScheme();
-  const colorFromProps = props[theme];
+  const colorFromProps = props[baseScheme(theme)];
 
   if (colorFromProps) {
     return colorFromProps;

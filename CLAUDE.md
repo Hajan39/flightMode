@@ -27,7 +27,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **Stack:** Expo 57 · React Native 0.86 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · expo-sensors · PostHog
 
-**App version:** 1.4.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
+**App version:** 1.5.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, `app/preflight.tsx` (offline-readiness), `app/checklist.tsx` (travel checklist) and `app/converter.tsx` (currency/units) are modal stack screens; `app/destinations.tsx` (destination tips) and `app/phrasebook.tsx` are pushed card screens. Onboarding flow at `app/onboarding.tsx`.
 
@@ -44,7 +44,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 **State:** Zustand stores with AsyncStorage persist. Never introduce a new global state layer.
 - `store/useGameStore.ts` — game progress (`lastScore`, `currentStreak`, `bestStreak`, `levelStars?`), migration version **3**
 - `store/useSettingsStore.ts` — theme, language, sync policy
-- `store/useFlightStore.ts` — manual flight duration; exports `getElapsedMinutes()`, `getRemainingMinutes()`, `getFlightProgress()`
+- `store/useFlightStore.ts` — manual flight duration + `log` (Flight Passport: every saved flight, upserted by id, no flight number; persist version **1**); passport totals/stamps via `utils/passport.ts`, shown by `components/PassportSection.tsx` in Profile; exports `getElapsedMinutes()`, `getRemainingMinutes()`, `getFlightProgress()`
 - `store/useAchievementStore.ts` — unlock history, session counters (flights, relax, articles, sounds, streak)
 - `store/useAudioStore.ts` — ambient audio player, sleep timer; **not persisted** (has `any` typing debt)
 - `store/useNetworkStore.ts` — online/offline + network type; **not persisted**
@@ -54,14 +54,15 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `store/useChecklistStore.ts` — travel checklist ticks per flight + custom items (persisted)
 - `store/usePlayersStore.ts` — multiplayer seat names + last player count (persisted)
 - `store/useRatesStore.ts` — live exchange rates + `ratesAsOf`/`lastSyncAt` (persisted; status not persisted)
-- `store/useSettingsStore.ts` also holds `homeCurrency` (converter default, set in onboarding/settings)
+- `store/useSupporterStore.ts` — FlightMode Plus entitlement (`plus`) + tip count (persisted, cached offline)
+- `store/useSettingsStore.ts` also holds `lastReviewPromptAt` (in-app review gate) and `homeCurrency` (converter default, set in onboarding/settings)
 
 **Styling:** React Native `StyleSheet` + inline styles. Design tokens:
 - `constants/Colors.ts` — theme palettes: `light`, `dark`, `crazy` (text, background, tint, card, surface, elevated, border, mutedText, etc.)
 - `constants/Spacing.ts` — `Spacing` (xs–4xl) and `Radius` and `Shadow` presets
 - `constants/Typography.ts` — `FontSize`, `FontWeight`, `TextStyle` presets (statLabel, cardTitle, buttonPrimary, etc.)
 
-Four theme modes: `system / light / dark / crazy`. No NativeWind.
+Theme modes: `system / light / dark / crazy` (free) + `midnight / sunset` (Plus). No NativeWind.
 
 **Localization:** `hooks/useTranslation.ts` → `i18n/locales/*.ts`. 12 languages (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`). Language preference order: stored > system > en. Content (`data/content.json`): all 44 articles in `en/cs/de`, the 14 Travel Tips + Health ones also in `es/fr/it/pl/pt`; other languages render articles in English with an `EN` badge (`hasLanguage()` in `hooks/useContentItems.ts`). Destination tip labels are localized via `labelKey`; tip text stays English.
 
@@ -109,7 +110,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `higher-lower` | reflex | easy | Predict numbers |
 | `odd-one-out` | brain | easy | Find the odd emoji; daily challenge |
 | `word-guess` | brain | medium | Wordle-style; daily challenge |
-| `sudoku` | brain | hard | 9×9 logic puzzle; 15 hardcoded puzzles |
+| `sudoku` | brain | hard | 9×9 logic puzzle; 15 verified bank puzzles, each served as a random symmetry variant (`transformPuzzle`) |
 | `snake` | reflex | medium | Classic snake; D-pad controls |
 | `cabin-lights` | brain | medium | Lights Out puzzle; 5 rounds 3×3→5×5 |
 | `sliding-puzzle` | brain | medium | Classic 15-puzzle (4×4 sliding tiles) |
@@ -150,15 +151,21 @@ Multiplayer (pass-and-play / shared-screen) components in `components/multiplaye
 
 44 bundled articles in `data/content.json` (all in en/cs/de; the 14 Travel Tips + Health ones also in es/fr/it/pl/pt). Served through `hooks/useContentItems.ts` which merges bundled data with optional remote sync cache (`store/useContentStore.ts`).
 
-Remote endpoint is optional via `EXPO_PUBLIC_STRAPI_CONTENT_URL` or `EXPO_PUBLIC_CONTENT_SYNC_URL`; app is fully offline without it. Sync respects `syncNetworkPolicy` (wifi_only / wifi_and_mobile / off) and has a 30-minute cooldown between syncs.
+Remote articles come from **`content/feed.json`** (`{ version, items: ContentItem[] }`) fetched from raw.githubusercontent.com on `main` (override via `EXPO_PUBLIC_CONTENT_FEED_URL`). Publishing = commit to that file and bump `version`; `release-main.yml` ignores `content/**`, and `__tests__/content.test.ts` validates the feed in CI. App is fully offline without it. Sync respects `syncNetworkPolicy` (wifi_only / wifi_and_mobile / off) and has a 30-minute cooldown between syncs.
 
-`utils/contentSync.ts` handles fetch + normalization of both Strapi and generic JSON schemas.
+`utils/contentSync.ts` fetches and validates the feed (`parseContentFeed`); invalid items are dropped, remote items override bundled ones by id. Destination articles use the id `destination-<destinationId>` and are linked from the destination card.
 
 ## Achievements
 
 Defined in `data/achievements.ts` (49 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
 
 `useAchievementStore` tracks: `unlockedIds`, `newUnlockedIds` (cleared by `AchievementToast`), `totalFlights`, `totalRelaxSessions`, `articlesRead`, `soundsPlayed`, `lastActiveDate`, `streakDays`.
+
+## Monetization (Plus + tips)
+
+Google Play Billing via `expo-iap`, wrapped in `utils/billing.ts` (guarded: no-op without the native module). Products (Play Console one-time products): `flightmode_plus` (non-consumable, acknowledged), `tip_small` / `tip_medium` / `tip_large` (consumed). UI: `app/plus.tsx`. Plus perks today: themes `midnight` + `sunset` (`PLUS_THEMES` in `components/useColorScheme.ts`; they fall back to the system scheme without Plus, and per-scheme `Themed` overrides resolve via `baseScheme()` → `dark`) and a profile badge. **Rule: never gate anything that is free today** — Plus only adds new extras. No receipt server: entitlement is trusted client-side (`ponytail:` note in `utils/billing.ts`).
+
+In-app review: `utils/reviewPrompt.ts`, fired from `GameResult` on a new best.
 
 ## Analytics
 
@@ -246,7 +253,7 @@ Goal: user opens app *before* the flight.
 Goal: automatic behavior — "I'm flying → I open FlightMode"
 - Streaks, daily challenges
 - Better personalization
-- Content updates via Strapi
+- Content updates via the `content/feed.json` feed
 
 **Phase 4 — Monetization**
 Only after retention is proven.

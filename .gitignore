@@ -46,3 +46,7 @@ yarn-error.*
 
 # stray tsc output
 tsc-errors.txt
+
+# Local artifacts: PGS achievements import, screenshots/videos, native module builds
+/build/
+modules/*/android/build/

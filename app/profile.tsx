@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import PassportSection from "@/components/PassportSection";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -13,6 +14,7 @@ import { useProfileStats } from "@/hooks/useProfileStats";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
+import { useSupporterStore } from "@/store/useSupporterStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 export default function ProfileScreen() {
@@ -22,6 +24,7 @@ export default function ProfileScreen() {
   const stats = useProfileStats();
   const unlockedIds = useAchievementStore((s) => s.unlockedIds);
   const clearNewUnlocked = useAchievementStore((s) => s.clearNewUnlocked);
+  const plus = useSupporterStore((s) => s.plus);
 
   useEffect(() => {
     clearNewUnlocked();
@@ -46,6 +49,19 @@ export default function ProfileScreen() {
       >
         {/* ── Stats Cards ── */}
         <Animated.View entering={FadeInDown.duration(400).springify()}>
+          {plus ? (
+            <View
+              style={[
+                styles.plusBadge,
+                { backgroundColor: theme.accentSoft, borderColor: theme.tint },
+              ]}
+            >
+              <Ionicons color={theme.tint} name="ribbon" size={16} />
+              <Text style={[styles.plusBadgeText, { color: theme.text }]}>
+                {t("profilePlusBadge")}
+              </Text>
+            </View>
+          ) : null}
           <Text style={[styles.sectionTitle, { color: theme.text }]}>
             {t("profileStats")}
           </Text>
@@ -90,6 +106,10 @@ export default function ProfileScreen() {
               value={stats.totalRelaxSessions}
             />
           </View>
+        </Animated.View>
+
+        <Animated.View entering={FadeInDown.delay(100).springify()}>
+          <PassportSection />
         </Animated.View>
 
         {/* ── Achievements Grid ── */}
@@ -155,7 +175,7 @@ export default function ProfileScreen() {
         )}
 
         {/* ── Favorite Game ── */}
-        {stats.favoriteGameId ? (
+        {stats.favoriteGameId && (
           <View
             style={[
               styles.favoriteCard,
@@ -168,7 +188,7 @@ export default function ProfileScreen() {
               {t(getGameById(stats.favoriteGameId)?.titleKey ?? "stackGame")}
             </Text>
           </View>
-        ) : null}
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -278,6 +298,18 @@ const styles = StyleSheet.create({
     padding: 14,
   },
   favoriteText: { fontSize: 14, fontWeight: "600" },
+  plusBadge: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    borderRadius: 999,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 6,
+    marginTop: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  plusBadgeText: { fontSize: 13, fontWeight: "700" },
   rank: { fontSize: 16, fontWeight: "700", width: 32 },
   safeArea: { flex: 1 },
   scoreName: { flex: 1, fontSize: 14, fontWeight: "600" },

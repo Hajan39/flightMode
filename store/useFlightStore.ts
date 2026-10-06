@@ -1,24 +1,41 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import type { Flight } from "@/types/flight";
+import type { Flight, LoggedFlight } from "@/types/flight";
+import { upsertLoggedFlight } from "@/utils/passport";
 
-interface FlightState {
-  clearFlight: () => void;
+type FlightState = {
   flight: Flight | null;
+  /** Flight Passport: every flight ever saved, survives clearFlight(). */
+  log: LoggedFlight[];
   setFlight: (flight: Flight) => void;
-}
+  clearFlight: () => void;
+};
 
 export const useFlightStore = create<FlightState>()(
   persist(
     (set) => ({
       clearFlight: () => set({ flight: null }),
       flight: null,
-      setFlight: (flight) => set({ flight }),
+      log: [],
+      setFlight: (flight) =>
+        set((s) => ({ flight, log: upsertLoggedFlight(s.log, flight) })),
     }),
     {
+      // v0 → v1: seed the passport with the flight that is already saved.
+      migrate: (persisted, version) => {
+        const state = persisted as Partial<FlightState>;
+        if (version < 1) {
+          return {
+            ...state,
+            log: state.flight ? upsertLoggedFlight([], state.flight) : [],
+          } as FlightState;
+        }
+        return state as FlightState;
+      },
       name: "flight",
       storage: createJSONStorage(() => AsyncStorage),
+      version: 1,
     }
   )
 );

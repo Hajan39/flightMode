@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    # Articles in content/feed.json are served live from the repo — no release needed.
+    paths-ignore:
+      - 'content/**'
   workflow_dispatch:
 
 concurrency:

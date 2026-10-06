@@ -6,7 +6,7 @@ import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
-import { useColorScheme } from "@/components/useColorScheme";
+import { baseScheme, useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -24,10 +24,7 @@ const ROWS = 14;
 const BOARD_W = COLS * CELL;
 const BOARD_H = ROWS * CELL;
 
-interface Pt {
-  x: number;
-  y: number;
-}
+type Pt = { x: number; y: number };
 
 /** Path waypoints in grid coords (col, row) — enemies walk along these */
 const PATH_GRID: Pt[] = [
@@ -54,15 +51,11 @@ const g2p = (g: Pt): Pt => ({
 
 /** Path as pixel coords */
 const PATH_PX = PATH_GRID.map(g2p);
-// The path is a non-empty literal; fall back to the origin only to satisfy
-// the type system — it can never actually be hit.
-const PATH_GRID_END: Pt = PATH_GRID.at(-1) ?? { x: 0, y: 0 };
-const PATH_PX_END: Pt = PATH_PX.at(-1) ?? { x: 0, y: 0 };
 
 /** All grid cells that are on the path (for blocking tower placement) */
 function getPathCells(): Set<string> {
   const set = new Set<string>();
-  for (let i = 0; i < PATH_GRID.length - 1; i += 1) {
+  for (let i = 0; i < PATH_GRID.length - 1; i++) {
     const a = PATH_GRID[i];
     const b = PATH_GRID[i + 1];
     const dx = Math.sign(b.x - a.x);
@@ -75,7 +68,9 @@ function getPathCells(): Set<string> {
       cy += dy;
     }
   }
-  set.add(`${PATH_GRID_END.x},${PATH_GRID_END.y}`);
+  set.add(
+    `${PATH_GRID[PATH_GRID.length - 1].x},${PATH_GRID[PATH_GRID.length - 1].y}`
+  );
   return set;
 }
 const PATH_CELLS = getPathCells();
@@ -355,7 +350,7 @@ interface Bullet {
 /** Total path length in px */
 function totalPathLen(): number {
   let len = 0;
-  for (let i = 1; i < PATH_PX.length; i += 1) {
+  for (let i = 1; i < PATH_PX.length; i++) {
     const dx = PATH_PX[i].x - PATH_PX[i - 1].x;
     const dy = PATH_PX[i].y - PATH_PX[i - 1].y;
     len += Math.sqrt(dx * dx + dy * dy);
@@ -365,9 +360,9 @@ function totalPathLen(): number {
 const TOTAL_PATH_LEN = totalPathLen();
 
 /** Position on path given distance traveled */
-function posOnPath(distance: number): Pt {
-  let rem = distance;
-  for (let i = 1; i < PATH_PX.length; i += 1) {
+function posOnPath(dist: number): Pt {
+  let rem = dist;
+  for (let i = 1; i < PATH_PX.length; i++) {
     const dx = PATH_PX[i].x - PATH_PX[i - 1].x;
     const dy = PATH_PX[i].y - PATH_PX[i - 1].y;
     const segLen = Math.sqrt(dx * dx + dy * dy);
@@ -377,7 +372,7 @@ function posOnPath(distance: number): Pt {
     }
     rem -= segLen;
   }
-  return PATH_PX_END;
+  return PATH_PX[PATH_PX.length - 1];
 }
 
 function dist(a: Pt, b: Pt): number {
@@ -397,7 +392,7 @@ function buildPathSegments(): {
   y2: number;
 }[] {
   const segs: { x1: number; y1: number; x2: number; y2: number }[] = [];
-  for (let i = 1; i < PATH_PX.length; i += 1) {
+  for (let i = 1; i < PATH_PX.length; i++) {
     segs.push({
       x1: PATH_PX[i - 1].x,
       x2: PATH_PX[i].x,
@@ -479,12 +474,7 @@ function HpBar({
   size: number;
 }) {
   const pct = Math.max(0, hp / maxHp);
-  let barColor = "#ef5350";
-  if (pct > 0.5) {
-    barColor = "#66bb6a";
-  } else if (pct > 0.25) {
-    barColor = "#ffa726";
-  }
+  const barColor = pct > 0.5 ? "#66bb6a" : pct > 0.25 ? "#ffa726" : "#ef5350";
   return (
     <RNView
       style={{
@@ -540,8 +530,8 @@ function TowerSprite({ tower }: { tower: Tower }) {
       entering={ZoomIn.duration(200)}
       style={{
         alignItems: "center",
-        backgroundColor: `${def.color}30`,
-        borderColor: `${def.color}80`,
+        backgroundColor: def.color + "30",
+        borderColor: def.color + "80",
         borderRadius: 8,
         borderWidth: 1.5,
         height: CELL - 4,
@@ -595,8 +585,8 @@ function RangeRing({
   return (
     <RNView
       style={{
-        backgroundColor: `${color}10`,
-        borderColor: `${color}50`,
+        backgroundColor: color + "10",
+        borderColor: color + "50",
         borderRadius: range,
         borderWidth: 1,
         height: range * 2,
@@ -618,9 +608,9 @@ export default function SkyDefenseGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const updateProgress = useGameStore((state) => state.updateProgress);
+  const updateProgress = useGameStore((s) => s.updateProgress);
   const storedBest = useGameStore(
-    (state) => state.progress["sky-defense"]?.highScore ?? 0
+    (s) => s.progress["sky-defense"]?.highScore ?? 0
   );
 
   const towerLabel = (key: TowerKind) => {
@@ -633,9 +623,6 @@ export default function SkyDefenseGame() {
         return t("skyDefenseTowerWind");
       case "bolt":
         return t("skyDefenseTowerBolt");
-      default:
-        // Exhaustive over TowerKind — unreachable.
-        return key satisfies never;
     }
   };
 
@@ -649,9 +636,6 @@ export default function SkyDefenseGame() {
         return t("skyDefenseDifficultyHard");
       case "insane":
         return t("skyDefenseDifficultyInsane");
-      default:
-        // Exhaustive over Difficulty — unreachable.
-        return key satisfies never;
     }
   };
 
@@ -705,7 +689,7 @@ export default function SkyDefenseGame() {
   // effect cleanup clears it after the phase state flushes, so a tick landing
   // in that window would re-detect the terminal condition and fire
   // updateProgress twice.
-  const endedRef = useRef<boolean>(false);
+  const endedRef = useRef(false);
   const isGamePaused = paused || showRestartConfirm;
 
   // Board origin in window coordinates. Tower placement is derived from the
@@ -751,11 +735,11 @@ export default function SkyDefenseGame() {
     const diff = preset ?? difficulty;
     const wave = wavesRef.current[wi];
     const queue: { kind: EnemyKind; tickAt: number }[] = [];
-    let spawnTick = 10;
+    let t = 10;
     for (const entry of wave) {
-      for (let i = 0; i < entry.count; i += 1) {
-        queue.push({ kind: entry.kind, tickAt: spawnTick });
-        spawnTick += Math.max(4, Math.round(entry.interval * diff.spawnMul));
+      for (let i = 0; i < entry.count; i++) {
+        queue.push({ kind: entry.kind, tickAt: t });
+        t += Math.max(4, Math.round(entry.interval * diff.spawnMul));
       }
     }
     spawnQueue.current = queue;
@@ -773,24 +757,21 @@ export default function SkyDefenseGame() {
       if (endedRef.current) {
         return;
       }
-      tick.current += 1;
-      const curTick = tick.current;
+      tick.current++;
+      const t = tick.current;
 
       /* -- spawn -- */
-      const toSpawn = spawnQueue.current.filter(
-        (entry) => entry.tickAt === curTick
-      );
+      const toSpawn = spawnQueue.current.filter((s) => s.tickAt === t);
       let newEnemies = [...enemiesRef.current];
 
       for (const sp of toSpawn) {
         const def = ENEMY_DEFS[sp.kind];
         const hp = Math.round(def.hp * difficulty.hpMul);
-        nextId.current += 1;
         newEnemies.push({
           dist: 0,
           emoji: def.emoji,
           hp,
-          id: nextId.current,
+          id: nextId.current++,
           kind: sp.kind,
           maxHp: hp,
           reward: Math.round(def.reward * difficulty.rewardMul),
@@ -805,7 +786,7 @@ export default function SkyDefenseGame() {
         .map((e) => ({ ...e, dist: e.dist + e.speed }))
         .filter((e) => {
           if (e.dist >= TOTAL_PATH_LEN) {
-            leaked += 1;
+            leaked++;
             return false;
           }
           return true;
@@ -846,12 +827,11 @@ export default function SkyDefenseGame() {
         if (best) {
           tw.cooldown = def.fireRate;
           const ePos = posOnPath(best.dist);
-          nextId.current += 1;
           newBullets.push({
             color: def.color,
             damage: def.damage,
             enemyId: best.id,
-            id: nextId.current,
+            id: nextId.current++,
             speed: 4,
             tx: ePos.x,
             ty: ePos.y,
@@ -924,9 +904,7 @@ export default function SkyDefenseGame() {
         return;
       }
       // wave done?
-      const allSpawned = spawnQueue.current.every(
-        (entry) => entry.tickAt <= curTick
-      );
+      const allSpawned = spawnQueue.current.every((s) => s.tickAt <= t);
       if (allSpawned && newEnemies.length === 0) {
         if (waveIdx >= wavesRef.current.length - 1) {
           endedRef.current = true;
@@ -976,11 +954,10 @@ export default function SkyDefenseGame() {
       return;
     }
 
-    nextId.current += 1;
     const newTower: Tower = {
       col,
       cooldown: 0,
-      id: nextId.current,
+      id: nextId.current++,
       kind: selectedTower,
       row,
     };
@@ -1205,7 +1182,7 @@ export default function SkyDefenseGame() {
         <Pressable
           accessibilityLabel={gameSpeed === 1 ? "Set 2x speed" : "Set 1x speed"}
           accessibilityRole="button"
-          onPress={() => setGameSpeed((speed) => (speed === 1 ? 2 : 1))}
+          onPress={() => setGameSpeed((s) => (s === 1 ? 2 : 1))}
           style={[
             s.hudBtn,
             { borderColor: gameSpeed === 2 ? theme.tint : theme.border },
@@ -1244,7 +1221,7 @@ export default function SkyDefenseGame() {
                 s.paletteBtn,
                 {
                   backgroundColor: selected
-                    ? `${d.color}25`
+                    ? d.color + "25"
                     : "rgba(255,255,255,0.04)",
                   borderColor: selected ? d.color : "rgba(255,255,255,0.15)",
                   opacity: affordable ? 1 : 0.4,
@@ -1270,7 +1247,8 @@ export default function SkyDefenseGame() {
           style={[
             s.board,
             {
-              backgroundColor: colorScheme === "dark" ? "#0a1520" : "#e6eef4",
+              backgroundColor:
+                baseScheme(colorScheme) === "dark" ? "#0a1520" : "#e6eef4",
               height: BOARD_H,
               width: BOARD_W,
             },
@@ -1334,9 +1312,9 @@ export default function SkyDefenseGame() {
               borderWidth: 1,
               height: 24,
               justifyContent: "center",
-              left: PATH_PX_END.x - 12,
+              left: PATH_PX[PATH_PX.length - 1].x - 12,
               position: "absolute",
-              top: PATH_PX_END.y - 12,
+              top: PATH_PX[PATH_PX.length - 1].y - 12,
               width: 24,
             }}
           >
@@ -1344,7 +1322,7 @@ export default function SkyDefenseGame() {
           </RNView>
 
           {/* range ring for selected placed tower */}
-          {selectedPlaced !== null &&
+          {selectedPlaced != null &&
             towers
               .filter((tw) => tw.id === selectedPlaced)
               .map((tw) => (
@@ -1358,14 +1336,14 @@ export default function SkyDefenseGame() {
               ))}
 
           {/* range ring preview for new placement */}
-          {selectedTower && placeCursor ? (
+          {selectedTower && placeCursor && (
             <RangeRing
               col={placeCursor.col}
               color={tdByKey[selectedTower].color}
               range={tdByKey[selectedTower].range}
               row={placeCursor.row}
             />
-          ) : null}
+          )}
 
           {/* towers */}
           {towers.map((tw) => (
@@ -1418,7 +1396,7 @@ export default function SkyDefenseGame() {
         visible={paused}
       />
 
-      {showRestartConfirm ? (
+      {showRestartConfirm && (
         <RNView style={s.confirmBackdrop}>
           <RNView
             style={[
@@ -1459,7 +1437,7 @@ export default function SkyDefenseGame() {
             </RNView>
           </RNView>
         </RNView>
-      ) : null}
+      )}
     </View>
   );
 }

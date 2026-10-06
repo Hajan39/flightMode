@@ -7,14 +7,19 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
-### Fixed
-
-- **App froze on Wi-Fi (100 % JS CPU, ~1 GB RAM)**: article-image sync restarted after every downloaded image and revived cancelled loops, retrying failed images forever. Exchange-rate sync also retried in a tight loop after a failed request; it now backs off for 5 minutes.
-
 ### Added
 
 - **Strict linting via Ultracite (Biome)** — `biome.jsonc` extends the strict core + react + jest presets; `npm run check` / `npm run fix`; CI now runs `biome ci` (errors fail the build). The whole codebase was brought to zero lint errors (~4,900 findings resolved: auto-fixes plus manual refactors — nested ternaries, variable shadowing, leaked JSX renders, hoisted regexes, explicit increments). Deliberate deviations are documented inline in `biome.jsonc`; pre-existing debt (hook deps, index keys, complexity hotspots) is tracked as warnings instead of being hidden.
+- **App version 1.4.0 → 1.5.0** — `expo-iap` and `expo-store-review` are new native modules; `runtimeVersion` follows the app version, so 1.5.0 OTAs never reach a 1.4.0 binary without them.
 
+- **Soundscapes keep playing with the screen off** — Relax sounds now run in the background with a lock-screen media notification (`setAudioModeAsync({ shouldPlayInBackground })` + `setActiveForLockScreen`), so rain / white noise and the sleep timer work while you sleep on the plane. Uses the media-playback foreground service expo-audio already declares.
+- **FlightMode Plus + tip jar (Google Play Billing, `expo-iap`)** — new `app/plus.tsx` (Settings → "FlightMode Plus & tips") replaces the external Buy Me a Coffee link. Plus is a one-time purchase (`flightmode_plus`) that unlocks two new themes (Midnight true-black, Sunset) and a profile badge; three consumable tips (`tip_small`/`tip_medium`/`tip_large`) unlock nothing. Nothing that was free becomes paid. Entitlement is cached in `store/useSupporterStore.ts` (works offline) and restored on launch via `components/BillingBootstrap.tsx`; every billing call is a guarded no-op in Expo Go / web. **Native change → build lane.**
+- **In-app review prompt** (`expo-store-review`) — after a new best score, for users with 3+ app opens, at most once per 60 days (`utils/reviewPrompt.ts`). **Native change → build lane.**
+- **Sudoku never repeats** — every game is a fresh variant of one of the 15 verified puzzles (digit relabelling, row/column/band/stack permutation, transpose). Validity, the unique solution and the difficulty are preserved by construction, so there's no solver and no new puzzle data.
+- **Flight Passport** (Profile) — a stamp for every departed flight (destination emoji, city, date, duration) plus lifetime totals: flights, hours in the air, cities, countries. "Share my passport" sends a short text summary with the Play Store link. Flights are now kept in `useFlightStore.log` after the active flight is cleared (persist v1 seeds it with the currently saved flight); the flight number is never stored there.
+- **Live article feed (free, no backend)** — articles now sync from `content/feed.json` served straight from the public GitHub repo (raw.githubusercontent.com). Publishing a guide is a commit to that file; content-only pushes skip the release workflow. Remote items override bundled ones by id and invalid items are dropped; offline the bundled 44 articles remain. Feed ships **365 city guides** (en/cs/de, ~2.5 MB) — every bundled destination plus capitals and a second city across Europe, Africa, the Americas and Caribbean, Asia and Oceania. Replaces the never-configured Sanity client.
+- Synced articles are now persisted in a file (`utils/fileStorage.ts`) instead of AsyncStorage, which on Android cannot read values over ~2 MB; existing caches migrate on first launch.
+- **City guide button** — a destination card links to its article (`destination-<id>`) when one exists, bundled or synced.
 - **Turbulence Test** (catalog 40 → 41) — the app's first motion game: hold the phone flat and keep a ball inside a ring that shrinks while random turbulence gusts push it around. Solo high score or pass-and-play for up to 6. Adds `expo-sensors` (iOS motion permission declared via the config plugin) and degrades to an explanatory screen where no accelerometer exists. New achievement: Steady Hands.
 - **Post-landing mode** — for 48 h after arrival Home leads with a "You've landed in {city}" card (destination local time, one-tap phrasebook / converter / arrival tips) followed by the checklist and travel tools; games move below. Driven by `utils/flightPhase.ts` (`none | preflight | inflight | landed`).
 - **Jet-lag sleep reminder** — a local notification 10 minutes before the suggested on-plane sleep window, scheduled when the flight is saved and cancelled when it's cleared.
@@ -44,6 +49,17 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- **OTA publish script crashed on start** (`scripts/eas-update-from-changelog`): it mixed `require()` with `import.meta.dirname`, so Node parsed it as ESM and failed on line 1, breaking the release OTA lane. Converted to ESM (`.mjs`).
+- **App froze on Wi-Fi (100 % JS CPU, ~1 GB RAM)**: `ImageSyncBootstrap` re-ran after every downloaded article image and shared one cancel flag across runs, so download loops piled up and failed images were retried forever. Now one loop per change, the cache is read imperatively and failed URLs wait for the next launch.
+- Content and rates sync retried in a tight loop after a failed request (the bootstrap re-runs on every status change); a failure now backs off for 5 minutes.
+- **Articles showed raw markdown** (`**Heading**`, `- **Name** —`): the article screen now renders headings, bullets and inline bold, and keeps the last paragraph above the navigation bar.
+- Onboarding: on Android the dots and the Next/Get started button lagged one page behind (late `onMomentumScrollEnd` for programmatic scroll).
+- Currency chips (onboarding, settings, converter) always show the selected currency first instead of off-screen.
+- **Sudoku grid broke on some screen widths** (the 9th column wrapped because the outer border was not counted in the width) and had no right/bottom outer border; the hint button showed a raw `{{count}}` placeholder.
+- Flight screen: the Start button no longer sits under the navigation bar; the title says "Add flight" for a new flight. Passport stamps are no longer clipped.
+- Czech copy: unified informal address in onboarding, Passport, Plus and a few game strings.
+
+- Settings: bug-report / feature-suggestion mails went to the template placeholder `support@eon-app.com`; they now go to `flightmode.app@proton.me` (also the privacy-policy contact).
 - Android: blocked the unused `ACTIVITY_RECOGNITION` permission that `expo-sensors` merges into the manifest for its Pedometer API. FlightMode only reads the accelerometer (Turbulence Test), which needs no permission — so the entry is stripped via `blockedPermissions`, and no Play Console permission declaration is needed.
 - Day streak used the UTC date — now uses the device's local calendar day (travellers no longer lose a streak at UTC midnight).
 - "Screen not found" page and the flight-ready notification were hardcoded English — now translated.

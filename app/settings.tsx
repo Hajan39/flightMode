@@ -1,8 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
+import { useRouter } from "expo-router";
 import { type ReactNode, useEffect, useRef } from "react";
 import {
-  AppState,
   Linking,
   Pressable,
   ScrollView,
@@ -26,11 +26,7 @@ import {
 } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
-// TODO: placeholder from a template — replace with the real FlightMode support
-// address before release. Bug-report / feature-suggestion mails currently route
-// to an unowned domain.
-const SUPPORT_EMAIL = "support@eon-app.com";
-const BMAC_URL = "https://buymeacoffee.com/dszwy4b";
+const SUPPORT_EMAIL = "flightmode.app@proton.me";
 const appVersion = Constants.expoConfig?.version ?? "1.0.0";
 
 const syncOptions: Array<{
@@ -76,8 +72,7 @@ export default function SettingsScreen() {
   const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
   const setAnalyticsEnabled = useSettingsStore((s) => s.setAnalyticsEnabled);
   const hasTrackedOpenRef = useRef(false);
-  const supportClickTimestampRef = useRef<number | null>(null);
-  const appStateRef = useRef(AppState.currentState);
+  const router = useRouter();
 
   const handleSyncPolicyChange = (policy: SyncNetworkPolicy) => {
     setSyncNetworkPolicy(policy);
@@ -85,17 +80,10 @@ export default function SettingsScreen() {
   };
 
   const handleSupportOpen = () => {
-    supportClickTimestampRef.current = Date.now();
-    captureAnalyticsEvent("support_clicked", {
-      placement: "settings",
-      provider: "buymeacoffee",
-    });
-    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
-    void Linking.openURL(BMAC_URL);
+    router.push("/plus" as never);
   };
 
   useEffect(() => {
-    // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref flips to true below; this guards StrictMode/effect re-runs
     if (hasTrackedOpenRef.current) {
       return;
     }
@@ -104,38 +92,7 @@ export default function SettingsScreen() {
     captureAnalyticsEvent("settings_open", {
       sync_network_policy: syncNetworkPolicy,
     });
-    captureAnalyticsEvent("support_opened", {
-      placement: "settings",
-      provider: "buymeacoffee",
-    });
   }, [syncNetworkPolicy]);
-
-  useEffect(() => {
-    const subscription = AppState.addEventListener("change", (nextState) => {
-      const previousState = appStateRef.current;
-      appStateRef.current = nextState;
-
-      const supportClickTimestamp = supportClickTimestampRef.current;
-      const returnedToApp =
-        previousState !== "active" &&
-        nextState === "active" &&
-        supportClickTimestamp !== null;
-
-      if (!returnedToApp) {
-        return;
-      }
-
-      captureAnalyticsEvent("support_completed", {
-        completion_signal: "returned_to_app",
-        placement: "settings",
-        provider: "buymeacoffee",
-        seconds_away: Math.round((Date.now() - supportClickTimestamp) / 1000),
-      });
-      supportClickTimestampRef.current = null;
-    });
-
-    return () => subscription.remove();
-  }, []);
 
   return (
     <SafeAreaView
@@ -375,7 +332,11 @@ export default function SettingsScreen() {
                 lightColor="transparent"
                 style={styles.supportRowLeft}
               >
-                <Ionicons color={theme.tint} name="cafe-outline" size={20} />
+                <Ionicons
+                  color={theme.tint}
+                  name="airplane-outline"
+                  size={20}
+                />
                 <Text style={styles.supportRowTitle}>
                   {t("settingsBecomeSupporter")}
                 </Text>
@@ -442,12 +403,12 @@ export default function SettingsScreen() {
   );
 }
 
-interface SettingsSectionProps {
-  children: ReactNode;
+type SettingsSectionProps = {
+  title: string;
   hint?: string;
   theme: (typeof Colors)["dark"];
-  title: string;
-}
+  children: ReactNode;
+};
 
 function SettingsSection({
   title,
@@ -474,12 +435,12 @@ function SettingsSection({
   );
 }
 
-interface SettingControlRowProps {
-  children: ReactNode;
+type SettingControlRowProps = {
   icon: keyof typeof Ionicons.glyphMap;
   label: string;
   theme: (typeof Colors)["dark"];
-}
+  children: ReactNode;
+};
 
 function SettingControlRow({
   icon,

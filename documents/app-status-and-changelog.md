@@ -34,7 +34,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - relax: breathing + ambient audio + sleep timer
 - PostHog SDK foundation pro anonymni produktovou analytiku, pokud je nakonfigurovany `EXPO_PUBLIC_POSTHOG_KEY`
 - Expo Network foundation pro online/offline stav v root bootstrapu
-- article sync foundation: remote JSON/Strapi-compatible endpoint pres env, persisted cache, fallback na bundled `data/content.json`
+- article sync: staticky feed `content/feed.json` z verejneho GitHub repa (zdarma, bez backendu), persisted cache, fallback na bundled `data/content.json`; karta destinace odkazuje na clanek `destination-<id>`
 - zakladni eventy: `app_open`, `onboarding_complete`, `flight_added`, `flight_edited`, `game_start`, `game_finish`, `article_open`, `article_finish`, `relax_start`, `relax_finish`, `audio_play`, `audio_stop`, `settings_open`, `profile_open`, `home_action_open`, `home_recommendation_open`, `content_search_changed`, `content_filter_changed`, `content_sort_changed`, `network_status_changed`, `content_sync_start`, `content_sync_success`, `content_sync_failed`
 - retention eventy: `second_session_started`, `first_session_completed`, `flight_setup_completed`
 - reminder eventy: `reminder_scheduled`, `reminder_permission_denied`, `reminder_opened`
@@ -133,6 +133,20 @@ Aktualne je nejsilnejsi implementovana vrstva:
 ## 2026-10-06
 
 - zavedeny striktni lint: Ultracite (Biome preset, core+react+jest) — `npm run check` / `npm run fix`, `biome ci` v CI (errors blokuji, warnings ne); cela codebase dovedena na 0 lint erroru (~4900 nalezu: autofixy + rucni refaktory — vnorene ternary, shadowing, leaked JSX render, hoisted regexy, explicitni inkrementy); zamerne odchylky dokumentovane primo v `biome.jsonc`; predchozi dluh (hook deps, index keys, komplexita) tracked jako warningy
+
+## 2026-10-05
+
+- FlightMode Plus (jednorazovy nakup) + spropitne pres Google Play Billing (`expo-iap`), obrazovka `app/plus.tsx` nahrazuje externi odkaz Buy Me a Coffee; Plus odemyka temata Midnight/Sunset a odznak v profilu, nic z free verze se nezamyka
+- vyzva k hodnoceni v Google Play po novem rekordu (3+ otevreni, max 1x za 60 dni)
+
+- sudoku: kazda hra je nahodna symetricka varianta jednoho z 15 overenych puzzlu (nekonecno variant, stejna obtiznost)
+
+- Letovy pas v profilu: razitko za kazdy odletany let + soucty (lety, hodiny ve vzduchu, mesta, zeme) a sdileni textoveho souhrnu s odkazem na Play Store; historie letu v `useFlightStore.log`
+
+- clanky se synchronizuji z `content/feed.json` (raw.githubusercontent.com, nula nakladu); Sanity klient (nikdy nenakonfigurovany) odstranen
+- online feed: 365 pruvodcu mesty (en/cs/de) — vsech 44 destinaci + hlavni mesta a druha mesta Evropy, Afriky, Ameriky a Karibiku, Asie a Oceanie; tlacitko "Pruvodce" na karte destinace
+- cache synchronizovanych clanku je v souboru (`utils/fileStorage.ts`), ne v AsyncStorage (Android limit ~2 MB na hodnotu)
+- `release-main.yml` ignoruje `content/**`, publikace clanku nespousti release
 
 ## 2026-09-14
 

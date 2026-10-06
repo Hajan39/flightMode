@@ -9,7 +9,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 - ~~sjednotit 8 multiplayer her na sdilene komponenty + design tokeny~~ — hotovo 2026-09-13 (`components/multiplayer/`, `recordMatch` konvence)
 - ~~fallback clanku na EN pro jazyky bez lokalizace~~ — hotovo 2026-09-13
-- **doplnit realny support e-mail v `app/settings.tsx`** (stale placeholder `support@eon-app.com`)
+- ~~support e-mail~~ — hotovo 2026-10-05: `flightmode.app@proton.me` (settings + privacy policy); stejnou adresu nastavit jako kontakt vyvojare v Play Console
 - **Expo SDK 57**: overit EAS preview build (`--profile preview`) na zarizeni pred rolloutem Play draftu — reanimated 4.5 layout animace, `withPlayGames` plugin, notifikace, audio
 - Travel tools follow-upy: bundlovane kurzy v `data/currencies.ts` jsou jen offline baseline (live sync z open.er-api.com), presto `ratesAsOf` obcas obnovit; `utcOffsetMinutes` fallback ignoruje DST (Intl cesta je DST-aware); zvazit per-destinaci polozky checklistu; pridat `zh` do frazniku (dnes 24 jazyku destinaci, cinstina chybi, protoze zadna bundlovana destinace neni v Cine)
 - Nove MP hry: otestovat `split-duel` otoceny panel na Androidu i iOS (transform 180° + hit-testing) — jedina vec, kterou nelze overit bez zarizeni
@@ -36,6 +36,16 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 - doladit Games discovery podle realneho pouzivani po prvni implementaci intent filtru: quick, play together, longer/deep
 - zkontrolovat, ze analytics payloady neobsahuji flight number, presnou lokaci, email, jmeno ani volny text
 - rozhodnout, jestli PostHog SDK offline persistence staci, nebo jestli pridat vlastni SQLite event queue
+
+- online feed `content/feed.json`: 365 pruvodcu (2026-10-05). Zamerne vynechane kvuli aktualnim cestovnim varovanim: Rusko, Belarus, Ukrajina, Haiti, Venezuela, Libye, Sudan, Jizni Sudan, Somalsko, Mali, Burkina Faso, Niger, Cad, SAR, DR Kongo, Myanmar, Afghanistan, Iran, Irak, Syrie, Jemen, Izrael/Palestina, Libanon — doplnit az se situace zmeni. Pruvodci jsou AI-psani: pred publikaci na main projit nahodny vzorek (fakta se meni).
+- Explore pri stovkach clanku: pridat `region`/`country` do feedu a filtr podle regionu + hledani podle zeme; zvazit preklad pruvodcu do es/fr/it/pl/pt (dnes jen en/cs/de, ostatni jazyky vidi EN badge)
+- F-Droid: zatim ne (viz shrnuti 2026-10-05) — vyzadovalo by FOSS flavor bez Play Services (PGS, Play Billing, FCM v expo-notifications), bez PostHog a expo-updates, OSS licenci repa a build ze zdrojaku na F-Droid serveru; prinos male publikum, monetizace jen pres dary
+
+- **Play Billing — co je treba udelat v Play Console (bez toho nakupy nefunguji):** (1) Nastaveni > Platebni profil: zalozit merchant ucet (zdarma); (2) Monetizace > Produkty > Jednorazove produkty: vytvorit `flightmode_plus` (doporuceno ~3,99 EUR) a `tip_small` / `tip_medium` / `tip_large` (napr. 1,99 / 4,99 / 9,99 EUR), aktivovat; (3) nahrat build s `expo-iap` (build lane) do Internal testing a pridat license testery; (4) overit nakup, obnoveni na druhem zarizeni a opakovane spropitne. Do Data safety doplnit "Purchase history" (zpracovava Google).
+- Plus follow-upy (jen nove veci, nic nezamykat): expertni level packy pro runway-jam / nonogram / sun-moon, dalsi ambientni zvuky, alternativni ikona aplikace
+
+- **Nalezy z kontroly na zarizeni (2026-10-06, Samsung, cs):** nazvy destinaci v cestine anglicky (Tokyo, Paris, New York; "Ted v Tokyo" misto "v Tokiu") — zvazit lokalizovane nazvy mest; pravidla her v cs misi tykani/vykani (opravena jen cast); nazvy her v popisech uspechu anglicky (Runway Landing, Sky Defense, Air Traffic Control); mrizka uspechu v profilu nevyuziva celou sirku; Play Games pri prvnim spusteni hned vyskoci s vyzvou k profilu (zvazit odlozeni az po onboardingu)
+- lokalni release build na Windows: JDK 17 (~.jdksjdk-17), kratka cesta pres `subst X: C:Trask_devHAJAN` (CMake limit 260 znaku), `./gradlew assembleRelease -PreactNativeArchitectures=arm64-v8a`
 
 ### P1 (blizsi iterace)
 

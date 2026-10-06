@@ -33,6 +33,7 @@ import {
   getRow,
   isPeer,
   isSolved,
+  transformPuzzle,
 } from "./logic";
 import { PUZZLES } from "./puzzles";
 
@@ -41,13 +42,6 @@ import { PUZZLES } from "./puzzles";
 // ---------------------------------------------------------------------------
 
 type Difficulty = "easy" | "medium" | "hard";
-
-/** Rough solve-time estimate shown on the difficulty picker. */
-const DIFF_MINUTES: Record<Difficulty, number> = {
-  easy: 10,
-  hard: 30,
-  medium: 20,
-};
 type Phase = "idle" | "selecting" | "playing" | "paused" | "over";
 
 // ---------------------------------------------------------------------------
@@ -114,9 +108,9 @@ export default function SudokuGame() {
   const [phase, setPhase] = useState<Phase>("idle");
   const [selectedDifficulty, setSelectedDifficulty] =
     useState<Difficulty | null>(null);
-  const [board, setBoard] = useState<number[]>(new Array(81).fill(0));
-  const [clues, setClues] = useState<number[]>(new Array(81).fill(0));
-  const [solution, setSolution] = useState<number[]>(new Array(81).fill(0));
+  const [board, setBoard] = useState<number[]>(Array(81).fill(0));
+  const [clues, setClues] = useState<number[]>(Array(81).fill(0));
+  const [solution, setSolution] = useState<number[]>(Array(81).fill(0));
   const [selectedCell, setSelectedCell] = useState<number | null>(null);
   const [errors, setErrors] = useState<Set<number>>(new Set());
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -198,7 +192,9 @@ export default function SudokuGame() {
   const startDifficulty = useCallback(
     (difficulty: Difficulty) => {
       const pool = PUZZLES.filter((p) => p.difficulty === difficulty);
-      const puzzle = pool[Math.floor(Math.random() * pool.length)];
+      const puzzle = transformPuzzle(
+        pool[Math.floor(Math.random() * pool.length)]
+      );
 
       setClues([...puzzle.clues]);
       setSolution([...puzzle.solution]);
@@ -490,7 +486,10 @@ export default function SudokuGame() {
                 {diffLabel(d)}
               </Text>
               <Text style={[styles.diffBtnSub, { color: theme.mutedText }]}>
-                ~{t("minutesShort", { minutes: DIFF_MINUTES[d] })}
+                ~
+                {t("minutesShort", {
+                  minutes: d === "easy" ? 10 : d === "medium" ? 20 : 30,
+                })}
               </Text>
             </Pressable>
           ))}
@@ -524,7 +523,7 @@ export default function SudokuGame() {
             style={[
               styles.diffChip,
               {
-                backgroundColor: `${diffColor(selectedDifficulty)}22`,
+                backgroundColor: diffColor(selectedDifficulty) + "22",
                 borderColor: diffColor(selectedDifficulty),
               },
             ]}
@@ -582,11 +581,13 @@ export default function SudokuGame() {
         style={[
           styles.grid,
           {
+            borderBottomWidth: 2,
             borderColor: theme.text,
             borderLeftWidth: 2,
+            borderRightWidth: 2,
             borderTopWidth: 2,
             transform: [{ translateX: gridShake }],
-            width: cellSize * 9,
+            width: cellSize * 9 + 4, // + left/right outer borders (RN counts borders in width)
           },
         ]}
       >
@@ -607,9 +608,9 @@ export default function SudokuGame() {
 
           let cellBg = theme.background;
           if (isSelected) {
-            cellBg = `${theme.tint}44`;
+            cellBg = theme.tint + "44";
           } else if (isMatchingNumber) {
-            cellBg = `${theme.tint}22`;
+            cellBg = theme.tint + "22";
           } else if (isPeerCell) {
             cellBg = theme.surface;
           }
@@ -704,7 +705,7 @@ export default function SudokuGame() {
         style={[
           styles.hintBtn,
           {
-            backgroundColor: hintsLeft > 0 ? `${theme.tint}18` : theme.surface,
+            backgroundColor: hintsLeft > 0 ? theme.tint + "18" : theme.surface,
             borderColor: hintsLeft > 0 ? theme.tint : theme.border,
             opacity: !isInteractive || hintsLeft <= 0 ? 0.5 : 1,
           },
@@ -716,7 +717,7 @@ export default function SudokuGame() {
             { color: hintsLeft > 0 ? theme.tint : theme.mutedText },
           ]}
         >
-          {t("sdkHints")} ({hintsLeft} {t("sdkHintsLeft")})
+          {t("sdkHintsLeft", { count: hintsLeft })}
         </Text>
       </Pressable>
 

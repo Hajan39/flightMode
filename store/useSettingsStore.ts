@@ -4,32 +4,41 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import type { Language } from "@/i18n/translations";
 import type { GameCategory } from "@/types/game";
 
-export type ThemeMode = "system" | "light" | "dark" | "crazy";
+export type ThemeMode =
+  | "system"
+  | "light"
+  | "dark"
+  | "crazy"
+  | "midnight"
+  | "sunset";
 export type SyncNetworkPolicy = "wifi_only" | "wifi_and_mobile" | "off";
 
-interface SettingsState {
-  analyticsEnabled: boolean;
-  appOpenCount: number;
-  completeOnboarding: () => void;
-  hasCompletedFirstSession: boolean;
-  /** ISO 4217 code the converter starts from; null = derive from the device locale. */
-  homeCurrency: string | null;
-  incrementAppOpenCount: () => number;
+type SettingsState = {
   isFirstLaunch: boolean;
+  appOpenCount: number;
+  hasCompletedFirstSession: boolean;
   language: Language | null;
-  markFirstSessionCompleted: () => void;
+  themeMode: ThemeMode;
+  syncNetworkPolicy: SyncNetworkPolicy;
+  analyticsEnabled: boolean;
   /** Game categories the user picked during onboarding; biases recommendations. Empty = no preference. */
   preferredCategories: GameCategory[];
-  resetLanguage: () => void;
-  setAnalyticsEnabled: (enabled: boolean) => void;
-  setHomeCurrency: (code: string) => void;
+  /** ISO 4217 code the converter starts from; null = derive from the device locale. */
+  homeCurrency: string | null;
+  /** Last time we asked Google Play for an in-app review (ms); null = never. */
+  lastReviewPromptAt: number | null;
+  completeOnboarding: () => void;
+  incrementAppOpenCount: () => number;
+  markFirstSessionCompleted: () => void;
   setLanguage: (language: Language) => void;
-  setSyncNetworkPolicy: (policy: SyncNetworkPolicy) => void;
+  resetLanguage: () => void;
   setThemeMode: (mode: ThemeMode) => void;
-  syncNetworkPolicy: SyncNetworkPolicy;
-  themeMode: ThemeMode;
+  setSyncNetworkPolicy: (policy: SyncNetworkPolicy) => void;
+  setAnalyticsEnabled: (enabled: boolean) => void;
   togglePreferredCategory: (category: GameCategory) => void;
-}
+  setHomeCurrency: (code: string) => void;
+  markReviewPrompted: () => void;
+};
 
 export const useSettingsStore = create<SettingsState>()(
   persist(
@@ -49,7 +58,9 @@ export const useSettingsStore = create<SettingsState>()(
       },
       isFirstLaunch: true,
       language: null,
+      lastReviewPromptAt: null as number | null,
       markFirstSessionCompleted: () => set({ hasCompletedFirstSession: true }),
+      markReviewPrompted: () => set({ lastReviewPromptAt: Date.now() }),
       preferredCategories: [] as GameCategory[],
       resetLanguage: () => set({ language: null }),
       setAnalyticsEnabled: (analyticsEnabled) => set({ analyticsEnabled }),

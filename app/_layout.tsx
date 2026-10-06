@@ -1,7 +1,7 @@
 import { useFonts } from "expo-font";
 import "expo-insights";
 import { Stack, useRouter, useSegments } from "expo-router";
-import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
+import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -11,6 +11,7 @@ import {
   AnalyticsBootstrap,
   AnalyticsProvider,
 } from "@/components/AnalyticsProvider";
+import BillingBootstrap from "@/components/BillingBootstrap";
 import ContentSyncBootstrap from "@/components/ContentSyncBootstrap";
 import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
@@ -41,7 +42,7 @@ export const unstable_settings = {
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
-preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -57,7 +58,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      hideAsync();
+      SplashScreen.hideAsync();
     }
   }, [loaded]);
 
@@ -95,6 +96,9 @@ function RootLayoutNav() {
         <SafeBoundary name="ImageSyncBootstrap">
           <ImageSyncBootstrap />
         </SafeBoundary>
+        <SafeBoundary name="BillingBootstrap">
+          <BillingBootstrap />
+        </SafeBoundary>
         <SafeBoundary name="PlayGamesBootstrap">
           <PlayGamesBootstrap />
         </SafeBoundary>
@@ -125,7 +129,7 @@ function RootStack() {
     if (isFirstLaunch && segments[0] !== "onboarding") {
       router.replace("/onboarding");
     }
-  }, [isFirstLaunch, segments, router.replace]);
+  }, [isFirstLaunch, segments]);
 
   return (
     <Stack
@@ -172,6 +176,10 @@ function RootStack() {
       <Stack.Screen
         name="converter"
         options={{ presentation: "modal", title: t("stackConverter") }}
+      />
+      <Stack.Screen
+        name="plus"
+        options={{ presentation: "modal", title: "FlightMode Plus" }}
       />
       <Stack.Screen
         name="phrasebook"

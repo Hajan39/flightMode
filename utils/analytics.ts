@@ -19,6 +19,8 @@ export type AnalyticsEventName =
   | "audio_stop"
   | "settings_open"
   | "profile_open"
+  | "passport_shared"
+  | "review_prompted"
   | "home_action_open"
   | "home_phase_shown"
   | "home_recommendation_open"
