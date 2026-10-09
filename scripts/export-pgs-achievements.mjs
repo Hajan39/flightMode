@@ -10,7 +10,7 @@
  * each generated CgkI… id into data/playGamesAchievements.ts.
  *
  * Format: https://support.google.com/googleplay/android-developer/answer/2990418
- * (no header row, no commas inside fields, points multiple of 5, ≤1000 total).
+ * (no header row, no commas inside fields, points multiple of 5, ≤200 each, ≤2000 total).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -44,9 +44,11 @@ const LOCALES = {
   pt: "pt-PT",
   zh: "zh-CN",
 };
-// Flat 20 points each; the 1000-point Play cap allows up to 50 achievements
+// Flat 20 points each; the 2000-point Play cap allows up to 100 achievements
 // (asserted below). Rebalance in Play Console if wanted.
 const POINTS = 20;
+// Play Console limit (shown as "Použité body: x z 2 000").
+const MAX_TOTAL_POINTS = 2000;
 
 function loadLocale(lang) {
   const src = fs.readFileSync(
@@ -92,9 +94,9 @@ if (achievements.length === 0 || achievements.length !== declaredIds.length) {
     `Parsed ${achievements.length} achievements but data/achievements.ts declares ${declaredIds.length}`
   );
 }
-if (achievements.length * POINTS > 1000) {
+if (achievements.length * POINTS > MAX_TOTAL_POINTS) {
   throw new Error(
-    `${achievements.length} × ${POINTS} points exceeds Play's 1000-point cap`
+    `${achievements.length} × ${POINTS} points exceeds Play's ${MAX_TOTAL_POINTS}-point cap`
   );
 }
 
