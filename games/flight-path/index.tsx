@@ -451,12 +451,6 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
   const deg = (rwy.rotation * 180) / Math.PI;
   const len = rwy.halfLen * 2;
   const DASHES = Math.max(3, Math.round(len / 14));
-  let sizeTag = "S";
-  if (rwy.size === "long") {
-    sizeTag = "L";
-  } else if (rwy.size === "medium") {
-    sizeTag = "M";
-  }
 
   return (
     <RNView
@@ -520,20 +514,6 @@ function RunwayStrip({ rwy }: { rwy: Runway }) {
           width: 3,
         }}
       />
-      {/* label */}
-      <Text
-        style={{
-          color: "rgba(255,255,255,0.4)",
-          fontSize: 7,
-          fontWeight: "800",
-          position: "absolute",
-          top: -10,
-          // counter-rotate the label so it stays readable
-          transform: [{ rotate: `${-deg}deg` }],
-        }}
-      >
-        {rwy.label} {sizeTag} · {rwy.acceptsLabel}
-      </Text>
     </RNView>
   );
 }

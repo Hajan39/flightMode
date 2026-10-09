@@ -5,6 +5,7 @@ import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -50,6 +51,11 @@ export default function SimonSaysGame() {
   );
   const { t } = useTranslation();
   const haptic = useHaptic();
+  const { height, width } = useGameDimensions();
+  // Explicit size: a % width + aspectRatio inside a wrapping row collapses to 0 height.
+  const padSize = Math.floor(
+    Math.min((width - 40 - 12) / 2, (height - 360) / 2)
+  );
 
   // ── State ──────────────────────────────────────────────────────────────────
   const [phase, setPhase] = useState<Phase>("idle");
@@ -322,7 +328,9 @@ export default function SimonSaysGame() {
                 styles.simonBtn,
                 {
                   backgroundColor: isLit ? colors.lit : colors.dim,
+                  height: padSize,
                   opacity: isInput ? 1 : 0.85,
+                  width: padSize,
                 },
               ]}
             />
@@ -378,6 +386,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 12,
+    justifyContent: "center",
   },
   header: {
     alignItems: "center",
@@ -418,9 +427,7 @@ const styles = StyleSheet.create({
     lineHeight: 30,
   },
   simonBtn: {
-    aspectRatio: 1,
     borderRadius: 20,
-    width: "47%",
   },
   startArea: {
     alignItems: "center",

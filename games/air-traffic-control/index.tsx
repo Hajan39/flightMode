@@ -66,7 +66,9 @@ function getMaxQueueSize(level: number) {
 }
 
 function getStartingFuel(level: number, id: number) {
-  const baseFuel = Math.max(3, 7 - Math.floor((level - 1) / 2));
+  // Levels 1–2 get 3 s of slack so first-time players can read the board.
+  const baseFuel =
+    Math.max(3, 7 - Math.floor((level - 1) / 2)) + (level <= 2 ? 3 : 0);
   return baseFuel + (id % 3);
 }
 

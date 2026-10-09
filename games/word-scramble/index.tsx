@@ -18,32 +18,87 @@ import type { GameProgressUpdate } from "@/types/game";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const WORD_POOL = [
-  "AIRPORT",
-  "RUNWAY",
-  "CAPTAIN",
-  "BOARDING",
-  "COCKPIT",
-  "ALTITUDE",
-  "AIRCRAFT",
-  "HORIZON",
-  "NAVIGATE",
-  "VELOCITY",
-  "TAKEOFF",
-  "LANDING",
-  "CUSTOMS",
-  "LUGGAGE",
-  "JOURNEY",
-  "COMPASS",
-  "TURBULENCE",
-  "PASSPORT",
-  "TERMINAL",
-  "DEPARTURE",
-  "ARRIVAL",
-  "BAGGAGE",
-  "SEATBELT",
-  "WINDOW",
-];
+/** Aviation / travel words per language (fallback en). */
+const WORD_POOLS: Record<string, string[]> = {
+  cs: [
+    "LETIŠTĚ",
+    "RANVEJ",
+    "KAPITÁN",
+    "KOKPIT",
+    "LETADLO",
+    "OBZOR",
+    "KOMPAS",
+    "VZLET",
+    "PŘISTÁNÍ",
+    "CELNICE",
+    "ZAVAZADLO",
+    "CESTOVATEL",
+    "TURBULENCE",
+    "TERMINÁL",
+    "ODLET",
+    "PŘÍLET",
+    "OKÉNKO",
+    "PALUBA",
+    "LETUŠKA",
+    "OBLOHA",
+    "VÝŠKA",
+    "RYCHLOST",
+    "NAVIGACE",
+    "KUFR",
+  ],
+  de: [
+    "FLUGHAFEN",
+    "LANDEBAHN",
+    "KAPITÄN",
+    "COCKPIT",
+    "FLUGZEUG",
+    "HORIZONT",
+    "KOMPASS",
+    "ABFLUG",
+    "ANKUNFT",
+    "LANDUNG",
+    "GEPÄCK",
+    "REISEPASS",
+    "TURBULENZ",
+    "TERMINAL",
+    "KOFFER",
+    "FENSTER",
+    "WOLKEN",
+    "BORDKARTE",
+    "STARTBAHN",
+    "REISE",
+    "PILOTIN",
+    "FLUGHÖHE",
+    "SICHERHEIT",
+    "URLAUB",
+  ],
+  en: [
+    "AIRPORT",
+    "RUNWAY",
+    "CAPTAIN",
+    "BOARDING",
+    "COCKPIT",
+    "ALTITUDE",
+    "AIRCRAFT",
+    "HORIZON",
+    "NAVIGATE",
+    "VELOCITY",
+    "TAKEOFF",
+    "LANDING",
+    "CUSTOMS",
+    "LUGGAGE",
+    "JOURNEY",
+    "COMPASS",
+    "TURBULENCE",
+    "PASSPORT",
+    "TERMINAL",
+    "DEPARTURE",
+    "ARRIVAL",
+    "BAGGAGE",
+    "SEATBELT",
+    "WINDOW",
+  ],
+};
 
 const ROUND_COUNT = 12;
 const ROUND_SECONDS = 30;
@@ -76,8 +131,8 @@ function scrambleWord(word: string): string[] {
 }
 
 /** Pick 12 words randomly from the pool, return them shuffled. */
-function pickWords(): string[] {
-  return shuffle(WORD_POOL).slice(0, ROUND_COUNT);
+function pickWords(language: string): string[] {
+  return shuffle(WORD_POOLS[language] ?? WORD_POOLS.en).slice(0, ROUND_COUNT);
 }
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -146,7 +201,7 @@ function ScrambleTile({ tile, disabled, onPress, theme }: ScrambleTileProps) {
 export default function WordScrambleGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const haptic = useHaptic();
   const updateProgress = useGameStore((s) => s.updateProgress);
   const storedBest = useGameStore(
@@ -310,14 +365,14 @@ export default function WordScrambleGame() {
   // ─── Start game ──────────────────────────────────────────────────────────────
 
   const startGame = useCallback(() => {
-    const newWords = pickWords();
+    const newWords = pickWords(language);
     setWords(newWords);
     setRoundIndex(0);
     setScore(0);
     setSkipsRemaining(MAX_SKIPS);
     setProgressInfo(null);
     setupRound(newWords, 0);
-  }, [setupRound]);
+  }, [language, setupRound]);
 
   // ─── Tap a scrambled tile ────────────────────────────────────────────────────
 

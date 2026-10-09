@@ -359,6 +359,7 @@ const styles = StyleSheet.create({
     borderRadius: Radius.card,
     borderWidth: 1.5,
     flexGrow: 1,
+    justifyContent: "center",
     minWidth: 90,
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.sm + 2,

@@ -9,6 +9,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import GameControls from "@/components/GameControls";
+import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -86,7 +87,7 @@ function getDecoyCount(currentScore: number): number {
   return 2;
 }
 
-type Phase = "running" | "paused" | "over";
+type Phase = "countdown" | "running" | "paused" | "over";
 
 export default function CabinCallGame() {
   const colorScheme = useColorScheme();
@@ -98,7 +99,7 @@ export default function CabinCallGame() {
   const { t } = useTranslation();
   const haptic = useHaptic();
 
-  const [phase, setPhase] = useState<Phase>("running");
+  const [phase, setPhase] = useState<Phase>("countdown");
   const [secondsLeft, setSecondsLeft] = useState(ROUND_SECONDS);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
@@ -107,7 +108,7 @@ export default function CabinCallGame() {
     null
   );
   const scoreRef = useRef(0);
-  const endTimeRef = useRef<number | null>(Date.now() + ROUND_SECONDS * 1000);
+  const endTimeRef = useRef<number | null>(null);
 
   // Feedback animation: subtle pulse on correct, shake on wrong
   const cardScale = useSharedValue(1);
@@ -164,15 +165,20 @@ export default function CabinCallGame() {
     setChoices([target, ...decoys].sort(() => Math.random() - 0.5));
   }, [score, target]);
 
-  const restart = () => {
+  const begin = () => {
     endTimeRef.current = Date.now() + ROUND_SECONDS * 1000;
+    setPhase("running");
+  };
+
+  const restart = () => {
+    endTimeRef.current = null;
     setSecondsLeft(ROUND_SECONDS);
     setScore(0);
     scoreRef.current = 0;
     setStreak(0);
     setTarget(randomCommand(0));
     setProgressInfo(null);
-    setPhase("running");
+    setPhase("countdown");
   };
 
   const pause = () => {
@@ -308,6 +314,8 @@ export default function CabinCallGame() {
       <Text style={[styles.streakText, { color: theme.mutedText }]}>
         {t("ccStreak", { streak })}
       </Text>
+
+      {phase === "countdown" && <GameCountdown onComplete={begin} />}
 
       <GamePauseOverlay
         onRestart={restart}

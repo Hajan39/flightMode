@@ -27,6 +27,7 @@ const EMPTY_LEVEL_STARS: Record<string, number> = {};
 
 const MAX_STACK = 5; // max items per column
 const MIN_COL_W = 46; // min width so numbers are always readable
+const MAX_COL_W = 92;
 
 /** Level definitions: [numCount, columnCount, emptyColumns] */
 const LEVELS: [number, number, number][] = [
@@ -171,11 +172,13 @@ function Tile({
   selected,
   isGoal,
   width,
+  height,
 }: {
   value: number;
   selected?: boolean;
   isGoal?: boolean;
   width: number;
+  height: number;
 }) {
   const scale = useRef(new Animated.Value(1)).current;
   const bg = isGoal ? "rgba(255,215,0,0.18)" : `${tileColor(value)}22`;
@@ -207,14 +210,20 @@ function Tile({
         borderColor: selected ? "#fff" : border,
         borderRadius: 7,
         borderWidth: selected ? 2 : 1.5,
-        height: 30,
+        height,
         justifyContent: "center",
         marginVertical: 1,
         transform: [{ scale }],
         width: width - 6,
       }}
     >
-      <Text style={{ color: textColor, fontSize: 14, fontWeight: "800" }}>
+      <Text
+        style={{
+          color: textColor,
+          fontSize: Math.round(height * 0.47),
+          fontWeight: "800",
+        }}
+      >
         {value}
       </Text>
     </Animated.View>
@@ -232,6 +241,7 @@ function ColumnView({
   isGoal,
   onPress,
   colWidth,
+  tileHeight,
   label,
   goalBadgeLabel,
 }: {
@@ -241,6 +251,7 @@ function ColumnView({
   isGoal: boolean;
   onPress: (i: number) => void;
   colWidth: number;
+  tileHeight: number;
   label?: string;
   goalBadgeLabel: string;
 }) {
@@ -299,13 +310,14 @@ function ColumnView({
               borderRadius: 7,
               borderStyle: "dashed",
               borderWidth: 1,
-              height: 30,
+              height: tileHeight,
               width: colWidth - 8,
             }}
           />
         )}
         {items.map((val, i) => (
           <Tile
+            height={tileHeight}
             isGoal={isGoal}
             key={`${index}-${i}-${val}`}
             selected={isSelected && i === items.length - 1}
@@ -362,10 +374,14 @@ export default function StackSortGame() {
 
   /* --- derived layout --- */
   const maxPerRow = Math.max(3, Math.floor((screenW - 24) / (MIN_COL_W + 8)));
-  const colWidth = Math.max(
-    MIN_COL_W,
-    Math.floor((screenW - 24 - maxPerRow * 8) / maxPerRow)
+  // Size columns for the columns actually on the board (+ goal), so small
+  // levels get big, thumb-friendly tiles instead of a cramped strip.
+  const perRow = Math.min(maxPerRow, Math.max(3, columns.length + 1));
+  const colWidth = Math.min(
+    MAX_COL_W,
+    Math.max(MIN_COL_W, Math.floor((screenW - 24 - perRow * 8) / perRow))
   );
+  const tileHeight = Math.round(Math.min(48, Math.max(30, colWidth * 0.55)));
 
   /* --- start level --- */
   const startLevel = (lvl: number) => {
@@ -696,6 +712,7 @@ export default function StackSortGame() {
               key={c.isGoal ? "goal" : c.idx}
               label={c.label}
               onPress={handleColumnPress}
+              tileHeight={tileHeight}
             />
           ))}
         </RNView>

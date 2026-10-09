@@ -194,10 +194,15 @@ export function buildPuzzle(
     }
   }
 
-  // Fill remaining empty cells with random letters.
+  // Fill remaining empty cells with random letters. Accented letters used by
+  // the words (Č, Ř, Ü…) join the filler so they don't give the words away.
+  const accented = [...new Set(words.join("").toUpperCase())].filter(
+    (c) => !LETTERS.includes(c)
+  );
+  const letters = [...LETTERS, ...accented];
   for (let i = 0; i < grid.length; i += 1) {
     if (grid[i] === "") {
-      grid[i] = LETTERS[randInt(rng, LETTERS.length)];
+      grid[i] = letters[randInt(rng, letters.length)];
     }
   }
 

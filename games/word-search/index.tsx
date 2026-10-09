@@ -28,21 +28,51 @@ const GRID_SIZE = 8;
 const WORD_COUNT = 6;
 const GAP = 3;
 
-/** Aviation / travel words — all 5 letters so they tile an 8×8 grid nicely. */
-const WORD_POOL = [
-  "PILOT",
-  "CABIN",
-  "CARGO",
-  "RADAR",
-  "TOWER",
-  "ROUTE",
-  "CLOUD",
-  "GATES",
-  "WINGS",
-  "PLANE",
-  "BOARD",
-  "MILES",
-];
+/** Aviation / travel words per language (fallback en) — all 5 letters so they tile an 8×8 grid nicely. */
+const WORD_POOLS: Record<string, string[]> = {
+  cs: [
+    "PILOT",
+    "RADAR",
+    "MRAKY",
+    "TRASA",
+    "BRÁNA",
+    "KUFRY",
+    "VÍZUM",
+    "MOTOR",
+    "LETEC",
+    "VĚTER",
+    "BOUŘE",
+    "DRÁHA",
+  ],
+  de: [
+    "PILOT",
+    "RADAR",
+    "WOLKE",
+    "ROUTE",
+    "PISTE",
+    "REISE",
+    "KARTE",
+    "MOTOR",
+    "STURM",
+    "SONNE",
+    "VISUM",
+    "MEILE",
+  ],
+  en: [
+    "PILOT",
+    "CABIN",
+    "CARGO",
+    "RADAR",
+    "TOWER",
+    "ROUTE",
+    "CLOUD",
+    "GATES",
+    "WINGS",
+    "PLANE",
+    "BOARD",
+    "MILES",
+  ],
+};
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -61,17 +91,18 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 /** Build a fresh puzzle whose placements all resolve to real words. */
-function makePuzzle(): { puzzle: Puzzle; words: string[] } {
+function makePuzzle(language: string): { puzzle: Puzzle; words: string[] } {
+  const pool = WORD_POOLS[language] ?? WORD_POOLS.en;
   // Retry until we get WORD_COUNT successful placements (rare to need >1 pass).
   for (let attempt = 0; attempt < 25; attempt += 1) {
-    const words = shuffle(WORD_POOL).slice(0, WORD_COUNT);
+    const words = shuffle(pool).slice(0, WORD_COUNT);
     const puzzle = buildPuzzle(words, GRID_SIZE, Math.random);
     if (puzzle.placements.length === WORD_COUNT) {
       return { puzzle, words: puzzle.placements.map((p) => p.word) };
     }
   }
   // Fallback: accept whatever placed (still a valid, readable puzzle).
-  const words = shuffle(WORD_POOL).slice(0, WORD_COUNT);
+  const words = shuffle(pool).slice(0, WORD_COUNT);
   const puzzle = buildPuzzle(words, GRID_SIZE, Math.random);
   return { puzzle, words: puzzle.placements.map((p) => p.word) };
 }
@@ -81,7 +112,7 @@ function makePuzzle(): { puzzle: Puzzle; words: string[] } {
 export default function WordSearchGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const { width, height } = useGameDimensions();
   const haptic = useHaptic();
 
@@ -90,7 +121,9 @@ export default function WordSearchGame() {
   );
   const updateProgress = useGameStore((s) => s.updateProgress);
 
-  const [puzzle, setPuzzle] = useState<Puzzle>(() => makePuzzle().puzzle);
+  const [puzzle, setPuzzle] = useState<Puzzle>(
+    () => makePuzzle(language).puzzle
+  );
   const [phase, setPhase] = useState<Phase>("playing");
   const [foundWords, setFoundWords] = useState<string[]>([]);
   const [foundCells, setFoundCells] = useState<Set<number>>(new Set());
@@ -136,7 +169,7 @@ export default function WordSearchGame() {
     stopTimer();
     solvedRef.current = false;
     accumulatedRef.current = 0;
-    setPuzzle(makePuzzle().puzzle);
+    setPuzzle(makePuzzle(language).puzzle);
     setFoundWords([]);
     setFoundCells(new Set());
     setSelectedStart(null);

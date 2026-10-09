@@ -225,7 +225,7 @@ export default function MinesweeperGame() {
         bg = theme.danger;
         content = <Text style={styles.cellEmoji}>💣</Text>;
       } else if (cell.adjacentMines > 0) {
-        bg = theme.surface ?? theme.card;
+        bg = theme.background;
         content = (
           <Text
             style={[
@@ -238,7 +238,7 @@ export default function MinesweeperGame() {
         );
       } else {
         // Empty revealed cell
-        bg = theme.surface ?? theme.card;
+        bg = theme.background;
       }
     } else if (cell.isFlagged) {
       // In win state, flagged mines stay as flags

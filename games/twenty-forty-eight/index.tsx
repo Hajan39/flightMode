@@ -17,6 +17,7 @@ import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useSwipe } from "@/hooks/useSwipe";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
@@ -437,12 +438,15 @@ export default function TwentyFortyEightGame() {
     [phase, paused, haptic, t, endGame]
   );
 
+  const swipeProps = useSwipe(handleMove);
+
   // ---------------------------------------------------------------------------
   // Render helpers
   // ---------------------------------------------------------------------------
 
   const renderGrid = () => (
     <RNView
+      {...swipeProps}
       style={[
         styles.grid,
         {

@@ -12,6 +12,7 @@ import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useSwipe } from "@/hooks/useSwipe";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
@@ -214,6 +215,7 @@ export default function SnakeGame() {
     }
     directionRef.current = newDir;
   }, []);
+  const swipeProps = useSwipe(handleDirectionPress);
 
   // ---------------------------------------------------------------------------
   // Pause / Resume
@@ -285,6 +287,7 @@ export default function SnakeGame() {
 
   const renderGrid = () => (
     <RNView
+      {...swipeProps}
       style={[
         styles.grid,
         {
