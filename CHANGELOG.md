@@ -55,6 +55,11 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- **Device QA of all 41 games (Samsung, release build)**: Simon Says showed no pads (percentage width + aspect ratio collapsed to zero height); 2048 and Snake now take swipes on the board, not just the D-pad; Cabin Call starts with a 3-2-1 countdown instead of running the clock on open; Air Traffic Control gives levels 1–2 three extra seconds of fuel (first-time players lost before reading the board); Stack Sort sizes columns for the level instead of a tiny strip; Minesweeper open cells are visibly different from covered ones; Flight Path no longer piles unreadable runway labels in the centre; Word Search and Word Scramble use Czech and German words in those languages; option chips in player setup are vertically centred.
+- Relax: sounds are listed right under the section title (they sat below volume and timer), and the default volume matches a volume chip.
+- Profile: stat and achievement grids fill the full width.
+- Quiz: the ETA question gave itself away in 6 languages (distractors were left in English).
+- Czech: informal "ty" for a single player throughout (rules, achievements, hints), gender-neutral phrasing, Czech names for the games still titled in English, city names no longer forced into wrong grammatical case.
 - Returning users could be sent back to onboarding when settings loaded after fonts: the redirect ran on the store's default `isFirstLaunch: true`. It now waits for persisted settings to hydrate.
 - Web build crashed on every screen (`baseScheme is not a function`): the web `useColorScheme` variant lacked the helpers added for Plus themes. Shared scheme helpers now live in `components/colorSchemes.ts`.
 - German achievement names: "Frequent Flyer" and "Seasoned Flyer" were both "Vielflieger", which Play Console rejects on import (names must be unique per locale). "Seasoned Flyer" is now "Erfahrener Flieger", and the achievements exporter checks name uniqueness in every locale, not just English.

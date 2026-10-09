@@ -127,5 +127,5 @@ export const useAudioStore = create<AudioState>((set, get) => ({
     }
     set({ activeLabelKey: null, activeSoundId: null });
   },
-  volume: 0.65,
+  volume: 0.6,
 }));

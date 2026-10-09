@@ -308,6 +308,59 @@ export default function RelaxScreen() {
         <View
           darkColor="transparent"
           lightColor="transparent"
+          style={styles.soundGrid}
+        >
+          {SOUNDSCAPES.map((scape, scapeIndex) => {
+            const isScapeActive = activeSoundId === scape.id;
+            return (
+              <Animated.View
+                entering={FadeInDown.delay(300 + scapeIndex * 80).springify()}
+                key={scape.id}
+                style={styles.soundCol}
+              >
+                <AnimatedPressable
+                  onPress={() => toggleSoundscape(scape)}
+                  style={[
+                    styles.soundCard,
+                    {
+                      backgroundColor: isScapeActive
+                        ? theme.accentSoft
+                        : theme.card,
+                      borderColor: isScapeActive ? theme.tint : theme.border,
+                    },
+                  ]}
+                >
+                  <Ionicons
+                    color={isScapeActive ? theme.tint : theme.mutedText}
+                    name={scape.icon as never}
+                    size={32}
+                  />
+                  <Text
+                    style={[
+                      styles.soundLabel,
+                      { color: isScapeActive ? theme.tint : theme.text },
+                    ]}
+                  >
+                    {t(scape.labelKey)}
+                  </Text>
+                  {isScapeActive && (
+                    <View
+                      darkColor={theme.tint}
+                      lightColor={theme.tint}
+                      style={[
+                        styles.playingDot,
+                        { backgroundColor: theme.tint },
+                      ]}
+                    />
+                  )}
+                </AnimatedPressable>
+              </Animated.View>
+            );
+          })}
+        </View>
+        <View
+          darkColor="transparent"
+          lightColor="transparent"
           style={styles.volumeRow}
         >
           {[0.3, 0.6, 0.9].map((level) => {
@@ -427,59 +480,6 @@ export default function RelaxScreen() {
               );
             })}
           </View>
-        </View>
-        <View
-          darkColor="transparent"
-          lightColor="transparent"
-          style={styles.soundGrid}
-        >
-          {SOUNDSCAPES.map((scape, scapeIndex) => {
-            const isScapeActive = activeSoundId === scape.id;
-            return (
-              <Animated.View
-                entering={FadeInDown.delay(300 + scapeIndex * 80).springify()}
-                key={scape.id}
-                style={styles.soundCol}
-              >
-                <AnimatedPressable
-                  onPress={() => toggleSoundscape(scape)}
-                  style={[
-                    styles.soundCard,
-                    {
-                      backgroundColor: isScapeActive
-                        ? theme.accentSoft
-                        : theme.card,
-                      borderColor: isScapeActive ? theme.tint : theme.border,
-                    },
-                  ]}
-                >
-                  <Ionicons
-                    color={isScapeActive ? theme.tint : theme.mutedText}
-                    name={scape.icon as never}
-                    size={32}
-                  />
-                  <Text
-                    style={[
-                      styles.soundLabel,
-                      { color: isScapeActive ? theme.tint : theme.text },
-                    ]}
-                  >
-                    {t(scape.labelKey)}
-                  </Text>
-                  {isScapeActive && (
-                    <View
-                      darkColor={theme.tint}
-                      lightColor={theme.tint}
-                      style={[
-                        styles.playingDot,
-                        { backgroundColor: theme.tint },
-                      ]}
-                    />
-                  )}
-                </AnimatedPressable>
-              </Animated.View>
-            );
-          })}
         </View>
       </Animated.View>
     </ScrollView>
@@ -633,5 +633,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
     marginBottom: 12,
+    marginTop: 16,
   },
 });

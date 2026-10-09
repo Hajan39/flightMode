@@ -130,6 +130,12 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-10-10
+
+- QA vsech 41 her na zarizeni (release build): Simon bez tlacitek (opraveno), swipe ve 2048 a Hadovi, odpocet v Pokynech posadky, mirnejsi start ATC (L1-2 +3 s paliva), Razeni sloupcu vetsi dlazdice, Hledani min citelne odkryta pole, Letove trasy bez prekryvajicich se popisku, Hledani slov + Presmycky cs/de slova
+- Relax: zvuky hned pod nadpisem, vychozi hlasitost odpovida volbe; Profil: mrizky pres celou sirku
+- cestina: tykani jednomu hraci vsude, rodove neutralni formulace, ceske nazvy her, mesta v 1. pade; kviz ETA uz neprozrazuje odpoved
+
 ## 2026-10-09
 
 - velke obrazovky: zrusen zamek orientace v manifestu (Play hlaseni), telefony drzi portrait runtime zamkem (`OrientationPolicy`, nejkratsi strana < 600 dp), tablety/skladacky/desktop se otaci; vsechny hry v centrovanem portrait sloupci (`useGameDimensions`), Memory se vejde i na vysku; tilt-balance mapuje osy podle natoceni displeje; overeno web sweepem 13 obrazovek + 41 her (start i hra) na 1280x800, 800x1280 a 390x844
