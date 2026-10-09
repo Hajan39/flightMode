@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **Google Play Games achievements are live-wired**: all 48 achievements now carry their Play Console ids (`data/playGamesAchievements.ts`), so local unlocks are mirrored to Play Games for signed-in players. A test now fails if any achievement is left without a unique id.
 - **Strict linting via Ultracite (Biome)** — `biome.jsonc` extends the strict core + react + jest presets; `npm run check` / `npm run fix`; CI now runs `biome ci` (errors fail the build). The whole codebase was brought to zero lint errors (~4,900 findings resolved: auto-fixes plus manual refactors — nested ternaries, variable shadowing, leaked JSX renders, hoisted regexes, explicit increments). Deliberate deviations are documented inline in `biome.jsonc`; pre-existing debt (hook deps, index keys, complexity hotspots) is tracked as warnings instead of being hidden.
 - **App version 1.4.0 → 1.5.0** — `expo-iap` and `expo-store-review` are new native modules; `runtimeVersion` follows the app version, so 1.5.0 OTAs never reach a 1.4.0 binary without them.
 

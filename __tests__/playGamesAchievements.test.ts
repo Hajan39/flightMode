@@ -33,6 +33,12 @@ describe("Play Games achievement mapping integrity", () => {
     }
   });
 
+  test("every achievement is wired to a unique Play Games id", () => {
+    const values = Object.values(playGamesAchievementIds);
+    expect(values.filter((v) => v === null)).toEqual([]);
+    expect(new Set(values).size).toBe(values.length);
+  });
+
   test("getPlayGamesAchievementId returns null for unknown ids", () => {
     expect(getPlayGamesAchievementId("does-not-exist")).toBeNull();
   });
