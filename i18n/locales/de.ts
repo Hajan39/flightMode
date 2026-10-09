@@ -748,7 +748,7 @@
   achieveGlobetrotterDesc: "Erfasse 10 Flüge",
   achieveStreak3Title: "Hin und zurück",
   achieveStreak3Desc: "Komm für einen zweiten Flug zurück",
-  achieveStreak7Title: "Vielflieger",
+  achieveStreak7Title: "Erfahrener Flieger",
   achieveStreak7Desc: "Nimm FlightMode auf 5 Flüge mit",
   achieveSpeedDemonTitle: "Blitzschnell",
   achieveSpeedDemonDesc: "Reaktionszeit unter 200ms",

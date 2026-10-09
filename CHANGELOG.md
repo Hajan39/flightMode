@@ -49,6 +49,7 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- German achievement names: "Frequent Flyer" and "Seasoned Flyer" were both "Vielflieger", which Play Console rejects on import (names must be unique per locale). "Seasoned Flyer" is now "Erfahrener Flieger", and the achievements exporter checks name uniqueness in every locale, not just English.
 - **Plus analytics inflated on every launch**: restoring purchases at startup re-reported `support_completed` for every Plus owner on every app start (and re-acknowledged the already-acknowledged purchase). Restores now re-grant entitlements silently; only real checkouts report.
 - **Play Console achievements export produced empty CSVs**: its parser depended on the key order in `data/achievements.ts`, which the formatter now sorts. It now reads keys order-independently and fails loudly if the parsed count doesn't match or the 1000-point cap is exceeded (`scripts/export-pgs-achievements.mjs`).
 - **OTA publish script crashed on start** (`scripts/eas-update-from-changelog`): it mixed `require()` with `import.meta.dirname`, so Node parsed it as ESM and failed on line 1, breaking the release OTA lane. Converted to ESM (`.mjs`).

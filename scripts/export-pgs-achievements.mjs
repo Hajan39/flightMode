@@ -111,6 +111,21 @@ if (dupes.length) {
   throw new Error(`Achievement names must be unique: ${dupes.join(", ")}`);
 }
 
+// Play rejects the import if two achievements share a name within any locale,
+// so check every exported language, not just English.
+for (const lang of Object.keys(LOCALES)) {
+  const dict = loadLocale(lang);
+  const localized = achievements.map((a) => clean(dict[a.titleKey] ?? ""));
+  const localeDupes = localized.filter(
+    (n, i) => n && localized.indexOf(n) !== i
+  );
+  if (localeDupes.length) {
+    throw new Error(
+      `Duplicate ${LOCALES[lang]} achievement names: ${[...new Set(localeDupes)].join(", ")}`
+    );
+  }
+}
+
 const metadata = achievements.map(
   (a, i) =>
     `${names[i]},${clean(en[a.descriptionKey])},False,,Revealed,${POINTS},${i + 1}`
