@@ -2,7 +2,7 @@ import { useFonts } from "expo-font";
 import "expo-insights";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -16,6 +16,7 @@ import ContentSyncBootstrap from "@/components/ContentSyncBootstrap";
 import ImageSyncBootstrap from "@/components/ImageSyncBootstrap";
 import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
 import NotificationBootstrap from "@/components/NotificationBootstrap";
+import OrientationPolicy from "@/components/OrientationPolicy";
 import PlayGamesBootstrap from "@/components/PlayGamesBootstrap";
 import RatesSyncBootstrap from "@/components/RatesSyncBootstrap";
 import RootErrorBoundary from "@/components/RootErrorBoundary";
@@ -78,6 +79,9 @@ function RootLayoutNav() {
   return (
     <AnalyticsProvider>
       <SafeAreaProvider>
+        <SafeBoundary name="OrientationPolicy">
+          <OrientationPolicy />
+        </SafeBoundary>
         <SafeBoundary name="AnalyticsBootstrap">
           <AnalyticsBootstrap />
         </SafeBoundary>
@@ -116,6 +120,11 @@ function RootStack() {
   const router = useRouter();
   const segments = useSegments();
   const isFirstLaunch = useSettingsStore((s) => s.isFirstLaunch);
+  // isFirstLaunch defaults to true until persisted settings load; redirecting
+  // before then would send returning users back to onboarding.
+  const [settingsHydrated, setSettingsHydrated] = useState(() =>
+    useSettingsStore.persist.hasHydrated()
+  );
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme] ?? Colors.light;
 
@@ -126,10 +135,18 @@ function RootStack() {
   }, []);
 
   useEffect(() => {
-    if (isFirstLaunch && segments[0] !== "onboarding") {
+    const unsubscribe = useSettingsStore.persist.onFinishHydration(() =>
+      setSettingsHydrated(true)
+    );
+    setSettingsHydrated(useSettingsStore.persist.hasHydrated());
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    if (settingsHydrated && isFirstLaunch && segments[0] !== "onboarding") {
       router.replace("/onboarding");
     }
-  }, [isFirstLaunch, segments]);
+  }, [settingsHydrated, isFirstLaunch, segments]);
 
   return (
     <Stack

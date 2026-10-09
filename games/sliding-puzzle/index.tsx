@@ -1,10 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  Pressable,
-  View as RNView,
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -14,6 +9,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -121,7 +117,7 @@ export default function SlidingPuzzleGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { width: screenWidth } = useWindowDimensions();
+  const { width: screenWidth } = useGameDimensions();
 
   const updateProgress = useGameStore((s) => s.updateProgress);
 

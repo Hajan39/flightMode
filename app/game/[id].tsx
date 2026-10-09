@@ -1,6 +1,6 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import GameRules from "@/components/GameRules";
@@ -8,6 +8,10 @@ import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { getGameById } from "@/data/games";
+import {
+  GameViewportProvider,
+  gameColumnWidth,
+} from "@/hooks/useGameDimensions";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useDiscoveryStore } from "@/store/useDiscoveryStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -19,6 +23,8 @@ export default function GameScreen() {
   const { t } = useTranslation();
   const game = id ? getGameById(id) : undefined;
   const markGameSeen = useDiscoveryStore((s) => s.markGameSeen);
+  const window = useWindowDimensions();
+  const columnWidth = gameColumnWidth(window.width, window.height);
 
   // Mark the game as seen so it drops out of the Home "New to try" row.
   useEffect(() => {
@@ -81,13 +87,21 @@ export default function GameScreen() {
         edges={["left", "right", "bottom"]}
         style={[styles.safeArea, { backgroundColor: theme.background }]}
       >
-        <GameComponent />
+        <GameViewportProvider
+          value={{ height: window.height, width: columnWidth }}
+        >
+          <View style={[styles.column, { width: columnWidth }]}>
+            <GameComponent />
+          </View>
+        </GameViewportProvider>
       </SafeAreaView>
     </>
   );
 }
 
 const styles = StyleSheet.create({
+  // Portrait column centred on wide screens (see useGameDimensions).
+  column: { alignSelf: "center", flex: 1 },
   container: { alignItems: "center", flex: 1, justifyContent: "center" },
   notFoundHint: { fontSize: 13, marginTop: 6, textAlign: "center" },
   notFoundTitle: { fontSize: 16, fontWeight: "600", textAlign: "center" },

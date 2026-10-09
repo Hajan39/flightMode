@@ -130,6 +130,12 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-10-09
+
+- velke obrazovky: zrusen zamek orientace v manifestu (Play hlaseni), telefony drzi portrait runtime zamkem (`OrientationPolicy`, nejkratsi strana < 600 dp), tablety/skladacky/desktop se otaci; vsechny hry v centrovanem portrait sloupci (`useGameDimensions`), Memory se vejde i na vysku; tilt-balance mapuje osy podle natoceni displeje; overeno web sweepem 13 obrazovek + 41 her (start i hra) na 1280x800, 800x1280 a 390x844
+- release build: R8 minifikace + obfuskace + shrink resources (Play: DEX optimalizace, obfuskace 1 %); verze 1.5.1
+- opravy: presmerovani na onboarding pred nactenim nastaveni (vracejici se uzivatel), webovy build padal na `baseScheme` (sdilene helpery v `components/colorSchemes.ts`)
+
 ## 2026-10-06
 
 - zavedeny striktni lint: Ultracite (Biome preset, core+react+jest) — `npm run check` / `npm run fix`, `biome ci` v CI (errors blokuji, warnings ne); cela codebase dovedena na 0 lint erroru (~4900 nalezu: autofixy + rucni refaktory — vnorene ternary, shadowing, leaked JSX render, hoisted regexy, explicitni inkrementy); zamerne odchylky dokumentovane primo v `biome.jsonc`; predchozi dluh (hook deps, index keys, komplexita) tracked jako warningy

@@ -6,12 +6,12 @@ import {
   View as RNView,
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -347,7 +347,7 @@ export default function StackSortGame() {
   const levelStars =
     useGameStore((state) => state.progress["stack-sort"]?.levelStars) ??
     EMPTY_LEVEL_STARS;
-  const { width: screenW } = useWindowDimensions();
+  const { width: screenW } = useGameDimensions();
 
   const [phase, setPhase] = useState<"menu" | "playing" | "won">("menu");
   const [level, setLevel] = useState(0);

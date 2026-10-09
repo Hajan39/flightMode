@@ -7,6 +7,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P0 (aktivni)
 
+- **1.5.1 overit na zarizeni**: release build je nove minifikovany (R8) — otestovat nakup Plus/tip jar a Play Games prihlaseni + odemceni achievementu; na tabletu otoceni displeje a Turbulence Test na sirku (smer naklonu)
 - ~~sjednotit 8 multiplayer her na sdilene komponenty + design tokeny~~ — hotovo 2026-09-13 (`components/multiplayer/`, `recordMatch` konvence)
 - ~~fallback clanku na EN pro jazyky bez lokalizace~~ — hotovo 2026-09-13
 - ~~support e-mail~~ — hotovo 2026-10-05: `flightmode.app@proton.me` (settings + privacy policy); stejnou adresu nastavit jako kontakt vyvojare v Play Console

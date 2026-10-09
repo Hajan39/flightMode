@@ -4,7 +4,6 @@ import {
   View as RNView,
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -21,6 +20,7 @@ import { LEVELS } from "./levels";
 // useSyncExternalStore until it throws on first open (no progress entry yet).
 const EMPTY_LEVEL_STARS: Record<string, number> = {};
 
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import {
   cellIndex,
   findConflicts,
@@ -92,7 +92,7 @@ export default function SunMoonGame() {
   const levelStars =
     useGameStore((state) => state.progress["sun-moon"]?.levelStars) ??
     EMPTY_LEVEL_STARS;
-  const { width: screenW } = useWindowDimensions();
+  const { width: screenW } = useGameDimensions();
 
   const [phase, setPhase] = useState<Phase>("menu");
   const [levelIdx, setLevelIdx] = useState(0);

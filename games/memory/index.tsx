@@ -1,10 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  FlatList,
-  Pressable,
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { FlatList, Pressable, StyleSheet } from "react-native";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -17,6 +12,7 @@ import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useAnimatedPress } from "@/hooks/useAnimatedPress";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -111,7 +107,7 @@ export default function MemoryGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
-  const { width } = useWindowDimensions();
+  const { height, width } = useGameDimensions();
   const [modeKey, setModeKey] =
     useState<(typeof MEMORY_MODES)[number]["key"]>("standard");
   const currentMode =
@@ -145,9 +141,15 @@ export default function MemoryGame() {
     const horizontalPadding = 40;
     const gap = 10;
     const availableWidth = width - horizontalPadding;
-    return Math.floor(
+    const byWidth = Math.floor(
       (availableWidth - gap * (currentMode.columns - 1)) / currentMode.columns
     );
+    // Also fit the rows vertically (header, stats, mode chips and the New Game
+    // button take ~330 px), so short landscape windows don't clip the grid.
+    // On phones in portrait the width is always the tighter limit.
+    const rows = Math.ceil((currentMode.pairs * 2) / currentMode.columns);
+    const byHeight = Math.floor((height - 330 - gap * (rows - 1)) / rows);
+    return Math.max(40, Math.min(byWidth, byHeight));
   })();
 
   const handleCardPress = (id: number) => {

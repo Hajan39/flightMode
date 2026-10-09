@@ -4,7 +4,6 @@ import {
   Pressable,
   View as RNView,
   StyleSheet,
-  useWindowDimensions,
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
@@ -21,6 +20,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -103,7 +103,7 @@ export default function CrossAirRadarGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { width } = useWindowDimensions();
+  const { width } = useGameDimensions();
   const cell = Math.floor((Math.min(width, 520) - 52) / (GRID + 1));
 
   const [players, setPlayers] = useState<MatchPlayer[]>([]);

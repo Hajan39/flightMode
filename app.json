@@ -2,8 +2,8 @@
   "expo": {
     "name": "FlightMode",
     "slug": "flight-mode",
-    "version": "1.5.0",
-    "orientation": "portrait",
+    "version": "1.5.1",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "flightmode",
     "userInterfaceStyle": "automatic",
@@ -52,6 +52,16 @@
         }
       ],
       "expo-iap",
+      "expo-screen-orientation",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableMinifyInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true
+          }
+        }
+      ],
       "./plugins/withPlayGames"
     ],
     "experiments": {

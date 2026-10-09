@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { ZoomIn } from "react-native-reanimated";
-
+import { baseScheme } from "@/components/colorSchemes";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
-import { baseScheme, useColorScheme } from "@/components/useColorScheme";
+import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";

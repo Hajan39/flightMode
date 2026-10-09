@@ -4,7 +4,6 @@ import {
   View as RNView,
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
 } from "react-native";
 
 import GameControls from "@/components/GameControls";
@@ -22,6 +21,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -157,7 +157,7 @@ export default function DuelHangmanGame() {
   const updateProgress = useGameStore((s) => s.updateProgress);
   const { t, language } = useTranslation();
   const haptic = useHaptic();
-  const { width } = useWindowDimensions();
+  const { width } = useGameDimensions();
 
   const [players, setPlayers] = useState<MatchPlayer[]>([]);
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");

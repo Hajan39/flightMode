@@ -1,10 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import {
-  Pressable,
-  View as RNView,
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, {
   FadeInDown,
   useAnimatedStyle,
@@ -13,7 +8,7 @@ import Animated, {
   withSequence,
   withTiming,
 } from "react-native-reanimated";
-
+import { baseScheme } from "@/components/colorSchemes";
 import GameControls from "@/components/GameControls";
 import {
   MatchResult,
@@ -23,10 +18,11 @@ import {
   TurnBanner,
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
-import { baseScheme, useColorScheme } from "@/components/useColorScheme";
+import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { TextStyle } from "@/constants/Typography";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -155,7 +151,7 @@ export default function DuelConnect4Game() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { width } = useWindowDimensions();
+  const { width } = useGameDimensions();
   const cellSize = Math.floor(
     (Math.min(width, 520) - BOARD_PAD * 2 - 16 - GAP * (COLS - 1)) / COLS
   );

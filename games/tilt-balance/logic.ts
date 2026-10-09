@@ -98,3 +98,30 @@ export function isOutOfBounds(state: BallState): boolean {
 export function scoreTurn(survivedMs: number, bestStreakMs: number): number {
   return Math.floor(survivedMs / 1000) + Math.floor(bestStreakMs / 2000);
 }
+
+/**
+ * Maps raw accelerometer axes (fixed to the device's natural orientation) to
+ * screen axes for the current display rotation, so tilting "right" moves the
+ * ball right on screen whichever way a tablet is held. `rotation` is the
+ * Android Surface rotation in degrees as reported by expo-sensors
+ * DeviceMotion (0, 90, 180, -90); 90 means the device is turned 90° counter-
+ * clockwise from its natural orientation. Returns screen x (right positive)
+ * and screen y (down positive, matching React Native layout).
+ */
+export function deviceToScreenTilt(
+  x: number,
+  y: number,
+  rotation: number
+): { x: number; y: number } {
+  switch (rotation) {
+    case 90:
+      return { x: -y, y: -x };
+    case 180:
+      return { x: -x, y };
+    case -90:
+    case 270:
+      return { x: y, y: x };
+    default:
+      return { x, y: -y };
+  }
+}

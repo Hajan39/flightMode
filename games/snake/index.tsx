@@ -1,10 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  Pressable,
-  View as RNView,
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
@@ -15,11 +10,11 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
-
 import {
   CELL_COUNT,
   type Direction,
@@ -46,7 +41,7 @@ export default function SnakeGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { width: screenWidth } = useWindowDimensions();
+  const { width: screenWidth } = useGameDimensions();
 
   const storedBest = useGameStore((s) => s.progress.snake?.highScore ?? 0);
   const updateProgress = useGameStore((s) => s.updateProgress);

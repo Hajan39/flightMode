@@ -1,12 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  Dimensions,
   type NativeScrollEvent,
   type NativeSyntheticEvent,
   ScrollView,
   StyleSheet,
+  useWindowDimensions,
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
@@ -22,8 +22,6 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import type { GameCategory } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const PREF_CATEGORIES: GameCategory[] = [
   "brain",
@@ -83,6 +81,7 @@ interface PageProps {
   subtitle: string;
   theme: (typeof Colors)["dark"];
   title: string;
+  width: number;
 }
 
 /** Home-currency step: chips + the shared searchable picker. */
@@ -108,9 +107,10 @@ function Page({
   isLanguagePage,
   isPreferencesPage,
   isCurrencyPage,
+  width,
 }: PageProps) {
   return (
-    <View style={[styles.page, { width: SCREEN_WIDTH }]}>
+    <View style={[styles.page, { width }]}>
       <Animated.View
         entering={ZoomIn.delay(200).springify()}
         style={[
@@ -166,6 +166,18 @@ export default function OnboardingScreen() {
   const haptic = useHaptic();
   const scrollRef = useRef<ScrollView>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  // Pages are exactly one window wide; follow rotation / foldable resizes.
+  const { width: pageWidth } = useWindowDimensions();
+
+  // After a resize the scroll offset still points at the old page width —
+  // snap back to the current page so it isn't left half-scrolled.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-snap only when the width changes, not on every page change
+  useEffect(() => {
+    scrollRef.current?.scrollTo({
+      animated: false,
+      x: activeIndex * pageWidth,
+    });
+  }, [pageWidth]);
 
   const pages = [
     {
@@ -204,7 +216,7 @@ export default function OnboardingScreen() {
   ];
 
   const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const index = Math.round(e.nativeEvent.contentOffset.x / SCREEN_WIDTH);
+    const index = Math.round(e.nativeEvent.contentOffset.x / pageWidth);
     setActiveIndex(index);
   };
 
@@ -245,7 +257,7 @@ export default function OnboardingScreen() {
         style={styles.scroller}
       >
         {pages.map((p, i) => (
-          <Page key={i} {...p} theme={theme} />
+          <Page key={i} {...p} theme={theme} width={pageWidth} />
         ))}
       </ScrollView>
 
@@ -278,7 +290,7 @@ export default function OnboardingScreen() {
             setActiveIndex(activeIndex + 1);
             scrollRef.current?.scrollTo({
               animated: true,
-              x: (activeIndex + 1) * SCREEN_WIDTH,
+              x: (activeIndex + 1) * pageWidth,
             });
           }
         }}

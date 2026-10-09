@@ -1,10 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Pressable,
-  View as RNView,
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
@@ -21,6 +16,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -121,7 +117,7 @@ export default function DuelEmojiFindGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { width } = useWindowDimensions();
+  const { width } = useGameDimensions();
   const cellSize = Math.floor(
     (Math.min(width, 520) - Spacing.lg * 2 - CELL_GAP * (GRID_COLS - 1)) /
       GRID_COLS

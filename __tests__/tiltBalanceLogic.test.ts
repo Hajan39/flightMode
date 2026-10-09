@@ -2,6 +2,7 @@ import {
   applyGust,
   type BallState,
   DEFAULT_PHYSICS,
+  deviceToScreenTilt,
   distanceFromCenter,
   gustIntervalMs,
   gustStrength,
@@ -101,6 +102,39 @@ describe("scoreTurn", () => {
       const score = scoreTurn(ms, 0);
       expect(score).toBeGreaterThanOrEqual(previous);
       previous = score;
+    }
+  });
+});
+
+describe("deviceToScreenTilt (display rotation remap)", () => {
+  // Tilting the device's own right edge down gives +x on the raw sensor.
+  test("natural orientation keeps x and flips y to screen-down", () => {
+    expect(deviceToScreenTilt(0.5, 0.2, 0)).toEqual({ x: 0.5, y: -0.2 });
+  });
+
+  test("rotated 90° CCW: device top is screen-left", () => {
+    // Device right edge now points up the screen → raw +x is screen-up (-y).
+    expect(deviceToScreenTilt(1, 0, 90)).toEqual({ x: -0, y: -1 });
+    // Device top edge points left → raw +y is screen-left (-x).
+    expect(deviceToScreenTilt(0, 1, 90)).toEqual({ x: -1, y: -0 });
+  });
+
+  test("upside down inverts both screen axes", () => {
+    expect(deviceToScreenTilt(0.5, 0.2, 180)).toEqual({ x: -0.5, y: 0.2 });
+  });
+
+  test("rotated 90° CW (-90 / 270) mirrors the 90° case", () => {
+    expect(deviceToScreenTilt(1, 0, -90)).toEqual({ x: 0, y: 1 });
+    expect(deviceToScreenTilt(0, 1, -90)).toEqual({ x: 1, y: 0 });
+    expect(deviceToScreenTilt(0.3, 0.4, 270)).toEqual(
+      deviceToScreenTilt(0.3, 0.4, -90)
+    );
+  });
+
+  test("every rotation preserves tilt magnitude", () => {
+    for (const r of [0, 90, 180, -90]) {
+      const { x, y } = deviceToScreenTilt(0.3, 0.4, r);
+      expect(Math.hypot(x, y)).toBeCloseTo(0.5);
     }
   });
 });

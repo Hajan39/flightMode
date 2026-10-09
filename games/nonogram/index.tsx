@@ -4,7 +4,6 @@ import {
   View as RNView,
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
 } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -23,6 +22,7 @@ import { NONOGRAM_LEVELS, type NonogramLevel } from "./levels";
 // useSyncExternalStore until it throws on first open (no progress entry yet).
 const EMPTY_LEVEL_STARS: Record<string, number> = {};
 
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import {
   type CellState,
   countFilledCells,
@@ -138,7 +138,7 @@ export default function NonogramGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { width: screenW } = useWindowDimensions();
+  const { width: screenW } = useGameDimensions();
   const updateProgress = useGameStore((state) => state.updateProgress);
   const levelStars =
     useGameStore((state) => state.progress.nonogram?.levelStars) ??

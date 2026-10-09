@@ -1,12 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Accelerometer } from "expo-sensors";
+import { Accelerometer, DeviceMotion } from "expo-sensors";
 import { useEffect, useRef, useState } from "react";
-import {
-  Pressable,
-  View as RNView,
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 
 import GameControls from "@/components/GameControls";
@@ -24,16 +19,17 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
-
 import {
   applyGust,
   type BallState,
+  deviceToScreenTilt,
   distanceFromCenter,
   gustIntervalMs,
   gustStrength,
@@ -66,7 +62,7 @@ export default function TiltBalanceGame() {
   const { t } = useTranslation();
   const haptic = useHaptic();
   const updateProgress = useGameStore((s) => s.updateProgress);
-  const { width } = useWindowDimensions();
+  const { width } = useGameDimensions();
   const plateSize = Math.min(width - Spacing.lg * 2, 340);
   const plateRadius = plateSize / 2;
 
@@ -90,6 +86,9 @@ export default function TiltBalanceGame() {
   const bestStreakRef = useRef(0);
   const frameRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const subscriptionRef = useRef<{ remove: () => void } | null>(null);
+  const rotationSubRef = useRef<{ remove: () => void } | null>(null);
+  // Display rotation (Surface degrees); tablets may be held any way round.
+  const rotationRef = useRef(0);
 
   const solo = players.length === 1;
   const current = players[turnIndex] ?? players[0];
@@ -101,6 +100,8 @@ export default function TiltBalanceGame() {
     frameRef.current = null;
     subscriptionRef.current?.remove();
     subscriptionRef.current = null;
+    rotationSubRef.current?.remove();
+    rotationSubRef.current = null;
   };
 
   useEffect(() => stopLoop, [stopLoop]);
@@ -145,11 +146,18 @@ export default function TiltBalanceGame() {
     nextGustRef.current = Date.now() + gustIntervalMs(0);
 
     Accelerometer.setUpdateInterval(SENSOR_INTERVAL_MS);
+    // DeviceMotion is only used for its `orientation` (display rotation) so
+    // the accelerometer's device-fixed axes can be mapped to screen axes.
+    DeviceMotion.setUpdateInterval(500);
+    rotationSubRef.current = DeviceMotion.addListener(({ orientation }) => {
+      rotationRef.current = orientation;
+    });
     subscriptionRef.current = Accelerometer.addListener(({ x, y }) => {
       // Phone flat, screen up: +x tilts right, -y tilts "down" the screen.
+      const screen = deviceToScreenTilt(x, y, rotationRef.current);
       tiltRef.current = {
-        x: Math.max(-1, Math.min(1, x)),
-        y: Math.max(-1, Math.min(1, -y)),
+        x: Math.max(-1, Math.min(1, screen.x)),
+        y: Math.max(-1, Math.min(1, screen.y)),
       };
     });
 

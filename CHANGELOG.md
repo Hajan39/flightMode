@@ -7,6 +7,11 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed
+
+- **Large screens and rotation (Play: "remove resize and orientation restrictions")**: the manifest no longer pins portrait. Phones stay portrait via a runtime lock (`components/OrientationPolicy.tsx`, smallest side < 600 dp); tablets, foldables and desktop windows rotate and resize freely. Every game now renders in a centred portrait column on wide screens (`hooks/useGameDimensions.ts`), so boards no longer overflow on landscape tablets; Memory also fits its grid to the height. Onboarding pages follow window size changes. Turbulence Test maps tilt to screen axes for any display rotation. Verified on 13 screens + all 41 games (start and in-play) at 1280×800 and 800×1280, plus a phone 390×844 regression pass. App version 1.5.0 → **1.5.1** (new native modules: `expo-screen-orientation`, `expo-build-properties`).
+- **Release builds are minified and obfuscated (R8) with resource shrinking** (Play: DEX code optimization score — obfuscation was 1 %).
+
 ### Added
 
 - **Google Play Games achievements are live-wired**: all 48 achievements now carry their Play Console ids (`data/playGamesAchievements.ts`), so local unlocks are mirrored to Play Games for signed-in players. A test now fails if any achievement is left without a unique id.
@@ -50,6 +55,8 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- Returning users could be sent back to onboarding when settings loaded after fonts: the redirect ran on the store's default `isFirstLaunch: true`. It now waits for persisted settings to hydrate.
+- Web build crashed on every screen (`baseScheme is not a function`): the web `useColorScheme` variant lacked the helpers added for Plus themes. Shared scheme helpers now live in `components/colorSchemes.ts`.
 - German achievement names: "Frequent Flyer" and "Seasoned Flyer" were both "Vielflieger", which Play Console rejects on import (names must be unique per locale). "Seasoned Flyer" is now "Erfahrener Flieger", and the achievements exporter checks name uniqueness in every locale, not just English.
 - **Plus analytics inflated on every launch**: restoring purchases at startup re-reported `support_completed` for every Plus owner on every app start (and re-acknowledged the already-acknowledged purchase). Restores now re-grant entitlements silently; only real checkouts report.
 - **Play Console achievements export produced empty CSVs**: its parser depended on the key order in `data/achievements.ts`, which the formatter now sorts. It now reads keys order-independently and fails loudly if the parsed count doesn't match or the 1000-point cap is exceeded (`scripts/export-pgs-achievements.mjs`).

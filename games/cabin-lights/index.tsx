@@ -1,15 +1,11 @@
 import { useState } from "react";
-import {
-  Pressable,
-  View as RNView,
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -98,7 +94,7 @@ export default function CabinLightsGame() {
   );
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { width } = useWindowDimensions();
+  const { width } = useGameDimensions();
 
   // ── State ─────────────────────────────────────────────────────────────────
   const [phase, setPhase] = useState<Phase>("idle");

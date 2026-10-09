@@ -27,7 +27,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **Stack:** Expo 57 · React Native 0.86 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · expo-sensors · PostHog
 
-**App version:** 1.5.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
+**App version:** 1.5.1 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, `app/preflight.tsx` (offline-readiness), `app/checklist.tsx` (travel checklist) and `app/converter.tsx` (currency/units) are modal stack screens; `app/destinations.tsx` (destination tips) and `app/phrasebook.tsx` are pushed card screens. Onboarding flow at `app/onboarding.tsx`.
 
@@ -145,6 +145,8 @@ Multiplayer (pass-and-play / shared-screen) components in `components/multiplaye
 4. Wire `loadComponent` via `require("@/games/<id>").default`
 5. Ensure `updateProgress()` is called on game end
 
+**Screen size rule:** games must read size from `useGameDimensions()` (`hooks/useGameDimensions.ts`), never `useWindowDimensions` / `Dimensions`. The game host (`app/game/[id].tsx`) renders every game in a centred portrait column (width ≤ 0.75 × window height), so boards sized from the width fit on landscape tablets; fit tall grids to `height` too (see `games/memory`). Orientation: the manifest is not locked (Play flags locks on large screens); `components/OrientationPolicy.tsx` locks portrait at runtime only on phones (smallest side < 600 dp) and unlocks rotation on tablets/foldables. `tilt-balance` maps accelerometer axes to screen axes via `deviceToScreenTilt` using DeviceMotion's display rotation.
+
 **Timer rule:** timed games must derive elapsed time from `Date.now()` wall-clock deadlines, not chained JS `setTimeout` ticks — fast taps can inflate tick-based timers.
 
 ## Content
@@ -160,6 +162,12 @@ Remote articles come from **`content/feed.json`** (`{ version, items: ContentIte
 Defined in `data/achievements.ts` (48 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
 
 `useAchievementStore` tracks: `unlockedIds`, `newUnlockedIds` (cleared by `AchievementToast`), `totalFlights`, `totalRelaxSessions`, `articlesRead`, `soundsPlayed`, `lastActiveDate`, `streakDays`.
+
+## Android release build
+
+R8 minification + resource shrinking are on (`expo-build-properties` in `app.json`). Expo module classes (incl. `modules/play-games`) are kept by `expo-modules-core` rules; after adding a native library that uses reflection, verify the release build on a device (purchases, Play Games) and add `extraProguardRules` if something is stripped.
+
+Play Console's "deprecated edge-to-edge APIs" notice (`setStatusBarColor`, cutout modes) originates in React Native core and Material Components, not app code — the app never calls `StatusBar` APIs; it clears with upstream updates.
 
 ## Monetization (Plus + tips)
 

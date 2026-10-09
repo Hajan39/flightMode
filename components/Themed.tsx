@@ -4,7 +4,8 @@
  */
 import { Text as DefaultText, View as DefaultView } from "react-native";
 import Colors from "@/constants/Colors";
-import { baseScheme, useColorScheme } from "./useColorScheme";
+import { baseScheme } from "./colorSchemes";
+import { useColorScheme } from "./useColorScheme";
 
 interface ThemeProps {
   crazyColor?: string;
