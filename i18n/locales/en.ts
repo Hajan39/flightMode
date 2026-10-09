@@ -594,7 +594,7 @@ export const en = {
   // Emoji Find
   efTitle: "Emoji Hunt",
   efDesc:
-    "Both players share the screen. Tap the emoji shown above as fast as you can! P1 taps the left side, P2 the right side of each cell.",
+    "Take turns on one phone: find the target emoji in the grid faster than everyone else!",
   efRules1: "Find the target emoji in the grid",
   efRules2: "{{seconds}}s per round",
   efRules3: "{{rounds}} rounds total",
@@ -816,7 +816,7 @@ export const en = {
   tfeScore: "Score",
   tfeMoves: "Moves",
   tfeBestTile: "Best",
-  tfeSwipeHint: "Tap arrows to move tiles",
+  tfeSwipeHint: "Swipe the board or tap the arrows",
   tfeGameOver: "No moves left!",
   tfeYouWin: "You reached 2048! 🎉",
   // Minesweeper

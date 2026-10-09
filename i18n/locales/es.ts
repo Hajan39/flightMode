@@ -570,7 +570,7 @@
   // Emoji Find
   efTitle: "Caza de Emoji",
   efDesc:
-    "Ambos jugadores comparten pantalla. ¡Encuentra el emoji mostrado! J1 toca el lado izquierdo, J2 el derecho.",
+    "Por turnos en un solo móvil: ¡encuentra el emoji objetivo en la cuadrícula más rápido que los demás!",
   efRules1: "Encuentra el emoji objetivo en la cuadrícula",
   efRules2: "{{seconds}}s por ronda",
   efRules3: "{{rounds}} rondas en total",
@@ -764,7 +764,7 @@
   tfeScore: "Puntos",
   tfeMoves: "Movimientos",
   tfeBestTile: "Mejor",
-  tfeSwipeHint: "Toca las flechas para mover",
+  tfeSwipeHint: "Desliza el tablero o toca las flechas",
   tfeGameOver: "¡Sin movimientos!",
   tfeYouWin: "¡Llegaste a 2048! 🎉",
   gameMinesweeperName: "Buscaminas",

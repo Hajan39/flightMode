@@ -551,7 +551,7 @@
   // Emoji Find
   efTitle: "이모지 헌트",
   efDesc:
-    "두 플레이어가 화면을 공유합니다. 표시된 이모지를 찾으세요! P1은 왼쪽, P2는 오른쪽을 탭하세요.",
+    "휴대폰 한 대로 번갈아 가며, 격자에서 목표 이모지를 누구보다 빨리 찾아보세요!",
   efRules1: "그리드에서 목표 이모지 찾기",
   efRules2: "라운드당 {{seconds}}초",
   efRules3: "총 {{rounds}} 라운드",
@@ -741,7 +741,7 @@
   tfeScore: "점수",
   tfeMoves: "이동",
   tfeBestTile: "최고",
-  tfeSwipeHint: "화살표를 눌러 타일 이동",
+  tfeSwipeHint: "보드를 스와이프하거나 화살표를 누르세요",
   tfeGameOver: "이동 불가!",
   tfeYouWin: "2048 달성! 🎉",
   gameMinesweeperName: "지뢰 찾기",

@@ -547,7 +547,7 @@
   c4NextRound: "下一局",
   // Emoji Find
   efTitle: "表情符号猎手",
-  efDesc: "两名玩家共享屏幕。快速找到显示的表情！P1点击左侧，P2点击右侧。",
+  efDesc: "在同一部手机上轮流进行：比其他人更快地在网格中找到目标表情！",
   efRules1: "在网格中找到目标表情",
   efRules2: "每轮{{seconds}}秒",
   efRules3: "共{{rounds}}轮",
@@ -736,7 +736,7 @@
   tfeScore: "得分",
   tfeMoves: "步数",
   tfeBestTile: "最高",
-  tfeSwipeHint: "点击箭头移动方块",
+  tfeSwipeHint: "在棋盘上滑动或点击箭头",
   tfeGameOver: "无路可走！",
   tfeYouWin: "达到2048！ 🎉",
   gameMinesweeperName: "扫雷",

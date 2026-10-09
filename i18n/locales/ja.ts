@@ -555,7 +555,7 @@
   // Emoji Find
   efTitle: "絵文字ハント",
   efDesc:
-    "両プレイヤーが画面を共有。表示された絵文字を探せ！P1は左、P2は右をタップ。",
+    "1台のスマホで交代しながら、グリッドの中から目標の絵文字を誰よりも早く見つけよう！",
   efRules1: "グリッドからターゲット絵文字を探せ",
   efRules2: "1ラウンド{{seconds}}秒",
   efRules3: "全{{rounds}}ラウンド",
@@ -748,7 +748,7 @@
   tfeScore: "スコア",
   tfeMoves: "手数",
   tfeBestTile: "ベスト",
-  tfeSwipeHint: "矢印でタイルを動かそう",
+  tfeSwipeHint: "盤面をスワイプするか矢印をタップ",
   tfeGameOver: "手が無い！",
   tfeYouWin: "2048達成！ 🎉",
   gameMinesweeperName: "マインスイーパー",
