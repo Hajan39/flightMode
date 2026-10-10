@@ -1,4 +1,11 @@
-import { checkGuess, getDayOfYear, WORD_POOL } from "@/games/word-guess/logic";
+import {
+  checkGuess,
+  getDayOfYear,
+  getKeyboardRows,
+  getWordPool,
+  WORD_POOL,
+  type WordGuessLanguage,
+} from "@/games/word-guess/logic";
 
 const FIVE_UPPERCASE_LETTERS = /^[A-Z]{5}$/;
 
@@ -80,3 +87,26 @@ describe("word-guess WORD_POOL", () => {
     expect(d).toBeLessThanOrEqual(366);
   });
 });
+
+describe.each(["cs", "de", "en"] as WordGuessLanguage[])(
+  "word-guess %s pool",
+  (language) => {
+    const pool = getWordPool(language);
+    const keys = new Set(getKeyboardRows(language).flat());
+
+    test("covers a year of daily words without repeats", () => {
+      expect(pool.length).toBeGreaterThanOrEqual(366);
+      expect(new Set(pool).size).toBe(pool.length);
+    });
+
+    test("every word is 5 letters typeable on the keyboard", () => {
+      for (const word of pool) {
+        expect(word).toBe(word.normalize("NFC"));
+        expect(word.length).toBe(5);
+        for (const letter of word) {
+          expect(keys.has(letter)).toBe(true);
+        }
+      }
+    });
+  }
+);

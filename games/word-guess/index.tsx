@@ -20,20 +20,19 @@ import type { GameProgressUpdate } from "@/types/game";
 import {
   checkGuess,
   getDayOfYear,
+  getKeyboardRows,
+  getWordPool,
   type LetterState,
   mergeKeyboard,
-  WORD_POOL,
+  wordGuessLanguage,
 } from "./logic";
 
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
 
-const KEYBOARD_ROWS = [
-  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-  ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-  ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "⌫"],
-];
+const KEY_HEIGHT = 42;
+const KEY_GAP = 4;
 
 const PRESENT_COLOR = "#c9a227";
 
@@ -56,9 +55,12 @@ interface GuessRow {
 export default function WordGuessGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  // Words and keyboard follow the app language (cs / de, else English).
+  const wgLanguage = wordGuessLanguage(language);
+  const keyboardRows = getKeyboardRows(wgLanguage);
   const haptic = useHaptic();
-  const { width: screenWidth } = useGameDimensions();
+  const { height: screenHeight, width: screenWidth } = useGameDimensions();
 
   const updateProgress = useGameStore((s) => s.updateProgress);
 
@@ -94,15 +96,23 @@ export default function WordGuessGame() {
   }, [currentInput, guesses, keyboardState, currentAttempt]);
 
   // Derived sizing
-  const cellSize = Math.floor((screenWidth - 80) / 5);
-  const keyWidth = Math.floor((screenWidth - 24) / 10);
+  // Extra accent rows make the keyboard taller, so fit the grid to the height too.
+  const keyboardHeight = keyboardRows.length * (KEY_HEIGHT + KEY_GAP);
+  const cellSize = Math.floor(
+    Math.min((screenWidth - 80) / 5, (screenHeight - keyboardHeight - 300) / 6)
+  );
+  // 10 keys + 9 gaps across the padded row (Spacing.lg on each side).
+  const keyWidth = Math.floor(
+    (screenWidth - 2 * Spacing.lg - 9 * KEY_GAP) / 10
+  );
 
   // ---------------------------------------------------------------------------
   // Game lifecycle
   // ---------------------------------------------------------------------------
 
   const startGame = useCallback(() => {
-    const word = WORD_POOL[getDayOfYear() % WORD_POOL.length];
+    const pool = getWordPool(wgLanguage);
+    const word = pool[getDayOfYear() % pool.length];
     setTargetWord(word);
     setGuesses(
       new Array(6)
@@ -117,7 +127,7 @@ export default function WordGuessGame() {
     setResult(null);
     setPhase("playing");
     submittingRef.current = false;
-  }, []);
+  }, [wgLanguage]);
 
   // ---------------------------------------------------------------------------
   // Input handling
@@ -399,7 +409,7 @@ export default function WordGuessGame() {
 
         {/* QWERTY keyboard */}
         <RNView style={styles.keyboard}>
-          {KEYBOARD_ROWS.map((kbRow, kbRowIdx) => (
+          {keyboardRows.map((kbRow, kbRowIdx) => (
             <RNView key={kbRowIdx} style={styles.keyboardRow}>
               {kbRow.map((key) => {
                 const isWide = key === "ENTER" || key === "⌫";
@@ -517,7 +527,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: Radius.sm,
     borderWidth: 1,
-    height: 42,
+    height: KEY_HEIGHT,
     justifyContent: "center",
   },
   // Keyboard
@@ -527,7 +537,7 @@ const styles = StyleSheet.create({
   },
   keyboardRow: {
     flexDirection: "row",
-    gap: 4,
+    gap: KEY_GAP,
     justifyContent: "center",
   },
   keyText: {

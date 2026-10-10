@@ -11,7 +11,7 @@ and this project adheres to Semantic Versioning.
 
 - **Sky Defense waits for you**: every wave now starts from a build phase — place towers, then tap "Launch wave N". Previously the first wave started the moment you picked a difficulty and the between-wave card covered the board with a 5-second auto-start, so you could not build between waves either.
 - **Quiz no longer gives answers away by length**: in 34 of 50 questions the correct answer was the longest option (clearly so in 28). Wrong options were rewritten in all 12 languages to be plausible and of similar length.
-- **Word Guess pool 146 → 486 words**, so the daily word does not repeat within a year.
+- **Word Guess in Czech and German**: the daily word and the keyboard follow the app language — Czech (379 words, QWERTZ + two rows of accented letters) and German (416 words, QWERTZ + Ä Ö Ü); other languages keep the English pool, now 146 → 486 words so the daily word does not repeat within a year. The keyboard no longer overflows the screen edges (Q and P were clipped).
 - **Flight progress bar was empty in release builds** (Home flight card): the Reanimated percentage-width fill never rendered; it is a plain percentage view now. Jet-lag advice for 18–04 arrivals says "evening or at night" (a 03:39 arrival was called "evening").
 - App version 1.5.1 → **1.5.2**.
 
