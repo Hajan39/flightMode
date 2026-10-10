@@ -658,7 +658,7 @@ export default function SkyDefenseGame() {
 
   /* --- state --- */
   const [phase, setPhase] = useState<
-    "start" | "playing" | "wave-clear" | "won" | "lost"
+    "start" | "build" | "playing" | "won" | "lost"
   >("start");
   const [difficulty, setDifficulty] = useState<DifficultyPreset>(
     DIFFICULTIES[1]
@@ -678,7 +678,6 @@ export default function SkyDefenseGame() {
   } | null>(null);
   const [selectedPlaced, setSelectedPlaced] = useState<number | null>(null);
   const [gameSpeed, setGameSpeed] = useState<1 | 2>(1);
-  const [countdown, setCountdown] = useState(0);
   const [paused, setPaused] = useState(false);
   const [showRestartConfirm, setShowRestartConfirm] = useState(false);
   const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
@@ -938,7 +937,10 @@ export default function SkyDefenseGame() {
             updateProgress("sky-defense", newScore, { won: true })
           );
         } else {
-          setPhase("wave-clear");
+          // Next wave waits in the build phase until the player launches it.
+          setBullets([]);
+          setWaveIdx(waveIdx + 1);
+          setPhase("build");
         }
       }
     }, TICK / gameSpeed);
@@ -950,7 +952,7 @@ export default function SkyDefenseGame() {
   const handleBoardPress = (e: {
     nativeEvent: { pageX: number; pageY: number };
   }) => {
-    if (phase !== "playing" && phase !== "wave-clear") {
+    if (phase !== "playing" && phase !== "build") {
       return;
     }
     const { col, row } = cellFromEvent(e);
@@ -994,36 +996,12 @@ export default function SkyDefenseGame() {
     setPlaceCursor(null);
   };
 
-  /* --- next wave --- */
-  const nextWave = () => {
-    const wi = waveIdx + 1;
-    setWaveIdx(wi);
-    startWave(wi);
+  /* --- launch the wave the player has been building for --- */
+  const launchWave = () => {
+    setSelectedTower(null);
+    setPlaceCursor(null);
+    startWave(waveIdx);
   };
-
-  const nextWaveRef = useRef(nextWave);
-  nextWaveRef.current = nextWave;
-  useEffect(() => {
-    if (phase !== "wave-clear") {
-      setCountdown(0);
-      return;
-    }
-    if (showRestartConfirm) {
-      return;
-    }
-    setCountdown(5);
-    const iv = setInterval(() => {
-      setCountdown((c) => {
-        if (c <= 1) {
-          clearInterval(iv);
-          nextWaveRef.current();
-          return 0;
-        }
-        return c - 1;
-      });
-    }, 1000);
-    return () => clearInterval(iv);
-  }, [phase, showRestartConfirm]);
 
   /* --- restart --- */
   const restart = () => {
@@ -1067,9 +1045,8 @@ export default function SkyDefenseGame() {
     tick.current = 0;
     endedRef.current = false;
     wavesRef.current = getWaves(preset);
-    setPhase("playing");
-    // start first wave after short delay
-    setTimeout(() => startWave(0, preset), 50);
+    // Build first: the first wave starts when the player launches it.
+    setPhase("build");
   };
 
   /* ================================================================
@@ -1172,7 +1149,7 @@ export default function SkyDefenseGame() {
     );
   }
 
-  /* -- playing / wave-clear -- */
+  /* -- build / playing -- */
   return (
     <View style={s.root}>
       {/* Top controls row */}
@@ -1389,8 +1366,8 @@ export default function SkyDefenseGame() {
         </RNView>
       </Pressable>
 
-      {phase === "wave-clear" && (
-        <RNView style={s.waveModalBackdrop}>
+      {phase === "build" && (
+        <RNView pointerEvents="box-none" style={s.waveModalBackdrop}>
           <RNView
             style={[
               s.waveModalCard,
@@ -1398,19 +1375,20 @@ export default function SkyDefenseGame() {
             ]}
           >
             <Text style={[s.waveModalTitle, { color: theme.text }]}>
-              {t("skyDefenseWaveCleared", { wave: waveIdx + 1 })}
-            </Text>
-            <Text style={[s.waveModalCountdown, { color: theme.mutedText }]}>
-              {countdown}s
+              {waveIdx === 0
+                ? t("skyDefenseBuildHint")
+                : t("skyDefenseWaveCleared", { wave: waveIdx })}
             </Text>
             <Pressable
-              accessibilityLabel={t("skyDefenseNextWave")}
+              accessibilityLabel={t("skyDefenseStartWave", {
+                wave: waveIdx + 1,
+              })}
               accessibilityRole="button"
-              onPress={nextWave}
+              onPress={launchWave}
               style={[s.waveModalBtn, { backgroundColor: theme.tint }]}
             >
               <Text style={[s.mainBtnText, { color: theme.onTint }]}>
-                {t("skyDefenseNextWave")}
+                {t("skyDefenseStartWave", { wave: waveIdx + 1 })}
               </Text>
             </Pressable>
           </RNView>
@@ -1632,8 +1610,8 @@ const s = StyleSheet.create({
 
   waveModalBackdrop: {
     alignItems: "center",
-    bottom: 0,
-    justifyContent: "center",
+    bottom: 16,
+    justifyContent: "flex-end",
     left: 0,
     paddingHorizontal: 24,
     position: "absolute",
@@ -1650,18 +1628,14 @@ const s = StyleSheet.create({
     alignItems: "center",
     borderRadius: 14,
     borderWidth: 1,
-    gap: 10,
-    paddingHorizontal: 18,
-    paddingVertical: 18,
+    gap: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
     width: Math.min(BOARD_W - 24, 320),
   },
-  waveModalCountdown: {
+  waveModalTitle: {
     fontSize: 14,
     fontWeight: "700",
-  },
-  waveModalTitle: {
-    fontSize: 18,
-    fontWeight: "800",
     textAlign: "center",
   },
 });

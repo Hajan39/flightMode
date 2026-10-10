@@ -70,7 +70,7 @@ describe("word-guess WORD_POOL", () => {
   });
 
   test("pool is non-empty and de-duplicated", () => {
-    expect(WORD_POOL.length).toBeGreaterThan(50);
+    expect(WORD_POOL.length).toBeGreaterThanOrEqual(366);
     expect(new Set(WORD_POOL).size).toBe(WORD_POOL.length);
   });
 

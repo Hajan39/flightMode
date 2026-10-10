@@ -9,6 +9,11 @@ and this project adheres to Semantic Versioning.
 
 ### Changed
 
+- **Sky Defense waits for you**: every wave now starts from a build phase — place towers, then tap "Launch wave N". Previously the first wave started the moment you picked a difficulty and the between-wave card covered the board with a 5-second auto-start, so you could not build between waves either.
+- **Quiz no longer gives answers away by length**: in 34 of 50 questions the correct answer was the longest option (clearly so in 28). Wrong options were rewritten in all 12 languages to be plausible and of similar length.
+- **Word Guess pool 146 → 486 words**, so the daily word does not repeat within a year.
+- App version 1.5.1 → **1.5.2**.
+
 - **Large screens and rotation (Play: "remove resize and orientation restrictions")**: the manifest no longer pins portrait. Phones stay portrait via a runtime lock (`components/OrientationPolicy.tsx`, smallest side < 600 dp); tablets, foldables and desktop windows rotate and resize freely. Every game now renders in a centred portrait column on wide screens (`hooks/useGameDimensions.ts`), so boards no longer overflow on landscape tablets; Memory also fits its grid to the height. Onboarding pages follow window size changes. Turbulence Test maps tilt to screen axes for any display rotation. Verified on 13 screens + all 41 games (start and in-play) at 1280×800 and 800×1280, plus a phone 390×844 regression pass. App version 1.5.0 → **1.5.1** (new native modules: `expo-screen-orientation`, `expo-build-properties`).
 - **Release builds are minified and obfuscated (R8) with resource shrinking** (Play: DEX code optimization score — obfuscation was 1 %).
 

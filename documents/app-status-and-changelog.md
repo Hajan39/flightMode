@@ -132,6 +132,9 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-10-10
 
+- Obrana nebe: kazda vlna zacina fazi stavby (postav veze, pak "Spustit vlnu N"); drive prvni vlna startovala hned a mezi vlnami karta zakryvala desku s 5s automatickym startem
+- kviz: spatne odpovedi prepsane ve 12 jazycich, aby spravna nebyla nejdelsi (drive 34/50 otazek)
+- Hadej slovo: 486 slov (drive 146), denni slovo se behem roku neopakuje; verze 1.5.2
 - QA vsech 41 her na zarizeni (release build): Simon bez tlacitek (opraveno), swipe ve 2048 a Hadovi, odpocet v Pokynech posadky, mirnejsi start ATC (L1-2 +3 s paliva), Razeni sloupcu vetsi dlazdice, Hledani min citelne odkryta pole, Letove trasy bez prekryvajicich se popisku, Hledani slov + Presmycky cs/de slova
 - Relax: zvuky hned pod nadpisem, vychozi hlasitost odpovida volbe; Profil: mrizky pres celou sirku
 - cestina: tykani jednomu hraci vsude, rodove neutralni formulace, ceske nazvy her, mesta v 1. pade; kviz ETA uz neprozrazuje odpoved

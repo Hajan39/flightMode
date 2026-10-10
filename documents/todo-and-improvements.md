@@ -50,7 +50,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P1 (blizsi iterace)
 
-- nalezy z device QA 2026-10-10 (neopraveno): Hadej slovo (Wordle) je jen anglicky — lokalizace potrebuje validacni slovnik per jazyk; kviz casto prozrazuje spravnou odpoved delkou (nejdelsi moznost); Obrana nebe pousti prvni vlnu hned bez casu na postaveni vezi; Letovy kviz a Hledani slov startuji bez odpoctu (u klidnych her OK)
+- nalezy z device QA 2026-10-10 (neopraveno): Hadej slovo (Wordle) je jen anglicky — lokalizace potrebuje validacni slovnik per jazyk (kviz delky odpovedi, Obrana nebe faze stavby a vetsi zasoba slov opraveny v 1.5.2); Letovy kviz a Hledani slov startuji bez odpoctu (u klidnych her OK)
 - vyuzit centralni online/offline stav pro budouci analytics flush debug a Strapi sync gating
 - navazat na novou retention event vrstvu (`app_open_count`, `second_session_started`, `first_session_completed`, `flight_setup_completed`) a postavit nad ni tydne vyhodnocovane D1/D7 dashboardy
 - po nasazeni support CTA vyhodnotit funnel `support_opened -> support_clicked -> support_completed` a upravit copy/umisteni podle konverzi
