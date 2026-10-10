@@ -534,11 +534,14 @@
   quizQ44c: "Alkohol trinken, um die Muskeln zu lockern",
   quizQ44d: "Völlig regungslos im Sitz bleiben",
   quizQ45: "Was ist ein Codeshare-Flug?",
-  quizQ45a: "Ein Militärflug, der zusätzlich auch zivile Passagiere an Bord befördert",
+  quizQ45a:
+    "Ein Militärflug, der zusätzlich auch zivile Passagiere an Bord befördert",
   quizQ45b:
     "Ein Flug, der von einer Airline betrieben, aber von einer anderen verkauft wird",
-  quizQ45c: "Ein Flug, dessen Passagierliste von der Airline geheim gehalten wird",
-  quizQ45d: "Ein reines Frachtflugzeug, das noch ein paar freie Sitzplätze anbietet",
+  quizQ45c:
+    "Ein Flug, dessen Passagierliste von der Airline geheim gehalten wird",
+  quizQ45d:
+    "Ein reines Frachtflugzeug, das noch ein paar freie Sitzplätze anbietet",
   quizQ46: "Wozu dient das winzige Loch in Flugzeugfenstern?",
   quizQ46a: "Um frische Luft in die Kabine zu lassen",
   quizQ46b: "Um den Druck zwischen den Scheiben zu regulieren",
