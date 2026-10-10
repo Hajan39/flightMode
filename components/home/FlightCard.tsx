@@ -1,12 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useEffect } from "react";
-import { Pressable, StyleSheet } from "react-native";
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from "react-native-reanimated";
+import { View as RNView, Pressable, StyleSheet } from "react-native";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
 import JetlagCard from "@/components/JetlagCard";
@@ -122,7 +115,7 @@ export default function FlightCard({
         <View
           style={[styles.progressBar, { backgroundColor: theme.progressTrack }]}
         >
-          <AnimatedProgressFill color={theme.tint} progress={progress} />
+          <ProgressFill color={theme.tint} progress={progress} />
         </View>
         <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
           {landed
@@ -169,30 +162,25 @@ export default function FlightCard({
   );
 }
 
-function AnimatedProgressFill({
+function ProgressFill({
   progress,
   color,
 }: {
   progress: number;
   color: string;
 }) {
-  const width = useSharedValue(0);
-
-  useEffect(() => {
-    width.value = withTiming(Math.round(progress * 100), {
-      duration: 800,
-      easing: Easing.out(Easing.cubic),
-    });
-  }, [progress, width]);
-
-  const fillStyle = useAnimatedStyle(() => ({
-    backgroundColor: color,
-    borderRadius: 4,
-    height: "100%",
-    width: `${width.value}%`,
-  }));
-
-  return <Animated.View style={fillStyle} />;
+  // Plain percentage width: an animated percentage (Reanimated) rendered an
+  // empty bar in release builds.
+  return (
+    <RNView
+      style={{
+        backgroundColor: color,
+        borderRadius: 4,
+        height: "100%",
+        width: `${Math.round(progress * 100)}%`,
+      }}
+    />
+  );
 }
 
 const styles = StyleSheet.create({

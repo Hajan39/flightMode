@@ -1117,7 +1117,7 @@ export const cs = {
   jetlagAdviceSleepBeforeArrival:
     "Přistáváš ráno — spi ve druhé polovině letu.",
   jetlagAdviceStayAwake:
-    "Přistáváš večer — zůstaň vzhůru a spi až po přistání.",
+    "Přistáváš večer nebo v noci — zůstaň vzhůru a spi až po přistání.",
   jetlagAdviceShortNap:
     "Přílet odpoledne — krátké zdřímnutí je fajn, vyhni se dlouhému spánku.",
   jetlagAdviceNone: "Malý posun — drž se běžného rytmu.",

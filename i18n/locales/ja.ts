@@ -1103,7 +1103,8 @@
   jetlagSleepWindow: "{{start}}〜{{end}}に睡眠を（機内時間）",
   jetlagAdviceSleepBeforeArrival:
     "朝に到着します。フライト後半に眠りましょう。",
-  jetlagAdviceStayAwake: "夜に到着します。起きていて、着陸後に眠りましょう。",
+  jetlagAdviceStayAwake:
+    "夕方か夜に到着します。起きていて、着陸後に眠りましょう。",
   jetlagAdviceShortNap:
     "午後に到着します。短い仮眠はOK、長く眠るのは避けましょう。",
   jetlagAdviceNone: "時差は小さいので、普段のリズムを保ちましょう。",

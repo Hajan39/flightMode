@@ -1156,7 +1156,7 @@
   jetlagAdviceSleepBeforeArrival:
     "Du landest morgens — schlafe in der zweiten Hälfte des Flugs.",
   jetlagAdviceStayAwake:
-    "Du landest abends — bleib wach und schlafe nach der Landung.",
+    "Du landest abends oder nachts — bleib wach und schlafe nach der Landung.",
   jetlagAdviceShortNap:
     "Ankunft am Nachmittag — ein kurzes Nickerchen ist okay, kein langer Schlaf.",
   jetlagAdviceNone: "Kleine Verschiebung — bleib bei deinem Rhythmus.",

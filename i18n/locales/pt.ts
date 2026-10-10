@@ -1128,7 +1128,7 @@
   jetlagAdviceSleepBeforeArrival:
     "Você pousa de manhã: durma na segunda metade do voo.",
   jetlagAdviceStayAwake:
-    "Você pousa à noite: fique acordado e durma após o pouso.",
+    "Você pousa à noite ou de madrugada: fique acordado e durma após o pouso.",
   jetlagAdviceShortNap:
     "Chegada à tarde: uma soneca curta é boa, evite dormir muito.",
   jetlagAdviceNone: "Pequena diferença: mantenha seu ritmo normal.",

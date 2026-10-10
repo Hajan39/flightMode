@@ -1147,7 +1147,7 @@
   jetlagAdviceSleepBeforeArrival:
     "Vous atterrissez le matin : dormez pendant la seconde moitié du vol.",
   jetlagAdviceStayAwake:
-    "Vous atterrissez le soir : restez éveillé et dormez après l'atterrissage.",
+    "Vous atterrissez le soir ou la nuit : restez éveillé et dormez après l'atterrissage.",
   jetlagAdviceShortNap:
     "Arrivée l'après-midi : une courte sieste est ok, évitez un long sommeil.",
   jetlagAdviceNone: "Petit décalage : gardez votre rythme habituel.",

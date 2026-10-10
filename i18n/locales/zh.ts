@@ -1079,7 +1079,7 @@
   jetlagBehind: "慢{{hours}}小时，向西飞行",
   jetlagSleepWindow: "建议在 {{start}}–{{end}} 睡觉（机舱时间）",
   jetlagAdviceSleepBeforeArrival: "您将在早晨降落——请在飞行后半段睡觉。",
-  jetlagAdviceStayAwake: "您将在傍晚降落——请保持清醒，落地后再睡。",
+  jetlagAdviceStayAwake: "您将在傍晚或夜间降落——请保持清醒，落地后再睡。",
   jetlagAdviceShortNap: "下午到达——可以小睡片刻，避免长时间睡眠。",
   jetlagAdviceNone: "时差很小——保持正常节律即可。",
   achieveTimeTravelerTitle: "时间旅行者",

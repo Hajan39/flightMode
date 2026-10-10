@@ -1136,7 +1136,7 @@
   jetlagAdviceSleepBeforeArrival:
     "Aterrizas por la mañana: duerme en la segunda mitad del vuelo.",
   jetlagAdviceStayAwake:
-    "Aterrizas por la tarde-noche: mantente despierto y duerme al llegar.",
+    "Aterrizas de tarde-noche o de madrugada: mantente despierto y duerme al llegar.",
   jetlagAdviceShortNap:
     "Llegada por la tarde: una siesta corta está bien, evita dormir mucho.",
   jetlagAdviceNone: "Cambio pequeño: mantén tu ritmo normal.",

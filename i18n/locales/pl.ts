@@ -1121,7 +1121,7 @@
   jetlagAdviceSleepBeforeArrival:
     "Lądujesz rano — śpij w drugiej połowie lotu.",
   jetlagAdviceStayAwake:
-    "Lądujesz wieczorem — nie śpij, wyśpij się po lądowaniu.",
+    "Lądujesz wieczorem lub w nocy — nie śpij, wyśpij się po lądowaniu.",
   jetlagAdviceShortNap:
     "Przylot po południu — krótka drzemka jest ok, unikaj długiego snu.",
   jetlagAdviceNone: "Mała zmiana — trzymaj się zwykłego rytmu.",

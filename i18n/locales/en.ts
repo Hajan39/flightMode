@@ -1124,7 +1124,7 @@ export const en = {
   jetlagAdviceSleepBeforeArrival:
     "You land in the morning — sleep in the second half of the flight.",
   jetlagAdviceStayAwake:
-    "You land in the evening — stay awake and sleep after landing.",
+    "You land in the evening or at night — stay awake and sleep after landing.",
   jetlagAdviceShortNap:
     "Afternoon arrival — a short nap now is fine, avoid long sleep.",
   jetlagAdviceNone: "Small shift — keep your normal rhythm.",

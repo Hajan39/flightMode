@@ -1094,7 +1094,8 @@
   jetlagBehind: "{{hours}}시간 느림, 서쪽 비행",
   jetlagSleepWindow: "{{start}}–{{end}}에 잠을 청해보세요 (기내 시간)",
   jetlagAdviceSleepBeforeArrival: "아침에 도착합니다. 비행 후반에 잠을 자세요.",
-  jetlagAdviceStayAwake: "저녁에 도착합니다. 깨어 있다가 착륙 후 잠을 자세요.",
+  jetlagAdviceStayAwake:
+    "저녁이나 밤에 도착합니다. 깨어 있다가 착륙 후 잠을 자세요.",
   jetlagAdviceShortNap:
     "오후 도착입니다. 짧은 낮잠은 좋지만 긴 수면은 피하세요.",
   jetlagAdviceNone: "차이가 작습니다. 평소 리듬을 유지하세요.",

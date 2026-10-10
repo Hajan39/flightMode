@@ -1086,7 +1086,7 @@
   jetlagBehind: "{{hours}} घंटे पीछे, पश्चिम की ओर",
   jetlagSleepWindow: "{{start}}–{{end}} सोने की कोशिश करें (केबिन समय)",
   jetlagAdviceSleepBeforeArrival: "आप सुबह उतरेंगे — उड़ान के दूसरे हिस्से में सोएँ।",
-  jetlagAdviceStayAwake: "आप शाम को उतरेंगे — जागे रहें और लैंडिंग के बाद सोएँ।",
+  jetlagAdviceStayAwake: "आप शाम या रात को उतरेंगे — जागे रहें और लैंडिंग के बाद सोएँ।",
   jetlagAdviceShortNap: "दोपहर में आगमन — छोटी झपकी ठीक है, लंबी नींद से बचें।",
   jetlagAdviceNone: "छोटा बदलाव — अपनी सामान्य दिनचर्या रखें।",
   achieveTimeTravelerTitle: "समय यात्री",
