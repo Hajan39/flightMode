@@ -27,7 +27,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **Stack:** Expo 57 · React Native 0.86 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · expo-sensors · PostHog
 
-**App version:** 1.5.2 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
+**App version:** 1.6.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, `app/preflight.tsx` (offline-readiness), `app/checklist.tsx` (travel checklist) and `app/converter.tsx` (currency/units) are modal stack screens; `app/destinations.tsx` (destination tips) and `app/phrasebook.tsx` are pushed card screens. Onboarding flow at `app/onboarding.tsx`.
 
@@ -70,7 +70,7 @@ Theme modes: `system / light / dark / crazy` (free) + `midnight / sunset` (Plus)
 
 ## Games
 
-41 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+44 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -109,16 +109,19 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `whack-mole` | reflex | easy | Tap moles; daily challenge |
 | `higher-lower` | reflex | easy | Predict numbers |
 | `odd-one-out` | brain | easy | Find the odd emoji; daily challenge |
-| `word-guess` | brain | medium | Wordle-style; daily challenge |
+| `word-guess` | brain | medium | Wordle-style; daily challenge; Czech/German/English pools with native keyboards (cs/de QWERTZ + accent rows) |
 | `sudoku` | brain | hard | 9×9 logic puzzle; 15 verified bank puzzles, each served as a random symmetry variant (`transformPuzzle`) |
 | `snake` | reflex | medium | Classic snake; D-pad controls |
 | `cabin-lights` | brain | medium | Lights Out puzzle; 5 rounds 3×3→5×5 |
 | `sliding-puzzle` | brain | medium | Classic 15-puzzle (4×4 sliding tiles) |
 | `cargo-catch` | reflex | medium | Catch falling cargo, dodge bombs; 60s |
-| `word-search` | brain | medium | Find hidden words in an 8×8 letter grid |
+| `word-search` | brain | medium | Classic 8×8 (6 words) or big 10×10 osmisměrka whose leftover letters spell a hidden message (cs/de/en lists in `words.ts`); tap-tap or drag to select |
 | `runway-jam` | strategy | medium | Rush Hour-style sliding logic; 18 BFS-verified levels (expert tier 16–27 opt. moves), solver-powered hints, per-level stars |
 | `nonogram` | brain | hard | Picross "Sky Pixels"; 15 line-logic-solvable puzzles (5×5→10×10), forced-cell hints |
 | `sun-moon` | brain | medium | Takuzu/Binairo balance puzzle; 16 unique-solution levels (4×4→8×8), solution hints |
+| `sky-match` | brain | easy | Match-3 (8×8, 6 travel icons); line/bomb/star specials, cascades; 30 move-limited levels with score targets + `levelStars`; greedy-bot test calibrates targets |
+| `cargo-blocks` | brain | medium | 1010!-style block puzzle: drag 3 pieces into an 8×8 hold, full rows/columns clear, combos + streaks |
+| `solitaire` | strategy | medium | Klondike, draw 1 / draw 3; tap-to-move + drag, unlimited undo, auto-complete |
 
 **Daily challenge games:** `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess` (derived from `isDailyChallenge` in `data/games.ts` — do not hand-maintain)
 

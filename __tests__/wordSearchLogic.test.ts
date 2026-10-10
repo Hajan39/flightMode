@@ -1,4 +1,10 @@
-import { buildPuzzle, lineBetween, readCells } from "@/games/word-search/logic";
+import {
+  buildPuzzle,
+  buildSecretPuzzle,
+  lineBetween,
+  readCells,
+} from "@/games/word-search/logic";
+import { SEARCH_WORDS, SECRETS } from "@/games/word-search/words";
 
 const SINGLE_UPPERCASE_LETTER = /^[A-Z]$/;
 
@@ -74,6 +80,56 @@ describe("word-search buildPuzzle", () => {
     const puzzle = buildPuzzle(WORDS, SIZE, mulberry32(7));
     for (const p of puzzle.placements) {
       expect(WORDS).toContain(p.word);
+    }
+  });
+});
+
+describe("buildSecretPuzzle (osmisměrka)", () => {
+  /** mulberry32 */
+  const seeded = (seed: number) => {
+    let a = seed;
+    return () => {
+      a = Math.trunc(a + 0x6d_2b_79_f5);
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4_294_967_296;
+    };
+  };
+
+  test.each(["cs", "de", "en"] as const)(
+    "%s: leftover letters spell the secret and every word reads back",
+    (language) => {
+      const secrets = SECRETS[language].map((s) => s.letters);
+      let built = 0;
+      for (let seed = 1; seed <= 40; seed += 1) {
+        const puzzle = buildSecretPuzzle(
+          SEARCH_WORDS[language],
+          10,
+          secrets,
+          seeded(seed)
+        );
+        if (!puzzle) {
+          continue;
+        }
+        built += 1;
+        const used = new Set(puzzle.placements.flatMap((p) => p.cells));
+        const leftover = puzzle.grid.filter((_, i) => !used.has(i)).join("");
+        expect(leftover).toBe(puzzle.secret);
+        for (const p of puzzle.placements) {
+          expect(readCells(puzzle.grid, p.cells)).toBe(p.word);
+        }
+      }
+      expect(built).toBeGreaterThanOrEqual(38);
+    }
+  );
+
+  test("word lists are unique and fit a 10×10 grid", () => {
+    for (const words of Object.values(SEARCH_WORDS)) {
+      expect(new Set(words).size).toBe(words.length);
+      for (const w of words) {
+        expect([...w].length).toBeLessThanOrEqual(10);
+      }
     }
   });
 });

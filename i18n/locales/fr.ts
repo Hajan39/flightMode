@@ -780,6 +780,18 @@
   tfeSwipeHint: "Glisse sur la grille ou appuie sur les flèches",
   tfeGameOver: "Plus de coups !",
   tfeYouWin: "Tu as atteint 2048 ! 🎉",
+  gameCargoBlocksName: "Soute à bagages",
+  gameCargoBlocksDescription:
+    "Charge les bagages dans la soute et vide les lignes et colonnes pleines",
+  rulesCargoBlocks:
+    "🎯 Objectif\n• Range un maximum de bagages dans la soute de 8×8.\n\n🧳 Comment jouer\n• Fais glisser une pièce de la réserve vers la soute. Les pièces ne pivotent pas.\n• Quand les trois pièces sont placées, tu en reçois trois nouvelles.\n• Remplis une ligne ou une colonne entière pour la vider. Lignes et colonnes se vident en même temps.\n• La partie se termine quand aucune des pièces restantes ne rentre.\n\n⭐ Score\n• 1 point par case posée.\n• 10 points par ligne vidée, multipliés par le nombre de lignes vidées d'un coup.\n• Vide des lignes sur des placements consécutifs pour un bonus de série.",
+  cbScore: "Score",
+  cbBest: "Meilleur",
+  cbHint: "Fais glisser les bagages dans la soute",
+  cbCombo: "Combo ×{{count}}",
+  cbStreak: "Série ×{{count}}",
+  cbHoldFull: "La soute est pleine !",
+  cbPieceLabel: "Bagage {{index}}",
   gameMinesweeperName: "Démineur",
   gameMinesweeperDescription: "Révèle toutes les cases sûres, évite les mines",
   rulesMinesweeper:
@@ -792,6 +804,25 @@
   msRevealHint: "Appuie pour révéler · Maintenir pour marquer",
   msBeginner: "Débutant",
   msExpert: "Expert",
+  gameSolitaireName: "Solitaire",
+  gameSolitaireDescription:
+    "Le Klondike classique — monte les quatre couleurs de l'as au roi",
+  rulesSolitaire:
+    "🎯 Objectif\n• Place les 52 cartes sur les quatre fondations, chaque couleur de l'as au roi.\n\n🃏 Comment jouer\n• Sur le tableau, empile les cartes en ordre décroissant en alternant les couleurs (rouge sur noir).\n• Seul un roi peut aller sur une colonne vide.\n• Appuie sur une carte pour la déplacer au meilleur endroit — appuie à nouveau pour essayer le suivant. Ou fais-la glisser où tu veux.\n• Appuie sur la pioche pour tirer (1 ou 3 cartes) ; quand elle est vide, appuie pour retourner la défausse.\n• Annulations illimitées. Quand toutes les cartes sont face visible, appuie sur Terminer.\n\n⭐ Score\n• +10 par carte posée sur une fondation, +5 par carte de la défausse vers le tableau ou retournée face visible.\n• Retirer une carte d'une fondation coûte 15 ; retourner la défausse coûte 100 (Tirer 1) ou 20 (Tirer 3).\n• Gagne vite pour un gros bonus de temps !",
+  solChooseMode: "Combien de cartes tires-tu de la pioche ?",
+  solDraw1: "Tirer 1",
+  solDraw1Desc: "Détente — une carte à la fois",
+  solDraw3: "Tirer 3",
+  solDraw3Desc: "Défi classique — trois à la fois",
+  solHint:
+    "Appuie sur une carte pour la déplacer · fais-la glisser pour la poser",
+  solTime: "Temps",
+  solMoves: "Coups",
+  solScore: "Score",
+  solUndo: "Annuler",
+  solAutoComplete: "Terminer",
+  solYouWin: "Réussi ! 🃏",
+  solResultSubtitle: "{{time}} · {{moves}} coups",
   gameWordScrambleName: "Anagrammes",
   gameWordScrambleDescription:
     "Déchiffre des mots d'aviation avant la fin du temps",
@@ -1078,6 +1109,14 @@
     "Touchez la première lettre d'un mot, puis la dernière. Les mots se cachent à l'horizontale, à la verticale ou en diagonale — à l'endroit ou à l'envers. Trouvez les six !",
   wsFound: "Trouvés",
   wsWords: "Mots",
+  wsChooseMode: "Choisissez la taille de la grille",
+  wsModeClassic: "Classique",
+  wsModeClassicDesc: "8×8 · 6 mots · quelques minutes",
+  wsModeBig: "Grande, avec message caché",
+  wsModeBigDesc:
+    "10×10 · plus de 15 mots · les lettres restantes forment un message",
+  wsHowTo: "Glissez sur les lettres ou touchez la première et la dernière",
+  wsSecretReveal: "Message caché : {{secret}}",
   achieveWordHunterTitle: "Chasseur de mots",
   achieveWordHunterDesc: "Marquez 1500 ou plus aux Mots mêlés.",
   a11yClearFlight: "Effacer le vol",
@@ -1105,6 +1144,21 @@
   nonoSolved: "Image révélée !",
   achievePixelArtistTitle: "Artiste pixel",
   achievePixelArtistDesc: "Révèle 5 images dans Pixels du ciel.",
+  gameSkyMatchName: "Trio céleste",
+  gameSkyMatchDescription:
+    "Échange des icônes de voyage pour former des trios et enchaîner les combos",
+  rulesSkyMatch:
+    "🎯 Objectif\n• Atteins le score cible du niveau avant d'être à court de coups.\n\n✈️ Comment jouer\n• Fais glisser une tuile (ou appuie sur deux voisines) pour les échanger.\n• Aligne 3 icônes identiques ou plus pour les faire disparaître.\n• Les tuiles qui tombent peuvent déclencher des combos — chaque enchaînement rapporte plus.\n\n⚡ Spéciales\n• 4 alignées → tuile ligne : efface toute sa ligne ou sa colonne.\n• Forme en L ou en T → bombe : efface le carré de 3×3 autour d'elle.\n• 5 alignées → étoile : échange-la avec n'importe quelle tuile pour effacer toutes les tuiles de ce type.\n\n⭐ Étoiles\n• 1★ au score cible, 2★ et 3★ en le dépassant largement. Chaque niveau débloque le suivant.",
+  smIntro:
+    "Aligne 3 icônes identiques ou plus. Les grandes lignes créent des tuiles spéciales.",
+  smMoves: "COUPS",
+  smScoreOf: "{{score}} / {{target}}",
+  smCombo: "Combo ×{{count}} !",
+  smShuffle: "Plus de coups — mélange",
+  smHowTo:
+    "Fais glisser une tuile ou appuie sur deux voisines pour les échanger",
+  smLevelPassed: "Niveau réussi !",
+  smLevelFailed: "Plus de coups",
   gameSunMoonName: "Soleil et lune",
   gameSunMoonDescription: "Équilibre le jour et la nuit par pure logique.",
   rulesSunMoon:

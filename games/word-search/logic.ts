@@ -208,3 +208,58 @@ export function buildPuzzle(
 
   return { grid, placements, size };
 }
+
+/** A puzzle whose leftover letters, read row by row, spell `secret`. */
+export interface SecretPuzzle extends Puzzle {
+  secret: string;
+}
+
+/**
+ * Builds an osmisměrka: words from `pool` are placed until the empty cells
+ * can be filled exactly with one of `secrets` (letters only, no spaces).
+ * Returns null if no layout worked within the attempt budget.
+ */
+export function buildSecretPuzzle(
+  pool: string[],
+  size: number,
+  secrets: string[],
+  rng: () => number
+): SecretPuzzle | null {
+  const lengths = new Set(secrets.map((s) => [...s].length));
+  const maxSecret = Math.max(...lengths);
+  for (let attempt = 0; attempt < 200; attempt += 1) {
+    const grid: string[] = new Array(size * size).fill("");
+    const placements: Placement[] = [];
+    const order = [...pool];
+    for (let i = order.length - 1; i > 0; i -= 1) {
+      const j = randInt(rng, i + 1);
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    let empty = size * size;
+    for (const raw of order) {
+      if (empty <= maxSecret && lengths.has(empty)) {
+        break;
+      }
+      const placement = tryPlaceWord(grid, raw.toUpperCase(), size, rng);
+      if (placement) {
+        placements.push(placement);
+        empty = grid.filter((c) => c === "").length;
+      }
+    }
+    const fits = secrets.filter((s) => [...s].length === empty);
+    if (fits.length === 0) {
+      continue;
+    }
+    const secret = fits[randInt(rng, fits.length)];
+    const letters = [...secret];
+    let k = 0;
+    for (let i = 0; i < grid.length; i += 1) {
+      if (grid[i] === "") {
+        grid[i] = letters[k];
+        k += 1;
+      }
+    }
+    return { grid, placements, secret, size };
+  }
+  return null;
+}

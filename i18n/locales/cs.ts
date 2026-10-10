@@ -823,6 +823,18 @@ export const cs = {
   tfeSwipeHint: "Táhni po desce nebo klepej na šipky",
   tfeGameOver: "Žádné tahy!",
   tfeYouWin: "Máš 2048! 🎉",
+  gameCargoBlocksName: "Nakládání kufrů",
+  gameCargoBlocksDescription:
+    "Nakládej zavazadla do nákladového prostoru a čisti plné řádky i sloupce",
+  rulesCargoBlocks:
+    "🎯 Cíl\n• Naskládej do nákladového prostoru 8×8 co nejvíc zavazadel.\n\n🧳 Jak hrát\n• Přetáhni dílek z podnosu do nákladového prostoru. Dílky nejde otáčet.\n• Když položíš všechny tři dílky, dostaneš tři nové.\n• Zaplň celý řádek nebo sloupec a zmizí. Řádky i sloupce mizí současně.\n• Hra končí, když se už nevejde žádný ze zbývajících dílků.\n\n⭐ Skóre\n• 1 bod za každé položené políčko.\n• 10 bodů za každou vyčištěnou linii, vynásobeno počtem linií vyčištěných naráz.\n• Čisti linie v po sobě jdoucích tazích a získáš bonus za sérii.",
+  cbScore: "Skóre",
+  cbBest: "Nejlepší",
+  cbHint: "Přetáhni zavazadla do nákladového prostoru",
+  cbCombo: "Kombo ×{{count}}",
+  cbStreak: "Série ×{{count}}",
+  cbHoldFull: "Nákladový prostor je plný!",
+  cbPieceLabel: "Zavazadlo {{index}}",
   gameMinesweeperName: "Hledání min",
   gameMinesweeperDescription: "Odhal bezpečná políčka, vyhni se minám",
   rulesMinesweeper:
@@ -835,6 +847,24 @@ export const cs = {
   msRevealHint: "Klepni pro odkrytí · Podrž pro vlajku",
   msBeginner: "Začátečník",
   msExpert: "Expert",
+  gameSolitaireName: "Pasiáns",
+  gameSolitaireDescription:
+    "Klasický Klondike — poskládej všechny čtyři barvy od esa po krále",
+  rulesSolitaire:
+    "🎯 Cíl\n• Přesuň všech 52 karet na čtyři odkládací hromádky, každou barvu od esa po krále.\n\n🃏 Jak hrát\n• Na herní ploše skládej karty sestupně a střídej barvy (červenou na černou).\n• Na prázdný sloupec smí jen král.\n• Klepnutím přesuneš kartu na nejlepší místo — dalším klepnutím zkusíš další. Nebo ji přetáhni, kam chceš.\n• Klepnutím na balíček lízneš (1 nebo 3 karty); když je prázdný, klepnutím otočíš odhazovací balíček zpět.\n• Vracet tahy můžeš neomezeně. Až budou všechny karty lícem nahoru, klepni na Dokončit.\n\n⭐ Skóre\n• +10 za každou kartu na odkládací hromádku, +5 za každou kartu z odhazovacího balíčku na herní plochu nebo otočenou lícem nahoru.\n• Vrácení karty z odkládací hromádky stojí 15; otočení odhazovacího balíčku stojí 100 (po 1) nebo 20 (po 3).\n• Vyhraj rychle a získáš velký časový bonus!",
+  solChooseMode: "Kolik karet budeš lízat z balíčku?",
+  solDraw1: "Po 1 kartě",
+  solDraw1Desc: "V klidu — jedna karta po druhé",
+  solDraw3: "Po 3 kartách",
+  solDraw3Desc: "Klasická výzva — tři najednou",
+  solHint: "Klepnutím kartu přesuneš · tažením ji položíš",
+  solTime: "Čas",
+  solMoves: "Tahy",
+  solScore: "Skóre",
+  solUndo: "Zpět",
+  solAutoComplete: "Dokončit",
+  solYouWin: "Vyřešeno! 🃏",
+  solResultSubtitle: "{{time}} · tahy: {{moves}}",
   gameWordScrambleName: "Přesmyčky",
   gameWordScrambleDescription: "Slož letecká slova dřív, než vyprší čas",
   rulesWordScramble:
@@ -852,7 +882,7 @@ export const cs = {
   mpPlayerN: "Hráč {{n}}",
   efHandoff: "Najdi co nejvíc za {{seconds}}s!",
   efGo: "START!",
-  cbHandoffHint: "Nekukej — jen ty bys měl vidět obrazovku",
+  cbHandoffHint: "Nekukej — obrazovku teď smíš vidět jen ty",
   cbNobodyCracked: "Nikdo nerozluštil kód!",
   cbSecretWas: "Tajný kód byl",
   // Color Clash
@@ -1044,14 +1074,21 @@ export const cs = {
   achieveCargoCaptainTitle: "Kapitán nákladu",
   achieveCargoCaptainDesc: "Chyť 25 beden v jednom kole Chytání nákladu.",
   // Word Search game
-  gameWordSearchName: "Hledání slov",
+  gameWordSearchName: "Osmisměrka",
   gameWordSearchDescription: "Najdi skrytá letecká slova v mřížce písmen",
   rulesWordSearch:
     "Klepni na první písmeno slova a pak na poslední. Slova jsou skrytá vodorovně, svisle nebo úhlopříčně — dopředu i pozpátku. Najdi všech šest!",
   wsFound: "Nalezeno",
   wsWords: "Slova",
+  wsChooseMode: "Jak velkou chceš?",
+  wsModeClassic: "Klasická",
+  wsModeClassicDesc: "8×8 · 6 slov · pár minut",
+  wsModeBig: "Velká s tajenkou",
+  wsModeBigDesc: "10×10 · přes 15 slov · zbylá písmena dají tajenku",
+  wsHowTo: "Táhni prstem přes písmena, nebo klepni na první a poslední",
+  wsSecretReveal: "Tajenka: {{secret}}",
   achieveWordHunterTitle: "Lovec slov",
-  achieveWordHunterDesc: "Získej 1500 nebo více v Hledání slov.",
+  achieveWordHunterDesc: "Získej 1500 nebo více v Osmisměrce.",
   a11yClearFlight: "Zrušit let",
   // Logic games (Runway Jam, Sky Pixels, Sun & Moon)
   levelLabel: "Úroveň {{level}}",
@@ -1075,6 +1112,20 @@ export const cs = {
   nonoSolved: "Obrázek odhalen!",
   achievePixelArtistTitle: "Pixelový umělec",
   achievePixelArtistDesc: "Odhal 5 obrázků v Nebeských pixelech.",
+  gameSkyMatchName: "Palubní trojky",
+  gameSkyMatchDescription:
+    "Prohazuj cestovní ikony, skládej trojice a řetěz komba",
+  rulesSkyMatch:
+    "🎯 Cíl\n• Dosáhni cílového skóre úrovně dřív, než ti dojdou tahy.\n\n✈️ Jak hrát\n• Táhni dlaždici (nebo klepni na dvě sousední) a prohoď je.\n• Seřaď 3 nebo víc stejných ikon do řady a zmizí.\n• Padající dlaždice můžou spustit komba — každý další řetěz dává víc bodů.\n\n⚡ Speciální dlaždice\n• 4 v řadě → čárová dlaždice: vyčistí celý svůj řádek nebo sloupec.\n• Tvar L nebo T → bomba: vyčistí okolí 3×3.\n• 5 v řadě → hvězda: prohoď ji s libovolnou dlaždicí a zmizí všechny dlaždice toho druhu.\n\n⭐ Hvězdy\n• 1★ za cílové skóre, 2★ a 3★ za výrazně vyšší. Každá úroveň odemkne další.",
+  smIntro:
+    "Seřaď 3 nebo víc stejných ikon. Delší řady vytvoří speciální dlaždice.",
+  smMoves: "TAHY",
+  smScoreOf: "{{score}} / {{target}}",
+  smCombo: "Kombo ×{{count}}!",
+  smShuffle: "Žádný možný tah — míchám",
+  smHowTo: "Táhni dlaždici nebo klepni na dvě sousední a prohoď je",
+  smLevelPassed: "Úroveň splněna!",
+  smLevelFailed: "Došly tahy",
   gameSunMoonName: "Slunce a měsíc",
   gameSunMoonDescription: "Vyvaž den a noc čistou logikou.",
   rulesSunMoon:

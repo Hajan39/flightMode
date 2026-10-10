@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Animated, Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  Animated,
+  type GestureResponderEvent,
+  Pressable,
+  View as RNView,
+  StyleSheet,
+} from "react-native";
 
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -16,15 +22,18 @@ import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import {
   buildPuzzle,
+  buildSecretPuzzle,
   lineBetween,
   type Placement,
   type Puzzle,
   readCells,
 } from "./logic";
+import { SEARCH_WORDS, SECRETS } from "./words";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const GRID_SIZE = 8;
+const CLASSIC_SIZE = 8;
+const BIG_SIZE = 10;
 const WORD_COUNT = 6;
 const GAP = 3;
 
@@ -76,7 +85,9 @@ const WORD_POOLS: Record<string, string[]> = {
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Phase = "playing" | "paused" | "over";
+type Phase = "menu" | "playing" | "paused" | "over";
+/** classic: 8×8, six words. big: 10×10 osmisměrka whose leftover letters spell a hidden message. */
+type Mode = "classic" | "big";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -91,20 +102,42 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 /** Build a fresh puzzle whose placements all resolve to real words. */
-function makePuzzle(language: string): { puzzle: Puzzle; words: string[] } {
+function makePuzzle(
+  language: string,
+  mode: Mode
+): { puzzle: Puzzle; secret: string | null } {
+  if (mode === "big") {
+    const lang = language === "cs" || language === "de" ? language : "en";
+    const secrets = SECRETS[lang];
+    const built = buildSecretPuzzle(
+      SEARCH_WORDS[lang],
+      BIG_SIZE,
+      secrets.map((x) => x.letters),
+      Math.random
+    );
+    if (built) {
+      const secret = secrets.find((x) => x.letters === built.secret);
+      return { puzzle: built, secret: secret?.text ?? built.secret };
+    }
+  }
   const pool = WORD_POOLS[language] ?? WORD_POOLS.en;
+  const size = mode === "big" ? BIG_SIZE : CLASSIC_SIZE;
   // Retry until we get WORD_COUNT successful placements (rare to need >1 pass).
   for (let attempt = 0; attempt < 25; attempt += 1) {
-    const words = shuffle(pool).slice(0, WORD_COUNT);
-    const puzzle = buildPuzzle(words, GRID_SIZE, Math.random);
+    const puzzle = buildPuzzle(
+      shuffle(pool).slice(0, WORD_COUNT),
+      size,
+      Math.random
+    );
     if (puzzle.placements.length === WORD_COUNT) {
-      return { puzzle, words: puzzle.placements.map((p) => p.word) };
+      return { puzzle, secret: null };
     }
   }
   // Fallback: accept whatever placed (still a valid, readable puzzle).
-  const words = shuffle(pool).slice(0, WORD_COUNT);
-  const puzzle = buildPuzzle(words, GRID_SIZE, Math.random);
-  return { puzzle, words: puzzle.placements.map((p) => p.word) };
+  return {
+    puzzle: buildPuzzle(shuffle(pool).slice(0, WORD_COUNT), size, Math.random),
+    secret: null,
+  };
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -121,10 +154,15 @@ export default function WordSearchGame() {
   );
   const updateProgress = useGameStore((s) => s.updateProgress);
 
+  const [mode, setMode] = useState<Mode>("classic");
   const [puzzle, setPuzzle] = useState<Puzzle>(
-    () => makePuzzle(language).puzzle
+    () => makePuzzle(language, "classic").puzzle
   );
-  const [phase, setPhase] = useState<Phase>("playing");
+  const [secret, setSecret] = useState<string | null>(null);
+  const [phase, setPhase] = useState<Phase>("menu");
+  /** Cells under the finger while dragging a selection. */
+  const [dragLine, setDragLine] = useState<number[] | null>(null);
+  const gridSize = puzzle.size;
   const [foundWords, setFoundWords] = useState<string[]>([]);
   const [foundCells, setFoundCells] = useState<Set<number>>(new Set());
   const [selectedStart, setSelectedStart] = useState<number | null>(null);
@@ -159,17 +197,18 @@ export default function WordSearchGame() {
     }, 500);
   }, [stopTimer]);
 
-  useEffect(() => {
-    startTimer();
-    return () => stopTimer();
-  }, [startTimer, stopTimer]);
+  useEffect(() => () => stopTimer(), [stopTimer]);
 
   // ── Fresh game ──
-  const resetGame = useCallback(() => {
+  const startGame = (nextMode: Mode) => {
     stopTimer();
     solvedRef.current = false;
     accumulatedRef.current = 0;
-    setPuzzle(makePuzzle(language).puzzle);
+    const next = makePuzzle(language, nextMode);
+    setMode(nextMode);
+    setPuzzle(next.puzzle);
+    setSecret(next.secret);
+    setDragLine(null);
     setFoundWords([]);
     setFoundCells(new Set());
     setSelectedStart(null);
@@ -178,7 +217,8 @@ export default function WordSearchGame() {
     setProgressInfo(null);
     setPhase("playing");
     startTimer();
-  }, [startTimer, stopTimer]);
+  };
+  const resetGame = () => startGame(mode);
 
   // ── Pause / resume ──
   const handlePause = useCallback(() => {
@@ -234,91 +274,129 @@ export default function WordSearchGame() {
       solvedRef.current = true;
       stopTimer();
       haptic.success();
-      const score = Math.max(200, 2000 - elapsed * 10);
+      const score =
+        mode === "big"
+          ? Math.max(400, 4000 - elapsed * 8)
+          : Math.max(200, 2000 - elapsed * 10);
       const info = updateProgress("word-search", score, { won: true });
       setProgressInfo(info);
       setFinalScore(score);
       setPhase("over");
     },
-    [haptic, stopTimer, updateProgress]
+    [haptic, stopTimer, updateProgress, mode]
   );
 
   // ── Cell tap ──
-  const handleCellTap = useCallback(
-    (index: number) => {
-      if (phase !== "playing") {
-        return;
-      }
+  const handleCellTap = (index: number) => {
+    if (phase !== "playing") {
+      return;
+    }
 
-      // First tap selects the start cell.
-      if (selectedStart === null) {
-        haptic.tap();
-        setSelectedStart(index);
-        return;
-      }
+    // First tap selects the start cell.
+    if (selectedStart === null) {
+      haptic.tap();
+      setSelectedStart(index);
+      return;
+    }
 
-      // Tapping the same cell cancels the selection.
-      if (selectedStart === index) {
-        haptic.tap();
-        setSelectedStart(null);
-        return;
-      }
-
-      const line = lineBetween(selectedStart, index, GRID_SIZE);
+    // Tapping the same cell cancels the selection.
+    if (selectedStart === index) {
+      haptic.tap();
       setSelectedStart(null);
+      return;
+    }
 
-      if (!line) {
-        haptic.error();
-        triggerShake();
-        return;
-      }
+    setSelectedStart(null);
+    checkLine(lineBetween(selectedStart, index, gridSize));
+  };
 
-      const forward = readCells(puzzle.grid, line);
-      const backward = forward.split("").reverse().join("");
+  /** Accepts a straight line of cells if it spells a word not yet found. */
+  const checkLine = (line: number[] | null) => {
+    if (!line) {
+      haptic.error();
+      triggerShake();
+      return;
+    }
 
-      const match = puzzle.placements.find(
-        (p: Placement) =>
-          !foundWords.includes(p.word) &&
-          (p.word === forward || p.word === backward)
-      );
+    const forward = readCells(puzzle.grid, line);
+    const backward = forward.split("").reverse().join("");
 
-      if (!match) {
-        haptic.error();
-        triggerShake();
-        return;
-      }
+    const match = puzzle.placements.find(
+      (p: Placement) =>
+        !foundWords.includes(p.word) &&
+        (p.word === forward || p.word === backward)
+    );
 
-      // Found a new word.
-      haptic.success();
-      const nextFound = [...foundWords, match.word];
-      const nextCells = new Set(foundCells);
-      for (const c of match.cells) {
-        nextCells.add(c);
-      }
-      setFoundWords(nextFound);
-      setFoundCells(nextCells);
+    if (!match) {
+      haptic.error();
+      triggerShake();
+      return;
+    }
 
-      if (nextFound.length >= puzzle.placements.length) {
-        const elapsed =
-          accumulatedRef.current + (Date.now() - startTimeRef.current) / 1000;
-        finishGame(Math.floor(elapsed));
-      }
-    },
-    [
-      phase,
-      selectedStart,
-      puzzle,
-      foundWords,
-      foundCells,
-      haptic,
-      triggerShake,
-      finishGame,
-    ]
-  );
+    // Found a new word.
+    haptic.success();
+    const nextFound = [...foundWords, match.word];
+    const nextCells = new Set(foundCells);
+    for (const c of match.cells) {
+      nextCells.add(c);
+    }
+    setFoundWords(nextFound);
+    setFoundCells(nextCells);
+
+    if (nextFound.length >= puzzle.placements.length) {
+      const elapsed =
+        accumulatedRef.current + (Date.now() - startTimeRef.current) / 1000;
+      finishGame(Math.floor(elapsed));
+    }
+  };
+
+  // ── Drag across letters ──
+  const boardRef = useRef<RNView>(null);
+  const boardOrigin = useRef({ x: 0, y: 0 });
+  const dragStart = useRef<number | null>(null);
+  const cellFromTouch = (e: GestureResponderEvent): number | null => {
+    const pitch = cellSize + GAP;
+    const col = Math.floor(
+      (e.nativeEvent.pageX - boardOrigin.current.x) / pitch
+    );
+    const row = Math.floor(
+      (e.nativeEvent.pageY - boardOrigin.current.y) / pitch
+    );
+    if (row < 0 || row >= gridSize || col < 0 || col >= gridSize) {
+      return null;
+    }
+    return row * gridSize + col;
+  };
+  const onDragGrant = (e: GestureResponderEvent) => {
+    dragStart.current = cellFromTouch(e);
+    setDragLine(dragStart.current === null ? null : [dragStart.current]);
+  };
+  const onDragMove = (e: GestureResponderEvent) => {
+    const end = cellFromTouch(e);
+    if (dragStart.current === null || end === null) {
+      return;
+    }
+    setDragLine(lineBetween(dragStart.current, end, gridSize));
+  };
+  const onDragRelease = (e: GestureResponderEvent) => {
+    const start = dragStart.current;
+    const end = cellFromTouch(e);
+    dragStart.current = null;
+    setDragLine(null);
+    if (start === null || end === null) {
+      return;
+    }
+    if (start === end) {
+      handleCellTap(start);
+      return;
+    }
+    setSelectedStart(null);
+    checkLine(lineBetween(start, end, gridSize));
+  };
 
   // ── Layout ──
   const boardEdge = Math.min(width, height) * 0.9;
-  const cellSize = Math.floor((boardEdge - GAP * (GRID_SIZE - 1)) / GRID_SIZE);
+  const cellSize = Math.floor((boardEdge - GAP * (gridSize - 1)) / gridSize);
 
   const shakeTranslate = shakeAnim.interpolate({
     inputRange: [-1, 1],
@@ -329,7 +407,8 @@ export default function WordSearchGame() {
   const renderCell = (index: number) => {
     const letter = puzzle.grid[index];
     const isFound = foundCells.has(index);
-    const isSelected = selectedStart === index;
+    const isSelected =
+      selectedStart === index || (dragLine?.includes(index) ?? false);
 
     let bg = theme.elevated;
     let color = theme.text;
@@ -342,10 +421,8 @@ export default function WordSearchGame() {
     }
 
     return (
-      <Pressable
-        disabled={phase !== "playing"}
+      <RNView
         key={index}
-        onPress={() => handleCellTap(index)}
         style={[
           styles.cell,
           {
@@ -357,14 +434,65 @@ export default function WordSearchGame() {
           },
         ]}
       >
-        <Text style={[styles.cellLetter, { color }]}>{letter}</Text>
-      </Pressable>
+        <Text
+          style={[
+            styles.cellLetter,
+            { color, fontSize: Math.round(cellSize * 0.5) },
+          ]}
+        >
+          {letter}
+        </Text>
+      </RNView>
     );
   };
 
   const rows: number[][] = [];
-  for (let r = 0; r < GRID_SIZE; r += 1) {
-    rows.push(Array.from({ length: GRID_SIZE }, (_, c) => r * GRID_SIZE + c));
+  for (let r = 0; r < gridSize; r += 1) {
+    rows.push(Array.from({ length: gridSize }, (_, c) => r * gridSize + c));
+  }
+
+  if (phase === "menu") {
+    return (
+      <View style={[styles.root, styles.menu]}>
+        <Text style={styles.menuTitle}>{t("gameWordSearchName")}</Text>
+        <Text style={[styles.menuHint, { color: theme.mutedText }]}>
+          {t("wsChooseMode")}
+        </Text>
+        {(["classic", "big"] as const).map((m) => (
+          <Pressable
+            accessibilityRole="button"
+            key={m}
+            onPress={() => startGame(m)}
+            style={[
+              styles.modeBtn,
+              m === "classic"
+                ? { backgroundColor: theme.tint }
+                : { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
+          >
+            <Text
+              style={[
+                styles.modeTitle,
+                { color: m === "classic" ? theme.onTint : theme.text },
+              ]}
+            >
+              {m === "classic" ? t("wsModeClassic") : t("wsModeBig")}
+            </Text>
+            <Text
+              style={[
+                styles.modeDesc,
+                { color: m === "classic" ? theme.onTint : theme.mutedText },
+              ]}
+            >
+              {m === "classic" ? t("wsModeClassicDesc") : t("wsModeBigDesc")}
+            </Text>
+          </Pressable>
+        ))}
+        <Text style={[styles.menuHint, { color: theme.mutedText }]}>
+          {t("wsHowTo")}
+        </Text>
+      </View>
+    );
   }
 
   return (
@@ -403,6 +531,17 @@ export default function WordSearchGame() {
       {/* Board */}
       <RNView style={styles.boardWrapper}>
         <Animated.View
+          onLayout={() =>
+            boardRef.current?.measureInWindow((x, y) => {
+              boardOrigin.current = { x, y };
+            })
+          }
+          onResponderGrant={onDragGrant}
+          onResponderMove={onDragMove}
+          onResponderRelease={onDragRelease}
+          onResponderTerminationRequest={() => false}
+          onStartShouldSetResponder={() => phase === "playing"}
+          ref={boardRef}
           style={[
             styles.board,
             { gap: GAP, transform: [{ translateX: shakeTranslate }] },
@@ -461,12 +600,17 @@ export default function WordSearchGame() {
           onPlayAgain={resetGame}
           score={finalScore}
           streak={progressInfo?.currentStreak}
+          subtitle={secret ? t("wsSecretReveal", { secret }) : undefined}
           title={t("youWin")}
         />
       )}
 
       {/* Pause overlay */}
       <GamePauseOverlay
+        onQuit={() => {
+          stopTimer();
+          setPhase("menu");
+        }}
         onRestart={resetGame}
         onResume={handleResume}
         visible={phase === "paused"}
@@ -506,6 +650,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  menu: { justifyContent: "center" },
+  menuHint: { fontSize: 14, textAlign: "center" },
+  menuTitle: { fontSize: 26, fontWeight: "900", textAlign: "center" },
+  modeBtn: {
+    alignItems: "center",
+    alignSelf: "stretch",
+    borderRadius: Radius.button,
+    borderWidth: 1,
+    borderColor: "transparent",
+    gap: 4,
+    paddingVertical: Spacing.lg,
+  },
+  modeDesc: { fontSize: 14, textAlign: "center" },
+  modeTitle: { fontSize: 18, fontWeight: "800" },
   root: {
     alignItems: "center",
     flex: 1,

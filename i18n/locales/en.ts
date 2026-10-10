@@ -820,6 +820,19 @@ export const en = {
   tfeSwipeHint: "Swipe the board or tap the arrows",
   tfeGameOver: "No moves left!",
   tfeYouWin: "You reached 2048! 🎉",
+  // Cargo Blocks
+  gameCargoBlocksName: "Cargo Blocks",
+  gameCargoBlocksDescription:
+    "Load luggage into the hold and clear full rows and columns",
+  rulesCargoBlocks:
+    "🎯 Goal\n• Pack as much luggage into the 8×8 cargo hold as you can.\n\n🧳 How to Play\n• Drag a piece from the tray onto the hold. Pieces can't be rotated.\n• When all three pieces are placed, you get three new ones.\n• Fill a whole row or column to clear it. Rows and columns clear at the same time.\n• The game ends when none of the remaining pieces fits.\n\n⭐ Scoring\n• 1 point for every square placed.\n• 10 points per cleared line, multiplied by the number of lines cleared at once.\n• Clear lines on consecutive placements for a streak bonus.",
+  cbScore: "Score",
+  cbBest: "Best",
+  cbHint: "Drag luggage into the hold",
+  cbCombo: "Combo ×{{count}}",
+  cbStreak: "Streak ×{{count}}",
+  cbHoldFull: "The hold is full!",
+  cbPieceLabel: "Luggage piece {{index}}",
   // Minesweeper
   gameMinesweeperName: "Minesweeper",
   gameMinesweeperDescription: "Reveal all safe tiles, avoid the mines",
@@ -833,6 +846,25 @@ export const en = {
   msRevealHint: "Tap to reveal · Hold to flag",
   msBeginner: "Beginner",
   msExpert: "Expert",
+  // Solitaire
+  gameSolitaireName: "Solitaire",
+  gameSolitaireDescription:
+    "Classic Klondike — build the four suits from Ace to King",
+  rulesSolitaire:
+    "🎯 Goal\n• Move all 52 cards onto the four foundations, each suit from Ace up to King.\n\n🃏 How to Play\n• On the tableau, stack cards downward in alternating colours (red on black).\n• Only a King can go on an empty column.\n• Tap a card to move it to the best spot — tap again to try the next one. Or drag it where you want.\n• Tap the stock to draw (1 or 3 cards); when it's empty, tap to turn the waste over.\n• Undo is unlimited. When every card is face-up, tap Auto-complete.\n\n⭐ Scoring\n• +10 for each card to a foundation, +5 for each card from the waste to the tableau or turned face-up.\n• Moving a card back off a foundation costs 15; turning the waste over costs 100 (Draw 1) or 20 (Draw 3).\n• Win fast for a big time bonus!",
+  solChooseMode: "How many cards do you draw from the stock?",
+  solDraw1: "Draw 1",
+  solDraw1Desc: "Relaxed — one card at a time",
+  solDraw3: "Draw 3",
+  solDraw3Desc: "Classic challenge — three at a time",
+  solHint: "Tap a card to move it · drag to place it",
+  solTime: "Time",
+  solMoves: "Moves",
+  solScore: "Score",
+  solUndo: "Undo",
+  solAutoComplete: "Auto-complete",
+  solYouWin: "Solved! 🃏",
+  solResultSubtitle: "{{time}} · {{moves}} moves",
   // Word Scramble
   gameWordScrambleName: "Word Scramble",
   gameWordScrambleDescription: "Unscramble aviation words before time runs out",
@@ -1057,6 +1089,13 @@ export const en = {
     "Tap the first letter of a word, then its last letter. Words hide horizontally, vertically, or diagonally — forwards or backwards. Find all six to win!",
   wsFound: "Found",
   wsWords: "Words",
+  wsChooseMode: "Pick a puzzle size",
+  wsModeClassic: "Classic",
+  wsModeClassicDesc: "8×8 · 6 words · a few minutes",
+  wsModeBig: "Big, with a hidden message",
+  wsModeBigDesc: "10×10 · 15+ words · the leftover letters spell a message",
+  wsHowTo: "Drag across the letters, or tap the first and the last",
+  wsSecretReveal: "Hidden message: {{secret}}",
   achieveWordHunterTitle: "Word Hunter",
   achieveWordHunterDesc: "Score 1500 or more in Word Search.",
   a11yClearFlight: "Clear flight",
@@ -1082,6 +1121,20 @@ export const en = {
   nonoSolved: "Picture revealed!",
   achievePixelArtistTitle: "Pixel Artist",
   achievePixelArtistDesc: "Reveal 5 pictures in Sky Pixels.",
+  gameSkyMatchName: "Sky Match",
+  gameSkyMatchDescription:
+    "Swap travel icons into rows of three and chain combos",
+  rulesSkyMatch:
+    "🎯 Goal\n• Reach the level's target score before you run out of moves.\n\n✈️ How to Play\n• Swipe a tile (or tap two neighbours) to swap them.\n• Line up 3 or more of the same icon to clear them.\n• Falling tiles can set off combos — each chain scores more.\n\n⚡ Specials\n• 4 in a row → line tile: clears its whole row or column.\n• L or T shape → bomb: clears the 3×3 around it.\n• 5 in a row → star: swap it with any tile to clear every tile of that kind.\n\n⭐ Stars\n• 1★ at the target, 2★ and 3★ for going well beyond it. Each level unlocks the next.",
+  smIntro:
+    "Line up 3 or more of the same icon. Bigger lines make special tiles.",
+  smMoves: "MOVES",
+  smScoreOf: "{{score}} / {{target}}",
+  smCombo: "Combo ×{{count}}!",
+  smShuffle: "No moves left — shuffling",
+  smHowTo: "Swipe a tile or tap two neighbours to swap",
+  smLevelPassed: "Level cleared!",
+  smLevelFailed: "Out of moves",
   gameSunMoonName: "Sun & Moon",
   gameSunMoonDescription: "Balance day and night with pure logic.",
   rulesSunMoon:
