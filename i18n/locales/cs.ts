@@ -1016,7 +1016,7 @@ export const cs = {
   a11yMoveRight: "Pohyb doprava",
   // Home — jump back in (recently played)
   homeJumpBackIn: "Zpět do hry",
-  homeJumpBackInHint: "Pokračuj tam, kde jsi skončil",
+  homeJumpBackInHint: "Navaž na hry, které máš rozehrané",
   homeBestScore: "Nejlépe {{score}}",
   // Home — flight-aware game recommendations
   homeGamesForFlight: "Hry na tvůj let",

@@ -22,7 +22,10 @@ export default function NewToTryRow({ title, renderTitle, onOpenGame }: Props) {
   const theme = Colors[scheme];
   const seenGameIds = useDiscoveryStore((s) => s.seenGameIds);
 
-  const unseen = gameRegistry
+  // The registry grows by appending, so newest games come first here: an
+  // update's new games show up on Home, not the oldest unplayed ones.
+  const unseen = [...gameRegistry]
+    .reverse()
     .filter((game) => !seenGameIds.includes(game.id))
     .slice(0, MAX_ITEMS);
 
