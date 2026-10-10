@@ -3,12 +3,12 @@
   "appName": "FlightMode",
   "listings": {
     "en-US": {
-      "shortDescription": "Offline mini-games, relaxation sounds & travel tips — your in-flight companion.",
-      "fullDescription": "FlightMode is your ultimate in-flight entertainment companion. Enjoy 13 mini-games, calming audio, breathing exercises, and travel articles — all designed to work 100% offline.\n\n✈️ MINI-GAMES FOR EVERY MOOD\n• Sky Defense — defend the skies in a fast-paced arcade challenge\n• Flight Path — draw the perfect route and land the plane\n• Memory — classic card-matching with an aviation twist\n• Quiz — test your travel knowledge\n• Duel Tic-Tac-Toe & Duel Dice — play with your seatmate\n• Stack Sort, Sky Math, Tap Rush, Reaction & more\n\n🎧 RELAX & UNWIND\n• Ambient soundscapes — rain, ocean, white noise\n• Sleep timer and volume controls\n• Perfect for napping or winding down\n\n📖 TRAVEL CONTENT\n• Packing tips, jet lag advice, and more\n• Quick reads for any phase of your flight\n\n🛫 BUILT FOR FLYING\n• Works 100% offline — no Wi-Fi needed\n• Set your flight details and get contextual suggestions\n• Lightweight, fast, and battery-friendly\n• No ads, no tracking, no account required\n\nWhether you want to relax, compete, or kill time at 35,000 feet — FlightMode has you covered."
+      "shortDescription": "45 offline games, relax sounds and travel tools for your flight. No Wi-Fi.",
+      "fullDescription": "FlightMode is the app to download before you fly. Switch your phone to airplane mode and everything keeps working: 45 games, calming soundscapes, travel articles and handy tools, all 100% offline.\n\n✈️ 45 GAMES, NO WI-FI\n• Puzzles: Sudoku, Mahjong, Solitaire, Sky Pixels (nonogram), 2048, Minesweeper, Runway Jam\n• Match & build: Sky Match (match-3 with 30 levels), Cargo Blocks, Stack Sort\n• Words: Word Guess (English, Czech, German), Word Search with a hidden message, Word Scramble\n• Quick reflexes: Sky Defense, Runway Landing, Reaction Timer, Snake, Turbulence Test\n• Daily challenge with streaks and best scores\n\n👫 PLAY WITH YOUR SEATMATE\n• One phone, 2–6 players: Tic Tac Toe, Connect 4, Air Radar, Liar's Dice, Category Blitz, Turbulence Tales and more\n\n🎧 RELAX AND SLEEP\n• Rain, ocean and white-noise soundscapes that keep playing with the screen off\n• Breathing exercise and sleep timer\n\n🧳 TRAVEL TOOLS, OFFLINE\n• Flight timer with progress and a jet-lag plan\n• Destination time, phrasebook, currency and unit converter\n• Packing checklist and travel articles\n• Flight Passport: a stamp for every trip\n\nNo ads, no account. Available in 12 languages."
     },
     "cs-CZ": {
-      "shortDescription": "Offline minihry, relaxační zvuky a cestovní tipy — váš společník do letadla.",
-      "fullDescription": "FlightMode je vaše zábava do letadla. 13 miniher, relaxační audio, dechová cvičení a cestovní články — vše funguje 100% offline.\n\n✈️ MINIHRY PRO KAŽDOU NÁLADU\n• Sky Defense — braňte oblohu v akční arkádové výzvě\n• Flight Path — nakreslete trasu a přistaňte s letadlem\n• Memory — klasické pexeso v leteckém stylu\n• Quiz — otestujte své cestovatelské znalosti\n• Duel Tic-Tac-Toe a Duel Dice — hrajte se spolucestujícím\n• Stack Sort, Sky Math, Tap Rush, Reaction a další\n\n🎧 RELAXACE A ODPOČINEK\n• Ambientní zvuky — déšť, oceán, bílý šum\n• Časovač spánku a ovládání hlasitosti\n• Ideální na zdřímnutí nebo uklidnění\n\n📖 CESTOVNÍ OBSAH\n• Tipy na balení, rady proti jet lagu a další\n• Krátké čtení pro jakoukoli fázi letu\n\n🛫 VYTVOŘENO PRO LÉTÁNÍ\n• Funguje 100% offline — žádné Wi-Fi nepotřebujete\n• Zadejte údaje o letu a dostanete doporučení podle fáze\n• Lehká, rychlá a šetrná k baterii\n• Žádné reklamy, žádné sledování, žádný účet\n\nAť chcete relaxovat, soutěžit, nebo si krátit čas v 10 000 metrech — FlightMode je tu pro vás."
+      "shortDescription": "45 offline her, relaxační zvuky a cestovní pomůcky do letadla. Bez Wi-Fi.",
+      "fullDescription": "FlightMode je aplikace, kterou si stáhneš před letem. Přepni telefon do režimu letadlo a všechno funguje dál: 45 her, uklidňující zvuky, cestovní články a praktické pomůcky, vše 100% offline.\n\n✈️ 45 HER BEZ WI-FI\n• Hlavolamy: Sudoku, Mahjong, Pasiáns, Nebeské pixely (malovaná křížovka), 2048, Hledání min, Ucpaná ranvej\n• Spojuj a skládej: Palubní trojky (match-3, 30 úrovní), Nakládání kufrů, Řazení sloupců\n• Slovní hry: Hádej slovo (česky, německy, anglicky), Osmisměrka s tajenkou, Přesmyčky\n• Postřeh: Obrana nebe, Přistání na ranveji, Reakční čas, Had, Zkouška turbulencí\n• Denní výzva se sériemi a rekordy\n\n👫 HRAJ SE SPOLUCESTUJÍCÍM\n• Jeden telefon, 2–6 hráčů: piškvorky, čtyři v řadě, Letecký radar, Lhářovy kostky, Kategorie na čas, Turbulentní příběhy a další\n\n🎧 RELAX A SPÁNEK\n• Déšť, oceán a bílý šum hrají i se zhasnutou obrazovkou\n• Dechové cvičení a časovač spánku\n\n🧳 CESTOVNÍ POMŮCKY OFFLINE\n• Odpočet letu s průběhem a plán proti jet lagu\n• Čas v cíli, konverzační fráze, převodník měn a jednotek\n• Seznam na balení a cestovní články\n• Letový pas: razítko za každou cestu\n\nBez reklam a bez účtu. Ve 12 jazycích."
     }
   },
   "category": "GAME",
@@ -17,14 +17,15 @@
   "contactPhone": "",
   "privacyPolicyUrl": "https://your-domain.com/privacy",
   "releaseNotes": {
-    "en-US": "Initial Play Store release.\n- New FlightMode branding\n- 13 mini-games including Sky Defense, Flight Path, and Stack Sort\n- Relax audio, ambient sounds, and sleep timer\n- Travel articles and tips\n- Performance and stability improvements",
-    "cs-CZ": "První verze na Google Play.\n- Nová značka FlightMode\n- 13 miniher včetně Sky Defense, Flight Path a Stack Sort\n- Relaxační audio, ambientní zvuky a časovač spánku\n- Cestovní články a tipy\n- Zvýšení stability a výkonu"
+    "en-US": "New games: Sky Match (match-3, 30 levels), Cargo Blocks, Solitaire, Mahjong and a big word search with a hidden message (45 games now).\n- Word Guess in Czech and German\n- Sky Defense: build towers before every wave\n- Fairer quiz answers\n- New app icon",
+    "cs-CZ": "Nové hry: Palubní trojky (match-3, 30 úrovní), Nakládání kufrů, Pasiáns, Mahjong a velká osmisměrka s tajenkou (celkem 45 her).\n- Hádej slovo česky a německy\n- Obrana nebe: věže stavíš před každou vlnou\n- Férovější kvíz\n- Nová ikona aplikace"
   },
   "storeAssets": {
-    "appIcon512": "assets/images/icon.png",
+    "appIcon512": "assets/play-store/promo-512.png",
     "featureGraphic1024x500": "assets/play-store/feature-graphic.png",
     "promo512": "assets/play-store/promo-512.png",
     "phoneScreenshotsMin": 2,
-    "phoneScreenshotsRecommended": 4
+    "phoneScreenshotsRecommended": 4,
+    "featureGraphic1024x500CsCZ": "assets/play-store/feature-graphic-cs.png"
   }
 }

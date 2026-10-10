@@ -134,7 +134,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 - nove hry: Palubni trojky (match-3, 30 urovni s hvezdami, specialni kameny, kaskady), Nakladani kufru (1010!-styl), Pasians (Klondike, draw 1/3, undo, auto-dokonceni); katalog 41 → 44; pak Mahjong (3 rozlozeni, vzdy resitelne rozdani) → 45; radek Nove k vyzkouseni ukazuje nejnovejsi hry
 - Hledani slov: rezim velka osmismerka 10×10 s tajenkou (cs/de/en) a vyber slova tazenim prstu
-- navrhy nove ikony aplikace (artifact) — ceka na vyber
+- nova ikona: prepinac rezimu letadlo (navrh C), adaptivni + monochromaticka vrstva; splash drive ukazoval sablonovou mrizku Expo, ted ikonu na pozadi tematu; feature graphic pro Play (en/cs); verze 1.6.1
 - Obrana nebe: kazda vlna zacina fazi stavby (postav veze, pak "Spustit vlnu N"); drive prvni vlna startovala hned a mezi vlnami karta zakryvala desku s 5s automatickym startem
 - kviz: spatne odpovedi prepsane ve 12 jazycich, aby spravna nebyla nejdelsi (drive 34/50 otazek)
 - Hadej slovo cesky (379 slov, klavesnice s diakritikou) a nemecky (416 slov, ÄÖÜ), ostatni jazyky anglicky 486 slov; klavesnice uz nepretika okraje; verze 1.5.2

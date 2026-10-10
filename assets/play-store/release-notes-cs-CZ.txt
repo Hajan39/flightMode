@@ -1,1 +1,5 @@
-Co je noveho:\n- 4 nove jazyky: cinstina, korejstina, japonstina, hindstina (celkem 12)\n- Opraven casovac v Tap Rush a Cabin Call – odpocet nyni bezi spravne i pri rychlem klikani\n- 50 kvizovych otazek prelozeno do vsech podporovanych jazyku\n- Zvyseni stability a vykonu
+Nové hry: Palubní trojky (match-3, 30 úrovní), Nakládání kufrů, Pasiáns, Mahjong a velká osmisměrka s tajenkou (celkem 45 her).
+- Hádej slovo česky a německy
+- Obrana nebe: věže stavíš před každou vlnou
+- Férovější kvíz
+- Nová ikona aplikace
