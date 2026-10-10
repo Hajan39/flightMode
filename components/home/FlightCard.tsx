@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { View as RNView, Pressable, StyleSheet } from "react-native";
+import { Pressable, View as RNView, StyleSheet } from "react-native";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
 import JetlagCard from "@/components/JetlagCard";

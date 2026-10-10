@@ -656,9 +656,9 @@ const styles = StyleSheet.create({
   modeBtn: {
     alignItems: "center",
     alignSelf: "stretch",
+    borderColor: "transparent",
     borderRadius: Radius.button,
     borderWidth: 1,
-    borderColor: "transparent",
     gap: 4,
     paddingVertical: Spacing.lg,
   },
