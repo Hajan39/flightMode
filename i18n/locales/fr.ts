@@ -28,7 +28,7 @@
   recommendationLong:
     "Long vol à venir, essayez du contenu ou de la relaxation",
   recommendationMid: "Bon moment pour un jeu rapide !",
-  recommendationShort: "Presque arrivé, étirez-vous et détendez-vous.",
+  recommendationShort: "Bientôt à destination, étirez-vous et détendez-vous.",
   addYourFlight: "Ajouter votre vol",
   trackFlightRecommendation:
     "Suivez la progression et recevez des recommandations personnalisées",
@@ -53,7 +53,7 @@
   breatheIn: "Inspirez",
   hold: "Maintenez",
   breatheOut: "Expirez",
-  ready: "Prêt",
+  ready: "Tout est prêt",
   stop: "Arrêter",
   start: "Démarrer",
   soundscapes: "Ambiances sonores",
@@ -142,7 +142,7 @@
   rulesRunwayLanding:
     "🎯 Objectif\n• Atterrissez précisément dans la zone verte.\n\n🛬 Comment jouer\n• Un avion descend vers la piste.\n• Surveillez l'indicateur d'altitude attentivement.\n• Tapez ATTERRIR quand il est dans la zone verte.\n\n⭐ Score\n• Plus vous êtes proche du centre, plus le score est élevé.\n• Atterrissage parfait = points maximum !",
   rulesCabinCall:
-    "🎯 Objectif\n• Suivez les ordres de l'équipage le plus vite possible.\n\n🧑‍✈️ Comment jouer\n• L'équipage annonce une action (ceinture, tablette, etc.).\n• Tapez le bon bouton le plus vite possible.\n• La vitesse rapporte des points bonus.\n\n⭐ Astuce\n• Restez concentré — les ordres s'accélèrent !",
+    "🎯 Objectif\n• Suivez les ordres de l'équipage le plus vite possible.\n\n🧑‍✈️ Comment jouer\n• L'équipage annonce une action (ceinture, tablette, etc.).\n• Tapez le bon bouton le plus vite possible.\n• La vitesse rapporte des points bonus.\n\n⭐ Astuce\n• Gardez votre concentration — les ordres s'accélèrent !",
   rulesAirTrafficControl:
     "🎯 Objectif\n• Dirigez tous les avions vers les bonnes pistes.\n\n🗼 Comment jouer\n• Les avions apparaissent dans la file à gauche.\n• Attribuez chaque avion à la bonne piste.\n• Ne laissez pas la file déborder !\n\n⭐ Astuce\n• Restez calme — ça s'accélère !",
   rulesFlightPath:
@@ -166,7 +166,7 @@
   rulesCodeBreaker:
     "🎯 Objectif\n• Déchiffrez le code secret à 4 chiffres !\n\n🔢 Comment jouer\n• 2–6 joueurs devinent à tour de rôle.\n• Le code a 4 chiffres uniques (0–9).\n• Après chaque tentative, vous recevez des indices :\n• 🟢 Pion vert = bon chiffre à la bonne place.\n• 🟠 Pion orange = bon chiffre, mauvaise place.\n• ⚫ Pas de pion = chiffre absent du code.\n\n🏆 Score\n• Moins de tentatives = plus de points.\n• Le premier à déchiffrer le code reçoit un bonus !",
   rulesLiarsDice:
-    "🎯 Objectif\n• Soyez le dernier joueur avec des dés !\n\n🎲 Comment jouer\n• 2–6 joueurs, chacun commence avec 5 dés.\n• Chaque manche, regardez vos dés en secret.\n• Les joueurs misent à tour de rôle :\n→ 'Il y a au moins X dés montrant Y'\n• Chaque mise doit être supérieure à la précédente.\n• Dites 'Menteur !' si vous pensez que la mise est fausse.\n\n🔍 Révélation\n• Si la mise était un mensonge → le miseur perd un dé.\n• Si elle était vraie → l'accusateur perd un dé.\n• Plus de dés = éliminé !\n\n🏆 Le dernier joueur gagne !",
+    "🎯 Objectif\n• Gardez vos dés jusqu'au bout !\n\n🎲 Comment jouer\n• 2–6 joueurs, chacun commence avec 5 dés.\n• Chaque manche, regardez vos dés en secret.\n• Les joueurs misent à tour de rôle :\n→ 'Il y a au moins X dés montrant Y'\n• Chaque mise doit être supérieure à la précédente.\n• Dites 'Menteur !' si vous pensez que la mise est fausse.\n\n🔍 Révélation\n• Si la mise était un mensonge → le miseur perd un dé.\n• Si elle était vraie → l'accusateur perd un dé.\n• Plus de dés = hors jeu !\n\n🏆 Le dernier joueur gagne !",
   skyDefenseTitle: "Défense du ciel",
   skyDefenseIntro:
     "Les tempêtes approchent de l'aéroport !\nConstruisez des tours pour protéger la piste.\nPlacez des tours sur la grille, éliminez les ennemis\navant qu'ils n'atteignent la fin.",
@@ -199,7 +199,7 @@
     "🔒 Goal - les nombres se verrouillent une fois placés",
   stackSortRuleChaos:
     "🔀 Les colonnes commencent en désordre - triez-les d'abord !",
-  stackSortRuleUndo: "↩️ Utilisez Annuler si bloqué",
+  stackSortRuleUndo: "↩️ Utilisez Annuler en cas de blocage",
   stackSortSelectLevel: "CHOISIR LE NIVEAU",
   stackSortLevelComplete: "Niveau {{level}} terminé !",
   stackSortMovesCount: "{{count}} coups",
@@ -240,7 +240,7 @@
   gameRestartConfirmMessage:
     "La progression actuelle de cette partie sera perdue.",
   gameCancel: "Annuler",
-  gameReady: "Prêt ?",
+  gameReady: "Tout est prêt ?",
   gameGo: "GO !",
   gameTapToStart: "Touchez pour commencer",
   atcLanded: "ATTERRIS",
@@ -389,7 +389,7 @@
   quizQ16d: "Pour réduire l'éblouissement des pilotes dans le cockpit",
   quizQ17: "Que faire de plus sûr quand le signal de ceinture est allumé ?",
   quizQ17a: "L'ignorer tant qu'on se sent bien",
-  quizQ17b: "Rester assis avec la ceinture attachée",
+  quizQ17b: "Rester à sa place, ceinture attachée",
   quizQ17c: "Se dépêcher d'aller aux toilettes",
   quizQ17d: "Se lever et s'étirer dans l'allée",
   quizQ18: "Quel document la plupart des pays exigent-ils pour l'entrée ?",
@@ -610,7 +610,7 @@
   arShipFighter: "Chasseur",
   arShipBomber: "Bombardier",
   arRotate: "Tourner",
-  arReady: "Prêt !",
+  arReady: "Tout est prêt !",
   arReset: "Réinitialiser",
   arHit: "TOUCHÉ !",
   arMiss: "RATÉ",
@@ -753,10 +753,11 @@
   achieveSpeedDemonDesc: "Temps de réaction inférieur à 200ms",
   passPhone: "Passe le téléphone",
   passPhoneTo: "Passe le téléphone à {{player}}",
-  passPhoneReady: "Je suis prêt",
+  passPhoneReady: "C'est parti",
   passPhoneDontLook: "Ne regarde pas !",
-  hmPassToGuesserHint: "Celui qui choisit le mot ne doit pas regarder l'écran",
-  ldDiceRolledHint: "Assure-toi que toi seul vois l'écran",
+  hmPassToGuesserHint:
+    "La personne qui choisit le mot ne doit pas regarder l'écran",
+  ldDiceRolledHint: "Assure-toi que personne d'autre ne voit l'écran",
   ldPeek: "Montrer mes dés",
 
   achievePerfectLandingTitle: "Atterrissage parfait",
@@ -823,6 +824,26 @@
   solAutoComplete: "Terminer",
   solYouWin: "Réussi ! 🃏",
   solResultSubtitle: "{{time}} · {{moves}} coups",
+  gameMahjongName: "Mahjong",
+  gameMahjongDescription:
+    "Associe les tuiles voyage par paires et vide tout le plateau",
+  rulesMahjong:
+    "🎯 Objectif\n• Vide le plateau en retirant toutes les tuiles par paires identiques.\n\n🀄 Comment jouer\n• Touche deux tuiles libres avec le même dessin pour les retirer.\n• Une tuile est libre si rien n'est posé dessus et si son côté gauche ou droit est dégagé. Les tuiles bloquées sont assombries.\n• Chaque donne peut être résolue — mais l'ordre compte !\n• Plus de coups ? Annuler est illimité, Indice montre une paire et Mélanger redistribue les tuiles restantes.\n\n⭐ Score\n• +20 par tuile du plateau, plus un bonus de temps : plus tu vas vite, mieux c'est.\n• Chaque indice coûte 50 points, chaque mélange 100.",
+  mjChooseLayout: "Choisis un plateau",
+  mjLayoutEasy: "Île",
+  mjLayoutTurtle: "Tortue",
+  mjLayoutJet: "Jumbo-jet",
+  mjTiles: "{{count}} tuiles",
+  mjHowTo: "Touche deux tuiles libres avec le même dessin",
+  mjTime: "Temps",
+  mjPairsLeft: "Paires",
+  mjMatches: "Coups",
+  mjUndo: "Annuler",
+  mjHint: "Indice",
+  mjShuffle: "Mélanger",
+  mjNoMoves: "Plus aucune paire — mélange les tuiles",
+  mjYouWin: "Plateau vidé ! 🀄",
+  mjResultSubtitle: "{{time}} · indices : {{hints}} · mélanges : {{shuffles}}",
   gameWordScrambleName: "Anagrammes",
   gameWordScrambleDescription:
     "Déchiffre des mots d'aviation avant la fin du temps",
@@ -841,7 +862,7 @@
   mpPlayerN: "Joueur {{n}}",
   efHandoff: "Trouve-en un max en {{seconds}}s !",
   efGo: "C'EST PARTI !",
-  cbHandoffHint: "Ne regarde pas — toi seul devrait voir l'écran",
+  cbHandoffHint: "Ne regarde pas — l'écran n'est que pour toi",
   cbNobodyCracked: "Personne n'a craqué le code !",
   cbSecretWas: "Le code secret était",
   // Support
@@ -974,7 +995,7 @@
   cabinLightsRoundClear: "Lumières éteintes !",
   cabinLightsNextRound: "Appuie pour la manche suivante",
   arShipDown: "abattu",
-  homeWelcomeTitle: "Prêt à jouer ?",
+  homeWelcomeTitle: "On joue ?",
   homeWelcomeHint: "Tous les jeux fonctionnent hors ligne.",
   homeWelcomeCta: "Voir tous les jeux",
 
@@ -1048,8 +1069,8 @@
   homeGamesForFlight: "Jeux pour votre vol",
   homeGamesForFlightHint: "Adaptés au temps de vol restant",
   // Pre-flight readiness screen
-  stackPreflight: "Prêt à voler",
-  preflightHeroTitle: "Vous êtes prêt à voler",
+  stackPreflight: "Tout est prêt pour le vol",
+  preflightHeroTitle: "Tout est prêt pour le vol",
   preflightHeroSubtitle:
     "Tout ci-dessous fonctionne sans internet, même en mode avion.",
   preflightReadyLabel: "Disponible hors ligne",
@@ -1061,7 +1082,7 @@
   preflightRefresh: "Télécharger le contenu récent",
   preflightRefreshing: "Actualisation…",
   preflightUpToDate: "Le contenu est à jour",
-  homePreflightCta: "Prêt à voler ?",
+  homePreflightCta: "Tout est prêt pour le vol ?",
   // Onboarding — game preferences step
   onboardingPrefsTitle: "Qu'aimez-vous ?",
   onboardingPrefsSubtitle:
@@ -1201,7 +1222,7 @@
   jetlagAdviceSleepBeforeArrival:
     "Vous atterrissez le matin : dormez pendant la seconde moitié du vol.",
   jetlagAdviceStayAwake:
-    "Vous atterrissez le soir ou la nuit : restez éveillé et dormez après l'atterrissage.",
+    "Vous atterrissez le soir ou la nuit : évitez de dormir et reposez-vous après l'atterrissage.",
   jetlagAdviceShortNap:
     "Arrivée l'après-midi : une courte sieste est ok, évitez un long sommeil.",
   jetlagAdviceNone: "Petit décalage : gardez votre rythme habituel.",
@@ -1259,7 +1280,7 @@
   checklistItemRebookContact: "Contact compagnie pour rebooking",
   checklistItemLiquids: "Liquides conformes à la sécurité",
   checklistItemLoungeFoodPlan: "Salon ou repas prévu pour l'escale",
-  achieveChecklistReadyTitle: "Prêt à décoller",
+  achieveChecklistReadyTitle: "Tout est paré",
   achieveChecklistReadyDesc: "Terminez votre checklist de voyage une fois",
   achieveChecklistVeteranTitle: "Pro du bagage",
   achieveChecklistVeteranDesc: "Terminez la checklist pour 3 vols",
@@ -1357,7 +1378,7 @@
   sdColorOrange: "orange",
   gameSeatNeighborName: "Voisin de siège",
   gameSeatNeighborDescription:
-    "Duel brise-glace : devinez ce que répondrait votre voisin",
+    "Duel brise-glace : devinez ce que répondrait la personne à côté de vous",
   snIntro: "Deux joueurs, une rangée. Ajoutez vos prénoms, c'est plus drôle.",
   snGuessFor: "Devinez ce que répondra {{player}}",
   snAnswerTruth: "Répondez maintenant honnêtement",
@@ -1490,7 +1511,7 @@
   cbzNameAsMany: "Citez-en le plus possible",
   cbzCountIt: "Ça compte",
   cbzUndo: "Annuler",
-  cbzHandoff: "Vous avez {{seconds}} secondes — prêt ?",
+  cbzHandoff: "Vous avez {{seconds}} secondes — c'est parti ?",
   cbzTimeUp: "Temps écoulé, {{player}} !",
   cbzAnswers: "réponses",
   cbzCatAirlines: "Compagnies aériennes",

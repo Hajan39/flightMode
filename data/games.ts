@@ -539,6 +539,17 @@ export const gameRegistry: GameDefinition[] = [
     rulesKey: "rulesSolitaire",
     titleKey: "gameSolitaireName",
   },
+  {
+    category: "brain",
+    descriptionKey: "gameMahjongDescription",
+    difficulty: "medium",
+    estimatedTime: 10,
+    icon: "layers-outline",
+    id: "mahjong",
+    loadComponent: () => require("@/games/mahjong").default,
+    rulesKey: "rulesMahjong",
+    titleKey: "gameMahjongName",
+  },
 ];
 
 export const gamesById = Object.fromEntries(

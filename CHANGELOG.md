@@ -20,6 +20,8 @@ and this project adheres to Semantic Versioning.
 
 ### Added
 
+- **Mahjong (catalog → 45)**: Mahjong solitaire with travel-emoji tiles in three layouts (Island 48, Turtle 84, Jumbo Jet 78); every deal is generated solvable, with hint, shuffle and unlimited undo.
+- **New to try on Home lists the newest games first**, so games added by an update show up there instead of the oldest unplayed ones.
 - **Three new games (catalog 41 → 44)**: **Sky Match** — match-3 with travel icons, line / bomb / star specials, cascading combos and 30 move-limited levels with 1–3 stars (targets calibrated against a greedy bot in tests); **Cargo Blocks** — drag luggage pieces into an 8×8 hold, full rows and columns clear, combo and streak bonuses; **Solitaire** — Klondike with draw 1 / draw 3, tap-to-move or drag, unlimited undo and auto-complete.
 - **Word Search: big osmisměrka mode** — a 10×10 grid packed with travel words whose leftover letters spell a hidden message (Czech, German, English), revealed when you finish. Letters can now be selected by dragging across them as well as by tapping the first and last letter.
 - **Google Play Games achievements are live-wired**: all 48 achievements now carry their Play Console ids (`data/playGamesAchievements.ts`), so local unlocks are mirrored to Play Games for signed-in players. A test now fails if any achievement is left without a unique id.

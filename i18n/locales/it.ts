@@ -26,7 +26,7 @@
   arrivalTime: "Arrivo alle {{time}}",
   recommendationLong: "Volo lungo in arrivo, prova dei contenuti o il relax",
   recommendationMid: "Buon momento per un gioco veloce!",
-  recommendationShort: "Quasi arrivato, fai stretching e rilassati.",
+  recommendationShort: "Quasi a destinazione, fai stretching e rilassati.",
   addYourFlight: "Aggiungi il tuo volo",
   trackFlightRecommendation:
     "Traccia i progressi e ricevi raccomandazioni personalizzate",
@@ -51,7 +51,7 @@
   breatheIn: "Inspira",
   hold: "Mantieni",
   breatheOut: "Espira",
-  ready: "Pronto",
+  ready: "Tutto pronto",
   stop: "Stop",
   start: "Inizia",
   soundscapes: "Paesaggi sonori",
@@ -138,9 +138,9 @@
   rulesReaction:
     "🎯 Obiettivo\n• Metti alla prova i tuoi riflessi — tocca il più velocemente possibile!\n\n⚡ Come giocare\n• Aspetta che lo schermo diventi verde.\n• Tocca immediatamente quando cambia!\n• Non toccare troppo presto — è una falsa partenza.\n\n⭐ Punteggio\n• Il tuo tempo di reazione in ms è il tuo punteggio.\n• Più basso = migliore!",
   rulesRunwayLanding:
-    "🎯 Obiettivo\n• Atterra con precisione nella zona verde.\n\n🛬 Come giocare\n• Un aereo scende verso la pista.\n• Osserva attentamente l'indicatore di altitudine.\n• Tocca ATTERRA quando è nella zona verde.\n\n⭐ Punteggio\n• Più sei vicino al centro, più alto il punteggio.\n• Atterraggio perfetto = punti massimi!",
+    "🎯 Obiettivo\n• Atterra con precisione nella zona verde.\n\n🛬 Come giocare\n• Un aereo scende verso la pista.\n• Osserva attentamente l'indicatore di altitudine.\n• Tocca ATTERRA quando è nella zona verde.\n\n⭐ Punteggio\n• Più ti avvicini al centro, più alto il punteggio.\n• Atterraggio perfetto = punti massimi!",
   rulesCabinCall:
-    "🎯 Obiettivo\n• Segui gli ordini dell'equipaggio il più velocemente possibile.\n\n🧑‍✈️ Come giocare\n• L'equipaggio annuncia un'azione (cintura, tavolino, ecc.).\n• Tocca il pulsante corretto il più velocemente possibile.\n• La velocità dà punti bonus.\n\n⭐ Suggerimento\n• Resta concentrato — gli ordini si velocizzano!",
+    "🎯 Obiettivo\n• Segui gli ordini dell'equipaggio il più velocemente possibile.\n\n🧑‍✈️ Come giocare\n• L'equipaggio annuncia un'azione (cintura, tavolino, ecc.).\n• Tocca il pulsante corretto il più velocemente possibile.\n• La velocità dà punti bonus.\n\n⭐ Suggerimento\n• Mantieni la concentrazione — gli ordini si velocizzano!",
   rulesAirTrafficControl:
     "🎯 Obiettivo\n• Dirigi tutti gli aerei verso le piste corrette.\n\n🗼 Come giocare\n• Gli aerei appaiono nella coda a sinistra.\n• Assegna ogni aereo alla pista giusta.\n• Non far traboccare la coda!\n\n⭐ Suggerimento\n• Mantieni la calma — si velocizza!",
   rulesFlightPath:
@@ -164,7 +164,7 @@
   rulesCodeBreaker:
     "🎯 Obiettivo\n• Decifra il codice segreto a 4 cifre!\n\n🔢 Come giocare\n• 2–6 giocatori indovinano a turno.\n• Il codice ha 4 cifre uniche (0–9).\n• Dopo ogni tentativo ricevi indizi:\n• 🟢 Piolo verde = cifra corretta nella posizione corretta.\n• 🟠 Piolo arancione = cifra corretta, posizione sbagliata.\n• ⚫ Nessun piolo = cifra assente dal codice.\n\n🏆 Punteggio\n• Meno tentativi = più punti.\n• Il primo a decifrare il codice riceve un bonus!",
   rulesLiarsDice:
-    "🎯 Obiettivo\n• Sii l'ultimo giocatore con dadi rimasti!\n\n🎲 Come giocare\n• 2–6 giocatori, ognuno inizia con 5 dadi.\n• Ogni round, guarda i tuoi dadi in segreto.\n• I giocatori scommettono a turno:\n→ \"Ci sono almeno X dadi che mostrano Y\"\n• Ogni scommessa deve essere superiore alla precedente.\n• Di' \"Bugiardo!\" se pensi che la scommessa sia falsa.\n\n🔍 Rivelazione\n• Se la scommessa era falsa → lo scommettitore perde un dado.\n• Se era vera → l'accusatore perde un dado.\n• Perdi tutti i dadi = eliminato!\n\n🏆 L'ultimo giocatore in piedi vince!",
+    '🎯 Obiettivo\n• Conserva i tuoi dadi fino alla fine!\n\n🎲 Come giocare\n• 2–6 giocatori, ognuno inizia con 5 dadi.\n• Ogni round, guarda i tuoi dadi in segreto.\n• I giocatori scommettono a turno:\n→ "Ci sono almeno X dadi che mostrano Y"\n• Ogni scommessa deve essere superiore alla precedente.\n• Di\' "Bugiardo!" se pensi che la scommessa sia falsa.\n\n🔍 Rivelazione\n• Se la scommessa era falsa → lo scommettitore perde un dado.\n• Se era vera → l\'accusatore perde un dado.\n• Senza dadi = fuori dal gioco!\n\n🏆 L\'ultimo giocatore in piedi vince!',
   skyDefenseTitle: "Difesa del cielo",
   skyDefenseIntro:
     "Le tempeste si avvicinano all'aeroporto!\nCostruisci torri per proteggere la pista.\nPiazza torri sulla griglia, elimina i nemici\nprima che raggiungano la fine.",
@@ -194,7 +194,7 @@
   stackSortRulePlace: "✅ Posiziona su slot vuoto o su numero più grande",
   stackSortRuleGoalLock: "🔒 Goal - i numeri si bloccano una volta posizionati",
   stackSortRuleChaos: "🔀 Le colonne iniziano in disordine - ordinale prima!",
-  stackSortRuleUndo: "↩️ Usa Annulla se bloccato",
+  stackSortRuleUndo: "↩️ Usa Annulla se non trovi mosse",
   stackSortSelectLevel: "SCEGLI LIVELLO",
   stackSortLevelComplete: "Livello {{level}} completato!",
   stackSortMovesCount: "{{count}} mosse",
@@ -235,7 +235,7 @@
   gameRestartConfirmMessage:
     "I progressi attuali di questa partita andranno persi.",
   gameCancel: "Annulla",
-  gameReady: "Pronto?",
+  gameReady: "Tutto pronto?",
   gameGo: "VIA!",
   gameTapToStart: "Tocca per iniziare",
   atcLanded: "ATTERRATI",
@@ -477,7 +477,7 @@
   quizQ35b: "10.600 metri",
   quizQ35c: "30.000 metri",
   quizQ35d: "4.500 metri",
-  quizQ36: "Cosa dovresti fare per primo se perdi un volo in coincidenza?",
+  quizQ36: "Cosa dovresti fare per prima cosa se perdi un volo in coincidenza?",
   quizQ36a: "Prenotare subito un hotel vicino all'aeroporto",
   quizQ36b: "Contattare la compagnia per la riprenotazione",
   quizQ36c: "Lasciare l'aeroporto e tornare domani",
@@ -597,7 +597,7 @@
   arShipFighter: "Caccia",
   arShipBomber: "Bombardiere",
   arRotate: "Ruota",
-  arReady: "Pronto!",
+  arReady: "Tutto pronto!",
   arReset: "Resetta",
   arHit: "COLPITO!",
   arMiss: "MANCATO",
@@ -645,7 +645,7 @@
   // Onboarding
   onboardingLanguageTitle: "Scegli la lingua",
   onboardingLanguageSubtitle: "Seleziona la lingua che desideri utilizzare",
-  onboardingTitle1: "Benvenuto a bordo",
+  onboardingTitle1: "Ti diamo il benvenuto a bordo",
   onboardingSubtitle1: "Il tuo compagno di volo per giochi, relax e altro",
   onboardingTitle2: "Intrattenimento offline",
   onboardingSubtitle2:
@@ -680,7 +680,7 @@
   plusTipLarge: "Pranzo",
   plusRestore: "Ripristina acquisti",
   plusRestoreNone: "Nessun acquisto trovato per questo account Google",
-  profilePlusBadge: "Sostenitore Plus",
+  profilePlusBadge: "Supporto Plus",
   passportTitle: "Passaporto di volo",
   passportHint: "Un timbro per ogni volo fatto con FlightMode.",
   passportEmpty:
@@ -712,7 +712,7 @@
   achieveHighScorerDesc: "Ottieni punti in ogni gioco",
   achieveQuizAceTitle: "Asso del quiz",
   achieveQuizAceDesc: "Ottieni 100 nel quiz",
-  achieveKnowItAllTitle: "Saputello",
+  achieveKnowItAllTitle: "Pozzo di scienza",
   achieveKnowItAllDesc: "Gioca al quiz 5 volte",
   achieveScholarTitle: "Studioso",
   achieveScholarDesc: "Gioca al quiz 20 volte",
@@ -738,7 +738,7 @@
   achieveSpeedDemonDesc: "Tempo di reazione sotto 200ms",
   passPhone: "Passa il telefono",
   passPhoneTo: "Passa il telefono a {{player}}",
-  passPhoneReady: "Sono pronto",
+  passPhoneReady: "Ci sono",
   passPhoneDontLook: "Non guardare!",
   hmPassToGuesserHint: "Chi sceglie la parola non deve guardare lo schermo",
   ldDiceRolledHint: "Assicurati che solo tu possa vedere lo schermo",
@@ -807,6 +807,26 @@
   solAutoComplete: "Completa",
   solYouWin: "Risolto! 🃏",
   solResultSubtitle: "{{time}} · {{moves}} mosse",
+  gameMahjongName: "Mahjong",
+  gameMahjongDescription:
+    "Abbina le tessere di viaggio a coppie e libera tutto il tavolo",
+  rulesMahjong:
+    "🎯 Obiettivo\n• Libera il tavolo togliendo tutte le tessere a coppie uguali.\n\n🀄 Come si gioca\n• Tocca due tessere libere con lo stesso disegno per toglierle.\n• Una tessera è libera se non ha niente sopra e il suo lato sinistro o destro è aperto. Le tessere bloccate appaiono più scure.\n• Ogni partita si può risolvere, ma l'ordine conta!\n• Nessuna mossa? Annulla è illimitato, Aiuto mostra una coppia e Mescola ridistribuisce le tessere rimaste.\n\n⭐ Punteggio\n• +20 per ogni tessera dello schema, più un bonus tempo: più sei veloce, meglio è.\n• Ogni aiuto costa 50 punti, ogni mescolata 100.",
+  mjChooseLayout: "Scegli uno schema",
+  mjLayoutEasy: "Isola",
+  mjLayoutTurtle: "Tartaruga",
+  mjLayoutJet: "Jumbo Jet",
+  mjTiles: "{{count}} tessere",
+  mjHowTo: "Tocca due tessere libere con lo stesso disegno",
+  mjTime: "Tempo",
+  mjPairsLeft: "Coppie",
+  mjMatches: "Mosse",
+  mjUndo: "Annulla",
+  mjHint: "Aiuto",
+  mjShuffle: "Mescola",
+  mjNoMoves: "Nessuna coppia rimasta: mescola le tessere",
+  mjYouWin: "Tavolo libero! 🀄",
+  mjResultSubtitle: "{{time}} · aiuti: {{hints}} · mescolate: {{shuffles}}",
   gameWordScrambleName: "Anagrammi",
   gameWordScrambleDescription:
     "Decifra parole dell'aviazione prima che scada il tempo",
@@ -958,7 +978,7 @@
   cabinLightsRoundClear: "Luci spente!",
   cabinLightsNextRound: "Tocca per il prossimo round",
   arShipDown: "abbattuto",
-  homeWelcomeTitle: "Pronto a giocare?",
+  homeWelcomeTitle: "Voglia di giocare?",
   homeWelcomeHint: "Tutti i giochi funzionano offline.",
   homeWelcomeCta: "Esplora tutti i giochi",
 
@@ -1034,8 +1054,8 @@
   homeGamesForFlight: "Giochi per il tuo volo",
   homeGamesForFlightHint: "Adatti al tempo di volo rimanente",
   // Pre-flight readiness screen
-  stackPreflight: "Pronto al volo",
-  preflightHeroTitle: "Sei pronto a volare",
+  stackPreflight: "Tutto pronto per il volo",
+  preflightHeroTitle: "Tutto pronto per volare",
   preflightHeroSubtitle:
     "Tutto qui sotto funziona senza internet, anche in modalità aereo.",
   preflightReadyLabel: "Disponibile offline",
@@ -1047,7 +1067,7 @@
   preflightRefresh: "Scarica i contenuti più recenti",
   preflightRefreshing: "Aggiornamento…",
   preflightUpToDate: "I contenuti sono aggiornati",
-  homePreflightCta: "Pronto al volo?",
+  homePreflightCta: "Tutto pronto per il volo?",
   // Onboarding — game preferences step
   onboardingPrefsTitle: "Cosa ti piace?",
   onboardingPrefsSubtitle:
@@ -1058,7 +1078,7 @@
   destinationsSubtitle: "Consigli pratici per la tua destinazione",
   destinationsTips: "consigli",
   destinationsEmpty: "Ancora nessuna destinazione",
-  homeDestinationsTitle: "Dove sei diretto",
+  homeDestinationsTitle: "Dove si vola",
   homeDestinationsHint: "Consigli su aeroporto e città per la tua destinazione",
   homeDestinationsCta: "Sfoglia i consigli sulle destinazioni",
   // Flight destination link
@@ -1186,7 +1206,7 @@
   jetlagAdviceSleepBeforeArrival:
     "Atterri di mattina: dormi nella seconda metà del volo.",
   jetlagAdviceStayAwake:
-    "Atterri di sera o di notte: resta sveglio e dormi dopo l'atterraggio.",
+    "Atterri di sera o di notte: evita di dormire e riposa dopo l'atterraggio.",
   jetlagAdviceShortNap:
     "Arrivo di pomeriggio: un breve pisolino va bene, evita un sonno lungo.",
   jetlagAdviceNone: "Piccolo cambiamento: mantieni il tuo ritmo.",
@@ -1242,7 +1262,7 @@
   checklistItemRebookContact: "Contatto compagnia per riprenotazione",
   checklistItemLiquids: "Liquidi ancora a norma",
   checklistItemLoungeFoodPlan: "Lounge o piano cibo per lo scalo",
-  achieveChecklistReadyTitle: "Pronto al decollo",
+  achieveChecklistReadyTitle: "Tutto pronto al decollo",
   achieveChecklistReadyDesc: "Completa la checklist di viaggio una volta",
   achieveChecklistVeteranTitle: "Esperto di valigie",
   achieveChecklistVeteranDesc: "Completa la checklist per 3 voli",
@@ -1340,7 +1360,7 @@
   sdColorOrange: "arancione",
   gameSeatNeighborName: "Vicino di posto",
   gameSeatNeighborDescription:
-    "Duello rompighiaccio: indovina cosa risponderebbe il tuo vicino",
+    "Duello rompighiaccio: indovina cosa risponderebbe chi ti siede accanto",
   snIntro:
     "Due giocatori, una fila. Aggiungete i nomi: le rivelazioni saranno più belle.",
   snGuessFor: "Indovina cosa risponderà {{player}}",
@@ -1458,11 +1478,11 @@
   checklistItemPowerAdapterAu: "Adattatore tipo I (spina AU/NZ)",
   checklistItemPowerAdapterZa: "Adattatore tipo M/N (spina sudafricana)",
   flightLanded: "Atterrato ✈️",
-  homeLandedTitle: "Sei atterrato a {{city}}",
+  homeLandedTitle: "Eccoci a {{city}}",
   homeLandedLocalTime: "Ora locale {{time}}",
   homeLandedTips: "Consigli",
   homeLandedHint: "Tutto ciò che serve appena arrivi.",
-  homeLandedSection: "Sei arrivato",
+  homeLandedSection: "A destinazione",
   gameCategoryBlitzName: "Raffica di categorie",
   gameCategoryBlitzDescription:
     "Dine il più possibile in 20 secondi: gli altri controllano",
@@ -1473,7 +1493,7 @@
   cbzNameAsMany: "Dine il più possibile",
   cbzCountIt: "Conta",
   cbzUndo: "Annulla",
-  cbzHandoff: "Hai {{seconds}} secondi: pronto?",
+  cbzHandoff: "Hai {{seconds}} secondi: si parte?",
   cbzTimeUp: "Tempo scaduto, {{player}}!",
   cbzAnswers: "risposte",
   cbzCatAirlines: "Compagnie aeree",

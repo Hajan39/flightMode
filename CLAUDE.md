@@ -70,7 +70,7 @@ Theme modes: `system / light / dark / crazy` (free) + `midnight / sunset` (Plus)
 
 ## Games
 
-44 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+45 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -122,6 +122,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `sky-match` | brain | easy | Match-3 (8×8, 6 travel icons); line/bomb/star specials, cascades; 30 move-limited levels with score targets + `levelStars`; greedy-bot test calibrates targets |
 | `cargo-blocks` | brain | medium | 1010!-style block puzzle: drag 3 pieces into an 8×8 hold, full rows/columns clear, combos + streaks |
 | `solitaire` | strategy | medium | Klondike, draw 1 / draw 3; tap-to-move + drag, unlimited undo, auto-complete |
+| `mahjong` | brain | medium | Mahjong solitaire with travel emoji tiles; 3 layouts (48/84/78 tiles), deals generated solvable (reverse pair placement), hint / shuffle / undo |
 
 **Daily challenge games:** `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess` (derived from `isDailyChallenge` in `data/games.ts` — do not hand-maintain)
 

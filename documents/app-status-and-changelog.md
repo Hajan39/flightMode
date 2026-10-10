@@ -23,7 +23,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - tabs: Home, Games, Explore, Relax
 - profile + achievements + local stats
 - settings kompaktne seskupene na app preferences, article sync a support
-- 44 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Palubni trojky / match-3, Nakladani kufru / blokova skladacka, Pasians / Klondike); 11 her pro vice hracu nad sdilenymi komponentami `components/multiplayer/`
+- 45 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Mahjong, Palubni trojky / match-3, Nakladani kufru / blokova skladacka, Pasians / Klondike); 11 her pro vice hracu nad sdilenymi komponentami `components/multiplayer/`
 - cestovni nastroje offline: checklist per let (`app/checklist.tsx`), lokalni cas v destinaci + jet-lag karta na Home, fraznik 24 jazyku (`app/phrasebook.tsx`), prevodnik men a jednotek (`app/converter.tsx`)
 - 44 clanku v `data/content.json`
 - content lokalizace kompletni pro `en/cs/de`; ostatni jazyky vidi clanky anglicky s badge `EN` (drive 0 clanku)
@@ -132,7 +132,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-10-10
 
-- nove hry: Palubni trojky (match-3, 30 urovni s hvezdami, specialni kameny, kaskady), Nakladani kufru (1010!-styl), Pasians (Klondike, draw 1/3, undo, auto-dokonceni); katalog 41 → 44
+- nove hry: Palubni trojky (match-3, 30 urovni s hvezdami, specialni kameny, kaskady), Nakladani kufru (1010!-styl), Pasians (Klondike, draw 1/3, undo, auto-dokonceni); katalog 41 → 44; pak Mahjong (3 rozlozeni, vzdy resitelne rozdani) → 45; radek Nove k vyzkouseni ukazuje nejnovejsi hry
 - Hledani slov: rezim velka osmismerka 10×10 s tajenkou (cs/de/en) a vyber slova tazenim prstu
 - navrhy nove ikony aplikace (artifact) — ceka na vyber
 - Obrana nebe: kazda vlna zacina fazi stavby (postav veze, pak "Spustit vlnu N"); drive prvni vlna startovala hned a mezi vlnami karta zakryvala desku s 5s automatickym startem
