@@ -58,10 +58,12 @@ describe("billing entitlement", () => {
 
 describe("review prompt gate", () => {
   const day = 24 * 60 * 60 * 1000;
-  test("asks engaged users at most every 60 days", () => {
-    expect(shouldAskForReview(2, null, 0)).toBe(false);
-    expect(shouldAskForReview(3, null, 0)).toBe(true);
-    expect(shouldAskForReview(5, 0, 59 * day)).toBe(false);
-    expect(shouldAskForReview(5, 0, 60 * day)).toBe(true);
+  test("asks engaged users only, Later waits 30 days, done is final", () => {
+    expect(shouldAskForReview(3, 20, null, false, 0)).toBe(false);
+    expect(shouldAskForReview(4, 7, null, false, 0)).toBe(false);
+    expect(shouldAskForReview(4, 8, null, false, 0)).toBe(true);
+    expect(shouldAskForReview(9, 30, 0, false, 29 * day)).toBe(false);
+    expect(shouldAskForReview(9, 30, 0, false, 30 * day)).toBe(true);
+    expect(shouldAskForReview(9, 30, null, true, 365 * day)).toBe(false);
   });
 });

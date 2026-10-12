@@ -1577,4 +1577,10 @@
     "Dieses Spiel braucht den Bewegungssensor, der auf diesem Gerät fehlt.",
   achieveSteadyHandsTitle: "Ruhige Hand",
   achieveSteadyHandsDesc: "Erziele 40 Punkte im Turbulenz-Test",
+  reviewAskTitle: "FlightMode bewerten?",
+  reviewAskBody:
+    "Wenn dir die App gefällt, schreib ein paar Worte bei Google Play. So finden andere Reisende sie leichter.",
+  reviewAskRate: "Bewerten",
+  reviewAskLater: "Später",
+  reviewAskNever: "Nein, danke",
 } as const;

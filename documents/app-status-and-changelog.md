@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-10-12
+
+- hodnoceni aplikace: vlastni dialog (Ohodnotit / Pozdeji / Ne, diky) na Domu, jen online, po 4+ spustenich a 8+ hrach, nikdy behem hry; Pozdeji = znovu za 30 dni; nativni Play sheet z vysledku hry odstranen
+
 ## 2026-10-10
 
 - nove hry: Palubni trojky (match-3, 30 urovni s hvezdami, specialni kameny, kaskady), Nakladani kufru (1010!-styl), Pasians (Klondike, draw 1/3, undo, auto-dokonceni); katalog 41 → 44; pak Mahjong (3 rozlozeni, vzdy resitelne rozdani) → 45; radek Nove k vyzkouseni ukazuje nejnovejsi hry

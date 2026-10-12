@@ -1471,4 +1471,10 @@
   tbNoSensor: "此游戏需要运动传感器，但本设备不支持。",
   achieveSteadyHandsTitle: "稳如磐石",
   achieveSteadyHandsDesc: "在颠簸测试中得到40分",
+  reviewAskTitle: "给 FlightMode 评分？",
+  reviewAskBody:
+    "如果你喜欢这款应用，请在 Google Play 上留下几句话，帮助其他旅行者找到它。",
+  reviewAskRate: "去评分",
+  reviewAskLater: "以后再说",
+  reviewAskNever: "不用了",
 } as const;

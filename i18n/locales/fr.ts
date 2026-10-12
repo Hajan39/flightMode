@@ -1577,4 +1577,10 @@
     "Ce jeu nécessite le capteur de mouvement, indisponible sur cet appareil.",
   achieveSteadyHandsTitle: "Main sûre",
   achieveSteadyHandsDesc: "Marquez 40 points au Test de turbulences",
+  reviewAskTitle: "Noter FlightMode ?",
+  reviewAskBody:
+    "Si l'app vous plaît, laissez quelques mots sur Google Play. Cela aide d'autres voyageurs à la trouver.",
+  reviewAskRate: "Noter",
+  reviewAskLater: "Plus tard",
+  reviewAskNever: "Non merci",
 } as const;

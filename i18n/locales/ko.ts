@@ -1497,4 +1497,10 @@
     "이 게임은 모션 센서가 필요하지만 이 기기에서는 사용할 수 없습니다.",
   achieveSteadyHandsTitle: "흔들림 없는 손",
   achieveSteadyHandsDesc: "난기류 테스트에서 40점",
+  reviewAskTitle: "FlightMode를 평가해 주시겠어요?",
+  reviewAskBody:
+    "앱이 마음에 드셨다면 Google Play에 몇 마디 남겨 주세요. 다른 여행자가 앱을 찾는 데 도움이 됩니다.",
+  reviewAskRate: "평가하기",
+  reviewAskLater: "나중에",
+  reviewAskNever: "괜찮아요",
 } as const;

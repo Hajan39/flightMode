@@ -1541,4 +1541,10 @@ export const en = {
     "This game needs the motion sensor, which isn't available on this device.",
   achieveSteadyHandsTitle: "Steady Hands",
   achieveSteadyHandsDesc: "Score 40 points in Turbulence Test",
+  reviewAskTitle: "Rate FlightMode?",
+  reviewAskBody:
+    "If you enjoy the app, leave a few words on Google Play. It helps other travellers find it.",
+  reviewAskRate: "Rate",
+  reviewAskLater: "Later",
+  reviewAskNever: "No, thanks",
 } as const;

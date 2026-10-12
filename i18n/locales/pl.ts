@@ -1532,4 +1532,10 @@
   tbNoSensor: "Ta gra wymaga czujnika ruchu, którego nie ma na tym urządzeniu.",
   achieveSteadyHandsTitle: "Pewna ręka",
   achieveSteadyHandsDesc: "Zdobądź 40 punktów w Teście turbulencji",
+  reviewAskTitle: "Ocenisz FlightMode?",
+  reviewAskBody:
+    "Jeśli aplikacja ci się podoba, napisz kilka słów w Google Play. Dzięki temu inni podróżni łatwiej ją znajdą.",
+  reviewAskRate: "Oceń",
+  reviewAskLater: "Później",
+  reviewAskNever: "Nie, dziękuję",
 } as const;

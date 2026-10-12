@@ -1480,4 +1480,10 @@
   tbNoSensor: "इस गेम को मोशन सेंसर चाहिए, जो इस डिवाइस पर उपलब्ध नहीं है।",
   achieveSteadyHandsTitle: "स्थिर हाथ",
   achieveSteadyHandsDesc: "टर्बुलेंस टेस्ट में 40 अंक",
+  reviewAskTitle: "FlightMode को रेटिंग दें?",
+  reviewAskBody:
+    "अगर ऐप पसंद आया हो, तो Google Play पर कुछ शब्द लिखें। इससे दूसरे यात्रियों को इसे ढूँढने में मदद मिलती है।",
+  reviewAskRate: "रेटिंग दें",
+  reviewAskLater: "बाद में",
+  reviewAskNever: "नहीं, धन्यवाद",
 } as const;

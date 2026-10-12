@@ -1,5 +1,5 @@
-import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
+import { useFocusEffect, useRouter } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 
 import DailyChallengeCard from "@/components/home/DailyChallengeCard";
@@ -42,6 +42,7 @@ import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { pickFlightGames } from "@/utils/flightRecommendations";
 import { cancelJetlagSleepReminder } from "@/utils/notifications";
+import { maybeAskForReview } from "@/utils/reviewPrompt";
 
 function getPlayModeLabelKey(playMode?: GamePlayMode) {
   if (playMode === "passAndPlay") {
@@ -103,6 +104,15 @@ export default function HomeScreen() {
   useEffect(() => {
     captureAnalyticsEvent("home_phase_shown", { phase });
   }, [phase]);
+
+  // Rating dialog: only while Home is on screen (never over a game), after a pause.
+  const gamesPlayed = stats.totalGamesPlayed;
+  useFocusEffect(
+    useCallback(() => {
+      const timer = setTimeout(() => maybeAskForReview(gamesPlayed, t), 4000);
+      return () => clearTimeout(timer);
+    }, [gamesPlayed, t])
+  );
 
   const clearFlightAndReminder = () => {
     clearFlight();

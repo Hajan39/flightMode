@@ -23,13 +23,16 @@ interface SettingsState {
   incrementAppOpenCount: () => number;
   isFirstLaunch: boolean;
   language: Language | null;
-  /** Last time we asked Google Play for an in-app review (ms); null = never. */
+  /** Last time we showed the rating dialog (ms); null = never. */
   lastReviewPromptAt: number | null;
   markFirstSessionCompleted: () => void;
+  markReviewDone: () => void;
   markReviewPrompted: () => void;
   /** Game categories the user picked during onboarding; biases recommendations. Empty = no preference. */
   preferredCategories: GameCategory[];
   resetLanguage: () => void;
+  /** Rated or chose "No thanks": never show the rating dialog again. */
+  reviewDone: boolean;
   setAnalyticsEnabled: (enabled: boolean) => void;
   setHomeCurrency: (code: string) => void;
   setLanguage: (language: Language) => void;
@@ -60,9 +63,11 @@ export const useSettingsStore = create<SettingsState>()(
       language: null,
       lastReviewPromptAt: null as number | null,
       markFirstSessionCompleted: () => set({ hasCompletedFirstSession: true }),
+      markReviewDone: () => set({ reviewDone: true }),
       markReviewPrompted: () => set({ lastReviewPromptAt: Date.now() }),
       preferredCategories: [] as GameCategory[],
       resetLanguage: () => set({ language: null }),
+      reviewDone: false,
       setAnalyticsEnabled: (analyticsEnabled) => set({ analyticsEnabled }),
       setHomeCurrency: (code) => set({ homeCurrency: code.toUpperCase() }),
       setLanguage: (language) => set({ language }),

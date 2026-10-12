@@ -12,7 +12,6 @@ import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useReduceMotion } from "@/hooks/useReduceMotion";
 import { useTranslation } from "@/hooks/useTranslation";
-import { maybeRequestReview } from "@/utils/reviewPrompt";
 
 interface Props {
   /** All-time best score for this game. */
@@ -61,15 +60,7 @@ export default function GameResult({
         haptic.heavy();
       }
     }, 450);
-    // A new best is the happiest moment to ask for a store review.
-    const reviewTimer = isNewBest
-      ? // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
-        setTimeout(() => void maybeRequestReview(), 1500)
-      : undefined;
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(reviewTimer);
-    };
+    return () => clearTimeout(timer);
   }, [haptic, isNewBest]);
 
   const handleQuit = () => {

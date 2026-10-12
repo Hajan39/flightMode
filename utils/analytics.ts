@@ -21,6 +21,7 @@ export type AnalyticsEventName =
   | "profile_open"
   | "passport_shared"
   | "review_prompted"
+  | "review_store_opened"
   | "home_action_open"
   | "home_phase_shown"
   | "home_recommendation_open"

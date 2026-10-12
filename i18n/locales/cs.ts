@@ -1532,4 +1532,10 @@ export const cs = {
     "Tahle hra potřebuje pohybový senzor, který na tomhle zařízení není.",
   achieveSteadyHandsTitle: "Pevná ruka",
   achieveSteadyHandsDesc: "Získej 40 bodů ve Zkoušce turbulencí",
+  reviewAskTitle: "Ohodnotíš FlightMode?",
+  reviewAskBody:
+    "Pokud tě aplikace baví, napiš nám pár slov na Google Play. Pomůže to dalším cestujícím ji najít.",
+  reviewAskRate: "Ohodnotit",
+  reviewAskLater: "Později",
+  reviewAskNever: "Ne, díky",
 } as const;

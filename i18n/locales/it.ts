@@ -1558,4 +1558,10 @@
     "Questo gioco richiede il sensore di movimento, non disponibile su questo dispositivo.",
   achieveSteadyHandsTitle: "Mano ferma",
   achieveSteadyHandsDesc: "Ottieni 40 punti nel Test di turbolenza",
+  reviewAskTitle: "Valuti FlightMode?",
+  reviewAskBody:
+    "Se l'app ti piace, lascia qualche parola su Google Play. Aiuta altri viaggiatori a trovarla.",
+  reviewAskRate: "Valuta",
+  reviewAskLater: "Più tardi",
+  reviewAskNever: "No, grazie",
 } as const;

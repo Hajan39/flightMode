@@ -1506,4 +1506,10 @@
     "このゲームにはモーションセンサーが必要ですが、この端末では利用できません。",
   achieveSteadyHandsTitle: "安定した手",
   achieveSteadyHandsDesc: "タービュランス・テストで40点",
+  reviewAskTitle: "FlightModeを評価しませんか？",
+  reviewAskBody:
+    "アプリを気に入っていただけたら、Google Playにひとことお寄せください。ほかの旅行者が見つけやすくなります。",
+  reviewAskRate: "評価する",
+  reviewAskLater: "あとで",
+  reviewAskNever: "結構です",
 } as const;

@@ -55,7 +55,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `store/usePlayersStore.ts` — multiplayer seat names + last player count (persisted)
 - `store/useRatesStore.ts` — live exchange rates + `ratesAsOf`/`lastSyncAt` (persisted; status not persisted)
 - `store/useSupporterStore.ts` — FlightMode Plus entitlement (`plus`) + tip count (persisted, cached offline)
-- `store/useSettingsStore.ts` also holds `lastReviewPromptAt` (in-app review gate) and `homeCurrency` (converter default, set in onboarding/settings)
+- `store/useSettingsStore.ts` also holds `lastReviewPromptAt` + `reviewDone` (rating-dialog gate) and `homeCurrency` (converter default, set in onboarding/settings)
 
 **Styling:** React Native `StyleSheet` + inline styles. Design tokens:
 - `constants/Colors.ts` — theme palettes: `light`, `dark`, `crazy` (text, background, tint, card, surface, elevated, border, mutedText, etc.)
@@ -177,7 +177,7 @@ Play Console's "deprecated edge-to-edge APIs" notice (`setStatusBarColor`, cutou
 
 Google Play Billing via `expo-iap`, wrapped in `utils/billing.ts` (guarded: no-op without the native module). Products (Play Console one-time products): `flightmode_plus` (non-consumable, acknowledged), `tip_small` / `tip_medium` / `tip_large` (consumed). UI: `app/plus.tsx`. Plus perks today: themes `midnight` + `sunset` (`PLUS_THEMES` in `components/useColorScheme.ts`; they fall back to the system scheme without Plus, and per-scheme `Themed` overrides resolve via `baseScheme()` → `dark`) and a profile badge. **Rule: never gate anything that is free today** — Plus only adds new extras. No receipt server: entitlement is trusted client-side (`ponytail:` note in `utils/billing.ts`).
 
-In-app review: `utils/reviewPrompt.ts`, fired from `GameResult` on a new best.
+Rating prompt: `utils/reviewPrompt.ts` — own dialog (Rate / Later / No thanks) opening the Play listing; shown on Home focus only (never during a game), online only, after 4+ app opens and 8+ games; Later waits 30 days, Rate / No thanks never ask again. Wording stays neutral (Play forbids steering only happy users to the store).
 
 ## Analytics
 
