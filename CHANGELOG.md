@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+
+- **9 achievements for the new games (48 → 57)**, mirrored to Google Play Games: Sky Match (level 10, all 30 levels, 3 stars on 10 levels), Cargo Blocks (500 / 1500 points), Solitaire (a win, 3 wins in a row), Mahjong (a cleared board, 3 in a row). Localized in all 12 languages; Play Console bulk-import ZIP sources (CSV + icons) in `assets/play-store/achievements-v1.6/`.
+
 ### Changed
 
 - **Rating prompt you actually see**: Play's in-app review sheet is quota-limited and often never appeared (it fired on the game result screen). FlightMode now asks with its own dialog — Rate (opens the Play listing) / Later / No thanks — on Home only, never during a game, only when online, and only after 4+ app opens and 8+ games played. Later asks again after 30 days; Rate or No thanks never ask again. Localized in all 12 languages.

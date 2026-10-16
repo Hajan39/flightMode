@@ -163,7 +163,7 @@ Remote articles come from **`content/feed.json`** (`{ version, items: ContentIte
 
 ## Achievements
 
-Defined in `data/achievements.ts` (48 achievements). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
+Defined in `data/achievements.ts` (57 achievements; every one mapped to a Play Games id in `data/playGamesAchievements.ts`; Play Console bulk-import source for the v1.6 set in `assets/play-store/achievements-v1.6/`). Categories: `player`, `quiz`, `relax`, `traveler`, `streak`, `special`. Checked in `store/useAchievementStore.ts` via `checkAndUnlock()`, which is called automatically after `updateProgress()`.
 
 `useAchievementStore` tracks: `unlockedIds`, `newUnlockedIds` (cleared by `AchievementToast`), `totalFlights`, `totalRelaxSessions`, `articlesRead`, `soundsPlayed`, `lastActiveDate`, `streakDays`.
 

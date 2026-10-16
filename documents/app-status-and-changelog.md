@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-10-17
+
+- 9 novych uspechu pro Palubni trojky, Nakladani kufru, Pasians a Mahjong (48 → 57), napojene na Play Games (hromadny import CSV + ikony v `assets/play-store/achievements-v1.6/`)
+
 ## 2026-10-12
 
 - hodnoceni aplikace: vlastni dialog (Ohodnotit / Pozdeji / Ne, diky) na Domu, jen online, po 4+ spustenich a 8+ hrach, nikdy behem hry; Pozdeji = znovu za 30 dni; nativni Play sheet z vysledku hry odstranen

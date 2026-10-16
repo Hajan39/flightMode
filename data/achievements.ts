@@ -465,4 +465,82 @@ export const achievements: AchievementDef[] = [
     id: "equilibrium",
     titleKey: "achieveEquilibriumTitle",
   },
+  // ── v1.6 games: Sky Match levels, Cargo Blocks score, Solitaire / Mahjong wins (bestStreak counts consecutive wins) ──
+  {
+    category: "special",
+    condition: (s) =>
+      (s.gameProgress["sky-match"]?.levelStars?.["10"] ?? 0) >= 1,
+    descriptionKey: "achieveCruisingAltitudeDesc",
+    icon: "airplane-outline",
+    id: "cruising-altitude",
+    titleKey: "achieveCruisingAltitudeTitle",
+  },
+  {
+    category: "special",
+    condition: (s) =>
+      (s.gameProgress["sky-match"]?.levelStars?.["30"] ?? 0) >= 1,
+    descriptionKey: "achieveFinalDestinationDesc",
+    icon: "flag-outline",
+    id: "final-destination",
+    titleKey: "achieveFinalDestinationTitle",
+  },
+  {
+    category: "special",
+    condition: (s) =>
+      Object.values(s.gameProgress["sky-match"]?.levelStars ?? {}).filter(
+        (stars) => stars >= 3
+      ).length >= 10,
+    descriptionKey: "achieveThreeStarServiceDesc",
+    icon: "star-outline",
+    id: "three-star-service",
+    titleKey: "achieveThreeStarServiceTitle",
+  },
+  {
+    category: "special",
+    condition: (s) => (s.gameProgress["cargo-blocks"]?.highScore ?? 0) >= 500,
+    descriptionKey: "achieveLoadedUpDesc",
+    icon: "briefcase-outline",
+    id: "loaded-up",
+    titleKey: "achieveLoadedUpTitle",
+  },
+  {
+    category: "special",
+    condition: (s) => (s.gameProgress["cargo-blocks"]?.highScore ?? 0) >= 1500,
+    descriptionKey: "achieveFullHoldDesc",
+    icon: "cube-outline",
+    id: "full-hold",
+    titleKey: "achieveFullHoldTitle",
+  },
+  {
+    category: "special",
+    condition: (s) => (s.gameProgress.solitaire?.bestStreak ?? 0) >= 1,
+    descriptionKey: "achieveCardsInPlaceDesc",
+    icon: "albums-outline",
+    id: "cards-in-place",
+    titleKey: "achieveCardsInPlaceTitle",
+  },
+  {
+    category: "special",
+    condition: (s) => (s.gameProgress.solitaire?.bestStreak ?? 0) >= 3,
+    descriptionKey: "achieveLuckyHandDesc",
+    icon: "leaf-outline",
+    id: "lucky-hand",
+    titleKey: "achieveLuckyHandTitle",
+  },
+  {
+    category: "special",
+    condition: (s) => (s.gameProgress.mahjong?.bestStreak ?? 0) >= 1,
+    descriptionKey: "achieveCleanTableDesc",
+    icon: "grid-outline",
+    id: "clean-table",
+    titleKey: "achieveCleanTableTitle",
+  },
+  {
+    category: "special",
+    condition: (s) => (s.gameProgress.mahjong?.bestStreak ?? 0) >= 3,
+    descriptionKey: "achieveCalmMindDesc",
+    icon: "happy-outline",
+    id: "calm-mind",
+    titleKey: "achieveCalmMindTitle",
+  },
 ];
