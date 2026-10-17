@@ -1602,4 +1602,27 @@
   achieveCleanTableDesc: "Videz un plateau de Mahjong",
   achieveCalmMindTitle: "Esprit serein",
   achieveCalmMindDesc: "Videz 3 plateaux de Mahjong d'affilée",
+  gameBoxBreakerName: "Casse-boîtes",
+  gameBoxBreakerDescription:
+    "Renvoyez la balle avec la raquette et cassez toutes les boîtes",
+  rulesBoxBreaker:
+    "🎯 But\n• Renvoyez la balle avec la raquette et cassez toutes les boîtes du niveau.\n\n🎮 Commandes\n• Faites glisser un doigt n'importe où sur le terrain, ou inclinez le téléphone à gauche et à droite.\n• Touchez le terrain pour lancer la balle.\n• Les bords de la raquette envoient la balle de biais. Bougez la raquette au moment du rebond pour lui donner de l'effet.\n• La balle accélère un peu à chaque rebond.\n\n🧱 Boîtes\n• Bleue : 1 coup, orange : 2, violette : 3. Les points indiquent combien il en reste.\n• 💣 Une bombe explose et casse tout autour d'elle.\n• ❓ Une boîte mystère lâche toujours un bonus.\n• Les murs gris en métal sont incassables : ils forment des couloirs où guider la balle.\n\n🎁 Bonus\n• ↔️ raquette plus large, ⚪ trois balles, 🔥 boule de feu qui traverse les boîtes, ❤️ vie en plus. Attrapez-les avec la raquette.\n\n⭐ Points\n• 10 points par coup, plus un bonus à chaque niveau terminé. Vous avez 3 vies.",
+  bbChooseControl: "Comment voulez-vous jouer ?",
+  bbTouch: "Au doigt",
+  bbTouchHint: "Glissez n'importe où sur le terrain",
+  bbTilt: "En inclinant",
+  bbTiltHint: "Inclinez le téléphone à gauche et à droite",
+  bbScore: "SCORE",
+  bbLevel: "NIVEAU",
+  bbLives: "VIES",
+  bbTapLaunch: "Touchez pour lancer la balle",
+  bbTapLaunchTilt: "Touchez pour lancer ; l'inclinaison guide la raquette",
+  gameMazeMuncherName: "Glouton du labyrinthe",
+  gameMazeMuncherDescription: "Mangez tous les points et évitez les fantômes",
+  rulesMazeMuncher:
+    "🎯 But\n• Mangez tous les points du labyrinthe sans vous faire attraper par les fantômes.\n\n🎮 Commandes\n• Balayez l'écran n'importe où vers la direction où tourner, ou inclinez le téléphone.\n• Le virage est mémorisé et pris au prochain croisement.\n• Le tunnel à gauche et à droite mène de l'autre côté.\n\n👻 Fantômes\n• Chaque fantôme chasse à sa façon. Un gros point les effraie un moment : ils deviennent bleus et vous pouvez les manger. Quand ils clignotent, ils vont bientôt se reprendre.\n\n⭐ Points\n• Point 10, gros point 50, fantômes 200, 400, 800 et 1600 d'affilée. Bonus pour chaque labyrinthe vidé. Vous avez 3 vies.",
+  mmSwipe: "Balayer",
+  mmSwipeHint: "Balayez vers la direction où tourner",
+  mmTiltHint: "Inclinez le téléphone vers où aller",
+  mmReady: "Prêt ?",
 } as const;

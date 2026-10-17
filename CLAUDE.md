@@ -17,7 +17,8 @@ npm run deploy:android              # EAS build + auto-submit
 npm run deploy:internal             # EAS build + submit to Internal testing (generates pre-launch report)
 
 npm test                            # Jest (jest-expo) — pure logic/data tests in __tests__/
-npm run check                       # Ultracite/Biome lint (strict preset; CI fails on errors)
+npm run check / npm run lint        # Ultracite/Biome lint (strict preset; CI fails on errors)
+npm run typecheck                   # tsc --noEmit
 npm run fix                         # Ultracite/Biome lint with auto-fix
 ```
 
@@ -27,7 +28,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **Stack:** Expo 57 · React Native 0.86 · React 19 · Expo Router · Zustand 5 · AsyncStorage · expo-audio · expo-sensors · PostHog
 
-**App version:** 1.6.1 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
+**App version:** 1.7.0 (in `app.json`). Bundle IDs: `com.hajan39.flightmode` (iOS + Android).
 
 **Navigation:** Expo Router. Root stack in `app/_layout.tsx`. Main tabs in `app/(tabs)/`. Detail routes: `app/game/[id].tsx`, `app/content/[id].tsx`, `app/flight/edit.tsx`. Profile, settings, `app/preflight.tsx` (offline-readiness), `app/checklist.tsx` (travel checklist) and `app/converter.tsx` (currency/units) are modal stack screens; `app/destinations.tsx` (destination tips) and `app/phrasebook.tsx` are pushed card screens. Onboarding flow at `app/onboarding.tsx`.
 
@@ -70,7 +71,7 @@ Theme modes: `system / light / dark / crazy` (free) + `midnight / sunset` (Plus)
 
 ## Games
 
-45 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
+47 games. Single source of truth: **`data/games.ts`** exports `gameRegistry`, `gamesById`, `dailyChallengeGames`, `playTogetherGames`, `getGameById()`.
 
 Each game is a self-contained module at `games/<id>/index.tsx`. All games must call `useGameStore().updateProgress()` to record results.
 
@@ -123,6 +124,8 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `cargo-blocks` | brain | medium | 1010!-style block puzzle: drag 3 pieces into an 8×8 hold, full rows/columns clear, combos + streaks |
 | `solitaire` | strategy | medium | Klondike, draw 1 / draw 3; tap-to-move + drag, unlimited undo, auto-complete |
 | `mahjong` | brain | medium | Mahjong solitaire with travel emoji tiles; 3 layouts (48/84/78 tiles), deals generated solvable (reverse pair placement), hint / shuffle / undo |
+| `box-breaker` | reflex | medium | Breakout: 12 layouts with 1–3-hit boxes, bombs (chain blasts), mystery boxes, steel corridors; paddle english + speed-up; wide / multi / fire / life power-ups; finger or tilt (`expo-sensors`); bot test proves every layout clearable without tunnelling |
+| `maze-muncher` | reflex | medium | Pac-Man-style maze (19×21, mirrored): 4 ghosts with scatter/chase targeting, power dots, tunnel; swipe or tilt |
 
 **Daily challenge games:** `sky-math`, `reaction`, `runway-landing`, `cabin-call`, `word-scramble`, `color-clash`, `simon-says`, `whack-mole`, `odd-one-out`, `word-guess` (derived from `isDailyChallenge` in `data/games.ts` — do not hand-maintain)
 

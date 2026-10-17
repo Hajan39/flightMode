@@ -1587,4 +1587,28 @@
   achieveCleanTableDesc: "Despeja un tablero de Mahjong",
   achieveCalmMindTitle: "Mente en calma",
   achieveCalmMindDesc: "Despeja 3 tableros de Mahjong seguidos",
+  gameBoxBreakerName: "Rompecajas",
+  gameBoxBreakerDescription:
+    "Haz rebotar la pelota con la pala y rompe todas las cajas",
+  rulesBoxBreaker:
+    "🎯 Objetivo\n• Haz rebotar la pelota con la pala y rompe todas las cajas del nivel.\n\n🎮 Controles\n• Arrastra el dedo por cualquier parte del campo o inclina el teléfono a izquierda y derecha.\n• Toca el campo para lanzar la pelota.\n• Los bordes de la pala envían la pelota de lado. Si mueves la pala al rebotar, le das efecto.\n• La pelota acelera un poco con cada rebote.\n\n🧱 Cajas\n• La azul aguanta 1 golpe, la naranja 2, la morada 3. Los puntos muestran cuántos quedan.\n• 💣 Una bomba explota y rompe todo lo que la rodea.\n• ❓ Una caja sorpresa siempre suelta un potenciador.\n• Los muros grises de metal no se rompen: forman pasillos por los que debes guiar la pelota.\n\n🎁 Potenciadores\n• ↔️ pala más ancha, ⚪ tres pelotas, 🔥 bola de fuego que atraviesa cajas, ❤️ vida extra. Atrápalos con la pala.\n\n⭐ Puntos\n• 10 puntos por golpe y un bonus por cada nivel superado. Tienes 3 vidas.",
+  bbChooseControl: "¿Cómo quieres jugar?",
+  bbTouch: "Con el dedo",
+  bbTouchHint: "Arrastra por cualquier parte del campo",
+  bbTilt: "Inclinando",
+  bbTiltHint: "Inclina el teléfono a izquierda y derecha",
+  bbScore: "PUNTOS",
+  bbLevel: "NIVEL",
+  bbLives: "VIDAS",
+  bbTapLaunch: "Toca para lanzar la pelota",
+  bbTapLaunchTilt: "Toca para lanzar; la inclinación mueve la pala",
+  gameMazeMuncherName: "Laberinto glotón",
+  gameMazeMuncherDescription:
+    "Cómete todos los puntos y esquiva a los fantasmas",
+  rulesMazeMuncher:
+    "🎯 Objetivo\n• Cómete todos los puntos del laberinto sin que te atrapen los fantasmas.\n\n🎮 Controles\n• Desliza el dedo en cualquier parte de la pantalla hacia donde quieras girar, o inclina el teléfono.\n• El giro se recuerda y se hace en el siguiente cruce.\n• El túnel de la izquierda y la derecha te lleva al otro lado.\n\n👻 Fantasmas\n• Cada fantasma caza a su manera. Un punto grande los asusta un rato: se vuelven azules y puedes comértelos. Cuando parpadean, están a punto de recuperarse.\n\n⭐ Puntos\n• Punto 10, punto grande 50, fantasmas 200, 400, 800 y 1600 seguidos. Bonus por cada laberinto despejado. Tienes 3 vidas.",
+  mmSwipe: "Deslizar",
+  mmSwipeHint: "Desliza hacia donde quieras girar",
+  mmTiltHint: "Inclina el teléfono hacia donde quieras ir",
+  mmReady: "¡Prepárate!",
 } as const;

@@ -1565,4 +1565,27 @@ export const en = {
   achieveCleanTableDesc: "Clear a Mahjong board",
   achieveCalmMindTitle: "Calm Mind",
   achieveCalmMindDesc: "Clear 3 Mahjong boards in a row",
+  gameBoxBreakerName: "Box Breaker",
+  gameBoxBreakerDescription:
+    "Bounce the ball off your paddle and smash every box",
+  rulesBoxBreaker:
+    "🎯 Goal\n• Bounce the ball off your paddle and smash every box in the level.\n\n🎮 Controls\n• Drag a finger anywhere on the field, or tilt the phone left and right.\n• Tap the field to launch the ball.\n• The paddle's edges send the ball sideways. Move the paddle as the ball lands to put spin on it.\n• The ball speeds up a little with every bounce.\n\n🧱 Boxes\n• Blue takes 1 hit, orange 2, purple 3. The dots show how many are left.\n• 💣 A bomb explodes and smashes everything around it.\n• ❓ A mystery box always drops a power-up.\n• Grey metal walls can't be broken: they form corridors you have to steer the ball through.\n\n🎁 Power-ups\n• ↔️ wider paddle, ⚪ three balls, 🔥 fireball burns through boxes, ❤️ extra life. Catch them with the paddle.\n\n⭐ Scoring\n• 10 points per hit, plus a bonus for every level cleared. You have 3 lives.",
+  bbChooseControl: "How do you want to play?",
+  bbTouch: "Finger",
+  bbTouchHint: "Drag anywhere on the field",
+  bbTilt: "Tilt",
+  bbTiltHint: "Tilt the phone left and right",
+  bbScore: "SCORE",
+  bbLevel: "LEVEL",
+  bbLives: "LIVES",
+  bbTapLaunch: "Tap to launch the ball",
+  bbTapLaunchTilt: "Tap to launch; tilt steers the paddle",
+  gameMazeMuncherName: "Maze Muncher",
+  gameMazeMuncherDescription: "Eat every dot and dodge the ghosts",
+  rulesMazeMuncher:
+    "🎯 Goal\n• Eat every dot in the maze without getting caught by the ghosts.\n\n🎮 Controls\n• Swipe anywhere on the screen towards where you want to turn, or tilt the phone.\n• The turn is remembered and taken at the next junction.\n• The tunnel on the left and right takes you to the other side.\n\n👻 Ghosts\n• Each ghost hunts differently. A big dot scares them for a while: they turn blue and you can eat them. When they flash, they are about to recover.\n\n⭐ Scoring\n• Dot 10, big dot 50, ghosts 200, 400, 800 and 1600 in a row. A bonus for every maze cleared. You have 3 lives.",
+  mmSwipe: "Swipe",
+  mmSwipeHint: "Swipe towards where you want to turn",
+  mmTiltHint: "Tilt the phone towards where you want to go",
+  mmReady: "Get ready!",
 } as const;

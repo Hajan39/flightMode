@@ -1,0 +1,3 @@
+# LF everywhere, also on Windows checkouts: Biome (Ultracite) formats with LF
+# and CI runs on Linux, so CRLF working copies failed the local lint gate.
+* text=auto eol=lf

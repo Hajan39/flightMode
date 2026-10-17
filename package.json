@@ -12,10 +12,12 @@
     "eas:submit:android": "npx eas-cli submit --platform android --profile production",
     "fix": "ultracite fix",
     "ios": "expo start --ios",
+    "lint": "ultracite check",
     "ota:preview": "node ./scripts/eas-update-from-changelog.mjs preview",
     "ota:production": "node ./scripts/eas-update-from-changelog.mjs production",
     "start": "expo start",
     "test": "jest",
+    "typecheck": "tsc --noEmit",
     "update": "expo install --fix",
     "web": "expo start --web"
   },

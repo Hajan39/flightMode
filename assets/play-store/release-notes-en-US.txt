@@ -1,5 +1,4 @@
-New games: Sky Match (match-3, 30 levels), Cargo Blocks, Solitaire, Mahjong and a big word search with a hidden message (45 games now).
+New: Box Breaker and Maze Muncher, play by finger or by tilting the phone (47 games now).
+- Also new since 1.6: Sky Match, Cargo Blocks, Solitaire, Mahjong, big word search
 - Word Guess in Czech and German
-- Sky Defense: build towers before every wave
-- Fairer quiz answers
 - New app icon

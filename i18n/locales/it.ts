@@ -1582,4 +1582,27 @@
   achieveCleanTableDesc: "Svuota un tavolo di Mahjong",
   achieveCalmMindTitle: "Mente serena",
   achieveCalmMindDesc: "Svuota 3 tavoli di Mahjong di fila",
+  gameBoxBreakerName: "Spaccascatole",
+  gameBoxBreakerDescription:
+    "Fai rimbalzare la pallina sulla racchetta e rompi tutte le scatole",
+  rulesBoxBreaker:
+    "🎯 Obiettivo\n• Fai rimbalzare la pallina sulla racchetta e rompi tutte le scatole del livello.\n\n🎮 Comandi\n• Trascina un dito in un punto qualsiasi del campo, oppure inclina il telefono a sinistra e a destra.\n• Tocca il campo per lanciare la pallina.\n• I bordi della racchetta mandano la pallina di lato. Muovi la racchetta durante il rimbalzo per darle effetto.\n• La pallina accelera un po' a ogni rimbalzo.\n\n🧱 Scatole\n• La blu resiste a 1 colpo, l'arancione a 2, la viola a 3. I puntini mostrano quanti ne mancano.\n• 💣 Una bomba esplode e distrugge tutto intorno.\n• ❓ Una scatola misteriosa lascia sempre cadere un bonus.\n• I muri grigi di metallo sono indistruttibili: formano corridoi in cui guidare la pallina.\n\n🎁 Bonus\n• ↔️ racchetta più larga, ⚪ tre palline, 🔥 palla di fuoco che attraversa le scatole, ❤️ vita extra. Prendili con la racchetta.\n\n⭐ Punti\n• 10 punti per colpo e un bonus per ogni livello completato. Hai 3 vite.",
+  bbChooseControl: "Come vuoi giocare?",
+  bbTouch: "Con il dito",
+  bbTouchHint: "Trascina in un punto qualsiasi del campo",
+  bbTilt: "Inclinando",
+  bbTiltHint: "Inclina il telefono a sinistra e a destra",
+  bbScore: "PUNTI",
+  bbLevel: "LIVELLO",
+  bbLives: "VITE",
+  bbTapLaunch: "Tocca per lanciare la pallina",
+  bbTapLaunchTilt: "Tocca per lanciare; l'inclinazione guida la racchetta",
+  gameMazeMuncherName: "Labirinto goloso",
+  gameMazeMuncherDescription: "Mangia tutti i puntini ed evita i fantasmi",
+  rulesMazeMuncher:
+    "🎯 Obiettivo\n• Mangia tutti i puntini del labirinto senza farti prendere dai fantasmi.\n\n🎮 Comandi\n• Scorri in un punto qualsiasi dello schermo verso dove vuoi girare, oppure inclina il telefono.\n• La svolta viene ricordata e presa al prossimo incrocio.\n• Il tunnel a sinistra e a destra porta dall'altra parte.\n\n👻 Fantasmi\n• Ogni fantasma caccia a modo suo. Un puntino grande li spaventa per un po': diventano blu e puoi mangiarli. Quando lampeggiano, stanno per riprendersi.\n\n⭐ Punti\n• Puntino 10, puntino grande 50, fantasmi 200, 400, 800 e 1600 di fila. Bonus per ogni labirinto ripulito. Hai 3 vite.",
+  mmSwipe: "Scorrere",
+  mmSwipeHint: "Scorri verso dove vuoi girare",
+  mmTiltHint: "Inclina il telefono verso dove vuoi andare",
+  mmReady: "Pronti!",
 } as const;

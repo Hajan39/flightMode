@@ -1574,4 +1574,27 @@
   achieveCleanTableDesc: "Limpe um tabuleiro de Mahjong",
   achieveCalmMindTitle: "Mente tranquila",
   achieveCalmMindDesc: "Limpe 3 tabuleiros de Mahjong seguidos",
+  gameBoxBreakerName: "Quebra-caixas",
+  gameBoxBreakerDescription:
+    "Rebata a bola com a raquete e quebre todas as caixas",
+  rulesBoxBreaker:
+    "🎯 Objetivo\n• Rebata a bola com a raquete e quebre todas as caixas do nível.\n\n🎮 Controles\n• Arraste o dedo em qualquer lugar do campo ou incline o celular para a esquerda e para a direita.\n• Toque no campo para lançar a bola.\n• As pontas da raquete mandam a bola de lado. Mexa a raquete na hora da batida para dar efeito.\n• A bola acelera um pouco a cada rebatida.\n\n🧱 Caixas\n• A azul aguenta 1 batida, a laranja 2, a roxa 3. Os pontos mostram quantas faltam.\n• 💣 Uma bomba explode e quebra tudo em volta.\n• ❓ Uma caixa misteriosa sempre solta um bônus.\n• As paredes cinzentas de metal não quebram: formam corredores por onde a bola precisa passar.\n\n🎁 Bônus\n• ↔️ raquete mais larga, ⚪ três bolas, 🔥 bola de fogo atravessa caixas, ❤️ vida extra. Pegue-os com a raquete.\n\n⭐ Pontos\n• 10 pontos por batida e um bônus a cada nível concluído. Você tem 3 vidas.",
+  bbChooseControl: "Como você quer jogar?",
+  bbTouch: "Com o dedo",
+  bbTouchHint: "Arraste em qualquer lugar do campo",
+  bbTilt: "Inclinando",
+  bbTiltHint: "Incline o celular para a esquerda e para a direita",
+  bbScore: "PONTOS",
+  bbLevel: "NÍVEL",
+  bbLives: "VIDAS",
+  bbTapLaunch: "Toque para lançar a bola",
+  bbTapLaunchTilt: "Toque para lançar; a inclinação move a raquete",
+  gameMazeMuncherName: "Labirinto guloso",
+  gameMazeMuncherDescription: "Coma todos os pontos e fuja dos fantasmas",
+  rulesMazeMuncher:
+    "🎯 Objetivo\n• Coma todos os pontos do labirinto sem ser pego pelos fantasmas.\n\n🎮 Controles\n• Deslize em qualquer lugar da tela para onde quer virar, ou incline o celular.\n• A curva fica guardada e é feita no próximo cruzamento.\n• O túnel da esquerda e da direita leva para o outro lado.\n\n👻 Fantasmas\n• Cada fantasma caça de um jeito. Um ponto grande os assusta por um tempo: eles ficam azuis e podem ser comidos. Quando piscam, estão quase voltando ao normal.\n\n⭐ Pontos\n• Ponto 10, ponto grande 50, fantasmas 200, 400, 800 e 1600 em sequência. Bônus por labirinto limpo. Você tem 3 vidas.",
+  mmSwipe: "Deslizar",
+  mmSwipeHint: "Deslize para onde quer virar",
+  mmTiltHint: "Incline o celular para onde quer ir",
+  mmReady: "Preparar!",
 } as const;

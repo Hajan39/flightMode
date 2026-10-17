@@ -550,6 +550,28 @@ export const gameRegistry: GameDefinition[] = [
     rulesKey: "rulesMahjong",
     titleKey: "gameMahjongName",
   },
+  {
+    category: "reflex",
+    descriptionKey: "gameBoxBreakerDescription",
+    difficulty: "medium",
+    estimatedTime: 10,
+    icon: "tennisball-outline",
+    id: "box-breaker",
+    loadComponent: () => require("@/games/box-breaker").default,
+    rulesKey: "rulesBoxBreaker",
+    titleKey: "gameBoxBreakerName",
+  },
+  {
+    category: "reflex",
+    descriptionKey: "gameMazeMuncherDescription",
+    difficulty: "medium",
+    estimatedTime: 10,
+    icon: "happy-outline",
+    id: "maze-muncher",
+    loadComponent: () => require("@/games/maze-muncher").default,
+    rulesKey: "rulesMazeMuncher",
+    titleKey: "gameMazeMuncherName",
+  },
 ];
 
 export const gamesById = Object.fromEntries(

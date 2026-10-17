@@ -1,5 +1,4 @@
-Nové hry: Palubní trojky (match-3, 30 úrovní), Nakládání kufrů, Pasiáns, Mahjong a velká osmisměrka s tajenkou (celkem 45 her).
+Novinky: Rozbij krabice a Žrout v bludišti, hraj prstem nebo nakláněním telefonu (celkem 47 her).
+- Od verze 1.6 navíc: Palubní trojky, Nakládání kufrů, Pasiáns, Mahjong, velká osmisměrka
 - Hádej slovo česky a německy
-- Obrana nebe: věže stavíš před každou vlnou
-- Férovější kvíz
 - Nová ikona aplikace

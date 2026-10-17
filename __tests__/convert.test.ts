@@ -122,7 +122,7 @@ describe("phrases data", () => {
 
   test("every destination phrase language resolves", () => {
     for (const d of destinations) {
-      expect(phraseLanguages[d.phraseLanguage]).toBeDefined();
+      expect(phraseLanguages[d.phraseLanguage]?.code).toBe(d.phraseLanguage);
     }
   });
 

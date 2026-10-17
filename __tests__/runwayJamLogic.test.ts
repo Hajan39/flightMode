@@ -131,28 +131,28 @@ describe("runway jam validateLevel", () => {
   test("rejects a missing plane", () => {
     expect(
       validateLevel([{ col: 0, horiz: true, id: 1, len: 2, row: 0 }])
-    ).not.toBeNull();
+    ).toBe("missing plane (id 0)");
   });
 
   test("rejects a plane off row 2 or vertical", () => {
     expect(
       validateLevel([{ col: 0, horiz: true, id: 0, len: 2, row: 1 }])
-    ).not.toBeNull();
+    ).toBe("plane must be horizontal, length 2, on row 2");
     expect(
       validateLevel([{ col: 0, horiz: false, id: 0, len: 2, row: 2 }])
-    ).not.toBeNull();
+    ).toBe("plane must be horizontal, length 2, on row 2");
   });
 
   test("rejects overlaps, out-of-bounds pieces and duplicate ids", () => {
     const plane = { col: 0, horiz: true, id: 0, len: 2, row: 2 };
     expect(
       validateLevel([plane, { col: 1, horiz: false, id: 1, len: 2, row: 2 }])
-    ).not.toBeNull();
+    ).toBe("pieces overlap at (2,1)");
     expect(
       validateLevel([plane, { col: 5, horiz: true, id: 1, len: 3, row: 4 }])
-    ).not.toBeNull();
+    ).toBe("piece 1 is out of bounds");
     expect(
       validateLevel([plane, { col: 0, horiz: true, id: 0, len: 2, row: 0 }])
-    ).not.toBeNull();
+    ).toBe("duplicate id 0");
   });
 });

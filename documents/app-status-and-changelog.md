@@ -132,6 +132,8 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-10-17
 
+- nove hry Rozbij krabice (breakout: 12 urovni, odolne krabice, bomby, tajemne krabice, kovove chodby, fals palky, ohniva koule; prst nebo naklon) a Zrout v bludisti (styl Pac-Man: 4 duchove, velke tecky, tunel; tah prstem nebo naklon); katalog 45 → 47; verze 1.7.0
+- lokalni kontroly shodne s CI: `.gitattributes` (LF), skripty `lint` a `typecheck`; 4 slabe testy zpresneny
 - 9 novych uspechu pro Palubni trojky, Nakladani kufru, Pasians a Mahjong (48 → 57), napojene na Play Games (hromadny import CSV + ikony v `assets/play-store/achievements-v1.6/`)
 
 ## 2026-10-12
