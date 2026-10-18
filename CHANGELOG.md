@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Tilt steering was mirrored on Android** (tilt left → paddle right) in Box Breaker, Maze Muncher and Turbulence Test: Android reports the reaction to gravity, not the pull, so its axes are now flipped (`gravityTilt` in `games/tilt-balance/logic.ts`).
+
 ### Added
 
 - **Two arcade games (catalog 45 → 47)**: **Box Breaker** — Breakout with 12 layouts: 1–3-hit boxes with damage pips, bombs that blast their neighbours (and chain), mystery boxes that always drop a power-up, steel walls that form corridors; moving the paddle as the ball lands puts spin on it and every bounce speeds the ball up a little; power-ups wide paddle, three balls, fireball (burns through boxes) and extra life; hit flash, debris, ball trail and a shake on explosions. **Maze Muncher** — a Pac-Man-style maze with four ghosts that each hunt differently (scatter/chase), power dots that turn them edible (200/400/800/1600) and a side tunnel. Both play with a finger (drag / swipe) or by tilting the phone.

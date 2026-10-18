@@ -3,6 +3,7 @@ import { Accelerometer, DeviceMotion } from "expo-sensors";
 import { useEffect, useRef, useState } from "react";
 import {
   type GestureResponderEvent,
+  Platform,
   Pressable,
   View as RNView,
   StyleSheet,
@@ -16,7 +17,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
-import { deviceToScreenTilt } from "@/games/tilt-balance/logic";
+import { gravityTilt } from "@/games/tilt-balance/logic";
 import { useHaptic } from "@/hooks/useHaptic";
 import { swipeDirection } from "@/hooks/useSwipe";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -336,7 +337,12 @@ export default function MazeMuncherGame() {
           rotationRef.current = orientation;
         }),
         Accelerometer.addListener(({ x, y }) => {
-          const s = deviceToScreenTilt(x, y, rotationRef.current);
+          const s = gravityTilt(
+            x,
+            y,
+            rotationRef.current,
+            Platform.OS === "android"
+          );
           if (Math.max(Math.abs(s.x), Math.abs(s.y)) < TILT_THRESHOLD) {
             return;
           }

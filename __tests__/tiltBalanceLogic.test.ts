@@ -4,6 +4,7 @@ import {
   DEFAULT_PHYSICS,
   deviceToScreenTilt,
   distanceFromCenter,
+  gravityTilt,
   gustIntervalMs,
   gustStrength,
   isOutOfBounds,
@@ -136,5 +137,24 @@ describe("deviceToScreenTilt (display rotation remap)", () => {
       const { x, y } = deviceToScreenTilt(0.3, 0.4, r);
       expect(Math.hypot(x, y)).toBeCloseTo(0.5);
     }
+  });
+});
+
+describe("gravityTilt (platform sign)", () => {
+  test("Android: left edge down (raw +x) steers left, top edge down (raw -y) steers up", () => {
+    expect(gravityTilt(0.5, 0, 0, true).x).toBeCloseTo(-0.5);
+    expect(gravityTilt(0, -0.4, 0, true).y).toBeCloseTo(-0.4);
+  });
+
+  test("iOS keeps the raw gravity direction", () => {
+    expect(gravityTilt(0.5, 0.2, 0, false)).toEqual(
+      deviceToScreenTilt(0.5, 0.2, 0)
+    );
+  });
+
+  test("the Android flip still follows display rotation", () => {
+    expect(gravityTilt(0.3, 0.4, 90, true)).toEqual(
+      deviceToScreenTilt(-0.3, -0.4, 90)
+    );
   });
 });

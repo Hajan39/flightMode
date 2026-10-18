@@ -3,6 +3,7 @@ import { Accelerometer, DeviceMotion } from "expo-sensors";
 import { useEffect, useRef, useState } from "react";
 import {
   type GestureResponderEvent,
+  Platform,
   Pressable,
   View as RNView,
   StyleSheet,
@@ -16,7 +17,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
-import { deviceToScreenTilt } from "@/games/tilt-balance/logic";
+import { gravityTilt } from "@/games/tilt-balance/logic";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -281,7 +282,12 @@ export default function BoxBreakerGame() {
           rotationRef.current = orientation;
         }),
         Accelerometer.addListener(({ x, y }) => {
-          const screen = deviceToScreenTilt(x, y, rotationRef.current);
+          const screen = gravityTilt(
+            x,
+            y,
+            rotationRef.current,
+            Platform.OS === "android"
+          );
           tiltRef.current = Math.max(-1, Math.min(1, screen.x));
         }),
       ];

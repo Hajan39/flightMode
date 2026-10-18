@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Accelerometer, DeviceMotion } from "expo-sensors";
 import { useEffect, useRef, useState } from "react";
-import { Pressable, View as RNView, StyleSheet } from "react-native";
+import { Platform, Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 
 import GameControls from "@/components/GameControls";
@@ -29,8 +29,8 @@ import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
 import {
   applyGust,
   type BallState,
-  deviceToScreenTilt,
   distanceFromCenter,
+  gravityTilt,
   gustIntervalMs,
   gustStrength,
   isOutOfBounds,
@@ -154,7 +154,12 @@ export default function TiltBalanceGame() {
     });
     subscriptionRef.current = Accelerometer.addListener(({ x, y }) => {
       // Phone flat, screen up: +x tilts right, -y tilts "down" the screen.
-      const screen = deviceToScreenTilt(x, y, rotationRef.current);
+      const screen = gravityTilt(
+        x,
+        y,
+        rotationRef.current,
+        Platform.OS === "android"
+      );
       tiltRef.current = {
         x: Math.max(-1, Math.min(1, screen.x)),
         y: Math.max(-1, Math.min(1, screen.y)),

@@ -125,3 +125,19 @@ export function deviceToScreenTilt(
       return { x, y: -y };
   }
 }
+
+/**
+ * Raw accelerometer → screen tilt pointing downhill. Android reports the
+ * reaction to gravity (the push up out of the screen), iOS the pull itself,
+ * so Android axes are flipped first; without it tilting left steers right.
+ */
+export function gravityTilt(
+  x: number,
+  y: number,
+  rotation: number,
+  isAndroid: boolean
+): { x: number; y: number } {
+  return isAndroid
+    ? deviceToScreenTilt(-x, -y, rotation)
+    : deviceToScreenTilt(x, y, rotation);
+}
