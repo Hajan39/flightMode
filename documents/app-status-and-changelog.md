@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-10-25
+
+- prevodnik men offline: drive offline jen 33 kuratorovanych men, ostatni (z rozsireneho seznamu nebo podle regionu telefonu) ukazovaly "–" dokud se nestahly zive kurzy; nove pribaleny snimek 165 men (`data/currencyRatesSnapshot.ts`, kurzy 2026-10-25) — kazda nabizena mena prevadi i bez site, zive kurzy maji prednost; test hlida pokryti
+
 ## 2026-10-17
 
 - nove hry Rozbij krabice (breakout: 12 urovni, odolne krabice, bomby, tajemne krabice, kovove chodby, fals palky, ohniva koule; prst nebo naklon) a Zrout v bludisti (styl Pac-Man: 4 duchove, velke tecky, tunel; tah prstem nebo naklon); katalog 45 → 47; verze 1.7.0

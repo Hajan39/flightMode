@@ -12,6 +12,7 @@ import {
   currencySymbols,
   zeroDecimalCurrencies,
 } from "@/data/currencyNames";
+import { snapshotPerUsd } from "@/data/currencyRatesSnapshot";
 import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -118,28 +119,28 @@ export const useRatesStore = create<RatesState>()(
 
 /**
  * Bundled currency table with live `perUsd` values applied where available,
- * followed (alphabetically) by every extra currency the provider returned.
- * Bundled entries keep their names/symbols; codes the provider lacks keep
- * their bundled approximate rate. Without live data → bundle only.
+ * followed (alphabetically) by every other currency we have a rate for: live
+ * provider codes first-hand, otherwise the bundled offline snapshot
+ * (`data/currencyRatesSnapshot.ts`). So the full list — and a home currency
+ * outside the curated table — converts offline before any live sync.
  */
 export function getEffectiveCurrencies(
   live: Record<string, number> | null,
-  table: Currency[] = currencies
+  table: Currency[] = currencies,
+  snapshot: Readonly<Record<string, number>> = snapshotPerUsd
 ): Currency[] {
-  if (!live) {
-    return table;
-  }
   const known = new Set(table.map((c) => c.code));
-  const bundled = table.map((c) =>
-    live[c.code] ? { ...c, perUsd: live[c.code] } : c
-  );
-  const extra: Currency[] = Object.keys(live)
-    .filter((code) => !known.has(code) && live[code] > 0)
+  const bundled = live
+    ? table.map((c) => (live[c.code] ? { ...c, perUsd: live[c.code] } : c))
+    : table;
+  const rates: Record<string, number> = { ...snapshot, ...(live ?? {}) };
+  const extra: Currency[] = Object.keys(rates)
+    .filter((code) => !known.has(code) && rates[code] > 0)
     .sort()
     .map((code) => ({
       code,
       nameEn: currencyNames[code] ?? code,
-      perUsd: live[code],
+      perUsd: rates[code],
       symbol: currencySymbols[code] ?? code,
       zeroDecimals: zeroDecimalCurrencies.has(code) || undefined,
     }));

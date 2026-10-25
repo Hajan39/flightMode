@@ -3,6 +3,7 @@ import {
   getEffectiveCurrencies,
   getRatesProvenance,
 } from "@/store/useRatesStore";
+import { convertCurrency } from "@/utils/convert";
 import { fetchLatestRates, parseRatesPayload } from "@/utils/ratesSync";
 
 const good = {
@@ -77,7 +78,7 @@ describe("fetchLatestRates", () => {
 
 describe("getEffectiveCurrencies / provenance", () => {
   test("overrides perUsd only where live data exists, keeps names", () => {
-    const effective = getEffectiveCurrencies({ EUR: 0.5 }, currencies);
+    const effective = getEffectiveCurrencies({ EUR: 0.5 }, currencies, {});
     const eur = effective.find((c) => c.code === "EUR");
     const czk = effective.find((c) => c.code === "CZK");
     if (!(eur && czk)) {
@@ -86,13 +87,14 @@ describe("getEffectiveCurrencies / provenance", () => {
     expect(eur.perUsd).toBe(0.5);
     expect(eur.nameEn).toBe("Euro");
     expect(czk.perUsd).toBe(currencies.find((c) => c.code === "CZK")?.perUsd);
-    expect(getEffectiveCurrencies(null, currencies)).toBe(currencies);
+    expect(getEffectiveCurrencies(null, currencies, {})).toEqual(currencies);
   });
 
   test("appends provider-only currencies with names, sorted after the bundle", () => {
     const effective = getEffectiveCurrencies(
       { EUR: 0.9, NOK: 10.5, PHP: 56, XXX: 1 },
-      currencies
+      currencies,
+      {}
     );
     const codes = effective.map((c) => c.code);
     expect(codes.slice(0, currencies.length)).toEqual(
@@ -106,6 +108,35 @@ describe("getEffectiveCurrencies / provenance", () => {
     expect(php.nameEn).toBe("Philippine Peso");
     expect(php.symbol).toBe("₱");
     expect(php.perUsd).toBe(56);
+  });
+
+  test("offline (no live rates) still offers snapshot currencies after the bundle", () => {
+    const effective = getEffectiveCurrencies(null, currencies, { NOK: 10 });
+    expect(effective.map((c) => c.code)).toEqual([
+      ...currencies.map((c) => c.code),
+      "NOK",
+    ]);
+  });
+
+  test("live rates override the snapshot for extra currencies", () => {
+    const nok = getEffectiveCurrencies({ NOK: 11 }, currencies, {
+      NOK: 10,
+    }).find((c) => c.code === "NOK");
+    expect(nok?.perUsd).toBe(11);
+  });
+
+  test("every currency the picker can offer converts offline", () => {
+    // Default snapshot, no live data: what a fresh install sees in airplane mode.
+    const offline = getEffectiveCurrencies(null);
+    const unconvertible = offline
+      .map((c) => c.code)
+      .filter((code) => convertCurrency(100, "USD", code, offline) === null);
+    expect(unconvertible).toEqual([]);
+    // Covers the full provider list, not just the curated table.
+    expect(offline.length).toBeGreaterThan(150);
+    for (const code of ["NOK", "RON", "BGN", "PHP", "UAH"]) {
+      expect(convertCurrency(100, "CZK", code, offline)).not.toBeNull();
+    }
   });
 
   test("provenance flags live vs bundled", () => {
