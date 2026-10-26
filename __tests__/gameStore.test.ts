@@ -181,6 +181,32 @@ describe("useGameStore persistence migration", () => {
     }
   );
 
+  test("v3 → v4: duel-dice scores above the old maximum (160) are new-scale and kept", () => {
+    const entry = (highScore: number, lastScore: number) => ({
+      bestStreak: 1,
+      currentStreak: 0,
+      gameId: "duel-dice",
+      highScore,
+      lastPlayed: 1,
+      lastScore,
+      timesPlayed: 4,
+    });
+    const run = (highScore: number, lastScore: number) =>
+      (
+        migrate(
+          { progress: { "duel-dice": entry(highScore, lastScore) } },
+          3
+        ) as {
+          progress: Record<string, Record<string, unknown>>;
+        }
+      ).progress["duel-dice"];
+    // 7 wins, 41 pips: 7*61+41 = 468 — only possible on the new scale.
+    expect(run(468, 161)).toMatchObject({ highScore: 468, lastScore: 161 });
+    // 160 = the old maximum (10 wins, 60 pips): ambiguous → reset.
+    expect(run(160, 140)).toMatchObject({ highScore: 0, lastScore: 0 });
+    expect(run(468, 52)).toMatchObject({ highScore: 468, lastScore: 0 });
+  });
+
   test("an unmigrated stack-sort entry is decoded on the next play", () => {
     useGameStore.setState({
       progress: {

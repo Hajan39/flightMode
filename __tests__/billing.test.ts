@@ -290,6 +290,59 @@ describe("billing before the supporter store hydrated", () => {
     expect(useSupporterStore.getState().tips).toBe(2);
   });
 
+  test("a tip queued before hydration and delivered again after it is consumed once", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      {
+        productId: "tip_large",
+        purchaseState: "purchased",
+        purchaseToken: "tok-twice",
+      },
+    ]);
+    let finishConsume: () => void = () => undefined;
+    mockFinishTransaction.mockImplementationOnce(
+      () =>
+        new Promise<void>((resolve) => {
+          finishConsume = resolve;
+        })
+    );
+    await restorePurchases(); // queued: store not hydrated yet
+    finishHydration({ plus: false, tips: 1 });
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(1); // consume in flight
+    // The same purchase arrives again on the hydrated path (listener / restore).
+    const second = restorePurchases();
+    finishConsume();
+    await second;
+    await flush();
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(1);
+    expect(useSupporterStore.getState().tips).toBe(2);
+  });
+
+  test("the same tip delivered twice once hydrated is consumed once", async () => {
+    hydrated = true;
+    mockGetAvailablePurchases.mockResolvedValue([
+      {
+        productId: "tip_small",
+        purchaseState: "purchased",
+        purchaseToken: "tok-hydrated",
+      },
+    ]);
+    let finishConsume: () => void = () => undefined;
+    mockFinishTransaction.mockImplementationOnce(
+      () =>
+        new Promise<void>((resolve) => {
+          finishConsume = resolve;
+        })
+    );
+    const first = restorePurchases();
+    await flush();
+    const second = restorePurchases();
+    await flush();
+    finishConsume();
+    await Promise.all([first, second]);
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(1);
+    expect(useSupporterStore.getState().tips).toBe(1);
+  });
+
   test("tips without a token or order id are not merged into one queue entry", async () => {
     mockGetAvailablePurchases.mockResolvedValue([
       { productId: "tip_small", purchaseState: "purchased" },

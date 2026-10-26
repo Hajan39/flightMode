@@ -65,7 +65,7 @@ jest.mock("@/hooks/useTranslation", () => ({
   useTranslation: () => ({ t: (k: string) => k }),
 }));
 
-import FlightPathGame from "@/games/flight-path";
+import FlightPathGame, { spawnIntervalMs } from "@/games/flight-path";
 
 beforeEach(() => {
   jest.useFakeTimers();
@@ -108,4 +108,10 @@ test("planes spawn when both intervals fire in one batch (like RN)", () => {
 
 test("planes spawn when every timer gets its own render", () => {
   expect(play(1)).toBeGreaterThan(0);
+});
+
+test("spawn gap shrinks with landings and bottoms out at 900 ms", () => {
+  expect(spawnIntervalMs(0)).toBe(3500);
+  expect(spawnIntervalMs(5)).toBe(2920);
+  expect(spawnIntervalMs(40)).toBe(900);
 });

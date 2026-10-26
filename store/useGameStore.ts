@@ -31,6 +31,14 @@ interface GameState {
   ) => GameProgressUpdate;
 }
 
+/** Highest Duel Dice score under the pre-v4 wins*10+total scale (10 rounds). */
+const OLD_DICE_MAX = 10 * 10 + 60;
+
+/** v4 migration: keep a Duel Dice score only if it can't be an old-scale one. */
+function keepNewDiceScore(score: number): number {
+  return score > OLD_DICE_MAX ? score : 0;
+}
+
 function normalize(
   p: Partial<GameProgress> | undefined,
   gameId: string
@@ -154,10 +162,18 @@ export const useGameStore = create<GameState>()(
               ? normalizeStackSort(normalize(raw as Partial<GameProgress>, id))
               : (raw as GameProgress);
           // v3 → v4: duel-dice switched its score from wins*10+total to
-          // wins*61+total; old bests aren't comparable, so reset the scores
-          // (times played and streaks stay).
+          // wins*61+total while persist was still v3, so a v3 entry may hold
+          // either. Old scores can't exceed 10*10+60 = 160 (10 rounds, ≤60
+          // pips); anything above is provably new and kept. The rest is
+          // ambiguous (a new-format score ≤160 means ≤2 round wins) and reset;
+          // times played and streaks stay.
           if (id === "duel-dice") {
-            entry = { ...normalize(entry, id), highScore: 0, lastScore: 0 };
+            const dice = normalize(entry, id);
+            entry = {
+              ...dice,
+              highScore: keepNewDiceScore(dice.highScore),
+              lastScore: keepNewDiceScore(dice.lastScore),
+            };
           }
           migrated[id] = entry;
         }

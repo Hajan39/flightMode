@@ -116,8 +116,24 @@ async function handlePurchase(
     return;
   }
 
+  // The same tip can arrive twice (a restore and the purchase listener, or a
+  // call queued before hydration and another after it): only one consume per
+  // purchase may be in flight, or both would count it.
+  const key = purchaseKey(purchase);
+  if (key !== null && pendingTips.has(key)) {
+    return; // already being consumed / queued by an earlier call
+  }
+  if (key !== null) {
+    pendingTips.add(key);
+  }
+  const release = () => {
+    if (key !== null) {
+      pendingTips.delete(key);
+    }
+  };
+
   if (useSupporterStore.persist.hasHydrated()) {
-    await consumeTip(lib, purchase);
+    await consumeTip(lib, purchase).finally(release);
     return;
   }
   // Not hydrated yet: a tip counted now would be lost (hydration overwrites
@@ -129,13 +145,6 @@ async function handlePurchase(
   // auto-refunded by Play after 3 days if the next launch is late or fails
   // the same way, so it is consumed anyway and only the local tip counter
   // misses it (a cosmetic number; the purchase itself is never lost).
-  const key = purchaseKey(purchase);
-  if (key !== null && deferredTips.has(key)) {
-    return; // already queued by an earlier restore / listener call
-  }
-  if (key !== null) {
-    deferredTips.add(key);
-  }
   let settled = false;
   const cleanups: (() => void)[] = [];
   const settle = (count: boolean) => {
@@ -147,11 +156,7 @@ async function handlePurchase(
       cleanup();
     }
     // biome-ignore lint/complexity/noVoid: fire-and-forget; consumeTip never rejects
-    void consumeTip(lib, purchase, { count }).finally(() => {
-      if (key !== null) {
-        deferredTips.delete(key);
-      }
-    });
+    void consumeTip(lib, purchase, { count }).finally(release);
   };
   cleanups.push(
     runAfterHydration(useSupporterStore, () => settle(true), {
@@ -168,8 +173,8 @@ async function handlePurchase(
 /** `persist` name of the supporter store (see store/useSupporterStore.ts). */
 const SUPPORTER_STORE_NAME = "supporter";
 
-/** Tips waiting for the supporter store to hydrate (by purchase identity). */
-const deferredTips = new Set<string>();
+/** Tips queued for hydration or being consumed (by purchase identity). */
+const pendingTips = new Set<string>();
 
 /**
  * Identity for de-duping queued tips: the Play purchase token, else the order

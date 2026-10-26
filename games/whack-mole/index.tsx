@@ -179,7 +179,9 @@ export default function WhackMoleGame() {
 
     const tick = () => {
       const endTime = endTimeRef.current;
-      if (!endTime) {
+      // Ref guard: until the "over" render clears this interval, a later
+      // tick must not record the run again.
+      if (!endTime || phaseRef.current !== "running") {
         return;
       }
 
@@ -296,7 +298,9 @@ export default function WhackMoleGame() {
   };
 
   const handlePause = () => {
-    if (phase !== "running") {
+    // The ref, not state: the timer tick may have just set "over" without a
+    // re-render yet, and resuming from a stale "paused" would restart it.
+    if (phaseRef.current !== "running") {
       return;
     }
     pauseStartRef.current = Date.now();
@@ -309,7 +313,7 @@ export default function WhackMoleGame() {
   useAutoPause(handlePause, phase === "running");
 
   const handleResume = () => {
-    if (phase !== "paused") {
+    if (phaseRef.current !== "paused") {
       return;
     }
     const pausedMs =

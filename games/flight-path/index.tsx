@@ -203,6 +203,11 @@ const BASE_PTS = 40;
 const SPAWN_WARNING_MS = 2000;
 /** how much of the runway (from each end) counts as entry zone (0–1, 0.25 = first quarter) */
 const RWY_ENTRY_ZONE = 0.25;
+
+/** Gap between incoming warnings; shrinks as more planes have landed. */
+export function spawnIntervalMs(landed: number): number {
+  return Math.max(900, 3500 - landed * 100 - Math.floor(landed / 5) * 80);
+}
 /** how fast the landing animation progresses per tick (0→1) */
 const LANDING_SPEED = 0.012;
 
@@ -572,12 +577,9 @@ export default function FlightPathGame() {
   // planesRef / incomingRef are written synchronously wherever planes or
   // warnings change (never synced back from state in an effect: a late
   // passive effect could otherwise roll a fresh spawn back to stale state).
-  useEffect(() => {
-    scoreRef.current = score;
-  }, [score]);
-  useEffect(() => {
-    landedRef.current = landed;
-  }, [landed]);
+  // scoreRef / landedRef are likewise written synchronously in the game tick
+  // (state mirrors them), so a crash in the same tick as a landing still
+  // records that landing's points.
   useEffect(() => {
     gameOverRef.current = gameOver;
   }, [gameOver]);
@@ -682,19 +684,21 @@ export default function FlightPathGame() {
     setIncoming(nextIncoming);
   }, []);
 
-  const spawnMs = Math.max(
-    900,
-    3500 - landed * 100 - Math.floor(landed / 5) * 80
-  );
-
+  // Each spawn re-arms a timeout from the current landed count (read from
+  // the ref), so the cadence speeds up as planes land without a landing
+  // re-running this effect and firing an extra immediate spawn.
   useEffect(() => {
     if (!started || gameOver || paused) {
       return;
     }
-    scheduleIncoming();
-    const intervalId = setInterval(scheduleIncoming, spawnMs);
-    return () => clearInterval(intervalId);
-  }, [started, gameOver, spawnMs, paused, scheduleIncoming]);
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const loop = () => {
+      scheduleIncoming();
+      timeoutId = setTimeout(loop, spawnIntervalMs(landedRef.current));
+    };
+    loop();
+    return () => clearTimeout(timeoutId);
+  }, [started, gameOver, paused, scheduleIncoming]);
 
   useEffect(() => {
     if (!started || gameOver || paused) {
@@ -910,6 +914,15 @@ export default function FlightPathGame() {
         });
       }
 
+      // Count this tick's landings before the collision check, which may end
+      // the game and must record them.
+      if (landedThisTick > 0) {
+        scoreRef.current += landedPts;
+        landedRef.current += landedThisTick;
+        setScore(scoreRef.current);
+        setLanded(landedRef.current);
+      }
+
       /* collision check — only flying planes (not landing) */
       const flying = next.filter((p) => !p.landing);
       for (let i = 0; i < flying.length; i += 1) {
@@ -926,11 +939,6 @@ export default function FlightPathGame() {
             return;
           }
         }
-      }
-
-      if (landedThisTick > 0) {
-        setScore((cur) => cur + landedPts);
-        setLanded((l) => l + landedThisTick);
       }
 
       planesRef.current = next;
@@ -1022,6 +1030,8 @@ export default function FlightPathGame() {
     gameOverRef.current = false;
     planesRef.current = [];
     incomingRef.current = [];
+    scoreRef.current = 0;
+    landedRef.current = 0;
     setPlanes([]);
     setIncoming([]);
     setDrawPath([]);

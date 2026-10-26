@@ -120,6 +120,31 @@ describe("color-clash scoring", () => {
   });
 });
 
+describe("color-clash running score", () => {
+  // The running total is never floored mid-game (only the recorded result
+  // is): flooring each round would let idling score whenever the matches come
+  // first — here 10 points for never tapping.
+  const matchesFirst = [
+    ...Array.from({ length: 10 }, () => true),
+    ...Array.from({ length: 10 }, () => false),
+  ];
+  const runningTotals = (respond: (isMatch: boolean) => "tap" | "skip") => {
+    const totals: number[] = [];
+    let total = 0;
+    for (const isMatch of matchesFirst) {
+      total += responseDelta(isMatch, respond(isMatch));
+      totals.push(total);
+    }
+    return totals;
+  };
+
+  it("idling dips below zero and nets 0, whatever the deck order", () => {
+    const totals = runningTotals(() => "skip");
+    expect(Math.min(...totals)).toBe(-10);
+    expect(clampScore(totals.at(-1) ?? 0)).toBe(0);
+  });
+});
+
 describe("code breaker first-guesser rotation", () => {
   it.each([2, 3, 4, 5, 6])(
     "%i players: everyone guesses first equally often, at least 3 rounds",
