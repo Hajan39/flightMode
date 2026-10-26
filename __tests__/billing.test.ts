@@ -10,6 +10,23 @@ jest.mock("expo-iap", () => ({
   purchaseUpdatedListener: jest.fn(),
 }));
 
+/** Give-up listeners per store name (`onPersistRecoveryGaveUp`), test-driven. */
+const mockGaveUp = new Map<string, Set<() => void>>();
+jest.mock("@/utils/persistStorage", () => ({
+  ...jest.requireActual("@/utils/persistStorage"),
+  onPersistRecoveryGaveUp: (name: string, fn: () => void) => {
+    const set = mockGaveUp.get(name) ?? new Set();
+    mockGaveUp.set(name, set);
+    set.add(fn);
+    return () => set.delete(fn);
+  },
+}));
+const giveUpRecovery = (name: string) => {
+  for (const fn of [...(mockGaveUp.get(name) ?? [])]) {
+    fn();
+  }
+};
+
 import { useSupporterStore } from "@/store/useSupporterStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import {
@@ -193,6 +210,7 @@ describe("billing before the supporter store hydrated", () => {
     mockFinishTransaction.mockClear();
     hydrated = false;
     finishListeners = [];
+    mockGaveUp.clear();
     hasHydratedSpy = jest
       .spyOn(useSupporterStore.persist, "hasHydrated")
       .mockImplementation(() => hydrated);
@@ -246,6 +264,58 @@ describe("billing before the supporter store hydrated", () => {
     await flush();
     expect(mockFinishTransaction).not.toHaveBeenCalled();
     expect(useSupporterStore.getState().tips).toBe(0);
+  });
+
+  test("a store that won't hydrate this session still gets its tip consumed (counter skipped)", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      {
+        productId: "tip_small",
+        purchaseState: "purchased",
+        purchaseToken: "tok-gaveup",
+      },
+    ]);
+    await restorePurchases();
+    expect(mockFinishTransaction).not.toHaveBeenCalled();
+    giveUpRecovery("supporter"); // blocked read + failed/skipped re-read
+    await flush();
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(1);
+    expect(mockFinishTransaction).toHaveBeenCalledWith(
+      expect.objectContaining({ isConsumable: true })
+    );
+    expect(useSupporterStore.getState().tips).toBe(0); // no write to a blocked store
+    // A late hydration doesn't consume / count it a second time.
+    finishHydration({ plus: false, tips: 2 });
+    await flush();
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(1);
+    expect(useSupporterStore.getState().tips).toBe(2);
+  });
+
+  test("tips without a token or order id are not merged into one queue entry", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      { productId: "tip_small", purchaseState: "purchased" },
+      { productId: "tip_small", purchaseState: "purchased" },
+    ]);
+    await restorePurchases();
+    finishHydration({ plus: false, tips: 0 });
+    await flush();
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(2);
+    expect(useSupporterStore.getState().tips).toBe(2);
+  });
+
+  test("the transaction date de-dupes a tip that has no token or order id", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      {
+        productId: "tip_medium",
+        purchaseState: "purchased",
+        transactionDate: 1_700_000_000_000,
+      },
+    ]);
+    await restorePurchases();
+    await restorePurchases();
+    finishHydration({ plus: false, tips: 0 });
+    await flush();
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(1);
+    expect(useSupporterStore.getState().tips).toBe(1);
   });
 });
 

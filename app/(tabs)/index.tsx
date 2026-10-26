@@ -87,7 +87,7 @@ export default function HomeScreen() {
   // state again (the flight stays in the store and the passport log).
   const flight = getCurrentFlight(storedFlight, nowMs);
 
-  const remaining = flight ? getRemainingMinutes(flight) : 0;
+  const remaining = flight ? getRemainingMinutes(flight, nowMs) : 0;
   const flightDestination = flight?.destinationId
     ? getDestinationById(flight.destinationId)
     : undefined;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 import { AccessibilityInfo, StyleSheet } from "react-native";
 import Animated, {
   FadeIn,
@@ -32,6 +32,9 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
+  // Callers often pass an inline `onComplete`; reading it through an effect
+  // event keeps a parent re-render from restarting the current step.
+  const complete = useEffectEvent(() => onComplete());
   const reduceMotion = useReduceMotion();
 
   const [value, setValue] = useState<number | "GO">(from);
@@ -60,7 +63,7 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
     }
     if (value === "GO") {
       haptic.success();
-      const id = setTimeout(onComplete, 450);
+      const id = setTimeout(() => complete(), 450);
       return () => clearTimeout(id);
     }
     haptic.tap();
@@ -76,8 +79,10 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
       });
     }, 750);
     return () => clearTimeout(id);
-    // Driven by `value` (+ reduceMotion for the bounce toggle); haptic + onComplete are stable refs in callers.
-  }, [value, reduceMotion, scale, onComplete, haptic.tap, haptic.success]); // eslint-disable-line react-hooks/exhaustive-deps
+    // Driven by `value` (+ reduceMotion for the bounce toggle). `haptic` is a
+    // module-level constant (useHaptic) and `complete` an effect event, so
+    // neither re-runs this effect.
+  }, [value, reduceMotion, scale, haptic.tap, haptic.success]);
 
   return (
     <Animated.View

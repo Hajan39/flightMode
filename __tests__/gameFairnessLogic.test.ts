@@ -3,6 +3,11 @@ import {
   clampScore,
   responseDelta,
 } from "@/games/color-clash/logic";
+import {
+  codeBreakerRounds,
+  firstGuesser,
+  MIN_ROUNDS,
+} from "@/games/cross-code-breaker/logic";
 import { diceStanding, diceStandings, ROUNDS } from "@/games/duel-dice/logic";
 import { applyBulletHit } from "@/games/sky-defense/logic";
 import { getSoleWinnerIndex, rankStandings } from "@/utils/multiplayerScoring";
@@ -113,4 +118,19 @@ describe("color-clash scoring", () => {
     expect(play((isMatch) => (isMatch ? "tap" : "skip"))).toBe(20);
     expect(play((isMatch) => (isMatch ? "skip" : "tap"))).toBe(0);
   });
+});
+
+describe("code breaker first-guesser rotation", () => {
+  it.each([2, 3, 4, 5, 6])(
+    "%i players: everyone guesses first equally often, at least 3 rounds",
+    (players) => {
+      const rounds = codeBreakerRounds(players);
+      expect(rounds).toBeGreaterThanOrEqual(MIN_ROUNDS);
+      const opens = new Array(players).fill(0);
+      for (let round = 1; round <= rounds; round += 1) {
+        opens[firstGuesser(round, players)] += 1;
+      }
+      expect(new Set(opens).size).toBe(1);
+    }
+  );
 });

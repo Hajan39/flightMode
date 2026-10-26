@@ -31,6 +31,31 @@ export function shiftDeadline(until: number, pausedMs: number): number {
 }
 
 /**
+ * AppState listener that calls `onPause` once per trip out of the
+ * foreground: iOS goes `active` → `inactive` → `background` in quick
+ * succession, and both steps count as leaving the foreground — before the
+ * game re-rendered with `enabled = false`, so the second one would pause
+ * again (double-counting elapsed time in non-idempotent handlers). The flag
+ * is cleared once the app is `active` again.
+ */
+export function createAutoPauseListener(
+  initial: AppStateStatus | null | undefined,
+  onPause: () => void
+): (next: AppStateStatus) => void {
+  let prev = initial;
+  let fired = false;
+  return (next) => {
+    if (next === "active") {
+      fired = false;
+    } else if (!fired && leftForeground(prev, next)) {
+      fired = true;
+      onPause();
+    }
+    prev = next;
+  };
+}
+
+/**
  * Calls `onPause` when the app leaves the foreground (home button, app
  * switcher, incoming call, screen lock) so a real-time game never keeps
  * running unseen. It never resumes on its own — the player resumes from the
@@ -44,13 +69,10 @@ export function useAutoPause(onPause: () => void, enabled = true): void {
     if (!enabled) {
       return;
     }
-    let prev: AppStateStatus = AppState.currentState;
-    const sub = AppState.addEventListener("change", (next) => {
-      if (leftForeground(prev, next)) {
-        pauseNow();
-      }
-      prev = next;
-    });
+    const sub = AppState.addEventListener(
+      "change",
+      createAutoPauseListener(AppState.currentState, () => pauseNow())
+    );
     return () => sub.remove();
   }, [enabled]);
 }

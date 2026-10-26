@@ -4,6 +4,7 @@ import { Platform } from "react-native";
 import { useSupporterStore } from "@/store/useSupporterStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { runAfterHydration } from "@/utils/hydration";
+import { onPersistRecoveryGaveUp } from "@/utils/persistStorage";
 
 /** Play Console product ids (one-time products). Create them with exactly these ids. */
 export const PLUS_SKU = "flightmode_plus";
@@ -121,44 +122,89 @@ async function handlePurchase(
   }
   // Not hydrated yet: a tip counted now would be lost (hydration overwrites
   // it), and once consumed Play never returns it. So the consume itself waits
-  // for hydration; if that never happens this session, the tip stays
-  // unconsumed and the next launch's restore picks it up. Not awaited, so a
-  // slow hydration doesn't stall the restore loop / initBilling.
+  // for hydration. Not awaited, so a slow hydration doesn't stall the restore
+  // loop / initBilling.
+  // If the store's read was blocked and its background recovery failed (or
+  // was skipped), it won't hydrate this session: an unconsumed tip would be
+  // auto-refunded by Play after 3 days if the next launch is late or fails
+  // the same way, so it is consumed anyway and only the local tip counter
+  // misses it (a cosmetic number; the purchase itself is never lost).
   const key = purchaseKey(purchase);
-  if (deferredTips.has(key)) {
+  if (key !== null && deferredTips.has(key)) {
     return; // already queued by an earlier restore / listener call
   }
-  deferredTips.add(key);
-  runAfterHydration(
-    useSupporterStore,
-    () => {
-      // biome-ignore lint/complexity/noVoid: fire-and-forget; consumeTip never rejects
-      void consumeTip(lib, purchase).finally(() => deferredTips.delete(key));
-    },
-    { timeoutMs: null }
+  if (key !== null) {
+    deferredTips.add(key);
+  }
+  let settled = false;
+  const cleanups: (() => void)[] = [];
+  const settle = (count: boolean) => {
+    if (settled) {
+      return;
+    }
+    settled = true;
+    for (const cleanup of cleanups) {
+      cleanup();
+    }
+    // biome-ignore lint/complexity/noVoid: fire-and-forget; consumeTip never rejects
+    void consumeTip(lib, purchase, { count }).finally(() => {
+      if (key !== null) {
+        deferredTips.delete(key);
+      }
+    });
+  };
+  cleanups.push(
+    runAfterHydration(useSupporterStore, () => settle(true), {
+      timeoutMs: null,
+    })
+  );
+  // Fires right away when the give-up is already known (the hydration
+  // waiter above is then cancelled by `settle`).
+  cleanups.push(
+    onPersistRecoveryGaveUp(SUPPORTER_STORE_NAME, () => settle(false))
   );
 }
+
+/** `persist` name of the supporter store (see store/useSupporterStore.ts). */
+const SUPPORTER_STORE_NAME = "supporter";
 
 /** Tips waiting for the supporter store to hydrate (by purchase identity). */
 const deferredTips = new Set<string>();
 
-function purchaseKey(purchase: Purchase): string {
-  return `${purchase.productId}:${purchase.purchaseToken ?? purchase.id}`;
+/**
+ * Identity for de-duping queued tips: the Play purchase token, else the order
+ * id, else the transaction time. `null` (nothing identifying) skips de-dupe —
+ * a duplicate consume of the same purchase just fails and isn't counted,
+ * while a shared fallback key would drop a second, distinct tip.
+ */
+function purchaseKey(purchase: Purchase): string | null {
+  const identity =
+    purchase.purchaseToken ||
+    purchase.id ||
+    (purchase.transactionDate ? `t${purchase.transactionDate}` : "");
+  return identity ? `${purchase.productId}:${identity}` : null;
 }
 
 /**
  * Tips are consumed so they can be bought again. Count a tip only once its
  * consume succeeded: an unconsumed tip comes back on the next restore, and
  * counting it before (or again after) a failed consume would double count.
- * Call only once the supporter store has hydrated.
+ * Call only once the supporter store has hydrated — or with `count: false`
+ * when it never will this session (see `handlePurchase`).
  */
-async function consumeTip(lib: ExpoIap, purchase: Purchase) {
+async function consumeTip(
+  lib: ExpoIap,
+  purchase: Purchase,
+  { count = true }: { count?: boolean } = {}
+) {
   try {
     await lib.finishTransaction({ isConsumable: true, purchase });
   } catch {
     return;
   }
-  useSupporterStore.getState().addTip();
+  if (count) {
+    useSupporterStore.getState().addTip();
+  }
   // A tip whose consume failed during checkout is completed by a later
   // restore — that is still the one real purchase, so report it then.
   reportSupportCompleted(purchase.productId);

@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Image,
   type NativeScrollEvent,
@@ -57,10 +57,14 @@ export default function ContentDetailScreen() {
     setHasFinishedArticle(false);
   }, [id]);
 
+  // Once per article per mount: a content sync finishing (new `article`
+  // object) or a language switch must not report a second open.
+  const reportedOpenRef = useRef<string | null>(null);
   useEffect(() => {
-    if (!article) {
+    if (!article || reportedOpenRef.current === article.id) {
       return;
     }
+    reportedOpenRef.current = article.id;
 
     captureAnalyticsEvent("article_open", {
       article_id: article.id,

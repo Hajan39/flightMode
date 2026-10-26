@@ -31,6 +31,8 @@ const DIFFICULTY_LABEL_KEYS = {
 } as const;
 
 const TOTAL_QUESTIONS = 12;
+/** Feedback pause before the next question. */
+const ADVANCE_MS = 550;
 
 function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -160,6 +162,32 @@ export default function SkyMathGame() {
   // updateProgress on the final question.
   const answeringRef = useRef<boolean>(false);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // The pending "next question" step, kept while paused so the timer can be
+  // cleared on pause and re-armed on resume (it must not fire behind the
+  // pause overlay).
+  const pendingAdvance = useRef<(() => void) | null>(null);
+  const scheduleAdvance = (step: () => void) => {
+    pendingAdvance.current = step;
+    advanceTimer.current = setTimeout(() => {
+      advanceTimer.current = null;
+      pendingAdvance.current = null;
+      step();
+    }, ADVANCE_MS);
+  };
+  const pause = () => {
+    if (advanceTimer.current) {
+      clearTimeout(advanceTimer.current);
+      advanceTimer.current = null;
+    }
+    setIsPaused(true);
+  };
+  const resume = () => {
+    setIsPaused(false);
+    const step = pendingAdvance.current;
+    if (step && !advanceTimer.current) {
+      scheduleAdvance(step);
+    }
+  };
 
   useEffect(
     () => () => {
@@ -174,6 +202,8 @@ export default function SkyMathGame() {
     if (advanceTimer.current) {
       clearTimeout(advanceTimer.current);
     }
+    advanceTimer.current = null;
+    pendingAdvance.current = null;
     answeringRef.current = false;
     setIndex(0);
     setScore(0);
@@ -188,6 +218,8 @@ export default function SkyMathGame() {
     if (advanceTimer.current) {
       clearTimeout(advanceTimer.current);
     }
+    advanceTimer.current = null;
+    pendingAdvance.current = null;
     answeringRef.current = false;
     setDifficulty(nextDifficulty);
     setIndex(0);
@@ -214,7 +246,7 @@ export default function SkyMathGame() {
       haptic.error();
     }
 
-    advanceTimer.current = setTimeout(() => {
+    scheduleAdvance(() => {
       if (index + 1 >= TOTAL_QUESTIONS) {
         setScore(nextScore);
         const info = updateProgress("sky-math", nextScore);
@@ -228,7 +260,7 @@ export default function SkyMathGame() {
       setSelectedOption(null);
       setQuestion(createQuestion(index + 1, difficulty));
       answeringRef.current = false;
-    }, 550);
+    });
   };
 
   return (
@@ -247,7 +279,7 @@ export default function SkyMathGame() {
             </RNView>
             <GameControls
               isPaused={isPaused}
-              onPause={() => setIsPaused(true)}
+              onPause={pause}
               onReset={restart}
             />
           </RNView>
@@ -357,7 +389,7 @@ export default function SkyMathGame() {
         </A11yOverlayContent>
         <GamePauseOverlay
           onRestart={restart}
-          onResume={() => setIsPaused(false)}
+          onResume={resume}
           visible={isPaused}
         />
 

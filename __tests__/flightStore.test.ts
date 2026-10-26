@@ -46,6 +46,14 @@ describe("flight time helpers", () => {
     expect(getFlightProgress(f)).toBe(0);
     expect(getRemainingMinutes(f)).toBe(0);
   });
+
+  test("an explicit nowMs wins over the system clock (render code passes the Home tick)", () => {
+    const f = flightAt(-30, 120);
+    const later = NOW + 60 * MIN;
+    expect(getElapsedMinutes(f, later)).toBe(90);
+    expect(getRemainingMinutes(f, later)).toBe(30);
+    expect(getFlightProgress(f, later)).toBeCloseTo(0.75);
+  });
 });
 
 describe("useFlightStore passport log", () => {

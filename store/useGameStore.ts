@@ -143,28 +143,28 @@ export const useGameStore = create<GameState>()(
           return persisted;
         }
         const data = persisted as { progress?: Record<string, unknown> };
-        if (fromVersion < 2 && data.progress) {
-          const migrated: Record<string, GameProgress> = {};
-          for (const [id, raw] of Object.entries(data.progress)) {
-            migrated[id] = normalizeStackSort(
-              normalize(raw as Partial<GameProgress>, id)
-            );
-          }
-          return { ...data, progress: migrated };
+        if (fromVersion >= 4 || !data.progress) {
+          return persisted;
         }
-        if (fromVersion < 3 && data.progress) {
-          const migrated: Record<string, GameProgress> = {};
-          for (const [id, raw] of Object.entries(data.progress)) {
-            migrated[id] = normalizeStackSort(
-              normalize(raw as Partial<GameProgress>, id)
-            );
+        const migrated: Record<string, GameProgress> = {};
+        for (const [id, raw] of Object.entries(data.progress)) {
+          // v1/v2 → v3: normalize + decode legacy stack-sort scores.
+          let entry =
+            fromVersion < 3
+              ? normalizeStackSort(normalize(raw as Partial<GameProgress>, id))
+              : (raw as GameProgress);
+          // v3 → v4: duel-dice switched its score from wins*10+total to
+          // wins*61+total; old bests aren't comparable, so reset the scores
+          // (times played and streaks stay).
+          if (id === "duel-dice") {
+            entry = { ...normalize(entry, id), highScore: 0, lastScore: 0 };
           }
-          return { ...data, progress: migrated };
+          migrated[id] = entry;
         }
-        return persisted;
+        return { ...data, progress: migrated };
       },
       name: "game_progress",
-      version: 3,
+      version: 4,
     })
   )
 );

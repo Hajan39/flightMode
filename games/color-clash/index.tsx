@@ -232,7 +232,7 @@ export default function ColorClashGame() {
 
         // Player didn't tap: +1 on a mismatch, −1 for a missed match.
         scoreRef.current += responseDelta(currentTrial.isMatch, "skip");
-        setScoreDisplay(scoreRef.current);
+        setScoreDisplay(clampScore(scoreRef.current));
         if (currentTrial.isMatch) {
           showFeedback("miss", roundNum);
         } else {
@@ -327,7 +327,7 @@ export default function ColorClashGame() {
 
     // +1 for tapping a match, −1 for tapping a mismatch.
     scoreRef.current += responseDelta(currentTrial.isMatch, "tap");
-    setScoreDisplay(scoreRef.current);
+    setScoreDisplay(clampScore(scoreRef.current));
     if (currentTrial.isMatch) {
       haptic.success();
       showFeedback("correct", roundRef.current);

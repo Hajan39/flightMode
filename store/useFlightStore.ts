@@ -108,22 +108,35 @@ export const useFlightStore = create<FlightState>()(
 );
 enablePersistRecovery(useFlightStore);
 
-/** Derived: elapsed time in minutes since departure */
-export function getElapsedMinutes(flight: Flight): number {
-  const now = Date.now();
-  const elapsed = (now - flight.departureTime) / 60_000;
+/**
+ * Derived: elapsed time in minutes since departure.
+ *
+ * Pass `nowMs` from render code (e.g. Home's clock tick): the React Compiler
+ * memoizes calls by their arguments, so a hidden `Date.now()` would freeze.
+ */
+export function getElapsedMinutes(
+  flight: Flight,
+  nowMs: number = Date.now()
+): number {
+  const elapsed = (nowMs - flight.departureTime) / 60_000;
   return Math.max(0, Math.min(elapsed, flight.duration));
 }
 
-/** Derived: remaining time in minutes */
-export function getRemainingMinutes(flight: Flight): number {
-  return Math.max(0, flight.duration - getElapsedMinutes(flight));
+/** Derived: remaining time in minutes (see `getElapsedMinutes` re `nowMs`). */
+export function getRemainingMinutes(
+  flight: Flight,
+  nowMs: number = Date.now()
+): number {
+  return Math.max(0, flight.duration - getElapsedMinutes(flight, nowMs));
 }
 
-/** Derived: progress 0–1 */
-export function getFlightProgress(flight: Flight): number {
+/** Derived: progress 0–1 (see `getElapsedMinutes` re `nowMs`). */
+export function getFlightProgress(
+  flight: Flight,
+  nowMs: number = Date.now()
+): number {
   if (flight.duration <= 0) {
     return 0;
   }
-  return Math.min(1, getElapsedMinutes(flight) / flight.duration);
+  return Math.min(1, getElapsedMinutes(flight, nowMs) / flight.duration);
 }

@@ -38,6 +38,18 @@ import { markHydrationFailed } from "@/utils/hydration";
  *   `persist.rehydrate()` is scheduled per session (stores register it via
  *   `enablePersistRecovery`); every new read resets `blocked` → `reading`,
  *   so a successful re-read opens writes again.
+ * - …unless a write was dropped while blocked: then the in-memory state holds
+ *   changes made this session (on top of defaults) and the re-read would
+ *   silently replace them with the stored state. Layering the in-memory state
+ *   over the re-read instead is not safe generically: whole-map keys (e.g.
+ *   game progress) would replace every stored entry with this session's few,
+ *   destroying the intact file. So the background re-read is SKIPPED for such
+ *   a store: memory keeps the session's changes, the file stays untouched and
+ *   the next launch reads it normally (only this session's changes are lost,
+ *   as documented above). A manual `persist.rehydrate()` still works.
+ *   Callers that must act this session (billing) learn that the store will
+ *   not hydrate via `onPersistRecoveryGaveUp` (also fired when the re-read
+ *   itself fails).
  *
  * Identical rewrites (repeated equal `set()`s, the post-hydration write of
  * unchanged data) are skipped — this matters for the multi-MB article feed.
@@ -50,6 +62,8 @@ export interface GuardedStorage<S> extends PersistStorage<S> {
   gate: () => Gate;
   /** Opens writes; called by the wrapped `merge` once hydration merged. */
   open: () => void;
+  /** True once a write/remove was dropped while the gate was `blocked`. */
+  wroteWhileBlocked: () => boolean;
 }
 
 /** Waits before each read retry (cold-start reads can fail transiently). */
@@ -70,6 +84,13 @@ export function createGuardedStorage<S>(
   let gate: Gate = "reading";
   /** Raw JSON last read from / written to the backend (skip identical rewrites). */
   let lastRaw: string | null | undefined;
+  /** A change made in memory while blocked (see `wroteWhileBlocked`). */
+  let droppedWhileBlocked = false;
+  const dropped = () => {
+    if (gate === "blocked") {
+      droppedWhileBlocked = true;
+    }
+  };
 
   const readRaw = async (name: string) => {
     for (let attempt = 0; ; attempt += 1) {
@@ -126,6 +147,7 @@ export function createGuardedStorage<S>(
     },
     async removeItem(name) {
       if (gate !== "open") {
+        dropped();
         return;
       }
       lastRaw = null;
@@ -133,6 +155,7 @@ export function createGuardedStorage<S>(
     },
     async setItem(name, value) {
       if (gate !== "open") {
+        dropped();
         return;
       }
       const raw = JSON.stringify(value);
@@ -150,6 +173,7 @@ export function createGuardedStorage<S>(
         }
       }
     },
+    wroteWhileBlocked: () => droppedWhileBlocked,
   };
 }
 
@@ -179,17 +203,31 @@ export function safePersistOptions<S, P = S>(
     ((persisted: unknown, current: S) =>
       ({ ...current, ...(persisted as object) }) as S);
   const innerRehydrate = options.onRehydrateStorage;
-  let recoveryScheduled = false;
+  let recovery: "none" | "scheduled" | "running" | "done" = "none";
   const onBlocked = () => {
     captureAnalyticsEvent("storage_read_blocked", { store: options.name });
-    if (recoveryScheduled) {
+    if (recovery === "running") {
+      // The background re-read failed too: no hydration this session.
+      recovery = "done";
+      markRecoveryGaveUp(options.name);
+      return;
+    }
+    if (recovery !== "none") {
       return; // one background attempt per session — no retry loop
     }
-    recoveryScheduled = true;
+    recovery = "scheduled";
     setTimeout(() => {
       const rehydrate = recoveries.get(options.name);
+      if (!rehydrate || storage.wroteWhileBlocked()) {
+        // Skipped: re-reading would discard this session's in-memory
+        // changes (see the note at the top of this file).
+        recovery = "done";
+        markRecoveryGaveUp(options.name);
+        return;
+      }
+      recovery = "running";
       // biome-ignore lint/complexity/noVoid: background attempt; its failure is handled by onRehydrateStorage
-      void Promise.resolve(rehydrate?.()).catch(() => undefined);
+      void Promise.resolve(rehydrate()).catch(() => undefined);
     }, RECOVERY_DELAY_MS);
   };
   return {
@@ -208,6 +246,9 @@ export function safePersistOptions<S, P = S>(
             onBlocked();
           }
         } else {
+          if (recovery === "running") {
+            recovery = "done";
+          }
           // Persist the merged state (see the note at the top of this file).
           const partialize = options.partialize ?? ((s: S) => s as never);
           // biome-ignore lint/complexity/noVoid: fire-and-forget like zustand's own writes; setItem never rejects
@@ -241,6 +282,50 @@ export function enablePersistRecovery<
     recoveries.set(name, () => store.persist.rehydrate());
   }
   return store;
+}
+
+/** Stores whose background recovery failed or was skipped this session. */
+const gaveUp = new Set<string>();
+const gaveUpListeners = new Map<string, Set<() => void>>();
+
+function markRecoveryGaveUp(name: string) {
+  gaveUp.add(name);
+  const listeners = gaveUpListeners.get(name);
+  gaveUpListeners.delete(name);
+  for (const listener of listeners ?? []) {
+    listener();
+  }
+}
+
+/**
+ * Calls `fn` once it is certain that the blocked store `name` will not
+ * hydrate this session (its background re-read failed or was skipped) —
+ * right away if that is already known. Returns an unsubscribe.
+ */
+export function onPersistRecoveryGaveUp(
+  name: string,
+  fn: () => void
+): () => void {
+  if (gaveUp.has(name)) {
+    fn();
+    return () => undefined;
+  }
+  let set = gaveUpListeners.get(name);
+  if (!set) {
+    set = new Set();
+    gaveUpListeners.set(name, set);
+  }
+  set.add(fn);
+  const listeners = set;
+  return () => {
+    listeners.delete(fn);
+  };
+}
+
+/** Test helper: forget recovery give-ups. */
+export function resetPersistRecoveryGaveUp() {
+  gaveUp.clear();
+  gaveUpListeners.clear();
 }
 
 /** Tests / diagnostics: whether `name` has a registered recovery. */

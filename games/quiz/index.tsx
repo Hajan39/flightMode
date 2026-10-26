@@ -33,6 +33,8 @@ interface QuizQuestion {
 }
 
 const QUESTION_COUNT = 15;
+/** Feedback pause before the next question. */
+const ADVANCE_MS = 750;
 
 function getAllQuestions(t: (key: TranslationKey) => string): QuizQuestion[] {
   return [
@@ -325,6 +327,32 @@ export default function QuizGame() {
   // double-advance or fire updateProgress twice on the last question.
   const answeringRef = useRef<boolean>(false);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // The pending "next question" step, kept while paused so the timer can be
+  // cleared on pause and re-armed on resume (it must not fire behind the
+  // pause overlay).
+  const pendingAdvance = useRef<(() => void) | null>(null);
+  const scheduleAdvance = (step: () => void) => {
+    pendingAdvance.current = step;
+    advanceTimer.current = setTimeout(() => {
+      advanceTimer.current = null;
+      pendingAdvance.current = null;
+      step();
+    }, ADVANCE_MS);
+  };
+  const pause = () => {
+    if (advanceTimer.current) {
+      clearTimeout(advanceTimer.current);
+      advanceTimer.current = null;
+    }
+    setIsPaused(true);
+  };
+  const resume = () => {
+    setIsPaused(false);
+    const step = pendingAdvance.current;
+    if (step && !advanceTimer.current) {
+      scheduleAdvance(step);
+    }
+  };
 
   useEffect(
     () => () => {
@@ -377,7 +405,7 @@ export default function QuizGame() {
       );
     }
 
-    advanceTimer.current = setTimeout(() => {
+    scheduleAdvance(() => {
       if (currentIndex >= questions.length - 1) {
         const info = updateProgress("quiz", nextScore);
         setProgressInfo(info);
@@ -390,7 +418,7 @@ export default function QuizGame() {
       setSelectedOption(null);
       setCurrentIndex((prev) => prev + 1);
       answeringRef.current = false;
-    }, 750);
+    });
   };
 
   const correctAnswer = currentQuestion.options[currentQuestion.answerIndex];
@@ -399,6 +427,8 @@ export default function QuizGame() {
     if (advanceTimer.current) {
       clearTimeout(advanceTimer.current);
     }
+    advanceTimer.current = null;
+    pendingAdvance.current = null;
     answeringRef.current = false;
     setQuestions(pickRandom(getAllQuestions(t), QUESTION_COUNT));
     setCurrentIndex(0);
@@ -424,7 +454,7 @@ export default function QuizGame() {
             </RNView>
             <GameControls
               isPaused={isPaused}
-              onPause={() => setIsPaused(true)}
+              onPause={pause}
               onReset={restart}
             />
           </RNView>
@@ -506,7 +536,7 @@ export default function QuizGame() {
         </A11yOverlayContent>
         <GamePauseOverlay
           onRestart={restart}
-          onResume={() => setIsPaused(false)}
+          onResume={resume}
           visible={isPaused}
         />
 

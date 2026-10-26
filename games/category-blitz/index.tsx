@@ -106,8 +106,9 @@ export default function CategoryBlitzGame() {
     };
     tick();
     tickRef.current = setInterval(tick, 200);
-    // Refs only: depending on the per-render clearTick re-ran this effect
-    // (and recreated the interval) on every timer tick.
+    // Refs only (+ `haptic`, a module-level constant from useHaptic):
+    // depending on a per-render function re-ran this effect and recreated
+    // the interval on every timer tick.
     return () => clearIntervalRef(tickRef);
   }, [phase, haptic]);
 

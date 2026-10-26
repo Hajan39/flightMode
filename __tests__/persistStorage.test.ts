@@ -11,7 +11,9 @@ import { resetHydrationFailures, runAfterHydration } from "@/utils/hydration";
 import {
   enablePersistRecovery,
   hasPersistRecovery,
+  onPersistRecoveryGaveUp,
   RECOVERY_DELAY_MS,
+  resetPersistRecoveryGaveUp,
   safePersistOptions,
 } from "@/utils/persistStorage";
 
@@ -89,6 +91,7 @@ const RETRY_TOTAL_MS = 100 + 400 + 1000;
 
 beforeEach(() => {
   resetHydrationFailures();
+  resetPersistRecoveryGaveUp();
   (captureAnalyticsEvent as jest.Mock).mockClear();
 });
 
@@ -277,6 +280,55 @@ describe("guarded persist storage", () => {
     expect(JSON.parse(backend.data.get("chained") ?? "").state.label).toBe(
       "merged"
     );
+  });
+});
+
+describe("background recovery vs. in-session changes", () => {
+  test("changes made while blocked are kept: the re-read is skipped and the file untouched", async () => {
+    jest.useFakeTimers();
+    const backend = memoryBackend({ "demo-dirty": stored(5) });
+    backend.failReads = 4;
+    const store = makeStore(backend, "demo-dirty");
+    const gaveUp = jest.fn();
+    onPersistRecoveryGaveUp("demo-dirty", gaveUp);
+    await jest.advanceTimersByTimeAsync(RETRY_TOTAL_MS);
+    store.getState().bump();
+    store.getState().bump(); // the user keeps playing: 2 in memory
+    await jest.advanceTimersByTimeAsync(RECOVERY_DELAY_MS + RETRY_TOTAL_MS);
+
+    expect(store.getState().count).toBe(2); // not silently reverted
+    expect(backend.data.get("demo-dirty")).toBe(stored(5)); // not clobbered
+    expect(backend.writes).toBe(0);
+    expect(store.persist.getOptions().storage?.gate()).toBe("blocked");
+    expect(gaveUp).toHaveBeenCalledTimes(1);
+  });
+
+  test("without in-session changes the re-read still restores the data", async () => {
+    jest.useFakeTimers();
+    const backend = memoryBackend({ "demo-clean": stored(5) });
+    backend.failReads = 4;
+    const store = makeStore(backend, "demo-clean");
+    const gaveUp = jest.fn();
+    onPersistRecoveryGaveUp("demo-clean", gaveUp);
+    await jest.advanceTimersByTimeAsync(RETRY_TOTAL_MS + RECOVERY_DELAY_MS);
+    expect(store.getState().count).toBe(5);
+    expect(gaveUp).not.toHaveBeenCalled();
+  });
+
+  test("a failed re-read reports the give-up (late subscribers are told at once)", async () => {
+    jest.useFakeTimers();
+    const backend = memoryBackend({ "demo-dead": stored(5) });
+    backend.failReads = 100;
+    makeStore(backend, "demo-dead");
+    const early = jest.fn();
+    onPersistRecoveryGaveUp("demo-dead", early);
+    await jest.advanceTimersByTimeAsync(RETRY_TOTAL_MS + RECOVERY_DELAY_MS);
+    expect(early).not.toHaveBeenCalled(); // re-read still retrying
+    await jest.advanceTimersByTimeAsync(RETRY_TOTAL_MS);
+    expect(early).toHaveBeenCalledTimes(1);
+    const late = jest.fn();
+    onPersistRecoveryGaveUp("demo-dead", late);
+    expect(late).toHaveBeenCalledTimes(1);
   });
 });
 

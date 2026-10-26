@@ -79,9 +79,9 @@ export default function WhackMoleGame() {
     new Map()
   );
 
-  // Keep refs in sync
-  activeMolesRef.current = activeMoles;
-  phaseRef.current = phase;
+  // activeMolesRef / phaseRef are written right where the state changes (not
+  // synced during render): two spawn timers firing in one batch would both
+  // read the pre-render list and double-spawn.
 
   const clearAllMoleTimers = useCallback(() => {
     for (const timer of moleSpawnTimersRef.current.values()) {
@@ -144,14 +144,18 @@ export default function WhackMoleGame() {
 
         const newMole: MoleState = { cellIndex, expiresAt, id: moleId };
 
-        setActiveMoles((prev) => [...prev, newMole]);
+        activeMolesRef.current = [...currentMoles, newMole];
+        setActiveMoles(activeMolesRef.current);
 
         // Schedule mole expiry
         const expireTimerId = setTimeout(() => {
           if (phaseRef.current !== "running") {
             return;
           }
-          setActiveMoles((prev) => prev.filter((m) => m.id !== moleId));
+          activeMolesRef.current = activeMolesRef.current.filter(
+            (m) => m.id !== moleId
+          );
+          setActiveMoles(activeMolesRef.current);
           // Spawn a replacement after a short gap
           spawnMole(150);
         }, moleDuration);
@@ -187,7 +191,9 @@ export default function WhackMoleGame() {
         haptic.heavy();
         const info = updateProgress("whack-mole", scoreRef.current);
         setProgressInfo(info);
+        activeMolesRef.current = [];
         setActiveMoles([]);
+        phaseRef.current = "over";
         setPhase("over");
       }
     };
@@ -247,7 +253,10 @@ export default function WhackMoleGame() {
       haptic.success();
       scoreRef.current += 1;
       setScore(scoreRef.current);
-      setActiveMoles((prev) => prev.filter((m) => m.id !== moleId));
+      activeMolesRef.current = activeMolesRef.current.filter(
+        (m) => m.id !== moleId
+      );
+      setActiveMoles(activeMolesRef.current);
 
       // Spawn replacement after brief gap
       spawnMole(200);
@@ -261,8 +270,10 @@ export default function WhackMoleGame() {
     endTimeRef.current = null;
     setScore(0);
     setSecondsLeft(30);
+    activeMolesRef.current = [];
     setActiveMoles([]);
     setProgressInfo(null);
+    phaseRef.current = "countdown";
     setPhase("countdown");
   };
 
@@ -277,8 +288,10 @@ export default function WhackMoleGame() {
     endTimeRef.current = null;
     setScore(0);
     setSecondsLeft(30);
+    activeMolesRef.current = [];
     setActiveMoles([]);
     setProgressInfo(null);
+    phaseRef.current = "idle";
     setPhase("idle");
   };
 
@@ -288,6 +301,7 @@ export default function WhackMoleGame() {
     }
     pauseStartRef.current = Date.now();
     clearAllMoleTimers();
+    phaseRef.current = "paused";
     setPhase("paused");
   };
 
@@ -316,7 +330,10 @@ export default function WhackMoleGame() {
           if (phaseRef.current !== "running") {
             return;
           }
-          setActiveMoles((prev) => prev.filter((m) => m.id !== mole.id));
+          activeMolesRef.current = activeMolesRef.current.filter(
+            (m) => m.id !== mole.id
+          );
+          setActiveMoles(activeMolesRef.current);
           // Spawn a replacement after a short gap
           spawnMole(150);
         },
@@ -324,7 +341,9 @@ export default function WhackMoleGame() {
       );
       moleSpawnTimersRef.current.set(mole.id, expireTimerId);
     }
+    activeMolesRef.current = shiftedMoles;
     setActiveMoles(shiftedMoles);
+    phaseRef.current = "running";
     setPhase("running");
   };
 
@@ -456,6 +475,7 @@ export default function WhackMoleGame() {
             onComplete={() => {
               endTimeRef.current = Date.now() + GAME_DURATION_MS;
               setSecondsLeft(30);
+              phaseRef.current = "running";
               setPhase("running");
             }}
           />

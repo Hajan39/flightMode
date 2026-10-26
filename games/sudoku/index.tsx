@@ -137,6 +137,8 @@ export default function SudokuGame() {
   // Wall-clock timer refs
   const startTimeRef = useRef<number>(0);
   const pausedAccumulatedRef = useRef<number>(0);
+  /** Clock running? Keeps a double pause (auto-pause + button) from adding twice. */
+  const clockRunningRef = useRef<boolean>(false);
   // Synchronous solved guard so the two win paths (number input, hint) can
   // never both record the game.
   const solvedRef = useRef(false);
@@ -223,6 +225,7 @@ export default function SudokuGame() {
       setHintsUsed(0);
       pausedAccumulatedRef.current = 0;
       startTimeRef.current = Date.now();
+      clockRunningRef.current = true;
       setElapsedSeconds(0);
       setSelectedDifficulty(difficulty);
       solvedRef.current = false;
@@ -242,6 +245,12 @@ export default function SudokuGame() {
 
   // ── Pause / resume ───────────────────────────────────────────────────────
   const handlePause = useCallback(() => {
+    // Idempotent: a second pause before re-render must not count the same
+    // stretch twice.
+    if (!clockRunningRef.current) {
+      return;
+    }
+    clockRunningRef.current = false;
     // Exact seconds (floored only when read) so pauses never drop time.
     pausedAccumulatedRef.current += (Date.now() - startTimeRef.current) / 1000;
     setPhase("paused");
@@ -251,6 +260,7 @@ export default function SudokuGame() {
   useAutoPause(handlePause, phase === "playing");
 
   const handleResume = useCallback(() => {
+    clockRunningRef.current = true;
     startTimeRef.current = Date.now();
     setPhase("playing");
   }, []);

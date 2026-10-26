@@ -95,6 +95,21 @@ export default function WordGuessGame() {
   // which would otherwise re-run handleSubmit on stale state and double-call
   // updateProgress or double-advance currentAttempt.
   const submittingRef = useRef<boolean>(false);
+  // Pending end-of-game / error-message timers: cleared on (re)start and on
+  // unmount, so an early Reset can't flip the fresh board to "over".
+  const overTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clearPendingTimers = useCallback(() => {
+    if (overTimerRef.current) {
+      clearTimeout(overTimerRef.current);
+      overTimerRef.current = null;
+    }
+    if (errorTimerRef.current) {
+      clearTimeout(errorTimerRef.current);
+      errorTimerRef.current = null;
+    }
+  }, []);
+  useEffect(() => clearPendingTimers, [clearPendingTimers]);
   useEffect(() => {
     currentInputRef.current = currentInput;
     guessesRef.current = guesses;
@@ -120,6 +135,7 @@ export default function WordGuessGame() {
   const startGame = useCallback(() => {
     const pool = getWordPool(wgLanguage);
     const word = pool[getDayOfYear() % pool.length];
+    clearPendingTimers();
     setTargetWord(word);
     setGuesses(
       new Array(6)
@@ -134,7 +150,7 @@ export default function WordGuessGame() {
     setResult(null);
     setPhase("playing");
     submittingRef.current = false;
-  }, [wgLanguage]);
+  }, [wgLanguage, clearPendingTimers]);
 
   // ---------------------------------------------------------------------------
   // Input handling
@@ -153,7 +169,13 @@ export default function WordGuessGame() {
 
       if (input.length < 5) {
         setErrorMessage(t("wgTypeAWord"));
-        setTimeout(() => setErrorMessage(null), 1500);
+        if (errorTimerRef.current) {
+          clearTimeout(errorTimerRef.current);
+        }
+        errorTimerRef.current = setTimeout(() => {
+          errorTimerRef.current = null;
+          setErrorMessage(null);
+        }, 1500);
         haptic.error();
         return;
       }
@@ -180,13 +202,19 @@ export default function WordGuessGame() {
         const info = updateProgress("word-guess", score);
         setResult(info);
         setWon(true);
-        setTimeout(() => setPhase("over"), 800);
+        overTimerRef.current = setTimeout(() => {
+          overTimerRef.current = null;
+          setPhase("over");
+        }, 800);
       } else if (attempt >= 5) {
         haptic.error();
         const info = updateProgress("word-guess", 0, { won: false });
         setResult(info);
         setWon(false);
-        setTimeout(() => setPhase("over"), 800);
+        overTimerRef.current = setTimeout(() => {
+          overTimerRef.current = null;
+          setPhase("over");
+        }, 800);
       } else {
         haptic.tap();
         setCurrentAttempt((a) => a + 1);

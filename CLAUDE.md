@@ -43,7 +43,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 - `(tabs)/relax.tsx` — Breathing exercise + ambient audio + sleep timer
 
 **State:** Zustand stores with AsyncStorage persist. Never introduce a new global state layer.
-- `store/useGameStore.ts` — game progress (`lastScore`, `currentStreak`, `bestStreak`, `levelStars?`), migration version **3**
+- `store/useGameStore.ts` — game progress (`lastScore`, `currentStreak`, `bestStreak`, `levelStars?`), migration version **4** (v4 resets duel-dice scores after its score-scale change)
 - `store/useSettingsStore.ts` — theme, language, sync policy
 - `store/useFlightStore.ts` — manual flight duration + `log` (Flight Passport: every saved flight, upserted by id, no flight number; persist version **1**); passport totals/stamps via `utils/passport.ts`, shown by `components/PassportSection.tsx` in Profile; exports `getElapsedMinutes()`, `getRemainingMinutes()`, `getFlightProgress()`
 - `store/useAchievementStore.ts` — unlock history, session counters (flights, relax, articles, sounds, streak)

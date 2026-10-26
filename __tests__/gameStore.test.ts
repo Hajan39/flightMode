@@ -131,8 +131,55 @@ describe("useGameStore persistence migration", () => {
 
   test("current-version data passes through unchanged", () => {
     const data = { progress: { quiz: { highScore: 450 } } };
-    expect(migrate(data, 3)).toBe(data);
+    expect(migrate(data, 4)).toBe(data);
   });
+
+  test.each([1, 2, 3])(
+    "v%i → v4: duel-dice scores (old wins*10+total scale) reset, play history kept",
+    (fromVersion) => {
+      const migrated = migrate(
+        {
+          progress: {
+            "duel-dice": {
+              bestStreak: 4,
+              currentStreak: 2,
+              gameId: "duel-dice",
+              highScore: 58,
+              lastPlayed: 123,
+              lastScore: 31,
+              levelStars: {},
+              timesPlayed: 9,
+            },
+            quiz: {
+              bestStreak: 1,
+              currentStreak: 1,
+              gameId: "quiz",
+              highScore: 450,
+              lastPlayed: 5,
+              lastScore: 120,
+              levelStars: {},
+              timesPlayed: 3,
+            },
+          },
+        },
+        fromVersion
+      ) as { progress: Record<string, Record<string, unknown>> };
+      expect(migrated.progress["duel-dice"]).toEqual({
+        bestStreak: 4,
+        currentStreak: 2,
+        gameId: "duel-dice",
+        highScore: 0,
+        lastPlayed: 123,
+        lastScore: 0,
+        levelStars: {},
+        timesPlayed: 9,
+      });
+      expect(migrated.progress.quiz).toMatchObject({
+        highScore: 450,
+        lastScore: 120,
+      });
+    }
+  );
 
   test("an unmigrated stack-sort entry is decoded on the next play", () => {
     useGameStore.setState({

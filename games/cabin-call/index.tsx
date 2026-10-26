@@ -191,8 +191,13 @@ export default function CabinCallGame() {
 
   const pause = () => {
     const endTime = endTimeRef.current;
-    pausedRemainingRef.current =
-      endTime === null ? null : Math.max(0, endTime - Date.now());
+    if (endTime === null) {
+      // Already paused (e.g. inactive → background before re-render): keep
+      // the saved remaining time instead of nulling it.
+      setPhase((p) => (p === "running" ? "paused" : p));
+      return;
+    }
+    pausedRemainingRef.current = Math.max(0, endTime - Date.now());
     endTimeRef.current = null;
     setPhase("paused");
   };

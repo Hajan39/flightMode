@@ -82,8 +82,8 @@ export default function FlightCard({
     );
   }
 
-  const progress = getFlightProgress(flight);
-  const remaining = getRemainingMinutes(flight);
+  const progress = getFlightProgress(flight, nowMs);
+  const remaining = getRemainingMinutes(flight, nowMs);
   const remainingRounded = Math.round(remaining);
   const remainingH = Math.floor(remainingRounded / 60);
   const remainingM = remainingRounded % 60;

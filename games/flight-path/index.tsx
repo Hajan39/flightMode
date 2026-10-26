@@ -569,12 +569,9 @@ export default function FlightPathGame() {
   const hapticErrorRef = useRef(haptic.error);
   hapticErrorRef.current = haptic.error;
 
-  useEffect(() => {
-    planesRef.current = planes;
-  }, [planes]);
-  useEffect(() => {
-    incomingRef.current = incoming;
-  }, [incoming]);
+  // planesRef / incomingRef are written synchronously wherever planes or
+  // warnings change (never synced back from state in an effect: a late
+  // passive effect could otherwise roll a fresh spawn back to stale state).
   useEffect(() => {
     scoreRef.current = score;
   }, [score]);
@@ -666,8 +663,11 @@ export default function FlightPathGame() {
     nextIdRef.current += 1;
     const plan = buildSpawnPlan(boardRef.current, id, landedRef.current);
 
-    setIncoming((prev) => [
-      ...prev,
+    // The ref is the source of truth for the intervals (React 19 runs state
+    // updaters lazily, so nothing may be read back out of one); state only
+    // mirrors it for rendering.
+    const nextIncoming = [
+      ...incomingRef.current,
       {
         angle: plan.a,
         color: plan.color,
@@ -677,7 +677,9 @@ export default function FlightPathGame() {
         x: plan.x,
         y: plan.y,
       },
-    ]);
+    ];
+    incomingRef.current = nextIncoming;
+    setIncoming(nextIncoming);
   }, []);
 
   const spawnMs = Math.max(
@@ -700,45 +702,50 @@ export default function FlightPathGame() {
     }
 
     const telegraphId = setInterval(() => {
+      if (gameOverRef.current || incomingRef.current.length === 0) {
+        return;
+      }
+      // Computed from the refs outside any updater: React 19 runs updaters
+      // lazily, so a list filled inside setIncoming(prev => …) is still empty
+      // when read right after. Both refs are written synchronously so the game
+      // loop (which rebuilds planes from planesRef) can't overwrite new spawns.
       const toSpawn: IncomingWarning[] = [];
-      setIncoming((prev) => {
-        const keep: IncomingWarning[] = [];
-        for (const item of prev) {
-          const nextMs = item.inMs - TICK;
-          if (nextMs <= 0) {
-            toSpawn.push(item);
-          } else {
-            keep.push({ ...item, inMs: nextMs });
-          }
+      const keep: IncomingWarning[] = [];
+      for (const item of incomingRef.current) {
+        const nextMs = item.inMs - TICK;
+        if (nextMs <= 0) {
+          toSpawn.push(item);
+        } else {
+          keep.push({ ...item, inMs: nextMs });
         }
-        return keep;
-      });
+      }
+      incomingRef.current = keep;
+      setIncoming(keep);
 
       if (toSpawn.length === 0) {
         return;
       }
-      setPlanes((prev) => {
-        const next = [...prev];
-        for (const incomingPlane of toSpawn) {
-          if (next.length >= MAX_PLANES) {
-            break;
-          }
-          next.push({
-            angle: incomingPlane.angle,
-            color: incomingPlane.color,
-            id: incomingPlane.id,
-            landing: null,
-            path: null,
-            pathIdx: 0,
-            speed: incomingPlane.type.baseSpeed * (0.85 + Math.random() * 0.3),
-            targetAngle: incomingPlane.angle,
-            type: incomingPlane.type,
-            x: incomingPlane.x,
-            y: incomingPlane.y,
-          });
+      const next = [...planesRef.current];
+      for (const incomingPlane of toSpawn) {
+        if (next.length >= MAX_PLANES) {
+          break;
         }
-        return next;
-      });
+        next.push({
+          angle: incomingPlane.angle,
+          color: incomingPlane.color,
+          id: incomingPlane.id,
+          landing: null,
+          path: null,
+          pathIdx: 0,
+          speed: incomingPlane.type.baseSpeed * (0.85 + Math.random() * 0.3),
+          targetAngle: incomingPlane.angle,
+          type: incomingPlane.type,
+          x: incomingPlane.x,
+          y: incomingPlane.y,
+        });
+      }
+      planesRef.current = next;
+      setPlanes(next);
     }, TICK);
 
     return () => clearInterval(telegraphId);
@@ -914,6 +921,7 @@ export default function FlightPathGame() {
             hapticErrorRef.current();
             setGameOver(true);
             setProgressInfo(updateProgress("flight-path", scoreRef.current));
+            planesRef.current = next;
             setPlanes(next);
             return;
           }
@@ -925,6 +933,7 @@ export default function FlightPathGame() {
         setLanded((l) => l + landedThisTick);
       }
 
+      planesRef.current = next;
       setPlanes(next);
     }, TICK);
 
@@ -964,7 +973,7 @@ export default function FlightPathGame() {
             p.id === selectedId ? { ...p, path: [start], pathIdx: 0 } : p
           );
         planesRef.current = grabbed(planesRef.current);
-        setPlanes(grabbed);
+        setPlanes(planesRef.current);
       }
     },
     onPanResponderMove: (e) => {
@@ -991,7 +1000,7 @@ export default function FlightPathGame() {
         const withPath = (list: Plane[]) =>
           list.map((p) => (p.id === id ? { ...p, path: drawn } : p));
         planesRef.current = withPath(planesRef.current);
-        setPlanes(withPath);
+        setPlanes(planesRef.current);
       }
       drawDirtyRef.current = false;
       selectedRef.current = null;
@@ -1011,6 +1020,8 @@ export default function FlightPathGame() {
     drawRef.current = [];
     drawDirtyRef.current = false;
     gameOverRef.current = false;
+    planesRef.current = [];
+    incomingRef.current = [];
     setPlanes([]);
     setIncoming([]);
     setDrawPath([]);

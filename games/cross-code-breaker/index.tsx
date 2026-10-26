@@ -31,10 +31,11 @@ import { useTranslation } from "@/hooks/useTranslation";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
 
+import { codeBreakerRounds, firstGuesser } from "./logic";
+
 const GAME_ID = "cross-code-breaker";
 const CODE_LEN = 4;
 const MAX_GUESSES = 10;
-const TOTAL_ROUNDS = 3;
 
 type Phase = "setup" | "handoff" | "playing" | "roundEnd" | "done";
 interface GuessEntry {
@@ -103,12 +104,14 @@ export default function CrossCodeBreakerGame() {
   const current =
     players[Math.min(currentPlayer, Math.max(0, players.length - 1))];
   const pColor = current?.color ?? theme.tint;
+  // A multiple of the player count, so everyone guesses first equally often.
+  const totalRounds = codeBreakerRounds(players.length);
 
   /** `roundNumber` is 1-based; the first guesser rotates every round. */
   const startNewRound = (count: number, roundNumber: number) => {
     setSecret(generateSecret());
     setHistories(Array.from({ length: count }, () => []));
-    setCurrentPlayer((roundNumber - 1) % count);
+    setCurrentPlayer(firstGuesser(roundNumber, count));
     setRoundWinner(null);
     setGuessInput([]);
     setLastResult(null);
@@ -194,7 +197,7 @@ export default function CrossCodeBreakerGame() {
 
   const nextRound = () => {
     haptic.tap();
-    if (round >= TOTAL_ROUNDS) {
+    if (round >= totalRounds) {
       setProgress(
         recordMatch(
           GAME_ID,
@@ -305,7 +308,7 @@ export default function CrossCodeBreakerGame() {
               player={current}
               right={
                 <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-                  {t("mpRoundOf", { round, total: TOTAL_ROUNDS })}
+                  {t("mpRoundOf", { round, total: totalRounds })}
                 </Text>
               }
             />
@@ -330,14 +333,14 @@ export default function CrossCodeBreakerGame() {
               )}
               <Pressable
                 accessibilityLabel={
-                  round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")
+                  round >= totalRounds ? t("hmSeeResult") : t("hmNextRound")
                 }
                 accessibilityRole="button"
                 onPress={nextRound}
                 style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
               >
                 <Text style={[styles.primaryBtnText, { color: theme.onTint }]}>
-                  {round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
+                  {round >= totalRounds ? t("hmSeeResult") : t("hmNextRound")}
                 </Text>
               </Pressable>
             </RNView>

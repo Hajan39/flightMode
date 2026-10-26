@@ -136,6 +136,8 @@ export default function SlidingPuzzleGame() {
   // Wall-clock timer refs (never chained-setTimeout tick counting).
   const startTimeRef = useRef<number>(0);
   const pausedAccumulatedRef = useRef<number>(0);
+  /** Clock running? Keeps a double pause (auto-pause + button) from adding twice. */
+  const clockRunningRef = useRef<boolean>(false);
   // Synchronous guard so updateProgress fires exactly once per solve.
   const solvedRef = useRef(false);
 
@@ -176,11 +178,18 @@ export default function SlidingPuzzleGame() {
   const onCountdownComplete = useCallback(() => {
     pausedAccumulatedRef.current = 0;
     startTimeRef.current = Date.now();
+    clockRunningRef.current = true;
     setElapsedSeconds(0);
     setPhase("playing");
   }, []);
 
   const handlePause = useCallback(() => {
+    // Idempotent: a second pause before re-render must not count the same
+    // stretch twice.
+    if (!clockRunningRef.current) {
+      return;
+    }
+    clockRunningRef.current = false;
     // Exact seconds (floored only when read) so pauses never drop time.
     pausedAccumulatedRef.current += (Date.now() - startTimeRef.current) / 1000;
     setPhase("paused");
@@ -190,6 +199,7 @@ export default function SlidingPuzzleGame() {
   useAutoPause(handlePause, phase === "playing");
 
   const handleResume = useCallback(() => {
+    clockRunningRef.current = true;
     startTimeRef.current = Date.now();
     setPhase("playing");
   }, []);

@@ -1,4 +1,8 @@
-import { leftForeground, shiftDeadline } from "@/hooks/useAutoPause";
+import {
+  createAutoPauseListener,
+  leftForeground,
+  shiftDeadline,
+} from "@/hooks/useAutoPause";
 
 describe("leftForeground", () => {
   it("pauses when an active app goes to the background or inactive", () => {
@@ -36,5 +40,33 @@ describe("shiftDeadline", () => {
     expect(shiftDeadline(0, 5000)).toBe(0);
     expect(shiftDeadline(10_000, 0)).toBe(10_000);
     expect(shiftDeadline(10_000, -100)).toBe(10_000);
+  });
+});
+
+describe("createAutoPauseListener", () => {
+  it("pauses once for active → inactive → background (iOS home button)", () => {
+    const onPause = jest.fn();
+    const listen = createAutoPauseListener("active", onPause);
+    listen("inactive");
+    listen("background");
+    expect(onPause).toHaveBeenCalledTimes(1);
+  });
+
+  it("re-arms once the app is active again", () => {
+    const onPause = jest.fn();
+    const listen = createAutoPauseListener("active", onPause);
+    listen("background");
+    listen("active");
+    listen("inactive");
+    listen("background");
+    expect(onPause).toHaveBeenCalledTimes(2);
+  });
+
+  it("ignores transitions that don't leave the foreground", () => {
+    const onPause = jest.fn();
+    const listen = createAutoPauseListener("background", onPause);
+    listen("background");
+    listen("inactive");
+    expect(onPause).not.toHaveBeenCalled();
   });
 });
