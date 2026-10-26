@@ -452,7 +452,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     "mindMeld",
     [
       "Lost in a new city — you…",
-      "Ztracen/a v cizím městě — ty…",
+      "Ztracen/a v cizím městě – ty…",
       "Verlaufen in einer fremden Stadt — du…",
       "Perdido en una ciudad nueva…",
       "Perdu dans une ville inconnue…",
@@ -762,7 +762,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     "mindMeld",
     [
       "Trying unknown street food?",
-      "Ochutnat neznámé street food?",
+      "Ochutnat neznámé pouliční jídlo?",
       "Unbekanntes Streetfood probieren?",
       "¿Probar comida callejera desconocida?",
       "Goûter une street food inconnue ?",
@@ -1301,7 +1301,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "When you wake up",
-        "Až se probudíš",
+        "Až se probudím",
         "Wann auch immer",
         "Cuando te despiertes",
         "Quand ça vient",
@@ -1878,7 +1878,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     "mindMeld",
     [
       "Boarding pass?",
-      "Palubní lístek?",
+      "Palubní vstupenka?",
       "Bordkarte?",
       "¿Tarjeta de embarque?",
       "Carte d'embarquement ?",
@@ -2355,7 +2355,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "Road trip",
-        "Road trip",
+        "Auto",
         "Roadtrip",
         "Viaje por carretera",
         "Road trip",
@@ -2723,7 +2723,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     ],
     [
       "1 month-long trip",
-      "1 měsíční cesta",
+      "1 cesta na celý měsíc",
       "1 Reise, einen Monat lang",
       "1 viaje de un mes",
       "1 voyage d'un mois",

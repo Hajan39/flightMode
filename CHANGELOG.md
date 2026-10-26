@@ -26,6 +26,7 @@ and this project adheres to Semantic Versioning.
 
 ### Changed
 
+- Czech proofreading pass: UI strings, bundled articles, the remote article feed (version bumped) and the Seat Neighbor questions — spelling, grammar, Czech typography (quotes „…“, en dashes, ×, unit spacing), untranslated English and awkward wording.
 - Translations other than English load on first use instead of at startup (faster launch). Three shared components (animated buttons, countdown, match result) are now optimised by the React Compiler.
 - Tests: second mutation audit (128 mutants, 65.6 % → 93.75 % killed; all survivors are equivalent), 1342 tests.
 
