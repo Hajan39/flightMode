@@ -98,7 +98,7 @@ jest.mock("@/hooks/useHaptic", () => {
   return { useHaptic: () => haptic };
 });
 jest.mock("@/hooks/useTranslation", () => ({
-  useTranslation: () => ({ t: (k: string) => k }),
+  useTranslation: () => ({ t: (k: string) => k, tn: (k: string) => k }),
 }));
 const mockRecordMatch = jest.fn((..._args: unknown[]) => ({}));
 jest.mock("@/utils/multiplayerScoring", () => ({

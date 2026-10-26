@@ -53,8 +53,10 @@ export function getPassportSummary(
   const stamps = departed.map((f) => {
     // An in-progress flight counts only the minutes flown so far; a corrupt
     // (non-finite / negative) duration counts as 0 instead of poisoning totals.
+    const duration =
+      Number.isFinite(f.duration) && f.duration > 0 ? f.duration : 0;
     const flown = Math.min(
-      f.duration,
+      duration,
       Math.floor((nowMs - f.departureTime) / 60_000)
     );
     minutesInAir += Number.isFinite(flown) && flown > 0 ? flown : 0;

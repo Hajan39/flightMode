@@ -51,7 +51,7 @@ type Phase = "setup" | "pass" | "pick" | "reveal" | "done";
 export default function SeatNeighborGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t, language } = useTranslation();
+  const { t, tn, language } = useTranslation();
   const haptic = useHaptic();
   const updateProgress = useGameStore((s) => s.updateProgress);
 
@@ -341,9 +341,9 @@ export default function SeatNeighborGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("snReads")}
+            scoreLabel={(n) => tn("snReads", n)}
             standings={players.map((p, i) => ({
-              detail: t("snReads"),
+              detail: tn("snReads", reads[i]),
               player: p,
               score: reads[i],
             }))}

@@ -597,15 +597,26 @@ export function step(
   return { events, state: next };
 }
 
-/** Multi-ball: every moving ball spawns two copies fanned out ±25°. */
+/** Most balls multi-ball may put in play (never removes balls already there). */
+const MAX_BALLS = 9;
+
+/**
+ * Multi-ball: every moving ball spawns two copies fanned out ±25°, while
+ * the total stays at most MAX_BALLS.
+ */
 function splitBalls(balls: Ball[]): Ball[] {
   const out: Ball[] = [];
+  let room = MAX_BALLS - balls.length;
   for (const b of balls) {
     out.push(b);
-    if (b.stuck || out.length >= 9) {
+    if (b.stuck) {
       continue;
     }
     for (const turn of [-0.44, 0.44]) {
+      if (room <= 0) {
+        break;
+      }
+      room -= 1;
       const cos = Math.cos(turn);
       const sin = Math.sin(turn);
       out.push({

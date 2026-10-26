@@ -45,7 +45,7 @@ type Phase = "setup" | "pass" | "countdown" | "playing" | "turnEnd" | "done";
 export default function CategoryBlitzGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
 
   const [players, setPlayers] = useState<MatchPlayer[]>([]);
@@ -303,7 +303,7 @@ export default function CategoryBlitzGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("cbzAnswers")}
+            scoreLabel={(n) => tn("cbzAnswers", n)}
             standings={players.map((p, i) => ({ player: p, score: totals[i] }))}
             winnerIndex={getSoleWinnerIndex(totals.map((score) => ({ score })))}
           />

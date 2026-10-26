@@ -197,7 +197,7 @@ function CellMark({
 export default function DuelTicTacToeGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const { width } = useGameDimensions();
 
@@ -479,7 +479,7 @@ export default function DuelTicTacToeGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("mpWinsLabel")}
+            scoreLabel={(n) => tn("mpWinsLabel", n)}
             standings={players.map((p, i) => ({
               detail: MARKS[i as Player],
               player: p,

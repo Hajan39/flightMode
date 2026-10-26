@@ -66,7 +66,7 @@ function rollDie(): number {
 export default function DuelDiceGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const { width } = useGameDimensions();
   const dieSize = Math.min(width * 0.52, 240);
@@ -287,7 +287,7 @@ export default function DuelDiceGame() {
           <PlayerScoreStrip
             activeIndex={activePlayer}
             detail={(i) =>
-              `${currentRolls[i] === null ? "" : `🎲 ${currentRolls[i]} · `}${totals[i]} ${t("mpPoints")}`
+              `${currentRolls[i] === null ? "" : `🎲 ${currentRolls[i]} · `}${totals[i]} ${tn("mpPoints", totals[i])}`
             }
             players={players}
             scores={roundWins}
@@ -367,9 +367,9 @@ export default function DuelDiceGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("mpWinsLabel")}
+            scoreLabel={(n) => tn("mpWinsLabel", n)}
             standings={players.map((p, i) => ({
-              detail: `${totals[i]} ${t("mpPoints")}`,
+              detail: `${totals[i]} ${tn("mpPoints", totals[i])}`,
               player: p,
               score: roundWins[i],
               tiebreak: totals[i],

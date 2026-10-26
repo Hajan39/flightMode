@@ -459,7 +459,7 @@ type Phase = "menu" | "playing" | "won";
 export default function SolitaireGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const router = useRouter();
   const updateProgress = useGameStore((s) => s.updateProgress);
@@ -809,7 +809,7 @@ export default function SolitaireGame() {
     const topStock = game.stock.at(-1);
     if (topStock) {
       a11yById.set(cardId(topStock), {
-        label: t("solA11yStock", { count: game.stock.length }),
+        label: tn("solA11yStock", game.stock.length),
         onActivate: whenIdle(drawCard),
       });
     }

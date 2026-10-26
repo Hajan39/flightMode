@@ -68,7 +68,7 @@ type Phase =
 export default function EmojiStoryGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const updateProgress = useGameStore((s) => s.updateProgress);
 
@@ -520,7 +520,11 @@ export default function EmojiStoryGame() {
             onRematch={() => startMatch(players)}
             // Story-only records no vote score, so its best/streak line is moot.
             progress={storyOnly === "story" ? undefined : progress}
-            scoreLabel={storyOnly === "story" ? t("esTiles") : t("esVotes")}
+            scoreLabel={
+              storyOnly === "story"
+                ? t("esTiles")
+                : (n: number) => tn("esVotes", n)
+            }
             standings={players.map((p, i) => ({
               player: p,
               score:

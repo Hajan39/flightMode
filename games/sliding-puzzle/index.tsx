@@ -402,7 +402,7 @@ export default function SlidingPuzzleGame() {
             onPlayAgain={prepareBoard}
             score={score}
             streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-            subtitle={`${moves} ${t("spMoves")} · ${formatTime(elapsedSeconds)}`}
+            subtitle={`${t("moves", { count: moves })} · ${formatTime(elapsedSeconds)}`}
             title={t("spSolved")}
           />
         ) : null}

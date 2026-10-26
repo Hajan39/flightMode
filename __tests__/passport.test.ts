@@ -89,8 +89,8 @@ describe("passport totals with corrupt durations", () => {
       now
     );
     expect(summary.flights).toBe(3);
-    // Infinity is capped by the minutes actually elapsed (98 h), NaN → 0.
-    expect(summary.minutesInAir).toBe(60 + 99 * 60);
+    // Neither NaN nor Infinity adds minutes; only the valid 60-minute flight counts.
+    expect(summary.minutesInAir).toBe(60);
     expect(Number.isFinite(summary.minutesInAir)).toBe(true);
   });
 

@@ -39,8 +39,11 @@ interface Props {
   onRematch: () => void;
   /** Host's `recordMatch` result — shows streak / new-best line for seat 0. */
   progress?: GameProgressUpdate;
-  /** Column label for the score (e.g. "wins", "points"). */
-  scoreLabel: string;
+  /**
+   * Column label for the score (e.g. "wins", "points"); a function gets the
+   * score so the label can agree with it (`(n) => tn("mpPoints", n)`).
+   */
+  scoreLabel: string | ((score: number) => string);
   standings: MatchStanding[];
   subtitle?: string;
   /** Overrides the default "{winner} wins!" / "Draw" headline (e.g. a cooperative tier). */
@@ -73,6 +76,8 @@ export default function MatchResult({
   const { t } = useTranslation();
   const router = useRouter();
   const haptic = useHaptic();
+  const labelFor = (score: number) =>
+    typeof scoreLabel === "function" ? scoreLabel(score) : scoreLabel;
   const reduceMotion = useReduceMotion();
   useA11yOverlay(true);
 
@@ -157,7 +162,7 @@ export default function MatchResult({
             const isWinner = row.player.index === winnerIndex;
             return (
               <RNView
-                accessibilityLabel={`${cooperative ? "" : `#${row.rank} `}${row.player.name}: ${format(row.score)} ${scoreLabel}`}
+                accessibilityLabel={`${cooperative ? "" : `#${row.rank} `}${row.player.name}: ${format(row.score)} ${labelFor(row.score)}`}
                 accessible
                 key={row.player.index}
                 style={[
@@ -210,7 +215,7 @@ export default function MatchResult({
                     {format(row.score)}
                   </Text>
                   <Text style={[styles.scoreLabel, { color: theme.mutedText }]}>
-                    {scoreLabel}
+                    {labelFor(row.score)}
                   </Text>
                 </RNView>
               </RNView>

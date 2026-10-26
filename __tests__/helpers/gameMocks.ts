@@ -112,5 +112,8 @@ jest.mock("@/hooks/useTranslation", () => {
           .map((key) => `${key}=${String(p[key])}`)
           .join(",")})`
       : k;
-  return { useTranslation: () => ({ language: "en", t }) };
+  // Plural-aware `tn` resolves to its base key with `count` as a param.
+  const tn = (base: string, count: number, p?: Record<string, unknown>) =>
+    t(base, { count, ...p });
+  return { useTranslation: () => ({ language: "en", t, tn }) };
 });

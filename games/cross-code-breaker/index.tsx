@@ -31,7 +31,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
 
-import { codeBreakerRounds, firstGuesser } from "./logic";
+import { calcBullsCows, codeBreakerRounds, firstGuesser } from "./logic";
 
 const GAME_ID = "cross-code-breaker";
 const CODE_LEN = 4;
@@ -42,28 +42,6 @@ interface GuessEntry {
   bulls: number;
   cows: number;
   digits: number[];
-}
-
-function calcBullsCows(
-  secret: number[],
-  guess: number[]
-): { bulls: number; cows: number } {
-  let bulls = 0;
-  let cows = 0;
-  const sCount = new Array(10).fill(0);
-  const gCount = new Array(10).fill(0);
-  for (let i = 0; i < CODE_LEN; i += 1) {
-    if (secret[i] === guess[i]) {
-      bulls += 1;
-    } else {
-      sCount[secret[i]] += 1;
-      gCount[guess[i]] += 1;
-    }
-  }
-  for (let d = 0; d < 10; d += 1) {
-    cows += Math.min(sCount[d], gCount[d]);
-  }
-  return { bulls, cows };
 }
 
 function generateSecret(): number[] {
@@ -81,7 +59,7 @@ const PEG_KEYS = ["p0", "p1", "p2", "p3"] as const;
 export default function CrossCodeBreakerGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const submitPress = useAnimatedPress(0.93);
 
@@ -517,7 +495,7 @@ export default function CrossCodeBreakerGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("mpPoints")}
+            scoreLabel={(n) => tn("mpPoints", n)}
             standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
             winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
           />

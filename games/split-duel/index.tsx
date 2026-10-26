@@ -46,7 +46,7 @@ const RESULT_PAUSE_MS = 1600;
 export default function SplitDuelGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
 
   const [players, setPlayers] = useState<MatchPlayer[]>([]);
@@ -403,7 +403,7 @@ export default function SplitDuelGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("mpWinsLabel")}
+            scoreLabel={(n) => tn("mpWinsLabel", n)}
             standings={players.map((p, i) => ({
               detail:
                 bestReaction[i] === null

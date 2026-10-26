@@ -10,6 +10,28 @@ export interface PluralKeys {
   other: TranslationKey;
 }
 
+/**
+ * Base names `B` whose four plural keys `B{One,Few,Many,Other}` all exist
+ * (e.g. "mpPoints" for mpPointsOne … mpPointsOther).
+ */
+export type PluralBase = {
+  [K in TranslationKey]: K extends `${infer B}One`
+    ? `${B}Few` | `${B}Many` | `${B}Other` extends TranslationKey
+      ? B
+      : never
+    : never;
+}[TranslationKey];
+
+/** The four plural keys of `base`. */
+export function pluralForms(base: PluralBase): PluralKeys {
+  return {
+    few: `${base}Few` as TranslationKey,
+    many: `${base}Many` as TranslationKey,
+    one: `${base}One` as TranslationKey,
+    other: `${base}Other` as TranslationKey,
+  };
+}
+
 const ONE_FOR_ZERO_AND_ONE = new Set<Language>(["fr", "hi", "pt"]);
 const NO_PLURALS = new Set<Language>(["ja", "ko", "zh"]);
 

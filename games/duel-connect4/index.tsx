@@ -153,7 +153,7 @@ function Disc({
 export default function DuelConnect4Game() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const { width } = useGameDimensions();
   const cellSize = Math.floor(
@@ -364,7 +364,7 @@ export default function DuelConnect4Game() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("mpWinsLabel")}
+            scoreLabel={(n) => tn("mpWinsLabel", n)}
             standings={players.map((p, i) => ({ player: p, score: wins[i] }))}
             subtitle={t("tttDrawCount", { count: draws })}
             winnerIndex={getSoleWinnerIndex(wins.map((score) => ({ score })))}

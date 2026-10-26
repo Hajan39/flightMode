@@ -121,7 +121,7 @@ type Phase =
 export default function DuelEmojiFindGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const { width } = useGameDimensions();
   const cellSize = Math.floor(
@@ -465,7 +465,7 @@ export default function DuelEmojiFindGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("mpPoints")}
+            scoreLabel={(n) => tn("mpPoints", n)}
             standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
             winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
           />

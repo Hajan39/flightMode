@@ -160,7 +160,7 @@ export default function DuelHangmanGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
   const updateProgress = useGameStore((s) => s.updateProgress);
-  const { t, language } = useTranslation();
+  const { t, tn, language } = useTranslation();
   const haptic = useHaptic();
   const { width } = useGameDimensions();
 
@@ -324,7 +324,7 @@ export default function DuelHangmanGame() {
 
           {solo ? (
             <Text style={[styles.soloScore, { color: theme.tint }]}>
-              {scores[0] ?? 0} {t("mpPoints")}
+              {scores[0] ?? 0} {tn("mpPoints", scores[0] ?? 0)}
             </Text>
           ) : (
             <PlayerScoreStrip
@@ -486,7 +486,7 @@ export default function DuelHangmanGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("mpPoints")}
+            scoreLabel={(n) => tn("mpPoints", n)}
             standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
             winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
           />

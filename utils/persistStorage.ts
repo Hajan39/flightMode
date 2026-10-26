@@ -82,8 +82,70 @@ export function createGuardedStorage<S>(
   { retryDelaysMs = READ_RETRY_DELAYS_MS } = {}
 ): GuardedStorage<S> {
   let gate: Gate = "reading";
-  /** Raw JSON last read from / written to the backend (skip identical rewrites). */
+  /**
+   * Raw JSON last read from / successfully written to the backend;
+   * `undefined` = on-disk state unknown. Only confirmed results land here,
+   * never a value whose write is still in flight.
+   */
   let lastRaw: string | null | undefined;
+  /** Latest value handed to the backend (`null` = remove). */
+  let wantedRaw: string | null | undefined;
+  /** Backend writes/removes issued but not settled yet. */
+  let inFlight = 0;
+  /** Sequence number of the latest issued write/remove. */
+  let latestSeq = 0;
+  /**
+   * Identical writes folded into an in-flight write of the same value. Each
+   * keeps its backend attempt in reserve: if the writes settle without the
+   * latest value on disk (an in-flight write failed), the reserve is spent
+   * retrying it, so a folded duplicate is never silently lost. Cleared once
+   * the latest value is confirmed on disk.
+   */
+  let reserved = 0;
+
+  /** One backend call; resolves with its error (undefined = success). */
+  const backendWrite = async (name: string, raw: string | null) => {
+    latestSeq += 1;
+    const seq = latestSeq;
+    wantedRaw = raw;
+    inFlight += 1;
+    try {
+      if (raw === null) {
+        await backend.removeItem(name);
+      } else {
+        await backend.setItem(name, raw);
+      }
+      if (seq === latestSeq) {
+        lastRaw = raw;
+      }
+    } catch (error) {
+      // Unknown on-disk state: the next set() must not be skipped.
+      lastRaw = undefined;
+      return error ?? new Error("storage write failed");
+    } finally {
+      inFlight -= 1;
+    }
+  };
+
+  /** Issues a write, then (once all writes settled) spends the reserve. */
+  const write = async (name: string, raw: string | null) => {
+    const error = await backendWrite(name, raw);
+    while (
+      inFlight === 0 &&
+      reserved > 0 &&
+      wantedRaw !== undefined &&
+      lastRaw !== wantedRaw
+    ) {
+      reserved -= 1;
+      // biome-ignore lint/performance/noAwaitInLoops: retries are sequential by definition
+      await backendWrite(name, wantedRaw);
+    }
+    if (inFlight === 0 && lastRaw === wantedRaw) {
+      reserved = 0;
+    }
+    return error;
+  };
+
   /** A change made in memory while blocked (see `wroteWhileBlocked`). */
   let droppedWhileBlocked = false;
   const dropped = () => {
@@ -150,8 +212,10 @@ export function createGuardedStorage<S>(
         dropped();
         return;
       }
-      lastRaw = null;
-      await backend.removeItem(name);
+      const error = await write(name, null);
+      if (error !== undefined) {
+        throw error;
+      }
     },
     async setItem(name, value) {
       if (gate !== "open") {
@@ -159,19 +223,18 @@ export function createGuardedStorage<S>(
         return;
       }
       const raw = JSON.stringify(value);
-      if (raw === lastRaw) {
+      if (inFlight === 0 ? raw === lastRaw : raw === wantedRaw) {
+        // Identical to the confirmed disk state, or folded into the
+        // in-flight write of the same value (its attempt goes to the
+        // reserve, see `reserved`).
+        if (inFlight > 0) {
+          reserved += 1;
+        }
         return;
       }
-      lastRaw = raw;
-      try {
-        await backend.setItem(name, raw);
-      } catch {
-        // Unknown on-disk state: the next set() must not be skipped. Not
-        // rethrown — zustand never awaits this promise (unhandled rejection).
-        if (lastRaw === raw) {
-          lastRaw = undefined;
-        }
-      }
+      // Never rejects — zustand never awaits this promise (unhandled
+      // rejection); a failure leaves the on-disk state marked unknown.
+      await write(name, raw);
     },
     wroteWhileBlocked: () => droppedWhileBlocked,
   };

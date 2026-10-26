@@ -182,7 +182,7 @@ function FlashCell({
 
 export default function CargoBlocksGame() {
   const theme = Colors[useColorScheme()];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const { width, height } = useGameDimensions();
 
@@ -618,8 +618,7 @@ export default function CargoBlocksGame() {
               const labelParts = [t("cbPieceLabel", { index: slot + 1 })];
               if (piece) {
                 labelParts.push(
-                  t("cbA11yPieceSize", {
-                    cells: piece.shape.cells.length,
+                  tn("cbA11yPieceSize", piece.shape.cells.length, {
                     height: piece.shape.height,
                     width: piece.shape.width,
                   })

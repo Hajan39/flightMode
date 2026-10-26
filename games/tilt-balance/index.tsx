@@ -81,7 +81,7 @@ function stopLoopRefs(
 export default function TiltBalanceGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, tn } = useTranslation();
   const haptic = useHaptic();
   const updateProgress = useGameStore((s) => s.updateProgress);
   const { width } = useGameDimensions();
@@ -487,7 +487,7 @@ export default function TiltBalanceGame() {
             onChangePlayers={() => setPhase("setup")}
             onRematch={() => startMatch(players)}
             progress={progress}
-            scoreLabel={t("tbPoints")}
+            scoreLabel={(n) => tn("mpPoints", n)}
             standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
             winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
           />
