@@ -156,7 +156,7 @@
   rulesTicTacToe:
     "🎯 Objetivo\n• Escolha 3x3 clássico ou cinco em linha crescente.\n\n❌⭕ Como jogar\n• Dois jogadores se alternam em um dispositivo.\n• Jogador 1 coloca ✕, Jogador 2 coloca ○.\n• Modo 3x3: faça 3 em linha.\n• Modo 5+: começa em 5x5, vence com 5 em linha e bordas expandem até 30x30.\n\n🏆 Vitória\n• Valem horizontal, vertical e diagonal.\n• Se o tabuleiro encher sem vencedor — empate!",
   rulesDice:
-    "🎯 Objetivo\n• Consiga o maior total em várias rodadas.\n\n🎲 Como jogar\n• 2–6 jogadores lançam dados alternadamente.\n• Após cada lançamento, escolha quais dados manter.\n• Relance o resto para melhorar seu total.\n\n🏆 Vitória\n• Maior pontuação total após todas as rodadas vence!",
+    "🎯 Objetivo\n• Vença mais rodadas em um duelo de dados de 10 rodadas.\n\n🎲 Como jogar\n• 2–6 jogadores passam o celular e jogam alternadamente.\n• Em cada rodada, cada jogador toca para lançar um dado.\n• O lançamento mais alto vence a rodada; se houver empate no mais alto, ninguém vence.\n\n🏆 Vitória\n• Vence quem tiver mais rodadas ganhas após 10 rodadas!\n• Empate em rodadas? Decide o maior total de todos os lançamentos.",
   rulesConnect4:
     "🎯 Objetivo\n• Conecte 4 fichas em linha.\n\n🔴🟡 Como jogar\n• Dois jogadores se alternam para soltar fichas.\n• Toque em uma coluna para soltar sua ficha.\n• Ela cai no espaço livre mais baixo.\n\n🏆 Vitória\n• O primeiro a conectar 4 em linha vence!\n• Contam: horizontal ↔, vertical ↕, diagonal ↗↘",
   rulesEmojiFind:
@@ -917,7 +917,7 @@
   gameColorClashListDescription:
     "Teste de concentração — ignore a palavra, confie na cor",
   rulesColorClash:
-    "Uma palavra de cor aparece em uma cor de tinta aleatória. Toque apenas quando a palavra escrita e a cor da tinta coincidirem (ex.: VERMELHO escrito em vermelho). Se não coincidirem — não toque! 1 ponto por resposta correta em 20 rodadas.",
+    "Uma palavra de cor aparece em uma cor de tinta aleatória. Toque apenas quando a palavra escrita e a cor da tinta coincidirem (ex.: VERMELHO escrito em vermelho). Se não coincidirem — não toque! 20 rodadas, metade delas coincidem: +1 por cada resposta correta, −1 por cada erro (um toque errado ou uma coincidência perdida).",
   colorClashScore: "Pontuação",
   colorClashHint: "Toque só se palavra = cor",
   colorRed: "Vermelho",
@@ -949,7 +949,7 @@
   gameHigherLowerListDescription:
     "10 rodadas, puro instinto — confie no seu sexto sentido",
   rulesHigherLower:
-    "Aparece um número entre 1 e 12. Preveja se o próximo será maior ou menor e toque no botão correto. Um empate conta como erro. 1 ponto por resposta correta em 10 rodadas.",
+    "Aparece um número entre 1 e 12. Preveja se o próximo será maior ou menor e toque no botão correto. O próximo número nunca é o mesmo. 1 ponto por resposta correta em 10 rodadas.",
   hlHigher: "Maior ↑",
   hlLower: "Menor ↓",
   hlPrevious: "Anterior: {{n}}",

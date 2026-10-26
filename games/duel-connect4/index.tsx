@@ -164,6 +164,8 @@ export default function DuelConnect4Game() {
   const [phase, setPhase] = useState<Phase>("setup");
   const [board, setBoard] = useState<Board>(createBoard);
   const [currentPlayer, setCurrentPlayer] = useState<Player>(0);
+  // Who opened the current round — after a draw the other player starts.
+  const [roundStarter, setRoundStarter] = useState<Player>(0);
   const [wins, setWins] = useState<[number, number]>([0, 0]);
   const [draws, setDraws] = useState(0);
   const [matchTarget, setMatchTarget] = useState<2 | 3>(2);
@@ -176,6 +178,7 @@ export default function DuelConnect4Game() {
     setPlayers(matchPlayers);
     setBoard(createBoard());
     setCurrentPlayer(0);
+    setRoundStarter(0);
     setWins([0, 0]);
     setDraws(0);
     setProgress(undefined);
@@ -230,8 +233,11 @@ export default function DuelConnect4Game() {
     } else if (winner === 1) {
       starter = 0;
     } else {
-      starter = currentPlayer === 0 ? 1 : 0;
+      // Draw: alternate the opener (the full board always ends on the
+      // second player's move, so "not the last mover" never alternated).
+      starter = roundStarter === 0 ? 1 : 0;
     }
+    setRoundStarter(starter);
     setCurrentPlayer(starter);
   };
 

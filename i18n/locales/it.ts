@@ -156,7 +156,7 @@
   rulesTicTacToe:
     "🎯 Obiettivo\n• Scegli 3x3 classico o cinque in fila crescente.\n\n❌⭕ Come giocare\n• Due giocatori si alternano su un dispositivo.\n• Giocatore 1 mette ✕, Giocatore 2 mette ○.\n• Modalità 3x3: fai 3 in fila.\n• Modalità 5+: parte da 5x5, vinci con 5 in fila e i bordi espandono fino a 30x30.\n\n🏆 Vittoria\n• Contano orizzontale, verticale e diagonale.\n• Se la griglia si riempie senza vincitore — pareggio!",
   rulesDice:
-    "🎯 Obiettivo\n• Ottieni il totale più alto su più round.\n\n🎲 Come giocare\n• 2–6 giocatori lanciano i dadi a turno.\n• Dopo ogni lancio, scegli quali dadi tenere.\n• Rilancia il resto per un totale migliore.\n\n🏆 Vittoria\n• Il punteggio totale più alto dopo tutti i round vince!",
+    "🎯 Obiettivo\n• Vinci più round in un duello di dadi da 10 round.\n\n🎲 Come giocare\n• 2–6 giocatori si passano il telefono e giocano a turno.\n• In ogni round ogni giocatore tocca per lanciare un dado.\n• Il lancio più alto vince il round; in caso di parità in cima nessuno lo vince.\n\n🏆 Vittoria\n• Vince chi ha vinto più round dopo 10 round!\n• Parità di round vinti? Decide il totale più alto di tutti i lanci.",
   rulesConnect4:
     "🎯 Obiettivo\n• Collega 4 gettoni in fila.\n\n🔴🟡 Come giocare\n• Due giocatori inseriscono gettoni a turno.\n• Tocca una colonna per inserire il tuo gettone.\n• Cade nello spazio libero più basso.\n\n🏆 Vittoria\n• Il primo a collegare 4 in fila vince!\n• Contano: orizzontale ↔, verticale ↕, diagonale ↗↘",
   rulesEmojiFind:
@@ -922,7 +922,7 @@
   gameColorClashListDescription:
     "Test di concentrazione — ignora la parola, fidati del colore",
   rulesColorClash:
-    "Appare una parola colore in un inchiostro casuale. Tocca solo quando la parola scritta e il colore dell'inchiostro coincidono (es. ROSSO scritto in rosso). Altrimenti — non toccare! 1 punto per risposta corretta su 20 round.",
+    "Appare una parola colore in un inchiostro casuale. Tocca solo quando la parola scritta e il colore dell'inchiostro coincidono (es. ROSSO scritto in rosso). Altrimenti — non toccare! 20 round, metà dei quali coincidono: +1 per ogni risposta corretta, −1 per ogni errore (un tocco sbagliato o una corrispondenza persa).",
   colorClashScore: "Punteggio",
   colorClashHint: "Tocca solo se parola = colore",
   colorRed: "Rosso",
@@ -953,7 +953,7 @@
   gameHigherLowerListDescription:
     "10 round, puro istinto — fidati del tuo sesto senso",
   rulesHigherLower:
-    "Appare un numero tra 1 e 12. Prevedi se il successivo sarà più alto o più basso e tocca il pulsante corretto. Un pareggio conta come sbagliato. 1 punto per risposta corretta su 10 round.",
+    "Appare un numero tra 1 e 12. Prevedi se il successivo sarà più alto o più basso e tocca il pulsante corretto. Il numero successivo non è mai lo stesso. 1 punto per risposta corretta su 10 round.",
   hlHigher: "Più alto ↑",
   hlLower: "Più basso ↓",
   hlPrevious: "Precedente: {{n}}",

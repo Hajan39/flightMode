@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Accelerometer, DeviceMotion } from "expo-sensors";
-import { useEffect, useRef, useState } from "react";
+import { type RefObject, useEffect, useRef, useState } from "react";
 import { Platform, Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 
@@ -32,6 +32,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
+import { clearIntervalRef } from "@/utils/timerRefs";
 import {
   applyGust,
   type BallState,
@@ -62,6 +63,21 @@ type Phase =
  * tilting. The ring shrinks and random gusts hit you the longer you survive.
  * Pass-and-play for 1–6; the only game in the app driven by the accelerometer.
  */
+type Removable = { remove: () => void } | null;
+
+/** Stop the frame loop and drop both sensor subscriptions (refs only). */
+function stopLoopRefs(
+  frame: RefObject<ReturnType<typeof setInterval> | null>,
+  subscription: RefObject<Removable>,
+  rotationSub: RefObject<Removable>
+) {
+  clearIntervalRef(frame);
+  subscription.current?.remove();
+  subscription.current = null;
+  rotationSub.current?.remove();
+  rotationSub.current = null;
+}
+
 export default function TiltBalanceGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
@@ -102,17 +118,15 @@ export default function TiltBalanceGame() {
   const current = players[turnIndex] ?? players[0];
 
   const stopLoop = () => {
-    if (frameRef.current) {
-      clearInterval(frameRef.current);
-    }
-    frameRef.current = null;
-    subscriptionRef.current?.remove();
-    subscriptionRef.current = null;
-    rotationSubRef.current?.remove();
-    rotationSubRef.current = null;
+    stopLoopRefs(frameRef, subscriptionRef, rotationSubRef);
   };
 
-  useEffect(() => stopLoop, [stopLoop]);
+  // Unmount-only cleanup; depending on the per-render `stopLoop` would run it
+  // after every render and tear down the physics loop + sensor listeners.
+  useEffect(
+    () => () => stopLoopRefs(frameRef, subscriptionRef, rotationSubRef),
+    []
+  );
 
   // Motion is unavailable on web and some simulators — fail soft, never crash.
   useEffect(() => {

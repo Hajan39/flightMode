@@ -1,3 +1,5 @@
+import { shuffle } from "@/utils/shuffle";
+
 const EMOJIS = [
   "✈️",
   "🧳",
@@ -22,13 +24,7 @@ export interface Card {
 
 export function createDeck(pairCount = 6): Card[] {
   const selected = EMOJIS.slice(0, pairCount);
-  const pairs = [...selected, ...selected];
-
-  // Fisher-Yates shuffle
-  for (let i = pairs.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
-  }
+  const pairs = shuffle([...selected, ...selected]);
 
   return pairs.map((emoji, index) => ({
     emoji,

@@ -24,6 +24,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
+import { shuffle } from "@/utils/shuffle";
 
 interface QuizQuestion {
   answerIndex: number;
@@ -343,7 +344,7 @@ export default function QuizGame() {
 
   // Shuffle once per question so correct answer isn't always at position [1]
   const shuffledOptions = useMemo(
-    () => [...currentQuestion.options].sort(() => Math.random() - 0.5),
+    () => shuffle(currentQuestion.options),
     [currentQuestion.options]
   );
 

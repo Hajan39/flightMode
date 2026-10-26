@@ -3,7 +3,10 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Language } from "@/i18n/translations";
 import type { GameCategory } from "@/types/game";
-import { safePersistOptions } from "@/utils/persistStorage";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 
 export type ThemeMode =
   | "system"
@@ -86,3 +89,4 @@ export const useSettingsStore = create<SettingsState>()(
     safePersistOptions(() => AsyncStorage, { name: "settings" })
   )
 );
+enablePersistRecovery(useSettingsStore);

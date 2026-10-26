@@ -175,7 +175,7 @@ export const en = {
   rulesTicTacToe:
     "🎯 Goal\n• Choose classic 3x3 or growing five-in-a-row.\n\n❌⭕ How to Play\n• Two players take turns on one device.\n• Player 1 places ✕, Player 2 places ○.\n• 3x3 mode: get 3 in a row.\n• 5+ mode: start 5x5, get 5 in a row, and edge moves expand the board up to 30x30.\n\n🏆 Winning\n• Rows count horizontal, vertical, and diagonal.\n• If the board fills with no winner — it's a draw!",
   rulesDice:
-    "🎯 Goal\n• Roll the highest total over multiple rounds.\n\n🎲 How to Play\n• 2–6 players take turns rolling dice.\n• After each roll, choose which dice to keep.\n• Re-roll the rest to try for a better total.\n\n🏆 Winning\n• Highest total score after all rounds wins!",
+    "🎯 Goal\n• Win the most rounds in a 10-round dice duel.\n\n🎲 How to Play\n• 2–6 players pass the phone and take turns.\n• Each round, every player taps to roll one die.\n• The highest roll wins the round; a tie at the top means nobody wins it.\n\n🏆 Winning\n• Most round wins after 10 rounds wins!\n• Tied on wins? The highest total of all rolls takes it.",
   rulesConnect4:
     "🎯 Goal\n• Connect 4 of your discs in a row.\n\n🔴🟡 How to Play\n• Two players take turns dropping discs.\n• Tap a column to drop your disc.\n• It falls to the lowest empty slot.\n\n🏆 Winning\n• First to connect 4 in a row wins!\n• Rows count: horizontal ↔, vertical ↕, diagonal ↗↘",
   rulesEmojiFind:
@@ -924,7 +924,7 @@ export const en = {
   gameColorClashListDescription:
     "Focus test — ignore the word, trust the color",
   rulesColorClash:
-    "A color word appears in a random ink color. Tap only when the written word and the ink color match (e.g. RED written in red). If they don't match — don't tap! Score 1 point per correct response across 20 rounds.",
+    "A color word appears in a random ink color. Tap only when the written word and the ink color match (e.g. RED written in red). If they don't match — don't tap! 20 rounds, half of them matches: +1 for each correct response, −1 for each mistake (a wrong tap or a missed match).",
   colorClashScore: "Score",
   colorClashHint: "Tap only when word = color",
   colorRed: "Red",
@@ -954,7 +954,7 @@ export const en = {
   gameHigherLowerDescription: "Will the next number be higher or lower?",
   gameHigherLowerListDescription: "10 rounds, pure instinct — trust your gut",
   rulesHigherLower:
-    "A number between 1 and 12 appears. Predict whether the next number will be higher or lower and tap the correct button. A tie counts as wrong. Score 1 point per correct guess across 10 rounds.",
+    "A number between 1 and 12 appears. Predict whether the next number will be higher or lower and tap the correct button. The next number is never the same. Score 1 point per correct guess across 10 rounds.",
   hlHigher: "Higher ↑",
   hlLower: "Lower ↓",
   hlPrevious: "Previous: {{n}}",

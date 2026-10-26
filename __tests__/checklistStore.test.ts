@@ -1,14 +1,17 @@
 import { checklistSections, defaultItemIds } from "@/data/checklist";
+import { getDestinationById } from "@/data/destinations";
 import { en } from "@/i18n/locales/en";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import {
   destinationItemId,
   getChecklistProgress,
+  getCurrentDestinationItemIds,
   isChecklistComplete,
   MAX_CUSTOM_ITEM_LENGTH,
   NO_FLIGHT_COMPLETION,
   useChecklistStore,
 } from "@/store/useChecklistStore";
+import { useFlightStore } from "@/store/useFlightStore";
 
 const enKeys = new Set(Object.keys(en));
 
@@ -180,5 +183,51 @@ describe("useChecklistStore", () => {
       useChecklistStore.getState().toggleItem(id);
     }
     expect(useAchievementStore.getState().checklistsCompleted).toBe(1);
+  });
+
+  test("a manual reset after the flight was cleared does not re-arm the achievement", () => {
+    for (const id of defaultItemIds) {
+      useChecklistStore.getState().toggleItem(id);
+    }
+    expect(useAchievementStore.getState().checklistsCompleted).toBe(1);
+    // Flight cleared / expired: the screen passes null.
+    useChecklistStore.getState().resetForFlight(null, "manual");
+    const s = useChecklistStore.getState();
+    expect(s.checkedIds).toEqual([]);
+    expect(s.flightId).toBe("f1");
+    expect(s.completedFlightId).toBe("f1");
+    for (const id of defaultItemIds) {
+      useChecklistStore.getState().toggleItem(id);
+    }
+    expect(useAchievementStore.getState().checklistsCompleted).toBe(1);
+  });
+});
+
+describe("getCurrentDestinationItemIds", () => {
+  const HOUR = 60 * 60 * 1000;
+  const tokyo = getDestinationById("tokyo");
+  afterEach(() => useFlightStore.setState({ flight: null }));
+
+  test("adds the destination items only while the trip is current", () => {
+    const departureTime = Date.UTC(2026, 0, 10, 8);
+    useFlightStore.setState({
+      flight: {
+        departureTime,
+        destinationId: "tokyo",
+        duration: 600,
+        id: "t1",
+      },
+    });
+    const expected = (tokyo?.checklistExtras ?? []).map(destinationItemId);
+    expect(expected.length).toBeGreaterThan(0);
+    expect(getCurrentDestinationItemIds(departureTime - HOUR)).toEqual(
+      expected
+    );
+    // Arrival + 48 h landed window has passed: no "For Tokyo" items.
+    expect(getCurrentDestinationItemIds(departureTime + 60 * HOUR)).toEqual([]);
+  });
+
+  test("no flight → no destination items", () => {
+    expect(getCurrentDestinationItemIds()).toEqual([]);
   });
 });

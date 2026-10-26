@@ -3,7 +3,10 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { MAX_MATCH_PLAYERS } from "@/constants/Colors";
-import { safePersistOptions } from "@/utils/persistStorage";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 
 export const MAX_PLAYER_NAME_LENGTH = 12;
 
@@ -55,3 +58,4 @@ export const usePlayersStore = create<PlayersState>()(
     })
   )
 );
+enablePersistRecovery(usePlayersStore);

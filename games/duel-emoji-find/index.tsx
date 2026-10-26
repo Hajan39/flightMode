@@ -27,6 +27,7 @@ import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
+import { clearIntervalRef, clearTimeoutRef } from "@/utils/timerRefs";
 
 const GAME_ID = "duel-emoji-find";
 const GRID_COLS = 5;
@@ -151,17 +152,19 @@ export default function DuelEmojiFindGame() {
   });
 
   const clearTimers = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-    if (retargetRef.current) {
-      clearTimeout(retargetRef.current);
-    }
-    timerRef.current = null;
-    retargetRef.current = null;
+    clearIntervalRef(timerRef);
+    clearTimeoutRef(retargetRef);
   };
 
-  useEffect(() => clearTimers, [clearTimers]);
+  // Unmount-only cleanup; depending on the per-render `clearTimers` would run
+  // it after every render and kill the turn timer / retarget timeout.
+  useEffect(
+    () => () => {
+      clearIntervalRef(timerRef);
+      clearTimeoutRef(retargetRef);
+    },
+    []
+  );
 
   const startMatch = (matchPlayers: MatchPlayer[]) => {
     clearTimers();

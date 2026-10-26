@@ -104,10 +104,11 @@ export default function CrossCodeBreakerGame() {
     players[Math.min(currentPlayer, Math.max(0, players.length - 1))];
   const pColor = current?.color ?? theme.tint;
 
-  const startNewRound = (count: number) => {
+  /** `roundNumber` is 1-based; the first guesser rotates every round. */
+  const startNewRound = (count: number, roundNumber: number) => {
     setSecret(generateSecret());
     setHistories(Array.from({ length: count }, () => []));
-    setCurrentPlayer(0);
+    setCurrentPlayer((roundNumber - 1) % count);
     setRoundWinner(null);
     setGuessInput([]);
     setLastResult(null);
@@ -120,7 +121,7 @@ export default function CrossCodeBreakerGame() {
     setScores(new Array(matchPlayers.length).fill(0));
     setRound(1);
     setProgress(undefined);
-    startNewRound(matchPlayers.length);
+    startNewRound(matchPlayers.length, 1);
   };
 
   const addDigit = (d: number) => {
@@ -203,33 +204,38 @@ export default function CrossCodeBreakerGame() {
       setPhase("done");
       return;
     }
-    setRound((r) => r + 1);
-    startNewRound(players.length);
+    setRound(round + 1);
+    startNewRound(players.length, round + 1);
   };
 
-  const renderCode = (digits: number[], highlight: string) => (
+  // `digits` may be a partial guess: slots past its length are undefined.
+  const renderCode = (digits: readonly number[], highlight: string) => (
     <RNView style={styles.codeRow}>
-      {SLOT_KEYS.map((key, i) => (
-        <RNView
-          key={key}
-          style={[
-            styles.codeSlot,
-            {
-              backgroundColor: digits[i] === null ? theme.card : highlight,
-              borderColor: theme.border,
-            },
-          ]}
-        >
-          <Text
+      {SLOT_KEYS.map((key, i) => {
+        const digit = digits.at(i);
+        const empty = digit === undefined;
+        return (
+          <RNView
+            key={key}
             style={[
-              styles.codeDigit,
-              { color: digits[i] === null ? theme.mutedText : "#0b1620" },
+              styles.codeSlot,
+              {
+                backgroundColor: empty ? theme.card : highlight,
+                borderColor: theme.border,
+              },
             ]}
           >
-            {digits[i] === null ? "—" : digits[i]}
-          </Text>
-        </RNView>
-      ))}
+            <Text
+              style={[
+                styles.codeDigit,
+                { color: empty ? theme.mutedText : "#0b1620" },
+              ]}
+            >
+              {empty ? "—" : String(digit)}
+            </Text>
+          </RNView>
+        );
+      })}
     </RNView>
   );
 

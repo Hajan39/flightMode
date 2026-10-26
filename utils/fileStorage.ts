@@ -21,7 +21,7 @@ import type { StateStorage } from "zustand/middleware";
  *   renamed over the real file, so a kill mid-write leaves the previous
  *   value intact (Android `renameTo` replaces atomically; iOS removes the
  *   target then moves — the complete `.tmp` survives that gap and is
- *   promoted on the next read).
+ *   promoted on the next read, if it parses as JSON).
  * - Operations per key are serialized (a read never sees a half-written
  *   file), and a write superseded by a newer queued one is skipped.
  */
@@ -84,9 +84,16 @@ async function readFile(name: string, uri: string): Promise<string | null> {
   const tmp = tmpUri(uri);
   const tmpInfo = await getInfoAsync(tmp);
   if (tmpInfo.exists) {
-    // Killed between "remove target" and "move" (iOS): the .tmp is complete.
-    await moveAsync({ from: tmp, to: uri });
-    return readAsStringAsync(uri);
+    // Killed between "remove target" and "move" (iOS): the .tmp is complete —
+    // unless the app died during the tmp write of a first-ever save (no real
+    // file yet). Only valid JSON is promoted; a partial .tmp is discarded and
+    // the read falls through to the AsyncStorage migration below.
+    const text = await readAsStringAsync(tmp);
+    if (isJson(text)) {
+      await moveAsync({ from: tmp, to: uri });
+      return text;
+    }
+    await deleteAsync(tmp, { idempotent: true });
   }
   const legacy = await AsyncStorage.getItem(name);
   if (legacy !== null) {
@@ -100,6 +107,15 @@ async function writeAtomically(uri: string, value: string) {
   const tmp = tmpUri(uri);
   await writeAsStringAsync(tmp, value);
   await moveAsync({ from: tmp, to: uri });
+}
+
+function isJson(text: string): boolean {
+  try {
+    JSON.parse(text);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function tmpUri(uri: string) {

@@ -3,7 +3,10 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Flight, LoggedFlight } from "@/types/flight";
 import { upsertLoggedFlight } from "@/utils/passport";
-import { safePersistOptions } from "@/utils/persistStorage";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 import { getDeviceOffsetMinutes } from "@/utils/timezone";
 
 /**
@@ -103,6 +106,7 @@ export const useFlightStore = create<FlightState>()(
     })
   )
 );
+enablePersistRecovery(useFlightStore);
 
 /** Derived: elapsed time in minutes since departure */
 export function getElapsedMinutes(flight: Flight): number {

@@ -17,6 +17,7 @@ import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
+import { clearIntervalRef } from "@/utils/timerRefs";
 
 import DuelPane, { type PaneStatus } from "./DuelPane";
 import {
@@ -74,30 +75,47 @@ export default function SplitDuelGame() {
   const heldRef = useRef<[number | null, number | null]>([null, null]);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Mirrors of match state for timer callbacks: a timeout runs the closure of
+  // the render that scheduled it, so it must never read state directly.
+  const challengesRef = useRef<Challenge[]>([]);
+  const roundIndexRef = useRef(0);
+  const winsRef = useRef<[number, number]>([0, 0]);
 
   const clearTimers = () => {
     for (const tm of timers.current) {
       clearTimeout(tm);
     }
     timers.current = [];
-    if (tickRef.current) {
-      clearInterval(tickRef.current);
-    }
-    tickRef.current = null;
+    clearIntervalRef(tickRef);
   };
   const later = (fn: () => void, ms: number) => {
     const tm = setTimeout(fn, ms);
     timers.current.push(tm);
   };
 
-  useEffect(() => clearTimers, [clearTimers]);
+  // Unmount-only cleanup; depending on the per-render `clearTimers` would run
+  // it after every render and kill the countdown / round timers.
+  useEffect(
+    () => () => {
+      for (const tm of timers.current) {
+        clearTimeout(tm);
+      }
+      timers.current = [];
+      clearIntervalRef(tickRef);
+    },
+    []
+  );
 
   const challenge = challenges[roundIndex] ?? null;
 
   const startMatch = (matchPlayers: MatchPlayer[]) => {
     clearTimers();
     setPlayers(matchPlayers);
-    setChallenges(pickChallenges(MAX_ROUNDS));
+    const picked = pickChallenges(MAX_ROUNDS);
+    challengesRef.current = picked;
+    roundIndexRef.current = 0;
+    winsRef.current = [0, 0];
+    setChallenges(picked);
     setRoundIndex(0);
     setWins([0, 0]);
     setBestReaction([null, null]);
@@ -136,7 +154,7 @@ export default function SplitDuelGame() {
   const goLive = () => {
     roundStartRef.current = Date.now();
     setRoundState("live");
-    const current = challenges[roundIndex] ?? challenge;
+    const current = challengesRef.current[roundIndexRef.current];
     if (!current) {
       return;
     }
@@ -190,12 +208,13 @@ export default function SplitDuelGame() {
       }
     }
 
-    const nextWins: [number, number] = [...wins] as [number, number];
+    const nextWins: [number, number] = [...winsRef.current];
     if (winner !== "tie") {
       nextWins[winner] += 1;
     }
+    winsRef.current = nextWins;
     setWins(nextWins);
-    const roundsPlayed = roundIndex + 1;
+    const roundsPlayed = roundIndexRef.current + 1;
 
     later(() => {
       if (isMatchOver(nextWins, roundsPlayed)) {
@@ -208,16 +227,19 @@ export default function SplitDuelGame() {
         setPhase("done");
         return;
       }
+      roundIndexRef.current = roundsPlayed;
       setRoundIndex(roundsPlayed);
       beginCountdown();
     }, RESULT_PAUSE_MS);
   };
 
   const finishHold = () => {
-    if (resolvedRef.current || !challenge || challenge.kind !== "hold") {
+    // Also runs from a timeout scheduled in goLive — read the ref, not state.
+    const current = challengesRef.current[roundIndexRef.current];
+    if (resolvedRef.current || !current || current.kind !== "hold") {
       return;
     }
-    const winner = resolveHold(challenge.targetMs, heldRef.current);
+    const winner = resolveHold(current.targetMs, heldRef.current);
     resolveRound(winner === null ? "tie" : winner);
   };
 

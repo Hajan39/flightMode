@@ -6,7 +6,10 @@ import { getPlayGamesAchievementId } from "@/data/playGamesAchievements";
 import { useGameStore } from "@/store/useGameStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { nextStreakState, toLocalDateKey } from "@/utils/dates";
-import { safePersistOptions } from "@/utils/persistStorage";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 import {
   resendUnlockedAchievements,
   setUnlockedPlayIdsSource,
@@ -195,6 +198,7 @@ export const useAchievementStore = create<AchievementStoreState>()(
     })
   )
 );
+enablePersistRecovery(useAchievementStore);
 
 // After a (re)successful Play Games sign-in, every local unlock is re-sent so
 // achievements earned while signed out / offline still reach Play.

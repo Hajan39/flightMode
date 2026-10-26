@@ -3,7 +3,10 @@ import { deleteAsync, documentDirectory } from "expo-file-system/legacy";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import { safePersistOptions } from "@/utils/persistStorage";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 
 const IMAGE_DIR_NAME = "article_images/";
 const QUERY_OR_HASH_RE = /[?#].*$/;
@@ -74,3 +77,4 @@ export const useImageCacheStore = create<ImageCacheState>()(
     })
   )
 );
+enablePersistRecovery(useImageCacheStore);

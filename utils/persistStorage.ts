@@ -5,6 +5,7 @@ import type {
   StorageValue,
 } from "zustand/middleware";
 
+import { captureAnalyticsEvent } from "@/utils/analytics";
 import { markHydrationFailed } from "@/utils/hydration";
 
 /**
@@ -28,11 +29,15 @@ import { markHydrationFailed } from "@/utils/hydration";
  * - corrupt JSON → the raw text is copied to `<name>.corrupt` (best effort),
  *   the store starts from defaults and writes are allowed: the data was
  *   unreadable anyway, the backup keeps it recoverable, and the app is usable.
- * - read threw (I/O error, also after one retry) → writes stay BLOCKED for
- *   the whole session. The file is probably intact (a transient or
- *   size-related read error), so overwriting it with defaults would be the
- *   destructive choice; losing this session's changes is the lesser evil. The
- *   failure is reported (`markHydrationFailed`) so waiters don't stall.
+ * - read threw (I/O error, also after retries with backoff) → writes are
+ *   BLOCKED. The file is probably intact (a transient or size-related read
+ *   error), so overwriting it with defaults would be the destructive choice;
+ *   losing changes is the lesser evil. The failure is reported
+ *   (`markHydrationFailed`) so waiters don't stall, and captured as
+ *   `storage_read_blocked` (store name only). One background
+ *   `persist.rehydrate()` is scheduled per session (stores register it via
+ *   `enablePersistRecovery`); every new read resets `blocked` → `reading`,
+ *   so a successful re-read opens writes again.
  *
  * Identical rewrites (repeated equal `set()`s, the post-hydration write of
  * unchanged data) are skipped — this matters for the multi-MB article feed.
@@ -47,25 +52,48 @@ export interface GuardedStorage<S> extends PersistStorage<S> {
   open: () => void;
 }
 
+/** Waits before each read retry (cold-start reads can fail transiently). */
+export const READ_RETRY_DELAYS_MS: readonly number[] = [100, 400, 1000];
+
+/** Delay before the one background re-read after a blocked hydration. */
+export const RECOVERY_DELAY_MS = 5000;
+
+const sleep = (ms: number) =>
+  new Promise<void>((resolve) => {
+    setTimeout(resolve, ms);
+  });
+
 export function createGuardedStorage<S>(
-  backend: StateStorage
+  backend: StateStorage,
+  { retryDelaysMs = READ_RETRY_DELAYS_MS } = {}
 ): GuardedStorage<S> {
   let gate: Gate = "reading";
   /** Raw JSON last read from / written to the backend (skip identical rewrites). */
   let lastRaw: string | null | undefined;
 
   const readRaw = async (name: string) => {
-    try {
-      return await backend.getItem(name);
-    } catch {
-      // One retry: a cold-start read can fail transiently.
-      return await backend.getItem(name);
+    for (let attempt = 0; ; attempt += 1) {
+      try {
+        // biome-ignore lint/performance/noAwaitInLoops: retries are sequential by definition
+        return await backend.getItem(name);
+      } catch (error) {
+        const delay = retryDelaysMs[attempt];
+        if (delay === undefined) {
+          throw error;
+        }
+        await sleep(delay);
+      }
     }
   };
 
   return {
     gate: () => gate,
     async getItem(name) {
+      // A new read (e.g. the recovery rehydrate) gets a fresh chance: writes
+      // stay dropped until it merged, then `open()` opens them.
+      if (gate === "blocked") {
+        gate = "reading";
+      }
       let raw: string | null;
       try {
         raw = await readRaw(name);
@@ -138,7 +166,8 @@ type SafeOptions<S, P> = Omit<PersistOptions<S, P>, "storage"> & {
  * ```
  *
  * Also reports hydration failures (`markHydrationFailed`) and chains an
- * existing `onRehydrateStorage` / `merge`.
+ * existing `onRehydrateStorage` / `merge`. Call `enablePersistRecovery(store)`
+ * right after `create()` so a blocked read gets its background re-read.
  */
 export function safePersistOptions<S, P = S>(
   backend: () => StateStorage,
@@ -150,6 +179,19 @@ export function safePersistOptions<S, P = S>(
     ((persisted: unknown, current: S) =>
       ({ ...current, ...(persisted as object) }) as S);
   const innerRehydrate = options.onRehydrateStorage;
+  let recoveryScheduled = false;
+  const onBlocked = () => {
+    captureAnalyticsEvent("storage_read_blocked", { store: options.name });
+    if (recoveryScheduled) {
+      return; // one background attempt per session — no retry loop
+    }
+    recoveryScheduled = true;
+    setTimeout(() => {
+      const rehydrate = recoveries.get(options.name);
+      // biome-ignore lint/complexity/noVoid: background attempt; its failure is handled by onRehydrateStorage
+      void Promise.resolve(rehydrate?.()).catch(() => undefined);
+    }, RECOVERY_DELAY_MS);
+  };
   return {
     ...options,
     merge: (persisted, current) => {
@@ -162,6 +204,9 @@ export function safePersistOptions<S, P = S>(
       return (hydrated, error) => {
         if (error || !hydrated) {
           markHydrationFailed(options.name);
+          if (storage.gate() === "blocked") {
+            onBlocked();
+          }
         } else {
           // Persist the merged state (see the note at the top of this file).
           const partialize = options.partialize ?? ((s: S) => s as never);
@@ -176,4 +221,29 @@ export function safePersistOptions<S, P = S>(
     },
     storage,
   };
+}
+
+/** `persist.rehydrate` per store name, registered by `enablePersistRecovery`. */
+const recoveries = new Map<string, () => unknown>();
+
+/**
+ * Lets `safePersistOptions` re-read a store in the background after its read
+ * was blocked (the options object never sees the store api). Call once per
+ * persisted store, right after `create()`. Returns the store.
+ */
+export function enablePersistRecovery<
+  T extends {
+    persist: { getOptions: () => { name?: string }; rehydrate: () => unknown };
+  },
+>(store: T): T {
+  const { name } = store.persist.getOptions();
+  if (name) {
+    recoveries.set(name, () => store.persist.rehydrate());
+  }
+  return store;
+}
+
+/** Tests / diagnostics: whether `name` has a registered recovery. */
+export function hasPersistRecovery(name: string): boolean {
+  return recoveries.has(name);
 }

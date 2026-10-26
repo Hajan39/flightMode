@@ -30,8 +30,10 @@ import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
+import { clearIntervalRef, clearTimeoutRef } from "@/utils/timerRefs";
 
-const ROUNDS = 10;
+import { diceStandings, ROUNDS } from "./logic";
+
 const GAME_ID = "duel-dice";
 
 const FACE_PIPS: Record<number, number[]> = {
@@ -59,11 +61,6 @@ type Phase = "setup" | "playing" | "done";
 
 function rollDie(): number {
   return Math.floor(Math.random() * 6) + 1;
-}
-
-/** Match score used for ranking: wins dominate, total pips break ties. */
-function matchScore(wins: number, total: number) {
-  return wins * 10 + total;
 }
 
 export default function DuelDiceGame() {
@@ -103,21 +100,21 @@ export default function DuelDiceGame() {
   const roundTransitionRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearTimers = () => {
-    if (rollingIntervalRef.current) {
-      clearInterval(rollingIntervalRef.current);
-    }
-    if (settleTimeoutRef.current) {
-      clearTimeout(settleTimeoutRef.current);
-    }
-    if (roundTransitionRef.current) {
-      clearTimeout(roundTransitionRef.current);
-    }
-    rollingIntervalRef.current = null;
-    settleTimeoutRef.current = null;
-    roundTransitionRef.current = null;
+    clearIntervalRef(rollingIntervalRef);
+    clearTimeoutRef(settleTimeoutRef);
+    clearTimeoutRef(roundTransitionRef);
   };
 
-  useEffect(() => clearTimers, [clearTimers]);
+  // Unmount-only cleanup. It must not depend on `clearTimers` (a new function
+  // every render), or it would run after every render and kill the roll.
+  useEffect(
+    () => () => {
+      clearIntervalRef(rollingIntervalRef);
+      clearTimeoutRef(settleTimeoutRef);
+      clearTimeoutRef(roundTransitionRef);
+    },
+    []
+  );
 
   const startMatch = (matchPlayers: MatchPlayer[]) => {
     clearTimers();
@@ -138,10 +135,9 @@ export default function DuelDiceGame() {
   };
 
   const finishMatch = () => {
-    const standings = players.map((_, i) => ({
-      score: matchScore(winsRef.current[i], totalsRef.current[i]),
-    }));
-    setProgress(recordMatch(GAME_ID, standings));
+    setProgress(
+      recordMatch(GAME_ID, diceStandings(winsRef.current, totalsRef.current))
+    );
     setPhase("done");
   };
 
@@ -379,11 +375,7 @@ export default function DuelDiceGame() {
               tiebreak: totals[i],
             }))}
             subtitle={t("mpTiebreakHint")}
-            winnerIndex={getSoleWinnerIndex(
-              players.map((_, i) => ({
-                score: matchScore(roundWins[i], totals[i]),
-              }))
-            )}
+            winnerIndex={getSoleWinnerIndex(diceStandings(roundWins, totals))}
           />
         ) : null}
       </View>

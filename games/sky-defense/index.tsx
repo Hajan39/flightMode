@@ -18,6 +18,8 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 
+import { applyBulletHit } from "./logic";
+
 /* ================================================================
    CONSTANTS & TYPES
    ================================================================ */
@@ -893,11 +895,9 @@ export default function SkyDefenseGame() {
             // hit
             const enemy = newEnemies.find((e) => e.id === b.enemyId);
             if (enemy) {
-              enemy.hp -= b.damage;
-              if (enemy.hp <= 0) {
-                goldGain += enemy.reward;
-                scoreGain += enemy.reward;
-              }
+              const reward = applyBulletHit(enemy, b.damage);
+              goldGain += reward;
+              scoreGain += reward;
             }
             return false;
           }

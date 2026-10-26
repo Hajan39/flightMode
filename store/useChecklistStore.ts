@@ -7,7 +7,11 @@ import { getDestinationById } from "@/data/destinations";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useFlightStore } from "@/store/useFlightStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-import { safePersistOptions } from "@/utils/persistStorage";
+import { getCurrentFlight } from "@/utils/flightPhase";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 
 export const MAX_CUSTOM_ITEM_LENGTH = 60;
 
@@ -84,10 +88,16 @@ export function isChecklistComplete(
 /**
  * Checklist item ids contributed by the current flight's destination.
  * Derived from the flight store so every caller (Home, Preflight, the store
- * itself) counts the same set.
+ * itself) counts the same set. A trip past its landed window (see
+ * `getCurrentFlight`) no longer adds its "For {city}" items.
  */
-export function getCurrentDestinationItemIds(): string[] {
-  const destinationId = useFlightStore.getState().flight?.destinationId;
+export function getCurrentDestinationItemIds(
+  nowMs: number = Date.now()
+): string[] {
+  const destinationId = getCurrentFlight(
+    useFlightStore.getState().flight,
+    nowMs
+  )?.destinationId;
   const destination = destinationId
     ? getDestinationById(destinationId)
     : undefined;
@@ -137,10 +147,13 @@ export const useChecklistStore = create<ChecklistState>()(
         if (reason === "manual") {
           // Clearing ticks must not re-arm the achievement for the same
           // flight (untick-all + retick would farm it), so keep the marker.
+          // Without a current flight (cleared / expired) keep the tick
+          // state's flight too: switching to `null` would make the marker
+          // stale and let re-completing count again.
           set({
             checkedIds: [],
             completedFlightId: adoptedCompletion,
-            flightId,
+            flightId: flightId ?? state.flightId,
           });
         } else if (state.flightId === null) {
           // First flight after packing without one: the ticks were made for
@@ -183,3 +196,4 @@ export const useChecklistStore = create<ChecklistState>()(
     safePersistOptions(() => AsyncStorage, { name: "checklist" })
   )
 );
+enablePersistRecovery(useChecklistStore);

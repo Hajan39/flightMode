@@ -168,7 +168,7 @@ export const cs = {
   rulesTicTacToe:
     "🎯 Cíl\n• Vyber klasiku 3x3 nebo rostoucí pět v řadě.\n\n❌⭕ Jak hrát\n• Dva hráči se střídají na jednom zařízení.\n• Hráč 1 dává ✕, Hráč 2 dává ○.\n• Režim 3x3: dej 3 značky do řady.\n• Režim 5+: začíná 5x5, hraje se na 5 v řadě a tah na okraj rozšíří desku až do 30x30.\n\n🏆 Výhra\n• Počítá se vodorovně, svisle i úhlopříčně.\n• Pokud se deska zaplní bez vítěze — remíza!",
   rulesDice:
-    "🎯 Cíl\n• Nahoď nejvyšší součet za více kol.\n\n🎲 Jak hrát\n• 2–6 hráčů se střídá v hodu kostkami.\n• Po každém hodu si vyber, které kostky si necháš.\n• Zbytek přehoď a zkus lepší součet.\n\n🏆 Výhra\n• Nejvyšší celkové skóre po všech kolech vyhrává!",
+    "🎯 Cíl\n• Vyhraj nejvíc kol v kostkovém duelu na 10 kol.\n\n🎲 Jak hrát\n• 2–6 hráčů si předává telefon a střídá se.\n• V každém kole každý hráč ťuknutím hodí jednou kostkou.\n• Nejvyšší hod vyhrává kolo; při shodě nejvyšších hodů kolo nevyhraje nikdo.\n\n🏆 Výhra\n• Po 10 kolech vyhrává ten, kdo vyhrál nejvíc kol!\n• Stejně výher? Rozhoduje nejvyšší součet všech hodů.",
   rulesConnect4:
     "🎯 Cíl\n• Spoj 4 své žetony v řadě.\n\n🔴🟡 Jak hrát\n• Dva hráči se střídají ve vhazování žetonů.\n• Ťukni na sloupec pro vhození žetonu.\n• Spadne na nejnižší prázdné místo.\n\n🏆 Výhra\n• Kdo první spojí 4 v řadě, vyhrává!\n• Počítají se: vodorovně ↔, svisle ↕, úhlopříčně ↗↘",
   rulesEmojiFind:
@@ -917,7 +917,7 @@ export const cs = {
   gameColorClashDescription: "Klepni, když slovo a barva souhlasí",
   gameColorClashListDescription: "Test soustředění — ignoruj slovo, věř barvě",
   rulesColorClash:
-    "Zobrazí se barevné slovo v náhodné barvě písma. Klepni pouze tehdy, když zapsané slovo a barva písma souhlasí (např. ČERVENÁ napsaná červeně). Pokud nesouhlasí — neklepej! Za každou správnou odpověď získáš bod z celkových 20 kol.",
+    "Zobrazí se barevné slovo v náhodné barvě písma. Klepni pouze tehdy, když zapsané slovo a barva písma souhlasí (např. ČERVENÁ napsaná červeně). Pokud nesouhlasí — neklepej! 20 kol, polovina z nich se shoduje: +1 bod za každou správnou odpověď, −1 za každou chybu (špatné klepnutí nebo přehlédnutou shodu).",
   colorClashScore: "Skóre",
   colorClashHint: "Klepni pouze pokud slovo = barva",
   colorRed: "Červená",
@@ -948,7 +948,7 @@ export const cs = {
   gameHigherLowerListDescription:
     "10 kol, čistý instinkt — důvěřuj svému pocitu",
   rulesHigherLower:
-    "Zobrazí se číslo mezi 1 a 12. Odhadni, zda bude příští číslo vyšší nebo nižší a klepni na správné tlačítko. Shoda se počítá jako špatná odpověď. Za každý správný odhad z 10 kol získáš bod.",
+    "Zobrazí se číslo mezi 1 a 12. Odhadni, zda bude příští číslo vyšší nebo nižší a klepni na správné tlačítko. Příští číslo nikdy není stejné. Za každý správný odhad z 10 kol získáš bod.",
   hlHigher: "Vyšší ↑",
   hlLower: "Nižší ↓",
   hlPrevious: "Předchozí: {{n}}",

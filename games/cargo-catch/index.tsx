@@ -130,8 +130,10 @@ export default function CargoCatchGame() {
     gameOverRef.current = true;
     clearLoop();
     haptic.heavy();
+    // Won = survived the full 60 s with at least one life left; losing the
+    // last life to a bomb ends the run early and does not count as a win.
     const info = updateProgress("cargo-catch", scoreRef.current, {
-      won: true,
+      won: livesRef.current > 0,
     });
     setResult(info);
     itemsRef.current = [];

@@ -158,7 +158,7 @@
   rulesTicTacToe:
     "🎯 Ziel\n• Wähle klassisch 3x3 oder wachsendes Fünf-in-einer-Reihe.\n\n❌⭕ So wird gespielt\n• Zwei Spieler wechseln sich auf einem Gerät ab.\n• Spieler 1 setzt ✕, Spieler 2 setzt ○.\n• 3x3-Modus: 3 in einer Reihe gewinnen.\n• 5+-Modus: startet 5x5, 5 in einer Reihe gewinnen, Randzüge erweitern bis 30x30.\n\n🏆 Gewinn\n• Horizontal, vertikal und diagonal zählen.\n• Wenn das Brett voll ist ohne Gewinner — Unentschieden!",
   rulesDice:
-    "🎯 Ziel\n• Würfle die höchste Summe über mehrere Runden.\n\n🎲 So wird gespielt\n• 2–6 Spieler würfeln abwechselnd.\n• Nach jedem Wurf wähle, welche Würfel du behältst.\n• Wirf den Rest neu für eine bessere Summe.\n\n🏆 Gewinn\n• Höchste Gesamtpunktzahl nach allen Runden gewinnt!",
+    "🎯 Ziel\n• Gewinne die meisten Runden in einem Würfelduell über 10 Runden.\n\n🎲 So wird gespielt\n• 2–6 Spieler reichen das Handy weiter und sind abwechselnd dran.\n• In jeder Runde tippt jeder Spieler, um einen Würfel zu werfen.\n• Der höchste Wurf gewinnt die Runde; bei Gleichstand ganz oben gewinnt niemand.\n\n🏆 Gewinn\n• Wer nach 10 Runden die meisten Runden gewonnen hat, gewinnt!\n• Gleich viele Siege? Die höchste Summe aller Würfe entscheidet.",
   rulesConnect4:
     "🎯 Ziel\n• Verbinde 4 deiner Scheiben in einer Reihe.\n\n🔴🟡 So wird gespielt\n• Zwei Spieler werfen abwechselnd Scheiben ein.\n• Tippe auf eine Spalte, um deine Scheibe einzuwerfen.\n• Sie fällt auf den niedrigsten freien Platz.\n\n🏆 Gewinn\n• Wer zuerst 4 in einer Reihe verbindet, gewinnt!\n• Es zählen: horizontal ↔, vertikal ↕, diagonal ↗↘",
   rulesEmojiFind:
@@ -940,7 +940,7 @@
   gameColorClashListDescription:
     "Konzentrationstest — ignoriere das Wort, vertrau der Farbe",
   rulesColorClash:
-    "Ein Farbwort erscheint in einer zufälligen Schriftfarbe. Tippe nur, wenn das geschriebene Wort und die Schriftfarbe übereinstimmen (z. B. ROT in Rot). Wenn nicht — nicht tippen! 1 Punkt pro richtiger Reaktion, 20 Runden.",
+    "Ein Farbwort erscheint in einer zufälligen Schriftfarbe. Tippe nur, wenn das geschriebene Wort und die Schriftfarbe übereinstimmen (z. B. ROT in Rot). Wenn nicht — nicht tippen! 20 Runden, die Hälfte davon passt: +1 Punkt pro richtige Reaktion, −1 pro Fehler (falsches Tippen oder verpasste Übereinstimmung).",
   colorClashScore: "Punkte",
   colorClashHint: "Tippe nur, wenn Wort = Farbe",
   colorRed: "Rot",
@@ -973,7 +973,7 @@
   gameHigherLowerListDescription:
     "10 Runden, reiner Instinkt — vertrau deinem Gefühl",
   rulesHigherLower:
-    "Eine Zahl zwischen 1 und 12 erscheint. Tippe, ob die nächste Zahl höher oder niedriger sein wird. Ein Gleichstand zählt als falsch. 1 Punkt pro richtigem Tipp in 10 Runden.",
+    "Eine Zahl zwischen 1 und 12 erscheint. Tippe, ob die nächste Zahl höher oder niedriger sein wird. Die nächste Zahl ist nie dieselbe. 1 Punkt pro richtigem Tipp in 10 Runden.",
   hlHigher: "Höher ↑",
   hlLower: "Niedriger ↓",
   hlPrevious: "Vorherige: {{n}}",

@@ -158,7 +158,7 @@
   rulesTicTacToe:
     "🎯 Objectif\n• Choisis le 3x3 classique ou le cinq en ligne évolutif.\n\n❌⭕ Comment jouer\n• Deux joueurs alternent sur un même appareil.\n• Joueur 1 place ✕, Joueur 2 place ○.\n• Mode 3x3 : aligne 3 symboles.\n• Mode 5+ : départ en 5x5, aligne 5 symboles ; les coups au bord agrandissent la grille jusqu'à 30x30.\n\n🏆 Victoire\n• Horizontal, vertical et diagonal comptent.\n• Si la grille est pleine sans gagnant — match nul !",
   rulesDice:
-    "🎯 Objectif\n• Obtiens le meilleur total sur plusieurs manches.\n\n🎲 Comment jouer\n• 2–6 joueurs lancent les dés à tour de rôle.\n• Après chaque lancer, choisis quels dés garder.\n• Relance le reste pour améliorer ton total.\n\n🏆 Victoire\n• Le plus haut score total après toutes les manches gagne !",
+    "🎯 Objectif\n• Remporte le plus de manches dans un duel de dés en 10 manches.\n\n🎲 Comment jouer\n• 2–6 joueurs se passent le téléphone à tour de rôle.\n• À chaque manche, chaque joueur touche l'écran pour lancer un dé.\n• Le plus haut lancer remporte la manche ; en cas d'égalité au sommet, personne ne la gagne.\n\n🏆 Victoire\n• Le plus de manches gagnées après 10 manches l'emporte !\n• Égalité de manches ? Le plus haut total de tous les lancers départage.",
   rulesConnect4:
     "🎯 Objectif\n• Aligne 4 de tes jetons.\n\n🔴🟡 Comment jouer\n• Deux joueurs lâchent des jetons à tour de rôle.\n• Touche une colonne pour y lâcher ton jeton.\n• Il tombe à l'emplacement libre le plus bas.\n\n🏆 Victoire\n• Le premier à aligner 4 jetons gagne !\n• Comptent : horizontal ↔, vertical ↕, diagonal ↗↘",
   rulesEmojiFind:
@@ -934,7 +934,7 @@
   gameColorClashListDescription:
     "Test de concentration — ignore le mot, fais confiance à la couleur",
   rulesColorClash:
-    "Un mot couleur apparaît dans une couleur d'encre aléatoire. Appuie uniquement quand le mot écrit et la couleur d'encre correspondent (ex. ROUGE écrit en rouge). Sinon — ne touche pas ! 1 point par bonne réponse sur 20 manches.",
+    "Un mot couleur apparaît dans une couleur d'encre aléatoire. Appuie uniquement quand le mot écrit et la couleur d'encre correspondent (ex. ROUGE écrit en rouge). Sinon — ne touche pas ! 20 manches, dont la moitié correspondent : +1 par bonne réponse, −1 par erreur (un appui à tort ou une correspondance manquée).",
   colorClashScore: "Score",
   colorClashHint: "Appuie seulement si mot = couleur",
   colorRed: "Rouge",
@@ -967,7 +967,7 @@
   gameHigherLowerListDescription:
     "10 manches, pur instinct — fais confiance à ton intuition",
   rulesHigherLower:
-    "Un nombre entre 1 et 12 apparaît. Prédit si le suivant sera plus haut ou plus bas et appuie sur le bon bouton. Une égalité compte comme faux. 1 point par bonne réponse sur 10 manches.",
+    "Un nombre entre 1 et 12 apparaît. Prédit si le suivant sera plus haut ou plus bas et appuie sur le bon bouton. Le nombre suivant n'est jamais le même. 1 point par bonne réponse sur 10 manches.",
   hlHigher: "Plus haut ↑",
   hlLower: "Plus bas ↓",
   hlPrevious: "Précédent : {{n}}",

@@ -30,12 +30,15 @@ import {
 } from "@/store/useChecklistStore";
 import { useFlightStore } from "@/store/useFlightStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { getCurrentFlight } from "@/utils/flightPhase";
 
 export default function ChecklistScreen() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
-  const flight = useFlightStore((s) => s.flight);
+  const storedFlight = useFlightStore((s) => s.flight);
+  // An expired trip (past its landed window) adds no "For {city}" block.
+  const flight = getCurrentFlight(storedFlight, Date.now());
   const checkedIds = useChecklistStore((s) => s.checkedIds);
   const customItems = useChecklistStore((s) => s.customItems);
   const resetForFlight = useChecklistStore((s) => s.resetForFlight);

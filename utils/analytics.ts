@@ -52,6 +52,7 @@ export type AnalyticsEventName =
   | "converter_used"
   | "rates_sync_success"
   | "rates_sync_failed"
+  | "storage_read_blocked"
   | "app_error";
 
 export type AnalyticsProperties = Record<

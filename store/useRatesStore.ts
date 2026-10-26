@@ -17,7 +17,10 @@ import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { sanitizeErrorText } from "@/utils/errorLogging";
-import { safePersistOptions } from "@/utils/persistStorage";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 import { fetchLatestRates } from "@/utils/ratesSync";
 
 /** Rates move slowly; one refresh per half day is plenty. */
@@ -125,6 +128,7 @@ export const useRatesStore = create<RatesState>()(
     })
   )
 );
+enablePersistRecovery(useRatesStore);
 
 /**
  * Bundled currency table with live `perUsd` values applied where available,

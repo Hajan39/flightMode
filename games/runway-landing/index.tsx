@@ -107,6 +107,9 @@ export default function RunwayLandingGame() {
   // between two fast taps on the final round, so guard scoring with a ref to
   // prevent updateProgress() firing twice.
   const finishedRef = useRef(false);
+  // Same idea per round: a LAND tap during the 800 ms feedback window must
+  // not score the round again or restart the advance timer.
+  const roundResolvedRef = useRef(false);
   const speed = getSpeed(round);
 
   // Cancel any pending feedback timer on unmount.
@@ -151,6 +154,8 @@ export default function RunwayLandingGame() {
     };
   }, [direction, speed, finished, paused]);
 
+  // Disabled while the touchdown feedback is showing (until the next round).
+  const landDisabled = finished || lastQuality !== null;
   const currentRoundText = `${round}/${ROUND_COUNT}`;
 
   const qualityKey = (q: Quality) => {
@@ -171,7 +176,9 @@ export default function RunwayLandingGame() {
     if (feedbackTimer.current) {
       clearTimeout(feedbackTimer.current);
     }
+    feedbackTimer.current = null;
     finishedRef.current = false;
+    roundResolvedRef.current = false;
     setRound(1);
     setScore(0);
     setMarkerX(0);
@@ -185,9 +192,10 @@ export default function RunwayLandingGame() {
   };
 
   const handleLand = () => {
-    if (finished || finishedRef.current) {
+    if (finished || finishedRef.current || roundResolvedRef.current) {
       return;
     }
+    roundResolvedRef.current = true;
 
     const center = markerX + 6;
     const targetCenter = targetLeft + targetWidth / 2;
@@ -228,6 +236,8 @@ export default function RunwayLandingGame() {
     }
 
     feedbackTimer.current = setTimeout(() => {
+      feedbackTimer.current = null;
+      roundResolvedRef.current = false;
       setRound(nextRound);
       const tw = getTargetWidth(nextRound);
       setTargetLeft(getTargetLeft(tw));
@@ -333,13 +343,14 @@ export default function RunwayLandingGame() {
           <Pressable
             accessibilityLabel={t("rlLand")}
             accessibilityRole="button"
-            disabled={finished}
+            accessibilityState={{ disabled: landDisabled }}
+            disabled={landDisabled}
             onPress={handleLand}
             style={[
               styles.button,
               {
                 backgroundColor: theme.tint,
-                opacity: finished ? 0.5 : 1,
+                opacity: landDisabled ? 0.5 : 1,
               },
             ]}
           >

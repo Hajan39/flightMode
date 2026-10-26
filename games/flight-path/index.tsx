@@ -957,11 +957,14 @@ export default function FlightPathGame() {
         drawDirtyRef.current = false;
         setDrawPath([start]);
         // Immediately assign the path so the plane starts following right away
-        setPlanes((prev) =>
-          prev.map((p) =>
+        // Also update the ref: a tick before the next render reads (and
+        // writes back) planesRef, which would drop this grab.
+        const grabbed = (list: Plane[]) =>
+          list.map((p) =>
             p.id === selectedId ? { ...p, path: [start], pathIdx: 0 } : p
-          )
-        );
+          );
+        planesRef.current = grabbed(planesRef.current);
+        setPlanes(grabbed);
       }
     },
     onPanResponderMove: (e) => {

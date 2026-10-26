@@ -6,12 +6,21 @@ describe("leftForeground", () => {
     expect(leftForeground("active", "inactive")).toBe(true);
   });
 
+  it("pauses on any transition into the background", () => {
+    // iOS: enabled while `inactive`, then the app is backgrounded.
+    expect(leftForeground("inactive", "background")).toBe(true);
+    expect(leftForeground("unknown", "background")).toBe(true);
+    expect(leftForeground("extension", "background")).toBe(true);
+    expect(leftForeground(null, "background")).toBe(true);
+    expect(leftForeground(undefined, "background")).toBe(true);
+  });
+
   it("ignores every other transition", () => {
     expect(leftForeground("active", "active")).toBe(false);
     expect(leftForeground("background", "active")).toBe(false);
     expect(leftForeground("inactive", "active")).toBe(false);
-    expect(leftForeground("inactive", "background")).toBe(false);
-    expect(leftForeground(null, "background")).toBe(false);
+    expect(leftForeground("background", "background")).toBe(false);
+    expect(leftForeground("background", "inactive")).toBe(false);
     expect(leftForeground(undefined, "inactive")).toBe(false);
     expect(leftForeground("active", "unknown")).toBe(false);
     expect(leftForeground("active", "extension")).toBe(false);

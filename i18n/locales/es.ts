@@ -156,7 +156,7 @@
   rulesTicTacToe:
     "🎯 Objetivo\n• Elige 3x3 clásico o cinco en raya creciente.\n\n❌⭕ Cómo jugar\n• Dos jugadores se turnan en un dispositivo.\n• Jugador 1 pone ✕, Jugador 2 pone ○.\n• Modo 3x3: consigue 3 en línea.\n• Modo 5+: empieza 5x5, gana con 5 en línea y los bordes expanden hasta 30x30.\n\n🏆 Victoria\n• Cuentan horizontal, vertical y diagonal.\n• Si el tablero se llena sin ganador — ¡empate!",
   rulesDice:
-    "🎯 Objetivo\n• Consigue el mayor total en varias rondas.\n\n🎲 Cómo jugar\n• 2–6 jugadores lanzan dados por turnos.\n• Tras cada lanzamiento, elige qué dados quedarte.\n• Vuelve a lanzar el resto para mejorar tu total.\n\n🏆 Victoria\n• ¡La mayor puntuación total tras todas las rondas gana!",
+    "🎯 Objetivo\n• Gana más rondas en un duelo de dados de 10 rondas.\n\n🎲 Cómo jugar\n• 2–6 jugadores se pasan el móvil y juegan por turnos.\n• En cada ronda, cada jugador toca para lanzar un dado.\n• La tirada más alta gana la ronda; si hay empate en la más alta, nadie la gana.\n\n🏆 Victoria\n• ¡Gana quien tenga más rondas ganadas tras 10 rondas!\n• ¿Empate en rondas? Decide el mayor total de todas las tiradas.",
   rulesConnect4:
     "🎯 Objetivo\n• Conecta 4 fichas en línea.\n\n🔴🟡 Cómo jugar\n• Dos jugadores se turnan para soltar fichas.\n• Toca una columna para soltar tu ficha.\n• Cae al espacio libre más bajo.\n\n🏆 Victoria\n• ¡El primero en conectar 4 en línea gana!\n• Cuentan: horizontal ↔, vertical ↕, diagonal ↗↘",
   rulesEmojiFind:
@@ -924,7 +924,7 @@
   gameColorClashListDescription:
     "Prueba de concentración — ignora la palabra, confía en el color",
   rulesColorClash:
-    "Aparece una palabra de color en un color de tinta aleatorio. Toca solo cuando la palabra escrita y el color de tinta coincidan (ej. ROJO escrito en rojo). Si no coinciden, ¡no toques! 1 punto por respuesta correcta en 20 rondas.",
+    "Aparece una palabra de color en un color de tinta aleatorio. Toca solo cuando la palabra escrita y el color de tinta coincidan (ej. ROJO escrito en rojo). Si no coinciden, ¡no toques! 20 rondas, la mitad coinciden: +1 por cada respuesta correcta, −1 por cada error (un toque equivocado o una coincidencia perdida).",
   colorClashScore: "Puntuación",
   colorClashHint: "Toca solo si palabra = color",
   colorRed: "Rojo",
@@ -955,7 +955,7 @@
   gameHigherLowerListDescription:
     "10 rondas, puro instinto — confía en tu intuición",
   rulesHigherLower:
-    "Aparece un número entre 1 y 12. Predice si el siguiente será mayor o menor y toca el botón correcto. Un empate cuenta como incorrecto. 1 punto por acierto en 10 rondas.",
+    "Aparece un número entre 1 y 12. Predice si el siguiente será mayor o menor y toca el botón correcto. El siguiente número nunca es el mismo. 1 punto por acierto en 10 rondas.",
   hlHigher: "Mayor ↑",
   hlLower: "Menor ↓",
   hlPrevious: "Anterior: {{n}}",

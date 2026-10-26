@@ -25,6 +25,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
+import { shuffle } from "@/utils/shuffle";
 
 const ROUND_SECONDS = 40;
 
@@ -153,21 +154,19 @@ export default function CabinCallGame() {
   const [choices, setChoices] = useState<Command[]>(() => {
     const active = getActiveCommands(0);
     const numDecoys = getDecoyCount(0);
-    const decoys = active
-      .filter((item) => item.id !== target.id)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, numDecoys);
-    return [target, ...decoys].sort(() => Math.random() - 0.5);
+    const decoys = shuffle(
+      active.filter((item) => item.id !== target.id)
+    ).slice(0, numDecoys);
+    return shuffle([target, ...decoys]);
   });
 
   useEffect(() => {
     const active = getActiveCommands(score);
     const numDecoys = getDecoyCount(score);
-    const decoys = active
-      .filter((item) => item.id !== target.id)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, numDecoys);
-    setChoices([target, ...decoys].sort(() => Math.random() - 0.5));
+    const decoys = shuffle(
+      active.filter((item) => item.id !== target.id)
+    ).slice(0, numDecoys);
+    setChoices(shuffle([target, ...decoys]));
   }, [score, target]);
 
   const begin = () => {

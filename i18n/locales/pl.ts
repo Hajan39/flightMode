@@ -154,7 +154,7 @@
   rulesTicTacToe:
     "🎯 Cel\n• Wybierz klasyczne 3x3 albo rosnące pięć w rzędzie.\n\n❌⭕ Jak grać\n• Dwóch graczy zmienia się na jednym urządzeniu.\n• Gracz 1 stawia ✕, Gracz 2 stawia ○.\n• Tryb 3x3: ustaw 3 w rzędzie.\n• Tryb 5+: start 5x5, wygrywa 5 w rzędzie, ruchy na krawędzi rozszerzają planszę do 30x30.\n\n🏆 Wygrana\n• Liczą się poziom, pion i przekątna.\n• Jeśli plansza się zapełni bez zwycięzcy — remis!",
   rulesDice:
-    "🎯 Cel\n• Uzyskaj najwyższą sumę w wielu rundach.\n\n🎲 Jak grać\n• 2–6 graczy rzuca kośćmi na zmianę.\n• Po każdym rzucie wybierz, które kości zachować.\n• Rzuć resztę ponownie dla lepszej sumy.\n\n🏆 Wygrana\n• Najwyższy łączny wynik po wszystkich rundach wygrywa!",
+    "🎯 Cel\n• Wygraj najwięcej rund w 10-rundowym pojedynku na kości.\n\n🎲 Jak grać\n• 2–6 graczy podaje sobie telefon i gra na zmianę.\n• W każdej rundzie każdy gracz tapnięciem rzuca jedną kością.\n• Najwyższy rzut wygrywa rundę; przy remisie na szczycie nikt jej nie wygrywa.\n\n🏆 Wygrana\n• Po 10 rundach wygrywa ten, kto wygrał najwięcej rund!\n• Remis w wygranych? Decyduje najwyższa suma wszystkich rzutów.",
   rulesConnect4:
     "🎯 Cel\n• Połącz 4 żetony w rzędzie.\n\n🔴🟡 Jak grać\n• Dwóch graczy na zmianę wrzuca żetony.\n• Tapnij kolumnę, aby wrzucić żeton.\n• Spada na najniższe wolne miejsce.\n\n🏆 Wygrana\n• Kto pierwszy połączy 4 w rzędzie, wygrywa!\n• Liczą się: poziomo ↔, pionowo ↕, po przekątnej ↗↘",
   rulesEmojiFind:
@@ -911,7 +911,7 @@
   gameColorClashListDescription:
     "Test koncentracji — zignoruj słowo, zaufaj kolorowi",
   rulesColorClash:
-    "Pojawia się słowo koloru w losowym kolorze atramentu. Stuknij tylko gdy napisane słowo i kolor atramentu się zgadzają (np. CZERWONY napisany na czerwono). Jeśli nie — nie stukaj! 1 punkt za poprawną odpowiedź w 20 rundach.",
+    "Pojawia się słowo koloru w losowym kolorze atramentu. Stuknij tylko gdy napisane słowo i kolor atramentu się zgadzają (np. CZERWONY napisany na czerwono). Jeśli nie — nie stukaj! 20 rund, połowa z nich to zgodności: +1 za każdą poprawną odpowiedź, −1 za każdy błąd (złe stuknięcie lub przegapioną zgodność).",
   colorClashScore: "Wynik",
   colorClashHint: "Stuknij tylko gdy słowo = kolor",
   colorRed: "Czerwony",
@@ -942,7 +942,7 @@
   gameHigherLowerListDescription:
     "10 rund, czysty instynkt — zaufaj przeczuciu",
   rulesHigherLower:
-    "Pojawia się liczba między 1 a 12. Przewidź czy następna liczba będzie wyższa czy niższa i stuknij właściwy przycisk. Remis liczy się jako błąd. 1 punkt za poprawną odpowiedź w 10 rundach.",
+    "Pojawia się liczba między 1 a 12. Przewidź czy następna liczba będzie wyższa czy niższa i stuknij właściwy przycisk. Następna liczba nigdy nie jest taka sama. 1 punkt za poprawną odpowiedź w 10 rundach.",
   hlHigher: "Wyżej ↑",
   hlLower: "Niżej ↓",
   hlPrevious: "Poprzednia: {{n}}",

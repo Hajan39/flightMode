@@ -199,11 +199,14 @@ export default function SimonSaysGame() {
       } else {
         // Wrong button
         haptic.error();
-        const newLives = livesRef.current - 1;
+        const newLives = Math.max(0, livesRef.current - 1);
         livesRef.current = newLives;
         setLives(newLives);
 
         if (newLives <= 0) {
+          // Block further taps right away (the result shows after 300 ms) so
+          // lives can't go below zero or endGame be scheduled twice.
+          phaseRef.current = "done";
           // Score = sequences completed (current sequence length - 1, since this one failed)
           const completedSequences = sequenceRef.current.length - 1;
           addTimeout(() => endGame(completedSequences), 300);

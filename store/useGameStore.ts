@@ -4,7 +4,10 @@ import { persist } from "zustand/middleware";
 import type { GameProgress, GameProgressUpdate } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { trackFirstSessionCompleted } from "@/utils/firstSession";
-import { safePersistOptions } from "@/utils/persistStorage";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 
 interface UpdateOptions {
   /** Merge per-level star results for games like Stack Sort. */
@@ -165,3 +168,4 @@ export const useGameStore = create<GameState>()(
     })
   )
 );
+enablePersistRecovery(useGameStore);

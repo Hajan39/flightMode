@@ -15,11 +15,12 @@ import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 
+import { buildMatchDeck, clampScore, responseDelta } from "./logic";
+
 // ── Constants ────────────────────────────────────────────────────────────────
 const TOTAL_ROUNDS = 20;
 const ROUND_MS = 1800;
 const FEEDBACK_MS = 350;
-const MATCH_PROBABILITY = 0.4;
 
 // ── Color definitions ─────────────────────────────────────────────────────────
 interface ColorEntry {
@@ -47,9 +48,8 @@ function randomColor(): ColorEntry {
   return COLORS[Math.floor(Math.random() * COLORS.length)];
 }
 
-function generateTrial(): Trial {
+function generateTrial(isMatch: boolean): Trial {
   const wordColor = randomColor();
-  const isMatch = Math.random() < MATCH_PROBABILITY;
 
   if (isMatch) {
     return { isMatch: true, textColor: wordColor.hex, word: wordColor.key };
@@ -112,6 +112,8 @@ export default function ColorClashGame() {
   const tappedRef = useRef<boolean>(false);
   const phaseRef = useRef<Phase>("idle");
   const trialRef = useRef<Trial | null>(null);
+  // Balanced match/mismatch order for the current game (see logic.ts).
+  const deckRef = useRef<boolean[]>(buildMatchDeck(TOTAL_ROUNDS));
 
   const roundTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const feedbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -155,7 +157,7 @@ export default function ColorClashGame() {
         const nextRound = roundNum + 1;
         if (nextRound >= TOTAL_ROUNDS) {
           // Game over
-          const finalScoreVal = scoreRef.current;
+          const finalScoreVal = clampScore(scoreRef.current);
           const info = updateProgress("color-clash", finalScoreVal);
           setProgressInfo(info);
           setFinalScore(finalScoreVal);
@@ -192,7 +194,7 @@ export default function ColorClashGame() {
       }
 
       tappedRef.current = false;
-      const newTrial = generateTrial();
+      const newTrial = generateTrial(deckRef.current[roundNum] ?? false);
       trialRef.current = newTrial;
       setTrial(newTrial);
       setFeedbackKind(null);
@@ -228,16 +230,14 @@ export default function ColorClashGame() {
           return;
         }
 
-        // Player didn't tap
-        const isCorrectSkip = !currentTrial.isMatch;
-        if (isCorrectSkip) {
-          scoreRef.current += 1;
-          setScoreDisplay(scoreRef.current);
+        // Player didn't tap: +1 on a mismatch, −1 for a missed match.
+        scoreRef.current += responseDelta(currentTrial.isMatch, "skip");
+        setScoreDisplay(scoreRef.current);
+        if (currentTrial.isMatch) {
+          showFeedback("miss", roundNum);
+        } else {
           haptic.tap();
           showFeedback("skip", roundNum);
-        } else {
-          // missed a match
-          showFeedback("miss", roundNum);
         }
       }, ROUND_MS);
     },
@@ -299,6 +299,7 @@ export default function ColorClashGame() {
       }
       scoreRef.current = 0;
       roundRef.current = 0;
+      deckRef.current = buildMatchDeck(TOTAL_ROUNDS);
       setScoreDisplay(0);
       setRound(0);
       setFinalScore(null);
@@ -324,14 +325,13 @@ export default function ColorClashGame() {
       return;
     }
 
+    // +1 for tapping a match, −1 for tapping a mismatch.
+    scoreRef.current += responseDelta(currentTrial.isMatch, "tap");
+    setScoreDisplay(scoreRef.current);
     if (currentTrial.isMatch) {
-      // Correct tap
-      scoreRef.current += 1;
-      setScoreDisplay(scoreRef.current);
       haptic.success();
       showFeedback("correct", roundRef.current);
     } else {
-      // Wrong tap (mismatch)
       haptic.error();
       showFeedback("wrong", roundRef.current);
     }

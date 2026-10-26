@@ -101,10 +101,26 @@ describe("fileStorage", () => {
   });
 
   test("a complete .tmp without the real file (iOS remove→move gap) is promoted", async () => {
-    mockFiles.set(TMP, "complete");
-    expect(await fileStorage.getItem("k")).toBe("complete");
-    expect(mockFiles.get(FILE)).toBe("complete");
+    mockFiles.set(TMP, '{"state":{"n":1}}');
+    expect(await fileStorage.getItem("k")).toBe('{"state":{"n":1}}');
+    expect(mockFiles.get(FILE)).toBe('{"state":{"n":1}}');
     expect(mockFiles.has(TMP)).toBe(false);
+  });
+
+  test("a partial .tmp without the real file is discarded, not promoted", async () => {
+    mockFiles.set(TMP, '{"state":{"ite');
+    expect(await fileStorage.getItem("k")).toBeNull();
+    expect(mockFiles.has(FILE)).toBe(false);
+    expect(mockFiles.has(TMP)).toBe(false);
+  });
+
+  test("a partial .tmp falls through to the AsyncStorage migration", async () => {
+    await AsyncStorage.setItem("k", '{"state":{"legacy":true}}');
+    mockFiles.set(TMP, '{"state":{"ite');
+    expect(await fileStorage.getItem("k")).toBe('{"state":{"legacy":true}}');
+    expect(mockFiles.get(FILE)).toBe('{"state":{"legacy":true}}');
+    expect(mockFiles.has(TMP)).toBe(false);
+    expect(await AsyncStorage.getItem("k")).toBeNull();
   });
 
   test("operations on a key are serialized; a superseded write is skipped", async () => {

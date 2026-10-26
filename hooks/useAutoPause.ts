@@ -2,15 +2,21 @@ import { useEffect, useEffectEvent } from "react";
 import { AppState, type AppStateStatus } from "react-native";
 
 /**
- * True when the app just left the foreground: `active` → `background` /
- * `inactive` (iOS reports `inactive` for the app switcher, Control Centre and
- * incoming calls). Unknown / extension states never trigger a pause.
+ * True when the app just left the foreground: `active` → `inactive` (iOS
+ * reports `inactive` for the app switcher, Control Centre and incoming calls)
+ * or any non-background state → `background`. The latter also covers iOS
+ * `inactive` → `background` when the hook was enabled while `inactive` (it
+ * never saw the `active` → `inactive` step). Unknown / extension states never
+ * trigger a pause on their own.
  */
 export function leftForeground(
   prev: AppStateStatus | null | undefined,
   next: AppStateStatus
 ): boolean {
-  return prev === "active" && (next === "background" || next === "inactive");
+  if (next === "background") {
+    return prev !== "background";
+  }
+  return prev === "active" && next === "inactive";
 }
 
 /**

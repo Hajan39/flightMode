@@ -14,6 +14,7 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
+import { shuffle } from "@/utils/shuffle";
 
 interface Question {
   answer: number;
@@ -123,7 +124,7 @@ function createQuestion(
 
   return {
     answer,
-    options: Array.from(options).sort(() => Math.random() - 0.5),
+    options: shuffle(Array.from(options)),
     text,
   };
 }

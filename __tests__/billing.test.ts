@@ -171,6 +171,84 @@ describe("billing acknowledge + support_completed reporting", () => {
   });
 });
 
+describe("billing before the supporter store hydrated", () => {
+  let hydrated = false;
+  let finishListeners: (() => void)[] = [];
+  let hasHydratedSpy: jest.SpyInstance;
+  let onFinishSpy: jest.SpyInstance;
+
+  /** Simulates zustand finishing hydration: stored state merged, then listeners. */
+  const finishHydration = (stored: { plus: boolean; tips: number }) => {
+    useSupporterStore.setState(stored);
+    hydrated = true;
+    for (const listener of finishListeners) {
+      listener();
+    }
+    finishListeners = [];
+  };
+  const flush = () => new Promise((resolve) => setImmediate(resolve));
+
+  beforeEach(() => {
+    useSupporterStore.setState({ plus: false, tips: 0 });
+    mockFinishTransaction.mockClear();
+    hydrated = false;
+    finishListeners = [];
+    hasHydratedSpy = jest
+      .spyOn(useSupporterStore.persist, "hasHydrated")
+      .mockImplementation(() => hydrated);
+    onFinishSpy = jest
+      .spyOn(useSupporterStore.persist, "onFinishHydration")
+      .mockImplementation((listener) => {
+        finishListeners.push(listener as () => void);
+        return () => {
+          finishListeners = finishListeners.filter((l) => l !== listener);
+        };
+      });
+  });
+
+  afterEach(() => {
+    hasHydratedSpy.mockRestore();
+    onFinishSpy.mockRestore();
+  });
+
+  test("Plus restored before hydration is granted once hydration finished", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      { productId: "flightmode_plus", purchaseState: "purchased" },
+    ]);
+    expect(await restorePurchases()).toBe(true);
+    finishHydration({ plus: false, tips: 3 });
+    expect(useSupporterStore.getState()).toMatchObject({ plus: true, tips: 3 });
+  });
+
+  test("a tip is consumed and counted only after hydration, on top of the stored count", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      {
+        productId: "tip_small",
+        purchaseState: "purchased",
+        purchaseToken: "tok-1",
+      },
+    ]);
+    // Two restores before hydration (launch + manual): queued once.
+    await restorePurchases();
+    await restorePurchases();
+    expect(mockFinishTransaction).not.toHaveBeenCalled();
+    finishHydration({ plus: false, tips: 2 });
+    await flush();
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(1);
+    expect(useSupporterStore.getState().tips).toBe(3);
+  });
+
+  test("without hydration a tip is never consumed (it comes back on the next restore)", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      { productId: "tip_large", purchaseState: "purchased" },
+    ]);
+    await restorePurchases();
+    await flush();
+    expect(mockFinishTransaction).not.toHaveBeenCalled();
+    expect(useSupporterStore.getState().tips).toBe(0);
+  });
+});
+
 describe("review prompt gate", () => {
   const day = 24 * 60 * 60 * 1000;
   test("asks engaged users only, Later waits 30 days, done is final", () => {

@@ -12,7 +12,10 @@ import {
 } from "@/utils/contentSync";
 import { sanitizeErrorText } from "@/utils/errorLogging";
 import { fileStorage } from "@/utils/fileStorage";
-import { safePersistOptions } from "@/utils/persistStorage";
+import {
+  enablePersistRecovery,
+  safePersistOptions,
+} from "@/utils/persistStorage";
 
 const CONTENT_SYNC_MIN_INTERVAL_MS = 30 * 60 * 1000;
 /** After a failure, wait before retrying — the bootstrap effect re-runs on every status change. */
@@ -167,6 +170,7 @@ export const useContentStore = create<ContentState>()(
     })
   )
 );
+enablePersistRecovery(useContentStore);
 
 function sanitizeItems(items: unknown): ContentItem[] | null {
   return Array.isArray(items) ? items.filter(isContentItem) : null;

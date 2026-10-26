@@ -30,6 +30,7 @@ import type { MatchPlayer } from "@/hooks/useMatchPlayers";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
+import { clearIntervalRef } from "@/utils/timerRefs";
 
 import { buildTurns, type Turn, tallyScores } from "./logic";
 
@@ -59,13 +60,9 @@ export default function CategoryBlitzGame() {
   const deadlineRef = useRef<number | null>(null);
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const clearTick = () => {
-    if (tickRef.current) {
-      clearInterval(tickRef.current);
-    }
-    tickRef.current = null;
-  };
-  useEffect(() => clearTick, [clearTick]);
+  const clearTick = () => clearIntervalRef(tickRef);
+  // Unmount-only cleanup (refs only — never depend on the per-render clearTick).
+  useEffect(() => () => clearIntervalRef(tickRef), []);
 
   const turn = turns[turnIndex];
   const current = players[turn?.player ?? 0];
@@ -101,7 +98,7 @@ export default function CategoryBlitzGame() {
       const remainingMs = deadline - Date.now();
       setTimeLeft(Math.max(0, Math.ceil(remainingMs / 1000)));
       if (remainingMs <= 0) {
-        clearTick();
+        clearIntervalRef(tickRef);
         deadlineRef.current = null;
         haptic.heavy();
         setPhase("turnEnd");
@@ -109,8 +106,10 @@ export default function CategoryBlitzGame() {
     };
     tick();
     tickRef.current = setInterval(tick, 200);
-    return clearTick;
-  }, [phase, haptic, clearTick]);
+    // Refs only: depending on the per-render clearTick re-ran this effect
+    // (and recreated the interval) on every timer tick.
+    return () => clearIntervalRef(tickRef);
+  }, [phase, haptic]);
 
   const scorePoint = () => {
     if (phase !== "playing") {
