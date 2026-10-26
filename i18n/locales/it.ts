@@ -11,6 +11,10 @@
   updateAvailableMessage: "Una nuova versione è stata scaricata. Riavviare?",
   updateLater: "Più tardi",
   updateRestart: "Riavvia",
+  errorBoundaryTitle: "Qualcosa è andato storto",
+  errorBoundarySubtitle:
+    "L'app ha riscontrato un errore imprevisto. Puoi riprovare: i tuoi dati salvati sono al sicuro.",
+  errorBoundaryRetry: "Riprova",
   language: "Lingua",
   languageSystem: "Sistema",
   languageDevice: "Dispositivo: {{language}}",
@@ -189,10 +193,10 @@
   skyDefenseBuildHint: "Piazza le torri lungo il percorso, poi avvia l'ondata",
   skyDefenseStartWave: "AVVIA ONDATA {{wave}}",
   stackSortTitle: "Stack Sort",
-  stackSortIntro: "Ordina tutti i numeri in GOAL in ordine: 1 → 2 → 3 → ...",
+  stackSortIntro: "Metti tutti i numeri nella META in ordine: 1 → 2 → 3 → ...",
   stackSortRuleTop: "📌 Sposta solo il numero in cima",
   stackSortRulePlace: "✅ Posiziona su slot vuoto o su numero più grande",
-  stackSortRuleGoalLock: "🔒 Goal - i numeri si bloccano una volta posizionati",
+  stackSortRuleGoalLock: "🔒 Meta: i numeri si bloccano una volta posizionati",
   stackSortRuleChaos: "🔀 Le colonne iniziano in disordine - ordinale prima!",
   stackSortRuleUndo: "↩️ Usa Annulla se non trovi mosse",
   stackSortSelectLevel: "SCEGLI LIVELLO",
@@ -205,7 +209,7 @@
   stackSortHudMoves: "Mosse: {{moves}}",
   stackSortUndo: "↩ Annulla",
   stackSortDeadlock: "Nessuna mossa valida! Riavvia il livello",
-  stackSortGoal: "GOAL",
+  stackSortGoal: "META",
   stackSortRestart: "🔄 Riavvia",
   flightPathTitle: "Rotta di volo",
   flightPathIntro:
@@ -710,7 +714,7 @@
   achieveMarathonTitle: "Maratona",
   achieveMarathonDesc: "Gioca 50 giochi in totale",
   achieveHighScorerTitle: "Miglior punteggio",
-  achieveHighScorerDesc: "Ottieni punti in ogni gioco",
+  achieveHighScorerDesc: "Fai punti in 13 giochi diversi",
   achieveQuizAceTitle: "Asso del quiz",
   achieveQuizAceDesc: "Ottieni 100 nel quiz",
   achieveKnowItAllTitle: "Pozzo di scienza",
@@ -881,9 +885,9 @@
   settingsAppPreferencesHint: "Controlla lingua e aspetto in un solo posto.",
   settingsLanguageHint: "Scegli come viene mostrato il testo dell'app.",
   settingsThemeHint: "Cambia lo stile visivo in base all'ambiente e all'umore.",
-  settingsSync: "Sync articoli",
+  settingsSync: "Sincronizzazione online",
   settingsSyncHint:
-    "Scegli quando FlightMode può scaricare nuovi articoli di viaggio.",
+    "Scegli quando FlightMode può usare internet per articoli, immagini, tassi di cambio e statistiche anonime.",
   settingsSyncWifiOnly: "Solo Wi-Fi",
   settingsSyncWifiOnlyHint: "Consigliato. Sync solo su Wi-Fi o Ethernet.",
   settingsSyncWifiAndMobile: "Wi-Fi + dati mobili",
@@ -891,8 +895,8 @@
     "Sync ogni volta che internet è raggiungibile.",
   settingsSyncOff: "Disattivato",
   settingsSyncOffHint: "Usa solo gli articoli offline inclusi nell'app.",
-  settingsSupport: "Supporto",
-  settingsSupportHint: "Trovato un bug o hai idee? Faccelo sapere.",
+  settingsSupport: "Ti piace FlightMode?",
+  settingsSupportHint: "Sostieni lo sviluppo",
   settingsReportBug: "Segnala un bug",
   settingsReportBugHint: "Apre l'app di posta",
   settingsSuggestFeature: "Suggerisci una funzione",
@@ -903,7 +907,7 @@
   settingsPrivacy: "Privacy",
   settingsAnalyticsLabel: "Analisi anonima",
   settingsAnalyticsHint:
-    "Aiuta a migliorare FlightMode con dati d'uso anonimi. Nessuna informazione personale viene raccolta.",
+    "Aiuta a migliorare FlightMode con dati di utilizzo anonimi (nessuna informazione personale). Inviati solo sulle reti consentite dalla Sincronizzazione online.",
   // Games
   gamesEmptyTitle: "Nessun gioco trovato",
   gamesEmptyHint: "Prova un'altra ricerca o rimuovi il filtro.",
@@ -988,7 +992,7 @@
   gameWordGuessDescription:
     "Indovina la parola aviazione nascosta in 6 tentativi.",
   rulesWordGuess:
-    "Indovina la parola di aviazione di 5 lettere in 6 tentativi. Dopo ogni tentativo le tessere si colorano: verde = posto giusto, giallo = posto sbagliato, grigio = lettera assente.",
+    "🎯 Obiettivo\n• Indovina la parola nascosta di 5 lettere in massimo 6 tentativi.\n\n🟩 Come si gioca\n• Scrivi una parola di 5 lettere e inviala.\n• Verde = lettera giusta al posto giusto.\n• Giallo = la lettera c'è, ma in un altro posto.\n• Grigio = la lettera non c'è.\n\n⭐ Punteggio\n• Punteggio = 1000 − (tentativi − 1) × 150\n• Meno tentativi = punteggio più alto!",
   wgGuess: "Tentativo",
   wgAttemptsLeft: "Tentativi rimasti: {{count}}",
   wgNotInWordList: "Parola non nella lista",
@@ -1001,7 +1005,7 @@
   gameSudokuDescription:
     "Sudoku classico 9×9 per i momenti tranquilli a bordo.",
   rulesSudoku:
-    "Riempi la griglia 9×9 in modo che ogni riga, colonna e quadrato 3×3 contenga i numeri da 1 a 9 esattamente una volta. Tocca una cella per selezionarla, poi inserisci un numero.",
+    "🎯 Obiettivo\n• Riempi ogni riga, colonna e riquadro 3×3 con le cifre da 1 a 9.\n\n🔢 Come si gioca\n• Tocca una cella per selezionarla, poi tocca un numero.\n• Le celle grigie sono indizi fissi e non si possono cambiare.\n• I numeri rossi indicano un conflitto.\n• Un suggerimento rivela una cella corretta (3 suggerimenti per partita).\n\n⭐ Punteggio\n• Punteggio = max(500, 5000 − secondi×8 − suggerimenti×200)\n• Risolvi in fretta e con pochi suggerimenti!",
   sdkHints: "Suggerimenti",
   sdkHintsLeft: "Suggerimenti: {{count}}",
   sdkTime: "Tempo",
@@ -1018,7 +1022,7 @@
   gameSnakeDescription:
     "Controlla il serpente e raccogli cibo – un classico per il volo.",
   rulesSnake:
-    "Scorri per controllare il serpente. Raccogli cibo per crescere e fare punti. Evita muri e il tuo stesso corpo. Quanto durerai?",
+    "🎯 Obiettivo\n• Mangia più cibo possibile senza colpire un muro o te stesso!\n\n🐍 Come si gioca\n• Guida il serpente con la croce direzionale o scorrendo il dito.\n• Ogni boccone allunga il serpente di una casella.\n• Colpire un muro o il tuo corpo termina la partita.\n\n⭐ Punteggio\n• Punteggio = mele mangiate.\n• Più cresci, più aumenta la velocità!",
   snkScore: "Punteggio",
   snkHighScore: "Punteggio più alto",
   snkGameOver: "Fine partita",
@@ -1027,19 +1031,20 @@
 
   // Achievements
   achieveWordSolverTitle: "Risolutore di parole",
-  achieveWordSolverDesc: "Risolvi 3 enigmi di parole",
+  achieveWordSolverDesc: "Vinci la tua prima partita a Indovina la parola",
   achieveWordMasterTitle: "Maestro delle parole",
-  achieveWordMasterDesc: "Risolvi 10 enigmi di parole",
+  achieveWordMasterDesc: "Indovina la parola in 3 tentativi o meno",
   achieveSudokuNoviceTitle: "Principiante di sudoku",
   achieveSudokuNoviceDesc: "Completa 1 partita di sudoku",
   achieveSudokuMasterTitle: "Maestro del sudoku",
-  achieveSudokuMasterDesc: "Completa 5 partite di sudoku",
+  achieveSudokuMasterDesc: "Risolvi un sudoku difficile senza suggerimenti",
   achieveSnakeCharmerTitle: "Incantatore di serpenti",
-  achieveSnakeCharmerDesc: "Raggiungi 10 punti nel serpente",
+  achieveSnakeCharmerDesc: "Fai 20 punti o più a Serpente",
 
   // UX
   homeArticlesEmpty: "Nessun articolo da visualizzare",
-  homeArticlesEmptyHint: "Prova a cambiare il filtro o torna più tardi.",
+  homeArticlesEmptyHint:
+    "Vai su Esplora per salvare contenuti da leggere offline",
   gamesFilteredEmpty: "Nessun gioco corrisponde al filtro",
   gamesClearFilters: "Rimuovi filtri",
   // A11y — D-pad move labels
@@ -1097,7 +1102,7 @@
   spSolved: "Risolto!",
   achievePuzzleSliderTitle: "Maestro dello scorrimento",
   achievePuzzleSliderDesc:
-    "Risolvi il rompicapo scorrevole con un punteggio di 2000 o più.",
+    "Risolvi il rompicapo scorrevole con un punteggio di 1500 o più.",
   // Cargo Catch game
   gameCargoCatchName: "Acchiappa carico",
   gameCargoCatchDescription:
@@ -1178,6 +1183,7 @@
   a11yRowCol: "Riga {{row}}, colonna {{col}}",
   rjamA11yPlane: "Aereo",
   rjamA11yVehicle: "Veicolo {{id}}",
+  rjamA11yExit: "Uscita",
   sunMoonSun: "Sole",
   sunMoonMoon: "Luna",
   sunMoonEmpty: "Vuoto",
@@ -1328,6 +1334,8 @@
   mpTiebreakHint: "Parità di vittorie? Decidono i punti totali.",
   a11yDropInColumn: "Inserisci nella colonna {{col}}",
   a11yBackspace: "Cancella",
+  a11yGameRules: "Regole del gioco",
+  a11yCloseRules: "Chiudi regole",
   a11yDecreaseQty: "Diminuisci quantità",
   a11yIncreaseQty: "Aumenta quantità",
   a11yDieFace: "Faccia {{n}}",
@@ -1443,11 +1451,11 @@
   achieveUndefeatedHostTitle: "Padrone di casa imbattuto",
   achieveUndefeatedHostDesc: "Vinci 3 partite di fila in un gioco multiplayer",
   rulesSplitDuel:
-    "🎯 Goal\n• First to 3 round wins (max 5 rounds).\n\n📱 Setup\n• Lay the phone flat between you. The top half faces your opponent.\n\n⚡ Rounds\n• Both see the same challenge at the same time.\n• Tap when the disc shows the named color, find the odd icon, solve the sum, or tap when the pane turns green — first correct tap wins.\n• Tapping too early or wrong = you lose the round.\n• Hold & Release: hold your button and let go as close to the target time as you can.",
+    "🎯 Obiettivo\n• Vince chi conquista per primo 3 round (max 5 round).\n\n📱 Preparazione\n• Appoggiate il telefono in piano tra di voi. La metà superiore è rivolta all'avversario.\n\n⚡ Round\n• Entrambi vedete la stessa sfida nello stesso momento.\n• Tocca quando il disco mostra il colore indicato, trova l'icona diversa, risolvi la somma o tocca quando il pannello diventa verde: vince il primo tocco corretto.\n• Tocco troppo presto o sbagliato = round perso.\n• Tieni e rilascia: tieni premuto il tuo pulsante e rilascialo il più vicino possibile al tempo indicato.",
   rulesSeatNeighbor:
-    "🎯 Goal\n• Score as many Sync points as you can together in 8 rounds.\n\n🧠 Mind Meld (5 rounds)\n• One of you guesses how the other would answer a travel question, then the phone is passed and the other answers for real.\n• Same answer = +1 Sync.\n\n🤔 Would You Rather (3 rounds)\n• Both pick privately. Matching picks = +1 Sync.\n\n💞 Result\n• 0–2 Strangers · 3–4 Seatmates · 5–6 Travel Buddies · 7–8 Soulmates",
+    "🎯 Obiettivo\n• Fate insieme più punti Sync possibile in 8 round.\n\n🧠 Mind Meld (5 round)\n• Uno di voi indovina come risponderebbe l'altro a una domanda di viaggio, poi si passa il telefono e l'altro risponde davvero.\n• Stessa risposta = +1 Sync.\n\n🤔 Preferiresti (3 round)\n• Scegliete entrambi in segreto. Scelte uguali = +1 Sync.\n\n💞 Risultato\n• 0–2 Sconosciuti · 3–4 Vicini di posto · 5–6 Compagni di viaggio · 7–8 Anime gemelle",
   rulesEmojiStory:
-    "📖 Story\n• The app opens with a travel scene. The story has 3 acts: Departure, Turbulence, Landing.\n\n✍️ Your turn\n• Pick a connector word (Then, But, Suddenly…) and 1–2 emoji from your hand of 6.\n• Pass the phone to the next storyteller.\n\n🗳️ Voting\n• After every act, each player secretly votes for the contribution they liked most (never their own). Each vote = 1 point.\n• Story-only mode skips voting — just read your masterpiece aloud at the end.\n\n🏆 Most votes after 3 acts wins.",
+    "📖 Storia\n• L'app parte con una scena di viaggio. La storia ha 3 atti: Partenza, Turbolenza, Atterraggio.\n\n✍️ Il tuo turno\n• Scegli una parola di collegamento (Poi, Ma, All'improvviso…) e 1–2 emoji dalla tua mano di 6.\n• Passa il telefono al prossimo narratore.\n\n🗳️ Votazione\n• Dopo ogni atto, ogni giocatore vota in segreto il contributo che gli è piaciuto di più (mai il proprio). Ogni voto = 1 punto.\n• La modalità Solo storia salta il voto: alla fine leggete il vostro capolavoro ad alta voce.\n\n🏆 Vince chi ha più voti dopo 3 atti.",
   converterRatesLive: "Tassi aggiornati · {{date}}",
   converterRatesRefresh: "Aggiorna i tassi ora",
   converterRatesUpdating: "Aggiornamento…",
@@ -1488,7 +1496,7 @@
   gameCategoryBlitzDescription:
     "Dine il più possibile in 20 secondi: gli altri controllano",
   rulesCategoryBlitz:
-    "🎯 Goal\n• Score the most answers across 3 turns.\n\n⏱️ Your turn\n• You get a category and 20 seconds.\n• Say answers out loud; tap the big button once for each one the others accept.\n• Tapped by mistake? Use Undo.\n\n👥 Everyone else\n• You are the judge: no repeats, no nonsense.\n\n🏆 Most answers after 3 rounds wins.",
+    "🎯 Obiettivo\n• Totalizza più risposte di tutti in 3 turni.\n\n⏱️ Il tuo turno\n• Ricevi una categoria e 20 secondi.\n• Di' le risposte ad alta voce; tocca il pulsante grande una volta per ogni risposta accettata dagli altri.\n• Toccato per sbaglio? Usa Annulla.\n\n👥 Tutti gli altri\n• Siete la giuria: niente ripetizioni, niente sciocchezze.\n\n🏆 Vince chi ha più risposte dopo 3 round.",
   cbzIntro:
     "Un telefono, {{seconds}} secondi a testa. Rispondi ad alta voce: gli altri giudicano.",
   cbzNameAsMany: "Dine il più possibile",
@@ -1548,7 +1556,7 @@
   gameTiltBalanceDescription:
     "Tieni il telefono piatto e la pallina nel cerchio — raffiche incluse",
   rulesTiltBalance:
-    "🎯 Goal\n• Keep the ball inside the ring as long as you can.\n\n📱 How to play\n• Hold the phone flat in your hand, screen up.\n• Tilt gently to steer the ball — small movements work best.\n• The ring shrinks the longer you survive, and turbulence gusts push the ball at random.\n• The turn ends when the ball rolls off the plate.\n\n🏆 Scoring\n• 1 point per second survived, plus a bonus for your longest unbroken stretch inside the ring.\n• 1 player: beat your own best. 2–6 players: one turn each, highest score wins.",
+    "🎯 Obiettivo\n• Tieni la pallina dentro l'anello il più a lungo possibile.\n\n📱 Come si gioca\n• Tieni il telefono in piano nella mano, schermo verso l'alto.\n• Inclinalo dolcemente per guidare la pallina: i piccoli movimenti funzionano meglio.\n• Più resisti, più l'anello si restringe, e le raffiche di turbolenza spingono la pallina a caso.\n• Il turno finisce quando la pallina esce dal piatto.\n\n🏆 Punteggio\n• 1 punto per ogni secondo resistito, più un bonus per il tuo tratto più lungo senza uscire dall'anello.\n• 1 giocatore: batti il tuo record. 2–6 giocatori: un turno a testa, vince il punteggio più alto.",
   tbIntro: "Tieni il telefono piatto sul palmo: niente scossoni, niente lanci.",
   tbHoldFlat: "Tieni il telefono piatto, schermo in alto",
   tbHint: "Inclinazioni piccole. Quelle grandi la fanno volare via.",
@@ -1561,7 +1569,7 @@
   achieveSteadyHandsDesc: "Ottieni 40 punti nel Test di turbolenza",
   reviewAskTitle: "Valuti FlightMode?",
   reviewAskBody:
-    "Se l'app ti piace, lascia qualche parola su Google Play. Aiuta altri viaggiatori a trovarla.",
+    "Racconta agli altri viaggiatori su Google Play cosa pensi di FlightMode.",
   reviewAskRate: "Valuta",
   reviewAskLater: "Più tardi",
   reviewAskNever: "No, grazie",

@@ -12,6 +12,10 @@
     "새 버전이 다운로드되었습니다. 다시 시작하시겠습니까?",
   updateLater: "나중에",
   updateRestart: "다시 시작",
+  errorBoundaryTitle: "문제가 발생했습니다",
+  errorBoundarySubtitle:
+    "앱에 예기치 않은 오류가 발생했습니다. 다시 시도해 보세요. 저장된 데이터는 안전합니다.",
+  errorBoundaryRetry: "다시 시도",
   language: "언어",
   languageSystem: "시스템",
   languageDevice: "기기: {{language}}",
@@ -185,10 +189,10 @@
   skyDefenseBuildHint: "경로 옆에 타워를 세운 뒤 웨이브를 시작하세요",
   skyDefenseStartWave: "웨이브 {{wave}} 시작",
   stackSortTitle: "스택 정렬",
-  stackSortIntro: "모든 숫자를 순서대로 GOAL에 정렬하세요: 1 → 2 → 3 → ...",
+  stackSortIntro: "모든 숫자를 순서대로 목표에 넣으세요: 1 → 2 → 3 → ...",
   stackSortRuleTop: "📌 맨 위 숫자만 이동 가능",
   stackSortRulePlace: "✅ 빈 곳이나 더 큰 숫자 위에 놓기",
-  stackSortRuleGoalLock: "🔒 Goal - 숫자는 놓으면 잠김",
+  stackSortRuleGoalLock: "🔒 목표: 숫자는 놓으면 잠김",
   stackSortRuleChaos: "🔀 열은 섞여서 시작 - 먼저 정리하세요!",
   stackSortRuleUndo: "↩️ 막히면 실행 취소 사용",
   stackSortSelectLevel: "레벨 선택",
@@ -201,7 +205,7 @@
   stackSortHudMoves: "이동: {{moves}}",
   stackSortUndo: "↩ 실행 취소",
   stackSortDeadlock: "유효한 이동 없음! 레벨 다시 시작",
-  stackSortGoal: "GOAL",
+  stackSortGoal: "목표",
   stackSortRestart: "🔄 다시 시작",
   flightPathTitle: "비행 경로",
   flightPathIntro:
@@ -691,7 +695,7 @@
   achieveMarathonTitle: "마라톤",
   achieveMarathonDesc: "총 50회 플레이",
   achieveHighScorerTitle: "하이스코어러",
-  achieveHighScorerDesc: "모든 게임에서 점수 획득",
+  achieveHighScorerDesc: "서로 다른 13개 게임에서 점수 획득",
   achieveQuizAceTitle: "퀴즈 에이스",
   achieveQuizAceDesc: "퀴즈에서 100점 획득",
   achieveKnowItAllTitle: "만물박사",
@@ -853,16 +857,17 @@
   settingsAppPreferencesHint: "언어와 표시 방식을 한곳에서 관리하세요.",
   settingsLanguageHint: "앱 텍스트 표시 방식을 선택하세요.",
   settingsThemeHint: "환경과 기분에 맞게 시각 스타일을 바꾸세요.",
-  settingsSync: "기사 동기화",
-  settingsSyncHint: "FlightMode가 새 여행 기사를 다운로드할 시점을 선택하세요.",
+  settingsSync: "온라인 동기화",
+  settingsSyncHint:
+    "FlightMode가 글, 이미지, 환율, 익명 통계를 위해 인터넷을 사용할 수 있는 때를 선택하세요.",
   settingsSyncWifiOnly: "Wi-Fi만",
   settingsSyncWifiOnlyHint: "권장. Wi-Fi 또는 Ethernet에서만 동기화합니다.",
   settingsSyncWifiAndMobile: "Wi-Fi + 모바일 데이터",
   settingsSyncWifiAndMobileHint: "인터넷을 사용할 수 있을 때마다 동기화합니다.",
   settingsSyncOff: "끄기",
   settingsSyncOffHint: "앱에 포함된 오프라인 기사만 사용합니다.",
-  settingsSupport: "지원",
-  settingsSupportHint: "버그를 발견했거나 의견이 있으신가요? 알려주세요.",
+  settingsSupport: "FlightMode가 마음에 드세요?",
+  settingsSupportHint: "개발 응원하기",
   settingsReportBug: "버그 신고",
   settingsReportBugHint: "메일 앱을 엽니다",
   settingsSuggestFeature: "기능 제안",
@@ -873,7 +878,7 @@
   settingsPrivacy: "개인정보",
   settingsAnalyticsLabel: "익명 사용 통계",
   settingsAnalyticsHint:
-    "익명 사용 데이터로 FlightMode 개선에 도움을 주세요. 개인 정보는 수집되지 않습니다.",
+    "익명 사용 데이터로 FlightMode 개선에 도움을 주세요(개인 정보 없음). 온라인 동기화에서 허용한 네트워크에서만 전송됩니다.",
   // Games
   gamesEmptyTitle: "게임을 찾을 수 없습니다",
   gamesEmptyHint: "다른 검색어를 입력하거나 필터를 제거해 보세요.",
@@ -954,7 +959,7 @@
   gameWordGuessName: "단어 맞추기",
   gameWordGuessDescription: "6번의 시도로 숨겨진 항공 단어를 맞혀보세요.",
   rulesWordGuess:
-    "6번의 시도로 5글자 항공 단어를 맞혀보세요. 시도할 때마다 타일이 색으로 바뀝니다: 초록 = 정확한 위치, 노랑 = 다른 위치, 회색 = 없는 글자.",
+    "🎯 목표\n• 숨겨진 5글자 단어를 6번 안에 맞히세요.\n\n🟩 플레이 방법\n• 5글자 단어를 입력하고 제출하세요.\n• 초록 = 글자와 위치 모두 정답.\n• 노랑 = 단어에 있지만 위치가 다름.\n• 회색 = 단어에 없는 글자.\n\n⭐ 점수\n• 점수 = 1000 − (시도 횟수 − 1) × 150\n• 적게 시도할수록 높은 점수!",
   wgGuess: "시도",
   wgAttemptsLeft: "남은 시도: {{count}}",
   wgNotInWordList: "단어 목록에 없는 단어입니다",
@@ -966,7 +971,7 @@
   gameSudokuName: "스도쿠",
   gameSudokuDescription: "비행 중 여유로운 시간을 위한 클래식 9×9 스도쿠.",
   rulesSudoku:
-    "9×9 격자를 채워 각 행, 열, 3×3 사각형에 1~9가 정확히 한 번씩 들어가도록 하세요. 셀을 탭해 선택한 후 숫자를 입력하세요.",
+    "🎯 목표\n• 모든 행, 열, 3×3 상자를 1~9 숫자로 채우세요.\n\n🔢 플레이 방법\n• 칸을 탭해 선택한 뒤 숫자를 탭하세요.\n• 회색 칸은 미리 채워진 단서로, 바꿀 수 없습니다.\n• 빨간 숫자는 충돌을 뜻합니다.\n• 힌트를 쓰면 정답 칸 하나가 공개됩니다(게임당 3회).\n\n⭐ 점수\n• 점수 = max(500, 5000 − 초×8 − 힌트 사용×200)\n• 힌트를 적게 쓰고 빨리 푸세요!",
   sdkHints: "힌트",
   sdkHintsLeft: "힌트: {{count}}",
   sdkTime: "시간",
@@ -982,7 +987,7 @@
   gameSnakeName: "뱀 게임",
   gameSnakeDescription: "뱀을 조종해 먹이를 먹어보세요 – 비행의 클래식.",
   rulesSnake:
-    "스와이프로 뱀을 조종하세요. 먹이를 먹어 성장하고 점수를 쌓으세요. 벽과 자신의 몸에 닿지 마세요. 얼마나 오래 버틸 수 있나요?",
+    "🎯 목표\n• 벽이나 자기 몸에 부딪히지 않고 최대한 많이 먹으세요!\n\n🐍 플레이 방법\n• 방향 패드나 스와이프로 뱀을 조종하세요.\n• 먹이를 하나 먹을 때마다 뱀이 한 칸 길어집니다.\n• 벽이나 자기 몸에 부딪히면 게임이 끝납니다.\n\n⭐ 점수\n• 점수 = 먹은 사과 수.\n• 길어질수록 속도가 빨라집니다!",
   snkScore: "점수",
   snkHighScore: "최고 점수",
   snkGameOver: "게임 오버",
@@ -991,19 +996,19 @@
 
   // Achievements
   achieveWordSolverTitle: "단어 해결사",
-  achieveWordSolverDesc: "단어 퍼즐 3개 풀기",
+  achieveWordSolverDesc: "단어 맞추기 첫 승리",
   achieveWordMasterTitle: "단어 마스터",
-  achieveWordMasterDesc: "단어 퍼즐 10개 풀기",
+  achieveWordMasterDesc: "3번 이내의 시도로 단어 맞히기",
   achieveSudokuNoviceTitle: "스도쿠 초보",
   achieveSudokuNoviceDesc: "스도쿠 1게임 완료",
   achieveSudokuMasterTitle: "스도쿠 마스터",
-  achieveSudokuMasterDesc: "스도쿠 5게임 완료",
+  achieveSudokuMasterDesc: "힌트 없이 어려움 스도쿠 풀기",
   achieveSnakeCharmerTitle: "뱀 조련사",
-  achieveSnakeCharmerDesc: "뱀 게임에서 10점 달성",
+  achieveSnakeCharmerDesc: "뱀 게임에서 20점 이상 달성",
 
   // UX
   homeArticlesEmpty: "표시할 기사가 없습니다",
-  homeArticlesEmptyHint: "필터를 변경하거나 나중에 다시 확인하세요.",
+  homeArticlesEmptyHint: "탐색에서 콘텐츠를 저장해 오프라인으로 읽어 보세요",
   gamesFilteredEmpty: "필터와 일치하는 게임이 없습니다",
   gamesClearFilters: "필터 초기화",
   // A11y — D-pad move labels
@@ -1060,7 +1065,7 @@
   spTime: "시간",
   spSolved: "완성!",
   achievePuzzleSliderTitle: "슬라이드 마스터",
-  achievePuzzleSliderDesc: "슬라이딩 퍼즐을 2000점 이상으로 완성하세요.",
+  achievePuzzleSliderDesc: "슬라이딩 퍼즐을 1500점 이상으로 완성하세요.",
   // Cargo Catch game
   gameCargoCatchName: "카고 캐치",
   gameCargoCatchDescription:
@@ -1137,6 +1142,7 @@
   a11yRowCol: "{{row}}행 {{col}}열",
   rjamA11yPlane: "비행기",
   rjamA11yVehicle: "차량 {{id}}",
+  rjamA11yExit: "출구",
   sunMoonSun: "해",
   sunMoonMoon: "달",
   sunMoonEmpty: "빈칸",
@@ -1283,6 +1289,8 @@
   mpTiebreakHint: "승수가 같으면 총점으로 결정.",
   a11yDropInColumn: "{{col}}열에 놓기",
   a11yBackspace: "지우기",
+  a11yGameRules: "게임 규칙",
+  a11yCloseRules: "규칙 닫기",
   a11yDecreaseQty: "수량 줄이기",
   a11yIncreaseQty: "수량 늘리기",
   a11yDieFace: "{{n}} 면",
@@ -1388,11 +1396,11 @@
   achieveUndefeatedHostTitle: "무패 호스트",
   achieveUndefeatedHostDesc: "멀티플레이어 게임에서 3연승",
   rulesSplitDuel:
-    "🎯 Goal\n• First to 3 round wins (max 5 rounds).\n\n📱 Setup\n• Lay the phone flat between you. The top half faces your opponent.\n\n⚡ Rounds\n• Both see the same challenge at the same time.\n• Tap when the disc shows the named color, find the odd icon, solve the sum, or tap when the pane turns green — first correct tap wins.\n• Tapping too early or wrong = you lose the round.\n• Hold & Release: hold your button and let go as close to the target time as you can.",
+    "🎯 목표\n• 먼저 3라운드를 이기는 사람이 승리(최대 5라운드).\n\n📱 준비\n• 휴대폰을 두 사람 사이에 평평하게 놓으세요. 위쪽 절반은 상대를 향합니다.\n\n⚡ 라운드\n• 두 사람에게 같은 도전이 동시에 나타납니다.\n• 원이 지정된 색이 되면 탭하기, 다른 아이콘 찾기, 덧셈 풀기, 패널이 초록색이 되면 탭하기 — 먼저 정확히 탭한 사람이 이깁니다.\n• 너무 빨리 또는 잘못 탭하면 = 라운드 패배.\n• 누르고 떼기: 버튼을 누르고 있다가 목표 시간에 최대한 가깝게 떼세요.",
   rulesSeatNeighbor:
-    "🎯 Goal\n• Score as many Sync points as you can together in 8 rounds.\n\n🧠 Mind Meld (5 rounds)\n• One of you guesses how the other would answer a travel question, then the phone is passed and the other answers for real.\n• Same answer = +1 Sync.\n\n🤔 Would You Rather (3 rounds)\n• Both pick privately. Matching picks = +1 Sync.\n\n💞 Result\n• 0–2 Strangers · 3–4 Seatmates · 5–6 Travel Buddies · 7–8 Soulmates",
+    "🎯 목표\n• 8라운드 동안 함께 최대한 많은 Sync 점수를 모으세요.\n\n🧠 마인드 멜드 (5라운드)\n• 한 사람이 상대가 여행 질문에 어떻게 답할지 추측하고, 휴대폰을 넘기면 상대가 진짜로 답합니다.\n• 같은 답 = +1 Sync.\n\n🤔 어느 쪽을 택할래요 (3라운드)\n• 둘 다 몰래 고릅니다. 선택이 같으면 = +1 Sync.\n\n💞 결과\n• 0–2 낯선 사람들 · 3–4 옆자리 친구 · 5–6 여행 단짝 · 7–8 소울메이트",
   rulesEmojiStory:
-    "📖 Story\n• The app opens with a travel scene. The story has 3 acts: Departure, Turbulence, Landing.\n\n✍️ Your turn\n• Pick a connector word (Then, But, Suddenly…) and 1–2 emoji from your hand of 6.\n• Pass the phone to the next storyteller.\n\n🗳️ Voting\n• After every act, each player secretly votes for the contribution they liked most (never their own). Each vote = 1 point.\n• Story-only mode skips voting — just read your masterpiece aloud at the end.\n\n🏆 Most votes after 3 acts wins.",
+    "📖 이야기\n• 앱이 여행 장면으로 이야기를 시작합니다. 이야기는 3막: 출발, 난기류, 착륙.\n\n✍️ 내 차례\n• 연결어(그리고, 하지만, 갑자기…) 하나와 손패 6개 중 이모지 1–2개를 고르세요.\n• 휴대폰을 다음 이야기꾼에게 넘기세요.\n\n🗳️ 투표\n• 각 막이 끝나면 모두 가장 마음에 든 기여에 몰래 투표합니다(자기 것은 불가). 1표 = 1점.\n• 이야기만 모드는 투표를 건너뜁니다 — 마지막에 걸작을 소리 내어 읽어 보세요.\n\n🏆 3막 후 가장 많은 표를 받은 사람이 승리.",
   converterRatesLive: "실시간 환율 · 업데이트 {{date}}",
   converterRatesRefresh: "지금 환율 업데이트",
   converterRatesUpdating: "업데이트 중…",
@@ -1429,7 +1437,7 @@
   gameCategoryBlitzName: "카테고리 블리츠",
   gameCategoryBlitzDescription: "20초 안에 최대한 많이 말하기 — 나머지가 심판",
   rulesCategoryBlitz:
-    "🎯 Goal\n• Score the most answers across 3 turns.\n\n⏱️ Your turn\n• You get a category and 20 seconds.\n• Say answers out loud; tap the big button once for each one the others accept.\n• Tapped by mistake? Use Undo.\n\n👥 Everyone else\n• You are the judge: no repeats, no nonsense.\n\n🏆 Most answers after 3 rounds wins.",
+    "🎯 목표\n• 3번의 차례 동안 가장 많은 답을 맞히세요.\n\n⏱️ 내 차례\n• 카테고리 하나와 20초가 주어집니다.\n• 답을 소리 내어 말하고, 다른 사람들이 인정한 답마다 큰 버튼을 한 번 탭하세요.\n• 실수로 탭했나요? 취소를 누르세요.\n\n👥 나머지 모두\n• 여러분이 심판입니다: 중복도, 엉터리도 안 됩니다.\n\n🏆 3라운드 후 가장 많은 답을 낸 사람이 승리.",
   cbzIntro: "폰 하나, 각자 {{seconds}}초. 소리 내어 답하고 나머지가 판정.",
   cbzNameAsMany: "최대한 많이 말하기",
   cbzCountIt: "인정",
@@ -1487,7 +1495,7 @@
   gameTiltBalanceDescription:
     "폰을 수평으로 들고 공을 원 안에 유지하세요 — 돌풍 포함",
   rulesTiltBalance:
-    "🎯 Goal\n• Keep the ball inside the ring as long as you can.\n\n📱 How to play\n• Hold the phone flat in your hand, screen up.\n• Tilt gently to steer the ball — small movements work best.\n• The ring shrinks the longer you survive, and turbulence gusts push the ball at random.\n• The turn ends when the ball rolls off the plate.\n\n🏆 Scoring\n• 1 point per second survived, plus a bonus for your longest unbroken stretch inside the ring.\n• 1 player: beat your own best. 2–6 players: one turn each, highest score wins.",
+    "🎯 목표\n• 공을 최대한 오래 링 안에 두세요.\n\n📱 플레이 방법\n• 휴대폰을 화면이 위로 오게 손에 평평하게 드세요.\n• 살짝 기울여 공을 조종하세요 — 작은 움직임이 가장 좋습니다.\n• 오래 버틸수록 링이 작아지고, 난기류 돌풍이 공을 무작위로 밀어냅니다.\n• 공이 판에서 굴러 떨어지면 차례가 끝납니다.\n\n🏆 점수\n• 버틴 1초마다 1점, 그리고 링 안에서 가장 오래 연속으로 버틴 구간에 보너스.\n• 1인: 자신의 최고 기록을 깨세요. 2–6인: 각자 한 번씩, 최고 점수가 승리.",
   tbIntro: "폰을 손바닥 위에 수평으로 — 흔들거나 던지지 마세요.",
   tbHoldFlat: "화면이 위로 오도록 수평으로 드세요",
   tbHint: "살짝만 기울이세요. 크게 기울이면 날아갑니다.",
@@ -1500,7 +1508,7 @@
   achieveSteadyHandsDesc: "난기류 테스트에서 40점",
   reviewAskTitle: "FlightMode를 평가해 주시겠어요?",
   reviewAskBody:
-    "앱이 마음에 드셨다면 Google Play에 몇 마디 남겨 주세요. 다른 여행자가 앱을 찾는 데 도움이 됩니다.",
+    "Google Play에서 다른 여행자들에게 FlightMode에 대한 생각을 들려주세요.",
   reviewAskRate: "평가하기",
   reviewAskLater: "나중에",
   reviewAskNever: "괜찮아요",

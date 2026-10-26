@@ -9,6 +9,7 @@ import {
   fetchSyncedContent,
   hasContentSyncEndpoint,
 } from "@/utils/contentSync";
+import { sanitizeErrorText } from "@/utils/errorLogging";
 import { fileStorage } from "@/utils/fileStorage";
 
 const CONTENT_SYNC_MIN_INTERVAL_MS = 30 * 60 * 1000;
@@ -111,7 +112,10 @@ export const useContentStore = create<ContentState>()(
               : "Unknown content sync error";
           lastFailureAt = Date.now();
           set({ lastError: message, status: "error" });
-          captureAnalyticsEvent("content_sync_failed", { reason: message });
+          captureAnalyticsEvent("content_sync_failed", {
+            error_name: error instanceof Error ? error.name : "unknown",
+            reason: sanitizeErrorText(message),
+          });
         }
       },
       version: null,

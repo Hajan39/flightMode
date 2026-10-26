@@ -8,6 +8,7 @@ import {
   getLevel,
   index,
   KINDS,
+  LEVEL_COUNT,
   playSwap,
   type Rng,
   SIZE,
@@ -245,5 +246,22 @@ describe("sky-match levels", () => {
     };
     expect(passRate(1)).toBeGreaterThanOrEqual(0.9);
     expect(passRate(30)).toBeLessThan(0.9);
+  });
+
+  test("every level is passable by the greedy player on some seed", () => {
+    const maxSeeds = 12;
+    const unpassable: number[] = [];
+    for (let levelId = 1; levelId <= LEVEL_COUNT; levelId += 1) {
+      const { target } = getLevel(levelId);
+      let passed = false;
+      // Stop at the first passing seed — keeps the sweep fast.
+      for (let seed = 1; seed <= maxSeeds && !passed; seed += 1) {
+        passed = playLevel(levelId, seed) >= target;
+      }
+      if (!passed) {
+        unpassable.push(levelId);
+      }
+    }
+    expect(unpassable).toEqual([]);
   });
 });

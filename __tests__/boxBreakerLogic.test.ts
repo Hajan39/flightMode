@@ -8,6 +8,7 @@ import {
   brickIndex,
   COLS,
   FIELD_H,
+  FIELD_W,
   isCleared,
   LEVELS,
   launch,
@@ -260,7 +261,12 @@ describe("box breaker physics", () => {
             i >= 0 &&
             i < s.bricks.length &&
             s.bricks[i] !== 0;
-          tunnelled ||= inBrick || b.x < BALL_R - 1e-9 || b.y > FIELD_H + 1;
+          const outOfField =
+            b.x < BALL_R - 1e-9 || // left wall
+            b.x > FIELD_W - BALL_R + 1e-9 || // right wall
+            b.y < BALL_R - 1e-9 || // top wall
+            b.y > FIELD_H + 1; // bottom (lost balls are removed)
+          tunnelled ||= inBrick || outOfField;
         }
       }
       expect(tunnelled).toBe(false);

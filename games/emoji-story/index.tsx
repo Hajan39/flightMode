@@ -39,6 +39,7 @@ import {
   ACTS,
   type Contribution,
   drawHand,
+  emojiStoryRecord,
   MAX_TILES_PER_TURN,
   tallyVotes,
   turnSequence,
@@ -186,22 +187,12 @@ export default function EmojiStoryGame() {
 
   const finish = () => {
     haptic.tap();
-    if (storyOnly === "story") {
-      setProgress(
-        updateProgress(
-          GAME_ID,
-          contributions.reduce((n, c) => n + c.tiles.length, 0),
-          { won: true }
-        )
-      );
-    } else {
-      setProgress(
-        recordMatch(
-          GAME_ID,
-          scores.map((score) => ({ score }))
-        )
-      );
-    }
+    const record = emojiStoryRecord(storyOnly, scores);
+    setProgress(
+      record.kind === "story"
+        ? updateProgress(GAME_ID, record.score, { won: record.won })
+        : recordMatch(GAME_ID, record.standings)
+    );
     setPhase("done");
   };
 
@@ -507,7 +498,8 @@ export default function EmojiStoryGame() {
           cooperative={storyOnly === "story"}
           onChangePlayers={() => setPhase("setup")}
           onRematch={() => startMatch(players)}
-          progress={progress}
+          // Story-only records no vote score, so its best/streak line is moot.
+          progress={storyOnly === "story" ? undefined : progress}
           scoreLabel={storyOnly === "story" ? t("esTiles") : t("esVotes")}
           standings={players.map((p, i) => ({
             player: p,

@@ -1,6 +1,10 @@
 import type { TranslationKey } from "@/i18n/translations";
 import type { GameProgress } from "@/types/game";
-import { MULTIPLAYER_GAME_IDS } from "@/utils/multiplayerScoring";
+import {
+  bestHostRun,
+  hostedMatches,
+  MULTIPLAYER_GAME_IDS,
+} from "@/utils/multiplayerScoring";
 
 export interface AchievementState {
   articlesRead: string[];
@@ -68,10 +72,8 @@ export const achievements: AchievementDef[] = [
   },
   {
     category: "player",
-    condition: (s) => {
-      const entries = Object.values(s.gameProgress);
-      return entries.length >= 13 && entries.every((g) => g.highScore > 0);
-    },
+    condition: (s) =>
+      Object.values(s.gameProgress).filter((g) => g.highScore > 0).length >= 13,
     descriptionKey: "achieveHighScorerDesc",
     icon: "star-outline",
     id: "high-scorer",
@@ -223,7 +225,7 @@ export const achievements: AchievementDef[] = [
     category: "special",
     condition: (s) => {
       const best = s.gameProgress.reaction?.highScore ?? 0;
-      return best >= 800; // score = 1000 - ms, so 800 = 200ms reaction
+      return best > 800; // score = 1000 - ms, so > 800 = under 200 ms
     },
     descriptionKey: "achieveSpeedDemonDesc",
     icon: "flash-outline",
@@ -327,7 +329,8 @@ export const achievements: AchievementDef[] = [
   {
     category: "special",
     condition: (s) =>
-      (s.gameProgress["sliding-puzzle"]?.highScore ?? 0) >= 2000,
+      // score = 3000 − 10·moves − 5·seconds after a 200-move scramble
+      (s.gameProgress["sliding-puzzle"]?.highScore ?? 0) >= 1500,
     descriptionKey: "achievePuzzleSliderDesc",
     icon: "grid-outline",
     id: "puzzle-slider",
@@ -386,6 +389,7 @@ export const achievements: AchievementDef[] = [
   },
   {
     category: "special",
+    // highScore = the host's votes; story-only mode records 0 (no votes).
     condition: (s) => (s.gameProgress["emoji-story"]?.highScore ?? 0) >= 5,
     descriptionKey: "achieveCrowdFavoriteDesc",
     icon: "star-half-outline",
@@ -395,8 +399,9 @@ export const achievements: AchievementDef[] = [
   {
     category: "special",
     condition: (s) =>
+      // Real matches only (recordMatch counters) — solo runs don't count.
       MULTIPLAYER_GAME_IDS.reduce(
-        (sum, id) => sum + (s.gameProgress[id]?.timesPlayed ?? 0),
+        (sum, id) => sum + hostedMatches(s.gameProgress[id]),
         0
       ) >= 10,
     descriptionKey: "achieveGoodHostDesc",
@@ -407,9 +412,7 @@ export const achievements: AchievementDef[] = [
   {
     category: "special",
     condition: (s) =>
-      MULTIPLAYER_GAME_IDS.some(
-        (id) => (s.gameProgress[id]?.bestStreak ?? 0) >= 3
-      ),
+      MULTIPLAYER_GAME_IDS.some((id) => bestHostRun(s.gameProgress[id]) >= 3),
     descriptionKey: "achieveUndefeatedHostDesc",
     icon: "medal-outline",
     id: "undefeated-host",

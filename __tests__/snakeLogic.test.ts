@@ -1,7 +1,9 @@
 import {
   CELL_COUNT,
+  type Direction,
   GRID_COLS,
   getIntervalMs,
+  nextDirection,
   opposite,
   placeFood,
   step,
@@ -111,5 +113,45 @@ describe("snake placeFood", () => {
 
   test("grid width is 18", () => {
     expect(GRID_COLS).toBe(18);
+  });
+});
+
+describe("snake nextDirection (reversal guard)", () => {
+  test("a direct 180° press is ignored", () => {
+    expect(nextDirection("right", "right", "left")).toBe("right");
+  });
+
+  test("a 90° turn is accepted", () => {
+    expect(nextDirection("right", "right", "up")).toBe("up");
+  });
+
+  test("moving right, up + left within one tick never reverses into the neck", () => {
+    let pending: Direction = "right";
+    const lastMoved: Direction = "right"; // no tick between the two swipes
+    pending = nextDirection(lastMoved, pending, "up");
+    pending = nextDirection(lastMoved, pending, "left");
+    expect(pending).toBe("up");
+    expect(pending).not.toBe(opposite(lastMoved));
+  });
+
+  test("after the tick moves up, left becomes a legal turn", () => {
+    let pending: Direction = nextDirection("right", "right", "up");
+    // tick: the snake actually moves up
+    const lastMoved: Direction = pending;
+    pending = nextDirection(lastMoved, pending, "left");
+    expect(pending).toBe("left");
+  });
+
+  test("a full tick sequence never steps into its own neck", () => {
+    // 3-long snake heading right in the middle row.
+    const snake = [9 * GRID_COLS + 9, 9 * GRID_COLS + 8, 9 * GRID_COLS + 7];
+    const lastMoved: Direction = "right";
+    let pending: Direction = "right";
+    pending = nextDirection(lastMoved, pending, "up");
+    pending = nextDirection(lastMoved, pending, "left");
+    expect(pending).toBe("up");
+    const r = step(snake, pending, -1);
+    expect(r.dead).toBe(false);
+    expect(r.dead ? -1 : r.snake[0]).toBe(8 * GRID_COLS + 9);
   });
 });

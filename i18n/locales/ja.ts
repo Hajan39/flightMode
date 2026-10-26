@@ -12,6 +12,10 @@
     "新しいバージョンがダウンロードされました。再起動しますか？",
   updateLater: "後で",
   updateRestart: "再起動",
+  errorBoundaryTitle: "問題が発生しました",
+  errorBoundarySubtitle:
+    "予期しないエラーが発生しました。もう一度お試しください。保存したデータは安全です。",
+  errorBoundaryRetry: "再試行",
   language: "言語",
   languageSystem: "システム",
   languageDevice: "デバイス: {{language}}",
@@ -187,11 +191,10 @@
   skyDefenseBuildHint: "ルートの横にタワーを置いてからウェーブを開始",
   skyDefenseStartWave: "ウェーブ{{wave}}開始",
   stackSortTitle: "スタックソート",
-  stackSortIntro:
-    "すべての数字を順番通り: 1 → 2 → 3 → ... にGOALへ並べましょう",
+  stackSortIntro: "すべての数字を 1 → 2 → 3 → ... の順にゴールへ並べよう",
   stackSortRuleTop: "📌 一番上の数字だけ移動可能",
   stackSortRulePlace: "✅ 空の場所または大きい数字の上に置く",
-  stackSortRuleGoalLock: "🔒 Goal - 数字は置いたら固定されます",
+  stackSortRuleGoalLock: "🔒 ゴール：数字は置いたら固定されます",
   stackSortRuleChaos: "🔀 列はバラバラでスタート - まず整理しましょう！",
   stackSortRuleUndo: "↩️ 詰まったら元に戻すを使用",
   stackSortSelectLevel: "レベルを選択",
@@ -204,7 +207,7 @@
   stackSortHudMoves: "手数: {{moves}}",
   stackSortUndo: "↩ 元に戻す",
   stackSortDeadlock: "有効な手がありません！レベルを再開します",
-  stackSortGoal: "GOAL",
+  stackSortGoal: "ゴール",
   stackSortRestart: "🔄 再開",
   flightPathTitle: "フライトパス",
   flightPathIntro:
@@ -698,7 +701,7 @@
   achieveMarathonTitle: "マラソン",
   achieveMarathonDesc: "合計50回プレイ",
   achieveHighScorerTitle: "ハイスコアラー",
-  achieveHighScorerDesc: "全ゲームでスコアを獲得",
+  achieveHighScorerDesc: "13種類のゲームでスコアを獲得",
   achieveQuizAceTitle: "クイズエース",
   achieveQuizAceDesc: "クイズで100点獲得",
   achieveKnowItAllTitle: "物知り",
@@ -859,17 +862,17 @@
   settingsAppPreferencesHint: "言語と表示をまとめて管理します。",
   settingsLanguageHint: "アプリのテキスト表示方法を選びます。",
   settingsThemeHint: "周囲や気分に合わせて見た目を変えます。",
-  settingsSync: "記事の同期",
+  settingsSync: "オンライン同期",
   settingsSyncHint:
-    "FlightModeが新しい旅行記事をダウンロードするタイミングを選びます。",
+    "記事、画像、為替レート、匿名の統計にFlightModeがインターネットを使えるタイミングを選んでください。",
   settingsSyncWifiOnly: "Wi-Fiのみ",
   settingsSyncWifiOnlyHint: "おすすめ。Wi-FiまたはEthernetでのみ同期します。",
   settingsSyncWifiAndMobile: "Wi-Fi + モバイルデータ",
   settingsSyncWifiAndMobileHint: "インターネット接続時に同期します。",
   settingsSyncOff: "オフ",
   settingsSyncOffHint: "アプリ内のオフライン記事だけを使います。",
-  settingsSupport: "サポート",
-  settingsSupportHint: "バグを見つけたかご意見がありましたらお知らせください。",
+  settingsSupport: "FlightModeを楽しんでいますか？",
+  settingsSupportHint: "開発を応援する",
   settingsReportBug: "バグを報告",
   settingsReportBugHint: "メールアプリを開きます",
   settingsSuggestFeature: "機能を提案",
@@ -880,7 +883,7 @@
   settingsPrivacy: "プライバシー",
   settingsAnalyticsLabel: "匿名の使用統計",
   settingsAnalyticsHint:
-    "匿名の使用データでFlightModeの改善にご協力ください。個人情報は一切収集しません。",
+    "匿名の利用データでFlightModeの改善に協力してください（個人情報は含みません）。オンライン同期で許可されたネットワークでのみ送信されます。",
   // Games
   gamesEmptyTitle: "ゲームが見つかりません",
   gamesEmptyHint: "別のキーワードで検索するかフィルターを解除してください。",
@@ -961,7 +964,7 @@
   gameWordGuessName: "ワード当て",
   gameWordGuessDescription: "6回の試行で隠れた航空用語を当てよう。",
   rulesWordGuess:
-    "6回の試行で5文字の航空用語を当てよう。試行ごとにタイルが色付く：緑＝正しい位置、黄＝違う位置、灰＝文字なし。",
+    "🎯 目標\n• 隠された5文字の単語を6回以内に当てよう。\n\n🟩 遊び方\n• 5文字の単語を入力して送信。\n• 緑 = 文字も位置も正しい。\n• 黄 = 単語に含まれるが位置が違う。\n• 灰 = 単語に含まれない。\n\n⭐ スコア\n• スコア = 1000 −（試行回数 − 1）× 150\n• 少ない回数ほど高スコア！",
   wgGuess: "試行",
   wgAttemptsLeft: "残り試行回数：{{count}}",
   wgNotInWordList: "単語リストにありません",
@@ -973,7 +976,7 @@
   gameSudokuName: "数独",
   gameSudokuDescription: "機内のひとときに楽しむクラシックな9×9数独。",
   rulesSudoku:
-    "9×9のグリッドを埋めて、各行・列・3×3ブロックに1〜9の数字が1回ずつ入るようにしよう。セルをタップして選択し、数字を入力。",
+    "🎯 目標\n• 各行・各列・各3×3ブロックを1〜9の数字で埋めよう。\n\n🔢 遊び方\n• マスをタップして選び、数字をタップして入力。\n• 灰色のマスは最初からあるヒントで、変更できない。\n• 赤い数字は矛盾を示す。\n• ヒントで正しいマスを1つ表示（1ゲーム3回まで）。\n\n⭐ スコア\n• スコア = max(500, 5000 − 秒数×8 − ヒント数×200)\n• ヒントを控えて素早く解こう！",
   sdkHints: "ヒント",
   sdkHintsLeft: "ヒント：{{count}}",
   sdkTime: "時間",
@@ -990,7 +993,7 @@
   gameSnakeDescription:
     "スネークを操って食べ物を集めよう – フライトのクラシック。",
   rulesSnake:
-    "スワイプでスネークを操作。食べ物を集めて成長しポイントを獲得。壁と自分の体に当たらないように。どこまで続けられる？",
+    "🎯 目標\n• 壁や自分の体にぶつからずに、できるだけたくさん食べよう！\n\n🐍 遊び方\n• 十字キーかスワイプでスネークを操作。\n• 食べ物を1つ食べるごとに1マス伸びる。\n• 壁か自分の体にぶつかるとゲームオーバー。\n\n⭐ スコア\n• スコア = 食べたリンゴの数。\n• 長くなるほどスピードアップ！",
   snkScore: "スコア",
   snkHighScore: "ハイスコア",
   snkGameOver: "ゲームオーバー",
@@ -999,20 +1002,19 @@
 
   // Achievements
   achieveWordSolverTitle: "ワードソルバー",
-  achieveWordSolverDesc: "ワードパズルを3問解く",
+  achieveWordSolverDesc: "ワード当てで初勝利",
   achieveWordMasterTitle: "ワードマスター",
-  achieveWordMasterDesc: "ワードパズルを10問解く",
+  achieveWordMasterDesc: "3回以内で単語を当てる",
   achieveSudokuNoviceTitle: "数独初心者",
   achieveSudokuNoviceDesc: "数独を1ゲームクリア",
   achieveSudokuMasterTitle: "数独マスター",
-  achieveSudokuMasterDesc: "数独を5ゲームクリア",
+  achieveSudokuMasterDesc: "ヒントなしで難しい数独を解く",
   achieveSnakeCharmerTitle: "スネークチャーマー",
-  achieveSnakeCharmerDesc: "スネークで10点獲得",
+  achieveSnakeCharmerDesc: "スネークで20点以上獲得",
 
   // UX
   homeArticlesEmpty: "表示する記事がありません",
-  homeArticlesEmptyHint:
-    "フィルターを変更するか、後でもう一度確認してください。",
+  homeArticlesEmptyHint: "「探索」でコンテンツを保存してオフラインで読もう",
   gamesFilteredEmpty: "フィルターに一致するゲームがありません",
   gamesClearFilters: "フィルターをクリア",
   // A11y — D-pad move labels
@@ -1068,7 +1070,7 @@
   spTime: "時間",
   spSolved: "クリア！",
   achievePuzzleSliderTitle: "スライドマスター",
-  achievePuzzleSliderDesc: "スライドパズルを2000点以上でクリアする。",
+  achievePuzzleSliderDesc: "スライドパズルを1500点以上でクリアする。",
   // Cargo Catch game
   gameCargoCatchName: "カーゴキャッチ",
   gameCargoCatchDescription:
@@ -1145,6 +1147,7 @@
   a11yRowCol: "{{row}}行 {{col}}列",
   rjamA11yPlane: "飛行機",
   rjamA11yVehicle: "車両 {{id}}",
+  rjamA11yExit: "出口",
   sunMoonSun: "太陽",
   sunMoonMoon: "月",
   sunMoonEmpty: "空白",
@@ -1295,6 +1298,8 @@
   mpTiebreakHint: "勝数が同じなら合計ポイントで決定。",
   a11yDropInColumn: "{{col}}列目に落とす",
   a11yBackspace: "削除",
+  a11yGameRules: "ゲームのルール",
+  a11yCloseRules: "ルールを閉じる",
   a11yDecreaseQty: "数を減らす",
   a11yIncreaseQty: "数を増やす",
   a11yDieFace: "{{n}}の目",
@@ -1398,11 +1403,11 @@
   achieveUndefeatedHostTitle: "無敗のホスト",
   achieveUndefeatedHostDesc: "マルチプレイで3連勝",
   rulesSplitDuel:
-    "🎯 Goal\n• First to 3 round wins (max 5 rounds).\n\n📱 Setup\n• Lay the phone flat between you. The top half faces your opponent.\n\n⚡ Rounds\n• Both see the same challenge at the same time.\n• Tap when the disc shows the named color, find the odd icon, solve the sum, or tap when the pane turns green — first correct tap wins.\n• Tapping too early or wrong = you lose the round.\n• Hold & Release: hold your button and let go as close to the target time as you can.",
+    "🎯 目標\n• 先に3ラウンド勝ったほうの勝ち（最大5ラウンド）。\n\n📱 準備\n• スマホを2人の間に平らに置こう。上半分は相手側を向く。\n\n⚡ ラウンド\n• 2人に同じお題が同時に表示される。\n• 円が指定の色になったらタップ、違うアイコンを探す、足し算を解く、パネルが緑になったらタップ — 最初に正しくタップした人の勝ち。\n• 早すぎるタップや間違ったタップ＝そのラウンドは負け。\n• 長押し＆リリース：ボタンを押し続け、目標時間ぴったりに離そう。",
   rulesSeatNeighbor:
-    "🎯 Goal\n• Score as many Sync points as you can together in 8 rounds.\n\n🧠 Mind Meld (5 rounds)\n• One of you guesses how the other would answer a travel question, then the phone is passed and the other answers for real.\n• Same answer = +1 Sync.\n\n🤔 Would You Rather (3 rounds)\n• Both pick privately. Matching picks = +1 Sync.\n\n💞 Result\n• 0–2 Strangers · 3–4 Seatmates · 5–6 Travel Buddies · 7–8 Soulmates",
+    "🎯 目標\n• 8ラウンドで2人一緒にできるだけ多くのSyncポイントを集めよう。\n\n🧠 マインドメルド（5ラウンド）\n• 1人が旅の質問に相手がどう答えるかを予想し、スマホを渡して相手が本当に答える。\n• 答えが同じなら +1 Sync。\n\n🤔 どっちを選ぶ（3ラウンド）\n• 2人がこっそり選ぶ。一致すれば +1 Sync。\n\n💞 結果\n• 0–2 機内の他人 · 3–4 シートメイト · 5–6 旅の仲間 · 7–8 ソウルメイト",
   rulesEmojiStory:
-    "📖 Story\n• The app opens with a travel scene. The story has 3 acts: Departure, Turbulence, Landing.\n\n✍️ Your turn\n• Pick a connector word (Then, But, Suddenly…) and 1–2 emoji from your hand of 6.\n• Pass the phone to the next storyteller.\n\n🗳️ Voting\n• After every act, each player secretly votes for the contribution they liked most (never their own). Each vote = 1 point.\n• Story-only mode skips voting — just read your masterpiece aloud at the end.\n\n🏆 Most votes after 3 acts wins.",
+    "📖 ストーリー\n• アプリが旅のワンシーンから物語を始める。物語は3幕：出発、乱気流、着陸。\n\n✍️ あなたの番\n• つなぎの言葉（それから、しかし、突然…）を1つと、手札6枚から絵文字を1〜2個選ぶ。\n• スマホを次の語り手に渡す。\n\n🗳️ 投票\n• 各幕のあと、全員がこっそりいちばん気に入った投稿に投票（自分のものは不可）。1票 = 1ポイント。\n• 「ストーリーのみ」モードでは投票なし — 最後に傑作を声に出して読もう。\n\n🏆 3幕終了時に最多得票の人が勝ち。",
   converterRatesLive: "最新レート · 更新 {{date}}",
   converterRatesRefresh: "レートを今更新",
   converterRatesUpdating: "更新中…",
@@ -1439,7 +1444,7 @@
   gameCategoryBlitzName: "カテゴリー・ブリッツ",
   gameCategoryBlitzDescription: "20秒でできるだけ多く挙げよう。ほかの人が審判",
   rulesCategoryBlitz:
-    "🎯 Goal\n• Score the most answers across 3 turns.\n\n⏱️ Your turn\n• You get a category and 20 seconds.\n• Say answers out loud; tap the big button once for each one the others accept.\n• Tapped by mistake? Use Undo.\n\n👥 Everyone else\n• You are the judge: no repeats, no nonsense.\n\n🏆 Most answers after 3 rounds wins.",
+    "🎯 目標\n• 3ターンでいちばん多くの答えを出そう。\n\n⏱️ あなたの番\n• カテゴリーと20秒が与えられる。\n• 答えを声に出して言い、ほかの人が認めた答え1つにつき大きなボタンを1回タップ。\n• 間違えてタップした？「取り消し」を使おう。\n\n👥 ほかの全員\n• あなたたちが審判：重複なし、でたらめなし。\n\n🏆 3ラウンド後に答えが最も多い人の勝ち。",
   cbzIntro: "スマホ1台、1人{{seconds}}秒。声に出して答え、ほかの人が判定。",
   cbzNameAsMany: "できるだけ多く挙げて",
   cbzCountIt: "カウント",
@@ -1496,7 +1501,7 @@
   gameTiltBalanceName: "タービュランス・テスト",
   gameTiltBalanceDescription: "スマホを水平に保ち、ボールを輪の中に。突風つき",
   rulesTiltBalance:
-    "🎯 Goal\n• Keep the ball inside the ring as long as you can.\n\n📱 How to play\n• Hold the phone flat in your hand, screen up.\n• Tilt gently to steer the ball — small movements work best.\n• The ring shrinks the longer you survive, and turbulence gusts push the ball at random.\n• The turn ends when the ball rolls off the plate.\n\n🏆 Scoring\n• 1 point per second survived, plus a bonus for your longest unbroken stretch inside the ring.\n• 1 player: beat your own best. 2–6 players: one turn each, highest score wins.",
+    "🎯 目標\n• ボールをできるだけ長くリングの中にキープしよう。\n\n📱 遊び方\n• スマホを画面を上にして手のひらで平らに持つ。\n• そっと傾けてボールを動かそう — 小さな動きがコツ。\n• 長く耐えるほどリングが小さくなり、乱気流の突風がランダムにボールを押す。\n• ボールがプレートから落ちたらターン終了。\n\n🏆 スコア\n• 耐えた1秒ごとに1ポイント、さらにリング内に連続でいた最長時間にボーナス。\n• 1人：自己ベストを更新しよう。2〜6人：1人1ターン、最高スコアの人が勝ち。",
   tbIntro: "スマホを手のひらに水平に持って。振ったり投げたりしないで。",
   tbHoldFlat: "画面を上にして水平に持って",
   tbHint: "傾けるのは少しだけ。大きく傾けると飛んでいきます。",
@@ -1509,7 +1514,7 @@
   achieveSteadyHandsDesc: "タービュランス・テストで40点",
   reviewAskTitle: "FlightModeを評価しませんか？",
   reviewAskBody:
-    "アプリを気に入っていただけたら、Google Playにひとことお寄せください。ほかの旅行者が見つけやすくなります。",
+    "FlightModeの感想をGoogle Playでほかの旅行者に伝えてください。",
   reviewAskRate: "評価する",
   reviewAskLater: "あとで",
   reviewAskNever: "結構です",

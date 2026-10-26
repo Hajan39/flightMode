@@ -7,6 +7,7 @@ import {
   getRow,
   isPeer,
   isSolved,
+  isValidCompleteGrid,
 } from "@/games/sudoku/logic";
 import { PUZZLES } from "@/games/sudoku/puzzles";
 
@@ -108,5 +109,58 @@ describe("sudoku formatTime", () => {
     [0, "0:00"],
   ])("formats %i seconds as %s", (secs, expected) => {
     expect(formatTime(secs)).toBe(expected);
+  });
+});
+
+describe("sudoku accepts any valid complete grid", () => {
+  const { clues, solution } = PUZZLES[0];
+  // Swapping digits 1↔2 everywhere keeps a valid grid but breaks the givens.
+  const relabelled = solution.map((v) => {
+    if (v === 1) {
+      return 2;
+    }
+    if (v === 2) {
+      return 1;
+    }
+    return v;
+  });
+
+  test("isValidCompleteGrid checks rows/cols/boxes and givens", () => {
+    expect(isValidCompleteGrid(solution, clues)).toBe(true);
+    expect(isValidCompleteGrid(relabelled)).toBe(true);
+    expect(isValidCompleteGrid(relabelled, clues)).toBe(false);
+    const dup = [...solution];
+    dup[0] = dup[1];
+    expect(isValidCompleteGrid(dup)).toBe(false);
+    const holey = [...solution];
+    holey[40] = 0;
+    expect(isValidCompleteGrid(holey)).toBe(false);
+  });
+
+  test("a valid alternative fill that keeps the givens wins without errors", () => {
+    // Clues with only the cells that agree between the two grids → the
+    // relabelled grid is a legal alternative solution of these clues.
+    const looseClues = solution.map((v, i) => (v === relabelled[i] ? v : 0));
+    const board = [...relabelled];
+    const idx = relabelled.findIndex((v, i) => v !== solution[i]);
+    board[idx] = 0;
+    const move = applyMove(board, solution, idx, relabelled[idx], looseClues);
+    expect(move.won).toBe(true);
+    expect(move.errors.size).toBe(0);
+    expect(move.isError).toBe(false);
+    expect(isSolved(relabelled, solution, looseClues)).toBe(true);
+  });
+
+  test("an alternative fill that overwrites givens never wins", () => {
+    expect(isSolved(relabelled, solution, clues)).toBe(false);
+  });
+
+  test("an incomplete board keeps errors judged against the stored solution", () => {
+    const board = [...relabelled];
+    const idx = relabelled.findIndex((v, i) => v !== solution[i]);
+    board[idx] = 0;
+    const move = applyMove(board, solution, 80, board[80], clues);
+    expect(move.won).toBe(false);
+    expect(move.errors.size).toBeGreaterThan(0);
   });
 });

@@ -92,7 +92,7 @@ export default function GameRules({ titleKey, rulesKey, inline }: Props) {
   return (
     <>
       <Pressable
-        accessibilityLabel="Game rules"
+        accessibilityLabel={t("a11yGameRules")}
         accessibilityRole="button"
         hitSlop={10}
         onPress={() => setVisible(true)}
@@ -131,7 +131,7 @@ export default function GameRules({ titleKey, rulesKey, inline }: Props) {
               />
             </ScrollView>
             <Pressable
-              accessibilityLabel="Close rules"
+              accessibilityLabel={t("a11yCloseRules")}
               accessibilityRole="button"
               onPress={() => setVisible(false)}
               style={[styles.closeBtn, { backgroundColor: theme.tint }]}

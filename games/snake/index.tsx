@@ -22,7 +22,7 @@ import {
   GRID_COLS,
   GRID_ROWS,
   getIntervalMs,
-  opposite,
+  nextDirection,
   placeFood,
   step,
 } from "./logic";
@@ -64,6 +64,8 @@ export default function SnakeGame() {
   const foodRef = useRef<number>(0);
   const scoreRef = useRef(0);
   const directionRef = useRef<Direction>("right");
+  /** Direction of the last actual move (the reversal guard's reference). */
+  const lastMovedDirRef = useRef<Direction>("right");
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // ---------------------------------------------------------------------------
@@ -143,6 +145,7 @@ export default function SnakeGame() {
     const ateFood = stepResult.ate;
 
     snakeRef.current = newSnake;
+    lastMovedDirRef.current = dir;
     setSnake(newSnake);
 
     if (ateFood) {
@@ -185,6 +188,7 @@ export default function SnakeGame() {
     snakeRef.current = initialSnake;
     scoreRef.current = 0;
     directionRef.current = "right";
+    lastMovedDirRef.current = "right";
 
     const initialFood = placeFood(initialSnake);
     foodRef.current = initialFood;
@@ -210,10 +214,11 @@ export default function SnakeGame() {
     if (phaseRef.current !== "playing") {
       return;
     }
-    if (newDir === opposite(directionRef.current)) {
-      return;
-    }
-    directionRef.current = newDir;
+    directionRef.current = nextDirection(
+      lastMovedDirRef.current,
+      directionRef.current,
+      newDir
+    );
   }, []);
   const swipeProps = useSwipe(handleDirectionPress);
 

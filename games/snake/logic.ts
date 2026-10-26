@@ -26,6 +26,20 @@ export function opposite(dir: Direction): Direction {
   return OPPOSITE[dir];
 }
 
+/**
+ * The pending direction after a swipe / D-pad press. The 180° guard compares
+ * against the direction the snake LAST MOVED in (not the pending one), so two
+ * quick inputs within one tick (e.g. moving right: up, then left) can never
+ * turn the head back into the neck. A rejected press keeps `pending`.
+ */
+export function nextDirection(
+  lastMoved: Direction,
+  pending: Direction,
+  requested: Direction
+): Direction {
+  return requested === opposite(lastMoved) ? pending : requested;
+}
+
 export type StepResult =
   | { dead: true }
   | { dead: false; snake: number[]; ate: boolean };

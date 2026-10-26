@@ -2,6 +2,13 @@ import type { ErrorBoundaryProps } from "expo-router";
 import { useEffect } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
+import {
+  getDeviceLanguage,
+  type Language,
+  type TranslationKey,
+  translate,
+} from "@/i18n/translations";
+import { useSettingsStore } from "@/store/useSettingsStore";
 import { logFatalError } from "@/utils/errorLogging";
 
 /**
@@ -10,9 +17,37 @@ import { logFatalError } from "@/utils/errorLogging";
  * silently, and the user sees a recoverable screen rather than a blank crash.
  *
  * Intentionally self-contained: only React Native core primitives and hardcoded
- * colors — no theme store, no translations, no app hooks — because the error it
- * renders may originate from exactly those subsystems.
+ * colors — no theme store, no app hooks — because the error it renders may
+ * originate from exactly those subsystems. Text is localized through plain,
+ * non-hook reads (`safeText`) that fall back to English on any failure.
  */
+
+const FALLBACK_TEXT = {
+  errorBoundaryRetry: "Try again",
+  errorBoundarySubtitle:
+    "The app hit an unexpected error. You can try again — your saved data is safe.",
+  errorBoundaryTitle: "Something went wrong",
+} as const satisfies Partial<Record<TranslationKey, string>>;
+
+type BoundaryTextKey = keyof typeof FALLBACK_TEXT;
+
+/** Stored language > device language > en; never throws. */
+function safeLanguage(): Language {
+  try {
+    return useSettingsStore.getState().language ?? getDeviceLanguage();
+  } catch {
+    return "en";
+  }
+}
+
+/** Localized boundary text without hooks; English if anything fails. */
+function safeText(language: Language, key: BoundaryTextKey): string {
+  try {
+    return translate(language, key) || FALLBACK_TEXT[key];
+  } catch {
+    return FALLBACK_TEXT[key];
+  }
+}
 
 /** Defensive: thrown values are not guaranteed to be Error instances at runtime. */
 function describeError(error: unknown): string {
@@ -29,27 +64,32 @@ export default function RootErrorBoundary({
   useEffect(() => {
     logFatalError(error, "render");
   }, [error]);
+  const language = safeLanguage();
 
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.emoji}>✈️</Text>
-        <Text style={styles.title}>Something went wrong</Text>
+        <Text style={styles.title}>
+          {safeText(language, "errorBoundaryTitle")}
+        </Text>
         <Text style={styles.subtitle}>
-          The app hit an unexpected error. You can try again — your saved data
-          is safe.
+          {safeText(language, "errorBoundarySubtitle")}
         </Text>
         <Text numberOfLines={4} style={styles.detail}>
           {describeError(error)}
         </Text>
         <Pressable
+          accessibilityRole="button"
           onPress={() => {
             // Intentional fire-and-forget: nothing to do with retry()'s promise.
             retry();
           }}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Try again</Text>
+          <Text style={styles.buttonText}>
+            {safeText(language, "errorBoundaryRetry")}
+          </Text>
         </Pressable>
       </ScrollView>
     </View>

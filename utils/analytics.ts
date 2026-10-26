@@ -105,6 +105,98 @@ export function disableAnalytics() {
   pendingEvents = [];
 }
 
+/**
+ * What the PostHog bridge should do right now:
+ * - `disabled` — user opted out: drop the in-app queue, opt PostHog out.
+ * - `hold` — settings not hydrated yet (opt-out unknown), or the sync network
+ *   policy forbids uploading on the current network: keep events in the
+ *   bounded in-app queue, hand nothing to PostHog.
+ * - `send` — forward to PostHog (which queues + uploads them).
+ */
+export type AnalyticsUploadMode = "disabled" | "hold" | "send";
+
+export function getAnalyticsUploadMode(input: {
+  /** User's analytics toggle (only meaningful once hydrated). */
+  enabled: boolean;
+  /** Settings store finished loading from storage. */
+  hydrated: boolean;
+  /** `canSyncOnNetwork(network, syncNetworkPolicy)` — false for policy `off`. */
+  networkAllowsUpload: boolean;
+}): AnalyticsUploadMode {
+  if (!input.hydrated) {
+    return "hold";
+  }
+  if (!input.enabled) {
+    return "disabled";
+  }
+  return input.networkAllowsUpload ? "send" : "hold";
+}
+
+export type DepartureBucket = "past" | "<6h" | "6-24h" | "1-7d" | ">7d";
+
+const HOUR_MS = 60 * 60 * 1000;
+
+/** Coarse "how far ahead is the flight" — never the exact departure time. */
+export function hoursUntilDepartureBucket(
+  departureMs: number,
+  nowMs: number
+): DepartureBucket {
+  const hours = (departureMs - nowMs) / HOUR_MS;
+  if (!Number.isFinite(hours) || hours < 0) {
+    return "past";
+  }
+  if (hours < 6) {
+    return "<6h";
+  }
+  if (hours < 24) {
+    return "6-24h";
+  }
+  if (hours < 24 * 7) {
+    return "1-7d";
+  }
+  return ">7d";
+}
+
+export type DurationBucket = "<2h" | "2-5h" | "5-9h" | ">9h";
+
+/** Coarse flight length — the exact minutes plus departure near-identify a flight. */
+export function flightDurationBucket(minutes: number): DurationBucket {
+  if (!Number.isFinite(minutes) || minutes < 120) {
+    return "<2h";
+  }
+  if (minutes < 300) {
+    return "2-5h";
+  }
+  if (minutes < 540) {
+    return "5-9h";
+  }
+  return ">9h";
+}
+
+/** Every `source=` value the app's own links pass (grep `source=`). */
+const ROUTE_SOURCES = new Set([
+  "destination",
+  "destinations",
+  "direct",
+  "home",
+  "landed",
+  "preflight",
+  "tools",
+]);
+
+/**
+ * Route params are attacker/deep-link controlled: only known `source` values
+ * reach analytics; anything else is `other`, a missing one is `direct`.
+ */
+export function normalizeRouteSource(source: unknown): string {
+  if (source === undefined || source === null || source === "") {
+    return "direct";
+  }
+  return typeof source === "string" && ROUTE_SOURCES.has(source)
+    ? source
+    : "other";
+}
+
 export function captureAnalyticsEvent(
   eventName: AnalyticsEventName,
   properties?: AnalyticsProperties

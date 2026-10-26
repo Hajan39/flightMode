@@ -1,11 +1,15 @@
 import { useImageCacheStore } from "@/store/useImageCacheStore";
-import { useNetworkStore } from "@/store/useNetworkStore";
+import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
+import { useSettingsStore } from "@/store/useSettingsStore";
+import { isAllowedImageUrl } from "@/utils/imageSync";
 
 type ImageSource = { uri: string } | null;
 
 export function useArticleImage(imageUrl?: string): ImageSource {
   const cache = useImageCacheStore((s) => s.cache);
   const isInternetReachable = useNetworkStore((s) => s.isInternetReachable);
+  const networkType = useNetworkStore((s) => s.type);
+  const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
 
   if (!imageUrl) {
     return null;
@@ -16,8 +20,15 @@ export function useArticleImage(imageUrl?: string): ImageSource {
     return { uri: cache[imageUrl] };
   }
 
-  // Fall back to remote URL when online (image not yet cached)
-  if (isInternetReachable) {
+  // Not cached yet: load it remotely only where the sync policy allows
+  // network use (wifi_only → Wi-Fi/Ethernet, off → never) and only over https.
+  if (
+    isAllowedImageUrl(imageUrl) &&
+    canSyncOnNetwork(
+      { isInternetReachable, type: networkType },
+      syncNetworkPolicy
+    )
+  ) {
     return { uri: imageUrl };
   }
 

@@ -144,6 +144,73 @@ describe("convertCurrency", () => {
   });
 });
 
+describe("parseAmount separator table", () => {
+  test.each([
+    // plain / previously working
+    ["42", 42],
+    ["12.5", 12.5],
+    ["12,5", 12.5],
+    ["12,50", 12.5],
+    [" 7 ", 7],
+    [".5", 0.5],
+    [",5", 0.5],
+    ["5.", 5],
+    ["5,", 5],
+    ["0", 0],
+    ["0,125", 0.125],
+    ["1.234", 1.234],
+    ["1,2345", 1.2345],
+    ["-5", -5],
+    // spaces / NBSP / thin / narrow no-break spaces as grouping
+    ["1 234,5", 1234.5],
+    ["1 234,50", 1234.5],
+    ["1\u00a0234,50", 1234.5],
+    ["1\u2009234.5", 1234.5],
+    ["1\u202f234\u202f567", 1_234_567],
+    ["1 234 567", 1_234_567],
+    // both separators: the last one is the decimal
+    ["1.234,5", 1234.5],
+    ["1,234.5", 1234.5],
+    ["1.234.567,89", 1_234_567.89],
+    ["1,234,567.89", 1_234_567.89],
+    ["1,234.", 1234],
+    // one kind repeated = grouping
+    ["1,234", 1234],
+    ["1,234,567", 1_234_567],
+    ["1.234.567", 1_234_567],
+    ["12,345,678", 12_345_678],
+  ])("%j → %d", (input, expected) => {
+    expect(parseAmount(input)).toBeCloseTo(expected, 9);
+  });
+
+  test.each([
+    "",
+    "   ",
+    "abc",
+    "1a",
+    "1e3",
+    "0x10",
+    "Infinity",
+    ".",
+    ",",
+    "-",
+    "1..2",
+    "1,,2",
+    "1.2.3",
+    "1,23,456",
+    "1.23.456",
+    "1,234,56",
+    "1.234,5.6",
+    "1,234.5,6",
+    "12,34.5",
+    "1.2,3,4",
+    "--1",
+    "1-2",
+  ])("%j → null", (input) => {
+    expect(parseAmount(input)).toBeNull();
+  });
+});
+
 describe("currencies data", () => {
   test("unique codes, positive rates, USD is the base", () => {
     const codes = currencies.map((c) => c.code);

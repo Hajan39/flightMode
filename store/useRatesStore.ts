@@ -16,6 +16,7 @@ import { snapshotPerUsd } from "@/data/currencyRatesSnapshot";
 import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { sanitizeErrorText } from "@/utils/errorLogging";
 import { fetchLatestRates } from "@/utils/ratesSync";
 
 /** Rates move slowly; one refresh per half day is plenty. */
@@ -101,7 +102,10 @@ export const useRatesStore = create<RatesState>()(
             error instanceof Error ? error.message : "rates sync failed";
           lastFailureAt = Date.now();
           set({ lastError: message, status: "error" });
-          captureAnalyticsEvent("rates_sync_failed", { reason: message });
+          captureAnalyticsEvent("rates_sync_failed", {
+            error_name: error instanceof Error ? error.name : "unknown",
+            reason: sanitizeErrorText(message),
+          });
         }
       },
     }),

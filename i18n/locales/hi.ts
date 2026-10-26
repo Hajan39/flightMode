@@ -11,6 +11,10 @@
   updateAvailableMessage: "नया संस्करण डाउनलोड हो गया। पुनः आरंभ करें?",
   updateLater: "बाद में",
   updateRestart: "पुनः आरंभ",
+  errorBoundaryTitle: "कुछ गड़बड़ हो गई",
+  errorBoundarySubtitle:
+    "ऐप में अनपेक्षित त्रुटि हुई। आप फिर से कोशिश कर सकते हैं — आपका सहेजा गया डेटा सुरक्षित है।",
+  errorBoundaryRetry: "फिर से कोशिश करें",
   language: "भाषा",
   languageSystem: "सिस्टम",
   languageDevice: "डिवाइस: {{language}}",
@@ -183,10 +187,10 @@
   skyDefenseBuildHint: "रास्ते के पास टावर लगाओ, फिर वेव शुरू करो",
   skyDefenseStartWave: "वेव {{wave}} शुरू करें",
   stackSortTitle: "स्टैक सॉर्ट",
-  stackSortIntro: "सभी संख्याओं को क्रम में GOAL में लगाएं: 1 → 2 → 3 → ...",
+  stackSortIntro: "सभी संख्याओं को क्रम से लक्ष्य में लगाएँ: 1 → 2 → 3 → ...",
   stackSortRuleTop: "📌 केवल सबसे ऊपरी संख्या को हिला सकते हैं",
   stackSortRulePlace: "✅ खाली जगह या बड़ी संख्या पर रखें",
-  stackSortRuleGoalLock: "🔒 Goal - संख्याएं रखने के बाद लॉक हो जाती हैं",
+  stackSortRuleGoalLock: "🔒 लक्ष्य: संख्याएँ रखने के बाद लॉक हो जाती हैं",
   stackSortRuleChaos: "🔀 कॉलम अव्यवस्थित शुरू होते हैं - पहले व्यवस्थित करें!",
   stackSortRuleUndo: "↩️ अटक गए? अनडू का उपयोग करें",
   stackSortSelectLevel: "लेवल चुनें",
@@ -199,7 +203,7 @@
   stackSortHudMoves: "चालें: {{moves}}",
   stackSortUndo: "↩ वापस",
   stackSortDeadlock: "कोई वैध चाल नहीं! लेवल फिर से शुरू",
-  stackSortGoal: "GOAL",
+  stackSortGoal: "लक्ष्य",
   stackSortRestart: "🔄 फिर से",
   flightPathTitle: "फ्लाइट पाथ",
   flightPathIntro:
@@ -687,7 +691,7 @@
   achieveMarathonTitle: "मैराथन",
   achieveMarathonDesc: "कुल 50 खेल खेलें",
   achieveHighScorerTitle: "हाई स्कोरर",
-  achieveHighScorerDesc: "हर खेल में स्कोर करें",
+  achieveHighScorerDesc: "13 अलग-अलग खेलों में स्कोर करें",
   achieveQuizAceTitle: "क्विज़ एस",
   achieveQuizAceDesc: "क्विज़ में 100 अंक प्राप्त करें",
   achieveKnowItAllTitle: "सब जानने वाला",
@@ -846,16 +850,17 @@
   settingsAppPreferencesHint: "भाषा और रूप को एक जगह नियंत्रित करें।",
   settingsLanguageHint: "ऐप का टेक्स्ट कैसे दिखे, चुनें।",
   settingsThemeHint: "माहौल और मूड के हिसाब से दृश्य शैली बदलें।",
-  settingsSync: "लेख सिंक",
-  settingsSyncHint: "FlightMode नए यात्रा लेख कब डाउनलोड कर सकता है, चुनें।",
+  settingsSync: "ऑनलाइन सिंक",
+  settingsSyncHint:
+    "चुनें कि FlightMode लेखों, तस्वीरों, विनिमय दरों और गुमनाम आँकड़ों के लिए इंटरनेट कब इस्तेमाल कर सकता है।",
   settingsSyncWifiOnly: "केवल Wi-Fi",
   settingsSyncWifiOnlyHint: "अनुशंसित। केवल Wi-Fi या Ethernet पर सिंक करें।",
   settingsSyncWifiAndMobile: "Wi-Fi + मोबाइल डेटा",
   settingsSyncWifiAndMobileHint: "जब भी इंटरनेट उपलब्ध हो, सिंक करें।",
   settingsSyncOff: "बंद",
   settingsSyncOffHint: "केवल ऐप में शामिल ऑफलाइन लेख इस्तेमाल करें।",
-  settingsSupport: "सहायता",
-  settingsSupportHint: "कोई बग मिला या सुझाव है? हमें बताएं।",
+  settingsSupport: "FlightMode पसंद आ रहा है?",
+  settingsSupportHint: "विकास में सहयोग करें",
   settingsReportBug: "बग रिपोर्ट करें",
   settingsReportBugHint: "मेल ऐप खोलता है",
   settingsSuggestFeature: "सुविधा सुझाएं",
@@ -866,7 +871,7 @@
   settingsPrivacy: "गोपनीयता",
   settingsAnalyticsLabel: "गुमनाम विश्लेषण",
   settingsAnalyticsHint:
-    "अनाम उपयोग डेटा से FlightMode को बेहतर बनाने में मदद करें। कोई व्यक्तिगत जानकारी एकत्र नहीं की जाती।",
+    "गुमनाम उपयोग डेटा से FlightMode को बेहतर बनाने में मदद करें (कोई व्यक्तिगत जानकारी नहीं)। केवल ऑनलाइन सिंक द्वारा अनुमत नेटवर्क पर भेजा जाता है।",
   // Games
   gamesEmptyTitle: "कोई गेम नहीं मिला",
   gamesEmptyHint: "कोई दूसरी खोज आज़माएं या फ़िल्टर हटाएं।",
@@ -948,7 +953,7 @@
   gameWordGuessName: "शब्द अनुमान",
   gameWordGuessDescription: "6 प्रयासों में छिपे विमानन शब्द का अनुमान लगाएं।",
   rulesWordGuess:
-    "6 प्रयासों में 5-अक्षर का विमानन शब्द अनुमान लगाएं। हर प्रयास के बाद टाइलें रंग बदलती हैं: हरा = सही जगह, पीला = गलत जगह, धूसर = अक्षर नहीं है।",
+    "🎯 लक्ष्य\n• 6 प्रयासों के भीतर छिपा हुआ 5-अक्षर का शब्द पहचानें।\n\n🟩 कैसे खेलें\n• 5-अक्षर का शब्द लिखें और सबमिट करें।\n• हरा = सही अक्षर, सही जगह।\n• पीला = अक्षर शब्द में है, पर गलत जगह।\n• धूसर = अक्षर शब्द में नहीं है।\n\n⭐ स्कोरिंग\n• स्कोर = 1000 − (प्रयास − 1) × 150\n• कम प्रयास = ज़्यादा स्कोर!",
   wgGuess: "प्रयास",
   wgAttemptsLeft: "शेष प्रयास: {{count}}",
   wgNotInWordList: "शब्द सूची में नहीं है",
@@ -960,7 +965,7 @@
   gameSudokuName: "सुडोकू",
   gameSudokuDescription: "उड़ान के शांत पलों के लिए क्लासिक 9×9 सुडोकू।",
   rulesSudoku:
-    "9×9 ग्रिड भरें ताकि हर पंक्ति, स्तंभ और 3×3 वर्ग में 1-9 अंक ठीक एक बार हों। सेल चुनने के लिए टैप करें, फिर अंक दर्ज करें।",
+    "🎯 लक्ष्य\n• हर पंक्ति, स्तंभ और 3×3 बॉक्स को 1–9 अंकों से भरें।\n\n🔢 कैसे खेलें\n• सेल चुनने के लिए टैप करें, फिर कोई अंक टैप करें।\n• धूसर सेल पहले से भरे संकेत हैं — इन्हें बदला नहीं जा सकता।\n• लाल अंक टकराव दिखाते हैं।\n• संकेत एक सही सेल खोलता है (हर खेल में 3 संकेत)।\n\n⭐ स्कोरिंग\n• स्कोर = max(500, 5000 − सेकंड×8 − संकेत×200)\n• कम संकेतों के साथ जल्दी हल करें!",
   sdkHints: "संकेत",
   sdkHintsLeft: "संकेत: {{count}}",
   sdkTime: "समय",
@@ -977,7 +982,7 @@
   gameSnakeDescription:
     "साँप को नियंत्रित करें और खाना इकट्ठा करें – उड़ान के लिए क्लासिक।",
   rulesSnake:
-    "साँप को नियंत्रित करने के लिए स्वाइप करें। बढ़ने और अंक पाने के लिए खाना इकट्ठा करें। दीवारों और अपने शरीर से बचें। कितनी देर टिकेंगे?",
+    "🎯 लक्ष्य\n• दीवार या खुद से टकराए बिना जितना हो सके उतना खाना खाएँ!\n\n🐍 कैसे खेलें\n• साँप को डी-पैड से या स्वाइप करके चलाएँ।\n• हर खाना साँप को एक खाना लंबा कर देता है।\n• दीवार या अपने शरीर से टकराने पर खेल खत्म।\n\n⭐ स्कोरिंग\n• स्कोर = खाए गए सेबों की संख्या।\n• जैसे-जैसे साँप बढ़ता है, रफ़्तार बढ़ती है!",
   snkScore: "स्कोर",
   snkHighScore: "सर्वश्रेष्ठ स्कोर",
   snkGameOver: "खेल समाप्त",
@@ -986,19 +991,19 @@
 
   // Achievements
   achieveWordSolverTitle: "शब्द सुलझाने वाला",
-  achieveWordSolverDesc: "3 शब्द पहेलियाँ सुलझाएं",
+  achieveWordSolverDesc: "शब्द अनुमान में अपनी पहली जीत हासिल करें",
   achieveWordMasterTitle: "शब्द उस्ताद",
-  achieveWordMasterDesc: "10 शब्द पहेलियाँ सुलझाएं",
+  achieveWordMasterDesc: "3 या कम प्रयासों में शब्द पहचानें",
   achieveSudokuNoviceTitle: "सुडोकू नौसिखिया",
   achieveSudokuNoviceDesc: "1 सुडोकू खेल पूरा करें",
   achieveSudokuMasterTitle: "सुडोकू उस्ताद",
-  achieveSudokuMasterDesc: "5 सुडोकू खेल पूरे करें",
+  achieveSudokuMasterDesc: "बिना संकेत के कठिन सुडोकू हल करें",
   achieveSnakeCharmerTitle: "साँप वश करने वाला",
-  achieveSnakeCharmerDesc: "साँप में 10 अंक प्राप्त करें",
+  achieveSnakeCharmerDesc: "साँप में 20 या अधिक अंक पाएँ",
 
   // UX
   homeArticlesEmpty: "दिखाने के लिए कोई लेख नहीं",
-  homeArticlesEmptyHint: "फ़िल्टर बदलें या बाद में वापस आएं।",
+  homeArticlesEmptyHint: "ऑफ़लाइन पढ़ने के लिए सामग्री सहेजने हेतु एक्सप्लोर पर जाएँ",
   gamesFilteredEmpty: "फ़िल्टर से मेल खाने वाले कोई खेल नहीं",
   gamesClearFilters: "फ़िल्टर साफ़ करें",
   // A11y — D-pad move labels
@@ -1053,7 +1058,7 @@
   spTime: "समय",
   spSolved: "हल हो गया!",
   achievePuzzleSliderTitle: "स्लाइड मास्टर",
-  achievePuzzleSliderDesc: "स्लाइडिंग पहेली को 2000 या अधिक अंकों से हल करें।",
+  achievePuzzleSliderDesc: "स्लाइडिंग पहेली को 1500 या अधिक अंकों से हल करें।",
   // Cargo Catch game
   gameCargoCatchName: "कार्गो कैच",
   gameCargoCatchDescription:
@@ -1128,6 +1133,7 @@
   a11yRowCol: "पंक्ति {{row}}, स्तंभ {{col}}",
   rjamA11yPlane: "विमान",
   rjamA11yVehicle: "वाहन {{id}}",
+  rjamA11yExit: "निकास",
   sunMoonSun: "सूरज",
   sunMoonMoon: "चाँद",
   sunMoonEmpty: "खाली",
@@ -1270,6 +1276,8 @@
   mpTiebreakHint: "जीत बराबर? कुल अंक निर्णय करेंगे।",
   a11yDropInColumn: "कॉलम {{col}} में डालें",
   a11yBackspace: "बैकस्पेस",
+  a11yGameRules: "खेल के नियम",
+  a11yCloseRules: "नियम बंद करें",
   a11yDecreaseQty: "मात्रा घटाएँ",
   a11yIncreaseQty: "मात्रा बढ़ाएँ",
   a11yDieFace: "फलक {{n}}",
@@ -1375,11 +1383,11 @@
   achieveUndefeatedHostTitle: "अपराजित मेज़बान",
   achieveUndefeatedHostDesc: "किसी भी मल्टीप्लेयर गेम में लगातार 3 मैच जीतें",
   rulesSplitDuel:
-    "🎯 Goal\n• First to 3 round wins (max 5 rounds).\n\n📱 Setup\n• Lay the phone flat between you. The top half faces your opponent.\n\n⚡ Rounds\n• Both see the same challenge at the same time.\n• Tap when the disc shows the named color, find the odd icon, solve the sum, or tap when the pane turns green — first correct tap wins.\n• Tapping too early or wrong = you lose the round.\n• Hold & Release: hold your button and let go as close to the target time as you can.",
+    "🎯 लक्ष्य\n• जो पहले 3 राउंड जीते, वही विजेता (अधिकतम 5 राउंड)।\n\n📱 तैयारी\n• फ़ोन को अपने बीच सपाट रखें। ऊपरी आधा हिस्सा आपके प्रतिद्वंद्वी की ओर होता है।\n\n⚡ राउंड\n• दोनों को एक ही समय पर एक ही चुनौती दिखती है।\n• डिस्क बताए गए रंग की हो तब टैप करें, अलग आइकन ढूँढें, जोड़ हल करें, या पैनल हरा होते ही टैप करें — पहला सही टैप जीतता है।\n• बहुत जल्दी या गलत टैप = राउंड हार।\n• दबाएँ और छोड़ें: अपना बटन दबाए रखें और लक्ष्य समय के जितना करीब हो सके छोड़ें।",
   rulesSeatNeighbor:
-    "🎯 Goal\n• Score as many Sync points as you can together in 8 rounds.\n\n🧠 Mind Meld (5 rounds)\n• One of you guesses how the other would answer a travel question, then the phone is passed and the other answers for real.\n• Same answer = +1 Sync.\n\n🤔 Would You Rather (3 rounds)\n• Both pick privately. Matching picks = +1 Sync.\n\n💞 Result\n• 0–2 Strangers · 3–4 Seatmates · 5–6 Travel Buddies · 7–8 Soulmates",
+    "🎯 लक्ष्य\n• 8 राउंड में मिलकर जितने हो सके उतने Sync अंक जुटाएँ।\n\n🧠 माइंड मेल्ड (5 राउंड)\n• एक खिलाड़ी अनुमान लगाता है कि दूसरा किसी यात्रा सवाल का क्या जवाब देगा, फिर फ़ोन आगे दिया जाता है और दूसरा सच में जवाब देता है।\n• एक जैसा जवाब = +1 Sync।\n\n🤔 आप क्या चुनेंगे (3 राउंड)\n• दोनों चुपचाप चुनते हैं। एक जैसी पसंद = +1 Sync।\n\n💞 नतीजा\n• 0–2 अजनबी · 3–4 सीट साथी · 5–6 यात्रा साथी · 7–8 आत्मीय साथी",
   rulesEmojiStory:
-    "📖 Story\n• The app opens with a travel scene. The story has 3 acts: Departure, Turbulence, Landing.\n\n✍️ Your turn\n• Pick a connector word (Then, But, Suddenly…) and 1–2 emoji from your hand of 6.\n• Pass the phone to the next storyteller.\n\n🗳️ Voting\n• After every act, each player secretly votes for the contribution they liked most (never their own). Each vote = 1 point.\n• Story-only mode skips voting — just read your masterpiece aloud at the end.\n\n🏆 Most votes after 3 acts wins.",
+    "📖 कहानी\n• ऐप एक यात्रा दृश्य से शुरू होता है। कहानी के 3 अंक हैं: प्रस्थान, टर्बुलेंस, लैंडिंग।\n\n✍️ आपकी बारी\n• एक जोड़ने वाला शब्द (फिर, लेकिन, अचानक…) और अपने 6 के हाथ से 1–2 इमोजी चुनें।\n• फ़ोन अगले कहानीकार को दें।\n\n🗳️ वोटिंग\n• हर अंक के बाद हर खिलाड़ी चुपचाप उस योगदान को वोट देता है जो उसे सबसे अच्छा लगा (अपना कभी नहीं)। हर वोट = 1 अंक।\n• केवल कहानी मोड में वोटिंग नहीं होती — बस अंत में अपनी रचना ज़ोर से पढ़ें।\n\n🏆 3 अंकों के बाद सबसे ज़्यादा वोट वाला जीतता है।",
   converterRatesLive: "लाइव दरें · अपडेट {{date}}",
   converterRatesRefresh: "दरें अभी अपडेट करें",
   converterRatesUpdating: "अपडेट हो रहा है…",
@@ -1415,7 +1423,7 @@
   gameCategoryBlitzName: "कैटेगरी ब्लिट्ज़",
   gameCategoryBlitzDescription: "20 सेकंड में जितने हो सके बताएँ — बाकी नज़र रखेंगे",
   rulesCategoryBlitz:
-    "🎯 Goal\n• Score the most answers across 3 turns.\n\n⏱️ Your turn\n• You get a category and 20 seconds.\n• Say answers out loud; tap the big button once for each one the others accept.\n• Tapped by mistake? Use Undo.\n\n👥 Everyone else\n• You are the judge: no repeats, no nonsense.\n\n🏆 Most answers after 3 rounds wins.",
+    "🎯 लक्ष्य\n• 3 बारियों में सबसे ज़्यादा जवाब दें।\n\n⏱️ आपकी बारी\n• आपको एक श्रेणी और 20 सेकंड मिलते हैं।\n• जवाब ज़ोर से बोलें; दूसरे जिस जवाब को मानें, उसके लिए बड़ा बटन एक बार टैप करें।\n• गलती से टैप हो गया? वापस का उपयोग करें।\n\n👥 बाकी सभी\n• आप जज हैं: न दोहराव, न बेतुके जवाब।\n\n🏆 3 राउंड के बाद सबसे ज़्यादा जवाब वाला जीतता है।",
   cbzIntro: "एक फ़ोन, हर किसी को {{seconds}} सेकंड। ज़ोर से बोलें — बाकी तय करेंगे।",
   cbzNameAsMany: "जितने हो सके बताएँ",
   cbzCountIt: "गिनें",
@@ -1471,7 +1479,7 @@
   gameTiltBalanceName: "टर्बुलेंस टेस्ट",
   gameTiltBalanceDescription: "फ़ोन सपाट पकड़ें और गेंद को घेरे में रखें — झोंके शामिल",
   rulesTiltBalance:
-    "🎯 Goal\n• Keep the ball inside the ring as long as you can.\n\n📱 How to play\n• Hold the phone flat in your hand, screen up.\n• Tilt gently to steer the ball — small movements work best.\n• The ring shrinks the longer you survive, and turbulence gusts push the ball at random.\n• The turn ends when the ball rolls off the plate.\n\n🏆 Scoring\n• 1 point per second survived, plus a bonus for your longest unbroken stretch inside the ring.\n• 1 player: beat your own best. 2–6 players: one turn each, highest score wins.",
+    "🎯 लक्ष्य\n• गेंद को जितनी देर हो सके रिंग के अंदर रखें।\n\n📱 कैसे खेलें\n• फ़ोन को हाथ में सपाट पकड़ें, स्क्रीन ऊपर की ओर।\n• गेंद को चलाने के लिए हल्का झुकाएँ — छोटी हरकतें सबसे अच्छी रहती हैं।\n• जितनी देर टिकेंगे, रिंग उतनी छोटी होती जाएगी, और टर्बुलेंस के झोंके गेंद को अचानक धकेलेंगे।\n• गेंद प्लेट से लुढ़कते ही बारी खत्म।\n\n🏆 स्कोरिंग\n• टिके रहने के हर सेकंड का 1 अंक, साथ ही रिंग के अंदर सबसे लंबे लगातार समय का बोनस।\n• 1 खिलाड़ी: अपना रिकॉर्ड तोड़ें। 2–6 खिलाड़ी: सबकी एक बारी, सबसे ज़्यादा स्कोर जीतता है।",
   tbIntro: "फ़ोन को हथेली पर सपाट रखें — हिलाएँ नहीं, फेंकें नहीं।",
   tbHoldFlat: "फ़ोन सपाट रखें, स्क्रीन ऊपर",
   tbHint: "हल्का झुकाएँ। ज़्यादा झुकाने पर गेंद उड़ जाएगी।",
@@ -1483,7 +1491,7 @@
   achieveSteadyHandsDesc: "टर्बुलेंस टेस्ट में 40 अंक",
   reviewAskTitle: "FlightMode को रेटिंग दें?",
   reviewAskBody:
-    "अगर ऐप पसंद आया हो, तो Google Play पर कुछ शब्द लिखें। इससे दूसरे यात्रियों को इसे ढूँढने में मदद मिलती है।",
+    "Google Play पर दूसरे यात्रियों को बताएँ कि आप FlightMode के बारे में क्या सोचते हैं।",
   reviewAskRate: "रेटिंग दें",
   reviewAskLater: "बाद में",
   reviewAskNever: "नहीं, धन्यवाद",

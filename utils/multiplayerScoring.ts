@@ -1,5 +1,5 @@
 import { useGameStore } from "@/store/useGameStore";
-import type { GameProgressUpdate } from "@/types/game";
+import type { GameProgress, GameProgressUpdate } from "@/types/game";
 
 /**
  * Scoring convention for pass-and-play / shared-screen games.
@@ -13,6 +13,16 @@ import type { GameProgressUpdate } from "@/types/game";
  * ("my undefeated run") and `timesPlayed` ("matches hosted") truthful, so the
  * shared GameResult stats and profile numbers mean the same thing for solo and
  * multiplayer games.
+ *
+ * Some of these games also have solo / cooperative paths (tilt-balance and
+ * duel-hangman solo, emoji-story story-only, seat-neighbor) that call
+ * `updateProgress` directly. Those share `timesPlayed` / streaks with real
+ * matches, so the cross-game host achievements (Good Host, Undefeated Host)
+ * read dedicated counters instead, written ONLY by `recordMatch` into the
+ * game's `levelStars` (max-merged, so every key only ever grows):
+ *   - `mp:hosted`   — real multi-player matches hosted,
+ *   - `mp:runStart` — `mp:hosted` value when the current winning run began,
+ *   - `mp:bestRun`  — longest run of consecutive sole wins.
  */
 
 export interface Standing {
@@ -73,6 +83,63 @@ export interface RecordMatchOptions {
   hostIndex?: number;
 }
 
+export const HOSTED_KEY = "mp:hosted";
+export const RUN_START_KEY = "mp:runStart";
+export const BEST_RUN_KEY = "mp:bestRun";
+
+/**
+ * Games with a solo / cooperative path whose legacy `timesPlayed` / streaks
+ * mix in non-match runs — never used to seed the host counters.
+ */
+export const GAMES_WITH_SOLO_PATHS: readonly string[] = [
+  "duel-hangman",
+  "emoji-story",
+  "seat-neighbor",
+  "tilt-balance",
+];
+
+/**
+ * The `levelStars` patch that records one real hosted match. On the first
+ * match after this counter shipped, games WITHOUT a solo path seed it from
+ * their legacy stats (every play there was a real match); games with one
+ * start from zero.
+ */
+export function hostStatsPatch(
+  gameId: string,
+  existing: GameProgress | undefined,
+  won: boolean
+): Record<string, number> {
+  const stars: Partial<Record<string, number>> = existing?.levelStars ?? {};
+  const seed = !GAMES_WITH_SOLO_PATHS.includes(gameId) && existing;
+  const hosted = stars[HOSTED_KEY] ?? (seed ? existing.timesPlayed : 0);
+  const runStart =
+    stars[RUN_START_KEY] ??
+    (seed ? Math.max(0, existing.timesPlayed - existing.currentStreak) : 0);
+  const bestRun = stars[BEST_RUN_KEY] ?? (seed ? existing.bestStreak : 0);
+  const nextHosted = hosted + 1;
+  return won
+    ? {
+        [BEST_RUN_KEY]: Math.max(bestRun, nextHosted - runStart),
+        [HOSTED_KEY]: nextHosted,
+        [RUN_START_KEY]: runStart,
+      }
+    : {
+        [BEST_RUN_KEY]: bestRun,
+        [HOSTED_KEY]: nextHosted,
+        [RUN_START_KEY]: nextHosted,
+      };
+}
+
+/** Real multi-player matches hosted in one game (solo runs excluded). */
+export function hostedMatches(progress: GameProgress | undefined): number {
+  return progress?.levelStars?.[HOSTED_KEY] ?? 0;
+}
+
+/** Longest run of consecutive sole wins in real matches of one game. */
+export function bestHostRun(progress: GameProgress | undefined): number {
+  return progress?.levelStars?.[BEST_RUN_KEY] ?? 0;
+}
+
 /** Persist one finished match using the host convention above. */
 export function recordMatch(
   gameId: string,
@@ -84,10 +151,14 @@ export function recordMatch(
   const won = winner === hostIndex;
   const hostScore = Math.max(0, Math.round(standings[hostIndex]?.score ?? 0));
   const score = hostScore + (won ? (opts.bonusIfWon ?? 0) : 0);
-  return useGameStore.getState().updateProgress(gameId, score, { won });
+  const store = useGameStore.getState();
+  return store.updateProgress(gameId, score, {
+    levelStarsPatch: hostStatsPatch(gameId, store.progress[gameId], won),
+    won,
+  });
 }
 
-/** Every game recorded through `recordMatch` — used by cross-game achievements. */
+/** Every game recorded through `recordMatch` (some also have solo paths) — used by cross-game achievements. */
 export const MULTIPLAYER_GAME_IDS = [
   "duel-tictactoe",
   "duel-dice",

@@ -478,7 +478,7 @@ export default function RunwayJamGame() {
 
         {/* Exit marker on the right edge of row 2 */}
         <RNView
-          accessibilityLabel="Exit"
+          accessibilityLabel={t("rjamA11yExit")}
           style={[s.exitMarker, { top: exitTop }]}
         >
           <Text style={{ color: theme.tint, fontSize: 18 }}>➤</Text>

@@ -3,7 +3,7 @@ import { useContentItems } from "@/hooks/useContentItems";
 import { useImageCacheStore } from "@/store/useImageCacheStore";
 import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
-import { downloadImage } from "@/utils/imageSync";
+import { downloadImage, isAllowedImageUrl } from "@/utils/imageSync";
 
 /** URLs that failed this session — retried on the next app launch, not in a loop. */
 const failedUrls = new Set<string>();
@@ -32,7 +32,8 @@ export default function ImageSyncBootstrap() {
         items
           .map((item) => item.image)
           .filter(
-            (url): url is string => !!url && !cache[url] && !failedUrls.has(url)
+            (url): url is string =>
+              isAllowedImageUrl(url) && !cache[url] && !failedUrls.has(url)
           )
       ),
     ];

@@ -11,6 +11,10 @@
   updateAvailableMessage: "Uma nova versão foi baixada. Reiniciar?",
   updateLater: "Mais tarde",
   updateRestart: "Reiniciar",
+  errorBoundaryTitle: "Algo deu errado",
+  errorBoundarySubtitle:
+    "O app encontrou um erro inesperado. Você pode tentar de novo — seus dados salvos estão seguros.",
+  errorBoundaryRetry: "Tentar de novo",
   language: "Idioma",
   languageSystem: "Sistema",
   languageDevice: "Dispositivo: {{language}}",
@@ -189,11 +193,11 @@
   skyDefenseBuildHint: "Coloque torres ao lado da rota e lance a onda",
   skyDefenseStartWave: "LANÇAR ONDA {{wave}}",
   stackSortTitle: "Stack Sort",
-  stackSortIntro: "Ordene todos os números em GOAL em ordem: 1 → 2 → 3 → ...",
+  stackSortIntro: "Coloque todos os números na META em ordem: 1 → 2 → 3 → ...",
   stackSortRuleTop: "📌 Mova apenas o número do topo",
   stackSortRulePlace: "✅ Coloque em slot vazio ou em número maior",
   stackSortRuleGoalLock:
-    "🔒 Goal - os números ficam travados uma vez colocados",
+    "🔒 Meta: os números ficam travados depois de colocados",
   stackSortRuleChaos: "🔀 Colunas começam embaralhadas - ordene-as primeiro!",
   stackSortRuleUndo: "↩️ Use Desfazer se não houver saída",
   stackSortSelectLevel: "SELECIONAR NÍVEL",
@@ -206,7 +210,7 @@
   stackSortHudMoves: "Movimentos: {{moves}}",
   stackSortUndo: "↩ Desfazer",
   stackSortDeadlock: "Nenhum movimento válido! Reinicie o nível",
-  stackSortGoal: "GOAL",
+  stackSortGoal: "META",
   stackSortRestart: "🔄 Reiniciar",
   flightPathTitle: "Rota de voo",
   flightPathIntro:
@@ -265,7 +269,7 @@
   ccTime: "TEMPO",
   ccScore: "PONTUAÇÃO",
   ccCmdSeatbelt: "Aperte o cinto",
-  ccCmdTray: "Mesa recolhida",
+  ccCmdTray: "Mesinha fechada",
   ccCmdWindow: "Persiana aberta",
   ccCmdPhone: "Modo avião ativado",
   ccCmdLight: "Desligar luz de leitura",
@@ -567,7 +571,7 @@
   // Emoji Find
   efTitle: "Caça ao Emoji",
   efDesc:
-    "Revezem-se num só telemóvel: encontra o emoji alvo na grelha mais depressa que os outros!",
+    "Revezem-se em um só celular: encontre o emoji-alvo na grade mais rápido que os outros!",
   efRules1: "Encontre o emoji alvo na grade",
   efRules2: "{{seconds}}s por rodada",
   efRules3: "{{rounds}} rodadas no total",
@@ -687,11 +691,11 @@
   passportHours: "Horas",
   passportCities: "Cidades",
   passportCountries: "Países",
-  passportUnknownCity: "Algures",
+  passportUnknownCity: "Algum lugar",
   passportStampDuration: "{{hours}} h {{minutes}} min",
-  passportShare: "Partilhar o meu passaporte",
+  passportShare: "Compartilhar meu passaporte",
   passportShareMessage:
-    "O meu passaporte FlightMode: {{flights}} voos, {{hours}} h no ar, {{cities}} cidades ✈️ Jogos e ferramentas de viagem offline para o próximo voo: {{url}}",
+    "Meu passaporte FlightMode: {{flights}} voos, {{hours}} h no ar, {{cities}} cidades ✈️ Jogos e ferramentas de viagem offline para o próximo voo: {{url}}",
   profileFlights: "Voos",
   profileArticles: "Artigos lidos",
   profileRelaxSessions: "Sessões de relaxamento",
@@ -708,7 +712,7 @@
   achieveMarathonTitle: "Maratona",
   achieveMarathonDesc: "Jogue 50 jogos no total",
   achieveHighScorerTitle: "Recordista",
-  achieveHighScorerDesc: "Pontue em cada jogo",
+  achieveHighScorerDesc: "Pontue em 13 jogos diferentes",
   achieveQuizAceTitle: "Craque do quiz",
   achieveQuizAceDesc: "Consiga 100 no quiz",
   achieveKnowItAllTitle: "Poço de sabedoria",
@@ -807,24 +811,24 @@
   solResultSubtitle: "{{time}} · {{moves}} movimentos",
   gameMahjongName: "Mahjong",
   gameMahjongDescription:
-    "Combina peças de viagem em pares e limpa o tabuleiro todo",
+    "Combine peças de viagem em pares e limpe o tabuleiro todo",
   rulesMahjong:
-    "🎯 Objetivo\n• Limpa o tabuleiro removendo todas as peças em pares iguais.\n\n🀄 Como jogar\n• Toca em duas peças livres com o mesmo desenho para as remover.\n• Uma peça está livre quando não tem nada por cima e o lado esquerdo ou direito está aberto. As peças bloqueadas ficam mais escuras.\n• Todos os jogos têm solução — mas a ordem conta!\n• Sem jogadas? Desfazer é ilimitado, Dica mostra um par e Baralhar volta a distribuir as peças que restam.\n\n⭐ Pontuação\n• +20 por cada peça do tabuleiro, mais um bónus de tempo — quanto mais rápido, melhor.\n• Cada dica custa 50 pontos e cada baralhar 100.",
-  mjChooseLayout: "Escolhe um tabuleiro",
+    "🎯 Objetivo\n• Limpe o tabuleiro removendo todas as peças em pares iguais.\n\n🀄 Como jogar\n• Toque em duas peças livres com o mesmo desenho para removê-las.\n• Uma peça está livre quando não tem nada por cima e o lado esquerdo ou direito está aberto. As peças bloqueadas ficam mais escuras.\n• Todos os jogos têm solução — mas a ordem importa!\n• Sem jogadas? Desfazer é ilimitado, Dica mostra um par e Embaralhar redistribui as peças que restam.\n\n⭐ Pontuação\n• +20 por cada peça do tabuleiro, mais um bônus de tempo — quanto mais rápido, melhor.\n• Cada dica custa 50 pontos e cada embaralhada 100.",
+  mjChooseLayout: "Escolha um tabuleiro",
   mjLayoutEasy: "Ilha",
   mjLayoutTurtle: "Tartaruga",
   mjLayoutJet: "Jumbo",
   mjTiles: "{{count}} peças",
-  mjHowTo: "Toca em duas peças livres com o mesmo desenho",
+  mjHowTo: "Toque em duas peças livres com o mesmo desenho",
   mjTime: "Tempo",
   mjPairsLeft: "Pares",
   mjMatches: "Jogadas",
   mjUndo: "Desfazer",
   mjHint: "Dica",
-  mjShuffle: "Baralhar",
-  mjNoMoves: "Não há mais pares — baralha as peças",
+  mjShuffle: "Embaralhar",
+  mjNoMoves: "Não há mais pares — embaralhe as peças",
   mjYouWin: "Tabuleiro limpo! 🀄",
-  mjResultSubtitle: "{{time}} · dicas: {{hints}} · baralhadas: {{shuffles}}",
+  mjResultSubtitle: "{{time}} · dicas: {{hints}} · embaralhadas: {{shuffles}}",
   gameWordScrambleName: "Palavras Embaralhadas",
   gameWordScrambleDescription:
     "Desvende palavras de aviação antes do tempo acabar",
@@ -876,9 +880,9 @@
   settingsAppPreferencesHint: "Controle idioma e aparência em um só lugar.",
   settingsLanguageHint: "Escolha como o texto do app é exibido.",
   settingsThemeHint: "Mude o estilo visual conforme o ambiente e o humor.",
-  settingsSync: "Sync de artigos",
+  settingsSync: "Sincronização online",
   settingsSyncHint:
-    "Escolha quando o FlightMode pode baixar novos artigos de viagem.",
+    "Escolha quando o FlightMode pode usar a internet para artigos, imagens, câmbio e estatísticas anônimas.",
   settingsSyncWifiOnly: "Somente Wi-Fi",
   settingsSyncWifiOnlyHint: "Recomendado. Sync apenas em Wi-Fi ou Ethernet.",
   settingsSyncWifiAndMobile: "Wi-Fi + dados móveis",
@@ -886,8 +890,8 @@
     "Sync sempre que a internet estiver disponível.",
   settingsSyncOff: "Desativado",
   settingsSyncOffHint: "Use apenas artigos offline incluídos no app.",
-  settingsSupport: "Suporte",
-  settingsSupportHint: "Encontrou um erro ou tem sugestões? Fale conosco.",
+  settingsSupport: "Está curtindo o FlightMode?",
+  settingsSupportHint: "Apoie o desenvolvimento",
   settingsReportBug: "Reportar bug",
   settingsReportBugHint: "Abre o app de e-mail",
   settingsSuggestFeature: "Sugerir funcionalidade",
@@ -896,9 +900,9 @@
   settingsSupportDevelopment: "Ajude a melhorar as próximas atualizações",
   settingsVersion: "Versão",
   settingsPrivacy: "Privacidade",
-  settingsAnalyticsLabel: "Estatísticas anónimas",
+  settingsAnalyticsLabel: "Estatísticas anônimas",
   settingsAnalyticsHint:
-    "Ajuda a melhorar o FlightMode com dados de uso anónimos. Nenhuma informação pessoal é recolhida.",
+    "Ajude a melhorar o FlightMode com dados de uso anônimos (sem informações pessoais). Enviados apenas em redes permitidas pela Sincronização online.",
   // Games
   gamesEmptyTitle: "Nenhum jogo encontrado",
   gamesEmptyHint: "Tente outra pesquisa ou limpe o filtro.",
@@ -915,7 +919,7 @@
   gameColorClashListDescription:
     "Teste de concentração — ignore a palavra, confie na cor",
   rulesColorClash:
-    "Uma palavra de cor aparece numa cor de tinta aleatória. Toque apenas quando a palavra escrita e a cor da tinta coincidirem (ex. VERMELHO escrito em vermelho). Se não coincidir — não toque! 1 ponto por resposta correcta em 20 rondas.",
+    "Uma palavra de cor aparece em uma cor de tinta aleatória. Toque apenas quando a palavra escrita e a cor da tinta coincidirem (ex.: VERMELHO escrito em vermelho). Se não coincidirem — não toque! 1 ponto por resposta correta em 20 rodadas.",
   colorClashScore: "Pontuação",
   colorClashHint: "Toque só se palavra = cor",
   colorRed: "Vermelho",
@@ -925,55 +929,55 @@
   colorPurple: "Roxo",
   colorOrange: "Laranja",
   gameWhackMoleName: "Bate na Toupeira",
-  gameWhackMoleDescription: "Toca nas toupeiras antes de desaparecerem",
+  gameWhackMoleDescription: "Toque nas toupeiras antes que desapareçam",
   gameWhackMoleListDescription:
-    "30 segundos, toca rápido — o máximo que puderes",
+    "30 segundos, toque rápido — o máximo que puder",
   rulesWhackMole:
-    "As toupeiras aparecem aleatoriamente na grelha. Toca nelas antes de desaparecerem! O jogo dura 30 segundos. As toupeiras aparecem cada vez mais rápido. A tua pontuação é o número total de toupeiras atingidas.",
+    "As toupeiras aparecem aleatoriamente na grade. Toque nelas antes que desapareçam! O jogo dura 30 segundos. As toupeiras aparecem cada vez mais rápido. Sua pontuação é o número total de toupeiras acertadas.",
   whackScore: "Pontuação",
   whackTime: "Tempo",
   gameSimonSaysName: "Simão Diz",
   gameSimonSaysDescription: "Repita a sequência de cores crescente",
   gameSimonSaysListDescription:
-    "Desafio de memória — consegues acompanhar o Simão?",
+    "Desafio de memória — você consegue acompanhar o Simão?",
   rulesSimonSays:
-    "Observa a sequência de cores com atenção e repete-a tocando nos mesmos botões na mesma ordem. Cada ronda adiciona um passo. Tens 3 vidas — um toque errado custa uma. O jogo termina quando as vidas se esgotam. A pontuação é a sequência mais longa completada.",
+    "Observe a sequência de cores com atenção e repita-a tocando nos mesmos botões na mesma ordem. Cada rodada adiciona um passo. Você tem 3 vidas — um toque errado custa uma. O jogo termina quando as vidas acabam. A pontuação é a sequência mais longa completada.",
   colorClashLives: "Vidas",
-  simonRound: "Ronda",
-  simonYourTurn: "A tua vez!",
-  simonWatchNow: "Observa...",
+  simonRound: "Rodada",
+  simonYourTurn: "Sua vez!",
+  simonWatchNow: "Observe...",
   gameHigherLowerName: "Maior ou Menor",
   gameHigherLowerDescription: "O próximo número será maior ou menor?",
   gameHigherLowerListDescription:
-    "10 rondas, instinto puro — confia no teu sexto sentido",
+    "10 rodadas, puro instinto — confie no seu sexto sentido",
   rulesHigherLower:
-    "Aparece um número entre 1 e 12. Prevê se o próximo será maior ou menor e toca no botão correcto. Um empate conta como errado. 1 ponto por resposta correcta em 10 rondas.",
+    "Aparece um número entre 1 e 12. Preveja se o próximo será maior ou menor e toque no botão correto. Um empate conta como erro. 1 ponto por resposta correta em 10 rodadas.",
   hlHigher: "Maior ↑",
   hlLower: "Menor ↓",
   hlPrevious: "Anterior: {{n}}",
-  hlRound: "Ronda",
+  hlRound: "Rodada",
   gameOddOneOutName: "O Intruso",
-  gameOddOneOutDescription: "Encontra o que não pertence",
-  gameOddOneOutListDescription: "Descobre o impostor — olho rápido ganha",
+  gameOddOneOutDescription: "Encontre o que não pertence",
+  gameOddOneOutListDescription: "Descubra o impostor — olho rápido vence",
   rulesOddOneOut:
-    "Aparece uma grelha de objetos semelhantes. Um deles é diferente — encontra-o e toca nele antes do tempo acabar! A grelha cresce e o tempo reduz. 1 ponto por resposta correcta em 15 rondas.",
+    "Aparece uma grade de objetos parecidos. Um deles é diferente — encontre-o e toque nele antes que o tempo acabe! A grade cresce e o tempo diminui. 1 ponto por resposta correta em 15 rodadas.",
   oddScore: "Pontuação",
-  oddRound: "Ronda",
+  oddRound: "Rodada",
   oddTimeUp: "Tempo esgotado!",
-  oddFind: "Encontra o intruso!",
+  oddFind: "Encontre o intruso!",
   gameCabinLightsName: "Luzes da Cabine",
   gameCabinLightsDescription:
-    "Apaga todas as luzes da cabine — cada toque também inverte as vizinhas",
+    "Apague todas as luzes da cabine — cada toque também inverte as vizinhas",
   rulesCabinLights:
-    "Os passageiros dormem, mas algumas luzes da cabine ainda estão acesas. Toca numa luz para a inverter junto com as vizinhas. Apaga tudo para concluir a ronda. 5 rondas com tabuleiros crescentes — menos jogadas significam maior bónus.",
+    "Os passageiros estão dormindo, mas algumas luzes da cabine ainda estão acesas. Toque em uma luz para invertê-la junto com as vizinhas. Apague tudo para concluir a rodada. 5 rodadas com tabuleiros crescentes — menos jogadas significam bônus maior.",
   cabinLightsScore: "Pontuação",
-  cabinLightsRound: "Ronda",
+  cabinLightsRound: "Rodada",
   cabinLightsMoves: "Jogadas",
   cabinLightsHint:
-    "Apaga todas as luzes da cabine. Um toque também inverte as vizinhas.",
+    "Apague todas as luzes da cabine. Um toque também inverte as vizinhas.",
   cabinLightsRemaining: "Ainda acesas: {{count}}",
   cabinLightsRoundClear: "Luzes apagadas!",
-  cabinLightsNextRound: "Toca para a próxima ronda",
+  cabinLightsNextRound: "Toque para a próxima rodada",
   arShipDown: "abatido",
   homeWelcomeTitle: "Que tal jogar?",
   homeWelcomeHint: "Todos os jogos funcionam offline.",
@@ -984,7 +988,7 @@
   gameWordGuessDescription:
     "Adivinhe a palavra de aviação escondida em 6 tentativas.",
   rulesWordGuess:
-    "Adivinhe a palavra de aviação de 5 letras em 6 tentativas. Após cada tentativa as peças ficam coloridas: verde = lugar certo, amarelo = lugar errado, cinza = letra ausente.",
+    "🎯 Objetivo\n• Adivinhe a palavra oculta de 5 letras em até 6 tentativas.\n\n🟩 Como jogar\n• Digite uma palavra de 5 letras e envie.\n• Verde = letra certa no lugar certo.\n• Amarelo = a letra está na palavra, mas em outro lugar.\n• Cinza = a letra não está na palavra.\n\n⭐ Pontuação\n• Pontuação = 1000 − (tentativas − 1) × 150\n• Menos tentativas = mais pontos!",
   wgGuess: "Tentativa",
   wgAttemptsLeft: "Tentativas restantes: {{count}}",
   wgNotInWordList: "Palavra não está na lista",
@@ -997,7 +1001,7 @@
   gameSudokuDescription:
     "Sudoku clássico 9×9 para os momentos tranquilos a bordo.",
   rulesSudoku:
-    "Preencha a grelha 9×9 de forma que cada linha, coluna e quadrado 3×3 contenha os números de 1 a 9 exatamente uma vez. Toque numa célula para a selecionar e depois introduza um número.",
+    "🎯 Objetivo\n• Preencha cada linha, coluna e quadro 3×3 com os dígitos de 1 a 9.\n\n🔢 Como jogar\n• Toque em uma célula para selecioná-la e depois em um número.\n• As células cinza são pistas fixas e não podem ser alteradas.\n• Números vermelhos indicam um conflito.\n• Use uma dica para revelar uma célula correta (3 dicas por partida).\n\n⭐ Pontuação\n• Pontuação = max(500, 5000 − segundos×8 − dicas×200)\n• Resolva rápido e com poucas dicas!",
   sdkHints: "Dicas",
   sdkHintsLeft: "Dicas: {{count}}",
   sdkTime: "Tempo",
@@ -1012,30 +1016,30 @@
   // Snake
   gameSnakeName: "Cobra",
   gameSnakeDescription:
-    "Controla a cobra e recolhe comida – um clássico para o voo.",
+    "Controle a cobra e colete comida – um clássico para o voo.",
   rulesSnake:
-    "Desliza para controlar a cobra. Recolhe comida para crescer e ganhar pontos. Evita as paredes e o próprio corpo. Quanto tempo aguentas?",
+    "🎯 Objetivo\n• Coma o máximo de comida possível sem bater na parede nem em si mesmo!\n\n🐍 Como jogar\n• Use o direcional ou deslize o dedo para guiar a cobra.\n• Cada comida faz a cobra crescer uma casa.\n• Bater na parede ou no próprio corpo encerra a partida.\n\n⭐ Pontuação\n• Pontuação = maçãs comidas.\n• A velocidade aumenta conforme você cresce!",
   snkScore: "Pontuação",
   snkHighScore: "Melhor pontuação",
   snkGameOver: "Fim de jogo",
-  snkEatHint: "Come para crescer!",
+  snkEatHint: "Coma para crescer!",
   snkLength: "Comprimento",
 
   // Achievements
   achieveWordSolverTitle: "Solucionador de palavras",
-  achieveWordSolverDesc: "Resolver 3 puzzles de palavras",
+  achieveWordSolverDesc: "Vença sua primeira partida de Adivinhar a palavra",
   achieveWordMasterTitle: "Mestre das palavras",
-  achieveWordMasterDesc: "Resolver 10 puzzles de palavras",
+  achieveWordMasterDesc: "Adivinhe a palavra em 3 tentativas ou menos",
   achieveSudokuNoviceTitle: "Novato em sudoku",
   achieveSudokuNoviceDesc: "Completar 1 jogo de sudoku",
   achieveSudokuMasterTitle: "Mestre do sudoku",
-  achieveSudokuMasterDesc: "Completar 5 jogos de sudoku",
+  achieveSudokuMasterDesc: "Resolva um sudoku difícil sem dicas",
   achieveSnakeCharmerTitle: "Encantador de cobras",
-  achieveSnakeCharmerDesc: "Atingir 10 pontos na cobra",
+  achieveSnakeCharmerDesc: "Faça 20 pontos ou mais na Cobra",
 
   // UX
   homeArticlesEmpty: "Nenhum artigo para exibir",
-  homeArticlesEmptyHint: "Tenta mudar o filtro ou volta mais tarde.",
+  homeArticlesEmptyHint: "Visite Explorar para salvar conteúdo e ler offline",
   gamesFilteredEmpty: "Nenhum jogo corresponde ao filtro",
   gamesClearFilters: "Limpar filtros",
   // A11y — D-pad move labels
@@ -1093,7 +1097,7 @@
   spSolved: "Resolvido!",
   achievePuzzleSliderTitle: "Mestre deslizante",
   achievePuzzleSliderDesc:
-    "Resolva o quebra-cabeça deslizante com 2000 pontos ou mais.",
+    "Resolva o quebra-cabeça deslizante com 1500 pontos ou mais.",
   // Cargo Catch game
   gameCargoCatchName: "Pega carga",
   gameCargoCatchDescription:
@@ -1172,6 +1176,7 @@
   a11yRowCol: "Linha {{row}}, coluna {{col}}",
   rjamA11yPlane: "Avião",
   rjamA11yVehicle: "Veículo {{id}}",
+  rjamA11yExit: "Saída",
   sunMoonSun: "Sol",
   sunMoonMoon: "Lua",
   sunMoonEmpty: "Vazio",
@@ -1322,6 +1327,8 @@
   mpTiebreakHint: "Empate em vitórias? Os pontos totais decidem.",
   a11yDropInColumn: "Soltar na coluna {{col}}",
   a11yBackspace: "Apagar",
+  a11yGameRules: "Regras do jogo",
+  a11yCloseRules: "Fechar regras",
   a11yDecreaseQty: "Diminuir quantidade",
   a11yIncreaseQty: "Aumentar quantidade",
   a11yDieFace: "Face {{n}}",
@@ -1436,11 +1443,11 @@
   achieveUndefeatedHostDesc:
     "Vença 3 partidas seguidas em qualquer jogo multijogador",
   rulesSplitDuel:
-    "🎯 Goal\n• First to 3 round wins (max 5 rounds).\n\n📱 Setup\n• Lay the phone flat between you. The top half faces your opponent.\n\n⚡ Rounds\n• Both see the same challenge at the same time.\n• Tap when the disc shows the named color, find the odd icon, solve the sum, or tap when the pane turns green — first correct tap wins.\n• Tapping too early or wrong = you lose the round.\n• Hold & Release: hold your button and let go as close to the target time as you can.",
+    "🎯 Objetivo\n• Vence quem ganhar 3 rodadas primeiro (máx. 5 rodadas).\n\n📱 Preparação\n• Coloquem o celular deitado entre vocês. A metade de cima fica virada para o adversário.\n\n⚡ Rodadas\n• Os dois veem o mesmo desafio ao mesmo tempo.\n• Toque quando o disco mostrar a cor indicada, encontre o ícone diferente, resolva a soma ou toque quando o painel ficar verde — vence o primeiro toque correto.\n• Tocar cedo demais ou errado = você perde a rodada.\n• Segure e solte: segure seu botão e solte o mais perto possível do tempo-alvo.",
   rulesSeatNeighbor:
-    "🎯 Goal\n• Score as many Sync points as you can together in 8 rounds.\n\n🧠 Mind Meld (5 rounds)\n• One of you guesses how the other would answer a travel question, then the phone is passed and the other answers for real.\n• Same answer = +1 Sync.\n\n🤔 Would You Rather (3 rounds)\n• Both pick privately. Matching picks = +1 Sync.\n\n💞 Result\n• 0–2 Strangers · 3–4 Seatmates · 5–6 Travel Buddies · 7–8 Soulmates",
+    "🎯 Objetivo\n• Façam juntos o máximo de pontos Sync em 8 rodadas.\n\n🧠 Mind Meld (5 rodadas)\n• Um de vocês adivinha como o outro responderia a uma pergunta de viagem; depois o celular é passado e o outro responde de verdade.\n• Mesma resposta = +1 Sync.\n\n🤔 Você preferiria (3 rodadas)\n• Os dois escolhem em segredo. Escolhas iguais = +1 Sync.\n\n💞 Resultado\n• 0–2 Estranhos · 3–4 Vizinhos de assento · 5–6 Parceiros de viagem · 7–8 Almas gêmeas",
   rulesEmojiStory:
-    "📖 Story\n• The app opens with a travel scene. The story has 3 acts: Departure, Turbulence, Landing.\n\n✍️ Your turn\n• Pick a connector word (Then, But, Suddenly…) and 1–2 emoji from your hand of 6.\n• Pass the phone to the next storyteller.\n\n🗳️ Voting\n• After every act, each player secretly votes for the contribution they liked most (never their own). Each vote = 1 point.\n• Story-only mode skips voting — just read your masterpiece aloud at the end.\n\n🏆 Most votes after 3 acts wins.",
+    "📖 História\n• O app começa com uma cena de viagem. A história tem 3 atos: Partida, Turbulência, Pouso.\n\n✍️ Sua vez\n• Escolha uma palavra de ligação (Então, Mas, De repente…) e 1–2 emoji da sua mão de 6.\n• Passe o celular para o próximo narrador.\n\n🗳️ Votação\n• Depois de cada ato, cada jogador vota em segredo na contribuição de que mais gostou (nunca na própria). Cada voto = 1 ponto.\n• O modo Só a história pula a votação — no fim, é só ler a obra-prima em voz alta.\n\n🏆 Vence quem tiver mais votos após 3 atos.",
   converterRatesLive: "Taxas atualizadas · {{date}}",
   converterRatesRefresh: "Atualizar taxas agora",
   converterRatesUpdating: "Atualizando…",
@@ -1479,7 +1486,7 @@
   gameCategoryBlitzDescription:
     "Diga o máximo que puder em 20 segundos: os outros conferem",
   rulesCategoryBlitz:
-    "🎯 Goal\n• Score the most answers across 3 turns.\n\n⏱️ Your turn\n• You get a category and 20 seconds.\n• Say answers out loud; tap the big button once for each one the others accept.\n• Tapped by mistake? Use Undo.\n\n👥 Everyone else\n• You are the judge: no repeats, no nonsense.\n\n🏆 Most answers after 3 rounds wins.",
+    "🎯 Objetivo\n• Faça o maior número de respostas em 3 vezes.\n\n⏱️ Sua vez\n• Você recebe uma categoria e 20 segundos.\n• Diga as respostas em voz alta; toque no botão grande uma vez para cada resposta que os outros aceitarem.\n• Tocou sem querer? Use Desfazer.\n\n👥 Todos os outros\n• Vocês são o júri: nada de repetições nem bobagens.\n\n🏆 Vence quem tiver mais respostas após 3 rodadas.",
   cbzIntro:
     "Um celular, {{seconds}} segundos cada. Responda em voz alta: os outros julgam.",
   cbzNameAsMany: "Diga o máximo que puder",
@@ -1539,7 +1546,7 @@
   gameTiltBalanceDescription:
     "Segure o celular na horizontal e mantenha a bola no círculo — com rajadas",
   rulesTiltBalance:
-    "🎯 Goal\n• Keep the ball inside the ring as long as you can.\n\n📱 How to play\n• Hold the phone flat in your hand, screen up.\n• Tilt gently to steer the ball — small movements work best.\n• The ring shrinks the longer you survive, and turbulence gusts push the ball at random.\n• The turn ends when the ball rolls off the plate.\n\n🏆 Scoring\n• 1 point per second survived, plus a bonus for your longest unbroken stretch inside the ring.\n• 1 player: beat your own best. 2–6 players: one turn each, highest score wins.",
+    "🎯 Objetivo\n• Mantenha a bola dentro do anel pelo maior tempo possível.\n\n📱 Como jogar\n• Segure o celular deitado na mão, com a tela para cima.\n• Incline com cuidado para guiar a bola — movimentos pequenos funcionam melhor.\n• Quanto mais você aguenta, mais o anel encolhe, e rajadas de turbulência empurram a bola ao acaso.\n• A vez termina quando a bola sai do prato.\n\n🏆 Pontuação\n• 1 ponto por segundo, mais um bônus pela sua sequência mais longa dentro do anel.\n• 1 jogador: supere seu recorde. 2–6 jogadores: uma vez para cada um, vence a maior pontuação.",
   tbIntro:
     "Segure o celular na palma da mão, na horizontal — sem sacudir nem jogar.",
   tbHoldFlat: "Segure o celular na horizontal, tela para cima",
@@ -1553,7 +1560,7 @@
   achieveSteadyHandsDesc: "Marque 40 pontos no Teste de turbulência",
   reviewAskTitle: "Avaliar o FlightMode?",
   reviewAskBody:
-    "Se você gosta do app, deixe algumas palavras no Google Play. Isso ajuda outros viajantes a encontrá-lo.",
+    "Conte a outros viajantes no Google Play o que você acha do FlightMode.",
   reviewAskRate: "Avaliar",
   reviewAskLater: "Mais tarde",
   reviewAskNever: "Agora não",

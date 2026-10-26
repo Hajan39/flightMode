@@ -90,3 +90,25 @@ export function tallyVotes(
   });
   return points;
 }
+
+export type EmojiStoryMode = "votes" | "story";
+
+export type EmojiStoryRecord =
+  /** Story-only: counts as a finished tale (games played), but no votes. */
+  | { kind: "story"; score: 0; won: false }
+  /** Voting match: recorded through `recordMatch` with the vote totals. */
+  | { kind: "match"; standings: { score: number }[] };
+
+/**
+ * What to persist when a tale ends. Story-only mode has no votes, so it must
+ * never record a score (Crowd Favorite = 5 votes) nor a win (host streaks).
+ */
+export function emojiStoryRecord(
+  mode: EmojiStoryMode,
+  voteScores: number[]
+): EmojiStoryRecord {
+  if (mode === "story") {
+    return { kind: "story", score: 0, won: false };
+  }
+  return { kind: "match", standings: voteScores.map((score) => ({ score })) };
+}

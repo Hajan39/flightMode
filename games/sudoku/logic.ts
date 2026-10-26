@@ -30,17 +30,66 @@ export function computeErrors(
   return errs;
 }
 
-/** The board matches the solution in every cell. */
-export function isSolved(board: number[], solution: number[]): boolean {
-  return (
-    board.length === solution.length && board.every((v, i) => v === solution[i])
-  );
+/**
+ * The board is a complete, valid Sudoku grid: every row, column and 3×3 box
+ * holds 1–9 exactly once, and every given (non-zero entry of `clues`, when
+ * passed) is kept.
+ */
+export function isValidCompleteGrid(
+  board: number[],
+  clues?: number[]
+): boolean {
+  if (board.length !== 81) {
+    return false;
+  }
+  if (clues?.some((c, i) => c !== 0 && board[i] !== c)) {
+    return false;
+  }
+  const rows = new Array<number>(9).fill(0);
+  const cols = new Array<number>(9).fill(0);
+  const boxes = new Array<number>(9).fill(0);
+  for (let i = 0; i < 81; i += 1) {
+    const v = board[i];
+    if (!Number.isInteger(v) || v < 1 || v > 9) {
+      return false;
+    }
+    const bit = 1 << v;
+    const r = getRow(i);
+    const c = getCol(i);
+    const b = getBox(i);
+    if (rows[r] & bit || cols[c] & bit || boxes[b] & bit) {
+      return false;
+    }
+    rows[r] |= bit;
+    cols[c] |= bit;
+    boxes[b] |= bit;
+  }
+  return true;
+}
+
+/**
+ * The puzzle is won: the board matches the stored solution, or — defence in
+ * depth should a bank puzzle ever admit another fill — it is any complete
+ * valid grid that keeps the givens.
+ */
+export function isSolved(
+  board: number[],
+  solution: number[],
+  clues?: number[]
+): boolean {
+  if (
+    board.length === solution.length &&
+    board.every((v, i) => v === solution[i])
+  ) {
+    return true;
+  }
+  return isValidCompleteGrid(board, clues);
 }
 
 export interface SudokuMoveOutcome {
   /** The board after the move (a new array; the input is not mutated). */
   board: number[];
-  /** Every wrong cell on the new board. */
+  /** Every wrong cell on the new board (empty once the board is won). */
   errors: Set<number>;
   /** The placed digit itself is wrong (drives the shake). */
   isError: boolean;
@@ -51,22 +100,26 @@ export interface SudokuMoveOutcome {
 /**
  * Place `num` (0 = erase) at `idx` and evaluate the result. The component
  * computes this from the current board OUTSIDE any state updater, so the
- * win / error decision always sees the move that was just made.
+ * win / error decision always sees the move that was just made. While the
+ * board is incomplete, errors are judged against the stored solution; a
+ * complete valid grid that keeps the givens wins with no errors.
  */
 export function applyMove(
   board: number[],
   solution: number[],
   idx: number,
-  num: number
+  num: number,
+  clues?: number[]
 ): SudokuMoveOutcome {
   const next = [...board];
   next[idx] = num;
-  const errors = computeErrors(next, solution);
+  const won = isSolved(next, solution, clues);
+  const errors = won ? new Set<number>() : computeErrors(next, solution);
   return {
     board: next,
     errors,
     isError: errors.has(idx),
-    won: isSolved(next, solution),
+    won,
   };
 }
 

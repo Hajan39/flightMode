@@ -1,13 +1,76 @@
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
+const MAX_ERROR_CODE_LENGTH = 80;
+const MAX_STACK_FRAMES = 5;
+
+const URL_RE = /[a-z][a-z0-9+.-]*:\/\/\S*/gi;
+const EMAIL_RE = /\S+@\S+\.\S+/g;
+const JSON_RE = /[{[][\s\S]*[}\]]/g;
+const QUOTED_RE = /(["'`])[\s\S]*?\1/g;
+const PATH_RE = /(?:[a-z]:)?(?:[\\/][^\s\\/:]+)+[\\/]?(?::\d+)*/gi;
+const LONG_DIGITS_RE = /\d{5,}/g;
+const LEFTOVER_PUNCT_RE = /["'`{}[\]<>]/g;
+const WHITESPACE_RE = /\s+/g;
+const IDENTIFIER_RE = /^[A-Za-z_$][\w$.]*$/;
+// `at fn (file:1:2)` → fn; bare `at file:1:2` (anonymous) → no group.
+const V8_FRAME_RE = /^\s*at\s+(?:new\s+)?(?:([^\s(]+)\s*\(|\S)/;
+const JSC_FRAME_RE = /^\s*([^@\s]+)@/;
+
+/**
+ * Reduces a free-form error message to a short, non-identifying code for
+ * analytics: URLs, e-mails, JSON blobs, quoted strings, file paths and digit
+ * runs longer than 4 are replaced by placeholders; capped at 80 chars.
+ * ("rates http 503" survives; a URL with a query string does not.)
+ */
+export function sanitizeErrorText(text: unknown): string {
+  if (typeof text !== "string" || text.length === 0) {
+    return "";
+  }
+  return text
+    .replace(URL_RE, " url ")
+    .replace(EMAIL_RE, " email ")
+    .replace(JSON_RE, " json ")
+    .replace(QUOTED_RE, " str ")
+    .replace(PATH_RE, " path ")
+    .replace(LONG_DIGITS_RE, "n")
+    .replace(LEFTOVER_PUNCT_RE, "")
+    .replace(WHITESPACE_RE, " ")
+    .trim()
+    .slice(0, MAX_ERROR_CODE_LENGTH);
+}
+
+/**
+ * Keeps only function names of the first stack frames (Hermes/V8 `at fn (…)`
+ * and JSC `fn@…` formats) — no file paths, bundle URLs or line numbers.
+ */
+export function stackFunctionNames(stack: unknown): string {
+  if (typeof stack !== "string") {
+    return "";
+  }
+  const names: string[] = [];
+  for (const line of stack.split("\n")) {
+    if (names.length >= MAX_STACK_FRAMES) {
+      break;
+    }
+    const match = V8_FRAME_RE.exec(line) ?? JSC_FRAME_RE.exec(line);
+    if (!match) {
+      continue;
+    }
+    const name = match[1] ?? "";
+    names.push(IDENTIFIER_RE.test(name) ? name.slice(0, 60) : "anonymous");
+  }
+  return names.join(" < ");
+}
+
 /**
  * Central place to record a fatal/uncaught error so it surfaces in:
  * - Android logcat (captured by Google Play Pre-launch report & crash logs)
  * - PostHog analytics (when enabled)
  *
- * Payload is strictly technical (error name, truncated message, first stack
- * frames, originating surface). It must never contain personal data or
- * free-form user text — see analytics hard rules.
+ * Logcat gets the full message + stack head (stays on the device unless the
+ * user shares logs). Analytics gets only the error name, a sanitized short
+ * code and stack function names — never URLs, paths, JSON or user text (see
+ * analytics hard rules).
  */
 export function logFatalError(
   error: unknown,
@@ -37,11 +100,11 @@ export function logFatalError(
 
   try {
     captureAnalyticsEvent("app_error", {
-      context: context ?? null,
-      error_message: message,
-      error_name: name,
+      context: context ? sanitizeErrorText(context) : null,
+      error_code: sanitizeErrorText(message),
+      error_name: sanitizeErrorText(name).slice(0, 40) || "Error",
       source,
-      stack_head: stackHead,
+      stack_head: stackFunctionNames(err.stack),
     });
   } catch {
     // Logging must never throw on top of the original error.

@@ -273,7 +273,7 @@ export default function SudokuGame() {
       // Computed from current state outside any updater: React 19 may run a
       // setBoard updater lazily, so values assigned inside it are not
       // readable right after the call.
-      const move = applyMove(board, solution, selectedCell, num);
+      const move = applyMove(board, solution, selectedCell, num, clues);
       setBoard(move.board);
       setErrors(move.errors);
       if (move.isError) {
@@ -320,7 +320,7 @@ export default function SudokuGame() {
       return;
     }
     haptic.tap();
-    const move = applyMove(board, solution, selectedCell, 0);
+    const move = applyMove(board, solution, selectedCell, 0, clues);
     setBoard(move.board);
     setErrors(move.errors);
   }, [phase, selectedCell, clues, board, solution, haptic]);
@@ -356,7 +356,7 @@ export default function SudokuGame() {
     setBoard(next);
     setErrors(computeErrors(next, solution));
 
-    const won = isSolved(next, solution);
+    const won = isSolved(next, solution, clues);
     if (won && !solvedRef.current) {
       solvedRef.current = true;
       const usedAfter = hintsUsed + 1;

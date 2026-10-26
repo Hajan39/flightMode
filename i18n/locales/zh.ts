@@ -11,6 +11,10 @@
   updateAvailableMessage: "新版本已下载。立即重启？",
   updateLater: "稍后",
   updateRestart: "重启",
+  errorBoundaryTitle: "出了点问题",
+  errorBoundarySubtitle:
+    "应用遇到了意外错误。你可以重试——已保存的数据是安全的。",
+  errorBoundaryRetry: "重试",
   language: "语言",
   languageSystem: "系统",
   languageDevice: "设备：{{language}}",
@@ -686,7 +690,7 @@
   achieveMarathonTitle: "马拉松",
   achieveMarathonDesc: "总共玩50局",
   achieveHighScorerTitle: "高分王",
-  achieveHighScorerDesc: "在每个游戏中得分",
+  achieveHighScorerDesc: "在13个不同的游戏中得分",
   achieveQuizAceTitle: "答题达人",
   achieveQuizAceDesc: "答题得100分",
   achieveKnowItAllTitle: "无所不知",
@@ -844,16 +848,17 @@
   settingsAppPreferencesHint: "在一处管理语言和外观。",
   settingsLanguageHint: "选择应用文字的显示方式。",
   settingsThemeHint: "根据环境和心情调整视觉风格。",
-  settingsSync: "文章同步",
-  settingsSyncHint: "选择 FlightMode 何时下载新的旅行文章。",
+  settingsSync: "在线同步",
+  settingsSyncHint:
+    "选择 FlightMode 何时可以使用互联网获取文章、图片、汇率和匿名统计。",
   settingsSyncWifiOnly: "仅 Wi-Fi",
   settingsSyncWifiOnlyHint: "推荐。仅在 Wi-Fi 或 Ethernet 下同步。",
   settingsSyncWifiAndMobile: "Wi-Fi + 移动数据",
   settingsSyncWifiAndMobileHint: "只要可联网就同步。",
   settingsSyncOff: "关闭",
   settingsSyncOffHint: "只使用应用内置的离线文章。",
-  settingsSupport: "支持",
-  settingsSupportHint: "发现错误或有建议？告诉我们。",
+  settingsSupport: "喜欢 FlightMode 吗？",
+  settingsSupportHint: "支持开发",
   settingsReportBug: "报告错误",
   settingsReportBugHint: "打开邮件应用",
   settingsSuggestFeature: "建议功能",
@@ -864,7 +869,7 @@
   settingsPrivacy: "隐私",
   settingsAnalyticsLabel: "匿名使用统计",
   settingsAnalyticsHint:
-    "通过匿名使用数据帮助改进FlightMode。不会收集任何个人信息。",
+    "通过匿名使用数据帮助改进 FlightMode（不含个人信息）。仅在在线同步允许的网络上发送。",
   // Games
   gamesEmptyTitle: "未找到游戏",
   gamesEmptyHint: "请尝试不同的搜索词或清除分类筛选。",
@@ -943,7 +948,7 @@
   gameWordGuessName: "猜单词",
   gameWordGuessDescription: "6次机会猜出隐藏的航空单词。",
   rulesWordGuess:
-    "在6次尝试内猜出5个字母的航空单词。每次尝试后方块会变色：绿色=位置正确，黄色=位置错误，灰色=字母不存在。",
+    "🎯 目标\n• 在6次尝试内猜出隐藏的5个字母单词。\n\n🟩 玩法\n• 输入一个5个字母的单词并提交。\n• 绿色 = 字母正确且位置正确。\n• 黄色 = 字母在单词中，但位置不对。\n• 灰色 = 单词中没有这个字母。\n\n⭐ 计分\n• 得分 = 1000 −（尝试次数 − 1）× 150\n• 尝试越少，得分越高！",
   wgGuess: "尝试",
   wgAttemptsLeft: "剩余次数：{{count}}",
   wgNotInWordList: "单词不在列表中",
@@ -955,7 +960,7 @@
   gameSudokuName: "数独",
   gameSudokuDescription: "经典9×9数独，适合在机上享受宁静时光。",
   rulesSudoku:
-    "填写9×9网格，使每行、每列和每个3×3方块都包含1到9的数字各一次。点击单元格选中它，然后输入数字。",
+    "🎯 目标\n• 用数字1–9填满每一行、每一列和每个3×3宫格。\n\n🔢 玩法\n• 点击格子选中，再点击一个数字填入。\n• 灰色格子是预填的提示，无法更改。\n• 红色数字表示冲突。\n• 使用提示可揭示一个正确格子（每局3次）。\n\n⭐ 计分\n• 得分 = max(500, 5000 − 秒数×8 − 提示次数×200)\n• 用更少的提示更快解开！",
   sdkHints: "提示",
   sdkHintsLeft: "提示：{{count}}",
   sdkTime: "时间",
@@ -971,7 +976,7 @@
   gameSnakeName: "贪吃蛇",
   gameSnakeDescription: "控制蛇收集食物——飞行中的经典游戏。",
   rulesSnake:
-    "滑动控制蛇的方向。收集食物让蛇变长并获得分数。避开墙壁和自己的身体。你能坚持多久？",
+    "🎯 目标\n• 尽量多吃食物，别撞到墙或自己！\n\n🐍 玩法\n• 用方向键或滑动屏幕控制蛇。\n• 每吃一个食物，蛇就变长一格。\n• 撞到墙或自己的身体，游戏结束。\n\n⭐ 计分\n• 得分 = 吃到的苹果数。\n• 蛇越长，速度越快！",
   snkScore: "分数",
   snkHighScore: "最高分",
   snkGameOver: "游戏结束",
@@ -980,19 +985,19 @@
 
   // Achievements
   achieveWordSolverTitle: "单词解谜者",
-  achieveWordSolverDesc: "解出3个单词谜题",
+  achieveWordSolverDesc: "首次赢得猜单词",
   achieveWordMasterTitle: "单词大师",
-  achieveWordMasterDesc: "解出10个单词谜题",
+  achieveWordMasterDesc: "在3次或更少尝试内猜出单词",
   achieveSudokuNoviceTitle: "数独新手",
   achieveSudokuNoviceDesc: "完成1局数独",
   achieveSudokuMasterTitle: "数独大师",
-  achieveSudokuMasterDesc: "完成5局数独",
+  achieveSudokuMasterDesc: "不使用提示解开一道困难数独",
   achieveSnakeCharmerTitle: "驯蛇师",
-  achieveSnakeCharmerDesc: "在贪吃蛇中达到10分",
+  achieveSnakeCharmerDesc: "在贪吃蛇中获得20分或以上",
 
   // UX
   homeArticlesEmpty: "暂无文章",
-  homeArticlesEmptyHint: "尝试更改筛选条件或稍后再来。",
+  homeArticlesEmptyHint: "前往探索保存内容，以便离线阅读",
   gamesFilteredEmpty: "没有游戏符合筛选条件",
   gamesClearFilters: "清除筛选",
   // A11y — D-pad move labels
@@ -1046,7 +1051,7 @@
   spTime: "时间",
   spSolved: "完成！",
   achievePuzzleSliderTitle: "滑块大师",
-  achievePuzzleSliderDesc: "以 2000 分或以上完成滑块拼图。",
+  achievePuzzleSliderDesc: "以 1500 分或以上完成滑块拼图。",
   // Cargo Catch game
   gameCargoCatchName: "接货物",
   gameCargoCatchDescription: "滑动小车接住掉落的货物——并躲开炸弹！",
@@ -1120,6 +1125,7 @@
   a11yRowCol: "第 {{row}} 行,第 {{col}} 列",
   rjamA11yPlane: "飞机",
   rjamA11yVehicle: "车辆 {{id}}",
+  rjamA11yExit: "出口",
   sunMoonSun: "太阳",
   sunMoonMoon: "月亮",
   sunMoonEmpty: "空",
@@ -1261,6 +1267,8 @@
   mpTiebreakHint: "胜场相同？以总分决胜。",
   a11yDropInColumn: "放入第 {{col}} 列",
   a11yBackspace: "退格",
+  a11yGameRules: "游戏规则",
+  a11yCloseRules: "关闭规则",
   a11yDecreaseQty: "减少数量",
   a11yIncreaseQty: "增加数量",
   a11yDieFace: "{{n}} 点",
@@ -1365,11 +1373,11 @@
   achieveUndefeatedHostTitle: "不败东家",
   achieveUndefeatedHostDesc: "在任意多人游戏中连胜 3 场",
   rulesSplitDuel:
-    "🎯 Goal\n• First to 3 round wins (max 5 rounds).\n\n📱 Setup\n• Lay the phone flat between you. The top half faces your opponent.\n\n⚡ Rounds\n• Both see the same challenge at the same time.\n• Tap when the disc shows the named color, find the odd icon, solve the sum, or tap when the pane turns green — first correct tap wins.\n• Tapping too early or wrong = you lose the round.\n• Hold & Release: hold your button and let go as close to the target time as you can.",
+    "🎯 目标\n• 先赢3局者获胜（最多5局）。\n\n📱 准备\n• 把手机平放在你们中间，上半屏朝向对手。\n\n⚡ 回合\n• 双方同时看到同一个挑战。\n• 圆盘变成指定颜色时点击、找出不同的图标、算出加法，或面板变绿时点击——第一个正确点击者获胜。\n• 点得太早或点错 = 输掉本局。\n• 按住并松开：按住你的按钮，尽量在目标时间松开。",
   rulesSeatNeighbor:
-    "🎯 Goal\n• Score as many Sync points as you can together in 8 rounds.\n\n🧠 Mind Meld (5 rounds)\n• One of you guesses how the other would answer a travel question, then the phone is passed and the other answers for real.\n• Same answer = +1 Sync.\n\n🤔 Would You Rather (3 rounds)\n• Both pick privately. Matching picks = +1 Sync.\n\n💞 Result\n• 0–2 Strangers · 3–4 Seatmates · 5–6 Travel Buddies · 7–8 Soulmates",
+    "🎯 目标\n• 两人在8轮中一起拿到尽可能多的 Sync 分。\n\n🧠 心灵感应（5轮）\n• 一人猜另一人会如何回答一个旅行问题，然后把手机交给对方，由对方真实作答。\n• 答案相同 = +1 Sync。\n\n🤔 你更愿意（3轮）\n• 两人各自秘密选择。选择一致 = +1 Sync。\n\n💞 结果\n• 0–2 陌生人 · 3–4 邻座伙伴 · 5–6 旅行搭子 · 7–8 灵魂伴侣",
   rulesEmojiStory:
-    "📖 Story\n• The app opens with a travel scene. The story has 3 acts: Departure, Turbulence, Landing.\n\n✍️ Your turn\n• Pick a connector word (Then, But, Suddenly…) and 1–2 emoji from your hand of 6.\n• Pass the phone to the next storyteller.\n\n🗳️ Voting\n• After every act, each player secretly votes for the contribution they liked most (never their own). Each vote = 1 point.\n• Story-only mode skips voting — just read your masterpiece aloud at the end.\n\n🏆 Most votes after 3 acts wins.",
+    "📖 故事\n• 应用会以一个旅行场景开场。故事分3幕：出发、颠簸、着陆。\n\n✍️ 轮到你\n• 选一个连接词（然后、但是、突然…），再从手中6个表情里选1–2个。\n• 把手机交给下一位讲述者。\n\n🗳️ 投票\n• 每幕结束后，每位玩家秘密投票给最喜欢的一段（不能投自己）。每票 = 1分。\n• 仅故事模式不投票——最后把你们的杰作大声读出来就好。\n\n🏆 3幕后得票最多者获胜。",
   converterRatesLive: "实时汇率 · 更新于 {{date}}",
   converterRatesRefresh: "立即更新汇率",
   converterRatesUpdating: "更新中…",
@@ -1406,7 +1414,7 @@
   gameCategoryBlitzName: "词类闪电战",
   gameCategoryBlitzDescription: "20秒内尽可能多地说出来——其他人当裁判",
   rulesCategoryBlitz:
-    "🎯 Goal\n• Score the most answers across 3 turns.\n\n⏱️ Your turn\n• You get a category and 20 seconds.\n• Say answers out loud; tap the big button once for each one the others accept.\n• Tapped by mistake? Use Undo.\n\n👥 Everyone else\n• You are the judge: no repeats, no nonsense.\n\n🏆 Most answers after 3 rounds wins.",
+    "🎯 目标\n• 在3个回合中说出最多的答案。\n\n⏱️ 轮到你\n• 你会得到一个类别和20秒。\n• 大声说出答案；其他人每认可一个，就点一次大按钮。\n• 点错了？用撤销。\n\n👥 其他所有人\n• 你们是裁判：不许重复，不许乱说。\n\n🏆 3轮后答案最多者获胜。",
   cbzIntro: "一部手机，每人{{seconds}}秒。大声说出答案，其他人判定。",
   cbzNameAsMany: "尽可能多地说出",
   cbzCountIt: "计一个",
@@ -1462,7 +1470,7 @@
   gameTiltBalanceName: "颠簸测试",
   gameTiltBalanceDescription: "把手机端平，让小球留在圈内——还有阵风",
   rulesTiltBalance:
-    "🎯 Goal\n• Keep the ball inside the ring as long as you can.\n\n📱 How to play\n• Hold the phone flat in your hand, screen up.\n• Tilt gently to steer the ball — small movements work best.\n• The ring shrinks the longer you survive, and turbulence gusts push the ball at random.\n• The turn ends when the ball rolls off the plate.\n\n🏆 Scoring\n• 1 point per second survived, plus a bonus for your longest unbroken stretch inside the ring.\n• 1 player: beat your own best. 2–6 players: one turn each, highest score wins.",
+    "🎯 目标\n• 让小球尽可能久地留在圆环内。\n\n📱 玩法\n• 把手机平放在手上，屏幕朝上。\n• 轻轻倾斜来引导小球——小幅动作效果最好。\n• 坚持越久，圆环越小，颠簸气流还会随机推动小球。\n• 小球滚出托盘时，本回合结束。\n\n🏆 计分\n• 每坚持1秒得1分，另有奖励分给你在圆环内连续停留的最长时间。\n• 1名玩家：挑战自己的纪录。2–6名玩家：每人一回合，最高分获胜。",
   tbIntro: "把手机平放在手心——别晃动，别扔。",
   tbHoldFlat: "手机端平，屏幕朝上",
   tbHint: "轻轻倾斜。幅度大了小球就飞出去了。",
@@ -1473,8 +1481,7 @@
   achieveSteadyHandsTitle: "稳如磐石",
   achieveSteadyHandsDesc: "在颠簸测试中得到40分",
   reviewAskTitle: "给 FlightMode 评分？",
-  reviewAskBody:
-    "如果你喜欢这款应用，请在 Google Play 上留下几句话，帮助其他旅行者找到它。",
+  reviewAskBody: "在 Google Play 上告诉其他旅行者你对 FlightMode 的看法。",
   reviewAskRate: "去评分",
   reviewAskLater: "以后再说",
   reviewAskNever: "不用了",

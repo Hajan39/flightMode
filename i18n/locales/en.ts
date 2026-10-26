@@ -12,6 +12,10 @@ export const en = {
     "A new version has been downloaded. Restart to apply?",
   updateLater: "Later",
   updateRestart: "Restart",
+  errorBoundaryTitle: "Something went wrong",
+  errorBoundarySubtitle:
+    "The app hit an unexpected error. You can try again — your saved data is safe.",
+  errorBoundaryRetry: "Try again",
   language: "Language",
   languageSystem: "System",
   languageDevice: "Device: {{language}}",
@@ -739,9 +743,9 @@ export const en = {
   settingsAppPreferencesHint: "Control language and appearance in one place.",
   settingsLanguageHint: "Choose how the app text is displayed.",
   settingsThemeHint: "Switch the visual style to match your environment.",
-  settingsSync: "Article Sync",
+  settingsSync: "Online Sync",
   settingsSyncHint:
-    "Choose when FlightMode may download fresh travel articles.",
+    "Choose when FlightMode may use the internet for articles, images, exchange rates and anonymous analytics.",
   settingsSyncWifiOnly: "Wi-Fi only",
   settingsSyncWifiOnlyHint: "Recommended. Sync only on Wi-Fi or Ethernet.",
   settingsSyncWifiAndMobile: "Wi-Fi + mobile data",
@@ -760,7 +764,7 @@ export const en = {
   settingsPrivacy: "Privacy",
   settingsAnalyticsLabel: "Anonymous Analytics",
   settingsAnalyticsHint:
-    "Help improve FlightMode with anonymous usage data. No personal information is ever collected.",
+    "Help improve FlightMode with anonymous usage data (no personal information). Sent only on networks allowed by Online Sync.",
   // Achievement Toast
   achievementUnlocked: "Achievement Unlocked!",
   // Achievement Titles & Descriptions
@@ -773,7 +777,7 @@ export const en = {
   achieveMarathonTitle: "Marathon",
   achieveMarathonDesc: "Play 50 games total",
   achieveHighScorerTitle: "High Scorer",
-  achieveHighScorerDesc: "Score in every game",
+  achieveHighScorerDesc: "Score in 13 different games",
   achieveQuizAceTitle: "Quiz Ace",
   achieveQuizAceDesc: "Score 100 in the quiz",
   achieveKnowItAllTitle: "Know-It-All",
@@ -1013,7 +1017,7 @@ export const en = {
   gameSnakeName: "Snake",
   gameSnakeDescription: "Eat food, grow longer, don't crash!",
   rulesSnake:
-    "🎯 Goal\n• Eat as much food as possible without hitting a wall or yourself!\n\n🐍 How to Play\n• Use the D-pad to steer the snake.\n• Each food item eaten grows the snake by one tile.\n• Hitting a wall or your own body ends the game.\n\n⭐ Scoring\n• Score = number of apples eaten.\n• Speed increases as you grow!",
+    "🎯 Goal\n• Eat as much food as possible without hitting a wall or yourself!\n\n🐍 How to Play\n• Use the D-pad or swipe to steer the snake.\n• Each food item eaten grows the snake by one tile.\n• Hitting a wall or your own body ends the game.\n\n⭐ Scoring\n• Score = number of apples eaten.\n• Speed increases as you grow!",
   snkScore: "Score",
   snkHighScore: "Best",
   snkGameOver: "Game Over",
@@ -1092,7 +1096,7 @@ export const en = {
   spSolved: "Solved!",
   achievePuzzleSliderTitle: "Slide Master",
   achievePuzzleSliderDesc:
-    "Solve the Sliding Puzzle with a score of 2000 or more.",
+    "Solve the Sliding Puzzle with a score of 1500 or more.",
   // Cargo Catch game
   gameCargoCatchName: "Cargo Catch",
   gameCargoCatchDescription:
@@ -1169,6 +1173,7 @@ export const en = {
   a11yRowCol: "Row {{row}}, column {{col}}",
   rjamA11yPlane: "Plane",
   rjamA11yVehicle: "Vehicle {{id}}",
+  rjamA11yExit: "Exit",
   sunMoonSun: "Sun",
   sunMoonMoon: "Moon",
   sunMoonEmpty: "Empty",
@@ -1317,6 +1322,8 @@ export const en = {
   mpTiebreakHint: "Tie in wins? Most total points takes it.",
   a11yDropInColumn: "Drop in column {{col}}",
   a11yBackspace: "Backspace",
+  a11yGameRules: "Game rules",
+  a11yCloseRules: "Close rules",
   a11yDecreaseQty: "Decrease quantity",
   a11yIncreaseQty: "Increase quantity",
   a11yDieFace: "Face {{n}}",
@@ -1544,7 +1551,7 @@ export const en = {
   achieveSteadyHandsDesc: "Score 40 points in Turbulence Test",
   reviewAskTitle: "Rate FlightMode?",
   reviewAskBody:
-    "If you enjoy the app, leave a few words on Google Play. It helps other travellers find it.",
+    "Tell other travellers what you think of FlightMode on Google Play.",
   reviewAskRate: "Rate",
   reviewAskLater: "Later",
   reviewAskNever: "No, thanks",

@@ -102,12 +102,84 @@ export function getRatesAgeDays(ratesAsOf: string, nowMs: number): number {
   return Math.max(0, Math.floor((nowMs - asOf) / 86_400_000));
 }
 
-/** Parse a user-typed amount ("1 234,5" → 1234.5). Returns null when empty/invalid. */
-export function parseAmount(input: string): number | null {
-  const cleaned = input.replace(/\s/g, "").replace(",", ".");
-  if (cleaned.length === 0) {
+/** Any whitespace, incl. NBSP / thin / narrow no-break spaces (digit grouping). */
+const AMOUNT_SPACES = /\s/g;
+const AMOUNT_CHARS = /^-?[\d.,]*\d[\d.,]*$/;
+const DIGITS = /^\d*$/;
+const LEAD_GROUP = /^\d{1,3}$/;
+const LEAD_GROUP_NO_ZERO = /^[1-9]\d{0,2}$/;
+const THREE_DIGITS = /^\d{3}$/;
+
+/** `int` uses `sep` as a thousands separator: 1–3 digits, then groups of 3. */
+function isGrouped(int: string, sep: string): boolean {
+  const groups = int.split(sep);
+  return (
+    groups.length > 1 &&
+    LEAD_GROUP.test(groups[0]) &&
+    groups.slice(1).every((g) => THREE_DIGITS.test(g))
+  );
+}
+
+/** "int.frac" from validated digit strings (either may be empty, not both). */
+function toNumber(sign: string, int: string, frac: string): number | null {
+  if (
+    !(DIGITS.test(int) && DIGITS.test(frac)) ||
+    int.length + frac.length === 0
+  ) {
     return null;
   }
-  const value = Number(cleaned);
+  const value = Number(`${sign}${int || "0"}.${frac || "0"}`);
   return Number.isFinite(value) ? value : null;
+}
+
+/**
+ * Parse a user-typed amount, whatever the locale's separators:
+ * "1 234,5", "1.234,5", "1,234.5", "1,234,567", "1.234.567", "12,50", "12.5".
+ * - Spaces (incl. NBSP / thin spaces) are grouping and are stripped.
+ * - Both "." and ",": the LAST one is the decimal separator, the other groups.
+ * - Only ",": decimal when it appears once (",234" style 3-digit tails after a
+ *   valid leading group are grouping: "1,234" → 1234); repeated → grouping.
+ * - Only ".": decimal when it appears once ("1.234" → 1.234); repeated →
+ *   grouping ("1.234.567" → 1234567).
+ * Returns null when empty or not a well-formed amount.
+ */
+export function parseAmount(input: string): number | null {
+  const cleaned = input.replace(AMOUNT_SPACES, "");
+  if (!AMOUNT_CHARS.test(cleaned)) {
+    return null;
+  }
+  const sign = cleaned.startsWith("-") ? "-" : "";
+  const body = sign ? cleaned.slice(1) : cleaned;
+  const lastDot = body.lastIndexOf(".");
+  const lastComma = body.lastIndexOf(",");
+
+  if (lastDot === -1 && lastComma === -1) {
+    return toNumber(sign, body, "");
+  }
+
+  if (lastDot !== -1 && lastComma !== -1) {
+    const decimal = lastDot > lastComma ? "." : ",";
+    const group = decimal === "." ? "," : ".";
+    const at = Math.max(lastDot, lastComma);
+    const int = body.slice(0, at);
+    const frac = body.slice(at + 1);
+    if (int.includes(decimal) || !isGrouped(int, group)) {
+      return null;
+    }
+    return toNumber(sign, int.split(group).join(""), frac);
+  }
+
+  const sep = lastDot === -1 ? "," : ".";
+  const parts = body.split(sep);
+  if (parts.length > 2) {
+    return isGrouped(body, sep) ? toNumber(sign, parts.join(""), "") : null;
+  }
+  const [int, frac] = parts;
+  // A lone comma with exactly 3 trailing digits after a 1–3 digit group
+  // without a leading zero is a thousands separator ("1,234"); a lone dot
+  // stays decimal ("1.234" → 1.234, as before).
+  if (sep === "," && LEAD_GROUP_NO_ZERO.test(int) && THREE_DIGITS.test(frac)) {
+    return toNumber(sign, `${int}${frac}`, "");
+  }
+  return toNumber(sign, int, frac);
 }

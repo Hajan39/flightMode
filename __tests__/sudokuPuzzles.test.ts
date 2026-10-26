@@ -96,3 +96,109 @@ describe("sudoku transformPuzzle", () => {
     }
   );
 });
+
+/** Number of solutions of a clue grid, stopping at `cap` (MRV backtracking). */
+function countSolutions(clues: number[], cap = 2): number {
+  const g = [...clues];
+  const rows = new Array<number>(9).fill(0);
+  const cols = new Array<number>(9).fill(0);
+  const boxes = new Array<number>(9).fill(0);
+  const boxOf = (i: number) =>
+    Math.floor(Math.floor(i / 9) / 3) * 3 + Math.floor((i % 9) / 3);
+  for (let i = 0; i < 81; i += 1) {
+    if (g[i] !== 0) {
+      const bit = 1 << g[i];
+      rows[Math.floor(i / 9)] |= bit;
+      cols[i % 9] |= bit;
+      boxes[boxOf(i)] |= bit;
+    }
+  }
+  let found = 0;
+  const search = (): void => {
+    if (found >= cap) {
+      return;
+    }
+    let best = -1;
+    let bestMask = 0;
+    let bestCount = 10;
+    for (let i = 0; i < 81; i += 1) {
+      if (g[i] !== 0) {
+        continue;
+      }
+      const used = rows[Math.floor(i / 9)] | cols[i % 9] | boxes[boxOf(i)];
+      let mask = 0;
+      let n = 0;
+      for (let v = 1; v <= 9; v += 1) {
+        if (!(used & (1 << v))) {
+          mask |= 1 << v;
+          n += 1;
+        }
+      }
+      if (n === 0) {
+        return;
+      }
+      if (n < bestCount) {
+        best = i;
+        bestMask = mask;
+        bestCount = n;
+        if (n === 1) {
+          break;
+        }
+      }
+    }
+    if (best === -1) {
+      found += 1;
+      return;
+    }
+    const r = Math.floor(best / 9);
+    const c = best % 9;
+    const b = boxOf(best);
+    for (let v = 1; v <= 9 && found < cap; v += 1) {
+      const bit = 1 << v;
+      if (!(bestMask & bit)) {
+        continue;
+      }
+      g[best] = v;
+      rows[r] |= bit;
+      cols[c] |= bit;
+      boxes[b] |= bit;
+      search();
+      g[best] = 0;
+      rows[r] &= ~bit;
+      cols[c] &= ~bit;
+      boxes[b] &= ~bit;
+    }
+  };
+  search();
+  return found;
+}
+
+describe("sudoku puzzle uniqueness", () => {
+  test("the counter detects a multi-solution grid", () => {
+    expect(countSolutions(new Array(81).fill(0))).toBe(2);
+  });
+
+  test.each(PUZZLES.map((p, i) => [i, p.difficulty, p] as const))(
+    "puzzle #%i (%s) has exactly one solution",
+    (_i, _diff, puzzle) => {
+      expect(countSolutions(puzzle.clues)).toBe(1);
+    }
+  );
+
+  test.each(PUZZLES.map((p, i) => [i, p] as const))(
+    "transformed variants of puzzle #%i stay uniquely solvable",
+    (i, puzzle) => {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const { transformPuzzle } = require("@/games/sudoku/logic");
+      let seed = 11 + i;
+      const rand = () => {
+        seed = (seed * 16_807) % 2_147_483_647;
+        return seed / 2_147_483_647;
+      };
+      for (let k = 0; k < 3; k += 1) {
+        const v = transformPuzzle(puzzle, rand);
+        expect(countSolutions(v.clues)).toBe(1);
+      }
+    }
+  );
+});

@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-10-26
+
+- review kolo 1+2: sudoku/ATC updater chyby, sleep timer pri zhasnutem displeji, Play Games retry + resend, hydration zavody; sudoku banka jednoznacna, host achievementy jen z realnych zapasu, snake otoceni, prevodnik s oddelovaci tisicu; soukromi (opt-out pred hydrataci, buckety misto presneho casu letu, sanitizace chyb, timeout feedu, obrazky dle sync politiky); preklady (popisy achievementu, 45 anglickych pravidel, de/fr/pt sjednoceni, cs/de gramatika); mutacni audit testu 56 % → 95 %, 1200+ testu
+
 ## 2026-10-25
 
 - sibenice cestina: seznam byl ořezany na A–Z (BEH, PRISTANI) a obsahoval nesmysly (PLN, OSOV, TYRL); novy seznam 78 skutecnych slov s diakritikou, klavesnice A–Z odkryva i pismena s hackem/carkou (R → Ř); testy hlidaji resitelnost vsech jazyku; z Wordle odstraneno VEPŘO a SUSHI

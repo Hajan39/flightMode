@@ -706,7 +706,7 @@ export default function WordScrambleGame() {
       {/* Action buttons: Backspace + Skip */}
       <RNView style={styles.actionsRow}>
         <Pressable
-          accessibilityLabel="Backspace"
+          accessibilityLabel={t("a11yBackspace")}
           accessibilityRole="button"
           disabled={phase !== "playing" || answer.length === 0}
           onPress={handleBackspace}

@@ -21,7 +21,11 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useChecklistStore } from "@/store/useChecklistStore";
 import { useFlightStore } from "@/store/useFlightStore";
-import { captureAnalyticsEvent } from "@/utils/analytics";
+import {
+  captureAnalyticsEvent,
+  flightDurationBucket,
+  hoursUntilDepartureBucket,
+} from "@/utils/analytics";
 import {
   cancelJetlagSleepReminder,
   scheduleFlightReadyReminder,
@@ -234,6 +238,14 @@ export default function FlightEditScreen() {
       return;
     }
 
+    // Analytics get coarse buckets only: exact departure + duration would
+    // near-identify a real flight.
+    const departureBucket = hoursUntilDepartureBucket(
+      departureTime,
+      Date.now()
+    );
+    const durationBucket = flightDurationBucket(totalMinutes);
+
     const flightId = existingFlight?.id ?? Date.now().toString();
     setFlight({
       departureTime,
@@ -268,9 +280,8 @@ export default function FlightEditScreen() {
         );
         if (sleepResult.scheduled) {
           captureAnalyticsEvent("reminder_scheduled", {
-            departure_time: departureTime,
+            hours_until_departure_bucket: departureBucket,
             reminder_kind: "jetlag_sleep",
-            scheduled_for: sleepResult.scheduledFor,
           });
         }
       } else {
@@ -282,12 +293,12 @@ export default function FlightEditScreen() {
       void cancelJetlagSleepReminder();
     }
     captureAnalyticsEvent(isEditingFlight ? "flight_edited" : "flight_added", {
-      departure_time: departureTime,
-      duration_minutes: totalMinutes,
+      duration_bucket: durationBucket,
+      hours_until_departure_bucket: departureBucket,
     });
     captureAnalyticsEvent("flight_setup_completed", {
-      departure_time: departureTime,
-      duration_minutes: totalMinutes,
+      duration_bucket: durationBucket,
+      hours_until_departure_bucket: departureBucket,
       is_departure_in_future: departureTime > Date.now(),
       mode: isEditingFlight ? "edit" : "create",
     });
@@ -295,13 +306,12 @@ export default function FlightEditScreen() {
     const reminderResult = await scheduleFlightReadyReminder(departureTime);
     if (reminderResult.scheduled) {
       captureAnalyticsEvent("reminder_scheduled", {
-        departure_time: departureTime,
+        hours_until_departure_bucket: departureBucket,
         reminder_kind: "flight_ready",
-        scheduled_for: reminderResult.scheduledFor,
       });
     } else if (reminderResult.reason === "permission_denied") {
       captureAnalyticsEvent("reminder_permission_denied", {
-        departure_time: departureTime,
+        hours_until_departure_bucket: departureBucket,
         reminder_kind: "flight_ready",
       });
     }

@@ -23,21 +23,71 @@ export function hasContentSyncEndpoint() {
   return CONTENT_FEED_URL.length > 0;
 }
 
+/** Same budget as the rates fetch: a captive portal must not hang "Refreshing…". */
+export const CONTENT_FEED_TIMEOUT_MS = 8000;
+
+/**
+ * raw.githubusercontent.com serves `.json` as `text/plain`, so plain text is
+ * accepted; HTML (captive-portal login pages) and other types are not.
+ */
+export function isAcceptableFeedContentType(contentType: string | null) {
+  if (!contentType) {
+    return true;
+  }
+  const type = contentType.split(";")[0].trim().toLowerCase();
+  return (
+    type === "application/json" ||
+    type.endsWith("+json") ||
+    type === "text/plain" ||
+    type === "text/json"
+  );
+}
+
 export async function fetchSyncedContent(
-  currentVersion: string | null
+  currentVersion: string | null,
+  fetchImpl: typeof fetch = fetch
 ): Promise<ContentSyncResult | null> {
-  const response = await fetch(CONTENT_FEED_URL, {
-    headers: { Accept: "application/json" },
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  // Race as well as abort: a fetch implementation that ignores the signal
+  // (or a body that never finishes) still settles.
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => {
+      controller.abort();
+      reject(new Error("Content sync timed out"));
+    }, CONTENT_FEED_TIMEOUT_MS);
   });
 
-  if (!response.ok) {
-    throw new Error(`Content sync failed with status ${response.status}`);
-  }
+  try {
+    return await Promise.race([
+      (async () => {
+        const response = await fetchImpl(CONTENT_FEED_URL, {
+          headers: { Accept: "application/json" },
+          signal: controller.signal,
+        });
 
-  return parseContentFeed(
-    (await response.json()) as ContentFeed,
-    currentVersion
-  );
+        if (!response.ok) {
+          throw new Error(`Content sync failed with status ${response.status}`);
+        }
+        if (
+          !isAcceptableFeedContentType(response.headers.get("content-type"))
+        ) {
+          throw new Error("Content feed is not JSON");
+        }
+
+        let feed: unknown;
+        try {
+          feed = await response.json();
+        } catch (error) {
+          throw new Error("Content feed is not JSON", { cause: error });
+        }
+        return parseContentFeed((feed ?? {}) as ContentFeed, currentVersion);
+      })(),
+      timeout,
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 /** Validates the feed; malformed items are dropped so one typo can't break the rest. */

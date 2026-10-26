@@ -1,10 +1,16 @@
-import { PostHogProvider, usePostHog } from "posthog-react-native";
-import { type PropsWithChildren, useEffect, useRef } from "react";
+import {
+  PostHogPersistedProperty,
+  PostHogProvider,
+  usePostHog,
+} from "posthog-react-native";
+import { type PropsWithChildren, useEffect, useRef, useState } from "react";
 
+import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import {
   captureAnalyticsEvent,
   disableAnalytics,
+  getAnalyticsUploadMode,
   setAnalyticsSink,
 } from "@/utils/analytics";
 import { runAfterHydration } from "@/utils/hydration";
@@ -24,6 +30,9 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
       autocapture={false}
       options={{
         captureAppLifecycleEvents: false,
+        // Opted out until PostHogSink has read the user's (hydrated) choice:
+        // nothing may be captured for a user who switched analytics off.
+        defaultOptIn: false,
         disableGeoip: true,
         disableRemoteConfig: true,
         disableSurveys: true,
@@ -77,14 +86,57 @@ export function AnalyticsBootstrap() {
 
 function PostHogSink({ children }: PropsWithChildren) {
   const posthog = usePostHog();
+  const [hydrated, setHydrated] = useState(() =>
+    useSettingsStore.persist.hasHydrated()
+  );
   const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
+  const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
+  const isInternetReachable = useNetworkStore((s) => s.isInternetReachable);
+  const networkType = useNetworkStore((s) => s.type);
+
+  useEffect(
+    () => runAfterHydration(useSettingsStore, () => setHydrated(true)),
+    []
+  );
+
+  const mode = getAnalyticsUploadMode({
+    enabled: analyticsEnabled,
+    hydrated,
+    networkAllowsUpload: canSyncOnNetwork(
+      { isInternetReachable, type: networkType },
+      syncNetworkPolicy
+    ),
+  });
 
   useEffect(() => {
-    if (!analyticsEnabled) {
-      disableAnalytics();
+    if (mode === "hold") {
+      // Buffer in the bounded in-app queue (opt-out unknown yet, or the sync
+      // policy forbids this network). PostHog's own queue may still hold
+      // events captured while sending was allowed; its SDK flushes those on
+      // its own timer / AppState change.
+      setAnalyticsSink(null);
       return;
     }
 
+    if (mode === "disabled") {
+      disableAnalytics();
+      // biome-ignore lint/complexity/noVoid: fire-and-forget; must never block UI
+      void (async () => {
+        try {
+          await posthog.optOut();
+          // optOut() only stops new captures — PostHog would still upload its
+          // persisted queue. Drop it once storage is loaded.
+          await posthog.ready();
+          posthog.setPersistedProperty(PostHogPersistedProperty.Queue, null);
+        } catch {
+          // Analytics must never break offline-first app flows.
+        }
+      })();
+      return;
+    }
+
+    // biome-ignore lint/complexity/noVoid: fire-and-forget; must never block UI
+    void posthog.optIn().catch(() => undefined);
     setAnalyticsSink((eventName, properties) => {
       try {
         posthog.capture(eventName, properties);
@@ -94,7 +146,7 @@ function PostHogSink({ children }: PropsWithChildren) {
     });
 
     return () => setAnalyticsSink(null);
-  }, [posthog, analyticsEnabled]);
+  }, [posthog, mode]);
 
   return <>{children}</>;
 }

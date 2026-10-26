@@ -20,7 +20,7 @@ import {
   useRatesStore,
 } from "@/store/useRatesStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
-import { captureAnalyticsEvent } from "@/utils/analytics";
+import { captureAnalyticsEvent, normalizeRouteSource } from "@/utils/analytics";
 import {
   convertCurrency,
   convertUnit,
@@ -95,7 +95,7 @@ export default function ConverterScreen() {
   useEffect(() => {
     captureAnalyticsEvent("converter_open", {
       kind: "currency",
-      source: source ?? "direct",
+      source: normalizeRouteSource(source),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [source]);

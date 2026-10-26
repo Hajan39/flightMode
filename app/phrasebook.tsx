@@ -19,7 +19,7 @@ import {
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
-import { captureAnalyticsEvent } from "@/utils/analytics";
+import { captureAnalyticsEvent, normalizeRouteSource } from "@/utils/analytics";
 
 export default function PhrasebookScreen() {
   const colorScheme = useColorScheme();
@@ -43,7 +43,7 @@ export default function PhrasebookScreen() {
   useEffect(() => {
     captureAnalyticsEvent("phrasebook_open", {
       language: initial,
-      source: source ?? "direct",
+      source: normalizeRouteSource(source),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [source, initial]);
