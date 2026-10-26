@@ -13,6 +13,10 @@ import {
   StyleSheet,
   type ViewStyle,
 } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -21,6 +25,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -37,6 +42,9 @@ import {
   transformPuzzle,
 } from "./logic";
 import { PUZZLES } from "./puzzles";
+
+/** Cap system font scaling inside fixed-size board cells so text never overflows them. */
+const CELL_FONT_SCALE = 1.3;
 
 // ---------------------------------------------------------------------------
 // Types
@@ -185,8 +193,10 @@ export default function SudokuGame() {
     }
     const interval = setInterval(() => {
       setElapsedSeconds(
-        pausedAccumulatedRef.current +
-          Math.floor((Date.now() - startTimeRef.current) / 1000)
+        Math.floor(
+          pausedAccumulatedRef.current +
+            (Date.now() - startTimeRef.current) / 1000
+        )
       );
     }, 1000);
     return () => clearInterval(interval);
@@ -232,11 +242,13 @@ export default function SudokuGame() {
 
   // ── Pause / resume ───────────────────────────────────────────────────────
   const handlePause = useCallback(() => {
-    pausedAccumulatedRef.current += Math.floor(
-      (Date.now() - startTimeRef.current) / 1000
-    );
+    // Exact seconds (floored only when read) so pauses never drop time.
+    pausedAccumulatedRef.current += (Date.now() - startTimeRef.current) / 1000;
     setPhase("paused");
   }, []);
+
+  // Leaving the app (home, call, lock) pauses the clock; resuming is manual.
+  useAutoPause(handlePause, phase === "playing");
 
   const handleResume = useCallback(() => {
     startTimeRef.current = Date.now();
@@ -517,242 +529,259 @@ export default function SudokuGame() {
   const isInteractive = phase === "playing";
 
   return (
-    <View style={[styles.playContainer, { backgroundColor: theme.background }]}>
-      {/* ── HUD ── */}
-      <RNView style={styles.hudRow}>
-        {selectedDifficulty === null ? null : (
-          <RNView
+    <A11yOverlayScope>
+      <View style={[styles.screen, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent style={styles.playContainer}>
+          {/* ── HUD ── */}
+          <RNView style={styles.hudRow}>
+            {selectedDifficulty === null ? null : (
+              <RNView
+                style={[
+                  styles.diffChip,
+                  {
+                    backgroundColor: `${diffColor(selectedDifficulty)}22`,
+                    borderColor: diffColor(selectedDifficulty),
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.diffChipText,
+                    { color: diffColor(selectedDifficulty) },
+                  ]}
+                >
+                  {diffLabel(selectedDifficulty)}
+                </Text>
+              </RNView>
+            )}
+
+            <RNView style={styles.hudRight}>
+              <RNView
+                style={[
+                  styles.hudStat,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.hudStatLabel, { color: theme.mutedText }]}>
+                  {t("sdkTime")}
+                </Text>
+                <Text style={[styles.hudStatValue, { color: theme.text }]}>
+                  {formatTime(elapsedSeconds)}
+                </Text>
+              </RNView>
+
+              <RNView
+                style={[
+                  styles.hudStat,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.hudStatLabel, { color: theme.mutedText }]}>
+                  {t("sdkHints")}
+                </Text>
+                <Text style={[styles.hudStatValue, { color: theme.text }]}>
+                  {hintsLeft}/3
+                </Text>
+              </RNView>
+
+              <GameControls
+                isPaused={phase === "paused"}
+                onPause={handlePause}
+                onReset={resetToIdle}
+              />
+            </RNView>
+          </RNView>
+
+          {/* ── Grid ── */}
+          <Animated.View
             style={[
-              styles.diffChip,
+              styles.grid,
               {
-                backgroundColor: `${diffColor(selectedDifficulty)}22`,
-                borderColor: diffColor(selectedDifficulty),
+                borderBottomWidth: 2,
+                borderColor: theme.text,
+                borderLeftWidth: 2,
+                borderRightWidth: 2,
+                borderTopWidth: 2,
+                transform: [{ translateX: gridShake }],
+                width: cellSize * 9 + 4, // + left/right outer borders (RN counts borders in width)
+              },
+            ]}
+          >
+            {board.map((value, idx) => {
+              const isClue = clues[idx] !== 0;
+              const isError = errors.has(idx);
+              const isSelected = selectedCell === idx;
+              const isPeerCell =
+                selectedCell !== null &&
+                selectedCell !== idx &&
+                isPeer(selectedCell, idx);
+              const isMatchingNumber =
+                selectedCell !== null &&
+                value !== 0 &&
+                board[selectedCell] !== 0 &&
+                value === board[selectedCell] &&
+                idx !== selectedCell;
+
+              let cellBg = theme.background;
+              if (isSelected) {
+                cellBg = `${theme.tint}44`;
+              } else if (isMatchingNumber) {
+                cellBg = `${theme.tint}22`;
+              } else if (isPeerCell) {
+                cellBg = theme.surface;
+              }
+
+              let textColor = theme.text;
+              if (isError) {
+                textColor = theme.danger;
+              } else if (!isClue && value !== 0) {
+                textColor = theme.tint;
+              }
+
+              const borderRightWidth = getCellBorderRight(idx);
+              const borderBottomWidth = getCellBorderBottom(idx);
+
+              return (
+                <AnimatedPressable
+                  disabled={isClue || !isInteractive}
+                  key={idx}
+                  onPress={() => handleCellPress(idx)}
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: cellBg,
+                    borderBottomColor:
+                      borderBottomWidth === 2 ? theme.text : theme.border,
+                    borderBottomWidth,
+                    borderRightColor:
+                      borderRightWidth === 2 ? theme.text : theme.border,
+                    borderRightWidth,
+                    height: cellSize,
+                    justifyContent: "center",
+                    transform: isSelected
+                      ? [{ scale: selectPulse }]
+                      : undefined,
+                    width: cellSize,
+                  }}
+                >
+                  {value === 0 ? null : (
+                    <Text
+                      maxFontSizeMultiplier={CELL_FONT_SCALE}
+                      style={{
+                        color: textColor,
+                        fontSize: cellSize > 38 ? FontSize.md : FontSize.sm,
+                        fontWeight: isClue ? FontWeight.black : FontWeight.bold,
+                      }}
+                    >
+                      {value}
+                    </Text>
+                  )}
+                </AnimatedPressable>
+              );
+            })}
+          </Animated.View>
+
+          {/* ── Numpad ── */}
+          <RNView style={styles.numpad}>
+            {([1, 2, 3, 4, 5, 6, 7, 8, 9] as const).map((n) => (
+              <BouncyPressable
+                disabled={!isInteractive || selectedCell === null}
+                key={n}
+                onPress={() => handleNumberInput(n)}
+                style={[
+                  styles.numBtn,
+                  {
+                    backgroundColor: theme.card,
+                    borderColor: theme.border,
+                    opacity: !isInteractive || selectedCell === null ? 0.4 : 1,
+                  },
+                ]}
+              >
+                <Text
+                  maxFontSizeMultiplier={CELL_FONT_SCALE}
+                  style={[styles.numBtnText, { color: theme.text }]}
+                >
+                  {n}
+                </Text>
+              </BouncyPressable>
+            ))}
+
+            {/* Erase button */}
+            <BouncyPressable
+              disabled={!isInteractive || selectedCell === null}
+              onPress={handleErase}
+              style={[
+                styles.numBtn,
+                {
+                  backgroundColor: theme.card,
+                  borderColor: theme.border,
+                  opacity: !isInteractive || selectedCell === null ? 0.4 : 1,
+                },
+              ]}
+            >
+              <Text
+                maxFontSizeMultiplier={CELL_FONT_SCALE}
+                style={[styles.numBtnText, { color: theme.mutedText }]}
+              >
+                ✕
+              </Text>
+            </BouncyPressable>
+          </RNView>
+
+          {/* ── Hint button ── */}
+          <Pressable
+            disabled={!isInteractive || hintsLeft <= 0}
+            onPress={handleHint}
+            style={[
+              styles.hintBtn,
+              {
+                backgroundColor:
+                  hintsLeft > 0 ? `${theme.tint}18` : theme.surface,
+                borderColor: hintsLeft > 0 ? theme.tint : theme.border,
+                opacity: !isInteractive || hintsLeft <= 0 ? 0.5 : 1,
               },
             ]}
           >
             <Text
               style={[
-                styles.diffChipText,
-                { color: diffColor(selectedDifficulty) },
+                styles.hintBtnText,
+                { color: hintsLeft > 0 ? theme.tint : theme.mutedText },
               ]}
             >
-              {diffLabel(selectedDifficulty)}
+              {t("sdkHintsLeft", { count: hintsLeft })}
             </Text>
-          </RNView>
-        )}
-
-        <RNView style={styles.hudRight}>
-          <RNView
-            style={[
-              styles.hudStat,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.hudStatLabel, { color: theme.mutedText }]}>
-              {t("sdkTime")}
-            </Text>
-            <Text style={[styles.hudStatValue, { color: theme.text }]}>
-              {formatTime(elapsedSeconds)}
-            </Text>
-          </RNView>
-
-          <RNView
-            style={[
-              styles.hudStat,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.hudStatLabel, { color: theme.mutedText }]}>
-              {t("sdkHints")}
-            </Text>
-            <Text style={[styles.hudStatValue, { color: theme.text }]}>
-              {hintsLeft}/3
-            </Text>
-          </RNView>
-
-          <GameControls
-            isPaused={phase === "paused"}
-            onPause={handlePause}
-            onReset={resetToIdle}
-          />
-        </RNView>
-      </RNView>
-
-      {/* ── Grid ── */}
-      <Animated.View
-        style={[
-          styles.grid,
-          {
-            borderBottomWidth: 2,
-            borderColor: theme.text,
-            borderLeftWidth: 2,
-            borderRightWidth: 2,
-            borderTopWidth: 2,
-            transform: [{ translateX: gridShake }],
-            width: cellSize * 9 + 4, // + left/right outer borders (RN counts borders in width)
-          },
-        ]}
-      >
-        {board.map((value, idx) => {
-          const isClue = clues[idx] !== 0;
-          const isError = errors.has(idx);
-          const isSelected = selectedCell === idx;
-          const isPeerCell =
-            selectedCell !== null &&
-            selectedCell !== idx &&
-            isPeer(selectedCell, idx);
-          const isMatchingNumber =
-            selectedCell !== null &&
-            value !== 0 &&
-            board[selectedCell] !== 0 &&
-            value === board[selectedCell] &&
-            idx !== selectedCell;
-
-          let cellBg = theme.background;
-          if (isSelected) {
-            cellBg = `${theme.tint}44`;
-          } else if (isMatchingNumber) {
-            cellBg = `${theme.tint}22`;
-          } else if (isPeerCell) {
-            cellBg = theme.surface;
-          }
-
-          let textColor = theme.text;
-          if (isError) {
-            textColor = theme.danger;
-          } else if (!isClue && value !== 0) {
-            textColor = theme.tint;
-          }
-
-          const borderRightWidth = getCellBorderRight(idx);
-          const borderBottomWidth = getCellBorderBottom(idx);
-
-          return (
-            <AnimatedPressable
-              disabled={isClue || !isInteractive}
-              key={idx}
-              onPress={() => handleCellPress(idx)}
-              style={{
-                alignItems: "center",
-                backgroundColor: cellBg,
-                borderBottomColor:
-                  borderBottomWidth === 2 ? theme.text : theme.border,
-                borderBottomWidth,
-                borderRightColor:
-                  borderRightWidth === 2 ? theme.text : theme.border,
-                borderRightWidth,
-                height: cellSize,
-                justifyContent: "center",
-                transform: isSelected ? [{ scale: selectPulse }] : undefined,
-                width: cellSize,
-              }}
-            >
-              {value === 0 ? null : (
-                <Text
-                  style={{
-                    color: textColor,
-                    fontSize: cellSize > 38 ? FontSize.md : FontSize.sm,
-                    fontWeight: isClue ? FontWeight.black : FontWeight.bold,
-                  }}
-                >
-                  {value}
-                </Text>
-              )}
-            </AnimatedPressable>
-          );
-        })}
-      </Animated.View>
-
-      {/* ── Numpad ── */}
-      <RNView style={styles.numpad}>
-        {([1, 2, 3, 4, 5, 6, 7, 8, 9] as const).map((n) => (
-          <BouncyPressable
-            disabled={!isInteractive || selectedCell === null}
-            key={n}
-            onPress={() => handleNumberInput(n)}
-            style={[
-              styles.numBtn,
-              {
-                backgroundColor: theme.card,
-                borderColor: theme.border,
-                opacity: !isInteractive || selectedCell === null ? 0.4 : 1,
-              },
-            ]}
-          >
-            <Text style={[styles.numBtnText, { color: theme.text }]}>{n}</Text>
-          </BouncyPressable>
-        ))}
-
-        {/* Erase button */}
-        <BouncyPressable
-          disabled={!isInteractive || selectedCell === null}
-          onPress={handleErase}
-          style={[
-            styles.numBtn,
-            {
-              backgroundColor: theme.card,
-              borderColor: theme.border,
-              opacity: !isInteractive || selectedCell === null ? 0.4 : 1,
-            },
-          ]}
-        >
-          <Text style={[styles.numBtnText, { color: theme.mutedText }]}>✕</Text>
-        </BouncyPressable>
-      </RNView>
-
-      {/* ── Hint button ── */}
-      <Pressable
-        disabled={!isInteractive || hintsLeft <= 0}
-        onPress={handleHint}
-        style={[
-          styles.hintBtn,
-          {
-            backgroundColor: hintsLeft > 0 ? `${theme.tint}18` : theme.surface,
-            borderColor: hintsLeft > 0 ? theme.tint : theme.border,
-            opacity: !isInteractive || hintsLeft <= 0 ? 0.5 : 1,
-          },
-        ]}
-      >
-        <Text
-          style={[
-            styles.hintBtnText,
-            { color: hintsLeft > 0 ? theme.tint : theme.mutedText },
-          ]}
-        >
-          {t("sdkHintsLeft", { count: hintsLeft })}
-        </Text>
-      </Pressable>
-
-      {/* ── Pause overlay ── */}
-      <GamePauseOverlay
-        onRestart={resetToIdle}
-        onResume={handleResume}
-        visible={phase === "paused"}
-      />
-
-      {/* ── Result overlay ── */}
-      {phase === "over" && result !== null ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={
-            result.last ===
-            Math.max(500, 5000 - elapsedSeconds * 8 - hintsUsed * 200)
-              ? undefined
-              : result.last
-          }
-          onPlayAgain={resetToIdle}
-          score={Math.max(500, 5000 - elapsedSeconds * 8 - hintsUsed * 200)}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          subtitle={
-            selectedDifficulty === null
-              ? formatTime(elapsedSeconds)
-              : `${formatTime(elapsedSeconds)} · ${diffLabel(selectedDifficulty)}`
-          }
-          title={t("sdkCongrats")}
+          </Pressable>
+        </A11yOverlayContent>
+        {/* ── Pause overlay ── */}
+        <GamePauseOverlay
+          onRestart={resetToIdle}
+          onResume={handleResume}
+          visible={phase === "paused"}
         />
-      ) : null}
-    </View>
+
+        {/* ── Result overlay ── */}
+        {phase === "over" && result !== null ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={
+              result.last ===
+              Math.max(500, 5000 - elapsedSeconds * 8 - hintsUsed * 200)
+                ? undefined
+                : result.last
+            }
+            onPlayAgain={resetToIdle}
+            score={Math.max(500, 5000 - elapsedSeconds * 8 - hintsUsed * 200)}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            subtitle={
+              selectedDifficulty === null
+                ? formatTime(elapsedSeconds)
+                : `${formatTime(elapsedSeconds)} · ${diffLabel(selectedDifficulty)}`
+            }
+            title={t("sdkCongrats")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -892,6 +921,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.lg,
     paddingTop: Spacing.md,
   },
+  screen: { flex: 1 },
   selectTitle: {
     fontSize: FontSize.xl,
     fontWeight: FontWeight.black,

@@ -1,4 +1,4 @@
-import { useImageCacheStore } from "@/store/useImageCacheStore";
+import { cachedImageUri, useImageCacheStore } from "@/store/useImageCacheStore";
 import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { isAllowedImageUrl } from "@/utils/imageSync";
@@ -15,9 +15,12 @@ export function useArticleImage(imageUrl?: string): ImageSource {
     return null;
   }
 
-  // Locally cached — always available, even offline
-  if (cache[imageUrl]) {
-    return { uri: cache[imageUrl] };
+  // Locally cached — always available, even offline. The store keeps only
+  // the file name; the container path is rebuilt for this install.
+  const cachedName = cache[imageUrl];
+  const localUri = cachedName ? cachedImageUri(cachedName) : null;
+  if (localUri) {
+    return { uri: localUri };
   }
 
   // Not cached yet: load it remotely only where the sync policy allows

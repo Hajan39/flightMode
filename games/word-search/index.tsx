@@ -7,6 +7,10 @@ import {
   StyleSheet,
 } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -15,6 +19,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -29,6 +34,9 @@ import {
   readCells,
 } from "./logic";
 import { CLASSIC_WORDS, SEARCH_WORDS, SECRETS } from "./words";
+
+/** Cap system font scaling inside fixed-size board cells so text never overflows them. */
+const CELL_FONT_SCALE = 1.3;
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -183,6 +191,9 @@ export default function WordSearchGame() {
     stopTimer();
     setPhase("paused");
   }, [phase, stopTimer]);
+
+  // Leaving the app (home, call, lock) pauses the clock; resuming is manual.
+  useAutoPause(handlePause, phase === "playing");
 
   const handleResume = useCallback(() => {
     if (phase !== "paused") {
@@ -389,6 +400,7 @@ export default function WordSearchGame() {
         ]}
       >
         <Text
+          maxFontSizeMultiplier={CELL_FONT_SCALE}
           style={[
             styles.cellLetter,
             { color, fontSize: Math.round(cellSize * 0.5) },
@@ -450,126 +462,129 @@ export default function WordSearchGame() {
   }
 
   return (
-    <View style={styles.root}>
-      {/* Header: stats + controls */}
-      <RNView style={styles.header}>
-        <RNView style={styles.statsRow}>
-          <RNView style={styles.statBlock}>
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("wsFound")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.tint }]}>
-              {foundWords.length}/{puzzle.placements.length}
-            </Text>
-          </RNView>
-          <RNView
-            style={[styles.statDivider, { backgroundColor: theme.border }]}
-          />
-          <RNView style={styles.statBlock}>
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("msTime")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {elapsedSeconds}s
-            </Text>
-          </RNView>
-        </RNView>
-
-        <GameControls
-          isPaused={phase === "paused"}
-          onPause={phase === "playing" ? handlePause : undefined}
-          onReset={resetGame}
-        />
-      </RNView>
-
-      {/* Board */}
-      <RNView style={styles.boardWrapper}>
-        <Animated.View
-          onLayout={() =>
-            boardRef.current?.measureInWindow((x, y) => {
-              boardOrigin.current = { x, y };
-            })
-          }
-          onResponderGrant={onDragGrant}
-          onResponderMove={onDragMove}
-          onResponderRelease={onDragRelease}
-          onResponderTerminationRequest={() => false}
-          onStartShouldSetResponder={() => phase === "playing"}
-          ref={boardRef}
-          style={[
-            styles.board,
-            { gap: GAP, transform: [{ translateX: shakeTranslate }] },
-          ]}
-        >
-          {rows.map((row, rIdx) => (
-            <RNView key={rIdx} style={[styles.boardRow, { gap: GAP }]}>
-              {row.map((index) => renderCell(index))}
-            </RNView>
-          ))}
-        </Animated.View>
-      </RNView>
-
-      {/* Word list */}
-      <RNView style={styles.wordSection}>
-        <Text style={[styles.wordSectionLabel, { color: theme.mutedText }]}>
-          {t("wsWords")}
-        </Text>
-        <RNView style={styles.wordList}>
-          {puzzle.placements.map((p: Placement) => {
-            const found = foundWords.includes(p.word);
-            return (
-              <RNView
-                key={p.word}
-                style={[
-                  styles.wordChip,
-                  {
-                    backgroundColor: found ? theme.tint : theme.card,
-                    borderColor: found ? theme.tint : theme.border,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.wordChipText,
-                    {
-                      color: found ? theme.onTint : theme.text,
-                      textDecorationLine: found ? "line-through" : "none",
-                    },
-                  ]}
-                >
-                  {p.word}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* Header: stats + controls */}
+          <RNView style={styles.header}>
+            <RNView style={styles.statsRow}>
+              <RNView style={styles.statBlock}>
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("wsFound")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.tint }]}>
+                  {foundWords.length}/{puzzle.placements.length}
                 </Text>
               </RNView>
-            );
-          })}
-        </RNView>
-      </RNView>
+              <RNView
+                style={[styles.statDivider, { backgroundColor: theme.border }]}
+              />
+              <RNView style={styles.statBlock}>
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("msTime")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {elapsedSeconds}s
+                </Text>
+              </RNView>
+            </RNView>
 
-      {/* Result overlay */}
-      {phase === "over" && finalScore !== null && (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={resetGame}
-          score={finalScore}
-          streak={progressInfo?.currentStreak}
-          subtitle={secret ? t("wsSecretReveal", { secret }) : undefined}
-          title={t("youWin")}
+            <GameControls
+              isPaused={phase === "paused"}
+              onPause={phase === "playing" ? handlePause : undefined}
+              onReset={resetGame}
+            />
+          </RNView>
+
+          {/* Board */}
+          <RNView style={styles.boardWrapper}>
+            <Animated.View
+              onLayout={() =>
+                boardRef.current?.measureInWindow((x, y) => {
+                  boardOrigin.current = { x, y };
+                })
+              }
+              onResponderGrant={onDragGrant}
+              onResponderMove={onDragMove}
+              onResponderRelease={onDragRelease}
+              onResponderTerminationRequest={() => false}
+              onStartShouldSetResponder={() => phase === "playing"}
+              ref={boardRef}
+              style={[
+                styles.board,
+                { gap: GAP, transform: [{ translateX: shakeTranslate }] },
+              ]}
+            >
+              {rows.map((row, rIdx) => (
+                <RNView key={rIdx} style={[styles.boardRow, { gap: GAP }]}>
+                  {row.map((index) => renderCell(index))}
+                </RNView>
+              ))}
+            </Animated.View>
+          </RNView>
+
+          {/* Word list */}
+          <RNView style={styles.wordSection}>
+            <Text style={[styles.wordSectionLabel, { color: theme.mutedText }]}>
+              {t("wsWords")}
+            </Text>
+            <RNView style={styles.wordList}>
+              {puzzle.placements.map((p: Placement) => {
+                const found = foundWords.includes(p.word);
+                return (
+                  <RNView
+                    key={p.word}
+                    style={[
+                      styles.wordChip,
+                      {
+                        backgroundColor: found ? theme.tint : theme.card,
+                        borderColor: found ? theme.tint : theme.border,
+                      },
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.wordChipText,
+                        {
+                          color: found ? theme.onTint : theme.text,
+                          textDecorationLine: found ? "line-through" : "none",
+                        },
+                      ]}
+                    >
+                      {p.word}
+                    </Text>
+                  </RNView>
+                );
+              })}
+            </RNView>
+          </RNView>
+        </A11yOverlayContent>
+        {/* Result overlay */}
+        {phase === "over" && finalScore !== null && (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={resetGame}
+            score={finalScore}
+            streak={progressInfo?.currentStreak}
+            subtitle={secret ? t("wsSecretReveal", { secret }) : undefined}
+            title={t("youWin")}
+          />
+        )}
+
+        {/* Pause overlay */}
+        <GamePauseOverlay
+          onQuit={() => {
+            stopTimer();
+            setPhase("menu");
+          }}
+          onRestart={resetGame}
+          onResume={handleResume}
+          visible={phase === "paused"}
         />
-      )}
-
-      {/* Pause overlay */}
-      <GamePauseOverlay
-        onQuit={() => {
-          stopTimer();
-          setPhase("menu");
-        }}
-        onRestart={resetGame}
-        onResume={handleResume}
-        visible={phase === "paused"}
-      />
-    </View>
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -625,6 +640,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.lg,
     paddingVertical: Spacing.md,
   },
+  screen: { flex: 1 },
   statBlock: {
     alignItems: "center",
     gap: 1,

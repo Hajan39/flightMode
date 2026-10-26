@@ -4,8 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { Platform, Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import {
   MatchResult,
@@ -19,6 +24,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { shiftDeadline, useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import type { MatchPlayer } from "@/hooks/useMatchPlayers";
@@ -74,6 +80,7 @@ export default function TiltBalanceGame() {
   const [elapsedMs, setElapsedMs] = useState(0);
   const [inRing, setInRing] = useState(true);
   const [progress, setProgress] = useState<GameProgressUpdate | undefined>();
+  const [paused, setPaused] = useState(false);
 
   // Sensor + loop state lives in refs: the physics runs at 60 Hz and must not
   // re-create the subscription on every frame.
@@ -89,6 +96,7 @@ export default function TiltBalanceGame() {
   const rotationSubRef = useRef<{ remove: () => void } | null>(null);
   // Display rotation (Surface degrees); tablets may be held any way round.
   const rotationRef = useRef(0);
+  const pausedAtRef = useRef<number | null>(null);
 
   const solo = players.length === 1;
   const current = players[turnIndex] ?? players[0];
@@ -131,6 +139,8 @@ export default function TiltBalanceGame() {
     setScores(new Array(matchPlayers.length).fill(0));
     setTurnIndex(0);
     setProgress(undefined);
+    setPaused(false);
+    pausedAtRef.current = null;
     setPhase(matchPlayers.length === 1 ? "countdown" : "pass");
   };
 
@@ -142,9 +152,14 @@ export default function TiltBalanceGame() {
     bestStreakRef.current = 0;
     streakStartRef.current = null;
     startedAtRef.current = Date.now();
-    lastFrameRef.current = Date.now();
     nextGustRef.current = Date.now() + gustIntervalMs(0);
+    startLoop();
+    setPhase("playing");
+  };
 
+  /** Subscribes the sensors and starts the 60 Hz loop (turn start + resume). */
+  const startLoop = () => {
+    lastFrameRef.current = Date.now();
     Accelerometer.setUpdateInterval(SENSOR_INTERVAL_MS);
     // DeviceMotion is only used for its `orientation` (display rotation) so
     // the accelerometer's device-fixed axes can be mapped to screen axes.
@@ -167,7 +182,37 @@ export default function TiltBalanceGame() {
     });
 
     frameRef.current = setInterval(tick, SENSOR_INTERVAL_MS);
-    setPhase("playing");
+  };
+
+  const pause = () => {
+    stopLoop();
+    pausedAtRef.current = Date.now();
+    setPaused(true);
+  };
+
+  // Leaving the app (home, call, lock) pauses the turn; resuming is manual.
+  useAutoPause(pause, phase === "playing" && !paused);
+
+  const resume = () => {
+    const pausedAt = pausedAtRef.current;
+    pausedAtRef.current = null;
+    if (pausedAt !== null) {
+      // Survival time, the ring, the next gust and the in-ring streak are all
+      // wall-clock based: move them past the pause so it costs nothing.
+      const pausedMs = Date.now() - pausedAt;
+      startedAtRef.current = shiftDeadline(startedAtRef.current, pausedMs);
+      nextGustRef.current = shiftDeadline(nextGustRef.current, pausedMs);
+      if (streakStartRef.current !== null) {
+        streakStartRef.current = shiftDeadline(
+          streakStartRef.current,
+          pausedMs
+        );
+      }
+    }
+    // Stale tilt from before the pause must not shove the ball on resume.
+    tiltRef.current = { x: 0, y: 0 };
+    setPaused(false);
+    startLoop();
   };
 
   const tick = () => {
@@ -280,135 +325,161 @@ export default function TiltBalanceGame() {
   const ballColor = inRing ? (current?.color ?? theme.tint) : theme.danger;
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        {current ? (
-          <TurnBanner
-            compact
-            label={solo ? t("tbKeepItSteady") : undefined}
-            player={current}
-            right={
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            {current ? (
+              <TurnBanner
+                compact
+                label={solo ? t("tbKeepItSteady") : undefined}
+                player={current}
+                right={
+                  <Text
+                    style={[
+                      styles.timer,
+                      { color: inRing ? theme.tint : theme.danger },
+                    ]}
+                  >
+                    {seconds}s
+                  </Text>
+                }
+              />
+            ) : null}
+            <GameControls
+              isPaused={paused}
+              onPause={
+                phase === "playing"
+                  ? () => (paused ? resume() : pause())
+                  : undefined
+              }
+              onReset={() => startMatch(players)}
+            />
+          </RNView>
+
+          {solo ? null : (
+            <PlayerScoreStrip
+              activeIndex={phase === "playing" ? turnIndex : undefined}
+              players={players}
+              scores={scores}
+            />
+          )}
+
+          <RNView style={styles.plateArea}>
+            <RNView
+              style={[
+                styles.plate,
+                {
+                  backgroundColor: theme.card,
+                  borderColor: theme.border,
+                  borderRadius: plateRadius,
+                  height: plateSize,
+                  width: plateSize,
+                },
+              ]}
+            >
+              {/* Target ring — shrinks as the turn goes on. */}
+              <RNView
+                style={[
+                  styles.ring,
+                  {
+                    borderColor: inRing ? theme.successBorder : theme.danger,
+                    borderRadius: (plateSize * radius) / 2,
+                    height: plateSize * radius,
+                    width: plateSize * radius,
+                  },
+                ]}
+              />
+              <RNView
+                style={[
+                  styles.ball,
+                  {
+                    backgroundColor: ballColor,
+                    transform: [
+                      { translateX: ball.x * plateRadius },
+                      { translateY: ball.y * plateRadius },
+                    ],
+                  },
+                ]}
+              />
+            </RNView>
+            <Text style={[styles.hint, { color: theme.mutedText }]}>
+              {phase === "playing" ? t("tbHint") : t("tbHoldFlat")}
+            </Text>
+          </RNView>
+
+          {phase === "turnEnd" ? (
+            <Animated.View
+              entering={FadeIn.duration(200)}
+              style={styles.turnEnd}
+            >
               <Text
                 style={[
-                  styles.timer,
-                  { color: inRing ? theme.tint : theme.danger },
+                  styles.turnScore,
+                  { color: current?.color ?? theme.tint },
                 ]}
               >
-                {seconds}s
+                {scores[turnIndex]}
               </Text>
-            }
+              <Text style={[styles.turnText, { color: theme.mutedText }]}>
+                {t("tbSurvived", { seconds })}
+              </Text>
+              <Pressable
+                accessibilityRole="button"
+                onPress={nextTurn}
+                style={[styles.nextBtn, { backgroundColor: theme.tint }]}
+              >
+                <Text style={[styles.nextText, { color: theme.onTint }]}>
+                  {turnIndex + 1 >= players.length
+                    ? t("hmSeeResult")
+                    : t("hmNextRound")}
+                </Text>
+              </Pressable>
+            </Animated.View>
+          ) : null}
+        </A11yOverlayContent>
+
+        <GamePauseOverlay
+          onRestart={() => startMatch(players)}
+          onResume={resume}
+          visible={paused && phase === "playing"}
+        />
+
+        {current ? (
+          <PassDeviceOverlay
+            hint={t("tbHoldFlat")}
+            onReady={() => setPhase("countdown")}
+            toPlayer={current}
+            visible={phase === "pass"}
           />
         ) : null}
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
+        {phase === "countdown" ? (
+          <GameCountdown onComplete={beginTurn} />
+        ) : null}
 
-      {solo ? null : (
-        <PlayerScoreStrip
-          activeIndex={phase === "playing" ? turnIndex : undefined}
-          players={players}
-          scores={scores}
-        />
-      )}
-
-      <RNView style={styles.plateArea}>
-        <RNView
-          style={[
-            styles.plate,
-            {
-              backgroundColor: theme.card,
-              borderColor: theme.border,
-              borderRadius: plateRadius,
-              height: plateSize,
-              width: plateSize,
-            },
-          ]}
-        >
-          {/* Target ring — shrinks as the turn goes on. */}
-          <RNView
-            style={[
-              styles.ring,
-              {
-                borderColor: inRing ? theme.successBorder : theme.danger,
-                borderRadius: (plateSize * radius) / 2,
-                height: plateSize * radius,
-                width: plateSize * radius,
-              },
-            ]}
+        {phase === "done" && solo ? (
+          <GameResult
+            best={progress?.best}
+            isNewBest={progress?.isNewBest}
+            last={progress?.previousBest}
+            onPlayAgain={() => startMatch(players)}
+            score={scores[0]}
+            streak={progress?.currentStreak}
+            title={t("gameTiltBalanceName")}
           />
-          <RNView
-            style={[
-              styles.ball,
-              {
-                backgroundColor: ballColor,
-                transform: [
-                  { translateX: ball.x * plateRadius },
-                  { translateY: ball.y * plateRadius },
-                ],
-              },
-            ]}
+        ) : null}
+        {phase === "done" && !solo ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("tbPoints")}
+            standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
+            winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
           />
-        </RNView>
-        <Text style={[styles.hint, { color: theme.mutedText }]}>
-          {phase === "playing" ? t("tbHint") : t("tbHoldFlat")}
-        </Text>
-      </RNView>
-
-      {phase === "turnEnd" ? (
-        <Animated.View entering={FadeIn.duration(200)} style={styles.turnEnd}>
-          <Text
-            style={[styles.turnScore, { color: current?.color ?? theme.tint }]}
-          >
-            {scores[turnIndex]}
-          </Text>
-          <Text style={[styles.turnText, { color: theme.mutedText }]}>
-            {t("tbSurvived", { seconds })}
-          </Text>
-          <Pressable
-            accessibilityRole="button"
-            onPress={nextTurn}
-            style={[styles.nextBtn, { backgroundColor: theme.tint }]}
-          >
-            <Text style={[styles.nextText, { color: theme.onTint }]}>
-              {turnIndex + 1 >= players.length
-                ? t("hmSeeResult")
-                : t("hmNextRound")}
-            </Text>
-          </Pressable>
-        </Animated.View>
-      ) : null}
-
-      {current ? (
-        <PassDeviceOverlay
-          hint={t("tbHoldFlat")}
-          onReady={() => setPhase("countdown")}
-          toPlayer={current}
-          visible={phase === "pass"}
-        />
-      ) : null}
-      {phase === "countdown" ? <GameCountdown onComplete={beginTurn} /> : null}
-
-      {phase === "done" && solo ? (
-        <GameResult
-          best={progress?.best}
-          isNewBest={progress?.isNewBest}
-          last={progress?.previousBest}
-          onPlayAgain={() => startMatch(players)}
-          score={scores[0]}
-          streak={progress?.currentStreak}
-          title={t("gameTiltBalanceName")}
-        />
-      ) : null}
-      {phase === "done" && !solo ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("tbPoints")}
-          standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
-          winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
-        />
-      ) : null}
-    </View>
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -451,6 +522,7 @@ const styles = StyleSheet.create({
     padding: Spacing.lg,
     paddingTop: Spacing.sm,
   },
+  screen: { flex: 1 },
   timer: { fontSize: FontSize.base, fontWeight: FontWeight.black },
   topRow: { alignItems: "center", flexDirection: "row", gap: Spacing.sm },
   turnEnd: { alignItems: "center", gap: Spacing.xs },

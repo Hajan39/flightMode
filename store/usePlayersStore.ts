@@ -1,8 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 import { MAX_MATCH_PLAYERS } from "@/constants/Colors";
+import { safePersistOptions } from "@/utils/persistStorage";
 
 export const MAX_PLAYER_NAME_LENGTH = 12;
 
@@ -49,9 +50,8 @@ export const usePlayersStore = create<PlayersState>()(
         });
       },
     }),
-    {
+    safePersistOptions(() => AsyncStorage, {
       name: "players",
-      storage: createJSONStorage(() => AsyncStorage),
-    }
+    })
   )
 );

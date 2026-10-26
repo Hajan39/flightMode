@@ -6,6 +6,10 @@ import {
   StyleSheet,
 } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import {
@@ -295,187 +299,200 @@ export default function DuelHangmanGame() {
   const fontSize = slotW > 24 ? 24 : Math.max(14, slotW - 4);
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        {current ? (
-          <TurnBanner
-            compact
-            label={
-              solo ? undefined : t("hmGuesserNamed", { player: current.name })
-            }
-            player={current}
-            right={
-              <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-                {t("mpRoundOf", { round, total: TOTAL_ROUNDS })}
-              </Text>
-            }
-          />
-        ) : null}
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
-
-      {solo ? (
-        <Text style={[styles.soloScore, { color: theme.tint }]}>
-          {scores[0] ?? 0} {t("mpPoints")}
-        </Text>
-      ) : (
-        <PlayerScoreStrip
-          activeIndex={guesser}
-          players={players}
-          scores={scores}
-        />
-      )}
-
-      <RNView style={styles.gallowsBox}>
-        <RNView style={[styles.gallowBase, { backgroundColor: figureColor }]} />
-        <RNView style={[styles.gallowPole, { backgroundColor: figureColor }]} />
-        <RNView style={[styles.gallowTop, { backgroundColor: figureColor }]} />
-        <RNView style={[styles.gallowRope, { backgroundColor: figureColor }]} />
-        {PARTS.slice(0, wrongCount).map((fn) => fn(figureColor))}
-      </RNView>
-
-      <ScrollView
-        contentContainerStyle={styles.wordScrollContent}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.wordScroll}
-      >
-        <RNView style={styles.wordRow}>
-          {wordLetters.map(({ id, letter }) => (
-            <RNView
-              key={id}
-              style={[
-                styles.letterSlot,
-                {
-                  borderBottomColor: slotBorderColor,
-                  marginHorizontal: gap / 2,
-                  width: slotW,
-                },
-              ]}
-            >
-              <Text
-                style={[
-                  styles.letterChar,
-                  {
-                    color: isRevealed(letter, guessed)
-                      ? theme.text
-                      : hiddenLetterColor,
-                    fontSize,
-                  },
-                ]}
-              >
-                {isRevealed(letter, guessed) || gameOver ? letter : "_"}
-              </Text>
-            </RNView>
-          ))}
-        </RNView>
-      </ScrollView>
-
-      <Text style={[styles.wrongHint, { color: theme.mutedText }]}>
-        {t("hmWrongCount", { count: wrongCount, max: MAX_WRONG })}
-      </Text>
-
-      {gameOver ? (
-        <RNView style={styles.gameOverRow}>
-          <Text
-            style={[
-              styles.gameOverText,
-              { color: isWon ? theme.successBorder : theme.danger },
-            ]}
-          >
-            {isWon ? t("hmCorrect") : t("hmFailed", { word })}
-          </Text>
-          <Pressable
-            accessibilityLabel={
-              round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")
-            }
-            accessibilityRole="button"
-            onPress={nextRound}
-            style={[styles.btn, { backgroundColor: theme.tint }]}
-          >
-            <Text style={[styles.btnText, { color: theme.onTint }]}>
-              {round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
-            </Text>
-          </Pressable>
-        </RNView>
-      ) : (
-        <RNView style={styles.keyboard}>
-          {KEY_ROWS.map((row) => (
-            <RNView key={`kr-${row.join("")}`} style={styles.keyRow}>
-              {row.map((letter) => {
-                const used = guessed.has(letter);
-                const correct = used && wordHasLetter(word, letter);
-                const wrong = used && !wordHasLetter(word, letter);
-                let keyBackground = theme.elevated;
-                if (correct) {
-                  keyBackground = theme.successBorder;
-                } else if (wrong) {
-                  keyBackground = theme.danger;
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            {current ? (
+              <TurnBanner
+                compact
+                label={
+                  solo
+                    ? undefined
+                    : t("hmGuesserNamed", { player: current.name })
                 }
-                return (
-                  <Pressable
-                    accessibilityLabel={letter}
-                    accessibilityRole="button"
-                    disabled={used}
-                    hitSlop={{ bottom: 3, left: 2, right: 2, top: 3 }}
-                    key={letter}
-                    onPress={() => handleGuess(letter)}
+                player={current}
+                right={
+                  <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                    {t("mpRoundOf", { round, total: TOTAL_ROUNDS })}
+                  </Text>
+                }
+              />
+            ) : null}
+            <GameControls onReset={() => startMatch(players)} />
+          </RNView>
+
+          {solo ? (
+            <Text style={[styles.soloScore, { color: theme.tint }]}>
+              {scores[0] ?? 0} {t("mpPoints")}
+            </Text>
+          ) : (
+            <PlayerScoreStrip
+              activeIndex={guesser}
+              players={players}
+              scores={scores}
+            />
+          )}
+
+          <RNView style={styles.gallowsBox}>
+            <RNView
+              style={[styles.gallowBase, { backgroundColor: figureColor }]}
+            />
+            <RNView
+              style={[styles.gallowPole, { backgroundColor: figureColor }]}
+            />
+            <RNView
+              style={[styles.gallowTop, { backgroundColor: figureColor }]}
+            />
+            <RNView
+              style={[styles.gallowRope, { backgroundColor: figureColor }]}
+            />
+            {PARTS.slice(0, wrongCount).map((fn) => fn(figureColor))}
+          </RNView>
+
+          <ScrollView
+            contentContainerStyle={styles.wordScrollContent}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.wordScroll}
+          >
+            <RNView style={styles.wordRow}>
+              {wordLetters.map(({ id, letter }) => (
+                <RNView
+                  key={id}
+                  style={[
+                    styles.letterSlot,
+                    {
+                      borderBottomColor: slotBorderColor,
+                      marginHorizontal: gap / 2,
+                      width: slotW,
+                    },
+                  ]}
+                >
+                  <Text
                     style={[
-                      styles.key,
+                      styles.letterChar,
                       {
-                        backgroundColor: keyBackground,
-                        opacity: used ? 0.5 : 1,
+                        color: isRevealed(letter, guessed)
+                          ? theme.text
+                          : hiddenLetterColor,
+                        fontSize,
                       },
                     ]}
                   >
-                    <Text
-                      style={[
-                        styles.keyText,
-                        { color: used ? "#fff" : theme.text },
-                      ]}
-                    >
-                      {letter}
-                    </Text>
-                  </Pressable>
-                );
-              })}
+                    {isRevealed(letter, guessed) || gameOver ? letter : "_"}
+                  </Text>
+                </RNView>
+              ))}
             </RNView>
-          ))}
-        </RNView>
-      )}
+          </ScrollView>
 
-      {current ? (
-        <PassDeviceOverlay
-          hint={t("hmPassToGuesserHint")}
-          onReady={startRound}
-          secret
-          toPlayer={current}
-          visible={phase === "handoff"}
-        />
-      ) : null}
+          <Text style={[styles.wrongHint, { color: theme.mutedText }]}>
+            {t("hmWrongCount", { count: wrongCount, max: MAX_WRONG })}
+          </Text>
 
-      {phase === "result" && solo ? (
-        <GameResult
-          best={progress?.best}
-          isNewBest={progress?.isNewBest}
-          last={progress?.previousBest}
-          onPlayAgain={() => startMatch(players)}
-          score={scores[0]}
-          streak={progress?.currentStreak}
-          title={t("gameDuelHangmanName")}
-        />
-      ) : null}
-      {phase === "result" && !solo ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("mpPoints")}
-          standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
-          winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
-        />
-      ) : null}
-    </View>
+          {gameOver ? (
+            <RNView style={styles.gameOverRow}>
+              <Text
+                style={[
+                  styles.gameOverText,
+                  { color: isWon ? theme.successBorder : theme.danger },
+                ]}
+              >
+                {isWon ? t("hmCorrect") : t("hmFailed", { word })}
+              </Text>
+              <Pressable
+                accessibilityLabel={
+                  round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")
+                }
+                accessibilityRole="button"
+                onPress={nextRound}
+                style={[styles.btn, { backgroundColor: theme.tint }]}
+              >
+                <Text style={[styles.btnText, { color: theme.onTint }]}>
+                  {round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
+                </Text>
+              </Pressable>
+            </RNView>
+          ) : (
+            <RNView style={styles.keyboard}>
+              {KEY_ROWS.map((row) => (
+                <RNView key={`kr-${row.join("")}`} style={styles.keyRow}>
+                  {row.map((letter) => {
+                    const used = guessed.has(letter);
+                    const correct = used && wordHasLetter(word, letter);
+                    const wrong = used && !wordHasLetter(word, letter);
+                    let keyBackground = theme.elevated;
+                    if (correct) {
+                      keyBackground = theme.successBorder;
+                    } else if (wrong) {
+                      keyBackground = theme.danger;
+                    }
+                    return (
+                      <Pressable
+                        accessibilityLabel={letter}
+                        accessibilityRole="button"
+                        disabled={used}
+                        hitSlop={{ bottom: 3, left: 2, right: 2, top: 3 }}
+                        key={letter}
+                        onPress={() => handleGuess(letter)}
+                        style={[
+                          styles.key,
+                          {
+                            backgroundColor: keyBackground,
+                            opacity: used ? 0.5 : 1,
+                          },
+                        ]}
+                      >
+                        <Text
+                          style={[
+                            styles.keyText,
+                            { color: used ? "#fff" : theme.text },
+                          ]}
+                        >
+                          {letter}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </RNView>
+              ))}
+            </RNView>
+          )}
+        </A11yOverlayContent>
+        {current ? (
+          <PassDeviceOverlay
+            hint={t("hmPassToGuesserHint")}
+            onReady={startRound}
+            secret
+            toPlayer={current}
+            visible={phase === "handoff"}
+          />
+        ) : null}
+
+        {phase === "result" && solo ? (
+          <GameResult
+            best={progress?.best}
+            isNewBest={progress?.isNewBest}
+            last={progress?.previousBest}
+            onPlayAgain={() => startMatch(players)}
+            score={scores[0]}
+            streak={progress?.currentStreak}
+            title={t("gameDuelHangmanName")}
+          />
+        ) : null}
+        {phase === "result" && !solo ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("mpPoints")}
+            standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
+            winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -556,6 +573,7 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.sm,
   },
   roundChip: { ...TextStyle.chipLabel },
+  screen: { flex: 1 },
   soloScore: { ...TextStyle.statValueMedium, textAlign: "center" },
   topRow: { alignItems: "center", flexDirection: "row", gap: Spacing.sm },
   wordRow: {

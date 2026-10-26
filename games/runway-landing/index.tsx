@@ -7,12 +7,17 @@ import Animated, {
   withTiming,
   ZoomIn,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -95,6 +100,8 @@ export default function RunwayLandingGame() {
   const [lastPoints, setLastPoints] = useState<number | null>(null);
   const [lastQuality, setLastQuality] = useState<Quality | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Leaving the app pauses the approach; the player resumes by hand.
+  useAutoPause(() => setPaused(true), !(finished || paused));
   const feedbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Synchronous game-over guard: React state (`finished`) does not flush
   // between two fast taps on the final round, so guard scoring with a ref to
@@ -230,130 +237,138 @@ export default function RunwayLandingGame() {
   };
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.headerRow}>
-        <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[styles.bestValue, { color: theme.tint }]}>
-            {storedBest}
-          </Text>
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={finished ? undefined : () => setPaused(true)}
-          onReset={restart}
-        />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.headerRow}>
+            <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
+              </Text>
+              <Text style={[styles.bestValue, { color: theme.tint }]}>
+                {storedBest}
+              </Text>
+            </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={finished ? undefined : () => setPaused(true)}
+              onReset={restart}
+            />
+          </RNView>
 
-      <View style={styles.statsRow}>
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("rlRound")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>
-            {currentRoundText}
-          </Text>
-        </View>
-        <View style={[styles.statDivider, { backgroundColor: theme.border }]} />
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("rlScore")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
-        </View>
-      </View>
+          <View style={styles.statsRow}>
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("rlRound")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {currentRoundText}
+              </Text>
+            </View>
+            <View
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("rlScore")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.tint }]}>
+                {score}
+              </Text>
+            </View>
+          </View>
 
-      <Animated.View
-        style={[
-          styles.runwayCard,
-          { backgroundColor: theme.card, borderColor: theme.border },
-          runwayPulseStyle,
-        ]}
-      >
-        {/* Quality feedback or hint */}
-        {lastQuality ? (
-          <Animated.View entering={ZoomIn.duration(150)}>
-            <Text
-              style={[
-                styles.qualityText,
-                { color: getQualityColor(lastQuality) },
-              ]}
-            >
-              {qualityKey(lastQuality)}{" "}
-              <Text style={styles.qualityPoints}>+{lastPoints}</Text>
+          <Animated.View
+            style={[
+              styles.runwayCard,
+              { backgroundColor: theme.card, borderColor: theme.border },
+              runwayPulseStyle,
+            ]}
+          >
+            {/* Quality feedback or hint */}
+            {lastQuality ? (
+              <Animated.View entering={ZoomIn.duration(150)}>
+                <Text
+                  style={[
+                    styles.qualityText,
+                    { color: getQualityColor(lastQuality) },
+                  ]}
+                >
+                  {qualityKey(lastQuality)}{" "}
+                  <Text style={styles.qualityPoints}>+{lastPoints}</Text>
+                </Text>
+              </Animated.View>
+            ) : (
+              <Text style={[styles.helper, { color: theme.mutedText }]}>
+                {t("rlTapHint")}
+              </Text>
+            )}
+
+            <View style={[styles.runway, { backgroundColor: theme.elevated }]}>
+              <View
+                style={[
+                  styles.targetZone,
+                  {
+                    backgroundColor: theme.accentSoft,
+                    borderColor: theme.tint,
+                    left: targetLeft,
+                    width: targetWidth,
+                  },
+                ]}
+              />
+              <View
+                style={[
+                  styles.marker,
+                  { backgroundColor: theme.tint, left: markerX },
+                ]}
+              />
+            </View>
+
+            {/* Speed indicator */}
+            <Text style={[styles.speedHint, { color: theme.mutedText }]}>
+              {"▸".repeat(Math.min(round, ROUND_COUNT))}
             </Text>
           </Animated.View>
-        ) : (
-          <Text style={[styles.helper, { color: theme.mutedText }]}>
-            {t("rlTapHint")}
-          </Text>
-        )}
 
-        <View style={[styles.runway, { backgroundColor: theme.elevated }]}>
-          <View
+          <Pressable
+            accessibilityLabel={t("rlLand")}
+            accessibilityRole="button"
+            disabled={finished}
+            onPress={handleLand}
             style={[
-              styles.targetZone,
+              styles.button,
               {
-                backgroundColor: theme.accentSoft,
-                borderColor: theme.tint,
-                left: targetLeft,
-                width: targetWidth,
+                backgroundColor: theme.tint,
+                opacity: finished ? 0.5 : 1,
               },
             ]}
+          >
+            <Text style={[styles.buttonText, { color: theme.onTint }]}>
+              {t("rlLand")}
+            </Text>
+          </Pressable>
+        </A11yOverlayContent>
+
+        {finished ? (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={restart}
+            score={score}
+            streak={progressInfo?.currentStreak}
+            subtitle={t("rlResult", { score })}
+            title={t("rlFinished")}
           />
-          <View
-            style={[
-              styles.marker,
-              { backgroundColor: theme.tint, left: markerX },
-            ]}
-          />
-        </View>
+        ) : null}
 
-        {/* Speed indicator */}
-        <Text style={[styles.speedHint, { color: theme.mutedText }]}>
-          {"▸".repeat(Math.min(round, ROUND_COUNT))}
-        </Text>
-      </Animated.View>
-
-      <Pressable
-        accessibilityLabel={t("rlLand")}
-        accessibilityRole="button"
-        disabled={finished}
-        onPress={handleLand}
-        style={[
-          styles.button,
-          {
-            backgroundColor: theme.tint,
-            opacity: finished ? 0.5 : 1,
-          },
-        ]}
-      >
-        <Text style={[styles.buttonText, { color: theme.onTint }]}>
-          {t("rlLand")}
-        </Text>
-      </Pressable>
-
-      {finished ? (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={restart}
-          score={score}
-          streak={progressInfo?.currentStreak}
-          subtitle={t("rlResult", { score })}
-          title={t("rlFinished")}
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={() => setPaused(false)}
+          visible={paused}
         />
-      ) : null}
-
-      <GamePauseOverlay
-        onRestart={restart}
-        onResume={() => setPaused(false)}
-        visible={paused}
-      />
-    </View>
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -413,6 +428,7 @@ const styles = StyleSheet.create({
     gap: 12,
     padding: 14,
   },
+  screen: { flex: 1 },
   speedHint: { fontSize: 11, letterSpacing: 3 },
   statBlock: { alignItems: "center", flex: 1, gap: 2, paddingVertical: 4 },
   statDivider: { height: 56, width: 1 },

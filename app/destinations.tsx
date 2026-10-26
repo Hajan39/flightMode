@@ -1,11 +1,17 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useLocalSearchParams, useRouter } from "expo-router";
-import { useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import { useMemo, useRef, useState } from "react";
+import {
+  type LayoutChangeEvent,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import { pluralKey } from "@/components/plural";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
+import { usePushGuard } from "@/components/usePushGuard";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
@@ -17,14 +23,21 @@ import { useTranslation } from "@/hooks/useTranslation";
 export default function DestinationsScreen() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
-  const router = useRouter();
+  const { language, t } = useTranslation();
+  const push = usePushGuard();
   const { focus } = useLocalSearchParams<{ focus?: string }>();
-  const focusedId =
+  const hasFocusParam = Boolean(
     focus && destinations.some((d) => d.id === focus)
-      ? focus
-      : (destinations[0]?.id ?? null);
+  );
+  const focusedId =
+    hasFocusParam && focus ? focus : (destinations[0]?.id ?? null);
   const [expandedId, setExpandedId] = useState<string | null>(focusedId);
+  const scrollRef = useRef<ScrollView>(null);
+  // Card to bring into view on its next layout: the deep-linked one on open,
+  // then whichever card the traveller expands.
+  const pendingScrollIdRef = useRef<string | null>(
+    hasFocusParam ? focusedId : null
+  );
   const articles = useContentItems();
   const guideIds = useMemo(
     () => new Set(articles.map((a) => a.id)),
@@ -32,7 +45,21 @@ export default function DestinationsScreen() {
   );
 
   const toggle = (id: string) => {
-    setExpandedId((current) => (current === id ? null : id));
+    const expanding = expandedId !== id;
+    pendingScrollIdRef.current = expanding ? id : null;
+    setExpandedId(expanding ? id : null);
+  };
+
+  const handleCardLayout = (id: string, event: LayoutChangeEvent) => {
+    if (pendingScrollIdRef.current !== id) {
+      return;
+    }
+    pendingScrollIdRef.current = null;
+    // Cards are direct children of the scroll content, so `y` is the offset.
+    scrollRef.current?.scrollTo({
+      animated: true,
+      y: Math.max(0, event.nativeEvent.layout.y - Spacing.md),
+    });
   };
 
   return (
@@ -42,6 +69,7 @@ export default function DestinationsScreen() {
     >
       <ScrollView
         contentContainerStyle={styles.content}
+        ref={scrollRef}
         showsVerticalScrollIndicator={false}
         style={styles.scroll}
       >
@@ -52,11 +80,20 @@ export default function DestinationsScreen() {
         {destinations.map((destination) => {
           const isExpanded = expandedId === destination.id;
           const tipCount = destination.tips.length;
-          const tipLabel = t("destinationsTips");
+          const tipLabel = t(
+            pluralKey(language, tipCount, {
+              few: "destinationsTipsCountFew",
+              many: "destinationsTipsCountMany",
+              one: "destinationsTipsCountOne",
+              other: "destinationsTipsCountOther",
+            }),
+            { count: tipCount }
+          );
 
           return (
             <View
               key={destination.id}
+              onLayout={(event) => handleCardLayout(destination.id, event)}
               style={[
                 styles.card,
                 { backgroundColor: theme.card, borderColor: theme.border },
@@ -81,7 +118,7 @@ export default function DestinationsScreen() {
                   </Text>
                 </View>
                 <Text style={[styles.tipCount, { color: theme.tint }]}>
-                  {tipCount} {tipLabel}
+                  {tipLabel}
                 </Text>
                 <Ionicons
                   color={theme.mutedText}
@@ -141,9 +178,7 @@ export default function DestinationsScreen() {
                     <Pressable
                       accessibilityRole="button"
                       onPress={() =>
-                        router.push(
-                          `/content/destination-${destination.id}` as never
-                        )
+                        push(`/content/destination-${destination.id}` as never)
                       }
                       style={[
                         styles.toolBtn,
@@ -177,7 +212,7 @@ export default function DestinationsScreen() {
                       <Pressable
                         accessibilityRole="button"
                         onPress={() =>
-                          router.push(
+                          push(
                             `/phrasebook?lang=${destination.phraseLanguage}&source=destinations` as never
                           )
                         }
@@ -209,7 +244,7 @@ export default function DestinationsScreen() {
                     <Pressable
                       accessibilityRole="button"
                       onPress={() =>
-                        router.push(
+                        push(
                           `/converter?currency=${destination.currencyCode}&source=destinations` as never
                         )
                       }

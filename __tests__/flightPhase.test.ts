@@ -1,5 +1,9 @@
 import type { Flight } from "@/types/flight";
-import { getFlightPhase, LANDED_WINDOW_MS } from "@/utils/flightPhase";
+import {
+  getCurrentFlight,
+  getFlightPhase,
+  LANDED_WINDOW_MS,
+} from "@/utils/flightPhase";
 
 const HOUR = 3_600_000;
 const departureTime = Date.UTC(2026, 0, 15, 10, 0);
@@ -38,5 +42,18 @@ describe("getFlightPhase", () => {
   test("more than 48 h after arrival → none (stale flight)", () => {
     expect(getFlightPhase(flight, arrival + LANDED_WINDOW_MS)).toBe("none");
     expect(getFlightPhase(flight, arrival + 10 * 24 * HOUR)).toBe("none");
+  });
+});
+
+describe("getCurrentFlight", () => {
+  test("keeps the flight before departure, in the air and while landed", () => {
+    expect(getCurrentFlight(flight, departureTime - HOUR)).toBe(flight);
+    expect(getCurrentFlight(flight, departureTime + HOUR)).toBe(flight);
+    expect(getCurrentFlight(flight, arrival + HOUR)).toBe(flight);
+  });
+
+  test("drops it once the landed window has passed", () => {
+    expect(getCurrentFlight(flight, arrival + LANDED_WINDOW_MS)).toBeNull();
+    expect(getCurrentFlight(null, departureTime)).toBeNull();
   });
 });

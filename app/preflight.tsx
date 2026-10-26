@@ -1,11 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
+import { pluralKey } from "@/components/plural";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
+import { usePushGuard } from "@/components/usePushGuard";
 import Colors from "@/constants/Colors";
 import { gameRegistry } from "@/data/games";
 import { useContentItems } from "@/hooks/useContentItems";
@@ -16,9 +17,11 @@ import {
   useChecklistStore,
 } from "@/store/useChecklistStore";
 import { useContentStore } from "@/store/useContentStore";
-import { useNetworkStore } from "@/store/useNetworkStore";
+import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useRatesStore } from "@/store/useRatesStore";
+import { useSettingsStore } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { hasContentSyncEndpoint } from "@/utils/contentSync";
 
 function ReadyRow({
   icon,
@@ -75,8 +78,8 @@ function ReadyRow({
 export default function PreflightScreen() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
-  const router = useRouter();
+  const { language, t } = useTranslation();
+  const push = usePushGuard();
 
   const articles = useContentItems();
   const checkedIds = useChecklistStore((s) => s.checkedIds);
@@ -86,6 +89,8 @@ export default function PreflightScreen() {
     getCurrentDestinationItemIds()
   );
   const isInternetReachable = useNetworkStore((s) => s.isInternetReachable);
+  const networkType = useNetworkStore((s) => s.type);
+  const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
   const syncStatus = useContentStore((s) => s.status);
   const syncContent = useContentStore((s) => s.syncContent);
   const syncRates = useRatesStore((s) => s.syncRates);
@@ -94,9 +99,22 @@ export default function PreflightScreen() {
   const gameCount = gameRegistry.length;
   const articleCount = articles.length;
 
+  // "skipped" means up to date only when it was the cooldown; when the sync
+  // setting (or a missing feed) blocked it, nothing was checked at all.
+  const syncBlocked = !(
+    hasContentSyncEndpoint() &&
+    canSyncOnNetwork(
+      { isInternetReachable, type: networkType },
+      syncNetworkPolicy
+    )
+  );
   let refreshLabel = t("preflightRefresh");
   if (syncStatus === "syncing") {
     refreshLabel = t("preflightRefreshing");
+  } else if (syncStatus === "error") {
+    refreshLabel = t("preflightRefreshFailed");
+  } else if (syncStatus === "skipped" && syncBlocked) {
+    refreshLabel = t("preflightRefreshBlocked");
   } else if (syncStatus === "success" || syncStatus === "skipped") {
     refreshLabel = t("preflightUpToDate");
   }
@@ -135,13 +153,29 @@ export default function PreflightScreen() {
         >
           <ReadyRow
             icon="game-controller-outline"
-            label={t("preflightGamesCount", { count: gameCount })}
+            label={t(
+              pluralKey(language, gameCount, {
+                few: "preflightGamesCountFew",
+                many: "preflightGamesCountMany",
+                one: "preflightGamesCountOne",
+                other: "preflightGamesCountOther",
+              }),
+              { count: gameCount }
+            )}
             sublabel={t("preflightReadyLabel")}
             theme={theme}
           />
           <ReadyRow
             icon="document-text-outline"
-            label={t("preflightArticlesCount", { count: articleCount })}
+            label={t(
+              pluralKey(language, articleCount, {
+                few: "preflightArticlesCountFew",
+                many: "preflightArticlesCountMany",
+                one: "preflightArticlesCountOne",
+                other: "preflightArticlesCountOther",
+              }),
+              { count: articleCount }
+            )}
             sublabel={t("preflightReadyLabel")}
             theme={theme}
           />
@@ -157,7 +191,7 @@ export default function PreflightScreen() {
             label={t("preflightChecklistRow")}
             onPress={() => {
               captureAnalyticsEvent("checklist_open", { source: "preflight" });
-              router.push("/checklist" as never);
+              push("/checklist");
             }}
             sublabel={t("checklistProgress", {
               done: checklist.done,

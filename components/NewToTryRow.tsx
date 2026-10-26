@@ -11,13 +11,14 @@ import { useDiscoveryStore } from "@/store/useDiscoveryStore";
 
 interface Props {
   onOpenGame: (gameId: string) => void;
-  renderTitle: (key: TranslationKey) => string;
+  /** The caller's `t()`, so titles and the duration follow the app language. */
+  t: (key: TranslationKey, params?: Record<string, string | number>) => string;
   title: string;
 }
 
 const MAX_ITEMS = 4;
 
-export default function NewToTryRow({ title, renderTitle, onOpenGame }: Props) {
+export default function NewToTryRow({ title, t, onOpenGame }: Props) {
   const scheme = useColorScheme();
   const theme = Colors[scheme];
   const seenGameIds = useDiscoveryStore((s) => s.seenGameIds);
@@ -52,9 +53,9 @@ export default function NewToTryRow({ title, renderTitle, onOpenGame }: Props) {
             ]}
           >
             <Ionicons color={theme.tint} name={game.icon as never} size={22} />
-            <Text style={styles.cardTitle}>{renderTitle(game.titleKey)}</Text>
+            <Text style={styles.cardTitle}>{t(game.titleKey)}</Text>
             <Text style={[styles.cardMeta, { color: theme.mutedText }]}>
-              {`${game.estimatedTime} min`}
+              {t("minutesShort", { minutes: game.estimatedTime })}
             </Text>
           </AnimatedPressable>
         ))}

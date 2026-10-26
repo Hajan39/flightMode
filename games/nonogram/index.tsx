@@ -34,6 +34,9 @@ import {
   UNKNOWN,
 } from "./logic";
 
+/** Cap system font scaling inside fixed-size board cells so text never overflows them. */
+const CELL_FONT_SCALE = 1.3;
+
 /* ================================================================
    CONSTANTS
    ================================================================ */
@@ -462,6 +465,7 @@ export default function NonogramGame() {
                 <Text
                   // biome-ignore lint/suspicious/noArrayIndexKey: fixed clue list
                   key={`col-clue-${c}-${i}`}
+                  maxFontSizeMultiplier={CELL_FONT_SCALE}
                   style={[
                     s.clueText,
                     {
@@ -501,6 +505,7 @@ export default function NonogramGame() {
                 <Text
                   // biome-ignore lint/suspicious/noArrayIndexKey: fixed clue list
                   key={`row-clue-${r}-${i}`}
+                  maxFontSizeMultiplier={CELL_FONT_SCALE}
                   style={[
                     s.clueText,
                     {
@@ -543,6 +548,7 @@ export default function NonogramGame() {
               >
                 {cell === EMPTY && (
                   <Text
+                    maxFontSizeMultiplier={CELL_FONT_SCALE}
                     style={{
                       color: theme.mutedText,
                       fontSize: Math.max(10, cellSize * 0.45),

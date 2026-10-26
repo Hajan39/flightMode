@@ -7,6 +7,10 @@ import Animated, {
   withSequence,
   withTiming,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -242,111 +246,118 @@ export default function MemoryGame() {
   };
 
   return (
-    <View style={styles.root}>
-      {/* ── Stats ── */}
-      <View style={styles.statsRow}>
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("memoryMoves")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>{moves}</Text>
-        </View>
-        <View style={[styles.statDivider, { backgroundColor: theme.border }]} />
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("memoryPairs")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.tint }]}>
-            {matchedPairs}
-            <Text style={[styles.statTotal, { color: theme.mutedText }]}>
-              /{currentMode.pairs}
-            </Text>
-          </Text>
-        </View>
-      </View>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* ── Stats ── */}
+          <View style={styles.statsRow}>
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("memoryMoves")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {moves}
+              </Text>
+            </View>
+            <View
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("memoryPairs")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.tint }]}>
+                {matchedPairs}
+                <Text style={[styles.statTotal, { color: theme.mutedText }]}>
+                  /{currentMode.pairs}
+                </Text>
+              </Text>
+            </View>
+          </View>
 
-      <View style={styles.modeRow}>
-        {MEMORY_MODES.map((mode) => {
-          const isActive = mode.key === currentMode.key;
-          return (
+          <View style={styles.modeRow}>
+            {MEMORY_MODES.map((mode) => {
+              const isActive = mode.key === currentMode.key;
+              return (
+                <Pressable
+                  accessibilityLabel={t(mode.labelKey)}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: isActive }}
+                  key={mode.key}
+                  onPress={() => changeMode(mode.key)}
+                  style={[
+                    styles.modeChip,
+                    {
+                      backgroundColor: isActive ? theme.tint : theme.card,
+                      borderColor: isActive ? theme.tint : theme.border,
+                    },
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.modeChipText,
+                      { color: isActive ? theme.onTint : theme.mutedText },
+                    ]}
+                  >
+                    {t(mode.labelKey)}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+
+          {/* ── Grid ── */}
+          <FlatList
+            columnWrapperStyle={styles.row}
+            contentContainerStyle={styles.grid}
+            data={cards}
+            key={currentMode.key}
+            keyExtractor={(item) => String(item.id)}
+            numColumns={currentMode.columns}
+            renderItem={({ item }) => (
+              <FlipCard
+                cardSize={cardSize}
+                item={item}
+                onPress={handleCardPress}
+                theme={theme}
+              />
+            )}
+            scrollEnabled={currentMode.pairs >= 10}
+          />
+
+          {/* ── New game ── */}
+          <Animated.View style={resetPress.animatedStyle}>
             <Pressable
-              accessibilityLabel={t(mode.labelKey)}
+              accessibilityLabel={t("newGame")}
               accessibilityRole="button"
-              accessibilityState={{ selected: isActive }}
-              key={mode.key}
-              onPress={() => changeMode(mode.key)}
+              onPress={resetGame}
+              onPressIn={resetPress.onPressIn}
+              onPressOut={resetPress.onPressOut}
               style={[
-                styles.modeChip,
-                {
-                  backgroundColor: isActive ? theme.tint : theme.card,
-                  borderColor: isActive ? theme.tint : theme.border,
-                },
+                styles.resetBtn,
+                { backgroundColor: theme.card, borderColor: theme.border },
               ]}
             >
-              <Text
-                style={[
-                  styles.modeChipText,
-                  { color: isActive ? theme.onTint : theme.mutedText },
-                ]}
-              >
-                {t(mode.labelKey)}
+              <Text style={[styles.resetText, { color: theme.text }]}>
+                {t("newGame")}
               </Text>
             </Pressable>
-          );
-        })}
-      </View>
-
-      {/* ── Grid ── */}
-      <FlatList
-        columnWrapperStyle={styles.row}
-        contentContainerStyle={styles.grid}
-        data={cards}
-        key={currentMode.key}
-        keyExtractor={(item) => String(item.id)}
-        numColumns={currentMode.columns}
-        renderItem={({ item }) => (
-          <FlipCard
-            cardSize={cardSize}
-            item={item}
-            onPress={handleCardPress}
-            theme={theme}
+          </Animated.View>
+        </A11yOverlayContent>
+        {finalScore !== null && (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={resetGame}
+            score={finalScore}
+            streak={progressInfo?.currentStreak}
+            subtitle={t("youWinMessage", { moves, score: finalScore })}
+            title={t("youWin")}
           />
         )}
-        scrollEnabled={currentMode.pairs >= 10}
-      />
-
-      {/* ── New game ── */}
-      <Animated.View style={resetPress.animatedStyle}>
-        <Pressable
-          accessibilityLabel={t("newGame")}
-          accessibilityRole="button"
-          onPress={resetGame}
-          onPressIn={resetPress.onPressIn}
-          onPressOut={resetPress.onPressOut}
-          style={[
-            styles.resetBtn,
-            { backgroundColor: theme.card, borderColor: theme.border },
-          ]}
-        >
-          <Text style={[styles.resetText, { color: theme.text }]}>
-            {t("newGame")}
-          </Text>
-        </Pressable>
-      </Animated.View>
-
-      {finalScore !== null && (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={resetGame}
-          score={finalScore}
-          streak={progressInfo?.currentStreak}
-          subtitle={t("youWinMessage", { moves, score: finalScore })}
-          title={t("youWin")}
-        />
-      )}
-    </View>
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -385,6 +396,7 @@ const styles = StyleSheet.create({
   resetText: { fontSize: 15, fontWeight: "700" },
   root: { flex: 1, gap: 16, padding: 20 },
   row: { gap: 10, marginBottom: 10 },
+  screen: { flex: 1 },
   statBlock: { alignItems: "center", flex: 1, gap: 2 },
   statDivider: { height: 50, width: 1 },
   statLabel: {

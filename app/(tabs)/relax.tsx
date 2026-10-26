@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useEffect, useRef, useState } from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import Animated, {
   Easing,
@@ -90,6 +91,19 @@ export default function RelaxScreen() {
   const setVolume = useAudioStore((s) => s.setVolume);
   const setSleepTimer = useAudioStore((s) => s.setSleepTimer);
   const [now, setNow] = useState(Date.now());
+
+  // Leaving the tab stops the exercise: no countdown or haptic pulses while
+  // the traveller is in a game or another screen.
+  useFocusEffect(
+    useCallback(
+      () => () => {
+        setIsActive(false);
+        setPhaseIndex(0);
+        setCountdown(BREATHING_PHASES[0].duration);
+      },
+      []
+    )
+  );
 
   // Breathing timer
   useEffect(() => {
@@ -395,7 +409,7 @@ export default function RelaxScreen() {
                     { color: isSelected ? theme.onTint : theme.mutedText },
                   ]}
                 >
-                  VOL {Math.round(level * 100)}%
+                  {t("relaxVolumeChip", { percent: Math.round(level * 100) })}
                 </Text>
               </Pressable>
             );
@@ -490,7 +504,9 @@ export default function RelaxScreen() {
                       { color: isSelected ? theme.onTint : theme.mutedText },
                     ]}
                   >
-                    {minutes === null ? t("sleepTimerOff") : `${minutes}m`}
+                    {minutes === null
+                      ? t("sleepTimerOff")
+                      : t("minutesShort", { minutes })}
                   </Text>
                 </Pressable>
               );

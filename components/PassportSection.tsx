@@ -3,6 +3,7 @@ import { useFocusEffect } from "expo-router";
 import { useCallback, useMemo, useState } from "react";
 import { Pressable, ScrollView, Share, StyleSheet } from "react-native";
 
+import { pluralKey } from "@/components/plural";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -48,9 +49,25 @@ export default function PassportSection() {
     });
     // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void Share.share({
-      message: t("passportShareMessage", {
-        cities: summary.cities,
-        flights: summary.flights,
+      message: t("passportShareMessageCounts", {
+        cities: t(
+          pluralKey(language, summary.cities, {
+            few: "passportCitiesCountFew",
+            many: "passportCitiesCountMany",
+            one: "passportCitiesCountOne",
+            other: "passportCitiesCountOther",
+          }),
+          { count: summary.cities }
+        ),
+        flights: t(
+          pluralKey(language, summary.flights, {
+            few: "passportFlightsCountFew",
+            many: "passportFlightsCountMany",
+            one: "passportFlightsCountOne",
+            other: "passportFlightsCountOther",
+          }),
+          { count: summary.flights }
+        ),
         hours,
         url: STORE_URL,
       }),

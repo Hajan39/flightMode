@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -180,144 +184,152 @@ export default function CabinLightsGame() {
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <View style={styles.root}>
-      {/* ── Header ── */}
-      <RNView style={styles.headerRow}>
-        <RNView style={[styles.pill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("cabinLightsScore")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.tint }]}>
-            {totalScore}
-          </Text>
-        </RNView>
-        <RNView
-          style={[
-            styles.pill,
-            styles.pillGrow,
-            { backgroundColor: theme.card },
-          ]}
-        >
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("cabinLightsRound")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>
-            {round > 0 ? `${round}/${TOTAL_ROUNDS}` : `—/${TOTAL_ROUNDS}`}
-          </Text>
-        </RNView>
-        <RNView style={[styles.pill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("cabinLightsMoves")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>{moves}</Text>
-        </RNView>
-        <GameControls onReset={phase === "idle" ? undefined : restart} />
-      </RNView>
-
-      {/* ── Board / idle prompt ── */}
-      {isIdle && finalScore === null ? (
-        <Pressable
-          accessibilityLabel={t("gameTapToStart")}
-          accessibilityRole="button"
-          onPress={startGame}
-          style={[
-            styles.idleArea,
-            { backgroundColor: theme.elevated, borderColor: theme.border },
-          ]}
-        >
-          <Text style={styles.idleEmoji}>💡</Text>
-          <Text style={[styles.idleTitle, { color: theme.text }]}>
-            {t("gameTapToStart")}
-          </Text>
-          <Text style={[styles.idleHint, { color: theme.mutedText }]}>
-            {t("cabinLightsHint")}
-          </Text>
-        </Pressable>
-      ) : (
-        <RNView style={styles.boardWrapper}>
-          <RNView style={[styles.grid, { gap: CELL_GAP }]}>
-            {Array.from({ length: size }, (_, row) => (
-              <RNView key={row} style={[styles.gridRow, { gap: CELL_GAP }]}>
-                {Array.from({ length: size }, (_unused, col) => {
-                  const index = row * size + col;
-                  const isOn = board[index];
-                  return (
-                    <Pressable
-                      accessibilityRole="button"
-                      accessibilityState={{ selected: isOn }}
-                      key={index}
-                      onPress={() => handleCellTap(index)}
-                      style={[
-                        styles.cell,
-                        {
-                          backgroundColor: isOn
-                            ? theme.warning
-                            : theme.elevated,
-                          borderColor: isOn ? theme.warning : theme.border,
-                          height: cellSize,
-                          width: cellSize,
-                        },
-                      ]}
-                    >
-                      <Text
-                        style={[
-                          styles.cellEmoji,
-                          { fontSize: Math.min(30, cellSize * 0.42) },
-                          !isOn && styles.cellEmojiOff,
-                        ]}
-                      >
-                        💡
-                      </Text>
-                    </Pressable>
-                  );
-                })}
-              </RNView>
-            ))}
-          </RNView>
-
-          {phase === "playing" && (
-            <Text style={[styles.hintText, { color: theme.mutedText }]}>
-              {t("cabinLightsRemaining", { count: litCount })}
-            </Text>
-          )}
-
-          {phase === "roundDone" && (
-            <Pressable
-              accessibilityLabel={t("cabinLightsNextRound")}
-              accessibilityRole="button"
-              onPress={() => startRound(round + 1)}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* ── Header ── */}
+          <RNView style={styles.headerRow}>
+            <RNView style={[styles.pill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("cabinLightsScore")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.tint }]}>
+                {totalScore}
+              </Text>
+            </RNView>
+            <RNView
               style={[
-                styles.nextButton,
-                {
-                  backgroundColor: theme.successSurface,
-                  borderColor: theme.successBorder,
-                },
+                styles.pill,
+                styles.pillGrow,
+                { backgroundColor: theme.card },
               ]}
             >
-              <Text style={[styles.nextButtonTitle, { color: theme.text }]}>
-                {t("cabinLightsRoundClear")}
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("cabinLightsRound")}
               </Text>
-              <Text style={[styles.nextButtonHint, { color: theme.mutedText }]}>
-                {t("cabinLightsNextRound")}
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {round > 0 ? `${round}/${TOTAL_ROUNDS}` : `—/${TOTAL_ROUNDS}`}
+              </Text>
+            </RNView>
+            <RNView style={[styles.pill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("cabinLightsMoves")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {moves}
+              </Text>
+            </RNView>
+            <GameControls onReset={phase === "idle" ? undefined : restart} />
+          </RNView>
+
+          {/* ── Board / idle prompt ── */}
+          {isIdle && finalScore === null ? (
+            <Pressable
+              accessibilityLabel={t("gameTapToStart")}
+              accessibilityRole="button"
+              onPress={startGame}
+              style={[
+                styles.idleArea,
+                { backgroundColor: theme.elevated, borderColor: theme.border },
+              ]}
+            >
+              <Text style={styles.idleEmoji}>💡</Text>
+              <Text style={[styles.idleTitle, { color: theme.text }]}>
+                {t("gameTapToStart")}
+              </Text>
+              <Text style={[styles.idleHint, { color: theme.mutedText }]}>
+                {t("cabinLightsHint")}
               </Text>
             </Pressable>
-          )}
-        </RNView>
-      )}
+          ) : (
+            <RNView style={styles.boardWrapper}>
+              <RNView style={[styles.grid, { gap: CELL_GAP }]}>
+                {Array.from({ length: size }, (_, row) => (
+                  <RNView key={row} style={[styles.gridRow, { gap: CELL_GAP }]}>
+                    {Array.from({ length: size }, (_unused, col) => {
+                      const index = row * size + col;
+                      const isOn = board[index];
+                      return (
+                        <Pressable
+                          accessibilityRole="button"
+                          accessibilityState={{ selected: isOn }}
+                          key={index}
+                          onPress={() => handleCellTap(index)}
+                          style={[
+                            styles.cell,
+                            {
+                              backgroundColor: isOn
+                                ? theme.warning
+                                : theme.elevated,
+                              borderColor: isOn ? theme.warning : theme.border,
+                              height: cellSize,
+                              width: cellSize,
+                            },
+                          ]}
+                        >
+                          <Text
+                            style={[
+                              styles.cellEmoji,
+                              { fontSize: Math.min(30, cellSize * 0.42) },
+                              !isOn && styles.cellEmojiOff,
+                            ]}
+                          >
+                            💡
+                          </Text>
+                        </Pressable>
+                      );
+                    })}
+                  </RNView>
+                ))}
+              </RNView>
 
-      {/* ── Game result overlay ── */}
-      {finalScore !== null && (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={restart}
-          score={finalScore}
-          streak={progressInfo?.currentStreak}
-          title={t("gameCabinLightsName")}
-        />
-      )}
-    </View>
+              {phase === "playing" && (
+                <Text style={[styles.hintText, { color: theme.mutedText }]}>
+                  {t("cabinLightsRemaining", { count: litCount })}
+                </Text>
+              )}
+
+              {phase === "roundDone" && (
+                <Pressable
+                  accessibilityLabel={t("cabinLightsNextRound")}
+                  accessibilityRole="button"
+                  onPress={() => startRound(round + 1)}
+                  style={[
+                    styles.nextButton,
+                    {
+                      backgroundColor: theme.successSurface,
+                      borderColor: theme.successBorder,
+                    },
+                  ]}
+                >
+                  <Text style={[styles.nextButtonTitle, { color: theme.text }]}>
+                    {t("cabinLightsRoundClear")}
+                  </Text>
+                  <Text
+                    style={[styles.nextButtonHint, { color: theme.mutedText }]}
+                  >
+                    {t("cabinLightsNextRound")}
+                  </Text>
+                </Pressable>
+              )}
+            </RNView>
+          )}
+
+          {/* ── Game result overlay ── */}
+        </A11yOverlayContent>
+        {finalScore !== null && (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={restart}
+            score={finalScore}
+            streak={progressInfo?.currentStreak}
+            title={t("gameCabinLightsName")}
+          />
+        )}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -412,6 +424,7 @@ const styles = StyleSheet.create({
   },
   pillGrow: { flex: 1 },
   root: { flex: 1, gap: 12, padding: 20 },
+  screen: { flex: 1 },
   statLabel: {
     fontSize: 11,
     fontWeight: "800",

@@ -134,6 +134,26 @@ export function canPlace(
   return shape.cells.every(([r, c]) => board[idx(row + r, col + c)] === 0);
 }
 
+/**
+ * Tap-to-place (and screen readers): where the piece's top-left should go so
+ * that it covers the tapped cell. Tries each of the piece's own blocks on the
+ * tapped cell in shape order (so the first block lands there when it fits),
+ * and returns the first placement that fits, or null.
+ */
+export function placementCovering(
+  board: Board,
+  shape: Shape,
+  row: number,
+  col: number
+): { col: number; row: number } | null {
+  for (const [r, c] of shape.cells) {
+    if (canPlace(board, shape, row - r, col - c)) {
+      return { col: col - c, row: row - r };
+    }
+  }
+  return null;
+}
+
 /** New board with the piece placed. Caller must check canPlace first. */
 export function place(
   board: Board,

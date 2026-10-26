@@ -11,17 +11,40 @@ import type { Destination } from "@/data/destinations";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getFlightProgress, getRemainingMinutes } from "@/store/useFlightStore";
 import type { Flight } from "@/types/flight";
+import type { FlightPhase } from "@/utils/flightPhase";
 import { formatTimeInZone, getDayOffset } from "@/utils/timezone";
 
 interface Props {
   destination: Destination | undefined;
   flight: Flight | null;
-  /** After arrival: show "Landed" instead of a progress readout. */
-  landed?: boolean;
   /** Wall-clock "now" from Home's 30 s tick, so clocks refresh. */
   nowMs: number;
   onAddFlight: () => void;
   onClear: () => void;
+  /** Opens the saved flight in the editor. */
+  onEdit: () => void;
+  /** preflight: countdown · inflight: progress · landed: "Landed". */
+  phase: FlightPhase;
+}
+
+/** "Departs in …" for the preflight phase (days once it's 2+ days away). */
+function useDepartsInLabel(flight: Flight | null, nowMs: number) {
+  const { t } = useTranslation();
+  if (!flight) {
+    return "";
+  }
+  const totalMinutes = Math.max(
+    0,
+    Math.ceil((flight.departureTime - nowMs) / 60_000)
+  );
+  const hours = Math.floor(totalMinutes / 60);
+  if (hours >= 48) {
+    return t("flightDepartsInDays", {
+      days: Math.floor(hours / 24),
+      hours: hours % 24,
+    });
+  }
+  return t("flightDepartsIn", { hours, minutes: totalMinutes % 60 });
 }
 
 /** Active-flight card (progress, clocks, jet lag) or the "add your flight" prompt. */
@@ -31,11 +54,15 @@ export default function FlightCard({
   nowMs,
   onClear,
   onAddFlight,
-  landed,
+  onEdit,
+  phase,
 }: Props) {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
+  const departsInLabel = useDepartsInLabel(flight, nowMs);
+  const landed = phase === "landed";
+  const preflight = phase === "preflight";
 
   if (!flight) {
     return (
@@ -76,6 +103,16 @@ export default function FlightCard({
       })()
     : null;
 
+  let progressText = `${Math.round(progress * 100)}% — ${t("remainingTime", {
+    hours: remainingH,
+    minutes: remainingM,
+  })}`;
+  if (landed) {
+    progressText = t("flightLanded");
+  } else if (preflight) {
+    progressText = departsInLabel;
+  }
+
   let recommendation = t("recommendationShort");
   if (remaining > 120) {
     recommendation = t("recommendationLong");
@@ -87,7 +124,10 @@ export default function FlightCard({
     <View
       style={[styles.flightShell, { backgroundColor: `${theme.border}30` }]}
     >
-      <View
+      <AnimatedPressable
+        accessibilityHint={t("stackEditFlight")}
+        onPress={onEdit}
+        scaleTo={0.99}
         style={[
           styles.flightCard,
           { backgroundColor: theme.accentSoft },
@@ -99,6 +139,13 @@ export default function FlightCard({
           <Text style={styles.flightTitle}>
             {flight.flightNumber ?? t("yourFlight")}
           </Text>
+          <Ionicons
+            accessibilityElementsHidden
+            color={theme.mutedText}
+            importantForAccessibility="no"
+            name="create-outline"
+            size={18}
+          />
           <Pressable
             accessibilityLabel={t("a11yClearFlight")}
             hitSlop={10}
@@ -118,12 +165,7 @@ export default function FlightCard({
           <ProgressFill color={theme.tint} progress={progress} />
         </View>
         <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-          {landed
-            ? t("flightLanded")
-            : `${Math.round(progress * 100)}% — ${t("remainingTime", {
-                hours: remainingH,
-                minutes: remainingM,
-              })}`}
+          {progressText}
         </Text>
         {!arrivalLocal && (
           <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
@@ -154,7 +196,7 @@ export default function FlightCard({
             </Text>
           </View>
         )}
-      </View>
+      </AnimatedPressable>
       {destination ? (
         <JetlagCard destination={destination} flight={flight} nowMs={nowMs} />
       ) : null}

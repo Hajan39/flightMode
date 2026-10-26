@@ -13,6 +13,7 @@ import {
   newGame,
   type Piece,
   place,
+  placementCovering,
   playMove,
   SHAPES,
   type Shape,
@@ -227,5 +228,54 @@ describe("cargo-blocks scoring + playMove", () => {
     };
     const res = playMove(state, 0, 0, 0, seeded(1));
     expect(res?.over).toBe(true);
+  });
+});
+
+describe("cargo blocks tap-to-place", () => {
+  test("the piece's first block lands on the tapped cell when it fits", () => {
+    for (const candidate of SHAPES) {
+      const at = placementCovering(emptyBoard(), candidate, 2, 2);
+      expect(at).not.toBeNull();
+      const [r, c] = candidate.cells[0];
+      expect(at).toEqual({ col: 2 - c, row: 2 - r });
+    }
+  });
+
+  test("finds a covering placement exactly when one exists (every cell, every shape)", () => {
+    const board = emptyBoard();
+    for (const candidate of SHAPES) {
+      for (let row = 0; row < BOARD_SIZE; row += 1) {
+        for (let col = 0; col < BOARD_SIZE; col += 1) {
+          const exists = candidate.cells.some(([r, c]) =>
+            canPlace(board, candidate, row - r, col - c)
+          );
+          const at = placementCovering(board, candidate, row, col);
+          expect(at !== null).toBe(exists);
+          if (at) {
+            expect(canPlace(board, candidate, at.row, at.col)).toBe(true);
+            expect(
+              candidate.cells.some(
+                ([r, c]) => at.row + r === row && at.col + c === col
+              )
+            ).toBe(true);
+          }
+        }
+      }
+    }
+  });
+
+  test("returns null when the tapped cell is taken or nothing fits", () => {
+    const board = emptyBoard();
+    board[idx(0, 0)] = 1;
+    const single = SHAPES.reduce((a, b) =>
+      a.cells.length <= b.cells.length ? a : b
+    );
+    expect(placementCovering(board, single, 0, 0)).toBeNull();
+    // A full hold with one hole: only the single block still fits there.
+    const full: Board = new Array(BOARD_SIZE * BOARD_SIZE).fill(1);
+    full[idx(4, 4)] = 0;
+    expect(placementCovering(full, single, 4, 4)).toEqual({ col: 4, row: 4 });
+    const bigger = SHAPES.find((candidate) => candidate.cells.length > 1);
+    expect(bigger && placementCovering(full, bigger, 4, 4)).toBeNull();
   });
 });

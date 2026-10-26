@@ -1,12 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 import { type AchievementState, achievements } from "@/data/achievements";
 import { getPlayGamesAchievementId } from "@/data/playGamesAchievements";
 import { useGameStore } from "@/store/useGameStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { nextStreakState, toLocalDateKey } from "@/utils/dates";
-import { reportHydrationResult } from "@/utils/hydration";
+import { safePersistOptions } from "@/utils/persistStorage";
 import {
   resendUnlockedAchievements,
   setUnlockedPlayIdsSource,
@@ -184,16 +184,15 @@ export const useAchievementStore = create<AchievementStoreState>()(
         get().checkAndUnlock();
       },
     }),
-    {
+    safePersistOptions(() => AsyncStorage, {
       name: "achievements",
       // If Play Games signed in before local unlocks loaded, push them now.
-      // A failed read is reported so hydration waiters don't stall.
-      onRehydrateStorage: reportHydrationResult("achievements", () => {
+      // (A failed read is reported by safePersistOptions.)
+      onRehydrateStorage: () => () => {
         // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
         void resendUnlockedAchievements();
-      }),
-      storage: createJSONStorage(() => AsyncStorage),
-    }
+      },
+    })
   )
 );
 

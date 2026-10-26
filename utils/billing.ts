@@ -21,6 +21,38 @@ type ExpoIap = typeof import("expo-iap");
 let iap: ExpoIap | null = null;
 let connected: Promise<boolean> | null = null;
 
+/** What the Plus screen needs to know about a checkout in flight. */
+export type PurchaseUpdate = "pending" | "purchased";
+
+type PurchaseUpdateListener = (
+  productId: string,
+  update: PurchaseUpdate
+) => void;
+
+const purchaseUpdateListeners = new Set<PurchaseUpdateListener>();
+
+/**
+ * Listen for checkout results (e.g. a "pending" cash / bank payment that
+ * Play completes later). Returns the unsubscribe function.
+ */
+export function subscribePurchaseUpdates(listener: PurchaseUpdateListener) {
+  purchaseUpdateListeners.add(listener);
+  return () => {
+    purchaseUpdateListeners.delete(listener);
+  };
+}
+
+/** Exported for tests: fan a store purchase out to the screen listeners. */
+export function notifyPurchaseUpdate(purchase: Purchase) {
+  const { purchaseState } = purchase;
+  if (purchaseState !== "pending" && purchaseState !== "purchased") {
+    return;
+  }
+  for (const listener of purchaseUpdateListeners) {
+    listener(purchase.productId, purchaseState);
+  }
+}
+
 function loadIap(): ExpoIap | null {
   if (Platform.OS !== "android") {
     return null;
@@ -105,10 +137,11 @@ export function initBilling(): Promise<boolean> {
   connected ??= (async () => {
     try {
       await lib.initConnection();
-      lib.purchaseUpdatedListener(
+      lib.purchaseUpdatedListener((purchase) => {
+        notifyPurchaseUpdate(purchase);
         // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
-        (purchase) => void handlePurchase(purchase, "purchase")
-      );
+        void handlePurchase(purchase, "purchase");
+      });
       await restorePurchases();
       return true;
     } catch {
@@ -155,11 +188,15 @@ export async function fetchSupporterProducts(): Promise<Product[]> {
   }
 }
 
-/** Starts the Play purchase sheet; the result arrives via the purchase listener. */
-export async function buySupporterProduct(sku: string): Promise<void> {
+/**
+ * Starts the Play purchase sheet; the result arrives via the purchase
+ * listener (see `subscribePurchaseUpdates`). Resolves `false` when the store
+ * is unreachable (no native module, offline, not connected).
+ */
+export async function buySupporterProduct(sku: string): Promise<boolean> {
   const lib = loadIap();
   if (!(lib && (await initBilling()))) {
-    return;
+    return false;
   }
   captureAnalyticsEvent("support_clicked", {
     placement: "plus",
@@ -174,4 +211,5 @@ export async function buySupporterProduct(sku: string): Promise<void> {
   } catch {
     // User cancelled or the store refused — nothing to undo.
   }
+  return true;
 }

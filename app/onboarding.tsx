@@ -12,13 +12,15 @@ import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
 import CurrencyPicker from "@/components/CurrencyPicker";
+import { resolveHomeCurrency } from "@/components/currencyDefault";
 import LanguageDropdown from "@/components/LanguageDropdown";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import { deviceCurrencyCode, POPULAR_CURRENCIES } from "@/data/currencies";
+import { POPULAR_CURRENCIES } from "@/data/currencies";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useRatesStore } from "@/store/useRatesStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import type { GameCategory } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -90,7 +92,8 @@ interface PageProps {
 function HomeCurrencyPicker() {
   const homeCurrency = useSettingsStore((s) => s.homeCurrency);
   const setHomeCurrency = useSettingsStore((s) => s.setHomeCurrency);
-  const selected = homeCurrency ?? deviceCurrencyCode();
+  const liveRates = useRatesStore((s) => s.rates);
+  const selected = resolveHomeCurrency(homeCurrency, liveRates);
 
   return (
     <CurrencyPicker
@@ -224,6 +227,14 @@ export default function OnboardingScreen() {
 
   const finish = () => {
     haptic.success();
+    // Keep the preselected currency as the converter default even when the
+    // traveller never tapped a chip (or skipped the step).
+    const settings = useSettingsStore.getState();
+    if (!settings.homeCurrency) {
+      settings.setHomeCurrency(
+        resolveHomeCurrency(null, useRatesStore.getState().rates)
+      );
+    }
     captureAnalyticsEvent("onboarding_complete", {
       page_count: pages.length,
       page_index: activeIndex,

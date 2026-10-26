@@ -1,5 +1,4 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
 import { useMemo, useState } from "react";
 import {
   FlatList,
@@ -12,6 +11,7 @@ import Animated, { FadeInDown } from "react-native-reanimated";
 import AnimatedPressable from "@/components/AnimatedPressable";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
+import { usePushGuard } from "@/components/usePushGuard";
 import Colors from "@/constants/Colors";
 import { gameRegistry } from "@/data/games";
 import { useTabletLayout } from "@/hooks/useTabletLayout";
@@ -64,7 +64,7 @@ const CATEGORIES: ("all" | GameCategory)[] = [
 ];
 
 export default function GamesScreen() {
-  const router = useRouter();
+  const push = usePushGuard();
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
@@ -100,7 +100,7 @@ export default function GamesScreen() {
     {
       icon: "layers-outline",
       key: "deep",
-      label: `7+ ${t("minutesShort", { minutes: 7 }).replace("7 ", "")}`,
+      label: t("gamesFilterDeepMinutes", { minutes: 7 }),
     },
   ];
 
@@ -332,7 +332,7 @@ export default function GamesScreen() {
                 entering={FadeInDown.delay(index * 60).springify()}
               >
                 <AnimatedPressable
-                  onPress={() => router.push(`/game/${item.id}` as never)}
+                  onPress={() => push(`/game/${item.id}`)}
                   style={[
                     styles.card,
                     { backgroundColor: theme.card, borderColor: theme.border },

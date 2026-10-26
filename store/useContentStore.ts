@@ -1,13 +1,18 @@
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import type { ContentItem } from "@/types/content";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-import { fetchContentFeed, hasContentSyncEndpoint } from "@/utils/contentSync";
+import {
+  fetchContentFeed,
+  hasContentSyncEndpoint,
+  isContentItem,
+} from "@/utils/contentSync";
 import { sanitizeErrorText } from "@/utils/errorLogging";
 import { fileStorage } from "@/utils/fileStorage";
+import { safePersistOptions } from "@/utils/persistStorage";
 
 const CONTENT_SYNC_MIN_INTERVAL_MS = 30 * 60 * 1000;
 /** After a failure, wait before retrying — the bootstrap effect re-runs on every status change. */
@@ -50,24 +55,23 @@ export const useContentStore = create<ContentState>()(
       lastSyncAt: null,
       status: "idle",
       syncContent: async () => {
+        // Before hydration lastSyncAt / version / ETag are still null and the
+        // sync policy is the default: syncing now would ignore the cooldown,
+        // re-download the whole feed and could break a user's "off" choice.
+        // The bootstrap retries once both stores have loaded.
+        if (!syncInputsHydrated()) {
+          return;
+        }
         const state = get();
         const networkState = useNetworkStore.getState();
         const { syncNetworkPolicy } = useSettingsStore.getState();
 
-        if (
-          !(
-            hasContentSyncEndpoint() &&
-            canSyncOnNetwork(networkState, syncNetworkPolicy)
-          )
-        ) {
+        if (!canSyncNow(networkState, syncNetworkPolicy)) {
           set({ lastError: null, status: "skipped" });
           return;
         }
 
-        if (
-          state.lastSyncAt &&
-          Date.now() - state.lastSyncAt < CONTENT_SYNC_MIN_INTERVAL_MS
-        ) {
+        if (isCoolingDown(state.lastSyncAt)) {
           set({ lastError: null, status: "skipped" });
           return;
         }
@@ -138,7 +142,18 @@ export const useContentStore = create<ContentState>()(
       },
       version: null,
     }),
-    {
+    safePersistOptions(() => fileStorage, {
+      // A hand-edited / older-format file must not crash consumers: keep
+      // only valid articles; a non-array means "no synced feed".
+      merge: (persisted, current) => {
+        const stored = (persisted ?? {}) as Partial<ContentState>;
+        return {
+          ...current,
+          ...stored,
+          items:
+            "items" in stored ? sanitizeItems(stored.items) : current.items,
+        };
+      },
       name: "content_sync",
       partialize: (state) => ({
         etag: state.etag,
@@ -147,8 +162,34 @@ export const useContentStore = create<ContentState>()(
         lastSyncAt: state.lastSyncAt,
         version: state.version,
       }),
-      // The feed can grow past what Android AsyncStorage can hold — keep it in a file.
-      storage: createJSONStorage(() => fileStorage),
-    }
+      // The feed can grow past what Android AsyncStorage can hold — keep it
+      // in a file (fileStorage, chosen above).
+    })
   )
 );
+
+function sanitizeItems(items: unknown): ContentItem[] | null {
+  return Array.isArray(items) ? items.filter(isContentItem) : null;
+}
+
+/** Cooldown timestamps and the sync policy are only real once both stores loaded. */
+function syncInputsHydrated() {
+  return (
+    useContentStore.persist.hasHydrated() &&
+    useSettingsStore.persist.hasHydrated()
+  );
+}
+
+function canSyncNow(
+  networkState: Parameters<typeof canSyncOnNetwork>[0],
+  policy: Parameters<typeof canSyncOnNetwork>[1]
+) {
+  return hasContentSyncEndpoint() && canSyncOnNetwork(networkState, policy);
+}
+
+function isCoolingDown(lastSyncAt: number | null) {
+  return (
+    lastSyncAt !== null &&
+    Date.now() - lastSyncAt < CONTENT_SYNC_MIN_INTERVAL_MS
+  );
+}

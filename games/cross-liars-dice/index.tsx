@@ -7,6 +7,10 @@ import {
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import AnimatedPressable from "@/components/AnimatedPressable";
 import GameControls from "@/components/GameControls";
 import {
@@ -220,279 +224,298 @@ export default function CrossLiarsDiceGame() {
   }
 
   return (
-    <View style={styles.container}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          label={bannerLabel}
-          player={phase === "peek" || phase === "passPeek" ? peeker : bidder}
-          right={
-            <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-              {t("ldRound", { n: roundNum })}
-            </Text>
-          }
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.container}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              label={bannerLabel}
+              player={
+                phase === "peek" || phase === "passPeek" ? peeker : bidder
+              }
+              right={
+                <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                  {t("ldRound", { n: roundNum })}
+                </Text>
+              }
+            />
+            <GameControls onReset={() => startMatch(players)} />
+          </RNView>
 
-      <PlayerScoreStrip
-        activeIndex={phase === "bid" ? currentBidder : undefined}
-        format={(v) => (v > 0 ? `${v} 🎲` : "💀")}
-        players={players}
-        scores={diceCounts}
-      />
+          <PlayerScoreStrip
+            activeIndex={phase === "bid" ? currentBidder : undefined}
+            format={(v) => (v > 0 ? `${v} 🎲` : "💀")}
+            players={players}
+            scores={diceCounts}
+          />
 
-      {phase === "peek" ? (
-        <Animated.View
-          entering={FadeInDown.duration(240)}
-          style={styles.center}
-        >
-          <Text style={[styles.hint, { color: theme.mutedText }]}>
-            {t("ldDiceRolledHint")}
-          </Text>
-          <RNView style={styles.diceRow}>
-            {(allDice[currentPeeker] ?? []).map((d, i) => (
-              <Animated.View
-                accessibilityLabel={t("a11yDieFace", { n: d })}
-                entering={ZoomIn.delay(i * 80).duration(200)}
-                key={`${currentPeeker}-${roundNum}-${i}`}
+          {phase === "peek" ? (
+            <Animated.View
+              entering={FadeInDown.duration(240)}
+              style={styles.center}
+            >
+              <Text style={[styles.hint, { color: theme.mutedText }]}>
+                {t("ldDiceRolledHint")}
+              </Text>
+              <RNView style={styles.diceRow}>
+                {(allDice[currentPeeker] ?? []).map((d, i) => (
+                  <Animated.View
+                    accessibilityLabel={t("a11yDieFace", { n: d })}
+                    entering={ZoomIn.delay(i * 80).duration(200)}
+                    key={`${currentPeeker}-${roundNum}-${i}`}
+                    style={[
+                      styles.dieBox,
+                      {
+                        backgroundColor: theme.card,
+                        borderColor: peeker.color,
+                      },
+                    ]}
+                  >
+                    <Text style={styles.dieText}>{DICE_EMOJI[d]}</Text>
+                  </Animated.View>
+                ))}
+              </RNView>
+              <Pressable
+                accessibilityLabel={t("passPhoneReady")}
+                accessibilityRole="button"
+                onPress={peekDone}
+                style={[styles.primaryBtn, { backgroundColor: peeker.color }]}
+              >
+                <Text style={styles.primaryBtnText}>{t("passPhoneReady")}</Text>
+              </Pressable>
+            </Animated.View>
+          ) : null}
+
+          {phase === "bid" ? (
+            <ScrollView
+              contentContainerStyle={styles.scrollContent}
+              style={styles.scroll}
+            >
+              <Text style={[styles.diceInfo, { color: theme.mutedText }]}>
+                {t("ldTotalDice", { total: totalDice })}
+              </Text>
+
+              <RNView style={styles.bidSection}>
+                <Text style={[styles.bidLabel, { color: theme.mutedText }]}>
+                  {t("ldCurrentBid")}
+                </Text>
+                {currentBid ? (
+                  <Text style={styles.bidValue}>
+                    {currentBid.qty}× {DICE_EMOJI[currentBid.face]} ·{" "}
+                    {players[lastBidder]?.name}
+                  </Text>
+                ) : (
+                  <Text style={[styles.bidValue, { color: theme.mutedText }]}>
+                    {t("ldNoBid")}
+                  </Text>
+                )}
+              </RNView>
+
+              <RNView
                 style={[
-                  styles.dieBox,
-                  { backgroundColor: theme.card, borderColor: peeker.color },
+                  styles.bidCard,
+                  { backgroundColor: theme.card, borderColor: bidder.color },
                 ]}
               >
-                <Text style={styles.dieText}>{DICE_EMOJI[d]}</Text>
-              </Animated.View>
-            ))}
-          </RNView>
-          <Pressable
-            accessibilityLabel={t("passPhoneReady")}
-            accessibilityRole="button"
-            onPress={peekDone}
-            style={[styles.primaryBtn, { backgroundColor: peeker.color }]}
-          >
-            <Text style={styles.primaryBtnText}>{t("passPhoneReady")}</Text>
-          </Pressable>
-        </Animated.View>
-      ) : null}
-
-      {phase === "bid" ? (
-        <ScrollView
-          contentContainerStyle={styles.scrollContent}
-          style={styles.scroll}
-        >
-          <Text style={[styles.diceInfo, { color: theme.mutedText }]}>
-            {t("ldTotalDice", { total: totalDice })}
-          </Text>
-
-          <RNView style={styles.bidSection}>
-            <Text style={[styles.bidLabel, { color: theme.mutedText }]}>
-              {t("ldCurrentBid")}
-            </Text>
-            {currentBid ? (
-              <Text style={styles.bidValue}>
-                {currentBid.qty}× {DICE_EMOJI[currentBid.face]} ·{" "}
-                {players[lastBidder]?.name}
-              </Text>
-            ) : (
-              <Text style={[styles.bidValue, { color: theme.mutedText }]}>
-                {t("ldNoBid")}
-              </Text>
-            )}
-          </RNView>
-
-          <RNView
-            style={[
-              styles.bidCard,
-              { backgroundColor: theme.card, borderColor: bidder.color },
-            ]}
-          >
-            <RNView style={styles.spinnerRow}>
-              <Text style={styles.spinnerLabel}>{t("ldQuantity")}</Text>
-              <Pressable
-                accessibilityLabel={t("a11yDecreaseQty")}
-                accessibilityRole="button"
-                onPress={() => {
-                  haptic.tap();
-                  setBidQty((q) => Math.max(1, q - 1));
-                }}
-                style={[styles.spinnerBtn, { borderColor: theme.border }]}
-              >
-                <Text style={styles.spinnerBtnText}>−</Text>
-              </Pressable>
-              <Text style={styles.spinnerValue}>{bidQty}</Text>
-              <Pressable
-                accessibilityLabel={t("a11yIncreaseQty")}
-                accessibilityRole="button"
-                onPress={() => {
-                  haptic.tap();
-                  setBidQty((q) => Math.min(totalDice, q + 1));
-                }}
-                style={[styles.spinnerBtn, { borderColor: theme.border }]}
-              >
-                <Text style={styles.spinnerBtnText}>+</Text>
-              </Pressable>
-            </RNView>
-            <RNView style={styles.faceRow}>
-              {FACES.map((f) => (
-                <Pressable
-                  accessibilityLabel={t("a11yDieFace", { n: f })}
-                  accessibilityRole="button"
-                  accessibilityState={{ selected: bidFace === f }}
-                  key={f}
-                  onPress={() => {
-                    haptic.tap();
-                    setBidFace(f);
-                  }}
-                  style={[
-                    styles.faceBtn,
-                    {
-                      backgroundColor:
-                        bidFace === f ? bidder.color : "transparent",
-                      borderColor: theme.border,
-                    },
-                  ]}
-                >
-                  <Text style={styles.faceBtnText}>{DICE_EMOJI[f]}</Text>
-                </Pressable>
-              ))}
-            </RNView>
-            <Pressable
-              accessibilityLabel={t("ldPlaceBid")}
-              accessibilityRole="button"
-              accessibilityState={{ disabled: !isValidBid(bidQty, bidFace) }}
-              disabled={!isValidBid(bidQty, bidFace)}
-              onPress={placeBid}
-              style={[
-                styles.actionBtn,
-                {
-                  backgroundColor: bidder.color,
-                  opacity: isValidBid(bidQty, bidFace) ? 1 : 0.35,
-                },
-              ]}
-            >
-              <Text style={styles.actionBtnText}>{t("ldPlaceBid")}</Text>
-            </Pressable>
-          </RNView>
-
-          {currentBid && lastBidder >= 0 ? (
-            <AnimatedPressable
-              accessibilityLabel={t("ldLiar")}
-              accessibilityRole="button"
-              onPress={callLiar}
-              scaleTo={0.92}
-              style={[styles.liarBtn, { backgroundColor: theme.danger }]}
-            >
-              <Text style={styles.liarBtnText}>🤥 {t("ldLiar")}</Text>
-            </AnimatedPressable>
-          ) : null}
-        </ScrollView>
-      ) : null}
-
-      {phase === "reveal" ? (
-        <ScrollView
-          contentContainerStyle={styles.scrollContent}
-          style={styles.scroll}
-        >
-          {allDice.map((dice, i) =>
-            dice.length > 0 ? (
-              <Animated.View
-                entering={FadeInDown.delay(i * 50).duration(200)}
-                key={players[i].index}
-                style={styles.revealPlayerRow}
-              >
-                <RNView
-                  style={[
-                    styles.playerDot,
-                    { backgroundColor: players[i].color },
-                  ]}
-                />
-                <Text
-                  numberOfLines={1}
-                  style={[styles.revealPlayerName, { color: players[i].color }]}
-                >
-                  {players[i].name}
-                </Text>
-                <RNView style={styles.diceRowSmall}>
-                  {dice.map((d, j) => (
-                    <Animated.View
-                      entering={ZoomIn.delay(i * 50 + j * 30).duration(150)}
-                      key={`${i}-${j}`}
+                <RNView style={styles.spinnerRow}>
+                  <Text style={styles.spinnerLabel}>{t("ldQuantity")}</Text>
+                  <Pressable
+                    accessibilityLabel={t("a11yDecreaseQty")}
+                    accessibilityRole="button"
+                    onPress={() => {
+                      haptic.tap();
+                      setBidQty((q) => Math.max(1, q - 1));
+                    }}
+                    style={[styles.spinnerBtn, { borderColor: theme.border }]}
+                  >
+                    <Text style={styles.spinnerBtnText}>−</Text>
+                  </Pressable>
+                  <Text style={styles.spinnerValue}>{bidQty}</Text>
+                  <Pressable
+                    accessibilityLabel={t("a11yIncreaseQty")}
+                    accessibilityRole="button"
+                    onPress={() => {
+                      haptic.tap();
+                      setBidQty((q) => Math.min(totalDice, q + 1));
+                    }}
+                    style={[styles.spinnerBtn, { borderColor: theme.border }]}
+                  >
+                    <Text style={styles.spinnerBtnText}>+</Text>
+                  </Pressable>
+                </RNView>
+                <RNView style={styles.faceRow}>
+                  {FACES.map((f) => (
+                    <Pressable
+                      accessibilityLabel={t("a11yDieFace", { n: f })}
+                      accessibilityRole="button"
+                      accessibilityState={{ selected: bidFace === f }}
+                      key={f}
+                      onPress={() => {
+                        haptic.tap();
+                        setBidFace(f);
+                      }}
                       style={[
-                        styles.dieBoxSmall,
+                        styles.faceBtn,
                         {
                           backgroundColor:
-                            d === currentBid?.face ? theme.warning : theme.card,
+                            bidFace === f ? bidder.color : "transparent",
                           borderColor: theme.border,
                         },
                       ]}
                     >
-                      <Text style={styles.dieTextSmall}>{DICE_EMOJI[d]}</Text>
-                    </Animated.View>
+                      <Text style={styles.faceBtnText}>{DICE_EMOJI[f]}</Text>
+                    </Pressable>
                   ))}
                 </RNView>
-              </Animated.View>
-            ) : null
-          )}
+                <Pressable
+                  accessibilityLabel={t("ldPlaceBid")}
+                  accessibilityRole="button"
+                  accessibilityState={{
+                    disabled: !isValidBid(bidQty, bidFace),
+                  }}
+                  disabled={!isValidBid(bidQty, bidFace)}
+                  onPress={placeBid}
+                  style={[
+                    styles.actionBtn,
+                    {
+                      backgroundColor: bidder.color,
+                      opacity: isValidBid(bidQty, bidFace) ? 1 : 0.35,
+                    },
+                  ]}
+                >
+                  <Text style={styles.actionBtnText}>{t("ldPlaceBid")}</Text>
+                </Pressable>
+              </RNView>
 
-          {currentBid && revealResult ? (
-            <Animated.View
-              entering={ZoomIn.duration(300)}
-              style={styles.resultCard}
-            >
-              <Text style={styles.resultTitle}>
-                {revealResult.liar ? "🤥 " : "😤 "}
-                {currentBid.qty}× {DICE_EMOJI[currentBid.face]} →{" "}
-                {t("ldActual")}: {revealResult.total}
-              </Text>
-              <Text
-                style={[
-                  styles.resultText,
-                  { color: players[revealResult.loser].color },
-                ]}
-              >
-                {players[revealResult.loser].name} {t("ldLosesDie")}
-              </Text>
-              <Pressable
-                accessibilityLabel={t("ldNextRound")}
-                accessibilityRole="button"
-                onPress={nextRound}
-                style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-              >
-                <Text style={[styles.primaryBtnText, { color: theme.onTint }]}>
-                  {t("ldNextRound")}
-                </Text>
-              </Pressable>
-            </Animated.View>
+              {currentBid && lastBidder >= 0 ? (
+                <AnimatedPressable
+                  accessibilityLabel={t("ldLiar")}
+                  accessibilityRole="button"
+                  onPress={callLiar}
+                  scaleTo={0.92}
+                  style={[styles.liarBtn, { backgroundColor: theme.danger }]}
+                >
+                  <Text style={styles.liarBtnText}>🤥 {t("ldLiar")}</Text>
+                </AnimatedPressable>
+              ) : null}
+            </ScrollView>
           ) : null}
-        </ScrollView>
-      ) : null}
 
-      <PassDeviceOverlay
-        hint={t("ldDiceRolledHint")}
-        onReady={() => setPhase("peek")}
-        readyLabel={t("ldPeek")}
-        secret
-        toPlayer={peeker}
-        visible={phase === "passPeek"}
-      />
+          {phase === "reveal" ? (
+            <ScrollView
+              contentContainerStyle={styles.scrollContent}
+              style={styles.scroll}
+            >
+              {allDice.map((dice, i) =>
+                dice.length > 0 ? (
+                  <Animated.View
+                    entering={FadeInDown.delay(i * 50).duration(200)}
+                    key={players[i].index}
+                    style={styles.revealPlayerRow}
+                  >
+                    <RNView
+                      style={[
+                        styles.playerDot,
+                        { backgroundColor: players[i].color },
+                      ]}
+                    />
+                    <Text
+                      numberOfLines={1}
+                      style={[
+                        styles.revealPlayerName,
+                        { color: players[i].color },
+                      ]}
+                    >
+                      {players[i].name}
+                    </Text>
+                    <RNView style={styles.diceRowSmall}>
+                      {dice.map((d, j) => (
+                        <Animated.View
+                          entering={ZoomIn.delay(i * 50 + j * 30).duration(150)}
+                          key={`${i}-${j}`}
+                          style={[
+                            styles.dieBoxSmall,
+                            {
+                              backgroundColor:
+                                d === currentBid?.face
+                                  ? theme.warning
+                                  : theme.card,
+                              borderColor: theme.border,
+                            },
+                          ]}
+                        >
+                          <Text style={styles.dieTextSmall}>
+                            {DICE_EMOJI[d]}
+                          </Text>
+                        </Animated.View>
+                      ))}
+                    </RNView>
+                  </Animated.View>
+                ) : null
+              )}
 
-      {phase === "done" ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel="🎲"
-          standings={players.map((p, i) => ({
-            detail: diceCounts[i] > 0 ? "🏆" : "💀",
-            player: p,
-            score: diceCounts[i],
-          }))}
-          subtitle={`${t("ldRoundsPlayed")}: ${roundNum}`}
-          winnerIndex={winner}
+              {currentBid && revealResult ? (
+                <Animated.View
+                  entering={ZoomIn.duration(300)}
+                  style={styles.resultCard}
+                >
+                  <Text style={styles.resultTitle}>
+                    {revealResult.liar ? "🤥 " : "😤 "}
+                    {currentBid.qty}× {DICE_EMOJI[currentBid.face]} →{" "}
+                    {t("ldActual")}: {revealResult.total}
+                  </Text>
+                  <Text
+                    style={[
+                      styles.resultText,
+                      { color: players[revealResult.loser].color },
+                    ]}
+                  >
+                    {players[revealResult.loser].name} {t("ldLosesDie")}
+                  </Text>
+                  <Pressable
+                    accessibilityLabel={t("ldNextRound")}
+                    accessibilityRole="button"
+                    onPress={nextRound}
+                    style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
+                  >
+                    <Text
+                      style={[styles.primaryBtnText, { color: theme.onTint }]}
+                    >
+                      {t("ldNextRound")}
+                    </Text>
+                  </Pressable>
+                </Animated.View>
+              ) : null}
+            </ScrollView>
+          ) : null}
+        </A11yOverlayContent>
+        <PassDeviceOverlay
+          hint={t("ldDiceRolledHint")}
+          onReady={() => setPhase("peek")}
+          readyLabel={t("ldPeek")}
+          secret
+          toPlayer={peeker}
+          visible={phase === "passPeek"}
         />
-      ) : null}
-    </View>
+
+        {phase === "done" ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel="🎲"
+            standings={players.map((p, i) => ({
+              detail: diceCounts[i] > 0 ? "🏆" : "💀",
+              player: p,
+              score: diceCounts[i],
+            }))}
+            subtitle={`${t("ldRoundsPlayed")}: ${roundNum}`}
+            winnerIndex={winner}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -607,6 +630,7 @@ const styles = StyleSheet.create({
     gap: Spacing.sm,
   },
   roundChip: { ...TextStyle.chipLabel },
+  screen: { flex: 1 },
   scroll: { flex: 1 },
   scrollContent: {
     alignItems: "center",

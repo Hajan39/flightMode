@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Stack, useRouter } from "expo-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Alert,
   KeyboardAvoidingView,
@@ -26,6 +26,7 @@ import {
   flightDurationBucket,
   hoursUntilDepartureBucket,
 } from "@/utils/analytics";
+import { getCurrentFlight } from "@/utils/flightPhase";
 import {
   cancelJetlagSleepReminder,
   scheduleFlightReadyReminder,
@@ -34,6 +35,8 @@ import {
 import { getJetlagPlan, getJetlagReminderFireAt } from "@/utils/timezone";
 
 const DATE_INPUT_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
+/** Longest flight the steppers allow: 24:00. */
+const MAX_DURATION_MINUTES = 24 * 60;
 const TIME_INPUT_RE = /^(\d{2}):(\d{2})$/;
 
 function pad2(value: number) {
@@ -178,7 +181,14 @@ export default function FlightEditScreen() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const setFlight = useFlightStore((s) => s.setFlight);
-  const existingFlight = useFlightStore((s) => s.flight);
+  // Captured once: a trip past its landed window is over, so saving here
+  // starts a new flight (new passport entry) instead of rewriting the old one.
+  // Reading it once also keeps the mode stable while the save runs.
+  const [existingFlight] = useState(() =>
+    getCurrentFlight(useFlightStore.getState().flight, Date.now())
+  );
+  const savingRef = useRef<boolean>(false);
+  const [saving, setSaving] = useState(false);
   const incrementFlights = useAchievementStore((s) => s.incrementFlights);
   const isEditingFlight = Boolean(existingFlight);
   const insets = useSafeAreaInsets();
@@ -208,37 +218,59 @@ export default function FlightEditScreen() {
   const clockHour = clockMatch ? Number(clockMatch[1]) : 0;
   const clockMinute = clockMatch ? Number(clockMatch[2]) : 0;
 
+  /**
+   * Moves the departure by `deltaMinutes`: minutes carry into the hour and
+   * crossing midnight moves the date, so 23:55 + 5 min is tomorrow 00:00.
+   */
+  function shiftDeparture(deltaMinutes: number) {
+    const match = DATE_INPUT_RE.exec(departureDate);
+    if (!match) {
+      return;
+    }
+    const next = new Date(
+      Number(match[1]),
+      Number(match[2]) - 1,
+      Number(match[3]),
+      clockHour,
+      clockMinute + deltaMinutes,
+      0,
+      0
+    );
+    setDepartureDate(toDateInputValue(next.getTime()));
+    setDepartureClock(toTimeInputValue(next.getTime()));
+  }
+
   function adjustHour(delta: number) {
-    const next = (clockHour + delta + 24) % 24;
-    setDepartureClock(`${pad2(next)}:${pad2(clockMinute)}`);
+    shiftDeparture(delta * 60);
   }
 
   function adjustMinute(delta: number) {
-    const next = (clockMinute + delta + 60) % 60;
-    setDepartureClock(`${pad2(clockHour)}:${pad2(next)}`);
+    shiftDeparture(delta);
   }
 
   // Duration steppers
   const durationHours = Number.parseInt(hours, 10) || 0;
   const durationMins = Number.parseInt(minutes, 10) || 0;
 
+  /** Minutes carry into hours; the total is clamped to 0:00–24:00. */
+  function adjustDuration(deltaMinutes: number) {
+    const total = Math.max(
+      0,
+      Math.min(
+        MAX_DURATION_MINUTES,
+        durationHours * 60 + durationMins + deltaMinutes
+      )
+    );
+    setHours(String(Math.floor(total / 60)));
+    setMinutes(pad2(total % 60));
+  }
+
   function adjustDurationHour(delta: number) {
-    const next = Math.max(0, Math.min(24, durationHours + delta));
-    setHours(String(next));
+    adjustDuration(delta * 60);
   }
 
   function adjustDurationMinute(delta: number) {
-    let next = durationMins + delta;
-    let h = durationHours;
-    if (next < 0) {
-      next = 55;
-      h = Math.max(0, h - 1); // borrow an hour
-    } else if (next >= 60) {
-      next = 0;
-      h = Math.min(24, h + 1); // carry an hour
-    }
-    setHours(String(h));
-    setMinutes(pad2(next));
+    adjustDuration(delta);
   }
 
   const dayOffset = dayOffsetFromToday(departureDate);
@@ -249,9 +281,14 @@ export default function FlightEditScreen() {
   ];
 
   const handleSave = async () => {
+    // A double tap must not log the flight twice (state updates are async,
+    // so the ref is the real gate; `saving` only drives the button).
+    if (savingRef.current) {
+      return;
+    }
     const h = Number.parseInt(hours, 10) || 0;
     const m = Number.parseInt(minutes, 10) || 0;
-    const totalMinutes = h * 60 + m;
+    const totalMinutes = Math.min(MAX_DURATION_MINUTES, h * 60 + m);
     const departureTime = parseLocalDateTime(departureDate, departureClock);
 
     if (totalMinutes <= 0) {
@@ -263,6 +300,9 @@ export default function FlightEditScreen() {
       Alert.alert(t("invalidDepartureTitle"), t("invalidDepartureMessage"));
       return;
     }
+
+    savingRef.current = true;
+    setSaving(true);
 
     // Analytics get coarse buckets only: exact departure + duration would
     // near-identify a real flight.
@@ -288,6 +328,36 @@ export default function FlightEditScreen() {
     const destination = destinationId
       ? getDestinationById(destinationId)
       : undefined;
+    try {
+      await scheduleReminders(destination, departureTime, totalMinutes);
+    } finally {
+      captureAnalyticsEvent(
+        isEditingFlight ? "flight_edited" : "flight_added",
+        {
+          duration_bucket: durationBucket,
+          hours_until_departure_bucket: departureBucket,
+        }
+      );
+      captureAnalyticsEvent("flight_setup_completed", {
+        duration_bucket: durationBucket,
+        hours_until_departure_bucket: departureBucket,
+        is_departure_in_future: departureTime > Date.now(),
+        mode: isEditingFlight ? "edit" : "create",
+      });
+      router.back();
+    }
+  };
+
+  /** Jet-lag sleep nudge + "flight ready" reminder for the saved flight. */
+  const scheduleReminders = async (
+    destination: ReturnType<typeof getDestinationById>,
+    departureTime: number,
+    totalMinutes: number
+  ) => {
+    const departureBucket = hoursUntilDepartureBucket(
+      departureTime,
+      Date.now()
+    );
     if (destination) {
       const plan = getJetlagPlan({
         departureTime,
@@ -318,17 +388,6 @@ export default function FlightEditScreen() {
       // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
       void cancelJetlagSleepReminder();
     }
-    captureAnalyticsEvent(isEditingFlight ? "flight_edited" : "flight_added", {
-      duration_bucket: durationBucket,
-      hours_until_departure_bucket: departureBucket,
-    });
-    captureAnalyticsEvent("flight_setup_completed", {
-      duration_bucket: durationBucket,
-      hours_until_departure_bucket: departureBucket,
-      is_departure_in_future: departureTime > Date.now(),
-      mode: isEditingFlight ? "edit" : "create",
-    });
-
     const reminderResult = await scheduleFlightReadyReminder(departureTime);
     if (reminderResult.scheduled) {
       captureAnalyticsEvent("reminder_scheduled", {
@@ -341,8 +400,6 @@ export default function FlightEditScreen() {
         reminder_kind: "flight_ready",
       });
     }
-
-    router.back();
   };
 
   const tz = localTzLabel();
@@ -665,8 +722,14 @@ export default function FlightEditScreen() {
           </View>
 
           <Pressable
+            accessibilityRole="button"
+            accessibilityState={{ busy: saving, disabled: saving }}
+            disabled={saving}
             onPress={handleSave}
-            style={[styles.button, { backgroundColor: theme.tint }]}
+            style={[
+              styles.button,
+              { backgroundColor: theme.tint, opacity: saving ? 0.6 : 1 },
+            ]}
           >
             <Ionicons
               color={theme.onTint}
@@ -674,7 +737,7 @@ export default function FlightEditScreen() {
               size={22}
             />
             <Text style={[styles.buttonText, { color: theme.onTint }]}>
-              {t("startFlight")}
+              {isEditingFlight ? t("flightSaveChanges") : t("startFlight")}
             </Text>
           </Pressable>
         </View>

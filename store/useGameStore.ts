@@ -1,9 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 import type { GameProgress, GameProgressUpdate } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { trackFirstSessionCompleted } from "@/utils/firstSession";
+import { safePersistOptions } from "@/utils/persistStorage";
 
 interface UpdateOptions {
   /** Merge per-level star results for games like Stack Sort. */
@@ -133,7 +134,7 @@ export const useGameStore = create<GameState>()(
         };
       },
     }),
-    {
+    safePersistOptions(() => AsyncStorage, {
       migrate: (persisted: unknown, fromVersion) => {
         if (!persisted || typeof persisted !== "object") {
           return persisted;
@@ -160,8 +161,7 @@ export const useGameStore = create<GameState>()(
         return persisted;
       },
       name: "game_progress",
-      storage: createJSONStorage(() => AsyncStorage),
       version: 3,
-    }
+    })
   )
 );

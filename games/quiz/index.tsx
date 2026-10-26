@@ -8,6 +8,10 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -405,119 +409,124 @@ export default function QuizGame() {
   };
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.headerRow}>
-        <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[styles.bestValue, { color: theme.tint }]}>
-            {storedBest}
-          </Text>
-        </RNView>
-        <GameControls
-          isPaused={isPaused}
-          onPause={() => setIsPaused(true)}
-          onReset={restart}
-        />
-      </RNView>
-
-      <GamePauseOverlay
-        onRestart={restart}
-        onResume={() => setIsPaused(false)}
-        visible={isPaused}
-      />
-
-      <View style={styles.progressRow}>
-        <View style={[styles.progressTrack, { backgroundColor: theme.card }]}>
-          <View
-            style={[
-              styles.progressFill,
-              { backgroundColor: theme.tint, flex: progressFraction },
-            ]}
-          />
-        </View>
-        <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-          {currentIndex + 1}/{questions.length}
-        </Text>
-      </View>
-
-      <Animated.View
-        entering={FadeInDown.duration(200)}
-        key={currentIndex}
-        style={[
-          styles.questionCard,
-          { backgroundColor: theme.card, borderColor: theme.border },
-          cardFeedbackStyle,
-        ]}
-      >
-        <Text style={[styles.questionText, { color: theme.text }]}>
-          {currentQuestion.question}
-        </Text>
-      </Animated.View>
-
-      <View style={styles.options}>
-        {shuffledOptions.map((option) => {
-          const isSelected = selectedOption === option;
-          const isCorrect = option === correctAnswer;
-          const showAnswer = selectedOption !== null;
-
-          let bg = theme.elevated;
-          let borderCol = theme.border;
-          if (showAnswer && isCorrect) {
-            bg = theme.successSurface;
-            borderCol = theme.successBorder;
-          } else if (showAnswer && isSelected && !isCorrect) {
-            bg = theme.dangerSurface;
-            borderCol = theme.dangerBorder;
-          }
-
-          return (
-            <Pressable
-              accessibilityLabel={option}
-              accessibilityRole="button"
-              key={option}
-              onPress={() => handleAnswer(option)}
-              style={[
-                styles.optionBtn,
-                { backgroundColor: bg, borderColor: borderCol },
-              ]}
-            >
-              <Text style={[styles.optionText, { color: theme.text }]}>
-                {option}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.headerRow}>
+            <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
               </Text>
-            </Pressable>
-          );
-        })}
-      </View>
+              <Text style={[styles.bestValue, { color: theme.tint }]}>
+                {storedBest}
+              </Text>
+            </RNView>
+            <GameControls
+              isPaused={isPaused}
+              onPause={() => setIsPaused(true)}
+              onReset={restart}
+            />
+          </RNView>
 
-      {selectedOption === null ? null : (
-        <Text style={[styles.answerHint, { color: theme.mutedText }]}>
-          {t("quizCorrectAnswer", { answer: correctAnswer })}
-        </Text>
-      )}
+          <View style={styles.progressRow}>
+            <View
+              style={[styles.progressTrack, { backgroundColor: theme.card }]}
+            >
+              <View
+                style={[
+                  styles.progressFill,
+                  { backgroundColor: theme.tint, flex: progressFraction },
+                ]}
+              />
+            </View>
+            <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
+              {currentIndex + 1}/{questions.length}
+            </Text>
+          </View>
 
-      <Text style={[styles.scoreText, { color: theme.mutedText }]}>
-        {t("quizScore", { score })}
-      </Text>
+          <Animated.View
+            entering={FadeInDown.duration(200)}
+            key={currentIndex}
+            style={[
+              styles.questionCard,
+              { backgroundColor: theme.card, borderColor: theme.border },
+              cardFeedbackStyle,
+            ]}
+          >
+            <Text style={[styles.questionText, { color: theme.text }]}>
+              {currentQuestion.question}
+            </Text>
+          </Animated.View>
 
-      {showResult ? (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={restart}
-          score={score}
-          streak={progressInfo?.currentStreak}
-          subtitle={t("quizResult", {
-            correct: Math.round(score / 10),
-            score,
-            total: questions.length,
-          })}
-          title={t("quizFinished")}
+          <View style={styles.options}>
+            {shuffledOptions.map((option) => {
+              const isSelected = selectedOption === option;
+              const isCorrect = option === correctAnswer;
+              const showAnswer = selectedOption !== null;
+
+              let bg = theme.elevated;
+              let borderCol = theme.border;
+              if (showAnswer && isCorrect) {
+                bg = theme.successSurface;
+                borderCol = theme.successBorder;
+              } else if (showAnswer && isSelected && !isCorrect) {
+                bg = theme.dangerSurface;
+                borderCol = theme.dangerBorder;
+              }
+
+              return (
+                <Pressable
+                  accessibilityLabel={option}
+                  accessibilityRole="button"
+                  key={option}
+                  onPress={() => handleAnswer(option)}
+                  style={[
+                    styles.optionBtn,
+                    { backgroundColor: bg, borderColor: borderCol },
+                  ]}
+                >
+                  <Text style={[styles.optionText, { color: theme.text }]}>
+                    {option}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+
+          {selectedOption === null ? null : (
+            <Text style={[styles.answerHint, { color: theme.mutedText }]}>
+              {t("quizCorrectAnswer", { answer: correctAnswer })}
+            </Text>
+          )}
+
+          <Text style={[styles.scoreText, { color: theme.mutedText }]}>
+            {t("quizScore", { score })}
+          </Text>
+        </A11yOverlayContent>
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={() => setIsPaused(false)}
+          visible={isPaused}
         />
-      ) : null}
-    </View>
+
+        {showResult ? (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={restart}
+            score={score}
+            streak={progressInfo?.currentStreak}
+            subtitle={t("quizResult", {
+              correct: Math.round(score / 10),
+              score,
+              total: questions.length,
+            })}
+            title={t("quizFinished")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -570,4 +579,5 @@ const styles = StyleSheet.create({
   questionText: { fontSize: 18, fontWeight: "700", lineHeight: 27 },
   root: { flex: 1, gap: 14, padding: 20 },
   scoreText: { fontSize: 14, fontWeight: "600", textAlign: "center" },
+  screen: { flex: 1 },
 });

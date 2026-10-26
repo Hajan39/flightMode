@@ -1,6 +1,8 @@
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import {
+  type AccessibilityActionEvent,
   type GestureResponderEvent,
+  Pressable,
   View as RNView,
   StyleSheet,
 } from "react-native";
@@ -12,6 +14,10 @@ import Animated, {
   withTiming,
   ZoomIn,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -36,6 +42,7 @@ import {
   newGame,
   type Piece,
   place,
+  placementCovering,
   playMove,
 } from "./logic";
 
@@ -57,6 +64,8 @@ const RESERVED_HEIGHT = 380;
 const TRAY_SCALE = 0.5;
 const FLASH_MS = 420;
 const POP_MS = 950;
+/** A tray touch that moves less than this is a tap (select), not a drag. */
+const TAP_SLOP = 8;
 
 interface Point {
   x: number;
@@ -188,6 +197,8 @@ export default function CargoBlocksGame() {
   const [paused, setPaused] = useState(false);
   const [result, setResult] = useState<GameProgressUpdate | null>(null);
   const [over, setOver] = useState(false);
+  /** Tap-to-place: the tray piece picked with a tap (or screen-reader double-tap). */
+  const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
 
   // Sizing: fit the board to the column width and to the height left over.
   const boardSize = Math.max(
@@ -216,6 +227,8 @@ export default function CargoBlocksGame() {
   };
 
   const hoverRef = useRef<Target | null>(null);
+  const touchStartRef = useRef<Point | null>(null);
+  const movedRef = useRef<boolean>(false);
   const endedRef = useRef<boolean>(false);
   const overTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const popId = useRef(0);
@@ -271,6 +284,7 @@ export default function CargoBlocksGame() {
     setPaused(false);
     setResult(null);
     setOver(false);
+    setSelectedSlot(null);
   };
 
   const endGame = (finalScore: number) => {
@@ -314,6 +328,11 @@ export default function CargoBlocksGame() {
         if (!piece) {
           return;
         }
+        touchStartRef.current = {
+          x: e.nativeEvent.pageX,
+          y: e.nativeEvent.pageY,
+        };
+        movedRef.current = false;
         measure();
         haptic.tap();
         setDragSlot(slot);
@@ -322,11 +341,29 @@ export default function CargoBlocksGame() {
         moveDrag(piece, e);
       },
       onResponderMove: (e: GestureResponderEvent) => {
+        const start = touchStartRef.current;
+        if (
+          start &&
+          Math.hypot(
+            e.nativeEvent.pageX - start.x,
+            e.nativeEvent.pageY - start.y
+          ) > TAP_SLOP
+        ) {
+          movedRef.current = true;
+        }
         if (piece) {
           moveDrag(piece, e);
         }
       },
-      onResponderRelease: () => drop(slot),
+      onResponderRelease: () => {
+        if (movedRef.current) {
+          drop(slot);
+          return;
+        }
+        // A tap selects the piece; the next tap on the hold places it.
+        drop(null);
+        selectPiece(slot);
+      },
       onResponderTerminate: () => drop(null),
       onResponderTerminationRequest: () => false,
       onStartShouldSetResponder: () => active,
@@ -342,6 +379,35 @@ export default function CargoBlocksGame() {
     if (slot === null || !(piece && target)) {
       return;
     }
+    commitMove(slot, piece, target);
+  };
+
+  const canAct = () => !(paused || over || endedRef.current);
+
+  const selectPiece = (slot: number) => {
+    if (!(game.tray[slot] && canAct())) {
+      return;
+    }
+    haptic.tap();
+    setSelectedSlot((current) => (current === slot ? null : slot));
+  };
+
+  /** Tap on the hold with a piece selected: place it so it covers that cell. */
+  const placeSelectedAt = (row: number, col: number) => {
+    const piece = selectedSlot === null ? null : game.tray[selectedSlot];
+    if (selectedSlot === null || !piece || !canAct()) {
+      return;
+    }
+    const target = placementCovering(game.board, piece.shape, row, col);
+    if (!target) {
+      haptic.error();
+      return;
+    }
+    commitMove(selectedSlot, piece, target);
+  };
+
+  const commitMove = (slot: number, piece: Piece, target: Target) => {
+    setSelectedSlot(null);
     const res = playMove(game, slot, target.row, target.col, Math.random);
     if (!res) {
       return;
@@ -401,15 +467,25 @@ export default function CargoBlocksGame() {
     } else if (value !== 0) {
       content = <Block color={value} size={cell} />;
     }
+    const row = Math.floor(i / BOARD_SIZE);
+    const col = i % BOARD_SIZE;
+    const placing = selectedSlot !== null;
     return (
-      <RNView
+      <Pressable
+        accessibilityHint={placing ? placeHint : undefined}
+        accessibilityLabel={`${t("a11yRowCol", { col: col + 1, row: row + 1 })}, ${
+          value === 0 ? t("cbA11yEmpty") : t("cbA11yFilled")
+        }`}
+        accessibilityRole={placing ? "button" : "text"}
+        disabled={!placing}
         key={i}
+        onPress={() => placeSelectedAt(row, col)}
         style={[
           styles.abs,
           {
             height: cell,
-            left: BOARD_PAD + (i % BOARD_SIZE) * cell,
-            top: BOARD_PAD + Math.floor(i / BOARD_SIZE) * cell,
+            left: BOARD_PAD + col * cell,
+            top: BOARD_PAD + row * cell,
             width: cell,
           },
         ]}
@@ -426,165 +502,205 @@ export default function CargoBlocksGame() {
           ]}
         />
         {content ? <RNView style={styles.abs}>{content}</RNView> : null}
-      </RNView>
+      </Pressable>
     );
   };
+  const placeHint = t("cbA11yPlaceHint");
+  const selectHint = t("cbA11ySelectHint");
 
   return (
-    <RNView
-      onLayout={measure}
-      ref={rootRef}
-      style={[styles.container, { backgroundColor: theme.background }]}
-    >
-      <RNView style={[styles.topBar, { width: boardSize }]}>
-        <RNView style={styles.statsRow}>
-          <RNView
-            style={[
-              styles.statBox,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("cbScore")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {game.score}
-            </Text>
-          </RNView>
-          <RNView
-            style={[
-              styles.statBox,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("cbBest")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {Math.max(storedBest, game.score)}
-            </Text>
-          </RNView>
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={() => setPaused((p) => !p)}
-          onReset={restart}
-        />
-      </RNView>
-
-      <RNView style={styles.popRow}>
-        {pop ? (
-          <Animated.View
-            entering={ZoomIn.duration(180)}
-            exiting={FadeOut.duration(200)}
-            key={pop.id}
-            style={styles.popInner}
-          >
-            <Text style={[styles.popScore, { color: theme.tint }]}>
-              +{pop.gained}
-            </Text>
-            {pop.lines > 1 ? (
-              <Text style={[styles.popTag, { color: theme.warning }]}>
-                {t("cbCombo", { count: pop.lines })}
-              </Text>
-            ) : null}
-            {pop.streak > 1 ? (
-              <Text style={[styles.popTag, { color: theme.mutedText }]}>
-                {t("cbStreak", { count: pop.streak })}
-              </Text>
-            ) : null}
-          </Animated.View>
-        ) : (
-          <Text style={[styles.hint, { color: theme.mutedText }]}>
-            {t("cbHint")}
-          </Text>
-        )}
-      </RNView>
-
+    <A11yOverlayScope>
       <RNView
         onLayout={measure}
-        ref={boardRef}
-        style={[
-          styles.board,
-          {
-            backgroundColor: theme.surface,
-            borderColor: theme.border,
-            height: boardSize,
-            width: boardSize,
-          },
-        ]}
+        ref={rootRef}
+        style={[styles.screen, { backgroundColor: theme.background }]}
       >
-        {game.board.map(renderCell)}
-        {flash?.cells.map((f) => (
-          <FlashCell
-            cell={cell}
-            color={f.color}
-            i={f.i}
-            key={`${flash.id}-${f.i}`}
-          />
-        ))}
-      </RNView>
-
-      <RNView style={[styles.tray, { height: trayHeight, width: boardSize }]}>
-        {game.tray.map((piece, slot) => {
-          const fits = piece ? anyFits(game.board, piece.shape) : false;
-          let opacity = fits ? 1 : 0.35;
-          if (dragSlot === slot) {
-            opacity = 0;
-          }
-          return (
-            <RNView
-              accessibilityLabel={t("cbPieceLabel", { index: slot + 1 })}
-              key={slot}
-              style={[
-                styles.traySlot,
-                {
-                  opacity,
-                  width: slotWidth,
-                },
-              ]}
-              {...slotResponder(slot)}
-            >
-              {piece ? <PieceView cell={trayCell} piece={piece} /> : null}
+        <A11yOverlayContent style={styles.container}>
+          <RNView style={[styles.topBar, { width: boardSize }]}>
+            <RNView style={styles.statsRow}>
+              <RNView
+                style={[
+                  styles.statBox,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("cbScore")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {game.score}
+                </Text>
+              </RNView>
+              <RNView
+                style={[
+                  styles.statBox,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("cbBest")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {Math.max(storedBest, game.score)}
+                </Text>
+              </RNView>
             </RNView>
-          );
-        })}
-      </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={() => setPaused((p) => !p)}
+              onReset={restart}
+            />
+          </RNView>
 
-      {dragPiece ? (
-        <Animated.View
-          pointerEvents="none"
-          style={[
-            styles.float,
-            {
-              height: dragPiece.shape.height * cell,
-              width: dragPiece.shape.width * cell,
-            },
-            floatStyle,
-          ]}
-        >
-          <PieceView cell={cell} piece={dragPiece} />
-        </Animated.View>
-      ) : null}
+          <RNView style={styles.popRow}>
+            {pop ? (
+              <Animated.View
+                entering={ZoomIn.duration(180)}
+                exiting={FadeOut.duration(200)}
+                key={pop.id}
+                style={styles.popInner}
+              >
+                <Text style={[styles.popScore, { color: theme.tint }]}>
+                  +{pop.gained}
+                </Text>
+                {pop.lines > 1 ? (
+                  <Text style={[styles.popTag, { color: theme.warning }]}>
+                    {t("cbCombo", { count: pop.lines })}
+                  </Text>
+                ) : null}
+                {pop.streak > 1 ? (
+                  <Text style={[styles.popTag, { color: theme.mutedText }]}>
+                    {t("cbStreak", { count: pop.streak })}
+                  </Text>
+                ) : null}
+              </Animated.View>
+            ) : (
+              <Text style={[styles.hint, { color: theme.mutedText }]}>
+                {t("cbHint")}
+              </Text>
+            )}
+          </RNView>
 
-      <GamePauseOverlay
-        onRestart={restart}
-        onResume={() => setPaused(false)}
-        visible={paused}
-      />
+          <RNView
+            onLayout={measure}
+            ref={boardRef}
+            style={[
+              styles.board,
+              {
+                backgroundColor: theme.surface,
+                borderColor: theme.border,
+                height: boardSize,
+                width: boardSize,
+              },
+            ]}
+          >
+            {game.board.map(renderCell)}
+            {flash?.cells.map((f) => (
+              <FlashCell
+                cell={cell}
+                color={f.color}
+                i={f.i}
+                key={`${flash.id}-${f.i}`}
+              />
+            ))}
+          </RNView>
 
-      {over && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.last === game.score ? undefined : result.last}
-          onPlayAgain={restart}
-          score={game.score}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          title={t("cbHoldFull")}
+          <RNView
+            style={[styles.tray, { height: trayHeight, width: boardSize }]}
+          >
+            {game.tray.map((piece, slot) => {
+              const fits = piece ? anyFits(game.board, piece.shape) : false;
+              let opacity = fits ? 1 : 0.35;
+              if (dragSlot === slot) {
+                opacity = 0;
+              }
+              const isSelected = selectedSlot === slot;
+              const labelParts = [t("cbPieceLabel", { index: slot + 1 })];
+              if (piece) {
+                labelParts.push(
+                  t("cbA11yPieceSize", {
+                    cells: piece.shape.cells.length,
+                    height: piece.shape.height,
+                    width: piece.shape.width,
+                  })
+                );
+                if (!fits) {
+                  labelParts.push(t("cbA11yNoFit"));
+                }
+              }
+              return (
+                <RNView
+                  accessibilityActions={
+                    piece ? [{ name: "activate" }] : undefined
+                  }
+                  accessibilityHint={piece ? selectHint : undefined}
+                  accessibilityLabel={labelParts.join(", ")}
+                  accessibilityRole="button"
+                  accessibilityState={{
+                    disabled: !piece,
+                    selected: isSelected,
+                  }}
+                  accessible
+                  key={slot}
+                  onAccessibilityAction={(e: AccessibilityActionEvent) => {
+                    if (e.nativeEvent.actionName === "activate") {
+                      selectPiece(slot);
+                    }
+                  }}
+                  style={[
+                    styles.traySlot,
+                    {
+                      opacity,
+                      width: slotWidth,
+                    },
+                    isSelected
+                      ? [styles.traySlotSelected, { borderColor: theme.tint }]
+                      : null,
+                  ]}
+                  {...slotResponder(slot)}
+                >
+                  {piece ? <PieceView cell={trayCell} piece={piece} /> : null}
+                </RNView>
+              );
+            })}
+          </RNView>
+        </A11yOverlayContent>
+
+        {dragPiece ? (
+          <Animated.View
+            pointerEvents="none"
+            style={[
+              styles.float,
+              {
+                height: dragPiece.shape.height * cell,
+                width: dragPiece.shape.width * cell,
+              },
+              floatStyle,
+            ]}
+          >
+            <PieceView cell={cell} piece={dragPiece} />
+          </Animated.View>
+        ) : null}
+
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={() => setPaused(false)}
+          visible={paused}
         />
-      ) : null}
-    </RNView>
+
+        {over && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.last === game.score ? undefined : result.last}
+            onPlayAgain={restart}
+            score={game.score}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            title={t("cbHoldFull")}
+          />
+        ) : null}
+      </RNView>
+    </A11yOverlayScope>
   );
 }
 
@@ -633,6 +749,7 @@ const styles = StyleSheet.create({
     fontSize: FontSize.sm,
     fontWeight: FontWeight.extrabold,
   },
+  screen: { flex: 1 },
   slot: {
     borderWidth: 1,
     flex: 1,
@@ -671,4 +788,5 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
   },
+  traySlotSelected: { borderRadius: Radius.card, borderWidth: 2 },
 });

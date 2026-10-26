@@ -8,6 +8,10 @@ import Animated, {
   withSequence,
   withTiming,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import { baseScheme } from "@/components/colorSchemes";
 import GameControls from "@/components/GameControls";
 import {
@@ -262,100 +266,106 @@ export default function DuelConnect4Game() {
   const holeBg = baseScheme(colorScheme) === "dark" ? "#0d1236" : "#e8eaf6";
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          label={statusLabel}
-          player={
-            winner !== null && winner !== "draw" ? players[winner] : current
-          }
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              label={statusLabel}
+              player={
+                winner !== null && winner !== "draw" ? players[winner] : current
+              }
+            />
+            <GameControls onReset={() => startMatch(players)} />
+          </RNView>
 
-      <PlayerScoreStrip
-        activeIndex={roundOver ? undefined : currentPlayer}
-        detail={() => t("tttDrawCount", { count: draws })}
-        players={players}
-        scores={wins}
-      />
+          <PlayerScoreStrip
+            activeIndex={roundOver ? undefined : currentPlayer}
+            detail={() => t("tttDrawCount", { count: draws })}
+            players={players}
+            scores={wins}
+          />
 
-      <RNView style={[styles.board, { backgroundColor: boardBg }]}>
-        <RNView style={styles.colButtons}>
-          {Array.from({ length: COLS }).map((_, c) => (
-            <Pressable
-              accessibilityLabel={t("a11yDropInColumn", { col: c + 1 })}
-              accessibilityRole="button"
-              hitSlop={{ bottom: 14, left: 0, right: 0, top: 14 }}
-              key={`col-${c}`}
-              onPress={() => handleDrop(c)}
-              style={[styles.colBtn, { width: cellSize }]}
-            >
-              {roundOver ? null : (
-                <RNView
-                  style={[styles.dropArrow, { borderTopColor: current.color }]}
-                />
-              )}
-            </Pressable>
-          ))}
-        </RNView>
+          <RNView style={[styles.board, { backgroundColor: boardBg }]}>
+            <RNView style={styles.colButtons}>
+              {Array.from({ length: COLS }).map((_, c) => (
+                <Pressable
+                  accessibilityLabel={t("a11yDropInColumn", { col: c + 1 })}
+                  accessibilityRole="button"
+                  hitSlop={{ bottom: 14, left: 0, right: 0, top: 14 }}
+                  key={`col-${c}`}
+                  onPress={() => handleDrop(c)}
+                  style={[styles.colBtn, { width: cellSize }]}
+                >
+                  {roundOver ? null : (
+                    <RNView
+                      style={[
+                        styles.dropArrow,
+                        { borderTopColor: current.color },
+                      ]}
+                    />
+                  )}
+                </Pressable>
+              ))}
+            </RNView>
 
-        {board.map((row, r) => (
-          <RNView key={`r-${r}`} style={styles.row}>
-            {row.map((cell, c) => (
-              <Pressable
-                accessibilityLabel={t("a11yDropInColumn", { col: c + 1 })}
-                key={`${r}-${c}`}
-                onPress={() => handleDrop(c)}
-                style={[
-                  styles.cell,
-                  {
-                    backgroundColor: holeBg,
-                    borderRadius: cellSize / 2,
-                    height: cellSize,
-                    width: cellSize,
-                  },
-                ]}
-              >
-                {cell === -1 ? null : (
-                  <Disc
-                    color={players[cell].color}
-                    isWin={winCells.has(`${r},${c}`)}
-                    size={cellSize}
-                  />
-                )}
-              </Pressable>
+            {board.map((row, r) => (
+              <RNView key={`r-${r}`} style={styles.row}>
+                {row.map((cell, c) => (
+                  <Pressable
+                    accessibilityLabel={t("a11yDropInColumn", { col: c + 1 })}
+                    key={`${r}-${c}`}
+                    onPress={() => handleDrop(c)}
+                    style={[
+                      styles.cell,
+                      {
+                        backgroundColor: holeBg,
+                        borderRadius: cellSize / 2,
+                        height: cellSize,
+                        width: cellSize,
+                      },
+                    ]}
+                  >
+                    {cell === -1 ? null : (
+                      <Disc
+                        color={players[cell].color}
+                        isWin={winCells.has(`${r},${c}`)}
+                        size={cellSize}
+                      />
+                    )}
+                  </Pressable>
+                ))}
+              </RNView>
             ))}
           </RNView>
-        ))}
-      </RNView>
 
-      {roundOver && phase === "playing" ? (
-        <Pressable
-          accessibilityLabel={t("c4NextRound")}
-          accessibilityRole="button"
-          onPress={nextRound}
-          style={[styles.btn, { backgroundColor: theme.tint }]}
-        >
-          <Text style={[styles.btnText, { color: theme.onTint }]}>
-            {t("c4NextRound")}
-          </Text>
-        </Pressable>
-      ) : null}
-
-      {phase === "done" ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("mpWinsLabel")}
-          standings={players.map((p, i) => ({ player: p, score: wins[i] }))}
-          subtitle={t("tttDrawCount", { count: draws })}
-          winnerIndex={getSoleWinnerIndex(wins.map((score) => ({ score })))}
-        />
-      ) : null}
-    </View>
+          {roundOver && phase === "playing" ? (
+            <Pressable
+              accessibilityLabel={t("c4NextRound")}
+              accessibilityRole="button"
+              onPress={nextRound}
+              style={[styles.btn, { backgroundColor: theme.tint }]}
+            >
+              <Text style={[styles.btnText, { color: theme.onTint }]}>
+                {t("c4NextRound")}
+              </Text>
+            </Pressable>
+          ) : null}
+        </A11yOverlayContent>
+        {phase === "done" ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("mpWinsLabel")}
+            standings={players.map((p, i) => ({ player: p, score: wins[i] }))}
+            subtitle={t("tttDrawCount", { count: draws })}
+            winnerIndex={getSoleWinnerIndex(wins.map((score) => ({ score })))}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -388,5 +398,6 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.sm,
   },
   row: { flexDirection: "row", gap: GAP, marginBottom: GAP },
+  screen: { flex: 1 },
   topRow: { alignItems: "center", flexDirection: "row", gap: Spacing.sm },
 });

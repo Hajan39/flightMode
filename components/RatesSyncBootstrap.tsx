@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useRatesStore } from "@/store/useRatesStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { usePersistHydrated } from "@/utils/hydration";
 
 /** Refreshes exchange rates whenever the network becomes usable (12 h cooldown inside the store). */
 export default function RatesSyncBootstrap() {
@@ -12,12 +13,17 @@ export default function RatesSyncBootstrap() {
   const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
   const status = useRatesStore((s) => s.status);
   const syncRates = useRatesStore((s) => s.syncRates);
+  // lastSyncAt (cooldown) and the sync policy must be the persisted values.
+  const ready = usePersistHydrated(useRatesStore, useSettingsStore);
 
   useEffect(() => {
     if (
-      !canSyncOnNetwork(
-        { isInternetReachable, type: networkType },
-        syncNetworkPolicy
+      !(
+        ready &&
+        canSyncOnNetwork(
+          { isInternetReachable, type: networkType },
+          syncNetworkPolicy
+        )
       ) ||
       status === "syncing"
     ) {
@@ -25,7 +31,14 @@ export default function RatesSyncBootstrap() {
     }
     // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void syncRates();
-  }, [networkType, isInternetReachable, syncNetworkPolicy, status, syncRates]);
+  }, [
+    ready,
+    networkType,
+    isInternetReachable,
+    syncNetworkPolicy,
+    status,
+    syncRates,
+  ]);
 
   return null;
 }

@@ -7,6 +7,10 @@ import Animated, {
   withTiming,
   ZoomIn,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -186,153 +190,163 @@ export default function HigherLowerGame() {
   };
 
   return (
-    <View style={styles.root}>
-      {/* ── Header ── */}
-      <RNView style={styles.headerRow}>
-        <GameControls onReset={phase === "idle" ? undefined : handleReset} />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* ── Header ── */}
+          <RNView style={styles.headerRow}>
+            <GameControls
+              onReset={phase === "idle" ? undefined : handleReset}
+            />
+          </RNView>
 
-      {/* ── Score + Round ── */}
-      <RNView style={styles.statsRow}>
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("tapRushScore")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
-        </RNView>
-        <RNView
-          style={[styles.statDivider, { backgroundColor: theme.border }]}
-        />
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("hlRound")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>
-            {isPlaying ? `${round}/${TOTAL_ROUNDS}` : "—"}
-          </Text>
-        </RNView>
-      </RNView>
+          {/* ── Score + Round ── */}
+          <RNView style={styles.statsRow}>
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("tapRushScore")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.tint }]}>
+                {score}
+              </Text>
+            </RNView>
+            <RNView
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("hlRound")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {isPlaying ? `${round}/${TOTAL_ROUNDS}` : "—"}
+              </Text>
+            </RNView>
+          </RNView>
 
-      {/* ── Number card ── */}
-      <Animated.View
-        style={[
-          styles.numberCard,
-          { backgroundColor: theme.elevated, borderColor: theme.border },
-          cardFeedbackStyle,
-        ]}
-      >
-        {phase === "idle" ? (
-          <>
-            <Text style={[styles.numberText, { color: theme.mutedText }]}>
-              ?
-            </Text>
-            <Text style={[styles.idleHint, { color: theme.mutedText }]}>
-              {t("gameTapToStart")}
-            </Text>
-          </>
-        ) : (
-          <>
-            <Animated.View
-              entering={ZoomIn.duration(150)}
-              key={`${round}-${currentNumber}`}
-            >
-              <Text style={[styles.numberText, { color: theme.text }]}>
-                {currentNumber}
-              </Text>
-            </Animated.View>
-            {previousNumber !== null && (
-              <Text style={[styles.previousHint, { color: theme.mutedText }]}>
-                {t("hlPrevious").replace("{{n}}", String(previousNumber))}
-              </Text>
+          {/* ── Number card ── */}
+          <Animated.View
+            style={[
+              styles.numberCard,
+              { backgroundColor: theme.elevated, borderColor: theme.border },
+              cardFeedbackStyle,
+            ]}
+          >
+            {phase === "idle" ? (
+              <>
+                <Text style={[styles.numberText, { color: theme.mutedText }]}>
+                  ?
+                </Text>
+                <Text style={[styles.idleHint, { color: theme.mutedText }]}>
+                  {t("gameTapToStart")}
+                </Text>
+              </>
+            ) : (
+              <>
+                <Animated.View
+                  entering={ZoomIn.duration(150)}
+                  key={`${round}-${currentNumber}`}
+                >
+                  <Text style={[styles.numberText, { color: theme.text }]}>
+                    {currentNumber}
+                  </Text>
+                </Animated.View>
+                {previousNumber !== null && (
+                  <Text
+                    style={[styles.previousHint, { color: theme.mutedText }]}
+                  >
+                    {t("hlPrevious").replace("{{n}}", String(previousNumber))}
+                  </Text>
+                )}
+              </>
             )}
-          </>
+          </Animated.View>
+
+          {/* ── Buttons ── */}
+          <RNView style={styles.buttonsRow}>
+            <Pressable
+              accessibilityLabel={t("hlHigher")}
+              accessibilityRole="button"
+              disabled={phase !== "playing"}
+              onPress={() => handleGuess("higher")}
+              style={[
+                styles.guessButton,
+                {
+                  backgroundColor: getButtonColor(
+                    higherFlash,
+                    isPlaying ? theme.successBorder : theme.elevated
+                  ),
+                  borderColor: isPlaying ? theme.successBorder : theme.border,
+                  opacity: phase === "feedback" ? 0.85 : 1,
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.guessButtonText,
+                  { color: isPlaying ? theme.onTint : theme.mutedText },
+                ]}
+              >
+                {t("hlHigher")}
+              </Text>
+            </Pressable>
+
+            <Pressable
+              accessibilityLabel={t("hlLower")}
+              accessibilityRole="button"
+              disabled={phase !== "playing"}
+              onPress={() => handleGuess("lower")}
+              style={[
+                styles.guessButton,
+                {
+                  backgroundColor: getButtonColor(
+                    lowerFlash,
+                    isPlaying ? theme.tint : theme.elevated
+                  ),
+                  borderColor: isPlaying ? theme.tint : theme.border,
+                  opacity: phase === "feedback" ? 0.85 : 1,
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.guessButtonText,
+                  { color: isPlaying ? theme.onTint : theme.mutedText },
+                ]}
+              >
+                {t("hlLower")}
+              </Text>
+            </Pressable>
+          </RNView>
+
+          {/* ── Start button (idle only) ── */}
+          {phase === "idle" && (
+            <Pressable
+              accessibilityLabel={t("gameTapToStart")}
+              accessibilityRole="button"
+              onPress={startGame}
+              style={[styles.startButton, { backgroundColor: theme.tint }]}
+            >
+              <Text style={[styles.startButtonText, { color: theme.onTint }]}>
+                {t("gameTapToStart")}
+              </Text>
+            </Pressable>
+          )}
+
+          {/* ── Game Result ── */}
+        </A11yOverlayContent>
+        {phase === "over" && (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={startGame}
+            score={score}
+            streak={progressInfo?.currentStreak}
+            title={t("gameHigherLowerName")}
+          />
         )}
-      </Animated.View>
-
-      {/* ── Buttons ── */}
-      <RNView style={styles.buttonsRow}>
-        <Pressable
-          accessibilityLabel={t("hlHigher")}
-          accessibilityRole="button"
-          disabled={phase !== "playing"}
-          onPress={() => handleGuess("higher")}
-          style={[
-            styles.guessButton,
-            {
-              backgroundColor: getButtonColor(
-                higherFlash,
-                isPlaying ? theme.successBorder : theme.elevated
-              ),
-              borderColor: isPlaying ? theme.successBorder : theme.border,
-              opacity: phase === "feedback" ? 0.85 : 1,
-            },
-          ]}
-        >
-          <Text
-            style={[
-              styles.guessButtonText,
-              { color: isPlaying ? theme.onTint : theme.mutedText },
-            ]}
-          >
-            {t("hlHigher")}
-          </Text>
-        </Pressable>
-
-        <Pressable
-          accessibilityLabel={t("hlLower")}
-          accessibilityRole="button"
-          disabled={phase !== "playing"}
-          onPress={() => handleGuess("lower")}
-          style={[
-            styles.guessButton,
-            {
-              backgroundColor: getButtonColor(
-                lowerFlash,
-                isPlaying ? theme.tint : theme.elevated
-              ),
-              borderColor: isPlaying ? theme.tint : theme.border,
-              opacity: phase === "feedback" ? 0.85 : 1,
-            },
-          ]}
-        >
-          <Text
-            style={[
-              styles.guessButtonText,
-              { color: isPlaying ? theme.onTint : theme.mutedText },
-            ]}
-          >
-            {t("hlLower")}
-          </Text>
-        </Pressable>
-      </RNView>
-
-      {/* ── Start button (idle only) ── */}
-      {phase === "idle" && (
-        <Pressable
-          accessibilityLabel={t("gameTapToStart")}
-          accessibilityRole="button"
-          onPress={startGame}
-          style={[styles.startButton, { backgroundColor: theme.tint }]}
-        >
-          <Text style={[styles.startButtonText, { color: theme.onTint }]}>
-            {t("gameTapToStart")}
-          </Text>
-        </Pressable>
-      )}
-
-      {/* ── Game Result ── */}
-      {phase === "over" && (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={startGame}
-          score={score}
-          streak={progressInfo?.currentStreak}
-          title={t("gameHigherLowerName")}
-        />
-      )}
-    </View>
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -384,6 +398,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   root: { flex: 1, gap: 16, padding: 20 },
+  screen: { flex: 1 },
   startButton: {
     alignItems: "center",
     borderRadius: 18,

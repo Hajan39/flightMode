@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { Accelerometer, DeviceMotion } from "expo-sensors";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import {
   type GestureResponderEvent,
   Platform,
@@ -9,6 +9,10 @@ import {
   StyleSheet,
 } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -18,6 +22,7 @@ import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { gravityTilt } from "@/games/tilt-balance/logic";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -99,6 +104,90 @@ const emptyFx = (): Fx => ({
   flash: new Map(),
   shakeUntil: 0,
   trails: [],
+});
+
+interface BrickLayerProps {
+  bricks: number[];
+  /** Comma-joined indices of boxes flashing this frame ("" = none). */
+  flashKey: string;
+  kinds: BrickKind[];
+  maxHp: number[];
+  scale: number;
+}
+
+/**
+ * The boxes. Memoized: the simulation keeps the same `bricks` array until a
+ * box is hit (copy-on-write in `step`), so the ~100 box views re-render only
+ * on a hit, a flash change, a new level or a resize — not on every frame.
+ */
+const BrickLayer = memo(function BrickLayerView({
+  bricks,
+  flashKey,
+  kinds,
+  maxHp,
+  scale,
+}: BrickLayerProps) {
+  const px = (v: number) => v * scale;
+  const flashing = new Set(flashKey === "" ? [] : flashKey.split(","));
+  return (
+    <>
+      {bricks.map((hp, i) => {
+        if (hp === 0) {
+          return null;
+        }
+        const kind = kinds[i];
+        const max = maxHp[i];
+        let label: string | null = null;
+        if (kind === "bomb") {
+          label = "💣";
+        } else if (kind === "mystery") {
+          label = "?";
+        }
+        return (
+          <RNView
+            key={`b${String(i)}`}
+            style={[
+              styles.brick,
+              {
+                backgroundColor: flashing.has(String(i))
+                  ? "#FFFFFF"
+                  : boxColor(kind, max),
+                height: px(BRICK_H - BRICK_GAP),
+                left: px((i % COLS) * BRICK_W + BRICK_GAP / 2),
+                opacity: kind === "normal" && hp < max ? 0.78 : 1,
+                top: px(
+                  BRICK_TOP + Math.floor(i / COLS) * BRICK_H + BRICK_GAP / 2
+                ),
+                width: px(BRICK_W - BRICK_GAP),
+              },
+            ]}
+          >
+            {label ? (
+              <Text style={[styles.brickLabel, { fontSize: px(0.032) }]}>
+                {label}
+              </Text>
+            ) : null}
+            {kind === "steel" ? (
+              <RNView style={styles.rivets}>
+                <RNView style={styles.rivet} />
+                <RNView style={styles.rivet} />
+              </RNView>
+            ) : null}
+            {kind === "normal" && max > 1 ? (
+              <RNView style={styles.pips}>
+                {Array.from({ length: max }, (_, k) => (
+                  <RNView
+                    key={k}
+                    style={[styles.pip, { opacity: k < hp ? 0.95 : 0.25 }]}
+                  />
+                ))}
+              </RNView>
+            ) : null}
+          </RNView>
+        );
+      })}
+    </>
+  );
 });
 
 /** Stops the frame loop and sensors; module-level so the unmount cleanup never depends on a per-render closure. */
@@ -234,6 +323,11 @@ export default function BoxBreakerGame() {
     dt: number
   ) => {
     const fx = fxRef.current;
+    for (const [i, until] of fx.flash) {
+      if (until <= at) {
+        fx.flash.delete(i);
+      }
+    }
     for (const i of events.hitAt) {
       fx.flash.set(i, at + FLASH_MS);
     }
@@ -316,6 +410,9 @@ export default function BoxBreakerGame() {
     pausedAtRef.current = Date.now();
     setPaused(true);
   };
+
+  // Leaving the app (home, call, lock) pauses; the player resumes by hand.
+  useAutoPause(pause, phase === "playing" && !paused);
 
   const resume = () => {
     const pausedAt = pausedAtRef.current;
@@ -426,6 +523,12 @@ export default function BoxBreakerGame() {
   const padW = paddleWidth(game, now);
   const stuck = game.balls.some((b) => b.stuck);
   const fx = fxRef.current;
+  let flashKey = "";
+  for (const [i, until] of fx.flash) {
+    if (until > now) {
+      flashKey = flashKey === "" ? String(i) : `${flashKey},${String(i)}`;
+    }
+  }
   const onFire = now < game.fireUntil;
   const ballColor = onFire ? FIRE_COLOR : theme.text;
   const shake =
@@ -452,241 +555,189 @@ export default function BoxBreakerGame() {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <RNView style={styles.topBar}>
-        <RNView style={styles.statsRow}>
-          {stat(t("bbScore"), String(game.score))}
-          {stat(t("bbLevel"), String(game.level))}
-          {stat(t("bbLives"), `❤️ ${String(Math.max(0, game.lives))}`)}
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={() => (paused ? resume() : pause())}
-          onReset={() => {
-            quitRun();
-            startGame();
-          }}
-        />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={[styles.root, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent style={styles.container}>
+          <RNView style={styles.topBar}>
+            <RNView style={styles.statsRow}>
+              {stat(t("bbScore"), String(game.score))}
+              {stat(t("bbLevel"), String(game.level))}
+              {stat(t("bbLives"), `❤️ ${String(Math.max(0, game.lives))}`)}
+            </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={() => (paused ? resume() : pause())}
+              onReset={() => {
+                quitRun();
+                startGame();
+              }}
+            />
+          </RNView>
 
-      <RNView
-        onLayout={(e) =>
-          setArea({
-            h: e.nativeEvent.layout.height,
-            w: e.nativeEvent.layout.width,
-          })
-        }
-        style={styles.fieldArea}
-      >
-        {scale > 0 ? (
           <RNView
-            onResponderGrant={onTouchMove}
-            onResponderMove={onTouchMove}
-            onResponderRelease={onTouchEnd}
-            onResponderTerminationRequest={() => false}
-            onStartShouldSetResponder={() => phase === "playing" && !paused}
-            style={[
-              styles.field,
-              {
-                backgroundColor: theme.card,
-                borderColor: theme.border,
-                height: px(FIELD_H),
-                transform: shake,
-                width: px(FIELD_W),
-              },
-            ]}
+            onLayout={(e) =>
+              setArea({
+                h: e.nativeEvent.layout.height,
+                w: e.nativeEvent.layout.width,
+              })
+            }
+            style={styles.fieldArea}
           >
-            <RNView pointerEvents="none" style={StyleSheet.absoluteFill}>
-              {game.bricks.map((hp, i) => {
-                if (hp === 0) {
-                  return null;
-                }
-                const kind = game.kinds[i];
-                const max = game.maxHp[i];
-                const flashing = (fx.flash.get(i) ?? 0) > now;
-                let label: string | null = null;
-                if (kind === "bomb") {
-                  label = "💣";
-                } else if (kind === "mystery") {
-                  label = "?";
-                }
-                return (
-                  <RNView
-                    key={`b${String(i)}`}
-                    style={[
-                      styles.brick,
-                      {
-                        backgroundColor: flashing
-                          ? "#FFFFFF"
-                          : boxColor(kind, max),
-                        height: px(BRICK_H - BRICK_GAP),
-                        left: px((i % COLS) * BRICK_W + BRICK_GAP / 2),
-                        opacity: kind === "normal" && hp < max ? 0.78 : 1,
-                        top: px(
-                          BRICK_TOP +
-                            Math.floor(i / COLS) * BRICK_H +
-                            BRICK_GAP / 2
-                        ),
-                        width: px(BRICK_W - BRICK_GAP),
-                      },
-                    ]}
-                  >
-                    {label ? (
-                      <Text
-                        style={[styles.brickLabel, { fontSize: px(0.032) }]}
-                      >
-                        {label}
-                      </Text>
-                    ) : null}
-                    {kind === "steel" ? (
-                      <RNView style={styles.rivets}>
-                        <RNView style={styles.rivet} />
-                        <RNView style={styles.rivet} />
-                      </RNView>
-                    ) : null}
-                    {kind === "normal" && max > 1 ? (
-                      <RNView style={styles.pips}>
-                        {Array.from({ length: max }, (_, k) => (
-                          <RNView
-                            key={k}
-                            style={[
-                              styles.pip,
-                              { opacity: k < hp ? 0.95 : 0.25 },
-                            ]}
-                          />
-                        ))}
-                      </RNView>
-                    ) : null}
-                  </RNView>
-                );
-              })}
-              {fx.debris.map((d, k) => (
-                <RNView
-                  key={`p${String(k)}`}
-                  style={[
-                    styles.debris,
-                    {
-                      backgroundColor: d.color,
-                      left: px(d.x),
-                      opacity: 1 - (now - d.born) / DEBRIS_MS,
-                      top: px(d.y),
-                    },
-                  ]}
-                />
-              ))}
-              {game.drops.map((d, i) => (
-                <Text
-                  key={`d${String(i)}`}
-                  style={[
-                    styles.drop,
-                    {
-                      backgroundColor: theme.background,
-                      borderColor: theme.tint,
-                      fontSize: px(0.04),
-                      left: px(d.x - 0.035),
-                      top: px(d.y - 0.03),
-                    },
-                  ]}
-                >
-                  {POWER_EMOJI[d.kind]}
-                </Text>
-              ))}
+            {scale > 0 ? (
               <RNView
+                onResponderGrant={onTouchMove}
+                onResponderMove={onTouchMove}
+                onResponderRelease={onTouchEnd}
+                onResponderTerminationRequest={() => false}
+                onStartShouldSetResponder={() => phase === "playing" && !paused}
                 style={[
-                  styles.paddle,
+                  styles.field,
                   {
-                    backgroundColor: theme.tint,
-                    height: px(PADDLE_H),
-                    left: px(game.paddleX - padW / 2),
-                    top: px(PADDLE_Y),
-                    width: px(padW),
+                    backgroundColor: theme.card,
+                    borderColor: theme.border,
+                    height: px(FIELD_H),
+                    transform: shake,
+                    width: px(FIELD_W),
                   },
                 ]}
-              />
-              {fx.trails.flatMap((trail, i) =>
-                trail.slice(0, -1).map((p, k) => (
+              >
+                <RNView pointerEvents="none" style={StyleSheet.absoluteFill}>
+                  <BrickLayer
+                    bricks={game.bricks}
+                    flashKey={flashKey}
+                    kinds={game.kinds}
+                    maxHp={game.maxHp}
+                    scale={scale}
+                  />
+                  {fx.debris.map((d, k) => (
+                    <RNView
+                      key={`p${String(k)}`}
+                      style={[
+                        styles.debris,
+                        {
+                          backgroundColor: d.color,
+                          left: px(d.x),
+                          opacity: 1 - (now - d.born) / DEBRIS_MS,
+                          top: px(d.y),
+                        },
+                      ]}
+                    />
+                  ))}
+                  {game.drops.map((d, i) => (
+                    <Text
+                      key={`d${String(i)}`}
+                      style={[
+                        styles.drop,
+                        {
+                          backgroundColor: theme.background,
+                          borderColor: theme.tint,
+                          fontSize: px(0.04),
+                          left: px(d.x - 0.035),
+                          top: px(d.y - 0.03),
+                        },
+                      ]}
+                    >
+                      {POWER_EMOJI[d.kind]}
+                    </Text>
+                  ))}
                   <RNView
-                    key={`t${String(i)}-${String(k)}`}
                     style={[
-                      styles.ball,
+                      styles.paddle,
                       {
-                        backgroundColor: ballColor,
-                        borderRadius: px(BALL_R),
-                        height: px(BALL_R * 2),
-                        left: px(p.x - BALL_R),
-                        opacity: ((k + 1) / TRAIL) * 0.35,
-                        top: px(p.y - BALL_R),
-                        width: px(BALL_R * 2),
+                        backgroundColor: theme.tint,
+                        height: px(PADDLE_H),
+                        left: px(game.paddleX - padW / 2),
+                        top: px(PADDLE_Y),
+                        width: px(padW),
                       },
                     ]}
                   />
-                ))
-              )}
-              {game.balls.map((b, i) => (
-                <RNView
-                  key={`ball${String(i)}`}
-                  style={[
-                    styles.ball,
-                    {
-                      backgroundColor: ballColor,
-                      borderRadius: px(BALL_R),
-                      height: px(BALL_R * 2),
-                      left: px(b.x - BALL_R),
-                      top: px(b.y - BALL_R),
-                      width: px(BALL_R * 2),
-                    },
-                  ]}
-                />
-              ))}
-            </RNView>
-            {banner || stuck ? (
-              <RNView pointerEvents="none" style={styles.bannerWrap}>
-                {banner ? (
-                  <Text style={[styles.banner, { color: theme.tint }]}>
-                    {banner}
-                  </Text>
-                ) : null}
-                {stuck ? (
-                  <Text style={[styles.hint, { color: theme.mutedText }]}>
-                    {control === "tilt"
-                      ? t("bbTapLaunchTilt")
-                      : t("bbTapLaunch")}
-                  </Text>
+                  {fx.trails.flatMap((trail, i) =>
+                    trail.slice(0, -1).map((p, k) => (
+                      <RNView
+                        key={`t${String(i)}-${String(k)}`}
+                        style={[
+                          styles.ball,
+                          {
+                            backgroundColor: ballColor,
+                            borderRadius: px(BALL_R),
+                            height: px(BALL_R * 2),
+                            left: px(p.x - BALL_R),
+                            opacity: ((k + 1) / TRAIL) * 0.35,
+                            top: px(p.y - BALL_R),
+                            width: px(BALL_R * 2),
+                          },
+                        ]}
+                      />
+                    ))
+                  )}
+                  {game.balls.map((b, i) => (
+                    <RNView
+                      key={`ball${String(i)}`}
+                      style={[
+                        styles.ball,
+                        {
+                          backgroundColor: ballColor,
+                          borderRadius: px(BALL_R),
+                          height: px(BALL_R * 2),
+                          left: px(b.x - BALL_R),
+                          top: px(b.y - BALL_R),
+                          width: px(BALL_R * 2),
+                        },
+                      ]}
+                    />
+                  ))}
+                </RNView>
+                {banner || stuck ? (
+                  <RNView pointerEvents="none" style={styles.bannerWrap}>
+                    {banner ? (
+                      <Text style={[styles.banner, { color: theme.tint }]}>
+                        {banner}
+                      </Text>
+                    ) : null}
+                    {stuck ? (
+                      <Text style={[styles.hint, { color: theme.mutedText }]}>
+                        {control === "tilt"
+                          ? t("bbTapLaunchTilt")
+                          : t("bbTapLaunch")}
+                      </Text>
+                    ) : null}
+                  </RNView>
                 ) : null}
               </RNView>
             ) : null}
           </RNView>
-        ) : null}
-      </RNView>
+        </A11yOverlayContent>
 
-      <GamePauseOverlay
-        onQuit={() => {
-          quitRun();
-          if (router.canGoBack()) {
-            router.back();
-          }
-        }}
-        onRestart={() => {
-          quitRun();
-          startGame();
-        }}
-        onResume={resume}
-        visible={paused && phase === "playing"}
-      />
-
-      {phase === "over" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.previousBest}
-          onPlayAgain={() => setPhase("menu")}
-          score={game.score}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          subtitle={t("levelLabel", { level: game.level })}
-          title={t("gameBoxBreakerName")}
+        <GamePauseOverlay
+          onQuit={() => {
+            quitRun();
+            if (router.canGoBack()) {
+              router.back();
+            }
+          }}
+          onRestart={() => {
+            quitRun();
+            startGame();
+          }}
+          onResume={resume}
+          visible={paused && phase === "playing"}
         />
-      ) : null}
-    </View>
+
+        {phase === "over" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.previousBest}
+            onPlayAgain={() => setPhase("menu")}
+            score={game.score}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            subtitle={t("levelLabel", { level: game.level })}
+            title={t("gameBoxBreakerName")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -781,6 +832,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     width: "100%",
   },
+  root: { flex: 1 },
   statBox: {
     alignItems: "center",
     borderRadius: Radius.card,

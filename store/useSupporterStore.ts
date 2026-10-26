@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
+import { safePersistOptions } from "@/utils/persistStorage";
 
 interface SupporterState {
   addTip: () => void;
@@ -18,9 +19,8 @@ export const useSupporterStore = create<SupporterState>()(
       setPlus: (plus) => set({ plus }),
       tips: 0,
     }),
-    {
+    safePersistOptions(() => AsyncStorage, {
       name: "supporter",
-      storage: createJSONStorage(() => AsyncStorage),
-    }
+    })
   )
 );

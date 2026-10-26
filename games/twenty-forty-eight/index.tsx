@@ -7,6 +7,10 @@ import Animated, {
   withSequence,
   withTiming,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -29,6 +33,9 @@ import {
   type Grid,
   playMove,
 } from "./logic";
+
+/** Cap system font scaling inside fixed-size board cells so text never overflows them. */
+const CELL_FONT_SCALE = 1.3;
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -137,6 +144,7 @@ function Tile({
     >
       {value === 0 ? null : (
         <Text
+          maxFontSizeMultiplier={CELL_FONT_SCALE}
           style={[
             styles.cellText,
             {
@@ -388,88 +396,91 @@ export default function TwentyFortyEightGame() {
   // ---------------------------------------------------------------------------
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      {/* Top bar: stats + controls */}
-      <RNView style={styles.topBar}>
-        <RNView style={styles.statsRow}>
-          <RNView
-            style={[
-              styles.statBox,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("tfeScore")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {score}
-            </Text>
+    <A11yOverlayScope>
+      <View style={[styles.screen, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent style={styles.container}>
+          {/* Top bar: stats + controls */}
+          <RNView style={styles.topBar}>
+            <RNView style={styles.statsRow}>
+              <RNView
+                style={[
+                  styles.statBox,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("tfeScore")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {score}
+                </Text>
+              </RNView>
+              <RNView
+                style={[
+                  styles.statBox,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("tfeBestTile")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {Math.max(storedBest, score)}
+                </Text>
+              </RNView>
+              <RNView
+                style={[
+                  styles.statBox,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("tfeMoves")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {moveCount}
+                </Text>
+              </RNView>
+            </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={() => setPaused((p) => !p)}
+              onReset={startGame}
+            />
           </RNView>
-          <RNView
-            style={[
-              styles.statBox,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("tfeBestTile")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {Math.max(storedBest, score)}
-            </Text>
-          </RNView>
-          <RNView
-            style={[
-              styles.statBox,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("tfeMoves")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {moveCount}
-            </Text>
-          </RNView>
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={() => setPaused((p) => !p)}
-          onReset={startGame}
+
+          {/* Hint */}
+          <Text style={[styles.hint, { color: theme.mutedText }]}>
+            {t("tfeSwipeHint")}
+          </Text>
+
+          {/* Grid */}
+          {renderGrid()}
+
+          {/* D-pad */}
+          {renderDPad()}
+        </A11yOverlayContent>
+        {/* Pause overlay */}
+        <GamePauseOverlay
+          onRestart={startGame}
+          onResume={() => setPaused(false)}
+          visible={paused}
         />
-      </RNView>
 
-      {/* Hint */}
-      <Text style={[styles.hint, { color: theme.mutedText }]}>
-        {t("tfeSwipeHint")}
-      </Text>
-
-      {/* Grid */}
-      {renderGrid()}
-
-      {/* D-pad */}
-      {renderDPad()}
-
-      {/* Pause overlay */}
-      <GamePauseOverlay
-        onRestart={startGame}
-        onResume={() => setPaused(false)}
-        visible={paused}
-      />
-
-      {/* Result overlay */}
-      {phase === "over" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.last === score ? undefined : result.last}
-          onPlayAgain={startGame}
-          score={score}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          title={winMessage ? t("tfeYouWin") : t("tfeGameOver")}
-        />
-      ) : null}
-    </View>
+        {/* Result overlay */}
+        {phase === "over" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.last === score ? undefined : result.last}
+            onPlayAgain={startGame}
+            score={score}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            title={winMessage ? t("tfeYouWin") : t("tfeGameOver")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -533,6 +544,7 @@ const styles = StyleSheet.create({
     ...TextStyle.hint,
     textAlign: "center",
   },
+  screen: { flex: 1 },
   // Idle / start
   startBtn: {
     borderRadius: Radius.button,

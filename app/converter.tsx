@@ -1,15 +1,22 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, TextInput } from "react-native";
+import {
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CurrencyPicker from "@/components/CurrencyPicker";
+import { resolveHomeCurrency } from "@/components/currencyDefault";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
-import { deviceCurrencyCode, getCurrency } from "@/data/currencies";
+import { getCurrency } from "@/data/currencies";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
@@ -79,7 +86,7 @@ export default function ConverterScreen() {
   });
 
   const homeCurrency = useSettingsStore((s) => s.homeCurrency);
-  const home = homeCurrency ?? deviceCurrencyCode();
+  const home = resolveHomeCurrency(homeCurrency, liveRates);
   const [kind, setKind] = useState<Kind>("currency");
   const [amount, setAmount] = useState("100");
   const [from, setFrom] = useState(home);
@@ -141,6 +148,23 @@ export default function ConverterScreen() {
     }, 800);
     return () => clearTimeout(timer);
   }, [result, kind, from, to, direction, incrementConverterUses]);
+
+  // Temperatures go below zero: the decimal pad has no minus key on iOS (and
+  // many Android keyboards), so offer a keyboard with one plus a ± toggle.
+  const allowsNegative = kind === "temperature";
+  const toggleSign = () => {
+    haptic.tap();
+    setAmount((current) => {
+      const trimmed = current.trim();
+      return trimmed.startsWith("-") ? trimmed.slice(1) : `-${trimmed}`;
+    });
+  };
+  let amountKeyboard: "decimal-pad" | "numbers-and-punctuation" | "numeric" =
+    "decimal-pad";
+  if (allowsNegative) {
+    amountKeyboard =
+      Platform.OS === "ios" ? "numbers-and-punctuation" : "numeric";
+  }
 
   const swap = () => {
     haptic.tap();
@@ -224,22 +248,41 @@ export default function ConverterScreen() {
           <Text style={[styles.label, { color: theme.mutedText }]}>
             {t("converterAmount")} · {fromLabel}
           </Text>
-          <TextInput
-            accessibilityLabel={t("converterAmount")}
-            keyboardType="decimal-pad"
-            onChangeText={setAmount}
-            returnKeyType="done"
-            selectTextOnFocus
-            style={[
-              styles.input,
-              {
-                backgroundColor: theme.inputBackground,
-                borderColor: theme.border,
-                color: theme.text,
-              },
-            ]}
-            value={amount}
-          />
+          <View
+            darkColor="transparent"
+            lightColor="transparent"
+            style={styles.inputRow}
+          >
+            {allowsNegative ? (
+              <Pressable
+                accessibilityLabel={t("converterToggleSign")}
+                accessibilityRole="button"
+                onPress={toggleSign}
+                style={[
+                  styles.signBtn,
+                  { backgroundColor: theme.surface, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.signText, { color: theme.tint }]}>±</Text>
+              </Pressable>
+            ) : null}
+            <TextInput
+              accessibilityLabel={t("converterAmount")}
+              keyboardType={amountKeyboard}
+              onChangeText={setAmount}
+              returnKeyType="done"
+              selectTextOnFocus
+              style={[
+                styles.input,
+                {
+                  backgroundColor: theme.inputBackground,
+                  borderColor: theme.border,
+                  color: theme.text,
+                },
+              ]}
+              value={amount}
+            />
+          </View>
           {kind === "currency" ? (
             <>
               <Text style={[styles.label, { color: theme.mutedText }]}>
@@ -351,11 +394,13 @@ const styles = StyleSheet.create({
   input: {
     borderRadius: Radius.card,
     borderWidth: 1,
+    flex: 1,
     fontSize: FontSize["2xl"],
     fontWeight: FontWeight.bold,
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.md,
   },
+  inputRow: { flexDirection: "row", gap: Spacing.sm },
   label: {
     fontSize: FontSize.xs,
     fontWeight: FontWeight.bold,
@@ -391,6 +436,14 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.sm + 2,
   },
   segmentText: { fontSize: FontSize.xs, fontWeight: FontWeight.semibold },
+  signBtn: {
+    alignItems: "center",
+    borderRadius: Radius.card,
+    borderWidth: 1,
+    justifyContent: "center",
+    minWidth: 52,
+  },
+  signText: { fontSize: FontSize["2xl"], fontWeight: FontWeight.bold },
   swapBtn: {
     alignItems: "center",
     alignSelf: "center",

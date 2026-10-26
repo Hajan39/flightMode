@@ -7,6 +7,10 @@ import {
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import {
   MatchResult,
@@ -255,270 +259,287 @@ export default function EmojiStoryGame() {
   }
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          label={bannerLabel}
-          player={
-            phase === "vote" || phase === "passVote" ? players[voter] : author
-          }
-          right={
-            <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-              {actLabel}
-            </Text>
-          }
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              label={bannerLabel}
+              player={
+                phase === "vote" || phase === "passVote"
+                  ? players[voter]
+                  : author
+              }
+              right={
+                <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                  {actLabel}
+                </Text>
+              }
+            />
+            <GameControls onReset={() => startMatch(players)} />
+          </RNView>
 
-      {storyOnly === "votes" ? (
-        <PlayerScoreStrip players={players} scores={scores} />
-      ) : null}
+          {storyOnly === "votes" ? (
+            <PlayerScoreStrip players={players} scores={scores} />
+          ) : null}
 
-      <ScrollView
-        contentContainerStyle={styles.body}
-        showsVerticalScrollIndicator={false}
-      >
-        {phase === "write" ? (
-          <Animated.View
-            entering={FadeInDown.duration(200)}
-            style={styles.section}
+          <ScrollView
+            contentContainerStyle={styles.body}
+            showsVerticalScrollIndicator={false}
           >
-            <RNView
-              style={[
-                styles.card,
-                { backgroundColor: theme.card, borderColor: theme.border },
-              ]}
-            >
-              {renderStory(true)}
-            </RNView>
+            {phase === "write" ? (
+              <Animated.View
+                entering={FadeInDown.duration(200)}
+                style={styles.section}
+              >
+                <RNView
+                  style={[
+                    styles.card,
+                    { backgroundColor: theme.card, borderColor: theme.border },
+                  ]}
+                >
+                  {renderStory(true)}
+                </RNView>
 
-            <Text style={[styles.label, { color: theme.mutedText }]}>
-              {t("esPickConnector")}
-            </Text>
-            <RNView style={styles.connectorRow}>
-              {connectors.map((c) => {
-                const active = c.id === connector;
-                return (
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityState={{ selected: active }}
-                    key={c.id}
-                    onPress={() => {
-                      haptic.tap();
-                      setConnector(c.id);
-                    }}
-                    style={[
-                      styles.connectorChip,
-                      {
-                        backgroundColor: active ? author.color : theme.card,
-                        borderColor: active ? author.color : theme.border,
-                      },
-                    ]}
-                  >
-                    <Text
-                      style={[
-                        styles.connectorChipText,
-                        { color: active ? "#0b1620" : theme.text },
-                      ]}
-                    >
-                      {t(c.key)}
-                    </Text>
-                  </Pressable>
-                );
-              })}
-            </RNView>
+                <Text style={[styles.label, { color: theme.mutedText }]}>
+                  {t("esPickConnector")}
+                </Text>
+                <RNView style={styles.connectorRow}>
+                  {connectors.map((c) => {
+                    const active = c.id === connector;
+                    return (
+                      <Pressable
+                        accessibilityRole="button"
+                        accessibilityState={{ selected: active }}
+                        key={c.id}
+                        onPress={() => {
+                          haptic.tap();
+                          setConnector(c.id);
+                        }}
+                        style={[
+                          styles.connectorChip,
+                          {
+                            backgroundColor: active ? author.color : theme.card,
+                            borderColor: active ? author.color : theme.border,
+                          },
+                        ]}
+                      >
+                        <Text
+                          style={[
+                            styles.connectorChipText,
+                            { color: active ? "#0b1620" : theme.text },
+                          ]}
+                        >
+                          {t(c.key)}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </RNView>
 
-            <Text style={[styles.label, { color: theme.mutedText }]}>
-              {t("esPickTiles")}
-            </Text>
-            <RNView style={styles.hand}>
-              {hand.map((tile) => {
-                const selected = selectedTiles.includes(tile);
-                return (
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityState={{ selected }}
-                    key={tile}
-                    onPress={() => toggleTile(tile)}
-                    style={[
-                      styles.tile,
-                      {
-                        backgroundColor: selected
-                          ? `${author.color}33`
-                          : theme.elevated,
-                        borderColor: selected ? author.color : theme.border,
-                      },
-                    ]}
-                  >
-                    <Text style={styles.tileEmoji}>{tile}</Text>
-                  </Pressable>
-                );
-              })}
-            </RNView>
+                <Text style={[styles.label, { color: theme.mutedText }]}>
+                  {t("esPickTiles")}
+                </Text>
+                <RNView style={styles.hand}>
+                  {hand.map((tile) => {
+                    const selected = selectedTiles.includes(tile);
+                    return (
+                      <Pressable
+                        accessibilityRole="button"
+                        accessibilityState={{ selected }}
+                        key={tile}
+                        onPress={() => toggleTile(tile)}
+                        style={[
+                          styles.tile,
+                          {
+                            backgroundColor: selected
+                              ? `${author.color}33`
+                              : theme.elevated,
+                            borderColor: selected ? author.color : theme.border,
+                          },
+                        ]}
+                      >
+                        <Text style={styles.tileEmoji}>{tile}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </RNView>
 
-            <Pressable
-              accessibilityRole="button"
-              disabled={selectedTiles.length === 0}
-              onPress={confirmTurn}
-              style={[
-                styles.primaryBtn,
-                {
-                  backgroundColor: author.color,
-                  opacity: selectedTiles.length === 0 ? 0.4 : 1,
-                },
-              ]}
-            >
-              <Text style={styles.primaryBtnText}>
-                {t("esAddToStory")} {selectedTiles.join(" ")}
-              </Text>
-            </Pressable>
-          </Animated.View>
-        ) : null}
-
-        {phase === "vote" ? (
-          <Animated.View
-            entering={FadeInDown.duration(200)}
-            style={styles.section}
-          >
-            <Text style={[styles.label, { color: theme.mutedText }]}>
-              {t("esVoteHint")}
-            </Text>
-            {actContributions.map((c, i) => {
-              const own = c.author === voter;
-              return (
                 <Pressable
                   accessibilityRole="button"
-                  disabled={own}
-                  key={`${c.author}-${i}`}
-                  onPress={() => castVote(i)}
+                  disabled={selectedTiles.length === 0}
+                  onPress={confirmTurn}
                   style={[
-                    styles.voteCard,
+                    styles.primaryBtn,
                     {
-                      backgroundColor: theme.card,
-                      borderColor: theme.border,
-                      opacity: own ? 0.35 : 1,
+                      backgroundColor: author.color,
+                      opacity: selectedTiles.length === 0 ? 0.4 : 1,
                     },
                   ]}
                 >
-                  <Text
-                    style={[styles.connectorText, { color: theme.mutedText }]}
-                  >
-                    {t(
-                      connectors.find((x) => x.id === c.connector)?.key ??
-                        "esThen"
-                    )}
+                  <Text style={styles.primaryBtnText}>
+                    {t("esAddToStory")} {selectedTiles.join(" ")}
                   </Text>
-                  <Text style={styles.storyEmoji}>{c.tiles.join(" ")}</Text>
-                  {own ? (
-                    <Text style={[styles.ownTag, { color: theme.mutedText }]}>
-                      {t("esYours")}
-                    </Text>
-                  ) : null}
                 </Pressable>
-              );
-            })}
-          </Animated.View>
-        ) : null}
+              </Animated.View>
+            ) : null}
 
-        {phase === "actEnd" ? (
-          <Animated.View entering={ZoomIn.duration(220)} style={styles.section}>
-            <RNView
-              style={[
-                styles.card,
-                { backgroundColor: theme.card, borderColor: theme.border },
-              ]}
-            >
-              {renderStory(true)}
-            </RNView>
-            <Pressable
-              accessibilityRole="button"
-              onPress={() => {
-                haptic.tap();
-                advanceAfterAct(turn + 1, contributions);
-              }}
-              style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-            >
-              <Text style={[styles.primaryBtnText, { color: theme.onTint }]}>
-                {turn + 1 >= sequence.length
-                  ? t("esReadStory")
-                  : t("hmNextRound")}
-              </Text>
-            </Pressable>
-          </Animated.View>
-        ) : null}
+            {phase === "vote" ? (
+              <Animated.View
+                entering={FadeInDown.duration(200)}
+                style={styles.section}
+              >
+                <Text style={[styles.label, { color: theme.mutedText }]}>
+                  {t("esVoteHint")}
+                </Text>
+                {actContributions.map((c, i) => {
+                  const own = c.author === voter;
+                  return (
+                    <Pressable
+                      accessibilityRole="button"
+                      disabled={own}
+                      key={`${c.author}-${i}`}
+                      onPress={() => castVote(i)}
+                      style={[
+                        styles.voteCard,
+                        {
+                          backgroundColor: theme.card,
+                          borderColor: theme.border,
+                          opacity: own ? 0.35 : 1,
+                        },
+                      ]}
+                    >
+                      <Text
+                        style={[
+                          styles.connectorText,
+                          { color: theme.mutedText },
+                        ]}
+                      >
+                        {t(
+                          connectors.find((x) => x.id === c.connector)?.key ??
+                            "esThen"
+                        )}
+                      </Text>
+                      <Text style={styles.storyEmoji}>{c.tiles.join(" ")}</Text>
+                      {own ? (
+                        <Text
+                          style={[styles.ownTag, { color: theme.mutedText }]}
+                        >
+                          {t("esYours")}
+                        </Text>
+                      ) : null}
+                    </Pressable>
+                  );
+                })}
+              </Animated.View>
+            ) : null}
 
-        {phase === "readout" ? (
-          <Animated.View
-            entering={FadeInDown.duration(240)}
-            style={styles.section}
-          >
-            <RNView
-              style={[
-                styles.card,
-                styles.readoutCard,
-                { backgroundColor: theme.card, borderColor: theme.tint },
-              ]}
-            >
-              <Text style={[styles.readoutTitle, { color: theme.tint }]}>
-                📖 {t("esReadStory")}
-              </Text>
-              {renderStory(false)}
-            </RNView>
-            <Pressable
-              accessibilityRole="button"
-              onPress={finish}
-              style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-            >
-              <Text style={[styles.primaryBtnText, { color: theme.onTint }]}>
-                {t("hmSeeResult")}
-              </Text>
-            </Pressable>
-          </Animated.View>
-        ) : null}
-      </ScrollView>
+            {phase === "actEnd" ? (
+              <Animated.View
+                entering={ZoomIn.duration(220)}
+                style={styles.section}
+              >
+                <RNView
+                  style={[
+                    styles.card,
+                    { backgroundColor: theme.card, borderColor: theme.border },
+                  ]}
+                >
+                  {renderStory(true)}
+                </RNView>
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={() => {
+                    haptic.tap();
+                    advanceAfterAct(turn + 1, contributions);
+                  }}
+                  style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
+                >
+                  <Text
+                    style={[styles.primaryBtnText, { color: theme.onTint }]}
+                  >
+                    {turn + 1 >= sequence.length
+                      ? t("esReadStory")
+                      : t("hmNextRound")}
+                  </Text>
+                </Pressable>
+              </Animated.View>
+            ) : null}
 
-      <PassDeviceOverlay
-        hint={t("esYourTurn", { act: actLabel })}
-        onReady={() => setPhase("write")}
-        toPlayer={author}
-        visible={phase === "pass"}
-      />
-      <PassDeviceOverlay
-        hint={t("esVoteBest")}
-        onReady={() => setPhase("vote")}
-        secret
-        toPlayer={players[voter]}
-        visible={phase === "passVote"}
-      />
-
-      {phase === "done" ? (
-        <MatchResult
-          cooperative={storyOnly === "story"}
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          // Story-only records no vote score, so its best/streak line is moot.
-          progress={storyOnly === "story" ? undefined : progress}
-          scoreLabel={storyOnly === "story" ? t("esTiles") : t("esVotes")}
-          standings={players.map((p, i) => ({
-            player: p,
-            score:
-              storyOnly === "story"
-                ? contributions
-                    .filter((c) => c.author === i)
-                    .reduce((n, c) => n + c.tiles.length, 0)
-                : scores[i],
-          }))}
-          title={storyOnly === "story" ? t("esStoryComplete") : undefined}
-          winnerIndex={
-            storyOnly === "story"
-              ? null
-              : getSoleWinnerIndex(scores.map((score) => ({ score })))
-          }
+            {phase === "readout" ? (
+              <Animated.View
+                entering={FadeInDown.duration(240)}
+                style={styles.section}
+              >
+                <RNView
+                  style={[
+                    styles.card,
+                    styles.readoutCard,
+                    { backgroundColor: theme.card, borderColor: theme.tint },
+                  ]}
+                >
+                  <Text style={[styles.readoutTitle, { color: theme.tint }]}>
+                    📖 {t("esReadStory")}
+                  </Text>
+                  {renderStory(false)}
+                </RNView>
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={finish}
+                  style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
+                >
+                  <Text
+                    style={[styles.primaryBtnText, { color: theme.onTint }]}
+                  >
+                    {t("hmSeeResult")}
+                  </Text>
+                </Pressable>
+              </Animated.View>
+            ) : null}
+          </ScrollView>
+        </A11yOverlayContent>
+        <PassDeviceOverlay
+          hint={t("esYourTurn", { act: actLabel })}
+          onReady={() => setPhase("write")}
+          toPlayer={author}
+          visible={phase === "pass"}
         />
-      ) : null}
-    </View>
+        <PassDeviceOverlay
+          hint={t("esVoteBest")}
+          onReady={() => setPhase("vote")}
+          secret
+          toPlayer={players[voter]}
+          visible={phase === "passVote"}
+        />
+
+        {phase === "done" ? (
+          <MatchResult
+            cooperative={storyOnly === "story"}
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            // Story-only records no vote score, so its best/streak line is moot.
+            progress={storyOnly === "story" ? undefined : progress}
+            scoreLabel={storyOnly === "story" ? t("esTiles") : t("esVotes")}
+            standings={players.map((p, i) => ({
+              player: p,
+              score:
+                storyOnly === "story"
+                  ? contributions
+                      .filter((c) => c.author === i)
+                      .reduce((n, c) => n + c.tiles.length, 0)
+                  : scores[i],
+            }))}
+            title={storyOnly === "story" ? t("esStoryComplete") : undefined}
+            winnerIndex={
+              storyOnly === "story"
+                ? null
+                : getSoleWinnerIndex(scores.map((score) => ({ score })))
+            }
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -568,6 +589,7 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.sm,
   },
   roundChip: { ...TextStyle.chipLabel },
+  screen: { flex: 1 },
   section: { gap: Spacing.sm },
   story: { gap: Spacing.sm },
   storyEmoji: { fontSize: FontSize["3xl"], lineHeight: 36 },

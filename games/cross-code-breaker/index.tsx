@@ -7,6 +7,10 @@ import {
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import {
   MatchResult,
@@ -285,213 +289,232 @@ export default function CrossCodeBreakerGame() {
   }
 
   return (
-    <View style={styles.container}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          label={bannerLabel}
-          player={current}
-          right={
-            <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-              {t("mpRoundOf", { round, total: TOTAL_ROUNDS })}
-            </Text>
-          }
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
-
-      <PlayerScoreStrip
-        activeIndex={phase === "playing" ? currentPlayer : undefined}
-        detail={(i) => `${histories[i]?.length ?? 0}/${MAX_GUESSES}`}
-        players={players}
-        scores={scores}
-      />
-
-      {phase === "roundEnd" ? (
-        <RNView style={styles.roundEnd}>
-          <Text style={[styles.secretLabel, { color: theme.mutedText }]}>
-            {t("cbSecretWas")}
-          </Text>
-          {renderCode(
-            secret,
-            roundWinner === null ? theme.tint : players[roundWinner].color
-          )}
-          <Pressable
-            accessibilityLabel={
-              round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")
-            }
-            accessibilityRole="button"
-            onPress={nextRound}
-            style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-          >
-            <Text style={[styles.primaryBtnText, { color: theme.onTint }]}>
-              {round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
-            </Text>
-          </Pressable>
-        </RNView>
-      ) : (
-        <ScrollView
-          contentContainerStyle={styles.scrollContent}
-          style={styles.scrollArea}
-        >
-          {renderCode(guessInput, pColor)}
-
-          <RNView style={styles.numpad}>
-            {[
-              [1, 2, 3, 4, 5],
-              [6, 7, 8, 9, 0],
-            ].map((row) => (
-              <RNView key={`row-${row[0]}`} style={styles.numRow}>
-                {row.map((d) => (
-                  <Pressable
-                    accessibilityLabel={String(d)}
-                    accessibilityRole="button"
-                    disabled={lastResult !== null}
-                    key={d}
-                    onPress={() => addDigit(d)}
-                    style={[
-                      styles.numKey,
-                      {
-                        backgroundColor: guessInput.includes(d)
-                          ? `${pColor}33`
-                          : theme.card,
-                        borderColor: theme.border,
-                      },
-                    ]}
-                  >
-                    <Text style={styles.numKeyText}>{d}</Text>
-                  </Pressable>
-                ))}
-              </RNView>
-            ))}
-            <Pressable
-              accessibilityLabel={t("a11yBackspace")}
-              accessibilityRole="button"
-              disabled={lastResult !== null}
-              onPress={() => {
-                haptic.tap();
-                setGuessInput((p) => p.slice(0, -1));
-              }}
-              style={[
-                styles.deleteKey,
-                { backgroundColor: theme.card, borderColor: theme.border },
-              ]}
-            >
-              <Text style={[styles.numKeyText, { color: theme.danger }]}>
-                ⌫
-              </Text>
-            </Pressable>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.container}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              label={bannerLabel}
+              player={current}
+              right={
+                <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                  {t("mpRoundOf", { round, total: TOTAL_ROUNDS })}
+                </Text>
+              }
+            />
+            <GameControls onReset={() => startMatch(players)} />
           </RNView>
 
-          {guessInput.length === CODE_LEN && !lastResult ? (
-            <Animated.View
-              entering={ZoomIn.duration(200)}
-              style={submitPress.animatedStyle}
-            >
+          <PlayerScoreStrip
+            activeIndex={phase === "playing" ? currentPlayer : undefined}
+            detail={(i) => `${histories[i]?.length ?? 0}/${MAX_GUESSES}`}
+            players={players}
+            scores={scores}
+          />
+
+          {phase === "roundEnd" ? (
+            <RNView style={styles.roundEnd}>
+              <Text style={[styles.secretLabel, { color: theme.mutedText }]}>
+                {t("cbSecretWas")}
+              </Text>
+              {renderCode(
+                secret,
+                roundWinner === null ? theme.tint : players[roundWinner].color
+              )}
               <Pressable
-                accessibilityLabel={t("cbCheck")}
+                accessibilityLabel={
+                  round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")
+                }
                 accessibilityRole="button"
-                onPress={submitGuess}
-                onPressIn={submitPress.onPressIn}
-                onPressOut={submitPress.onPressOut}
-                style={[styles.primaryBtn, { backgroundColor: pColor }]}
+                onPress={nextRound}
+                style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
               >
-                <Text style={styles.primaryBtnText}>{t("cbCheck")}</Text>
-              </Pressable>
-            </Animated.View>
-          ) : null}
-
-          {lastResult ? (
-            <Animated.View
-              entering={ZoomIn.duration(200)}
-              style={styles.resultBox}
-            >
-              {renderPegs(lastResult.bulls, lastResult.cows, true)}
-              <Text style={[styles.resultSubtext, { color: theme.mutedText }]}>
-                {lastResult.bulls}🎯 {lastResult.cows}🐄
-              </Text>
-              {roundWinner === null ? null : (
-                <Text style={[styles.cracked, { color: theme.successBorder }]}>
-                  {t("cbYouCracked")}
+                <Text style={[styles.primaryBtnText, { color: theme.onTint }]}>
+                  {round >= TOTAL_ROUNDS ? t("hmSeeResult") : t("hmNextRound")}
                 </Text>
-              )}
-              {pendingNext !== null && roundWinner === null ? (
-                <Pressable
-                  accessibilityLabel={t("passPhone")}
-                  accessibilityRole="button"
-                  onPress={continueToNextPlayer}
-                  style={[styles.primaryBtn, { backgroundColor: pColor }]}
-                >
-                  <Text style={styles.primaryBtnText}>{t("passPhone")}</Text>
-                </Pressable>
-              ) : (
-                <Pressable
-                  accessibilityLabel={t("hmSeeResult")}
-                  accessibilityRole="button"
-                  onPress={confirmRoundEnd}
-                  style={[styles.primaryBtn, { backgroundColor: theme.tint }]}
-                >
-                  <Text
-                    style={[styles.primaryBtnText, { color: theme.onTint }]}
-                  >
-                    {t("hmSeeResult")}
-                  </Text>
-                </Pressable>
-              )}
-            </Animated.View>
-          ) : null}
+              </Pressable>
+            </RNView>
+          ) : (
+            <ScrollView
+              contentContainerStyle={styles.scrollContent}
+              style={styles.scrollArea}
+            >
+              {renderCode(guessInput, pColor)}
 
-          {myHistory.length > 0 ? (
-            <RNView style={styles.historySection}>
-              <Text style={[styles.historyTitle, { color: theme.mutedText }]}>
-                {t("cbMyGuesses")}
-              </Text>
-              {myHistory.map((entry, idx) => (
-                <Animated.View
-                  entering={FadeInDown.duration(200)}
-                  key={`${entry.digits.join("")}-${idx}`}
+              <RNView style={styles.numpad}>
+                {[
+                  [1, 2, 3, 4, 5],
+                  [6, 7, 8, 9, 0],
+                ].map((row) => (
+                  <RNView key={`row-${row[0]}`} style={styles.numRow}>
+                    {row.map((d) => (
+                      <Pressable
+                        accessibilityLabel={String(d)}
+                        accessibilityRole="button"
+                        disabled={lastResult !== null}
+                        key={d}
+                        onPress={() => addDigit(d)}
+                        style={[
+                          styles.numKey,
+                          {
+                            backgroundColor: guessInput.includes(d)
+                              ? `${pColor}33`
+                              : theme.card,
+                            borderColor: theme.border,
+                          },
+                        ]}
+                      >
+                        <Text style={styles.numKeyText}>{d}</Text>
+                      </Pressable>
+                    ))}
+                  </RNView>
+                ))}
+                <Pressable
+                  accessibilityLabel={t("a11yBackspace")}
+                  accessibilityRole="button"
+                  disabled={lastResult !== null}
+                  onPress={() => {
+                    haptic.tap();
+                    setGuessInput((p) => p.slice(0, -1));
+                  }}
                   style={[
-                    styles.historyRow,
+                    styles.deleteKey,
                     { backgroundColor: theme.card, borderColor: theme.border },
                   ]}
                 >
-                  <Text style={[styles.historyIdx, { color: theme.mutedText }]}>
-                    {idx + 1}.
+                  <Text style={[styles.numKeyText, { color: theme.danger }]}>
+                    ⌫
                   </Text>
-                  <Text style={styles.historyDigits}>
-                    {entry.digits.join(" ")}
-                  </Text>
-                  {renderPegs(entry.bulls, entry.cows)}
+                </Pressable>
+              </RNView>
+
+              {guessInput.length === CODE_LEN && !lastResult ? (
+                <Animated.View
+                  entering={ZoomIn.duration(200)}
+                  style={submitPress.animatedStyle}
+                >
+                  <Pressable
+                    accessibilityLabel={t("cbCheck")}
+                    accessibilityRole="button"
+                    onPress={submitGuess}
+                    onPressIn={submitPress.onPressIn}
+                    onPressOut={submitPress.onPressOut}
+                    style={[styles.primaryBtn, { backgroundColor: pColor }]}
+                  >
+                    <Text style={styles.primaryBtnText}>{t("cbCheck")}</Text>
+                  </Pressable>
                 </Animated.View>
-              ))}
-            </RNView>
-          ) : null}
-        </ScrollView>
-      )}
+              ) : null}
 
-      <PassDeviceOverlay
-        hint={`${t("cbHandoffHint")} · ${t("cbGuessesUsed")}: ${myHistory.length}/${MAX_GUESSES}`}
-        onReady={() => {
-          setPhase("playing");
-          setGuessInput([]);
-          setLastResult(null);
-        }}
-        secret
-        toPlayer={current}
-        visible={phase === "handoff"}
-      />
+              {lastResult ? (
+                <Animated.View
+                  entering={ZoomIn.duration(200)}
+                  style={styles.resultBox}
+                >
+                  {renderPegs(lastResult.bulls, lastResult.cows, true)}
+                  <Text
+                    style={[styles.resultSubtext, { color: theme.mutedText }]}
+                  >
+                    {lastResult.bulls}🎯 {lastResult.cows}🐄
+                  </Text>
+                  {roundWinner === null ? null : (
+                    <Text
+                      style={[styles.cracked, { color: theme.successBorder }]}
+                    >
+                      {t("cbYouCracked")}
+                    </Text>
+                  )}
+                  {pendingNext !== null && roundWinner === null ? (
+                    <Pressable
+                      accessibilityLabel={t("passPhone")}
+                      accessibilityRole="button"
+                      onPress={continueToNextPlayer}
+                      style={[styles.primaryBtn, { backgroundColor: pColor }]}
+                    >
+                      <Text style={styles.primaryBtnText}>
+                        {t("passPhone")}
+                      </Text>
+                    </Pressable>
+                  ) : (
+                    <Pressable
+                      accessibilityLabel={t("hmSeeResult")}
+                      accessibilityRole="button"
+                      onPress={confirmRoundEnd}
+                      style={[
+                        styles.primaryBtn,
+                        { backgroundColor: theme.tint },
+                      ]}
+                    >
+                      <Text
+                        style={[styles.primaryBtnText, { color: theme.onTint }]}
+                      >
+                        {t("hmSeeResult")}
+                      </Text>
+                    </Pressable>
+                  )}
+                </Animated.View>
+              ) : null}
 
-      {phase === "done" ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("mpPoints")}
-          standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
-          winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
+              {myHistory.length > 0 ? (
+                <RNView style={styles.historySection}>
+                  <Text
+                    style={[styles.historyTitle, { color: theme.mutedText }]}
+                  >
+                    {t("cbMyGuesses")}
+                  </Text>
+                  {myHistory.map((entry, idx) => (
+                    <Animated.View
+                      entering={FadeInDown.duration(200)}
+                      key={`${entry.digits.join("")}-${idx}`}
+                      style={[
+                        styles.historyRow,
+                        {
+                          backgroundColor: theme.card,
+                          borderColor: theme.border,
+                        },
+                      ]}
+                    >
+                      <Text
+                        style={[styles.historyIdx, { color: theme.mutedText }]}
+                      >
+                        {idx + 1}.
+                      </Text>
+                      <Text style={styles.historyDigits}>
+                        {entry.digits.join(" ")}
+                      </Text>
+                      {renderPegs(entry.bulls, entry.cows)}
+                    </Animated.View>
+                  ))}
+                </RNView>
+              ) : null}
+            </ScrollView>
+          )}
+        </A11yOverlayContent>
+        <PassDeviceOverlay
+          hint={`${t("cbHandoffHint")} · ${t("cbGuessesUsed")}: ${myHistory.length}/${MAX_GUESSES}`}
+          onReady={() => {
+            setPhase("playing");
+            setGuessInput([]);
+            setLastResult(null);
+          }}
+          secret
+          toPlayer={current}
+          visible={phase === "handoff"}
         />
-      ) : null}
-    </View>
+
+        {phase === "done" ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("mpPoints")}
+            standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
+            winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -581,6 +604,7 @@ const styles = StyleSheet.create({
     gap: Spacing.md,
     justifyContent: "center",
   },
+  screen: { flex: 1 },
   scrollArea: { flex: 1 },
   scrollContent: { alignItems: "center", paddingBottom: Spacing.xl },
   secretLabel: { ...TextStyle.statLabel },

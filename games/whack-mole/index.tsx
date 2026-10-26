@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -7,6 +11,7 @@ import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -286,6 +291,9 @@ export default function WhackMoleGame() {
     setPhase("paused");
   };
 
+  // Leaving the app (home, call, lock) pauses; the player resumes by hand.
+  useAutoPause(handlePause, phase === "running");
+
   const handleResume = () => {
     if (phase !== "paused") {
       return;
@@ -337,134 +345,144 @@ export default function WhackMoleGame() {
   const moleByCell = new Map(activeMoles.map((m) => [m.cellIndex, m]));
 
   return (
-    <View style={styles.root}>
-      {/* Header row */}
-      <RNView style={styles.headerRow}>
-        <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[styles.bestValue, { color: theme.tint }]}>
-            {storedBest}
-          </Text>
-        </RNView>
-        <GameControls
-          isPaused={phase === "paused"}
-          onPause={isRunning || phase === "paused" ? handlePause : undefined}
-          onReset={phase === "idle" ? undefined : handleReset}
-        />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* Header row */}
+          <RNView style={styles.headerRow}>
+            <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
+              </Text>
+              <Text style={[styles.bestValue, { color: theme.tint }]}>
+                {storedBest}
+              </Text>
+            </RNView>
+            <GameControls
+              isPaused={phase === "paused"}
+              onPause={
+                isRunning || phase === "paused" ? handlePause : undefined
+              }
+              onReset={phase === "idle" ? undefined : handleReset}
+            />
+          </RNView>
 
-      {/* Time bar */}
-      <RNView style={[styles.timeTrack, { backgroundColor: theme.card }]}>
-        <RNView
-          style={[
-            styles.timeFill,
-            {
-              backgroundColor: secondsLeft <= 5 ? theme.danger : theme.tint,
-              flex: progress,
-            },
-          ]}
-        />
-      </RNView>
+          {/* Time bar */}
+          <RNView style={[styles.timeTrack, { backgroundColor: theme.card }]}>
+            <RNView
+              style={[
+                styles.timeFill,
+                {
+                  backgroundColor: secondsLeft <= 5 ? theme.danger : theme.tint,
+                  flex: progress,
+                },
+              ]}
+            />
+          </RNView>
 
-      {/* Stats */}
-      <RNView style={styles.statsRow}>
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("whackTime")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>
-            {secondsLeft}s
-          </Text>
-        </RNView>
-        <RNView
-          style={[styles.statDivider, { backgroundColor: theme.border }]}
-        />
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("whackScore")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
-        </RNView>
-      </RNView>
+          {/* Stats */}
+          <RNView style={styles.statsRow}>
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("whackTime")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {secondsLeft}s
+              </Text>
+            </RNView>
+            <RNView
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("whackScore")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.tint }]}>
+                {score}
+              </Text>
+            </RNView>
+          </RNView>
 
-      {/* Grid */}
-      {phase === "idle" ? (
-        <Pressable
-          accessibilityLabel={t("gameTapToStart")}
-          accessibilityRole="button"
-          onPress={startGame}
-          style={[
-            styles.idleArea,
-            { backgroundColor: theme.elevated, borderColor: theme.border },
-          ]}
-        >
-          <Text style={[styles.idleEmoji]}>🐹</Text>
-          <Text style={[styles.idleLabel, { color: theme.mutedText }]}>
-            {t("gameTapToStart")}
-          </Text>
-        </Pressable>
-      ) : (
-        <RNView style={styles.grid}>
-          {Array.from({ length: GRID_SIZE }, (_, i) => {
-            const isActive = activeMoleSet.has(i);
-            const mole = moleByCell.get(i);
-            return (
-              <Pressable
-                disabled={!isActive || phase !== "running"}
-                key={i}
-                onPress={
-                  isActive && mole ? () => handleMoleTap(mole.id) : undefined
-                }
-                style={[
-                  styles.cell,
-                  {
-                    backgroundColor: isActive ? theme.tint : theme.card,
-                    borderColor: isActive ? theme.tint : theme.border,
-                    height: cellSize,
-                    width: cellSize,
-                  },
-                ]}
-              >
-                {isActive ? <Text style={styles.moleEmoji}>🐹</Text> : null}
-              </Pressable>
-            );
-          })}
-        </RNView>
-      )}
+          {/* Grid */}
+          {phase === "idle" ? (
+            <Pressable
+              accessibilityLabel={t("gameTapToStart")}
+              accessibilityRole="button"
+              onPress={startGame}
+              style={[
+                styles.idleArea,
+                { backgroundColor: theme.elevated, borderColor: theme.border },
+              ]}
+            >
+              <Text style={[styles.idleEmoji]}>🐹</Text>
+              <Text style={[styles.idleLabel, { color: theme.mutedText }]}>
+                {t("gameTapToStart")}
+              </Text>
+            </Pressable>
+          ) : (
+            <RNView style={styles.grid}>
+              {Array.from({ length: GRID_SIZE }, (_, i) => {
+                const isActive = activeMoleSet.has(i);
+                const mole = moleByCell.get(i);
+                return (
+                  <Pressable
+                    disabled={!isActive || phase !== "running"}
+                    key={i}
+                    onPress={
+                      isActive && mole
+                        ? () => handleMoleTap(mole.id)
+                        : undefined
+                    }
+                    style={[
+                      styles.cell,
+                      {
+                        backgroundColor: isActive ? theme.tint : theme.card,
+                        borderColor: isActive ? theme.tint : theme.border,
+                        height: cellSize,
+                        width: cellSize,
+                      },
+                    ]}
+                  >
+                    {isActive ? <Text style={styles.moleEmoji}>🐹</Text> : null}
+                  </Pressable>
+                );
+              })}
+            </RNView>
+          )}
+        </A11yOverlayContent>
 
-      {phase === "countdown" && (
-        <GameCountdown
-          onComplete={() => {
-            endTimeRef.current = Date.now() + GAME_DURATION_MS;
-            setSecondsLeft(30);
-            setPhase("running");
+        {phase === "countdown" && (
+          <GameCountdown
+            onComplete={() => {
+              endTimeRef.current = Date.now() + GAME_DURATION_MS;
+              setSecondsLeft(30);
+              setPhase("running");
+            }}
+          />
+        )}
+
+        <GamePauseOverlay
+          onRestart={() => {
+            handleReset();
+            startGame();
           }}
+          onResume={handleResume}
+          visible={phase === "paused"}
         />
-      )}
 
-      <GamePauseOverlay
-        onRestart={() => {
-          handleReset();
-          startGame();
-        }}
-        onResume={handleResume}
-        visible={phase === "paused"}
-      />
-
-      {phase === "over" && (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={startGame}
-          score={score}
-          streak={progressInfo?.currentStreak}
-          title={t("gameWhackMoleName")}
-        />
-      )}
-    </View>
+        {phase === "over" && (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={startGame}
+            score={score}
+            streak={progressInfo?.currentStreak}
+            title={t("gameWhackMoleName")}
+          />
+        )}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -522,6 +540,7 @@ const styles = StyleSheet.create({
   },
   moleEmoji: { fontSize: 42 },
   root: { flex: 1, gap: 16, padding: 20 },
+  screen: { flex: 1 },
   statBlock: { alignItems: "center", flex: 1, gap: 4 },
   statDivider: { height: 50, width: 1 },
   statLabel: {

@@ -8,6 +8,10 @@ import {
   StyleSheet,
 } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -16,6 +20,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
@@ -37,6 +42,37 @@ import {
 } from "./logic";
 
 type Phase = "menu" | "playing" | "won";
+
+/** Spoken tile names, aligned with FACES in ./logic. */
+const FACE_NAME_KEYS: TranslationKey[] = [
+  "mjTilePlane",
+  "mjTileSuitcase",
+  "mjTileMap",
+  "mjTileIsland",
+  "mjTileTower",
+  "mjTileStatue",
+  "mjTileMountain",
+  "mjTileVolcano",
+  "mjTileCamel",
+  "mjTilePanda",
+  "mjTileSushi",
+  "mjTilePizza",
+  "mjTileCroissant",
+  "mjTileTaco",
+  "mjTileTicket",
+  "mjTileCompass",
+  "mjTileGlobe",
+  "mjTileMoon",
+  "mjTileSun",
+  "mjTileCloud",
+  "mjTilePalm",
+  "mjTileCastle",
+  "mjTileWheel",
+  "mjTileTrain",
+];
+
+/** Cap system font scaling on the fixed-size tile faces. */
+const TILE_FONT_SCALE = 1.3;
 
 interface Clock {
   pausedAt: number | null;
@@ -136,6 +172,9 @@ export default function MahjongGame() {
     setPaused(true);
     setClock((c) => (c.pausedAt ? c : { ...c, pausedAt: Date.now() }));
   };
+  // Leaving the app (home, call, lock) pauses the clock; resuming is manual.
+  useAutoPause(pause, phase === "playing" && !paused);
+
   const resume = () => {
     setPaused(false);
     setClock((c) =>
@@ -307,6 +346,28 @@ export default function MahjongGame() {
   const boardH = (box.maxY / 2) * tileH + (box.maxZ + 1) * edge;
   const hintIds = new Set(hint ?? []);
 
+  /** "Tile: plane, free, selected" — the emoji alone reads poorly (or not at all). */
+  const tileLabel = (
+    face: number,
+    free: boolean,
+    isSelected: boolean,
+    isHint: boolean
+  ) => {
+    const parts = [
+      t("mjA11yTile", {
+        name: t(FACE_NAME_KEYS[face] ?? "mjTilePlane"),
+        state: free ? t("mjA11yFree") : t("mjA11yBlocked"),
+      }),
+    ];
+    if (isSelected) {
+      parts.push(t("a11ySelected"));
+    }
+    if (isHint) {
+      parts.push(t("mjA11yHinted"));
+    }
+    return parts.join(", ");
+  };
+
   const stat = (label: string, value: string) => (
     <RNView
       style={[
@@ -358,147 +419,165 @@ export default function MahjongGame() {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <RNView style={styles.topBar}>
-        <RNView style={styles.statsRow}>
-          {stat(t("mjTime"), formatTime(elapsedSec(now)))}
-          {stat(t("mjPairsLeft"), String(board.length / 2))}
-          {stat(t("mjMatches"), String(pairs.length))}
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={() => (paused ? resume() : pause())}
-          onReset={() => {
+    <A11yOverlayScope>
+      <View style={[styles.screen, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent style={styles.container}>
+          <RNView style={styles.topBar}>
+            <RNView style={styles.statsRow}>
+              {stat(t("mjTime"), formatTime(elapsedSec(now)))}
+              {stat(t("mjPairsLeft"), String(board.length / 2))}
+              {stat(t("mjMatches"), String(pairs.length))}
+            </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={() => (paused ? resume() : pause())}
+              onReset={() => {
+                resign();
+                startGame(layoutId);
+              }}
+            />
+          </RNView>
+
+          <RNView onLayout={onAreaLayout} style={styles.area}>
+            {area && tileW > 0 ? (
+              <RNView style={{ height: boardH, width: boardW }}>
+                {board.map((tile) => {
+                  const free = freeIds.has(tile.id);
+                  const isSelected = selected === tile.id;
+                  const isHint = hintIds.has(tile.id);
+                  const look = FACES[tile.face];
+                  // Higher layers shift up-left so the edges below stay visible.
+                  const lift = (box.maxZ - tile.z) * edge;
+                  return (
+                    <Pressable
+                      accessibilityLabel={tileLabel(
+                        tile.face,
+                        free,
+                        isSelected,
+                        isHint
+                      )}
+                      accessibilityRole="button"
+                      accessibilityState={{
+                        disabled: !free,
+                        selected: isSelected,
+                      }}
+                      key={tile.id}
+                      onPress={() => onTilePress(tile.id)}
+                      style={[
+                        styles.tile,
+                        {
+                          height: tileH,
+                          left: (tile.x / 2) * tileW + lift,
+                          top: (tile.y / 2) * tileH + lift,
+                          width: tileW,
+                        },
+                      ]}
+                    >
+                      <RNView
+                        style={[
+                          styles.side,
+                          {
+                            backgroundColor: SIDE_COLOR,
+                            borderColor: SIDE_DARK,
+                            height: tileH - edge,
+                            left: edge,
+                            top: edge,
+                            width: tileW - edge,
+                          },
+                        ]}
+                      />
+                      <RNView
+                        style={[
+                          styles.face,
+                          {
+                            backgroundColor: isSelected
+                              ? "#FFE8A3"
+                              : FACE_IVORY,
+                            borderColor:
+                              (isSelected && theme.tint) ||
+                              (isHint && HINT_RING) ||
+                              look.color,
+                            borderWidth: isSelected || isHint ? 3 : 1.5,
+                            height: tileH - edge,
+                            width: tileW - edge,
+                          },
+                        ]}
+                      >
+                        <Text
+                          maxFontSizeMultiplier={TILE_FONT_SCALE}
+                          style={{ fontSize: tileW * 0.52 }}
+                        >
+                          {look.emoji}
+                        </Text>
+                        <RNView
+                          style={[
+                            styles.stripe,
+                            { backgroundColor: look.color },
+                          ]}
+                        />
+                        {free ? null : <RNView style={styles.dim} />}
+                      </RNView>
+                    </Pressable>
+                  );
+                })}
+              </RNView>
+            ) : null}
+          </RNView>
+
+          <Text
+            style={[
+              styles.footHint,
+              { color: stuck ? theme.tint : theme.mutedText },
+            ]}
+          >
+            {stuck ? t("mjNoMoves") : t("mjHowTo")}
+          </Text>
+
+          <RNView style={styles.actions}>
+            {action("arrow-undo", t("mjUndo"), onUndo, {
+              disabled: history.length === 0,
+            })}
+            {action("bulb-outline", t("mjHint"), onHint, {
+              disabled: stuck,
+            })}
+            {action("shuffle", t("mjShuffle"), onShuffle, {
+              highlight: stuck,
+            })}
+          </RNView>
+        </A11yOverlayContent>
+        <GamePauseOverlay
+          onQuit={() => {
+            resign();
+            if (router.canGoBack()) {
+              router.back();
+            }
+          }}
+          onRestart={() => {
             resign();
             startGame(layoutId);
           }}
+          onResume={resume}
+          visible={paused}
         />
-      </RNView>
 
-      <RNView onLayout={onAreaLayout} style={styles.area}>
-        {area && tileW > 0 ? (
-          <RNView style={{ height: boardH, width: boardW }}>
-            {board.map((tile) => {
-              const free = freeIds.has(tile.id);
-              const isSelected = selected === tile.id;
-              const isHint = hintIds.has(tile.id);
-              const look = FACES[tile.face];
-              // Higher layers shift up-left so the edges below stay visible.
-              const lift = (box.maxZ - tile.z) * edge;
-              return (
-                <Pressable
-                  accessibilityLabel={look.emoji}
-                  accessibilityRole="button"
-                  accessibilityState={{
-                    disabled: !free,
-                    selected: isSelected,
-                  }}
-                  key={tile.id}
-                  onPress={() => onTilePress(tile.id)}
-                  style={[
-                    styles.tile,
-                    {
-                      height: tileH,
-                      left: (tile.x / 2) * tileW + lift,
-                      top: (tile.y / 2) * tileH + lift,
-                      width: tileW,
-                    },
-                  ]}
-                >
-                  <RNView
-                    style={[
-                      styles.side,
-                      {
-                        backgroundColor: SIDE_COLOR,
-                        borderColor: SIDE_DARK,
-                        height: tileH - edge,
-                        left: edge,
-                        top: edge,
-                        width: tileW - edge,
-                      },
-                    ]}
-                  />
-                  <RNView
-                    style={[
-                      styles.face,
-                      {
-                        backgroundColor: isSelected ? "#FFE8A3" : FACE_IVORY,
-                        borderColor:
-                          (isSelected && theme.tint) ||
-                          (isHint && HINT_RING) ||
-                          look.color,
-                        borderWidth: isSelected || isHint ? 3 : 1.5,
-                        height: tileH - edge,
-                        width: tileW - edge,
-                      },
-                    ]}
-                  >
-                    <Text style={{ fontSize: tileW * 0.52 }}>{look.emoji}</Text>
-                    <RNView
-                      style={[styles.stripe, { backgroundColor: look.color }]}
-                    />
-                    {free ? null : <RNView style={styles.dim} />}
-                  </RNView>
-                </Pressable>
-              );
+        {phase === "won" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.last === final.score ? undefined : result.last}
+            onPlayAgain={() => setPhase("menu")}
+            score={final.score}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            subtitle={t("mjResultSubtitle", {
+              hints,
+              shuffles,
+              time: formatTime(final.seconds),
             })}
-          </RNView>
+            title={t("mjYouWin")}
+          />
         ) : null}
-      </RNView>
-
-      <Text
-        style={[
-          styles.footHint,
-          { color: stuck ? theme.tint : theme.mutedText },
-        ]}
-      >
-        {stuck ? t("mjNoMoves") : t("mjHowTo")}
-      </Text>
-
-      <RNView style={styles.actions}>
-        {action("arrow-undo", t("mjUndo"), onUndo, {
-          disabled: history.length === 0,
-        })}
-        {action("bulb-outline", t("mjHint"), onHint, {
-          disabled: stuck,
-        })}
-        {action("shuffle", t("mjShuffle"), onShuffle, {
-          highlight: stuck,
-        })}
-      </RNView>
-
-      <GamePauseOverlay
-        onQuit={() => {
-          resign();
-          if (router.canGoBack()) {
-            router.back();
-          }
-        }}
-        onRestart={() => {
-          resign();
-          startGame(layoutId);
-        }}
-        onResume={resume}
-        visible={paused}
-      />
-
-      {phase === "won" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.last === final.score ? undefined : result.last}
-          onPlayAgain={() => setPhase("menu")}
-          score={final.score}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          subtitle={t("mjResultSubtitle", {
-            hints,
-            shuffles,
-            time: formatTime(final.seconds),
-          })}
-          title={t("mjYouWin")}
-        />
-      ) : null}
-    </View>
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -582,6 +661,7 @@ const styles = StyleSheet.create({
   modeTitle: {
     ...TextStyle.buttonSecondary,
   },
+  screen: { flex: 1 },
   side: {
     borderBottomWidth: 1,
     borderRadius: 5,

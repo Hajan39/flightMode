@@ -1,6 +1,6 @@
-import { useFocusEffect, useRouter } from "expo-router";
+import { useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { Alert, ScrollView, StyleSheet } from "react-native";
 
 import DailyChallengeCard from "@/components/home/DailyChallengeCard";
 import DestinationCard from "@/components/home/DestinationCard";
@@ -16,6 +16,7 @@ import StatsSnapshot from "@/components/home/StatsSnapshot";
 import TravelToolsRow from "@/components/home/TravelToolsRow";
 import WelcomeCard from "@/components/home/WelcomeCard";
 import NewToTryRow from "@/components/NewToTryRow";
+import { usePushGuard } from "@/components/usePushGuard";
 import { Spacing } from "@/constants/Spacing";
 import { getDestinationById } from "@/data/destinations";
 import {
@@ -41,6 +42,7 @@ import { useSettingsStore } from "@/store/useSettingsStore";
 import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { getDayOfYear } from "@/utils/dates";
+import { getCurrentFlight } from "@/utils/flightPhase";
 import { pickFlightGames } from "@/utils/flightRecommendations";
 import {
   cancelFlightReadyReminder,
@@ -62,9 +64,9 @@ function getPlayModeLabelKey(playMode?: GamePlayMode) {
 }
 
 export default function HomeScreen() {
-  const router = useRouter();
+  const push = usePushGuard();
   const { language, t } = useTranslation();
-  const flight = useFlightStore((s) => s.flight);
+  const storedFlight = useFlightStore((s) => s.flight);
   const clearFlight = useFlightStore((s) => s.clearFlight);
   const stats = useProfileStats();
   const articles = useContentItems();
@@ -81,6 +83,9 @@ export default function HomeScreen() {
   const [tick, setTick] = useState(0);
   // `tick` only exists to re-render every 30 s; read it so the clock lines refresh.
   const nowMs = Date.now() + tick * 0;
+  // Past the 48 h landed window the trip is over: Home shows the add-flight
+  // state again (the flight stays in the store and the passport log).
+  const flight = getCurrentFlight(storedFlight, nowMs);
 
   const remaining = flight ? getRemainingMinutes(flight) : 0;
   const flightDestination = flight?.destinationId
@@ -124,9 +129,28 @@ export default function HomeScreen() {
     void cancelFlightReadyReminder();
   };
 
+  // An upcoming or in-progress flight is one tap from being lost: confirm.
+  // After landing the trip is done, so clearing it needs no confirmation.
+  const requestClearFlight = () => {
+    if (phase !== "preflight" && phase !== "inflight") {
+      clearFlightAndReminder();
+      return;
+    }
+    Alert.alert(t("flightClearConfirmTitle"), t("flightClearConfirmMessage"), [
+      { style: "cancel", text: t("gameCancel") },
+      {
+        onPress: clearFlightAndReminder,
+        style: "destructive",
+        text: t("flightClearConfirm"),
+      },
+    ]);
+  };
+
+  const openFlightEditor = () => push("/flight/edit");
+
   const openGame = (gameId: string) => {
     captureAnalyticsEvent("home_action_open", { target: "games" });
-    router.push(`/game/${gameId}` as never);
+    push(`/game/${gameId}` as never);
   };
 
   const openHomeAction = (
@@ -141,12 +165,10 @@ export default function HomeScreen() {
   ) => {
     captureAnalyticsEvent("home_action_open", { target });
     if (href) {
-      router.push(href as never);
+      push(href as never);
       return;
     }
-    router.push(
-      target === "profile" ? "/profile" : (`/(tabs)/${target}` as never)
-    );
+    push(target === "profile" ? "/profile" : (`/(tabs)/${target}` as never));
   };
 
   const openHomeRecommendation = (articleId: string, category: string) => {
@@ -154,7 +176,7 @@ export default function HomeScreen() {
       article_id: articleId,
       category,
     });
-    router.push(`/content/${articleId}` as never);
+    push(`/content/${articleId}` as never);
   };
 
   // Games sized to the remaining flight time.
@@ -236,6 +258,7 @@ export default function HomeScreen() {
             destination={flightDestination}
             nowMs={nowMs}
             onClear={clearFlightAndReminder}
+            onEdit={openFlightEditor}
             onOpenConverter={() =>
               openHomeAction(
                 "converter",
@@ -249,9 +272,7 @@ export default function HomeScreen() {
               )
             }
             onOpenTips={() =>
-              router.push(
-                `/destinations?focus=${flightDestination.id}` as never
-              )
+              push(`/destinations?focus=${flightDestination.id}` as never)
             }
           />
           <HomeCtaRow
@@ -262,7 +283,7 @@ export default function HomeScreen() {
             })}
             onPress={() => {
               captureAnalyticsEvent("checklist_open", { source: "home" });
-              router.push("/checklist" as never);
+              push("/checklist" as never);
             }}
           />
         </HomeSection>
@@ -276,15 +297,16 @@ export default function HomeScreen() {
           <FlightCard
             destination={flightDestination}
             flight={flight}
-            landed={landed}
             nowMs={nowMs}
-            onAddFlight={() => router.push("/flight/edit")}
-            onClear={clearFlightAndReminder}
+            onAddFlight={openFlightEditor}
+            onClear={requestClearFlight}
+            onEdit={openFlightEditor}
+            phase={phase}
           />
           <HomeCtaRow
             icon="shield-checkmark-outline"
             label={t("homePreflightCta")}
-            onPress={() => router.push("/preflight")}
+            onPress={() => push("/preflight")}
           />
           <HomeCtaRow
             icon="checkbox-outline"
@@ -294,7 +316,7 @@ export default function HomeScreen() {
             })}
             onPress={() => {
               captureAnalyticsEvent("checklist_open", { source: "home" });
-              router.push("/checklist" as never);
+              push("/checklist" as never);
             }}
           />
         </HomeSection>
@@ -322,7 +344,7 @@ export default function HomeScreen() {
             <DestinationCard
               destination={flightDestination}
               onPress={() =>
-                router.push(
+                push(
                   flightDestination
                     ? (`/destinations?focus=${flightDestination.id}` as never)
                     : ("/destinations" as never)
@@ -340,7 +362,7 @@ export default function HomeScreen() {
       >
         <DailyChallengeCard
           game={challengeOfDay}
-          onPress={() => router.push(`/game/${challengeOfDay.id}` as never)}
+          onPress={() => push(`/game/${challengeOfDay.id}` as never)}
         />
       </HomeSection>
 
@@ -366,7 +388,7 @@ export default function HomeScreen() {
 
       {stats.totalGamesPlayed === 0 && (
         <HomeSection delay={320}>
-          <WelcomeCard onPress={() => router.push("/(tabs)/games" as never)} />
+          <WelcomeCard onPress={() => push("/(tabs)/games" as never)} />
         </HomeSection>
       )}
 
@@ -390,7 +412,7 @@ export default function HomeScreen() {
             markGameSeen(gameId);
             openGame(gameId);
           }}
-          renderTitle={t}
+          t={t}
           title={t("homeNewToTry")}
         />
       </HomeSection>
@@ -402,7 +424,7 @@ export default function HomeScreen() {
       >
         <GameCardRow
           items={playTogetherItems}
-          onOpenGame={(gameId) => router.push(`/game/${gameId}` as never)}
+          onOpenGame={(gameId) => push(`/game/${gameId}` as never)}
         />
       </HomeSection>
 
@@ -415,7 +437,7 @@ export default function HomeScreen() {
           <DestinationCard
             destination={flightDestination}
             onPress={() =>
-              router.push(
+              push(
                 flightDestination
                   ? (`/destinations?focus=${flightDestination.id}` as never)
                   : ("/destinations" as never)

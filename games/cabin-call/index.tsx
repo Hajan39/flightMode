@@ -8,6 +8,10 @@ import Animated, {
   withSequence,
   withTiming,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -15,6 +19,7 @@ import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
@@ -181,13 +186,25 @@ export default function CabinCallGame() {
     setPhase("countdown");
   };
 
+  // Exact time left when paused (secondsLeft is rounded up for display, so
+  // resuming from it would hand out up to a second per pause).
+  const pausedRemainingRef = useRef<number | null>(null);
+
   const pause = () => {
+    const endTime = endTimeRef.current;
+    pausedRemainingRef.current =
+      endTime === null ? null : Math.max(0, endTime - Date.now());
     endTimeRef.current = null;
     setPhase("paused");
   };
 
+  // Leaving the app (home, call, lock) pauses; the player resumes by hand.
+  useAutoPause(pause, phase === "running");
+
   const resume = () => {
-    endTimeRef.current = Date.now() + secondsLeft * 1000;
+    endTimeRef.current =
+      Date.now() + (pausedRemainingRef.current ?? secondsLeft * 1000);
+    pausedRemainingRef.current = null;
     setPhase("running");
   };
 
@@ -227,115 +244,127 @@ export default function CabinCallGame() {
   };
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.headerRow}>
-        <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[styles.bestValue, { color: theme.tint }]}>
-            {storedBest}
-          </Text>
-        </RNView>
-        <GameControls
-          isPaused={phase === "paused"}
-          onPause={phase === "running" ? pause : undefined}
-          onReset={restart}
-        />
-      </RNView>
-
-      <RNView style={styles.statsRow}>
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("ccTime")}
-          </Text>
-          <Text
-            style={[
-              styles.statValue,
-              { color: secondsLeft <= 5 ? theme.danger : theme.text },
-            ]}
-          >
-            {secondsLeft}
-          </Text>
-        </RNView>
-        <RNView
-          style={[styles.statDivider, { backgroundColor: theme.border }]}
-        />
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("ccScore")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
-        </RNView>
-      </RNView>
-
-      <Animated.View
-        style={[
-          styles.targetCard,
-          { backgroundColor: theme.card, borderColor: theme.border },
-          cardFeedbackStyle,
-        ]}
-      >
-        <Text style={[styles.targetHint, { color: theme.mutedText }]}>
-          {t("ccCrewSays")}
-        </Text>
-        <Animated.View
-          entering={FadeInDown.duration(180)}
-          key={target.id}
-          style={styles.targetContent}
-        >
-          <Ionicons color={theme.tint} name={target.icon as never} size={40} />
-          <Text style={styles.targetText}>{t(target.labelKey)}</Text>
-        </Animated.View>
-      </Animated.View>
-
-      <RNView style={styles.choiceList}>
-        {choices.map((choice) => (
-          <Pressable
-            accessibilityLabel={t(choice.labelKey)}
-            accessibilityRole="button"
-            key={choice.id}
-            onPress={() => handleChoice(choice)}
-            style={[
-              styles.choice,
-              { backgroundColor: theme.elevated, borderColor: theme.border },
-            ]}
-          >
-            <Ionicons
-              color={theme.tint}
-              name={choice.icon as never}
-              size={20}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.headerRow}>
+            <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
+              </Text>
+              <Text style={[styles.bestValue, { color: theme.tint }]}>
+                {storedBest}
+              </Text>
+            </RNView>
+            <GameControls
+              isPaused={phase === "paused"}
+              onPause={phase === "running" ? pause : undefined}
+              onReset={restart}
             />
-            <Text style={styles.choiceText}>{t(choice.labelKey)}</Text>
-          </Pressable>
-        ))}
-      </RNView>
+          </RNView>
 
-      <Text style={[styles.streakText, { color: theme.mutedText }]}>
-        {t("ccStreak", { streak })}
-      </Text>
+          <RNView style={styles.statsRow}>
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("ccTime")}
+              </Text>
+              <Text
+                style={[
+                  styles.statValue,
+                  { color: secondsLeft <= 5 ? theme.danger : theme.text },
+                ]}
+              >
+                {secondsLeft}
+              </Text>
+            </RNView>
+            <RNView
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("ccScore")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.tint }]}>
+                {score}
+              </Text>
+            </RNView>
+          </RNView>
 
-      {phase === "countdown" && <GameCountdown onComplete={begin} />}
+          <Animated.View
+            style={[
+              styles.targetCard,
+              { backgroundColor: theme.card, borderColor: theme.border },
+              cardFeedbackStyle,
+            ]}
+          >
+            <Text style={[styles.targetHint, { color: theme.mutedText }]}>
+              {t("ccCrewSays")}
+            </Text>
+            <Animated.View
+              entering={FadeInDown.duration(180)}
+              key={target.id}
+              style={styles.targetContent}
+            >
+              <Ionicons
+                color={theme.tint}
+                name={target.icon as never}
+                size={40}
+              />
+              <Text style={styles.targetText}>{t(target.labelKey)}</Text>
+            </Animated.View>
+          </Animated.View>
 
-      <GamePauseOverlay
-        onRestart={restart}
-        onResume={resume}
-        visible={phase === "paused"}
-      />
+          <RNView style={styles.choiceList}>
+            {choices.map((choice) => (
+              <Pressable
+                accessibilityLabel={t(choice.labelKey)}
+                accessibilityRole="button"
+                key={choice.id}
+                onPress={() => handleChoice(choice)}
+                style={[
+                  styles.choice,
+                  {
+                    backgroundColor: theme.elevated,
+                    borderColor: theme.border,
+                  },
+                ]}
+              >
+                <Ionicons
+                  color={theme.tint}
+                  name={choice.icon as never}
+                  size={20}
+                />
+                <Text style={styles.choiceText}>{t(choice.labelKey)}</Text>
+              </Pressable>
+            ))}
+          </RNView>
 
-      {phase === "over" && (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={restart}
-          score={score}
-          streak={progressInfo?.currentStreak}
-          subtitle={t("ccTimeUpSubtitle", { score, streak })}
-          title={t("ccTimeUp")}
+          <Text style={[styles.streakText, { color: theme.mutedText }]}>
+            {t("ccStreak", { streak })}
+          </Text>
+        </A11yOverlayContent>
+        {phase === "countdown" && <GameCountdown onComplete={begin} />}
+
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={resume}
+          visible={phase === "paused"}
         />
-      )}
-    </View>
+
+        {phase === "over" && (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={restart}
+            score={score}
+            streak={progressInfo?.currentStreak}
+            subtitle={t("ccTimeUpSubtitle", { score, streak })}
+            title={t("ccTimeUp")}
+          />
+        )}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -372,6 +401,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   root: { flex: 1, gap: 16, justifyContent: "center", padding: 20 },
+  screen: { flex: 1 },
   statBlock: { alignItems: "center", flex: 1, gap: 2, paddingVertical: 4 },
   statDivider: { height: 56, width: 1 },
   statLabel: {

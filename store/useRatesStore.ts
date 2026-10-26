@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 import {
   ratesAsOf as bundledAsOf,
@@ -17,6 +17,7 @@ import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { sanitizeErrorText } from "@/utils/errorLogging";
+import { safePersistOptions } from "@/utils/persistStorage";
 import { fetchLatestRates } from "@/utils/ratesSync";
 
 /** Rates move slowly; one refresh per half day is plenty. */
@@ -57,6 +58,11 @@ export const useRatesStore = create<RatesState>()(
       status: "idle",
 
       syncRates: async (opts) => {
+        // Before hydration lastSyncAt is null (cooldown skipped) and the sync
+        // policy is the default; wait — the bootstrap retries after loading.
+        if (!syncInputsHydrated()) {
+          return;
+        }
         const state = get();
         const networkState = useNetworkStore.getState();
         const policy = useSettingsStore.getState().syncNetworkPolicy;
@@ -109,15 +115,14 @@ export const useRatesStore = create<RatesState>()(
         }
       },
     }),
-    {
+    safePersistOptions(() => AsyncStorage, {
       name: "exchange_rates",
       partialize: (state) => ({
         lastSyncAt: state.lastSyncAt,
         rates: state.rates,
         ratesAsOf: state.ratesAsOf,
       }),
-      storage: createJSONStorage(() => AsyncStorage),
-    }
+    })
   )
 );
 
@@ -158,4 +163,12 @@ export function getRatesProvenance(
   return state.rates && state.ratesAsOf
     ? { asOf: state.ratesAsOf, live: true as const }
     : { asOf: bundledAsOf, live: false as const };
+}
+
+/** Cooldown timestamps and the sync policy are only real once both stores loaded. */
+function syncInputsHydrated() {
+  return (
+    useRatesStore.persist.hasHydrated() &&
+    useSettingsStore.persist.hasHydrated()
+  );
 }

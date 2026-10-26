@@ -1,11 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -24,6 +30,8 @@ import {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const GAP = 2;
+/** Cap system font scaling inside the fixed-size cells so digits never overflow. */
+const CELL_FONT_SCALE = 1.3;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -66,6 +74,9 @@ export default function MinesweeperGame() {
     null
   );
   const [finalScore, setFinalScore] = useState<number | null>(null);
+  /** Only set by leaving the app (no pause button: the board is untimed until the first tap). */
+  const [paused, setPaused] = useState(false);
+  const pausedAtRef = useRef<number | null>(null);
 
   const startTimeRef = useRef<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -92,9 +103,7 @@ export default function MinesweeperGame() {
 
   useEffect(() => () => stopTimer(), [stopTimer]);
 
-  const startTimer = useCallback(() => {
-    startTimeRef.current = Date.now();
-    setElapsedSeconds(0);
+  const runClock = useCallback(() => {
     timerRef.current = setInterval(() => {
       if (startTimeRef.current !== null) {
         setElapsedSeconds(
@@ -103,6 +112,32 @@ export default function MinesweeperGame() {
       }
     }, 1000);
   }, []);
+
+  const startTimer = useCallback(() => {
+    startTimeRef.current = Date.now();
+    setElapsedSeconds(0);
+    runClock();
+  }, [runClock]);
+
+  const pause = () => {
+    stopTimer();
+    pausedAtRef.current = Date.now();
+    setPaused(true);
+  };
+
+  // Leaving the app pauses the clock (the score is time-based); resuming is
+  // manual from the pause overlay.
+  useAutoPause(pause, phase === "playing" && !paused);
+
+  const resume = () => {
+    const pausedAt = pausedAtRef.current;
+    pausedAtRef.current = null;
+    if (pausedAt !== null && startTimeRef.current !== null) {
+      startTimeRef.current += Date.now() - pausedAt;
+    }
+    setPaused(false);
+    runClock();
+  };
 
   // ── Cell size ──────────────────────────────────────────────────────────────
 
@@ -122,6 +157,8 @@ export default function MinesweeperGame() {
     setFlaggedCount(0);
     setProgressInfo(null);
     setFinalScore(null);
+    setPaused(false);
+    pausedAtRef.current = null;
     startTimeRef.current = null;
   }, [stopTimer, commitBoard]);
 
@@ -210,11 +247,19 @@ export default function MinesweeperGame() {
     if (cell.isRevealed) {
       if (cell.isMine) {
         bg = theme.danger;
-        content = <Text style={styles.cellEmoji}>💣</Text>;
+        content = (
+          <Text
+            maxFontSizeMultiplier={CELL_FONT_SCALE}
+            style={styles.cellEmoji}
+          >
+            💣
+          </Text>
+        );
       } else if (cell.adjacentMines > 0) {
         bg = theme.background;
         content = (
           <Text
+            maxFontSizeMultiplier={CELL_FONT_SCALE}
             style={[
               styles.cellNumber,
               { color: NUMBER_COLORS[cell.adjacentMines] ?? theme.text },
@@ -230,7 +275,11 @@ export default function MinesweeperGame() {
     } else if (cell.isFlagged) {
       // In win state, flagged mines stay as flags
       bg = theme.elevated;
-      content = <Text style={styles.cellEmoji}>🚩</Text>;
+      content = (
+        <Text maxFontSizeMultiplier={CELL_FONT_SCALE} style={styles.cellEmoji}>
+          🚩
+        </Text>
+      );
     } else {
       // Covered
       bg = theme.elevated;
@@ -270,78 +319,87 @@ export default function MinesweeperGame() {
   // ─────────────────────────────────────────────────────────────────────────
 
   return (
-    <View style={styles.root}>
-      {/* ── Header: stats + controls ── */}
-      <RNView style={styles.header}>
-        {/* Stats */}
-        <RNView style={styles.statsRow}>
-          <RNView style={styles.statBlock}>
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("msFlags")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {flagLabel}
-            </Text>
-          </RNView>
-          <RNView
-            style={[styles.statDivider, { backgroundColor: theme.border }]}
-          />
-          <RNView style={styles.statBlock}>
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("msTime")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {timeLabel}
-            </Text>
-          </RNView>
-          <RNView
-            style={[styles.statDivider, { backgroundColor: theme.border }]}
-          />
-          <RNView style={styles.statBlock}>
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("msMines")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.tint }]}>
-              {MINE_COUNT}
-            </Text>
-          </RNView>
-        </RNView>
-
-        {/* Controls: reset only, no pause */}
-        <GameControls hidePause onReset={resetGame} />
-      </RNView>
-
-      {/* ── Board ── */}
-      <RNView style={styles.boardWrapper}>
-        <RNView style={[styles.board, { gap: GAP }]}>
-          {board.map((row, rIdx) => (
-            <RNView key={rIdx} style={[styles.boardRow, { gap: GAP }]}>
-              {row.map((cell, cIdx) => renderCell(cell, rIdx, cIdx))}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* ── Header: stats + controls ── */}
+          <RNView style={styles.header}>
+            {/* Stats */}
+            <RNView style={styles.statsRow}>
+              <RNView style={styles.statBlock}>
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("msFlags")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {flagLabel}
+                </Text>
+              </RNView>
+              <RNView
+                style={[styles.statDivider, { backgroundColor: theme.border }]}
+              />
+              <RNView style={styles.statBlock}>
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("msTime")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {timeLabel}
+                </Text>
+              </RNView>
+              <RNView
+                style={[styles.statDivider, { backgroundColor: theme.border }]}
+              />
+              <RNView style={styles.statBlock}>
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("msMines")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.tint }]}>
+                  {MINE_COUNT}
+                </Text>
+              </RNView>
             </RNView>
-          ))}
-        </RNView>
-      </RNView>
 
-      {/* ── Hint text when idle ── */}
-      {phase === "idle" && (
-        <Text style={[styles.hintText, { color: theme.mutedText }]}>
-          {t("msRevealHint")}
-        </Text>
-      )}
+            {/* Controls: reset only, no pause */}
+            <GameControls hidePause onReset={resetGame} />
+          </RNView>
 
-      {/* ── Game result overlay ── */}
-      {phase === "over" && finalScore !== null && (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={resetGame}
-          score={finalScore}
-          streak={progressInfo?.currentStreak}
-          title={outcome === "win" ? t("msYouWin") : t("msGameOver")}
+          {/* ── Board ── */}
+          <RNView style={styles.boardWrapper}>
+            <RNView style={[styles.board, { gap: GAP }]}>
+              {board.map((row, rIdx) => (
+                <RNView key={rIdx} style={[styles.boardRow, { gap: GAP }]}>
+                  {row.map((cell, cIdx) => renderCell(cell, rIdx, cIdx))}
+                </RNView>
+              ))}
+            </RNView>
+          </RNView>
+
+          {/* ── Hint text when idle ── */}
+          {phase === "idle" && (
+            <Text style={[styles.hintText, { color: theme.mutedText }]}>
+              {t("msRevealHint")}
+            </Text>
+          )}
+        </A11yOverlayContent>
+        <GamePauseOverlay
+          onRestart={resetGame}
+          onResume={resume}
+          visible={paused && phase === "playing"}
         />
-      )}
-    </View>
+
+        {/* ── Game result overlay ── */}
+        {phase === "over" && finalScore !== null && (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={resetGame}
+            score={finalScore}
+            streak={progressInfo?.currentStreak}
+            title={outcome === "win" ? t("msYouWin") : t("msGameOver")}
+          />
+        )}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -396,6 +454,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.lg,
     paddingVertical: Spacing.md,
   },
+  screen: { flex: 1 },
   statBlock: {
     alignItems: "center",
     gap: 1,

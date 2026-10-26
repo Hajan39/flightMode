@@ -16,6 +16,7 @@ import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
+import { useNetworkStore } from "@/store/useNetworkStore";
 import { useSupporterStore } from "@/store/useSupporterStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import {
@@ -23,6 +24,7 @@ import {
   fetchSupporterProducts,
   PLUS_SKU,
   restorePurchases,
+  subscribePurchaseUpdates,
   TIP_SKUS,
 } from "@/utils/billing";
 
@@ -42,6 +44,83 @@ const TIP_LABELS: Record<(typeof TIP_SKUS)[number], TranslationKey> = {
   tip_small: "plusTipSmall",
 };
 
+interface BuyButtonProps {
+  /** This product's Play sheet is opening. */
+  busy: boolean;
+  /** Another checkout is in progress. */
+  disabled: boolean;
+  label: string;
+  onPress: () => void;
+  /** Store price; missing = product unavailable. */
+  price: string | undefined;
+  theme: (typeof Colors)["dark"];
+}
+
+function BuyPlusButton({
+  busy,
+  disabled,
+  label,
+  onPress,
+  price,
+  theme,
+}: BuyButtonProps) {
+  const inactive = !price || disabled;
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ busy, disabled: inactive }}
+      disabled={inactive}
+      onPress={onPress}
+      style={[
+        styles.buy,
+        { backgroundColor: theme.tint, opacity: inactive ? 0.5 : 1 },
+      ]}
+    >
+      {busy ? (
+        <ActivityIndicator color={theme.onTint} />
+      ) : (
+        <Text style={[styles.buyText, { color: theme.onTint }]}>{label}</Text>
+      )}
+    </Pressable>
+  );
+}
+
+function TipButton({
+  busy,
+  disabled,
+  label,
+  onPress,
+  price,
+  theme,
+}: BuyButtonProps) {
+  const inactive = !price || disabled;
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ busy, disabled: inactive }}
+      disabled={inactive}
+      onPress={onPress}
+      style={[
+        styles.tip,
+        {
+          backgroundColor: theme.card,
+          borderColor: theme.border,
+          opacity: inactive ? 0.5 : 1,
+        },
+      ]}
+    >
+      <Text style={styles.tipLabel}>{label}</Text>
+      {busy ? (
+        <ActivityIndicator color={theme.tint} />
+      ) : (
+        <Text style={[styles.tipPrice, { color: theme.tint }]}>
+          {price ?? "—"}
+        </Text>
+      )}
+    </Pressable>
+  );
+}
+
 /** FlightMode Plus (one-time) + tip jar. Everything else in the app stays free. */
 export default function PlusScreen() {
   const colorScheme = useColorScheme();
@@ -52,6 +131,32 @@ export default function PlusScreen() {
   const [products, setProducts] = useState<Product[] | null>(null);
   const [restoring, setRestoring] = useState(false);
   const [restoreResult, setRestoreResult] = useState<boolean | null>(null);
+  // SKU whose Play sheet is opening / open: blocks a second purchase tap.
+  const [busySku, setBusySku] = useState<string | null>(null);
+  // Play accepted the order but the payment (cash, bank transfer) clears later.
+  const [pendingSku, setPendingSku] = useState<string | null>(null);
+  const online = useNetworkStore((s) => s.isInternetReachable) === true;
+
+  useEffect(
+    () =>
+      subscribePurchaseUpdates((productId, update) => {
+        setBusySku(null);
+        setPendingSku(update === "pending" ? productId : null);
+      }),
+    []
+  );
+
+  const buy = async (sku: string) => {
+    if (busySku) {
+      return;
+    }
+    setBusySku(sku);
+    try {
+      await buySupporterProduct(sku);
+    } finally {
+      setBusySku(null);
+    }
+  };
 
   useEffect(() => {
     captureAnalyticsEvent("support_opened", {
@@ -107,24 +212,19 @@ export default function PlusScreen() {
     );
   } else {
     purchaseBlock = (
-      <Pressable
-        accessibilityRole="button"
-        disabled={!plusPrice}
+      <BuyPlusButton
+        busy={busySku === PLUS_SKU}
+        disabled={busySku !== null}
+        label={
+          plusPrice ? t("plusBuy", { price: plusPrice }) : t("plusUnavailable")
+        }
         onPress={() =>
           // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
-          void buySupporterProduct(PLUS_SKU)
+          void buy(PLUS_SKU)
         }
-        style={[
-          styles.buy,
-          { backgroundColor: theme.tint, opacity: plusPrice ? 1 : 0.5 },
-        ]}
-      >
-        <Text style={[styles.buyText, { color: theme.onTint }]}>
-          {plusPrice
-            ? t("plusBuy", { price: plusPrice })
-            : t("plusUnavailable")}
-        </Text>
-      </Pressable>
+        price={plusPrice}
+        theme={theme}
+      />
     );
   }
 
@@ -169,6 +269,20 @@ export default function PlusScreen() {
 
         {purchaseBlock}
 
+        {pendingSku ? (
+          <Text
+            accessibilityLiveRegion="polite"
+            style={[styles.hint, { color: theme.text }]}
+          >
+            {t("plusPendingPayment")}
+          </Text>
+        ) : null}
+        {online || plus ? null : (
+          <Text style={[styles.hint, { color: theme.mutedText }]}>
+            {t("plusOfflineHint")}
+          </Text>
+        )}
+
         <Text style={[styles.sectionTitle, { color: theme.text }]}>
           {t("plusTipTitle")}
         </Text>
@@ -182,28 +296,18 @@ export default function PlusScreen() {
           style={styles.tips}
         >
           {TIP_SKUS.map((sku) => (
-            <Pressable
-              accessibilityRole="button"
-              disabled={!price(sku)}
+            <TipButton
+              busy={busySku === sku}
+              disabled={busySku !== null}
               key={sku}
+              label={t(TIP_LABELS[sku])}
               onPress={() =>
                 // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
-                void buySupporterProduct(sku)
+                void buy(sku)
               }
-              style={[
-                styles.tip,
-                {
-                  backgroundColor: theme.card,
-                  borderColor: theme.border,
-                  opacity: price(sku) ? 1 : 0.5,
-                },
-              ]}
-            >
-              <Text style={styles.tipLabel}>{t(TIP_LABELS[sku])}</Text>
-              <Text style={[styles.tipPrice, { color: theme.tint }]}>
-                {price(sku) ?? "—"}
-              </Text>
-            </Pressable>
+              price={price(sku)}
+              theme={theme}
+            />
           ))}
         </View>
 

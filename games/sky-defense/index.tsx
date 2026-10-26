@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { ZoomIn } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import { baseScheme } from "@/components/colorSchemes";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -8,6 +12,7 @@ import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -707,6 +712,9 @@ export default function SkyDefenseGame() {
   // updateProgress twice.
   const endedRef = useRef<boolean>(false);
   const isGamePaused = paused || showRestartConfirm;
+  // Leaving the app (home, call, lock) pauses the wave; the player resumes by
+  // hand. The simulation is tick-based, so there are no deadlines to shift.
+  useAutoPause(() => setPaused(true), phase === "playing");
 
   // Board origin in window coordinates. Tower placement is derived from the
   // touch's absolute pageX/pageY minus this origin — NOT from the event's
@@ -1151,299 +1159,309 @@ export default function SkyDefenseGame() {
 
   /* -- build / playing -- */
   return (
-    <View style={s.root}>
-      {/* Top controls row */}
-      <RNView style={s.topRow}>
-        <RNView style={[s.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[s.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[s.bestValue, { color: theme.tint }]}>{storedBest}</Text>
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={phase === "playing" ? () => setPaused(true) : undefined}
-          onReset={requestRestart}
-        />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={s.screen}>
+        <A11yOverlayContent style={s.root}>
+          {/* Top controls row */}
+          <RNView style={s.topRow}>
+            <RNView style={[s.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[s.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
+              </Text>
+              <Text style={[s.bestValue, { color: theme.tint }]}>
+                {storedBest}
+              </Text>
+            </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={phase === "playing" ? () => setPaused(true) : undefined}
+              onReset={requestRestart}
+            />
+          </RNView>
 
-      {/* HUD */}
-      <RNView style={s.hud}>
-        <Text style={[s.hudText, { color: theme.text }]}>❤️ {lives}</Text>
-        <Text style={[s.hudText, { color: theme.tint }]}>💰 {gold}</Text>
-        <Text style={[s.hudText, { color: theme.text }]}>🏆 {score}</Text>
-        <Text style={[s.hudText, { color: theme.mutedText }]}>
-          {t("skyDefenseWaveProgress", {
-            total: wavesRef.current.length,
-            wave: waveIdx + 1,
-          })}
-        </Text>
-        {enemies.length > 0 && (
-          <Text style={[s.hudText, { color: theme.mutedText }]}>
-            👾 {enemies.length}
-          </Text>
-        )}
-        <Pressable
-          accessibilityLabel={gameSpeed === 1 ? "Set 2x speed" : "Set 1x speed"}
-          accessibilityRole="button"
-          onPress={() => setGameSpeed((speed) => (speed === 1 ? 2 : 1))}
-          style={[
-            s.hudBtn,
-            { borderColor: gameSpeed === 2 ? theme.tint : theme.border },
-          ]}
-        >
-          <Text
-            style={[
-              s.hudText,
-              { color: gameSpeed === 2 ? theme.tint : theme.mutedText },
-            ]}
-          >
-            {gameSpeed === 1 ? "1×" : "2×"}
-          </Text>
-        </Pressable>
-      </RNView>
-
-      {/* Tower palette */}
-      <RNView style={s.palette}>
-        {TOWER_DEFS.map((d) => {
-          const selected = selectedTower === d.key;
-          const affordable = gold >= d.cost;
-          return (
+          {/* HUD */}
+          <RNView style={s.hud}>
+            <Text style={[s.hudText, { color: theme.text }]}>❤️ {lives}</Text>
+            <Text style={[s.hudText, { color: theme.tint }]}>💰 {gold}</Text>
+            <Text style={[s.hudText, { color: theme.text }]}>🏆 {score}</Text>
+            <Text style={[s.hudText, { color: theme.mutedText }]}>
+              {t("skyDefenseWaveProgress", {
+                total: wavesRef.current.length,
+                wave: waveIdx + 1,
+              })}
+            </Text>
+            {enemies.length > 0 && (
+              <Text style={[s.hudText, { color: theme.mutedText }]}>
+                👾 {enemies.length}
+              </Text>
+            )}
             <Pressable
-              accessibilityLabel={towerLabel(d.key)}
+              accessibilityLabel={
+                gameSpeed === 1 ? "Set 2x speed" : "Set 1x speed"
+              }
               accessibilityRole="button"
-              accessibilityState={{ disabled: !affordable, selected }}
-              key={d.key}
-              onPress={() => {
-                if (!affordable) {
-                  return;
-                }
-                setSelectedTower(selected ? null : d.key);
-                setSelectedPlaced(null);
-              }}
+              onPress={() => setGameSpeed((speed) => (speed === 1 ? 2 : 1))}
               style={[
-                s.paletteBtn,
+                s.hudBtn,
+                { borderColor: gameSpeed === 2 ? theme.tint : theme.border },
+              ]}
+            >
+              <Text
+                style={[
+                  s.hudText,
+                  { color: gameSpeed === 2 ? theme.tint : theme.mutedText },
+                ]}
+              >
+                {gameSpeed === 1 ? "1×" : "2×"}
+              </Text>
+            </Pressable>
+          </RNView>
+
+          {/* Tower palette */}
+          <RNView style={s.palette}>
+            {TOWER_DEFS.map((d) => {
+              const selected = selectedTower === d.key;
+              const affordable = gold >= d.cost;
+              return (
+                <Pressable
+                  accessibilityLabel={towerLabel(d.key)}
+                  accessibilityRole="button"
+                  accessibilityState={{ disabled: !affordable, selected }}
+                  key={d.key}
+                  onPress={() => {
+                    if (!affordable) {
+                      return;
+                    }
+                    setSelectedTower(selected ? null : d.key);
+                    setSelectedPlaced(null);
+                  }}
+                  style={[
+                    s.paletteBtn,
+                    {
+                      backgroundColor: selected
+                        ? `${d.color}25`
+                        : "rgba(255,255,255,0.04)",
+                      borderColor: selected
+                        ? d.color
+                        : "rgba(255,255,255,0.15)",
+                      opacity: affordable ? 1 : 0.4,
+                    },
+                  ]}
+                >
+                  <Text style={{ fontSize: 16 }}>{d.emoji}</Text>
+                  <Text style={[s.paletteCost, { color: d.color }]}>
+                    💰{d.cost}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </RNView>
+
+          {/* Board */}
+          <Pressable onPress={handleBoardPress}>
+            <RNView
+              onLayout={measureBoard}
+              onTouchMove={updatePlaceCursor}
+              onTouchStart={updatePlaceCursor}
+              ref={boardViewRef}
+              style={[
+                s.board,
                 {
-                  backgroundColor: selected
-                    ? `${d.color}25`
-                    : "rgba(255,255,255,0.04)",
-                  borderColor: selected ? d.color : "rgba(255,255,255,0.15)",
-                  opacity: affordable ? 1 : 0.4,
+                  backgroundColor:
+                    baseScheme(colorScheme) === "dark" ? "#0a1520" : "#e6eef4",
+                  height: BOARD_H,
+                  width: BOARD_W,
                 },
               ]}
             >
-              <Text style={{ fontSize: 16 }}>{d.emoji}</Text>
-              <Text style={[s.paletteCost, { color: d.color }]}>
-                💰{d.cost}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </RNView>
-
-      {/* Board */}
-      <Pressable onPress={handleBoardPress}>
-        <RNView
-          onLayout={measureBoard}
-          onTouchMove={updatePlaceCursor}
-          onTouchStart={updatePlaceCursor}
-          ref={boardViewRef}
-          style={[
-            s.board,
-            {
-              backgroundColor:
-                baseScheme(colorScheme) === "dark" ? "#0a1520" : "#e6eef4",
-              height: BOARD_H,
-              width: BOARD_W,
-            },
-          ]}
-        >
-          {/* grid lines */}
-          {Array.from({ length: COLS + 1 }).map((_, i) => (
-            <RNView
-              key={`vc${i}`}
-              style={{
-                backgroundColor: "rgba(255,255,255,0.04)",
-                height: BOARD_H,
-                left: i * CELL,
-                position: "absolute",
-                top: 0,
-                width: 1,
-              }}
-            />
-          ))}
-          {Array.from({ length: ROWS + 1 }).map((_, i) => (
-            <RNView
-              key={`hr${i}`}
-              style={{
-                backgroundColor: "rgba(255,255,255,0.04)",
-                height: 1,
-                left: 0,
-                position: "absolute",
-                top: i * CELL,
-                width: BOARD_W,
-              }}
-            />
-          ))}
-
-          {/* path */}
-          <PathOverlay />
-
-          {/* start / end markers */}
-          <RNView
-            style={{
-              alignItems: "center",
-              backgroundColor: "rgba(102,187,106,0.3)",
-              borderColor: "rgba(102,187,106,0.5)",
-              borderRadius: 10,
-              borderWidth: 1,
-              height: 20,
-              justifyContent: "center",
-              left: PATH_PX[0].x - 10,
-              position: "absolute",
-              top: PATH_PX[0].y - 10,
-              width: 20,
-            }}
-          >
-            <Text style={{ fontSize: 10 }}>▶</Text>
-          </RNView>
-          <RNView
-            style={{
-              alignItems: "center",
-              backgroundColor: "rgba(239,83,80,0.25)",
-              borderColor: "rgba(239,83,80,0.5)",
-              borderRadius: 12,
-              borderWidth: 1,
-              height: 24,
-              justifyContent: "center",
-              left: PATH_END_PX.x - 12,
-              position: "absolute",
-              top: PATH_END_PX.y - 12,
-              width: 24,
-            }}
-          >
-            <Text style={{ fontSize: 12 }}>✈️</Text>
-          </RNView>
-
-          {/* range ring for selected placed tower */}
-          {selectedPlaced !== null &&
-            towers
-              .filter((tw) => tw.id === selectedPlaced)
-              .map((tw) => (
-                <RangeRing
-                  col={tw.col}
-                  color={tdByKey[tw.kind].color}
-                  key={`sel-${tw.id}`}
-                  range={tdByKey[tw.kind].range}
-                  row={tw.row}
+              {/* grid lines */}
+              {Array.from({ length: COLS + 1 }).map((_, i) => (
+                <RNView
+                  key={`vc${i}`}
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    height: BOARD_H,
+                    left: i * CELL,
+                    position: "absolute",
+                    top: 0,
+                    width: 1,
+                  }}
+                />
+              ))}
+              {Array.from({ length: ROWS + 1 }).map((_, i) => (
+                <RNView
+                  key={`hr${i}`}
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    height: 1,
+                    left: 0,
+                    position: "absolute",
+                    top: i * CELL,
+                    width: BOARD_W,
+                  }}
                 />
               ))}
 
-          {/* range ring preview for new placement */}
-          {selectedTower && placeCursor ? (
-            <RangeRing
-              col={placeCursor.col}
-              color={tdByKey[selectedTower].color}
-              range={tdByKey[selectedTower].range}
-              row={placeCursor.row}
-            />
-          ) : null}
+              {/* path */}
+              <PathOverlay />
 
-          {/* towers */}
-          {towers.map((tw) => (
-            <TowerSprite key={tw.id} tower={tw} />
-          ))}
+              {/* start / end markers */}
+              <RNView
+                style={{
+                  alignItems: "center",
+                  backgroundColor: "rgba(102,187,106,0.3)",
+                  borderColor: "rgba(102,187,106,0.5)",
+                  borderRadius: 10,
+                  borderWidth: 1,
+                  height: 20,
+                  justifyContent: "center",
+                  left: PATH_PX[0].x - 10,
+                  position: "absolute",
+                  top: PATH_PX[0].y - 10,
+                  width: 20,
+                }}
+              >
+                <Text style={{ fontSize: 10 }}>▶</Text>
+              </RNView>
+              <RNView
+                style={{
+                  alignItems: "center",
+                  backgroundColor: "rgba(239,83,80,0.25)",
+                  borderColor: "rgba(239,83,80,0.5)",
+                  borderRadius: 12,
+                  borderWidth: 1,
+                  height: 24,
+                  justifyContent: "center",
+                  left: PATH_END_PX.x - 12,
+                  position: "absolute",
+                  top: PATH_END_PX.y - 12,
+                  width: 24,
+                }}
+              >
+                <Text style={{ fontSize: 12 }}>✈️</Text>
+              </RNView>
 
-          {/* enemies */}
-          {enemies.map((e) => (
-            <EnemySprite enemy={e} key={e.id} />
-          ))}
+              {/* range ring for selected placed tower */}
+              {selectedPlaced !== null &&
+                towers
+                  .filter((tw) => tw.id === selectedPlaced)
+                  .map((tw) => (
+                    <RangeRing
+                      col={tw.col}
+                      color={tdByKey[tw.kind].color}
+                      key={`sel-${tw.id}`}
+                      range={tdByKey[tw.kind].range}
+                      row={tw.row}
+                    />
+                  ))}
 
-          {/* bullets */}
-          {bullets.map((b) => (
-            <BulletSprite bullet={b} key={b.id} />
-          ))}
-        </RNView>
-      </Pressable>
+              {/* range ring preview for new placement */}
+              {selectedTower && placeCursor ? (
+                <RangeRing
+                  col={placeCursor.col}
+                  color={tdByKey[selectedTower].color}
+                  range={tdByKey[selectedTower].range}
+                  row={placeCursor.row}
+                />
+              ) : null}
 
-      {phase === "build" && (
-        <RNView pointerEvents="box-none" style={s.waveModalBackdrop}>
-          <RNView
-            style={[
-              s.waveModalCard,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[s.waveModalTitle, { color: theme.text }]}>
-              {waveIdx === 0
-                ? t("skyDefenseBuildHint")
-                : t("skyDefenseWaveCleared", { wave: waveIdx })}
-            </Text>
-            <Pressable
-              accessibilityLabel={t("skyDefenseStartWave", {
-                wave: waveIdx + 1,
-              })}
-              accessibilityRole="button"
-              onPress={launchWave}
-              style={[s.waveModalBtn, { backgroundColor: theme.tint }]}
-            >
-              <Text style={[s.mainBtnText, { color: theme.onTint }]}>
-                {t("skyDefenseStartWave", { wave: waveIdx + 1 })}
-              </Text>
-            </Pressable>
-          </RNView>
-        </RNView>
-      )}
+              {/* towers */}
+              {towers.map((tw) => (
+                <TowerSprite key={tw.id} tower={tw} />
+              ))}
 
-      <GamePauseOverlay
-        onRestart={requestRestart}
-        onResume={() => setPaused(false)}
-        visible={paused}
-      />
+              {/* enemies */}
+              {enemies.map((e) => (
+                <EnemySprite enemy={e} key={e.id} />
+              ))}
 
-      {showRestartConfirm ? (
-        <RNView style={s.confirmBackdrop}>
-          <RNView
-            style={[
-              s.confirmCard,
-              { backgroundColor: theme.elevated, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[s.confirmTitle, { color: theme.text }]}>
-              {t("gameRestartConfirmTitle")}
-            </Text>
-            <Text style={[s.confirmText, { color: theme.mutedText }]}>
-              {t("gameRestartConfirmMessage")}
-            </Text>
-            <RNView style={s.confirmActions}>
-              <Pressable
-                accessibilityLabel={t("gameCancel")}
-                accessibilityRole="button"
-                onPress={() => setShowRestartConfirm(false)}
+              {/* bullets */}
+              {bullets.map((b) => (
+                <BulletSprite bullet={b} key={b.id} />
+              ))}
+            </RNView>
+          </Pressable>
+
+          {phase === "build" && (
+            <RNView pointerEvents="box-none" style={s.waveModalBackdrop}>
+              <RNView
                 style={[
-                  s.confirmSecondaryBtn,
+                  s.waveModalCard,
                   { backgroundColor: theme.card, borderColor: theme.border },
                 ]}
               >
-                <Text style={[s.confirmSecondaryText, { color: theme.text }]}>
-                  {t("gameCancel")}
+                <Text style={[s.waveModalTitle, { color: theme.text }]}>
+                  {waveIdx === 0
+                    ? t("skyDefenseBuildHint")
+                    : t("skyDefenseWaveCleared", { wave: waveIdx })}
                 </Text>
-              </Pressable>
-              <Pressable
-                accessibilityLabel={t("gameRestart")}
-                accessibilityRole="button"
-                onPress={restart}
-                style={[s.confirmPrimaryBtn, { backgroundColor: theme.tint }]}
-              >
-                <Text style={[s.mainBtnText, { color: theme.onTint }]}>
-                  {t("gameRestart")}
-                </Text>
-              </Pressable>
+                <Pressable
+                  accessibilityLabel={t("skyDefenseStartWave", {
+                    wave: waveIdx + 1,
+                  })}
+                  accessibilityRole="button"
+                  onPress={launchWave}
+                  style={[s.waveModalBtn, { backgroundColor: theme.tint }]}
+                >
+                  <Text style={[s.mainBtnText, { color: theme.onTint }]}>
+                    {t("skyDefenseStartWave", { wave: waveIdx + 1 })}
+                  </Text>
+                </Pressable>
+              </RNView>
+            </RNView>
+          )}
+        </A11yOverlayContent>
+
+        <GamePauseOverlay
+          onRestart={requestRestart}
+          onResume={() => setPaused(false)}
+          visible={paused}
+        />
+
+        {showRestartConfirm ? (
+          <RNView style={s.confirmBackdrop}>
+            <RNView
+              style={[
+                s.confirmCard,
+                { backgroundColor: theme.elevated, borderColor: theme.border },
+              ]}
+            >
+              <Text style={[s.confirmTitle, { color: theme.text }]}>
+                {t("gameRestartConfirmTitle")}
+              </Text>
+              <Text style={[s.confirmText, { color: theme.mutedText }]}>
+                {t("gameRestartConfirmMessage")}
+              </Text>
+              <RNView style={s.confirmActions}>
+                <Pressable
+                  accessibilityLabel={t("gameCancel")}
+                  accessibilityRole="button"
+                  onPress={() => setShowRestartConfirm(false)}
+                  style={[
+                    s.confirmSecondaryBtn,
+                    { backgroundColor: theme.card, borderColor: theme.border },
+                  ]}
+                >
+                  <Text style={[s.confirmSecondaryText, { color: theme.text }]}>
+                    {t("gameCancel")}
+                  </Text>
+                </Pressable>
+                <Pressable
+                  accessibilityLabel={t("gameRestart")}
+                  accessibilityRole="button"
+                  onPress={restart}
+                  style={[s.confirmPrimaryBtn, { backgroundColor: theme.tint }]}
+                >
+                  <Text style={[s.mainBtnText, { color: theme.onTint }]}>
+                    {t("gameRestart")}
+                  </Text>
+                </Pressable>
+              </RNView>
             </RNView>
           </RNView>
-        </RNView>
-      ) : null}
-    </View>
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -1596,6 +1614,7 @@ const s = StyleSheet.create({
     justifyContent: "center",
     padding: 16,
   },
+  screen: { flex: 1 },
   title: { fontSize: 28, fontWeight: "900", marginBottom: 8 },
   topRow: {
     alignItems: "center",

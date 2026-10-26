@@ -3,6 +3,7 @@ import Constants from "expo-constants";
 import { useRouter } from "expo-router";
 import { type ReactNode, useEffect, useRef } from "react";
 import {
+  Alert,
   Linking,
   Pressable,
   ScrollView,
@@ -13,13 +14,15 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CurrencyPicker from "@/components/CurrencyPicker";
+import { resolveHomeCurrency } from "@/components/currencyDefault";
 import LanguageDropdown from "@/components/LanguageDropdown";
 import ThemeDropdown from "@/components/ThemeDropdown";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import { deviceCurrencyCode, POPULAR_CURRENCIES } from "@/data/currencies";
+import { POPULAR_CURRENCIES } from "@/data/currencies";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useRatesStore } from "@/store/useRatesStore";
 import {
   type SyncNetworkPolicy,
   useSettingsStore,
@@ -68,11 +71,24 @@ export default function SettingsScreen() {
   const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
   const setSyncNetworkPolicy = useSettingsStore((s) => s.setSyncNetworkPolicy);
   const homeCurrency = useSettingsStore((s) => s.homeCurrency);
+  const liveRates = useRatesStore((s) => s.rates);
   const setHomeCurrency = useSettingsStore((s) => s.setHomeCurrency);
   const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
   const setAnalyticsEnabled = useSettingsStore((s) => s.setAnalyticsEnabled);
   const hasTrackedOpenRef = useRef<boolean>(false);
   const router = useRouter();
+
+  // No mail app (common on tablets / de-Googled phones): show the address
+  // so the traveller can still write to us.
+  const openSupportMail = (subject: string) => {
+    const url = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+    Linking.openURL(url).catch(() => {
+      Alert.alert(
+        t("settingsMailUnavailableTitle"),
+        t("settingsMailUnavailableMessage", { email: SUPPORT_EMAIL })
+      );
+    });
+  };
 
   const handleSyncPolicyChange = (policy: SyncNetworkPolicy) => {
     setSyncNetworkPolicy(policy);
@@ -134,7 +150,7 @@ export default function SettingsScreen() {
             <CurrencyPicker
               chipCodes={POPULAR_CURRENCIES}
               onSelect={setHomeCurrency}
-              selected={homeCurrency ?? deviceCurrencyCode()}
+              selected={resolveHomeCurrency(homeCurrency, liveRates)}
             />
           </View>
         </SettingsSection>
@@ -261,11 +277,7 @@ export default function SettingsScreen() {
             <Pressable
               accessibilityLabel={t("settingsReportBug")}
               accessibilityRole="button"
-              onPress={() =>
-                Linking.openURL(
-                  `mailto:${SUPPORT_EMAIL}?subject=FlightMode%20Bug%20Report`
-                )
-              }
+              onPress={() => openSupportMail("FlightMode Bug Report")}
               style={({ pressed }) => [
                 styles.supportRow,
                 { borderBottomColor: theme.border, opacity: pressed ? 0.6 : 1 },
@@ -291,11 +303,7 @@ export default function SettingsScreen() {
             <Pressable
               accessibilityLabel={t("settingsSuggestFeature")}
               accessibilityRole="button"
-              onPress={() =>
-                Linking.openURL(
-                  `mailto:${SUPPORT_EMAIL}?subject=FlightMode%20Feature%20Suggestion`
-                )
-              }
+              onPress={() => openSupportMail("FlightMode Feature Suggestion")}
               style={({ pressed }) => [
                 styles.supportRow,
                 { borderBottomColor: theme.border, opacity: pressed ? 0.6 : 1 },

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 /** The slice of zustand's `persist` API needed to wait for hydration. */
 interface PersistApi {
   getOptions?: () => { name?: string };
@@ -70,7 +72,10 @@ export interface HydrationOutcome {
  * if it already has). Writing to a persisted store before hydration is lost:
  * zustand persist merges the stored state over it. If hydration fails (reported
  * via `reportHydrationResult`) or takes longer than `timeoutMs`, `fn` still runs
- * once, with `{ hydrated: false }`. Returns a cleanup that cancels a still-pending call.
+ * once, with `{ hydrated: false }` — such a caller must not write user-owned
+ * state then (it would be defaults; `safePersistOptions` drops those writes
+ * on disk anyway). Pass `timeoutMs: null` to run only after a real hydration.
+ * Returns a cleanup that cancels a still-pending call.
  */
 export function runAfterHydration(
   store: { persist: PersistApi },
@@ -129,4 +134,53 @@ export function runAfterHydration(
   }
 
   return cleanup;
+}
+
+/**
+ * Calls `fn` once every given store has really hydrated (no timeout / failure
+ * fallback: a store whose read failed never resolves). Returns a cleanup.
+ */
+export function runAfterAllHydrated(
+  stores: readonly { persist: PersistApi }[],
+  fn: () => void
+): () => void {
+  const pending = stores.filter((store) => !store.persist.hasHydrated());
+  if (pending.length === 0) {
+    fn();
+    return () => undefined;
+  }
+  let remaining = pending.length;
+  const cleanups = pending.map((store) =>
+    runAfterHydration(
+      store,
+      () => {
+        remaining -= 1;
+        if (remaining === 0) {
+          fn();
+        }
+      },
+      { timeoutMs: null }
+    )
+  );
+  return () => {
+    for (const cleanup of cleanups) {
+      cleanup();
+    }
+  };
+}
+
+/**
+ * React hook: true once all given persisted stores have really hydrated. For
+ * effects that must see persisted values (sync policy, cooldown timestamps)
+ * instead of defaults. Stores must be module singletons (read once on mount).
+ */
+export function usePersistHydrated(
+  ...stores: { persist: PersistApi }[]
+): boolean {
+  const [ready, setReady] = useState(() =>
+    stores.every((store) => store.persist.hasHydrated())
+  );
+  // biome-ignore lint/correctness/useExhaustiveDependencies: stores are module-level singletons; subscribe once on mount
+  useEffect(() => runAfterAllHydrated(stores, () => setReady(true)), []);
+  return ready;
 }

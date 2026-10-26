@@ -7,11 +7,16 @@ import Animated, {
   withSequence,
   withTiming,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useFadeIn } from "@/hooks/useFadeIn";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -212,6 +217,24 @@ export default function ReactionGame() {
     }
   };
 
+  /**
+   * Leaving the app mid-run voids the attempt in progress (a stimulus shown
+   * while away would read as a huge reaction time). Completed rounds are kept
+   * and the player taps the pad to retry the same round — never auto-resumed.
+   */
+  const interruptRound = () => {
+    if (waitTimerRef.current) {
+      clearTimeout(waitTimerRef.current);
+    }
+    if (nextRoundTimer.current) {
+      clearTimeout(nextRoundTimer.current);
+    }
+    startedAtRef.current = null;
+    setRound(results.length);
+    setPhase("idle");
+  };
+  useAutoPause(interruptRound, phase !== "idle" || results.length > 0);
+
   const restart = () => {
     if (waitTimerRef.current) {
       clearTimeout(waitTimerRef.current);
@@ -246,93 +269,98 @@ export default function ReactionGame() {
   const padTextColor = phase === "idle" ? theme.mutedText : "#fff";
 
   return (
-    <View style={styles.root}>
-      {/* ── Header controls ── */}
-      <GameControls onReset={restart} />
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* ── Header controls ── */}
+          <GameControls onReset={restart} />
 
-      {/* ── Stats ── */}
-      <View style={styles.statsRow}>
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("reactionLast")}
-          </Text>
-          <Animated.View style={lastStatAnimStyle}>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {lastMs === null ? "—" : `${lastMs}`}
-            </Text>
+          {/* ── Stats ── */}
+          <View style={styles.statsRow}>
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("reactionLast")}
+              </Text>
+              <Animated.View style={lastStatAnimStyle}>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {lastMs === null ? "—" : `${lastMs}`}
+                </Text>
+              </Animated.View>
+              {lastMs === null ? null : (
+                <Text style={[styles.statUnit, { color: theme.mutedText }]}>
+                  {t("reactionMs")}
+                </Text>
+              )}
+            </View>
+            <View
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("reactionBest")}
+              </Text>
+              <Text
+                style={[
+                  styles.statValue,
+                  { color: bestMs === null ? theme.text : theme.tint },
+                ]}
+              >
+                {bestMs === null ? "—" : `${bestMs}`}
+              </Text>
+              {bestMs === null ? null : (
+                <Text style={[styles.statUnit, { color: theme.mutedText }]}>
+                  {t("reactionMs")}
+                </Text>
+              )}
+            </View>
+          </View>
+
+          {/* ── Too early banner ── */}
+          {tooEarly ? (
+            <TooEarlyBanner
+              message={t("reactionTooEarlyMsg")}
+              theme={theme}
+              title={t("reactionTooEarlyTitle")}
+            />
+          ) : null}
+
+          {/* ── Main pad ── */}
+          <Animated.View style={[styles.padWrap, padAnimStyle]}>
+            <Pressable
+              accessibilityLabel={padLabel}
+              accessibilityRole="button"
+              onPress={handleMainPress}
+              style={[styles.pad, { backgroundColor: padColor }]}
+            >
+              <Text style={[styles.padText, { color: padTextColor }]}>
+                {padLabel}
+              </Text>
+              {round > 0 && (
+                <Text style={[styles.roundHint, { color: padTextColor }]}>
+                  {round}/{TOTAL_ROUNDS}
+                </Text>
+              )}
+            </Pressable>
           </Animated.View>
-          {lastMs === null ? null : (
-            <Text style={[styles.statUnit, { color: theme.mutedText }]}>
-              {t("reactionMs")}
-            </Text>
-          )}
-        </View>
-        <View style={[styles.statDivider, { backgroundColor: theme.border }]} />
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("reactionBest")}
-          </Text>
-          <Text
-            style={[
-              styles.statValue,
-              { color: bestMs === null ? theme.text : theme.tint },
-            ]}
-          >
-            {bestMs === null ? "—" : `${bestMs}`}
-          </Text>
-          {bestMs === null ? null : (
-            <Text style={[styles.statUnit, { color: theme.mutedText }]}>
-              {t("reactionMs")}
-            </Text>
-          )}
-        </View>
+        </A11yOverlayContent>
+        {finalScore !== null && (
+          <GameResult
+            best={decodeReactionScore(progressInfo?.best ?? storedBestScore)}
+            formatScore={(value) => `${value} ${t("reactionMs")}`}
+            isNewBest={progressInfo?.isNewBest}
+            last={
+              progressInfo?.last
+                ? decodeReactionScore(progressInfo.last)
+                : undefined
+            }
+            onPlayAgain={restart}
+            score={finalScore}
+            streak={progressInfo?.currentStreak}
+            title={t("gameReactionName")}
+          />
+        )}
       </View>
-
-      {/* ── Too early banner ── */}
-      {tooEarly ? (
-        <TooEarlyBanner
-          message={t("reactionTooEarlyMsg")}
-          theme={theme}
-          title={t("reactionTooEarlyTitle")}
-        />
-      ) : null}
-
-      {/* ── Main pad ── */}
-      <Animated.View style={[styles.padWrap, padAnimStyle]}>
-        <Pressable
-          accessibilityLabel={padLabel}
-          accessibilityRole="button"
-          onPress={handleMainPress}
-          style={[styles.pad, { backgroundColor: padColor }]}
-        >
-          <Text style={[styles.padText, { color: padTextColor }]}>
-            {padLabel}
-          </Text>
-          {round > 0 && (
-            <Text style={[styles.roundHint, { color: padTextColor }]}>
-              {round}/{TOTAL_ROUNDS}
-            </Text>
-          )}
-        </Pressable>
-      </Animated.View>
-
-      {finalScore !== null && (
-        <GameResult
-          best={decodeReactionScore(progressInfo?.best ?? storedBestScore)}
-          formatScore={(value) => `${value} ${t("reactionMs")}`}
-          isNewBest={progressInfo?.isNewBest}
-          last={
-            progressInfo?.last
-              ? decodeReactionScore(progressInfo.last)
-              : undefined
-          }
-          onPlayAgain={restart}
-          score={finalScore}
-          streak={progressInfo?.currentStreak}
-          title={t("gameReactionName")}
-        />
-      )}
-    </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -349,6 +377,7 @@ const styles = StyleSheet.create({
   padWrap: { flex: 1 },
   root: { flex: 1, gap: 16, justifyContent: "center", padding: 20 },
   roundHint: { fontSize: 14, fontWeight: "700", marginTop: 8, opacity: 0.8 },
+  screen: { flex: 1 },
   statBlock: { alignItems: "center", flex: 1, gap: 2, paddingVertical: 4 },
   statDivider: { height: 56, width: 1 },
   statLabel: {

@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
 import { Pressable, Text, View } from "react-native";
+import { pluralKey } from "@/components/plural";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -10,7 +11,7 @@ import { useAudioStore } from "@/store/useAudioStore";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
   const router = useRouter();
   const activeSoundId = useAudioStore((s) => s.activeSoundId);
   const activeLabelKey = useAudioStore((s) => s.activeLabelKey);
@@ -61,7 +62,15 @@ export default function TabLayout() {
             <Pressable
               accessibilityLabel={
                 newUnlockedCount > 0
-                  ? t("a11yProfileNewAchievements", { count: newUnlockedCount })
+                  ? t(
+                      pluralKey(language, newUnlockedCount, {
+                        few: "a11yProfileNewAchievementsFew",
+                        many: "a11yProfileNewAchievementsMany",
+                        one: "a11yProfileNewAchievementsOne",
+                        other: "a11yProfileNewAchievementsOther",
+                      }),
+                      { count: newUnlockedCount }
+                    )
                   : t("a11yOpenProfile")
               }
               accessibilityRole="button"

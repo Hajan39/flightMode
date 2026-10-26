@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -16,6 +20,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import type { MatchPlayer } from "@/hooks/useMatchPlayers";
@@ -300,6 +305,9 @@ export default function DuelEmojiFindGame() {
     setPaused(false);
   };
 
+  // Leaving the app mid-turn pauses the clock; the player resumes by hand.
+  useAutoPause(pause, phase === "playing");
+
   if (phase === "setup") {
     return (
       <PlayerSetup
@@ -320,139 +328,147 @@ export default function DuelEmojiFindGame() {
   }
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          player={current}
-          right={
-            <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-              {t("mpRoundOf", { round, total: ROUNDS })}
-            </Text>
-          }
-        />
-        <GameControls
-          onPause={phase === "playing" ? pause : undefined}
-          onReset={() => startMatch(players)}
-        />
-      </RNView>
-
-      <PlayerScoreStrip
-        activeIndex={phase === "playing" ? currentPlayer : undefined}
-        detail={(i) =>
-          phase === "roundEnd" ? `+${roundScores[i]}` : undefined
-        }
-        players={players}
-        scores={scores.map((s, i) =>
-          phase === "playing" && i === currentPlayer ? s + turnScore : s
-        )}
-      />
-
-      {phase === "playing" || phase === "countdown" ? (
-        <>
-          <RNView style={styles.hud}>
-            <Text style={[styles.timerText, { color: timerColor }]}>
-              {phase === "playing" ? `${timeLeft}s` : `${getRoundTime(round)}s`}
-            </Text>
-            <RNView
-              style={[
-                styles.targetCard,
-                { backgroundColor: theme.card, borderColor: current.color },
-              ]}
-            >
-              <Text style={[styles.findLabel, { color: theme.mutedText }]}>
-                {t("efFind")}
-              </Text>
-              <Text style={styles.targetEmoji}>
-                {phase === "playing" ? target : "❔"}
-              </Text>
-            </RNView>
-            <Text style={[styles.turnScore, { color: current.color }]}>
-              +{turnScore}
-            </Text>
-          </RNView>
-
-          <RNView style={styles.grid}>
-            {(phase === "playing" ? grid : new Array(TOTAL_CELLS).fill("")).map(
-              (emoji, i) => {
-                const found = foundCells.has(i);
-                return (
-                  <Pressable
-                    accessibilityLabel={emoji}
-                    accessibilityRole="button"
-                    disabled={phase !== "playing"}
-                    key={`cell-${i}`}
-                    onPress={() => handleCellPress(i)}
-                    style={[
-                      styles.cell,
-                      {
-                        backgroundColor: found ? theme.card : theme.elevated,
-                        borderColor: found ? theme.border : "transparent",
-                        height: cellSize,
-                        opacity: found ? 0.3 : 1,
-                        width: cellSize,
-                      },
-                    ]}
-                  >
-                    <Text style={{ fontSize: cellSize * 0.45 }}>{emoji}</Text>
-                  </Pressable>
-                );
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              player={current}
+              right={
+                <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                  {t("mpRoundOf", { round, total: ROUNDS })}
+                </Text>
               }
-            )}
+            />
+            <GameControls
+              onPause={phase === "playing" ? pause : undefined}
+              onReset={() => startMatch(players)}
+            />
           </RNView>
-        </>
-      ) : null}
 
-      {phase === "roundEnd" ? (
-        <RNView style={styles.roundEnd}>
-          <Text style={[styles.roundEndTitle, { color: theme.text }]}>
-            {t("efRoundOver", { round })}
-          </Text>
-          <Pressable
-            accessibilityLabel={
-              round >= ROUNDS ? t("efSeeResult") : t("efNextRound")
+          <PlayerScoreStrip
+            activeIndex={phase === "playing" ? currentPlayer : undefined}
+            detail={(i) =>
+              phase === "roundEnd" ? `+${roundScores[i]}` : undefined
             }
-            accessibilityRole="button"
-            onPress={() => {
-              haptic.tap();
-              handleNextRound();
-            }}
-            style={[styles.btn, { backgroundColor: theme.tint }]}
-          >
-            <Text style={[styles.btnText, { color: theme.onTint }]}>
-              {round >= ROUNDS ? t("efSeeResult") : t("efNextRound")}
-            </Text>
-          </Pressable>
-        </RNView>
-      ) : null}
+            players={players}
+            scores={scores.map((s, i) =>
+              phase === "playing" && i === currentPlayer ? s + turnScore : s
+            )}
+          />
 
-      <PassDeviceOverlay
-        hint={t("efHandoff", { seconds: getRoundTime(round) })}
-        onReady={() => setPhase("countdown")}
-        readyLabel={t("efGo")}
-        toPlayer={current}
-        visible={phase === "handoff"}
-      />
-      {phase === "countdown" ? <GameCountdown onComplete={beginTurn} /> : null}
-      <GamePauseOverlay
-        onRestart={() => {
-          setPaused(false);
-          startMatch(players);
-        }}
-        onResume={resume}
-        visible={paused}
-      />
-      {phase === "finished" ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("mpPoints")}
-          standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
-          winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
+          {phase === "playing" || phase === "countdown" ? (
+            <>
+              <RNView style={styles.hud}>
+                <Text style={[styles.timerText, { color: timerColor }]}>
+                  {phase === "playing"
+                    ? `${timeLeft}s`
+                    : `${getRoundTime(round)}s`}
+                </Text>
+                <RNView
+                  style={[
+                    styles.targetCard,
+                    { backgroundColor: theme.card, borderColor: current.color },
+                  ]}
+                >
+                  <Text style={[styles.findLabel, { color: theme.mutedText }]}>
+                    {t("efFind")}
+                  </Text>
+                  <Text style={styles.targetEmoji}>
+                    {phase === "playing" ? target : "❔"}
+                  </Text>
+                </RNView>
+                <Text style={[styles.turnScore, { color: current.color }]}>
+                  +{turnScore}
+                </Text>
+              </RNView>
+
+              <RNView style={styles.grid}>
+                {(phase === "playing"
+                  ? grid
+                  : new Array(TOTAL_CELLS).fill("")
+                ).map((emoji, i) => {
+                  const found = foundCells.has(i);
+                  return (
+                    <Pressable
+                      accessibilityLabel={emoji}
+                      accessibilityRole="button"
+                      disabled={phase !== "playing"}
+                      key={`cell-${i}`}
+                      onPress={() => handleCellPress(i)}
+                      style={[
+                        styles.cell,
+                        {
+                          backgroundColor: found ? theme.card : theme.elevated,
+                          borderColor: found ? theme.border : "transparent",
+                          height: cellSize,
+                          opacity: found ? 0.3 : 1,
+                          width: cellSize,
+                        },
+                      ]}
+                    >
+                      <Text style={{ fontSize: cellSize * 0.45 }}>{emoji}</Text>
+                    </Pressable>
+                  );
+                })}
+              </RNView>
+            </>
+          ) : null}
+
+          {phase === "roundEnd" ? (
+            <RNView style={styles.roundEnd}>
+              <Text style={[styles.roundEndTitle, { color: theme.text }]}>
+                {t("efRoundOver", { round })}
+              </Text>
+              <Pressable
+                accessibilityLabel={
+                  round >= ROUNDS ? t("efSeeResult") : t("efNextRound")
+                }
+                accessibilityRole="button"
+                onPress={() => {
+                  haptic.tap();
+                  handleNextRound();
+                }}
+                style={[styles.btn, { backgroundColor: theme.tint }]}
+              >
+                <Text style={[styles.btnText, { color: theme.onTint }]}>
+                  {round >= ROUNDS ? t("efSeeResult") : t("efNextRound")}
+                </Text>
+              </Pressable>
+            </RNView>
+          ) : null}
+        </A11yOverlayContent>
+        <PassDeviceOverlay
+          hint={t("efHandoff", { seconds: getRoundTime(round) })}
+          onReady={() => setPhase("countdown")}
+          readyLabel={t("efGo")}
+          toPlayer={current}
+          visible={phase === "handoff"}
         />
-      ) : null}
-    </View>
+        {phase === "countdown" ? (
+          <GameCountdown onComplete={beginTurn} />
+        ) : null}
+        <GamePauseOverlay
+          onRestart={() => {
+            setPaused(false);
+            startMatch(players);
+          }}
+          onResume={resume}
+          visible={paused}
+        />
+        {phase === "finished" ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("mpPoints")}
+            standings={players.map((p, i) => ({ player: p, score: scores[i] }))}
+            winnerIndex={getSoleWinnerIndex(scores.map((score) => ({ score })))}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -497,6 +513,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   roundEndTitle: { fontSize: FontSize["2xl"], fontWeight: FontWeight.black },
+  screen: { flex: 1 },
   targetCard: {
     alignItems: "center",
     borderRadius: Radius.button,

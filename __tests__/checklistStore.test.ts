@@ -6,6 +6,7 @@ import {
   getChecklistProgress,
   isChecklistComplete,
   MAX_CUSTOM_ITEM_LENGTH,
+  NO_FLIGHT_COMPLETION,
   useChecklistStore,
 } from "@/store/useChecklistStore";
 
@@ -141,5 +142,43 @@ describe("useChecklistStore", () => {
       useChecklistStore.getState().toggleItem(id);
     }
     expect(useAchievementStore.getState().checklistsCompleted).toBe(2);
+  });
+
+  test("the first flight adopts ticks made before any flight existed", () => {
+    useChecklistStore.setState({ flightId: null });
+    useChecklistStore.getState().toggleItem("doc-passport");
+    useChecklistStore.getState().resetForFlight("f9", "new_flight");
+    const s = useChecklistStore.getState();
+    expect(s.flightId).toBe("f9");
+    expect(s.checkedIds).toContain("doc-passport");
+  });
+
+  test("completing without a flight counts once, and adopting it does not recount", () => {
+    useChecklistStore.setState({ flightId: null });
+    for (const id of defaultItemIds) {
+      useChecklistStore.getState().toggleItem(id);
+    }
+    expect(useAchievementStore.getState().checklistsCompleted).toBe(1);
+    expect(useChecklistStore.getState().completedFlightId).toBe(
+      NO_FLIGHT_COMPLETION
+    );
+    useChecklistStore.getState().resetForFlight("f9", "new_flight");
+    expect(useChecklistStore.getState().completedFlightId).toBe("f9");
+    useChecklistStore.getState().toggleItem(defaultItemIds[0]);
+    useChecklistStore.getState().toggleItem(defaultItemIds[0]);
+    expect(useAchievementStore.getState().checklistsCompleted).toBe(1);
+  });
+
+  test("a manual reset cannot be used to farm the completion achievement", () => {
+    for (const id of defaultItemIds) {
+      useChecklistStore.getState().toggleItem(id);
+    }
+    expect(useAchievementStore.getState().checklistsCompleted).toBe(1);
+    useChecklistStore.getState().resetForFlight("f1", "manual");
+    expect(useChecklistStore.getState().checkedIds).toEqual([]);
+    for (const id of defaultItemIds) {
+      useChecklistStore.getState().toggleItem(id);
+    }
+    expect(useAchievementStore.getState().checklistsCompleted).toBe(1);
   });
 });

@@ -30,6 +30,9 @@ import {
   type SunMoonCell,
 } from "./logic";
 
+/** Cap system font scaling inside fixed-size board cells so text never overflows them. */
+const CELL_FONT_SCALE = 1.3;
+
 /* ================================================================
    CONSTANTS
    ================================================================ */
@@ -441,7 +444,10 @@ export default function SunMoonGame() {
                       },
                     ]}
                   >
-                    <Text style={{ fontSize: Math.floor(cellSize * 0.55) }}>
+                    <Text
+                      maxFontSizeMultiplier={CELL_FONT_SCALE}
+                      style={{ fontSize: Math.floor(cellSize * 0.55) }}
+                    >
                       {SYMBOLS[value]}
                     </Text>
                   </Pressable>

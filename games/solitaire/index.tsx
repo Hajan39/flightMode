@@ -2,6 +2,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
+  type AccessibilityActionEvent,
+  type AccessibilityActionInfo,
   type GestureResponderEvent,
   type LayoutChangeEvent,
   Pressable,
@@ -16,6 +18,10 @@ import Animated, {
   withDelay,
   withTiming,
 } from "react-native-reanimated";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -24,8 +30,10 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
+import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import {
@@ -114,6 +122,29 @@ interface DragInfo {
   pageX: number;
   pageY: number;
 }
+
+/** Screen-reader view of one card; `null` = hidden (buried in a pile). */
+interface CardA11y {
+  hint?: string;
+  label: string;
+  onActivate?: () => void;
+}
+
+const ACTIVATE: AccessibilityActionInfo[] = [{ name: "activate" }];
+
+/** Index = Suit (0 ♠, 1 ♥, 2 ♦, 3 ♣). */
+const SUIT_A11Y_KEYS: TranslationKey[] = [
+  "solA11ySpades",
+  "solA11yHearts",
+  "solA11yDiamonds",
+  "solA11yClubs",
+];
+const RANK_A11Y_KEYS: Partial<Record<number, TranslationKey>> = {
+  1: "solA11yAce",
+  11: "solA11yJack",
+  12: "solA11yQueen",
+  13: "solA11yKing",
+};
 
 interface Clock {
   pausedAt: number | null;
@@ -263,6 +294,7 @@ function formatTime(seconds: number): string {
 // ---------------------------------------------------------------------------
 
 interface CardViewProps {
+  a11y: CardA11y | null;
   backColor: string;
   backInk: string;
   card: Card;
@@ -280,6 +312,7 @@ interface CardViewProps {
 }
 
 function CardView({
+  a11y,
   backColor,
   backInk,
   card,
@@ -347,9 +380,26 @@ function CardView({
 
   const { cardW, cardH, font } = geo;
   const color = isRed(card) ? RED : BLACK;
+  const activate = a11y?.onActivate;
 
   return (
     <Animated.View
+      accessibilityActions={activate ? ACTIVATE : undefined}
+      accessibilityElementsHidden={!a11y}
+      accessibilityHint={a11y?.hint}
+      accessibilityLabel={a11y?.label}
+      accessibilityRole={activate ? "button" : "text"}
+      accessible={!!a11y}
+      importantForAccessibility={a11y ? "yes" : "no-hide-descendants"}
+      onAccessibilityAction={
+        activate
+          ? (e: AccessibilityActionEvent) => {
+              if (e.nativeEvent.actionName === "activate") {
+                activate();
+              }
+            }
+          : undefined
+      }
       style={[
         styles.card,
         { height: cardH, width: cardW },
@@ -511,6 +561,9 @@ export default function SolitaireGame() {
     setPaused(true);
     setClock((c) => (c.pausedAt ? c : { ...c, pausedAt: Date.now() }));
   };
+  // Leaving the app (home, call, lock) pauses the clock; resuming is manual.
+  useAutoPause(pause, phase === "playing" && !paused);
+
   const resume = () => {
     setPaused(false);
     setClock((c) =>
@@ -549,6 +602,15 @@ export default function SolitaireGame() {
       commit(next);
     } else {
       haptic.error();
+    }
+  };
+
+  const drawCard = () => {
+    const next = game ? draw(game) : null;
+    if (next) {
+      haptic.tap();
+      setDrop(null);
+      commit(next);
     }
   };
 
@@ -606,12 +668,7 @@ export default function SolitaireGame() {
     }
     if (!info.active) {
       if (info.isStock) {
-        const next = draw(game);
-        if (next) {
-          haptic.tap();
-          setDrop(null);
-          commit(next);
-        }
+        drawCard();
       } else if (info.from) {
         tapMove(info.from, info.cardIndex);
       }
@@ -719,6 +776,76 @@ export default function SolitaireGame() {
   // ---------------------------------------------------------------------------
 
   const faceColor = colorScheme === "light" ? FACE_LIGHT : FACE_DARK;
+
+  // Screen readers: every visible card gets a spoken label, and the cards a
+  // sighted player could tap get the same tap-to-move action (the board's
+  // single touch responder can't be reached by TalkBack / VoiceOver).
+  const a11yById = new Map<number, CardA11y>();
+  if (game) {
+    const whenIdle = (fn: () => void) => () => {
+      if (interactive) {
+        fn();
+      }
+    };
+    const moveHint = t("solA11yMoveHint");
+    const cardLabel = (card: Card, where: string) => {
+      if (!card.up) {
+        return `${t("solA11yFaceDown")}, ${where}`;
+      }
+      const rankKey = RANK_A11Y_KEYS[card.rank];
+      const name = t("solA11yCard", {
+        rank: rankKey ? t(rankKey) : RANK_LABELS[card.rank],
+        suit: t(SUIT_A11Y_KEYS[card.suit]),
+      });
+      return `${name}, ${t("solA11yFaceUp")}, ${where}`;
+    };
+    const movable = (card: Card, from: PileRef, i: number, where: string) => {
+      a11yById.set(cardId(card), {
+        hint: moveHint,
+        label: cardLabel(card, where),
+        onActivate: whenIdle(() => tapMove(from, i)),
+      });
+    };
+    const topStock = game.stock.at(-1);
+    if (topStock) {
+      a11yById.set(cardId(topStock), {
+        label: t("solA11yStock", { count: game.stock.length }),
+        onActivate: whenIdle(drawCard),
+      });
+    }
+    const topWaste = game.waste.at(-1);
+    if (topWaste) {
+      movable(
+        topWaste,
+        { kind: "waste" },
+        game.waste.length - 1,
+        t("solA11yWaste")
+      );
+    }
+    for (const [f, pile] of game.foundations.entries()) {
+      const top = pile.at(-1);
+      if (top) {
+        movable(
+          top,
+          { index: f, kind: "foundation" },
+          pile.length - 1,
+          t("solA11yFoundation", { n: f + 1 })
+        );
+      }
+    }
+    for (const [col, pile] of game.tableau.entries()) {
+      const where = t("solA11yColumn", { n: col + 1 });
+      for (const [i, card] of pile.entries()) {
+        const from: PileRef = { index: col, kind: "tableau" };
+        if (card.up && canPickUp(game, from, i)) {
+          movable(card, from, i, where);
+        } else {
+          a11yById.set(cardId(card), { label: cardLabel(card, where) });
+        }
+      }
+    }
+  }
+  const canRecycle = !!game && game.stock.length === 0 && game.waste.length > 0;
   const showAuto = !!game && canAutoComplete(game) && !autoRunning;
   const slot = { backgroundColor: theme.card, borderColor: theme.border };
 
@@ -737,202 +864,225 @@ export default function SolitaireGame() {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <RNView style={styles.topBar}>
-        <RNView style={styles.statsRow}>
-          {stat(t("solTime"), formatTime(elapsedSec(now)))}
-          {stat(t("solMoves"), String(game?.moves ?? 0))}
-          {stat(t("solScore"), String(game?.score ?? 0))}
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={() => (paused ? resume() : pause())}
-          onReset={() => {
-            resign();
-            startGame(drawCount);
-          }}
-        />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={[styles.screen, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent style={styles.container}>
+          <RNView style={styles.topBar}>
+            <RNView style={styles.statsRow}>
+              {stat(t("solTime"), formatTime(elapsedSec(now)))}
+              {stat(t("solMoves"), String(game?.moves ?? 0))}
+              {stat(t("solScore"), String(game?.score ?? 0))}
+            </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={() => (paused ? resume() : pause())}
+              onReset={() => {
+                resign();
+                startGame(drawCount);
+              }}
+            />
+          </RNView>
 
-      <RNView
-        onLayout={onBoardLayout}
-        onResponderGrant={onGrant}
-        onResponderMove={onMove}
-        onResponderRelease={onRelease}
-        onResponderTerminate={onTerminate}
-        onResponderTerminationRequest={() => !dragRef.current?.active}
-        onStartShouldSetResponder={() => interactive}
-        style={styles.board}
-      >
-        {geo && layout && game ? (
-          <RNView pointerEvents="none" style={StyleSheet.absoluteFill}>
-            {/* Empty pile slots */}
-            <RNView
+          <RNView
+            onLayout={onBoardLayout}
+            onResponderGrant={onGrant}
+            onResponderMove={onMove}
+            onResponderRelease={onRelease}
+            onResponderTerminate={onTerminate}
+            onResponderTerminationRequest={() => !dragRef.current?.active}
+            onStartShouldSetResponder={() => interactive}
+            style={styles.board}
+          >
+            {geo && layout && game ? (
+              <RNView pointerEvents="none" style={StyleSheet.absoluteFill}>
+                {/* Empty pile slots */}
+                <RNView
+                  accessibilityActions={canRecycle ? ACTIVATE : undefined}
+                  accessibilityElementsHidden={!canRecycle}
+                  accessibilityLabel={
+                    canRecycle ? t("solA11yStockEmpty") : undefined
+                  }
+                  accessibilityRole={canRecycle ? "button" : undefined}
+                  accessible={canRecycle}
+                  importantForAccessibility={
+                    canRecycle ? "yes" : "no-hide-descendants"
+                  }
+                  onAccessibilityAction={() => {
+                    if (canRecycle && interactive) {
+                      drawCard();
+                    }
+                  }}
+                  style={[
+                    styles.slot,
+                    slot,
+                    {
+                      height: geo.cardH,
+                      left: colX(geo, 0),
+                      top: 0,
+                      width: geo.cardW,
+                    },
+                  ]}
+                >
+                  {game.waste.length > 0 ? (
+                    <Ionicons
+                      color={theme.mutedText}
+                      name="refresh"
+                      size={geo.cardW * 0.5}
+                    />
+                  ) : null}
+                </RNView>
+                {[0, 1, 2, 3].map((f) => (
+                  <RNView
+                    accessibilityElementsHidden
+                    importantForAccessibility="no-hide-descendants"
+                    key={`f${f}`}
+                    style={[
+                      styles.slot,
+                      slot,
+                      {
+                        height: geo.cardH,
+                        left: colX(geo, 3 + f),
+                        top: 0,
+                        width: geo.cardW,
+                      },
+                    ]}
+                  >
+                    <RNText
+                      allowFontScaling={false}
+                      style={[
+                        styles.slotText,
+                        { color: theme.border, fontSize: geo.cardW * 0.4 },
+                      ]}
+                    >
+                      A
+                    </RNText>
+                  </RNView>
+                ))}
+                {[0, 1, 2, 3, 4, 5, 6].map((c) => (
+                  <RNView
+                    accessibilityElementsHidden
+                    importantForAccessibility="no-hide-descendants"
+                    key={`t${c}`}
+                    style={[
+                      styles.slot,
+                      slot,
+                      {
+                        height: geo.cardH,
+                        left: colX(geo, c),
+                        top: geo.tableauTop,
+                        width: geo.cardW,
+                      },
+                    ]}
+                  />
+                ))}
+
+                {/* Cards — keyed by card id so moves animate; dealKey remounts on a new deal */}
+                <RNView key={dealKey} style={StyleSheet.absoluteFill}>
+                  {layout.placed.map((p, order) => (
+                    <CardView
+                      a11y={a11yById.get(p.id) ?? null}
+                      backColor={theme.tint}
+                      backInk={theme.onTint}
+                      card={p.card}
+                      dealDelay={order * DEAL_STAGGER_MS}
+                      dragging={dragIds.includes(p.id)}
+                      dragX={dragX}
+                      dragY={dragY}
+                      drop={drop?.ids.includes(p.id) ? drop : null}
+                      faceColor={faceColor}
+                      geo={geo}
+                      key={p.id}
+                      startX={colX(geo, 0)}
+                      x={p.x}
+                      y={p.y}
+                      z={p.z}
+                    />
+                  ))}
+                </RNView>
+              </RNView>
+            ) : null}
+          </RNView>
+
+          <RNView style={styles.bottomBar}>
+            <Pressable
+              accessibilityLabel={t("solUndo")}
+              accessibilityRole="button"
+              disabled={!(interactive && game?.history.length)}
+              onPress={() => {
+                if (game?.history.length) {
+                  haptic.tap();
+                  setDrop(null);
+                  setGame(undo(game));
+                }
+              }}
               style={[
-                styles.slot,
-                slot,
+                styles.actionBtn,
                 {
-                  height: geo.cardH,
-                  left: colX(geo, 0),
-                  top: 0,
-                  width: geo.cardW,
+                  backgroundColor: theme.card,
+                  borderColor: theme.border,
+                  opacity: interactive && game?.history.length ? 1 : 0.4,
                 },
               ]}
             >
-              {game.waste.length > 0 ? (
-                <Ionicons
-                  color={theme.mutedText}
-                  name="refresh"
-                  size={geo.cardW * 0.5}
-                />
-              ) : null}
-            </RNView>
-            {[0, 1, 2, 3].map((f) => (
-              <RNView
-                key={`f${f}`}
+              <Ionicons color={theme.text} name="arrow-undo" size={18} />
+              <Text style={[styles.actionText, { color: theme.text }]}>
+                {t("solUndo")}
+              </Text>
+            </Pressable>
+            {showAuto ? (
+              <Pressable
+                accessibilityLabel={t("solAutoComplete")}
+                accessibilityRole="button"
+                disabled={!interactive}
+                onPress={() => {
+                  haptic.tap();
+                  setAutoRunning(true);
+                }}
                 style={[
-                  styles.slot,
-                  slot,
-                  {
-                    height: geo.cardH,
-                    left: colX(geo, 3 + f),
-                    top: 0,
-                    width: geo.cardW,
-                  },
+                  styles.actionBtn,
+                  { backgroundColor: theme.tint, borderColor: theme.tint },
                 ]}
               >
-                <RNText
-                  allowFontScaling={false}
-                  style={[
-                    styles.slotText,
-                    { color: theme.border, fontSize: geo.cardW * 0.4 },
-                  ]}
-                >
-                  A
-                </RNText>
-              </RNView>
-            ))}
-            {[0, 1, 2, 3, 4, 5, 6].map((c) => (
-              <RNView
-                key={`t${c}`}
-                style={[
-                  styles.slot,
-                  slot,
-                  {
-                    height: geo.cardH,
-                    left: colX(geo, c),
-                    top: geo.tableauTop,
-                    width: geo.cardW,
-                  },
-                ]}
-              />
-            ))}
-
-            {/* Cards — keyed by card id so moves animate; dealKey remounts on a new deal */}
-            <RNView key={dealKey} style={StyleSheet.absoluteFill}>
-              {layout.placed.map((p, order) => (
-                <CardView
-                  backColor={theme.tint}
-                  backInk={theme.onTint}
-                  card={p.card}
-                  dealDelay={order * DEAL_STAGGER_MS}
-                  dragging={dragIds.includes(p.id)}
-                  dragX={dragX}
-                  dragY={dragY}
-                  drop={drop?.ids.includes(p.id) ? drop : null}
-                  faceColor={faceColor}
-                  geo={geo}
-                  key={p.id}
-                  startX={colX(geo, 0)}
-                  x={p.x}
-                  y={p.y}
-                  z={p.z}
-                />
-              ))}
-            </RNView>
+                <Ionicons color={theme.onTint} name="flash" size={18} />
+                <Text style={[styles.actionText, { color: theme.onTint }]}>
+                  {t("solAutoComplete")}
+                </Text>
+              </Pressable>
+            ) : null}
           </RNView>
-        ) : null}
-      </RNView>
-
-      <RNView style={styles.bottomBar}>
-        <Pressable
-          accessibilityLabel={t("solUndo")}
-          accessibilityRole="button"
-          disabled={!(interactive && game?.history.length)}
-          onPress={() => {
-            if (game?.history.length) {
-              haptic.tap();
-              setDrop(null);
-              setGame(undo(game));
+        </A11yOverlayContent>
+        <GamePauseOverlay
+          onQuit={() => {
+            resign();
+            if (router.canGoBack()) {
+              router.back();
             }
           }}
-          style={[
-            styles.actionBtn,
-            {
-              backgroundColor: theme.card,
-              borderColor: theme.border,
-              opacity: interactive && game?.history.length ? 1 : 0.4,
-            },
-          ]}
-        >
-          <Ionicons color={theme.text} name="arrow-undo" size={18} />
-          <Text style={[styles.actionText, { color: theme.text }]}>
-            {t("solUndo")}
-          </Text>
-        </Pressable>
-        {showAuto ? (
-          <Pressable
-            accessibilityLabel={t("solAutoComplete")}
-            accessibilityRole="button"
-            disabled={!interactive}
-            onPress={() => {
-              haptic.tap();
-              setAutoRunning(true);
-            }}
-            style={[
-              styles.actionBtn,
-              { backgroundColor: theme.tint, borderColor: theme.tint },
-            ]}
-          >
-            <Ionicons color={theme.onTint} name="flash" size={18} />
-            <Text style={[styles.actionText, { color: theme.onTint }]}>
-              {t("solAutoComplete")}
-            </Text>
-          </Pressable>
-        ) : null}
-      </RNView>
-
-      <GamePauseOverlay
-        onQuit={() => {
-          resign();
-          if (router.canGoBack()) {
-            router.back();
-          }
-        }}
-        onRestart={() => {
-          resign();
-          startGame(drawCount);
-        }}
-        onResume={resume}
-        visible={paused}
-      />
-
-      {phase === "won" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.last === final.score ? undefined : result.last}
-          onPlayAgain={() => setPhase("menu")}
-          score={final.score}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          subtitle={t("solResultSubtitle", {
-            moves: final.moves,
-            time: formatTime(final.seconds),
-          })}
-          title={t("solYouWin")}
+          onRestart={() => {
+            resign();
+            startGame(drawCount);
+          }}
+          onResume={resume}
+          visible={paused}
         />
-      ) : null}
-    </View>
+
+        {phase === "won" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.last === final.score ? undefined : result.last}
+            onPlayAgain={() => setPhase("menu")}
+            score={final.score}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            subtitle={t("solResultSubtitle", {
+              moves: final.moves,
+              time: formatTime(final.seconds),
+            })}
+            title={t("solYouWin")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -1032,6 +1182,7 @@ const styles = StyleSheet.create({
     fontWeight: FontWeight.black,
     letterSpacing: -0.5,
   },
+  screen: { flex: 1 },
   slot: {
     alignItems: "center",
     borderRadius: 5,

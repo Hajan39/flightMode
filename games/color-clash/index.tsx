@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Animated, Pressable, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -382,87 +386,93 @@ export default function ColorClashGame() {
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
-    <View style={styles.root}>
-      <GameControls onReset={restart} />
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <GameControls onReset={restart} />
 
-      {/* Score / round header */}
-      {isPlaying ? (
-        <View style={styles.header}>
-          <Text style={[styles.headerLabel, { color: theme.mutedText }]}>
-            {t("colorClashScore")}
-          </Text>
-          <Text style={[styles.headerScore, { color: theme.text }]}>
-            {scoreDisplay}
-          </Text>
-          <Text style={[styles.headerRound, { color: theme.mutedText }]}>
-            {round + 1}/{TOTAL_ROUNDS}
-          </Text>
-        </View>
-      ) : null}
+          {/* Score / round header */}
+          {isPlaying ? (
+            <View style={styles.header}>
+              <Text style={[styles.headerLabel, { color: theme.mutedText }]}>
+                {t("colorClashScore")}
+              </Text>
+              <Text style={[styles.headerScore, { color: theme.text }]}>
+                {scoreDisplay}
+              </Text>
+              <Text style={[styles.headerRound, { color: theme.mutedText }]}>
+                {round + 1}/{TOTAL_ROUNDS}
+              </Text>
+            </View>
+          ) : null}
 
-      {/* Progress bar */}
-      {isPlaying ? (
-        <View style={[styles.progressTrack, { backgroundColor: theme.border }]}>
-          <Animated.View
-            style={[
-              styles.progressFill,
-              {
-                backgroundColor: theme.tint,
-                flex: progressAnim,
-              },
-            ]}
-          />
-        </View>
-      ) : null}
+          {/* Progress bar */}
+          {isPlaying ? (
+            <View
+              style={[styles.progressTrack, { backgroundColor: theme.border }]}
+            >
+              <Animated.View
+                style={[
+                  styles.progressFill,
+                  {
+                    backgroundColor: theme.tint,
+                    flex: progressAnim,
+                  },
+                ]}
+              />
+            </View>
+          ) : null}
 
-      {/* Main tap area */}
-      <Pressable
-        accessibilityLabel={tapAreaLabel}
-        accessibilityRole="button"
-        onPress={handleTap}
-        style={[styles.mainArea, { backgroundColor: bgColor }]}
-      >
-        {isIdle && finalScore === null ? (
-          <>
-            <Text style={[styles.startText, { color: theme.mutedText }]}>
-              {t("gameTapToStart")}
-            </Text>
-            <Text style={[styles.hintText, { color: theme.mutedText }]}>
-              {t("colorClashHint")}
-            </Text>
-          </>
-        ) : null}
-
-        {(phase === "playing" || phase === "feedback") && trial ? (
-          <Text
-            style={[
-              styles.wordText,
-              {
-                color: feedbackKind ? "#fff" : trial.textColor,
-              },
-            ]}
+          {/* Main tap area */}
+          <Pressable
+            accessibilityLabel={tapAreaLabel}
+            accessibilityRole="button"
+            onPress={handleTap}
+            style={[styles.mainArea, { backgroundColor: bgColor }]}
           >
-            {t(trial.word)}
-          </Text>
-        ) : null}
-      </Pressable>
+            {isIdle && finalScore === null ? (
+              <>
+                <Text style={[styles.startText, { color: theme.mutedText }]}>
+                  {t("gameTapToStart")}
+                </Text>
+                <Text style={[styles.hintText, { color: theme.mutedText }]}>
+                  {t("colorClashHint")}
+                </Text>
+              </>
+            ) : null}
 
-      {/* Result overlay */}
-      {finalScore !== null && (
-        <GameResult
-          best={progressInfo?.best ?? storedBestScore}
-          formatScore={(v) => `${v}/${TOTAL_ROUNDS}`}
-          isNewBest={progressInfo?.isNewBest}
-          last={
-            progressInfo?.last === undefined ? undefined : progressInfo.last
-          }
-          onPlayAgain={restart}
-          score={finalScore}
-          streak={progressInfo?.currentStreak}
-          title={t("gameColorClashName")}
-        />
-      )}
-    </View>
+            {(phase === "playing" || phase === "feedback") && trial ? (
+              <Text
+                style={[
+                  styles.wordText,
+                  {
+                    color: feedbackKind ? "#fff" : trial.textColor,
+                  },
+                ]}
+              >
+                {t(trial.word)}
+              </Text>
+            ) : null}
+          </Pressable>
+
+          {/* Result overlay */}
+        </A11yOverlayContent>
+        {finalScore !== null && (
+          <GameResult
+            best={progressInfo?.best ?? storedBestScore}
+            formatScore={(v) => `${v}/${TOTAL_ROUNDS}`}
+            isNewBest={progressInfo?.isNewBest}
+            last={
+              progressInfo?.last === undefined ? undefined : progressInfo.last
+            }
+            onPlayAgain={restart}
+            score={finalScore}
+            streak={progressInfo?.currentStreak}
+            title={t("gameColorClashName")}
+          />
+        )}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -511,6 +521,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   root: { flex: 1, gap: 12, padding: 20 },
+  screen: { flex: 1 },
   startText: {
     fontSize: 22,
     fontWeight: "900",

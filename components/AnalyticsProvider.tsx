@@ -53,33 +53,40 @@ export function AnalyticsBootstrap() {
 
   useEffect(
     () =>
-      // Count the open only after persisted settings loaded: an earlier write
-      // is overwritten by hydration (appOpenCount would stay stuck at 1, so
-      // the rating dialog and second_session_started never happen).
-      runAfterHydration(useSettingsStore, () => {
-        // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref flips to true below; this guards StrictMode/effect re-runs
-        if (hasTrackedAppOpenRef.current) {
-          return;
-        }
-        hasTrackedAppOpenRef.current = true;
+      // Count the open only after persisted settings really loaded: an
+      // earlier write is overwritten by hydration (appOpenCount would stay
+      // stuck at 1, so the rating dialog and second_session_started never
+      // happen), and after a failed read the in-memory settings are defaults
+      // (writing them would re-show onboarding, drop the language and
+      // re-enable analytics for an opted-out user). Hence no timeout fallback.
+      runAfterHydration(
+        useSettingsStore,
+        ({ hydrated }) => {
+          // The ref guards StrictMode / effect re-runs.
+          if (!hydrated || hasTrackedAppOpenRef.current) {
+            return;
+          }
+          hasTrackedAppOpenRef.current = true;
 
-        const settings = useSettingsStore.getState();
-        const appOpenCount = settings.incrementAppOpenCount();
+          const settings = useSettingsStore.getState();
+          const appOpenCount = settings.incrementAppOpenCount();
 
-        captureAnalyticsEvent("app_open", {
-          app_open_count: appOpenCount,
-          is_first_launch: settings.isFirstLaunch,
-          is_returning_user: appOpenCount > 1,
-          language: settings.language ?? "system",
-          theme_mode: settings.themeMode,
-        });
-
-        if (appOpenCount === 2) {
-          captureAnalyticsEvent("second_session_started", {
+          captureAnalyticsEvent("app_open", {
+            app_open_count: appOpenCount,
+            is_first_launch: settings.isFirstLaunch,
+            is_returning_user: appOpenCount > 1,
             language: settings.language ?? "system",
+            theme_mode: settings.themeMode,
           });
-        }
-      }),
+
+          if (appOpenCount === 2) {
+            captureAnalyticsEvent("second_session_started", {
+              language: settings.language ?? "system",
+            });
+          }
+        },
+        { timeoutMs: null }
+      ),
     []
   );
 

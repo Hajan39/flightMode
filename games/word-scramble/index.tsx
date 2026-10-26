@@ -2,6 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Animated, Pressable, View as RNView, StyleSheet } from "react-native";
 import ReAnimated from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -11,12 +15,16 @@ import Colors from "@/constants/Colors";
 import { Radius, Shadow, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useAnimatedPress } from "@/hooks/useAnimatedPress";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 
 import { SCRAMBLE_WORDS } from "./words";
+
+/** Cap system font scaling inside fixed-size board cells so text never overflows them. */
+const CELL_FONT_SCALE = 1.3;
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -108,6 +116,7 @@ function ScrambleTile({ tile, disabled, onPress, theme }: ScrambleTileProps) {
       ]}
     >
       <Text
+        maxFontSizeMultiplier={CELL_FONT_SCALE}
         style={[
           styles.tileLetter,
           { color: tile.used ? theme.mutedText : theme.onTint },
@@ -468,6 +477,9 @@ export default function WordScrambleGame() {
     setPhase("paused");
   }, [phase, stopTimer]);
 
+  // Leaving the app (home, call, lock) pauses the round; resuming is manual.
+  useAutoPause(handlePause, phase === "playing");
+
   const handleResume = useCallback(() => {
     if (phase !== "paused") {
       return;
@@ -546,218 +558,233 @@ export default function WordScrambleGame() {
   // ─── Playing / Paused / Flash screens ────────────────────────────────────────
 
   return (
-    <View style={styles.root}>
-      {/* Header row */}
-      <RNView style={styles.headerRow}>
-        <RNView style={styles.headerStats}>
-          {/* Round indicator */}
-          <RNView style={[styles.statPill, { backgroundColor: theme.card }]}>
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("wsRound")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {roundIndex + 1}
-              <Text style={[styles.statTotal, { color: theme.mutedText }]}>
-                /{ROUND_COUNT}
-              </Text>
-            </Text>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* Header row */}
+          <RNView style={styles.headerRow}>
+            <RNView style={styles.headerStats}>
+              {/* Round indicator */}
+              <RNView
+                style={[styles.statPill, { backgroundColor: theme.card }]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("wsRound")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {roundIndex + 1}
+                  <Text style={[styles.statTotal, { color: theme.mutedText }]}>
+                    /{ROUND_COUNT}
+                  </Text>
+                </Text>
+              </RNView>
+              {/* Score */}
+              <RNView
+                style={[styles.statPill, { backgroundColor: theme.card }]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("wsScore").toUpperCase()}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.tint }]}>
+                  {score}
+                </Text>
+              </RNView>
+            </RNView>
+
+            <GameControls
+              isPaused={phase === "paused"}
+              onPause={phase === "playing" ? handlePause : undefined}
+              onReset={handleRestart}
+            />
           </RNView>
-          {/* Score */}
-          <RNView style={[styles.statPill, { backgroundColor: theme.card }]}>
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("wsScore").toUpperCase()}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.tint }]}>
-              {score}
-            </Text>
-          </RNView>
-        </RNView>
 
-        <GameControls
-          isPaused={phase === "paused"}
-          onPause={phase === "playing" ? handlePause : undefined}
-          onReset={handleRestart}
-        />
-      </RNView>
-
-      {/* Timer bar */}
-      <RNView
-        style={[styles.timerTrack, { backgroundColor: theme.progressTrack }]}
-      >
-        <RNView
-          style={[
-            styles.timerFill,
-            {
-              backgroundColor: timerColor,
-              width: `${Math.round(timerProgress * 100)}%` as `${number}%`,
-            },
-          ]}
-        />
-      </RNView>
-
-      {/* Timer seconds */}
-      <Text style={[styles.timerText, { color: timerColor }]}>
-        {Math.ceil(timeRemaining)}s
-      </Text>
-
-      {/* Flash feedback */}
-      {isCorrectFlash || isTimeUpFlash ? (
-        <RNView
-          style={[
-            styles.flashBanner,
-            {
-              backgroundColor: isCorrectFlash
-                ? theme.successSurface
-                : theme.dangerSurface,
-              borderColor: isCorrectFlash
-                ? theme.successBorder
-                : theme.dangerBorder,
-            },
-          ]}
-        >
-          <Text
+          {/* Timer bar */}
+          <RNView
             style={[
-              styles.flashText,
-              {
-                color: isCorrectFlash ? theme.successBorder : theme.danger,
-              },
+              styles.timerTrack,
+              { backgroundColor: theme.progressTrack },
             ]}
           >
-            {isCorrectFlash ? t("wsCorrect") : t("wsTimeUp")}
-          </Text>
-        </RNView>
-      ) : null}
-
-      {/* Hint text */}
-      {phase === "playing" && (
-        <Text style={[styles.hintText, { color: theme.mutedText }]}>
-          {t("wsTapLetters")}
-        </Text>
-      )}
-
-      {/* Scrambled letter tiles */}
-      <Animated.View
-        style={[
-          styles.tilesContainer,
-          {
-            opacity: tilesAnim,
-            transform: [
-              {
-                scale: tilesAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0.92, 1],
-                }),
-              },
-            ],
-          },
-        ]}
-      >
-        {tiles.map((tile) => (
-          <ScrambleTile
-            disabled={tile.used || phase !== "playing"}
-            key={tile.id}
-            onPress={() => handleTileTap(tile.id)}
-            theme={theme}
-            tile={tile}
-          />
-        ))}
-      </Animated.View>
-
-      {/* Answer boxes */}
-      <Animated.View
-        style={[styles.answerContainer, { transform: [{ scale: solvedAnim }] }]}
-      >
-        {currentWord.split("").map((_, i) => {
-          const filled = answer[i];
-          let boxBg = theme.surface;
-          let boxBorder = theme.border;
-          let letterColor = theme.border;
-          if (filled) {
-            boxBg = isCorrectFlash ? theme.successSurface : theme.elevated;
-            boxBorder = isCorrectFlash ? theme.successBorder : theme.tint;
-            letterColor = isCorrectFlash ? theme.successBorder : theme.text;
-          }
-          return (
             <RNView
-              key={i}
               style={[
-                styles.answerBox,
+                styles.timerFill,
                 {
-                  backgroundColor: boxBg,
-                  borderColor: boxBorder,
+                  backgroundColor: timerColor,
+                  width: `${Math.round(timerProgress * 100)}%` as `${number}%`,
+                },
+              ]}
+            />
+          </RNView>
+
+          {/* Timer seconds */}
+          <Text style={[styles.timerText, { color: timerColor }]}>
+            {Math.ceil(timeRemaining)}s
+          </Text>
+
+          {/* Flash feedback */}
+          {isCorrectFlash || isTimeUpFlash ? (
+            <RNView
+              style={[
+                styles.flashBanner,
+                {
+                  backgroundColor: isCorrectFlash
+                    ? theme.successSurface
+                    : theme.dangerSurface,
+                  borderColor: isCorrectFlash
+                    ? theme.successBorder
+                    : theme.dangerBorder,
                 },
               ]}
             >
               <Text
                 style={[
-                  styles.answerLetter,
+                  styles.flashText,
                   {
-                    color: letterColor,
+                    color: isCorrectFlash ? theme.successBorder : theme.danger,
                   },
                 ]}
               >
-                {filled ? filled.letter : "_"}
+                {isCorrectFlash ? t("wsCorrect") : t("wsTimeUp")}
               </Text>
             </RNView>
-          );
-        })}
-      </Animated.View>
+          ) : null}
 
-      {/* Action buttons: Backspace + Skip */}
-      <RNView style={styles.actionsRow}>
-        <Pressable
-          accessibilityLabel={t("a11yBackspace")}
-          accessibilityRole="button"
-          disabled={phase !== "playing" || answer.length === 0}
-          onPress={handleBackspace}
-          style={[
-            styles.actionBtn,
-            {
-              backgroundColor: theme.card,
-              borderColor: theme.border,
-              opacity: phase !== "playing" || answer.length === 0 ? 0.4 : 1,
-            },
-          ]}
-        >
-          <Text style={[styles.actionBtnText, { color: theme.text }]}>⌫</Text>
-        </Pressable>
+          {/* Hint text */}
+          {phase === "playing" && (
+            <Text style={[styles.hintText, { color: theme.mutedText }]}>
+              {t("wsTapLetters")}
+            </Text>
+          )}
 
-        <Pressable
-          accessibilityLabel={t("wsSkip")}
-          accessibilityRole="button"
-          disabled={phase !== "playing" || skipsRemaining <= 0}
-          onPress={handleSkip}
-          style={[
-            styles.actionBtn,
-            styles.skipBtn,
-            {
-              backgroundColor: theme.card,
-              borderColor: theme.border,
-              opacity: phase !== "playing" || skipsRemaining <= 0 ? 0.4 : 1,
-            },
-          ]}
-        >
-          <Text style={[styles.actionBtnText, { color: theme.mutedText }]}>
-            {t("wsSkip")}
+          {/* Scrambled letter tiles */}
+          <Animated.View
+            style={[
+              styles.tilesContainer,
+              {
+                opacity: tilesAnim,
+                transform: [
+                  {
+                    scale: tilesAnim.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [0.92, 1],
+                    }),
+                  },
+                ],
+              },
+            ]}
+          >
+            {tiles.map((tile) => (
+              <ScrambleTile
+                disabled={tile.used || phase !== "playing"}
+                key={tile.id}
+                onPress={() => handleTileTap(tile.id)}
+                theme={theme}
+                tile={tile}
+              />
+            ))}
+          </Animated.View>
+
+          {/* Answer boxes */}
+          <Animated.View
+            style={[
+              styles.answerContainer,
+              { transform: [{ scale: solvedAnim }] },
+            ]}
+          >
+            {currentWord.split("").map((_, i) => {
+              const filled = answer[i];
+              let boxBg = theme.surface;
+              let boxBorder = theme.border;
+              let letterColor = theme.border;
+              if (filled) {
+                boxBg = isCorrectFlash ? theme.successSurface : theme.elevated;
+                boxBorder = isCorrectFlash ? theme.successBorder : theme.tint;
+                letterColor = isCorrectFlash ? theme.successBorder : theme.text;
+              }
+              return (
+                <RNView
+                  key={i}
+                  style={[
+                    styles.answerBox,
+                    {
+                      backgroundColor: boxBg,
+                      borderColor: boxBorder,
+                    },
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.answerLetter,
+                      {
+                        color: letterColor,
+                      },
+                    ]}
+                  >
+                    {filled ? filled.letter : "_"}
+                  </Text>
+                </RNView>
+              );
+            })}
+          </Animated.View>
+
+          {/* Action buttons: Backspace + Skip */}
+          <RNView style={styles.actionsRow}>
+            <Pressable
+              accessibilityLabel={t("a11yBackspace")}
+              accessibilityRole="button"
+              disabled={phase !== "playing" || answer.length === 0}
+              onPress={handleBackspace}
+              style={[
+                styles.actionBtn,
+                {
+                  backgroundColor: theme.card,
+                  borderColor: theme.border,
+                  opacity: phase !== "playing" || answer.length === 0 ? 0.4 : 1,
+                },
+              ]}
+            >
+              <Text style={[styles.actionBtnText, { color: theme.text }]}>
+                ⌫
+              </Text>
+            </Pressable>
+
+            <Pressable
+              accessibilityLabel={t("wsSkip")}
+              accessibilityRole="button"
+              disabled={phase !== "playing" || skipsRemaining <= 0}
+              onPress={handleSkip}
+              style={[
+                styles.actionBtn,
+                styles.skipBtn,
+                {
+                  backgroundColor: theme.card,
+                  borderColor: theme.border,
+                  opacity: phase !== "playing" || skipsRemaining <= 0 ? 0.4 : 1,
+                },
+              ]}
+            >
+              <Text style={[styles.actionBtnText, { color: theme.mutedText }]}>
+                {t("wsSkip")}
+              </Text>
+              <Text style={[styles.skipCount, { color: theme.tint }]}>
+                {skipsRemaining}
+              </Text>
+            </Pressable>
+          </RNView>
+
+          {/* Skips remaining label */}
+          <Text style={[styles.skipsLabel, { color: theme.mutedText }]}>
+            {t("wsSkipsLeft", { n: skipsRemaining })}
           </Text>
-          <Text style={[styles.skipCount, { color: theme.tint }]}>
-            {skipsRemaining}
-          </Text>
-        </Pressable>
-      </RNView>
-
-      {/* Skips remaining label */}
-      <Text style={[styles.skipsLabel, { color: theme.mutedText }]}>
-        {t("wsSkipsLeft", { n: skipsRemaining })}
-      </Text>
-
-      {/* Pause overlay */}
-      <GamePauseOverlay
-        onRestart={handleRestart}
-        onResume={handleResume}
-        visible={phase === "paused"}
-      />
-    </View>
+        </A11yOverlayContent>
+        {/* Pause overlay */}
+        <GamePauseOverlay
+          onRestart={handleRestart}
+          onResume={handleResume}
+          visible={phase === "paused"}
+        />
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -865,6 +892,7 @@ const styles = StyleSheet.create({
     gap: Spacing.md,
     padding: Spacing.lg,
   },
+  screen: { flex: 1 },
   skipBtn: {
     paddingHorizontal: Spacing["2xl"],
   },

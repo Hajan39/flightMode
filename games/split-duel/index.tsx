@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { View as RNView, StyleSheet } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import { MatchResult, PlayerSetup } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
@@ -334,60 +338,65 @@ export default function SplitDuelGame() {
   });
 
   return (
-    <View style={styles.root}>
-      {/* Top player faces the other way — rotate their whole pane. */}
-      <RNView style={[styles.half, styles.rotated]}>
-        <DuelPane {...paneProps(1)} />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* Top player faces the other way — rotate their whole pane. */}
+          <RNView style={[styles.half, styles.rotated]}>
+            <DuelPane {...paneProps(1)} />
+          </RNView>
 
-      <RNView
-        style={[
-          styles.divider,
-          { backgroundColor: theme.surface, borderColor: theme.border },
-        ]}
-      >
-        <Text
-          style={[
-            styles.roundText,
-            { color: theme.mutedText, transform: [{ rotate: "180deg" }] },
-          ]}
-        >
-          {t("mpRoundOf", {
-            round: Math.min(roundIndex + 1, MAX_ROUNDS),
-            total: MAX_ROUNDS,
-          })}
-        </Text>
-        <GameControls onReset={() => startMatch(players)} />
-        <Text style={[styles.roundText, { color: theme.mutedText }]}>
-          {t("mpRoundOf", {
-            round: Math.min(roundIndex + 1, MAX_ROUNDS),
-            total: MAX_ROUNDS,
-          })}
-        </Text>
-      </RNView>
+          <RNView
+            style={[
+              styles.divider,
+              { backgroundColor: theme.surface, borderColor: theme.border },
+            ]}
+          >
+            <Text
+              style={[
+                styles.roundText,
+                { color: theme.mutedText, transform: [{ rotate: "180deg" }] },
+              ]}
+            >
+              {t("mpRoundOf", {
+                round: Math.min(roundIndex + 1, MAX_ROUNDS),
+                total: MAX_ROUNDS,
+              })}
+            </Text>
+            <GameControls onReset={() => startMatch(players)} />
+            <Text style={[styles.roundText, { color: theme.mutedText }]}>
+              {t("mpRoundOf", {
+                round: Math.min(roundIndex + 1, MAX_ROUNDS),
+                total: MAX_ROUNDS,
+              })}
+            </Text>
+          </RNView>
 
-      <RNView style={styles.half}>
-        <DuelPane {...paneProps(0)} />
-      </RNView>
-
-      {phase === "done" ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("mpWinsLabel")}
-          standings={players.map((p, i) => ({
-            detail:
-              bestReaction[i] === null
-                ? undefined
-                : t("sdFastest", { ms: Math.round(bestReaction[i] as number) }),
-            player: p,
-            score: wins[i],
-          }))}
-          winnerIndex={getSoleWinnerIndex(wins.map((score) => ({ score })))}
-        />
-      ) : null}
-    </View>
+          <RNView style={styles.half}>
+            <DuelPane {...paneProps(0)} />
+          </RNView>
+        </A11yOverlayContent>
+        {phase === "done" ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("mpWinsLabel")}
+            standings={players.map((p, i) => ({
+              detail:
+                bestReaction[i] === null
+                  ? undefined
+                  : t("sdFastest", {
+                      ms: Math.round(bestReaction[i] as number),
+                    }),
+              player: p,
+              score: wins[i],
+            }))}
+            winnerIndex={getSoleWinnerIndex(wins.map((score) => ({ score })))}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -405,4 +414,5 @@ const styles = StyleSheet.create({
   root: { flex: 1, gap: Spacing.sm, padding: Spacing.sm },
   rotated: { transform: [{ rotate: "180deg" }] },
   roundText: { ...TextStyle.chipLabel },
+  screen: { flex: 1 },
 });

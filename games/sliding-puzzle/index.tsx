@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -9,6 +13,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -145,8 +150,10 @@ export default function SlidingPuzzleGame() {
     }
     const interval = setInterval(() => {
       setElapsedSeconds(
-        pausedAccumulatedRef.current +
-          Math.floor((Date.now() - startTimeRef.current) / 1000)
+        Math.floor(
+          pausedAccumulatedRef.current +
+            (Date.now() - startTimeRef.current) / 1000
+        )
       );
     }, 500);
     return () => clearInterval(interval);
@@ -174,11 +181,13 @@ export default function SlidingPuzzleGame() {
   }, []);
 
   const handlePause = useCallback(() => {
-    pausedAccumulatedRef.current += Math.floor(
-      (Date.now() - startTimeRef.current) / 1000
-    );
+    // Exact seconds (floored only when read) so pauses never drop time.
+    pausedAccumulatedRef.current += (Date.now() - startTimeRef.current) / 1000;
     setPhase("paused");
   }, []);
+
+  // Leaving the app (home, call, lock) pauses the clock; resuming is manual.
+  useAutoPause(handlePause, phase === "playing");
 
   const handleResume = useCallback(() => {
     startTimeRef.current = Date.now();
@@ -213,9 +222,10 @@ export default function SlidingPuzzleGame() {
 
       if (isSolved(next) && !solvedRef.current) {
         solvedRef.current = true;
-        const winElapsed =
+        const winElapsed = Math.floor(
           pausedAccumulatedRef.current +
-          Math.floor((Date.now() - startTimeRef.current) / 1000);
+            (Date.now() - startTimeRef.current) / 1000
+        );
         setElapsedSeconds(winElapsed);
         const finalScore = computeScore(nextMoves, winElapsed);
         setScore(finalScore);
@@ -266,123 +276,128 @@ export default function SlidingPuzzleGame() {
   const interactive = phase === "playing";
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      {/* Top bar: stats + controls */}
-      <RNView style={styles.topBar}>
-        <RNView style={styles.statsRow}>
+    <A11yOverlayScope>
+      <View style={[styles.screen, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent style={styles.container}>
+          {/* Top bar: stats + controls */}
+          <RNView style={styles.topBar}>
+            <RNView style={styles.statsRow}>
+              <RNView
+                style={[
+                  styles.statBox,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("spMoves")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {moves}
+                </Text>
+              </RNView>
+              <RNView
+                style={[
+                  styles.statBox,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                  {t("spTime")}
+                </Text>
+                <Text style={[styles.statValue, { color: theme.text }]}>
+                  {formatTime(elapsedSeconds)}
+                </Text>
+              </RNView>
+            </RNView>
+            <GameControls
+              isPaused={phase === "paused"}
+              onPause={handlePause}
+              onReset={prepareBoard}
+            />
+          </RNView>
+
+          {/* Grid */}
           <RNView
             style={[
-              styles.statBox,
-              { backgroundColor: theme.card, borderColor: theme.border },
+              styles.grid,
+              {
+                backgroundColor: theme.surface,
+                borderColor: theme.border,
+                gap: GAP,
+                padding: PADDING,
+                width: gridWidth,
+              },
             ]}
           >
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("spMoves")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {moves}
-            </Text>
+            {Array.from({ length: SIZE }, (_, row) => (
+              <RNView key={row} style={[styles.gridRow, { gap: GAP }]}>
+                {Array.from({ length: SIZE }, (_unused, col) => {
+                  const idx = row * SIZE + col;
+                  const value = board[idx];
+                  const isEmpty = value === EMPTY;
+                  return (
+                    <Pressable
+                      disabled={isEmpty || !interactive}
+                      key={col}
+                      onPress={() => handleTilePress(idx)}
+                      style={[
+                        styles.cell,
+                        {
+                          backgroundColor: isEmpty ? "transparent" : theme.tint,
+                          borderColor: theme.border,
+                          borderRadius: Radius.sm,
+                          borderWidth: isEmpty ? 1 : 0,
+                          height: cellSize,
+                          width: cellSize,
+                        },
+                      ]}
+                    >
+                      {isEmpty ? null : (
+                        <Text
+                          style={[styles.cellText, { color: theme.onTint }]}
+                        >
+                          {value}
+                        </Text>
+                      )}
+                    </Pressable>
+                  );
+                })}
+              </RNView>
+            ))}
           </RNView>
-          <RNView
-            style={[
-              styles.statBox,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-              {t("spTime")}
-            </Text>
-            <Text style={[styles.statValue, { color: theme.text }]}>
-              {formatTime(elapsedSeconds)}
-            </Text>
-          </RNView>
-        </RNView>
-        <GameControls
-          isPaused={phase === "paused"}
-          onPause={handlePause}
-          onReset={prepareBoard}
+
+          {/* Hint */}
+          <Text style={[styles.hint, { color: theme.mutedText }]}>
+            {t("rulesSlidingPuzzle")}
+          </Text>
+        </A11yOverlayContent>
+        {/* Countdown overlay */}
+        {phase === "countdown" ? (
+          <GameCountdown onComplete={onCountdownComplete} />
+        ) : null}
+
+        {/* Pause overlay */}
+        <GamePauseOverlay
+          onRestart={prepareBoard}
+          onResume={handleResume}
+          visible={phase === "paused"}
         />
-      </RNView>
 
-      {/* Grid */}
-      <RNView
-        style={[
-          styles.grid,
-          {
-            backgroundColor: theme.surface,
-            borderColor: theme.border,
-            gap: GAP,
-            padding: PADDING,
-            width: gridWidth,
-          },
-        ]}
-      >
-        {Array.from({ length: SIZE }, (_, row) => (
-          <RNView key={row} style={[styles.gridRow, { gap: GAP }]}>
-            {Array.from({ length: SIZE }, (_unused, col) => {
-              const idx = row * SIZE + col;
-              const value = board[idx];
-              const isEmpty = value === EMPTY;
-              return (
-                <Pressable
-                  disabled={isEmpty || !interactive}
-                  key={col}
-                  onPress={() => handleTilePress(idx)}
-                  style={[
-                    styles.cell,
-                    {
-                      backgroundColor: isEmpty ? "transparent" : theme.tint,
-                      borderColor: theme.border,
-                      borderRadius: Radius.sm,
-                      borderWidth: isEmpty ? 1 : 0,
-                      height: cellSize,
-                      width: cellSize,
-                    },
-                  ]}
-                >
-                  {isEmpty ? null : (
-                    <Text style={[styles.cellText, { color: theme.onTint }]}>
-                      {value}
-                    </Text>
-                  )}
-                </Pressable>
-              );
-            })}
-          </RNView>
-        ))}
-      </RNView>
-
-      {/* Hint */}
-      <Text style={[styles.hint, { color: theme.mutedText }]}>
-        {t("rulesSlidingPuzzle")}
-      </Text>
-
-      {/* Countdown overlay */}
-      {phase === "countdown" ? (
-        <GameCountdown onComplete={onCountdownComplete} />
-      ) : null}
-
-      {/* Pause overlay */}
-      <GamePauseOverlay
-        onRestart={prepareBoard}
-        onResume={handleResume}
-        visible={phase === "paused"}
-      />
-
-      {/* Result overlay */}
-      {phase === "over" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.last === score ? undefined : result.last}
-          onPlayAgain={prepareBoard}
-          score={score}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          subtitle={`${moves} ${t("spMoves")} · ${formatTime(elapsedSeconds)}`}
-          title={t("spSolved")}
-        />
-      ) : null}
-    </View>
+        {/* Result overlay */}
+        {phase === "over" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.last === score ? undefined : result.last}
+            onPlayAgain={prepareBoard}
+            score={score}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            subtitle={`${moves} ${t("spMoves")} · ${formatTime(elapsedSeconds)}`}
+            title={t("spSolved")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -430,6 +445,7 @@ const styles = StyleSheet.create({
     gap: Spacing.lg,
     paddingHorizontal: Spacing["2xl"],
   },
+  screen: { flex: 1 },
   startBtn: {
     borderRadius: Radius.button,
     marginTop: Spacing.sm,

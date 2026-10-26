@@ -7,6 +7,10 @@ import {
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import {
   MatchResult,
@@ -493,137 +497,143 @@ export default function CrossAirRadarGame() {
     const selectedCells =
       activePlacements.find((p) => p.id === selectedShip)?.cells ?? [];
     return (
-      <View style={styles.container}>
-        <RNView style={styles.topRow}>
-          <TurnBanner
-            compact
-            label={`${me.name} · ${t("arSetupTitle")}`}
-            player={me}
-          />
-          <GameControls onReset={() => startMatch(players)} />
-        </RNView>
+      <A11yOverlayScope>
+        <View style={styles.screen}>
+          <A11yOverlayContent style={styles.container}>
+            <RNView style={styles.topRow}>
+              <TurnBanner
+                compact
+                label={`${me.name} · ${t("arSetupTitle")}`}
+                player={me}
+              />
+              <GameControls onReset={() => startMatch(players)} />
+            </RNView>
 
-        <Animated.View
-          entering={FadeInDown.delay(100).duration(300)}
-          style={styles.shipTray}
-        >
-          {SHIPS.map((ship, i) => {
-            const isPlaced = activePlacements.some((p) => p.id === ship.id);
-            const isSelected = selectedShip === ship.id;
-            const isCurrent = !allPlaced && i === shipIdx;
-            let chipBackground = theme.card;
-            if (isSelected || isCurrent) {
-              chipBackground = me.color;
-            } else if (isPlaced) {
-              chipBackground = theme.surface;
-            }
-            return (
+            <Animated.View
+              entering={FadeInDown.delay(100).duration(300)}
+              style={styles.shipTray}
+            >
+              {SHIPS.map((ship, i) => {
+                const isPlaced = activePlacements.some((p) => p.id === ship.id);
+                const isSelected = selectedShip === ship.id;
+                const isCurrent = !allPlaced && i === shipIdx;
+                let chipBackground = theme.card;
+                if (isSelected || isCurrent) {
+                  chipBackground = me.color;
+                } else if (isPlaced) {
+                  chipBackground = theme.surface;
+                }
+                return (
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: isSelected }}
+                    key={ship.id}
+                    onPress={() => {
+                      if (isPlaced) {
+                        setSelectedShip((current) =>
+                          current === ship.id ? null : ship.id
+                        );
+                        haptic.tap();
+                      }
+                    }}
+                    style={[
+                      styles.shipChip,
+                      {
+                        backgroundColor: chipBackground,
+                        borderColor:
+                          isSelected || isCurrent ? me.color : theme.border,
+                      },
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.shipChipText,
+                        {
+                          color:
+                            isSelected || isCurrent ? "#0b1620" : theme.text,
+                        },
+                      ]}
+                    >
+                      {t(SHIP_LABELS[ship.id])} ({ship.size})
+                    </Text>
+                  </Pressable>
+                );
+              })}
               <Pressable
+                accessibilityLabel={t("arRotate")}
                 accessibilityRole="button"
-                accessibilityState={{ selected: isSelected }}
-                key={ship.id}
                 onPress={() => {
-                  if (isPlaced) {
-                    setSelectedShip((current) =>
-                      current === ship.id ? null : ship.id
-                    );
-                    haptic.tap();
-                  }
+                  haptic.tap();
+                  setHoriz((h) => !h);
                 }}
                 style={[
                   styles.shipChip,
-                  {
-                    backgroundColor: chipBackground,
-                    borderColor:
-                      isSelected || isCurrent ? me.color : theme.border,
-                  },
+                  { backgroundColor: theme.card, borderColor: theme.border },
                 ]}
               >
-                <Text
-                  style={[
-                    styles.shipChipText,
-                    { color: isSelected || isCurrent ? "#0b1620" : theme.text },
-                  ]}
-                >
-                  {t(SHIP_LABELS[ship.id])} ({ship.size})
+                <Text style={[styles.shipChipText, { color: theme.text }]}>
+                  {horiz ? "→" : "↓"} {t("arRotate")}
                 </Text>
               </Pressable>
-            );
-          })}
-          <Pressable
-            accessibilityLabel={t("arRotate")}
-            accessibilityRole="button"
-            onPress={() => {
-              haptic.tap();
-              setHoriz((h) => !h);
-            }}
-            style={[
-              styles.shipChip,
-              { backgroundColor: theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text style={[styles.shipChipText, { color: theme.text }]}>
-              {horiz ? "→" : "↓"} {t("arRotate")}
-            </Text>
-          </Pressable>
-        </Animated.View>
+            </Animated.View>
 
-        {renderGrid(
-          fleets[currentSeat],
-          tryPlace,
-          true,
-          me.color,
-          selectedCells,
-          {
-            canStart: (r, c) => Boolean(getPlacementAt(r, c)),
-            onDrop: (r, c) => {
-              const dragged = draggedShipRef.current;
-              if (dragged) {
-                moveShip(dragged, r, c);
+            {renderGrid(
+              fleets[currentSeat],
+              tryPlace,
+              true,
+              me.color,
+              selectedCells,
+              {
+                canStart: (r, c) => Boolean(getPlacementAt(r, c)),
+                onDrop: (r, c) => {
+                  const dragged = draggedShipRef.current;
+                  if (dragged) {
+                    moveShip(dragged, r, c);
+                  }
+                },
+                onStart: (r, c) => {
+                  const placement = getPlacementAt(r, c);
+                  if (!placement) {
+                    return;
+                  }
+                  draggedShipRef.current = placement.id;
+                  setSelectedShip(placement.id);
+                  haptic.tap();
+                },
               }
-            },
-            onStart: (r, c) => {
-              const placement = getPlacementAt(r, c);
-              if (!placement) {
-                return;
-              }
-              draggedShipRef.current = placement.id;
-              setSelectedShip(placement.id);
-              haptic.tap();
-            },
-          }
-        )}
+            )}
 
-        <RNView style={styles.setupActions}>
-          {allPlaced ? (
-            <Pressable
-              accessibilityLabel={t("arReady")}
-              accessibilityRole="button"
-              onPress={confirmSetup}
-              style={[styles.primaryBtn, { backgroundColor: me.color }]}
-            >
-              <Text style={styles.primaryBtnText}>{t("arReady")}</Text>
-            </Pressable>
-          ) : null}
-          <Pressable
-            accessibilityLabel={t("arReset")}
-            accessibilityRole="button"
-            onPress={resetSetup}
-          >
-            <Text style={[styles.linkText, { color: theme.tint }]}>
-              {t("arReset")}
-            </Text>
-          </Pressable>
-        </RNView>
-
-        <PassDeviceOverlay
-          hint={t("arSetupHint")}
-          onReady={() => setPhase("setup")}
-          secret
-          toPlayer={me}
-          visible={phase === "passSetup"}
-        />
-      </View>
+            <RNView style={styles.setupActions}>
+              {allPlaced ? (
+                <Pressable
+                  accessibilityLabel={t("arReady")}
+                  accessibilityRole="button"
+                  onPress={confirmSetup}
+                  style={[styles.primaryBtn, { backgroundColor: me.color }]}
+                >
+                  <Text style={styles.primaryBtnText}>{t("arReady")}</Text>
+                </Pressable>
+              ) : null}
+              <Pressable
+                accessibilityLabel={t("arReset")}
+                accessibilityRole="button"
+                onPress={resetSetup}
+              >
+                <Text style={[styles.linkText, { color: theme.tint }]}>
+                  {t("arReset")}
+                </Text>
+              </Pressable>
+            </RNView>
+          </A11yOverlayContent>
+          <PassDeviceOverlay
+            hint={t("arSetupHint")}
+            onReady={() => setPhase("setup")}
+            secret
+            toPlayer={me}
+            visible={phase === "passSetup"}
+          />
+        </View>
+      </A11yOverlayScope>
     );
   }
 
@@ -633,85 +643,88 @@ export default function CrossAirRadarGame() {
   const shipsToWin = remainingShips(attackGrid, placements[opponentSeat]);
 
   return (
-    <View style={styles.container}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          label={t("arTurnTitle", { player: me.name })}
-          player={me}
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.container}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              label={t("arTurnTitle", { player: me.name })}
+              player={me}
+            />
+            <GameControls onReset={() => startMatch(players)} />
+          </RNView>
 
-      <PlayerScoreStrip
-        activeIndex={currentSeat}
-        format={(v) => `${v}/${TOTAL_HP}`}
-        players={players}
-        scores={hits}
-      />
+          <PlayerScoreStrip
+            activeIndex={currentSeat}
+            format={(v) => `${v}/${TOTAL_HP}`}
+            players={players}
+            scores={hits}
+          />
 
-      <RNView style={styles.remainingRow}>
-        <Text style={[styles.remainingText, { color: theme.mutedText }]}>
-          🎯 {hitsToWin}
-        </Text>
-        <Text style={[styles.remainingText, { color: theme.mutedText }]}>
-          ✈️ {shipsToWin}
-        </Text>
-      </RNView>
-
-      {lastResult ? (
-        <Pressable accessibilityRole="button" onPress={skipTurnDelay}>
-          <Animated.View
-            entering={ZoomIn.duration(200)}
-            style={[
-              styles.flashBadge,
-              { backgroundColor: theme.elevated, borderColor: me.color },
-            ]}
-          >
-            <Text style={[styles.flashBadgeText, { color: theme.text }]}>
-              {lastResult}
+          <RNView style={styles.remainingRow}>
+            <Text style={[styles.remainingText, { color: theme.mutedText }]}>
+              🎯 {hitsToWin}
             </Text>
-          </Animated.View>
-        </Pressable>
-      ) : (
-        <Text style={[styles.attackHint, { color: theme.mutedText }]}>
-          {t("arTapToFire")}
-        </Text>
-      )}
+            <Text style={[styles.remainingText, { color: theme.mutedText }]}>
+              ✈️ {shipsToWin}
+            </Text>
+          </RNView>
 
-      {renderGrid(
-        attackGrid,
-        lastResult
-          ? () => {
-              // firing is locked while the last shot's result is shown
-            }
-          : handleFire,
-        false,
-        me.color
-      )}
+          {lastResult ? (
+            <Pressable accessibilityRole="button" onPress={skipTurnDelay}>
+              <Animated.View
+                entering={ZoomIn.duration(200)}
+                style={[
+                  styles.flashBadge,
+                  { backgroundColor: theme.elevated, borderColor: me.color },
+                ]}
+              >
+                <Text style={[styles.flashBadgeText, { color: theme.text }]}>
+                  {lastResult}
+                </Text>
+              </Animated.View>
+            </Pressable>
+          ) : (
+            <Text style={[styles.attackHint, { color: theme.mutedText }]}>
+              {t("arTapToFire")}
+            </Text>
+          )}
 
-      <PassDeviceOverlay
-        onReady={() => setPhase("turn")}
-        secret
-        toPlayer={me}
-        visible={phase === "passBattle"}
-      />
-
-      {phase === "done" && winner !== null ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("players")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("arHitsGiven")}
-          standings={players.map((p, i) => ({
-            detail: `${SHIPS.length - remainingShips(attacks[i], placements[other(i as Seat)])} ✈️ ${t("arShipDown")}`,
-            player: p,
-            score: hits[i],
-          }))}
-          winnerIndex={winner}
+          {renderGrid(
+            attackGrid,
+            lastResult
+              ? () => {
+                  // firing is locked while the last shot's result is shown
+                }
+              : handleFire,
+            false,
+            me.color
+          )}
+        </A11yOverlayContent>
+        <PassDeviceOverlay
+          onReady={() => setPhase("turn")}
+          secret
+          toPlayer={me}
+          visible={phase === "passBattle"}
         />
-      ) : null}
-    </View>
+
+        {phase === "done" && winner !== null ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("players")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("arHitsGiven")}
+            standings={players.map((p, i) => ({
+              detail: `${SHIPS.length - remainingShips(attacks[i], placements[other(i as Seat)])} ✈️ ${t("arShipDown")}`,
+              player: p,
+              score: hits[i],
+            }))}
+            winnerIndex={winner}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -756,6 +769,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   remainingText: { fontSize: FontSize.sm, fontWeight: FontWeight.bold },
+  screen: { flex: 1 },
   setupActions: {
     alignItems: "center",
     gap: Spacing.sm + 2,

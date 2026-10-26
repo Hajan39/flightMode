@@ -1,8 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 import type { Flight, LoggedFlight } from "@/types/flight";
 import { upsertLoggedFlight } from "@/utils/passport";
+import { safePersistOptions } from "@/utils/persistStorage";
 import { getDeviceOffsetMinutes } from "@/utils/timezone";
 
 /**
@@ -31,6 +32,30 @@ export function withHomeOffset(
   };
 }
 
+/**
+ * Hydration fix-up for flights saved before `homeOffsetMinutes` existed: a
+ * still-upcoming flight gets the device offset now — the phone is most likely
+ * still in the home zone, while after departure it may already show the
+ * destination zone (so past/in-flight ones keep the caller fallback).
+ */
+export function fillMissingHomeOffset(
+  flight: Flight | null | undefined,
+  now = Date.now()
+): Flight | null | undefined {
+  if (
+    !flight ||
+    typeof flight.homeOffsetMinutes === "number" ||
+    typeof flight.departureTime !== "number" ||
+    flight.departureTime <= now
+  ) {
+    return flight;
+  }
+  return {
+    ...flight,
+    homeOffsetMinutes: getDeviceOffsetMinutes(flight.departureTime),
+  };
+}
+
 interface FlightState {
   clearFlight: () => void;
   flight: Flight | null;
@@ -51,11 +76,18 @@ export const useFlightStore = create<FlightState>()(
           log: upsertLoggedFlight(s.log, flight),
         })),
     }),
-    {
+    safePersistOptions(() => AsyncStorage, {
+      // `flight.homeOffsetMinutes` is an additive optional field (no version
+      // bump): an upcoming flight persisted without it gets it filled in on
+      // hydration (persisted by the post-hydration write).
+      merge: (persisted, current) => {
+        const state = { ...current, ...(persisted as Partial<FlightState>) };
+        return {
+          ...state,
+          flight: fillMissingHomeOffset(state.flight) ?? null,
+        };
+      },
       // v0 → v1: seed the passport with the flight that is already saved.
-      // `flight.homeOffsetMinutes` is an additive optional field: flights
-      // persisted without it simply fall back to the device offset, so no
-      // version bump is needed.
       migrate: (persisted, version) => {
         const state = persisted as Partial<FlightState>;
         if (version < 1) {
@@ -67,9 +99,8 @@ export const useFlightStore = create<FlightState>()(
         return state as FlightState;
       },
       name: "flight",
-      storage: createJSONStorage(() => AsyncStorage),
       version: 1,
-    }
+    })
   )
 );
 

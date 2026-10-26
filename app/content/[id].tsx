@@ -41,11 +41,14 @@ export default function ContentDetailScreen() {
   const heroImage = useArticleImage(article?.image);
   const isFallback = article ? !hasLanguage(article, language) : false;
 
+  // Only real articles count: a deep link to an unknown id must not feed the
+  // "articles read" achievements.
+  const articleId = article?.id;
   useEffect(() => {
-    if (id) {
-      markArticleRead(id);
+    if (articleId) {
+      markArticleRead(articleId);
     }
-  }, [id, markArticleRead]);
+  }, [articleId, markArticleRead]);
 
   useEffect(() => {
     if (!id) {

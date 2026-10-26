@@ -1,6 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -10,6 +14,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useSwipe } from "@/hooks/useSwipe";
@@ -17,7 +22,6 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import {
-  CELL_COUNT,
   type Direction,
   GRID_COLS,
   GRID_ROWS,
@@ -74,11 +78,6 @@ export default function SnakeGame() {
   const gridSize = screenWidth - Spacing.lg * 2;
   const cellSize = Math.floor(gridSize / GRID_COLS);
   const actualGridSize = cellSize * GRID_COLS;
-
-  // ---------------------------------------------------------------------------
-  // Memoised snake set for O(1) cell lookup
-  // ---------------------------------------------------------------------------
-  const snakeSet = useMemo(() => new Set(snake), [snake]);
 
   // ---------------------------------------------------------------------------
   // Cleanup on unmount
@@ -235,6 +234,10 @@ export default function SnakeGame() {
     }
   }, []);
 
+  // Leaving the app pauses (never auto-resumes). The snake moves per tick,
+  // not per wall-clock time, so there are no deadlines to shift.
+  useAutoPause(handlePause, phase === "playing");
+
   const handleResume = useCallback(() => {
     if (phaseRef.current !== "paused") {
       return;
@@ -290,44 +293,46 @@ export default function SnakeGame() {
     </RNView>
   );
 
+  // The empty board is a single surface-coloured view (it never changes);
+  // only the snake segments and the food are drawn, absolutely positioned,
+  // so a tick re-renders ~length views instead of all GRID_COLS × GRID_ROWS.
+  const cellAt = (idx: number) => ({
+    height: cellSize,
+    left: (idx % GRID_COLS) * cellSize,
+    top: Math.floor(idx / GRID_COLS) * cellSize,
+    width: cellSize,
+  });
+  const segmentRadius = Math.floor(cellSize / 4);
+
   const renderGrid = () => (
     <RNView
       {...swipeProps}
       style={[
         styles.grid,
         {
+          backgroundColor: theme.surface,
           borderColor: theme.border,
-          height: cellSize * GRID_ROWS,
-          width: actualGridSize,
+          height: cellSize * GRID_ROWS + GRID_BORDER * 2,
+          width: actualGridSize + GRID_BORDER * 2,
         },
       ]}
     >
-      {Array.from({ length: CELL_COUNT }, (_, idx) => {
-        const isHead = idx === snake[0];
-        const isBody = !isHead && snakeSet.has(idx);
-        const isFood = idx === food;
-
-        let cellColor = theme.surface as string;
-        if (isHead) {
-          cellColor = theme.tint;
-        } else if (isBody) {
-          cellColor = `${theme.tint}99`;
-        } else if (isFood) {
-          cellColor = "#ef4444";
-        }
-
-        return (
-          <RNView
-            key={idx}
-            style={{
-              backgroundColor: cellColor,
-              borderRadius: isHead || isBody ? Math.floor(cellSize / 4) : 0,
-              height: cellSize,
-              width: cellSize,
-            }}
-          />
-        );
-      })}
+      <RNView
+        style={[styles.cell, cellAt(food), { backgroundColor: "#ef4444" }]}
+      />
+      {snake.map((idx, i) => (
+        <RNView
+          key={idx}
+          style={[
+            styles.cell,
+            cellAt(idx),
+            {
+              backgroundColor: i === 0 ? theme.tint : `${theme.tint}99`,
+              borderRadius: segmentRadius,
+            },
+          ]}
+        />
+      ))}
     </RNView>
   );
 
@@ -428,48 +433,52 @@ export default function SnakeGame() {
   // ---------------------------------------------------------------------------
 
   return (
-    <View style={[styles.root, { backgroundColor: theme.background }]}>
-      {/* HUD + controls row */}
-      <RNView style={styles.hudRow}>
-        {renderHud()}
-        <GameControls
-          isPaused={phase === "paused"}
-          onPause={handlePause}
-          onReset={startGame}
+    <A11yOverlayScope>
+      <View style={[styles.root, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent>
+          {/* HUD + controls row */}
+          <RNView style={styles.hudRow}>
+            {renderHud()}
+            <GameControls
+              isPaused={phase === "paused"}
+              onPause={handlePause}
+              onReset={startGame}
+            />
+          </RNView>
+
+          {/* Grid */}
+          {renderGrid()}
+
+          {/* D-pad */}
+          {renderDPad()}
+        </A11yOverlayContent>
+
+        {/* Countdown overlay */}
+        {phase === "countdown" && (
+          <GameCountdown onComplete={onCountdownComplete} />
+        )}
+
+        {/* Pause overlay */}
+        <GamePauseOverlay
+          onRestart={startGame}
+          onResume={handleResume}
+          visible={phase === "paused"}
         />
-      </RNView>
 
-      {/* Grid */}
-      {renderGrid()}
-
-      {/* D-pad */}
-      {renderDPad()}
-
-      {/* Countdown overlay */}
-      {phase === "countdown" && (
-        <GameCountdown onComplete={onCountdownComplete} />
-      )}
-
-      {/* Pause overlay */}
-      <GamePauseOverlay
-        onRestart={startGame}
-        onResume={handleResume}
-        visible={phase === "paused"}
-      />
-
-      {/* Result overlay */}
-      {phase === "over" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.last === score ? undefined : result.last}
-          onPlayAgain={startGame}
-          score={score}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          title={t("snkGameOver")}
-        />
-      ) : null}
-    </View>
+        {/* Result overlay */}
+        {phase === "over" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.last === score ? undefined : result.last}
+            onPlayAgain={startGame}
+            score={score}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            title={t("snkGameOver")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -478,8 +487,10 @@ export default function SnakeGame() {
 // ---------------------------------------------------------------------------
 
 const DPAD_BTN_SIZE = 52;
+const GRID_BORDER = 1;
 
 const styles = StyleSheet.create({
+  cell: { position: "absolute" },
   description: {
     fontSize: FontSize.sm,
     textAlign: "center",
@@ -514,9 +525,7 @@ const styles = StyleSheet.create({
   grid: {
     alignSelf: "center",
     borderRadius: Radius.sm,
-    borderWidth: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
+    borderWidth: GRID_BORDER,
     overflow: "hidden",
   },
   hud: {

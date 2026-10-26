@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -39,6 +39,10 @@ export default function PhrasebookScreen() {
   const initial: PhraseLanguageCode = getPhraseLanguage(lang)?.code ?? "es";
   const [active, setActive] = useState<PhraseLanguageCode>(initial);
   const language = getPhraseLanguage(active) ?? phraseLanguageList[0];
+  const chipScrollRef = useRef<ScrollView>(null);
+  // The opening language (often deep-linked, e.g. Japanese far down the
+  // list) is scrolled into view once its chip has been laid out.
+  const initialChipScrolledRef = useRef<boolean>(false);
 
   useEffect(() => {
     captureAnalyticsEvent("phrasebook_open", {
@@ -69,6 +73,7 @@ export default function PhrasebookScreen() {
       <ScrollView
         contentContainerStyle={styles.chipRow}
         horizontal
+        ref={chipScrollRef}
         showsHorizontalScrollIndicator={false}
         style={styles.chipScroll}
       >
@@ -79,6 +84,20 @@ export default function PhrasebookScreen() {
               accessibilityRole="button"
               accessibilityState={{ selected: isActive }}
               key={item.code}
+              onLayout={
+                item.code === initial
+                  ? (event) => {
+                      if (initialChipScrolledRef.current) {
+                        return;
+                      }
+                      initialChipScrolledRef.current = true;
+                      chipScrollRef.current?.scrollTo({
+                        animated: false,
+                        x: Math.max(0, event.nativeEvent.layout.x - Spacing.lg),
+                      });
+                    }
+                  : undefined
+              }
               onPress={() => selectLanguage(item.code)}
               style={[
                 styles.chip,

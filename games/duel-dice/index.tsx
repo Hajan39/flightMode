@@ -8,6 +8,10 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import {
   MatchResult,
@@ -265,122 +269,125 @@ export default function DuelDiceGame() {
   }
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          player={current}
-          right={
-            <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-              {t("mpRoundOf", {
-                round: Math.min(round, ROUNDS),
-                total: ROUNDS,
-              })}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              player={current}
+              right={
+                <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                  {t("mpRoundOf", {
+                    round: Math.min(round, ROUNDS),
+                    total: ROUNDS,
+                  })}
+                </Text>
+              }
+            />
+            <GameControls onReset={() => startMatch(players)} />
+          </RNView>
+
+          <PlayerScoreStrip
+            activeIndex={activePlayer}
+            detail={(i) =>
+              `${currentRolls[i] === null ? "" : `🎲 ${currentRolls[i]} · `}${totals[i]} ${t("mpPoints")}`
+            }
+            players={players}
+            scores={roundWins}
+          />
+
+          <RNView style={styles.dieArea}>
+            <Animated.View
+              accessibilityLabel={
+                rollingValue ? t("a11yDieFace", { n: rollingValue }) : undefined
+              }
+              style={[
+                styles.dieFace,
+                {
+                  backgroundColor: theme.elevated,
+                  borderColor: isRolling ? activeColor : theme.border,
+                  borderRadius: dieSize * 0.16,
+                  height: dieSize,
+                  padding: dieSize * 0.1,
+                  width: dieSize,
+                },
+                dieAnimatedStyle,
+              ]}
+            >
+              {Array.from({ length: 9 }).map((_, i) => (
+                <RNView key={PIP_KEYS[i]} style={styles.pipCell}>
+                  {visiblePips.includes(i) ? (
+                    <RNView
+                      style={[
+                        styles.pip,
+                        {
+                          backgroundColor: isRolling ? activeColor : theme.text,
+                          height: dieSize * 0.14,
+                          width: dieSize * 0.14,
+                        },
+                      ]}
+                    />
+                  ) : null}
+                </RNView>
+              ))}
+            </Animated.View>
+            <Animated.Text
+              entering={FadeIn.duration(180)}
+              key={roundResult ?? `round-${round}`}
+              style={[
+                styles.roundLabel,
+                { color: roundResult ? theme.tint : theme.mutedText },
+              ]}
+            >
+              {roundResult ?? t("diceTapToRoll")}
+            </Animated.Text>
+          </RNView>
+
+          <Pressable
+            accessibilityLabel={t("diceTapToRoll")}
+            accessibilityRole="button"
+            onPress={handleRoll}
+            style={[
+              styles.rollBtn,
+              {
+                backgroundColor: canRoll ? activeColor : theme.card,
+                borderColor: canRoll ? activeColor : theme.border,
+              },
+            ]}
+          >
+            <Text
+              style={[
+                styles.rollBtnText,
+                { color: canRoll ? "#0b1620" : theme.mutedText },
+              ]}
+            >
+              {rollLabel}
             </Text>
-          }
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
-
-      <PlayerScoreStrip
-        activeIndex={activePlayer}
-        detail={(i) =>
-          `${currentRolls[i] === null ? "" : `🎲 ${currentRolls[i]} · `}${totals[i]} ${t("mpPoints")}`
-        }
-        players={players}
-        scores={roundWins}
-      />
-
-      <RNView style={styles.dieArea}>
-        <Animated.View
-          accessibilityLabel={
-            rollingValue ? t("a11yDieFace", { n: rollingValue }) : undefined
-          }
-          style={[
-            styles.dieFace,
-            {
-              backgroundColor: theme.elevated,
-              borderColor: isRolling ? activeColor : theme.border,
-              borderRadius: dieSize * 0.16,
-              height: dieSize,
-              padding: dieSize * 0.1,
-              width: dieSize,
-            },
-            dieAnimatedStyle,
-          ]}
-        >
-          {Array.from({ length: 9 }).map((_, i) => (
-            <RNView key={PIP_KEYS[i]} style={styles.pipCell}>
-              {visiblePips.includes(i) ? (
-                <RNView
-                  style={[
-                    styles.pip,
-                    {
-                      backgroundColor: isRolling ? activeColor : theme.text,
-                      height: dieSize * 0.14,
-                      width: dieSize * 0.14,
-                    },
-                  ]}
-                />
-              ) : null}
-            </RNView>
-          ))}
-        </Animated.View>
-        <Animated.Text
-          entering={FadeIn.duration(180)}
-          key={roundResult ?? `round-${round}`}
-          style={[
-            styles.roundLabel,
-            { color: roundResult ? theme.tint : theme.mutedText },
-          ]}
-        >
-          {roundResult ?? t("diceTapToRoll")}
-        </Animated.Text>
-      </RNView>
-
-      <Pressable
-        accessibilityLabel={t("diceTapToRoll")}
-        accessibilityRole="button"
-        onPress={handleRoll}
-        style={[
-          styles.rollBtn,
-          {
-            backgroundColor: canRoll ? activeColor : theme.card,
-            borderColor: canRoll ? activeColor : theme.border,
-          },
-        ]}
-      >
-        <Text
-          style={[
-            styles.rollBtnText,
-            { color: canRoll ? "#0b1620" : theme.mutedText },
-          ]}
-        >
-          {rollLabel}
-        </Text>
-      </Pressable>
-
-      {phase === "done" ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("mpWinsLabel")}
-          standings={players.map((p, i) => ({
-            detail: `${totals[i]} ${t("mpPoints")}`,
-            player: p,
-            score: roundWins[i],
-            tiebreak: totals[i],
-          }))}
-          subtitle={t("mpTiebreakHint")}
-          winnerIndex={getSoleWinnerIndex(
-            players.map((_, i) => ({
-              score: matchScore(roundWins[i], totals[i]),
-            }))
-          )}
-        />
-      ) : null}
-    </View>
+          </Pressable>
+        </A11yOverlayContent>
+        {phase === "done" ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("mpWinsLabel")}
+            standings={players.map((p, i) => ({
+              detail: `${totals[i]} ${t("mpPoints")}`,
+              player: p,
+              score: roundWins[i],
+              tiebreak: totals[i],
+            }))}
+            subtitle={t("mpTiebreakHint")}
+            winnerIndex={getSoleWinnerIndex(
+              players.map((_, i) => ({
+                score: matchScore(roundWins[i], totals[i]),
+              }))
+            )}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -426,5 +433,6 @@ const styles = StyleSheet.create({
   },
   roundChip: { ...TextStyle.chipLabel },
   roundLabel: { fontSize: FontSize.base, fontWeight: FontWeight.semibold },
+  screen: { flex: 1 },
   topRow: { alignItems: "center", flexDirection: "row", gap: Spacing.sm },
 });

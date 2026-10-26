@@ -309,3 +309,22 @@ describe("box-breaker shiftDeadlines (pause must not burn power-ups)", () => {
     expect(shiftDeadlines(state, 0)).toBe(state);
   });
 });
+
+describe("box-breaker bricks are copy-on-write", () => {
+  test("a frame with no hit keeps the same bricks array", () => {
+    const s = launch(newGame(), seeded(3));
+    const r = step(s, FRAME_MS, 0, seeded(3));
+    expect(r.events.hitAt).toHaveLength(0);
+    expect(r.state.bricks).toBe(s.bricks);
+  });
+
+  test("a hit copies the array and never mutates the input state", () => {
+    const s = ballUnder(withLayout(["2......."]), 0, 0);
+    const before = [...s.bricks];
+    const r = step(s, FRAME_MS, 0, seeded(1));
+    expect(r.events.hitAt).toContain(0);
+    expect(r.state.bricks).not.toBe(s.bricks);
+    expect(r.state.bricks[0]).toBe(1);
+    expect(s.bricks).toEqual(before);
+  });
+});

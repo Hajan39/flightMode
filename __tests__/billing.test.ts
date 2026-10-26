@@ -12,7 +12,11 @@ jest.mock("expo-iap", () => ({
 
 import { useSupporterStore } from "@/store/useSupporterStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-import { initBilling, restorePurchases } from "@/utils/billing";
+import {
+  initBilling,
+  restorePurchases,
+  subscribePurchaseUpdates,
+} from "@/utils/billing";
 import { shouldAskForReview } from "@/utils/reviewPrompt";
 
 describe("billing entitlement", () => {
@@ -145,6 +149,25 @@ describe("billing acknowledge + support_completed reporting", () => {
     expect(useSupporterStore.getState().plus).toBe(true);
     expect(completed()).toHaveLength(1);
     expect(completed()[0][1].product).toBe("flightmode_plus");
+  });
+
+  test("a pending checkout is reported to screen listeners without granting Plus", async () => {
+    useSupporterStore.setState({ plus: false, tips: 0 });
+    mockGetAvailablePurchases.mockResolvedValue([]);
+    await initBilling();
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const iap = require("expo-iap") as { purchaseUpdatedListener: jest.Mock };
+    const [[listener]] = iap.purchaseUpdatedListener.mock.calls;
+    const updates: string[] = [];
+    const unsubscribe = subscribePurchaseUpdates((productId, update) =>
+      updates.push(`${productId}:${update}`)
+    );
+    listener({ productId: "flightmode_plus", purchaseState: "pending" });
+    await new Promise((resolve) => setImmediate(resolve));
+    unsubscribe();
+    listener({ productId: "flightmode_plus", purchaseState: "pending" });
+    expect(updates).toEqual(["flightmode_plus:pending"]);
+    expect(useSupporterStore.getState().plus).toBe(false);
   });
 });
 

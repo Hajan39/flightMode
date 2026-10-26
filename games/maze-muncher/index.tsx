@@ -9,6 +9,10 @@ import {
   StyleSheet,
 } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -18,6 +22,7 @@ import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { gravityTilt } from "@/games/tilt-balance/logic";
+import { shiftDeadline, useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { swipeDirection } from "@/hooks/useSwipe";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -259,6 +264,7 @@ export default function MazeMuncherGame() {
   const gameRef = useRef(game);
   const lastFrameRef = useRef(0);
   const readyUntil = useRef(0);
+  const pausedAtRef = useRef<number | null>(null);
   const loopRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const rotationRef = useRef(0);
   const sensorSubs = useRef<{ remove: () => void }[]>([]);
@@ -364,6 +370,7 @@ export default function MazeMuncherGame() {
     setGame(fresh);
     setResult(null);
     setPaused(false);
+    pausedAtRef.current = null;
     setPhase("playing");
     getReady();
     startLoop();
@@ -371,10 +378,23 @@ export default function MazeMuncherGame() {
 
   const pause = () => {
     stopLoop();
+    pausedAtRef.current = Date.now();
     setPaused(true);
   };
 
+  // Leaving the app (home, call, lock) pauses; the player resumes by hand.
+  useAutoPause(pause, phase === "playing" && !paused);
+
   const resume = () => {
+    const pausedAt = pausedAtRef.current;
+    pausedAtRef.current = null;
+    if (pausedAt !== null) {
+      // A pause during "Ready!" must not use up the get-ready time.
+      readyUntil.current = shiftDeadline(
+        readyUntil.current,
+        Date.now() - pausedAt
+      );
+    }
     setPaused(false);
     startLoop();
   };
@@ -495,137 +515,144 @@ export default function MazeMuncherGame() {
   );
 
   return (
-    <View
-      onResponderGrant={onSwipeGrant}
-      onResponderMove={onSwipeMove}
-      onResponderTerminationRequest={() => false}
-      onStartShouldSetResponder={() => phase === "playing" && !paused}
-      style={[styles.container, { backgroundColor: theme.background }]}
-    >
-      <RNView style={styles.topBar}>
-        <RNView style={styles.statsRow}>
-          {stat(t("bbScore"), String(game.score))}
-          {stat(t("bbLevel"), String(game.level))}
-          {stat(t("bbLives"), `❤️ ${String(Math.max(0, game.lives))}`)}
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={() => (paused ? resume() : pause())}
-          onReset={() => {
-            quitRun();
-            startGame();
-          }}
-        />
-      </RNView>
-
-      <RNView
-        onLayout={(e) =>
-          setArea({
-            h: e.nativeEvent.layout.height,
-            w: e.nativeEvent.layout.width,
-          })
-        }
-        pointerEvents="none"
-        style={styles.boardArea}
+    <A11yOverlayScope>
+      <View
+        onResponderGrant={onSwipeGrant}
+        onResponderMove={onSwipeMove}
+        onResponderTerminationRequest={() => false}
+        onStartShouldSetResponder={() => phase === "playing" && !paused}
+        style={[styles.root, { backgroundColor: theme.background }]}
       >
-        {cell > 0 ? (
-          <RNView
-            style={[styles.board, { height: cell * ROWS, width: cell * COLS }]}
-          >
-            <Walls cell={cell} />
-            <Dots
-              cell={cell}
-              color={theme.text}
-              dots={game.dots}
-              powers={game.powers}
+        <A11yOverlayContent style={styles.container}>
+          <RNView style={styles.topBar}>
+            <RNView style={styles.statsRow}>
+              {stat(t("bbScore"), String(game.score))}
+              {stat(t("bbLevel"), String(game.level))}
+              {stat(t("bbLives"), `❤️ ${String(Math.max(0, game.lives))}`)}
+            </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={() => (paused ? resume() : pause())}
+              onReset={() => {
+                quitRun();
+                startGame();
+              }}
             />
-            {game.ghosts.map((g, i) => {
-              let color = GHOST_COLORS[i];
-              if (g.mode === "frightened") {
-                color = flash ? FRIGHT_FLASH : FRIGHTENED;
-              }
-              return (
-                <GhostView
-                  cell={cell}
-                  color={color}
-                  ghost={g}
-                  key={`g${String(i)}`}
-                />
-              );
-            })}
-            <RNView
-              style={[
-                styles.player,
-                {
-                  borderRadius: playerSize / 2,
-                  height: playerSize,
-                  left: pp.x * cell + (cell - playerSize) / 2,
-                  top: pp.y * cell + (cell - playerSize) / 2,
-                  transform: [
-                    {
-                      rotate:
-                        ROTATION[game.player.dir ?? game.queued ?? "right"],
-                    },
-                  ],
-                  width: playerSize,
-                },
-              ]}
-            >
+          </RNView>
+
+          <RNView
+            onLayout={(e) =>
+              setArea({
+                h: e.nativeEvent.layout.height,
+                w: e.nativeEvent.layout.width,
+              })
+            }
+            pointerEvents="none"
+            style={styles.boardArea}
+          >
+            {cell > 0 ? (
               <RNView
                 style={[
-                  styles.mouth,
-                  {
-                    borderBottomWidth: mouth,
-                    borderRightWidth: playerSize / 2 + 1,
-                    borderTopWidth: mouth,
-                    left: playerSize / 2,
-                    top: playerSize / 2 - mouth,
-                  },
+                  styles.board,
+                  { height: cell * ROWS, width: cell * COLS },
                 ]}
-              />
-            </RNView>
-            {ready ? (
-              <RNView style={[styles.readyWrap, { top: cell * 11 }]}>
-                <Text style={[styles.ready, { fontSize: cell * 0.9 }]}>
-                  {t("mmReady")}
-                </Text>
+              >
+                <Walls cell={cell} />
+                <Dots
+                  cell={cell}
+                  color={theme.text}
+                  dots={game.dots}
+                  powers={game.powers}
+                />
+                {game.ghosts.map((g, i) => {
+                  let color = GHOST_COLORS[i];
+                  if (g.mode === "frightened") {
+                    color = flash ? FRIGHT_FLASH : FRIGHTENED;
+                  }
+                  return (
+                    <GhostView
+                      cell={cell}
+                      color={color}
+                      ghost={g}
+                      key={`g${String(i)}`}
+                    />
+                  );
+                })}
+                <RNView
+                  style={[
+                    styles.player,
+                    {
+                      borderRadius: playerSize / 2,
+                      height: playerSize,
+                      left: pp.x * cell + (cell - playerSize) / 2,
+                      top: pp.y * cell + (cell - playerSize) / 2,
+                      transform: [
+                        {
+                          rotate:
+                            ROTATION[game.player.dir ?? game.queued ?? "right"],
+                        },
+                      ],
+                      width: playerSize,
+                    },
+                  ]}
+                >
+                  <RNView
+                    style={[
+                      styles.mouth,
+                      {
+                        borderBottomWidth: mouth,
+                        borderRightWidth: playerSize / 2 + 1,
+                        borderTopWidth: mouth,
+                        left: playerSize / 2,
+                        top: playerSize / 2 - mouth,
+                      },
+                    ]}
+                  />
+                </RNView>
+                {ready ? (
+                  <RNView style={[styles.readyWrap, { top: cell * 11 }]}>
+                    <Text style={[styles.ready, { fontSize: cell * 0.9 }]}>
+                      {t("mmReady")}
+                    </Text>
+                  </RNView>
+                ) : null}
               </RNView>
             ) : null}
           </RNView>
-        ) : null}
-      </RNView>
-      <Text style={[styles.hint, { color: theme.mutedText }]}>
-        {control === "tilt" ? t("mmTiltHint") : t("mmSwipeHint")}
-      </Text>
+          <Text style={[styles.hint, { color: theme.mutedText }]}>
+            {control === "tilt" ? t("mmTiltHint") : t("mmSwipeHint")}
+          </Text>
+        </A11yOverlayContent>
 
-      <GamePauseOverlay
-        onQuit={() => {
-          quitRun();
-          if (router.canGoBack()) {
-            router.back();
-          }
-        }}
-        onRestart={() => {
-          quitRun();
-          startGame();
-        }}
-        onResume={resume}
-        visible={paused && phase === "playing"}
-      />
-
-      {phase === "over" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.previousBest}
-          onPlayAgain={() => setPhase("menu")}
-          score={game.score}
-          streak={result.currentStreak > 0 ? result.currentStreak : undefined}
-          subtitle={t("levelLabel", { level: game.level })}
-          title={t("gameMazeMuncherName")}
+        <GamePauseOverlay
+          onQuit={() => {
+            quitRun();
+            if (router.canGoBack()) {
+              router.back();
+            }
+          }}
+          onRestart={() => {
+            quitRun();
+            startGame();
+          }}
+          onResume={resume}
+          visible={paused && phase === "playing"}
         />
-      ) : null}
-    </View>
+
+        {phase === "over" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.previousBest}
+            onPlayAgain={() => setPhase("menu")}
+            score={game.score}
+            streak={result.currentStreak > 0 ? result.currentStreak : undefined}
+            subtitle={t("levelLabel", { level: game.level })}
+            title={t("gameMazeMuncherName")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -682,6 +709,7 @@ const styles = StyleSheet.create({
   pupil: { backgroundColor: "#1E3A8A", position: "absolute" },
   ready: { color: PLAYER, fontWeight: FontWeight.black },
   readyWrap: { alignItems: "center", left: 0, position: "absolute", right: 0 },
+  root: { flex: 1 },
   statBox: {
     alignItems: "center",
     borderRadius: Radius.card,

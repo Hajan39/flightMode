@@ -1,6 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -10,6 +14,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -305,6 +310,9 @@ export default function CargoCatchGame() {
     setPhase("paused");
   }, [clearLoop]);
 
+  // Leaving the app (home, call, lock) pauses; the player resumes by hand.
+  useAutoPause(handlePause, phase === "running");
+
   const handleResume = useCallback(() => {
     if (phaseRef.current !== "paused") {
       return;
@@ -482,103 +490,112 @@ export default function CargoCatchGame() {
   const isRunning = phase === "running";
 
   return (
-    <View style={[styles.root, { backgroundColor: theme.background }]}>
-      {/* Header */}
-      <RNView style={styles.headerRow}>
-        <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[styles.bestValue, { color: theme.tint }]}>
-            {Math.max(storedBest, score)}
-          </Text>
-        </RNView>
-        <GameControls
-          isPaused={phase === "paused"}
-          onPause={isRunning || phase === "paused" ? handlePause : undefined}
-          onReset={handleReset}
+    <A11yOverlayScope>
+      <View style={[styles.screen, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent style={styles.root}>
+          {/* Header */}
+          <RNView style={styles.headerRow}>
+            <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
+              </Text>
+              <Text style={[styles.bestValue, { color: theme.tint }]}>
+                {Math.max(storedBest, score)}
+              </Text>
+            </RNView>
+            <GameControls
+              isPaused={phase === "paused"}
+              onPause={
+                isRunning || phase === "paused" ? handlePause : undefined
+              }
+              onReset={handleReset}
+            />
+          </RNView>
+
+          {/* Time bar */}
+          <RNView style={[styles.timeTrack, { backgroundColor: theme.card }]}>
+            <RNView
+              style={[
+                styles.timeFill,
+                {
+                  backgroundColor:
+                    secondsLeft <= 10 ? theme.warning : theme.tint,
+                  flex: progress,
+                },
+              ]}
+            />
+            <RNView style={{ flex: 1 - progress }} />
+          </RNView>
+
+          {/* Stats */}
+          <RNView style={styles.statsRow}>
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("ccScore")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.tint }]}>
+                {score}
+              </Text>
+            </RNView>
+            <RNView
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("ccTimeLeft")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {secondsLeft}s
+              </Text>
+            </RNView>
+            <RNView
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <RNView style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("ccLives")}
+              </Text>
+              {renderHearts()}
+            </RNView>
+          </RNView>
+
+          {/* Board */}
+          <RNView style={styles.boardWrap}>{renderBoard()}</RNView>
+
+          {/* Left / right controls */}
+          {renderControls()}
+        </A11yOverlayContent>
+
+        {/* Countdown */}
+        {phase === "countdown" && (
+          <GameCountdown onComplete={onCountdownComplete} />
+        )}
+
+        {/* Pause */}
+        <GamePauseOverlay
+          onRestart={startGame}
+          onResume={handleResume}
+          visible={phase === "paused"}
         />
-      </RNView>
 
-      {/* Time bar */}
-      <RNView style={[styles.timeTrack, { backgroundColor: theme.card }]}>
-        <RNView
-          style={[
-            styles.timeFill,
-            {
-              backgroundColor: secondsLeft <= 10 ? theme.warning : theme.tint,
-              flex: progress,
-            },
-          ]}
-        />
-        <RNView style={{ flex: 1 - progress }} />
-      </RNView>
-
-      {/* Stats */}
-      <RNView style={styles.statsRow}>
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("ccScore")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
-        </RNView>
-        <RNView
-          style={[styles.statDivider, { backgroundColor: theme.border }]}
-        />
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("ccTimeLeft")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>
-            {secondsLeft}s
-          </Text>
-        </RNView>
-        <RNView
-          style={[styles.statDivider, { backgroundColor: theme.border }]}
-        />
-        <RNView style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("ccLives")}
-          </Text>
-          {renderHearts()}
-        </RNView>
-      </RNView>
-
-      {/* Board */}
-      <RNView style={styles.boardWrap}>{renderBoard()}</RNView>
-
-      {/* Left / right controls */}
-      {renderControls()}
-
-      {/* Countdown */}
-      {phase === "countdown" && (
-        <GameCountdown onComplete={onCountdownComplete} />
-      )}
-
-      {/* Pause */}
-      <GamePauseOverlay
-        onRestart={startGame}
-        onResume={handleResume}
-        visible={phase === "paused"}
-      />
-
-      {/* Result */}
-      {phase === "over" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={result.last === score ? undefined : result.last}
-          onPlayAgain={startGame}
-          score={score}
-          streak={
-            result.currentStreak && result.currentStreak > 0
-              ? result.currentStreak
-              : undefined
-          }
-          title={t("gameCargoCatchName")}
-        />
-      ) : null}
-    </View>
+        {/* Result */}
+        {phase === "over" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={result.last === score ? undefined : result.last}
+            onPlayAgain={startGame}
+            score={score}
+            streak={
+              result.currentStreak && result.currentStreak > 0
+                ? result.currentStreak
+                : undefined
+            }
+            title={t("gameCargoCatchName")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -668,6 +685,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   root: { flex: 1, gap: Spacing.lg, padding: Spacing.xl },
+  screen: { flex: 1 },
   startBtn: {
     borderRadius: Radius.pill,
     paddingHorizontal: Spacing.xl * 2,

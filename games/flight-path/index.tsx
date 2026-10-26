@@ -14,12 +14,17 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -550,7 +555,13 @@ export default function FlightPathGame() {
   const planesRef = useRef<Plane[]>([]);
   const incomingRef = useRef<IncomingWarning[]>([]);
   const selectedRef = useRef<number | null>(null);
+  /**
+   * The path being drawn lives here, not in state: touch moves only append to
+   * it. The game tick (33 ms) copies it onto the plane and into `drawPath` for
+   * rendering, so drawing costs one render per tick instead of one per move.
+   */
   const drawRef = useRef<Pt[]>([]);
+  const drawDirtyRef = useRef<boolean>(false);
   const scoreRef = useRef(0);
   const landedRef = useRef(0);
   const gameOverRef = useRef<boolean>(false);
@@ -747,7 +758,16 @@ export default function FlightPathGame() {
       if (gameOverRef.current) {
         return;
       }
-      const { current } = planesRef;
+      let { current } = planesRef;
+      const drawingId = selectedRef.current;
+      if (drawDirtyRef.current && drawingId !== null) {
+        drawDirtyRef.current = false;
+        const drawn = [...drawRef.current];
+        current = current.map((p) =>
+          p.id === drawingId ? { ...p, path: drawn } : p
+        );
+        setDrawPath(drawn);
+      }
       const rwys = runwaysRef.current;
       const { w, h } = boardRef.current;
       const next: Plane[] = [];
@@ -934,6 +954,7 @@ export default function FlightPathGame() {
         const start: Pt = { x: best.x, y: best.y };
         const selectedId = best.id;
         drawRef.current = [start];
+        drawDirtyRef.current = false;
         setDrawPath([start]);
         // Immediately assign the path so the plane starts following right away
         setPlanes((prev) =>
@@ -954,16 +975,22 @@ export default function FlightPathGame() {
       if (lastPt && dist(lastPt, pt) < PATH_MIN_DIST) {
         return;
       }
-      const updated = [...prev, pt];
-      drawRef.current = updated;
-      setDrawPath([...updated]);
-      // Update the plane's path in real-time so it follows while drawing
-      const id = selectedRef.current;
-      setPlanes((planesPrev) =>
-        planesPrev.map((p) => (p.id === id ? { ...p, path: [...updated] } : p))
-      );
+      // No state update here: the next game tick hands the plane the new
+      // path (it follows while drawing) and redraws the trail.
+      prev.push(pt);
+      drawDirtyRef.current = true;
     },
     onPanResponderRelease: () => {
+      const id = selectedRef.current;
+      if (drawDirtyRef.current && id !== null) {
+        // Points drawn since the last tick still belong to the plane.
+        const drawn = [...drawRef.current];
+        const withPath = (list: Plane[]) =>
+          list.map((p) => (p.id === id ? { ...p, path: drawn } : p));
+        planesRef.current = withPath(planesRef.current);
+        setPlanes(withPath);
+      }
+      drawDirtyRef.current = false;
       selectedRef.current = null;
       drawRef.current = [];
       setDrawPath([]);
@@ -971,10 +998,15 @@ export default function FlightPathGame() {
     onStartShouldSetPanResponder: () => true,
   });
 
+  // Leaving the app pauses the traffic; the player resumes by hand. The
+  // simulation is tick-based, so there are no deadlines to shift.
+  useAutoPause(() => setPaused(true), started && !gameOver && !paused);
+
   const restart = () => {
     nextIdRef.current = 1;
     selectedRef.current = null;
     drawRef.current = [];
+    drawDirtyRef.current = false;
     gameOverRef.current = false;
     setPlanes([]);
     setIncoming([]);
@@ -1065,209 +1097,216 @@ export default function FlightPathGame() {
   }
 
   return (
-    <View style={s.root}>
-      {/* header: best + controls */}
-      <RNView style={s.headerRow}>
-        <RNView style={[s.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[s.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[s.bestValue, { color: theme.tint }]}>{storedBest}</Text>
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={gameOver ? undefined : () => setPaused(true)}
-          onReset={restart}
-        />
-      </RNView>
-
-      {/* stats */}
-      <View style={s.statsRow}>
-        <Animated.View style={landedStyle}>
-          <Text style={[s.stat, { color: theme.tint }]}>
-            {t("flightPathLanded", { landed })}
-          </Text>
-        </Animated.View>
-        <Text style={[s.stat, { color: theme.text }]}>
-          {t("flightPathScore", { score })}
-        </Text>
-        <Text style={[s.stat, { color: theme.mutedText }]}>
-          {planes.length}/{MAX_PLANES}
-        </Text>
-      </View>
-
-      <RNView style={s.runwayLegendRow}>
-        {runways.map((rwy) => (
-          <RNView key={`legend-${rwy.label}`} style={s.runwayLegendItem}>
-            <RNView
-              style={[
-                s.runwayLegendSwatch,
-                { backgroundColor: rwy.accentColor },
-              ]}
-            />
-            <Text style={[s.runwayLegendText, { color: theme.mutedText }]}>
-              {rwy.label}: {rwy.acceptsLabel}
-            </Text>
-          </RNView>
-        ))}
-      </RNView>
-
-      {/* board */}
-      <RNView
-        onLayout={onBoardLayout}
-        style={[s.board, { borderColor: theme.border }]}
-        {...panResponder.panHandlers}
-      >
-        {/* radar rings */}
-        {[0.25, 0.5, 0.75].map((r) => (
-          <RNView
-            key={`ring-${r}`}
-            pointerEvents="none"
-            style={[
-              s.radarRing,
-              {
-                borderRadius: (boardSize.w * r) / 2,
-                height: boardSize.w * r,
-                left: (boardSize.w - boardSize.w * r) / 2,
-                top: (boardSize.h - boardSize.w * r) / 2,
-                width: boardSize.w * r,
-              },
-            ]}
-          />
-        ))}
-        {/* radar cross */}
-        <RNView
-          pointerEvents="none"
-          style={[s.radarH, { top: boardSize.h / 2, width: boardSize.w }]}
-        />
-        <RNView
-          pointerEvents="none"
-          style={[s.radarV, { height: boardSize.h, left: boardSize.w / 2 }]}
-        />
-
-        {/* runways (centre, crossing) */}
-        {runways.map((rwy) => (
-          <RunwayStrip key={rwy.label} rwy={rwy} />
-        ))}
-
-        {/* incoming telegraph markers (spawn in ~2s) */}
-        {incoming.map((inc) => {
-          const sec = Math.max(1, Math.ceil(inc.inMs / 1000));
-          return (
-            <RNView
-              key={`inc-${inc.id}`}
-              pointerEvents="none"
-              style={{
-                alignItems: "center",
-                backgroundColor: `${inc.type.bodyColor}22`,
-                borderColor: inc.type.bodyColor,
-                borderRadius: 16,
-                borderWidth: 2,
-                height: 32,
-                justifyContent: "center",
-                left: inc.x - 16,
-                position: "absolute",
-                top: inc.y - 16,
-                width: 32,
-              }}
-            >
-              <Text style={s.incomingText}>{sec}s</Text>
+    <A11yOverlayScope>
+      <View style={s.screen}>
+        <A11yOverlayContent style={s.root}>
+          {/* header: best + controls */}
+          <RNView style={s.headerRow}>
+            <RNView style={[s.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[s.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
+              </Text>
+              <Text style={[s.bestValue, { color: theme.tint }]}>
+                {storedBest}
+              </Text>
             </RNView>
-          );
-        })}
+            <GameControls
+              isPaused={paused}
+              onPause={gameOver ? undefined : () => setPaused(true)}
+              onReset={restart}
+            />
+          </RNView>
 
-        {/* assigned path trails */}
-        {planes.map((p) => {
-          if (!p.path) {
-            return null;
-          }
-          return p.path
-            .slice(p.pathIdx)
-            .filter((_, i) => i % 3 === 0)
-            .map((pt, i) => (
+          {/* stats */}
+          <View style={s.statsRow}>
+            <Animated.View style={landedStyle}>
+              <Text style={[s.stat, { color: theme.tint }]}>
+                {t("flightPathLanded", { landed })}
+              </Text>
+            </Animated.View>
+            <Text style={[s.stat, { color: theme.text }]}>
+              {t("flightPathScore", { score })}
+            </Text>
+            <Text style={[s.stat, { color: theme.mutedText }]}>
+              {planes.length}/{MAX_PLANES}
+            </Text>
+          </View>
+
+          <RNView style={s.runwayLegendRow}>
+            {runways.map((rwy) => (
+              <RNView key={`legend-${rwy.label}`} style={s.runwayLegendItem}>
+                <RNView
+                  style={[
+                    s.runwayLegendSwatch,
+                    { backgroundColor: rwy.accentColor },
+                  ]}
+                />
+                <Text style={[s.runwayLegendText, { color: theme.mutedText }]}>
+                  {rwy.label}: {rwy.acceptsLabel}
+                </Text>
+              </RNView>
+            ))}
+          </RNView>
+
+          {/* board */}
+          <RNView
+            onLayout={onBoardLayout}
+            style={[s.board, { borderColor: theme.border }]}
+            {...panResponder.panHandlers}
+          >
+            {/* radar rings */}
+            {[0.25, 0.5, 0.75].map((r) => (
               <RNView
-                key={`t${p.id}-${i}`}
+                key={`ring-${r}`}
                 pointerEvents="none"
                 style={[
-                  s.dot,
+                  s.radarRing,
                   {
-                    backgroundColor: p.color,
-                    left: pt.x - 2,
-                    opacity: 0.35,
-                    top: pt.y - 2,
+                    borderRadius: (boardSize.w * r) / 2,
+                    height: boardSize.w * r,
+                    left: (boardSize.w - boardSize.w * r) / 2,
+                    top: (boardSize.h - boardSize.w * r) / 2,
+                    width: boardSize.w * r,
                   },
                 ]}
               />
-            ));
-        })}
-
-        {/* drawing trail */}
-        {drawPath
-          .filter((_, i) => i % 2 === 0)
-          .map((pt) => (
+            ))}
+            {/* radar cross */}
             <RNView
-              key={`d-${pt.x.toFixed(1)}-${pt.y.toFixed(1)}`}
               pointerEvents="none"
-              style={[
-                s.dot,
-                {
-                  backgroundColor: "#fff",
-                  borderRadius: 2.5,
-                  height: 5,
-                  left: pt.x - 2.5,
-                  opacity: 0.65,
-                  top: pt.y - 2.5,
-                  width: 5,
-                },
-              ]}
+              style={[s.radarH, { top: boardSize.h / 2, width: boardSize.w }]}
             />
-          ))}
-
-        {/* PLANES — drawn shapes */}
-        {planes.map((p) => {
-          const deg = (p.angle * 180) / Math.PI + 90;
-          const sel = selectedRef.current === p.id;
-          const outer = (Math.max(p.type.bodyH, p.type.wingW) + 4) * 2;
-          // landing animation: shrink from 1→0.3 and fade out
-          const lt = p.landing?.t ?? 0;
-          const isLanding = p.landing !== null;
-          const landScale = isLanding ? 1 - lt * 0.7 : 1;
-          const landOpacity = isLanding ? 1 - lt * 0.6 : 1;
-          return (
             <RNView
-              key={p.id}
               pointerEvents="none"
-              style={{
-                left: p.x - outer / 2,
-                opacity: landOpacity,
-                position: "absolute",
-                top: p.y - outer / 2,
-                transform: [{ scale: landScale }],
-              }}
-            >
-              <DrawnPlane
-                angleDeg={deg}
-                hasPath={p.path !== null || isLanding}
-                selected={sel}
-                trailColor={p.color}
-                type={p.type}
-              />
-              {!isLanding && <Text style={s.planeLabel}>{p.type.label}</Text>}
-            </RNView>
-          );
-        })}
-      </RNView>
+              style={[s.radarV, { height: boardSize.h, left: boardSize.w / 2 }]}
+            />
 
-      <Text style={[s.hint, { color: theme.mutedText }]}>
-        {t("flightPathHint")}
-      </Text>
+            {/* runways (centre, crossing) */}
+            {runways.map((rwy) => (
+              <RunwayStrip key={rwy.label} rwy={rwy} />
+            ))}
 
-      <GamePauseOverlay
-        onRestart={restart}
-        onResume={() => setPaused(false)}
-        visible={paused}
-      />
-    </View>
+            {/* incoming telegraph markers (spawn in ~2s) */}
+            {incoming.map((inc) => {
+              const sec = Math.max(1, Math.ceil(inc.inMs / 1000));
+              return (
+                <RNView
+                  key={`inc-${inc.id}`}
+                  pointerEvents="none"
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: `${inc.type.bodyColor}22`,
+                    borderColor: inc.type.bodyColor,
+                    borderRadius: 16,
+                    borderWidth: 2,
+                    height: 32,
+                    justifyContent: "center",
+                    left: inc.x - 16,
+                    position: "absolute",
+                    top: inc.y - 16,
+                    width: 32,
+                  }}
+                >
+                  <Text style={s.incomingText}>{sec}s</Text>
+                </RNView>
+              );
+            })}
+
+            {/* assigned path trails */}
+            {planes.map((p) => {
+              if (!p.path) {
+                return null;
+              }
+              return p.path
+                .slice(p.pathIdx)
+                .filter((_, i) => i % 3 === 0)
+                .map((pt, i) => (
+                  <RNView
+                    key={`t${p.id}-${i}`}
+                    pointerEvents="none"
+                    style={[
+                      s.dot,
+                      {
+                        backgroundColor: p.color,
+                        left: pt.x - 2,
+                        opacity: 0.35,
+                        top: pt.y - 2,
+                      },
+                    ]}
+                  />
+                ));
+            })}
+
+            {/* drawing trail */}
+            {drawPath
+              .filter((_, i) => i % 2 === 0)
+              .map((pt) => (
+                <RNView
+                  key={`d-${pt.x.toFixed(1)}-${pt.y.toFixed(1)}`}
+                  pointerEvents="none"
+                  style={[
+                    s.dot,
+                    {
+                      backgroundColor: "#fff",
+                      borderRadius: 2.5,
+                      height: 5,
+                      left: pt.x - 2.5,
+                      opacity: 0.65,
+                      top: pt.y - 2.5,
+                      width: 5,
+                    },
+                  ]}
+                />
+              ))}
+
+            {/* PLANES — drawn shapes */}
+            {planes.map((p) => {
+              const deg = (p.angle * 180) / Math.PI + 90;
+              const sel = selectedRef.current === p.id;
+              const outer = (Math.max(p.type.bodyH, p.type.wingW) + 4) * 2;
+              // landing animation: shrink from 1→0.3 and fade out
+              const lt = p.landing?.t ?? 0;
+              const isLanding = p.landing !== null;
+              const landScale = isLanding ? 1 - lt * 0.7 : 1;
+              const landOpacity = isLanding ? 1 - lt * 0.6 : 1;
+              return (
+                <RNView
+                  key={p.id}
+                  pointerEvents="none"
+                  style={{
+                    left: p.x - outer / 2,
+                    opacity: landOpacity,
+                    position: "absolute",
+                    top: p.y - outer / 2,
+                    transform: [{ scale: landScale }],
+                  }}
+                >
+                  <DrawnPlane
+                    angleDeg={deg}
+                    hasPath={p.path !== null || isLanding}
+                    selected={sel}
+                    trailColor={p.color}
+                    type={p.type}
+                  />
+                  {!isLanding && (
+                    <Text style={s.planeLabel}>{p.type.label}</Text>
+                  )}
+                </RNView>
+              );
+            })}
+          </RNView>
+
+          <Text style={[s.hint, { color: theme.mutedText }]}>
+            {t("flightPathHint")}
+          </Text>
+        </A11yOverlayContent>
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={() => setPaused(false)}
+          visible={paused}
+        />
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -1376,6 +1415,7 @@ const s = StyleSheet.create({
     fontSize: 9,
     fontWeight: "700",
   },
+  screen: { flex: 1 },
   stat: { fontSize: 15, fontWeight: "700" },
 
   statsRow: {

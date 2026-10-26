@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
+import { safePersistOptions } from "@/utils/persistStorage";
 
 interface DiscoveryState {
   markGameSeen: (id: string) => void;
@@ -18,9 +19,8 @@ export const useDiscoveryStore = create<DiscoveryState>()(
       },
       seenGameIds: [],
     }),
-    {
+    safePersistOptions(() => AsyncStorage, {
       name: "discovery",
-      storage: createJSONStorage(() => AsyncStorage),
-    }
+    })
   )
 );

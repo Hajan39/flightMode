@@ -16,6 +16,10 @@ import Animated, {
   ZoomIn,
 } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import {
   MatchResult,
@@ -358,130 +362,135 @@ export default function DuelTicTacToeGame() {
   }
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          label={statusText}
-          player={
-            roundWinner !== null && roundWinner !== "draw"
-              ? players[roundWinner]
-              : current
-          }
-          right={
-            <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-              {boardMode === "classic" ? "3×3" : `${rows}×${cols}`}
-            </Text>
-          }
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
-
-      <PlayerScoreStrip
-        activeIndex={roundOver ? undefined : currentPlayer}
-        detail={(i) =>
-          `${MARKS[i as Player]} · ${t("tttDrawCount", { count: draws })}`
-        }
-        players={players}
-        scores={wins}
-      />
-
-      <ScrollView
-        contentContainerStyle={styles.boardViewportContent}
-        showsVerticalScrollIndicator={false}
-        style={[styles.boardViewport, { borderColor: theme.border }]}
-      >
-        <ScrollView
-          contentContainerStyle={styles.boardHScrollContent}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        >
-          <RNView
-            style={[
-              styles.board,
-              { width: cols * cellSize + (cols - 1) * BOARD_GAP },
-            ]}
-          >
-            {range(bounds.minRow, bounds.maxRow).map((row) =>
-              range(bounds.minCol, bounds.maxCol).map((col) => {
-                const cellKey = keyOf(row, col);
-                const owner = board[cellKey];
-                const hasMark = owner !== undefined;
-                const isWinCell = winningLine.includes(cellKey);
-                const ownerColor = hasMark ? players[owner].color : undefined;
-                let cellBackground: string | undefined = theme.elevated;
-                if (isWinCell) {
-                  cellBackground = ownerColor;
-                } else if (hasMark) {
-                  cellBackground = `${ownerColor}22`;
-                }
-                return (
-                  <Pressable
-                    accessibilityLabel={hasMark ? MARKS[owner] : undefined}
-                    accessibilityRole="button"
-                    key={cellKey}
-                    onPress={() => handlePress(row, col)}
-                    style={[
-                      styles.cell,
-                      {
-                        backgroundColor: cellBackground,
-                        borderColor: hasMark ? ownerColor : theme.border,
-                        height: cellSize,
-                        width: cellSize,
-                      },
-                      isWinCell && styles.cellWin,
-                    ]}
-                  >
-                    {hasMark ? (
-                      <CellMark
-                        isWin={isWinCell}
-                        style={[
-                          styles.cellText,
-                          {
-                            color: isWinCell ? "#0b1620" : ownerColor,
-                            fontSize: cellSize * 0.44,
-                          },
-                        ]}
-                        value={MARKS[owner]}
-                      />
-                    ) : null}
-                  </Pressable>
-                );
-              })
-            )}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              label={statusText}
+              player={
+                roundWinner !== null && roundWinner !== "draw"
+                  ? players[roundWinner]
+                  : current
+              }
+              right={
+                <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                  {boardMode === "classic" ? "3×3" : `${rows}×${cols}`}
+                </Text>
+              }
+            />
+            <GameControls onReset={() => startMatch(players)} />
           </RNView>
-        </ScrollView>
-      </ScrollView>
 
-      {roundOver && phase === "playing" ? (
-        <Pressable
-          accessibilityLabel={t("tttNextRound")}
-          accessibilityRole="button"
-          onPress={nextRound}
-          style={[styles.actionBtn, { backgroundColor: theme.tint }]}
-        >
-          <Text style={[styles.actionText, { color: theme.onTint }]}>
-            {t("tttNextRound")}
-          </Text>
-        </Pressable>
-      ) : null}
+          <PlayerScoreStrip
+            activeIndex={roundOver ? undefined : currentPlayer}
+            detail={(i) =>
+              `${MARKS[i as Player]} · ${t("tttDrawCount", { count: draws })}`
+            }
+            players={players}
+            scores={wins}
+          />
 
-      {phase === "done" ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("mpWinsLabel")}
-          standings={players.map((p, i) => ({
-            detail: MARKS[i as Player],
-            player: p,
-            score: wins[i],
-          }))}
-          subtitle={t("tttDrawCount", { count: draws })}
-          winnerIndex={getSoleWinnerIndex(wins.map((score) => ({ score })))}
-        />
-      ) : null}
-    </View>
+          <ScrollView
+            contentContainerStyle={styles.boardViewportContent}
+            showsVerticalScrollIndicator={false}
+            style={[styles.boardViewport, { borderColor: theme.border }]}
+          >
+            <ScrollView
+              contentContainerStyle={styles.boardHScrollContent}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            >
+              <RNView
+                style={[
+                  styles.board,
+                  { width: cols * cellSize + (cols - 1) * BOARD_GAP },
+                ]}
+              >
+                {range(bounds.minRow, bounds.maxRow).map((row) =>
+                  range(bounds.minCol, bounds.maxCol).map((col) => {
+                    const cellKey = keyOf(row, col);
+                    const owner = board[cellKey];
+                    const hasMark = owner !== undefined;
+                    const isWinCell = winningLine.includes(cellKey);
+                    const ownerColor = hasMark
+                      ? players[owner].color
+                      : undefined;
+                    let cellBackground: string | undefined = theme.elevated;
+                    if (isWinCell) {
+                      cellBackground = ownerColor;
+                    } else if (hasMark) {
+                      cellBackground = `${ownerColor}22`;
+                    }
+                    return (
+                      <Pressable
+                        accessibilityLabel={hasMark ? MARKS[owner] : undefined}
+                        accessibilityRole="button"
+                        key={cellKey}
+                        onPress={() => handlePress(row, col)}
+                        style={[
+                          styles.cell,
+                          {
+                            backgroundColor: cellBackground,
+                            borderColor: hasMark ? ownerColor : theme.border,
+                            height: cellSize,
+                            width: cellSize,
+                          },
+                          isWinCell && styles.cellWin,
+                        ]}
+                      >
+                        {hasMark ? (
+                          <CellMark
+                            isWin={isWinCell}
+                            style={[
+                              styles.cellText,
+                              {
+                                color: isWinCell ? "#0b1620" : ownerColor,
+                                fontSize: cellSize * 0.44,
+                              },
+                            ]}
+                            value={MARKS[owner]}
+                          />
+                        ) : null}
+                      </Pressable>
+                    );
+                  })
+                )}
+              </RNView>
+            </ScrollView>
+          </ScrollView>
+
+          {roundOver && phase === "playing" ? (
+            <Pressable
+              accessibilityLabel={t("tttNextRound")}
+              accessibilityRole="button"
+              onPress={nextRound}
+              style={[styles.actionBtn, { backgroundColor: theme.tint }]}
+            >
+              <Text style={[styles.actionText, { color: theme.onTint }]}>
+                {t("tttNextRound")}
+              </Text>
+            </Pressable>
+          ) : null}
+        </A11yOverlayContent>
+        {phase === "done" ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("mpWinsLabel")}
+            standings={players.map((p, i) => ({
+              detail: MARKS[i as Player],
+              player: p,
+              score: wins[i],
+            }))}
+            subtitle={t("tttDrawCount", { count: draws })}
+            winnerIndex={getSoleWinnerIndex(wins.map((score) => ({ score })))}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -528,5 +537,6 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.sm,
   },
   roundChip: { ...TextStyle.chipLabel },
+  screen: { flex: 1 },
   topRow: { alignItems: "center", flexDirection: "row", gap: Spacing.sm },
 });

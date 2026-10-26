@@ -132,12 +132,22 @@ function RootStack() {
 
   useOTAUpdate(t as (key: string) => string);
 
-  // Streak: only after the achievement store hydrated (an earlier write is
-  // overwritten by the persisted state), on launch and on every return to the
-  // foreground — the app often stays alive across days in the background.
+  // Streak: only after the achievement store really hydrated, on launch and
+  // on every return to the foreground — the app often stays alive across days
+  // in the background. No timeout fallback: on a failed/slow read the state
+  // in memory is defaults, and a streak write would replace the real
+  // achievements on disk.
   useEffect(() => {
     const updateStreak = () => useAchievementStore.getState().updateStreak();
-    const cancelInitial = runAfterHydration(useAchievementStore, updateStreak);
+    const cancelInitial = runAfterHydration(
+      useAchievementStore,
+      ({ hydrated }) => {
+        if (hydrated) {
+          updateStreak();
+        }
+      },
+      { timeoutMs: null }
+    );
     const subscription = AppState.addEventListener("change", (status) => {
       if (status === "active" && useAchievementStore.persist.hasHydrated()) {
         updateStreak();

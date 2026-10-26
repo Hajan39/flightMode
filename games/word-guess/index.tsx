@@ -5,6 +5,10 @@ import {
   ScrollView,
   StyleSheet,
 } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -26,6 +30,9 @@ import {
   mergeKeyboard,
   wordGuessLanguage,
 } from "./logic";
+
+/** Cap system font scaling inside fixed-size board cells so text never overflows them. */
+const CELL_FONT_SCALE = 1.3;
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -329,150 +336,159 @@ export default function WordGuessGame() {
   // ---------------------------------------------------------------------------
 
   return (
-    <View style={[styles.root, { backgroundColor: theme.background }]}>
-      {/* Controls row — reset button only, no pause for word game */}
-      <RNView style={styles.controlsRow}>
-        <GameControls hidePause onReset={startGame} />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={[styles.screen, { backgroundColor: theme.background }]}>
+        <A11yOverlayContent style={styles.root}>
+          {/* Controls row — reset button only, no pause for word game */}
+          <RNView style={styles.controlsRow}>
+            <GameControls hidePause onReset={startGame} />
+          </RNView>
 
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Guess grid */}
-        <RNView style={styles.grid}>
-          {guesses.map((row, rowIdx) => {
-            const isCurrentRow = rowIdx === currentAttempt && !row.submitted;
-            return (
-              <RNView key={rowIdx} style={styles.row}>
-                {new Array(5).fill(null).map((_, colIdx) => {
-                  let letter: string | undefined;
-                  if (row.submitted) {
-                    letter = row.letters[colIdx];
-                  } else if (isCurrentRow) {
-                    letter = currentInput[colIdx];
-                  }
-                  const state: LetterState = row.submitted
-                    ? row.states[colIdx]
-                    : "empty";
-                  const hasLetter = letter !== undefined;
-                  const bgColor = getCellBg(state, isCurrentRow);
-                  const textColor = getCellTextColor(state, isCurrentRow);
-                  const borderColor = getCellBorderColor(
-                    state,
-                    hasLetter,
-                    isCurrentRow
-                  );
-
-                  return (
-                    <RNView
-                      key={colIdx}
-                      style={[
-                        styles.cell,
-                        {
-                          backgroundColor: bgColor,
-                          borderColor,
-                          borderRadius: Radius.sm,
-                          height: cellSize,
-                          width: cellSize,
-                        },
-                      ]}
-                    >
-                      <Text
-                        style={[
-                          styles.cellText,
-                          {
-                            color: textColor,
-                            fontSize: Math.floor(cellSize * 0.45),
-                          },
-                        ]}
-                      >
-                        {letter ?? ""}
-                      </Text>
-                    </RNView>
-                  );
-                })}
-              </RNView>
-            );
-          })}
-        </RNView>
-
-        {/* Error / status message row — always occupies space to avoid layout shift */}
-        <RNView accessibilityLiveRegion="polite" style={styles.messageRow}>
-          {errorMessage ? (
-            <Text style={[styles.errorText, { color: theme.mutedText }]}>
-              {errorMessage}
-            </Text>
-          ) : null}
-        </RNView>
-
-        {/* QWERTY keyboard */}
-        <RNView style={styles.keyboard}>
-          {keyboardRows.map((kbRow, kbRowIdx) => (
-            <RNView key={kbRowIdx} style={styles.keyboardRow}>
-              {kbRow.map((key) => {
-                const isWide = key === "ENTER" || key === "⌫";
+          <ScrollView
+            contentContainerStyle={styles.scrollContent}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
+          >
+            {/* Guess grid */}
+            <RNView style={styles.grid}>
+              {guesses.map((row, rowIdx) => {
+                const isCurrentRow =
+                  rowIdx === currentAttempt && !row.submitted;
                 return (
-                  <Pressable
-                    accessibilityLabel={key}
-                    accessibilityRole="button"
-                    key={key}
-                    onPress={() => handleKey(key)}
-                    style={[
-                      styles.key,
-                      {
-                        backgroundColor: getKeyBg(key),
-                        borderColor: theme.border,
-                        width: isWide ? Math.floor(keyWidth * 1.5) : keyWidth,
-                      },
-                    ]}
-                  >
-                    <Text
-                      style={[
-                        styles.keyText,
-                        {
-                          color: getKeyTextColor(key),
-                          fontSize: isWide ? FontSize.xs : FontSize.sm,
-                        },
-                      ]}
-                    >
-                      {key}
-                    </Text>
-                  </Pressable>
+                  <RNView key={rowIdx} style={styles.row}>
+                    {new Array(5).fill(null).map((_, colIdx) => {
+                      let letter: string | undefined;
+                      if (row.submitted) {
+                        letter = row.letters[colIdx];
+                      } else if (isCurrentRow) {
+                        letter = currentInput[colIdx];
+                      }
+                      const state: LetterState = row.submitted
+                        ? row.states[colIdx]
+                        : "empty";
+                      const hasLetter = letter !== undefined;
+                      const bgColor = getCellBg(state, isCurrentRow);
+                      const textColor = getCellTextColor(state, isCurrentRow);
+                      const borderColor = getCellBorderColor(
+                        state,
+                        hasLetter,
+                        isCurrentRow
+                      );
+
+                      return (
+                        <RNView
+                          key={colIdx}
+                          style={[
+                            styles.cell,
+                            {
+                              backgroundColor: bgColor,
+                              borderColor,
+                              borderRadius: Radius.sm,
+                              height: cellSize,
+                              width: cellSize,
+                            },
+                          ]}
+                        >
+                          <Text
+                            maxFontSizeMultiplier={CELL_FONT_SCALE}
+                            style={[
+                              styles.cellText,
+                              {
+                                color: textColor,
+                                fontSize: Math.floor(cellSize * 0.45),
+                              },
+                            ]}
+                          >
+                            {letter ?? ""}
+                          </Text>
+                        </RNView>
+                      );
+                    })}
+                  </RNView>
                 );
               })}
             </RNView>
-          ))}
-        </RNView>
-      </ScrollView>
 
-      {/* Result overlay */}
-      {phase === "over" && result ? (
-        <GameResult
-          best={result.best}
-          isNewBest={result.isNewBest}
-          last={
-            result.last === (won ? 1000 - currentAttempt * 150 : 0)
-              ? undefined
-              : result.last
-          }
-          onPlayAgain={startGame}
-          score={won ? 1000 - currentAttempt * 150 : 0}
-          streak={
-            result.currentStreak && result.currentStreak > 0
-              ? result.currentStreak
-              : undefined
-          }
-          subtitle={
-            won
-              ? `${currentAttempt + 1}/6`
-              : t("wgCorrectWord", { word: targetWord })
-          }
-          title={t("gameWordGuessName")}
-        />
-      ) : null}
-    </View>
+            {/* Error / status message row — always occupies space to avoid layout shift */}
+            <RNView accessibilityLiveRegion="polite" style={styles.messageRow}>
+              {errorMessage ? (
+                <Text style={[styles.errorText, { color: theme.mutedText }]}>
+                  {errorMessage}
+                </Text>
+              ) : null}
+            </RNView>
+
+            {/* QWERTY keyboard */}
+            <RNView style={styles.keyboard}>
+              {keyboardRows.map((kbRow, kbRowIdx) => (
+                <RNView key={kbRowIdx} style={styles.keyboardRow}>
+                  {kbRow.map((key) => {
+                    const isWide = key === "ENTER" || key === "⌫";
+                    return (
+                      <Pressable
+                        accessibilityLabel={key}
+                        accessibilityRole="button"
+                        key={key}
+                        onPress={() => handleKey(key)}
+                        style={[
+                          styles.key,
+                          {
+                            backgroundColor: getKeyBg(key),
+                            borderColor: theme.border,
+                            width: isWide
+                              ? Math.floor(keyWidth * 1.5)
+                              : keyWidth,
+                          },
+                        ]}
+                      >
+                        <Text
+                          maxFontSizeMultiplier={CELL_FONT_SCALE}
+                          style={[
+                            styles.keyText,
+                            {
+                              color: getKeyTextColor(key),
+                              fontSize: isWide ? FontSize.xs : FontSize.sm,
+                            },
+                          ]}
+                        >
+                          {key}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </RNView>
+              ))}
+            </RNView>
+          </ScrollView>
+
+          {/* Result overlay */}
+        </A11yOverlayContent>
+        {phase === "over" && result ? (
+          <GameResult
+            best={result.best}
+            isNewBest={result.isNewBest}
+            last={
+              result.last === (won ? 1000 - currentAttempt * 150 : 0)
+                ? undefined
+                : result.last
+            }
+            onPlayAgain={startGame}
+            score={won ? 1000 - currentAttempt * 150 : 0}
+            streak={
+              result.currentStreak && result.currentStreak > 0
+                ? result.currentStreak
+                : undefined
+            }
+            subtitle={
+              won
+                ? `${currentAttempt + 1}/6`
+                : t("wgCorrectWord", { word: targetWord })
+            }
+            title={t("gameWordGuessName")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -556,6 +572,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: Spacing.xs,
   },
+  screen: { flex: 1 },
   scrollContent: {
     alignItems: "center",
     flexGrow: 1,

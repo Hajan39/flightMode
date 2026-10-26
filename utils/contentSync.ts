@@ -182,7 +182,7 @@ export function parseContentFeed(
   return { items, version: feed.version };
 }
 
-function isContentItem(value: unknown): value is ContentItem {
+export function isContentItem(value: unknown): value is ContentItem {
   const item = value as ContentItem;
   return (
     typeof item?.id === "string" &&

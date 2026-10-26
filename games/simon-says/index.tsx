@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -258,115 +262,120 @@ export default function SimonSaysGame() {
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
-    <View style={styles.root}>
-      <GameControls onReset={restart} />
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <GameControls onReset={restart} />
 
-      {/* Lives + round header (visible during active play) */}
-      {!(isIdle || isDone) && (
-        <RNView style={styles.header}>
-          {/* Lives dots */}
-          <RNView style={styles.livesRow}>
-            <Text style={[styles.headerLabel, { color: theme.mutedText }]}>
-              {t("colorClashLives")}
-            </Text>
-            <RNView style={styles.dotsRow}>
-              {Array.from({ length: MAX_LIVES }).map((_, i) => (
-                <RNView
-                  key={i}
+          {/* Lives + round header (visible during active play) */}
+          {!(isIdle || isDone) && (
+            <RNView style={styles.header}>
+              {/* Lives dots */}
+              <RNView style={styles.livesRow}>
+                <Text style={[styles.headerLabel, { color: theme.mutedText }]}>
+                  {t("colorClashLives")}
+                </Text>
+                <RNView style={styles.dotsRow}>
+                  {Array.from({ length: MAX_LIVES }).map((_, i) => (
+                    <RNView
+                      key={i}
+                      style={[
+                        styles.dot,
+                        {
+                          backgroundColor:
+                            i < lives ? theme.danger : theme.border,
+                        },
+                      ]}
+                    />
+                  ))}
+                </RNView>
+              </RNView>
+
+              {/* Round counter */}
+              <RNView style={styles.roundBlock}>
+                <Text style={[styles.headerLabel, { color: theme.mutedText }]}>
+                  {t("simonRound")}
+                </Text>
+                <Text style={[styles.roundValue, { color: theme.text }]}>
+                  {round}
+                </Text>
+              </RNView>
+            </RNView>
+          )}
+
+          {/* Phase indicator */}
+          {!(isIdle || isDone) && (
+            <RNView style={styles.phaseRow}>
+              <Text
+                style={[
+                  styles.phaseText,
+                  {
+                    color: isShowing ? theme.mutedText : theme.tint,
+                    opacity: isShowing ? 0.6 : 1,
+                  },
+                ]}
+              >
+                {isShowing ? t("simonWatchNow") : t("simonYourTurn")}
+              </Text>
+            </RNView>
+          )}
+
+          {/* 2×2 Simon button grid */}
+          <RNView pointerEvents={isInput ? "auto" : "none"} style={styles.grid}>
+            {([0, 1, 2, 3] as ButtonId[]).map((btnId) => {
+              const isLit = litButton === btnId;
+              const colors = BUTTON_COLORS[btnId];
+              return (
+                <Pressable
+                  accessibilityLabel={t(BUTTON_LABEL_KEYS[btnId])}
+                  accessibilityRole="button"
+                  key={btnId}
+                  onPress={() => handleButtonPress(btnId)}
                   style={[
-                    styles.dot,
+                    styles.simonBtn,
                     {
-                      backgroundColor: i < lives ? theme.danger : theme.border,
+                      backgroundColor: isLit ? colors.lit : colors.dim,
+                      height: padSize,
+                      opacity: isInput ? 1 : 0.85,
+                      width: padSize,
                     },
                   ]}
                 />
-              ))}
-            </RNView>
+              );
+            })}
           </RNView>
 
-          {/* Round counter */}
-          <RNView style={styles.roundBlock}>
-            <Text style={[styles.headerLabel, { color: theme.mutedText }]}>
-              {t("simonRound")}
-            </Text>
-            <Text style={[styles.roundValue, { color: theme.text }]}>
-              {round}
-            </Text>
-          </RNView>
-        </RNView>
-      )}
-
-      {/* Phase indicator */}
-      {!(isIdle || isDone) && (
-        <RNView style={styles.phaseRow}>
-          <Text
-            style={[
-              styles.phaseText,
-              {
-                color: isShowing ? theme.mutedText : theme.tint,
-                opacity: isShowing ? 0.6 : 1,
-              },
-            ]}
-          >
-            {isShowing ? t("simonWatchNow") : t("simonYourTurn")}
-          </Text>
-        </RNView>
-      )}
-
-      {/* 2×2 Simon button grid */}
-      <RNView pointerEvents={isInput ? "auto" : "none"} style={styles.grid}>
-        {([0, 1, 2, 3] as ButtonId[]).map((btnId) => {
-          const isLit = litButton === btnId;
-          const colors = BUTTON_COLORS[btnId];
-          return (
+          {/* Idle start hint */}
+          {isIdle && finalScore === null && (
             <Pressable
-              accessibilityLabel={t(BUTTON_LABEL_KEYS[btnId])}
+              accessibilityLabel={t("gameTapToStart")}
               accessibilityRole="button"
-              key={btnId}
-              onPress={() => handleButtonPress(btnId)}
-              style={[
-                styles.simonBtn,
-                {
-                  backgroundColor: isLit ? colors.lit : colors.dim,
-                  height: padSize,
-                  opacity: isInput ? 1 : 0.85,
-                  width: padSize,
-                },
-              ]}
-            />
-          );
-        })}
-      </RNView>
+              onPress={startGame}
+              style={styles.startArea}
+            >
+              <Text style={[styles.startText, { color: theme.mutedText }]}>
+                {t("gameTapToStart")}
+              </Text>
+            </Pressable>
+          )}
 
-      {/* Idle start hint */}
-      {isIdle && finalScore === null && (
-        <Pressable
-          accessibilityLabel={t("gameTapToStart")}
-          accessibilityRole="button"
-          onPress={startGame}
-          style={styles.startArea}
-        >
-          <Text style={[styles.startText, { color: theme.mutedText }]}>
-            {t("gameTapToStart")}
-          </Text>
-        </Pressable>
-      )}
-
-      {/* Result overlay */}
-      {finalScore !== null && (
-        <GameResult
-          best={progressInfo?.best ?? storedBestScore}
-          isNewBest={progressInfo?.isNewBest}
-          last={
-            progressInfo?.last === undefined ? undefined : progressInfo.last
-          }
-          onPlayAgain={startGame}
-          score={finalScore}
-          streak={progressInfo?.currentStreak}
-          title={t("gameSimonSaysName")}
-        />
-      )}
-    </View>
+          {/* Result overlay */}
+        </A11yOverlayContent>
+        {finalScore !== null && (
+          <GameResult
+            best={progressInfo?.best ?? storedBestScore}
+            isNewBest={progressInfo?.isNewBest}
+            last={
+              progressInfo?.last === undefined ? undefined : progressInfo.last
+            }
+            onPlayAgain={startGame}
+            score={finalScore}
+            streak={progressInfo?.currentStreak}
+            title={t("gameSimonSaysName")}
+          />
+        )}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -426,6 +435,7 @@ const styles = StyleSheet.create({
     letterSpacing: -1,
     lineHeight: 30,
   },
+  screen: { flex: 1 },
   simonBtn: {
     borderRadius: 20,
   },

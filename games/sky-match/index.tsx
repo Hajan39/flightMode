@@ -1,6 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useEffect, useRef, useState } from "react";
 import {
+  type AccessibilityActionEvent,
+  type AccessibilityActionInfo,
   Animated,
   Easing,
   type GestureResponderEvent,
@@ -10,6 +12,10 @@ import {
   StyleSheet,
 } from "react-native";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import { Text, View } from "@/components/Themed";
@@ -20,6 +26,7 @@ import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { swipeDirection } from "@/hooks/useSwipe";
 import { useTranslation } from "@/hooks/useTranslation";
+import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
 import {
   areAdjacent,
@@ -57,6 +64,22 @@ const KIND_STYLE: { color: string; icon: IconName }[] = [
   { color: "#A855F7", icon: "ticket" },
 ];
 
+/** Spoken names, aligned with KIND_STYLE. */
+const KIND_NAME_KEYS: TranslationKey[] = [
+  "smA11yPlane",
+  "smA11yCloud",
+  "smA11ySun",
+  "smA11ySuitcase",
+  "smA11yGlobe",
+  "smA11yTicket",
+];
+const SPECIAL_NAME_KEYS: Partial<Record<Special, TranslationKey>> = {
+  bomb: "smA11yBomb",
+  col: "smA11yColBlast",
+  row: "smA11yRowBlast",
+};
+const ACTIVATE: AccessibilityActionInfo[] = [{ name: "activate" }];
+
 const SPECIAL_BADGE: Partial<Record<Special, IconName>> = {
   bomb: "flash",
   col: "swap-vertical",
@@ -76,10 +99,14 @@ const EMPTY_LEVEL_STARS: Record<string, number> = {};
    ================================================================ */
 
 interface TileViewProps {
+  /** Screen-reader label + hint; double-tap runs `onActivate` (= a tap). */
+  a11yHint: string;
+  a11yLabel: string;
   cell: number;
   /** Rows above the board a new tile starts from (0 = already on the board). */
   dropFrom: number;
   hinted: boolean;
+  onActivate: () => void;
   popping: boolean;
   selected: boolean;
   size: number;
@@ -87,9 +114,12 @@ interface TileViewProps {
 }
 
 function TileView({
+  a11yHint,
+  a11yLabel,
   cell,
   dropFrom,
   hinted,
+  onActivate,
   popping,
   selected,
   size,
@@ -155,6 +185,17 @@ function TileView({
 
   return (
     <Animated.View
+      accessibilityActions={ACTIVATE}
+      accessibilityHint={a11yHint}
+      accessibilityLabel={a11yLabel}
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
+      accessible
+      onAccessibilityAction={(e: AccessibilityActionEvent) => {
+        if (e.nativeEvent.actionName === "activate") {
+          onActivate();
+        }
+      }}
       style={[
         styles.tile,
         {
@@ -487,13 +528,31 @@ export default function SkyMatchGame() {
       }
       return;
     }
-    // Tap: select, or swap with the selected neighbour.
-    if (selected !== null && areAdjacent(selected, start.cell)) {
-      trySwap(selected, start.cell);
+    tapCell(start.cell);
+  };
+
+  /** Tap (or screen-reader double-tap): select, or swap with the selected neighbour. */
+  const tapCell = (cell: number) => {
+    if (selected !== null && areAdjacent(selected, cell)) {
+      trySwap(selected, cell);
     } else {
       haptic.tap();
-      setSelected(selected === start.cell ? null : start.cell);
+      setSelected(selected === cell ? null : cell);
     }
+  };
+
+  const tileLabel = (tile: Tile, cell: number) => {
+    const special = SPECIAL_NAME_KEYS[tile.special];
+    const parts = [
+      tile.special === "color"
+        ? t("smA11yStar")
+        : t(KIND_NAME_KEYS[tile.kind] ?? "smA11yPlane"),
+    ];
+    if (special) {
+      parts.push(t(special));
+    }
+    parts.push(t("a11yRowCol", { col: colOf(cell) + 1, row: rowOf(cell) + 1 }));
+    return parts.join(", ");
   };
 
   /* ================================================================
@@ -643,128 +702,140 @@ export default function SkyMatchGame() {
   const progress = Math.min(1, score / (level.target * 1.6));
   const placed = placeTiles(board, previous);
   const hintCells: number[] = hint ?? [];
+  const swapHint = t("smA11ySwapHint");
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        <Text style={[styles.levelTag, { color: theme.mutedText }]}>
-          {t("levelLabel", { level: level.id })}
-        </Text>
-        <GameControls
-          isPaused={paused}
-          onPause={() => setPaused(true)}
-          onReset={() => startLevel(level.id)}
-        />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            <Text style={[styles.levelTag, { color: theme.mutedText }]}>
+              {t("levelLabel", { level: level.id })}
+            </Text>
+            <GameControls
+              isPaused={paused}
+              onPause={() => setPaused(true)}
+              onReset={() => startLevel(level.id)}
+            />
+          </RNView>
 
-      <RNView style={styles.hud}>
-        <RNView style={[styles.hudBox, { backgroundColor: theme.card }]}>
-          <Text style={[styles.hudLabel, { color: theme.mutedText }]}>
-            {t("smMoves")}
-          </Text>
-          <Text
-            style={[
-              styles.hudValue,
-              { color: movesLeft <= 3 ? "#EF4444" : theme.text },
-            ]}
-          >
-            {movesLeft}
-          </Text>
-        </RNView>
-        <RNView
-          style={[
-            styles.hudBox,
-            styles.hudWide,
-            { backgroundColor: theme.card },
-          ]}
-        >
-          <Text style={[styles.hudLabel, { color: theme.mutedText }]}>
-            {t("smScoreOf", { score, target: level.target })}
-          </Text>
-          <RNView
-            style={[styles.progressTrack, { backgroundColor: theme.surface }]}
-          >
+          <RNView style={styles.hud}>
+            <RNView style={[styles.hudBox, { backgroundColor: theme.card }]}>
+              <Text style={[styles.hudLabel, { color: theme.mutedText }]}>
+                {t("smMoves")}
+              </Text>
+              <Text
+                style={[
+                  styles.hudValue,
+                  { color: movesLeft <= 3 ? "#EF4444" : theme.text },
+                ]}
+              >
+                {movesLeft}
+              </Text>
+            </RNView>
             <RNView
               style={[
-                styles.progressFill,
-                {
-                  backgroundColor: theme.tint,
-                  width: `${Math.round(progress * 100)}%`,
-                },
+                styles.hudBox,
+                styles.hudWide,
+                { backgroundColor: theme.card },
               ]}
-            />
-            {[1, 1.3, 1.6].map((m) => (
+            >
+              <Text style={[styles.hudLabel, { color: theme.mutedText }]}>
+                {t("smScoreOf", { score, target: level.target })}
+              </Text>
               <RNView
-                key={m}
                 style={[
-                  styles.progressMark,
-                  {
-                    backgroundColor:
-                      score >= level.target * m ? "#FBBF24" : theme.border,
-                    left: `${Math.round((m / 1.6) * 100) - 2}%`,
-                  },
+                  styles.progressTrack,
+                  { backgroundColor: theme.surface },
                 ]}
+              >
+                <RNView
+                  style={[
+                    styles.progressFill,
+                    {
+                      backgroundColor: theme.tint,
+                      width: `${Math.round(progress * 100)}%`,
+                    },
+                  ]}
+                />
+                {[1, 1.3, 1.6].map((m) => (
+                  <RNView
+                    key={m}
+                    style={[
+                      styles.progressMark,
+                      {
+                        backgroundColor:
+                          score >= level.target * m ? "#FBBF24" : theme.border,
+                        left: `${Math.round((m / 1.6) * 100) - 2}%`,
+                      },
+                    ]}
+                  />
+                ))}
+              </RNView>
+            </RNView>
+          </RNView>
+
+          <RNView style={styles.comboRow}>
+            {comboText ? (
+              <Text style={[styles.combo, { color: theme.tint }]}>
+                {comboText}
+              </Text>
+            ) : null}
+          </RNView>
+
+          <RNView
+            onLayout={() =>
+              boardRef.current?.measureInWindow((x, y) => {
+                origin.current = { x, y };
+              })
+            }
+            onResponderGrant={onGrant}
+            onResponderRelease={onRelease}
+            onResponderTerminationRequest={() => false}
+            onStartShouldSetResponder={() => true}
+            ref={boardRef}
+            style={[
+              styles.board,
+              {
+                backgroundColor: theme.card,
+                borderColor: theme.border,
+                height: boardSize,
+                width: boardSize,
+              },
+            ]}
+          >
+            {placed.map(({ cell, dropFrom, tile }) => (
+              <TileView
+                a11yHint={swapHint}
+                a11yLabel={tileLabel(tile, cell)}
+                cell={cell}
+                dropFrom={dropFrom}
+                hinted={hintCells.includes(cell)}
+                key={tile.id}
+                onActivate={() => tapCell(cell)}
+                popping={popping.has(tile.id)}
+                selected={selected === cell}
+                size={cellSize}
+                tile={tile}
               />
             ))}
           </RNView>
-        </RNView>
-      </RNView>
 
-      <RNView style={styles.comboRow}>
-        {comboText ? (
-          <Text style={[styles.combo, { color: theme.tint }]}>{comboText}</Text>
-        ) : null}
-      </RNView>
-
-      <RNView
-        onLayout={() =>
-          boardRef.current?.measureInWindow((x, y) => {
-            origin.current = { x, y };
-          })
-        }
-        onResponderGrant={onGrant}
-        onResponderRelease={onRelease}
-        onResponderTerminationRequest={() => false}
-        onStartShouldSetResponder={() => true}
-        ref={boardRef}
-        style={[
-          styles.board,
-          {
-            backgroundColor: theme.card,
-            borderColor: theme.border,
-            height: boardSize,
-            width: boardSize,
-          },
-        ]}
-      >
-        {placed.map(({ cell, dropFrom, tile }) => (
-          <TileView
-            cell={cell}
-            dropFrom={dropFrom}
-            hinted={hintCells.includes(cell)}
-            key={tile.id}
-            popping={popping.has(tile.id)}
-            selected={selected === cell}
-            size={cellSize}
-            tile={tile}
-          />
-        ))}
-      </RNView>
-
-      <Text style={[styles.footHint, { color: theme.mutedText }]}>
-        {t("smHowTo")}
-      </Text>
-
-      <GamePauseOverlay
-        onQuit={() => {
-          runToken.current += 1;
-          setPhase("menu");
-        }}
-        onRestart={() => startLevel(level.id)}
-        onResume={() => setPaused(false)}
-        visible={paused}
-      />
-    </View>
+          <Text style={[styles.footHint, { color: theme.mutedText }]}>
+            {t("smHowTo")}
+          </Text>
+        </A11yOverlayContent>
+        <GamePauseOverlay
+          onQuit={() => {
+            runToken.current += 1;
+            setPhase("menu");
+          }}
+          onRestart={() => startLevel(level.id)}
+          onResume={() => setPaused(false)}
+          visible={paused}
+        />
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -869,6 +940,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.lg,
     paddingTop: Spacing.md,
   },
+  screen: { flex: 1 },
   sectionLabel: {
     fontSize: 12,
     fontWeight: "800",

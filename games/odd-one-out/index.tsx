@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Animated, Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
@@ -364,181 +368,190 @@ export default function OddOneOutGame() {
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <View style={styles.root}>
-      {/* ── Header controls ── */}
-      <RNView style={styles.headerRow}>
-        <RNView style={[styles.scorePill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("oddScore")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.tint }]}>{score}</Text>
-        </RNView>
-        <RNView style={[styles.roundPill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("oddRound")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>
-            {round > 0 ? `${round}/${TOTAL_ROUNDS}` : `—/${TOTAL_ROUNDS}`}
-          </Text>
-        </RNView>
-        <GameControls onReset={phase === "idle" ? undefined : restart} />
-      </RNView>
-
-      {/* ── Time bar ── */}
-      <RNView style={[styles.timeTrack, { backgroundColor: theme.card }]}>
-        <Animated.View
-          style={[
-            styles.timeFill,
-            {
-              backgroundColor: theme.tint,
-              width: progressAnim.interpolate({
-                inputRange: [0, 1],
-                outputRange: ["0%", "100%"],
-              }),
-            },
-          ]}
-        />
-      </RNView>
-
-      {/* ── Grid or idle prompt ── */}
-      {isIdle && finalScore === null ? (
-        <Pressable
-          accessibilityLabel={t("gameTapToStart")}
-          accessibilityRole="button"
-          onPress={startGame}
-          style={[
-            styles.idleArea,
-            { backgroundColor: theme.elevated, borderColor: theme.border },
-          ]}
-        >
-          <Text style={[styles.idleTitle, { color: theme.text }]}>
-            {t("gameTapToStart")}
-          </Text>
-          <Text style={[styles.idleHint, { color: theme.mutedText }]}>
-            {t("oddFind")}
-          </Text>
-        </Pressable>
-      ) : (
-        <RNView style={styles.gridWrapper}>
-          {roundData ? (
-            <Animated.View
-              style={[
-                styles.gridContainer,
-                {
-                  gap: CELL_GAP,
-                  opacity: gridAnim,
-                  transform: [
-                    {
-                      scale: gridAnim.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [0.94, 1],
-                      }),
-                    },
-                  ],
-                },
-              ]}
-            >
-              {Array.from({ length: rows }, (_, row) => (
-                <RNView key={row} style={[styles.gridRow, { gap: CELL_GAP }]}>
-                  {Array.from({ length: cols }, (_unused, col) => {
-                    const index = row * cols + col;
-                    const emoji = roundData.grid[index];
-                    const isTapped = feedbackIndex === index;
-                    const isOdd = roundData.oddIndex === index;
-
-                    // Cell background based on feedback state
-                    let cellBg = theme.elevated;
-                    let cellBorder = theme.border;
-
-                    if (phase === "feedback") {
-                      if (isTapped && feedbackKind === "correct") {
-                        cellBg = theme.successSurface;
-                        cellBorder = theme.successBorder;
-                      } else if (isTapped && feedbackKind === "wrong") {
-                        cellBg = theme.dangerSurface;
-                        cellBorder = theme.dangerBorder;
-                      } else if (feedbackKind === "timeout" && isOdd) {
-                        cellBg = theme.dangerSurface;
-                        cellBorder = theme.dangerBorder;
-                      }
-                    }
-
-                    return (
-                      <Pressable
-                        key={index}
-                        onPress={() => handleCellTap(index)}
-                        style={[
-                          styles.cell,
-                          {
-                            backgroundColor: cellBg,
-                            borderColor: cellBorder,
-                            height: cellSize,
-                            width: cellSize,
-                          },
-                        ]}
-                      >
-                        <Animated.Text
-                          style={[
-                            styles.cellEmoji,
-                            { fontSize: emojiFontSize },
-                            isTapped
-                              ? {
-                                  transform: [
-                                    { scale: cellPulseAnim },
-                                    { translateX: cellShakeAnim },
-                                  ],
-                                }
-                              : null,
-                          ]}
-                        >
-                          {emoji}
-                        </Animated.Text>
-                      </Pressable>
-                    );
-                  })}
-                </RNView>
-              ))}
-            </Animated.View>
-          ) : null}
-          {phase === "feedback" && feedbackKind === "timeout" && (
-            <RNView
-              style={[
-                styles.timeoutBanner,
-                {
-                  backgroundColor: theme.card,
-                  borderColor: theme.dangerBorder,
-                },
-              ]}
-            >
-              <Text style={[styles.timeoutText, { color: theme.danger }]}>
-                {t("oddTimeUp")}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* ── Header controls ── */}
+          <RNView style={styles.headerRow}>
+            <RNView style={[styles.scorePill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("oddScore")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.tint }]}>
+                {score}
               </Text>
             </RNView>
+            <RNView style={[styles.roundPill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("oddRound")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {round > 0 ? `${round}/${TOTAL_ROUNDS}` : `—/${TOTAL_ROUNDS}`}
+              </Text>
+            </RNView>
+            <GameControls onReset={phase === "idle" ? undefined : restart} />
+          </RNView>
+
+          {/* ── Time bar ── */}
+          <RNView style={[styles.timeTrack, { backgroundColor: theme.card }]}>
+            <Animated.View
+              style={[
+                styles.timeFill,
+                {
+                  backgroundColor: theme.tint,
+                  width: progressAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: ["0%", "100%"],
+                  }),
+                },
+              ]}
+            />
+          </RNView>
+
+          {/* ── Grid or idle prompt ── */}
+          {isIdle && finalScore === null ? (
+            <Pressable
+              accessibilityLabel={t("gameTapToStart")}
+              accessibilityRole="button"
+              onPress={startGame}
+              style={[
+                styles.idleArea,
+                { backgroundColor: theme.elevated, borderColor: theme.border },
+              ]}
+            >
+              <Text style={[styles.idleTitle, { color: theme.text }]}>
+                {t("gameTapToStart")}
+              </Text>
+              <Text style={[styles.idleHint, { color: theme.mutedText }]}>
+                {t("oddFind")}
+              </Text>
+            </Pressable>
+          ) : (
+            <RNView style={styles.gridWrapper}>
+              {roundData ? (
+                <Animated.View
+                  style={[
+                    styles.gridContainer,
+                    {
+                      gap: CELL_GAP,
+                      opacity: gridAnim,
+                      transform: [
+                        {
+                          scale: gridAnim.interpolate({
+                            inputRange: [0, 1],
+                            outputRange: [0.94, 1],
+                          }),
+                        },
+                      ],
+                    },
+                  ]}
+                >
+                  {Array.from({ length: rows }, (_, row) => (
+                    <RNView
+                      key={row}
+                      style={[styles.gridRow, { gap: CELL_GAP }]}
+                    >
+                      {Array.from({ length: cols }, (_unused, col) => {
+                        const index = row * cols + col;
+                        const emoji = roundData.grid[index];
+                        const isTapped = feedbackIndex === index;
+                        const isOdd = roundData.oddIndex === index;
+
+                        // Cell background based on feedback state
+                        let cellBg = theme.elevated;
+                        let cellBorder = theme.border;
+
+                        if (phase === "feedback") {
+                          if (isTapped && feedbackKind === "correct") {
+                            cellBg = theme.successSurface;
+                            cellBorder = theme.successBorder;
+                          } else if (isTapped && feedbackKind === "wrong") {
+                            cellBg = theme.dangerSurface;
+                            cellBorder = theme.dangerBorder;
+                          } else if (feedbackKind === "timeout" && isOdd) {
+                            cellBg = theme.dangerSurface;
+                            cellBorder = theme.dangerBorder;
+                          }
+                        }
+
+                        return (
+                          <Pressable
+                            key={index}
+                            onPress={() => handleCellTap(index)}
+                            style={[
+                              styles.cell,
+                              {
+                                backgroundColor: cellBg,
+                                borderColor: cellBorder,
+                                height: cellSize,
+                                width: cellSize,
+                              },
+                            ]}
+                          >
+                            <Animated.Text
+                              style={[
+                                styles.cellEmoji,
+                                { fontSize: emojiFontSize },
+                                isTapped
+                                  ? {
+                                      transform: [
+                                        { scale: cellPulseAnim },
+                                        { translateX: cellShakeAnim },
+                                      ],
+                                    }
+                                  : null,
+                              ]}
+                            >
+                              {emoji}
+                            </Animated.Text>
+                          </Pressable>
+                        );
+                      })}
+                    </RNView>
+                  ))}
+                </Animated.View>
+              ) : null}
+              {phase === "feedback" && feedbackKind === "timeout" && (
+                <RNView
+                  style={[
+                    styles.timeoutBanner,
+                    {
+                      backgroundColor: theme.card,
+                      borderColor: theme.dangerBorder,
+                    },
+                  ]}
+                >
+                  <Text style={[styles.timeoutText, { color: theme.danger }]}>
+                    {t("oddTimeUp")}
+                  </Text>
+                </RNView>
+              )}
+            </RNView>
           )}
-        </RNView>
-      )}
 
-      {/* ── Hint label when playing ── */}
-      {isPlaying && (
-        <Text style={[styles.hintText, { color: theme.mutedText }]}>
-          {t("oddFind")}
-        </Text>
-      )}
+          {/* ── Hint label when playing ── */}
+          {isPlaying && (
+            <Text style={[styles.hintText, { color: theme.mutedText }]}>
+              {t("oddFind")}
+            </Text>
+          )}
 
-      {/* ── Game result overlay ── */}
-      {finalScore !== null && (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={restart}
-          score={finalScore}
-          streak={progressInfo?.currentStreak}
-          subtitle={`${finalScore} / ${TOTAL_ROUNDS}`}
-          title={t("gameOddOneOutName")}
-        />
-      )}
-    </View>
+          {/* ── Game result overlay ── */}
+        </A11yOverlayContent>
+        {finalScore !== null && (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={restart}
+            score={finalScore}
+            streak={progressInfo?.currentStreak}
+            subtitle={`${finalScore} / ${TOTAL_ROUNDS}`}
+            title={t("gameOddOneOutName")}
+          />
+        )}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -614,6 +627,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
   },
+  screen: { flex: 1 },
   statLabel: {
     fontSize: 11,
     fontWeight: "800",

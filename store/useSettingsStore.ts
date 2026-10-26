@@ -1,9 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 import type { Language } from "@/i18n/translations";
 import type { GameCategory } from "@/types/game";
-import { reportHydrationResult } from "@/utils/hydration";
+import { safePersistOptions } from "@/utils/persistStorage";
 
 export type ThemeMode =
   | "system"
@@ -83,10 +83,6 @@ export const useSettingsStore = create<SettingsState>()(
             : [...state.preferredCategories, category],
         })),
     }),
-    {
-      name: "settings",
-      onRehydrateStorage: reportHydrationResult("settings"),
-      storage: createJSONStorage(() => AsyncStorage),
-    }
+    safePersistOptions(() => AsyncStorage, { name: "settings" })
   )
 );

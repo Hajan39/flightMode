@@ -3,6 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { FadeIn, ZoomIn } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GameCountdown from "@/components/GameCountdown";
 import {
@@ -170,129 +174,142 @@ export default function CategoryBlitzGame() {
   }
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          player={current}
-          right={
-            <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-              {t("mpRoundOf", {
-                round: (turn?.round ?? 0) + 1,
-                total: ROUNDS_PER_PLAYER,
-              })}
-            </Text>
-          }
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              player={current}
+              right={
+                <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                  {t("mpRoundOf", {
+                    round: (turn?.round ?? 0) + 1,
+                    total: ROUNDS_PER_PLAYER,
+                  })}
+                </Text>
+              }
+            />
+            <GameControls onReset={() => startMatch(players)} />
+          </RNView>
 
-      <PlayerScoreStrip
-        activeIndex={phase === "playing" ? turn?.player : undefined}
-        players={players}
-        scores={totals}
-      />
+          <PlayerScoreStrip
+            activeIndex={phase === "playing" ? turn?.player : undefined}
+            players={players}
+            scores={totals}
+          />
 
-      <RNView
-        style={[
-          styles.categoryCard,
-          {
-            backgroundColor: theme.card,
-            borderColor: current?.color ?? theme.border,
-          },
-        ]}
-      >
-        <Text style={[styles.categoryLabel, { color: theme.mutedText }]}>
-          {t("cbzNameAsMany")}
-        </Text>
-        <Text style={[styles.categoryText, { color: theme.text }]}>
-          {turn ? t(turn.category) : ""}
-        </Text>
-      </RNView>
-
-      {phase === "playing" ? (
-        <>
-          <Text style={[styles.timer, { color: timerColor }]}>{timeLeft}s</Text>
-          <Pressable
-            accessibilityLabel={t("cbzCountIt")}
-            accessibilityRole="button"
-            onPress={scorePoint}
-            style={[styles.scoreBtn, { backgroundColor: current.color }]}
-          >
-            <Animated.Text
-              entering={ZoomIn.duration(140)}
-              key={turnScore}
-              style={styles.scoreValue}
-            >
-              {turnScore}
-            </Animated.Text>
-            <Text style={styles.scoreHint}>{t("cbzCountIt")}</Text>
-          </Pressable>
-          <Pressable
-            accessibilityLabel={t("cbzUndo")}
-            accessibilityRole="button"
-            disabled={turnScore === 0}
-            onPress={undoPoint}
+          <RNView
             style={[
-              styles.undoBtn,
-              { borderColor: theme.border, opacity: turnScore === 0 ? 0.4 : 1 },
+              styles.categoryCard,
+              {
+                backgroundColor: theme.card,
+                borderColor: current?.color ?? theme.border,
+              },
             ]}
           >
-            <Ionicons
-              color={theme.mutedText}
-              name="arrow-undo-outline"
-              size={16}
-            />
-            <Text style={[styles.undoText, { color: theme.mutedText }]}>
-              {t("cbzUndo")}
+            <Text style={[styles.categoryLabel, { color: theme.mutedText }]}>
+              {t("cbzNameAsMany")}
             </Text>
-          </Pressable>
-        </>
-      ) : null}
-
-      {phase === "turnEnd" ? (
-        <Animated.View entering={FadeIn.duration(200)} style={styles.turnEnd}>
-          <Text style={[styles.turnEndScore, { color: current.color }]}>
-            +{turnScore}
-          </Text>
-          <Text style={[styles.turnEndText, { color: theme.mutedText }]}>
-            {t("cbzTimeUp", { player: current.name })}
-          </Text>
-          <Pressable
-            accessibilityRole="button"
-            onPress={nextTurn}
-            style={[styles.nextBtn, { backgroundColor: theme.tint }]}
-          >
-            <Text style={[styles.nextText, { color: theme.onTint }]}>
-              {turnIndex + 1 >= turns.length
-                ? t("hmSeeResult")
-                : t("hmNextRound")}
+            <Text style={[styles.categoryText, { color: theme.text }]}>
+              {turn ? t(turn.category) : ""}
             </Text>
-          </Pressable>
-        </Animated.View>
-      ) : null}
+          </RNView>
 
-      {current ? (
-        <PassDeviceOverlay
-          hint={t("cbzHandoff", { seconds: TURN_SECONDS })}
-          onReady={() => setPhase("countdown")}
-          toPlayer={current}
-          visible={phase === "pass"}
-        />
-      ) : null}
-      {phase === "countdown" ? <GameCountdown onComplete={beginTurn} /> : null}
+          {phase === "playing" ? (
+            <>
+              <Text style={[styles.timer, { color: timerColor }]}>
+                {timeLeft}s
+              </Text>
+              <Pressable
+                accessibilityLabel={t("cbzCountIt")}
+                accessibilityRole="button"
+                onPress={scorePoint}
+                style={[styles.scoreBtn, { backgroundColor: current.color }]}
+              >
+                <Animated.Text
+                  entering={ZoomIn.duration(140)}
+                  key={turnScore}
+                  style={styles.scoreValue}
+                >
+                  {turnScore}
+                </Animated.Text>
+                <Text style={styles.scoreHint}>{t("cbzCountIt")}</Text>
+              </Pressable>
+              <Pressable
+                accessibilityLabel={t("cbzUndo")}
+                accessibilityRole="button"
+                disabled={turnScore === 0}
+                onPress={undoPoint}
+                style={[
+                  styles.undoBtn,
+                  {
+                    borderColor: theme.border,
+                    opacity: turnScore === 0 ? 0.4 : 1,
+                  },
+                ]}
+              >
+                <Ionicons
+                  color={theme.mutedText}
+                  name="arrow-undo-outline"
+                  size={16}
+                />
+                <Text style={[styles.undoText, { color: theme.mutedText }]}>
+                  {t("cbzUndo")}
+                </Text>
+              </Pressable>
+            </>
+          ) : null}
 
-      {phase === "done" ? (
-        <MatchResult
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("cbzAnswers")}
-          standings={players.map((p, i) => ({ player: p, score: totals[i] }))}
-          winnerIndex={getSoleWinnerIndex(totals.map((score) => ({ score })))}
-        />
-      ) : null}
-    </View>
+          {phase === "turnEnd" ? (
+            <Animated.View
+              entering={FadeIn.duration(200)}
+              style={styles.turnEnd}
+            >
+              <Text style={[styles.turnEndScore, { color: current.color }]}>
+                +{turnScore}
+              </Text>
+              <Text style={[styles.turnEndText, { color: theme.mutedText }]}>
+                {t("cbzTimeUp", { player: current.name })}
+              </Text>
+              <Pressable
+                accessibilityRole="button"
+                onPress={nextTurn}
+                style={[styles.nextBtn, { backgroundColor: theme.tint }]}
+              >
+                <Text style={[styles.nextText, { color: theme.onTint }]}>
+                  {turnIndex + 1 >= turns.length
+                    ? t("hmSeeResult")
+                    : t("hmNextRound")}
+                </Text>
+              </Pressable>
+            </Animated.View>
+          ) : null}
+        </A11yOverlayContent>
+        {current ? (
+          <PassDeviceOverlay
+            hint={t("cbzHandoff", { seconds: TURN_SECONDS })}
+            onReady={() => setPhase("countdown")}
+            toPlayer={current}
+            visible={phase === "pass"}
+          />
+        ) : null}
+        {phase === "countdown" ? (
+          <GameCountdown onComplete={beginTurn} />
+        ) : null}
+
+        {phase === "done" ? (
+          <MatchResult
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("cbzAnswers")}
+            standings={players.map((p, i) => ({ player: p, score: totals[i] }))}
+            winnerIndex={getSoleWinnerIndex(totals.map((score) => ({ score })))}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -346,6 +363,7 @@ const styles = StyleSheet.create({
     fontWeight: FontWeight.black,
     lineHeight: 104,
   },
+  screen: { flex: 1 },
   timer: { ...TextStyle.statValueLarge, textAlign: "center" },
   topRow: { alignItems: "center", flexDirection: "row", gap: Spacing.sm },
   turnEnd: {

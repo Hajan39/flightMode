@@ -10,6 +10,10 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import AnimatedPressable from "@/components/AnimatedPressable";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
@@ -17,6 +21,7 @@ import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
@@ -378,6 +383,9 @@ export default function AirTrafficControlGame() {
     setPaused(true);
   };
 
+  // Leaving the app (home, call, lock) pauses; the player resumes by hand.
+  useAutoPause(pause, !(gameOver || paused));
+
   const resume = () => {
     const pauseStartedAt = pauseStartedAtRef.current;
     pauseStartedAtRef.current = null;
@@ -449,142 +457,151 @@ export default function AirTrafficControlGame() {
   );
 
   return (
-    <View style={styles.root}>
-      {/* Top: best + controls */}
-      <RNView style={styles.topRow}>
-        <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[styles.bestValue, { color: theme.tint }]}>
-            {storedBest}
-          </Text>
-        </RNView>
-        <GameControls
-          isPaused={paused}
-          onPause={gameOver ? undefined : pause}
-          onReset={restart}
-        />
-      </RNView>
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* Top: best + controls */}
+          <RNView style={styles.topRow}>
+            <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
+              </Text>
+              <Text style={[styles.bestValue, { color: theme.tint }]}>
+                {storedBest}
+              </Text>
+            </RNView>
+            <GameControls
+              isPaused={paused}
+              onPause={gameOver ? undefined : pause}
+              onReset={restart}
+            />
+          </RNView>
 
-      {/* Stats row */}
-      <View style={styles.statsRow}>
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("atcLanded")}
-          </Text>
-          <Text style={[styles.statValue, { color: theme.text }]}>
-            {landed}
-          </Text>
-        </View>
-        <View style={[styles.statDivider, { backgroundColor: theme.border }]} />
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("atcScore")}
-          </Text>
-          <Animated.View style={scoreStyle}>
-            <Text style={[styles.statValue, { color: theme.tint }]}>
-              {score}
-            </Text>
-          </Animated.View>
-        </View>
-        <View style={[styles.statDivider, { backgroundColor: theme.border }]} />
-        <View style={styles.statBlock}>
-          <Text style={[styles.statLabel, { color: theme.mutedText }]}>
-            {t("atcMisses")}
-          </Text>
-          <Animated.View style={heartsStyle}>
-            <Text style={styles.heartRow}>{missHearts.join(" ")}</Text>
-          </Animated.View>
-        </View>
-      </View>
+          {/* Stats row */}
+          <View style={styles.statsRow}>
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("atcLanded")}
+              </Text>
+              <Text style={[styles.statValue, { color: theme.text }]}>
+                {landed}
+              </Text>
+            </View>
+            <View
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("atcScore")}
+              </Text>
+              <Animated.View style={scoreStyle}>
+                <Text style={[styles.statValue, { color: theme.tint }]}>
+                  {score}
+                </Text>
+              </Animated.View>
+            </View>
+            <View
+              style={[styles.statDivider, { backgroundColor: theme.border }]}
+            />
+            <View style={styles.statBlock}>
+              <Text style={[styles.statLabel, { color: theme.mutedText }]}>
+                {t("atcMisses")}
+              </Text>
+              <Animated.View style={heartsStyle}>
+                <Text style={styles.heartRow}>{missHearts.join(" ")}</Text>
+              </Animated.View>
+            </View>
+          </View>
 
-      {/* Header card */}
-      <View
-        style={[
-          styles.headerCard,
-          { backgroundColor: theme.card, borderColor: theme.border },
-        ]}
-      >
-        <View
-          darkColor="transparent"
-          lightColor="transparent"
-          style={styles.headerRow}
-        >
-          <Text style={[styles.headerEyebrow, { color: theme.mutedText }]}>
-            {`${pressureLabel} · L${level}`}
-          </Text>
+          {/* Header card */}
           <View
-            darkColor="transparent"
-            lightColor="transparent"
-            style={styles.runwayLegend}
+            style={[
+              styles.headerCard,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
           >
-            {RUNWAYS.map((rwy) => (
+            <View
+              darkColor="transparent"
+              lightColor="transparent"
+              style={styles.headerRow}
+            >
+              <Text style={[styles.headerEyebrow, { color: theme.mutedText }]}>
+                {`${pressureLabel} · L${level}`}
+              </Text>
               <View
                 darkColor="transparent"
-                key={rwy}
                 lightColor="transparent"
-                style={styles.legendItem}
+                style={styles.runwayLegend}
               >
-                <View
-                  style={[
-                    styles.legendDot,
-                    { backgroundColor: RUNWAY_COLORS[rwy] },
-                  ]}
-                />
-                <Text style={[styles.legendText, { color: theme.mutedText }]}>
-                  {rwy}
-                </Text>
+                {RUNWAYS.map((rwy) => (
+                  <View
+                    darkColor="transparent"
+                    key={rwy}
+                    lightColor="transparent"
+                    style={styles.legendItem}
+                  >
+                    <View
+                      style={[
+                        styles.legendDot,
+                        { backgroundColor: RUNWAY_COLORS[rwy] },
+                      ]}
+                    />
+                    <Text
+                      style={[styles.legendText, { color: theme.mutedText }]}
+                    >
+                      {rwy}
+                    </Text>
+                  </View>
+                ))}
               </View>
-            ))}
-          </View>
-        </View>
-        <Text style={[styles.headerTitle, { color: theme.text }]}>
-          {t("atcAssignHint")}
-        </Text>
-      </View>
-
-      {/* Flight queue */}
-      <FlatList
-        contentContainerStyle={styles.queue}
-        data={flights}
-        keyExtractor={(item) => String(item.id)}
-        ListEmptyComponent={
-          <View style={styles.emptyState}>
-            <Text style={[styles.emptyText, { color: theme.mutedText }]}>
-              {t("atcQueueEmpty")}
+            </View>
+            <Text style={[styles.headerTitle, { color: theme.text }]}>
+              {t("atcAssignHint")}
             </Text>
           </View>
-        }
-        renderItem={({ item }) => (
-          <FlightCard
-            item={item}
-            onAssign={assignRunway}
-            t={t as never}
-            theme={theme}
+
+          {/* Flight queue */}
+          <FlatList
+            contentContainerStyle={styles.queue}
+            data={flights}
+            keyExtractor={(item) => String(item.id)}
+            ListEmptyComponent={
+              <View style={styles.emptyState}>
+                <Text style={[styles.emptyText, { color: theme.mutedText }]}>
+                  {t("atcQueueEmpty")}
+                </Text>
+              </View>
+            }
+            renderItem={({ item }) => (
+              <FlightCard
+                item={item}
+                onAssign={assignRunway}
+                t={t as never}
+                theme={theme}
+              />
+            )}
           />
-        )}
-      />
+        </A11yOverlayContent>
+        {gameOver ? (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={restart}
+            score={score}
+            streak={progressInfo?.currentStreak}
+            subtitle={t("atcGameOverSubtitle", { landed, score })}
+            title={t("atcGameOver")}
+          />
+        ) : null}
 
-      {gameOver ? (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={restart}
-          score={score}
-          streak={progressInfo?.currentStreak}
-          subtitle={t("atcGameOverSubtitle", { landed, score })}
-          title={t("atcGameOver")}
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={resume}
+          visible={paused}
         />
-      ) : null}
-
-      <GamePauseOverlay
-        onRestart={restart}
-        onResume={resume}
-        visible={paused}
-      />
-    </View>
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -676,6 +693,7 @@ const styles = StyleSheet.create({
   runwayChipText: { fontSize: 13, fontWeight: "800", letterSpacing: 0.5 },
   runwayLegend: { flexDirection: "row", gap: 10 },
   runwayRow: { flexDirection: "row", gap: 8 },
+  screen: { flex: 1 },
   statBlock: { alignItems: "center", flex: 1, gap: 2, paddingVertical: 4 },
   statDivider: { height: 52, width: 1 },
   statLabel: {

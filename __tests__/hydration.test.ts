@@ -6,6 +6,7 @@ import {
   markHydrationFailed,
   reportHydrationResult,
   resetHydrationFailures,
+  runAfterAllHydrated,
   runAfterHydration,
 } from "@/utils/hydration";
 
@@ -189,5 +190,61 @@ describe("runAfterHydration failure fallbacks", () => {
     await done;
     expect(store.persist.hasHydrated()).toBe(false);
     expect(fn).toHaveBeenCalledWith({ hydrated: false });
+  });
+});
+
+describe("runAfterAllHydrated", () => {
+  function mutableStore(name: string) {
+    const listeners = new Set<() => void>();
+    let hydrated = false;
+    return {
+      finish: () => {
+        hydrated = true;
+        for (const l of [...listeners]) {
+          l();
+        }
+      },
+      persist: {
+        getOptions: () => ({ name }),
+        hasHydrated: () => hydrated,
+        onFinishHydration: (l: () => void) => {
+          listeners.add(l);
+          return () => listeners.delete(l);
+        },
+      },
+    };
+  }
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    resetHydrationFailures();
+  });
+  afterEach(() => jest.useRealTimers());
+
+  test("runs only after every store hydrated — never on timeout or failure", () => {
+    const a = mutableStore("a");
+    const b = mutableStore("b");
+    const fn = jest.fn();
+    runAfterAllHydrated([a, b], fn);
+    a.finish();
+    markHydrationFailed("b");
+    jest.advanceTimersByTime(HYDRATION_TIMEOUT_MS * 10);
+    expect(fn).not.toHaveBeenCalled();
+    b.finish();
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  test("runs immediately when all are hydrated; cleanup cancels", () => {
+    const a = mutableStore("a");
+    a.finish();
+    const now = jest.fn();
+    runAfterAllHydrated([a], now);
+    expect(now).toHaveBeenCalledTimes(1);
+
+    const b = mutableStore("b");
+    const later = jest.fn();
+    runAfterAllHydrated([b], later)();
+    b.finish();
+    expect(later).not.toHaveBeenCalled();
   });
 });

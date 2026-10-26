@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -227,148 +231,153 @@ export default function SkyMathGame() {
   };
 
   return (
-    <View style={styles.root}>
-      {/* ── Header controls ── */}
-      <RNView style={styles.headerRow}>
-        <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
-          <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
-            {t("gameBest")}
-          </Text>
-          <Text style={[styles.bestValue, { color: theme.tint }]}>
-            {storedBest}
-          </Text>
-        </RNView>
-        <GameControls
-          isPaused={isPaused}
-          onPause={() => setIsPaused(true)}
-          onReset={restart}
-        />
-      </RNView>
-
-      <GamePauseOverlay
-        onRestart={restart}
-        onResume={() => setIsPaused(false)}
-        visible={isPaused}
-      />
-
-      <RNView style={styles.diffRow}>
-        {(["easy", "medium", "hard"] as const).map((key) => {
-          const isActive = difficulty === key;
-          const labelKey = DIFFICULTY_LABEL_KEYS[key];
-          return (
-            <Pressable
-              accessibilityLabel={t(labelKey)}
-              accessibilityRole="button"
-              accessibilityState={{ selected: isActive }}
-              key={key}
-              onPress={() => handleDifficultyChange(key)}
-              style={[
-                styles.diffChip,
-                {
-                  backgroundColor: isActive ? theme.tint : theme.card,
-                  borderColor: isActive ? theme.tint : theme.border,
-                },
-              ]}
-            >
-              <Text
-                style={[
-                  styles.diffChipText,
-                  { color: isActive ? theme.onTint : theme.text },
-                ]}
-              >
-                {t(labelKey)}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          {/* ── Header controls ── */}
+          <RNView style={styles.headerRow}>
+            <RNView style={[styles.bestPill, { backgroundColor: theme.card }]}>
+              <Text style={[styles.bestLabel, { color: theme.mutedText }]}>
+                {t("gameBest")}
               </Text>
-            </Pressable>
-          );
-        })}
-      </RNView>
+              <Text style={[styles.bestValue, { color: theme.tint }]}>
+                {storedBest}
+              </Text>
+            </RNView>
+            <GameControls
+              isPaused={isPaused}
+              onPause={() => setIsPaused(true)}
+              onReset={restart}
+            />
+          </RNView>
 
-      {/* ── Progress ── */}
-      <View style={styles.progressRow}>
-        <View style={[styles.progressTrack, { backgroundColor: theme.card }]}>
+          <RNView style={styles.diffRow}>
+            {(["easy", "medium", "hard"] as const).map((key) => {
+              const isActive = difficulty === key;
+              const labelKey = DIFFICULTY_LABEL_KEYS[key];
+              return (
+                <Pressable
+                  accessibilityLabel={t(labelKey)}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: isActive }}
+                  key={key}
+                  onPress={() => handleDifficultyChange(key)}
+                  style={[
+                    styles.diffChip,
+                    {
+                      backgroundColor: isActive ? theme.tint : theme.card,
+                      borderColor: isActive ? theme.tint : theme.border,
+                    },
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.diffChipText,
+                      { color: isActive ? theme.onTint : theme.text },
+                    ]}
+                  >
+                    {t(labelKey)}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </RNView>
+
+          {/* ── Progress ── */}
+          <View style={styles.progressRow}>
+            <View
+              style={[styles.progressTrack, { backgroundColor: theme.card }]}
+            >
+              <View
+                style={[
+                  styles.progressFill,
+                  { backgroundColor: theme.tint, flex: progressFraction },
+                ]}
+              />
+            </View>
+            <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
+              {progressLabel}
+            </Text>
+          </View>
+
+          {/* ── Question card ── */}
           <View
             style={[
-              styles.progressFill,
-              { backgroundColor: theme.tint, flex: progressFraction },
+              styles.questionCard,
+              { backgroundColor: theme.card, borderColor: theme.border },
             ]}
-          />
-        </View>
-        <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
-          {progressLabel}
-        </Text>
-      </View>
+          >
+            <Text style={[styles.questionText, { color: theme.text }]}>
+              {question.text}
+            </Text>
+            <Text style={[styles.questionEquals, { color: theme.mutedText }]}>
+              =
+            </Text>
+          </View>
 
-      {/* ── Question card ── */}
-      <View
-        style={[
-          styles.questionCard,
-          { backgroundColor: theme.card, borderColor: theme.border },
-        ]}
-      >
-        <Text style={[styles.questionText, { color: theme.text }]}>
-          {question.text}
-        </Text>
-        <Text style={[styles.questionEquals, { color: theme.mutedText }]}>
-          =
-        </Text>
-      </View>
+          {/* ── Options ── */}
+          <View style={styles.options}>
+            {question.options.map((option) => {
+              const isSelected = selectedOption === option;
+              const isCorrect = option === question.answer;
+              const revealAnswers = selectedOption !== null;
 
-      {/* ── Options ── */}
-      <View style={styles.options}>
-        {question.options.map((option) => {
-          const isSelected = selectedOption === option;
-          const isCorrect = option === question.answer;
-          const revealAnswers = selectedOption !== null;
+              let bg = theme.elevated;
+              let { border } = theme;
+              if (revealAnswers && isCorrect) {
+                bg = theme.successSurface;
+                border = theme.successBorder;
+              } else if (revealAnswers && isSelected && !isCorrect) {
+                bg = theme.dangerSurface;
+                border = theme.dangerBorder;
+              }
 
-          let bg = theme.elevated;
-          let { border } = theme;
-          if (revealAnswers && isCorrect) {
-            bg = theme.successSurface;
-            border = theme.successBorder;
-          } else if (revealAnswers && isSelected && !isCorrect) {
-            bg = theme.dangerSurface;
-            border = theme.dangerBorder;
-          }
+              return (
+                <Pressable
+                  key={option}
+                  onPress={() => handleAnswer(option)}
+                  style={[
+                    styles.optionBtn,
+                    { backgroundColor: bg, borderColor: border },
+                  ]}
+                >
+                  <Text style={[styles.optionText, { color: theme.text }]}>
+                    {option}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
 
-          return (
-            <Pressable
-              key={option}
-              onPress={() => handleAnswer(option)}
-              style={[
-                styles.optionBtn,
-                { backgroundColor: bg, borderColor: border },
-              ]}
-            >
-              <Text style={[styles.optionText, { color: theme.text }]}>
-                {option}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
-
-      {/* ── Score ── */}
-      <Text style={[styles.scoreText, { color: theme.mutedText }]}>
-        {t("skyMathScore", { score })}
-      </Text>
-
-      {showResult ? (
-        <GameResult
-          best={progressInfo?.best ?? storedBest}
-          isNewBest={progressInfo?.isNewBest}
-          last={progressInfo?.previousBest}
-          onPlayAgain={restart}
-          score={score}
-          streak={progressInfo?.currentStreak}
-          subtitle={t("skyMathResult", {
-            correct: Math.round(score / 10),
-            score,
-            total: TOTAL_QUESTIONS,
-          })}
-          title={t("skyMathFinished")}
+          {/* ── Score ── */}
+          <Text style={[styles.scoreText, { color: theme.mutedText }]}>
+            {t("skyMathScore", { score })}
+          </Text>
+        </A11yOverlayContent>
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={() => setIsPaused(false)}
+          visible={isPaused}
         />
-      ) : null}
-    </View>
+
+        {showResult ? (
+          <GameResult
+            best={progressInfo?.best ?? storedBest}
+            isNewBest={progressInfo?.isNewBest}
+            last={progressInfo?.previousBest}
+            onPlayAgain={restart}
+            score={score}
+            streak={progressInfo?.currentStreak}
+            subtitle={t("skyMathResult", {
+              correct: Math.round(score / 10),
+              score,
+              total: TOTAL_QUESTIONS,
+            })}
+            title={t("skyMathFinished")}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -440,4 +449,5 @@ const styles = StyleSheet.create({
   root: { flex: 1, gap: 16, padding: 20 },
   /* ── Score ── */
   scoreText: { fontSize: 14, fontWeight: "600", textAlign: "center" },
+  screen: { flex: 1 },
 });

@@ -221,6 +221,20 @@ describe("content feed conditional requests + timeouts", () => {
   });
 });
 
+/** Flushes microtasks until the persisted stores have loaded (mock storage). */
+async function untilHydrated(
+  ...stores: { persist: { hasHydrated: () => boolean } }[]
+) {
+  for (let i = 0; i < 100; i += 1) {
+    if (stores.every((store) => store.persist.hasHydrated())) {
+      return;
+    }
+    // biome-ignore lint/performance/noAwaitInLoops: polling the microtask queue on purpose
+    await Promise.resolve();
+  }
+  throw new Error("stores did not hydrate");
+}
+
 describe("content store conditional sync", () => {
   test("a 304 keeps the cached feed and marks success", async () => {
     jest.resetModules();
@@ -250,6 +264,7 @@ describe("content store conditional sync", () => {
       const { useSettingsStore } =
         require("@/store/useSettingsStore") as typeof import("@/store/useSettingsStore");
       /* eslint-enable @typescript-eslint/no-require-imports */
+      await untilHydrated(useContentStore, useSettingsStore);
       useNetworkStore.setState({ isInternetReachable: true, type: "WIFI" });
       useSettingsStore.setState({ syncNetworkPolicy: "wifi_only" });
       const cached = [{ id: "a" }] as never;
@@ -301,6 +316,7 @@ describe("content store on a hanging feed", () => {
       const { useSettingsStore } =
         require("@/store/useSettingsStore") as typeof import("@/store/useSettingsStore");
       /* eslint-enable @typescript-eslint/no-require-imports */
+      await untilHydrated(useContentStore, useSettingsStore);
       useNetworkStore.setState({ isInternetReachable: true, type: "WIFI" });
       useSettingsStore.setState({ syncNetworkPolicy: "wifi_only" });
 

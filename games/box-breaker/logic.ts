@@ -306,14 +306,29 @@ const boxCentre = (i: number) => ({
 
 interface Hit {
   bricks: number[];
+  /** Copy-on-write: false until the first box is damaged this step. */
+  bricksOwned: boolean;
   drops: Drop[];
   events: StepEvents;
   kinds: BrickKind[];
   score: number;
 }
 
+/**
+ * Writes one box's hp. The array is copied only on the first write of a step,
+ * so frames where nothing is hit keep the same `bricks` reference (the view
+ * memoizes its brick layer on it) and never allocate a new array.
+ */
+function setBrick(hit: Hit, i: number, hp: number): void {
+  if (!hit.bricksOwned) {
+    hit.bricks = [...hit.bricks];
+    hit.bricksOwned = true;
+  }
+  hit.bricks[i] = hp;
+}
+
 function destroy(i: number, hit: Hit, rng: Rng, lives: number): void {
-  hit.bricks[i] = 0;
+  setBrick(hit, i, 0);
   hit.events.broken += 1;
   hit.events.brokenAt.push(i);
   const kind = hit.kinds[i];
@@ -355,7 +370,7 @@ function hitBrick(
     return;
   }
   hit.score += POINTS_PER_HIT;
-  hit.bricks[i] = burn ? 0 : hit.bricks[i] - 1;
+  setBrick(hit, i, burn ? 0 : hit.bricks[i] - 1);
   if (hit.bricks[i] === 0) {
     destroy(i, hit, rng, lives);
   }
@@ -475,7 +490,8 @@ export function step(
   };
   const dt = Math.min(dtMs, 50) / 1000;
   const hit: Hit = {
-    bricks: [...state.bricks],
+    bricks: state.bricks,
+    bricksOwned: false,
     drops: [...state.drops],
     events,
     kinds: state.kinds,

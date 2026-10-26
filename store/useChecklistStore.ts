@@ -1,12 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 import { type ChecklistSectionId, defaultItemIds } from "@/data/checklist";
 import { getDestinationById } from "@/data/destinations";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useFlightStore } from "@/store/useFlightStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { safePersistOptions } from "@/utils/persistStorage";
 
 export const MAX_CUSTOM_ITEM_LENGTH = 60;
 
@@ -18,10 +19,23 @@ export interface CustomChecklistItem {
 
 export type ChecklistResetReason = "new_flight" | "manual";
 
+/**
+ * Completion marker for a checklist finished before any flight was saved
+ * (`flightId` null). A real id would never collide with it.
+ */
+export const NO_FLIGHT_COMPLETION = "__no_flight__";
+
+function completionKey(flightId: string | null) {
+  return flightId ?? NO_FLIGHT_COMPLETION;
+}
+
 interface ChecklistState {
   addCustomItem: (sectionId: ChecklistSectionId, label: string) => void;
   checkedIds: string[];
-  /** Guards the "completed" achievement so a flight counts only once. */
+  /**
+   * Guards the "completed" achievement so a flight counts only once
+   * (`NO_FLIGHT_COMPLETION` = completed before any flight existed).
+   */
   completedFlightId: string | null;
   /** User-added items — survive resets, they are the traveller's personal list. */
   customItems: CustomChecklistItem[];
@@ -112,7 +126,29 @@ export const useChecklistStore = create<ChecklistState>()(
       },
 
       resetForFlight: (flightId, reason) => {
-        set({ checkedIds: [], completedFlightId: null, flightId });
+        const state = get();
+        // A checklist completed (and counted) before any flight existed
+        // stays counted once a flight adopts it.
+        const adoptedCompletion =
+          state.flightId === null &&
+          state.completedFlightId === NO_FLIGHT_COMPLETION
+            ? completionKey(flightId)
+            : state.completedFlightId;
+        if (reason === "manual") {
+          // Clearing ticks must not re-arm the achievement for the same
+          // flight (untick-all + retick would farm it), so keep the marker.
+          set({
+            checkedIds: [],
+            completedFlightId: adoptedCompletion,
+            flightId,
+          });
+        } else if (state.flightId === null) {
+          // First flight after packing without one: the ticks were made for
+          // this trip, so the flight adopts them instead of wiping them.
+          set({ completedFlightId: adoptedCompletion, flightId });
+        } else {
+          set({ checkedIds: [], completedFlightId: null, flightId });
+        }
         captureAnalyticsEvent("checklist_reset", { reason });
       },
 
@@ -134,9 +170,9 @@ export const useChecklistStore = create<ChecklistState>()(
         if (
           !checked &&
           isChecklistComplete(next, getCurrentDestinationItemIds()) &&
-          next.completedFlightId !== next.flightId
+          next.completedFlightId !== completionKey(next.flightId)
         ) {
-          set({ completedFlightId: next.flightId });
+          set({ completedFlightId: completionKey(next.flightId) });
           useAchievementStore.getState().incrementChecklistsCompleted();
           captureAnalyticsEvent("checklist_completed", {
             custom_count: next.customItems.length,
@@ -144,9 +180,6 @@ export const useChecklistStore = create<ChecklistState>()(
         }
       },
     }),
-    {
-      name: "checklist",
-      storage: createJSONStorage(() => AsyncStorage),
-    }
+    safePersistOptions(() => AsyncStorage, { name: "checklist" })
   )
 );

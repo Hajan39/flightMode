@@ -15,6 +15,8 @@ interface Props {
   destination: Destination;
   nowMs: number;
   onClear: () => void;
+  /** Opens the saved flight in the editor (e.g. to fix the arrival). */
+  onEdit: () => void;
   onOpenConverter: () => void;
   onOpenPhrasebook: () => void;
   onOpenTips: () => void;
@@ -31,6 +33,7 @@ export default function LandedCard({
   onOpenConverter,
   onOpenTips,
   onClear,
+  onEdit,
 }: Props) {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
@@ -72,6 +75,14 @@ export default function LandedCard({
             {t("homeLandedLocalTime", { time: localTime })}
           </Text>
         </View>
+        <Pressable
+          accessibilityLabel={t("stackEditFlight")}
+          accessibilityRole="button"
+          hitSlop={10}
+          onPress={onEdit}
+        >
+          <Ionicons color={theme.mutedText} name="create-outline" size={20} />
+        </Pressable>
         <Pressable
           accessibilityLabel={t("a11yClearFlight")}
           accessibilityRole="button"

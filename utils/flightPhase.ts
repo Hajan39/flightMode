@@ -26,3 +26,18 @@ export function getFlightPhase(
   }
   return nowMs - arrivalMs < LANDED_WINDOW_MS ? "landed" : "none";
 }
+
+/**
+ * The flight Home should still show: `null` once the landed window has passed
+ * (phase "none"), so an old trip stops sitting at 100 %. The stored flight
+ * and its passport entry are left untouched.
+ */
+export function getCurrentFlight(
+  flight: Flight | null | undefined,
+  nowMs: number
+): Flight | null {
+  if (!flight) {
+    return null;
+  }
+  return getFlightPhase(flight, nowMs) === "none" ? null : flight;
+}

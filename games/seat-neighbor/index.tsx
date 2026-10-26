@@ -7,6 +7,10 @@ import {
 } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
+import {
+  A11yOverlayContent,
+  A11yOverlayScope,
+} from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
 import {
   MatchResult,
@@ -165,180 +169,191 @@ export default function SeatNeighborGame() {
   const bannerLabel = phase === "reveal" ? matchLabel : pickLabel;
 
   return (
-    <View style={styles.root}>
-      <RNView style={styles.topRow}>
-        <TurnBanner
-          compact
-          label={bannerLabel}
-          player={phase === "reveal" ? players[0] : current}
-          right={
-            <Text style={[styles.roundChip, { color: theme.mutedText }]}>
-              {t("mpRoundOf", { round: roundIndex + 1, total: TOTAL_ROUNDS })}
+    <A11yOverlayScope>
+      <View style={styles.screen}>
+        <A11yOverlayContent style={styles.root}>
+          <RNView style={styles.topRow}>
+            <TurnBanner
+              compact
+              label={bannerLabel}
+              player={phase === "reveal" ? players[0] : current}
+              right={
+                <Text style={[styles.roundChip, { color: theme.mutedText }]}>
+                  {t("mpRoundOf", {
+                    round: roundIndex + 1,
+                    total: TOTAL_ROUNDS,
+                  })}
+                </Text>
+              }
+            />
+            <GameControls onReset={() => startMatch(players)} />
+          </RNView>
+
+          <RNView
+            style={[
+              styles.syncRow,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
+          >
+            <Text style={[styles.syncLabel, { color: theme.mutedText }]}>
+              {t("snSyncScore")}
             </Text>
-          }
-        />
-        <GameControls onReset={() => startMatch(players)} />
-      </RNView>
+            <Text style={[styles.syncValue, { color: theme.tint }]}>
+              {sync}/{TOTAL_ROUNDS}
+            </Text>
+          </RNView>
 
-      <RNView
-        style={[
-          styles.syncRow,
-          { backgroundColor: theme.card, borderColor: theme.border },
-        ]}
-      >
-        <Text style={[styles.syncLabel, { color: theme.mutedText }]}>
-          {t("snSyncScore")}
-        </Text>
-        <Text style={[styles.syncValue, { color: theme.tint }]}>
-          {sync}/{TOTAL_ROUNDS}
-        </Text>
-      </RNView>
+          <ScrollView
+            contentContainerStyle={styles.body}
+            showsVerticalScrollIndicator={false}
+          >
+            <Animated.View
+              entering={FadeInDown.duration(220)}
+              key={`${round.question.id}-${phase}`}
+              style={[
+                styles.card,
+                { backgroundColor: theme.card, borderColor: theme.border },
+              ]}
+            >
+              <Text style={[styles.kind, { color: theme.mutedText }]}>
+                {isMindMeld
+                  ? t("snMindMeldIntro", { player: answererName })
+                  : t("snWyrIntro")}
+              </Text>
+              <Text style={[styles.prompt, { color: theme.text }]}>
+                {getLocalizedText(round.question.prompt, language)}
+              </Text>
 
-      <ScrollView
-        contentContainerStyle={styles.body}
-        showsVerticalScrollIndicator={false}
-      >
-        <Animated.View
-          entering={FadeInDown.duration(220)}
-          key={`${round.question.id}-${phase}`}
-          style={[
-            styles.card,
-            { backgroundColor: theme.card, borderColor: theme.border },
-          ]}
-        >
-          <Text style={[styles.kind, { color: theme.mutedText }]}>
-            {isMindMeld
-              ? t("snMindMeldIntro", { player: answererName })
-              : t("snWyrIntro")}
-          </Text>
-          <Text style={[styles.prompt, { color: theme.text }]}>
-            {getLocalizedText(round.question.prompt, language)}
-          </Text>
+              {phase === "pick" ? (
+                <RNView style={styles.options}>
+                  {round.question.options.map((opt, i) => (
+                    <Pressable
+                      accessibilityRole="button"
+                      key={`${round.question.id}-${i}`}
+                      onPress={() => handlePick(i)}
+                      style={[
+                        styles.option,
+                        {
+                          backgroundColor: theme.elevated,
+                          borderColor: current.color,
+                        },
+                      ]}
+                    >
+                      <Text style={[styles.optionText, { color: theme.text }]}>
+                        {getLocalizedText(opt, language)}
+                      </Text>
+                    </Pressable>
+                  ))}
+                </RNView>
+              ) : null}
 
-          {phase === "pick" ? (
-            <RNView style={styles.options}>
-              {round.question.options.map((opt, i) => (
-                <Pressable
-                  accessibilityRole="button"
-                  key={`${round.question.id}-${i}`}
-                  onPress={() => handlePick(i)}
-                  style={[
-                    styles.option,
-                    {
-                      backgroundColor: theme.elevated,
-                      borderColor: current.color,
-                    },
-                  ]}
-                >
-                  <Text style={[styles.optionText, { color: theme.text }]}>
-                    {getLocalizedText(opt, language)}
-                  </Text>
-                </Pressable>
-              ))}
-            </RNView>
-          ) : null}
-
-          {phase === "reveal" ? (
-            <RNView style={styles.reveal}>
-              {([0, 1] as Seat[]).map((seat) => {
-                const p = players[seat];
-                const pick = picks[seat];
-                let roleSuffix = "";
-                if (isMindMeld) {
-                  roleSuffix =
-                    seat === round.guesser
-                      ? ` · ${t("snGuessLabel")}`
-                      : ` · ${t("snTruthLabel")}`;
-                }
-                return (
+              {phase === "reveal" ? (
+                <RNView style={styles.reveal}>
+                  {([0, 1] as Seat[]).map((seat) => {
+                    const p = players[seat];
+                    const pick = picks[seat];
+                    let roleSuffix = "";
+                    if (isMindMeld) {
+                      roleSuffix =
+                        seat === round.guesser
+                          ? ` · ${t("snGuessLabel")}`
+                          : ` · ${t("snTruthLabel")}`;
+                    }
+                    return (
+                      <Animated.View
+                        entering={ZoomIn.delay(seat * 180).duration(220)}
+                        key={p.index}
+                        style={[
+                          styles.revealCard,
+                          {
+                            backgroundColor: `${p.color}1A`,
+                            borderColor: p.color,
+                          },
+                        ]}
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={[styles.revealName, { color: p.color }]}
+                        >
+                          {p.name}
+                          {roleSuffix}
+                        </Text>
+                        <Text
+                          style={[styles.revealAnswer, { color: theme.text }]}
+                        >
+                          {pick === null
+                            ? "—"
+                            : getLocalizedText(
+                                round.question.options[pick],
+                                language
+                              )}
+                        </Text>
+                      </Animated.View>
+                    );
+                  })}
                   <Animated.View
-                    entering={ZoomIn.delay(seat * 180).duration(220)}
-                    key={p.index}
-                    style={[
-                      styles.revealCard,
-                      { backgroundColor: `${p.color}1A`, borderColor: p.color },
-                    ]}
+                    entering={ZoomIn.delay(420).duration(220)}
+                    style={styles.matchRow}
                   >
                     <Text
-                      numberOfLines={1}
-                      style={[styles.revealName, { color: p.color }]}
+                      style={[
+                        styles.matchText,
+                        {
+                          color:
+                            picks[0] === picks[1]
+                              ? theme.successBorder
+                              : theme.mutedText,
+                        },
+                      ]}
                     >
-                      {p.name}
-                      {roleSuffix}
-                    </Text>
-                    <Text style={[styles.revealAnswer, { color: theme.text }]}>
-                      {pick === null
-                        ? "—"
-                        : getLocalizedText(
-                            round.question.options[pick],
-                            language
-                          )}
+                      {picks[0] === picks[1]
+                        ? `✨ ${t("snMatch")} +1`
+                        : t("snNoMatch")}
                     </Text>
                   </Animated.View>
-                );
-              })}
-              <Animated.View
-                entering={ZoomIn.delay(420).duration(220)}
-                style={styles.matchRow}
-              >
-                <Text
-                  style={[
-                    styles.matchText,
-                    {
-                      color:
-                        picks[0] === picks[1]
-                          ? theme.successBorder
-                          : theme.mutedText,
-                    },
-                  ]}
-                >
-                  {picks[0] === picks[1]
-                    ? `✨ ${t("snMatch")} +1`
-                    : t("snNoMatch")}
-                </Text>
-              </Animated.View>
-              <Pressable
-                accessibilityRole="button"
-                onPress={nextRound}
-                style={[styles.nextBtn, { backgroundColor: theme.tint }]}
-              >
-                <Text style={[styles.nextText, { color: theme.onTint }]}>
-                  {roundIndex + 1 >= rounds.length
-                    ? t("hmSeeResult")
-                    : t("hmNextRound")}
-                </Text>
-              </Pressable>
-            </RNView>
-          ) : null}
-        </Animated.View>
-      </ScrollView>
-
-      <PassDeviceOverlay
-        hint={isMindMeld ? mindMeldPrompt : t("snWyrHint")}
-        onReady={() => setPhase("pick")}
-        secret
-        toPlayer={current}
-        visible={phase === "pass"}
-      />
-
-      {phase === "done" ? (
-        <MatchResult
-          cooperative
-          onChangePlayers={() => setPhase("setup")}
-          onRematch={() => startMatch(players)}
-          progress={progress}
-          scoreLabel={t("snReads")}
-          standings={players.map((p, i) => ({
-            detail: t("snReads"),
-            player: p,
-            score: reads[i],
-          }))}
-          subtitle={t("snSyncResult", { sync, total: TOTAL_ROUNDS })}
-          title={t(getSyncTier(sync))}
-          winnerIndex={null}
+                  <Pressable
+                    accessibilityRole="button"
+                    onPress={nextRound}
+                    style={[styles.nextBtn, { backgroundColor: theme.tint }]}
+                  >
+                    <Text style={[styles.nextText, { color: theme.onTint }]}>
+                      {roundIndex + 1 >= rounds.length
+                        ? t("hmSeeResult")
+                        : t("hmNextRound")}
+                    </Text>
+                  </Pressable>
+                </RNView>
+              ) : null}
+            </Animated.View>
+          </ScrollView>
+        </A11yOverlayContent>
+        <PassDeviceOverlay
+          hint={isMindMeld ? mindMeldPrompt : t("snWyrHint")}
+          onReady={() => setPhase("pick")}
+          secret
+          toPlayer={current}
+          visible={phase === "pass"}
         />
-      ) : null}
-    </View>
+
+        {phase === "done" ? (
+          <MatchResult
+            cooperative
+            onChangePlayers={() => setPhase("setup")}
+            onRematch={() => startMatch(players)}
+            progress={progress}
+            scoreLabel={t("snReads")}
+            standings={players.map((p, i) => ({
+              detail: t("snReads"),
+              player: p,
+              score: reads[i],
+            }))}
+            subtitle={t("snSyncResult", { sync, total: TOTAL_ROUNDS })}
+            title={t(getSyncTier(sync))}
+            winnerIndex={null}
+          />
+        ) : null}
+      </View>
+    </A11yOverlayScope>
   );
 }
 
@@ -397,6 +412,7 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.sm,
   },
   roundChip: { ...TextStyle.chipLabel },
+  screen: { flex: 1 },
   syncLabel: { ...TextStyle.statLabel },
   syncRow: {
     alignItems: "center",
