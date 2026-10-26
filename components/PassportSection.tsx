@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useMemo } from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useMemo, useState } from "react";
 import { Pressable, ScrollView, Share, StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
@@ -21,7 +22,23 @@ export default function PassportSection() {
   const theme = Colors[colorScheme];
   const { t, language } = useTranslation();
   const log = useFlightStore((s) => s.log);
-  const summary = useMemo(() => getPassportSummary(log, Date.now()), [log]);
+  const [nowMs, setNowMs] = useState(() => Date.now());
+  const summary = useMemo(() => getPassportSummary(log, nowMs), [log, nowMs]);
+  // A flight still in the air (or about to depart) keeps changing the totals:
+  // refresh every 60 s while the screen is focused, and once on focus.
+  const hasLiveFlight = log.some(
+    (f) => nowMs < f.departureTime + f.duration * 60_000
+  );
+  useFocusEffect(
+    useCallback(() => {
+      setNowMs(Date.now());
+      if (!hasLiveFlight) {
+        return;
+      }
+      const interval = setInterval(() => setNowMs(Date.now()), 60_000);
+      return () => clearInterval(interval);
+    }, [hasLiveFlight])
+  );
   const hours = Math.round(summary.minutesInAir / 6) / 10;
 
   const handleShare = () => {

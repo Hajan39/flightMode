@@ -189,6 +189,20 @@ describe("minesweeper countFlagged", () => {
 });
 
 describe("minesweeper resolveTap (handlePress decision)", () => {
+  test("a first tap that flood-reveals every safe cell is an instant win", () => {
+    // rng 0 packs the mines into the top rows; tapping the far corner floods
+    // the whole rest of the board open.
+    const { board, result } = resolveTap(
+      makeEmptyBoard(),
+      8,
+      8,
+      false,
+      () => 0
+    );
+    expect(checkWin(board)).toBe(true);
+    expect(result).toBe("win");
+  });
+
   test("first tap plants mines exactly once and never loses", () => {
     const { board, result } = resolveTap(
       makeEmptyBoard(),
@@ -197,7 +211,7 @@ describe("minesweeper resolveTap (handlePress decision)", () => {
       false,
       mulberry32(7)
     );
-    expect(["started", "win"]).toContain(result);
+    expect(result).toBe(checkWin(board) ? "win" : "started");
     expect(countMines(board)).toBe(MINE_COUNT);
     expect(board[4][4].isRevealed).toBe(true);
   });
@@ -223,7 +237,7 @@ describe("minesweeper resolveTap (handlePress decision)", () => {
       .map((c, i) => (c.isMine ? i : -1))
       .filter((i) => i >= 0);
     expect(minesAfter).toEqual(minesBefore);
-    expect(["safe", "win"]).toContain(second.result);
+    expect(second.result).toBe(checkWin(second.board) ? "win" : "safe");
   });
 
   test("tapping a mine loses and reveals every mine", () => {

@@ -196,6 +196,7 @@ export default function GamesScreen() {
         >
           <Ionicons color={theme.mutedText} name="search" size={16} />
           <TextInput
+            accessibilityLabel={t("a11ySearchGames")}
             onChangeText={setSearch}
             placeholder={t("gamesSearchPlaceholder")}
             placeholderTextColor={theme.mutedText}
@@ -213,6 +214,7 @@ export default function GamesScreen() {
             const isActive = intent.key === activeIntent;
             return (
               <AnimatedPressable
+                accessibilityState={{ selected: isActive }}
                 key={intent.key}
                 onPress={() => setActiveIntent(intent.key)}
                 scaleTo={0.95}
@@ -253,6 +255,7 @@ export default function GamesScreen() {
             const isActive = cat === activeCategory;
             return (
               <AnimatedPressable
+                accessibilityState={{ selected: isActive }}
                 key={cat}
                 onPress={() => setActiveCategory(cat)}
                 scaleTo={0.95}
@@ -561,13 +564,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 0,
   },
-  filterBarScroll: { flexGrow: 0, marginBottom: 4, minHeight: 42 },
+  filterBarScroll: { flexGrow: 0, marginBottom: 4, minHeight: 52 },
   filterChip: {
     alignItems: "center",
     borderRadius: 20,
     borderWidth: 1,
     flexDirection: "row",
-    minHeight: 34,
+    minHeight: 44,
     paddingHorizontal: 10,
     paddingVertical: 7,
   },
@@ -590,14 +593,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 0,
   },
-  intentBarScroll: { flexGrow: 0, marginBottom: 6, minHeight: 42 },
+  intentBarScroll: { flexGrow: 0, marginBottom: 6, minHeight: 52 },
   intentChip: {
     alignItems: "center",
     borderRadius: 20,
     borderWidth: 1,
     flexDirection: "row",
     gap: 5,
-    minHeight: 34,
+    minHeight: 44,
     paddingHorizontal: 11,
     paddingVertical: 7,
   },

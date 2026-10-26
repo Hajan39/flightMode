@@ -44,7 +44,12 @@ export default function TabLayout() {
                 >
                   {activeLabelKey ? t(activeLabelKey) : t("audioFallback")}
                 </Text>
-                <Pressable hitSlop={8} onPress={stopSound}>
+                <Pressable
+                  accessibilityLabel={t("a11yStopSound")}
+                  accessibilityRole="button"
+                  hitSlop={12}
+                  onPress={stopSound}
+                >
                   <Ionicons
                     color={theme.tint}
                     name="stop-circle-outline"
@@ -53,7 +58,16 @@ export default function TabLayout() {
                 </Pressable>
               </View>
             ) : null}
-            <Pressable hitSlop={8} onPress={() => router.push("/profile")}>
+            <Pressable
+              accessibilityLabel={
+                newUnlockedCount > 0
+                  ? t("a11yProfileNewAchievements", { count: newUnlockedCount })
+                  : t("a11yOpenProfile")
+              }
+              accessibilityRole="button"
+              hitSlop={12}
+              onPress={() => router.push("/profile")}
+            >
               <View>
                 <Ionicons
                   color={theme.text}
@@ -65,16 +79,18 @@ export default function TabLayout() {
                     style={{
                       alignItems: "center",
                       backgroundColor: theme.tint,
-                      borderRadius: 8,
-                      height: 16,
+                      borderRadius: 999,
                       justifyContent: "center",
+                      minHeight: 16,
                       minWidth: 16,
+                      paddingHorizontal: 3,
                       position: "absolute",
                       right: -4,
                       top: -4,
                     }}
                   >
                     <Text
+                      maxFontSizeMultiplier={1.6}
                       style={{
                         color: "#fff",
                         fontSize: 10,
@@ -87,7 +103,12 @@ export default function TabLayout() {
                 )}
               </View>
             </Pressable>
-            <Pressable hitSlop={8} onPress={() => router.push("/settings")}>
+            <Pressable
+              accessibilityLabel={t("a11yOpenSettings")}
+              accessibilityRole="button"
+              hitSlop={12}
+              onPress={() => router.push("/settings")}
+            >
               <Ionicons color={theme.text} name="settings-outline" size={22} />
             </Pressable>
           </View>

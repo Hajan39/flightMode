@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { AccessibilityInfo, StyleSheet } from "react-native";
 import Animated, {
   FadeIn,
   SlideInDown,
@@ -51,6 +51,19 @@ export default function AchievementToast() {
     setVisible(next);
     haptic.heavy();
   }, [visible, queue, haptic.heavy]);
+
+  // Announce each toast — it appears outside the screen reader's focus.
+  const unlocked = visible
+    ? achievements.find((a) => a.id === visible)
+    : undefined;
+  const announcement = unlocked
+    ? `${t("achievementUnlocked")}: ${t(unlocked.titleKey)}`
+    : "";
+  useEffect(() => {
+    if (announcement) {
+      AccessibilityInfo.announceForAccessibility(announcement);
+    }
+  }, [announcement]);
 
   // Auto-dismiss after DISPLAY_MS (separate effect so cleanup doesn't kill the timer)
   useEffect(() => {

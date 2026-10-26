@@ -9,6 +9,7 @@ import {
 import {
   convertCurrency,
   convertUnit,
+  decimalSeparatorForLanguage,
   formatCurrency,
   formatUnit,
   getRatesAgeDays,
@@ -145,8 +146,9 @@ describe("convertCurrency", () => {
 });
 
 describe("parseAmount separator table", () => {
-  test.each([
-    // plain / previously working
+  // Same in every locale: plain digits, spaces, mixed separators, a lone
+  // decimal that cannot be grouping.
+  const shared: [string, number][] = [
     ["42", 42],
     ["12.5", 12.5],
     ["12,5", 12.5],
@@ -158,8 +160,9 @@ describe("parseAmount separator table", () => {
     ["5,", 5],
     ["0", 0],
     ["0,125", 0.125],
-    ["1.234", 1.234],
+    ["0.125", 0.125],
     ["1,2345", 1.2345],
+    ["1.2345", 1.2345],
     ["-5", -5],
     // spaces / NBSP / thin / narrow no-break spaces as grouping
     ["1 234,5", 1234.5],
@@ -174,16 +177,70 @@ describe("parseAmount separator table", () => {
     ["1.234.567,89", 1_234_567.89],
     ["1,234,567.89", 1_234_567.89],
     ["1,234.", 1234],
-    // one kind repeated = grouping
-    ["1,234", 1234],
+    // one kind repeated in valid groups = grouping
     ["1,234,567", 1_234_567],
     ["1.234.567", 1_234_567],
     ["12,345,678", 12_345_678],
-  ])("%j → %d", (input, expected) => {
-    expect(parseAmount(input)).toBeCloseTo(expected, 9);
-  });
+  ];
 
   test.each([
+    ...shared,
+    // a lone comma is ALWAYS decimal; a dot followed by 3-digit groups groups
+    ["1,250", 1.25],
+    ["1,234", 1.234],
+    ["0,99", 0.99],
+    ["1.000", 1000],
+    ["1.250", 1250],
+    ["12.345", 12_345],
+  ] as [string, number][])(
+    "cs/de (comma decimal): %j → %d",
+    (input, expected) => {
+      expect(parseAmount(input, ",")).toBeCloseTo(expected, 9);
+    }
+  );
+
+  test.each([
+    ...shared,
+    // mirrored: a lone dot is ALWAYS decimal; a comma before 3-digit groups groups
+    ["1.250", 1.25],
+    ["1.234", 1.234],
+    ["0.99", 0.99],
+    ["1,000", 1000],
+    ["1,250", 1250],
+    ["12,345", 12_345],
+  ] as [string, number][])("en (dot decimal): %j → %d", (input, expected) => {
+    expect(parseAmount(input, ".")).toBeCloseTo(expected, 9);
+  });
+
+  test("default separator is the dot", () => {
+    expect(parseAmount("1,000")).toBe(1000);
+    expect(parseAmount("1.250")).toBe(1.25);
+  });
+
+  test("typing an amount in cs never jumps (1 → 1 → 1.2 → 1.25 → 1.25)", () => {
+    const steps = ["1", "1,", "1,2", "1,25", "1,250"].map((v) =>
+      parseAmount(v, ",")
+    );
+    expect(steps).toEqual([1, 1, 1.2, 1.25, 1.25]);
+  });
+
+  test("typing an amount in en never jumps (1 → 1 → 1.2 → 1.25 → 1.25)", () => {
+    const steps = ["1", "1.", "1.2", "1.25", "1.250"].map((v) =>
+      parseAmount(v, ".")
+    );
+    expect(steps).toEqual([1, 1, 1.2, 1.25, 1.25]);
+  });
+
+  test("decimalSeparatorForLanguage", () => {
+    for (const lang of ["cs", "de", "es", "fr", "it", "pl", "pt", "pt-BR"]) {
+      expect(decimalSeparatorForLanguage(lang)).toBe(",");
+    }
+    for (const lang of ["en", "hi", "ja", "ko", "zh", null, undefined]) {
+      expect(decimalSeparatorForLanguage(lang)).toBe(".");
+    }
+  });
+
+  const invalid = [
     "",
     "   ",
     "abc",
@@ -197,6 +254,7 @@ describe("parseAmount separator table", () => {
     "1..2",
     "1,,2",
     "1.2.3",
+    "1,2,3",
     "1,23,456",
     "1.23.456",
     "1,234,56",
@@ -206,8 +264,11 @@ describe("parseAmount separator table", () => {
     "1.2,3,4",
     "--1",
     "1-2",
-  ])("%j → null", (input) => {
-    expect(parseAmount(input)).toBeNull();
+  ];
+
+  test.each(invalid)("%j → null (both locales)", (input) => {
+    expect(parseAmount(input, ",")).toBeNull();
+    expect(parseAmount(input, ".")).toBeNull();
   });
 });
 

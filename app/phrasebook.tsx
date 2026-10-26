@@ -185,6 +185,8 @@ const styles = StyleSheet.create({
   chip: {
     borderRadius: Radius.pill,
     borderWidth: 1,
+    justifyContent: "center",
+    minHeight: 44,
     paddingHorizontal: Spacing.md,
     paddingVertical: 6,
   },

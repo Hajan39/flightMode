@@ -78,6 +78,8 @@ describe("word-search buildPuzzle", () => {
 
   test("placed words are a subset of the requested words", () => {
     const puzzle = buildPuzzle(WORDS, SIZE, mulberry32(7));
+    // Guard: an empty placement list would make the loop pass vacuously.
+    expect(puzzle.placements.length).toBeGreaterThan(0);
     for (const p of puzzle.placements) {
       expect(WORDS).toContain(p.word);
     }

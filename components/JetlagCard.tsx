@@ -38,6 +38,9 @@ export default function JetlagCard({ flight, destination, nowMs }: Props) {
     departureTime: flight.departureTime,
     destination,
     duration: flight.duration,
+    // Captured at save time; without it the shift would drift once the phone
+    // switches to the destination zone.
+    homeOffsetMinutes: flight.homeOffsetMinutes,
     nowMs,
   });
 

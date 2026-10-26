@@ -30,6 +30,7 @@ describe("hangman letter matching (diacritics)", () => {
     expect(baseLetter("Ů")).toBe("U");
     expect(baseLetter("Ä")).toBe("A");
     expect(baseLetter("A")).toBe("A");
+    expect(baseLetter("ř")).toBe("R");
   });
 
   test("a plain key reveals every accented form", () => {
@@ -46,6 +47,8 @@ describe("hangman letter matching (diacritics)", () => {
     expect(isSolved(word, new Set(["L", "O"]))).toBe(false);
     expect(isSolved(word, new Set(["L", "O", "D"]))).toBe(true);
     expect(countWrong(word, new Set(["L", "X", "Y"]))).toBe(2);
+    // A base key that only matches accented letters is not a miss.
+    expect(countWrong("PŘISTÁNÍ", new Set(["R", "A", "I", "N", "E"]))).toBe(1);
     expect(isSolved("", new Set(["A"]))).toBe(false);
   });
 });

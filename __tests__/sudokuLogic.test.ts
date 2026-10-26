@@ -137,6 +137,30 @@ describe("sudoku accepts any valid complete grid", () => {
     expect(isValidCompleteGrid(holey)).toBe(false);
   });
 
+  test("a Latin square (rows + columns fine, boxes broken) is not a Sudoku", () => {
+    const latin = Array.from(
+      { length: 81 },
+      (_, i) => ((Math.floor(i / 9) + (i % 9)) % 9) + 1
+    );
+    expect(isValidCompleteGrid(latin)).toBe(false);
+  });
+
+  test("non-integer / NaN cells and wrong-length boards are rejected", () => {
+    const one = solution.indexOf(1);
+    for (const bad of [1.5, Number.NaN]) {
+      const grid = [...solution];
+      grid[one] = bad;
+      expect(isValidCompleteGrid(grid)).toBe(false);
+    }
+    expect(isValidCompleteGrid([...solution, 5])).toBe(false);
+    expect(isValidCompleteGrid(solution.slice(0, 80))).toBe(false);
+  });
+
+  test("isSolved never accepts an empty or truncated board", () => {
+    expect(isSolved([], solution)).toBe(false);
+    expect(isSolved(solution.slice(0, 40), solution)).toBe(false);
+  });
+
   test("a valid alternative fill that keeps the givens wins without errors", () => {
     // Clues with only the cells that agree between the two grids → the
     // relabelled grid is a legal alternative solution of these clues.

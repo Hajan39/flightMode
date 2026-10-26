@@ -61,6 +61,15 @@ describe("air-traffic-control tickFlights", () => {
     expect(out.flights).toBe(queue);
   });
 
+  test("burning fuel alone (nothing lost) is still a change", () => {
+    const queue = [flight(1, "A", 5)];
+    const out = tickFlights(queue, NOW + 1500);
+    expect(out.changed).toBe(true);
+    expect(out.lost).toBe(0);
+    expect(out.flights).toEqual([{ ...queue[0], fuel: 4 }]);
+    expect(out.flights).not.toBe(queue);
+  });
+
   test("burns fuel and counts expired flights", () => {
     const queue = [flight(1, "A", 1), flight(2, "B", 4)];
     const out = tickFlights(queue, NOW + 1500);

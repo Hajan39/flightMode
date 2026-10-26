@@ -93,6 +93,11 @@ export default function LandedCard({
       >
         {hasLocalLanguage ? (
           <AnimatedPressable
+            accessibilityLabel={
+              phraseLanguage?.nativeName
+                ? `${t("homePhrasebook")}: ${phraseLanguage.nativeName}`
+                : t("homePhrasebook")
+            }
             onPress={onOpenPhrasebook}
             style={[
               styles.action,
@@ -100,12 +105,13 @@ export default function LandedCard({
             ]}
           >
             <Ionicons color={theme.tint} name="chatbubbles-outline" size={20} />
-            <Text numberOfLines={1} style={styles.actionLabel}>
+            <Text numberOfLines={2} style={styles.actionLabel}>
               {phraseLanguage?.nativeName ?? t("homePhrasebook")}
             </Text>
           </AnimatedPressable>
         ) : null}
         <AnimatedPressable
+          accessibilityLabel={`${t("homeConverter")}: ${destination.currencyCode}`}
           onPress={onOpenConverter}
           style={[
             styles.action,
@@ -117,11 +123,14 @@ export default function LandedCard({
             name="swap-horizontal-outline"
             size={20}
           />
-          <Text numberOfLines={1} style={styles.actionLabel}>
+          <Text numberOfLines={2} style={styles.actionLabel}>
             {destination.currencyCode}
           </Text>
         </AnimatedPressable>
         <AnimatedPressable
+          accessibilityLabel={t("a11yDestinationTips", {
+            city: destination.city,
+          })}
           onPress={onOpenTips}
           style={[
             styles.action,
@@ -129,7 +138,7 @@ export default function LandedCard({
           ]}
         >
           <Ionicons color={theme.tint} name="compass-outline" size={20} />
-          <Text numberOfLines={1} style={styles.actionLabel}>
+          <Text numberOfLines={2} style={styles.actionLabel}>
             {t("homeLandedTips")}
           </Text>
         </AnimatedPressable>
@@ -175,7 +184,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.sm,
     paddingVertical: Spacing.md,
   },
-  actionLabel: { fontSize: 12, fontWeight: "600" },
+  actionLabel: { fontSize: 12, fontWeight: "600", textAlign: "center" },
   actions: { flexDirection: "row", gap: Spacing.sm },
   card: {
     borderRadius: Radius.xl,

@@ -4,6 +4,7 @@
 // leaking into another language's list, letters the keyboard cannot type,
 // secrets whose grid letters drift from the text shown to the player.
 
+import { getWordPool as getHangmanPool } from "@/games/duel-hangman/words";
 import { getKeyboardRows, getWordPool } from "@/games/word-guess/logic";
 import { SCRAMBLE_WORDS } from "@/games/word-scramble/words";
 import {
@@ -36,6 +37,9 @@ const len = (word: string) => [...word].length;
 
 function lists(lang: Lang): Record<string, string[]> {
   return {
+    hangman: (["easy", "medium", "hard"] as const).flatMap((d) =>
+      getHangmanPool(lang, d)
+    ),
     "word-guess": getWordPool(lang),
     "word-scramble": SCRAMBLE_WORDS[lang],
     "word-search big": SEARCH_WORDS[lang],
@@ -61,6 +65,7 @@ const LEGIT_DIACRITIC_PAIRS = new Set(["SAGEN/SÄGEN"]);
  * standard spelling in both languages.
  */
 const SHARED_CS: ReadonlySet<string> = new Set([
+  "AUTOPILOT",
   "DATUM",
   "HOTEL",
   "KABEL",
@@ -84,12 +89,16 @@ const SHARED_CS: ReadonlySet<string> = new Set([
 ]);
 const SHARED_DE_EN: ReadonlySet<string> = new Set([
   "ATLAS",
+  "AUTOPILOT",
   "BRIEF",
   "COCKPIT",
+  "DECK",
   "FROST",
   "GATE",
+  "HANGAR",
   "HOTEL",
   "KOALA",
+  "LAND",
   "LASER",
   "MANGO",
   "MOTOR",
@@ -103,9 +112,11 @@ const SHARED_DE_EN: ReadonlySet<string> = new Set([
   "PIZZA",
   "RADAR",
   "RADIO",
+  "ROTOR",
   "ROUTE",
   "SAUCE",
   "SPORT",
+  "STALL",
   "STAND",
   "START",
   "STEAK",
@@ -116,6 +127,7 @@ const SHARED_DE_EN: ReadonlySet<string> = new Set([
   "TICKET",
   "TIGER",
   "TOAST",
+  "TURBINE",
   "VILLA",
   "WIND",
   "ZEBRA",

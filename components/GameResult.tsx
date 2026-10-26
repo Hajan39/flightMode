@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { FadeIn, ZoomIn } from "react-native-reanimated";
 
+import { useA11yOverlay } from "@/components/A11yOverlayScope";
 import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -50,6 +51,7 @@ export default function GameResult({
   const router = useRouter();
   const haptic = useHaptic();
   const reduceMotion = useReduceMotion();
+  useA11yOverlay(true);
 
   useEffect(() => {
     // Delay so the haptic fires when the card is fully visible (~450ms after mount)
@@ -86,6 +88,7 @@ export default function GameResult({
 
   return (
     <Animated.View
+      accessibilityViewIsModal
       entering={FadeIn.delay(300).duration(200)}
       style={styles.overlay}
     >
@@ -116,9 +119,20 @@ export default function GameResult({
           <Ionicons color={theme.tint} name="trophy-outline" size={32} />
         )}
 
-        <Text style={[styles.title, { color: theme.text }]}>{title}</Text>
+        <Text
+          accessibilityLiveRegion="polite"
+          accessibilityRole="header"
+          style={[styles.title, { color: theme.text }]}
+        >
+          {title}
+        </Text>
 
-        <Text style={[styles.score, { color: theme.tint }]}>{fmt(score)}</Text>
+        <Text
+          accessibilityLiveRegion="polite"
+          style={[styles.score, { color: theme.tint }]}
+        >
+          {fmt(score)}
+        </Text>
 
         {subtitle ? (
           <Text style={[styles.subtitle, { color: theme.mutedText }]}>
@@ -175,6 +189,7 @@ export default function GameResult({
 
         <RNView style={styles.actions}>
           <Pressable
+            accessibilityRole="button"
             onPress={handleQuit}
             style={[
               styles.btnSecondary,
@@ -187,6 +202,7 @@ export default function GameResult({
             </Text>
           </Pressable>
           <Pressable
+            accessibilityRole="button"
             onPress={handlePlayAgain}
             style={[styles.btnPrimary, { backgroundColor: theme.tint }]}
           >

@@ -5,10 +5,7 @@ import { canSyncOnNetwork, useNetworkStore } from "@/store/useNetworkStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import type { ContentItem } from "@/types/content";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-import {
-  fetchSyncedContent,
-  hasContentSyncEndpoint,
-} from "@/utils/contentSync";
+import { fetchContentFeed, hasContentSyncEndpoint } from "@/utils/contentSync";
 import { sanitizeErrorText } from "@/utils/errorLogging";
 import { fileStorage } from "@/utils/fileStorage";
 
@@ -21,8 +18,12 @@ type ContentSyncStatus = "idle" | "syncing" | "success" | "error" | "skipped";
 
 interface ContentState {
   clearSyncedContent: () => void;
+  /** ETag of the last feed response (conditional requests). */
+  etag: string | null;
   items: ContentItem[] | null;
   lastError: string | null;
+  /** Last-Modified of the last feed response (conditional requests). */
+  lastModified: string | null;
   lastSyncAt: number | null;
   status: ContentSyncStatus;
   syncContent: () => Promise<void>;
@@ -34,14 +35,18 @@ export const useContentStore = create<ContentState>()(
     (set, get) => ({
       clearSyncedContent: () =>
         set({
+          etag: null,
           items: null,
           lastError: null,
+          lastModified: null,
           lastSyncAt: null,
           status: "idle",
           version: null,
         }),
+      etag: null,
       items: null,
       lastError: null,
+      lastModified: null,
       lastSyncAt: null,
       status: "idle",
       syncContent: async () => {
@@ -78,24 +83,37 @@ export const useContentStore = create<ContentState>()(
         });
 
         try {
-          const result = await fetchSyncedContent(state.version);
+          // Validators only while a synced feed is cached: a 304 means "keep
+          // what you have", which needs something to keep.
+          const outcome = await fetchContentFeed(
+            state.version,
+            state.version === null
+              ? null
+              : { etag: state.etag, lastModified: state.lastModified }
+          );
+          const { result, validators } = outcome;
 
           if (!result) {
             set({
+              etag: validators.etag,
               lastError: null,
+              lastModified: validators.lastModified,
               lastSyncAt: Date.now(),
               status: "success",
             });
             captureAnalyticsEvent("content_sync_success", {
               changed: false,
               content_version: state.version,
+              not_modified: outcome.notModified,
             });
             return;
           }
 
           set({
+            etag: validators.etag,
             items: result.items,
             lastError: null,
+            lastModified: validators.lastModified,
             lastSyncAt: Date.now(),
             status: "success",
             version: result.version,
@@ -123,7 +141,9 @@ export const useContentStore = create<ContentState>()(
     {
       name: "content_sync",
       partialize: (state) => ({
+        etag: state.etag,
         items: state.items,
+        lastModified: state.lastModified,
         lastSyncAt: state.lastSyncAt,
         version: state.version,
       }),

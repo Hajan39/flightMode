@@ -40,6 +40,7 @@ import { useGameStore } from "@/store/useGameStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { getDayOfYear } from "@/utils/dates";
 import { pickFlightGames } from "@/utils/flightRecommendations";
 import {
   cancelFlightReadyReminder,
@@ -58,13 +59,6 @@ function getPlayModeLabelKey(playMode?: GamePlayMode) {
     return "playTogetherCrossDevice";
   }
   return "playTogetherBestOfMode";
-}
-
-function getDayOfYear(date: Date) {
-  const start = new Date(date.getFullYear(), 0, 0);
-  const diff = date.getTime() - start.getTime();
-  const oneDay = 1000 * 60 * 60 * 24;
-  return Math.floor(diff / oneDay);
 }
 
 export default function HomeScreen() {
@@ -88,20 +82,25 @@ export default function HomeScreen() {
   // `tick` only exists to re-render every 30 s; read it so the clock lines refresh.
   const nowMs = Date.now() + tick * 0;
 
-  // Re-render every 30s to update progress
-  useEffect(() => {
-    if (!flight) {
-      return;
-    }
-    const interval = setInterval(() => setTick((prev) => prev + 1), 30_000);
-    return () => clearInterval(interval);
-  }, [flight]);
-
   const remaining = flight ? getRemainingMinutes(flight) : 0;
   const flightDestination = flight?.destinationId
     ? getDestinationById(flight.destinationId)
     : undefined;
   const phase = useFlightPhase(nowMs);
+
+  // Re-render every 30 s to update progress — only while Home is focused and
+  // a flight phase is live (no ticking in the background or long after landing).
+  useFocusEffect(
+    useCallback(() => {
+      // Refresh immediately on focus so the clock is never 30 s stale.
+      setTick((prev) => prev + 1);
+      if (phase === "none") {
+        return;
+      }
+      const interval = setInterval(() => setTick((prev) => prev + 1), 30_000);
+      return () => clearInterval(interval);
+    }, [phase])
+  );
   const landed = phase === "landed";
 
   useEffect(() => {

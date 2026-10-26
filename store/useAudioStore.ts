@@ -142,17 +142,22 @@ export const useAudioStore = create<AudioState>((set, get) => ({
   stopSound: () => {
     globalPlayer?.pause();
     stopBackgroundPlayback();
-    if (sleepTimerRef) {
+    // A still-running sleep timer survives switching sounds off (the user set
+    // it for the session, e.g. "stop whatever plays in 30 min"). Only an
+    // expired deadline is dropped — a stale one would stop the next
+    // soundscape the moment it starts.
+    const { sleepTimerEndAt } = get();
+    const expired = shouldStopForSleepTimer(sleepTimerEndAt, Date.now());
+    if (expired && sleepTimerRef) {
       clearTimeout(sleepTimerRef);
       sleepTimerRef = null;
     }
-    // The timer was cancelled above, so drop its deadline too — a stale one
-    // would otherwise stop the next soundscape the moment it starts.
     set({
       activeLabelKey: null,
       activeSoundId: null,
-      sleepTimerEndAt: null,
-      sleepTimerPresetMinutes: null,
+      ...(expired
+        ? { sleepTimerEndAt: null, sleepTimerPresetMinutes: null }
+        : {}),
     });
   },
   volume: 0.6,

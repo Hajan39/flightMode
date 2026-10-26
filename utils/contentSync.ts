@@ -14,6 +14,21 @@ export interface ContentSyncResult {
   version: string;
 }
 
+/** HTTP cache validators of the last feed response (persisted by the store). */
+export interface FeedValidators {
+  etag: string | null;
+  lastModified: string | null;
+}
+
+export interface ContentFeedOutcome {
+  /** 304 Not Modified: nothing was downloaded. */
+  notModified: boolean;
+  /** New feed content, or null when unchanged (same version or 304). */
+  result: ContentSyncResult | null;
+  /** Validators to send next time (kept from the request on a 304). */
+  validators: FeedValidators;
+}
+
 interface ContentFeed {
   items?: unknown;
   version?: unknown;
@@ -23,8 +38,18 @@ export function hasContentSyncEndpoint() {
   return CONTENT_FEED_URL.length > 0;
 }
 
-/** Same budget as the rates fetch: a captive portal must not hang "Refreshing…". */
-export const CONTENT_FEED_TIMEOUT_MS = 8000;
+/**
+ * Until response headers arrive — same budget as the rates fetch: a captive
+ * portal must not hang "Refreshing…".
+ */
+export const CONTENT_FEED_HEADER_TIMEOUT_MS = 8000;
+/** @deprecated alias of `CONTENT_FEED_HEADER_TIMEOUT_MS`. */
+export const CONTENT_FEED_TIMEOUT_MS = CONTENT_FEED_HEADER_TIMEOUT_MS;
+/**
+ * After headers: the body (a multi-MB feed) on slow airport / in-flight Wi-Fi.
+ * RN fetch exposes no progress, so this is a total body budget.
+ */
+export const CONTENT_FEED_BODY_TIMEOUT_MS = 45_000;
 
 /**
  * raw.githubusercontent.com serves `.json` as `text/plain`, so plain text is
@@ -43,29 +68,72 @@ export function isAcceptableFeedContentType(contentType: string | null) {
   );
 }
 
+/** Back-compat wrapper: the new content, or null when unchanged. */
 export async function fetchSyncedContent(
   currentVersion: string | null,
-  fetchImpl: typeof fetch = fetch
+  fetchImpl: typeof fetch = fetch,
+  validators?: FeedValidators | null
 ): Promise<ContentSyncResult | null> {
+  const outcome = await fetchContentFeed(currentVersion, validators, fetchImpl);
+  return outcome.result;
+}
+
+/**
+ * Fetches the feed with a conditional request (If-None-Match /
+ * If-Modified-Since from `validators`). A 304 downloads nothing.
+ */
+export async function fetchContentFeed(
+  currentVersion: string | null,
+  validators: FeedValidators | null | undefined,
+  fetchImpl: typeof fetch = fetch
+): Promise<ContentFeedOutcome> {
   const controller = new AbortController();
   let timer: ReturnType<typeof setTimeout> | undefined;
+  let rejectTimeout: (error: Error) => void = () => undefined;
   // Race as well as abort: a fetch implementation that ignores the signal
   // (or a body that never finishes) still settles.
   const timeout = new Promise<never>((_, reject) => {
+    rejectTimeout = reject;
+  });
+  const arm = (ms: number, phase: string) => {
+    clearTimeout(timer);
     timer = setTimeout(() => {
       controller.abort();
-      reject(new Error("Content sync timed out"));
-    }, CONTENT_FEED_TIMEOUT_MS);
-  });
+      rejectTimeout(new Error(`Content sync timed out (${phase})`));
+    }, ms);
+  };
 
+  const headers: Record<string, string> = { Accept: "application/json" };
+  if (validators?.etag) {
+    headers["If-None-Match"] = validators.etag;
+  }
+  if (validators?.lastModified) {
+    headers["If-Modified-Since"] = validators.lastModified;
+  }
+
+  arm(CONTENT_FEED_HEADER_TIMEOUT_MS, "headers");
   try {
     return await Promise.race([
-      (async () => {
+      (async (): Promise<ContentFeedOutcome> => {
         const response = await fetchImpl(CONTENT_FEED_URL, {
-          headers: { Accept: "application/json" },
+          headers,
           signal: controller.signal,
         });
 
+        if (response.status === 304) {
+          clearTimeout(timer);
+          return {
+            notModified: true,
+            result: null,
+            validators: {
+              etag: response.headers.get("etag") ?? validators?.etag ?? null,
+              lastModified:
+                response.headers.get("last-modified") ??
+                validators?.lastModified ??
+                null,
+            },
+          };
+        }
         if (!response.ok) {
           throw new Error(`Content sync failed with status ${response.status}`);
         }
@@ -75,13 +143,21 @@ export async function fetchSyncedContent(
           throw new Error("Content feed is not JSON");
         }
 
+        arm(CONTENT_FEED_BODY_TIMEOUT_MS, "body");
         let feed: unknown;
         try {
           feed = await response.json();
         } catch (error) {
           throw new Error("Content feed is not JSON", { cause: error });
         }
-        return parseContentFeed((feed ?? {}) as ContentFeed, currentVersion);
+        return {
+          notModified: false,
+          result: parseContentFeed((feed ?? {}) as ContentFeed, currentVersion),
+          validators: {
+            etag: response.headers.get("etag"),
+            lastModified: response.headers.get("last-modified"),
+          },
+        };
       })(),
       timeout,
     ]);

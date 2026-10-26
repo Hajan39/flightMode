@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { AccessibilityInfo, StyleSheet } from "react-native";
 import Animated, {
   FadeIn,
   FadeOut,
@@ -37,17 +37,25 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
   const [value, setValue] = useState<number | "GO">(from);
   const scale = useSharedValue(reduceMotion ? 1 : 0.4);
   const animStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
+    transform: [{ scale: scale.get() }],
   }));
+
+  const spoken = value === "GO" ? t("gameGo") : String(value);
+  useEffect(() => {
+    // Screen readers don't announce the big digit on their own.
+    AccessibilityInfo.announceForAccessibility(spoken);
+  }, [spoken]);
 
   useEffect(() => {
     if (reduceMotion) {
       // Reduce Motion: text still communicates 3-2-1-GO, just without the scale bounce.
-      scale.value = 1;
+      scale.set(1);
     } else {
-      scale.value = withSequence(
-        withSpring(1.1, { damping: 8, stiffness: 200 }),
-        withTiming(0.9, { duration: 600 })
+      scale.set(
+        withSequence(
+          withSpring(1.1, { damping: 8, stiffness: 200 }),
+          withTiming(0.9, { duration: 600 })
+        )
       );
     }
     if (value === "GO") {
@@ -78,6 +86,7 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
       style={styles.overlay}
     >
       <Animated.Text
+        accessibilityLiveRegion="assertive"
         key={String(value)}
         style={[
           styles.text,
@@ -85,7 +94,7 @@ export default function GameCountdown({ onComplete, from = 3 }: Props) {
           animStyle,
         ]}
       >
-        {value === "GO" ? t("gameGo") : String(value)}
+        {spoken}
       </Animated.Text>
     </Animated.View>
   );

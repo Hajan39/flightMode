@@ -1,33 +1,107 @@
 import { getLocales } from "expo-localization";
-import { cs } from "@/i18n/locales/cs";
-import { de } from "@/i18n/locales/de";
+import type { cs } from "@/i18n/locales/cs";
+import type { de } from "@/i18n/locales/de";
 import { en } from "@/i18n/locales/en";
-import { es } from "@/i18n/locales/es";
-import { fr } from "@/i18n/locales/fr";
-import { hi } from "@/i18n/locales/hi";
-import { it } from "@/i18n/locales/it";
-import { ja } from "@/i18n/locales/ja";
-import { ko } from "@/i18n/locales/ko";
-import { pl } from "@/i18n/locales/pl";
-import { pt } from "@/i18n/locales/pt";
-import { zh } from "@/i18n/locales/zh";
+import type { es } from "@/i18n/locales/es";
+import type { fr } from "@/i18n/locales/fr";
+import type { hi } from "@/i18n/locales/hi";
+import type { it } from "@/i18n/locales/it";
+import type { ja } from "@/i18n/locales/ja";
+import type { ko } from "@/i18n/locales/ko";
+import type { pl } from "@/i18n/locales/pl";
+import type { pt } from "@/i18n/locales/pt";
+import type { zh } from "@/i18n/locales/zh";
 
-export const translations = {
-  cs,
-  de,
+interface LocaleTables {
+  cs: typeof cs;
+  de: typeof de;
+  en: typeof en;
+  es: typeof es;
+  fr: typeof fr;
+  hi: typeof hi;
+  it: typeof it;
+  ja: typeof ja;
+  ko: typeof ko;
+  pl: typeof pl;
+  pt: typeof pt;
+  zh: typeof zh;
+}
+
+export type Language = keyof LocaleTables;
+
+// Only English (the fallback for every missing key) is evaluated at startup.
+// Other locales are required on first use: Metro keeps each module's factory
+// un-run until its first require(), so the 11 unused ~1.5k-key tables are
+// never evaluated (Hermes also only parses them lazily).
+const loaders: { [L in Exclude<Language, "en">]: () => LocaleTables[L] } = {
+  cs: () => require("@/i18n/locales/cs").cs,
+  de: () => require("@/i18n/locales/de").de,
+  es: () => require("@/i18n/locales/es").es,
+  fr: () => require("@/i18n/locales/fr").fr,
+  hi: () => require("@/i18n/locales/hi").hi,
+  it: () => require("@/i18n/locales/it").it,
+  ja: () => require("@/i18n/locales/ja").ja,
+  ko: () => require("@/i18n/locales/ko").ko,
+  pl: () => require("@/i18n/locales/pl").pl,
+  pt: () => require("@/i18n/locales/pt").pt,
+  zh: () => require("@/i18n/locales/zh").zh,
+};
+
+const cache: Partial<LocaleTables> = { en };
+
+export function getLocaleTable<L extends Language>(
+  language: L
+): LocaleTables[L] {
+  const cached = cache[language];
+  if (cached) {
+    return cached as LocaleTables[L];
+  }
+  const loader = loaders[language as Exclude<Language, "en">];
+  const table = (loader ? loader() : en) as LocaleTables[L];
+  cache[language] = table;
+  return table;
+}
+
+/**
+ * All locale tables, keyed by language. Each property is a lazy getter, so
+ * `Object.keys(translations)` is cheap and a table is only loaded when read.
+ */
+export const translations: Readonly<LocaleTables> = {
+  get cs() {
+    return getLocaleTable("cs");
+  },
+  get de() {
+    return getLocaleTable("de");
+  },
   en,
-  es,
-  fr,
-  hi,
-  it,
-  ja,
-  ko,
-  pl,
-  pt,
-  zh,
-} as const;
-
-export type Language = keyof typeof translations;
+  get es() {
+    return getLocaleTable("es");
+  },
+  get fr() {
+    return getLocaleTable("fr");
+  },
+  get hi() {
+    return getLocaleTable("hi");
+  },
+  get it() {
+    return getLocaleTable("it");
+  },
+  get ja() {
+    return getLocaleTable("ja");
+  },
+  get ko() {
+    return getLocaleTable("ko");
+  },
+  get pl() {
+    return getLocaleTable("pl");
+  },
+  get pt() {
+    return getLocaleTable("pt");
+  },
+  get zh() {
+    return getLocaleTable("zh");
+  },
+};
 
 export type LocalizedText = Partial<Record<Language, string>> & {
   en: string;
@@ -56,17 +130,17 @@ export const defaultLanguage: Language = "en";
 
 type TranslationParams = Record<string, string | number>;
 
-export type TranslationKey = keyof typeof translations.en;
+export type TranslationKey = keyof typeof en;
 
 export function translate(
   language: Language,
   key: TranslationKey,
   params?: TranslationParams
 ): string {
-  const languageTable = translations[language] as Partial<
+  const languageTable = getLocaleTable(language) as Partial<
     Record<TranslationKey, string>
   >;
-  const template: string = languageTable[key] ?? translations.en[key];
+  const template: string = languageTable[key] ?? en[key];
 
   if (!params) {
     return template;

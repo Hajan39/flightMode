@@ -77,3 +77,29 @@ describe("flight passport", () => {
     expect(summary.stamps[0].city).toBeNull();
   });
 });
+
+describe("passport totals with corrupt durations", () => {
+  test("a NaN / Infinity duration counts as 0 minutes instead of poisoning the total", () => {
+    const summary = getPassportSummary(
+      [
+        { departureTime: 0, duration: Number.NaN, id: "nan" },
+        { departureTime: H, duration: Number.POSITIVE_INFINITY, id: "inf" },
+        { departureTime: 2 * H, duration: 60, id: "ok" },
+      ],
+      now
+    );
+    expect(summary.flights).toBe(3);
+    // Infinity is capped by the minutes actually elapsed (98 h), NaN → 0.
+    expect(summary.minutesInAir).toBe(60 + 99 * 60);
+    expect(Number.isFinite(summary.minutesInAir)).toBe(true);
+  });
+
+  test("only NaN → total stays 0", () => {
+    expect(
+      getPassportSummary(
+        [{ departureTime: 0, duration: Number.NaN, id: "nan" }],
+        now
+      ).minutesInAir
+    ).toBe(0);
+  });
+});

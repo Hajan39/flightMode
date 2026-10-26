@@ -2,14 +2,8 @@ import type { ErrorBoundaryProps } from "expo-router";
 import { useEffect } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
-import {
-  getDeviceLanguage,
-  type Language,
-  type TranslationKey,
-  translate,
-} from "@/i18n/translations";
-import { useSettingsStore } from "@/store/useSettingsStore";
-import { logFatalError } from "@/utils/errorLogging";
+// Types only: erased at build time, so they can't throw at import.
+import type { Language, TranslationKey } from "@/i18n/translations";
 
 /**
  * Custom root error boundary for expo-router. Replaces the default boundary so
@@ -20,7 +14,33 @@ import { logFatalError } from "@/utils/errorLogging";
  * colors — no theme store, no app hooks — because the error it renders may
  * originate from exactly those subsystems. Text is localized through plain,
  * non-hook reads (`safeText`) that fall back to English on any failure.
+ *
+ * The translations, settings store and error logger are required lazily at
+ * render time inside try/catch: a module that throws while loading must not
+ * take the boundary down with it (a static import would fail this module).
  */
+
+type TranslationsModule = typeof import("@/i18n/translations");
+type SettingsModule = typeof import("@/store/useSettingsStore");
+type ErrorLoggingModule = typeof import("@/utils/errorLogging");
+
+function loadTranslations(): TranslationsModule | null {
+  try {
+    return require("@/i18n/translations") as TranslationsModule;
+  } catch {
+    return null;
+  }
+}
+
+function logError(error: unknown) {
+  try {
+    const { logFatalError } =
+      require("@/utils/errorLogging") as ErrorLoggingModule;
+    logFatalError(error, "render");
+  } catch {
+    // Logging must never break the fallback screen.
+  }
+}
 
 const FALLBACK_TEXT = {
   errorBoundaryRetry: "Try again",
@@ -34,7 +54,17 @@ type BoundaryTextKey = keyof typeof FALLBACK_TEXT;
 /** Stored language > device language > en; never throws. */
 function safeLanguage(): Language {
   try {
-    return useSettingsStore.getState().language ?? getDeviceLanguage();
+    const { useSettingsStore } =
+      require("@/store/useSettingsStore") as SettingsModule;
+    const stored = useSettingsStore.getState().language;
+    if (stored) {
+      return stored;
+    }
+  } catch {
+    // Fall through to the device language.
+  }
+  try {
+    return loadTranslations()?.getDeviceLanguage() ?? "en";
   } catch {
     return "en";
   }
@@ -43,7 +73,7 @@ function safeLanguage(): Language {
 /** Localized boundary text without hooks; English if anything fails. */
 function safeText(language: Language, key: BoundaryTextKey): string {
   try {
-    return translate(language, key) || FALLBACK_TEXT[key];
+    return loadTranslations()?.translate(language, key) || FALLBACK_TEXT[key];
   } catch {
     return FALLBACK_TEXT[key];
   }
@@ -62,7 +92,7 @@ export default function RootErrorBoundary({
   retry,
 }: ErrorBoundaryProps) {
   useEffect(() => {
-    logFatalError(error, "render");
+    logError(error);
   }, [error]);
   const language = safeLanguage();
 

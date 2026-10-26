@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Animated, { FadeIn, ZoomIn } from "react-native-reanimated";
 
+import { useA11yOverlay } from "@/components/A11yOverlayScope";
 import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -48,6 +49,8 @@ interface Props {
   winnerIndex: number | null;
 }
 
+const defaultFormat = (v: number) => String(v);
+
 /**
  * Leaderboard variant of `GameResult` for multiplayer games: ranked players,
  * winner highlight, host streak line, and Rematch / Change players / Quit.
@@ -63,7 +66,7 @@ export default function MatchResult({
   onRematch,
   onChangePlayers,
   onQuit,
-  format = (v) => String(v),
+  format = defaultFormat,
 }: Props) {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
@@ -71,6 +74,7 @@ export default function MatchResult({
   const router = useRouter();
   const haptic = useHaptic();
   const reduceMotion = useReduceMotion();
+  useA11yOverlay(true);
 
   const hostWon = winnerIndex === 0;
 
@@ -104,6 +108,7 @@ export default function MatchResult({
 
   return (
     <Animated.View
+      accessibilityViewIsModal
       entering={FadeIn.delay(200).duration(200)}
       style={styles.overlay}
     >
@@ -130,7 +135,13 @@ export default function MatchResult({
             size={30}
           />
         </RNView>
-        <Text style={[styles.title, { color: theme.text }]}>{headline}</Text>
+        <Text
+          accessibilityLiveRegion="polite"
+          accessibilityRole="header"
+          style={[styles.title, { color: theme.text }]}
+        >
+          {headline}
+        </Text>
         {subtitle ? (
           <Text style={[styles.subtitle, { color: theme.mutedText }]}>
             {subtitle}
@@ -147,6 +158,7 @@ export default function MatchResult({
             return (
               <RNView
                 accessibilityLabel={`${cooperative ? "" : `#${row.rank} `}${row.player.name}: ${format(row.score)} ${scoreLabel}`}
+                accessible
                 key={row.player.index}
                 style={[
                   styles.row,

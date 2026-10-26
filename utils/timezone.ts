@@ -152,7 +152,10 @@ export interface JetlagPlan {
   arrivalLocalHour: number;
   direction: JetlagDirection;
   severity: JetlagSeverity;
-  /** Signed hour shift destination − home, rounded to 0.5 h. */
+  /**
+   * Signed hour shift destination − home, rounded to 0.5 h and wrapped into
+   * (-12, +12] — the body-clock shift, so Honolulu → Auckland is -1 h, not +23 h.
+   */
   shiftHours: number;
   /** Suggested on-plane sleep window in absolute ms, or null when not useful. */
   sleepWindow: { startMs: number; endMs: number } | null;
@@ -194,6 +197,12 @@ export interface JetlagInput {
 const MINUTE = 60_000;
 const HOUR = 60 * MINUTE;
 
+/** Wrap a raw clock difference (hours) into (-12, +12]. */
+export function normalizeShiftHours(hours: number): number {
+  const wrapped = (((hours % 24) + 36) % 24) - 12;
+  return wrapped === -12 ? 12 : wrapped;
+}
+
 /**
  * Simple, honest jet-lag heuristic:
  * - |shift| < 2 h → nothing to do.
@@ -208,7 +217,9 @@ export function getJetlagPlan(input: JetlagInput): JetlagPlan {
   const homeOffset =
     input.homeOffsetMinutes ?? getDeviceOffsetMinutes(departureTime);
   const destOffset = getZoneOffsetMinutes(arrivalMs, destination, opts);
-  const shiftHours = Math.round(((destOffset - homeOffset) / 60) * 2) / 2;
+  const shiftHours = normalizeShiftHours(
+    Math.round(((destOffset - homeOffset) / 60) * 2) / 2
+  );
   const abs = Math.abs(shiftHours);
   const arrivalLocalHour = getHourInZone(arrivalMs, destination, opts);
 
@@ -236,14 +247,17 @@ export function getJetlagPlan(input: JetlagInput): JetlagPlan {
     };
   }
 
-  const remainingMs = Math.max(0, arrivalMs - nowMs);
+  // Sleep can only happen on board: before take-off, plan from departure so
+  // ground time never counts as flight time left.
+  const fromMs = Math.max(nowMs, departureTime);
+  const remainingMs = Math.max(0, arrivalMs - fromMs);
 
   if (arrivalLocalHour >= 5 && arrivalLocalHour <= 11) {
     const endMs = arrivalMs - 45 * MINUTE;
     const maxLen = Math.min(remainingMs - 45 * MINUTE, 4 * HOUR);
     const sleepWindow =
       remainingMs >= 2 * HOUR && maxLen > 0
-        ? { endMs, startMs: endMs - maxLen }
+        ? { endMs, startMs: Math.max(departureTime, endMs - maxLen) }
         : null;
     return {
       adviceKey: "jetlagAdviceSleepBeforeArrival",
@@ -258,7 +272,7 @@ export function getJetlagPlan(input: JetlagInput): JetlagPlan {
   if (arrivalLocalHour >= 12 && arrivalLocalHour <= 17) {
     const sleepWindow =
       remainingMs >= 3 * HOUR
-        ? { endMs: nowMs + 90 * MINUTE, startMs: nowMs }
+        ? { endMs: Math.min(arrivalMs, fromMs + 90 * MINUTE), startMs: fromMs }
         : null;
     return {
       adviceKey: "jetlagAdviceShortNap",

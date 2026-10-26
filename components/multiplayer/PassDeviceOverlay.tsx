@@ -1,7 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Pressable, View as RNView, StyleSheet } from "react-native";
+import { useEffect } from "react";
+import {
+  AccessibilityInfo,
+  Pressable,
+  View as RNView,
+  StyleSheet,
+} from "react-native";
 import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
 
+import { useA11yOverlay } from "@/components/A11yOverlayScope";
 import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -40,6 +47,18 @@ export default function PassDeviceOverlay({
   const { t } = useTranslation();
   const haptic = useHaptic();
   const reduceMotion = useReduceMotion();
+  // Hide the board underneath from TalkBack (Android) when the game wraps it
+  // in <A11yOverlayContent>; iOS relies on accessibilityViewIsModal below.
+  useA11yOverlay(visible);
+
+  const announcement = visible
+    ? `${t("passPhoneTo", { player: toPlayer.name })}${secret ? `. ${t("passPhoneDontLook")}` : ""}`
+    : "";
+  useEffect(() => {
+    if (announcement) {
+      AccessibilityInfo.announceForAccessibility(announcement);
+    }
+  }, [announcement]);
 
   if (!visible) {
     return null;
@@ -64,7 +83,10 @@ export default function PassDeviceOverlay({
       <Text style={[styles.eyebrow, { color: theme.mutedText }]}>
         {t("passPhone")}
       </Text>
-      <Text style={[styles.title, { color: theme.text }]}>
+      <Text
+        accessibilityRole="header"
+        style={[styles.title, { color: theme.text }]}
+      >
         {t("passPhoneTo", { player: toPlayer.name })}
       </Text>
       {secret ? (

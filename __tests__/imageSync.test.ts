@@ -6,13 +6,18 @@ jest.mock("expo-file-system/legacy", () => ({
   makeDirectoryAsync: jest.fn(async () => undefined),
 }));
 
-import { createDownloadResumable } from "expo-file-system/legacy";
+import {
+  createDownloadResumable,
+  deleteAsync,
+  getInfoAsync,
+} from "expo-file-system/legacy";
 
 import {
   downloadImage,
   hashUrl,
   imageFilenameForUrl,
   isAllowedImageUrl,
+  MAX_IMAGE_BYTES,
 } from "@/utils/imageSync";
 
 const HASH_RE = /^[0-9a-f]{16}$/;
@@ -46,6 +51,12 @@ describe("image cache file names", () => {
     expect(imageFilenameForUrl(url)).toBe(hashUrl(url));
   });
 
+  test("hash is pinned — changing it would orphan every cached image", () => {
+    expect(hashUrl("https://images.unsplash.com/photo-123?w=800&q=80")).toBe(
+      "9a58055087306628"
+    );
+  });
+
   test("URLs sharing a long suffix no longer collide", () => {
     const suffix = `/${"x".repeat(100)}.jpg`;
     const a = imageFilenameForUrl(`https://a.example${suffix}`);
@@ -69,5 +80,121 @@ describe("image cache file names", () => {
     ];
     const names = new Set(urls.map(imageFilenameForUrl));
     expect(names.size).toBe(urls.length);
+  });
+});
+
+describe("downloadImage", () => {
+  const URL = "https://images.example/hero.jpg";
+  interface Progress {
+    totalBytesExpectedToWrite: number;
+    totalBytesWritten: number;
+  }
+
+  /**
+   * Fake transfer: `progress` events fire during downloadAsync, then it
+   * resolves with `status` / `headers`; the saved file reports `savedSize`.
+   */
+  function setup(opts: {
+    headers?: Record<string, string>;
+    progress?: Progress[];
+    savedSize?: number;
+    status?: number;
+  }) {
+    let fileExists = false;
+    (getInfoAsync as jest.Mock).mockImplementation((uri: string) => {
+      if (uri.endsWith("article_images/")) {
+        return Promise.resolve({ exists: true });
+      }
+      return Promise.resolve(
+        fileExists
+          ? { exists: true, size: opts.savedSize ?? 1000 }
+          : { exists: false }
+      );
+    });
+    const cancelAsync = jest.fn(async () => undefined);
+    (createDownloadResumable as jest.Mock).mockImplementation(
+      (
+        _url: string,
+        uri: string,
+        _o: unknown,
+        onProgress: (p: Progress) => void
+      ) => ({
+        cancelAsync,
+        downloadAsync: () => {
+          for (const p of opts.progress ?? []) {
+            onProgress(p);
+          }
+          fileExists = true;
+          return Promise.resolve({
+            headers: opts.headers ?? { "Content-Type": "image/jpeg" },
+            status: opts.status ?? 200,
+            uri,
+          });
+        },
+      })
+    );
+    return { cancelAsync };
+  }
+
+  beforeEach(() => {
+    (deleteAsync as jest.Mock).mockClear();
+    (createDownloadResumable as jest.Mock).mockReset();
+  });
+
+  test("a 200 image response is cached and its uri returned", async () => {
+    setup({});
+    await expect(downloadImage(URL)).resolves.toBe(
+      `file:///docs/article_images/${imageFilenameForUrl(URL)}`
+    );
+    expect(deleteAsync).not.toHaveBeenCalled();
+  });
+
+  test("a captive-portal HTML page is discarded", async () => {
+    setup({ headers: { "content-type": "text/html; charset=utf-8" } });
+    await expect(downloadImage(URL)).resolves.toBeNull();
+    expect(deleteAsync).toHaveBeenCalledTimes(1);
+  });
+
+  test("a non-200 status is discarded", async () => {
+    setup({ status: 404 });
+    await expect(downloadImage(URL)).resolves.toBeNull();
+    expect(deleteAsync).toHaveBeenCalledTimes(1);
+  });
+
+  test("an oversized Content-Length cancels the transfer", async () => {
+    const { cancelAsync } = setup({
+      progress: [
+        {
+          totalBytesExpectedToWrite: MAX_IMAGE_BYTES + 1,
+          totalBytesWritten: 10,
+        },
+      ],
+    });
+    await expect(downloadImage(URL)).resolves.toBeNull();
+    expect(cancelAsync).toHaveBeenCalledTimes(1);
+  });
+
+  test("a body that grows past the cap without a length is cancelled", async () => {
+    const { cancelAsync } = setup({
+      progress: [
+        { totalBytesExpectedToWrite: -1, totalBytesWritten: 100 },
+        {
+          totalBytesExpectedToWrite: -1,
+          totalBytesWritten: MAX_IMAGE_BYTES + 1,
+        },
+        {
+          totalBytesExpectedToWrite: -1,
+          totalBytesWritten: MAX_IMAGE_BYTES + 2,
+        },
+      ],
+    });
+    await expect(downloadImage(URL)).resolves.toBeNull();
+    expect(cancelAsync).toHaveBeenCalledTimes(1);
+  });
+
+  test("a saved file larger than the cap is deleted", async () => {
+    setup({ savedSize: MAX_IMAGE_BYTES + 1 });
+    await expect(downloadImage(URL)).resolves.toBeNull();
+    expect(deleteAsync).toHaveBeenCalledTimes(1);
   });
 });

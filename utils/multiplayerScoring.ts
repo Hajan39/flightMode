@@ -99,10 +99,47 @@ export const GAMES_WITH_SOLO_PATHS: readonly string[] = [
 ];
 
 /**
+ * Legacy stats count as real matches only for games WITHOUT a solo path
+ * (every play there was a match). Used while a game has no `mp:*` counter yet,
+ * so players from before the counters shipped keep their host progress.
+ */
+function legacyCounts(
+  progress: GameProgress | undefined,
+  gameId: string | undefined
+): progress is GameProgress {
+  const id = gameId ?? progress?.gameId;
+  return Boolean(progress && id && !GAMES_WITH_SOLO_PATHS.includes(id));
+}
+
+/** Real multi-player matches hosted in one game (solo runs excluded). */
+export function hostedMatches(
+  progress: GameProgress | undefined,
+  gameId?: string
+): number {
+  const stored = progress?.levelStars?.[HOSTED_KEY];
+  if (stored !== undefined) {
+    return stored;
+  }
+  return legacyCounts(progress, gameId) ? progress.timesPlayed : 0;
+}
+
+/** Longest run of consecutive sole wins in real matches of one game. */
+export function bestHostRun(
+  progress: GameProgress | undefined,
+  gameId?: string
+): number {
+  const stored = progress?.levelStars?.[BEST_RUN_KEY];
+  if (stored !== undefined) {
+    return stored;
+  }
+  return legacyCounts(progress, gameId) ? progress.bestStreak : 0;
+}
+
+/**
  * The `levelStars` patch that records one real hosted match. On the first
  * match after this counter shipped, games WITHOUT a solo path seed it from
- * their legacy stats (every play there was a real match); games with one
- * start from zero.
+ * their legacy stats (same fallback as `hostedMatches` / `bestHostRun`);
+ * games with one start from zero.
  */
 export function hostStatsPatch(
   gameId: string,
@@ -110,12 +147,13 @@ export function hostStatsPatch(
   won: boolean
 ): Record<string, number> {
   const stars: Partial<Record<string, number>> = existing?.levelStars ?? {};
-  const seed = !GAMES_WITH_SOLO_PATHS.includes(gameId) && existing;
-  const hosted = stars[HOSTED_KEY] ?? (seed ? existing.timesPlayed : 0);
+  const hosted = hostedMatches(existing, gameId);
   const runStart =
     stars[RUN_START_KEY] ??
-    (seed ? Math.max(0, existing.timesPlayed - existing.currentStreak) : 0);
-  const bestRun = stars[BEST_RUN_KEY] ?? (seed ? existing.bestStreak : 0);
+    (legacyCounts(existing, gameId)
+      ? Math.max(0, existing.timesPlayed - existing.currentStreak)
+      : 0);
+  const bestRun = bestHostRun(existing, gameId);
   const nextHosted = hosted + 1;
   return won
     ? {
@@ -128,16 +166,6 @@ export function hostStatsPatch(
         [HOSTED_KEY]: nextHosted,
         [RUN_START_KEY]: nextHosted,
       };
-}
-
-/** Real multi-player matches hosted in one game (solo runs excluded). */
-export function hostedMatches(progress: GameProgress | undefined): number {
-  return progress?.levelStars?.[HOSTED_KEY] ?? 0;
-}
-
-/** Longest run of consecutive sole wins in real matches of one game. */
-export function bestHostRun(progress: GameProgress | undefined): number {
-  return progress?.levelStars?.[BEST_RUN_KEY] ?? 0;
 }
 
 /** Persist one finished match using the host convention above. */

@@ -90,3 +90,62 @@ describe("useFlightStore passport log", () => {
     expect(empty.log).toEqual([]);
   });
 });
+
+describe("useFlightStore home offset", () => {
+  beforeEach(() => useFlightStore.setState({ flight: null, log: [] }));
+  afterEach(() => jest.restoreAllMocks());
+
+  const mockDeviceOffset = (minutes: number) =>
+    jest.spyOn(Date.prototype, "getTimezoneOffset").mockReturnValue(-minutes);
+
+  test("saving a flight captures the device offset; the passport log omits it", () => {
+    mockDeviceOffset(60);
+    useFlightStore
+      .getState()
+      .setFlight({ departureTime: NOW, duration: 60, id: "a" });
+    expect(useFlightStore.getState().flight?.homeOffsetMinutes).toBe(60);
+    expect(useFlightStore.getState().log[0]).not.toHaveProperty(
+      "homeOffsetMinutes"
+    );
+  });
+
+  test("editing without moving the departure keeps the original home offset", () => {
+    mockDeviceOffset(60);
+    const { setFlight } = useFlightStore.getState();
+    setFlight({ departureTime: NOW, duration: 60, id: "a" });
+    // Phone has switched to the destination zone (Tokyo).
+    jest.restoreAllMocks();
+    mockDeviceOffset(540);
+    setFlight({ departureTime: NOW, duration: 90, id: "a" });
+    expect(useFlightStore.getState().flight?.homeOffsetMinutes).toBe(60);
+  });
+
+  test("a moved departure or a new flight re-captures; an explicit value wins", () => {
+    mockDeviceOffset(60);
+    const { setFlight } = useFlightStore.getState();
+    setFlight({ departureTime: NOW, duration: 60, id: "a" });
+    jest.restoreAllMocks();
+    mockDeviceOffset(-300);
+    setFlight({ departureTime: NOW + MIN, duration: 60, id: "a" });
+    expect(useFlightStore.getState().flight?.homeOffsetMinutes).toBe(-300);
+    setFlight({ departureTime: NOW + MIN, duration: 60, id: "b" });
+    expect(useFlightStore.getState().flight?.homeOffsetMinutes).toBe(-300);
+    setFlight({
+      departureTime: NOW + MIN,
+      duration: 60,
+      homeOffsetMinutes: 330,
+      id: "b",
+    });
+    expect(useFlightStore.getState().flight?.homeOffsetMinutes).toBe(330);
+  });
+
+  test("a persisted flight without the field still rehydrates (v1, no migration)", () => {
+    const { migrate } = useFlightStore.persist.getOptions();
+    const legacy = {
+      flight: { departureTime: NOW, duration: 60, id: "old" },
+      log: [],
+    };
+    expect(migrate?.(legacy, 1)).toEqual(legacy);
+    expect(useFlightStore.persist.getOptions().version).toBe(1);
+  });
+});

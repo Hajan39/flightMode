@@ -399,7 +399,7 @@ export default function WordGuessGame() {
         </RNView>
 
         {/* Error / status message row — always occupies space to avoid layout shift */}
-        <RNView style={styles.messageRow}>
+        <RNView accessibilityLiveRegion="polite" style={styles.messageRow}>
           {errorMessage ? (
             <Text style={[styles.errorText, { color: theme.mutedText }]}>
               {errorMessage}
@@ -546,8 +546,8 @@ const styles = StyleSheet.create({
   // Message row
   messageRow: {
     alignItems: "center",
-    height: 20,
     justifyContent: "center",
+    minHeight: 20,
   },
   root: {
     flex: 1,

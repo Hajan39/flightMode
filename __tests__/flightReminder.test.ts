@@ -25,4 +25,25 @@ describe("flight-ready reminder timing", () => {
     expect(getFlightReadyReminderFireAt(now + 31 * MIN, now)).toBeNull();
     expect(getFlightReadyReminderFireAt(Number.NaN, now)).toBeNull();
   });
+
+  test("the 2-min lead time is strict at both fallbacks", () => {
+    // 3 h before lands exactly on now+2min → not enough lead → 30 min before.
+    expect(getFlightReadyReminderFireAt(now + 182 * MIN, now)).toBe(
+      now + 152 * MIN
+    );
+    expect(getFlightReadyReminderFireAt(now + 183 * MIN, now)).toBe(
+      now + 3 * MIN
+    );
+    // 30 min before lands exactly on now+2min → null; one minute more → fires.
+    expect(getFlightReadyReminderFireAt(now + 32 * MIN, now)).toBeNull();
+    expect(getFlightReadyReminderFireAt(now + 33 * MIN, now)).toBe(
+      now + 3 * MIN
+    );
+  });
+
+  test("a non-finite departure never schedules", () => {
+    expect(
+      getFlightReadyReminderFireAt(Number.POSITIVE_INFINITY, now)
+    ).toBeNull();
+  });
 });

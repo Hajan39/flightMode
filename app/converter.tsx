@@ -24,6 +24,7 @@ import { captureAnalyticsEvent, normalizeRouteSource } from "@/utils/analytics";
 import {
   convertCurrency,
   convertUnit,
+  decimalSeparatorForLanguage,
   formatCurrency,
   formatUnit,
   parseAmount,
@@ -51,7 +52,7 @@ const KIND_LABEL_KEYS = {
 export default function ConverterScreen() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
   const haptic = useHaptic();
   const params = useLocalSearchParams<{
     currency?: string;
@@ -100,7 +101,7 @@ export default function ConverterScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [source]);
 
-  const value = parseAmount(amount);
+  const value = parseAmount(amount, decimalSeparatorForLanguage(language));
 
   const result = useMemo(() => {
     if (value === null) {

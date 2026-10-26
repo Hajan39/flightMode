@@ -103,4 +103,25 @@ describe("Play Games sign-in retry + resend", () => {
     await expect(initPlayGames()).resolves.toBeUndefined();
     await expect(unlockPlayGamesAchievement("CgkI_x")).resolves.toBeUndefined();
   });
+
+  test("resend dedupes ids, skips empty ones and survives a failing unlock", async () => {
+    const native = fakeNative([true]);
+    native.unlockAchievement.mockImplementationOnce(() =>
+      Promise.reject(new Error("first fails"))
+    );
+    __setNativeForTests(native);
+    setUnlockedPlayIdsSource(() => [
+      "CgkI_a",
+      "",
+      "CgkI_b",
+      "CgkI_a",
+      "CgkI_c",
+    ]);
+    await initPlayGames();
+    const sent = native.unlockAchievement.mock.calls.map(
+      (c: unknown[]) => c[0]
+    );
+    // The first call threw; the rest were still sent, each id exactly once.
+    expect(sent).toEqual(["CgkI_a", "CgkI_b", "CgkI_c"]);
+  });
 });

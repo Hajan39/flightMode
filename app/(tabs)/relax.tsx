@@ -298,6 +298,9 @@ export default function RelaxScreen() {
               </Text>
             </View>
             <Pressable
+              accessibilityLabel={t("a11yStopSound")}
+              accessibilityRole="button"
+              hitSlop={12}
               onPress={stopActiveSoundscape}
               style={styles.nowPlayingStop}
             >
@@ -319,6 +322,7 @@ export default function RelaxScreen() {
                 style={styles.soundCol}
               >
                 <AnimatedPressable
+                  accessibilityState={{ selected: isScapeActive }}
                   onPress={() => toggleSoundscape(scape)}
                   style={[
                     styles.soundCard,
@@ -367,6 +371,11 @@ export default function RelaxScreen() {
             const isSelected = Math.abs(volume - level) < 0.01;
             return (
               <Pressable
+                accessibilityLabel={t("a11yVolumePercent", {
+                  percent: Math.round(level * 100),
+                })}
+                accessibilityRole="button"
+                accessibilityState={{ selected: isSelected }}
                 key={level}
                 onPress={() => {
                   haptic.tap();
@@ -455,6 +464,13 @@ export default function RelaxScreen() {
 
               return (
                 <Pressable
+                  accessibilityLabel={
+                    minutes === null
+                      ? `${t("sleepTimer")}: ${t("sleepTimerOff")}`
+                      : t("a11ySleepTimerMinutes", { minutes })
+                  }
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: isSelected }}
                   key={minutes === null ? "off" : minutes}
                   onPress={() => {
                     haptic.tap();
@@ -573,6 +589,8 @@ const styles = StyleSheet.create({
   sleepTimerChip: {
     borderRadius: 10,
     borderWidth: 1,
+    justifyContent: "center",
+    minHeight: 44,
     paddingHorizontal: 10,
     paddingVertical: 6,
   },
@@ -622,6 +640,8 @@ const styles = StyleSheet.create({
   volumeChip: {
     borderRadius: 10,
     borderWidth: 1,
+    justifyContent: "center",
+    minHeight: 44,
     paddingHorizontal: 10,
     paddingVertical: 6,
   },

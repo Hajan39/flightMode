@@ -117,6 +117,11 @@ function localTzLabel(): string {
 interface StepperProps {
   bgColor: string;
   borderColor: string;
+  /** Localized a11y labels, e.g. "Decrease departure hour". */
+  decrementLabel: string;
+  incrementLabel: string;
+  /** Localized name of the value, read with it ("Departure hour: 14"). */
+  label: string;
   onDecrement: () => void;
   onIncrement: () => void;
   textColor: string;
@@ -132,14 +137,35 @@ function Stepper({
   textColor,
   bgColor,
   borderColor,
+  decrementLabel,
+  incrementLabel,
+  label,
 }: StepperProps) {
   return (
     <View style={[styles.stepper, { backgroundColor: bgColor, borderColor }]}>
-      <Pressable hitSlop={8} onPress={onDecrement} style={styles.stepBtn}>
+      <Pressable
+        accessibilityLabel={decrementLabel}
+        accessibilityRole="button"
+        hitSlop={8}
+        onPress={onDecrement}
+        style={styles.stepBtn}
+      >
         <Text style={[styles.stepBtnText, { color: tint }]}>−</Text>
       </Pressable>
-      <Text style={[styles.stepValue, { color: textColor }]}>{value}</Text>
-      <Pressable hitSlop={8} onPress={onIncrement} style={styles.stepBtn}>
+      <Text
+        accessibilityLabel={`${label}: ${value}`}
+        accessibilityLiveRegion="polite"
+        style={[styles.stepValue, { color: textColor }]}
+      >
+        {value}
+      </Text>
+      <Pressable
+        accessibilityLabel={incrementLabel}
+        accessibilityRole="button"
+        hitSlop={8}
+        onPress={onIncrement}
+        style={styles.stepBtn}
+      >
         <Text style={[styles.stepBtnText, { color: tint }]}>+</Text>
       </Pressable>
     </View>
@@ -355,6 +381,7 @@ export default function FlightEditScreen() {
               {t("flightNumberLabel")}
             </Text>
             <TextInput
+              accessibilityLabel={t("flightNumberLabel")}
               autoCapitalize="characters"
               autoCorrect={false}
               maxLength={8}
@@ -384,6 +411,8 @@ export default function FlightEditScreen() {
               showsHorizontalScrollIndicator={false}
             >
               <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ selected: !destinationId }}
                 onPress={() => setDestinationId(undefined)}
                 style={[
                   styles.destChip,
@@ -406,6 +435,9 @@ export default function FlightEditScreen() {
                 const active = destinationId === d.id;
                 return (
                   <Pressable
+                    accessibilityLabel={d.city}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: active }}
                     key={d.id}
                     onPress={() => setDestinationId(active ? undefined : d.id)}
                     style={[
@@ -440,6 +472,8 @@ export default function FlightEditScreen() {
                 const active = dayOffset === chip.offset;
                 return (
                   <Pressable
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: active }}
                     key={chip.offset}
                     onPress={() =>
                       setDepartureDate(
@@ -473,6 +507,9 @@ export default function FlightEditScreen() {
                 return (
                   <>
                     <Pressable
+                      accessibilityLabel={t("a11yPreviousDay")}
+                      accessibilityRole="button"
+                      accessibilityState={{ disabled: !canGoBack }}
                       hitSlop={8}
                       onPress={() =>
                         canGoBack &&
@@ -497,6 +534,9 @@ export default function FlightEditScreen() {
                       {departureDate}
                     </Text>
                     <Pressable
+                      accessibilityLabel={t("a11yNextDay")}
+                      accessibilityRole="button"
+                      accessibilityState={{ disabled: !canGoForward }}
                       hitSlop={8}
                       onPress={() =>
                         canGoForward &&
@@ -539,6 +579,13 @@ export default function FlightEditScreen() {
               <Stepper
                 bgColor={theme.card}
                 borderColor={theme.border}
+                decrementLabel={t("a11yDecreaseValue", {
+                  label: t("a11yDepartureHour"),
+                })}
+                incrementLabel={t("a11yIncreaseValue", {
+                  label: t("a11yDepartureHour"),
+                })}
+                label={t("a11yDepartureHour")}
                 onDecrement={() => adjustHour(-1)}
                 onIncrement={() => adjustHour(+1)}
                 textColor={theme.text}
@@ -549,6 +596,13 @@ export default function FlightEditScreen() {
               <Stepper
                 bgColor={theme.card}
                 borderColor={theme.border}
+                decrementLabel={t("a11yDecreaseValue", {
+                  label: t("a11yDepartureMinute"),
+                })}
+                incrementLabel={t("a11yIncreaseValue", {
+                  label: t("a11yDepartureMinute"),
+                })}
+                label={t("a11yDepartureMinute")}
                 onDecrement={() => adjustMinute(-5)}
                 onIncrement={() => adjustMinute(+5)}
                 textColor={theme.text}
@@ -568,6 +622,13 @@ export default function FlightEditScreen() {
                 <Stepper
                   bgColor={theme.card}
                   borderColor={theme.border}
+                  decrementLabel={t("a11yDecreaseValue", {
+                    label: t("a11yDurationHours"),
+                  })}
+                  incrementLabel={t("a11yIncreaseValue", {
+                    label: t("a11yDurationHours"),
+                  })}
+                  label={t("a11yDurationHours")}
                   onDecrement={() => adjustDurationHour(-1)}
                   onIncrement={() => adjustDurationHour(+1)}
                   textColor={theme.text}
@@ -583,6 +644,13 @@ export default function FlightEditScreen() {
                 <Stepper
                   bgColor={theme.card}
                   borderColor={theme.border}
+                  decrementLabel={t("a11yDecreaseValue", {
+                    label: t("a11yDurationMinutes"),
+                  })}
+                  incrementLabel={t("a11yIncreaseValue", {
+                    label: t("a11yDurationMinutes"),
+                  })}
+                  label={t("a11yDurationMinutes")}
                   onDecrement={() => adjustDurationMinute(-5)}
                   onIncrement={() => adjustDurationMinute(+5)}
                   textColor={theme.text}
@@ -632,6 +700,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     flex: 1,
+    justifyContent: "center",
+    minHeight: 44,
     paddingVertical: 10,
   },
   // Date chips
@@ -655,11 +725,11 @@ const styles = StyleSheet.create({
   },
   dayStepBtn: {
     alignItems: "center",
-    borderRadius: 18,
+    borderRadius: 22,
     borderWidth: 1,
-    height: 36,
     justifyContent: "center",
-    width: 36,
+    minHeight: 44,
+    minWidth: 44,
   },
   // Day stepper
   dayStepperRow: {
@@ -671,6 +741,8 @@ const styles = StyleSheet.create({
   destChip: {
     borderRadius: 10,
     borderWidth: 1,
+    justifyContent: "center",
+    minHeight: 44,
     paddingHorizontal: 14,
     paddingVertical: 10,
   },

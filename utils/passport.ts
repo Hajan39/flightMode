@@ -51,11 +51,13 @@ export function getPassportSummary(
   let minutesInAir = 0;
 
   const stamps = departed.map((f) => {
-    // An in-progress flight counts only the minutes flown so far.
-    minutesInAir += Math.min(
+    // An in-progress flight counts only the minutes flown so far; a corrupt
+    // (non-finite / negative) duration counts as 0 instead of poisoning totals.
+    const flown = Math.min(
       f.duration,
       Math.floor((nowMs - f.departureTime) / 60_000)
     );
+    minutesInAir += Number.isFinite(flown) && flown > 0 ? flown : 0;
     const destination = f.destinationId
       ? getDestinationById(f.destinationId)
       : undefined;

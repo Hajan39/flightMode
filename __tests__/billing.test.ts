@@ -11,7 +11,8 @@ jest.mock("expo-iap", () => ({
 }));
 
 import { useSupporterStore } from "@/store/useSupporterStore";
-import { restorePurchases } from "@/utils/billing";
+import { captureAnalyticsEvent } from "@/utils/analytics";
+import { initBilling, restorePurchases } from "@/utils/billing";
 import { shouldAskForReview } from "@/utils/reviewPrompt";
 
 describe("billing entitlement", () => {
@@ -79,6 +80,71 @@ describe("billing entitlement", () => {
     mockGetAvailablePurchases.mockRejectedValue(new Error("offline"));
     expect(await restorePurchases()).toBe(false);
     expect(useSupporterStore.getState().plus).toBe(true);
+  });
+});
+
+describe("billing acknowledge + support_completed reporting", () => {
+  const capture = captureAnalyticsEvent as jest.Mock;
+  const completed = () =>
+    capture.mock.calls.filter((c) => c[0] === "support_completed");
+
+  beforeEach(() => {
+    useSupporterStore.setState({ plus: false, tips: 0 });
+    mockFinishTransaction.mockClear();
+    capture.mockClear();
+  });
+
+  test("an already-acknowledged Plus is re-granted without another finish", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      {
+        isAcknowledgedAndroid: true,
+        productId: "flightmode_plus",
+        purchaseState: "purchased",
+      },
+    ]);
+    expect(await restorePurchases()).toBe(true);
+    expect(useSupporterStore.getState().plus).toBe(true);
+    expect(mockFinishTransaction).not.toHaveBeenCalled();
+  });
+
+  test("restoring Plus never re-reports support_completed", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      { productId: "flightmode_plus", purchaseState: "purchased" },
+    ]);
+    await restorePurchases();
+    await restorePurchases();
+    expect(completed()).toHaveLength(0);
+  });
+
+  test("a restored (stuck) tip is reported once it is consumed — not when consume fails", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      { productId: "tip_large", purchaseState: "purchased" },
+    ]);
+    mockFinishTransaction.mockImplementationOnce(() =>
+      Promise.reject(new Error("consume failed"))
+    );
+    await restorePurchases();
+    expect(completed()).toHaveLength(0);
+    await restorePurchases();
+    expect(completed()).toHaveLength(1);
+    expect(completed()[0][1]).toEqual({
+      placement: "plus",
+      product: "tip_large",
+      provider: "play_billing",
+    });
+  });
+
+  test("a live Plus checkout reports support_completed once", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([]);
+    await initBilling();
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const iap = require("expo-iap") as { purchaseUpdatedListener: jest.Mock };
+    const [[listener]] = iap.purchaseUpdatedListener.mock.calls;
+    listener({ productId: "flightmode_plus", purchaseState: "purchased" });
+    await new Promise((resolve) => setImmediate(resolve));
+    expect(useSupporterStore.getState().plus).toBe(true);
+    expect(completed()).toHaveLength(1);
+    expect(completed()[0][1].product).toBe("flightmode_plus");
   });
 });
 

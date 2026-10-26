@@ -10,8 +10,9 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 - **Privacy policy**: koncept v `documents/privacy-policy.md` ceka na schvaleni vlastnika + hostovanou URL (pak odkaz v Settings a v Play listingu; `assets/play-store/metadata.json` ma placeholder)
 - **Play Console achievementy**: popisy Word Solver / Word Master / Sudoku Master / Snake Charmer / High Scorer / Slide Master se zmenily — znovu exportovat (`scripts/export-pgs-achievements.mjs`) a aktualizovat v Play Console
 - **PostHog**: `app_error.error_message` prejmenovano na `error_code` — upravit dashboardy; v projektu zapnout discard client IP
+- **Pristupnost her**: obal `A11yOverlayScope` (`components/A11yOverlayScope.tsx`) zavest do her, aby TalkBack necetl desku pod PassDevice/pauzou ("neprozrazuj"); auto-pauza pri prechodu do pozadi pro casovane hry
 - **Pristupnost**: Solitaire a Mahjong nepouzitelne se ctecka obrazovky (karty/kameny bez role/labelu), Sky Match / Cargo Blocks jen gesta
-- **Sibenice — ostatni jazyky**: pl je take orezana na A–Z (LAD = ląd, BEG = bieg) a de/pt/it/es obsahuji pochybna kratka slova (BOG, RAN, EIX, ORT, TOR); prepsat jako cestinu (realny pravopis, klavesnice uz diakritiku zvladne)
+- ~~Sibenice — ostatni jazyky~~ — hotovo 2026-10-26 (realna slova s diakritikou ve vsech jazycich, `games/duel-hangman/words.ts`)
 - **1.5.1 overit na zarizeni**: release build je nove minifikovany (R8) — otestovat nakup Plus/tip jar a Play Games prihlaseni + odemceni achievementu; na tabletu otoceni displeje a Turbulence Test na sirku (smer naklonu)
 - ~~sjednotit 8 multiplayer her na sdilene komponenty + design tokeny~~ — hotovo 2026-09-13 (`components/multiplayer/`, `recordMatch` konvence)
 - ~~fallback clanku na EN pro jazyky bez lokalizace~~ — hotovo 2026-09-13

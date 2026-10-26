@@ -5,6 +5,7 @@ import {
   getJetlagReminderFireAt,
   getZoneOffsetMinutes,
   type JetlagPlan,
+  normalizeShiftHours,
   type ZoneRef,
 } from "@/utils/timezone";
 
@@ -268,6 +269,168 @@ describe("getJetlagPlan", () => {
     expect(plan.severity).toBe("none");
     expect(plan.adviceKey).toBe("jetlagAdviceNone");
     expect(plan.sleepWindow).toBeNull();
+  });
+});
+
+describe("jet-lag shift wraps into (-12, +12]", () => {
+  const honolulu: ZoneRef = {
+    timezone: "Pacific/Honolulu",
+    utcOffsetMinutes: -600,
+  };
+  const auckland: ZoneRef = {
+    timezone: "Pacific/Auckland",
+    utcOffsetMinutes: 720,
+  };
+  const prague: ZoneRef = { timezone: "Europe/Prague", utcOffsetMinutes: 60 };
+  const apia: ZoneRef = { timezone: "Pacific/Apia", utcOffsetMinutes: 780 };
+
+  function shift(from: ZoneRef, to: ZoneRef, atMs = JAN) {
+    return getJetlagPlan({
+      departureTime: atMs,
+      destination: to,
+      duration: 60,
+      homeOffsetMinutes: getZoneOffsetMinutes(atMs, from),
+      nowMs: atMs,
+    });
+  }
+
+  test("normalizeShiftHours", () => {
+    expect(normalizeShiftHours(23)).toBe(-1);
+    expect(normalizeShiftHours(-23)).toBe(1);
+    expect(normalizeShiftHours(22)).toBe(-2);
+    expect(normalizeShiftHours(12)).toBe(12);
+    expect(normalizeShiftHours(-12)).toBe(12);
+    expect(normalizeShiftHours(14)).toBe(-10);
+    expect(normalizeShiftHours(-6)).toBe(-6);
+    expect(normalizeShiftHours(0)).toBe(0);
+    expect(normalizeShiftHours(5.5)).toBe(5.5);
+    expect(normalizeShiftHours(-13.5)).toBe(10.5);
+  });
+
+  test("Honolulu → Auckland is a 1 h body-clock shift, not 23 h east severe", () => {
+    // January: Auckland on NZDT (+13), Honolulu -10 → raw +23 h.
+    const plan = shift(honolulu, auckland);
+    expect(plan.shiftHours).toBe(-1);
+    expect(plan.direction).toBe("none");
+    expect(plan.severity).toBe("none");
+    // July: NZST (+12) → raw +22 h → 2 h west, mild.
+    expect(shift(honolulu, auckland, JUL)).toMatchObject({
+      direction: "west",
+      severity: "mild",
+      shiftHours: -2,
+    });
+  });
+
+  test("Samoa → Honolulu is +1 h, not -23 h", () => {
+    expect(shift(apia, honolulu).shiftHours).toBe(1);
+  });
+
+  test("ordinary routes keep their sign and direction", () => {
+    expect(shift(prague, newYork)).toMatchObject({
+      direction: "west",
+      shiftHours: -6,
+    });
+    // NY -5 → Tokyo +9 is +14 raw; the shorter body-clock shift is 10 h west.
+    expect(shift(newYork, tokyo)).toMatchObject({
+      direction: "west",
+      severity: "severe",
+      shiftHours: -10,
+    });
+    expect(shift(tokyo, newYork).shiftHours).toBe(10);
+    expect(shift(london, tokyo).shiftHours).toBe(9);
+  });
+});
+
+describe("sleep window is planned on board only", () => {
+  const H = 3_600_000;
+  const base = { homeOffsetMinutes: 0, opts: { useIntl: false } };
+
+  test("afternoon arrival, departure in 21 h, 3 h flight: nap starts at take-off", () => {
+    // Depart 02:00 UTC, land 05:00 UTC = 14:00 Tokyo.
+    const departureTime = Date.UTC(2026, 0, 16, 2, 0);
+    const plan = getJetlagPlan({
+      ...base,
+      departureTime,
+      destination: tokyo,
+      duration: 180,
+      nowMs: departureTime - 21 * H,
+    });
+    expect(plan.adviceKey).toBe("jetlagAdviceShortNap");
+    expect(plan.sleepWindow).toEqual({
+      endMs: departureTime + 90 * 60_000,
+      startMs: departureTime,
+    });
+  });
+
+  test("afternoon arrival, 2 h flight booked 21 h ahead: no nap (ground time is not flight time)", () => {
+    const departureTime = Date.UTC(2026, 0, 16, 3, 0); // lands 14:00 Tokyo
+    const plan = getJetlagPlan({
+      ...base,
+      departureTime,
+      destination: tokyo,
+      duration: 120,
+      nowMs: departureTime - 21 * H,
+    });
+    expect(plan.adviceKey).toBe("jetlagAdviceShortNap");
+    expect(plan.sleepWindow).toBeNull();
+  });
+
+  test("morning arrival, departure in 48 h: window stays inside the flight", () => {
+    // 3 h flight landing 22:00 UTC = 07:00 Tokyo.
+    const departureTime = Date.UTC(2026, 0, 15, 19, 0);
+    const arrival = departureTime + 3 * H;
+    const plan = getJetlagPlan({
+      ...base,
+      departureTime,
+      destination: tokyo,
+      duration: 180,
+      nowMs: departureTime - 48 * H,
+    });
+    expect(plan.adviceKey).toBe("jetlagAdviceSleepBeforeArrival");
+    expect(plan.sleepWindow).toEqual({
+      endMs: arrival - 45 * 60_000,
+      startMs: departureTime,
+    });
+  });
+
+  test("morning arrival, long flight booked 48 h ahead: same 4 h window as at take-off", () => {
+    const departureTime = Date.UTC(2026, 0, 15, 11, 0); // 11 h → 07:00 Tokyo
+    const arrival = departureTime + 11 * H;
+    const early = getJetlagPlan({
+      ...base,
+      departureTime,
+      destination: tokyo,
+      duration: 660,
+      nowMs: departureTime - 48 * H,
+    });
+    const atTakeoff = getJetlagPlan({
+      ...base,
+      departureTime,
+      destination: tokyo,
+      duration: 660,
+      nowMs: departureTime,
+    });
+    expect(early.sleepWindow).toEqual(atTakeoff.sleepWindow);
+    expect(early.sleepWindow).toEqual({
+      endMs: arrival - 45 * 60_000,
+      startMs: arrival - 45 * 60_000 - 4 * H,
+    });
+  });
+
+  test("a 90-minute nap never runs past landing", () => {
+    // Mid-flight with exactly 3 h left → ends 90 min later, well before arrival.
+    const departureTime = Date.UTC(2026, 0, 16, 0, 0); // 5 h → 14:00 Tokyo
+    const plan = getJetlagPlan({
+      ...base,
+      departureTime,
+      destination: tokyo,
+      duration: 300,
+      nowMs: departureTime + 2 * H,
+    });
+    const window = plan.sleepWindow;
+    expect(window).not.toBeNull();
+    expect(window && window.endMs <= departureTime + 5 * H).toBe(true);
+    expect(window && window.startMs >= departureTime).toBe(true);
   });
 });
 

@@ -45,6 +45,8 @@ function CategoryPicker({ theme }: { theme: (typeof Colors)["dark"] }) {
         const active = preferred.includes(cat);
         return (
           <AnimatedPressable
+            accessibilityRole="checkbox"
+            accessibilityState={{ checked: active, selected: active }}
             key={cat}
             onPress={() => {
               haptic.tap();
@@ -262,7 +264,14 @@ export default function OnboardingScreen() {
       </ScrollView>
 
       {/* Dots */}
-      <View style={styles.dotsRow}>
+      <View
+        accessibilityLabel={t("a11yPageOf", {
+          current: activeIndex + 1,
+          total: pages.length,
+        })}
+        accessible
+        style={styles.dotsRow}
+      >
         {pages.map((_, i) => (
           <View
             key={i}
@@ -352,6 +361,8 @@ const styles = StyleSheet.create({
   prefChip: {
     borderRadius: 22,
     borderWidth: 1,
+    justifyContent: "center",
+    minHeight: 44,
     paddingHorizontal: 18,
     paddingVertical: 12,
   },

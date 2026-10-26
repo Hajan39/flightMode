@@ -5,7 +5,8 @@ import { type AchievementState, achievements } from "@/data/achievements";
 import { getPlayGamesAchievementId } from "@/data/playGamesAchievements";
 import { useGameStore } from "@/store/useGameStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
-import { addDays, toLocalDateKey } from "@/utils/dates";
+import { nextStreakState, toLocalDateKey } from "@/utils/dates";
+import { reportHydrationResult } from "@/utils/hydration";
 import {
   resendUnlockedAchievements,
   setUnlockedPlayIdsSource,
@@ -23,6 +24,8 @@ interface AchievementStoreState {
   incrementFlights: () => void;
   incrementRelax: () => void;
   lastActiveDate: string | null;
+  /** Device UTC offset (minutes, east-positive) at the last streak update. */
+  lastActiveOffsetMinutes: number | null;
   markArticleRead: (id: string) => void;
   markPhraseLanguageViewed: (code: string) => void;
   markSoundPlayed: (id: string) => void;
@@ -35,11 +38,11 @@ interface AchievementStoreState {
   totalFlights: number;
   totalRelaxSessions: number;
   unlockedIds: string[];
-  updateStreak: () => void;
-}
-
-function todayKey(): string {
-  return toLocalDateKey(new Date());
+  /**
+   * Count today's app open toward the daily streak. `now` / `offsetMinutes`
+   * are injectable for tests; they default to the device clock and zone.
+   */
+  updateStreak: (now?: Date, offsetMinutes?: number) => void;
 }
 
 export const useAchievementStore = create<AchievementStoreState>()(
@@ -115,6 +118,7 @@ export const useAchievementStore = create<AchievementStoreState>()(
         get().checkAndUnlock();
       },
       lastActiveDate: null,
+      lastActiveOffsetMinutes: null,
 
       markArticleRead: (id) => {
         const state = get();
@@ -160,21 +164,22 @@ export const useAchievementStore = create<AchievementStoreState>()(
       totalRelaxSessions: 0,
       unlockedIds: [],
 
-      updateStreak: () => {
-        const today = todayKey();
+      updateStreak: (at, offsetMinutes) => {
         const state = get();
+        const now = at ?? new Date();
+        const offset = offsetMinutes ?? -now.getTimezoneOffset();
+        const today = toLocalDateKey(now);
         if (state.lastActiveDate === today) {
+          if (state.lastActiveOffsetMinutes !== offset) {
+            set({ lastActiveOffsetMinutes: offset });
+          }
           return;
         }
-
-        const yesterdayKey = toLocalDateKey(addDays(new Date(), -1));
-
-        const newStreak =
-          state.lastActiveDate === yesterdayKey ? state.streakDays + 1 : 1;
-
+        const next = nextStreakState(state, today, offset);
         set({
-          lastActiveDate: today,
-          streakDays: newStreak,
+          lastActiveDate: next.lastActiveDate,
+          lastActiveOffsetMinutes: next.lastActiveOffsetMinutes ?? null,
+          streakDays: next.streakDays,
         });
         get().checkAndUnlock();
       },
@@ -182,10 +187,11 @@ export const useAchievementStore = create<AchievementStoreState>()(
     {
       name: "achievements",
       // If Play Games signed in before local unlocks loaded, push them now.
-      onRehydrateStorage: () => () => {
+      // A failed read is reported so hydration waiters don't stall.
+      onRehydrateStorage: reportHydrationResult("achievements", () => {
         // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
         void resendUnlockedAchievements();
-      },
+      }),
       storage: createJSONStorage(() => AsyncStorage),
     }
   )

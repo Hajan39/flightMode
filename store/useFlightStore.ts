@@ -3,6 +3,33 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import type { Flight, LoggedFlight } from "@/types/flight";
 import { upsertLoggedFlight } from "@/utils/passport";
+import { getDeviceOffsetMinutes } from "@/utils/timezone";
+
+/**
+ * Stamp the home UTC offset on a saved flight: keep an explicit value, keep
+ * the stored one when the same flight is edited without moving its departure,
+ * otherwise capture the device offset now (at the departure instant, so the
+ * home zone's DST rules apply).
+ */
+export function withHomeOffset(
+  flight: Flight,
+  previous: Flight | null
+): Flight {
+  if (typeof flight.homeOffsetMinutes === "number") {
+    return flight;
+  }
+  if (
+    previous?.id === flight.id &&
+    previous.departureTime === flight.departureTime &&
+    typeof previous.homeOffsetMinutes === "number"
+  ) {
+    return { ...flight, homeOffsetMinutes: previous.homeOffsetMinutes };
+  }
+  return {
+    ...flight,
+    homeOffsetMinutes: getDeviceOffsetMinutes(flight.departureTime),
+  };
+}
 
 interface FlightState {
   clearFlight: () => void;
@@ -19,10 +46,16 @@ export const useFlightStore = create<FlightState>()(
       flight: null,
       log: [],
       setFlight: (flight) =>
-        set((s) => ({ flight, log: upsertLoggedFlight(s.log, flight) })),
+        set((s) => ({
+          flight: withHomeOffset(flight, s.flight),
+          log: upsertLoggedFlight(s.log, flight),
+        })),
     }),
     {
       // v0 → v1: seed the passport with the flight that is already saved.
+      // `flight.homeOffsetMinutes` is an additive optional field: flights
+      // persisted without it simply fall back to the device offset, so no
+      // version bump is needed.
       migrate: (persisted, version) => {
         const state = persisted as Partial<FlightState>;
         if (version < 1) {

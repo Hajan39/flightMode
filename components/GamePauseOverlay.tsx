@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Pressable, View as RNView, StyleSheet } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
+import { useA11yOverlay } from "@/components/A11yOverlayScope";
 import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -28,6 +29,7 @@ export default function GamePauseOverlay({
   const { t } = useTranslation();
   const haptic = useHaptic();
   const router = useRouter();
+  useA11yOverlay(visible);
 
   if (!visible) {
     return null;
@@ -51,7 +53,11 @@ export default function GamePauseOverlay({
   };
 
   return (
-    <Animated.View entering={FadeIn.duration(180)} style={styles.overlay}>
+    <Animated.View
+      accessibilityViewIsModal
+      entering={FadeIn.duration(180)}
+      style={styles.overlay}
+    >
       <Animated.View
         entering={FadeIn.duration(180)}
         style={[
@@ -60,7 +66,11 @@ export default function GamePauseOverlay({
         ]}
       >
         <Ionicons color={theme.tint} name="pause-circle" size={48} />
-        <Text style={[styles.title, { color: theme.text }]}>
+        <Text
+          accessibilityLiveRegion="polite"
+          accessibilityRole="header"
+          style={[styles.title, { color: theme.text }]}
+        >
           {t("gamePaused")}
         </Text>
         <RNView style={styles.actions}>

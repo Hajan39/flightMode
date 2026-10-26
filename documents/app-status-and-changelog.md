@@ -132,6 +132,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-10-26
 
+- review kolo 3: regrese z oprav (offline analytika trvale ve fronte s casem udalosti, prevodnik dle jazyka 1,250 = 1,25 v cs, legacy postup Good Host, feed timeout hlavicky/telo + ETag 304, hydration timeout, sleep timer pri stopSound, odolny RootErrorBoundary); casove zony (streak pres datovou hranici, jet-lag wrap ±12 h, spaci okno jen behem letu, ulozeny homeOffsetMinutes letu, DST denni vyzva, passport NaN); pristupnost (labely, selected stav, 44 dp, oznamovani overlayu); lazy nacitani prekladu; druhy mutacni audit 65,6 % → 93,75 %, 1342 testu
 - review kolo 1+2: sudoku/ATC updater chyby, sleep timer pri zhasnutem displeji, Play Games retry + resend, hydration zavody; sudoku banka jednoznacna, host achievementy jen z realnych zapasu, snake otoceni, prevodnik s oddelovaci tisicu; soukromi (opt-out pred hydrataci, buckety misto presneho casu letu, sanitizace chyb, timeout feedu, obrazky dle sync politiky); preklady (popisy achievementu, 45 anglickych pravidel, de/fr/pt sjednoceni, cs/de gramatika); mutacni audit testu 56 % → 95 %, 1200+ testu
 
 ## 2026-10-25

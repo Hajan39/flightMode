@@ -8,6 +8,7 @@ import {
   HOSTED_KEY,
   hostedMatches,
   hostStatsPatch,
+  RUN_START_KEY,
   recordMatch,
 } from "@/utils/multiplayerScoring";
 
@@ -87,6 +88,16 @@ describe("emoji-story scoring decision", () => {
     expect(condition("storyteller")(s)).toBe(true);
     expect(condition("crowd-favorite")(s)).toBe(false);
     expect(condition("undefeated-host")(s)).toBe(false);
+  });
+
+  test("Crowd Favorite needs 5 votes — 4 is not enough", () => {
+    useGameStore.setState({ progress: {} });
+    const r = emojiStoryRecord("votes", [4, 1, 0]);
+    if (r.kind !== "match") {
+      throw new Error("voting mode must record a match");
+    }
+    recordMatch("emoji-story", r.standings);
+    expect(condition("crowd-favorite")(stateFromStore())).toBe(false);
   });
 
   test("Crowd Favorite unlocks from 5 real votes", () => {
@@ -183,6 +194,45 @@ describe("hostStatsPatch legacy seeding", () => {
     expect(patch[BEST_RUN_KEY]).toBe(3);
   });
 
+  test("a seeded legacy best run is kept when the current run is shorter", () => {
+    const legacy = makeProgress("duel-connect4", {
+      bestStreak: 5,
+      currentStreak: 0,
+      timesPlayed: 10,
+    });
+    // A win starts a 1-match run: the legacy best of 5 must survive.
+    expect(hostStatsPatch("duel-connect4", legacy, true)).toEqual({
+      [BEST_RUN_KEY]: 5,
+      [HOSTED_KEY]: 11,
+      [RUN_START_KEY]: 10,
+    });
+    expect(hostStatsPatch("duel-connect4", legacy, false)[BEST_RUN_KEY]).toBe(
+      5
+    );
+  });
+
+  test("an existing best run is never lowered by a new shorter run", () => {
+    const p = makeProgress("duel-dice", { timesPlayed: 9 });
+    p.levelStars = { [BEST_RUN_KEY]: 4, [HOSTED_KEY]: 9, [RUN_START_KEY]: 9 };
+    expect(hostStatsPatch("duel-dice", p, true)[BEST_RUN_KEY]).toBe(4);
+  });
+
+  test.each(["duel-hangman", "emoji-story", "seat-neighbor", "tilt-balance"])(
+    "%s (solo / cooperative path) never seeds from legacy stats",
+    (id) => {
+      const legacy = makeProgress(id, {
+        bestStreak: 9,
+        currentStreak: 9,
+        timesPlayed: 20,
+      });
+      expect(hostStatsPatch(id, legacy, true)).toEqual({
+        [BEST_RUN_KEY]: 1,
+        [HOSTED_KEY]: 1,
+        [RUN_START_KEY]: 0,
+      });
+    }
+  );
+
   test("games with a solo path start from zero", () => {
     const legacy = makeProgress("tilt-balance", {
       bestStreak: 9,
@@ -192,6 +242,69 @@ describe("hostStatsPatch legacy seeding", () => {
     const patch = hostStatsPatch("tilt-balance", legacy, true);
     expect(patch[HOSTED_KEY]).toBe(1);
     expect(patch[BEST_RUN_KEY]).toBe(1);
+  });
+});
+
+describe("Good Host / Undefeated Host keep legacy progress", () => {
+  test("12 legacy matches across two games unlock Good Host immediately", () => {
+    const s = stateWith({
+      "duel-connect4": makeProgress("duel-connect4", { timesPlayed: 7 }),
+      "duel-dice": makeProgress("duel-dice", { timesPlayed: 5 }),
+    });
+    expect(hostedMatches(s.gameProgress["duel-dice"], "duel-dice")).toBe(5);
+    expect(condition("good-host")(s)).toBe(true);
+  });
+
+  test("legacy best streak of a match-only game counts for Undefeated Host", () => {
+    const s = stateWith({
+      "duel-tictactoe": makeProgress("duel-tictactoe", {
+        bestStreak: 3,
+        timesPlayed: 4,
+      }),
+    });
+    expect(condition("undefeated-host")(s)).toBe(true);
+  });
+
+  test("solo-path games still need real matches", () => {
+    const s = stateWith({
+      "duel-hangman": makeProgress("duel-hangman", {
+        bestStreak: 8,
+        timesPlayed: 8,
+      }),
+      "tilt-balance": makeProgress("tilt-balance", {
+        bestStreak: 9,
+        timesPlayed: 9,
+      }),
+    });
+    expect(condition("good-host")(s)).toBe(false);
+    expect(condition("undefeated-host")(s)).toBe(false);
+  });
+
+  test("once the counter exists it wins over legacy stats", () => {
+    const s = stateWith({
+      "duel-connect4": makeProgress("duel-connect4", {
+        levelStars: { [HOSTED_KEY]: 2 },
+        timesPlayed: 50,
+      }),
+    });
+    expect(
+      hostedMatches(s.gameProgress["duel-connect4"], "duel-connect4")
+    ).toBe(2);
+    expect(condition("good-host")(s)).toBe(false);
+  });
+
+  test("seeding continues from the legacy count (no reset on first new match)", () => {
+    useGameStore.setState({
+      progress: {
+        "duel-connect4": makeProgress("duel-connect4", { timesPlayed: 9 }),
+      },
+    });
+    expect(condition("good-host")(stateFromStore())).toBe(false);
+    recordMatch("duel-connect4", loss);
+    expect(
+      hostedMatches(useGameStore.getState().progress["duel-connect4"])
+    ).toBe(10);
+    expect(condition("good-host")(stateFromStore())).toBe(true);
   });
 });
 

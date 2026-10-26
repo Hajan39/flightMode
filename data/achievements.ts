@@ -400,8 +400,9 @@ export const achievements: AchievementDef[] = [
     category: "special",
     condition: (s) =>
       // Real matches only (recordMatch counters) — solo runs don't count.
+      // Games without a solo path fall back to legacy timesPlayed.
       MULTIPLAYER_GAME_IDS.reduce(
-        (sum, id) => sum + hostedMatches(s.gameProgress[id]),
+        (sum, id) => sum + hostedMatches(s.gameProgress[id], id),
         0
       ) >= 10,
     descriptionKey: "achieveGoodHostDesc",
@@ -412,7 +413,9 @@ export const achievements: AchievementDef[] = [
   {
     category: "special",
     condition: (s) =>
-      MULTIPLAYER_GAME_IDS.some((id) => bestHostRun(s.gameProgress[id]) >= 3),
+      MULTIPLAYER_GAME_IDS.some(
+        (id) => bestHostRun(s.gameProgress[id], id) >= 3
+      ),
     descriptionKey: "achieveUndefeatedHostDesc",
     icon: "medal-outline",
     id: "undefeated-host",

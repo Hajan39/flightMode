@@ -20,6 +20,7 @@ function reset() {
     checklistsCompleted: 0,
     converterUses: 0,
     lastActiveDate: null,
+    lastActiveOffsetMinutes: null,
     maxTimezoneShiftHours: 0,
     newUnlockedIds: [],
     phraseLanguagesViewed: [],
@@ -129,5 +130,39 @@ describe("updateStreak (local calendar days)", () => {
     state().updateStreak();
     expect(state().streakDays).toBe(1);
     expect(state().lastActiveDate).toBe("2026-01-13");
+  });
+});
+
+describe("updateStreak across the date line (injected clock + offset)", () => {
+  beforeEach(reset);
+
+  test("west: landing on 'yesterday' keeps the streak; east: skipped day still counts", () => {
+    useAchievementStore.setState({
+      lastActiveDate: "2026-01-13",
+      lastActiveOffsetMinutes: 780,
+      streakDays: 4,
+    });
+    state().updateStreak(new Date(2026, 0, 12, 18, 0), -600);
+    expect(state().streakDays).toBe(4);
+    expect(state().lastActiveDate).toBe("2026-01-13");
+    expect(state().lastActiveOffsetMinutes).toBe(-600);
+
+    // The 13th in Honolulu is the same key → no change; then the 15th in Auckland.
+    state().updateStreak(new Date(2026, 0, 13, 9, 0), -600);
+    expect(state().streakDays).toBe(4);
+    state().updateStreak(new Date(2026, 0, 15, 9, 0), 780);
+    expect(state().streakDays).toBe(5);
+    expect(state().lastActiveDate).toBe("2026-01-15");
+  });
+
+  test("defaults to the device clock when called without arguments", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(2026, 0, 10, 9, 0));
+    state().updateStreak();
+    expect(state().lastActiveDate).toBe("2026-01-10");
+    expect(state().lastActiveOffsetMinutes).toBe(
+      -new Date(2026, 0, 10, 9, 0).getTimezoneOffset()
+    );
+    jest.useRealTimers();
   });
 });

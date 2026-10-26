@@ -3,6 +3,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import type { Language } from "@/i18n/translations";
 import type { GameCategory } from "@/types/game";
+import { reportHydrationResult } from "@/utils/hydration";
 
 export type ThemeMode =
   | "system"
@@ -84,6 +85,7 @@ export const useSettingsStore = create<SettingsState>()(
     }),
     {
       name: "settings",
+      onRehydrateStorage: reportHydrationResult("settings"),
       storage: createJSONStorage(() => AsyncStorage),
     }
   )

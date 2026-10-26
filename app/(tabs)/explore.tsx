@@ -29,6 +29,8 @@ export default function ExploreScreen() {
   const { language, t } = useTranslation();
   const articles = useContentItems();
   const [search, setSearch] = useState("");
+  // Stores the language-independent category id (the English label), so a
+  // language change keeps the filter working; "" means "All".
   const [activeCategory, setActiveCategory] = useState("");
   const [sortMode, setSortMode] = useState<SortMode>("recommended");
   const { capStyle } = useTabletLayout();
@@ -41,10 +43,10 @@ export default function ExploreScreen() {
     });
   };
 
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
+  const handleCategoryChange = (categoryId: string) => {
+    setActiveCategory(categoryId);
     captureAnalyticsEvent("content_filter_changed", {
-      filter_type: category === t("exploreAll") ? "all" : "category",
+      filter_type: categoryId === "" ? "all" : "category",
     });
   };
 
@@ -59,6 +61,7 @@ export default function ExploreScreen() {
     () =>
       articles.map((item) => ({
         ...item,
+        categoryId: getLocalizedText(item.category, "en"),
         categoryText: getLocalizedText(item.category, language),
         isFallback: !hasLanguage(item, language),
         titleText: getLocalizedText(item.title, language),
@@ -66,22 +69,24 @@ export default function ExploreScreen() {
     [articles, language]
   );
 
-  const categories = useMemo(
-    () => [
-      t("exploreAll"),
-      ...Array.from(new Set(localizedArticles.map((a) => a.categoryText))),
-    ],
-    [localizedArticles, t]
-  );
+  const categories = useMemo(() => {
+    const byId = new Map<string, string>();
+    for (const a of localizedArticles) {
+      if (!byId.has(a.categoryId)) {
+        byId.set(a.categoryId, a.categoryText);
+      }
+    }
+    return [
+      { id: "", label: t("exploreAll") },
+      ...Array.from(byId, ([id, label]) => ({ id, label })),
+    ];
+  }, [localizedArticles, t]);
 
   const filteredArticles = (() => {
     const q = search.trim().toLowerCase();
-    const allLabel = t("exploreAll");
     const filtered = localizedArticles.filter((item) => {
       const categoryMatch =
-        activeCategory === "" ||
-        activeCategory === allLabel ||
-        item.categoryText === activeCategory;
+        activeCategory === "" || item.categoryId === activeCategory;
       const searchMatch =
         q.length === 0 ||
         item.titleText.toLowerCase().includes(q) ||
@@ -116,6 +121,7 @@ export default function ExploreScreen() {
           >
             <Ionicons color={theme.mutedText} name="search" size={16} />
             <TextInput
+              accessibilityLabel={t("a11ySearchArticles")}
               onChangeText={handleSearchChange}
               placeholder={t("exploreSearchPlaceholder")}
               placeholderTextColor={theme.mutedText}
@@ -132,30 +138,34 @@ export default function ExploreScreen() {
             showsHorizontalScrollIndicator={false}
             style={styles.chipRowScroll}
           >
-            {categories.map((category) => (
-              <Pressable
-                key={category}
-                onPress={() => handleCategoryChange(category)}
-                style={[
-                  styles.categoryChip,
-                  category !== categories.at(-1) && styles.chipSpacing,
-                  {
-                    backgroundColor:
-                      activeCategory === category ? theme.tint : theme.card,
-                    borderColor: theme.border,
-                  },
-                ]}
-              >
-                <Text
+            {categories.map((category) => {
+              const isActive = activeCategory === category.id;
+              return (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: isActive }}
+                  key={category.id}
+                  onPress={() => handleCategoryChange(category.id)}
                   style={[
-                    styles.categoryChipText,
-                    activeCategory === category && { color: theme.onTint },
+                    styles.categoryChip,
+                    category.id !== categories.at(-1)?.id && styles.chipSpacing,
+                    {
+                      backgroundColor: isActive ? theme.tint : theme.card,
+                      borderColor: theme.border,
+                    },
                   ]}
                 >
-                  {category}
-                </Text>
-              </Pressable>
-            ))}
+                  <Text
+                    style={[
+                      styles.categoryChipText,
+                      isActive && { color: theme.onTint },
+                    ]}
+                  >
+                    {category.label}
+                  </Text>
+                </Pressable>
+              );
+            })}
           </ScrollView>
           <ScrollView
             contentContainerStyle={styles.sortRow}
@@ -176,6 +186,8 @@ export default function ExploreScreen() {
               { key: "title", labelKey: "exploreSortTitle" as const },
             ].map((item) => (
               <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ selected: sortMode === item.key }}
                 key={item.key}
                 onPress={() => handleSortChange(item.key as SortMode)}
                 style={[
@@ -275,6 +287,8 @@ const styles = StyleSheet.create({
   categoryChip: {
     borderRadius: 999,
     borderWidth: 1,
+    justifyContent: "center",
+    minHeight: 44,
     paddingHorizontal: 12,
     paddingVertical: 6,
   },
@@ -291,7 +305,7 @@ const styles = StyleSheet.create({
   },
   chipRowScroll: {
     flexGrow: 0,
-    minHeight: 40,
+    minHeight: 44,
   },
   chipSpacing: {
     marginRight: 8,
@@ -325,6 +339,8 @@ const styles = StyleSheet.create({
   sortChip: {
     borderRadius: 999,
     borderWidth: 1,
+    justifyContent: "center",
+    minHeight: 44,
     paddingHorizontal: 12,
     paddingVertical: 6,
   },

@@ -111,11 +111,11 @@ const LEAD_GROUP_NO_ZERO = /^[1-9]\d{0,2}$/;
 const THREE_DIGITS = /^\d{3}$/;
 
 /** `int` uses `sep` as a thousands separator: 1–3 digits, then groups of 3. */
-function isGrouped(int: string, sep: string): boolean {
+function isGrouped(int: string, sep: string, allowLeadingZero = true): boolean {
   const groups = int.split(sep);
   return (
     groups.length > 1 &&
-    LEAD_GROUP.test(groups[0]) &&
+    (allowLeadingZero ? LEAD_GROUP : LEAD_GROUP_NO_ZERO).test(groups[0]) &&
     groups.slice(1).every((g) => THREE_DIGITS.test(g))
   );
 }
@@ -132,18 +132,48 @@ function toNumber(sign: string, int: string, frac: string): number | null {
   return Number.isFinite(value) ? value : null;
 }
 
+export type DecimalSeparator = "," | ".";
+
+const LANGUAGE_SUBTAG = /[-_]/;
+
+/** UI languages that write decimals with a comma (the rest use a dot). */
+const COMMA_DECIMAL_LANGUAGES = new Set([
+  "cs",
+  "de",
+  "es",
+  "fr",
+  "it",
+  "pl",
+  "pt",
+]);
+
+/** Decimal separator of a UI language code ("cs" → ",", "en" → "."). */
+export function decimalSeparatorForLanguage(
+  language: string | null | undefined
+): DecimalSeparator {
+  const [base] = (language ?? "").toLowerCase().split(LANGUAGE_SUBTAG);
+  return COMMA_DECIMAL_LANGUAGES.has(base) ? "," : ".";
+}
+
 /**
- * Parse a user-typed amount, whatever the locale's separators:
- * "1 234,5", "1.234,5", "1,234.5", "1,234,567", "1.234.567", "12,50", "12.5".
+ * Parse a user-typed amount for a locale whose decimal separator is
+ * `decimalSeparator` (the other of "," / "." is the grouping separator):
  * - Spaces (incl. NBSP / thin spaces) are grouping and are stripped.
- * - Both "." and ",": the LAST one is the decimal separator, the other groups.
- * - Only ",": decimal when it appears once (",234" style 3-digit tails after a
- *   valid leading group are grouping: "1,234" → 1234); repeated → grouping.
- * - Only ".": decimal when it appears once ("1.234" → 1.234); repeated →
- *   grouping ("1.234.567" → 1234567).
+ * - Only the decimal separator: once → decimal ("1,250" → 1.25 in cs, so typing
+ *   "1" "1," "1,2" "1,25" "1,250" stays 1 → 1 → 1.2 → 1.25 → 1.25); repeated →
+ *   grouping when well-formed groups of 3, else invalid.
+ * - Only the grouping separator: grouping when it is followed by groups of
+ *   exactly 3 digits after a 1–3 digit lead ("1.000" → 1000 in cs,
+ *   "1,000" → 1000 in en); otherwise a single one is read as a decimal
+ *   ("1.5" → 1.5 in cs — some numeric keypads only offer ".").
+ * - Both: the LAST one is the decimal separator, the other groups
+ *   ("1.234,5" and "1,234.5" → 1234.5).
  * Returns null when empty or not a well-formed amount.
  */
-export function parseAmount(input: string): number | null {
+export function parseAmount(
+  input: string,
+  decimalSeparator: DecimalSeparator = "."
+): number | null {
   const cleaned = input.replace(AMOUNT_SPACES, "");
   if (!AMOUNT_CHARS.test(cleaned)) {
     return null;
@@ -158,28 +188,47 @@ export function parseAmount(input: string): number | null {
   }
 
   if (lastDot !== -1 && lastComma !== -1) {
-    const decimal = lastDot > lastComma ? "." : ",";
-    const group = decimal === "." ? "," : ".";
-    const at = Math.max(lastDot, lastComma);
-    const int = body.slice(0, at);
-    const frac = body.slice(at + 1);
-    if (int.includes(decimal) || !isGrouped(int, group)) {
-      return null;
-    }
-    return toNumber(sign, int.split(group).join(""), frac);
+    return parseMixed(sign, body, lastDot > lastComma ? "." : ",");
   }
 
   const sep = lastDot === -1 ? "," : ".";
+  return parseSingleSeparator(sign, body, sep, sep === decimalSeparator);
+}
+
+/** Both "." and ",": the LAST one (`decimal`) is decimal, the other groups. */
+function parseMixed(
+  sign: string,
+  body: string,
+  decimal: DecimalSeparator
+): number | null {
+  const group = decimal === "." ? "," : ".";
+  const at = body.lastIndexOf(decimal);
+  const int = body.slice(0, at);
+  const frac = body.slice(at + 1);
+  if (int.includes(decimal) || !isGrouped(int, group)) {
+    return null;
+  }
+  return toNumber(sign, int.split(group).join(""), frac);
+}
+
+/** Only one kind of separator (`sep`), which is or isn't the locale decimal. */
+function parseSingleSeparator(
+  sign: string,
+  body: string,
+  sep: DecimalSeparator,
+  isLocaleDecimal: boolean
+): number | null {
   const parts = body.split(sep);
+  // Grouping: always for the locale's group separator in valid 3-digit groups;
+  // for the decimal separator only when repeated ("1,234,567").
+  const grouped = isLocaleDecimal
+    ? parts.length > 2 && isGrouped(body, sep)
+    : isGrouped(body, sep, false);
+  if (grouped) {
+    return toNumber(sign, parts.join(""), "");
+  }
   if (parts.length > 2) {
-    return isGrouped(body, sep) ? toNumber(sign, parts.join(""), "") : null;
+    return null;
   }
-  const [int, frac] = parts;
-  // A lone comma with exactly 3 trailing digits after a 1–3 digit group
-  // without a leading zero is a thousands separator ("1,234"); a lone dot
-  // stays decimal ("1.234" → 1.234, as before).
-  if (sep === "," && LEAD_GROUP_NO_ZERO.test(int) && THREE_DIGITS.test(frac)) {
-    return toNumber(sign, `${int}${frac}`, "");
-  }
-  return toNumber(sign, int, frac);
+  return toNumber(sign, parts[0], parts[1]);
 }
