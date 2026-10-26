@@ -52,5 +52,28 @@ describe("flight passport", () => {
     expect(summary.cities).toBe(2);
     expect(summary.countries).toBe(1);
     expect(summary.stamps[0].city).toBeNull();
+    expect(summary.stamps[0].emoji).toBe("✈️");
+    expect(summary.stamps[1].city).toBe("Osaka");
+  });
+
+  test("a flight departing exactly now already counts, with 0 minutes flown", () => {
+    const summary = getPassportSummary(
+      [{ departureTime: now, destinationId: "tokyo", duration: 60, id: "x" }],
+      now
+    );
+    expect(summary.flights).toBe(1);
+    expect(summary.minutesInAir).toBe(0);
+    expect(summary.cities).toBe(1);
+  });
+
+  test("an unknown destination id is ignored for city/country counts", () => {
+    const summary = getPassportSummary(
+      [{ departureTime: 0, destinationId: "atlantis", duration: 60, id: "x" }],
+      now
+    );
+    expect(summary.flights).toBe(1);
+    expect(summary.cities).toBe(0);
+    expect(summary.countries).toBe(0);
+    expect(summary.stamps[0].city).toBeNull();
   });
 });

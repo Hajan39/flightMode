@@ -21,6 +21,9 @@ describe("Play Games achievement mapping integrity", () => {
   });
 
   test("mapped values are either null or a non-empty CgkI-style id", () => {
+    // Guard: an empty map would make the loop below pass vacuously.
+    expect(mapIds.size).toBeGreaterThan(0);
+    expect(mapIds.size).toBe(localIds.size);
     for (const [_id, playId] of Object.entries(playGamesAchievementIds)) {
       if (playId === null) {
         continue;
@@ -41,5 +44,8 @@ describe("Play Games achievement mapping integrity", () => {
 
   test("getPlayGamesAchievementId returns null for unknown ids", () => {
     expect(getPlayGamesAchievementId("does-not-exist")).toBeNull();
+    expect(getPlayGamesAchievementId("first-game")).toBe(
+      playGamesAchievementIds["first-game"]
+    );
   });
 });

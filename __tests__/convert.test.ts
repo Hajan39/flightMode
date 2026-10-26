@@ -45,6 +45,31 @@ describe("convertUnit", () => {
     expect(formatUnit(2.2046)).toBe("2.2");
     expect(formatUnit(32)).toBe("32");
   });
+
+  test("formatUnit picks decimals by magnitude, also for negatives", () => {
+    expect(formatUnit(1.256)).toBe("1.26");
+    expect(formatUnit(1.5)).toBe("1.5");
+    expect(formatUnit(-12.34)).toBe("-12.3");
+    expect(formatUnit(-140.6)).toBe("-141");
+    expect(formatUnit(Number.NaN)).toBe("–");
+    expect(formatUnit(Number.POSITIVE_INFINITY)).toBe("–");
+  });
+
+  test("temperature reference points both ways", () => {
+    expect(convertUnit(-40, "temperature", "metricToImperial")).toBe(-40);
+    expect(convertUnit(98.6, "temperature", "imperialToMetric")).toBeCloseTo(
+      37,
+      9
+    );
+    expect(convertUnit(10, "weight", "imperialToMetric")).toBeCloseTo(
+      4.5359,
+      4
+    );
+    expect(convertUnit(1, "distance", "imperialToMetric")).toBeCloseTo(
+      1.609_344,
+      9
+    );
+  });
 });
 
 describe("convertCurrency", () => {
@@ -60,7 +85,35 @@ describe("convertCurrency", () => {
 
   test("unknown code or bad amount returns null", () => {
     expect(convertCurrency(1, "USD", "XXX")).toBeNull();
+    expect(convertCurrency(1, "XXX", "USD")).toBeNull();
     expect(convertCurrency(Number.NaN, "USD", "EUR")).toBeNull();
+    expect(convertCurrency(Number.POSITIVE_INFINITY, "USD", "EUR")).toBeNull();
+  });
+
+  test("a zero or negative rate in the table is rejected, not divided by", () => {
+    const table = [
+      { code: "USD", nameEn: "US Dollar", perUsd: 1, symbol: "$" },
+      { code: "AAA", nameEn: "Zero", perUsd: 0, symbol: "A" },
+      { code: "BBB", nameEn: "Negative", perUsd: -2, symbol: "B" },
+    ];
+    expect(convertCurrency(10, "AAA", "USD", table)).toBeNull();
+    expect(convertCurrency(10, "USD", "AAA", table)).toBeNull();
+    expect(convertCurrency(10, "USD", "BBB", table)).toBeNull();
+  });
+
+  test("currency codes are case-insensitive", () => {
+    const jpy = currencies.find((c) => c.code === "JPY")?.perUsd ?? 0;
+    expect(convertCurrency(2, "usd", "jpy")).toBeCloseTo(2 * jpy);
+    expect(formatCurrency(5, "eur")).toBe("€ 5.00");
+  });
+
+  test("cross rate goes via USD (EUR → JPY)", () => {
+    const eur = currencies.find((c) => c.code === "EUR")?.perUsd ?? 0;
+    const jpy = currencies.find((c) => c.code === "JPY")?.perUsd ?? 0;
+    expect(convertCurrency(100, "EUR", "JPY")).toBeCloseTo(
+      (100 / eur) * jpy,
+      6
+    );
   });
 
   test("formatCurrency honours zero-decimal currencies", () => {
@@ -78,6 +131,16 @@ describe("convertCurrency", () => {
     const asOf = Date.UTC(2026, 8, 1);
     expect(getRatesAgeDays("2026-09-01", asOf + 3 * 86_400_000)).toBe(3);
     expect(getRatesAgeDays("not-a-date", asOf)).toBe(0);
+    // Partial days round down; a snapshot "from the future" (clock skew) is 0, not negative.
+    expect(getRatesAgeDays("2026-09-01", asOf + 86_400_000 - 1)).toBe(0);
+    expect(getRatesAgeDays("2026-09-01", asOf - 5 * 86_400_000)).toBe(0);
+  });
+
+  test("parseAmount handles plain, negative and decimal-point input", () => {
+    expect(parseAmount("42")).toBe(42);
+    expect(parseAmount("12.5")).toBe(12.5);
+    expect(parseAmount(" 7 ")).toBe(7);
+    expect(parseAmount("   ")).toBeNull();
   });
 });
 

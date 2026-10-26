@@ -53,17 +53,40 @@ describe("formatTimeInZone / getDayOffset", () => {
     expect(formatTimeInZone(Date.UTC(2026, 0, 15, 0, 5), tokyo)).toBe("09:05");
   });
 
-  test("day offset is +1 when the destination has already crossed midnight", () => {
-    // 20:00 UTC → 05:00 next day in Tokyo; device reference computed from local tz
-    const at = Date.UTC(2026, 0, 15, 20, 0);
-    const deviceDayStart = new Date(at);
-    deviceDayStart.setHours(0, 0, 0, 0);
-    // Reference = same instant; the test asserts the relation is consistent
-    // regardless of the runner's time zone by comparing against London.
-    const londonOffset = getDayOffset(at, london, at);
-    const tokyoOffset = getDayOffset(at, tokyo, at);
-    expect([-1, 0, 1]).toContain(londonOffset);
-    expect(tokyoOffset).toBeGreaterThanOrEqual(londonOffset);
+  describe("getDayOffset with the device pinned to UTC", () => {
+    // The device side uses Date#getTimezoneOffset; pin it so the expected
+    // values do not depend on the CI runner's time zone.
+    let spy: jest.SpyInstance;
+    beforeEach(() => {
+      spy = jest.spyOn(Date.prototype, "getTimezoneOffset").mockReturnValue(0);
+    });
+    afterEach(() => spy.mockRestore());
+
+    test("+1 when the destination has already crossed midnight", () => {
+      // 20:00 UTC on the 15th → 05:00 on the 16th in Tokyo.
+      const at = Date.UTC(2026, 0, 15, 20, 0);
+      expect(getDayOffset(at, tokyo, at)).toBe(1);
+    });
+
+    test("-1 when the destination is still on yesterday", () => {
+      // 02:00 UTC on the 15th → 21:00 on the 14th in New York.
+      const at = Date.UTC(2026, 0, 15, 2, 0);
+      expect(getDayOffset(at, newYork, at)).toBe(-1);
+    });
+
+    test("0 on the same calendar day", () => {
+      const at = Date.UTC(2026, 0, 15, 12, 0);
+      expect(getDayOffset(at, london, at)).toBe(0);
+      expect(getDayOffset(at, tokyo, at)).toBe(0);
+      expect(getDayOffset(at, newYork, at)).toBe(0);
+    });
+
+    test("compares against the reference instant, not `at`", () => {
+      // Arrival two days later still reports only "+1" (clamped).
+      const ref = Date.UTC(2026, 0, 15, 12, 0);
+      expect(getDayOffset(ref + 48 * 3_600_000, london, ref)).toBe(1);
+      expect(getDayOffset(ref - 48 * 3_600_000, london, ref)).toBe(-1);
+    });
   });
 });
 
@@ -133,6 +156,103 @@ describe("getJetlagPlan", () => {
       nowMs: departureTime,
     });
     expect(plan.adviceKey).toBe("jetlagAdviceStayAwake");
+  });
+
+  /** UTC home, Tokyo (+9 h) destination: arrival hour = arrival UTC hour + 9. */
+  function tokyoPlan(
+    arrivalUtcHour: number,
+    durationH: number,
+    nowAfterDepH = 0
+  ) {
+    const arrival = Date.UTC(2026, 0, 16, arrivalUtcHour, 0);
+    const departureTime = arrival - durationH * 3_600_000;
+    return {
+      arrival,
+      departureTime,
+      plan: getJetlagPlan({
+        ...base,
+        departureTime,
+        destination: tokyo,
+        duration: durationH * 60,
+        nowMs: departureTime + nowAfterDepH * 3_600_000,
+      }),
+    };
+  }
+
+  test("arrival-hour buckets: 05–11 sleep, 12–17 nap, 18–04 stay awake", () => {
+    const advice = (utcHour: number) => tokyoPlan(utcHour, 10).plan.adviceKey;
+    // Tokyo local = UTC + 9
+    expect(advice(19)).toBe("jetlagAdviceStayAwake"); // 04:00
+    expect(advice(20)).toBe("jetlagAdviceSleepBeforeArrival"); // 05:00
+    expect(advice(2)).toBe("jetlagAdviceSleepBeforeArrival"); // 11:00
+    expect(advice(3)).toBe("jetlagAdviceShortNap"); // 12:00
+    expect(advice(8)).toBe("jetlagAdviceShortNap"); // 17:00
+    expect(advice(9)).toBe("jetlagAdviceStayAwake"); // 18:00
+    expect(tokyoPlan(9, 10).plan.sleepWindow).toBeNull();
+  });
+
+  test("afternoon arrival: a 90-minute nap from now, only with ≥ 3 h left", () => {
+    const { plan, departureTime } = tokyoPlan(5, 5); // 14:00 Tokyo
+    expect(plan.adviceKey).toBe("jetlagAdviceShortNap");
+    expect(plan.sleepWindow).toEqual({
+      endMs: departureTime + 90 * 60_000,
+      startMs: departureTime,
+    });
+    expect(tokyoPlan(5, 5, 2).plan.sleepWindow).not.toBeNull(); // exactly 3 h left
+    expect(tokyoPlan(5, 5, 2.5).plan.sleepWindow).toBeNull(); // 2.5 h left
+  });
+
+  test("morning arrival: window ends 45 min before landing, shrinks to fit the time left", () => {
+    const { plan, arrival } = tokyoPlan(22, 11, 8); // 07:00 Tokyo, 3 h left
+    expect(plan.sleepWindow).toEqual({
+      endMs: arrival - 45 * 60_000,
+      startMs: arrival - 3 * 3_600_000,
+    });
+    // Exactly 2 h left still gets a (75 min) window; less than that, none.
+    const twoLeft = tokyoPlan(22, 11, 9).plan.sleepWindow;
+    expect(twoLeft && twoLeft.endMs - twoLeft.startMs).toBe(75 * 60_000);
+    expect(tokyoPlan(22, 11, 9.5).plan.sleepWindow).toBeNull();
+  });
+
+  test("severity thresholds: <2 none, 2–<5 mild, 5–<8 moderate, ≥8 severe", () => {
+    const severity = (homeOffsetMinutes: number) =>
+      getJetlagPlan({
+        departureTime: JAN,
+        destination: london,
+        duration: 60,
+        homeOffsetMinutes,
+        nowMs: JAN,
+        opts: { useIntl: false },
+      });
+    expect(severity(90)).toMatchObject({ direction: "none", severity: "none" });
+    expect(severity(120)).toMatchObject({
+      direction: "west",
+      severity: "mild",
+      shiftHours: -2,
+    });
+    expect(severity(-270)).toMatchObject({
+      direction: "east",
+      severity: "mild",
+      shiftHours: 4.5,
+    });
+    expect(severity(-300)).toMatchObject({
+      severity: "moderate",
+      shiftHours: 5,
+    });
+    expect(severity(-420)).toMatchObject({ severity: "moderate" });
+    expect(severity(-480)).toMatchObject({ severity: "severe" });
+  });
+
+  test("shift is rounded to the nearest half hour", () => {
+    const plan = getJetlagPlan({
+      departureTime: JAN,
+      destination: kolkata,
+      duration: 60,
+      homeOffsetMinutes: 0,
+      nowMs: JAN,
+      opts: { useIntl: false },
+    });
+    expect(plan.shiftHours).toBe(5.5);
   });
 
   test("same zone → none", () => {

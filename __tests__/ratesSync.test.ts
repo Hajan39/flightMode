@@ -35,6 +35,50 @@ describe("parseRatesPayload", () => {
     expect(parsed?.asOf).toBe("2025-09-01");
   });
 
+  test("drops zero, infinite, NaN and non-numeric rates", () => {
+    const parsed = parseRatesPayload({
+      ...good,
+      rates: {
+        ...good.rates,
+        AAA: 0,
+        BBB: Number.POSITIVE_INFINITY,
+        CCC: Number.NaN,
+        DDD: "1.5",
+        EEEE: 2,
+      },
+    });
+    expect(parsed).not.toBeNull();
+    for (const code of ["AAA", "BBB", "CCC", "DDD", "EEEE"]) {
+      expect(parsed?.rates[code]).toBeUndefined();
+    }
+    // Exactly the 10 valid codes from `good` survive.
+    expect(Object.keys(parsed?.rates ?? {}).sort()).toEqual([
+      "AUD",
+      "CAD",
+      "CHF",
+      "CZK",
+      "EUR",
+      "GBP",
+      "JPY",
+      "KRW",
+      "THB",
+      "USD",
+    ]);
+  });
+
+  test("needs at least 10 valid codes (junk does not count)", () => {
+    const nine = Object.fromEntries(
+      Object.entries(good.rates).filter(([c]) => c !== "THB")
+    );
+    expect(parseRatesPayload({ ...good, rates: nine })).toBeNull();
+  });
+
+  test("without a timestamp the snapshot is dated today", () => {
+    const { time_last_update_unix: _drop, ...noTime } = good;
+    const parsed = parseRatesPayload(noTime);
+    expect(parsed?.asOf).toBe(new Date().toISOString().slice(0, 10));
+  });
+
   test("rejects failures, non-USD base and tiny payloads", () => {
     expect(parseRatesPayload(null)).toBeNull();
     expect(parseRatesPayload({ result: "error" })).toBeNull();
@@ -116,6 +160,15 @@ describe("getEffectiveCurrencies / provenance", () => {
       ...currencies.map((c) => c.code),
       "NOK",
     ]);
+  });
+
+  test("provider-only codes with a non-positive rate are never offered", () => {
+    const codes = getEffectiveCurrencies({ NOK: 0, PHP: -3 }, currencies, {
+      RON: 0,
+    }).map((c) => c.code);
+    expect(codes).not.toContain("NOK");
+    expect(codes).not.toContain("PHP");
+    expect(codes).not.toContain("RON");
   });
 
   test("live rates override the snapshot for extra currencies", () => {

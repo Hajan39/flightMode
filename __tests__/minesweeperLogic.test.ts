@@ -97,11 +97,48 @@ describe("minesweeper floodReveal & win", () => {
   test("flood never reveals a mine", () => {
     const board = placeMines(makeEmptyBoard(), 4, 4, mulberry32(42));
     const revealed = floodReveal(board, 4, 4);
-    for (const cell of revealed.flat()) {
-      if (cell.isMine) {
-        expect(cell.isRevealed).toBe(false);
-      }
+    const mines = revealed.flat().filter((c) => c.isMine);
+    // Guard against a vacuous pass on a mine-less board.
+    expect(mines).toHaveLength(MINE_COUNT);
+    expect(mines.filter((c) => c.isRevealed)).toEqual([]);
+    // The safe opening (adjacency 0) actually opened more than one cell.
+    expect(revealed.flat().filter((c) => c.isRevealed).length).toBeGreaterThan(
+      1
+    );
+  });
+
+  test("flood stops at numbered cells (reveals them, not past them)", () => {
+    const board = makeEmptyBoard();
+    // A wall of numbered cells on column 4 (hand-set adjacency).
+    for (let r = 0; r < ROWS; r += 1) {
+      board[r][4].adjacentMines = 1;
     }
+    const revealed = floodReveal(board, 0, 0);
+    for (let r = 0; r < ROWS; r += 1) {
+      expect(revealed[r][3].isRevealed).toBe(true);
+      expect(revealed[r][4].isRevealed).toBe(true); // the border itself shows
+      expect(revealed[r][5].isRevealed).toBe(false); // nothing behind it
+    }
+    // Tapping a numbered cell reveals only that cell.
+    const single = floodReveal(board, 2, 4).flat();
+    expect(single.filter((c) => c.isRevealed)).toHaveLength(1);
+  });
+
+  test("flood skips flagged cells and does not spread through them", () => {
+    const board = makeEmptyBoard();
+    // Wall of flags on column 4 splits the empty board in two.
+    for (let r = 0; r < ROWS; r += 1) {
+      board[r][4].isFlagged = true;
+    }
+    const revealed = floodReveal(board, 0, 0);
+    for (let r = 0; r < ROWS; r += 1) {
+      expect(revealed[r][4].isRevealed).toBe(false);
+      expect(revealed[r][3].isRevealed).toBe(true);
+      expect(revealed[r][5].isRevealed).toBe(false);
+    }
+    // Tapping a flagged cell directly reveals nothing.
+    const tapped = floodReveal(board, 0, 4);
+    expect(tapped.flat().some((c) => c.isRevealed)).toBe(false);
   });
 
   test("checkWin is false while a safe cell is still hidden", () => {
@@ -109,12 +146,32 @@ describe("minesweeper floodReveal & win", () => {
     expect(checkWin(board)).toBe(false);
   });
 
-  test("revealAllMines reveals every mine", () => {
+  test("revealAllMines reveals every mine and nothing else", () => {
     const board = placeMines(makeEmptyBoard(), 4, 4, mulberry32(7));
-    const shown = revealAllMines(board);
-    for (const cell of shown.flat()) {
-      if (cell.isMine) {
-        expect(cell.isRevealed).toBe(true);
+    const shown = revealAllMines(board).flat();
+    expect(shown.filter((c) => c.isRevealed)).toHaveLength(MINE_COUNT);
+    expect(shown.filter((c) => c.isMine && !c.isRevealed)).toEqual([]);
+  });
+});
+
+describe("minesweeper first tap is always safe (many seeds, every position)", () => {
+  test("no mine in the tapped cell or any of its neighbours", () => {
+    const taps: [number, number][] = [
+      [0, 0],
+      [0, COLS - 1],
+      [ROWS - 1, 0],
+      [ROWS - 1, COLS - 1],
+      [4, 4],
+      [0, 4],
+    ];
+    for (let seed = 0; seed < 150; seed += 1) {
+      for (const [sr, sc] of taps) {
+        const board = placeMines(makeEmptyBoard(), sr, sc, mulberry32(seed));
+        expect(countMines(board)).toBe(MINE_COUNT);
+        const zone = [[sr, sc], ...neighbors(sr, sc)];
+        const hit = zone.filter(([r, c]) => board[r][c].isMine);
+        expect(hit).toEqual([]);
+        expect(board[sr][sc].adjacentMines).toBe(0);
       }
     }
   });

@@ -44,6 +44,23 @@ describe("step", () => {
     expect(next.vx).toBeGreaterThan(0);
   });
 
+  test("damping and gravity act identically on both axes", () => {
+    const diagonal = step({ vx: 1, vy: 1, x: 0, y: 0 }, 0.5, 0.5, 40);
+    expect(diagonal.vy).toBeCloseTo(diagonal.vx, 12);
+    expect(diagonal.y).toBeCloseTo(diagonal.x, 12);
+    // Exact single-step physics: v' = (v + tilt·g·dt)·damping^dt, x' = x + v'·dt
+    const dt = 0.04;
+    const expectedV =
+      (1 + 0.5 * DEFAULT_PHYSICS.gravity * dt) * DEFAULT_PHYSICS.damping ** dt;
+    expect(diagonal.vx).toBeCloseTo(expectedV, 12);
+    expect(diagonal.x).toBeCloseTo(expectedV * dt, 12);
+  });
+
+  test("a negative frame time is treated as zero", () => {
+    const moving: BallState = { vx: 1, vy: 0, x: 0, y: 0 };
+    expect(step(moving, 1, 1, -16)).toBe(moving);
+  });
+
   test("a stalled frame is clamped to maxStepMs so the ball can't teleport", () => {
     const moving: BallState = { vx: 1, vy: 0, x: 0, y: 0 };
     const clamped = step(moving, 0, 0, 5000);

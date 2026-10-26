@@ -162,6 +162,16 @@ describe("seat-neighbor", () => {
     expect(getSyncTier(3)).toBe("snTierSeatmates");
     expect(getSyncTier(6)).toBe("snTierTravelBuddies");
     expect(getSyncTier(8)).toBe("snTierSoulmates");
+    // Exact tier boundaries: ≤2 / ≤4 / ≤6 / 7+
+    expect([1, 2, 3, 4, 5, 6, 7].map(getSyncTier)).toEqual([
+      "snTierStrangers",
+      "snTierStrangers",
+      "snTierSeatmates",
+      "snTierSeatmates",
+      "snTierTravelBuddies",
+      "snTierTravelBuddies",
+      "snTierSoulmates",
+    ]);
     for (let s = 0; s <= 8; s += 1) {
       expect(enKeys.has(getSyncTier(s))).toBe(true);
     }
