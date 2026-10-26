@@ -1,5 +1,7 @@
 jest.mock("@/utils/analytics", () => ({ captureAnalyticsEvent: jest.fn() }));
 jest.mock("@/utils/playGames", () => ({
+  resendUnlockedAchievements: jest.fn(() => Promise.resolve()),
+  setUnlockedPlayIdsSource: jest.fn(),
   unlockPlayGamesAchievement: jest.fn(() => Promise.resolve()),
 }));
 
