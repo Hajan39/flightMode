@@ -1,5 +1,6 @@
-// Word lists for the big Word Search (osmisměrka) mode, per language.
-// Words: travel themes, 3–8 letters. Secrets: the hidden message spelled by
+// Word lists for Word Search, per language. CLASSIC_WORDS feed the 8×8 mode;
+// SEARCH_WORDS + SECRETS the big 10×10 osmisměrka mode.
+// Big-mode words: travel themes, 3–8 letters. Secrets: the hidden message spelled by
 // the leftover letters — `letters` is what goes into the grid, `text` is what
 // the player sees at the end. Lengths 4–12 so most layouts find a fit.
 
@@ -8,10 +9,56 @@ export interface Secret {
   text: string;
 }
 
+/** Classic mode: aviation / travel words per language (fallback en) — all 5 letters so they tile an 8×8 grid nicely. */
+export const CLASSIC_WORDS: Record<string, string[]> = {
+  cs: [
+    "PILOT",
+    "RADAR",
+    "MRAKY",
+    "TRASA",
+    "BRÁNA",
+    "VÝLET",
+    "VÍZUM",
+    "MOTOR",
+    "LETEC",
+    "VĚTER",
+    "BOUŘE",
+    "DRÁHA",
+  ],
+  de: [
+    "PILOT",
+    "RADAR",
+    "WOLKE",
+    "ROUTE",
+    "PISTE",
+    "REISE",
+    "KARTE",
+    "MOTOR",
+    "STURM",
+    "SONNE",
+    "VISUM",
+    "MEILE",
+  ],
+  en: [
+    "PILOT",
+    "CABIN",
+    "CARGO",
+    "RADAR",
+    "TOWER",
+    "ROUTE",
+    "CLOUD",
+    "GATES",
+    "WINGS",
+    "PLANE",
+    "BOARD",
+    "MILES",
+  ],
+};
+
 export const SEARCH_WORDS: Record<"cs" | "de" | "en", string[]> = {
   cs: `
 PILOT RADAR TRASA BRÁNA VÍZUM MOTOR VĚTER DRÁHA HOTEL MĚSTO CESTA VÝLET
-TAXÍK METRO KÁNOE ULICE ODLET OBLAK MAPA PAS KUFR BATOH LETIŠTĚ LETENKA
+TAXI METRO KÁNOE ULICE ODLET OBLAK MAPA PAS KUFR BATOH LETIŠTĚ LETENKA
 KAPITÁN PALUBA KŘÍDLO OKNO SEDADLO ULIČKA PLÁŽ MOŘE OSTROV HORY ÚDOLÍ
 JEZERO ŘEKA MOST VĚŽ HRAD ZÁMEK MUZEUM KÁVA ČAJ SNÍDANĚ OBĚD VEČEŘE
 MĚNA KARTA FOTKA DEŠTNÍK BRÝLE SLUNCE MRAK DUHA PŘÍSTAV LOĎ VLAK
@@ -21,8 +68,8 @@ MĚNA KARTA FOTKA DEŠTNÍK BRÝLE SLUNCE MRAK DUHA PŘÍSTAV LOĎ VLAK
   de: `
 PILOT RADAR ROUTE PISTE REISE KARTE MOTOR STURM SONNE VISUM WOLKE HOTEL
 STADT INSEL STRAND MEER HAFEN SCHIFF ZUG TAXI KOFFER RUCKSACK TICKET PASS
-FLÜGEL FENSTER SITZ GANG BORD KABINE TOWER GATE BERGE SEE FLUSS BRÜCKE
-TURM BURG MUSEUM KAFFEE TEE FRÜHSTÜCK ESSEN LANDUNG FOTO SCHIRM BRILLE
+FLÜGEL FENSTER SITZ GANG BORD KABINE FLUGZEUG GATE BERGE SEE FLUSS BRÜCKE
+TURM BURG MUSEUM KAFFEE TEE URLAUB ESSEN LANDUNG FOTO SCHIRM BRILLE
 REGEN WIND NEBEL HIMMEL MOND STERN
 `
     .trim()

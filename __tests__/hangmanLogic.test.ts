@@ -67,6 +67,61 @@ describe("hangman word pools", () => {
     }
   );
 
+  const TIER_LENGTH = {
+    easy: [3, 4],
+    hard: [7, Number.POSITIVE_INFINITY],
+    medium: [5, 6],
+  } as const;
+
+  test.each(LANGUAGES)(
+    "%s: tier lengths, pool sizes and no duplicates",
+    (lang) => {
+      const seen = new Set<string>();
+      for (const difficulty of ["easy", "medium", "hard"] as const) {
+        const pool = getWordPool(lang, difficulty);
+        const [min, max] = TIER_LENGTH[difficulty];
+        expect(pool.length).toBeGreaterThanOrEqual(20);
+        expect(pool.length).toBeLessThanOrEqual(30);
+        for (const word of pool) {
+          const { length } = [...word];
+          expect(length).toBeGreaterThanOrEqual(min);
+          expect(length).toBeLessThanOrEqual(max);
+          expect(seen.has(word)).toBe(false);
+          seen.add(word);
+        }
+      }
+    }
+  );
+
+  const JUNK: Record<string, string[]> = {
+    de: ["BOG", "RAN", "ART", "ORT", "HOHENMESSER", "RUMPFWERK", "GLEISE"],
+    en: ["OSCAR", "INDIA", "WINGS", "JETLAG", "LUNAR"],
+    es: ["TOR", "RUM", "AVIO", "AUTOPILOT", "AVION", "TRIPULACION"],
+    fr: ["NET", "VIS", "DARD", "ONDES", "DECOLLAGE", "AEROPORT", "HOTEL"],
+    it: ["ORT", "REM", "ARC", "ETA", "URTO", "ROTA", "VIRATA"],
+    pl: ["LAD", "BEG", "SOL", "RAN", "MASZ", "WZNOS", "KLAPY", "LADOWANIE"],
+    pt: ["EIX", "AXE", "ARC", "VIS", "CABINA", "COMBUSTIVEL", "BUSSOLA"],
+  };
+
+  test.each(Object.keys(JUNK))("%s: old junk stays out", (lang) => {
+    const all = (["easy", "medium", "hard"] as const).flatMap((d) =>
+      getWordPool(lang as (typeof LANGUAGES)[number], d)
+    );
+    for (const junk of JUNK[lang]) {
+      expect(all).not.toContain(junk);
+    }
+    // NATO-alphabet filler is gone everywhere.
+    for (const filler of ["ALPHA", "BRAVO", "DELTA", "TANGO"]) {
+      expect(all).not.toContain(filler);
+    }
+  });
+
+  test("CJK and Hindi share the English pool", () => {
+    for (const lang of ["hi", "ja", "ko", "zh"] as const) {
+      expect(getWordPool(lang, "hard")).toBe(getWordPool("en", "hard"));
+    }
+  });
+
   test("Czech words keep their real spelling", () => {
     const all = (["easy", "medium", "hard"] as const).flatMap((d) =>
       getWordPool("cs", d)

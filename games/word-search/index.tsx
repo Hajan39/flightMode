@@ -28,7 +28,7 @@ import {
   type Puzzle,
   readCells,
 } from "./logic";
-import { SEARCH_WORDS, SECRETS } from "./words";
+import { CLASSIC_WORDS, SEARCH_WORDS, SECRETS } from "./words";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -36,52 +36,6 @@ const CLASSIC_SIZE = 8;
 const BIG_SIZE = 10;
 const WORD_COUNT = 6;
 const GAP = 3;
-
-/** Aviation / travel words per language (fallback en) — all 5 letters so they tile an 8×8 grid nicely. */
-const WORD_POOLS: Record<string, string[]> = {
-  cs: [
-    "PILOT",
-    "RADAR",
-    "MRAKY",
-    "TRASA",
-    "BRÁNA",
-    "KUFRY",
-    "VÍZUM",
-    "MOTOR",
-    "LETEC",
-    "VĚTER",
-    "BOUŘE",
-    "DRÁHA",
-  ],
-  de: [
-    "PILOT",
-    "RADAR",
-    "WOLKE",
-    "ROUTE",
-    "PISTE",
-    "REISE",
-    "KARTE",
-    "MOTOR",
-    "STURM",
-    "SONNE",
-    "VISUM",
-    "MEILE",
-  ],
-  en: [
-    "PILOT",
-    "CABIN",
-    "CARGO",
-    "RADAR",
-    "TOWER",
-    "ROUTE",
-    "CLOUD",
-    "GATES",
-    "WINGS",
-    "PLANE",
-    "BOARD",
-    "MILES",
-  ],
-};
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -120,7 +74,7 @@ function makePuzzle(
       return { puzzle: built, secret: secret?.text ?? built.secret };
     }
   }
-  const pool = WORD_POOLS[language] ?? WORD_POOLS.en;
+  const pool = CLASSIC_WORDS[language] ?? CLASSIC_WORDS.en;
   const size = mode === "big" ? BIG_SIZE : CLASSIC_SIZE;
   // Retry until we get WORD_COUNT successful placements (rare to need >1 pass).
   for (let attempt = 0; attempt < 25; attempt += 1) {

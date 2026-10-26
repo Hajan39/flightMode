@@ -143,7 +143,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     [
       "First thing after landing?",
       "Co uděláš hned po přistání?",
-      "Erstes nach der Landung?",
+      "Als Erstes nach der Landung?",
       "¿Lo primero al aterrizar?",
       "Première chose après l'atterrissage ?",
       "लैंडिंग के बाद सबसे पहले?",
@@ -248,7 +248,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       [
         "Something with bubbles",
         "Něco s bublinkami",
-        "Etwas mit Bläschen",
+        "Etwas Prickelndes",
         "Algo con burbujas",
         "Quelque chose qui pétille",
         "कुछ बुलबुले वाला",
@@ -453,7 +453,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     [
       "Lost in a new city — you…",
       "Ztracen/a v cizím městě — ty…",
-      "Verloren in einer Stadt — du…",
+      "Verlaufen in einer fremden Stadt — du…",
       "Perdido en una ciudad nueva…",
       "Perdu dans une ville inconnue…",
       "नए शहर में खो गए — आप…",
@@ -977,7 +977,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "Crisp and cold",
-        "Svěží zima",
+        "Jasno a mrazivo",
         "Klar und kalt",
         "Frío y despejado",
         "Frais et froid",
@@ -1053,7 +1053,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "Something to cry at",
-        "Něco k slzám",
+        "Něco na brečení",
         "Etwas zum Weinen",
         "Algo para llorar",
         "De quoi pleurer",
@@ -1150,7 +1150,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       [
         "Love it",
         "Miluju to",
-        "Liebe es",
+        "Total gern",
         "Me encanta",
         "J'adore",
         "बहुत पसंद",
@@ -1177,7 +1177,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "Headphones on",
-        "Sluchátka na uši",
+        "Nasadím sluchátka",
         "Kopfhörer auf",
         "Auriculares puestos",
         "Casque sur les oreilles",
@@ -1225,8 +1225,8 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "Rough idea",
-        "Zhruba",
-        "Ungefähre Idee",
+        "Zhruba vím",
+        "Grobe Vorstellung",
         "Una idea general",
         "Une idée vague",
         "मोटा अंदाज़ा",
@@ -1425,7 +1425,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "Don't even notice",
-        "Ani nevnímám",
+        "Ani si nevšimnu",
         "Merke es gar nicht",
         "Ni me entero",
         "Je ne remarque rien",
@@ -1673,7 +1673,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "No people in my photos",
-        "Bez lidí ve fotkách",
+        "Fotky bez lidí",
         "Keine Menschen auf Fotos",
         "Sin gente en mis fotos",
         "Pas de gens sur mes photos",
@@ -2465,7 +2465,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "My usual order",
-        "Moje obvyklá",
+        "Moje obvyklá objednávka",
         "Meine übliche Bestellung",
         "Mi pedido de siempre",
         "Ma commande habituelle",
@@ -2479,7 +2479,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
       ],
       [
         "Tea person",
-        "Jsem na čaj",
+        "Jsem spíš na čaj",
         "Teetrinker/in",
         "Soy de té",
         "Plutôt thé",
@@ -2513,8 +2513,8 @@ export const seatNeighborQuestions: SNQuestion[] = [
     [
       [
         "Secretly love it",
-        "Tajně miluju",
-        "Heimlich geliebt",
+        "Tajně ho miluju",
+        "Insgeheim lecker",
         "Me encanta en secreto",
         "J'adore en secret",
         "चुपके से पसंद",
@@ -2603,7 +2603,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     ],
     [
       "Two layovers, aisle seats",
-      "Dva přestupy, uličky",
+      "Dva přestupy, sedadla u uličky",
       "Zwei Zwischenstopps, Gangplätze",
       "Dos escalas, pasillo",
       "Deux escales, couloir",
@@ -2724,7 +2724,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     [
       "1 month-long trip",
       "1 měsíční cesta",
-      "1 Monat lange Reise",
+      "1 Reise, einen Monat lang",
       "1 viaje de un mes",
       "1 voyage d'un mois",
       "1 महीने की यात्रा",
@@ -2802,7 +2802,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     [
       "Would you rather sit next to…",
       "Radši bys seděl/a vedle…",
-      "Lieber neben…",
+      "Lieber sitzen neben…",
       "¿Preferirías sentarte junto a…?",
       "Vous préféreriez être assis à côté de…",
       "आप किसके बगल में बैठेंगे…",
@@ -2862,7 +2862,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     [
       "Free hotels, cheap flights",
       "Hotely zdarma, levné lety",
-      "Freie Hotels, billige Flüge",
+      "Gratis-Hotels, billige Flüge",
       "Hoteles gratis, vuelos baratos",
       "Hôtels gratuits, vols bon marché",
       "मुफ़्त होटल, सस्ती उड़ानें",
@@ -2891,7 +2891,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     ],
     [
       "Perfect map, no language",
-      "Perfektní mapu, bez jazyka",
+      "Mít perfektní mapu, bez jazyka",
       "Perfekte Karte, keine Sprache",
       "Mapa perfecto, sin idioma",
       "Carte parfaite, sans la langue",
@@ -3059,7 +3059,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     ],
     [
       "Fly first class forever",
-      "Navždy první třídou",
+      "Navždy létat první třídou",
       "Für immer First Class",
       "Volar siempre en primera",
       "Toujours en première classe",
@@ -3076,7 +3076,7 @@ export const seatNeighborQuestions: SNQuestion[] = [
     [
       "4-hour delay, free lounge",
       "4 h zpoždění, salonek zdarma",
-      "4 h Verspätung, freie Lounge",
+      "4 h Verspätung, Lounge gratis",
       "4 h de retraso, sala VIP gratis",
       "4 h de retard, salon gratuit",
       "4 घंटे देरी, मुफ़्त लाउंज",
