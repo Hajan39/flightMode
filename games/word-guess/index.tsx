@@ -26,6 +26,9 @@ import {
   getDayOfYear,
   getKeyboardRows,
   getWordPool,
+  KEY_GAP,
+  KEY_HEIGHT,
+  keyMetrics,
   type LetterState,
   mergeKeyboard,
   wordGuessLanguage,
@@ -33,15 +36,6 @@ import {
 
 /** Cap system font scaling inside fixed-size board cells so text never overflows them. */
 const CELL_FONT_SCALE = 1.3;
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
-const KEY_HEIGHT = 42;
-const KEY_GAP = 4;
-
-const PRESENT_COLOR = "#c9a227";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -124,9 +118,7 @@ export default function WordGuessGame() {
     Math.min((screenWidth - 80) / 5, (screenHeight - keyboardHeight - 300) / 6)
   );
   // 10 keys + 9 gaps across the padded row (Spacing.lg on each side).
-  const keyWidth = Math.floor(
-    (screenWidth - 2 * Spacing.lg - 9 * KEY_GAP) / 10
-  );
+  const keys = keyMetrics(screenWidth);
 
   // ---------------------------------------------------------------------------
   // Game lifecycle
@@ -267,7 +259,7 @@ export default function WordGuessGame() {
       case "correct":
         return theme.tint;
       case "present":
-        return PRESENT_COLOR;
+        return theme.warning;
       case "absent":
         return theme.surface;
       default:
@@ -283,7 +275,7 @@ export default function WordGuessGame() {
       case "correct":
         return theme.onTint;
       case "present":
-        return "#ffffff";
+        return theme.onWarning;
       case "absent":
         return theme.mutedText;
       default:
@@ -308,7 +300,7 @@ export default function WordGuessGame() {
       case "correct":
         return theme.tint;
       case "present":
-        return PRESENT_COLOR;
+        return theme.warning;
       case "absent":
         return theme.elevated;
       default:
@@ -322,7 +314,7 @@ export default function WordGuessGame() {
       case "correct":
         return theme.onTint;
       case "present":
-        return "#ffffff";
+        return theme.onWarning;
       case "absent":
         return theme.mutedText;
       default:
@@ -456,6 +448,7 @@ export default function WordGuessGame() {
                       <Pressable
                         accessibilityLabel={key}
                         accessibilityRole="button"
+                        hitSlop={keys.hitSlop}
                         key={key}
                         onPress={() => handleKey(key)}
                         style={[
@@ -463,9 +456,7 @@ export default function WordGuessGame() {
                           {
                             backgroundColor: getKeyBg(key),
                             borderColor: theme.border,
-                            width: isWide
-                              ? Math.floor(keyWidth * 1.5)
-                              : keyWidth,
+                            width: isWide ? keys.wideKeyWidth : keys.keyWidth,
                           },
                         ]}
                       >
@@ -575,14 +566,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   // Keyboard
+  // No gap between rows: each row pads half a gap above and below instead, so
+  // the keys' vertical hitSlop stays inside the row (Android drops touches
+  // outside the parent's bounds).
   keyboard: {
     alignSelf: "stretch",
-    gap: Spacing.xs,
   },
   keyboardRow: {
     flexDirection: "row",
     gap: KEY_GAP,
     justifyContent: "center",
+    paddingVertical: KEY_GAP / 2,
   },
   keyText: {
     fontWeight: FontWeight.bold,

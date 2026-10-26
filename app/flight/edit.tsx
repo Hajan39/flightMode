@@ -16,7 +16,11 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import { destinations, getDestinationById } from "@/data/destinations";
+import {
+  destinations,
+  getDestinationById,
+  getDestinationCity,
+} from "@/data/destinations";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useChecklistStore } from "@/store/useChecklistStore";
@@ -179,7 +183,7 @@ export default function FlightEditScreen() {
   const router = useRouter();
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
   const setFlight = useFlightStore((s) => s.setFlight);
   // Captured once: a trip past its landed window is over, so saving here
   // starts a new flight (new passport entry) instead of rewriting the old one.
@@ -372,7 +376,7 @@ export default function FlightEditScreen() {
       if (sleepFireAt) {
         const sleepResult = await scheduleJetlagSleepReminder(
           sleepFireAt,
-          destination.city
+          getDestinationCity(destination, language)
         );
         if (sleepResult.scheduled) {
           captureAnalyticsEvent("reminder_scheduled", {
@@ -492,7 +496,7 @@ export default function FlightEditScreen() {
                 const active = destinationId === d.id;
                 return (
                   <Pressable
-                    accessibilityLabel={d.city}
+                    accessibilityLabel={getDestinationCity(d, language)}
                     accessibilityRole="button"
                     accessibilityState={{ selected: active }}
                     key={d.id}
@@ -511,7 +515,7 @@ export default function FlightEditScreen() {
                         { color: active ? theme.onTint : theme.text },
                       ]}
                     >
-                      {d.emoji} {d.city}
+                      {d.emoji} {getDestinationCity(d, language)}
                     </Text>
                   </Pressable>
                 );

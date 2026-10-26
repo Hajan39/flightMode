@@ -22,7 +22,7 @@ import {
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { OnPlayerColor } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
@@ -396,7 +396,9 @@ export default function CrossLiarsDiceGame() {
                   scaleTo={0.92}
                   style={[styles.liarBtn, { backgroundColor: theme.danger }]}
                 >
-                  <Text style={styles.liarBtnText}>🤥 {t("ldLiar")}</Text>
+                  <Text style={[styles.liarBtnText, { color: theme.onDanger }]}>
+                    🤥 {t("ldLiar")}
+                  </Text>
                 </AnimatedPressable>
               ) : null}
             </ScrollView>
@@ -525,7 +527,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing["2xl"],
     paddingVertical: Spacing.sm + 2,
   },
-  actionBtnText: { ...TextStyle.buttonSecondary, color: "#0b1620" },
+  actionBtnText: { ...TextStyle.buttonSecondary, color: OnPlayerColor },
   bidCard: {
     alignItems: "center",
     alignSelf: "stretch",
@@ -598,7 +600,6 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.lg,
   },
   liarBtnText: {
-    color: "#fff",
     fontSize: FontSize.xl,
     fontWeight: FontWeight.black,
   },
@@ -609,7 +610,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing["3xl"],
     paddingVertical: Spacing.md,
   },
-  primaryBtnText: { ...TextStyle.buttonSecondary, color: "#0b1620" },
+  primaryBtnText: { ...TextStyle.buttonSecondary, color: OnPlayerColor },
   resultCard: { alignItems: "center", gap: Spacing.sm, marginTop: Spacing.md },
   resultText: { fontSize: FontSize.md, fontWeight: FontWeight.extrabold },
   resultTitle: {

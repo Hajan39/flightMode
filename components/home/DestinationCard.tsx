@@ -6,7 +6,7 @@ import { homeStyles } from "@/components/home/HomeSection";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import type { Destination } from "@/data/destinations";
+import { type Destination, getDestinationCity } from "@/data/destinations";
 import { useTranslation } from "@/hooks/useTranslation";
 
 interface Props {
@@ -18,7 +18,7 @@ interface Props {
 export default function DestinationCard({ destination, onPress }: Props) {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
 
   return (
     <AnimatedPressable
@@ -43,7 +43,9 @@ export default function DestinationCard({ destination, onPress }: Props) {
       >
         <Text style={homeStyles.featuredTitle}>
           {destination
-            ? t("homeDestinationTipsFor", { city: destination.city })
+            ? t("homeDestinationTipsFor", {
+                city: getDestinationCity(destination, language),
+              })
             : t("homeDestinationsCta")}
         </Text>
       </View>

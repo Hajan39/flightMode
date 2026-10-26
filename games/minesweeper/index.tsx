@@ -4,12 +4,13 @@ import {
   A11yOverlayContent,
   A11yOverlayScope,
 } from "@/components/A11yOverlayScope";
+import { baseScheme } from "@/components/colorSchemes";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { MineNumberColors } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
@@ -38,24 +39,12 @@ const CELL_FONT_SCALE = 1.3;
 type Phase = "idle" | "playing" | "over";
 type Outcome = "win" | "lose" | null;
 
-// ─── Number colours ───────────────────────────────────────────────────────────
-
-const NUMBER_COLORS: Record<number, string> = {
-  1: "#1e88e5",
-  2: "#43a047",
-  3: "#e53935",
-  4: "#5e35b1",
-  5: "#d81b60",
-  6: "#00897b",
-  7: "#000000",
-  8: "#9e9e9e",
-};
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function MinesweeperGame() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
+  const numberColors = MineNumberColors[baseScheme(colorScheme)];
   const { t } = useTranslation();
   const { width, height } = useGameDimensions();
   const haptic = useHaptic();
@@ -262,7 +251,7 @@ export default function MinesweeperGame() {
             maxFontSizeMultiplier={CELL_FONT_SCALE}
             style={[
               styles.cellNumber,
-              { color: NUMBER_COLORS[cell.adjacentMines] ?? theme.text },
+              { color: numberColors[cell.adjacentMines - 1] ?? theme.text },
             ]}
           >
             {cell.adjacentMines}

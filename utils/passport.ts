@@ -1,4 +1,5 @@
-import { getDestinationById } from "@/data/destinations";
+import { getDestinationById, getDestinationCity } from "@/data/destinations";
+import type { Language } from "@/i18n/translations";
 import type { LoggedFlight } from "@/types/flight";
 
 export interface PassportStamp {
@@ -40,7 +41,9 @@ export function upsertLoggedFlight(
 
 export function getPassportSummary(
   log: LoggedFlight[],
-  nowMs: number
+  nowMs: number,
+  /** Language of the stamp city names (countries are counted by id-stable English name). */
+  language: Language = "en"
 ): PassportSummary {
   const departed = log
     .filter((f) => f.departureTime <= nowMs)
@@ -68,7 +71,7 @@ export function getPassportSummary(
       countries.add(destination.country);
     }
     return {
-      city: destination?.city ?? null,
+      city: destination ? getDestinationCity(destination, language) : null,
       departureTime: f.departureTime,
       duration: f.duration,
       emoji: destination?.emoji ?? "✈️",

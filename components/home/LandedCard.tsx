@@ -6,7 +6,7 @@ import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Shadow, Spacing } from "@/constants/Spacing";
-import type { Destination } from "@/data/destinations";
+import { type Destination, getDestinationCity } from "@/data/destinations";
 import { getPhraseLanguage } from "@/data/phrases";
 import { useTranslation } from "@/hooks/useTranslation";
 import { formatTimeInZone } from "@/utils/timezone";
@@ -37,7 +37,8 @@ export default function LandedCard({
 }: Props) {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
+  const city = getDestinationCity(destination, language);
 
   const localTime = formatTimeInZone(nowMs, destination);
   const phraseLanguage = getPhraseLanguage(destination.phraseLanguage);
@@ -68,9 +69,7 @@ export default function LandedCard({
           lightColor="transparent"
           style={styles.headerText}
         >
-          <Text style={styles.title}>
-            {t("homeLandedTitle", { city: destination.city })}
-          </Text>
+          <Text style={styles.title}>{t("homeLandedTitle", { city })}</Text>
           <Text style={[styles.clock, { color: theme.mutedText }]}>
             {t("homeLandedLocalTime", { time: localTime })}
           </Text>
@@ -140,7 +139,7 @@ export default function LandedCard({
         </AnimatedPressable>
         <AnimatedPressable
           accessibilityLabel={t("a11yDestinationTips", {
-            city: destination.city,
+            city,
           })}
           onPress={onOpenTips}
           style={[

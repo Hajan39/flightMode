@@ -109,6 +109,27 @@ export function isPlayGamesAvailable(): boolean {
   return getNative() !== null;
 }
 
+/**
+ * Whether the automatic (launch / network-back) Play Games sign-in may run.
+ * Deferred until the persisted settings have loaded, onboarding is finished
+ * and the user is off the onboarding screen, so the Play sign-in prompt never
+ * pops up over the first-run flow. Returning users pass on the first render
+ * after hydration. On-demand sign-in (achievement unlock, "show achievements")
+ * is not gated by this.
+ */
+export function shouldAutoSignInPlayGames(state: {
+  settingsHydrated: boolean;
+  isFirstLaunch: boolean;
+  /** First route segment, e.g. "(tabs)" or "onboarding"; undefined at root. */
+  routeSegment: string | undefined;
+}): boolean {
+  return (
+    state.settingsHydrated &&
+    !state.isFirstLaunch &&
+    state.routeSegment !== "onboarding"
+  );
+}
+
 /** True after a successful (silent or interactive) sign-in this session. */
 export function isPlayGamesSignedIn(): boolean {
   return signedIn;

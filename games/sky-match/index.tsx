@@ -727,7 +727,7 @@ export default function SkyMatchGame() {
               <Text
                 style={[
                   styles.hudValue,
-                  { color: movesLeft <= 3 ? "#EF4444" : theme.text },
+                  { color: movesLeft <= 3 ? theme.danger : theme.text },
                 ]}
               >
                 {movesLeft}
@@ -765,7 +765,9 @@ export default function SkyMatchGame() {
                       styles.progressMark,
                       {
                         backgroundColor:
-                          score >= level.target * m ? "#FBBF24" : theme.border,
+                          score >= level.target * m
+                            ? theme.warning
+                            : theme.border,
                         left: `${Math.round((m / 1.6) * 100) - 2}%`,
                       },
                     ]}

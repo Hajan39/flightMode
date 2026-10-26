@@ -21,7 +21,7 @@ import {
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { OnPlayerColor } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useAnimatedPress } from "@/hooks/useAnimatedPress";
@@ -209,7 +209,7 @@ export default function CrossCodeBreakerGame() {
             <Text
               style={[
                 styles.codeDigit,
-                { color: empty ? theme.mutedText : "#0b1620" },
+                { color: empty ? theme.mutedText : OnPlayerColor },
               ]}
             >
               {empty ? "—" : String(digit)}
@@ -581,7 +581,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing["3xl"],
     paddingVertical: Spacing.md,
   },
-  primaryBtnText: { ...TextStyle.buttonSecondary, color: "#0b1620" },
+  primaryBtnText: { ...TextStyle.buttonSecondary, color: OnPlayerColor },
   resultBox: { alignItems: "center", gap: 6, marginVertical: Spacing.sm },
   resultSubtext: { ...TextStyle.hint },
   roundChip: { ...TextStyle.chipLabel },

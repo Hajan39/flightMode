@@ -41,7 +41,7 @@ const LOCALES = {
   ja: "ja-JP",
   ko: "ko-KR",
   pl: "pl-PL",
-  pt: "pt-PT",
+  pt: "pt-BR",
   zh: "zh-CN",
 };
 // Flat 20 points each; the 2000-point Play cap allows up to 100 achievements

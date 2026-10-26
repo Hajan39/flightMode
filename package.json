@@ -25,12 +25,19 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/$1"
     },
+    "modulePathIgnorePatterns": [
+      "<rootDir>/.claude/"
+    ],
     "preset": "jest-expo",
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.js"
     ],
     "testMatch": [
       "**/__tests__/**/*.test.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/.claude/"
     ]
   },
   "dependencies": {

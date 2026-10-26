@@ -1,5 +1,7 @@
 import { type AchievementState, achievements } from "@/data/achievements";
+import { gameRegistry } from "@/data/games";
 import { en } from "@/i18n/locales/en";
+import { getLocaleTable, supportedLanguages } from "@/i18n/translations";
 
 const enKeys = new Set(Object.keys(en));
 
@@ -60,4 +62,32 @@ describe("achievements integrity", () => {
     };
     expect(first.condition(state)).toBe(true);
   });
+});
+
+describe("achievement descriptions use the locale's own game titles", () => {
+  const languages = supportedLanguages
+    .map((l) => l.code)
+    .filter((code) => code !== "en");
+  const descKeys = achievements.map((a) => a.descriptionKey);
+
+  test.each(languages)(
+    "%s never falls back to an English game title",
+    (code) => {
+      const table = getLocaleTable(code) as Record<string, string>;
+      const leaks: string[] = [];
+      for (const game of gameRegistry) {
+        const enTitle = en[game.titleKey];
+        // Locales that keep the English title (e.g. de "Sky Defense") are fine.
+        if (table[game.titleKey] === enTitle) {
+          continue;
+        }
+        for (const key of descKeys) {
+          if (table[key]?.includes(enTitle)) {
+            leaks.push(`${key}: ${table[key]}`);
+          }
+        }
+      }
+      expect(leaks).toEqual([]);
+    }
+  );
 });

@@ -1,13 +1,16 @@
+import { destinationNames } from "@/data/destinationNames";
 import type { PhraseLanguageCode } from "@/data/phrases";
-import type { TranslationKey } from "@/i18n/translations";
+import type { Language, TranslationKey } from "@/i18n/translations";
 
 /**
  * Bundled destination & airport tips (Phase 2 content).
  *
  * Tip *text* is plain English string literals on purpose — this is offline
- * bundled content and is NOT routed through t()/useTranslation. City and
- * country names are proper nouns and stay untranslated. Tip *labels* are the
- * seven fixed categories below and ARE localized via `labelKey`.
+ * bundled content and is NOT routed through t()/useTranslation. `city` /
+ * `country` are the English names; UI shows the localized ones via
+ * `getDestinationCity()` / `getDestinationCountry()` (`data/destinationNames.ts`).
+ * Tip *labels* are the seven fixed categories below and ARE localized via
+ * `labelKey`.
  *
  * Single source of truth: `destinations` array + `getDestinationById()`.
  */
@@ -1828,4 +1831,22 @@ export const destinations: Destination[] = [
 /** Look up a single destination by its id. */
 export function getDestinationById(id: string): Destination | undefined {
   return destinations.find((destination) => destination.id === id);
+}
+
+/** City name in the app language (nominative), falling back to English. */
+export function getDestinationCity(
+  destination: Pick<Destination, "city" | "id">,
+  language: Language
+): string {
+  return destinationNames[language]?.[destination.id]?.[0] ?? destination.city;
+}
+
+/** Country name in the app language, falling back to English. */
+export function getDestinationCountry(
+  destination: Pick<Destination, "country" | "id">,
+  language: Language
+): string {
+  return (
+    destinationNames[language]?.[destination.id]?.[1] ?? destination.country
+  );
 }

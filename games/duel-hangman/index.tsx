@@ -423,10 +423,13 @@ export default function DuelHangmanGame() {
                     const correct = used && wordHasLetter(word, letter);
                     const wrong = used && !wordHasLetter(word, letter);
                     let keyBackground = theme.elevated;
+                    let keyText = theme.text;
                     if (correct) {
-                      keyBackground = theme.successBorder;
+                      keyBackground = theme.success;
+                      keyText = theme.onSuccess;
                     } else if (wrong) {
                       keyBackground = theme.danger;
+                      keyText = theme.onDanger;
                     }
                     return (
                       <Pressable
@@ -444,12 +447,7 @@ export default function DuelHangmanGame() {
                           },
                         ]}
                       >
-                        <Text
-                          style={[
-                            styles.keyText,
-                            { color: used ? "#fff" : theme.text },
-                          ]}
-                        >
+                        <Text style={[styles.keyText, { color: keyText }]}>
                           {letter}
                         </Text>
                       </Pressable>

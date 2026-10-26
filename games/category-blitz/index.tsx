@@ -18,7 +18,7 @@ import {
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { OnPlayerColor } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import {
@@ -351,14 +351,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   scoreHint: {
-    color: "#0b1620",
+    color: OnPlayerColor,
     fontSize: FontSize.md,
     fontWeight: FontWeight.extrabold,
     letterSpacing: 1,
     textTransform: "uppercase",
   },
   scoreValue: {
-    color: "#0b1620",
+    color: OnPlayerColor,
     fontSize: 96,
     fontWeight: FontWeight.black,
     lineHeight: 104,

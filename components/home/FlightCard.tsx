@@ -7,7 +7,7 @@ import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Shadow, Spacing } from "@/constants/Spacing";
-import type { Destination } from "@/data/destinations";
+import { type Destination, getDestinationCity } from "@/data/destinations";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getFlightProgress, getRemainingMinutes } from "@/store/useFlightStore";
 import type { Flight } from "@/types/flight";
@@ -59,7 +59,7 @@ export default function FlightCard({
 }: Props) {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
   const departsInLabel = useDepartsInLabel(flight, nowMs);
   const landed = phase === "landed";
   const preflight = phase === "preflight";
@@ -176,7 +176,7 @@ export default function FlightCard({
           <>
             <Text style={[styles.progressLabel, { color: theme.mutedText }]}>
               {t("destinationLocalTime", {
-                city: destination.city,
+                city: getDestinationCity(destination, language),
                 time: destinationNow,
               })}
             </Text>

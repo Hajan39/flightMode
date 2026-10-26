@@ -3,7 +3,7 @@ import Animated, { FadeIn, ZoomIn } from "react-native-reanimated";
 
 import { Text } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { OnPlayerColor } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import type { MatchPlayer } from "@/hooks/useMatchPlayers";
@@ -193,7 +193,7 @@ export default function DuelPane({
               <Text
                 style={[
                   styles.holdText,
-                  { color: holdMs === null ? theme.text : "#0b1620" },
+                  { color: holdMs === null ? theme.text : OnPlayerColor },
                 ]}
               >
                 {holdMs === null ? t("sdHold") : t("sdHolding")}
@@ -242,7 +242,7 @@ export default function DuelPane({
             <Text
               style={[
                 styles.prompt,
-                { color: greenOn ? "#0b1620" : theme.text },
+                { color: greenOn ? OnPlayerColor : theme.text },
               ]}
             >
               {greenOn ? t("sdTapNow") : t("sdTapGreen")}

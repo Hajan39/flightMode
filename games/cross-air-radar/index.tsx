@@ -21,7 +21,7 @@ import {
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { OnPlayerColor } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
@@ -427,7 +427,7 @@ export default function CrossAirRadarGame() {
               );
               let bg = theme.card;
               let content: string | null = null;
-              let contentColor = "#fff";
+              let contentColor = theme.onDanger;
               if (showShips && value === "s") {
                 bg = ownerColor;
               }
@@ -550,7 +550,9 @@ export default function CrossAirRadarGame() {
                         styles.shipChipText,
                         {
                           color:
-                            isSelected || isCurrent ? "#0b1620" : theme.text,
+                            isSelected || isCurrent
+                              ? OnPlayerColor
+                              : theme.text,
                         },
                       ]}
                     >
@@ -762,7 +764,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing["4xl"],
     paddingVertical: Spacing.md,
   },
-  primaryBtnText: { ...TextStyle.buttonSecondary, color: "#0b1620" },
+  primaryBtnText: { ...TextStyle.buttonSecondary, color: OnPlayerColor },
   remainingRow: {
     flexDirection: "row",
     gap: Spacing.lg,

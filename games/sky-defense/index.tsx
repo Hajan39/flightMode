@@ -5,7 +5,6 @@ import {
   A11yOverlayContent,
   A11yOverlayScope,
 } from "@/components/A11yOverlayScope";
-import { baseScheme } from "@/components/colorSchemes";
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
@@ -422,6 +421,7 @@ function buildPathSegments(): {
 
 /** Visual path rendered with RN Views (thick rounded lines) */
 function PathOverlay() {
+  const theme = Colors[useColorScheme()];
   const segs = buildPathSegments();
   return (
     <>
@@ -434,7 +434,7 @@ function PathOverlay() {
           <RNView
             key={i}
             style={{
-              backgroundColor: "rgba(255,255,255,0.06)",
+              backgroundColor: `${theme.text}12`,
               borderRadius: 5,
               height: 10,
               left: seg.x1,
@@ -457,7 +457,7 @@ function PathOverlay() {
           <RNView
             key={`d${i}`}
             style={{
-              borderColor: "rgba(255,255,255,0.12)",
+              borderColor: `${theme.text}26`,
               borderRadius: 1,
               borderStyle: "dashed",
               borderWidth: 1,
@@ -486,12 +486,13 @@ function HpBar({
   maxHp: number;
   size: number;
 }) {
+  const theme = Colors[useColorScheme()];
   const pct = Math.max(0, hp / maxHp);
-  let barColor = "#ef5350";
+  let barColor = theme.danger;
   if (pct > 0.5) {
-    barColor = "#66bb6a";
+    barColor = theme.success;
   } else if (pct > 0.25) {
-    barColor = "#ffa726";
+    barColor = theme.warning;
   }
   return (
     <RNView
@@ -1238,12 +1239,8 @@ export default function SkyDefenseGame() {
                   style={[
                     s.paletteBtn,
                     {
-                      backgroundColor: selected
-                        ? `${d.color}25`
-                        : "rgba(255,255,255,0.04)",
-                      borderColor: selected
-                        ? d.color
-                        : "rgba(255,255,255,0.15)",
+                      backgroundColor: selected ? `${d.color}25` : theme.card,
+                      borderColor: selected ? d.color : theme.border,
                       opacity: affordable ? 1 : 0.4,
                     },
                   ]}
@@ -1267,8 +1264,8 @@ export default function SkyDefenseGame() {
               style={[
                 s.board,
                 {
-                  backgroundColor:
-                    baseScheme(colorScheme) === "dark" ? "#0a1520" : "#e6eef4",
+                  backgroundColor: theme.surface,
+                  borderColor: theme.border,
                   height: BOARD_H,
                   width: BOARD_W,
                 },
@@ -1279,7 +1276,7 @@ export default function SkyDefenseGame() {
                 <RNView
                   key={`vc${i}`}
                   style={{
-                    backgroundColor: "rgba(255,255,255,0.04)",
+                    backgroundColor: `${theme.text}0A`,
                     height: BOARD_H,
                     left: i * CELL,
                     position: "absolute",
@@ -1292,7 +1289,7 @@ export default function SkyDefenseGame() {
                 <RNView
                   key={`hr${i}`}
                   style={{
-                    backgroundColor: "rgba(255,255,255,0.04)",
+                    backgroundColor: `${theme.text}0A`,
                     height: 1,
                     left: 0,
                     position: "absolute",
@@ -1309,8 +1306,8 @@ export default function SkyDefenseGame() {
               <RNView
                 style={{
                   alignItems: "center",
-                  backgroundColor: "rgba(102,187,106,0.3)",
-                  borderColor: "rgba(102,187,106,0.5)",
+                  backgroundColor: `${theme.success}4D`,
+                  borderColor: `${theme.success}80`,
                   borderRadius: 10,
                   borderWidth: 1,
                   height: 20,
@@ -1326,8 +1323,8 @@ export default function SkyDefenseGame() {
               <RNView
                 style={{
                   alignItems: "center",
-                  backgroundColor: "rgba(239,83,80,0.25)",
-                  borderColor: "rgba(239,83,80,0.5)",
+                  backgroundColor: `${theme.danger}40`,
+                  borderColor: `${theme.danger}80`,
                   borderRadius: 12,
                   borderWidth: 1,
                   height: 24,
@@ -1487,7 +1484,6 @@ const s = StyleSheet.create({
   bestValue: { fontSize: 16, fontWeight: "900" },
 
   board: {
-    borderColor: "rgba(255,255,255,0.08)",
     borderRadius: 8,
     borderWidth: 1,
     overflow: "hidden",

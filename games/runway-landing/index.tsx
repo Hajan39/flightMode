@@ -60,17 +60,20 @@ function getQuality(points: number): Quality {
   return "miss";
 }
 
-function getQualityColor(q: Quality): string {
+function getQualityColor(
+  q: Quality,
+  theme: (typeof Colors)[keyof typeof Colors]
+): string {
   switch (q) {
     case "perfect":
-      return "#4fc3f7";
+      return theme.info;
     case "great":
-      return "#66bb6a";
+      return theme.success;
     case "good":
-      return "#ffa726";
+      return theme.warningText;
     default:
       // "miss" — Quality has no other members
-      return "#ef5350";
+      return theme.danger;
   }
 }
 
@@ -301,7 +304,7 @@ export default function RunwayLandingGame() {
                 <Text
                   style={[
                     styles.qualityText,
-                    { color: getQualityColor(lastQuality) },
+                    { color: getQualityColor(lastQuality, theme) },
                   ]}
                 >
                   {qualityKey(lastQuality)}{" "}

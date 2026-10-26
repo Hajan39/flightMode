@@ -3,6 +3,11 @@ import {
   getDayOfYear,
   getKeyboardRows,
   getWordPool,
+  KEY_GAP,
+  KEY_HEIGHT,
+  KEYBOARD_PADDING,
+  keyboardRowWidth,
+  keyMetrics,
   mergeKeyboard,
   WORD_POOL,
   type WordGuessLanguage,
@@ -161,5 +166,33 @@ describe("word-guess mergeKeyboard", () => {
     const before = { A: "absent" as const };
     mergeKeyboard(before, ["correct"], ["A"]);
     expect(before).toEqual({ A: "absent" });
+  });
+});
+
+describe("keyboard layout", () => {
+  const MIN_TARGET = 44;
+
+  it.each([320, 360, 390, 430])(
+    "every keyboard row fits a %i dp wide screen",
+    (width) => {
+      const m = keyMetrics(width);
+      for (const lang of ["cs", "de", "en"] as const) {
+        for (const row of getKeyboardRows(lang)) {
+          expect(keyboardRowWidth(row, m)).toBeLessThanOrEqual(
+            width - 2 * KEYBOARD_PADDING
+          );
+        }
+      }
+    }
+  );
+
+  it("touch targets are at least 44 dp tall and neighbours never overlap", () => {
+    const m = keyMetrics(320);
+    expect(
+      KEY_HEIGHT + m.hitSlop.top + m.hitSlop.bottom
+    ).toBeGreaterThanOrEqual(MIN_TARGET);
+    // Slop meets in the middle of the gap between keys and between rows.
+    expect(m.hitSlop.left + m.hitSlop.right).toBeLessThanOrEqual(KEY_GAP);
+    expect(m.hitSlop.top + m.hitSlop.bottom).toBeLessThanOrEqual(KEY_GAP);
   });
 });

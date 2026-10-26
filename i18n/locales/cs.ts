@@ -1074,7 +1074,7 @@ export const cs = {
   // Flight destination link
   flightDestinationLabel: "Cíl cesty (nepovinné)",
   flightDestinationNone: "Žádný",
-  homeDestinationTipsFor: "Tipy pro destinaci {{city}}",
+  homeDestinationTipsFor: "Tipy: {{city}}",
   // Sliding Puzzle game
   gameSlidingPuzzleName: "Posuvné puzzle",
   gameSlidingPuzzleDescription:
@@ -1337,7 +1337,7 @@ export const cs = {
   a11yDurationMinutes: "délka letu – minuty",
   a11yPreviousDay: "Předchozí den",
   a11yNextDay: "Další den",
-  a11yDestinationTips: "Tipy pro {{city}}",
+  a11yDestinationTips: "Tipy: {{city}}",
   a11yDieFace: "Stěna {{n}}",
   tttModeClassic: "Klasika 3×3",
   tttModeGrowing: "Rostoucí deska",
@@ -1468,7 +1468,7 @@ export const cs = {
   notifJetlagSleepTitle: "Čas na odpočinek 😴",
   notifJetlagSleepBody:
     "V destinaci {{city}} přistáváš ráno – spánek teď ti zítřek hodně usnadní.",
-  checklistSectionForCity: "Pro destinaci {{city}}",
+  checklistSectionForCity: "Na cestu: {{city}}",
   checklistItemIcCard: "Pořídit dopravní IC kartu (Suica, T-money…)",
   checklistItemCashCountry: "Vzít hotovost – spousta míst nebere karty",
   checklistItemEsta: "Schválená ESTA, vytištěná",

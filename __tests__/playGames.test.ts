@@ -4,6 +4,7 @@ import {
   initPlayGames,
   isPlayGamesSignedIn,
   setUnlockedPlayIdsSource,
+  shouldAutoSignInPlayGames,
   unlockPlayGamesAchievement,
 } from "@/utils/playGames";
 
@@ -123,5 +124,46 @@ describe("Play Games sign-in retry + resend", () => {
     );
     // The first call threw; the rest were still sent, each id exactly once.
     expect(sent).toEqual(["CgkI_a", "CgkI_b", "CgkI_c"]);
+  });
+});
+
+describe("automatic sign-in gating", () => {
+  const base = {
+    isFirstLaunch: false,
+    routeSegment: "(tabs)" as string | undefined,
+    settingsHydrated: true,
+  };
+
+  test("returning user on a normal screen signs in", () => {
+    expect(shouldAutoSignInPlayGames(base)).toBe(true);
+    expect(
+      shouldAutoSignInPlayGames({ ...base, routeSegment: undefined })
+    ).toBe(true);
+    expect(shouldAutoSignInPlayGames({ ...base, routeSegment: "game" })).toBe(
+      true
+    );
+  });
+
+  test("waits for settings hydration (isFirstLaunch is a default until then)", () => {
+    expect(
+      shouldAutoSignInPlayGames({ ...base, settingsHydrated: false })
+    ).toBe(false);
+  });
+
+  test("deferred during first launch / onboarding", () => {
+    expect(shouldAutoSignInPlayGames({ ...base, isFirstLaunch: true })).toBe(
+      false
+    );
+    expect(
+      shouldAutoSignInPlayGames({
+        ...base,
+        isFirstLaunch: true,
+        routeSegment: "onboarding",
+      })
+    ).toBe(false);
+    // Onboarding just completed but the redirect to tabs hasn't landed yet.
+    expect(
+      shouldAutoSignInPlayGames({ ...base, routeSegment: "onboarding" })
+    ).toBe(false);
   });
 });

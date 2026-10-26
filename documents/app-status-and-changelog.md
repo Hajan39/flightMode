@@ -130,7 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
-## 2026-10-26
+## 2026-10-27
+
+- backlog: theme tokeny ve hrach (kontrast test), pauza Color Clash + Odd One Out, Word Guess hitSlop, responzivni mrizka uspechu v profilu, Play Games sign-in az po onboardingu, jest ignoruje `.claude/`
+- lokalizovane nazvy destinaci: `data/destinationNames.ts` (44 destinaci × 12 jazyku, mesto + zeme, zavedena exonyma Tokio/Paříž/Wien…), `getDestinationCity()` / `getDestinationCountry()` v `data/destinations.ts`; pouzito na Home (FlightCard, LandedCard, DestinationCard), v Destinations, checklistu, editaci letu (vc. jet-lag notifikace) a Passportu; retezce s {{city}} prepsane do 1. padu v cs/pl (a fr/it/pt kvuli clenum Le Caire / Il Cairo); popisy achievementu pouzivaji nazvy her daneho jazyka (12 jazyku); systematicka cs korektura celeho `content/feed.json` (365 pruvodcu, 83 oprav, verze 2026-10-27.1)
 
 - review kolo 8: persistStorage identicky prepis se porovnava jen s potvrzenym stavem disku, duplikat slozeny do rozepsaneho zapisu drzi pokus v rezervě a po selhani se zopakuje; box-breaker multi-ball cap 9 celkem; passport ne-konecna delka = 0 min; cross-code-breaker `calcBullsCows` v logic.ts + property test; cs plurály pres `tn()` (`useTranslation`) + `pluralForms` — MatchResult `scoreLabel` muze byt funkce skore (mpWinsLabel/mpPoints/esVotes/cbzAnswers/snReads/solA11yStock/cbA11yPieceSize *One/Few/Many/Other ve 12 jazycich, tbPoints → mpPoints), sliding-puzzle "Tahy: N"; genderove neutralni cs ("Připraveno k letu", esFrame5, category-blitz pravidla); clanky: fastest-routes vychod/zapad, carry-on-liquids roll-on misto tuheho deodorantu, Lisabon bacalhau susena solena treska, Kahira GEM oficialne otevreno 11/2025 (en/cs/de)
 - review kolo 7: duel-dice migrace v4 zachova skore > 160 (stary format max 10*10+60, nizsi nejednoznacne → reset); color-clash hlavicka ukazuje skutecny prubezny soucet (i pod 0, ulozeny vysledek min. 0 — floor po kazdem kole by dal body za necinnost); flight-path scoreRef/landedRef synchronne v ticku (pristani v ticku srazky se zapocita), spawn pres timeout chain bez extra spawnu pri pristani; whack-mole pauza/resume i tick kontroluji phaseRef (zadne dvojite updateProgress); billing de-dupe tipu i na hydratovane ceste

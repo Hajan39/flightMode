@@ -318,7 +318,7 @@ export default function SnakeGame() {
       ]}
     >
       <RNView
-        style={[styles.cell, cellAt(food), { backgroundColor: "#ef4444" }]}
+        style={[styles.cell, cellAt(food), { backgroundColor: theme.danger }]}
       />
       {snake.map((idx, i) => (
         <RNView

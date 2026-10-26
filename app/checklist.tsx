@@ -21,7 +21,7 @@ import {
   checklistSections,
   type ChecklistSection as SectionDef,
 } from "@/data/checklist";
-import { getDestinationById } from "@/data/destinations";
+import { getDestinationById, getDestinationCity } from "@/data/destinations";
 import { useTranslation } from "@/hooks/useTranslation";
 import {
   destinationItemId,
@@ -35,7 +35,7 @@ import { getCurrentFlight } from "@/utils/flightPhase";
 export default function ChecklistScreen() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
   const storedFlight = useFlightStore((s) => s.flight);
   // An expired trip (past its landed window) adds no "For {city}" block.
   const flight = getCurrentFlight(storedFlight, Date.now());
@@ -83,7 +83,9 @@ export default function ChecklistScreen() {
           items: [],
           titleKey: "checklistSectionForCity",
         },
-        title: t("checklistSectionForCity", { city: destination.city }),
+        title: t("checklistSectionForCity", {
+          city: getDestinationCity(destination, language),
+        }),
       },
       own,
     ];

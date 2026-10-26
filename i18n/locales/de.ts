@@ -774,9 +774,9 @@
   achieveSkyCommanderTitle: "Himmelskommandant",
   achieveSkyCommanderDesc: "500+ Punkte in Sky Defense",
   achieveTowerOperatorTitle: "Turmoperator",
-  achieveTowerOperatorDesc: "150+ Punkte in Air Traffic Control",
+  achieveTowerOperatorDesc: "150+ Punkte in „Flugverkehrskontrolle“",
   achieveAirBossTitle: "Air-Boss",
-  achieveAirBossDesc: "500+ Punkte in Air Traffic Control",
+  achieveAirBossDesc: "500+ Punkte in „Flugverkehrskontrolle“",
   gameTwentyFortyEightName: "2048",
   gameTwentyFortyEightDescription: "Schiebe und verbinde Kacheln bis 2048",
   rulesTwentyFortyEight:

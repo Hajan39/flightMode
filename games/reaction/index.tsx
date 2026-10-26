@@ -253,10 +253,13 @@ export default function ReactionGame() {
   };
 
   let padColor = theme.elevated;
+  let padTextColor = theme.mutedText;
   if (phase === "ready") {
-    padColor = "#2e9f5b";
+    padColor = theme.success;
+    padTextColor = theme.onSuccess;
   } else if (phase === "waiting") {
     padColor = theme.warning;
+    padTextColor = theme.onWarning;
   }
 
   let padLabel = t("reactionTap");
@@ -265,8 +268,6 @@ export default function ReactionGame() {
   } else if (phase === "waiting") {
     padLabel = t("reactionWait");
   }
-
-  const padTextColor = phase === "idle" ? theme.mutedText : "#fff";
 
   return (
     <A11yOverlayScope>

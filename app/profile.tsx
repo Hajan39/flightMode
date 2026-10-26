@@ -4,15 +4,15 @@ import { ScrollView, StyleSheet } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import AchievementGrid from "@/components/AchievementGrid";
 import PassportSection from "@/components/PassportSection";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
-import { type AchievementDef, achievements } from "@/data/achievements";
+import { achievements } from "@/data/achievements";
 import { getGameById } from "@/data/games";
 import { useProfileStats } from "@/hooks/useProfileStats";
 import { useTranslation } from "@/hooks/useTranslation";
-import type { TranslationKey } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useSupporterStore } from "@/store/useSupporterStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
@@ -129,18 +129,12 @@ export default function ProfileScreen() {
           <Text style={[styles.sectionHint, { color: theme.mutedText }]}>
             {t("profileAchievementsHint")}
           </Text>
-          <View style={styles.achievementGrid}>
-            {achievements.map((a, i) => (
-              <AchievementBadge
-                achievement={a}
-                index={i}
-                key={a.id}
-                t={t}
-                theme={theme}
-                unlocked={unlockedIds.includes(a.id)}
-              />
-            ))}
-          </View>
+          <AchievementGrid
+            items={achievements}
+            t={t}
+            theme={theme}
+            unlockedIds={unlockedIds}
+          />
         </Animated.View>
 
         {/* ── High Scores ── */}
@@ -221,71 +215,7 @@ function StatCard({
   );
 }
 
-function AchievementBadge({
-  achievement,
-  unlocked,
-  theme,
-  t,
-  index: _index,
-}: {
-  achievement: AchievementDef;
-  unlocked: boolean;
-  theme: (typeof Colors)["light"];
-  t: (key: TranslationKey) => string;
-  index: number;
-}) {
-  return (
-    <View
-      style={[
-        styles.badge,
-        {
-          backgroundColor: unlocked ? theme.card : theme.background,
-          borderColor: unlocked ? theme.tint : theme.border,
-          opacity: unlocked ? 1 : 0.4,
-        },
-      ]}
-    >
-      <Ionicons
-        color={unlocked ? theme.tint : theme.mutedText}
-        name={achievement.icon as never}
-        size={26}
-      />
-      <Text
-        numberOfLines={2}
-        style={[
-          styles.badgeTitle,
-          { color: unlocked ? theme.text : theme.mutedText },
-        ]}
-      >
-        {t(achievement.titleKey)}
-      </Text>
-      <Text
-        numberOfLines={2}
-        style={[styles.badgeDesc, { color: theme.mutedText }]}
-      >
-        {t(achievement.descriptionKey)}
-      </Text>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
-  achievementGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 10,
-  },
-  badge: {
-    alignItems: "center",
-    borderRadius: 12,
-    borderWidth: 1,
-    flexBasis: "45%",
-    flexGrow: 1,
-    gap: 6,
-    padding: 12,
-  },
-  badgeDesc: { fontSize: 11, lineHeight: 15, textAlign: "center" },
-  badgeTitle: { fontSize: 13, fontWeight: "600", textAlign: "center" },
   container: { flex: 1 },
   content: { padding: 16, paddingBottom: 40 },
   counter: { fontSize: 14, fontWeight: "600" },

@@ -22,7 +22,7 @@ import {
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { OnPlayerColor } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import {
@@ -328,7 +328,7 @@ export default function EmojiStoryGame() {
                         <Text
                           style={[
                             styles.connectorChipText,
-                            { color: active ? "#0b1620" : theme.text },
+                            { color: active ? OnPlayerColor : theme.text },
                           ]}
                         >
                           {t(c.key)}
@@ -583,7 +583,7 @@ const styles = StyleSheet.create({
     marginTop: Spacing.xs,
     paddingVertical: Spacing.md + 2,
   },
-  primaryBtnText: { ...TextStyle.buttonSecondary, color: "#0b1620" },
+  primaryBtnText: { ...TextStyle.buttonSecondary, color: OnPlayerColor },
   readoutCard: { borderWidth: 2 },
   readoutTitle: { ...TextStyle.cardTitle, marginBottom: Spacing.sm },
   root: {

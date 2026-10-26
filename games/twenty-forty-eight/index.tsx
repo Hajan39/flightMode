@@ -16,7 +16,7 @@ import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { Tile2048Colors, Tile2048High } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
@@ -44,29 +44,9 @@ const CELL_FONT_SCALE = 1.3;
 const GAP = 8;
 const PADDING = 12;
 
-// Tile colors: [background, text]
-const TILE_COLORS: Record<number, [string, string]> = {
-  0: ["transparent", "#776e65"],
-  2: ["#eee4da", "#776e65"],
-  4: ["#ede0c8", "#776e65"],
-  8: ["#f2b179", "#ffffff"],
-  16: ["#f59563", "#ffffff"],
-  32: ["#f67c5f", "#ffffff"],
-  64: ["#f65e3b", "#ffffff"],
-  128: ["#edcf72", "#ffffff"],
-  256: ["#edcc61", "#ffffff"],
-  512: ["#edc850", "#ffffff"],
-  1024: ["#edc53f", "#ffffff"],
-  2048: ["#edc22e", "#ffffff"],
-};
-
-const HIGH_TILE_COLORS: [string, string] = ["#3c3a32", "#ffffff"];
-
-function getTileColors(value: number): [string, string] {
-  if (value === 0) {
-    return TILE_COLORS[0];
-  }
-  return TILE_COLORS[value] ?? HIGH_TILE_COLORS;
+// Tile colors: [background, text] — fixed tile art from constants/Colors.ts
+function getTileColors(value: number): readonly [string, string] {
+  return Tile2048Colors[value] ?? Tile2048High;
 }
 
 function getTileFontSize(value: number): number {

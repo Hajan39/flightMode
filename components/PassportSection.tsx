@@ -24,7 +24,10 @@ export default function PassportSection() {
   const { t, language } = useTranslation();
   const log = useFlightStore((s) => s.log);
   const [nowMs, setNowMs] = useState(() => Date.now());
-  const summary = useMemo(() => getPassportSummary(log, nowMs), [log, nowMs]);
+  const summary = useMemo(
+    () => getPassportSummary(log, nowMs, language),
+    [log, nowMs, language]
+  );
   // A flight still in the air (or about to depart) keeps changing the totals:
   // refresh every 60 s while the screen is focused, and once on focus.
   const hasLiveFlight = log.some(

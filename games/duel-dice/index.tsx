@@ -21,7 +21,7 @@ import {
 } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import Colors, { OnPlayerColor } from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight, TextStyle } from "@/constants/Typography";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
@@ -355,7 +355,7 @@ export default function DuelDiceGame() {
             <Text
               style={[
                 styles.rollBtnText,
-                { color: canRoll ? "#0b1620" : theme.mutedText },
+                { color: canRoll ? OnPlayerColor : theme.mutedText },
               ]}
             >
               {rollLabel}

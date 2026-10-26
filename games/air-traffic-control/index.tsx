@@ -101,7 +101,7 @@ function FuelBar({
   }));
 
   return (
-    <View darkColor="#1f2937" lightColor="#e5e7eb" style={styles.fuelTrack}>
+    <View style={[styles.fuelTrack, { backgroundColor: theme.progressTrack }]}>
       <Animated.View style={[styles.fuelBar, barStyle]} />
     </View>
   );

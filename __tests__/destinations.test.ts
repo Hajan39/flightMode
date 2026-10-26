@@ -1,7 +1,14 @@
 import { currencies } from "@/data/currencies";
-import { destinations, getDestinationById } from "@/data/destinations";
+import { destinationNames } from "@/data/destinationNames";
+import {
+  destinations,
+  getDestinationById,
+  getDestinationCity,
+  getDestinationCountry,
+} from "@/data/destinations";
 import { phraseLanguages } from "@/data/phrases";
 import { en } from "@/i18n/locales/en";
+import { supportedLanguages } from "@/i18n/translations";
 import { getZoneOffsetMinutes } from "@/utils/timezone";
 
 const enKeys = new Set(Object.keys(en));
@@ -59,5 +66,38 @@ describe("destinations integrity", () => {
   test("getDestinationById resolves known ids and rejects unknown", () => {
     expect(getDestinationById(destinations[0].id)?.id).toBe(destinations[0].id);
     expect(getDestinationById("nowhere")).toBeUndefined();
+  });
+});
+
+describe("localized destination names", () => {
+  const languages = supportedLanguages.map((l) => l.code);
+  const ids = destinations.map((d) => d.id).sort();
+
+  test.each(languages)(
+    "%s names every destination (city + country), nothing extra",
+    (language) => {
+      const table = destinationNames[language];
+      expect(Object.keys(table).sort()).toEqual(ids);
+      for (const d of destinations) {
+        const [city, country] = table[d.id];
+        expect(city.trim().length).toBeGreaterThan(0);
+        expect(country.trim().length).toBeGreaterThan(0);
+        expect(getDestinationCity(d, language)).toBe(city);
+        expect(getDestinationCountry(d, language)).toBe(country);
+      }
+    }
+  );
+
+  test("English names match the source city/country fields", () => {
+    for (const d of destinations) {
+      expect(destinationNames.en[d.id]).toEqual([d.city, d.country]);
+    }
+  });
+
+  test("uses established exonyms where they exist", () => {
+    const tokyo = getDestinationById("tokyo");
+    const vienna = getDestinationById("vienna");
+    expect(tokyo && getDestinationCity(tokyo, "cs")).toBe("Tokio");
+    expect(vienna && getDestinationCity(vienna, "de")).toBe("Wien");
   });
 });

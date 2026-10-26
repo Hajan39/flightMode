@@ -15,7 +15,11 @@ import { usePushGuard } from "@/components/usePushGuard";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
-import { destinations } from "@/data/destinations";
+import {
+  destinations,
+  getDestinationCity,
+  getDestinationCountry,
+} from "@/data/destinations";
 import { getPhraseLanguage } from "@/data/phrases";
 import { useContentItems } from "@/hooks/useContentItems";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -112,9 +116,11 @@ export default function DestinationsScreen() {
                   lightColor="transparent"
                   style={styles.headerText}
                 >
-                  <Text style={styles.city}>{destination.city}</Text>
+                  <Text style={styles.city}>
+                    {getDestinationCity(destination, language)}
+                  </Text>
                   <Text style={[styles.country, { color: theme.mutedText }]}>
-                    {destination.country}
+                    {getDestinationCountry(destination, language)}
                   </Text>
                 </View>
                 <Text style={[styles.tipCount, { color: theme.tint }]}>
@@ -198,7 +204,9 @@ export default function DestinationsScreen() {
                         numberOfLines={1}
                         style={[styles.toolText, { color: theme.text }]}
                       >
-                        {t("destinationsGuideCta", { city: destination.city })}
+                        {t("destinationsGuideCta", {
+                          city: getDestinationCity(destination, language),
+                        })}
                       </Text>
                     </Pressable>
                   ) : null}

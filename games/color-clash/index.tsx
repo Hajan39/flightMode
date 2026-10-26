@@ -1,14 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Animated, Pressable, StyleSheet } from "react-native";
 import {
   A11yOverlayContent,
   A11yOverlayScope,
 } from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
@@ -69,12 +71,20 @@ function generateTrial(isMatch: boolean): Trial {
 type Phase = "idle" | "playing" | "feedback";
 type FeedbackKind = "correct" | "wrong" | "miss" | "skip";
 
-const FEEDBACK_COLORS: Record<FeedbackKind, string> = {
-  correct: "#43A047",
-  miss: "#FB8C00",
-  skip: "#43A047",
-  wrong: "#E53935",
-};
+type Theme = (typeof Colors)[keyof typeof Colors];
+
+/** Feedback flash: [fill, text on it] from the theme's status tokens. */
+function feedbackColors(kind: FeedbackKind, theme: Theme): [string, string] {
+  switch (kind) {
+    case "wrong":
+      return [theme.danger, theme.onDanger];
+    case "miss":
+      return [theme.warning, theme.onWarning];
+    default:
+      // "correct" / "skip"
+      return [theme.success, theme.onSuccess];
+  }
+}
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function ColorClashGame() {
@@ -118,12 +128,36 @@ export default function ColorClashGame() {
   const roundTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const feedbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const progressAnimRef = useRef<Animated.CompositeAnimation | null>(null);
+  // Wall-clock deadlines (Date.now() ms; 0 = not running). The timers only
+  // wake the game up — whether the round is over is decided by the clock, so
+  // a late tap (JS thread busy, timer not yet fired) can't beat the deadline.
+  const roundDeadlineRef = useRef(0);
+  const feedbackDeadlineRef = useRef(0);
+  // What was running when paused, and how much of it was left.
+  const pausedRef = useRef<{
+    kind: "round" | "feedback";
+    remainingMs: number;
+  } | null>(null);
+  const [paused, setPaused] = useState(false);
 
   // Sync phaseRef with state
-  const setPhaseSync = useCallback((p: Phase) => {
+  const setPhaseSync = (p: Phase) => {
     phaseRef.current = p;
     setPhase(p);
-  }, []);
+  };
+
+  const stopTimers = () => {
+    if (roundTimerRef.current) {
+      clearTimeout(roundTimerRef.current);
+      roundTimerRef.current = null;
+    }
+    if (feedbackTimerRef.current) {
+      clearTimeout(feedbackTimerRef.current);
+      feedbackTimerRef.current = null;
+    }
+    // stop() leaves the bar where it is — resume continues from there.
+    progressAnimRef.current?.stop();
+  };
 
   // ── Cleanup ────────────────────────────────────────────────────────────────
   useEffect(
@@ -141,108 +175,161 @@ export default function ColorClashGame() {
     []
   );
 
-  // ── Show brief feedback flash ──────────────────────────────────────────────
-  // startRoundByNum is declared below and is stable; deliberately omitted
-  // from the deps to break the callback cycle (adding it is a TDZ error).
-  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional omission, see comment
-  const showFeedback = useCallback(
-    (kind: FeedbackKind, roundNum: number) => {
-      if (progressAnimRef.current) {
-        progressAnimRef.current.stop();
-      }
-      setPhaseSync("feedback");
-      setFeedbackKind(kind);
+  /** Animates the progress bar from its current value down to 0. */
+  const runProgress = (ms: number) => {
+    const anim = Animated.timing(progressAnim, {
+      duration: ms,
+      toValue: 0,
+      useNativeDriver: false,
+    });
+    progressAnimRef.current = anim;
+    anim.start();
+  };
 
-      feedbackTimerRef.current = setTimeout(() => {
-        const nextRound = roundNum + 1;
-        if (nextRound >= TOTAL_ROUNDS) {
-          // Game over
-          const finalScoreVal = clampScore(scoreRef.current);
-          const info = updateProgress("color-clash", finalScoreVal);
-          setProgressInfo(info);
-          setFinalScore(finalScoreVal);
-          setPhaseSync("idle");
-          setTrial(null);
-          trialRef.current = null;
-          setFeedbackKind(null);
-        } else {
-          roundRef.current = nextRound;
-          setRound(nextRound);
-          // startRound will be called — but we need a stable ref; use inline
-          // logic here to avoid circular dependency
-          startRoundByNum(nextRound);
+  // ── Feedback flash, then the next round (or the result) ────────────────────
+  const finishFeedback = () => {
+    feedbackDeadlineRef.current = 0;
+    feedbackTimerRef.current = null;
+    const nextRound = roundRef.current + 1;
+    if (nextRound >= TOTAL_ROUNDS) {
+      // Game over
+      const finalScoreVal = clampScore(scoreRef.current);
+      const info = updateProgress("color-clash", finalScoreVal);
+      setProgressInfo(info);
+      setFinalScore(finalScoreVal);
+      setPhaseSync("idle");
+      setTrial(null);
+      trialRef.current = null;
+      setFeedbackKind(null);
+    } else {
+      roundRef.current = nextRound;
+      setRound(nextRound);
+      startRound(nextRound);
+    }
+  };
+
+  const armFeedbackTimer = () => {
+    feedbackTimerRef.current = setTimeout(
+      finishFeedback,
+      Math.max(0, feedbackDeadlineRef.current - Date.now())
+    );
+  };
+
+  const showFeedback = (kind: FeedbackKind) => {
+    stopTimers();
+    roundDeadlineRef.current = 0;
+    setPhaseSync("feedback");
+    setFeedbackKind(kind);
+    feedbackDeadlineRef.current = Date.now() + FEEDBACK_MS;
+    armFeedbackTimer();
+  };
+
+  // ── Round timeout ──────────────────────────────────────────────────────────
+  const timeOutRound = () => {
+    const currentTrial = trialRef.current;
+    if (phaseRef.current !== "playing" || tappedRef.current || !currentTrial) {
+      return;
+    }
+    tappedRef.current = true;
+    // Player didn't tap: +1 on a mismatch, −1 for a missed match.
+    scoreRef.current += responseDelta(currentTrial.isMatch, "skip");
+    setScoreDisplay(scoreRef.current);
+    if (currentTrial.isMatch) {
+      showFeedback("miss");
+    } else {
+      haptic.tap();
+      showFeedback("skip");
+    }
+  };
+
+  const armRoundTimer = () => {
+    roundTimerRef.current = setTimeout(
+      () => {
+        if (Date.now() < roundDeadlineRef.current) {
+          armRoundTimer(); // woke up early — wait for the real deadline
+          return;
         }
-      }, FEEDBACK_MS);
-    },
-    // startRoundByNum is declared below and is stable; it's deliberately
-    // omitted from the deps to break the circular reference between the
-    // two callbacks (adding it is a TDZ error — it doesn't exist yet here).
-    [setPhaseSync, updateProgress]
-  );
+        timeOutRound();
+      },
+      Math.max(0, roundDeadlineRef.current - Date.now())
+    );
+  };
 
   // ── Start a round ──────────────────────────────────────────────────────────
-  const startRoundByNum = useCallback(
-    (roundNum: number) => {
-      if (roundTimerRef.current) {
-        clearTimeout(roundTimerRef.current);
-      }
-      if (feedbackTimerRef.current) {
-        clearTimeout(feedbackTimerRef.current);
-      }
-      if (progressAnimRef.current) {
-        progressAnimRef.current.stop();
-      }
+  // Function declaration (hoisted): finishFeedback above calls it.
+  function startRound(roundNum: number) {
+    stopTimers();
+    feedbackDeadlineRef.current = 0;
 
-      tappedRef.current = false;
-      const newTrial = generateTrial(deckRef.current[roundNum] ?? false);
-      trialRef.current = newTrial;
-      setTrial(newTrial);
-      setFeedbackKind(null);
-      setPhaseSync("playing");
+    tappedRef.current = false;
+    const newTrial = generateTrial(deckRef.current[roundNum] ?? false);
+    trialRef.current = newTrial;
+    setTrial(newTrial);
+    setFeedbackKind(null);
+    setPhaseSync("playing");
 
-      // Word pop-in
-      wordAnim.setValue(0);
-      Animated.spring(wordAnim, {
-        bounciness: 8,
-        speed: 24,
-        toValue: 1,
-        useNativeDriver: true,
-      }).start();
+    // Word pop-in
+    wordAnim.setValue(0);
+    Animated.spring(wordAnim, {
+      bounciness: 8,
+      speed: 24,
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
 
-      // Animate progress bar 1 → 0
-      progressAnim.setValue(1);
-      const anim = Animated.timing(progressAnim, {
-        duration: ROUND_MS,
-        toValue: 0,
-        useNativeDriver: false,
-      });
-      progressAnimRef.current = anim;
-      anim.start();
+    // Progress bar 1 → 0 over the round; the deadline is the source of truth.
+    progressAnim.setValue(1);
+    roundDeadlineRef.current = Date.now() + ROUND_MS;
+    runProgress(ROUND_MS);
+    armRoundTimer();
+  }
 
-      // When time runs out
-      roundTimerRef.current = setTimeout(() => {
-        if (phaseRef.current !== "playing") {
-          return;
-        }
+  // ── Pause / resume ─────────────────────────────────────────────────────────
+  const pause = () => {
+    if (pausedRef.current) {
+      return; // already paused (e.g. inactive → background)
+    }
+    const now = Date.now();
+    if (phaseRef.current === "playing" && roundDeadlineRef.current > 0) {
+      pausedRef.current = {
+        kind: "round",
+        remainingMs: Math.max(0, roundDeadlineRef.current - now),
+      };
+    } else if (
+      phaseRef.current === "feedback" &&
+      feedbackDeadlineRef.current > 0
+    ) {
+      pausedRef.current = {
+        kind: "feedback",
+        remainingMs: Math.max(0, feedbackDeadlineRef.current - now),
+      };
+    } else {
+      return;
+    }
+    stopTimers();
+    setPaused(true);
+  };
 
-        const currentTrial = trialRef.current;
-        if (!currentTrial) {
-          return;
-        }
+  const resume = () => {
+    const saved = pausedRef.current;
+    if (!saved) {
+      return;
+    }
+    pausedRef.current = null;
+    setPaused(false);
+    const until = Date.now() + saved.remainingMs;
+    if (saved.kind === "round") {
+      roundDeadlineRef.current = until;
+      runProgress(saved.remainingMs);
+      armRoundTimer();
+    } else {
+      feedbackDeadlineRef.current = until;
+      armFeedbackTimer();
+    }
+  };
 
-        // Player didn't tap: +1 on a mismatch, −1 for a missed match.
-        scoreRef.current += responseDelta(currentTrial.isMatch, "skip");
-        setScoreDisplay(scoreRef.current);
-        if (currentTrial.isMatch) {
-          showFeedback("miss", roundNum);
-        } else {
-          haptic.tap();
-          showFeedback("skip", roundNum);
-        }
-      }, ROUND_MS);
-    },
-    [haptic, progressAnim, wordAnim, setPhaseSync, showFeedback]
-  );
+  // Leaving the app (home, call, lock) pauses; the player resumes by hand.
+  useAutoPause(pause, (phase === "playing" || phase === "feedback") && !paused);
 
   // ── Feedback flash animation: pulse on correct/skip, shake on wrong/miss ──
   useEffect(() => {
@@ -304,21 +391,22 @@ export default function ColorClashGame() {
       setRound(0);
       setFinalScore(null);
       setProgressInfo(null);
-      startRoundByNum(0);
+      startRound(0);
       return;
     }
 
-    if (phaseRef.current !== "playing") {
+    if (phaseRef.current !== "playing" || pausedRef.current) {
       return;
     }
     if (tappedRef.current) {
       return;
     }
-    tappedRef.current = true;
-
-    if (roundTimerRef.current) {
-      clearTimeout(roundTimerRef.current);
+    if (Date.now() >= roundDeadlineRef.current) {
+      // Time was already up (timer not fired yet): it counts as no tap.
+      timeOutRound();
+      return;
     }
+    tappedRef.current = true;
 
     const currentTrial = trialRef.current;
     if (!currentTrial) {
@@ -334,24 +422,20 @@ export default function ColorClashGame() {
     setScoreDisplay(scoreRef.current);
     if (currentTrial.isMatch) {
       haptic.success();
-      showFeedback("correct", roundRef.current);
+      showFeedback("correct");
     } else {
       haptic.error();
-      showFeedback("wrong", roundRef.current);
+      showFeedback("wrong");
     }
   };
 
   // ── Reset / restart ────────────────────────────────────────────────────────
   const restart = () => {
-    if (roundTimerRef.current) {
-      clearTimeout(roundTimerRef.current);
-    }
-    if (feedbackTimerRef.current) {
-      clearTimeout(feedbackTimerRef.current);
-    }
-    if (progressAnimRef.current) {
-      progressAnimRef.current.stop();
-    }
+    stopTimers();
+    roundDeadlineRef.current = 0;
+    feedbackDeadlineRef.current = 0;
+    pausedRef.current = null;
+    setPaused(false);
     progressAnim.setValue(1);
 
     tappedRef.current = false;
@@ -371,9 +455,10 @@ export default function ColorClashGame() {
   const isIdle = phase === "idle";
   const isPlaying = phase === "playing" || phase === "feedback";
 
+  const feedback = feedbackKind ? feedbackColors(feedbackKind, theme) : null;
   const bgColor = (() => {
-    if (feedbackKind) {
-      return FEEDBACK_COLORS[feedbackKind];
+    if (feedback) {
+      return feedback[0];
     }
     if (isPlaying) {
       return theme.card;
@@ -393,7 +478,11 @@ export default function ColorClashGame() {
     <A11yOverlayScope>
       <View style={styles.screen}>
         <A11yOverlayContent style={styles.root}>
-          <GameControls onReset={restart} />
+          <GameControls
+            isPaused={paused}
+            onPause={isPlaying && !paused ? pause : undefined}
+            onReset={restart}
+          />
 
           {/* Score / round header */}
           {isPlaying ? (
@@ -450,7 +539,7 @@ export default function ColorClashGame() {
                 style={[
                   styles.wordText,
                   {
-                    color: feedbackKind ? "#fff" : trial.textColor,
+                    color: feedback ? feedback[1] : trial.textColor,
                   },
                 ]}
               >
@@ -461,6 +550,11 @@ export default function ColorClashGame() {
 
           {/* Result overlay */}
         </A11yOverlayContent>
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={resume}
+          visible={paused}
+        />
         {finalScore !== null && (
           <GameResult
             best={progressInfo?.best ?? storedBestScore}

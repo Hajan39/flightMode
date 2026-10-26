@@ -743,15 +743,15 @@
   ldPeek: "Pokaż moje kości",
 
   achievePerfectLandingTitle: "Idealne lądowanie",
-  achievePerfectLandingDesc: "500+ punktów w Runway Landing",
+  achievePerfectLandingDesc: "500+ punktów w grze Lądowanie na pasie",
   achieveSkyGuardianTitle: "Strażnik nieba",
-  achieveSkyGuardianDesc: "100+ punktów w Sky Defense",
+  achieveSkyGuardianDesc: "100+ punktów w grze Obrona nieba",
   achieveSkyCommanderTitle: "Dowódca nieba",
-  achieveSkyCommanderDesc: "500+ punktów w Sky Defense",
+  achieveSkyCommanderDesc: "500+ punktów w grze Obrona nieba",
   achieveTowerOperatorTitle: "Operator wieży",
-  achieveTowerOperatorDesc: "150+ punktów w Air Traffic Control",
+  achieveTowerOperatorDesc: "150+ punktów w grze Kontrola ruchu lotniczego",
   achieveAirBossTitle: "Air Boss",
-  achieveAirBossDesc: "500+ punktów w Air Traffic Control",
+  achieveAirBossDesc: "500+ punktów w grze Kontrola ruchu lotniczego",
   gameTwentyFortyEightName: "2048",
   gameTwentyFortyEightDescription: "Przesuwaj i łącz kafelki, by osiągnąć 2048",
   rulesTwentyFortyEight:
@@ -1072,7 +1072,7 @@
   // Flight destination link
   flightDestinationLabel: "Cel podróży (opcjonalnie)",
   flightDestinationNone: "Brak",
-  homeDestinationTipsFor: "Wskazówki dla {{city}}",
+  homeDestinationTipsFor: "Wskazówki: {{city}}",
   // Sliding Puzzle game
   gameSlidingPuzzleName: "Przesuwanka",
   gameSlidingPuzzleDescription:
@@ -1180,7 +1180,7 @@
   notifChannelFlightReminders: "Przypomnienia o locie",
   notifFlightReadyTitle: "Rozrywka na lot jest gotowa",
   notifFlightReadyBody: "Długi lot? Tryb relaksu i gry offline są gotowe.",
-  destinationLocalTime: "Teraz w {{city}}: {{time}}",
+  destinationLocalTime: "Czas lokalny ({{city}}): {{time}}",
   arrivalTimeLocal: "Przylot {{time}} czasu lokalnego",
   nextDaySuffix: "(+1 dzień)",
   jetlagTitle: "Jet lag",
@@ -1465,8 +1465,8 @@
   converterSearchCurrency: "Szukaj kodu lub nazwy…",
   notifJetlagSleepTitle: "Czas na odpoczynek 😴",
   notifJetlagSleepBody:
-    "Lądujesz w {{city}} rano — sen teraz bardzo ułatwi jutro.",
-  checklistSectionForCity: "Dla {{city}}",
+    "Cel podróży: {{city}}. Lądujesz rano — sen teraz bardzo ułatwi jutro.",
+  checklistSectionForCity: "Na wyjazd: {{city}}",
   checklistItemIcCard: "Kupić kartę transportową IC (Suica, T-money…)",
   checklistItemCashCountry: "Wziąć gotówkę — wiele miejsc tylko za gotówkę",
   checklistItemEsta: "ESTA zatwierdzona i wydrukowana",
@@ -1487,7 +1487,7 @@
   checklistItemPowerAdapterAu: "Adapter typu I (wtyczka AU/NZ)",
   checklistItemPowerAdapterZa: "Adapter typu M/N (wtyczka RPA)",
   flightLanded: "Wylądowano ✈️",
-  homeLandedTitle: "Witamy w {{city}}",
+  homeLandedTitle: "Jesteś na miejscu: {{city}}",
   homeLandedLocalTime: "Czas lokalny {{time}}",
   homeLandedTips: "Wskazówki",
   homeLandedHint: "Wszystko, czego potrzebujesz zaraz po przylocie.",
@@ -1549,7 +1549,8 @@
   cbzCatSmells: "Zapachy z podróży",
   cbzCatWaysToRelax: "Sposoby na relaks",
   achieveQuickThinkerTitle: "Bystry umysł",
-  achieveQuickThinkerDesc: "Zdobądź 30 odpowiedzi w jednym meczu",
+  achieveQuickThinkerDesc:
+    "Zdobądź 30 odpowiedzi w jednym meczu gry Błyskawiczne kategorie",
   onboardingCurrencyTitle: "Twoja waluta domowa",
   onboardingCurrencySubtitle:
     "Przelicznik offline będzie od niej startował. Możesz ją zmienić w każdej chwili.",

@@ -370,3 +370,48 @@ export function mergeKeyboard(
   });
   return next;
 }
+
+// ── Keyboard layout ──────────────────────────────────────────────────────────
+
+/** Key height (dp). */
+export const KEY_HEIGHT = 42;
+/** Gap between keys and between rows (dp). */
+export const KEY_GAP = 4;
+/** Horizontal padding of the keyboard on each side (Spacing.lg). */
+export const KEYBOARD_PADDING = 16;
+
+export interface KeyMetrics {
+  /** Each key's touch area grows by half the gap on every side, so the
+   *  targets of neighbouring keys meet without overlapping. */
+  hitSlop: { bottom: number; left: number; right: number; top: number };
+  keyWidth: number;
+  /** ENTER / ⌫ */
+  wideKeyWidth: number;
+}
+
+/**
+ * 10 keys + 9 gaps must fit the padded row on the narrowest phone (320 dp),
+ * so keys can't reach 44 dp wide; the hit slop fills the gaps instead and
+ * makes every key's touch target KEY_HEIGHT + KEY_GAP (46 dp) tall.
+ */
+export function keyMetrics(screenWidth: number): KeyMetrics {
+  const keyWidth = Math.floor(
+    (screenWidth - 2 * KEYBOARD_PADDING - 9 * KEY_GAP) / 10
+  );
+  const slop = KEY_GAP / 2;
+  return {
+    hitSlop: { bottom: slop, left: slop, right: slop, top: slop },
+    keyWidth,
+    wideKeyWidth: Math.floor(keyWidth * 1.5),
+  };
+}
+
+/** Rendered width of one keyboard row (keys + gaps). */
+export function keyboardRowWidth(row: string[], m: KeyMetrics): number {
+  const keys = row.reduce(
+    (sum, k) =>
+      sum + (k === "ENTER" || k === "⌫" ? m.wideKeyWidth : m.keyWidth),
+    0
+  );
+  return keys + KEY_GAP * (row.length - 1);
+}

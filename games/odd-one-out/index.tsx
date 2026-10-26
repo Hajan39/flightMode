@@ -1,14 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Animated, Pressable, View as RNView, StyleSheet } from "react-native";
 import {
   A11yOverlayContent,
   A11yOverlayScope,
 } from "@/components/A11yOverlayScope";
 import GameControls from "@/components/GameControls";
+import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { useAutoPause } from "@/hooks/useAutoPause";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -125,11 +127,34 @@ export default function OddOneOutGame() {
   const roundTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const feedbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const progressAnimRef = useRef<Animated.CompositeAnimation | null>(null);
+  // Wall-clock deadlines (Date.now() ms; 0 = not running). Timers only wake
+  // the game up; the clock decides, so a late tap can't beat the deadline.
+  const roundDeadlineRef = useRef(0);
+  const feedbackDeadlineRef = useRef(0);
+  // What was running when paused, and how much of it was left.
+  const pausedRef = useRef<{
+    kind: "round" | "feedback";
+    remainingMs: number;
+  } | null>(null);
+  const [paused, setPaused] = useState(false);
 
-  const setPhaseSync = useCallback((p: Phase) => {
+  const setPhaseSync = (p: Phase) => {
     phaseRef.current = p;
     setPhase(p);
-  }, []);
+  };
+
+  const stopTimers = () => {
+    if (roundTimerRef.current) {
+      clearTimeout(roundTimerRef.current);
+      roundTimerRef.current = null;
+    }
+    if (feedbackTimerRef.current) {
+      clearTimeout(feedbackTimerRef.current);
+      feedbackTimerRef.current = null;
+    }
+    // stop() leaves the bar where it is — resume continues from there.
+    progressAnimRef.current?.stop();
+  };
 
   // ── Cleanup ───────────────────────────────────────────────────────────────
   useEffect(
@@ -147,110 +172,166 @@ export default function OddOneOutGame() {
     []
   );
 
-  // ── After feedback flash, advance ─────────────────────────────────────────
-  // startRoundByNum is declared below and is stable; deliberately omitted
-  // from the deps to break the callback cycle (adding it is a TDZ error).
-  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional omission, see comment
-  const advanceAfterFeedback = useCallback(
-    (nextRound: number, currentScore: number) => {
-      if (nextRound > TOTAL_ROUNDS) {
-        // Game over
-        const info = updateProgress("odd-one-out", currentScore);
-        setProgressInfo(info);
-        setFinalScore(currentScore);
-        setPhaseSync("idle");
-        setRoundData(null);
-        setFeedbackIndex(null);
-        setFeedbackKind(null);
-      } else {
-        startRoundByNum(nextRound);
-      }
-    },
-    // startRoundByNum is declared below and is stable; it's deliberately
-    // omitted from the deps to break the circular reference between the
-    // two callbacks (adding it is a TDZ error — it doesn't exist yet here).
-    [setPhaseSync, updateProgress]
-  );
+  /** Animates the time bar from its current value down to 0. */
+  const runProgress = (ms: number) => {
+    const anim = Animated.timing(progressAnim, {
+      duration: ms,
+      toValue: 0,
+      useNativeDriver: false,
+    });
+    progressAnimRef.current = anim;
+    anim.start();
+  };
 
-  // ── Start a round ─────────────────────────────────────────────────────────
-  const startRoundByNum = useCallback(
-    (roundNum: number) => {
-      if (roundTimerRef.current) {
-        clearTimeout(roundTimerRef.current);
-      }
-      if (feedbackTimerRef.current) {
-        clearTimeout(feedbackTimerRef.current);
-      }
-      if (progressAnimRef.current) {
-        progressAnimRef.current.stop();
-      }
-
-      roundRef.current = roundNum;
-      setRound(roundNum);
+  // ── After the feedback flash, advance ─────────────────────────────────────
+  const advanceAfterFeedback = () => {
+    feedbackDeadlineRef.current = 0;
+    feedbackTimerRef.current = null;
+    const nextRound = roundRef.current + 1;
+    if (nextRound > TOTAL_ROUNDS) {
+      // Game over
+      const currentScore = scoreRef.current;
+      const info = updateProgress("odd-one-out", currentScore);
+      setProgressInfo(info);
+      setFinalScore(currentScore);
+      setPhaseSync("idle");
+      setRoundData(null);
       setFeedbackIndex(null);
       setFeedbackKind(null);
+    } else {
+      startRound(nextRound);
+    }
+  };
 
-      const data = generateRound(roundNum);
-      setRoundData(data);
-      setPhaseSync("playing");
+  const armFeedbackTimer = () => {
+    feedbackTimerRef.current = setTimeout(
+      advanceAfterFeedback,
+      Math.max(0, feedbackDeadlineRef.current - Date.now())
+    );
+  };
 
-      // New-round grid entrance (single container animation)
-      gridAnim.setValue(0);
-      Animated.spring(gridAnim, {
-        bounciness: 6,
-        speed: 24,
-        toValue: 1,
-        useNativeDriver: true,
-      }).start();
+  const beginFeedback = () => {
+    stopTimers();
+    roundDeadlineRef.current = 0;
+    setPhaseSync("feedback");
+    feedbackDeadlineRef.current = Date.now() + FEEDBACK_MS;
+    armFeedbackTimer();
+  };
 
-      // Animate progress bar 1 → 0 over round duration
-      const roundMs = getRoundMs(roundNum);
-      progressAnim.setValue(1);
-      const anim = Animated.timing(progressAnim, {
-        duration: roundMs,
-        toValue: 0,
-        useNativeDriver: false,
-      });
-      progressAnimRef.current = anim;
-      anim.start();
+  // ── Round timeout ─────────────────────────────────────────────────────────
+  const timeOutRound = () => {
+    if (phaseRef.current !== "playing") {
+      return;
+    }
+    haptic.error();
+    setFeedbackKind("timeout");
+    beginFeedback();
+  };
 
-      // Deadline-based timeout using wall-clock
-      const deadline = Date.now() + roundMs;
-      roundTimerRef.current = setTimeout(
-        () => {
-          if (phaseRef.current !== "playing") {
-            return;
-          }
-          // timeout
-          haptic.error();
-          setFeedbackKind("timeout");
-          setPhaseSync("feedback");
+  const armRoundTimer = () => {
+    roundTimerRef.current = setTimeout(
+      () => {
+        if (Date.now() < roundDeadlineRef.current) {
+          armRoundTimer(); // woke up early — wait for the real deadline
+          return;
+        }
+        timeOutRound();
+      },
+      Math.max(0, roundDeadlineRef.current - Date.now())
+    );
+  };
 
-          const nextRound = roundRef.current + 1;
-          feedbackTimerRef.current = setTimeout(() => {
-            advanceAfterFeedback(nextRound, scoreRef.current);
-          }, FEEDBACK_MS);
-        },
-        Math.max(0, deadline - Date.now())
-      );
-    },
-    [haptic, progressAnim, gridAnim, setPhaseSync, advanceAfterFeedback]
-  );
+  // ── Start a round ─────────────────────────────────────────────────────────
+  // Function declaration (hoisted): advanceAfterFeedback above calls it.
+  function startRound(roundNum: number) {
+    stopTimers();
+    feedbackDeadlineRef.current = 0;
+
+    roundRef.current = roundNum;
+    setRound(roundNum);
+    setFeedbackIndex(null);
+    setFeedbackKind(null);
+
+    const data = generateRound(roundNum);
+    setRoundData(data);
+    setPhaseSync("playing");
+
+    // New-round grid entrance (single container animation)
+    gridAnim.setValue(0);
+    Animated.spring(gridAnim, {
+      bounciness: 6,
+      speed: 24,
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+
+    // Time bar 1 → 0 over the round; the deadline is the source of truth.
+    const roundMs = getRoundMs(roundNum);
+    progressAnim.setValue(1);
+    roundDeadlineRef.current = Date.now() + roundMs;
+    runProgress(roundMs);
+    armRoundTimer();
+  }
+
+  // ── Pause / resume ────────────────────────────────────────────────────────
+  const pause = () => {
+    if (pausedRef.current) {
+      return; // already paused (e.g. inactive → background)
+    }
+    const now = Date.now();
+    if (phaseRef.current === "playing" && roundDeadlineRef.current > 0) {
+      pausedRef.current = {
+        kind: "round",
+        remainingMs: Math.max(0, roundDeadlineRef.current - now),
+      };
+    } else if (
+      phaseRef.current === "feedback" &&
+      feedbackDeadlineRef.current > 0
+    ) {
+      pausedRef.current = {
+        kind: "feedback",
+        remainingMs: Math.max(0, feedbackDeadlineRef.current - now),
+      };
+    } else {
+      return;
+    }
+    stopTimers();
+    setPaused(true);
+  };
+
+  const resume = () => {
+    const saved = pausedRef.current;
+    if (!saved) {
+      return;
+    }
+    pausedRef.current = null;
+    setPaused(false);
+    const until = Date.now() + saved.remainingMs;
+    if (saved.kind === "round") {
+      roundDeadlineRef.current = until;
+      runProgress(saved.remainingMs);
+      armRoundTimer();
+    } else {
+      feedbackDeadlineRef.current = until;
+      armFeedbackTimer();
+    }
+  };
+
+  // Leaving the app (home, call, lock) pauses; the player resumes by hand.
+  useAutoPause(pause, (phase === "playing" || phase === "feedback") && !paused);
 
   // ── Handle cell tap ───────────────────────────────────────────────────────
   const handleCellTap = (index: number) => {
-    if (phaseRef.current !== "playing") {
+    if (phaseRef.current !== "playing" || pausedRef.current) {
       return;
     }
     if (!roundData) {
       return;
     }
-
-    if (roundTimerRef.current) {
-      clearTimeout(roundTimerRef.current);
-    }
-    if (progressAnimRef.current) {
-      progressAnimRef.current.stop();
+    if (Date.now() >= roundDeadlineRef.current) {
+      // Time was already up (timer not fired yet): too late to count.
+      timeOutRound();
+      return;
     }
 
     const isCorrect = index === roundData.oddIndex;
@@ -304,12 +385,7 @@ export default function OddOneOutGame() {
       ]).start();
     }
 
-    setPhaseSync("feedback");
-
-    const nextRound = roundRef.current + 1;
-    feedbackTimerRef.current = setTimeout(() => {
-      advanceAfterFeedback(nextRound, scoreRef.current);
-    }, FEEDBACK_MS);
+    beginFeedback();
   };
 
   // ── Start game ────────────────────────────────────────────────────────────
@@ -323,20 +399,17 @@ export default function OddOneOutGame() {
     setRound(0);
     setFinalScore(null);
     setProgressInfo(null);
-    startRoundByNum(1);
+    startRound(1);
   };
 
   // ── Restart ───────────────────────────────────────────────────────────────
   const restart = () => {
-    if (roundTimerRef.current) {
-      clearTimeout(roundTimerRef.current);
-    }
-    if (feedbackTimerRef.current) {
-      clearTimeout(feedbackTimerRef.current);
-    }
-    if (progressAnimRef.current) {
-      progressAnimRef.current.stop();
-    }
+    stopTimers();
+    roundDeadlineRef.current = 0;
+    feedbackDeadlineRef.current = 0;
+    pausedRef.current = null;
+    setPaused(false);
+    progressAnim.setValue(1);
     scoreRef.current = 0;
     roundRef.current = 0;
     setPhaseSync("idle");
@@ -389,7 +462,11 @@ export default function OddOneOutGame() {
                 {round > 0 ? `${round}/${TOTAL_ROUNDS}` : `—/${TOTAL_ROUNDS}`}
               </Text>
             </RNView>
-            <GameControls onReset={phase === "idle" ? undefined : restart} />
+            <GameControls
+              isPaused={paused}
+              onPause={phase === "idle" || paused ? undefined : pause}
+              onReset={phase === "idle" ? undefined : restart}
+            />
           </RNView>
 
           {/* ── Time bar ── */}
@@ -538,6 +615,11 @@ export default function OddOneOutGame() {
 
           {/* ── Game result overlay ── */}
         </A11yOverlayContent>
+        <GamePauseOverlay
+          onRestart={restart}
+          onResume={resume}
+          visible={paused}
+        />
         {finalScore !== null && (
           <GameResult
             best={progressInfo?.best ?? storedBest}
