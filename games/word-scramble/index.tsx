@@ -150,6 +150,9 @@ export default function WordScrambleGame() {
   const timerDeadline = useRef<number>(0);
   const pausedTimeRemaining = useRef<number>(ROUND_SECONDS);
   const timerInterval = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Pending correct/time-up flash → next-round advance. Cleared on restart and
+  // unmount so a stale flash can't advance (or score) a newer game.
+  const flashTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // ── Animations ──
   // New-word tiles pop-in (single container animation)
@@ -179,6 +182,24 @@ export default function WordScrambleGame() {
       }, TIMER_TICK_MS);
     },
     [stopTimer]
+  );
+
+  const clearFlash = useCallback(() => {
+    if (flashTimeout.current !== null) {
+      clearTimeout(flashTimeout.current);
+      flashTimeout.current = null;
+    }
+  }, []);
+
+  const scheduleFlash = useCallback(
+    (fn: () => void, ms: number) => {
+      clearFlash();
+      flashTimeout.current = setTimeout(() => {
+        flashTimeout.current = null;
+        fn();
+      }, ms);
+    },
+    [clearFlash]
   );
 
   // ─── Round setup ─────────────────────────────────────────────────────────────
@@ -213,7 +234,7 @@ export default function WordScrambleGame() {
       haptic.heavy();
       setPhase("time-up-flash");
 
-      setTimeout(() => {
+      scheduleFlash(() => {
         const nextIndex = currentRoundIndex + 1;
         if (nextIndex >= ROUND_COUNT) {
           const info = updateProgress("word-scramble", currentScore);
@@ -225,7 +246,7 @@ export default function WordScrambleGame() {
         }
       }, 800);
     },
-    [haptic, setupRound, stopTimer, updateProgress]
+    [haptic, scheduleFlash, setupRound, stopTimer, updateProgress]
   );
 
   // ─── Timer effect: watch for time reaching 0 ──────────────────────────────────
@@ -249,7 +270,13 @@ export default function WordScrambleGame() {
   ]);
 
   // Cleanup on unmount
-  useEffect(() => () => stopTimer(), [stopTimer]);
+  useEffect(
+    () => () => {
+      stopTimer();
+      clearFlash();
+    },
+    [stopTimer, clearFlash]
+  );
 
   // New-word tiles pop-in whenever the round (or word list) changes
   useEffect(() => {
@@ -335,7 +362,7 @@ export default function WordScrambleGame() {
           setScore(nextScore);
           setPhase("correct-flash");
 
-          setTimeout(() => {
+          scheduleFlash(() => {
             const nextIndex = roundIndex + 1;
             if (nextIndex >= ROUND_COUNT) {
               const info = updateProgress("word-scramble", nextScore);
@@ -368,6 +395,7 @@ export default function WordScrambleGame() {
       timeRemaining,
       haptic,
       stopTimer,
+      scheduleFlash,
       setupRound,
       updateProgress,
     ]
@@ -452,8 +480,9 @@ export default function WordScrambleGame() {
 
   const handleRestart = useCallback(() => {
     stopTimer();
+    clearFlash();
     startGame();
-  }, [stopTimer, startGame]);
+  }, [stopTimer, clearFlash, startGame]);
 
   // ─── Derived values ──────────────────────────────────────────────────────────
 

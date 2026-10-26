@@ -280,6 +280,22 @@ export default function SkyMatchGame() {
   );
   // Bumped on restart/quit so a cascade still playing out stops touching state.
   const runToken = useRef(0);
+  // Bumped whenever input unlocks (cascade / bounce-back finished). `busy` is a
+  // ref, so without this nothing re-runs the idle-hint effect after a swap.
+  const [settled, setSettled] = useState(0);
+  const release = () => {
+    busy.current = false;
+    setSettled((n) => n + 1);
+  };
+
+  // Leaving the screen cancels any cascade still in flight, so it can't call
+  // finishLevel / updateProgress after unmount.
+  useEffect(
+    () => () => {
+      runToken.current += 1;
+    },
+    []
+  );
 
   const level = getLevel(levelId);
   const boardSize = Math.floor(
@@ -288,6 +304,7 @@ export default function SkyMatchGame() {
   const cellSize = boardSize / SIZE;
 
   /* --- hint after a quiet spell --- */
+  // biome-ignore lint/correctness/useExhaustiveDependencies: `settled` is a deliberate re-run trigger — `busy` is a ref, so this effect must re-arm when a cascade / bounce-back unlocks input.
   useEffect(() => {
     if (phase !== "playing" || paused || busy.current) {
       return;
@@ -295,7 +312,7 @@ export default function SkyMatchGame() {
     setHint(null);
     const timer = setTimeout(() => setHint(findHint(board)), HINT_AFTER_MS);
     return () => clearTimeout(timer);
-  }, [board, phase, paused]);
+  }, [board, phase, paused, settled]);
 
   const startLevel = (id: number) => {
     runToken.current += 1;
@@ -389,7 +406,7 @@ export default function SkyMatchGame() {
       }
       setComboText(null);
     }
-    busy.current = false;
+    release();
     if (movesAfter <= 0) {
       finishLevel(total);
     }
@@ -419,7 +436,10 @@ export default function SkyMatchGame() {
       setPrevious(swappedBoard);
       setBoard(board);
       await wait(SWAP_MS);
-      busy.current = false;
+      if (runToken.current !== token) {
+        return;
+      }
+      release();
       return;
     }
     const movesAfter = movesLeft - 1;

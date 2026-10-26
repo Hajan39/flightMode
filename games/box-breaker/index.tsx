@@ -40,6 +40,7 @@ import {
   PADDLE_Y,
   type PowerKind,
   paddleWidth,
+  shiftDeadlines,
   step,
 } from "./logic";
 
@@ -145,6 +146,7 @@ export default function BoxBreakerGame() {
   const sensorSubs = useRef<{ remove: () => void }[]>([]);
   const bannerTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fxRef = useRef<Fx>(emptyFx());
+  const pausedAtRef = useRef<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -303,6 +305,7 @@ export default function BoxBreakerGame() {
     setGame(fresh);
     setResult(null);
     setPaused(false);
+    pausedAtRef.current = null;
     setPhase("playing");
     flash(t("levelLabel", { level: 1 }));
     startLoop();
@@ -310,10 +313,19 @@ export default function BoxBreakerGame() {
 
   const pause = () => {
     stopLoop();
+    pausedAtRef.current = Date.now();
     setPaused(true);
   };
 
   const resume = () => {
+    const pausedAt = pausedAtRef.current;
+    pausedAtRef.current = null;
+    if (pausedAt !== null) {
+      // Don't let the pause eat wide-paddle / fireball time.
+      const shifted = shiftDeadlines(gameRef.current, Date.now() - pausedAt);
+      gameRef.current = shifted;
+      setGame(shifted);
+    }
     setPaused(false);
     startLoop();
   };

@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from "react";
+﻿import { useCallback, useEffect, useRef, useState } from "react";
 import { FlatList, View as RNView, StyleSheet } from "react-native";
 import Animated, {
   FadeInDown,
@@ -21,17 +21,12 @@ import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
-
-type Runway = "A" | "B" | "C";
-
-interface Flight {
-  callsign: string;
-  expiresAt: number;
-  fuel: number;
-  id: number;
-  maxFuel: number;
-  runway: Runway;
-}
+import {
+  type Flight,
+  type Runway,
+  resolveAssignment,
+  tickFlights,
+} from "./logic";
 
 const RUNWAYS: Runway[] = ["A", "B", "C"];
 const MAX_MISSES = 3;
@@ -264,18 +259,35 @@ export default function AirTrafficControlGame() {
   );
   const flightIdRef = useRef(1);
   const gameOverRef = useRef(false);
+  // Refs mirror the latest committed values synchronously, so handlers and
+  // interval ticks compute from current state outside any setState updater
+  // (React 19 may run updaters lazily during the next render).
+  const flightsRef = useRef<Flight[]>([]);
   const scoreRef = useRef(0);
   const missesRef = useRef(0);
   const pauseStartedAtRef = useRef<number | null>(null);
   const level = getLevel(landed);
 
-  useEffect(() => {
-    scoreRef.current = score;
-  }, [score]);
+  const commitFlights = useCallback((next: Flight[]) => {
+    flightsRef.current = next;
+    setFlights(next);
+  }, []);
 
-  useEffect(() => {
-    missesRef.current = misses;
-  }, [misses]);
+  const addMisses = useCallback(
+    (count: number) => {
+      const nextMisses = missesRef.current + count;
+      missesRef.current = nextMisses;
+      setMisses(nextMisses);
+      if (nextMisses >= MAX_MISSES && !gameOverRef.current) {
+        gameOverRef.current = true;
+        setGameOver(true);
+        setProgressInfo(
+          updateProgress("air-traffic-control", scoreRef.current)
+        );
+      }
+    },
+    [updateProgress]
+  );
 
   /* --- subtle feedback animations (discrete events only) --- */
   const scoreScale = useSharedValue(1);
@@ -319,30 +331,29 @@ export default function AirTrafficControlGame() {
     }
 
     const timer = setInterval(() => {
-      setFlights((prev) => {
-        if (prev.length >= maxQueueSize) {
-          return prev;
-        }
-        const id = flightIdRef.current;
-        flightIdRef.current += 1;
-        const startFuel = getStartingFuel(level, id);
-        const now = Date.now();
-        return [
-          ...prev,
-          {
-            callsign: createCallsign(id),
-            expiresAt: now + startFuel * 1000,
-            fuel: startFuel,
-            id,
-            maxFuel: startFuel,
-            runway: randomRunway(),
-          },
-        ];
-      });
+      const prev = flightsRef.current;
+      if (prev.length >= maxQueueSize) {
+        return;
+      }
+      const id = flightIdRef.current;
+      flightIdRef.current += 1;
+      const startFuel = getStartingFuel(level, id);
+      const now = Date.now();
+      commitFlights([
+        ...prev,
+        {
+          callsign: createCallsign(id),
+          expiresAt: now + startFuel * 1000,
+          fuel: startFuel,
+          id,
+          maxFuel: startFuel,
+          runway: randomRunway(),
+        },
+      ]);
     }, spawnInterval);
 
     return () => clearInterval(timer);
-  }, [gameOver, spawnInterval, maxQueueSize, level, paused]);
+  }, [gameOver, spawnInterval, maxQueueSize, level, paused, commitFlights]);
 
   useEffect(() => {
     if (gameOver || paused) {
@@ -350,50 +361,17 @@ export default function AirTrafficControlGame() {
     }
 
     const timer = setInterval(() => {
-      setFlights((prev) => {
-        const now = Date.now();
-        let lostThisTick = 0;
-        const nextFlights: Flight[] = [];
-        let changed = false;
-
-        for (const flight of prev) {
-          const nextFuel = Math.max(
-            0,
-            Math.ceil((flight.expiresAt - now) / 1000)
-          );
-          if (nextFuel <= 0) {
-            lostThisTick += 1;
-            changed = true;
-          } else {
-            if (nextFuel !== flight.fuel) {
-              changed = true;
-            }
-            nextFlights.push(
-              nextFuel === flight.fuel ? flight : { ...flight, fuel: nextFuel }
-            );
-          }
-        }
-
-        if (lostThisTick > 0) {
-          setMisses((currentMisses) => {
-            const nextMisses = currentMisses + lostThisTick;
-            if (nextMisses >= MAX_MISSES && !gameOverRef.current) {
-              gameOverRef.current = true;
-              setGameOver(true);
-              setProgressInfo(
-                updateProgress("air-traffic-control", scoreRef.current)
-              );
-            }
-            return nextMisses;
-          });
-        }
-
-        return changed ? nextFlights : prev;
-      });
+      const tick = tickFlights(flightsRef.current, Date.now());
+      if (tick.changed) {
+        commitFlights(tick.flights);
+      }
+      if (tick.lost > 0) {
+        addMisses(tick.lost);
+      }
     }, 100);
 
     return () => clearInterval(timer);
-  }, [gameOver, updateProgress, paused]);
+  }, [gameOver, paused, commitFlights, addMisses]);
 
   const pause = () => {
     pauseStartedAtRef.current = Date.now();
@@ -405,8 +383,8 @@ export default function AirTrafficControlGame() {
     pauseStartedAtRef.current = null;
     if (pauseStartedAt) {
       const pausedMs = Date.now() - pauseStartedAt;
-      setFlights((prev) =>
-        prev.map((flight) => ({
+      commitFlights(
+        flightsRef.current.map((flight) => ({
           ...flight,
           expiresAt: flight.expiresAt + pausedMs,
         }))
@@ -418,7 +396,9 @@ export default function AirTrafficControlGame() {
   const restart = () => {
     flightIdRef.current = 1;
     gameOverRef.current = false;
-    setFlights([]);
+    scoreRef.current = 0;
+    missesRef.current = 0;
+    commitFlights([]);
     setScore(0);
     setLanded(0);
     setMisses(0);
@@ -433,50 +413,26 @@ export default function AirTrafficControlGame() {
       return;
     }
 
-    let resolved = false;
-    let points = 0;
-    let wrong = false;
-
-    setFlights((prev) =>
-      prev.filter((flight) => {
-        if (flight.id !== flightId) {
-          return true;
-        }
-        resolved = true;
-        if (flight.runway === runway) {
-          const currentFuel = Math.max(
-            0,
-            Math.ceil((flight.expiresAt - Date.now()) / 1000)
-          );
-          points = 18 + currentFuel * 3 + level * 2;
-        } else {
-          wrong = true;
-        }
-        return false;
-      })
+    const outcome = resolveAssignment(
+      flightsRef.current,
+      flightId,
+      runway,
+      level,
+      Date.now()
     );
-
-    if (!resolved) {
+    if (outcome.kind === "none") {
       return;
     }
+    commitFlights(outcome.flights);
 
-    if (wrong) {
+    if (outcome.kind === "wrong") {
       haptic.error();
-      setMisses((currentMisses) => {
-        const nextMisses = currentMisses + 1;
-        if (nextMisses >= MAX_MISSES && !gameOverRef.current) {
-          gameOverRef.current = true;
-          setGameOver(true);
-          setProgressInfo(
-            updateProgress("air-traffic-control", scoreRef.current)
-          );
-        }
-        return nextMisses;
-      });
+      addMisses(1);
       return;
     }
 
-    setScore((prev) => prev + points);
+    scoreRef.current += outcome.points;
+    setScore(scoreRef.current);
     haptic.success();
     setLanded((prev) => prev + 1);
   };

@@ -667,6 +667,7 @@
   passportCities: "शहर",
   passportCountries: "देश",
   passportUnknownCity: "कहीं",
+  passportStampDuration: "{{hours}} घं {{minutes}} मि",
   passportShare: "मेरा पासपोर्ट शेयर करें",
   passportShareMessage:
     "मेरा FlightMode पासपोर्ट: {{flights}} उड़ानें, {{hours}} घंटे हवा में, {{cities}} शहर ✈️ अगली उड़ान के लिए ऑफ़लाइन गेम और यात्रा टूल: {{url}}",

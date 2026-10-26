@@ -157,3 +157,48 @@ export function countFlagged(board: Cell[][]): number {
   }
   return count;
 }
+
+export type TapResult = "ignored" | "started" | "safe" | "win" | "lose";
+
+/**
+ * Resolve a reveal tap on `board`. `minesPlaced = false` means this is the
+ * first tap of the game: mines are planted around the tap first (so the
+ * component must guard against planting twice). Pure — the component applies
+ * the side effects (timer, haptics, updateProgress) based on `result`.
+ */
+export function resolveTap(
+  board: Cell[][],
+  row: number,
+  col: number,
+  minesPlaced: boolean,
+  rng: () => number = Math.random
+): { board: Cell[][]; result: TapResult } {
+  const cell = board[row][col];
+  if (cell.isFlagged || cell.isRevealed) {
+    return { board, result: "ignored" };
+  }
+  if (!minesPlaced) {
+    const revealed = floodReveal(placeMines(board, row, col, rng), row, col);
+    return { board: revealed, result: checkWin(revealed) ? "win" : "started" };
+  }
+  if (cell.isMine) {
+    return { board: revealAllMines(board), result: "lose" };
+  }
+  const revealed = floodReveal(board, row, col);
+  return { board: revealed, result: checkWin(revealed) ? "win" : "safe" };
+}
+
+/** Toggle a flag on a covered cell; returns the same board for revealed cells. */
+export function toggleFlag(
+  board: Cell[][],
+  row: number,
+  col: number
+): Cell[][] {
+  const cell = board[row][col];
+  if (cell.isRevealed) {
+    return board;
+  }
+  const next = board.map((r) => r.map((c) => ({ ...c })));
+  next[row][col] = { ...cell, isFlagged: !cell.isFlagged };
+  return next;
+}

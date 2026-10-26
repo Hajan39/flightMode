@@ -6,7 +6,11 @@ import { getPlayGamesAchievementId } from "@/data/playGamesAchievements";
 import { useGameStore } from "@/store/useGameStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { addDays, toLocalDateKey } from "@/utils/dates";
-import { unlockPlayGamesAchievement } from "@/utils/playGames";
+import {
+  resendUnlockedAchievements,
+  setUnlockedPlayIdsSource,
+  unlockPlayGamesAchievement,
+} from "@/utils/playGames";
 
 interface AchievementStoreState {
   articlesRead: string[];
@@ -177,7 +181,21 @@ export const useAchievementStore = create<AchievementStoreState>()(
     }),
     {
       name: "achievements",
+      // If Play Games signed in before local unlocks loaded, push them now.
+      onRehydrateStorage: () => () => {
+        // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
+        void resendUnlockedAchievements();
+      },
       storage: createJSONStorage(() => AsyncStorage),
     }
   )
+);
+
+// After a (re)successful Play Games sign-in, every local unlock is re-sent so
+// achievements earned while signed out / offline still reach Play.
+setUnlockedPlayIdsSource(() =>
+  useAchievementStore
+    .getState()
+    .unlockedIds.map((id) => getPlayGamesAchievementId(id))
+    .filter((playId): playId is string => Boolean(playId))
 );

@@ -688,6 +688,7 @@
   passportCities: "Cidades",
   passportCountries: "Países",
   passportUnknownCity: "Algures",
+  passportStampDuration: "{{hours}} h {{minutes}} min",
   passportShare: "Partilhar o meu passaporte",
   passportShareMessage:
     "O meu passaporte FlightMode: {{flights}} voos, {{hours}} h no ar, {{cities}} cidades ✈️ Jogos e ferramentas de viagem offline para o próximo voo: {{url}}",

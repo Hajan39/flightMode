@@ -211,10 +211,54 @@ export async function cancelJetlagSleepReminder() {
   await cancelRemindersOfKind(Notifications, JETLAG_SLEEP_KIND);
 }
 
+/** Drops the "flight entertainment is ready" reminder — used when the flight is cleared. */
+export async function cancelFlightReadyReminder() {
+  const Notifications = getNotifications();
+  if (!Notifications) {
+    return;
+  }
+  await cancelRemindersOfKind(Notifications, FLIGHT_REMINDER_KIND);
+}
+
+const MINUTE_MS = 60 * 1000;
+
+/**
+ * When to send the pre-flight "entertainment ready" reminder: 3 h before
+ * departure, else 30 min before; null (don't schedule) when departure is in
+ * the past or less than 30 min away — a reminder mid-flight or at the gate is
+ * useless. Needs at least 2 min of lead time. Pure, exported for tests.
+ */
+export function getFlightReadyReminderFireAt(
+  departureTime: number,
+  now: number
+): number | null {
+  if (!Number.isFinite(departureTime) || departureTime - now < 30 * MINUTE_MS) {
+    return null;
+  }
+  const minLead = now + 2 * MINUTE_MS;
+  const threeHoursBefore = departureTime - 180 * MINUTE_MS;
+  if (threeHoursBefore > minLead) {
+    return threeHoursBefore;
+  }
+  const thirtyMinutesBefore = departureTime - 30 * MINUTE_MS;
+  if (thirtyMinutesBefore > minLead) {
+    return thirtyMinutesBefore;
+  }
+  return null;
+}
+
 export async function scheduleFlightReadyReminder(departureTime: number) {
   const Notifications = getNotifications();
   if (!Notifications) {
     return { reason: "unsupported" as const, scheduled: false as const };
+  }
+
+  const fireAt = getFlightReadyReminderFireAt(departureTime, Date.now());
+  if (fireAt === null) {
+    // Past / imminent departure: drop any stale reminder, don't prompt for
+    // permission and don't schedule one mid-flight.
+    await cancelRemindersOfKind(Notifications, FLIGHT_REMINDER_KIND);
+    return { reason: "too_late" as const, scheduled: false as const };
   }
 
   await initializeNotifications();
@@ -225,18 +269,6 @@ export async function scheduleFlightReadyReminder(departureTime: number) {
   }
 
   await cancelRemindersOfKind(Notifications, FLIGHT_REMINDER_KIND);
-
-  const now = Date.now();
-  const threeHoursBefore = departureTime - 3 * 60 * 60 * 1000;
-  const thirtyMinutesBefore = departureTime - 30 * 60 * 1000;
-
-  let fireAt = threeHoursBefore;
-  if (fireAt <= now + 2 * 60 * 1000) {
-    fireAt = thirtyMinutesBefore;
-  }
-  if (fireAt <= now + 2 * 60 * 1000) {
-    fireAt = now + 5 * 60 * 1000;
-  }
 
   const fireDate = new Date(fireAt);
   const identifier = await Notifications.scheduleNotificationAsync({

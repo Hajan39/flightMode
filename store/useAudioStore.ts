@@ -1,10 +1,15 @@
 import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
-import { Platform } from "react-native";
+import { AppState, Platform } from "react-native";
 import { create } from "zustand";
 
 import type { TranslationKey } from "@/i18n/translations";
+import { shouldStopForSleepTimer } from "@/utils/sleepTimer";
 
-const globalPlayer = Platform.OS === "web" ? null : createAudioPlayer(null);
+// 1 s status updates are plenty for the sleep-timer deadline check below.
+const globalPlayer =
+  Platform.OS === "web"
+    ? null
+    : createAudioPlayer(null, { updateInterval: 1000 });
 let sleepTimerRef: ReturnType<typeof setTimeout> | null = null;
 let backgroundModeSet = false;
 
@@ -44,6 +49,8 @@ function stopBackgroundPlayback() {
 interface AudioState {
   activeLabelKey: TranslationKey | null;
   activeSoundId: string | null;
+  /** Stops playback if the sleep-timer wall-clock deadline has passed. */
+  checkSleepTimer: (now?: number) => void;
   playSound: (
     id: string,
     labelKey: TranslationKey,
@@ -61,6 +68,23 @@ interface AudioState {
 export const useAudioStore = create<AudioState>((set, get) => ({
   activeLabelKey: null,
   activeSoundId: null,
+  checkSleepTimer: (now = Date.now()) => {
+    if (!shouldStopForSleepTimer(get().sleepTimerEndAt, now)) {
+      return;
+    }
+    if (sleepTimerRef) {
+      clearTimeout(sleepTimerRef);
+      sleepTimerRef = null;
+    }
+    globalPlayer?.pause();
+    stopBackgroundPlayback();
+    set({
+      activeLabelKey: null,
+      activeSoundId: null,
+      sleepTimerEndAt: null,
+      sleepTimerPresetMinutes: null,
+    });
+  },
   playSound: (id, labelKey, source, title) => {
     if (!globalPlayer) {
       return;
@@ -94,17 +118,14 @@ export const useAudioStore = create<AudioState>((set, get) => ({
       return;
     }
 
+    // The wall-clock deadline is the source of truth. Android pauses JS
+    // timers in the background (screen off), so this setTimeout only covers
+    // the foreground; the playback-status listener and the AppState check
+    // below enforce the deadline while the screen is off / on resume.
     const endAt = Date.now() + minutes * 60_000;
     sleepTimerRef = setTimeout(() => {
-      globalPlayer?.pause();
-      stopBackgroundPlayback();
       sleepTimerRef = null;
-      set({
-        activeLabelKey: null,
-        activeSoundId: null,
-        sleepTimerEndAt: null,
-        sleepTimerPresetMinutes: null,
-      });
+      get().checkSleepTimer(Math.max(Date.now(), endAt));
     }, minutes * 60_000);
 
     set({ sleepTimerEndAt: endAt, sleepTimerPresetMinutes: minutes });
@@ -125,7 +146,32 @@ export const useAudioStore = create<AudioState>((set, get) => ({
       clearTimeout(sleepTimerRef);
       sleepTimerRef = null;
     }
-    set({ activeLabelKey: null, activeSoundId: null });
+    // The timer was cancelled above, so drop its deadline too — a stale one
+    // would otherwise stop the next soundscape the moment it starts.
+    set({
+      activeLabelKey: null,
+      activeSoundId: null,
+      sleepTimerEndAt: null,
+      sleepTimerPresetMinutes: null,
+    });
   },
   volume: 0.6,
 }));
+
+// expo-audio emits `playbackStatusUpdate` from a native coroutine every
+// `updateInterval` while playing; unlike JS timers it keeps firing in the
+// background media session, so this enforces the deadline with the screen off.
+// (expo-audio has no native "stop at" / duration API to schedule the stop.)
+try {
+  globalPlayer?.addListener("playbackStatusUpdate", () =>
+    useAudioStore.getState().checkSleepTimer()
+  );
+} catch {
+  // Listener support missing — the AppState check below still applies.
+}
+
+AppState.addEventListener("change", (status) => {
+  if (status === "active") {
+    useAudioStore.getState().checkSleepTimer();
+  }
+});

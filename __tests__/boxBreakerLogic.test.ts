@@ -15,8 +15,10 @@ import {
   newGame,
   PADDLE_W,
   PADDLE_Y,
+  paddleWidth,
   parseLevel,
   STEEL,
+  shiftDeadlines,
   step,
 } from "@/games/box-breaker/logic";
 
@@ -266,4 +268,38 @@ describe("box breaker physics", () => {
       expect(s.lives).toBeGreaterThan(0);
     }
   );
+});
+
+describe("box-breaker shiftDeadlines (pause must not burn power-ups)", () => {
+  test("active wide / fire deadlines move by the paused duration", () => {
+    const pausedAt = 10_000;
+    const state = {
+      ...newGame(),
+      fireUntil: pausedAt + 2000,
+      wideUntil: pausedAt + 3000,
+    };
+    const pausedMs = 60_000;
+    const resumed = shiftDeadlines(state, pausedMs);
+    expect(resumed.fireUntil).toBe(pausedAt + pausedMs + 2000);
+    expect(resumed.wideUntil).toBe(pausedAt + pausedMs + 3000);
+    // Right after resume the paddle is still wide and the ball still burns.
+    const resumeAt = pausedAt + pausedMs;
+    expect(paddleWidth(resumed, resumeAt)).toBeGreaterThan(PADDLE_W);
+    expect(resumeAt < resumed.fireUntil).toBe(true);
+    // Without the shift, the pause would have used up the power-up.
+    expect(paddleWidth(state, resumeAt)).toBe(PADDLE_W);
+  });
+
+  test("inactive (0) deadlines stay off and nothing else changes", () => {
+    const state = newGame();
+    const resumed = shiftDeadlines(state, 5000);
+    expect(resumed.fireUntil).toBe(0);
+    expect(resumed.wideUntil).toBe(0);
+    expect({ ...resumed, fireUntil: 0, wideUntil: 0 }).toEqual(state);
+  });
+
+  test("a non-positive pause returns the same state", () => {
+    const state = { ...newGame(), wideUntil: 123 };
+    expect(shiftDeadlines(state, 0)).toBe(state);
+  });
 });

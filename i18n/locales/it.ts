@@ -690,6 +690,7 @@
   passportCities: "Città",
   passportCountries: "Paesi",
   passportUnknownCity: "Da qualche parte",
+  passportStampDuration: "{{hours}} h {{minutes}} min",
   passportShare: "Condividi il mio passaporto",
   passportShareMessage:
     "Il mio passaporto FlightMode: {{flights}} voli, {{hours}} h in volo, {{cities}} città ✈️ Giochi e strumenti di viaggio offline per il tuo prossimo volo: {{url}}",

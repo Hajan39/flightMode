@@ -37,6 +37,39 @@ export function isSolved(board: number[], solution: number[]): boolean {
   );
 }
 
+export interface SudokuMoveOutcome {
+  /** The board after the move (a new array; the input is not mutated). */
+  board: number[];
+  /** Every wrong cell on the new board. */
+  errors: Set<number>;
+  /** The placed digit itself is wrong (drives the shake). */
+  isError: boolean;
+  /** The new board is fully solved. */
+  won: boolean;
+}
+
+/**
+ * Place `num` (0 = erase) at `idx` and evaluate the result. The component
+ * computes this from the current board OUTSIDE any state updater, so the
+ * win / error decision always sees the move that was just made.
+ */
+export function applyMove(
+  board: number[],
+  solution: number[],
+  idx: number,
+  num: number
+): SudokuMoveOutcome {
+  const next = [...board];
+  next[idx] = num;
+  const errors = computeErrors(next, solution);
+  return {
+    board: next,
+    errors,
+    isError: errors.has(idx),
+    won: isSolved(next, solution),
+  };
+}
+
 export function formatTime(seconds: number): string {
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;

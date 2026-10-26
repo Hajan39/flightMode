@@ -1,4 +1,5 @@
 import {
+  applyMove,
   computeErrors,
   formatTime,
   getBox,
@@ -61,6 +62,41 @@ describe("sudoku isSolved", () => {
     const almost = [...solution];
     almost[0] = 0;
     expect(isSolved(almost, solution)).toBe(false);
+  });
+});
+
+describe("sudoku applyMove (handleNumberInput decision)", () => {
+  const { solution } = PUZZLES[0];
+
+  test("placing the last correct digit wins", () => {
+    const board = [...solution];
+    board[7] = 0;
+    const move = applyMove(board, solution, 7, solution[7]);
+    expect(move.won).toBe(true);
+    expect(move.isError).toBe(false);
+    expect(move.errors.size).toBe(0);
+    expect(move.board[7]).toBe(solution[7]);
+  });
+
+  test("a wrong digit is an error, keeps other error marks, and never wins", () => {
+    const board = [...solution];
+    board[3] = solution[3] === 1 ? 2 : 1; // existing wrong entry
+    board[7] = 0;
+    const wrong = solution[7] === 9 ? 8 : 9;
+    const move = applyMove(board, solution, 7, wrong);
+    expect(move.isError).toBe(true);
+    expect(move.won).toBe(false);
+    expect([...move.errors].sort((a, b) => a - b)).toEqual([3, 7]);
+  });
+
+  test("erasing (0) clears that cell's error and does not mutate input", () => {
+    const board = [...solution];
+    board[7] = solution[7] === 9 ? 8 : 9;
+    const snapshot = [...board];
+    const move = applyMove(board, solution, 7, 0);
+    expect(move.errors.size).toBe(0);
+    expect(move.won).toBe(false);
+    expect(board).toEqual(snapshot);
   });
 });
 

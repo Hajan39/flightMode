@@ -21,12 +21,19 @@ import { useSwipe } from "@/hooks/useSwipe";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
+import {
+  createEmptyGrid,
+  createInitialGrid,
+  type Direction,
+  GRID_SIZE,
+  type Grid,
+  playMove,
+} from "./logic";
 
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
 
-const GRID_SIZE = 4;
 const GAP = 8;
 const PADDING = 12;
 
@@ -66,177 +73,6 @@ function getTileFontSize(value: number): number {
     return FontSize.md;
   }
   return FontSize.sm;
-}
-
-// ---------------------------------------------------------------------------
-// Grid logic
-// ---------------------------------------------------------------------------
-
-type Grid = number[][];
-
-function createEmptyGrid(): Grid {
-  return Array.from({ length: GRID_SIZE }, () => new Array(GRID_SIZE).fill(0));
-}
-
-function getEmptyCells(grid: Grid): [number, number][] {
-  const cells: [number, number][] = [];
-  for (let r = 0; r < GRID_SIZE; r += 1) {
-    for (let c = 0; c < GRID_SIZE; c += 1) {
-      if (grid[r][c] === 0) {
-        cells.push([r, c]);
-      }
-    }
-  }
-  return cells;
-}
-
-function addRandomTile(grid: Grid): Grid {
-  const empty = getEmptyCells(grid);
-  if (empty.length === 0) {
-    return grid;
-  }
-  const [r, c] = empty[Math.floor(Math.random() * empty.length)];
-  const value = Math.random() < 0.9 ? 2 : 4;
-  const next = grid.map((row) => [...row]);
-  next[r][c] = value;
-  return next;
-}
-
-function createInitialGrid(): Grid {
-  let grid = createEmptyGrid();
-  grid = addRandomTile(grid);
-  grid = addRandomTile(grid);
-  return grid;
-}
-
-/**
- * Slide a single row/line toward the left (index 0).
- * Returns { line, score, moved }.
- */
-function slideLine(line: number[]): {
-  line: number[];
-  score: number;
-  moved: boolean;
-} {
-  const filtered = line.filter((v) => v !== 0);
-  let score = 0;
-  let moved = false;
-  const merged: number[] = [];
-  let i = 0;
-  while (i < filtered.length) {
-    if (i + 1 < filtered.length && filtered[i] === filtered[i + 1]) {
-      const val = filtered[i] * 2;
-      merged.push(val);
-      score += val;
-      i += 2;
-    } else {
-      merged.push(filtered[i]);
-      i += 1;
-    }
-  }
-  // Pad with zeros
-  while (merged.length < GRID_SIZE) {
-    merged.push(0);
-  }
-  // Check if anything changed
-  for (let j = 0; j < GRID_SIZE; j += 1) {
-    if (merged[j] !== line[j]) {
-      moved = true;
-      break;
-    }
-  }
-  return { line: merged, moved, score };
-}
-
-type Direction = "left" | "right" | "up" | "down";
-
-function applyMove(
-  grid: Grid,
-  direction: Direction
-): { grid: Grid; score: number; moved: boolean } {
-  let totalScore = 0;
-  let anyMoved = false;
-  const next = createEmptyGrid();
-
-  if (direction === "left") {
-    for (let r = 0; r < GRID_SIZE; r += 1) {
-      const { line, score, moved } = slideLine(grid[r]);
-      next[r] = line;
-      totalScore += score;
-      if (moved) {
-        anyMoved = true;
-      }
-    }
-  } else if (direction === "right") {
-    for (let r = 0; r < GRID_SIZE; r += 1) {
-      const reversed = [...grid[r]].reverse();
-      const { line, score, moved } = slideLine(reversed);
-      next[r] = line.reverse();
-      totalScore += score;
-      if (moved) {
-        anyMoved = true;
-      }
-    }
-  } else if (direction === "up") {
-    for (let c = 0; c < GRID_SIZE; c += 1) {
-      const col = grid.map((row) => row[c]);
-      const { line, score, moved } = slideLine(col);
-      for (let r = 0; r < GRID_SIZE; r += 1) {
-        next[r][c] = line[r];
-      }
-      totalScore += score;
-      if (moved) {
-        anyMoved = true;
-      }
-    }
-  } else {
-    // down
-    for (let c = 0; c < GRID_SIZE; c += 1) {
-      const col = grid.map((row) => row[c]).reverse();
-      const { line, score, moved } = slideLine(col);
-      const reversed = line.reverse();
-      for (let r = 0; r < GRID_SIZE; r += 1) {
-        next[r][c] = reversed[r];
-      }
-      totalScore += score;
-      if (moved) {
-        anyMoved = true;
-      }
-    }
-  }
-
-  return { grid: next, moved: anyMoved, score: totalScore };
-}
-
-function hasWon(grid: Grid): boolean {
-  for (let r = 0; r < GRID_SIZE; r += 1) {
-    for (let c = 0; c < GRID_SIZE; c += 1) {
-      if (grid[r][c] >= 2048) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
-function isGameOver(grid: Grid): boolean {
-  // Any empty cell?
-  if (getEmptyCells(grid).length > 0) {
-    return false;
-  }
-  // Any adjacent equal tiles?
-  for (let r = 0; r < GRID_SIZE; r += 1) {
-    for (let c = 0; c < GRID_SIZE; c += 1) {
-      const v = grid[r][c];
-      if (c + 1 < GRID_SIZE && grid[r][c + 1] === v) {
-        return false;
-      }
-      if (r + 1 < GRID_SIZE && grid[r + 1][c] === v) {
-        return false;
-      }
-    }
-  }
-  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -346,6 +182,9 @@ export default function TwentyFortyEightGame() {
   const winFiredRef = useRef<boolean>(false);
   // Track whether the game has already ended to avoid double updateProgress
   const gameOverRef = useRef<boolean>(false);
+  // Latest grid / score, updated synchronously with each move.
+  const gridRef = useRef<Grid>(grid);
+  const scoreRef = useRef(0);
 
   // Derived cell size based on screen width
   const gridWidth = screenWidth - Spacing.lg * 2;
@@ -357,7 +196,10 @@ export default function TwentyFortyEightGame() {
   // ---------------------------------------------------------------------------
 
   const startGame = useCallback(() => {
-    setGrid(createInitialGrid());
+    const initial = createInitialGrid();
+    gridRef.current = initial;
+    scoreRef.current = 0;
+    setGrid(initial);
     setScore(0);
     setMoveCount(0);
     setResult(null);
@@ -387,53 +229,34 @@ export default function TwentyFortyEightGame() {
 
   const handleMove = useCallback(
     (direction: Direction) => {
-      if (phase !== "playing" || paused) {
+      if (phase !== "playing" || paused || gameOverRef.current) {
         return;
       }
 
-      setGrid((currentGrid) => {
-        const {
-          grid: nextGrid,
-          score: gained,
-          moved,
-        } = applyMove(currentGrid, direction);
+      // Computed from refs (latest committed values) outside any updater:
+      // updaters may run lazily or twice, so side effects can't live in them.
+      const move = playMove(gridRef.current, direction);
+      if (!move.moved) {
+        return;
+      }
+      haptic.tap();
+      const newScore = scoreRef.current + move.gained;
+      gridRef.current = move.grid;
+      scoreRef.current = newScore;
+      setGrid(move.grid);
+      setScore(newScore);
+      setMoveCount((prev) => prev + 1);
 
-        if (!moved) {
-          return currentGrid;
-        }
-
-        haptic.tap();
-
-        // Add a new random tile
-        const withNew = addRandomTile(nextGrid);
-
-        // Update score and move count via state updaters
-        setScore((prev) => {
-          const newScore = prev + gained;
-
-          // Check win (2048 reached for the first time)
-          if (!winFiredRef.current && hasWon(withNew)) {
-            winFiredRef.current = true;
-            setWinMessage(t("tfeYouWin"));
-            haptic.success();
-            // Schedule end-of-game update after render
-            setTimeout(() => {
-              endGame(newScore, true);
-            }, 0);
-          } else if (isGameOver(withNew)) {
-            haptic.error();
-            setTimeout(() => {
-              endGame(newScore, false);
-            }, 0);
-          }
-
-          return newScore;
-        });
-
-        setMoveCount((prev) => prev + 1);
-
-        return withNew;
-      });
+      // Check win (2048 reached for the first time)
+      if (!winFiredRef.current && move.reached2048) {
+        winFiredRef.current = true;
+        setWinMessage(t("tfeYouWin"));
+        haptic.success();
+        endGame(newScore, true);
+      } else if (move.over) {
+        haptic.error();
+        endGame(newScore, false);
+      }
     },
     [phase, paused, haptic, t, endGame]
   );

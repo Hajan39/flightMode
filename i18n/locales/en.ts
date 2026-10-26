@@ -721,6 +721,7 @@ export const en = {
   passportCities: "Cities",
   passportCountries: "Countries",
   passportUnknownCity: "Somewhere",
+  passportStampDuration: "{{hours}} h {{minutes}} min",
   passportShare: "Share my passport",
   passportShareMessage:
     "My FlightMode passport: {{flights}} flights, {{hours}} h in the air, {{cities}} cities ✈️ Offline games & travel tools for your next flight: {{url}}",

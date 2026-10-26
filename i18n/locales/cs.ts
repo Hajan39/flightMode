@@ -706,6 +706,7 @@ export const cs = {
   passportCities: "Města",
   passportCountries: "Země",
   passportUnknownCity: "Někam",
+  passportStampDuration: "{{hours}} h {{minutes}} min",
   passportShare: "Sdílet můj pas",
   passportShareMessage:
     "Můj letový pas ve FlightMode: {{flights}} letů, {{hours}} h ve vzduchu, {{cities}} měst ✈️ Offline hry a cestovní nástroje na další let: {{url}}",

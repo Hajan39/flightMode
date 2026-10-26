@@ -708,6 +708,7 @@
   passportCities: "Städte",
   passportCountries: "Länder",
   passportUnknownCity: "Irgendwo",
+  passportStampDuration: "{{hours}} Std. {{minutes}} Min.",
   passportShare: "Meinen Pass teilen",
   passportShareMessage:
     "Mein FlightMode-Flugpass: {{flights}} Flüge, {{hours}} h in der Luft, {{cities}} Städte ✈️ Offline-Spiele & Reisetools für deinen nächsten Flug: {{url}}",

@@ -27,6 +27,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import {
+  applyMove,
   computeErrors,
   formatTime,
   getCol,
@@ -269,21 +270,17 @@ export default function SudokuGame() {
 
       haptic.tap();
 
-      let next: number[] = [];
-      setBoard((prev) => {
-        next = [...prev];
-        next[selectedCell] = num;
-        return next;
-      });
-
-      const newErrors = computeErrors(next, solution);
-      setErrors(newErrors);
-      if (newErrors.has(selectedCell)) {
+      // Computed from current state outside any updater: React 19 may run a
+      // setBoard updater lazily, so values assigned inside it are not
+      // readable right after the call.
+      const move = applyMove(board, solution, selectedCell, num);
+      setBoard(move.board);
+      setErrors(move.errors);
+      if (move.isError) {
         triggerShake();
       }
 
-      const won = isSolved(next, solution);
-      if (won && !solvedRef.current) {
+      if (move.won && !solvedRef.current) {
         solvedRef.current = true;
         haptic.success();
         const finalScore = Math.max(
@@ -303,6 +300,7 @@ export default function SudokuGame() {
       phase,
       selectedCell,
       clues,
+      board,
       solution,
       elapsedSeconds,
       hintsUsed,
@@ -322,13 +320,10 @@ export default function SudokuGame() {
       return;
     }
     haptic.tap();
-    setBoard((prev) => {
-      const next = [...prev];
-      next[selectedCell] = 0;
-      setErrors(computeErrors(next, solution));
-      return next;
-    });
-  }, [phase, selectedCell, clues, solution, haptic]);
+    const move = applyMove(board, solution, selectedCell, 0);
+    setBoard(move.board);
+    setErrors(move.errors);
+  }, [phase, selectedCell, clues, board, solution, haptic]);
 
   // ── Hint ─────────────────────────────────────────────────────────────────
   const handleHint = useCallback(() => {

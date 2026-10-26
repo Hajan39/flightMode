@@ -14,13 +14,11 @@ import type { GameProgressUpdate } from "@/types/game";
 import {
   type Cell,
   COLS,
-  checkWin,
   countFlagged,
-  floodReveal,
   MINE_COUNT,
   makeEmptyBoard,
-  placeMines,
-  revealAllMines,
+  resolveTap,
+  toggleFlag,
 } from "./logic";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -71,6 +69,17 @@ export default function MinesweeperGame() {
 
   const startTimeRef = useRef<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Latest board + game flags, updated synchronously so two very fast taps
+  // can't both plant mines or both record a result (setState updaters may run
+  // lazily / twice, so no side effects live inside them).
+  const boardRef = useRef<Cell[][]>(board);
+  const minesPlacedRef = useRef(false);
+  const overRef = useRef(false);
+
+  const commitBoard = useCallback((next: Cell[][]) => {
+    boardRef.current = next;
+    setBoard(next);
+  }, []);
 
   // ── Timer ──────────────────────────────────────────────────────────────────
 
@@ -104,7 +113,9 @@ export default function MinesweeperGame() {
 
   const resetGame = useCallback(() => {
     stopTimer();
-    setBoard(makeEmptyBoard());
+    minesPlacedRef.current = false;
+    overRef.current = false;
+    commitBoard(makeEmptyBoard());
     setPhase("idle");
     setOutcome(null);
     setElapsedSeconds(0);
@@ -112,104 +123,80 @@ export default function MinesweeperGame() {
     setProgressInfo(null);
     setFinalScore(null);
     startTimeRef.current = null;
-  }, [stopTimer]);
+  }, [stopTimer, commitBoard]);
 
   // ── Handle reveal ──────────────────────────────────────────────────────────
 
   const handlePress = useCallback(
     (row: number, col: number) => {
-      if (phase === "over") {
+      if (phase === "over" || overRef.current) {
         return;
       }
 
-      setBoard((prev) => {
-        const cell = prev[row][col];
+      const { board: next, result } = resolveTap(
+        boardRef.current,
+        row,
+        col,
+        minesPlacedRef.current
+      );
+      if (result === "ignored") {
+        return;
+      }
+      const firstTap = !minesPlacedRef.current;
+      minesPlacedRef.current = true;
+      commitBoard(next);
 
-        // Flagged or already revealed → ignore tap
-        if (cell.isFlagged || cell.isRevealed) {
-          return prev;
-        }
+      if (result === "started") {
+        setPhase("playing");
+        startTimer();
+        return;
+      }
+      if (result === "safe") {
+        return;
+      }
 
-        // ── First tap: plant mines then reveal ────────────────────────────
-        if (phase === "idle") {
-          const withMines = placeMines(prev, row, col);
-          const revealed = floodReveal(withMines, row, col);
-          // Check immediate win (extremely unlikely but correct)
-          if (checkWin(revealed)) {
-            stopTimer();
-            const score = Math.max(100, 1000 - 0 * 5);
-            const info = updateProgress("minesweeper", score);
-            setProgressInfo(info);
-            setFinalScore(score);
-            setPhase("over");
-            setOutcome("win");
-            haptic.success();
-            return revealed;
-          }
-          setPhase("playing");
-          startTimer();
-          return revealed;
-        }
+      overRef.current = true;
+      stopTimer();
+      if (result === "lose") {
+        haptic.error();
+        setProgressInfo(updateProgress("minesweeper", 0, { won: false }));
+        setFinalScore(0);
+        setPhase("over");
+        setOutcome("lose");
+        return;
+      }
 
-        // ── Mine hit → lose ───────────────────────────────────────────────
-        if (cell.isMine) {
-          stopTimer();
-          haptic.error();
-          const revealed = revealAllMines(prev);
-          const info = updateProgress("minesweeper", 0, { won: false });
-          setProgressInfo(info);
-          setFinalScore(0);
-          setPhase("over");
-          setOutcome("lose");
-          return revealed;
-        }
-
-        // ── Safe cell → reveal (flood if 0) ──────────────────────────────
-        const revealed = floodReveal(prev, row, col);
-        if (checkWin(revealed)) {
-          stopTimer();
-          haptic.success();
-          const elapsed = startTimeRef.current
-            ? Math.floor((Date.now() - startTimeRef.current) / 1000)
-            : 0;
-          const score = Math.max(100, 1000 - elapsed * 5);
-          const info = updateProgress("minesweeper", score);
-          setProgressInfo(info);
-          setFinalScore(score);
-          setPhase("over");
-          setOutcome("win");
-        }
-        return revealed;
-      });
+      // Win (on the first tap: extremely unlikely but correct).
+      haptic.success();
+      const elapsed =
+        !firstTap && startTimeRef.current
+          ? Math.floor((Date.now() - startTimeRef.current) / 1000)
+          : 0;
+      const score = Math.max(100, 1000 - elapsed * 5);
+      setProgressInfo(updateProgress("minesweeper", score));
+      setFinalScore(score);
+      setPhase("over");
+      setOutcome("win");
     },
-    [phase, haptic, startTimer, stopTimer, updateProgress]
+    [phase, haptic, startTimer, stopTimer, updateProgress, commitBoard]
   );
 
   // ── Handle flag ────────────────────────────────────────────────────────────
 
   const handleLongPress = useCallback(
     (row: number, col: number) => {
-      if (phase === "over" || phase === "idle") {
+      if (phase === "over" || phase === "idle" || overRef.current) {
         return;
       }
-
-      setBoard((prev) => {
-        const cell = prev[row][col];
-        if (cell.isRevealed) {
-          return prev;
-        }
-
-        const next = prev.map((r) => r.map((c) => ({ ...c })));
-        const toggled = !cell.isFlagged;
-        next[row][col] = { ...cell, isFlagged: toggled };
-
-        // Update flag count derived from new board state
-        setFlaggedCount(countFlagged(next));
-        haptic.tap();
-        return next;
-      });
+      const next = toggleFlag(boardRef.current, row, col);
+      if (next === boardRef.current) {
+        return;
+      }
+      commitBoard(next);
+      setFlaggedCount(countFlagged(next));
+      haptic.tap();
     },
-    [phase, haptic]
+    [phase, haptic, commitBoard]
   );
 
   // ── Render cell ────────────────────────────────────────────────────────────

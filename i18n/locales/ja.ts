@@ -678,6 +678,7 @@
   passportCities: "都市",
   passportCountries: "国",
   passportUnknownCity: "どこか",
+  passportStampDuration: "{{hours}}時間{{minutes}}分",
   passportShare: "パスポートを共有",
   passportShareMessage:
     "私のFlightModeパスポート：{{flights}}フライト、空の上で{{hours}}時間、{{cities}}都市 ✈️ 次のフライトにオフラインゲームと旅行ツールを：{{url}}",

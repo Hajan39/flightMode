@@ -41,7 +41,10 @@ import { useSettingsStore } from "@/store/useSettingsStore";
 import type { GamePlayMode } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { pickFlightGames } from "@/utils/flightRecommendations";
-import { cancelJetlagSleepReminder } from "@/utils/notifications";
+import {
+  cancelFlightReadyReminder,
+  cancelJetlagSleepReminder,
+} from "@/utils/notifications";
 import { maybeAskForReview } from "@/utils/reviewPrompt";
 
 function getPlayModeLabelKey(playMode?: GamePlayMode) {
@@ -118,6 +121,8 @@ export default function HomeScreen() {
     clearFlight();
     // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
     void cancelJetlagSleepReminder();
+    // biome-ignore lint/complexity/noVoid: intentional fire-and-forget
+    void cancelFlightReadyReminder();
   };
 
   const openGame = (gameId: string) => {

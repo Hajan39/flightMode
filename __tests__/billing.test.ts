@@ -48,6 +48,32 @@ describe("billing entitlement", () => {
     );
   });
 
+  test("a tip whose consume fails is not counted; the restore that consumes it counts it once", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      { productId: "tip_medium", purchaseState: "purchased" },
+    ]);
+    mockFinishTransaction.mockImplementationOnce(() =>
+      Promise.reject(new Error("consume failed"))
+    );
+    await restorePurchases();
+    expect(useSupporterStore.getState().tips).toBe(0);
+
+    await restorePurchases();
+    expect(useSupporterStore.getState().tips).toBe(1);
+    expect(mockFinishTransaction).toHaveBeenCalledTimes(2);
+  });
+
+  test("a Plus acknowledge failure still grants the entitlement", async () => {
+    mockGetAvailablePurchases.mockResolvedValue([
+      { productId: "flightmode_plus", purchaseState: "purchased" },
+    ]);
+    mockFinishTransaction.mockImplementationOnce(() =>
+      Promise.reject(new Error("ack failed"))
+    );
+    expect(await restorePurchases()).toBe(true);
+    expect(useSupporterStore.getState().plus).toBe(true);
+  });
+
   test("a store failure keeps the cached entitlement", async () => {
     useSupporterStore.setState({ plus: true });
     mockGetAvailablePurchases.mockRejectedValue(new Error("offline"));

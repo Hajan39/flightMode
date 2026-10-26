@@ -110,7 +110,10 @@ export default function PassportSection() {
                 })}
               </Text>
               <Text style={[styles.stampMeta, { color: theme.mutedText }]}>
-                {Math.floor(stamp.duration / 60)} h {stamp.duration % 60} min
+                {t("passportStampDuration", {
+                  hours: Math.floor(stamp.duration / 60),
+                  minutes: stamp.duration % 60,
+                })}
               </Text>
             </View>
           ))}

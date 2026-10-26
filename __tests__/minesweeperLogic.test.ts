@@ -9,7 +9,9 @@ import {
   neighbors,
   placeMines,
   ROWS,
+  resolveTap,
   revealAllMines,
+  toggleFlag,
 } from "@/games/minesweeper/logic";
 
 function mulberry32(seed: number): () => number {
@@ -126,5 +128,84 @@ describe("minesweeper countFlagged", () => {
     board[0][0].isFlagged = true;
     board[3][5].isFlagged = true;
     expect(countFlagged(board)).toBe(2);
+  });
+});
+
+describe("minesweeper resolveTap (handlePress decision)", () => {
+  test("first tap plants mines exactly once and never loses", () => {
+    const { board, result } = resolveTap(
+      makeEmptyBoard(),
+      4,
+      4,
+      false,
+      mulberry32(7)
+    );
+    expect(["started", "win"]).toContain(result);
+    expect(countMines(board)).toBe(MINE_COUNT);
+    expect(board[4][4].isRevealed).toBe(true);
+  });
+
+  test("a second fast tap with mines already placed does not re-plant", () => {
+    const first = resolveTap(makeEmptyBoard(), 0, 0, false, mulberry32(3));
+    const minesBefore = first.board
+      .flat()
+      .map((c, i) => (c.isMine ? i : -1))
+      .filter((i) => i >= 0);
+    // Pick any still-covered safe cell for the second tap.
+    const flat = first.board.flat();
+    const idx = flat.findIndex((c) => !(c.isMine || c.isRevealed));
+    const second = resolveTap(
+      first.board,
+      Math.floor(idx / COLS),
+      idx % COLS,
+      true,
+      mulberry32(99)
+    );
+    const minesAfter = second.board
+      .flat()
+      .map((c, i) => (c.isMine ? i : -1))
+      .filter((i) => i >= 0);
+    expect(minesAfter).toEqual(minesBefore);
+    expect(["safe", "win"]).toContain(second.result);
+  });
+
+  test("tapping a mine loses and reveals every mine", () => {
+    const { board } = resolveTap(makeEmptyBoard(), 0, 0, false, mulberry32(5));
+    const idx = board.flat().findIndex((c) => c.isMine);
+    const out = resolveTap(board, Math.floor(idx / COLS), idx % COLS, true);
+    expect(out.result).toBe("lose");
+    expect(out.board.flat().every((c) => !c.isMine || c.isRevealed)).toBe(true);
+  });
+
+  test("flagged or revealed cells are ignored (same board back)", () => {
+    const { board } = resolveTap(makeEmptyBoard(), 4, 4, false, mulberry32(1));
+    expect(resolveTap(board, 4, 4, true)).toEqual({ board, result: "ignored" });
+    const idx = board.flat().findIndex((cell) => !cell.isRevealed);
+    const r = Math.floor(idx / COLS);
+    const col = idx % COLS;
+    const flagged = toggleFlag(board, r, col);
+    expect(countFlagged(flagged)).toBe(1);
+    expect(resolveTap(flagged, r, col, true).result).toBe("ignored");
+    expect(countFlagged(toggleFlag(flagged, r, col))).toBe(0);
+    expect(toggleFlag(board, 4, 4)).toBe(board);
+  });
+
+  test("revealing the last safe cell wins", () => {
+    const { board } = resolveTap(makeEmptyBoard(), 4, 4, false, mulberry32(2));
+    const flat = board.flat();
+    const covered = flat
+      .map((c, i) => (c.isMine || c.isRevealed ? -1 : i))
+      .filter((i) => i >= 0);
+    let current = board;
+    let last = "started";
+    for (const i of covered) {
+      const out = resolveTap(current, Math.floor(i / COLS), i % COLS, true);
+      current = out.board;
+      if (out.result !== "ignored") {
+        last = out.result;
+      }
+    }
+    expect(last).toBe("win");
+    expect(checkWin(current)).toBe(true);
   });
 });

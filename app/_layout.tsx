@@ -3,6 +3,7 @@ import "expo-insights";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { hideAsync, preventAutoHideAsync } from "expo-splash-screen";
 import { useEffect, useState } from "react";
+import { AppState } from "react-native";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -28,6 +29,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { installGlobalErrorHandler } from "@/utils/errorLogging";
+import { runAfterHydration } from "@/utils/hydration";
 
 // Record uncaught JS errors that a React error boundary cannot catch
 // (async callbacks, native module init). Installed at module load — before
@@ -130,8 +132,21 @@ function RootStack() {
 
   useOTAUpdate(t as (key: string) => string);
 
+  // Streak: only after the achievement store hydrated (an earlier write is
+  // overwritten by the persisted state), on launch and on every return to the
+  // foreground — the app often stays alive across days in the background.
   useEffect(() => {
-    useAchievementStore.getState().updateStreak();
+    const updateStreak = () => useAchievementStore.getState().updateStreak();
+    const cancelInitial = runAfterHydration(useAchievementStore, updateStreak);
+    const subscription = AppState.addEventListener("change", (status) => {
+      if (status === "active" && useAchievementStore.persist.hasHydrated()) {
+        updateStreak();
+      }
+    });
+    return () => {
+      cancelInitial();
+      subscription.remove();
+    };
   }, []);
 
   useEffect(() => {

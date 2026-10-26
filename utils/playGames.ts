@@ -22,7 +22,39 @@
  */
 
 let signedIn = false;
-let signInAttempted = false;
+/** Shared promise while a sign-in attempt is running (dedupes concurrent calls). */
+let signInInFlight: Promise<void> | null = null;
+/** Consecutive failed sign-ins and when the last one failed (for backoff). */
+let failedAttempts = 0;
+let lastFailedAt: number | null = null;
+
+const SIGN_IN_BACKOFF_BASE_MS = 60_000;
+const SIGN_IN_BACKOFF_MAX_MS = 15 * 60_000;
+
+/**
+ * Wait after `failures` consecutive failed sign-ins before trying again:
+ * 1 min, 2 min, 4 min … capped at 15 min. Pure, exported for tests.
+ */
+export function getSignInBackoffMs(failures: number): number {
+  if (failures <= 0) {
+    return 0;
+  }
+  return Math.min(
+    SIGN_IN_BACKOFF_BASE_MS * 2 ** (failures - 1),
+    SIGN_IN_BACKOFF_MAX_MS
+  );
+}
+
+/**
+ * Supplies the Play ids of every locally unlocked achievement, so they can be
+ * (re)sent after a sign-in succeeds — unlocks made while signed out would
+ * otherwise never reach Play. Registered by `store/useAchievementStore.ts`
+ * (injected to avoid a circular import).
+ */
+let unlockedPlayIdsSource: (() => string[]) | null = null;
+export function setUnlockedPlayIdsSource(source: (() => string[]) | null) {
+  unlockedPlayIdsSource = source;
+}
 
 /**
  * Minimal shape we expect from whatever native module ends up providing PGS.
@@ -63,6 +95,15 @@ function getNative(): NativePlayGames | null {
   return cachedNative;
 }
 
+/** Test seam: inject a fake native module (or null) and reset session state. */
+export function __setNativeForTests(native: NativePlayGames | null) {
+  cachedNative = native;
+  signedIn = false;
+  signInInFlight = null;
+  failedAttempts = 0;
+  lastFailedAt = null;
+}
+
 /** True when a native PGS module is actually linked into this binary. */
 export function isPlayGamesAvailable(): boolean {
   return getNative() !== null;
@@ -74,30 +115,91 @@ export function isPlayGamesSignedIn(): boolean {
 }
 
 /**
- * Attempt a silent sign-in once per app session. Safe to call on launch and
- * again lazily before pushing an achievement. Never throws.
+ * Attempt a silent sign-in. Safe to call on launch, on every unlock and when
+ * the network comes back: no-op once signed in, deduped while an attempt is
+ * running, and backed off after a failure (offline, Play still signing in, no
+ * activity yet) instead of giving up for the whole session. After a successful
+ * sign-in every locally unlocked achievement is re-sent. `ignoreBackoff` is
+ * for strong signals such as the network becoming reachable. Never throws.
  */
-export async function initPlayGames(): Promise<void> {
-  if (signInAttempted) {
-    return;
+export function initPlayGames(
+  options: { ignoreBackoff?: boolean } = {}
+): Promise<void> {
+  if (signedIn) {
+    return Promise.resolve();
   }
-  signInAttempted = true;
-
+  if (signInInFlight) {
+    return signInInFlight;
+  }
   const native = getNative();
   if (!native) {
-    return;
+    return Promise.resolve();
+  }
+  if (
+    !options.ignoreBackoff &&
+    lastFailedAt !== null &&
+    Date.now() - lastFailedAt < getSignInBackoffMs(failedAttempts)
+  ) {
+    return Promise.resolve();
   }
 
-  try {
-    if (native.signInSilently) {
-      signedIn = Boolean(await native.signInSilently());
-    } else if (native.isAuthenticated) {
-      signedIn = Boolean(await native.isAuthenticated());
+  signInInFlight = (async () => {
+    let ok = false;
+    try {
+      if (native.signInSilently) {
+        ok = Boolean(await native.signInSilently());
+      } else if (native.isAuthenticated) {
+        ok = Boolean(await native.isAuthenticated());
+      }
+    } catch {
+      // Silent sign-in can legitimately fail (user never linked Play Games,
+      // no network, etc.). We stay signed out and retry later with backoff.
+      ok = false;
     }
+    signedIn = ok;
+    if (ok) {
+      failedAttempts = 0;
+      lastFailedAt = null;
+    } else {
+      failedAttempts += 1;
+      lastFailedAt = Date.now();
+    }
+  })();
+
+  const attempt = signInInFlight;
+  return attempt
+    .then(() => {
+      signInInFlight = null;
+      return signedIn ? resendUnlockedAchievements() : undefined;
+    })
+    .catch(() => {
+      signInInFlight = null;
+    });
+}
+
+/**
+ * Re-sends every locally unlocked achievement that has a Play id. Unlocking is
+ * idempotent on Play's side, so this is safe to repeat. No-op when signed out
+ * or without the native module. Never throws.
+ */
+export async function resendUnlockedAchievements(): Promise<void> {
+  const native = getNative();
+  if (!(signedIn && native?.unlockAchievement && unlockedPlayIdsSource)) {
+    return;
+  }
+  let playIds: string[] = [];
+  try {
+    playIds = [...new Set(unlockedPlayIdsSource().filter(Boolean))];
   } catch {
-    // Silent sign-in can legitimately fail (user never linked Play Games,
-    // no network, etc.). That's fine — we stay signed out and no-op.
-    signedIn = false;
+    return;
+  }
+  for (const playId of playIds) {
+    try {
+      // biome-ignore lint/performance/noAwaitInLoops: sequential on purpose — don't flood the native bridge
+      await native.unlockAchievement(playId);
+    } catch {
+      // Best-effort per achievement.
+    }
   }
 }
 

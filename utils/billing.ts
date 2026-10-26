@@ -40,7 +40,8 @@ function loadIap(): ExpoIap | null {
  * `source` separates a real checkout ("purchase") from a store re-sync at
  * launch / manual restore ("restore"): restores re-grant entitlements but must
  * not re-report `support_completed`, or every Plus owner would send the event
- * on every app start.
+ * on every app start. Tips are the exception: a restored tip is by definition
+ * still unconsumed (never counted), so it is counted and reported once there.
  */
 async function handlePurchase(
   purchase: Purchase,
@@ -51,32 +52,47 @@ async function handlePurchase(
     return;
   }
   const isTip = (TIP_SKUS as readonly string[]).includes(purchase.productId);
-  if (purchase.productId === PLUS_SKU) {
+  const isPlus = purchase.productId === PLUS_SKU;
+  if (!(isPlus || isTip)) {
+    return;
+  }
+
+  if (isPlus) {
+    // Entitlement first: it must not depend on the acknowledge round-trip.
     useSupporterStore.getState().setPlus(true);
-  } else if (isTip) {
-    useSupporterStore.getState().addTip();
-  } else {
-    return;
-  }
-  if (source === "purchase") {
-    captureAnalyticsEvent("support_completed", {
-      placement: "plus",
-      product: purchase.productId,
-      provider: "play_billing",
+    if (source === "purchase") {
+      reportSupportCompleted(purchase.productId);
+    }
+    // Plus is acknowledged once; re-finishing an acknowledged purchase on
+    // every restore is a pointless store round-trip.
+    if ("isAcknowledgedAndroid" in purchase && purchase.isAcknowledgedAndroid) {
+      return;
+    }
+    await lib.finishTransaction({ isConsumable: false, purchase }).catch(() => {
+      // Best effort: an unacknowledged purchase is retried by the next restore.
     });
-  }
-  // Plus is acknowledged once; re-finishing an acknowledged purchase on every
-  // restore is a pointless store round-trip.
-  if (
-    !isTip &&
-    "isAcknowledgedAndroid" in purchase &&
-    purchase.isAcknowledgedAndroid
-  ) {
     return;
   }
-  // Tips are consumed so they can be bought again; Plus is acknowledged once.
-  await lib.finishTransaction({ isConsumable: isTip, purchase }).catch(() => {
-    // Best effort: an unfinished purchase is retried by the next restore.
+
+  // Tips are consumed so they can be bought again. Count a tip only once its
+  // consume succeeded: an unconsumed tip comes back on the next restore, and
+  // counting it before (or again after) a failed consume would double count.
+  try {
+    await lib.finishTransaction({ isConsumable: true, purchase });
+  } catch {
+    return;
+  }
+  useSupporterStore.getState().addTip();
+  // A tip whose consume failed during checkout is completed by a later
+  // restore — that is still the one real purchase, so report it then.
+  reportSupportCompleted(purchase.productId);
+}
+
+function reportSupportCompleted(product: string) {
+  captureAnalyticsEvent("support_completed", {
+    placement: "plus",
+    product,
+    provider: "play_billing",
   });
 }
 

@@ -671,6 +671,7 @@
   passportCities: "도시",
   passportCountries: "국가",
   passportUnknownCity: "어딘가",
+  passportStampDuration: "{{hours}}시간 {{minutes}}분",
   passportShare: "내 여권 공유",
   passportShareMessage:
     "내 FlightMode 여권: 비행 {{flights}}회, 하늘에서 {{hours}}시간, 도시 {{cities}}곳 ✈️ 다음 비행을 위한 오프라인 게임과 여행 도구: {{url}}",

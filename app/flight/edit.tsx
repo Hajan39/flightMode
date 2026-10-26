@@ -299,7 +299,7 @@ export default function FlightEditScreen() {
         reminder_kind: "flight_ready",
         scheduled_for: reminderResult.scheduledFor,
       });
-    } else {
+    } else if (reminderResult.reason === "permission_denied") {
       captureAnalyticsEvent("reminder_permission_denied", {
         departure_time: departureTime,
         reminder_kind: "flight_ready",

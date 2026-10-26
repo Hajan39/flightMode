@@ -201,6 +201,26 @@ export function newGame(level = 1): BreakerState {
   };
 }
 
+/**
+ * Power-up timers are wall-clock deadlines, so a pause would silently burn
+ * them. On resume, push every active deadline back by the paused duration.
+ * 0 (= off) stays 0; a deadline that had already passed stays in the past.
+ */
+export function shiftDeadlines(
+  state: BreakerState,
+  pausedMs: number
+): BreakerState {
+  if (pausedMs <= 0) {
+    return state;
+  }
+  const shift = (until: number) => (until > 0 ? until + pausedMs : 0);
+  return {
+    ...state,
+    fireUntil: shift(state.fireUntil),
+    wideUntil: shift(state.wideUntil),
+  };
+}
+
 export const isCleared = (bricks: number[]) => !bricks.some((hp) => hp > 0);
 
 /** Launches every ball resting on the paddle, slightly off-vertical. */

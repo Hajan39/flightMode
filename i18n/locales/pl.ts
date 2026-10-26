@@ -686,6 +686,7 @@
   passportCities: "Miasta",
   passportCountries: "Kraje",
   passportUnknownCity: "Gdzieś",
+  passportStampDuration: "{{hours}} godz. {{minutes}} min",
   passportShare: "Udostępnij mój paszport",
   passportShareMessage:
     "Mój paszport FlightMode: {{flights}} lotów, {{hours}} h w powietrzu, {{cities}} miast ✈️ Gry offline i narzędzia podróżne na kolejny lot: {{url}}",

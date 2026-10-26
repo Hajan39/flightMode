@@ -666,6 +666,7 @@
   passportCities: "城市",
   passportCountries: "国家",
   passportUnknownCity: "某处",
+  passportStampDuration: "{{hours}}小时{{minutes}}分钟",
   passportShare: "分享我的护照",
   passportShareMessage:
     "我的 FlightMode 飞行护照：{{flights}} 次航班，空中 {{hours}} 小时，{{cities}} 座城市 ✈️ 下次飞行的离线游戏和旅行工具：{{url}}",
