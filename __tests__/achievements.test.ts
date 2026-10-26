@@ -40,7 +40,9 @@ describe("achievements integrity", () => {
 
   test("first-game unlocks once any game has been played", () => {
     const first = achievements.find((a) => a.id === "first-game");
-    expect(first).toBeDefined();
+    if (!first) {
+      throw new Error("first-game achievement missing");
+    }
     const state: AchievementState = {
       ...emptyState,
       gameProgress: {
@@ -56,6 +58,6 @@ describe("achievements integrity", () => {
         },
       },
     };
-    expect(first?.condition(state)).toBe(true);
+    expect(first.condition(state)).toBe(true);
   });
 });

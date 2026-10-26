@@ -50,6 +50,40 @@ describe("snake step", () => {
     expect(step([0, 1, 2], "up", -1)).toEqual({ dead: true });
   });
 
+  test("hitting the bottom and left walls is death too", () => {
+    // Bottom row (row 17) moving down; column 0 moving left.
+    const bottom = 17 * GRID_COLS + 5;
+    expect(step([bottom, bottom - GRID_COLS], "down", -1)).toEqual({
+      dead: true,
+    });
+    // Column 0 moving left must not wrap onto the previous row's last cell.
+    expect(step([GRID_COLS * 3, GRID_COLS * 3 + 1], "left", -1)).toEqual({
+      dead: true,
+    });
+  });
+
+  test("moving up and down changes the row by one", () => {
+    const res = step([5 * GRID_COLS + 5], "up", -1);
+    expect(res).toEqual({
+      ate: false,
+      dead: false,
+      snake: [4 * GRID_COLS + 5],
+    });
+    const down = step([5 * GRID_COLS + 5], "down", -1);
+    expect(down).toEqual({
+      ate: false,
+      dead: false,
+      snake: [6 * GRID_COLS + 5],
+    });
+  });
+
+  test("chasing your own tail is legal: the tail moves away this tick", () => {
+    // 2×2 loop — head 19 (r1c1), 18 (r1c0), 0 (r0c0), tail 1 (r0c1).
+    // Moving up enters the tail cell, which is vacated on the same tick.
+    const res = step([19, 18, 0, 1], "up", -1);
+    expect(res).toEqual({ ate: false, dead: false, snake: [1, 19, 18, 0] });
+  });
+
   test("running into your own body (not the tail) is death", () => {
     // snake [1,19,18,0]; head 1 (r0c1) moving down → r1c1 = 19, which is a
     // body segment (not the tail 0) → dead.

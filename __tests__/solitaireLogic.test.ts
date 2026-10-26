@@ -3,6 +3,8 @@ import {
   type Board,
   type Card,
   canAutoComplete,
+  canDropOnFoundation,
+  canDropOnTableau,
   cardId,
   deal,
   dealPlayable,
@@ -100,6 +102,28 @@ describe("solitaire stock", () => {
 
   test("returns null when stock and waste are empty", () => {
     expect(draw(makeState({}))).toBeNull();
+  });
+});
+
+describe("solitaire drop rules", () => {
+  // suits: 0 ♠ black, 1 ♥ red, 2 ♦ red, 3 ♣ black
+  test("tableau: one lower, opposite colour, onto a face-up card only", () => {
+    expect(canDropOnTableau(up(6, 1), [up(7, 0)])).toBe(true);
+    expect(canDropOnTableau(up(6, 3), [up(7, 2)])).toBe(true);
+    expect(canDropOnTableau(up(6, 3), [up(7, 0)])).toBe(false); // same colour
+    expect(canDropOnTableau(up(5, 1), [up(7, 0)])).toBe(false); // gap
+    expect(canDropOnTableau(up(8, 1), [up(7, 0)])).toBe(false); // higher
+    expect(canDropOnTableau(up(6, 1), [down(7, 0)])).toBe(false); // face-down
+    expect(canDropOnTableau(up(13, 1), [])).toBe(true);
+    expect(canDropOnTableau(up(12, 1), [])).toBe(false);
+  });
+
+  test("foundation: ace on empty, then same suit one higher", () => {
+    expect(canDropOnFoundation(up(1, 2), [])).toBe(true);
+    expect(canDropOnFoundation(up(2, 2), [])).toBe(false);
+    expect(canDropOnFoundation(up(2, 2), [up(1, 2)])).toBe(true);
+    expect(canDropOnFoundation(up(2, 1), [up(1, 2)])).toBe(false); // other red suit
+    expect(canDropOnFoundation(up(3, 2), [up(1, 2)])).toBe(false);
   });
 });
 

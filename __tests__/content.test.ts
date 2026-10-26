@@ -92,6 +92,8 @@ describe("remote content feed (content/feed.json)", () => {
   const { parseContentFeed } = require("@/utils/contentSync");
 
   test("every feed item passes the app's own validation", () => {
+    // Guard: the loops below would pass vacuously on an empty feed.
+    expect(feed.items.length).toBeGreaterThan(0);
     const parsed = parseContentFeed(feed, null);
     expect(parsed.items).toHaveLength(feed.items.length);
   });
@@ -116,5 +118,43 @@ describe("remote content feed (content/feed.json)", () => {
       feed.items[0].id,
     ]);
     expect(() => parseContentFeed({ items: [] }, null)).toThrow();
+    expect(() => parseContentFeed({ items: {}, version: "x" }, null)).toThrow();
+  });
+
+  test("item validation rejects each malformed field on its own", () => {
+    const valid = {
+      body: { en: "Body" },
+      category: { en: "Travel Tips" },
+      id: "ok",
+      readTime: 3,
+      title: { en: "Title" },
+    };
+    const cases: Record<string, unknown> = {
+      blankBody: { ...valid, body: { en: "" }, id: "blankBody" },
+      blankTitle: { ...valid, id: "blankTitle", title: { en: "   " } },
+      imageNotString: { ...valid, id: "imageNotString", image: 42 },
+      negativeReadTime: { ...valid, id: "negativeReadTime", readTime: -1 },
+      noCategory: { ...valid, category: undefined, id: "noCategory" },
+      noEnglish: { ...valid, id: "noEnglish", title: { cs: "Jen česky" } },
+      numericId: { ...valid, id: 7 },
+      zeroReadTime: { ...valid, id: "zeroReadTime", readTime: 0 },
+    };
+    const parsed = parseContentFeed(
+      {
+        items: [
+          valid,
+          { ...valid, id: "withImage", image: "https://x/y.jpg" },
+          ...Object.values(cases),
+          null,
+        ],
+        version: "v2",
+      },
+      "v1"
+    );
+    expect(parsed.version).toBe("v2");
+    expect(parsed.items.map((a: ContentItem) => a.id)).toEqual([
+      "ok",
+      "withImage",
+    ]);
   });
 });

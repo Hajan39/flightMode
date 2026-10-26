@@ -15,6 +15,21 @@ describe("rankStandings", () => {
     ]);
   });
 
+  test("competition ranking: a shared rank skips the following places (1,2,2,4)", () => {
+    const ranked = rankStandings([
+      { score: 1 },
+      { score: 5 },
+      { score: 3 },
+      { score: 3 },
+    ]);
+    expect(ranked.map((r) => [r.index, r.rank])).toEqual([
+      [1, 1],
+      [2, 2],
+      [3, 2],
+      [0, 4],
+    ]);
+  });
+
   test("uses tiebreak before falling back to seat order", () => {
     const ranked = rankStandings([
       { score: 2, tiebreak: 10 },
@@ -57,6 +72,20 @@ describe("recordMatch", () => {
     expect(res.last).toBe(5);
     expect(res.currentStreak).toBe(0);
     expect(useGameStore.getState().progress["mp-test"].bestStreak).toBe(1);
+  });
+
+  test("a negative host score is recorded as 0 (and rounded otherwise)", () => {
+    let res = recordMatch("mp-test", [{ score: -4 }, { score: 2 }]);
+    expect(res.last).toBe(0);
+    res = recordMatch("mp-test", [{ score: 6.6 }, { score: 2 }]);
+    expect(res.last).toBe(7);
+  });
+
+  test("no bonus is added when the host does not win", () => {
+    const res = recordMatch("mp-test", [{ score: 3 }, { score: 8 }], {
+      bonusIfWon: 10,
+    });
+    expect(res.last).toBe(3);
   });
 
   test("hostIndex can point at another seat", () => {

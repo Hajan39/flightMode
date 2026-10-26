@@ -3,6 +3,7 @@ import {
   getDayOfYear,
   getKeyboardRows,
   getWordPool,
+  mergeKeyboard,
   WORD_POOL,
   type WordGuessLanguage,
 } from "@/games/word-guess/logic";
@@ -52,6 +53,26 @@ describe("word-guess checkGuess", () => {
       "absent",
       "correct",
       "absent",
+    ]);
+  });
+
+  test("a letter already used as green is not reused as yellow elsewhere", () => {
+    // target ABCDE has a single A, used by the green at index 0 — the second
+    // guessed A must be absent, not present.
+    expect(checkGuess("AAXXX", "ABCDE")).toEqual([
+      "correct",
+      "absent",
+      "absent",
+      "absent",
+      "absent",
+    ]);
+    // Green later in the word still wins over an earlier duplicate.
+    expect(checkGuess("XAXXA", "BCDEA")).toEqual([
+      "absent",
+      "absent",
+      "absent",
+      "absent",
+      "correct",
     ]);
   });
 
@@ -110,3 +131,35 @@ describe.each(["cs", "de", "en"] as WordGuessLanguage[])(
     });
   }
 );
+
+describe("word-guess mergeKeyboard", () => {
+  test("keys only ever upgrade: absent < present < correct", () => {
+    let keys = mergeKeyboard(
+      {},
+      ["absent", "present", "absent", "absent", "correct"],
+      ["A", "B", "C", "D", "E"]
+    );
+    expect(keys).toEqual({
+      A: "absent",
+      B: "present",
+      C: "absent",
+      D: "absent",
+      E: "correct",
+    });
+    keys = mergeKeyboard(
+      keys,
+      ["present", "correct", "absent", "absent", "absent"],
+      ["A", "B", "X", "Y", "E"]
+    );
+    expect(keys.A).toBe("present"); // absent → present
+    expect(keys.B).toBe("correct"); // present → correct
+    expect(keys.E).toBe("correct"); // never downgraded
+    expect(keys.X).toBe("absent");
+  });
+
+  test("does not mutate the previous keyboard state", () => {
+    const before = { A: "absent" as const };
+    mergeKeyboard(before, ["correct"], ["A"]);
+    expect(before).toEqual({ A: "absent" });
+  });
+});

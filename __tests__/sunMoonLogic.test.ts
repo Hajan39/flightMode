@@ -54,6 +54,41 @@ describe("sun-moon findConflicts", () => {
     expect(conflicts.has(2)).toBe(false);
   });
 
+  test("flags triples even when the line is balanced (6 wide)", () => {
+    // SSSMMM: 3 of each = exactly half, so only the triple rule can fire.
+    const grid = parseRows([
+      "SSSMMM",
+      "......",
+      "......",
+      "......",
+      "......",
+      "......",
+    ]);
+    const conflicts = findConflicts(grid, 6);
+    expect([...conflicts].sort((a, b) => a - b)).toEqual([0, 1, 2, 3, 4, 5]);
+    // A pair is fine.
+    const pairs = parseRows([
+      "SSMSMM",
+      "......",
+      "......",
+      "......",
+      "......",
+      "......",
+    ]);
+    expect(findConflicts(pairs, 6).size).toBe(0);
+  });
+
+  test("flags too many moons in a column, without a triple", () => {
+    const grid = parseRows(["M...", "M...", "S...", "M..."]);
+    const conflicts = findConflicts(grid, 4);
+    expect([...conflicts].sort((a, b) => a - b)).toEqual([0, 4, 12]);
+  });
+
+  test("exactly half of one symbol is allowed", () => {
+    const grid = parseRows(["SM.S", "....", "....", "...."]);
+    expect(findConflicts(grid, 4).size).toBe(0);
+  });
+
   test("blank cells are never conflicts", () => {
     const grid = parseRows(["....", "....", "....", "...."]);
     expect(findConflicts(grid, 4).size).toBe(0);
