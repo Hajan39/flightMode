@@ -7,6 +7,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P0 (aktivni)
 
+- **Sibenice — ostatni jazyky**: pl je take orezana na A–Z (LAD = ląd, BEG = bieg) a de/pt/it/es obsahuji pochybna kratka slova (BOG, RAN, EIX, ORT, TOR); prepsat jako cestinu (realny pravopis, klavesnice uz diakritiku zvladne)
 - **1.5.1 overit na zarizeni**: release build je nove minifikovany (R8) — otestovat nakup Plus/tip jar a Play Games prihlaseni + odemceni achievementu; na tabletu otoceni displeje a Turbulence Test na sirku (smer naklonu)
 - ~~sjednotit 8 multiplayer her na sdilene komponenty + design tokeny~~ — hotovo 2026-09-13 (`components/multiplayer/`, `recordMatch` konvence)
 - ~~fallback clanku na EN pro jazyky bez lokalizace~~ — hotovo 2026-09-13

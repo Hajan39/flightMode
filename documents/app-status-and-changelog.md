@@ -132,6 +132,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-10-25
 
+- sibenice cestina: seznam byl ořezany na A–Z (BEH, PRISTANI) a obsahoval nesmysly (PLN, OSOV, TYRL); novy seznam 78 skutecnych slov s diakritikou, klavesnice A–Z odkryva i pismena s hackem/carkou (R → Ř); testy hlidaji resitelnost vsech jazyku; z Wordle odstraneno VEPŘO a SUSHI
 - prevodnik men offline: drive offline jen 33 kuratorovanych men, ostatni (z rozsireneho seznamu nebo podle regionu telefonu) ukazovaly "–" dokud se nestahly zive kurzy; nove pribaleny snimek 165 men (`data/currencyRatesSnapshot.ts`, kurzy 2026-10-25) — kazda nabizena mena prevadi i bez site, zive kurzy maji prednost; test hlida pokryti
 
 ## 2026-10-17

@@ -29,6 +29,7 @@ import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
 import type { GameProgressUpdate } from "@/types/game";
 import { getSoleWinnerIndex, recordMatch } from "@/utils/multiplayerScoring";
+import { countWrong, isRevealed, isSolved, wordHasLetter } from "./logic";
 import { type Difficulty, pickWord } from "./words";
 
 const GAME_ID = "duel-hangman";
@@ -170,10 +171,8 @@ export default function DuelHangmanGame() {
   const [progress, setProgress] = useState<GameProgressUpdate | undefined>();
 
   const solo = players.length === 1;
-  const wrongCount = word
-    ? [...guessed].filter((l) => !word.includes(l)).length
-    : 0;
-  const isWon = word ? word.split("").every((l) => guessed.has(l)) : false;
+  const wrongCount = word ? countWrong(word, guessed) : 0;
+  const isWon = isSolved(word, guessed);
   const isLost = wrongCount >= MAX_WRONG;
   const gameOver = isWon || isLost;
   const current = players[Math.min(guesser, Math.max(0, players.length - 1))];
@@ -183,7 +182,7 @@ export default function DuelHangmanGame() {
     slotBorderColor = isWon ? theme.successBorder : theme.danger;
   }
   const hiddenLetterColor = gameOver ? theme.danger : "transparent";
-  const wordLetters = word.split("").map((letter, index) => ({
+  const wordLetters = [...word].map((letter, index) => ({
     id: `${letter}-${index + 1}-${word.length}`,
     letter,
   }));
@@ -221,14 +220,14 @@ export default function DuelHangmanGame() {
     next.add(letter);
     setGuessed(next);
 
-    if (word.includes(letter)) {
+    if (wordHasLetter(word, letter)) {
       haptic.success();
     } else {
       haptic.error();
     }
 
-    const won = word.split("").every((l) => next.has(l));
-    const lost = [...next].filter((l) => !word.includes(l)).length >= MAX_WRONG;
+    const won = isSolved(word, next);
+    const lost = countWrong(word, next) >= MAX_WRONG;
 
     if (won) {
       setScores((prev) => prev.map((s, i) => (i === guesser ? s + 10 : s)));
@@ -358,12 +357,14 @@ export default function DuelHangmanGame() {
                 style={[
                   styles.letterChar,
                   {
-                    color: guessed.has(letter) ? theme.text : hiddenLetterColor,
+                    color: isRevealed(letter, guessed)
+                      ? theme.text
+                      : hiddenLetterColor,
                     fontSize,
                   },
                 ]}
               >
-                {guessed.has(letter) || gameOver ? letter : "_"}
+                {isRevealed(letter, guessed) || gameOver ? letter : "_"}
               </Text>
             </RNView>
           ))}
@@ -403,8 +404,8 @@ export default function DuelHangmanGame() {
             <RNView key={`kr-${row.join("")}`} style={styles.keyRow}>
               {row.map((letter) => {
                 const used = guessed.has(letter);
-                const correct = used && word.includes(letter);
-                const wrong = used && !word.includes(letter);
+                const correct = used && wordHasLetter(word, letter);
+                const wrong = used && !wordHasLetter(word, letter);
                 let keyBackground = theme.elevated;
                 if (correct) {
                   keyBackground = theme.successBorder;

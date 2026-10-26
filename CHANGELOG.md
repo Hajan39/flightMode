@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- **Hangman Czech words**: the Czech pool had been flattened to plain A–Z for the keyboard, leaving misspelled words (BEH, PRISTANI, VZDUSNIK) and outright non-words (PLN, OSOV, TYRL). It is now 78 real aviation/travel words in proper spelling (PŘISTÁNÍ, LOĎ, VÍTR…), and the A–Z keyboard reveals accented letters too (R uncovers Ř, E uncovers É and Ě). Tests assert every word in every language is solvable on the keyboard and the old junk stays out. Wordle's Czech pool drops the colloquial VEPŘO and the English-spelled SUSHI.
 - **Currency converter offline**: only the 33 curated currencies had an offline rate, so a home or target currency from the full list (e.g. NOK, RON, BGN, PHP) — or a phone region outside the curated table — showed just "–" in airplane mode until live rates had been fetched once. A bundled snapshot of 165 currencies (`data/currencyRatesSnapshot.ts`, 2026-10-25 reference rates) now backs every currency the picker offers; live rates still override it when available. A test asserts every offered currency converts with no network.
 - **Tilt steering was mirrored on Android** (tilt left → paddle right) in Box Breaker, Maze Muncher and Turbulence Test: Android reports the reaction to gravity, not the pull, so its axes are now flipped (`gravityTilt` in `games/tilt-balance/logic.ts`).
 
