@@ -910,6 +910,8 @@
   settingsReportBug: "Signaler un bug",
   settingsReportBugHint: "Ouvre l'application mail",
   settingsSuggestFeature: "Suggérer une fonctionnalité",
+  settingsPrivacyPolicy: "Politique de confidentialité",
+  settingsWebsite: "Site web de FlightMode",
   settingsSuggestFeatureHint: "Les idées sont bienvenues",
   settingsBecomeSupporter: "FlightMode Plus et pourboires",
   settingsSupportDevelopment: "Aide à améliorer les prochaines mises à jour",

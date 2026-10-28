@@ -860,6 +860,8 @@
   settingsReportBug: "报告错误",
   settingsReportBugHint: "打开邮件应用",
   settingsSuggestFeature: "建议功能",
+  settingsPrivacyPolicy: "隐私政策",
+  settingsWebsite: "FlightMode 网站",
   settingsSuggestFeatureHint: "欢迎提出想法",
   settingsBecomeSupporter: "FlightMode Plus 与打赏",
   settingsSupportDevelopment: "帮助改进后续更新",

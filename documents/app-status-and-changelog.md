@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-10-28
+
+- promo web v `docs/` (GitHub Pages, en + cs, bez trackeru) + publikovana privacy policy; odkazy v Settings; `release-main` ignoruje `docs/**`
+
 ## 2026-10-27
 
 - backlog: theme tokeny ve hrach (kontrast test), pauza Color Clash + Odd One Out, Word Guess hitSlop, responzivni mrizka uspechu v profilu, Play Games sign-in az po onboardingu, jest ignoruje `.claude/`

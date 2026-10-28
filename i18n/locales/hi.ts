@@ -862,6 +862,8 @@
   settingsReportBug: "बग रिपोर्ट करें",
   settingsReportBugHint: "मेल ऐप खोलता है",
   settingsSuggestFeature: "सुविधा सुझाएं",
+  settingsPrivacyPolicy: "गोपनीयता नीति",
+  settingsWebsite: "FlightMode वेबसाइट",
   settingsSuggestFeatureHint: "विचार स्वागत हैं",
   settingsBecomeSupporter: "FlightMode Plus और टिप",
   settingsSupportDevelopment: "आने वाले अपडेट बेहतर बनाने में मदद करें",

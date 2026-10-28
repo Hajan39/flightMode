@@ -893,6 +893,8 @@
   settingsReportBug: "Reportar bug",
   settingsReportBugHint: "Abre o app de e-mail",
   settingsSuggestFeature: "Sugerir funcionalidade",
+  settingsPrivacyPolicy: "Política de privacidade",
+  settingsWebsite: "Site do FlightMode",
   settingsSuggestFeatureHint: "Ideias são bem-vindas",
   settingsBecomeSupporter: "FlightMode Plus e gorjetas",
   settingsSupportDevelopment: "Ajude a melhorar as próximas atualizações",

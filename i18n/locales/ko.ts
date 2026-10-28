@@ -869,6 +869,8 @@
   settingsReportBug: "버그 신고",
   settingsReportBugHint: "메일 앱을 엽니다",
   settingsSuggestFeature: "기능 제안",
+  settingsPrivacyPolicy: "개인정보 처리방침",
+  settingsWebsite: "FlightMode 웹사이트",
   settingsSuggestFeatureHint: "아이디어를 환영합니다",
   settingsBecomeSupporter: "FlightMode Plus 및 팁",
   settingsSupportDevelopment: "앞으로의 업데이트 개선에 도움 주세요",

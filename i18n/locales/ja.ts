@@ -874,6 +874,8 @@
   settingsReportBug: "バグを報告",
   settingsReportBugHint: "メールアプリを開きます",
   settingsSuggestFeature: "機能を提案",
+  settingsPrivacyPolicy: "プライバシーポリシー",
+  settingsWebsite: "FlightMode ウェブサイト",
   settingsSuggestFeatureHint: "アイデアを歓迎します",
   settingsBecomeSupporter: "FlightMode Plus とチップ",
   settingsSupportDevelopment: "今後のアップデート改善を支援",

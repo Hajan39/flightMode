@@ -887,6 +887,8 @@
   settingsReportBug: "Zgłoś błąd",
   settingsReportBugHint: "Otwiera klienta poczty",
   settingsSuggestFeature: "Zaproponuj funkcję",
+  settingsPrivacyPolicy: "Polityka prywatności",
+  settingsWebsite: "Strona FlightMode",
   settingsSuggestFeatureHint: "Pomysły są mile widziane",
   settingsBecomeSupporter: "FlightMode Plus i napiwki",
   settingsSupportDevelopment: "Pomóż ulepszać przyszłe aktualizacje",

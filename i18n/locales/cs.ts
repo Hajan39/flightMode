@@ -742,6 +742,8 @@ export const cs = {
   settingsReportBug: "Nahlásit chybu",
   settingsReportBugHint: "Otevře e-mailovou aplikaci",
   settingsSuggestFeature: "Navrhnout funkci",
+  settingsPrivacyPolicy: "Zásady ochrany soukromí",
+  settingsWebsite: "Web FlightMode",
   settingsSuggestFeatureHint: "Nápady jsou vítány",
   settingsBecomeSupporter: "FlightMode Plus a spropitné",
   settingsSupportDevelopment: "Pomoz vylepšit budoucí aktualizace",

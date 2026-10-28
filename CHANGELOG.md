@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+
+- **Website and privacy policy:** a small promo site (English + Czech) with the published privacy policy at https://hajan39.github.io/flightMode/ — no trackers, no cookies. Settings → Support links to the privacy policy and the website (Czech users get the Czech pages).
+
 ### Fixed
 
 - **Backlog sweep — games and profile:** game colours come from the theme (readable in dark / crazy / Plus themes: 2048 numbers, Word Guess tiles, Minesweeper 7–8, Sky Defense board; error red slightly darker app-wide). Color Clash and Odd One Out can be paused and resume from the exact remaining time. Word Guess keys catch taps in the gaps between them. The Profile achievement grid fills the width (2 columns on phones, 4–5 on tablets). Play Games no longer asks to sign in during onboarding — only once you reach Home. Tests ignore Claude Code worktree copies in `.claude/`.

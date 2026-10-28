@@ -916,6 +916,8 @@
   settingsReportBug: "Fehler melden",
   settingsReportBugHint: "Öffnet die Mail-App",
   settingsSuggestFeature: "Feature vorschlagen",
+  settingsPrivacyPolicy: "Datenschutzerklärung",
+  settingsWebsite: "FlightMode-Website",
   settingsSuggestFeatureHint: "Ideen sind willkommen",
   settingsBecomeSupporter: "FlightMode Plus & Trinkgeld",
   settingsSupportDevelopment: "Hilf, zukünftige Updates zu verbessern",

@@ -900,6 +900,8 @@
   settingsReportBug: "Reportar un error",
   settingsReportBugHint: "Abre la app de correo",
   settingsSuggestFeature: "Sugerir una función",
+  settingsPrivacyPolicy: "Política de privacidad",
+  settingsWebsite: "Sitio web de FlightMode",
   settingsSuggestFeatureHint: "Las ideas son bienvenidas",
   settingsBecomeSupporter: "FlightMode Plus y propinas",
   settingsSupportDevelopment: "Ayuda a mejorar futuras actualizaciones",

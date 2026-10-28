@@ -7,7 +7,8 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P0 (aktivni)
 
-- **Privacy policy**: koncept v `documents/privacy-policy.md` ceka na schvaleni vlastnika + hostovanou URL (pak odkaz v Settings a v Play listingu; `assets/play-store/metadata.json` ma placeholder)
+- ~~**Privacy policy**~~ — schvaleno a publikovano 2026-10-28: `docs/privacy/` (GitHub Pages, https://hajan39.github.io/flightMode/privacy/), odkaz v Settings; zbyva: zapnout GitHub Pages (Settings → Pages → main /docs) a vlozit URL do Play Console (App content → Privacy policy)
+- **Promo web** (`docs/`, en + cs): sdilet na AlternativeTo / Product Hunt / Reddit (r/androidapps, r/travel) / ceske cestovatelske skupiny; po realnych screenshotech z telefonu nahradit web screenshoty
 - **Play Console achievementy**: popisy Word Solver / Word Master / Sudoku Master / Snake Charmer / High Scorer / Slide Master se zmenily — znovu exportovat (`scripts/export-pgs-achievements.mjs`) a aktualizovat v Play Console
 - **PostHog**: `app_error.error_message` prejmenovano na `error_code` — upravit dashboardy; v projektu zapnout discard client IP
 - ~~**Pristupnost her**~~ — hotovo 2026-10-26 (kolo 4); zbyva overit TalkBack/VoiceOver na zarizeni a odd-one-out pauzu. Puvodne: obal `A11yOverlayScope` (`components/A11yOverlayScope.tsx`) zavest do her, aby TalkBack necetl desku pod PassDevice/pauzou ("neprozrazuj"); auto-pauza pri prechodu do pozadi pro casovane hry

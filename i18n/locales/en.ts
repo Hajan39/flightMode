@@ -755,6 +755,8 @@ export const en = {
   settingsReportBug: "Report a Bug",
   settingsReportBugHint: "Opens your mail app",
   settingsSuggestFeature: "Suggest a Feature",
+  settingsPrivacyPolicy: "Privacy Policy",
+  settingsWebsite: "FlightMode Website",
   settingsSuggestFeatureHint: "Ideas welcome",
   settingsBecomeSupporter: "FlightMode Plus & tips",
   settingsSupportDevelopment: "Help improve future updates",

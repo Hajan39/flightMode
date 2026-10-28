@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
-    # Articles in content/feed.json are served live from the repo — no release needed.
+    # Articles in content/feed.json are served live from the repo and the
+    # promo website in docs/ is served by GitHub Pages — no app release needed.
     paths-ignore:
       - 'content/**'
+      - 'docs/**'
   workflow_dispatch:
 
 concurrency:

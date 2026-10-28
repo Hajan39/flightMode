@@ -30,6 +30,7 @@ import {
 import { captureAnalyticsEvent } from "@/utils/analytics";
 
 const SUPPORT_EMAIL = "flightmode.app@proton.me";
+const WEBSITE_URL = "https://hajan39.github.io/flightMode/";
 const appVersion = Constants.expoConfig?.version ?? "1.0.0";
 
 const syncOptions: Array<{
@@ -67,7 +68,7 @@ const syncOptions: Array<{
 export default function SettingsScreen() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme];
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
   const setSyncNetworkPolicy = useSettingsStore((s) => s.setSyncNetworkPolicy);
   const homeCurrency = useSettingsStore((s) => s.homeCurrency);
@@ -87,6 +88,14 @@ export default function SettingsScreen() {
         t("settingsMailUnavailableTitle"),
         t("settingsMailUnavailableMessage", { email: SUPPORT_EMAIL })
       );
+    });
+  };
+
+  // The site has a Czech version; every other language gets English.
+  const openWebPage = (path: "" | "privacy/") => {
+    const url = `${WEBSITE_URL}${language === "cs" ? "cs/" : ""}${path}`;
+    Linking.openURL(url).catch(() => {
+      Alert.alert(t("settingsWebsite"), url);
     });
   };
 
@@ -324,6 +333,54 @@ export default function SettingsScreen() {
                 name="chevron-forward"
                 size={16}
               />
+            </Pressable>
+
+            <Pressable
+              accessibilityLabel={t("settingsPrivacyPolicy")}
+              accessibilityRole="link"
+              onPress={() => openWebPage("privacy/")}
+              style={({ pressed }) => [
+                styles.supportRow,
+                { borderBottomColor: theme.border, opacity: pressed ? 0.6 : 1 },
+              ]}
+            >
+              <View
+                darkColor="transparent"
+                lightColor="transparent"
+                style={styles.supportRowLeft}
+              >
+                <Ionicons
+                  color={theme.tint}
+                  name="shield-checkmark-outline"
+                  size={20}
+                />
+                <Text style={styles.supportRowTitle}>
+                  {t("settingsPrivacyPolicy")}
+                </Text>
+              </View>
+              <Ionicons color={theme.mutedText} name="open-outline" size={16} />
+            </Pressable>
+
+            <Pressable
+              accessibilityLabel={t("settingsWebsite")}
+              accessibilityRole="link"
+              onPress={() => openWebPage("")}
+              style={({ pressed }) => [
+                styles.supportRow,
+                { borderBottomColor: theme.border, opacity: pressed ? 0.6 : 1 },
+              ]}
+            >
+              <View
+                darkColor="transparent"
+                lightColor="transparent"
+                style={styles.supportRowLeft}
+              >
+                <Ionicons color={theme.tint} name="globe-outline" size={20} />
+                <Text style={styles.supportRowTitle}>
+                  {t("settingsWebsite")}
+                </Text>
+              </View>
+              <Ionicons color={theme.mutedText} name="open-outline" size={16} />
             </Pressable>
 
             <Pressable
