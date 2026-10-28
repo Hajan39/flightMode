@@ -167,8 +167,16 @@ function RootStack() {
     return unsubscribe;
   }, []);
 
+  // Read the live value: on the statically rendered web build the first
+  // client render uses the store's server snapshot (isFirstLaunch: true)
+  // even though persisted settings have already loaded.
   useEffect(() => {
-    if (settingsHydrated && isFirstLaunch && segments[0] !== "onboarding") {
+    if (
+      settingsHydrated &&
+      isFirstLaunch &&
+      useSettingsStore.getState().isFirstLaunch &&
+      segments[0] !== "onboarding"
+    ) {
       router.replace("/onboarding");
     }
   }, [settingsHydrated, isFirstLaunch, segments]);

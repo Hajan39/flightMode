@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hajan39.github.io/flightMode/sitemap.xml

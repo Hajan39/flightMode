@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://hajan39.github.io/flightMode/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hajan39.github.io/flightMode/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hajan39.github.io/flightMode/cs/"/>
+  </url>
+  <url>
+    <loc>https://hajan39.github.io/flightMode/cs/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hajan39.github.io/flightMode/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hajan39.github.io/flightMode/cs/"/>
+  </url>
+  <url>
+    <loc>https://hajan39.github.io/flightMode/privacy/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hajan39.github.io/flightMode/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hajan39.github.io/flightMode/cs/privacy/"/>
+  </url>
+  <url>
+    <loc>https://hajan39.github.io/flightMode/cs/privacy/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hajan39.github.io/flightMode/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://hajan39.github.io/flightMode/cs/privacy/"/>
+  </url>
+</urlset>
