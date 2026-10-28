@@ -64,6 +64,25 @@
       }
     },
     {
+      // Static promo website (GitHub Pages), not app code. Sorting CSS
+      // properties can change shorthand/longhand cascade order, and the
+      // hand-written HTML attribute order is deliberate — lint and format
+      // still apply.
+      "includes": ["docs/**"],
+      "assist": {
+        "enabled": false
+      },
+      "linter": {
+        "rules": {
+          "style": {
+            // Component-scoped CSS (footer, FAQ, 404) is ordered by page
+            // section, not by specificity; the selectors don't overlap.
+            "noDescendingSpecificity": "off"
+          }
+        }
+      }
+    },
+    {
       // Node-land CommonJS (Expo config plugin + Jest setup), not app code.
       "includes": ["plugins/**", "jest.setup.js"],
       "linter": {

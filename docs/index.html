@@ -1,178 +1,431 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FlightMode – offline games, relax sounds and travel tools for your flight</title>
-<meta name="description" content="FlightMode is the app to download before you fly: 47 offline games, calming soundscapes and travel tools that all work in airplane mode. No ads, no account.">
-<link rel="canonical" href="https://hajan39.github.io/flightMode/">
-<link rel="alternate" hreflang="en" href="https://hajan39.github.io/flightMode/">
-<link rel="alternate" hreflang="cs" href="https://hajan39.github.io/flightMode/cs/">
-<link rel="alternate" hreflang="x-default" href="https://hajan39.github.io/flightMode/">
-<meta name="theme-color" content="#1668c7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#091017" media="(prefers-color-scheme: dark)">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="FlightMode">
-<meta property="og:title" content="FlightMode – the app to download before you fly">
-<meta property="og:description" content="47 offline games, relax sounds and travel tools for your flight. No Wi-Fi, no ads, no account.">
-<meta property="og:url" content="https://hajan39.github.io/flightMode/">
-<meta property="og:image" content="https://hajan39.github.io/flightMode/img/og-en.png">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="500">
-<meta property="og:image:alt" content="FlightMode app icon with the text: 47 offline games for your flight">
-<meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="cs_CZ">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FlightMode – the app to download before you fly">
-<meta name="twitter:description" content="47 offline games, relax sounds and travel tools for your flight. No Wi-Fi, no ads, no account.">
-<meta name="twitter:image" content="https://hajan39.github.io/flightMode/img/og-en.png">
-<meta name="twitter:image:alt" content="FlightMode app icon with the text: 47 offline games for your flight">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="./"><img src="img/icon-96.webp" alt="" width="36" height="36">FlightMode</a>
-    <nav aria-label="Language">
-      <ul class="lang">
-        <li><span aria-current="page" lang="en">EN</span></li>
-        <li><a href="cs/" hreflang="cs" lang="cs" title="Česky">CS</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap">
-      <div>
-        <img class="hero-icon" src="img/icon-192.webp" alt="FlightMode app icon" width="88" height="88">
-        <h1 id="hero-title">The app to download before you fly</h1>
-        <p class="lead">Switch your phone to airplane mode and everything keeps working: 47 games, calming soundscapes, travel articles and handy tools, all 100% offline.</p>
-        <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
-          <span><small>Get it on</small><strong>Google Play</strong></span>
-        </a>
-        <p class="fine">Free · Android · No ads · No account · 12 languages</p>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      FlightMode – offline games, relax sounds and travel tools for your flight
+    </title>
+    <meta
+      name="description"
+      content="FlightMode is the app to download before you fly: 47 offline games, calming soundscapes and travel tools that all work in airplane mode. No ads, no account."
+    >
+    <link rel="canonical" href="https://hajan39.github.io/flightMode/">
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://hajan39.github.io/flightMode/"
+    >
+    <link
+      rel="alternate"
+      hreflang="cs"
+      href="https://hajan39.github.io/flightMode/cs/"
+    >
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://hajan39.github.io/flightMode/"
+    >
+    <meta
+      name="theme-color"
+      content="#1668c7"
+      media="(prefers-color-scheme: light)"
+    >
+    <meta
+      name="theme-color"
+      content="#091017"
+      media="(prefers-color-scheme: dark)"
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FlightMode">
+    <meta
+      property="og:title"
+      content="FlightMode – the app to download before you fly"
+    >
+    <meta
+      property="og:description"
+      content="47 offline games, relax sounds and travel tools for your flight. No Wi-Fi, no ads, no account."
+    >
+    <meta property="og:url" content="https://hajan39.github.io/flightMode/">
+    <meta
+      property="og:image"
+      content="https://hajan39.github.io/flightMode/img/og-en.png"
+    >
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="500">
+    <meta
+      property="og:image:alt"
+      content="FlightMode app icon with the text: 47 offline games for your flight"
+    >
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="cs_CZ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta
+      name="twitter:title"
+      content="FlightMode – the app to download before you fly"
+    >
+    <meta
+      name="twitter:description"
+      content="47 offline games, relax sounds and travel tools for your flight. No Wi-Fi, no ads, no account."
+    >
+    <meta
+      name="twitter:image"
+      content="https://hajan39.github.io/flightMode/img/og-en.png"
+    >
+    <meta
+      name="twitter:image:alt"
+      content="FlightMode app icon with the text: 47 offline games for your flight"
+    >
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./"
+          ><img
+            src="img/icon-96.webp"
+            alt=""
+            width="36"
+            height="36"
+          >FlightMode</a
+        >
+        <nav aria-label="Language">
+          <ul class="lang">
+            <li><span aria-current="page" lang="en">EN</span></li>
+            <li><a href="cs/" hreflang="cs" lang="cs" title="Česky">CS</a></li>
+          </ul>
+        </nav>
       </div>
-      <figure class="shot">
-        <div class="phone"><img src="img/shots/en-home.webp" width="480" height="1039" alt="FlightMode Home screen during a flight to Lisbon: progress bar at 55%, 1 h 19 min remaining, destination local time, and the daily challenge Reaction Timer."></div>
-      </figure>
-    </div>
-  </section>
+    </header>
 
-  <section aria-labelledby="features-title">
-    <div class="wrap">
-      <h2 id="features-title">Everything for the flight, nothing needs Wi-Fi</h2>
-      <p class="section-lead">Download it at the gate, use it at 35,000 feet.</p>
-      <ul class="features">
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🧩</span>
-          <h3>47 offline games</h3>
-          <p>Sudoku, Mahjong, Solitaire, 2048, Minesweeper, Sky Match with 30 levels, Word Guess, Box Breaker, Maze Muncher and more. A daily challenge keeps your streak going.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">👫</span>
-          <h3>Play with your seatmate</h3>
-          <p>One phone, 2–6 players: Tic Tac Toe, Connect 4, Air Radar, Liar’s Dice, Category Blitz, Turbulence Tales and other pass-and-play games.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🎧</span>
-          <h3>Relax and sleep</h3>
-          <p>Rain, ocean and white-noise soundscapes that keep playing with the screen off, plus a breathing exercise and a sleep timer.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🧳</span>
-          <h3>Travel tools, offline</h3>
-          <p>Flight timer with progress and a jet-lag plan, destination time, phrasebook, currency and unit converter, packing checklist and travel articles.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🛂</span>
-          <h3>Flight Passport</h3>
-          <p>A stamp for every trip you take with FlightMode, with your flights, hours, cities and countries at a glance.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🌍</span>
-          <h3>12 languages, no ads, no account</h3>
-          <p>No sign-up and no advertising. Your scores, flights and settings stay on your phone.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap">
+          <div>
+            <img
+              class="hero-icon"
+              src="img/icon-192.webp"
+              alt="FlightMode app icon"
+              width="88"
+              height="88"
+            >
+            <h1 id="hero-title">The app to download before you fly</h1>
+            <p class="lead">
+              Switch your phone to airplane mode and everything keeps working:
+              47 games, calming soundscapes, travel articles and handy tools,
+              all 100% offline.
+            </p>
+            <a
+              class="play-btn"
+              href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"
+                />
+              </svg>
+              <span><small>Get it on</small><strong>Google Play</strong></span>
+            </a>
+            <p class="fine">
+              Free · Android · No ads · No account · 12 languages
+            </p>
+          </div>
+          <figure class="shot">
+            <div class="phone">
+              <img
+                src="img/shots/en-home.webp"
+                width="480"
+                height="1039"
+                alt="FlightMode Home screen during a flight to Lisbon: progress bar at 55%, 1 h 19 min remaining, destination local time, and the daily challenge Reaction Timer."
+              >
+            </div>
+          </figure>
+        </div>
+      </section>
 
-  <section class="alt" aria-labelledby="shots-title">
-    <div class="wrap">
-      <h2 id="shots-title">A look inside</h2>
-      <p class="section-lead">Screenshots of the app (English, light theme).</p>
-      <ul class="shots">
-        <li><figure><div class="phone"><img src="img/shots/en-games.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Games screen with search, filters and game cards for Sudoku, 2048, Sky Match and Reaction Timer showing best scores."></div><figcaption>47 games with search and filters</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="img/shots/en-g2048.webp" width="480" height="1039" loading="lazy" decoding="async" alt="2048 game in progress with score, best score and arrow controls."></div><figcaption>2048 mid-game</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="img/shots/en-sudoku.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Sudoku puzzle on easy difficulty with timer, hints and a number pad."></div><figcaption>Sudoku</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="img/shots/en-relax.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Relax screen with a box-breathing exercise and soundscapes: rain, white noise, ocean and cabin noise."></div><figcaption>Breathing and soundscapes</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="img/shots/en-converter.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Converter screen converting 100 euros to US dollars, with temperature, distance and weight tabs."></div><figcaption>Currency and unit converter</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="img/shots/en-profile.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Profile screen with the Flight Passport: 6 flights, 26.4 hours, 6 cities, 6 countries and stamps for Lisbon, Barcelona and London, followed by achievements."></div><figcaption>Flight Passport and achievements</figcaption></figure></li>
-      </ul>
-    </div>
-  </section>
+      <section aria-labelledby="features-title">
+        <div class="wrap">
+          <h2 id="features-title">
+            Everything for the flight, nothing needs Wi-Fi
+          </h2>
+          <p class="section-lead">
+            Download it at the gate, use it at 35,000 feet.
+          </p>
+          <ul class="features">
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🧩</span>
+              <h3>47 offline games</h3>
+              <p>
+                Sudoku, Mahjong, Solitaire, 2048, Minesweeper, Sky Match with 30
+                levels, Word Guess, Box Breaker, Maze Muncher and more. A daily
+                challenge keeps your streak going.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">👫</span>
+              <h3>Play with your seatmate</h3>
+              <p>
+                One phone, 2–6 players: Tic Tac Toe, Connect 4, Air Radar,
+                Liar’s Dice, Category Blitz, Turbulence Tales and other
+                pass-and-play games.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🎧</span>
+              <h3>Relax and sleep</h3>
+              <p>
+                Rain, ocean and white-noise soundscapes that keep playing with
+                the screen off, plus a breathing exercise and a sleep timer.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🧳</span>
+              <h3>Travel tools, offline</h3>
+              <p>
+                Flight timer with progress and a jet-lag plan, destination time,
+                phrasebook, currency and unit converter, packing checklist and
+                travel articles.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🛂</span>
+              <h3>Flight Passport</h3>
+              <p>
+                A stamp for every trip you take with FlightMode, with your
+                flights, hours, cities and countries at a glance.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🌍</span>
+              <h3>12 languages, no ads, no account</h3>
+              <p>
+                No sign-up and no advertising. Your scores, flights and settings
+                stay on your phone.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-  <section aria-labelledby="faq-title">
-    <div class="wrap faq">
-      <h2 id="faq-title">FAQ</h2>
-      <p class="section-lead">Short answers to the usual questions.</p>
-      <details>
-        <summary>Does it really work offline?</summary>
-        <div><p>Yes. All games, relax sounds, articles and travel tools work in airplane mode. When you are online, the app can optionally download new articles and current exchange rates, and you can limit that to Wi-Fi or switch it off in Settings.</p></div>
-      </details>
-      <details>
-        <summary>Is it free?</summary>
-        <div><p>Yes. Everything described on this page is free, with no ads and no account. Optional in-app purchases (FlightMode Plus and tips) only add extras.</p></div>
-      </details>
-      <details>
-        <summary>What is FlightMode Plus?</summary>
-        <div><p>An optional one-time purchase that supports development. Today it unlocks two extra themes (Midnight and Sunset) and a profile badge. Nothing that is free is ever moved behind Plus.</p></div>
-      </details>
-      <details>
-        <summary>Which languages are supported?</summary>
-        <div><p>12: English, Czech, German, Spanish, French, Italian, Polish, Portuguese, Hindi, Japanese, Korean and Chinese. Some travel articles are available in fewer languages and are shown in English otherwise.</p></div>
-      </details>
-      <details>
-        <summary>Is there an iPhone version?</summary>
-        <div><p>Not yet. FlightMode is available for Android only for now.</p></div>
-      </details>
-      <details>
-        <summary>What data does the app collect?</summary>
-        <div><p>Your flights, scores and settings stay on your device. Optional anonymous usage statistics can be switched off in Settings. Details are in the <a href="privacy/">privacy policy</a>.</p></div>
-      </details>
-    </div>
-  </section>
+      <section class="alt" aria-labelledby="shots-title">
+        <div class="wrap">
+          <h2 id="shots-title">A look inside</h2>
+          <p class="section-lead">
+            Screenshots of the app (English, light theme).
+          </p>
+          <ul class="shots">
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="img/shots/en-games.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Games screen with search, filters and game cards for Sudoku, 2048, Sky Match and Reaction Timer showing best scores."
+                  >
+                </div>
+                <figcaption>47 games with search and filters</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="img/shots/en-g2048.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="2048 game in progress with score, best score and arrow controls."
+                  >
+                </div>
+                <figcaption>2048 mid-game</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="img/shots/en-sudoku.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Sudoku puzzle on easy difficulty with timer, hints and a number pad."
+                  >
+                </div>
+                <figcaption>Sudoku</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="img/shots/en-relax.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Relax screen with a box-breathing exercise and soundscapes: rain, white noise, ocean and cabin noise."
+                  >
+                </div>
+                <figcaption>Breathing and soundscapes</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="img/shots/en-converter.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Converter screen converting 100 euros to US dollars, with temperature, distance and weight tabs."
+                  >
+                </div>
+                <figcaption>Currency and unit converter</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="img/shots/en-profile.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Profile screen with the Flight Passport: 6 flights, 26.4 hours, 6 cities, 6 countries and stamps for Lisbon, Barcelona and London, followed by achievements."
+                  >
+                </div>
+                <figcaption>Flight Passport and achievements</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-  <section class="alt cta" aria-labelledby="cta-title">
-    <div class="wrap">
-      <h2 id="cta-title">Install it before you board</h2>
-      <p class="section-lead">Once you are in the air, the Play Store is out of reach.</p>
-      <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
-        <span><small>Get it on</small><strong>Google Play</strong></span>
-      </a>
-    </div>
-  </section>
-</main>
+      <section aria-labelledby="faq-title">
+        <div class="wrap faq">
+          <h2 id="faq-title">FAQ</h2>
+          <p class="section-lead">Short answers to the usual questions.</p>
+          <details>
+            <summary>Does it really work offline?</summary>
+            <div>
+              <p>
+                Yes. All games, relax sounds, articles and travel tools work in
+                airplane mode. When you are online, the app can optionally
+                download new articles and current exchange rates, and you can
+                limit that to Wi-Fi or switch it off in Settings.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Is it free?</summary>
+            <div>
+              <p>
+                Yes. Everything described on this page is free, with no ads and
+                no account. Optional in-app purchases (FlightMode Plus and tips)
+                only add extras.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>What is FlightMode Plus?</summary>
+            <div>
+              <p>
+                An optional one-time purchase that supports development. Today
+                it unlocks two extra themes (Midnight and Sunset) and a profile
+                badge. Nothing that is free is ever moved behind Plus.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Which languages are supported?</summary>
+            <div>
+              <p>
+                12: English, Czech, German, Spanish, French, Italian, Polish,
+                Portuguese, Hindi, Japanese, Korean and Chinese. Some travel
+                articles are available in fewer languages and are shown in
+                English otherwise.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Is there an iPhone version?</summary>
+            <div>
+              <p>Not yet. FlightMode is available for Android only for now.</p>
+            </div>
+          </details>
+          <details>
+            <summary>What data does the app collect?</summary>
+            <div>
+              <p>
+                Your flights, scores and settings stay on your device. Optional
+                anonymous usage statistics can be switched off in Settings.
+                Details are in the <a href="privacy/">privacy policy</a>.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <nav aria-label="Footer">
-      <ul>
-        <li><a href="privacy/">Privacy policy</a></li>
-        <li><a href="mailto:flightmode.app@proton.me">Support: flightmode.app@proton.me</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode" rel="noopener">Google Play</a></li>
-        <li><a href="cs/" hreflang="cs" lang="cs">Česky</a></li>
-      </ul>
-    </nav>
-    <p>FlightMode is made by an independent developer. Google Play is a trademark of Google LLC. This site uses no cookies and no trackers.</p>
-  </div>
-</footer>
-</body>
+      <section class="alt cta" aria-labelledby="cta-title">
+        <div class="wrap">
+          <h2 id="cta-title">Install it before you board</h2>
+          <p class="section-lead">
+            Once you are in the air, the Play Store is out of reach.
+          </p>
+          <a
+            class="play-btn"
+            href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"
+              />
+            </svg>
+            <span><small>Get it on</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="privacy/">Privacy policy</a></li>
+            <li>
+              <a href="mailto:flightmode.app@proton.me"
+                >Support: flightmode.app@proton.me</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode"
+                rel="noopener"
+                >Google Play</a
+              >
+            </li>
+            <li><a href="cs/" hreflang="cs" lang="cs">Česky</a></li>
+          </ul>
+        </nav>
+        <p>
+          FlightMode is made by an independent developer. Google Play is a
+          trademark of Google LLC. This site uses no cookies and no trackers.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

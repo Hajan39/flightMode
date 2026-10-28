@@ -1,178 +1,435 @@
 <!doctype html>
 <html lang="cs">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FlightMode – offline hry, relaxační zvuky a cestovní pomůcky do letadla</title>
-<meta name="description" content="FlightMode je aplikace, kterou si stáhneš před letem: 47 offline her, uklidňující zvuky a cestovní pomůcky, které fungují i v režimu letadlo. Bez reklam a bez účtu.">
-<link rel="canonical" href="https://hajan39.github.io/flightMode/cs/">
-<link rel="alternate" hreflang="en" href="https://hajan39.github.io/flightMode/">
-<link rel="alternate" hreflang="cs" href="https://hajan39.github.io/flightMode/cs/">
-<link rel="alternate" hreflang="x-default" href="https://hajan39.github.io/flightMode/">
-<meta name="theme-color" content="#1668c7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#091017" media="(prefers-color-scheme: dark)">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="FlightMode">
-<meta property="og:title" content="FlightMode – aplikace, kterou si stáhneš před letem">
-<meta property="og:description" content="47 offline her, relaxační zvuky a cestovní pomůcky do letadla. Bez Wi-Fi, bez reklam, bez účtu.">
-<meta property="og:url" content="https://hajan39.github.io/flightMode/cs/">
-<meta property="og:image" content="https://hajan39.github.io/flightMode/img/og-cs.png">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="500">
-<meta property="og:image:alt" content="Ikona aplikace FlightMode s textem o offline hrách do letadla">
-<meta property="og:locale" content="cs_CZ">
-<meta property="og:locale:alternate" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FlightMode – aplikace, kterou si stáhneš před letem">
-<meta name="twitter:description" content="47 offline her, relaxační zvuky a cestovní pomůcky do letadla. Bez Wi-Fi, bez reklam, bez účtu.">
-<meta name="twitter:image" content="https://hajan39.github.io/flightMode/img/og-cs.png">
-<meta name="twitter:image:alt" content="Ikona aplikace FlightMode s textem o offline hrách do letadla">
-<link rel="icon" type="image/png" href="../favicon.png">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../style.css">
-</head>
-<body>
-<a class="skip" href="#main">Přeskočit na obsah</a>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="./"><img src="../img/icon-96.webp" alt="" width="36" height="36">FlightMode</a>
-    <nav aria-label="Jazyk">
-      <ul class="lang">
-        <li><a href="../" hreflang="en" lang="en" title="English">EN</a></li>
-        <li><span aria-current="page" lang="cs">CS</span></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap">
-      <div>
-        <img class="hero-icon" src="../img/icon-192.webp" alt="Ikona aplikace FlightMode" width="88" height="88">
-        <h1 id="hero-title">Aplikace, kterou si stáhneš před letem</h1>
-        <p class="lead">Přepni telefon do režimu letadlo a všechno funguje dál: 47 her, uklidňující zvuky, cestovní články a praktické pomůcky, vše 100% offline.</p>
-        <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode&amp;hl=cs" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
-          <span><small>Stáhni na</small><strong>Google Play</strong></span>
-        </a>
-        <p class="fine">Zdarma · Android · Bez reklam · Bez účtu · 12 jazyků</p>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      FlightMode – offline hry, relaxační zvuky a cestovní pomůcky do letadla
+    </title>
+    <meta
+      name="description"
+      content="FlightMode je aplikace, kterou si stáhneš před letem: 47 offline her, uklidňující zvuky a cestovní pomůcky, které fungují i v režimu letadlo. Bez reklam a bez účtu."
+    >
+    <link rel="canonical" href="https://hajan39.github.io/flightMode/cs/">
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://hajan39.github.io/flightMode/"
+    >
+    <link
+      rel="alternate"
+      hreflang="cs"
+      href="https://hajan39.github.io/flightMode/cs/"
+    >
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://hajan39.github.io/flightMode/"
+    >
+    <meta
+      name="theme-color"
+      content="#1668c7"
+      media="(prefers-color-scheme: light)"
+    >
+    <meta
+      name="theme-color"
+      content="#091017"
+      media="(prefers-color-scheme: dark)"
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FlightMode">
+    <meta
+      property="og:title"
+      content="FlightMode – aplikace, kterou si stáhneš před letem"
+    >
+    <meta
+      property="og:description"
+      content="47 offline her, relaxační zvuky a cestovní pomůcky do letadla. Bez Wi-Fi, bez reklam, bez účtu."
+    >
+    <meta property="og:url" content="https://hajan39.github.io/flightMode/cs/">
+    <meta
+      property="og:image"
+      content="https://hajan39.github.io/flightMode/img/og-cs.png"
+    >
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="500">
+    <meta
+      property="og:image:alt"
+      content="Ikona aplikace FlightMode s textem o offline hrách do letadla"
+    >
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta
+      name="twitter:title"
+      content="FlightMode – aplikace, kterou si stáhneš před letem"
+    >
+    <meta
+      name="twitter:description"
+      content="47 offline her, relaxační zvuky a cestovní pomůcky do letadla. Bez Wi-Fi, bez reklam, bez účtu."
+    >
+    <meta
+      name="twitter:image"
+      content="https://hajan39.github.io/flightMode/img/og-cs.png"
+    >
+    <meta
+      name="twitter:image:alt"
+      content="Ikona aplikace FlightMode s textem o offline hrách do letadla"
+    >
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <a class="skip" href="#main">Přeskočit na obsah</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./"
+          ><img
+            src="../img/icon-96.webp"
+            alt=""
+            width="36"
+            height="36"
+          >FlightMode</a
+        >
+        <nav aria-label="Jazyk">
+          <ul class="lang">
+            <li>
+              <a href="../" hreflang="en" lang="en" title="English">EN</a>
+            </li>
+            <li><span aria-current="page" lang="cs">CS</span></li>
+          </ul>
+        </nav>
       </div>
-      <figure class="shot">
-        <div class="phone"><img src="../img/shots/cs-home.webp" width="480" height="1039" alt="Domovská obrazovka FlightMode během letu do Lisabonu: průběh letu 55 %, zbývá 1 h 19 min, místní čas v cíli a denní výzva Reakční čas."></div>
-      </figure>
-    </div>
-  </section>
+    </header>
 
-  <section aria-labelledby="features-title">
-    <div class="wrap">
-      <h2 id="features-title">Všechno na let, nic z toho nepotřebuje Wi-Fi</h2>
-      <p class="section-lead">Stáhni si ji u gatu, používej ji v 10 000 metrech.</p>
-      <ul class="features">
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🧩</span>
-          <h3>47 offline her</h3>
-          <p>Sudoku, Mahjong, Pasiáns, 2048, Hledání min, Palubní trojky s 30 úrovněmi, Hádej slovo, Rozbij krabice, Žrout v bludišti a další. Denní výzva ti udrží sérii.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">👫</span>
-          <h3>Hraj se spolucestujícím</h3>
-          <p>Jeden telefon, 2–6 hráčů: piškvorky, čtyři v řadě, Letecký radar, Lhářovy kostky, Kategorie na čas, Turbulentní příběhy a další hry, kde si telefon předáváte.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🎧</span>
-          <h3>Relax a spánek</h3>
-          <p>Déšť, oceán a bílý šum hrají i se zhasnutou obrazovkou. K tomu dechové cvičení a časovač spánku.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🧳</span>
-          <h3>Cestovní pomůcky offline</h3>
-          <p>Odpočet letu s průběhem a plán proti jet lagu, čas v cíli, konverzační fráze, převodník měn a jednotek, seznam na balení a cestovní články.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🛂</span>
-          <h3>Letový pas</h3>
-          <p>Razítko za každou cestu s FlightMode. Lety, hodiny ve vzduchu, města a země máš přehledně na jednom místě.</p>
-        </li>
-        <li class="feature">
-          <span class="ico" aria-hidden="true">🌍</span>
-          <h3>12 jazyků, bez reklam, bez účtu</h3>
-          <p>Žádná registrace a žádné reklamy. Tvoje skóre, lety a nastavení zůstávají v telefonu.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap">
+          <div>
+            <img
+              class="hero-icon"
+              src="../img/icon-192.webp"
+              alt="Ikona aplikace FlightMode"
+              width="88"
+              height="88"
+            >
+            <h1 id="hero-title">Aplikace, kterou si stáhneš před letem</h1>
+            <p class="lead">
+              Přepni telefon do režimu letadlo a všechno funguje dál: 47 her,
+              uklidňující zvuky, cestovní články a praktické pomůcky, vše 100%
+              offline.
+            </p>
+            <a
+              class="play-btn"
+              href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode&amp;hl=cs"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"
+                />
+              </svg>
+              <span><small>Stáhni na</small><strong>Google Play</strong></span>
+            </a>
+            <p class="fine">
+              Zdarma · Android · Bez reklam · Bez účtu · 12 jazyků
+            </p>
+          </div>
+          <figure class="shot">
+            <div class="phone">
+              <img
+                src="../img/shots/cs-home.webp"
+                width="480"
+                height="1039"
+                alt="Domovská obrazovka FlightMode během letu do Lisabonu: průběh letu 55 %, zbývá 1 h 19 min, místní čas v cíli a denní výzva Reakční čas."
+              >
+            </div>
+          </figure>
+        </div>
+      </section>
 
-  <section class="alt" aria-labelledby="shots-title">
-    <div class="wrap">
-      <h2 id="shots-title">Jak to vypadá</h2>
-      <p class="section-lead">Snímky obrazovky aplikace (česky, světlý motiv).</p>
-      <ul class="shots">
-        <li><figure><div class="phone"><img src="../img/shots/cs-games.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Obrazovka Hry s vyhledáváním, filtry a kartami her Sudoku, 2048, Palubní trojky a Reakční čas s nejlepšími skóre."></div><figcaption>47 her s vyhledáváním a filtry</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="../img/shots/cs-g2048.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Rozehraná hra 2048 se skóre, nejlepším výsledkem a šipkami pro ovládání."></div><figcaption>Rozehraná 2048</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="../img/shots/cs-sudoku.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Sudoku na lehkou obtížnost s časem, nápovědami a číselnou klávesnicí."></div><figcaption>Sudoku</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="../img/shots/cs-relax.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Obrazovka Relax s dechovým cvičením a zvukovými prostředími: déšť, bílý šum, oceán a letadlo."></div><figcaption>Dechové cvičení a zvuky</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="../img/shots/cs-converter.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Převodník měn převádí 100 Kč na eura, s kartami pro teplotu, vzdálenost a hmotnost."></div><figcaption>Převodník měn a jednotek</figcaption></figure></li>
-        <li><figure><div class="phone"><img src="../img/shots/cs-profile.webp" width="480" height="1039" loading="lazy" decoding="async" alt="Profil s Letovým pasem: 6 letů, 26,4 hodiny, 6 měst, 6 zemí a razítka Lisabon, Barcelona a Londýn, pod nimi úspěchy."></div><figcaption>Letový pas a úspěchy</figcaption></figure></li>
-      </ul>
-    </div>
-  </section>
+      <section aria-labelledby="features-title">
+        <div class="wrap">
+          <h2 id="features-title">
+            Všechno na let, nic z toho nepotřebuje Wi-Fi
+          </h2>
+          <p class="section-lead">
+            Stáhni si ji u gatu, používej ji v 10 000 metrech.
+          </p>
+          <ul class="features">
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🧩</span>
+              <h3>47 offline her</h3>
+              <p>
+                Sudoku, Mahjong, Pasiáns, 2048, Hledání min, Palubní trojky s 30
+                úrovněmi, Hádej slovo, Rozbij krabice, Žrout v bludišti a další.
+                Denní výzva ti udrží sérii.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">👫</span>
+              <h3>Hraj se spolucestujícím</h3>
+              <p>
+                Jeden telefon, 2–6 hráčů: piškvorky, čtyři v řadě, Letecký
+                radar, Lhářovy kostky, Kategorie na čas, Turbulentní příběhy a
+                další hry, kde si telefon předáváte.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🎧</span>
+              <h3>Relax a spánek</h3>
+              <p>
+                Déšť, oceán a bílý šum hrají i se zhasnutou obrazovkou. K tomu
+                dechové cvičení a časovač spánku.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🧳</span>
+              <h3>Cestovní pomůcky offline</h3>
+              <p>
+                Odpočet letu s průběhem a plán proti jet lagu, čas v cíli,
+                konverzační fráze, převodník měn a jednotek, seznam na balení a
+                cestovní články.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🛂</span>
+              <h3>Letový pas</h3>
+              <p>
+                Razítko za každou cestu s FlightMode. Lety, hodiny ve vzduchu,
+                města a země máš přehledně na jednom místě.
+              </p>
+            </li>
+            <li class="feature">
+              <span class="ico" aria-hidden="true">🌍</span>
+              <h3>12 jazyků, bez reklam, bez účtu</h3>
+              <p>
+                Žádná registrace a žádné reklamy. Tvoje skóre, lety a nastavení
+                zůstávají v telefonu.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-  <section aria-labelledby="faq-title">
-    <div class="wrap faq">
-      <h2 id="faq-title">Časté otázky</h2>
-      <p class="section-lead">Krátké odpovědi na to, na co se lidi ptají nejčastěji.</p>
-      <details>
-        <summary>Opravdu to funguje offline?</summary>
-        <div><p>Ano. Všechny hry, relaxační zvuky, články i cestovní pomůcky fungují v režimu letadlo. Když jsi online, aplikace může volitelně stáhnout nové články a aktuální kurzy měn. V Nastavení to můžeš omezit jen na Wi-Fi nebo úplně vypnout.</p></div>
-      </details>
-      <details>
-        <summary>Je zdarma?</summary>
-        <div><p>Ano. Všechno, co je popsané na téhle stránce, je zdarma, bez reklam a bez účtu. Volitelné nákupy v aplikaci (FlightMode Plus a spropitné) jen přidávají něco navíc.</p></div>
-      </details>
-      <details>
-        <summary>Co je FlightMode Plus?</summary>
-        <div><p>Volitelný jednorázový nákup, kterým podpoříš vývoj. Teď odemyká dva další motivy (Půlnoc a Západ slunce) a odznak v profilu. Nic, co je zdarma, se za Plus nikdy neschová.</p></div>
-      </details>
-      <details>
-        <summary>Jaké jazyky aplikace umí?</summary>
-        <div><p>12: češtinu, angličtinu, němčinu, španělštinu, francouzštinu, italštinu, polštinu, portugalštinu, hindštinu, japonštinu, korejštinu a čínštinu. Některé cestovní články jsou v menším počtu jazyků, jinak se zobrazí anglicky.</p></div>
-      </details>
-      <details>
-        <summary>Je i verze pro iPhone?</summary>
-        <div><p>Zatím ne. FlightMode je zatím jen pro Android.</p></div>
-      </details>
-      <details>
-        <summary>Jaká data aplikace sbírá?</summary>
-        <div><p>Tvoje lety, skóre a nastavení zůstávají v zařízení. Volitelné anonymní statistiky používání můžeš vypnout v Nastavení. Podrobnosti najdeš v <a href="privacy/">zásadách ochrany soukromí</a>.</p></div>
-      </details>
-    </div>
-  </section>
+      <section class="alt" aria-labelledby="shots-title">
+        <div class="wrap">
+          <h2 id="shots-title">Jak to vypadá</h2>
+          <p class="section-lead">
+            Snímky obrazovky aplikace (česky, světlý motiv).
+          </p>
+          <ul class="shots">
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="../img/shots/cs-games.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Obrazovka Hry s vyhledáváním, filtry a kartami her Sudoku, 2048, Palubní trojky a Reakční čas s nejlepšími skóre."
+                  >
+                </div>
+                <figcaption>47 her s vyhledáváním a filtry</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="../img/shots/cs-g2048.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Rozehraná hra 2048 se skóre, nejlepším výsledkem a šipkami pro ovládání."
+                  >
+                </div>
+                <figcaption>Rozehraná 2048</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="../img/shots/cs-sudoku.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Sudoku na lehkou obtížnost s časem, nápovědami a číselnou klávesnicí."
+                  >
+                </div>
+                <figcaption>Sudoku</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="../img/shots/cs-relax.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Obrazovka Relax s dechovým cvičením a zvukovými prostředími: déšť, bílý šum, oceán a letadlo."
+                  >
+                </div>
+                <figcaption>Dechové cvičení a zvuky</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="../img/shots/cs-converter.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Převodník měn převádí 100 Kč na eura, s kartami pro teplotu, vzdálenost a hmotnost."
+                  >
+                </div>
+                <figcaption>Převodník měn a jednotek</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <div class="phone">
+                  <img
+                    src="../img/shots/cs-profile.webp"
+                    width="480"
+                    height="1039"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Profil s Letovým pasem: 6 letů, 26,4 hodiny, 6 měst, 6 zemí a razítka Lisabon, Barcelona a Londýn, pod nimi úspěchy."
+                  >
+                </div>
+                <figcaption>Letový pas a úspěchy</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-  <section class="alt cta" aria-labelledby="cta-title">
-    <div class="wrap">
-      <h2 id="cta-title">Nainstaluj si ji ještě před nástupem</h2>
-      <p class="section-lead">Ve vzduchu už se do Obchodu Play nedostaneš.</p>
-      <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode&amp;hl=cs" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
-        <span><small>Stáhni na</small><strong>Google Play</strong></span>
-      </a>
-    </div>
-  </section>
-</main>
+      <section aria-labelledby="faq-title">
+        <div class="wrap faq">
+          <h2 id="faq-title">Časté otázky</h2>
+          <p class="section-lead">
+            Krátké odpovědi na to, na co se lidi ptají nejčastěji.
+          </p>
+          <details>
+            <summary>Opravdu to funguje offline?</summary>
+            <div>
+              <p>
+                Ano. Všechny hry, relaxační zvuky, články i cestovní pomůcky
+                fungují v režimu letadlo. Když jsi online, aplikace může
+                volitelně stáhnout nové články a aktuální kurzy měn. V Nastavení
+                to můžeš omezit jen na Wi-Fi nebo úplně vypnout.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Je zdarma?</summary>
+            <div>
+              <p>
+                Ano. Všechno, co je popsané na téhle stránce, je zdarma, bez
+                reklam a bez účtu. Volitelné nákupy v aplikaci (FlightMode Plus
+                a spropitné) jen přidávají něco navíc.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Co je FlightMode Plus?</summary>
+            <div>
+              <p>
+                Volitelný jednorázový nákup, kterým podpoříš vývoj. Teď odemyká
+                dva další motivy (Půlnoc a Západ slunce) a odznak v profilu.
+                Nic, co je zdarma, se za Plus nikdy neschová.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Jaké jazyky aplikace umí?</summary>
+            <div>
+              <p>
+                12: češtinu, angličtinu, němčinu, španělštinu, francouzštinu,
+                italštinu, polštinu, portugalštinu, hindštinu, japonštinu,
+                korejštinu a čínštinu. Některé cestovní články jsou v menším
+                počtu jazyků, jinak se zobrazí anglicky.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Je i verze pro iPhone?</summary>
+            <div><p>Zatím ne. FlightMode je zatím jen pro Android.</p></div>
+          </details>
+          <details>
+            <summary>Jaká data aplikace sbírá?</summary>
+            <div>
+              <p>
+                Tvoje lety, skóre a nastavení zůstávají v zařízení. Volitelné
+                anonymní statistiky používání můžeš vypnout v Nastavení.
+                Podrobnosti najdeš v
+                <a href="privacy/">zásadách ochrany soukromí</a>.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <nav aria-label="Patička">
-      <ul>
-        <li><a href="privacy/">Zásady ochrany soukromí</a></li>
-        <li><a href="mailto:flightmode.app@proton.me">Podpora: flightmode.app@proton.me</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode&amp;hl=cs" rel="noopener">Google Play</a></li>
-        <li><a href="../" hreflang="en" lang="en">English</a></li>
-      </ul>
-    </nav>
-    <p>FlightMode vytváří nezávislý vývojář. Google Play je ochranná známka společnosti Google LLC. Tento web nepoužívá cookies ani sledovací nástroje.</p>
-  </div>
-</footer>
-</body>
+      <section class="alt cta" aria-labelledby="cta-title">
+        <div class="wrap">
+          <h2 id="cta-title">Nainstaluj si ji ještě před nástupem</h2>
+          <p class="section-lead">
+            Ve vzduchu už se do Obchodu Play nedostaneš.
+          </p>
+          <a
+            class="play-btn"
+            href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode&amp;hl=cs"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"
+              />
+            </svg>
+            <span><small>Stáhni na</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <nav aria-label="Patička">
+          <ul>
+            <li><a href="privacy/">Zásady ochrany soukromí</a></li>
+            <li>
+              <a href="mailto:flightmode.app@proton.me"
+                >Podpora: flightmode.app@proton.me</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.hajan39.flightmode&amp;hl=cs"
+                rel="noopener"
+                >Google Play</a
+              >
+            </li>
+            <li><a href="../" hreflang="en" lang="en">English</a></li>
+          </ul>
+        </nav>
+        <p>
+          FlightMode vytváří nezávislý vývojář. Google Play je ochranná známka
+          společnosti Google LLC. Tento web nepoužívá cookies ani sledovací
+          nástroje.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -1,120 +1,365 @@
 <!doctype html>
 <html lang="cs">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zásady ochrany soukromí – FlightMode</title>
-<meta name="description" content="Zásady ochrany soukromí aplikace FlightMode pro Android: co zůstává v zařízení, jaká volitelná data ho opouštějí a jak to vypnout.">
-<link rel="canonical" href="https://hajan39.github.io/flightMode/cs/privacy/">
-<link rel="alternate" hreflang="en" href="https://hajan39.github.io/flightMode/privacy/">
-<link rel="alternate" hreflang="cs" href="https://hajan39.github.io/flightMode/cs/privacy/">
-<link rel="alternate" hreflang="x-default" href="https://hajan39.github.io/flightMode/privacy/">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#091017" media="(prefers-color-scheme: dark)">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="FlightMode">
-<meta property="og:title" content="Zásady ochrany soukromí – FlightMode">
-<meta property="og:description" content="Co aplikace FlightMode uchovává ve tvém zařízení a jaká volitelná data ho opouštějí.">
-<meta property="og:url" content="https://hajan39.github.io/flightMode/cs/privacy/">
-<meta property="og:image" content="https://hajan39.github.io/flightMode/img/og-cs.png">
-<meta property="og:locale" content="cs_CZ">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hajan39.github.io/flightMode/img/og-cs.png">
-<link rel="icon" type="image/png" href="../../favicon.png">
-<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
-<link rel="stylesheet" href="../../style.css">
-</head>
-<body>
-<a class="skip" href="#main">Přeskočit na obsah</a>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="../"><img src="../../img/icon-96.webp" alt="" width="36" height="36">FlightMode</a>
-    <nav aria-label="Jazyk">
-      <ul class="lang">
-        <li><a href="../../privacy/" hreflang="en" lang="en" title="English">EN</a></li>
-        <li><span aria-current="page" lang="cs">CS</span></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<main id="main" class="wrap prose">
-<p class="note"><strong>Překlad.</strong> Toto je český překlad pro snazší čtení. Závazná je <a href="../../privacy/" hreflang="en">anglická verze</a>; v případě rozporu platí ona.</p>
-<article>
-<h1>Zásady ochrany soukromí — FlightMode</h1>
-<p class="meta"><strong>Poslední aktualizace:</strong> 28. října 2026</p>
-<h2>1. Úvod</h2>
-<p>Tyto zásady ochrany soukromí popisují, jak mobilní aplikace FlightMode („Aplikace“), kterou vyvíjí nezávislý vývojář („my“, „nás“, „náš“), zachází s daty. FlightMode je offline společník na cesty letadlem: funguje bez připojení k internetu a nemá žádný účet, přihlášení ani uživatelský profil.</p>
-<h2>2. Data uložená pouze ve tvém zařízení</h2>
-<p>Následující data jsou uložena lokálně ve tvém zařízení a <strong>nejsou</strong> odesílána nám ani žádné třetí straně:</p>
-<ul>
-<li><strong>Nastavení</strong> — jazyk, motiv, domácí měna, předvolby synchronizace a analytiky, stav úvodního průvodce</li>
-<li><strong>Údaje o letu, které zadáš</strong> — datum a čas odletu, délka letu, volitelně cíl a volitelně číslo letu, a tvoje uložená historie letů („Letový pas“)</li>
-<li><strong>Cestovní checklist</strong> — odškrtnuté položky a vlastní položky, které přidáš</li>
-<li><strong>Herní postup</strong> — skóre, série, hvězdičky za úrovně, úspěchy</li>
-<li><strong>Jména hráčů</strong>, která volitelně zadáš pro hry, kde si hráči předávají telefon</li>
-<li><strong>Obsah v mezipaměti</strong> — stažené články, obrázky k článkům a směnné kurzy, aby fungovaly offline</li>
-<li><strong>Stav nákupu</strong> — zda je FlightMode Plus odemčené (uloženo v mezipaměti, aby to fungovalo offline)</li>
-</ul>
-<p>Všechna tato data můžeš kdykoli smazat vymazáním dat Aplikace v nastavení zařízení nebo odinstalováním Aplikace.</p>
-<h2>3. Data, která opouštějí tvoje zařízení</h2>
-<h3>3.1 Anonymní produktová analytika (PostHog) — volitelná</h3>
-<p>Pokud je v sestavení aplikace analytika zapnutá, Aplikace odesílá anonymní události o používání službě <strong>PostHog</strong> (posthog.com), poskytovateli analytiky, abychom lépe pochopili, které funkce se používají.</p>
-<ul>
-<li><strong>Co se odesílá:</strong> obecné události o používání, například otevření aplikace, dokončení úvodního průvodce, přidání nebo úprava letu (jen hrubá rozmezí jako „odlet za 1–7 dní“ nebo „let 2–5 h“, nikdy přesný čas), spuštění nebo dokončení hry a skóre, otevření nebo dočtení článku, použití relaxačního cvičení a zvuků na pozadí, otevření cestovních pomůcek (checklist, konverzační fráze, převodník), úspěšná nebo neúspěšná synchronizace obsahu a směnných kurzů, odemčené úspěchy a technické informace o chybách (typ chyby, zkrácený kód chyby, ze kterého jsou odstraněny webové adresy, cesty k souborům a další podrobnosti, a názvy funkcí z místa, kde chyba nastala).</li>
-<li><strong>Identifikátory:</strong> náhodné anonymní ID zařízení, které vygeneruje analytická knihovna a které je uložené ve tvém zařízení. Není propojené s tvým jménem, e-mailem, telefonním číslem, reklamním ID ani žádným účtem. Profily osob jsou vypnuté.</li>
-<li><strong>IP adresa:</strong> jako každá internetová služba i PostHog při nahrávání událostí obdrží tvoji IP adresu. Aplikace PostHog žádá, aby ji nepoužíval k určení polohy (GeoIP je vypnuté).</li>
-<li><strong>Nikdy se neodesílá:</strong> tvoje jméno, e-mail, telefonní číslo, přesná poloha, číslo letu, přesný čas odletu, jména hráčů, text checklistu ani žádný jiný text, který napíšeš.</li>
-<li><strong>Kdy se odesílá:</strong> dokud jsi offline, události zůstávají v zařízení a nahrají se později, a to jen v sítích povolených volbou <strong>Nastavení → Online synchronizace</strong> (Jen Wi-Fi / Wi-Fi + mobilní data / Vypnuto).</li>
-<li><strong>Odhlášení:</strong> volbu <strong>Nastavení → Soukromí → Anonymní analytika</strong> můžeš kdykoli vypnout. Aplikace pak přestane události sbírat a smaže události, které ještě nebyly nahrány. Analytika zůstane vypnutá od dalšího spuštění aplikace ještě před odesláním jakékoli události.</li>
-</ul>
-<h3>3.2 Aktualizace článků (GitHub)</h3>
-<p>Aby mohla Aplikace dodávat nové cestovní články bez aktualizace aplikace, pravidelně stahuje veřejný soubor (<code>content/feed.json</code>) z <strong>raw.githubusercontent.com</strong> (GitHub). Obrázky k článkům se stahují ze serverů s obrázky uvedených v tomto souboru (aktuálně images.unsplash.com). Jde o prosté stahování: neodesílají se žádné osobní údaje, ale servery obdrží tvoji IP adresu a běžné informace o požadavku. Toto stahování respektuje tvé nastavení <strong>Online synchronizace</strong> a lze ho úplně vypnout.</p>
-<h3>3.3 Směnné kurzy (open.er-api.com)</h3>
-<p>Když jsi online, převodník měn stahuje aktuální směnné kurzy z <strong>open.er-api.com</strong> (ExchangeRate-API). Neodesílají se žádné osobní údaje; server obdrží tvoji IP adresu a běžné informace o požadavku. I toto respektuje tvé nastavení <strong>Online synchronizace</strong>. Bez něj převodník používá kurzy dodané s Aplikací.</p>
-<h3>3.4 Nákupy a spropitné (Google Play Billing)</h3>
-<p>Volitelné nákupy (FlightMode Plus, spropitné) zpracovává výhradně <strong>Google Play</strong>. Tvoje platební údaje nedostáváme ani neukládáme. Aplikace si lokálně ukládá pouze to, zda je Plus odemčené. Na nákup se vztahují zásady ochrany soukromí společnosti Google.</p>
-<h3>3.5 Úspěchy (Google Play Games)</h3>
-<p>Pokud ve svém zařízení používáš Google Play Games, úspěchy, které v Aplikaci odemkneš, se hlásí službě <strong>Google Play Games Services</strong> pod tvým profilem Play Games. Platí zásady ochrany soukromí společnosti Google. Údaje o tvém účtu Google nedostáváme.</p>
-<h3>3.6 E-maily, které se rozhodneš poslat</h3>
-<p>„Nahlásit chybu“ a „Navrhnout funkci“ otevřou tvoji vlastní e-mailovou aplikaci s vyplněnou naší adresou. Nic se neodešle, dokud e-mail sám neodešleš.</p>
-<h2>4. Funkce zařízení a oprávnění</h2>
-<ul>
-<li><strong>Oznámení</strong> — volitelná místní připomenutí (např. připravenost na let, okno pro spánek kvůli jet lagu). Plánují se v zařízení; žádná data o oznámeních se nám neodesílají.</li>
-<li><strong>Pohybové senzory</strong> — používají se jen při hraní her ovládaných pohybem (např. Zkouška turbulencí, Rozbij krabice, Žrout v bludišti v režimu náklonu). Data ze senzorů se zpracovávají v zařízení a nikdy se nezaznamenávají ani neodesílají.</li>
-<li><strong>Služba na popředí / přehrávání médií / nastavení zvuku</strong> — používá se výhradně proto, aby relaxační zvuky mohly hrát na pozadí.</li>
-<li><strong>Internet</strong> — používá se pouze pro volitelná stahování a analytiku popsané výše. Všechny hlavní funkce fungují offline.</li>
-</ul>
-<p>Aplikace nežádá o oprávnění ke kameře, mikrofonu, kontaktům ani poloze a blokuje oprávnění k reklamnímu ID.</p>
-<h2>5. Žádný prodej, žádné reklamy, žádný účet</h2>
-<p>Data neprodáváme ani nepronajímáme. Aplikace neobsahuje žádné reklamní knihovny (SDK). Aplikace nemá uživatelské účty.</p>
-<h2>6. Soukromí dětí</h2>
-<p>Aplikace vědomě neshromažďuje osobní údaje dětí. Výše popsaná analytika je anonymní a lze ji vypnout.</p>
-<h2>7. Uchovávání a mazání dat</h2>
-<ul>
-<li>Lokální data zůstávají ve tvém zařízení, dokud nevymažeš data Aplikace nebo ji neodinstaluješ.</li>
-<li>Anonymní analytická data uchovává PostHog podle nastavení projektu PostHog, které určuje vývojář. Protože nejsou propojená s tvou identitou, obecně nedokážeme tvoje události vyčlenit; pokud máš nějakou žádost, kontaktuj nás a uveď co nejvíc podrobností.</li>
-</ul>
-<h2>8. Zabezpečení</h2>
-<p>Minimalizujeme to, co opouští zařízení (viz oddíl 3), a všechny síťové požadavky používají HTTPS. Zabezpečení lokálně uložených dat závisí také na vlastním nastavení zabezpečení tvého zařízení.</p>
-<h2>9. Změny těchto zásad</h2>
-<p>Tyto zásady ochrany soukromí můžeme čas od času aktualizovat. Změny se projeví aktualizací data „Poslední aktualizace“ na začátku tohoto dokumentu.</p>
-<h2>10. Kontakt</h2>
-<p>Pokud máš jakékoli otázky k těmto zásadám ochrany soukromí, kontaktuj nás na:</p>
-<p><strong>E-mail:</strong> <a href="mailto:flightmode.app@proton.me">flightmode.app@proton.me</a></p>
-<hr>
-<p><em>Tyto zásady ochrany soukromí se vztahují na aplikaci FlightMode (com.hajan39.flightmode) dostupnou na Google Play. Anglická verze je zveřejněna na <a href="https://hajan39.github.io/flightMode/privacy/">https://hajan39.github.io/flightMode/privacy/</a>.</em></p>
-</article>
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <nav aria-label="Patička">
-      <ul>
-        <li><a href="../">Domů</a></li>
-        <li><a href="mailto:flightmode.app@proton.me">Podpora: flightmode.app@proton.me</a></li>
-        <li><a href="../../privacy/" hreflang="en" lang="en">English (závazná verze)</a></li>
-      </ul>
-    </nav>
-  </div>
-</footer>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zásady ochrany soukromí – FlightMode</title>
+    <meta
+      name="description"
+      content="Zásady ochrany soukromí aplikace FlightMode pro Android: co zůstává v zařízení, jaká volitelná data ho opouštějí a jak to vypnout."
+    >
+    <link
+      rel="canonical"
+      href="https://hajan39.github.io/flightMode/cs/privacy/"
+    >
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://hajan39.github.io/flightMode/privacy/"
+    >
+    <link
+      rel="alternate"
+      hreflang="cs"
+      href="https://hajan39.github.io/flightMode/cs/privacy/"
+    >
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://hajan39.github.io/flightMode/privacy/"
+    >
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    >
+    <meta
+      name="theme-color"
+      content="#091017"
+      media="(prefers-color-scheme: dark)"
+    >
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="FlightMode">
+    <meta property="og:title" content="Zásady ochrany soukromí – FlightMode">
+    <meta
+      property="og:description"
+      content="Co aplikace FlightMode uchovává ve tvém zařízení a jaká volitelná data ho opouštějí."
+    >
+    <meta
+      property="og:url"
+      content="https://hajan39.github.io/flightMode/cs/privacy/"
+    >
+    <meta
+      property="og:image"
+      content="https://hajan39.github.io/flightMode/img/og-cs.png"
+    >
+    <meta property="og:locale" content="cs_CZ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta
+      name="twitter:image"
+      content="https://hajan39.github.io/flightMode/img/og-cs.png"
+    >
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="stylesheet" href="../../style.css">
+  </head>
+  <body>
+    <a class="skip" href="#main">Přeskočit na obsah</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="../"
+          ><img
+            src="../../img/icon-96.webp"
+            alt=""
+            width="36"
+            height="36"
+          >FlightMode</a
+        >
+        <nav aria-label="Jazyk">
+          <ul class="lang">
+            <li>
+              <a href="../../privacy/" hreflang="en" lang="en" title="English"
+                >EN</a
+              >
+            </li>
+            <li><span aria-current="page" lang="cs">CS</span></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap prose">
+      <p class="note">
+        <strong>Překlad.</strong>
+        Toto je český překlad pro snazší čtení. Závazná je
+        <a href="../../privacy/" hreflang="en">anglická verze</a>; v případě
+        rozporu platí ona.
+      </p>
+      <article>
+        <h1>Zásady ochrany soukromí — FlightMode</h1>
+        <p class="meta">
+          <strong>Poslední aktualizace:</strong>
+          28. října 2026
+        </p>
+        <h2>1. Úvod</h2>
+        <p>
+          Tyto zásady ochrany soukromí popisují, jak mobilní aplikace FlightMode
+          („Aplikace“), kterou vyvíjí nezávislý vývojář („my“, „nás“, „náš“),
+          zachází s daty. FlightMode je offline společník na cesty letadlem:
+          funguje bez připojení k internetu a nemá žádný účet, přihlášení ani
+          uživatelský profil.
+        </p>
+        <h2>2. Data uložená pouze ve tvém zařízení</h2>
+        <p>
+          Následující data jsou uložena lokálně ve tvém zařízení a
+          <strong>nejsou</strong>
+          odesílána nám ani žádné třetí straně:
+        </p>
+        <ul>
+          <li>
+            <strong>Nastavení</strong>
+            — jazyk, motiv, domácí měna, předvolby synchronizace a analytiky,
+            stav úvodního průvodce
+          </li>
+          <li>
+            <strong>Údaje o letu, které zadáš</strong>
+            — datum a čas odletu, délka letu, volitelně cíl a volitelně číslo
+            letu, a tvoje uložená historie letů („Letový pas“)
+          </li>
+          <li>
+            <strong>Cestovní checklist</strong>
+            — odškrtnuté položky a vlastní položky, které přidáš
+          </li>
+          <li>
+            <strong>Herní postup</strong>
+            — skóre, série, hvězdičky za úrovně, úspěchy
+          </li>
+          <li>
+            <strong>Jména hráčů</strong>, která volitelně zadáš pro hry, kde si
+            hráči předávají telefon
+          </li>
+          <li>
+            <strong>Obsah v mezipaměti</strong>
+            — stažené články, obrázky k článkům a směnné kurzy, aby fungovaly
+            offline
+          </li>
+          <li>
+            <strong>Stav nákupu</strong>
+            — zda je FlightMode Plus odemčené (uloženo v mezipaměti, aby to
+            fungovalo offline)
+          </li>
+        </ul>
+        <p>
+          Všechna tato data můžeš kdykoli smazat vymazáním dat Aplikace v
+          nastavení zařízení nebo odinstalováním Aplikace.
+        </p>
+        <h2>3. Data, která opouštějí tvoje zařízení</h2>
+        <h3>3.1 Anonymní produktová analytika (PostHog) — volitelná</h3>
+        <p>
+          Pokud je v sestavení aplikace analytika zapnutá, Aplikace odesílá
+          anonymní události o používání službě
+          <strong>PostHog</strong>
+          (posthog.com), poskytovateli analytiky, abychom lépe pochopili, které
+          funkce se používají.
+        </p>
+        <ul>
+          <li>
+            <strong>Co se odesílá:</strong>
+            obecné události o používání, například otevření aplikace, dokončení
+            úvodního průvodce, přidání nebo úprava letu (jen hrubá rozmezí jako
+            „odlet za 1–7 dní“ nebo „let 2–5 h“, nikdy přesný čas), spuštění
+            nebo dokončení hry a skóre, otevření nebo dočtení článku, použití
+            relaxačního cvičení a zvuků na pozadí, otevření cestovních pomůcek
+            (checklist, konverzační fráze, převodník), úspěšná nebo neúspěšná
+            synchronizace obsahu a směnných kurzů, odemčené úspěchy a technické
+            informace o chybách (typ chyby, zkrácený kód chyby, ze kterého jsou
+            odstraněny webové adresy, cesty k souborům a další podrobnosti, a
+            názvy funkcí z místa, kde chyba nastala).
+          </li>
+          <li>
+            <strong>Identifikátory:</strong>
+            náhodné anonymní ID zařízení, které vygeneruje analytická knihovna a
+            které je uložené ve tvém zařízení. Není propojené s tvým jménem,
+            e-mailem, telefonním číslem, reklamním ID ani žádným účtem. Profily
+            osob jsou vypnuté.
+          </li>
+          <li>
+            <strong>IP adresa:</strong>
+            jako každá internetová služba i PostHog při nahrávání událostí
+            obdrží tvoji IP adresu. Aplikace PostHog žádá, aby ji nepoužíval k
+            určení polohy (GeoIP je vypnuté).
+          </li>
+          <li>
+            <strong>Nikdy se neodesílá:</strong>
+            tvoje jméno, e-mail, telefonní číslo, přesná poloha, číslo letu,
+            přesný čas odletu, jména hráčů, text checklistu ani žádný jiný text,
+            který napíšeš.
+          </li>
+          <li>
+            <strong>Kdy se odesílá:</strong>
+            dokud jsi offline, události zůstávají v zařízení a nahrají se
+            později, a to jen v sítích povolených volbou
+            <strong>Nastavení → Online synchronizace</strong>
+            (Jen Wi-Fi / Wi-Fi + mobilní data / Vypnuto).
+          </li>
+          <li>
+            <strong>Odhlášení:</strong>
+            volbu
+            <strong>Nastavení → Soukromí → Anonymní analytika</strong>
+            můžeš kdykoli vypnout. Aplikace pak přestane události sbírat a smaže
+            události, které ještě nebyly nahrány. Analytika zůstane vypnutá od
+            dalšího spuštění aplikace ještě před odesláním jakékoli události.
+          </li>
+        </ul>
+        <h3>3.2 Aktualizace článků (GitHub)</h3>
+        <p>
+          Aby mohla Aplikace dodávat nové cestovní články bez aktualizace
+          aplikace, pravidelně stahuje veřejný soubor (<code
+            >content/feed.json</code
+          >) z <strong>raw.githubusercontent.com</strong> (GitHub). Obrázky k
+          článkům se stahují ze serverů s obrázky uvedených v tomto souboru
+          (aktuálně images.unsplash.com). Jde o prosté stahování: neodesílají se
+          žádné osobní údaje, ale servery obdrží tvoji IP adresu a běžné
+          informace o požadavku. Toto stahování respektuje tvé nastavení
+          <strong>Online synchronizace</strong>
+          a lze ho úplně vypnout.
+        </p>
+        <h3>3.3 Směnné kurzy (open.er-api.com)</h3>
+        <p>
+          Když jsi online, převodník měn stahuje aktuální směnné kurzy z
+          <strong>open.er-api.com</strong>
+          (ExchangeRate-API). Neodesílají se žádné osobní údaje; server obdrží
+          tvoji IP adresu a běžné informace o požadavku. I toto respektuje tvé
+          nastavení
+          <strong>Online synchronizace</strong>. Bez něj převodník používá kurzy
+          dodané s Aplikací.
+        </p>
+        <h3>3.4 Nákupy a spropitné (Google Play Billing)</h3>
+        <p>
+          Volitelné nákupy (FlightMode Plus, spropitné) zpracovává výhradně
+          <strong>Google Play</strong>. Tvoje platební údaje nedostáváme ani
+          neukládáme. Aplikace si lokálně ukládá pouze to, zda je Plus odemčené.
+          Na nákup se vztahují zásady ochrany soukromí společnosti Google.
+        </p>
+        <h3>3.5 Úspěchy (Google Play Games)</h3>
+        <p>
+          Pokud ve svém zařízení používáš Google Play Games, úspěchy, které v
+          Aplikaci odemkneš, se hlásí službě
+          <strong>Google Play Games Services</strong>
+          pod tvým profilem Play Games. Platí zásady ochrany soukromí
+          společnosti Google. Údaje o tvém účtu Google nedostáváme.
+        </p>
+        <h3>3.6 E-maily, které se rozhodneš poslat</h3>
+        <p>
+          „Nahlásit chybu“ a „Navrhnout funkci“ otevřou tvoji vlastní e-mailovou
+          aplikaci s vyplněnou naší adresou. Nic se neodešle, dokud e-mail sám
+          neodešleš.
+        </p>
+        <h2>4. Funkce zařízení a oprávnění</h2>
+        <ul>
+          <li>
+            <strong>Oznámení</strong>
+            — volitelná místní připomenutí (např. připravenost na let, okno pro
+            spánek kvůli jet lagu). Plánují se v zařízení; žádná data o
+            oznámeních se nám neodesílají.
+          </li>
+          <li>
+            <strong>Pohybové senzory</strong>
+            — používají se jen při hraní her ovládaných pohybem (např. Zkouška
+            turbulencí, Rozbij krabice, Žrout v bludišti v režimu náklonu). Data
+            ze senzorů se zpracovávají v zařízení a nikdy se nezaznamenávají ani
+            neodesílají.
+          </li>
+          <li>
+            <strong
+              >Služba na popředí / přehrávání médií / nastavení zvuku</strong
+            >
+            — používá se výhradně proto, aby relaxační zvuky mohly hrát na
+            pozadí.
+          </li>
+          <li>
+            <strong>Internet</strong>
+            — používá se pouze pro volitelná stahování a analytiku popsané výše.
+            Všechny hlavní funkce fungují offline.
+          </li>
+        </ul>
+        <p>
+          Aplikace nežádá o oprávnění ke kameře, mikrofonu, kontaktům ani poloze
+          a blokuje oprávnění k reklamnímu ID.
+        </p>
+        <h2>5. Žádný prodej, žádné reklamy, žádný účet</h2>
+        <p>
+          Data neprodáváme ani nepronajímáme. Aplikace neobsahuje žádné reklamní
+          knihovny (SDK). Aplikace nemá uživatelské účty.
+        </p>
+        <h2>6. Soukromí dětí</h2>
+        <p>
+          Aplikace vědomě neshromažďuje osobní údaje dětí. Výše popsaná
+          analytika je anonymní a lze ji vypnout.
+        </p>
+        <h2>7. Uchovávání a mazání dat</h2>
+        <ul>
+          <li>
+            Lokální data zůstávají ve tvém zařízení, dokud nevymažeš data
+            Aplikace nebo ji neodinstaluješ.
+          </li>
+          <li>
+            Anonymní analytická data uchovává PostHog podle nastavení projektu
+            PostHog, které určuje vývojář. Protože nejsou propojená s tvou
+            identitou, obecně nedokážeme tvoje události vyčlenit; pokud máš
+            nějakou žádost, kontaktuj nás a uveď co nejvíc podrobností.
+          </li>
+        </ul>
+        <h2>8. Zabezpečení</h2>
+        <p>
+          Minimalizujeme to, co opouští zařízení (viz oddíl 3), a všechny síťové
+          požadavky používají HTTPS. Zabezpečení lokálně uložených dat závisí
+          také na vlastním nastavení zabezpečení tvého zařízení.
+        </p>
+        <h2>9. Změny těchto zásad</h2>
+        <p>
+          Tyto zásady ochrany soukromí můžeme čas od času aktualizovat. Změny se
+          projeví aktualizací data „Poslední aktualizace“ na začátku tohoto
+          dokumentu.
+        </p>
+        <h2>10. Kontakt</h2>
+        <p>
+          Pokud máš jakékoli otázky k těmto zásadám ochrany soukromí, kontaktuj
+          nás na:
+        </p>
+        <p>
+          <strong>E-mail:</strong>
+          <a href="mailto:flightmode.app@proton.me">flightmode.app@proton.me</a>
+        </p>
+        <hr>
+        <p>
+          <em
+            >Tyto zásady ochrany soukromí se vztahují na aplikaci FlightMode
+            (com.hajan39.flightmode) dostupnou na Google Play. Anglická verze je
+            zveřejněna na
+            <a href="https://hajan39.github.io/flightMode/privacy/"
+              >https://hajan39.github.io/flightMode/privacy/</a
+            >.</em
+          >
+        </p>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <nav aria-label="Patička">
+          <ul>
+            <li><a href="../">Domů</a></li>
+            <li>
+              <a href="mailto:flightmode.app@proton.me"
+                >Podpora: flightmode.app@proton.me</a
+              >
+            </li>
+            <li>
+              <a href="../../privacy/" hreflang="en" lang="en"
+                >English (závazná verze)</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
 </html>

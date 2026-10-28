@@ -19,7 +19,8 @@
   --shadow: 0 1px 2px rgb(17 24 28 / 6%), 0 8px 24px rgb(17 24 28 / 8%);
   --radius: 18px;
   --max: 1080px;
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Ubuntu,
+  --font:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Ubuntu,
     Cantarell, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -372,7 +373,9 @@ h2 {
   padding: 10px;
   border-radius: 34px;
   background: #0d1317;
-  box-shadow: 0 0 0 1px #2a343c, var(--shadow);
+  box-shadow:
+    0 0 0 1px #2a343c,
+    var(--shadow);
 }
 
 .phone::before {
@@ -398,7 +401,9 @@ h2 {
 
 .hero .phone {
   max-width: 260px;
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 20%), 0 24px 50px rgb(0 0 0 / 35%);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 20%),
+    0 24px 50px rgb(0 0 0 / 35%);
 }
 
 /* ── FAQ ──────────────────────────────────────────────── */
