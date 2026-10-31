@@ -1,0 +1,58 @@
+# FlightMode flight-lookup Worker — see README.md for the step-by-step setup.
+# No secrets in this file: the AeroDataBox key is the Worker secret
+# AERODATABOX_API_KEY (Cloudflare dashboard or `wrangler secret put`).
+name = "flightmode-flight-lookup"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+# No request logging: Workers Logs stay off and the code never calls console.*.
+[observability]
+enabled = false
+
+[vars]
+# Upstream: API.Market by default. To use RapidAPI instead, set
+#   UPSTREAM_BASE_URL    = "https://aerodatabox.p.rapidapi.com"
+#   UPSTREAM_AUTH_HEADER = "X-RapidAPI-Key"
+#   UPSTREAM_HOST_HEADER = "X-RapidAPI-Host"
+UPSTREAM_BASE_URL = "https://prod.api.market/api/v1/aedbx/aerodatabox"
+UPSTREAM_AUTH_HEADER = "x-api-market-key"
+UPSTREAM_HOST_HEADER = ""
+# dateLocalRole: match the date against the departure (empty = not sent).
+UPSTREAM_DATE_ROLE = "Departure"
+UPSTREAM_TIMEOUT_MS = "6000"
+# Global upstream calls per UTC day (cache misses only). Keep below the
+# plan's quota and below the free KV limit of 1,000 writes/day.
+UPSTREAM_DAILY_CAP = "100"
+# Positive cache: until the day after the flight, at most this many seconds.
+CACHE_MAX_SECONDS = "259200"
+# "Not found" answers are cached this long.
+NEGATIVE_CACHE_SECONDS = "21600"
+# Accepted dates: today − MAX_DAYS_BEHIND … today + MAX_DAYS_AHEAD (UTC).
+MAX_DAYS_BEHIND = "1"
+MAX_DAYS_AHEAD = "330"
+# Only used when the IP_RATE_LIMITER binding below is missing.
+IP_LIMIT_PER_MINUTE = "10"
+
+# Cache. Create the namespace (dashboard: Storage & Databases → KV → Create)
+# and paste its ID here, or set the GitHub repo variable FLIGHT_LOOKUP_KV_ID
+# and the deploy workflow fills it in.
+[[kv_namespaces]]
+binding = "FLIGHT_CACHE"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Per-client rate limit (Workers Rate Limiting binding). namespace_id is any
+# number unique within the account; period must be 10 or 60 seconds.
+[[ratelimits]]
+name = "IP_RATE_LIMITER"
+namespace_id = "4711"
+simple = { limit = 10, period = 60 }
+
+# Global daily upstream budget (SQLite-backed Durable Object).
+[[durable_objects.bindings]]
+name = "UPSTREAM_BUDGET"
+class_name = "UpstreamBudget"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["UpstreamBudget"]

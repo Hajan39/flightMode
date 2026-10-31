@@ -1,0 +1,17 @@
+{
+  "name": "flightmode-flight-lookup",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker: optional flight-number lookup for FlightMode (AeroDataBox proxy with KV cache).",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "dry-run": "wrangler deploy --dry-run --outdir .wrangler-dry-run",
+    "typecheck": "tsc -p ."
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261031.1",
+    "typescript": "6.0.3",
+    "wrangler": "4.156.0"
+  }
+}

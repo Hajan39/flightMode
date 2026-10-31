@@ -84,6 +84,24 @@ export const cs = {
   flightDepartureTimePlaceholder: "HH:MM",
   flightNumberLabel: "Číslo letu (volitelné)",
   flightNumberPlaceholder: "např. AA1234",
+  flightLookupFill: "Doplnit",
+  flightLookupA11y: "Doplnit údaje o letu podle čísla letu",
+  flightLookupHint: "Použije datum odletu níže; vyžaduje internet.",
+  flightLookupLoading: "Hledám let…",
+  flightLookupFilled:
+    "Doplněno ✓ {{from}} → {{to}} (časy podle letového řádu). Zkontrolujte prosím údaje.",
+  flightLookupNotFound:
+    "Pro toto číslo a datum jsme žádný let nenašli. Zkontrolujte obojí, nebo údaje vyplňte ručně.",
+  flightLookupOffline:
+    "Jste offline. Vyplňte údaje ručně, nebo to zkuste znovu po připojení.",
+  flightLookupSyncOff:
+    "Online synchronizace je v Nastavení vypnutá, let proto nelze vyhledat. Vyplňte údaje ručně.",
+  flightLookupWifiOnly:
+    "Online synchronizace je nastavená jen na Wi-Fi. Připojte se k Wi-Fi, nebo údaje vyplňte ručně.",
+  flightLookupRateLimited:
+    "Příliš mnoho hledání. Zkuste to prosím znovu za minutu.",
+  flightLookupInvalid: "Zadejte číslo letu, např. OK123.",
+  flightLookupError: "Vyhledání letu teď není dostupné. Vyplňte údaje ručně.",
   flightDateToday: "Dnes",
   flightDateTomorrow: "Zítra",
   flightDateIn2Days: "+2 dny",

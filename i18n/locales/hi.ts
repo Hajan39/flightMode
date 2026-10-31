@@ -73,6 +73,22 @@
   flightDepartureTimePlaceholder: "HH:MM",
   flightNumberLabel: "उड़ान संख्या (वैकल्पिक)",
   flightNumberPlaceholder: "जैसे AA1234",
+  flightLookupFill: "भरें",
+  flightLookupA11y: "उड़ान संख्या से उड़ान का विवरण भरें",
+  flightLookupHint: "नीचे दी गई प्रस्थान तिथि का उपयोग करता है; इंटरनेट चाहिए।",
+  flightLookupLoading: "उड़ान खोजी जा रही है…",
+  flightLookupFilled:
+    "भर दिया ✓ {{from}} → {{to}} (निर्धारित समय)। कृपया विवरण जाँच लें।",
+  flightLookupNotFound:
+    "इस नंबर और तिथि के लिए कोई उड़ान नहीं मिली। दोनों जाँचें या विवरण खुद भरें।",
+  flightLookupOffline: "आप ऑफ़लाइन हैं। विवरण खुद भरें या कनेक्ट होने पर फिर कोशिश करें।",
+  flightLookupSyncOff:
+    "सेटिंग्स में ऑनलाइन सिंक बंद है, इसलिए उड़ान नहीं खोजी जा सकती। विवरण खुद भरें।",
+  flightLookupWifiOnly:
+    "ऑनलाइन सिंक केवल Wi-Fi पर सेट है। Wi-Fi से कनेक्ट करें या विवरण खुद भरें।",
+  flightLookupRateLimited: "बहुत अधिक खोजें। कृपया एक मिनट बाद फिर कोशिश करें।",
+  flightLookupInvalid: "OK123 जैसी उड़ान संख्या दर्ज करें।",
+  flightLookupError: "उड़ान खोज अभी उपलब्ध नहीं है। विवरण खुद भरें।",
   flightDateToday: "आज",
   flightDateTomorrow: "कल",
   flightDateIn2Days: "+2 दिन",

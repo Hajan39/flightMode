@@ -74,6 +74,25 @@
   flightDepartureTimePlaceholder: "HH:MM",
   flightNumberLabel: "항공편명 (선택)",
   flightNumberPlaceholder: "예: AA1234",
+  flightLookupFill: "자동 입력",
+  flightLookupA11y: "항공편명으로 항공편 정보 입력",
+  flightLookupHint: "아래 출발 날짜를 사용하며 인터넷이 필요합니다.",
+  flightLookupLoading: "항공편 검색 중…",
+  flightLookupFilled:
+    "입력 완료 ✓ {{from}} → {{to}} (예정 시각). 내용을 확인해 주세요.",
+  flightLookupNotFound:
+    "이 편명과 날짜의 항공편을 찾지 못했습니다. 둘 다 확인하거나 직접 입력해 주세요.",
+  flightLookupOffline:
+    "오프라인 상태입니다. 직접 입력하거나 연결된 후 다시 시도해 주세요.",
+  flightLookupSyncOff:
+    "설정에서 온라인 동기화가 꺼져 있어 항공편을 검색할 수 없습니다. 직접 입력해 주세요.",
+  flightLookupWifiOnly:
+    "온라인 동기화가 'Wi-Fi만'으로 설정되어 있습니다. Wi-Fi에 연결하거나 직접 입력해 주세요.",
+  flightLookupRateLimited:
+    "검색 요청이 너무 많습니다. 1분 후에 다시 시도해 주세요.",
+  flightLookupInvalid: "OK123 같은 항공편명을 입력하세요.",
+  flightLookupError:
+    "지금은 항공편 검색을 사용할 수 없습니다. 직접 입력해 주세요.",
   flightDateToday: "오늘",
   flightDateTomorrow: "내일",
   flightDateIn2Days: "+2일",

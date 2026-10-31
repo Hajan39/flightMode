@@ -7,6 +7,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P0 (aktivni)
 
+- **Vyhledani letu (owner kroky, navod `services/flight-lookup/README.md`)**: 1) registrace API.Market + AeroDataBox free/trial plan, overit base URL / hlavicku `x-api-market-key` / format odpovedi na prvnim realnem volani a prenahrat fixture `__tests__/helpers/aerodataboxFixtures.ts`; precist Terms of Use cl. 5 (cache) a pripadne zkratit `CACHE_MAX_SECONDS`; 2) Cloudflare: KV namespace → repo variable `FLIGHT_LOOKUP_KV_ID`; 3) GitHub secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`; 4) spustit workflow Deploy Flight Lookup Worker; 5) Worker secret `AERODATABOX_API_KEY`; 6) EAS env `EXPO_PUBLIC_FLIGHT_LOOKUP_URL` jen pro preview/development → `npm run deploy:internal`; 7) **pred produkci prejit na placeny komercni plan**, zvednout `UPSTREAM_DAILY_CAP`, pak pridat promennou i do production prostredi
 - ~~**Privacy policy**~~ — schvaleno a publikovano 2026-10-28: `docs/privacy/` (GitHub Pages, https://hajan39.github.io/flightMode/privacy/), odkaz v Settings; zbyva: zapnout GitHub Pages (Settings → Pages → main /docs) a vlozit URL do Play Console (App content → Privacy policy)
 - **Promo web** (`docs/`, en + cs): sdilet na AlternativeTo / Product Hunt / Reddit (r/androidapps, r/travel) / ceske cestovatelske skupiny; po realnych screenshotech z telefonu nahradit web screenshoty
 - **Play Console achievementy**: popisy Word Solver / Word Master / Sudoku Master / Snake Charmer / High Scorer / Slide Master se zmenily — znovu exportovat (`scripts/export-pgs-achievements.mjs`) a aktualizovat v Play Console
@@ -151,6 +152,8 @@ Validation steps:
 5. turn sync off and verify bundled articles still render offline
 
 ### P2 (stredni horizont)
+
+- vyhledani letu — dalsi faze: live status (zpozdeni, gate, zruseni) pro let v den odletu; vyzaduje jine cachovani (minuty, ne dny), placeny plan a promyslet notifikace; vyber spravneho useku u vicesegmentovych letu (Worker vraci `legCount`, app zatim bere prvni usek)
 
 - smart recommendations podle delky letu, typu aktivity, lokalu a historie pouziti
 - destination packs podle cilove destinace

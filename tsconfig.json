@@ -7,5 +7,6 @@
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
-  "exclude": ["__tests__", "**/*.test.ts", "**/*.test.tsx"]
+  "files": ["services/flight-lookup/src/core.ts"],
+  "exclude": ["__tests__", "**/*.test.ts", "**/*.test.tsx", "services"]
 }

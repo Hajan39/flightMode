@@ -74,6 +74,25 @@
   flightDepartureTimePlaceholder: "HH:MM",
   flightNumberLabel: "Número de vuelo (opcional)",
   flightNumberPlaceholder: "ej. AA1234",
+  flightLookupFill: "Rellenar",
+  flightLookupA11y: "Rellenar los datos del vuelo a partir del número de vuelo",
+  flightLookupHint: "Usa la fecha de salida de abajo; necesita internet.",
+  flightLookupLoading: "Buscando el vuelo…",
+  flightLookupFilled:
+    "Rellenado ✓ {{from}} → {{to}} (horarios programados). Revisa los datos.",
+  flightLookupNotFound:
+    "No se encontró ningún vuelo con este número y fecha. Revisa ambos o introduce los datos tú mismo.",
+  flightLookupOffline:
+    "Estás sin conexión. Introduce los datos tú mismo o inténtalo de nuevo cuando tengas conexión.",
+  flightLookupSyncOff:
+    "La Sincronización en línea está desactivada en Ajustes, así que no se puede buscar el vuelo. Introduce los datos tú mismo.",
+  flightLookupWifiOnly:
+    "La Sincronización en línea está en «Solo Wi-Fi». Conéctate a una red Wi-Fi o introduce los datos tú mismo.",
+  flightLookupRateLimited:
+    "Demasiadas búsquedas. Inténtalo de nuevo en un minuto.",
+  flightLookupInvalid: "Introduce un número de vuelo como OK123.",
+  flightLookupError:
+    "La búsqueda de vuelos no está disponible ahora. Introduce los datos tú mismo.",
   flightDateToday: "Hoy",
   flightDateTomorrow: "Mañana",
   flightDateIn2Days: "+2 días",

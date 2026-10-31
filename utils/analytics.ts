@@ -7,6 +7,8 @@ export type AnalyticsEventName =
   | "flight_added"
   | "flight_edited"
   | "flight_setup_completed"
+  /** { result: filled | not_found | error | offline } — never number/date. */
+  | "flight_lookup_result"
   | "game_start"
   | "game_finish"
   | "first_session_completed"

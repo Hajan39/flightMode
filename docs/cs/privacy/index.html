@@ -97,7 +97,7 @@
         <h1>Zásady ochrany soukromí — FlightMode</h1>
         <p class="meta">
           <strong>Poslední aktualizace:</strong>
-          28. října 2026
+          31. října 2026
         </p>
         <h2>1. Úvod</h2>
         <p>
@@ -122,7 +122,9 @@
           <li>
             <strong>Údaje o letu, které zadáš</strong>
             — datum a čas odletu, délka letu, volitelně cíl a volitelně číslo
-            letu, a tvoje uložená historie letů („Letový pas“)
+            letu, a tvoje uložená historie letů („Letový pas“). Výjimka: když
+            klepneš na <strong>Doplnit</strong> vedle čísla letu, odešle se toto
+            číslo letu a datum, jak popisuje oddíl 3.7.
           </li>
           <li>
             <strong>Cestovní checklist</strong>
@@ -253,6 +255,55 @@
           aplikaci s vyplněnou naší adresou. Nic se neodešle, dokud e-mail sám
           neodešleš.
         </p>
+        <h3>3.7 Vyhledání letu (volitelné)</h3>
+        <p>
+          Některé verze Aplikace nabízejí vedle čísla letu tlačítko
+          <strong>Doplnit</strong>, které podle zveřejněného letového řádu
+          doplní čas odletu, délku letu a cíl. Funkce je volitelná: nic se
+          neodešle, dokud na <strong>Doplnit</strong> neklepneš, a let můžeš
+          vždy zadat ručně. Ve tvé verzi Aplikace nemusí být k dispozici.
+        </p>
+        <ul>
+          <li>
+            <strong>Co se odesílá:</strong>
+            pouze číslo letu a datum odletu z formuláře. Jako u každého
+            internetového požadavku obdrží náš server i tvoji IP adresu.
+          </li>
+          <li>
+            <strong>Komu:</strong>
+            naší vlastní vyhledávací službě běžící na
+            <strong>Cloudflare Workers</strong>
+            (Cloudflare, Inc.), která si u poskytovatele letových dat
+            <strong>AeroDataBox</strong>
+            vyžádá letový řád daného letu. AeroDataBox obdrží jen číslo letu a
+            datum — ne tvoji IP adresu ani nic o tobě.
+          </li>
+          <li>
+            <strong>Co se ukládá:</strong>
+            pouze veřejné údaje letového řádu (letiště a plánované časy), na
+            několik dní v mezipaměti, aby opakovaná hledání nemusela k
+            poskytovateli. Neukládají se s tvou IP adresou ani žádným
+            identifikátorem. IP adresa se používá jen v zašifrované (hašované)
+            podobě k omezení počtu hledání za minutu a neukládá se.
+          </li>
+          <li>
+            <strong>Žádné logy:</strong>
+            vyhledávací služba požadavky nezaznamenává.
+          </li>
+          <li>
+            <strong>Kdy:</strong>
+            jen když klepneš na <strong>Doplnit</strong>, a jen v sítích, které
+            povoluje tvoje volba
+            <strong>Nastavení → Online synchronizace</strong>
+            (Vypnuto ji vypíná).
+          </li>
+          <li>
+            <strong>Analytika:</strong>
+            pokud je zapnutá anonymní analytika, Aplikace zaznamená jen to, zda
+            hledání formulář vyplnilo, nic nenašlo, selhalo nebo bylo offline —
+            nikdy číslo letu ani datum.
+          </li>
+        </ul>
         <h2>4. Funkce zařízení a oprávnění</h2>
         <ul>
           <li>

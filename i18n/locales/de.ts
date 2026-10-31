@@ -76,6 +76,25 @@
   flightDepartureTimePlaceholder: "HH:MM",
   flightNumberLabel: "Flugnummer (optional)",
   flightNumberPlaceholder: "z.B. AA1234",
+  flightLookupFill: "Ausfüllen",
+  flightLookupA11y: "Flugdaten anhand der Flugnummer ausfüllen",
+  flightLookupHint: "Nutzt das Abflugdatum unten; braucht Internet.",
+  flightLookupLoading: "Flug wird gesucht…",
+  flightLookupFilled:
+    "Ausgefüllt ✓ {{from}} → {{to}} (Flugplanzeiten). Bitte prüfe die Angaben.",
+  flightLookupNotFound:
+    "Kein Flug für diese Nummer und dieses Datum gefunden. Prüfe beides oder trage die Daten selbst ein.",
+  flightLookupOffline:
+    "Du bist offline. Trage die Daten selbst ein oder versuche es mit Verbindung erneut.",
+  flightLookupSyncOff:
+    "Online-Sync ist in den Einstellungen aus, daher kann der Flug nicht gesucht werden. Trage die Daten selbst ein.",
+  flightLookupWifiOnly:
+    "Online-Sync ist auf „Nur WLAN“ gestellt. Verbinde dich mit einem WLAN oder trage die Daten selbst ein.",
+  flightLookupRateLimited:
+    "Zu viele Suchanfragen. Bitte versuche es in einer Minute erneut.",
+  flightLookupInvalid: "Gib eine Flugnummer wie OK123 ein.",
+  flightLookupError:
+    "Die Flugsuche ist gerade nicht verfügbar. Trage die Daten selbst ein.",
   flightDateToday: "Heute",
   flightDateTomorrow: "Morgen",
   flightDateIn2Days: "+2 Tage",

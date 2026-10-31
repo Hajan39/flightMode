@@ -92,6 +92,24 @@ export const en = {
   flightDepartureTimePlaceholder: "HH:MM",
   flightNumberLabel: "Flight Number (optional)",
   flightNumberPlaceholder: "e.g. AA1234",
+  flightLookupFill: "Fill in",
+  flightLookupA11y: "Fill in flight details from the flight number",
+  flightLookupHint: "Uses the departure date below; needs internet.",
+  flightLookupLoading: "Looking up the flight…",
+  flightLookupFilled:
+    "Filled in ✓ {{from}} → {{to}} (scheduled times). Please check the details.",
+  flightLookupNotFound:
+    "No flight found for this number and date. Check both, or fill in the details yourself.",
+  flightLookupOffline:
+    "You're offline. Fill in the details yourself or try again when connected.",
+  flightLookupSyncOff:
+    "Online Sync is off in Settings, so the flight can't be looked up. Fill in the details yourself.",
+  flightLookupWifiOnly:
+    "Online Sync is set to Wi-Fi only. Connect to Wi-Fi or fill in the details yourself.",
+  flightLookupRateLimited: "Too many lookups. Please try again in a minute.",
+  flightLookupInvalid: "Enter a flight number like OK123.",
+  flightLookupError:
+    "Flight lookup isn't available right now. Fill in the details yourself.",
   flightDateToday: "Today",
   flightDateTomorrow: "Tomorrow",
   flightDateIn2Days: "+2 days",

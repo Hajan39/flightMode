@@ -1,6 +1,6 @@
 # Privacy Policy — FlightMode
 
-**Last updated:** 28 October 2026
+**Last updated:** 31 October 2026
 
 ## 1. Introduction
 
@@ -11,7 +11,7 @@ This Privacy Policy describes how the FlightMode mobile application ("App"), dev
 The following data is stored locally on your device and is **not** sent to us or to any third party:
 
 - **Settings** — language, theme, home currency, sync and analytics preferences, onboarding status
-- **Flight information you enter** — departure date/time, duration, optional destination and optional flight number, and your saved flight history ("Flight Passport")
+- **Flight information you enter** — departure date/time, duration, optional destination and optional flight number, and your saved flight history ("Flight Passport"). Exception: if you tap **Fill in** next to the flight number, that flight number and date are sent as described in section 3.7.
 - **Travel checklist** — ticked items and any custom items you add
 - **Game progress** — scores, streaks, level stars, achievements
 - **Player names** you optionally type for pass-and-play games
@@ -52,6 +52,17 @@ If you use Google Play Games on your device, achievements you unlock in the App 
 ### 3.6 E-mails you choose to send
 
 "Report a Bug" and "Suggest a Feature" open your own e-mail app with our address filled in. Nothing is sent unless you send the e-mail yourself.
+
+### 3.7 Flight lookup (optional)
+
+Some versions of the App offer a **Fill in** button next to the flight number that fills in the departure time, duration and destination from the published flight schedule. The feature is optional: nothing is sent unless you tap **Fill in**, and you can always enter your flight by hand. It may not be available in your version of the App.
+
+- **What is sent:** only the flight number and the departure date you entered. Like any internet request, our server also receives your IP address.
+- **To whom:** our own lookup service running on **Cloudflare Workers** (Cloudflare, Inc.), which asks the flight-data provider **AeroDataBox** for the schedule of that flight. AeroDataBox receives only the flight number and date — not your IP address or anything about you.
+- **What is stored:** only the public schedule data of the flight (airports and scheduled times), cached for a few days so repeated lookups do not need the provider. It is not stored with your IP address or any identifier. Your IP address is used only, in a scrambled (hashed) form, to limit the number of lookups per minute and is not stored.
+- **No logs:** the lookup service does not log requests.
+- **When:** only when you tap **Fill in**, and only on networks allowed by your **Settings → Online Sync** choice (Off disables it).
+- **Analytics:** if anonymous analytics is on, the App records only whether a lookup filled the form, found nothing, failed or was offline — never the flight number or date.
 
 ## 4. Device Features and Permissions
 

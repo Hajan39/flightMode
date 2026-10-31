@@ -36,6 +36,8 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 **Travel tools (all offline):** `data/destinations.ts` carries `timezone`, `utcOffsetMinutes`, `phraseLanguage`, `currencyCode` per city; `utils/timezone.ts` (destination local time + jet-lag plan, Intl with offset fallback), `data/checklist.ts` + `store/useChecklistStore.ts` (destinations can add a "For {city}" block via `checklistExtras`), `data/phrases.ts` (24 languages × 12 phrases), `data/currencies.ts` + `utils/convert.ts` (bundled approximate rates = offline baseline), `store/useRatesStore.ts` + `utils/ratesSync.ts` + `components/RatesSyncBootstrap.tsx` (live rates from open.er-api.com when online, 12 h cooldown, sync-policy gated; `getEffectiveCurrencies()` overlays them on the bundle and appends provider-only codes named via `data/currencyNames.ts`).
 
+**Optional flight lookup (online, off in production):** `services/flight-lookup/` is a Cloudflare Worker (own package.json/lockfile/tsconfig; pure logic in `src/core.ts`, tested from root Jest; deployed by `.github/workflows/deploy-flight-lookup.yml`; `release-main` ignores `services/**`) proxying AeroDataBox with a KV cache. App side: `utils/flightLookup.ts` (enabled only when `EXPO_PUBLIC_FLIGHT_LOOKUP_URL` is set; honours Online Sync), `hooks/useFlightLookup.ts`, `components/FlightLookupControls.tsx`, `utils/flightLookupFill.ts`, `data/destinationAirports.ts` (IATA → destination). Analytics: `flight_lookup_result` only — never number/date.
+
 **Tab screens:**
 - `(tabs)/index.tsx` — Home (daily challenge, quick actions, flight utility, recommendations)
 - `(tabs)/games.tsx` — Game discovery with search + category/intent filters

@@ -13,6 +13,10 @@ import {
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import {
+  FlightLookupButton,
+  FlightLookupStatusLine,
+} from "@/components/FlightLookupControls";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -21,6 +25,7 @@ import {
   getDestinationById,
   getDestinationCity,
 } from "@/data/destinations";
+import { useFlightLookup } from "@/hooks/useFlightLookup";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useChecklistStore } from "@/store/useChecklistStore";
@@ -217,6 +222,29 @@ export default function FlightEditScreen() {
     existingFlight?.destinationId
   );
 
+  // Optional "Fill in" by flight number (off unless the build enables it).
+  const lookup = useFlightLookup((patch) => {
+    setDepartureDate((v) => patch.departureDate ?? v);
+    setDepartureClock((v) => patch.departureClock ?? v);
+    setHours((v) => patch.durationHours ?? v);
+    setMinutes((v) => patch.durationMinutes ?? v);
+    setDestinationId((v) => patch.destinationId ?? v);
+  });
+  const { markTouched } = lookup;
+
+  const handleFlightNumberChange = (value: string) => {
+    setFlightNumber(value);
+    lookup.reset();
+  };
+
+  const handleLookup = () =>
+    lookup.run(
+      flightNumber,
+      DATE_INPUT_RE.test(departureDate)
+        ? departureDate
+        : toDateInputValue(Date.now())
+    );
+
   // Parse current clock for steppers
   const clockMatch = TIME_INPUT_RE.exec(departureClock);
   const clockHour = clockMatch ? Number(clockMatch[1]) : 0;
@@ -231,6 +259,7 @@ export default function FlightEditScreen() {
     if (!match) {
       return;
     }
+    markTouched("departure");
     const next = new Date(
       Number(match[1]),
       Number(match[2]) - 1,
@@ -258,6 +287,7 @@ export default function FlightEditScreen() {
 
   /** Minutes carry into hours; the total is clamped to 0:00–24:00. */
   function adjustDuration(deltaMinutes: number) {
+    markTouched("duration");
     const total = Math.max(
       0,
       Math.min(
@@ -441,24 +471,40 @@ export default function FlightEditScreen() {
             <Text style={[styles.fieldLabel, { color: theme.mutedText }]}>
               {t("flightNumberLabel")}
             </Text>
-            <TextInput
-              accessibilityLabel={t("flightNumberLabel")}
-              autoCapitalize="characters"
-              autoCorrect={false}
-              maxLength={8}
-              onChangeText={setFlightNumber}
-              placeholder={t("flightNumberPlaceholder")}
-              placeholderTextColor={theme.mutedText}
-              style={[
-                styles.textInput,
-                {
-                  backgroundColor: theme.inputBackground,
-                  borderColor: theme.border,
-                  color: theme.text,
-                },
-              ]}
-              value={flightNumber}
-            />
+            <View style={styles.numberRow}>
+              <TextInput
+                accessibilityLabel={t("flightNumberLabel")}
+                autoCapitalize="characters"
+                autoCorrect={false}
+                maxLength={8}
+                onChangeText={handleFlightNumberChange}
+                placeholder={t("flightNumberPlaceholder")}
+                placeholderTextColor={theme.mutedText}
+                style={[
+                  styles.textInput,
+                  lookup.enabled ? styles.textInputWithButton : null,
+                  {
+                    backgroundColor: theme.inputBackground,
+                    borderColor: theme.border,
+                    color: theme.text,
+                  },
+                ]}
+                value={flightNumber}
+              />
+              {lookup.enabled ? (
+                <FlightLookupButton
+                  disabled={flightNumber.trim() === ""}
+                  onPress={handleLookup}
+                  status={lookup.status}
+                />
+              ) : null}
+            </View>
+            {lookup.enabled ? (
+              <FlightLookupStatusLine
+                availability={lookup.availability}
+                status={lookup.status}
+              />
+            ) : null}
           </View>
 
           {/* Destination (optional) — links flight to bundled tips */}
@@ -474,7 +520,10 @@ export default function FlightEditScreen() {
               <Pressable
                 accessibilityRole="button"
                 accessibilityState={{ selected: !destinationId }}
-                onPress={() => setDestinationId(undefined)}
+                onPress={() => {
+                  markTouched("destination");
+                  setDestinationId(undefined);
+                }}
                 style={[
                   styles.destChip,
                   {
@@ -500,7 +549,10 @@ export default function FlightEditScreen() {
                     accessibilityRole="button"
                     accessibilityState={{ selected: active }}
                     key={d.id}
-                    onPress={() => setDestinationId(active ? undefined : d.id)}
+                    onPress={() => {
+                      markTouched("destination");
+                      setDestinationId(active ? undefined : d.id);
+                    }}
                     style={[
                       styles.destChip,
                       {
@@ -536,11 +588,12 @@ export default function FlightEditScreen() {
                     accessibilityRole="button"
                     accessibilityState={{ selected: active }}
                     key={chip.offset}
-                    onPress={() =>
+                    onPress={() => {
+                      markTouched("departure");
                       setDepartureDate(
                         offsetDate(toDateInputValue(Date.now()), chip.offset)
-                      )
-                    }
+                      );
+                    }}
                     style={[
                       styles.chip,
                       {
@@ -572,10 +625,12 @@ export default function FlightEditScreen() {
                       accessibilityRole="button"
                       accessibilityState={{ disabled: !canGoBack }}
                       hitSlop={8}
-                      onPress={() =>
-                        canGoBack &&
-                        setDepartureDate(offsetDate(departureDate, -1))
-                      }
+                      onPress={() => {
+                        if (canGoBack) {
+                          markTouched("departure");
+                          setDepartureDate(offsetDate(departureDate, -1));
+                        }
+                      }}
                       style={[
                         styles.dayStepBtn,
                         {
@@ -599,10 +654,12 @@ export default function FlightEditScreen() {
                       accessibilityRole="button"
                       accessibilityState={{ disabled: !canGoForward }}
                       hitSlop={8}
-                      onPress={() =>
-                        canGoForward &&
-                        setDepartureDate(offsetDate(departureDate, +1))
-                      }
+                      onPress={() => {
+                        if (canGoForward) {
+                          markTouched("departure");
+                          setDepartureDate(offsetDate(departureDate, +1));
+                        }
+                      }}
                       style={[
                         styles.dayStepBtn,
                         {
@@ -836,6 +893,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  // Flight number input
+  numberRow: { alignItems: "center", flexDirection: "row", gap: 8 },
   scrollContent: { flexGrow: 1 },
   stepBtn: {
     alignItems: "center",
@@ -859,7 +918,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   subtitle: { fontSize: 14, marginTop: -8 },
-  // Flight number input
   textInput: {
     borderRadius: 10,
     borderWidth: 1,
@@ -869,6 +927,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     width: "100%",
   },
+  textInputWithButton: { flex: 1, width: undefined },
   // Time / duration stepper row
   timeRow: {
     alignItems: "center",

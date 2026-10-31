@@ -75,6 +75,25 @@
   flightDepartureTimePlaceholder: "HH:MM",
   flightNumberLabel: "便名（任意）",
   flightNumberPlaceholder: "例: AA1234",
+  flightLookupFill: "自動入力",
+  flightLookupA11y: "便名からフライト情報を入力",
+  flightLookupHint: "下の出発日を使用します。インターネットが必要です。",
+  flightLookupLoading: "フライトを検索中…",
+  flightLookupFilled:
+    "入力しました ✓ {{from}} → {{to}}（定刻）。内容を確認してください。",
+  flightLookupNotFound:
+    "この便名と日付のフライトは見つかりませんでした。両方を確認するか、手動で入力してください。",
+  flightLookupOffline:
+    "オフラインです。手動で入力するか、接続後にもう一度お試しください。",
+  flightLookupSyncOff:
+    "設定でオンライン同期がオフのため、フライトを検索できません。手動で入力してください。",
+  flightLookupWifiOnly:
+    "オンライン同期が「Wi-Fiのみ」に設定されています。Wi-Fiに接続するか、手動で入力してください。",
+  flightLookupRateLimited:
+    "検索回数が多すぎます。1分後にもう一度お試しください。",
+  flightLookupInvalid: "OK123 のような便名を入力してください。",
+  flightLookupError:
+    "現在フライト検索は利用できません。手動で入力してください。",
   flightDateToday: "今日",
   flightDateTomorrow: "明日",
   flightDateIn2Days: "+2日",
