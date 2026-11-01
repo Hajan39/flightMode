@@ -1028,6 +1028,8 @@
   sdkMedium: "Médio",
   sdkHard: "Difícil",
   sdkCongrats: "Parabéns!",
+  sdkFixErrors:
+    "Tabuleiro cheio — {{count}} número(s) errado(s) em vermelho. Corrija para terminar.",
   sdkSolve: "Resolver",
   sdkSelectDifficulty: "Escolher dificuldade",
 

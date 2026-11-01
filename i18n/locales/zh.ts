@@ -982,6 +982,7 @@
   sdkMedium: "中等",
   sdkHard: "困难",
   sdkCongrats: "恭喜！",
+  sdkFixErrors: "棋盘已填满 — 红色的 {{count}} 个数字有误。改正后即可完成。",
   sdkSolve: "解答",
   sdkSelectDifficulty: "选择难度",
 

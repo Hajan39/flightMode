@@ -1004,6 +1004,8 @@
   sdkMedium: "ふつう",
   sdkHard: "むずかしい",
   sdkCongrats: "おめでとう！",
+  sdkFixErrors:
+    "盤面がいっぱいです — 赤い数字 {{count}} 個が間違っています。直すとクリアです。",
   sdkSolve: "解く",
   sdkSelectDifficulty: "難易度を選択",
 

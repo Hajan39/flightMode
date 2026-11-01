@@ -1034,6 +1034,8 @@
   sdkMedium: "Media",
   sdkHard: "Difícil",
   sdkCongrats: "¡Felicidades!",
+  sdkFixErrors:
+    "Tablero lleno: {{count}} número(s) incorrecto(s) en rojo. Corrígelos para terminar.",
   sdkSolve: "Resolver",
   sdkSelectDifficulty: "Elige la dificultad",
 

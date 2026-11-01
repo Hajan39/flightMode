@@ -1024,6 +1024,8 @@ export const cs = {
   sdkMedium: "Střední",
   sdkHard: "Těžká",
   sdkCongrats: "Gratulujeme!",
+  sdkFixErrors:
+    "Plocha je plná — špatná čísla ({{count}}) jsou červeně. Oprav je a dokončíš.",
   sdkSolve: "Vyřešit",
   sdkSelectDifficulty: "Vyber obtížnost",
 

@@ -7,6 +7,11 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Sudoku:** when the board is full but a number is wrong, the game now says so ("Board full — N wrong numbers in red") instead of silently waiting.
+- **Currency converter:** picking the currency that is already in the other row swaps the two (USD→CZK, then CZK as "from" gives CZK→USD instead of CZK→CZK). Currency chips also react on the first tap while the amount keyboard is open.
+
 ### Added
 
 - **Optional flight lookup (off in production until enabled):** in builds that set `EXPO_PUBLIC_FLIGHT_LOOKUP_URL`, the flight editor shows a **Fill in** button next to the flight number that fills the departure date/time (scheduled, shown in your local time), the duration and — when the arrival airport is one of the 44 destinations — the destination, from the AeroDataBox schedule via our own Cloudflare Worker (`services/flight-lookup`, KV cache, per-client rate limit, daily upstream cap, no request logs). Online-only and optional: respects Settings → Online Sync, never blocks saving manually, never overwrites fields you change while it runs. Only the flight number and date are sent; analytics get just `flight_lookup_result` (filled / not found / error / offline). Privacy policy gained section 3.7 "Flight lookup (optional)". Production builds keep it off until the provider plan is switched to a paid commercial one.

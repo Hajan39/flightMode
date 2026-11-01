@@ -1020,6 +1020,8 @@
   sdkMedium: "Średni",
   sdkHard: "Trudny",
   sdkCongrats: "Gratulacje!",
+  sdkFixErrors:
+    "Plansza pełna — błędne liczby ({{count}}) są na czerwono. Popraw je, aby skończyć.",
   sdkSolve: "Rozwiąż",
   sdkSelectDifficulty: "Wybierz trudność",
 

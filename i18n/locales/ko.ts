@@ -999,6 +999,8 @@
   sdkMedium: "보통",
   sdkHard: "어려움",
   sdkCongrats: "축하합니다!",
+  sdkFixErrors:
+    "보드가 꽉 찼어요 — 빨간색 숫자 {{count}}개가 틀렸어요. 고치면 완료돼요.",
   sdkSolve: "풀기",
   sdkSelectDifficulty: "난이도 선택",
 

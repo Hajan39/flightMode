@@ -87,6 +87,10 @@ export default function CurrencyPicker({
       <ScrollView
         contentContainerStyle={styles.chipRow}
         horizontal
+        // With the amount keyboard open, a chip tap must select, not just
+        // dismiss the keyboard (the parent ScrollView's setting doesn't apply
+        // to this nested one).
+        keyboardShouldPersistTaps="handled"
         showsHorizontalScrollIndicator={false}
       >
         {hasExtra ? (
