@@ -1,0 +1,1021 @@
+{
+  "fallback": false,
+  "lang": "ko",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "캔버라는 경쟁 관계였던 시드니와 멜버른 사이의 타협안으로 계획 건설되었고, 1927년부터 의회가 자리 잡았어요.",
+      "id": "geo-0002",
+      "options": ["멜버른", "시드니", "퍼스", "캔버라"],
+      "question": "오스트레일리아의 수도는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "박쥐는 전체 포유류 종의 약 5분의 1을 차지해요. 하늘다람쥐와 날원숭이는 활공만 할 수 있어요.",
+      "id": "nat-0006",
+      "options": ["박쥐", "하늘다람쥐", "슈가글라이더", "날원숭이"],
+      "question": "날개를 퍼덕여 진짜로 날 수 있는 유일한 포유류는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Au는 라틴어 aurum에서 왔어요. 금은 아주 잘 늘어나서 1g을 약 1m² 크기의 얇은 박으로 펼 수 있어요.",
+      "id": "sci-0005",
+      "options": ["Gd", "Go", "Au", "Ag"],
+      "question": "금의 원소 기호는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "대피라미드는 7대 불가사의 중 가장 오래되었고, 지금까지 대부분 온전히 남아 있는 유일한 건축물이에요.",
+      "id": "his-0001",
+      "options": [
+        "기자의 대피라미드",
+        "아르테미스 신전",
+        "알렉산드리아 등대",
+        "로도스의 거상"
+      ],
+      "question": "고대 세계 7대 불가사의 중 지금도 대부분 남아 있는 것은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "모나리자는 캔버스가 아니라 포플러 나무판에 그려졌고, 프랑스 혁명 무렵부터 루브르에 걸려 있어요.",
+      "id": "cul-0001",
+      "options": [
+        "레오나르도 다빈치",
+        "라파엘로 산치오",
+        "산드로 보티첼리",
+        "미켈란젤로"
+      ],
+      "question": "모나리자를 그린 사람은 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "버너스리는 과학자들이 문서를 공유할 수 있도록 제네바 근처 CERN에서 웹을 만들었어요. 최초의 웹사이트는 지금도 접속할 수 있어요.",
+      "id": "inv-0003",
+      "options": ["스티브 잡스", "팀 버너스리", "마크 앤드리슨", "빈트 서프"],
+      "question": "1989년에 월드 와이드 웹을 발명한 사람은 누구인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "주황색 도장과 반사 띠 덕분에 찾기 쉬워요. 극심한 충격과 화재를 견디도록 만들어져요.",
+      "id": "avi-0014",
+      "options": ["밝은 주황색", "금속성 은색", "짙은 남색", "무광 검은색"],
+      "question": "비행기의 '블랙박스'(비행 기록 장치)는 무슨 색인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "네팔 국기는 삼각형 깃발 두 개를 겹친 모양이고, 헌법에 정확한 작도법이 기하학적으로 정해져 있어요.",
+      "id": "misc-0002",
+      "options": ["네팔", "부탄", "몽골", "스리랑카"],
+      "question": "국기가 직사각형도 정사각형도 아닌 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "꽃 한 송이에서 작은 암술머리 3개만 손으로 따요. 사프란 1g을 얻으려면 꽃이 약 150송이 필요해요.",
+      "id": "food-0006",
+      "options": ["사프란", "바닐라", "카다멈", "계피"],
+      "question": "크로커스 꽃에서 얻는, 무게당 가장 비싼 향신료는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "스와힐리어에서 '사파리'는 그냥 모든 여행을 뜻해요. 이 단어는 아랍어에서 스와힐리어로 들어왔어요.",
+      "id": "lang-0003",
+      "options": ["사냥 여행", "여행", "야생 동물", "초원"],
+      "question": "스와힐리어 '사파리'는 무슨 뜻인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "그중 절반이 넘는 뼈가 손과 발에 있어요. 한쪽 손에만 27개가 있어요.",
+      "id": "body-0001",
+      "options": ["256개", "226개", "206개", "186개"],
+      "question": "일반적인 성인의 뼈는 몇 개인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "이 애매한 거리는 1908년 런던 올림픽에서 결승선을 왕실 관람석 앞에 두려고 정해졌어요.",
+      "id": "sport-0004",
+      "options": ["39.750km", "45.500km", "40.000km", "42.195km"],
+      "question": "마라톤 거리는 얼마인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "바티칸 시국의 면적은 약 0.49km²로, 웬만한 도시 공원 안에 쏙 들어갈 정도예요.",
+      "id": "geo-0006",
+      "options": ["산마리노", "리히텐슈타인", "바티칸 시국", "모나코"],
+      "question": "면적이 가장 작은 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "오리너구리는 알을 낳는 몇 안 되는 포유류 중 하나이고, 수컷 뒷다리에는 독이 있는 며느리발톱이 있어요.",
+      "id": "nat-0018",
+      "options": ["해달", "웜뱃", "비버", "오리너구리"],
+      "question": "다음 포유류 중 알을 낳는 동물은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "빛은 태양에서 1억 5천만 km를 약 8분 20초 만에 달려와요. 그래서 우리는 늘 조금 전의 태양을 보고 있어요.",
+      "id": "sci-0009",
+      "options": ["약 8초", "약 1시간", "약 하루", "약 8분"],
+      "question": "햇빛이 지구에 닿기까지 대략 얼마나 걸리나요?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "마젤란은 항해 도중 목숨을 잃었고, 1522년 엘카노가 빅토리아호를 이끌고 스페인으로 돌아왔어요.",
+      "id": "his-0004",
+      "options": ["제임스 쿡", "콜럼버스", "마젤란", "바스쿠 다 가마"],
+      "question": "처음으로 배를 타고 세계를 일주한 원정(1519~1522년)은 누구의 원정인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "홀리는 봄이 온 것을 축하하는 축제로, 남녀노소가 서로 색 가루와 물을 뿌려요.",
+      "id": "cul-0006",
+      "options": ["오남", "홀리", "디왈리", "퐁갈"],
+      "question": "색 가루를 서로 던지는 것으로 유명한 인도의 봄 축제는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "이름은 '잘 놀아라'라는 뜻의 덴마크어 'leg godt'에서 왔어요. 1958년 블록도 오늘날 블록과 끼워져요.",
+      "id": "inv-0006",
+      "options": ["덴마크", "네덜란드", "독일", "스웨덴"],
+      "question": "레고 블록은 어느 나라에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "활주로가 모래 위에 표시되어 있고 만조 때는 바닷물에 잠겨서, 운항 시간이 밀물·썰물에 맞춰져요.",
+      "id": "avi-0024",
+      "options": ["해변", "고속도로", "얼어붙은 호수", "빙하"],
+      "question": "스코틀랜드 바라 공항에서는 정기 항공편이 어디에 착륙하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "1886년 제막 당시에는 반짝이는 갈색 구리였어요. 완전히 초록색이 되기까지 약 30년이 걸렸어요.",
+      "id": "misc-0010",
+      "options": [
+        "구리가 산화돼서",
+        "항구의 조류 때문에",
+        "초록색으로 칠해서",
+        "이끼로 덮여서"
+      ],
+      "question": "자유의 여신상은 왜 초록색인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "중국에서는 수천 년 전부터 차를 마셨고, 수백 년 동안 벽돌처럼 압축한 차를 돈처럼 쓰기도 했어요.",
+      "id": "food-0010",
+      "options": ["영국", "인도", "중국", "일본"],
+      "question": "가장 먼저 차를 마신 나라로 알려진 곳은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "키릴 문자는 불가리아어, 세르비아어, 우크라이나어 등에도 쓰이며, 제1차 불가리아 제국에서 만들어졌어요.",
+      "id": "lang-0005",
+      "options": ["키릴 문자", "그리스 문자", "라틴 문자", "글라골 문자"],
+      "question": "러시아어를 쓸 때 사용하는 문자는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "성인의 피부는 약 1.5~2m²에 달하고 끊임없이 새로워져요. 바깥층은 몇 주마다 교체돼요.",
+      "id": "body-0002",
+      "options": ["간", "피부", "뇌", "폐"],
+      "question": "사람 몸에서 가장 큰 기관은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "쿠베르탱은 흰 바탕을 포함해 모든 나라의 국기에 적어도 한 가지 색이 들어가도록 색을 골랐어요.",
+      "id": "sport-0006",
+      "options": ["7개", "6개", "4개", "5개"],
+      "question": "올림픽기에는 서로 얽힌 고리가 몇 개 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "러시아는 면적이 1,700만 km²가 넘어 지구 육지의 약 9분의 1을 차지하고, 11개 시간대에 걸쳐 있어요.",
+      "id": "geo-0007",
+      "options": ["중국", "캐나다", "러시아", "브라질"],
+      "question": "면적이 가장 큰 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "벌새는 1초에 수십 번 날갯짓하며 공중에 멈추거나 뒤로 날고, 잠깐은 거꾸로도 날 수 있어요.",
+      "id": "nat-0022",
+      "options": ["물총새", "참새", "벌새", "제비"],
+      "question": "뒤로 날 수 있는 새는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "1광년은 빛이 1년 동안 가는 거리로, 약 9조 4,600억 km예요.",
+      "id": "sci-0023",
+      "options": ["밝기", "시간", "거리", "속도"],
+      "question": "광년은 무엇을 재는 단위인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "병마용에는 실물 크기의 병사가 수천 명 있는데, 똑같은 얼굴은 하나도 없어요.",
+      "id": "his-0021",
+      "options": ["진시황", "칭기즈 칸", "쿠빌라이 칸", "한 무제"],
+      "question": "병마용은 어느 통치자의 무덤을 지키기 위해 만들어졌나요?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "에펠탑은 20년만 세워 둘 예정이었지만, 무선 안테나로 쓸모가 있어 남게 되었어요.",
+      "id": "cul-0010",
+      "options": ["왕의 대관식", "만국 박람회", "왕실 결혼식", "올림픽"],
+      "question": "에펠탑은 1889년에 어떤 행사를 위해 세워졌나요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "엔지니어 퍼시 스펜서가 1945년 녹은 초콜릿을 발견했어요. 최초의 전자레인지는 높이가 약 1.8m였어요.",
+      "id": "inv-0013",
+      "options": ["전기 주전자", "식기세척기", "전자레인지", "토스터"],
+      "question": "레이더 옆에서 초콜릿 바가 녹은 일을 계기로 발명된 가전제품은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "비행할 때마다 객실에 압력이 가해지면 뾰족한 모서리에 응력이 몰려요. 둥근 모서리는 하중을 분산해요.",
+      "id": "avi-0042",
+      "options": [
+        "눈부심을 줄이려고",
+        "응력을 고르게 분산하려고",
+        "청소하기 쉽게 하려고",
+        "바깥 경치를 넓게 보려고"
+      ],
+      "question": "여객기 창문이 네모가 아니라 둥근 이유는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "탑은 12세기 공사 중부터 기울기 시작했어요. 지금은 기술자들이 안정시켜 두었어요.",
+      "id": "misc-0011",
+      "options": [
+        "지진 때문에",
+        "지반이 물러서",
+        "벼락을 맞아서",
+        "일부러 그렇게 설계해서"
+      ],
+      "question": "피사의 사탑은 왜 기울어져 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "페루와 볼리비아의 안데스 지역에서는 7,000~10,000년 전부터 감자를 길렀고, 지금도 수천 가지 품종이 있어요.",
+      "id": "food-0013",
+      "options": ["서아프리카", "중앙아시아", "남아메리카", "남유럽"],
+      "question": "감자가 처음 재배된 곳은 세계의 어느 지역인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "아랍 문자는 단어의 처음, 중간, 끝 중 어디에 오느냐에 따라 모양이 달라져요.",
+      "id": "lang-0006",
+      "options": ["힌디어", "태국어", "조지아어", "아랍어"],
+      "question": "다음 중 오른쪽에서 왼쪽으로 쓰는 언어는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "동쪽으로 날면 하루가 짧아져요. 생체 시계는 늦추는 것보다 앞당기는 것을 더 힘들어해요.",
+      "id": "body-0051",
+      "options": ["서쪽", "북쪽", "동쪽", "남쪽"],
+      "question": "대부분의 여행자에게 시차 적응이 더 힘든 비행 방향은 어느 쪽인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "참가국은 13개뿐이었고, 몇몇 유럽 팀은 배를 타고 약 2주에 걸쳐 우루과이로 갔어요.",
+      "id": "sport-0035",
+      "options": ["아르헨티나", "이탈리아", "우루과이", "브라질"],
+      "question": "1930년 제1회 FIFA 월드컵을 개최하고 우승한 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "그린란드의 면적은 약 210만 km²이고, 그중 약 5분의 4가 빙상 아래에 있어요.",
+      "id": "geo-0025",
+      "options": ["보르네오섬", "그린란드", "마다가스카르섬", "뉴기니섬"],
+      "question": "대륙을 제외하고 세계에서 가장 큰 섬은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "플라밍고는 조류와 브라인 쉬림프에서 카로티노이드 색소를 얻어요. 새끼는 회색으로 태어나요.",
+      "id": "nat-0060",
+      "options": [
+        "진흙 목욕을 해서",
+        "혈관이 비쳐서",
+        "먹이 속 색소 때문에",
+        "강한 햇볕에 그을려서"
+      ],
+      "question": "플라밍고가 분홍색인 이유는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "지구 자전축은 약 23.4° 기울어져 있어서, 각 반구가 1년 중 일정 기간 태양 쪽으로 기울어요.",
+      "id": "sci-0042",
+      "options": [
+        "자전축의 기울기",
+        "태양과의 거리",
+        "달의 인력",
+        "태양열의 변화"
+      ],
+      "question": "지구에 계절이 생기는 이유는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "아문센의 노르웨이 탐험대는 스키와 개썰매를 이용해 1911년 12월 14일 남극점에 도착했어요.",
+      "id": "his-0023",
+      "options": [
+        "어니스트 섀클턴",
+        "프리드쇼프 난센",
+        "로버트 팰컨 스콧",
+        "로알 아문센"
+      ],
+      "question": "1911년 처음으로 남극점에 도달한 탐험대를 이끈 사람은 누구인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "『어린 왕자』는 세계에서 가장 많이 번역된 책 중 하나로, 수백 개 언어로 읽을 수 있어요.",
+      "id": "cul-0038",
+      "options": [
+        "장폴 사르트르",
+        "쥘 베른",
+        "마르그리트 유르스나르",
+        "생텍쥐페리"
+      ],
+      "question": "조종사이기도 했던 『어린 왕자』의 작가는 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "건축학 교수 루비크 에르뇌가 입체적 사고를 가르치려고 만들었어요. 본인도 푸는 데 한 달 넘게 걸렸어요.",
+      "id": "inv-0018",
+      "options": ["체코슬로바키아", "헝가리", "오스트리아", "일본"],
+      "question": "루빅큐브가 1974년에 발명된 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "엔진의 뜨거운 배기가스 속 수증기가 순항 고도의 매우 차가운 공기에서 거의 즉시 얼어요.",
+      "id": "avi-0044",
+      "options": ["연료 증기", "배기 연기", "먼지", "얼음 결정"],
+      "question": "높이 나는 제트기 뒤의 하얀 줄(비행운)은 주로 무엇으로 이루어져 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "딤플은 얇은 난류층을 만들어 공기 저항을 줄여요. 매끈한 공이라면 훨씬 덜 날아가요.",
+      "id": "misc-0019",
+      "options": [
+        "더 멀리 날아가도록",
+        "보기 좋으라고",
+        "물에 뜨도록",
+        "클럽 면에 잘 붙도록"
+      ],
+      "question": "골프공 표면에 오목한 홈(딤플)이 있는 이유는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "두리안은 '과일의 왕'으로 불려요. 크림 같은 과육을 사랑하는 팬도 많지만, 반입을 금지하는 호텔도 많아요.",
+      "id": "food-0035",
+      "options": ["람부탄", "두리안", "잭프루트", "망고스틴"],
+      "question": "냄새가 너무 강해 싱가포르 지하철 반입이 금지된 동남아시아의 가시 돋친 과일은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "자멘호프는 1887년 바르샤바에서 이 언어를 발표했어요. '에스페란토'는 '희망하는 사람'이라는 뜻이에요.",
+      "id": "lang-0022",
+      "options": ["자멘호프", "예스페르센", "슐라이어", "톨킨"],
+      "question": "국제어 에스페란토를 만든 사람은 누구인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "속귀는 몸의 움직임을 감지해요. 배나 비행기에서 수평선을 바라보면 눈과 속귀의 정보가 맞춰지는 데 도움이 돼요.",
+      "id": "body-0059",
+      "options": ["심장", "위 점막", "코", "속귀"],
+      "question": "멀미는 눈에서 오는 신호와 어느 기관의 신호가 서로 맞지 않아서 생기나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "포물면 거울로 햇빛을 모아 횃불에 불을 붙이며, 이 의식은 1936년부터 이어지고 있어요.",
+      "id": "sport-0045",
+      "options": [
+        "햇빛과 거울로",
+        "고대 등잔불로",
+        "아테네의 불씨로",
+        "성냥으로"
+      ],
+      "question": "그리스 올림피아에서 올림픽 성화는 어떻게 붙이나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "보스포루스 해협이 도시 한가운데를 지나서, 매일 대륙을 오가며 출퇴근하는 사람들이 있어요.",
+      "id": "geo-0045",
+      "options": [
+        "아시아와 오세아니아",
+        "아시아와 아프리카",
+        "유럽과 아시아",
+        "유럽과 아프리카"
+      ],
+      "question": "이스탄불은 어느 두 대륙에 걸쳐 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "혹의 지방은 에너지 저장고예요. 지방을 한곳에 모아 두면 몸의 나머지 부분이 덜 더워요.",
+      "id": "nat-0068",
+      "options": ["공기", "근육", "지방", "물"],
+      "question": "낙타는 혹에 무엇을 저장하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "지구에서 60kg인 사람은 달에서 10kg 정도로 가볍게 느껴져요.",
+      "id": "sci-0093",
+      "options": ["약 10분의 1", "거의 같음", "약 6분의 1", "약 절반"],
+      "question": "달의 중력은 지구와 비교해 대략 어느 정도인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "라파누이 사람들은 1,000개 가까운 모아이를 주로 라노 라라쿠 채석장의 화산 응회암으로 조각했어요.",
+      "id": "his-0034",
+      "options": ["시칠리아섬", "이스터섬", "발리섬", "뉴칼레도니아"],
+      "question": "거대한 모아이 석상이 있는 섬은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "뉴질랜드 럭비 대표팀은 경기 전에 하카를 추는데, 이 전통은 1905년부터 이어져 왔어요.",
+      "id": "cul-0040",
+      "options": ["이누이트", "하와이 원주민", "마오리족", "호주 원주민"],
+      "question": "하카는 어느 민족의 전통 춤인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "도카이도 신칸센은 1964년 도쿄 올림픽 직전에 개통했으며, 정시 운행으로 유명해요.",
+      "id": "inv-0021",
+      "options": ["나고야", "히로시마", "오사카", "교토"],
+      "question": "1964년 개통한 일본 최초의 신칸센 '탄환 열차'는 도쿄와 어느 도시를 연결했나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "오빌 라이트가 날아간 거리는 약 37m로, 오늘날 많은 여객기의 날개폭보다도 짧았어요.",
+      "id": "avi-0003",
+      "options": ["약 1시간", "약 1분", "약 2분", "약 12초"],
+      "question": "동력 비행기의 맨 처음 비행은 얼마나 이어졌나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "중국은 지리적으로 5개 시간대에 걸쳐 있지만 전국에서 베이징 시간을 써요. 서쪽 끝에서는 겨울 해가 오전 10시쯤 뜨기도 해요.",
+      "id": "misc-0038",
+      "options": ["2개", "5개", "1개", "3개"],
+      "question": "중국은 공식 시간대를 몇 개 사용하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "진짜 와사비는 귀하고 기르기 어려운 식물이에요. 식당 와사비는 대부분 서양고추냉이, 겨자, 녹색 색소로 만들어요.",
+      "id": "food-0007",
+      "options": [
+        "새콤한 초생강",
+        "곱게 간 해초 가루",
+        "색을 입힌 서양고추냉이",
+        "풋고추를 간 페이스트"
+      ],
+      "question": "일본 밖에서 초밥과 함께 나오는 '와사비'는 실제로 무엇인 경우가 많나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "코사어에는 약 15가지 클릭음이 있어요. 넬슨 만델라의 모국어도 코사어였어요.",
+      "id": "lang-0032",
+      "options": ["코사어", "암하라어", "스와힐리어", "요루바어"],
+      "question": "다음 중 혀 차는 소리 같은 '흡착음(클릭음)'으로 유명한 언어는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "혈관이 없어서 각막은 완벽히 투명해요. 각막 이식에서 거부 반응이 드문 것도 이 때문이에요.",
+      "id": "body-0060",
+      "options": ["각막", "홍채", "혀", "망막"],
+      "question": "혈관이 없고 공기에서 직접 산소를 받아들이는 몸의 부위는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "수영을 가장 먼저 하는 건 주로 안전 때문이에요. 가장 지쳤을 때 물속에 있지 않도록 하려는 거예요.",
+      "id": "sport-0046",
+      "options": [
+        "달리기, 자전거, 수영",
+        "수영, 자전거, 달리기",
+        "수영, 달리기, 자전거",
+        "자전거, 수영, 달리기"
+      ],
+      "question": "철인 3종 경기의 일반적인 종목 순서는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "레이캬비크는 북위 약 64°로 북극권 바로 남쪽에 있지만, 따뜻한 해류 덕분에 겨울이 비교적 온화해요.",
+      "id": "geo-0016",
+      "options": ["오슬로", "레이캬비크", "헬싱키", "탈린"],
+      "question": "주권 국가의 수도 중 가장 북쪽에 있는 곳은 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "심장 두 개는 아가미로 피를 보내고, 세 번째 심장은 온몸으로 보내요. 헤엄칠 때는 주 심장이 멈춰요.",
+      "id": "nat-0004",
+      "options": ["2개", "3개", "4개", "1개"],
+      "question": "문어의 심장은 몇 개인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "금성은 아주 느리게, 그것도 거꾸로 자전해서 한 바퀴에 지구일로 243일이 걸리지만, 공전은 225일이면 끝나요.",
+      "id": "sci-0014",
+      "options": ["금성", "해왕성", "수성", "화성"],
+      "question": "하루가 1년보다 긴 행성은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "아르키메데스는 몸이 밀어낸 물의 양으로 왕관의 부피를 잴 수 있다는 걸 깨달았다고 전해져요.",
+      "id": "his-0036",
+      "options": ["아르키메데스", "피타고라스", "탈레스", "유클리드"],
+      "question": "목욕하다가 '유레카!'라고 외쳤다고 전해지는 고대 그리스인은 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "송끄란은 1년 중 가장 더운 4월에 열려서, 즐거운 물싸움은 더위를 식히기에 딱 좋아요.",
+      "id": "cul-0050",
+      "options": ["이뻥", "송끄란", "러이끄라통", "피따콘"],
+      "question": "태국의 전통 새해를 맞아 서로 물을 뿌리는 축제는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "닌텐도는 교토에서 손으로 그린 하나후다(화투) 카드를 만들면서 시작했어요.",
+      "id": "inv-0056",
+      "options": ["카드", "종이 등롱", "나무 장난감", "라디오"],
+      "question": "비디오 게임을 만들기 전, 1889년에 세워진 닌텐도는 무엇을 만들었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "이 '브리더 홀' 덕분에 바깥쪽 유리가 객실 압력을 견디고, 가운데 유리는 예비용으로 남아요.",
+      "id": "avi-0043",
+      "options": [
+        "빗물을 빼려고",
+        "속도를 재려고",
+        "바깥 공기를 들이려고",
+        "기압을 맞추려고"
+      ],
+      "question": "여객기 객실 창문에 난 작은 구멍은 무엇을 위한 것인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "폴리머 지폐는 종이 지폐보다 오래가고 위조하기 어려워서, 지금은 많은 나라에서 써요.",
+      "id": "misc-0044",
+      "options": ["오스트레일리아", "일본", "캐나다", "싱가포르"],
+      "question": "1988년 세계 최초로 플라스틱(폴리머) 지폐를 발행한 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "전설에 따르면 에티오피아의 염소지기가 커피 열매를 먹은 염소들이 활기차지는 것을 발견했대요.",
+      "id": "food-0009",
+      "options": ["브라질", "베트남", "콜롬비아", "에티오피아"],
+      "question": "아라비카 커피나무는 원래 어느 나라의 고원 지대에서 자랐나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "파푸아뉴기니 산악 지대에는 골짜기마다 고유한 언어가 있는 경우가 많고, 화자가 수백 명뿐인 언어도 있어요.",
+      "id": "lang-0036",
+      "options": ["브라질", "파푸아뉴기니", "인도", "콩고민주공화국"],
+      "question": "살아 있는 언어가 세계에서 가장 많은(약 840개) 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "시베리아의 바이칼호는 깊이가 1,600m가 넘고, 세계의 얼지 않은 지표 담수 중 약 5분의 1을 담고 있어요.",
+      "id": "geo-0024",
+      "options": ["탕가니카호", "카스피해", "슈피리어호", "바이칼호"],
+      "question": "세계에서 가장 깊은 호수는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "기린의 목뼈 개수는 사람과 같아요. 다만 하나하나가 최대 25cm 정도로 길어요.",
+      "id": "nat-0009",
+      "options": ["24개", "12개", "18개", "7개"],
+      "question": "기린의 목뼈는 몇 개인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "공기 분자는 파장이 짧은 파란빛을 붉은빛보다 훨씬 많이 산란해요. 이를 레일리 산란이라고 해요.",
+      "id": "sci-0036",
+      "options": [
+        "오존 자체가 파래서",
+        "공기가 파란빛을 산란해서",
+        "햇빛이 원래 파란색이라서",
+        "바다 색이 비쳐서"
+      ],
+      "question": "낮 하늘이 파란 이유는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "폴리네시아 항해자들이 1300년경 큰 카누를 타고 도착했어요. 그 후손이 마오리족이에요.",
+      "id": "his-0051",
+      "options": ["아이누족", "미크로네시아인", "폴리네시아인", "멜라네시아인"],
+      "question": "뉴질랜드에 처음 정착한 사람들은 누구인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "하늘에서 보면 루시우 코스타가 설계한 브라질리아의 도시 계획은 비행기나 새 모양이고, 건물은 오스카르 니에메예르가 설계했어요.",
+      "id": "cul-0057",
+      "options": ["이슬라마바드", "캔버라", "아부자", "브라질리아"],
+      "question": "허허벌판에 새로 지어져 1960년에 문을 연 수도는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "용의 입에서 떨어진 구슬이 두꺼비 입으로 들어가 멀리서 일어난 지진의 방향을 알려 주었어요.",
+      "id": "inv-0060",
+      "options": ["시각", "풍향", "강우량", "지진"],
+      "question": "132년, 용이 구슬을 떨어뜨리는 장형의 청동 그릇은 무엇을 감지했나요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "이 숫자는 자기 방위를 10으로 나눈 값이라서, 활주로 27은 대략 서쪽(270°)을 향해요.",
+      "id": "avi-0046",
+      "options": ["최대 이륙 중량", "나침반 방위", "길이", "건설 순서"],
+      "question": "활주로 끝에 크게 적힌 '27' 같은 숫자는 조종사에게 무엇을 알려 주나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "만리장성은 폭이 몇 미터밖에 안 돼서, 지구 저궤도에서도 도구 없이 찾기가 매우 어려워요.",
+      "id": "misc-0048",
+      "options": [
+        "아니요, 너무 좁아요",
+        "밤에만 보여요",
+        "네, 맑은 날엔요",
+        "네, 아주 쉽게요"
+      ],
+      "question": "달에 있는 우주비행사는 만리장성을 맨눈으로 볼 수 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "캐슈 사과 하나에 견과는 하나만 달려요. 껍질에 자극적인 기름이 있어 껍질을 벗겨서 팔아요.",
+      "id": "food-0076",
+      "options": [
+        "가시 돋친 꼬투리",
+        "나무 솔방울",
+        "땅속뿌리",
+        "과육이 많은 '사과'"
+      ],
+      "question": "캐슈너트는 무엇의 아래쪽에 매달려 자라나요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "레소토는 국토 전체가 해발 1,000m 이상인 유일한 나라라서 '하늘 왕국'이라고 불려요.",
+      "id": "geo-0033",
+      "options": ["레소토", "보츠와나", "나미비아", "에스와티니"],
+      "question": "남아프리카 공화국에 완전히 둘러싸인 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "뇌의 절반씩 쉬게 하면 돌고래는 계속 수면 위로 올라와 숨을 쉬고 위험을 살필 수 있어요.",
+      "id": "nat-0057",
+      "options": [
+        "해초에 몸을 감고",
+        "바닥에 가만히 누워서",
+        "뇌를 반씩 번갈아 쉬며",
+        "8시간 동안 푹 자며"
+      ],
+      "question": "돌고래는 어떻게 잠을 자나요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "토성의 평균 밀도는 물보다 낮아서, 이론적으로는 충분히 큰 욕조에 넣으면 뜰 거예요.",
+      "id": "sci-0051",
+      "options": ["토성", "천왕성", "해왕성", "목성"],
+      "question": "물보다 밀도가 낮은 행성은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "1324년 만사 무사가 카이로를 거쳐 순례하며 금을 너무 많이 뿌린 탓에, 이집트의 금값이 몇 년간 떨어졌어요.",
+      "id": "his-0067",
+      "options": ["악숨 왕국", "가나 제국", "송가이 제국", "말리 제국"],
+      "question": "엄청난 부로 유명한 만사 무사가 다스린 서아프리카 제국은 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "시타르에는 연주하는 줄 외에도 저절로 울려 반짝이는 소리를 내는 '공명현'이 있어요.",
+      "id": "cul-0061",
+      "options": ["타블라", "시타르", "사로드", "비나"],
+      "question": "인도 음악가 라비 샹카르가 전 세계에 알린 악기는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "연구자들은 커피실까지 걸어가기 전에 포트에 커피가 있는지 확인할 수 있었어요.",
+      "id": "inv-0066",
+      "options": ["커피포트", "번화한 거리", "어항", "풍향계"],
+      "question": "1991년 케임브리지 대학교에 설치된 세계 최초의 웹캠은 무엇을 비췄나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "동물들은 베르사유에서 루이 16세 앞에서 약 8분 동안 날고 무사히 착륙했어요.",
+      "id": "avi-0035",
+      "options": [
+        "염소, 암탉, 원숭이",
+        "개, 거위, 토끼",
+        "양, 오리, 수탉",
+        "돼지, 앵무새, 새끼 고양이"
+      ],
+      "question": "사람을 태우기 전에 몽골피에 형제가 열기구에 태워 보낸 승객은 누구인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "이 일본 회사는 1,400년 넘게 한 가문이 운영하다가 2006년에 더 큰 회사의 일원이 되었어요.",
+      "id": "misc-0080",
+      "options": ["배", "칼", "사찰", "다리"],
+      "question": "578년에 세워진 세계에서 가장 오래된 기업 중 하나인 곤고구미는 무엇을 지었나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "하와이의 마우나케아는 해저에서 1만 m 넘게 솟아 있지만, 해수면 위로 나온 부분은 약 4,200m뿐이에요.",
+      "id": "geo-0101",
+      "options": ["디날리", "마우나케아", "에베레스트", "킬리만자로"],
+      "question": "해저의 산기슭부터 재면 지구에서 가장 높은 산은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "이것은 길게 자란 송곳니로, 약 3m까지 자라며 수백만 개의 신경 말단이 들어 있어요.",
+      "id": "nat-0080",
+      "options": ["뿔", "이빨", "지느러미 가시", "코뼈"],
+      "question": "일각고래의 길고 꼬인 뿔 같은 것은 사실 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "번쩍인 뒤 소리가 날 때까지 초를 세어 3으로 나누면 폭풍까지의 거리를 km로 어림할 수 있어요.",
+      "id": "sci-0077",
+      "options": ["10초", "30초", "1초", "3초"],
+      "question": "번개가 친 뒤 천둥소리가 들리기까지 거리 1km당 대략 몇 초가 걸리나요?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "뉴암스테르담은 네덜란드 식민지였어요. 월스트리트라는 이름은 정착민들이 세운 나무 벽에서 유래했어요.",
+      "id": "his-0072",
+      "options": ["뉴암스테르담", "뉴로테르담", "포트허드슨", "뉴홀란트"],
+      "question": "1664년 이름이 바뀌기 전 뉴욕은 무엇이라고 불렸나요?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "색소폰은 클라리넷처럼 리드 한 장으로 소리를 내기 때문에 목관악기로 분류돼요.",
+      "id": "cul-0074",
+      "options": ["타악기", "현악기", "금관악기", "목관악기"],
+      "question": "색소폰은 금속으로 만들지만, 어느 악기군에 속하나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "『직지』는 구텐베르크 성경보다 78년이나 먼저 인쇄되었어요.",
+      "id": "inv-0086",
+      "options": ["일본", "몽골", "중국", "한국"],
+      "question": "금속 활자로 인쇄된 현존 최고(最古)의 책 『직지』(1377년)는 어디에서 만들어졌나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "비가 온 뒤에는 얇은 물막이 생겨 우유니가 하늘을 비추는 거대한 거울이 돼요.",
+      "id": "geo-0110",
+      "options": ["페루", "칠레", "볼리비아", "아르헨티나"],
+      "question": "세계 최대의 소금 사막인 우유니 소금 사막은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "북아메리카의 숲개구리는 세포에 당을 채워 부동액처럼 쓰고, 봄이 되면 녹아서 다시 살아나요.",
+      "id": "nat-0082",
+      "options": ["흰올빼미", "숲개구리", "북극토끼", "뇌조"],
+      "question": "몸이 꽁꽁 얼고 심장이 멈춘 채로 겨울을 날 수 있는 동물은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "화성의 고운 먼지가 파란빛을 앞쪽으로 산란해서, 탐사 로버 카메라에는 지는 해 주변이 파랗게 찍혀요.",
+      "id": "sci-0064",
+      "options": [
+        "짙은 빨간색",
+        "황금빛 노란색",
+        "선명한 주황색",
+        "푸르스름한 색"
+      ],
+      "question": "화성의 노을은 보통 무슨 색으로 보이나요?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "헤위에르달과 선원 5명은 101일 동안 페루에서 프랑스령 폴리네시아까지 약 6,900km를 표류했어요.",
+      "id": "his-0092",
+      "options": [
+        "프리드쇼프 난센",
+        "팀 세버린",
+        "자크 쿠스토",
+        "토르 헤위에르달"
+      ],
+      "question": "1947년 발사나무 뗏목 '콘티키호'로 태평양을 건넌 사람은 누구인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "호주 원주민은 흰개미가 속을 파먹은 유칼립투스 가지를 써요. 순환 호흡으로 소리를 끊지 않고 이어 불어요.",
+      "id": "cul-0091",
+      "options": [
+        "강가 갈대를 엮은 것",
+        "조각한 물소 뿔",
+        "흰개미가 속을 판 나무",
+        "구워 만든 점토 관"
+      ],
+      "question": "디저리두는 전통적으로 무엇으로 만드나요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "북대서양의 사르가소해는 해류로만 둘러싸여 있고, 떠다니는 해초로 유명해요.",
+      "id": "geo-0038",
+      "options": ["사르가소해", "태즈먼해", "산호해", "웨들해"],
+      "question": "육지 해안선이 전혀 없는 유일한 바다는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "키푸는 매듭으로 10진법 숫자를 기록했어요. 이야기를 담은 것도 있었을지 몰라요.",
+      "id": "his-0102",
+      "options": ["필사본", "눈금 막대", "키푸", "주판"],
+      "question": "매듭지은 끈으로 기록하던 잉카의 도구를 무엇이라고 하나요?"
+    }
+  ]
+}

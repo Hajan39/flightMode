@@ -133,6 +133,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 ## 2026-11-01
 
 - opravy z testovani: sudoku hlasi plnou plochu se spatnymi cisly; prevodnik prohodi meny pri vyberu meny z druhe rady, cipy reaguji pri otevrene klavesnici
+- world quiz: Quiz ma start obrazovku s volbou Mix (vychozi, 10 svetovych + 5 leteckych) / Svet / Letectvi; 100 pribalenych svetovych otazek ve 12 jazycich (`data/worldQuiz/<lang>.json`, generuje `scripts/build-quiz-data.mjs` z pipeline slozky), po odpovedi "Vedeli jste?" vysvetleni + tlacitko Dalsi (letecke otazky dal auto-posun 750 ms); bez opakovani per jazyk (`store/useQuizStore.ts`, historie max 2000 id, novy cyklus po vycerpani), Fisher–Yates michani otazek i moznosti s premapovanim spravne odpovedi; vzdalene packy pro en/cs/de (`content/quiz/<lang>/index.json` + `pack-NNN.json` po ≤ 250, 1000 / 1000 / 996 otazek navic, sha256 per pack) — `utils/quizSync.ts` + `store/useQuizPackStore.ts` (fileStorage, Online Sync, hydratace, 24 h cooldown, ETag/304, 404 = nepublikovano, validace + zahozeni vadnych otazek) + `components/QuizSyncBootstrap.tsx`; event `quiz_pack_sync_result { result, packs }`; `updateProgress("quiz", skore)` beze zmeny
 
 ## 2026-10-31
 

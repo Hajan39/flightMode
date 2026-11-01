@@ -1,0 +1,2516 @@
+{
+  "id": "pack-001",
+  "lang": "en",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The Pacific covers about a third of Earth's surface, more than all the land on the planet combined.",
+      "id": "geo-0001",
+      "options": [
+        "Southern Ocean",
+        "Indian Ocean",
+        "Atlantic Ocean",
+        "Pacific Ocean"
+      ],
+      "question": "Which is the largest ocean on Earth?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "About a third of Australia is desert and much more is semi-arid; only Antarctica, which has no permanent residents, is drier.",
+      "id": "geo-0008",
+      "options": ["Africa", "South America", "Australia", "Asia"],
+      "question": "Which is the driest inhabited continent?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The Andes run about 7,000 km along the western side of South America, through seven countries.",
+      "id": "geo-0011",
+      "options": ["Andes", "Ural Mountains", "Himalayas", "Rocky Mountains"],
+      "question": "What is the longest continental mountain range in the world?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Through French Guiana, France shares about 730 km of border with Brazil, longer than its border with Spain (about 620 km).",
+      "id": "geo-0003",
+      "options": ["France", "Spain", "Portugal", "Netherlands"],
+      "question": "Which country's longest land border is the one it shares with Brazil?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Everest, at about 8,849 m, is the highest point above sea level; the Himalayas are still rising by a few millimetres a year.",
+      "id": "geo-0004",
+      "options": ["Alps", "Himalayas", "Karakoram", "Andes"],
+      "question": "In which mountain range is Mount Everest?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "At about 3,800 m above sea level, Titicaca is often called the highest navigable lake in the world.",
+      "id": "geo-0014",
+      "options": ["Chile", "Argentina", "Ecuador", "Bolivia"],
+      "question": "Lake Titicaca is shared by Peru and which other country?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The Nile flows north through Cairo into the Mediterranean; almost all of Egypt's people live close to its banks.",
+      "id": "geo-0005",
+      "options": ["Niger", "Nile", "Euphrates", "Congo"],
+      "question": "Which river flows through Cairo?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Algae that thrive in its very salty water turn the lake pink, and local workers collect salt from its bed by hand.",
+      "id": "geo-0012",
+      "options": ["Mali", "Chad", "Senegal", "Niger"],
+      "question": "Lake Retba, a pink lake near Dakar, is in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Canada has hundreds of thousands of lakes larger than 10 hectares, many of them carved out by Ice Age glaciers.",
+      "id": "geo-0017",
+      "options": ["Sweden", "Russia", "Finland", "Canada"],
+      "question": "Which country has more lakes than any other?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Kyoto was the emperor's home from 794 until 1868, when the court moved to Edo, which was renamed Tokyo.",
+      "id": "geo-0018",
+      "options": ["Kamakura", "Nara", "Osaka", "Kyoto"],
+      "question": "Which Japanese city was the imperial capital for over 1,000 years before Tokyo?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The two rivers flow side by side in different colours before mixing; the Blue Nile brings most of the water in the flood season.",
+      "id": "geo-0037",
+      "options": ["Cairo", "Addis Ababa", "Khartoum", "Juba"],
+      "question": "At which capital city do the Blue Nile and the White Nile meet?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Venice spreads over 118 islands linked by around 400 bridges, and its buildings stand on wooden piles driven into the mud.",
+      "id": "geo-0009",
+      "options": ["Venice", "Genoa", "Trieste", "Naples"],
+      "question": "Which Italian city is built on more than 100 small islands in a lagoon?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The Volga runs about 3,530 km through Russia and drains into the Caspian Sea, not into any ocean.",
+      "id": "geo-0019",
+      "options": ["Volga", "Dnieper", "Rhine", "Danube"],
+      "question": "Which is the longest river in Europe?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Stretching over 2,300 km, the Great Barrier Reef is the world's largest coral reef system and can be seen from space.",
+      "id": "geo-0010",
+      "options": ["Australia", "Indonesia", "Philippines", "New Zealand"],
+      "question": "The Great Barrier Reef lies off the coast of which country?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The Danube passes through or along 10 countries and four capitals: Vienna, Bratislava, Budapest and Belgrade.",
+      "id": "geo-0020",
+      "options": ["Rhine", "Danube", "Volga", "Elbe"],
+      "question": "Which European river flows through the most countries?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "At its narrowest the Strait of Gibraltar is only about 14 km wide, and on clear days Morocco is visible from Spain.",
+      "id": "geo-0013",
+      "options": [
+        "Strait of Hormuz",
+        "Strait of Messina",
+        "Strait of Gibraltar",
+        "Bosphorus"
+      ],
+      "question": "Which strait separates Europe from Africa at their closest point?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Angel Falls drops 979 m from a flat-topped mountain; much of the water turns to mist before it reaches the bottom.",
+      "id": "geo-0023",
+      "options": ["Guyana", "Venezuela", "Colombia", "Brazil"],
+      "question": "Angel Falls, the world's highest uninterrupted waterfall, is in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The Sahara is roughly the size of the United States or China; only the cold deserts of Antarctica and the Arctic are larger.",
+      "id": "geo-0015",
+      "options": ["Kalahari", "Atacama", "Gobi", "Sahara"],
+      "question": "Which is the largest hot desert in the world?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Switzerland has no official capital by law; Bern is the seat of government and is known as the 'federal city'.",
+      "id": "geo-0052",
+      "options": ["Bern", "Geneva", "Basel", "Zurich"],
+      "question": "Which city serves as the 'federal city' and seat of government of Switzerland?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Kilimanjaro rises to 5,895 m and is the tallest free-standing mountain in the world, with glaciers just south of the equator.",
+      "id": "geo-0021",
+      "options": ["Tanzania", "Ethiopia", "Uganda", "Kenya"],
+      "question": "Mount Kilimanjaro, Africa's highest mountain, is in which country?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Abuja, a planned city in the centre of the country, officially replaced coastal Lagos as the capital in 1991.",
+      "id": "geo-0029",
+      "options": ["Lagos", "Abuja", "Ibadan", "Kano"],
+      "question": "What is the capital of Nigeria?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Machu Picchu sits at about 2,430 m on a ridge above the Urubamba River and was little known to the outside world until 1911.",
+      "id": "geo-0022",
+      "options": ["Bolivia", "Peru", "Colombia", "Ecuador"],
+      "question": "Machu Picchu, the 15th-century Inca citadel, is in which country?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Although Casablanca is Morocco's biggest city and business hub, the royal palace and parliament are in Rabat.",
+      "id": "geo-0030",
+      "options": ["Marrakesh", "Rabat", "Casablanca", "Fez"],
+      "question": "What is the capital of Morocco?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The Tigris and Euphrates later join to form the Shatt al-Arab; the land between them is Mesopotamia, 'between the rivers'.",
+      "id": "geo-0054",
+      "options": ["Tigris", "Indus", "Euphrates", "Jordan"],
+      "question": "Which river flows through the city of Baghdad?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Wellington lies at about 41°S and is famous for strong winds funnelled through Cook Strait.",
+      "id": "geo-0031",
+      "options": ["Buenos Aires", "Wellington", "Montevideo", "Canberra"],
+      "question": "Which is the southernmost capital city of a sovereign state?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Indonesia's islands stretch about 5,000 km from east to west, wider than the continental United States.",
+      "id": "geo-0026",
+      "options": ["Malaysia", "Philippines", "Japan", "Indonesia"],
+      "question": "Which country is the world's largest archipelagic state, with about 17,000 islands?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Mount Fuji, 3,776 m, is an active volcano that last erupted in 1707 and on clear days is visible from Tokyo.",
+      "id": "geo-0055",
+      "options": ["Kyushu", "Shikoku", "Hokkaido", "Honshu"],
+      "question": "Mount Fuji is on which of Japan's main islands?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Queen Victoria chose Ottawa as the capital in 1857, partly because it lay between English- and French-speaking Canada.",
+      "id": "geo-0027",
+      "options": ["Toronto", "Vancouver", "Montreal", "Ottawa"],
+      "question": "What is the capital of Canada?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "San Marino claims to be the world's oldest surviving republic, traditionally founded in the year 301.",
+      "id": "geo-0034",
+      "options": ["Malta", "Andorra", "Monaco", "San Marino"],
+      "question": "Which small republic is entirely surrounded by Italy, apart from Vatican City?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ankara replaced Istanbul as the capital in 1923, when the Republic of Turkey was founded.",
+      "id": "geo-0028",
+      "options": ["Izmir", "Bursa", "Ankara", "Istanbul"],
+      "question": "What is the capital of Turkey?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Some weather stations in the Atacama have never recorded rain, and NASA tests Mars rovers there.",
+      "id": "geo-0035",
+      "options": ["Chile", "Argentina", "Peru", "Bolivia"],
+      "question": "The Atacama, the driest non-polar desert on Earth, is mainly in which country?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Lake Ladoga, near St Petersburg, covers about 17,700 km² and has around 660 islands.",
+      "id": "geo-0056",
+      "options": ["Lake Ladoga", "Lake Vänern", "Lake Geneva", "Lake Onega"],
+      "question": "Not counting the Caspian Sea, which is the largest lake in Europe?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "'Ecuador' is simply the Spanish word for equator, which crosses the country just north of the capital, Quito.",
+      "id": "geo-0032",
+      "options": [
+        "The Tropic of Cancer",
+        "The Prime Meridian",
+        "The Equator",
+        "The Tropic of Capricorn"
+      ],
+      "question": "Ecuador takes its name from which geographic line?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Challenger Deep is roughly 10,900 m deep; if Everest were placed in it, the peak would still be over 2 km underwater.",
+      "id": "geo-0043",
+      "options": [
+        "Tonga Trench",
+        "Puerto Rico Trench",
+        "Mariana Trench",
+        "Java Trench"
+      ],
+      "question": "The deepest known point in the oceans, Challenger Deep, lies in which trench?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Brazil covers almost half of South America and borders every South American country except Chile and Ecuador.",
+      "id": "geo-0036",
+      "options": ["Colombia", "Brazil", "Peru", "Argentina"],
+      "question": "Which is the largest country in South America by area?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Andorra's capital, Andorra la Vella, sits at about 1,023 m, making it the highest capital city in Europe.",
+      "id": "geo-0046",
+      "options": ["Andorra", "San Marino", "Monaco", "Liechtenstein"],
+      "question": "Which microstate lies high in the Pyrenees?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The Okavango River spreads out and evaporates in the Kalahari, creating a seasonal wetland packed with wildlife.",
+      "id": "geo-0060",
+      "options": ["Angola", "Zambia", "Botswana", "Namibia"],
+      "question": "The Okavango Delta, an inland delta that never reaches the sea, is in which country?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Lake Victoria, shared by Uganda, Kenya and Tanzania, is the largest tropical lake in the world.",
+      "id": "geo-0039",
+      "options": [
+        "Lake Malawi",
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Lake Chad"
+      ],
+      "question": "Which is the largest lake in Africa?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Easter Island is about 3,500 km off the coast of South America, one of the most remote inhabited islands on Earth.",
+      "id": "geo-0048",
+      "options": ["Ecuador", "Peru", "Chile", "New Zealand"],
+      "question": "Easter Island (Rapa Nui), in the South Pacific, belongs to which country?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The Amazon pours so much fresh water into the Atlantic that the sea is noticeably less salty far offshore.",
+      "id": "geo-0040",
+      "options": ["Nile", "Yangtze", "Amazon", "Congo"],
+      "question": "Which river carries more water than any other on Earth?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Pangaea contained almost all of Earth's land; the matching coastlines of Africa and South America are a leftover clue.",
+      "id": "geo-0049",
+      "options": ["Gondwana", "Laurasia", "Rodinia", "Pangaea"],
+      "question": "What is the name of the supercontinent that began breaking apart about 200 million years ago?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "A doubly landlocked country is surrounded only by other landlocked countries, so reaching the sea means crossing two borders.",
+      "id": "geo-0061",
+      "options": ["Andorra", "Austria", "Liechtenstein", "Switzerland"],
+      "question": "Uzbekistan is one of only two doubly landlocked countries. Which is the other?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "It comes from Geysir in south-west Iceland; its name is related to an Icelandic verb meaning 'to gush'.",
+      "id": "geo-0041",
+      "options": ["Iceland", "New Zealand", "Norway", "Japan"],
+      "question": "The English word 'geyser' comes from a hot spring in which country?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Amsterdam is the constitutional capital of the Netherlands, but the parliament, government and king's workplace are in The Hague.",
+      "id": "geo-0051",
+      "options": ["Rotterdam", "Utrecht", "The Hague", "Amsterdam"],
+      "question": "In which Dutch city do the national parliament and government sit?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The Sognefjord reaches more than 200 km inland and is over 1,300 m deep in places.",
+      "id": "geo-0042",
+      "options": ["Denmark", "Iceland", "Sweden", "Norway"],
+      "question": "Geirangerfjord and Sognefjord are in which country?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "At about 6,300 km, the Yangtze is the longest river that flows entirely within a single country, China.",
+      "id": "geo-0053",
+      "options": ["Ganges", "Yellow River", "Yangtze", "Mekong"],
+      "question": "Which is the longest river in Asia?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The name describes the roaring spray, which can rise more than 400 m into the air during the rainy season.",
+      "id": "geo-0065",
+      "options": [
+        "The Mist That Shines",
+        "The River That Falls",
+        "The Smoke That Thunders",
+        "The Water That Sings"
+      ],
+      "question": "The local name for Victoria Falls, Mosi-oa-Tunya, means what?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Africa has 54 internationally recognised sovereign states, more than a quarter of all countries.",
+      "id": "geo-0044",
+      "options": ["Europe", "Asia", "South America", "Africa"],
+      "question": "Which continent has the most countries?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The Adriatic is the northernmost arm of the Mediterranean and is known for very clear water along the Croatian coast.",
+      "id": "geo-0057",
+      "options": ["Tyrrhenian Sea", "Ionian Sea", "Aegean Sea", "Adriatic Sea"],
+      "question": "Which sea lies between Italy and the Balkan Peninsula?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Prague's historic centre survived largely intact through the 20th century and is a UNESCO World Heritage Site.",
+      "id": "geo-0058",
+      "options": ["Bruges", "Prague", "Vienna", "Kraków"],
+      "question": "Which European capital is nicknamed the 'City of a Hundred Spires'?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The Kiel Canal links the North Sea with the Baltic, saving ships about 460 km around the Danish peninsula.",
+      "id": "geo-0079",
+      "options": ["Germany", "Denmark", "Netherlands", "Sweden"],
+      "question": "The Kiel Canal, one of the world's busiest artificial waterways, is in which country?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The islands lie about 1,000 km off the coast, and their unique wildlife inspired Charles Darwin's ideas on evolution.",
+      "id": "geo-0047",
+      "options": ["Chile", "Colombia", "Ecuador", "Peru"],
+      "question": "The Galápagos Islands belong to which country?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The North American and Eurasian plates pull apart through Iceland by about 2 cm a year, and you can walk between them at Thingvellir.",
+      "id": "geo-0059",
+      "options": [
+        "Great Rift Valley",
+        "Alpine Belt",
+        "Mid-Atlantic Ridge",
+        "Ring of Fire"
+      ],
+      "question": "Iceland sits on top of which tectonic feature?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "An international conference in 1884 chose the Royal Observatory in Greenwich as the starting point for world longitude.",
+      "id": "geo-0050",
+      "options": ["Westminster", "Camden", "Richmond", "Greenwich"],
+      "question": "The Prime Meridian, 0° longitude, passes through which part of London?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Aconcagua in Argentina rises to about 6,961 m, the highest peak outside Asia.",
+      "id": "geo-0064",
+      "options": ["Chimborazo", "Huascarán", "Aconcagua", "Illimani"],
+      "question": "Which is the highest mountain in South America?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Founded in 1804, Hobart is Australia's second-oldest capital city and a gateway for Antarctic expeditions.",
+      "id": "geo-0083",
+      "options": ["Devonport", "Hobart", "Launceston", "Darwin"],
+      "question": "What is the capital of the Australian state of Tasmania?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The Arctic Ocean is also the shallowest ocean, and much of it is covered by sea ice for most of the year.",
+      "id": "geo-0062",
+      "options": [
+        "Indian Ocean",
+        "Atlantic Ocean",
+        "Southern Ocean",
+        "Arctic Ocean"
+      ],
+      "question": "Which is the smallest of the world's five oceans?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Greeks call their country Hellas or Elláda; 'Greece' comes from the Latin name Graecia.",
+      "id": "geo-0066",
+      "options": ["Malta", "Greece", "Albania", "Cyprus"],
+      "question": "Which country's official name is the 'Hellenic Republic'?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Mont Blanc, about 4,806 m, sits on the French-Italian border; a tunnel under it links the two countries.",
+      "id": "geo-0063",
+      "options": ["Grossglockner", "Mont Blanc", "Eiger", "Matterhorn"],
+      "question": "Which is the highest mountain in the Alps?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Nepal moved to UTC+5:45 in 1986; it is one of only a few places in the world whose clocks are offset by 45 minutes.",
+      "id": "geo-0069",
+      "options": ["India", "Sri Lanka", "Nepal", "Bhutan"],
+      "question": "Which country's standard time is 5 hours 45 minutes ahead of UTC?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Legend says a siren on the Lorelei lured boatmen to their doom; the river there is narrow and has strong currents.",
+      "id": "geo-0084",
+      "options": ["Elbe", "Rhine", "Danube", "Moselle"],
+      "question": "Which river flows past the famous Lorelei rock in Germany?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "'Nippon' roughly means 'origin of the sun', which is why Japan is called the Land of the Rising Sun.",
+      "id": "geo-0067",
+      "options": ["China", "Korea", "Vietnam", "Japan"],
+      "question": "The native name 'Nippon' belongs to which country?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The Lebanon cedar has been a symbol of the region for thousands of years and is mentioned in ancient texts.",
+      "id": "geo-0070",
+      "options": ["Lebanon", "Jordan", "Cyprus", "Canada"],
+      "question": "A green cedar tree appears on the flag of which country?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The nickname undersells it: Finland has roughly 188,000 lakes larger than 500 m².",
+      "id": "geo-0068",
+      "options": ["Canada", "Scotland", "Sweden", "Finland"],
+      "question": "Which country is nicknamed the 'Land of a Thousand Lakes'?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Pamukkale means 'cotton castle'; its terraces are travertine, built up by calcium-rich spring water over thousands of years.",
+      "id": "geo-0074",
+      "options": ["Turkey", "Greece", "Georgia", "Iran"],
+      "question": "Pamukkale, with its white terraces of warm mineral pools, is in which country?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The Amazon starts as meltwater high in the Peruvian Andes, less than 200 km from the Pacific coast.",
+      "id": "geo-0086",
+      "options": ["Brazil", "Peru", "Bolivia", "Colombia"],
+      "question": "In which country does the Amazon River have its source?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "In the monsoon the Mekong pushes water back up the Tonlé Sap River, and the lake grows to several times its dry-season size.",
+      "id": "geo-0071",
+      "options": ["Thailand", "Cambodia", "Laos", "Myanmar"],
+      "question": "Tonlé Sap, a lake that swells hugely in the rainy season, is in which country?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Algeria covers about 2.38 million km², and more than four-fifths of it lies in the Sahara.",
+      "id": "geo-0075",
+      "options": ["Algeria", "Sudan", "DR Congo", "Libya"],
+      "question": "Which is the largest country in Africa by area?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Wadi Rum's sandstone and granite mountains rise from reddish sand; scenes for the film 'The Martian' were shot there.",
+      "id": "geo-0072",
+      "options": ["Saudi Arabia", "Syria", "Jordan", "Egypt"],
+      "question": "Wadi Rum, a red desert valley that has stood in for Mars in films, is in which country?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Visitors climb to the summit between two giant lion's paws, all that remains of a huge gateway shaped like a lion.",
+      "id": "geo-0081",
+      "options": ["Sri Lanka", "India", "Mauritius", "Myanmar"],
+      "question": "Sigiriya, a 5th-century palace built on top of a giant rock, is in which country?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Brazil is so large that it reaches from about 5°N to 34°S, covering both lines.",
+      "id": "geo-0091",
+      "options": ["Indonesia", "Peru", "Brazil", "Australia"],
+      "question": "Which is the only country crossed by both the Equator and the Tropic of Capricorn?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ha Long means 'descending dragon'; legend says a dragon formed the islands by thrashing its tail.",
+      "id": "geo-0073",
+      "options": ["Vietnam", "Thailand", "Malaysia", "Philippines"],
+      "question": "Ha Long Bay, dotted with about 1,600 limestone islands, is in which country?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The Maldives' average ground level is only about 1.5 m above the sea, so rising sea levels are a serious concern for its islands.",
+      "id": "geo-0082",
+      "options": ["Bangladesh", "Maldives", "Tuvalu", "Netherlands"],
+      "question": "Which country is the world's lowest-lying by average elevation?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Before the Panama Canal opened, ships had to round Cape Horn, whose waters are notorious for storms and huge waves.",
+      "id": "geo-0076",
+      "options": ["South America", "Australia", "Antarctica", "Africa"],
+      "question": "Cape Horn marks the southern tip of which continent?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Etna is Europe's tallest active volcano, and its fertile slopes are covered with vineyards and orchards.",
+      "id": "geo-0085",
+      "options": ["Corsica", "Sicily", "Crete", "Sardinia"],
+      "question": "Mount Etna, one of the world's most active volcanoes, is on which island?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Suva lies on the largest island, Viti Levu; many visitors fly into Nadi on the other side of the island instead.",
+      "id": "geo-0093",
+      "options": ["Lautoka", "Nadi", "Apia", "Suva"],
+      "question": "What is the capital of Fiji?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ships are lifted about 26 m by locks to cross Gatun Lake and then lowered on the other side.",
+      "id": "geo-0077",
+      "options": [
+        "Southern Ocean",
+        "Atlantic Ocean",
+        "Arctic Ocean",
+        "Indian Ocean"
+      ],
+      "question": "The Panama Canal links the Pacific Ocean with which ocean?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Ethiopia's capital, Addis Ababa, lies at about 2,350 m and hosts the headquarters of the African Union.",
+      "id": "geo-0088",
+      "options": ["Sudan", "Eritrea", "Somalia", "Ethiopia"],
+      "question": "Which African country was historically known as Abyssinia?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Opened in 1869, the Suez Canal has no locks because the two seas are at almost the same level.",
+      "id": "geo-0078",
+      "options": ["Caspian Sea", "Black Sea", "Arabian Sea", "Red Sea"],
+      "question": "The Suez Canal connects the Mediterranean Sea with which sea?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Borneo is the third-largest island in the world and the only island divided among three countries.",
+      "id": "geo-0095",
+      "options": ["Brunei", "Timor-Leste", "Philippines", "Singapore"],
+      "question": "Borneo is shared by Indonesia, Malaysia and which other country?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Mount Kinabalu rises 4,095 m in the Malaysian state of Sabah and hosts thousands of plant species, including many orchids.",
+      "id": "geo-0094",
+      "options": ["Java", "Borneo", "Sumatra", "Sulawesi"],
+      "question": "Mount Kinabalu, one of the highest peaks in Southeast Asia, is on which island?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Despite being called a sea, the Caspian is usually classed as the world's largest lake; its water is about a third as salty as the ocean.",
+      "id": "geo-0080",
+      "options": [
+        "Caspian Sea",
+        "Lake Victoria",
+        "Lake Superior",
+        "Lake Baikal"
+      ],
+      "question": "Which is the largest inland body of water on Earth?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Hispaniola has the Caribbean's highest peak, Pico Duarte, at about 3,100 m.",
+      "id": "geo-0096",
+      "options": ["Puerto Rico", "Jamaica", "Cuba", "Hispaniola"],
+      "question": "Haiti and the Dominican Republic share which island?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The Urals run about 2,500 km from the Arctic Ocean to Kazakhstan, and are among the oldest mountains on Earth.",
+      "id": "geo-0087",
+      "options": [
+        "Altai Mountains",
+        "Carpathian Mountains",
+        "Ural Mountains",
+        "Caucasus Mountains"
+      ],
+      "question": "Which mountain range is conventionally used as the boundary between Europe and Asia?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The delta includes the Sundarbans, the largest mangrove forest on Earth and a home of the Bengal tiger.",
+      "id": "geo-0099",
+      "options": ["India", "Myanmar", "Bangladesh", "Nepal"],
+      "question": "Most of the Ganges–Brahmaputra delta, the world's largest river delta, is in which country?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Mongolia's capital averages just below 0 °C over the year, with winter nights often colder than -30 °C.",
+      "id": "geo-0098",
+      "options": ["Ulaanbaatar", "Moscow", "Helsinki", "Ottawa"],
+      "question": "Which national capital has the coldest average yearly temperature?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "In 1935 the government asked other countries to use the native name Iran, meaning 'land of the Aryans' (Iranians).",
+      "id": "geo-0089",
+      "options": ["Afghanistan", "Iraq", "Turkey", "Iran"],
+      "question": "Which country was known as Persia until 1935?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Despite being called a desert, parts of the Kalahari get enough rain to support grasses, trees and large animals.",
+      "id": "geo-0100",
+      "options": ["Namib", "Kalahari", "Karoo", "Sahara"],
+      "question": "Which desert covers much of Botswana?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "They lie in the Andaman Sea, where steep limestone islands rise straight out of turquoise water.",
+      "id": "geo-0090",
+      "options": ["Thailand", "Cambodia", "Laos", "Myanmar"],
+      "question": "The islands of Phuket and Ko Phi Phi are in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The Gulf of Bothnia is so low in salt that it freezes over in winter, and the land around it is still rising after the Ice Age.",
+      "id": "geo-0102",
+      "options": [
+        "Skagerrak",
+        "Gulf of Riga",
+        "Gulf of Finland",
+        "Gulf of Bothnia"
+      ],
+      "question": "Which gulf lies between Sweden and Finland?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The cliffs on Ireland's west coast stretch for about 14 km and are home to thousands of nesting seabirds.",
+      "id": "geo-0092",
+      "options": ["Iceland", "Norway", "Scotland", "Ireland"],
+      "question": "The Cliffs of Moher, rising over 200 m above the Atlantic, are in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Stockholm's islands sit where Lake Mälaren meets the Baltic Sea, and some 50 bridges connect them.",
+      "id": "geo-0106",
+      "options": ["Oslo", "Helsinki", "Copenhagen", "Stockholm"],
+      "question": "Which Scandinavian capital is built on 14 islands?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Bran Castle sits in Transylvania, though there is little evidence that Vlad the Impaler ever lived there.",
+      "id": "geo-0097",
+      "options": ["Serbia", "Bulgaria", "Romania", "Hungary"],
+      "question": "Bran Castle, marketed as 'Dracula's Castle', is in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "The Faroes have about 70,000 sheep, and the name is thought to mean 'sheep islands'.",
+      "id": "geo-0108",
+      "options": ["United Kingdom", "Sweden", "Norway", "Denmark"],
+      "question": "The Faroe Islands are a self-governing part of which kingdom?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The Strait of Malacca is one of the world's busiest shipping lanes, linking the Indian Ocean and the Pacific.",
+      "id": "geo-0103",
+      "options": ["Sulawesi", "Borneo", "Java", "Sumatra"],
+      "question": "The Strait of Malacca separates the Malay Peninsula from which island?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "A layer of cloud often pours over the flat summit; locals call it the 'tablecloth'.",
+      "id": "geo-0105",
+      "options": ["Nairobi", "Durban", "Johannesburg", "Cape Town"],
+      "question": "Which city lies beneath the flat-topped Table Mountain?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Svalbard hosts the Global Seed Vault, a backup store of crop seeds dug deep into the permafrost.",
+      "id": "geo-0109",
+      "options": ["Iceland", "Norway", "Finland", "Denmark"],
+      "question": "The Arctic archipelago of Svalbard belongs to which country?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The islands are named after the Latin for dogs, canis, not after canary birds; the birds were named after the islands.",
+      "id": "geo-0107",
+      "options": ["Morocco", "Italy", "Spain", "Portugal"],
+      "question": "The Canary Islands belong to which country?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Jeju's haenyeo divers harvest seafood without breathing equipment, a tradition listed by UNESCO as cultural heritage.",
+      "id": "geo-0104",
+      "options": ["South Korea", "China", "Taiwan", "Japan"],
+      "question": "Jeju, a volcanic island known for its female free-divers, belongs to which country?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "A blue whale can be about 30 m long and weigh over 150 tonnes; its tongue alone can weigh as much as an elephant.",
+      "id": "nat-0001",
+      "options": [
+        "Whale shark",
+        "Sperm whale",
+        "Blue whale",
+        "African elephant"
+      ],
+      "question": "Which is the largest animal alive today?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "A cheetah can reach around 100 km/h in a short sprint and accelerates faster than most sports cars.",
+      "id": "nat-0002",
+      "options": ["Pronghorn", "Cheetah", "Greyhound", "Lion"],
+      "question": "Which is the fastest land animal?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Polar bear fur is actually translucent and only looks white; the black skin underneath helps absorb heat from the sun.",
+      "id": "nat-0005",
+      "options": ["Black", "White", "Pink", "Grey"],
+      "question": "What colour is a polar bear's skin under its fur?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Vanilla orchid flowers open for only about a day, and outside Mexico they are usually pollinated by hand.",
+      "id": "nat-0016",
+      "options": ["Legume", "Palm", "Lily", "Orchid"],
+      "question": "Vanilla comes from the pods of which kind of plant?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "In a steep dive called a stoop, a peregrine falcon can exceed 300 km/h, making it the fastest animal on Earth.",
+      "id": "nat-0003",
+      "options": [
+        "Wandering albatross",
+        "Golden eagle",
+        "Peregrine falcon",
+        "Common swift"
+      ],
+      "question": "Which bird is the fastest animal in a hunting dive?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "The angle of the dance shows the direction relative to the sun, and its length shows the distance to the food.",
+      "id": "nat-0012",
+      "options": [
+        "With a waggle dance",
+        "With wing colours",
+        "With scent trails only",
+        "With buzzing tones"
+      ],
+      "question": "How do honeybees tell each other where to find flowers?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Dutch explorers thought quokkas were giant rats and named the island 'Rotte nest', meaning rat's nest.",
+      "id": "nat-0028",
+      "options": [
+        "K'gari (Fraser Island)",
+        "Rottnest Island",
+        "Tasmania",
+        "Kangaroo Island"
+      ],
+      "question": "The smiling quokka lives mainly on which Australian island?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Bamboo is so low in nutrients that a panda may eat more than 10 kg of it a day, even though its gut is built like a carnivore's.",
+      "id": "nat-0007",
+      "options": ["Bamboo", "Fruit", "Fish", "Insects"],
+      "question": "Giant pandas spend up to 14 hours a day eating what?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "The tallest known tree, a coast redwood in California nicknamed Hyperion, is about 116 m tall.",
+      "id": "nat-0015",
+      "options": [
+        "Coast redwood",
+        "Mountain ash",
+        "Giant sequoia",
+        "Douglas fir"
+      ],
+      "question": "Which tree species grows the tallest?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "An ostrich can stand 2.7 m tall, run at about 70 km/h, and has eyes bigger than its brain.",
+      "id": "nat-0008",
+      "options": ["Emu", "Ostrich", "Cassowary", "Andean condor"],
+      "question": "Which is the largest living bird?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Rafflesia flowers can be about 1 m across; the plant has no leaves or roots and smells like rotting meat to attract flies.",
+      "id": "nat-0017",
+      "options": [
+        "Sunflower",
+        "Titan arum",
+        "Rafflesia arnoldii",
+        "Giant Amazon water lily"
+      ],
+      "question": "Which plant produces the largest single flower in the world?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "The kakapo is the world's heaviest parrot and may live for 60 years or more; every surviving bird is known and tracked.",
+      "id": "nat-0029",
+      "options": ["Takahē", "Kakapo", "Kiwi", "Kea"],
+      "question": "What is the name of New Zealand's flightless, nocturnal parrot?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Whale sharks can grow longer than 12 m, yet they feed by filtering tiny plankton from the water.",
+      "id": "nat-0010",
+      "options": [
+        "Whale shark",
+        "Great white shark",
+        "Basking shark",
+        "Ocean sunfish"
+      ],
+      "question": "Which is the largest species of fish?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Male saltwater crocodiles can exceed 6 m and 1,000 kg, and they can swim far out to sea between islands.",
+      "id": "nat-0020",
+      "options": [
+        "Saltwater crocodile",
+        "Leatherback turtle",
+        "Nile crocodile",
+        "Komodo dragon"
+      ],
+      "question": "Which is the largest living reptile?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Chameleons change colour mostly to signal mood and control temperature, not just to hide; they can look two ways at once.",
+      "id": "nat-0011",
+      "options": ["Iguana", "Chameleon", "Monitor lizard", "Gecko"],
+      "question": "Which reptile can move its two eyes independently and change colour?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "A colossal squid's eye can be about 27 cm across, roughly the size of a football.",
+      "id": "nat-0023",
+      "options": ["Blue whale", "Ostrich", "Tarsier", "Colossal squid"],
+      "question": "Which animal has the largest eyes in the animal kingdom?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Sperm whale clicks can reach about 230 decibels underwater; they use them to find squid in the dark deep sea.",
+      "id": "nat-0031",
+      "options": [
+        "Howler monkey",
+        "Pistol shrimp",
+        "Sperm whale",
+        "Blue whale"
+      ],
+      "question": "Which animal produces the loudest sound of any animal?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "A large male African bush elephant can weigh around 6 tonnes and eats up to 150 kg of plants a day.",
+      "id": "nat-0013",
+      "options": [
+        "African bush elephant",
+        "Asian elephant",
+        "Hippopotamus",
+        "Southern white rhinoceros"
+      ],
+      "question": "Which is the largest living land animal?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Elephants have the longest pregnancy of any land mammal, and a newborn calf already weighs around 100 kg.",
+      "id": "nat-0025",
+      "options": [
+        "About 9 months",
+        "About 16 months",
+        "About 12 months",
+        "About 22 months"
+      ],
+      "question": "Roughly how long is an elephant's pregnancy?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Large male tigers can weigh around 300 kg, and no two tigers have the same stripe pattern.",
+      "id": "nat-0014",
+      "options": ["Lion", "Jaguar", "Tiger", "Leopard"],
+      "question": "Which is the largest wild cat species?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Sea otters have up to about 150,000 hairs per square centimetre and, unlike most sea mammals, no blubber to keep warm.",
+      "id": "nat-0026",
+      "options": ["Polar bear", "Arctic fox", "Sea otter", "Musk ox"],
+      "question": "Which animal has the densest fur of any animal?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "In 2022 a tagged bar-tailed godwit flew from Alaska to Tasmania in about 11 days without landing, eating or drinking.",
+      "id": "nat-0038",
+      "options": [
+        "Arctic tern",
+        "Barn swallow",
+        "Wandering albatross",
+        "Bar-tailed godwit"
+      ],
+      "question": "Which bird holds the record for the longest non-stop flight, over 13,000 km?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Arctic terns fly from the Arctic to the Antarctic and back each year, seeing more daylight than any other animal.",
+      "id": "nat-0037",
+      "options": [
+        "Arctic tern",
+        "White stork",
+        "Barn swallow",
+        "Common cuckoo"
+      ],
+      "question": "Which bird has the longest known yearly migration?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Spiders are arachnids, not insects; insects have six legs, while spiders have eight and usually eight eyes too.",
+      "id": "nat-0019",
+      "options": ["Twelve", "Six", "Ten", "Eight"],
+      "question": "How many legs does a spider have?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Tardigrades can dry out into a dormant 'tun' state and survive extreme cold, radiation and the vacuum of space.",
+      "id": "nat-0040",
+      "options": ["Nematodes", "Tardigrades", "Copepods", "Rotifers"],
+      "question": "Which tiny animals, nicknamed 'water bears', have survived exposure to outer space?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Common swifts eat, drink and even sleep on the wing, and some young birds may not land for years.",
+      "id": "nat-0039",
+      "options": ["Albatross", "Common swift", "Frigatebird", "Arctic tern"],
+      "question": "Which bird can stay in the air for about 10 months without landing?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Komodo dragons can grow to about 3 m long and live wild only on a few Indonesian islands.",
+      "id": "nat-0021",
+      "options": [
+        "Komodo dragon",
+        "Frilled lizard",
+        "Gila monster",
+        "Green iguana"
+      ],
+      "question": "Which is the largest living lizard?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Tuatara are the last survivors of an ancient reptile order and can live for over 100 years.",
+      "id": "nat-0041",
+      "options": ["New Zealand", "Australia", "Madagascar", "Indonesia"],
+      "question": "The tuatara, a 'living fossil' reptile whose relatives lived alongside the dinosaurs, is found only where?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Axolotls keep their feathery gills for life and can regenerate limbs, parts of the heart and even parts of the brain.",
+      "id": "nat-0042",
+      "options": ["Peru", "Mexico", "Brazil", "Japan"],
+      "question": "The axolotl, a salamander that can regrow lost limbs, comes from lakes in which country?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Needing two touches stops the trap from wasting energy on raindrops or falling debris.",
+      "id": "nat-0046",
+      "options": ["Two", "One", "Three", "Five"],
+      "question": "How many touches of its trigger hairs within about 20 seconds make a Venus flytrap snap shut?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Humans share roughly 98-99% of their DNA with chimpanzees and their close cousins, bonobos.",
+      "id": "nat-0024",
+      "options": ["Gibbon", "Chimpanzee", "Gorilla", "Orangutan"],
+      "question": "Which of these apes is most closely related to humans?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Great Basin bristlecone pines grow in harsh mountain conditions in the USA; one has been dated to about 4,800 years old.",
+      "id": "nat-0047",
+      "options": ["Baobab", "Giant sequoia", "Bristlecone pine", "Olive tree"],
+      "question": "Which kind of tree includes the oldest known living individual trees, nearly 5,000 years old?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Tasmanian devils have one of the strongest bites for their size of any mammal and can eat bones whole.",
+      "id": "nat-0027",
+      "options": [
+        "Long-nosed bandicoot",
+        "Common wombat",
+        "Tasmanian devil",
+        "Quokka"
+      ],
+      "question": "Which carnivorous marsupial lives in the wild only on the island of Tasmania?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "A large baobab can hold over 100,000 litres of water, helping it survive long dry seasons.",
+      "id": "nat-0048",
+      "options": ["Marula", "Mopane", "Baobab", "Acacia"],
+      "question": "Which African tree is famous for storing huge amounts of water in its swollen trunk?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Besides two large compound eyes, bees have three simple eyes called ocelli on top of the head that help them navigate.",
+      "id": "nat-0050",
+      "options": ["Four", "Five", "Two", "Eight"],
+      "question": "How many eyes does a honeybee have?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Emperor penguins can dive deeper than 500 m and breed during the Antarctic winter, when temperatures fall below -40 °C.",
+      "id": "nat-0030",
+      "options": [
+        "Adélie penguin",
+        "Gentoo penguin",
+        "Emperor penguin",
+        "King penguin"
+      ],
+      "question": "Which is the largest species of penguin?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "The monarchs that reach Mexico in autumn are several generations removed from the butterflies that left it the previous spring.",
+      "id": "nat-0049",
+      "options": ["Mexico", "Brazil", "India", "Spain"],
+      "question": "Millions of monarch butterflies spend the winter in the forests of which country?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Most sea stars have five arms, can regrow lost ones, and have a simple eye at the tip of each arm.",
+      "id": "nat-0032",
+      "options": ["Six", "Eight", "Five", "Four"],
+      "question": "How many arms do most sea stars (starfish) have?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Cartilage is lighter and more flexible than bone, which helps sharks save energy and turn quickly.",
+      "id": "nat-0051",
+      "options": ["Keratin", "Chitin", "Bone", "Cartilage"],
+      "question": "What is a shark's skeleton made of?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Greenland sharks grow about 1 cm a year; radiocarbon dating of their eyes suggests some are several centuries old.",
+      "id": "nat-0053",
+      "options": [
+        "Koi carp",
+        "Greenland shark",
+        "Tuatara",
+        "Galápagos tortoise"
+      ],
+      "question": "Which vertebrate is believed to have the longest lifespan, possibly over 250 years?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Pufferfish swallow water to inflate, and many species contain a toxin far more poisonous than cyanide.",
+      "id": "nat-0033",
+      "options": ["Flying fish", "Pufferfish", "Clownfish", "Barracuda"],
+      "question": "Which fish can puff itself up into a spiky ball when threatened?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Old harpoon tips found in living bowhead whales helped scientists confirm their remarkable age.",
+      "id": "nat-0052",
+      "options": ["African elephant", "Blue whale", "Bowhead whale", "Orca"],
+      "question": "Which mammal is thought to live the longest, possibly over 200 years?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Salmon are thought to find their home river years later partly by its unique smell.",
+      "id": "nat-0034",
+      "options": ["Cod", "Mackerel", "Tuna", "Salmon"],
+      "question": "Which fish swims back up the river where it hatched in order to spawn?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Male superb lyrebirds build their songs from the calls of other birds and almost any sound they hear.",
+      "id": "nat-0054",
+      "options": ["Emu", "Lyrebird", "Cockatoo", "Kookaburra"],
+      "question": "Which Australian bird can imitate chainsaws and camera shutters?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "The Etruscan shrew weighs about 1.8 g and must eat almost constantly; its heart can beat over 1,000 times a minute.",
+      "id": "nat-0062",
+      "options": [
+        "Pygmy jerboa",
+        "Pygmy marmoset",
+        "Harvest mouse",
+        "Etruscan shrew"
+      ],
+      "question": "By weight, which is the smallest known mammal?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "A bull moose can stand over 2 m at the shoulder, and its antlers can span about 1.8 m.",
+      "id": "nat-0035",
+      "options": ["Moose", "Reindeer", "White-tailed deer", "Red deer"],
+      "question": "Which is the largest living species of deer?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "This 'blood sweat' is neither blood nor sweat; it works as a natural sunscreen and may also fight germs.",
+      "id": "nat-0056",
+      "options": [
+        "Attracts a mate",
+        "Marks its territory",
+        "Scares away crocodiles",
+        "Works as a sunscreen"
+      ],
+      "question": "Hippos release a reddish oily fluid on their skin. What does it do?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "The wandering albatross's wings can span up to about 3.5 m, letting it glide for hours over the ocean without flapping.",
+      "id": "nat-0036",
+      "options": [
+        "Steller's sea eagle",
+        "Wandering albatross",
+        "Marabou stork",
+        "Andean condor"
+      ],
+      "question": "Which bird has the longest wingspan of any living bird?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "A museum curator in South Africa spotted it in a fisherman's catch; it was known only from fossils over 66 million years old.",
+      "id": "nat-0064",
+      "options": ["Arapaima", "Sturgeon", "Coelacanth", "Lungfish"],
+      "question": "Which 'living fossil' fish, thought extinct for millions of years, was found alive in 1938?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Bees reduce the water in nectar by fanning it with their wings, which is why honey keeps for so long.",
+      "id": "nat-0043",
+      "options": ["Nectar", "Pollen", "Dew", "Sap"],
+      "question": "What do honeybees collect from flowers to make honey?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Sea otters also wrap themselves in kelp to stay anchored while floating on their backs.",
+      "id": "nat-0058",
+      "options": [
+        "To keep each other warm",
+        "To avoid drifting apart",
+        "To scare off predators",
+        "To find food"
+      ],
+      "question": "Why do sea otters sometimes hold paws while they sleep?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Some bamboo species can grow almost 1 m in a single day.",
+      "id": "nat-0044",
+      "options": ["Sunflower", "Eucalyptus", "Bamboo", "Ivy"],
+      "question": "Which plant holds the record as the fastest-growing on Earth?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "The bee hummingbird of Cuba is about 5-6 cm long and weighs less than 2 g; its eggs are about the size of coffee beans.",
+      "id": "nat-0063",
+      "options": ["Bee hummingbird", "Wren", "Goldcrest", "Crimson sunbird"],
+      "question": "Which is the smallest bird in the world?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Koala fingerprints look remarkably like ours, even under a microscope, though the two evolved separately.",
+      "id": "nat-0065",
+      "options": ["Raccoon", "Wombat", "Kangaroo", "Koala"],
+      "question": "Which animal has fingerprints remarkably similar to humans', even under a microscope?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "A large oak can produce thousands of acorns in a good year, and jays help plant new oaks by burying them.",
+      "id": "nat-0045",
+      "options": ["Beech", "Oak", "Chestnut", "Maple"],
+      "question": "Which tree produces acorns?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "A mantis shrimp's club accelerates like a small-calibre bullet and creates bubbles that collapse with a flash of light.",
+      "id": "nat-0066",
+      "options": ["Coconut crab", "Common octopus", "Mantis shrimp", "Lobster"],
+      "question": "Which sea creature can punch so fast it may crack aquarium glass?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Kookaburras are large kingfishers; families 'laugh' together at dawn and dusk to mark their territory.",
+      "id": "nat-0055",
+      "options": ["Puffin", "Toucan", "Pelican", "Kookaburra"],
+      "question": "Which bird is famous for a call that sounds like loud human laughter?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Owls' eyes are fixed in their sockets, so they turn the whole head, helped by extra neck vertebrae.",
+      "id": "nat-0069",
+      "options": ["270 degrees", "360 degrees", "180 degrees", "90 degrees"],
+      "question": "About how far can an owl turn its head in either direction?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Electric eels can produce shocks of up to about 860 volts to stun prey and defend themselves.",
+      "id": "nat-0067",
+      "options": ["A knifefish", "A moray", "A ray", "A lamprey"],
+      "question": "The electric eel is not a true eel. What kind of fish is it?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "The female lays her eggs in the male seahorse's pouch, and he later releases dozens to hundreds of tiny babies.",
+      "id": "nat-0059",
+      "options": ["Crab", "Octopus", "Turtle", "Seahorse"],
+      "question": "In which animal does the male carry the eggs and give birth?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Kiwi sniff out worms in the soil; females also lay one of the largest eggs relative to body size of any bird.",
+      "id": "nat-0070",
+      "options": ["Pelican", "Kiwi", "Toucan", "Hornbill"],
+      "question": "Which bird has its nostrils at the very tip of its beak?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Turritopsis dohrnii can turn back into a polyp when stressed or injured, restarting its life cycle.",
+      "id": "nat-0072",
+      "options": [
+        "A jellyfish species",
+        "A tortoise species",
+        "A sea turtle species",
+        "A sponge species"
+      ],
+      "question": "Which animal is nicknamed 'immortal' because it can revert to an earlier life stage?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Elephants, manatees, dugongs and the small rock-dwelling hyraxes share a common ancestor.",
+      "id": "nat-0075",
+      "options": ["Rhinoceros", "Hippopotamus", "Tapir", "Manatee"],
+      "question": "Which of these is one of the elephant's closest living relatives?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Capybaras from South America can weigh over 60 kg and are excellent swimmers with slightly webbed feet.",
+      "id": "nat-0061",
+      "options": ["Beaver", "Marmot", "Porcupine", "Capybara"],
+      "question": "Which is the largest rodent in the world?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Around 400,000 beetle species have been described, roughly a quarter of all known animal species.",
+      "id": "nat-0074",
+      "options": ["Flies", "Ants and bees", "Butterflies and moths", "Beetles"],
+      "question": "Which group of animals has the most described species?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Over a million wildebeest follow the rains each year in a huge loop, crossing crocodile-filled rivers.",
+      "id": "nat-0077",
+      "options": [
+        "Plains zebra",
+        "Wildebeest",
+        "Thomson's gazelle",
+        "Cape buffalo"
+      ],
+      "question": "Which animal makes up most of the great migration between the Serengeti and Maasai Mara?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Hippos and whales share a common ancestor that lived roughly 55 million years ago.",
+      "id": "nat-0076",
+      "options": [
+        "Whales and dolphins",
+        "Rhinoceroses",
+        "Elephants and hyraxes",
+        "Pigs and boars"
+      ],
+      "question": "Which animals are the closest living relatives of hippos?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Jellyfish are about 95% water and use a simple net of nerves instead of a brain.",
+      "id": "nat-0071",
+      "options": ["Jellyfish", "Sea turtle", "Octopus", "Squid"],
+      "question": "Which sea creature has no brain, heart or bones?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Snow leopards make a puffing 'chuff' and other calls instead; their thick tail helps balance and works as a scarf.",
+      "id": "nat-0078",
+      "options": ["Snow leopard", "Bengal tiger", "Jaguar", "African lion"],
+      "question": "Which big cat cannot roar?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Young sunflowers face east at dawn and west at dusk; mature flowers settle facing east, warming up faster in the morning.",
+      "id": "nat-0073",
+      "options": ["Daisy", "Rose", "Sunflower", "Tulip"],
+      "question": "Young plants of which flower turn to follow the sun across the sky?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Orcas live in family groups with their own hunting techniques and 'dialects' of calls.",
+      "id": "nat-0079",
+      "options": ["Dolphins", "Baleen whales", "Porpoises", "Sharks"],
+      "question": "The orca, or killer whale, is the largest member of which family?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Cuckoo chicks often push the host's eggs out of the nest and are raised by foster parents much smaller than themselves.",
+      "id": "nat-0081",
+      "options": ["Swallow", "Cuckoo", "Robin", "Woodpecker"],
+      "question": "Which bird is famous for laying its eggs in other birds' nests?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Some bamboos flower only once every several decades, and all plants of that species may bloom at the same time.",
+      "id": "nat-0087",
+      "options": ["Trees", "Grasses", "Vines", "Ferns"],
+      "question": "Bamboo is a giant member of which plant family?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Taste sensors on their feet let butterflies check whether a leaf is right for laying eggs just by standing on it.",
+      "id": "nat-0083",
+      "options": ["Their eyes", "Their antennae", "Their feet", "Their wings"],
+      "question": "Butterflies can taste with which part of their body?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "The double coconut-shaped seed of the coco de mer from the Seychelles can weigh up to about 25 kg.",
+      "id": "nat-0088",
+      "options": ["Coco de mer", "Coconut palm", "Mango", "Avocado"],
+      "question": "Which plant produces the largest seed in the world?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Adult male gorillas, called silverbacks, can weigh over 200 kg but live mostly on plants.",
+      "id": "nat-0091",
+      "options": ["Orangutan", "Gorilla", "Chimpanzee", "Baboon"],
+      "question": "Which is the largest living primate?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Leafcutter ants were farming fungus gardens millions of years before humans invented agriculture.",
+      "id": "nat-0084",
+      "options": ["Seeds", "Algae", "A fungus", "Moss"],
+      "question": "Leafcutter ants carry leaves back to their nest to grow what?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "There are tens of billions of domestic chickens, far more than any wild bird species.",
+      "id": "nat-0096",
+      "options": ["Starling", "Pigeon", "House sparrow", "Chicken"],
+      "question": "Which bird is the most numerous on Earth?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Fireflies make light with a chemical reaction that wastes almost no energy as heat.",
+      "id": "nat-0085",
+      "options": ["Wasps", "Flies", "Moths", "Beetles"],
+      "question": "Fireflies are actually which kind of insect?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "The change helps reindeer gather more light during the long Arctic winter darkness.",
+      "id": "nat-0093",
+      "options": ["Snowy owl", "Arctic fox", "Polar bear", "Reindeer"],
+      "question": "Which animal's eyes change from gold in summer to blue in winter?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "A protective mucus layer stops the clownfish from being stung, and in return it defends the anemone.",
+      "id": "nat-0098",
+      "options": ["Jellyfish", "Sea anemone", "Coral", "Sea urchin"],
+      "question": "Clownfish live safely among the stinging tentacles of which animal?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Wombats use their cube-shaped droppings to mark territory; the cubes don't roll away from rocks and logs.",
+      "id": "nat-0086",
+      "options": ["Platypus", "Wombat", "Koala", "Kangaroo"],
+      "question": "Which animal is famous for producing cube-shaped droppings?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Male humpbacks in a region sing the same song, which slowly changes over time and spreads across oceans.",
+      "id": "nat-0101",
+      "options": [
+        "Grey whale",
+        "North Atlantic right whale",
+        "Sperm whale",
+        "Humpback whale"
+      ],
+      "question": "Which whale is best known for its long, complex songs?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Botanists call bananas berries; strawberries and raspberries are not true berries, and cherries are stone fruits.",
+      "id": "nat-0089",
+      "options": ["Raspberry", "Banana", "Cherry", "Strawberry"],
+      "question": "Which of these fruits is botanically a berry?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Seeds taken from Brazil in 1876 founded the huge rubber plantations of Southeast Asia.",
+      "id": "nat-0094",
+      "options": [
+        "The Amazon basin",
+        "The Indian subcontinent",
+        "The Congo basin",
+        "Borneo"
+      ],
+      "question": "Natural rubber trees originally come from which region?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Corals are colonies of tiny animals called polyps, which often host algae that give them colour and food.",
+      "id": "nat-0102",
+      "options": ["A rock", "A plant", "An animal", "A fungus"],
+      "question": "What kind of living thing is a coral?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Despite its zebra-like striped legs, the okapi belongs to the giraffe family and has a long tongue to strip leaves.",
+      "id": "nat-0090",
+      "options": ["Antelope", "Horse", "Zebra", "Giraffe"],
+      "question": "The okapi of Central Africa is the closest living relative of which animal?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Dogs were the first domesticated animals, descended from an ancient wolf population more than 15,000 years ago.",
+      "id": "nat-0103",
+      "options": ["Red fox", "Coyote", "Grey wolf", "Golden jackal"],
+      "question": "Domestic dogs are descended from which wild animal?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Orangutans spend most of their lives in the trees and build a new sleeping nest of branches almost every night.",
+      "id": "nat-0092",
+      "options": ["Orangutan", "Gorilla", "Bonobo", "Chimpanzee"],
+      "question": "Which great ape lives in the wild only on the islands of Borneo and Sumatra?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "A bump-head sunfish found off the Azores weighed 2,744 kg, and a female ocean sunfish can carry about 300 million eggs.",
+      "id": "nat-0100",
+      "options": ["Bluefin tuna", "Black marlin", "Giant grouper", "Sunfish"],
+      "question": "Which kind of fish holds the record as the heaviest bony fish ever measured?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "A single silkworm cocoon is made from one continuous thread that can be hundreds of metres long.",
+      "id": "nat-0104",
+      "options": ["Beetle", "Silkworm", "Spider", "Honeybee"],
+      "question": "Silk for fabric comes mainly from the cocoons of which creature?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Cork oaks are not cut down; their bark is stripped about every nine years and grows back.",
+      "id": "nat-0095",
+      "options": ["Cork oak", "Birch", "Beech", "Pine"],
+      "question": "Wine corks are made from the bark of which tree?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Pangolins' scales are made of keratin, and they roll into a tight ball when threatened.",
+      "id": "nat-0105",
+      "options": ["Pangolin", "Hedgehog", "Anteater", "Aardvark"],
+      "question": "Which mammal is covered in protective scales?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "The dodo was a giant relative of pigeons and disappeared within about a century of sailors arriving.",
+      "id": "nat-0097",
+      "options": ["Réunion", "Madagascar", "Mauritius", "Sri Lanka"],
+      "question": "The dodo, a flightless bird, lived only on which island?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "A date palm nicknamed Methuselah sprouted in 2005 from a seed found at the ancient fortress of Masada.",
+      "id": "nat-0107",
+      "options": ["Olive", "Fig tree", "Date palm", "English oak"],
+      "question": "Seeds of which plant were grown into healthy plants after about 2,000 years?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Inside the chrysalis, the caterpillar's body largely breaks down and is rebuilt into the adult butterfly.",
+      "id": "nat-0109",
+      "options": [
+        "Pollination",
+        "Metamorphosis",
+        "Photosynthesis",
+        "Hibernation"
+      ],
+      "question": "What is the process called when a caterpillar becomes a butterfly?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Mudskippers breathe partly through their skin and must keep it moist while they are out of the water.",
+      "id": "nat-0099",
+      "options": ["Flying fish", "Mudskipper", "Clownfish", "Sunfish"],
+      "question": "Which fish can skip across mudflats and even climb mangrove roots?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "The male is the peacock and the female the peahen; males shake their trains to make a rattling display.",
+      "id": "nat-0110",
+      "options": ["Only the chicks", "The female", "Both equally", "The male"],
+      "question": "In peafowl, which bird has the long, colourful tail train?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Sloths move so slowly that algae and even moths live in their fur, which helps camouflage them.",
+      "id": "nat-0106",
+      "options": ["Mushrooms", "Algae", "Moss", "Lichen"],
+      "question": "What often grows in a sloth's fur, giving it a greenish tint?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Ginkgo trees are very tough: several survived near the centre of the Hiroshima explosion and still grow today.",
+      "id": "nat-0108",
+      "options": ["Birch", "Ginkgo", "Olive", "Baobab"],
+      "question": "Which tree is called a 'living fossil' because it has barely changed for about 200 million years?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Mercury races around the Sun in just 88 Earth days, the shortest year of any planet.",
+      "id": "sci-0001",
+      "options": ["Mercury", "Venus", "Earth", "Mars"],
+      "question": "Which planet is closest to the Sun?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Venus's thick carbon dioxide atmosphere traps heat, so its surface reaches about 465 °C, hotter than Mercury's.",
+      "id": "sci-0004",
+      "options": ["Venus", "Mars", "Mercury", "Jupiter"],
+      "question": "Which is the hottest planet in the Solar System?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Jupiter is more than twice as massive as all the other planets combined; about 1,300 Earths would fit inside it.",
+      "id": "sci-0002",
+      "options": ["Neptune", "Uranus", "Saturn", "Jupiter"],
+      "question": "Which is the largest planet in the Solar System?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "At about 300,000 km/s, light could circle Earth about seven and a half times in a single second.",
+      "id": "sci-0010",
+      "options": [
+        "3 million km per second",
+        "30,000 km per second",
+        "300,000 km per second",
+        "3,000 km per second"
+      ],
+      "question": "Roughly how fast does light travel in a vacuum?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Jupiter's moon Io has hundreds of active volcanoes, heated by tidal squeezing from Jupiter's gravity.",
+      "id": "sci-0019",
+      "options": ["Io", "Callisto", "Phobos", "Europa"],
+      "question": "Which is the most volcanically active body in the Solar System?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Mars looks red because its dusty surface is rich in iron oxide, essentially rust.",
+      "id": "sci-0003",
+      "options": ["Venus", "Mercury", "Mars", "Jupiter"],
+      "question": "Which planet is known as the Red Planet?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Proxima Centauri is about 4.2 light-years away, so its light takes more than four years to reach us.",
+      "id": "sci-0012",
+      "options": ["Sirius", "Polaris", "Betelgeuse", "Proxima Centauri"],
+      "question": "Which star is the closest to the Sun?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Uranus's axis is tilted about 98°, so each pole gets around 42 years of sunlight followed by 42 years of darkness.",
+      "id": "sci-0013",
+      "options": ["Saturn", "Venus", "Neptune", "Uranus"],
+      "question": "Which planet rotates tipped on its side?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Sagittarius A* has about 4 million times the Sun's mass; its first image was published in 2022.",
+      "id": "sci-0021",
+      "options": [
+        "The brightest star in Sagittarius",
+        "A nebula visible to the naked eye",
+        "Our galaxy's central black hole",
+        "A probe that left the Solar System"
+      ],
+      "question": "What is Sagittarius A*?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Fe comes from the Latin ferrum; iron is the most common element in Earth as a whole, mostly in the core.",
+      "id": "sci-0006",
+      "options": ["Lead", "Iron", "Fluorine", "Francium"],
+      "question": "Which element has the chemical symbol Fe?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Plants combine carbon dioxide and water using sunlight to make sugar, releasing oxygen as a by-product.",
+      "id": "sci-0007",
+      "options": ["Carbon monoxide", "Nitrogen", "Oxygen", "Carbon dioxide"],
+      "question": "Which gas do plants take from the air for photosynthesis?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Jupiter's moon Ganymede is bigger than the planet Mercury and is the only moon known to have its own magnetic field.",
+      "id": "sci-0016",
+      "options": ["Titan", "Callisto", "Io", "Ganymede"],
+      "question": "Which is the largest moon in the Solar System?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Astronomers spotted an unknown yellow line in sunlight in 1868; the element was named after Helios, the Greek Sun god.",
+      "id": "sci-0025",
+      "options": [
+        "In the Sun's light",
+        "In volcanic gas",
+        "In a meteorite",
+        "In seawater"
+      ],
+      "question": "Where was helium first detected, before it was ever found on Earth?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Nitrogen is about 78% of the air we breathe; oxygen is about 21%.",
+      "id": "sci-0008",
+      "options": ["Carbon dioxide", "Argon", "Oxygen", "Nitrogen"],
+      "question": "Which gas makes up most of Earth's atmosphere?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Saturn's moon Titan is the only place besides Earth known to have stable liquid lakes on its surface.",
+      "id": "sci-0017",
+      "options": ["Io", "Titan", "Europa", "Triton"],
+      "question": "Which moon has a thick atmosphere and lakes of liquid methane?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Olympus Mons is about two and a half times as tall as Everest and around 600 km across.",
+      "id": "sci-0020",
+      "options": ["Earth", "Mars", "Venus", "Mercury"],
+      "question": "Olympus Mons, one of the tallest volcanoes in the Solar System, is on which planet?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Earth reaches its closest point, perihelion, in early January, during the northern winter.",
+      "id": "sci-0043",
+      "options": ["March", "January", "July", "October"],
+      "question": "In which month is Earth closest to the Sun?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Apollo 11 landed on 20 July 1969; with no wind on the Moon, the astronauts' footprints can last for millions of years.",
+      "id": "sci-0011",
+      "options": ["1969", "1972", "1961", "1965"],
+      "question": "In which year did humans first walk on the Moon?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Andromeda is about 2.5 million light-years away and is the most distant object easily seen with the naked eye.",
+      "id": "sci-0022",
+      "options": ["Andromeda", "Sombrero", "Pinwheel", "Whirlpool"],
+      "question": "Which is the nearest large spiral galaxy to the Milky Way?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Since 2006, Pluto has been classed as a dwarf planet, leaving eight planets from Mercury to Neptune.",
+      "id": "sci-0015",
+      "options": ["Eight", "Nine", "Ten", "Seven"],
+      "question": "How many planets are in our Solar System?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "A pH of 7 is neutral; each step down the pH scale means ten times more acidic.",
+      "id": "sci-0030",
+      "options": ["0", "5", "7", "14"],
+      "question": "What is the pH of pure water at 25 °C?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Astronauts left mirrors on the Moon, and lasers bounced off them let scientists measure the drift precisely.",
+      "id": "sci-0046",
+      "options": ["About 3.8 cm", "About 3.8 m", "About 38 cm", "About 3.8 mm"],
+      "question": "Roughly how much farther from Earth does the Moon drift each year?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "The Great Red Spot is a storm wider than Earth that has been raging for at least 150 years.",
+      "id": "sci-0018",
+      "options": ["Saturn", "Neptune", "Jupiter", "Mars"],
+      "question": "On which planet is the giant storm called the Great Red Spot?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Francis Beaufort created it in 1805 for sailors, describing wind by its effect on the sea and sails.",
+      "id": "sci-0031",
+      "options": [
+        "Kelvin scale",
+        "Mohs scale",
+        "Richter scale",
+        "Beaufort scale"
+      ],
+      "question": "Which scale describes wind strength from calm (0) to hurricane force (12)?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "It ranks minerals by which can scratch which, from talc (1) to diamond (10).",
+      "id": "sci-0032",
+      "options": [
+        "Water acidity",
+        "Wind speed",
+        "Mineral hardness",
+        "Earthquake strength"
+      ],
+      "question": "What does the Mohs scale measure?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Winds on Neptune can blow at over 2,000 km/h, faster than the speed of sound on Earth.",
+      "id": "sci-0052",
+      "options": ["Saturn", "Jupiter", "Neptune", "Uranus"],
+      "question": "Which planet has the fastest winds in the Solar System?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Hydrogen is the lightest and most abundant element in the universe, making up about three-quarters of normal matter.",
+      "id": "sci-0024",
+      "options": ["Carbon", "Oxygen", "Helium", "Hydrogen"],
+      "question": "Which element has atomic number 1?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Absolute zero is the lowest possible temperature; scientists have cooled atoms to within a billionth of a degree of it.",
+      "id": "sci-0033",
+      "options": ["-273.15 °C", "-173.15 °C", "-373.15 °C", "-233.15 °C"],
+      "question": "What is absolute zero on the Celsius scale?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Mercury freezes at about -39 °C, which is why it was long used in thermometers.",
+      "id": "sci-0026",
+      "options": ["Lead", "Mercury", "Zinc", "Tin"],
+      "question": "Which metal is liquid at room temperature?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "-40 °C equals -40 °F, the only point where the two scales meet.",
+      "id": "sci-0034",
+      "options": ["-32 degrees", "0 degrees", "-40 degrees", "100 degrees"],
+      "question": "At what temperature do the Celsius and Fahrenheit scales show the same number?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Ceres is classed as a dwarf planet and holds a large share of the asteroid belt's total mass.",
+      "id": "sci-0055",
+      "options": ["Vesta", "Ceres", "Pallas", "Eros"],
+      "question": "Which is the largest object in the main asteroid belt?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Diamond tops the Mohs hardness scale at 10, and only another diamond can scratch it.",
+      "id": "sci-0027",
+      "options": ["Topaz", "Diamond", "Quartz", "Corundum"],
+      "question": "What is the hardest natural material?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "The only difference is how the carbon atoms are arranged: rigid 3D lattices in diamond, sliding sheets in pencil graphite.",
+      "id": "sci-0028",
+      "options": ["Sulfur", "Silicon", "Boron", "Carbon"],
+      "question": "Diamond and graphite are both made of which element?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Sound moves at about 5,900 m/s in steel, roughly 17 times faster than in air.",
+      "id": "sci-0037",
+      "options": ["Air", "Helium gas", "Steel", "Water"],
+      "question": "Through which of these does sound travel fastest?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Though Neptune is farther out, Uranus gives off very little internal heat, and its atmosphere has dipped to about -224 °C.",
+      "id": "sci-0060",
+      "options": ["Uranus", "Mercury", "Saturn", "Neptune"],
+      "question": "Which planet has the coldest atmospheric temperature ever measured in the Solar System?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Sodium chloride is made of sodium, a metal that reacts violently with water, and chlorine, a poisonous gas.",
+      "id": "sci-0029",
+      "options": ["NaOH", "CaCl2", "NaCl", "KCl"],
+      "question": "What is the chemical formula of table salt?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The inner core is solid and about as hot as the surface of the Sun, kept solid by enormous pressure.",
+      "id": "sci-0039",
+      "options": [
+        "Gold and silver",
+        "Lead and tin",
+        "Copper and zinc",
+        "Iron and nickel"
+      ],
+      "question": "Earth's core is made mostly of which metals?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "One newton is roughly the weight of a small apple held in your hand.",
+      "id": "sci-0035",
+      "options": ["Newton", "Pascal", "Watt", "Joule"],
+      "question": "What is the SI unit of force?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The troposphere reaches about 8-18 km up and contains about three-quarters of the atmosphere's mass.",
+      "id": "sci-0040",
+      "options": ["Mesosphere", "Troposphere", "Thermosphere", "Stratosphere"],
+      "question": "In which layer of the atmosphere does almost all weather happen?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Mercury and Venus are too close to the Sun to easily hold on to moons; Earth has one and Mars has two.",
+      "id": "sci-0061",
+      "options": [
+        "Mercury and Venus",
+        "Venus and Uranus",
+        "Mercury and Mars",
+        "Mars and Venus"
+      ],
+      "question": "Which two planets have no moons?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Einstein published general relativity in 1915; GPS satellites must correct for its effects to stay accurate.",
+      "id": "sci-0038",
+      "options": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Niels Bohr",
+        "Max Planck"
+      ],
+      "question": "Which scientist developed the theory of general relativity?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "If all the ozone were brought down to ground-level pressure, it would form a layer only about 3 mm thick.",
+      "id": "sci-0041",
+      "options": ["Stratosphere", "Troposphere", "Mesosphere", "Exosphere"],
+      "question": "The ozone layer lies mainly in which layer of the atmosphere?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "This is called tidal locking; the far side gets just as much sunlight but was first photographed only in 1959.",
+      "id": "sci-0045",
+      "options": [
+        "Earth blocks the other side",
+        "It does not spin at all",
+        "It spins once per orbit",
+        "The far side is always dark"
+      ],
+      "question": "Why do we always see the same side of the Moon?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "The Sun also pulls on the oceans; when Sun and Moon line up, we get extra-high 'spring tides'.",
+      "id": "sci-0044",
+      "options": [
+        "Earth's magnetic field",
+        "Wind over the ocean",
+        "The Moon's gravity",
+        "Underwater earthquakes"
+      ],
+      "question": "What mainly causes ocean tides?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The International Astronomical Union fixed the 88 constellations and their boundaries in the 1920s.",
+      "id": "sci-0047",
+      "options": ["112", "88", "64", "48"],
+      "question": "How many constellations are officially recognised by astronomers?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Hubble's first images were blurry because of a mirror flaw, fixed by a Space Shuttle crew in 1993.",
+      "id": "sci-0048",
+      "options": ["Kepler", "Hubble", "James Webb", "Spitzer"],
+      "question": "Which space telescope was launched in 1990 and later repaired by astronauts?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Uranus was the first planet found with a telescope; Herschel was also a professional musician and composer.",
+      "id": "sci-0069",
+      "options": [
+        "Giovanni Cassini",
+        "Galileo Galilei",
+        "William Herschel",
+        "Edmond Halley"
+      ],
+      "question": "Who discovered the planet Uranus in 1781?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Sputnik 1 was a metal sphere about 58 cm across that sent out radio beeps anyone could pick up.",
+      "id": "sci-0049",
+      "options": ["Sputnik 1", "Explorer 1", "Vostok 1", "Telstar 1"],
+      "question": "What was the first artificial satellite, launched in 1957?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Halley's Comet last appeared in 1986 and is due back in 2061; it is visible with the naked eye.",
+      "id": "sci-0053",
+      "options": [
+        "Every 1,000 years",
+        "Every 150 years",
+        "Every 12 years",
+        "Every 75-76 years"
+      ],
+      "question": "Roughly how often does Halley's Comet return to Earth's skies?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Gagarin orbited Earth once on 12 April 1961; the flight lasted about 108 minutes.",
+      "id": "sci-0050",
+      "options": [
+        "John Glenn",
+        "Neil Armstrong",
+        "Alexei Leonov",
+        "Yuri Gagarin"
+      ],
+      "question": "Who was the first human to travel into space?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Their names mean 'fear' and 'dread'; Phobos is slowly spiralling inward and will break up in tens of millions of years.",
+      "id": "sci-0056",
+      "options": ["Jupiter", "Saturn", "Mars", "Neptune"],
+      "question": "Phobos and Deimos are the moons of which planet?"
+    }
+  ]
+}

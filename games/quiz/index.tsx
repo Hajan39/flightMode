@@ -1,5 +1,10 @@
-﻿import { useEffect, useMemo, useRef, useState } from "react";
-import { Pressable, View as RNView, StyleSheet } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import {
+  Pressable,
+  View as RNView,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
 import Animated, {
   FadeInDown,
   useAnimatedStyle,
@@ -15,29 +20,47 @@ import {
 import GameControls from "@/components/GameControls";
 import GamePauseOverlay from "@/components/GamePauseOverlay";
 import GameResult from "@/components/GameResult";
-
+import { OptionChips } from "@/components/multiplayer";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
+import { getBundledWorldQuestions } from "@/data/worldQuiz";
 import { useHaptic } from "@/hooks/useHaptic";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useGameStore } from "@/store/useGameStore";
+import {
+  selectDownloadedQuestions,
+  useQuizPackStore,
+} from "@/store/useQuizPackStore";
+import { QUIZ_MODES, type QuizMode, useQuizStore } from "@/store/useQuizStore";
 import type { GameProgressUpdate } from "@/types/game";
-import { shuffle } from "@/utils/shuffle";
 
-interface QuizQuestion {
-  answerIndex: number;
-  options: string[];
-  question: string;
-}
+import {
+  buildRound,
+  mergeWorldPool,
+  type RoundQuestion,
+  type SourceQuestion,
+} from "./logic";
 
-const QUESTION_COUNT = 15;
-/** Feedback pause before the next question. */
+/** Feedback pause before the next question (questions without a fact). */
 const ADVANCE_MS = 750;
 
-function getAllQuestions(t: (key: TranslationKey) => string): QuizQuestion[] {
-  return [
+const MODE_LABELS: Record<QuizMode, TranslationKey> = {
+  aviation: "quizModeAviation",
+  mix: "quizModeMix",
+  world: "quizModeWorld",
+};
+const MODE_HINTS: Record<QuizMode, TranslationKey> = {
+  aviation: "quizModeAviationHint",
+  mix: "quizModeMixHint",
+  world: "quizModeWorldHint",
+};
+
+function getAviationQuestions(
+  t: (key: TranslationKey) => string
+): SourceQuestion[] {
+  const raw: Omit<SourceQuestion, "key">[] = [
     {
       answerIndex: 2,
       options: [t("quizQ1a"), t("quizQ1b"), t("quizQ1c"), t("quizQ1d")],
@@ -289,15 +312,7 @@ function getAllQuestions(t: (key: TranslationKey) => string): QuizQuestion[] {
       question: t("quizQ50"),
     },
   ];
-}
-
-function pickRandom(all: QuizQuestion[], count: number): QuizQuestion[] {
-  const shuffled = [...all];
-  for (let i = shuffled.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled.slice(0, count);
+  return raw.map((q, i) => ({ ...q, key: `aviation-${i + 1}` }));
 }
 
 export default function QuizGame() {
@@ -305,23 +320,21 @@ export default function QuizGame() {
   const theme = Colors[colorScheme];
   const updateProgress = useGameStore((s) => s.updateProgress);
   const storedBest = useGameStore((s) => s.progress.quiz?.highScore ?? 0);
-  const { t } = useTranslation();
+  const mode = useQuizStore((s) => s.mode);
+  const setMode = useQuizStore((s) => s.setMode);
+  const { language, t } = useTranslation();
   const haptic = useHaptic();
 
-  const [questions, setQuestions] = useState(() =>
-    pickRandom(getAllQuestions(t), QUESTION_COUNT)
-  );
+  const [started, setStarted] = useState(false);
+  const [questions, setQuestions] = useState<RoundQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [progressInfo, setProgressInfo] = useState<GameProgressUpdate | null>(
     null
   );
-
-  const currentQuestion = questions[currentIndex];
-  const progressFraction = (currentIndex + 1) / questions.length;
 
   // Synchronous re-entry guard so two near-simultaneous taps cannot
   // double-advance or fire updateProgress twice on the last question.
@@ -338,6 +351,13 @@ export default function QuizGame() {
       pendingAdvance.current = null;
       step();
     }, ADVANCE_MS);
+  };
+  const clearAdvance = () => {
+    if (advanceTimer.current) {
+      clearTimeout(advanceTimer.current);
+    }
+    advanceTimer.current = null;
+    pendingAdvance.current = null;
   };
   const pause = () => {
     if (advanceTimer.current) {
@@ -370,34 +390,105 @@ export default function QuizGame() {
     transform: [{ scale: cardScale.value }, { translateX: cardShake.value }],
   }));
 
-  // Shuffle once per question so correct answer isn't always at position [1]
-  const shuffledOptions = useMemo(
-    () => shuffle(currentQuestion.options),
-    [currentQuestion.options]
-  );
+  /** New round in the chosen mode (world questions avoid repeats). */
+  const startRound = (roundMode: QuizMode) => {
+    clearAdvance();
+    answeringRef.current = false;
+    const world = mergeWorldPool(
+      getBundledWorldQuestions(language),
+      selectDownloadedQuestions(useQuizPackStore.getState(), language)
+    );
+    const asked = useQuizStore.getState().askedWorld[language] ?? [];
+    const round = buildRound(roundMode, world, getAviationQuestions(t), asked);
+    if (roundMode !== "aviation") {
+      useQuizStore.getState().setAskedWorld(language, round.asked);
+    }
+    setQuestions(round.questions);
+    setCurrentIndex(0);
+    setScore(0);
+    setSelectedIndex(null);
+    setShowResult(false);
+    setIsPaused(false);
+    setProgressInfo(null);
+    setStarted(true);
+  };
 
-  const handleAnswer = (choice: string) => {
-    if (answeringRef.current || selectedOption !== null || isPaused) {
+  /** Back to the mode picker (result screen "Play again"). */
+  const backToSetup = () => {
+    clearAdvance();
+    answeringRef.current = false;
+    setShowResult(false);
+    setIsPaused(false);
+    setStarted(false);
+  };
+
+  if (!started) {
+    return (
+      <ScrollView contentContainerStyle={styles.setup}>
+        <Text style={[styles.setupTitle, { color: theme.text }]}>
+          {t("gameQuizName")}
+        </Text>
+        <OptionChips
+          label={t("quizModeLabel")}
+          onChange={setMode}
+          options={QUIZ_MODES.map((m) => ({
+            hint: t(MODE_HINTS[m]),
+            label: t(MODE_LABELS[m]),
+            value: m,
+          }))}
+          value={mode}
+        />
+        <Pressable
+          accessibilityLabel={t("start")}
+          accessibilityRole="button"
+          onPress={() => startRound(mode)}
+          style={[styles.startBtn, { backgroundColor: theme.tint }]}
+        >
+          <Text style={[styles.startText, { color: theme.onTint }]}>
+            {t("start")}
+          </Text>
+        </Pressable>
+      </ScrollView>
+    );
+  }
+
+  const currentQuestion = questions[currentIndex];
+  const progressFraction = (currentIndex + 1) / questions.length;
+  const answered = selectedIndex !== null;
+  const correctAnswer = currentQuestion.options[currentQuestion.answerIndex];
+
+  /** Next question, or the result after the last one. */
+  const advance = (nextScore: number) => {
+    if (currentIndex >= questions.length - 1) {
+      const info = updateProgress("quiz", nextScore);
+      setProgressInfo(info);
+      setScore(nextScore);
+      setShowResult(true);
+      return;
+    }
+    setScore(nextScore);
+    setSelectedIndex(null);
+    setCurrentIndex((prev) => prev + 1);
+    answeringRef.current = false;
+  };
+
+  const handleAnswer = (choice: number) => {
+    if (answeringRef.current || answered || isPaused) {
       return;
     }
     answeringRef.current = true;
 
-    setSelectedOption(choice);
-    const isCorrect =
-      choice === currentQuestion.options[currentQuestion.answerIndex];
+    setSelectedIndex(choice);
+    const isCorrect = choice === currentQuestion.answerIndex;
     const nextScore = score + (isCorrect ? 10 : 0);
     if (isCorrect) {
       haptic.success();
-    } else {
-      haptic.error();
-    }
-
-    if (isCorrect) {
       cardScale.value = withSequence(
         withTiming(1.03, { duration: 100 }),
         withTiming(1, { duration: 130 })
       );
     } else {
+      haptic.error();
       cardShake.value = withSequence(
         withTiming(-6, { duration: 50 }),
         withTiming(6, { duration: 50 }),
@@ -405,38 +496,23 @@ export default function QuizGame() {
       );
     }
 
-    scheduleAdvance(() => {
-      if (currentIndex >= questions.length - 1) {
-        const info = updateProgress("quiz", nextScore);
-        setProgressInfo(info);
-        setScore(nextScore);
-        setShowResult(true);
-        return;
-      }
-
+    if (currentQuestion.explanation) {
+      // A "did you know" fact needs reading time: the player taps Next.
       setScore(nextScore);
-      setSelectedOption(null);
-      setCurrentIndex((prev) => prev + 1);
-      answeringRef.current = false;
-    });
+      return;
+    }
+    scheduleAdvance(() => advance(nextScore));
   };
 
-  const correctAnswer = currentQuestion.options[currentQuestion.answerIndex];
-
-  const restart = () => {
-    if (advanceTimer.current) {
-      clearTimeout(advanceTimer.current);
+  const goNext = () => {
+    // The ref (not state) guards a double tap within one frame: the last
+    // question must record its result exactly once.
+    if (!answeringRef.current || isPaused || showResult) {
+      return;
     }
-    advanceTimer.current = null;
-    pendingAdvance.current = null;
     answeringRef.current = false;
-    setQuestions(pickRandom(getAllQuestions(t), QUESTION_COUNT));
-    setCurrentIndex(0);
-    setScore(0);
-    setSelectedOption(null);
-    setShowResult(false);
-    setIsPaused(false);
-    setProgressInfo(null);
+    // `score` already includes this answer (set in handleAnswer).
+    advance(score);
   };
 
   return (
@@ -455,7 +531,7 @@ export default function QuizGame() {
             <GameControls
               isPaused={isPaused}
               onPause={pause}
-              onReset={restart}
+              onReset={() => startRound(mode)}
             />
           </RNView>
 
@@ -475,67 +551,96 @@ export default function QuizGame() {
             </Text>
           </View>
 
-          <Animated.View
-            entering={FadeInDown.duration(200)}
-            key={currentIndex}
-            style={[
-              styles.questionCard,
-              { backgroundColor: theme.card, borderColor: theme.border },
-              cardFeedbackStyle,
-            ]}
-          >
-            <Text style={[styles.questionText, { color: theme.text }]}>
-              {currentQuestion.question}
-            </Text>
-          </Animated.View>
+          <ScrollView contentContainerStyle={styles.body}>
+            <Animated.View
+              entering={FadeInDown.duration(200)}
+              key={currentQuestion.key}
+              style={[
+                styles.questionCard,
+                { backgroundColor: theme.card, borderColor: theme.border },
+                cardFeedbackStyle,
+              ]}
+            >
+              <Text style={[styles.questionText, { color: theme.text }]}>
+                {currentQuestion.question}
+              </Text>
+            </Animated.View>
 
-          <View style={styles.options}>
-            {shuffledOptions.map((option) => {
-              const isSelected = selectedOption === option;
-              const isCorrect = option === correctAnswer;
-              const showAnswer = selectedOption !== null;
+            <View style={styles.options}>
+              {currentQuestion.options.map((option, index) => {
+                const isSelected = selectedIndex === index;
+                const isCorrect = index === currentQuestion.answerIndex;
 
-              let bg = theme.elevated;
-              let borderCol = theme.border;
-              if (showAnswer && isCorrect) {
-                bg = theme.successSurface;
-                borderCol = theme.successBorder;
-              } else if (showAnswer && isSelected && !isCorrect) {
-                bg = theme.dangerSurface;
-                borderCol = theme.dangerBorder;
-              }
+                let bg = theme.elevated;
+                let borderCol = theme.border;
+                if (answered && isCorrect) {
+                  bg = theme.successSurface;
+                  borderCol = theme.successBorder;
+                } else if (answered && isSelected && !isCorrect) {
+                  bg = theme.dangerSurface;
+                  borderCol = theme.dangerBorder;
+                }
 
-              return (
+                return (
+                  <Pressable
+                    accessibilityLabel={option}
+                    accessibilityRole="button"
+                    accessibilityState={{ disabled: answered }}
+                    disabled={answered}
+                    key={option}
+                    onPress={() => handleAnswer(index)}
+                    style={[
+                      styles.optionBtn,
+                      { backgroundColor: bg, borderColor: borderCol },
+                    ]}
+                  >
+                    <Text style={[styles.optionText, { color: theme.text }]}>
+                      {option}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            {answered ? (
+              <Text style={[styles.answerHint, { color: theme.mutedText }]}>
+                {t("quizCorrectAnswer", { answer: correctAnswer })}
+              </Text>
+            ) : null}
+
+            {answered && currentQuestion.explanation ? (
+              <RNView
+                style={[
+                  styles.factCard,
+                  { backgroundColor: theme.card, borderColor: theme.border },
+                ]}
+              >
+                <Text style={[styles.factLabel, { color: theme.tint }]}>
+                  {t("quizDidYouKnow")}
+                </Text>
+                <Text style={[styles.factText, { color: theme.text }]}>
+                  {currentQuestion.explanation}
+                </Text>
                 <Pressable
-                  accessibilityLabel={option}
+                  accessibilityLabel={t("quizNext")}
                   accessibilityRole="button"
-                  key={option}
-                  onPress={() => handleAnswer(option)}
-                  style={[
-                    styles.optionBtn,
-                    { backgroundColor: bg, borderColor: borderCol },
-                  ]}
+                  onPress={goNext}
+                  style={[styles.nextBtn, { backgroundColor: theme.tint }]}
                 >
-                  <Text style={[styles.optionText, { color: theme.text }]}>
-                    {option}
+                  <Text style={[styles.nextText, { color: theme.onTint }]}>
+                    {t("quizNext")}
                   </Text>
                 </Pressable>
-              );
-            })}
-          </View>
+              </RNView>
+            ) : null}
 
-          {selectedOption === null ? null : (
-            <Text style={[styles.answerHint, { color: theme.mutedText }]}>
-              {t("quizCorrectAnswer", { answer: correctAnswer })}
+            <Text style={[styles.scoreText, { color: theme.mutedText }]}>
+              {t("quizScore", { score })}
             </Text>
-          )}
-
-          <Text style={[styles.scoreText, { color: theme.mutedText }]}>
-            {t("quizScore", { score })}
-          </Text>
+          </ScrollView>
         </A11yOverlayContent>
         <GamePauseOverlay
-          onRestart={restart}
+          onRestart={() => startRound(mode)}
           onResume={resume}
           visible={isPaused}
         />
@@ -545,7 +650,7 @@ export default function QuizGame() {
             best={progressInfo?.best ?? storedBest}
             isNewBest={progressInfo?.isNewBest}
             last={progressInfo?.previousBest}
-            onPlayAgain={restart}
+            onPlayAgain={backToSetup}
             score={score}
             streak={progressInfo?.currentStreak}
             subtitle={t("quizResult", {
@@ -578,11 +683,27 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   bestValue: { fontSize: 16, fontWeight: "900" },
+  body: { gap: 14, paddingBottom: 12 },
+  factCard: { borderRadius: 14, borderWidth: 1, gap: 6, padding: 14 },
+  factLabel: {
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 0.5,
+    textTransform: "uppercase",
+  },
+  factText: { fontSize: 15, lineHeight: 22 },
   headerRow: {
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  nextBtn: {
+    alignItems: "center",
+    borderRadius: 12,
+    marginTop: 6,
+    paddingVertical: 12,
+  },
+  nextText: { fontSize: 16, fontWeight: "800" },
   optionBtn: {
     borderRadius: 14,
     borderWidth: 1.5,
@@ -611,4 +732,12 @@ const styles = StyleSheet.create({
   root: { flex: 1, gap: 14, padding: 20 },
   scoreText: { fontSize: 14, fontWeight: "600", textAlign: "center" },
   screen: { flex: 1 },
+  setup: { gap: 20, padding: 20 },
+  setupTitle: { fontSize: 22, fontWeight: "800" },
+  startBtn: {
+    alignItems: "center",
+    borderRadius: 14,
+    paddingVertical: 16,
+  },
+  startText: { fontSize: 18, fontWeight: "900", letterSpacing: 1 },
 });

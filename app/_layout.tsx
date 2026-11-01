@@ -19,6 +19,7 @@ import NetworkStatusBootstrap from "@/components/NetworkStatusBootstrap";
 import NotificationBootstrap from "@/components/NotificationBootstrap";
 import OrientationPolicy from "@/components/OrientationPolicy";
 import PlayGamesBootstrap from "@/components/PlayGamesBootstrap";
+import QuizSyncBootstrap from "@/components/QuizSyncBootstrap";
 import RatesSyncBootstrap from "@/components/RatesSyncBootstrap";
 import RootErrorBoundary from "@/components/RootErrorBoundary";
 import SafeBoundary from "@/components/SafeBoundary";
@@ -98,6 +99,9 @@ function RootLayoutNav() {
         </SafeBoundary>
         <SafeBoundary name="RatesSyncBootstrap">
           <RatesSyncBootstrap />
+        </SafeBoundary>
+        <SafeBoundary name="QuizSyncBootstrap">
+          <QuizSyncBootstrap />
         </SafeBoundary>
         <SafeBoundary name="ImageSyncBootstrap">
           <ImageSyncBootstrap />

@@ -84,7 +84,7 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `memory` | brain | easy | Card matching |
 | `reaction` | reflex | easy | Reaction timer; daily challenge |
 | `sky-math` | brain | medium | Math quiz; daily challenge |
-| `quiz` | brain | medium | Trivia |
+| `quiz` | brain | medium | Trivia: Mix / World / Aviation modes (see Quiz pool) |
 | `runway-landing` | reflex | medium | Landing minigame; daily challenge |
 | `cabin-call` | reflex | medium | Crew-command icon matching (visual, not audio); daily challenge |
 | `air-traffic-control` | strategy | hard | Flight routing |
@@ -165,6 +165,15 @@ Multiplayer (pass-and-play / shared-screen) components in `components/multiplaye
 Remote articles come from **`content/feed.json`** (`{ version, items: ContentItem[] }`) fetched from raw.githubusercontent.com on `main` (override via `EXPO_PUBLIC_CONTENT_FEED_URL`). Publishing = commit to that file and bump `version`; `release-main.yml` ignores `content/**`, and `__tests__/content.test.ts` validates the feed in CI. App is fully offline without it. Sync respects `syncNetworkPolicy` (wifi_only / wifi_and_mobile / off) and has a 30-minute cooldown between syncs.
 
 `utils/contentSync.ts` fetches and validates the feed (`parseContentFeed`); invalid items are dropped, remote items override bundled ones by id. Destination articles use the id `destination-<destinationId>` and are linked from the destination card.
+
+## Quiz pool (world quiz)
+
+`games/quiz` plays a start-screen mode (`mix` default = 10 world + 5 aviation, `world`, `aviation`; `store/useQuizStore.ts`, AsyncStorage). Aviation questions are the 50 `quizQ*` locale keys; world questions are data:
+- **Bundled:** `data/worldQuiz/<lang>.json` — 100 questions × 12 languages (`{ fallback, lang, questions: [{ answer, category, difficulty, explanation, id, options, question }] }`), loaded lazily via `data/worldQuiz/index.ts`. No `source`/`tags` in app data (never shown); provenance in `content/quiz/sources.json`.
+- **Build script:** `node scripts/build-quiz-data.mjs <quizDir>` (the question-pipeline folder: `checked/*-batch-NN.json`, `bundled/`, `i18n/cs|de/`) regenerates bundled files + packs deterministically and Biome-formats them. Missing translation → English fallback / no packs, with a WARNING; `__tests__/worldQuizData.test.ts` fails on a fallback file. Never hand-edit the generated JSON.
+- **Remote packs:** `content/quiz/<lang>/index.json` (`{ lang, packs: [{ id, file, count, bytes, sha256 }], version }`) + `pack-NNN.json` (≤ 250, never bundled ids) for `en/cs/de` only. Publishing = re-run the script + commit (`release-main` ignores `content/**`). New waves append (pack assignment follows English order).
+- **Sync:** `utils/quizSync.ts` (fetch/validate; base URL `EXPO_PUBLIC_QUIZ_FEED_URL`, default raw.githubusercontent `main/content/quiz`) + `store/useQuizPackStore.ts` (fileStorage, hydration-gated, Online Sync policy, 24 h cooldown per language, ETag/304, 404 = not published, only new/changed-sha packs, invalid questions dropped) + `components/QuizSyncBootstrap.tsx`. Analytics: `quiz_pack_sync_result { result, packs }` only.
+- **Selection:** `games/quiz/logic.ts` — `pickWithoutRepeats` (asked ids per language, capped at 2000, new cycle when exhausted), `shuffleOptions` (Fisher–Yates, answer index remapped). Quiz scoring / `updateProgress("quiz", score)` unchanged.
 
 ## Achievements
 

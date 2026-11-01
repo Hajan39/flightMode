@@ -54,6 +54,8 @@ export type AnalyticsEventName =
   | "converter_used"
   | "rates_sync_success"
   | "rates_sync_failed"
+  /** { result: updated | unchanged | not_published | error, packs: count } — never question text/ids. */
+  | "quiz_pack_sync_result"
   | "storage_read_blocked"
   | "app_error";
 

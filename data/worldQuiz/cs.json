@@ -1,0 +1,1121 @@
+{
+  "fallback": false,
+  "lang": "cs",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Canberra vznikla na zelené louce jako kompromis mezi soupeřícími městy Sydney a Melbourne a sídlem parlamentu se stala v roce 1927.",
+      "id": "geo-0002",
+      "options": ["Melbourne", "Sydney", "Perth", "Canberra"],
+      "question": "Jaké je hlavní město Austrálie?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Letouni tvoří asi pětinu všech druhů savců; „létající“ poletuchy a plachtíci umějí jen plachtit.",
+      "id": "nat-0006",
+      "options": ["Netopýr", "Poletucha", "Vakoveverka létavá", "Plachtík"],
+      "question": "Který savec jako jediný dokáže skutečně aktivně létat?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Au pochází z latinského aurum; zlato je tak kujné, že 1 g lze vytepat do plátku o ploše asi 1 m².",
+      "id": "sci-0005",
+      "options": ["Gd", "Go", "Au", "Ag"],
+      "question": "Jaká je chemická značka zlata?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Velká pyramida je nejstarším ze sedmi divů a jediným, který se z velké části dochoval.",
+      "id": "his-0001",
+      "options": [
+        "Velká pyramida v Gíze",
+        "Artemidin chrám",
+        "Alexandrijský maják",
+        "Rhodský kolos"
+      ],
+      "question": "Který ze sedmi divů starověkého světa z velké části stojí dodnes?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Mona Lisa je namalovaná na topolovém dřevě, ne na plátně, a v Louvru visí od Velké francouzské revoluce.",
+      "id": "cul-0001",
+      "options": [
+        "Leonardo da Vinci",
+        "Raffael",
+        "Sandro Botticelli",
+        "Michelangelo"
+      ],
+      "question": "Kdo namaloval Monu Lisu?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Berners-Lee vytvořil web v CERNu u Ženevy, aby vědci mohli sdílet dokumenty; první webová stránka je dodnes online.",
+      "id": "inv-0003",
+      "options": [
+        "Steve Jobs",
+        "Tim Berners-Lee",
+        "Marc Andreessen",
+        "Vint Cerf"
+      ],
+      "question": "Kdo v roce 1989 vynalezl World Wide Web?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Oranžová barva a reflexní pruhy usnadňují jejich hledání; jsou konstruované tak, aby přežily extrémní nárazy i požár.",
+      "id": "avi-0014",
+      "options": [
+        "Jasně oranžovou",
+        "Stříbrnou metalízu",
+        "Tmavě námořnickou",
+        "Matně černou"
+      ],
+      "question": "Jakou barvu mají letové zapisovače, takzvané „černé skříňky“?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Vlajku Nepálu tvoří dva trojúhelníkové praporky nad sebou a ústava obsahuje přesný geometrický návod k jejímu narýsování.",
+      "id": "misc-0002",
+      "options": ["Nepál", "Bhútán", "Mongolsko", "Srí Lanka"],
+      "question": "Státní vlajka které země není obdélník ani čtverec?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Každý květ dává jen tři drobné blizny, které se trhají ručně; na 1 g šafránu je potřeba asi 150 květů.",
+      "id": "food-0006",
+      "options": ["Šafrán", "Vanilka", "Kardamom", "Skořice"],
+      "question": "Které koření, získávané z květů šafránu, je hmotnostně nejdražší?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Ve svahilštině „safari“ znamená prostě jakoukoli cestu; do svahilštiny se slovo dostalo z arabštiny.",
+      "id": "lang-0003",
+      "options": ["Lovecká výprava", "Cesta", "Divoké zvíře", "Travnatá pláň"],
+      "question": "Co znamená svahilské slovo „safari“?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Více než polovina těchto kostí je v rukou a nohou: jen každá ruka jich má 27.",
+      "id": "body-0001",
+      "options": ["256", "226", "206", "186"],
+      "question": "Kolik kostí má obvyklá kostra dospělého člověka?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Neobvyklá vzdálenost byla stanovena na olympijských hrách v Londýně v roce 1908, aby závod skončil před královskou lóží.",
+      "id": "sport-0004",
+      "options": ["39,750 km", "45,500 km", "40,000 km", "42,195 km"],
+      "question": "Jak dlouhý je maraton?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Vatikán má rozlohu jen asi 0,49 km², vešel by se do mnoha městských parků.",
+      "id": "geo-0006",
+      "options": ["San Marino", "Lichtenštejnsko", "Vatikán", "Monako"],
+      "question": "Která země je rozlohou nejmenší na světě?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Ptakopysk patří k několika málo savcům, kteří kladou vejce, a samci mají na zadních nohách jedovaté ostruhy.",
+      "id": "nat-0018",
+      "options": ["Vydra mořská", "Vombat", "Bobr", "Ptakopysk"],
+      "question": "Který z těchto savců klade vejce?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Světlo urazí 150 milionů km od Slunce asi za 8 minut a 20 sekund, takže Slunce vždy vidíme, jak vypadalo před chvílí.",
+      "id": "sci-0009",
+      "options": ["Asi 8 sekund", "Asi 1 hodinu", "Asi 1 den", "Asi 8 minut"],
+      "question": "Jak dlouho zhruba trvá, než sluneční světlo dorazí na Zemi?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Magalhães cestu nepřežil; loď Victoria přivedl domů do Španělska v roce 1522 Juan Sebastián Elcano.",
+      "id": "his-0004",
+      "options": [
+        "Jamese Cooka",
+        "Kryštofa Kolumba",
+        "Fernão de Magalhãese",
+        "Vasca da Gamy"
+      ],
+      "question": "Čí výprava jako první obeplula celý svět (1519–1522)?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Hólí oslavuje příchod jara a lidé všech věkových skupin po sobě házejí barevný prášek a stříkají vodu.",
+      "id": "cul-0006",
+      "options": ["Ónam", "Hólí", "Díválí", "Pongal"],
+      "question": "Který indický jarní svátek je proslulý házením barevného prášku?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Název pochází z dánského „leg godt“, tedy „hraj si dobře“; kostky z roku 1958 pasují i k dnešním.",
+      "id": "inv-0006",
+      "options": ["Dánsko", "Nizozemsko", "Německo", "Švédsko"],
+      "question": "Ze které země pocházejí kostky LEGO?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Dráhy jsou vyznačené na písku a za přílivu mizí pod mořem, takže letový řád se řídí přílivem a odlivem.",
+      "id": "avi-0024",
+      "options": ["Na pláži", "Na dálnici", "Na zamrzlém jezeře", "Na ledovci"],
+      "question": "Kde přistávají pravidelné lety na letišti Barra ve Skotsku?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Při odhalení v roce 1886 byla socha z lesklé hnědé mědi; úplně zezelenat jí trvalo asi 30 let.",
+      "id": "misc-0010",
+      "options": [
+        "Měděný plášť zoxidoval",
+        "Řasy z newyorského přístavu",
+        "Byla natřena zeleně",
+        "Je porostlá mechem"
+      ],
+      "question": "Proč je Socha svobody zelená?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Čaj se v Číně pil už před tisíci lety; po staletí se dokonce lisoval do cihel a sloužil jako platidlo.",
+      "id": "food-0010",
+      "options": ["Anglie", "Indie", "Čína", "Japonsko"],
+      "question": "Která země je považována za první, kde se pil čaj?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Cyrilice se používá i pro bulharštinu, srbštinu, ukrajinštinu a další jazyky; vznikla v První bulharské říši.",
+      "id": "lang-0005",
+      "options": ["Cyrilicí", "Řeckým písmem", "Latinkou", "Hlaholicí"],
+      "question": "Kterým písmem se píše ruština?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Kůže dospělého má plochu asi 1,5–2 m² a neustále se obnovuje: vnější vrstva se vymění každých pár týdnů.",
+      "id": "body-0002",
+      "options": ["Játra", "Kůže", "Mozek", "Plíce"],
+      "question": "Který orgán lidského těla je největší?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Coubertin zvolil barvy tak, aby vlajka každého státu obsahovala alespoň jednu z nich, včetně bílého pozadí.",
+      "id": "sport-0006",
+      "options": ["Sedm", "Šest", "Čtyři", "Pět"],
+      "question": "Kolik do sebe zaklesnutých kruhů je na olympijské vlajce?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Rusko zabírá přes 17 milionů km², asi devítinu souše Země, a rozkládá se v 11 časových pásmech.",
+      "id": "geo-0007",
+      "options": ["Čína", "Kanada", "Rusko", "Brazílie"],
+      "question": "Která země je rozlohou největší na světě?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Kolibříci mávají křídly desítkykrát za sekundu a dokážou se vznášet na místě, létat pozpátku, a krátce dokonce i vzhůru nohama.",
+      "id": "nat-0022",
+      "options": ["Ledňáček", "Vrabec", "Kolibřík", "Vlaštovka"],
+      "question": "Který pták umí létat pozpátku?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Světelný rok je vzdálenost, kterou světlo urazí za rok: asi 9,46 bilionu km.",
+      "id": "sci-0023",
+      "options": ["Jas", "Čas", "Vzdálenost", "Rychlost"],
+      "question": "Co měří světelný rok?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Armáda čítá tisíce vojáků v životní velikosti a žádné dvě tváře nejsou úplně stejné.",
+      "id": "his-0021",
+      "options": [
+        "Čchin Š’-chuang-ti",
+        "Čingischán",
+        "Kublajchán",
+        "Císař Wu z dynastie Chan"
+      ],
+      "question": "Hrobku kterého panovníka měla střežit Terakotová armáda?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Věž měla stát jen 20 let, ale zachovala se mimo jiné proto, že byla užitečná jako rozhlasová anténa.",
+      "id": "cul-0010",
+      "options": [
+        "Korunovaci krále",
+        "Světovou výstavu",
+        "Královskou svatbu",
+        "Olympijské hry"
+      ],
+      "question": "Pro jakou událost byla v roce 1889 postavena Eiffelova věž?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Inženýr Percy Spencer si rozteklé tyčinky všiml v roce 1945; první mikrovlnná trouba byla vysoká téměř 1,8 m.",
+      "id": "inv-0013",
+      "options": [
+        "Rychlovarná konvice",
+        "Myčka nádobí",
+        "Mikrovlnná trouba",
+        "Topinkovač"
+      ],
+      "question": "Který spotřebič vznikl poté, co se u radarového zařízení rozpustila čokoládová tyčinka?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Ostré rohy soustřeďují napětí, když se kabina při každém letu natlakuje; zaoblené rohy zatížení rozloží.",
+      "id": "avi-0042",
+      "options": [
+        "Menší oslnění",
+        "Rozložení napětí",
+        "Snazší čištění",
+        "Širší výhled"
+      ],
+      "question": "Co je důvodem, proč mají okna dopravních letadel zaoblené, a ne hranaté rohy?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Věž se začala naklánět už při stavbě ve 12. století; inženýři ji od té doby stabilizovali.",
+      "id": "misc-0011",
+      "options": [
+        "Zemětřesení",
+        "Měkké podloží",
+        "Úder blesku",
+        "Záměrný návrh"
+      ],
+      "question": "Proč je šikmá věž v Pise nakloněná?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Lidé v Andách v Peru a Bolívii pěstovali brambory asi před 7 000–10 000 lety a dodnes tam existují tisíce odrůd.",
+      "id": "food-0013",
+      "options": [
+        "Západní Afrika",
+        "Střední Asie",
+        "Jižní Amerika",
+        "Jižní Evropa"
+      ],
+      "question": "Ve které části světa byly brambory poprvé zdomácněny?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Arabská písmena mění tvar podle toho, zda stojí na začátku, uprostřed, nebo na konci slova.",
+      "id": "lang-0006",
+      "options": ["Hindština", "Thajština", "Gruzínština", "Arabština"],
+      "question": "Který z těchto jazyků se píše zprava doleva?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Let na východ den zkracuje a vnitřní hodiny se hůř posouvají dopředu než dozadu.",
+      "id": "body-0051",
+      "options": [
+        "Let na západ",
+        "Let na sever",
+        "Let na východ",
+        "Let na jih"
+      ],
+      "question": "Který směr letu většině cestovatelů obvykle způsobuje horší jet lag?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Zúčastnilo se jen 13 týmů; několik evropských týmů plulo do Uruguaye lodí, což trvalo asi dva týdny.",
+      "id": "sport-0035",
+      "options": ["Argentina", "Itálie", "Uruguay", "Brazílie"],
+      "question": "Která země pořádala a vyhrála první mistrovství světa ve fotbale v roce 1930?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Grónsko má rozlohu asi 2,1 milionu km² a zhruba čtyři pětiny z něj pokrývá ledovcový štít.",
+      "id": "geo-0025",
+      "options": ["Borneo", "Grónsko", "Madagaskar", "Nová Guinea"],
+      "question": "Který ostrov je největší na světě, pokud nepočítáme kontinenty?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Plameňáci získávají karotenoidní barviva z řas a žábronožek; mláďata se líhnou šedá.",
+      "id": "nat-0060",
+      "options": [
+        "Bahnem, v němž se koupou",
+        "Jejich cévami",
+        "Barvivy v potravě",
+        "Silným sluncem"
+      ],
+      "question": "Čím je dána růžová barva plameňáků?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Zemská osa je skloněná asi o 23,4°, takže každá polokoule je část roku natočená ke Slunci.",
+      "id": "sci-0042",
+      "options": [
+        "Sklon zemské osy",
+        "Vzdálenost Země od Slunce",
+        "Gravitace Měsíce",
+        "Změny slunečního tepla"
+      ],
+      "question": "Co způsobuje roční období na Zemi?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Amundsenův norský tým použil lyže a psí spřežení a pólu dosáhl 14. prosince 1911.",
+      "id": "his-0023",
+      "options": [
+        "Ernest Shackleton",
+        "Fridtjof Nansen",
+        "Robert Falcon Scott",
+        "Roald Amundsen"
+      ],
+      "question": "Kdo vedl první výpravu, která v roce 1911 dosáhla jižního pólu?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Malý princ patří k nejpřekládanějším knihám světa a vyšel ve stovkách jazyků.",
+      "id": "cul-0038",
+      "options": [
+        "Jean-Paul Sartre",
+        "Jules Verne",
+        "Marguerite Yourcenarová",
+        "Antoine de Saint-Exupéry"
+      ],
+      "question": "Který autor, zároveň pilot, napsal „Malého prince“?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Ernő Rubik, profesor architektury, ji vytvořil k výuce prostorového myšlení; sám ji skládal přes měsíc.",
+      "id": "inv-0018",
+      "options": ["Československo", "Maďarsko", "Rakousko", "Japonsko"],
+      "question": "Ve které zemi byla v roce 1974 vynalezena Rubikova kostka?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Vodní pára v horkých výfukových plynech motoru ve velmi studeném vzduchu v letové hladině téměř okamžitě zmrzne.",
+      "id": "avi-0044",
+      "options": [
+        "Z výparů paliva",
+        "Z kouře výfuku",
+        "Z prachu",
+        "Z ledových krystalků"
+      ],
+      "question": "Z čeho jsou převážně bílé stopy (kondenzační pruhy) za vysoko letícími letadly?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Důlky vytvářejí tenkou vrstvu turbulentního vzduchu, která snižuje odpor; hladký míček by doletěl mnohem kratší vzdálenost.",
+      "id": "misc-0019",
+      "options": [
+        "Aby letěly dál",
+        "Aby vypadaly hezčí",
+        "Aby plavaly na vodě",
+        "Aby lépe držely na holi"
+      ],
+      "question": "Proč mají golfové míčky důlky?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Durianu se často říká „král ovoce“; fanoušci milují jeho krémovou dužninu, ale mnoho hotelů ho také zakazuje.",
+      "id": "food-0035",
+      "options": ["Rambutan", "Durian", "Chlebovník", "Mangostana"],
+      "question": "Které ostnaté ovoce z jihovýchodní Asie tak páchne, že je zakázané v singapurských vlacích?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Zamenhof ho zveřejnil v roce 1887 ve Varšavě; „esperanto“ znamená „ten, kdo doufá“.",
+      "id": "lang-0022",
+      "options": [
+        "L. L. Zamenhof",
+        "Otto Jespersen",
+        "Johann Schleyer",
+        "J. R. R. Tolkien"
+      ],
+      "question": "Kdo vytvořil mezinárodní jazyk esperanto?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Vnitřní ucho vnímá pohyb; na lodi nebo v letadle pomůže dívat se na obzor, aby se s ním oči „shodly“.",
+      "id": "body-0059",
+      "options": [
+        "Ze srdce",
+        "Ze sliznice žaludku",
+        "Z nosu",
+        "Z vnitřního ucha"
+      ],
+      "question": "Nevolnost z pohybu (kinetóza) vzniká nesouladem mezi signály z očí a kterého orgánu?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Zakřivené parabolické zrcadlo soustředí sluneční paprsky a zapálí pochodeň; tento obřad se koná od roku 1936.",
+      "id": "sport-0045",
+      "options": [
+        "Slunečním světlem a zrcadlem",
+        "Od starověké olejové lampy",
+        "Od plamene uchovávaného v Athénách",
+        "Sirkou z Athén"
+      ],
+      "question": "Jak se zapaluje olympijský oheň v řecké Olympii?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Středem Istanbulu vede průliv Bospor, takže lidé denně dojíždějí z jednoho kontinentu na druhý.",
+      "id": "geo-0045",
+      "options": [
+        "Asie a Oceánie",
+        "Asie a Afrika",
+        "Evropa a Asie",
+        "Evropa a Afrika"
+      ],
+      "question": "Na kterých dvou kontinentech leží Istanbul?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Tuk v hrbu je zásobou energie; to, že je soustředěný na jednom místě, pomáhá zbytku těla zůstat chladnější.",
+      "id": "nat-0068",
+      "options": ["Vzduch", "Svaly", "Tuk", "Vodu"],
+      "question": "Co má velbloud uložené v hrbu?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Člověk, který na Zemi váží 60 kg, by se na Měsíci cítil lehký jako 10 kg.",
+      "id": "sci-0093",
+      "options": [
+        "Asi desetinová",
+        "Zhruba stejná",
+        "Asi šestinová",
+        "Asi poloviční"
+      ],
+      "question": "Jak silná je zhruba gravitace na Měsíci ve srovnání se Zemí?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Obyvatelé Rapa Nui vytesali téměř 1 000 soch moai, většinou ze sopečného tufu v lomu Rano Raraku.",
+      "id": "his-0034",
+      "options": ["Sicílie", "Velikonoční ostrov", "Bali", "Nová Kaledonie"],
+      "question": "Na kterém ostrově stojí obří sochy moai?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Novozélandský ragbyový tým předvádí haku před zápasy; tradice sahá do roku 1905.",
+      "id": "cul-0040",
+      "options": ["Inuitů", "Havajců", "Maorů", "Austrálských Aboriginců"],
+      "question": "Haka je tradiční tanec kterého národa?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Tókaidó šinkansen byl otevřen těsně před olympijskými hrami v Tokiu v roce 1964 a je proslulý dochvilností.",
+      "id": "inv-0021",
+      "options": ["Nagoja", "Hirošima", "Ósaka", "Kjóto"],
+      "question": "První japonská trať šinkansenu byla otevřena v roce 1964 mezi Tokiem a kterým městem?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Orville Wright uletěl asi 37 m, méně, než je rozpětí křídel mnoha dnešních dopravních letadel.",
+      "id": "avi-0003",
+      "options": [
+        "Asi 1 hodinu",
+        "Asi 1 minutu",
+        "Asi 2 minuty",
+        "Asi 12 sekund"
+      ],
+      "question": "Jak dlouho trval úplně první let motorového letadla?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Čína se rozkládá v pěti zeměpisných časových pásmech, ale všude používá pekingský čas, takže na dalekém západě může v zimě slunce vycházet až v 10 hodin dopoledne.",
+      "id": "misc-0038",
+      "options": ["Dvě", "Pět", "Jedno", "Tři"],
+      "question": "Kolik oficiálních časových pásem používá Čína?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Pravé wasabi je vzácná, těžko pěstovatelná rostlina; většina wasabi v restauracích je křen, hořčice a zelené barvivo.",
+      "id": "food-0007",
+      "options": [
+        "Nakládaný zázvor",
+        "Mletá mořská řasa",
+        "Obarvený křen",
+        "Zelená chilli pasta"
+      ],
+      "question": "Co je mimo Japonsko často ve skutečnosti „wasabi“ podávané k sushi?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Xhoština má asi 15 mlaskavých hlásek; byla mateřštinou Nelsona Mandely.",
+      "id": "lang-0032",
+      "options": ["Xhoština", "Amharština", "Svahilština", "Jorubština"],
+      "question": "Který z těchto jazyků je proslulý mlaskavými souhláskami?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Díky absenci cév je rohovka dokonale průhledná, a proto také tělo transplantované rohovky jen vzácně odmítne.",
+      "id": "body-0060",
+      "options": ["Rohovka", "Duhovka", "Jazyk", "Sítnice"],
+      "question": "Která část těla nemá cévy a kyslík přijímá přímo ze vzduchu?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Plavání je první hlavně kvůli bezpečnosti, aby sportovci nebyli ve vodě, když jsou nejvíc unavení.",
+      "id": "sport-0046",
+      "options": [
+        "Běh, kolo, plavání",
+        "Plavání, kolo, běh",
+        "Plavání, běh, kolo",
+        "Kolo, plavání, běh"
+      ],
+      "question": "Jaké je obvyklé pořadí disciplín v triatlonu?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Reykjavík leží asi na 64° s. š., kousek jižně od severního polárního kruhu, přesto zde teplé mořské proudy udržují poměrně mírné zimy.",
+      "id": "geo-0016",
+      "options": ["Oslo", "Reykjavík", "Helsinky", "Tallinn"],
+      "question": "Které hlavní město suverénního státu leží nejseverněji?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Dvě srdce pumpují krev žábrami a třetí ji rozhání po těle; hlavní srdce se při plavání zastaví.",
+      "id": "nat-0004",
+      "options": ["Dvě", "Tři", "Čtyři", "Jedno"],
+      "question": "Kolik srdcí má chobotnice?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Venuše se otáčí tak pomalu, a navíc pozpátku, že jedna otočka trvá 243 pozemských dní, zatímco oběh jen 225.",
+      "id": "sci-0014",
+      "options": ["Venuše", "Neptun", "Merkur", "Mars"],
+      "question": "Na které planetě je jeden den delší než celý její rok?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Podle příběhu si Archimédés uvědomil, že vodou vytlačenou svým tělem lze změřit objem koruny.",
+      "id": "his-0036",
+      "options": ["Archimédés", "Pýthagorás", "Thalés", "Eukleidés"],
+      "question": "Který starověký Řek prý ve vaně zvolal „Heuréka!“?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Songkran připadá na duben, nejteplejší období roku, takže přátelská vodní bitva je vítaným osvěžením.",
+      "id": "cul-0050",
+      "options": ["Yi Peng", "Songkran", "Loy Krathong", "Phi Ta Khon"],
+      "question": "Který svátek s politím vodou zahajuje tradiční thajský Nový rok?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Nintendo začínalo výrobou ručně malovaných karet hanafuda v Kjótu.",
+      "id": "inv-0056",
+      "options": [
+        "Hrací karty",
+        "Papírové lampiony",
+        "Dřevěné hračky",
+        "Rádia"
+      ],
+      "question": "Co vyráběla firma Nintendo po svém založení v roce 1889, dřív než videohry?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Tento „dýchací otvor“ zajišťuje, že tlak v kabině nese vnější tabule, zatímco prostřední slouží jako záloha.",
+      "id": "avi-0043",
+      "options": [
+        "K odvodu dešťové vody",
+        "K měření rychlosti letu",
+        "K přívodu čerstvého vzduchu",
+        "K vyrovnání tlaku vzduchu"
+      ],
+      "question": "K čemu slouží malý otvor v okně kabiny dopravního letadla?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Polymerové bankovky vydrží déle než papírové a hůř se padělají; dnes je používá mnoho zemí.",
+      "id": "misc-0044",
+      "options": ["Austrálie", "Japonsko", "Kanada", "Singapur"],
+      "question": "Která země jako první vydala v roce 1988 plastové (polymerové) bankovky?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Podle legendy si etiopský pastevec všiml, že jeho kozy po spasení kávových plodů obživly.",
+      "id": "food-0009",
+      "options": ["Brazílie", "Vietnam", "Kolumbie", "Etiopie"],
+      "question": "Z vysočin které země pochází kávovník arabský?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Mnohá horská údolí na Papui Nové Guineji mají vlastní jazyk a některými mluví jen pár stovek lidí.",
+      "id": "lang-0036",
+      "options": [
+        "Brazílie",
+        "Papua Nová Guinea",
+        "Indie",
+        "Demokratická republika Kongo"
+      ],
+      "question": "Která země má nejvíce živých jazyků, asi 840?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Sibiřský Bajkal je hluboký přes 1 600 m a obsahuje asi pětinu světové nezamrzlé sladké povrchové vody.",
+      "id": "geo-0024",
+      "options": ["Tanganika", "Kaspické moře", "Hořejší jezero", "Bajkal"],
+      "question": "Které jezero je nejhlubší na světě?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Žirafy mají stejný počet krčních obratlů jako lidé; každý je ale dlouhý až 25 cm.",
+      "id": "nat-0009",
+      "options": ["Dvacet čtyři", "Dvanáct", "Osmnáct", "Sedm"],
+      "question": "Kolik obratlů má krk žirafy?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Molekuly vzduchu rozptylují krátké modré vlnové délky mnohem víc než červené; tento jev se nazývá Rayleighův rozptyl.",
+      "id": "sci-0036",
+      "options": [
+        "Ozon je modrý",
+        "Vzduch rozptyluje modré světlo",
+        "Sluneční světlo je hlavně modré",
+        "Odráží se v ní oceán"
+      ],
+      "question": "Proč je denní obloha modrá?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Polynéští mořeplavci připluli kolem roku 1300 n. l. ve velkých kánoích; jejich potomky jsou Maorové.",
+      "id": "his-0051",
+      "options": ["Ainuové", "Mikronésané", "Polynésané", "Melanésané"],
+      "question": "Kdo byli první lidé, kteří osídlili Nový Zéland?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Při pohledu shora připomíná plán Brasílie od Lúcia Costy letadlo nebo ptáka; budovy navrhl Oscar Niemeyer.",
+      "id": "cul-0057",
+      "options": ["Islámábád", "Canberra", "Abuja", "Brasília"],
+      "question": "Které hlavní město bylo postaveno od základů a slavnostně otevřeno v roce 1960?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Kulička spadla z tlamy draka do tlamy ropuchy a ukázala směr vzdáleného zemětřesení.",
+      "id": "inv-0060",
+      "options": ["Denní dobu", "Směr větru", "Srážky", "Zemětřesení"],
+      "question": "Co zjišťovala v roce 132 n. l. bronzová nádoba Čang Henga s draky, z nichž vypadávaly kuličky?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Číslo je magnetický kurz vydělený deseti, takže dráha 27 míří zhruba na západ (270°).",
+      "id": "avi-0046",
+      "options": [
+        "Maximální hmotnost letadla",
+        "Její kompasový směr",
+        "Délku ve stovkách metrů",
+        "Pořadí, v jakém vznikla"
+      ],
+      "question": "Co pilotům říká velké číslo namalované na konci ranveje, například 27?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Zeď je široká jen několik metrů; i z nízké oběžné dráhy Země je bez pomůcek mimořádně těžké ji zahlédnout.",
+      "id": "misc-0048",
+      "options": [
+        "Ne, je příliš úzká",
+        "Jen v noci",
+        "Ano, ale jen za jasna",
+        "Ano, velmi snadno"
+      ],
+      "question": "Vidí astronauti z Měsíce pouhým okem Velkou čínskou zeď?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Každé kešu jablko nese jediný oříšek; kešu se prodávají vyloupané, protože skořápka obsahuje dráždivý olej.",
+      "id": "food-0076",
+      "options": [
+        "Ostnatého lusku",
+        "Dřevnaté šišky",
+        "Podzemního kořene",
+        "Dužnatého „jablka“"
+      ],
+      "question": "Na spodní straně čeho visí kešu oříšek?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Lesotho jako jediná země leží celé výš než 1 000 m nad mořem, proto se mu přezdívá „království v nebi“.",
+      "id": "geo-0033",
+      "options": ["Lesotho", "Botswana", "Namibie", "Eswatini"],
+      "question": "Která země je ze všech stran obklopena Jihoafrickou republikou?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Díky tomu, že odpočívá vždy jen jedna polovina mozku, mohou delfíni dál vyplouvat k hladině pro vzduch a hlídat nebezpečí.",
+      "id": "nat-0057",
+      "options": [
+        "Zabalení do řas",
+        "Nehybně na dně",
+        "Vždy jen půlkou mozku",
+        "8 hodin hlubokým spánkem"
+      ],
+      "question": "Jak delfíni spí?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Průměrná hustota Saturnu je nižší než hustota vody, takže v dost velké vaně by teoreticky plaval.",
+      "id": "sci-0051",
+      "options": ["Saturn", "Uran", "Neptun", "Jupiter"],
+      "question": "Která planeta má menší hustotu než voda?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Pouť Mansy Músy přes Káhiru v roce 1324 rozšířila tolik zlata, že jeho hodnota v Egyptě na roky klesla.",
+      "id": "his-0067",
+      "options": [
+        "Aksumské království",
+        "Ghanská říše",
+        "Songhajská říše",
+        "Říše Mali"
+      ],
+      "question": "Kterou západoafrickou říši ovládal Mansa Músá, proslulý svým bohatstvím?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Sitár má kromě hracích strun i rezonanční struny, které se samy rozechvějí a dodávají třpytivý zvuk.",
+      "id": "cul-0061",
+      "options": ["Tabla", "Sitár", "Sarod", "Vína"],
+      "question": "Který nástroj proslavil po celém světě indický hudebník Ravi Šankar?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Vědci si mohli ověřit, jestli je konvice plná, než se vydali do kuchyňky.",
+      "id": "inv-0066",
+      "options": ["Konvici s kávou", "Rušnou ulici", "Akvárium", "Korouhev"],
+      "question": "Co ukazovala první webkamera na světě, zprovozněná v roce 1991 na Cambridgeské univerzitě?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Zvířata letěla asi 8 minut před králem Ludvíkem XVI. ve Versailles a bezpečně přistála.",
+      "id": "avi-0035",
+      "options": [
+        "Kozu, slepici a opici",
+        "Psa, husu a králíka",
+        "Ovci, kachnu a kohouta",
+        "Prase, papouška a kotě"
+      ],
+      "question": "Které pasažéry vyslali bratři Montgolfierové do vzduchu v balonu, než riskovali lidské životy?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Japonskou firmu vedla tatáž rodina přes 1 400 let, než se v roce 2006 stala součástí větší společnosti.",
+      "id": "misc-0080",
+      "options": ["Lodě", "Meče", "Chrámy", "Mosty"],
+      "question": "Co stavěla firma Kongó Gumi, jedna z nejstarších firem světa (založená roku 578)?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Havajská Mauna Kea se zvedá přes 10 000 m nad oceánské dno, ale nad hladinou je jen asi 4 200 m.",
+      "id": "geo-0101",
+      "options": ["Denali", "Mauna Kea", "Mount Everest", "Kilimandžáro"],
+      "question": "Která hora je nejvyšší na Zemi, měříme-li ji od úpatí na mořském dně?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Kel je přerostlý špičák, který může měřit asi 3 m a je protkaný miliony nervových zakončení.",
+      "id": "nat-0080",
+      "options": ["Rohem", "Zubem", "Ploutevním trnem", "Nosní kostí"],
+      "question": "Čím je ve skutečnosti dlouhý spirálovitý kel narvala?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Spočítej sekundy mezi zábleskem a zahřměním a vyděl je třemi – dostaneš přibližnou vzdálenost bouřky v kilometrech.",
+      "id": "sci-0077",
+      "options": ["10 sekund", "30 sekund", "1 sekunda", "3 sekundy"],
+      "question": "Kolik sekund zhruba trvá, než hrom dorazí po blesku, na každý kilometr vzdálenosti?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Nový Amsterdam byla nizozemská kolonie; Wall Street má jméno podle dřevěné hradby, kterou postavili nizozemští osadníci.",
+      "id": "his-0072",
+      "options": [
+        "Nový Amsterdam",
+        "Nový Rotterdam",
+        "Fort Hudson",
+        "Nové Holandsko"
+      ],
+      "question": "Jak se jmenoval New York, než byl v roce 1664 přejmenován?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Saxofon se řadí mezi dřevěné dechové nástroje, protože tón vytváří jednoduchý plátek jako u klarinetu.",
+      "id": "cul-0074",
+      "options": [
+        "Bicí nástroje",
+        "Smyčcové nástroje",
+        "Žesťové nástroje",
+        "Dřevěné dechové"
+      ],
+      "question": "Saxofon je z mosazi, ale do které skupiny nástrojů patří?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Čikči bylo vytištěno 78 let před Gutenbergovou biblí.",
+      "id": "inv-0086",
+      "options": ["Japonsko", "Mongolsko", "Čína", "Korea"],
+      "question": "Odkud pochází Čikči (1377), nejstarší dochovaná kniha tištěná pohyblivými kovovými literami?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Po dešti promění tenká vrstva vody Uyuni v obří zrcadlo, ve kterém se odráží obloha.",
+      "id": "geo-0110",
+      "options": ["Peru", "Chile", "Bolívie", "Argentina"],
+      "question": "Ve které zemi leží Salar de Uyuni, největší solná pláň světa?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Severoamerický skokan lesní si plní buňky cukrem jako nemrznoucí směsí a na jaře rozmrzne zpět k životu.",
+      "id": "nat-0082",
+      "options": ["Sovice sněžná", "Skokan lesní", "Zajíc polární", "Bělokur"],
+      "question": "Které zvíře dokáže přečkat zimu promrzlé na kost a se zastaveným srdcem?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Jemný marsovský prach rozptyluje modré světlo dopředu, takže záře kolem zapadajícího Slunce se kamerám vozítek jeví modrá.",
+      "id": "sci-0064",
+      "options": [
+        "Sytě červenou",
+        "Zlatožlutou",
+        "Jasně oranžovou",
+        "Namodralou"
+      ],
+      "question": "Jakou barvu mají obvykle západy slunce na Marsu?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Heyerdahl a pět členů posádky urazili za 101 dní asi 6 900 km z Peru do Francouzské Polynésie.",
+      "id": "his-0092",
+      "options": [
+        "Fridtjof Nansen",
+        "Tim Severin",
+        "Jacques Cousteau",
+        "Thor Heyerdahl"
+      ],
+      "question": "Kdo v roce 1947 přeplul Tichý oceán na balzovém voru Kon-Tiki?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Austrálští domorodci používají větve eukalyptu vyhlodané termity; hráči používají cirkulární dýchání, aby tón nepřerušili.",
+      "id": "cul-0091",
+      "options": [
+        "Z pleteného rákosu",
+        "Z rohu buvola",
+        "Ze dřeva vyhlodaného termity",
+        "Z pálené hliněné trubice"
+      ],
+      "question": "Z čeho se tradičně vyrábí didgeridoo?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Sargasové moře v severním Atlantiku ohraničují jen mořské proudy a je známé plovoucími chaluhami.",
+      "id": "geo-0038",
+      "options": [
+        "Sargasové moře",
+        "Tasmanovo moře",
+        "Korálové moře",
+        "Weddellovo moře"
+      ],
+      "question": "Které moře jako jediné nemá vůbec žádné pobřeží?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Kipu zaznamenávala čísla pomocí uzlů v desítkové soustavě; některá možná zachycovala i příběhy.",
+      "id": "his-0102",
+      "options": ["Kodex", "Vrubovka", "Kipu", "Abakus"],
+      "question": "Jak se nazývala incká záznamová pomůcka z uzlíkovaných šňůrek?"
+    }
+  ]
+}

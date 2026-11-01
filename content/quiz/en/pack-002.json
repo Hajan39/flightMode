@@ -1,0 +1,2621 @@
+{
+  "id": "pack-002",
+  "lang": "en",
+  "questions": [
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Wobbles in Uranus's orbit led astronomers to calculate where an unseen planet must be; it was found in 1846.",
+      "id": "sci-0070",
+      "options": ["Mars", "Neptune", "Uranus", "Saturn"],
+      "question": "Which planet was predicted by mathematics before anyone saw it?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Despite films, the asteroid belt is mostly empty space; probes cross it without dodging rocks.",
+      "id": "sci-0054",
+      "options": [
+        "Mars and Jupiter",
+        "Earth and Mars",
+        "Jupiter and Saturn",
+        "Venus and Earth"
+      ],
+      "question": "The main asteroid belt lies between the orbits of which two planets?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Measurements of the faint afterglow of the Big Bang, the cosmic microwave background, give an age of about 13.8 billion years.",
+      "id": "sci-0059",
+      "options": [
+        "25 billion years",
+        "100 billion years",
+        "4.6 billion years",
+        "13.8 billion years"
+      ],
+      "question": "Roughly how old is the universe?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Charged particles from the Sun are steered by Earth's magnetic field and make air molecules glow green, red or purple.",
+      "id": "sci-0057",
+      "options": [
+        "Reflections from polar ice",
+        "Particles from the Sun",
+        "Lightning in the upper sky",
+        "Moonlight on ice crystals"
+      ],
+      "question": "What causes the northern lights (aurora borealis)?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "A Martian day is called a sol; mission teams sometimes live on 'Mars time', shifting their schedule 40 minutes each day.",
+      "id": "sci-0063",
+      "options": [
+        "10 hours 30 minutes",
+        "6 hours 15 minutes",
+        "24 hours 40 minutes",
+        "58 Earth days"
+      ],
+      "question": "Roughly how long is a day on Mars?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Aluminium makes up about 8% of the crust but was once rarer than gold to produce; Napoleon III served guests with aluminium cutlery.",
+      "id": "sci-0072",
+      "options": ["Copper", "Aluminium", "Calcium", "Iron"],
+      "question": "Which is the most abundant metal in Earth's crust?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "The oldest known mineral grains, zircons from Australia, are about 4.4 billion years old.",
+      "id": "sci-0058",
+      "options": [
+        "About 450 million years",
+        "About 10 billion years",
+        "About 1 billion years",
+        "About 4.5 billion years"
+      ],
+      "question": "Roughly how old is Earth?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Not even light can escape from inside the event horizon, which is why black holes look black.",
+      "id": "sci-0065",
+      "options": ["Event horizon", "Accretion disk", "Corona", "Singularity"],
+      "question": "What is the boundary around a black hole called, beyond which nothing can escape?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "A supernova can briefly outshine an entire galaxy; such explosions forged many of the elements in our bodies.",
+      "id": "sci-0062",
+      "options": [
+        "A newborn planet",
+        "An exploding star",
+        "A very bright comet",
+        "A giant galaxy"
+      ],
+      "question": "What is a supernova?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Copernicus's book appeared in the year he died, and legend says he saw the first printed copy on his deathbed.",
+      "id": "sci-0067",
+      "options": [
+        "Johannes Kepler",
+        "Claudius Ptolemy",
+        "Galileo Galilei",
+        "Nicolaus Copernicus"
+      ],
+      "question": "Who published the Sun-centred model of the Solar System in 1543?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "A litre of osmium would weigh about 22.6 kg, roughly twice as much as a litre of lead.",
+      "id": "sci-0075",
+      "options": ["Gold", "Lead", "Uranium", "Osmium"],
+      "question": "Which is the densest naturally occurring element?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Newton's Principia explained both falling apples and orbiting moons with the same law of gravity.",
+      "id": "sci-0066",
+      "options": [
+        "Johannes Kepler",
+        "Nicolaus Copernicus",
+        "Galileo Galilei",
+        "Isaac Newton"
+      ],
+      "question": "Who formulated the laws of motion and universal gravitation, published in 1687?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Lightning can heat the air to about 30,000 °C; the sudden expansion of that air is the thunder we hear.",
+      "id": "sci-0076",
+      "options": [
+        "About the same",
+        "About 100 times hotter",
+        "About half as hot",
+        "About five times hotter"
+      ],
+      "question": "How hot can a lightning bolt get compared with the Sun's surface?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Io, Europa, Ganymede and Callisto are still called the Galilean moons.",
+      "id": "sci-0068",
+      "options": [
+        "Isaac Newton",
+        "Tycho Brahe",
+        "Galileo Galilei",
+        "Johannes Kepler"
+      ],
+      "question": "Who discovered four large moons of Jupiter with a telescope in 1610?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Ground shaking grows about 10 times per step, but energy grows about 32 times; a magnitude 7 releases about 1,000 times more than a 5.",
+      "id": "sci-0086",
+      "options": [
+        "About 32 times",
+        "About 2 times",
+        "About 100 times",
+        "About 10 times"
+      ],
+      "question": "Each step up by one on the earthquake magnitude scale releases roughly how much more energy?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Each gas glows its own colour; 'neon' signs in other colours often use other gases or coated tubes.",
+      "id": "sci-0071",
+      "options": ["Neon", "Helium", "Argon", "Xenon"],
+      "question": "Which gas glows reddish-orange in classic advertising signs?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Cumulonimbus clouds can tower up to 12 km or more, and airliners route around them.",
+      "id": "sci-0079",
+      "options": ["Stratus", "Altocumulus", "Cumulonimbus", "Cirrus"],
+      "question": "Which type of cloud produces thunderstorms?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Rust needs both oxygen and water; salt only speeds it up, which is why cars rust faster near the sea.",
+      "id": "sci-0073",
+      "options": ["Salt", "Sunlight", "Water", "Nitrogen"],
+      "question": "Iron rusts when it reacts with oxygen and what else?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The reading was taken in 1913 at Furnace Creek; the WMO still recognises it, although some meteorologists doubt its accuracy.",
+      "id": "sci-0080",
+      "options": [
+        "Dallol, Ethiopia",
+        "Death Valley, USA",
+        "Lut Desert, Iran",
+        "Kuwait City, Kuwait"
+      ],
+      "question": "Which place holds the official world record for the highest air temperature, 56.7 °C?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "The jets come from a hidden salty ocean beneath Enceladus's icy crust, making it a target in the search for life.",
+      "id": "sci-0090",
+      "options": ["Jupiter", "Uranus", "Saturn", "Neptune"],
+      "question": "Enceladus, a moon that sprays jets of water into space, orbits which planet?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Dry ice turns straight from solid to gas at about -78.5 °C without melting, which creates spooky stage fog.",
+      "id": "sci-0074",
+      "options": ["Methane", "Carbon monoxide", "Nitrogen", "Carbon dioxide"],
+      "question": "Dry ice is the solid form of which substance?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The record was set at the Russian Vostok research station high on the Antarctic ice sheet in July 1983.",
+      "id": "sci-0081",
+      "options": ["Verkhoyansk", "Oymyakon", "Vostok Station", "South Pole"],
+      "question": "Where was the lowest natural air temperature on Earth's surface, -89.2 °C, measured?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Water vapour is invisible; clouds form when it condenses into tiny droplets or ice crystals around specks of dust.",
+      "id": "sci-0078",
+      "options": [
+        "Invisible water vapour",
+        "Dust and smoke particles",
+        "Steam rising from the sea",
+        "Water droplets or ice"
+      ],
+      "question": "What are clouds mostly made of?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The Coriolis effect from Earth's rotation makes these storms spin anticlockwise in the north and clockwise in the south.",
+      "id": "sci-0084",
+      "options": [
+        "Clockwise",
+        "Either way equally",
+        "They do not spin",
+        "Anticlockwise"
+      ],
+      "question": "In the Southern Hemisphere, which way do tropical cyclones spin?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Rosetta's lander Philae bounced twice on the comet's surface before coming to rest in a shadowy spot.",
+      "id": "sci-0092",
+      "options": ["Stardust", "Deep Impact", "Rosetta", "Giotto"],
+      "question": "Which mission placed the first lander on a comet, in 2014?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Hurricanes and typhoons are the same kind of storm, a tropical cyclone, named differently by region.",
+      "id": "sci-0082",
+      "options": ["Tornadoes", "Typhoons", "Blizzards", "Monsoons"],
+      "question": "What are hurricanes called in the northwest Pacific Ocean?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Obsidian forms when lava cools too quickly for crystals to grow; its edges can be sharper than steel scalpels.",
+      "id": "sci-0087",
+      "options": [
+        "Fossilised wood",
+        "A meteorite",
+        "A type of coal",
+        "Volcanic glass"
+      ],
+      "question": "What is obsidian?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "The eye can be tens of kilometres wide; the fiercest winds blow in the eyewall around it.",
+      "id": "sci-0083",
+      "options": [
+        "The strongest winds",
+        "Heavy hail and snow",
+        "Thick fog and drizzle",
+        "Calm and often clear"
+      ],
+      "question": "What is the weather usually like in the eye of a hurricane?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Blue corundum is called sapphire; the red colour of ruby comes from traces of chromium.",
+      "id": "sci-0088",
+      "options": ["Quartz", "Garnet", "Beryl", "Corundum"],
+      "question": "Ruby is a red gemstone variety of which mineral?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Lower air pressure lowers the boiling point, so pasta cooks very slowly at high altitude.",
+      "id": "sci-0098",
+      "options": ["About 70 °C", "About 120 °C", "About 50 °C", "About 100 °C"],
+      "question": "On the summit of Mount Everest, water boils at roughly what temperature?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Molten rock is called magma underground and lava once it erupts onto the surface.",
+      "id": "sci-0085",
+      "options": ["Obsidian", "Basalt", "Lava", "Magma"],
+      "question": "What is molten rock beneath Earth's surface called?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Launched in 1977, Voyager 1 entered interstellar space in 2012 and carries a golden record of sounds from Earth.",
+      "id": "sci-0091",
+      "options": ["Pioneer 10", "New Horizons", "Voyager 1", "Voyager 2"],
+      "question": "Which spacecraft is the most distant human-made object from Earth?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Amber can preserve insects, feathers and even parts of dinosaur tails in perfect detail for millions of years.",
+      "id": "sci-0089",
+      "options": ["Tree resin", "Honey", "Animal bone", "Sea shells"],
+      "question": "Amber is fossilised what?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The Sun holds about 99.8% of all the mass in the Solar System; Jupiter has most of the rest.",
+      "id": "sci-0095",
+      "options": ["About 90%", "Over 99%", "About 50%", "About 75%"],
+      "question": "About what share of the Solar System's mass is in the Sun?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "This expansion is why ice floats and why freezing water can burst pipes and split rocks.",
+      "id": "sci-0101",
+      "options": ["About 1%", "About 50%", "About 25%", "About 9%"],
+      "question": "By roughly how much does water's volume increase when it freezes?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The Sun is a middle-aged G-type main-sequence star, about 4.6 billion years old and roughly halfway through its life.",
+      "id": "sci-0096",
+      "options": [
+        "A red giant",
+        "A blue giant",
+        "A white dwarf",
+        "A yellow dwarf"
+      ],
+      "question": "What type of star is the Sun?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Neptune takes about 165 Earth years to orbit the Sun; it completed its first orbit since discovery only in 2011.",
+      "id": "sci-0094",
+      "options": ["Jupiter", "Uranus", "Neptune", "Saturn"],
+      "question": "Which planet is farthest from the Sun?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Silver conducts slightly better than copper, but copper is used in wiring because it is far cheaper.",
+      "id": "sci-0097",
+      "options": ["Silver", "Aluminium", "Gold", "Copper"],
+      "question": "Which metal conducts electricity best?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Yttrium, ytterbium, terbium and erbium are all named after Ytterby, a village near Stockholm with a rich mineral quarry.",
+      "id": "sci-0102",
+      "options": ["Poland", "Germany", "Sweden", "Scotland"],
+      "question": "A single village in which country gave its name to four chemical elements?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Ozone is a form of oxygen with three atoms; it absorbs most of the Sun's harmful UV-B and UV-C light.",
+      "id": "sci-0099",
+      "options": ["Argon", "Nitrogen", "Ozone", "Methane"],
+      "question": "Which gas in the upper atmosphere protects us from most ultraviolet radiation?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "At about 28,000 km/h, a spacecraft at that height sees around 16 sunrises and sunsets a day.",
+      "id": "sci-0100",
+      "options": [
+        "About 24 hours",
+        "About 90 minutes",
+        "About 12 hours",
+        "About 10 minutes"
+      ],
+      "question": "At the ISS's height of about 400 km, roughly how long does one orbit of Earth take?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Most shooting stars are grains of dust no bigger than sand, burning up about 80-100 km above the ground.",
+      "id": "sci-0107",
+      "options": [
+        "A meteoroid burning up",
+        "A satellite reflecting light",
+        "A comet's tail",
+        "A star falling to Earth"
+      ],
+      "question": "What is a 'shooting star' really?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Curie named polonium in 1898, when Poland did not exist as an independent state, to draw attention to it.",
+      "id": "sci-0104",
+      "options": ["Germanium", "Radium", "Polonium", "Francium"],
+      "question": "Which element did Marie Curie name after her homeland?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Selene was the Greek goddess of the Moon; tellurium, found earlier, was named after Tellus, the Earth.",
+      "id": "sci-0103",
+      "options": ["Selenium", "Cerium", "Helium", "Tellurium"],
+      "question": "Which chemical element is named after the Moon?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Electrons are about 1,800 times lighter than protons, so almost all of an atom's mass is in its tiny nucleus.",
+      "id": "sci-0109",
+      "options": ["Proton", "Neutron", "Electron", "Photon"],
+      "question": "Which particle in an atom carries a negative charge?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Mars's air is about 95% carbon dioxide and so thin that the pressure is under 1% of Earth's.",
+      "id": "sci-0105",
+      "options": ["Methane", "Nitrogen", "Carbon monoxide", "Carbon dioxide"],
+      "question": "What is the main gas in the atmosphere of Mars?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Because c² is so huge, a tiny amount of mass holds an enormous amount of energy, which powers the Sun.",
+      "id": "sci-0110",
+      "options": [
+        "The speed of light",
+        "The Coulomb constant",
+        "The speed of sound",
+        "The mass of carbon"
+      ],
+      "question": "In the equation E = mc², what does 'c' stand for?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "The Perseids are debris from Comet Swift-Tuttle; at their peak you may see dozens of meteors an hour from a dark place.",
+      "id": "sci-0108",
+      "options": ["April", "October", "December", "August"],
+      "question": "In which month does the Perseid meteor shower usually peak?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Each side of Saturn's hexagon is longer than Earth's diameter; it was first spotted by the Voyager probes.",
+      "id": "sci-0106",
+      "options": ["Neptune", "Saturn", "Uranus", "Jupiter"],
+      "question": "Which planet has a giant hexagon-shaped storm pattern at its north pole?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "O negative red cells lack A, B and RhD markers, so they are used in emergencies when there is no time to test.",
+      "id": "body-0007",
+      "options": ["A negative", "O negative", "B positive", "AB positive"],
+      "question": "Which blood type can be given to almost anyone as red cells, the 'universal donor'?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "British sailors were given lemon or lime juice to prevent scurvy, earning them the nickname 'limeys'.",
+      "id": "body-0009",
+      "options": ["Beriberi", "Rickets", "Scurvy", "Pellagra"],
+      "question": "A long-term lack of vitamin C causes which disease, once feared by sailors?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "The stapes, or stirrup, in the middle ear is only about 3 mm long and passes sound vibrations to the inner ear.",
+      "id": "body-0003",
+      "options": ["In the finger", "In the ear", "In the toe", "In the nose"],
+      "question": "Where is the smallest bone in the human body?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "The thigh bone makes up about a quarter of a person's height and is also one of the strongest bones.",
+      "id": "body-0004",
+      "options": ["Fibula", "Femur", "Tibia", "Humerus"],
+      "question": "Which is the longest bone in the human body?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "The iris's patterns are so individual that, like fingerprints, they are used for biometric identification.",
+      "id": "body-0010",
+      "options": ["Iris", "Lens", "Cornea", "Retina"],
+      "question": "Which coloured part of the eye controls how much light gets in?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Two atria receive blood and two ventricles pump it out, to the lungs and to the rest of the body.",
+      "id": "body-0005",
+      "options": ["Six", "Four", "Two", "Three"],
+      "question": "How many chambers does the human heart have?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Haemoglobin turns bright red when it picks up oxygen, which is why arterial blood is brighter than venous blood.",
+      "id": "body-0012",
+      "options": ["Insulin", "Keratin", "Collagen", "Haemoglobin"],
+      "question": "Which iron-containing protein in red blood cells carries oxygen?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "The left lung has only two lobes, leaving space for the heart.",
+      "id": "body-0030",
+      "options": ["Five", "Three", "Four", "Two"],
+      "question": "How many lobes does the right human lung have?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Insulin was first used to treat diabetes in 1922, when a 14-year-old boy in Toronto received an injection.",
+      "id": "body-0006",
+      "options": ["Pancreas", "Spleen", "Kidneys", "Liver"],
+      "question": "Which organ produces insulin?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "The gluteus maximus in the buttock keeps the body upright and powers climbing and running.",
+      "id": "body-0014",
+      "options": [
+        "Latissimus dorsi",
+        "Gluteus maximus",
+        "Pectoralis major",
+        "Biceps brachii"
+      ],
+      "question": "Which is the largest muscle in the human body?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Vitamin D helps the body absorb calcium for strong bones; many people at high latitudes get less in winter.",
+      "id": "body-0008",
+      "options": ["Vitamin D", "Vitamin A", "Vitamin K", "Vitamin C"],
+      "question": "Which vitamin does your skin make when exposed to sunlight?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Many of a baby's bones, such as parts of the skull, fuse together as the child grows.",
+      "id": "body-0016",
+      "options": ["About 300", "About 150", "About 500", "About 206"],
+      "question": "Roughly how many bones does a newborn baby have?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Once thought useless, the appendix may act as a safe house for helpful gut bacteria.",
+      "id": "body-0032",
+      "options": ["Small intestine", "Large intestine", "Stomach", "Liver"],
+      "question": "The appendix is attached to which organ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "White blood cells make up less than 1% of the blood but include cells that 'remember' germs for years.",
+      "id": "body-0011",
+      "options": [
+        "White blood cells",
+        "Skin cells",
+        "Red blood cells",
+        "Platelets"
+      ],
+      "question": "Which blood cells are the main defenders against infection?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "The tingle comes from the ulnar nerve, which runs close to the skin at the elbow.",
+      "id": "body-0018",
+      "options": ["A nerve", "A bone", "A tendon", "A muscle"],
+      "question": "When you hit your 'funny bone', what are you actually hitting?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Your kidneys filter about 180 litres of blood plasma every day, returning almost all of it to the body.",
+      "id": "body-0013",
+      "options": ["Liver", "Spleen", "Kidneys", "Lungs"],
+      "question": "Which organs filter the blood to make urine?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Bile helps digest fats; the gallbladder squeezes it into the intestine after a fatty meal.",
+      "id": "body-0021",
+      "options": ["Spleen", "Pancreas", "Appendix", "Gallbladder"],
+      "question": "Which small organ stores bile made by the liver?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Despite its name, the small intestine is much longer than the large intestine; it is 'small' only in width.",
+      "id": "body-0033",
+      "options": ["About 50 cm", "About 1 m", "About 6 m", "About 15 m"],
+      "question": "Roughly how long is the adult human small intestine?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Babies are about 75% water; the brain and heart are around 73% water.",
+      "id": "body-0015",
+      "options": ["About 60%", "About 30%", "About 45%", "About 90%"],
+      "question": "Roughly what percentage of an adult's body is water?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Tiny hair cells in the cochlea respond to different pitches; once damaged, they do not grow back.",
+      "id": "body-0022",
+      "options": [
+        "Equalises air pressure",
+        "Keeps your body balanced",
+        "Produces earwax",
+        "Turns sound into signals"
+      ],
+      "question": "What does the snail-shaped cochlea in your inner ear do?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Enamel is about 96% mineral, but it contains no living cells, so it cannot repair itself.",
+      "id": "body-0017",
+      "options": ["Tooth enamel", "Cartilage", "Fingernail", "Thigh bone"],
+      "question": "What is the hardest substance in the human body?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "The cerebellum, meaning 'little brain', holds more than half of the brain's neurons in a tenth of its volume.",
+      "id": "body-0023",
+      "options": [
+        "Hippocampus",
+        "Cerebellum",
+        "Frontal lobe",
+        "Pituitary gland"
+      ],
+      "question": "Which part of the brain mainly coordinates balance and movement?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "There are no light-sensing cells where the optic nerve leaves the eye; the brain fills in the gap so we don't notice.",
+      "id": "body-0035",
+      "options": [
+        "The optic nerve exits there",
+        "The iris covers it",
+        "The lens is thickest there",
+        "Tears collect there"
+      ],
+      "question": "Why does each human eye have a small 'blind spot'?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "A person can donate part of their liver, and both the donor's and recipient's livers regrow within months.",
+      "id": "body-0019",
+      "options": ["Lungs", "Heart", "Liver", "Brain"],
+      "question": "Which organ can regrow to full size after part of it is removed?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Over a lifetime, the heart beats more than 2.5 billion times without a break.",
+      "id": "body-0024",
+      "options": [
+        "About 100,000",
+        "About 1 million",
+        "About 1,000",
+        "About 10,000"
+      ],
+      "question": "Roughly how many times does a resting adult heart beat in a day?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Many people never develop all four wisdom teeth, so 28 adult teeth is also common.",
+      "id": "body-0020",
+      "options": ["24", "36", "28", "32"],
+      "question": "How many teeth are in a full adult set, including wisdom teeth?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Kikunae Ikeda identified umami in 1908 while studying kombu seaweed broth; it is the taste of glutamate.",
+      "id": "body-0027",
+      "options": ["Spicy", "Umami", "Metallic", "Minty"],
+      "question": "Which basic taste, often described as savoury, was first identified by a Japanese scientist?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Landsteiner's discovery made safe blood transfusions possible and earned him a Nobel Prize in 1930.",
+      "id": "body-0042",
+      "options": [
+        "Joseph Lister",
+        "Robert Koch",
+        "Alexander Fleming",
+        "Karl Landsteiner"
+      ],
+      "question": "Who discovered the main human blood groups in 1901?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Body temperature naturally varies through the day, lowest in the early morning and highest in late afternoon.",
+      "id": "body-0025",
+      "options": ["About 37 °C", "About 39 °C", "About 35 °C", "About 40 °C"],
+      "question": "What is the average normal human body temperature?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Capsaicin triggers the same nerve receptors as real heat; birds can't sense it, so they happily eat chillies and spread the seeds.",
+      "id": "body-0028",
+      "options": ["Caffeine", "Menthol", "Capsaicin", "Tannin"],
+      "question": "Which compound makes chilli peppers taste hot?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Hair and nails above the skin are made of dead cells, which is why cutting them doesn't hurt.",
+      "id": "body-0026",
+      "options": ["Collagen", "Melanin", "Haemoglobin", "Keratin"],
+      "question": "Hair and nails are made mainly of which protein?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "The brain is only about 2% of body weight but uses around a fifth of the body's energy at rest.",
+      "id": "body-0029",
+      "options": ["About 75%", "About 20%", "About 50%", "About 2%"],
+      "question": "About how much of the body's resting energy does the brain use?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Before Harvey, many believed blood was constantly made by the liver and used up by the body.",
+      "id": "body-0043",
+      "options": ["Hippocrates", "Galen", "Andreas Vesalius", "William Harvey"],
+      "question": "Who first correctly described how blood circulates around the body, in 1628?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "The trachea is held open by C-shaped rings of cartilage, which you can feel at the front of your neck.",
+      "id": "body-0031",
+      "options": ["Larynx", "Pharynx", "Trachea", "Oesophagus"],
+      "question": "What is the medical name for the windpipe?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "The retina has around 120 million rods for dim light but only about 6 million cones for colour.",
+      "id": "body-0034",
+      "options": ["Retina", "Sclera", "Cornea", "Iris"],
+      "question": "Which layer at the back of the eye contains the light-sensing rods and cones?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "The aorta, the largest artery, is about as wide as a garden hose; capillaries are thinner than a hair.",
+      "id": "body-0037",
+      "options": ["Capillaries", "Veins", "Arteries", "Lymph vessels"],
+      "question": "Which blood vessels carry blood away from the heart?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "In furry ancestors, raising the hairs trapped warm air or made them look bigger to rivals.",
+      "id": "body-0036",
+      "options": [
+        "Nerve endings",
+        "Sweat glands",
+        "Hair follicles",
+        "Blood vessels"
+      ],
+      "question": "Goosebumps are caused by tiny muscles attached to what?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Your body makes millions of new red blood cells every second to replace the old ones.",
+      "id": "body-0047",
+      "options": [
+        "About two years",
+        "About 120 days",
+        "About 7 days",
+        "About 1 day"
+      ],
+      "question": "Roughly how long does a red blood cell live?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Platelets are tiny cell fragments that rush to a wound and clump together to plug it.",
+      "id": "body-0038",
+      "options": [
+        "Carrying oxygen around",
+        "Helping blood clot",
+        "Making hormones",
+        "Fighting germs"
+      ],
+      "question": "What is the main job of platelets in the blood?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Jenner used material from cowpox sores; the word vaccine comes from the Latin vacca, meaning cow.",
+      "id": "body-0040",
+      "options": [
+        "Edward Jenner",
+        "Louis Pasteur",
+        "Robert Koch",
+        "Joseph Lister"
+      ],
+      "question": "Who developed the first vaccine, against smallpox, in 1796?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Fleming noticed that mould growing on a forgotten dish had killed the bacteria around it.",
+      "id": "body-0039",
+      "options": [
+        "Alexander Fleming",
+        "Ignaz Semmelweis",
+        "Louis Pasteur",
+        "Edward Jenner"
+      ],
+      "question": "Who discovered penicillin in 1928?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "The World Health Organization declared smallpox eradicated in 1980 after a global vaccination campaign.",
+      "id": "body-0041",
+      "options": ["Measles", "Smallpox", "Polio", "Malaria"],
+      "question": "Which is the only human disease to have been completely eradicated worldwide?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Fast nerve fibres are wrapped in a fatty myelin layer that lets signals jump along them, over 400 km/h.",
+      "id": "body-0049",
+      "options": [
+        "Up to about 120 m/s",
+        "Near the speed of light",
+        "About 1 m/s",
+        "About 3,000 m/s"
+      ],
+      "question": "How fast can the fastest nerve signals travel in the body?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "About 99% of the body's calcium is stored in bones and teeth.",
+      "id": "body-0046",
+      "options": ["Potassium", "Calcium", "Iron", "Sodium"],
+      "question": "Which mineral is the main building block of bones and teeth?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Spread flat, the alveoli would cover roughly 70 m² or more, a huge surface for oxygen to enter the blood.",
+      "id": "body-0044",
+      "options": ["Kidneys", "Lungs", "Intestines", "Liver"],
+      "question": "Millions of tiny air sacs called alveoli are found in which organ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "The soft marrow inside large bones such as the hips and breastbone is the body's blood factory.",
+      "id": "body-0048",
+      "options": [
+        "In the heart muscle",
+        "In the stomach",
+        "In the bone marrow",
+        "In the liver"
+      ],
+      "question": "Where are red blood cells made in adults?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Many countries add iodine to table salt to prevent thyroid problems.",
+      "id": "body-0045",
+      "options": ["Iron", "Calcium", "Iodine", "Zinc"],
+      "question": "The thyroid gland needs which element to make its hormones?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Its name comes from the Greek for seahorse; London taxi drivers who learn the city's streets have a larger hippocampus.",
+      "id": "body-0055",
+      "options": ["Cerebellum", "Hippocampus", "Amygdala", "Thalamus"],
+      "question": "Which seahorse-shaped brain region is key to forming new memories?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "The 'hic' sound is made when the vocal cords snap shut just after the diaphragm jerks.",
+      "id": "body-0053",
+      "options": ["Tongue", "Stomach", "Heart", "Diaphragm"],
+      "question": "Hiccups are sudden spasms of which muscle?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Bright light, especially in the morning, suppresses melatonin, which is why daylight helps reset jet-lagged body clocks.",
+      "id": "body-0050",
+      "options": ["Adrenaline", "Cortisol", "Insulin", "Melatonin"],
+      "question": "Which hormone, released in darkness, helps regulate sleep?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "The liver weighs about 1.5 kg and performs hundreds of jobs, from storing energy to cleaning the blood.",
+      "id": "body-0054",
+      "options": ["Stomach", "Heart", "Brain", "Liver"],
+      "question": "Which is the largest internal organ of the human body?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "The U-shaped hyoid in the neck is held in place by muscles and supports the tongue.",
+      "id": "body-0058",
+      "options": ["Patella", "Hyoid", "Clavicle", "Coccyx"],
+      "question": "Which bone is the only one in the body not connected to any other bone?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "One chromosome of each pair comes from each parent; the 23rd pair decides biological sex.",
+      "id": "body-0056",
+      "options": ["46", "21", "23", "25"],
+      "question": "How many pairs of chromosomes do most human cells have?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Swallowing or yawning opens the Eustachian tube to balance air pressure as a plane climbs or descends.",
+      "id": "body-0052",
+      "options": [
+        "Eustachian tube",
+        "Semicircular canal",
+        "Tear duct",
+        "Ear canal"
+      ],
+      "question": "Which tube connects the middle ear to the throat and lets your ears 'pop'?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Blood makes up about 7-8% of body weight, and the heart pumps the whole volume round roughly once a minute at rest.",
+      "id": "body-0057",
+      "options": [
+        "About 1 litre",
+        "About 5 litres",
+        "About 2 litres",
+        "About 10 litres"
+      ],
+      "question": "Roughly how much blood does an average adult have?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Guacamole goes back to the Aztecs; its name comes from Nahuatl words for 'avocado' and 'sauce'.",
+      "id": "food-0002",
+      "options": ["Avocado", "Cucumber", "Tomato", "Green pea"],
+      "question": "What is the main ingredient of guacamole?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Traditional Valencian paella uses rabbit, chicken and beans, and saffron gives the rice its golden colour.",
+      "id": "food-0001",
+      "options": ["Galicia", "Andalusia", "Catalonia", "Valencia"],
+      "question": "Paella, cooked in a wide flat pan, originally comes from which Spanish region?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Classic hummus blends chickpeas with tahini (sesame paste), lemon juice and garlic.",
+      "id": "food-0003",
+      "options": ["Fava beans", "Chickpeas", "White beans", "Lentils"],
+      "question": "Hummus is made mainly from which ingredient?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Sugar and milk were added later by Europeans; the Aztecs also used cacao beans as money.",
+      "id": "food-0012",
+      "options": ["Milk", "Sugar", "Mint", "Chilli"],
+      "question": "The Aztecs drank chocolate as a bitter drink. Which ingredient did they often add?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Its tomato, mozzarella and basil are said to mirror the red, white and green of the Italian flag.",
+      "id": "food-0004",
+      "options": ["Rome", "Naples", "Milan", "Florence"],
+      "question": "Pizza Margherita is traditionally linked to which Italian city?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Families traditionally make huge batches of kimchi together before winter, a custom called kimjang.",
+      "id": "food-0005",
+      "options": ["Japanese", "Thai", "Vietnamese", "Korean"],
+      "question": "Kimchi, spicy fermented vegetables, is a staple of which cuisine?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Peanut flowers bend down and push their pods into the soil, where the peanuts ripen underground.",
+      "id": "food-0014",
+      "options": ["Cereal grains", "Root vegetables", "Legumes", "Tree nuts"],
+      "question": "Botanically, peanuts are not nuts. What are they?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Viennese bakers in Paris in the 1830s helped popularise the pastry, later made with flaky, buttery layered dough.",
+      "id": "food-0019",
+      "options": ["Belgium", "Switzerland", "Austria", "Germany"],
+      "question": "The croissant descends from the kipferl, a crescent pastry from which country?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Pesto alla genovese blends basil, pine nuts, garlic, hard cheese and olive oil; its name comes from 'to pound'.",
+      "id": "food-0015",
+      "options": ["Walnuts", "Almonds", "Pine nuts", "Cashews"],
+      "question": "Which nuts are used in traditional pesto from Genoa?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Tofu is made by curdling soy milk and pressing the curds, a bit like making cheese.",
+      "id": "food-0008",
+      "options": ["Kidney beans", "Soybeans", "Mung beans", "Chickpeas"],
+      "question": "Tofu is made from which beans?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "The town of Gouda has held a traditional cheese market for centuries, where farmers trade wheels of cheese.",
+      "id": "food-0018",
+      "options": ["Netherlands", "Denmark", "Switzerland", "Belgium"],
+      "question": "Gouda cheese is named after a town in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Portuguese missionaries and traders arrived in the 16th century; the word tempura may come from Latin 'tempora'.",
+      "id": "food-0024",
+      "options": ["The English", "The Dutch", "The Spanish", "The Portuguese"],
+      "question": "Which European traders introduced the frying technique behind tempura to Japan?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Acid from lime juice changes the fish's proteins much like heat does; Peru celebrates a national ceviche day.",
+      "id": "food-0027",
+      "options": ["Vinegar", "Citrus juice", "Salted water", "Hot oil"],
+      "question": "In ceviche, raw fish is 'cooked' by soaking it in what?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Cacao pods grow directly on the tree trunk, and each holds around 30-50 beans.",
+      "id": "food-0011",
+      "options": ["Coffee plant", "Vanilla orchid", "Cacao tree", "Carob tree"],
+      "question": "Chocolate is made from the beans of which plant?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Couscous is tiny steamed balls of semolina; in 2020 UNESCO listed it as shared heritage of four North African countries.",
+      "id": "food-0028",
+      "options": ["Long-grain rice", "Oats", "Durum wheat", "Maize"],
+      "question": "Couscous is traditionally made from which grain?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Mace is the lacy red covering around the nutmeg seed; both come from a tree native to Indonesia's Banda Islands.",
+      "id": "food-0033",
+      "options": ["Clove", "Cardamom", "Mace", "Allspice"],
+      "question": "Which spice comes from the same fruit as nutmeg?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Anna, Duchess of Bedford, is credited with starting it to fill the long gap between lunch and a late dinner.",
+      "id": "food-0029",
+      "options": ["China", "India", "Netherlands", "England"],
+      "question": "The custom of 'afternoon tea' began in which country in the 1840s?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Real feta is made mainly from sheep's milk and has a protected EU name that only Greek producers may use.",
+      "id": "food-0016",
+      "options": ["Greece", "Spain", "France", "Italy"],
+      "question": "Feta cheese is traditionally from which country?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Known as the Chinese gooseberry, it was renamed after New Zealand's kiwi bird when exported in the 1950s.",
+      "id": "food-0036",
+      "options": ["Chile", "New Zealand", "Australia", "China"],
+      "question": "Kiwifruit originally comes from which country?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Pepper was so valuable in ancient times that it was called 'black gold' and sometimes used to pay rent.",
+      "id": "food-0034",
+      "options": ["India", "Brazil", "Madagascar", "Mexico"],
+      "question": "Black pepper is native to which country?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "The holes, or 'eyes', are made by bubbles of carbon dioxide released by bacteria as the cheese ripens.",
+      "id": "food-0017",
+      "options": ["Cheddar", "Emmental", "Brie", "Gruyère"],
+      "question": "Which Swiss cheese is famous for its large holes?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Seville oranges are too sour to eat raw but full of pectin, making them ideal for a firm marmalade.",
+      "id": "food-0037",
+      "options": ["Lemons", "Apricots", "Wild strawberries", "Bitter oranges"],
+      "question": "Traditional marmalade is made with which fruit?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Sailors once carried sauerkraut on long voyages because it keeps for months and contains vitamin C.",
+      "id": "food-0020",
+      "options": ["Cucumber", "Cabbage", "Turnip", "Onion"],
+      "question": "Sauerkraut is made from which fermented vegetable?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "The name probably refers to the coffee and cocoa in this layered dessert from north-east Italy.",
+      "id": "food-0038",
+      "options": ["Cream cloud", "Little cake", "Pick me up", "Sweet dream"],
+      "question": "What does the name of the Italian dessert 'tiramisu' mean?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Legend says an emperor travelling in disguise poured tea for his servant, who tapped his fingers as a secret bow.",
+      "id": "food-0042",
+      "options": [
+        "Add more sugar",
+        "Stop pouring",
+        "The tea is cold",
+        "Thank you"
+      ],
+      "question": "In parts of China, what does tapping two fingers on the table when tea is poured mean?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Borscht is eaten across Eastern Europe, often topped with a spoonful of sour cream.",
+      "id": "food-0021",
+      "options": ["Beetroot", "Tomato", "Red cabbage", "Red pepper"],
+      "question": "Which vegetable gives borscht its deep red colour?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Many Swedish workplaces have regular fika breaks, and cinnamon buns are a classic companion.",
+      "id": "food-0039",
+      "options": ["Finland", "Denmark", "Norway", "Sweden"],
+      "question": "In which country is 'fika', a coffee-and-cake break, a cherished daily custom?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Pho broth is simmered for hours with spices such as star anise, cinnamon and charred ginger.",
+      "id": "food-0022",
+      "options": ["Vietnam", "Cambodia", "Thailand", "Laos"],
+      "question": "Pho is a noodle soup from which country?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "It roughly means 'I humbly receive' and expresses thanks to everyone and everything that made the meal possible.",
+      "id": "food-0040",
+      "options": ["Sayōnara", "Konnichiwa", "Arigatō", "Itadakimasu"],
+      "question": "What do people traditionally say in Japan before starting a meal?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Most of the world's maple syrup comes from Quebec, which keeps a strategic reserve of syrup barrels.",
+      "id": "food-0046",
+      "options": ["About 10", "About 4", "About 200", "About 40"],
+      "question": "Roughly how many litres of maple sap are boiled down to make 1 litre of maple syrup?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Sushi refers to the vinegared rice, so slices of raw fish on their own are sashimi.",
+      "id": "food-0023",
+      "options": ["Onigiri", "Ramen", "Tempura", "Sashimi"],
+      "question": "Which Japanese dish consists of thinly sliced raw fish served without rice?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Rice with upright chopsticks is offered to the dead at funerals; passing food from chopstick to chopstick is also avoided.",
+      "id": "food-0041",
+      "options": [
+        "It insults the chef",
+        "It signals you have finished",
+        "It resembles a funeral rite",
+        "It means you want more"
+      ],
+      "question": "Why is it impolite in Japan to stand chopsticks upright in a bowl of rice?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Haggis is traditionally eaten on Burns Night, 25 January, after a poem is recited to it.",
+      "id": "food-0025",
+      "options": ["Scotland", "Norway", "Wales", "Ireland"],
+      "question": "Haggis is the national dish of which country?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Each grape is said to bring luck for one month of the coming year, and crowds gather at Madrid's Puerta del Sol.",
+      "id": "food-0043",
+      "options": ["Italy", "Spain", "Greece", "Portugal"],
+      "question": "Eating 12 grapes at midnight on New Year's Eve, one per chime, is a tradition from which country?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Dim sum is part of the Cantonese tradition of 'yum cha', drinking tea with small dishes in the morning.",
+      "id": "food-0053",
+      "options": ["Shandong", "Cantonese", "Hunan", "Sichuan"],
+      "question": "Dim sum is most closely associated with which Chinese regional cuisine?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "The name comes from the Hungarian 'gulyás', meaning cattle herdsman; herders cooked it in kettles over open fires.",
+      "id": "food-0026",
+      "options": ["Hungary", "Greece", "Poland", "Romania"],
+      "question": "Goulash, a paprika-rich stew, originated in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Honey's sugars and natural acidity stop microbes from growing; jars of it were even placed in ancient Egyptian tombs.",
+      "id": "food-0047",
+      "options": ["Olive oil", "Bread", "Cheese", "Honey"],
+      "question": "Which food, kept sealed, can last for decades without spoiling thanks to its low water content?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Matcha tea plants are shaded before harvest, which makes the leaves greener and sweeter.",
+      "id": "food-0030",
+      "options": [
+        "Fermented black tea",
+        "Roasted barley tea",
+        "Powdered green tea",
+        "Dried mint tea"
+      ],
+      "question": "What is matcha?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Injera is made from teff, a tiny grain; it serves as both plate and spoon, and diners tear off pieces to scoop food.",
+      "id": "food-0048",
+      "options": ["Ethiopia", "Morocco", "Kenya", "Nigeria"],
+      "question": "Injera, a spongy sourdough flatbread, is central to the cuisine of which country?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Dried katsuobushi is one of the hardest foods in the world, so hard it is shaved with a plane like wood.",
+      "id": "food-0055",
+      "options": ["Skipjack tuna", "Sardine", "Mackerel", "Atlantic salmon"],
+      "question": "Katsuobushi, the smoked flakes used in Japanese broth, are made from which fish?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Turmeric is a root related to ginger and has been used as a dye for fabrics as well as food.",
+      "id": "food-0031",
+      "options": ["Paprika", "Cumin", "Turmeric", "Ginger"],
+      "question": "Which spice gives many curries their yellow colour?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "The Incas called quinoa the 'mother of all grains'; it is actually a seed related to spinach.",
+      "id": "food-0049",
+      "options": ["The Inca", "The Olmecs", "The Maya", "The Aztecs"],
+      "question": "Quinoa was a staple crop of which ancient civilisation?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Strips of inner bark curl into 'quills' as they dry; true cinnamon comes from Sri Lanka.",
+      "id": "food-0032",
+      "options": ["Clove", "Pepper", "Cinnamon", "Nutmeg"],
+      "question": "Which spice is made from the bark of a tree?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "The Spanish tortilla is a thick omelette, often served in slices as tapas at room temperature.",
+      "id": "food-0051",
+      "options": [
+        "Eggs and potatoes",
+        "Rice and beans",
+        "Maize flour and lard",
+        "Wheat flour"
+      ],
+      "question": "A Spanish 'tortilla' is very different from a Mexican one. What is it made of?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Each plant usually produces one pineapple at a time, which forms from dozens of fused flowers.",
+      "id": "food-0059",
+      "options": [
+        "About two months",
+        "About six months",
+        "About ten years",
+        "About two years"
+      ],
+      "question": "Roughly how long does a pineapple plant take to produce its first fruit?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "The numbing comes from Sichuan pepper, which makes the lips tingle; the heat comes from chillies.",
+      "id": "food-0054",
+      "options": ["Fujian", "Sichuan", "Jiangsu", "Cantonese"],
+      "question": "Which Chinese regional cuisine is famous for 'mala', a numbing and spicy flavour?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Tradition says it should never 'hear the noon bells'; it is served with sweet mustard and a soft pretzel.",
+      "id": "food-0044",
+      "options": ["Hamburg", "Berlin", "Munich", "Vienna"],
+      "question": "Weisswurst, a white veal sausage traditionally eaten before noon, comes from which city?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "The name comes from the Latin clavus, meaning nail, because of the bud's shape.",
+      "id": "food-0057",
+      "options": ["Nutmeg", "Cinnamon", "Star anise", "Clove"],
+      "question": "Which spice is the dried flower bud of a tree?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "The switch on 'Dagen H' happened at 5 am on 3 September 1967; traffic stopped while cars moved to the other side.",
+      "id": "food-0065",
+      "options": ["Finland", "Norway", "Sweden", "Denmark"],
+      "question": "Which country switched overnight from driving on the left to the right in 1967?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Tradition says that whoever drops their bread into the fondue pot must pay a forfeit, such as buying the next round.",
+      "id": "food-0045",
+      "options": ["Austria", "Switzerland", "France", "Liechtenstein"],
+      "question": "Fondue, melted cheese shared from a pot, is a national dish of which country?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Orange carrots were developed by Dutch growers in the 17th century.",
+      "id": "food-0060",
+      "options": ["Pumpkin", "Carrot", "Potato", "Sweet corn"],
+      "question": "Which vegetable was commonly purple or yellow before orange varieties became popular?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Each kernel holds a drop of water that turns to steam and bursts the hard hull; popcorn has been found in ancient sites in Peru.",
+      "id": "food-0050",
+      "options": ["Rice", "Maize", "Wheat", "Barley"],
+      "question": "Popcorn is made from which grain?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Avocado seeds are so large that they may once have been spread by giant animals that are now extinct.",
+      "id": "food-0061",
+      "options": ["Mexico", "Kenya", "Israel", "Spain"],
+      "question": "The avocado originated in which country?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Mate is shared from one gourd in Argentina, Uruguay, Paraguay and southern Brazil, passed around a circle of friends.",
+      "id": "food-0068",
+      "options": ["Horchata", "Mate", "Chicha morada", "Atole"],
+      "question": "Which drink is traditionally sipped through a metal straw called a 'bombilla'?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "The dough is slapped onto the hot clay wall of the tandoor, where it puffs up in about a minute.",
+      "id": "food-0052",
+      "options": ["Dosa", "Naan", "Chapati", "Puri"],
+      "question": "Which Indian bread is traditionally baked on the wall of a tandoor oven?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "The Māori hongi symbolises sharing the breath of life between two people.",
+      "id": "food-0063",
+      "options": ["Fiji", "New Zealand", "Samoa", "Papua New Guinea"],
+      "question": "In which country is the 'hongi', a greeting made by pressing noses together, a tradition?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "'Wiener' means 'from Vienna', and by Austrian law the name Wiener Schnitzel is reserved for veal.",
+      "id": "food-0056",
+      "options": ["Hungary", "Switzerland", "Germany", "Austria"],
+      "question": "Wiener schnitzel, a breaded veal cutlet, is a classic of which country?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "About a third of the world's people live in countries that drive on the left, including India, the UK and Australia.",
+      "id": "food-0064",
+      "options": ["South Korea", "Japan", "China", "Germany"],
+      "question": "Which of these countries drives on the left?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Umeboshi are intensely sour and salty, and are often placed in the middle of a rice ball.",
+      "id": "food-0069",
+      "options": ["Yuzu fruits", "Persimmons", "Ume plums", "Cherries"],
+      "question": "Japanese umeboshi are salted, pickled versions of which fruit?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Each of the strawberry's 'seeds' is actually a tiny fruit containing a seed.",
+      "id": "food-0058",
+      "options": ["Strawberry", "Fig", "Kiwifruit", "Raspberry"],
+      "question": "Which fruit carries its seeds on the outside?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Hogmanay customs include 'first-footing': being the first visitor of the year, ideally bringing coal or shortbread.",
+      "id": "food-0066",
+      "options": [
+        "Midsummer's Day",
+        "New Year's Eve",
+        "Christmas Day",
+        "A harvest festival"
+      ],
+      "question": "In Scotland, what is 'Hogmanay'?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Namaste comes from Sanskrit and roughly means 'I bow to you'; the palms are held together near the chest.",
+      "id": "food-0062",
+      "options": [
+        "A kiss on each cheek",
+        "Palms pressed together",
+        "A deep bow",
+        "A firm handshake"
+      ],
+      "question": "The greeting 'namaste' is made with which gesture?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Good service is considered part of the job in Japan, and a tip left on the table may be politely returned.",
+      "id": "food-0067",
+      "options": [
+        "It is not customary",
+        "Only cash is accepted",
+        "20% is expected",
+        "10% is expected"
+      ],
+      "question": "In Japan, how is tipping in restaurants generally viewed?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Lassi can be salty, spiced or sweet; mango lassi is a favourite in many restaurants.",
+      "id": "food-0071",
+      "options": ["Lentils", "Coconut water", "Tea leaves", "Yoghurt"],
+      "question": "Lassi, a popular South Asian drink, is made mainly from what?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Bibimbap is served with vegetables, chilli paste and often an egg, and is stirred together just before eating.",
+      "id": "food-0070",
+      "options": ["Tteokbokki", "Bulgogi", "Japchae", "Bibimbap"],
+      "question": "Which Korean dish's name means 'mixed rice'?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Poutine was created in rural Quebec in the 1950s; fresh cheese curds should 'squeak' when you bite them.",
+      "id": "food-0073",
+      "options": ["Belgium", "Ireland", "Canada", "France"],
+      "question": "Poutine, fries topped with cheese curds and gravy, comes from which country?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Feijoada is traditionally eaten on Wednesdays or Saturdays and served with rice, orange slices and toasted cassava flour.",
+      "id": "food-0072",
+      "options": ["Brazil", "Mexico", "Colombia", "Cuba"],
+      "question": "Feijoada, a black bean and pork stew, is a national dish of which country?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "The sauce was first sold by two chemists in Worcester, England, in the 1830s, and is aged before bottling.",
+      "id": "food-0078",
+      "options": ["Mackerel", "Herring", "Sardines", "Anchovies"],
+      "question": "Worcestershire sauce gets part of its savoury flavour from which fermented fish?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Tomatoes develop from a flower and contain seeds, so botanists class them as fruit, even though cooks treat them as vegetables.",
+      "id": "food-0075",
+      "options": ["A root", "A vegetable", "A fruit", "A legume"],
+      "question": "Botanically speaking, what is a tomato?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Smørrebrød means 'butter and bread'; there are traditional rules about the order of toppings, starting with herring.",
+      "id": "food-0074",
+      "options": ["Sweden", "Iceland", "Norway", "Denmark"],
+      "question": "Smørrebrød, open sandwiches on rye bread, are a classic of which country?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "'Wagyu' simply means 'Japanese cow'; Kobe beef is a famous type of wagyu from Hyogo Prefecture.",
+      "id": "food-0080",
+      "options": ["Japan", "Argentina", "Australia", "France"],
+      "question": "Wagyu, beef famous for its marbling, comes from cattle breeds of which country?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Cassava roots are toxic when raw and must be processed; tapioca pearls became famous worldwide in bubble tea.",
+      "id": "food-0077",
+      "options": ["Rice", "Cassava", "Wheat", "Potato"],
+      "question": "Tapioca pearls are made from the starch of which plant?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Italian-born restaurateur Caesar Cardini is credited with creating it in Tijuana in the 1920s.",
+      "id": "food-0079",
+      "options": ["Mexico", "Italy", "Greece", "Spain"],
+      "question": "The Caesar salad was invented in which country?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "On 17 December 1903 the Wright Flyer made four flights; the longest lasted 59 seconds.",
+      "id": "avi-0001",
+      "options": ["1927", "1903", "1891", "1911"],
+      "question": "In which year did the Wright brothers make the first powered aeroplane flight?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The brothers chose the windy dunes of North Carolina's Outer Banks for steady winds and soft sand to land on.",
+      "id": "avi-0002",
+      "options": ["Wichita", "Kitty Hawk", "Cape Canaveral", "Dayton"],
+      "question": "Near which American town did the Wright brothers make their first powered flights?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Lindbergh flew from New York to Paris in about 33.5 hours in the 'Spirit of St. Louis', with no front window.",
+      "id": "avi-0004",
+      "options": [
+        "Charles Lindbergh",
+        "Antoine de Saint-Exupéry",
+        "Amelia Earhart",
+        "Louis Blériot"
+      ],
+      "question": "Who made the first solo non-stop flight across the Atlantic, in 1927?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Rutan Voyager took 9 days; it carried so much fuel that its wingtips scraped the runway on take-off.",
+      "id": "avi-0032",
+      "options": [
+        "Double Eagle",
+        "Solar Impulse 2",
+        "Spirit of St. Louis",
+        "Voyager"
+      ],
+      "question": "What was the name of the first aircraft to fly around the world non-stop without refuelling, in 1986?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Concorde could cross from London to New York in about 3.5 hours, and passengers could see the curve of the Earth.",
+      "id": "avi-0007",
+      "options": ["Italy", "Germany", "France", "United States"],
+      "question": "Concorde, the supersonic airliner, was developed jointly by the UK and which country?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Blériot's flight from Calais to Dover took about 37 minutes and won him a newspaper prize of £1,000.",
+      "id": "avi-0005",
+      "options": [
+        "Louis Blériot",
+        "Charles Lindbergh",
+        "Wilbur Wright",
+        "Henri Farman"
+      ],
+      "question": "Who made the first aeroplane flight across the English Channel, in 1909?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "At Mach 2 the airframe heated up so much that Concorde stretched by up to about 30 cm in flight.",
+      "id": "avi-0008",
+      "options": [
+        "Just below the speed of sound",
+        "About twice the speed of sound",
+        "Five times the speed of sound",
+        "Three times the speed of sound"
+      ],
+      "question": "Roughly how fast did Concorde cruise?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Earhart aimed for Paris but landed in a pasture in Northern Ireland after almost 15 hours.",
+      "id": "avi-0006",
+      "options": [
+        "Jacqueline Cochran",
+        "Amy Johnson",
+        "Amelia Earhart",
+        "Bessie Coleman"
+      ],
+      "question": "In 1932, who became the first woman to fly solo non-stop across the Atlantic?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The 747's famous hump was designed so the nose could swing open for cargo, putting the cockpit up top.",
+      "id": "avi-0011",
+      "options": [
+        "Airbus A380",
+        "McDonnell Douglas DC-10",
+        "Boeing 747",
+        "Lockheed L-1011"
+      ],
+      "question": "Which airliner was nicknamed the 'Jumbo Jet'?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Concorde flew passengers for 27 years; surviving aircraft are now displayed in museums in Europe and North America.",
+      "id": "avi-0009",
+      "options": ["2010", "1989", "2003", "1996"],
+      "question": "In which year did Concorde make its last commercial flights?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The double-deck A380 is certified for up to 853 passengers; its wings cover about 845 m², larger than three tennis courts.",
+      "id": "avi-0012",
+      "options": [
+        "Boeing 747-8",
+        "Airbus A350-1000",
+        "Boeing 777-300ER",
+        "Airbus A380"
+      ],
+      "question": "By passenger capacity, which is the largest airliner ever built?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The British Comet halved journey times compared with propeller airliners and flew high above most bad weather.",
+      "id": "avi-0010",
+      "options": [
+        "Boeing 707",
+        "Tupolev Tu-104",
+        "Sud Aviation Caravelle",
+        "de Havilland Comet"
+      ],
+      "question": "Which was the world's first commercial jet airliner, entering service in 1952?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "DELAG's Zeppelins carried thousands of passengers on sightseeing and city-to-city flights before 1914.",
+      "id": "avi-0037",
+      "options": ["Biplanes", "Gliders", "Airships", "Seaplanes"],
+      "question": "The world's first airline, DELAG, founded in 1909, carried passengers in what?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Parts arrived from across Europe by ship, barge and road convoys, some too big to travel any other way.",
+      "id": "avi-0013",
+      "options": ["Toulouse", "Marseille", "Lyon", "Bordeaux"],
+      "question": "In which French city did Airbus carry out final assembly of the A380?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The Mach number is named after Austrian physicist Ernst Mach; Mach 1 is about 1,060 km/h at airliner cruising height.",
+      "id": "avi-0015",
+      "options": ["Earth's rotation", "The jet stream", "Sound", "Light"],
+      "question": "Flying at Mach 1 means flying at the speed of what?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Yeager flew the rocket-powered Bell X-1, which was dropped from beneath a bomber before igniting its engine.",
+      "id": "avi-0016",
+      "options": [
+        "John Glenn",
+        "Chuck Yeager",
+        "Yuri Gagarin",
+        "Neil Armstrong"
+      ],
+      "question": "Who was the first pilot confirmed to break the sound barrier in level flight, in 1947?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Whittle filed his patent at age 22; a German design by Hans von Ohain became the first jet to fly, in 1939.",
+      "id": "avi-0040",
+      "options": [
+        "Henry Royce",
+        "Frank Whittle",
+        "Hans von Ohain",
+        "Geoffrey de Havilland"
+      ],
+      "question": "Which British engineer patented the turbojet engine in 1930?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "International rules require pilots and controllers on international flights to be able to speak English to a set standard.",
+      "id": "avi-0017",
+      "options": ["Spanish", "English", "French", "Russian"],
+      "question": "Which language is used worldwide for international air traffic control?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "It comes from 'venez m'aider', meaning 'come and help me', and is always said three times in a row.",
+      "id": "avi-0018",
+      "options": ["Latin", "German", "Spanish", "French"],
+      "question": "The distress call 'Mayday' comes from a phrase in which language?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The thin air up there means less drag, so planes burn less fuel than they would lower down.",
+      "id": "avi-0020",
+      "options": [
+        "About 10-12 km",
+        "About 25-30 km",
+        "About 50 km",
+        "About 2-3 km"
+      ],
+      "question": "At roughly what altitude do jet airliners usually cruise?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "That is like being on a high mountain, which is why snack bags puff up and you may tire faster on long flights.",
+      "id": "avi-0019",
+      "options": [
+        "About 4,500-5,000 m",
+        "Sea level (0 m)",
+        "About 1,800-2,400 m",
+        "About 9,000-10,000 m"
+      ],
+      "question": "Airliner cabins are usually pressurised to match roughly what altitude?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "The He 178 first flew on 27 August 1939 in Germany, powered by Hans von Ohain's engine.",
+      "id": "avi-0041",
+      "options": [
+        "Messerschmitt Me 262",
+        "Bell X-1",
+        "Heinkel He 178",
+        "Gloster Meteor"
+      ],
+      "question": "Which was the first jet-powered aircraft to fly, in 1939?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Jet streams can blow at over 300 km/h, and flight routes are planned daily to ride them or avoid them.",
+      "id": "avi-0021",
+      "options": [
+        "The Gulf Stream",
+        "The jet stream",
+        "The trade winds",
+        "The monsoon"
+      ],
+      "question": "Which fast high-altitude wind often makes eastbound flights across the Atlantic shorter?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "On a globe the shortest route between two cities is a great circle, which looks curved on most flat maps.",
+      "id": "avi-0022",
+      "options": [
+        "Great circles are shortest",
+        "Earth's magnetic pull",
+        "Planes must avoid oceans",
+        "Wind always blows that way"
+      ],
+      "question": "Why do long-haul flight routes look curved on flat maps?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Its short runway slopes uphill at about 12%, helping planes slow down on landing and speed up on take-off.",
+      "id": "avi-0023",
+      "options": ["Kangchenjunga", "K2", "Annapurna", "Mount Everest"],
+      "question": "Tenzing-Hillary Airport in Lukla, Nepal, is the gateway for treks to which mountain?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The beach lies right at the end of the runway of Princess Juliana International Airport, a famous spot for plane spotters.",
+      "id": "avi-0025",
+      "options": ["Saint Martin", "Aruba", "Barbados", "Antigua and Barbuda"],
+      "question": "Maho Beach, where landing jets pass just overhead, is on which Caribbean island?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Ailerons move in opposite directions: one wing's lift goes up while the other's goes down, tilting the plane.",
+      "id": "avi-0048",
+      "options": ["Elevators", "Flaps", "Rudder", "Ailerons"],
+      "question": "Which control surfaces on the wings make an aircraft roll to one side?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The hop between Westray and Papa Westray covers under 3 km; in good wind it has taken less than a minute.",
+      "id": "avi-0031",
+      "options": [
+        "The Greek islands",
+        "Orkney, Scotland",
+        "Norway's fjords",
+        "The Maldives"
+      ],
+      "question": "Where does one of the world's shortest scheduled flights, lasting about 1-2 minutes, operate?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The island in Osaka Bay was built from millions of cubic metres of landfill and is still slowly sinking.",
+      "id": "avi-0026",
+      "options": [
+        "An artificial island",
+        "A former lake bed",
+        "Floating steel pontoons",
+        "A mountaintop"
+      ],
+      "question": "Japan's Kansai International Airport is built on what?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Over 17,000 solar cells charged batteries by day so the plane could keep flying through the night.",
+      "id": "avi-0033",
+      "options": ["Sunlight", "Wind turbines", "Biofuel", "Hydrogen"],
+      "question": "In 2016, Solar Impulse 2 flew around the world powered only by what?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Wartime shortages of aluminium forced a wooden design; it flew only once, in 1947, for less than a minute.",
+      "id": "avi-0050",
+      "options": ["Spruce", "Balsa", "Oak", "Birch"],
+      "question": "The giant 'Spruce Goose' flying boat was actually built mostly from which wood?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The Rain Vortex at Changi's Jewel pours rainwater from a glass dome, surrounded by an indoor forest.",
+      "id": "avi-0027",
+      "options": ["Doha", "Hong Kong", "Singapore", "Dubai"],
+      "question": "Which city's airport has the 'Jewel', with a 40 m indoor waterfall?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Sikorsky's VS-300 set the layout used by most helicopters today: one main rotor and a small tail rotor.",
+      "id": "avi-0038",
+      "options": [
+        "Frank Piasecki",
+        "Igor Sikorsky",
+        "Lawrence Bell",
+        "Juan de la Cierva"
+      ],
+      "question": "Who designed the first practical single-rotor helicopter, flown in 1939?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Heathrow began as a small airfield, and its name comes from a hamlet that was demolished to build it.",
+      "id": "avi-0028",
+      "options": ["Edinburgh", "Manchester", "London", "Dublin"],
+      "question": "Heathrow and Gatwick airports serve which city?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "His drawing from the 1480s shows a spiral linen screw meant to lift off by spinning through the air.",
+      "id": "avi-0039",
+      "options": ["Glider", "Helicopter", "Jet plane", "Hot-air balloon"],
+      "question": "Leonardo da Vinci's 'aerial screw' design is often seen as an early idea for which aircraft?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "No American flight school would accept her, so she learned French and trained in France.",
+      "id": "avi-0059",
+      "options": ["United States", "France", "Germany", "United Kingdom"],
+      "question": "Pioneering aviator Bessie Coleman earned her pilot's licence in 1921 in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Leonardo sketched flying machines, including an ornithopter and an 'aerial screw', about 400 years before the first planes.",
+      "id": "avi-0029",
+      "options": ["Venice", "Florence", "Milan", "Rome"],
+      "question": "Fiumicino airport, named after Leonardo da Vinci, serves which city?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Its motto, 'Above us only sky', is a line from Lennon's song 'Imagine'.",
+      "id": "avi-0030",
+      "options": ["Liverpool", "London", "Manchester", "Glasgow"],
+      "question": "Which British city's airport is named after John Lennon?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Red is on the left and green on the right, the same as on ships, so pilots can tell which way another aircraft is heading.",
+      "id": "avi-0045",
+      "options": [
+        "Right wingtip",
+        "Top of the tail",
+        "Left wingtip",
+        "Under the nose"
+      ],
+      "question": "On which side of an aircraft is the red navigation light?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Santos-Dumont is also linked to the wristwatch: his friend Louis Cartier is said to have made him one so he could keep both hands on the controls.",
+      "id": "avi-0060",
+      "options": [
+        "Santos-Dumont",
+        "Louis Blériot",
+        "Henri Farman",
+        "Gabriel Voisin"
+      ],
+      "question": "Which Brazilian aviation pioneer flew the 14-bis in Paris in 1906?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The Montgolfier brothers' balloon carried two men over Paris for about 25 minutes.",
+      "id": "avi-0034",
+      "options": ["Germany", "France", "Italy", "England"],
+      "question": "The first crewed hot-air balloon flight, in 1783, took place in which country?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Count Ferdinand von Zeppelin's first rigid airship flew over Lake Constance in 1900.",
+      "id": "avi-0036",
+      "options": ["Italy", "France", "Germany", "United Kingdom"],
+      "question": "Zeppelin airships were first built in which country?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The SR-71 flew at about 3,530 km/h; its fuel tanks leaked on the ground until the heat of flight sealed them.",
+      "id": "avi-0049",
+      "options": ["SR-71 Blackbird", "MiG-25 Foxbat", "F-15 Eagle", "Concorde"],
+      "question": "Which aircraft has held the official speed record for a crewed air-breathing jet since 1976?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Ellen Church, a nurse and pilot, persuaded Boeing Air Transport that nurses would reassure nervous passengers.",
+      "id": "avi-0062",
+      "options": ["Teachers", "Pilots", "Cooks", "Nurses"],
+      "question": "The first airline stewardesses, hired in 1930, had to be trained as what?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Before railways, towns kept their own local solar time, so clocks just a few towns apart could differ by many minutes.",
+      "id": "avi-0051",
+      "options": ["Telegraphs", "Shipping", "Railways", "Airlines"],
+      "question": "Standard time zones were first adopted mainly to help schedule what?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "At about 50 km, it has the longest undersea section of any tunnel in the world, roughly 38 km.",
+      "id": "avi-0053",
+      "options": ["1994", "2001", "1984", "1975"],
+      "question": "In which year did the Channel Tunnel between England and France open?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "The 537 m runway climbs at a gradient of about 18.5%, so planes land uphill and take off downhill.",
+      "id": "avi-0065",
+      "options": ["Austria", "Italy", "France", "Switzerland"],
+      "question": "Courchevel Altiport, famous for its steep, short runway, is in which country?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Wind blowing over the wings adds to the airspeed, so the plane reaches lift-off speed sooner.",
+      "id": "avi-0047",
+      "options": [
+        "Less runway is needed",
+        "It saves fuel later",
+        "Engines run quieter",
+        "It prevents wing icing"
+      ],
+      "question": "Why do aircraft usually take off into the wind?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The tunnel is about 54 km long, with around 23 km beneath the seabed of the Tsugaru Strait.",
+      "id": "avi-0055",
+      "options": ["Shikoku", "Kyushu", "Okinawa", "Hokkaido"],
+      "question": "Japan's Seikan rail tunnel, partly under the sea, links Honshu with which island?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Flying east across it from Asia, you can land on the previous calendar day, earlier than you took off.",
+      "id": "avi-0052",
+      "options": [
+        "Equator",
+        "Arctic Circle",
+        "Greenwich Prime Meridian",
+        "International Date Line"
+      ],
+      "question": "Crossing which line on a flight changes the calendar date by a day?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The trip takes about eight hours and crosses 291 bridges, so the train is nicknamed the slowest express in the world.",
+      "id": "avi-0056",
+      "options": ["St. Moritz", "Gstaad", "Interlaken", "Lucerne"],
+      "question": "The Glacier Express panoramic train runs between Zermatt and which Swiss resort?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "It is run jointly by France and Switzerland and has separate French and Swiss sectors, with a customs road to Basel.",
+      "id": "avi-0066",
+      "options": ["Austria", "Germany", "Switzerland", "France"],
+      "question": "EuroAirport Basel-Mulhouse-Freiburg lies entirely within which country?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The main route is about 9,300 km long, crosses eight time zones and takes about a week non-stop.",
+      "id": "avi-0054",
+      "options": ["Irkutsk", "Novosibirsk", "Murmansk", "Vladivostok"],
+      "question": "The Trans-Siberian Railway runs from Moscow to which city?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "William Boeing's first aircraft was a small seaplane; the company still builds airliners in the Seattle area.",
+      "id": "avi-0058",
+      "options": ["Detroit", "Seattle", "Chicago", "Wichita"],
+      "question": "In which city was the Boeing company founded in 1916?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "When its iron train shed opened in 1868, it had the largest single-span roof in the world.",
+      "id": "avi-0057",
+      "options": ["London", "Paris", "Brussels", "Amsterdam"],
+      "question": "St Pancras International, terminus of the Eurostar trains, is in which city?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Photographs of Lilienthal's glider flights inspired the Wright brothers.",
+      "id": "avi-0061",
+      "options": ["Powered planes", "Gliders", "Balloons", "Airships"],
+      "question": "German pioneer Otto Lilienthal made around 2,000 flights in the 1890s in what?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "The A300, first flown in 1972, was the world's first twin-engine wide-body airliner.",
+      "id": "avi-0069",
+      "options": ["A310", "A340", "A300", "A320"],
+      "question": "What was Airbus's first airliner?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Winglets weaken the swirling vortices at the wingtips, which can cut fuel use by a few percent.",
+      "id": "avi-0067",
+      "options": [
+        "Cut drag and save fuel",
+        "Hold the landing lights",
+        "Improve radio reception",
+        "Help steer on the ground"
+      ],
+      "question": "What do the upturned 'winglets' on many airliners' wingtips mainly do?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "More than 16,000 DC-3s and military versions were built, and some are still flying over 80 years later.",
+      "id": "avi-0063",
+      "options": [
+        "Douglas DC-3",
+        "Ford Trimotor",
+        "Boeing 247",
+        "Junkers Ju 52"
+      ],
+      "question": "Which 1930s propeller airliner made passenger flying profitable, and some still fly today?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "White keeps the plane cooler on hot ramps and makes cracks, dents or leaks easier to spot during inspections.",
+      "id": "avi-0068",
+      "options": [
+        "It improves radar",
+        "It is required by law",
+        "It reflects sunlight",
+        "It reduces drag"
+      ],
+      "question": "Why are most airliners painted mainly white?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le Bourget is also where Charles Lindbergh landed in 1927 at the end of his transatlantic flight.",
+      "id": "avi-0064",
+      "options": ["Beauvais", "Le Bourget", "Orly", "Charles de Gaulle"],
+      "question": "The Paris Air Show is held at which airport?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Pilots fly the A320 with a small side-stick instead of a control column, and computers keep it within safe limits.",
+      "id": "avi-0073",
+      "options": ["Boeing 757", "Concorde", "Boeing 777", "Airbus A320"],
+      "question": "Which airliner, entering service in 1988, was the first with digital fly-by-wire controls?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The crossing starts as a bridge and then dives into a tunnel via an artificial island, so it doesn't block ships or planes.",
+      "id": "avi-0070",
+      "options": ["Norway", "Sweden", "Germany", "Finland"],
+      "question": "The Øresund Bridge connects Denmark with which country?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Opened in 2016, it lets trains pass under the mountains at up to about 250 km/h, with up to 2,300 m of rock overhead.",
+      "id": "avi-0071",
+      "options": ["Italy", "Austria", "Switzerland", "Liechtenstein"],
+      "question": "The Gotthard Base Tunnel, a 57 km railway tunnel under the Alps, is in which country?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "A specially modified TGV set the speed record for a conventional wheeled train, 574.8 km/h, in 2007.",
+      "id": "avi-0072",
+      "options": ["France", "Italy", "Spain", "Germany"],
+      "question": "In which country do the high-speed TGV trains run?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Composites don't corrode like metal, so the 787 cabin can be kept more humid and pressurised to a lower altitude.",
+      "id": "avi-0074",
+      "options": [
+        "Titanium sheet",
+        "Stainless steel",
+        "Aluminium-lithium alloy",
+        "Carbon-fibre composites"
+      ],
+      "question": "The Boeing 787 Dreamliner's body and wings are made largely of what?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "The island has no airstrip; the voyage from Cape Town takes about six days, and ships call only around eight to ten times a year.",
+      "id": "avi-0076",
+      "options": [
+        "By weekly flights",
+        "By seaplane",
+        "Only by ship",
+        "By helicopter"
+      ],
+      "question": "How can visitors reach Tristan da Cunha, one of the most remote inhabited islands?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Early Chinese kites were made of silk and bamboo and were used to send signals and measure distances.",
+      "id": "avi-0075",
+      "options": ["Egypt", "China", "Greece", "India"],
+      "question": "Where did people first fly kites, more than 2,000 years ago?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Ships once sailed on the Haarlemmermeer lake where planes now taxi; it was drained in the 1850s.",
+      "id": "avi-0078",
+      "options": [
+        "Copenhagen Kastrup",
+        "Brussels",
+        "Amsterdam Schiphol",
+        "Hamburg"
+      ],
+      "question": "Which major European airport lies about 3 m below sea level, on a drained lake bed?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Each arc gives about 20-25 seconds of floating, which astronauts use for training.",
+      "id": "avi-0079",
+      "options": [
+        "Supersonic speed",
+        "Altitude sickness",
+        "Severe turbulence",
+        "Weightlessness"
+      ],
+      "question": "Parabolic flights, which climb and dive in arcs, let passengers briefly experience what?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "A nautical mile was originally based on one minute of latitude, which makes it handy for navigation with charts.",
+      "id": "avi-0080",
+      "options": ["2,000 m", "1,000 m", "1,852 m", "1,609 m"],
+      "question": "A knot is one nautical mile per hour. How long is a nautical mile?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Shannon in Ireland was a refuelling stop for transatlantic flights, and the shop was set up for passengers in transit.",
+      "id": "avi-0077",
+      "options": ["Schiphol", "Heathrow", "Shannon", "Frankfurt"],
+      "question": "Which airport opened the world's first duty-free shop, in 1947?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "At the equinoxes, the sun casts a shadow on El Castillo's staircase that looks like a serpent sliding down.",
+      "id": "his-0020",
+      "options": ["Inca", "Aztec", "Maya", "Olmec"],
+      "question": "Which civilisation built the stepped pyramid El Castillo at Chichén Itzá?"
+    }
+  ]
+}
