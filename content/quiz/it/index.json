@@ -2,33 +2,33 @@
   "lang": "it",
   "packs": [
     {
-      "bytes": 106350,
+      "bytes": 107734,
       "count": 250,
       "file": "pack-001.json",
       "id": "pack-001",
-      "sha256": "f2813bccf0b3175ebf16e72fb72a0013efc8253d528734d564a7231cbd93d21e"
+      "sha256": "7f320e402f6851f001a8421a71122b34a514f3190f15aea0d045d8e6af5b681d"
     },
     {
-      "bytes": 111427,
+      "bytes": 113392,
       "count": 249,
       "file": "pack-002.json",
       "id": "pack-002",
-      "sha256": "d39ba5547c0b114b0ec14b1e6bb41d32f6ce9537c78427edc2a211c1242bec7e"
+      "sha256": "ef5aeefaa9d306a0c504b8e4afd9a1784f91edca0205e0ac8b5d14901224fd88"
     },
     {
-      "bytes": 109456,
+      "bytes": 113279,
       "count": 249,
       "file": "pack-003.json",
       "id": "pack-003",
-      "sha256": "bfe46938653a959baebdf343dffb7f2b588c3e0faf7dd17d4c9cbbcc0a43208a"
+      "sha256": "7f6ac7d50ca7f2ce86eb9993422796c75754bc8b23044e35cd0680c6bf511957"
     },
     {
-      "bytes": 103650,
+      "bytes": 106368,
       "count": 243,
       "file": "pack-004.json",
       "id": "pack-004",
-      "sha256": "f153b98d22a45472c9d5d03f776f94fb00341e8bbbecfd7e86476b55766e9d23"
+      "sha256": "bc6f7dfd8b7e0843226017b2b9f1889f78ac4ea50c1ee05ab9d9352a38c70c3b"
     }
   ],
-  "version": "9db3f57d4ced"
+  "version": "0d33cf3ef645"
 }

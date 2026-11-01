@@ -15,15 +15,10 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 2,
-      "explanation": "Torricelli, discípulo de Galileo, demostró que la presión del aire sostiene una columna de mercurio de unos 76 cm.",
+      "explanation": "Los usuarios cambian efectivo por dinero electrónico en pequeñas tiendas; en tres años ya tenía unos 9 millones de clientes en Kenia, muchos sin cuenta bancaria.",
       "id": "inv-0050",
-      "options": [
-        "Galileo Galilei",
-        "Otto von Guericke",
-        "Evangelista Torricelli",
-        "Blaise Pascal"
-      ],
-      "question": "¿Quién inventó el barómetro de mercurio en 1643?"
+      "options": ["Nigeria", "Sudáfrica", "Kenia", "India"],
+      "question": "M-Pesa, que permite a millones de personas enviar dinero por SMS con teléfonos sencillos, se lanzó en 2007 en ¿qué país?"
     },
     {
       "answer": 3,
@@ -134,15 +129,10 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Cochrane quería una máquina que lavara sus platos sin desportillar su fina porcelana.",
+      "explanation": "Un flotador que se hundía en un depósito de agua oculto dentro del elefante ponía en marcha figuras móviles, pájaros y un tambor cada media hora.",
       "id": "inv-0083",
-      "options": [
-        "Margaret Knight",
-        "Josephine Cochrane",
-        "Beulah Louise Henry",
-        "Mary Anderson"
-      ],
-      "question": "¿Quién inventó, en 1886, el primer lavavajillas con éxito comercial?"
+      "options": ["Vapor", "Agua", "Arena", "Resortes"],
+      "question": "El «reloj elefante» de al-Jazari, descrito en un libro de 1206, funcionaba con ¿qué?"
     },
     {
       "answer": 1,
@@ -295,15 +285,10 @@
       "answer": 0,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "A Leibniz le fascinó encontrar patrones parecidos en los hexagramas del antiguo «I Ching» chino.",
+      "explanation": "Su Vrihat Samrat Yantra, de unos 27 m de altura y terminado en la década de 1730, da la hora local con un margen de unos dos segundos.",
       "id": "inv-0096",
-      "options": [
-        "Gottfried Leibniz",
-        "René Descartes",
-        "Isaac Newton",
-        "Christiaan Huygens"
-      ],
-      "question": "En 1703, ¿qué pensador publicó un influyente artículo sobre la aritmética binaria?"
+      "options": ["Reloj de sol", "Telescopio", "Brújula", "Reloj de agua"],
+      "question": "¿Qué instrumento de piedra, el mayor de su tipo en el mundo, alberga el observatorio Jantar Mantar de Jaipur, en la India?"
     },
     {
       "answer": 1,
@@ -402,10 +387,10 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 2,
-      "explanation": "La Rocket ganó las pruebas de Rainhill, un concurso para elegir la mejor locomotora para el nuevo ferrocarril Liverpool–Mánchester.",
+      "explanation": "El sánscrito «śarkarā» dio el persa «shakar» y el árabe «sukkar», de donde viene «azúcar»; en la India ya se fabricaba azúcar cristalizado hacia el siglo IV d. C.",
       "id": "inv-0068",
-      "options": ["Flying Scotsman", "Rocket", "Mallard", "Puffing Billy"],
-      "question": "¿Qué famosa locomotora de 1829 construyeron George y Robert Stephenson?"
+      "options": ["China", "India", "Egipto", "Brasil"],
+      "question": "La palabra «azúcar» y el arte de convertir el jugo de caña en cristales proceden de ¿qué país?"
     },
     {
       "answer": 2,
@@ -623,10 +608,15 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Los karakuri del período Edo usaban muelles y engranajes para avanzar con una taza de té y volver atrás cuando alguien tomaba la taza.",
+      "explanation": "Las patatas se dejan a la intemperie para que se congelen de noche y se descongelen de día, y luego se pisan para sacarles el agua; el chuño seco se conserva durante años.",
       "id": "inv-0097",
-      "options": ["Daruma", "Kokeshi", "Hina-ningyō", "Karakuri"],
-      "question": "¿Cómo se llaman en japonés los muñecos mecánicos, como los que sirven el té?"
+      "options": [
+        "Humo sobre el fuego",
+        "Sal marina",
+        "Hornos de barro calientes",
+        "Heladas nocturnas y sol"
+      ],
+      "question": "Los campesinos andinos elaboran el chuño, una antigua patata liofilizada, usando ¿qué?"
     },
     {
       "answer": 1,
@@ -724,10 +714,10 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "El Seiko Astron usaba un diminuto cristal de cuarzo vibrante y era mucho más preciso que los relojes mecánicos.",
+      "explanation": "Argentina celebra el Día del Inventor el 29 de septiembre, día de su nacimiento; en 1945 Marcel Bich compró los derechos del diseño, origen del bolígrafo Bic.",
       "id": "inv-0093",
-      "options": ["Sony", "Casio", "Citizen", "Seiko"],
-      "question": "¿Qué empresa japonesa lanzó el primer reloj de pulsera de cuarzo, en 1969?"
+      "options": ["España", "Brasil", "Italia", "Argentina"],
+      "question": "László Bíró, pionero del bolígrafo nacido en Hungría, patentó su invento en 1943 tras mudarse a ¿qué país?"
     },
     {
       "answer": 3,
@@ -993,10 +983,15 @@
       "answer": 2,
       "category": "languages",
       "difficulty": 3,
-      "explanation": "El mjedruli tradicionalmente no tiene mayúsculas; las tres escrituras históricas de Georgia figuran en la lista de patrimonio cultural de la UNESCO.",
+      "explanation": "Cada consonante tiene siete formas, una por cada sonido vocálico, lo que da bastante más de 200 símbolos; la escritura procede de la antigua escritura ge’ez.",
       "id": "lang-0068",
-      "options": ["Glagolítico", "Ge’ez", "Mjedruli", "Hangul"],
-      "question": "¿Cómo se llama la escritura única con la que se escribe el georgiano?"
+      "options": [
+        "Una palabra completa",
+        "Solo una vocal",
+        "Consonante más vocal",
+        "Una idea o un objeto"
+      ],
+      "question": "El amárico de Etiopía se escribe con un sistema en el que cada símbolo representa ¿qué?"
     },
     {
       "answer": 3,
@@ -1239,10 +1234,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Los jugadores atrapan y lanzan la pelota con una cesta curva de mimbre, sujeta a la muñeca.",
+      "explanation": "Se dice que empezó en Copacabana en 1965, cuando se prohibió jugar al fútbol en la arena pero se permitían las redes de voleibol.",
       "id": "sport-0058",
-      "options": ["Cataluña", "Andalucía", "País Vasco", "Islas Baleares"],
-      "question": "El jai alai (cesta punta), a menudo considerado el juego de pelota más rápido, ¿de qué región procede?"
+      "options": ["Lisboa", "Miami", "Río de Janeiro", "Barcelona"],
+      "question": "El futvóley, voleibol que se juega sin usar las manos, se inventó en las playas de ¿qué ciudad?"
     },
     {
       "answer": 1,
@@ -1275,10 +1270,15 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "El evento se llamó primero «Semana Internacional de los Deportes de Invierno» y solo más tarde se reconoció como los primeros Juegos de Invierno.",
+      "explanation": "Un año la carrera sube de Durban a Pietermaritzburg y al siguiente va en sentido contrario, así que las ediciones de «subida» y de «bajada» difieren un poco en longitud.",
       "id": "sport-0037",
-      "options": ["Chamonix", "St. Moritz", "Innsbruck", "Oslo"],
-      "question": "¿Dónde se celebraron los primeros Juegos Olímpicos de Invierno, en 1924?"
+      "options": [
+        "Cambia de sentido cada año",
+        "Se corre solo de noche",
+        "Los corredores van descalzos",
+        "Atraviesa tres países"
+      ],
+      "question": "¿Qué tiene de peculiar el Comrades Marathon de Sudáfrica, de unos 90 km?"
     },
     {
       "answer": 2,
@@ -1293,19 +1293,24 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Los arqueros olímpicos disparan a una diana situada a 70 m; el anillo central dorado mide unos 12 cm.",
+      "explanation": "Unos 20 conductores de trineo y sus perros llevaron la antitoxina por relevos, porque los aviones de la época no podían volar en las tormentas invernales de Alaska.",
       "id": "sport-0041",
-      "options": ["Oro", "Azul", "Rojo", "Negro"],
-      "question": "En el tiro con arco olímpico, ¿de qué color es el centro de la diana?"
+      "options": [
+        "Suero contra la difteria",
+        "Pepitas de oro",
+        "Correo de Navidad",
+        "Provisiones para el invierno"
+      ],
+      "question": "La carrera de trineos de perros Iditarod, en Alaska, recuerda un relevo de 1925 que llevó a toda prisa ¿qué al pueblo de Nome?"
     },
     {
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Los jugadores de campo no pueden tocar el fondo de la piscina, así que tienen que mantenerse a flote durante todo el partido.",
+      "explanation": "El «naghol», el salto de la isla de Pentecostés, está ligado a la cosecha del ñame; la primera empresa comercial de puenting, en Nueva Zelanda, se inspiró en él.",
       "id": "sport-0054",
-      "options": ["Seis", "Cinco", "Siete", "Ocho"],
-      "question": "¿Cuántos jugadores por equipo hay en el agua en el waterpolo, incluido el portero?"
+      "options": ["Fiyi", "Samoa", "Vanuatu", "Tonga"],
+      "question": "¿En qué país del Pacífico los hombres saltan desde altas torres de madera con lianas atadas a los tobillos, lo que inspiró el puenting?"
     },
     {
       "answer": 2,
@@ -1320,10 +1325,15 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Los rings de sumo son de arcilla y paja; un luchador pierde si cualquier parte de su cuerpo, salvo los pies, toca el suelo.",
+      "explanation": "Dos puños, dos codos, dos rodillas y dos espinillas suman ocho «armas», frente a solo los dos puños del boxeo.",
       "id": "sport-0014",
-      "options": ["Japón", "China", "Mongolia", "Corea del Sur"],
-      "question": "La lucha sumo es el deporte nacional tradicional de ¿qué país?"
+      "options": [
+        "Codos y rodillas",
+        "Cabeza y caderas",
+        "Hombros y espalda",
+        "Muñecas y tobillos"
+      ],
+      "question": "El muay thai se llama «arte de las ocho extremidades» porque se golpea con los puños, las espinillas y ¿qué más?"
     },
     {
       "answer": 2,
@@ -1356,10 +1366,10 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Los jugadores de hockey sobre hielo hacen cambios «al vuelo» durante el juego, a menudo tras turnos de menos de un minuto.",
+      "explanation": "Estos «tres juegos de hombres» ya aparecen en una crónica del siglo XIII; hoy las mujeres también compiten en el tiro con arco y en las carreras de caballos.",
       "id": "sport-0028",
-      "options": ["Seis", "Cinco", "Siete", "Once"],
-      "question": "¿Cuántos jugadores por equipo hay en el hielo en el hockey sobre hielo, incluido el portero?"
+      "options": ["Tiro con arco", "Esgrima", "Polo", "Levantamiento de pesas"],
+      "question": "El festival Naadam de Mongolia incluye lucha, carreras de caballos y ¿qué otro deporte?"
     },
     {
       "answer": 2,
@@ -1388,10 +1398,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "El jugador debe meter las 15 rojas, cada una seguida de la negra, y luego todas las de color, sin ceder el turno.",
+      "explanation": "Los corredores cargan con su propia comida y su equipo durante toda la carrera; la organización solo aporta agua y una tienda compartida en cada campamento nocturno.",
       "id": "sport-0031",
-      "options": ["155", "100", "147", "180"],
-      "question": "¿Cuál es la puntuación de una tacada máxima estándar en snooker?"
+      "options": ["Namib", "Kalahari", "Sahara", "Gobi"],
+      "question": "El Marathon des Sables de Marruecos, una carrera por etapas de unos 250 km, atraviesa ¿qué desierto?"
     },
     {
       "answer": 0,
@@ -1420,10 +1430,10 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Un volante de máxima calidad lleva 16 plumas de ganso, tradicionalmente todas de la misma ala.",
+      "explanation": "Muchos campos son de críquet y se usan en invierno, por eso los grandes estadios suelen llamarse «ovals» (óvalos); el campo no tiene un tamaño fijo.",
       "id": "sport-0003",
-      "options": ["Squash", "Bádminton", "Tenis de mesa", "Lacrosse"],
-      "question": "¿Qué deporte se juega con un volante?"
+      "options": ["Rectangular", "Ovalada", "Cuadrada", "De rombo"],
+      "question": "¿Qué forma suele tener el campo de fútbol australiano?"
     },
     {
       "answer": 0,
@@ -1465,19 +1475,19 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "El rugby league, una modalidad distinta que se separó en 1895, juega con 13 jugadores por equipo.",
+      "explanation": "El equipo debutó en Calgary; su historia inspiró la película de 1993 «Cool Runnings» («Elegidos para el triunfo»), que cambió muchos detalles reales.",
       "id": "sport-0029",
-      "options": ["12", "11", "13", "15"],
-      "question": "¿Cuántos jugadores tiene en el campo un equipo de rugby union (rugby a 15)?"
+      "options": ["Fiyi", "Kenia", "Brasil", "Jamaica"],
+      "question": "En 1988, ¿qué país tropical sorprendió al mundo enviando un equipo de bobsleigh a los Juegos Olímpicos de Invierno?"
     },
     {
       "answer": 0,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Los jugadores rotan sus posiciones en el sentido de las agujas del reloj cada vez que su equipo recupera el saque.",
+      "explanation": "Ya se jugaba hace más de 2000 años, en la dinastía Han; en 2004 la FIFA reconoció el cuju como una forma temprana de fútbol.",
       "id": "sport-0015",
-      "options": ["Seis", "Cinco", "Cuatro", "Siete"],
-      "question": "¿Cuántos jugadores de cada equipo hay a la vez en una pista de voleibol?"
+      "options": ["China", "Grecia", "Egipto", "México"],
+      "question": "El cuju, un antiguo juego en el que se pateaba una pelota a través de una portería, procede de ¿qué país?"
     },
     {
       "answer": 2,
@@ -1501,10 +1511,15 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Hoy los overs de seis lanzamientos son la norma, pero Australia usó overs de ocho en muchas temporadas hasta 1979.",
+      "explanation": "Iten está a unos 2400 m, al borde del Gran Valle del Rift, donde el aire enrarecido ayuda a ganar resistencia; se proclama «Hogar de Campeones».",
       "id": "sport-0026",
-      "options": ["Ocho", "Cinco", "Diez", "Seis"],
-      "question": "En el críquet, ¿cuántos lanzamientos válidos tiene un over?"
+      "options": [
+        "Las brisas marinas",
+        "Pistas llanas de arena",
+        "Los inviernos frescos",
+        "La gran altitud"
+      ],
+      "question": "Muchos de los mejores fondistas entrenan en torno a Iten, en Kenia. ¿Qué hace tan útil la zona?"
     },
     {
       "answer": 1,
@@ -1569,19 +1584,29 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Tres dardos en el triple 20 suman 60 cada uno; la diana central solo vale 50.",
+      "explanation": "Un maestro llamado morshed toca un tambor de copa y recita versos mientras los atletas balancean pesadas mazas de madera en un foso hundido; la UNESCO lo reconoció en 2010.",
       "id": "sport-0032",
-      "options": ["200", "180", "170", "150"],
-      "question": "¿Cuál es la puntuación más alta posible con tres dardos?"
+      "options": [
+        "El silbato del árbitro",
+        "Tambores y poesía",
+        "Un reloj que hace tictac",
+        "Los aplausos del público"
+      ],
+      "question": "En el zurkhaneh tradicional de Irán («casa de la fuerza»), los atletas entrenan al compás de ¿qué?"
     },
     {
       "answer": 0,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "William G. Morgan lo creó en Massachusetts como un juego de interior más suave que el baloncesto.",
+      "explanation": "El atleta salta, golpea con un pie una pequeña bola colgada, a menudo de piel de foca, y debe caer sobre ese mismo pie; antes la patada anunciaba una caza con éxito.",
       "id": "sport-0049",
-      "options": ["Mintonette", "Balonmano", "Netball", "Voley-tenis"],
-      "question": "¿Cómo se llamaba originalmente el voleibol cuando se inventó en 1895?"
+      "options": [
+        "Un blanco colgado en el aire",
+        "Un tambor que hace girar un compañero",
+        "La mano abierta de un compañero",
+        "Un poste de madera en el suelo"
+      ],
+      "question": "En el deporte ártico llamado patada alta a un pie (one-foot high kick), ¿qué debe golpear el atleta?"
     },
     {
       "answer": 1,
@@ -1624,10 +1649,10 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "El pitch mide 20,12 m (22 yardas), lo mismo que una cadena, una antigua unidad de agrimensura.",
+      "explanation": "Cada verano se enfrentan allí equipos de Chitral y Gilgit-Baltistán en un partido de estilo libre con muy pocas reglas, una tradición que se remonta a los años treinta.",
       "id": "sport-0055",
-      "options": ["Unos 25 m", "Unos 30 m", "Unos 15 m", "Unos 20 m"],
-      "question": "¿Cuánto mide aproximadamente el pitch de críquet, la franja entre los dos juegos de palos?"
+      "options": ["India", "Nepal", "China", "Pakistán"],
+      "question": "El campo de polo de Shandur, a unos 3700 m de altitud y a menudo llamado el más alto del mundo, está en ¿qué país?"
     },
     {
       "answer": 3,
@@ -1642,10 +1667,10 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Un partido no puede continuar si un equipo tiene menos de siete jugadores en el campo.",
+      "explanation": "El nadador hawaiano Duke Kahanamoku difundió este deporte; su exhibición en Freshwater Beach, cerca de Sídney, en 1914 ayudó a lanzar el surf en Australia.",
       "id": "sport-0001",
-      "options": ["Doce", "Once", "Nueve", "Diez"],
-      "question": "¿Cuántos jugadores tiene cada equipo de fútbol en el campo?"
+      "options": ["Islas Canarias", "Hawái", "Maldivas", "Bali"],
+      "question": "El surf nació de una antigua tradición de ¿qué islas?"
     },
     {
       "answer": 1,
@@ -1970,10 +1995,10 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Bakken, al norte de Copenhague, surgió en torno a un manantial natural que atraía a multitudes de visitantes.",
+      "explanation": "Miles de bailarines con enormes máscaras con cuernos desfilan durante horas; la UNESCO proclamó el carnaval obra maestra del patrimonio inmaterial en 2001.",
       "id": "misc-0073",
-      "options": ["Dinamarca", "Inglaterra", "Alemania", "Austria"],
-      "question": "Bakken, considerado el parque de atracciones en funcionamiento más antiguo del mundo (1583), ¿en qué país está?"
+      "options": ["Bolivia", "Perú", "Chile", "Ecuador"],
+      "question": "El Carnaval de Oruro, famoso por su danza de diablos llamada diablada, se celebra en ¿qué país?"
     },
     {
       "answer": 1,
@@ -2048,10 +2073,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Los alumnos descubrieron que una pelota pinchada, más blanda, se «aplastaba» («squash») al golpear, lo que exigía golpes más variados.",
+      "explanation": "En Roma sus zapatillas nuevas le hacían ampollas, así que corrió sin ellas y batió la mejor marca mundial; cuatro años después volvió a ganar en Tokio, ya calzado.",
       "id": "sport-0059",
-      "options": ["Eton", "Winchester", "Harrow", "Rugby"],
-      "question": "¿En qué famoso colegio inglés se desarrolló el squash en el siglo XIX?"
+      "options": ["800 metros", "Campo a través", "Maratón", "10 000 metros"],
+      "question": "En 1960 el etíope Abebe Bikila ganó un oro olímpico corriendo descalzo. ¿En qué prueba?"
     },
     {
       "answer": 2,
@@ -2075,10 +2100,15 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "El punto de penalti está a 11 m (12 yardas) de la línea de gol; el borde del área está a 16,5 m.",
+      "explanation": "Los jinetes atrapan y se pasan una pelota con asas de cuero y la lanzan a través de un aro, algo así como una mezcla de baloncesto y polo.",
       "id": "sport-0047",
-      "options": ["12 metros", "11 metros", "9 metros", "16,5 metros"],
-      "question": "¿Desde qué distancia se lanza un penalti en el fútbol?"
+      "options": [
+        "Sobre patines de hielo",
+        "A caballo",
+        "En una piscina",
+        "Sobre dunas de arena"
+      ],
+      "question": "¿Cómo se juega al pato, deporte nacional oficial de Argentina desde 1953?"
     },
     {
       "answer": 2,
@@ -2116,10 +2146,10 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "La bandera de Dominica es una de las poquísimas banderas nacionales que incluyen el color morado.",
+      "explanation": "El nombre, adoptado en 1984, combina palabras de dos lenguas locales, el mooré y el diula; antes el país se llamaba Alto Volta.",
       "id": "misc-0082",
-      "options": ["Barbados", "Dominica", "Granada", "Jamaica"],
-      "question": "¿Qué país tiene en su bandera un loro morado llamado sisserou?"
+      "options": ["Malí", "Burkina Faso", "Níger", "Senegal"],
+      "question": "¿Qué país africano tiene un nombre que significa aproximadamente «tierra de la gente íntegra»?"
     },
     {
       "answer": 2,
@@ -2202,10 +2232,10 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "La mayoría de las estatuas barrocas originales se han sustituido por copias; los originales se guardan en museos.",
+      "explanation": "La cabeza se considera la parte más sagrada del cuerpo y los pies, la más baja, así que apuntar a alguien con los pies también es de mala educación.",
       "id": "misc-0035",
-      "options": ["Unas 3", "Unas 30", "Unas 3000", "Unas 300"],
-      "question": "El puente de Carlos de Praga, iniciado en 1357, está flanqueado por ¿cuántas estatuas?"
+      "options": ["La mano", "La cabeza", "El hombro", "El codo"],
+      "question": "En Tailandia, ¿qué parte del cuerpo de otra persona es especialmente grosero tocar?"
     },
     {
       "answer": 1,
@@ -2481,10 +2511,10 @@
       "answer": 3,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Botín sirve comidas desde 1725, y se dice que su horno de leña nunca se ha apagado.",
+      "explanation": "En Coober Pedy el calor del verano puede superar los 45 °C, pero los «dugouts» excavados en la roca se mantienen a unos 23–25 °C; hasta hay iglesias subterráneas.",
       "id": "misc-0079",
-      "options": ["Viena", "París", "Roma", "Madrid"],
-      "question": "Sobrino de Botín, considerado el restaurante más antiguo del mundo, ¿en qué ciudad está?"
+      "options": ["México", "Chile", "Sudáfrica", "Australia"],
+      "question": "¿En qué país mucha gente de un pueblo minero de ópalo vive en casas subterráneas para escapar del calor?"
     },
     {
       "answer": 0,
@@ -2554,10 +2584,15 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Albert Einstein vivía a pocos pasos de la Zytglogge mientras trabajaba en su teoría de la relatividad especial.",
+      "explanation": "Cuando llueve, las fibras de pelo se hinchan y cierran los huecos del tejido, mientras que con calor seco la trama suelta deja circular el aire.",
       "id": "misc-0085",
-      "options": ["Zytglogge", "Glockenspiel", "Torre dell’Orologio", "Orloj"],
-      "question": "¿Cómo se llama la torre del reloj medieval de Berna, con figuras móviles?"
+      "options": [
+        "Pelo de cabra",
+        "Fibra de palma",
+        "Algodón",
+        "Cuero de camello"
+      ],
+      "question": "Las tiendas tradicionales de los beduinos, llamadas «casas de pelo», se tejen sobre todo con ¿qué?"
     },
     {
       "answer": 2,

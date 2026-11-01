@@ -169,10 +169,10 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Columbus sailed with the Niña, the Pinta and the Santa María, which ran aground on Christmas Day 1492.",
+      "explanation": "The four-lion top of his pillar at Sarnath, carved around 250 BC, became the national emblem of India in 1950.",
       "id": "his-0050",
-      "options": ["San Gabriel", "Trinidad", "Victoria", "Santa María"],
-      "question": "What was the name of Columbus's largest ship on his 1492 voyage?"
+      "options": ["Gupta", "Mughal", "Chola", "Maurya"],
+      "question": "Ashoka, who put up stone pillars carved with messages across India, ruled which empire?"
     },
     {
       "answer": 1,
@@ -307,29 +307,19 @@
       "answer": 0,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Balboa crossed the Isthmus of Panama and called the ocean the \"South Sea\".",
+      "explanation": "Built from about 2600 BC, it had stone platform mounds and sunken plazas, yet its people made no pottery.",
       "id": "his-0100",
-      "options": [
-        "Vasco Núñez de Balboa",
-        "Francisco Pizarro",
-        "Hernán Cortés",
-        "Ponce de León"
-      ],
-      "question": "Who was the first European to see the Pacific Ocean from the Americas, in 1513?"
+      "options": ["Peru", "Mexico", "Guatemala", "Colombia"],
+      "question": "Caral, one of the oldest cities in the Americas and about as old as Egypt's great pyramids, is in which country?"
     },
     {
       "answer": 1,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Cabral's fleet was heading for India but swung far west across the Atlantic and reached the Brazilian coast.",
+      "explanation": "It flourished for about 700 years from the 5th century, with thousands of students and teachers; its brick ruins in Bihar became a UNESCO site in 2016.",
       "id": "his-0101",
-      "options": [
-        "Francisco de Orellana",
-        "Pedro Álvares Cabral",
-        "Bartolomeu Dias",
-        "Amerigo Vespucci"
-      ],
-      "question": "Who claimed Brazil for Portugal in 1500?"
+      "options": ["Nepal", "India", "Sri Lanka", "Pakistan"],
+      "question": "Nalanda, an ancient centre of learning that drew students from as far away as China, is in which country?"
     },
     {
       "answer": 1,
@@ -500,10 +490,15 @@
       "answer": 3,
       "category": "history",
       "difficulty": 3,
-      "explanation": "The Nabataeans grew rich from the incense trade and were masters of collecting and storing rainwater in the desert.",
+      "explanation": "Great mounds of slag from ancient furnaces still surround the site, evidence of iron-making on a large scale over many centuries.",
       "id": "his-0113",
-      "options": ["Phoenicians", "Sumerians", "Hittites", "Nabataeans"],
-      "question": "Which ancient people built Petra in today's Jordan?"
+      "options": [
+        "Glassmaking",
+        "Silk weaving",
+        "Shipbuilding",
+        "Iron smelting"
+      ],
+      "question": "The ancient Nile city of Meroë was a major centre of which craft?"
     },
     {
       "answer": 3,
@@ -582,10 +577,15 @@
       "answer": 0,
       "category": "history",
       "difficulty": 2,
-      "explanation": "A reconstruction of the Ishtar Gate, built under Nebuchadnezzar II, stands in the Pergamon Museum in Berlin.",
+      "explanation": "Stone tools and ground ochre at the Madjedbebe rock shelter in northern Australia have been dated to around 65,000 years ago.",
       "id": "his-0084",
-      "options": ["Babylon", "Nineveh", "Ur", "Uruk"],
-      "question": "Which ancient city was famous for its blue-glazed Ishtar Gate?"
+      "options": [
+        "More than 50,000 years",
+        "About 5,000 years",
+        "About 12,000 years",
+        "About 2,000 years"
+      ],
+      "question": "Archaeology shows that people have lived in Australia for at least how long?"
     },
     {
       "answer": 2,
@@ -609,10 +609,10 @@
       "answer": 1,
       "category": "history",
       "difficulty": 2,
-      "explanation": "The ruins of Ephesus lie near the Aegean coast of modern Turkey; only a single re-erected column of the temple remains.",
+      "explanation": "Seventeen of these basalt heads are known, weighing from about 6 to 50 tonnes; most were found at San Lorenzo near the Gulf Coast.",
       "id": "his-0069",
-      "options": ["Corinth", "Ephesus", "Athens", "Troy"],
-      "question": "In which ancient city did the Temple of Artemis, a Wonder of the World, stand?"
+      "options": ["Aztec", "Olmec", "Inca", "Maya"],
+      "question": "Which ancient civilisation of Mexico carved giant stone heads up to about 3 m tall?"
     },
     {
       "answer": 1,
@@ -709,15 +709,15 @@
       "answer": 0,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Slocum sailed his rebuilt oyster boat Spray about 74,000 km, and his book about it became a classic.",
+      "explanation": "Navigator Mau Piailug from Micronesia led the roughly 4,000 km trip without instruments, showing ancient Polynesians could have sailed such routes on purpose.",
       "id": "his-0108",
       "options": [
-        "Joshua Slocum",
-        "Bernard Moitessier",
-        "Francis Chichester",
-        "Robin Knox-Johnston"
+        "Stars, waves and birds",
+        "A magnetic compass",
+        "Radio beacons",
+        "Paper charts"
       ],
-      "question": "Who was the first person to sail alone around the world, in 1895–1898?"
+      "question": "In 1976 the voyaging canoe Hōkūleʻa sailed from Hawaii to Tahiti guided only by what?"
     },
     {
       "answer": 1,
@@ -759,19 +759,29 @@
       "answer": 3,
       "category": "history",
       "difficulty": 3,
-      "explanation": "For almost a thousand years Hagia Sophia was the largest cathedral in the world; its dome seems to float above a ring of windows.",
+      "explanation": "The 9 m granite tower in Gyeongju was built under Queen Seondeok of Silla; a south-facing window lets sunlight onto its floor at the equinoxes.",
       "id": "his-0115",
-      "options": ["Constantine I", "Theodosius II", "Basil II", "Justinian I"],
-      "question": "Which Byzantine emperor built Hagia Sophia in its present form, in 537?"
+      "options": [
+        "Royal palaces",
+        "Stone bridges",
+        "Lighthouses",
+        "Observatories"
+      ],
+      "question": "Cheomseongdae, built in Korea in the 7th century, is one of the oldest surviving what?"
     },
     {
       "answer": 2,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Persepolis is famous for stone reliefs of people from across the empire bringing gifts to the king.",
+      "explanation": "'Neither snow nor rain nor heat nor gloom of night...' runs along New York's James A. Farley post office; it is not an official postal motto.",
       "id": "his-0109",
-      "options": ["Artaxerxes I", "Cyrus the Great", "Darius I", "Xerxes I"],
-      "question": "Which Persian king began building the palace city of Persepolis?"
+      "options": [
+        "The White House",
+        "The Louvre",
+        "A New York post office",
+        "The British Museum"
+      ],
+      "question": "Herodotus's praise of ancient Persia's royal couriers is carved on which modern building?"
     },
     {
       "answer": 1,
@@ -828,10 +838,10 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "At its height, the Achaemenid Empire stretched from Egypt and the Balkans to the Indus Valley.",
+      "explanation": "Sixty divides evenly by 2, 3, 4, 5, 6, 10, 12, 15, 20 and 30, which made it handy; the same system gave circles their 360 degrees.",
       "id": "his-0073",
-      "options": ["Byzantine", "Neo-Assyrian", "Ottoman", "Achaemenid"],
-      "question": "Which empire was founded by Cyrus the Great in the 6th century BC?"
+      "options": ["Egyptians", "Greeks", "Romans", "Babylonians"],
+      "question": "An hour has 60 minutes thanks to the base-60 counting system used by which ancient people?"
     },
     {
       "answer": 0,
@@ -864,10 +874,15 @@
       "answer": 2,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Parts of the Grand Canal are over 2,000 years old; its total length is about 1,800 km.",
+      "explanation": "Monks Mound, about 30 m high, is the largest prehistoric earthwork north of Mexico; the city had about 120 mounds and perhaps 15,000 people.",
       "id": "his-0112",
-      "options": ["Guangzhou", "Xi'an", "Hangzhou", "Shanghai"],
-      "question": "China's Grand Canal, the longest ancient canal, links Beijing with which city?"
+      "options": [
+        "Stone pyramids",
+        "Copper mines",
+        "Huge earthen mounds",
+        "Cliff dwellings"
+      ],
+      "question": "Cahokia, a city near today's St. Louis that flourished around 1100 AD, is famous for what?"
     },
     {
       "answer": 0,
@@ -1051,29 +1066,19 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "The novel follows seven generations of the Buendía family in the fictional town of Macondo.",
+      "explanation": "Weavers give each pattern a name, often after a proverb or a historic event; the cloth was once reserved for royalty.",
       "id": "cul-0052",
-      "options": [
-        "Isabel Allende",
-        "Jorge Luis Borges",
-        "Mario Vargas Llosa",
-        "Gabriel García Márquez"
-      ],
-      "question": "Who wrote \"One Hundred Years of Solitude\"?"
+      "options": ["Kenya", "Nigeria", "Ethiopia", "Ghana"],
+      "question": "Kente, a bright cloth woven in narrow strips that are then sewn together, comes from which country?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "The Duanwu (Dragon Boat) Festival falls on the fifth day of the fifth lunar month, and people eat sticky rice dumplings.",
+      "explanation": "India's 'Jana Gana Mana' and Bangladesh's 'Amar Shonar Bangla' are both his songs; in 1913 he became the first non-European Nobel laureate in Literature.",
       "id": "cul-0092",
-      "options": [
-        "Qingming Festival",
-        "Mid-Autumn Festival",
-        "Duanwu Festival",
-        "Lantern Festival"
-      ],
-      "question": "Dragon-boat racing is traditionally held during which Chinese festival?"
+      "options": ["Pakistan", "Nepal", "Bangladesh", "Myanmar"],
+      "question": "Poet Rabindranath Tagore wrote the national anthems of India and which other country?"
     },
     {
       "answer": 0,
@@ -1143,24 +1148,19 @@
       "answer": 1,
       "category": "history",
       "difficulty": 3,
-      "explanation": "John Cabot, born Giovanni Caboto, sailed from Bristol on the small ship Matthew; his exact landfall, Newfoundland or Cape Breton, is still debated.",
+      "explanation": "Kilwa took control of Sofala, the port for gold from the interior, and was one of the first places south of the Sahara to mint its own coins.",
       "id": "his-0118",
-      "options": [
-        "Jacques Cartier",
-        "John Cabot",
-        "Martin Frobisher",
-        "Henry Hudson"
-      ],
-      "question": "Which Venetian-born navigator reached North America for England in 1497?"
+      "options": ["Silk", "Gold", "Tea", "Salt"],
+      "question": "Medieval Kilwa Kisiwani, on the Swahili coast, grew rich mainly by controlling the trade in what?"
     },
     {
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Luxor stands on the site of ancient Thebes; the Karnak complex is one of the largest religious sites ever built.",
+      "explanation": "Legend says a priest called it down from the sky onto the lap of the first king, Osei Tutu; traditionally it must never touch the ground.",
       "id": "his-0090",
-      "options": ["Alexandria", "Cairo", "Aswan", "Luxor"],
-      "question": "In which modern Egyptian city are the great temples of Karnak?"
+      "options": ["Fulani", "Wolof", "Yoruba", "Asante"],
+      "question": "The Golden Stool, said to hold the spirit of the nation, is the sacred symbol of which West African people?"
     },
     {
       "answer": 0,
@@ -1175,10 +1175,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Kabuki began around 1603; the actors are traditionally all male, including those playing female roles.",
+      "explanation": "Lake Nasser was rising behind the new Aswan High Dam; blocks of up to 30 tonnes were rebuilt about 65 m higher between 1964 and 1968.",
       "id": "cul-0048",
-      "options": ["Kyogen", "Noh", "Kabuki", "Bunraku"],
-      "question": "Which Japanese theatre style is known for bold stage make-up called kumadori?"
+      "options": [
+        "To hide them from looters",
+        "To make room for a city",
+        "To save them from a new lake",
+        "To shelter them from sandstorms"
+      ],
+      "question": "In the 1960s the giant temples of Abu Simbel in Egypt were cut into blocks and moved. Why?"
     },
     {
       "answer": 1,
@@ -1243,15 +1248,15 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "The story is set in Verona, Italy, where a balcony at \"Juliet's House\" attracts many visitors.",
+      "explanation": "Pages and panels run right to left, so a manga starts at what Western readers would call the back of the book.",
       "id": "cul-0005",
       "options": [
-        "Charles Dickens",
-        "William Shakespeare",
-        "Christopher Marlowe",
-        "Geoffrey Chaucer"
+        "Left to right",
+        "Right to left",
+        "Bottom to top",
+        "In a spiral"
       ],
-      "question": "Who wrote the play \"Romeo and Juliet\"?"
+      "question": "In which direction are Japanese manga traditionally read?"
     },
     {
       "answer": 2,
@@ -1303,10 +1308,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "More than 100 tonnes of overripe tomatoes are thrown in the streets each August; the festival dates back to 1945.",
+      "explanation": "Nowruz means 'new day'; families set a 'haft-sin' table of seven items whose Persian names begin with the letter 's'.",
       "id": "cul-0049",
-      "options": ["Pamplona", "Valencia", "Buñol", "Seville"],
-      "question": "In which Spanish town is the tomato-throwing festival La Tomatina held?"
+      "options": [
+        "The winter solstice",
+        "The first new moon",
+        "The spring equinox",
+        "The summer solstice"
+      ],
+      "question": "Nowruz, the Persian New Year celebrated from Iran to Central Asia, falls on which day?"
     },
     {
       "answer": 0,
@@ -1321,15 +1331,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "Munch made several versions of The Scream, including paintings, pastels and prints.",
+      "explanation": "Carved straight out of the bedrock of the Giza plateau about 4,500 years ago, it is about 73 m long and 20 m high.",
       "id": "cul-0002",
-      "options": [
-        "The Kiss",
-        "The Night Watch",
-        "The Sleeping Gypsy",
-        "The Scream"
-      ],
-      "question": "Which painting by Edvard Munch shows a figure clutching its face under a red sky?"
+      "options": ["Eagle", "Bull", "Jackal", "Lion"],
+      "question": "The Great Sphinx of Giza has a human head on the body of which animal?"
     },
     {
       "answer": 0,
@@ -1344,15 +1349,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "The piece follows the river from two small springs through the countryside to Prague.",
+      "explanation": "Singers shape the throat and mouth to bring out overtones, often imitating wind, rivers and animals; UNESCO lists it as Mongolian heritage.",
       "id": "cul-0054",
-      "options": [
-        "Antonín Dvořák",
-        "Bohuslav Martinů",
-        "Leoš Janáček",
-        "Bedřich Smetana"
-      ],
-      "question": "Which Czech composer wrote \"Vltava\" (The Moldau)?"
+      "options": ["Japan", "Thailand", "Vietnam", "Mongolia"],
+      "question": "In khoomei singing, one performer makes a low drone and a whistling melody at the same time. Which country is it from?"
     },
     {
       "answer": 0,
@@ -1395,10 +1395,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "At the end of the procession, a full-size replica Viking longship is set alight in Lerwick.",
+      "explanation": "Under Shah Abbas I it became the capital; its Naqsh-e Jahan Square, over 500 m long, is one of the largest city squares on Earth.",
       "id": "cul-0089",
-      "options": ["Faroe Islands", "Hebrides", "Orkney", "Shetland"],
-      "question": "In which archipelago is the fire festival Up Helly Aa held?"
+      "options": ["Tehran", "Shiraz", "Tabriz", "Isfahan"],
+      "question": "Which Iranian city was praised in an old Persian saying as 'half the world'?"
     },
     {
       "answer": 2,
@@ -1418,10 +1418,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "The Hawa Mahal's 953 small windows let royal women watch street life unseen while breezes cooled the building.",
+      "explanation": "It has 24 carved stone wheels pulled by seven stone horses, and the shadows cast by the wheels' spokes can be used to tell the time.",
       "id": "cul-0102",
-      "options": ["Agra", "Udaipur", "Delhi", "Jaipur"],
-      "question": "In which Indian city is the Hawa Mahal, the \"Palace of Winds\"?"
+      "options": ["Lotus flower", "Elephant", "Ship", "Chariot"],
+      "question": "India's 13th-century Konark Sun Temple is built in the shape of a giant what?"
     },
     {
       "answer": 2,
@@ -1459,10 +1459,15 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "La Scala opened in 1778; Venice has La Fenice and Naples the Teatro di San Carlo, the oldest of the three.",
+      "explanation": "Men wear a long indigo-dyed veil, the tagelmust; the dye rubs off and tints the skin a bluish shade.",
       "id": "cul-0073",
-      "options": ["Turin", "Milan", "Venice", "Naples"],
-      "question": "In which city is the opera house La Scala?"
+      "options": [
+        "Their blue tents",
+        "Indigo from their veils",
+        "Blue tattoos on their arms",
+        "The blue desert sky"
+      ],
+      "question": "Why are Tuareg men of the Sahara sometimes called the 'blue men'?"
     },
     {
       "answer": 1,
@@ -1496,10 +1501,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "The Prado opened in 1819 and has the world's largest collection of works by Velázquez and Goya.",
+      "explanation": "Owners cover their trucks with paintings, mirrors and poetry, and hang rows of chains and bells that jingle along the road.",
       "id": "cul-0059",
-      "options": ["Seville", "Lisbon", "Barcelona", "Madrid"],
-      "question": "In which city is the Prado Museum?"
+      "options": [
+        "Their loud horns",
+        "Their radio music",
+        "A famous song",
+        "Hanging chains and bells"
+      ],
+      "question": "Pakistan's brightly painted 'jingle trucks' get their nickname from what?"
     },
     {
       "answer": 0,
@@ -1537,10 +1547,10 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "The upper floors of the Royal Alcázar of Seville are still used by the Spanish royal family when visiting the city.",
+      "explanation": "Layers of fabric are stacked and cut, then the edges are folded under to reveal the colours below; a single panel can take weeks.",
       "id": "cul-0103",
-      "options": ["Seville", "Córdoba", "Valencia", "Toledo"],
-      "question": "Which Spanish city is home to the Moorish palace-fortress of Alcázar, still a royal residence?"
+      "options": ["Panama", "Peru", "Guatemala", "Bolivia"],
+      "question": "Molas, colourful layered textile panels, are sewn by Guna women of which country?"
     },
     {
       "answer": 0,
@@ -1625,24 +1635,19 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "The Great Highland bagpipe has three drones that play one continuous note beneath the melody.",
+      "explanation": "The wax stops the dye from soaking in, so the pattern appears when the wax is removed; UNESCO listed Indonesian batik in 2009.",
       "id": "cul-0015",
-      "options": ["Bagpipes", "Banjo", "Mandolin", "Accordion"],
-      "question": "Which instrument is a famous symbol of Scotland?"
+      "options": ["Indonesia", "Japan", "Peru", "Egypt"],
+      "question": "Batik, a way of decorating cloth by drawing hot wax onto it before dyeing, is a famous art of which country?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "The painting, from the 1480s, hangs in the Uffizi Gallery in Florence.",
+      "explanation": "Puppeteers stand waist-deep behind a bamboo screen and steer the puppets with long poles hidden under the water; the art began in rice paddies.",
       "id": "cul-0058",
-      "options": [
-        "Raphael",
-        "Titian",
-        "Sandro Botticelli",
-        "Domenico Ghirlandaio"
-      ],
-      "question": "Who painted \"The Birth of Venus\"?"
+      "options": ["Inside caves", "In tree tops", "On water", "On stilts"],
+      "question": "In Vietnam's traditional water puppet theatre, where do the puppets perform?"
     },
     {
       "answer": 2,
@@ -1657,24 +1662,24 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "The building's pipes are colour-coded on the outside: blue for air, green for water and yellow for electricity.",
+      "explanation": "Even the name travelled with it: 'lute' goes back to Arabic al-ʿūd, 'the wood', which reached Europe through Spain and Provence.",
       "id": "cul-0096",
-      "options": ["Jean Nouvel", "Renzo Piano", "Norman Foster", "Frank Gehry"],
-      "question": "Which architect designed the Centre Pompidou in Paris together with Richard Rogers?"
+      "options": ["Sitar", "Oud", "Santur", "Ney"],
+      "question": "The European lute developed from which instrument of the Middle East?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "The large triptych, full of strange creatures and giant fruit, hangs in the Prado in Madrid.",
+      "explanation": "In 1936 Pedro Linares fell seriously ill and dreamt of strange creatures shouting 'alebrijes!'; he rebuilt them in papier-mâché.",
       "id": "cul-0070",
       "options": [
-        "Albrecht Dürer",
-        "Hieronymus Bosch",
-        "Jan van Eyck",
-        "Pieter Bruegel the Elder"
+        "A trip to China",
+        "A fever dream",
+        "A shipwreck",
+        "A visit to a zoo"
       ],
-      "question": "Who painted \"The Garden of Earthly Delights\"?"
+      "question": "Alebrijes, Mexico's brightly painted fantasy creatures, were first made after an artist had what?"
     },
     {
       "answer": 2,
@@ -1740,24 +1745,24 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Mucha became famous overnight in 1895 with a poster for actress Sarah Bernhardt in Paris.",
+      "explanation": "Hand-laid triangular soapstone tiles cover the 30 m statue; workers reportedly wrote names and messages on the backs of some of them.",
       "id": "cul-0100",
-      "options": ["Art Nouveau", "Expressionism", "Pop art", "Cubism"],
-      "question": "Czech artist Alphonse Mucha is best known for which style?"
+      "options": ["Soapstone", "Marble", "Gold leaf", "Porcelain"],
+      "question": "Rio's Christ the Redeemer statue is made of concrete covered with small tiles of what?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Handel wrote the whole work in about 24 days in 1741; it premiered in Dublin in 1742.",
+      "explanation": "Hand gestures stand for things in the words of the chant, such as rain, flowers or rolling waves, while the chanter carries the poetry.",
       "id": "cul-0071",
       "options": [
-        "Georg Philipp Telemann",
-        "George Frideric Handel",
-        "J. S. Bach",
-        "Joseph Haydn"
+        "The drum rhythm",
+        "The dancers' hands",
+        "The skirt colours",
+        "The masks worn"
       ],
-      "question": "Which composer wrote the oratorio \"Messiah\", first performed in Dublin?"
+      "question": "In traditional Hawaiian hula, what helps tell the story of the chant?"
     },
     {
       "answer": 1,
@@ -1777,15 +1782,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Ibsen is one of the most performed playwrights in the world, second only to Shakespeare by many counts.",
+      "explanation": "Nyepi marks the Balinese new year: for a whole day lights stay off, streets stay empty and even tourists are asked to stay in their hotels.",
       "id": "cul-0060",
       "options": [
-        "Knut Hamsun",
-        "Bjørnstjerne Bjørnson",
-        "August Strindberg",
-        "Henrik Ibsen"
+        "It doubles its flights",
+        "Only seaplanes may land",
+        "Planes must fly silently",
+        "It closes for 24 hours"
       ],
-      "question": "Which Norwegian playwright wrote \"A Doll's House\"?"
+      "question": "On Nyepi, Bali's Day of Silence, what happens at the island's main airport?"
     },
     {
       "answer": 0,
@@ -1868,15 +1873,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Carmen is set in Seville; Bizet died just three months after its premiere, before it became a worldwide hit.",
+      "explanation": "Inner bark, often of the paper mulberry, is soaked and beaten thin with a wooden mallet, joined into big sheets and painted.",
       "id": "cul-0072",
       "options": [
-        "Gioachino Rossini",
-        "Giuseppe Verdi",
-        "Georges Bizet",
-        "Giacomo Puccini"
+        "Woven palm leaves",
+        "Coconut fibre",
+        "Beaten tree bark",
+        "Sheep's wool"
       ],
-      "question": "Who composed the opera \"Carmen\"?"
+      "question": "Tapa cloth, made across the Pacific from Tonga to Hawaii, is made from what?"
     },
     {
       "answer": 1,
@@ -1905,29 +1910,19 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "\"Black Square\" became the icon of Suprematism, an art movement built on simple geometric shapes.",
+      "explanation": "Players pluck the metal keys with their thumbs; the mbira is central to Shona music, and metal-keyed versions are thought to be over 1,000 years old.",
       "id": "cul-0104",
-      "options": [
-        "Kazimir Malevich",
-        "El Lissitzky",
-        "Marc Chagall",
-        "Wassily Kandinsky"
-      ],
-      "question": "Which artist painted \"Black Square\" in 1915?"
+      "options": ["Zimbabwe", "Morocco", "Egypt", "Senegal"],
+      "question": "UNESCO lists the mbira, a 'thumb piano' with metal keys, as heritage of Malawi and which other country?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "Vermeer lived in Delft and is thought to have painted fewer than 40 works in his whole life.",
+      "explanation": "It grew among enslaved Africans in Brazil; the berimbau, a one-string musical bow, sets the pace of the 'game'. UNESCO listed it in 2014.",
       "id": "cul-0013",
-      "options": [
-        "Rembrandt van Rijn",
-        "Johannes Vermeer",
-        "Jan Steen",
-        "Frans Hals"
-      ],
-      "question": "Which Dutch painter created \"Girl with a Pearl Earring\"?"
+      "options": ["Argentina", "Brazil", "Cuba", "Portugal"],
+      "question": "Capoeira, which blends martial arts, dance and music, developed in which country?"
     },
     {
       "answer": 2,
@@ -1947,10 +1942,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "In the Kalevala, the hero Väinämöinen builds the first kantele from the jawbone of a giant pike.",
+      "explanation": "The whole town joins a festival to replaster it; the palm-wood beams sticking out of the walls act as built-in scaffolding.",
       "id": "cul-0109",
-      "options": ["Finland", "Lithuania", "Latvia", "Estonia"],
-      "question": "Which country is home to the folk instrument kantele, central to its national epic?"
+      "options": [
+        "Every year",
+        "Every decade",
+        "Every 50 years",
+        "Every century"
+      ],
+      "question": "How often is the Great Mosque of Djenné in Mali, the largest mud-brick building, given fresh mud plaster?"
     },
     {
       "answer": 3,
@@ -1988,10 +1988,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "The Mezquita has over 850 columns of jasper, marble and granite supporting striped red-and-white arches.",
+      "explanation": "Artist Esther Mahlangu took the style worldwide: in 1991 she painted a BMW car in Ndebele patterns for the company's Art Car series.",
       "id": "cul-0106",
-      "options": ["Córdoba", "Granada", "Seville", "Málaga"],
-      "question": "In which Spanish city is the Mezquita, a famous mosque-cathedral?"
+      "options": [
+        "Their house walls",
+        "Ostrich eggs",
+        "Wooden masks",
+        "Clay pots"
+      ],
+      "question": "Ndebele women in South Africa are famous for painting bold geometric patterns on what?"
     },
     {
       "answer": 3,
@@ -2043,29 +2048,29 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "The novel is set in the summer heat of Saint Petersburg, and you can still visit the hero's street and building.",
+      "explanation": "Dancers take turns leaping straight up from a standing position in a circle while others sing; both the height and the grace of the jumps are admired.",
       "id": "cul-0079",
       "options": [
-        "Mikhail Bulgakov",
-        "Nikolai Gogol",
-        "Fyodor Dostoevsky",
-        "Alexander Pushkin"
+        "Spinning fastest",
+        "Running longest",
+        "Jumping highest",
+        "Singing loudest"
       ],
-      "question": "Which Russian author wrote \"Crime and Punishment\"?"
+      "question": "In the adumu dance of the Maasai of Kenya and Tanzania, what do young men compete at?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Velázquez painted himself into the picture, standing at a large canvas and looking out at the viewer.",
+      "explanation": "Leaves of the henna shrub are dried and ground into a paste; the reddish stain binds to the skin's outer layer and fades in one to three weeks.",
       "id": "cul-0087",
       "options": [
-        "Bartolomé Murillo",
-        "Francisco Goya",
-        "Diego Velázquez",
-        "El Greco"
+        "Beetle shells",
+        "Volcanic clay",
+        "Dried plant leaves",
+        "Tree resin"
       ],
-      "question": "Who painted \"Las Meninas\"?"
+      "question": "Henna, used to paint patterns on hands for weddings and festivals, comes from what?"
     },
     {
       "answer": 1,
@@ -2117,10 +2122,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "The danzón grew out of the European contradanza in Matanzas; the first piece, \"Las alturas de Simpson\", premiered there in 1879.",
+      "explanation": "Flat leather puppets are held against a lit cloth screen; a single puppeteer, the dalang, moves them and voices every character.",
       "id": "cul-0108",
-      "options": ["Rumba", "Salsa", "Danzón", "Merengue"],
-      "question": "Which dance is officially Cuba's national dance?"
+      "options": [
+        "Masked dancers",
+        "Live animals",
+        "Puppets' shadows",
+        "Fire dancers"
+      ],
+      "question": "During Indonesian wayang kulit shows, which can last all night, what does the audience mainly watch?"
     },
     {
       "answer": 0,
@@ -2149,10 +2159,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "The whole novel takes place on one day, 16 June 1904, now celebrated by fans every year as \"Bloomsday\".",
+      "explanation": "After World War II, Filipinos lengthened surplus US military jeeps and added benches, chrome horses and bright paint.",
       "id": "cul-0081",
-      "options": ["London", "Paris", "Trieste", "Dublin"],
-      "question": "In which city is James Joyce's novel \"Ulysses\" set?"
+      "options": [
+        "Old city buses",
+        "Fishing boats",
+        "Railway carriages",
+        "Leftover US army jeeps"
+      ],
+      "question": "The Philippines' colourful 'jeepney' shared taxis were first built from what?"
     },
     {
       "answer": 0,
@@ -2200,10 +2215,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Look closely: the small peak in the background of the print is Mount Fuji.",
+      "explanation": "Workers dug trenches around blocks of rock and hollowed them out from the top down, carving doors, windows and roofs in one piece.",
       "id": "cul-0086",
-      "options": ["Okinawa", "Hokkaido", "Kanagawa", "Kyushu"],
-      "question": "Hokusai's famous print \"The Great Wave\" is set off the coast of where?"
+      "options": [
+        "Built entirely of glass",
+        "Floating on a lake",
+        "Carved down into solid rock",
+        "Built on tall stilts"
+      ],
+      "question": "The 11 medieval churches of Lalibela in Ethiopia are famous for being what?"
     },
     {
       "answer": 3,
@@ -2232,15 +2252,10 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Bruegel painted it as part of a series showing the seasons; it hangs in Vienna's Kunsthistorisches Museum.",
+      "explanation": "The poet Ferdowsi spent about 30 years on its roughly 50,000 rhyming couplets, which tell the story of Persia's mythical and historical kings.",
       "id": "cul-0110",
-      "options": [
-        "Peter Paul Rubens",
-        "Pieter Bruegel the Elder",
-        "Jacob Jordaens",
-        "Anthony van Dyck"
-      ],
-      "question": "Which Flemish painter created the winter scene \"The Hunters in the Snow\" (1565)?"
+      "options": ["Turkey", "Iran", "India", "Egypt"],
+      "question": "The Shahnameh, or 'Book of Kings', is the national epic of which country?"
     },
     {
       "answer": 0,
@@ -2343,10 +2358,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "The nickname \"Moonlight\" was given by a critic after Beethoven's death; he called it simply Sonata quasi una fantasia.",
+      "explanation": "Usually carved from western red cedar, the poles record family histories, legends and events; they were never objects of worship.",
       "id": "cul-0105",
-      "options": ["Beethoven", "Mozart", "Mendelssohn", "Chopin"],
-      "question": "Which composer wrote \"The Moonlight Sonata\"?"
+      "options": [
+        "Pacific Northwest",
+        "Central Amazon",
+        "Eastern Siberia",
+        "Australian outback"
+      ],
+      "question": "Giant carved totem poles are a tradition of Indigenous peoples of which region?"
     },
     {
       "answer": 1,
@@ -2435,10 +2455,15 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Philips allowed other makers to use the format for free, which helped it spread worldwide.",
+      "explanation": "Engineer Neil Papworth typed it on a computer, because phones had no keyboards yet, and sent it to a Vodafone colleague at a Christmas party.",
       "id": "inv-0082",
-      "options": ["BASF", "Philips", "Grundig", "Sony"],
-      "question": "Which company introduced the compact audio cassette in 1963?"
+      "options": [
+        "Happy New Year",
+        "Merry Christmas",
+        "Hello World",
+        "Can you hear me?"
+      ],
+      "question": "What did the first SMS text message, sent in 1992, say?"
     },
     {
       "answer": 3,
@@ -2504,15 +2529,15 @@
       "answer": 0,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Zuse built his first computer, the Z1, in his parents' living room in Berlin.",
+      "explanation": "Carved from wood, bone or antler to fit the face, the slits cut the glare that causes snow blindness and even sharpen vision like a pinhole camera.",
       "id": "inv-0089",
       "options": [
-        "Konrad Zuse",
-        "Howard Aiken",
-        "John von Neumann",
-        "Alan Turing"
+        "Narrow slits",
+        "Tinted ice",
+        "Thin fish skin",
+        "Coloured glass"
       ],
-      "question": "Who built the Z3 in 1941, the first working programmable, fully automatic computer?"
+      "question": "Traditional Inuit snow goggles protected the eyes from glare by letting light in through what?"
     },
     {
       "answer": 1,
@@ -2730,10 +2755,10 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Johansson's spanners were sold worldwide under the Bahco brand; an Englishman had patented an earlier adjustable spanner decades before.",
+      "explanation": "David Warren had the idea while helping to investigate a mysterious airliner crash; in 1967 Australia became the first country to require cockpit recorders.",
       "id": "inv-0091",
-      "options": ["Norway", "Finland", "Sweden", "Denmark"],
-      "question": "Johan Petter Johansson patented his famous adjustable spanner in 1891 in which country?"
+      "options": ["Canada", "Japan", "Australia", "Sweden"],
+      "question": "The cockpit flight recorder, or 'black box', was invented in the 1950s by a scientist from which country?"
     },
     {
       "answer": 2,

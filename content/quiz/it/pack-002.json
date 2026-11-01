@@ -840,15 +840,10 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "La scoperta di Landsteiner rese possibili trasfusioni sicure e gli valse il premio Nobel nel 1930.",
+      "explanation": "Uno studio del 2018 ha rilevato che la loro milza è circa il 50% più grande di quella dei vicini; durante l'immersione la milza spinge in circolo altro sangue ricco di ossigeno.",
       "id": "body-0042",
-      "options": [
-        "Joseph Lister",
-        "Robert Koch",
-        "Alexander Fleming",
-        "Karl Landsteiner"
-      ],
-      "question": "Chi scoprì i principali gruppi sanguigni umani nel 1901?"
+      "options": ["Polmoni", "Cuore", "Fegato", "Milza"],
+      "question": "Quale organo è insolitamente grande nei Bajau, i «nomadi del mare» del Sud-est asiatico famosi come apneisti?"
     },
     {
       "answer": 0,
@@ -895,19 +890,24 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "Prima di Harvey molti credevano che il sangue fosse prodotto di continuo dal fegato e consumato dal corpo.",
+      "explanation": "Senza la gravità che comprime la colonna, i dischi tra le vertebre si gonfiano; si può guadagnare fino al 3% circa di statura, che si perde di nuovo sulla Terra.",
       "id": "body-0043",
-      "options": ["Ippocrate", "Galeno", "Andrea Vesalio", "William Harvey"],
-      "question": "Chi descrisse per primo correttamente la circolazione del sangue nel corpo, nel 1628?"
+      "options": [
+        "Le ossa crescono più in fretta",
+        "I muscoli si allungano",
+        "La pressione dell'aria è minore",
+        "I dischi vertebrali si dilatano"
+      ],
+      "question": "Gli astronauti di ritorno da lunghe missioni possono essere più alti di qualche centimetro. Perché?"
     },
     {
       "answer": 2,
       "category": "human body & health",
       "difficulty": 1,
-      "explanation": "La trachea è tenuta aperta da anelli di cartilagine a forma di C, che puoi sentire sul davanti del collo.",
+      "explanation": "La rotula nasce come cartilagine morbida e di solito inizia a trasformarsi in osso solo intorno ai 3–5 anni di età.",
       "id": "body-0031",
-      "options": ["Laringe", "Faringe", "Trachea", "Esofago"],
-      "question": "Qual è il nome medico del condotto che porta l'aria ai polmoni?"
+      "options": ["Osso solido", "Grasso", "Cartilagine", "Muscolo"],
+      "question": "Di che cosa sono fatte soprattutto le rotule di un neonato?"
     },
     {
       "answer": 0,
@@ -1387,10 +1387,15 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Il brodo del pho sobbolle per ore con spezie come anice stellato, cannella e zenzero abbrustolito.",
+      "explanation": "Il nome viene dall'antico impero Wolof (Jolof) del Senegal; nigeriani e ghanesi si sfidano amichevolmente su chi lo cucini meglio.",
       "id": "food-0022",
-      "options": ["Vietnam", "Cambogia", "Thailandia", "Laos"],
-      "question": "Il pho è una zuppa di noodle di quale paese?"
+      "options": [
+        "Africa occidentale",
+        "Sud America",
+        "Asia centrale",
+        "Europa meridionale"
+      ],
+      "question": "Il riso jollof, cotto in un'unica pentola con pomodori e spezie, è amatissimo in quale regione?"
     },
     {
       "answer": 3,
@@ -1455,10 +1460,10 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Il dim sum fa parte della tradizione cantonese dello «yum cha», bere il tè con piccoli piatti al mattino.",
+      "explanation": "Fu creato dalla comunità indiana di Durban; non contiene coniglio («bunny»), e il nome potrebbe derivare da «bania», una casta di mercanti.",
       "id": "food-0053",
-      "options": ["Shandong", "Cantonese", "Hunan", "Sichuan"],
-      "question": "A quale cucina regionale cinese è più legato il dim sum?"
+      "options": ["India", "Sudafrica", "Mauritius", "Kenya"],
+      "question": "Il bunny chow, una pagnotta svuotata e riempita di curry, viene da quale paese?"
     },
     {
       "answer": 0,
@@ -1505,15 +1510,15 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Il katsuobushi essiccato è uno degli alimenti più duri al mondo, così duro che si rade con una pialla come il legno.",
+      "explanation": "La radice macinata dell'arbusto di kava si mescola con acqua e si serve da una ciotola comune; non è alcolica, ma intorpidisce per poco labbra e lingua.",
       "id": "food-0055",
       "options": [
-        "Tonnetto striato",
-        "Sardina",
-        "Sgombro",
-        "Salmone atlantico"
+        "Radice di un tipo di pepe",
+        "Cocco fermentato",
+        "Succo di canna da zucchero",
+        "Alghe"
       ],
-      "question": "Il katsuobushi, le scaglie affumicate usate nel brodo giapponese, si ricava da quale pesce?"
+      "question": "La kava, bevanda cerimoniale condivisa nelle Figi, a Tonga e a Vanuatu, si ottiene da che cosa?"
     },
     {
       "answer": 2,
@@ -1574,10 +1579,15 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "L'intorpidimento viene dal pepe di Sichuan, che fa formicolare le labbra; il piccante viene dai peperoncini.",
+      "explanation": "La mano sinistra è riservata all'igiene personale, quindi passare cibo o denaro con quella può sembrare scortese; in India spesso si mangia con la sola punta delle dita.",
       "id": "food-0054",
-      "options": ["Fujian", "Sichuan", "Jiangsu", "Cantonese"],
-      "question": "Quale cucina regionale cinese è famosa per il «mala», un sapore piccante che intorpidisce?"
+      "options": [
+        "La mano sinistra",
+        "La mano destra",
+        "L'una o l'altra",
+        "Entrambe le mani"
+      ],
+      "question": "In gran parte dell'India, del Medio Oriente e dell'Africa, quale mano si usa tradizionalmente per mangiare?"
     },
     {
       "answer": 2,
@@ -1696,10 +1706,15 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Gli umeboshi, fatti con le prugne ume, sono intensamente aspri e salati e spesso si mettono al centro di una polpetta di riso.",
+      "explanation": "Il mais offre ai fagioli un sostegno su cui arrampicarsi, i fagioli arricchiscono il suolo di azoto e le larghe foglie della zucca soffocano le erbacce con la loro ombra.",
       "id": "food-0069",
-      "options": ["Agrumi yuzu", "Cachi", "Prugne", "Ciliegie"],
-      "question": "Gli umeboshi giapponesi sono la versione salata e in salamoia di quale frutto?"
+      "options": [
+        "Riso, tè e soia",
+        "Grano, olive e uva",
+        "Mais, fagioli e zucca",
+        "Patate, quinoa e peperoncino"
+      ],
+      "question": "Quali colture molti popoli indigeni del Nord America piantavano insieme come le «Tre sorelle»?"
     },
     {
       "answer": 0,
@@ -1765,10 +1780,15 @@
       "answer": 3,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Il bibimbap si serve con verdure, pasta di peperoncino e spesso un uovo, e si mescola tutto appena prima di mangiare.",
+      "explanation": "I padroni di casa continuano a riempire le piccole tazzine senza manico, di solito solo per un terzo, finché l'invitato non dà alla tazzina una leggera scossa.",
       "id": "food-0070",
-      "options": ["Tteokbokki", "Bulgogi", "Japchae", "Bibimbap"],
-      "question": "Il nome di quale piatto coreano significa «riso misto»?"
+      "options": [
+        "Capovolgono la tazzina",
+        "Lasciano accanto una moneta",
+        "Battono due volte sul tavolo",
+        "Scuotono piano la tazzina"
+      ],
+      "question": "Quando nel Golfo viene servito il caffè arabo, come fanno gli invitati a far capire che non ne vogliono più?"
     },
     {
       "answer": 2,
@@ -1783,10 +1803,10 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "La feijoada si mangia tradizionalmente il mercoledì o il sabato e si serve con riso, fette d'arancia e farina di manioca tostata.",
+      "explanation": "Prende il nome dalla ballerina russa Anna Pavlova, in tournée in entrambi i paesi nel 1926; chi l'abbia preparata per primo è ancora molto dibattuto.",
       "id": "food-0072",
-      "options": ["Brasile", "Messico", "Colombia", "Cuba"],
-      "question": "La feijoada, uno stufato di fagioli neri e maiale, è un piatto nazionale di quale paese?"
+      "options": ["Nuova Zelanda", "Sudafrica", "Russia", "Canada"],
+      "question": "Il dolce di meringa pavlova è rivendicato come piatto nazionale dall'Australia e da quale altro paese?"
     },
     {
       "answer": 3,
@@ -1957,10 +1977,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Il Concorde trasportò passeggeri per 27 anni; gli esemplari rimasti sono oggi esposti in musei d'Europa e del Nord America.",
+      "explanation": "I piloti puntavano su una scacchiera rossa e bianca dipinta su una collina, poi viravano di circa 47° per allinearsi alla pista appena sopra i tetti di Kowloon.",
       "id": "avi-0009",
-      "options": ["2010", "1989", "2003", "1996"],
-      "question": "In quale anno il Concorde effettuò i suoi ultimi voli commerciali?"
+      "options": [
+        "Su una pista galleggiante",
+        "Su un lago ghiacciato",
+        "Con una virata bassa sulla città",
+        "Su una spiaggia con la bassa marea"
+      ],
+      "question": "Il vecchio aeroporto Kai Tak di Hong Kong, chiuso nel 1998, era famoso per quale tipo di atterraggio?"
     },
     {
       "answer": 3,
@@ -2003,10 +2028,10 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "I componenti arrivavano da tutta Europa via nave, chiatta e convogli stradali, alcuni troppo grandi per viaggiare in altro modo.",
+      "explanation": "L'aria è così rarefatta che la pista principale è lunga circa 4 km, per dare agli aerei più spazio per raggiungere la velocità di decollo.",
       "id": "avi-0013",
-      "options": ["Tolosa", "Marsiglia", "Lione", "Bordeaux"],
-      "question": "In quale città francese Airbus effettuava l'assemblaggio finale dell'A380?"
+      "options": ["La Paz", "Quito", "Cusco", "Bogotá"],
+      "question": "L'aeroporto internazionale di El Alto, a circa 4.000 m sul livello del mare, serve quale città?"
     },
     {
       "answer": 2,
@@ -2100,15 +2125,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "L'He 178 volò per la prima volta il 27 agosto 1939 in Germania, spinto dal motore di Hans von Ohain.",
+      "explanation": "La St. Petersburg–Tampa Airboat Line trasportava un passeggero alla volta; il primissimo posto fu messo all'asta per 400 dollari.",
       "id": "avi-0041",
       "options": [
-        "Messerschmitt Me 262",
-        "Bell X-1",
-        "Heinkel He 178",
-        "Gloster Meteor"
+        "Baia di San Francisco",
+        "Baia di Chesapeake",
+        "Baia di Tampa",
+        "Baia di Galveston"
       ],
-      "question": "Quale fu il primo aereo a reazione a volare, nel 1939?"
+      "question": "Nel 1914 nacque il primo servizio aereo di linea con aeroplani. Quale baia attraversava il suo idrovolante?"
     },
     {
       "answer": 1,
@@ -2243,10 +2268,10 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 1,
-      "explanation": "Heathrow nacque come piccolo campo d'aviazione, e il nome viene da un borgo che fu demolito per costruirlo.",
+      "explanation": "Qantas sta per Queensland and Northern Territory Aerial Services; fu fondata nel 1920 a Winton, una cittadina dell'outback.",
       "id": "avi-0028",
-      "options": ["Edimburgo", "Manchester", "Londra", "Dublino"],
-      "question": "Gli aeroporti di Heathrow e Gatwick servono quale città?"
+      "options": ["Nuova Zelanda", "Canada", "Australia", "Sudafrica"],
+      "question": "Il nome della compagnia aerea Qantas nacque come abbreviazione. Di quale paese è la Qantas?"
     },
     {
       "answer": 1,
@@ -2361,19 +2386,24 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Il tunnel è lungo circa 50 km, e il suo tratto sottomarino di circa 38 km è il più lungo del mondo.",
+      "explanation": "Toronto è YYZ e Vancouver YVR; la Y viene di solito ricondotta ai vecchi codici delle stazioni radio e meteorologiche canadesi.",
       "id": "avi-0053",
-      "options": ["1994", "2001", "1984", "1975"],
-      "question": "In quale anno fu inaugurato il tunnel della Manica tra Inghilterra e Francia?"
+      "options": ["Y", "C", "K", "Q"],
+      "question": "La maggior parte dei codici aeroportuali canadesi, come quelli di Toronto e Vancouver, inizia con quale lettera?"
     },
     {
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "La pista di 537 m sale con una pendenza di circa il 18,5%, quindi gli aerei atterrano in salita e decollano in discesa.",
+      "explanation": "I jet non possono usarla: vi atterrano piccoli aerei a elica, su una striscia di circa 400 m stretta tra le scogliere e il mare.",
       "id": "avi-0065",
-      "options": ["Austria", "Italia", "Francia", "Svizzera"],
-      "question": "L'altiporto di Courchevel, famoso per la sua pista corta e ripida, si trova in quale paese?"
+      "options": [
+        "Circa 1.200 m",
+        "Circa 2.000 m",
+        "Circa 400 m",
+        "Circa 100 m"
+      ],
+      "question": "L'isola caraibica di Saba ha una delle piste commerciali più corte al mondo. Quanto è lunga all'incirca?"
     },
     {
       "answer": 0,
@@ -2393,10 +2423,10 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Il tunnel è lungo circa 54 km, di cui circa 23 sotto il fondale dello Stretto di Tsugaru.",
+      "explanation": "La linea Al Boraq collega Tangeri e Casablanca; viaggiando fino a 320 km/h ha ridotto il tragitto da circa 4 ore e 45 minuti a circa 2 ore e 10 minuti.",
       "id": "avi-0055",
-      "options": ["Shikoku", "Kyushu", "Okinawa", "Hokkaido"],
-      "question": "Il tunnel ferroviario giapponese Seikan, in parte sottomarino, collega Honshu con quale isola?"
+      "options": ["Egitto", "Sudafrica", "Algeria", "Marocco"],
+      "question": "La prima ferrovia ad alta velocità dell'Africa è stata inaugurata nel 2018. In quale paese corre?"
     },
     {
       "answer": 3,
@@ -2416,10 +2446,15 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Il viaggio dura circa otto ore e attraversa 291 ponti, per questo il treno è soprannominato l'espresso più lento del mondo.",
+      "explanation": "«Nullarbor» viene dal latino e significa «nessun albero»; su questo tratto della ferrovia transaustraliana il binario non fa una sola curva per 478 km.",
       "id": "avi-0056",
-      "options": ["St. Moritz", "Gstaad", "Interlaken", "Lucerna"],
-      "question": "Il treno panoramico Glacier Express collega Zermatt con quale località svizzera?"
+      "options": [
+        "Circa 478 km",
+        "Circa 48 km",
+        "Circa 150 km",
+        "Circa 1.500 km"
+      ],
+      "question": "Nella piana australiana di Nullarbor corre il tratto ferroviario perfettamente rettilineo più lungo del mondo. Quanto è lungo?"
     },
     {
       "answer": 3,
@@ -2470,10 +2505,10 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "L'A300, che volò per la prima volta nel 1972, fu il primo aereo di linea bimotore a fusoliera larga del mondo.",
+      "explanation": "Il primo volo completo Sydney–Londra, nel 1947, durò 93 ore con scali come Singapore, Karachi e Il Cairo; oggi si può fare con un solo scalo.",
       "id": "avi-0069",
-      "options": ["A310", "A340", "A300", "A320"],
-      "question": "Quale fu il primo aereo di linea Airbus?"
+      "options": ["Stati Uniti", "India", "Regno Unito", "Sudafrica"],
+      "question": "La celebre rotta aerea soprannominata «rotta del canguro» collega l'Australia con quale paese?"
     },
     {
       "answer": 0,
@@ -2521,10 +2556,10 @@
       "answer": 1,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "A Le Bourget atterrò anche Charles Lindbergh nel 1927, al termine della sua trasvolata atlantica.",
+      "explanation": "La sua area, vicino a Dammam, copre circa 776 km², anche se solo una piccola parte di quel terreno è occupata da piste e terminal.",
       "id": "avi-0064",
-      "options": ["Beauvais", "Le Bourget", "Orly", "Charles de Gaulle"],
-      "question": "Il Salone internazionale dell'aeronautica e dello spazio di Parigi si tiene in quale aeroporto?"
+      "options": ["Qatar", "Arabia Saudita", "Emirati Arabi Uniti", "Oman"],
+      "question": "In quale paese si trova l'aeroporto internazionale Re Fahd, il più grande del mondo per superficie?"
     },
     {
       "answer": 3,

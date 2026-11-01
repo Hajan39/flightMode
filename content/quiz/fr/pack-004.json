@@ -20,15 +20,10 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 2,
-      "explanation": "Torricelli, élève de Galilée, montra que la pression de l'air soutient une colonne de mercure d'environ 76 cm.",
+      "explanation": "Les utilisateurs échangent du liquide contre de la monnaie électronique dans de petites boutiques ; en trois ans, il comptait environ 9 millions de clients au Kenya, souvent sans compte bancaire.",
       "id": "inv-0050",
-      "options": [
-        "Galilée",
-        "Otto von Guericke",
-        "Evangelista Torricelli",
-        "Blaise Pascal"
-      ],
-      "question": "Qui a inventé le baromètre à mercure en 1643 ?"
+      "options": ["Nigeria", "Afrique du Sud", "Kenya", "Inde"],
+      "question": "M-Pesa, qui permet à des millions de personnes d'envoyer de l'argent par SMS sur de simples téléphones, a été lancé en 2007 dans quel pays ?"
     },
     {
       "answer": 3,
@@ -139,15 +134,10 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Josephine Cochrane voulait une machine qui laverait sa vaisselle sans ébrécher sa porcelaine fine.",
+      "explanation": "Un flotteur qui s'enfonçait dans un réservoir d'eau caché dans l'éléphant déclenchait toutes les demi-heures des figurines, des oiseaux et un tambour.",
       "id": "inv-0083",
-      "options": [
-        "Margaret Knight",
-        "Josephine Cochrane",
-        "Beulah Louise Henry",
-        "Mary Anderson"
-      ],
-      "question": "Qui a inventé le premier lave-vaisselle à succès commercial, en 1886 ?"
+      "options": ["La vapeur", "L'eau", "Le sable", "Des ressorts"],
+      "question": "L'« horloge à éléphant » d'al-Jazari, décrite dans un livre de 1206, fonctionnait grâce à quoi ?"
     },
     {
       "answer": 1,
@@ -300,15 +290,15 @@
       "answer": 0,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Leibniz fut fasciné de retrouver des motifs semblables dans les hexagrammes de l'ancien « Yi King » chinois.",
+      "explanation": "Son Vrihat Samrat Yantra, haut d'environ 27 m et achevé dans les années 1730, donne l'heure locale à environ deux secondes près.",
       "id": "inv-0096",
       "options": [
-        "Gottfried Leibniz",
-        "René Descartes",
-        "Isaac Newton",
-        "Christiaan Huygens"
+        "Un cadran solaire",
+        "Un télescope",
+        "Une boussole",
+        "Une horloge à eau"
       ],
-      "question": "En 1703, quel penseur a publié un article influent sur l'arithmétique binaire ?"
+      "question": "L'observatoire Jantar Mantar de Jaipur, en Inde, abrite le plus grand instrument en pierre du monde. Lequel ?"
     },
     {
       "answer": 1,
@@ -407,10 +397,10 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 2,
-      "explanation": "La Rocket remporta le concours de Rainhill, organisé pour trouver la meilleure locomotive de la nouvelle ligne Liverpool–Manchester.",
+      "explanation": "Le sanskrit « śarkarā » est devenu « shakar » en persan et « sukkar » en arabe ; en Inde, on fabriquait du sucre cristallisé vers le IVe siècle de notre ère.",
       "id": "inv-0068",
-      "options": ["Flying Scotsman", "Rocket", "Mallard", "Puffing Billy"],
-      "question": "Quelle célèbre locomotive de 1829 a été construite par George et Robert Stephenson ?"
+      "options": ["Chine", "Inde", "Égypte", "Brésil"],
+      "question": "Le mot « sucre » et l'art de transformer le jus de canne en cristaux viennent tous deux de quel pays ?"
     },
     {
       "answer": 2,
@@ -638,10 +628,15 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "À l'époque d'Edo, les karakuri, mus par des ressorts et des engrenages, avançaient avec une tasse de thé, puis faisaient demi-tour une fois la tasse prise.",
+      "explanation": "Les pommes de terre gèlent la nuit et dégèlent le jour, puis on les piétine pour en extraire l'eau ; une fois sec, le chuño se conserve des années.",
       "id": "inv-0097",
-      "options": ["Daruma", "Kokeshi", "Hina-ningyō", "Karakuri"],
-      "question": "Comment s'appellent en japonais les poupées mécaniques, comme celles qui servent le thé ?"
+      "options": [
+        "La fumée d'un feu",
+        "Le sel de mer",
+        "Des fours d'argile chauds",
+        "Le gel et le soleil"
+      ],
+      "question": "Les paysans andins fabriquent le chuño, une pomme de terre lyophilisée depuis l'Antiquité, grâce à quoi ?"
     },
     {
       "answer": 1,
@@ -739,10 +734,10 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "La Seiko Astron utilisait un minuscule cristal de quartz vibrant et était bien plus précise que les montres mécaniques.",
+      "explanation": "L'Argentine célèbre le Jour de l'inventeur le jour de son anniversaire, le 29 septembre ; en 1945, Marcel Bich racheta les droits du modèle, d'où naquit le stylo Bic.",
       "id": "inv-0093",
-      "options": ["Sony", "Casio", "Citizen", "Seiko"],
-      "question": "Quelle entreprise japonaise a lancé la première montre-bracelet à quartz, en 1969 ?"
+      "options": ["Espagne", "Brésil", "Italie", "Argentine"],
+      "question": "Né en Hongrie, László Bíró, pionnier du stylo à bille, a breveté son stylo en 1943 après s'être installé dans quel pays ?"
     },
     {
       "answer": 3,
@@ -1003,10 +998,15 @@
       "answer": 2,
       "category": "languages",
       "difficulty": 3,
-      "explanation": "Le mkhedrouli n'a traditionnellement pas de majuscules ; les trois écritures historiques de la Géorgie sont inscrites au patrimoine culturel de l'UNESCO.",
+      "explanation": "Chaque consonne a sept formes, une par son vocalique, soit bien plus de 200 signes ; cette écriture est issue de l'ancienne écriture guèze.",
       "id": "lang-0068",
-      "options": ["Glagolitique", "Guèze", "Mkhedrouli", "Hangeul"],
-      "question": "Comment s'appelle l'écriture unique utilisée pour la langue géorgienne ?"
+      "options": [
+        "Un mot entier",
+        "Une voyelle seule",
+        "Consonne + voyelle",
+        "Une idée ou un objet"
+      ],
+      "question": "L'amharique d'Éthiopie s'écrit avec un alphabet où chaque signe représente quoi ?"
     },
     {
       "answer": 3,
@@ -1226,10 +1226,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Les joueurs attrapent et lancent la balle avec un panier d'osier incurvé, la chistera, attaché au poignet.",
+      "explanation": "Il serait né à Copacabana en 1965, quand le football était interdit sur le sable alors que les filets de volley y étaient autorisés.",
       "id": "sport-0058",
-      "options": ["Catalogne", "Andalousie", "Pays basque", "Baléares"],
-      "question": "La cesta punta (jaï alaï), souvent présentée comme le jeu de balle le plus rapide, vient de quelle région ?"
+      "options": ["Lisbonne", "Miami", "Rio de Janeiro", "Barcelone"],
+      "question": "Le footvolley, du volley-ball joué sans les mains, a été inventé sur les plages de quelle ville ?"
     },
     {
       "answer": 1,
@@ -1262,10 +1262,15 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "L'événement s'appelait d'abord « Semaine internationale des sports d'hiver » et n'a été reconnu que plus tard comme les premiers Jeux d'hiver.",
+      "explanation": "La course monte de Durban à Pietermaritzburg une année et redescend l'année suivante : les parcours « up » et « down » n'ont donc pas tout à fait la même longueur.",
       "id": "sport-0037",
-      "options": ["Chamonix", "Saint-Moritz", "Innsbruck", "Oslo"],
-      "question": "Où se sont tenus les premiers Jeux olympiques d'hiver, en 1924 ?"
+      "options": [
+        "Il change de sens chaque année",
+        "Il se court uniquement de nuit",
+        "Il se court pieds nus",
+        "Il traverse trois pays"
+      ],
+      "question": "Qu'a d'inhabituel le Comrades Marathon d'Afrique du Sud, long d'environ 90 km ?"
     },
     {
       "answer": 2,
@@ -1280,19 +1285,24 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Les archers olympiques tirent sur une cible à 70 m ; l'anneau central doré mesure environ 12 cm de diamètre.",
+      "explanation": "Une vingtaine de mushers et leurs chiens ont transporté l'antitoxine en relais, car les avions de l'époque ne pouvaient pas voler dans les tempêtes de l'hiver alaskien.",
       "id": "sport-0041",
-      "options": ["Or", "Bleu", "Rouge", "Noir"],
-      "question": "Au tir à l'arc olympique, de quelle couleur est le centre de la cible ?"
+      "options": [
+        "Du sérum antidiphtérique",
+        "Des pépites d'or",
+        "Le courrier de Noël",
+        "Des provisions pour l'hiver"
+      ],
+      "question": "La course de chiens de traîneau Iditarod, en Alaska, honore un relais de 1925 qui apporta d'urgence quoi à la ville de Nome ?"
     },
     {
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Les joueurs de champ n'ont pas le droit de toucher le fond du bassin : ils doivent nager sur place pendant tout le match.",
+      "explanation": "Le saut du « naghol » sur l'île de Pentecôte est lié à la récolte des ignames ; la première entreprise commerciale de saut à l'élastique, en Nouvelle-Zélande, s'en est inspirée.",
       "id": "sport-0054",
-      "options": ["Six", "Cinq", "Sept", "Huit"],
-      "question": "Combien de joueurs par équipe sont dans l'eau au water-polo, gardien compris ?"
+      "options": ["Fidji", "Samoa", "Vanuatu", "Tonga"],
+      "question": "Dans quel pays du Pacifique des hommes sautent-ils de tours en bois, des lianes aux chevilles, un rite qui a inspiré le saut à l'élastique ?"
     },
     {
       "answer": 2,
@@ -1307,10 +1317,15 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Les cercles de sumo sont faits d'argile et de paille ; un lutteur perd si une partie de son corps autre que les pieds touche le sol.",
+      "explanation": "Deux poings, deux coudes, deux genoux et deux tibias font huit « armes », contre seulement les deux poings en boxe anglaise.",
       "id": "sport-0014",
-      "options": ["Japon", "Chine", "Mongolie", "Corée du Sud"],
-      "question": "La lutte sumo est le sport national traditionnel de quel pays ?"
+      "options": [
+        "Les coudes et les genoux",
+        "La tête et les hanches",
+        "Les épaules et le dos",
+        "Les poignets et les chevilles"
+      ],
+      "question": "Le muay-thaï est appelé l'« art des huit membres » car on y frappe avec les poings, les tibias et quoi d'autre ?"
     },
     {
       "answer": 2,
@@ -1348,10 +1363,10 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Les hockeyeurs changent « à la volée » pendant le jeu, souvent après des présences de moins d'une minute.",
+      "explanation": "Ces « trois jeux virils » sont mentionnés dans une chronique du XIIIe siècle ; aujourd'hui, les femmes participent aussi au tir à l'arc et aux courses de chevaux.",
       "id": "sport-0028",
-      "options": ["Six", "Cinq", "Sept", "Onze"],
-      "question": "Combien de joueurs par équipe sont sur la glace au hockey, gardien compris ?"
+      "options": ["Le tir à l'arc", "L'escrime", "Le polo", "L'haltérophilie"],
+      "question": "Le festival du Naadam, en Mongolie, réunit la lutte, les courses de chevaux et quel autre sport ?"
     },
     {
       "answer": 2,
@@ -1380,10 +1395,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Le joueur doit empocher les 15 rouges, chacune suivie de la noire, puis toutes les couleurs, en une seule visite à la table.",
+      "explanation": "Les coureurs portent leur nourriture et leur matériel pendant toute la course ; les organisateurs ne fournissent que l'eau et une tente commune à chaque bivouac.",
       "id": "sport-0031",
-      "options": ["155", "100", "147", "180"],
-      "question": "Quel est le score d'un break maximal classique au snooker ?"
+      "options": ["Namib", "Kalahari", "Sahara", "Gobi"],
+      "question": "Le Marathon des sables, au Maroc, course de plusieurs jours d'environ 250 km, traverse quel désert ?"
     },
     {
       "answer": 0,
@@ -1412,10 +1427,10 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Un volant haut de gamme compte 16 plumes d'oie, traditionnellement toutes prélevées sur la même aile.",
+      "explanation": "Beaucoup de terrains sont des terrains de cricket utilisés l'hiver, d'où le surnom d'« ovals » des grands stades ; la taille du terrain n'est pas fixée.",
       "id": "sport-0003",
-      "options": ["Squash", "Badminton", "Tennis de table", "Crosse"],
-      "question": "Quel sport se joue avec un volant ?"
+      "options": ["Rectangle", "Ovale", "Carré", "Losange"],
+      "question": "Le football australien se joue généralement sur un terrain de quelle forme ?"
     },
     {
       "answer": 0,
@@ -1457,19 +1472,19 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Le rugby à XIII, un code distinct séparé en 1895, aligne 13 joueurs par équipe.",
+      "explanation": "L'équipe a fait ses débuts à Calgary ; son histoire a inspiré le film « Rasta Rockett » (« Cool Runnings », 1993), qui a modifié de nombreux détails réels.",
       "id": "sport-0029",
-      "options": ["12", "11", "13", "15"],
-      "question": "Combien de joueurs une équipe de rugby (« rugby union ») aligne-t-elle sur le terrain ?"
+      "options": ["Fidji", "Kenya", "Brésil", "Jamaïque"],
+      "question": "En 1988, quel pays tropical a surpris le monde en envoyant une équipe de bobsleigh aux Jeux olympiques d'hiver ?"
     },
     {
       "answer": 0,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Les joueurs tournent dans le sens des aiguilles d'une montre chaque fois que leur équipe récupère le service.",
+      "explanation": "On y jouait il y a plus de 2 000 ans sous la dynastie Han ; en 2004, la FIFA a reconnu le cuju comme une forme primitive du football.",
       "id": "sport-0015",
-      "options": ["Six", "Cinq", "Quatre", "Sept"],
-      "question": "Combien de joueurs de chaque équipe sont sur un terrain de volley-ball en même temps ?"
+      "options": ["Chine", "Grèce", "Égypte", "Mexique"],
+      "question": "Le cuju, un ancien jeu de balle où l'on envoyait la balle au pied dans un but, vient de quel pays ?"
     },
     {
       "answer": 2,
@@ -1493,10 +1508,15 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Les overs de six balles sont aujourd'hui la norme, mais l'Australie a utilisé des overs de huit balles lors de nombreuses saisons jusqu'en 1979.",
+      "explanation": "Iten se trouve à environ 2 400 m d'altitude, au bord de la vallée du Grand Rift, où l'air raréfié développe l'endurance ; la ville se surnomme « Home of Champions ».",
       "id": "sport-0026",
-      "options": ["Huit", "Cinq", "Dix", "Six"],
-      "question": "Au cricket, combien de balles réglementaires compte un over ?"
+      "options": [
+        "Les brises marines",
+        "Des pistes de sable plates",
+        "Des hivers frais",
+        "La haute altitude"
+      ],
+      "question": "De nombreux coureurs de fond de haut niveau s'entraînent autour d'Iten, au Kenya. Quel est l'atout de la région ?"
     },
     {
       "answer": 1,
@@ -1561,19 +1581,29 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Trois fléchettes dans le triple 20 rapportent 60 chacune ; le centre de la cible ne vaut que 50.",
+      "explanation": "Un maître, le morshed, frappe un tambour en gobelet et récite des vers pendant que les athlètes font tournoyer de lourdes massues dans une fosse ; l'UNESCO l'a inscrit en 2010.",
       "id": "sport-0032",
-      "options": ["200", "180", "170", "150"],
-      "question": "Quel est le score le plus élevé possible avec trois fléchettes ?"
+      "options": [
+        "Le sifflet d'un arbitre",
+        "Le tambour et la poésie",
+        "Le tic-tac d'une horloge",
+        "Les applaudissements"
+      ],
+      "question": "Dans le zourkhaneh iranien (« maison de la force »), les athlètes s'entraînent au rythme de quoi ?"
     },
     {
       "answer": 0,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "William G. Morgan l'a créé dans le Massachusetts comme un jeu en salle plus doux que le basket-ball.",
+      "explanation": "L'athlète saute, frappe d'un pied une petite balle suspendue, souvent en peau de phoque, et doit retomber sur ce même pied ; ce coup annonçait autrefois une chasse réussie.",
       "id": "sport-0049",
-      "options": ["Mintonette", "Handball", "Netball", "Volley-tennis"],
-      "question": "Comment s'appelait le volley-ball à son invention en 1895 ?"
+      "options": [
+        "Une cible suspendue en l'air",
+        "Un tambour que tourne un partenaire",
+        "La main ouverte d'un partenaire",
+        "Un poteau de bois au sol"
+      ],
+      "question": "Dans le sport arctique appelé « one-foot high kick », que doit frapper l'athlète ?"
     },
     {
       "answer": 1,
@@ -1616,15 +1646,10 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Le pitch mesure 20,12 m (22 yards), soit la longueur d'une chaîne, une ancienne unité d'arpentage.",
+      "explanation": "Chaque été, des équipes du Chitral et du Gilgit-Baltistan s'y affrontent dans un jeu libre aux règles très rares, une tradition qui remonte aux années 1930.",
       "id": "sport-0055",
-      "options": [
-        "Environ 25 m",
-        "Environ 30 m",
-        "Environ 15 m",
-        "Environ 20 m"
-      ],
-      "question": "Quelle est environ la longueur du pitch de cricket, la bande de terrain entre les deux guichets ?"
+      "options": ["Inde", "Népal", "Chine", "Pakistan"],
+      "question": "Le terrain de polo de Shandur, à environ 3 700 m d'altitude et souvent dit le plus haut du monde, se trouve dans quel pays ?"
     },
     {
       "answer": 3,
@@ -1639,10 +1664,10 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Un match ne peut pas continuer si une équipe compte moins de sept joueurs sur le terrain.",
+      "explanation": "Le nageur hawaïen Duke Kahanamoku a diffusé ce sport ; sa démonstration à Freshwater Beach, près de Sydney, en 1914, a lancé le surf en Australie.",
       "id": "sport-0001",
-      "options": ["Douze", "Onze", "Neuf", "Dix"],
-      "question": "Combien de joueurs chaque équipe de football a-t-elle sur le terrain ?"
+      "options": ["Îles Canaries", "Hawaï", "Maldives", "Bali"],
+      "question": "Le surf est né d'une tradition ancienne de quelles îles ?"
     },
     {
       "answer": 1,
@@ -1972,10 +1997,10 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Bakken, au nord de Copenhague, est né autour d'une source naturelle qui attirait des foules de visiteurs.",
+      "explanation": "Des milliers de danseurs aux immenses masques cornus défilent pendant des heures ; l'UNESCO a proclamé ce carnaval chef-d'œuvre du patrimoine immatériel en 2001.",
       "id": "misc-0073",
-      "options": ["Danemark", "Angleterre", "Allemagne", "Autriche"],
-      "question": "Bakken, considéré comme le plus ancien parc d'attractions en activité (1583), se trouve dans quel pays ?"
+      "options": ["Bolivie", "Pérou", "Chili", "Équateur"],
+      "question": "Le carnaval d'Oruro, célèbre pour sa danse des diables appelée diablada, a lieu dans quel pays ?"
     },
     {
       "answer": 1,
@@ -2045,10 +2070,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Les élèves constatèrent qu'une balle percée, plus molle, « s'écrasait » à l'impact, ce qui exigeait des coups plus variés.",
+      "explanation": "À Rome, ses chaussures neuves lui donnaient des ampoules : il a couru sans et établi une meilleure performance mondiale ; quatre ans plus tard, il gagna de nouveau à Tokyo, cette fois chaussé.",
       "id": "sport-0059",
-      "options": ["Eton", "Winchester", "Harrow", "Rugby"],
-      "question": "Le squash a été mis au point au XIXe siècle dans quelle célèbre école anglaise ?"
+      "options": ["800 mètres", "Cross-country", "Marathon", "10 000 mètres"],
+      "question": "En 1960, l'Éthiopien Abebe Bikila a remporté l'or olympique en courant pieds nus. Dans quelle épreuve ?"
     },
     {
       "answer": 2,
@@ -2077,10 +2102,15 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Le point de penalty est à 11 m (12 yards) de la ligne de but ; la limite de la surface de réparation est à 16,5 m.",
+      "explanation": "Les cavaliers s'emparent d'un ballon muni de poignées en cuir, se le passent et le lancent dans un anneau, un peu comme un mélange de basket et de polo.",
       "id": "sport-0047",
-      "options": ["12 mètres", "11 mètres", "9 mètres", "16,5 mètres"],
-      "question": "À quelle distance du but un penalty est-il tiré au football ?"
+      "options": [
+        "En patins à glace",
+        "À cheval",
+        "Dans une piscine",
+        "Sur des dunes de sable"
+      ],
+      "question": "Comment se joue le pato, sport national officiel de l'Argentine depuis 1953 ?"
     },
     {
       "answer": 2,
@@ -2118,10 +2148,10 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Le drapeau de la Dominique est l'un des très rares drapeaux nationaux à comporter du violet.",
+      "explanation": "Ce nom, adopté en 1984, associe des mots de deux langues locales, le mooré et le dioula ; auparavant, le pays s'appelait la Haute-Volta.",
       "id": "misc-0082",
-      "options": ["Barbade", "Dominique", "Grenade", "Jamaïque"],
-      "question": "Quel pays a sur son drapeau un perroquet violet appelé sisserou ?"
+      "options": ["Mali", "Burkina Faso", "Niger", "Sénégal"],
+      "question": "Quel pays africain a un nom qui signifie à peu près « pays des hommes intègres » ?"
     },
     {
       "answer": 2,
@@ -2204,10 +2234,10 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "La plupart des statues baroques d'origine ont été remplacées par des copies ; les originaux sont conservés dans des musées.",
+      "explanation": "La tête est considérée comme la partie la plus sacrée du corps et les pieds comme la plus basse : pointer ses pieds vers quelqu'un est donc impoli aussi.",
       "id": "misc-0035",
-      "options": ["Environ 3", "Environ 30", "Environ 3 000", "Environ 300"],
-      "question": "Le pont Charles de Prague, commencé en 1357, est bordé de combien de statues ?"
+      "options": ["La main", "La tête", "L'épaule", "Le coude"],
+      "question": "En Thaïlande, quelle partie du corps d'une autre personne est-il particulièrement impoli de toucher ?"
     },
     {
       "answer": 1,
@@ -2483,10 +2513,10 @@
       "answer": 3,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Botín sert des repas depuis 1725, et son four à bois ne se serait jamais éteint.",
+      "explanation": "À Coober Pedy, la chaleur estivale peut dépasser 45 °C, mais les « dugouts » creusés dans la roche restent à environ 23–25 °C ; il y a même des églises souterraines.",
       "id": "misc-0079",
-      "options": ["Vienne", "Paris", "Rome", "Madrid"],
-      "question": "Sobrino de Botín, répertorié comme le plus ancien restaurant du monde, se trouve dans quelle ville ?"
+      "options": ["Mexique", "Chili", "Afrique du Sud", "Australie"],
+      "question": "Dans quel pays de nombreux habitants d'une ville minière d'opale vivent-ils sous terre pour échapper à la chaleur ?"
     },
     {
       "answer": 0,
@@ -2556,10 +2586,15 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Albert Einstein habitait à deux pas de la Zytglogge quand il travaillait sur sa théorie de la relativité restreinte.",
+      "explanation": "Quand il pleut, les fibres de poil gonflent et referment les espaces du tissage ; par forte chaleur sèche, le tissage lâche laisse circuler l'air.",
       "id": "misc-0085",
-      "options": ["Zytglogge", "Glockenspiel", "Torre dell'Orologio", "Orloj"],
-      "question": "Comment s'appelle la tour de l'horloge médiévale de Berne, avec ses figurines animées ?"
+      "options": [
+        "Du poil de chèvre",
+        "De la fibre de palmier",
+        "Du coton",
+        "Du cuir de chameau"
+      ],
+      "question": "Les tentes bédouines traditionnelles, appelées « maisons de poils », sont tissées surtout avec quoi ?"
     },
     {
       "answer": 2,

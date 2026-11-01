@@ -184,10 +184,10 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Colomb naviguait avec la Niña, la Pinta et la Santa María, qui s'échoua le jour de Noël 1492.",
+      "explanation": "Le chapiteau aux quatre lions de son pilier de Sarnath, sculpté vers 250 av. J.-C., est devenu l'emblème national de l'Inde en 1950.",
       "id": "his-0050",
-      "options": ["San Gabriel", "Trinidad", "Victoria", "Santa María"],
-      "question": "Comment s'appelait le plus grand navire de Christophe Colomb lors de son voyage de 1492 ?"
+      "options": ["Gupta", "Moghol", "Chola", "Maurya"],
+      "question": "Ashoka, qui fit dresser à travers l'Inde des piliers de pierre gravés de messages, régnait sur quel empire ?"
     },
     {
       "answer": 1,
@@ -327,29 +327,19 @@
       "answer": 0,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Balboa traversa l'isthme de Panama et appela l'océan la « mer du Sud ».",
+      "explanation": "Construite à partir de 2600 av. J.-C. environ, elle comptait des plateformes de pierre et des places en contrebas, mais ses habitants ne fabriquaient pas de poterie.",
       "id": "his-0100",
-      "options": [
-        "Vasco Núñez de Balboa",
-        "Francisco Pizarro",
-        "Hernán Cortés",
-        "Ponce de León"
-      ],
-      "question": "Qui fut le premier Européen à voir l'océan Pacifique depuis les Amériques, en 1513 ?"
+      "options": ["Pérou", "Mexique", "Guatemala", "Colombie"],
+      "question": "Caral, l'une des plus anciennes villes d'Amérique, à peu près contemporaine des grandes pyramides d'Égypte, est dans quel pays ?"
     },
     {
       "answer": 1,
       "category": "history",
       "difficulty": 3,
-      "explanation": "La flotte de Cabral faisait route vers l'Inde mais dévia loin à l'ouest à travers l'Atlantique et atteignit la côte brésilienne.",
+      "explanation": "Il a prospéré environ 700 ans à partir du Ve siècle, avec des milliers d'étudiants et de maîtres ; ses ruines de brique, au Bihar, sont classées par l'UNESCO depuis 2016.",
       "id": "his-0101",
-      "options": [
-        "Francisco de Orellana",
-        "Pedro Álvares Cabral",
-        "Bartolomeu Dias",
-        "Amerigo Vespucci"
-      ],
-      "question": "Qui a revendiqué le Brésil pour le Portugal en 1500 ?"
+      "options": ["Népal", "Inde", "Sri Lanka", "Pakistan"],
+      "question": "Nalanda, ancien centre du savoir qui attirait des étudiants venus jusque de Chine, se trouve dans quel pays ?"
     },
     {
       "answer": 1,
@@ -506,10 +496,15 @@
       "answer": 3,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Les Nabatéens s'enrichirent grâce au commerce de l'encens et étaient passés maîtres dans la collecte et le stockage de l'eau de pluie dans le désert.",
+      "explanation": "D'énormes tas de scories issues d'anciens fourneaux entourent encore le site, preuve d'une production de fer à grande échelle pendant des siècles.",
       "id": "his-0113",
-      "options": ["Phéniciens", "Sumériens", "Hittites", "Nabatéens"],
-      "question": "Quel peuple antique a bâti Pétra, dans l'actuelle Jordanie ?"
+      "options": [
+        "La verrerie",
+        "Le tissage de la soie",
+        "La construction navale",
+        "La fonte du fer"
+      ],
+      "question": "L'antique cité de Méroé, sur le Nil, était un grand centre de quel artisanat ?"
     },
     {
       "answer": 3,
@@ -588,10 +583,15 @@
       "answer": 0,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Une reconstitution de la porte d'Ishtar, bâtie sous Nabuchodonosor II, se trouve au musée de Pergame, à Berlin.",
+      "explanation": "Des outils de pierre et de l'ocre broyée trouvés dans l'abri sous roche de Madjedbebe, dans le nord de l'Australie, ont été datés d'environ 65 000 ans.",
       "id": "his-0084",
-      "options": ["Babylone", "Ninive", "Ur", "Uruk"],
-      "question": "Quelle cité antique était célèbre pour sa porte d'Ishtar en briques émaillées bleues ?"
+      "options": [
+        "Plus de 50 000 ans",
+        "Environ 5 000 ans",
+        "Environ 12 000 ans",
+        "Environ 2 000 ans"
+      ],
+      "question": "D'après l'archéologie, depuis combien de temps au moins des humains vivent-ils en Australie ?"
     },
     {
       "answer": 2,
@@ -615,10 +615,10 @@
       "answer": 1,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Les ruines d'Éphèse se trouvent près de la côte égéenne de l'actuelle Turquie ; du temple, il ne reste qu'une seule colonne relevée.",
+      "explanation": "On connaît dix-sept de ces têtes en basalte, pesant d'environ 6 à 50 tonnes ; la plupart ont été trouvées à San Lorenzo, près du golfe du Mexique.",
       "id": "his-0069",
-      "options": ["Corinthe", "Éphèse", "Athènes", "Troie"],
-      "question": "Dans quelle cité antique se dressait le temple d'Artémis, l'une des merveilles du monde ?"
+      "options": ["Aztèque", "Olmèque", "Inca", "Maya"],
+      "question": "Quelle civilisation ancienne du Mexique a sculpté des têtes de pierre géantes atteignant environ 3 m de haut ?"
     },
     {
       "answer": 1,
@@ -715,15 +715,15 @@
       "answer": 0,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Slocum parcourut environ 74 000 km sur le Spray, un ancien bateau ostréicole qu'il avait reconstruit, et son livre sur ce voyage est devenu un classique.",
+      "explanation": "Le navigateur micronésien Mau Piailug a mené ce voyage d'environ 4 000 km sans instruments, montrant que les anciens Polynésiens pouvaient suivre ces routes volontairement.",
       "id": "his-0108",
       "options": [
-        "Joshua Slocum",
-        "Bernard Moitessier",
-        "Francis Chichester",
-        "Robin Knox-Johnston"
+        "Étoiles, vagues et oiseaux",
+        "Une boussole magnétique",
+        "Des balises radio",
+        "Des cartes marines en papier"
       ],
-      "question": "Qui fut le premier à faire le tour du monde à la voile en solitaire, en 1895–1898 ?"
+      "question": "En 1976, la pirogue de voyage Hōkūleʻa a navigué d'Hawaï à Tahiti guidée uniquement par quoi ?"
     },
     {
       "answer": 1,
@@ -765,29 +765,24 @@
       "answer": 3,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Pendant près de mille ans, Sainte-Sophie fut la plus grande cathédrale du monde ; sa coupole semble flotter au-dessus d'une couronne de fenêtres.",
+      "explanation": "Cette tour de granit de 9 m, à Gyeongju, fut bâtie sous la reine Seondeok de Silla ; une fenêtre orientée au sud laisse entrer le soleil jusqu'au sol aux équinoxes.",
       "id": "his-0115",
-      "options": [
-        "Constantin Ier",
-        "Théodose II",
-        "Basile II",
-        "Justinien Ier"
-      ],
-      "question": "Quel empereur byzantin a construit Sainte-Sophie sous sa forme actuelle, en 537 ?"
+      "options": ["Palais royal", "Pont de pierre", "Phare", "Observatoire"],
+      "question": "Le Cheomseongdae, construit en Corée au VIIe siècle, est l'un des plus anciens exemples conservés de quoi ?"
     },
     {
       "answer": 2,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Persépolis est célèbre pour ses bas-reliefs montrant des peuples de tout l'empire apportant des présents au roi.",
+      "explanation": "« Ni la neige, ni la pluie, ni la chaleur, ni l'obscurité de la nuit… » court sur la façade de la poste James A. Farley, à New York ; ce n'est pas une devise postale officielle.",
       "id": "his-0109",
       "options": [
-        "Artaxerxès Ier",
-        "Cyrus le Grand",
-        "Darius Ier",
-        "Xerxès Ier"
+        "La Maison-Blanche",
+        "Le Louvre",
+        "Une poste new-yorkaise",
+        "Le British Museum"
       ],
-      "question": "Quel roi perse a lancé la construction de la cité palatiale de Persépolis ?"
+      "question": "L'éloge par Hérodote des courriers royaux de l'ancienne Perse est gravé sur quel bâtiment moderne ?"
     },
     {
       "answer": 1,
@@ -844,10 +839,10 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "À son apogée, l'Empire achéménide s'étendait de l'Égypte et des Balkans jusqu'à la vallée de l'Indus.",
+      "explanation": "Soixante est divisible par 2, 3, 4, 5, 6, 10, 12, 15, 20 et 30, ce qui le rendait pratique ; le même système a donné ses 360 degrés au cercle.",
       "id": "his-0073",
-      "options": ["Byzantin", "Néo-assyrien", "Ottoman", "Achéménide"],
-      "question": "Quel empire a été fondé par Cyrus le Grand au VIe siècle av. J.-C. ?"
+      "options": ["Égyptiens", "Grecs", "Romains", "Babyloniens"],
+      "question": "Une heure compte 60 minutes grâce au système de numération en base 60 de quel peuple antique ?"
     },
     {
       "answer": 0,
@@ -880,10 +875,15 @@
       "answer": 2,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Certaines parties du Grand Canal ont plus de 2 000 ans ; sa longueur totale est d'environ 1 800 km.",
+      "explanation": "Monks Mound, haut d'environ 30 m, est le plus grand ouvrage de terre préhistorique au nord du Mexique ; la ville comptait environ 120 tertres et peut-être 15 000 habitants.",
       "id": "his-0112",
-      "options": ["Canton", "Xi'an", "Hangzhou", "Shanghai"],
-      "question": "Le Grand Canal de Chine, le plus long canal ancien, relie Pékin à quelle ville ?"
+      "options": [
+        "Des pyramides en pierre",
+        "Des mines de cuivre",
+        "Des tertres géants",
+        "Des habitations troglodytes"
+      ],
+      "question": "Cahokia, ville proche de l'actuelle Saint-Louis qui prospérait vers 1100, est célèbre pour quoi ?"
     },
     {
       "answer": 0,
@@ -1062,29 +1062,19 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Le roman suit sept générations de la famille Buendía dans la ville imaginaire de Macondo.",
+      "explanation": "Les tisserands donnent un nom à chaque motif, souvent d'après un proverbe ou un événement historique ; ce tissu était autrefois réservé à la royauté.",
       "id": "cul-0052",
-      "options": [
-        "Isabel Allende",
-        "Jorge Luis Borges",
-        "Mario Vargas Llosa",
-        "Gabriel García Márquez"
-      ],
-      "question": "Qui a écrit « Cent ans de solitude » ?"
+      "options": ["Kenya", "Nigeria", "Éthiopie", "Ghana"],
+      "question": "Le kente, un tissu vif tissé en bandes étroites ensuite cousues ensemble, vient de quel pays ?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "La fête de Duanwu (fête des bateaux-dragons) tombe le cinquième jour du cinquième mois lunaire, et l'on y mange des boulettes de riz gluant.",
+      "explanation": "« Jana Gana Mana » (Inde) et « Amar Shonar Bangla » (Bangladesh) sont deux de ses chansons ; en 1913, il fut le premier non-Européen à recevoir le prix Nobel de littérature.",
       "id": "cul-0092",
-      "options": [
-        "Fête de Qingming",
-        "Fête de la mi-automne",
-        "Fête de Duanwu",
-        "Fête des lanternes"
-      ],
-      "question": "Les courses de bateaux-dragons ont traditionnellement lieu lors de quelle fête chinoise ?"
+      "options": ["Pakistan", "Népal", "Bangladesh", "Birmanie"],
+      "question": "Le poète Rabindranath Tagore a écrit les hymnes nationaux de l'Inde et de quel autre pays ?"
     },
     {
       "answer": 0,
@@ -1154,24 +1144,19 @@
       "answer": 1,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Jean Cabot, né Giovanni Caboto, partit de Bristol à bord du petit Matthew ; son point d'arrivée exact, Terre-Neuve ou le cap Breton, reste débattu.",
+      "explanation": "Kilwa prit le contrôle de Sofala, le port de l'or venu de l'intérieur, et fut l'un des premiers lieux au sud du Sahara à frapper sa propre monnaie.",
       "id": "his-0118",
-      "options": [
-        "Jacques Cartier",
-        "Jean Cabot",
-        "Martin Frobisher",
-        "Henry Hudson"
-      ],
-      "question": "Quel navigateur né à Venise a atteint l'Amérique du Nord pour le compte de l'Angleterre en 1497 ?"
+      "options": ["La soie", "L'or", "Le thé", "Le sel"],
+      "question": "Au Moyen Âge, Kilwa Kisiwani, sur la côte swahilie, s'est enrichie surtout en contrôlant le commerce de quoi ?"
     },
     {
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Louxor occupe le site de l'antique Thèbes ; le complexe de Karnak est l'un des plus grands sites religieux jamais construits.",
+      "explanation": "Selon la légende, un prêtre le fit descendre du ciel sur les genoux du premier roi, Osei Tutu ; la tradition veut qu'il ne touche jamais le sol.",
       "id": "his-0090",
-      "options": ["Alexandrie", "Le Caire", "Assouan", "Louxor"],
-      "question": "Dans quelle ville égyptienne actuelle se trouvent les grands temples de Karnak ?"
+      "options": ["Peuls", "Wolofs", "Yoruba", "Ashanti"],
+      "question": "Le Tabouret d'or, censé abriter l'âme de la nation, est le symbole sacré de quel peuple d'Afrique de l'Ouest ?"
     },
     {
       "answer": 0,
@@ -1186,10 +1171,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Le kabuki est né vers 1603 ; les acteurs sont traditionnellement tous des hommes, y compris ceux qui jouent les rôles féminins.",
+      "explanation": "Le lac Nasser montait derrière le nouveau haut barrage d'Assouan ; des blocs de jusqu'à 30 tonnes ont été remontés environ 65 m plus haut entre 1964 et 1968.",
       "id": "cul-0048",
-      "options": ["Kyōgen", "Nō", "Kabuki", "Bunraku"],
-      "question": "Quel style de théâtre japonais est connu pour son maquillage spectaculaire appelé kumadori ?"
+      "options": [
+        "Pour les cacher des pillards",
+        "Pour faire place à une ville",
+        "Pour les sauver d'un nouveau lac",
+        "Pour les protéger du sable"
+      ],
+      "question": "Dans les années 1960, les temples géants d'Abou Simbel, en Égypte, ont été découpés en blocs et déplacés. Pourquoi ?"
     },
     {
       "answer": 1,
@@ -1254,15 +1244,15 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "L'histoire se déroule à Vérone, en Italie, où un balcon de la « maison de Juliette » attire de nombreux visiteurs.",
+      "explanation": "Pages et cases se suivent de droite à gauche : un manga commence donc par ce qu'un lecteur occidental appellerait la fin du livre.",
       "id": "cul-0005",
       "options": [
-        "Charles Dickens",
-        "William Shakespeare",
-        "Christopher Marlowe",
-        "Geoffrey Chaucer"
+        "De gauche à droite",
+        "De droite à gauche",
+        "De bas en haut",
+        "En spirale"
       ],
-      "question": "Qui a écrit la pièce « Roméo et Juliette » ?"
+      "question": "Dans quel sens se lisent traditionnellement les mangas japonais ?"
     },
     {
       "answer": 2,
@@ -1314,10 +1304,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Plus de 100 tonnes de tomates trop mûres sont lancées dans les rues chaque mois d'août ; la fête remonte à 1945.",
+      "explanation": "Norouz signifie « nouveau jour » ; les familles dressent une table « haft-sin » de sept éléments dont le nom persan commence par la lettre « s ».",
       "id": "cul-0049",
-      "options": ["Pampelune", "Valence", "Buñol", "Séville"],
-      "question": "Dans quelle ville espagnole se tient la Tomatina, la fête où l'on se lance des tomates ?"
+      "options": [
+        "Au solstice d'hiver",
+        "À la première nouvelle lune",
+        "À l'équinoxe de printemps",
+        "Au solstice d'été"
+      ],
+      "question": "Norouz, le Nouvel An persan fêté de l'Iran à l'Asie centrale, tombe quel jour ?"
     },
     {
       "answer": 0,
@@ -1332,15 +1327,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "Munch a réalisé plusieurs versions du Cri, en peinture, au pastel et en gravure.",
+      "explanation": "Taillé directement dans la roche du plateau de Gizeh il y a environ 4 500 ans, il mesure environ 73 m de long et 20 m de haut.",
       "id": "cul-0002",
-      "options": [
-        "Le Baiser",
-        "La Ronde de nuit",
-        "La Bohémienne endormie",
-        "Le Cri"
-      ],
-      "question": "Quel tableau d'Edvard Munch montre un personnage se tenant le visage sous un ciel rouge ?"
+      "options": ["Aigle", "Taureau", "Chacal", "Lion"],
+      "question": "Le grand Sphinx de Gizeh a une tête humaine sur le corps de quel animal ?"
     },
     {
       "answer": 0,
@@ -1355,15 +1345,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "L'œuvre suit la rivière depuis deux petites sources, à travers la campagne, jusqu'à Prague.",
+      "explanation": "Les chanteurs modèlent gorge et bouche pour faire ressortir les harmoniques, imitant souvent le vent, les rivières et les animaux ; l'UNESCO le classe patrimoine mongol.",
       "id": "cul-0054",
-      "options": [
-        "Antonín Dvořák",
-        "Bohuslav Martinů",
-        "Leoš Janáček",
-        "Bedřich Smetana"
-      ],
-      "question": "Quel compositeur tchèque a écrit « Vltava » (La Moldau) ?"
+      "options": ["Japon", "Thaïlande", "Vietnam", "Mongolie"],
+      "question": "Dans le chant khöömii, un seul interprète produit à la fois un bourdon grave et une mélodie sifflée. De quel pays vient-il ?"
     },
     {
       "answer": 0,
@@ -1406,10 +1391,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "À la fin du défilé, une réplique grandeur nature de drakkar viking est incendiée à Lerwick.",
+      "explanation": "Elle devint la capitale sous le chah Abbas Ier ; sa place Naqsh-e Jahan, longue de plus de 500 m, est l'une des plus grandes places urbaines du monde.",
       "id": "cul-0089",
-      "options": ["Îles Féroé", "Hébrides", "Orcades", "Shetland"],
-      "question": "Dans quel archipel se déroule la fête du feu Up Helly Aa ?"
+      "options": ["Téhéran", "Chiraz", "Tabriz", "Ispahan"],
+      "question": "Quelle ville iranienne un vieux dicton persan célébrait-il comme « la moitié du monde » ?"
     },
     {
       "answer": 2,
@@ -1429,10 +1414,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Les 953 petites fenêtres du Hawa Mahal permettaient aux femmes de la cour d'observer la rue sans être vues, tandis que la brise rafraîchissait le bâtiment.",
+      "explanation": "Il compte 24 roues de pierre sculptées tirées par sept chevaux de pierre, et l'ombre des rayons des roues permet de lire l'heure.",
       "id": "cul-0102",
-      "options": ["Agra", "Udaipur", "Delhi", "Jaipur"],
-      "question": "Dans quelle ville indienne se trouve le Hawa Mahal, le « palais des Vents » ?"
+      "options": ["Une fleur de lotus", "Un éléphant", "Un navire", "Un char"],
+      "question": "Le temple du Soleil de Konark, en Inde, construit au XIIIe siècle, a la forme de quel objet géant ?"
     },
     {
       "answer": 2,
@@ -1470,10 +1455,15 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "La Scala a ouvert en 1778 ; Venise a La Fenice et Naples le Teatro di San Carlo, le plus ancien des trois.",
+      "explanation": "Les hommes portent un long voile teint à l'indigo, le tagelmust ; la teinture déteint et donne à la peau une teinte bleutée.",
       "id": "cul-0073",
-      "options": ["Turin", "Milan", "Venise", "Naples"],
-      "question": "Dans quelle ville se trouve l'opéra de la Scala ?"
+      "options": [
+        "Leurs tentes bleues",
+        "L'indigo de leur voile",
+        "Des tatouages bleus",
+        "Le ciel bleu du désert"
+      ],
+      "question": "Pourquoi les Touaregs du Sahara sont-ils parfois appelés les « hommes bleus » ?"
     },
     {
       "answer": 1,
@@ -1507,10 +1497,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Le Prado a ouvert en 1819 et possède la plus grande collection au monde d'œuvres de Velázquez et de Goya.",
+      "explanation": "Les propriétaires couvrent leurs camions de peintures, de miroirs et de poèmes, et y suspendent des rangées de chaînes et de clochettes qui tintent (« jingle ») sur la route.",
       "id": "cul-0059",
-      "options": ["Séville", "Lisbonne", "Barcelone", "Madrid"],
-      "question": "Dans quelle ville se trouve le musée du Prado ?"
+      "options": [
+        "De leurs klaxons bruyants",
+        "De leur musique à la radio",
+        "D'une chanson célèbre",
+        "Des clochettes suspendues"
+      ],
+      "question": "Au Pakistan, d'où les camions aux couleurs vives appelés « jingle trucks » tirent-ils leur surnom ?"
     },
     {
       "answer": 0,
@@ -1548,10 +1543,10 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Les étages supérieurs de l'Alcázar royal de Séville sont toujours utilisés par la famille royale espagnole lors de ses visites dans la ville.",
+      "explanation": "Plusieurs tissus sont superposés et découpés, puis les bords sont repliés pour révéler les couleurs du dessous ; un seul panneau peut demander des semaines.",
       "id": "cul-0103",
-      "options": ["Séville", "Cordoue", "Valence", "Tolède"],
-      "question": "Quelle ville espagnole abrite l'Alcázar, palais-forteresse mauresque toujours résidence royale ?"
+      "options": ["Panama", "Pérou", "Guatemala", "Bolivie"],
+      "question": "Les molas, panneaux textiles colorés à plusieurs couches, sont cousus par les femmes guna de quel pays ?"
     },
     {
       "answer": 0,
@@ -1636,24 +1631,24 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "La grande cornemuse des Highlands possède trois bourdons qui jouent une note continue sous la mélodie.",
+      "explanation": "La cire empêche la teinture de pénétrer : le motif apparaît quand on la retire. L'UNESCO a inscrit le batik indonésien en 2009.",
       "id": "cul-0015",
-      "options": ["Cornemuse", "Banjo", "Mandoline", "Accordéon"],
-      "question": "Quel instrument est un célèbre symbole de l'Écosse ?"
+      "options": ["Indonésie", "Japon", "Pérou", "Égypte"],
+      "question": "Le batik, qui consiste à dessiner à la cire chaude sur un tissu avant de le teindre, est un art célèbre de quel pays ?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Le tableau, des années 1480, est exposé à la galerie des Offices, à Florence.",
+      "explanation": "Les marionnettistes, dans l'eau jusqu'à la taille derrière un rideau de bambou, les guident avec de longues perches cachées sous l'eau ; cet art est né dans les rizières.",
       "id": "cul-0058",
       "options": [
-        "Raphaël",
-        "Titien",
-        "Sandro Botticelli",
-        "Domenico Ghirlandaio"
+        "Dans des grottes",
+        "Au sommet des arbres",
+        "Sur l'eau",
+        "Sur des échasses"
       ],
-      "question": "Qui a peint « La Naissance de Vénus » ?"
+      "question": "Dans le théâtre traditionnel de marionnettes sur eau du Vietnam, où jouent les marionnettes ?"
     },
     {
       "answer": 2,
@@ -1668,24 +1663,24 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Les tuyaux du bâtiment sont codés par couleur à l'extérieur : bleu pour l'air, vert pour l'eau et jaune pour l'électricité.",
+      "explanation": "Même le nom a voyagé avec lui : « luth » vient de l'arabe al-ʿūd, « le bois », arrivé en Europe par l'Espagne et la Provence.",
       "id": "cul-0096",
-      "options": ["Jean Nouvel", "Renzo Piano", "Norman Foster", "Frank Gehry"],
-      "question": "Quel architecte a conçu le Centre Pompidou à Paris avec Richard Rogers ?"
+      "options": ["Sitar", "Oud", "Santour", "Ney"],
+      "question": "De quel instrument du Moyen-Orient est issu le luth européen ?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Ce grand triptyque, peuplé de créatures étranges et de fruits géants, est exposé au Prado, à Madrid.",
+      "explanation": "En 1936, Pedro Linares, gravement malade, rêva de créatures étranges qui criaient « alebrijes ! » ; il les reproduisit en papier mâché.",
       "id": "cul-0070",
       "options": [
-        "Albrecht Dürer",
-        "Jérôme Bosch",
-        "Jan van Eyck",
-        "Pieter Bruegel l'Ancien"
+        "Un voyage en Chine",
+        "Un rêve de fièvre",
+        "Un naufrage",
+        "Une visite au zoo"
       ],
-      "question": "Qui a peint « Le Jardin des délices » ?"
+      "question": "Les alebrijes, créatures fantastiques mexicaines aux couleurs vives, ont été créés après qu'un artiste a vécu quoi ?"
     },
     {
       "answer": 2,
@@ -1751,24 +1746,24 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Mucha devint célèbre du jour au lendemain en 1895 grâce à une affiche pour l'actrice Sarah Bernhardt, à Paris.",
+      "explanation": "Des tesselles triangulaires de stéatite (pierre à savon), posées à la main, couvrent la statue de 30 m ; des ouvriers auraient écrit des noms et des messages au dos de certaines.",
       "id": "cul-0100",
-      "options": ["Art nouveau", "Expressionnisme", "Pop art", "Cubisme"],
-      "question": "L'artiste tchèque Alphonse Mucha est surtout connu pour quel style ?"
+      "options": ["Stéatite", "Marbre", "Feuille d'or", "Porcelaine"],
+      "question": "Le Christ Rédempteur de Rio est en béton recouvert de petites tesselles de quel matériau ?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Haendel a composé l'œuvre entière en environ 24 jours en 1741 ; elle a été créée à Dublin en 1742.",
+      "explanation": "Les gestes des mains représentent des éléments du chant, comme la pluie, les fleurs ou les vagues, tandis que le chanteur porte la poésie.",
       "id": "cul-0071",
       "options": [
-        "Georg Philipp Telemann",
-        "Georg Friedrich Haendel",
-        "J.-S. Bach",
-        "Joseph Haydn"
+        "Le rythme du tambour",
+        "Les mains des danseurs",
+        "La couleur des jupes",
+        "Les masques portés"
       ],
-      "question": "Quel compositeur a écrit l'oratorio « Le Messie », créé à Dublin ?"
+      "question": "Dans le hula traditionnel hawaïen, qu'est-ce qui aide à raconter l'histoire du chant ?"
     },
     {
       "answer": 1,
@@ -1788,15 +1783,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Ibsen est l'un des dramaturges les plus joués au monde, juste derrière Shakespeare selon de nombreux décomptes.",
+      "explanation": "Nyepi marque le Nouvel An balinais : toute une journée, les lumières restent éteintes, les rues vides, et même les touristes sont priés de rester à l'hôtel.",
       "id": "cul-0060",
       "options": [
-        "Knut Hamsun",
-        "Bjørnstjerne Bjørnson",
-        "August Strindberg",
-        "Henrik Ibsen"
+        "Il double ses vols",
+        "Seuls les hydravions atterrissent",
+        "Les avions doivent voler en silence",
+        "Il ferme pendant 24 heures"
       ],
-      "question": "Quel dramaturge norvégien a écrit « Une maison de poupée » ?"
+      "question": "Lors de Nyepi, le jour du Silence à Bali, que se passe-t-il au principal aéroport de l'île ?"
     },
     {
       "answer": 0,
@@ -1884,15 +1879,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Carmen se déroule à Séville ; Bizet mourut trois mois seulement après la création, avant que l'œuvre ne connaisse un succès mondial.",
+      "explanation": "L'écorce interne, souvent celle du mûrier à papier, est trempée puis amincie au maillet de bois, assemblée en grandes feuilles et peinte.",
       "id": "cul-0072",
       "options": [
-        "Gioachino Rossini",
-        "Giuseppe Verdi",
-        "Georges Bizet",
-        "Giacomo Puccini"
+        "De feuilles de palmier tressées",
+        "De fibre de coco",
+        "D'écorce d'arbre battue",
+        "De laine de mouton"
       ],
-      "question": "Qui a composé l'opéra « Carmen » ?"
+      "question": "Le tapa, fabriqué dans tout le Pacifique, des Tonga à Hawaï, est fait à partir de quoi ?"
     },
     {
       "answer": 1,
@@ -1916,29 +1911,19 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Le « Carré noir » est devenu l'icône du suprématisme, un mouvement artistique fondé sur des formes géométriques simples.",
+      "explanation": "On pince les lamelles avec les pouces ; la mbira est au cœur de la musique shona, et ses versions à lamelles de métal auraient plus de 1 000 ans.",
       "id": "cul-0104",
-      "options": [
-        "Kasimir Malevitch",
-        "El Lissitzky",
-        "Marc Chagall",
-        "Wassily Kandinsky"
-      ],
-      "question": "Quel artiste a peint le « Carré noir » en 1915 ?"
+      "options": ["Zimbabwe", "Maroc", "Égypte", "Sénégal"],
+      "question": "L'UNESCO a inscrit la mbira, un « piano à pouces » à lamelles de métal, au patrimoine du Malawi et de quel autre pays ?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "Vermeer vivait à Delft et aurait peint moins de 40 œuvres au cours de toute sa vie.",
+      "explanation": "Elle est née parmi les Africains réduits en esclavage au Brésil ; le berimbau, un arc musical à une corde, donne le rythme du « jeu ». L'UNESCO l'a inscrite en 2014.",
       "id": "cul-0013",
-      "options": [
-        "Rembrandt van Rijn",
-        "Johannes Vermeer",
-        "Jan Steen",
-        "Frans Hals"
-      ],
-      "question": "Quel peintre néerlandais a créé « La Jeune Fille à la perle » ?"
+      "options": ["Argentine", "Brésil", "Cuba", "Portugal"],
+      "question": "Dans quel pays s'est développée la capoeira, mélange d'art martial, de danse et de musique ?"
     },
     {
       "answer": 2,
@@ -1958,10 +1943,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Dans le Kalevala, le héros Väinämöinen fabrique le premier kantele avec la mâchoire d'un brochet géant.",
+      "explanation": "Toute la ville participe à une fête pour la recrépir ; les poutres en bois de palmier qui dépassent des murs servent d'échafaudage intégré.",
       "id": "cul-0109",
-      "options": ["Finlande", "Lituanie", "Lettonie", "Estonie"],
-      "question": "Quel pays a pour instrument traditionnel le kantele, au cœur de son épopée nationale ?"
+      "options": [
+        "Chaque année",
+        "Chaque décennie",
+        "Tous les 50 ans",
+        "Tous les siècles"
+      ],
+      "question": "À quelle fréquence la grande mosquée de Djenné, au Mali, le plus grand édifice en briques de terre crue, reçoit-elle un nouvel enduit ?"
     },
     {
       "answer": 3,
@@ -1999,10 +1989,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "La Mezquita compte plus de 850 colonnes de jaspe, de marbre et de granit qui soutiennent des arcs rayés de rouge et de blanc.",
+      "explanation": "L'artiste Esther Mahlangu a fait connaître ce style dans le monde entier : en 1991, elle a peint une BMW aux motifs ndébélé pour la série Art Car de la marque.",
       "id": "cul-0106",
-      "options": ["Cordoue", "Grenade", "Séville", "Malaga"],
-      "question": "Dans quelle ville espagnole se trouve la Mezquita, une célèbre mosquée-cathédrale ?"
+      "options": [
+        "Les murs des maisons",
+        "Des œufs d'autruche",
+        "Des masques en bois",
+        "Des poteries en argile"
+      ],
+      "question": "Les femmes ndébélé d'Afrique du Sud sont célèbres pour peindre de grands motifs géométriques sur quoi ?"
     },
     {
       "answer": 3,
@@ -2054,29 +2049,29 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Le roman se déroule dans la chaleur estivale de Saint-Pétersbourg, et l'on peut encore visiter la rue et l'immeuble du héros.",
+      "explanation": "Les danseurs bondissent à tour de rôle, droit vers le haut et sans élan, au milieu d'un cercle qui chante ; on admire la hauteur comme la grâce des sauts.",
       "id": "cul-0079",
       "options": [
-        "Mikhaïl Boulgakov",
-        "Nicolas Gogol",
-        "Fiodor Dostoïevski",
-        "Alexandre Pouchkine"
+        "Tourner le plus vite",
+        "Courir le plus longtemps",
+        "Sauter le plus haut",
+        "Chanter le plus fort"
       ],
-      "question": "Quel écrivain russe a écrit « Crime et Châtiment » ?"
+      "question": "Dans l'adumu, la danse des Maasaï du Kenya et de Tanzanie, en quoi rivalisent les jeunes hommes ?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Velázquez s'est peint lui-même dans le tableau, debout devant une grande toile, le regard tourné vers le spectateur.",
+      "explanation": "Les feuilles du henné, un arbuste, sont séchées et broyées en pâte ; la teinte rougeâtre se fixe sur la couche externe de la peau et s'estompe en une à trois semaines.",
       "id": "cul-0087",
       "options": [
-        "Bartolomé Murillo",
-        "Francisco de Goya",
-        "Diego Velázquez",
-        "Le Greco"
+        "De carapaces de scarabée",
+        "D'argile volcanique",
+        "De feuilles séchées",
+        "De résine d'arbre"
       ],
-      "question": "Qui a peint « Les Ménines » ?"
+      "question": "Le henné, qui sert à dessiner des motifs sur les mains pour les mariages et les fêtes, provient de quoi ?"
     },
     {
       "answer": 1,
@@ -2128,10 +2123,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Le danzón est issu de la contredanse européenne à Matanzas ; la première pièce, « Las alturas de Simpson », y fut créée en 1879.",
+      "explanation": "Des marionnettes plates en cuir sont tenues contre un écran de toile éclairé ; un seul marionnettiste, le dalang, les anime et prête sa voix à tous les personnages.",
       "id": "cul-0108",
-      "options": ["Rumba", "Salsa", "Danzón", "Merengue"],
-      "question": "Quelle danse est officiellement la danse nationale de Cuba ?"
+      "options": [
+        "Des danseurs masqués",
+        "Des animaux vivants",
+        "Des ombres de marionnettes",
+        "Des cracheurs de feu"
+      ],
+      "question": "Pendant les spectacles indonésiens de wayang kulit, qui peuvent durer toute la nuit, que regarde surtout le public ?"
     },
     {
       "answer": 0,
@@ -2160,10 +2160,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Tout le roman se passe en une seule journée, le 16 juin 1904, que ses fans célèbrent chaque année sous le nom de « Bloomsday ».",
+      "explanation": "Après la Seconde Guerre mondiale, les Philippins ont allongé des jeeps militaires américaines en surplus et ajouté des bancs, des chevaux chromés et des couleurs vives.",
       "id": "cul-0081",
-      "options": ["Londres", "Paris", "Trieste", "Dublin"],
-      "question": "Dans quelle ville se déroule le roman « Ulysse » de James Joyce ?"
+      "options": [
+        "De vieux bus urbains",
+        "De bateaux de pêche",
+        "De wagons de train",
+        "De jeeps militaires"
+      ],
+      "question": "Les « jeepneys », taxis collectifs colorés des Philippines, ont d'abord été fabriqués à partir de quoi ?"
     },
     {
       "answer": 0,
@@ -2211,10 +2216,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Regarde bien : le petit sommet à l'arrière-plan de l'estampe est le mont Fuji.",
+      "explanation": "Les ouvriers creusaient des tranchées autour de blocs de roche puis les évidaient de haut en bas, taillant portes, fenêtres et toits d'un seul tenant.",
       "id": "cul-0086",
-      "options": ["Okinawa", "Hokkaido", "Kanagawa", "Kyushu"],
-      "question": "La célèbre estampe d'Hokusai « La Grande Vague » se situe au large de quel lieu ?"
+      "options": [
+        "Entièrement en verre",
+        "Posées sur un lac",
+        "Creusées dans la roche",
+        "Bâties sur de hauts pilotis"
+      ],
+      "question": "Les 11 églises médiévales de Lalibela, en Éthiopie, ont une particularité célèbre. Laquelle ?"
     },
     {
       "answer": 3,
@@ -2243,15 +2253,10 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Bruegel l'a peinte dans le cadre d'une série sur les saisons ; elle est exposée au Kunsthistorisches Museum de Vienne.",
+      "explanation": "Le poète Ferdowsi a consacré environ 30 ans à ses quelque 50 000 distiques rimés, qui racontent l'histoire des rois mythiques et historiques de la Perse.",
       "id": "cul-0110",
-      "options": [
-        "Pierre Paul Rubens",
-        "Bruegel l'Ancien",
-        "Jacob Jordaens",
-        "Antoine van Dyck"
-      ],
-      "question": "Quel peintre flamand a réalisé la scène d'hiver « Chasseurs dans la neige » (1565) ?"
+      "options": ["Turquie", "Iran", "Inde", "Égypte"],
+      "question": "Le Shahnameh, ou « Livre des rois », est l'épopée nationale de quel pays ?"
     },
     {
       "answer": 0,
@@ -2354,10 +2359,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Le surnom « Clair de lune » fut donné par un critique après la mort de Beethoven, qui l'appelait simplement Sonata quasi una fantasia.",
+      "explanation": "Le plus souvent taillés dans le thuya géant, ils racontent l'histoire des familles, des légendes et des événements ; ils n'ont jamais été des objets de culte.",
       "id": "cul-0105",
-      "options": ["Beethoven", "Mozart", "Mendelssohn", "Chopin"],
-      "question": "Quel compositeur a écrit la « Sonate au clair de lune » ?"
+      "options": [
+        "Nord-Ouest pacifique",
+        "Amazonie centrale",
+        "Sibérie orientale",
+        "Outback australien"
+      ],
+      "question": "Les grands mâts totémiques sculptés sont une tradition des peuples autochtones de quelle région ?"
     },
     {
       "answer": 1,
@@ -2446,10 +2456,15 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Philips autorisa les autres fabricants à utiliser gratuitement le format, ce qui l'aida à se répandre dans le monde entier.",
+      "explanation": "L'ingénieur Neil Papworth a tapé « Merry Christmas » sur un ordinateur, car les téléphones n'avaient pas encore de clavier, pour un collègue de Vodafone qui était à une fête de Noël.",
       "id": "inv-0082",
-      "options": ["BASF", "Philips", "Grundig", "Sony"],
-      "question": "Quelle entreprise a lancé la cassette audio compacte en 1963 ?"
+      "options": [
+        "« Bonne année »",
+        "« Joyeux Noël »",
+        "« Hello World »",
+        "« Tu m'entends ? »"
+      ],
+      "question": "Que disait le premier SMS de l'histoire, envoyé en 1992 ?"
     },
     {
       "answer": 3,
@@ -2515,15 +2530,15 @@
       "answer": 0,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Zuse construisit son premier ordinateur, le Z1, dans le salon de ses parents à Berlin.",
+      "explanation": "Taillées dans le bois, l'os ou le bois de cervidé à la forme du visage, leurs fentes réduisent l'éblouissement qui cause la cécité des neiges et affinent même la vue, comme un sténopé.",
       "id": "inv-0089",
       "options": [
-        "Konrad Zuse",
-        "Howard Aiken",
-        "John von Neumann",
-        "Alan Turing"
+        "Des fentes étroites",
+        "De la glace teintée",
+        "Une fine peau de poisson",
+        "Du verre coloré"
       ],
-      "question": "Qui a construit en 1941 le Z3, premier ordinateur programmable et entièrement automatique en état de marche ?"
+      "question": "Les lunettes de neige traditionnelles des Inuits protégeaient de l'éblouissement en laissant passer la lumière par quoi ?"
     },
     {
       "answer": 1,
@@ -2746,10 +2761,10 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Les clés de Johansson se sont vendues dans le monde entier sous la marque Bahco ; un Anglais avait breveté une clé réglable des décennies plus tôt.",
+      "explanation": "David Warren en a eu l'idée en aidant à enquêter sur un mystérieux accident d'avion de ligne ; en 1967, l'Australie fut le premier pays à imposer les enregistreurs de cockpit.",
       "id": "inv-0091",
-      "options": ["Norvège", "Finlande", "Suède", "Danemark"],
-      "question": "Johan Petter Johansson a breveté sa célèbre clé à molette en 1891 dans quel pays ?"
+      "options": ["Canada", "Japon", "Australie", "Suède"],
+      "question": "L'enregistreur de vol, ou « boîte noire », a été inventé dans les années 1950 par un scientifique de quel pays ?"
     },
     {
       "answer": 2,

@@ -196,10 +196,10 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Abuja, plánované město ve středu země, oficiálně nahradila přímořský Lagos jako hlavní město v roce 1991.",
+      "explanation": "Pretoria je sídlem vlády, v Kapském Městě zasedá parlament a v Bloemfonteinu sídlí Nejvyšší odvolací soud.",
       "id": "geo-0029",
-      "options": ["Lagos", "Abuja", "Ibadan", "Kano"],
-      "question": "Jaké je hlavní město Nigérie?"
+      "options": ["Nigérie", "JAR", "Keňa", "Egypt"],
+      "question": "Která země má tři hlavní města – zvlášť pro vládu, parlament a soudy?"
     },
     {
       "answer": 1,
@@ -214,19 +214,24 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Největším městem a obchodním centrem Maroka je sice Casablanca, ale královský palác i parlament sídlí v Rabatu.",
+      "explanation": "Struktura Richat se dříve považovala za meteoritický kráter, dnes se vykládá jako obnažený dóm, jehož horninové vrstvy tvoří obří kruhy.",
       "id": "geo-0030",
-      "options": ["Marrákeš", "Rabat", "Casablanca", "Fès"],
-      "question": "Jaké je hlavní město Maroka?"
+      "options": ["Mali", "Mauritánie", "Niger", "Alžírsko"],
+      "question": "Ve které zemi leží „Oko Sahary“, 40km skalní prstenec, který astronautům slouží jako orientační bod?"
     },
     {
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Tigris a Eufrat se později spojují v Šatt al-Arab; území mezi nimi je Mezopotámie, „země mezi řekami“.",
+      "explanation": "Nejbližší pevnina je asi 2 700 km daleko, ale vesmírná stanice obíhá jen asi 400 km vysoko, takže při přeletu je nejblíže její posádka.",
       "id": "geo-0054",
-      "options": ["Tigris", "Indus", "Eufrat", "Jordán"],
-      "question": "Která řeka protéká Bagdádem?"
+      "options": [
+        "Astronauti na oběžné dráze",
+        "Pasažéři výletních lodí",
+        "Posádky rybářských lodí",
+        "Strážci majáků"
+      ],
+      "question": "Kdo bývá v bodě Nemo, místě v oceánu nejvzdálenějším od pevniny, často nejblíže?"
     },
     {
       "answer": 1,
@@ -250,10 +255,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Fudži (3 776 m) je činná sopka, která naposledy vybuchla v roce 1707; za jasného počasí je vidět z Tokia.",
+      "explanation": "Jeho ostrovy jsou rozesety na asi 3,5 milionu km² oceánu; v roce 1995 posunul datovou hranici, aby celá země měla stejné datum.",
       "id": "geo-0055",
-      "options": ["Kjúšú", "Šikoku", "Hokkaidó", "Honšú"],
-      "question": "Na kterém z hlavních japonských ostrovů leží hora Fudži?"
+      "options": ["Tuvalu", "Fidži", "Samoa", "Kiribati"],
+      "question": "Který tichomořský ostrovní stát leží na rovníku i na 180. poledníku?"
     },
     {
       "answer": 3,
@@ -295,15 +300,15 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Ladožské jezero u Petrohradu má rozlohu asi 17 700 km² a zhruba 660 ostrovů.",
+      "explanation": "Žijí tu stovky druhů pestrých cichlid, které se téměř všechny nevyskytují nikde jinde; mnoho akvarijních cichlid pochází právě odtud.",
       "id": "geo-0056",
       "options": [
-        "Ladožské jezero",
-        "Vänern",
-        "Ženevské jezero",
-        "Oněžské jezero"
+        "Jezero Malawi",
+        "Viktoriino jezero",
+        "Čadské jezero",
+        "Voltské jezero"
       ],
-      "question": "Které jezero je největší v Evropě, pokud nepočítáme Kaspické moře?"
+      "question": "Ve kterém africkém jezeře žije víc druhů ryb než v kterémkoli jiném jezeře na Zemi?"
     },
     {
       "answer": 2,
@@ -546,10 +551,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Hobart, založený roku 1804, je druhým nejstarším hlavním městem Austrálie a branou pro výpravy do Antarktidy.",
+      "explanation": "Dálnice vede asi 30 000 km z Aljašky do Argentiny, ale asi 100 km bažin a deštného pralesa mezi Panamou a Kolumbií silnici nemá.",
       "id": "geo-0083",
-      "options": ["Devonport", "Hobart", "Launceston", "Darwin"],
-      "question": "Jaké je hlavní město australského státu Tasmánie?"
+      "options": [
+        "Transsibiřské dálnice",
+        "Panamerické dálnice",
+        "Route 66",
+        "Hedvábné stezky"
+      ],
+      "question": "Darienská mezera (Darién Gap), úsek džungle bez silnic, je jediným přerušením které silnice?"
     },
     {
       "answer": 3,
@@ -726,10 +736,15 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Suva leží na největším ostrově Viti Levu; mnoho návštěvníků ale přilétá do Nadi na opačné straně ostrova.",
+      "explanation": "Povodí leží po obou stranách rovníku, takže v některé jeho části je vždy období dešťů; Kongo je i nejhlubší změřená řeka, přes 220 m.",
       "id": "geo-0093",
-      "options": ["Lautoka", "Nadi", "Apia", "Suva"],
-      "question": "Jaké je hlavní město Fidži?"
+      "options": [
+        "Obratník Raka",
+        "Nultý poledník",
+        "Obratník Kozoroha",
+        "Rovník"
+      ],
+      "question": "Kongo je jediná velká řeka, která dvakrát protíná kterou čáru?"
     },
     {
       "answer": 1,
@@ -776,10 +791,10 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Kinabalu se tyčí do výšky 4 095 m v malajsijském státě Sabah a rostou na něm tisíce druhů rostlin včetně mnoha orchidejí.",
+      "explanation": "Bouře nad tímto venezuelským jezerem blýskají celé hodiny asi 140–160 nocí v roce; námořníkům kdysi sloužily jako přírodní maják.",
       "id": "geo-0094",
-      "options": ["Jáva", "Borneo", "Sumatra", "Sulawesi"],
-      "question": "Na kterém ostrově leží Kinabalu, jedna z nejvyšších hor jihovýchodní Asie?"
+      "options": ["Titicaca", "Maracaibo", "Nikaragua", "Atitlán"],
+      "question": "Nad kterým jezerem dávají „blesky Catatumbo“ nejvyšší hustotu úderů blesku na světě?"
     },
     {
       "answer": 0,
@@ -853,24 +868,24 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Leží v Andamanském moři, kde se z tyrkysové vody zvedají strmé vápencové ostrovy.",
+      "explanation": "Jeho voda je skoro desetkrát slanější než oceán a jeho břeh asi 430 m pod hladinou moře je nejníže položenou souší na Zemi.",
       "id": "geo-0090",
-      "options": ["Thajsko", "Kambodža", "Laos", "Myanmar"],
-      "question": "Ve které zemi leží ostrovy Phuket a Ko Phi Phi?"
+      "options": [
+        "Ležet na hladině",
+        "Dýchat pod vodou",
+        "Chodit po vodě",
+        "Vidět až na dno"
+      ],
+      "question": "Mrtvé moře je tak slané, že v něm lidé mohou bez námahy co?"
     },
     {
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Botnický záliv je tak málo slaný, že v zimě zamrzá, a země kolem něj se po době ledové stále zvedá.",
+      "explanation": "Sanskrtské „Sindhu“ se v perštině změnilo na „Hindu“ a v řečtině na „Indos“; Římané pak nazývali Indií celou zemi za řekou.",
       "id": "geo-0102",
-      "options": [
-        "Skagerrak",
-        "Rižský záliv",
-        "Finský záliv",
-        "Botnický záliv"
-      ],
-      "question": "Který záliv leží mezi Švédskem a Finskem?"
+      "options": ["Ganga", "Brahmaputra", "Narmada", "Indus"],
+      "question": "Od jména které řeky je odvozen název „Indie“?"
     },
     {
       "answer": 3,
@@ -912,10 +927,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Malacká úžina je jednou z nejrušnějších námořních tras světa a spojuje Indický oceán s Tichým.",
+      "explanation": "Samoa skočila ze čtvrtka rovnou do soboty, aby její pracovní týden odpovídal velkým obchodním partnerům, Austrálii a Novému Zélandu.",
       "id": "geo-0103",
-      "options": ["Sulawesi", "Borneo", "Jáva", "Sumatra"],
-      "question": "Od kterého ostrova odděluje Malacká úžina Malajský poloostrov?"
+      "options": ["Fidži", "Tonga", "Tuvalu", "Samoa"],
+      "question": "Která tichomořská země zcela vynechala 30. prosinec 2011, když se přesunula na druhou stranu datové hranice?"
     },
     {
       "answer": 3,
@@ -1903,10 +1918,10 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Měsíčník Mola alexandrini nalezený u Azor vážil 2 744 kg a samice měsíčníku svítivého může nést asi 300 milionů jiker.",
+      "explanation": "Samci sbírají peří, květy a čím dál častěji i víčka a brčka, aby zaujali samice, které obejdou několik besídek, než si vyberou partnera.",
       "id": "nat-0100",
-      "options": ["Tuňák obecný", "Marlín černý", "Kanic obrovský", "Měsíčník"],
-      "question": "Která ryba drží rekord jako nejtěžší kdy změřená kostnatá ryba?"
+      "options": ["Červené", "Žluté", "Bílé", "Modré"],
+      "question": "Předměty jaké barvy nosí samci lemčíka hedvábného nejčastěji k ozdobení svého tokaniště?"
     },
     {
       "answer": 1,
@@ -1975,15 +1990,15 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Páv je samec a pávice samice; samci vlečkou třesou a předvádějí se za chřestivého zvuku.",
+      "explanation": "Hlídka vyleze na vyvýšené místo a tiše volá, dokud je vše v pořádku; když zahlédne predátora, varuje a všichni se rozběhnou do úkrytu.",
       "id": "nat-0110",
       "options": [
-        "Jen mláďata",
-        "Samice (pávice)",
-        "Oba stejně",
-        "Samec (páv)"
+        "Spí v noře",
+        "Hrabe falešnou díru",
+        "Nosí vodu",
+        "Hlídkuje jako stráž"
       ],
-      "question": "Kdo má u pávů dlouhou barevnou vlečku?"
+      "question": "Co často dělá jedna surikata ze skupiny, zatímco ostatní hledají potravu?"
     },
     {
       "answer": 1,
@@ -2458,10 +2473,10 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Mezinárodní astronomická unie stanovila 88 souhvězdí a jejich hranice ve 20. letech 20. století.",
+      "explanation": "Jižní kříž (Crux) je nejmenší ze všech 88 souhvězdí a námořníci podle něj odedávna určují směr k jihu.",
       "id": "sci-0047",
-      "options": ["112", "88", "64", "48"],
-      "question": "Kolik souhvězdí astronomové oficiálně uznávají?"
+      "options": ["Orion", "Jižní kříž", "Velká medvědice", "Štír"],
+      "question": "Které souhvězdí je na vlajkách Austrálie, Nového Zélandu, Brazílie a Samoy?"
     },
     {
       "answer": 1,

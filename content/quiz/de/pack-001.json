@@ -196,10 +196,10 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Abuja, eine Planstadt in der Landesmitte, löste 1991 offiziell das an der Küste gelegene Lagos als Hauptstadt ab.",
+      "explanation": "Pretoria ist Regierungssitz, in Kapstadt tagt das Parlament, und in Bloemfontein sitzt das Oberste Berufungsgericht.",
       "id": "geo-0029",
-      "options": ["Lagos", "Abuja", "Ibadan", "Kano"],
-      "question": "Wie heißt die Hauptstadt Nigerias?"
+      "options": ["Nigeria", "Südafrika", "Kenia", "Ägypten"],
+      "question": "Welches Land hat drei Hauptstädte – je eine für Regierung, Parlament und Justiz?"
     },
     {
       "answer": 1,
@@ -214,19 +214,24 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Casablanca ist zwar Marokkos größte Stadt und Wirtschaftszentrum, doch Königspalast und Parlament befinden sich in Rabat.",
+      "explanation": "Einst für einen Meteoritenkrater gehalten, gilt die Richat-Struktur heute als abgetragene Aufwölbung, deren Gesteinsschichten riesige Ringe bilden.",
       "id": "geo-0030",
-      "options": ["Marrakesch", "Rabat", "Casablanca", "Fès"],
-      "question": "Wie heißt die Hauptstadt Marokkos?"
+      "options": ["Mali", "Mauretanien", "Niger", "Algerien"],
+      "question": "In welchem Land liegt das „Auge der Sahara“, ein 40 km großer Felsring, den Astronauten als Orientierungspunkt nutzen?"
     },
     {
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Tigris und Euphrat vereinen sich später zum Schatt al-Arab; das Land dazwischen ist Mesopotamien, „zwischen den Flüssen“.",
+      "explanation": "Das nächste Land ist rund 2.700 km entfernt, die Raumstation kreist aber nur etwa 400 km hoch – fliegt sie darüber, ist ihre Crew am nächsten.",
       "id": "geo-0054",
-      "options": ["Tigris", "Indus", "Euphrat", "Jordan"],
-      "question": "Welcher Fluss fließt durch Bagdad?"
+      "options": [
+        "Astronauten im Orbit",
+        "Kreuzfahrtgäste",
+        "Crews von Fischkuttern",
+        "Leuchtturmwärter"
+      ],
+      "question": "Wer sind am Point Nemo, dem landfernsten Punkt im Ozean, oft die nächsten Menschen?"
     },
     {
       "answer": 1,
@@ -250,10 +255,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Der 3.776 m hohe Fuji ist ein aktiver Vulkan, der zuletzt 1707 ausbrach; an klaren Tagen sieht man ihn von Tokio aus.",
+      "explanation": "Seine Inseln verteilen sich auf rund 3,5 Millionen km² Ozean; 1995 verlegte er die Datumsgrenze, damit im ganzen Land derselbe Kalendertag gilt.",
       "id": "geo-0055",
-      "options": ["Kyūshū", "Shikoku", "Hokkaidō", "Honshū"],
-      "question": "Auf welcher der japanischen Hauptinseln liegt der Fuji?"
+      "options": ["Tuvalu", "Fidschi", "Samoa", "Kiribati"],
+      "question": "Welcher pazifische Inselstaat erstreckt sich sowohl über den Äquator als auch über den 180. Längengrad?"
     },
     {
       "answer": 3,
@@ -295,10 +300,10 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Der Ladogasee bei Sankt Petersburg ist etwa 17.700 km² groß und hat rund 660 Inseln.",
+      "explanation": "Hunderte farbenprächtige Buntbarscharten leben dort, fast alle kommen nirgendwo sonst vor; viele Aquarien-Buntbarsche stammen aus diesem See.",
       "id": "geo-0056",
-      "options": ["Ladogasee", "Vänern", "Genfer See", "Onegasee"],
-      "question": "Welcher ist – ohne das Kaspische Meer – der größte See Europas?"
+      "options": ["Malawisee", "Victoriasee", "Tschadsee", "Voltasee"],
+      "question": "Welcher afrikanische See beherbergt mehr Fischarten als jeder andere See der Erde?"
     },
     {
       "answer": 2,
@@ -536,10 +541,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Das 1804 gegründete Hobart ist Australiens zweitälteste Hauptstadt und ein Ausgangspunkt für Antarktis-Expeditionen.",
+      "explanation": "Die Straße verläuft rund 30.000 km von Alaska bis Argentinien, doch auf etwa 100 km Sumpf und Regenwald zwischen Panama und Kolumbien gibt es keine Straße.",
       "id": "geo-0083",
-      "options": ["Devonport", "Hobart", "Launceston", "Darwin"],
-      "question": "Wie heißt die Hauptstadt des australischen Bundesstaats Tasmanien?"
+      "options": [
+        "Transsibirische Fernstraße",
+        "Panamericana",
+        "Route 66",
+        "Seidenstraße"
+      ],
+      "question": "Der Darién Gap, ein straßenloser Dschungelabschnitt, ist die einzige Lücke in welcher Straße?"
     },
     {
       "answer": 3,
@@ -721,10 +731,15 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Suva liegt auf der größten Insel Viti Levu; viele Besucher landen jedoch in Nadi auf der anderen Seite der Insel.",
+      "explanation": "Weil sein Einzugsgebiet beiderseits des Äquators liegt, ist in einem Teil immer Regenzeit; mit über 220 m ist er zudem der tiefste gemessene Fluss.",
       "id": "geo-0093",
-      "options": ["Lautoka", "Nadi", "Apia", "Suva"],
-      "question": "Wie heißt die Hauptstadt von Fidschi?"
+      "options": [
+        "Den nördlichen Wendekreis",
+        "Den Nullmeridian",
+        "Den südlichen Wendekreis",
+        "Den Äquator"
+      ],
+      "question": "Der Kongo ist der einzige große Fluss, der welche Linie zweimal überquert?"
     },
     {
       "answer": 1,
@@ -776,10 +791,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Der Kinabalu ragt im malaysischen Bundesstaat Sabah 4.095 m auf und beherbergt Tausende Pflanzenarten, darunter viele Orchideen.",
+      "explanation": "An rund 140–160 Nächten im Jahr blitzt es stundenlang über diesem See in Venezuela; Seeleute nutzten das Leuchten einst als natürlichen Leuchtturm.",
       "id": "geo-0094",
-      "options": ["Java", "Borneo", "Sumatra", "Sulawesi"],
-      "question": "Auf welcher Insel liegt der Kinabalu, einer der höchsten Gipfel Südostasiens?"
+      "options": [
+        "Titicacasee",
+        "Maracaibo-See",
+        "Nicaraguasee",
+        "Atitlán-See"
+      ],
+      "question": "Über welchem See sorgen die „Catatumbo-Blitze“ für die weltweit höchste Blitzdichte?"
     },
     {
       "answer": 0,
@@ -848,24 +868,24 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Sie liegen in der Andamanensee, wo steile Kalksteininseln direkt aus türkisfarbenem Wasser ragen.",
+      "explanation": "Sein Wasser ist fast zehnmal salziger als das Meer, und sein Ufer, etwa 430 m unter dem Meeresspiegel, ist das tiefste trockene Land der Erde.",
       "id": "geo-0090",
-      "options": ["Thailand", "Kambodscha", "Laos", "Myanmar"],
-      "question": "In welchem Land liegen die Inseln Phuket und Ko Phi Phi?"
+      "options": [
+        "Mühelos oben treiben",
+        "Unter Wasser atmen",
+        "Auf dem Wasser laufen",
+        "Bis zum Grund sehen"
+      ],
+      "question": "Was kann man im Toten Meer dank seines hohen Salzgehalts tun?"
     },
     {
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Der Bottnische Meerbusen ist so salzarm, dass er im Winter zufriert; das Land ringsum hebt sich seit der Eiszeit noch immer.",
+      "explanation": "Aus dem Sanskrit-Wort „Sindhu“ wurde im Persischen „Hindu“ und im Griechischen „Indos“; die Römer nannten das ganze Land jenseits des Flusses „India“.",
       "id": "geo-0102",
-      "options": [
-        "Skagerrak",
-        "Rigaischer Meerbusen",
-        "Finnischer Meerbusen",
-        "Bottnischer Meerbusen"
-      ],
-      "question": "Welcher Meerbusen liegt zwischen Schweden und Finnland?"
+      "options": ["Ganges", "Brahmaputra", "Narmada", "Indus"],
+      "question": "Der Name „Indien“ geht auf welchen Fluss zurück?"
     },
     {
       "answer": 3,
@@ -907,10 +927,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Die Straße von Malakka ist einer der meistbefahrenen Schifffahrtswege der Welt und verbindet Indischen Ozean und Pazifik.",
+      "explanation": "Samoa sprang von Donnerstag direkt auf Samstag, damit seine Arbeitswoche zu den großen Handelspartnern Australien und Neuseeland passt.",
       "id": "geo-0103",
-      "options": ["Sulawesi", "Borneo", "Java", "Sumatra"],
-      "question": "Die Straße von Malakka trennt die Malaiische Halbinsel von welcher Insel?"
+      "options": ["Fidschi", "Tonga", "Tuvalu", "Samoa"],
+      "question": "Welcher Pazifikstaat übersprang den 30. Dezember 2011 komplett, indem er auf die andere Seite der Datumsgrenze wechselte?"
     },
     {
       "answer": 3,
@@ -1879,15 +1899,10 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Ein vor den Azoren gefundener Mondfisch der Art Mola alexandrini wog 2.744 kg; ein Mondfischweibchen kann etwa 300 Millionen Eier tragen.",
+      "explanation": "Die Männchen sammeln Federn, Blüten und zunehmend Kronkorken und Strohhalme, um Weibchen zu beeindrucken, die mehrere Lauben besuchen, bevor sie wählen.",
       "id": "nat-0100",
-      "options": [
-        "Blauflossen-Thun",
-        "Schwarzer Marlin",
-        "Riesenzackenbarsch",
-        "Mondfisch"
-      ],
-      "question": "Welche Fischart hält den Rekord als schwerster je gemessener Knochenfisch?"
+      "options": ["Rot", "Gelb", "Weiß", "Blau"],
+      "question": "Männliche Seidenlaubenvögel schmücken ihren Balzplatz vor allem mit Gegenständen welcher Farbe?"
     },
     {
       "answer": 1,
@@ -1966,15 +1981,15 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Das Männchen ist der Pfauenhahn, das Weibchen die Pfauenhenne; die Hähne schütteln ihre Schleppe zu einer rasselnden Balz.",
+      "explanation": "Der Wächter klettert auf einen erhöhten Punkt und gibt leise Laute von sich, solange alles ruhig ist; erspäht er einen Feind, warnt er, und alle flüchten in Deckung.",
       "id": "nat-0110",
       "options": [
-        "Nur die Küken",
-        "Das Weibchen",
-        "Beide gleich",
-        "Das Männchen"
+        "Schläft im Bau",
+        "Gräbt ein Täuschungsloch",
+        "Sammelt Wasser",
+        "Steht Wache"
       ],
-      "question": "Welcher Vogel hat bei den Pfauen die lange, bunte Schleppe?"
+      "question": "Was tut ein Mitglied einer Erdmännchengruppe oft, während die anderen nach Futter suchen?"
     },
     {
       "answer": 1,
@@ -2439,10 +2454,10 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Die Internationale Astronomische Union legte die 88 Sternbilder und ihre Grenzen in den 1920er-Jahren fest.",
+      "explanation": "Das Kreuz des Südens (Crux) ist das kleinste der 88 Sternbilder; Seefahrer nutzen es seit Langem, um die Südrichtung zu finden.",
       "id": "sci-0047",
-      "options": ["112", "88", "64", "48"],
-      "question": "Wie viele Sternbilder sind von Astronomen offiziell anerkannt?"
+      "options": ["Orion", "Kreuz des Südens", "Großer Bär", "Skorpion"],
+      "question": "Welches Sternbild ist auf den Flaggen Australiens, Neuseelands, Brasiliens und Samoas zu sehen?"
     },
     {
       "answer": 1,

@@ -820,15 +820,10 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "Landsteiner's discovery made safe blood transfusions possible and earned him a Nobel Prize in 1930.",
+      "explanation": "A 2018 study found their spleens are about 50% larger than neighbours'; the spleen squeezes extra oxygen-rich blood into circulation during a dive.",
       "id": "body-0042",
-      "options": [
-        "Joseph Lister",
-        "Robert Koch",
-        "Alexander Fleming",
-        "Karl Landsteiner"
-      ],
-      "question": "Who discovered the main human blood groups in 1901?"
+      "options": ["Lungs", "Hearts", "Livers", "Spleens"],
+      "question": "The Bajau 'sea nomads' of Southeast Asia, famous free-divers, have unusually large what?"
     },
     {
       "answer": 0,
@@ -870,19 +865,24 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "Before Harvey, many believed blood was constantly made by the liver and used up by the body.",
+      "explanation": "Without gravity squeezing the spine, the discs between the vertebrae swell; people can gain up to about 3% in height, which disappears back on Earth.",
       "id": "body-0043",
-      "options": ["Hippocrates", "Galen", "Andreas Vesalius", "William Harvey"],
-      "question": "Who first correctly described how blood circulates around the body, in 1628?"
+      "options": [
+        "Their bones grow faster",
+        "Their muscles stretch",
+        "Lower air pressure",
+        "Their spinal discs expand"
+      ],
+      "question": "Astronauts on long missions can come back a few centimetres taller. Why?"
     },
     {
       "answer": 2,
       "category": "human body & health",
       "difficulty": 1,
-      "explanation": "The trachea is held open by C-shaped rings of cartilage, which you can feel at the front of your neck.",
+      "explanation": "The kneecap starts out as soft cartilage and usually only begins turning into bone at around 3 to 5 years old.",
       "id": "body-0031",
-      "options": ["Larynx", "Pharynx", "Trachea", "Oesophagus"],
-      "question": "What is the medical name for the windpipe?"
+      "options": ["Solid bone", "Fat", "Cartilage", "Muscle"],
+      "question": "A newborn baby's kneecaps are made mostly of what?"
     },
     {
       "answer": 0,
@@ -1361,10 +1361,15 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Pho broth is simmered for hours with spices such as star anise, cinnamon and charred ginger.",
+      "explanation": "Its name comes from the old Wolof (Jolof) Empire of Senegal; Nigerians and Ghanaians enjoy a friendly rivalry over who cooks it best.",
       "id": "food-0022",
-      "options": ["Vietnam", "Cambodia", "Thailand", "Laos"],
-      "question": "Pho is a noodle soup from which country?"
+      "options": [
+        "West Africa",
+        "South America",
+        "Central Asia",
+        "Southern Europe"
+      ],
+      "question": "Jollof rice, cooked in one pot with tomatoes and spices, is a favourite across which region?"
     },
     {
       "answer": 3,
@@ -1429,10 +1434,10 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Dim sum is part of the Cantonese tradition of \"yum cha\", drinking tea with small dishes in the morning.",
+      "explanation": "It was created by Durban's Indian community; there is no rabbit in it, and 'bunny' may come from 'bania', a merchant caste.",
       "id": "food-0053",
-      "options": ["Shandong", "Cantonese", "Hunan", "Sichuan"],
-      "question": "Dim sum is most closely associated with which Chinese regional cuisine?"
+      "options": ["India", "South Africa", "Mauritius", "Kenya"],
+      "question": "Bunny chow, a hollowed-out loaf of bread filled with curry, comes from which country?"
     },
     {
       "answer": 0,
@@ -1479,10 +1484,15 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Dried katsuobushi is one of the hardest foods in the world, so hard it is shaved with a plane like wood.",
+      "explanation": "The ground root of the kava shrub is mixed with water and served from a shared bowl; it is not alcoholic but briefly numbs the lips and tongue.",
       "id": "food-0055",
-      "options": ["Skipjack tuna", "Sardine", "Mackerel", "Atlantic salmon"],
-      "question": "Katsuobushi, the smoked flakes used in Japanese broth, are made from which fish?"
+      "options": [
+        "Root of a pepper plant",
+        "Fermented coconut",
+        "Sugar cane juice",
+        "Seaweed"
+      ],
+      "question": "Kava, a ceremonial drink shared in Fiji, Tonga and Vanuatu, is made from what?"
     },
     {
       "answer": 2,
@@ -1543,10 +1553,15 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "The numbing comes from Sichuan pepper, which makes the lips tingle; the heat comes from chillies.",
+      "explanation": "The left hand is kept for washing, so passing food or money with it can seem rude; in India people often eat with just their fingertips.",
       "id": "food-0054",
-      "options": ["Fujian", "Sichuan", "Jiangsu", "Cantonese"],
-      "question": "Which Chinese regional cuisine is famous for \"mala\", a numbing and spicy flavour?"
+      "options": [
+        "The left hand",
+        "The right hand",
+        "Either hand",
+        "Both hands"
+      ],
+      "question": "In much of India, the Middle East and Africa, which hand is traditionally used for eating?"
     },
     {
       "answer": 2,
@@ -1660,10 +1675,15 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Umeboshi are intensely sour and salty, and are often placed in the middle of a rice ball.",
+      "explanation": "Maize gives the beans a pole to climb, the beans add nitrogen to the soil, and broad squash leaves shade out weeds.",
       "id": "food-0069",
-      "options": ["Yuzu fruits", "Persimmons", "Ume plums", "Cherries"],
-      "question": "Japanese umeboshi are salted, pickled versions of which fruit?"
+      "options": [
+        "Rice, tea and soy",
+        "Wheat, olives and grapes",
+        "Maize, beans and squash",
+        "Potatoes, quinoa and chilli"
+      ],
+      "question": "Which crops did many Indigenous peoples of North America plant together as the 'Three Sisters'?"
     },
     {
       "answer": 0,
@@ -1729,10 +1749,15 @@
       "answer": 3,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Bibimbap is served with vegetables, chilli paste and often an egg, and is stirred together just before eating.",
+      "explanation": "Hosts keep refilling the small handleless cups, usually only about a third full, until the guest gives the cup a little shake.",
       "id": "food-0070",
-      "options": ["Tteokbokki", "Bulgogi", "Japchae", "Bibimbap"],
-      "question": "Which Korean dish's name means \"mixed rice\"?"
+      "options": [
+        "Turn the cup upside down",
+        "Leave a coin beside it",
+        "Tap the table twice",
+        "Gently shake the cup"
+      ],
+      "question": "When served Arabic coffee in the Gulf, how do guests signal that they want no more?"
     },
     {
       "answer": 2,
@@ -1747,10 +1772,10 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Feijoada is traditionally eaten on Wednesdays or Saturdays and served with rice, orange slices and toasted cassava flour.",
+      "explanation": "It is named after Russian ballerina Anna Pavlova, who toured both countries in 1926; who made it first is still hotly debated.",
       "id": "food-0072",
-      "options": ["Brazil", "Mexico", "Colombia", "Cuba"],
-      "question": "Feijoada, a black bean and pork stew, is a national dish of which country?"
+      "options": ["New Zealand", "South Africa", "Russia", "Canada"],
+      "question": "The meringue dessert pavlova is claimed as a national dish by Australia and which other country?"
     },
     {
       "answer": 3,
@@ -1921,10 +1946,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Concorde flew passengers for 27 years; surviving aircraft are now displayed in museums in Europe and North America.",
+      "explanation": "Pilots aimed at a red-and-white checkerboard on a hillside, then banked about 47° to line up with the runway just above Kowloon's rooftops.",
       "id": "avi-0009",
-      "options": ["2010", "1989", "2003", "1996"],
-      "question": "In which year did Concorde make its last commercial flights?"
+      "options": [
+        "On a floating runway",
+        "On a frozen lake",
+        "A sharp turn low over the city",
+        "Onto a beach at low tide"
+      ],
+      "question": "Hong Kong's old Kai Tak airport, closed in 1998, was famous for what kind of landing?"
     },
     {
       "answer": 3,
@@ -1967,10 +1997,10 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Parts arrived from across Europe by ship, barge and road convoys, some too big to travel any other way.",
+      "explanation": "The air is so thin that its main runway is about 4 km long, giving planes extra room to reach take-off speed.",
       "id": "avi-0013",
-      "options": ["Toulouse", "Marseille", "Lyon", "Bordeaux"],
-      "question": "In which French city did Airbus carry out final assembly of the A380?"
+      "options": ["La Paz", "Quito", "Cusco", "Bogotá"],
+      "question": "El Alto International Airport, about 4,000 m above sea level, serves which city?"
     },
     {
       "answer": 2,
@@ -2059,15 +2089,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "The He 178 first flew on 27 August 1939 in Germany, powered by Hans von Ohain's engine.",
+      "explanation": "The St. Petersburg–Tampa Airboat Line carried one passenger at a time; the very first seat was auctioned for $400.",
       "id": "avi-0041",
       "options": [
-        "Messerschmitt Me 262",
-        "Bell X-1",
-        "Heinkel He 178",
-        "Gloster Meteor"
+        "San Francisco Bay",
+        "Chesapeake Bay",
+        "Tampa Bay",
+        "Galveston Bay"
       ],
-      "question": "Which was the first jet-powered aircraft to fly, in 1939?"
+      "question": "In 1914 the first scheduled airline service with winged aircraft began. Which bay did its flying boat cross?"
     },
     {
       "answer": 1,
@@ -2197,10 +2227,10 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 1,
-      "explanation": "Heathrow began as a small airfield, and its name comes from a hamlet that was demolished to build it.",
+      "explanation": "Qantas stands for Queensland and Northern Territory Aerial Services; it was founded in the outback town of Winton in 1920.",
       "id": "avi-0028",
-      "options": ["Edinburgh", "Manchester", "London", "Dublin"],
-      "question": "Heathrow and Gatwick airports serve which city?"
+      "options": ["New Zealand", "Canada", "Australia", "South Africa"],
+      "question": "The airline name Qantas began as an abbreviation. Which country is Qantas from?"
     },
     {
       "answer": 1,
@@ -2315,19 +2345,24 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "The tunnel is about 50 km long, and its undersea section of about 38 km is the longest in the world.",
+      "explanation": "Toronto is YYZ and Vancouver YVR; the Y is usually traced to old Canadian radio and weather-station codes.",
       "id": "avi-0053",
-      "options": ["1994", "2001", "1984", "1975"],
-      "question": "In which year did the Channel Tunnel between England and France open?"
+      "options": ["Y", "C", "K", "Q"],
+      "question": "Most Canadian airport codes, like those of Toronto and Vancouver, begin with which letter?"
     },
     {
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "The 537 m runway climbs at a gradient of about 18.5%, so planes land uphill and take off downhill.",
+      "explanation": "Jets cannot use it; small propeller planes land on a strip of about 400 m squeezed between cliffs and the sea.",
       "id": "avi-0065",
-      "options": ["Austria", "Italy", "France", "Switzerland"],
-      "question": "Courchevel Altiport, famous for its steep, short runway, is in which country?"
+      "options": [
+        "About 1,200 m",
+        "About 2,000 m",
+        "About 400 m",
+        "About 100 m"
+      ],
+      "question": "The Caribbean island of Saba has one of the shortest commercial runways in the world. About how long is it?"
     },
     {
       "answer": 0,
@@ -2347,10 +2382,10 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "The tunnel is about 54 km long, with around 23 km beneath the seabed of the Tsugaru Strait.",
+      "explanation": "The Al Boraq line links Tangier and Casablanca; at up to 320 km/h it cut the trip from about 4 h 45 min to about 2 h 10 min.",
       "id": "avi-0055",
-      "options": ["Shikoku", "Kyushu", "Okinawa", "Hokkaido"],
-      "question": "Japan's Seikan rail tunnel, partly under the sea, links Honshu with which island?"
+      "options": ["Egypt", "South Africa", "Algeria", "Morocco"],
+      "question": "Africa's first high-speed railway opened in 2018. In which country does it run?"
     },
     {
       "answer": 3,
@@ -2370,10 +2405,15 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "The trip takes about eight hours and crosses 291 bridges, so the train is nicknamed the slowest express in the world.",
+      "explanation": "'Nullarbor' comes from Latin for 'no tree'; on this stretch of the Trans-Australian Railway the track does not curve once for 478 km.",
       "id": "avi-0056",
-      "options": ["St Moritz", "Gstaad", "Interlaken", "Lucerne"],
-      "question": "The Glacier Express panoramic train runs between Zermatt and which Swiss resort?"
+      "options": [
+        "About 478 km",
+        "About 48 km",
+        "About 150 km",
+        "About 1,500 km"
+      ],
+      "question": "Trains crossing Australia's Nullarbor Plain use the world's longest dead-straight railway track. About how long is it?"
     },
     {
       "answer": 3,
@@ -2424,10 +2464,10 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "The A300, first flown in 1972, was the world's first twin-engine wide-body airliner.",
+      "explanation": "The first full Sydney–London flight in 1947 took 93 hours with stops such as Singapore, Karachi and Cairo; today it can be done with one stop.",
       "id": "avi-0069",
-      "options": ["A310", "A340", "A300", "A320"],
-      "question": "What was Airbus's first airliner?"
+      "options": ["United States", "India", "United Kingdom", "South Africa"],
+      "question": "The famous airline route nicknamed the 'Kangaroo Route' links Australia with which country?"
     },
     {
       "answer": 0,
@@ -2475,10 +2515,10 @@
       "answer": 1,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Le Bourget is also where Charles Lindbergh landed in 1927 at the end of his transatlantic flight.",
+      "explanation": "Its site near Dammam covers about 776 km², though only a small part of that land is used for runways and terminals.",
       "id": "avi-0064",
-      "options": ["Beauvais", "Le Bourget", "Orly", "Charles de Gaulle"],
-      "question": "The Paris Air Show is held at which airport?"
+      "options": ["Qatar", "Saudi Arabia", "United Arab Emirates", "Oman"],
+      "question": "Which country is home to King Fahd International Airport, the world's largest airport by land area?"
     },
     {
       "answer": 3,

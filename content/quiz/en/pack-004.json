@@ -15,15 +15,10 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 2,
-      "explanation": "Torricelli, a student of Galileo, showed that air pressure holds up a column of mercury about 76 cm tall.",
+      "explanation": "Users swap cash for e-money at small shops; within three years it had about 9 million customers in Kenya, many without a bank account.",
       "id": "inv-0050",
-      "options": [
-        "Galileo Galilei",
-        "Otto von Guericke",
-        "Evangelista Torricelli",
-        "Blaise Pascal"
-      ],
-      "question": "Who invented the mercury barometer in 1643?"
+      "options": ["Nigeria", "South Africa", "Kenya", "India"],
+      "question": "M-Pesa, which lets millions send money by text message on simple phones, launched in 2007 in which country?"
     },
     {
       "answer": 3,
@@ -129,15 +124,10 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Cochrane wanted a machine that would wash her dishes without chipping her fine china.",
+      "explanation": "A float sinking in a hidden water tank inside the elephant set off moving figures, birds and a drum every half hour.",
       "id": "inv-0083",
-      "options": [
-        "Margaret Knight",
-        "Josephine Cochrane",
-        "Beulah Louise Henry",
-        "Mary Anderson"
-      ],
-      "question": "Who invented the first commercially successful dishwasher, in 1886?"
+      "options": ["Steam", "Water", "Sand", "Springs"],
+      "question": "Al-Jazari's 'elephant clock', described in a book of 1206, was powered by what?"
     },
     {
       "answer": 1,
@@ -290,15 +280,10 @@
       "answer": 0,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Leibniz was fascinated to find similar patterns in the ancient Chinese \"I Ching\" hexagrams.",
+      "explanation": "Its Vrihat Samrat Yantra, about 27 m tall and finished in the 1730s, can tell local time to within about two seconds.",
       "id": "inv-0096",
-      "options": [
-        "Gottfried Leibniz",
-        "René Descartes",
-        "Isaac Newton",
-        "Christiaan Huygens"
-      ],
-      "question": "In 1703, which thinker published an influential paper on binary arithmetic?"
+      "options": ["Sundial", "Telescope", "Compass", "Water clock"],
+      "question": "The Jantar Mantar observatory in Jaipur, India, contains the world's largest what made of stone?"
     },
     {
       "answer": 1,
@@ -397,10 +382,10 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 2,
-      "explanation": "Rocket won the Rainhill Trials, a competition to find the best engine for a new Liverpool–Manchester railway.",
+      "explanation": "Sanskrit 'śarkarā' became Persian 'shakar' and Arabic 'sukkar'; people in India were making crystal sugar by about the 4th century AD.",
       "id": "inv-0068",
-      "options": ["Flying Scotsman", "Rocket", "Mallard", "Puffing Billy"],
-      "question": "Which famous 1829 locomotive was built by George and Robert Stephenson?"
+      "options": ["China", "India", "Egypt", "Brazil"],
+      "question": "The word 'sugar' and the art of turning cane juice into crystals both come from which country?"
     },
     {
       "answer": 2,
@@ -623,10 +608,15 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Edo-period karakuri used springs and gears to walk forward with a cup of tea and turn back once it was taken.",
+      "explanation": "Potatoes are left out to freeze at night and thaw by day, then trampled to squeeze out the water; dried chuño can be stored for years.",
       "id": "inv-0097",
-      "options": ["Daruma", "Kokeshi", "Hina-ningyō", "Karakuri"],
-      "question": "What is the Japanese name for mechanical dolls, such as ones that serve tea?"
+      "options": [
+        "Smoke over a fire",
+        "Salt from the sea",
+        "Hot clay ovens",
+        "Night frost and sun"
+      ],
+      "question": "Andean farmers make chuño, an ancient freeze-dried potato, by using what?"
     },
     {
       "answer": 1,
@@ -724,10 +714,10 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "The Seiko Astron used a tiny vibrating quartz crystal and was far more accurate than mechanical watches.",
+      "explanation": "Argentina celebrates Inventors' Day on his birthday, 29 September; in 1945 Marcel Bich bought rights to the design, leading to the Bic pen.",
       "id": "inv-0093",
-      "options": ["Sony", "Casio", "Citizen", "Seiko"],
-      "question": "Which Japanese company launched the first quartz wristwatch, in 1969?"
+      "options": ["Spain", "Brazil", "Italy", "Argentina"],
+      "question": "Ballpoint pen pioneer László Bíró, born in Hungary, patented his pen in 1943 after moving to which country?"
     },
     {
       "answer": 3,
@@ -996,10 +986,15 @@
       "answer": 2,
       "category": "languages",
       "difficulty": 3,
-      "explanation": "Mkhedruli traditionally has no capital letters; Georgia's three historic scripts are on UNESCO's cultural heritage list.",
+      "explanation": "Each consonant has seven forms, one for each vowel sound, giving well over 200 symbols; the script grew out of ancient Ge'ez writing.",
       "id": "lang-0068",
-      "options": ["Glagolitic", "Ge'ez", "Mkhedruli", "Hangul"],
-      "question": "What is the name of the unique script used to write the Georgian language?"
+      "options": [
+        "A whole word",
+        "A lone vowel",
+        "A consonant plus vowel",
+        "An idea or object"
+      ],
+      "question": "Ethiopia's Amharic language is written in a script where each symbol stands for what?"
     },
     {
       "answer": 3,
@@ -1251,15 +1246,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Players catch and throw the ball with a curved wicker basket called a cesta strapped to the wrist.",
+      "explanation": "It is said to have begun on Copacabana in 1965, when football was banned on the sand but volleyball nets were allowed.",
       "id": "sport-0058",
-      "options": [
-        "Catalonia",
-        "Andalusia",
-        "Basque Country",
-        "Balearic Islands"
-      ],
-      "question": "Jai alai, often called the fastest ball game, comes from which region?"
+      "options": ["Lisbon", "Miami", "Rio de Janeiro", "Barcelona"],
+      "question": "Footvolley, volleyball played without using the hands, was invented on the beaches of which city?"
     },
     {
       "answer": 1,
@@ -1292,10 +1282,15 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "The event was first called \"International Winter Sports Week\" and was only later recognised as the first Winter Olympics.",
+      "explanation": "The race goes uphill from Durban to Pietermaritzburg one year and back the other way the next, so the 'up' and 'down' runs differ slightly in length.",
       "id": "sport-0037",
-      "options": ["Chamonix", "St Moritz", "Innsbruck", "Oslo"],
-      "question": "Where were the first Winter Olympics held, in 1924?"
+      "options": [
+        "Its direction swaps each year",
+        "It is run only at night",
+        "It is run barefoot",
+        "It crosses three countries"
+      ],
+      "question": "What is unusual about South Africa's Comrades Marathon, which is about 90 km long?"
     },
     {
       "answer": 2,
@@ -1310,19 +1305,24 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Olympic archers shoot at a target 70 m away; the gold centre ring is about 12 cm across.",
+      "explanation": "About 20 mushers and their dogs carried the antitoxin in relays because the planes of the time could not fly in Alaska's winter storms.",
       "id": "sport-0041",
-      "options": ["Gold", "Blue", "Red", "Black"],
-      "question": "In Olympic archery, what colour is the centre of the target?"
+      "options": [
+        "Diphtheria medicine",
+        "Gold nuggets",
+        "Christmas mail",
+        "Winter food"
+      ],
+      "question": "Alaska's Iditarod sled-dog race honours a 1925 relay that rushed what to the town of Nome?"
     },
     {
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Field players may not touch the bottom of the pool, so they must tread water throughout the match.",
+      "explanation": "The 'naghol' land dive on Pentecost Island is linked to the yam harvest; the first commercial bungee company in New Zealand drew on it.",
       "id": "sport-0054",
-      "options": ["Six", "Five", "Seven", "Eight"],
-      "question": "How many players per team are in the water in water polo, including the goalkeeper?"
+      "options": ["Fiji", "Samoa", "Vanuatu", "Tonga"],
+      "question": "In which Pacific country do men leap from tall wooden towers with vines tied to their ankles, inspiring bungee jumping?"
     },
     {
       "answer": 2,
@@ -1337,10 +1337,15 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Sumo rings are made of clay and straw; a wrestler loses if any part of his body except his feet touches the ground.",
+      "explanation": "Two fists, two elbows, two knees and two shins make eight 'weapons', compared with just the two fists used in boxing.",
       "id": "sport-0014",
-      "options": ["Japan", "China", "Mongolia", "South Korea"],
-      "question": "Sumo wrestling is the traditional national sport of which country?"
+      "options": [
+        "Elbows and knees",
+        "Head and hips",
+        "Shoulders and back",
+        "Wrists and ankles"
+      ],
+      "question": "Muay Thai is called the 'art of eight limbs' because fighters strike with fists, shins and what else?"
     },
     {
       "answer": 2,
@@ -1373,10 +1378,10 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Ice hockey players change \"on the fly\" during play, often after shifts of less than a minute.",
+      "explanation": "These 'three games of men' are mentioned in a 13th-century chronicle; today women also compete in the archery and the horse races.",
       "id": "sport-0028",
-      "options": ["Six", "Five", "Seven", "Eleven"],
-      "question": "How many players per team are on the ice in ice hockey, including the goalie?"
+      "options": ["Archery", "Fencing", "Polo", "Weightlifting"],
+      "question": "Mongolia's Naadam festival features wrestling, horse racing and which other sport?"
     },
     {
       "answer": 2,
@@ -1405,10 +1410,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "A player must pot all 15 reds, each followed by a black, then all the colours, in one visit to the table.",
+      "explanation": "Runners carry their own food and kit for the whole race; organisers supply only water and a shared tent at each night's camp.",
       "id": "sport-0031",
-      "options": ["155", "100", "147", "180"],
-      "question": "What is the score of a standard maximum break in snooker?"
+      "options": ["Namib", "Kalahari", "Sahara", "Gobi"],
+      "question": "Morocco's Marathon des Sables, a multi-day race of about 250 km, crosses which desert?"
     },
     {
       "answer": 0,
@@ -1432,10 +1437,10 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "A top-quality shuttlecock has 16 goose feathers, all traditionally taken from the same wing.",
+      "explanation": "Many grounds are cricket fields used in winter, which is why big stadiums are often called 'ovals'; the field has no fixed size.",
       "id": "sport-0003",
-      "options": ["Squash", "Badminton", "Table tennis", "Lacrosse"],
-      "question": "Which sport is played with a shuttlecock?"
+      "options": ["Rectangle", "Oval", "Square", "Diamond"],
+      "question": "Australian rules football is usually played on a field of which shape?"
     },
     {
       "answer": 0,
@@ -1477,19 +1482,19 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Rugby league, a separate code that split off in 1895, uses 13 players per side.",
+      "explanation": "The team made its debut in Calgary; its story inspired the 1993 film 'Cool Runnings', which changed many of the real details.",
       "id": "sport-0029",
-      "options": ["12", "11", "13", "15"],
-      "question": "How many players does a rugby union team have on the field?"
+      "options": ["Fiji", "Kenya", "Brazil", "Jamaica"],
+      "question": "In 1988, which tropical country surprised the world by sending a bobsleigh team to the Winter Olympics?"
     },
     {
       "answer": 0,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Players rotate positions clockwise each time their team wins back the right to serve.",
+      "explanation": "It was played over 2,000 years ago in the Han dynasty; in 2004 FIFA acknowledged cuju as an early form of football.",
       "id": "sport-0015",
-      "options": ["Six", "Five", "Four", "Seven"],
-      "question": "How many players from each team are on a volleyball court at once?"
+      "options": ["China", "Greece", "Egypt", "Mexico"],
+      "question": "Cuju, an ancient ball game in which players kicked a ball through a goal, comes from which country?"
     },
     {
       "answer": 2,
@@ -1513,10 +1518,15 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Six-ball overs are now standard, but Australia used eight-ball overs in many seasons until 1979.",
+      "explanation": "Iten sits about 2,400 m up on the edge of the Great Rift Valley, where thin air helps build endurance; it calls itself the 'Home of Champions'.",
       "id": "sport-0026",
-      "options": ["Eight", "Five", "Ten", "Six"],
-      "question": "In cricket, how many legal balls are bowled in an over?"
+      "options": [
+        "Sea breezes",
+        "Flat sandy tracks",
+        "Cool winters",
+        "High altitude"
+      ],
+      "question": "Many top distance runners train around Iten in Kenya. What makes the area so useful?"
     },
     {
       "answer": 1,
@@ -1581,19 +1591,29 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Three darts in the treble 20 score 60 each; the bullseye is worth only 50.",
+      "explanation": "A master called the morshed beats a goblet drum and recites verses while athletes swing heavy wooden clubs in a sunken pit; UNESCO listed it in 2010.",
       "id": "sport-0032",
-      "options": ["200", "180", "170", "150"],
-      "question": "What is the highest score possible with three darts?"
+      "options": [
+        "A referee's whistle",
+        "Drumbeats and poetry",
+        "A ticking clock",
+        "Clapping crowds"
+      ],
+      "question": "In Iran's traditional zurkhaneh ('house of strength'), athletes train in time to what?"
     },
     {
       "answer": 0,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "William G. Morgan created it in Massachusetts as a gentler indoor game than basketball.",
+      "explanation": "Athletes jump, kick a small hanging ball, often of sealskin, with one foot and must land on that same foot; the kick once signalled a successful hunt.",
       "id": "sport-0049",
-      "options": ["Mintonette", "Handball", "Netball", "Volley-tennis"],
-      "question": "What was volleyball originally called when it was invented in 1895?"
+      "options": [
+        "A target hung in the air",
+        "A drum spun by a partner",
+        "A partner's open hand",
+        "A wooden pole on the ground"
+      ],
+      "question": "In the Arctic sport called the one-foot high kick, what must the athlete strike?"
     },
     {
       "answer": 1,
@@ -1636,10 +1656,10 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "The pitch is 20.12 m (22 yards) long — the same length as a chain, an old surveying unit.",
+      "explanation": "Teams from Chitral and Gilgit-Baltistan meet there each summer in a freestyle game with very few rules, a tradition dating back to the 1930s.",
       "id": "sport-0055",
-      "options": ["About 25 m", "About 30 m", "About 15 m", "About 20 m"],
-      "question": "Roughly how long is a cricket pitch between the two sets of stumps?"
+      "options": ["India", "Nepal", "China", "Pakistan"],
+      "question": "The Shandur polo ground, about 3,700 m up and often called the world's highest, is in which country?"
     },
     {
       "answer": 3,
@@ -1654,10 +1674,10 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "A match cannot continue if a team has fewer than seven players on the pitch.",
+      "explanation": "Hawaiian swimmer Duke Kahanamoku spread the sport; his display at Freshwater Beach near Sydney in 1914 helped launch surfing in Australia.",
       "id": "sport-0001",
-      "options": ["Twelve", "Eleven", "Nine", "Ten"],
-      "question": "How many players does each football (soccer) team have on the pitch?"
+      "options": ["Canary Islands", "Hawaii", "Maldives", "Bali"],
+      "question": "Surfing grew out of an ancient tradition on which islands?"
     },
     {
       "answer": 1,
@@ -1982,10 +2002,10 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Bakken, north of Copenhagen, began around a natural spring that drew crowds of visitors.",
+      "explanation": "Thousands of dancers in huge horned masks parade for hours; UNESCO proclaimed the carnival a masterpiece of intangible heritage in 2001.",
       "id": "misc-0073",
-      "options": ["Denmark", "England", "Germany", "Austria"],
-      "question": "Bakken, considered the world's oldest operating amusement park (1583), is in which country?"
+      "options": ["Bolivia", "Peru", "Chile", "Ecuador"],
+      "question": "The Carnival of Oruro, famous for its devil dance called the diablada, takes place in which country?"
     },
     {
       "answer": 1,
@@ -2060,10 +2080,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Pupils found that a punctured, softer ball \"squashed\" on impact, demanding more varied shots.",
+      "explanation": "In Rome his new shoes gave him blisters, so he ran without them and set a world best; four years later he won again in Tokyo, in shoes.",
       "id": "sport-0059",
-      "options": ["Eton", "Winchester", "Harrow", "Rugby"],
-      "question": "Squash was developed in the 19th century at which famous English school?"
+      "options": ["800 metres", "Cross-country", "Marathon", "10,000 metres"],
+      "question": "In 1960 Ethiopia's Abebe Bikila won an Olympic gold medal running barefoot. In which event?"
     },
     {
       "answer": 2,
@@ -2092,10 +2112,15 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "The penalty mark is 11 m (12 yards) from the goal line; the penalty area edge is 16.5 m away.",
+      "explanation": "Riders grab and pass a ball fitted with leather handles and throw it through a hoop, a bit like basketball crossed with polo.",
       "id": "sport-0047",
-      "options": ["12 metres", "11 metres", "9 metres", "16.5 metres"],
-      "question": "From how far away is a football penalty kick taken?"
+      "options": [
+        "On ice skates",
+        "On horseback",
+        "In a swimming pool",
+        "On sand dunes"
+      ],
+      "question": "Pato, Argentina's official national sport since 1953, is played how?"
     },
     {
       "answer": 2,
@@ -2133,10 +2158,10 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Dominica's flag is one of very few national flags that include the colour purple.",
+      "explanation": "The name, adopted in 1984, combines words from two local languages, Mòoré and Dioula; before that the country was called Upper Volta.",
       "id": "misc-0082",
-      "options": ["Barbados", "Dominica", "Grenada", "Jamaica"],
-      "question": "Which country's flag features a purple parrot called the sisserou?"
+      "options": ["Mali", "Burkina Faso", "Niger", "Senegal"],
+      "question": "Which African country's name means roughly 'land of upright people'?"
     },
     {
       "answer": 2,
@@ -2219,10 +2244,10 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "Most of the original Baroque statues have been replaced with copies; the originals are kept in museums.",
+      "explanation": "The head is seen as the most sacred part of the body and the feet as the lowest, so pointing your feet at someone is impolite too.",
       "id": "misc-0035",
-      "options": ["About 3", "About 30", "About 3,000", "About 300"],
-      "question": "Prague's Charles Bridge, started in 1357, is lined with how many statues?"
+      "options": ["The hand", "The head", "The shoulder", "The elbow"],
+      "question": "In Thailand, which part of another person's body is it especially rude to touch?"
     },
     {
       "answer": 1,
@@ -2498,10 +2523,10 @@
       "answer": 3,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Botín has been serving meals since 1725, and its wood-fired oven is said never to have gone out.",
+      "explanation": "In Coober Pedy the summer heat can pass 45 °C, but 'dugouts' carved into the rock stay at about 23–25 °C; there are even underground churches.",
       "id": "misc-0079",
-      "options": ["Vienna", "Paris", "Rome", "Madrid"],
-      "question": "Sobrino de Botín, listed as the oldest restaurant in the world, is in which city?"
+      "options": ["Mexico", "Chile", "South Africa", "Australia"],
+      "question": "In which country do many people in an opal-mining town live in underground homes to escape the heat?"
     },
     {
       "answer": 0,
@@ -2571,10 +2596,10 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Albert Einstein lived just down the street from the Zytglogge while working on his special theory of relativity.",
+      "explanation": "When it rains the hair fibres swell and close the gaps in the weave, while in dry heat the loose weave lets air flow through.",
       "id": "misc-0085",
-      "options": ["Zytglogge", "Glockenspiel", "Torre dell'Orologio", "Orloj"],
-      "question": "What is the name of Bern's medieval clock tower with moving figures?"
+      "options": ["Goat hair", "Palm fibre", "Cotton", "Camel leather"],
+      "question": "Traditional Bedouin tents, called 'houses of hair', are woven mainly from what?"
     },
     {
       "answer": 2,

@@ -820,15 +820,10 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "Landsteinerův objev umožnil bezpečné krevní transfuze a v roce 1930 mu vynesl Nobelovu cenu.",
+      "explanation": "Studie z roku 2018 zjistila, že jejich sleziny jsou asi o 50 % větší než u sousedů; slezina při ponoru vytlačí do oběhu krev bohatou na kyslík.",
       "id": "body-0042",
-      "options": [
-        "Joseph Lister",
-        "Robert Koch",
-        "Alexander Fleming",
-        "Karl Landsteiner"
-      ],
-      "question": "Kdo v roce 1901 objevil hlavní lidské krevní skupiny?"
+      "options": ["Plíce", "Srdce", "Játra", "Sleziny"],
+      "question": "Bajauové, „mořští nomádi“ z jihovýchodní Asie a slavní volní potápěči, mají neobvykle velké co?"
     },
     {
       "answer": 0,
@@ -870,24 +865,24 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "Před Harveyem mnozí věřili, že krev neustále vytvářejí játra a tělo ji spotřebovává.",
+      "explanation": "Bez gravitace, která páteř stlačuje, se meziobratlové ploténky roztáhnou; výška se může zvětšit až asi o 3 %, na Zemi se to ale zase vrátí.",
       "id": "body-0043",
       "options": [
-        "Hippokratés",
-        "Galénos",
-        "Andreas Vesalius",
-        "William Harvey"
+        "Rychleji jim rostou kosti",
+        "Natáhnou se jim svaly",
+        "Nižší tlak vzduchu",
+        "Nabobtnají jim ploténky"
       ],
-      "question": "Kdo v roce 1628 jako první správně popsal krevní oběh?"
+      "question": "Astronauti se z dlouhých misí mohou vrátit o pár centimetrů vyšší. Proč?"
     },
     {
       "answer": 2,
       "category": "human body & health",
       "difficulty": 1,
-      "explanation": "Průdušnici drží otevřenou chrupavčité prstence ve tvaru písmene C, které nahmatáš na přední straně krku.",
+      "explanation": "Čéška je zpočátku z měkké chrupavky a v kost se obvykle začíná měnit až kolem 3 až 5 let věku.",
       "id": "body-0031",
-      "options": ["Larynx", "Pharynx", "Trachea", "Oesophagus"],
-      "question": "Jak se odborně nazývá průdušnice?"
+      "options": ["Z pevné kosti", "Z tuku", "Z chrupavky", "Ze svalu"],
+      "question": "Z čeho jsou převážně čéšky novorozence?"
     },
     {
       "answer": 0,
@@ -1367,10 +1362,15 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Vývar na pho se vaří celé hodiny s kořením, jako je badyán, skořice a opečený zázvor.",
+      "explanation": "Jméno má po staré wolofské (Jolof) říši v Senegalu; Nigerijci a Ghaňané spolu přátelsky soupeří, kdo ji vaří lépe.",
       "id": "food-0022",
-      "options": ["Vietnam", "Kambodža", "Thajsko", "Laos"],
-      "question": "Ze které země pochází nudlová polévka pho?"
+      "options": [
+        "Západní Afrika",
+        "Jižní Amerika",
+        "Střední Asie",
+        "Jižní Evropa"
+      ],
+      "question": "Ve kterém regionu je oblíbená rýže jollof, vařená v jednom hrnci s rajčaty a kořením?"
     },
     {
       "answer": 3,
@@ -1435,10 +1435,10 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Dim sum patří ke kantonské tradici „jum čcha“ – dopolednímu pití čaje s malými pokrmy.",
+      "explanation": "Vymyslela ho indická komunita v Durbanu; žádný králík v něm není a „bunny“ možná pochází z „bania“, kasty obchodníků.",
       "id": "food-0053",
-      "options": ["Šantungská", "Kantonská", "Chunanská", "Sečuánská"],
-      "question": "S kterou regionální čínskou kuchyní je nejvíce spojeno dim sum?"
+      "options": ["Indie", "JAR", "Mauricius", "Keňa"],
+      "question": "Ze které země pochází bunny chow, vydlabaný bochník chleba plněný kari?"
     },
     {
       "answer": 0,
@@ -1485,10 +1485,15 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Sušené katsuobushi patří k nejtvrdším potravinám na světě – je tak tvrdé, že se hobluje jako dřevo.",
+      "explanation": "Rozemletý kořen keře kava se smíchá s vodou a podává ze společné mísy; není alkoholický, ale na chvíli znecitliví rty a jazyk.",
       "id": "food-0055",
-      "options": ["Tuňák pruhovaný", "Sardinka", "Makrela", "Losos obecný"],
-      "question": "Z jaké ryby se vyrábějí katsuobushi, uzené vločky do japonského vývaru?"
+      "options": [
+        "Z kořene pepřovníku",
+        "Z kvašeného kokosu",
+        "Ze šťávy z cukrové třtiny",
+        "Z mořských řas"
+      ],
+      "question": "Z čeho se připravuje kava, obřadní nápoj sdílený na Fidži, Tonze a Vanuatu?"
     },
     {
       "answer": 2,
@@ -1549,10 +1554,10 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Znecitlivění způsobuje sečuánský pepř, po kterém brní rty; pálivost dodávají chilli papričky.",
+      "explanation": "Levá ruka je vyhrazena pro mytí, takže podat jí jídlo nebo peníze může působit hrubě; v Indii se často jí jen konečky prstů.",
       "id": "food-0054",
-      "options": ["Fuťienská", "Sečuánská", "Ťiangsuská", "Kantonská"],
-      "question": "Která regionální čínská kuchyně je proslulá chutí „mala“, znecitlivující a pálivou?"
+      "options": ["Levou", "Pravou", "Kteroukoli", "Oběma"],
+      "question": "Kterou rukou se tradičně jí ve velké části Indie, Blízkého východu a Afriky?"
     },
     {
       "answer": 2,
@@ -1666,10 +1671,15 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Umeboši jsou nesmírně kyselé a slané a často se dávají doprostřed rýžové koule.",
+      "explanation": "Kukuřice dává fazolím oporu k pnutí, fazole obohacují půdu o dusík a široké listy tykví stíní plevel.",
       "id": "food-0069",
-      "options": ["Juzu", "Kaki", "Meruňky ume", "Třešně"],
-      "question": "Japonské umeboši jsou nasolené a naložené plody kterého ovoce?"
+      "options": [
+        "Rýži, čaj a sóju",
+        "Pšenici, olivy a vinnou révu",
+        "Kukuřici, fazole a tykve",
+        "Brambory, quinou a chilli"
+      ],
+      "question": "Které plodiny pěstovala řada původních národů Severní Ameriky společně jako „Tři sestry“?"
     },
     {
       "answer": 0,
@@ -1735,10 +1745,15 @@
       "answer": 3,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Pibimpap se podává se zeleninou, chilli pastou a často s vejcem a těsně před jídlem se promíchá.",
+      "explanation": "Hostitelé dolévají malé šálky bez ouška, obvykle jen asi do třetiny, dokud jimi host lehce nezatřese.",
       "id": "food-0070",
-      "options": ["Tteokbokki", "Pulgogi", "Čapčhe", "Pibimpap"],
-      "question": "Název kterého korejského jídla znamená „míchaná rýže“?"
+      "options": [
+        "Otočí šálek dnem vzhůru",
+        "Nechají vedle něj minci",
+        "Dvakrát ťuknou na stůl",
+        "Jemně šálkem zatřesou"
+      ],
+      "question": "Jak hosté v Perském zálivu dávají najevo, že už nechtějí další arabskou kávu?"
     },
     {
       "answer": 2,
@@ -1753,10 +1768,10 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Feijoada se tradičně jí ve středu nebo v sobotu a podává se s rýží, plátky pomeranče a opraženou maniokovou moukou.",
+      "explanation": "Je pojmenovaný po ruské baletce Anně Pavlovové, která obě země navštívila v roce 1926; o tom, kdo ho připravil dřív, se dodnes vášnivě vedou spory.",
       "id": "food-0072",
-      "options": ["Brazílie", "Mexiko", "Kolumbie", "Kuba"],
-      "question": "Feijoada, dušené černé fazole s vepřovým, je národním jídlem které země?"
+      "options": ["Nový Zéland", "Jihoafrická republika", "Rusko", "Kanada"],
+      "question": "Pusinkový dezert pavlova považuje za národní pokrm Austrálie a která další země?"
     },
     {
       "answer": 3,
@@ -1927,10 +1942,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Concorde vozil cestující 27 let; dochované stroje jsou dnes vystaveny v muzeích v Evropě a Severní Americe.",
+      "explanation": "Piloti mířili na červenobílou šachovnici na svahu a pak se naklonili asi o 47°, aby se těsně nad střechami Kowloonu srovnali s dráhou.",
       "id": "avi-0009",
-      "options": ["2010", "1989", "2003", "1996"],
-      "question": "Ve kterém roce uskutečnil Concorde poslední obchodní lety?"
+      "options": [
+        "Plovoucí dráhou",
+        "Dosednutím na led jezera",
+        "Ostrou zatáčkou nad městem",
+        "Dosednutím na pláž za odlivu"
+      ],
+      "question": "Čím bylo proslulé přistávání na starém hongkongském letišti Kai Tak, zavřeném v roce 1998?"
     },
     {
       "answer": 3,
@@ -1978,10 +1998,10 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Díly přijížděly z celé Evropy loděmi, čluny a silničními konvoji – některé byly tak velké, že jinak přepravit nešly.",
+      "explanation": "Vzduch je tu tak řídký, že hlavní dráha měří asi 4 km, aby letadla měla dost místa na dosažení vzletové rychlosti.",
       "id": "avi-0013",
-      "options": ["Toulouse", "Marseille", "Lyon", "Bordeaux"],
-      "question": "Ve kterém francouzském městě probíhala finální montáž Airbusu A380?"
+      "options": ["La Paz", "Quito", "Cusco", "Bogotá"],
+      "question": "Které město obsluhuje mezinárodní letiště El Alto ve výšce asi 4 000 m n. m.?"
     },
     {
       "answer": 2,
@@ -2065,15 +2085,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "He 178 poprvé vzlétl 27. srpna 1939 v Německu s motorem Hanse von Ohaina.",
+      "explanation": "St. Petersburg–Tampa Airboat Line vozila vždy jen jednoho cestujícího; úplně první místo se vydražilo za 400 dolarů.",
       "id": "avi-0041",
       "options": [
-        "Messerschmitt Me 262",
-        "Bell X-1",
-        "Heinkel He 178",
-        "Gloster Meteor"
+        "Sanfranciský záliv",
+        "Chesapeakský záliv",
+        "Záliv Tampa",
+        "Záliv Galveston"
       ],
-      "question": "Které proudové letadlo vzlétlo jako první, v roce 1939?"
+      "question": "V roce 1914 začala první pravidelná letecká linka využívající letouny. Přes který záliv létal její hydroplán?"
     },
     {
       "answer": 1,
@@ -2203,10 +2223,10 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 1,
-      "explanation": "Heathrow začínalo jako malé letiště a jméno má po osadě, která byla kvůli jeho stavbě zbořena.",
+      "explanation": "Qantas znamená Queensland and Northern Territory Aerial Services; společnost vznikla v roce 1920 ve vnitrozemském městečku Winton.",
       "id": "avi-0028",
-      "options": ["Edinburgh", "Manchester", "Londýn", "Dublin"],
-      "question": "Které město obsluhují letiště Heathrow a Gatwick?"
+      "options": ["Nový Zéland", "Kanada", "Austrálie", "JAR"],
+      "question": "Název aerolinek Qantas vznikl jako zkratka. Ze které země Qantas pochází?"
     },
     {
       "answer": 1,
@@ -2326,19 +2346,19 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Tunel dlouhý asi 50 km má nejdelší podmořský úsek ze všech tunelů na světě, zhruba 38 km.",
+      "explanation": "Toronto má kód YYZ a Vancouver YVR; písmeno Y se obvykle odvozuje od starých kódů kanadských radiových a meteorologických stanic.",
       "id": "avi-0053",
-      "options": ["1994", "2001", "1984", "1975"],
-      "question": "Ve kterém roce byl otevřen tunel pod kanálem La Manche mezi Anglií a Francií?"
+      "options": ["Y", "C", "K", "Q"],
+      "question": "Kterým písmenem začíná většina kódů kanadských letišť, například Toronta a Vancouveru?"
     },
     {
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "Dráha dlouhá 537 m stoupá se sklonem asi 18,5 %, takže letadla přistávají do kopce a vzlétají z kopce.",
+      "explanation": "Proudová letadla ji používat nemohou; malá vrtulová letadla přistávají na asi 400m pásu vtěsnaném mezi útesy a moře.",
       "id": "avi-0065",
-      "options": ["Rakousko", "Itálie", "Francie", "Švýcarsko"],
-      "question": "Ve které zemi je altiport Courchevel, proslulý strmou a krátkou dráhou?"
+      "options": ["Asi 1 200 m", "Asi 2 000 m", "Asi 400 m", "Asi 100 m"],
+      "question": "Karibský ostrov Saba má jednu z nejkratších přistávacích drah pro pravidelnou dopravu na světě. Jak je asi dlouhá?"
     },
     {
       "answer": 0,
@@ -2358,10 +2378,10 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Tunel měří asi 54 km a zhruba 23 km z nich vede pod dnem Cugarského průlivu.",
+      "explanation": "Trať Al Boraq spojuje Tanger a Casablanku; rychlostí až 320 km/h zkrátila cestu z asi 4 h 45 min na asi 2 h 10 min.",
       "id": "avi-0055",
-      "options": ["Šikoku", "Kjúšú", "Okinawa", "Hokkaidó"],
-      "question": "Japonský železniční tunel Seikan, vedoucí částečně pod mořem, spojuje Honšú s kterým ostrovem?"
+      "options": ["Egypt", "Jihoafrická republika", "Alžírsko", "Maroko"],
+      "question": "První vysokorychlostní železnice v Africe byla otevřena v roce 2018. Ve které zemi jezdí?"
     },
     {
       "answer": 3,
@@ -2381,10 +2401,10 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Cesta trvá asi osm hodin a vede přes 291 mostů, a proto se vlaku přezdívá nejpomalejší expres na světě.",
+      "explanation": "„Nullarbor“ pochází z latiny a znamená „žádný strom“; na tomto úseku Transaustralské železnice se trať v délce 478 km ani jednou neohne.",
       "id": "avi-0056",
-      "options": ["Svatý Mořic", "Gstaad", "Interlaken", "Lucern"],
-      "question": "Panoramatický vlak Glacier Express jezdí mezi Zermattem a kterým švýcarským letoviskem?"
+      "options": ["Asi 478 km", "Asi 48 km", "Asi 150 km", "Asi 1 500 km"],
+      "question": "Vlaky přes australskou planinu Nullarbor jezdí po nejdelším úplně rovném železničním úseku na světě. Jak je asi dlouhý?"
     },
     {
       "answer": 3,
@@ -2440,10 +2460,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "A300, který poprvé vzlétl v roce 1972, byl prvním dvoumotorovým širokotrupým dopravním letadlem na světě.",
+      "explanation": "První celý let Sydney–Londýn v roce 1947 trval 93 hodin s mezipřistáními např. v Singapuru, Karáčí a Káhiře; dnes stačí jedno mezipřistání.",
       "id": "avi-0069",
-      "options": ["A310", "A340", "A300", "A320"],
-      "question": "Které bylo první dopravní letadlo Airbusu?"
+      "options": [
+        "Spojené státy",
+        "Indie",
+        "Spojené království",
+        "Jihoafrická republika"
+      ],
+      "question": "Slavná letecká linka přezdívaná „Klokaní trasa“ spojuje Austrálii s kterou zemí?"
     },
     {
       "answer": 0,
@@ -2491,10 +2516,10 @@
       "answer": 1,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Na letišti Le Bourget také v roce 1927 přistál Charles Lindbergh na konci svého transatlantického letu.",
+      "explanation": "Jeho areál u Dammámu zabírá asi 776 km², ale jen malou část této plochy využívají dráhy a terminály.",
       "id": "avi-0064",
-      "options": ["Beauvais", "Le Bourget", "Orly", "Charles de Gaulle"],
-      "question": "Na kterém letišti se koná pařížský aerosalon?"
+      "options": ["Katar", "Saúdská Arábie", "Spojené arabské emiráty", "Omán"],
+      "question": "Ve které zemi leží letiště krále Fahda, rozlohou největší letiště na světě?"
     },
     {
       "answer": 3,

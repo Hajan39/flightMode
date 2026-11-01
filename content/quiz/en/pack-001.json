@@ -196,10 +196,10 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Abuja, a planned city in the centre of the country, officially replaced coastal Lagos as the capital in 1991.",
+      "explanation": "Pretoria is the seat of government, Cape Town is home to parliament, and Bloemfontein hosts the Supreme Court of Appeal.",
       "id": "geo-0029",
-      "options": ["Lagos", "Abuja", "Ibadan", "Kano"],
-      "question": "What is the capital of Nigeria?"
+      "options": ["Nigeria", "South Africa", "Kenya", "Egypt"],
+      "question": "Which country has three capital cities, one each for its government, parliament and courts?"
     },
     {
       "answer": 1,
@@ -214,19 +214,24 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Although Casablanca is Morocco's biggest city and business hub, the royal palace and parliament are in Rabat.",
+      "explanation": "Once thought to be a meteorite crater, the Richat Structure is now seen as a worn-down dome whose rock layers form giant rings.",
       "id": "geo-0030",
-      "options": ["Marrakesh", "Rabat", "Casablanca", "Fez"],
-      "question": "What is the capital of Morocco?"
+      "options": ["Mali", "Mauritania", "Niger", "Algeria"],
+      "question": "The 'Eye of the Sahara', a 40 km ring of rock that astronauts use as a landmark, is in which country?"
     },
     {
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "The Tigris and Euphrates later join to form the Shatt al-Arab; the land between them is Mesopotamia, \"between the rivers\".",
+      "explanation": "The nearest land is about 2,700 km away, but the space station orbits only about 400 km up, so when it passes overhead its crew are closest.",
       "id": "geo-0054",
-      "options": ["Tigris", "Indus", "Euphrates", "Jordan"],
-      "question": "Which river flows through the city of Baghdad?"
+      "options": [
+        "Astronauts in orbit",
+        "Cruise passengers",
+        "Fishing crews",
+        "Lighthouse keepers"
+      ],
+      "question": "At Point Nemo, the spot in the ocean farthest from any land, who are often the nearest people?"
     },
     {
       "answer": 1,
@@ -250,10 +255,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Mount Fuji, 3,776 m, is an active volcano that last erupted in 1707 and on clear days is visible from Tokyo.",
+      "explanation": "Its islands spread across about 3.5 million km² of ocean; in 1995 it moved the date line so that the whole country shares one calendar day.",
       "id": "geo-0055",
-      "options": ["Kyushu", "Shikoku", "Hokkaido", "Honshu"],
-      "question": "Mount Fuji is on which of Japan's main islands?"
+      "options": ["Tuvalu", "Fiji", "Samoa", "Kiribati"],
+      "question": "Which Pacific island nation straddles both the Equator and the 180° meridian?"
     },
     {
       "answer": 3,
@@ -295,10 +300,10 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Lake Ladoga, near St Petersburg, covers about 17,700 km² and has around 660 islands.",
+      "explanation": "Hundreds of colourful cichlid species live there, and almost all of them are found nowhere else; many aquarium cichlids come from this lake.",
       "id": "geo-0056",
-      "options": ["Lake Ladoga", "Lake Vänern", "Lake Geneva", "Lake Onega"],
-      "question": "Not counting the Caspian Sea, which is the largest lake in Europe?"
+      "options": ["Lake Malawi", "Lake Victoria", "Lake Chad", "Lake Volta"],
+      "question": "Which African lake is home to more fish species than any other lake on Earth?"
     },
     {
       "answer": 2,
@@ -536,10 +541,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Founded in 1804, Hobart is Australia's second-oldest capital city and a gateway for Antarctic expeditions.",
+      "explanation": "The highway runs about 30,000 km from Alaska to Argentina, but about 100 km of swamp and rainforest between Panama and Colombia has no road.",
       "id": "geo-0083",
-      "options": ["Devonport", "Hobart", "Launceston", "Darwin"],
-      "question": "What is the capital of the Australian state of Tasmania?"
+      "options": [
+        "Trans-Siberian Highway",
+        "Pan-American Highway",
+        "Route 66",
+        "Silk Road"
+      ],
+      "question": "The Darién Gap, a roadless stretch of jungle, is the only break in which road?"
     },
     {
       "answer": 3,
@@ -721,10 +731,15 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Suva lies on the largest island, Viti Levu; many visitors fly into Nadi on the other side of the island instead.",
+      "explanation": "Because its basin lies on both sides of the Equator, some part of it is always in a rainy season; it is also the deepest river measured, over 220 m.",
       "id": "geo-0093",
-      "options": ["Lautoka", "Nadi", "Apia", "Suva"],
-      "question": "What is the capital of Fiji?"
+      "options": [
+        "Tropic of Cancer",
+        "Prime Meridian",
+        "Tropic of Capricorn",
+        "Equator"
+      ],
+      "question": "The Congo River is the only major river to cross which line twice?"
     },
     {
       "answer": 1,
@@ -771,10 +786,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Mount Kinabalu rises 4,095 m in the Malaysian state of Sabah and hosts thousands of plant species, including many orchids.",
+      "explanation": "Storms flash for hours on around 140–160 nights a year over this Venezuelan lake; sailors once used the glow as a natural lighthouse.",
       "id": "geo-0094",
-      "options": ["Java", "Borneo", "Sumatra", "Sulawesi"],
-      "question": "Mount Kinabalu, one of the highest peaks in Southeast Asia, is on which island?"
+      "options": [
+        "Lake Titicaca",
+        "Lake Maracaibo",
+        "Lake Nicaragua",
+        "Lake Atitlán"
+      ],
+      "question": "Over which lake does 'Catatumbo lightning' give the world's highest density of lightning strikes?"
     },
     {
       "answer": 0,
@@ -853,24 +873,24 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "They lie in the Andaman Sea, where steep limestone islands rise straight out of turquoise water.",
+      "explanation": "Its water is almost ten times saltier than the ocean, and its shore, about 430 m below sea level, is the lowest dry land on Earth.",
       "id": "geo-0090",
-      "options": ["Thailand", "Cambodia", "Laos", "Myanmar"],
-      "question": "The islands of Phuket and Ko Phi Phi are in which country?"
+      "options": [
+        "Float without effort",
+        "Breathe underwater",
+        "Walk on the water",
+        "See the sea floor"
+      ],
+      "question": "The Dead Sea is so salty that people can do what in it?"
     },
     {
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "The Gulf of Bothnia is so low in salt that it freezes over in winter, and the land around it is still rising after the Ice Age.",
+      "explanation": "Sanskrit 'Sindhu' became 'Hindu' in Persian and 'Indos' in Greek, and the Romans used 'India' for the whole land beyond the river.",
       "id": "geo-0102",
-      "options": [
-        "Skagerrak",
-        "Gulf of Riga",
-        "Gulf of Finland",
-        "Gulf of Bothnia"
-      ],
-      "question": "Which gulf lies between Sweden and Finland?"
+      "options": ["Ganges", "Brahmaputra", "Narmada", "Indus"],
+      "question": "The name 'India' comes from the name of which river?"
     },
     {
       "answer": 3,
@@ -912,10 +932,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "The Strait of Malacca is one of the world's busiest shipping lanes, linking the Indian Ocean and the Pacific.",
+      "explanation": "Samoa jumped from Thursday straight to Saturday so that its working week would match its big trading partners, Australia and New Zealand.",
       "id": "geo-0103",
-      "options": ["Sulawesi", "Borneo", "Java", "Sumatra"],
-      "question": "The Strait of Malacca separates the Malay Peninsula from which island?"
+      "options": ["Fiji", "Tonga", "Tuvalu", "Samoa"],
+      "question": "Which Pacific country skipped 30 December 2011 entirely by moving to the other side of the date line?"
     },
     {
       "answer": 3,
@@ -1888,10 +1908,10 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "A bump-head sunfish found off the Azores weighed 2,744 kg, and a female ocean sunfish can carry about 300 million eggs.",
+      "explanation": "Males collect feathers, flowers and, more and more, bottle caps and straws to impress females, who visit several bowers before choosing a mate.",
       "id": "nat-0100",
-      "options": ["Bluefin tuna", "Black marlin", "Giant grouper", "Sunfish"],
-      "question": "Which kind of fish holds the record as the heaviest bony fish ever measured?"
+      "options": ["Red", "Yellow", "White", "Blue"],
+      "question": "Male satin bowerbirds decorate their display area mostly with objects of which colour?"
     },
     {
       "answer": 1,
@@ -1965,10 +1985,15 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "The male is the peacock and the female the peahen; males shake their trains to make a rattling display.",
+      "explanation": "The sentinel climbs to a high spot and keeps up a soft call while all is well; if it spots a predator it gives an alarm and everyone dashes for cover.",
       "id": "nat-0110",
-      "options": ["Only the chicks", "The female", "Both equally", "The male"],
-      "question": "In peafowl, which bird has the long, colourful tail train?"
+      "options": [
+        "Sleeps in the burrow",
+        "Digs a decoy hole",
+        "Collects water",
+        "Stands guard as lookout"
+      ],
+      "question": "What does one member of a meerkat group often do while the others look for food?"
     },
     {
       "answer": 1,
@@ -2438,10 +2463,10 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "The International Astronomical Union fixed the 88 constellations and their boundaries in the 1920s.",
+      "explanation": "The Southern Cross, or Crux, is the smallest of all 88 constellations, and sailors have long used it to find the direction of south.",
       "id": "sci-0047",
-      "options": ["112", "88", "64", "48"],
-      "question": "How many constellations are officially recognised by astronomers?"
+      "options": ["Orion", "Southern Cross", "Great Bear", "Scorpius"],
+      "question": "Which constellation appears on the flags of Australia, New Zealand, Brazil and Samoa?"
     },
     {
       "answer": 1,

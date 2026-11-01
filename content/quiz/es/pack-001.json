@@ -196,10 +196,10 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Abuya, una ciudad planificada en el centro del país, sustituyó oficialmente a la costera Lagos como capital en 1991.",
+      "explanation": "Pretoria es la sede del gobierno, Ciudad del Cabo alberga el parlamento y Bloemfontein acoge el Tribunal Supremo de Apelación.",
       "id": "geo-0029",
-      "options": ["Lagos", "Abuya", "Ibadán", "Kano"],
-      "question": "¿Cuál es la capital de Nigeria?"
+      "options": ["Nigeria", "Sudáfrica", "Kenia", "Egipto"],
+      "question": "¿Qué país tiene tres capitales: una para el gobierno, otra para el parlamento y otra para los tribunales?"
     },
     {
       "answer": 1,
@@ -214,19 +214,24 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Aunque Casablanca es la mayor ciudad de Marruecos y su centro de negocios, el palacio real y el parlamento están en Rabat.",
+      "explanation": "Antes se creía que era un cráter de meteorito; hoy se considera que la estructura de Richat es una cúpula erosionada cuyas capas de roca forman anillos gigantes.",
       "id": "geo-0030",
-      "options": ["Marrakech", "Rabat", "Casablanca", "Fez"],
-      "question": "¿Cuál es la capital de Marruecos?"
+      "options": ["Malí", "Mauritania", "Níger", "Argelia"],
+      "question": "El «Ojo del Sahara», un anillo rocoso de 40 km que los astronautas usan como punto de referencia, está en ¿qué país?"
     },
     {
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "El Tigris y el Éufrates se unen más adelante para formar el Shatt al-Arab; la tierra entre ambos es Mesopotamia, «entre ríos».",
+      "explanation": "La tierra más próxima está a unos 2700 km, pero la estación espacial orbita a solo unos 400 km de altura, así que cuando pasa por encima su tripulación es la más cercana.",
       "id": "geo-0054",
-      "options": ["Tigris", "Indo", "Éufrates", "Jordán"],
-      "question": "¿Qué río atraviesa la ciudad de Bagdad?"
+      "options": [
+        "Astronautas en órbita",
+        "Pasajeros de crucero",
+        "Tripulaciones de pesqueros",
+        "Guardianes de faro"
+      ],
+      "question": "En el punto Nemo, el lugar del océano más alejado de cualquier tierra, ¿quiénes suelen ser las personas más cercanas?"
     },
     {
       "answer": 1,
@@ -250,10 +255,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "El monte Fuji, de 3776 m, es un volcán activo cuya última erupción fue en 1707; en días despejados se ve desde Tokio.",
+      "explanation": "Sus islas se reparten por unos 3,5 millones de km² de océano; en 1995 desplazó la línea de cambio de fecha para que todo el país compartiera el mismo día.",
       "id": "geo-0055",
-      "options": ["Kyushu", "Shikoku", "Hokkaido", "Honshu"],
-      "question": "¿En cuál de las islas principales de Japón está el monte Fuji?"
+      "options": ["Tuvalu", "Islas Fiyi", "Samoa", "Kiribati"],
+      "question": "¿Qué país insular del Pacífico se extiende a ambos lados tanto del ecuador como del meridiano 180°?"
     },
     {
       "answer": 3,
@@ -295,10 +300,10 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "El lago Ladoga, cerca de San Petersburgo, ocupa unos 17 700 km² y tiene alrededor de 660 islas.",
+      "explanation": "Allí viven cientos de especies de cíclidos de colores, y casi todas son endémicas; muchos cíclidos de acuario proceden de este lago.",
       "id": "geo-0056",
-      "options": ["Lago Ladoga", "Lago Vänern", "Lago Lemán", "Lago Onega"],
-      "question": "Sin contar el mar Caspio, ¿cuál es el lago más grande de Europa?"
+      "options": ["Lago Malaui", "Lago Victoria", "Lago Chad", "Lago Volta"],
+      "question": "¿Qué lago africano alberga más especies de peces que ningún otro lago del mundo?"
     },
     {
       "answer": 2,
@@ -536,10 +541,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Fundada en 1804, Hobart es la segunda capital más antigua de Australia y una puerta de entrada para las expediciones a la Antártida.",
+      "explanation": "La carretera recorre unos 30 000 km de Alaska a Argentina, pero unos 100 km de pantanos y selva entre Panamá y Colombia no tienen carretera.",
       "id": "geo-0083",
-      "options": ["Devonport", "Hobart", "Launceston", "Darwin"],
-      "question": "¿Cuál es la capital del estado australiano de Tasmania?"
+      "options": [
+        "Carretera Transiberiana",
+        "Carretera Panamericana",
+        "Ruta 66",
+        "Ruta de la Seda"
+      ],
+      "question": "El tapón del Darién, un tramo de selva sin carreteras, es la única interrupción de ¿qué vía?"
     },
     {
       "answer": 3,
@@ -721,10 +731,15 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Suva está en la isla más grande, Viti Levu; muchos visitantes llegan en avión a Nadi, al otro lado de la isla.",
+      "explanation": "Como su cuenca está a ambos lados del ecuador, siempre hay alguna parte en época de lluvias; además, es el río más profundo medido, con más de 220 m.",
       "id": "geo-0093",
-      "options": ["Lautoka", "Nadi", "Apia", "Suva"],
-      "question": "¿Cuál es la capital de Fiyi?"
+      "options": [
+        "Trópico de Cáncer",
+        "Meridiano de Greenwich",
+        "Trópico de Capricornio",
+        "Ecuador"
+      ],
+      "question": "El río Congo es el único gran río que cruza dos veces ¿qué línea?"
     },
     {
       "answer": 1,
@@ -771,10 +786,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "El Kinabalu alcanza 4095 m en el estado malasio de Sabah y alberga miles de especies de plantas, entre ellas muchas orquídeas.",
+      "explanation": "Las tormentas centellean durante horas unas 140–160 noches al año sobre este lago venezolano; los marineros usaban antes su resplandor como faro natural.",
       "id": "geo-0094",
-      "options": ["Java", "Borneo", "Sumatra", "Célebes"],
-      "question": "El monte Kinabalu, una de las cumbres más altas del Sudeste Asiático, ¿en qué isla está?"
+      "options": [
+        "Lago Titicaca",
+        "Lago de Maracaibo",
+        "Lago de Nicaragua",
+        "Lago de Atitlán"
+      ],
+      "question": "¿Sobre qué lago produce el «relámpago del Catatumbo» la mayor densidad de rayos del mundo?"
     },
     {
       "answer": 0,
@@ -848,24 +868,24 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Están en el mar de Andamán, donde abruptas islas de caliza se alzan directamente sobre aguas turquesas.",
+      "explanation": "Su agua es casi diez veces más salada que la del océano, y su orilla, a unos 430 m bajo el nivel del mar, es la tierra firme más baja del planeta.",
       "id": "geo-0090",
-      "options": ["Tailandia", "Camboya", "Laos", "Birmania"],
-      "question": "¿En qué país están las islas de Phuket y Ko Phi Phi?"
+      "options": [
+        "Flotar sin esfuerzo",
+        "Respirar bajo el agua",
+        "Caminar sobre el agua",
+        "Ver el fondo del mar"
+      ],
+      "question": "El agua del mar Muerto es tan salada que permite a las personas ¿qué?"
     },
     {
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "El golfo de Botnia tiene tan poca sal que se congela en invierno, y la tierra que lo rodea sigue elevándose desde la Edad de Hielo.",
+      "explanation": "El sánscrito «Sindhu» se convirtió en «Hindu» en persa y en «Indos» en griego, y los romanos llamaron «India» a toda la tierra situada más allá del río.",
       "id": "geo-0102",
-      "options": [
-        "Skagerrak",
-        "Golfo de Riga",
-        "Golfo de Finlandia",
-        "Golfo de Botnia"
-      ],
-      "question": "¿Qué golfo se encuentra entre Suecia y Finlandia?"
+      "options": ["Ganges", "Brahmaputra", "Narmada", "Indo"],
+      "question": "El nombre de la India procede del nombre de ¿qué río?"
     },
     {
       "answer": 3,
@@ -907,10 +927,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "El estrecho de Malaca es una de las rutas marítimas más transitadas del mundo y une el océano Índico con el Pacífico.",
+      "explanation": "Samoa pasó directamente del jueves al sábado para que su semana laboral coincidiera con la de sus grandes socios comerciales, Australia y Nueva Zelanda.",
       "id": "geo-0103",
-      "options": ["Célebes", "Borneo", "Java", "Sumatra"],
-      "question": "El estrecho de Malaca separa la península malaya de ¿qué isla?"
+      "options": ["Fiyi", "Tonga", "Tuvalu", "Samoa"],
+      "question": "¿Qué país del Pacífico se saltó por completo el 30 de diciembre de 2011 al pasar al otro lado de la línea de cambio de fecha?"
     },
     {
       "answer": 3,
@@ -1913,10 +1933,10 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Un pez luna de cabeza abultada hallado frente a las Azores pesaba 2744 kg, y una hembra de pez luna puede llevar unos 300 millones de huevos.",
+      "explanation": "Los machos reúnen plumas, flores y, cada vez más, tapones de botella y pajitas para impresionar a las hembras, que visitan varias pérgolas antes de elegir pareja.",
       "id": "nat-0100",
-      "options": ["Atún rojo", "Marlín negro", "Mero gigante", "Pez luna"],
-      "question": "¿Qué pez tiene el récord del pez óseo más pesado jamás medido?"
+      "options": ["Rojo", "Amarillo", "Blanco", "Azul"],
+      "question": "Los machos del pergolero satinado decoran su zona de cortejo sobre todo con objetos de ¿qué color?"
     },
     {
       "answer": 1,
@@ -1990,15 +2010,15 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "El macho es el pavo real y la hembra, la pava real; los machos sacuden su cola para hacer una exhibición sonora.",
+      "explanation": "El centinela se sube a un punto alto y emite un suave reclamo mientras todo va bien; si ve un depredador, da la alarma y todos corren a refugiarse.",
       "id": "nat-0110",
       "options": [
-        "Solo los polluelos",
-        "La hembra",
-        "Ambos por igual",
-        "El macho"
+        "Duerme en la madriguera",
+        "Cava un agujero señuelo",
+        "Recoge agua",
+        "Vigila como centinela"
       ],
-      "question": "En la especie del pavo real, ¿qué ejemplar luce la larga y colorida cola?"
+      "question": "¿Qué suele hacer un miembro de un grupo de suricatas mientras los demás buscan comida?"
     },
     {
       "answer": 1,
@@ -2473,10 +2493,10 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "La Unión Astronómica Internacional fijó las 88 constelaciones y sus límites en la década de 1920.",
+      "explanation": "La Cruz del Sur, o Crux, es la más pequeña de las 88 constelaciones, y los marinos la han usado desde hace mucho para orientarse hacia el sur.",
       "id": "sci-0047",
-      "options": ["112", "88", "64", "48"],
-      "question": "¿Cuántas constelaciones reconocen oficialmente los astrónomos?"
+      "options": ["Orión", "Cruz del Sur", "Osa Mayor", "Escorpión"],
+      "question": "¿Qué constelación aparece en las banderas de Australia, Nueva Zelanda, Brasil y Samoa?"
     },
     {
       "answer": 1,

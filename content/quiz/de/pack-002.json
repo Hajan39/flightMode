@@ -825,15 +825,10 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "Landsteiners Entdeckung machte sichere Bluttransfusionen möglich und brachte ihm 1930 den Nobelpreis ein.",
+      "explanation": "Laut einer Studie von 2018 ist ihre Milz etwa 50 % größer als bei Nachbarvölkern; beim Tauchen presst sie zusätzliches sauerstoffreiches Blut in den Kreislauf.",
       "id": "body-0042",
-      "options": [
-        "Joseph Lister",
-        "Robert Koch",
-        "Alexander Fleming",
-        "Karl Landsteiner"
-      ],
-      "question": "Wer entdeckte 1901 die wichtigsten menschlichen Blutgruppen?"
+      "options": ["Die Lunge", "Das Herz", "Die Leber", "Die Milz"],
+      "question": "Welches Organ ist bei den Bajau, den als Apnoetaucher berühmten „Seenomaden“ Südostasiens, ungewöhnlich groß?"
     },
     {
       "answer": 0,
@@ -875,19 +870,29 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "Vor Harvey glaubten viele, das Blut werde ständig von der Leber gebildet und vom Körper verbraucht.",
+      "explanation": "Ohne die Schwerkraft, die die Wirbelsäule staucht, dehnen sich die Bandscheiben aus; man kann bis zu etwa 3 % größer werden – zurück auf der Erde verschwindet das wieder.",
       "id": "body-0043",
-      "options": ["Hippokrates", "Galen", "Andreas Vesalius", "William Harvey"],
-      "question": "Wer beschrieb 1628 als Erster korrekt, wie das Blut durch den Körper kreist?"
+      "options": [
+        "Ihre Knochen wachsen schneller",
+        "Ihre Muskeln werden gedehnt",
+        "Geringerer Luftdruck",
+        "Die Bandscheiben quellen auf"
+      ],
+      "question": "Astronauten kehren von langen Missionen oft einige Zentimeter größer zurück. Warum?"
     },
     {
       "answer": 2,
       "category": "human body & health",
       "difficulty": 1,
-      "explanation": "Die Luftröhre wird von C-förmigen Knorpelspangen offen gehalten, die man vorn am Hals ertasten kann.",
+      "explanation": "Die Kniescheibe ist anfangs weicher Knorpel und beginnt meist erst im Alter von etwa 3 bis 5 Jahren zu verknöchern.",
       "id": "body-0031",
-      "options": ["Larynx", "Pharynx", "Trachea", "Ösophagus"],
-      "question": "Wie lautet der medizinische Fachbegriff für die Luftröhre?"
+      "options": [
+        "Aus festem Knochen",
+        "Aus Fett",
+        "Aus Knorpel",
+        "Aus Muskeln"
+      ],
+      "question": "Woraus bestehen die Kniescheiben eines neugeborenen Babys größtenteils?"
     },
     {
       "answer": 0,
@@ -1386,10 +1391,10 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Pho-Brühe köchelt stundenlang mit Gewürzen wie Sternanis, Zimt und angeröstetem Ingwer.",
+      "explanation": "Der Name geht auf das alte Wolof-Reich (Jolof) im Senegal zurück; Nigerianer und Ghanaer streiten freundschaftlich darüber, wer ihn besser kocht.",
       "id": "food-0022",
-      "options": ["Vietnam", "Kambodscha", "Thailand", "Laos"],
-      "question": "Aus welchem Land stammt die Nudelsuppe Pho?"
+      "options": ["Westafrika", "Südamerika", "Zentralasien", "Südeuropa"],
+      "question": "Jollof-Reis, in einem Topf mit Tomaten und Gewürzen gekocht, ist in welcher Region ein Lieblingsgericht?"
     },
     {
       "answer": 3,
@@ -1454,10 +1459,10 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Dim Sum gehört zur kantonesischen Tradition des „Yum Cha“ – morgens Tee trinken und kleine Gerichte essen.",
+      "explanation": "Erfunden wurde es von der indischen Gemeinschaft in Durban; Kaninchen (engl. „bunny“) ist keins drin – der Name kommt vielleicht von „Bania“, einer Händlerkaste.",
       "id": "food-0053",
-      "options": ["Shandong", "Kanton", "Hunan", "Sichuan"],
-      "question": "Mit welcher chinesischen Regionalküche wird Dim Sum am engsten verbunden?"
+      "options": ["Indien", "Südafrika", "Mauritius", "Kenia"],
+      "question": "Aus welchem Land stammt Bunny Chow, ein ausgehöhlter Brotlaib, gefüllt mit Curry?"
     },
     {
       "answer": 0,
@@ -1504,10 +1509,15 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Getrockneter Katsuobushi gehört zu den härtesten Lebensmitteln der Welt – so hart, dass man ihn wie Holz hobelt.",
+      "explanation": "Die gemahlene Wurzel des Kava-Strauchs wird mit Wasser vermischt und aus einer gemeinsamen Schale serviert; sie ist nicht alkoholisch, betäubt aber kurz Lippen und Zunge.",
       "id": "food-0055",
-      "options": ["Echter Bonito", "Sardine", "Makrele", "Atlantischer Lachs"],
-      "question": "Aus welchem Fisch werden Katsuobushi hergestellt, die geräucherten Flocken für japanische Brühe?"
+      "options": [
+        "Wurzel eines Pfeffers",
+        "Vergorene Kokosmilch",
+        "Saft von Zuckerrohr",
+        "Getrockneter Seetang"
+      ],
+      "question": "Woraus wird Kava gemacht, ein zeremonielles Getränk, das in Fidschi, Tonga und Vanuatu geteilt wird?"
     },
     {
       "answer": 2,
@@ -1568,10 +1578,15 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Das Betäubende kommt vom Sichuanpfeffer, der die Lippen kribbeln lässt; die Schärfe stammt von Chilis.",
+      "explanation": "Die linke Hand ist für die Körperpflege da, daher kann es unhöflich wirken, mit ihr Essen oder Geld zu reichen; in Indien isst man oft nur mit den Fingerspitzen.",
       "id": "food-0054",
-      "options": ["Fujian", "Sichuan", "Jiangsu", "Kanton"],
-      "question": "Welche chinesische Regionalküche ist für „Mala“ berühmt, einen betäubend-scharfen Geschmack?"
+      "options": [
+        "Die linke Hand",
+        "Die rechte Hand",
+        "Egal, welche Hand",
+        "Beide Hände zugleich"
+      ],
+      "question": "Welche Hand benutzt man in weiten Teilen Indiens, des Nahen Ostens und Afrikas traditionell zum Essen?"
     },
     {
       "answer": 2,
@@ -1685,10 +1700,15 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Umeboshi sind extrem sauer und salzig und stecken oft in der Mitte eines Reisbällchens.",
+      "explanation": "Der Mais dient den Bohnen als Rankstange, die Bohnen reichern den Boden mit Stickstoff an, und die breiten Kürbisblätter beschatten das Unkraut.",
       "id": "food-0069",
-      "options": ["Yuzu-Früchte", "Kakis", "Ume-Pflaumen", "Kirschen"],
-      "question": "Japanische Umeboshi sind gesalzene, eingelegte Varianten welcher Frucht?"
+      "options": [
+        "Reis, Tee und Soja",
+        "Weizen, Oliven und Trauben",
+        "Mais, Bohnen und Kürbis",
+        "Kartoffeln, Quinoa und Chili"
+      ],
+      "question": "Welche Pflanzen bauten viele indigene Völker Nordamerikas als „Drei Schwestern“ zusammen an?"
     },
     {
       "answer": 0,
@@ -1754,10 +1774,15 @@
       "answer": 3,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Bibimbap wird mit Gemüse, Chilipaste und oft einem Ei serviert und kurz vor dem Essen umgerührt.",
+      "explanation": "Gastgeber füllen die kleinen henkellosen Tassen, meist nur etwa zu einem Drittel, immer wieder nach – bis der Gast die Tasse ein wenig schüttelt.",
       "id": "food-0070",
-      "options": ["Tteokbokki", "Bulgogi", "Japchae", "Bibimbap"],
-      "question": "Welches koreanische Gericht heißt übersetzt „gemischter Reis“?"
+      "options": [
+        "Die Tasse umdrehen",
+        "Eine Münze danebenlegen",
+        "Zweimal auf den Tisch klopfen",
+        "Die Tasse leicht schütteln"
+      ],
+      "question": "Wie zeigen Gäste am Golf beim arabischen Kaffee, dass sie nichts mehr möchten?"
     },
     {
       "answer": 2,
@@ -1772,10 +1797,10 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Feijoada wird traditionell mittwochs oder samstags gegessen, mit Reis, Orangenscheiben und geröstetem Maniokmehl.",
+      "explanation": "Benannt ist es nach der russischen Ballerina Anna Pawlowa, die 1926 durch beide Länder tourte; wer es zuerst zubereitete, ist bis heute heiß umstritten.",
       "id": "food-0072",
-      "options": ["Brasilien", "Mexiko", "Kolumbien", "Kuba"],
-      "question": "Feijoada, ein Eintopf aus schwarzen Bohnen und Schweinefleisch, ist ein Nationalgericht welches Landes?"
+      "options": ["Neuseeland", "Südafrika", "Russland", "Kanada"],
+      "question": "Das Baiser-Dessert Pavlova wird von Australien und welchem anderen Land als Nationalgericht beansprucht?"
     },
     {
       "answer": 3,
@@ -1951,10 +1976,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Die Concorde beförderte 27 Jahre lang Passagiere; die erhaltenen Maschinen stehen heute in Museen in Europa und Nordamerika.",
+      "explanation": "Piloten steuerten ein rot-weißes Schachbrett an einem Hang an und legten sich dann um etwa 47° in die Kurve, um knapp über Kowloons Dächern auf die Piste einzuschwenken.",
       "id": "avi-0009",
-      "options": ["2010", "1989", "2003", "1996"],
-      "question": "In welchem Jahr absolvierte die Concorde ihre letzten Linienflüge?"
+      "options": [
+        "Auf einer schwimmenden Landebahn",
+        "Auf einem zugefrorenen See",
+        "Mit Steilkurve über der Stadt",
+        "Bei Ebbe auf einem Strand"
+      ],
+      "question": "Hongkongs alter Flughafen Kai Tak, 1998 geschlossen, war für welche Art von Landung berühmt?"
     },
     {
       "answer": 3,
@@ -2002,10 +2032,10 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Die Teile kamen aus ganz Europa per Schiff, Binnenschiff und Straßenkonvoi – manche waren für jeden anderen Weg zu groß.",
+      "explanation": "Die Luft ist dort so dünn, dass die Hauptpiste rund 4 km lang ist – so haben Flugzeuge mehr Strecke, um die Abhebegeschwindigkeit zu erreichen.",
       "id": "avi-0013",
-      "options": ["Toulouse", "Marseille", "Lyon", "Bordeaux"],
-      "question": "In welcher französischen Stadt führte Airbus die Endmontage des A380 durch?"
+      "options": ["La Paz", "Quito", "Cusco", "Bogotá"],
+      "question": "Der internationale Flughafen El Alto, etwa 4.000 m über dem Meer, bedient welche Stadt?"
     },
     {
       "answer": 2,
@@ -2094,15 +2124,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "Die He 178 flog erstmals am 27. August 1939 in Deutschland, angetrieben von Hans von Ohains Triebwerk.",
+      "explanation": "Die St. Petersburg–Tampa Airboat Line beförderte jeweils nur einen Passagier; der allererste Sitzplatz wurde für 400 Dollar versteigert.",
       "id": "avi-0041",
       "options": [
-        "Messerschmitt Me 262",
-        "Bell X-1",
-        "Heinkel He 178",
-        "Gloster Meteor"
+        "San Francisco Bay",
+        "Chesapeake Bay",
+        "Tampa Bay",
+        "Galveston Bay"
       ],
-      "question": "Welches Flugzeug mit Strahlantrieb flog 1939 als erstes?"
+      "question": "1914 startete der erste planmäßige Flugdienst mit Flugzeugen. Welche Bucht überquerte sein Flugboot?"
     },
     {
       "answer": 1,
@@ -2237,10 +2267,10 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 1,
-      "explanation": "Heathrow begann als kleiner Flugplatz; der Name stammt von einem Weiler, der für den Bau abgerissen wurde.",
+      "explanation": "Qantas steht für „Queensland and Northern Territory Aerial Services“; gegründet wurde sie 1920 in Winton, einem Städtchen im Outback.",
       "id": "avi-0028",
-      "options": ["Edinburgh", "Manchester", "London", "Dublin"],
-      "question": "Welche Stadt bedienen die Flughäfen Heathrow und Gatwick?"
+      "options": ["Neuseeland", "Kanada", "Australien", "Südafrika"],
+      "question": "Der Name der Fluggesellschaft Qantas begann als Abkürzung. Aus welchem Land stammt Qantas?"
     },
     {
       "answer": 1,
@@ -2375,19 +2405,19 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Der rund 50 km lange Tunnel hat mit etwa 38 km den längsten Unterwasserabschnitt aller Tunnel der Welt.",
+      "explanation": "Toronto ist YYZ, Vancouver YVR; das Y geht meist auf alte kanadische Funk- und Wetterstationscodes zurück.",
       "id": "avi-0053",
-      "options": ["1994", "2001", "1984", "1975"],
-      "question": "In welchem Jahr wurde der Eurotunnel zwischen England und Frankreich eröffnet?"
+      "options": ["Y", "C", "K", "Q"],
+      "question": "Mit welchem Buchstaben beginnen die meisten kanadischen Flughafencodes, etwa die von Toronto und Vancouver?"
     },
     {
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "Die 537 m lange Piste steigt mit etwa 18,5 % an – Flugzeuge landen bergauf und starten bergab.",
+      "explanation": "Jets können sie nicht nutzen; kleine Propellerflugzeuge landen auf einem rund 400 m langen Streifen zwischen Klippen und Meer.",
       "id": "avi-0065",
-      "options": ["Österreich", "Italien", "Frankreich", "Schweiz"],
-      "question": "In welchem Land liegt der Altiport Courchevel, berühmt für seine steile, kurze Piste?"
+      "options": ["Etwa 1.200 m", "Etwa 2.000 m", "Etwa 400 m", "Etwa 100 m"],
+      "question": "Die Karibikinsel Saba hat eine der kürzesten Verkehrslandebahnen der Welt. Wie lang ist sie etwa?"
     },
     {
       "answer": 0,
@@ -2407,10 +2437,10 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Der Tunnel ist etwa 54 km lang, davon rund 23 km unter dem Meeresboden der Tsugaru-Straße.",
+      "explanation": "Die Al-Boraq-Linie verbindet Tanger und Casablanca; mit bis zu 320 km/h verkürzte sie die Fahrt von etwa 4 h 45 min auf etwa 2 h 10 min.",
       "id": "avi-0055",
-      "options": ["Shikoku", "Kyūshū", "Okinawa", "Hokkaidō"],
-      "question": "Japans Seikan-Eisenbahntunnel, teils unter dem Meer, verbindet Honshū mit welcher Insel?"
+      "options": ["Ägypten", "Südafrika", "Algerien", "Marokko"],
+      "question": "Afrikas erste Hochgeschwindigkeitsbahn wurde 2018 eröffnet. In welchem Land fährt sie?"
     },
     {
       "answer": 3,
@@ -2430,10 +2460,10 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Die Fahrt dauert etwa acht Stunden und führt über 291 Brücken – daher gilt der Zug als langsamster Schnellzug der Welt.",
+      "explanation": "„Nullarbor“ kommt vom lateinischen „kein Baum“; auf diesem Abschnitt der Trans-Australian Railway macht das Gleis 478 km lang keine einzige Kurve.",
       "id": "avi-0056",
-      "options": ["St. Moritz", "Gstaad", "Interlaken", "Luzern"],
-      "question": "Der Panoramazug Glacier Express fährt zwischen Zermatt und welchem Schweizer Ferienort?"
+      "options": ["Etwa 478 km", "Etwa 48 km", "Etwa 150 km", "Etwa 1.500 km"],
+      "question": "Züge durch Australiens Nullarbor-Ebene fahren auf dem längsten schnurgeraden Gleis der Welt. Wie lang ist es etwa?"
     },
     {
       "answer": 3,
@@ -2489,10 +2519,15 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 3,
-      "explanation": "Der 1972 erstmals geflogene A300 war das erste zweistrahlige Großraumflugzeug der Welt.",
+      "explanation": "Der erste durchgehende Flug Sydney–London dauerte 1947 93 Stunden, mit Zwischenstopps etwa in Singapur, Karatschi und Kairo; heute genügt ein Stopp.",
       "id": "avi-0069",
-      "options": ["A310", "A340", "A300", "A320"],
-      "question": "Welches war das erste Verkehrsflugzeug von Airbus?"
+      "options": [
+        "Vereinigte Staaten",
+        "Indien",
+        "Großbritannien",
+        "Südafrika"
+      ],
+      "question": "Die berühmte Flugroute mit dem Spitznamen „Känguru-Route“ verbindet Australien mit welchem Land?"
     },
     {
       "answer": 0,
@@ -2540,10 +2575,15 @@
       "answer": 1,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "In Le Bourget landete 1927 auch Charles Lindbergh am Ende seines Transatlantikflugs.",
+      "explanation": "Sein Gelände bei Dammam umfasst rund 776 km², doch nur ein kleiner Teil davon wird für Pisten und Terminals genutzt.",
       "id": "avi-0064",
-      "options": ["Beauvais", "Le Bourget", "Orly", "Charles de Gaulle"],
-      "question": "Auf welchem Flughafen findet die Pariser Luftfahrtschau statt?"
+      "options": [
+        "Katar",
+        "Saudi-Arabien",
+        "Vereinigte Arabische Emirate",
+        "Oman"
+      ],
+      "question": "In welchem Land liegt der King Fahd International Airport, der flächenmäßig größte Flughafen der Welt?"
     },
     {
       "answer": 3,

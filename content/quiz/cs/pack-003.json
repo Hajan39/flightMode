@@ -169,10 +169,10 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Kolumbus plul s loděmi Niña, Pinta a Santa María, která na Štědrý den 1492 najela na mělčinu.",
+      "explanation": "Hlavice jeho sloupu v Sárnáthu se čtyřmi lvy, vytesaná kolem roku 250 př. n. l., se v roce 1950 stala státním znakem Indie.",
       "id": "his-0050",
-      "options": ["San Gabriel", "Trinidad", "Victoria", "Santa María"],
-      "question": "Jak se jmenovala největší Kolumbova loď na plavbě v roce 1492?"
+      "options": ["Guptovské", "Mughalské", "Čólské", "Maurjovské"],
+      "question": "Které říši vládl Ašóka, který po celé Indii vztyčoval kamenné sloupy s vytesanými poselstvími?"
     },
     {
       "answer": 1,
@@ -307,29 +307,19 @@
       "answer": 0,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Balboa přešel Panamskou šíji a oceán nazval „Jižním mořem“.",
+      "explanation": "Budovat se začal zhruba roku 2600 př. n. l.; měl kamenné stupňovité plošiny a zahloubená náměstí, jeho obyvatelé však nevyráběli keramiku.",
       "id": "his-0100",
-      "options": [
-        "Vasco Núñez de Balboa",
-        "Francisco Pizarro",
-        "Hernán Cortés",
-        "Ponce de León"
-      ],
-      "question": "Kdo jako první Evropan spatřil v roce 1513 Tichý oceán z Ameriky?"
+      "options": ["Peru", "Mexiko", "Guatemala", "Kolumbie"],
+      "question": "Ve které zemi leží Caral, jedno z nejstarších měst Ameriky, zhruba stejně staré jako velké egyptské pyramidy?"
     },
     {
       "answer": 1,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Cabralova flotila mířila do Indie, ale stočila se daleko na západ přes Atlantik a dorazila k brazilskému pobřeží.",
+      "explanation": "Vzkvétala asi 700 let od 5. století a měla tisíce studentů a učitelů; její cihlové ruiny v Biháru zapsalo UNESCO v roce 2016.",
       "id": "his-0101",
-      "options": [
-        "Francisco de Orellana",
-        "Pedro Álvares Cabral",
-        "Bartolomeu Dias",
-        "Amerigo Vespucci"
-      ],
-      "question": "Kdo v roce 1500 zabral Brazílii pro Portugalsko?"
+      "options": ["Nepál", "Indie", "Srí Lanka", "Pákistán"],
+      "question": "Ve které zemi leží Nálanda, starověké středisko vzdělanosti, kam přicházeli studenti až z Číny?"
     },
     {
       "answer": 1,
@@ -500,10 +490,15 @@
       "answer": 3,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Nabatejci zbohatli na obchodu s kadidlem a byli mistry v jímání a uchovávání dešťové vody v poušti.",
+      "explanation": "Místo dodnes obklopují velké haldy strusky ze starých pecí, doklad výroby železa ve velkém po mnoho staletí.",
       "id": "his-0113",
-      "options": ["Féničané", "Sumerové", "Chetité", "Nabatejci"],
-      "question": "Který starověký národ vybudoval Petru v dnešním Jordánsku?"
+      "options": [
+        "Výrobou skla",
+        "Tkaním hedvábí",
+        "Stavbou lodí",
+        "Tavením železa"
+      ],
+      "question": "Kterým řemeslem vynikalo starověké nilské město Meroe?"
     },
     {
       "answer": 3,
@@ -577,10 +572,15 @@
       "answer": 0,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Rekonstrukce Ištařiny brány, postavené za Nabukadnesara II., stojí v berlínském Pergamonském muzeu.",
+      "explanation": "Kamenné nástroje a drcený okr ze skalního převisu Madjedbebe na severu Austrálie byly datovány asi do doby před 65 000 lety.",
       "id": "his-0084",
-      "options": ["Babylon", "Ninive", "Ur", "Uruk"],
-      "question": "Které starověké město proslulo Ištařinou bránou s modrou glazurou?"
+      "options": [
+        "Přes 50 000 let",
+        "Asi 5 000 let",
+        "Asi 12 000 let",
+        "Asi 2 000 let"
+      ],
+      "question": "Jak dlouho podle archeologie žijí lidé v Austrálii přinejmenším?"
     },
     {
       "answer": 2,
@@ -604,10 +604,10 @@
       "answer": 1,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Ruiny Efesu leží u egejského pobřeží dnešního Turecka; z chrámu zbyl jediný znovu vztyčený sloup.",
+      "explanation": "Známe sedmnáct takových čedičových hlav o hmotnosti asi 6 až 50 tun; většina byla nalezena v San Lorenzu u pobřeží Mexického zálivu.",
       "id": "his-0069",
-      "options": ["Korint", "Efesos", "Athény", "Trója"],
-      "question": "Ve kterém starověkém městě stál Artemidin chrám, jeden z divů světa?"
+      "options": ["Aztékové", "Olmékové", "Inkové", "Mayové"],
+      "question": "Která starověká civilizace Mexika tesala obří kamenné hlavy vysoké až asi 3 m?"
     },
     {
       "answer": 1,
@@ -709,15 +709,15 @@
       "answer": 0,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Slocum na svém přestavěném ústřicovém člunu Spray urazil asi 74 000 km a jeho kniha o cestě se stala klasikou.",
+      "explanation": "Navigátor Mau Piailug z Mikronésie vedl asi 4 000 km dlouhou plavbu bez přístrojů a ukázal, že staří Polynésané mohli takové trasy plout záměrně.",
       "id": "his-0108",
       "options": [
-        "Joshua Slocum",
-        "Bernard Moitessier",
-        "Francis Chichester",
-        "Robin Knox-Johnston"
+        "Podle hvězd, vln a ptáků",
+        "Podle magnetického kompasu",
+        "Podle rádiových majáků",
+        "Podle papírových map"
       ],
-      "question": "Kdo jako první obeplul sám svět, v letech 1895–1898?"
+      "question": "Podle čeho se v roce 1976 plavila kanoe Hōkūleʻa z Havaje na Tahiti?"
     },
     {
       "answer": 1,
@@ -759,24 +759,29 @@
       "answer": 3,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Téměř tisíc let byla Hagia Sofia největší katedrálou světa; její kupole jako by se vznášela nad prstencem oken.",
+      "explanation": "Devítimetrová žulová věž v Kjongdžu vznikla za královny Sondok z říše Silla; okénkem k jihu dopadá o rovnodennostech slunce na její podlahu.",
       "id": "his-0115",
       "options": [
-        "Konstantin I.",
-        "Theodosius II.",
-        "Basileios II.",
-        "Justinián I."
+        "Královským palácům",
+        "Kamenným mostům",
+        "Majákům",
+        "Hvězdárnám"
       ],
-      "question": "Který byzantský císař dal v roce 537 postavit chrám Hagia Sofia v dnešní podobě?"
+      "question": "Věž Čchomsongdä, postavená v Koreji v 7. století, patří k nejstarším dochovaným čemu?"
     },
     {
       "answer": 2,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Persepolis proslul kamennými reliéfy lidí z celé říše, kteří přinášejí králi dary.",
+      "explanation": "Slova „Ani sníh, ani déšť, ani žár, ani noční tma…“ se táhnou po newyorské poště Jamese A. Farleyho; oficiálním heslem pošty nejsou.",
       "id": "his-0109",
-      "options": ["Artaxerxés I.", "Kýros Veliký", "Dareios I.", "Xerxés I."],
-      "question": "Který perský král začal stavět palácové město Persepolis?"
+      "options": [
+        "Na Bílém domě",
+        "Na Louvru",
+        "Na newyorské poště",
+        "Na Britském muzeu"
+      ],
+      "question": "Na které moderní budově je vytesána Hérodotova chvála královských poslů starověké Persie?"
     },
     {
       "answer": 1,
@@ -833,10 +838,10 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Na vrcholu moci sahala achaimenovská říše od Egypta a Balkánu až k údolí Indu.",
+      "explanation": "Šedesát je dělitelné 2, 3, 4, 5, 6, 10, 12, 15, 20 i 30, což bylo praktické; stejná soustava dala kruhu 360 stupňů.",
       "id": "his-0073",
-      "options": ["Byzantskou", "Novoasyrskou", "Osmanskou", "Achaimenovskou"],
-      "question": "Kterou říši založil v 6. století př. n. l. Kýros Veliký?"
+      "options": ["Egypťanů", "Řeků", "Římanů", "Babyloňanů"],
+      "question": "Hodina má 60 minut díky šedesátkové soustavě kterého starověkého národa?"
     },
     {
       "answer": 0,
@@ -874,10 +879,15 @@
       "answer": 2,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Části Velkého kanálu jsou starší než 2 000 let; jeho celková délka je asi 1 800 km.",
+      "explanation": "Monks Mound, vysoký asi 30 m, je největší pravěkou zemní stavbou severně od Mexika; město mělo asi 120 mohyl a možná 15 000 obyvatel.",
       "id": "his-0112",
-      "options": ["Kanton", "Si-an", "Chang-čou", "Šanghaj"],
-      "question": "Velký kanál v Číně, nejdelší starověký průplav, spojuje Peking s kterým městem?"
+      "options": [
+        "Kamennými pyramidami",
+        "Měděnými doly",
+        "Obřími hliněnými mohylami",
+        "Obydlími ve skalách"
+      ],
+      "question": "Čím je proslulá Cahokia, město u dnešního St. Louis, které vzkvétalo kolem roku 1100?"
     },
     {
       "answer": 0,
@@ -1066,29 +1076,19 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Román sleduje sedm generací rodu Buendíů ve smyšleném městečku Macondo.",
+      "explanation": "Tkalci dávají každému vzoru jméno, často podle přísloví nebo historické události; látka byla kdysi vyhrazena panovníkům.",
       "id": "cul-0052",
-      "options": [
-        "Isabel Allendeová",
-        "Jorge Luis Borges",
-        "Mario Vargas Llosa",
-        "Gabriel García Márquez"
-      ],
-      "question": "Kdo napsal román „Sto roků samoty“?"
+      "options": ["Keňa", "Nigérie", "Etiopie", "Ghana"],
+      "question": "Ze které země pochází kente, pestrá látka tkaná v úzkých pruzích, které se pak sešívají?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Svátek Tuan-wu (svátek dračích lodí) připadá na pátý den pátého lunárního měsíce a jedí se při něm knedlíčky z lepkavé rýže.",
+      "explanation": "Indická „Jana Gana Mana“ i bangladéšská „Amar Šonar Bangla“ jsou jeho písně; v roce 1913 se stal prvním neevropským nositelem Nobelovy ceny za literaturu.",
       "id": "cul-0092",
-      "options": [
-        "Svátek Čching-ming",
-        "Svátek středu podzimu",
-        "Svátek Tuan-wu",
-        "Svátek luceren"
-      ],
-      "question": "Během kterého čínského svátku se tradičně konají závody dračích lodí?"
+      "options": ["Pákistánu", "Nepálu", "Bangladéše", "Myanmaru"],
+      "question": "Básník Rabíndranáth Thákur napsal státní hymny Indie a které další země?"
     },
     {
       "answer": 0,
@@ -1158,24 +1158,19 @@
       "answer": 1,
       "category": "history",
       "difficulty": 3,
-      "explanation": "John Cabot, rodným jménem Giovanni Caboto, vyplul z Bristolu na malé lodi Matthew; kde přesně přistál (Newfoundland, nebo Cape Breton), je dodnes sporné.",
+      "explanation": "Kilwa ovládla Sofalu, přístav pro zlato z vnitrozemí, a jako jedno z prvních míst jižně od Sahary razila vlastní mince.",
       "id": "his-0118",
-      "options": [
-        "Jacques Cartier",
-        "John Cabot",
-        "Martin Frobisher",
-        "Henry Hudson"
-      ],
-      "question": "Který mořeplavec narozený v Benátkách dosáhl v roce 1497 Severní Ameriky ve službách Anglie?"
+      "options": ["S hedvábím", "Se zlatem", "S čajem", "Se solí"],
+      "question": "Obchodem s čím hlavně zbohatlo středověké město Kilwa Kisiwani na svahilském pobřeží?"
     },
     {
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Luxor stojí na místě starověkých Théb; chrámový komplex Karnak patří k největším náboženským stavbám vůbec.",
+      "explanation": "Podle legendy ji kněz přivolal z nebe do klína prvního krále Osei Tutua; podle tradice se nikdy nesmí dotknout země.",
       "id": "his-0090",
-      "options": ["Alexandrie", "Káhira", "Asuán", "Luxor"],
-      "question": "Ve kterém dnešním egyptském městě jsou velké chrámy Karnaku?"
+      "options": ["Fulbů", "Wolofů", "Jorubů", "Ašantů"],
+      "question": "Zlatá stolička, v níž prý přebývá duše národa, je posvátným symbolem kterého západoafrického národa?"
     },
     {
       "answer": 0,
@@ -1190,10 +1185,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Kabuki vzniklo kolem roku 1603; herci jsou tradičně jen muži, a to i v ženských rolích.",
+      "explanation": "Za novou Asuánskou přehradou stoupalo Násirovo jezero; bloky až o 30 tunách byly v letech 1964–1968 znovu postaveny asi o 65 m výš.",
       "id": "cul-0048",
-      "options": ["Kjógen", "Nó", "Kabuki", "Bunraku"],
-      "question": "Který styl japonského divadla je známý výrazným líčením zvaným kumadori?"
+      "options": [
+        "Aby je ukryli před lupiči",
+        "Aby uvolnili místo pro město",
+        "Aby je nezatopilo nové jezero",
+        "Aby je chránili před písečnými bouřemi"
+      ],
+      "question": "V 60. letech byly obří chrámy v egyptském Abú Simbelu rozřezány na bloky a přemístěny. Proč?"
     },
     {
       "answer": 1,
@@ -1263,15 +1263,15 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "Příběh se odehrává v italské Veroně, kde balkon na „Juliině domě“ láká mnoho návštěvníků.",
+      "explanation": "Stránky i okénka jdou zprava doleva, takže manga začíná tam, kde by západní čtenář čekal konec knihy.",
       "id": "cul-0005",
       "options": [
-        "Charles Dickens",
-        "William Shakespeare",
-        "Christopher Marlowe",
-        "Geoffrey Chaucer"
+        "Zleva doprava",
+        "Zprava doleva",
+        "Zdola nahoru",
+        "Ve spirále"
       ],
-      "question": "Kdo napsal hru „Romeo a Julie“?"
+      "question": "Kterým směrem se tradičně čte japonská manga?"
     },
     {
       "answer": 2,
@@ -1318,10 +1318,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Každý srpen se v ulicích naháže přes 100 tun přezrálých rajčat; slavnost sahá do roku 1945.",
+      "explanation": "Nourúz znamená „nový den“; rodiny prostírají stůl „haft sín“ se sedmi věcmi, jejichž perské názvy začínají písmenem „s“.",
       "id": "cul-0049",
-      "options": ["Pamplona", "Valencie", "Buñol", "Sevilla"],
-      "question": "Ve kterém španělském městečku se koná rajčatová bitva La Tomatina?"
+      "options": [
+        "Na zimní slunovrat",
+        "Na první novoluní",
+        "Na jarní rovnodennost",
+        "Na letní slunovrat"
+      ],
+      "question": "Na který den připadá Nourúz, perský Nový rok slavený od Íránu po Střední Asii?"
     },
     {
       "answer": 0,
@@ -1336,10 +1341,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "Munch vytvořil několik verzí Výkřiku, včetně maleb, pastelů a grafik.",
+      "explanation": "Byla vytesána přímo ze skalního podloží Gízské plošiny asi před 4 500 lety; je asi 73 m dlouhá a 20 m vysoká.",
       "id": "cul-0002",
-      "options": ["Polibek", "Noční hlídka", "Spící cikánka", "Výkřik"],
-      "question": "Který obraz Edvarda Muncha zobrazuje postavu svírající si tvář pod rudou oblohou?"
+      "options": ["Orla", "Býka", "Šakala", "Lva"],
+      "question": "Velká sfinga v Gíze má lidskou hlavu na těle kterého zvířete?"
     },
     {
       "answer": 0,
@@ -1354,15 +1359,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Skladba sleduje řeku od dvou malých pramenů přes krajinu až do Prahy.",
+      "explanation": "Zpěváci tvarují hrdlo a ústa tak, aby vynikly alikvotní tóny, a často napodobují vítr, řeky a zvířata; UNESCO ho vede jako mongolské dědictví.",
       "id": "cul-0054",
-      "options": [
-        "Antonín Dvořák",
-        "Bohuslav Martinů",
-        "Leoš Janáček",
-        "Bedřich Smetana"
-      ],
-      "question": "Který český skladatel napsal „Vltavu“?"
+      "options": ["Japonsko", "Thajsko", "Vietnam", "Mongolsko"],
+      "question": "Při hrdelním zpěvu chöömij jeden zpěvák vytváří zároveň hluboký bordun a pískavou melodii. Ze které země pochází?"
     },
     {
       "answer": 0,
@@ -1405,10 +1405,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Na konci průvodu se v Lerwicku zapálí replika vikingské lodi v plné velikosti.",
+      "explanation": "Za šáha Abbáse I. se stalo hlavním městem; jeho náměstí Naqš-e Džahán, dlouhé přes 500 m, patří k největším městským náměstím na Zemi.",
       "id": "cul-0089",
-      "options": ["Faerské ostrovy", "Hebridy", "Orkneje", "Shetlandy"],
-      "question": "Na kterém souostroví se koná ohňový festival Up Helly Aa?"
+      "options": ["Teherán", "Šíráz", "Tabríz", "Isfahán"],
+      "question": "Které íránské město staré perské rčení oslavuje jako „polovinu světa“?"
     },
     {
       "answer": 2,
@@ -1428,10 +1428,10 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Díky 953 malým okénkům Havá Mahalu mohly královské ženy nepozorovaně sledovat dění v ulicích a vánek budovu chladil.",
+      "explanation": "Má 24 vytesaných kamenných kol, která táhne sedm kamenných koní, a podle stínů paprsků kol lze určovat čas.",
       "id": "cul-0102",
-      "options": ["Ágra", "Udajpur", "Dillí", "Džajpur"],
-      "question": "Ve kterém indickém městě je Havá Mahal, „Palác větrů“?"
+      "options": ["Lotosového květu", "Slona", "Lodi", "Vozu"],
+      "question": "Indický Sluneční chrám v Konáraku ze 13. století má podobu obřího čeho?"
     },
     {
       "answer": 2,
@@ -1469,10 +1469,15 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "La Scala byla otevřena v roce 1778; Benátky mají La Fenice a Neapol Teatro di San Carlo, nejstarší z těchto tří.",
+      "explanation": "Muži nosí dlouhý závoj barvený indigem, tagelmust; barva se otírá a zbarvuje kůži do modra.",
       "id": "cul-0073",
-      "options": ["Turín", "Milán", "Benátky", "Neapol"],
-      "question": "Ve kterém městě je operní dům La Scala?"
+      "options": [
+        "Kvůli modrým stanům",
+        "Kvůli indigu ze závojů",
+        "Kvůli modrému tetování",
+        "Kvůli modré obloze pouště"
+      ],
+      "question": "Proč se tuarežským mužům ze Sahary někdy říká „modří muži“?"
     },
     {
       "answer": 1,
@@ -1506,10 +1511,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Prado bylo otevřeno v roce 1819 a má největší sbírku děl Velázqueze a Goyi na světě.",
+      "explanation": "Majitelé pokrývají náklaďáky malbami, zrcátky a verši a věší na ně řady řetízků a zvonků, které za jízdy cinkají.",
       "id": "cul-0059",
-      "options": ["Sevilla", "Lisabon", "Barcelona", "Madrid"],
-      "question": "Ve kterém městě je muzeum Prado?"
+      "options": [
+        "Podle hlasitých klaksonů",
+        "Podle hudby z rádia",
+        "Podle slavné písně",
+        "Podle řetízků a zvonků"
+      ],
+      "question": "Podle čeho dostaly pákistánské pestře pomalované „jingle trucks“ svou přezdívku?"
     },
     {
       "answer": 0,
@@ -1547,10 +1557,10 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Horní patra Královského Alcázaru v Seville dodnes využívá španělská královská rodina při návštěvách města.",
+      "explanation": "Vrstvy látek se položí na sebe a prořezávají, okraje se podehnou a odhalí barvy pod nimi; jeden panel může zabrat týdny.",
       "id": "cul-0103",
-      "options": ["Sevilla", "Córdoba", "Valencie", "Toledo"],
-      "question": "Ve kterém španělském městě je maurský palác a pevnost Alcázar, dodnes královské sídlo?"
+      "options": ["Panama", "Peru", "Guatemala", "Bolívie"],
+      "question": "Moly, pestré vrstvené textilní panely, šijí ženy z národa Guna. Ve které zemi?"
     },
     {
       "answer": 0,
@@ -1630,24 +1640,19 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "Skotské horalské dudy mají tři bordunové píšťaly, které pod melodií hrají jeden nepřetržitý tón.",
+      "explanation": "Vosk nepustí barvu do látky, takže vzor se objeví po odstranění vosku; UNESCO zapsalo indonéskou batiku v roce 2009.",
       "id": "cul-0015",
-      "options": ["Dudy", "Banjo", "Mandolína", "Akordeon"],
-      "question": "Který nástroj je slavným symbolem Skotska?"
+      "options": ["Indonésie", "Japonsko", "Peru", "Egypt"],
+      "question": "Batika, zdobení látky kreslením horkým voskem před barvením, je slavné umění které země?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Obraz z 80. let 15. století visí v galerii Uffizi ve Florencii.",
+      "explanation": "Loutkáři stojí po pás ve vodě za bambusovou zástěnou a ovládají loutky dlouhými tyčemi skrytými pod hladinou; umění vzniklo na rýžových polích.",
       "id": "cul-0058",
-      "options": [
-        "Raffael",
-        "Tizian",
-        "Sandro Botticelli",
-        "Domenico Ghirlandaio"
-      ],
-      "question": "Kdo namaloval „Zrození Venuše“?"
+      "options": ["V jeskyních", "V korunách stromů", "Na vodě", "Na kůlech"],
+      "question": "Kde vystupují loutky v tradičním vietnamském divadle múa rối nước?"
     },
     {
       "answer": 2,
@@ -1662,24 +1667,24 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Potrubí budovy je zvenčí barevně odlišené: modrá pro vzduch, zelená pro vodu a žlutá pro elektřinu.",
+      "explanation": "Název putoval spolu s nástrojem přes Španělsko a Provence: „loutna“ pochází z arabského al-ʿúd, „dřevo“.",
       "id": "cul-0096",
-      "options": ["Jean Nouvel", "Renzo Piano", "Norman Foster", "Frank Gehry"],
-      "question": "Který architekt navrhl s Richardem Rogersem Centre Pompidou v Paříži?"
+      "options": ["Sitár", "Úd", "Santúr", "Nej"],
+      "question": "Ze kterého blízkovýchodního nástroje se vyvinula evropská loutna?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Velký triptych plný podivných tvorů a obřího ovoce visí v madridském Pradu.",
+      "explanation": "V roce 1936 Pedro Linares vážně onemocněl a zdály se mu podivné bytosti křičící „alebrijes!“; pak je vytvořil z papír-mâché.",
       "id": "cul-0070",
       "options": [
-        "Albrecht Dürer",
-        "Hieronymus Bosch",
-        "Jan van Eyck",
-        "Pieter Bruegel starší"
+        "Cestu do Číny",
+        "Horečnatý sen",
+        "Ztroskotání lodi",
+        "Návštěvu zoo"
       ],
-      "question": "Kdo namaloval „Zahradu pozemských rozkoší“?"
+      "question": "Mexické alebrijes, pestře malované fantastické bytosti, vznikly poté, co umělec zažil co?"
     },
     {
       "answer": 2,
@@ -1745,24 +1750,24 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Mucha se v roce 1895 v Paříži přes noc proslavil plakátem pro herečku Sarah Bernhardtovou.",
+      "explanation": "Ručně kladené trojúhelníkové destičky z mastku pokrývají 30m sochu; dělníci prý na rub některých psali jména a vzkazy.",
       "id": "cul-0100",
-      "options": ["Secese", "Expresionismus", "Pop art", "Kubismus"],
-      "question": "S kterým uměleckým slohem je nejvíce spojen český umělec Alfons Mucha?"
+      "options": ["Z mastku", "Z mramoru", "Z plátkového zlata", "Z porcelánu"],
+      "question": "Socha Krista Spasitele v Riu je z betonu pokrytého drobnými destičkami z čeho?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Händel napsal celé dílo v roce 1741 asi za 24 dní; premiéru mělo v Dublinu v roce 1742.",
+      "explanation": "Gesta rukou znázorňují věci ze slov zpěvu, třeba déšť, květiny nebo valící se vlny, zatímco zpěvák přednáší samotnou poezii.",
       "id": "cul-0071",
       "options": [
-        "Georg Philipp Telemann",
-        "Georg Friedrich Händel",
-        "J. S. Bach",
-        "Joseph Haydn"
+        "Rytmus bubnu",
+        "Ruce tanečníků",
+        "Barvy sukní",
+        "Nošené masky"
       ],
-      "question": "Který skladatel napsal oratorium „Mesiáš“, poprvé uvedené v Dublinu?"
+      "question": "Co v tradiční havajské hule pomáhá vyprávět příběh zpěvu?"
     },
     {
       "answer": 1,
@@ -1782,15 +1787,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Ibsen patří k nejhranějším dramatikům světa; podle mnoha měřítek ho předčí jen Shakespeare.",
+      "explanation": "Nyepi je balijský Nový rok: celý den zůstávají zhasnutá světla a prázdné ulice a i turisté jsou požádáni, aby zůstali v hotelu.",
       "id": "cul-0060",
       "options": [
-        "Knut Hamsun",
-        "Bjørnstjerne Bjørnson",
-        "August Strindberg",
-        "Henrik Ibsen"
+        "Zdvojnásobí počet letů",
+        "Smějí přistávat jen hydroplány",
+        "Letadla musí létat potichu",
+        "Na 24 hodin se zavře"
       ],
-      "question": "Který norský dramatik napsal hru „Domeček pro panenky“ (Nora)?"
+      "question": "Co se děje na hlavním letišti Bali během Nyepi, balijského Dne ticha?"
     },
     {
       "answer": 0,
@@ -1878,15 +1883,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Carmen se odehrává v Seville; Bizet zemřel jen tři měsíce po premiéře, než se z ní stal světový hit.",
+      "explanation": "Vnitřní kůra, často papírovníku čínského, se namáčí a roztlouká dřevěnou paličkou na tenko, spojuje do velkých archů a maluje.",
       "id": "cul-0072",
       "options": [
-        "Gioachino Rossini",
-        "Giuseppe Verdi",
-        "Georges Bizet",
-        "Giacomo Puccini"
+        "Z pletených palmových listů",
+        "Z kokosového vlákna",
+        "Z roztloukané stromové kůry",
+        "Z ovčí vlny"
       ],
-      "question": "Kdo složil operu „Carmen“?"
+      "question": "Z čeho se vyrábí tapa, látka známá v Tichomoří od Tongy po Havaj?"
     },
     {
       "answer": 1,
@@ -1915,29 +1920,19 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "„Černý čtverec“ se stal ikonou suprematismu, uměleckého směru založeného na jednoduchých geometrických tvarech.",
+      "explanation": "Hráči drnkají na kovové jazýčky palci; mbira je základem hudby Šonů a verze s kovovými jazýčky jsou zřejmě starší než 1 000 let.",
       "id": "cul-0104",
-      "options": [
-        "Kazimir Malevič",
-        "El Lisickij",
-        "Marc Chagall",
-        "Vasilij Kandinskij"
-      ],
-      "question": "Který umělec namaloval v roce 1915 „Černý čtverec“?"
+      "options": ["Zimbabwe", "Maroka", "Egypta", "Senegalu"],
+      "question": "UNESCO vede mbiru, „palcový klavír“ s kovovými jazýčky, jako dědictví Malawi a které další země?"
     },
     {
       "answer": 1,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "Vermeer žil v Delftu a za celý život podle všeho namaloval méně než 40 děl.",
+      "explanation": "Vznikla mezi zotročenými Afričany v Brazílii; tempo „hry“ udává berimbau, hudební luk s jednou strunou. UNESCO ji zapsalo v roce 2014.",
       "id": "cul-0013",
-      "options": [
-        "Rembrandt van Rijn",
-        "Johannes Vermeer",
-        "Jan Steen",
-        "Frans Hals"
-      ],
-      "question": "Který nizozemský malíř vytvořil „Dívku s perlou“?"
+      "options": ["Argentina", "Brazílie", "Kuba", "Portugalsko"],
+      "question": "Ve které zemi vznikla capoeira, spojení bojového umění, tance a hudby?"
     },
     {
       "answer": 2,
@@ -1957,10 +1952,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "V Kalevale hrdina Väinämöinen postaví první kantele z čelisti obří štiky.",
+      "explanation": "Na slavnost, při níž se mešita znovu omítá, se schází celé město; trámy z palmového dřeva trčící ze zdí slouží jako zabudované lešení.",
       "id": "cul-0109",
-      "options": ["Finsko", "Litva", "Lotyšsko", "Estonsko"],
-      "question": "Která země je domovem lidového nástroje kantele, ústředního pro její národní epos?"
+      "options": [
+        "Každý rok",
+        "Každých 10 let",
+        "Každých 50 let",
+        "Každých 100 let"
+      ],
+      "question": "Jak často dostává Velká mešita v Djenné v Mali, největší stavba z nepálených cihel, novou hliněnou omítku?"
     },
     {
       "answer": 3,
@@ -1998,10 +1998,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Mezquita má přes 850 sloupů z jaspisu, mramoru a žuly, které nesou pruhované červenobílé oblouky.",
+      "explanation": "Umělkyně Esther Mahlangu proslavila styl ve světě: v roce 1991 pomalovala ndebelskými vzory BMW pro sérii Art Car.",
       "id": "cul-0106",
-      "options": ["Córdoba", "Granada", "Sevilla", "Málaga"],
-      "question": "Ve kterém španělském městě je Mezquita, slavná mešita-katedrála?"
+      "options": [
+        "Na zdi svých domů",
+        "Na pštrosí vejce",
+        "Na dřevěné masky",
+        "Na hliněné hrnce"
+      ],
+      "question": "Ženy z národa Ndebele v Jižní Africe jsou proslulé malováním výrazných geometrických vzorů na co?"
     },
     {
       "answer": 3,
@@ -2053,29 +2058,29 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Román se odehrává v letním vedru v Petrohradě a ulici i dům hlavního hrdiny lze dodnes navštívit.",
+      "explanation": "Tanečníci v kruhu se střídají ve skocích z místa rovně vzhůru, zatímco ostatní zpívají; obdivuje se výška i ladnost skoků.",
       "id": "cul-0079",
       "options": [
-        "Michail Bulgakov",
-        "Nikolaj Gogol",
-        "Fjodor Dostojevskij",
-        "Alexandr Puškin"
+        "Kdo se točí nejrychleji",
+        "Kdo běží nejdéle",
+        "Kdo vyskočí nejvýš",
+        "Kdo zpívá nejhlasitěji"
       ],
-      "question": "Který ruský spisovatel napsal „Zločin a trest“?"
+      "question": "V čem soutěží mladí muži v tanci adumu u Masajů v Keni a Tanzanii?"
     },
     {
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Velázquez namaloval do obrazu i sám sebe – stojí u velkého plátna a dívá se na diváka.",
+      "explanation": "Listy hennového keře se suší a melou na pastu; načervenalé zbarvení se váže na svrchní vrstvu kůže a mizí za jeden až tři týdny.",
       "id": "cul-0087",
       "options": [
-        "Bartolomé Murillo",
-        "Francisco Goya",
-        "Diego Velázquez",
-        "El Greco"
+        "Z krovek brouků",
+        "Ze sopečného jílu",
+        "Ze sušených listů rostliny",
+        "Ze stromové pryskyřice"
       ],
-      "question": "Kdo namaloval obraz „Las Meninas“ (Dvorní dámy)?"
+      "question": "Z čeho se získává henna, kterou se při svatbách a svátcích malují vzory na ruce?"
     },
     {
       "answer": 1,
@@ -2122,10 +2127,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Danzón vznikl z evropské contradanzy v Matanzas; první skladba „Las alturas de Simpson“ tam měla premiéru v roce 1879.",
+      "explanation": "Ploché kožené loutky se drží u osvětleného plátna; jediný loutkář, dalang, je vodí a mluví za všechny postavy.",
       "id": "cul-0108",
-      "options": ["Rumba", "Salsa", "Danzón", "Merengue"],
-      "question": "Který tanec je oficiálně národním tancem Kuby?"
+      "options": [
+        "Na tanečníky v maskách",
+        "Na živá zvířata",
+        "Na stíny loutek",
+        "Na tanečníky s ohněm"
+      ],
+      "question": "Na co se hlavně dívají diváci indonéského představení wayang kulit, které může trvat celou noc?"
     },
     {
       "answer": 0,
@@ -2154,10 +2164,15 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Celý román se odehrává během jediného dne, 16. června 1904, který fanoušci každoročně slaví jako „Bloomsday“.",
+      "explanation": "Po druhé světové válce Filipínci prodlužovali přebytečné americké vojenské džípy a přidávali lavice, chromované koně a pestré barvy.",
       "id": "cul-0081",
-      "options": ["Londýn", "Paříž", "Terst", "Dublin"],
-      "question": "Ve kterém městě se odehrává román Jamese Joyce „Odysseus“?"
+      "options": [
+        "Ze starých městských autobusů",
+        "Z rybářských lodí",
+        "Z železničních vagonů",
+        "Ze zbylých armádních džípů USA"
+      ],
+      "question": "Z čeho se původně stavěly pestré filipínské sdílené taxíky „jeepney“?"
     },
     {
       "answer": 0,
@@ -2205,10 +2220,15 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Podívej se pozorně: malý vrcholek v pozadí je hora Fudži.",
+      "explanation": "Dělníci vykopali kolem skalních bloků příkopy a vyhloubili je shora dolů, včetně dveří, oken a střech z jednoho kusu.",
       "id": "cul-0086",
-      "options": ["Okinawa", "Hokkaidó", "Kanagawa", "Kjúšú"],
-      "question": "U pobřeží které oblasti se odehrává slavný Hokusaiův dřevořez „Velká vlna“?"
+      "options": [
+        "Jsou celé ze skla",
+        "Plovou na jezeře",
+        "Jsou vytesané do skály",
+        "Stojí na vysokých kůlech"
+      ],
+      "question": "Čím je proslulých 11 středověkých kostelů v etiopské Lalibele?"
     },
     {
       "answer": 3,
@@ -2237,15 +2257,10 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Bruegel ho namaloval jako součást cyklu ročních období; visí ve vídeňském Uměleckohistorickém muzeu.",
+      "explanation": "Básník Ferdousí na jejích zhruba 50 000 rýmovaných dvojverších pracoval asi 30 let; vyprávějí o mýtických i historických králích Persie.",
       "id": "cul-0110",
-      "options": [
-        "Peter Paul Rubens",
-        "Pieter Bruegel starší",
-        "Jacob Jordaens",
-        "Anthonis van Dyck"
-      ],
-      "question": "Který vlámský malíř vytvořil zimní výjev „Lovci ve sněhu“ (1565)?"
+      "options": ["Turecka", "Íránu", "Indie", "Egypta"],
+      "question": "Šáhnáme neboli „Kniha králů“ je národní epos které země?"
     },
     {
       "answer": 0,
@@ -2343,10 +2358,15 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Přezdívku „Měsíční“ jí dal kritik až po Beethovenově smrti; skladatel ji nazval prostě Sonata quasi una fantasia.",
+      "explanation": "Vyřezávají se obvykle ze zeravu obrovského a zaznamenávají rodové dějiny, legendy a události; nikdy nebyly předmětem uctívání.",
       "id": "cul-0105",
-      "options": ["Beethoven", "Mozart", "Mendelssohn", "Chopin"],
-      "question": "Který skladatel napsal „Měsíční sonátu“?"
+      "options": [
+        "Severozápadu Pacifiku",
+        "Střední Amazonie",
+        "Východní Sibiře",
+        "Australského vnitrozemí"
+      ],
+      "question": "Obří vyřezávané totemy jsou tradicí původních obyvatel kterého regionu?"
     },
     {
       "answer": 1,
@@ -2435,10 +2455,15 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Philips dovolil ostatním výrobcům používat formát zdarma, což pomohlo jeho celosvětovému rozšíření.",
+      "explanation": "Inženýr Neil Papworth ji napsal na počítači, protože telefony ještě neměly klávesnice, a poslal ji kolegovi z Vodafonu na vánoční večírek.",
       "id": "inv-0082",
-      "options": ["BASF", "Philips", "Grundig", "Sony"],
-      "question": "Která firma v roce 1963 uvedla na trh kompaktní audiokazetu?"
+      "options": [
+        "Šťastný nový rok",
+        "Veselé Vánoce",
+        "Ahoj světe",
+        "Slyšíš mě?"
+      ],
+      "question": "Co stálo v první SMS zprávě, odeslané v roce 1992?"
     },
     {
       "answer": 3,
@@ -2504,15 +2529,15 @@
       "answer": 0,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Zuse sestrojil svůj první počítač Z1 v obývacím pokoji svých rodičů v Berlíně.",
+      "explanation": "Vyřezávaly se ze dřeva, kosti nebo parohu na míru obličeji; štěrbiny omezí oslnění, které působí sněžnou slepotu, a jako dírková komora dokonce zostří vidění.",
       "id": "inv-0089",
       "options": [
-        "Konrad Zuse",
-        "Howard Aiken",
-        "John von Neumann",
-        "Alan Turing"
+        "Úzkými štěrbinami",
+        "Zabarveným ledem",
+        "Tenkou rybí kůží",
+        "Barevným sklem"
       ],
-      "question": "Kdo v roce 1941 sestrojil Z3, první fungující programovatelný plně automatický počítač?"
+      "question": "Čím pouštěly světlo tradiční inuitské sněžné brýle, které chránily oči před oslněním?"
     },
     {
       "answer": 1,
@@ -2720,10 +2745,10 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Johanssonovy klíče se prodávaly po celém světě pod značkou Bahco; dřívější stavitelný klíč si o desítky let dřív patentoval jeden Angličan.",
+      "explanation": "David Warren na nápad přišel při vyšetřování záhadné havárie dopravního letadla; Austrálie v roce 1967 jako první země zapisovače v kokpitu nařídila.",
       "id": "inv-0091",
-      "options": ["Norsko", "Finsko", "Švédsko", "Dánsko"],
-      "question": "Ve které zemi si Johan Petter Johansson v roce 1891 patentoval svůj slavný stavitelný klíč (francouzák)?"
+      "options": ["Kanada", "Japonsko", "Austrálie", "Švédsko"],
+      "question": "Vědec ze které země vynalezl v 50. letech letový zapisovač v kokpitu, tzv. „černou skříňku“?"
     },
     {
       "answer": 2,

@@ -20,15 +20,10 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 2,
-      "explanation": "Torricelli, Galileův žák, ukázal, že tlak vzduchu udrží sloupec rtuti vysoký asi 76 cm.",
+      "explanation": "Uživatelé měnili hotovost za e-peníze v malých obchodech; do tří let měla služba v Keni asi 9 milionů zákazníků, mnoho z nich bez bankovního účtu.",
       "id": "inv-0050",
-      "options": [
-        "Galileo Galilei",
-        "Otto von Guericke",
-        "Evangelista Torricelli",
-        "Blaise Pascal"
-      ],
-      "question": "Kdo vynalezl v roce 1643 rtuťový barometr?"
+      "options": ["Nigérie", "Jihoafrická republika", "Keňa", "Indie"],
+      "question": "Ve které zemi začala v roce 2007 služba M-Pesa, díky níž miliony lidí posílají peníze textovou zprávou i z jednoduchých telefonů?"
     },
     {
       "answer": 3,
@@ -139,15 +134,10 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Cochraneová chtěla stroj, který by jí umyl nádobí, aniž by se otloukl její jemný porcelán.",
+      "explanation": "Plovák klesající ve skryté nádrži s vodou uvnitř slona každou půlhodinu uvedl do pohybu figurky, ptáky a buben.",
       "id": "inv-0083",
-      "options": [
-        "Margaret Knightová",
-        "Josephine Cochraneová",
-        "Beulah Louise Henryová",
-        "Mary Andersonová"
-      ],
-      "question": "Kdo vynalezl v roce 1886 první komerčně úspěšnou myčku nádobí?"
+      "options": ["Pára", "Voda", "Písek", "Pružiny"],
+      "question": "Co pohánělo „sloní hodiny“ al-Džazarího, popsané v knize z roku 1206?"
     },
     {
       "answer": 1,
@@ -305,15 +295,10 @@
       "answer": 0,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Leibnize fascinovalo, že podobné vzorce našel ve starověkých čínských hexagramech Knihy proměn (I-ťing).",
+      "explanation": "Její Vrihat Samrat Jantra, vysoká asi 27 m a dokončená ve 30. letech 18. století, ukazuje místní čas s přesností asi na dvě sekundy.",
       "id": "inv-0096",
-      "options": [
-        "Gottfried Leibniz",
-        "René Descartes",
-        "Isaac Newton",
-        "Christiaan Huygens"
-      ],
-      "question": "Který myslitel publikoval v roce 1703 vlivné pojednání o dvojkové aritmetice?"
+      "options": ["Sluneční hodiny", "Teleskop", "Kompas", "Vodní hodiny"],
+      "question": "Jaký přístroj z kamene, největší svého druhu na světě, stojí v observatoři Džantar Mantar v indickém Džajpuru?"
     },
     {
       "answer": 1,
@@ -412,10 +397,10 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 2,
-      "explanation": "Rocket zvítězila v soutěži Rainhill Trials o nejlepší stroj pro novou železnici Liverpool–Manchester.",
+      "explanation": "Sanskrtské „śarkarā“ se změnilo na perské „šakar“ a arabské „sukkar“; v Indii vyráběli krystalový cukr asi už ve 4. století n. l.",
       "id": "inv-0068",
-      "options": ["Flying Scotsman", "Rocket", "Mallard", "Puffing Billy"],
-      "question": "Kterou slavnou lokomotivu z roku 1829 postavili George a Robert Stephensonovi?"
+      "options": ["Čína", "Indie", "Egypt", "Brazílie"],
+      "question": "Ze které země pochází slovo „cukr“ i umění měnit šťávu z třtiny v krystaly?"
     },
     {
       "answer": 2,
@@ -638,10 +623,15 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Karakuri z období Edo pomocí pružin a ozubených kol popojely vpřed se šálkem čaje, a když si ho host vzal, otočily se zpět.",
+      "explanation": "Brambory se nechají v noci zmrznout a ve dne roztát a pak se šlapáním vymačká voda; sušené čuňo vydrží roky.",
       "id": "inv-0097",
-      "options": ["Daruma", "Kokeši", "Hina-ningjó", "Karakuri"],
-      "question": "Jak se japonsky nazývají mechanické panenky, například ty, které podávají čaj?"
+      "options": [
+        "Kouřem nad ohněm",
+        "Mořskou solí",
+        "Horkými hliněnými pecemi",
+        "Nočním mrazem a sluncem"
+      ],
+      "question": "Čím andští rolníci vyrábějí čuňo, starobylé mrazem sušené brambory?"
     },
     {
       "answer": 1,
@@ -739,10 +729,10 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Seiko Astron používal drobný kmitající krystal křemene a byl mnohem přesnější než mechanické hodinky.",
+      "explanation": "Argentina slaví Den vynálezců v den jeho narozenin, 29. září; v roce 1945 koupil práva k návrhu Marcel Bich, z čehož vzniklo pero Bic.",
       "id": "inv-0093",
-      "options": ["Sony", "Casio", "Citizen", "Seiko"],
-      "question": "Která japonská firma uvedla v roce 1969 na trh první křemenné náramkové hodinky?"
+      "options": ["Španělsko", "Brazílie", "Itálie", "Argentina"],
+      "question": "Do které země se Maďar László Bíró, průkopník kuličkového pera, přestěhoval, než si pero v roce 1943 patentoval?"
     },
     {
       "answer": 3,
@@ -1036,10 +1026,15 @@
       "answer": 2,
       "category": "languages",
       "difficulty": 3,
-      "explanation": "Mchedruli tradičně nemá velká písmena; tři historická gruzínská písma jsou zapsána na seznamu kulturního dědictví UNESCO.",
+      "explanation": "Každá souhláska má sedm podob, jednu pro každou samohlásku, takže znaků je přes 200; písmo vzniklo ze starověkého písma ge’ez.",
       "id": "lang-0068",
-      "options": ["Hlaholice", "Ge'ez", "Mchedruli", "Hangul"],
-      "question": "Jak se nazývá jedinečné písmo, kterým se píše gruzínština?"
+      "options": [
+        "Celé slovo",
+        "Samotnou samohlásku",
+        "Souhlásku a samohlásku",
+        "Pojem nebo předmět"
+      ],
+      "question": "Co představuje každý znak písma, kterým se píše etiopská amharština?"
     },
     {
       "answer": 3,
@@ -1291,10 +1286,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Hráči chytají a házejí míček zahnutým proutěným košíkem zvaným cesta, připevněným k zápěstí.",
+      "explanation": "Prý začal na Copacabaně v roce 1965, kdy byl fotbal na písku zakázán, ale volejbalové sítě povoleny byly.",
       "id": "sport-0058",
-      "options": ["Katalánsko", "Andalusie", "Baskicko", "Baleáry"],
-      "question": "Ze které oblasti pochází jai alai, často označovaná za nejrychlejší míčovou hru?"
+      "options": ["Lisabonu", "Miami", "Ria de Janeiro", "Barcelony"],
+      "question": "Na plážích kterého města vznikl futvolejbal, tedy volejbal hraný bez použití rukou?"
     },
     {
       "answer": 1,
@@ -1327,10 +1322,15 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Akce se nejprve jmenovala „Mezinárodní týden zimních sportů“ a za první zimní olympiádu byla uznána až později.",
+      "explanation": "Jeden rok se běží do kopce z Durbanu do Pietermaritzburgu a další rok zpět, takže trasy „nahoru“ a „dolů“ se mírně liší délkou.",
       "id": "sport-0037",
-      "options": ["Chamonix", "Svatý Mořic", "Innsbruck", "Oslo"],
-      "question": "Kde se v roce 1924 konaly první zimní olympijské hry?"
+      "options": [
+        "Každý rok mění směr",
+        "Běží se jen v noci",
+        "Běží se bosky",
+        "Vede přes tři země"
+      ],
+      "question": "Co je neobvyklého na jihoafrickém Comrades Marathonu dlouhém asi 90 km?"
     },
     {
       "answer": 2,
@@ -1345,19 +1345,24 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Olympijští lukostřelci střílejí na terč vzdálený 70 m; zlatý středový kruh má průměr asi 12 cm.",
+      "explanation": "Asi 20 mušerů se psy vezlo antitoxin ve štafetě, protože tehdejší letadla nemohla v aljašských zimních bouřích létat.",
       "id": "sport-0041",
-      "options": ["Zlatou", "Modrou", "Červenou", "Černou"],
-      "question": "Jakou barvu má střed terče v olympijské lukostřelbě?"
+      "options": [
+        "Lék proti záškrtu",
+        "Zlaté nugety",
+        "Vánoční poštu",
+        "Zimní zásoby jídla"
+      ],
+      "question": "Aljašský závod psích spřežení Iditarod připomíná štafetu z roku 1925, která do Nome spěšně dopravila co?"
     },
     {
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Hráči v poli se nesmějí dotknout dna bazénu, takže musí celý zápas šlapat vodu.",
+      "explanation": "Skok „naghol“ na ostrově Pentecost souvisí se sklizní jamů; čerpala z něj první komerční bungee firma na Novém Zélandu.",
       "id": "sport-0054",
-      "options": ["Šest", "Pět", "Sedm", "Osm"],
-      "question": "Kolik hráčů každého týmu je ve vodním pólu ve vodě, včetně brankáře?"
+      "options": ["Fidži", "Samoa", "Vanuatu", "Tonga"],
+      "question": "Ve které tichomořské zemi skáčou muži z vysokých dřevěných věží s liánami přivázanými ke kotníkům, což inspirovalo bungee jumping?"
     },
     {
       "answer": 2,
@@ -1372,10 +1377,15 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Zápasiště suma je z hlíny a slámy; zápasník prohrává, pokud se země dotkne kterákoli část jeho těla kromě chodidel.",
+      "explanation": "Dvě pěsti, dva lokty, dvě kolena a dvě holeně dávají osm „zbraní“, zatímco v boxu se používají jen dvě pěsti.",
       "id": "sport-0014",
-      "options": ["Japonsko", "Čína", "Mongolsko", "Jižní Korea"],
-      "question": "Sumo je tradičním národním sportem které země?"
+      "options": [
+        "Lokty a koleny",
+        "Hlavou a boky",
+        "Rameny a zády",
+        "Zápěstími a kotníky"
+      ],
+      "question": "Muay thai se říká „umění osmi končetin“, protože zápasníci útočí pěstmi, holeněmi a čím ještě?"
     },
     {
       "answer": 2,
@@ -1408,10 +1418,10 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Hokejisté střídají „za běhu“ během hry, často už po necelé minutě na ledě.",
+      "explanation": "Tyto „tři mužské hry“ zmiňuje už kronika ze 13. století; dnes v lukostřelbě a dostizích soutěží i ženy.",
       "id": "sport-0028",
-      "options": ["Šest", "Pět", "Sedm", "Jedenáct"],
-      "question": "Kolik hráčů každého týmu je v ledním hokeji na ledě, včetně brankáře?"
+      "options": ["V lukostřelbě", "V šermu", "V pólu", "Ve vzpírání"],
+      "question": "Na mongolském festivalu Naadam se zápasí, závodí na koních a soutěží v kterém dalším sportu?"
     },
     {
       "answer": 2,
@@ -1440,10 +1450,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Hráč musí během jednoho náběhu potopit všech 15 červených, po každé z nich černou, a pak všechny barevné koule.",
+      "explanation": "Běžci nesou vlastní jídlo i výbavu na celý závod; pořadatelé dodávají jen vodu a společný stan v každém nočním táboře.",
       "id": "sport-0031",
-      "options": ["155", "100", "147", "180"],
-      "question": "Kolik bodů má standardní maximální break ve snookeru?"
+      "options": ["Namib", "Kalahari", "Sahara", "Gobi"],
+      "question": "Kterou pouští vede marocký Marathon des Sables, vícedenní závod dlouhý asi 250 km?"
     },
     {
       "answer": 0,
@@ -1467,10 +1477,10 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Špičkový košíček má 16 husích per, tradičně všechna z téhož křídla.",
+      "explanation": "Mnoho hřišť jsou kriketová pole využívaná v zimě, proto se velkým stadionům často říká „ovals“; hřiště nemá pevnou velikost.",
       "id": "sport-0003",
-      "options": ["Squash", "Badminton", "Stolní tenis", "Lakros"],
-      "question": "Který sport se hraje s košíčkem?"
+      "options": ["Obdélník", "Ovál", "Čtverec", "Kosočtverec"],
+      "question": "Jaký tvar má obvykle hřiště pro australský fotbal?"
     },
     {
       "answer": 0,
@@ -1512,19 +1522,19 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Ragby league, samostatná odnož oddělená v roce 1895, hraje s 13 hráči na každé straně.",
+      "explanation": "Tým debutoval v Calgary; jeho příběh inspiroval film „Kokosy na sněhu“ (1993), který mnoho skutečných podrobností změnil.",
       "id": "sport-0029",
-      "options": ["12", "11", "13", "15"],
-      "question": "Kolik hráčů má na hřišti tým v ragby union?"
+      "options": ["Fidži", "Keňa", "Brazílie", "Jamajka"],
+      "question": "Která tropická země v roce 1988 překvapila svět tím, že na zimní olympiádu vyslala bobový tým?"
     },
     {
       "answer": 0,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Hráči se posouvají po směru hodinových ručiček pokaždé, když jejich tým získá zpět právo podání.",
+      "explanation": "Hrála se už před více než 2 000 lety za dynastie Chan; v roce 2004 FIFA uznala cchu-ťü jako ranou podobu fotbalu.",
       "id": "sport-0015",
-      "options": ["Šest", "Pět", "Čtyři", "Sedm"],
-      "question": "Kolik hráčů každého týmu je najednou na volejbalovém hřišti?"
+      "options": ["Čína", "Řecko", "Egypt", "Mexiko"],
+      "question": "Ze které země pochází cchu-ťü, starobylá míčová hra, v níž hráči kopali míč do branky?"
     },
     {
       "answer": 2,
@@ -1548,10 +1558,15 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Šestinadhozové overy jsou dnes standardem, ale Austrálie v mnoha sezonách až do roku 1979 hrála osminadhozové.",
+      "explanation": "Iten leží asi 2 400 m vysoko na okraji Velké příkopové propadliny, kde řídký vzduch buduje vytrvalost; říká si „Domov šampionů“.",
       "id": "sport-0026",
-      "options": ["Osm", "Pět", "Deset", "Šest"],
-      "question": "Kolik platných nadhozů tvoří v kriketu jeden over?"
+      "options": [
+        "Mořský vánek",
+        "Rovné písčité dráhy",
+        "Chladné zimy",
+        "Vysoká nadmořská výška"
+      ],
+      "question": "Mnoho špičkových vytrvalců trénuje u keňského Itenu. Proč je ta oblast tak výhodná?"
     },
     {
       "answer": 1,
@@ -1616,19 +1631,29 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Tři šipky v trojitém poli dvacítky dají každá 60 bodů; střed terče má hodnotu jen 50.",
+      "explanation": "Mistr zvaný moršed bije do pohárového bubnu a recituje verše, zatímco sportovci v zapuštěné jámě švihají těžkými dřevěnými kyji; UNESCO tuto tradici zapsalo v roce 2010.",
       "id": "sport-0032",
-      "options": ["200", "180", "170", "150"],
-      "question": "Jaké je nejvyšší možné skóre třemi šipkami?"
+      "options": [
+        "Podle píšťalky rozhodčího",
+        "Podle bubnu a poezie",
+        "Podle tikajících hodin",
+        "Podle tleskání diváků"
+      ],
+      "question": "Podle čeho cvičí sportovci v íránském tradičním „domě síly“ (zurchane)?"
     },
     {
       "answer": 0,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "William G. Morgan ho vytvořil v Massachusetts jako jemnější halovou hru než basketbal.",
+      "explanation": "Sportovec vyskočí, jednou nohou kopne do malého zavěšeného míčku, často z tulení kůže, a musí dopadnout na tutéž nohu; kop kdysi ohlašoval úspěšný lov.",
       "id": "sport-0049",
-      "options": ["Mintonette", "Házená", "Netball", "Volej-tenis"],
-      "question": "Jak se původně jmenoval volejbal, když byl v roce 1895 vynalezen?"
+      "options": [
+        "Terč zavěšený ve vzduchu",
+        "Buben roztočený partnerem",
+        "Otevřenou dlaň partnera",
+        "Dřevěnou tyč na zemi"
+      ],
+      "question": "Co musí sportovec zasáhnout v arktické disciplíně „one-foot high kick“?"
     },
     {
       "answer": 1,
@@ -1671,10 +1696,10 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Pitch měří 20,12 m (22 yardů) – stejně jako chain, stará zeměměřičská jednotka.",
+      "explanation": "Týmy z Čitrálu a Gilgit-Baltistánu se tu každé léto utkají ve volné hře s velmi málo pravidly; tradice sahá do 30. let 20. století.",
       "id": "sport-0055",
-      "options": ["Asi 25 m", "Asi 30 m", "Asi 15 m", "Asi 20 m"],
-      "question": "Jak dlouhý je zhruba kriketový pitch mezi dvěma brankami?"
+      "options": ["Indie", "Nepál", "Čína", "Pákistán"],
+      "question": "Ve které zemi leží pólové hřiště Shandur ve výšce asi 3 700 m, často označované za nejvýše položené na světě?"
     },
     {
       "answer": 3,
@@ -1689,10 +1714,10 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 1,
-      "explanation": "Zápas nemůže pokračovat, pokud má tým na hřišti méně než sedm hráčů.",
+      "explanation": "Sport rozšířil havajský plavec Duke Kahanamoku; jeho ukázka na pláži Freshwater u Sydney v roce 1914 pomohla odstartovat surfing v Austrálii.",
       "id": "sport-0001",
-      "options": ["Dvanáct", "Jedenáct", "Devět", "Deset"],
-      "question": "Kolik hráčů má každý fotbalový tým na hřišti?"
+      "options": ["Kanárské ostrovy", "Havaj", "Maledivy", "Bali"],
+      "question": "Ze starobylé tradice na kterých ostrovech vyrostl surfing?"
     },
     {
       "answer": 1,
@@ -2012,10 +2037,10 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Bakken severně od Kodaně vznikl kolem přírodního pramene, který přitahoval davy návštěvníků.",
+      "explanation": "Tisíce tanečníků v obřích rohatých maskách procházejí městem celé hodiny; UNESCO karneval v roce 2001 vyhlásilo mistrovským dílem nehmotného dědictví.",
       "id": "misc-0073",
-      "options": ["Dánsko", "Anglie", "Německo", "Rakousko"],
-      "question": "Ve které zemi je Bakken, považovaný za nejstarší fungující zábavní park světa (1583)?"
+      "options": ["Bolívie", "Peru", "Chile", "Ekvádor"],
+      "question": "Ve které zemi se koná karneval v Oruru, proslulý ďábelským tancem diablada?"
     },
     {
       "answer": 1,
@@ -2090,10 +2115,10 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Žáci zjistili, že propíchnutý, měkčí míček se při dopadu „zmáčkne“ (anglicky squash), což vyžadovalo rozmanitější údery.",
+      "explanation": "V Římě mu nové boty udělaly puchýře, tak běžel bez nich a zaběhl světové maximum; o čtyři roky později v Tokiu vyhrál znovu, v botách.",
       "id": "sport-0059",
-      "options": ["Eton", "Winchester", "Harrow", "Rugby"],
-      "question": "Na které slavné anglické škole se v 19. století vyvinul squash?"
+      "options": ["Na 800 metrů", "V krosu", "V maratonu", "Na 10 000 metrů"],
+      "question": "V roce 1960 vyhrál Etiopan Abebe Bikila olympijské zlato, když běžel bos. V jaké disciplíně?"
     },
     {
       "answer": 2,
@@ -2127,10 +2152,15 @@
       "answer": 1,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Pokutová značka je 11 m (12 yardů) od brankové čáry; hranice pokutového území je 16,5 m daleko.",
+      "explanation": "Jezdci se přetahují o míč s koženými uchy, přihrávají si ho a hází do obruče – trochu jako kříženec basketbalu a póla.",
       "id": "sport-0047",
-      "options": ["12 metrů", "11 metrů", "9 metrů", "16,5 metru"],
-      "question": "Z jaké vzdálenosti se kope pokutový kop ve fotbale?"
+      "options": [
+        "Na bruslích",
+        "Na koních",
+        "V bazénu",
+        "Na písečných dunách"
+      ],
+      "question": "Jak se hraje pato, od roku 1953 oficiální národní sport Argentiny?"
     },
     {
       "answer": 2,
@@ -2168,10 +2198,10 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Vlajka Dominiky je jednou z mála státních vlajek, které obsahují fialovou barvu.",
+      "explanation": "Název přijatý v roce 1984 spojuje slova ze dvou místních jazyků, moré a djula; předtím se země jmenovala Horní Volta.",
       "id": "misc-0082",
-      "options": ["Barbados", "Dominika", "Grenada", "Jamajka"],
-      "question": "Na vlajce které země je fialový papoušek amazoňan císařský (sisserou)?"
+      "options": ["Mali", "Burkina Faso", "Niger", "Senegal"],
+      "question": "Název které africké země znamená zhruba „země čestných lidí“?"
     },
     {
       "answer": 2,
@@ -2259,10 +2289,10 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "Většina původních barokních soch byla nahrazena kopiemi; originály jsou uloženy v muzeích.",
+      "explanation": "Hlava je považována za nejposvátnější část těla a chodidla za nejnižší, takže je nezdvořilé i mířit na někoho chodidly.",
       "id": "misc-0035",
-      "options": ["Asi 3", "Asi 30", "Asi 3 000", "Asi 300"],
-      "question": "Kolik soch zdobí pražský Karlův most, založený v roce 1357?"
+      "options": ["Ruky", "Hlavy", "Ramene", "Lokte"],
+      "question": "Kterou část těla jiného člověka je v Thajsku obzvlášť nezdvořilé se dotknout?"
     },
     {
       "answer": 1,
@@ -2538,10 +2568,10 @@
       "answer": 3,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Botín servíruje jídla od roku 1725 a jeho pec na dřevo prý nikdy nevyhasla.",
+      "explanation": "V Coober Pedy může letní vedro přesáhnout 45 °C, ale „dugouts“ vytesané do skály mají stále asi 23–25 °C; jsou tu i podzemní kostely.",
       "id": "misc-0079",
-      "options": ["Vídeň", "Paříž", "Řím", "Madrid"],
-      "question": "Ve kterém městě je Sobrino de Botín, uváděná jako nejstarší restaurace na světě?"
+      "options": ["Mexiko", "Chile", "Jihoafrická republika", "Austrálie"],
+      "question": "Ve které zemi žije v jednom městě těžařů opálů mnoho lidí v podzemních domech, aby unikli horku?"
     },
     {
       "answer": 0,
@@ -2611,10 +2641,15 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Albert Einstein bydlel kousek od Zytglogge v téže ulici, když pracoval na speciální teorii relativity.",
+      "explanation": "Když prší, vlákna nabobtnají a uzavřou mezery v tkanině, zatímco v suchém horku volná vazba propouští vzduch.",
       "id": "misc-0085",
-      "options": ["Zytglogge", "Glockenspiel", "Torre dell'Orologio", "Orloj"],
-      "question": "Jak se jmenuje středověká hodinová věž v Bernu s pohyblivými figurami?"
+      "options": [
+        "Z kozí srsti",
+        "Z palmového vlákna",
+        "Z bavlny",
+        "Z velbloudí kůže"
+      ],
+      "question": "Z čeho se hlavně tkají tradiční beduínské stany zvané „domy z chlupů“?"
     },
     {
       "answer": 2,

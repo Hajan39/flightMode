@@ -196,10 +196,10 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Abuja, ville planifiée au centre du pays, a officiellement remplacé Lagos, sur la côte, comme capitale en 1991.",
+      "explanation": "Pretoria est le siège du gouvernement, Le Cap celui du parlement, et Bloemfontein accueille la Cour suprême d'appel.",
       "id": "geo-0029",
-      "options": ["Lagos", "Abuja", "Ibadan", "Kano"],
-      "question": "Quelle est la capitale du Nigeria ?"
+      "options": ["Nigeria", "Afrique du Sud", "Kenya", "Égypte"],
+      "question": "Quel pays a trois capitales, une pour le gouvernement, une pour le parlement et une pour la justice ?"
     },
     {
       "answer": 1,
@@ -214,19 +214,24 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Casablanca est la plus grande ville et le centre économique du Maroc, mais le palais royal et le Parlement sont à Rabat.",
+      "explanation": "Longtemps prise pour un cratère de météorite, la structure de Richat est aujourd'hui vue comme un dôme érodé dont les couches rocheuses forment des anneaux géants.",
       "id": "geo-0030",
-      "options": ["Marrakech", "Rabat", "Casablanca", "Fès"],
-      "question": "Quelle est la capitale du Maroc ?"
+      "options": ["Mali", "Mauritanie", "Niger", "Algérie"],
+      "question": "L'« œil du Sahara », un anneau rocheux de 40 km qui sert de repère aux astronautes, se trouve dans quel pays ?"
     },
     {
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Le Tigre et l'Euphrate se rejoignent plus loin pour former le Chatt-el-Arab ; la terre entre eux est la Mésopotamie, « entre les fleuves ».",
+      "explanation": "La terre la plus proche est à environ 2 700 km, mais la station spatiale orbite à environ 400 km d'altitude : quand elle passe au-dessus, son équipage est le plus proche.",
       "id": "geo-0054",
-      "options": ["Tigre", "Indus", "Euphrate", "Jourdain"],
-      "question": "Quel fleuve traverse la ville de Bagdad ?"
+      "options": [
+        "Des astronautes en orbite",
+        "Les passagers de croisière",
+        "Des équipages de pêche",
+        "Des gardiens de phare"
+      ],
+      "question": "Au point Nemo, l'endroit de l'océan le plus éloigné de toute terre, qui sont souvent les humains les plus proches ?"
     },
     {
       "answer": 1,
@@ -250,10 +255,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Le mont Fuji, 3 776 m, est un volcan actif dont la dernière éruption date de 1707 ; par temps clair, on le voit depuis Tokyo.",
+      "explanation": "Ses îles s'étendent sur environ 3,5 millions de km² d'océan ; en 1995, le pays a déplacé la ligne de changement de date pour que tout le pays vive le même jour.",
       "id": "geo-0055",
-      "options": ["Kyushu", "Shikoku", "Hokkaido", "Honshu"],
-      "question": "Sur laquelle des grandes îles du Japon se trouve le mont Fuji ?"
+      "options": ["Tuvalu", "Fidji", "Samoa", "Kiribati"],
+      "question": "Quel pays insulaire du Pacifique est traversé à la fois par l'équateur et par le méridien 180° ?"
     },
     {
       "answer": 3,
@@ -295,10 +300,10 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Le lac Ladoga, près de Saint-Pétersbourg, couvre environ 17 700 km² et compte quelque 660 îles.",
+      "explanation": "Des centaines d'espèces de cichlidés colorés y vivent, presque toutes introuvables ailleurs ; beaucoup de cichlidés d'aquarium viennent de ce lac.",
       "id": "geo-0056",
-      "options": ["Lac Ladoga", "Lac Vänern", "Lac Léman", "Lac Onega"],
-      "question": "Sans compter la mer Caspienne, quel est le plus grand lac d'Europe ?"
+      "options": ["Lac Malawi", "Lac Victoria", "Lac Tchad", "Lac Volta"],
+      "question": "Quel lac africain abrite plus d'espèces de poissons que tout autre lac sur Terre ?"
     },
     {
       "answer": 2,
@@ -536,10 +541,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Fondée en 1804, Hobart est la deuxième plus ancienne capitale d'Australie et une porte d'entrée des expéditions antarctiques.",
+      "explanation": "Elle s'étend sur environ 30 000 km de l'Alaska à l'Argentine, mais environ 100 km de marais et de forêt tropicale entre le Panama et la Colombie n'ont aucune route.",
       "id": "geo-0083",
-      "options": ["Devonport", "Hobart", "Launceston", "Darwin"],
-      "question": "Quelle est la capitale de l'État australien de Tasmanie ?"
+      "options": [
+        "Route transsibérienne",
+        "Route panaméricaine",
+        "Route 66",
+        "Route de la soie"
+      ],
+      "question": "Le bouchon du Darién, une portion de jungle sans route, est la seule interruption de quelle route ?"
     },
     {
       "answer": 3,
@@ -721,10 +731,15 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Suva se trouve sur la plus grande île, Viti Levu ; beaucoup de visiteurs atterrissent plutôt à Nadi, de l'autre côté de l'île.",
+      "explanation": "Son bassin s'étendant des deux côtés de l'équateur, une partie est toujours en saison des pluies ; c'est aussi le fleuve le plus profond mesuré, plus de 220 m.",
       "id": "geo-0093",
-      "options": ["Lautoka", "Nadi", "Apia", "Suva"],
-      "question": "Quelle est la capitale des Fidji ?"
+      "options": [
+        "Tropique du Cancer",
+        "Méridien de Greenwich",
+        "Tropique du Capricorne",
+        "Équateur"
+      ],
+      "question": "Le Congo est le seul grand fleuve à traverser deux fois quelle ligne ?"
     },
     {
       "answer": 1,
@@ -771,10 +786,15 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Le mont Kinabalu culmine à 4 095 m dans l'État malaisien de Sabah et abrite des milliers d'espèces végétales, dont de nombreuses orchidées.",
+      "explanation": "Les orages y éclatent pendant des heures environ 140 à 160 nuits par an au-dessus de ce lac vénézuélien ; les marins se servaient autrefois de cette lueur comme d'un phare naturel.",
       "id": "geo-0094",
-      "options": ["Java", "Bornéo", "Sumatra", "Célèbes"],
-      "question": "Le mont Kinabalu, l'un des plus hauts sommets d'Asie du Sud-Est, se trouve sur quelle île ?"
+      "options": [
+        "Lac Titicaca",
+        "Lac Maracaibo",
+        "Lac Nicaragua",
+        "Lac Atitlán"
+      ],
+      "question": "Au-dessus de quel lac l'« éclair du Catatumbo » donne-t-il la plus forte densité de foudre au monde ?"
     },
     {
       "answer": 0,
@@ -848,24 +868,24 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Elles se trouvent dans la mer d'Andaman, où des îles calcaires escarpées surgissent d'une eau turquoise.",
+      "explanation": "Son eau est presque dix fois plus salée que l'océan, et son rivage, à environ 430 m sous le niveau de la mer, est la terre émergée la plus basse du monde.",
       "id": "geo-0090",
-      "options": ["Thaïlande", "Cambodge", "Laos", "Birmanie"],
-      "question": "Les îles de Phuket et de Ko Phi Phi se trouvent dans quel pays ?"
+      "options": [
+        "Flotter sans effort",
+        "Respirer sous l'eau",
+        "Marcher sur l'eau",
+        "Voir le fond de la mer"
+      ],
+      "question": "La mer Morte est si salée qu'on peut y faire quoi ?"
     },
     {
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Le golfe de Botnie est si peu salé qu'il gèle en hiver, et les terres qui l'entourent se soulèvent encore depuis la dernière glaciation.",
+      "explanation": "Le sanskrit « Sindhu » est devenu « Hindu » en persan et « Indos » en grec, et les Romains appelaient « India » tout le pays au-delà du fleuve.",
       "id": "geo-0102",
-      "options": [
-        "Skagerrak",
-        "Golfe de Riga",
-        "Golfe de Finlande",
-        "Golfe de Botnie"
-      ],
-      "question": "Quel golfe s'étend entre la Suède et la Finlande ?"
+      "options": ["Gange", "Brahmapoutre", "Narmada", "Indus"],
+      "question": "Le nom « Inde » vient du nom de quel fleuve ?"
     },
     {
       "answer": 3,
@@ -907,10 +927,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Le détroit de Malacca est l'une des voies maritimes les plus fréquentées du monde ; il relie l'océan Indien au Pacifique.",
+      "explanation": "Les Samoa sont passées directement du jeudi au samedi pour aligner leur semaine de travail sur celle de leurs grands partenaires commerciaux, l'Australie et la Nouvelle-Zélande.",
       "id": "geo-0103",
-      "options": ["Célèbes", "Bornéo", "Java", "Sumatra"],
-      "question": "Le détroit de Malacca sépare la péninsule Malaise de quelle île ?"
+      "options": ["Fidji", "Tonga", "Tuvalu", "Samoa"],
+      "question": "Quel pays du Pacifique a entièrement sauté le 30 décembre 2011 en passant de l'autre côté de la ligne de changement de date ?"
     },
     {
       "answer": 3,
@@ -1928,10 +1948,10 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Un poisson-lune Mola alexandrini trouvé au large des Açores pesait 2 744 kg, et une femelle de môle commun peut porter environ 300 millions d'œufs.",
+      "explanation": "Les mâles collectent plumes, fleurs et, de plus en plus, bouchons et pailles pour impressionner les femelles, qui visitent plusieurs berceaux avant de choisir.",
       "id": "nat-0100",
-      "options": ["Thon rouge", "Makaire noir", "Mérou géant", "Poisson-lune"],
-      "question": "À quel type de poisson appartient le plus lourd poisson osseux jamais mesuré ?"
+      "options": ["Rouge", "Jaune", "Blanc", "Bleu"],
+      "question": "Les jardiniers satinés mâles décorent leur aire de parade surtout avec des objets de quelle couleur ?"
     },
     {
       "answer": 1,
@@ -2010,15 +2030,15 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Le mâle est le paon, la femelle la paonne ; les mâles secouent leur traîne en faisant un bruit de crécelle pendant la parade.",
+      "explanation": "La sentinelle grimpe sur un point élevé et émet un petit cri régulier tant que tout va bien ; si elle repère un prédateur, elle donne l'alerte et tous filent se mettre à l'abri.",
       "id": "nat-0110",
       "options": [
-        "Seulement les poussins",
-        "La femelle",
-        "Les deux autant",
-        "Le mâle"
+        "Il dort dans le terrier",
+        "Il creuse un faux trou",
+        "Il rapporte de l'eau",
+        "Il monte la garde"
       ],
-      "question": "Chez les paons, lequel porte la longue traîne colorée ?"
+      "question": "Que fait souvent un membre d'un groupe de suricates pendant que les autres cherchent à manger ?"
     },
     {
       "answer": 1,
@@ -2498,10 +2518,10 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "L'Union astronomique internationale a fixé les 88 constellations et leurs limites dans les années 1920.",
+      "explanation": "La Croix du Sud est la plus petite des 88 constellations, et les marins s'en servent depuis longtemps pour trouver la direction du sud.",
       "id": "sci-0047",
-      "options": ["112", "88", "64", "48"],
-      "question": "Combien de constellations sont officiellement reconnues par les astronomes ?"
+      "options": ["Orion", "Croix du Sud", "Grande Ourse", "Scorpion"],
+      "question": "Quelle constellation figure sur les drapeaux de l'Australie, de la Nouvelle-Zélande, du Brésil et des Samoa ?"
     },
     {
       "answer": 1,
