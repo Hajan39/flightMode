@@ -1,0 +1,2454 @@
+{
+  "id": "pack-004",
+  "lang": "ko",
+  "questions": [
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "관 속에서 도는 나선은 지금도 물과 곡식을 옮기는 데 쓰이고, 물고기가 다치지 않게 만든 펌프에도 쓰여요.",
+      "id": "inv-0022",
+      "options": ["금의 무게 재기", "곡식 빻기", "물 끌어올리기", "시간 재기"],
+      "question": "아르키메데스의 나선 양수기는 무엇을 하려고 고안되었나요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "사용자는 작은 가게에서 현금을 전자 화폐로 바꿔요. 3년 만에 케냐에서 이용자가 약 900만 명이 되었는데, 은행 계좌가 없는 사람이 많았어요.",
+      "id": "inv-0050",
+      "options": ["나이지리아", "남아공", "케냐", "인도"],
+      "question": "간단한 휴대 전화로 수백만 명이 문자 메시지로 돈을 보낼 수 있게 한 엠페사는 2007년 어느 나라에서 시작되었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "조르주 드 메스트랄은 우엉 열매를 현미경으로 관찰하다가 고리에 걸리는 아주 작은 갈고리를 발견했어요.",
+      "id": "inv-0044",
+      "options": ["리히텐슈타인", "노르웨이", "스웨덴", "스위스"],
+      "question": "벨크로는 개털에 달라붙은 우엉 열매에서 영감을 얻었어요. 발명가는 어느 나라 사람인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "조지 이스트먼은 K라는 글자를 좋아했고 어느 언어로든 발음하기 쉬운 이름을 원해서 코닥이라는 이름을 골랐어요.",
+      "id": "inv-0053",
+      "options": ["라이카", "니콘", "캐논", "코닥"],
+      "question": "1888년 '버튼만 누르세요, 나머지는 저희가 합니다'라는 광고 문구와 함께 나온 카메라는 어느 회사 제품인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "볼보의 엔지니어 닐스 볼린이 설계했고, 회사는 다른 자동차 회사들이 이 특허를 무료로 쓸 수 있게 했어요.",
+      "id": "inv-0027",
+      "options": ["포드", "메르세데스-벤츠", "볼보", "사브"],
+      "question": "1959년 현대식 3점식 안전벨트를 처음 도입한 자동차 회사는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "'레이더'라는 이름은 원래 '전파 탐지 및 거리 측정(radio detection and ranging)'의 약자였어요.",
+      "id": "inv-0020",
+      "options": ["자기장", "전파", "적외선", "음파"],
+      "question": "레이더는 무엇을 이용해 물체를 탐지하나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "이 시제품은 바닥에 금속 바퀴 두 개, 위에 버튼 하나가 달려 있었어요.",
+      "id": "inv-0062",
+      "options": ["강철", "플라스틱", "고무", "나무"],
+      "question": "1964년 더글러스 엥겔바트가 만든 첫 컴퓨터 마우스의 몸체는 무엇으로 되어 있었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "자카르의 천공 카드는 배비지에게, 그리고 나중에는 초기 컴퓨터에 영감을 주었어요.",
+      "id": "inv-0046",
+      "options": ["놋쇠 톱니바퀴", "자기 테이프", "나무 못", "천공 카드"],
+      "question": "1804년의 자카르 직기는 무엇으로 직물의 무늬를 제어했나요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "덴소 웨이브가 자동차 부품을 추적하려고 만들었어요. QR은 '빠른 응답(quick response)'을 뜻해요.",
+      "id": "inv-0055",
+      "options": ["일본", "중국", "미국", "한국"],
+      "question": "QR 코드는 1994년 어느 나라에서 발명되었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "최초의 지하철 열차는 증기 기관차가 끌었어요. 유럽 대륙 최초의 전기 지하철은 1896년 부다페스트에서 개통했어요.",
+      "id": "inv-0023",
+      "options": ["파리", "부다페스트", "뉴욕", "런던"],
+      "question": "1863년 세계 최초의 지하철이 개통한 도시는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "뤼미에르 형제의 초기 영화 중에는 기차가 역에 들어오는 짧은 장면이 있는데, 당시 관객들은 깜짝 놀랐어요.",
+      "id": "inv-0017",
+      "options": ["프랑스", "영국", "미국", "독일"],
+      "question": "1895년 뤼미에르 형제가 그 유명한 첫 공개 영화 상영회를 연 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "화산재로 만든 로마의 방파제는 약 2,000년 동안 바닷물을 견디며 남아 있어요.",
+      "id": "inv-0048",
+      "options": ["빻은 조개껍데기", "화산재", "동물의 피", "바다 소금"],
+      "question": "로마의 콘크리트가 물속에서도 굳을 수 있게 해 준 재료는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "코끼리 속에 숨긴 물탱크에서 뜨개가 가라앉으면, 30분마다 인형과 새가 움직이고 북이 울렸어요.",
+      "id": "inv-0083",
+      "options": ["증기", "물", "모래", "태엽"],
+      "question": "1206년의 책에 실린 알자자리의 '코끼리 시계'는 무엇으로 움직였나요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "이진법은 0과 1만 쓰는데, 이는 전자 스위치의 '꺼짐'과 '켜짐' 상태와 맞아떨어져요.",
+      "id": "inv-0024",
+      "options": ["로마 숫자", "이진법", "12진법", "10진법"],
+      "question": "컴퓨터는 어떤 수 체계로 데이터를 저장하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "나무판을 깎아 찍은 이 책은 중국 둔황 근처의 동굴에서 발견되었고, 지금은 영국 도서관에 있어요.",
+      "id": "inv-0085",
+      "options": ["스텐실", "금속 활자", "목판", "동판"],
+      "question": "연대가 적힌 가장 오래된 인쇄본인 868년의 『금강경』은 무엇으로 인쇄했나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "에디슨이 처음 녹음한 말은 원통에 감은 주석박에 남긴 동요 〈메리에게는 작은 양이 있었네〉였어요.",
+      "id": "inv-0012",
+      "options": [
+        "알렉산더 그레이엄 벨",
+        "에밀 베를리너",
+        "니콜라 테슬라",
+        "토머스 에디슨"
+      ],
+      "question": "1877년 소리를 녹음하는 장치인 축음기를 선보인 발명가는 누구인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "패러데이는 정규 교육을 거의 받지 못했고, 험프리 데이비의 조수로 일을 시작했어요.",
+      "id": "inv-0047",
+      "options": [
+        "마이클 패러데이",
+        "켈빈 경",
+        "험프리 데이비",
+        "제임스 클러크 맥스웰"
+      ],
+      "question": "1831년 최초의 발전기를 만든 영국의 과학자는 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "〈르 그라의 창문에서 본 풍경〉은 노출에 몇 시간, 어쩌면 며칠이 걸렸을지도 몰라요.",
+      "id": "inv-0052",
+      "options": [
+        "루이 다게르",
+        "니세포르 니에프스",
+        "조지 이스트먼",
+        "헨리 폭스 탤벗"
+      ],
+      "question": "1826년 무렵, 지금까지 남아 있는 가장 오래된 카메라 사진을 찍은 사람은 누구인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "이론상으로는 위성 3개로 위치를 알 수 있지만, 수신기의 시계를 보정하려면 네 번째 위성이 필요해요.",
+      "id": "inv-0054",
+      "options": ["최소 4개", "최소 6개", "최소 3개", "최소 2개"],
+      "question": "GPS 수신기가 3차원 위치를 정하려면 위성 몇 개의 신호를 받아야 하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "그의 악기는 약 650점이 남아 있고, 최고의 스트라디바리우스 바이올린은 세계에서 가장 값비싼 악기에 속해요.",
+      "id": "inv-0030",
+      "options": ["금관 악기", "시계", "현악기", "피아노"],
+      "question": "안토니오 스트라디바리는 어떤 악기를 만든 것으로 유명한가요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "최초의 안경은 아마도 이탈리아 피사나 그 근처에서 만들어졌고, 사람들이 글을 읽는 데 도움을 줬어요.",
+      "id": "inv-0071",
+      "options": ["영국", "독일", "이탈리아", "중국"],
+      "question": "1290년 무렵 최초의 안경이 만들어진 곳은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "페니키아 문자는 22자로 모두 자음이었어요. 그리스인이 여기에 모음 글자를 더했어요.",
+      "id": "lang-0029",
+      "options": [
+        "이집트 민중 문자",
+        "산스크리트 문자",
+        "쐐기 문자",
+        "페니키아 문자"
+      ],
+      "question": "그리스 문자, 라틴 문자, 아랍 문자의 조상인 고대 문자는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "타이노어는 1492년 콜럼버스가 만난 사람들이 쓰던 언어예요. 'barbecue'와 'canoe'도 카리브해 언어에서 왔어요.",
+      "id": "lang-0058",
+      "options": ["나와틀어", "케추아어", "과라니어", "타이노어"],
+      "question": "'hurricane'(허리케인)과 'hammock'(해먹)이라는 말을 세계에 전한 카리브해의 언어는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "브라질은 포르투갈어를 쓰는 가장 큰 나라로, 포르투갈보다 화자가 훨씬 많아요.",
+      "id": "lang-0007",
+      "options": ["스페인어", "이탈리아어", "포르투갈어", "프랑스어"],
+      "question": "브라질의 공용어는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "이 단어는 카렐 차페크의 1920년 희곡 『R.U.R.』에 처음 나왔어요. '로보타'는 강제 노동을 뜻하며, 그의 형 요제프가 이 단어를 제안했어요.",
+      "id": "lang-0002",
+      "options": ["폴란드어", "체코어", "독일어", "러시아어"],
+      "question": "'로봇'이라는 단어는 어느 언어에서 세상에 알려졌나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "나와틀어는 아스테카인의 언어였어요. '토마틀'은 토마토가, '아와카틀'은 아보카도가 되었어요.",
+      "id": "lang-0024",
+      "options": ["케추아어", "타이노어", "과라니어", "나와틀어"],
+      "question": "'토마토', '아보카도', '초콜릿'은 어느 언어에서 유럽 언어로 들어왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "1730년대에 완성된 높이 약 27m의 '브리하트 삼라트 얀트라'는 현지 시각을 약 2초 이내로 알려 줄 수 있어요.",
+      "id": "inv-0096",
+      "options": ["해시계", "망원경", "나침반", "물시계"],
+      "question": "인도 자이푸르의 잔타르 만타르 천문대에는 돌로 만든 세계 최대의 무엇이 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "일본어 '에'(그림)와 '모지'(글자)를 합친 말이에요. 영어 'emotion'과 비슷한 것은 순전히 우연이에요.",
+      "id": "lang-0026",
+      "options": ["한국어", "일본어", "영어", "광둥어"],
+      "question": "'이모지'라는 이름은 어느 언어에서 빌려 왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "볼타는 소금물에 적신 천을 사이에 두고 아연판과 구리판을 쌓았어요. 전압의 단위 볼트는 그의 이름을 땄어요.",
+      "id": "inv-0039",
+      "options": [
+        "앙드레마리 앙페르",
+        "마이클 패러데이",
+        "루이지 갈바니",
+        "알레산드로 볼타"
+      ],
+      "question": "1800년 최초의 전지인 '전퇴'를 만든 사람은 누구인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "아페르의 연구는 긴 여정에 쓸 더 나은 식량을 원하던 프랑스 정부의 상을 받았어요.",
+      "id": "inv-0076",
+      "options": [
+        "동결 건조",
+        "통에 소금 절이기",
+        "가열한 병에 밀봉",
+        "장작불 훈제"
+      ],
+      "question": "1810년 무렵 니콜라 아페르가 개척한 식품 보존법은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "'오랑'은 사람, '후탄'은 숲을 뜻해요. 오랑우탄은 사람과 DNA의 약 97%가 같아요.",
+      "id": "lang-0028",
+      "options": [
+        "붉은 원숭이",
+        "숲의 사람",
+        "나무 타는 자",
+        "우듬지를 오르는 자"
+      ],
+      "question": "말레이어로 '오랑우탄'은 무슨 뜻인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "3M의 화학자 스펜서 실버가 1968년 접착력이 약한 풀을 만들었고, 나중에 한 동료가 찬송가 책의 책갈피를 고정하는 데 썼어요.",
+      "id": "inv-0100",
+      "options": [
+        "다시 붙는 약한 풀",
+        "방수 종이",
+        "강력 순간접착제",
+        "빨리 마르는 잉크"
+      ],
+      "question": "포스트잇은 무엇을 우연히 발견한 데서 나왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "1866년에는 대서양 해저에 깔린 케이블이 유럽과 북아메리카를 전신으로 이었어요.",
+      "id": "inv-0032",
+      "options": ["전선", "전파", "빛줄기", "압축 공기관"],
+      "question": "초기 전기 전신은 무엇을 따라 메시지를 보냈나요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "어부들은 바다에서 큰 파도를 느끼지 못했는데도 돌아와 보니 항구가 부서져 있었어요.",
+      "id": "lang-0021",
+      "options": ["땅의 흔들림", "성난 바다", "항구의 파도", "큰 물"],
+      "question": "일본어 '쓰나미'는 글자 그대로 무슨 뜻인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "산스크리트어 '샤르카라'가 페르시아어 '샤카르', 아랍어 '수카르'가 되었어요. 인도에서는 4세기 무렵 이미 결정 설탕을 만들었어요.",
+      "id": "inv-0068",
+      "options": ["중국", "인도", "이집트", "브라질"],
+      "question": "'sugar'(설탕)라는 말과 사탕수수 즙을 결정으로 만드는 기술은 모두 어느 나라에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "'위대한 군주'라는 뜻의 '다이쿤'은 외국인들이 일본의 쇼군을 부를 때 쓰던 말이에요.",
+      "id": "lang-0059",
+      "options": ["태국어", "광둥어", "일본어", "베트남어"],
+      "question": "영어 'tycoon'(거물)은 어느 언어의 옛 존칭에서 빌려 왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "운영자들은 언덕 위 탑에 달린 나무 팔의 위치를 망원경으로 읽어, 프랑스 전역에 메시지를 전달했어요.",
+      "id": "inv-0095",
+      "options": ["전서구", "전선", "햇빛 반사 거울", "탑 위의 신호 팔"],
+      "question": "1790년대 프랑스에서 클로드 샤프의 통신망은 무엇으로 메시지를 보냈나요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "'퍼핑 빌리'라는 별명이 붙은 부스의 기계는 건물 밖에 세워 두고 긴 호스를 창문으로 들여보내 썼어요.",
+      "id": "inv-0072",
+      "options": ["진공청소기", "잔디 깎는 기계", "세탁기", "냉장고"],
+      "question": "1901년 휴버트 세실 부스가 만든, 말이 끄는 발명품은 어떤 가전제품의 초기 형태인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "간단한 잠망경은 관의 양쪽 끝에 45° 각도로 놓인 거울 두 개로 이루어져 있어요.",
+      "id": "inv-0033",
+      "options": ["무선 신호", "렌즈만", "거울이나 프리즘", "자기 센서 배열"],
+      "question": "잠망경은 장애물 너머를 보려고 무엇을 이용하나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "헝가리어의 먼 친척으로는 핀란드어와 에스토니아어, 그리고 서시베리아에서 쓰는 작은 언어들이 있어요.",
+      "id": "lang-0060",
+      "options": ["튀르크어족", "우랄어족", "게르만어족", "슬라브어족"],
+      "question": "헝가리어는 어느 어족에 속하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "듀어는 특허를 내지 않았어요. 나중에 독일의 한 회사가 이를 '서모스'라는 이름으로 팔았어요.",
+      "id": "inv-0074",
+      "options": [
+        "화학 물질 차갑게 보관",
+        "살아 있는 물고기 운반",
+        "뜨거운 커피 보관",
+        "수프 운반"
+      ],
+      "question": "제임스 듀어는 1892년 무엇을 위해 보온병(진공병)을 발명했나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "화덕에서 나온 뜨거운 공기가 작은 돌기둥 위에 얹은 바닥 아래 공간으로 흘렀어요.",
+      "id": "inv-0079",
+      "options": ["임플루비움", "수도교", "아트리움", "하이포코스트"],
+      "question": "로마인은 바닥을 아래에서 데우려고 무엇을 썼나요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "흔히 여성으로 이루어진 인간 컴퓨터 팀이 천문학, 항해표, 초기 우주 비행에 필요한 계산을 했어요.",
+      "id": "inv-0045",
+      "options": ["주판", "계산하는 사람", "태엽식 덧셈 기계", "시계의 일종"],
+      "question": "기계가 그 이름을 갖기 전, '컴퓨터'라는 말은 무엇을 뜻했나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "인구 약 560만 명인 핀란드에는 사우나가 약 300만 개 있고, 이 단어는 전 세계 언어에서 쓰여요.",
+      "id": "lang-0008",
+      "options": ["핀란드어", "러시아어", "에스토니아어", "스웨덴어"],
+      "question": "'사우나'라는 말을 세계에 전한 언어는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "표준 중국어의 모어 화자는 10억 명 가까이 돼요. 제2 언어로 더 널리 배우는 언어는 영어예요.",
+      "id": "lang-0001",
+      "options": ["스페인어", "표준 중국어", "현대 표준 아랍어", "힌디어"],
+      "question": "모어 화자가 세계에서 가장 많은 언어는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "화면은 빨강, 초록, 파랑 빛의 밝기를 조합해 수백만 가지 색을 보여 줄 수 있어요.",
+      "id": "inv-0034",
+      "options": [
+        "빨강, 초록, 파랑",
+        "주황, 보라, 초록",
+        "청록, 자홍, 노랑",
+        "빨강, 노랑, 파랑"
+      ],
+      "question": "일반적인 화면의 픽셀 하나하나는 어떤 세 가지 색의 빛을 섞나요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "은행 카드가 아직 없어서, 최초의 ATM은 특수한 종이 수표를 받고 지폐를 내주었어요.",
+      "id": "inv-0077",
+      "options": ["파리", "프랑크푸르트", "런던", "뉴욕"],
+      "question": "1967년 최초의 현금 인출기(ATM)가 설치된 곳은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "오하이오에서 스캔된 이 과일 맛 껌 한 통은 지금 박물관에 전시되어 있어요.",
+      "id": "inv-0094",
+      "options": ["수프 통조림", "시리얼 한 상자", "식빵 한 봉지", "껌 한 통"],
+      "question": "1974년 UPC 바코드를 스캔해 처음 팔린 상품은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "'푸른 이' 하랄 고름손 왕은 덴마크 부족들을 통일했어요. 로고는 그의 이니셜을 북유럽 룬 문자로 합친 모양이에요.",
+      "id": "inv-0067",
+      "options": ["노르웨이", "덴마크", "아이슬란드", "스웨덴"],
+      "question": "블루투스 기술은 어느 나라 왕의 이름을 땄나요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "정확한 시계가 있으면 선원은 현지 정오와 출발 항구의 시각을 비교할 수 있어요. 1시간 차이는 경도 15°에 해당해요.",
+      "id": "inv-0070",
+      "options": ["속도 측정용 로그", "육분의", "크로노미터", "기압계"],
+      "question": "존 해리슨의 어떤 발명품이 바다에서 경도를 알아내는 문제를 해결했나요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "쇼는 밤에 고양이 눈에 빛이 반사되는 것을 보고 아이디어를 얻었어요. 이 반사판은 차가 지나가면 저절로 깨끗해져요.",
+      "id": "inv-0065",
+      "options": ["광산", "배", "도로", "자전거"],
+      "question": "퍼시 쇼가 1934년 발명한 '고양이 눈'은 어디에 쓰이나요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "멘로파크에 있던 에디슨의 연구소는 발명만을 위한 최초의 연구소 중 하나였어요.",
+      "id": "inv-0031",
+      "options": [
+        "알렉산더 그레이엄 벨",
+        "토머스 에디슨",
+        "니콜라 테슬라",
+        "벤저민 프랭클린"
+      ],
+      "question": "미국 특허를 1,000개 넘게 가진 발명가는 누구인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "미국의 한 연구소 공개 행사에서 오실로스코프 화면으로 돌아간 이 게임은 가장 초기의 비디오 게임 중 하나예요.",
+      "id": "inv-0098",
+      "options": [
+        "공 던지는 기계",
+        "테니스 득점 규칙",
+        "초기 비디오 게임",
+        "라켓 디자인"
+      ],
+      "question": "1958년에 만들어진 '테니스 포 투'는 무엇이었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "감자를 밖에 두어 밤에는 얼리고 낮에는 녹인 뒤, 발로 밟아 물기를 짜내요. 말린 추뇨는 몇 년 동안 보관할 수 있어요.",
+      "id": "inv-0097",
+      "options": [
+        "불 위의 연기",
+        "바다 소금",
+        "뜨거운 진흙 화덕",
+        "밤 서리와 햇볕"
+      ],
+      "question": "안데스의 농부들은 무엇을 이용해 고대의 동결 건조 감자 '추뇨'를 만드나요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "베이클라이트는 최초의 완전 합성 플라스틱으로, 전화기, 라디오, 장신구에 쓰였어요.",
+      "id": "inv-0073",
+      "options": ["고무의 일종", "초기 플라스틱", "합금", "유리의 일종"],
+      "question": "1907년에 발명된 베이클라이트는 무엇이었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "샴푸는 원래 머리 마사지를 뜻했어요. 19세기 영국의 목욕탕에서 사케 딘 마호메드가 선보였어요.",
+      "id": "lang-0057",
+      "options": [
+        "비누 거품",
+        "머리를 감다",
+        "따뜻한 물로 헹구다",
+        "누르다, 주무르다"
+      ],
+      "question": "'shampoo'(샴푸)라는 말은 무슨 뜻의 힌디어 단어에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "데바나가리 문자에서는 대부분의 글자가 단어 위쪽을 따라 그은 가로줄에 매달려 있어요.",
+      "id": "lang-0030",
+      "options": [
+        "데바나가리 문자",
+        "타밀 문자",
+        "벵골 문자",
+        "페르시아-아랍 문자"
+      ],
+      "question": "힌디어를 쓸 때 사용하는 문자는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "최초의 캡슐 호텔은 오사카에서 문을 열었어요. 캡슐 하나는 겨우 앉을 수 있을 만한 크기로, 조명과 작은 TV가 있어요.",
+      "id": "inv-0099",
+      "options": ["한국", "일본", "중국", "싱가포르"],
+      "question": "1979년 최초의 캡슐 호텔이 문을 연 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "독일 남부의 동굴에서 새 뼈와 매머드 상아로 만든 피리가 발견되었어요.",
+      "id": "inv-0069",
+      "options": ["하프", "피리", "북", "딸랑이"],
+      "question": "약 4만 년 된 뼈로 만든, 가장 오래된 악기 중 하나로 알려진 것은 어떤 종류의 악기인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "연필에 납이 들어간 적은 없어요. 한때 흑연을 납의 일종으로 여긴 데서 영어 이름 'lead'(납)가 붙었어요.",
+      "id": "inv-0029",
+      "options": ["흑연과 점토", "납", "숯가루와 밀랍", "숯"],
+      "question": "연필심은 실제로 무엇으로 만드나요?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "돌아가는 원통의 틈새로 들여다보면 띠에 그린 그림들이 움직이는 것처럼 보였어요.",
+      "id": "inv-0078",
+      "options": [
+        "오르골",
+        "휴대용 망원경",
+        "애니메이션 장난감",
+        "날씨 측정기"
+      ],
+      "question": "19세기에 인기를 끈 조이트로프는 어떤 장치인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "프리드리히 프뢰벨은 아이들이 정원의 식물처럼 자라는 모습을 그리며 1840년 이 말을 만들었어요.",
+      "id": "lang-0004",
+      "options": ["네덜란드어", "덴마크어", "스웨덴어", "독일어"],
+      "question": "'아이들의 정원'이라는 뜻의 'kindergarten'(유치원)은 어느 언어에서 빌려 온 말인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "아르헨티나는 그의 생일인 9월 29일을 '발명가의 날'로 기념해요. 1945년 마르셀 비크가 이 설계의 권리를 사들였고, 이는 빅 볼펜으로 이어졌어요.",
+      "id": "inv-0093",
+      "options": ["스페인", "브라질", "이탈리아", "아르헨티나"],
+      "question": "볼펜의 선구자인 헝가리 태생의 비로 라슬로는 어느 나라로 옮겨 간 뒤 1943년 특허를 냈나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "일본어는 5세기 무렵 한자를 받아들였어요. 한국어에서는 '한자'라고 불러요.",
+      "id": "lang-0054",
+      "options": ["태국어", "베트남어", "한국어", "일본어"],
+      "question": "한자를 '간지(kanji)'라고 부르는 언어는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "스와힐리어는 수천만 명이 제1 언어나 제2 언어로 쓰며, 아프리카 연합의 공용어이기도 해요.",
+      "id": "lang-0013",
+      "options": ["동아프리카", "남아시아", "서아프리카", "북아프리카"],
+      "question": "스와힐리어는 어느 지역의 주요 언어인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "아랍어 '사흐라'는 사막을 뜻해요. 그래서 '사하라 사막'은 말 그대로 '사막 사막'이에요.",
+      "id": "lang-0051",
+      "options": ["사막", "태양", "모래", "모래 바다"],
+      "question": "아랍어로 '사하라'는 무슨 뜻인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "야누스는 과거를 돌아보는 얼굴과 미래를 내다보는 얼굴, 두 얼굴을 가진 신이라서 한 해의 시작에 잘 어울려요.",
+      "id": "lang-0017",
+      "options": ["유노", "유피테르", "마르스", "야누스"],
+      "question": "영어 'January'(1월)는 어느 로마 신의 이름을 땄나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "유럽인이 오스트레일리아에 닿기 훨씬 전부터 지도 제작자들이 상상한 남쪽 대륙 '테라 아우스트랄리스'에서 왔어요.",
+      "id": "lang-0020",
+      "options": ["남쪽의 땅", "붉은 흙의 섬", "햇살의 땅", "붉은 땅"],
+      "question": "라틴어로 '오스트레일리아'라는 이름은 무슨 뜻인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "바스크어는 '고립어'예요. 라틴어에서 나온 언어들이 들어오기 전부터 이 지역에서 쓰였어요.",
+      "id": "lang-0033",
+      "options": ["안도라", "포르투갈", "프랑스", "이탈리아"],
+      "question": "다른 어떤 현존 언어와도 관계가 없는 바스크어는 스페인과 어느 나라에서 쓰이나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "루마니아어는 로마의 다키아 속주에서 쓰던 라틴어에서 나와서, 이탈리아어와 스페인어의 친척이에요.",
+      "id": "lang-0012",
+      "options": ["발트어파", "로망스어파", "슬라브어파", "게르만어파"],
+      "question": "루마니아어는 어느 어파에 속하나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "9세기 수학자 알콰리즈미가 쓴 책 제목의 '알자브르'에서 왔어요.",
+      "id": "lang-0023",
+      "options": ["라틴어", "아랍어", "페르시아어", "그리스어"],
+      "question": "'algebra'(대수학)라는 말은 어느 언어로 쓰인 책 제목에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "불행이 별과 행성의 불길한 위치에서 온다는 옛 믿음이 담겨 있어요.",
+      "id": "lang-0062",
+      "options": ["나쁜 별", "어두운 하늘", "큰불", "부서진 배"],
+      "question": "영어 'disaster'(재앙)는 무슨 뜻의 말에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "핀란드어와 에스토니아어는 핀어군 언어예요. 둘 다 이웃한 스웨덴어, 러시아어, 라트비아어와는 관계가 없어요.",
+      "id": "lang-0035",
+      "options": ["리투아니아어", "러시아어", "에스토니아어", "스웨덴어"],
+      "question": "핀란드어와 가장 가까운 언어는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "라틴어는 지금도 교황청의 공용어이고, 교황청은 현대 라틴어 낱말 사전까지 펴내요.",
+      "id": "lang-0011",
+      "options": ["히브리어", "고대 그리스어", "아람어", "라틴어"],
+      "question": "바티칸 시국의 현금 인출기에서는 어느 고대 언어로 된 안내문을 읽을 수 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "들판의 신 판은 외딴곳을 지나는 나그네에게 갑작스러운 공포를 일으킨다고 여겨졌어요.",
+      "id": "lang-0044",
+      "options": ["헤르메스", "아레스", "디오니소스", "판"],
+      "question": "영어 'panic'(공황)이라는 말의 유래가 된 그리스 신은 누구인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "스위스와 리히텐슈타인에서는 독일어를 쓸 때 ß 대신 'ss'를 써요.",
+      "id": "lang-0018",
+      "options": ["네덜란드어", "폴란드어", "독일어", "덴마크어"],
+      "question": "'에스체트'라고 부르는 글자 ß를 쓰는 언어는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "로마인들은 힘을 줄 때 움직이는 근육이 피부 밑에서 꿈틀대는 작은 쥐 같다고 생각했어요.",
+      "id": "lang-0061",
+      "options": ["매듭진 밧줄", "움직이는 끈", "튼튼한 팔", "작은 쥐"],
+      "question": "영어 'muscle'(근육)은 무슨 뜻의 라틴어에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "아이티 크레올어는 아이티 사람 거의 모두가 쓰며, 프랑스어와 함께 공용어예요.",
+      "id": "lang-0070",
+      "options": ["프랑스어", "포르투갈어", "스페인어", "영어"],
+      "question": "아이티 크레올어는 주로 어떤 언어를 바탕으로 하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "안도라는 카탈루냐어가 유일한 공용어인 세계 유일의 나라예요.",
+      "id": "lang-0045",
+      "options": ["카탈루냐어", "스페인어", "오크어", "프랑스어"],
+      "question": "안도라의 유일한 공용어는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "알파와 베타도 원래 '소'와 '집'을 뜻하는 페니키아 문자에서 빌려 온 것이에요.",
+      "id": "lang-0010",
+      "options": ["히브리 문자", "그리스 문자", "키릴 문자", "라틴 문자"],
+      "question": "영어 'alphabet'(알파벳)이라는 말은 어느 문자의 첫 두 글자에서 왔나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "'아스트론'은 별, '나우테스'는 뱃사람을 뜻해요. 'nautical'(항해의)과 같은 어원이에요.",
+      "id": "lang-0042",
+      "options": ["달 여행자", "별의 뱃사람", "하늘을 걷는 자", "우주 조종사"],
+      "question": "영어 'astronaut'(우주비행사)는 무슨 뜻의 그리스어에서 왔나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "'히마'는 눈, '알라야'는 집이나 거처를 뜻해요.",
+      "id": "lang-0052",
+      "options": ["바람의 집", "눈의 거처", "높은 돌", "세계의 지붕"],
+      "question": "산스크리트어로 '히말라야'는 무슨 뜻인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "이 도시는 1850년대 주석 광부들이 야영지를 차린, 클랑강과 곰박강이 만나는 곳에서 자라났어요.",
+      "id": "lang-0067",
+      "options": ["진흙탕 합류점", "황금 강", "푸른 골짜기", "언덕의 왕도"],
+      "question": "말레이어로 '쿠알라룸푸르'라는 이름은 무슨 뜻인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "네덜란드어 'koekje'는 '작은 케이크'라는 뜻이에요. 뉴암스테르담의 네덜란드 정착민들이 이 말을 들여왔어요.",
+      "id": "lang-0069",
+      "options": ["스웨덴어", "프랑스어", "네덜란드어", "독일어"],
+      "question": "영어 'cookie'(쿠키)는 어느 언어에서 미국 영어로 들어왔나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "독일어 칭호 '카이저'도 같은 이름에서 왔어요.",
+      "id": "lang-0050",
+      "options": ["네로", "카이사르", "콘스탄티누스", "아우구스투스"],
+      "question": "러시아의 칭호 '차르'는 어느 로마인의 이름에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "튀르키예어 '요우르트'는 '걸쭉하게 하다' 또는 '반죽하다'라는 뜻의 동사와 관련이 있어요.",
+      "id": "lang-0027",
+      "options": ["아랍어", "그리스어", "튀르키예어", "불가리아어"],
+      "question": "'요구르트'라는 말은 어느 언어에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "현대 베트남어는 발음 구별 부호가 많이 붙은 라틴 문자를 써요. 성조 부호 다섯 개와 부호 없는 평성을 합쳐 성조가 여섯 개예요.",
+      "id": "lang-0055",
+      "options": ["태국 문자", "크메르 문자", "라틴 문자 기반", "한자"],
+      "question": "오늘날 베트남어는 어떤 문자로 쓰나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "이 말은 고대 그리스·로마의 예술과 학문에 대한 관심이 '다시 태어난' 것을 가리켜요.",
+      "id": "lang-0014",
+      "options": ["황금기", "새로운 빛", "깨어남", "재탄생"],
+      "question": "프랑스어 '르네상스'는 무슨 뜻인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "스웨덴의 많은 직장에는 날마다 피카 시간이 있어요. 이 말은 커피를 뜻하는 옛말의 음절을 장난스럽게 뒤바꾼 거예요.",
+      "id": "lang-0038",
+      "options": ["핀란드어", "노르웨이어", "덴마크어", "스웨덴어"],
+      "question": "커피와 케이크를 즐기는 휴식 시간 '피카'는 어느 언어의 말인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "자음마다 모음 소리에 따라 7가지 형태가 있어서 기호가 200개를 훌쩍 넘어요. 이 문자는 고대 게에즈 문자에서 발전했어요.",
+      "id": "lang-0068",
+      "options": [
+        "낱말 하나",
+        "모음 하나",
+        "자음과 모음의 조합",
+        "개념이나 사물"
+      ],
+      "question": "에티오피아의 암하라어를 적는 문자에서 기호 하나는 무엇을 나타내나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "불카누스는 불과 대장장이 일을 맡은 로마 신이에요. 이탈리아의 불카노섬도 그의 이름을 땄어요.",
+      "id": "lang-0016",
+      "options": ["넵투누스", "마르스", "유피테르", "불카누스"],
+      "question": "영어 'volcano'(화산)는 어느 로마 신의 이름에서 왔나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "튀르키예의 새 라틴 문자에는 ç, ş, ğ, 그리고 점 없는 ı 같은 글자가 더해졌어요.",
+      "id": "lang-0056",
+      "options": ["아르메니아 문자", "라틴 문자", "키릴 문자", "그리스 문자"],
+      "question": "1928년 튀르키예는 아랍 문자를 버리고 어떤 문자로 바꿨나요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "수리남은 1975년까지 네덜란드의 식민지였어요. 대부분의 사람은 현지 크레올어인 스라난 통고도 써요.",
+      "id": "lang-0047",
+      "options": ["영어", "네덜란드어", "스페인어", "포르투갈어"],
+      "question": "남아메리카 수리남의 공용어는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "브라유는 어릴 때 시력을 잃었고, 1829년 스무 살 무렵에 볼록 튀어나온 점으로 된 체계를 발표했어요.",
+      "id": "lang-0037",
+      "options": ["독일", "프랑스", "스위스", "벨기에"],
+      "question": "시각 장애인을 위한 읽기 체계를 만든 루이 브라유는 어느 나라 사람인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "'호라 섹스타'는 해 뜰 때부터 센 여섯 번째 시간, 즉 하루 중 가장 더운 한낮 무렵을 가리켰어요.",
+      "id": "lang-0039",
+      "options": ["조용한 시간", "여섯 번째 시간", "짧은 잠", "오후의 더위"],
+      "question": "스페인어 '시에스타'는 무슨 뜻의 라틴어 표현에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "케추아어는 지금도 안데스에서 수백만 명이 써요. 영어 'llama'와 'condor' 같은 말이 여기에서 왔어요.",
+      "id": "lang-0019",
+      "options": ["케추아어", "과라니어", "아이마라어", "나와틀어"],
+      "question": "잉카 제국의 주요 언어는 무엇이었나요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "아프리카가 훨씬 가까운데도, 1,000여 년 전 동남아시아의 뱃사람들이 마다가스카르에 정착했어요.",
+      "id": "lang-0065",
+      "options": ["잔지바르섬", "스리랑카", "보르네오섬", "시칠리아섬"],
+      "question": "마다가스카르에서 쓰는 말라가시어는 어느 섬의 언어들과 가장 가까운가요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "최초의 탈러는 1520년 무렵 요아힘스탈, 즉 오늘날 체코의 야히모프에서 만들어졌어요.",
+      "id": "lang-0063",
+      "options": ["보헤미아", "티롤", "작센", "바이에른"],
+      "question": "'달러'라는 말은 '탈러'에서 왔어요. 탈러 은화가 처음 만들어진 지역은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "싱가포르의 공용어는 영어, 말레이어, 표준 중국어, 타밀어 네 가지예요.",
+      "id": "lang-0064",
+      "options": ["홍콩", "브루나이", "싱가포르", "마카오"],
+      "question": "타밀어는 인도, 스리랑카, 그리고 어느 도시 국가의 공용어인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "이 이름은 오지브웨어 '미시지비'에서 왔어요. 미시시피강은 미국 32개 주의 일부 지역에서 물을 모아요.",
+      "id": "lang-0066",
+      "options": ["큰 강", "많은 물고기", "흙탕물", "긴 길"],
+      "question": "오지브웨어로 '미시시피'라는 이름은 무슨 뜻인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "'가라'는 '비었다'는 뜻이고 '오케'는 오케스트라를 뜻하는 '오케스토라'의 줄임말이에요. 노래하는 사람 없이 반주만 나와요.",
+      "id": "lang-0025",
+      "options": ["밤의 음악", "노래하는 친구", "빈 관현악단", "즐거운 목소리"],
+      "question": "'가라오케'는 일본어 두 낱말을 합친 말이에요. 글자 그대로의 뜻은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "초기 탐험가들은 이 지역에서 은을 찾기를 바랐어요. 라플라타강('은의 강')의 이름도 비슷한 유래를 가지고 있어요.",
+      "id": "lang-0053",
+      "options": ["구리", "금", "주석", "은"],
+      "question": "'아르헨티나'라는 나라 이름은 어떤 금속을 뜻하는 라틴어에서 왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "아이슬란드 사람들은 700년도 더 전에 쓰인 중세 사가를 지금도 비교적 쉽게 읽을 수 있어요.",
+      "id": "lang-0034",
+      "options": ["노르웨이어", "덴마크어", "스웨덴어", "아이슬란드어"],
+      "question": "바이킹의 언어인 고대 노르드어와 가장 가까운 현대 언어는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "'샤 마트'는 체스와 함께 아랍어로, 그리고 다시 유럽 언어로 전해졌어요.",
+      "id": "lang-0041",
+      "options": [
+        "게임이 끝났다",
+        "왕이 꼼짝 못 한다",
+        "군대가 무너졌다",
+        "여왕이 이겼다"
+      ],
+      "question": "체스 용어 '체크메이트'는 무슨 뜻의 페르시아어에서 왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "이누이트의 카약은 유목이나 고래뼈 뼈대에 바다표범 가죽을 씌워 만들었고, 노 젓는 사람의 몸에 맞게 지었어요.",
+      "id": "lang-0043",
+      "options": ["마오리족", "사미족", "아이누족", "이누이트"],
+      "question": "'카약'이라는 말은 어느 민족의 언어에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "라틴어 '살라리움'은 '살'(소금)과 관련이 있어요. 로마의 급료에 왜 소금이라는 이름이 붙었는지는 아직도 논란이에요.",
+      "id": "lang-0040",
+      "options": ["소금", "빵", "군인", "은"],
+      "question": "영어 'salary'(봉급)는 무엇을 뜻하는 라틴어에서 왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "1957년에 발사된 스푸트니크 1호 덕분에 이 평범한 러시아어 낱말이 세계적으로 유명해졌어요.",
+      "id": "lang-0049",
+      "options": ["쇠공", "하늘의 전령", "밝은 별", "길동무"],
+      "question": "러시아어 '스푸트니크'는 무슨 뜻인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "로만시어는 라틴어에서 나온 언어로, 주로 그라우뷘덴주에서 스위스 인구의 1%도 안 되는 사람들이 써요.",
+      "id": "lang-0046",
+      "options": ["프리울리어", "오크어", "로만시어", "라딘어"],
+      "question": "독일어, 프랑스어, 이탈리아어 말고 스위스의 네 번째 국어는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "데자뷔는 지금 이 순간을 이미 겪어 본 것 같은 묘한 느낌이에요.",
+      "id": "lang-0015",
+      "options": ["이미 본", "두 번 본", "본 적 없는", "꿈에서 본"],
+      "question": "프랑스어 표현 '데자뷔'는 글자 그대로 무슨 뜻인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "이 말은 시드니 일대에서 쓰던 다루그어에서 왔어요. 모든 부메랑이 되돌아오도록 만들어진 것은 아니에요.",
+      "id": "lang-0009",
+      "options": [
+        "파푸아뉴기니 언어",
+        "호주 원주민 언어",
+        "하와이어",
+        "마오리어"
+      ],
+      "question": "'부메랑'이라는 말은 어느 언어 무리에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "아프리칸스어는 17세기 케이프 지역 정착민의 네덜란드어에서 자라났어요. 네덜란드어와 아프리칸스어 화자는 서로 어느 정도 알아들을 수 있어요.",
+      "id": "lang-0048",
+      "options": ["독일어", "포르투갈어", "네덜란드어", "영어"],
+      "question": "남아프리카에서 쓰는 아프리칸스어는 주로 어떤 언어에서 발전했나요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "전설에 따르면 1823년 럭비 스쿨의 학생 윌리엄 웹 엘리스가 공을 손에 들고 달렸다고 해요.",
+      "id": "sport-0009",
+      "options": ["스코틀랜드", "웨일스", "아일랜드", "잉글랜드"],
+      "question": "럭비는 어느 나라의 학교 이름에서 따왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "14개 나라에서 약 240명의 선수가 참가했고, 대회를 위해 대리석으로 된 파나티나이코 경기장을 복원했어요.",
+      "id": "sport-0005",
+      "options": ["파리", "런던", "로마", "아테네"],
+      "question": "1896년 첫 근대 올림픽은 어느 도시에서 열렸나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "세인트앤드루스의 올드 코스는 흔히 '골프의 고향'이라 불리며, 15세기부터 골프를 쳐 온 곳이에요.",
+      "id": "sport-0010",
+      "options": ["잉글랜드", "스코틀랜드", "네덜란드", "아일랜드"],
+      "question": "근대 골프는 어느 나라에서 발전했나요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "1965년 모래사장에서 축구는 금지되었지만 배구 네트는 허용되었던 코파카바나에서 시작되었다고 해요.",
+      "id": "sport-0058",
+      "options": ["리스본", "마이애미", "리우데자네이루", "바르셀로나"],
+      "question": "손을 쓰지 않고 하는 배구인 풋발리는 어느 도시의 해변에서 생겨났나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "분홍색 '말리아 로사'는 1909년 이 대회를 만든 신문 『가제타 델로 스포르트』의 분홍색 종이에 맞춘 색이에요.",
+      "id": "sport-0027",
+      "options": ["초록색", "분홍색", "노란색", "파란색"],
+      "question": "지로 디탈리아의 종합 선두는 무슨 색 저지를 입나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "이름은 1882년 잉글랜드 크리켓을 풍자한 가짜 부고에서 왔어요. 작은 항아리에는 불탄 베일의 재가 들어 있다고 해요.",
+      "id": "sport-0030",
+      "options": ["테니스", "크리켓", "골프", "럭비 유니언"],
+      "question": "'디 애시스'는 어떤 스포츠의 유명한 시리즈인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "널리 알려진 설에 따르면 '러브'는 0처럼 생긴 '달걀'을 뜻하는 프랑스어 'l'œuf'에서 왔어요.",
+      "id": "sport-0013",
+      "options": ["러브", "블랭크", "닐", "덕"],
+      "question": "테니스에서 0점을 무엇이라고 하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "한 해는 더반에서 피터마리츠버그까지 오르막으로, 이듬해는 반대 방향으로 달려요. 그래서 '오르막' 코스와 '내리막' 코스의 길이가 조금 달라요.",
+      "id": "sport-0037",
+      "options": [
+        "해마다 반대 방향",
+        "밤에만 달림",
+        "맨발로 달림",
+        "세 나라를 지남"
+      ],
+      "question": "약 90km를 달리는 남아공의 컴레이즈 마라톤에는 어떤 특이한 점이 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "가노 지고로가 1882년 유도를 만들었어요. 이름은 '부드러운 길'이라는 뜻이고, 1964년 올림픽 종목이 되었어요.",
+      "id": "sport-0002",
+      "options": ["한국", "태국", "일본", "중국"],
+      "question": "유도는 어느 나라에서 시작되었나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "당시 비행기는 알래스카의 겨울 폭풍 속을 날 수 없어서, 썰매꾼 약 20명과 개들이 릴레이로 항독소를 날랐어요.",
+      "id": "sport-0041",
+      "options": ["디프테리아 약", "금덩이", "크리스마스 우편", "겨울 식량"],
+      "question": "알래스카의 아이디타로드 개썰매 경주는 1925년 무엇을 놈 마을로 급히 실어 나른 릴레이를 기려요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "펜테코스트섬의 '나골' 다이빙은 참마 수확과 관련이 있어요. 뉴질랜드의 첫 상업 번지 점프 회사가 이를 참고했어요.",
+      "id": "sport-0054",
+      "options": ["피지", "사모아", "바누아투", "통가"],
+      "question": "남자들이 발목에 덩굴을 묶고 높은 나무탑에서 뛰어내려 번지 점프에 영감을 준 태평양 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "사람이 살지 않는 이 작은 섬은 수만 마리의 북방가넷이 사는 조류 보호 구역이기도 해요.",
+      "id": "sport-0052",
+      "options": ["북아일랜드", "캐나다", "스코틀랜드", "노르웨이"],
+      "question": "올림픽 컬링 스톤 중 상당수는 에일사 크레이그섬의 화강암으로 만들어요. 이 섬은 어느 나라 앞바다에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "주먹 둘, 팔꿈치 둘, 무릎 둘, 정강이 둘이 여덟 가지 '무기'가 돼요. 복싱은 두 주먹만 쓰지요.",
+      "id": "sport-0014",
+      "options": ["팔꿈치와 무릎", "머리와 엉덩이", "어깨와 등", "손목과 발목"],
+      "question": "무에타이가 '여덟 팔다리의 예술'로 불리는 것은 주먹과 정강이 말고 무엇으로도 치기 때문인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "이 경기는 3,000여 년 전부터 했어요. 속이 꽉 찬 고무공 중에는 무게가 몇 kg이나 되는 것도 있었어요.",
+      "id": "sport-0057",
+      "options": ["발", "손", "엉덩이", "나무 방망이"],
+      "question": "고대 메소아메리카의 공놀이에서 선수들은 주로 무엇으로 고무공을 쳤나요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "1994년부터 캐나다에는 국민 스포츠가 둘 있어요. 여름에는 라크로스, 겨울에는 아이스하키예요.",
+      "id": "sport-0051",
+      "options": ["카누 경주", "컬링", "야구", "라크로스"],
+      "question": "원주민의 놀이에서 비롯된, 캐나다의 공식 여름 국민 스포츠는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "이 '남자들의 세 가지 경기'는 13세기 연대기에도 나와요. 지금은 활쏘기와 말 경주에 여성도 참가해요.",
+      "id": "sport-0028",
+      "options": ["활쏘기", "펜싱", "폴로", "역도"],
+      "question": "몽골의 나담 축제에서는 씨름, 말 경주와 함께 어떤 경기를 하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "선수들은 곡예 같은 오버헤드킥을 해요. 공은 전통적으로 등나무 줄기로 엮어 만들었어요.",
+      "id": "sport-0042",
+      "options": ["지중해", "남아메리카", "동남아시아", "스칸디나비아"],
+      "question": "발로 하는 배구 같은 경기인 세팍타크로는 어느 지역에서 인기가 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "네이스미스는 1891년 매사추세츠에서 복숭아 바구니를 첫 골대로 삼아 이 경기를 만들었어요.",
+      "id": "sport-0025",
+      "options": ["스코틀랜드", "미국", "캐나다", "잉글랜드"],
+      "question": "농구를 발명한 제임스 네이스미스는 어느 나라 사람인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "선수들은 대회 내내 먹을 음식과 장비를 직접 지고 달려요. 주최 측은 밤마다 야영지에서 물과 공용 천막만 제공해요.",
+      "id": "sport-0031",
+      "options": ["나미브 사막", "칼라하리 사막", "사하라 사막", "고비 사막"],
+      "question": "약 250km를 며칠에 걸쳐 달리는 모로코의 '마라톤 데 사블'은 어느 사막을 가로지르나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "사브르에서는 칼끝뿐 아니라 칼날로 쳐도 점수를 얻을 수 있어요.",
+      "id": "sport-0034",
+      "options": ["사브르", "카타나", "커틀러스", "레이피어"],
+      "question": "올림픽 펜싱에서는 플뢰레, 에페와 함께 어떤 무기를 쓰나요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "1858년 공 세 개로 위킷 세 개를 잡은 볼러가 관중이 모은 돈으로 산 모자를 받았어요.",
+      "id": "sport-0040",
+      "options": ["경마", "축구", "아이스하키", "크리켓"],
+      "question": "'해트트릭'이라는 말은 원래 어떤 스포츠에서 나왔나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "많은 경기장이 겨울에 쓰는 크리켓 경기장이라서, 큰 경기장을 흔히 '오벌'이라고 불러요. 경기장 크기는 정해져 있지 않아요.",
+      "id": "sport-0003",
+      "options": ["직사각형", "타원형", "정사각형", "마름모"],
+      "question": "오스트레일리안 풋볼은 보통 어떤 모양의 경기장에서 하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "올림픽 규격 수영장에는 물이 약 250만 L 들어가요.",
+      "id": "sport-0018",
+      "options": ["50m", "25m", "75m", "100m"],
+      "question": "올림픽 규격 수영장의 길이는 얼마인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "폴로는 2,000여 년 전 페르시아에서 했어요. 현대 폴로는 19세기 영국 장교들을 통해 인도 마니푸르에서 퍼져 나갔어요.",
+      "id": "sport-0050",
+      "options": ["페르시아", "중국", "이집트", "그리스"],
+      "question": "폴로는 일반적으로 어느 고대 지역에서 시작되었다고 여겨지나요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "가라테는 중국 무술의 영향을 받은 오키나와의 토착 무술에서 자라났고, 1920년대 일본 본토로 퍼졌어요.",
+      "id": "sport-0033",
+      "options": ["타이완섬", "혼슈", "홋카이도", "오키나와"],
+      "question": "'빈손'이라는 뜻의 가라테는 어느 섬에서 발전했나요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "자유형 경기에서는 어떤 영법이든 쓸 수 있지만, 선수들은 거의 언제나 가장 빠른 크롤을 택해요.",
+      "id": "sport-0019",
+      "options": ["평영", "접영", "크롤", "배영"],
+      "question": "수영에서 가장 빠른 영법은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "이 팀은 캘거리에서 데뷔했어요. 그 이야기는 1993년 영화 〈쿨 러닝〉에 영감을 주었는데, 영화는 실제 내용을 많이 바꿨어요.",
+      "id": "sport-0029",
+      "options": ["피지", "케냐", "브라질", "자메이카"],
+      "question": "1988년 동계 올림픽에 봅슬레이 팀을 보내 세계를 놀라게 한 열대 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "추쥐(축국)는 2,000여 년 전 한나라 때 즐기던 놀이예요. 2004년 FIFA는 추쥐를 축구의 초기 형태로 인정했어요.",
+      "id": "sport-0015",
+      "options": ["중국", "그리스", "이집트", "멕시코"],
+      "question": "공을 차서 골문에 넣던 고대 공놀이 '추쥐(cuju)'는 어느 나라에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "1764년 세인트앤드루스가 코스를 22홀에서 18홀로 줄였고, 다른 코스들도 이를 따랐어요.",
+      "id": "sport-0011",
+      "options": ["9개", "12개", "18개", "20개"],
+      "question": "표준 골프 코스에는 홀이 몇 개 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "노란 저지는 1919년에 생겼어요. 대회를 주최한 신문 『로토』가 노란 종이에 인쇄되었기 때문이에요.",
+      "id": "sport-0016",
+      "options": ["빨간색", "노란색", "분홍색", "물방울무늬"],
+      "question": "투르 드 프랑스의 종합 선두는 무슨 색 저지를 입나요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "이텐은 그레이트 리프트 밸리 가장자리의 해발 약 2,400m에 있어서, 희박한 공기가 지구력을 길러 줘요. 이텐은 스스로를 '챔피언의 고향'이라고 불러요.",
+      "id": "sport-0026",
+      "options": ["바닷바람", "평평한 모래 트랙", "서늘한 겨울", "높은 고도"],
+      "question": "정상급 장거리 선수들이 케냐 이텐 주변에서 많이 훈련해요. 이 지역은 무엇 때문에 훈련에 좋나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "의사 루트비히 구트만은 1948년 런던 올림픽 개막일에 휠체어 선수들을 위한 첫 경기를 열었어요.",
+      "id": "sport-0053",
+      "options": [
+        "세인트토머스",
+        "스토크맨더빌",
+        "그레이트오먼드스트리트",
+        "애든브룩스"
+      ],
+      "question": "패럴림픽 운동은 1948년 잉글랜드의 어느 병원에서 열린 경기에서 비롯되었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "1877년에 처음 열린 윔블던은 세계에서 가장 오래된 테니스 대회예요.",
+      "id": "sport-0007",
+      "options": ["클레이 코트", "카펫 코트", "하드 코트", "잔디 코트"],
+      "question": "윔블던 테니스 대회는 어떤 코트에서 열리나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "최초의 정식 실내 아이스하키 경기는 1875년 몬트리올에서 열렸어요.",
+      "id": "sport-0017",
+      "options": ["핀란드", "캐나다", "스웨덴", "러시아"],
+      "question": "근대 아이스하키는 주로 어느 나라에서 발전했나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "초기에는 책을 네트로, 골프공이나 샴페인 코르크를 공으로, 시가 상자 뚜껑을 라켓으로 썼어요.",
+      "id": "sport-0038",
+      "options": ["잉글랜드", "스위스", "중국", "일본"],
+      "question": "탁구는 어느 나라에서 저녁 식사 후 응접실 놀이로 시작되었나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "알바트로스는 홀인원보다 훨씬 드물어요. 파보다 4타 적은 '콘도르'는 그보다 더 드물어요.",
+      "id": "sport-0056",
+      "options": ["말똥가리", "알바트로스", "버디", "이글"],
+      "question": "골프에서 한 홀을 파보다 3타 적게 치는 것을 어떤 새의 이름으로 부르나요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "한 가설에 따르면 점수는 시계 문자판(15, 30, 45)을 따랐고, 45가 줄어서 40이 되었다고 해요.",
+      "id": "sport-0012",
+      "options": ["45", "50", "40", "35"],
+      "question": "테니스에서 15, 30 다음에 오는 점수는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "'모르셰드'라는 스승이 북을 치며 시를 읊으면, 선수들은 움푹한 구덩이에서 무거운 나무 곤봉을 휘둘러요. 2010년 유네스코에 등재되었어요.",
+      "id": "sport-0032",
+      "options": [
+        "심판의 호루라기",
+        "북소리와 시",
+        "째깍이는 시계",
+        "관중의 박수"
+      ],
+      "question": "이란의 전통 '주르하네'('힘의 집')에서 선수들은 무엇에 맞춰 훈련하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "선수는 뛰어올라 매달린 작은 공(흔히 바다표범 가죽으로 만든 공)을 한 발로 찬 뒤, 같은 발로 착지해야 해요. 이 발차기는 한때 사냥 성공을 알리는 신호였어요.",
+      "id": "sport-0049",
+      "options": [
+        "공중에 매단 표적",
+        "짝이 돌리는 북",
+        "짝의 펼친 손바닥",
+        "땅 위의 나무 막대"
+      ],
+      "question": "북극권의 스포츠인 '한 발 하이킥'에서 선수는 무엇을 차야 하나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "프랑스의 교육자 쿠베르탱은 1894년 국제 올림픽 위원회를 세웠어요.",
+      "id": "sport-0036",
+      "options": [
+        "에이버리 브런디지",
+        "피에르 드 쿠베르탱",
+        "디미트리오스 비켈라스",
+        "후안 안토니오 사마란치"
+      ],
+      "question": "근대 올림픽을 창시한 사람은 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "1860~1870년대 글로스터셔에 있는 보퍼트 공작의 저택 '배드민턴 하우스'에서 이 경기를 했어요.",
+      "id": "sport-0039",
+      "options": [
+        "덴마크의 유명한 궁정 선수",
+        "잉글랜드의 한 시골 저택",
+        "셔틀콕 제조사",
+        "인도의 한 도시"
+      ],
+      "question": "배드민턴이라는 이름은 무엇에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "'더 빨리, 더 높이, 더 힘차게'라는 뜻이에요. 2021년에는 '다 함께'라는 뜻의 'Communiter'가 더해졌어요.",
+      "id": "sport-0020",
+      "options": ["라틴어", "이탈리아어", "프랑스어", "그리스어"],
+      "question": "올림픽 표어 'Citius, Altius, Fortius'는 어느 언어인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "해마다 여름이면 치트랄과 길기트발티스탄 팀이 규칙이 거의 없는 자유형 경기로 맞붙어요. 1930년대부터 이어진 전통이에요.",
+      "id": "sport-0055",
+      "options": ["인도", "네팔", "중국", "파키스탄"],
+      "question": "해발 약 3,700m로 흔히 세계에서 가장 높은 폴로 경기장으로 불리는 샨두르 폴로 경기장은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "선수들은 '헐리'라는 나무 막대로 '슬리터'라는 작은 공을 시속 100km가 훨씬 넘는 속도로 쳐요.",
+      "id": "sport-0044",
+      "options": ["웨일스", "노르웨이", "스코틀랜드", "아일랜드"],
+      "question": "세계에서 가장 빠른 필드 스포츠 중 하나인 헐링은 어느 나라의 전통 스포츠인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "하와이의 수영 선수 듀크 카하나모쿠가 서핑을 널리 알렸어요. 1914년 시드니 근처 프레시워터 해변에서 그가 보여 준 시범은 오스트레일리아에 서핑이 자리 잡는 데 큰 역할을 했어요.",
+      "id": "sport-0001",
+      "options": ["카나리아 제도", "하와이", "몰디브", "발리"],
+      "question": "서핑은 어느 섬들의 오랜 전통에서 자라났나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "공격수는 한 번의 숨으로 '카바디, 카바디'를 외치면서 상대를 건드려야 해요.",
+      "id": "sport-0043",
+      "options": ["이집트", "인도", "인도네시아", "이란"],
+      "question": "술래잡기와 레슬링을 합친 단체 경기 카바디는 어느 나라에서 시작되었나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "태평양에서 인도양까지 퍼져 있는 영토 덕분에 프랑스는 12개 시간대, 남극 영유권 주장 지역까지 치면 13개 시간대에 걸쳐 있어요.",
+      "id": "misc-0071",
+      "options": ["미국", "러시아", "프랑스", "영국"],
+      "question": "해외 영토를 포함하면 시간대가 가장 많은 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "페탕크는 1907년 라시오타에서 생겨났어요. 이름은 '두 발을 모으고'라는 뜻의 프로방스어에서 왔어요.",
+      "id": "sport-0022",
+      "options": ["벨기에", "이탈리아", "프랑스", "스페인"],
+      "question": "금속 공을 작은 표적 공 쪽으로 던지는 페탕크는 어느 나라에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "현지어로 부탄은 '천둥 용의 나라'라는 뜻의 '드루크율'이라고 불려요.",
+      "id": "misc-0039",
+      "options": ["네팔", "스리랑카", "부탄", "몽골"],
+      "question": "국기에 흰색 '천둥 용'이 그려진 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "팔각형이라서 운전자는 표지판을 뒤에서 보거나 눈에 덮여 있어도 정지 표지판임을 알아볼 수 있어요.",
+      "id": "misc-0003",
+      "options": ["6개", "10개", "7개", "8개"],
+      "question": "대부분의 나라에서 쓰는 표준 정지 표지판은 변이 몇 개인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "제노바의 선원들은 튼튼한 면바지를 입었어요. 한편 '데님'은 프랑스 도시 이름 '드 님'(님의)에서 왔어요.",
+      "id": "misc-0052",
+      "options": ["베네치아", "제노바", "나폴리", "님"],
+      "question": "영어 'jeans'(청바지)라는 말은 어느 도시 이름에서 왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "동아시아의 일부 건물에는 4층이 없어요. 반면 8은 '번창하다'와 소리가 비슷해서 아주 좋은 숫자로 여겨요.",
+      "id": "misc-0004",
+      "options": ["8", "7", "9", "4"],
+      "question": "'죽음'과 소리가 비슷해서 중국에서 흔히 불길하게 여기는 숫자는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "에티오피아 달력은 30일짜리 달 12개와 5~6일짜리 짧은 13번째 달로 이루어져 있어요.",
+      "id": "misc-0043",
+      "options": ["태국", "이란", "에티오피아", "네팔"],
+      "question": "전통 달력이 13개월로 이루어진 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "체스판은 8×8칸이에요. 칸마다 쌀알이 두 배씩 늘어나는 유명한 전설은 수가 얼마나 빨리 커지는지 보여 줘요.",
+      "id": "misc-0001",
+      "options": ["64개", "49개", "81개", "100개"],
+      "question": "체스판에는 칸이 몇 개 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "라플란드 로바니에미 근처의 이 마을에는 전 세계에서 산타에게 보내는 편지가 수십만 통씩 와요.",
+      "id": "misc-0015",
+      "options": ["핀란드", "노르웨이", "스웨덴", "아이슬란드"],
+      "question": "북극권 바로 위에 있는 산타클로스 마을은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "'CH'는 'Confoederatio Helvetica'의 약자예요. 라틴어 이름을 쓰면 스위스의 네 국어 중 하나를 고르지 않아도 돼요.",
+      "id": "misc-0045",
+      "options": [
+        "자유 헬베티아 공동체",
+        "헬베티아 왕관",
+        "헬베티아인의 나라",
+        "헬베티아 연방"
+      ],
+      "question": "스위스의 국가 코드 'CH'는 어떤 라틴어 이름의 약자인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "탑은 2012년 엘리자베스 타워로 이름이 바뀌었어요. 빅 벤은 그 안에 있는 무게 13.7t의 종이에요.",
+      "id": "misc-0012",
+      "options": ["시계 문자판", "큰 종", "분침", "시계탑"],
+      "question": "런던의 '빅 벤'은 사실 무엇의 별명인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "이 동상에는 옷이 약 1,000벌 있어서, 특별한 날이면 옷을 갈아입어요.",
+      "id": "misc-0016",
+      "options": ["빈", "코펜하겐", "암스테르담", "브뤼셀"],
+      "question": "작은 청동상 '오줌싸개 소년'(마네켄 피스)은 어느 도시에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "카드 한 벌은 13장씩 네 가지 무늬로 이루어져 있어요. 오늘날의 네 무늬는 15세기 프랑스에서 왔어요.",
+      "id": "misc-0006",
+      "options": ["48장", "54장", "56장", "52장"],
+      "question": "조커를 뺀 표준 카드 한 벌은 몇 장인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "1해리는 호의 1분과 같아서, 항해사는 해도의 위도 눈금으로 거리를 바로 잴 수 있어요.",
+      "id": "misc-0076",
+      "options": [
+        "돛대에서 보이는 거리",
+        "위도 1분",
+        "선원 1,000걸음",
+        "경도 1도"
+      ],
+      "question": "해리는 원래 무엇을 기준으로 정해졌나요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "얼음을 쓸면 잠깐 얼음이 데워져서, 스톤이 더 멀리 가고 덜 휘어요.",
+      "id": "sport-0024",
+      "options": ["컬링", "아이스하키", "밴디", "봅슬레이"],
+      "question": "화강암 '스톤'을 미끄러뜨리고 팀원들이 얼음을 쓰는 스포츠는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "소금을 뿌리는 것은 정화 의식이에요. 최상위 리그 선수들은 경기 전에 소금을 여러 번 한 움큼씩 뿌리기도 해요.",
+      "id": "sport-0048",
+      "options": ["쌀", "소금", "꽃잎", "모래"],
+      "question": "스모 경기 전에 선수들은 씨름판에 무엇을 뿌리나요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "붉은 용 '어 드라이그 고흐'는 수백 년 동안 웨일스와 함께해 왔어요.",
+      "id": "misc-0013",
+      "options": ["황금 사자", "흰 유니콘", "검은 독수리", "붉은 용"],
+      "question": "웨일스의 국기에는 어떤 동물이 그려져 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "독일 사람들은 16세기부터 집 안에 나무를 장식했고, 이 풍습은 19세기에 널리 퍼졌어요.",
+      "id": "misc-0014",
+      "options": ["독일", "영국", "러시아", "스웨덴"],
+      "question": "크리스마스트리를 장식하는 전통은 어느 나라에서 시작되었나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "미국 학생들이 코네티컷의 '프리스비 파이 컴퍼니'에서 나온 빈 파이 접시를 던지며 놀았어요.",
+      "id": "misc-0041",
+      "options": [
+        "그리스 원반",
+        "제과점의 파이 접시",
+        "캘리포니아의 해변",
+        "발명가의 개"
+      ],
+      "question": "프리스비라는 이름은 무엇에서 왔나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "교황 그레고리오 13세의 이름을 땄으며, 율리우스력이 계절과 조금씩 어긋나던 문제를 바로잡았어요.",
+      "id": "misc-0008",
+      "options": ["마야 장기력", "그레고리력", "이슬람력", "율리우스력"],
+      "question": "1582년에 도입되어 오늘날 세계 대부분이 쓰는 달력은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "1902년 한 만평에 미국 대통령 시어도어 '테디' 루스벨트가 묶여 있는 곰을 쏘지 않는 모습이 실렸고, 이것이 한 장난감 제작자에게 영감을 주었어요.",
+      "id": "misc-0007",
+      "options": [
+        "에드워드 7세",
+        "테오도어 헤르츨",
+        "웨일스 공 에드워드",
+        "시어도어 루스벨트"
+      ],
+      "question": "테디 베어는 어느 유명인의 이름을 땄나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "스페인, 이탈리아, 포르투갈에서는 1582년 10월 4일 목요일 다음 날이 10월 15일 금요일이었어요.",
+      "id": "misc-0074",
+      "options": ["12일", "14일", "10일", "7일"],
+      "question": "1582년 그레고리력을 도입할 때 며칠을 건너뛰었나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "이 이름은 미국 수학자의 아홉 살 조카 밀턴 시로타가 지어냈어요.",
+      "id": "misc-0050",
+      "options": ["10개", "1,000개", "100개", "100만 개"],
+      "question": "'구골'은 1 뒤에 0이 몇 개 붙은 수인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "바이애슬론 선수는 50m 떨어진 표적을 맞히려고 빠르게 뛰는 심장 박동을 재빨리 가라앉혀야 해요.",
+      "id": "sport-0023",
+      "options": ["소총 사격", "프리스타일 스노보드", "양궁", "스키 점프"],
+      "question": "바이애슬론은 크로스컨트리 스키와 어떤 종목을 결합한 것인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "가사는 16세기에 만들어졌지만, 공식 국가가 된 것은 1932년이에요.",
+      "id": "misc-0078",
+      "options": ["덴마크", "스위스", "스웨덴", "네덜란드"],
+      "question": "흔히 가장 오래된 국가로 불리는 〈빌헬뮈스〉는 어느 나라의 국가인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "스위스 국기는 공식적으로 정사각형이지만, 배에서는 직사각형 국기를 써요.",
+      "id": "misc-0037",
+      "options": ["리히텐슈타인", "덴마크", "스위스", "오스트리아"],
+      "question": "바티칸 시국 말고 국기가 정사각형인 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "가로세로 비율이 1 대 √2라서, A 규격 용지는 반으로 접으면 같은 비율의 다음 규격이 돼요.",
+      "id": "misc-0040",
+      "options": ["220×310mm", "216×279mm", "200×300mm", "210×297mm"],
+      "question": "A4 용지의 크기는 얼마인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "1790년대 프랑스 과학자들이 미터를 이렇게 정의했어요. 오늘날에는 빛의 속도를 기준으로 해요.",
+      "id": "misc-0051",
+      "options": ["피트", "미터", "마일", "패덤"],
+      "question": "원래 북극점에서 적도까지 거리의 1,000만분의 1로 정의된 단위는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "수단에는 이집트의 것보다 작고 가파른 피라미드가 200개 넘게 있고, 그중 상당수가 메로에 유적에 있어요.",
+      "id": "misc-0049",
+      "options": ["리비아", "수단", "차드", "에티오피아"],
+      "question": "고대 쿠시 왕국은 이집트보다 피라미드를 더 많이 지었어요. 그 피라미드는 오늘날 어느 나라에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "이 작은 태평양 나라는 '.tv' 도메인 사용권을 팔아 수입의 상당 부분을 벌어요.",
+      "id": "misc-0046",
+      "options": ["투발루", "트리니다드 토바고", "타지키스탄", "통가"],
+      "question": "TV와 동영상 사이트에서 인기 있는 인터넷 도메인 '.tv'는 어느 나라의 것인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "커다란 뿔 달린 가면을 쓴 춤꾼 수천 명이 몇 시간 동안 행진해요. 유네스코는 2001년 이 카니발을 인류 무형유산 걸작으로 선포했어요.",
+      "id": "misc-0073",
+      "options": ["볼리비아", "페루", "칠레", "에콰도르"],
+      "question": "악마 춤 '디아블라다'로 유명한 오루로 카니발은 어느 나라에서 열리나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "최초의 엽서는 주소와 짧은 글을 적을 자리만 있는 단순한 카드였고, 우편 요금이 더 쌌어요.",
+      "id": "misc-0077",
+      "options": ["미국", "오스트리아-헝가리", "영국", "프로이센 왕국"],
+      "question": "1869년 세계 최초의 공식 엽서를 발행한 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "이 트로피는 전설에 따르면 공을 들고 달려 럭비를 만들었다는 학생의 이름을 땄어요.",
+      "id": "sport-0060",
+      "options": [
+        "캘커타컵",
+        "블레디슬로컵",
+        "식스 네이션스 트로피",
+        "웹 엘리스컵"
+      ],
+      "question": "남자 럭비 월드컵 우승팀에게 주는 트로피는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "이 놀이는 인도에서 페르시아로 퍼졌고, 페르시아에서 '샤 마트'(체크메이트)라는 표현이 생겨났어요.",
+      "id": "misc-0042",
+      "options": ["인도", "이집트", "중국", "페르시아"],
+      "question": "체스는 어느 나라의 놀이 '차투랑가'에서 발전했나요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "종이돈은 약 1,000년 전 송나라 때 중국에서 널리 퍼졌어요. 유럽에서 쓰기 훨씬 전이에요.",
+      "id": "misc-0009",
+      "options": ["이탈리아", "영국", "네덜란드", "중국"],
+      "question": "마르코 폴로는 어느 땅에서 사람들이 종이돈으로 값을 치르는 것을 보고 놀랐나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "바둑은 끊기지 않고 이어져 온 가장 오래된 보드게임으로 여겨져요. 가능한 판의 수는 우주의 원자 수보다 많아요.",
+      "id": "misc-0005",
+      "options": ["샹치", "바둑", "쇼기", "마작"],
+      "question": "중국에서 2,500년 넘게 즐겨 온, 검은 돌과 흰 돌을 쓰는 보드게임은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "A0은 넓이 1m²로 정의되어 있고, A4는 그 16분의 1이에요.",
+      "id": "misc-0072",
+      "options": ["0.5m²", "1.5m²", "2m²", "1m²"],
+      "question": "A0 용지의 넓이는 얼마인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "로마에서 새 신발 때문에 물집이 잡히자 그는 신발 없이 달려 세계 최고 기록을 세웠어요. 4년 뒤 도쿄에서는 신발을 신고 다시 우승했어요.",
+      "id": "sport-0059",
+      "options": ["800m", "크로스컨트리", "마라톤", "1만 m"],
+      "question": "1960년 에티오피아의 아베베 비킬라는 맨발로 달려 올림픽 금메달을 땄어요. 어떤 종목이었나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "한 번 칠할 때 페인트가 약 60t 들어요. 이 철탑은 여름 더위에 약 15cm 더 높아지기도 해요.",
+      "id": "misc-0047",
+      "options": ["해마다", "25년마다", "7년마다", "50년마다"],
+      "question": "에펠탑은 대략 얼마마다 다시 칠하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "호박금(일렉트럼)은 금과 은이 자연적으로 섞인 것이에요. 리디아는 지금의 튀르키예 서부에 있었어요.",
+      "id": "misc-0075",
+      "options": ["순금", "청동", "호박금", "순은"],
+      "question": "기원전 600년 무렵 리디아에서 만든 최초의 주화는 무엇으로 만들었나요?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "말을 탄 선수들이 가죽 손잡이가 달린 공을 잡아 패스하고 고리에 던져 넣어요. 농구와 폴로를 섞은 것과 비슷해요.",
+      "id": "sport-0047",
+      "options": [
+        "스케이트를 타고",
+        "말을 타고",
+        "수영장에서",
+        "모래 언덕에서"
+      ],
+      "question": "1953년부터 아르헨티나의 공식 국민 스포츠인 파토는 어떻게 하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "이 말은 1890년대 미국 속어에서 왔는데, 당시 'bird'는 아주 멋진 것을 뜻했어요.",
+      "id": "sport-0021",
+      "options": ["보기", "이글", "버디", "알바트로스"],
+      "question": "골프에서 한 홀을 파보다 1타 적게 치는 것을 무엇이라고 하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "더블 글로스터 치즈는 시속 약 100km까지 빨라질 수 있어서, 잡는 것은 거의 불가능해요.",
+      "id": "misc-0036",
+      "options": [
+        "둥근 치즈 한 덩이",
+        "맥주 한 통",
+        "굴러가는 건초 더미",
+        "거대한 달걀"
+      ],
+      "question": "잉글랜드의 쿠퍼스힐 경주에서 참가자들은 가파른 언덕 아래로 무엇을 쫓아가나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "쌀의 녹말 성분인 아밀로펙틴이 석회 회반죽을 더 튼튼하게 하고 물이 덜 스며들게 했어요. 성벽, 탑, 무덤에 쓰였어요.",
+      "id": "misc-0086",
+      "options": ["염소젖", "찹쌀", "달걀노른자", "꿀"],
+      "question": "중국 명나라 시대 일부 성벽의 회반죽에는 어떤 뜻밖의 재료가 섞였나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "1984년에 채택된 이 이름은 현지어인 모레어와 줄라어의 낱말을 합친 것이에요. 그전에는 오트볼타라고 불렸어요.",
+      "id": "misc-0082",
+      "options": ["말리", "부르키나파소", "니제르", "세네갈"],
+      "question": "나라 이름이 대략 '정직한 사람들의 땅'이라는 뜻인 아프리카 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "신터클라스는 11월 중순 증기선을 타고 도착해요. 선물을 주고받는 중요한 저녁은 12월 5일이에요.",
+      "id": "misc-0064",
+      "options": ["스페인", "스위스", "네덜란드", "이탈리아"],
+      "question": "아이들이 사탕을 기대하며 신터클라스를 위해 신발을 내놓는 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "유니콘은 12세기부터 스코틀랜드의 상징이었고, 왕실 문장에도 등장해요.",
+      "id": "misc-0053",
+      "options": ["하일랜드 소", "검독수리", "붉은사슴", "유니콘"],
+      "question": "스코틀랜드의 국가 동물은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "해마다 12월 23일 예술가들이 커다란 무를 깎아 사람, 동물, 건물을 정교하게 표현해요.",
+      "id": "misc-0083",
+      "options": ["푸에블라", "메리다", "오악사카", "과달라하라"],
+      "question": "무를 조각해 겨루는 멕시코의 '무의 밤' 행사는 어느 도시에서 열리나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "이탈리아에서는 17일의 금요일을 불길한 날로 여겨요.",
+      "id": "misc-0067",
+      "options": [
+        "13일의 일요일",
+        "13일의 목요일",
+        "13일의 화요일",
+        "13일의 월요일"
+      ],
+      "question": "스페인과 그리스에서는 13일의 금요일 대신 어느 날을 전통적으로 불길하게 여기나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "〈마르차 레알〉은 공식 가사 없이 연주되는, 세계에서 몇 안 되는 국가 중 하나예요.",
+      "id": "misc-0054",
+      "options": ["프랑스", "스페인", "포르투갈", "이탈리아"],
+      "question": "공식 가사가 없는 국가(國歌)를 가진 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "〈자유의 찬가〉는 디오니시오스 솔로모스의 시예요. 보통은 처음 두 절만 불러요.",
+      "id": "misc-0084",
+      "options": ["우루과이", "아르헨티나", "그리스", "튀르키예"],
+      "question": "전체가 158절로 세계에서 가장 긴 국가(國歌)를 가진 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "세계 선수권 대회는 핀란드 손카예르비에서 물웅덩이 장애물이 있는 253.5m 코스로 열려요.",
+      "id": "misc-0068",
+      "options": ["에스토니아", "노르웨이", "핀란드", "스웨덴"],
+      "question": "장애물 경주인 '아내 업고 달리기'는 어느 나라에서 시작되었나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "24시간 × 60분이에요. 초로는 하루가 8만 6,400초예요.",
+      "id": "misc-0090",
+      "options": ["1,840분", "1,640분", "1,440분", "1,240분"],
+      "question": "하루는 몇 분인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "머리는 몸에서 가장 신성한 곳, 발은 가장 낮은 곳으로 여겨요. 그래서 발로 사람을 가리키는 것도 실례예요.",
+      "id": "misc-0035",
+      "options": ["손", "머리", "어깨", "팔꿈치"],
+      "question": "태국에서 다른 사람의 몸 중 만지면 특히 무례한 곳은 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "사람들은 카파도키아의 무른 화산암을 파서 집과 교회, 심지어 지하 도시 전체를 만들었어요.",
+      "id": "misc-0030",
+      "options": ["요르단", "튀르키예", "모로코", "그리스"],
+      "question": "'요정의 굴뚝' 바위 위를 나는 열기구로 유명한 카파도키아는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "놀리우드는 해마다 아주 많은 영화를 만드는데, 상당수가 적은 예산으로 빠르게 제작돼요.",
+      "id": "misc-0065",
+      "options": ["볼리우드", "톨리우드", "놀리우드", "롤리우드"],
+      "question": "나이지리아의 거대한 영화 산업은 어떤 별명으로 불리나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "앞면에는 국가 문장이, 뒷면에는 사자가 그려진 재무부 인장이 있어요.",
+      "id": "misc-0070",
+      "options": ["우루과이", "과테말라", "파라과이", "페루"],
+      "question": "국기의 앞면과 뒷면이 서로 다른 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "1970년대 부탄 국왕은 국민 소득보다 행복이 더 중요하다며 이 개념을 내놓았어요.",
+      "id": "misc-0018",
+      "options": ["네팔", "부탄", "덴마크", "아이슬란드"],
+      "question": "'국민 총행복'을 측정하는 것으로 유명한 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "일부 항공사는 비행기에 13번 열을 두지 않아요. 반면 동아시아 일부 지역의 건물에서는 4층을 건너뛰어요.",
+      "id": "misc-0025",
+      "options": ["17층", "7층", "4층", "13층"],
+      "question": "서양의 많은 건물에서 불길하다고 여겨 건너뛰는 층수는 몇 층인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "산토리니의 초승달 모양 칼데라는 약 3,600년 전 거대한 화산 폭발 뒤에 지금의 모습이 되었어요.",
+      "id": "misc-0031",
+      "options": ["케팔로니아섬", "산토리니섬", "코르푸섬", "크레타섬"],
+      "question": "화산 칼데라 위의 하얀 집과 파란 돔으로 유명한 그리스의 섬은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "셰프샤우엔은 리프산맥에 있어요. 반면 마라케시는 '붉은 도시'로 알려져 있어요.",
+      "id": "misc-0066",
+      "options": ["셰프샤우엔", "페스", "마라케시", "라바트"],
+      "question": "파란색으로 칠한 거리로 유명한 모로코의 도시는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "이탈리아인 잡역부가 작업복 속에 그림을 숨겨 가져갔어요. 그림은 2년 뒤 피렌체에서 되찾았어요.",
+      "id": "misc-0055",
+      "options": [
+        "메두사호의 뗏목",
+        "가나의 혼인 잔치",
+        "민중을 이끄는 자유의 여신",
+        "모나리자"
+      ],
+      "question": "1911년 루브르에서 도난당한 뒤 훨씬 더 유명해진 그림은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "이 이름은 도시의 옛 이름인 봄베이와 할리우드를 합친 말이에요.",
+      "id": "misc-0029",
+      "options": ["델리", "첸나이", "콜카타", "뭄바이"],
+      "question": "힌디어 영화 산업인 볼리우드의 중심 도시는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "1923년 주택 단지를 광고하려고 세운 이 간판은 1949년 마지막 네 글자를 떼어 냈어요.",
+      "id": "misc-0063",
+      "options": [
+        "Hollywood Hills",
+        "Hollywood Studios",
+        "Holly Woods",
+        "Hollywoodland"
+      ],
+      "question": "할리우드 간판에는 원래 뭐라고 쓰여 있었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "그래서 1의 반대편은 6, 2의 반대편은 5, 3의 반대편은 4예요. 주사위의 눈을 모두 더하면 21이에요.",
+      "id": "misc-0089",
+      "options": ["6", "8", "12", "7"],
+      "question": "일반적인 6면 주사위에서 마주 보는 두 면의 수를 더하면 언제나 얼마인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "빨간색을 맨 위에 두는 식으로 순서가 정해져 있어서, 색맹인 운전자도 불빛의 위치로 신호를 읽을 수 있어요.",
+      "id": "misc-0021",
+      "options": ["노란색", "빨간색", "파란색", "초록색"],
+      "question": "세로로 된 신호등에서 보통 맨 위에 있는 색은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "트룰리는 회반죽 없이 돌을 쌓아 짓고, 석회암 판을 겹겹이 얹어 원뿔 모양 지붕을 만들어요.",
+      "id": "misc-0087",
+      "options": [
+        "색칠한 목조 샬레",
+        "원뿔 지붕의 트룰리",
+        "동굴 주거",
+        "수상 가옥"
+      ],
+      "question": "이탈리아의 알베로벨로 마을은 어떤 집으로 유명한가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "북반구에서는 해시계의 그림자가 오늘날 시곗바늘과 같은 방향으로 움직여요.",
+      "id": "misc-0056",
+      "options": [
+        "중세 교황의 명령",
+        "글 쓰는 방향에 맞춰",
+        "지구 자기 때문에",
+        "해 그림자를 본떠서"
+      ],
+      "question": "시곗바늘은 왜 '시계 방향'으로 도나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "들어 올린 앞발이 손님과 행운을 가게로 불러들인다고 해요.",
+      "id": "misc-0024",
+      "options": [
+        "춤추는 여우 정령",
+        "손짓하는 복고양이",
+        "다리 셋 달린 행운 개구리",
+        "문 지키는 용"
+      ],
+      "question": "일본 가게에서 흔히 볼 수 있는 '마네키네코'는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "이 국기는 '해의 동그라미'라는 뜻의 '히노마루'라고 불려요.",
+      "id": "misc-0023",
+      "options": ["팔라우", "일본", "라오스", "방글라데시"],
+      "question": "흰 바탕에 빨간 원이 그려진 국기를 가진 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "슈바르츠발트의 장인들은 18세기부터 뻐꾸기시계를 만들어 왔어요. 그래도 많은 사람이 스위스산이라고 생각해요.",
+      "id": "misc-0069",
+      "options": [
+        "독일 슈바르츠발트",
+        "스위스 알프스",
+        "오스트리아 티롤",
+        "바이에른 호수 지대"
+      ],
+      "question": "전통 뻐꾸기시계는 어느 지역에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "이 복제 마을은 2012년 광둥성에 문을 열었어요. 진짜 할슈타트는 유네스코 세계 유산이에요.",
+      "id": "misc-0088",
+      "options": ["오스트리아", "슬로베니아", "스위스", "독일"],
+      "question": "어느 나라의 호숫가 마을 할슈타트를 실물 크기로 본뜬 마을이 중국에 지어졌나요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "많은 나라에서 25주년은 은혼식, 60주년은 다이아몬드혼식이에요.",
+      "id": "misc-0034",
+      "options": ["40년", "60년", "25년", "50년"],
+      "question": "금혼식은 결혼 몇 주년을 기념하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "나이트는 L자 모양으로 움직이며, 다른 말을 뛰어넘을 수 있는 유일한 말이에요.",
+      "id": "misc-0020",
+      "options": ["나이트", "비숍", "킹", "룩"],
+      "question": "체스에서 다른 말을 뛰어넘을 수 있는 말은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "차량 신호가 빨간불로 바뀌면 보행자들이 사방에서 한꺼번에 건너요. 한 번에 수천 명이 건너기도 해요.",
+      "id": "misc-0027",
+      "options": [
+        "회전하는 유리 다리",
+        "무빙워크",
+        "스크램블 교차로",
+        "수상 시장"
+      ],
+      "question": "도쿄 시부야는 어떤 거리 풍경으로 유명한가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "이 조각상은 1820년 밀로스섬에서 발견되었어요. 사라진 두 팔은 끝내 찾지 못했어요.",
+      "id": "misc-0028",
+      "options": [
+        "프라도 미술관",
+        "바티칸 박물관",
+        "대영 박물관",
+        "루브르 박물관"
+      ],
+      "question": "고대 그리스 조각상 〈밀로의 비너스〉는 어느 박물관에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "매시 정각이 되면 시계판 위의 작은 창에 열두 사도 인형이 나타나요.",
+      "id": "misc-0060",
+      "options": ["크라쿠프", "빈", "스트라스부르", "프라하"],
+      "question": "1410년에 설치되어 지금도 작동하는 가장 오래된 천문시계가 있는 도시는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "이 색은 주변 풍경과 어울리면서도 자주 끼는 안개 속에서 눈에 잘 띄어서 선택되었어요.",
+      "id": "misc-0032",
+      "options": [
+        "벽돌색",
+        "인터내셔널 오렌지",
+        "황금빛 노랑",
+        "캘리포니아 포피 골드"
+      ],
+      "question": "샌프란시스코 금문교의 공식 색상 이름은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "대부분의 클로버 잎은 작은 잎이 세 장이에요. 네 번째 잎은 드문 유전적 변이라서 행운의 상징이 되었어요.",
+      "id": "misc-0062",
+      "options": [
+        "약 5,000분의 1",
+        "약 500분의 1",
+        "약 500만분의 1",
+        "약 50분의 1"
+      ],
+      "question": "네잎클로버는 대략 얼마나 드문가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "쿠버피디의 여름 기온은 45°C를 넘기도 하지만, 바위를 파서 만든 '더그아웃'은 약 23~25°C를 유지해요. 땅속 교회도 있어요.",
+      "id": "misc-0079",
+      "options": ["멕시코", "칠레", "남아공", "호주"],
+      "question": "오팔 광산 마을의 많은 주민이 더위를 피해 땅속 집에 사는 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "어깨 너머로 동전을 던지면 로마에 다시 온다는 전통이 있어요. 모인 돈은 자선 단체에 기부돼요.",
+      "id": "misc-0017",
+      "options": ["동전", "쌀", "빵", "꽃"],
+      "question": "로마의 트레비 분수에 방문객들은 전통적으로 무엇을 던지나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "이 트리는 1940년대 영국의 지원에 대한 오슬로시의 감사 표시예요.",
+      "id": "misc-0057",
+      "options": ["핀란드", "덴마크", "노르웨이", "스웨덴"],
+      "question": "1947년부터 해마다 런던 트래펄가 광장에 크리스마스트리를 보내 온 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "독수리가 선인장 위에서 뱀을 먹는 곳에 수도를 세우라는 아스테카 전설을 떠올리게 해요.",
+      "id": "misc-0022",
+      "options": [
+        "뱀을 문 독수리",
+        "얼굴이 있는 태양",
+        "깃털 달린 뱀",
+        "떠오르는 해 아래 재규어"
+      ],
+      "question": "멕시코 국기에서 선인장 위에 있는 것은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "검은 오각형 12개와 흰 육각형 20개로 이루어져 있어요. 이 디자인은 1970년 월드컵에서 처음 쓰였어요.",
+      "id": "misc-0059",
+      "options": ["32개", "36개", "24개", "28개"],
+      "question": "검은색과 흰색 조각으로 된 고전적인 축구공은 조각이 모두 몇 개인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "바이에른의 루트비히 2세는 19세기에 방어용이 아닌 동화 같은 은신처로 이 성을 지었어요.",
+      "id": "misc-0033",
+      "options": ["오스트리아", "스위스", "프랑스", "독일"],
+      "question": "디즈니의 유명한 성에 영감을 준 노이슈반슈타인성은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "SOS는 모스 부호(점 셋, 선 셋, 점 셋)를 보내기도 알아보기도 쉬워서 선택되었어요.",
+      "id": "misc-0061",
+      "options": [
+        "도움을 보내라",
+        "아무것도 아님",
+        "우리 영혼을 구하라",
+        "우리 배를 구하라"
+      ],
+      "question": "조난 신호 SOS는 무엇의 약자인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "비가 오면 털 섬유가 부풀어 올 사이의 틈을 막고, 건조한 더위 속에서는 성긴 올 사이로 공기가 통해요.",
+      "id": "misc-0085",
+      "options": ["염소털", "야자 섬유", "면", "낙타 가죽"],
+      "question": "'털로 된 집'이라 불리는 베두인의 전통 천막은 주로 무엇으로 짜나요?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "잉어는 센 물살을 거슬러 헤엄쳐 오르기 때문에, 아이들의 강인함과 성공을 상징해요.",
+      "id": "misc-0058",
+      "options": ["연어", "금붕어", "잉어", "참치"],
+      "question": "일본의 어린이날에 가족들은 어떤 물고기 모양의 깃발을 다나요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "베네치아에는 다리가 400개 넘게 있어요. 사람들은 걷거나 배를 타고 다니고, 구급차와 쓰레기 수거도 배로 해요.",
+      "id": "misc-0026",
+      "options": ["자동차", "교회", "다리", "상점"],
+      "question": "다음 중 베네치아 역사 지구의 거리에서 볼 수 없는 것은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "이들은 크리스마스 전 서로 다른 밤에 한 명씩 찾아오며, '숟가락 핥기'나 '문 쾅 닫기' 같은 이름을 가지고 있어요.",
+      "id": "misc-0081",
+      "options": ["아이슬란드", "에스토니아", "노르웨이", "페로 제도"],
+      "question": "장난꾸러기 '율 라드' 13명이 등장하는 크리스마스 전통은 어느 나라의 것인가요?"
+    }
+  ]
+}

@@ -1,0 +1,2362 @@
+{
+  "id": "pack-001",
+  "lang": "ko",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "태평양은 지구 표면의 약 3분의 1을 덮고 있어서, 지구의 육지를 모두 합친 것보다 넓어요.",
+      "id": "geo-0001",
+      "options": ["남극해", "인도양", "대서양", "태평양"],
+      "question": "지구에서 가장 큰 바다는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "오스트레일리아의 약 3분의 1은 사막이고, 반건조 지역은 그보다 훨씬 넓어요. 이보다 건조한 곳은 상주인구가 없는 남극 대륙뿐이에요.",
+      "id": "geo-0008",
+      "options": ["아프리카", "남아메리카", "오스트레일리아", "아시아"],
+      "question": "사람이 사는 대륙 중 가장 건조한 곳은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "안데스산맥은 남아메리카 서쪽을 따라 약 7,000km 이어지며 7개 나라를 지나요.",
+      "id": "geo-0011",
+      "options": ["안데스산맥", "우랄산맥", "히말라야산맥", "로키산맥"],
+      "question": "세계에서 가장 긴 대륙 산맥은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "프랑스는 프랑스령 기아나를 통해 브라질과 약 730km의 국경을 맞대고 있어요. 스페인과의 국경(약 620km)보다 길어요.",
+      "id": "geo-0003",
+      "options": ["프랑스", "스페인", "포르투갈", "네덜란드"],
+      "question": "브라질과 맞댄 국경이 자국의 가장 긴 육상 국경인 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "높이 약 8,849m인 에베레스트는 해발 고도가 가장 높은 곳이에요. 히말라야는 지금도 해마다 몇 mm씩 높아지고 있어요.",
+      "id": "geo-0004",
+      "options": ["알프스산맥", "히말라야산맥", "카라코람산맥", "안데스산맥"],
+      "question": "에베레스트산은 어느 산맥에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "해발 약 3,800m에 있는 티티카카호는 배가 다닐 수 있는 호수 중 세계에서 가장 높은 곳에 있다고 흔히 일컬어져요.",
+      "id": "geo-0014",
+      "options": ["칠레", "아르헨티나", "에콰도르", "볼리비아"],
+      "question": "티티카카호는 페루와 어느 나라에 걸쳐 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "나일강은 카이로를 지나 북쪽으로 흘러 지중해로 들어가요. 이집트 사람은 거의 모두 이 강 가까이에 살아요.",
+      "id": "geo-0005",
+      "options": ["니제르강", "나일강", "유프라테스강", "콩고강"],
+      "question": "카이로를 지나 흐르는 강은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "아주 짠 물에서 잘 자라는 조류 때문에 호수가 분홍빛을 띠어요. 현지 일꾼들은 호수 바닥에서 손으로 소금을 건져 올려요.",
+      "id": "geo-0012",
+      "options": ["말리", "차드", "세네갈", "니제르"],
+      "question": "다카르 근처의 분홍빛 호수인 레트바호는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "캐나다에는 10헥타르보다 큰 호수가 수십만 개 있고, 그중 상당수는 빙하기의 빙하가 깎아 만들었어요.",
+      "id": "geo-0017",
+      "options": ["스웨덴", "러시아", "핀란드", "캐나다"],
+      "question": "호수가 가장 많은 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "교토는 794년부터 1868년까지 천황의 거처였어요. 그해 조정이 에도로 옮겨 갔고, 에도는 도쿄로 이름이 바뀌었어요.",
+      "id": "geo-0018",
+      "options": ["가마쿠라", "나라", "오사카", "교토"],
+      "question": "도쿄 이전에 1,000년 넘게 일본 천황이 머문 수도는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "두 강은 섞이기 전까지 서로 다른 색으로 나란히 흘러요. 우기에 불어나는 물은 대부분 청나일강이 실어 와요.",
+      "id": "geo-0037",
+      "options": ["카이로", "아디스아바바", "하르툼", "주바"],
+      "question": "청나일강과 백나일강이 만나는 수도는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "베네치아는 다리 약 400개로 이어진 118개 섬에 걸쳐 있고, 건물들은 진흙 속에 박은 나무 말뚝 위에 서 있어요.",
+      "id": "geo-0009",
+      "options": ["베네치아", "제노바", "트리에스테", "나폴리"],
+      "question": "석호 속 100개가 넘는 작은 섬 위에 세워진 이탈리아 도시는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "볼가강은 러시아를 지나 약 3,530km를 흐르고, 대양이 아니라 카스피해로 흘러들어요.",
+      "id": "geo-0019",
+      "options": ["볼가강", "드니프로강", "라인강", "도나우강"],
+      "question": "유럽에서 가장 긴 강은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "2,300km 넘게 뻗은 그레이트배리어리프는 세계에서 가장 큰 산호초 지대로, 우주에서도 보여요.",
+      "id": "geo-0010",
+      "options": ["오스트레일리아", "인도네시아", "필리핀", "뉴질랜드"],
+      "question": "그레이트배리어리프는 어느 나라 앞바다에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "도나우강은 10개 나라를 지나거나 그 국경을 따라 흐르고, 빈, 브라티슬라바, 부다페스트, 베오그라드 네 수도를 거쳐요.",
+      "id": "geo-0020",
+      "options": ["라인강", "도나우강", "볼가강", "엘베강"],
+      "question": "가장 많은 나라를 지나는 유럽의 강은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "지브롤터 해협은 가장 좁은 곳의 폭이 약 14km밖에 안 돼서, 맑은 날에는 스페인에서 모로코가 보여요.",
+      "id": "geo-0013",
+      "options": [
+        "호르무즈 해협",
+        "메시나 해협",
+        "지브롤터 해협",
+        "보스포루스 해협"
+      ],
+      "question": "유럽과 아프리카가 가장 가까운 곳에서 두 대륙을 가르는 해협은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "앙헬 폭포는 꼭대기가 평평한 산에서 979m를 떨어지는데, 물의 상당 부분이 바닥에 닿기 전에 안개가 돼요.",
+      "id": "geo-0023",
+      "options": ["가이아나", "베네수엘라", "콜롬비아", "브라질"],
+      "question": "중간에 끊기지 않고 떨어지는 폭포 중 세계에서 가장 높은 앙헬 폭포는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "사하라 사막은 대략 미국이나 중국만 한 크기예요. 이보다 큰 것은 남극과 북극의 한랭 사막뿐이에요.",
+      "id": "geo-0015",
+      "options": ["칼라하리 사막", "아타카마 사막", "고비 사막", "사하라 사막"],
+      "question": "세계에서 가장 큰 더운 사막은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "스위스에는 법으로 정한 공식 수도가 없어요. 베른은 정부 소재지이며 '연방 도시'로 불려요.",
+      "id": "geo-0052",
+      "options": ["베른", "제네바", "바젤", "취리히"],
+      "question": "스위스의 '연방 도시'이자 정부 소재지인 도시는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "킬리만자로는 높이 5,895m로 세계에서 가장 높은 독립된 산이며, 적도 바로 남쪽인데도 빙하가 있어요.",
+      "id": "geo-0021",
+      "options": ["탄자니아", "에티오피아", "우간다", "케냐"],
+      "question": "아프리카 최고봉인 킬리만자로산은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "남아프리카 공화국에서는 프리토리아가 정부 소재지, 케이프타운이 의회 소재지이고, 블룸폰테인에는 최고 항소 법원이 있어요.",
+      "id": "geo-0029",
+      "options": ["나이지리아", "남아공", "케냐", "이집트"],
+      "question": "정부, 의회, 법원을 위한 수도가 하나씩, 모두 세 개인 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "마추픽추는 우루밤바강 위 능선의 해발 약 2,430m에 있으며, 1911년까지 바깥세상에 거의 알려지지 않았어요.",
+      "id": "geo-0022",
+      "options": ["볼리비아", "페루", "콜롬비아", "에콰도르"],
+      "question": "15세기 잉카의 성채 마추픽추는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "한때 운석 충돌구로 여겨졌던 리샤트 구조는 지금은 깎여 나간 돔으로 봐요. 그 암석층이 거대한 고리 모양을 이루고 있어요.",
+      "id": "geo-0030",
+      "options": ["말리", "모리타니", "니제르", "알제리"],
+      "question": "우주비행사들이 지형지물로 삼는 지름 40km의 암석 고리 '사하라의 눈'은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "가장 가까운 육지는 약 2,700km 떨어져 있지만 우주 정거장은 약 400km 상공을 돌아요. 그래서 머리 위를 지날 때는 그 승무원들이 가장 가까운 사람이 돼요.",
+      "id": "geo-0054",
+      "options": ["우주비행사", "크루즈 승객", "어선 선원", "등대지기"],
+      "question": "육지에서 가장 먼 바다 위 지점인 포인트 니모에서 가장 가까운 사람은 흔히 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "웰링턴은 남위 약 41°에 있으며, 쿡 해협을 타고 몰아치는 강한 바람으로 유명해요.",
+      "id": "geo-0031",
+      "options": ["부에노스아이레스", "웰링턴", "몬테비데오", "캔버라"],
+      "question": "주권 국가의 수도 중 가장 남쪽에 있는 곳은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "인도네시아의 섬들은 동서로 약 5,000km에 걸쳐 있어서, 미국 본토보다도 폭이 넓어요.",
+      "id": "geo-0026",
+      "options": ["말레이시아", "필리핀", "일본", "인도네시아"],
+      "question": "약 1만 7,000개의 섬으로 이루어진 세계 최대의 군도 국가는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "섬들이 약 350만 km²의 바다에 흩어져 있어요. 1995년에는 날짜 변경선을 옮겨서 나라 전체가 같은 날짜를 쓰게 했어요.",
+      "id": "geo-0055",
+      "options": ["투발루", "피지", "사모아", "키리바시"],
+      "question": "적도와 180° 경선에 모두 걸쳐 있는 태평양 섬나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "1857년 빅토리아 여왕이 오타와를 수도로 정했어요. 영어권과 프랑스어권 캐나다 사이에 있다는 점도 한 이유였어요.",
+      "id": "geo-0027",
+      "options": ["토론토", "밴쿠버", "몬트리올", "오타와"],
+      "question": "캐나다의 수도는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "산마리노는 현존하는 가장 오래된 공화국이라고 자처하며, 전통적으로 301년에 세워졌다고 전해져요.",
+      "id": "geo-0034",
+      "options": ["몰타", "안도라", "모나코", "산마리노"],
+      "question": "이탈리아에 완전히 둘러싸인 작은 공화국은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "1923년 튀르키예 공화국이 세워지면서 앙카라가 이스탄불 대신 수도가 되었어요.",
+      "id": "geo-0028",
+      "options": ["이즈미르", "부르사", "앙카라", "이스탄불"],
+      "question": "튀르키예의 수도는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "아타카마의 일부 기상 관측소에는 비가 내린 기록이 한 번도 없고, NASA는 이곳에서 화성 탐사 로버를 시험해요.",
+      "id": "geo-0035",
+      "options": ["칠레", "아르헨티나", "페루", "볼리비아"],
+      "question": "극지방을 빼면 지구에서 가장 건조한 사막인 아타카마 사막은 주로 어느 나라에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "이곳에는 화려한 시클리드 수백 종이 사는데, 거의 모두 다른 곳에는 없는 종이에요. 관상용 시클리드 중에도 이 호수 출신이 많아요.",
+      "id": "geo-0056",
+      "options": ["말라위호", "빅토리아호", "차드호", "볼타호"],
+      "question": "지구의 다른 어떤 호수보다 물고기 종이 많은 아프리카 호수는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "'에콰도르'는 스페인어로 그냥 '적도'라는 뜻이에요. 적도는 수도 키토 바로 북쪽을 지나요.",
+      "id": "geo-0032",
+      "options": ["북회귀선", "본초 자오선", "적도", "남회귀선"],
+      "question": "에콰도르라는 나라 이름은 어떤 지리적 선에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "챌린저 해연의 깊이는 약 10,900m예요. 에베레스트산을 넣어도 꼭대기가 수면에서 2km 넘게 아래에 있어요.",
+      "id": "geo-0043",
+      "options": [
+        "통가 해구",
+        "푸에르토리코 해구",
+        "마리아나 해구",
+        "자바 해구"
+      ],
+      "question": "바다에서 가장 깊다고 알려진 지점인 챌린저 해연은 어느 해구에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "브라질은 남아메리카의 거의 절반을 차지하며, 칠레와 에콰도르를 뺀 모든 남아메리카 나라와 국경을 맞대고 있어요.",
+      "id": "geo-0036",
+      "options": ["콜롬비아", "브라질", "페루", "아르헨티나"],
+      "question": "면적으로 남아메리카에서 가장 큰 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "안도라의 수도 안도라라베야는 해발 약 1,023m에 있어서 유럽에서 가장 높은 수도예요.",
+      "id": "geo-0046",
+      "options": ["안도라", "산마리노", "모나코", "리히텐슈타인"],
+      "question": "피레네산맥 높은 곳에 자리한 소국은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "오카방고강은 칼라하리 사막에서 넓게 퍼지며 증발해서, 야생 동물로 가득한 계절성 습지를 만들어요.",
+      "id": "geo-0060",
+      "options": ["앙골라", "잠비아", "보츠와나", "나미비아"],
+      "question": "바다에 닿지 않는 내륙 삼각주인 오카방고 삼각주는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "우간다, 케냐, 탄자니아에 걸쳐 있는 빅토리아호는 세계에서 가장 큰 열대 호수예요.",
+      "id": "geo-0039",
+      "options": ["말라위호", "빅토리아호", "탕가니카호", "차드호"],
+      "question": "아프리카에서 가장 큰 호수는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "이스터섬은 남아메리카 해안에서 약 3,500km 떨어져 있어서, 지구에서 가장 외딴 유인도 중 하나예요.",
+      "id": "geo-0048",
+      "options": ["에콰도르", "페루", "칠레", "뉴질랜드"],
+      "question": "남태평양의 이스터섬(라파누이)은 어느 나라 영토인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "아마존강은 대서양으로 엄청난 양의 민물을 쏟아 내서, 먼 앞바다까지 바닷물이 눈에 띄게 덜 짜요.",
+      "id": "geo-0040",
+      "options": ["나일강", "양쯔강", "아마존강", "콩고강"],
+      "question": "지구에서 가장 많은 물을 실어 나르는 강은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "판게아에는 지구의 거의 모든 육지가 모여 있었어요. 아프리카와 남아메리카의 해안선이 서로 들어맞는 것이 그 흔적이에요.",
+      "id": "geo-0049",
+      "options": ["곤드와나", "로라시아", "로디니아", "판게아"],
+      "question": "약 2억 년 전에 갈라지기 시작한 초대륙의 이름은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "이중 내륙국은 내륙국으로만 둘러싸여 있어서, 바다에 가려면 국경을 두 번 넘어야 해요.",
+      "id": "geo-0061",
+      "options": ["안도라", "오스트리아", "리히텐슈타인", "스위스"],
+      "question": "우즈베키스탄은 둘뿐인 이중 내륙국 중 하나예요. 나머지 하나는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "아이슬란드 남서부의 게이시르에서 온 말이에요. 이 이름은 '솟구치다'라는 뜻의 아이슬란드어 동사와 관련이 있어요.",
+      "id": "geo-0041",
+      "options": ["아이슬란드", "뉴질랜드", "노르웨이", "일본"],
+      "question": "영어 단어 'geyser'(간헐천)는 어느 나라의 온천 이름에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "헌법상 네덜란드의 수도는 암스테르담이지만, 의회와 정부, 국왕의 집무실은 헤이그에 있어요.",
+      "id": "geo-0051",
+      "options": ["로테르담", "위트레흐트", "헤이그", "암스테르담"],
+      "question": "네덜란드의 의회와 정부가 자리한 도시는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "송네피오르는 내륙으로 200km 넘게 들어가며, 깊이가 1,300m가 넘는 곳도 있어요.",
+      "id": "geo-0042",
+      "options": ["덴마크", "아이슬란드", "스웨덴", "노르웨이"],
+      "question": "게이랑에르피오르와 송네피오르는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "길이 약 6,300km인 양쯔강은 한 나라, 즉 중국 안에서만 흐르는 강 중 가장 길어요.",
+      "id": "geo-0053",
+      "options": ["갠지스강", "황허강", "양쯔강", "메콩강"],
+      "question": "아시아에서 가장 긴 강은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "이 이름은 굉음을 내며 솟구치는 물보라를 표현해요. 우기에는 물보라가 400m 넘게 치솟기도 해요.",
+      "id": "geo-0065",
+      "options": [
+        "빛나는 안개",
+        "떨어지는 강",
+        "천둥 치는 연기",
+        "노래하는 물"
+      ],
+      "question": "빅토리아 폭포의 현지 이름 '모시오아투냐'는 무슨 뜻인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "아프리카에는 국제적으로 인정받는 주권 국가가 54개 있어서, 전 세계 나라의 4분의 1이 넘어요.",
+      "id": "geo-0044",
+      "options": ["유럽", "아시아", "남아메리카", "아프리카"],
+      "question": "나라가 가장 많은 대륙은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "아드리아해는 지중해에서 가장 북쪽으로 뻗은 바다이며, 크로아티아 해안의 아주 맑은 물로 유명해요.",
+      "id": "geo-0057",
+      "options": ["티레니아해", "이오니아해", "에게해", "아드리아해"],
+      "question": "이탈리아와 발칸반도 사이에 있는 바다는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "프라하의 역사 지구는 20세기를 거치면서도 대부분 온전히 남았고, 유네스코 세계 유산으로 지정되어 있어요.",
+      "id": "geo-0058",
+      "options": ["브뤼허", "프라하", "빈", "크라쿠프"],
+      "question": "'백 개의 첨탑 도시'라는 별명을 가진 유럽의 수도는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "킬 운하는 북해와 발트해를 이어서, 배들이 덴마크 반도를 돌아가는 약 460km를 아끼게 해 줘요.",
+      "id": "geo-0079",
+      "options": ["독일", "덴마크", "네덜란드", "스웨덴"],
+      "question": "세계에서 가장 붐비는 인공 수로 중 하나인 킬 운하는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "이 섬들은 해안에서 약 1,000km 떨어져 있고, 독특한 야생 동물은 찰스 다윈의 진화 사상에 영감을 주었어요.",
+      "id": "geo-0047",
+      "options": ["칠레", "콜롬비아", "에콰도르", "페루"],
+      "question": "갈라파고스 제도는 어느 나라 영토인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "북아메리카판과 유라시아판이 아이슬란드를 가로지르며 해마다 약 2cm씩 벌어지고, 싱벨리르에서는 두 판 사이를 걸어 볼 수 있어요.",
+      "id": "geo-0059",
+      "options": [
+        "동아프리카 열곡대",
+        "알프스 조산대",
+        "대서양 중앙 해령",
+        "불의 고리"
+      ],
+      "question": "아이슬란드는 어떤 지각 구조 위에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "1884년 국제회의에서 그리니치 왕립 천문대를 세계 경도의 기준점으로 정했어요.",
+      "id": "geo-0050",
+      "options": ["웨스트민스터", "캠던", "리치먼드", "그리니치"],
+      "question": "경도 0°인 본초 자오선은 런던의 어느 지역을 지나나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "아르헨티나의 아콩카과산은 높이가 약 6,961m로, 아시아 밖에서 가장 높은 봉우리예요.",
+      "id": "geo-0064",
+      "options": ["침보라소산", "우아스카란산", "아콩카과산", "일리마니산"],
+      "question": "남아메리카에서 가장 높은 산은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "이 도로는 알래스카에서 아르헨티나까지 약 3만 km 이어지지만, 파나마와 콜롬비아 사이의 늪과 열대 우림 약 100km에는 길이 없어요.",
+      "id": "geo-0083",
+      "options": [
+        "시베리아 횡단 도로",
+        "팬아메리칸 도로",
+        "66번 국도",
+        "실크로드"
+      ],
+      "question": "도로가 없는 밀림 지대인 다리엔 갭은 어느 도로의 유일한 끊긴 구간인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "북극해는 가장 얕은 대양이기도 하며, 1년 중 대부분의 기간에 넓은 지역이 해빙으로 덮여 있어요.",
+      "id": "geo-0062",
+      "options": ["인도양", "대서양", "남극해", "북극해"],
+      "question": "세계의 5대양 중 가장 작은 바다는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "그리스 사람들은 자기 나라를 헬라스 또는 엘라다라고 불러요. '그리스'라는 이름은 라틴어 이름 그라이키아에서 왔어요.",
+      "id": "geo-0066",
+      "options": ["몰타", "그리스", "알바니아", "키프로스"],
+      "question": "공식 영어 국호가 'Hellenic Republic'인 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "높이 약 4,806m인 몽블랑은 프랑스와 이탈리아 국경에 있으며, 그 아래를 지나는 터널이 두 나라를 이어요.",
+      "id": "geo-0063",
+      "options": ["그로스글로크너", "몽블랑", "아이거", "마터호른"],
+      "question": "알프스산맥에서 가장 높은 산은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "네팔은 1986년에 UTC+5:45로 바꿨어요. 시계가 45분 단위로 어긋나는 몇 안 되는 곳 중 하나예요.",
+      "id": "geo-0069",
+      "options": ["인도", "스리랑카", "네팔", "부탄"],
+      "question": "표준시가 협정 세계시(UTC)보다 5시간 45분 빠른 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "전설에 따르면 로렐라이의 요정이 뱃사공들을 홀려 죽음으로 이끌었다고 해요. 그곳은 강폭이 좁고 물살이 세요.",
+      "id": "geo-0084",
+      "options": ["엘베강", "라인강", "도나우강", "모젤강"],
+      "question": "독일의 유명한 로렐라이 바위 옆을 흐르는 강은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "'닛폰'은 대략 '해의 근원'이라는 뜻이라서, 일본을 해 뜨는 나라라고 불러요.",
+      "id": "geo-0067",
+      "options": ["중국", "한국", "베트남", "일본"],
+      "question": "자국어 이름이 '닛폰'인 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "백향목은 수천 년 동안 이 지역의 상징이었고, 고대 문헌에도 등장해요.",
+      "id": "geo-0070",
+      "options": ["레바논", "요르단", "키프로스", "캐나다"],
+      "question": "국기에 초록색 백향목이 그려진 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "이 별명은 오히려 겸손한 편이에요. 핀란드에는 500m²보다 큰 호수가 약 18만 8,000개 있어요.",
+      "id": "geo-0068",
+      "options": ["캐나다", "스코틀랜드", "스웨덴", "핀란드"],
+      "question": "'천 개의 호수의 나라'라는 별명을 가진 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "파묵칼레는 '목화의 성'이라는 뜻이에요. 계단은 칼슘이 풍부한 온천수가 수천 년 동안 쌓아 올린 트래버틴이에요.",
+      "id": "geo-0074",
+      "options": ["튀르키예", "그리스", "조지아", "이란"],
+      "question": "따뜻한 광천수가 고인 하얀 계단식 웅덩이로 유명한 파묵칼레는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "아마존강은 페루 안데스산맥 높은 곳의 눈 녹은 물에서 시작되는데, 태평양 해안에서 200km도 안 되는 곳이에요.",
+      "id": "geo-0086",
+      "options": ["브라질", "페루", "볼리비아", "콜롬비아"],
+      "question": "아마존강의 발원지는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "몬순 때는 메콩강이 톤레사프강으로 물을 거꾸로 밀어 올려서, 호수가 건기 때보다 몇 배나 커져요.",
+      "id": "geo-0071",
+      "options": ["태국", "캄보디아", "라오스", "미얀마"],
+      "question": "우기에 엄청나게 불어나는 호수인 톤레사프호는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "알제리의 면적은 약 238만 km²이고, 그 5분의 4가 넘는 땅이 사하라 사막에 있어요.",
+      "id": "geo-0075",
+      "options": ["알제리", "수단", "민주콩고", "리비아"],
+      "question": "면적으로 아프리카에서 가장 큰 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "와디럼의 사암과 화강암 산들은 붉은 모래 위로 솟아 있어요. 영화 〈마션〉의 장면도 이곳에서 찍었어요.",
+      "id": "geo-0072",
+      "options": ["사우디아라비아", "시리아", "요르단", "이집트"],
+      "question": "영화에서 화성 역할을 하기도 한 붉은 사막 골짜기 와디럼은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "방문객은 거대한 사자 앞발 두 개 사이를 지나 정상에 올라요. 이 앞발은 사자 모양의 거대한 출입문 중 유일하게 남은 부분이에요.",
+      "id": "geo-0081",
+      "options": ["스리랑카", "인도", "모리셔스", "미얀마"],
+      "question": "거대한 바위 꼭대기에 세운 5세기 궁전 시기리야는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "브라질은 아주 넓어서 북위 약 5°부터 남위 34°까지 걸쳐 있어 두 선을 모두 품어요.",
+      "id": "geo-0091",
+      "options": ["인도네시아", "페루", "브라질", "오스트레일리아"],
+      "question": "적도와 남회귀선이 모두 지나는 유일한 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "하롱은 '내려온 용'이라는 뜻이에요. 전설에 따르면 용이 꼬리를 휘둘러 섬들을 만들었다고 해요.",
+      "id": "geo-0073",
+      "options": ["베트남", "태국", "말레이시아", "필리핀"],
+      "question": "석회암 섬 약 1,600개가 흩어져 있는 하롱베이는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "몰디브의 평균 지면은 해수면보다 약 1.5m 높을 뿐이어서, 해수면 상승은 섬들에 심각한 걱정거리예요.",
+      "id": "geo-0082",
+      "options": ["방글라데시", "몰디브", "투발루", "네덜란드"],
+      "question": "평균 해발 고도가 세계에서 가장 낮은 나라는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "파나마 운하가 열리기 전에는 배들이 혼곶을 돌아가야 했는데, 이 바다는 폭풍과 거대한 파도로 악명이 높아요.",
+      "id": "geo-0076",
+      "options": ["남아메리카", "오스트레일리아", "남극", "아프리카"],
+      "question": "혼곶(케이프혼)은 어느 대륙의 남쪽 끝인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "에트나산은 유럽에서 가장 높은 활화산이고, 비옥한 산비탈은 포도밭과 과수원으로 덮여 있어요.",
+      "id": "geo-0085",
+      "options": ["코르시카섬", "시칠리아섬", "크레타섬", "사르데냐섬"],
+      "question": "세계에서 가장 활발한 화산 중 하나인 에트나산은 어느 섬에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "유역이 적도 양쪽에 걸쳐 있어서 어딘가는 늘 우기예요. 수심이 220m가 넘어 측정된 강 중 가장 깊기도 해요.",
+      "id": "geo-0093",
+      "options": ["북회귀선", "본초 자오선", "남회귀선", "적도"],
+      "question": "콩고강은 큰 강 중 유일하게 어느 선을 두 번 건너나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "배는 갑문을 통해 약 26m 들어 올려져 가툰호를 건넌 뒤, 반대편에서 다시 내려가요.",
+      "id": "geo-0077",
+      "options": ["남극해", "대서양", "북극해", "인도양"],
+      "question": "파나마 운하는 태평양과 어느 바다를 잇나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "에티오피아의 수도 아디스아바바는 해발 약 2,350m에 있으며, 아프리카 연합 본부가 있어요.",
+      "id": "geo-0088",
+      "options": ["수단", "에리트레아", "소말리아", "에티오피아"],
+      "question": "역사적으로 아비시니아라고 불린 아프리카 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "1869년에 개통한 수에즈 운하에는 갑문이 없어요. 두 바다의 수면 높이가 거의 같기 때문이에요.",
+      "id": "geo-0078",
+      "options": ["카스피해", "흑해", "아라비아해", "홍해"],
+      "question": "수에즈 운하는 지중해와 어느 바다를 잇나요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "보르네오섬은 세계에서 세 번째로 큰 섬이며, 세 나라로 나뉜 유일한 섬이에요.",
+      "id": "geo-0095",
+      "options": ["브루나이", "동티모르", "필리핀", "싱가포르"],
+      "question": "보르네오섬은 인도네시아, 말레이시아와 어느 나라가 나눠 가지고 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "이 베네수엘라 호수 위에서는 1년에 약 140~160일 밤에 폭풍이 몇 시간씩 번쩍여요. 옛 뱃사람들은 그 불빛을 천연 등대로 삼았어요.",
+      "id": "geo-0094",
+      "options": ["티티카카호", "마라카이보호", "니카라과호", "아티틀란호"],
+      "question": "'카타툼보 번개' 때문에 번개 밀도가 세계에서 가장 높은 호수는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "바다라고 불리지만 카스피해는 보통 세계에서 가장 큰 호수로 분류돼요. 염도는 바닷물의 약 3분의 1이에요.",
+      "id": "geo-0080",
+      "options": ["카스피해", "빅토리아호", "슈피리어호", "바이칼호"],
+      "question": "지구에서 가장 큰 내륙 수역은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "히스파니올라섬에는 카리브해에서 가장 높은 봉우리인 두아르테산(약 3,100m)이 있어요.",
+      "id": "geo-0096",
+      "options": ["푸에르토리코", "자메이카", "쿠바", "히스파니올라섬"],
+      "question": "아이티와 도미니카 공화국이 함께 자리한 섬은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "우랄산맥은 북극해에서 카자흐스탄까지 약 2,500km 뻗어 있고, 지구에서 가장 오래된 산맥 중 하나예요.",
+      "id": "geo-0087",
+      "options": ["알타이산맥", "카르파티아산맥", "우랄산맥", "캅카스산맥"],
+      "question": "관례상 유럽과 아시아의 경계로 쓰이는 산맥은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "이 삼각주에는 지구에서 가장 큰 맹그로브 숲이자 벵골호랑이의 서식지인 순다르반스가 있어요.",
+      "id": "geo-0099",
+      "options": ["인도", "미얀마", "방글라데시", "네팔"],
+      "question": "세계 최대의 삼각주인 갠지스-브라마푸트라 삼각주는 대부분 어느 나라에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "몽골의 수도는 연평균 기온이 0°C를 조금 밑돌고, 겨울밤에는 -30°C보다 추운 날이 많아요.",
+      "id": "geo-0098",
+      "options": ["울란바토르", "모스크바", "헬싱키", "오타와"],
+      "question": "연평균 기온이 가장 낮은 수도는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "1935년 정부는 다른 나라들에 '아리아인(이란인)의 땅'이라는 뜻의 자국 이름 '이란'을 써 달라고 요청했어요.",
+      "id": "geo-0089",
+      "options": ["아프가니스탄", "이라크", "튀르키예", "이란"],
+      "question": "1935년까지 페르시아로 알려졌던 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "사막이라고 불리지만, 칼라하리의 일부 지역은 비가 충분히 내려 풀과 나무, 큰 동물들이 살 수 있어요.",
+      "id": "geo-0100",
+      "options": ["나미브 사막", "칼라하리 사막", "카루 사막", "사하라 사막"],
+      "question": "보츠와나의 넓은 지역을 덮고 있는 사막은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "사해의 물은 바닷물보다 10배 가까이 짜요. 해수면보다 약 430m 낮은 호숫가는 지구에서 가장 낮은 육지예요.",
+      "id": "geo-0090",
+      "options": [
+        "저절로 뜨기",
+        "물속에서 숨쉬기",
+        "물 위를 걷기",
+        "바닥 내려다보기"
+      ],
+      "question": "사해는 아주 짜서 사람이 그 안에서 무엇을 할 수 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "산스크리트어 '신두'가 페르시아어로 '힌두', 그리스어로 '인도스'가 되었고, 로마인은 이 강 너머 땅 전체를 '인디아'라고 불렀어요.",
+      "id": "geo-0102",
+      "options": ["갠지스강", "브라마푸트라강", "나르마다강", "인더스강"],
+      "question": "'인도'라는 이름은 어느 강의 이름에서 왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "아일랜드 서해안의 이 절벽은 약 14km에 걸쳐 이어지며, 수천 마리의 바닷새가 둥지를 틀어요.",
+      "id": "geo-0092",
+      "options": ["아이슬란드", "노르웨이", "스코틀랜드", "아일랜드"],
+      "question": "대서양 위로 200m 넘게 솟은 모허 절벽은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "스톡홀름의 섬들은 멜라렌호와 발트해가 만나는 곳에 있고, 약 50개의 다리가 섬들을 이어요.",
+      "id": "geo-0106",
+      "options": ["오슬로", "헬싱키", "코펜하겐", "스톡홀름"],
+      "question": "14개의 섬 위에 세워진 스칸디나비아의 수도는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "브란성은 트란실바니아에 있지만, '가시 공작' 블라드가 이곳에 살았다는 증거는 거의 없어요.",
+      "id": "geo-0097",
+      "options": ["세르비아", "불가리아", "루마니아", "헝가리"],
+      "question": "'드라큘라 성'으로 홍보되는 브란성은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "페로 제도에는 양이 약 7만 마리 있고, 이름도 '양의 섬들'이라는 뜻으로 여겨져요.",
+      "id": "geo-0108",
+      "options": ["영국", "스웨덴", "노르웨이", "덴마크"],
+      "question": "페로 제도는 어느 왕국에 속한 자치령인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "사모아는 목요일에서 곧바로 토요일로 넘어갔어요. 주요 교역국인 오스트레일리아, 뉴질랜드와 근무일을 맞추기 위해서였어요.",
+      "id": "geo-0103",
+      "options": ["피지", "통가", "투발루", "사모아"],
+      "question": "날짜 변경선 반대편으로 옮겨 가면서 2011년 12월 30일을 통째로 건너뛴 태평양 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "평평한 정상 위로 구름층이 쏟아지듯 흘러내릴 때가 많은데, 현지 사람들은 이를 '식탁보'라고 불러요.",
+      "id": "geo-0105",
+      "options": ["나이로비", "더반", "요하네스버그", "케이프타운"],
+      "question": "꼭대기가 평평한 테이블산 아래에 있는 도시는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "스발바르에는 영구 동토층 깊숙이 파 들어간 농작물 종자 비상 저장고인 '스발바르 국제 종자 저장고'가 있어요.",
+      "id": "geo-0109",
+      "options": ["아이슬란드", "노르웨이", "핀란드", "덴마크"],
+      "question": "북극의 스발바르 제도는 어느 나라 영토인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "제도의 이름은 카나리아새가 아니라 '개'를 뜻하는 라틴어 '카니스'에서 왔어요. 오히려 새가 이 섬의 이름을 따서 불리게 되었어요.",
+      "id": "geo-0107",
+      "options": ["모로코", "이탈리아", "스페인", "포르투갈"],
+      "question": "카나리아 제도는 어느 나라 영토인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "대왕고래는 몸길이가 약 30m, 몸무게가 150t이 넘을 수 있어요. 혀 하나의 무게만 해도 코끼리 한 마리와 맞먹을 수 있어요.",
+      "id": "nat-0001",
+      "options": ["고래상어", "향유고래", "대왕고래", "아프리카코끼리"],
+      "question": "오늘날 살아 있는 동물 중 가장 큰 동물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "치타는 짧은 순간 시속 약 100km까지 달릴 수 있고, 웬만한 스포츠카보다 가속이 빨라요.",
+      "id": "nat-0002",
+      "options": ["가지뿔영양", "치타", "그레이하운드", "사자"],
+      "question": "육지에서 가장 빠른 동물은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "북극곰의 털은 사실 반투명해서 하얗게 보일 뿐이에요. 그 아래의 검은 피부는 햇볕의 열을 흡수하는 데 도움이 돼요.",
+      "id": "nat-0005",
+      "options": ["검은색", "흰색", "분홍색", "회색"],
+      "question": "북극곰의 털 아래 피부는 무슨 색인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "바닐라 난초의 꽃은 약 하루만 피어 있고, 멕시코 밖에서는 보통 사람이 손으로 꽃가루받이를 해 줘요.",
+      "id": "nat-0016",
+      "options": ["콩과 식물", "야자나무", "백합", "난초"],
+      "question": "바닐라는 어떤 종류의 식물 꼬투리에서 얻나요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "매는 '스투프'라고 불리는 가파른 급강하에서 시속 300km를 넘을 수 있어서, 지구에서 가장 빠른 동물이에요.",
+      "id": "nat-0003",
+      "options": ["나그네알바트로스", "검독수리", "매", "칼새"],
+      "question": "사냥하려고 급강하할 때 가장 빠른 동물인 새는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "춤의 각도는 태양을 기준으로 한 방향을, 춤의 길이는 먹이까지의 거리를 나타내요.",
+      "id": "nat-0012",
+      "options": ["8자 춤으로", "날개 색으로", "냄새 길로만", "윙윙 소리로"],
+      "question": "꿀벌은 꽃이 있는 곳을 서로에게 어떻게 알려 주나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "네덜란드 탐험가들은 쿼카를 거대한 쥐로 여기고 섬에 '쥐의 둥지'라는 뜻의 '로테 네스트'라는 이름을 붙였어요.",
+      "id": "nat-0028",
+      "options": [
+        "크가리(프레이저섬)",
+        "로트네스트섬",
+        "태즈메이니아섬",
+        "캥거루섬"
+      ],
+      "question": "웃는 얼굴의 쿼카는 주로 오스트레일리아의 어느 섬에 사나요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "대나무는 영양분이 아주 적어서 판다는 하루에 10kg 넘게 먹기도 해요. 판다의 소화관은 육식 동물의 것과 비슷한데도 말이에요.",
+      "id": "nat-0007",
+      "options": ["대나무", "과일", "물고기", "곤충"],
+      "question": "자이언트판다는 하루에 최대 14시간 동안 무엇을 먹나요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "알려진 가장 높은 나무는 '히페리온'이라는 별명이 붙은 캘리포니아의 코스트레드우드로, 높이가 약 116m예요.",
+      "id": "nat-0015",
+      "options": [
+        "코스트레드우드",
+        "마운틴애시",
+        "자이언트세쿼이아",
+        "더글러스퍼"
+      ],
+      "question": "가장 높이 자라는 나무 종은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "타조는 키가 2.7m에 이르고 시속 약 70km로 달릴 수 있으며, 눈이 뇌보다 커요.",
+      "id": "nat-0008",
+      "options": ["에뮤", "타조", "화식조", "안데스콘도르"],
+      "question": "살아 있는 새 중 가장 큰 새는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "라플레시아 아르놀디의 꽃은 지름이 약 1m에 이르러요. 잎도 뿌리도 없고, 파리를 꾀려고 썩은 고기 냄새를 풍겨요.",
+      "id": "nat-0017",
+      "options": ["해바라기", "타이탄아룸", "라플레시아", "빅토리아수련"],
+      "question": "세계에서 가장 큰 단일 꽃을 피우는 식물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "카카포는 세계에서 가장 무거운 앵무새로, 60년 넘게 살기도 해요. 살아 있는 개체는 모두 파악되어 추적 관리되고 있어요.",
+      "id": "nat-0029",
+      "options": ["타카헤", "카카포", "키위", "케아"],
+      "question": "날지 못하는 뉴질랜드의 야행성 앵무새 이름은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "고래상어는 몸길이가 12m 넘게 자랄 수 있지만, 물속의 아주 작은 플랑크톤을 걸러 먹고 살아요.",
+      "id": "nat-0010",
+      "options": ["고래상어", "백상아리", "돌묵상어", "개복치"],
+      "question": "가장 큰 어류 종은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "바다악어 수컷은 몸길이 6m, 몸무게 1,000kg을 넘기도 하며, 섬과 섬 사이 먼 바다까지 헤엄쳐 나갈 수 있어요.",
+      "id": "nat-0020",
+      "options": ["바다악어", "장수거북", "나일악어", "코모도왕도마뱀"],
+      "question": "살아 있는 파충류 중 가장 큰 것은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "카멜레온이 색을 바꾸는 건 숨기 위해서라기보다 주로 기분을 드러내고 체온을 조절하기 위해서예요. 두 방향을 동시에 볼 수도 있어요.",
+      "id": "nat-0011",
+      "options": ["이구아나", "카멜레온", "왕도마뱀", "도마뱀붙이"],
+      "question": "두 눈을 따로따로 움직이고 몸 색깔을 바꿀 수 있는 파충류는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "콜로설오징어(남극하트지느러미오징어)의 눈은 지름이 약 27cm로, 축구공만 해요.",
+      "id": "nat-0023",
+      "options": ["대왕고래", "타조", "안경원숭이", "콜로설오징어"],
+      "question": "동물계에서 가장 큰 눈을 가진 동물은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "향유고래의 딸깍 소리는 물속에서 약 230데시벨에 이르러요. 깜깜한 심해에서 오징어를 찾을 때 이 소리를 써요.",
+      "id": "nat-0031",
+      "options": ["짖는원숭이", "딱총새우", "향유고래", "대왕고래"],
+      "question": "동물 중 가장 큰 소리를 내는 동물은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "큰 아프리카사바나코끼리 수컷은 몸무게가 약 6t에 이르고, 하루에 식물을 최대 150kg까지 먹어요.",
+      "id": "nat-0013",
+      "options": ["사바나코끼리", "아시아코끼리", "하마", "남방흰코뿔소"],
+      "question": "살아 있는 육상 동물 중 가장 큰 것은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "코끼리는 육상 포유류 중 임신 기간이 가장 길고, 갓 태어난 새끼도 이미 약 100kg이나 나가요.",
+      "id": "nat-0025",
+      "options": ["약 9개월", "약 16개월", "약 12개월", "약 22개월"],
+      "question": "코끼리의 임신 기간은 대략 얼마인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "큰 호랑이 수컷은 몸무게가 약 300kg에 이르고, 줄무늬가 똑같은 호랑이는 하나도 없어요.",
+      "id": "nat-0014",
+      "options": ["사자", "재규어", "호랑이", "표범"],
+      "question": "가장 큰 야생 고양잇과 동물은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "해달은 1cm²에 털이 최대 약 15만 가닥이나 나 있어요. 대부분의 해양 포유류와 달리 보온용 지방층이 없어요.",
+      "id": "nat-0026",
+      "options": ["북극곰", "북극여우", "해달", "사향소"],
+      "question": "동물 중 털이 가장 빽빽한 동물은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "2022년 위치 추적기를 단 큰뒷부리도요가 착륙도, 먹이도, 물도 없이 약 11일 만에 알래스카에서 태즈메이니아까지 날아갔어요.",
+      "id": "nat-0038",
+      "options": ["북극제비갈매기", "제비", "나그네알바트로스", "큰뒷부리도요"],
+      "question": "1만 3,000km가 넘는 최장 무착륙 비행 기록을 가진 새는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "북극제비갈매기는 해마다 북극에서 남극까지 갔다가 돌아와서, 어떤 동물보다 많은 햇빛을 봐요.",
+      "id": "nat-0037",
+      "options": ["북극제비갈매기", "홍부리황새", "제비", "뻐꾸기"],
+      "question": "해마다 하는 이동 거리가 가장 길다고 알려진 새는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "거미는 곤충이 아니라 거미류예요. 곤충은 다리가 6개지만 거미는 8개이고, 눈도 보통 8개예요.",
+      "id": "nat-0019",
+      "options": ["12개", "6개", "10개", "8개"],
+      "question": "거미의 다리는 몇 개인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "완보동물은 바싹 말라 '툰'이라는 휴면 상태가 되면 극한의 추위와 방사선, 우주의 진공도 견뎌요.",
+      "id": "nat-0040",
+      "options": ["선충", "완보동물", "요각류", "윤형동물"],
+      "question": "'물곰'이라는 별명을 가졌고 우주 공간에 노출되고도 살아남은 작은 동물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "칼새는 날면서 먹고 마시고 잠까지 자요. 어린 새 중에는 몇 년 동안 땅에 내려앉지 않는 경우도 있어요.",
+      "id": "nat-0039",
+      "options": ["알바트로스", "칼새", "군함조", "북극제비갈매기"],
+      "question": "땅에 내려앉지 않고 약 10개월 동안 공중에 머물 수 있는 새는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "코모도왕도마뱀은 몸길이가 약 3m까지 자라고, 야생에서는 인도네시아의 몇몇 섬에만 살아요.",
+      "id": "nat-0021",
+      "options": [
+        "코모도왕도마뱀",
+        "목도리도마뱀",
+        "아메리카독도마뱀",
+        "초록이구아나"
+      ],
+      "question": "살아 있는 도마뱀 중 가장 큰 것은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "투아타라는 고대 파충류 목의 마지막 생존자이며, 100년 넘게 살 수 있어요.",
+      "id": "nat-0041",
+      "options": ["뉴질랜드", "오스트레일리아", "마다가스카르", "인도네시아"],
+      "question": "공룡과 같은 시대에 친척들이 살았던 '살아 있는 화석' 파충류 투아타라는 어느 나라에만 사나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "아홀로틀은 깃털 같은 아가미를 평생 지니며, 다리는 물론 심장 일부와 뇌의 일부까지 재생할 수 있어요.",
+      "id": "nat-0042",
+      "options": ["페루", "멕시코", "브라질", "일본"],
+      "question": "잃어버린 다리를 다시 자라게 하는 도롱뇽인 아홀로틀은 어느 나라의 호수에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "두 번을 건드려야 닫히기 때문에, 빗방울이나 떨어지는 부스러기에 에너지를 낭비하지 않아요.",
+      "id": "nat-0046",
+      "options": ["두 번", "한 번", "세 번", "다섯 번"],
+      "question": "파리지옥은 약 20초 안에 감각모를 몇 번 건드려야 잎을 닫나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "사람은 침팬지, 그리고 그 가까운 친척인 보노보와 DNA의 약 98~99%가 같아요.",
+      "id": "nat-0024",
+      "options": ["긴팔원숭이", "침팬지", "고릴라", "오랑우탄"],
+      "question": "다음 유인원 중 사람과 가장 가까운 친척은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "그레이트베이슨 브리슬콘소나무는 미국의 혹독한 산악 환경에서 자라요. 한 그루는 나이가 약 4,800살로 측정되었어요.",
+      "id": "nat-0047",
+      "options": [
+        "바오바브나무",
+        "자이언트세쿼이아",
+        "브리슬콘소나무",
+        "올리브나무"
+      ],
+      "question": "5,000살 가까이 된, 살아 있는 가장 오래된 개별 나무로 알려진 것은 어떤 나무인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "태즈메이니아데빌은 몸집에 비해 무는 힘이 포유류 중 가장 센 편이라서, 뼈까지 통째로 먹을 수 있어요.",
+      "id": "nat-0027",
+      "options": ["긴코반디쿠트", "웜뱃", "태즈메이니아데빌", "쿼카"],
+      "question": "오스트레일리아 본토 남쪽의 큰 섬에서만 야생으로 사는 육식성 유대류는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "큰 바오바브는 물을 10만 L 넘게 저장할 수 있어서, 긴 건기를 견뎌 내요.",
+      "id": "nat-0048",
+      "options": ["마룰라", "모파네", "바오바브", "아카시아"],
+      "question": "부풀어 오른 줄기에 엄청난 양의 물을 저장하는 것으로 유명한 아프리카 나무는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "꿀벌에게는 큰 겹눈 2개 말고도, 머리 꼭대기에 길 찾기를 돕는 '홑눈'이 3개 있어요.",
+      "id": "nat-0050",
+      "options": ["4개", "5개", "2개", "8개"],
+      "question": "꿀벌의 눈은 몇 개인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "황제펭귄은 500m보다 깊이 잠수할 수 있고, 기온이 -40°C 아래로 떨어지는 남극의 겨울에 번식해요.",
+      "id": "nat-0030",
+      "options": ["아델리펭귄", "젠투펭귄", "황제펭귄", "킹펭귄"],
+      "question": "가장 큰 펭귄 종은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "가을에 멕시코에 도착하는 제왕나비는 지난봄 그곳을 떠난 나비들의 몇 세대 뒤 자손이에요.",
+      "id": "nat-0049",
+      "options": ["멕시코", "브라질", "인도", "스페인"],
+      "question": "수백만 마리의 제왕나비가 어느 나라의 숲에서 겨울을 나나요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "대부분의 불가사리는 팔이 5개이고, 잃은 팔을 다시 자라게 할 수 있으며, 팔 끝마다 단순한 눈이 있어요.",
+      "id": "nat-0032",
+      "options": ["6개", "8개", "5개", "4개"],
+      "question": "대부분의 불가사리는 팔이 몇 개인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "연골은 뼈보다 가볍고 유연해서, 상어가 에너지를 아끼고 재빨리 방향을 트는 데 도움이 돼요.",
+      "id": "nat-0051",
+      "options": ["케라틴", "키틴", "뼈", "연골"],
+      "question": "상어의 뼈대는 무엇으로 이루어져 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "그린란드상어는 1년에 약 1cm씩 자라요. 눈의 방사성 탄소 연대 측정 결과, 몇백 살 된 개체도 있는 것으로 보여요.",
+      "id": "nat-0053",
+      "options": ["비단잉어", "그린란드상어", "투아타라", "갈라파고스땅거북"],
+      "question": "수명이 250년을 넘을 수도 있어 가장 오래 사는 척추동물로 여겨지는 것은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "복어는 물을 삼켜 몸을 부풀려요. 많은 종이 청산가리보다 훨씬 강한 독을 지니고 있어요.",
+      "id": "nat-0033",
+      "options": ["날치", "복어", "흰동가리", "바라쿠다"],
+      "question": "위협을 받으면 몸을 부풀려 가시 돋친 공처럼 되는 물고기는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "살아 있는 북극고래 몸속에서 발견된 오래된 작살 촉이, 과학자들이 이 놀라운 나이를 확인하는 데 도움이 되었어요.",
+      "id": "nat-0052",
+      "options": ["아프리카코끼리", "대왕고래", "북극고래", "범고래"],
+      "question": "200년 넘게 살 수도 있어 가장 오래 사는 포유류로 여겨지는 것은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "연어는 몇 년 뒤에도 고향 강을 찾아오는데, 그 강만의 독특한 냄새도 단서가 되는 것으로 여겨져요.",
+      "id": "nat-0034",
+      "options": ["대구", "고등어", "참치", "연어"],
+      "question": "알을 낳으려고 자기가 태어난 강을 거슬러 올라가는 물고기는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "금조 수컷은 다른 새들의 울음소리와 들은 소리는 거의 무엇이든 엮어서 노래를 만들어요.",
+      "id": "nat-0054",
+      "options": ["에뮤", "금조", "코카투", "쿠카버라"],
+      "question": "전기톱 소리와 카메라 셔터 소리를 흉내 낼 수 있는 오스트레일리아의 새는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "에트루리아땃쥐는 몸무게가 약 1.8g이라 거의 쉬지 않고 먹어야 해요. 심장은 1분에 1,000번 넘게 뛰기도 해요.",
+      "id": "nat-0062",
+      "options": ["피그미날쥐", "피그미마모셋", "멧밭쥐", "에트루리아땃쥐"],
+      "question": "몸무게로 따져 가장 작다고 알려진 포유류는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "말코손바닥사슴 수컷은 어깨높이가 2m를 넘기도 하고, 뿔의 폭은 약 1.8m에 이르기도 해요.",
+      "id": "nat-0035",
+      "options": ["말코손바닥사슴", "순록", "흰꼬리사슴", "붉은사슴"],
+      "question": "살아 있는 사슴 중 가장 큰 종은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "이 '피땀'은 피도 땀도 아니에요. 천연 자외선 차단제 역할을 하고, 세균을 막는 효과도 있을 수 있어요.",
+      "id": "nat-0056",
+      "options": [
+        "짝을 꾀어요",
+        "영역을 표시해요",
+        "악어를 쫓아요",
+        "햇빛을 막아 줘요"
+      ],
+      "question": "하마는 피부에서 불그스름한 기름 같은 액체를 내보내요. 이 액체는 어떤 역할을 하나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "나그네알바트로스의 날개는 펼치면 최대 약 3.5m에 이르러서, 날갯짓 없이 바다 위를 몇 시간이고 활공할 수 있어요.",
+      "id": "nat-0036",
+      "options": ["참수리", "나그네알바트로스", "대머리황새", "안데스콘도르"],
+      "question": "살아 있는 새 중 날개 편 길이가 가장 긴 새는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "남아프리카의 한 박물관 큐레이터가 어부가 잡은 물고기 속에서 발견했어요. 그전까지는 6,600만 년도 더 된 화석으로만 알려져 있었어요.",
+      "id": "nat-0064",
+      "options": ["피라루쿠", "철갑상어", "실러캔스", "폐어"],
+      "question": "수백만 년 전에 멸종했다고 여겨지다가 1938년에 살아 있는 채로 발견된 '살아 있는 화석' 물고기는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "벌은 날갯짓으로 바람을 일으켜 화밀의 수분을 줄여요. 그래서 꿀은 아주 오래 보관할 수 있어요.",
+      "id": "nat-0043",
+      "options": ["화밀", "꽃가루", "이슬", "수액"],
+      "question": "꿀벌은 꿀을 만들려고 꽃에서 무엇을 모으나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "해달은 등을 대고 떠 있는 동안 떠내려가지 않도록 켈프로 몸을 감기도 해요.",
+      "id": "nat-0058",
+      "options": [
+        "서로 몸을 데우려고",
+        "떠내려가 흩어지지 않으려고",
+        "포식자를 쫓으려고",
+        "먹이를 찾으려고"
+      ],
+      "question": "해달은 왜 가끔 앞발을 맞잡고 잠을 자나요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "어떤 대나무 종은 하루 만에 거의 1m나 자랄 수 있어요.",
+      "id": "nat-0044",
+      "options": ["해바라기", "유칼립투스", "대나무", "담쟁이덩굴"],
+      "question": "지구에서 가장 빨리 자라는 식물로 기록된 것은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "쿠바의 꿀벌벌새는 몸길이 약 5~6cm, 몸무게 2g 미만이에요. 알은 커피콩만 해요.",
+      "id": "nat-0063",
+      "options": ["꿀벌벌새", "굴뚝새", "상모솔새", "진홍태양새"],
+      "question": "세계에서 가장 작은 새는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "코알라의 지문은 영장류와 무관하게 따로 진화했어요. 나뭇가지를 붙잡고 유칼립투스 잎을 다루는 데 도움이 되었을 거예요.",
+      "id": "nat-0065",
+      "options": ["너구리", "웜뱃", "캥거루", "코알라"],
+      "question": "현미경으로 봐도 사람의 지문과 놀랄 만큼 비슷한 지문을 가진 동물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "큰 참나무는 풍년이 든 해에 도토리를 수천 개나 맺어요. 어치는 도토리를 땅에 묻어 두어 새 참나무를 심는 데 한몫해요.",
+      "id": "nat-0045",
+      "options": ["너도밤나무", "참나무", "밤나무", "단풍나무"],
+      "question": "도토리가 열리는 나무는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "갯가재의 집게발은 소구경 총알처럼 가속하며, 거품을 만들어 내요. 이 거품이 터질 때는 빛이 번쩍여요.",
+      "id": "nat-0066",
+      "options": ["야자집게", "참문어", "갯가재", "바닷가재"],
+      "question": "수족관 유리에 금이 가게 할 만큼 빠르게 펀치를 날리는 바다 생물은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "쿠카버라는 몸집이 큰 물총새 무리예요. 한 가족이 새벽과 해 질 녘에 함께 '웃으며' 영역을 알려요.",
+      "id": "nat-0055",
+      "options": ["퍼핀", "큰부리새", "펠리컨", "쿠카버라"],
+      "question": "사람이 크게 웃는 것 같은 울음소리로 유명한 새는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "한쪽으로 약 135°씩이에요. 올빼미의 눈은 눈구멍에 고정되어 있어서 머리 전체를 돌려요. 목뼈가 많은 것도 도움이 돼요.",
+      "id": "nat-0069",
+      "options": ["270도", "360도", "180도", "90도"],
+      "question": "올빼미는 머리를 한쪽 끝에서 다른 쪽 끝까지 모두 합쳐 약 몇 도 돌릴 수 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "전기뱀장어는 최대 약 860V의 전기 충격을 일으켜 먹이를 기절시키고 자신을 지켜요.",
+      "id": "nat-0067",
+      "options": ["나이프피시류", "곰치류", "가오리류", "칠성장어류"],
+      "question": "전기뱀장어는 진짜 뱀장어가 아니에요. 어떤 물고기 무리에 속하나요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "암컷이 수컷 해마의 육아낭에 알을 낳으면, 나중에 수컷이 수십에서 수백 마리의 작은 새끼를 내보내요.",
+      "id": "nat-0059",
+      "options": ["게", "문어", "거북", "해마"],
+      "question": "수컷이 알을 품고 새끼를 낳는 동물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "키위는 냄새로 흙 속의 지렁이를 찾아내요. 암컷은 몸집에 비해 새 중에서 가장 큰 축에 드는 알을 낳기도 해요.",
+      "id": "nat-0070",
+      "options": ["펠리컨", "키위", "큰부리새", "코뿔새"],
+      "question": "콧구멍이 부리 맨 끝에 있는 새는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "홍해파리(투리톱시스 도르니)는 스트레스를 받거나 다치면 폴립으로 되돌아가 생활사를 처음부터 다시 시작할 수 있어요.",
+      "id": "nat-0072",
+      "options": [
+        "해파리의 일종",
+        "땅거북의 일종",
+        "바다거북의 일종",
+        "해면의 일종"
+      ],
+      "question": "생애의 이전 단계로 되돌아갈 수 있어서 '불사'라는 별명이 붙은 동물은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "코끼리, 매너티, 듀공, 그리고 바위에 사는 작은 바위너구리는 공통 조상을 가지고 있어요.",
+      "id": "nat-0075",
+      "options": ["코뿔소", "하마", "맥", "매너티"],
+      "question": "다음 중 코끼리와 가장 가까운 친척에 속하는 동물은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "남아메리카의 카피바라는 몸무게가 60kg을 넘기도 하고, 발에 물갈퀴가 살짝 있어서 헤엄을 아주 잘 쳐요.",
+      "id": "nat-0061",
+      "options": ["비버", "마멋", "호저", "카피바라"],
+      "question": "세계에서 가장 큰 설치류는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "지금까지 기재된 딱정벌레는 약 40만 종으로, 알려진 동물 종 전체의 약 4분의 1이에요.",
+      "id": "nat-0074",
+      "options": ["파리", "개미와 벌", "나비와 나방", "딱정벌레"],
+      "question": "기재된 종이 가장 많은 동물 무리는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "해마다 100만 마리가 넘는 누가 비를 따라 거대한 고리 모양으로 이동하며, 악어가 우글거리는 강을 건너요.",
+      "id": "nat-0077",
+      "options": ["사바나얼룩말", "누", "톰슨가젤", "아프리카물소"],
+      "question": "세렝게티와 마사이마라를 오가는 대이동의 주인공은 대부분 어떤 동물인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "하마와 고래는 약 5,500만 년 전에 살았던 공통 조상을 가지고 있어요.",
+      "id": "nat-0076",
+      "options": [
+        "고래와 돌고래",
+        "코뿔소",
+        "코끼리와 바위너구리",
+        "돼지와 멧돼지"
+      ],
+      "question": "살아 있는 동물 중 하마와 가장 가까운 친척은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "해파리는 약 95%가 물이고, 뇌 대신 단순한 신경 그물을 써요.",
+      "id": "nat-0071",
+      "options": ["해파리", "바다거북", "문어", "오징어"],
+      "question": "뇌도, 심장도, 뼈도 없는 바다 생물은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "눈표범은 포효 대신 '푸푸' 하는 소리 등을 내요. 두꺼운 꼬리는 균형을 잡아 주고 목도리 역할도 해요.",
+      "id": "nat-0078",
+      "options": ["눈표범", "벵골호랑이", "재규어", "아프리카사자"],
+      "question": "포효하지 못하는 대형 고양잇과 동물은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "어린 해바라기는 하늘을 가로지르는 해를 따라가요. 다 자란 꽃은 동쪽을 향한 채 자리를 잡아서 아침에 더 빨리 따뜻해져요.",
+      "id": "nat-0073",
+      "options": ["데이지", "장미", "해바라기", "튤립"],
+      "question": "어린 꽃이 새벽에는 동쪽을, 저녁에는 서쪽을 향하며 하늘을 따라 움직이는 식물은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "범고래는 가족 단위로 무리 지어 살며, 무리마다 고유한 사냥 기술과 울음소리 '방언'이 있어요.",
+      "id": "nat-0079",
+      "options": ["참돌고래과", "수염고래류", "쇠돌고래과", "상어류"],
+      "question": "범고래는 어느 과에서 가장 큰 동물인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "뻐꾸기 새끼는 흔히 둥지 주인의 알을 밖으로 밀어내고, 자기보다 훨씬 작은 양부모 손에 자라요.",
+      "id": "nat-0081",
+      "options": ["제비", "뻐꾸기", "울새", "딱따구리"],
+      "question": "다른 새의 둥지에 알을 낳는 것으로 유명한 새는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "어떤 대나무는 수십 년에 한 번만 꽃을 피우는데, 같은 종이 한꺼번에 꽃을 피우기도 해요.",
+      "id": "nat-0087",
+      "options": ["나무", "볏과", "덩굴식물", "양치식물"],
+      "question": "대나무는 어느 식물 무리에 속하는 거대한 식물인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "나비는 발에 있는 맛 감각기 덕분에, 잎 위에 앉기만 해도 알을 낳기에 알맞은 잎인지 알 수 있어요.",
+      "id": "nat-0083",
+      "options": ["눈", "더듬이", "발", "날개"],
+      "question": "나비는 몸의 어느 부분으로 맛을 볼 수 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "세이셸에서 나는 코코드메르의 씨앗은 코코넛 두 개를 붙여 놓은 모양이며, 무게가 최대 약 25kg이나 돼요.",
+      "id": "nat-0088",
+      "options": ["코코드메르", "코코넛야자", "망고", "아보카도"],
+      "question": "세계에서 가장 큰 씨앗을 맺는 식물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "'실버백'이라 불리는 다 자란 고릴라 수컷은 몸무게가 200kg을 넘기도 하지만, 주로 식물을 먹고 살아요.",
+      "id": "nat-0091",
+      "options": ["오랑우탄", "고릴라", "침팬지", "개코원숭이"],
+      "question": "살아 있는 영장류 중 가장 큰 것은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "잎꾼개미는 사람이 농업을 발명하기 수백만 년 전부터 균류 텃밭을 가꿔 왔어요.",
+      "id": "nat-0084",
+      "options": ["씨앗", "조류", "균류", "이끼"],
+      "question": "잎꾼개미는 무엇을 기르려고 잎을 둥지로 나르나요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "집에서 기르는 닭은 수백억 마리로, 어떤 야생 조류 종보다도 훨씬 많아요.",
+      "id": "nat-0096",
+      "options": ["찌르레기", "비둘기", "집참새", "닭"],
+      "question": "지구에서 개체 수가 가장 많은 새는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "반딧불이는 화학 반응으로 빛을 내는데, 에너지를 열로 거의 낭비하지 않아요.",
+      "id": "nat-0085",
+      "options": ["말벌", "파리", "나방", "딱정벌레"],
+      "question": "반딧불이는 사실 어떤 곤충인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "눈 색이 바뀌면 순록은 길고 어두운 북극의 겨울에 빛을 더 많이 모을 수 있어요.",
+      "id": "nat-0093",
+      "options": ["흰올빼미", "북극여우", "북극곰", "순록"],
+      "question": "눈 색깔이 여름에는 금빛, 겨울에는 파란빛으로 바뀌는 동물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "몸을 감싼 보호 점액 덕분에 흰동가리는 쏘이지 않아요. 그 대가로 흰동가리는 말미잘을 지켜 줘요.",
+      "id": "nat-0098",
+      "options": ["해파리", "말미잘", "산호", "성게"],
+      "question": "흰동가리는 어떤 동물의 쏘는 촉수 사이에서 안전하게 살아가나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "웜뱃은 네모난 똥으로 영역을 표시해요. 네모난 똥은 바위나 통나무 위에서 굴러떨어지지 않아요.",
+      "id": "nat-0086",
+      "options": ["오리너구리", "웜뱃", "코알라", "캥거루"],
+      "question": "정육면체 모양의 똥을 누는 것으로 유명한 동물은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "한 지역의 혹등고래 수컷들은 같은 노래를 부르는데, 이 노래는 시간이 지나며 서서히 바뀌고 대양을 건너 퍼져 나가요.",
+      "id": "nat-0101",
+      "options": ["귀신고래", "북대서양참고래", "향유고래", "혹등고래"],
+      "question": "길고 복잡한 노래로 가장 잘 알려진 고래는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "식물학자들은 바나나를 장과로 분류해요. 딸기와 라즈베리는 진짜 장과가 아니고, 체리는 핵과예요.",
+      "id": "nat-0089",
+      "options": ["라즈베리", "바나나", "체리", "딸기"],
+      "question": "다음 과일 중 식물학적으로 '장과'(베리류)에 속하는 것은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "1876년 브라질에서 가져간 씨앗이 동남아시아의 거대한 고무 농장의 시작이 되었어요.",
+      "id": "nat-0094",
+      "options": ["아마존 유역", "인도 아대륙", "콩고 유역", "보르네오섬"],
+      "question": "천연고무나무는 원래 어느 지역에서 왔나요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "산호는 폴립이라는 작은 동물들의 군체예요. 폴립 안에는 흔히 조류가 살면서 산호에 색과 양분을 줘요.",
+      "id": "nat-0102",
+      "options": ["바위", "식물", "동물", "균류"],
+      "question": "산호는 어떤 종류의 생물인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "오카피는 다리에 얼룩말 같은 줄무늬가 있지만 기린과에 속하며, 긴 혀로 잎을 훑어 먹어요.",
+      "id": "nat-0090",
+      "options": ["영양", "말", "얼룩말", "기린"],
+      "question": "중앙아프리카의 오카피와 가장 가까운 현생 친척은 어떤 동물인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "개는 사람이 처음으로 길들인 동물로, 1만 5,000년도 더 전의 고대 늑대 무리에서 갈라져 나왔어요.",
+      "id": "nat-0103",
+      "options": ["붉은여우", "코요테", "회색늑대", "황금자칼"],
+      "question": "집에서 기르는 개는 어떤 야생 동물의 후손인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "오랑우탄은 일생의 대부분을 나무 위에서 보내며, 거의 매일 밤 나뭇가지로 새 잠자리를 만들어요.",
+      "id": "nat-0092",
+      "options": ["오랑우탄", "고릴라", "보노보", "침팬지"],
+      "question": "야생에서는 보르네오섬과 수마트라섬에만 사는 대형 유인원은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "수컷은 암컷의 마음을 끌려고 깃털과 꽃을 모으고, 갈수록 병뚜껑과 빨대도 많이 모아요. 암컷은 여러 곳을 둘러본 뒤 짝을 골라요.",
+      "id": "nat-0100",
+      "options": ["빨간색", "노란색", "흰색", "파란색"],
+      "question": "새틴바우어새 수컷은 구애 장소를 주로 무슨 색 물건으로 꾸미나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "누에고치 하나는 길이가 수백 m에 이르는, 끊기지 않은 실 한 가닥으로 만들어져요.",
+      "id": "nat-0104",
+      "options": ["딱정벌레", "누에", "거미", "꿀벌"],
+      "question": "옷감에 쓰는 비단은 주로 어떤 생물의 고치에서 얻나요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "코르크참나무는 베어 내지 않아요. 약 9년마다 껍질만 벗겨 내면 껍질이 다시 자라요.",
+      "id": "nat-0095",
+      "options": ["코르크참나무", "자작나무", "너도밤나무", "소나무"],
+      "question": "와인병 마개는 어느 나무의 껍질로 만드나요?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "천산갑의 비늘은 케라틴으로 이루어져 있고, 위협을 받으면 몸을 단단한 공처럼 말아요.",
+      "id": "nat-0105",
+      "options": ["천산갑", "고슴도치", "개미핥기", "땅돼지"],
+      "question": "몸이 보호용 비늘로 덮인 포유류는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "도도는 비둘기의 거대한 친척이었고, 선원들이 섬에 온 지 약 100년 만에 사라졌어요.",
+      "id": "nat-0097",
+      "options": ["레위니옹섬", "마다가스카르섬", "모리셔스섬", "스리랑카"],
+      "question": "날지 못하는 새 도도는 어느 섬에만 살았나요?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "'므두셀라'라는 별명이 붙은 대추야자는 고대 요새 마사다에서 발견된 씨앗에서 2005년에 싹을 틔웠어요.",
+      "id": "nat-0107",
+      "options": ["올리브나무", "무화과나무", "대추야자", "유럽참나무"],
+      "question": "약 2,000년 된 씨앗을 심어 건강하게 키워 낸 식물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "번데기 속에서 애벌레의 몸은 대부분 분해된 뒤 어른 나비의 몸으로 다시 만들어져요.",
+      "id": "nat-0109",
+      "options": ["꽃가루받이", "탈바꿈", "광합성", "겨울잠"],
+      "question": "애벌레가 나비가 되는 과정을 무엇이라고 하나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "말뚝망둥어는 피부로도 일부 호흡하기 때문에, 물 밖에 있는 동안 피부를 촉촉하게 유지해야 해요.",
+      "id": "nat-0099",
+      "options": ["날치", "말뚝망둥어", "흰동가리", "개복치"],
+      "question": "갯벌 위를 뛰어다니고 맹그로브 뿌리에 오르기까지 하는 물고기는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "보초는 높은 곳에 올라가 이상이 없는 동안에는 나지막한 소리를 계속 내요. 포식자를 발견하면 경고음을 내고, 모두 재빨리 몸을 숨겨요.",
+      "id": "nat-0110",
+      "options": [
+        "굴에서 잠을 자요",
+        "가짜 구멍을 파요",
+        "물을 모아요",
+        "보초를 서요"
+      ],
+      "question": "미어캣 무리에서 다른 미어캣들이 먹이를 찾는 동안 한 마리는 흔히 무엇을 하나요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "나무늘보는 너무 느리게 움직여서 털 속에 조류는 물론 나방까지 살아요. 이것이 위장에 도움이 돼요.",
+      "id": "nat-0106",
+      "options": ["버섯", "조류", "이끼", "지의류"],
+      "question": "나무늘보의 털에서 흔히 자라 털을 초록빛으로 보이게 하는 것은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "은행나무는 아주 강인해요. 히로시마 원폭 중심지 가까이에서 살아남은 몇 그루가 지금도 자라고 있어요.",
+      "id": "nat-0108",
+      "options": ["자작나무", "은행나무", "올리브나무", "바오바브나무"],
+      "question": "약 2억 년 동안 거의 변하지 않아 '살아 있는 화석'이라고 불리는 나무는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "수성은 지구일로 88일 만에 태양을 한 바퀴 돌아요. 행성 중 1년이 가장 짧아요.",
+      "id": "sci-0001",
+      "options": ["수성", "금성", "지구", "화성"],
+      "question": "태양에 가장 가까운 행성은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "금성의 두꺼운 이산화탄소 대기가 열을 가둬서, 표면 온도가 약 465°C로 수성보다 뜨거워요.",
+      "id": "sci-0004",
+      "options": ["금성", "화성", "수성", "목성"],
+      "question": "태양계에서 가장 뜨거운 행성은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "목성의 질량은 나머지 행성을 모두 합친 것의 두 배가 넘어요. 목성 안에는 지구가 약 1,300개 들어갈 수 있어요.",
+      "id": "sci-0002",
+      "options": ["해왕성", "천왕성", "토성", "목성"],
+      "question": "태양계에서 가장 큰 행성은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "초속 약 30만 km로 달리는 빛은 1초에 지구를 약 7바퀴 반 돌 수 있어요.",
+      "id": "sci-0010",
+      "options": [
+        "초속 300만 km",
+        "초속 3만 km",
+        "초속 30만 km",
+        "초속 3,000km"
+      ],
+      "question": "진공에서 빛의 속도는 대략 얼마인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "목성의 위성 이오에는 활화산이 수백 개 있어요. 목성의 중력이 이오를 쥐어짜며 내부를 데우기 때문이에요.",
+      "id": "sci-0019",
+      "options": ["이오", "칼리스토", "포보스", "유로파"],
+      "question": "태양계에서 화산 활동이 가장 활발한 천체는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "화성이 붉게 보이는 것은 먼지 덮인 표면에 산화철, 즉 녹이 많기 때문이에요.",
+      "id": "sci-0003",
+      "options": ["금성", "수성", "화성", "목성"],
+      "question": "'붉은 행성'으로 알려진 행성은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "프록시마 센타우리는 약 4.2광년 떨어져 있어서, 그 빛이 우리에게 닿기까지 4년 넘게 걸려요.",
+      "id": "sci-0012",
+      "options": [
+        "시리우스",
+        "북극성(폴라리스)",
+        "베텔게우스",
+        "프록시마 센타우리"
+      ],
+      "question": "태양에서 가장 가까운 별은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "천왕성의 자전축은 약 98° 기울어져 있어서, 각 극지방은 약 42년 동안 햇빛을 받은 뒤 42년 동안 어둠에 잠겨요.",
+      "id": "sci-0013",
+      "options": ["토성", "금성", "해왕성", "천왕성"],
+      "question": "옆으로 누운 채 자전하는 행성은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "궁수자리 A*의 질량은 태양의 약 400만 배예요. 첫 이미지는 2022년에 공개되었어요.",
+      "id": "sci-0021",
+      "options": [
+        "궁수자리의 가장 밝은 별",
+        "맨눈으로 보이는 성운",
+        "우리은하 중심의 블랙홀",
+        "태양계를 떠난 탐사선"
+      ],
+      "question": "궁수자리 A*는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Fe는 라틴어 ferrum에서 왔어요. 질량으로 따지면 철은 지구 전체에서 가장 흔한 원소이고, 대부분 핵에 있어요.",
+      "id": "sci-0006",
+      "options": ["납", "철", "플루오린", "프랑슘"],
+      "question": "원소 기호가 Fe인 원소는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "식물은 햇빛을 이용해 이산화탄소와 물로 당을 만들고, 그 부산물로 산소를 내보내요.",
+      "id": "sci-0007",
+      "options": ["일산화탄소", "질소", "산소", "이산화탄소"],
+      "question": "식물이 광합성을 위해 공기에서 받아들이는 기체는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "목성의 위성 가니메데는 행성인 수성보다 크고, 자체 자기장을 가진 것으로 알려진 유일한 위성이에요.",
+      "id": "sci-0016",
+      "options": ["타이탄", "칼리스토", "이오", "가니메데"],
+      "question": "태양계에서 가장 큰 위성은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "1868년 천문학자들이 햇빛에서 정체 모를 노란 선을 발견했어요. 이 원소의 이름은 그리스의 태양신 헬리오스에서 따왔어요.",
+      "id": "sci-0025",
+      "options": [
+        "햇빛 속에서",
+        "화산 가스 속에서",
+        "운석 속에서",
+        "바닷물 속에서"
+      ],
+      "question": "지구에서 발견되기 전, 헬륨이 처음 검출된 곳은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "우리가 숨 쉬는 공기의 약 78%는 질소이고, 산소는 약 21%예요.",
+      "id": "sci-0008",
+      "options": ["이산화탄소", "아르곤", "산소", "질소"],
+      "question": "지구 대기의 대부분을 차지하는 기체는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "토성의 위성 타이탄은 지구를 빼면 표면에 액체 호수가 안정적으로 있는 것으로 알려진 유일한 곳이에요.",
+      "id": "sci-0017",
+      "options": ["이오", "타이탄", "유로파", "트리톤"],
+      "question": "두꺼운 대기와 액체 메탄 호수가 있는 위성은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "올림푸스산은 높이가 에베레스트의 약 2.5배이고, 지름이 약 600km예요.",
+      "id": "sci-0020",
+      "options": ["지구", "화성", "금성", "수성"],
+      "question": "태양계에서 가장 높은 화산 중 하나인 올림푸스산은 어느 행성에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "지구는 북반구가 겨울인 1월 초에 태양에 가장 가까운 지점인 근일점에 이르러요.",
+      "id": "sci-0043",
+      "options": ["3월", "1월", "7월", "10월"],
+      "question": "지구가 태양에 가장 가까워지는 달은 몇 월인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "아폴로 11호는 1969년 7월 20일에 착륙했어요. 달에는 바람이 없어서 우주비행사들의 발자국이 수백만 년 동안 남을 수 있어요.",
+      "id": "sci-0011",
+      "options": ["1969년", "1972년", "1961년", "1965년"],
+      "question": "사람이 처음으로 달 위를 걸은 해는 언제인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "안드로메다은하는 약 250만 광년 떨어져 있으며, 맨눈으로 쉽게 볼 수 있는 가장 먼 천체예요.",
+      "id": "sci-0022",
+      "options": [
+        "안드로메다은하",
+        "솜브레로은하",
+        "바람개비은하",
+        "소용돌이은하"
+      ],
+      "question": "우리은하에서 가장 가까운 대형 나선 은하는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "2006년부터 명왕성이 왜행성으로 분류되면서, 수성부터 해왕성까지 8개의 행성이 남았어요.",
+      "id": "sci-0015",
+      "options": ["8개", "9개", "10개", "7개"],
+      "question": "태양계에는 행성이 몇 개 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "pH 7은 중성이에요. pH가 1 내려갈 때마다 산성이 10배씩 강해져요.",
+      "id": "sci-0030",
+      "options": ["0", "5", "7", "14"],
+      "question": "25°C에서 순수한 물의 pH는 얼마인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "우주비행사들이 달에 거울을 두고 왔고, 과학자들은 그 거울에 반사된 레이저로 멀어지는 거리를 정밀하게 재요.",
+      "id": "sci-0046",
+      "options": ["약 3.8cm", "약 3.8m", "약 38cm", "약 3.8mm"],
+      "question": "달은 해마다 지구에서 대략 얼마나 더 멀어지나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "대적점은 지구보다 넓은 폭풍으로, 적어도 150년 동안 계속 휘몰아치고 있어요.",
+      "id": "sci-0018",
+      "options": ["토성", "해왕성", "목성", "화성"],
+      "question": "대적점이라는 거대한 폭풍은 어느 행성에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "프랜시스 보퍼트가 1805년 선원들을 위해 만든 척도로, 바람을 바다와 돛에 미치는 영향으로 나타내요.",
+      "id": "sci-0031",
+      "options": ["켈빈 척도", "모스 척도", "리히터 척도", "보퍼트 척도"],
+      "question": "바람의 세기를 고요(0)부터 허리케인급(12)까지 나타내는 척도는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "어떤 광물이 어떤 광물을 긁을 수 있는지에 따라 활석(1)부터 다이아몬드(10)까지 순위를 매겨요.",
+      "id": "sci-0032",
+      "options": ["물의 산성도", "풍속", "광물의 굳기", "지진의 세기"],
+      "question": "모스 척도는 무엇을 재나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "해왕성에서는 바람이 시속 2,000km 넘게 불기도 하는데, 지구에서의 음속보다 빨라요.",
+      "id": "sci-0052",
+      "options": ["토성", "목성", "해왕성", "천왕성"],
+      "question": "태양계에서 바람이 가장 빠른 행성은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "수소는 우주에서 가장 가볍고 가장 흔한 원소로, 보통 물질의 약 4분의 3을 차지해요.",
+      "id": "sci-0024",
+      "options": ["탄소", "산소", "헬륨", "수소"],
+      "question": "원자 번호가 1인 원소는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "절대 영도는 이론상 가장 낮은 온도예요. 과학자들은 원자를 절대 영도와 10억분의 1도도 차이 나지 않는 온도까지 식혔어요.",
+      "id": "sci-0033",
+      "options": ["-273.15°C", "-173.15°C", "-373.15°C", "-233.15°C"],
+      "question": "섭씨온도로 절대 영도는 몇 도인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "수은은 약 -39°C에서 얼어요. 그래서 오랫동안 온도계에 쓰였어요.",
+      "id": "sci-0026",
+      "options": ["납", "수은", "아연", "주석"],
+      "question": "실온에서 액체인 금속은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "-40°C는 -40°F와 같아요. 두 온도 체계가 만나는 유일한 지점이에요.",
+      "id": "sci-0034",
+      "options": ["-32도", "0도", "-40도", "100도"],
+      "question": "섭씨와 화씨가 같은 숫자를 나타내는 온도는 몇 도인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "세레스는 왜행성으로 분류되며, 소행성대 전체 질량의 상당 부분을 차지해요.",
+      "id": "sci-0055",
+      "options": ["베스타", "세레스", "팔라스", "에로스"],
+      "question": "소행성대 본대에서 가장 큰 천체는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "다이아몬드는 모스 척도에서 가장 높은 10이고, 다이아몬드를 긁을 수 있는 건 다른 다이아몬드뿐이에요.",
+      "id": "sci-0027",
+      "options": ["토파즈", "다이아몬드", "석영", "강옥"],
+      "question": "천연 물질 중 가장 단단한 것은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "차이는 탄소 원자의 배열뿐이에요. 다이아몬드는 단단한 입체 격자이고, 연필심의 흑연은 미끄러지는 층 구조예요.",
+      "id": "sci-0028",
+      "options": ["황", "규소", "붕소", "탄소"],
+      "question": "다이아몬드와 흑연은 모두 어떤 원소로 이루어져 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "강철 속에서 소리는 초속 약 5,900m로, 공기 중보다 약 17배 빨리 나아가요.",
+      "id": "sci-0037",
+      "options": ["공기", "헬륨 기체", "강철", "물"],
+      "question": "다음 중 소리가 가장 빨리 전달되는 것은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "해왕성이 더 멀리 있지만 천왕성은 내부에서 나오는 열이 아주 적어서, 대기 온도가 약 -224°C까지 내려간 적이 있어요.",
+      "id": "sci-0060",
+      "options": ["천왕성", "수성", "토성", "해왕성"],
+      "question": "태양계에서 가장 낮은 대기 온도가 측정된 행성은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "염화나트륨은 물과 격렬하게 반응하는 금속인 나트륨과 독성 기체인 염소로 이루어져 있어요.",
+      "id": "sci-0029",
+      "options": ["NaOH", "CaCl2", "NaCl", "KCl"],
+      "question": "소금(염화나트륨)의 화학식은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "내핵은 태양 표면만큼 뜨겁지만, 엄청난 압력 때문에 고체 상태를 유지해요.",
+      "id": "sci-0039",
+      "options": ["금과 은", "납과 주석", "구리와 아연", "철과 니켈"],
+      "question": "지구의 핵은 주로 어떤 금속으로 이루어져 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "1뉴턴은 작은 사과 하나를 손에 들었을 때 느끼는 무게와 비슷해요.",
+      "id": "sci-0035",
+      "options": ["뉴턴", "파스칼", "와트", "줄"],
+      "question": "힘의 SI 단위는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "대류권은 지상에서 약 8~18km 높이까지이며, 대기 전체 질량의 약 4분의 3이 이곳에 있어요.",
+      "id": "sci-0040",
+      "options": ["중간권", "대류권", "열권", "성층권"],
+      "question": "날씨 현상이 거의 모두 일어나는 대기층은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "수성과 금성은 태양에 너무 가까워서 위성을 붙잡아 두기 어려워요. 지구에는 위성이 하나, 화성에는 둘 있어요.",
+      "id": "sci-0061",
+      "options": ["수성과 금성", "금성과 천왕성", "수성과 화성", "화성과 금성"],
+      "question": "위성이 하나도 없는 두 행성은 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "아인슈타인은 1915년에 일반 상대성 이론을 발표했어요. GPS 위성은 정확성을 유지하려면 그 효과를 보정해야 해요.",
+      "id": "sci-0038",
+      "options": ["아이작 뉴턴", "아인슈타인", "닐스 보어", "막스 플랑크"],
+      "question": "일반 상대성 이론을 세운 과학자는 누구인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "오존을 모두 지표면 기압으로 끌어내리면 두께가 약 3mm밖에 안 되는 층이 될 거예요.",
+      "id": "sci-0041",
+      "options": ["성층권", "대류권", "중간권", "외기권"],
+      "question": "오존층은 주로 대기의 어느 층에 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "이를 조석 고정이라고 해요. 달의 뒷면도 햇빛을 똑같이 받지만, 처음 사진에 찍힌 건 1959년이 되어서였어요.",
+      "id": "sci-0045",
+      "options": [
+        "지구가 반대쪽을 가려서",
+        "전혀 자전하지 않아서",
+        "공전마다 한 번 자전해서",
+        "뒷면은 늘 어두워서"
+      ],
+      "question": "우리는 왜 늘 달의 같은 면만 보나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "태양도 바다를 끌어당겨요. 태양과 달이 일직선으로 늘어서면 물이 유난히 높게 차는 '사리'가 나타나요.",
+      "id": "sci-0044",
+      "options": ["지구 자기장", "바다 위의 바람", "달의 중력", "해저 지진"],
+      "question": "바다의 밀물과 썰물은 주로 무엇 때문에 생기나요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "남십자자리는 88개 별자리 중 가장 작고, 뱃사람들은 오래전부터 이 별자리로 남쪽을 찾았어요.",
+      "id": "sci-0047",
+      "options": ["오리온자리", "남십자자리", "큰곰자리", "전갈자리"],
+      "question": "오스트레일리아, 뉴질랜드, 브라질, 사모아의 국기에 모두 그려진 별자리는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "허블의 첫 사진은 거울 결함 때문에 흐릿했는데, 1993년 우주왕복선 승무원들이 고쳤어요.",
+      "id": "sci-0048",
+      "options": ["케플러", "허블", "제임스 웹", "스피처"],
+      "question": "1990년에 발사되었고 나중에 우주비행사들이 수리한 우주 망원경은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "천왕성은 망원경으로 발견된 첫 행성이에요. 허셜은 전문 음악가이자 작곡가이기도 했어요.",
+      "id": "sci-0069",
+      "options": [
+        "조반니 카시니",
+        "갈릴레오 갈릴레이",
+        "윌리엄 허셜",
+        "에드먼드 핼리"
+      ],
+      "question": "1781년 천왕성을 발견한 사람은 누구인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "스푸트니크 1호는 지름 약 58cm의 금속 공으로, 누구나 수신할 수 있는 '삐삐' 전파를 보냈어요.",
+      "id": "sci-0049",
+      "options": [
+        "스푸트니크 1호",
+        "익스플로러 1호",
+        "보스토크 1호",
+        "텔스타 1호"
+      ],
+      "question": "1957년에 발사된 최초의 인공위성은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "핼리 혜성은 1986년에 마지막으로 나타났고 2061년에 돌아올 예정이에요. 맨눈으로도 볼 수 있어요.",
+      "id": "sci-0053",
+      "options": ["1,000년마다", "150년마다", "12년마다", "75~76년마다"],
+      "question": "핼리 혜성은 대략 얼마마다 지구의 하늘로 돌아오나요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "가가린은 1961년 4월 12일 지구 궤도를 한 바퀴 돌았어요. 비행 시간은 약 108분이었어요.",
+      "id": "sci-0050",
+      "options": ["존 글렌", "닐 암스트롱", "알렉세이 레오노프", "유리 가가린"],
+      "question": "우주에 간 최초의 인간은 누구인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "두 이름은 '공포'와 '두려움'을 뜻해요. 포보스는 나선을 그리며 천천히 안쪽으로 다가가고 있어서, 수천만 년 뒤에는 부서질 거예요.",
+      "id": "sci-0056",
+      "options": ["목성", "토성", "화성", "해왕성"],
+      "question": "포보스와 데이모스는 어느 행성의 위성인가요?"
+    }
+  ]
+}

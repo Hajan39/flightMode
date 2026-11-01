@@ -1,0 +1,2478 @@
+{
+  "id": "pack-002",
+  "lang": "ko",
+  "questions": [
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "천문학자들은 천왕성 궤도의 흔들림을 보고 보이지 않는 행성의 위치를 계산했어요. 그 행성은 1846년에 발견되었어요.",
+      "id": "sci-0070",
+      "options": ["화성", "해왕성", "천왕성", "토성"],
+      "question": "누군가 직접 보기 전에 수학 계산으로 먼저 예측된 행성은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "영화와 달리 소행성대는 대부분 텅 빈 공간이에요. 탐사선은 바위를 피할 필요 없이 그냥 지나가요.",
+      "id": "sci-0054",
+      "options": ["화성과 목성", "지구와 화성", "목성과 토성", "금성과 지구"],
+      "question": "소행성대 본대는 어느 두 행성의 궤도 사이에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "빅뱅이 남긴 희미한 잔광인 우주 마이크로파 배경을 측정하면 우주의 나이는 약 138억 년이에요.",
+      "id": "sci-0059",
+      "options": ["250억 년", "1,000억 년", "46억 년", "138억 년"],
+      "question": "우주의 나이는 대략 얼마인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "태양에서 온 전기를 띤 입자들이 지구 자기장에 이끌려 와서, 공기 분자를 초록, 빨강, 보라색으로 빛나게 해요.",
+      "id": "sci-0057",
+      "options": [
+        "극지방 얼음의 반사",
+        "태양에서 온 입자",
+        "높은 하늘의 번개",
+        "얼음 결정에 비친 달빛"
+      ],
+      "question": "북극광(오로라)은 무엇 때문에 생기나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "화성의 하루를 '솔'이라고 해요. 탐사 팀은 가끔 '화성 시간'에 맞춰 살며 일정을 날마다 40분씩 미루기도 해요.",
+      "id": "sci-0063",
+      "options": ["10시간 30분", "6시간 15분", "24시간 40분", "지구일로 58일"],
+      "question": "화성의 하루는 대략 얼마나 되나요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "알루미늄은 지각의 약 8%를 차지하지만, 한때는 만들기가 너무 어려워 금보다 귀했어요. 나폴레옹 3세는 손님에게 알루미늄 식기를 내놓았어요.",
+      "id": "sci-0072",
+      "options": ["구리", "알루미늄", "칼슘", "철"],
+      "question": "지각에 가장 많은 금속은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "알려진 가장 오래된 광물 알갱이인 오스트레일리아의 저어콘은 약 44억 년 되었어요.",
+      "id": "sci-0058",
+      "options": [
+        "약 4억 5,000만 년",
+        "약 100억 년",
+        "약 10억 년",
+        "약 45억 년"
+      ],
+      "question": "지구의 나이는 대략 얼마인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "사건의 지평선 안쪽에서는 빛조차 빠져나올 수 없어요. 그래서 블랙홀은 검게 보여요.",
+      "id": "sci-0065",
+      "options": ["사건의 지평선", "강착 원반", "코로나", "특이점"],
+      "question": "아무것도 빠져나올 수 없는 블랙홀 둘레의 경계를 무엇이라고 하나요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "초신성은 잠깐 동안 은하 전체보다 밝게 빛나기도 해요. 우리 몸을 이루는 원소 중 상당수가 이런 폭발에서 만들어졌어요.",
+      "id": "sci-0062",
+      "options": [
+        "갓 생긴 행성",
+        "폭발하는 별",
+        "아주 밝은 혜성",
+        "거대한 은하"
+      ],
+      "question": "초신성은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "코페르니쿠스의 책은 그가 세상을 떠난 해에 나왔어요. 전설에 따르면 그는 임종 자리에서 처음 인쇄된 책을 보았다고 해요.",
+      "id": "sci-0067",
+      "options": [
+        "요하네스 케플러",
+        "클라우디오스 프톨레마이오스",
+        "갈릴레오 갈릴레이",
+        "니콜라우스 코페르니쿠스"
+      ],
+      "question": "1543년 태양 중심의 태양계 모형을 발표한 사람은 누구인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "오스뮴 1L의 무게는 약 22.6kg으로, 납 1L의 약 두 배예요.",
+      "id": "sci-0075",
+      "options": ["금", "납", "우라늄", "오스뮴"],
+      "question": "자연에 존재하는 원소 중 밀도가 가장 높은 것은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "뉴턴의 『프린키피아』는 떨어지는 사과와 궤도를 도는 달을 같은 중력 법칙으로 설명했어요.",
+      "id": "sci-0066",
+      "options": [
+        "요하네스 케플러",
+        "니콜라우스 코페르니쿠스",
+        "갈릴레오 갈릴레이",
+        "아이작 뉴턴"
+      ],
+      "question": "1687년에 발표된 운동 법칙과 만유인력 법칙을 세운 사람은 누구인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "번개는 공기를 약 3만 °C까지 달굴 수 있어요. 그 공기가 갑자기 팽창하는 소리가 바로 우리가 듣는 천둥이에요.",
+      "id": "sci-0076",
+      "options": [
+        "비슷해요",
+        "약 100배 뜨거워요",
+        "약 절반이에요",
+        "약 5배 뜨거워요"
+      ],
+      "question": "번개는 태양 표면과 비교해 얼마나 뜨거워질 수 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "이오, 유로파, 가니메데, 칼리스토는 지금도 '갈릴레이 위성'이라고 불려요.",
+      "id": "sci-0068",
+      "options": [
+        "아이작 뉴턴",
+        "튀코 브라헤",
+        "갈릴레오 갈릴레이",
+        "요하네스 케플러"
+      ],
+      "question": "1610년 망원경으로 목성의 큰 위성 4개를 발견한 사람은 누구인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "땅의 흔들림은 1단계마다 약 10배 커지지만, 에너지는 약 32배 커져요. 규모 7은 규모 5보다 약 1,000배 많은 에너지를 내보내요.",
+      "id": "sci-0086",
+      "options": ["약 32배", "약 2배", "약 100배", "약 10배"],
+      "question": "지진 규모가 1 올라갈 때마다 방출되는 에너지는 대략 몇 배가 되나요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "기체마다 고유한 색으로 빛나요. 다른 색의 '네온' 간판에는 다른 기체나 안쪽을 칠한 관이 쓰이는 경우가 많아요.",
+      "id": "sci-0071",
+      "options": ["네온", "헬륨", "아르곤", "제논"],
+      "question": "전통적인 광고 간판에서 주황빛이 도는 붉은색으로 빛나는 기체는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "적란운은 높이 12km 이상까지 치솟기도 해서, 여객기는 이 구름을 돌아서 날아가요.",
+      "id": "sci-0079",
+      "options": ["층운", "고적운", "적란운", "권운"],
+      "question": "뇌우를 일으키는 구름은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "녹이 슬려면 산소와 물이 모두 필요해요. 소금은 녹스는 속도를 높일 뿐인데, 그래서 바닷가에서는 자동차가 더 빨리 녹슬어요.",
+      "id": "sci-0073",
+      "options": ["소금", "햇빛", "물", "질소"],
+      "question": "철은 산소와 또 무엇과 반응할 때 녹스나요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "이 기록은 1913년 퍼니스크리크에서 측정되었어요. 일부 기상학자는 정확성을 의심하지만, 세계기상기구(WMO)는 지금도 이 기록을 인정해요.",
+      "id": "sci-0080",
+      "options": [
+        "에티오피아 달롤",
+        "미국 데스밸리",
+        "이란 루트 사막",
+        "쿠웨이트시티"
+      ],
+      "question": "56.7°C로 공식 세계 최고 기온 기록을 가진 곳은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "이 물줄기는 엔셀라두스의 얼음 지각 아래 숨은 짠 바다에서 나와요. 그래서 엔셀라두스는 생명체 탐사의 목표가 되고 있어요.",
+      "id": "sci-0090",
+      "options": ["목성", "천왕성", "토성", "해왕성"],
+      "question": "우주로 물줄기를 뿜어내는 위성 엔셀라두스는 어느 행성을 도나요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "드라이아이스는 약 -78.5°C에서 녹지 않고 고체에서 바로 기체로 바뀌어서, 으스스한 무대 안개를 만들어요.",
+      "id": "sci-0074",
+      "options": ["메탄", "일산화탄소", "질소", "이산화탄소"],
+      "question": "드라이아이스는 어떤 물질이 고체가 된 것인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "이 기록은 1983년 7월 남극 빙상 높은 곳에 있는 러시아의 보스토크 연구 기지에서 세워졌어요.",
+      "id": "sci-0081",
+      "options": ["베르호얀스크", "오이먀콘", "보스토크 기지", "남극점"],
+      "question": "지표면의 자연 기온 중 가장 낮은 -89.2°C가 측정된 곳은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "수증기는 눈에 보이지 않아요. 구름은 수증기가 먼지 알갱이 둘레에 응결해 작은 물방울이나 얼음 결정이 될 때 생겨요.",
+      "id": "sci-0078",
+      "options": [
+        "보이지 않는 수증기",
+        "먼지와 연기 입자",
+        "바다에서 오르는 김",
+        "물방울이나 얼음"
+      ],
+      "question": "구름은 주로 무엇으로 이루어져 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "지구 자전에 따른 코리올리 효과 때문에 이런 폭풍은 북반구에서는 반시계 방향, 남반구에서는 시계 방향으로 돌아요.",
+      "id": "sci-0084",
+      "options": ["시계 방향", "어느 쪽이든 같음", "돌지 않음", "반시계 방향"],
+      "question": "남반구에서 열대 저기압은 어느 방향으로 회전하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "로제타의 착륙선 필레는 혜성 표면에서 두 번 튕긴 뒤에야 그늘진 곳에 멈춰 섰어요.",
+      "id": "sci-0092",
+      "options": ["스타더스트", "딥 임팩트", "로제타", "조토"],
+      "question": "2014년 처음으로 혜성에 착륙선을 내려놓은 탐사 임무는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "허리케인과 태풍은 열대 저기압이라는 같은 종류의 폭풍인데, 지역에 따라 이름이 달라요.",
+      "id": "sci-0082",
+      "options": ["토네이도", "태풍", "눈보라", "몬순"],
+      "question": "북서태평양에서는 허리케인을 무엇이라고 부르나요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "흑요석은 용암이 결정이 자랄 틈도 없이 빨리 식어서 생겨요. 그 날은 강철 수술칼보다 날카로울 수 있어요.",
+      "id": "sci-0087",
+      "options": ["화석이 된 나무", "운석", "석탄의 일종", "화산 유리"],
+      "question": "흑요석은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "눈의 폭은 수십 km에 이르기도 해요. 가장 거센 바람은 그 둘레의 눈벽에서 불어요.",
+      "id": "sci-0083",
+      "options": [
+        "가장 강한 바람",
+        "많은 우박과 눈",
+        "짙은 안개와 이슬비",
+        "잔잔하고 대개 맑음"
+      ],
+      "question": "허리케인의 눈에서는 보통 날씨가 어떤가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "파란 강옥은 사파이어라고 불러요. 루비의 붉은색은 미량의 크로뮴에서 나와요.",
+      "id": "sci-0088",
+      "options": ["석영", "석류석", "녹주석", "강옥"],
+      "question": "루비는 어떤 광물의 붉은 보석 변종인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "기압이 낮아지면 끓는점도 낮아져서, 높은 곳에서는 파스타가 아주 천천히 익어요.",
+      "id": "sci-0098",
+      "options": ["약 70°C", "약 120°C", "약 50°C", "약 100°C"],
+      "question": "에베레스트산 정상에서 물은 대략 몇 도에서 끓나요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "녹은 암석은 땅속에 있을 때는 마그마, 지표로 분출하면 용암이라고 불러요.",
+      "id": "sci-0085",
+      "options": ["흑요석", "현무암", "용암", "마그마"],
+      "question": "땅속에서 녹아 있는 암석을 무엇이라고 하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "1977년에 발사된 보이저 1호는 2012년 성간 공간에 들어섰고, 지구의 소리를 담은 황금 레코드를 싣고 있어요.",
+      "id": "sci-0091",
+      "options": [
+        "파이어니어 10호",
+        "뉴호라이즌스",
+        "보이저 1호",
+        "보이저 2호"
+      ],
+      "question": "지구에서 가장 멀리 있는 인공 물체인 우주선은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "호박 속에는 곤충과 깃털, 심지어 공룡 꼬리의 일부까지 수백만 년 동안 완벽하게 보존될 수 있어요.",
+      "id": "sci-0089",
+      "options": ["나무의 수지", "꿀", "동물 뼈", "조개껍데기"],
+      "question": "호박(琥珀)은 무엇이 화석이 된 것인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "태양은 태양계 전체 질량의 약 99.8%를 차지해요. 나머지는 대부분 목성의 몫이에요.",
+      "id": "sci-0095",
+      "options": ["약 90%", "99% 이상", "약 50%", "약 75%"],
+      "question": "태양계 질량 중 태양이 차지하는 비율은 대략 얼마인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "이렇게 부피가 늘기 때문에 얼음은 물에 뜨고, 얼어붙는 물은 수도관을 터뜨리거나 바위를 쪼갤 수 있어요.",
+      "id": "sci-0101",
+      "options": ["약 1%", "약 50%", "약 25%", "약 9%"],
+      "question": "물은 얼 때 부피가 대략 얼마나 늘어나나요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "태양은 중년의 G형 주계열성으로, 나이는 약 46억 살이고 수명의 대략 절반을 지났어요.",
+      "id": "sci-0096",
+      "options": ["적색 거성", "청색 거성", "백색 왜성", "황색 왜성"],
+      "question": "태양은 어떤 종류의 별인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "해왕성은 태양을 한 바퀴 도는 데 지구 시간으로 약 165년이 걸려요. 발견 이후 첫 공전을 마친 것은 2011년이에요.",
+      "id": "sci-0094",
+      "options": ["목성", "천왕성", "해왕성", "토성"],
+      "question": "태양에서 가장 멀리 있는 행성은 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "은은 구리보다 전기가 조금 더 잘 통하지만, 전선에는 훨씬 싼 구리를 써요.",
+      "id": "sci-0097",
+      "options": ["은", "알루미늄", "금", "구리"],
+      "question": "전기가 가장 잘 통하는 금속은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "이트륨, 이터븀, 터븀, 어븀은 모두 광물이 풍부한 채석장이 있던 스톡홀름 근처 마을 위테르뷔에서 이름을 따왔어요.",
+      "id": "sci-0102",
+      "options": ["폴란드", "독일", "스웨덴", "스코틀랜드"],
+      "question": "한 마을이 원소 네 개의 이름이 된 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "오존은 산소 원자 3개로 이루어진 산소의 한 형태로, 태양의 해로운 UV-B와 UV-C를 대부분 흡수해요.",
+      "id": "sci-0099",
+      "options": ["아르곤", "질소", "오존", "메탄"],
+      "question": "상층 대기에서 자외선 대부분으로부터 우리를 지켜 주는 기체는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "시속 약 2만 8,000km로 나는 그 높이의 우주선에서는 하루에 해돋이와 해넘이를 16번쯤 봐요.",
+      "id": "sci-0100",
+      "options": ["약 24시간", "약 90분", "약 12시간", "약 10분"],
+      "question": "약 400km 높이의 국제 우주 정거장(ISS)이 지구를 한 바퀴 도는 데는 대략 얼마나 걸리나요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "별똥별은 대부분 모래알보다 크지 않은 먼지 알갱이로, 지상 약 80~100km 높이에서 타 버려요.",
+      "id": "sci-0107",
+      "options": [
+        "대기에서 타는 우주 먼지",
+        "빛을 반사하는 인공위성",
+        "혜성의 꼬리",
+        "땅으로 떨어지는 별"
+      ],
+      "question": "'별똥별'의 정체는 실제로 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "퀴리는 1898년 폴로늄이라는 이름을 붙였어요. 당시 폴란드는 독립 국가가 아니었고, 그녀는 폴란드의 처지를 세상에 알리고 싶었어요.",
+      "id": "sci-0104",
+      "options": ["저마늄", "라듐", "폴로늄", "프랑슘"],
+      "question": "마리 퀴리가 조국의 이름을 따서 지은 원소는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "셀레네는 그리스 신화의 달의 여신이에요. 그보다 먼저 발견된 텔루륨은 지구를 뜻하는 텔루스에서 이름을 따왔어요.",
+      "id": "sci-0103",
+      "options": ["셀레늄", "세륨", "헬륨", "텔루륨"],
+      "question": "달의 이름을 딴 화학 원소는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "전자의 질량은 양성자의 약 1,800분의 1밖에 안 돼서, 원자의 질량은 거의 모두 아주 작은 원자핵에 있어요.",
+      "id": "sci-0109",
+      "options": ["양성자", "중성자", "전자", "광자"],
+      "question": "원자에서 음전하를 띠는 입자는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "화성의 공기는 약 95%가 이산화탄소이고, 아주 희박해서 기압이 지구의 1%도 안 돼요.",
+      "id": "sci-0105",
+      "options": ["메탄", "질소", "일산화탄소", "이산화탄소"],
+      "question": "화성 대기의 주성분인 기체는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "c²가 워낙 큰 수라서 아주 작은 질량에도 어마어마한 에너지가 담겨 있어요. 태양도 이 에너지로 빛나요.",
+      "id": "sci-0110",
+      "options": ["빛의 속도", "쿨롱 상수", "소리의 속도", "탄소의 질량"],
+      "question": "E = mc²에서 'c'는 무엇을 나타내나요?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "페르세우스자리 유성우는 스위프트-터틀 혜성의 부스러기예요. 절정 때는 어두운 곳에서 1시간에 유성을 수십 개 볼 수 있어요.",
+      "id": "sci-0108",
+      "options": ["4월", "10월", "12월", "8월"],
+      "question": "페르세우스자리 유성우는 보통 몇 월에 절정을 이루나요?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "토성 육각형의 한 변은 지구 지름보다 길어요. 보이저 탐사선이 처음 발견했어요.",
+      "id": "sci-0106",
+      "options": ["해왕성", "토성", "천왕성", "목성"],
+      "question": "북극에 거대한 육각형 모양의 폭풍 무늬가 있는 행성은 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "O형 Rh- 적혈구에는 A, B, RhD 표지가 없어서, 검사할 시간이 없는 응급 상황에 쓰여요.",
+      "id": "body-0007",
+      "options": ["A형 Rh-", "O형 Rh-", "B형 Rh+", "AB형 Rh+"],
+      "question": "적혈구를 거의 누구에게나 줄 수 있어 '만능 공혈자'로 불리는 혈액형은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "영국 선원들은 괴혈병을 막으려고 레몬이나 라임 즙을 받았고, 그래서 '라이미'라는 별명을 얻었어요.",
+      "id": "body-0009",
+      "options": ["각기병", "구루병", "괴혈병", "펠라그라"],
+      "question": "비타민 C가 오랫동안 부족하면 생기는, 옛 선원들이 두려워한 병은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "가운데귀의 등자뼈는 길이가 약 3mm밖에 안 되고, 소리의 진동을 속귀로 전해요.",
+      "id": "body-0003",
+      "options": ["손가락", "귀", "발가락", "코"],
+      "question": "사람 몸에서 가장 작은 뼈는 어디에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "허벅지뼈인 대퇴골은 키의 약 4분의 1을 차지하고, 가장 튼튼한 뼈 중 하나이기도 해요.",
+      "id": "body-0004",
+      "options": ["비골", "대퇴골", "경골", "상완골"],
+      "question": "사람 몸에서 가장 긴 뼈는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "홍채의 무늬는 사람마다 달라서, 지문처럼 생체 인식에 쓰여요.",
+      "id": "body-0010",
+      "options": ["홍채", "수정체", "각막", "망막"],
+      "question": "눈으로 들어오는 빛의 양을 조절하는, 색이 있는 부분은 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "심방 2개가 피를 받아들이고, 심실 2개가 피를 폐와 온몸으로 뿜어내요.",
+      "id": "body-0005",
+      "options": ["6개", "4개", "2개", "3개"],
+      "question": "사람의 심장은 몇 개의 방으로 이루어져 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "헤모글로빈은 산소와 결합하면 선명한 빨간색이 돼요. 그래서 동맥혈이 정맥혈보다 밝은 색이에요.",
+      "id": "body-0012",
+      "options": ["인슐린", "케라틴", "콜라겐", "헤모글로빈"],
+      "question": "적혈구 속에서 산소를 운반하는, 철이 들어 있는 단백질은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "왼쪽 폐는 심장이 들어갈 자리를 남겨 두느라 엽이 2개뿐이에요.",
+      "id": "body-0030",
+      "options": ["5개", "3개", "4개", "2개"],
+      "question": "사람의 오른쪽 폐는 몇 개의 엽으로 나뉘어 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "인슐린은 1922년 토론토에서 14살 소년에게 처음 주사되며 당뇨병 치료에 쓰이기 시작했어요.",
+      "id": "body-0006",
+      "options": ["췌장", "비장", "신장", "간"],
+      "question": "인슐린을 만드는 기관은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "엉덩이의 대둔근은 몸을 똑바로 세워 주고, 오르거나 달릴 때 힘을 내요.",
+      "id": "body-0014",
+      "options": ["광배근", "대둔근", "대흉근", "이두박근"],
+      "question": "사람 몸에서 가장 큰 근육은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "비타민 D는 몸이 칼슘을 흡수해 뼈를 튼튼하게 하도록 도와요. 고위도에 사는 많은 사람은 겨울에 이 비타민이 부족해져요.",
+      "id": "body-0008",
+      "options": ["비타민 D", "비타민 A", "비타민 K", "비타민 C"],
+      "question": "피부가 햇빛을 받으면 만들어 내는 비타민은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "머리뼈의 일부처럼 아기의 많은 뼈는 자라면서 서로 붙어 하나가 돼요.",
+      "id": "body-0016",
+      "options": ["약 300개", "약 150개", "약 500개", "약 206개"],
+      "question": "갓 태어난 아기의 뼈는 대략 몇 개인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "한때 쓸모없다고 여겨졌지만, 충수는 이로운 장내 세균의 안전한 피난처 역할을 하는지도 몰라요.",
+      "id": "body-0032",
+      "options": ["소장", "대장", "위", "간"],
+      "question": "충수(흔히 '맹장')는 어느 기관에 붙어 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "백혈구는 혈액의 1%도 안 되지만, 그중에는 세균을 몇 년 동안 '기억'하는 세포도 있어요.",
+      "id": "body-0011",
+      "options": ["백혈구", "피부 세포", "적혈구", "혈소판"],
+      "question": "감염을 막는 주된 방어자 역할을 하는 혈액 세포는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "찌릿한 느낌은 팔꿈치에서 피부 가까이 지나는 자신경에서 와요.",
+      "id": "body-0018",
+      "options": ["신경", "뼈", "힘줄", "근육"],
+      "question": "팔꿈치를 부딪쳤을 때 찌릿하게 저린 곳(영어로 'funny bone')은 실제로 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "신장은 날마다 혈장을 약 180L 걸러 내고, 그중 거의 전부를 다시 몸으로 돌려보내요.",
+      "id": "body-0013",
+      "options": ["간", "비장", "신장", "폐"],
+      "question": "피를 걸러 오줌을 만드는 기관은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "이 소화액인 쓸개즙(담즙)은 지방 소화를 도와요. 기름진 음식을 먹으면 쓸개가 쓸개즙을 장으로 짜내요.",
+      "id": "body-0021",
+      "options": ["비장", "췌장", "충수", "쓸개"],
+      "question": "간에서 만든 지방 소화액을 저장하는 작은 기관은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "이름과 달리 소장은 대장보다 훨씬 길어요. '작은' 것은 굵기뿐이에요.",
+      "id": "body-0033",
+      "options": ["약 50cm", "약 1m", "약 6m", "약 15m"],
+      "question": "어른의 소장은 길이가 대략 얼마인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "아기의 몸은 약 75%가 물이고, 뇌와 심장은 약 73%가 물이에요.",
+      "id": "body-0015",
+      "options": ["약 60%", "약 30%", "약 45%", "약 90%"],
+      "question": "어른의 몸은 대략 몇 퍼센트가 물인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "달팽이관 속의 작은 털세포는 저마다 다른 높이의 소리에 반응해요. 한번 손상되면 다시 자라지 않아요.",
+      "id": "body-0022",
+      "options": [
+        "기압을 맞춰요",
+        "몸의 균형을 잡아요",
+        "귀지를 만들어요",
+        "소리를 신호로 바꿔요"
+      ],
+      "question": "속귀에 있는 달팽이 모양의 달팽이관은 어떤 일을 하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "치아의 법랑질은 약 96%가 광물이지만 살아 있는 세포가 없어서 스스로 회복하지 못해요.",
+      "id": "body-0017",
+      "options": ["법랑질", "연골", "손톱", "허벅지뼈"],
+      "question": "사람 몸에서 가장 단단한 물질은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "'작은 뇌'라는 뜻의 소뇌는 뇌 부피의 10분의 1밖에 안 되지만, 뇌 신경세포의 절반 이상이 이곳에 있어요.",
+      "id": "body-0023",
+      "options": ["해마", "소뇌", "전두엽", "뇌하수체"],
+      "question": "균형과 움직임을 주로 조절하는 뇌 부위는 어디인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "시신경이 눈을 빠져나가는 곳에는 빛을 느끼는 세포가 없어요. 뇌가 그 빈틈을 채워서 우리는 알아채지 못해요.",
+      "id": "body-0035",
+      "options": [
+        "시신경이 빠져나가서",
+        "홍채가 가려서",
+        "수정체가 가장 두꺼워서",
+        "눈물이 고여서"
+      ],
+      "question": "사람의 눈에는 왜 작은 '맹점'이 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "사람은 간의 일부를 기증할 수 있는데, 기증자와 이식받은 사람의 간 모두 몇 달 안에 다시 자라요.",
+      "id": "body-0019",
+      "options": ["폐", "심장", "간", "뇌"],
+      "question": "일부를 떼어 내도 원래 크기로 다시 자랄 수 있는 기관은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "평생 동안 심장은 쉬지 않고 25억 번 넘게 뛰어요.",
+      "id": "body-0024",
+      "options": ["약 10만 번", "약 100만 번", "약 1,000번", "약 1만 번"],
+      "question": "쉬고 있는 어른의 심장은 하루에 대략 몇 번 뛰나요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "사랑니 네 개가 다 나지 않는 사람도 많아서, 영구치 28개도 흔해요.",
+      "id": "body-0020",
+      "options": ["24개", "36개", "28개", "32개"],
+      "question": "사랑니를 포함해 어른의 영구치가 모두 나면 몇 개인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "이케다 기쿠나에가 1908년 다시마 국물을 연구하다가 우마미(감칠맛)를 밝혀냈어요. 글루탐산의 맛이에요.",
+      "id": "body-0027",
+      "options": ["매운맛", "우마미", "금속 맛", "박하 맛"],
+      "question": "흔히 육수 같은 깊은 맛으로 표현되며, 일본 과학자가 처음 밝혀낸 기본 맛은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "2018년 연구에 따르면 이들의 비장은 이웃 주민보다 약 50% 커요. 비장은 잠수할 때 산소가 풍부한 피를 추가로 짜내 혈류로 보내요.",
+      "id": "body-0042",
+      "options": ["폐", "심장", "간", "비장"],
+      "question": "동남아시아의 뛰어난 맨몸 잠수부인 '바다 유목민' 바자우족은 어느 기관이 유난히 큰가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "체온은 하루 동안 자연스럽게 변해요. 이른 아침에 가장 낮고 늦은 오후에 가장 높아요.",
+      "id": "body-0025",
+      "options": ["약 37°C", "약 39°C", "약 35°C", "약 40°C"],
+      "question": "사람의 평균 정상 체온은 몇 도인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "캡사이신은 실제 열과 같은 신경 수용체를 자극해요. 새는 이를 느끼지 못해서 고추를 잘 먹고 씨앗을 퍼뜨려요.",
+      "id": "body-0028",
+      "options": ["카페인", "멘톨", "캡사이신", "타닌"],
+      "question": "고추를 맵게 만드는 화합물은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "피부 밖으로 나온 머리카락과 손톱은 죽은 세포로 이루어져 있어서, 잘라도 아프지 않아요.",
+      "id": "body-0026",
+      "options": ["콜라겐", "멜라닌", "헤모글로빈", "케라틴"],
+      "question": "머리카락과 손톱은 주로 어떤 단백질로 이루어져 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "뇌는 몸무게의 약 2%에 불과하지만, 쉬고 있을 때 몸 에너지의 약 5분의 1을 써요.",
+      "id": "body-0029",
+      "options": ["약 75%", "약 20%", "약 50%", "약 2%"],
+      "question": "몸이 쉬고 있을 때 쓰는 에너지 중 뇌가 쓰는 몫은 대략 얼마인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "척추를 누르는 중력이 없으면 척추뼈 사이의 디스크가 부풀어요. 키가 최대 약 3% 커질 수 있지만, 지구로 돌아오면 원래대로 돌아가요.",
+      "id": "body-0043",
+      "options": [
+        "뼈가 빨리 자라서",
+        "근육이 늘어나서",
+        "기압이 낮아서",
+        "척추 디스크가 늘어서"
+      ],
+      "question": "장기 임무를 마친 우주비행사는 키가 몇 cm 커져서 돌아오기도 해요. 왜 그런가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "무릎뼈는 처음에 부드러운 연골로 시작해서, 보통 3~5살 무렵에야 뼈로 바뀌기 시작해요.",
+      "id": "body-0031",
+      "options": ["단단한 뼈", "지방", "연골", "근육"],
+      "question": "갓 태어난 아기의 무릎뼈는 주로 무엇으로 되어 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "망막에는 어두운 빛을 느끼는 막대세포가 약 1억 2,000만 개 있지만, 색을 느끼는 원뿔세포는 약 600만 개뿐이에요.",
+      "id": "body-0034",
+      "options": ["망막", "공막", "각막", "홍채"],
+      "question": "빛을 느끼는 막대세포와 원뿔세포가 있는, 눈 뒤쪽의 층은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "가장 큰 동맥인 대동맥은 정원용 호스만큼 굵고, 모세혈관은 머리카락보다 가늘어요.",
+      "id": "body-0037",
+      "options": ["모세혈관", "정맥", "동맥", "림프관"],
+      "question": "심장에서 나가는 피를 나르는 혈관은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "털이 많던 조상들에게는 털을 세우면 따뜻한 공기를 가두거나 경쟁자에게 몸을 더 크게 보일 수 있었어요.",
+      "id": "body-0036",
+      "options": ["신경 말단", "땀샘", "모낭", "혈관"],
+      "question": "소름은 무엇에 붙어 있는 작은 근육 때문에 돋나요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "몸은 오래된 적혈구를 대신할 새 적혈구를 1초마다 수백만 개씩 만들어요.",
+      "id": "body-0047",
+      "options": ["약 2년", "약 120일", "약 7일", "약 하루"],
+      "question": "적혈구는 대략 얼마 동안 사나요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "혈소판은 아주 작은 세포 조각으로, 상처로 몰려가 서로 엉겨 붙어 구멍을 막아요.",
+      "id": "body-0038",
+      "options": ["산소 운반", "피를 굳게 하기", "호르몬 생성", "세균 퇴치"],
+      "question": "혈액 속 혈소판의 주된 역할은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "제너는 우두에 걸린 소의 고름을 썼어요. 백신이라는 말은 '소'를 뜻하는 라틴어 '바카'에서 왔어요.",
+      "id": "body-0040",
+      "options": [
+        "에드워드 제너",
+        "루이 파스퇴르",
+        "로베르트 코흐",
+        "조지프 리스터"
+      ],
+      "question": "1796년 천연두를 막는 최초의 백신을 개발한 사람은 누구인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "플레밍은 깜빡 잊고 둔 접시에 자란 곰팡이가 그 둘레의 세균을 죽인 것을 발견했어요.",
+      "id": "body-0039",
+      "options": [
+        "알렉산더 플레밍",
+        "이그나즈 제멜바이스",
+        "루이 파스퇴르",
+        "에드워드 제너"
+      ],
+      "question": "1928년 페니실린을 발견한 사람은 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "세계보건기구(WHO)는 전 세계적인 예방 접종 캠페인 끝에 1980년 천연두 박멸을 선언했어요.",
+      "id": "body-0041",
+      "options": ["홍역", "천연두", "소아마비", "말라리아"],
+      "question": "전 세계에서 완전히 박멸된 유일한 사람의 질병은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "빠른 신경 섬유는 지방질인 말이집에 싸여 있어서, 신호가 그 위를 건너뛰듯 시속 400km 넘게 전달돼요.",
+      "id": "body-0049",
+      "options": [
+        "초속 약 120m까지",
+        "빛의 속도에 가깝게",
+        "초속 약 1m",
+        "초속 약 3,000m"
+      ],
+      "question": "몸에서 가장 빠른 신경 신호는 얼마나 빨리 전달될 수 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "몸에 있는 칼슘의 약 99%는 뼈와 이에 저장되어 있어요.",
+      "id": "body-0046",
+      "options": ["칼륨", "칼슘", "철", "나트륨"],
+      "question": "뼈와 이를 이루는 주된 광물은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "이 공기주머니인 폐포를 평평하게 펼치면 약 70m² 이상을 덮어요. 산소가 혈액으로 들어가는 엄청나게 넓은 표면이에요.",
+      "id": "body-0044",
+      "options": ["신장", "폐", "장", "간"],
+      "question": "수백만 개의 아주 작은 공기주머니가 들어 있는 기관은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "엉덩뼈나 복장뼈 같은 큰 뼈 속의 부드러운 골수가 몸의 혈액 공장이에요.",
+      "id": "body-0048",
+      "options": ["심장 근육", "위", "골수", "간"],
+      "question": "어른의 적혈구는 어디에서 만들어지나요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "많은 나라에서 갑상샘 질환을 막으려고 식탁용 소금에 아이오딘을 넣어요.",
+      "id": "body-0045",
+      "options": ["철", "칼슘", "아이오딘", "아연"],
+      "question": "갑상샘이 호르몬을 만들려면 어떤 원소가 필요한가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "해마는 모양이 바다의 해마를 닮아 이름도 그리스어로 해마를 뜻해요. 런던 거리를 익힌 택시 기사들은 해마가 더 커요.",
+      "id": "body-0055",
+      "options": ["소뇌", "해마", "편도체", "시상"],
+      "question": "새로운 기억을 만드는 데 핵심 역할을 하는 뇌 부위는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "횡격막이 움찔한 직후 성대가 탁 닫히면서 '딸꾹' 소리가 나요.",
+      "id": "body-0053",
+      "options": ["혀", "위", "심장", "횡격막"],
+      "question": "딸꾹질은 어느 근육이 갑자기 경련을 일으키는 것인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "밝은 빛, 특히 아침 햇빛은 멜라토닌을 억제해요. 그래서 햇빛이 시차로 어긋난 생체 시계를 되돌리는 데 도움이 돼요.",
+      "id": "body-0050",
+      "options": ["아드레날린", "코르티솔", "인슐린", "멜라토닌"],
+      "question": "어둠 속에서 분비되어 잠을 조절하는 데 도움을 주는 호르몬은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "간은 무게가 약 1.5kg이고, 에너지 저장부터 혈액 정화까지 수백 가지 일을 해요.",
+      "id": "body-0054",
+      "options": ["위", "심장", "뇌", "간"],
+      "question": "사람 몸에서 가장 큰 내장 기관은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "목에 있는 U자 모양의 설골은 근육에 매달려 있고 혀를 받쳐 줘요.",
+      "id": "body-0058",
+      "options": ["슬개골", "설골", "쇄골", "미골"],
+      "question": "몸에서 유일하게 다른 뼈와 연결되지 않은 뼈는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "염색체는 쌍마다 하나씩 부모에게서 받아요. 23번째 쌍이 생물학적 성별을 결정해요.",
+      "id": "body-0056",
+      "options": ["46쌍", "21쌍", "23쌍", "25쌍"],
+      "question": "사람의 세포 대부분에는 염색체가 몇 쌍 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "침을 삼키거나 하품을 하면 유스타키오관이 열려, 비행기가 오르내릴 때 기압을 맞춰 줘요.",
+      "id": "body-0052",
+      "options": ["유스타키오관", "반고리관", "눈물관", "외이도"],
+      "question": "가운데귀와 목구멍을 이어서 귀가 '뻥' 뚫리게 해 주는 관은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "피는 몸무게의 약 7~8%를 차지하고, 쉬고 있을 때 심장은 대략 1분에 한 번꼴로 피 전체를 순환시켜요.",
+      "id": "body-0057",
+      "options": ["약 1L", "약 5L", "약 2L", "약 10L"],
+      "question": "보통 어른의 몸에는 피가 대략 얼마나 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "과카몰레는 아스테카 시대로 거슬러 올라가요. 이름은 '아보카도'와 '소스'를 뜻하는 나와틀어에서 왔어요.",
+      "id": "food-0002",
+      "options": ["아보카도", "오이", "토마토", "완두콩"],
+      "question": "과카몰레의 주재료는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "전통 발렌시아식 파에야에는 토끼고기, 닭고기, 콩이 들어가고, 사프란이 밥을 금빛으로 물들여요.",
+      "id": "food-0001",
+      "options": ["갈리시아", "안달루시아", "카탈루냐", "발렌시아"],
+      "question": "넓고 납작한 팬에 만드는 파에야는 원래 스페인의 어느 지방 음식인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "전통 후무스는 병아리콩에 타히니(참깨 페이스트), 레몬즙, 마늘을 넣어 곱게 갈아 만들어요.",
+      "id": "food-0003",
+      "options": ["잠두", "병아리콩", "흰강낭콩", "렌틸콩"],
+      "question": "후무스는 주로 어떤 재료로 만드나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "설탕과 우유는 나중에 유럽인이 넣기 시작했어요. 아스테카인은 카카오 콩을 돈으로도 썼어요.",
+      "id": "food-0012",
+      "options": ["우유", "설탕", "박하", "고추"],
+      "question": "아스테카인은 초콜릿을 쓴 음료로 마셨어요. 여기에 흔히 무엇을 넣었나요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "토마토, 모차렐라, 바질은 이탈리아 국기의 빨강, 하양, 초록을 나타낸다고 해요.",
+      "id": "food-0004",
+      "options": ["로마", "나폴리", "밀라노", "피렌체"],
+      "question": "피자 마르게리타는 전통적으로 이탈리아의 어느 도시와 관련이 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "1830년대 파리의 빈 출신 제빵사들이 이 빵을 널리 알렸고, 나중에 버터가 듬뿍 든 바삭한 겹 반죽으로 만들게 되었어요.",
+      "id": "food-0019",
+      "options": ["벨기에", "스위스", "오스트리아", "독일"],
+      "question": "크루아상은 초승달 모양 페이스트리인 킵펠에서 유래했어요. 킵펠은 어느 나라 빵인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "페스토 알라 제노베제는 바질, 잣, 마늘, 경성 치즈, 올리브유를 섞어 만들어요. 이름은 '찧다'라는 뜻의 제노바 방언 동사에서 왔어요.",
+      "id": "food-0015",
+      "options": ["호두", "아몬드", "잣", "캐슈너트"],
+      "question": "제노바의 전통 페스토에는 어떤 견과가 들어가나요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "두부는 두유를 응고시킨 뒤 엉긴 덩어리를 눌러 만드는데, 치즈를 만드는 과정과 조금 비슷해요.",
+      "id": "food-0008",
+      "options": ["강낭콩", "대두", "녹두", "병아리콩"],
+      "question": "두부는 어떤 콩으로 만드나요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "고다에서는 수백 년 동안 전통 치즈 시장이 열려 왔고, 농부들은 그곳에서 둥근 치즈를 사고팔아요.",
+      "id": "food-0018",
+      "options": ["네덜란드", "덴마크", "스위스", "벨기에"],
+      "question": "고다 치즈는 어느 나라의 마을 이름에서 따왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "포르투갈 선교사와 상인들은 16세기에 일본에 왔어요. 덴푸라라는 말은 라틴어 '템포라'에서 왔을 수도 있어요.",
+      "id": "food-0024",
+      "options": ["영국인", "네덜란드인", "스페인인", "포르투갈인"],
+      "question": "덴푸라의 바탕이 된 튀김 기술을 일본에 전한 유럽 상인은 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "라임즙의 산은 열처럼 생선의 단백질을 변하게 해요. 페루에는 세비체의 날이라는 국가 기념일도 있어요.",
+      "id": "food-0027",
+      "options": ["식초", "감귤류 즙", "소금물", "뜨거운 기름"],
+      "question": "세비체에서는 날생선을 무엇에 담가 '익히나요'?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "카카오 꼬투리는 나무줄기에 바로 매달려 자라고, 꼬투리 하나에 씨앗이 약 30~50개 들어 있어요.",
+      "id": "food-0011",
+      "options": ["커피나무", "바닐라 난초", "카카오나무", "캐럽나무"],
+      "question": "초콜릿은 어떤 식물의 열매 속 씨앗으로 만드나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "쿠스쿠스는 세몰리나를 작은 알갱이로 빚어 찐 음식이에요. 2020년 유네스코는 쿠스쿠스를 북아프리카 네 나라의 공동 유산으로 등재했어요.",
+      "id": "food-0028",
+      "options": ["장립종 쌀", "귀리", "듀럼밀", "옥수수"],
+      "question": "쿠스쿠스는 전통적으로 어떤 곡물로 만드나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "메이스는 육두구 씨앗을 감싼 레이스 같은 붉은 껍질이에요. 둘 다 인도네시아 반다 제도가 원산지인 나무에서 나요.",
+      "id": "food-0033",
+      "options": ["정향", "카다멈", "메이스", "올스파이스"],
+      "question": "육두구와 같은 열매에서 나오는 향신료는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "베드퍼드 공작부인 애나가 점심과 늦은 저녁 식사 사이의 긴 공백을 메우려고 시작했다고 알려져 있어요.",
+      "id": "food-0029",
+      "options": ["중국", "인도", "네덜란드", "영국"],
+      "question": "'애프터눈 티' 풍습은 1840년대에 어느 나라에서 시작되었나요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "진짜 페타는 주로 양젖으로 만들어요. 이 이름은 EU의 보호를 받아서 그리스 생산자만 쓸 수 있어요.",
+      "id": "food-0016",
+      "options": ["그리스", "스페인", "프랑스", "이탈리아"],
+      "question": "페타 치즈는 전통적으로 어느 나라 치즈인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "'중국 구스베리'로 불리던 이 과일은 1950년대 수출되면서 뉴질랜드의 새 키위의 이름을 따 새 이름을 얻었어요.",
+      "id": "food-0036",
+      "options": ["칠레", "뉴질랜드", "오스트레일리아", "중국"],
+      "question": "키위는 원래 어느 나라에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "인도 말라바르 해안이 원산지인 후추는 한때 '검은 황금'이라 불릴 만큼 귀해서, 집세를 후추로 내기도 했어요.",
+      "id": "food-0034",
+      "options": ["인도", "브라질", "마다가스카르", "멕시코"],
+      "question": "후추의 원산지는 어느 나라인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "'눈'이라고 불리는 이 구멍은 치즈가 숙성될 때 세균이 내뿜는 이산화탄소 거품 때문에 생겨요.",
+      "id": "food-0017",
+      "options": ["체다", "에멘탈", "브리", "그뤼에르"],
+      "question": "큰 구멍으로 유명한 스위스 치즈는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "세비야 오렌지는 너무 시어서 날로 먹기 어렵지만 펙틴이 풍부해서, 단단한 마멀레이드를 만들기에 안성맞춤이에요.",
+      "id": "food-0037",
+      "options": ["레몬", "살구", "야생 딸기", "쓴 오렌지"],
+      "question": "전통적인 마멀레이드는 어떤 과일로 만드나요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "자우어크라우트는 몇 달 동안 보관할 수 있고 비타민 C도 들어 있어서, 옛 선원들은 긴 항해에 이를 싣고 다녔어요.",
+      "id": "food-0020",
+      "options": ["오이", "양배추", "순무", "양파"],
+      "question": "자우어크라우트는 어떤 채소를 발효시켜 만드나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "이 이름은 이탈리아 북동부에서 온, 층층이 쌓은 이 디저트에 든 커피와 코코아를 가리키는 것으로 보여요.",
+      "id": "food-0038",
+      "options": [
+        "크림 같은 구름",
+        "작은 케이크",
+        "나를 끌어올려",
+        "달콤한 꿈"
+      ],
+      "question": "이탈리아 디저트 '티라미수'라는 이름은 무슨 뜻인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "전설에 따르면 신분을 숨기고 여행하던 황제가 하인에게 차를 따라 주자, 하인이 손가락을 두드려 몰래 절을 대신했다고 해요.",
+      "id": "food-0042",
+      "options": [
+        "설탕을 더 넣어 달라",
+        "그만 따라 달라",
+        "차가 식었다",
+        "고맙다"
+      ],
+      "question": "중국 일부 지역에서 차를 따라 줄 때 손가락 두 개로 탁자를 톡톡 두드리는 것은 무슨 뜻인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "보르시는 동유럽 곳곳에서 먹는 수프로, 흔히 사워크림을 한 숟가락 얹어 먹어요.",
+      "id": "food-0021",
+      "options": ["비트", "토마토", "적양배추", "붉은 피망"],
+      "question": "보르시에 짙은 붉은색을 내는 채소는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "이름은 세네갈의 옛 월로프(졸로프) 제국에서 왔어요. 나이지리아와 가나 사람들은 누가 더 잘 만드는지 다정한 경쟁을 벌여요.",
+      "id": "food-0022",
+      "options": ["서아프리카", "남아메리카", "중앙아시아", "남유럽"],
+      "question": "토마토와 향신료를 넣고 한 냄비에 지은 졸로프 라이스는 어느 지역에서 사랑받는 음식인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "대략 '삼가 받겠습니다'라는 뜻으로, 음식이 차려지기까지 힘쓴 모든 사람과 모든 것에 감사를 나타내요.",
+      "id": "food-0040",
+      "options": ["사요나라", "곤니치와", "아리가토", "이타다키마스"],
+      "question": "일본에서 식사를 시작하기 전에 전통적으로 하는 말은 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "세계 메이플 시럽의 대부분은 퀘벡에서 나와요. 퀘벡은 시럽 통을 쌓아 둔 전략 비축분까지 두고 있어요.",
+      "id": "food-0046",
+      "options": ["약 10L", "약 4L", "약 200L", "약 40L"],
+      "question": "메이플 시럽 1L를 만들려면 단풍나무 수액을 대략 몇 L 졸여야 하나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "스시는 식초로 간한 밥을 가리키기 때문에, 날생선 조각만 낸 것은 사시미예요.",
+      "id": "food-0023",
+      "options": ["오니기리", "라멘", "덴푸라", "사시미"],
+      "question": "날생선을 얇게 썰어 밥 없이 내는 일본 요리는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "젓가락을 꽂아 세운 밥은 장례식 때 죽은 사람에게 올려요. 젓가락에서 젓가락으로 음식을 건네는 것도 피해요.",
+      "id": "food-0041",
+      "options": [
+        "요리사를 모욕해서",
+        "다 먹었다는 뜻이라서",
+        "장례 의식을 닮아서",
+        "더 달라는 뜻이라서"
+      ],
+      "question": "일본에서 밥그릇에 젓가락을 꽂아 세우는 것이 실례인 이유는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "해기스는 전통적으로 1월 25일 '번스 나이트'에 먹는데, 먹기 전에 해기스에게 바치는 시를 낭송해요.",
+      "id": "food-0025",
+      "options": ["스코틀랜드", "노르웨이", "웨일스", "아일랜드"],
+      "question": "해기스는 어느 나라의 국민 음식인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "포도 한 알이 다가오는 해의 한 달씩 행운을 가져온다고 해요. 마드리드의 푸에르타 델 솔 광장에는 사람들이 몰려들어요.",
+      "id": "food-0043",
+      "options": ["이탈리아", "스페인", "그리스", "포르투갈"],
+      "question": "새해 전날 자정에 종이 울릴 때마다 포도를 한 알씩 12알 먹는 전통은 어느 나라에서 왔나요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "더반의 인도계 공동체가 만들었어요. 토끼고기는 들어가지 않고, '버니'는 상인 카스트인 '바니아'에서 왔을 수도 있어요.",
+      "id": "food-0053",
+      "options": ["인도", "남아공", "모리셔스", "케냐"],
+      "question": "속을 파낸 빵 덩어리에 카레를 채운 '버니 차우'는 어느 나라 음식인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "이름은 '소 치는 목동'을 뜻하는 헝가리어 '굴야시'에서 왔어요. 목동들은 모닥불 위에 솥을 걸고 이 음식을 끓였어요.",
+      "id": "food-0026",
+      "options": ["헝가리", "그리스", "폴란드", "루마니아"],
+      "question": "파프리카를 듬뿍 넣은 스튜인 굴라시는 어느 나라에서 시작되었나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "꿀의 당분과 천연 산성이 미생물이 자라지 못하게 막아요. 고대 이집트 무덤에 꿀단지를 넣기도 했어요.",
+      "id": "food-0047",
+      "options": ["올리브유", "빵", "치즈", "꿀"],
+      "question": "밀봉해 두면 수분이 적은 덕분에 수십 년 동안 상하지 않는 음식은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "말차용 차나무는 수확 전에 그늘을 씌워 키워요. 그래서 잎이 더 푸르고 단맛이 나요.",
+      "id": "food-0030",
+      "options": ["발효시킨 홍차", "볶은 보리차", "가루 녹차", "말린 박하차"],
+      "question": "말차는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "인제라는 아주 작은 곡물인 테프로 만들어요. 접시이자 숟가락 역할을 해서, 사람들은 인제라를 찢어 음식을 떠먹어요.",
+      "id": "food-0048",
+      "options": ["에티오피아", "모로코", "케냐", "나이지리아"],
+      "question": "스펀지처럼 폭신한 발효 납작빵 인제라는 어느 나라 요리의 중심인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "카바 관목의 뿌리를 갈아 물에 섞은 뒤 한 그릇에 담아 나눠 마셔요. 술은 아니지만 잠깐 입술과 혀를 얼얼하게 해요.",
+      "id": "food-0055",
+      "options": [
+        "후춧과 식물 뿌리",
+        "발효시킨 코코넛",
+        "사탕수수 즙",
+        "말린 해조류"
+      ],
+      "question": "피지, 통가, 바누아투에서 의식 때 함께 나눠 마시는 음료 카바는 무엇으로 만드나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "강황은 생강과 가까운 식물의 뿌리줄기로, 음식뿐 아니라 옷감 염료로도 쓰였어요.",
+      "id": "food-0031",
+      "options": ["파프리카", "커민", "강황", "생강"],
+      "question": "많은 카레를 노랗게 물들이는 향신료는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "잉카인은 퀴노아를 '모든 곡물의 어머니'라고 불렀어요. 사실 퀴노아는 시금치와 가까운 식물의 씨앗이에요.",
+      "id": "food-0049",
+      "options": ["잉카", "올멕", "마야", "아스테카"],
+      "question": "퀴노아는 어느 고대 문명의 주요 작물이었나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "속껍질을 벗겨 말리면 둥글게 말려 '퀼'이 돼요. 진짜 계피(실론 시나몬)는 스리랑카에서 나요.",
+      "id": "food-0032",
+      "options": ["정향", "후추", "계피", "육두구"],
+      "question": "나무껍질로 만드는 향신료는 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "스페인 토르티야는 두툼한 오믈렛으로, 흔히 조각으로 잘라 상온에서 타파스로 내요.",
+      "id": "food-0051",
+      "options": ["달걀과 감자", "쌀과 콩", "옥수숫가루와 라드", "밀가루"],
+      "question": "스페인의 '토르티야'는 멕시코의 토르티야와 전혀 달라요. 무엇으로 만드나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "파인애플 한 그루에는 보통 한 번에 열매가 하나만 열리는데, 수십 개의 꽃이 합쳐져서 만들어져요.",
+      "id": "food-0059",
+      "options": ["약 2개월", "약 6개월", "약 10년", "약 2년"],
+      "question": "파인애플은 심은 뒤 첫 열매를 맺기까지 대략 얼마나 걸리나요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "왼손은 씻는 데 쓰기 때문에 왼손으로 음식이나 돈을 건네면 무례해 보일 수 있어요. 인도에서는 손가락 끝만으로 먹는 경우가 많아요.",
+      "id": "food-0054",
+      "options": ["왼손", "오른손", "아무 손이나", "두 손 모두"],
+      "question": "인도, 중동, 아프리카의 많은 지역에서 전통적으로 식사할 때 쓰는 손은 어느 쪽인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "전통에 따르면 이 소시지는 절대 '정오 종소리를 들어서는' 안 돼요. 달콤한 머스터드와 말랑한 프레첼을 곁들여 먹어요.",
+      "id": "food-0044",
+      "options": ["함부르크", "베를린", "뮌헨", "빈"],
+      "question": "전통적으로 정오 전에 먹는 하얀 송아지 고기 소시지 바이스부르스트는 어느 도시에서 왔나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "영어 이름 clove는 '못'을 뜻하는 라틴어 '클라부스'에서 왔어요. 꽃봉오리가 못처럼 생겼기 때문이에요.",
+      "id": "food-0057",
+      "options": ["육두구", "계피", "팔각", "정향"],
+      "question": "나무의 꽃봉오리를 말려 만드는 향신료는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "'H 데이'의 전환은 1967년 9월 3일 오전 5시에 이루어졌어요. 차들이 반대편 차선으로 옮겨 가는 동안 교통이 멈췄어요.",
+      "id": "food-0065",
+      "options": ["핀란드", "노르웨이", "스웨덴", "덴마크"],
+      "question": "1967년 하룻밤 사이에 좌측통행에서 우측통행으로 바꾼 나라는 어디인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "전통에 따르면 퐁뒤 냄비에 빵을 빠뜨린 사람은 다음 술값을 내는 등의 벌칙을 받아야 해요.",
+      "id": "food-0045",
+      "options": ["오스트리아", "스위스", "프랑스", "리히텐슈타인"],
+      "question": "냄비에 녹인 치즈를 함께 나눠 먹는 퐁뒤는 어느 나라의 국민 음식인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "주황색 당근은 17세기 네덜란드 재배자들이 개발했어요.",
+      "id": "food-0060",
+      "options": ["호박", "당근", "감자", "옥수수"],
+      "question": "주황색 품종이 퍼지기 전에는 흔히 보라색이나 노란색이었던 채소는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "낟알마다 든 물 한 방울이 수증기로 변해 단단한 껍질을 터뜨려요. 페루의 고대 유적에서도 팝콘이 발견되었어요.",
+      "id": "food-0050",
+      "options": ["쌀", "옥수수", "밀", "보리"],
+      "question": "팝콘은 어떤 곡물로 만드나요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "아보카도 씨앗은 아주 커서, 한때 지금은 멸종한 거대한 동물들이 퍼뜨렸을지도 몰라요.",
+      "id": "food-0061",
+      "options": ["멕시코", "케냐", "이스라엘", "스페인"],
+      "question": "아보카도의 원산지는 어느 나라인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "아르헨티나, 우루과이, 파라과이, 브라질 남부에서는 마테 한 통을 친구들끼리 돌려 가며 나눠 마셔요.",
+      "id": "food-0068",
+      "options": ["오르차타", "마테", "치차 모라다", "아톨레"],
+      "question": "'봄비야'라는 금속 빨대로 전통적으로 마시는 음료는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "반죽을 탄두르의 뜨거운 진흙 벽에 철썩 붙이면, 1분쯤 만에 부풀어 올라요.",
+      "id": "food-0052",
+      "options": ["도사", "난", "차파티", "푸리"],
+      "question": "탄두르 화덕의 안쪽 벽에 붙여 굽는 전통 인도 빵은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "마오리족의 홍이는 두 사람이 생명의 숨결을 나누는 것을 상징해요.",
+      "id": "food-0063",
+      "options": ["피지", "뉴질랜드", "사모아", "파푸아뉴기니"],
+      "question": "코를 맞대는 인사인 '홍이'가 전통인 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "'비너'는 '빈의'라는 뜻이에요. 오스트리아 법에 따라 비너 슈니첼이라는 이름은 송아지 고기 요리에만 쓸 수 있어요.",
+      "id": "food-0056",
+      "options": ["헝가리", "스위스", "독일", "오스트리아"],
+      "question": "빵가루를 입힌 송아지 커틀릿인 비너 슈니첼은 어느 나라의 대표 요리인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "세계 인구의 약 3분의 1이 인도, 영국, 오스트레일리아처럼 좌측통행을 하는 나라에 살아요.",
+      "id": "food-0064",
+      "options": ["한국", "일본", "중국", "독일"],
+      "question": "다음 나라 중 좌측통행을 하는 나라는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "옥수수는 콩이 타고 오를 기둥이 되고, 콩은 흙에 질소를 더하며, 호박의 넓은 잎은 그늘을 드리워 잡초를 막아요.",
+      "id": "food-0069",
+      "options": [
+        "쌀, 차, 콩",
+        "밀, 올리브, 포도",
+        "옥수수, 콩, 호박",
+        "감자, 퀴노아, 고추"
+      ],
+      "question": "북아메리카의 많은 원주민이 '세 자매'라고 부르며 함께 심은 작물은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "딸기의 '씨' 하나하나는 사실 씨앗이 하나씩 든 아주 작은 열매예요.",
+      "id": "food-0058",
+      "options": ["딸기", "무화과", "키위", "라즈베리"],
+      "question": "씨가 겉에 붙어 있는 과일은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "호그머네이 풍습 중에는 '첫 발걸음'이 있어요. 새해 첫 손님이 되는 것인데, 석탄이나 쇼트브레드를 들고 가면 좋다고 해요.",
+      "id": "food-0066",
+      "options": ["한여름 축제일", "새해 전날", "크리스마스", "추수 축제"],
+      "question": "스코틀랜드에서 '호그머네이'는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "나마스테는 산스크리트어에서 온 말로 대략 '당신께 절합니다'라는 뜻이에요. 두 손바닥을 가슴 앞에 모아요.",
+      "id": "food-0062",
+      "options": [
+        "양 볼에 입맞춤",
+        "두 손바닥 모으기",
+        "깊이 허리 숙이기",
+        "힘찬 악수"
+      ],
+      "question": "'나마스테' 인사는 어떤 동작으로 하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "일본에서는 좋은 서비스가 당연한 일의 일부로 여겨져서, 식탁에 두고 간 팁을 정중히 돌려주기도 해요.",
+      "id": "food-0067",
+      "options": ["팁 문화가 없음", "현금만 받음", "20%가 관례", "10%가 관례"],
+      "question": "일본 식당에서 팁은 대체로 어떻게 여겨지나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "라시는 짭짤하게, 향신료를 넣어, 또는 달콤하게 만들 수 있어요. 망고 라시는 많은 식당에서 인기 메뉴예요.",
+      "id": "food-0071",
+      "options": ["렌틸콩", "코코넛 워터", "찻잎", "요구르트"],
+      "question": "남아시아에서 인기 있는 음료인 라시는 주로 무엇으로 만드나요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "주인은 보통 3분의 1 정도만 채운 손잡이 없는 작은 잔에, 손님이 잔을 살짝 흔들 때까지 계속 커피를 따라 줘요.",
+      "id": "food-0070",
+      "options": [
+        "잔을 엎어 놓아요",
+        "옆에 동전을 둬요",
+        "탁자를 두 번 두드려요",
+        "잔을 가볍게 흔들어요"
+      ],
+      "question": "걸프 지역에서 아랍 커피를 대접받을 때, 손님은 그만 마시겠다는 뜻을 어떻게 나타내나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "푸틴은 1950년대 퀘벡의 시골에서 만들어졌어요. 신선한 치즈 커드는 씹을 때 '뽀득' 소리가 나야 해요.",
+      "id": "food-0073",
+      "options": ["벨기에", "아일랜드", "캐나다", "프랑스"],
+      "question": "감자튀김에 치즈 커드와 그레이비를 얹은 푸틴은 어느 나라 음식인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "1926년 두 나라를 순회한 러시아 발레리나 안나 파블로바의 이름을 땄어요. 어느 나라가 먼저 만들었는지는 지금도 뜨거운 논쟁거리예요.",
+      "id": "food-0072",
+      "options": ["뉴질랜드", "남아공", "러시아", "캐나다"],
+      "question": "머랭 디저트 파블로바를 국민 음식이라고 내세우는 나라는 오스트레일리아와 어느 나라인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "이 소스는 1830년대 영국 우스터의 약사 두 명이 처음 팔았고, 병에 담기 전에 숙성시켜요.",
+      "id": "food-0078",
+      "options": ["고등어", "청어", "정어리", "안초비"],
+      "question": "우스터소스의 감칠맛 일부는 어떤 발효 생선에서 나오나요?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "토마토는 꽃에서 생겨나고 씨앗이 들어 있어서, 요리할 때는 채소로 다루지만 식물학자들은 열매로 분류해요.",
+      "id": "food-0075",
+      "options": ["뿌리", "채소", "열매", "콩과 식물"],
+      "question": "식물학적으로 토마토는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "스뫼레브뢰드는 '버터와 빵'이라는 뜻이에요. 청어부터 시작해 재료를 먹는 순서에 대한 전통 규칙도 있어요.",
+      "id": "food-0074",
+      "options": ["스웨덴", "아이슬란드", "노르웨이", "덴마크"],
+      "question": "호밀빵 위에 재료를 얹은 오픈 샌드위치 스뫼레브뢰드는 어느 나라의 대표 음식인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "'와규'는 그냥 '일본 소'라는 뜻이에요. 고베 소고기는 효고현에서 나는 유명한 와규의 한 종류예요.",
+      "id": "food-0080",
+      "options": ["일본", "아르헨티나", "오스트레일리아", "프랑스"],
+      "question": "마블링으로 유명한 소고기 와규는 어느 나라의 소 품종에서 나오나요?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "카사바 뿌리는 날것일 때 독이 있어서 반드시 가공해야 해요. 타피오카 펄은 버블티 덕분에 전 세계에 알려졌어요.",
+      "id": "food-0077",
+      "options": ["쌀", "카사바", "밀", "감자"],
+      "question": "타피오카 펄은 어떤 식물의 녹말로 만드나요?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "이탈리아 태생의 식당 주인 체사레 카르디니가 1920년대 티후아나에서 처음 만들었다고 알려져 있어요.",
+      "id": "food-0079",
+      "options": ["멕시코", "이탈리아", "그리스", "스페인"],
+      "question": "시저 샐러드는 어느 나라에서 처음 만들어졌나요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "1903년 12월 17일 라이트 플라이어호는 네 번 비행했는데, 가장 긴 비행은 59초 동안 이어졌어요.",
+      "id": "avi-0001",
+      "options": ["1927년", "1903년", "1891년", "1911년"],
+      "question": "라이트 형제가 처음으로 동력 비행기를 날린 해는 언제인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "형제는 바람이 꾸준하고 착륙하기 좋은 부드러운 모래가 있는 노스캐롤라이나 아우터뱅크스의 사구를 골랐어요.",
+      "id": "avi-0002",
+      "options": ["위치토", "키티호크", "케이프커내버럴", "데이턴"],
+      "question": "라이트 형제가 첫 동력 비행을 한 곳은 미국의 어느 마을 근처인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "린드버그는 앞 유리창도 없는 '스피릿 오브 세인트루이스'호를 타고 약 33시간 30분 만에 뉴욕에서 파리까지 날아갔어요.",
+      "id": "avi-0004",
+      "options": [
+        "찰스 린드버그",
+        "생텍쥐페리",
+        "어밀리아 에어하트",
+        "루이 블레리오"
+      ],
+      "question": "1927년 처음으로 혼자서 쉬지 않고 대서양을 비행기로 건넌 사람은 누구인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "루탄 보이저호는 9일이 걸렸어요. 연료를 너무 많이 실어서 이륙할 때 날개 끝이 활주로에 긁혔어요.",
+      "id": "avi-0032",
+      "options": [
+        "더블 이글",
+        "솔라 임펄스 2",
+        "스피릿 오브 세인트루이스",
+        "보이저"
+      ],
+      "question": "1986년 연료 보급 없이 쉬지 않고 세계 일주 비행에 처음 성공한 비행기의 이름은 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "콩코드는 런던에서 뉴욕까지 약 3시간 30분 만에 건널 수 있었고, 승객들은 지구가 둥글게 휜 모습을 볼 수 있었어요.",
+      "id": "avi-0007",
+      "options": ["이탈리아", "독일", "프랑스", "미국"],
+      "question": "초음속 여객기 콩코드는 영국과 어느 나라가 함께 개발했나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "블레리오가 칼레에서 도버까지 날아가는 데는 약 37분이 걸렸고, 신문사의 상금 1,000파운드를 받았어요.",
+      "id": "avi-0005",
+      "options": [
+        "루이 블레리오",
+        "찰스 린드버그",
+        "윌버 라이트",
+        "앙리 파르망"
+      ],
+      "question": "1909년 비행기로 처음 영국 해협을 건넌 사람은 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "마하 2에서는 기체가 몹시 뜨거워져서, 콩코드는 비행 중에 길이가 최대 약 30cm까지 늘어났어요.",
+      "id": "avi-0008",
+      "options": [
+        "음속보다 조금 느림",
+        "음속의 약 2배",
+        "음속의 5배",
+        "음속의 3배"
+      ],
+      "question": "콩코드의 순항 속도는 대략 어느 정도였나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "에어하트는 파리를 목표로 했지만, 15시간 가까이 날아 북아일랜드의 한 목초지에 내렸어요.",
+      "id": "avi-0006",
+      "options": [
+        "재클린 코크런",
+        "에이미 존슨",
+        "어밀리아 에어하트",
+        "베시 콜먼"
+      ],
+      "question": "1932년 여성 최초로 혼자서 쉬지 않고 대서양을 비행한 사람은 누구인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "747의 유명한 혹은 화물을 싣도록 기수가 열리게 하려고 조종석을 위로 올린 설계에서 나왔어요.",
+      "id": "avi-0011",
+      "options": [
+        "에어버스 A380",
+        "맥도넬 더글러스 DC-10",
+        "보잉 747",
+        "록히드 L-1011"
+      ],
+      "question": "'점보제트기'라는 별명이 붙은 여객기는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "조종사들은 언덕의 빨간색과 흰색 체크무늬 판을 향해 날다가, 구룡 지붕들 바로 위에서 약 47° 기울여 돌며 활주로에 정렬했어요.",
+      "id": "avi-0009",
+      "options": [
+        "물에 뜬 활주로에",
+        "얼어붙은 호수에",
+        "시내 위 급선회",
+        "썰물 때 해변에"
+      ],
+      "question": "1998년에 문을 닫은 홍콩의 옛 카이탁 공항은 어떤 착륙으로 유명했나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "2층 구조의 A380은 승객을 최대 853명까지 태울 수 있도록 인증받았어요. 날개 면적은 약 845m²로 테니스장 세 개보다 넓어요.",
+      "id": "avi-0012",
+      "options": [
+        "보잉 747-8",
+        "에어버스 A350-1000",
+        "보잉 777-300ER",
+        "에어버스 A380"
+      ],
+      "question": "승객 정원으로 따져 지금까지 만들어진 가장 큰 여객기는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "영국의 코멧은 프로펠러 여객기보다 비행시간을 절반으로 줄였고, 대부분의 악천후보다 높은 곳을 날았어요.",
+      "id": "avi-0010",
+      "options": [
+        "보잉 707",
+        "투폴레프 Tu-104",
+        "쉬드 아비아시옹 카라벨",
+        "드하빌랜드 코멧"
+      ],
+      "question": "1952년에 운항을 시작한 세계 최초의 상업용 제트 여객기는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "DELAG의 체펠린 비행선은 1914년 이전까지 관광 비행과 도시 간 비행으로 수천 명의 승객을 실어 날랐어요.",
+      "id": "avi-0037",
+      "options": ["복엽기", "글라이더", "비행선", "수상 비행기"],
+      "question": "1909년 세워진 세계 최초의 항공사 DELAG는 승객을 무엇에 태웠나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "공기가 무척 희박해서 주 활주로의 길이가 약 4km예요. 비행기가 이륙 속도에 이를 여유를 주기 위해서예요.",
+      "id": "avi-0013",
+      "options": ["라파스", "키토", "쿠스코", "보고타"],
+      "question": "해발 약 4,000m에 있는 엘알토 국제공항은 어느 도시의 공항인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "마하 수는 오스트리아의 물리학자 에른스트 마흐의 이름을 땄어요. 여객기 순항 고도에서 마하 1은 시속 약 1,060km예요.",
+      "id": "avi-0015",
+      "options": ["지구의 자전", "제트 기류", "소리", "빛"],
+      "question": "마하 1로 난다는 것은 무엇의 속도로 난다는 뜻인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "예거는 로켓 엔진을 단 벨 X-1을 몰았어요. X-1은 폭격기 아래에서 떨어뜨린 뒤 엔진에 불을 붙였어요.",
+      "id": "avi-0016",
+      "options": ["존 글렌", "척 예거", "유리 가가린", "닐 암스트롱"],
+      "question": "1947년 수평 비행으로 음속 장벽을 깬 것이 처음 확인된 조종사는 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "휘틀은 22살에 특허를 냈어요. 처음으로 하늘을 난 제트기는 1939년 독일 한스 폰 오하인의 설계였어요.",
+      "id": "avi-0040",
+      "options": [
+        "헨리 로이스",
+        "프랭크 휘틀",
+        "한스 폰 오하인",
+        "제프리 드하빌랜드"
+      ],
+      "question": "1930년 터보제트 엔진 특허를 낸 영국의 엔지니어는 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "국제 규정에 따라 국제선 조종사와 관제사는 정해진 수준 이상으로 영어를 할 수 있어야 해요.",
+      "id": "avi-0017",
+      "options": ["스페인어", "영어", "프랑스어", "러시아어"],
+      "question": "전 세계 국제 항공 교통 관제에 쓰이는 언어는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "'와서 나를 도와줘요'라는 뜻의 'venez m'aider'에서 왔어요. 이 신호는 언제나 세 번 연달아 외쳐요.",
+      "id": "avi-0018",
+      "options": ["라틴어", "독일어", "스페인어", "프랑스어"],
+      "question": "조난 신호 '메이데이'는 어느 언어의 표현에서 왔나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "그 높이는 공기가 희박해서 저항이 적기 때문에, 더 낮게 날 때보다 연료를 덜 써요.",
+      "id": "avi-0020",
+      "options": ["약 10~12km", "약 25~30km", "약 50km", "약 2~3km"],
+      "question": "제트 여객기는 보통 대략 어느 고도에서 순항하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "높은 산 위에 있는 것과 비슷해요. 그래서 과자 봉지가 부풀고, 장거리 비행에서는 더 빨리 피곤해질 수 있어요.",
+      "id": "avi-0019",
+      "options": [
+        "약 4,500~5,000m",
+        "해수면(0m)",
+        "약 1,800~2,400m",
+        "약 9,000~10,000m"
+      ],
+      "question": "여객기 객실 기압은 보통 대략 어느 고도에 맞춰져 있나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "세인트피터즈버그-탬파 에어보트 노선은 한 번에 승객 한 명만 태웠어요. 맨 첫 좌석은 경매에서 400달러에 팔렸어요.",
+      "id": "avi-0041",
+      "options": ["샌프란시스코만", "체서피크만", "탬파만", "갤버스턴만"],
+      "question": "1914년 날개 달린 항공기로 첫 정기 항공 노선이 시작되었어요. 그 비행정은 어느 만을 건넜나요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "제트 기류는 시속 300km 넘게 불기도 해서, 항로는 날마다 이 바람을 타거나 피하도록 계획돼요.",
+      "id": "avi-0021",
+      "options": ["멕시코 만류", "제트 기류", "무역풍", "계절풍"],
+      "question": "대서양을 동쪽으로 건너는 비행 시간을 줄여 주는 경우가 많은, 높은 하늘의 빠른 바람은 무엇인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "지구본에서 두 도시를 잇는 가장 짧은 길은 대권이에요. 대권은 대부분의 평면 지도에서 휘어진 선으로 보여요.",
+      "id": "avi-0022",
+      "options": [
+        "대권이 가장 짧아서",
+        "지구 자기장 때문에",
+        "바다를 피해야 해서",
+        "바람이 늘 그쪽으로 불어서"
+      ],
+      "question": "장거리 항로는 평면 지도에서 왜 휘어져 보이나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "짧은 활주로가 약 12% 기울기의 오르막이라서, 착륙할 때는 속도를 줄이고 이륙할 때는 속도를 높이는 데 도움이 돼요.",
+      "id": "avi-0023",
+      "options": ["칸첸중가", "K2", "안나푸르나", "에베레스트산"],
+      "question": "네팔 루클라의 텐징-힐러리 공항은 어느 산으로 가는 트레킹의 관문인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "이 해변은 프린세스 줄리아나 국제공항 활주로 바로 끝에 있어서, 비행기를 구경하는 사람들에게 유명한 명소예요.",
+      "id": "avi-0025",
+      "options": ["세인트마틴섬", "아루바", "바베이도스", "앤티가 바부다"],
+      "question": "착륙하는 제트기가 머리 바로 위로 지나가는 마호 해변은 카리브해의 어느 섬에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "보조익은 양쪽이 서로 반대로 움직여요. 한쪽 날개의 양력은 커지고 다른 쪽은 작아져서 비행기가 기울어요.",
+      "id": "avi-0048",
+      "options": ["승강타", "플랩", "방향타", "보조익"],
+      "question": "날개에 있는 조종면 중 비행기를 한쪽으로 기울게(롤) 하는 것은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "웨스트레이섬과 파파웨스트레이섬 사이의 이 비행 거리는 3km도 안 돼요. 바람이 좋을 때는 1분도 안 걸린 적이 있어요.",
+      "id": "avi-0031",
+      "options": [
+        "그리스의 섬들",
+        "스코틀랜드 오크니",
+        "노르웨이 피오르",
+        "몰디브"
+      ],
+      "question": "비행 시간이 약 1~2분인, 세계에서 가장 짧은 정기 항공편 중 하나는 어디에서 운항하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "오사카만의 이 섬은 수백만 m³의 매립토로 만들어졌고, 지금도 조금씩 가라앉고 있어요.",
+      "id": "avi-0026",
+      "options": ["인공 섬", "옛 호수 바닥", "물에 뜬 강철 부교", "산꼭대기"],
+      "question": "일본 간사이 국제공항은 무엇 위에 지어졌나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "1만 7,000개가 넘는 태양 전지가 낮 동안 배터리를 충전해서, 밤에도 계속 날 수 있었어요.",
+      "id": "avi-0033",
+      "options": ["햇빛", "풍력 터빈", "바이오 연료", "수소"],
+      "question": "2016년 솔라 임펄스 2는 오직 무엇의 힘으로 세계를 일주했나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "전쟁 중 알루미늄이 부족해서 나무로 설계할 수밖에 없었어요. 이 비행정은 1947년 단 한 번, 1분도 안 되게 날았어요.",
+      "id": "avi-0050",
+      "options": ["가문비나무", "발사", "참나무", "자작나무"],
+      "question": "거대한 비행정 '스프루스 구스'는 실제로 주로 어떤 나무로 만들어졌나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "창이 공항 주얼의 '레인 보텍스'는 유리 돔에서 빗물을 쏟아 내고, 그 둘레를 실내 숲이 감싸고 있어요.",
+      "id": "avi-0027",
+      "options": ["도하", "홍콩", "싱가포르", "두바이"],
+      "question": "높이 40m의 실내 폭포가 있는 '주얼'은 어느 도시의 공항에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "시코르스키의 VS-300은 커다란 주 로터 하나와 작은 꼬리 로터라는, 오늘날 대부분의 헬리콥터가 쓰는 구조를 확립했어요.",
+      "id": "avi-0038",
+      "options": [
+        "프랭크 피아세키",
+        "이고르 시코르스키",
+        "로런스 벨",
+        "후안 데 라 시에르바"
+      ],
+      "question": "1939년에 날아오른, 최초의 실용적인 단일 로터 헬리콥터를 설계한 사람은 누구인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "콴타스는 Queensland and Northern Territory Aerial Services의 약자예요. 1920년 오지 마을 윈턴에서 세워졌어요.",
+      "id": "avi-0028",
+      "options": ["뉴질랜드", "캐나다", "오스트레일리아", "남아공"],
+      "question": "항공사 이름 콴타스는 약자에서 시작되었어요. 콴타스는 어느 나라 항공사인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "1480년대의 이 그림에는 공기 속에서 돌며 떠오르도록 고안된, 아마천으로 만든 나선형 나사가 그려져 있어요.",
+      "id": "avi-0039",
+      "options": ["글라이더", "헬리콥터", "제트기", "열기구"],
+      "question": "레오나르도 다빈치의 '공중 나사' 설계는 흔히 어떤 항공기의 초기 아이디어로 여겨지나요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "미국의 비행 학교는 어느 곳도 그녀를 받아 주지 않았어요. 그래서 그녀는 프랑스어를 배워 프랑스에서 훈련받았어요.",
+      "id": "avi-0059",
+      "options": ["미국", "프랑스", "독일", "영국"],
+      "question": "선구적인 비행사 베시 콜먼은 1921년 어느 나라에서 조종사 면허를 땄나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "로마의 주요 공항은 최초의 비행기보다 약 400년 앞서 새처럼 날갯짓하는 기계 등 비행 장치를 스케치한 레오나르도를 기려요.",
+      "id": "avi-0029",
+      "options": ["베네치아", "피렌체", "밀라노", "로마"],
+      "question": "레오나르도 다빈치의 이름을 딴 피우미치노 공항은 어느 도시의 공항인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "이 공항의 모토 'Above us only sky(우리 위엔 오직 하늘뿐)'는 레넌의 노래 〈이매진〉의 가사예요.",
+      "id": "avi-0030",
+      "options": ["리버풀", "런던", "맨체스터", "글래스고"],
+      "question": "존 레넌의 이름을 딴 공항이 있는 영국 도시는 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "배와 마찬가지로 빨간색은 왼쪽, 초록색은 오른쪽에 있어요. 그래서 조종사는 다른 항공기가 어느 쪽으로 가는지 알 수 있어요.",
+      "id": "avi-0045",
+      "options": ["오른쪽 날개 끝", "꼬리 꼭대기", "왼쪽 날개 끝", "기수 아래"],
+      "question": "항공기의 빨간색 항행등은 어디에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "산투스두몽은 손목시계와도 관련이 있어요. 두 손으로 조종간을 잡을 수 있도록 친구 루이 카르티에가 손목시계를 만들어 주었다고 해요.",
+      "id": "avi-0060",
+      "options": [
+        "산투스두몽",
+        "루이 블레리오",
+        "앙리 파르망",
+        "가브리엘 부아쟁"
+      ],
+      "question": "1906년 파리에서 14-bis를 날린 브라질의 항공 개척자는 누구인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "몽골피에 형제의 열기구는 두 사람을 태우고 약 25분 동안 파리 상공을 날았어요.",
+      "id": "avi-0034",
+      "options": ["독일", "프랑스", "이탈리아", "영국"],
+      "question": "1783년 사람을 태운 열기구의 첫 비행은 어느 나라에서 이루어졌나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "페르디난트 폰 체펠린 백작의 첫 경식 비행선은 1900년 보덴호 위를 날았어요.",
+      "id": "avi-0036",
+      "options": ["이탈리아", "프랑스", "독일", "영국"],
+      "question": "체펠린 비행선은 처음에 어느 나라에서 만들어졌나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "SR-71은 시속 약 3,530km로 날았어요. 연료 탱크는 땅에서는 새다가, 비행 중 열을 받아야 비로소 꽉 막혔어요.",
+      "id": "avi-0049",
+      "options": ["SR-71 블랙버드", "MiG-25 폭스배트", "F-15 이글", "콩코드"],
+      "question": "1976년부터 공기 흡입식 유인 제트기의 공식 속도 기록을 지키고 있는 항공기는 무엇인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "간호사이자 조종사였던 엘런 처치는 간호사가 불안해하는 승객을 안심시킬 수 있다고 보잉 항공 운송을 설득했어요.",
+      "id": "avi-0062",
+      "options": ["교사", "조종사", "요리사", "간호사"],
+      "question": "1930년에 채용된 최초의 여성 객실 승무원들은 어떤 직업 교육을 받은 사람이어야 했나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "철도가 생기기 전에는 마을마다 자기 지역의 태양시를 써서, 몇 마을만 떨어져도 시계가 몇 분씩 달랐어요.",
+      "id": "avi-0051",
+      "options": ["전신", "해운", "철도", "항공"],
+      "question": "표준 시간대는 처음에 주로 무엇의 일정을 짜기 위해 도입되었나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "토론토는 YYZ, 밴쿠버는 YVR이에요. 이 Y는 보통 캐나다의 옛 무선국 및 기상 관측소 코드에서 유래한 것으로 봐요.",
+      "id": "avi-0053",
+      "options": ["Y", "C", "K", "Q"],
+      "question": "토론토와 밴쿠버처럼 캐나다 공항 코드는 대부분 어떤 글자로 시작하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "제트기는 이 활주로를 쓸 수 없어요. 작은 프로펠러기만 절벽과 바다 사이에 끼인 약 400m의 활주로에 내려요.",
+      "id": "avi-0065",
+      "options": ["약 1,200m", "약 2,000m", "약 400m", "약 100m"],
+      "question": "카리브해의 사바섬에는 세계에서 가장 짧은 상업용 활주로 중 하나가 있어요. 길이는 대략 얼마인가요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "날개 위로 부는 바람이 대기 속도에 더해져서, 비행기가 이륙 속도에 더 빨리 도달해요.",
+      "id": "avi-0047",
+      "options": [
+        "활주로가 덜 필요해서",
+        "나중에 연료가 절약돼서",
+        "엔진이 조용해져서",
+        "날개 결빙을 막아서"
+      ],
+      "question": "항공기는 왜 보통 맞바람을 받으며 이륙하나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "알보라크 노선은 탕헤르와 카사블랑카를 이어요. 최고 시속 320km로 달려 약 4시간 45분 걸리던 거리를 약 2시간 10분으로 줄였어요.",
+      "id": "avi-0055",
+      "options": ["이집트", "남아공", "알제리", "모로코"],
+      "question": "2018년에 개통한 아프리카 최초의 고속 철도는 어느 나라에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "아시아에서 동쪽으로 이 선을 넘으면 달력상 전날에, 즉 이륙한 것보다 이른 날짜에 착륙할 수도 있어요.",
+      "id": "avi-0052",
+      "options": ["적도", "북극권", "그리니치 본초 자오선", "국제 날짜 변경선"],
+      "question": "비행 중 어느 선을 넘으면 달력이 하루 바뀌나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "'널라버'는 '나무가 없다'라는 뜻의 라틴어에서 왔어요. 대륙 횡단 철도의 이 구간은 478km 동안 한 번도 휘지 않아요.",
+      "id": "avi-0056",
+      "options": ["약 478km", "약 48km", "약 150km", "약 1,500km"],
+      "question": "오스트레일리아의 널라버 평원을 가로지르는 열차는 세계에서 가장 긴 직선 철로를 달려요. 길이는 대략 얼마인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "프랑스와 스위스가 함께 운영하며 프랑스 구역과 스위스 구역이 따로 있고, 바젤로 이어지는 세관 도로가 있어요.",
+      "id": "avi-0066",
+      "options": ["오스트리아", "독일", "스위스", "프랑스"],
+      "question": "바젤-뮐루즈-프라이부르크 유로에어포트는 전체가 어느 나라 땅에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "주 노선은 길이가 약 9,300km이고 8개 시간대를 지나며, 쉬지 않고 달려도 약 일주일이 걸려요.",
+      "id": "avi-0054",
+      "options": [
+        "이르쿠츠크",
+        "노보시비르스크",
+        "무르만스크",
+        "블라디보스토크"
+      ],
+      "question": "시베리아 횡단 철도는 모스크바에서 어느 도시까지 이어지나요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "윌리엄 보잉의 첫 비행기는 작은 수상 비행기였어요. 보잉은 지금도 시애틀 지역에서 여객기를 만들어요.",
+      "id": "avi-0058",
+      "options": ["디트로이트", "시애틀", "시카고", "위치토"],
+      "question": "보잉사는 1916년 어느 도시에서 세워졌나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "1868년 철골 지붕을 얹은 승강장이 문을 열었을 때, 그 지붕은 기둥 없이 한 번에 덮은 지붕으로 세계에서 가장 컸어요.",
+      "id": "avi-0057",
+      "options": ["런던", "파리", "브뤼셀", "암스테르담"],
+      "question": "유로스타 열차의 종착역인 세인트판크라스 국제역은 어느 도시에 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "릴리엔탈의 글라이더 비행 사진은 라이트 형제에게 영감을 주었어요.",
+      "id": "avi-0061",
+      "options": ["동력 비행기", "글라이더", "기구", "비행선"],
+      "question": "독일의 개척자 오토 릴리엔탈은 1890년대에 무엇을 타고 약 2,000번 비행했나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "1947년 시드니-런던 첫 전 구간 비행은 싱가포르, 카라치, 카이로 등을 거쳐 93시간이 걸렸어요. 지금은 한 번만 경유해도 갈 수 있어요.",
+      "id": "avi-0069",
+      "options": ["미국", "인도", "영국", "남아공"],
+      "question": "'캥거루 루트'라는 별명이 붙은 유명한 항공 노선은 오스트레일리아와 어느 나라를 잇나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "윙렛은 날개 끝에서 소용돌이치는 와류를 약하게 해서, 연료 소비를 몇 퍼센트 줄일 수 있어요.",
+      "id": "avi-0067",
+      "options": [
+        "항력을 줄여요",
+        "착륙등을 달아요",
+        "무선 수신을 도와요",
+        "지상 조향을 도와요"
+      ],
+      "question": "많은 여객기 날개 끝에 위로 꺾여 달린 '윙렛'은 주로 어떤 역할을 하나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "DC-3와 군용 파생형은 1만 6,000대 넘게 만들어졌고, 그중 일부는 80년이 넘은 지금도 날고 있어요.",
+      "id": "avi-0063",
+      "options": [
+        "더글러스 DC-3",
+        "포드 트라이모터",
+        "보잉 247",
+        "융커스 Ju 52"
+      ],
+      "question": "일부는 지금도 날고 있는, 승객 수송을 수익 사업으로 만든 1930년대 프로펠러 여객기는 무엇인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "흰색은 뜨거운 계류장에서 비행기를 덜 뜨겁게 하고, 점검할 때 균열이나 찌그러짐, 누출을 찾기 쉽게 해 줘요.",
+      "id": "avi-0068",
+      "options": [
+        "레이더에 유리해서",
+        "법으로 정해져서",
+        "햇빛을 반사해서",
+        "항력이 줄어서"
+      ],
+      "question": "대부분의 여객기를 주로 흰색으로 칠하는 이유는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "담맘 근처의 부지는 약 776km²에 이르지만, 그중 활주로와 터미널로 쓰이는 땅은 일부에 불과해요.",
+      "id": "avi-0064",
+      "options": ["카타르", "사우디아라비아", "아랍에미리트", "오만"],
+      "question": "부지 면적으로 세계에서 가장 큰 공항인 킹파드 국제공항은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "조종사는 조종간 대신 작은 사이드 스틱으로 A320을 조종하고, 컴퓨터가 비행기를 안전 범위 안에 유지해요.",
+      "id": "avi-0073",
+      "options": ["보잉 757", "콩코드", "보잉 777", "에어버스 A320"],
+      "question": "1988년 운항을 시작한, 최초로 디지털 플라이 바이 와이어 조종 방식을 쓴 여객기는 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "이 연결로는 다리로 시작해 인공 섬을 거쳐 해저 터널로 이어져서, 배나 비행기의 길을 막지 않아요.",
+      "id": "avi-0070",
+      "options": ["노르웨이", "스웨덴", "독일", "핀란드"],
+      "question": "외레순 다리는 덴마크와 어느 나라를 잇나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "2016년에 개통한 이 터널로 열차가 최고 시속 약 250km로 산 밑을 지나가요. 머리 위 암반 두께는 최대 2,300m예요.",
+      "id": "avi-0071",
+      "options": ["이탈리아", "오스트리아", "스위스", "리히텐슈타인"],
+      "question": "알프스 아래를 지나는 57km 길이의 철도 터널인 고트하르트 베이스 터널은 어느 나라에 있나요?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "특별히 개조한 TGV는 2007년 시속 574.8km로 일반 바퀴식 열차의 속도 기록을 세웠어요.",
+      "id": "avi-0072",
+      "options": ["프랑스", "이탈리아", "스페인", "독일"],
+      "question": "고속 열차 TGV가 달리는 나라는 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "복합재는 금속처럼 부식되지 않아서, 787 객실은 습도를 더 높게, 기압은 더 낮은 고도에 맞춰 유지할 수 있어요.",
+      "id": "avi-0074",
+      "options": [
+        "티타늄 판",
+        "스테인리스강",
+        "알루미늄-리튬 합금",
+        "탄소 섬유 복합재"
+      ],
+      "question": "보잉 787 드림라이너의 동체와 날개는 주로 무엇으로 만들어졌나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "섬에는 활주로가 없어요. 케이프타운에서 배로 약 6일이 걸리고, 배는 1년에 8~10번 정도만 들러요.",
+      "id": "avi-0076",
+      "options": [
+        "주 1회 항공편으로",
+        "수상 비행기로",
+        "오직 배로만",
+        "헬리콥터로"
+      ],
+      "question": "가장 외딴 유인도 중 하나인 트리스탄다쿠냐에는 어떻게 갈 수 있나요?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "초기 중국의 연은 비단과 대나무로 만들었고, 신호를 보내거나 거리를 재는 데 쓰였어요.",
+      "id": "avi-0075",
+      "options": ["이집트", "중국", "그리스", "인도"],
+      "question": "2,000년도 더 전에 사람들이 처음 연을 날린 곳은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "지금 비행기가 활주하는 곳에서 한때는 하를레메르메이르 호수 위로 배가 다녔어요. 이 호수는 1850년대에 물을 뺐어요.",
+      "id": "avi-0078",
+      "options": [
+        "코펜하겐 카스트루프",
+        "브뤼셀",
+        "암스테르담 스히폴",
+        "함부르크"
+      ],
+      "question": "물을 빼낸 호수 바닥에 자리해 해수면보다 약 3m 낮은 유럽의 주요 공항은 어디인가요?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "포물선 한 번마다 약 20~25초 동안 몸이 둥둥 떠요. 우주비행사들은 이를 훈련에 활용해요.",
+      "id": "avi-0079",
+      "options": ["초음속", "고산병", "심한 난기류", "무중력"],
+      "question": "포물선을 그리며 오르내리는 포물선 비행에서 승객은 잠깐 동안 무엇을 경험하나요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "1,852m라는 길이는 1929년 국제적으로 합의되었어요. 항공과 해운에서는 지금도 거리를 해리로, 속도를 노트로 재요.",
+      "id": "avi-0080",
+      "options": ["2,000m", "1,000m", "1,852m", "1,609m"],
+      "question": "1노트는 시속 1해리예요. 1해리는 몇 m인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "아일랜드의 섀넌은 대서양 횡단 항공편의 급유지였고, 이 면세점은 환승 승객을 위해 세워졌어요.",
+      "id": "avi-0077",
+      "options": ["스히폴", "히스로", "섀넌", "프랑크푸르트"],
+      "question": "1947년 세계 최초의 면세점을 연 공항은 어디인가요?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "춘분과 추분에는 햇빛이 엘카스티요의 계단에 그림자를 드리우는데, 마치 뱀이 미끄러져 내려오는 것처럼 보여요.",
+      "id": "his-0020",
+      "options": ["잉카", "아스테카", "마야", "올멕"],
+      "question": "치첸이트사의 계단식 피라미드 엘카스티요를 세운 문명은 무엇인가요?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "마추픽추는 15세기 페루 안데스산맥 높은 곳에 세워졌는데, 아마도 잉카 황제 파차쿠티의 영지였을 거예요.",
+      "id": "his-0002",
+      "options": ["아스테카", "잉카", "올멕", "마야"],
+      "question": "산 위의 성채 마추픽추를 세운 문명은 무엇인가요?"
+    }
+  ]
+}
