@@ -59,6 +59,8 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P1 (blizsi iterace)
 
+- **E2E testy (Playwright, 2026-11-01)** — zaklad hotov: `e2e/` nad web exportem (onboarding + reload, Home/Hry/3 hry/Nastaveni, detsky rezim vcetne zamku, rodicovskeho zamku, soukromi a izolace postupu), `npm run e2e`, workflow `.github/workflows/e2e.yml` na PR. Navazne: pokryt dalsi hry, Relax, prevodnik a checklist; nativni E2E (Maestro) pro to, co web neukaze (Android zpet = pozadi, haptika, audio, senzory). Zjisteni z webu: tlacitko Zpet v prohlizeci z `/kids` opusti aplikaci (zamek trasy odpovi na `/` navratem v historii) — dospele obrazovky se neukazou, jen pro informaci.
+
 - **Detsky rezim — navazujici kroky (2026-11-01)**: otestovat na realnem zarizeni s ditetem 3–6 let (velikost dlazdic, rodicovsky zamek drzenim 3 s, TalkBack pro rodice, Android zpet, otoceni na tabletu); nove ciste detske hry (omalovanky, tvary/barvy, zvirata a jejich zvuky — bez textu); text Play listingu pro rodice (popsat Detsky rezim jako funkci pro rodice) — **NEmenit cilove publikum v Play Console** (aplikace zustava pro dospele / obecne publikum); zvazit zobrazeni vstupu i na Home (zatim jen Nastaveni)
 
 - nalezy z device QA 2026-10-10 (neopraveno): Hadej slovo nevaliduje tipy proti slovniku (lze zadat libovolnych 5 pismen) a ma jen cs/de/en (kviz, Obrana nebe a cs/de Hadej slovo opraveny v 1.5.2); Letovy kviz a Hledani slov startuji bez odpoctu (u klidnych her OK)

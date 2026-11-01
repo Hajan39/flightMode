@@ -50,3 +50,8 @@ tsc-errors.txt
 # Local artifacts: PGS achievements import, screenshots/videos, native module builds
 /build/
 modules/*/android/build/
+
+# Playwright e2e (web export + reports)
+dist-e2e/
+test-results/
+playwright-report/
