@@ -238,7 +238,10 @@ GitHub Actions in `.github/workflows/`:
   - **Build lane** (if any *breaking-sensitive* file changed: `app.json`, `app.config.*`, `eas.json`, `package.json`, `package-lock.json`, `babel.config.js`, `metro.config.js`, `plugins/**`, `modules/**`, `android/**`, `ios/**`) → `eas build --platform android --auto-submit --profile production` (native AAB + submit to the production track as draft; version code auto-increments via `autoIncrement`).
   - **OTA lane** (only JS/TS, translations, data, compatible assets changed) → `npm run ota:production` (derives the message from `CHANGELOG.md` `Unreleased`).
   - Requires the `EXPO_TOKEN` repo secret.
-- **`claude.yml` / `claude-code-review.yml`** — Claude Code GitHub app hooks.
+- **`e2e.yml`** — Playwright E2E on PRs and main.
+- **`static-analysis.yml`** — CodeQL (JavaScript/TypeScript, security-and-quality) on PRs, main and weekly; Dependency Review blocks PRs that add a dependency with a high/critical advisory. No AI tokens or secrets.
+- **Code review** is done by **GitHub Copilot** (enabled in repo settings → Rules) guided by `.github/copilot-instructions.md` (review checklist first; keep it under ~4,000 characters — Copilot code review reads only the start). There is no Claude review workflow.
+- `release-main.yml` ignores `.github/**`, `content/**`, `docs/**`, `services/**` (no app release for CI, content, website or Worker changes).
 
 **Implication: merging to `main` auto-releases.** So the OTA-vs-native-build safety decision is automated — you never need to hand-pick. Just make sure `CHANGELOG.md` `Unreleased` is current before merging (the OTA lane uses it as the update message). To release without merging to main, or to test first, use `npm run deploy:internal` (build → internal testing track → pre-launch report).
 
