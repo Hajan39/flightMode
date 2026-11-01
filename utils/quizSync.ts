@@ -13,8 +13,21 @@ export const QUIZ_FEED_BASE_URL = (
   "https://raw.githubusercontent.com/Hajan39/flightMode/main/content/quiz"
 ).replace(/\/+$/, "");
 
-/** Languages with a translated server pool. Others: bundled questions only. */
-export const QUIZ_REMOTE_LANGUAGES = ["en", "cs", "de"] as const;
+/** Languages with a translated server pool (all 12 app languages). */
+export const QUIZ_REMOTE_LANGUAGES = [
+  "en",
+  "cs",
+  "de",
+  "es",
+  "fr",
+  "hi",
+  "it",
+  "ja",
+  "ko",
+  "pl",
+  "pt",
+  "zh",
+] as const;
 export type QuizRemoteLanguage = (typeof QUIZ_REMOTE_LANGUAGES)[number];
 
 export function isQuizRemoteLanguage(

@@ -1,0 +1,2277 @@
+{
+  "id": "pack-001",
+  "lang": "zh",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "太平洋约占地球表面的三分之一，比地球上所有陆地加起来还大。",
+      "id": "geo-0001",
+      "options": ["南大洋", "印度洋", "大西洋", "太平洋"],
+      "question": "地球上最大的大洋是哪个？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "澳大利亚约三分之一是沙漠，半干旱地区还要大得多；只有没有常住人口的南极洲比它更干旱。",
+      "id": "geo-0008",
+      "options": ["非洲", "南美洲", "澳大利亚", "亚洲"],
+      "question": "有人居住的大陆中，哪个最干旱？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "安第斯山脉沿南美洲西侧延伸约7000公里，途经七个国家。",
+      "id": "geo-0011",
+      "options": ["安第斯山脉", "乌拉尔山脉", "喜马拉雅山脉", "落基山脉"],
+      "question": "世界上最长的大陆山脉是哪条？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "法国通过法属圭亚那与巴西有约730公里的边界，比法国与西班牙的边界（约620公里）还长。",
+      "id": "geo-0003",
+      "options": ["法国", "西班牙", "葡萄牙", "荷兰"],
+      "question": "哪个国家最长的陆地边界是与巴西接壤的那一段？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "珠峰海拔约8849米，是地球上海拔最高的地方；喜马拉雅山脉至今每年仍在升高几毫米。",
+      "id": "geo-0004",
+      "options": ["阿尔卑斯山脉", "喜马拉雅山脉", "喀喇昆仑山脉", "安第斯山脉"],
+      "question": "珠穆朗玛峰位于哪条山脉？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "的的喀喀湖海拔约3800米，常被称为世界上海拔最高的可通航湖泊。",
+      "id": "geo-0014",
+      "options": ["智利", "阿根廷", "厄瓜多尔", "玻利维亚"],
+      "question": "的的喀喀湖由秘鲁和哪个国家共有？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "尼罗河向北流经开罗，注入地中海；埃及几乎所有人口都住在河岸附近。",
+      "id": "geo-0005",
+      "options": ["尼日尔河", "尼罗河", "幼发拉底河", "刚果河"],
+      "question": "哪条河流经开罗？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "在极咸的湖水中繁盛的藻类把湖水染成粉红色，当地工人用手从湖底采盐。",
+      "id": "geo-0012",
+      "options": ["马里", "乍得", "塞内加尔", "尼日尔"],
+      "question": "达喀尔附近的粉红色湖泊雷特巴湖位于哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "加拿大面积超过10公顷的湖泊就有数十万个，其中许多是冰期冰川刨蚀而成的。",
+      "id": "geo-0017",
+      "options": ["瑞典", "俄罗斯", "芬兰", "加拿大"],
+      "question": "哪个国家的湖泊数量最多？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "从794年到1868年，京都一直是天皇的居所；1868年朝廷迁往江户，江户随后改名东京。",
+      "id": "geo-0018",
+      "options": ["镰仓", "奈良", "大阪", "京都"],
+      "question": "在东京之前，哪座日本城市作为皇都长达1000多年？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "两条河颜色不同，会并排流淌一段才混合；汛期的大部分水量来自青尼罗河。",
+      "id": "geo-0037",
+      "options": ["开罗", "亚的斯亚贝巴", "喀土穆", "朱巴"],
+      "question": "青尼罗河与白尼罗河在哪座首都交汇？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "威尼斯分布在118个岛上，由约400座桥相连，建筑立在打入泥中的木桩上。",
+      "id": "geo-0009",
+      "options": ["威尼斯", "热那亚", "的里雅斯特", "那不勒斯"],
+      "question": "哪座意大利城市建在潟湖中100多个小岛上？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "伏尔加河在俄罗斯境内流淌约3530公里，注入里海，而不是任何大洋。",
+      "id": "geo-0019",
+      "options": ["伏尔加河", "第聂伯河", "莱茵河", "多瑙河"],
+      "question": "欧洲最长的河流是哪条？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "大堡礁绵延2300多公里，是世界上最大的珊瑚礁群，从太空中也能看到。",
+      "id": "geo-0010",
+      "options": ["澳大利亚", "印度尼西亚", "菲律宾", "新西兰"],
+      "question": "大堡礁位于哪个国家的近海？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "多瑙河流经或沿着10个国家流淌，途经四座首都：维也纳、布拉迪斯拉发、布达佩斯和贝尔格莱德。",
+      "id": "geo-0020",
+      "options": ["莱茵河", "多瑙河", "伏尔加河", "易北河"],
+      "question": "哪条欧洲河流流经的国家最多？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "直布罗陀海峡最窄处只有约14公里，天气晴朗时从西班牙就能望见摩洛哥。",
+      "id": "geo-0013",
+      "options": [
+        "霍尔木兹海峡",
+        "墨西拿海峡",
+        "直布罗陀海峡",
+        "博斯普鲁斯海峡"
+      ],
+      "question": "欧洲和非洲在最近处被哪个海峡隔开？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "安赫尔瀑布从一座平顶山上落下979米；很多水还没落到底就化成了水雾。",
+      "id": "geo-0023",
+      "options": ["圭亚那", "委内瑞拉", "哥伦比亚", "巴西"],
+      "question": "世界上落差最大的不间断瀑布安赫尔瀑布位于哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "撒哈拉沙漠的面积和美国或中国差不多；只有南极和北极的寒漠比它更大。",
+      "id": "geo-0015",
+      "options": ["卡拉哈里沙漠", "阿塔卡马沙漠", "戈壁", "撒哈拉沙漠"],
+      "question": "世界上最大的热沙漠是哪个？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "瑞士法律上没有正式首都；伯尔尼是政府所在地，被称为“联邦城市”。",
+      "id": "geo-0052",
+      "options": ["伯尔尼", "日内瓦", "巴塞尔", "苏黎世"],
+      "question": "哪座城市是瑞士的“联邦城市”和政府所在地？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "乞力马扎罗山海拔5895米，是世界上最高的独立山峰，赤道以南不远处就有冰川。",
+      "id": "geo-0021",
+      "options": ["坦桑尼亚", "埃塞俄比亚", "乌干达", "肯尼亚"],
+      "question": "非洲最高峰乞力马扎罗山位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "比勒陀利亚是政府所在地，开普敦是议会所在地，布隆方丹则设有最高上诉法院。",
+      "id": "geo-0029",
+      "options": ["尼日利亚", "南非", "肯尼亚", "埃及"],
+      "question": "哪个国家有三个首都，分别是行政、立法和司法首都？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "马丘比丘坐落在乌鲁班巴河上方海拔约2430米的山脊上，直到1911年才为外界所熟知。",
+      "id": "geo-0022",
+      "options": ["玻利维亚", "秘鲁", "哥伦比亚", "厄瓜多尔"],
+      "question": "15世纪的印加古城马丘比丘位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "理查特结构曾被认为是陨石坑，现在被看作一个被侵蚀的穹窿，岩层形成了巨大的同心环。",
+      "id": "geo-0030",
+      "options": ["马里", "毛里塔尼亚", "尼日尔", "阿尔及利亚"],
+      "question": "“撒哈拉之眼”是一个直径40公里、被宇航员当作地标的岩石环，它位于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "最近的陆地约在2700公里外，而空间站只在约400公里高处运行，所以它经过上空时，站上的宇航员离得最近。",
+      "id": "geo-0054",
+      "options": ["轨道上的宇航员", "邮轮乘客", "渔船船员", "灯塔看守人"],
+      "question": "尼莫点是海洋中离陆地最远的地方，离那里最近的人往往是谁？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "惠灵顿位于南纬约41°，以穿过库克海峡的强风闻名。",
+      "id": "geo-0031",
+      "options": ["布宜诺斯艾利斯", "惠灵顿", "蒙得维的亚", "堪培拉"],
+      "question": "哪座城市是位置最南的主权国家首都？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "印度尼西亚的岛屿东西绵延约5000公里，比美国本土还宽。",
+      "id": "geo-0026",
+      "options": ["马来西亚", "菲律宾", "日本", "印度尼西亚"],
+      "question": "哪个国家是世界上最大的群岛国家，拥有约1.7万个岛屿？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "它的岛屿散布在约350万平方公里的海域上；1995年它调整了日期变更线，让全国使用同一个日期。",
+      "id": "geo-0055",
+      "options": ["图瓦卢", "斐济", "萨摩亚", "基里巴斯"],
+      "question": "哪个太平洋岛国同时横跨赤道和180°经线？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "维多利亚女王在1857年选定渥太华为首都，部分原因是它位于讲英语和讲法语的加拿大之间。",
+      "id": "geo-0027",
+      "options": ["多伦多", "温哥华", "蒙特利尔", "渥太华"],
+      "question": "加拿大的首都是哪座城市？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "圣马力诺自称是世界上现存最古老的共和国，相传建于公元301年。",
+      "id": "geo-0034",
+      "options": ["马耳他", "安道尔", "摩纳哥", "圣马力诺"],
+      "question": "哪个小共和国被意大利完全包围？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "1923年土耳其共和国成立时，安卡拉取代伊斯坦布尔成为首都。",
+      "id": "geo-0028",
+      "options": ["伊兹密尔", "布尔萨", "安卡拉", "伊斯坦布尔"],
+      "question": "土耳其的首都是哪座城市？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "阿塔卡马的一些气象站从未记录到降雨，美国国家航空航天局在那里测试火星车。",
+      "id": "geo-0035",
+      "options": ["智利", "阿根廷", "秘鲁", "玻利维亚"],
+      "question": "阿塔卡马沙漠是地球上最干旱的非极地沙漠，它主要位于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "那里生活着数百种色彩艳丽的慈鲷，几乎都是别处没有的；很多观赏慈鲷就来自这个湖。",
+      "id": "geo-0056",
+      "options": ["马拉维湖", "维多利亚湖", "乍得湖", "沃尔特湖"],
+      "question": "哪个非洲湖泊拥有的鱼类物种比地球上其他任何湖泊都多？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "“Ecuador”在西班牙语里就是“赤道”的意思，赤道从首都基多以北不远处穿过该国。",
+      "id": "geo-0032",
+      "options": ["北回归线", "本初子午线", "赤道", "南回归线"],
+      "question": "厄瓜多尔的国名来自哪条地理线？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "挑战者深渊深约10900米；如果把珠峰放进去，峰顶离水面仍有2公里以上。",
+      "id": "geo-0043",
+      "options": ["汤加海沟", "波多黎各海沟", "马里亚纳海沟", "爪哇海沟"],
+      "question": "已知海洋最深点“挑战者深渊”位于哪条海沟？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "巴西几乎占南美洲的一半，除智利和厄瓜多尔外，与南美洲所有国家接壤。",
+      "id": "geo-0036",
+      "options": ["哥伦比亚", "巴西", "秘鲁", "阿根廷"],
+      "question": "按面积计算，南美洲最大的国家是哪个？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "安道尔的首都安道尔城海拔约1023米，是欧洲海拔最高的首都。",
+      "id": "geo-0046",
+      "options": ["安道尔", "圣马力诺", "摩纳哥", "列支敦士登"],
+      "question": "哪个微型国家高踞比利牛斯山中？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "奥卡万戈河在卡拉哈里沙漠中散开并蒸发，形成了野生动物云集的季节性湿地。",
+      "id": "geo-0060",
+      "options": ["安哥拉", "赞比亚", "博茨瓦纳", "纳米比亚"],
+      "question": "奥卡万戈三角洲是一个从不入海的内陆三角洲，它位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "维多利亚湖由乌干达、肯尼亚和坦桑尼亚共有，是世界上最大的热带湖泊。",
+      "id": "geo-0039",
+      "options": ["马拉维湖", "维多利亚湖", "坦噶尼喀湖", "乍得湖"],
+      "question": "非洲最大的湖泊是哪个？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "复活节岛距南美洲海岸约3500公里，是地球上最偏远的有人居住岛屿之一。",
+      "id": "geo-0048",
+      "options": ["厄瓜多尔", "秘鲁", "智利", "新西兰"],
+      "question": "南太平洋的复活节岛（拉帕努伊）属于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "亚马孙河向大西洋注入大量淡水，离岸很远的海水都明显变淡。",
+      "id": "geo-0040",
+      "options": ["尼罗河", "长江", "亚马孙河", "刚果河"],
+      "question": "哪条河流的水量比地球上其他任何河流都大？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "盘古大陆几乎包含了地球上所有的陆地；非洲和南美洲彼此吻合的海岸线就是留下的线索。",
+      "id": "geo-0049",
+      "options": ["冈瓦纳大陆", "劳亚古陆", "罗迪尼亚大陆", "盘古大陆"],
+      "question": "约2亿年前开始分裂的超大陆叫什么？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "双重内陆国只被其他内陆国包围，要到达大海就得穿越两道国境。",
+      "id": "geo-0061",
+      "options": ["安道尔", "奥地利", "列支敦士登", "瑞士"],
+      "question": "乌兹别克斯坦是仅有的两个双重内陆国之一，另一个是哪个？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "它来自冰岛西南部的盖锡尔间歇泉（Geysir），这个名字与冰岛语中意为“喷涌”的动词有关。",
+      "id": "geo-0041",
+      "options": ["冰岛", "新西兰", "挪威", "日本"],
+      "question": "英语单词“geyser”（间歇泉）来自哪个国家的一处温泉？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "阿姆斯特丹是荷兰宪法规定的首都，但议会、政府和国王的办公地点都在海牙。",
+      "id": "geo-0051",
+      "options": ["鹿特丹", "乌得勒支", "海牙", "阿姆斯特丹"],
+      "question": "荷兰的国家议会和政府设在哪座城市？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "松恩峡湾深入内陆200多公里，有些地方水深超过1300米。",
+      "id": "geo-0042",
+      "options": ["丹麦", "冰岛", "瑞典", "挪威"],
+      "question": "盖朗厄尔峡湾和松恩峡湾位于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "长江全长约6300公里，是世界上完全在一个国家（中国）境内流淌的最长河流。",
+      "id": "geo-0053",
+      "options": ["恒河", "黄河", "长江", "湄公河"],
+      "question": "亚洲最长的河流是哪条？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "这个名字描述的是轰鸣的水雾，雨季时水雾可升到400多米高。",
+      "id": "geo-0065",
+      "options": ["闪光之雾", "坠落之河", "雷鸣之烟", "歌唱之水"],
+      "question": "维多利亚瀑布的当地名称“莫西奥图尼亚”是什么意思？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "非洲有54个国际公认的主权国家，占世界各国总数的四分之一以上。",
+      "id": "geo-0044",
+      "options": ["欧洲", "亚洲", "南美洲", "非洲"],
+      "question": "哪个大洲的国家数量最多？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "亚得里亚海是地中海最北的海湾，克罗地亚沿岸的海水以清澈著称。",
+      "id": "geo-0057",
+      "options": ["第勒尼安海", "爱奥尼亚海", "爱琴海", "亚得里亚海"],
+      "question": "哪片海位于意大利和巴尔干半岛之间？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "布拉格的历史中心在20世纪基本完好地保存下来，是联合国教科文组织世界遗产。",
+      "id": "geo-0058",
+      "options": ["布鲁日", "布拉格", "维也纳", "克拉科夫"],
+      "question": "哪座欧洲首都被称为“百塔之城”？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "基尔运河连接北海和波罗的海，让船只不必绕行日德兰半岛，少走约460公里。",
+      "id": "geo-0079",
+      "options": ["德国", "丹麦", "荷兰", "瑞典"],
+      "question": "世界上最繁忙的人工水道之一基尔运河位于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "群岛距海岸约1000公里，岛上独特的野生动物启发了达尔文的进化思想。",
+      "id": "geo-0047",
+      "options": ["智利", "哥伦比亚", "厄瓜多尔", "秘鲁"],
+      "question": "加拉帕戈斯群岛属于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "北美板块和欧亚板块正以每年约2厘米的速度在冰岛分离，在辛格韦德利可以在两大板块之间行走。",
+      "id": "geo-0059",
+      "options": [
+        "东非大裂谷",
+        "阿尔卑斯造山带",
+        "大西洋中脊",
+        "环太平洋火山带"
+      ],
+      "question": "冰岛位于哪种地质构造之上？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "1884年的一次国际会议选定格林尼治皇家天文台作为世界经度的起点。",
+      "id": "geo-0050",
+      "options": ["威斯敏斯特", "卡姆登", "里士满", "格林尼治"],
+      "question": "0°经线本初子午线穿过伦敦的哪个区？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "阿根廷的阿空加瓜山海拔约6961米，是亚洲以外最高的山峰。",
+      "id": "geo-0064",
+      "options": ["钦博拉索山", "瓦斯卡兰山", "阿空加瓜山", "伊伊马尼山"],
+      "question": "南美洲最高的山是哪座？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "这条公路从阿拉斯加到阿根廷全长约3万公里，但巴拿马和哥伦比亚之间约100公里的沼泽和雨林没有路。",
+      "id": "geo-0083",
+      "options": ["西伯利亚大公路", "泛美公路", "66号公路", "丝绸之路"],
+      "question": "达连隘口是一段没有公路的丛林，它是哪条公路唯一的缺口？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "北冰洋也是最浅的大洋，一年中大部分时间大片洋面被海冰覆盖。",
+      "id": "geo-0062",
+      "options": ["印度洋", "大西洋", "南大洋", "北冰洋"],
+      "question": "世界五大洋中最小的是哪个？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "希腊人称自己的国家为Hellas或Elláda；英文“Greece”来自拉丁语名称Graecia。",
+      "id": "geo-0066",
+      "options": ["马耳他", "希腊", "阿尔巴尼亚", "塞浦路斯"],
+      "question": "哪个国家的正式英文名称是“Hellenic Republic”？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "勃朗峰海拔约4806米，位于法国和意大利边境；山下有一条隧道连通两国。",
+      "id": "geo-0063",
+      "options": ["大格洛克纳山", "勃朗峰", "艾格峰", "马特洪峰"],
+      "question": "阿尔卑斯山脉的最高峰是哪座？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "尼泊尔在1986年改用UTC+5:45；全世界只有少数几个地方的时钟偏移45分钟。",
+      "id": "geo-0069",
+      "options": ["印度", "斯里兰卡", "尼泊尔", "不丹"],
+      "question": "哪个国家的标准时间比协调世界时快5小时45分钟？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "传说罗蕾莱岩上的女妖会引诱船夫走向毁灭；那里河道狭窄，水流湍急。",
+      "id": "geo-0084",
+      "options": ["易北河", "莱茵河", "多瑙河", "摩泽尔河"],
+      "question": "哪条河流经德国著名的罗蕾莱礁石？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "“Nippon”大致意为“太阳的本源”，所以日本被称为“日出之国”。",
+      "id": "geo-0067",
+      "options": ["中国", "韩国", "越南", "日本"],
+      "question": "“Nippon”是哪个国家用本国语言对自己的称呼？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "几千年来，黎巴嫩雪松一直是这一地区的象征，在古代文献中也有记载。",
+      "id": "geo-0070",
+      "options": ["黎巴嫩", "约旦", "塞浦路斯", "加拿大"],
+      "question": "哪个国家的国旗上有一棵绿色的雪松？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "这个称号其实说少了：芬兰面积大于500平方米的湖泊约有18.8万个。",
+      "id": "geo-0068",
+      "options": ["加拿大", "苏格兰", "瑞典", "芬兰"],
+      "question": "哪个国家被称为“千湖之国”？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "棉花堡（Pamukkale）意为“棉花城堡”；它的梯田是石灰华，由富含钙的泉水经数千年沉积而成。",
+      "id": "geo-0074",
+      "options": ["土耳其", "希腊", "格鲁吉亚", "伊朗"],
+      "question": "拥有白色温泉梯田的棉花堡位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "亚马孙河发源于秘鲁安第斯山高处的融雪，源头离太平洋海岸不到200公里。",
+      "id": "geo-0086",
+      "options": ["巴西", "秘鲁", "玻利维亚", "哥伦比亚"],
+      "question": "亚马孙河发源于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "季风期间，湄公河把水倒灌进洞里萨河，湖面会扩大到旱季的好几倍。",
+      "id": "geo-0071",
+      "options": ["泰国", "柬埔寨", "老挝", "缅甸"],
+      "question": "洞里萨湖在雨季会大幅扩张，它位于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "阿尔及利亚面积约238万平方公里，其中五分之四以上位于撒哈拉沙漠。",
+      "id": "geo-0075",
+      "options": ["阿尔及利亚", "苏丹", "刚果（金）", "利比亚"],
+      "question": "按面积计算，非洲最大的国家是哪个？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "瓦迪拉姆的砂岩和花岗岩山峰从红色沙地中拔地而起；电影《火星救援》的部分场景就在那里拍摄。",
+      "id": "geo-0072",
+      "options": ["沙特阿拉伯", "叙利亚", "约旦", "埃及"],
+      "question": "瓦迪拉姆是一片在电影里扮演过火星的红色沙漠山谷，它位于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "游客从两只巨大的狮爪之间登上岩顶，狮爪是一座狮子形巨型门楼仅存的部分。",
+      "id": "geo-0081",
+      "options": ["斯里兰卡", "印度", "毛里求斯", "缅甸"],
+      "question": "建在一块巨岩顶上的5世纪宫殿锡吉里耶位于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "巴西幅员辽阔，从约北纬5°延伸到南纬34°，两条线都在境内。",
+      "id": "geo-0091",
+      "options": ["印度尼西亚", "秘鲁", "巴西", "澳大利亚"],
+      "question": "哪个国家是唯一同时被赤道和南回归线穿过的国家？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "“下龙”意为“降落的龙”；传说一条龙甩动尾巴，造就了这些岛屿。",
+      "id": "geo-0073",
+      "options": ["越南", "泰国", "马来西亚", "菲律宾"],
+      "question": "散布着约1600座石灰岩岛屿的下龙湾位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "马尔代夫的地面平均只高出海平面约1.5米，因此海平面上升对这些岛屿是严重威胁。",
+      "id": "geo-0082",
+      "options": ["孟加拉国", "马尔代夫", "图瓦卢", "荷兰"],
+      "question": "按平均海拔计算，世界上地势最低的国家是哪个？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "巴拿马运河开通前，船只必须绕过合恩角，那里的海域以风暴和巨浪闻名。",
+      "id": "geo-0076",
+      "options": ["南美洲", "澳大利亚", "南极洲", "非洲"],
+      "question": "合恩角是哪个大洲的最南端？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "埃特纳火山是欧洲最高的活火山，肥沃的山坡上布满了葡萄园和果园。",
+      "id": "geo-0085",
+      "options": ["科西嘉岛", "西西里岛", "克里特岛", "撒丁岛"],
+      "question": "世界上最活跃的火山之一埃特纳火山位于哪个岛上？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "由于流域横跨赤道两侧，总有一部分处于雨季；它也是已测量过的最深的河流，深度超过220米。",
+      "id": "geo-0093",
+      "options": ["北回归线", "本初子午线", "南回归线", "赤道"],
+      "question": "刚果河是唯一两次穿过哪条线的大河？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "船只通过船闸被抬升约26米，穿过加通湖，再在另一侧被降下。",
+      "id": "geo-0077",
+      "options": ["南大洋", "大西洋", "北冰洋", "印度洋"],
+      "question": "巴拿马运河连接太平洋和哪个大洋？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "埃塞俄比亚首都亚的斯亚贝巴海拔约2350米，是非洲联盟总部所在地。",
+      "id": "geo-0088",
+      "options": ["苏丹", "厄立特里亚", "索马里", "埃塞俄比亚"],
+      "question": "哪个非洲国家历史上被称为阿比西尼亚？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "苏伊士运河于1869年开通，没有船闸，因为两片海的水位几乎相同。",
+      "id": "geo-0078",
+      "options": ["里海", "黑海", "阿拉伯海", "红海"],
+      "question": "苏伊士运河连接地中海和哪片海？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "加里曼丹岛是世界第三大岛，也是唯一分属三个国家的岛屿。",
+      "id": "geo-0095",
+      "options": ["文莱", "东帝汶", "菲律宾", "新加坡"],
+      "question": "加里曼丹岛（婆罗洲）由印度尼西亚、马来西亚和哪个国家共有？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "这个委内瑞拉湖泊上空每年约有140到160个夜晚雷电闪烁数小时；水手们曾把这片亮光当作天然灯塔。",
+      "id": "geo-0094",
+      "options": ["的的喀喀湖", "马拉开波湖", "尼加拉瓜湖", "阿蒂特兰湖"],
+      "question": "“卡塔通博闪电”让哪个湖的上空成为世界上雷击密度最高的地方？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "虽然叫“海”，里海通常被归为世界上最大的湖泊；它的盐度约为海水的三分之一。",
+      "id": "geo-0080",
+      "options": ["里海", "维多利亚湖", "苏必利尔湖", "贝加尔湖"],
+      "question": "地球上最大的内陆水体是哪个？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "伊斯帕尼奥拉岛上有加勒比地区的最高峰杜阿尔特峰，海拔约3100米。",
+      "id": "geo-0096",
+      "options": ["波多黎各岛", "牙买加岛", "古巴岛", "伊斯帕尼奥拉岛"],
+      "question": "海地和多米尼加共和国共有哪个岛？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "乌拉尔山脉从北冰洋延伸到哈萨克斯坦，长约2500公里，是地球上最古老的山脉之一。",
+      "id": "geo-0087",
+      "options": ["阿尔泰山脉", "喀尔巴阡山脉", "乌拉尔山脉", "高加索山脉"],
+      "question": "按惯例，哪条山脉被用作欧洲和亚洲的分界线？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "三角洲内有孙德尔本斯，那是地球上最大的红树林，也是孟加拉虎的家园。",
+      "id": "geo-0099",
+      "options": ["印度", "缅甸", "孟加拉国", "尼泊尔"],
+      "question": "世界上最大的河口三角洲恒河—布拉马普特拉河三角洲，大部分位于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "蒙古首都的年平均气温略低于0°C，冬夜气温常常低于零下30°C。",
+      "id": "geo-0098",
+      "options": ["乌兰巴托", "莫斯科", "赫尔辛基", "渥太华"],
+      "question": "哪座国家首都的年平均气温最低？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "1935年，该国政府请各国改用本国名称“伊朗”，意为“雅利安人（伊朗人）的土地”。",
+      "id": "geo-0089",
+      "options": ["阿富汗", "伊拉克", "土耳其", "伊朗"],
+      "question": "哪个国家在1935年以前被称为波斯？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "虽然叫沙漠，卡拉哈里的部分地区雨水足以养活草地、树木和大型动物。",
+      "id": "geo-0100",
+      "options": ["纳米布沙漠", "卡拉哈里沙漠", "卡鲁高原", "撒哈拉沙漠"],
+      "question": "哪片沙漠覆盖了博茨瓦纳的大部分地区？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "死海的含盐量几乎是海水的十倍；湖岸低于海平面约430米，是地球上最低的陆地。",
+      "id": "geo-0090",
+      "options": ["轻松漂浮", "水下呼吸", "水上行走", "看清海底"],
+      "question": "死海非常咸，人们在里面可以做什么？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "梵语“Sindhu”在波斯语中变成“Hindu”，在希腊语中变成“Indos”，罗马人则用“India”称呼河对岸的整片土地。",
+      "id": "geo-0102",
+      "options": ["恒河", "布拉马普特拉河", "讷尔默达河", "印度河"],
+      "question": "“India”（印度）这个名称来自哪条河的名字？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "这片悬崖位于爱尔兰西海岸，绵延约14公里，有成千上万只海鸟在此筑巢。",
+      "id": "geo-0092",
+      "options": ["冰岛", "挪威", "苏格兰", "爱尔兰"],
+      "question": "高出大西洋200多米的莫赫悬崖位于哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "斯德哥尔摩的岛屿位于梅拉伦湖与波罗的海交汇处，由约50座桥连接。",
+      "id": "geo-0106",
+      "options": ["奥斯陆", "赫尔辛基", "哥本哈根", "斯德哥尔摩"],
+      "question": "哪座北欧首都建在14个岛屿上？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "布朗城堡位于特兰西瓦尼亚，但几乎没有证据表明“穿刺者”弗拉德曾在那里居住。",
+      "id": "geo-0097",
+      "options": ["塞尔维亚", "保加利亚", "罗马尼亚", "匈牙利"],
+      "question": "被宣传为“德古拉城堡”的布朗城堡位于哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "法罗群岛约有7万只羊，人们认为这个名字的意思就是“羊群岛”。",
+      "id": "geo-0108",
+      "options": ["英国", "瑞典", "挪威", "丹麦"],
+      "question": "法罗群岛是哪个王国的自治领地？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "萨摩亚从星期四直接跳到星期六，好让工作周与主要贸易伙伴澳大利亚和新西兰保持一致。",
+      "id": "geo-0103",
+      "options": ["斐济", "汤加", "图瓦卢", "萨摩亚"],
+      "question": "哪个太平洋国家因移到日期变更线另一侧，完全跳过了2011年12月30日？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "云层常常从平坦的山顶倾泻而下，当地人称之为“桌布”。",
+      "id": "geo-0105",
+      "options": ["内罗毕", "德班", "约翰内斯堡", "开普敦"],
+      "question": "哪座城市坐落在平顶的桌山脚下？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "斯瓦尔巴有全球种子库，这是一座深埋在永久冻土中的农作物种子备份库。",
+      "id": "geo-0109",
+      "options": ["冰岛", "挪威", "芬兰", "丹麦"],
+      "question": "北极的斯瓦尔巴群岛属于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "群岛的名字来自拉丁语中的“狗”（canis），而不是金丝雀；反倒是金丝雀（canary）以群岛命名。",
+      "id": "geo-0107",
+      "options": ["摩洛哥", "意大利", "西班牙", "葡萄牙"],
+      "question": "加那利群岛属于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "蓝鲸体长可达约30米，体重超过150吨；光是舌头就可能和一头大象一样重。",
+      "id": "nat-0001",
+      "options": ["鲸鲨", "抹香鲸", "蓝鲸", "非洲象"],
+      "question": "现存最大的动物是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "猎豹短距离冲刺时速可达约100公里，加速比大多数跑车还快。",
+      "id": "nat-0002",
+      "options": ["叉角羚", "猎豹", "灵缇犬", "狮子"],
+      "question": "陆地上跑得最快的动物是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "北极熊的毛其实是半透明的，只是看起来是白色；下面的黑色皮肤有助于吸收太阳的热量。",
+      "id": "nat-0005",
+      "options": ["黑色", "白色", "粉色", "灰色"],
+      "question": "北极熊毛皮下的皮肤是什么颜色？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "香草兰的花只开约一天，在墨西哥以外通常要靠人工授粉。",
+      "id": "nat-0016",
+      "options": ["豆科", "棕榈科", "百合科", "兰科"],
+      "question": "香草来自哪类植物的荚果？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "游隼在陡峭的俯冲中时速可超过300公里，是地球上速度最快的动物。",
+      "id": "nat-0003",
+      "options": ["漂泊信天翁", "金雕", "游隼", "普通雨燕"],
+      "question": "哪种鸟在俯冲捕猎时是速度最快的动物？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "舞蹈的角度表示相对于太阳的方向，舞蹈的长短则表示离食物有多远。",
+      "id": "nat-0012",
+      "options": ["摇摆舞", "翅膀颜色", "只靠气味", "嗡嗡声调"],
+      "question": "蜜蜂靠什么告诉同伴去哪里找花？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "荷兰探险者以为短尾矮袋鼠是巨型老鼠，便把这个岛命名为“Rotte nest”，意思是老鼠窝。",
+      "id": "nat-0028",
+      "options": [
+        "卡加利岛（弗雷泽岛）",
+        "罗特尼斯岛",
+        "塔斯马尼亚岛",
+        "袋鼠岛"
+      ],
+      "question": "爱“微笑”的短尾矮袋鼠主要生活在澳大利亚的哪个岛上？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "竹子营养很低，大熊猫一天可能要吃10公斤以上，尽管它的消化道结构和食肉动物一样。",
+      "id": "nat-0007",
+      "options": ["竹子", "水果", "鱼", "昆虫"],
+      "question": "大熊猫每天要花多达14小时吃什么？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "已知最高的树是加利福尼亚一棵绰号“亥伯龙”的北美红杉，高约116米。",
+      "id": "nat-0015",
+      "options": ["北美红杉", "王桉", "巨杉", "花旗松"],
+      "question": "哪种树能长得最高？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "鸵鸟身高可达2.7米，奔跑时速约70公里，眼睛比大脑还大。",
+      "id": "nat-0008",
+      "options": ["鸸鹋", "鸵鸟", "鹤鸵", "安第斯神鹫"],
+      "question": "现存最大的鸟是什么？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "莱佛士花（大王花）直径可达约1米；这种植物没有叶也没有根，散发腐肉般的气味来吸引苍蝇。",
+      "id": "nat-0017",
+      "options": ["向日葵", "巨魔芋", "莱佛士花", "亚马孙王莲"],
+      "question": "哪种植物能开出世界上最大的单朵花？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "鸮鹦鹉是世界上最重的鹦鹉，寿命可达60年以上；每一只存活的个体都有记录和追踪。",
+      "id": "nat-0029",
+      "options": ["南秧鸡", "鸮鹦鹉", "几维鸟", "啄羊鹦鹉"],
+      "question": "新西兰那种不会飞、夜间活动的鹦鹉叫什么？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "鲸鲨体长可超过12米，却靠从水中滤食微小的浮游生物为生。",
+      "id": "nat-0010",
+      "options": ["鲸鲨", "大白鲨", "姥鲨", "翻车鱼"],
+      "question": "世界上最大的鱼是哪种？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "雄性湾鳄体长可超过6米、体重超过1000公斤，还能远渡大海往返于岛屿之间。",
+      "id": "nat-0020",
+      "options": ["湾鳄", "棱皮龟", "尼罗鳄", "科莫多巨蜥"],
+      "question": "现存最大的爬行动物是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "变色龙改变体色主要是为了表达情绪和调节体温，而不只是为了隐藏；它们还能同时看向两个方向。",
+      "id": "nat-0011",
+      "options": ["鬣蜥", "变色龙", "巨蜥", "壁虎"],
+      "question": "哪种爬行动物的两只眼睛能各自独立转动，同时看向两个方向？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "大王酸浆鱿的眼睛直径可达约27厘米，差不多有一个足球那么大。",
+      "id": "nat-0023",
+      "options": ["蓝鲸", "鸵鸟", "眼镜猴", "大王酸浆鱿"],
+      "question": "动物界中谁的眼睛最大？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "抹香鲸在水下发出的“咔嗒”声可达约230分贝，它们用这种声音在漆黑的深海中寻找乌贼。",
+      "id": "nat-0031",
+      "options": ["吼猴", "枪虾", "抹香鲸", "蓝鲸"],
+      "question": "哪种动物能发出所有动物中最响亮的声音？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "大型雄性非洲草原象体重可达约6吨，每天要吃多达150公斤的植物。",
+      "id": "nat-0013",
+      "options": ["非洲草原象", "亚洲象", "河马", "南方白犀"],
+      "question": "现存最大的陆地动物是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "大象是孕期最长的陆生哺乳动物，刚出生的小象就重约100公斤。",
+      "id": "nat-0025",
+      "options": ["约9个月", "约16个月", "约12个月", "约22个月"],
+      "question": "大象的怀孕期大约有多长？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "大型雄虎体重可达约300公斤，而且没有两只老虎的条纹是一样的。",
+      "id": "nat-0014",
+      "options": ["狮子", "美洲豹", "老虎", "豹"],
+      "question": "体型最大的野生猫科动物是哪种？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "海獭每平方厘米多达约15万根毛；和大多数海洋哺乳动物不同，它没有脂肪层保暖。",
+      "id": "nat-0026",
+      "options": ["北极熊", "北极狐", "海獭", "麝牛"],
+      "question": "哪种动物的毛是所有动物中最浓密的？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "2022年，一只戴有追踪器的斑尾塍鹬从阿拉斯加飞到塔斯马尼亚，约11天不落地、不进食也不喝水。",
+      "id": "nat-0038",
+      "options": ["北极燕鸥", "家燕", "漂泊信天翁", "斑尾塍鹬"],
+      "question": "哪种鸟保持着1.3万多公里的最长不间断飞行纪录？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "北极燕鸥每年从北极飞到南极再飞回来，见到的日光比其他任何动物都多。",
+      "id": "nat-0037",
+      "options": ["北极燕鸥", "白鹳", "家燕", "大杜鹃"],
+      "question": "哪种鸟拥有已知最长的年度迁徙？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "蜘蛛属于蛛形纲，不是昆虫；昆虫有六条腿，而蜘蛛有八条腿，通常还有八只眼睛。",
+      "id": "nat-0019",
+      "options": ["十二条", "六条", "十条", "八条"],
+      "question": "蜘蛛有几条腿？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "缓步动物能脱水进入休眠的“小桶”状态，熬过极寒、辐射和太空真空。",
+      "id": "nat-0040",
+      "options": ["线虫", "缓步动物", "桡足类", "轮虫"],
+      "question": "哪种绰号“水熊”的微小动物曾在太空环境中存活下来？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "普通雨燕在飞行中进食、喝水，甚至睡觉；有些幼鸟可能几年都不落地。",
+      "id": "nat-0039",
+      "options": ["信天翁", "普通雨燕", "军舰鸟", "北极燕鸥"],
+      "question": "哪种鸟能在空中连续停留约10个月不落地？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "科莫多巨蜥可长到约3米，野生的只生活在印度尼西亚的几个岛上。",
+      "id": "nat-0021",
+      "options": ["科莫多巨蜥", "伞蜥", "希拉毒蜥", "绿鬣蜥"],
+      "question": "现存最大的蜥蜴是哪种？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "喙头蜥是一个古老爬行动物目的最后幸存者，寿命可超过100年。",
+      "id": "nat-0041",
+      "options": ["新西兰", "澳大利亚", "马达加斯加", "印度尼西亚"],
+      "question": "喙头蜥是“活化石”爬行动物，它的近亲曾与恐龙生活在一起。它只分布在哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "它终生保留羽毛状的外鳃，能再生四肢、部分心脏甚至部分大脑。",
+      "id": "nat-0042",
+      "options": ["秘鲁", "墨西哥", "巴西", "日本"],
+      "question": "人称“六角恐龙”的钝口螈能再生断肢，它来自哪个国家的湖泊？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "需要碰两次，可以避免陷阱为雨滴或落下的杂物白白浪费能量。",
+      "id": "nat-0046",
+      "options": ["两次", "一次", "三次", "五次"],
+      "question": "捕蝇草的感觉毛在约20秒内被碰到几次才会合上？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "人类与黑猩猩及其近亲倭黑猩猩约有98%至99%的DNA相同。",
+      "id": "nat-0024",
+      "options": ["长臂猿", "黑猩猩", "大猩猩", "猩猩"],
+      "question": "下列哪种猿类与人类亲缘关系最近？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "大盆地狐尾松生长在美国环境恶劣的山区，其中一棵的树龄经测定约为4800年。",
+      "id": "nat-0047",
+      "options": ["猴面包树", "巨杉", "狐尾松", "油橄榄"],
+      "question": "已知最古老的现存单株树木树龄近5000年，它们属于哪种树？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "按体型计算，袋獾的咬合力在哺乳动物中名列前茅，能把骨头整块吃下去。",
+      "id": "nat-0027",
+      "options": ["长鼻袋狸", "普通袋熊", "袋獾", "短尾矮袋鼠"],
+      "question": "哪种食肉有袋动物只在塔斯马尼亚岛上有野生种群？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "一棵大猴面包树能储存10万升以上的水，帮助它熬过漫长的旱季。",
+      "id": "nat-0048",
+      "options": ["马鲁拉树", "可乐豆木", "猴面包树", "金合欢"],
+      "question": "哪种非洲树以膨大的树干能储存大量水分而闻名？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "除了两只大复眼，蜜蜂头顶还有三只叫作单眼的简单眼睛，帮助它们辨别方向。",
+      "id": "nat-0050",
+      "options": ["四只", "五只", "两只", "八只"],
+      "question": "蜜蜂有几只眼睛？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "帝企鹅能潜到500多米深，并在南极的冬季繁殖，那时气温会降到零下40°C以下。",
+      "id": "nat-0030",
+      "options": ["阿德利企鹅", "巴布亚企鹅", "帝企鹅", "王企鹅"],
+      "question": "体型最大的企鹅是哪种？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "秋天抵达墨西哥的帝王蝶，与前一年春天从那里出发的蝴蝶已相隔好几代。",
+      "id": "nat-0049",
+      "options": ["墨西哥", "巴西", "印度", "西班牙"],
+      "question": "数以百万计的帝王蝶在哪个国家的森林里过冬？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "大多数海星有五条腕，断了还能再生，而且每条腕的末端都有一只简单的眼睛。",
+      "id": "nat-0032",
+      "options": ["六条", "八条", "五条", "四条"],
+      "question": "大多数海星有几条腕？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "软骨比硬骨更轻、更有弹性，帮助鲨鱼节省体力、快速转身。",
+      "id": "nat-0051",
+      "options": ["角蛋白", "几丁质", "硬骨", "软骨"],
+      "question": "鲨鱼的骨骼是由什么构成的？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "格陵兰睡鲨每年只长约1厘米；对其眼睛做放射性碳测年显示，有些个体已有好几百岁。",
+      "id": "nat-0053",
+      "options": ["锦鲤", "格陵兰睡鲨", "喙头蜥", "加拉帕戈斯象龟"],
+      "question": "人们认为哪种脊椎动物寿命最长，可能超过250年？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "河豚靠吞水让身体膨胀，许多种类含有比氰化物毒得多的毒素。",
+      "id": "nat-0033",
+      "options": ["飞鱼", "河豚", "小丑鱼", "梭鱼"],
+      "question": "哪种鱼在受到威胁时能把自己鼓成一个带刺的球？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "在活着的弓头鲸体内发现的旧式鱼叉头，帮助科学家证实了它们惊人的寿命。",
+      "id": "nat-0052",
+      "options": ["非洲象", "蓝鲸", "弓头鲸", "虎鲸"],
+      "question": "人们认为哪种哺乳动物寿命最长，可能超过200年？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "人们认为，鲑鱼多年后能找回出生的河流，部分是靠那条河独特的气味。",
+      "id": "nat-0034",
+      "options": ["鳕鱼", "鲭鱼", "金枪鱼", "鲑鱼"],
+      "question": "哪种鱼会洄游到自己孵化的河流去产卵？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "雄性华丽琴鸟会把其他鸟的叫声和听到的几乎任何声音都编进自己的歌里。",
+      "id": "nat-0054",
+      "options": ["鸸鹋", "琴鸟", "凤头鹦鹉", "笑翠鸟"],
+      "question": "哪种澳大利亚鸟能模仿电锯声和相机快门声？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "小臭鼩（伊特鲁里亚鼩鼱）体重约1.8克，几乎要不停地进食；它的心脏每分钟可跳1000多次。",
+      "id": "nat-0062",
+      "options": ["侏儒跳鼠", "侏狨", "巢鼠", "小臭鼩"],
+      "question": "按体重计算，已知最小的哺乳动物是哪种？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "雄性驼鹿肩高可超过2米，鹿角展开可达约1.8米。",
+      "id": "nat-0035",
+      "options": ["驼鹿", "驯鹿", "白尾鹿", "马鹿"],
+      "question": "现存体型最大的鹿是哪种？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "这种“血汗”既不是血也不是汗；它是天然的防晒霜，可能还能抵御细菌。",
+      "id": "nat-0056",
+      "options": ["吸引配偶", "标记领地", "吓退鳄鱼", "用来防晒"],
+      "question": "河马的皮肤会分泌一种红色的油性液体，它有什么作用？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "漂泊信天翁的翼展可达约3.5米，能在海面上滑翔几个小时而不用扇动翅膀。",
+      "id": "nat-0036",
+      "options": ["虎头海雕", "漂泊信天翁", "非洲秃鹳", "安第斯神鹫"],
+      "question": "现存翼展最长的鸟是哪种？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "南非一位博物馆馆员在渔民的渔获中发现了它；此前人们只从6600多万年前的化石中认识它。",
+      "id": "nat-0064",
+      "options": ["巨骨舌鱼", "鲟鱼", "腔棘鱼", "肺鱼"],
+      "question": "哪种被认为已灭绝数百万年的“活化石”鱼类在1938年被发现仍然活着？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "蜜蜂用翅膀扇风，减少花蜜中的水分，所以蜂蜜能保存很久。",
+      "id": "nat-0043",
+      "options": ["花朵的甜汁", "花朵的花粉", "叶上的露水", "树干的汁液"],
+      "question": "蜜蜂从花中采集什么来酿造蜂蜜？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "海獭仰面漂浮时，还会把海带缠在身上，好让自己固定住。",
+      "id": "nat-0058",
+      "options": ["互相取暖", "免得漂散", "吓退天敌", "寻找食物"],
+      "question": "海獭睡觉时为什么有时会手拉着手？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "有些竹子一天能长将近1米。",
+      "id": "nat-0044",
+      "options": ["向日葵", "桉树", "竹子", "常春藤"],
+      "question": "哪种植物保持着地球上生长最快的纪录？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "古巴的吸蜜蜂鸟体长约5至6厘米，体重不到2克，它的蛋只有咖啡豆那么大。",
+      "id": "nat-0063",
+      "options": ["吸蜜蜂鸟", "鹪鹩", "戴菊", "黄腰太阳鸟"],
+      "question": "世界上最小的鸟是哪种？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "考拉的指纹是独立于灵长类演化出来的，可能是为了帮助它们抓握树枝、摆弄桉树叶。",
+      "id": "nat-0065",
+      "options": ["浣熊", "袋熊", "袋鼠", "考拉"],
+      "question": "哪种动物的指纹与人类极为相似，即使在显微镜下也难以区分？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "一棵大栎树（橡树）在丰年能结出成千上万颗橡子，松鸦把橡子埋起来，帮助新的栎树生根发芽。",
+      "id": "nat-0045",
+      "options": ["山毛榉", "栎树", "栗树", "枫树"],
+      "question": "哪种树结橡子？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "螳螂虾的捕肢加速度堪比小口径子弹，还会产生气泡，气泡破裂时会闪出亮光。",
+      "id": "nat-0066",
+      "options": ["椰子蟹", "普通章鱼", "螳螂虾", "龙虾"],
+      "question": "哪种海洋动物出拳快到可能把水族箱玻璃打裂？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "库卡巴拉即笑翠鸟，是一种大型翠鸟；一家子会在黎明和黄昏一起“大笑”来宣示领地。",
+      "id": "nat-0055",
+      "options": ["海鹦", "巨嘴鸟", "鹈鹕", "库卡巴拉"],
+      "question": "哪种鸟以听起来像人类放声大笑的叫声闻名？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "也就是每侧约135°。猫头鹰的眼睛固定在眼眶里，所以要转动整个头部，额外的颈椎帮了大忙。",
+      "id": "nat-0069",
+      "options": ["270度", "360度", "180度", "90度"],
+      "question": "猫头鹰的头从一侧转到另一侧，总共大约能转多少度？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "电鳗能放出高达约860伏的电击，用来击晕猎物和自卫。",
+      "id": "nat-0067",
+      "options": ["南美刀鱼", "海鳝", "鳐鱼", "七鳃鳗"],
+      "question": "电鳗并不是真正的鳗鱼，它属于哪类鱼？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "雌海马把卵产在雄海马的育儿袋里，之后由雄海马生出几十到几百只小海马。",
+      "id": "nat-0059",
+      "options": ["螃蟹", "章鱼", "海龟", "海马"],
+      "question": "哪种动物由雄性携带卵并生下幼崽？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "几维鸟靠嗅觉找到土里的蠕虫；按身体比例算，雌鸟产的蛋也是所有鸟类中最大的之一。",
+      "id": "nat-0070",
+      "options": ["鹈鹕", "几维鸟", "巨嘴鸟", "犀鸟"],
+      "question": "哪种鸟的鼻孔长在喙的最尖端？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "道氏红水母（灯塔水母）在受到压力或受伤时能变回水螅体，重新开始生命周期。",
+      "id": "nat-0072",
+      "options": ["一种水母", "一种陆龟", "一种海龟", "一种海绵"],
+      "question": "哪种动物因为能退回到早期生命阶段而被称为“永生”？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "大象、海牛、儒艮和生活在岩石间的小型蹄兔有共同的祖先。",
+      "id": "nat-0075",
+      "options": ["犀牛", "河马", "貘", "海牛"],
+      "question": "下列哪种动物是大象现存的近亲之一？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "南美洲的水豚体重可超过60公斤，脚上略有蹼，是游泳好手。",
+      "id": "nat-0061",
+      "options": ["河狸", "旱獭", "豪猪", "水豚"],
+      "question": "世界上最大的啮齿动物是哪种？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "已描述的甲虫约有40万种，大约占所有已知动物物种的四分之一。",
+      "id": "nat-0074",
+      "options": ["蝇类", "蚂蚁和蜜蜂", "蝴蝶和蛾", "甲虫"],
+      "question": "哪类动物已描述的物种数量最多？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "每年有100多万头角马追随雨水绕一大圈迁徙，途中要渡过满是鳄鱼的河流。",
+      "id": "nat-0077",
+      "options": ["平原斑马", "角马", "汤氏瞪羚", "非洲水牛"],
+      "question": "塞伦盖蒂和马赛马拉之间的动物大迁徙，主力是哪种动物？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "河马和鲸有一个生活在约5500万年前的共同祖先。",
+      "id": "nat-0076",
+      "options": ["鲸和海豚", "犀牛", "大象和蹄兔", "猪和野猪"],
+      "question": "河马现存的近亲是哪类动物？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "水母约95%是水，它们靠简单的神经网而不是大脑来活动。",
+      "id": "nat-0071",
+      "options": ["水母", "海龟", "章鱼", "鱿鱼"],
+      "question": "哪种海洋生物没有大脑、心脏和骨骼？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "雪豹会发出“噗噗”的喷气声等其他叫声；粗大的尾巴帮助它保持平衡，还能当围巾用。",
+      "id": "nat-0078",
+      "options": ["雪豹", "孟加拉虎", "美洲豹", "非洲狮"],
+      "question": "哪种大型猫科动物不会吼叫？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "年幼的向日葵会跟着太阳转；开花成熟后则固定朝东，早上能更快地暖和起来。",
+      "id": "nat-0073",
+      "options": ["雏菊", "玫瑰", "向日葵", "郁金香"],
+      "question": "哪种花的幼株清晨朝向东方、傍晚转向西方？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "虎鲸以家族群体生活，各有自己的捕猎技巧和叫声“方言”。",
+      "id": "nat-0079",
+      "options": ["海豚科", "须鲸类", "鼠海豚科", "鲨类"],
+      "question": "虎鲸是哪个类群中体型最大的成员？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "杜鹃雏鸟常把宿主的蛋推出巢外，由比自己小得多的养父母抚养长大。",
+      "id": "nat-0081",
+      "options": ["家燕", "杜鹃", "知更鸟", "啄木鸟"],
+      "question": "哪种鸟以把蛋下在其他鸟的巢里而闻名？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "有些竹子几十年才开一次花，而且同一种竹子可能会同时开花。",
+      "id": "nat-0087",
+      "options": ["树木类", "禾草类", "藤蔓类", "蕨类"],
+      "question": "竹子是哪类植物中的巨型成员？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "脚上的味觉感受器让蝴蝶只要站在叶子上，就能判断这片叶子适不适合产卵。",
+      "id": "nat-0083",
+      "options": ["眼睛", "触角", "脚", "翅膀"],
+      "question": "蝴蝶能用身体的哪个部位尝味道？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "塞舌尔海椰子的种子形似两个连在一起的椰子，重可达约25公斤。",
+      "id": "nat-0088",
+      "options": ["海椰子", "椰子树", "芒果", "牛油果"],
+      "question": "哪种植物结出世界上最大的种子？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "成年雄性大猩猩被称为“银背”，体重可超过200公斤，但主要以植物为食。",
+      "id": "nat-0091",
+      "options": ["猩猩", "大猩猩", "黑猩猩", "狒狒"],
+      "question": "现存最大的灵长类动物是哪种？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "早在人类发明农业之前几百万年，切叶蚁就已经在经营真菌园了。",
+      "id": "nat-0084",
+      "options": ["种子", "藻类", "一种真菌", "苔藓"],
+      "question": "切叶蚁把叶子搬回巢里是为了种什么？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "家鸡的数量有数百亿只，远远超过任何一种野生鸟类。",
+      "id": "nat-0096",
+      "options": ["椋鸟", "鸽子", "家麻雀", "鸡"],
+      "question": "地球上数量最多的鸟是哪种？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "萤火虫靠化学反应发光，几乎没有能量以热量的形式浪费掉。",
+      "id": "nat-0085",
+      "options": ["黄蜂", "蝇类", "蛾类", "甲虫"],
+      "question": "萤火虫其实属于哪类昆虫？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "这种变化帮助驯鹿在漫长黑暗的北极冬季收集更多光线。",
+      "id": "nat-0093",
+      "options": ["雪鸮", "北极狐", "北极熊", "驯鹿"],
+      "question": "哪种动物的眼睛会从夏天的金色变成冬天的蓝色？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "一层保护性的黏液让小丑鱼不被蜇伤，作为回报，它会保护海葵。",
+      "id": "nat-0098",
+      "options": ["水母", "海葵", "珊瑚", "海胆"],
+      "question": "小丑鱼安全地生活在哪种动物带刺细胞的触手之间？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "袋熊用方块状的粪便标记领地，这些“方块”放在石头和木头上不会滚落。",
+      "id": "nat-0086",
+      "options": ["鸭嘴兽", "袋熊", "考拉", "袋鼠"],
+      "question": "哪种动物以排出立方体形状的粪便而闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "同一海域的雄性座头鲸唱同一首歌，这首歌会随时间慢慢变化，并传播到其他大洋。",
+      "id": "nat-0101",
+      "options": ["灰鲸", "北大西洋露脊鲸", "抹香鲸", "座头鲸"],
+      "question": "哪种鲸以悠长而复杂的歌声最为出名？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "植物学家把香蕉归为浆果；草莓和树莓不是真正的浆果，樱桃则是核果。",
+      "id": "nat-0089",
+      "options": ["树莓", "香蕉", "樱桃", "草莓"],
+      "question": "从植物学上讲，下列哪种水果属于浆果？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "1876年从巴西带出的种子，奠定了东南亚大片橡胶种植园的基础。",
+      "id": "nat-0094",
+      "options": ["亚马孙流域", "印度次大陆", "刚果盆地", "加里曼丹岛"],
+      "question": "天然橡胶树最初来自哪个地区？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "珊瑚是由叫作珊瑚虫的微小动物组成的群体，它们体内常住着藻类，为它们提供颜色和养分。",
+      "id": "nat-0102",
+      "options": ["岩石", "植物", "动物", "真菌"],
+      "question": "珊瑚是哪一类生物？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "虽然腿上有斑马般的条纹，霍加狓却属于长颈鹿科，用长舌头把树叶捋下来吃。",
+      "id": "nat-0090",
+      "options": ["羚羊", "马", "斑马", "长颈鹿"],
+      "question": "中非的霍加狓是哪种动物现存的近亲？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "狗是最早被驯化的动物，起源于1.5万多年前的一个古老狼群。",
+      "id": "nat-0103",
+      "options": ["赤狐", "郊狼", "灰狼", "金豺"],
+      "question": "家犬是由哪种野生动物演化而来的？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "红毛猩猩一生大部分时间在树上度过，几乎每晚都用树枝搭一个新的睡窝。",
+      "id": "nat-0092",
+      "options": ["红毛猩猩", "大猩猩", "倭黑猩猩", "黑猩猩"],
+      "question": "哪种大型类人猿只在加里曼丹岛和苏门答腊岛上有野生种群？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "雄鸟收集羽毛、花朵，以及越来越多的瓶盖和吸管来打动雌鸟；雌鸟会看过好几处求偶亭再选择配偶。",
+      "id": "nat-0100",
+      "options": ["红色", "黄色", "白色", "蓝色"],
+      "question": "雄性园丁鸟（satin bowerbird）主要用哪种颜色的物品装饰求偶场？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "一个蚕茧由一根连续的丝织成，这根丝可长达几百米。",
+      "id": "nat-0104",
+      "options": ["甲虫", "家蚕", "蜘蛛", "蜜蜂"],
+      "question": "用来织布的丝主要来自哪种生物的茧？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "栓皮栎不会被砍倒；人们大约每九年剥一次树皮，树皮还会再长出来。",
+      "id": "nat-0095",
+      "options": ["栓皮栎", "白桦", "山毛榉", "松树"],
+      "question": "葡萄酒瓶塞是用哪种树的树皮做的？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "穿山甲的鳞片由角蛋白构成，遇到威胁时会蜷成一个紧紧的球。",
+      "id": "nat-0105",
+      "options": ["穿山甲", "刺猬", "食蚁兽", "土豚"],
+      "question": "哪种哺乳动物全身覆盖着保护性的鳞片？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "渡渡鸟是鸽子的巨型近亲，水手到来后约一个世纪内就消失了。",
+      "id": "nat-0097",
+      "options": ["留尼汪岛", "马达加斯加岛", "毛里求斯岛", "斯里兰卡岛"],
+      "question": "不会飞的渡渡鸟只生活在哪个岛上？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "一棵绰号“玛土撒拉”的椰枣树于2005年发芽，种子是在古代要塞马萨达发现的。",
+      "id": "nat-0107",
+      "options": ["油橄榄", "无花果", "椰枣", "夏栎"],
+      "question": "哪种植物的种子在约2000年后仍培育出了健康的植株？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "在蛹里，毛毛虫的身体大部分会分解，再重新构建成成年的蝴蝶。",
+      "id": "nat-0109",
+      "options": ["授粉作用", "变态发育", "光合作用", "冬眠现象"],
+      "question": "毛毛虫变成蝴蝶的过程叫什么？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "弹涂鱼部分靠皮肤呼吸，离开水时必须保持皮肤湿润。",
+      "id": "nat-0099",
+      "options": ["飞鱼", "弹涂鱼", "小丑鱼", "翻车鱼"],
+      "question": "哪种鱼能在泥滩上跳跃，甚至爬上红树林的树根？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "哨兵爬到高处，一切正常时会不断发出轻柔的叫声；一旦发现天敌就发出警报，大家立刻冲去躲藏。",
+      "id": "nat-0110",
+      "options": ["洞里睡觉", "挖假洞穴", "收集饮水", "站岗放哨"],
+      "question": "狐獴群中其他成员觅食时，常有一只在做什么？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "树懒动作极慢，藻类甚至蛾子都住在它的毛里，这有助于它伪装。",
+      "id": "nat-0106",
+      "options": ["蘑菇", "藻类", "苔藓", "地衣"],
+      "question": "树懒的毛里常长着什么，让它带点绿色？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "银杏生命力极强：广岛原子弹爆炸中心附近有几棵银杏幸存下来，至今仍在生长。",
+      "id": "nat-0108",
+      "options": ["白桦", "银杏", "油橄榄", "猴面包树"],
+      "question": "哪种树约2亿年来几乎没有变化，因此被称为“活化石”？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "水星绕太阳一周只需88个地球日，是所有行星中最短的一年。",
+      "id": "sci-0001",
+      "options": ["水星", "金星", "地球", "火星"],
+      "question": "离太阳最近的行星是哪颗？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "金星浓厚的二氧化碳大气层把热量困住，表面温度可达约465°C，比水星还热。",
+      "id": "sci-0004",
+      "options": ["金星", "火星", "水星", "木星"],
+      "question": "太阳系中最热的行星是哪颗？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "木星的质量是其他所有行星总和的两倍多，里面能装下约1300个地球。",
+      "id": "sci-0002",
+      "options": ["海王星", "天王星", "土星", "木星"],
+      "question": "太阳系中最大的行星是哪颗？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "光速约每秒30万公里，一秒钟就能绕地球约七圈半。",
+      "id": "sci-0010",
+      "options": [
+        "每秒300万公里",
+        "每秒3万公里",
+        "每秒30万公里",
+        "每秒3000公里"
+      ],
+      "question": "光在真空中的速度大约是多少？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "木星的卫星木卫一（伊奥）有数百座活火山，木星引力造成的潮汐挤压为它们提供热量。",
+      "id": "sci-0019",
+      "options": ["木卫一", "木卫四", "火卫一", "木卫二"],
+      "question": "太阳系中火山活动最活跃的天体是哪个？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "火星看起来是红色的，因为它满是尘土的表面富含氧化铁，其实就是铁锈。",
+      "id": "sci-0003",
+      "options": ["金星", "水星", "火星", "木星"],
+      "question": "哪颗行星被称为“红色星球”？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "半人马座α星C即比邻星，距离约4.2光年，它的光要走四年多才能到达我们这里。",
+      "id": "sci-0012",
+      "options": ["大犬座α星", "小熊座α星", "猎户座α星", "半人马座α星C"],
+      "question": "离太阳最近的恒星是哪颗？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "天王星的自转轴倾斜约98°，所以每个极地会先经历约42年的日照，再经历约42年的黑暗。",
+      "id": "sci-0013",
+      "options": ["土星", "金星", "海王星", "天王星"],
+      "question": "哪颗行星是“躺着”自转的？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "人马座A*的质量约为太阳的400万倍；它的第一张照片于2022年发布。",
+      "id": "sci-0021",
+      "options": [
+        "人马座最亮的星",
+        "肉眼可见的星云",
+        "银河系中心黑洞",
+        "飞出太阳系的探测器"
+      ],
+      "question": "人马座A*是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Fe来自拉丁语ferrum；按质量计算，铁是整个地球中含量最多的元素，主要集中在地核。",
+      "id": "sci-0006",
+      "options": ["铅", "铁", "氟", "钫"],
+      "question": "化学符号Fe代表哪种元素？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "植物利用阳光把二氧化碳和水合成糖，同时释放出副产品氧气。",
+      "id": "sci-0007",
+      "options": ["一氧化碳", "氮气", "氧气", "二氧化碳"],
+      "question": "植物进行光合作用时从空气中吸收哪种气体？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "木星的卫星木卫三比水星还大，也是已知唯一拥有自身磁场的卫星。",
+      "id": "sci-0016",
+      "options": ["土卫六", "木卫四", "木卫一", "木卫三"],
+      "question": "太阳系中最大的卫星是哪颗？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "1868年，天文学家在阳光中发现了一条未知的黄色谱线；这种元素以希腊太阳神赫利俄斯命名。",
+      "id": "sci-0025",
+      "options": ["太阳光中", "火山气体中", "陨石中", "海水中"],
+      "question": "在地球上找到氦之前，人们最早是在哪里探测到它的？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "我们呼吸的空气中氮气约占78%，氧气约占21%。",
+      "id": "sci-0008",
+      "options": ["二氧化碳", "氩气", "氧气", "氮气"],
+      "question": "地球大气中含量最多的气体是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "土星的卫星土卫六（泰坦）是除地球外唯一已知表面有稳定液态湖泊的地方。",
+      "id": "sci-0017",
+      "options": ["木卫一", "土卫六", "木卫二", "海卫一"],
+      "question": "哪颗卫星有浓厚的大气层和液态甲烷湖泊？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "奥林波斯山的高度约为珠峰的两倍半，直径约600公里。",
+      "id": "sci-0020",
+      "options": ["地球", "火星", "金星", "水星"],
+      "question": "太阳系最高的火山之一奥林波斯山位于哪颗行星上？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "地球在1月初到达离太阳最近的近日点，那时北半球正值冬季。",
+      "id": "sci-0043",
+      "options": ["三月", "一月", "七月", "十月"],
+      "question": "地球在哪个月离太阳最近？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "阿波罗11号于1969年7月20日登月；月球上没有风，宇航员的脚印可能保留数百万年。",
+      "id": "sci-0011",
+      "options": ["1969年", "1972年", "1961年", "1965年"],
+      "question": "人类第一次在月球上行走是哪一年？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "仙女座星系距离我们约250万光年，是肉眼可轻松看到的最遥远天体。",
+      "id": "sci-0022",
+      "options": ["仙女座星系", "草帽星系", "风车星系", "涡状星系"],
+      "question": "离银河系最近的大型螺旋星系是哪个？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "自2006年起，冥王星被归为矮行星，太阳系从水星到海王星只剩八颗行星。",
+      "id": "sci-0015",
+      "options": ["八颗", "九颗", "十颗", "七颗"],
+      "question": "太阳系有几颗行星？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "pH值为7表示中性；pH值每降低1，酸性就增强十倍。",
+      "id": "sci-0030",
+      "options": ["0", "5", "7", "14"],
+      "question": "在25°C时，纯水的pH值是多少？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "宇航员在月球上留下了反射镜，科学家用激光照射它们，就能精确测量月球远去的距离。",
+      "id": "sci-0046",
+      "options": ["约3.8厘米", "约3.8米", "约38厘米", "约3.8毫米"],
+      "question": "月球每年大约离地球远去多少？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "大红斑是一场比地球还宽的风暴，已经持续了至少150年。",
+      "id": "sci-0018",
+      "options": ["土星", "海王星", "木星", "火星"],
+      "question": "巨大的风暴“大红斑”在哪颗行星上？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "弗朗西斯·蒲福在1805年为水手制定了这一标度，根据风对海面和船帆的影响来描述风力。",
+      "id": "sci-0031",
+      "options": ["开尔文标度", "莫氏标度", "里氏标度", "蒲福标度"],
+      "question": "哪种标度用0（无风）到12（飓风）来描述风力大小？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "它按矿物之间谁能划伤谁来排序，从滑石（1）到金刚石（10）。",
+      "id": "sci-0032",
+      "options": ["水的酸度", "风速", "矿物硬度", "地震强度"],
+      "question": "莫氏标度衡量的是什么？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "海王星上的风速可超过每小时2000公里，比地球上的声速还快。",
+      "id": "sci-0052",
+      "options": ["土星", "木星", "海王星", "天王星"],
+      "question": "太阳系中哪颗行星的风速最快？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "氢是宇宙中最轻、含量最多的元素，约占普通物质的四分之三。",
+      "id": "sci-0024",
+      "options": ["碳", "氧", "氦", "氢"],
+      "question": "原子序数为1的元素是哪种？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "绝对零度是可能达到的最低温度；科学家已能把原子冷却到离它只差十亿分之一度。",
+      "id": "sci-0033",
+      "options": ["-273.15°C", "-173.15°C", "-373.15°C", "-233.15°C"],
+      "question": "绝对零度用摄氏度表示是多少？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "汞（水银）在约零下39°C时才会凝固，所以长期被用在温度计里。",
+      "id": "sci-0026",
+      "options": ["铅", "汞", "锌", "锡"],
+      "question": "哪种金属在室温下是液态的？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "-40°C正好等于-40°F，这是两种温标唯一相交的一点。",
+      "id": "sci-0034",
+      "options": ["零下32度", "0度", "零下40度", "100度"],
+      "question": "在哪个温度下，摄氏度和华氏度的读数相同？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "谷神星被归为矮行星，占小行星带总质量的很大一部分。",
+      "id": "sci-0055",
+      "options": ["灶神星", "谷神星", "智神星", "爱神星"],
+      "question": "小行星主带中最大的天体是哪个？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "金刚石在莫氏硬度表上以10位居榜首，只有另一块金刚石才能划伤它。",
+      "id": "sci-0027",
+      "options": ["黄玉", "金刚石", "石英", "刚玉"],
+      "question": "最坚硬的天然材料是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "唯一的区别在于碳原子的排列方式：金刚石是坚固的立体晶格，铅笔里的石墨则是能相互滑动的薄层。",
+      "id": "sci-0028",
+      "options": ["硫", "硅", "硼", "碳"],
+      "question": "金刚石和石墨都是由哪种元素构成的？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "声音在钢中的传播速度约为每秒5900米，大约是空气中的17倍。",
+      "id": "sci-0037",
+      "options": ["空气", "氦气", "钢铁", "水"],
+      "question": "声音在下列哪种物质中传播最快？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "虽然海王星离太阳更远，但天王星内部散发的热量很少，大气温度曾降到约零下224°C。",
+      "id": "sci-0060",
+      "options": ["天王星", "水星", "土星", "海王星"],
+      "question": "哪颗行星的大气测得过太阳系中最低的温度？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "氯化钠由钠和氯组成：钠是一种遇水会剧烈反应的金属，氯则是一种有毒气体。",
+      "id": "sci-0029",
+      "options": ["NaOH", "CaCl2", "NaCl", "KCl"],
+      "question": "食盐的化学式是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "内核的温度和太阳表面差不多，但由于压力巨大，仍保持固态。",
+      "id": "sci-0039",
+      "options": ["金和银", "铅和锡", "铜和锌", "铁和镍"],
+      "question": "地核主要由哪些金属构成？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "1牛顿大约相当于手里托着一个小苹果的重量。",
+      "id": "sci-0035",
+      "options": ["牛顿", "帕斯卡", "瓦特", "焦耳"],
+      "question": "力的国际单位是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "对流层从地面向上延伸约8至18公里，集中了大气约四分之三的质量。",
+      "id": "sci-0040",
+      "options": ["中间层", "对流层", "热层", "平流层"],
+      "question": "几乎所有天气现象都发生在大气的哪一层？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "水星和金星离太阳太近，很难留住卫星；地球有一颗卫星，火星有两颗。",
+      "id": "sci-0061",
+      "options": ["水星和金星", "金星和天王星", "水星和火星", "火星和金星"],
+      "question": "哪两颗行星没有卫星？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "爱因斯坦于1915年发表广义相对论；GPS卫星必须校正它带来的效应才能保持精确。",
+      "id": "sci-0038",
+      "options": ["牛顿", "爱因斯坦", "玻尔", "普朗克"],
+      "question": "哪位科学家提出了广义相对论？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "如果把所有臭氧都压到地面气压下，它只能形成约3毫米厚的一层。",
+      "id": "sci-0041",
+      "options": ["平流层", "对流层", "中间层", "外逸层"],
+      "question": "臭氧层主要位于大气的哪一层？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "这叫潮汐锁定；月球背面得到的阳光和正面一样多，但直到1959年才第一次被拍到。",
+      "id": "sci-0045",
+      "options": [
+        "地球挡住了另一面",
+        "月球根本不自转",
+        "公转一圈自转一圈",
+        "背面总是黑暗的"
+      ],
+      "question": "为什么我们总是看到月球的同一面？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "太阳也会牵引海水；当太阳和月球排成一线时，就会出现特别高的“大潮”。",
+      "id": "sci-0044",
+      "options": ["地球磁场", "海上的风", "月球引力", "海底地震"],
+      "question": "海洋潮汐主要是由什么引起的？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "南十字座是全部88个星座中最小的一个，水手们一直用它来辨认正南方向。",
+      "id": "sci-0047",
+      "options": ["猎户座", "南十字座", "大熊座", "天蝎座"],
+      "question": "哪个星座出现在澳大利亚、新西兰、巴西和萨摩亚的国旗上？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "哈勃最初拍的照片很模糊，原因是镜面有瑕疵；1993年航天飞机的机组人员修好了它。",
+      "id": "sci-0048",
+      "options": ["开普勒", "哈勃", "詹姆斯·韦布", "斯皮策"],
+      "question": "哪台太空望远镜于1990年发射，后来由宇航员进行了维修？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "天王星是第一颗用望远镜发现的行星；赫歇尔还是一位职业音乐家和作曲家。",
+      "id": "sci-0069",
+      "options": ["卡西尼", "伽利略", "赫歇尔", "哈雷"],
+      "question": "1781年是谁发现了天王星？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "斯普特尼克1号是一个直径约58厘米的金属球，发出的无线电“嘀嘀”声任何人都能收到。",
+      "id": "sci-0049",
+      "options": ["斯普特尼克1号", "探险者1号", "东方1号", "电星1号"],
+      "question": "1957年发射的第一颗人造卫星叫什么？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "哈雷彗星上一次出现是在1986年，预计2061年回归；用肉眼就能看到。",
+      "id": "sci-0053",
+      "options": ["每1000年", "每150年", "每12年", "每75至76年"],
+      "question": "哈雷彗星大约每隔多久回到地球的夜空？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "1961年4月12日，加加林绕地球飞行了一圈，整个飞行持续约108分钟。",
+      "id": "sci-0050",
+      "options": ["约翰·格伦", "阿姆斯特朗", "列昂诺夫", "加加林"],
+      "question": "第一个进入太空的人是谁？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "它们的名字意为“恐惧”和“惊恐”；福波斯正缓慢地螺旋靠近，将在几千万年后解体。",
+      "id": "sci-0056",
+      "options": ["木星", "土星", "火星", "海王星"],
+      "question": "福波斯和戴摩斯是哪颗行星的卫星？"
+    }
+  ]
+}

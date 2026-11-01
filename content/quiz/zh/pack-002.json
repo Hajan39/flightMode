@@ -1,0 +1,2260 @@
+{
+  "id": "pack-002",
+  "lang": "zh",
+  "questions": [
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "天王星轨道的摆动让天文学家算出一颗看不见的行星应在的位置；1846年它被找到了。",
+      "id": "sci-0070",
+      "options": ["火星", "海王星", "天王星", "土星"],
+      "question": "哪颗行星是先通过数学计算预测出来，才被人看到的？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "与电影里不同，小行星带大部分是空荡荡的空间，探测器穿过时不需要躲避岩石。",
+      "id": "sci-0054",
+      "options": ["火星和木星", "地球和火星", "木星和土星", "金星和地球"],
+      "question": "小行星主带位于哪两颗行星的轨道之间？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "对宇宙大爆炸微弱余晖——宇宙微波背景——的测量表明，宇宙的年龄约为138亿年。",
+      "id": "sci-0059",
+      "options": ["250亿年", "1000亿年", "46亿年", "138亿年"],
+      "question": "宇宙大约有多少岁了？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "来自太阳的带电粒子被地球磁场引导，使空气分子发出绿色、红色或紫色的光。",
+      "id": "sci-0057",
+      "options": [
+        "极地冰面的反光",
+        "来自太阳的粒子",
+        "高空中的闪电",
+        "冰晶上的月光"
+      ],
+      "question": "北极光是由什么引起的？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "火星日叫作“火星太阳日”（sol）；任务团队有时按“火星时间”生活，每天把作息推迟40分钟。",
+      "id": "sci-0063",
+      "options": ["10小时30分", "6小时15分", "24小时40分", "58个地球日"],
+      "question": "火星上的一天大约有多长？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "铝约占地壳的8%，但过去提炼它比金子还难；拿破仑三世曾用铝制餐具招待宾客。",
+      "id": "sci-0072",
+      "options": ["铜", "铝", "钙", "铁"],
+      "question": "地壳中含量最多的金属是哪种？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "已知最古老的矿物颗粒是澳大利亚的锆石，约有44亿年的历史。",
+      "id": "sci-0058",
+      "options": ["约4.5亿年", "约100亿年", "约10亿年", "约45亿年"],
+      "question": "地球大约有多少岁了？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "连光都无法从事件视界内逃出来，所以黑洞看起来是黑的。",
+      "id": "sci-0065",
+      "options": ["事件视界", "吸积盘", "热冕", "奇点"],
+      "question": "黑洞周围那道任何东西都无法逃出的边界叫什么？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "超新星能在短时间内比整个星系还亮；我们身体里的许多元素就是在这种爆炸中形成的。",
+      "id": "sci-0062",
+      "options": ["新生的行星", "爆炸的恒星", "极亮的彗星", "巨大的星系"],
+      "question": "超新星是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "哥白尼的著作在他去世那年出版，传说他在临终的病榻上看到了第一本印好的书。",
+      "id": "sci-0067",
+      "options": ["开普勒", "托勒密", "伽利略", "哥白尼"],
+      "question": "1543年是谁发表了以太阳为中心的太阳系模型？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "1升锇约重22.6公斤，大约是1升铅的两倍。",
+      "id": "sci-0075",
+      "options": ["金", "铅", "铀", "锇"],
+      "question": "密度最大的天然元素是哪种？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "牛顿的《自然哲学的数学原理》用同一条引力定律解释了苹果落地和卫星绕转。",
+      "id": "sci-0066",
+      "options": ["开普勒", "哥白尼", "伽利略", "牛顿"],
+      "question": "是谁提出了运动定律和万有引力定律，并于1687年发表？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "闪电能把空气加热到约3万°C；空气骤然膨胀，就成了我们听到的雷声。",
+      "id": "sci-0076",
+      "options": ["差不多一样热", "热约100倍", "约为一半", "热约5倍"],
+      "question": "闪电的温度与太阳表面相比如何？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "木卫一、木卫二、木卫三和木卫四至今仍被称为伽利略卫星。",
+      "id": "sci-0068",
+      "options": ["牛顿", "第谷", "伽利略", "开普勒"],
+      "question": "1610年，是谁用望远镜发现了木星的四颗大卫星？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "地面震动每级约增强10倍，能量却约增加32倍；7级地震释放的能量约为5级的1000倍。",
+      "id": "sci-0086",
+      "options": ["约32倍", "约2倍", "约100倍", "约10倍"],
+      "question": "地震震级每增加1级，释放的能量大约增加多少倍？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "每种气体都发出自己的颜色；其他颜色的“霓虹灯”往往用的是别的气体或带涂层的灯管。",
+      "id": "sci-0071",
+      "options": ["氖气", "氦气", "氩气", "氙气"],
+      "question": "传统广告灯牌中发出橙红色光的是哪种气体？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "积雨云可高耸至12公里甚至更高，客机会绕开它们飞行。",
+      "id": "sci-0079",
+      "options": ["层云", "高积云", "积雨云", "卷云"],
+      "question": "哪种云会产生雷暴？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "生锈既需要氧气也需要水；盐只会加快这个过程，所以海边的汽车锈得更快。",
+      "id": "sci-0073",
+      "options": ["盐", "阳光", "水", "氮气"],
+      "question": "铁与氧气和什么发生反应时会生锈？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "这一读数是1913年在火炉溪测得的；世界气象组织至今仍承认它，尽管有些气象学家怀疑其准确性。",
+      "id": "sci-0080",
+      "options": ["埃塞俄比亚达洛尔", "美国死亡谷", "伊朗卢特沙漠", "科威特城"],
+      "question": "哪个地方保持着56.7°C的世界最高气温官方纪录？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "水柱来自恩克拉多斯冰壳下隐藏的咸水海洋，因此它成了寻找生命的目标之一。",
+      "id": "sci-0090",
+      "options": ["木星", "天王星", "土星", "海王星"],
+      "question": "向太空喷射水柱的卫星恩克拉多斯绕哪颗行星运行？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "干冰在约零下78.5°C时不经熔化直接从固体变成气体，能营造出神秘的舞台烟雾。",
+      "id": "sci-0074",
+      "options": ["甲烷", "一氧化碳", "氮气", "二氧化碳"],
+      "question": "干冰是哪种物质的固态形式？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "这一纪录于1983年7月在俄罗斯东方站测得，该科考站位于南极冰盖的高处。",
+      "id": "sci-0081",
+      "options": ["维尔霍扬斯克", "奥伊米亚康", "东方站", "南极点"],
+      "question": "地球表面有记录以来最低的自然气温零下89.2°C是在哪里测得的？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "水蒸气是看不见的；当它围绕微小的尘粒凝结成小水滴或冰晶时，云就形成了。",
+      "id": "sci-0078",
+      "options": [
+        "看不见的水蒸气",
+        "灰尘和烟雾颗粒",
+        "海面升起的蒸汽",
+        "小水滴或冰晶"
+      ],
+      "question": "云主要是由什么组成的？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "地球自转产生的科里奥利效应，使这类风暴在北半球逆时针旋转，在南半球顺时针旋转。",
+      "id": "sci-0084",
+      "options": ["顺时针", "两个方向都有", "不会旋转", "逆时针"],
+      "question": "在南半球，热带气旋朝哪个方向旋转？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "罗塞塔号的着陆器菲莱在彗星表面弹跳了两次，才停在一处阴暗的地方。",
+      "id": "sci-0092",
+      "options": ["星尘号", "深度撞击号", "罗塞塔号", "乔托号"],
+      "question": "2014年，哪项任务把第一台着陆器送上了彗星？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "飓风和台风是同一种风暴，都是热带气旋，只是不同地区叫法不同。",
+      "id": "sci-0082",
+      "options": ["龙卷风", "台风", "暴风雪", "季风"],
+      "question": "飓风在西北太平洋被称为什么？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "熔岩冷却太快、来不及形成晶体时就会变成黑曜石；它的边缘可以比钢制手术刀还锋利。",
+      "id": "sci-0087",
+      "options": ["木化石", "陨石", "一种煤", "火山玻璃"],
+      "question": "黑曜石是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "风眼的直径可达几十公里；最猛烈的风出现在周围的眼墙中。",
+      "id": "sci-0083",
+      "options": ["风力最强", "冰雹大雪", "浓雾细雨", "平静晴朗"],
+      "question": "飓风眼里的天气通常是什么样的？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "蓝色的刚玉叫作蓝宝石；红宝石的红色来自微量的铬。",
+      "id": "sci-0088",
+      "options": ["石英", "石榴石", "绿柱石", "刚玉"],
+      "question": "红宝石是哪种矿物的红色宝石变种？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "气压越低，沸点越低，所以在高海拔地区煮意大利面会非常慢。",
+      "id": "sci-0098",
+      "options": ["约70°C", "约120°C", "约50°C", "约100°C"],
+      "question": "在珠穆朗玛峰顶，水大约在多少度沸腾？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "熔融的岩石在地下叫岩浆，喷出地表后就叫熔岩。",
+      "id": "sci-0085",
+      "options": ["黑曜石", "玄武岩", "熔岩", "岩浆"],
+      "question": "地表以下熔化的岩石叫什么？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "旅行者1号于1977年发射，2012年进入星际空间，携带着一张录有地球声音的金唱片。",
+      "id": "sci-0091",
+      "options": ["先驱者10号", "新视野号", "旅行者1号", "旅行者2号"],
+      "question": "哪个航天器是离地球最远的人造物体？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "琥珀能把昆虫、羽毛甚至恐龙尾巴的一部分完美地保存数百万年。",
+      "id": "sci-0089",
+      "options": ["树脂", "蜂蜜", "动物骨头", "贝壳"],
+      "question": "琥珀是什么的化石？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "太阳约占太阳系全部质量的99.8%，剩下的大部分在木星身上。",
+      "id": "sci-0095",
+      "options": ["约90%", "超过99%", "约50%", "约75%"],
+      "question": "太阳约占太阳系总质量的多少？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "正因为这种膨胀，冰会浮在水面上，结冰的水还能撑破水管、胀裂岩石。",
+      "id": "sci-0101",
+      "options": ["约1%", "约50%", "约25%", "约9%"],
+      "question": "水结冰时体积大约增加多少？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "太阳是一颗正值中年的G型主序星，约46亿岁，大约走过了一生的一半。",
+      "id": "sci-0096",
+      "options": ["红巨星", "蓝巨星", "白矮星", "黄矮星"],
+      "question": "太阳属于哪种类型的恒星？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "海王星绕太阳一周约需165个地球年；直到2011年，它才完成被发现以来的第一圈公转。",
+      "id": "sci-0094",
+      "options": ["木星", "天王星", "海王星", "土星"],
+      "question": "离太阳最远的行星是哪颗？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "银的导电性比铜略好，但铜便宜得多，所以电线用的是铜。",
+      "id": "sci-0097",
+      "options": ["银", "铝", "金", "铜"],
+      "question": "哪种金属的导电性最好？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "钇、镱、铽和铒都以于特比命名，那是斯德哥尔摩附近一个有着丰富矿石采石场的村庄。",
+      "id": "sci-0102",
+      "options": ["波兰", "德国", "瑞典", "苏格兰"],
+      "question": "哪个国家的一个村庄为四种化学元素提供了名字？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "臭氧是由三个氧原子组成的一种氧；它吸收了太阳发出的大部分有害UV-B和UV-C紫外线。",
+      "id": "sci-0099",
+      "options": ["氩气", "氮气", "臭氧", "甲烷"],
+      "question": "高层大气中的哪种气体保护我们免受大部分紫外线辐射？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "以约每小时2.8万公里的速度，在这个高度上的航天器一天能看到约16次日出和日落。",
+      "id": "sci-0100",
+      "options": ["约24小时", "约90分钟", "约12小时", "约10分钟"],
+      "question": "在国际空间站约400公里的高度上，绕地球一圈大约需要多久？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "大多数流星只是不比沙粒大的尘埃颗粒（流星体），在离地面约80至100公里的高空燃尽。",
+      "id": "sci-0107",
+      "options": [
+        "燃烧的太空尘粒",
+        "反光的人造卫星",
+        "彗星的尾巴",
+        "坠落地球的恒星"
+      ],
+      "question": "“流星”到底是什么？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "居里夫人于1898年命名了钋（polonium，源自波兰），当时波兰还不是独立国家，她借此唤起人们对波兰事业的关注。",
+      "id": "sci-0104",
+      "options": ["锗", "镭", "钋", "钫"],
+      "question": "居里夫人用祖国的名字命名了哪种元素？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "塞勒涅是希腊神话中的月亮女神；更早发现的碲则以大地女神忒勒斯命名。",
+      "id": "sci-0103",
+      "options": ["硒", "铈", "氦", "碲"],
+      "question": "哪种化学元素是以月亮命名的？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "电子的质量只有质子的约1800分之一，所以原子的质量几乎都集中在小小的原子核里。",
+      "id": "sci-0109",
+      "options": ["质子", "中子", "电子", "光子"],
+      "question": "原子中哪种粒子带负电荷？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "火星大气中约95%是二氧化碳，而且非常稀薄，气压不到地球的1%。",
+      "id": "sci-0105",
+      "options": ["甲烷", "氮气", "一氧化碳", "二氧化碳"],
+      "question": "火星大气的主要成分是哪种气体？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "由于c²极其巨大，极少的质量就蕴含着巨大的能量，太阳正是靠它发光发热。",
+      "id": "sci-0110",
+      "options": ["光速", "库仑常数", "声速", "碳的质量"],
+      "question": "在方程E = mc²中，“c”代表什么？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "英仙座流星雨来自斯威夫特－塔特尔彗星的碎屑；高峰期在黑暗的地方每小时可能看到几十颗流星。",
+      "id": "sci-0108",
+      "options": ["四月", "十月", "十二月", "八月"],
+      "question": "英仙座流星雨通常在哪个月达到高峰？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "土星六边形的每条边都比地球的直径还长，最早由旅行者号探测器发现。",
+      "id": "sci-0106",
+      "options": ["海王星", "土星", "天王星", "木星"],
+      "question": "哪颗行星的北极有一个巨大的六边形风暴图案？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "O型阴性红细胞没有A、B和RhD标记，所以在来不及检测的紧急情况下使用。",
+      "id": "body-0007",
+      "options": ["A型阴性", "O型阴性", "B型阳性", "AB型阳性"],
+      "question": "被称为“万能供血者”、红细胞几乎可以输给任何人的是哪种血型？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "英国水手靠喝柠檬汁或青柠汁预防坏血病，因此得了个绰号“limeys”（青柠佬）。",
+      "id": "body-0009",
+      "options": ["脚气病", "佝偻病", "坏血病", "糙皮病"],
+      "question": "长期缺乏维生素C会导致哪种曾令水手闻之色变的疾病？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "中耳里的镫骨只有约3毫米长，负责把声音振动传给内耳。",
+      "id": "body-0003",
+      "options": ["手指里", "耳朵里", "脚趾里", "鼻子里"],
+      "question": "人体最小的骨头在哪里？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "大腿骨约占一个人身高的四分之一，也是最结实的骨头之一。",
+      "id": "body-0004",
+      "options": ["腓骨", "股骨", "胫骨", "肱骨"],
+      "question": "人体最长的骨头是哪块？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "虹膜的纹理因人而异，像指纹一样可用于生物识别。",
+      "id": "body-0010",
+      "options": ["虹膜", "晶状体", "角膜", "视网膜"],
+      "question": "眼睛中有颜色、控制进光量的部分是哪个？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "两个心房接收血液，两个心室把血液泵出，分别送往肺部和全身。",
+      "id": "body-0005",
+      "options": ["六个", "四个", "两个", "三个"],
+      "question": "人的心脏有几个腔？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "血红蛋白与氧结合后会变成鲜红色，所以动脉血比静脉血颜色更鲜亮。",
+      "id": "body-0012",
+      "options": ["胰岛素", "角蛋白", "胶原蛋白", "血红蛋白"],
+      "question": "红细胞中哪种含铁的蛋白质负责运输氧气？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "左肺只有两个肺叶，为心脏留出空间。",
+      "id": "body-0030",
+      "options": ["五个", "三个", "四个", "两个"],
+      "question": "人的右肺有几个肺叶？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "臀部的臀大肌让身体保持直立，并为攀爬和奔跑提供动力。",
+      "id": "body-0014",
+      "options": ["背阔肌", "臀大肌", "胸大肌", "肱二头肌"],
+      "question": "人体最大的肌肉是哪块？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "维生素D帮助身体吸收钙质、让骨骼强健；许多高纬度地区的人冬季合成得较少。",
+      "id": "body-0008",
+      "options": ["维生素D", "维生素A", "维生素K", "维生素C"],
+      "question": "皮肤晒太阳时会自己合成哪种维生素？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "婴儿的许多骨头，例如颅骨的一些部分，会随着成长融合在一起。",
+      "id": "body-0016",
+      "options": ["约300块", "约150块", "约500块", "约206块"],
+      "question": "新生儿大约有多少块骨头？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "阑尾曾被认为毫无用处，但它可能是有益肠道细菌的“避难所”。",
+      "id": "body-0032",
+      "options": ["小肠", "大肠", "胃", "肝脏"],
+      "question": "阑尾连在哪个器官上？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "白细胞在血液中占比不到1%，但其中有些细胞能把病菌“记住”好多年。",
+      "id": "body-0011",
+      "options": ["白细胞", "皮肤细胞", "红细胞", "血小板"],
+      "question": "哪种血细胞是抵御感染的主力？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "那种发麻的感觉来自尺神经，它在肘部离皮肤很近。",
+      "id": "body-0018",
+      "options": ["一条神经", "一块骨头", "一条肌腱", "一块肌肉"],
+      "question": "撞到手肘的“麻筋”时，你实际上撞到的是什么？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "肾脏每天过滤约180升血浆，并把其中几乎全部送回体内。",
+      "id": "body-0013",
+      "options": ["肝脏", "脾脏", "肾脏", "肺"],
+      "question": "哪个器官过滤血液、生成尿液？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "这种液体叫胆汁；吃了油腻的食物后，胆囊会把胆汁挤进肠道。",
+      "id": "body-0021",
+      "options": ["脾脏", "胰腺", "阑尾", "胆囊"],
+      "question": "哪个小器官储存肝脏分泌的、帮助消化脂肪的液体？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "尽管名字里有“小”字，小肠其实比大肠长得多，“小”只是指它比较细。",
+      "id": "body-0033",
+      "options": ["约50厘米", "约1米", "约6米", "约15米"],
+      "question": "成年人的小肠大约有多长？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "婴儿身体约75%是水；大脑和心脏的含水量约为73%。",
+      "id": "body-0015",
+      "options": ["约60%", "约30%", "约45%", "约90%"],
+      "question": "成年人身体中水分大约占百分之多少？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "耳蜗里微小的毛细胞对不同音高作出反应；它们一旦受损就不会再长出来。",
+      "id": "body-0022",
+      "options": ["平衡耳内气压", "维持身体平衡", "制造耳垢", "把声音变成信号"],
+      "question": "内耳中蜗牛壳形状的耳蜗有什么作用？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "牙釉质约96%是矿物质，但不含活细胞，所以无法自我修复。",
+      "id": "body-0017",
+      "options": ["牙釉质", "软骨", "指甲", "大腿骨"],
+      "question": "人体中最坚硬的物质是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "小脑只占大脑体积的十分之一，却容纳了大脑一半以上的神经元。",
+      "id": "body-0023",
+      "options": ["海马体", "小脑", "额叶", "垂体"],
+      "question": "大脑的哪个部分主要负责协调平衡和运动？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "视神经离开眼球的地方没有感光细胞；大脑会把这块空缺补上，所以我们察觉不到。",
+      "id": "body-0035",
+      "options": ["视神经出口处", "被虹膜遮住", "晶状体最厚处", "眼泪聚在那里"],
+      "question": "为什么每只眼睛都有一个小小的“盲点”？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "一个人可以捐出部分肝脏，捐献者和接受者的肝脏都会在几个月内重新长大。",
+      "id": "body-0019",
+      "options": ["肺", "心脏", "肝脏", "大脑"],
+      "question": "哪个器官在切除一部分后能重新长到原来的大小？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "一生中，心脏不停歇地跳动超过25亿次。",
+      "id": "body-0024",
+      "options": ["约10万次", "约100万次", "约1000次", "约1万次"],
+      "question": "成年人在静息状态下，心脏一天大约跳多少次？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "很多人四颗智齿长不全，所以成年人有28颗牙也很常见。",
+      "id": "body-0020",
+      "options": ["24颗", "36颗", "28颗", "32颗"],
+      "question": "包括智齿在内，成年人一副完整的牙齿有多少颗？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "1908年，池田菊苗在研究昆布汤时发现了鲜味；它是谷氨酸的味道。",
+      "id": "body-0027",
+      "options": ["辣味", "鲜味", "金属味", "薄荷味"],
+      "question": "哪种常被形容为“咸香浓郁”的基本味觉是由一位日本科学家首先发现的？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "2018年的一项研究发现，他们的脾脏比邻近族群大约50%；潜水时，脾脏会把额外的富氧血液挤入循环。",
+      "id": "body-0042",
+      "options": ["肺", "心脏", "肝脏", "脾脏"],
+      "question": "东南亚以自由潜水闻名的“海上游牧民族”巴瑶族，哪个器官格外大？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "体温在一天中会自然变化，清晨最低，傍晚前后最高。",
+      "id": "body-0025",
+      "options": ["约37°C", "约39°C", "约35°C", "约40°C"],
+      "question": "人体正常体温平均是多少？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "露在皮肤外的头发和指甲由死细胞构成，所以剪掉时不会痛。",
+      "id": "body-0026",
+      "options": ["胶原蛋白", "黑色素", "血红蛋白", "角蛋白"],
+      "question": "头发和指甲主要由哪种蛋白质构成？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "大脑只占体重的约2%，静息时却消耗身体约五分之一的能量。",
+      "id": "body-0029",
+      "options": ["约75%", "约20%", "约50%", "约2%"],
+      "question": "静息时，大脑消耗身体能量的大约多少？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "没有重力压迫脊柱，椎骨之间的椎间盘就会膨胀；人最多可长高约3%，回到地球后又会恢复。",
+      "id": "body-0043",
+      "options": ["骨骼长得更快", "肌肉被拉长", "气压较低", "椎间盘膨胀"],
+      "question": "执行长期任务的宇航员回来时可能会长高几厘米，这是为什么？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "膝盖骨起初是柔软的软骨，通常到3至5岁左右才开始骨化。",
+      "id": "body-0031",
+      "options": ["硬骨", "脂肪", "软骨", "肌肉"],
+      "question": "新生儿的膝盖骨主要是由什么构成的？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "视网膜有约1.2亿个负责弱光的视杆细胞，而负责色觉的视锥细胞只有约600万个。",
+      "id": "body-0034",
+      "options": ["视网膜", "巩膜", "角膜", "虹膜"],
+      "question": "眼球后部含有感光视杆细胞和视锥细胞的是哪一层？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "最大的动脉主动脉大约和花园浇水软管一样粗；毛细血管则比头发还细。",
+      "id": "body-0037",
+      "options": ["毛细血管", "静脉", "动脉", "淋巴管"],
+      "question": "哪种血管把血液从心脏运出去？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "对于毛茸茸的祖先来说，竖起毛发能锁住暖空气，或让自己在对手面前显得更大。",
+      "id": "body-0036",
+      "options": ["神经末梢", "汗腺", "毛囊", "血管"],
+      "question": "鸡皮疙瘩是由连在什么上的微小肌肉引起的？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "身体每秒钟都会制造数百万个新的红细胞来替换老的。",
+      "id": "body-0047",
+      "options": ["约2年", "约120天", "约7天", "约1天"],
+      "question": "一个红细胞大约能存活多久？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "血小板是微小的细胞碎片，会迅速赶到伤口处聚集成团，把伤口堵住。",
+      "id": "body-0038",
+      "options": ["运输氧气", "帮助凝血", "制造激素", "对抗病菌"],
+      "question": "血液中血小板的主要作用是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "詹纳使用了牛痘疱疹中的物质；“vaccine”（疫苗）一词来自拉丁语vacca，意思是“牛”。",
+      "id": "body-0040",
+      "options": ["詹纳", "巴斯德", "科赫", "李斯特"],
+      "question": "1796年，是谁研制出了第一种疫苗——天花疫苗？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "弗莱明注意到，一个被遗忘的培养皿上长出的霉菌杀死了周围的细菌。",
+      "id": "body-0039",
+      "options": ["弗莱明", "塞麦尔维斯", "巴斯德", "詹纳"],
+      "question": "1928年，是谁发现了青霉素？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "经过全球疫苗接种运动，世界卫生组织于1980年宣布天花已被消灭。",
+      "id": "body-0041",
+      "options": ["麻疹", "天花", "脊髓灰质炎", "疟疾"],
+      "question": "哪种人类疾病是唯一在全世界被彻底消灭的？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "快速神经纤维外面包着一层脂质髓鞘，让信号沿神经跳跃前进，时速超过400公里。",
+      "id": "body-0049",
+      "options": ["每秒约120米", "接近光速", "每秒约1米", "每秒约3000米"],
+      "question": "人体内最快的神经信号传导速度能有多快？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "人体约99%的钙储存在骨骼和牙齿中。",
+      "id": "body-0046",
+      "options": ["钾", "钙", "铁", "钠"],
+      "question": "哪种矿物质是骨骼和牙齿的主要构成成分？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "这些气囊叫肺泡，铺平后面积约70平方米甚至更大，为氧气进入血液提供了巨大的表面。",
+      "id": "body-0044",
+      "options": ["肾脏", "肺", "肠道", "肝脏"],
+      "question": "数以百万计的微小气囊位于哪个器官中？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "髋骨、胸骨等大骨头里柔软的骨髓，就是人体的“造血工厂”。",
+      "id": "body-0048",
+      "options": ["心肌里", "胃里", "骨髓里", "肝脏里"],
+      "question": "成年人的红细胞是在哪里生成的？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "许多国家在食盐中加碘，以预防甲状腺疾病。",
+      "id": "body-0045",
+      "options": ["铁", "钙", "碘", "锌"],
+      "question": "甲状腺需要哪种元素来制造激素？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "海马体因形似海马而得名（源自希腊语）；熟记伦敦街道的出租车司机，海马体更大。",
+      "id": "body-0055",
+      "options": ["小脑", "海马体", "杏仁核", "丘脑"],
+      "question": "哪个脑区对形成新的记忆至关重要？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "膈肌猛地一抽后，声带随即突然闭合，就发出了“嗝”的一声。",
+      "id": "body-0053",
+      "options": ["舌头", "胃", "心脏", "膈肌"],
+      "question": "打嗝是哪块肌肉的突然痉挛？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "强光，尤其是早晨的光会抑制褪黑素，所以日光有助于调整倒时差的生物钟。",
+      "id": "body-0050",
+      "options": ["肾上腺素", "皮质醇", "胰岛素", "褪黑素"],
+      "question": "哪种在光线变暗时分泌的激素有助于调节睡眠？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "肝脏重约1.5公斤，承担着从储存能量到净化血液等数百项工作。",
+      "id": "body-0054",
+      "options": ["胃", "心脏", "大脑", "肝脏"],
+      "question": "人体最大的内脏器官是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "颈部U形的舌骨靠肌肉固定位置，支撑着舌头。",
+      "id": "body-0058",
+      "options": ["髌骨", "舌骨", "锁骨", "尾骨"],
+      "question": "哪块骨头是人体中唯一不与其他任何骨头相连的？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "每对染色体中的一条来自父亲，一条来自母亲；第23对决定生理性别。",
+      "id": "body-0056",
+      "options": ["46对", "21对", "23对", "25对"],
+      "question": "人体大多数细胞有多少对染色体？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "吞咽或打哈欠会打开咽鼓管，在飞机爬升或下降时平衡气压。",
+      "id": "body-0052",
+      "options": ["咽鼓管", "半规管", "泪管", "外耳道"],
+      "question": "哪条管道连接中耳和喉咙，让耳朵能“砰”地一下通气？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "血液约占体重的7%至8%，静息时心脏大约每分钟把全身的血液泵送一遍。",
+      "id": "body-0057",
+      "options": ["约1升", "约5升", "约2升", "约10升"],
+      "question": "成年人体内平均大约有多少血液？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "瓜卡莫莱可追溯到阿兹特克人，名字来自纳瓦特尔语中表示“牛油果”和“酱汁”的词。",
+      "id": "food-0002",
+      "options": ["牛油果", "黄瓜", "番茄", "青豆"],
+      "question": "墨西哥蘸酱“瓜卡莫莱”（guacamole）的主要原料是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "传统的巴伦西亚烩饭用兔肉、鸡肉和豆子，藏红花让米饭呈现金黄色。",
+      "id": "food-0001",
+      "options": ["加利西亚", "安达卢西亚", "加泰罗尼亚", "巴伦西亚"],
+      "question": "用宽大平底锅烹制的西班牙烩饭（paella）最初来自西班牙哪个地区？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "经典的胡姆斯把鹰嘴豆与芝麻酱、柠檬汁和大蒜一起打成泥。",
+      "id": "food-0003",
+      "options": ["蚕豆", "鹰嘴豆", "白芸豆", "小扁豆"],
+      "question": "中东蘸酱“胡姆斯”（hummus）主要用什么做成？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "糖和牛奶是后来欧洲人加进去的；阿兹特克人还把可可豆当作货币。",
+      "id": "food-0012",
+      "options": ["牛奶", "糖", "薄荷", "辣椒"],
+      "question": "阿兹特克人把巧克力当作苦味饮料喝，他们常往里面加什么？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "据说它的番茄、马苏里拉奶酪和罗勒对应意大利国旗的红、白、绿三色。",
+      "id": "food-0004",
+      "options": ["罗马", "那不勒斯", "米兰", "佛罗伦萨"],
+      "question": "玛格丽特比萨传统上与哪座意大利城市联系在一起？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "传统上，各家在入冬前一起腌制大量泡菜，这一习俗叫“kimjang”（越冬泡菜）。",
+      "id": "food-0005",
+      "options": ["日本菜", "泰国菜", "越南菜", "韩国菜"],
+      "question": "辛辣的发酵蔬菜“kimchi”（泡菜）是哪国饮食中的家常必备？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "花生开花后花梗向下弯，把果荚推进土里，花生就在地下成熟。",
+      "id": "food-0014",
+      "options": ["谷类作物", "根茎蔬菜", "豆科植物", "树生坚果"],
+      "question": "从植物学上讲，花生不是坚果。它属于哪一类？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "19世纪30年代，在巴黎的维也纳面包师帮助这种糕点流行起来，后来它改用层层起酥的黄油面团制作。",
+      "id": "food-0019",
+      "options": ["比利时", "瑞士", "奥地利", "德国"],
+      "question": "可颂（羊角面包）源自基普费尔（kipferl），这是哪个国家的一种月牙形糕点？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "热那亚青酱由罗勒、松子、大蒜、硬质奶酪和橄榄油混合而成；名字来自热那亚方言中意为“捣碎”的动词。",
+      "id": "food-0015",
+      "options": ["核桃", "杏仁", "松子", "腰果"],
+      "question": "热那亚传统青酱（pesto）里用的是哪种坚果？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "豆腐是把豆浆点成凝乳再压制而成的，有点像做奶酪。",
+      "id": "food-0008",
+      "options": ["芸豆", "大豆", "绿豆", "鹰嘴豆"],
+      "question": "豆腐是用哪种豆子做的？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "几个世纪以来，豪达镇一直举办传统的奶酪集市，农民在那里交易一个个奶酪轮。",
+      "id": "food-0018",
+      "options": ["荷兰", "丹麦", "瑞士", "比利时"],
+      "question": "豪达奶酪是以哪个国家的一座小镇命名的？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "葡萄牙传教士和商人在16世纪来到日本；“tempura”一词可能来自拉丁语“tempora”。",
+      "id": "food-0024",
+      "options": ["英国人", "荷兰人", "西班牙人", "葡萄牙人"],
+      "question": "天妇罗背后的油炸技术是哪国商人传入日本的？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "青柠汁中的酸会像加热一样改变鱼肉的蛋白质；秘鲁还设有全国塞维切日。",
+      "id": "food-0027",
+      "options": ["醋", "柑橘汁", "盐水", "热油"],
+      "question": "在塞维切（ceviche）中，生鱼是浸泡在什么里面“煮熟”的？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "可可荚直接长在树干上，每个荚里有约30至50粒可可豆。",
+      "id": "food-0011",
+      "options": ["咖啡树", "香草兰", "可可树", "角豆树"],
+      "question": "巧克力是用哪种植物的豆子做的？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "库斯库斯是用粗粒小麦粉做成的蒸熟小颗粒；2020年，联合国教科文组织将其列为北非四国共同的遗产。",
+      "id": "food-0028",
+      "options": ["长粒米", "燕麦", "硬粒小麦", "玉米"],
+      "question": "库斯库斯（couscous）传统上是用哪种谷物做的？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "人们认为是贝德福德公爵夫人安娜开创了下午茶，为的是填补午餐和较晚的晚餐之间漫长的空当。",
+      "id": "food-0029",
+      "options": ["中国", "印度", "荷兰", "英格兰"],
+      "question": "19世纪40年代，“下午茶”习俗起源于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "正宗的菲达奶酪主要用绵羊奶制作，名称受欧盟保护，只有希腊生产商才能使用。",
+      "id": "food-0016",
+      "options": ["希腊", "西班牙", "法国", "意大利"],
+      "question": "菲达奶酪传统上来自哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "它曾被称为“中国醋栗”，20世纪50年代出口时以新西兰的几维鸟（kiwi）重新命名。",
+      "id": "food-0036",
+      "options": ["智利", "新西兰", "澳大利亚", "中国"],
+      "question": "奇异果（猕猴桃）最初来自哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "胡椒原产于印度马拉巴尔海岸，曾经珍贵到被称为“黑色黄金”，有时还被用来交租。",
+      "id": "food-0034",
+      "options": ["印度", "巴西", "马达加斯加", "墨西哥"],
+      "question": "黑胡椒原产于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "这些孔洞叫“眼”，是奶酪成熟时细菌释放的二氧化碳气泡形成的。",
+      "id": "food-0017",
+      "options": ["切达", "埃门塔尔", "布里", "格吕耶尔"],
+      "question": "哪种瑞士奶酪以大孔洞而闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "塞维利亚橙酸得没法生吃，但富含果胶，非常适合做成凝固的果酱。",
+      "id": "food-0037",
+      "options": ["柠檬", "杏子", "野草莓", "苦橙"],
+      "question": "传统的马默莱德果酱（marmalade）是用哪种水果做的？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "水手们曾在远航时携带酸菜，因为它能保存好几个月，还含有维生素C。",
+      "id": "food-0020",
+      "options": ["黄瓜", "卷心菜", "芜菁", "洋葱"],
+      "question": "德国酸菜是用哪种发酵蔬菜做的？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "这个名字可能指的是这种来自意大利东北部的分层甜点中的咖啡和可可。",
+      "id": "food-0038",
+      "options": ["奶油云朵", "小小蛋糕", "让我振作", "甜蜜美梦"],
+      "question": "意大利甜点“提拉米苏”的名字是什么意思？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "传说一位微服出巡的皇帝给随从倒茶，随从就用手指叩桌，暗中代替叩拜。",
+      "id": "food-0042",
+      "options": ["再加点糖", "不要再倒", "茶已凉了", "道声谢谢"],
+      "question": "在中国一些地方，别人倒茶时用两根手指轻叩桌面表示什么？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "整个东欧都吃罗宋汤，上面常加一勺酸奶油。",
+      "id": "food-0021",
+      "options": ["甜菜根", "番茄", "紫甘蓝", "红甜椒"],
+      "question": "哪种蔬菜让罗宋汤呈现深红色？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "它的名字来自塞内加尔古老的沃洛夫（乔洛夫）帝国；尼日利亚人和加纳人一直友好地争论谁做得最好。",
+      "id": "food-0022",
+      "options": ["西非", "南美", "中亚", "南欧"],
+      "question": "用番茄和香料一锅煮成的乔洛夫饭，深受哪个地区的人们喜爱？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "这句话大意是“我恭敬地领受了”，表达对让这顿饭成为可能的所有人和事物的感谢。",
+      "id": "food-0040",
+      "options": ["Sayōnara", "Konnichiwa", "Arigatō", "Itadakimasu"],
+      "question": "在日本，人们开始吃饭前传统上会说什么？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "世界上大部分枫糖浆来自魁北克，那里还保存着一批枫糖浆桶作为战略储备。",
+      "id": "food-0046",
+      "options": ["约10升", "约4升", "约200升", "约40升"],
+      "question": "大约要熬煮多少升枫树汁才能得到1升枫糖浆？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "“寿司”指的是醋饭，所以单独的生鱼片叫刺身。",
+      "id": "food-0023",
+      "options": ["饭团", "拉面", "天妇罗", "刺身"],
+      "question": "哪种日本料理是不配米饭、切成薄片的生鱼？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "竖插筷子的米饭是葬礼上供奉给逝者的；用筷子互相传递食物也同样要避免。",
+      "id": "food-0041",
+      "options": ["侮辱厨师", "表示吃完了", "像葬礼仪式", "表示还要添"],
+      "question": "在日本，为什么把筷子竖插在米饭里是不礼貌的？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "传统上，人们在1月25日的彭斯之夜吃哈吉斯，开吃前还要对着它朗诵一首诗。",
+      "id": "food-0025",
+      "options": ["苏格兰", "挪威", "威尔士", "爱尔兰"],
+      "question": "哈吉斯是哪个国家的国菜？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "据说每颗葡萄能为来年的一个月带来好运，人们会聚集在马德里的太阳门广场。",
+      "id": "food-0043",
+      "options": ["意大利", "西班牙", "希腊", "葡萄牙"],
+      "question": "跨年夜午夜随着钟声每响一下吃一颗葡萄、共吃12颗，这是哪个国家的传统？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "它由德班的印度裔社区创造；里面并没有兔肉，“bunny”可能来自商人种姓的名称“bania”。",
+      "id": "food-0053",
+      "options": ["印度", "南非", "毛里求斯", "肯尼亚"],
+      "question": "“bunny chow”是把一整条面包掏空后装满咖喱，它来自哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "这个名字来自匈牙利语“gulyás”，意思是牧牛人；牧人们在露天的火上用大锅煮它。",
+      "id": "food-0026",
+      "options": ["匈牙利", "希腊", "波兰", "罗马尼亚"],
+      "question": "富含红椒粉的炖菜古拉什起源于哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "蜂蜜中的糖分和天然酸性会阻止微生物生长；古埃及的墓葬中甚至放有一罐罐蜂蜜。",
+      "id": "food-0047",
+      "options": ["橄榄油", "面包", "奶酪", "蜂蜜"],
+      "question": "哪种食物因含水量低，密封保存几十年都不会变质？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "抹茶用的茶树在采摘前要遮阴，这样叶子会更绿、更甜。",
+      "id": "food-0030",
+      "options": ["发酵红茶", "烘焙大麦茶", "绿茶粉", "干薄荷茶"],
+      "question": "抹茶是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "英吉拉用一种叫苔麸的细小谷物做成；它既是盘子又是勺子，人们撕下一块来舀取食物。",
+      "id": "food-0048",
+      "options": ["埃塞俄比亚", "摩洛哥", "肯尼亚", "尼日利亚"],
+      "question": "松软的发酵薄饼英吉拉是哪个国家饮食的核心？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "把卡瓦灌木的根磨碎后兑水，用一个公用的碗分享；它不含酒精，但会让嘴唇和舌头短暂发麻。",
+      "id": "food-0055",
+      "options": ["一种胡椒的根", "发酵的椰子", "甘蔗汁液", "晒干的海藻"],
+      "question": "斐济、汤加和瓦努阿图在仪式上共饮的卡瓦是用什么做的？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "姜黄让许多咖喱呈现黄色；它是生姜的近亲，是一种根茎，除了给食物上色，还被用来染布。",
+      "id": "food-0031",
+      "options": ["红椒粉", "孜然", "姜黄", "生姜"],
+      "question": "许多咖喱的颜色主要来自哪种香料？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "印加人称藜麦为“万谷之母”；它其实是一种与菠菜同类的植物的种子。",
+      "id": "food-0049",
+      "options": ["印加", "奥尔梅克", "玛雅", "阿兹特克"],
+      "question": "藜麦是哪个古代文明的主要作物？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "内层树皮在晾干时会卷成“卷筒”；正宗的锡兰肉桂来自斯里兰卡。",
+      "id": "food-0032",
+      "options": ["丁香", "胡椒", "肉桂", "肉豆蔻"],
+      "question": "哪种香料是用树皮制成的？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "西班牙的tortilla是一种厚厚的煎蛋饼，常切成块，作为常温的小吃（tapas）端上桌。",
+      "id": "food-0051",
+      "options": ["鸡蛋和土豆", "大米和豆子", "玉米粉和猪油", "小麦粉"],
+      "question": "西班牙的“tortilla”和墨西哥的很不一样，它是用什么做的？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "每株菠萝通常一次只结一个果实，它由几十朵花融合而成。",
+      "id": "food-0059",
+      "options": ["约两个月", "约六个月", "约十年", "约两年"],
+      "question": "菠萝植株大约要多久才能结出第一个果实？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "左手专用于清洁，所以用左手递食物或钱可能显得无礼；在印度，人们常常只用指尖吃饭。",
+      "id": "food-0054",
+      "options": ["左手", "右手", "哪只手都行", "双手"],
+      "question": "在印度、中东和非洲的许多地方，传统上用哪只手吃饭？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "按照传统，它绝不能“听到正午的钟声”；吃时配甜芥末和软椒盐卷饼。",
+      "id": "food-0044",
+      "options": ["汉堡", "柏林", "慕尼黑", "维也纳"],
+      "question": "传统上要在中午前吃的白色小牛肉香肠“白香肠”来自哪座城市？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "它的西方名字来自拉丁语clavus，意为“钉子”，因为花蕾形似钉子。",
+      "id": "food-0057",
+      "options": ["肉豆蔻", "肉桂", "八角", "丁香"],
+      "question": "哪种香料是一种树的干燥花蕾？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "这次转换发生在1967年9月3日凌晨5点的“H日”；所有车辆停下，再换到道路另一侧。",
+      "id": "food-0065",
+      "options": ["芬兰", "挪威", "瑞典", "丹麦"],
+      "question": "1967年，哪个国家一夜之间从靠左行驶改为靠右行驶？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "按传统，谁把面包掉进锅里就要受罚，比如请大家喝下一轮。",
+      "id": "food-0045",
+      "options": ["奥地利", "瑞士", "法国", "列支敦士登"],
+      "question": "用一锅熔化的奶酪大家分享的芝士火锅（fondue）是哪个国家的国菜？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "橙色胡萝卜是17世纪荷兰种植者培育出来的。",
+      "id": "food-0060",
+      "options": ["南瓜", "胡萝卜", "土豆", "甜玉米"],
+      "question": "在橙色品种流行之前，哪种蔬菜通常是紫色或黄色的？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "每粒玉米里都有一小滴水，受热变成蒸汽后会撑破坚硬的外壳；在秘鲁的古代遗址中也发现过爆米花。",
+      "id": "food-0050",
+      "options": ["大米", "玉米", "小麦", "大麦"],
+      "question": "爆米花是用哪种谷物做的？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "牛油果的种子非常大，过去可能是由现已灭绝的巨型动物传播的。",
+      "id": "food-0061",
+      "options": ["墨西哥", "肯尼亚", "以色列", "西班牙"],
+      "question": "牛油果起源于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "在阿根廷、乌拉圭、巴拉圭和巴西南部，人们用一个葫芦杯盛马黛茶，在朋友之间轮流传饮。",
+      "id": "food-0068",
+      "options": ["奥恰塔", "马黛茶", "紫玉米汁", "阿托莱"],
+      "question": "哪种饮料传统上要用名为“bombilla”的金属吸管吸着喝？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "面团被拍贴在坦都炉滚烫的陶土内壁上，大约一分钟就会鼓起来。",
+      "id": "food-0052",
+      "options": ["多萨饼", "馕", "恰巴提", "普里饼"],
+      "question": "哪种印度面饼传统上贴在坦都炉（tandoor）的内壁上烤制？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "毛利人的碰鼻礼象征两人分享生命的气息。",
+      "id": "food-0063",
+      "options": ["斐济", "新西兰", "萨摩亚", "巴布亚新几内亚"],
+      "question": "“hongi”是一种鼻子相碰的问候礼节，它是哪个国家的传统？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "“Wiener”意为“维也纳的”；按照奥地利法律，Wiener schnitzel这个名称只能用于小牛肉。",
+      "id": "food-0056",
+      "options": ["匈牙利", "瑞士", "德国", "奥地利"],
+      "question": "裹面包屑的炸小牛排“Wiener schnitzel”是哪个国家的经典菜？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "世界上约三分之一的人口生活在靠左行驶的国家，包括印度、英国和澳大利亚。",
+      "id": "food-0064",
+      "options": ["韩国", "日本", "中国内地", "德国"],
+      "question": "下列哪个国家的车辆靠左行驶？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "玉米为豆子提供攀爬的杆子，豆子为土壤增加氮，南瓜宽大的叶子则遮住杂草。",
+      "id": "food-0069",
+      "options": [
+        "稻米、茶和大豆",
+        "小麦、橄榄和葡萄",
+        "玉米、豆类和南瓜",
+        "土豆、藜麦和辣椒"
+      ],
+      "question": "北美许多原住民把哪几种作物作为“三姐妹”种在一起？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "草莓上的每一粒“种子”其实都是一个包着种子的小果实。",
+      "id": "food-0058",
+      "options": ["草莓", "无花果", "猕猴桃", "树莓"],
+      "question": "哪种水果的种子长在外面？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "新年前夜的习俗包括“first-footing”：成为新年第一位登门的客人，最好带上煤块或黄油酥饼。",
+      "id": "food-0066",
+      "options": ["仲夏节", "新年前夜", "圣诞节", "丰收节"],
+      "question": "在苏格兰，“Hogmanay”是什么日子？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "“namaste”源自梵语，大意是“我向你致敬”；双掌合拢，放在胸前。",
+      "id": "food-0062",
+      "options": ["亲吻双颊", "双手合十", "深深鞠躬", "用力握手"],
+      "question": "问候语“namaste”配合的是哪种手势？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "在日本，良好的服务被视为分内之事，留在桌上的小费可能会被礼貌地退还。",
+      "id": "food-0067",
+      "options": ["通常不给", "只收现金", "应付20%", "应付10%"],
+      "question": "在日本，人们一般怎么看待在餐厅给小费？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "拉西有咸味、香料味和甜味的；芒果拉西是很多餐厅的人气饮品。",
+      "id": "food-0071",
+      "options": ["小扁豆", "椰子水", "茶叶", "酸奶"],
+      "question": "南亚流行的饮料拉西主要是用什么做的？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "主人会不断给没有把手的小杯续杯，通常只倒约三分之一满，直到客人轻轻晃一晃杯子。",
+      "id": "food-0070",
+      "options": ["把杯子倒扣", "在旁边放枚硬币", "敲两下桌子", "轻轻摇晃杯子"],
+      "question": "在海湾地区被招待阿拉伯咖啡时，客人怎样表示不想再喝了？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "poutine于20世纪50年代诞生在魁北克乡村；新鲜的奶酪凝乳咬起来应该“吱吱”作响。",
+      "id": "food-0073",
+      "options": ["比利时", "爱尔兰", "加拿大", "法国"],
+      "question": "浇上奶酪凝乳和肉汁的薯条“poutine”来自哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "它以俄罗斯芭蕾舞演员安娜·帕夫洛娃命名，她在1926年巡演过两国；究竟谁先做出来，至今仍争论激烈。",
+      "id": "food-0072",
+      "options": ["新西兰", "南非", "俄罗斯", "加拿大"],
+      "question": "蛋白霜甜点帕夫洛娃被澳大利亚和哪个国家同时视为国菜？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "这种酱汁最早于19世纪30年代由英格兰伍斯特的两位药剂师出售，装瓶前要经过陈酿。",
+      "id": "food-0078",
+      "options": ["鲭鱼", "鲱鱼", "沙丁鱼", "凤尾鱼"],
+      "question": "伍斯特沙司的鲜咸风味部分来自哪种发酵鱼？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "番茄由花发育而来，内含种子，所以植物学家把它归为果实，尽管厨师们把它当作蔬菜。",
+      "id": "food-0075",
+      "options": ["根", "蔬菜", "果实", "豆类"],
+      "question": "从植物学上讲，番茄是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "smørrebrød意为“黄油和面包”；配料的顺序有传统规矩，要从鲱鱼开始。",
+      "id": "food-0074",
+      "options": ["瑞典", "冰岛", "挪威", "丹麦"],
+      "question": "黑麦面包上的开放式三明治“smørrebrød”是哪个国家的经典？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "木薯的根生吃有毒，必须经过加工；粉圆因珍珠奶茶而风靡全球。",
+      "id": "food-0077",
+      "options": ["大米", "木薯", "小麦", "土豆"],
+      "question": "“珍珠”粉圆（tapioca pearls）是用哪种植物的淀粉做的？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "人们认为是意大利出生的餐馆老板凯撒·卡尔迪尼于20世纪20年代在蒂华纳创制了它。",
+      "id": "food-0079",
+      "options": ["墨西哥", "意大利", "希腊", "西班牙"],
+      "question": "凯撒沙拉是在哪个国家发明的？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "1903年12月17日，“飞行者号”共飞了四次，最长的一次持续59秒。",
+      "id": "avi-0001",
+      "options": ["1927年", "1903年", "1891年", "1911年"],
+      "question": "莱特兄弟是在哪一年完成第一次动力飞机飞行的？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "兄弟俩选中北卡罗来纳州外滩群岛多风的沙丘，那里风力稳定，还有柔软的沙地可供降落。",
+      "id": "avi-0002",
+      "options": ["威奇托", "基蒂霍克", "卡纳维拉尔角", "代顿"],
+      "question": "莱特兄弟在美国哪个小镇附近完成了首次动力飞行？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "林德伯格驾驶没有前窗的“圣路易斯精神号”，用约33.5小时从纽约飞到巴黎。",
+      "id": "avi-0004",
+      "options": ["林德伯格", "圣埃克苏佩里", "埃尔哈特", "布莱里奥"],
+      "question": "1927年，是谁首次独自驾机不着陆飞越大西洋？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "鲁坦“旅行者号”飞了9天；它载的燃油太多，起飞时翼尖都擦到了跑道。",
+      "id": "avi-0032",
+      "options": ["双鹰号", "阳光动力2号", "圣路易斯精神号", "旅行者号"],
+      "question": "1986年首次不加油、不着陆完成环球飞行的飞机叫什么？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "协和式从伦敦飞到纽约只需约3.5小时，乘客能看到地球的弧度。",
+      "id": "avi-0007",
+      "options": ["意大利", "德国", "法国", "美国"],
+      "question": "超音速客机协和式是由英国和哪个国家联合研制的？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "布莱里奥从加来飞到多佛用了约37分钟，赢得了一家报纸提供的1000英镑奖金。",
+      "id": "avi-0005",
+      "options": ["布莱里奥", "林德伯格", "威尔伯·莱特", "亨利·法曼"],
+      "question": "1909年，是谁第一次驾驶飞机飞越英吉利海峡？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "在2马赫的速度下，机身受热严重，协和式在飞行中最多可伸长约30厘米。",
+      "id": "avi-0008",
+      "options": ["略低于音速", "约两倍音速", "五倍音速", "三倍音速"],
+      "question": "协和式的巡航速度大约是多少？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "埃尔哈特原本以巴黎为目标，但飞了近15小时后降落在北爱尔兰的一片牧场上。",
+      "id": "avi-0006",
+      "options": [
+        "杰奎琳·科克伦",
+        "埃米·约翰逊",
+        "阿梅莉亚·埃尔哈特",
+        "贝西·科尔曼"
+      ],
+      "question": "1932年，谁成为第一位独自驾机不着陆飞越大西洋的女性？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "747标志性的“驼峰”是为了让机头能向上打开装货而设计的，于是驾驶舱被放到了上层。",
+      "id": "avi-0011",
+      "options": ["空客A380", "麦道DC-10", "波音747", "洛克希德L-1011"],
+      "question": "哪款客机被昵称为“巨无霸”（Jumbo Jet）？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "飞行员先瞄准山坡上的红白棋盘格标志，再在九龙屋顶上方压坡度约47°转弯，对准跑道。",
+      "id": "avi-0009",
+      "options": [
+        "降落在浮动跑道",
+        "降落在结冰湖面",
+        "低空掠过市区急转",
+        "退潮时降落沙滩"
+      ],
+      "question": "1998年关闭的香港旧启德机场，以哪种降落方式闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "双层的A380获准最多搭载853名乘客；它的机翼面积约845平方米，比三个网球场还大。",
+      "id": "avi-0012",
+      "options": ["波音747-8", "空客A350-1000", "波音777-300ER", "空客A380"],
+      "question": "按载客量计算，有史以来最大的客机是哪款？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "英国的“彗星”客机让航程时间比螺旋桨客机缩短一半，还能飞在大多数恶劣天气的上方。",
+      "id": "avi-0010",
+      "options": ["波音707", "图波列夫图-104", "南方航空快帆", "德哈维兰彗星"],
+      "question": "1952年投入运营的世界上第一款商用喷气式客机是哪款？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "1914年以前，DELAG的齐柏林飞艇搭载了数千名乘客进行观光和城际飞行。",
+      "id": "avi-0037",
+      "options": ["双翼飞机", "滑翔机", "飞艇", "水上飞机"],
+      "question": "1909年成立的世界上第一家航空公司DELAG用什么载客？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "那里空气稀薄，主跑道长约4公里，让飞机有更多距离加速到起飞速度。",
+      "id": "avi-0013",
+      "options": ["拉巴斯", "基多", "库斯科", "波哥大"],
+      "question": "海拔约4000米的埃尔阿尔托国际机场服务于哪座城市？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "马赫数以奥地利物理学家恩斯特·马赫命名；在客机巡航高度，1马赫约为每小时1060公里。",
+      "id": "avi-0015",
+      "options": ["地球自转", "高空急流", "声音", "光线"],
+      "question": "以1马赫飞行，意思是以什么的速度飞行？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "耶格尔驾驶火箭动力的贝尔X-1，飞机先从轰炸机腹下投放，再点燃发动机。",
+      "id": "avi-0016",
+      "options": ["约翰·格伦", "查克·耶格尔", "加加林", "阿姆斯特朗"],
+      "question": "1947年，谁是第一位被确认在平飞中突破音障的飞行员？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "惠特尔申请专利时只有22岁；1939年，德国人汉斯·冯·奥海因设计的发动机成为第一台飞上天的喷气发动机。",
+      "id": "avi-0040",
+      "options": [
+        "亨利·罗伊斯",
+        "弗兰克·惠特尔",
+        "汉斯·冯·奥海因",
+        "杰弗里·德哈维兰"
+      ],
+      "question": "1930年，哪位英国工程师为涡轮喷气发动机申请了专利？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "国际规则要求国际航班的飞行员和管制员都能把英语讲到规定水平。",
+      "id": "avi-0017",
+      "options": ["西班牙语", "英语", "法语", "俄语"],
+      "question": "国际空中交通管制在全世界使用哪种语言？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "它来自“venez m'aider”，意思是“快来帮我”，使用时总是连说三遍。",
+      "id": "avi-0018",
+      "options": ["拉丁语", "德语", "西班牙语", "法语"],
+      "question": "求救呼号“Mayday”来自哪种语言中的一个短语？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "高空空气稀薄，阻力较小，所以飞机比在低空飞行时更省油。",
+      "id": "avi-0020",
+      "options": ["约10至12公里", "约25至30公里", "约50公里", "约2至3公里"],
+      "question": "喷气式客机通常在大约多高的高度巡航？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "这就像身处高山上，所以零食袋会鼓起来，长途飞行中你也可能更容易疲倦。",
+      "id": "avi-0019",
+      "options": [
+        "约4500至5000米",
+        "海平面（0米）",
+        "约1800至2400米",
+        "约9000米至1万米"
+      ],
+      "question": "客机机舱通常增压到大约相当于多高海拔的气压？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "圣彼得堡—坦帕水上飞机航线每次只载一名乘客；第一个座位被拍卖出400美元。",
+      "id": "avi-0041",
+      "options": ["旧金山湾", "切萨皮克湾", "坦帕湾", "加尔维斯顿湾"],
+      "question": "1914年，第一条使用固定翼飞机的定期航线开通，它的水上飞机飞越的是哪个海湾？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "急流的风速可超过每小时300公里，航线每天都会根据它来规划，要么借力，要么避开。",
+      "id": "avi-0021",
+      "options": ["墨西哥湾流", "急流", "信风", "季风"],
+      "question": "哪种高空的快速气流常常让横跨大西洋向东飞的航班缩短时间？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "在地球仪上，两座城市之间的最短路线是大圆，而在大多数平面地图上它看起来是弯的。",
+      "id": "avi-0022",
+      "options": ["大圆距离最短", "地球磁力", "飞机须避开海洋", "风总往那边吹"],
+      "question": "为什么长途航线在平面地图上看起来是弯的？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "它的短跑道有约12%的上坡，帮助飞机降落时减速、起飞时加速。",
+      "id": "avi-0023",
+      "options": ["干城章嘉峰", "乔戈里峰", "安纳布尔纳峰", "珠穆朗玛峰"],
+      "question": "尼泊尔卢卡拉的丹增-希拉里机场是攀登哪座山的门户？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "海滩就在朱莉安娜公主国际机场跑道的尽头，是航空摄影爱好者的著名打卡地。",
+      "id": "avi-0025",
+      "options": ["圣马丁岛", "阿鲁巴岛", "巴巴多斯", "安提瓜和巴布达"],
+      "question": "降落的喷气机从头顶低空掠过的马霍海滩位于哪个加勒比岛屿？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "两侧副翼朝相反方向偏转：一侧机翼升力增加，另一侧减小，飞机就倾斜了。",
+      "id": "avi-0048",
+      "options": ["升降舵", "襟翼", "方向舵", "副翼"],
+      "question": "机翼上的哪种操纵面让飞机向一侧滚转？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "韦斯特雷岛和帕帕韦斯特雷岛之间的航程不到3公里；顺风时曾经不到一分钟就飞完了。",
+      "id": "avi-0031",
+      "options": ["希腊群岛", "苏格兰奥克尼", "挪威峡湾", "马尔代夫"],
+      "question": "世界上最短的定期航班之一只飞约1至2分钟，它在哪里运营？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "这座位于大阪湾的人工岛用了数百万立方米的填料建成，至今仍在缓慢下沉。",
+      "id": "avi-0026",
+      "options": ["人工岛", "干涸的湖床", "浮动钢浮箱", "山顶"],
+      "question": "日本关西国际机场建在什么上面？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "1.7万多块太阳能电池在白天给蓄电池充电，让飞机能整夜继续飞行。",
+      "id": "avi-0033",
+      "options": ["太阳能", "风力涡轮", "生物燃料", "氢气"],
+      "question": "2016年，Solar Impulse 2只靠什么动力完成了环球飞行？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "战时铝材短缺，只好采用木制设计；它只在1947年飞过一次，时间不到一分钟。",
+      "id": "avi-0050",
+      "options": ["云杉", "轻木", "橡木", "桦木"],
+      "question": "巨型水上飞机“云杉鹅”实际上主要是用哪种木材造的？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "樟宜机场“星耀樟宜”里的“雨漩涡”从玻璃穹顶倾泻雨水，四周环绕着室内森林。",
+      "id": "avi-0027",
+      "options": ["多哈", "香港", "新加坡", "迪拜"],
+      "question": "哪座城市的机场有“Jewel”，里面有一道40米高的室内瀑布？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "西科斯基的VS-300确立了如今大多数直升机采用的布局：一副主旋翼加一副小尾桨。",
+      "id": "avi-0038",
+      "options": ["皮亚塞茨基", "西科斯基", "劳伦斯·贝尔", "胡安·德拉谢尔瓦"],
+      "question": "1939年试飞的第一架实用单旋翼直升机是谁设计的？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Qantas是“昆士兰和北领地航空服务”的缩写；1920年创立于内陆小镇温顿。",
+      "id": "avi-0028",
+      "options": ["新西兰", "加拿大", "澳大利亚", "南非"],
+      "question": "航空公司名称“Qantas”最初是一个缩写。这家航空公司来自哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "他在15世纪80年代的手稿中画了一个亚麻布螺旋体，设想靠在空中旋转升起。",
+      "id": "avi-0039",
+      "options": ["滑翔机", "直升机", "喷气式飞机", "热气球"],
+      "question": "达·芬奇设计的“空中螺旋”常被视为哪种飞行器的早期构想？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "没有一所美国飞行学校愿意接收她，于是她学了法语，到法国接受训练。",
+      "id": "avi-0059",
+      "options": ["美国", "法国", "德国", "英国"],
+      "question": "航空先驱贝西·科尔曼于1921年在哪个国家取得了飞行员执照？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "罗马的主要机场以达·芬奇命名，他在第一架飞机出现前约400年就画过飞行器草图，包括一种像鸟一样的扑翼机。",
+      "id": "avi-0029",
+      "options": ["威尼斯", "佛罗伦萨", "米兰", "罗马"],
+      "question": "以达·芬奇命名的菲乌米奇诺机场服务于哪座城市？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "机场的格言“Above us only sky”（我们头顶只有天空）出自列侬的歌曲《想象》。",
+      "id": "avi-0030",
+      "options": ["利物浦", "伦敦", "曼彻斯特", "格拉斯哥"],
+      "question": "哪座英国城市的机场以约翰·列侬命名？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "红灯在左、绿灯在右，和船只一样，这样飞行员就能判断另一架飞机的飞行方向。",
+      "id": "avi-0045",
+      "options": ["右翼尖", "尾翼顶端", "左翼尖", "机头下方"],
+      "question": "飞机的红色航行灯在哪个位置？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "桑托斯-杜蒙还与腕表有渊源：据说他的朋友路易·卡地亚为他做了一块，好让他双手都能握住操纵装置。",
+      "id": "avi-0060",
+      "options": ["桑托斯-杜蒙", "布莱里奥", "亨利·法曼", "加布里埃尔·瓦赞"],
+      "question": "1906年在巴黎驾驶“14-bis”飞行的巴西航空先驱是谁？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "蒙戈尔菲耶兄弟的热气球载着两个人在巴黎上空飞了约25分钟。",
+      "id": "avi-0034",
+      "options": ["德国", "法国", "意大利", "英格兰"],
+      "question": "1783年，第一次载人热气球飞行在哪个国家进行？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "1900年，斐迪南·冯·齐柏林伯爵的第一艘硬式飞艇在博登湖上空飞行。",
+      "id": "avi-0036",
+      "options": ["意大利", "法国", "德国", "英国"],
+      "question": "齐柏林飞艇最早是在哪个国家建造的？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "SR-71的飞行速度约为每小时3530公里；它的油箱在地面上会漏油，直到飞行中受热才密封起来。",
+      "id": "avi-0049",
+      "options": ["SR-71“黑鸟”", "米格-25“狐蝠”", "F-15“鹰”", "协和式"],
+      "question": "自1976年以来，哪种飞机一直保持着有人驾驶吸气式喷气飞机的官方速度纪录？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "既是护士又是飞行员的埃伦·丘奇说服波音航空运输公司：护士能让紧张的乘客安心。",
+      "id": "avi-0062",
+      "options": ["教师", "飞行员", "厨师", "护士"],
+      "question": "1930年首批受雇的空中乘务员必须受过哪种职业训练？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "在铁路出现之前，各城镇使用各自的地方太阳时，相隔几个城镇的时钟就可能差好几分钟。",
+      "id": "avi-0051",
+      "options": ["电报", "航运", "铁路", "航空"],
+      "question": "标准时区最初主要是为了方便安排什么的时刻表？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "多伦多是YYZ，温哥华是YVR；这个Y通常被追溯到加拿大早期的无线电台和气象站代码。",
+      "id": "avi-0053",
+      "options": ["Y", "C", "K", "Q"],
+      "question": "加拿大的大多数机场代码，比如多伦多和温哥华的，以哪个字母开头？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "喷气式飞机无法使用；小型螺旋桨飞机降落在夹在悬崖和大海之间、长约400米的跑道上。",
+      "id": "avi-0065",
+      "options": ["约1200米", "约2000米", "约400米", "约100米"],
+      "question": "加勒比岛屿萨巴岛拥有世界上最短的商业跑道之一，它大约有多长？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "吹过机翼的风增加了空速，飞机能更快达到离地速度。",
+      "id": "avi-0047",
+      "options": ["所需跑道更短", "之后更省油", "发动机更安静", "防止机翼结冰"],
+      "question": "飞机为什么通常逆风起飞？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "布拉克高铁连接丹吉尔和卡萨布兰卡；最高时速320公里，把行程从约4小时45分钟缩短到约2小时10分钟。",
+      "id": "avi-0055",
+      "options": ["埃及", "南非", "阿尔及利亚", "摩洛哥"],
+      "question": "非洲第一条高速铁路于2018年开通，它位于哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "从亚洲向东飞越这条线，你降落时可能是前一天，比起飞时间还早。",
+      "id": "avi-0052",
+      "options": ["赤道", "北极圈", "格林尼治本初子午线", "国际日期变更线"],
+      "question": "飞行中越过哪条线，日历会改变一天？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "“Nullarbor”来自拉丁语，意为“没有树”；在横贯澳大利亚铁路的这一段，铁轨478公里没有一处弯道。",
+      "id": "avi-0056",
+      "options": ["约478公里", "约48公里", "约150公里", "约1500公里"],
+      "question": "横穿澳大利亚纳拉伯平原的火车走的是世界上最长的笔直铁轨，它大约有多长？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "它由法国和瑞士共同运营，分为法国区和瑞士区，还有一条海关公路通往巴塞尔。",
+      "id": "avi-0066",
+      "options": ["奥地利", "德国", "瑞士", "法国"],
+      "question": "巴塞尔-米卢斯-弗赖堡欧洲机场完全位于哪个国家境内？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "主线长约9300公里，跨越八个时区，不停车也要走大约一周。",
+      "id": "avi-0054",
+      "options": ["伊尔库茨克", "新西伯利亚", "摩尔曼斯克", "符拉迪沃斯托克"],
+      "question": "西伯利亚大铁路从莫斯科通往哪座城市？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "威廉·波音的第一架飞机是一架小型水上飞机；公司至今仍在西雅图地区制造客机。",
+      "id": "avi-0058",
+      "options": ["底特律", "西雅图", "芝加哥", "威奇托"],
+      "question": "波音公司于1916年在哪座城市创立？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "1868年它的铁制站棚落成时，拥有世界上跨度最大的单跨屋顶。",
+      "id": "avi-0057",
+      "options": ["伦敦", "巴黎", "布鲁塞尔", "阿姆斯特丹"],
+      "question": "欧洲之星列车的终点站圣潘克拉斯国际车站位于哪座城市？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "李林塔尔滑翔飞行的照片启发了莱特兄弟。",
+      "id": "avi-0061",
+      "options": ["动力飞机", "滑翔机", "气球", "飞艇"],
+      "question": "19世纪90年代，德国先驱奥托·李林塔尔乘坐什么飞行了约2000次？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "1947年第一趟全程悉尼—伦敦航班用了93小时，途经新加坡、卡拉奇和开罗等地；如今只需经停一次。",
+      "id": "avi-0069",
+      "options": ["美国", "印度", "英国", "南非"],
+      "question": "绰号“袋鼠航线”的著名航线连接澳大利亚和哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "翼梢小翼能削弱翼尖的涡流，可节省百分之几的燃油。",
+      "id": "avi-0067",
+      "options": ["减阻省油", "安装着陆灯", "改善无线电", "帮助地面转向"],
+      "question": "许多客机翼尖上翘起的“翼梢小翼”主要有什么作用？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "DC-3及其军用型共造了1.6万多架，有些在80多年后仍在飞行。",
+      "id": "avi-0063",
+      "options": ["道格拉斯DC-3", "福特三发机", "波音247", "容克斯Ju 52"],
+      "question": "哪款20世纪30年代的螺旋桨客机让客运飞行开始盈利，有些至今仍在飞？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "白色让飞机在炎热的停机坪上更凉快，检查时也更容易发现裂纹、凹痕或渗漏。",
+      "id": "avi-0068",
+      "options": ["改善雷达", "法律规定", "反射阳光", "减少阻力"],
+      "question": "为什么大多数客机主要漆成白色？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "它位于达曼附近，占地约776平方公里，但只有一小部分用于跑道和航站楼。",
+      "id": "avi-0064",
+      "options": ["卡塔尔", "沙特阿拉伯", "阿联酋", "阿曼"],
+      "question": "按占地面积计算世界最大的机场——法赫德国王国际机场位于哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "飞行员用一根小侧杆而不是驾驶盘来操纵A320，计算机会让飞机保持在安全范围内。",
+      "id": "avi-0073",
+      "options": ["波音757", "协和式", "波音777", "空客A320"],
+      "question": "1988年投入运营、第一款采用数字电传操纵的客机是哪款？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "这条通道先是一座桥，再经一座人工岛转入隧道，这样就不会阻挡船只和飞机。",
+      "id": "avi-0070",
+      "options": ["挪威", "瑞典", "德国", "芬兰"],
+      "question": "厄勒海峡大桥连接丹麦和哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "隧道于2016年开通，火车能以最高约每小时250公里的速度从山下穿过，头顶的岩层最厚达2300米。",
+      "id": "avi-0071",
+      "options": ["意大利", "奥地利", "瑞士", "列支敦士登"],
+      "question": "阿尔卑斯山下长57公里的铁路隧道——圣哥达基线隧道位于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "2007年，一列经过特别改装的TGV创下了常规轮轨列车的速度纪录：每小时574.8公里。",
+      "id": "avi-0072",
+      "options": ["法国", "意大利", "西班牙", "德国"],
+      "question": "高速列车TGV在哪个国家运行？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "复合材料不会像金属那样腐蚀，所以787的客舱可以更湿润，舱压对应的海拔高度也更低。",
+      "id": "avi-0074",
+      "options": ["钛合金板材", "不锈钢材料", "铝锂合金", "碳纤维复材"],
+      "question": "波音787“梦想客机”的机身和机翼主要用什么材料制成？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "岛上没有简易机场；从开普敦坐船约需六天，每年只有大约八到十班船靠岸。",
+      "id": "avi-0076",
+      "options": ["每周航班", "水上飞机", "只能坐船", "直升机"],
+      "question": "特里斯坦-达库尼亚是最偏远的有人居住岛屿之一，游客怎样才能到达那里？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "早期的中国风筝用丝绸和竹子制成，用于传递信号和测量距离。",
+      "id": "avi-0075",
+      "options": ["埃及", "中国", "希腊", "印度"],
+      "question": "2000多年前，人们最早在哪里放风筝？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "如今飞机滑行的地方，曾是船只航行的哈勒默梅尔湖；这片湖在19世纪50年代被排干。",
+      "id": "avi-0078",
+      "options": ["哥本哈根凯斯楚普", "布鲁塞尔", "阿姆斯特丹史基浦", "汉堡"],
+      "question": "哪座欧洲大型机场位于一片排干的湖床上，低于海平面约3米？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "每段弧线能带来约20至25秒的漂浮，宇航员用它进行训练。",
+      "id": "avi-0079",
+      "options": ["超音速", "高原反应", "剧烈颠簸", "失重"],
+      "question": "沿抛物线爬升又俯冲的抛物线飞行，能让乘客短暂体验什么？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "1852米的长度于1929年在国际上达成一致；航空和航海至今仍用海里计算距离，用节计算速度。",
+      "id": "avi-0080",
+      "options": ["2000米", "1000米", "1852米", "1609米"],
+      "question": "1节就是每小时1海里。1海里有多长？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "爱尔兰的香农机场曾是跨大西洋航班的加油经停地，这家商店是为转机旅客开设的。",
+      "id": "avi-0077",
+      "options": ["史基浦", "希思罗", "香农", "法兰克福"],
+      "question": "1947年，世界上第一家免税店在哪个机场开业？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "每逢春分和秋分，阳光在卡斯蒂略的阶梯上投下的影子，看起来就像一条蛇正蜿蜒而下。",
+      "id": "his-0020",
+      "options": ["印加", "阿兹特克", "玛雅", "奥尔梅克"],
+      "question": "奇琴伊察的阶梯金字塔卡斯蒂略是哪个文明建造的？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "马丘比丘建于15世纪，位于秘鲁安第斯山脉高处，很可能是印加皇帝帕查库特克的庄园。",
+      "id": "his-0002",
+      "options": ["阿兹特克", "印加", "奥尔梅克", "玛雅"],
+      "question": "山间城堡马丘比丘是哪个文明建造的？"
+    }
+  ]
+}

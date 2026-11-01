@@ -1,0 +1,2361 @@
+{
+  "id": "pack-003",
+  "lang": "zh",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "郑和七次下西洋，最远到达东非，有些船只比当时任何欧洲船只都大得多。",
+      "id": "his-0063",
+      "options": ["张骞", "法显", "玄奘", "郑和"],
+      "question": "15世纪初，哪位中国航海家率领了庞大的“宝船”船队？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "吴哥窟建于12世纪，极具象征意义，连柬埔寨国旗上都有它的图案。",
+      "id": "his-0012",
+      "options": ["泰国", "柬埔寨", "老挝", "越南"],
+      "question": "吴哥窟的神庙遗址位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "巨石阵位于威尔特郡，但其中较小的“青石”是从200多公里外威尔士的普雷塞利山运来的。",
+      "id": "his-0019",
+      "options": ["威尔士", "英格兰", "苏格兰", "爱尔兰"],
+      "question": "史前遗迹巨石阵位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "图坦卡蒙墓中有5000多件文物，包括他那著名的纯金面具。",
+      "id": "his-0011",
+      "options": ["埃赫那吞", "图坦卡蒙", "胡夫", "拉美西斯二世"],
+      "question": "1922年，霍华德·卡特在埃及发现了谁的几乎完好无损的陵墓？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "罗马输水道的坡度非常平缓；有些至今仍在为罗马的喷泉供水，比如处女水道。",
+      "id": "his-0013",
+      "options": ["运河", "高架桥", "塔庙", "输水道"],
+      "question": "古罗马人修建了什么来把淡水引入城市？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "“Fram”意为“前进”，船体是圆的，冰会把它往上挤而不是压碎它。如今它在奥斯陆的博物馆里。",
+      "id": "his-0105",
+      "options": ["新地号", "发现号", "前进号", "坚忍号"],
+      "question": "南森的极地探险船后来被阿蒙森使用，它叫什么名字？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "佩特拉的建筑立面，比如著名的“宝库”，是约2000年前直接在砂岩峭壁上凿出来的。",
+      "id": "his-0005",
+      "options": ["埃及", "土耳其", "约旦", "黎巴嫩"],
+      "question": "在玫瑰红色岩石中凿成的城市佩特拉位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "丝绸只是众多商品之一；思想、作物以及造纸术等技术也沿着这些路线传播。",
+      "id": "his-0018",
+      "options": ["琥珀之路", "丝绸之路", "茶马古道", "乳香之路"],
+      "question": "连接中国和地中海的贸易路线网叫什么？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "迦太基位于今天的突尼斯，是由来自腓尼基城市提尔的移民建立的。",
+      "id": "his-0052",
+      "options": ["希腊人", "古埃及人", "罗马人", "腓尼基人"],
+      "question": "哪个古代航海民族建立了迦太基城？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "雕像由巴托尔迪设计，内部的铁骨架则由古斯塔夫·埃菲尔设计。",
+      "id": "his-0016",
+      "options": ["西班牙", "荷兰", "法国", "英国"],
+      "question": "哪个国家把自由女神像赠送给了美国？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "希罗多德在公元前5世纪写下《历史》，描述了已知世界各地的民族和习俗。",
+      "id": "his-0057",
+      "options": ["希罗多德", "荷马", "普鲁塔克", "修昔底德"],
+      "question": "哪位希腊作家常被称为“历史之父”？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "哥贝克力石阵的雕刻石柱比巨石阵早6000多年，建成时农业还没有普及。",
+      "id": "his-0106",
+      "options": ["哥贝克力石阵", "恰塔尔休于", "哈图沙", "特洛伊"],
+      "question": "土耳其哪处遗址有约1.1万年前的石砌神庙围场？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "维京人是来自今天丹麦、挪威和瑞典的航海民族，大约活跃于8世纪到11世纪。",
+      "id": "his-0007",
+      "options": ["斯堪的纳维亚", "巴尔干", "伊比利亚", "安纳托利亚"],
+      "question": "维京人来自欧洲的哪个地区？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "埃及象形文字使用了3000多年，把表音符号和表示整个词的符号结合在一起。",
+      "id": "his-0006",
+      "options": ["罗马人", "凯尔特人", "古巴比伦人", "古埃及人"],
+      "question": "哪个古代文明在莎草纸上书写象形文字？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "传统上认为，东汉官员蔡伦在公元105年前后改进了造纸术。",
+      "id": "his-0003",
+      "options": ["中国", "印度", "埃及", "希腊"],
+      "question": "纸最早是在哪个国家发明的？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "廷巴克图的家族至今仍保存着数以万计关于天文、医学和法律的古老手稿。",
+      "id": "his-0068",
+      "options": ["廷巴克图", "巴马科", "卡伊", "加奥"],
+      "question": "马里的哪座城市是中世纪著名的学术和手稿中心？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "达·伽马绕过非洲，在卡利卡特登陆，开辟了欧洲和亚洲之间的海上航线。",
+      "id": "his-0017",
+      "options": ["卡布拉尔", "达·伽马", "迪亚士", "航海家亨利"],
+      "question": "1498年，哪位航海家成为第一个经海路到达印度的欧洲人？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "他在鹿野苑所立石柱的四狮柱头约刻于公元前250年，1950年成为印度国徽。",
+      "id": "his-0050",
+      "options": ["笈多王朝", "莫卧儿帝国", "朱罗王朝", "孔雀王朝"],
+      "question": "在印度各地竖立刻有铭文的石柱的阿育王，统治的是哪个帝国？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "伊本·白图泰于1325年从丹吉尔出发，在近30年里行程约12万公里。",
+      "id": "his-0053",
+      "options": ["沙特阿拉伯", "摩洛哥", "埃及", "伊朗"],
+      "question": "伟大的旅行家伊本·白图泰来自今天的哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "这座非洲南部中世纪城市的一些石墙高达10多米，全靠精心的堆砌固定在一起。",
+      "id": "his-0099",
+      "options": ["晒干的泥砖", "用石灰砂浆", "架在木框上", "干砌不用砂浆"],
+      "question": "大津巴布韦的巨大石墙是怎样建造的？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "这尊由雕塑家菲狄亚斯创作的坐像高约12米，建在一个木制框架上。",
+      "id": "his-0097",
+      "options": ["罗得岛巨像", "空中花园", "奥林匹亚宙斯神像", "摩索拉斯王陵"],
+      "question": "哪个古代奇迹主要是用象牙和黄金制成的？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "石碑上用象形文字、世俗体和古希腊文刻着同一道诏令，学者因此能够对照解读。",
+      "id": "his-0010",
+      "options": [
+        "埃及象形文字",
+        "线形文字B",
+        "美索不达米亚楔形文字",
+        "玛雅文字"
+      ],
+      "question": "罗塞塔石碑帮助学者破译了哪种文字？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "大金字塔高约146米，近4000年来一直是地球上最高的人造建筑。",
+      "id": "his-0064",
+      "options": ["左塞尔", "哈夫拉", "孟卡拉", "胡夫"],
+      "question": "吉萨大金字塔是为哪位法老修建的？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "米诺斯人修建了宏大的克诺索斯王宫，它与牛头怪弥诺陶洛斯和迷宫的传说联系在一起。",
+      "id": "his-0055",
+      "options": ["克里特岛", "罗得岛", "塞浦路斯岛", "西西里岛"],
+      "question": "米诺斯文明在哪个岛上兴盛？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "汉萨同盟把波罗的海和北海沿岸的吕贝克、汉堡、卑尔根等贸易城镇联结在一起。",
+      "id": "his-0056",
+      "options": ["王室家族", "大学", "商业城镇", "修道院"],
+      "question": "中世纪的汉萨同盟是由什么组成的联盟？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "摩亨佐-达罗有棋盘式街道和带盖的排水沟，对一座约4500年前的城市来说非常了不起。",
+      "id": "his-0054",
+      "options": [
+        "古埃及文明",
+        "印度河流域文明",
+        "米诺斯文明",
+        "美索不达米亚文明"
+      ],
+      "question": "摩亨佐-达罗城是哪个古代文明建造的？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "《汉谟拉比法典》约于公元前1754年刻在一块玄武岩石碑上，如今陈列在巴黎卢浮宫。",
+      "id": "his-0065",
+      "options": ["尼布甲尼撒二世", "阿卡德的萨尔贡", "汉谟拉比", "吉尔伽美什"],
+      "question": "哪位巴比伦国王以最早的成文法典之一而闻名？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "马可·波罗的游历是比萨的鲁斯蒂谦在两人同被关在热那亚监狱时记录下来的。",
+      "id": "his-0009",
+      "options": ["约翰·卡伯特", "亚美利哥·韦斯普奇", "马可·波罗", "维拉扎诺"],
+      "question": "哪位威尼斯商人13世纪的中国之行成了一本名著？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "公元330年，君士坦丁把古希腊城市拜占庭重建为新都；它就是今天的伊斯坦布尔。",
+      "id": "his-0049",
+      "options": ["奥古斯都", "君士坦丁一世", "狄奥多西一世", "查士丁尼一世"],
+      "question": "君士坦丁堡是以哪位皇帝的名字命名的？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "它约从公元前2600年开始建造，有石砌的平台土丘和下沉式广场，但当地人并不制作陶器。",
+      "id": "his-0100",
+      "options": ["秘鲁", "墨西哥", "危地马拉", "哥伦比亚"],
+      "question": "卡拉尔是美洲最古老的城市之一，与埃及大金字塔差不多同样古老，它位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "那烂陀从5世纪起兴盛了约700年，有数千名师生；它在比哈尔邦的砖砌遗址于2016年列入世界遗产。",
+      "id": "his-0101",
+      "options": ["尼泊尔", "印度", "斯里兰卡", "巴基斯坦"],
+      "question": "古代学术中心那烂陀吸引了远至中国的学子，它位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "这座巨像高约33米，立在罗得岛的港口；它名气太大，“colossus”一词后来被用来指一切庞然大物。",
+      "id": "his-0014",
+      "options": ["宙斯神像", "罗得岛巨像", "亚历山大灯塔", "摩索拉斯王陵"],
+      "question": "哪个古代奇迹是一尊高大的太阳神赫利俄斯雕像？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "它建于公元前2650年前后，被认为是世界上最古老的大型切石建筑。",
+      "id": "his-0098",
+      "options": ["伊姆霍特普", "赫米乌努", "阿蒙霍特普", "森穆特"],
+      "question": "埃及左塞尔阶梯金字塔是哪位建筑师设计的？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "这个岛的名字在好几种语言里成了“灯塔”一词，比如法语的“phare”和意大利语的“faro”。",
+      "id": "his-0062",
+      "options": ["提洛岛", "罗得岛", "法罗斯岛", "马耳他岛"],
+      "question": "亚历山大灯塔建在哪个岛上？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "库克的“奋进号”在植物学湾登陆，这个海湾因在那里发现了许多新植物而得名。",
+      "id": "his-0058",
+      "options": ["丹皮尔", "弗林德斯", "塔斯曼", "库克"],
+      "question": "1770年，哪位探险家绘制了澳大利亚东海岸的地图？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "楔形文字是用芦苇笔压进湿黏土写成的，留下楔子形状的痕迹。",
+      "id": "his-0066",
+      "options": ["赫梯人", "腓尼基人", "埃及人", "苏美尔人"],
+      "question": "哪个古代民族发明了最早的文字之一楔形文字？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "至少从公元前776年起，奥林匹亚每四年举行一次古代运动会，以祭祀宙斯。",
+      "id": "his-0008",
+      "options": ["奥林匹亚", "马拉松", "斯巴达", "雅典"],
+      "question": "最初的奥林匹克运动会在哪个古希腊圣地举行？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "建筑师迈克尔·文特里斯证明，迈锡尼泥板记录的是比荷马早几百年的希腊语。",
+      "id": "his-0104",
+      "options": ["腓尼基语", "希腊语", "埃及语", "拉丁语"],
+      "question": "1952年被破译的线形文字B，原来是哪种语言的早期形式？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "这座墓是为卡里亚（今土耳其境内）的统治者摩索拉斯修建的，他的名字变成了“mausoleum”一词。",
+      "id": "his-0060",
+      "options": [
+        "以弗所阿尔忒弥斯神庙",
+        "亚历山大灯塔",
+        "罗得岛巨像",
+        "摩索拉斯王墓"
+      ],
+      "question": "英语中表示“宏伟陵寝”的单词mausoleum来自哪个古代奇迹？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "它共37卷，从天文到艺术无所不包，1500多年来一直被当作参考书。",
+      "id": "his-0103",
+      "options": ["老普林尼", "小塞涅卡", "塔西佗", "瓦罗"],
+      "question": "哪位古罗马人写下了卷帙浩繁的百科全书《博物志》？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "1642年，阿贝尔·塔斯曼为荷兰东印度公司航行时望见此岛，把它命名为范迪门地。",
+      "id": "his-0059",
+      "options": ["英国", "葡萄牙", "西班牙", "荷兰"],
+      "question": "塔斯马尼亚岛是以哪个国家的一位探险家命名的？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "在这个讲希腊语的王朝中，克娄巴特拉是已知第一位学会埃及语的统治者。",
+      "id": "his-0015",
+      "options": [
+        "哈特谢普苏特",
+        "克娄巴特拉七世",
+        "奈菲尔塔利",
+        "娜芙蒂蒂王后"
+      ],
+      "question": "埃及托勒密王朝最后一位实际掌权的统治者是谁？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "加拿大纽芬兰岛兰塞奥兹牧草地的北欧遗址证实，维京人比哥伦布早约500年到过那里。",
+      "id": "his-0061",
+      "options": [
+        "莱夫·埃里克松",
+        "朗纳尔·洛德布罗克",
+        "红发埃里克",
+        "哈拉尔·哈德拉达"
+      ],
+      "question": "哪位北欧探险家在公元1000年前后到达了北美洲？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "天皇仍留在京都作为象征性的君主，真正的政治权力掌握在将军手中。",
+      "id": "his-0078",
+      "options": ["大名", "武士", "忍者", "将军"],
+      "question": "从1192年到1867年，日本掌握实权的武家统治者拥有什么称号？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "出岛是长崎港内一座小小的人工岛，是荷兰商人唯一可以做生意的地方。",
+      "id": "his-0116",
+      "options": ["对马岛", "出岛", "冲绳岛", "佐渡岛"],
+      "question": "日本哪座由荷兰人经营的岛，200年间是欧洲在日本唯一的贸易站？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "据说驶入亚历山大港的船只所带的书都要被抄录给图书馆；这座图书馆力图收集所有已知的知识。",
+      "id": "his-0024",
+      "options": ["雅典", "君士坦丁堡", "亚历山大港", "巴比伦"],
+      "question": "哪座古城拥有一座在托勒密王朝时期创建的大图书馆？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "古代熔炉留下的大堆炉渣至今仍环绕着遗址，证明这里几个世纪以来一直在大规模炼铁。",
+      "id": "his-0113",
+      "options": ["玻璃制造", "丝绸织造", "船舶制造", "冶炼铁器"],
+      "question": "尼罗河畔的古城麦罗埃曾是哪种手工业的重要中心？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "空中花园是唯一一个确切位置从未被考古学家证实的古代奇迹。",
+      "id": "his-0027",
+      "options": ["阿尔忒弥斯神庙", "罗得岛巨像", "摩索拉斯王陵", "空中花园"],
+      "question": "据说哪个古代奇迹位于巴比伦？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "被称为“查斯基”的印加接力信使沿着这些道路传递消息，一天最多能跑240公里。",
+      "id": "his-0114",
+      "options": ["阿兹特克", "印加", "玛雅", "穆伊斯卡"],
+      "question": "哪个帝国修建了长约3万公里的道路网“卡帕克南”（Qhapaq Ñan）？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "泰姬陵的白色大理石看起来会变色，黎明时泛着粉红，日落时呈现金黄。",
+      "id": "his-0032",
+      "options": ["泰姬陵", "顾特卜塔", "风之宫殿", "红堡"],
+      "question": "沙贾汗为纪念妻子穆姆塔兹·玛哈尔修建了哪座印度建筑？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "路易十四在位72年（1643—1715年），是欧洲主要国家君主中有记载的在位最长者。",
+      "id": "his-0039",
+      "options": ["亨利四世", "路易十六", "路易十四", "路易九世"],
+      "question": "哪位法国国王被称为“太阳王”？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "美第奇家族资助了波提切利和米开朗琪罗等艺术家，他们的艺术收藏后来成了乌菲兹美术馆。",
+      "id": "his-0081",
+      "options": ["斯福尔扎", "富格尔", "美第奇", "博尔贾"],
+      "question": "哪个银行家族是文艺复兴时期佛罗伦萨著名的艺术赞助人？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "尤利乌斯·恺撒从未拥有皇帝称号；他的养子兼继承人屋大维于公元前27年成为奥古斯都。",
+      "id": "his-0029",
+      "options": ["卡利古拉", "尼禄", "尤利乌斯·恺撒", "奥古斯都"],
+      "question": "谁是罗马的第一位皇帝？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "1507年，马丁·瓦尔德泽米勒的世界地图首次使用“America”这个名字，取自佛罗伦萨人亚美利哥·韦斯普奇。",
+      "id": "his-0077",
+      "options": [
+        "哥伦布",
+        "亚美利哥·韦斯普奇",
+        "约翰·卡伯特",
+        "胡安·德拉科萨"
+      ],
+      "question": "美洲是以哪位探险家的名字命名的？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "澳大利亚北部马杰德贝贝岩棚中的石器和研磨过的赭石，年代测定约为6.5万年前。",
+      "id": "his-0084",
+      "options": ["5万多年", "约5000年", "约1.2万年", "约2000年"],
+      "question": "考古表明，人类在澳大利亚生活了至少多久？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "巴黎的名字来自高卢部落巴黎西人；伦蒂尼恩是伦敦，阿昆库姆是布达佩斯，文多博纳是维也纳。",
+      "id": "his-0110",
+      "options": ["伦蒂尼恩", "阿昆库姆", "卢泰西亚", "文多博纳"],
+      "question": "后来成为巴黎的那个定居点，罗马人叫它什么？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "哈特谢普苏特统治了约20年，她的雕像常常戴着国王的假胡须。",
+      "id": "his-0107",
+      "options": ["娜芙蒂蒂", "克娄巴特拉七世", "奈菲尔塔利", "哈特谢普苏特"],
+      "question": "哪位女法老在代尔拜赫里修建了一座宏伟的神庙？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "已知这样的玄武岩头像有17个，重约6至50吨；大多发现于墨西哥湾沿岸附近的圣洛伦索。",
+      "id": "his-0069",
+      "options": ["阿兹特克", "奥尔梅克", "印加", "玛雅"],
+      "question": "墨西哥哪个古代文明雕刻了高达约3米的巨石头像？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "它于859年由法蒂玛·菲赫丽在非斯创办，被联合国教科文组织和吉尼斯列为持续办学最久的教育机构。",
+      "id": "his-0111",
+      "options": ["突尼斯", "摩洛哥", "埃及", "伊拉克"],
+      "question": "被称为现存最古老大学的卡鲁因大学位于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "特诺奇蒂特兰建在特斯科科湖中的一个岛上，人们在叫作“奇南帕”的浮园上种植粮食。",
+      "id": "his-0026",
+      "options": ["印加人", "玛雅人", "阿兹特克人", "萨波特克人"],
+      "question": "哪个民族建立了今天墨西哥城底下的那座城市特诺奇蒂特兰？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "年轻贵族们游历巴黎、威尼斯、佛罗伦萨和罗马等城市，以完成艺术和文化方面的教育。",
+      "id": "his-0070",
+      "options": [
+        "年轻贵族的游历",
+        "全国邮政路线",
+        "王室军事阅兵",
+        "中世纪西班牙朝圣"
+      ],
+      "question": "17、18世纪欧洲的“Grand Tour”（大旅行）是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "在土耳其，苏莱曼因改革帝国法律而被称为“卡努尼”，即“立法者”。",
+      "id": "his-0086",
+      "options": ["拜占庭帝国", "奥斯曼帝国", "萨法维王朝", "莫卧儿帝国"],
+      "question": "苏莱曼大帝统治的是哪个帝国？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "一家法国公司在19世纪80年代开工修建，后来放弃了；美国接手并完成了运河。",
+      "id": "his-0085",
+      "options": ["美国", "英国", "西班牙", "法国"],
+      "question": "1914年，哪个国家建成了巴拿马运河？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "明朝（1368—1644年）用砖石重修了长城；更早的城墙大多是夯土筑成的。",
+      "id": "his-0075",
+      "options": ["汉朝", "明朝", "秦朝", "唐朝"],
+      "question": "如今游客看到的长城，大部分是在哪个朝代修建的？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "魁北克城由尚普兰建立；它的城墙是墨西哥以北唯一保存下来的设防城墙。",
+      "id": "his-0071",
+      "options": ["荷兰", "英格兰", "法国", "西班牙"],
+      "question": "1608年，哪个国家的探险家建立了魁北克城？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "文艺复兴始于14世纪的佛罗伦萨，那里的富有赞助人资助艺术家、建筑师和学者。",
+      "id": "his-0038",
+      "options": ["意大利", "荷兰", "法国", "西班牙"],
+      "question": "文艺复兴始于哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "维多利亚的统治让一个时代以她命名；在伊丽莎白二世之前，她是在位最久的英国君主。",
+      "id": "his-0028",
+      "options": ["伊丽莎白一世", "乔治三世", "安妮女王", "维多利亚女王"],
+      "question": "哪位英国君主从1837年到1901年在位63年多？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "来自密克罗尼西亚的领航员马乌·皮埃卢格不用任何仪器完成了约4000公里的航程，证明古代波利尼西亚人可能有意航行过这样的路线。",
+      "id": "his-0108",
+      "options": [
+        "星辰海浪与飞鸟",
+        "磁性罗盘指引",
+        "无线电导航信标",
+        "纸质航海图"
+      ],
+      "question": "1976年，远洋独木舟“霍库莱阿号”从夏威夷驶往塔希提，只靠什么导航？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "斗兽场有一种可伸缩的遮阳篷，叫作“velarium”，为观众遮挡阳光。",
+      "id": "his-0025",
+      "options": ["万神殿", "罗马斗兽场", "马克西穆斯竞技场", "古罗马广场"],
+      "question": "哪座于公元80年建成的古罗马圆形剧场能容纳约5万名观众？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "从18世纪中叶起，英国的纺织厂、煤炭和蒸汽机彻底改变了商品的生产方式。",
+      "id": "his-0031",
+      "options": ["法国", "英国", "美国", "德国"],
+      "question": "工业革命始于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "小猎犬号的航行（1831—1836年）持续了将近五年，把达尔文带到了加拉帕戈斯群岛。",
+      "id": "his-0033",
+      "options": ["奋进号", "胜利号", "小猎犬号", "邦蒂号"],
+      "question": "达尔文乘坐哪艘船环游了世界？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "亚里士多德在马其顿教了亚历山大约三年，开始时王子才13岁。",
+      "id": "his-0080",
+      "options": ["苏格拉底", "毕达哥拉斯", "柏拉图", "亚里士多德"],
+      "question": "哪位哲学家当过少年亚历山大大帝的老师？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "这座位于庆州、高9米的花岗岩塔（瞻星台）建于新罗善德女王时期；每逢春分和秋分，阳光会透过朝南的窗口照到塔内地面。",
+      "id": "his-0115",
+      "options": ["王宫", "石桥", "灯塔", "天文台"],
+      "question": "7世纪建于朝鲜半岛的Cheomseongdae是现存最古老的哪类建筑之一？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "“无论雪雨、酷暑还是夜色……”这句话刻在纽约詹姆斯·法利邮局的外墙上；它并不是官方的邮政格言。",
+      "id": "his-0109",
+      "options": ["白宫", "卢浮宫", "纽约一家邮局", "大英博物馆"],
+      "question": "希罗多德对古波斯皇家信使的赞誉，被刻在哪座现代建筑上？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "1953年5月29日，来自尼泊尔的夏尔巴人丹增·诺尔盖和新西兰人希拉里登顶。",
+      "id": "his-0035",
+      "options": ["马洛里", "丹增·诺尔盖", "梅斯纳尔", "昂丽塔"],
+      "question": "1953年，哪位登山者与埃德蒙·希拉里一起登上了珠峰峰顶？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "居里夫人于1903年获得物理学奖，1911年获得化学奖，是唯一在两个科学领域获奖的人。",
+      "id": "his-0022",
+      "options": ["玛丽·居里", "南丁格尔", "莉泽·迈特纳", "阿达·洛夫莱斯"],
+      "question": "第一位获得诺贝尔奖的女性是谁？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "用小牛皮制成的精细羊皮纸叫犊皮纸；一部大型《圣经》可能需要几百只动物的皮。",
+      "id": "his-0030",
+      "options": ["羊皮纸", "米纸", "桦树皮", "莎草纸"],
+      "question": "中世纪书籍使用的、用动物皮制成的书写材料叫什么？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "据说商博良大喊一声“Je tiens l'affaire!”（我找到了！），随即晕了过去。",
+      "id": "his-0082",
+      "options": ["莱普修斯", "贝尔佐尼", "马里耶特", "商博良"],
+      "question": "1822年，是谁破译了埃及象形文字？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "60能被2、3、4、5、6、10、12、15、20和30整除，非常方便；圆周的360度也来自同一套计数法。",
+      "id": "his-0073",
+      "options": ["埃及人", "希腊人", "罗马人", "巴比伦人"],
+      "question": "一小时有60分钟，要归功于哪个古代民族使用的六十进制计数法？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "《拿破仑法典》至今仍是法国、比利时、卢森堡等许多国家民法的基础。",
+      "id": "his-0087",
+      "options": ["拿破仑", "查理曼", "路易十四", "路易·菲利普"],
+      "question": "1804年，谁颁布的民法典影响了许多国家的法律？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "查理曼在罗马由教皇加冕；后来许多欧洲王室都自称是他的后裔。",
+      "id": "his-0088",
+      "options": ["克洛维一世", "查理曼", "矮子丕平", "奥托一世"],
+      "question": "公元800年圣诞节，谁被加冕为“罗马人的皇帝”？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "希萨利克的遗址中，至少有九座城市在约4000年间层层叠建。",
+      "id": "his-0074",
+      "options": ["希腊", "意大利", "土耳其", "塞浦路斯"],
+      "question": "古代特洛伊的考古遗址位于今天的哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "约30米高的僧侣丘是墨西哥以北最大的史前土方工程；这座城市约有120座土丘，人口可能达1.5万。",
+      "id": "his-0112",
+      "options": ["石砌金字塔", "铜矿", "巨大土丘", "崖壁民居"],
+      "question": "公元1100年前后兴盛、位于今圣路易斯附近的卡霍基亚城以什么闻名？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "格拉纳达的阿尔罕布拉宫主要由纳斯里德王朝修建，名字来自阿拉伯语中的“红色的”。",
+      "id": "his-0040",
+      "options": ["西班牙", "意大利", "摩洛哥", "葡萄牙"],
+      "question": "阿尔罕布拉宫殿城堡位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "玛雅历法只是在2012年12月21日完成了一个大周期；玛雅学者从未预言过世界末日。",
+      "id": "his-0037",
+      "options": ["印加", "玛雅", "奥尔梅克", "阿兹特克"],
+      "question": "哪个文明的“长纪历”引发了“2012年世界末日”的传说？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "迪亚士把它叫作“风暴角”；后来它被改名为寓意更美好的“好望角”。",
+      "id": "his-0076",
+      "options": ["卡布拉尔", "麦哲伦", "达·伽马", "迪亚士"],
+      "question": "1488年，哪位葡萄牙探险家第一次绕过了好望角？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "纳斯卡线条中有蜂鸟、猴子和蜘蛛，从空中看最清楚。",
+      "id": "his-0079",
+      "options": ["印加", "莫切", "纳斯卡", "查文"],
+      "question": "哪个秘鲁古代文化在沙漠中留下了巨大的线条图案？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "船上28人全部生还；2022年，人们在威德尔海约3000米深处找到了沉船。",
+      "id": "his-0083",
+      "options": ["新地号", "发现号", "坚忍号", "前进号"],
+      "question": "沙克尔顿那艘被南极海冰困住并压毁的船叫什么？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "泰国是东南亚唯一从未被欧洲列强殖民的国家。",
+      "id": "his-0042",
+      "options": ["泰国", "缅甸", "老挝", "柬埔寨"],
+      "question": "1939年以前被称为暹罗的是今天的哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "梵高凭记忆画下了他在圣雷米精神病院窗外看到的景色。",
+      "id": "cul-0003",
+      "options": ["高更", "梵高", "莫奈", "图卢兹-罗特列克"],
+      "question": "1889年的《星月夜》是谁画的？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "这趟豪华列车于1883年开行；从1889年起，乘客可以一路乘火车抵达君士坦丁堡。",
+      "id": "his-0093",
+      "options": ["伊斯坦布尔", "圣彼得堡", "雅典", "开罗"],
+      "question": "经典的东方快车线路连接巴黎和哪座城市？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "玄奘历时约16年，带回了数百部佛经；小说把他的旅程变成了与孙悟空同行的冒险故事。",
+      "id": "his-0120",
+      "options": ["鉴真", "法显", "玄奘", "张骞"],
+      "question": "哪位中国僧人7世纪的印度之行启发了小说《西游记》？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "乌松设计的风帆般的屋顶由100多万块瑞典制造的瓷砖覆盖；他从未亲眼见过建成后的歌剧院。",
+      "id": "cul-0045",
+      "options": ["芬兰", "丹麦", "瑞典", "挪威"],
+      "question": "悉尼歌剧院的建筑师约恩·乌松来自哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "阿克苏姆的中心在今埃塞俄比亚北部和厄立特里亚，是最早发行钱币的非洲国家之一；最高的方尖碑长30多米。",
+      "id": "his-0119",
+      "options": ["阿克苏姆王国", "马里帝国", "桑海帝国", "加涅姆-博尔努帝国"],
+      "question": "哪个古代非洲国家铸造了自己的钱币，还竖起了巨大的方尖碑？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "黑便士于1840年发行，图案是维多利亚女王；英国邮票至今仍不印国名。",
+      "id": "his-0048",
+      "options": ["法国", "英国", "美国", "瑞士"],
+      "question": "第一枚背面带胶的邮票“黑便士”来自哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "美索不达米亚大部分在今伊拉克境内，那里出现了最早的一批城市、文字和带轮子的车辆。",
+      "id": "his-0046",
+      "options": [
+        "尼罗河和约旦河",
+        "多瑙河和莱茵河",
+        "印度河和布拉马普特拉河",
+        "底格里斯河和幼发拉底河"
+      ],
+      "question": "美索不达米亚意为“两河之间的土地”，它位于哪两条河之间？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "探戈于19世纪末诞生在布宜诺斯艾利斯和蒙得维的亚的移民和当地人之中。",
+      "id": "cul-0046",
+      "options": ["马格达莱纳河", "奥里诺科河", "亚马孙河", "拉普拉塔河"],
+      "question": "探戈是在哪条河河口沿岸的港口城市中发展起来的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "波洛于1920年首次登场，以他的“灰色小细胞”和精心打蜡的小胡子闻名。",
+      "id": "cul-0047",
+      "options": ["比利时人", "卢森堡人", "法国人", "瑞士人"],
+      "question": "阿加莎·克里斯蒂笔下的侦探赫尔克里·波洛是哪国人？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "莫扎特时代的歌剧大多用意大利语，但《魔笛》（1791年）是为维也纳的一家剧院用德语创作的。",
+      "id": "cul-0093",
+      "options": ["拉丁语", "法语", "意大利语", "德语"],
+      "question": "莫扎特的歌剧《魔笛》是用哪种语言演唱的？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "经过长期搜寻，斯坦利于1871年在坦噶尼喀湖附近的乌吉吉找到了利文斯通。",
+      "id": "his-0096",
+      "options": ["斯皮克", "斯坦利", "伯顿", "芒戈·帕克"],
+      "question": "据说是谁用一句“我想您就是利文斯通博士吧？”向探险家利文斯通打招呼？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "织工会给每种图案起名，常常取自谚语或历史事件；这种布过去只供王室使用。",
+      "id": "cul-0052",
+      "options": ["肯尼亚", "尼日利亚", "埃塞俄比亚", "加纳"],
+      "question": "肯特布是一种色彩鲜艳、先织成窄条再缝合起来的布，它来自哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "印度的《人民的意志》和孟加拉国的《金色的孟加拉》都出自他手；1913年，他成为第一位获得诺贝尔文学奖的非欧洲人。",
+      "id": "cul-0092",
+      "options": ["巴基斯坦", "尼泊尔", "孟加拉国", "缅甸"],
+      "question": "诗人泰戈尔创作了印度和哪个国家的国歌？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "圣家堂于1882年动工，高迪为它倾注了40多年心血，死后安葬在教堂的地下墓室。",
+      "id": "cul-0011",
+      "options": ["高迪", "莫内奥", "波菲尔", "卡拉特拉瓦"],
+      "question": "巴塞罗那的圣家堂是哪位建筑师设计的？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "罗马人把苏格兰叫作喀里多尼亚，爱尔兰叫作希伯尼亚，法国叫作高卢；不列颠尼亚后来成了英国的国家化身。",
+      "id": "his-0117",
+      "options": ["希伯尼亚", "不列颠尼亚", "喀里多尼亚", "高卢"],
+      "question": "古罗马人怎么称呼不列颠？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "凯特·谢泼德领导了这场运动；1893年11月，新西兰女性第一次在大选中投票。",
+      "id": "his-0095",
+      "options": ["挪威", "新西兰", "英国", "芬兰"],
+      "question": "1893年，第一个让所有成年女性获得选举权的自治国家是哪个？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "南丁格尔还是一位开拓性的统计学家，她用图表说明卫生条件如何挽救生命。",
+      "id": "his-0047",
+      "options": [
+        "玛丽·西科尔",
+        "南丁格尔",
+        "伊迪丝·卡维尔",
+        "伊丽莎白·加勒特·安德森"
+      ],
+      "question": "哪位著名的英国护士被称为“提灯女士”？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "戴上面具，任何阶层的威尼斯人都能自由交往；制作面具至今仍是这座城市的重要手艺。",
+      "id": "cul-0051",
+      "options": ["里约热内卢", "科隆", "尼斯", "威尼斯"],
+      "question": "哪座城市的狂欢节以包塔（bauta）等精致面具闻名？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "但丁用家乡的托斯卡纳方言而不是拉丁语写作，这让托斯卡纳话成了现代意大利语的基础。",
+      "id": "cul-0053",
+      "options": ["奥克语", "法语", "意大利语", "拉丁语"],
+      "question": "但丁是用哪种语言写《神曲》的？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "基尔瓦控制了内陆黄金的输出港索法拉，也是撒哈拉以南最早铸造自己钱币的地方之一。",
+      "id": "his-0118",
+      "options": ["丝绸", "黄金", "茶叶", "盐"],
+      "question": "斯瓦希里海岸上的中世纪城市基尔瓦基斯瓦尼，主要靠控制哪种商品的贸易致富？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "传说一位祭司把它从天上召唤下来，落在第一位国王奥塞·图图的膝上；按传统，它绝不能接触地面。",
+      "id": "his-0090",
+      "options": ["富拉尼人", "沃洛夫人", "约鲁巴人", "阿散蒂人"],
+      "question": "据说承载着民族灵魂的“金凳子”是哪个西非民族的神圣象征？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "日本有一种流行的说法：折满1000只纸鹤，愿望就能实现。",
+      "id": "cul-0012",
+      "options": ["Origami", "Ikebana", "Bonsai", "Kintsugi"],
+      "question": "日本把纸折成各种形状的艺术叫什么？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "新建的阿斯旺高坝后面，纳赛尔湖水位不断上涨；1964至1968年间，重达30吨的石块在高出约65米的地方重新拼建起来。",
+      "id": "cul-0048",
+      "options": ["防止遭盗掠", "给城市腾地方", "避开新形成的湖", "躲避沙尘暴"],
+      "question": "20世纪60年代，埃及阿布辛贝的巨大神庙被切成块搬走了，这是为什么？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "哈德良长城从一侧海岸延伸到另一侧，长约117公里，大约每隔一罗马里就有一座叫“里堡”的小堡垒。",
+      "id": "his-0041",
+      "options": ["图拉真", "哈德良", "克劳狄", "奥古斯都"],
+      "question": "公元122年，哪位罗马皇帝下令在英格兰北部修建一道横贯东西的城墙？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "澳门由葡萄牙管理至1999年，葡萄牙语至今仍是澳门的官方语言之一。",
+      "id": "his-0089",
+      "options": ["西班牙", "荷兰", "葡萄牙", "英国"],
+      "question": "16世纪50年代，哪个欧洲国家在澳门建立了贸易据点？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "贡多拉船身造得略微不对称，这样站在船尾的一名船夫就能把船划直。",
+      "id": "cul-0008",
+      "options": ["中式帆船", "三角帆船", "贡多拉", "独桅帆船"],
+      "question": "威尼斯传统的平底划桨船叫什么？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "这座博物馆成功振兴了毕尔巴鄂，“毕尔巴鄂效应”一词由此而来，指城市靠建造地标性博物馆振兴。",
+      "id": "cul-0056",
+      "options": ["弗兰克·盖里", "伦佐·皮亚诺", "诺曼·福斯特", "扎哈·哈迪德"],
+      "question": "毕尔巴鄂那座钛金属外壳的古根海姆博物馆是哪位建筑师设计的？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "《堂吉诃德》分上下两部，分别于1605年和1615年出版，常被称为第一部现代小说。",
+      "id": "cul-0009",
+      "options": [
+        "加西亚·马尔克斯",
+        "加西亚·洛尔卡",
+        "塞万提斯",
+        "洛佩·德维加"
+      ],
+      "question": "小说《堂吉诃德》的作者是谁？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "维图斯·白令是一位为俄国效力的丹麦航海家；这道海峡只有约82公里宽。",
+      "id": "his-0091",
+      "options": ["哈得孙", "库克", "白令", "塔斯曼"],
+      "question": "亚洲和北美洲之间的海峡是以哪位探险家命名的？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "书页和分格都从右往左排，所以一本漫画是从西方读者眼中的“书末”开始的。",
+      "id": "cul-0005",
+      "options": ["从左到右", "从右到左", "从下到上", "螺旋式读"],
+      "question": "日本漫画传统上按哪个方向阅读？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "这座城市建在涅瓦河口的沼泽地上，曾作为俄国首都约两个世纪。",
+      "id": "his-0044",
+      "options": ["下诺夫哥罗德", "阿尔汉格尔斯克", "圣彼得堡", "莫斯科"],
+      "question": "彼得大帝在1703年建立了哪座城市？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "维瓦尔第随协奏曲一起发表了十四行诗，描写鸟鸣、暴风雨和瑟瑟发抖的冬天。",
+      "id": "cul-0004",
+      "options": ["维瓦尔第", "亨德尔", "巴赫", "莫扎特"],
+      "question": "小提琴协奏曲《四季》是哪位作曲家写的？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "1879年，来自马德拉群岛的葡萄牙移民带来了马切特琴等形似吉他的小型乐器。",
+      "id": "cul-0090",
+      "options": ["墨西哥", "日本", "菲律宾", "马德拉群岛"],
+      "question": "尤克里里是在夏威夷由哪里的移民带来的乐器发展而成的？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "桑巴学校用一整年时间准备花车、服装和歌曲，参加桑巴大道上的游行。",
+      "id": "cul-0007",
+      "options": ["萨尔萨", "弗拉明戈", "探戈", "桑巴"],
+      "question": "里约热内卢狂欢节的游行以哪种舞蹈闻名？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "诺鲁孜意为“新的一天”；家家户户摆出“七样桌”（haft-sin），放上七样波斯语名称以字母s开头的物品。",
+      "id": "cul-0049",
+      "options": ["冬至", "第一个新月", "春分", "夏至"],
+      "question": "从伊朗到中亚都庆祝的波斯新年诺鲁孜节在哪一天？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "德沃夏克于1893年在纽约工作时写下这部作品；它的一段录音随阿波罗11号的宇航员去过月球。",
+      "id": "cul-0055",
+      "options": ["《自新大陆》", "《英雄》", "《未完成》", "《田园》"],
+      "question": "德沃夏克的《第九交响曲》别称是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "它是约4500年前直接在吉萨高原的基岩上雕凿出来的，长约73米，高约20米。",
+      "id": "cul-0002",
+      "options": ["鹰", "公牛", "豺", "狮子"],
+      "question": "吉萨的大斯芬克斯长着人头和哪种动物的身体？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "锡兰这个名字保留在“锡兰红茶”中，它至今仍是斯里兰卡闻名世界的出口商品。",
+      "id": "his-0043",
+      "options": ["斯里兰卡", "马达加斯加", "马尔代夫", "毛里求斯"],
+      "question": "哪个岛国以前叫锡兰？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "歌手通过调整喉咙和口腔来突出泛音，常常模仿风声、河流和动物；蒙古国的呼麦已列入联合国教科文组织非物质文化遗产名录，中国蒙古族的呼麦艺术也已入选。",
+      "id": "cul-0054",
+      "options": ["日本", "泰国", "越南", "蒙古国"],
+      "question": "在呼麦演唱中，一个人能同时唱出低沉的持续音和口哨般的旋律。它来自哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "这部作品由一位宫廷女官写于约1000年前，常被称为世界上最早的小说之一。",
+      "id": "cul-0094",
+      "options": ["紫式部", "清少纳言", "式子内亲王", "与谢野晶子"],
+      "question": "日本古典名著《源氏物语》的作者是谁？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "据说在最疯狂的时候，一颗稀有的郁金香球茎售价超过一名熟练工人年薪的十倍。",
+      "id": "his-0094",
+      "options": ["荷兰", "瑞士", "法国", "英格兰"],
+      "question": "早期金融泡沫“郁金香狂热”于17世纪30年代发生在哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "利文斯通于1855年到达这座瀑布，以维多利亚女王的名字为它命名；瀑布宽约1.7公里。",
+      "id": "his-0045",
+      "options": ["安赫尔瀑布", "尼亚加拉瀑布", "维多利亚瀑布", "默奇森瀑布"],
+      "question": "戴维·利文斯通以他的女王命名了赞比西河上的哪座瀑布？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "在阿拔斯一世统治时期，它成为首都；城中500多米长的纳克什·贾汗广场是地球上最大的城市广场之一。",
+      "id": "cul-0089",
+      "options": ["德黑兰", "设拉子", "大不里士", "伊斯法罕"],
+      "question": "哪座伊朗城市被一句古老的波斯谚语誉为“半个世界”？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "这部小说有500多个人物，部分内容是用法语写的，因为当时的俄国贵族讲法语。",
+      "id": "cul-0022",
+      "options": ["陀思妥耶夫斯基", "契诃夫", "托尔斯泰", "屠格涅夫"],
+      "question": "小说《战争与和平》的作者是谁？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "神庙有24个雕刻的石轮，由七匹石马拉着；石轮辐条投下的影子可以用来报时。",
+      "id": "cul-0102",
+      "options": ["莲花", "大象", "船只", "战车"],
+      "question": "印度13世纪的科纳克太阳神庙被建成了什么巨物的形状？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "爵士乐把非裔美国人的布鲁斯和拉格泰姆与铜管乐融合在一起，即兴演奏是它的核心。",
+      "id": "cul-0030",
+      "options": ["雷鬼", "波萨诺瓦", "爵士乐", "弗拉明戈"],
+      "question": "哪种音乐类型于20世纪初诞生在新奥尔良？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "镜子里映出门口另外两个人影；镜子上方，画家签下了“扬·凡·艾克在此，1434”。",
+      "id": "cul-0099",
+      "options": ["范德魏登", "荷尔拜因", "扬·凡·艾克", "梅姆林"],
+      "question": "带有一面小凸面镜的《阿尔诺芬尼夫妇像》是哪位画家的作品？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "《哈姆雷特》是莎士比亚最长的剧作，故事发生在以丹麦克伦堡宫为原型的埃尔西诺。",
+      "id": "cul-0014",
+      "options": ["《奥赛罗》", "《李尔王》", "《麦克白》", "《哈姆雷特》"],
+      "question": "台词“生存还是毁灭”出自莎士比亚的哪部戏剧？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "男子戴着一种叫“tagelmust”的靛蓝色长面纱；染料会蹭到皮肤上，把皮肤染成淡淡的蓝色。",
+      "id": "cul-0073",
+      "options": [
+        "蓝色的帐篷",
+        "面纱的靛蓝",
+        "手臂上的蓝色文身",
+        "蓝色的沙漠天空"
+      ],
+      "question": "撒哈拉的图阿雷格男子为什么有时被称为“蓝人”？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "《天鹅湖》于1877年在莫斯科首演，起初并不成功；1895年重新排演后才声名大噪。",
+      "id": "cul-0021",
+      "options": [
+        "里姆斯基-科萨科夫",
+        "柴可夫斯基",
+        "斯特拉文斯基",
+        "拉赫玛尼诺夫"
+      ],
+      "question": "哪位俄罗斯作曲家创作了芭蕾舞剧《天鹅湖》？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "这座城门于1791年建成，顶上是一组四马战车雕塑。",
+      "id": "cul-0031",
+      "options": ["勃兰登堡门", "印度门", "凯旋门", "惠灵顿拱门"],
+      "question": "哪座新古典主义城门是柏林的著名象征？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "车主用绘画、镜子和诗句装饰卡车，还挂上一排排链条和铃铛，一路叮当作响。",
+      "id": "cul-0059",
+      "options": ["喇叭很响", "车上放音乐", "一首名曲", "挂的链条铃铛"],
+      "question": "巴基斯坦色彩鲜艳的“jingle trucks”因什么而得名？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "这座房子于20世纪30年代建在宾夕法尼亚州，平台一直伸展到溪流上方。",
+      "id": "cul-0064",
+      "options": ["赖特", "格罗皮乌斯", "密斯·凡德罗", "勒·柯布西耶"],
+      "question": "建在瀑布之上的流水别墅是哪位建筑师设计的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "虽然名叫“十月节”，它其实从九月就开始了；它起源于1810年的一场王室婚礼庆典。",
+      "id": "cul-0019",
+      "options": ["慕尼黑", "汉堡", "柏林", "维也纳"],
+      "question": "“十月节”（Oktoberfest）在哪座城市举办？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "弗拉明戈来自西班牙南部的安达卢西亚，融合了歌唱、吉他演奏、舞蹈和拍手。",
+      "id": "cul-0016",
+      "options": ["葡萄牙", "西班牙", "意大利", "墨西哥"],
+      "question": "弗拉明戈是在哪个国家发展起来的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "把几层布叠起来剪开，再把边缘向下折，露出下面的颜色；一块莫拉可能要做好几周。",
+      "id": "cul-0103",
+      "options": ["巴拿马", "秘鲁", "危地马拉", "玻利维亚"],
+      "question": "色彩缤纷的多层布艺“莫拉”是哪个国家的库纳族女性缝制的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "克里姆特的父亲是一名金雕工，他“黄金时期”的许多作品都用了真金箔。",
+      "id": "cul-0069",
+      "options": ["克里姆特", "穆夏", "席勒", "科柯施卡"],
+      "question": "哪位维也纳画家创作了饰有金箔的《吻》？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "芭蕉还写了一部著名的游记《奥之细道》，记录他徒步穿越日本的旅程。",
+      "id": "cul-0095",
+      "options": ["松尾芭蕉", "小林一茶", "正冈子规", "与谢芜村"],
+      "question": "哪位诗人写下了关于青蛙跳进古池塘的著名俳句？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "哈尔滨的建造者从冰封的松花江上切下冰块，建成一座座灯火通明的城堡。",
+      "id": "cul-0076",
+      "options": ["放巨型风筝", "放水灯", "赛龙舟", "冰雪雕塑"],
+      "question": "中国哈尔滨的冬季节日以什么闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "“欢乐颂”的旋律出自这部交响曲的终乐章，贝多芬写它时几乎已经完全失聪。",
+      "id": "cul-0028",
+      "options": ["莫扎特", "舒伯特", "海顿", "贝多芬"],
+      "question": "欧洲之歌取自哪位作曲家的《第九交响曲》？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "雷鬼于20世纪60年代末从斯卡和洛克斯特迪发展而来，2018年被列入联合国教科文组织遗产名录。",
+      "id": "cul-0029",
+      "options": ["波多黎各", "古巴", "牙买加", "巴巴多斯"],
+      "question": "雷鬼音乐起源于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "它于1561年建成，其实是九座小礼拜堂组合在一起，每座都有自己的圆顶。",
+      "id": "cul-0066",
+      "options": [
+        "救世主基督大教堂",
+        "圣索菲亚大教堂",
+        "圣瓦西里大教堂",
+        "圣以撒大教堂"
+      ],
+      "question": "莫斯科红场上哪座教堂以色彩缤纷的洋葱顶闻名？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "蜡能阻止染料渗入，去掉蜡后图案就显现出来；2009年，联合国教科文组织将印度尼西亚蜡染列入名录。",
+      "id": "cul-0015",
+      "options": ["印度尼西亚", "日本", "秘鲁", "埃及"],
+      "question": "蜡染（batik）是先用热蜡在布上描绘图案再染色的工艺，它是哪个国家的著名艺术？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "操偶师站在齐腰深的水里，躲在竹帘后，用藏在水下的长杆操纵木偶；这门艺术起源于稻田。",
+      "id": "cul-0058",
+      "options": ["山洞里", "树梢上", "水面上", "高跷上"],
+      "question": "越南传统木偶戏“múa rối nước”中，木偶在哪里表演？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "这两部史诗在被写下来之前，很可能已经口耳相传了好几代。",
+      "id": "cul-0023",
+      "options": ["索福克勒斯", "奥维德", "荷马", "维吉尔"],
+      "question": "《伊利亚特》和《奥德赛》被认为出自哪位古希腊诗人之手？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "连名字也一起传了过来：“lute”源自阿拉伯语al-ʿūd，意为“木头”，经西班牙和普罗旺斯传入欧洲。",
+      "id": "cul-0096",
+      "options": ["西塔琴", "乌德琴", "桑图尔琴", "奈伊笛"],
+      "question": "欧洲的鲁特琴是由哪种中东乐器发展而来的？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "1936年，佩德罗·利纳雷斯身患重病，梦见奇怪的生物大喊“alebrijes！”；后来他用纸浆把它们重现出来。",
+      "id": "cul-0070",
+      "options": ["中国之行", "高烧时的梦", "一次海难", "参观动物园"],
+      "question": "墨西哥色彩鲜艳的幻想生物“alebrijes”，最初是一位艺术家在经历了什么之后做出来的？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "家家户户搭起叫作“ofrenda”的祭坛，据说鲜艳的橙色万寿菊花瓣能为亡灵引路回家。",
+      "id": "cul-0017",
+      "options": ["独立日", "波萨达节", "亡灵节", "五月五日节"],
+      "question": "墨西哥哪个节日用彩色祭坛和万寿菊纪念已故的亲人？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "立体主义绘画把物体分解成几何形状，同时从几个视角来表现它。",
+      "id": "cul-0026",
+      "options": ["夏加尔", "毕加索", "莫迪利亚尼", "马蒂斯"],
+      "question": "哪位画家与乔治·布拉克一起创立了立体主义？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "飞扶壁把屋顶的重量向外传递，使高墙上能开出巨大的彩色玻璃窗。",
+      "id": "cul-0032",
+      "options": ["新艺术运动", "巴洛克", "哥特式", "罗马式"],
+      "question": "尖拱和飞扶壁是哪种建筑风格的典型特征？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "青金石主要来自阿富汗的矿山；在文艺复兴时期，这种颜料（群青）可能比黄金还贵。",
+      "id": "cul-0097",
+      "options": ["绿松石", "翡翠", "蓝宝石", "青金石"],
+      "question": "珍贵的蓝色颜料“ultramarine”最初是用哪种石头制成的？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "20世纪三四十年代，人们最早用油桶制作钢鼓；它是特立尼达和多巴哥的国家乐器。",
+      "id": "cul-0062",
+      "options": [
+        "安提瓜和巴布达",
+        "圣基茨和尼维斯",
+        "牙买加",
+        "特立尼达和多巴哥"
+      ],
+      "question": "钢鼓是在哪个国家发明的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "30米高的雕像上覆盖着手工铺贴的三角形皂石片；据说工人们在一些石片背面写下了名字和留言。",
+      "id": "cul-0100",
+      "options": ["皂石", "大理石", "金箔", "陶瓷"],
+      "question": "里约热内卢的救世基督像由混凝土制成，表面覆盖着什么材质的小镶片？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "手势代表颂歌歌词中的事物，比如雨、花或翻滚的海浪，而吟诵者负责诗歌的部分。",
+      "id": "cul-0071",
+      "options": ["鼓的节奏", "舞者的手", "裙子颜色", "所戴面具"],
+      "question": "在夏威夷传统草裙舞中，什么帮助讲述颂歌中的故事？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "蒙德里安的风格启发了时装和家具设计，甚至包括1965年伊夫·圣罗兰的一件著名连衣裙。",
+      "id": "cul-0068",
+      "options": ["马列维奇", "蒙德里安", "克利", "康定斯基"],
+      "question": "哪位艺术家以黑色线条网格和原色色块闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "安宁日是巴厘岛的新年：整整一天不开灯，街道空无一人，连游客也被要求待在酒店里。",
+      "id": "cul-0060",
+      "options": [
+        "航班数量翻倍",
+        "只许水上飞机降落",
+        "飞机须静音飞行",
+        "关闭24小时"
+      ],
+      "question": "在巴厘岛的安宁日（Nyepi），岛上的主要机场会怎样？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "这幅1931年的小画只有约24×33厘米，收藏在纽约现代艺术博物馆。",
+      "id": "cul-0025",
+      "options": ["达利", "马格利特", "恩斯特", "米罗"],
+      "question": "画有熔化时钟的《记忆的永恒》是谁画的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "米开朗琪罗用一整块大理石雕出了《大卫》，这块石料几十年前曾被其他雕塑家放弃。",
+      "id": "cul-0020",
+      "options": ["米开朗琪罗", "卡诺瓦", "拉斐尔", "罗丹"],
+      "question": "1504年完成的5米高大理石雕像《大卫》是谁雕刻的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "以里约热内卢一处海滩命名的《伊帕内玛女孩》成了被录制次数最多的歌曲之一。",
+      "id": "cul-0063",
+      "options": ["巴西", "阿根廷", "古巴", "葡萄牙"],
+      "question": "20世纪50年代末，波萨诺瓦音乐在哪个国家兴起？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "埃尔·格列柯（意为“希腊人”）最初在克里特岛画圣像，后来在威尼斯和罗马工作，最终定居西班牙托莱多。",
+      "id": "cul-0098",
+      "options": ["西西里岛", "塞浦路斯岛", "罗得岛", "克里特岛"],
+      "question": "画家埃尔·格列柯出生在哪个岛上？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "肖邦20岁离开波兰后再也没有回去，但他死后，他的心脏被送回华沙的一座教堂。",
+      "id": "cul-0024",
+      "options": ["法国", "奥地利", "波兰", "匈牙利"],
+      "question": "作曲家肖邦出生在哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "1874年，一位评论家用这幅画的标题来嘲讽，但画家们欣然接受了这个名字。",
+      "id": "cul-0027",
+      "options": ["浪漫主义", "印象派", "表现主义", "野兽派"],
+      "question": "莫奈的画作《印象·日出》为哪个艺术流派提供了名字？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "这座近1900年历史的穹顶直径约43米，唯一的光源是顶部一个宽约8至9米的圆孔。",
+      "id": "cul-0065",
+      "options": ["金宫", "卡拉卡拉浴场", "马克森提乌斯巴西利卡", "万神殿"],
+      "question": "哪座罗马建筑拥有世界上最大的无钢筋混凝土穹顶？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "在瑞典的城镇里，一位“露西亚”带领身穿白袍的歌唱队伍游行，为昏暗的冬日早晨带来光明。",
+      "id": "cul-0075",
+      "options": ["瑞典", "荷兰", "奥地利", "苏格兰"],
+      "question": "在哪个国家，女孩们会在12月13日的露西亚节戴上蜡烛头冠？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "人们把树皮内层（通常是构树皮）浸泡后用木槌捶薄，拼成大片，再绘上图案。",
+      "id": "cul-0072",
+      "options": ["编织的棕榈叶", "椰子纤维", "捶打的树皮", "羊毛"],
+      "question": "从汤加到夏威夷，整个太平洋地区都制作的塔帕布是用什么做的？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "埃舍尔从未受过正规的数学训练，但数学家们却很喜欢他的作品。",
+      "id": "cul-0067",
+      "options": ["博斯", "埃舍尔", "蒙德里安", "伦勃朗"],
+      "question": "哪位荷兰艺术家以不可能的楼梯和密铺图案闻名？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "人们互送装着钱的红包，红色的装饰据说还能吓跑传说中的怪兽“年”。",
+      "id": "cul-0018",
+      "options": ["绿色", "红色", "白色", "蓝色"],
+      "question": "在中国春节，传统上哪种颜色象征好运？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "演奏者用拇指拨动金属键；姆比拉是绍纳音乐的核心，人们认为带金属键的形制已有1000多年历史。",
+      "id": "cul-0104",
+      "options": ["津巴布韦", "摩洛哥", "埃及", "塞内加尔"],
+      "question": "联合国教科文组织把带金属键的“拇指琴”姆比拉列为马拉维和哪个国家的遗产？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "它在巴西被奴役的非洲人中发展起来；单弦乐弓贝林巴乌琴掌控着这场“游戏”的节奏。联合国教科文组织于2014年将其列入名录。",
+      "id": "cul-0013",
+      "options": ["阿根廷", "巴西", "古巴", "葡萄牙"],
+      "question": "融合了武术、舞蹈和音乐的卡波耶拉是在哪个国家发展起来的？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "不寻常的节奏和舞蹈让巴黎观众极为震惊，乐手们几乎听不见彼此的演奏。",
+      "id": "cul-0101",
+      "options": ["拉威尔", "德彪西", "斯特拉文斯基", "普罗科菲耶夫"],
+      "question": "1913年首演时几乎引发骚乱的《春之祭》是哪位作曲家创作的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "全城的人都会参加重新抹泥的节日；墙上伸出的棕榈木梁就是现成的脚手架。",
+      "id": "cul-0109",
+      "options": ["每年", "每十年", "每50年", "每百年"],
+      "question": "马里的杰内大清真寺是最大的泥砖建筑，它多久重抹一次新泥？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "维尼的名字部分来自伦敦动物园一只真实的熊“温妮”，它来自加拿大。",
+      "id": "cul-0082",
+      "options": [
+        "罗尔德·达尔",
+        "肯尼斯·格雷厄姆",
+        "比阿特丽克斯·波特",
+        "A.A.米尔恩"
+      ],
+      "question": "哪位英国作家创造了小熊维尼？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "萨克斯于1846年为萨克斯管申请了专利；他的家乡比利时迪南有巨大的萨克斯管雕塑。",
+      "id": "inv-0035",
+      "options": ["法国", "德国", "比利时", "奥地利"],
+      "question": "萨克斯管的发明者阿道夫·萨克斯来自哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "在1883年的原著中，匹诺曹一说谎鼻子就变长，他是用一块会说话的木头雕成的。",
+      "id": "cul-0041",
+      "options": ["意大利", "瑞士", "法国", "德国"],
+      "question": "《木偶奇遇记》的作者卡洛·科洛迪来自哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "艺术家埃丝特·马兰古把这种风格带向世界：1991年，她为宝马的艺术车系列用恩德贝莱图案彩绘了一辆汽车。",
+      "id": "cul-0106",
+      "options": ["房屋墙壁", "鸵鸟蛋", "木面具", "陶罐"],
+      "question": "南非的恩德贝莱族女性以在什么上面绘制醒目的几何图案闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "法朵与葡萄牙语词“saudade”紧密相连，意为对不在身边的人或事物深切的思念。",
+      "id": "cul-0077",
+      "options": ["西班牙", "巴西", "佛得角", "葡萄牙"],
+      "question": "忧郁的歌曲风格法朵来自哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "1941年，阿斯特丽德·林格伦为卧病在床的女儿编了皮皮的睡前故事。",
+      "id": "cul-0042",
+      "options": ["挪威", "芬兰", "瑞典", "丹麦"],
+      "question": "长袜子皮皮是哪个国家的作家创造的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "1888年，他的妻子贝尔塔·本茨开着它行驶约100公里来证明它能用，途中在一家药店买了燃料。",
+      "id": "inv-0005",
+      "options": ["蒸汽机车", "有轨电车", "蒸汽拖拉机", "汽油汽车"],
+      "question": "1886年，卡尔·本茨为哪种常被视为同类首创的东西申请了专利？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "伦琴拍摄的最早的X射线照片之一是他妻子的手，婚戒清晰可见。",
+      "id": "inv-0008",
+      "options": ["爱迪生", "伦琴", "居里夫人", "卢瑟福"],
+      "question": "1895年，是谁发现了X射线？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "舞者在围成的圈中轮流原地向上直跳，其他人在一旁歌唱；跳得高、跳得优美都会受到赞赏。",
+      "id": "cul-0079",
+      "options": ["转得最快", "跑得最久", "跳得最高", "唱得最响"],
+      "question": "在肯尼亚和坦桑尼亚马赛人的阿杜木舞中，年轻男子比的是什么？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "把海娜灌木的叶子晒干磨成糊；红褐色的颜料附着在皮肤表层，一到三周后褪去。",
+      "id": "cul-0087",
+      "options": ["甲虫的外壳", "火山的黏土", "晒干的叶子", "树木的树脂"],
+      "question": "婚礼和节日时用来在手上画图案的海娜来自什么？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "高更描绘塔希提的鲜艳画作深深影响了马蒂斯和毕加索等现代艺术家。",
+      "id": "cul-0084",
+      "options": ["斯里兰卡", "塔希提岛", "巴厘岛", "夏威夷"],
+      "question": "19世纪90年代，画家高更搬到了哪个岛上？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "达·芬奇在干墙上尝试了一种实验性技法，结果在他生前颜料就开始剥落了。",
+      "id": "cul-0088",
+      "options": ["罗马", "米兰", "佛罗伦萨", "威尼斯"],
+      "question": "在哪座城市可以看到达·芬奇的壁画《最后的晚餐》？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "她在纽约乘有轨电车时想到了这个主意，因为司机不得不一次次打开车窗清除积雪。",
+      "id": "inv-0043",
+      "options": ["雨刮器", "安全带", "汽车喇叭", "后视镜"],
+      "question": "1903年，玛丽·安德森为哪种汽车配件申请了专利？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "卡夫卡住在布拉格，曾请朋友在他死后烧掉手稿，但朋友拒绝了。",
+      "id": "cul-0080",
+      "options": ["托马斯·曼", "卡夫卡", "黑塞", "茨威格"],
+      "question": "写下主人公一觉醒来变成巨大甲虫的《变形记》的作者是谁？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "扁平的皮制木偶贴着被灯照亮的布幕；由一位叫“达郎”的艺人操纵全部木偶，并为每个角色配音。",
+      "id": "cul-0108",
+      "options": ["面具舞者", "活体动物", "木偶影子", "火舞表演"],
+      "question": "印度尼西亚的“wayang kulit”演出可以持续整夜，观众主要看的是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "金缮（kintsugi）把破损视为器物历史的一部分，而不是需要掩盖的东西。",
+      "id": "cul-0107",
+      "options": ["Kintsugi", "Sumi-e", "Kirigami", "Ikebana"],
+      "question": "日本用金子修补破损陶瓷的艺术叫什么？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "华伦海特生于但泽（今格但斯克），一生大部分工作时间在荷兰度过。",
+      "id": "inv-0038",
+      "options": ["罗默", "伽利略", "华伦海特", "开尔文勋爵"],
+      "question": "1724年，哪位科学家发明了水银温度计并提出了一种温标？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "第二次世界大战后，菲律宾人把剩余的美军吉普车加长，装上长椅、镀铬马饰和鲜艳的漆。",
+      "id": "cul-0081",
+      "options": ["淘汰的公交车", "退役的渔船", "旧的火车车厢", "美军剩余吉普"],
+      "question": "菲律宾色彩鲜艳的合乘出租车“吉普尼”最初是用什么改造的？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "诺贝尔用炸药等发明赚来的财富设立了诺贝尔奖，该奖于1901年首次颁发。",
+      "id": "inv-0007",
+      "options": ["诺贝尔", "摄尔修斯", "贝采利乌斯", "林奈"],
+      "question": "哪位瑞典化学家发明了炸药？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "信号是摩尔斯电码的字母“S”，从康沃尔传到纽芬兰，距离约3500公里。",
+      "id": "inv-0040",
+      "options": ["费森登", "赫兹", "特斯拉", "马可尼"],
+      "question": "1901年，是谁首次实现了跨大西洋的无线电传输？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "弗里达·卡罗一生约有140幅画作，其中约55幅是自画像。",
+      "id": "cul-0034",
+      "options": [
+        "莉奥诺拉·卡林顿",
+        "乔治娅·奥基夫",
+        "塔玛拉·德伦皮卡",
+        "弗里达·卡罗"
+      ],
+      "question": "哪位墨西哥女画家以色彩浓烈的自画像闻名？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "工匠们先在岩块四周挖出深沟，再从顶部往下掏空，把门、窗和屋顶一体凿成。",
+      "id": "cul-0086",
+      "options": [
+        "全部用玻璃建造",
+        "漂浮在湖上",
+        "向下凿进整块岩石",
+        "建在高高的木桩上"
+      ],
+      "question": "埃塞俄比亚拉利贝拉的11座中世纪教堂以什么闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "第一本姆明书于1945年出版；托芙·扬松用她家里讲的瑞典语写作。",
+      "id": "cul-0043",
+      "options": ["斯诺克", "温布尔", "蓝精灵", "姆明"],
+      "question": "芬兰作家托芙·扬松创造的那种圆圆的、白色的类似山怪的生物叫什么？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "摄尔修斯的温标原本是“倒过来”的；他去世后不久，温标被颠倒过来，成了今天使用的版本。",
+      "id": "inv-0080",
+      "options": ["水的沸点", "体温", "水的冰点", "绝对零度"],
+      "question": "在安德斯·摄尔修斯1742年最初的温标中，0度是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "诗人菲尔多西花了约30年写下约5万对押韵对句，讲述波斯神话和历史上的诸王故事。",
+      "id": "cul-0110",
+      "options": ["土耳其", "伊朗", "印度", "埃及"],
+      "question": "《列王纪》（Shahnameh）是哪个国家的民族史诗？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "中国早期的指南针用一把天然磁石勺，放在光滑的铜盘上旋转，勺柄指向南方。",
+      "id": "inv-0004",
+      "options": ["中国", "波斯", "希腊", "埃及"],
+      "question": "用天然磁石做成勺子的早期指南针是在哪里制造的？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "贝尔德的第一幅电视图像是一个腹语木偶的头，他管它叫“斯图基·比尔”。",
+      "id": "inv-0041",
+      "options": ["法恩斯沃思", "贝尔德", "尼普科", "兹沃里金"],
+      "question": "1926年在伦敦首次公开演示可用电视机的是谁？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "在真正的湿壁画中，颜料会随着灰泥变干而成为墙的一部分，所以湿壁画能保存几百年。",
+      "id": "cul-0085",
+      "options": ["湿壁画", "水粉画", "马赛克", "蛋彩画"],
+      "question": "直接画在刚抹好的新灰泥上的画叫什么？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "利伯希是一位荷兰眼镜匠；一年后，伽利略自己造出了改进的望远镜。",
+      "id": "inv-0081",
+      "options": ["牛顿", "利伯希", "惠更斯", "伽利略"],
+      "question": "1608年，是谁申请了已知最早的望远镜专利？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "玻璃金字塔于1989年作为博物馆新的主入口启用，曾引发争议，后来成了地标。",
+      "id": "cul-0083",
+      "options": ["伦佐·皮亚诺", "贝聿铭", "诺曼·福斯特", "让·努维尔"],
+      "question": "卢浮宫的玻璃金字塔是哪位建筑师设计的？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "山鲁佐德每晚都在最扣人心弦处停下，让国王为了听结局而留她性命。",
+      "id": "cul-0078",
+      "options": ["阿拉丁", "哈伦·拉希德", "辛巴达", "山鲁佐德"],
+      "question": "《一千零一夜》中的故事是谁讲的？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "在这部1873年的小说中，斐利亚·福格向东环游世界多赚了一天，因而赢了赌局。",
+      "id": "cul-0039",
+      "options": ["儒勒·凡尔纳", "赫·乔·威尔斯", "大仲马", "左拉"],
+      "question": "《八十天环游地球》的作者是谁？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "1991年，人们终于按他的图纸造出了他的“2号差分机”，而且它真的能用。",
+      "id": "inv-0036",
+      "options": ["电报机", "机械计算机", "蒸汽涡轮机", "打字机"],
+      "question": "19世纪，查尔斯·巴贝奇设计了什么？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "图腾柱通常用北美乔柏雕成，记录家族历史、传说和事件；它们从来不是崇拜的对象。",
+      "id": "cul-0105",
+      "options": [
+        "太平洋西北地区",
+        "亚马孙中部",
+        "西伯利亚东部",
+        "澳大利亚内陆"
+      ],
+      "question": "巨大的雕刻图腾柱是哪个地区原住民的传统？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "帕特农神庙的柱子中间略微鼓起，这种叫“收分线”的手法让柱子看起来笔直。",
+      "id": "cul-0033",
+      "options": ["奥林匹亚宙斯神庙", "帕特农神庙", "万神殿", "赫菲斯托斯神庙"],
+      "question": "雅典卫城上哪座神庙是献给女神雅典娜的？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "波普艺术使用广告和漫画中的日常图像；沃霍尔画了32个汤罐头，每种口味一个。",
+      "id": "cul-0035",
+      "options": ["未来主义", "超现实主义", "波普艺术", "立体主义"],
+      "question": "安迪·沃霍尔的汤罐头画属于哪个艺术流派？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "丁丁于1929年首次登场；布鲁塞尔有一条漫画壁画路线，沿途的壁画有整栋楼那么大。",
+      "id": "cul-0044",
+      "options": ["瑞士", "荷兰", "比利时", "法国"],
+      "question": "漫画英雄丁丁是由哪个国家的艺术家埃尔热创造的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "她最早用儿子作业本上的一张吸墨纸和一个打了孔的黄铜壶做成了过滤器。",
+      "id": "inv-0042",
+      "options": ["电热水壶", "电动磨豆机", "浓缩咖啡机", "咖啡滤纸"],
+      "question": "1908年，梅丽塔·本茨在德国发明了什么？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "居纽的三轮车辆是为了拖拉大炮而造的，速度大约和步行差不多。",
+      "id": "inv-0075",
+      "options": ["蒸汽", "马匹", "电力", "汽油"],
+      "question": "1769年，居纽的道路车辆靠什么提供动力？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "小说写成时，221B号并不存在；如今福尔摩斯博物馆挂着这个门牌号。",
+      "id": "cul-0037",
+      "options": ["唐宁街", "牛津街", "贝克街", "舰队街"],
+      "question": "夏洛克·福尔摩斯住在伦敦哪条街的221B号？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "据说贝尔在电话里说的第一句话是：“沃森先生，过来，我想见你。”",
+      "id": "inv-0002",
+      "options": ["爱迪生", "莫尔斯", "贝尔", "马可尼"],
+      "question": "1876年，是谁获得了美国第一项电话专利？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "当时手机还没有键盘，工程师尼尔·帕普沃思在电脑上打出这句话，发给了正在参加圣诞聚会的沃达丰同事。",
+      "id": "inv-0082",
+      "options": [
+        "Happy New Year",
+        "Merry Christmas",
+        "Hello World",
+        "Can you hear me?"
+      ],
+      "question": "1992年发送的第一条手机短信写的是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "日本的气象机构每年都会发布“樱花前线”预报，追踪樱花由南向北开放的进程。",
+      "id": "cul-0036",
+      "options": ["Tanabata", "Obon", "Setsubun", "Hanami"],
+      "question": "日本在春天的盛开樱花树下野餐的习俗叫什么？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "古腾堡圣经约印了180部，已知存世49部，其中有些并不完整。",
+      "id": "inv-0001",
+      "options": ["科斯特", "古腾堡", "卡克斯顿", "马努提乌斯"],
+      "question": "1450年前后，是谁在欧洲推行了金属活字印刷？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "它于1901年在一艘沉船中被发现，其青铜齿轮能预测日食、月食以及太阳和月亮的位置。",
+      "id": "inv-0037",
+      "options": ["巴格达电池", "希罗汽转球", "水压风琴", "安提基特拉机械"],
+      "question": "哪件古希腊装置被认为是已知最古老的模拟计算机？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "他把它叫作“gravicembalo col piano e forte”，意思是一种既能弹弱音又能弹强音的羽管键琴。",
+      "id": "inv-0092",
+      "options": ["斯卡拉蒂", "克里斯托福里", "马蒂尼", "斯特拉迪瓦里"],
+      "question": "哪位意大利乐器制造师在1700年前后发明了钢琴？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "这只飞蛾被用胶带贴在哈佛Mark II计算机的工作日志里；格蕾丝·霍珀的团队让这个故事广为流传。",
+      "id": "inv-0028",
+      "options": ["甲虫", "飞蛾", "蟑螂", "蜘蛛"],
+      "question": "1947年，工程师发现一只真正的“bug”（虫子）导致了计算机故障。它是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "雪镜用木头、骨头或鹿角雕成，贴合脸型；窄缝能减少导致雪盲的眩光，还能像针孔相机一样让视线更清晰。",
+      "id": "inv-0089",
+      "options": ["窄缝", "有色冰片", "薄鱼皮", "彩色玻璃"],
+      "question": "因纽特人传统的雪镜让光线透过什么进入眼睛，从而防止眩光？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "这台“帕斯卡计算器”能做加减法；如今约有九台存世。",
+      "id": "inv-0051",
+      "options": ["望远镜", "机械计算器", "蒸汽机", "机械摆钟"],
+      "question": "布莱兹·帕斯卡少年时造了什么来帮助当税务官的父亲？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "邓禄普是贝尔法斯特的一名兽医，他想让儿子的三轮车在坑洼的街道上骑得更平稳；1888年他为此申请了专利。",
+      "id": "inv-0084",
+      "options": ["摇摆木马", "婴儿车", "三轮车", "四轮小推车"],
+      "question": "1888年，约翰·博伊德·邓禄普为儿子的什么研制了实用的充气轮胎？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "1854年在纽约的一次博览会上，奥的斯站在升降平台上，让人砍断吊绳——平台安全地停住了。",
+      "id": "inv-0058",
+      "options": ["电梯", "自动扶梯", "旋转门", "起重机"],
+      "question": "19世纪50年代，伊莱沙·奥的斯用一种自动制动装置让哪种机器变得安全？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "ENIAC占满了一个大房间，使用了约1.8万个真空管。",
+      "id": "inv-0088",
+      "options": ["约27吨", "约100吨", "约3吨", "约300公斤"],
+      "question": "1945年建成的早期电子计算机ENIAC大约有多重？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "火焰周围的金属网能防止它点燃矿井中的易燃气体。",
+      "id": "inv-0087",
+      "options": ["灯塔看守人", "潜水员", "火车司机", "煤矿工人"],
+      "question": "汉弗莱·戴维1815年发明的安全灯是为谁设计的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "有了摆，时钟每天的误差从约15分钟缩小到约15秒。",
+      "id": "inv-0049",
+      "options": ["伽利略", "列文虎克", "胡克", "惠更斯"],
+      "question": "1656年，哪位荷兰科学家造出了第一台摆钟？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "他选择@，是因为这个符号很少使用，又能清楚地把用户名和计算机名分开。",
+      "id": "inv-0063",
+      "options": ["%（百分号）", "@（at号）", "#（井号）", "&（和号）"],
+      "question": "1971年，雷·汤姆林森把哪个符号用在了电子邮件地址中？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "第一代Walkman有两个耳机插孔，好让两个人一起听。",
+      "id": "inv-0010",
+      "options": ["东芝", "松下", "索尼", "飞利浦"],
+      "question": "1979年，哪家公司推出了便携式磁带播放机Walkman（随身听）？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "狄塞尔于1892年为他的发动机申请专利，这类发动机至今仍以他的名字命名；在1900年巴黎世博会上，有一台用花生油运转。",
+      "id": "inv-0014",
+      "options": ["奥托", "狄塞尔", "戴姆勒", "迈巴赫"],
+      "question": "19世纪90年代，是谁发明了仅靠压缩点燃燃料的发动机？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "船闸是一个带闸门的闸室，通过升高或降低水位来抬升或降下船只。",
+      "id": "inv-0025",
+      "options": ["船闸", "栈桥", "水坝", "码头"],
+      "question": "什么设施能让船只在运河上不同水位之间通行？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "避雷针通过一根金属导线，为闪电提供一条安全通往地面的路径。",
+      "id": "inv-0019",
+      "options": ["避雷针", "风向标", "防风百叶窗", "火灾警报器"],
+      "question": "本杰明·富兰克林发明了什么来保护建筑免受暴风雨的伤害？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "这座位于议会大厦附近的煤气灯信号由一名警察手动转动。",
+      "id": "inv-0064",
+      "options": ["巴黎", "纽约", "伦敦", "柏林"],
+      "question": "1868年，第一批交通信号灯安装在哪座城市？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "帕基特诺夫在一台“电子-60”计算机上做出了这款游戏（俄罗斯方块）；名字结合了“tetra”（四）和他最爱的运动网球（tennis）。",
+      "id": "inv-0057",
+      "options": ["东京", "基辅", "布达佩斯", "莫斯科"],
+      "question": "1984年，阿列克谢·帕基特诺夫在哪座城市创造了Tetris？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "装配线把造一辆T型车的时间从约12小时缩短到约90分钟。",
+      "id": "inv-0015",
+      "options": ["T型车", "野马", "A型车", "雷鸟"],
+      "question": "1913年，亨利·福特为哪款汽车引入了移动装配线？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "骑车人用脚蹬地前进，就像今天儿童的平衡车一样。",
+      "id": "inv-0059",
+      "options": ["轮子", "脚踏板", "车座", "车把"],
+      "question": "卡尔·德莱斯1817年发明的自行车鼻祖“奔跑机”没有什么？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "1843年，洛夫莱斯还预言这样的机器有一天能够作曲。",
+      "id": "inv-0009",
+      "options": ["玛丽·萨默维尔", "阿达·洛夫莱斯", "格蕾丝·霍珀", "海蒂·拉玛"],
+      "question": "是谁为巴贝奇的分析机编写了常被称为第一个计算机程序的东西？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "特斯拉还开发了全世界使用的交流电力系统的关键部分。",
+      "id": "inv-0061",
+      "options": ["法拉第", "威斯汀豪斯", "特斯拉", "爱迪生"],
+      "question": "磁通量密度的国际单位是以哪位发明家命名的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "瓦特的分离式冷凝器让蒸汽机效率大增；功率单位“瓦特”就以他命名。",
+      "id": "inv-0011",
+      "options": ["珍妮纺纱机", "印刷机", "电报机", "蒸汽机"],
+      "question": "18世纪60至70年代，詹姆斯·瓦特大大改进了哪种机器？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "戴维·沃伦在协助调查一起离奇的客机坠毁事故时想到了这个主意；1967年，澳大利亚成为第一个强制要求安装驾驶舱记录仪的国家。",
+      "id": "inv-0091",
+      "options": ["加拿大", "日本", "澳大利亚", "瑞典"],
+      "question": "驾驶舱飞行记录仪，也就是“黑匣子”，是20世纪50年代哪个国家的科学家发明的？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "他手工磨制的小透镜能放大200多倍，他是第一个看到细菌的人。",
+      "id": "inv-0016",
+      "options": ["温度计", "气压计", "显微镜", "望远镜"],
+      "question": "列文虎克以改进哪种仪器而闻名？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "硬币落在一块小托板上，就会打开阀门，放出定量的水。",
+      "id": "inv-0090",
+      "options": ["水", "谷物", "橄榄油", "葡萄酒"],
+      "question": "1世纪时，亚历山大的希罗发明的投币机器出售的是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "风车把低洼圩田里的水抽出去；小孩堤防的19座风车是联合国教科文组织世界遗产。",
+      "id": "inv-0026",
+      "options": ["排干低地积水", "用来发电", "给船打信号", "驱动港口灯标"],
+      "question": "荷兰大多数历史风车的主要用途是什么？"
+    }
+  ]
+}

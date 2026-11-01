@@ -318,7 +318,8 @@ describe("useQuizPackStore sync", () => {
 
   test("languages without a server pool never fetch", async () => {
     const { useQuizPackStore } = await loadStores();
-    await useQuizPackStore.getState().syncQuizPacks("ja");
+    // Every app language has a server pool now; an unknown code has none.
+    await useQuizPackStore.getState().syncQuizPacks("xx");
     expect(fetchMock).not.toHaveBeenCalled();
     expect(useQuizPackStore.getState().status).toBe("skipped");
   });

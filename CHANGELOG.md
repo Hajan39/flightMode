@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+
+- **World quiz in every language:** the extra ~1,000 questions from the server now download in all 12 app languages (previously English, Czech and German only). Every language was translated and then proofread by a separate reviewer against the English; questions that give their answer away in a language, or that would be region-sensitive in it, are skipped for that language only. The 110 weakest questions were replaced with more interesting ones before translating.
+
 ### Fixed
 
 - **World quiz — language review:** every English, Czech and German question was proofread by a separate reviewer against the English source (EN 149, CS 106, DE 63 questions corrected: grammar, typos, wording that gave answers away, a few meaning slips; no wrong answers found). A duplicate question was removed, and questions that reveal their answer in one language are skipped in that language only.

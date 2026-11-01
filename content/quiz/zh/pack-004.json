@@ -1,0 +1,2275 @@
+{
+  "id": "pack-004",
+  "lang": "zh",
+  "questions": [
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "管中旋转的螺旋至今仍用来输送水和谷物，甚至用在一些对鱼类友好的水泵中。",
+      "id": "inv-0022",
+      "options": ["称量黄金", "研磨谷物", "把水提升", "测量时间"],
+      "question": "阿基米德螺旋是用来做什么的？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "用户在小商店用现金换取电子货币；三年内它在肯尼亚就有了约900万用户，其中很多人没有银行账户。",
+      "id": "inv-0050",
+      "options": ["尼日利亚", "南非", "肯尼亚", "印度"],
+      "question": "让数百万人用普通手机发短信转账的M-Pesa，于2007年在哪个国家推出？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "乔治·德梅斯特拉尔在显微镜下观察牛蒡的刺果，发现上面有能勾住线圈的小钩子。",
+      "id": "inv-0044",
+      "options": ["列支敦士登", "挪威", "瑞典", "瑞士"],
+      "question": "魔术贴的灵感来自粘在狗毛上的刺果，它的发明者来自哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "乔治·伊士曼选择“Kodak”这个名字，是因为他喜欢字母K，并希望这个名字在任何语言里都好念。",
+      "id": "inv-0053",
+      "options": ["徕卡", "尼康", "佳能", "柯达"],
+      "question": "哪家公司1888年的相机配有广告语“你按快门，剩下的交给我们”？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "沃尔沃工程师尼尔斯·博林设计了它，公司还允许其他汽车制造商免费使用这项专利。",
+      "id": "inv-0027",
+      "options": ["福特", "梅赛德斯-奔驰", "沃尔沃", "萨博"],
+      "question": "1959年，哪家汽车制造商推出了现代三点式安全带？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "“radar”（雷达）这个名称最初是“无线电探测和测距”的英文缩写。",
+      "id": "inv-0020",
+      "options": ["磁场", "无线电波", "红外线", "声波"],
+      "question": "雷达用什么来探测物体？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "这个原型底部有两个金属轮子，顶部只有一个按键。",
+      "id": "inv-0062",
+      "options": ["钢铁", "塑料", "橡胶", "木头"],
+      "question": "1964年道格拉斯·恩格尔巴特的第一只电脑鼠标，外壳是用什么做的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "雅卡尔的打孔卡启发了巴贝奇，后来又启发了早期的计算机。",
+      "id": "inv-0046",
+      "options": ["黄铜齿轮", "磁性胶带", "木制销钉", "打孔卡片"],
+      "question": "1804年的雅卡尔提花机用什么来控制织布图案？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "它由电装波（Denso Wave）公司为追踪汽车零件而创造；QR是“quick response”（快速响应）的缩写。",
+      "id": "inv-0055",
+      "options": ["日本", "中国", "美国", "韩国"],
+      "question": "二维码（QR码）是1994年在哪个国家发明的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "最早的地铁列车由蒸汽机车牵引；1896年，布达佩斯开通了欧洲大陆第一条电力地铁。",
+      "id": "inv-0023",
+      "options": ["巴黎", "布达佩斯", "纽约", "伦敦"],
+      "question": "1863年，世界上第一条地下铁路在哪座城市开通？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "卢米埃尔兄弟的一部早期影片拍的是火车进站，这个短短的场景让早期观众惊叹不已。",
+      "id": "inv-0017",
+      "options": ["法国", "英国", "美国", "德国"],
+      "question": "1895年，卢米埃尔兄弟在哪个国家举行了著名的首次公开电影放映？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "用火山灰建造的罗马港口防波堤，在海水中屹立了约2000年。",
+      "id": "inv-0048",
+      "options": ["碎贝壳", "火山灰", "动物血", "海盐"],
+      "question": "哪种成分让罗马混凝土即使在水下也能凝固？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "大象体内隐藏的水箱里有一个浮子慢慢下沉，每隔半小时就会触发活动人偶、鸟和鼓。",
+      "id": "inv-0083",
+      "options": ["蒸汽", "水力", "沙子", "发条"],
+      "question": "1206年的一本书中描述的加扎利“大象钟”靠什么驱动？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "二进制只用0和1两个数字，正好对应电子开关“关”和“开”两种状态。",
+      "id": "inv-0024",
+      "options": ["罗马数字", "二进制", "十二进制", "十进制"],
+      "question": "计算机用哪种数制存储数据？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "它用刻好的木版印成，发现于中国敦煌附近的一个洞窟中，现藏于大英图书馆。",
+      "id": "inv-0085",
+      "options": ["镂花模板", "金属活字", "雕版", "铜版"],
+      "question": "现存最早有明确日期的印刷书——868年的《金刚经》，是用什么印刷的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "爱迪生录下的第一句话是童谣《玛丽有只小羊羔》，录在缠绕于圆筒上的锡箔上。",
+      "id": "inv-0012",
+      "options": ["贝尔", "伯利纳", "特斯拉", "爱迪生"],
+      "question": "1877年，哪位发明家演示了能录下声音的留声机？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "法拉第几乎没受过正规教育，职业生涯从给汉弗莱·戴维当助手起步。",
+      "id": "inv-0047",
+      "options": ["法拉第", "开尔文勋爵", "戴维", "麦克斯韦"],
+      "question": "1831年，哪位英国科学家造出了第一台发电机？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "《勒格拉的窗外景色》可能需要曝光几个小时，甚至好几天。",
+      "id": "inv-0052",
+      "options": ["达盖尔", "尼埃普斯", "伊士曼", "塔尔博特"],
+      "question": "现存最古老的相机照片是谁在1826年前后拍摄的？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "理论上三颗卫星就能定位，但还需要第四颗来校正接收器的时钟。",
+      "id": "inv-0054",
+      "options": ["至少四颗", "至少六颗", "至少三颗", "至少两颗"],
+      "question": "GPS接收器至少要收到几颗卫星的信号，才能确定三维位置？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "他制作的乐器约有650件存世，最好的斯特拉迪瓦里小提琴是世界上最值钱的乐器之一。",
+      "id": "inv-0030",
+      "options": ["铜管乐器", "钟表", "弦乐器", "钢琴"],
+      "question": "安东尼奥·斯特拉迪瓦里是以制作哪类乐器而闻名的？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "最早的眼镜很可能是在意大利比萨或其附近制造的，用来帮助人们阅读。",
+      "id": "inv-0071",
+      "options": ["英格兰", "德国", "意大利", "中国"],
+      "question": "1290年前后，最早的眼镜是在哪里制造的？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "腓尼基字母有22个字母，全都是辅音；希腊人加上了表示元音的字母。",
+      "id": "lang-0029",
+      "options": ["埃及世俗体", "梵文", "楔形文字", "腓尼基字母"],
+      "question": "希腊文、拉丁文和阿拉伯文的祖先是哪种古代书写系统？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "泰诺语是哥伦布1492年遇到的人们所讲的语言；“barbecue”（烧烤）和“canoe”（独木舟）也来自加勒比语言。",
+      "id": "lang-0058",
+      "options": ["纳瓦特尔语", "克丘亚语", "瓜拉尼语", "泰诺语"],
+      "question": "哪种加勒比语言为世界贡献了“hurricane”（飓风）和“hammock”（吊床）这两个词？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "巴西是最大的葡萄牙语国家，讲葡萄牙语的人比葡萄牙本国多得多。",
+      "id": "lang-0007",
+      "options": ["西班牙语", "意大利语", "葡萄牙语", "法语"],
+      "question": "巴西的官方语言是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "它最早出现在卡雷尔·恰佩克1920年的剧本《罗素姆万能机器人》中；“robota”意为强迫劳动，这个词是他哥哥约瑟夫建议的。",
+      "id": "lang-0002",
+      "options": ["波兰语", "捷克语", "德语", "俄语"],
+      "question": "“robot”（机器人）一词是从哪种语言走向世界的？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "纳瓦特尔语是阿兹特克人的语言；“tomatl”变成了tomato，“ahuacatl”变成了avocado。",
+      "id": "lang-0024",
+      "options": ["克丘亚语", "泰诺语", "瓜拉尼语", "纳瓦特尔语"],
+      "question": "“tomato”（番茄）、“avocado”（牛油果）和“chocolate”（巧克力）是从哪种语言进入欧洲语言的？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "它的“大日晷”（Vrihat Samrat Yantra）高约27米，于18世纪30年代建成，报出的当地时间误差约在两秒以内。",
+      "id": "inv-0096",
+      "options": ["日晷", "望远镜", "指南针", "水钟"],
+      "question": "印度斋浦尔的简塔·曼塔天文台里有世界上最大的石制什么？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "它由日语的“e”（绘）和“moji”（文字）组成；它与英语“emotion”（情感）相似纯属巧合。",
+      "id": "lang-0026",
+      "options": ["韩语", "日语", "英语", "粤语"],
+      "question": "“emoji”这个名称是从哪种语言借来的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "伏打把锌片和铜片叠在一起，中间隔着浸过盐水的布；电压单位“伏特”就以他命名。",
+      "id": "inv-0039",
+      "options": ["安培", "法拉第", "伽伐尼", "伏打"],
+      "question": "1800年，是谁制造了第一块电池——电堆？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "阿佩尔的成果赢得了法国政府颁发的奖金，政府希望为长途旅行提供更好的食物。",
+      "id": "inv-0076",
+      "options": ["冷冻干燥", "木桶盐腌", "加热密封瓶装", "柴火烟熏"],
+      "question": "1810年前后，尼古拉·阿佩尔开创了哪种食物保存方法？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "“orang”意为人，“hutan”意为森林；红毛猩猩与人类约有97%的DNA相同。",
+      "id": "lang-0028",
+      "options": ["红色的猴子", "森林中的人", "爬树的动物", "攀登树梢者"],
+      "question": "在马来语中，“orangutan”是什么意思？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "1968年，3M公司的化学家斯潘塞·西尔弗做出了这种低粘性胶水；后来一位同事用它把书签固定在赞美诗集里。",
+      "id": "inv-0100",
+      "options": ["粘性很弱的胶", "防水的纸张", "强力超能胶", "速干的墨水"],
+      "question": "便利贴源于一次意外发现的什么？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "到1866年，一条铺在大西洋海底的电缆用电报把欧洲和北美连接了起来。",
+      "id": "inv-0032",
+      "options": ["电线", "无线电波", "光束", "气动管道"],
+      "question": "早期的电报通过什么传递信息？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "渔民们在海上没有察觉到大浪，回来时却发现港口已被摧毁。",
+      "id": "lang-0021",
+      "options": ["大地的震动", "愤怒的海", "港口的浪", "大水"],
+      "question": "日语词“tsunami”的字面意思是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "梵语“śarkarā”变成了波斯语“shakar”和阿拉伯语“sukkar”；约公元4世纪，印度人就已在制作结晶糖。",
+      "id": "inv-0068",
+      "options": ["中国", "印度", "埃及", "巴西"],
+      "question": "“sugar”（糖）这个词和把甘蔗汁制成晶体的技艺都来自哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "“taikun”（大君）意为“伟大的君主”，外国人曾用它来称呼日本的将军。",
+      "id": "lang-0059",
+      "options": ["泰语", "粤语", "日语", "越南语"],
+      "question": "“tycoon”（大亨）一词借自哪种语言中的一个古老尊称？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "操作员用望远镜观察山顶塔楼上木臂的位置，把信息一站站传遍法国。",
+      "id": "inv-0095",
+      "options": ["信鸽传书", "电线传输", "镜子反光", "塔上信号臂"],
+      "question": "18世纪90年代，克洛德·沙普在法国建立的网络用什么传递信息？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "布斯的机器绰号“喷气比利”，停在建筑物外面，用长长的软管从窗户伸进去。",
+      "id": "inv-0072",
+      "options": ["吸尘器", "割草机", "洗衣机", "电冰箱"],
+      "question": "休伯特·塞西尔·布斯1901年发明的马拉机器，是哪种家用电器的早期版本？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "简单的潜望镜在管子两端各有一面呈45°角的镜子。",
+      "id": "inv-0033",
+      "options": ["无线电信号", "只用透镜", "反射镜或棱镜", "磁传感器阵列"],
+      "question": "潜望镜用什么让你看到障碍物后面的东西？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "匈牙利语的远亲包括芬兰语和爱沙尼亚语，以及西西伯利亚的一些小语种。",
+      "id": "lang-0060",
+      "options": ["突厥语", "乌拉尔语", "日耳曼语", "斯拉夫语"],
+      "question": "匈牙利语属于哪个语言家族？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "杜瓦从未为它申请专利；后来一家德国公司以“Thermos”的品牌名出售它。",
+      "id": "inv-0074",
+      "options": [
+        "保持化学品低温",
+        "运送活的鱼类",
+        "存放热的咖啡",
+        "携带汤类食物"
+      ],
+      "question": "1892年，詹姆斯·杜瓦发明保温瓶是为了什么？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "一组组人工“计算员”（常常是女性）为天文学、航海表和早期航天做计算。",
+      "id": "inv-0045",
+      "options": ["算盘", "做计算的人", "发条加法机", "一种钟表"],
+      "question": "在机器使用这个名称之前，“computer”这个词指的是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "芬兰约有300万个桑拿房，而人口约为560万；这个词在世界各地的语言中通用。",
+      "id": "lang-0008",
+      "options": ["芬兰语", "俄语", "爱沙尼亚语", "瑞典语"],
+      "question": "哪种语言为世界贡献了“sauna”（桑拿）一词？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "以普通话为母语的人接近10亿；英语则更多是作为第二语言被广泛学习。",
+      "id": "lang-0001",
+      "options": ["西班牙语", "汉语普通话", "现代标准阿拉伯语", "印地语"],
+      "question": "世界上以哪种语言为母语的人最多？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "屏幕以不同亮度组合红、绿、蓝三色光，就能显示数百万种颜色。",
+      "id": "inv-0034",
+      "options": ["红、绿、蓝", "橙、紫、绿", "青、品红、黄", "红、黄、蓝"],
+      "question": "一般屏幕上的每个像素混合的是哪三种颜色的光？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "当时还没有银行卡，第一台自动取款机凭特制的纸质支票吐出钞票。",
+      "id": "inv-0077",
+      "options": ["巴黎", "法兰克福", "伦敦", "纽约"],
+      "question": "1967年，第一台自动取款机安装在哪里？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "这包在俄亥俄州扫描的水果口香糖如今陈列在一家博物馆里。",
+      "id": "inv-0094",
+      "options": ["一罐汤", "一盒麦片", "一条切片面包", "一包口香糖"],
+      "question": "1974年，第一件通过扫描UPC条形码售出的商品是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "哈拉尔·“蓝牙”·戈姆松国王统一了丹麦各部落；蓝牙标志由他名字首字母的北欧如尼文组合而成。",
+      "id": "inv-0067",
+      "options": ["挪威", "丹麦", "冰岛", "瑞典"],
+      "question": "蓝牙技术是以哪个国家的一位国王命名的？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "一台准确的钟能让水手把当地正午与母港的时间比较；每相差一小时就等于经度15°。",
+      "id": "inv-0070",
+      "options": ["计程仪", "六分仪", "航海天文钟", "气压计"],
+      "question": "约翰·哈里森的哪项发明解决了在海上确定经度的难题？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "肖从夜里猫眼反光得到了灵感；汽车驶过时，这些反光器还会自行清洁。",
+      "id": "inv-0065",
+      "options": ["矿井里", "船上", "道路上", "自行车上"],
+      "question": "珀西·肖1934年发明的“猫眼”用在哪里？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "爱迪生在门洛帕克的实验室是最早专门从事发明的研究实验室之一。",
+      "id": "inv-0031",
+      "options": ["贝尔", "爱迪生", "特斯拉", "富兰克林"],
+      "question": "哪位发明家拥有1000多项美国专利？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "它在美国一家实验室开放日上用示波器屏幕运行，是最早的电子游戏之一。",
+      "id": "inv-0098",
+      "options": ["发球机", "网球计分规则", "早期电子游戏", "球拍设计"],
+      "question": "1958年制作的《双人网球》（Tennis for Two）是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "土豆夜里放在外面冻住，白天解冻，再用脚踩出水分；晒干的丘纽可以存放好几年。",
+      "id": "inv-0097",
+      "options": ["火上烟熏", "海盐腌制", "热陶土炉", "夜霜和阳光"],
+      "question": "安第斯农民制作古老的冻干土豆“丘纽”靠的是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "电木是第一种完全人工合成的塑料，被用来制作电话、收音机和首饰。",
+      "id": "inv-0073",
+      "options": ["一种橡胶", "早期塑料", "一种合金", "一种玻璃"],
+      "question": "1907年发明的Bakelite（电木）是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "shampoo最初指头部按摩，19世纪萨克·迪恩·马哈茂德在英国的浴室里提供这项服务。",
+      "id": "lang-0057",
+      "options": ["肥皂泡沫", "洗头发", "用温水冲洗", "按压或按摩"],
+      "question": "“shampoo”（洗发水）一词来自一个印地语词，它是什么意思？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "在天城文中，大多数字母都挂在沿词顶部画出的一条横线下面。",
+      "id": "lang-0030",
+      "options": ["天城文", "泰米尔文", "孟加拉文", "波斯-阿拉伯字母"],
+      "question": "印地语用哪种文字书写？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "第一家胶囊旅馆开在大阪；每个睡眠舱刚好够人坐起来，配有一盏灯和一台小电视。",
+      "id": "inv-0099",
+      "options": ["韩国", "日本", "中国", "新加坡"],
+      "question": "1979年，第一家胶囊旅馆在哪个国家开业？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "在德国南部的洞穴里发现了用鸟骨和猛犸象牙制成的笛子。",
+      "id": "inv-0069",
+      "options": ["竖琴", "笛子", "鼓", "摇铃"],
+      "question": "已知最古老的乐器中有一类是用约4万年前的骨头做的，它是哪类乐器？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "铅笔从来不含铅；人们曾以为石墨是一种铅，名字由此而来。",
+      "id": "inv-0029",
+      "options": ["石墨和黏土", "铅", "木炭粉和蜡", "木炭"],
+      "question": "铅笔里的“铅”实际上是用什么做的？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "透过旋转圆筒上的缝隙看，一条连续的画就仿佛动了起来。",
+      "id": "inv-0078",
+      "options": ["音乐盒", "袖珍望远镜", "动画玩具", "气象仪"],
+      "question": "19世纪流行的zoetrope是一种什么装置？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "1840年，福禄贝尔创造了这个词，他设想孩子们像花园里的植物一样成长。",
+      "id": "lang-0004",
+      "options": ["荷兰语", "丹麦语", "瑞典语", "德语"],
+      "question": "意为“儿童的花园”的单词“kindergarten”（幼儿园）借自哪种语言？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "阿根廷在他的生日9月29日庆祝发明家日；1945年马塞尔·比克买下了设计权，由此诞生了比克笔。",
+      "id": "inv-0093",
+      "options": ["西班牙", "巴西", "意大利", "阿根廷"],
+      "question": "匈牙利出生的圆珠笔先驱拉斯洛·比罗，搬到哪个国家后于1943年申请了专利？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "日语约在5世纪引入汉字；在韩语中，汉字被称为“hanja”。",
+      "id": "lang-0054",
+      "options": ["泰语", "越南语", "韩语", "日语"],
+      "question": "汉字在哪种语言中被称为“kanji”？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "数千万人以斯瓦希里语为第一或第二语言，它也是非洲联盟的官方语言之一。",
+      "id": "lang-0013",
+      "options": ["东非", "南亚", "西非", "北非"],
+      "question": "斯瓦希里语是哪个地区的主要语言？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "阿拉伯语“ṣaḥrāʾ”意为沙漠，所以“撒哈拉沙漠”字面上就是“沙漠沙漠”。",
+      "id": "lang-0051",
+      "options": ["沙漠", "太阳", "沙子", "沙海"],
+      "question": "在阿拉伯语中，“Sahara”（撒哈拉）是什么意思？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "雅努斯有两张脸，一张回望过去，一张展望未来，正适合一年的开端。",
+      "id": "lang-0017",
+      "options": ["朱诺", "朱庇特", "玛尔斯", "雅努斯"],
+      "question": "“January”（一月）是以哪位罗马神的名字命名的？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "它来自“Terra Australis”，那是早在欧洲人到达澳大利亚之前，地图绘制者想象中的一块南方大陆。",
+      "id": "lang-0020",
+      "options": ["南方之地", "红土之岛", "阳光之地", "红色之地"],
+      "question": "在拉丁语中，“Australia”（澳大利亚）这个名字是什么意思？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "巴斯克语是一种“孤立语言”：早在源自拉丁语的语言传入之前，这一地区就已在使用它。",
+      "id": "lang-0033",
+      "options": ["安道尔", "葡萄牙", "法国", "意大利"],
+      "question": "与任何现存语言都没有亲缘关系的巴斯克语，在西班牙和哪个国家使用？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "罗马尼亚语源自罗马达契亚行省所讲的拉丁语，因此与意大利语和西班牙语是亲戚。",
+      "id": "lang-0012",
+      "options": ["波罗的语族", "罗曼语族", "斯拉夫语族", "日耳曼语族"],
+      "question": "罗马尼亚语属于哪个语族？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "它来自9世纪数学家花拉子米一本书书名中的“al-jabr”。",
+      "id": "lang-0023",
+      "options": ["拉丁语", "阿拉伯语", "波斯语", "希腊语"],
+      "question": "“algebra”（代数）一词来自一本用哪种语言写的书的书名？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "它反映了一种古老的观念：不幸源自星辰和行星不吉利的位置。",
+      "id": "lang-0062",
+      "options": ["不祥之星", "黑暗天空", "熊熊大火", "破损船只"],
+      "question": "“disaster”（灾难）一词来自意思是什么的词？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "芬兰语和爱沙尼亚语都属于芬兰语支；它们与邻近的瑞典语、俄语或拉脱维亚语都没有亲缘关系。",
+      "id": "lang-0035",
+      "options": ["立陶宛语", "俄语", "爱沙尼亚语", "瑞典语"],
+      "question": "芬兰语与哪种语言关系最近？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "拉丁语至今仍是圣座的官方语言，圣座甚至出版了一部现代拉丁语新词词典。",
+      "id": "lang-0011",
+      "options": ["希伯来语", "古希腊语", "阿拉姆语", "拉丁语"],
+      "question": "在梵蒂冈的自动取款机上，可以用哪种古老语言阅读操作说明？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "据说荒野之神潘会让在偏僻之地赶路的人突然感到恐惧。",
+      "id": "lang-0044",
+      "options": ["赫尔墨斯", "阿瑞斯", "狄俄尼索斯", "潘"],
+      "question": "哪位希腊神的名字成了“panic”（恐慌）一词的来源？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "在瑞士和列支敦士登，书写德语时不用ß，而用“ss”代替。",
+      "id": "lang-0018",
+      "options": ["荷兰语", "波兰语", "德语", "丹麦语"],
+      "question": "哪种语言使用叫作“Eszett”的字母ß？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "罗马人觉得，收缩的肌肉看起来就像一只小老鼠在皮肤下移动。",
+      "id": "lang-0061",
+      "options": ["打结绳索", "活动绳索", "有力手臂", "小小老鼠"],
+      "question": "“muscle”（肌肉）一词来自一个拉丁语词，它是什么意思？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "几乎每个海地人都会讲海地克里奥尔语，它与法语同为官方语言。",
+      "id": "lang-0070",
+      "options": ["法语", "葡萄牙语", "西班牙语", "英语"],
+      "question": "海地克里奥尔语主要以哪种语言为基础？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "世宗大王于1443年创制了这套字母（谚文）；辅音字母的形状是根据口腔和舌头的位置设计的。",
+      "id": "lang-0031",
+      "options": ["Hangul", "Kanji", "Hiragana", "Hanja"],
+      "question": "朝鲜语（韩语）的字母叫什么？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "安道尔是世界上唯一以加泰罗尼亚语为唯一官方语言的国家。",
+      "id": "lang-0045",
+      "options": ["加泰罗尼亚语", "西班牙语", "奥克语", "法语"],
+      "question": "安道尔唯一的官方语言是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "alpha和beta本身借自腓尼基字母，原意分别是“牛”和“房子”。",
+      "id": "lang-0010",
+      "options": ["希伯来字母", "希腊字母", "西里尔字母", "拉丁字母"],
+      "question": "“alphabet”（字母表）一词来自哪种字母表的前两个字母？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "“astron”意为星星，“nautes”意为水手，与“nautical”（航海的）同源。",
+      "id": "lang-0042",
+      "options": ["月球旅人", "星辰水手", "天空行者", "太空驾驶"],
+      "question": "“astronaut”（宇航员）一词来自意思是什么的希腊语词？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "“hima”意为雪，“ālaya”意为家或住所。",
+      "id": "lang-0052",
+      "options": ["风的家园", "雪的居所", "高耸巨石", "世界屋脊"],
+      "question": "在梵语中，“Himalaya”（喜马拉雅）是什么意思？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "这座城市在巴生河与鹅唛河的交汇处发展起来，19世纪50年代锡矿工人在那里扎营。",
+      "id": "lang-0067",
+      "options": ["泥泞河口", "金色河流", "绿色山谷", "山丘王城"],
+      "question": "在马来语中，“Kuala Lumpur”（吉隆坡）这个名字是什么意思？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "荷兰语“koekje”意为“小蛋糕”；新阿姆斯特丹的荷兰定居者把它带了过来。",
+      "id": "lang-0069",
+      "options": ["瑞典语", "法语", "荷兰语", "德语"],
+      "question": "“cookie”（曲奇）一词是从哪种语言进入美式英语的？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "德语的称号“Kaiser”（皇帝）也来自同一个名字。",
+      "id": "lang-0050",
+      "options": ["尼禄", "恺撒", "君士坦丁", "奥古斯都"],
+      "question": "俄国的称号“tsar”（沙皇）来自哪个罗马名字？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "土耳其语“yoğurt”与一个意为“使变稠”或“揉捏”的动词有关。",
+      "id": "lang-0027",
+      "options": ["阿拉伯语", "希腊语", "土耳其语", "保加利亚语"],
+      "question": "“yoghurt”（酸奶）一词来自哪种语言？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "现代越南语使用带有许多附加符号的拉丁字母；五个声调符号加上不标符号的平声，共有六个声调。",
+      "id": "lang-0055",
+      "options": ["泰文字母", "高棉字母", "拉丁字母", "汉字"],
+      "question": "今天的越南语用哪种文字书写？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "这个词描述的是人们对古希腊和古罗马艺术与学问兴趣的“重生”，中文译作“文艺复兴”。",
+      "id": "lang-0014",
+      "options": ["黄金时代", "新的光芒", "觉醒", "重生"],
+      "question": "法语词“renaissance”是什么意思？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "许多瑞典工作场所每天都有fika时间；这个词是把一个表示咖啡的旧词的音节调皮地颠倒过来形成的。",
+      "id": "lang-0038",
+      "options": ["芬兰语", "挪威语", "丹麦语", "瑞典语"],
+      "question": "指喝咖啡吃蛋糕歇一歇的“fika”是哪种语言的词？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "每个辅音有七种形式，分别对应一个元音，总共有200多个符号；这种文字源自古老的吉兹文。",
+      "id": "lang-0068",
+      "options": ["一个整词", "单个元音", "辅音加元音", "概念或事物"],
+      "question": "埃塞俄比亚的阿姆哈拉语所用文字中，每个符号代表什么？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "伏尔甘是罗马神话中的火神和锻造之神；意大利的武尔卡诺岛也以他命名。",
+      "id": "lang-0016",
+      "options": ["尼普顿", "玛尔斯", "朱庇特", "伏尔甘"],
+      "question": "“volcano”（火山）一词来自哪位罗马神的名字？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "土耳其新的拉丁字母增加了ç、ş、ğ和不带点的ı等字母。",
+      "id": "lang-0056",
+      "options": ["亚美尼亚字母", "拉丁字母", "西里尔字母", "希腊字母"],
+      "question": "1928年，土耳其从阿拉伯字母改用了哪种字母？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "苏里南在1975年以前是荷兰殖民地；大多数人还会讲当地的克里奥尔语——苏里南语（Sranan Tongo）。",
+      "id": "lang-0047",
+      "options": ["英语", "荷兰语", "西班牙语", "葡萄牙语"],
+      "question": "南美洲苏里南的官方语言是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "布莱叶幼年失明，1829年他约20岁时发表了自己的凸点文字系统。",
+      "id": "lang-0037",
+      "options": ["德国", "法国", "瑞士", "比利时"],
+      "question": "为盲人创造阅读系统的路易·布莱叶来自哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "“hora sexta”是从黎明算起的第六个小时，约在正午，正是一天中最热的时候。",
+      "id": "lang-0039",
+      "options": ["安静时光", "第六小时", "短暂小睡", "午后酷热"],
+      "question": "西班牙语词“siesta”（午睡）来自一个拉丁语短语，它是什么意思？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "安第斯山区至今仍有数百万人讲克丘亚语；英语中的“llama”（羊驼）和“condor”（神鹫）都来自克丘亚语。",
+      "id": "lang-0019",
+      "options": ["克丘亚语", "瓜拉尼语", "艾马拉语", "纳瓦特尔语"],
+      "question": "印加帝国的主要语言是哪种？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "尽管非洲近得多，来自东南亚的航海者却在1000多年前定居了马达加斯加。",
+      "id": "lang-0065",
+      "options": ["桑给巴尔岛", "斯里兰卡岛", "加里曼丹岛", "西西里岛"],
+      "question": "马达加斯加的马达加斯加语与哪个岛上的语言关系最近？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "最早的塔勒银币约于1520年在约阿希姆斯塔尔铸造，那里就是今天捷克的亚希莫夫。",
+      "id": "lang-0063",
+      "options": ["波希米亚", "蒂罗尔", "萨克森", "巴伐利亚"],
+      "question": "“dollar”（元）一词来自“thaler”，这种银币最早是在哪个地区铸造的？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "这个名字来自奥吉布瓦语“misi-ziibi”；这条河汇集了美国32个州部分地区的水。",
+      "id": "lang-0066",
+      "options": ["大河", "多鱼", "浑水", "长路"],
+      "question": "在奥吉布瓦语中，“Mississippi”（密西西比）这个名字是什么意思？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "“kara”意为空，“oke”是“ōkesutora”（管弦乐队）的缩略——音乐在没有歌手的情况下播放。",
+      "id": "lang-0025",
+      "options": ["夜晚音乐", "歌唱伙伴", "空的乐队", "快乐嗓音"],
+      "question": "“karaoke”（卡拉OK）由两个日语词组成，字面意思是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "早期探险者希望在这一地区找到白银；拉普拉塔河（意为“银之河”）的名字也有类似的由来。",
+      "id": "lang-0053",
+      "options": ["铜", "金", "锡", "银"],
+      "question": "国名“Argentina”（阿根廷）来自拉丁语中哪种金属的名称？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "冰岛人至今仍能比较轻松地读懂700多年前写成的中世纪萨迦。",
+      "id": "lang-0034",
+      "options": ["挪威语", "丹麦语", "瑞典语", "冰岛语"],
+      "question": "哪种现代语言与维京人的语言古诺尔斯语最接近？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "“shāh māt”随着国际象棋传入阿拉伯语，又传入欧洲各种语言。",
+      "id": "lang-0041",
+      "options": ["游戏结束", "国王无助", "全军覆没", "王后获胜"],
+      "question": "国际象棋术语“checkmate”（将死）来自意思是什么的波斯语词？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "因纽特人的皮艇用浮木或鲸骨做骨架，蒙上海豹皮，按划桨人的身材量身打造。",
+      "id": "lang-0043",
+      "options": ["毛利人", "萨米人", "阿伊努人", "因纽特人"],
+      "question": "“kayak”（皮艇）一词来自哪个民族的语言？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "拉丁语“salarium”与“sal”（盐）有关；罗马人的薪俸究竟为什么以盐命名，至今仍有争议。",
+      "id": "lang-0040",
+      "options": ["盐", "面包", "士兵", "银子"],
+      "question": "“salary”（薪水）一词来自拉丁语中表示什么的词？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "1957年发射的斯普特尼克1号让这个普通的俄语词闻名全球。",
+      "id": "lang-0049",
+      "options": ["铁球", "天空信使", "明亮之星", "同行旅伴"],
+      "question": "俄语词“sputnik”是什么意思？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "罗曼什语源自拉丁语，使用者不到瑞士人口的1%，主要分布在格劳宾登州。",
+      "id": "lang-0046",
+      "options": ["弗留利语", "奥克语", "罗曼什语", "拉登语"],
+      "question": "除德语、法语和意大利语外，瑞士的第四种国语是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "似曾相识（déjà vu）是一种奇怪的感觉，仿佛眼前这一刻你以前已经经历过。",
+      "id": "lang-0015",
+      "options": ["已经见过", "见过两次", "从未见过", "梦中见过"],
+      "question": "法语短语“déjà vu”字面上是什么意思？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "这个词来自悉尼一带的达鲁格语；并不是所有回旋镖都设计成能飞回来的。",
+      "id": "lang-0009",
+      "options": ["巴布亚诸语言", "澳洲原住民语", "夏威夷语", "毛利语"],
+      "question": "“boomerang”（回旋镖）一词来自哪一类语言？"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "阿非利卡语由17世纪开普殖民者所讲的荷兰语发展而来；讲荷兰语和阿非利卡语的人能部分听懂对方。",
+      "id": "lang-0048",
+      "options": ["德语", "葡萄牙语", "荷兰语", "英语"],
+      "question": "南非使用的阿非利卡语主要是由哪种语言发展而来的？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "传说1823年，拉格比公学的学生威廉·韦伯·埃利斯抱起球就跑。",
+      "id": "sport-0009",
+      "options": ["苏格兰", "威尔士", "爱尔兰", "英格兰"],
+      "question": "英式橄榄球（rugby）是以哪个国家的一所学校命名的？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "来自14个国家的约240名运动员参赛；大理石砌成的帕那辛纳克体育场为此修复一新。",
+      "id": "sport-0005",
+      "options": ["巴黎", "伦敦", "罗马", "雅典"],
+      "question": "1896年，第一届现代奥运会在哪座城市举行？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "圣安德鲁斯老球场常被称为“高尔夫的故乡”，那里从15世纪起就有人打高尔夫。",
+      "id": "sport-0010",
+      "options": ["英格兰", "苏格兰", "荷兰", "爱尔兰"],
+      "question": "现代高尔夫是在哪个国家发展起来的？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "据说它于1965年起源于科帕卡巴纳海滩，当时沙滩上禁止踢足球，却允许架排球网。",
+      "id": "sport-0058",
+      "options": ["里斯本", "迈阿密", "里约热内卢", "巴塞罗那"],
+      "question": "不用手打的排球——足排球，是在哪座城市的海滩上发明的？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "粉红色的“maglia rosa”与1909年创办这项赛事的《米兰体育报》的粉色报纸相呼应。",
+      "id": "sport-0027",
+      "options": ["绿色", "粉色", "黄色", "蓝色"],
+      "question": "环意大利自行车赛的领先者穿什么颜色的领骑衫？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "这个名字来自1882年一则调侃英格兰板球“死亡”的假讣告；小小的骨灰瓮里据说装着一根烧过的三柱门横木的灰。",
+      "id": "sport-0030",
+      "options": ["网球", "板球", "高尔夫", "英式橄榄球"],
+      "question": "“灰烬杯”是哪项运动的著名系列赛？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "一种流行的说法是，“love”来自法语“l'œuf”，意为“蛋”，因为蛋的形状像零。",
+      "id": "sport-0013",
+      "options": ["love", "blank", "nil", "duck"],
+      "question": "在网球比赛中，零分叫什么？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "比赛一年从德班上坡跑到彼得马里茨堡，下一年再反方向跑回来，所以“上坡年”和“下坡年”的距离略有不同。",
+      "id": "sport-0037",
+      "options": ["每年方向互换", "只在夜里进行", "必须赤脚跑", "途经三个国家"],
+      "question": "南非全长约90公里的同志马拉松有什么特别之处？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "嘉纳治五郎于1882年创立柔道，名字意为“柔之道”。1964年，柔道成为奥运会项目。",
+      "id": "sport-0002",
+      "options": ["韩国", "泰国", "日本", "中国"],
+      "question": "柔道起源于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "约20名雪橇手和他们的狗接力运送抗毒素，因为当时的飞机无法在阿拉斯加的冬季风暴中飞行。",
+      "id": "sport-0041",
+      "options": ["白喉药物", "金块", "圣诞邮件", "过冬食物"],
+      "question": "阿拉斯加的艾迪塔罗德雪橇犬比赛，纪念的是1925年一次向诺姆镇紧急运送什么的接力？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "彭特科斯特岛上的“naghol”陆地跳水与山药收获有关；新西兰第一家商业蹦极公司就借鉴了它。",
+      "id": "sport-0054",
+      "options": ["斐济", "萨摩亚", "瓦努阿图", "汤加"],
+      "question": "在哪个太平洋国家，男子把藤蔓绑在脚踝上从高高的木塔上跳下，启发了蹦极运动？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "这座无人居住的小岛也是一处鸟类保护区，栖息着数万只塘鹅。",
+      "id": "sport-0052",
+      "options": ["北爱尔兰", "加拿大", "苏格兰", "挪威"],
+      "question": "许多奥运会冰壶是用艾尔萨克雷格岛的花岗岩制成的，这个岛位于哪个国家近海？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "两个拳头、两个肘、两个膝和两条小腿构成八件“武器”，而拳击只用两个拳头。",
+      "id": "sport-0014",
+      "options": ["肘和膝", "头和髋", "肩和背", "腕和踝"],
+      "question": "泰拳被称为“八肢的艺术”，因为拳手用拳头、小腿和什么进攻？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "这种球赛早在3000多年前就有了；有些实心橡胶球重达好几公斤。",
+      "id": "sport-0057",
+      "options": ["用脚", "用手", "用髋部", "用木棒"],
+      "question": "在古代中美洲的球赛中，球员主要用什么击打橡胶球？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "自1994年起，加拿大有两项国家运动：夏季的长曲棍球和冬季的冰球。",
+      "id": "sport-0051",
+      "options": ["独木舟赛", "冰壶", "棒球", "长曲棍球"],
+      "question": "哪项源自原住民游戏的运动是加拿大官方的夏季国家运动？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "跆拳道以高位旋转踢闻名，2000年成为奥运会正式比赛项目。",
+      "id": "sport-0008",
+      "options": ["韩国", "越南", "日本", "中国"],
+      "question": "跆拳道起源于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "这“男儿三艺”在13世纪的一部编年史中就有记载；如今女性也参加射箭和赛马。",
+      "id": "sport-0028",
+      "options": ["射箭", "击剑", "马球", "举重"],
+      "question": "蒙古的那达慕节有摔跤、赛马和哪项运动？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "球员会使出杂技般的倒挂踢球；球传统上用藤条编成。",
+      "id": "sport-0042",
+      "options": ["地中海", "南美", "东南亚", "斯堪的纳维亚"],
+      "question": "用脚踢的类似排球的藤球运动在哪个地区很流行？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "奈史密斯于1891年在马萨诸塞州发明了篮球，最早的篮筐是装桃子的篮子。",
+      "id": "sport-0025",
+      "options": ["苏格兰", "美国", "加拿大", "英格兰"],
+      "question": "篮球的发明者詹姆斯·奈史密斯来自哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "选手要背着全程所需的食物和装备；主办方只在每晚的营地提供饮用水和共用帐篷。",
+      "id": "sport-0031",
+      "options": ["纳米布沙漠", "卡拉哈里沙漠", "撒哈拉沙漠", "戈壁沙漠"],
+      "question": "摩洛哥约250公里的多日赛“Marathon des Sables”穿越哪片沙漠？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "在佩剑比赛中，用剑刃和剑尖击中都能得分。",
+      "id": "sport-0034",
+      "options": ["佩剑", "武士刀", "水手弯刀", "西洋刺剑"],
+      "question": "奥运会击剑项目有花剑、重剑和哪种剑？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "1858年，一名投球手连续三球击倒三个三柱门，观众凑钱买了一顶帽子送给他。",
+      "id": "sport-0040",
+      "options": ["赛马", "足球", "冰球", "板球"],
+      "question": "“帽子戏法”（hat-trick）一词最初来自哪项运动？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "许多场地是冬季借用的板球场，所以大型体育场常被叫作“oval”（椭圆）；场地没有固定尺寸。",
+      "id": "sport-0003",
+      "options": ["长方形", "椭圆形", "正方形", "菱形"],
+      "question": "澳式橄榄球通常在什么形状的场地上进行？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "一座奥运会标准泳池能装约250万升水。",
+      "id": "sport-0018",
+      "options": ["50米", "25米", "75米", "100米"],
+      "question": "奥运会标准游泳池有多长？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "2000多年前波斯人就在打马球；现代马球是19世纪英国军官从印度曼尼普尔传播开来的。",
+      "id": "sport-0050",
+      "options": ["波斯", "中国", "埃及", "希腊"],
+      "question": "一般认为马球起源于哪个古代国度？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "空手道由受中国武术影响的冲绳本地格斗术发展而来，20世纪20年代传入日本本土。",
+      "id": "sport-0033",
+      "options": ["台湾岛", "本州岛", "北海道", "冲绳岛"],
+      "question": "意为“空手”的空手道是在哪个岛上发展起来的？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "自由泳比赛允许任何泳姿，所以选手几乎总是选择最快的爬泳。",
+      "id": "sport-0019",
+      "options": ["蛙泳", "蝶泳", "爬泳", "仰泳"],
+      "question": "哪种游泳姿势最快？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "这支队伍在卡尔加里首次亮相；他们的故事启发了1993年的电影《冰上轻驰》，但电影改动了许多真实细节。",
+      "id": "sport-0029",
+      "options": ["斐济", "肯尼亚", "巴西", "牙买加"],
+      "question": "1988年，哪个热带国家派出雪车队参加冬奥会，令世界惊讶？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "2000多年前的汉代就有人踢蹴鞠；2004年，国际足联承认蹴鞠是足球的早期形式。",
+      "id": "sport-0015",
+      "options": ["中国", "希腊", "埃及", "墨西哥"],
+      "question": "蹴鞠是一种把球踢进球门的古代球类运动，它来自哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "1764年，圣安德鲁斯把球场从22洞减为18洞，其他球场随后效仿。",
+      "id": "sport-0011",
+      "options": ["9个", "12个", "18个", "20个"],
+      "question": "标准的高尔夫球场有多少个洞？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "黄色领骑衫始于1919年；赛事主办方的报纸《汽车报》（L'Auto）是用黄色纸张印刷的。",
+      "id": "sport-0016",
+      "options": ["红色", "黄色", "粉色", "圆点"],
+      "question": "环法自行车赛总成绩领先者穿什么颜色的领骑衫？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "伊滕位于东非大裂谷边缘，海拔约2400米，稀薄的空气有助于增强耐力；它自称“冠军之乡”。",
+      "id": "sport-0026",
+      "options": ["凉爽海风", "平坦沙道", "冬季凉爽", "海拔很高"],
+      "question": "许多顶尖长跑运动员在肯尼亚伊滕一带训练，那里有什么优势？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "路德维希·古特曼医生在1948年伦敦奥运会开幕当天，组织了第一届轮椅运动员运动会。",
+      "id": "sport-0053",
+      "options": [
+        "圣托马斯医院",
+        "斯托克·曼德维尔医院",
+        "大奥蒙德街医院",
+        "阿登布鲁克医院"
+      ],
+      "question": "残奥运动起源于1948年在英格兰哪家医院举行的运动会？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "温布尔登始于1877年，是世界上最古老的网球赛事。",
+      "id": "sport-0007",
+      "options": ["红土", "地毯", "硬地", "草地"],
+      "question": "温布尔登网球锦标赛在哪种场地上进行？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "1875年，第一场有组织的室内冰球比赛在蒙特利尔举行。",
+      "id": "sport-0017",
+      "options": ["芬兰", "加拿大", "瑞典", "俄罗斯"],
+      "question": "现代冰球主要是在哪个国家发展起来的？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "早期玩家用书本当网，用高尔夫球或香槟瓶塞当球，用雪茄盒盖当球拍。",
+      "id": "sport-0038",
+      "options": ["英格兰", "瑞士", "中国", "日本"],
+      "question": "乒乓球最初是哪个国家的一种饭后室内游戏？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "信天翁球比一杆进洞还要罕见得多；低于标准杆四杆的“神鹫”（condor）就更稀少了。",
+      "id": "sport-0056",
+      "options": ["鵟", "信天翁", "小鸟", "老鹰"],
+      "question": "高尔夫球手把单洞低于标准杆三杆的成绩叫作哪种鸟的名字？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "一种说法是比分最初按钟面计（15、30、45），后来45被简化成了40。",
+      "id": "sport-0012",
+      "options": ["45", "50", "40", "35"],
+      "question": "网球比分中，15和30之后是多少？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "一位叫“莫尔谢德”的师傅敲着高脚鼓、吟诵诗句，运动员们在下沉的场地里挥舞沉重的木棒；联合国教科文组织于2010年将其列入名录。",
+      "id": "sport-0032",
+      "options": ["裁判哨声", "鼓声与诗句", "钟表滴答", "观众掌声"],
+      "question": "在伊朗传统的“祖尔哈内”（意为“力量之家”）中，运动员跟着什么的节奏训练？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "运动员跳起来用一只脚踢一个悬挂的小球（常用海豹皮制成），并且必须用同一只脚落地；这一踢过去用来宣告狩猎成功。",
+      "id": "sport-0049",
+      "options": [
+        "悬在空中的目标",
+        "同伴转动的鼓",
+        "同伴张开的手",
+        "地上的木杆"
+      ],
+      "question": "在北极地区的单脚高踢运动中，运动员必须踢中什么？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "法国教育家顾拜旦于1894年创立了国际奥林匹克委员会。",
+      "id": "sport-0036",
+      "options": ["布伦戴奇", "顾拜旦", "维凯拉斯", "萨马兰奇"],
+      "question": "谁创立了现代奥运会？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "19世纪六七十年代，人们在格洛斯特郡博福特公爵的宅邸“巴德明顿庄园”里打这种球。",
+      "id": "sport-0039",
+      "options": [
+        "一位丹麦名将",
+        "英格兰一座庄园",
+        "一家球具厂商",
+        "印度一座小镇"
+      ],
+      "question": "羽毛球的英文名“badminton”来自什么？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "它的意思是“更快、更高、更强”；2021年又加入了“Communiter”（更团结）。",
+      "id": "sport-0020",
+      "options": ["拉丁语", "意大利语", "法语", "希腊语"],
+      "question": "奥林匹克格言“Citius, Altius, Fortius”是用哪种语言写的？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "球员用一根叫“hurley”的木棍击打一个叫“sliotar”的小球，球速远超每小时100公里。",
+      "id": "sport-0044",
+      "options": ["威尔士", "挪威", "苏格兰", "爱尔兰"],
+      "question": "世界上速度最快的场地运动之一“hurling”（板棍球）是哪个国家的传统运动？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "夏威夷游泳运动员杜克·卡哈纳莫库让这项运动传播开来；1914年他在悉尼附近淡水海滩的表演，对冲浪在澳大利亚兴起起了重要作用。",
+      "id": "sport-0001",
+      "options": ["加那利群岛", "夏威夷群岛", "马尔代夫", "巴厘岛"],
+      "question": "冲浪源于哪片群岛上的古老传统？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "进攻者必须一口气不停地念“卡巴迪、卡巴迪”，同时设法触碰对手。",
+      "id": "sport-0043",
+      "options": ["埃及", "印度", "印度尼西亚", "伊朗"],
+      "question": "结合了捉人游戏和摔跤的团体运动卡巴迪起源于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "凭借从太平洋到印度洋的众多领地，法国横跨12个时区，若算上其南极领土主张则有13个。",
+      "id": "misc-0071",
+      "options": ["美国", "俄罗斯", "法国", "英国"],
+      "question": "算上海外领地，哪个国家的时区最多？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "这种游戏于1907年在拉西奥塔发明，名字来自普罗旺斯语，意为“双脚并拢”。",
+      "id": "sport-0022",
+      "options": ["比利时", "意大利", "法国", "西班牙"],
+      "question": "把金属球掷向一个小目标球的滚球游戏“pétanque”来自哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "在当地语言中，不丹被称为“Druk Yul”，意为“雷龙之国”。",
+      "id": "misc-0039",
+      "options": ["尼泊尔", "斯里兰卡", "不丹", "蒙古"],
+      "question": "哪个国家的国旗上有一条白色的“雷龙”？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "八角形让司机即使从背面看，或者标志被雪覆盖时，也能认出这是停车标志。",
+      "id": "misc-0003",
+      "options": ["六条", "十条", "七条", "八条"],
+      "question": "大多数国家使用的标准停车标志有几条边？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "热那亚的水手穿结实的棉布裤子；而“denim”（牛仔布）来自“de Nîmes”，意为“来自尼姆”（法国小城）。",
+      "id": "misc-0052",
+      "options": ["威尼斯", "热那亚", "那不勒斯", "尼姆"],
+      "question": "“jeans”（牛仔裤）一词来自哪座城市的名字？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "东亚有些建筑不设4楼，而8因为听起来像“发”，被认为非常吉利。",
+      "id": "misc-0004",
+      "options": ["八", "七", "九", "四"],
+      "question": "在中国，哪个数字因为听起来像“死”而常被认为不吉利？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "埃塞俄比亚历有12个每月30天的月份，外加一个只有五六天的短短的第13个月。",
+      "id": "misc-0043",
+      "options": ["泰国", "伊朗", "埃塞俄比亚", "尼泊尔"],
+      "question": "哪个国家的传统历法有13个月？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "棋盘有8×8个格子；一个关于在每格上加倍放米粒的著名传说，说明了数字增长得有多快。",
+      "id": "misc-0001",
+      "options": ["64个", "49个", "81个", "100个"],
+      "question": "国际象棋棋盘上有多少个格子？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "这座位于拉普兰罗瓦涅米附近的村子，每年收到来自世界各地数十万封写给圣诞老人的信。",
+      "id": "misc-0015",
+      "options": ["芬兰", "挪威", "瑞典", "冰岛"],
+      "question": "正好位于北极圈上的圣诞老人村在哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "即“Confoederatio Helvetica”。用拉丁语名称，就不必在瑞士的四种国语中做选择。",
+      "id": "misc-0045",
+      "options": [
+        "自由赫尔维蒂共同体",
+        "赫尔维蒂王冠",
+        "赫尔维蒂人城邦",
+        "赫尔维蒂联邦"
+      ],
+      "question": "瑞士的国家代码“CH”代表哪个拉丁语名称？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "钟楼本身在2012年更名为伊丽莎白塔；Big Ben指的是塔内那口重13.7吨的钟。",
+      "id": "misc-0012",
+      "options": ["表盘", "大铜钟", "分针", "钟楼"],
+      "question": "在伦敦，“Big Ben”其实是什么的昵称？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "这座雕像有约1000套服装，每逢特殊场合就会换上盛装。",
+      "id": "misc-0016",
+      "options": ["维也纳", "哥本哈根", "阿姆斯特丹", "布鲁塞尔"],
+      "question": "小铜像“撒尿小童”位于哪座城市？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "一副牌有四种花色，每种13张；我们今天熟悉的四种花色来自15世纪的法国。",
+      "id": "misc-0006",
+      "options": ["48张", "54张", "56张", "52张"],
+      "question": "不算大小王，一副标准扑克牌有多少张？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "由于1海里正好对应1分的弧度，航海者可以直接在海图的纬度刻度上量取距离。",
+      "id": "misc-0076",
+      "options": ["桅顶望远距离", "纬度一分", "水手一千步", "经度一度"],
+      "question": "海里最初是根据什么确定的？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "擦冰会让冰面短暂升温，使石壶滑得更远、弯得更少。",
+      "id": "sport-0024",
+      "options": ["冰壶", "冰球", "班迪球", "雪车"],
+      "question": "在哪项运动中，队员推出花岗岩“石壶”，队友则在冰面上擦冰？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "撒盐是一种净化仪式；顶级力士在比赛前可能会撒好几把盐。",
+      "id": "sport-0048",
+      "options": ["大米", "盐", "花瓣", "沙子"],
+      "question": "相扑比赛开始前，力士会往土俵里撒什么？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "红龙“Y Ddraig Goch”与威尔士的联系已有好几个世纪。",
+      "id": "misc-0013",
+      "options": ["金色狮子", "白色独角兽", "黑色雄鹰", "红色巨龙"],
+      "question": "威尔士的旗帜上是哪种生物？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "16世纪起，德国人就在家里装饰树木；这一习俗在19世纪广为流传。",
+      "id": "misc-0014",
+      "options": ["德国", "英格兰", "俄罗斯", "瑞典"],
+      "question": "装饰圣诞树的传统始于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "美国的大学生会互相扔康涅狄格州弗里斯比馅饼公司（Frisbie Pie Company）的空馅饼盘。",
+      "id": "misc-0041",
+      "options": ["希腊铁饼", "糕饼店馅饼盘", "加州一处海滩", "发明者的狗"],
+      "question": "飞盘的英文名“Frisbee”来自什么？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "它以教皇格里高利十三世命名，纠正了儒略历与季节之间的缓慢偏差。",
+      "id": "misc-0008",
+      "options": ["玛雅长纪历", "格里高利历", "伊斯兰历", "儒略历"],
+      "question": "1582年推行、如今世界上大多数地方使用的是哪种历法？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "1902年的一幅漫画画着美国总统西奥多·“泰迪”·罗斯福拒绝射杀一只被拴住的熊，这启发了一位玩具商。",
+      "id": "misc-0007",
+      "options": [
+        "爱德华七世",
+        "西奥多·赫茨尔",
+        "威尔士亲王爱德华",
+        "西奥多·罗斯福"
+      ],
+      "question": "泰迪熊是以哪位名人命名的？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "在西班牙、意大利和葡萄牙，1582年10月4日星期四的下一天就是10月15日星期五。",
+      "id": "misc-0074",
+      "options": ["12天", "14天", "10天", "7天"],
+      "question": "1582年推行格里高利历时，跳过了多少天？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "这个名字是一位美国数学家9岁的侄子米尔顿·西罗塔想出来的。",
+      "id": "misc-0050",
+      "options": ["10个", "1000个", "100个", "100万个"],
+      "question": "“googol”（古戈尔）是1后面跟着多少个零？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "冬季两项运动员必须迅速平复狂跳的心脏，才能击中50米外的靶子。",
+      "id": "sport-0023",
+      "options": ["步枪射击", "自由式单板滑雪", "射箭", "跳台滑雪"],
+      "question": "冬季两项把越野滑雪和哪项运动结合在一起？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "它的歌词可追溯到16世纪，但直到1932年才正式成为国歌。",
+      "id": "misc-0078",
+      "options": ["丹麦", "瑞士", "瑞典", "荷兰"],
+      "question": "常被称为最古老国歌的《威廉颂》（Wilhelmus）是哪个国家的国歌？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "瑞士国旗官方规定为正方形，不过船上使用的是长方形版本。",
+      "id": "misc-0037",
+      "options": ["列支敦士登", "丹麦", "瑞士", "奥地利"],
+      "question": "除梵蒂冈外，哪个国家的国旗是正方形的？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "任何A系列纸对折后都会得到比例相同的下一个尺寸，这要归功于1比根号2的长宽比。",
+      "id": "misc-0040",
+      "options": ["220×310毫米", "216×279毫米", "200×300毫米", "210×297毫米"],
+      "question": "一张A4纸的尺寸是多少？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "18世纪90年代，法国科学家这样定义了米；如今米是根据光速来定义的。",
+      "id": "misc-0051",
+      "options": ["英尺", "米", "英里", "英寻"],
+      "question": "哪个单位最初被定义为从北极到赤道距离的一千万分之一？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "苏丹有200多座金字塔，比埃及的更小、更陡，其中许多在麦罗埃遗址。",
+      "id": "misc-0049",
+      "options": ["利比亚", "苏丹", "乍得", "埃塞俄比亚"],
+      "question": "古代库施王国修建的金字塔比埃及还多，它们位于今天的哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "这个太平洋小国通过出租“.tv”域名，获得了相当一部分收入。",
+      "id": "misc-0046",
+      "options": ["图瓦卢", "特立尼达和多巴哥", "塔吉克斯坦", "汤加"],
+      "question": "受电视和视频网站欢迎的互联网域名“.tv”属于哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "成千上万戴着巨大犄角面具的舞者要游行好几个小时；2001年，联合国教科文组织宣布它为非物质遗产代表作。",
+      "id": "misc-0073",
+      "options": ["玻利维亚", "秘鲁", "智利", "厄瓜多尔"],
+      "question": "以名为“diablada”的魔鬼舞闻名的奥鲁罗狂欢节在哪个国家举行？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "最早的明信片是素面卡片，留有写地址和简短留言的地方，邮资也更便宜。",
+      "id": "misc-0077",
+      "options": ["美国", "奥匈帝国", "英国", "普鲁士王国"],
+      "question": "1869年，哪个国家发行了世界上第一张官方明信片？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "这座奖杯以一名学生的名字命名，传说正是他抱着球跑，发明了英式橄榄球。",
+      "id": "sport-0060",
+      "options": ["加尔各答杯", "布莱迪斯洛杯", "六国赛奖杯", "韦伯·埃利斯杯"],
+      "question": "男子橄榄球世界杯的冠军获得什么奖杯？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "这种游戏从印度传到波斯，“shāh māt”（将死）一词就诞生在那里。",
+      "id": "misc-0042",
+      "options": ["印度", "埃及", "中国", "波斯"],
+      "question": "国际象棋由恰图兰卡发展而来，这种游戏来自哪个国家？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "约1000年前的宋代，纸币在中国流行开来，比欧洲使用纸币早得多。",
+      "id": "misc-0009",
+      "options": ["意大利", "英格兰", "荷兰", "中国"],
+      "question": "马可·波罗惊讶地看到哪里的人用纸币付款？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "围棋被认为是至今仍在持续流传的最古老的棋类游戏；它可能出现的局面比宇宙中的原子还多。",
+      "id": "misc-0005",
+      "options": ["象棋", "围棋", "将棋", "麻将"],
+      "question": "哪种用黑白棋子下的棋类游戏在中国已有2500多年历史？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "A0的面积被规定为1平方米；A4是它的十六分之一。",
+      "id": "misc-0072",
+      "options": ["0.5平方米", "1.5平方米", "2平方米", "1平方米"],
+      "question": "一张A0纸的面积是多少？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "在罗马，新鞋把他的脚磨出了水泡，于是他脱鞋参赛并创造了世界最好成绩；四年后他穿着鞋在东京再次夺冠。",
+      "id": "sport-0059",
+      "options": ["800米", "越野跑", "马拉松", "1万米"],
+      "question": "1960年，埃塞俄比亚的阿贝贝·比基拉赤脚跑步夺得奥运金牌。是哪个项目？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "每次重新油漆要用约60吨油漆；这座铁塔在夏季高温下还会长高约15厘米。",
+      "id": "misc-0047",
+      "options": ["每年", "每25年", "每7年", "每50年"],
+      "question": "埃菲尔铁塔大约多久重新油漆一次？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "琥珀金是金和银的天然混合物；吕底亚位于今天的土耳其西部。",
+      "id": "misc-0075",
+      "options": ["纯金", "青铜", "琥珀金", "纯银"],
+      "question": "约公元前600年在吕底亚铸造的最早的硬币是用什么做的？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "骑手抢夺并传递一个装有皮把手的球，再把它扔进一个圈里，有点像篮球和马球的结合。",
+      "id": "sport-0047",
+      "options": ["穿着冰鞋", "骑在马上", "在泳池里", "在沙丘上"],
+      "question": "1953年起成为阿根廷官方国家运动的帕托是怎么玩的？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "这个说法来自19世纪90年代的美国俚语，当时“bird”指非常出色的东西。",
+      "id": "sport-0021",
+      "options": ["柏忌", "老鹰球", "小鸟球", "信天翁球"],
+      "question": "高尔夫中，单洞低于标准杆一杆叫什么？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "双格洛斯特奶酪滚下山时速度可达约每小时100公里，所以几乎不可能追上。",
+      "id": "misc-0036",
+      "options": ["一轮奶酪", "一桶啤酒", "一捆干草", "一个巨蛋"],
+      "question": "在英格兰的库珀山比赛中，参赛者要沿陡坡追逐什么？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "糯米中的支链淀粉让石灰灰浆更耐久、更不易透水；城墙、宝塔和陵墓都用过这种灰浆。",
+      "id": "misc-0086",
+      "options": ["羊奶", "糯米", "蛋黄", "蜂蜜"],
+      "question": "中国明代的一些城墙在灰浆中掺入了哪种出人意料的材料？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "这个国名于1984年启用，结合了当地莫雷语和迪乌拉语两种语言的词；此前该国叫上沃尔特。",
+      "id": "misc-0082",
+      "options": ["马里", "布基纳法索", "尼日尔", "塞内加尔"],
+      "question": "哪个非洲国家的国名大意是“正直之人的土地”？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "圣尼古拉斯在11月中旬乘汽船到来；主要的送礼之夜是12月5日。",
+      "id": "misc-0064",
+      "options": ["西班牙", "瑞士", "荷兰", "意大利"],
+      "question": "在哪个国家，孩子们会摆出鞋子，盼着圣尼古拉斯（Sinterklaas）送来糖果？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "从12世纪起，独角兽就是苏格兰的象征，还出现在王室纹章上。",
+      "id": "misc-0053",
+      "options": ["高地牛", "金雕", "马鹿", "独角兽"],
+      "question": "苏格兰的国兽是什么？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "每年12月23日，艺术家们把巨大的萝卜雕成人物、动物和建筑等精细场景。",
+      "id": "misc-0083",
+      "options": ["普埃布拉", "梅里达", "瓦哈卡", "瓜达拉哈拉"],
+      "question": "墨西哥的“萝卜之夜”雕刻萝卜大赛在哪座城市举行？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "在意大利，不吉利的是17日星期五。",
+      "id": "misc-0067",
+      "options": ["13日星期日", "13日星期四", "13日星期二", "13日星期一"],
+      "question": "在西班牙和希腊，传统上被视为不吉利的不是13日星期五，而是哪一天？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "《皇家进行曲》是世界上少数几首没有官方歌词、只演奏乐曲的国歌之一。",
+      "id": "misc-0054",
+      "options": ["法国", "西班牙", "葡萄牙", "意大利"],
+      "question": "哪个国家的国歌没有官方歌词？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "《自由颂》是诗人迪奥尼西奥斯·索洛莫斯的一首诗；通常只唱前两段。",
+      "id": "misc-0084",
+      "options": ["乌拉圭", "阿根廷", "希腊", "土耳其"],
+      "question": "哪个国家的国歌段落最多，全文共158段？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "世界锦标赛在芬兰松卡耶尔维举行，赛道长253.5米，还设有一处水障碍。",
+      "id": "misc-0068",
+      "options": ["爱沙尼亚", "挪威", "芬兰", "瑞典"],
+      "question": "背妻赛跑这种障碍赛起源于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "也就是24小时×60分钟；一天则有8.64万秒。",
+      "id": "misc-0090",
+      "options": ["1840", "1640", "1440", "1240"],
+      "question": "一天有多少分钟？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "头被视为身体最神圣的部位，脚则是最低下的部位，所以用脚指着别人也很失礼。",
+      "id": "misc-0035",
+      "options": ["手部", "头部", "肩膀", "手肘"],
+      "question": "在泰国，触碰别人身体的哪个部位尤其不礼貌？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "人们在卡帕多奇亚松软的火山岩中凿出了房屋、教堂，甚至整座地下城市。",
+      "id": "misc-0030",
+      "options": ["约旦", "土耳其", "摩洛哥", "希腊"],
+      "question": "以乘热气球俯瞰“仙人烟囱”岩石而闻名的卡帕多奇亚位于哪个国家？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "瑙莱坞每年出产大量电影，其中许多是低预算、快速拍成的。",
+      "id": "misc-0065",
+      "options": ["宝莱坞", "托莱坞", "瑙莱坞", "洛莱坞"],
+      "question": "尼日利亚庞大的电影产业有什么绰号？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "正面是国徽，背面则是带有狮子的国库印章。",
+      "id": "misc-0070",
+      "options": ["乌拉圭", "危地马拉", "巴拉圭", "秘鲁"],
+      "question": "哪个国家的国旗正面和背面图案不同？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "不丹国王在20世纪70年代提出了这一理念，认为幸福比国民收入更重要。",
+      "id": "misc-0018",
+      "options": ["尼泊尔", "不丹", "丹麦", "冰岛"],
+      "question": "哪个国家以衡量“国民幸福总值”而闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "一些航空公司的飞机上也没有第13排；而在东亚部分地区，建筑跳过的是4楼。",
+      "id": "misc-0025",
+      "options": ["17", "7", "4", "13"],
+      "question": "西方许多建筑因为认为不吉利而跳过哪个楼层号？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "约3600年前的一次巨大火山喷发后，圣托里尼新月形的火山口才形成了今天的样子。",
+      "id": "misc-0031",
+      "options": ["凯法洛尼亚岛", "圣托里尼岛", "科孚岛", "克里特岛"],
+      "question": "哪个希腊岛屿以火山口边缘上蓝顶白墙的房屋闻名？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "舍夫沙万坐落在里夫山脉中；相比之下，马拉喀什被称为“红城”。",
+      "id": "misc-0066",
+      "options": ["舍夫沙万", "非斯", "马拉喀什", "拉巴特"],
+      "question": "哪座摩洛哥小镇以漆成各种蓝色的街道闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "一名意大利杂工把它藏在工作服下带走；两年后，这幅画在佛罗伦萨被找回。",
+      "id": "misc-0055",
+      "options": [
+        "《美杜莎之筏》",
+        "《迦拿的婚礼》",
+        "《自由引导人民》",
+        "《蒙娜丽莎》"
+      ],
+      "question": "哪幅画在1911年从卢浮宫被盗后名气大增？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "这个名字把这座城市的旧称“Bombay”和“Hollywood”（好莱坞）合在了一起。",
+      "id": "misc-0029",
+      "options": ["德里", "金奈", "加尔各答", "孟买"],
+      "question": "印地语电影产业宝莱坞的基地在哪座城市？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "这块标志于1923年为宣传一个住宅开发项目而建，1949年去掉了最后四个字母。",
+      "id": "misc-0063",
+      "options": [
+        "Hollywood Hills",
+        "Hollywood Studios",
+        "Holly Woods",
+        "Hollywoodland"
+      ],
+      "question": "好莱坞标志最初写的是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "所以1对6、2对5、3对4；一颗骰子上所有的点加起来是21。",
+      "id": "misc-0089",
+      "options": ["六", "八", "十二", "七"],
+      "question": "标准六面骰子上，相对两面的点数之和总是多少？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "红灯在上的固定顺序，让色盲司机也能根据灯的位置看懂信号。",
+      "id": "misc-0021",
+      "options": ["黄色", "红色", "蓝色", "绿色"],
+      "question": "竖排的交通信号灯，通常哪种颜色在最上面？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "特鲁利屋用干砌石墙建成，圆锥形屋顶由层层叠放的石灰岩石板构成。",
+      "id": "misc-0087",
+      "options": ["彩绘木制小屋", "锥顶特鲁利屋", "岩洞住所", "水上高脚屋"],
+      "question": "意大利小镇阿尔贝罗贝洛以哪种房屋闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "在北半球，日晷影子的移动方向和今天钟表指针的转动方向相同。",
+      "id": "misc-0056",
+      "options": [
+        "中世纪教皇下令",
+        "配合书写方向",
+        "受地磁影响",
+        "模仿日晷影子"
+      ],
+      "question": "钟表的指针为什么按“顺时针”方向转？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "据说它举起的爪子能把顾客和好运招进店里。",
+      "id": "misc-0024",
+      "options": ["起舞的狐仙", "招手的幸运猫", "三足幸运蛙", "守门的神龙"],
+      "question": "日本商店里常见的“maneki-neko”摆件是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "这面旗叫“日之丸”（Hinomaru），意为“太阳之圆”。",
+      "id": "misc-0023",
+      "options": ["帕劳", "日本", "老挝", "孟加拉国"],
+      "question": "哪个国家的国旗是白底上一个红色圆形？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "黑森林的工匠从18世纪起就在制作布谷鸟钟，尽管很多人以为它来自瑞士。",
+      "id": "misc-0069",
+      "options": [
+        "德国黑森林",
+        "瑞士阿尔卑斯山",
+        "奥地利蒂罗尔",
+        "巴伐利亚湖区"
+      ],
+      "question": "传统的布谷鸟钟来自哪个地区？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "这座仿建小镇于2012年在广东省落成；真正的哈尔施塔特是联合国教科文组织世界遗产。",
+      "id": "misc-0088",
+      "options": ["奥地利", "斯洛文尼亚", "瑞士", "德国"],
+      "question": "中国按原尺寸仿建了哪个国家的湖畔小镇哈尔施塔特？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "在许多国家，25年是银婚，60年是钻石婚。",
+      "id": "misc-0034",
+      "options": ["40年", "60年", "25年", "50年"],
+      "question": "金婚纪念的是结婚多少年？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "马走L形，是唯一能跳过其他棋子的棋子。",
+      "id": "misc-0020",
+      "options": ["马", "象", "王", "车"],
+      "question": "在国际象棋中，哪个棋子可以越过其他棋子？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "车行方向变红灯时，行人从四面八方同时穿过马路，有时一次就有几千人。",
+      "id": "misc-0027",
+      "options": ["旋转玻璃桥", "自动人行道", "全向十字路口", "水上市场"],
+      "question": "东京涩谷以哪种街道设施闻名？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "这座雕像于1820年在米洛斯岛被发现；她缺失的双臂一直没有找到。",
+      "id": "misc-0028",
+      "options": ["普拉多博物馆", "梵蒂冈博物馆", "大英博物馆", "卢浮宫"],
+      "question": "古希腊雕像《米洛的维纳斯》收藏在哪座博物馆？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "每到整点，十二使徒的人像就会在钟面上方的小窗口中依次出现。",
+      "id": "misc-0060",
+      "options": ["克拉科夫", "维也纳", "斯特拉斯堡", "布拉格"],
+      "question": "哪座城市拥有1410年安装、至今仍在运转的最古老的天文钟？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "选择这种颜色，是因为它既能与周围景色融为一体，又能在常见的大雾中格外醒目。",
+      "id": "misc-0032",
+      "options": ["砖红色", "国际橙", "金黄色", "加州罂粟金"],
+      "question": "旧金山金门大桥的官方颜色叫什么？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "大多数三叶草的叶子有三片小叶；第四片小叶是一种罕见的基因变异，所以成了幸运的象征。",
+      "id": "misc-0062",
+      "options": [
+        "约五千分之一",
+        "约五百分之一",
+        "约五百万分之一",
+        "约五十分之一"
+      ],
+      "question": "四叶草大约有多罕见？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "库伯佩迪夏季气温可超过45°C，而凿在岩石中的“地屋”能保持在约23至25°C；那里甚至还有地下教堂。",
+      "id": "misc-0079",
+      "options": ["墨西哥", "智利", "南非", "澳大利亚"],
+      "question": "在哪个国家，一座蛋白石矿业小镇的许多居民住在地下以躲避炎热？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "相传背对喷泉越过肩膀扔一枚硬币，就会重返罗马；这些钱会被收集起来用于慈善。",
+      "id": "misc-0017",
+      "options": ["硬币", "大米", "面包", "鲜花"],
+      "question": "游客传统上会往罗马的特雷维喷泉里扔什么？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "这棵树是奥斯陆市为感谢英国在20世纪40年代给予的支持而赠送的。",
+      "id": "misc-0057",
+      "options": ["芬兰", "丹麦", "挪威", "瑞典"],
+      "question": "自1947年起，哪个国家每年都向伦敦赠送一棵圣诞树，立在特拉法加广场？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "这源自阿兹特克人的传说：他们要在看到一只鹰站在仙人掌上吃蛇的地方建都。",
+      "id": "misc-0022",
+      "options": ["叼蛇的雄鹰", "有脸的太阳", "长羽毛的蛇", "旭日下的美洲豹"],
+      "question": "墨西哥国旗上，仙人掌上站着什么？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "它由12块黑色五边形和20块白色六边形组成，这种设计在1970年世界杯上首次使用。",
+      "id": "misc-0059",
+      "options": ["32块", "36块", "24块", "28块"],
+      "question": "经典黑白拼块足球一共有多少块拼片？"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "巴伐利亚国王路德维希二世在19世纪把它建成一座童话般的隐居之所，而不是用于防御。",
+      "id": "misc-0033",
+      "options": ["奥地利", "瑞士", "法国", "德国"],
+      "question": "启发了迪士尼著名城堡的新天鹅堡位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "选择SOS，是因为它的摩尔斯电码（三短、三长、三短）容易发送，也容易辨认。",
+      "id": "misc-0061",
+      "options": ["快派救援", "没有含义", "救救我们的灵魂", "救救我们的船"],
+      "question": "求救信号SOS代表什么？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "下雨时毛纤维会膨胀，堵住织物的缝隙；干热时，稀疏的织法又能让空气流通。",
+      "id": "misc-0085",
+      "options": ["山羊毛", "棕榈纤维", "棉花", "骆驼皮"],
+      "question": "被称为“毛发之屋”的贝都因传统帐篷主要用什么织成？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "鲤鱼能逆着湍急的水流向上游，象征孩子们的力量和成功。",
+      "id": "misc-0058",
+      "options": ["鲑鱼", "金鱼", "鲤鱼", "金枪鱼"],
+      "question": "在日本的儿童节，家家户户挂起什么鱼形状的彩幡？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "威尼斯有400多座桥；人们步行或乘船出行，就连救护车和垃圾收运也是如此。",
+      "id": "misc-0026",
+      "options": ["汽车", "教堂", "桥梁", "商店"],
+      "question": "下列哪种东西在威尼斯历史中心的街道上见不到？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "每个小伙在圣诞节前的不同夜晚到来，名字诸如“舔勺子的”和“摔门的”。",
+      "id": "misc-0081",
+      "options": ["冰岛", "爱沙尼亚", "挪威", "法罗群岛"],
+      "question": "哪个国家的圣诞传统中有13个调皮的“圣诞小伙”（Yule Lads）？"
+    }
+  ]
+}

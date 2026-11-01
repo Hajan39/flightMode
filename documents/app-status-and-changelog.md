@@ -131,6 +131,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-11-02
+
+- svetovy kviz: serverove balicky ve vsech 12 jazycich (preklad + nezavisla recenze kazdeho jazyka, `<lang>_drop` pro otazky prozrazujici odpoved nebo citlive v danem jazyce); fun pass nahradil 110 nejslabsich otazek
+
 ## 2026-11-01
 
 - Detsky rezim — 6 novych ciste detskych her (celkem 12, mimo dospely registr): Barvy / omalovanky (`games/colouring`, 4 obrazky z jednoduchych tvaru bez SVG, 6 pastelek, ✓ = oslava), Stiny (`games/shadows`, silueta = emoji pres `filter: brightness(0)`, 5 kol), Pocitani (`games/counting`, 1–5 predmetu, tlacitka s teckami jako na kostce, 5 kol), Tvary (`games/shapes`, tazeni do obrysu, prichyceni, spatny obrys = zavrteni a navrat), Tecky (`games/dot-to-dot`, 1→5 pak 1→7, cara a odhaleni obrazku) a Bludiste (`games/maze`, seedovane DFS bludiste 4×4 → 5×5 → 6×6 v `utils/kidsMaze.ts`, tah prstem nebo klepnuti na sousedni pole, napoveda po 6 s). Logika v `utils/kidsGames.ts` + `utils/kidsMaze.ts`, testy `__tests__/kidsNewGames.test.ts`, smoke + e2e rozsireny; detsky home 12 dlazdic od nejjednodussi, barvy dlazdic se cykli pres `kidsTile1–6`; 22 novych klicu ve 12 jazycich.
