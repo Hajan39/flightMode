@@ -158,6 +158,15 @@ Multiplayer (pass-and-play / shared-screen) components in `components/multiplaye
 
 **Timer rule:** timed games must derive elapsed time from `Date.now()` wall-clock deadlines, not chained JS `setTimeout` ticks — fast taps can inflate tick-based timers.
 
+## Kids mode
+
+Parent feature for ages 3–6 (Settings → Kids mode). The app stays a general-audience app on Google Play — do not change the Play target audience.
+- State: `kidsMode` in `store/useSettingsStore.ts` (persisted) · `hooks/useKidsMode.ts` · `isKidsModeOn()` for non-React code.
+- Route lock: `app/_layout.tsx` applies `decideRootRedirect()` (`utils/kidsMode.ts`, pure, tested) — while on, every route goes to `/kids`; while off, `/kids` goes Home. Kids area: `app/kids/_layout.tsx` (stops audio), `app/kids/index.tsx` (picture tiles, Android back = background), `app/kids/[id].tsx` (game host). Exit = `components/kids/KidsParentLock.tsx`, hold 3 s (`parentHoldState`).
+- Games: registry `data/kidsGames.ts`; variants are separate files `games/<id>/kids.tsx` (memory, odd-one-out, simon-says, whack-mole, sliding-puzzle, cargo-catch) with pure logic in `utils/kidsGames.ts`. No rules / countdown / timer pressure / score / losing; end = `components/kids/KidsCelebration.tsx`. **Rules: adult game files stay unchanged; kids variants never call `updateProgress` / `recordMatch`.**
+- Central guards (tested in `__tests__/kidsMode.test.ts`): `captureAnalyticsEvent` no-op (nothing queued) + upload mode `hold`; `updateProgress`, `checkAndUnlock`, `updateStreak` write nothing; no review prompt, Play Games auto sign-in, `AchievementToast` or OTA dialog. Purchases, articles and links are unreachable via the route lock. Smoke: `__tests__/kidsGamesSmoke.test.ts`.
+- Colors: `kidsBackground`, `kidsTile1…6`, `kidsOnTile` in every palette (AA checked in `themeContrast.test.ts`).
+
 ## Content
 
 44 bundled articles in `data/content.json` (all in en/cs/de; the 14 Travel Tips + Health ones also in es/fr/it/pl/pt). Served through `hooks/useContentItems.ts` which merges bundled data with optional remote sync cache (`store/useContentStore.ts`).

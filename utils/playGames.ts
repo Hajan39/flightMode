@@ -120,12 +120,15 @@ export function isPlayGamesAvailable(): boolean {
 export function shouldAutoSignInPlayGames(state: {
   settingsHydrated: boolean;
   isFirstLaunch: boolean;
+  /** Kids mode: never show Play's sign-in prompt to a child. */
+  kidsMode?: boolean;
   /** First route segment, e.g. "(tabs)" or "onboarding"; undefined at root. */
   routeSegment: string | undefined;
 }): boolean {
   return (
     state.settingsHydrated &&
     !state.isFirstLaunch &&
+    !state.kidsMode &&
     state.routeSegment !== "onboarding"
   );
 }

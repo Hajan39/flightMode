@@ -30,6 +30,7 @@ import { useAchievementStore } from "@/store/useAchievementStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { installGlobalErrorHandler } from "@/utils/errorLogging";
 import { runAfterHydration } from "@/utils/hydration";
+import { decideRootRedirect } from "@/utils/kidsMode";
 
 // Record uncaught JS errors that a React error boundary cannot catch
 // (async callbacks, native module init). Installed at module load — before
@@ -122,6 +123,7 @@ function RootStack() {
   const router = useRouter();
   const segments = useSegments();
   const isFirstLaunch = useSettingsStore((s) => s.isFirstLaunch);
+  const kidsMode = useSettingsStore((s) => s.kidsMode);
   // isFirstLaunch defaults to true until persisted settings load; redirecting
   // before then would send returning users back to onboarding.
   const [settingsHydrated, setSettingsHydrated] = useState(() =>
@@ -167,19 +169,32 @@ function RootStack() {
     return unsubscribe;
   }, []);
 
-  // Read the live value: on the statically rendered web build the first
-  // client render uses the store's server snapshot (isFirstLaunch: true)
-  // even though persisted settings have already loaded.
+  // Onboarding + kids-mode route lock (pure decision in utils/kidsMode.ts).
+  // Read the live values: on the statically rendered web build the first
+  // client render uses the store's server snapshot (isFirstLaunch: true,
+  // kidsMode: false) even though persisted settings have already loaded.
   useEffect(() => {
-    if (
-      settingsHydrated &&
-      isFirstLaunch &&
-      useSettingsStore.getState().isFirstLaunch &&
-      segments[0] !== "onboarding"
-    ) {
-      router.replace("/onboarding");
+    if (!settingsHydrated) {
+      return;
     }
-  }, [settingsHydrated, isFirstLaunch, segments]);
+    const live = useSettingsStore.getState();
+    const target = decideRootRedirect({
+      hydrated: settingsHydrated,
+      isFirstLaunch: isFirstLaunch && live.isFirstLaunch,
+      kidsMode: kidsMode || live.kidsMode,
+      segment: segments[0],
+    });
+    if (target === null) {
+      return;
+    }
+    if (target === "/") {
+      // Leaving kids mode: back to the Home already under the kids area
+      // (replaces it when there is none, e.g. after a cold start).
+      router.dismissTo("/");
+      return;
+    }
+    router.replace(target);
+  }, [router, settingsHydrated, isFirstLaunch, kidsMode, segments]);
 
   return (
     <Stack
@@ -234,6 +249,10 @@ function RootStack() {
       <Stack.Screen
         name="phrasebook"
         options={{ title: t("stackPhrasebook") }}
+      />
+      <Stack.Screen
+        name="kids"
+        options={{ gestureEnabled: false, headerShown: false }}
       />
     </Stack>
   );

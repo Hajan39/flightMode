@@ -99,6 +99,7 @@ function PostHogSink({ children }: PropsWithChildren) {
     useSettingsStore.persist.hasHydrated()
   );
   const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
+  const kidsMode = useSettingsStore((s) => s.kidsMode);
   const syncNetworkPolicy = useSettingsStore((s) => s.syncNetworkPolicy);
   const isConnected = useNetworkStore((s) => s.isConnected);
   const isInternetReachable = useNetworkStore((s) => s.isInternetReachable);
@@ -117,6 +118,7 @@ function PostHogSink({ children }: PropsWithChildren) {
   const mode = getAnalyticsUploadMode({
     enabled: analyticsEnabled,
     hydrated,
+    kidsMode,
     networkAllowsUpload: analyticsNetworkAllowsUpload(
       { isConnected, isInternetReachable, type: networkType },
       syncNetworkPolicy

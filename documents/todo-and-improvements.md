@@ -59,6 +59,8 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P1 (blizsi iterace)
 
+- **Detsky rezim — navazujici kroky (2026-11-01)**: otestovat na realnem zarizeni s ditetem 3–6 let (velikost dlazdic, rodicovsky zamek drzenim 3 s, TalkBack pro rodice, Android zpet, otoceni na tabletu); nove ciste detske hry (omalovanky, tvary/barvy, zvirata a jejich zvuky — bez textu); text Play listingu pro rodice (popsat Detsky rezim jako funkci pro rodice) — **NEmenit cilove publikum v Play Console** (aplikace zustava pro dospele / obecne publikum); zvazit zobrazeni vstupu i na Home (zatim jen Nastaveni)
+
 - nalezy z device QA 2026-10-10 (neopraveno): Hadej slovo nevaliduje tipy proti slovniku (lze zadat libovolnych 5 pismen) a ma jen cs/de/en (kviz, Obrana nebe a cs/de Hadej slovo opraveny v 1.5.2); Letovy kviz a Hledani slov startuji bez odpoctu (u klidnych her OK)
 - vyuzit centralni online/offline stav pro budouci analytics flush debug a Strapi sync gating
 - navazat na novou retention event vrstvu (`app_open_count`, `second_session_started`, `first_session_completed`, `flight_setup_completed`) a postavit nad ni tydne vyhodnocovane D1/D7 dashboardy

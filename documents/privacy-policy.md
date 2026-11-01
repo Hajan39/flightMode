@@ -1,6 +1,6 @@
 # Privacy Policy — FlightMode
 
-**Last updated:** 31 October 2026
+**Last updated:** 1 November 2026
 
 ## 1. Introduction
 
@@ -80,6 +80,8 @@ We do not sell or rent data. The App contains no advertising SDKs. The App has n
 ## 6. Children's Privacy
 
 The App does not knowingly collect personal information from children. The analytics described above are anonymous and can be switched off.
+
+**Kids mode:** a parent can switch on Kids mode (Settings) for young children. While it is on, the app sends no analytics, offers no purchases or external links, and records no game progress. Leaving Kids mode requires holding the lock button for 3 seconds.
 
 ## 7. Data Retention and Deletion
 

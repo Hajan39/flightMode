@@ -32,6 +32,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - home dashboard s daily challenge, play together a flight utility kartou; navic flight-aware sekce "Games for your flight" (hry podle zbyvajiciho casu letu), "Jump back in" (naposledy hrane hry) a CTA na pre-flight readiness screen
 - pre-flight readiness screen (modal): potvrzeni offline dostupnosti (hry/clanky/relax s pocty), stav site a pri online rucni "Download latest content"
 - relax: breathing + ambient audio + sleep timer
+- detsky rezim (3–6 let, zapina rodic v Nastaveni): uzavreny prostor `app/kids/*` s 6 obrazkovymi variantami her, odchod jen pres rodicovsky zamek (drzet 3 s); bez analytiky, nakupu, odkazu a zaznamu postupu
 - PostHog SDK foundation pro anonymni produktovou analytiku, pokud je nakonfigurovany `EXPO_PUBLIC_POSTHOG_KEY`
 - Expo Network foundation pro online/offline stav v root bootstrapu
 - article sync: staticky feed `content/feed.json` z verejneho GitHub repa (zdarma, bez backendu), persisted cache, fallback na bundled `data/content.json`; karta destinace odkazuje na clanek `destination-<id>`
@@ -129,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - advanced personalization
 
 ## 4. Changelog
+
+## 2026-11-01
+
+- Detsky rezim (3–6 let, zapina rodic v Nastaveni → Detsky rezim): `kidsMode` v `store/useSettingsStore.ts` (persist, stare ulozene nastaveni → `false`), `hooks/useKidsMode.ts`; zamek rout v `app/_layout.tsx` pres cistou funkci `decideRootRedirect` (`utils/kidsMode.ts`) drzi vse v `app/kids/*` (deep linky, notifikace, Android zpet na detskem home = aplikace do pozadi); detsky home `app/kids/index.tsx` (velke obrazkove dlazdice 2/3 sloupce, rodicovsky zamek = drzet 3 s s krouzkem a haptikou, `components/kids/KidsParentLock.tsx`), host her `app/kids/[id].tsx`, registr `data/kidsGames.ts`; 6 detskych variant `games/<id>/kids.tsx` (memory, odd-one-out, simon-says, whack-mole, sliding-puzzle, cargo-catch; logika `utils/kidsGames.ts`) bez pravidel, odpoctu, skore, casu a prohry, konec `KidsCelebration` (▶ / 🏠); dospele hry beze zmeny. Centralni pojistky: `captureAnalyticsEvent` je no-op (nic se nefrontuje), upload mode `hold`, `updateProgress` / `checkAndUnlock` / `updateStreak` nic nezapisi, zadny review prompt, Play Games auto sign-in, achievement toast ani OTA dialog; hudba se zastavi. Barevne tokeny `kidsBackground` / `kidsTile1–6` / `kidsOnTile` ve vsech 5 paletach (kontrast testovan). Privacy policy (md + web en/cs) doplnena, "Last updated" 1. 11. 2026. Testy: `__tests__/kidsMode.test.ts`, `__tests__/kidsGamesSmoke.test.ts`.
 
 ## 2026-10-31
 

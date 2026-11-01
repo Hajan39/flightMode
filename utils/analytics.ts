@@ -299,8 +299,8 @@ export function disableAnalytics() {
 /**
  * What the PostHog bridge should do right now:
  * - `disabled` — user opted out: drop the in-app queue, opt PostHog out.
- * - `hold` — settings not hydrated yet (opt-out unknown), or the sync network
- *   policy forbids uploading on the current network: keep events in the
+ * - `hold` — settings not hydrated yet (opt-out unknown), kids mode is on, or
+ *   the sync network policy forbids uploading on the current network: keep events in the
  *   bounded, durable (survives restarts) in-app queue, hand nothing to PostHog.
  * - `send` — forward to PostHog (which queues + uploads them).
  */
@@ -311,10 +311,19 @@ export function getAnalyticsUploadMode(input: {
   enabled: boolean;
   /** Settings store finished loading from storage. */
   hydrated: boolean;
+  /**
+   * Kids mode on: upload nothing while a child uses the app (events held
+   * from earlier adult use wait for kids mode to end; new ones are never
+   * captured — see `captureAnalyticsEvent`).
+   */
+  kidsMode?: boolean;
   /** `canSyncOnNetwork(network, syncNetworkPolicy)` — false for policy `off`. */
   networkAllowsUpload: boolean;
 }): AnalyticsUploadMode {
   if (!input.hydrated) {
+    return "hold";
+  }
+  if (input.kidsMode && input.enabled) {
     return "hold";
   }
   if (!input.enabled) {
@@ -414,11 +423,25 @@ export function normalizeRouteSource(source: unknown): string {
     : "other";
 }
 
+/**
+ * Kids mode (a child is using the app): nothing is captured — not sent, not
+ * queued, not persisted. Read lazily from the settings store at capture time
+ * (a static import would be circular: settings → persistStorage → analytics).
+ */
+function kidsModeActive(): boolean {
+  try {
+    const { useSettingsStore } = require("@/store/useSettingsStore");
+    return useSettingsStore.getState().kidsMode === true;
+  } catch {
+    return false;
+  }
+}
+
 export function captureAnalyticsEvent(
   eventName: AnalyticsEventName,
   properties?: AnalyticsProperties
 ) {
-  if (disabled) {
+  if (disabled || kidsModeActive()) {
     return;
   }
 

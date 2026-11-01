@@ -12,6 +12,7 @@ import Colors from "@/constants/Colors";
 import { FontSize } from "@/constants/Typography";
 import { achievements } from "@/data/achievements";
 import { useHaptic } from "@/hooks/useHaptic";
+import { useKidsMode } from "@/hooks/useKidsMode";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAchievementStore } from "@/store/useAchievementStore";
 
@@ -22,6 +23,9 @@ export default function AchievementToast() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
+  // Kids mode: no unlocks happen, and a toast left over from adult use is
+  // hidden (achievement text is not for a child).
+  const kidsMode = useKidsMode();
   const newUnlockedIds = useAchievementStore((s) => s.newUnlockedIds);
   const clearNewUnlocked = useAchievementStore((s) => s.clearNewUnlocked);
   const [visible, setVisible] = useState<string | null>(null);
@@ -60,10 +64,10 @@ export default function AchievementToast() {
     ? `${t("achievementUnlocked")}: ${t(unlocked.titleKey)}`
     : "";
   useEffect(() => {
-    if (announcement) {
+    if (announcement && !kidsMode) {
       AccessibilityInfo.announceForAccessibility(announcement);
     }
-  }, [announcement]);
+  }, [announcement, kidsMode]);
 
   // Auto-dismiss after DISPLAY_MS (separate effect so cleanup doesn't kill the timer)
   useEffect(() => {
@@ -74,7 +78,7 @@ export default function AchievementToast() {
     return () => clearTimeout(timer);
   }, [visible]);
 
-  if (!visible) {
+  if (!visible || kidsMode) {
     return null;
   }
 
