@@ -1,0 +1,2656 @@
+{
+  "id": "pack-004",
+  "lang": "cs",
+  "questions": [
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Větrné mlýny čerpaly vodu z nízko položených polderů; 19 mlýnů v Kinderdijku je zapsáno na seznamu světového dědictví UNESCO.",
+      "id": "inv-0026",
+      "options": [
+        "Odčerpávání vody z půdy",
+        "Výroba elektřiny",
+        "Signalizace lodím",
+        "Pohon přístavních majáků"
+      ],
+      "question": "Jaký byl hlavní úkol většiny historických větrných mlýnů v Nizozemsku?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Otáčející se šroub v trubce se dodnes používá k přepravě vody a obilí, a dokonce v některých čerpadlech šetrných k rybám.",
+      "id": "inv-0022",
+      "options": [
+        "K vážení zlata",
+        "K mletí obilí",
+        "Ke zvedání vody",
+        "K měření času"
+      ],
+      "question": "K čemu sloužil Archimédův šroub?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Torricelli, Galileův žák, ukázal, že tlak vzduchu udrží sloupec rtuti vysoký asi 76 cm.",
+      "id": "inv-0050",
+      "options": [
+        "Galileo Galilei",
+        "Otto von Guericke",
+        "Evangelista Torricelli",
+        "Blaise Pascal"
+      ],
+      "question": "Kdo vynalezl v roce 1643 rtuťový barometr?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "George de Mestral zkoumal plody lopuchu pod mikroskopem a uviděl drobné háčky, které se zachytávaly za smyčky.",
+      "id": "inv-0044",
+      "options": ["Lichtenštejnsko", "Norsko", "Švédsko", "Švýcarsko"],
+      "question": "Suchý zip vznikl podle lopuchových plodů zachycených v psí srsti. Ze které země byl jeho vynálezce?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "George Eastman zvolil název Kodak, protože měl rád písmeno K a chtěl jméno, které se snadno vysloví v jakémkoli jazyce.",
+      "id": "inv-0053",
+      "options": ["Leica", "Nikon", "Canon", "Kodak"],
+      "question": "Fotoaparát které firmy z roku 1888 provázel slogan „Vy zmáčknete tlačítko, my uděláme zbytek“?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Navrhl ho inženýr Volva Nils Bohlin a firma nechala ostatní automobilky používat patent zdarma.",
+      "id": "inv-0027",
+      "options": ["Ford", "Mercedes-Benz", "Volvo", "Saab"],
+      "question": "Která automobilka zavedla v roce 1959 moderní tříbodový bezpečnostní pás?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Název „radar“ byl původně zkratkou anglického „radio detection and ranging“.",
+      "id": "inv-0020",
+      "options": [
+        "Magnetického pole",
+        "Rádiových vln",
+        "Infračerveného světla",
+        "Zvukových vln"
+      ],
+      "question": "Pomocí čeho radar zjišťuje objekty?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Prototyp měl vespod dvě kovová kolečka a nahoře jediné tlačítko.",
+      "id": "inv-0062",
+      "options": ["Z oceli", "Z plastu", "Z gumy", "Ze dřeva"],
+      "question": "Z čeho byl kryt první počítačové myši Douglase Engelbarta (1964)?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Jacquardovy děrné štítky inspirovaly Babbage a později i první počítače.",
+      "id": "inv-0046",
+      "options": [
+        "Mosaznými ozubenými koly",
+        "Magnetickou páskou",
+        "Dřevěnými kolíky",
+        "Děrnými štítky"
+      ],
+      "question": "Čím se řídily vzory tkaní u Jacquardova stavu z roku 1804?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Vytvořila ho firma Denso Wave ke sledování autodílů; QR znamená „quick response“ (rychlá odezva).",
+      "id": "inv-0055",
+      "options": ["Japonsko", "Čína", "Spojené státy", "Jižní Korea"],
+      "question": "Ve které zemi byl v roce 1994 vynalezen QR kód?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "První vlaky londýnského metra táhly parní lokomotivy; Budapešť otevřela první elektrickou podzemní dráhu v kontinentální Evropě v roce 1896.",
+      "id": "inv-0023",
+      "options": ["Paříž", "Budapešť", "New York", "Londýn"],
+      "question": "Ve kterém městě byla v roce 1863 otevřena první podzemní dráha na světě?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Jeden z raných filmů Lumièrů zachycuje příjezd vlaku do stanice – krátkou scénu, která ohromila první diváky.",
+      "id": "inv-0017",
+      "options": ["Francie", "Spojené království", "Spojené státy", "Německo"],
+      "question": "Ve které zemi uspořádali bratři Lumièrové v roce 1895 své slavné první veřejné filmové představení?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Římské přístavní zdi se sopečným popelem odolávají mořské vodě už asi 2 000 let.",
+      "id": "inv-0048",
+      "options": [
+        "Drcené mušle",
+        "Sopečný popel",
+        "Zvířecí krev",
+        "Mořská sůl"
+      ],
+      "question": "Která přísada pomáhala římskému betonu tuhnout i pod vodou?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Cochraneová chtěla stroj, který by jí umyl nádobí, aniž by se otloukl její jemný porcelán.",
+      "id": "inv-0083",
+      "options": [
+        "Margaret Knightová",
+        "Josephine Cochraneová",
+        "Beulah Louise Henryová",
+        "Mary Andersonová"
+      ],
+      "question": "Kdo vynalezl v roce 1886 první komerčně úspěšnou myčku nádobí?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Dvojková soustava používá jen číslice 0 a 1, které odpovídají stavům „vypnuto“ a „zapnuto“ elektronických spínačů.",
+      "id": "inv-0024",
+      "options": ["Římské číslice", "Dvojkovou", "Dvanáctkovou", "Desítkovou"],
+      "question": "Kterou číselnou soustavu používají počítače k ukládání dat?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Byla nalezena v jeskyni u Tun-chuangu v Číně a dnes je uložena v Britské knihovně.",
+      "id": "inv-0085",
+      "options": [
+        "Šablonami",
+        "Pohyblivými kovovými literami",
+        "Dřevěnými deskami",
+        "Měděnými deskami"
+      ],
+      "question": "Čím byla vytištěna nejstarší datovaná tištěná kniha, Diamantová sútra z roku 868?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Prvními slovy, která Edison nahrál na staniol ovinutý kolem válce, byla dětská říkanka „Mary Had a Little Lamb“.",
+      "id": "inv-0012",
+      "options": [
+        "Alexander Graham Bell",
+        "Emile Berliner",
+        "Nikola Tesla",
+        "Thomas Edison"
+      ],
+      "question": "Který vynálezce předvedl v roce 1877 fonograf, přístroj pro záznam zvuku?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Faraday měl jen velmi málo formálního vzdělání a kariéru začínal jako asistent Humphryho Davyho.",
+      "id": "inv-0047",
+      "options": [
+        "Michael Faraday",
+        "Lord Kelvin",
+        "Humphry Davy",
+        "James Clerk Maxwell"
+      ],
+      "question": "Který britský vědec sestrojil v roce 1831 první elektrické dynamo?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "„Pohled z okna v Le Gras“ možná vyžadoval expozici několik hodin, nebo dokonce dní.",
+      "id": "inv-0052",
+      "options": [
+        "Louis Daguerre",
+        "Nicéphore Niépce",
+        "George Eastman",
+        "Henry Fox Talbot"
+      ],
+      "question": "Kdo kolem roku 1826 pořídil nejstarší dochovanou fotografii z fotoaparátu?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Tři satelity teoreticky stačí k určení polohy, ale čtvrtý je potřeba ke korekci hodin přijímače.",
+      "id": "inv-0054",
+      "options": [
+        "Nejméně čtyři",
+        "Nejméně šest",
+        "Nejméně tři",
+        "Nejméně dva"
+      ],
+      "question": "Kolik satelitů musí přijímač GPS zachytit, aby určil polohu ve 3D?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Dochovalo se asi 650 jeho nástrojů a nejlepší housle Stradivarius patří k nejcennějším nástrojům na světě.",
+      "id": "inv-0030",
+      "options": [
+        "Žesťových nástrojů",
+        "Hodin",
+        "Smyčcových nástrojů",
+        "Klavírů"
+      ],
+      "question": "Výrobcem jakých nástrojů byl slavný Antonio Stradivari?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Nejstarší brýle vznikly pravděpodobně v Pise nebo jejím okolí a pomáhaly lidem při čtení.",
+      "id": "inv-0071",
+      "options": ["Anglie", "Německo", "Itálie", "Čína"],
+      "question": "Kde byly kolem roku 1290 vyrobeny první brýle?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Fénická abeceda měla 22 písmen, všechna souhlásková; Řekové přidali písmena pro samohlásky.",
+      "id": "lang-0029",
+      "options": [
+        "Egyptské démotické písmo",
+        "Sanskrt",
+        "Klínové písmo",
+        "Fénické písmo"
+      ],
+      "question": "Která starověká abeceda je předchůdkyní řeckého, latinského i arabského písma?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Taíno mluvili lidé, s nimiž se Kolumbus setkal v roce 1492; z karibských jazyků pocházejí i slova „barbecue“ a „kánoe“.",
+      "id": "lang-0058",
+      "options": ["Nahuatl", "Kečuánština", "Guaraní", "Taíno"],
+      "question": "Který karibský jazyk dal světu slova „hurikán“ a „hamaka“ (houpací síť)?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Brazílie je největší portugalsky mluvící zemí a má mnohem víc mluvčích než samotné Portugalsko.",
+      "id": "lang-0007",
+      "options": ["Španělština", "Italština", "Portugalština", "Francouzština"],
+      "question": "Jaký je úřední jazyk Brazílie?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Poprvé se objevilo ve hře Karla Čapka R.U.R. z roku 1920; slovo navrhl jeho bratr Josef a vychází z „roboty“, tedy nucené práce.",
+      "id": "lang-0002",
+      "options": ["Polština", "Čeština", "Němčina", "Ruština"],
+      "question": "Ze kterého jazyka se do světa rozšířilo slovo „robot“?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Nahuatl byl jazykem Aztéků; z „tomatl“ vzniklo tomato a z „ahuacatl“ avokádo.",
+      "id": "lang-0024",
+      "options": ["Kečuánština", "Taíno", "Guaraní", "Nahuatl"],
+      "question": "Z kterého jazyka se do evropských jazyků dostala slova jako anglické „tomato“, „avokádo“ a „čokoláda“?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Leibnize fascinovalo, že podobné vzorce našel ve starověkých čínských hexagramech Knihy proměn (I-ťing).",
+      "id": "inv-0096",
+      "options": [
+        "Gottfried Leibniz",
+        "René Descartes",
+        "Isaac Newton",
+        "Christiaan Huygens"
+      ],
+      "question": "Který myslitel publikoval v roce 1703 evropskou studii o dvojkové aritmetice?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Spojuje japonské „e“ (obrázek) a „modži“ (znak); podobnost s anglickým „emotion“ je čistá náhoda.",
+      "id": "lang-0026",
+      "options": ["Korejština", "Japonština", "Angličtina", "Kantonština"],
+      "question": "Ze kterého jazyka bylo převzato slovo „emodži“?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Volta skládal na sebe zinkové a měděné kotouče proložené látkou napuštěnou slanou vodou; po něm je pojmenován volt.",
+      "id": "inv-0039",
+      "options": [
+        "André-Marie Ampère",
+        "Michael Faraday",
+        "Luigi Galvani",
+        "Alessandro Volta"
+      ],
+      "question": "Kdo v roce 1800 sestrojil první elektrickou baterii, Voltův sloup?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Appertova práce získala cenu francouzské vlády, která chtěla lepší jídlo na dlouhé cesty.",
+      "id": "inv-0076",
+      "options": [
+        "Lyofilizaci",
+        "Nasolování v sudech",
+        "Zavařování do sklenic",
+        "Uzení nad ohněm"
+      ],
+      "question": "Kterou metodu konzervace potravin zavedl kolem roku 1810 Nicolas Appert?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "„Orang“ znamená člověk a „hutan“ les; orangutani sdílejí s lidmi asi 97 % DNA.",
+      "id": "lang-0028",
+      "options": [
+        "Rudá opice",
+        "Lesní člověk",
+        "Šplhavec",
+        "Lezec po korunách"
+      ],
+      "question": "Co znamená v malajštině slovo „orangutan“?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Chemik firmy 3M Spencer Silver vyrobil slabě lepivé lepidlo v roce 1968; kolega ho později použil na záložky ve zpěvníku.",
+      "id": "inv-0100",
+      "options": [
+        "Slabého lepidla",
+        "Nepromokavého papíru",
+        "Silného vteřinového lepidla",
+        "Rychleschnoucího inkoustu"
+      ],
+      "question": "Z náhodného objevu čeho vznikly lepicí bločky Post-it?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Od roku 1866 spojoval kabel na dně Atlantiku Evropu a Severní Ameriku telegrafem.",
+      "id": "inv-0032",
+      "options": [
+        "Po elektrických drátech",
+        "Rádiovými vlnami",
+        "Světelnými paprsky",
+        "Pneumatickou potrubní poštou"
+      ],
+      "question": "Po čem posílal zprávy raný elektrický telegraf?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Rybáři se vraceli a nacházeli zničené přístavy, přestože na moři žádné velké vlny nezaznamenali.",
+      "id": "lang-0021",
+      "options": [
+        "Chvění země",
+        "Rozzuřené moře",
+        "Přístavní vlna",
+        "Velká voda"
+      ],
+      "question": "Co doslova znamená japonské slovo „cunami“?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Rocket zvítězila v soutěži Rainhill Trials o nejlepší stroj pro novou železnici Liverpool–Manchester.",
+      "id": "inv-0068",
+      "options": ["Flying Scotsman", "Rocket", "Mallard", "Puffing Billy"],
+      "question": "Kterou slavnou lokomotivu z roku 1829 postavili George a Robert Stephensonovi?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "„Taikun“, tedy „velký pán“, používali cizinci pro japonského šóguna.",
+      "id": "lang-0059",
+      "options": ["Thajština", "Kantonština", "Japonština", "Vietnamština"],
+      "question": "Anglické slovo „tycoon“ (magnát) bylo převzato ze starého čestného titulu ve kterém jazyce?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Obsluha sledovala dalekohledem polohu dřevěných ramen na věžích na kopcích a předávala zprávy napříč Francií.",
+      "id": "inv-0095",
+      "options": [
+        "Poštovními holuby",
+        "Elektrickými dráty",
+        "Zrcadly odrážejícími slunce",
+        "Návěstními rameny na věžích"
+      ],
+      "question": "Čím přenášela zprávy síť Clauda Chappeho ve Francii v 90. letech 18. století?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Boothův stroj, přezdívaný „Puffing Billy“, parkoval před budovami a dlouhé hadice se zaváděly okny dovnitř.",
+      "id": "inv-0072",
+      "options": ["Vysavač", "Sekačku na trávu", "Pračku", "Ledničku"],
+      "question": "Který spotřebič, tažený koňmi, vynalezl v roce 1901 Hubert Cecil Booth?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Jednoduchý periskop má dvě zrcadla pod úhlem 45°, na každém konci trubice jedno.",
+      "id": "inv-0033",
+      "options": [
+        "Rádiové signály",
+        "Jen čočky",
+        "Zrcadla nebo hranoly",
+        "Magnetické senzory"
+      ],
+      "question": "Co používá periskop, aby bylo vidět přes překážky?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "K vzdáleným příbuzným maďarštiny patří finština a estonština a také malé jazyky západní Sibiře.",
+      "id": "lang-0060",
+      "options": ["Turkické", "Uralské", "Germánské", "Slovanské"],
+      "question": "Do které jazykové rodiny patří maďarština?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Dewar si ji nikdy nepatentoval; německá firma ji později prodávala pod názvem Thermos.",
+      "id": "inv-0074",
+      "options": [
+        "K chlazení chemikálií",
+        "K převozu živých ryb",
+        "K uchování horké kávy",
+        "K nošení polévky"
+      ],
+      "question": "K jakému účelu vynalezl James Dewar v roce 1892 termosku?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Horký vzduch z pece proudil prostorem pod podlahou, která spočívala na malých kamenných sloupcích.",
+      "id": "inv-0079",
+      "options": ["Impluvium", "Akvadukt", "Atrium", "Hypokaustum"],
+      "question": "Čím Římané vytápěli podlahy zespodu?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Týmy lidských počtářů, často žen, prováděly výpočty pro astronomii, navigační tabulky i první lety do vesmíru.",
+      "id": "inv-0045",
+      "options": [
+        "Počítadlo",
+        "Člověk, který počítá",
+        "Mechanický sčítací stroj",
+        "Druh hodin"
+      ],
+      "question": "Co znamenalo slovo „computer“ (počítač), než se jím začaly označovat stroje?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Finsko má asi 3 miliony saun na zhruba 5,6 milionu obyvatel a slovo se používá v jazycích po celém světě.",
+      "id": "lang-0008",
+      "options": ["Finština", "Ruština", "Estonština", "Švédština"],
+      "question": "Který jazyk dal světu slovo „sauna“?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Mandarínská čínština má téměř miliardu rodilých mluvčích; angličtina je rozšířenější jako druhý jazyk.",
+      "id": "lang-0001",
+      "options": [
+        "Španělština",
+        "Čínština (mandarínská)",
+        "Spisovná arabština",
+        "Hindština"
+      ],
+      "question": "Který jazyk má na světě nejvíce rodilých mluvčích?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Kombinací červeného, zeleného a modrého světla v různém jasu dokáže obrazovka zobrazit miliony barev.",
+      "id": "inv-0034",
+      "options": [
+        "Červená, zelená, modrá",
+        "Oranžová, fialová, zelená",
+        "Azurová, purpurová, žlutá",
+        "Červená, žlutá, modrá"
+      ],
+      "question": "Světlo kterých tří barev mísí každý pixel běžné obrazovky?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "První bankomat vydával bankovky výměnou za zvláštní papírové šeky, protože bankovní karty ještě neexistovaly.",
+      "id": "inv-0077",
+      "options": ["Paříž", "Frankfurt", "Londýn", "New York"],
+      "question": "Kde byl v roce 1967 instalován první bankomat?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Balíček ovocných žvýkaček, naskenovaný v Ohiu, je dnes vystaven v muzeu.",
+      "id": "inv-0094",
+      "options": [
+        "Plechovka polévky",
+        "Krabice cereálií",
+        "Balení krájeného chleba",
+        "Balíček žvýkaček"
+      ],
+      "question": "Který výrobek byl v roce 1974 jako první prodán naskenováním čárového kódu UPC?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Král Harald „Modrozub“ Gormsson sjednotil dánské kmeny; logo spojuje jeho iniciály v severských runách.",
+      "id": "inv-0067",
+      "options": ["Norsko", "Dánsko", "Island", "Švédsko"],
+      "question": "Po králi které země je pojmenována technologie Bluetooth?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Přesné hodiny umožňují porovnat místní poledne s časem v domovském přístavu; každá hodina rozdílu odpovídá 15° zeměpisné délky.",
+      "id": "inv-0070",
+      "options": [
+        "Lodní log s lankem",
+        "Zrcadlový sextant",
+        "Námořní chronometr",
+        "Rtuťový barometr"
+      ],
+      "question": "Který vynález Johna Harrisona vyřešil problém určování zeměpisné délky na moři?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Shawa inspirovalo světlo odrážející se v noci v kočičích očích; odrazky se samy čistí, když přes ně přejedou auta.",
+      "id": "inv-0065",
+      "options": ["V dolech", "Na lodích", "Na silnicích", "Na kolech"],
+      "question": "Kde se používají „kočičí oči“, vynález Percyho Shawa z roku 1934?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Edisonova laboratoř v Menlo Parku byla jednou z prvních výzkumných laboratoří zaměřených na vynalézání.",
+      "id": "inv-0031",
+      "options": [
+        "Alexander Graham Bell",
+        "Thomas Edison",
+        "Nikola Tesla",
+        "Benjamin Franklin"
+      ],
+      "question": "Který vynálezce měl přes 1 000 amerických patentů?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Hra běžela na obrazovce osciloskopu při dni otevřených dveří v jedné americké laboratoři a patří k nejstarším videohrám.",
+      "id": "inv-0098",
+      "options": [
+        "Nadhazovací stroj",
+        "Pravidlo počítání",
+        "Raná videohra",
+        "Tvar tenisové rakety"
+      ],
+      "question": "Co bylo „Tennis for Two“ z roku 1958?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Karakuri z období Edo pomocí pružin a ozubených kol popojely vpřed se šálkem čaje, a když si ho host vzal, otočily se zpět.",
+      "id": "inv-0097",
+      "options": ["Daruma", "Kokeši", "Hina-ningjó", "Karakuri"],
+      "question": "Jak se japonsky nazývají mechanické panenky, například ty, které podávají čaj?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Bakelit byl prvním plně syntetickým plastem a vyráběly se z něj telefony, rádia i šperky.",
+      "id": "inv-0073",
+      "options": ["Druh kaučuku", "Raný plast", "Kovová slitina", "Druh skla"],
+      "question": "Co byl bakelit, vynalezený v roce 1907?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Šampon původně znamenal masáž hlavy, kterou v 19. století nabízel v britských lázních Sake Dean Mahomed.",
+      "id": "lang-0057",
+      "options": [
+        "Mýdlová pěna",
+        "Mýt si vlasy",
+        "Opláchnout teplou vodou",
+        "Tisknout, masírovat"
+      ],
+      "question": "Co znamená hindské slovo, od kterého pochází „šampon“?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "V dévanágarí většina písmen visí z vodorovné čáry vedené podél horního okraje slova.",
+      "id": "lang-0030",
+      "options": [
+        "Dévanágarí",
+        "Tamilským písmem",
+        "Bengálským písmem",
+        "Persko-arabským písmem"
+      ],
+      "question": "Kterým písmem se píše hindština?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "První kapslový hotel byl otevřen v Ósace; každá kapsle na spaní je tak velká, že se v ní dá sedět, a má světlo a malou televizi.",
+      "id": "inv-0099",
+      "options": ["Jižní Korea", "Japonsko", "Čína", "Singapur"],
+      "question": "Ve které zemi byl v roce 1979 otevřen první kapslový hotel?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Flétny z ptačích kostí a mamutí slonoviny byly nalezeny v jeskyních v jižním Německu.",
+      "id": "inv-0069",
+      "options": ["Harfa", "Flétna", "Buben", "Chrastítko"],
+      "question": "Který typ nástroje patří k nejstarším známým, z kostí starých asi 40 000 let?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Tužky nikdy neobsahovaly olovo; grafit se kdysi považoval za druh olova, odtud anglický název.",
+      "id": "inv-0029",
+      "options": [
+        "Z grafitu a jílu",
+        "Z olova",
+        "Z uhelného prášku a vosku",
+        "Z dřevěného uhlí"
+      ],
+      "question": "Z čeho je ve skutečnosti tuha v tužce (anglicky „lead“, olovo)?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Při pohledu štěrbinami v otáčejícím se bubnu se proužek kreseb zdánlivě rozpohyboval.",
+      "id": "inv-0078",
+      "options": [
+        "Hrací skříňka",
+        "Kapesní dalekohled",
+        "Animační hračka",
+        "Měřič počasí"
+      ],
+      "question": "Jakým zařízením je zoetrop, oblíbený v 19. století?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Friedrich Fröbel vytvořil toto slovo v roce 1840 s představou dětí, které rostou jako rostliny v zahradě.",
+      "id": "lang-0004",
+      "options": ["Nizozemština", "Dánština", "Švédština", "Němčina"],
+      "question": "Ze kterého jazyka bylo převzato anglické slovo „kindergarten“ (doslova „dětská zahrada“)?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Seiko Astron používal drobný kmitající krystal křemene a byl mnohem přesnější než mechanické hodinky.",
+      "id": "inv-0093",
+      "options": ["Sony", "Casio", "Citizen", "Seiko"],
+      "question": "Která japonská firma uvedla v roce 1969 na trh první křemenné náramkové hodinky?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Japonština převzala čínské znaky kolem 5. století; v korejštině se jim říká „hanča“.",
+      "id": "lang-0054",
+      "options": ["Thajština", "Vietnamština", "Korejština", "Japonština"],
+      "question": "Ve kterém jazyce se čínským znakům říká „kandži“?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Svahilsky mluví desítky milionů lidí jako prvním nebo druhým jazykem a je úředním jazykem Africké unie.",
+      "id": "lang-0013",
+      "options": [
+        "Východní Afrika",
+        "Jižní Asie",
+        "Západní Afrika",
+        "Severní Afrika"
+      ],
+      "question": "Svahilština je hlavním jazykem které oblasti?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "„Saharská poušť“ tedy vlastně znamená „pouštní poušť“; arabské „ṣaḥrāʾ“ znamená poušť.",
+      "id": "lang-0051",
+      "options": ["Poušť", "Slunce", "Písek", "Moře dun"],
+      "question": "Co znamená v arabštině slovo „Sahara“?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Janus měl dvě tváře – jednou hleděl do minulosti a druhou do budoucnosti, což se hodí na začátek roku.",
+      "id": "lang-0017",
+      "options": ["Juno", "Jupiter", "Mars", "Janus"],
+      "question": "Po kterém římském bohu je pojmenován leden v latině a mnoha jazycích (Ianuarius, January)?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Pochází z „Terra Australis“, jižního kontinentu, který si kartografové představovali dávno předtím, než Evropané dopluli do Austrálie.",
+      "id": "lang-0020",
+      "options": [
+        "Jižní země",
+        "Ostrov rudé hlíny",
+        "Slunná země",
+        "Rudá země"
+      ],
+      "question": "Co znamená v latině název „Austrálie“?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Baskičtina je „izolovaný jazyk“: mluvilo se jí v oblasti už před příchodem jazyků vycházejících z latiny.",
+      "id": "lang-0033",
+      "options": ["Andorra", "Portugalsko", "Francie", "Itálie"],
+      "question": "Baskičtinou, nepříbuznou s žádným jiným žijícím jazykem, se mluví ve Španělsku a ve které další zemi?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Rumunština pochází z latiny, kterou se mluvilo v římské provincii Dácie, takže je příbuzná s italštinou a španělštinou.",
+      "id": "lang-0012",
+      "options": ["Baltské", "Románské", "Slovanské", "Germánské"],
+      "question": "Do které jazykové rodiny patří rumunština?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Pochází z „al-džabr“ v názvu knihy matematika al-Chvárizmího z 9. století.",
+      "id": "lang-0023",
+      "options": ["Latina", "Arabština", "Perština", "Řečtina"],
+      "question": "Slovo „algebra“ pochází z názvu knihy napsané ve kterém jazyce?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Odráží starou víru, že neštěstí pochází z nepříznivého postavení hvězd a planet.",
+      "id": "lang-0062",
+      "options": ["Zlá hvězda", "Temná obloha", "Velký požár", "Rozbitá loď"],
+      "question": "Anglické slovo „disaster“ (pohroma) pochází ze slov, která znamenají co?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Finština a estonština jsou baltofinské jazyky; ani jedna není příbuzná se švédštinou, ruštinou či lotyštinou sousedů.",
+      "id": "lang-0035",
+      "options": ["Litevština", "Ruština", "Estonština", "Švédština"],
+      "question": "Se kterým jazykem je finština nejblíže příbuzná?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Latina je stále úředním jazykem Svatého stolce, který dokonce vydává slovník moderních latinských slov.",
+      "id": "lang-0011",
+      "options": ["Hebrejština", "Starořečtina", "Aramejština", "Latina"],
+      "question": "V jakém starém jazyce si můžeš přečíst pokyny na bankomatu ve Vatikánu?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Pan, bůh divočiny, prý na osamělých místech vyvolával v poutnících náhlý strach.",
+      "id": "lang-0044",
+      "options": ["Hermés", "Arés", "Dionýsos", "Pan"],
+      "question": "Který řecký bůh dal jméno slovu „panika“?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Ve Švýcarsku a Lichtenštejnsku se německy píše bez ß; místo něj se používá „ss“.",
+      "id": "lang-0018",
+      "options": ["Nizozemština", "Polština", "Němčina", "Dánština"],
+      "question": "Který jazyk používá písmeno ß zvané „ostré s“ (Eszett)?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Římanům připomínal napínající se sval malou myš, která se pohybuje pod kůží.",
+      "id": "lang-0061",
+      "options": [
+        "Uzlovitý provaz",
+        "Pohyblivá šňůra",
+        "Silná paže",
+        "Malá myš"
+      ],
+      "question": "Co doslova znamená latinské slovo „musculus“ (sval), od něhož pochází i „muskulatura“?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Haitskou kreolštinou mluví na Haiti téměř všichni a je úředním jazykem vedle francouzštiny.",
+      "id": "lang-0070",
+      "options": [
+        "Francouzština",
+        "Portugalština",
+        "Španělština",
+        "Angličtina"
+      ],
+      "question": "Ze kterého jazyka hlavně vychází haitská kreolština?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Král Sedžong zavedl hangul v roce 1443; tvary souhlásek vycházejí z polohy úst a jazyka.",
+      "id": "lang-0031",
+      "options": ["Hangul", "Kandži", "Hiragana", "Hanča"],
+      "question": "Jak se jmenuje korejská abeceda?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Andorra je jedinou zemí na světě, kde je katalánština jediným úředním jazykem.",
+      "id": "lang-0045",
+      "options": [
+        "Katalánština",
+        "Španělština",
+        "Okcitánština",
+        "Francouzština"
+      ],
+      "question": "Který je jediný úřední jazyk Andorry?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Alfa a beta byly samy převzaty z fénických písmen znamenajících „vůl“ a „dům“.",
+      "id": "lang-0010",
+      "options": ["Hebrejské", "Řecké", "Cyrilice", "Latinské"],
+      "question": "Slovo „alfabeta“ (abeceda) pochází z prvních dvou písmen které abecedy?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "„Astron“ znamená hvězda a „nautés“ plavec, námořník – stejný kořen jako ve slově „nautika“.",
+      "id": "lang-0042",
+      "options": [
+        "Poutník k Měsíci",
+        "Hvězdný plavec",
+        "Chodec po nebi",
+        "Vesmírný pilot"
+      ],
+      "question": "Co znamenají řecká slova, z nichž pochází slovo „astronaut“?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "„Hima“ znamená sníh a „ālaya“ domov či sídlo.",
+      "id": "lang-0052",
+      "options": [
+        "Domov větru",
+        "Sídlo sněhu",
+        "Vysoký kámen",
+        "Střecha světa"
+      ],
+      "question": "Co znamená v sanskrtu „Himálaj“?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Město vyrostlo na soutoku řek Klang a Gombak, kde si v 50. letech 19. století postavili tábor horníci těžící cín.",
+      "id": "lang-0067",
+      "options": [
+        "Bahnitý soutok",
+        "Zlatá řeka",
+        "Zelené údolí",
+        "Královské město v horách"
+      ],
+      "question": "Co znamená v malajštině název „Kuala Lumpur“?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Nizozemské „koekje“ znamená „malý koláček“; přinesli ho s sebou nizozemští osadníci v Novém Amsterdamu.",
+      "id": "lang-0069",
+      "options": ["Švédština", "Francouzština", "Nizozemština", "Němčina"],
+      "question": "Ze kterého jazyka se do americké angličtiny dostalo slovo „cookie“ (sušenka)?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Ze stejného jména pochází i německý titul „Kaiser“.",
+      "id": "lang-0050",
+      "options": ["Nero", "Caesar", "Konstantin", "Augustus"],
+      "question": "Ze kterého římského jména pochází ruský titul „car“?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Turecké „yoğurt“ souvisí se slovesem ve významu „zahustit“ nebo „hníst“.",
+      "id": "lang-0027",
+      "options": ["Arabština", "Řečtina", "Turečtina", "Bulharština"],
+      "question": "Ze kterého jazyka pochází slovo „jogurt“?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Moderní vietnamština používá latinku s mnoha diakritickými znaménky; pět tónových značek a neoznačený rovný tón dávají šest tónů.",
+      "id": "lang-0055",
+      "options": [
+        "Thajským písmem",
+        "Khmerským písmem",
+        "Latinkou",
+        "Čínskými znaky"
+      ],
+      "question": "Jakým písmem se dnes píše vietnamština?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Pojem popisuje „znovuzrození“ zájmu o antické řecké a římské umění a vzdělanost.",
+      "id": "lang-0014",
+      "options": ["Zlatý věk", "Nové světlo", "Probuzení", "Znovuzrození"],
+      "question": "Co znamená francouzské slovo „renaissance“ (renesance)?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Na mnoha švédských pracovištích mají každodenní přestávky na fiku; slovo je hravým přehozením slabik starého slova pro kávu.",
+      "id": "lang-0038",
+      "options": ["Finština", "Norština", "Dánština", "Švédština"],
+      "question": "Ze kterého jazyka pochází „fika“, slovo pro přestávku na kávu a koláč?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Mchedruli tradičně nemá velká písmena; tři historická gruzínská písma jsou zapsána na seznamu kulturního dědictví UNESCO.",
+      "id": "lang-0068",
+      "options": ["Hlaholice", "Ge'ez", "Mchedruli", "Hangul"],
+      "question": "Jak se nazývá jedinečné písmo, kterým se píše gruzínština?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Vulkán byl římský bůh ohně a kovářství; jeho jméno nese i italský ostrov Vulcano.",
+      "id": "lang-0016",
+      "options": ["Neptun", "Mars", "Jupiter", "Vulkán"],
+      "question": "Od jména kterého římského boha pochází slovo „vulkán“ (anglicky volcano)?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Nová turecká latinka přidala písmena jako ç, ş, ğ a i bez tečky (ı).",
+      "id": "lang-0056",
+      "options": ["Arménskou", "Latinku", "Cyrilici", "Řeckou"],
+      "question": "Na kterou abecedu přešlo Turecko v roce 1928 z arabského písma?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Surinam byl do roku 1975 nizozemskou kolonií; většina lidí mluví i místní kreolštinou sranan tongo.",
+      "id": "lang-0047",
+      "options": ["Angličtina", "Nizozemština", "Španělština", "Portugalština"],
+      "question": "Jaký je úřední jazyk jihoamerického Surinamu?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Braille přišel o zrak v dětství a svůj systém vystouplých bodů zveřejnil v roce 1829, asi ve 20 letech.",
+      "id": "lang-0037",
+      "options": ["Německo", "Francie", "Švýcarsko", "Belgie"],
+      "question": "Ze které země pocházel Louis Braille, tvůrce písma pro nevidomé?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "„Hora sexta“ byla šestá hodina počítaná od svítání – kolem poledne, v nejteplejší části dne.",
+      "id": "lang-0039",
+      "options": [
+        "Čas klidu",
+        "Šestá hodina",
+        "Krátký spánek",
+        "Odpolední horko"
+      ],
+      "question": "Španělské slovo „siesta“ pochází z latinského výrazu, který znamená co?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Kečuánštinou dodnes mluví v Andách miliony lidí; pocházejí z ní slova jako „lama“ a „kondor“.",
+      "id": "lang-0019",
+      "options": ["Kečuánština", "Guaraní", "Ajmarština", "Nahuatl"],
+      "question": "Který jazyk byl hlavním jazykem Incké říše?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Mořeplavci z jihovýchodní Asie osídlili Madagaskar před více než 1 000 lety, přestože Afrika je mnohem blíž.",
+      "id": "lang-0065",
+      "options": ["Zanzibar", "Srí Lanka", "Borneo", "Sicílie"],
+      "question": "S jazyky kterého ostrova je nejblíže příbuzná malgaština, jazyk Madagaskaru?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "První tolary se razily kolem roku 1520 v Joachimsthalu, dnešním Jáchymově v Česku.",
+      "id": "lang-0063",
+      "options": ["Čechy", "Tyrolsko", "Sasko", "Bavorsko"],
+      "question": "Slovo „dolar“ pochází z „tolaru“, stříbrných mincí poprvé ražených ve které oblasti?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Singapur má čtyři úřední jazyky: angličtinu, malajštinu, mandarínskou čínštinu a tamilštinu.",
+      "id": "lang-0064",
+      "options": ["Hongkong", "Brunej", "Singapur", "Macao"],
+      "question": "Tamilština je úředním jazykem v Indii, na Srí Lance a ve kterém městském státě?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Název pochází z odžibwejského „misi-ziibi“; řeka odvodňuje části 32 států USA.",
+      "id": "lang-0066",
+      "options": ["Velká řeka", "Mnoho ryb", "Kalná voda", "Dlouhá cesta"],
+      "question": "Co znamená v jazyce odžibwejů název „Mississippi“?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "„Kara“ znamená prázdný a „oke“ je zkratka slova „ókesutora“, orchestr – hudba hraje bez zpěváka.",
+      "id": "lang-0025",
+      "options": [
+        "Noční hudba",
+        "Zpívající přátelé",
+        "Prázdný orchestr",
+        "Veselý hlas"
+      ],
+      "question": "„Karaoke“ spojuje dvě japonská slova. Co doslova znamená?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "První objevitelé doufali, že v oblasti najdou stříbro; podobný původ má i Río de la Plata („stříbrná řeka“).",
+      "id": "lang-0053",
+      "options": ["Měď", "Zlato", "Cín", "Stříbro"],
+      "question": "Od latinského názvu kterého kovu pochází jméno země „Argentina“?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Islanďané dodnes poměrně snadno přečtou středověké ságy napsané před více než 700 lety.",
+      "id": "lang-0034",
+      "options": ["Norština", "Dánština", "Švédština", "Islandština"],
+      "question": "Který dnešní jazyk má nejblíže ke staré severštině, jazyku Vikingů?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "„Šáh mát“ se spolu se šachovou hrou dostalo do arabštiny a poté do evropských jazyků.",
+      "id": "lang-0041",
+      "options": [
+        "Hra skončila",
+        "Král je bezmocný",
+        "Tvé vojsko padlo",
+        "Královna vyhrála"
+      ],
+      "question": "Co znamenají perská slova, z nichž pochází šachový výraz „šach mat“?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Inuitské kajaky se stavěly z naplaveného dřeva nebo velrybích kostí potažených tulení kůží a vyráběly se na míru veslaři.",
+      "id": "lang-0043",
+      "options": ["Maorové", "Sámové", "Ainuové", "Inuité"],
+      "question": "Z jazyků kterého národa pochází slovo „kajak“?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Latinské „salarium“ souvisí se slovem „sal“ (sůl); proč byl římský žold pojmenován po soli, se dodnes vedou spory.",
+      "id": "lang-0040",
+      "options": ["Sůl", "Chléb", "Voják", "Stříbro"],
+      "question": "Od latinského slova pro co pochází anglické slovo „salary“ (plat)?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Sputnik 1, vypuštěný v roce 1957, proslavil toto obyčejné ruské slovo po celém světě.",
+      "id": "lang-0049",
+      "options": ["Železná koule", "Posel nebes", "Jasná hvězda", "Souputník"],
+      "question": "Co znamená ruské slovo „sputnik“?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Rétorománština pochází z latiny a mluví jí méně než 1 % obyvatel Švýcarska, převážně v kantonu Graubünden.",
+      "id": "lang-0046",
+      "options": [
+        "Furlanština",
+        "Okcitánština",
+        "Rétorománština",
+        "Ladinština"
+      ],
+      "question": "Který je vedle němčiny, francouzštiny a italštiny čtvrtým národním jazykem Švýcarska?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Déjà vu je zvláštní pocit, že přítomný okamžik už jsi jednou prožil.",
+      "id": "lang-0015",
+      "options": [
+        "Už viděno",
+        "Viděno dvakrát",
+        "Nikdy neviděno",
+        "Viděno ve snu"
+      ],
+      "question": "Co doslova znamená francouzský výraz „déjà vu“?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Slovo pochází z jazyka dharug, kterým se mluvilo v okolí Sydney; ne všechny bumerangy jsou navrženy tak, aby se vracely.",
+      "id": "lang-0009",
+      "options": [
+        "Papuánské jazyky",
+        "Jazyky Aboriginců",
+        "Havajština",
+        "Maorština"
+      ],
+      "question": "Ze které skupiny jazyků pochází slovo „bumerang“?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Afrikánština vyrostla z nizozemštiny osadníků na Kapsku v 17. století; mluvčí nizozemštiny a afrikánštiny si částečně rozumějí.",
+      "id": "lang-0048",
+      "options": ["Němčina", "Portugalština", "Nizozemština", "Angličtina"],
+      "question": "Ze kterého jazyka se hlavně vyvinula afrikánština, kterou se mluví v Jihoafrické republice?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Podle legendy žák školy v Rugby William Webb Ellis v roce 1823 zvedl míč a rozběhl se s ním.",
+      "id": "sport-0009",
+      "options": ["Skotsko", "Wales", "Irsko", "Anglie"],
+      "question": "Ragby je pojmenováno po škole ve které zemi?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Zúčastnilo se asi 240 sportovců ze 14 zemí; pro hry byl obnoven mramorový Panathénajský stadion.",
+      "id": "sport-0005",
+      "options": ["Paříž", "Londýn", "Řím", "Athény"],
+      "question": "Ve kterém městě se v roce 1896 konaly první novodobé olympijské hry?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Hřišti Old Course v St Andrews se často říká „domov golfu“; golf se tam hraje od 15. století.",
+      "id": "sport-0010",
+      "options": ["Anglie", "Skotsko", "Nizozemsko", "Irsko"],
+      "question": "Ve které zemi se vyvinul moderní golf?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Hráči chytají a hází míček zahnutým proutěným košíkem zvaným cesta, připevněným k zápěstí.",
+      "id": "sport-0058",
+      "options": ["Katalánsko", "Andalusie", "Baskicko", "Baleáry"],
+      "question": "Ze které oblasti pochází jai alai, často označovaná za nejrychlejší míčovou hru?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Růžový dres „maglia rosa“ odpovídá růžovému papíru deníku La Gazzetta dello Sport, který závod v roce 1909 založil.",
+      "id": "sport-0027",
+      "options": ["Zelenou", "Růžovou", "Žlutou", "Modrou"],
+      "question": "Jakou barvu má dres lídra Gira d'Italia?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Název pochází z žertovného nekrologu anglického kriketu z roku 1882; drobná urna prý obsahuje popel ze spálené kolíkové příčky.",
+      "id": "sport-0030",
+      "options": ["Tenis", "Kriket", "Golf", "Ragby"],
+      "question": "V kterém sportu se hraje slavná série The Ashes?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Podle jedné oblíbené teorie pochází „love“ z francouzského „l'œuf“ (vejce), protože tvarem připomíná nulu.",
+      "id": "sport-0013",
+      "options": ["Love", "Blank", "Nil", "Duck"],
+      "question": "Jak se v anglické tenisové terminologii říká nulovému skóre?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Akce se nejprve jmenovala „Mezinárodní týden zimních sportů“ a za první zimní olympiádu byla uznána až později.",
+      "id": "sport-0037",
+      "options": ["Chamonix", "Svatý Mořic", "Innsbruck", "Oslo"],
+      "question": "Kde se v roce 1924 konaly první zimní olympijské hry?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Kanó Džigoró vytvořil judo v roce 1882; název znamená „jemná cesta“. Olympijským sportem se stalo v roce 1964.",
+      "id": "sport-0002",
+      "options": ["Korea", "Thajsko", "Japonsko", "Čína"],
+      "question": "Ve které zemi vzniklo judo?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Olympijští lukostřelci střílejí na terč vzdálený 70 m; zlatý středový kruh má průměr asi 12 cm.",
+      "id": "sport-0041",
+      "options": ["Zlatou", "Modrou", "Červenou", "Černou"],
+      "question": "Jakou barvu má střed terče v olympijské lukostřelbě?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Hráči v poli se nesmějí dotknout dna bazénu, takže musí celý zápas šlapat vodu.",
+      "id": "sport-0054",
+      "options": ["Šest", "Pět", "Sedm", "Osm"],
+      "question": "Kolik hráčů každého týmu je ve vodním pólu ve vodě, včetně brankáře?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Malý neobydlený ostrov je zároveň ptačí rezervací a domovem desítek tisíc terejů.",
+      "id": "sport-0052",
+      "options": ["Severní Irsko", "Kanada", "Skotsko", "Norsko"],
+      "question": "Mnoho olympijských curlingových kamenů je ze žuly z ostrova Ailsa Craig u pobřeží které země?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Zápasiště suma je z hlíny a slámy; zápasník prohrává, pokud se země dotkne kterákoli část jeho těla kromě chodidel.",
+      "id": "sport-0014",
+      "options": ["Japonsko", "Čína", "Mongolsko", "Jižní Korea"],
+      "question": "Sumo je tradičním národním sportem které země?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Hra se hrála před více než 3 000 lety; některé plné kaučukové míče vážily několik kilogramů.",
+      "id": "sport-0057",
+      "options": ["Nohama", "Rukama", "Boky", "Dřevěnými pálkami"],
+      "question": "Čím hráči ve starověké mezoamerické míčové hře většinou odráželi kaučukový míč?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Od roku 1994 má Kanada dva národní sporty: lakros v létě a lední hokej v zimě.",
+      "id": "sport-0051",
+      "options": ["Kanoistika", "Curling", "Baseball", "Lakros"],
+      "question": "Který sport, vycházející z domorodé hry, je oficiálním národním letním sportem Kanady?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Taekwondo je proslulé vysokými kopy z otočky; plnohodnotným olympijským sportem se stalo v roce 2000.",
+      "id": "sport-0008",
+      "options": ["Korea", "Vietnam", "Japonsko", "Čína"],
+      "question": "Ve které zemi vzniklo taekwondo?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Hokejisté střídají „za běhu“ během hry, často po střídání kratším než minuta.",
+      "id": "sport-0028",
+      "options": ["Šest", "Pět", "Sedm", "Jedenáct"],
+      "question": "Kolik hráčů každého týmu je v ledním hokeji na ledě, včetně brankáře?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Hráči používají akrobatické kopy nad hlavou; míč se tradičně pletl z ratanu.",
+      "id": "sport-0042",
+      "options": [
+        "Středomoří",
+        "Jižní Amerika",
+        "Jihovýchodní Asie",
+        "Skandinávie"
+      ],
+      "question": "Ve které oblasti je populární sepak takraw, hra podobná volejbalu, ale hraná nohama?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Naismith vymyslel hru v roce 1891 v Massachusetts a jako první koše použil košíky na broskve.",
+      "id": "sport-0025",
+      "options": ["Skotsko", "Spojené státy", "Kanada", "Anglie"],
+      "question": "Ze které země pocházel James Naismith, vynálezce basketbalu?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Hráč musí během jednoho náběhu potopit všech 15 červených, po každé černou, a pak všechny barevné koule.",
+      "id": "sport-0031",
+      "options": ["155", "100", "147", "180"],
+      "question": "Kolik bodů má standardní maximální break ve snookeru?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "V šavli lze zásah zaznamenat ostřím čepele i hrotem.",
+      "id": "sport-0034",
+      "options": ["Šavli", "Katanu", "Tesák", "Rapír"],
+      "question": "Olympijský šerm používá fleret, kord a kterou další zbraň?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "V roce 1858 dostal nadhazovač, který třemi míči vyřadil tři pálkaře, klobouk (hat) koupený z peněz vybraných od diváků.",
+      "id": "sport-0040",
+      "options": ["Dostihy", "Fotbal", "Lední hokej", "Kriket"],
+      "question": "Ze kterého sportu původně pochází výraz „hattrick“?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Špičkový košíček má 16 husích per, tradičně všechna z téhož křídla.",
+      "id": "sport-0003",
+      "options": ["Squash", "Badminton", "Stolní tenis", "Lakros"],
+      "question": "Který sport se hraje s košíčkem?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Olympijský bazén pojme asi 2,5 milionu litrů vody.",
+      "id": "sport-0018",
+      "options": ["50 metrů", "25 metrů", "75 metrů", "100 metrů"],
+      "question": "Jak dlouhý je olympijský bazén?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Pólo se v Persii hrálo před více než 2 000 lety; moderní hra se v 19. století rozšířila z indického Manípuru díky britským důstojníkům.",
+      "id": "sport-0050",
+      "options": ["Persie", "Čína", "Egypt", "Řecko"],
+      "question": "Ve které starověké zemi podle všeho vzniklo pólo?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Karate vyrostlo z místních okinawských bojových umění ovlivněných čínskými bojovými uměními a do vnitrozemí Japonska se rozšířilo ve 20. letech 20. století.",
+      "id": "sport-0033",
+      "options": ["Tchaj-wan", "Honšú", "Hokkaidó", "Okinawa"],
+      "question": "Na kterém ostrově se vyvinulo karate, v překladu „prázdná ruka“?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Ve volném způsobu je povolen jakýkoli styl, takže plavci téměř vždy volí kraul, protože je nejrychlejší.",
+      "id": "sport-0019",
+      "options": ["Prsa", "Motýlek", "Kraul", "Znak"],
+      "question": "Který plavecký styl je nejrychlejší?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Ragby league, samostatná odnož oddělená v roce 1895, hraje s 13 hráči na každé straně.",
+      "id": "sport-0029",
+      "options": ["12", "11", "13", "15"],
+      "question": "Kolik hráčů má na hřišti tým v ragby union?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Hráči se posouvají po směru hodinových ručiček pokaždé, když jejich tým získá zpět právo podání.",
+      "id": "sport-0015",
+      "options": ["Šest", "Pět", "Čtyři", "Sedm"],
+      "question": "Kolik hráčů každého týmu je najednou na volejbalovém hřišti?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "St Andrews zmenšilo své hřiště v roce 1764 z 22 jamek na 18 a ostatní hřiště ho následovala.",
+      "id": "sport-0011",
+      "options": ["9", "12", "18", "20"],
+      "question": "Kolik jamek má standardní golfové hřiště?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Žlutý dres pochází z roku 1919; noviny pořadatele závodu L'Auto se tiskly na žlutém papíře.",
+      "id": "sport-0016",
+      "options": ["Červenou", "Žlutou", "Růžovou", "Puntíkovanou"],
+      "question": "Jakou barvu má dres celkového lídra Tour de France?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Šestinadhozové overy jsou dnes standardem, ale Austrálie v mnoha sezonách až do roku 1979 hrála osminadhozové.",
+      "id": "sport-0026",
+      "options": ["Osm", "Pět", "Deset", "Šest"],
+      "question": "Kolik platných nadhozů tvoří v kriketu jeden over?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Lékař Ludwig Guttmann uspořádal první hry pro sportovce na vozíku v den zahájení olympijských her v Londýně v roce 1948.",
+      "id": "sport-0053",
+      "options": [
+        "St Thomas'",
+        "Stoke Mandeville",
+        "Great Ormond Street",
+        "Addenbrooke's"
+      ],
+      "question": "Paralympijské hnutí vzešlo z her uspořádaných v roce 1948 ve které anglické nemocnici?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Wimbledon, poprvé uspořádaný v roce 1877, je nejstarším tenisovým turnajem na světě.",
+      "id": "sport-0007",
+      "options": ["Antuka", "Koberec", "Tvrdý povrch", "Tráva"],
+      "question": "Na jakém povrchu se hraje tenisový turnaj ve Wimbledonu?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "První organizovaný zápas ledního hokeje v hale se hrál v Montrealu v roce 1875.",
+      "id": "sport-0017",
+      "options": ["Finsko", "Kanada", "Švédsko", "Rusko"],
+      "question": "Ve které zemi se hlavně vyvinul moderní lední hokej?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "První hráči používali jako síťku knihy, jako míček golfový míček nebo zátku od šampaňského a jako pálky víka od krabic na doutníky.",
+      "id": "sport-0038",
+      "options": ["Anglie", "Švýcarsko", "Čína", "Japonsko"],
+      "question": "Ve které zemi začal stolní tenis jako společenská hra po večeři?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Albatros je mnohem vzácnější než hole-in-one; „condor“, čtyři rány pod par, je ještě vzácnější.",
+      "id": "sport-0056",
+      "options": ["Buzzard", "Albatros", "Birdie", "Eagle"],
+      "question": "Jménem kterého ptáka golfisté označují výsledek tři rány pod par na jedné jamce?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Podle jedné teorie se skóre řídilo ciferníkem hodin (15, 30, 45) a 45 se zkrátilo na 40.",
+      "id": "sport-0012",
+      "options": ["45", "50", "40", "35"],
+      "question": "Jaké skóre v tenise následuje po 15 a 30?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Tři šipky v trojitém poli dvacítky dají každá 60 bodů; střed terče má hodnotu jen 50.",
+      "id": "sport-0032",
+      "options": ["200", "180", "170", "150"],
+      "question": "Jaké je nejvyšší možné skóre třemi šipkami?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "William G. Morgan ho vytvořil v Massachusetts jako jemnější halovou hru než basketbal.",
+      "id": "sport-0049",
+      "options": ["Mintonette", "Házená", "Netball", "Volej-tenis"],
+      "question": "Jak se původně jmenoval volejbal, když byl v roce 1895 vynalezen?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Coubertin, francouzský pedagog, založil v roce 1894 Mezinárodní olympijský výbor.",
+      "id": "sport-0036",
+      "options": [
+        "Avery Brundage",
+        "Pierre de Coubertin",
+        "Demetrios Vikelas",
+        "Juan Antonio Samaranch"
+      ],
+      "question": "Kdo založil novodobé olympijské hry?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Hra se v 60. a 70. letech 19. století hrála v Badminton House, sídle vévody z Beaufortu v hrabství Gloucestershire.",
+      "id": "sport-0039",
+      "options": [
+        "Podle dánského dvorního hráče",
+        "Podle venkovského sídla v Anglii",
+        "Podle výrobce košíčků",
+        "Podle města v Indii"
+      ],
+      "question": "Podle čeho je pojmenován badminton?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Znamená „Rychleji, výše, silněji“; v roce 2021 k němu přibylo slovo „Communiter“ (Společně).",
+      "id": "sport-0020",
+      "options": ["Latina", "Italština", "Francouzština", "Řečtina"],
+      "question": "V jakém jazyce je olympijské heslo „Citius, Altius, Fortius“?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Pitch měří 22 yardů (20,12 m) – stejně jako chain, stará zeměměřičská jednotka.",
+      "id": "sport-0055",
+      "options": ["Asi 25 m", "Asi 30 m", "Asi 15 m", "Asi 20 m"],
+      "question": "Jak dlouhý je zhruba kriketový pitch mezi dvěma brankami?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Hráči odpalují dřevěnou holí zvanou hurley malý míček sliotar rychlostí vysoko přes 100 km/h.",
+      "id": "sport-0044",
+      "options": ["Wales", "Norsko", "Skotsko", "Irsko"],
+      "question": "Ve které zemi je tradiční hurling, jeden z nejrychlejších polních sportů na světě?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Zápas nemůže pokračovat, pokud má tým na hřišti méně než sedm hráčů.",
+      "id": "sport-0001",
+      "options": ["Dvanáct", "Jedenáct", "Devět", "Deset"],
+      "question": "Kolik hráčů má každý fotbalový tým na hřišti?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Útočník musí na jediný nádech odříkávat „kabaddi, kabaddi“ a přitom se snaží dotknout soupeřů.",
+      "id": "sport-0043",
+      "options": ["Egypt", "Indie", "Indonésie", "Írán"],
+      "question": "Ve které zemi vznikla kabaddi, týmový sport spojující honičku a zápas?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Díky územím od Tichého po Indický oceán se Francie rozkládá ve 12 časových pásmech, nebo ve 13, počítáme-li její nárok v Antarktidě.",
+      "id": "misc-0071",
+      "options": ["Spojené státy", "Rusko", "Francie", "Spojené království"],
+      "question": "Která země má včetně zámořských území nejvíce časových pásem?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Pétanque vznikl v roce 1907 v La Ciotat; název pochází z provensálského výrazu pro „nohy u sebe“.",
+      "id": "sport-0022",
+      "options": ["Belgie", "Itálie", "Francie", "Španělsko"],
+      "question": "Ze které země pochází pétanque, hra s házením kovových koulí k malé cílové kuličce?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "V místním jazyce se Bhútán nazývá „Druk Jul“, země hromového draka.",
+      "id": "misc-0039",
+      "options": ["Nepál", "Srí Lanka", "Bhútán", "Mongolsko"],
+      "question": "Na státní vlajce které země je bílý „hromový drak“?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Díky osmiúhelníkovému tvaru řidiči poznají značku STOP i zezadu nebo když je zasypaná sněhem.",
+      "id": "misc-0003",
+      "options": ["Šest", "Deset", "Sedm", "Osm"],
+      "question": "Kolik stran má standardní osmiúhelníková značka STOP?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Námořníci z Janova nosili pevné bavlněné kalhoty; slovo denim zase pochází z „de Nîmes“, podle francouzského města.",
+      "id": "misc-0052",
+      "options": ["Benátky", "Janov", "Neapol", "Nîmes"],
+      "question": "Z názvu kterého města pochází slovo „džíny“ (anglicky jeans)?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Některé budovy ve východní Asii vynechávají 4. patro, kdežto osmička je považována za velmi šťastnou, protože zní jako „prosperovat“.",
+      "id": "misc-0004",
+      "options": ["Osm", "Sedm", "Devět", "Čtyři"],
+      "question": "Které číslo se v Číně často považuje za nešťastné, protože zní jako „smrt“?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Etiopský kalendář má 12 měsíců po 30 dnech a krátký 13. měsíc o pěti nebo šesti dnech.",
+      "id": "misc-0043",
+      "options": ["Thajsko", "Írán", "Etiopie", "Nepál"],
+      "question": "Tradiční kalendář které země má 13 měsíců?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Šachovnice má 8 × 8 polí; slavná legenda o zrnkách rýže, jejichž počet se na každém poli zdvojnásobuje, ukazuje, jak rychle čísla rostou.",
+      "id": "misc-0001",
+      "options": ["64", "49", "81", "100"],
+      "question": "Kolik polí má šachovnice?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Vesnice u Rovaniemi v Laponsku dostává statisíce dopisů pro Santu z celého světa.",
+      "id": "misc-0015",
+      "options": ["Finsko", "Norsko", "Švédsko", "Island"],
+      "question": "Ve které zemi leží Santa Claus Village přímo na severním polárním kruhu?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Latinský název se vyhýbá volbě mezi čtyřmi národními jazyky Švýcarska.",
+      "id": "misc-0045",
+      "options": [
+        "Communitas Helvetiae Liberae",
+        "Corona Helvetiae",
+        "Civitas Helvetiorum",
+        "Confoederatio Helvetica"
+      ],
+      "question": "Kterému latinskému názvu odpovídá kód Švýcarska „CH“?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Samotná věž byla v roce 2012 přejmenována na Alžbětinu věž; Big Ben je 13,7tunový zvon uvnitř.",
+      "id": "misc-0012",
+      "options": ["Ciferníku", "Velkého zvonu", "Minutové ručičky", "Věže"],
+      "question": "Čeho přezdívkou je ve skutečnosti londýnský „Big Ben“?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Soška má šatník s asi 1 000 kostýmy a ke zvláštním příležitostem se převléká.",
+      "id": "misc-0016",
+      "options": ["Vídeň", "Kodaň", "Amsterdam", "Brusel"],
+      "question": "Ve kterém městě stojí malá bronzová soška Manneken Pis?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Balíček má čtyři barvy po 13 kartách; čtyři dnes známé barvy pocházejí z Francie 15. století.",
+      "id": "misc-0006",
+      "options": ["48", "54", "56", "52"],
+      "question": "Kolik karet má standardní balíček bez žolíků?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Námořní míle je dnes definována jako přesně 1 852 metrů, což se blíží jedné úhlové minutě podél poledníku.",
+      "id": "misc-0076",
+      "options": [
+        "Z výhledu ze stěžně",
+        "Z úhlové minuty šířky",
+        "Z 1 000 kroků námořníka",
+        "Z jednoho stupně délky"
+      ],
+      "question": "Z čeho původně vycházela námořní míle?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Zametání krátce zahřeje led, takže kámen dojede dál a méně zatáčí.",
+      "id": "sport-0024",
+      "options": ["Curling", "Lední hokej", "Bandy", "Boby"],
+      "question": "Ve kterém sportu hráči posílají po ledě žulové „kameny“, zatímco spoluhráči zametají led?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Házení soli je očistný rituál; zápasníci nejvyšší divize mohou před zápasem házet hrsti soli i několikrát.",
+      "id": "sport-0048",
+      "options": ["Rýži", "Sůl", "Okvětní lístky", "Písek"],
+      "question": "Co házejí zápasníci sumo do kruhu před zápasem?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Červený drak, „Y Ddraig Goch“, se s Walesem pojí už mnoho staletí.",
+      "id": "misc-0013",
+      "options": ["Zlatý lev", "Bílý jednorožec", "Černý orel", "Červený drak"],
+      "question": "Které stvoření je na státní vlajce Walesu?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Němci zdobili stromky v domácnostech od 16. století; zvyk se široce rozšířil v 19. století.",
+      "id": "misc-0014",
+      "options": ["Německo", "Anglie", "Rusko", "Švédsko"],
+      "question": "Ve které zemi začala tradice zdobeného vánočního stromku?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Američtí studenti si házeli prázdnými plechy od koláčů firmy Frisbie Pie Company z Connecticutu.",
+      "id": "misc-0041",
+      "options": [
+        "Podle řeckého disku",
+        "Podle plechů od koláčů",
+        "Podle pláže v Kalifornii",
+        "Podle psa vynálezce"
+      ],
+      "question": "Podle čeho dostalo frisbee své jméno?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Je pojmenován po papeži Řehořovi XIII. a napravil posun, kvůli němuž se kalendář vzdálil ročním obdobím asi o 10 dní.",
+      "id": "misc-0008",
+      "options": [
+        "Mayský dlouhý počet",
+        "Gregoriánský",
+        "Lunární hidžra",
+        "Juliánský"
+      ],
+      "question": "Který kalendář, zavedený v roce 1582, dnes používá většina světa?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Karikatura z roku 1902 ukázala amerického prezidenta Theodora „Teddyho“ Roosevelta, jak odmítá zastřelit uvázaného medvěda, a inspirovala výrobce hraček.",
+      "id": "misc-0007",
+      "options": [
+        "Král Eduard VII.",
+        "Theodor Herzl",
+        "Eduard, princ z Walesu",
+        "Theodore Roosevelt"
+      ],
+      "question": "Po kterém slavném člověku je pojmenován plyšový medvídek „teddy bear“?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Ve Španělsku, Itálii a Portugalsku následoval po čtvrtku 4. října 1582 pátek 15. října.",
+      "id": "misc-0074",
+      "options": ["12", "14", "10", "7"],
+      "question": "Kolik dní se vynechalo při zavedení gregoriánského kalendáře v roce 1582?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Název vymyslel devítiletý chlapec Milton Sirotta, synovec amerického matematika.",
+      "id": "misc-0050",
+      "options": ["10", "1 000", "100", "1 milion"],
+      "question": "„Googol“ je číslo 1 následované kolika nulami?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Biatlonisté musí rychle zklidnit tep po běhu, aby zasáhli terče vzdálené 50 m.",
+      "id": "sport-0023",
+      "options": [
+        "Střelbou z pušky",
+        "Freestyle snowboardingem",
+        "Lukostřelbou",
+        "Skoky na lyžích"
+      ],
+      "question": "Biatlon spojuje běh na lyžích s kterou další disciplínou?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Její text pochází z 16. století, ale oficiální hymnou se stala až v roce 1932.",
+      "id": "misc-0078",
+      "options": ["Dánsko", "Švýcarsko", "Švédsko", "Nizozemsko"],
+      "question": "Které zemi patří „Wilhelmus“, často označovaná za nejstarší státní hymnu?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Švýcarská vlajka je oficiálně čtvercová, na lodích se však používá obdélníková verze.",
+      "id": "misc-0037",
+      "options": ["Lichtenštejnsko", "Dánsko", "Švýcarsko", "Rakousko"],
+      "question": "Která země má kromě Vatikánu čtvercovou státní vlajku?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Přeložením libovolného listu formátu A napůl vznikne další formát se stejnými proporcemi díky poměru stran 1 : odmocnina ze 2.",
+      "id": "misc-0040",
+      "options": [
+        "220 × 310 mm",
+        "216 × 279 mm",
+        "200 × 300 mm",
+        "210 × 297 mm"
+      ],
+      "question": "Jaký rozměr má list papíru A4?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Francouzští vědci takto definovali metr v 90. letech 18. století; dnes vychází z rychlosti světla.",
+      "id": "misc-0051",
+      "options": ["Stopa", "Metr", "Míle", "Sáh"],
+      "question": "Která jednotka byla původně definována jako desetimiliontina vzdálenosti od severního pólu k rovníku?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Súdán má přes 200 pyramid, menších a strmějších než egyptské, mnohé z nich v lokalitě Meroe.",
+      "id": "misc-0049",
+      "options": ["Libye", "Súdán", "Čad", "Etiopie"],
+      "question": "Starověké království Kuš postavilo víc pyramid než Egypt. Ve které dnešní zemi stojí?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Malý tichomořský stát získává významnou část příjmů z licencování své domény „.tv“.",
+      "id": "misc-0046",
+      "options": ["Tuvalu", "Trinidad a Tobago", "Tádžikistán", "Tonga"],
+      "question": "Která země vlastní internetovou doménu „.tv“, oblíbenou u televizních a video webů?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Bakken severně od Kodaně vznikl kolem přírodního pramene, který přitahoval davy návštěvníků.",
+      "id": "misc-0073",
+      "options": ["Dánsko", "Anglie", "Německo", "Rakousko"],
+      "question": "Ve které zemi je Bakken, považovaný za nejstarší fungující zábavní park světa (1583)?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "První korespondenční lístky byly obyčejné kartičky s místem pro adresu a krátkou zprávu, za levnější poštovné.",
+      "id": "misc-0077",
+      "options": [
+        "Spojené státy",
+        "Rakousko-Uhersko",
+        "Spojené království",
+        "Pruské království"
+      ],
+      "question": "Která země vydala v roce 1869 první oficiální korespondenční lístek na světě?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Trofej nese jméno školáka, který podle legendy vymyslel ragby tím, že se rozběhl s míčem.",
+      "id": "sport-0060",
+      "options": [
+        "Calcutta Cup",
+        "Bledisloe Cup",
+        "Trofej Six Nations",
+        "Webb Ellis Cup"
+      ],
+      "question": "Jakou trofej získává vítěz mistrovství světa v ragby mužů?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Z Indie se hra rozšířila do Persie, kde vznikl výraz „šáh mát“ (šach mat).",
+      "id": "misc-0042",
+      "options": ["Indie", "Egypt", "Čína", "Persie"],
+      "question": "Šachy se vyvinuly ze hry čaturanga, pocházející ze které země?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Papírové peníze se v Číně rozšířily za dynastie Sung, asi před 1 000 lety, dlouho předtím, než je začala používat Evropa.",
+      "id": "misc-0009",
+      "options": ["Itálie", "Anglie", "Nizozemsko", "Čína"],
+      "question": "Ve které zemi Marka Pola ohromilo, že lidé platí papírovými penězi?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Go je podle všeho nejstarší deskovou hrou, která se hraje nepřetržitě; má víc možných pozic, než je atomů ve vesmíru.",
+      "id": "misc-0005",
+      "options": ["Siang-čchi", "Go", "Šógi", "Mahjong"],
+      "question": "Která desková hra, hraná v Číně přes 2 500 let, používá černé a bílé kameny?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "A0 je definován jako jeden metr čtvereční; A4 je jeho šestnáctina.",
+      "id": "misc-0072",
+      "options": [
+        "0,5 metru čtverečního",
+        "1,5 metru čtverečního",
+        "2 metry čtvereční",
+        "1 metr čtvereční"
+      ],
+      "question": "Jakou plochu má list papíru A0?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Žáci zjistili, že propíchnutý, měkčí míček se při dopadu „zmáčkne“ (anglicky squash), což vyžadovalo rozmanitější údery.",
+      "id": "sport-0059",
+      "options": ["Eton", "Winchester", "Harrow", "Rugby"],
+      "question": "Na které slavné anglické škole se v 19. století vyvinul squash?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Na každý nátěr se spotřebuje asi 60 tun barvy; železná věž může v letním horku povyrůst asi o 15 cm.",
+      "id": "misc-0047",
+      "options": [
+        "Každý rok",
+        "Každých 25 let",
+        "Každých 7 let",
+        "Každých 50 let"
+      ],
+      "question": "Jak často se zhruba přetírá Eiffelova věž?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Elektron je přírodní slitina zlata a stříbra; Lýdie ležela na území dnešního západního Turecka.",
+      "id": "misc-0075",
+      "options": [
+        "Z čistého zlata",
+        "Z bronzu",
+        "Z elektronu",
+        "Z čistého stříbra"
+      ],
+      "question": "Z čeho byly první mince, ražené v Lýdii kolem roku 600 př. n. l.?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Pokutová značka je 11 m (12 yardů) od brankové čáry; hranice pokutového území je 16,5 m daleko.",
+      "id": "sport-0047",
+      "options": ["12 metrů", "11 metrů", "9 metrů", "16,5 metru"],
+      "question": "Z jaké vzdálenosti se kope pokutový kop ve fotbale?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Výraz pochází z americké slangové angličtiny 90. let 19. století, v níž „bird“ znamenalo něco vynikajícího.",
+      "id": "sport-0021",
+      "options": ["Bogey", "Eagle", "Birdie", "Albatros"],
+      "question": "Jak se v golfu říká výsledku o jednu ránu pod par na jamce?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Bochník sýra Double Gloucester může dosáhnout rychlosti kolem 100 km/h, takže chytit ho je téměř nemožné.",
+      "id": "misc-0036",
+      "options": [
+        "Bochník sýra",
+        "Soudek piva",
+        "Utržený balík sena",
+        "Obří vejce"
+      ],
+      "question": "Co honí závodníci na Cooper's Hill v Anglii dolů ze strmého kopce?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Amylopektin, škrob obsažený v rýži, dodal vápenné maltě větší odolnost a nepropustnost pro vodu; používala se na hradby, pagody i hrobky.",
+      "id": "misc-0086",
+      "options": ["Kozí mléko", "Lepkavá rýže", "Vaječný žloutek", "Med"],
+      "question": "Která překvapivá přísada se přimíchávala do malty některých zdí v Číně za dynastie Ming?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Vlajka Dominiky je jednou z mála státních vlajek, které obsahují fialovou barvu.",
+      "id": "misc-0082",
+      "options": ["Barbados", "Dominika", "Grenada", "Jamajka"],
+      "question": "Na vlajce které země je fialový papoušek amazoňan císařský (sisserou)?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Sinterklaas připlouvá parníkem v polovině listopadu; hlavním večerem dárků je 5. prosinec.",
+      "id": "misc-0064",
+      "options": ["Španělsko", "Švýcarsko", "Nizozemsko", "Itálie"],
+      "question": "Ve které zemi děti nastavují boty pro Sinterklaase v naději na sladkosti?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Jednorožec je skotským symbolem od 12. století a objevuje se na královském znaku.",
+      "id": "misc-0053",
+      "options": [
+        "Skotský náhorní skot",
+        "Orel skalní",
+        "Jelen lesní",
+        "Jednorožec"
+      ],
+      "question": "Jaké je národní zvíře Skotska?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Každého 23. prosince umělci vyřezávají z obřích ředkví podrobné výjevy lidí, zvířat i budov.",
+      "id": "misc-0083",
+      "options": ["Puebla", "Mérida", "Oaxaca", "Guadalajara"],
+      "question": "Ve kterém městě se koná mexická „Noc ředkví“, soutěž ve vyřezávání ředkví?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "V Itálii je za nešťastný považován pátek sedmnáctého.",
+      "id": "misc-0067",
+      "options": [
+        "Neděle třináctého",
+        "Čtvrtek třináctého",
+        "Úterý třináctého",
+        "Pondělí třináctého"
+      ],
+      "question": "Který den je ve Španělsku a Řecku tradičně nešťastný místo pátku třináctého?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "„Marcha Real“ je jednou z mála státních hymen na světě, které se hrají bez oficiálních slov.",
+      "id": "misc-0054",
+      "options": ["Francie", "Španělsko", "Portugalsko", "Itálie"],
+      "question": "Státní hymna které země nemá oficiální text?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "„Hymnus na svobodu“ je báseň Dionysia Solomose; obvykle se zpívají jen první dvě sloky.",
+      "id": "misc-0084",
+      "options": ["Uruguay", "Argentina", "Řecko", "Turecko"],
+      "question": "Státní hymna které země má nejvíce slok, v plném znění 158?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Mistrovství světa se koná ve finském Sonkajärvi na trati dlouhé 253,5 m s vodní překážkou.",
+      "id": "misc-0068",
+      "options": ["Estonsko", "Norsko", "Finsko", "Švédsko"],
+      "question": "Ve které zemi vznikl sport nošení manželek, překážkový závod?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "To je 24 hodin × 60 minut, tedy 86 400 sekund za den.",
+      "id": "misc-0090",
+      "options": ["1 840", "1 640", "1 440", "1 240"],
+      "question": "Kolik minut má jeden den?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Většina původních barokních soch byla nahrazena kopiemi; originály jsou uloženy v muzeích.",
+      "id": "misc-0035",
+      "options": ["Asi 3", "Asi 30", "Asi 3 000", "Asi 300"],
+      "question": "Kolik soch zdobí pražský Karlův most, založený v roce 1357?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Lidé do měkké sopečné horniny Kappadokie vytesali obydlí, kostely, a dokonce celá podzemní města.",
+      "id": "misc-0030",
+      "options": ["Jordánsko", "Turecko", "Maroko", "Řecko"],
+      "question": "Ve které zemi je Kappadokie, proslulá lety balonem nad skalními „komíny víl“?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Nollywood ročně vyprodukuje velké množství filmů, mnohé natočené rychle a s malým rozpočtem.",
+      "id": "misc-0065",
+      "options": ["Bollywood", "Tollywood", "Nollywood", "Lollywood"],
+      "question": "Jakou přezdívku má obrovský filmový průmysl Nigérie?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Na přední straně je státní znak a na rubu pečeť státní pokladny se lvem.",
+      "id": "misc-0070",
+      "options": ["Uruguay", "Guatemala", "Paraguay", "Peru"],
+      "question": "Vlajka které země se liší na přední a zadní straně?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Bhútánský král zavedl tuto myšlenku v 70. letech s tím, že štěstí je důležitější než národní důchod.",
+      "id": "misc-0018",
+      "options": ["Nepál", "Bhútán", "Dánsko", "Island"],
+      "question": "Která země je proslulá měřením „hrubého národního štěstí“?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Některé aerolinky vynechávají v letadlech i řadu 13, kdežto v částech východní Asie budovy vynechávají 4. patro.",
+      "id": "misc-0025",
+      "options": ["17", "7", "4", "13"],
+      "question": "Které číslo patra mnohé západní budovy vynechávají, protože je považováno za nešťastné?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Kaldera Santorini ve tvaru půlměsíce získala dnešní podobu po obrovské sopečné erupci asi před 3 600 lety.",
+      "id": "misc-0031",
+      "options": ["Kefalonie", "Santorini", "Korfu", "Kréta"],
+      "question": "Který řecký ostrov je proslulý bílými domy s modrými kopulemi nad sopečnou kalderou?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Šafšáwan leží v pohoří Rif; Marrákeš je naproti tomu známý jako „rudé město“.",
+      "id": "misc-0066",
+      "options": ["Šafšáwan", "Fès", "Marrákeš", "Rabat"],
+      "question": "Které marocké město je proslulé ulicemi natřenými odstíny modré?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Italský údržbář ho schoval pod plášť; nalezen byl o dva roky později ve Florencii.",
+      "id": "misc-0055",
+      "options": [
+        "Vor Medúzy",
+        "Svatba v Káni",
+        "Svoboda vede lid",
+        "Mona Lisa"
+      ],
+      "question": "Který slavný obraz se proslavil ještě víc poté, co byl v roce 1911 ukraden z Louvru?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Název spojuje Bombay, starý název města, s Hollywoodem.",
+      "id": "misc-0029",
+      "options": ["Dillí", "Čennaí", "Kalkata", "Bombaj"],
+      "question": "Ve kterém městě sídlí Bollywood, hindský filmový průmysl?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Nápis postavený v roce 1923 jako reklama na developerský projekt přišel v roce 1949 o poslední čtyři písmena.",
+      "id": "misc-0063",
+      "options": [
+        "Hollywood Hills",
+        "Hollywood Studios",
+        "Holly Woods",
+        "Hollywoodland"
+      ],
+      "question": "Co původně stálo na nápisu Hollywood?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Naproti 1 je tedy 6, naproti 2 je 5 a naproti 3 je 4; všechny body na kostce dávají dohromady 21.",
+      "id": "misc-0089",
+      "options": ["Šest", "Osm", "Dvanáct", "Sedm"],
+      "question": "Kolik dává na standardní šestistěnné kostce vždy součet protilehlých stěn?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Díky pevnému pořadí s červenou nahoře mohou signál přečíst podle polohy světla i barvoslepí řidiči.",
+      "id": "misc-0021",
+      "options": ["Žlutá", "Červená", "Modrá", "Zelená"],
+      "question": "Která barva je na svislém semaforu obvykle nahoře?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Trully jsou stavěny nasucho z kamene a mají kuželové střechy z vrstvených vápencových desek.",
+      "id": "misc-0087",
+      "options": [
+        "Malovanými dřevěnými chatami",
+        "Trully s kuželovou střechou",
+        "Jeskynními obydlími",
+        "Domy na kůlech"
+      ],
+      "question": "Jakými domy je proslulé italské městečko Alberobello?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Na severní polokouli se stín slunečních hodin pohybuje stejným směrem jako dnes ručičky hodin.",
+      "id": "misc-0056",
+      "options": [
+        "Na příkaz středověkého papeže",
+        "Kvůli směru psaní",
+        "Kvůli magnetismu Země",
+        "Napodobují stín slunečních hodin"
+      ],
+      "question": "Proč se ručičky hodin otáčejí „po směru hodinových ručiček“?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Zvednutá tlapka prý přivolává do obchodu zákazníky a štěstí.",
+      "id": "misc-0024",
+      "options": [
+        "Tančící liščí duch",
+        "Mávající kočka pro štěstí",
+        "Šťastná trojnohá žába",
+        "Drak střežící dveře"
+      ],
+      "question": "Co je japonská soška „maneki-neko“, kterou často vidíš v obchodech?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Vlajka se nazývá „Hinomaru“, tedy „sluneční kruh“.",
+      "id": "misc-0023",
+      "options": ["Palau", "Japonsko", "Laos", "Bangladéš"],
+      "question": "Vlajka které země je červený kruh na bílém pozadí?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Výrobci ze Schwarzwaldu stavějí kukačkové hodiny od 18. století, i když mnoho lidí si myslí, že jsou švýcarské.",
+      "id": "misc-0069",
+      "options": [
+        "Německý Schwarzwald",
+        "Švýcarské Alpy",
+        "Rakouské Tyrolsko",
+        "Bavorská jezera"
+      ],
+      "question": "Ze které oblasti pocházejí tradiční kukačkové hodiny?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Replika byla otevřena v provincii Kuang-tung v roce 2012; skutečný Hallstatt je na seznamu světového dědictví UNESCO.",
+      "id": "misc-0088",
+      "options": ["Rakousko", "Slovinsko", "Švýcarsko", "Německo"],
+      "question": "V Číně byla postavena kopie městečka Hallstatt u jezera v plné velikosti. Ze které země je originál?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "V mnoha zemích je 25 let stříbrná svatba a 60 let diamantová.",
+      "id": "misc-0034",
+      "options": ["40", "60", "25", "50"],
+      "question": "Kolik let manželství se slaví při zlaté svatbě?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Jezdec se pohybuje do tvaru písmene L a jako jediná figura může přeskakovat ostatní.",
+      "id": "misc-0020",
+      "options": ["Jezdec", "Střelec", "Král", "Věž"],
+      "question": "Která šachová figura může přeskakovat jiné figury?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Když auta dostanou červenou, chodci přecházejí ze všech směrů najednou, někdy i tisíce lidí naráz.",
+      "id": "misc-0027",
+      "options": [
+        "Otočným skleněným mostem",
+        "Pohyblivým chodníkem",
+        "Křižovatkou scramble",
+        "Plovoucím trhem"
+      ],
+      "question": "Jakým pouličním prvkem je proslulá tokijská čtvrť Šibuja?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Socha byla nalezena v roce 1820 na ostrově Mélos; její chybějící paže se nikdy nenašly.",
+      "id": "misc-0028",
+      "options": ["Prado", "Vatikánská muzea", "Britské muzeum", "Louvre"],
+      "question": "Ve kterém muzeu je starořecká socha Venuše Mélská?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Každou hodinu se v okénkách nad ciferníkem objevují postavy dvanácti apoštolů.",
+      "id": "misc-0060",
+      "options": ["Krakov", "Vídeň", "Štrasburk", "Praha"],
+      "question": "Které město má nejstarší dosud fungující astronomické hodiny, instalované v roce 1410?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Barva byla vybrána, protože ladí s krajinou, a přitom vyniká v častých mlhách.",
+      "id": "misc-0032",
+      "options": [
+        "Brick Red",
+        "International Orange",
+        "Golden Yellow",
+        "California Poppy Gold"
+      ],
+      "question": "Jak se nazývá oficiální barva mostu Golden Gate v San Francisku?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Většina lístků jetele má tři lístky; čtvrtý je vzácná genetická odchylka, a proto se stal symbolem štěstí.",
+      "id": "misc-0062",
+      "options": [
+        "Asi 1 z 5 000",
+        "Asi 1 z 500",
+        "Asi 1 z 5 milionů",
+        "Asi 1 z 50"
+      ],
+      "question": "Jak vzácný je zhruba čtyřlístek?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Botín servíruje jídla od roku 1725 a jeho pec na dřevo prý nikdy nevyhasla.",
+      "id": "misc-0079",
+      "options": ["Vídeň", "Paříž", "Řím", "Madrid"],
+      "question": "Ve kterém městě je Sobrino de Botín, uváděná jako nejstarší restaurace na světě?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Podle tradice se mince hozená přes rameno postará o to, že se do Říma vrátíš; peníze se vybírají na charitu.",
+      "id": "misc-0017",
+      "options": ["Mince", "Rýži", "Chléb", "Květiny"],
+      "question": "Co návštěvníci tradičně házejí do římské Fontány di Trevi?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Strom je poděkováním města Osla za britskou podporu ve 40. letech.",
+      "id": "misc-0057",
+      "options": ["Finsko", "Dánsko", "Norsko", "Švédsko"],
+      "question": "Která země od roku 1947 každoročně daruje Londýnu vánoční strom na Trafalgarské náměstí?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Připomíná aztéckou legendu, podle níž mělo být jejich hlavní město postaveno tam, kde uvidí orla požírajícího hada na kaktusu.",
+      "id": "misc-0022",
+      "options": [
+        "Orel s hadem",
+        "Slunce s tváří",
+        "Opeřený had",
+        "Jaguár pod vycházejícím sluncem"
+      ],
+      "question": "Co sedí na kaktusu na vlajce Mexika?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Má 12 černých pětiúhelníků a 20 bílých šestiúhelníků; tento design byl poprvé použit na mistrovství světa v roce 1970.",
+      "id": "misc-0059",
+      "options": ["32", "36", "24", "28"],
+      "question": "Kolik dílů má celkem klasický fotbalový míč s černými a bílými díly?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Bavorský král Ludvík II. ho postavil v 19. století jako pohádkové útočiště, ne k obraně.",
+      "id": "misc-0033",
+      "options": ["Rakousko", "Švýcarsko", "Francie", "Německo"],
+      "question": "Ve které zemi je zámek Neuschwanstein, který inspiroval slavný disneyovský zámek?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "SOS bylo zvoleno, protože jeho kód v Morseově abecedě – tři tečky, tři čárky, tři tečky – se snadno vysílá i rozpoznává.",
+      "id": "misc-0061",
+      "options": [
+        "Send out help",
+        "Vůbec nic",
+        "Save our souls",
+        "Save our ship"
+      ],
+      "question": "Co znamená nouzový signál SOS?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Albert Einstein bydlel kousek odtud v téže ulici, když pracoval na teorii relativity.",
+      "id": "misc-0085",
+      "options": ["Zytglogge", "Glockenspiel", "Torre dell'Orologio", "Orloj"],
+      "question": "Jak se jmenuje středověká hodinová věž v Bernu s pohyblivými figurami?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Kapři plavou proti silnému proudu, a symbolizují tak sílu a úspěch dětí.",
+      "id": "misc-0058",
+      "options": ["Losos", "Zlatá rybka", "Kapr", "Tuňák"],
+      "question": "Praporce ve tvaru které ryby vyvěšují rodiny v Japonsku na Den dětí?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Benátky mají přes 400 mostů; lidé se pohybují pěšky nebo lodí, a to i záchranka a svoz odpadu.",
+      "id": "misc-0026",
+      "options": ["Auta", "Kostely", "Mosty", "Obchody"],
+      "question": "Co z toho nenajdeš v ulicích historického centra Benátek?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Každý z nich přichází jinou noc před Vánoci a mají jména jako Olizovač lžic nebo Bouchač dveří.",
+      "id": "misc-0081",
+      "options": ["Island", "Estonsko", "Norsko", "Faerské ostrovy"],
+      "question": "Vánoční tradice které země zahrnuje 13 rozpustilých „vánočních mládenců“ (jólasveinar)?"
+    }
+  ]
+}

@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-11-01
+
+- world quiz: Quiz ma start obrazovku s volbou Mix (vychozi, 10 svetovych + 5 leteckych) / Svet / Letectvi; 100 pribalenych svetovych otazek ve 12 jazycich (`data/worldQuiz/<lang>.json`, generuje `scripts/build-quiz-data.mjs` z pipeline slozky), po odpovedi "Vedeli jste?" vysvetleni + tlacitko Dalsi (letecke otazky dal auto-posun 750 ms); bez opakovani per jazyk (`store/useQuizStore.ts`, historie max 2000 id, novy cyklus po vycerpani), Fisher–Yates michani otazek i moznosti s premapovanim spravne odpovedi; vzdalene packy pro en/cs/de (`content/quiz/<lang>/index.json` + `pack-NNN.json` po ≤ 250, 1000 / 1000 / 996 otazek navic, sha256 per pack) — `utils/quizSync.ts` + `store/useQuizPackStore.ts` (fileStorage, Online Sync, hydratace, 24 h cooldown, ETag/304, 404 = nepublikovano, validace + zahozeni vadnych otazek) + `components/QuizSyncBootstrap.tsx`; event `quiz_pack_sync_result { result, packs }`; `updateProgress("quiz", skore)` beze zmeny
+
 ## 2026-10-31
 
 - volitelne vyhledani letu podle cisla ("Doplnit" v editaci letu): Cloudflare Worker `services/flight-lookup` (proxy na AeroDataBox pres API.Market, KV cache `v1:{CISLO}:{DATUM}`, rate limit binding per klient, denni strop volani pres Durable Object, zadne logy) + klient `utils/flightLookup.ts` / `hooks/useFlightLookup.ts`; vyplni odlet (UTC → mistni cas zarizeni), delku a cil podle letiste (`data/destinationAirports.ts`, 44 destinaci); respektuje Online Sync; event `flight_lookup_result` bez cisla/data; v produkci VYPNUTO (bez `EXPO_PUBLIC_FLIGHT_LOOKUP_URL`) do prechodu na placeny plan; privacy policy 3.7; deploy workflow `deploy-flight-lookup.yml`, `release-main` ignoruje `services/**`

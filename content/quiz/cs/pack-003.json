@@ -1,0 +1,2756 @@
+{
+  "id": "pack-003",
+  "lang": "cs",
+  "questions": [
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Machu Picchu vzniklo v 15. století vysoko v peruánských Andách, pravděpodobně jako sídlo inckého panovníka Pachacutiho.",
+      "id": "his-0002",
+      "options": ["Aztékové", "Inkové", "Olmékové", "Mayové"],
+      "question": "Která civilizace postavila horskou citadelu Machu Picchu?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Sedm plaveb Čeng Cheho dosáhlo až k východní Africe a některé jeho lodě byly mnohem větší než tehdejší evropské.",
+      "id": "his-0063",
+      "options": ["Čang Čchien", "Fa-sien", "Süan-cang", "Čeng Che"],
+      "question": "Který čínský admirál vedl na počátku 15. století obrovské „pokladové flotily“?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Angkor Vat z 12. století je tak ikonický, že je vyobrazen na státní vlajce Kambodže.",
+      "id": "his-0012",
+      "options": ["Thajsko", "Kambodža", "Laos", "Vietnam"],
+      "question": "Ve které zemi jsou ruiny chrámu Angkor Vat?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Stonehenge leží v hrabství Wiltshire, ale jeho menší „modré kameny“ byly dopraveny z pohoří Preseli ve Walesu, vzdáleného přes 200 km.",
+      "id": "his-0019",
+      "options": ["Wales", "Anglie", "Skotsko", "Irsko"],
+      "question": "Ve které zemi stojí pravěká památka Stonehenge?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Tutanchamonova hrobka obsahovala přes 5 000 předmětů včetně slavné pohřební masky z masivního zlata.",
+      "id": "his-0011",
+      "options": ["Achnatona", "Tutanchamona", "Chufua", "Ramesse II."],
+      "question": "Čí téměř nedotčenou hrobku objevil Howard Carter v Egyptě v roce 1922?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Římské akvadukty měly velmi mírný spád; některé, například Aqua Virgo, dodnes zásobují fontány v Římě.",
+      "id": "his-0013",
+      "options": ["Kanály", "Viadukty", "Zikkuraty", "Akvadukty"],
+      "question": "Co stavěli staří Římané, aby přiváděli do měst čerstvou vodu?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Fram („vpřed“) měl zaoblený trup, takže ho led vytlačil vzhůru, místo aby ho rozdrtil. Dnes je muzeem v Oslu.",
+      "id": "his-0105",
+      "options": ["Terra Nova", "Discovery", "Fram", "Endurance"],
+      "question": "Jak se jmenovala Nansenova polární loď, kterou později použil i Amundsen?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Petřiny průčelí, například slavná Pokladnice, byla vytesána přímo do pískovcových skal asi před 2 000 lety.",
+      "id": "his-0005",
+      "options": ["Egypt", "Turecko", "Jordánsko", "Libanon"],
+      "question": "Ve které zemi můžeš navštívit Petru, město vytesané do růžově červené skály?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Hedvábí bylo jen jedním z mnoha druhů zboží; těmito cestami putovaly i myšlenky, plodiny a technologie, jako je papír.",
+      "id": "his-0018",
+      "options": [
+        "Jantarová stezka",
+        "Hedvábná stezka",
+        "Čajová koňská stezka",
+        "Kadidlová stezka"
+      ],
+      "question": "Jak se nazývala síť obchodních cest spojujících Čínu se Středomořím?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Kartágo na území dnešního Tuniska založili osadníci z fénického města Tyros.",
+      "id": "his-0052",
+      "options": ["Řekové", "Staří Egypťané", "Římané", "Féničané"],
+      "question": "Který starověký námořní národ založil Kartágo?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Sochu navrhl Frédéric Auguste Bartholdi a její vnitřní železnou konstrukci navrhl Gustave Eiffel.",
+      "id": "his-0016",
+      "options": ["Španělsko", "Nizozemsko", "Francie", "Spojené království"],
+      "question": "Která země darovala Spojeným státům Sochu svobody?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Hérodotos napsal své „Dějiny“ v 5. století př. n. l. a popsal v nich národy a zvyky celého tehdy známého světa.",
+      "id": "his-0057",
+      "options": ["Hérodotos", "Homér", "Plútarchos", "Thúkydidés"],
+      "question": "Kterému řeckému spisovateli se často říká „otec dějepisu“?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Vytesané pilíře Göbekli Tepe jsou o víc než 6 000 let starší než Stonehenge a vznikly dřív, než se rozšířilo zemědělství.",
+      "id": "his-0106",
+      "options": ["Göbekli Tepe", "Çatalhöyük", "Chattuša", "Trója"],
+      "question": "Na kterém místě v Turecku jsou kamenné chrámové okrsky staré asi 11 000 let?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Vikingové byli mořeplavci z území dnešního Dánska, Norska a Švédska, aktivní zhruba od 8. do 11. století.",
+      "id": "his-0007",
+      "options": ["Skandinávie", "Balkán", "Pyrenejský poloostrov", "Anatolie"],
+      "question": "Ze které oblasti Evropy pocházeli Vikingové?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Egyptské hieroglyfy se používaly přes 3 000 let a kombinují znaky pro hlásky se znaky pro celá slova.",
+      "id": "his-0006",
+      "options": ["Římané", "Keltové", "Staří Babyloňané", "Staří Egypťané"],
+      "question": "Která starověká civilizace psala hieroglyfy na papyrus?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Úředníkovi dynastie Chan Cchaj Lunovi se tradičně připisuje zdokonalení výroby papíru kolem roku 105 n. l.",
+      "id": "his-0003",
+      "options": ["Čína", "Indie", "Egypt", "Řecko"],
+      "question": "Ve které zemi byl poprvé vynalezen papír?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Rodiny v Timbuktu dodnes uchovávají desítky tisíc starých rukopisů o astronomii, medicíně a právu.",
+      "id": "his-0068",
+      "options": ["Timbuktu", "Bamako", "Kayes", "Gao"],
+      "question": "Které město v Mali bylo proslulým středověkým centrem vzdělanosti a rukopisů?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Vasco da Gama obeplul Afriku a přistál v Kalikatu, čímž otevřel námořní cestu mezi Evropou a Asií.",
+      "id": "his-0017",
+      "options": [
+        "Pedro Cabral",
+        "Vasco da Gama",
+        "Bartolomeu Dias",
+        "Jindřich Mořeplavec"
+      ],
+      "question": "Který mořeplavec jako první Evropan doplul v roce 1498 po moři do Indie?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Kolumbus plul s loděmi Niña, Pinta a Santa María, která na Štědrý den 1492 najela na mělčinu.",
+      "id": "his-0050",
+      "options": ["San Gabriel", "Trinidad", "Victoria", "Santa María"],
+      "question": "Jak se jmenovala největší Kolumbova loď na plavbě v roce 1492?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Ibn Battúta vyrazil z Tangeru v roce 1325 a za téměř 30 let urazil asi 120 000 km.",
+      "id": "his-0053",
+      "options": ["Saúdská Arábie", "Maroko", "Egypt", "Írán"],
+      "question": "Z které dnešní země pocházel velký cestovatel Ibn Battúta?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Některé zdi tohoto středověkého města v jižní Africe jsou vysoké přes 10 m a drží jen díky pečlivému skládání kamenů.",
+      "id": "his-0099",
+      "options": [
+        "Z nepálených cihel",
+        "S vápennou maltou",
+        "Na dřevěné kostře",
+        "Nasucho, bez malty"
+      ],
+      "question": "Jak byly postaveny mohutné kamenné zdi Velkého Zimbabwe?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Sedící socha od sochaře Feidia měřila asi 12 m a byla postavena na dřevěné kostře.",
+      "id": "his-0097",
+      "options": [
+        "Rhodský kolos",
+        "Visuté zahrady",
+        "Diova socha v Olympii",
+        "Mauzoleum v Halikarnassu"
+      ],
+      "question": "Který starověký div byl převážně ze slonoviny a zlata?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Deska nese tentýž dekret v hieroglyfech, démotickém písmu a starořečtině, takže badatelé mohli texty porovnat.",
+      "id": "his-0010",
+      "options": [
+        "Egyptských hieroglyfů",
+        "Lineárního písma B",
+        "Mezopotámského klínopisu",
+        "Mayského písma"
+      ],
+      "question": "Rozluštění kterého písma pomohla Rosettská deska?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "S výškou asi 146 m byla Velká pyramida téměř 4 000 let nejvyšší lidskou stavbou na Zemi.",
+      "id": "his-0064",
+      "options": ["Džosera", "Rachefa", "Menkaurea", "Chufua"],
+      "question": "Pro kterého faraona byla postavena Velká pyramida v Gíze?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Mínojci postavili obrovský palác v Knóssu, spojovaný s pověstí o Mínótaurovi a labyrintu.",
+      "id": "his-0055",
+      "options": ["Kréta", "Rhodos", "Kypr", "Sicílie"],
+      "question": "Na kterém ostrově vzkvétala mínojská civilizace?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Hanza spojovala obchodní města jako Lübeck, Hamburk a Bergen kolem Baltského a Severního moře.",
+      "id": "his-0056",
+      "options": [
+        "Spolkem královských rodů",
+        "Spolkem univerzit",
+        "Spolkem obchodních měst",
+        "Spolkem klášterů"
+      ],
+      "question": "Čím byla středověká Hanza?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Mohendžodáro mělo pravoúhlou síť ulic a krytou kanalizaci, což je u města starého asi 4 500 let pozoruhodné.",
+      "id": "his-0054",
+      "options": ["Egyptská", "Harappská (Indus)", "Mínojská", "Mezopotámská"],
+      "question": "Která starověká civilizace postavila město Mohendžodáro?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Chammurapiho zákoník vytesaný na čedičové stéle kolem roku 1754 př. n. l. je dnes vystaven v pařížském Louvru.",
+      "id": "his-0065",
+      "options": [
+        "Nabukadnesar II.",
+        "Sargon Akkadský",
+        "Chammurapi",
+        "Gilgameš"
+      ],
+      "question": "Který babylonský král je proslulý jedním z nejstarších psaných zákoníků?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Cesty Marca Pola sepsal Rustichello da Pisa, když byli oba vězněni v Janově.",
+      "id": "his-0009",
+      "options": [
+        "John Cabot",
+        "Amerigo Vespucci",
+        "Marco Polo",
+        "Giovanni da Verrazzano"
+      ],
+      "question": "Cesta kterého benátského kupce do Číny ve 13. století se stala slavnou knihou?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Konstantin v roce 330 n. l. obnovil staré řecké město Byzantion jako své nové hlavní město; dnes je to Istanbul.",
+      "id": "his-0049",
+      "options": ["Augustus", "Konstantin I.", "Theodosius I.", "Justinián I."],
+      "question": "Který císař dal jméno městu Konstantinopol?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Balboa přešel Panamskou šíji a oceán nazval „Jižním mořem“.",
+      "id": "his-0100",
+      "options": [
+        "Vasco Núñez de Balboa",
+        "Francisco Pizarro",
+        "Hernán Cortés",
+        "Ponce de León"
+      ],
+      "question": "Kdo jako první Evropan spatřil v roce 1513 Tichý oceán z Ameriky?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Cabralova flotila mířila do Indie, ale stočila se daleko na západ přes Atlantik a dorazila k brazilskému pobřeží.",
+      "id": "his-0101",
+      "options": [
+        "Francisco de Orellana",
+        "Pedro Álvares Cabral",
+        "Bartolomeu Dias",
+        "Amerigo Vespucci"
+      ],
+      "question": "Kdo v roce 1500 zabral Brazílii pro Portugalsko?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Kolos stál v přístavu na Rhodu a měřil asi 33 m; díky jeho slávě se slovo „kolos“ začalo užívat pro cokoli obrovského.",
+      "id": "his-0014",
+      "options": [
+        "Diova socha",
+        "Rhodský kolos",
+        "Alexandrijský maják",
+        "Mauzoleum"
+      ],
+      "question": "Který starověký div byl obří sochou boha slunce Hélia?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Pyramida vznikla kolem roku 2650 př. n. l. a považuje se za nejstarší velkou stavbu z tesaného kamene na světě.",
+      "id": "his-0098",
+      "options": ["Imhotep", "Hemiun", "Amenhotep", "Senenmut"],
+      "question": "Který architekt navrhl Džoserovu stupňovitou pyramidu v Egyptě?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Jméno ostrova se v několika jazycích stalo slovem pro maják, například francouzské „phare“ a italské „faro“.",
+      "id": "his-0062",
+      "options": ["Délos", "Rhodos", "Faros", "Malta"],
+      "question": "Na kterém ostrově stál Alexandrijský maják?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Cookova loď Endeavour přistála v Botany Bay, pojmenované podle mnoha nových rostlin, které tam našli.",
+      "id": "his-0058",
+      "options": [
+        "William Dampier",
+        "Matthew Flinders",
+        "Abel Tasman",
+        "James Cook"
+      ],
+      "question": "Který objevitel v roce 1770 zmapoval východní pobřeží Austrálie?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Klínové písmo vznikalo vtlačováním rákosového rydla do vlhké hlíny, které zanechávalo klínovité stopy.",
+      "id": "his-0066",
+      "options": ["Chetité", "Féničané", "Egypťané", "Sumerové"],
+      "question": "Který starověký národ vynalezl klínové písmo, jedno z nejstarších písem?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Starověké hry v Olympii se konaly každé čtyři roky nejméně od roku 776 př. n. l. na počest Dia.",
+      "id": "his-0008",
+      "options": ["Olympie", "Marathón", "Sparta", "Athény"],
+      "question": "Ve které starořecké svatyni se konaly původní olympijské hry?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Architekt Michael Ventris prokázal, že mykénské hliněné tabulky zaznamenávaly řečtinu staletí před Homérem.",
+      "id": "his-0104",
+      "options": ["Féničtiny", "Řečtiny", "Egyptštiny", "Latiny"],
+      "question": "Raným stadiem kterého jazyka se ukázalo být lineární písmo B, rozluštěné v roce 1952?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Hrobka byla postavena pro Mausola, vládce Kárie (dnešní Turecko), a z jeho jména vzniklo slovo „mauzoleum“.",
+      "id": "his-0060",
+      "options": [
+        "Artemidin chrám v Efesu",
+        "Alexandrijský maják",
+        "Rhodský kolos",
+        "Mauzoleum v Halikarnassu"
+      ],
+      "question": "Od kterého starověkého divu pochází slovo pro velkolepou hrobku?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Jejích 37 knih pokrývalo vše od astronomie po umění a přes 1 500 let sloužila jako příručka.",
+      "id": "his-0103",
+      "options": [
+        "Plinius starší",
+        "Seneca mladší",
+        "Tacitus",
+        "Marcus Terentius Varro"
+      ],
+      "question": "Který Říman napsal obrovskou encyklopedii „Přírodověda“ (Naturalis historia)?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Abel Tasman spatřil ostrov v roce 1642 ve službách Nizozemské východoindické společnosti a nazval ho Van Diemenova země.",
+      "id": "his-0059",
+      "options": ["Velká Británie", "Portugalsko", "Španělsko", "Nizozemsko"],
+      "question": "Po objeviteli ze které země je pojmenován ostrov Tasmánie?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Kleopatra se jako první ze své řecky mluvící dynastie prokazatelně naučila egyptsky.",
+      "id": "his-0015",
+      "options": [
+        "Hatšepsut",
+        "Kleopatra VII.",
+        "Nefertari",
+        "Královna Nefertiti"
+      ],
+      "question": "Kdo byl posledním skutečně vládnoucím panovníkem egyptské Ptolemaiovské říše?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Severské sídliště L'Anse aux Meadows na Newfoundlandu v Kanadě potvrzuje návštěvy Vikingů asi 500 let před Kolumbem.",
+      "id": "his-0061",
+      "options": [
+        "Leif Eriksson",
+        "Ragnar Lodbrok",
+        "Erik Rudý",
+        "Harald Hardrada"
+      ],
+      "question": "Který severský mořeplavec dosáhl Severní Ameriky kolem roku 1000?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Zatímco císaři zůstávali v Kjótu jako symboličtí vládci, skutečnou politickou moc drželi šógunové.",
+      "id": "his-0078",
+      "options": ["Daimjó", "Samuraj", "Nindža", "Šógun"],
+      "question": "Jaký titul nosili japonští vojenští vládci od roku 1192 do roku 1867?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Dedžima byl malý umělý ostrov v přístavu Nagasaki, jediné místo, kde mohli nizozemští obchodníci obchodovat.",
+      "id": "his-0116",
+      "options": ["Cušima", "Dedžima", "Okinawa", "Sado"],
+      "question": "Který nizozemský ostrov v Japonsku byl 200 let jedinou evropskou obchodní stanicí v zemi?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Lodím připlouvajícím do Alexandrie se prý kopírovaly knihy pro knihovnu, která chtěla shromáždit veškeré známé vědění.",
+      "id": "his-0024",
+      "options": ["Athény", "Konstantinopol", "Alexandrie", "Babylon"],
+      "question": "Ve kterém starověkém městě stála velká knihovna založená za Ptolemaiovců?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Nabatejci zbohatli na obchodu s kadidlem a byli mistry v jímání a uchovávání dešťové vody v poušti.",
+      "id": "his-0113",
+      "options": ["Féničané", "Sumerové", "Chetité", "Nabatejci"],
+      "question": "Který starověký národ vybudoval Petru v dnešním Jordánsku?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Visuté zahrady jsou jediným starověkým divem, jehož přesné umístění archeologové nikdy nepotvrdili.",
+      "id": "his-0027",
+      "options": ["Artemidin chrám", "Kolos", "Mauzoleum", "Visuté zahrady"],
+      "question": "Který starověký div se podle pověstí nacházel v Babylonu?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Inčtí štafetoví běžci zvaní chasquis nosili po cestách zprávy a urazili až 240 km za den.",
+      "id": "his-0114",
+      "options": ["Aztékové", "Inkové", "Mayové", "Muiskové"],
+      "question": "Která říše vybudovala Qhapaq Ñan, síť cest o délce asi 30 000 km?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Bílý mramor Tádž Mahalu jako by měnil barvu – od narůžovělé za úsvitu po zlatou při západu slunce.",
+      "id": "his-0032",
+      "options": ["Tádž Mahal", "Kutb Minár", "Havá Mahal", "Červená pevnost"],
+      "question": "Kterou indickou stavbu postavil Šáhdžahán na památku své manželky Mumtáz Mahal?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Ludvík XIV. vládl 72 let (1643–1715), což je nejdelší zaznamenaná vláda panovníka velké evropské země.",
+      "id": "his-0039",
+      "options": ["Jindřich IV.", "Ludvík XVI.", "Ludvík XIV.", "Ludvík IX."],
+      "question": "Kterému francouzskému králi se říkalo „Král Slunce“?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Medicejové podporovali umělce jako Botticelli a Michelangelo a z jejich sbírky vznikla galerie Uffizi.",
+      "id": "his-0081",
+      "options": ["Sforzové", "Fuggerové", "Medicejové", "Borgiové"],
+      "question": "Která bankéřská rodina proslula jako mecenáš umění v renesanční Florencii?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Julius Caesar titul císaře nikdy nenosil; jeho adoptivní dědic Octavianus se stal Augustem v roce 27 př. n. l.",
+      "id": "his-0029",
+      "options": ["Caligula", "Nero", "Julius Caesar", "Augustus"],
+      "question": "Kdo byl prvním římským císařem?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Název „Amerika“ poprvé použila mapa světa Martina Waldseemüllera z roku 1507, podle Florenťana Ameriga Vespucciho.",
+      "id": "his-0077",
+      "options": [
+        "Kryštof Kolumbus",
+        "Amerigo Vespucci",
+        "John Cabot",
+        "Juan de la Cosa"
+      ],
+      "question": "Po kterém mořeplavci je pojmenována Amerika?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Rekonstrukce Ištařiny brány, postavené za Nabukadnesara II., stojí v berlínském Pergamonském muzeu.",
+      "id": "his-0084",
+      "options": ["Babylon", "Ninive", "Ur", "Uruk"],
+      "question": "Které starověké město proslulo Ištařinou bránou s modrou glazurou?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Název Paříž pochází od galského kmene Parisiů; Londinium byl Londýn, Aquincum Budapešť a Vindobona Vídeň.",
+      "id": "his-0110",
+      "options": ["Londinium", "Aquincum", "Lutetia", "Vindobona"],
+      "question": "Jak se římsky jmenovalo sídliště, z něhož se stala Paříž?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Hatšepsut vládla asi 20 let a na sochách byla často zobrazována s nepravým královským vousem.",
+      "id": "his-0107",
+      "options": ["Nefertiti", "Kleopatra VII.", "Nefertari", "Hatšepsut"],
+      "question": "Která faraonka postavila velký chrám v Dér el-Bahrí?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Ruiny Efesu leží u egejského pobřeží dnešního Turecka; z chrámu zbyl jediný znovu vztyčený sloup.",
+      "id": "his-0069",
+      "options": ["Korint", "Efesos", "Athény", "Trója"],
+      "question": "Ve kterém starověkém městě stál Artemidin chrám, jeden z divů světa?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Založila ji ve Fèsu roku 859 Fátima al-Fihrí; UNESCO i Guinness ji uvádějí jako nejstarší nepřetržitě fungující vzdělávací instituci.",
+      "id": "his-0111",
+      "options": ["Tunisko", "Maroko", "Egypt", "Irák"],
+      "question": "Ve které zemi je Al-Karawíjín, označovaná za nejstarší dosud fungující univerzitu?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Tenochtitlan stál na ostrově v jezeře Texcoco a jídlo pěstoval na plovoucích zahradách zvaných chinampy.",
+      "id": "his-0026",
+      "options": ["Inkové", "Mayové", "Aztékové", "Zapotékové"],
+      "question": "Který národ založil Tenochtitlan, město pod dnešním Mexikem?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Mladí šlechtici objížděli města jako Paříž, Benátky, Florencie a Řím, aby si završili vzdělání v umění a kultuře.",
+      "id": "his-0070",
+      "options": [
+        "Cesta mladých aristokratů",
+        "Celostátní poštovní trasa",
+        "Královská vojenská přehlídka",
+        "Středověká pouť do Španělska"
+      ],
+      "question": "Co byla v Evropě 17. a 18. století „Grand Tour“?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "V Turecku je Sulejman znám jako „Kanuni“, Zákonodárce, díky reformě říšských zákonů.",
+      "id": "his-0086",
+      "options": ["Byzantské", "Osmanské", "Safíovské", "Mughalské"],
+      "question": "Které říši vládl Sulejman I. Nádherný?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Francouzská společnost začala průplav budovat v 80. letech 19. století, ale vzdala to; stavbu převzaly a dokončily Spojené státy.",
+      "id": "his-0085",
+      "options": [
+        "Spojené státy",
+        "Spojené království",
+        "Španělsko",
+        "Francie"
+      ],
+      "question": "Která země v roce 1914 dokončila Panamský průplav?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Dynastie Ming (1368–1644) přestavěla zeď z cihel a kamene; starší zdi byly většinou z udusané hlíny.",
+      "id": "his-0075",
+      "options": ["Chan", "Ming", "Čchin", "Tchang"],
+      "question": "Za které dynastie byla postavena většina Velké čínské zdi, kterou dnes vidí návštěvníci?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Québec založil Samuel de Champlain; jeho hradby jsou jediné dochované městské opevnění severně od Mexika.",
+      "id": "his-0071",
+      "options": ["Nizozemsko", "Anglie", "Francie", "Španělsko"],
+      "question": "Objevitelé ze které země založili v roce 1608 město Québec?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Renesance začala ve 14. století ve Florencii, kde bohatí mecenáši financovali umělce, architekty a učence.",
+      "id": "his-0038",
+      "options": ["Itálie", "Nizozemsko", "Francie", "Španělsko"],
+      "question": "Ve které zemi začala renesance?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Podle vlády Viktorie dostala jméno celá epocha; až do Alžběty II. byla nejdéle vládnoucím britským panovníkem.",
+      "id": "his-0028",
+      "options": [
+        "Alžběta I.",
+        "Jiří III.",
+        "Královna Anna",
+        "Královna Viktorie"
+      ],
+      "question": "Který britský panovník vládl přes 63 let, od roku 1837 do roku 1901?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Slocum na své přestavěné lodi na lov ústřic Spray urazil asi 74 000 km a jeho kniha o cestě se stala klasikou.",
+      "id": "his-0108",
+      "options": [
+        "Joshua Slocum",
+        "Bernard Moitessier",
+        "Francis Chichester",
+        "Robin Knox-Johnston"
+      ],
+      "question": "Kdo jako první obeplul sám svět, v letech 1895–1898?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Koloseum mělo stahovací plachtu zvanou velarium, která diváky chránila před sluncem.",
+      "id": "his-0025",
+      "options": ["Pantheon", "Koloseum", "Circus Maximus", "Forum Romanum"],
+      "question": "Která římská aréna dokončená v roce 80 n. l. pojala asi 50 000 diváků?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Od poloviny 18. století změnily britské textilky, uhlí a parní stroje způsob výroby zboží.",
+      "id": "his-0031",
+      "options": ["Francie", "Velká Británie", "Spojené státy", "Německo"],
+      "question": "Ve které zemi začala průmyslová revoluce?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Plavba Beaglu (1831–1836) trvala téměř pět let a zavedla Darwina na Galapágy.",
+      "id": "his-0033",
+      "options": ["HMS Endeavour", "HMS Victory", "HMS Beagle", "HMS Bounty"],
+      "question": "Jak se jmenovala loď, na které Charles Darwin obeplul svět?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Aristotelés učil Alexandra asi tři roky v Makedonii; princi bylo na začátku 13 let.",
+      "id": "his-0080",
+      "options": ["Sókratés", "Pýthagorás", "Platón", "Aristotelés"],
+      "question": "Který filozof vyučoval mladého Alexandra Velikého?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Téměř tisíc let byla Hagia Sofia největší katedrálou světa; její kupole jako by se vznášela nad prstencem oken.",
+      "id": "his-0115",
+      "options": [
+        "Konstantin I.",
+        "Theodosius II.",
+        "Basileios II.",
+        "Justinián I."
+      ],
+      "question": "Který byzantský císař dal v roce 537 postavit chrám Hagia Sofia v dnešní podobě?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Persepolis proslul kamennými reliéfy lidí z celé říše, kteří přinášejí králi dary.",
+      "id": "his-0109",
+      "options": ["Artaxerxés I.", "Kýros Veliký", "Dareios I.", "Xerxés I."],
+      "question": "Který perský král začal stavět palácové město Persepolis?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Šerpa Tenzing Norgay z Nepálu a Novozélanďan Hillary stanuli na vrcholu 29. května 1953.",
+      "id": "his-0035",
+      "options": [
+        "George Mallory",
+        "Tenzing Norgay",
+        "Reinhold Messner",
+        "Ang Rita"
+      ],
+      "question": "Který horolezec vystoupil v roce 1953 s Edmundem Hillarym na vrchol Everestu?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Marie Curie získala cenu za fyziku v roce 1903 a za chemii v roce 1911 – jako jediný člověk ve dvou vědních oborech.",
+      "id": "his-0022",
+      "options": [
+        "Marie Curie-Skłodowská",
+        "Florence Nightingalová",
+        "Lise Meitnerová",
+        "Ada Lovelace"
+      ],
+      "question": "Která žena jako první získala Nobelovu cenu?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Jemný pergamen z telecí kůže se nazývá velin; na velkou bibli mohly být potřeba kůže stovek zvířat.",
+      "id": "his-0030",
+      "options": ["Pergamen", "Rýžový papír", "Březová kůra", "Papyrus"],
+      "question": "Jak se nazýval psací materiál ze zvířecí kůže, používaný ve středověkých knihách?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Champollion prý vykřikl „Je tiens l'affaire!“ („Mám to!“) a pak omdlel.",
+      "id": "his-0082",
+      "options": [
+        "Karl Richard Lepsius",
+        "Giovanni B. Belzoni",
+        "Auguste Mariette",
+        "Jean-François Champollion"
+      ],
+      "question": "Kdo v roce 1822 rozluštil egyptské hieroglyfy?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Na vrcholu moci sahala achaimenovská říše od Egypta a Balkánu až k údolí Indu.",
+      "id": "his-0073",
+      "options": ["Byzantskou", "Novoasyrskou", "Osmanskou", "Achaimenovskou"],
+      "question": "Kterou říši založil v 6. století př. n. l. Kýros Veliký?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Napoleonův zákoník je dodnes základem občanského práva ve Francii, Belgii, Lucembursku a mnoha dalších zemích.",
+      "id": "his-0087",
+      "options": [
+        "Napoleonův",
+        "Karla Velikého",
+        "Ludvíka XIV.",
+        "Ludvíka Filipa"
+      ],
+      "question": "Čí občanský zákoník z roku 1804 ovlivnil právo mnoha zemí?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Karla Velikého korunoval papež v Římě; mnoho evropských královských rodů se později hlásilo k jeho potomstvu.",
+      "id": "his-0088",
+      "options": ["Chlodvík I.", "Karel Veliký", "Pipin Krátký", "Ota I."],
+      "question": "Kdo byl na Boží hod vánoční roku 800 korunován římským císařem?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "V lokalitě Hisarlik je nejméně devět měst postavených na sobě během zhruba 4 000 let.",
+      "id": "his-0074",
+      "options": ["Řecko", "Itálie", "Turecko", "Kypr"],
+      "question": "Ve které dnešní zemi leží archeologické naleziště starověké Tróje?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Části Velkého kanálu jsou starší než 2 000 let; jeho celková délka je asi 1 800 km.",
+      "id": "his-0112",
+      "options": ["Kanton", "Si-an", "Chang-čou", "Šanghaj"],
+      "question": "Velký kanál v Číně, nejdelší starověký průplav, spojuje Peking s kterým městem?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Alhambru v Granadě postavila převážně dynastie Nasrovců; její název pochází z arabského výrazu pro „ta červená“.",
+      "id": "his-0040",
+      "options": ["Španělsko", "Itálie", "Maroko", "Portugalsko"],
+      "question": "Ve které zemi je palác a pevnost Alhambra?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Mayský kalendář 21. prosince 2012 jen uzavřel velký cyklus; mayští učenci žádnou apokalypsu nikdy nepředpovídali.",
+      "id": "his-0037",
+      "options": ["Inkové", "Mayové", "Olmékové", "Aztékové"],
+      "question": "Dlouhý počet kalendáře které civilizace dal vzniknout mýtům o „konci světa v roce 2012“?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Dias ho nazval „mysem Bouří“; později byl přejmenován na nadějnější mys Dobré naděje.",
+      "id": "his-0076",
+      "options": [
+        "Pedro Cabral",
+        "Fernão de Magalhães",
+        "Vasco da Gama",
+        "Bartolomeu Dias"
+      ],
+      "question": "Který portugalský mořeplavec jako první obeplul v roce 1488 mys Dobré naděje?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "K obrazcům z Nazcy patří kolibřík, opice i pavouk a nejlépe jsou vidět ze vzduchu.",
+      "id": "his-0079",
+      "options": ["Inkové", "Moche", "Nazca", "Chavín"],
+      "question": "Která starověká peruánská kultura vytvořila v poušti obří čárové obrazce?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Všech 28 členů posádky přežilo; vrak byl nalezen v roce 2022 v hloubce asi 3 000 m ve Weddellově moři.",
+      "id": "his-0083",
+      "options": ["Terra Nova", "Discovery", "Endurance", "Fram"],
+      "question": "Jak se jmenovala Shackletonova loď, kterou sevřel a rozdrtil antarktický led?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Thajsko je jedinou zemí jihovýchodní Asie, kterou nikdy nekolonizovala evropská mocnost.",
+      "id": "his-0042",
+      "options": ["Thajsko", "Myanmar", "Laos", "Kambodža"],
+      "question": "Která dnešní země se do roku 1939 nazývala Siam?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Van Gogh ho namaloval zpaměti podle výhledu z okna ústavu v Saint-Rémy-de-Provence.",
+      "id": "cul-0003",
+      "options": [
+        "Paul Gauguin",
+        "Vincent van Gogh",
+        "Claude Monet",
+        "Henri de Toulouse-Lautrec"
+      ],
+      "question": "Kdo namaloval v roce 1889 obraz „Hvězdná noc“?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Luxusní vlak začal jezdit v roce 1883; od roku 1889 mohli cestující jet po železnici až do Konstantinopole.",
+      "id": "his-0093",
+      "options": ["Istanbul", "Petrohrad", "Athény", "Káhira"],
+      "question": "S kterým městem spojovala klasická trasa Orient Expressu Paříž?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Süan-cang putoval asi 16 let a přinesl stovky buddhistických textů; román z jeho cesty dělá dobrodružství s Opičím králem.",
+      "id": "his-0120",
+      "options": ["Ťien-čen", "Fa-sien", "Süan-cang", "Čang Čchien"],
+      "question": "Cesta kterého čínského mnicha do Indie v 7. století inspirovala román „Putování na západ“?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Utzonovy střechy připomínající plachty pokrývá přes milion švédských dlaždic; dokončenou stavbu nikdy osobně neviděl.",
+      "id": "cul-0045",
+      "options": ["Finsko", "Dánsko", "Švédsko", "Norsko"],
+      "question": "Ze které země pocházel Jørn Utzon, architekt Opery v Sydney?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Aksum se středem na území dnešní severní Etiopie a Eritreje patřil k prvním africkým státům, které razily mince; jeho nejvyšší obelisk je dlouhý přes 30 m.",
+      "id": "his-0119",
+      "options": [
+        "Aksumské království",
+        "Říše Mali",
+        "Songhajská říše",
+        "Říše Kanem-Bornu"
+      ],
+      "question": "Které starověké africké království razilo vlastní mince a vztyčovalo obří kamenné obelisky?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Penny Black z roku 1840 zobrazuje královnu Viktorii; britské známky dodnes nenesou název země.",
+      "id": "his-0048",
+      "options": [
+        "Francie",
+        "Spojené království",
+        "Spojené státy",
+        "Švýcarsko"
+      ],
+      "question": "Ze které země pochází první nalepovací poštovní známka, Penny Black?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "V Mezopotámii, převážně na území dnešního Iráku, vznikla některá z prvních měst, písem a vozidel s koly.",
+      "id": "his-0046",
+      "options": [
+        "Nil a Jordán",
+        "Dunaj a Rýn",
+        "Indus a Brahmaputra",
+        "Tigris a Eufrat"
+      ],
+      "question": "Mezi kterými dvěma řekami ležela Mezopotámie, „země mezi řekami“?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Tango se zrodilo koncem 19. století v Buenos Aires a Montevideu mezi přistěhovalci a místními.",
+      "id": "cul-0046",
+      "options": ["Magdalena", "Orinoko", "Amazonka", "Río de la Plata"],
+      "question": "V přístavních městech u ústí které řeky vzniklo tango?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Poirot se poprvé objevil v roce 1920 a proslul svými „malými šedými buňkami“ a pečlivě navoskovaným knírem.",
+      "id": "cul-0047",
+      "options": ["Belgičan", "Lucemburčan", "Francouz", "Švýcar"],
+      "question": "Jaké národnosti je detektiv Agathy Christie Hercule Poirot?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Většina oper Mozartovy doby byla italsky, ale Kouzelná flétna (1791) vznikla v němčině pro vídeňské divadlo.",
+      "id": "cul-0093",
+      "options": ["Latinsky", "Francouzsky", "Italsky", "Německy"],
+      "question": "V jakém jazyce se zpívá Mozartova opera „Kouzelná flétna“?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Stanley našel Livingstona v roce 1871 v Udžidži u jezera Tanganika po dlouhém pátrání.",
+      "id": "his-0096",
+      "options": [
+        "John Speke",
+        "Henry Morton Stanley",
+        "Richard Burton",
+        "Mungo Park"
+      ],
+      "question": "Kdo podle všeho pozdravil cestovatele Livingstona slovy „Doktor Livingstone, předpokládám?“"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Román sleduje sedm generací rodu Buendíů ve smyšleném městečku Macondo.",
+      "id": "cul-0052",
+      "options": [
+        "Isabel Allendeová",
+        "Jorge Luis Borges",
+        "Mario Vargas Llosa",
+        "Gabriel García Márquez"
+      ],
+      "question": "Kdo napsal román „Sto roků samoty“?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Svátek Tuan-wu (svátek dračích lodí) připadá na pátý den pátého lunárního měsíce a jedí se při něm knedlíčky z lepkavé rýže.",
+      "id": "cul-0092",
+      "options": [
+        "Svátek Čching-ming",
+        "Svátek středu podzimu",
+        "Svátek Tuan-wu",
+        "Svátek luceren"
+      ],
+      "question": "Během kterého čínského svátku se tradičně konají závody dračích lodí?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Stavba začala v roce 1882 a Gaudí jí věnoval přes 40 let; je pohřben v kryptě baziliky.",
+      "id": "cul-0011",
+      "options": [
+        "Antoni Gaudí",
+        "Rafael Moneo",
+        "Ricardo Bofill",
+        "Santiago Calatrava"
+      ],
+      "question": "Který architekt navrhl barcelonskou Sagradu Família?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Římané nazývali Skotsko Caledonia, Irsko Hibernia a Francii Gallia; Britannia se později stala národní personifikací.",
+      "id": "his-0117",
+      "options": ["Hibernia", "Britannia", "Caledonia", "Gallia"],
+      "question": "Jak se ve starověku latinsky nazývala Británie?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Kampaň vedla Kate Sheppardová; novozélandské ženy poprvé volily ve všeobecných volbách v listopadu 1893.",
+      "id": "his-0095",
+      "options": ["Norsko", "Nový Zéland", "Spojené království", "Finsko"],
+      "question": "Která samosprávná země jako první dala v roce 1893 volební právo všem dospělým ženám?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Nightingalová byla také průkopnicí statistiky a pomocí diagramů ukazovala, jak hygiena zachraňuje životy.",
+      "id": "his-0047",
+      "options": [
+        "Mary Seacoleová",
+        "Florence Nightingalová",
+        "Edith Cavellová",
+        "Elizabeth G. Andersonová"
+      ],
+      "question": "Které slavné britské zdravotní sestře se říkalo „Dáma s lampou“?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Masky umožňovaly Benátčanům všech vrstev volně se mísit; výroba masek je ve městě dodnes významným řemeslem.",
+      "id": "cul-0051",
+      "options": ["Rio de Janeiro", "Kolín nad Rýnem", "Nice", "Benátky"],
+      "question": "Karneval kterého města proslul propracovanými maskami, jako je bauta?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Dante psal svou rodnou toskánštinou, nikoli latinou, což pomohlo učinit z toskánštiny základ moderní italštiny.",
+      "id": "cul-0053",
+      "options": ["Okcitánsky", "Francouzsky", "Italsky", "Latinsky"],
+      "question": "V jakém jazyce napsal Dante „Božskou komedii“?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "John Cabot, rodným jménem Giovanni Caboto, vyplul z Bristolu na malé lodi Matthew; kde přesně přistál (Newfoundland, nebo Cape Breton), je dodnes sporné.",
+      "id": "his-0118",
+      "options": [
+        "Jacques Cartier",
+        "John Cabot",
+        "Martin Frobisher",
+        "Henry Hudson"
+      ],
+      "question": "Který mořeplavec narozený v Benátkách dosáhl v roce 1497 Severní Ameriky ve službách Anglie?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Luxor stojí na místě starověkých Théb; chrámový komplex Karnak patří k největším náboženským stavbám vůbec.",
+      "id": "his-0090",
+      "options": ["Alexandrie", "Káhira", "Asuán", "Luxor"],
+      "question": "Ve kterém dnešním egyptském městě jsou velké chrámy Karnaku?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Podle oblíbené japonské tradice se splní přání tomu, kdo složí 1 000 papírových jeřábů.",
+      "id": "cul-0012",
+      "options": ["Origami", "Ikebana", "Bonsaj", "Kincugi"],
+      "question": "Jak se nazývá japonské umění skládání papíru do tvarů?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Kabuki vzniklo kolem roku 1603; herci jsou tradičně jen muži, a to i v ženských rolích.",
+      "id": "cul-0048",
+      "options": ["Kjógen", "Nó", "Kabuki", "Bunraku"],
+      "question": "Který styl japonského divadla je známý výrazným líčením zvaným kumadori?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Hadriánův val vedl asi 117 km od pobřeží k pobřeží a zhruba každou římskou míli na něm stála malá pevnůstka (milecastle).",
+      "id": "his-0041",
+      "options": ["Traianus", "Hadrianus", "Claudius", "Augustus"],
+      "question": "Který římský císař dal v roce 122 n. l. postavit zeď napříč severní Anglií?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Macao bylo pod portugalskou správou až do roku 1999 a portugalština zůstává jedním z jeho úředních jazyků.",
+      "id": "his-0089",
+      "options": ["Španělsko", "Nizozemsko", "Portugalsko", "Británie"],
+      "question": "Která evropská země založila v 50. letech 16. století obchodní stanici Macao?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Gondola je postavená mírně asymetricky, aby ji jediný veslař stojící vzadu mohl řídit rovně.",
+      "id": "cul-0008",
+      "options": ["Džunka", "Feluka", "Gondola", "Dhau"],
+      "question": "Jak se nazývá tradiční veslice s plochým dnem v Benátkách?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Úspěch muzea při oživení Bilbaa dal vzniknout pojmu „efekt Bilbao“ pro města, která stavějí ikonická muzea.",
+      "id": "cul-0056",
+      "options": [
+        "Frank Gehry",
+        "Renzo Piano",
+        "Norman Foster",
+        "Zaha Hadidová"
+      ],
+      "question": "Který architekt navrhl Guggenheimovo muzeum v Bilbau, obložené titanem?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Don Quijote, vydaný ve dvou dílech v letech 1605 a 1615, bývá označován za první moderní román.",
+      "id": "cul-0009",
+      "options": [
+        "Gabriel García Márquez",
+        "Federico García Lorca",
+        "Miguel de Cervantes",
+        "Lope de Vega"
+      ],
+      "question": "Kdo napsal román „Don Quijote“?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Vitus Bering byl dánský mořeplavec v ruských službách; průliv je široký jen asi 82 km.",
+      "id": "his-0091",
+      "options": ["Henry Hudson", "James Cook", "Vitus Bering", "Abel Tasman"],
+      "question": "Který mořeplavec dal jméno průlivu mezi Asií a Severní Amerikou?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Příběh se odehrává v italské Veroně, kde balkon na „Juliině domě“ láká mnoho návštěvníků.",
+      "id": "cul-0005",
+      "options": [
+        "Charles Dickens",
+        "William Shakespeare",
+        "Christopher Marlowe",
+        "Geoffrey Chaucer"
+      ],
+      "question": "Kdo napsal hru „Romeo a Julie“?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Město postavené na bažinách u ústí Něvy bylo asi dvě století hlavním městem Ruska.",
+      "id": "his-0044",
+      "options": ["Nižnij Novgorod", "Archangelsk", "Petrohrad", "Moskva"],
+      "question": "Které město založil Petr Veliký v roce 1703?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Vivaldi ke koncertům vydal sonety popisující ptačí zpěv, bouře i mrazivé zimy.",
+      "id": "cul-0004",
+      "options": [
+        "Antonio Vivaldi",
+        "Georg Friedrich Händel",
+        "Johann Sebastian Bach",
+        "Wolfgang Amadeus Mozart"
+      ],
+      "question": "Který skladatel napsal houslové koncerty „Čtvero ročních dob“?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Portugalští přistěhovalci z Madeiry připluli v roce 1879 s malými kytarovými nástroji, jako je machete.",
+      "id": "cul-0090",
+      "options": ["Z Mexika", "Z Japonska", "Z Filipín", "Z Madeiry"],
+      "question": "Ukulele vzniklo na Havaji z nástrojů, které přivezli přistěhovalci odkud?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Školy samby celý rok připravují alegorické vozy, kostýmy a písně pro průvod v Sambódromu.",
+      "id": "cul-0007",
+      "options": ["Salsa", "Flamenco", "Tango", "Samba"],
+      "question": "Kterým tancem jsou proslulé karnevalové průvody v Riu de Janeiru?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Každý srpen se v ulicích naháže přes 100 tun přezrálých rajčat; slavnost sahá do roku 1945.",
+      "id": "cul-0049",
+      "options": ["Pamplona", "Valencie", "Buñol", "Sevilla"],
+      "question": "Ve kterém španělském městečku se koná rajčatová bitva La Tomatina?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Dvořák ji napsal v roce 1893 během působení v New Yorku; nahrávka letěla s astronauty Apolla 11 na Měsíc.",
+      "id": "cul-0055",
+      "options": ["Z Nového světa", "Eroica", "Nedokončená", "Pastorální"],
+      "question": "Jakou přezdívku má Symfonie č. 9 Antonína Dvořáka?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Munch vytvořil několik verzí Výkřiku, včetně maleb, pastelů a grafik.",
+      "id": "cul-0002",
+      "options": ["Polibek", "Noční hlídka", "Spící cikánka", "Výkřik"],
+      "question": "Který obraz Edvarda Muncha zobrazuje postavu svírající si tvář pod rudou oblohou?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Název Cejlon přežívá v „cejlonském čaji“, který je stále světoznámým vývozním artiklem Srí Lanky.",
+      "id": "his-0043",
+      "options": ["Srí Lanka", "Madagaskar", "Maledivy", "Mauricius"],
+      "question": "Která ostrovní země se dříve nazývala Cejlon?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Skladba sleduje řeku od dvou malých pramenů přes krajinu až do Prahy.",
+      "id": "cul-0054",
+      "options": [
+        "Antonín Dvořák",
+        "Bohuslav Martinů",
+        "Leoš Janáček",
+        "Bedřich Smetana"
+      ],
+      "question": "Který český skladatel napsal „Vltavu“?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Dílo, které asi před 1 000 lety napsala dvorní dáma na císařském dvoře, bývá označováno za jeden z prvních románů světa.",
+      "id": "cul-0094",
+      "options": [
+        "Murasaki Šikibu",
+        "Sei Šónagon",
+        "Princezna Šikiši",
+        "Josano Akiko"
+      ],
+      "question": "Kdo napsal japonskou klasiku „Příběh prince Gendžiho“?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Na vrcholu se jediná vzácná tulipánová cibule prý prodala za víc než desetinásobek roční mzdy zkušeného řemeslníka.",
+      "id": "his-0094",
+      "options": ["Nizozemsko", "Švýcarsko", "Francie", "Anglie"],
+      "question": "Ve které zemi propukla ve 30. letech 17. století „tulipánová horečka“, raná finanční bublina?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Místní název Mosi-oa-Tunya znamená „dým, který hřmí“ – podle obrovského oblaku vodní tříště.",
+      "id": "his-0045",
+      "options": [
+        "Andělovy vodopády",
+        "Niagarské vodopády",
+        "Viktoriiny vodopády",
+        "Murchisonovy vodopády"
+      ],
+      "question": "Které vodopády na Zambezi pojmenoval David Livingstone po své královně?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Na konci průvodu se v Lerwicku zapálí replika vikingské lodi v plné velikosti.",
+      "id": "cul-0089",
+      "options": ["Faerské ostrovy", "Hebridy", "Orkneje", "Shetlandy"],
+      "question": "Na kterém souostroví se koná ohňový festival Up Helly Aa?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Román má přes 500 postav a části jsou napsány francouzsky, jak mluvila ruská šlechta.",
+      "id": "cul-0022",
+      "options": [
+        "Fjodor Dostojevskij",
+        "Anton Čechov",
+        "Lev Tolstoj",
+        "Ivan Turgeněv"
+      ],
+      "question": "Kdo napsal román „Vojna a mír“?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Díky 953 malým okénkům Havá Mahalu mohly královské ženy nepozorovaně sledovat dění v ulicích a vánek budovu chladil.",
+      "id": "cul-0102",
+      "options": ["Ágra", "Udajpur", "Dillí", "Džajpur"],
+      "question": "Ve kterém indickém městě je Havá Mahal, „Palác větrů“?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Jazz spojil afroamerické blues a ragtime s hudbou dechovek a jeho srdcem je improvizace.",
+      "id": "cul-0030",
+      "options": ["Reggae", "Bossa nova", "Jazz", "Flamenco"],
+      "question": "Který hudební žánr se zrodil v New Orleansu na počátku 20. století?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Zrcadlo odráží dvě další postavy ve dveřích; nad ním se malíř podepsal „Jan van Eyck zde byl 1434“.",
+      "id": "cul-0099",
+      "options": [
+        "Rogier van der Weyden",
+        "Hans Holbein",
+        "Jan van Eyck",
+        "Hans Memling"
+      ],
+      "question": "Který malíř vytvořil „Portrét manželů Arnolfiniových“ s malým vypouklým zrcadlem?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Hamlet je nejdelší Shakespearovou hrou a odehrává se v Elsinoru, inspirovaném hradem Kronborg v Dánsku.",
+      "id": "cul-0014",
+      "options": ["Othello", "Král Lear", "Macbeth", "Hamlet"],
+      "question": "Ve které Shakespearově hře zazní věta „Být, či nebýt“?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "La Scala byla otevřena v roce 1778; Benátky mají La Fenice a Neapol Teatro di San Carlo, nejstarší z těchto tří.",
+      "id": "cul-0073",
+      "options": ["Turín", "Milán", "Benátky", "Neapol"],
+      "question": "Ve kterém městě je operní dům La Scala?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Labutí jezero mělo premiéru v Moskvě v roce 1877 a zpočátku neuspělo; slavným se stalo až po obnovení v roce 1895.",
+      "id": "cul-0021",
+      "options": [
+        "Rimskij-Korsakov",
+        "Čajkovskij",
+        "Stravinskij",
+        "Rachmaninov"
+      ],
+      "question": "Který ruský skladatel napsal balet „Labutí jezero“?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Bránu dokončenou v roce 1791 zdobí kvadriga – vůz tažený čtyřmi koňmi.",
+      "id": "cul-0031",
+      "options": [
+        "Braniborská brána",
+        "Brána Indie",
+        "Vítězný oblouk",
+        "Wellingtonův oblouk"
+      ],
+      "question": "Která klasicistní brána je slavným symbolem Berlína?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Prado bylo otevřeno v roce 1819 a má největší sbírku děl Velázqueze a Goyi na světě.",
+      "id": "cul-0059",
+      "options": ["Sevilla", "Lisabon", "Barcelona", "Madrid"],
+      "question": "Ve kterém městě je muzeum Prado?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Dům postavený v Pensylvánii ve 30. letech má terasy vybíhající nad potok.",
+      "id": "cul-0064",
+      "options": [
+        "Frank Lloyd Wright",
+        "Walter Gropius",
+        "Ludwig Mies van der Rohe",
+        "Le Corbusier"
+      ],
+      "question": "Který architekt navrhl dům Fallingwater postavený nad vodopádem?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Navzdory názvu začíná Oktoberfest v září; vznikl z oslav královské svatby v roce 1810.",
+      "id": "cul-0019",
+      "options": ["Mnichov", "Hamburk", "Berlín", "Vídeň"],
+      "question": "Ve kterém městě se koná Oktoberfest?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Flamenco pochází z Andalusie na jihu Španělska a spojuje zpěv, hru na kytaru, tanec a tleskání.",
+      "id": "cul-0016",
+      "options": ["Portugalsko", "Španělsko", "Itálie", "Mexiko"],
+      "question": "Ve které zemi vzniklo flamenco?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Horní patra Královského Alcázaru v Seville dodnes využívá španělská královská rodina při návštěvách města.",
+      "id": "cul-0103",
+      "options": ["Sevilla", "Córdoba", "Valencie", "Toledo"],
+      "question": "Ve kterém španělském městě je maurský palác a pevnost Alcázar, dodnes královské sídlo?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Klimtův otec byl zlatník a rytec a v Klimtově „zlatém období“ se v mnoha dílech objevuje skutečné plátkové zlato.",
+      "id": "cul-0069",
+      "options": [
+        "Gustav Klimt",
+        "Alfons Mucha",
+        "Egon Schiele",
+        "Oskar Kokoschka"
+      ],
+      "question": "Který vídeňský malíř vytvořil obraz „Polibek“ zdobený plátkovým zlatem?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Bašó napsal také slavný cestopisný deník „Úzká stezka do vnitrozemí“ o putování napříč Japonskem.",
+      "id": "cul-0095",
+      "options": ["Macuo Bašó", "Kobajaši Issa", "Masaoka Šiki", "Josa Buson"],
+      "question": "Který básník napsal slavné haiku o žábě skákající do starého jezírka?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Stavitelé v Charbinu vyřezávají ledové kvádry ze zamrzlé řeky Sungari a stavějí z nich celé osvětlené hrady.",
+      "id": "cul-0076",
+      "options": [
+        "Pouštěním obřích draků",
+        "Plovoucími lampiony",
+        "Závody dračích lodí",
+        "Ledovými a sněhovými sochami"
+      ],
+      "question": "Čím je proslulý zimní festival v čínském Charbinu?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Melodie „Ódy na radost“ pochází z finále symfonie, kterou Beethoven psal už téměř úplně hluchý.",
+      "id": "cul-0028",
+      "options": [
+        "Wolfgang Amadeus Mozart",
+        "Franz Schubert",
+        "Joseph Haydn",
+        "Ludwig van Beethoven"
+      ],
+      "question": "Hudba evropské hymny pochází z Deváté symfonie kterého skladatele?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Reggae vyrostlo koncem 60. let ze ska a rocksteady a v roce 2018 bylo zapsáno na seznam dědictví UNESCO.",
+      "id": "cul-0029",
+      "options": ["Portoriko", "Kuba", "Jamajka", "Barbados"],
+      "question": "Ve které zemi vzniklo reggae?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Chrám dokončený v roce 1561 je ve skutečnosti devět kaplí seskupených dohromady, každá s vlastní kopulí.",
+      "id": "cul-0066",
+      "options": [
+        "Chrám Krista Spasitele",
+        "Chrám sv. Sofie",
+        "Chrám Vasila Blaženého",
+        "Isaakijevský chrám"
+      ],
+      "question": "Který chrám na moskevském Rudém náměstí je proslulý barevnými cibulovitými kopulemi?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Skotské horalské dudy mají tři bordunové píšťaly, které pod melodií hrají jeden nepřetržitý tón.",
+      "id": "cul-0015",
+      "options": ["Dudy", "Banjo", "Mandolína", "Akordeon"],
+      "question": "Který nástroj je slavným symbolem Skotska?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Obraz z 80. let 15. století visí v galerii Uffizi ve Florencii.",
+      "id": "cul-0058",
+      "options": [
+        "Raffael",
+        "Tizian",
+        "Sandro Botticelli",
+        "Domenico Ghirlandaio"
+      ],
+      "question": "Kdo namaloval „Zrození Venuše“?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Eposy se pravděpodobně předávaly ústně po generace, než byly zapsány.",
+      "id": "cul-0023",
+      "options": ["Sofoklés", "Ovidius", "Homér", "Vergilius"],
+      "question": "Kterému starořeckému básníkovi se připisují Ilias a Odysseia?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Potrubí budovy je zvenčí barevně odlišené: modrá pro vzduch, zelená pro vodu a žlutá pro elektřinu.",
+      "id": "cul-0096",
+      "options": ["Jean Nouvel", "Renzo Piano", "Norman Foster", "Frank Gehry"],
+      "question": "Který architekt navrhl s Richardem Rogersem Centre Pompidou v Paříži?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Velký triptych plný podivných tvorů a obřího ovoce visí v madridském Pradu.",
+      "id": "cul-0070",
+      "options": [
+        "Albrecht Dürer",
+        "Hieronymus Bosch",
+        "Jan van Eyck",
+        "Pieter Bruegel starší"
+      ],
+      "question": "Kdo namaloval „Zahradu pozemských rozkoší“?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Rodiny stavějí oltáře zvané ofrendas a jasně oranžové okvětní lístky aksamitníků prý vedou duše domů.",
+      "id": "cul-0017",
+      "options": [
+        "Den nezávislosti",
+        "Las Posadas",
+        "Den mrtvých",
+        "Cinco de Mayo"
+      ],
+      "question": "Která mexická slavnost uctívá zesnulé blízké barevnými oltáři a aksamitníky?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Kubistické obrazy ukazují předměty z několika úhlů najednou, rozložené do geometrických tvarů.",
+      "id": "cul-0026",
+      "options": [
+        "Marc Chagall",
+        "Pablo Picasso",
+        "Amedeo Modigliani",
+        "Henri Matisse"
+      ],
+      "question": "Který malíř založil spolu s Georgesem Braquem kubismus?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Opěrné oblouky odvádějí váhu střechy do stran, což umožňuje vysoké zdi s obrovskými vitrážemi.",
+      "id": "cul-0032",
+      "options": ["Secese", "Baroko", "Gotika", "Románský sloh"],
+      "question": "Pro který architektonický sloh jsou typické lomené oblouky a opěrné oblouky?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Lapis lazuli pocházel hlavně z dolů v Afghánistánu; v renesanci mohl být ultramarín dražší než zlato.",
+      "id": "cul-0097",
+      "options": ["Tyrkys", "Nefrit", "Modrý safír", "Lapis lazuli"],
+      "question": "Z jakého kamene se původně vyráběl vzácný modrý pigment ultramarín?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Steelpany se poprvé vyráběly ze sudů od ropy ve 30. a 40. letech a jsou národním nástrojem Trinidadu a Tobaga.",
+      "id": "cul-0062",
+      "options": [
+        "Antigua a Barbuda",
+        "Svatý Kryštof a Nevis",
+        "Jamajka",
+        "Trinidad a Tobago"
+      ],
+      "question": "Ve které zemi byl vynalezen ocelový buben steelpan?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Mucha se v roce 1895 v Paříži přes noc proslavil plakátem pro herečku Sarah Bernhardtovou.",
+      "id": "cul-0100",
+      "options": ["Secese", "Expresionismus", "Pop art", "Kubismus"],
+      "question": "Kterým stylem je nejznámější český umělec Alfons Mucha?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Händel napsal celé dílo v roce 1741 asi za 24 dní; premiéru mělo v Dublinu v roce 1742.",
+      "id": "cul-0071",
+      "options": [
+        "Georg Philipp Telemann",
+        "Georg Friedrich Händel",
+        "J. S. Bach",
+        "Joseph Haydn"
+      ],
+      "question": "Který skladatel napsal oratorium „Mesiáš“, poprvé uvedené v Dublinu?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Mondrianův styl inspiroval módu, nábytek, a dokonce slavné šaty Yves Saint Laurenta z roku 1965.",
+      "id": "cul-0068",
+      "options": [
+        "Kazimir Malevič",
+        "Piet Mondrian",
+        "Paul Klee",
+        "Vasilij Kandinskij"
+      ],
+      "question": "Který umělec je známý mřížkami černých čar a plochami základních barev?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Ibsen patří k nejhranějším dramatikům světa; podle mnoha měřítek ho předčí jen Shakespeare.",
+      "id": "cul-0060",
+      "options": [
+        "Knut Hamsun",
+        "Bjørnstjerne Bjørnson",
+        "August Strindberg",
+        "Henrik Ibsen"
+      ],
+      "question": "Který norský dramatik napsal hru „Domeček pro panenky“ (Nora)?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Malý obraz z roku 1931 měří jen asi 24 × 33 cm a visí v Muzeu moderního umění v New Yorku.",
+      "id": "cul-0025",
+      "options": ["Salvador Dalí", "René Magritte", "Max Ernst", "Joan Miró"],
+      "question": "Kdo namaloval obraz „Persistence paměti“ s rozteklými hodinami?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Michelangelo vytesal Davida z jediného mramorového bloku, který jiní sochaři o desítky let dřív opustili.",
+      "id": "cul-0020",
+      "options": ["Michelangelo", "Antonio Canova", "Raffael", "Auguste Rodin"],
+      "question": "Kdo vytesal pětimetrového mramorového Davida, dokončeného v roce 1504?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Píseň „The Girl from Ipanema“, pojmenovaná po pláži v Riu de Janeiru, patří k nejčastěji nahrávaným písním vůbec.",
+      "id": "cul-0063",
+      "options": ["Brazílie", "Argentina", "Kuba", "Portugalsko"],
+      "question": "Ve které zemi vznikla koncem 50. let hudba bossa nova?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "El Greco („Řek“) začínal jako malíř ikon na Krétě, poté působil v Benátkách a Římě a nakonec se usadil ve španělském Toledu.",
+      "id": "cul-0098",
+      "options": ["Sicílie", "Kypr", "Rhodos", "Kréta"],
+      "question": "Na kterém ostrově se narodil malíř El Greco?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Chopin opustil Polsko ve 20 letech a už se nevrátil, ale jeho srdce bylo po smrti převezeno do jednoho varšavského kostela.",
+      "id": "cul-0024",
+      "options": ["Francie", "Rakousko", "Polsko", "Maďarsko"],
+      "question": "Ve které zemi se narodil skladatel Frédéric Chopin?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Kritik použil název obrazu v roce 1874 posměšně, ale umělci si označení s chutí osvojili.",
+      "id": "cul-0027",
+      "options": [
+        "Romantismus",
+        "Impresionismus",
+        "Expresionismus",
+        "Fauvismus"
+      ],
+      "question": "Kterému uměleckému směru dal jméno Monetův obraz „Imprese, východ slunce“?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Kupole stará téměř 1 900 let má průměr asi 43 m a světlo do ní proniká jen otvorem širokým asi 8–9 m, zvaným oculus.",
+      "id": "cul-0065",
+      "options": [
+        "Domus Aurea",
+        "Caracallovy lázně",
+        "Maxentiova bazilika",
+        "Pantheon"
+      ],
+      "question": "Která římská stavba má největší kupoli z nevyztuženého betonu na světě?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Ve švédských městech vede „Lucie“ průvod zpěváků v bílých šatech a přináší světlo do temných zimních rán.",
+      "id": "cul-0075",
+      "options": ["Švédsko", "Nizozemsko", "Rakousko", "Skotsko"],
+      "question": "Ve které zemi nosí dívky 13. prosince na svátek Lucie korunky se svíčkami?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Carmen se odehrává v Seville; Bizet zemřel jen tři měsíce po premiéře, než se z ní stal světový hit.",
+      "id": "cul-0072",
+      "options": [
+        "Gioachino Rossini",
+        "Giuseppe Verdi",
+        "Georges Bizet",
+        "Giacomo Puccini"
+      ],
+      "question": "Kdo složil operu „Carmen“?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Escher neměl žádné formální matematické vzdělání, přesto jeho dílo matematici milují.",
+      "id": "cul-0067",
+      "options": [
+        "Hieronymus Bosch",
+        "M. C. Escher",
+        "Piet Mondrian",
+        "Rembrandt"
+      ],
+      "question": "Který nizozemský umělec je známý nemožnými schodišti a teselacemi?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Jako dárky se dávají červené obálky s penězi a červené ozdoby prý zahánějí bájnou příšeru Nian.",
+      "id": "cul-0018",
+      "options": ["Zelená", "Červená", "Bílá", "Modrá"],
+      "question": "Která barva se o čínském Novém roce tradičně spojuje se štěstím?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "„Černý čtverec“ se stal ikonou suprematismu, uměleckého směru založeného na jednoduchých geometrických tvarech.",
+      "id": "cul-0104",
+      "options": [
+        "Kazimir Malevič",
+        "El Lisickij",
+        "Marc Chagall",
+        "Vasilij Kandinskij"
+      ],
+      "question": "Který umělec namaloval v roce 1915 „Černý čtverec“?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Vermeer žil v Delftu a za celý život podle všeho namaloval méně než 40 děl.",
+      "id": "cul-0013",
+      "options": [
+        "Rembrandt van Rijn",
+        "Johannes Vermeer",
+        "Jan Steen",
+        "Frans Hals"
+      ],
+      "question": "Který nizozemský malíř vytvořil „Dívku s perlou“?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Neobvyklé rytmy a tanec šokovaly pařížské publikum tak, že se hudebníci navzájem sotva slyšeli.",
+      "id": "cul-0101",
+      "options": [
+        "Maurice Ravel",
+        "Claude Debussy",
+        "Igor Stravinskij",
+        "Sergej Prokofjev"
+      ],
+      "question": "Který skladatel napsal „Svěcení jara“, jehož premiéra v roce 1913 málem skončila výtržnostmi?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "V Kalevale hrdina Väinämöinen postaví první kantele z čelisti obří štiky.",
+      "id": "cul-0109",
+      "options": ["Finsko", "Litva", "Lotyšsko", "Estonsko"],
+      "question": "Která země je domovem lidového nástroje kantele, ústředního pro její národní epos?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Pú dostal jméno zčásti po skutečné medvědici Winnie v londýnské zoo, která pocházela z Kanady.",
+      "id": "cul-0082",
+      "options": [
+        "Roald Dahl",
+        "Kenneth Grahame",
+        "Beatrix Potterová",
+        "A. A. Milne"
+      ],
+      "question": "Který anglický spisovatel vytvořil Medvídka Pú?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Sax si saxofon patentoval v roce 1846; v jeho rodném belgickém Dinantu stojí obří sochy saxofonů.",
+      "id": "inv-0035",
+      "options": ["Francie", "Německo", "Belgie", "Rakousko"],
+      "question": "Ze které země pocházel vynálezce saxofonu Adolphe Sax?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "V původní knize z roku 1883 Pinocchiovi roste nos, když lže, a je vyřezán z mluvícího kusu dřeva.",
+      "id": "cul-0041",
+      "options": ["Itálie", "Švýcarsko", "Francie", "Německo"],
+      "question": "Ze které země pocházel Carlo Collodi, autor „Pinocchia“?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Mezquita má přes 850 sloupů z jaspisu, mramoru a žuly, které nesou pruhované červenobílé oblouky.",
+      "id": "cul-0106",
+      "options": ["Córdoba", "Granada", "Sevilla", "Málaga"],
+      "question": "Ve kterém španělském městě je Mezquita, slavná mešita-katedrála?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Fado se pojí s portugalským slovem „saudade“ – hlubokou touhou po něčem nebo někom, kdo chybí.",
+      "id": "cul-0077",
+      "options": ["Španělsko", "Brazílie", "Kapverdy", "Portugalsko"],
+      "question": "Ze které země pochází fado, melancholický styl písní?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Astrid Lindgrenová si Pipi vymyslela v roce 1941 jako pohádku na dobrou noc pro svou nemocnou dceru upoutanou na lůžko.",
+      "id": "cul-0042",
+      "options": ["Norsko", "Finsko", "Švédsko", "Dánsko"],
+      "question": "Pipi Dlouhou punčochu vytvořila autorka ze které země?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "V roce 1888 s ním jeho žena Bertha Benzová ujela asi 100 km, aby ukázala, že funguje, a palivo kupovala cestou v lékárně.",
+      "id": "inv-0005",
+      "options": [
+        "Parní lokomotivu",
+        "Elektrickou tramvaj",
+        "Parní traktor",
+        "Benzinový automobil"
+      ],
+      "question": "Co si v roce 1886 patentoval Karl Benz, často považované za první svého druhu?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Jeden z prvních rentgenových snímků, které Röntgen pořídil, zachycoval ruku jeho ženy se zřetelně viditelným snubním prstenem.",
+      "id": "inv-0008",
+      "options": [
+        "Thomas Edison",
+        "Wilhelm Röntgen",
+        "Marie Curie",
+        "Ernest Rutherford"
+      ],
+      "question": "Kdo v roce 1895 objevil rentgenové záření?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Román se odehrává v letním vedru v Petrohradě a ulici i dům hlavního hrdiny lze dodnes navštívit.",
+      "id": "cul-0079",
+      "options": [
+        "Michail Bulgakov",
+        "Nikolaj Gogol",
+        "Fjodor Dostojevskij",
+        "Alexandr Puškin"
+      ],
+      "question": "Který ruský spisovatel napsal „Zločin a trest“?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Velázquez namaloval do obrazu i sám sebe – stojí u velkého plátna a dívá se na diváka.",
+      "id": "cul-0087",
+      "options": [
+        "Bartolomé Murillo",
+        "Francisco Goya",
+        "Diego Velázquez",
+        "El Greco"
+      ],
+      "question": "Kdo namaloval obraz „Las Meninas“ (Dvorní dámy)?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Gauguinovy barevné obrazy z Tahiti silně ovlivnily moderní umělce, jako byli Matisse a Picasso.",
+      "id": "cul-0084",
+      "options": ["Srí Lanka", "Tahiti", "Bali", "Havaj"],
+      "question": "Na který ostrov se v 90. letech 19. století přestěhoval malíř Paul Gauguin?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Leonardo zkusil na suchou zeď experimentální techniku, takže barva se začala loupat ještě za jeho života.",
+      "id": "cul-0088",
+      "options": ["Řím", "Milán", "Florencie", "Benátky"],
+      "question": "Ve kterém městě je k vidění Leonardova nástěnná malba „Poslední večeře“?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Nápad dostala při jízdě tramvají v New Yorku, kde řidič neustále otevíral okno, aby odstranil sníh.",
+      "id": "inv-0043",
+      "options": ["Stěrač", "Bezpečnostní pás", "Klakson", "Zpětné zrcátko"],
+      "question": "Které příslušenství auta si v roce 1903 patentovala Mary Andersonová?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Kafka žil v Praze a požádal přítele, aby po jeho smrti spálil jeho rukopisy; přítel to odmítl.",
+      "id": "cul-0080",
+      "options": [
+        "Thomas Mann",
+        "Franz Kafka",
+        "Hermann Hesse",
+        "Stefan Zweig"
+      ],
+      "question": "Kdo napsal „Proměnu“, v níž se muž probudí jako obrovský hmyz?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Danzón vznikl z evropské contradanzy v Matanzas; první skladba „Las alturas de Simpson“ tam měla premiéru v roce 1879.",
+      "id": "cul-0108",
+      "options": ["Rumba", "Salsa", "Danzón", "Merengue"],
+      "question": "Který tanec je oficiálně národním tancem Kuby?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Kincugi bere rozbití jako součást historie předmětu, ne jako něco, co je třeba skrývat.",
+      "id": "cul-0107",
+      "options": ["Kincugi", "Sumi-e", "Kirigami", "Ikebana"],
+      "question": "Jak se nazývá japonské umění opravy rozbité keramiky zlatem?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Fahrenheit se narodil v Gdaňsku (tehdy Danzig) a většinu pracovního života strávil v Nizozemsku.",
+      "id": "inv-0038",
+      "options": [
+        "Ole Christensen Rømer",
+        "Galileo Galilei",
+        "Daniel Fahrenheit",
+        "Lord Kelvin"
+      ],
+      "question": "Který vědec vytvořil v roce 1724 teplotní stupnici a rtuťový teploměr?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Celý román se odehrává během jediného dne, 16. června 1904, který fanoušci každoročně slaví jako „Bloomsday“.",
+      "id": "cul-0081",
+      "options": ["Londýn", "Paříž", "Terst", "Dublin"],
+      "question": "Ve kterém městě se odehrává román Jamese Joyce „Odysseus“?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Nobel použil jmění z dynamitu a dalších vynálezů na financování Nobelových cen, poprvé udělených v roce 1901.",
+      "id": "inv-0007",
+      "options": [
+        "Alfred Nobel",
+        "Anders Celsius",
+        "Jöns Jacob Berzelius",
+        "Carl Linné"
+      ],
+      "question": "Který švédský chemik vynalezl dynamit?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Signál, písmeno „S“ v Morseově abecedě, urazil asi 3 500 km z Cornwallu na Newfoundland.",
+      "id": "inv-0040",
+      "options": [
+        "Reginald Fessenden",
+        "Heinrich Hertz",
+        "Nikola Tesla",
+        "Guglielmo Marconi"
+      ],
+      "question": "Kdo v roce 1901 uskutečnil první transatlantický rádiový přenos?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Z asi 140 obrazů Fridy Kahlo je zhruba 55 autoportrétů.",
+      "id": "cul-0034",
+      "options": [
+        "Leonora Carringtonová",
+        "Georgia O'Keeffeová",
+        "Tamara de Lempicka",
+        "Frida Kahlo"
+      ],
+      "question": "Která mexická malířka je proslulá svými výraznými autoportréty?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Podívej se pozorně: malý vrcholek v pozadí je hora Fudži.",
+      "id": "cul-0086",
+      "options": ["Okinawa", "Hokkaidó", "Kanagawa", "Kjúšú"],
+      "question": "U pobřeží které oblasti se odehrává slavný Hokusaiův dřevořez „Velká vlna“?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "První kniha o Mumíncích vyšla v roce 1945; Tove Janssonová psala švédsky, jazykem své rodiny.",
+      "id": "cul-0043",
+      "options": ["Snorkové", "Womblové", "Šmoulové", "Mumínci"],
+      "question": "Jak se jmenují kulatá bílá stvoření podobná trollům, která vymyslela finská autorka Tove Janssonová?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Celsiova stupnice byla „vzhůru nohama“; krátce po jeho smrti byla obrácena do dnešní podoby.",
+      "id": "inv-0080",
+      "options": [
+        "Bodu varu vody",
+        "Tělesné teplotě",
+        "Bodu mrazu vody",
+        "Absolutní nule"
+      ],
+      "question": "Čemu odpovídalo 0 stupňů na původní stupnici Anderse Celsia z roku 1742?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Bruegel ho namaloval jako součást cyklu ročních období; visí ve vídeňském Uměleckohistorickém muzeu.",
+      "id": "cul-0110",
+      "options": [
+        "Peter Paul Rubens",
+        "Pieter Bruegel starší",
+        "Jacob Jordaens",
+        "Anthonis van Dyck"
+      ],
+      "question": "Který vlámský malíř vytvořil zimní výjev „Lovci ve sněhu“ (1565)?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Rané čínské kompasy používaly lžíci z magnetovce, která se otáčela na hladké bronzové desce a ukazovala k jihu.",
+      "id": "inv-0004",
+      "options": ["Čína", "Persie", "Řecko", "Egypt"],
+      "question": "Kde vznikly rané kompasy s lžící z magnetovce?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Prvním Bairdovým televizním obrazem byla hlava břichomluvecké loutky, které říkal „Stooky Bill“.",
+      "id": "inv-0041",
+      "options": [
+        "Philo Farnsworth",
+        "John Logie Baird",
+        "Paul Nipkow",
+        "Vladimir Zworykin"
+      ],
+      "question": "Kdo v roce 1926 v Londýně poprvé veřejně předvedl fungující televizi?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "U pravé fresky se pigment při schnutí omítky stává součástí zdi, a proto fresky vydrží staletí.",
+      "id": "cul-0085",
+      "options": ["Freska", "Kvaš", "Mozaika", "Tempera"],
+      "question": "Jak se nazývá malba na čerstvou, vlhkou omítku?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Lipperhey byl nizozemský výrobce brýlí; o rok později si Galileo postavil vlastní vylepšený dalekohled.",
+      "id": "inv-0081",
+      "options": [
+        "Isaac Newton",
+        "Hans Lipperhey",
+        "Christiaan Huygens",
+        "Galileo Galilei"
+      ],
+      "question": "Kdo v roce 1608 podal první známou žádost o patent na dalekohled?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Pyramida byla otevřena v roce 1989 jako nový hlavní vchod muzea, a než se stala symbolem, budila spory.",
+      "id": "cul-0083",
+      "options": ["Renzo Piano", "I. M. Pei", "Norman Foster", "Jean Nouvel"],
+      "question": "Který architekt navrhl skleněnou pyramidu v Louvru?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Šahrazád končí každou noc příběh v nejnapínavějším místě, aby ji král nechal naživu a mohl slyšet konec.",
+      "id": "cul-0078",
+      "options": ["Aladin", "Chalífa Hárún ar-Rašíd", "Sindibád", "Šahrazád"],
+      "question": "Kdo vypráví příběhy v „Tisíci a jedné noci“?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "V románu z roku 1873 vyhraje Phileas Fogg sázku, protože cestou kolem světa na východ získá jeden den.",
+      "id": "cul-0039",
+      "options": [
+        "Jules Verne",
+        "H. G. Wells",
+        "Alexandre Dumas",
+        "Émile Zola"
+      ],
+      "question": "Kdo napsal román „Cesta kolem světa za osmdesát dní“?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Jeho diferenční stroj č. 2 byl podle jeho plánů konečně postaven v roce 1991 – a fungoval.",
+      "id": "inv-0036",
+      "options": [
+        "Elektrický telegraf",
+        "Mechanický počítač",
+        "Parní turbínu",
+        "Psací stroj"
+      ],
+      "question": "Co navrhl v 19. století Charles Babbage?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Přezdívku „Měsíční“ jí dal kritik až po Beethovenově smrti; skladatel ji nazval prostě Sonata quasi una fantasia.",
+      "id": "cul-0105",
+      "options": ["Beethoven", "Mozart", "Mendelssohn", "Chopin"],
+      "question": "Který skladatel napsal „Měsíční sonátu“?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Sloupy Parthenónu jsou uprostřed mírně vypouklé; tento trik, zvaný entasis, způsobuje, že vypadají dokonale rovné.",
+      "id": "cul-0033",
+      "options": [
+        "Chrám Dia Olympského",
+        "Parthenón",
+        "Pantheon",
+        "Héfaistův chrám"
+      ],
+      "question": "Který chrám na athénské Akropoli byl zasvěcen Athéně Parthenos?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Pop art používal běžné obrazy z reklamy a komiksů; Warhol namaloval 32 plechovek polévky, jednu za každou příchuť.",
+      "id": "cul-0035",
+      "options": ["Futurismus", "Surrealismus", "Pop art", "Kubismus"],
+      "question": "Ke kterému uměleckému směru patří obrazy plechovek polévky Andyho Warhola?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Tintin se poprvé objevil v roce 1929; Brusel má celou trasu komiksových maleb přes celé fasády domů.",
+      "id": "cul-0044",
+      "options": ["Švýcarsko", "Nizozemsko", "Belgie", "Francie"],
+      "question": "Komiksového hrdinu Tintina vytvořil Hergé, umělec ze které země?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Svůj první filtr vyrobila z listu pijáku ze sešitu svého syna a mosazného hrnce s otvory.",
+      "id": "inv-0042",
+      "options": [
+        "Rychlovarnou konvici",
+        "Elektrický mlýnek na kávu",
+        "Espresso kávovar",
+        "Papírový filtr na kávu"
+      ],
+      "question": "Co vynalezla Melitta Bentzová v Německu v roce 1908?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Cugnotovo tříkolové vozidlo bylo postaveno k tahání děl a dosahovalo zhruba rychlosti chůze.",
+      "id": "inv-0075",
+      "options": ["Pára", "Koně", "Elektřina", "Benzin"],
+      "question": "Co pohánělo silniční vozidlo Nicolase-Josepha Cugnota z roku 1769?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "V době vzniku povídek číslo 221B neexistovalo; dnes ho nese Muzeum Sherlocka Holmese.",
+      "id": "cul-0037",
+      "options": [
+        "Downing Street",
+        "Oxford Street",
+        "Baker Street",
+        "Fleet Street"
+      ],
+      "question": "Ve které londýnské ulici bydlel Sherlock Holmes, v čísle 221B?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Bellova první slova do telefonu prý zněla: „Pane Watsone, pojďte sem, chci vás vidět.“",
+      "id": "inv-0002",
+      "options": [
+        "Thomas Edison",
+        "Samuel F. B. Morse",
+        "Alexander Graham Bell",
+        "Guglielmo Marconi"
+      ],
+      "question": "Kdo v roce 1876 získal první americký patent na telefon?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Philips dovolil ostatním výrobcům používat formát zdarma, což pomohlo jeho celosvětovému rozšíření.",
+      "id": "inv-0082",
+      "options": ["BASF", "Philips", "Grundig", "Sony"],
+      "question": "Která firma v roce 1963 uvedla na trh kompaktní audiokazetu?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Japonské meteorologické úřady každý rok zveřejňují předpověď „fronty třešňových květů“, jak kvetení postupuje na sever.",
+      "id": "cul-0036",
+      "options": ["Tanabata", "Obon", "Secubun", "Hanami"],
+      "question": "Který japonský zvyk spočívá v piknicích pod kvetoucími třešněmi na jaře?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Gutenbergovy bible se vytisklo asi 180 výtisků; dochovalo se jich 49, některé jen částečně.",
+      "id": "inv-0001",
+      "options": [
+        "Laurens Janszoon Coster",
+        "Johannes Gutenberg",
+        "William Caxton",
+        "Aldus Manutius"
+      ],
+      "question": "Kdo kolem roku 1450 zavedl v Evropě tisk pohyblivými kovovými literami?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Bronzová ozubená kola, nalezená ve vraku lodi v roce 1901, dokázala předpovídat zatmění a polohu Slunce a Měsíce.",
+      "id": "inv-0037",
+      "options": [
+        "Bagdádská baterie",
+        "Hérónova aeolipila",
+        "Hydraulis",
+        "Mechanismus z Antikythéry"
+      ],
+      "question": "Které starořecké zařízení je považováno za nejstarší známý analogový počítač?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Nazval ho „gravicembalo col piano e forte“ – cembalo, které umí hrát potichu i nahlas.",
+      "id": "inv-0092",
+      "options": [
+        "Domenico Scarlatti",
+        "Bartolomeo Cristofori",
+        "Giovanni Battista Martini",
+        "Antonio Stradivari"
+      ],
+      "question": "Který italský výrobce nástrojů vynalezl kolem roku 1700 klavír?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Můra byla vlepena do provozního deníku počítače Harvard Mark II; příběh pomohl proslavit tým Grace Hopperové.",
+      "id": "inv-0028",
+      "options": ["Brouk", "Můra", "Šváb", "Pavouk"],
+      "question": "V roce 1947 našli inženýři v počítači skutečný „bug“ (anglicky brouk), který způsobil poruchu. Co to bylo?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Zuse sestrojil svůj první počítač Z1 v obývacím pokoji svých rodičů v Berlíně.",
+      "id": "inv-0089",
+      "options": [
+        "Konrad Zuse",
+        "Howard Aiken",
+        "John von Neumann",
+        "Alan Turing"
+      ],
+      "question": "Kdo v roce 1941 sestrojil Z3, první fungující programovatelný plně automatický počítač?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Pascalina uměla sčítat a odčítat; dochovalo se jich asi devět.",
+      "id": "inv-0051",
+      "options": [
+        "Dalekohled",
+        "Mechanickou kalkulačku",
+        "Parní stroj",
+        "Kyvadlové hodiny"
+      ],
+      "question": "Co sestrojil Blaise Pascal jako teenager, aby pomohl svému otci, výběrčímu daní?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Dunlop byl veterinář v Belfastu a chtěl synovi zajistit hladší jízdu na tříkolce po hrbolatých ulicích; nápad si patentoval v roce 1888.",
+      "id": "inv-0084",
+      "options": ["Houpacího koně", "Kočárek", "Tříkolku", "Vozík"],
+      "question": "Pro co svého syna vyvinul John Boyd Dunlop v roce 1888 praktickou nafukovací pneumatiku?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Na výstavě v New Yorku v roce 1854 nechal Otis přeseknout lano plošiny, na níž stál – a ta se bezpečně zastavila.",
+      "id": "inv-0058",
+      "options": ["Výtah", "Eskalátor", "Otočné dveře", "Jeřáb"],
+      "question": "Který stroj učinil Elisha Otis v 50. letech 19. století bezpečným díky automatické brzdě?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "ENIAC zabíral velkou místnost a používal asi 18 000 elektronek.",
+      "id": "inv-0088",
+      "options": ["Asi 27 tun", "Asi 100 tun", "Asi 3 tuny", "Asi 300 kg"],
+      "question": "Kolik zhruba vážil ENIAC, raný elektronický počítač dokončený v roce 1945?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Kovové pletivo kolem plamene bránilo vznícení hořlavého plynu v dole.",
+      "id": "inv-0087",
+      "options": [
+        "Pro strážce majáků",
+        "Pro potápěče",
+        "Pro strojvedoucí",
+        "Pro horníky"
+      ],
+      "question": "Pro koho byla určena bezpečnostní lampa Humphryho Davyho z roku 1815?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Díky kyvadlu se hodiny zpřesnily na zhruba 15 sekund denně místo asi 15 minut.",
+      "id": "inv-0049",
+      "options": [
+        "Galileo Galilei",
+        "Antonie van Leeuwenhoek",
+        "Robert Hooke",
+        "Christiaan Huygens"
+      ],
+      "question": "Který nizozemský vědec sestrojil v roce 1656 první kyvadlové hodiny?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Zvolil @, protože se málo používal a jasně odděloval jméno uživatele od jména počítače.",
+      "id": "inv-0063",
+      "options": ["% (procento)", "@ (zavináč)", "# (mřížka)", "& (ampersand)"],
+      "question": "Který symbol zavedl Ray Tomlinson v roce 1971 do e-mailových adres?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "První Walkman měl dva konektory pro sluchátka, aby mohli poslouchat dva lidé zároveň.",
+      "id": "inv-0010",
+      "options": ["Toshiba", "Panasonic", "Sony", "Philips"],
+      "question": "Která firma uvedla v roce 1979 na trh přenosný kazetový přehrávač Walkman?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Dieselový motor zapálí palivo prostě tím, že stlačí vzduch, až se dostatečně zahřeje.",
+      "id": "inv-0014",
+      "options": [
+        "Nikolaus Otto",
+        "Rudolf Diesel",
+        "Gottlieb Daimler",
+        "Wilhelm Maybach"
+      ],
+      "question": "Kdo v 90. letech 19. století vynalezl motor, který zapaluje palivo jen stlačením?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Plavební komora je prostor s vraty, kde se hladina zvedá nebo snižuje, a loď se tak zvedne nebo spustí.",
+      "id": "inv-0025",
+      "options": ["Plavební komora", "Molo", "Přehrada", "Přístaviště"],
+      "question": "Co umožňuje lodím na průplavu překonat rozdílné výšky hladiny?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Hromosvod nabízí blesku bezpečnou cestu kovovým drátem do země.",
+      "id": "inv-0019",
+      "options": [
+        "Hromosvod",
+        "Korouhev",
+        "Okenice proti bouři",
+        "Požární hlásič"
+      ],
+      "question": "Co vynalezl Benjamin Franklin na ochranu budov před bouřkou?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Plynem osvětlené návěstidlo u budovy parlamentu přepínal ručně policista.",
+      "id": "inv-0064",
+      "options": ["Paříž", "New York", "Londýn", "Berlín"],
+      "question": "Ve kterém městě byl v roce 1868 instalován první semafor?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Pažitnov vytvořil Tetris na počítači Elektronika 60; název spojuje „tetra“ (čtyři) s tenisem, jeho oblíbeným sportem.",
+      "id": "inv-0057",
+      "options": ["Tokio", "Kyjev", "Budapešť", "Moskva"],
+      "question": "Ve kterém městě vytvořil Alexej Pažitnov v roce 1984 Tetris?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Montážní linka zkrátila výrobu Modelu T z asi 12 hodin na asi 90 minut.",
+      "id": "inv-0015",
+      "options": ["Model T", "Mustang", "Model A", "Thunderbird"],
+      "question": "Pro který automobil zavedl Henry Ford v roce 1913 pohyblivou montážní linku?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Jezdci se odráželi nohama, stejně jako dnes děti na odrážedlech.",
+      "id": "inv-0059",
+      "options": ["Kola", "Pedály", "Sedlo", "Řídítka"],
+      "question": "Co chybělo „běžícímu stroji“ Karla Draise z roku 1817, předchůdci jízdního kola?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Lovelace v roce 1843 také předpověděla, že takové stroje jednou budou umět skládat hudbu.",
+      "id": "inv-0009",
+      "options": [
+        "Mary Somervillová",
+        "Ada Lovelace",
+        "Grace Hopperová",
+        "Hedy Lamarrová"
+      ],
+      "question": "Kdo napsal to, co se často označuje za první počítačový program, pro Babbageův analytický stroj?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Tesla také vyvinul klíčové součásti soustavy střídavého proudu (AC), která se používá po celém světě.",
+      "id": "inv-0061",
+      "options": [
+        "Michael Faraday",
+        "George Westinghouse",
+        "Nikola Tesla",
+        "Thomas Edison"
+      ],
+      "question": "Po kterém vynálezci je pojmenována jednotka magnetické indukce v soustavě SI?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Wattův oddělený kondenzátor výrazně zvýšil účinnost parních strojů; po Wattovi je pojmenována jednotka výkonu watt.",
+      "id": "inv-0011",
+      "options": [
+        "Spřádací stroj jenny",
+        "Knihtiskařský lis",
+        "Telegraf",
+        "Parní stroj"
+      ],
+      "question": "Který stroj James Watt v 60. a 70. letech 18. století výrazně zdokonalil?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Johanssonovy klíče se prodávaly po celém světě pod značkou Bahco; dřívější stavitelný klíč si o desítky let dřív patentoval jeden Angličan.",
+      "id": "inv-0091",
+      "options": ["Norsko", "Finsko", "Švédsko", "Dánsko"],
+      "question": "Ve které zemi si Johan Petter Johansson v roce 1891 patentoval svůj slavný stavitelný klíč (francouzák)?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Jeho drobné ručně broušené čočky zvětšovaly víc než 200krát a jako první spatřil bakterie.",
+      "id": "inv-0016",
+      "options": ["Teploměru", "Barometru", "Mikroskopu", "Dalekohledu"],
+      "question": "Zdokonalením kterého přístroje proslul Antonie van Leeuwenhoek?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Mince dopadla na malou destičku, která otevřela ventil a vypustila odměřené množství vody.",
+      "id": "inv-0090",
+      "options": ["Vodu", "Obilí", "Olivový olej", "Víno"],
+      "question": "Co vydával v 1. století mincovní automat Héróna Alexandrijského?"
+    }
+  ]
+}

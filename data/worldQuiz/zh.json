@@ -1,0 +1,956 @@
+{
+  "fallback": false,
+  "lang": "zh",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "堪培拉是作为悉尼和墨尔本这对竞争对手之间的折中方案而专门建造的，1927年起成为议会所在地。",
+      "id": "geo-0002",
+      "options": ["墨尔本", "悉尼", "珀斯", "堪培拉"],
+      "question": "澳大利亚的首都是哪座城市？"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "蝙蝠约占所有哺乳动物物种的五分之一；鼯鼠和鼯猴都只能滑翔。",
+      "id": "nat-0006",
+      "options": ["蝙蝠", "鼯鼠", "蜜袋鼯", "鼯猴"],
+      "question": "哪种哺乳动物是唯一能真正扑翼飞行的？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Au来自拉丁语aurum；金的延展性极好，1克金可以锤成约1平方米的薄片。",
+      "id": "sci-0005",
+      "options": ["Gd", "Go", "Au", "Ag"],
+      "question": "金的化学符号是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "大金字塔是七大奇迹中最古老的，也是唯一大体保存完好的一个。",
+      "id": "his-0001",
+      "options": [
+        "吉萨大金字塔",
+        "阿尔忒弥斯神庙",
+        "亚历山大灯塔",
+        "罗得岛太阳神像"
+      ],
+      "question": "古代世界七大奇迹中，哪一个至今大体仍然屹立？"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "《蒙娜丽莎》画在杨木板上而不是画布上，自法国大革命时期起就收藏在卢浮宫。",
+      "id": "cul-0001",
+      "options": ["达·芬奇", "拉斐尔", "波提切利", "米开朗琪罗"],
+      "question": "《蒙娜丽莎》是谁画的？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "伯纳斯-李在日内瓦附近的欧洲核子研究中心创建了网络，方便科学家共享文件；第一个网站至今仍可访问。",
+      "id": "inv-0003",
+      "options": [
+        "史蒂夫·乔布斯",
+        "蒂姆·伯纳斯-李",
+        "马克·安德森",
+        "温顿·瑟夫"
+      ],
+      "question": "1989年是谁发明了万维网？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "橙色涂装和反光条让它们更容易被找到；它们能承受极端撞击和火烧。",
+      "id": "avi-0014",
+      "options": ["亮橙色", "金属银色", "深海军蓝", "哑光黑色"],
+      "question": "飞机的“黑匣子”飞行记录仪是什么颜色的？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "尼泊尔国旗由两面上下叠放的三角旗组成，宪法中还用几何方法详细规定了画法。",
+      "id": "misc-0002",
+      "options": ["尼泊尔", "不丹", "蒙古", "斯里兰卡"],
+      "question": "哪个国家的国旗既不是长方形也不是正方形？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "每朵花只有三根细小的柱头，全靠手工采摘；约150朵花才能得到1克藏红花。",
+      "id": "food-0006",
+      "options": ["藏红花", "香草", "小豆蔻", "肉桂"],
+      "question": "哪种取自番红花花朵的香料按重量计最昂贵？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "在斯瓦希里语中，“safari”只是泛指任何旅行；这个词是从阿拉伯语传入斯瓦希里语的。",
+      "id": "lang-0003",
+      "options": ["狩猎之旅", "旅行", "野生动物", "草原"],
+      "question": "斯瓦希里语单词“safari”是什么意思？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "其中一半以上在手和脚上：仅一只手就有27块骨头。",
+      "id": "body-0001",
+      "options": ["256块", "226块", "206块", "186块"],
+      "question": "成年人的骨骼通常有多少块骨头？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "这个奇特的距离是在1908年伦敦奥运会上定下的，为的是让终点设在王室包厢前。",
+      "id": "sport-0004",
+      "options": ["39.750公里", "45.500公里", "40.000公里", "42.195公里"],
+      "question": "马拉松全程有多长？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "梵蒂冈面积只有约0.49平方公里，比许多城市公园还小。",
+      "id": "geo-0006",
+      "options": ["圣马力诺", "列支敦士登", "梵蒂冈", "摩纳哥"],
+      "question": "按面积计算，世界上最小的国家是哪个？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "鸭嘴兽是少数几种卵生哺乳动物之一，雄性后腿上还长有带毒的距。",
+      "id": "nat-0018",
+      "options": ["海獭", "袋熊", "河狸", "鸭嘴兽"],
+      "question": "下列哪种哺乳动物会下蛋？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "光从1.5亿公里外的太阳出发，约8分20秒到达地球，所以我们看到的总是片刻之前的太阳。",
+      "id": "sci-0009",
+      "options": ["约8秒", "约1小时", "约1天", "约8分钟"],
+      "question": "太阳光到达地球大约需要多长时间？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "麦哲伦本人在途中身亡；1522年，埃尔卡诺率领“维多利亚”号回到西班牙。",
+      "id": "his-0004",
+      "options": ["詹姆斯·库克", "哥伦布", "麦哲伦", "达·伽马"],
+      "question": "第一次乘船环游世界（1519—1522年）的是谁的船队？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "洒红节（霍利节）庆祝春天到来，男女老少互相抛撒彩粉、泼水。",
+      "id": "cul-0006",
+      "options": ["欧南节", "洒红节", "排灯节", "丰收节"],
+      "question": "哪个印度春季节日以互相抛撒彩粉闻名？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "名字来自丹麦语“leg godt”，意为“好好玩”；1958年的积木至今还能和现在的积木拼在一起。",
+      "id": "inv-0006",
+      "options": ["丹麦", "荷兰", "德国", "瑞典"],
+      "question": "乐高积木来自哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "跑道用标记划在沙滩上，涨潮时会没入海中，所以航班时刻要跟着潮汐走。",
+      "id": "avi-0024",
+      "options": ["海滩", "高速公路", "结冰的湖面", "冰川"],
+      "question": "在苏格兰的巴拉机场，定期航班降落在什么上面？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "1886年揭幕时，雕像是闪亮的棕色铜色；大约过了30年才完全变绿。",
+      "id": "misc-0010",
+      "options": ["铜皮氧化了", "港口的藻类", "被漆成了绿色", "长满了苔藓"],
+      "question": "自由女神像为什么是绿色的？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "中国人几千年前就开始饮茶；在很长一段时间里，压制成砖的茶甚至被当作货币使用。",
+      "id": "food-0010",
+      "options": ["英国", "印度", "中国", "日本"],
+      "question": "人们公认最早饮茶的是哪个国家？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "保加利亚语、塞尔维亚语、乌克兰语等也使用西里尔字母；它诞生于第一保加利亚帝国。",
+      "id": "lang-0005",
+      "options": ["西里尔字母", "希腊字母", "拉丁字母", "格拉哥里字母"],
+      "question": "俄语使用哪种字母书写？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "成年人的皮肤面积约1.5至2平方米，并不断更新：表层每隔几周就会换一遍。",
+      "id": "body-0002",
+      "options": ["肝脏", "皮肤", "大脑", "肺"],
+      "question": "人体最大的器官是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "顾拜旦选择这些颜色，是为了让每个国家的国旗至少包含其中一种，白色底色也算在内。",
+      "id": "sport-0006",
+      "options": ["七个", "六个", "四个", "五个"],
+      "question": "奥林匹克会旗上有几个相互套连的环？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "俄罗斯面积超过1700万平方公里，约占地球陆地的九分之一，横跨11个时区。",
+      "id": "geo-0007",
+      "options": ["中国", "加拿大", "俄罗斯", "巴西"],
+      "question": "按面积计算，世界上最大的国家是哪个？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "蜂鸟每秒振翅几十次，能悬停、倒退飞行，甚至能短暂地倒着飞。",
+      "id": "nat-0022",
+      "options": ["翠鸟", "麻雀", "蜂鸟", "家燕"],
+      "question": "哪种鸟能向后飞？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "1光年是光在一年中走过的距离，约9.46万亿公里。",
+      "id": "sci-0023",
+      "options": ["亮度", "时间", "距离", "速度"],
+      "question": "光年是用来衡量什么的？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "兵马俑有数以千计与真人等大的士兵，而且没有两张脸完全相同。",
+      "id": "his-0021",
+      "options": ["秦始皇", "成吉思汗", "忽必烈", "汉武帝"],
+      "question": "兵马俑是为守护哪位帝王的陵墓而制作的？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "铁塔原本只打算保留20年，后来部分因为可以用作无线电天线而得以保留。",
+      "id": "cul-0010",
+      "options": ["国王的加冕礼", "世界博览会", "王室的婚礼", "奥运会"],
+      "question": "埃菲尔铁塔是为哪个活动在1889年建造的？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "工程师珀西·斯宾塞在1945年发现了融化的巧克力；第一台微波炉高近1.8米。",
+      "id": "inv-0013",
+      "options": ["电水壶", "洗碗机", "微波炉", "烤面包机"],
+      "question": "一块巧克力在雷达旁融化后，人们发明了哪种家电？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "每次飞行客舱增压时，尖角处会集中应力；圆角能把载荷分散开。",
+      "id": "avi-0042",
+      "options": [
+        "为了减少反光",
+        "为了均匀分散应力",
+        "为了方便清洁",
+        "为了让视野更宽阔"
+      ],
+      "question": "客机的舷窗为什么是圆角而不是方形的？"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "斜塔在12世纪建造期间就开始倾斜；后来工程师已将它加固稳定。",
+      "id": "misc-0011",
+      "options": ["因为地震", "地基土质松软", "因为雷击", "故意这样设计"],
+      "question": "比萨斜塔为什么会倾斜？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "秘鲁和玻利维亚的安第斯山区早在7000至10000年前就种植马铃薯，那里至今仍有数千个品种。",
+      "id": "food-0013",
+      "options": ["西非", "中亚", "南美洲", "南欧"],
+      "question": "马铃薯最早是在世界上哪个地区被驯化的？"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "阿拉伯字母会根据位于词首、词中还是词尾而改变形状。",
+      "id": "lang-0006",
+      "options": ["印地语", "泰语", "格鲁吉亚语", "阿拉伯语"],
+      "question": "下列哪种语言是从右往左书写的？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "往东飞会让一天变短，而生物钟提前比推迟更困难。",
+      "id": "body-0051",
+      "options": ["往西飞", "往北飞", "往东飞", "往南飞"],
+      "question": "对大多数旅客来说，往哪个方向飞通常时差反应更严重？"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "只有13支球队参赛；几支欧洲球队乘船前往乌拉圭，航程约两周。",
+      "id": "sport-0035",
+      "options": ["阿根廷", "意大利", "乌拉圭", "巴西"],
+      "question": "哪个国家主办并赢得了1930年的第一届世界杯足球赛？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "格陵兰岛面积约210万平方公里，其中约五分之四被冰盖覆盖。",
+      "id": "geo-0025",
+      "options": ["加里曼丹岛", "格陵兰岛", "马达加斯加岛", "新几内亚岛"],
+      "question": "除大陆外，世界上最大的岛屿是哪个？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "火烈鸟从藻类和卤虫中获取类胡萝卜素；雏鸟刚出生时是灰色的。",
+      "id": "nat-0060",
+      "options": ["泡泥浴染上的", "血管透出来的", "食物中的色素", "强烈的阳光"],
+      "question": "火烈鸟的粉红色是从哪里来的？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "地轴倾斜约23.4°，所以每个半球一年中都有一段时间朝向太阳。",
+      "id": "sci-0042",
+      "options": ["地轴倾斜", "与太阳的距离", "月球引力", "太阳热量的变化"],
+      "question": "地球上为什么会有四季？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "阿蒙森的挪威探险队靠滑雪和狗拉雪橇，于1911年12月14日抵达南极点。",
+      "id": "his-0023",
+      "options": ["沙克尔顿", "南森", "斯科特", "阿蒙森"],
+      "question": "1911年率领首支探险队到达南极点的是谁？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "《小王子》是世界上被翻译最多的书之一，有数百种语言版本。",
+      "id": "cul-0038",
+      "options": ["萨特", "儒勒·凡尔纳", "尤瑟纳尔", "圣埃克苏佩里"],
+      "question": "哪位同时也是飞行员的作家写了《小王子》？"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "建筑学教授鲁比克·艾尔诺发明魔方是为了教授立体思维；他自己花了一个多月才把它复原。",
+      "id": "inv-0018",
+      "options": ["捷克斯洛伐克", "匈牙利", "奥地利", "日本"],
+      "question": "魔方是1974年在哪个国家发明的？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "发动机热废气中的水蒸气在巡航高度极冷的空气里几乎瞬间冻结。",
+      "id": "avi-0044",
+      "options": ["燃油蒸气", "排气烟雾", "灰尘", "冰晶"],
+      "question": "高空喷气式飞机身后的白色尾迹（凝结尾）主要由什么组成？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "凹坑会形成一层薄薄的湍流空气，减少阻力；光滑的球飞不了那么远。",
+      "id": "misc-0019",
+      "options": [
+        "为了飞得更远",
+        "为了更好看",
+        "为了能浮在水上",
+        "为了粘住球杆"
+      ],
+      "question": "高尔夫球表面为什么有小凹坑？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "榴莲常被称为“水果之王”；粉丝们爱它奶油般的果肉，但许多酒店也禁止带入。",
+      "id": "food-0035",
+      "options": ["红毛丹", "榴莲", "菠萝蜜", "山竹"],
+      "question": "哪种多刺的东南亚水果气味太重，被禁止带上新加坡的地铁？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "柴门霍夫于1887年在华沙发表了世界语；“Esperanto”的意思是“怀有希望的人”。",
+      "id": "lang-0022",
+      "options": ["柴门霍夫", "叶斯柏森", "施莱尔", "托尔金"],
+      "question": "国际语言世界语是谁创造的？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "内耳负责感知运动；在船上或飞机上望向地平线，有助于让眼睛和内耳“对上号”。",
+      "id": "body-0059",
+      "options": ["心脏", "胃黏膜", "鼻子", "内耳"],
+      "question": "晕动病是由于眼睛传来的信号和哪个器官的信号不一致造成的？"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "凹面镜把阳光聚焦起来点燃火炬，这一仪式自1936年起延续至今。",
+      "id": "sport-0045",
+      "options": [
+        "用阳光和凹面镜",
+        "用古代的油灯",
+        "用雅典带来的火种",
+        "用一根火柴"
+      ],
+      "question": "在希腊奥林匹亚，奥运圣火是如何点燃的？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "博斯普鲁斯海峡从城市中间穿过，许多人每天跨越两大洲上下班。",
+      "id": "geo-0045",
+      "options": ["亚洲和大洋洲", "亚洲和非洲", "欧洲和亚洲", "欧洲和非洲"],
+      "question": "伊斯坦布尔横跨哪两个大洲？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "驼峰里的脂肪是能量储备；把脂肪集中在一处，能让身体其他部位更凉快。",
+      "id": "nat-0068",
+      "options": ["空气", "肌肉", "脂肪", "水"],
+      "question": "骆驼的驼峰里储存的是什么？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "在地球上体重60公斤的人，到了月球上只会感觉有10公斤重。",
+      "id": "sci-0093",
+      "options": ["约十分之一", "差不多一样", "约六分之一", "约一半"],
+      "question": "月球上的重力大约是地球的多少？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "拉帕努伊人雕刻了近1000尊摩艾石像，大多取材于拉诺拉拉库采石场的火山凝灰岩。",
+      "id": "his-0034",
+      "options": ["西西里岛", "复活节岛", "巴厘岛", "新喀里多尼亚"],
+      "question": "巨大的摩艾石像位于哪个岛上？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "新西兰橄榄球队赛前会跳哈卡舞，这一传统可追溯到1905年。",
+      "id": "cul-0040",
+      "options": ["因纽特人", "夏威夷人", "毛利人", "澳大利亚原住民"],
+      "question": "哈卡舞是哪个民族的传统舞蹈？"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "东海道新干线在1964年东京奥运会前夕开通，以准点著称。",
+      "id": "inv-0021",
+      "options": ["名古屋", "广岛", "大阪", "京都"],
+      "question": "日本第一条新干线“子弹头列车”于1964年开通，连接东京和哪座城市？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "奥维尔·莱特飞了约37米，比如今许多客机的翼展还短。",
+      "id": "avi-0003",
+      "options": ["约1小时", "约1分钟", "约2分钟", "约12秒"],
+      "question": "人类第一次动力飞机飞行持续了多久？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "中国地理上横跨五个时区，但全国统一使用北京时间；在最西部，冬季日出可能晚至上午10点。",
+      "id": "misc-0038",
+      "options": ["两个", "五个", "一个", "三个"],
+      "question": "中国使用几个官方时区？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "真正的山葵稀少且难以种植；大多数餐厅的“芥末”是辣根、芥末粉加绿色色素。",
+      "id": "food-0007",
+      "options": ["腌姜片", "海藻粉", "染色辣根", "青辣椒酱"],
+      "question": "在日本以外，寿司旁的“芥末”往往其实是什么？"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "科萨语约有15种搭嘴音；纳尔逊·曼德拉的母语就是科萨语。",
+      "id": "lang-0032",
+      "options": ["科萨语", "阿姆哈拉语", "斯瓦希里语", "约鲁巴语"],
+      "question": "下列哪种语言以“搭嘴音”（吸气音）闻名？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "没有血管让角膜保持完全透明，这也是角膜移植很少发生排斥的原因。",
+      "id": "body-0060",
+      "options": ["角膜", "虹膜", "舌头", "视网膜"],
+      "question": "人体哪个部位没有血管，直接从空气中获取氧气？"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "游泳排在最前主要是出于安全考虑，以免运动员在最疲惫时还在水里。",
+      "id": "sport-0046",
+      "options": [
+        "跑步、骑车、游泳",
+        "游泳、骑车、跑步",
+        "游泳、跑步、骑车",
+        "骑车、游泳、跑步"
+      ],
+      "question": "铁人三项比赛的通常顺序是什么？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "雷克雅未克位于北纬约64°，就在北极圈以南，但温暖的洋流让那里的冬天相当温和。",
+      "id": "geo-0016",
+      "options": ["奥斯陆", "雷克雅未克", "赫尔辛基", "塔林"],
+      "question": "哪座城市是位置最北的主权国家首都？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "两颗心脏把血液泵入鳃，第三颗泵向全身；章鱼游动时主心脏会暂停跳动。",
+      "id": "nat-0004",
+      "options": ["两颗", "三颗", "四颗", "一颗"],
+      "question": "章鱼有几颗心脏？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "金星自转极慢且方向相反，自转一周需要243个地球日，而公转一周只要225天。",
+      "id": "sci-0014",
+      "options": ["金星", "海王星", "水星", "火星"],
+      "question": "在哪颗行星上，一天比一整年还长？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "传说阿基米德意识到，身体排开的水可以用来测量王冠的体积。",
+      "id": "his-0036",
+      "options": ["阿基米德", "毕达哥拉斯", "泰勒斯", "欧几里得"],
+      "question": "相传哪位古希腊人在洗澡时大喊“尤里卡！”？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "宋干节在四月，正值一年中最热的时候，友好的泼水大战正好用来消暑。",
+      "id": "cul-0050",
+      "options": ["天灯节", "宋干节", "水灯节", "鬼面节"],
+      "question": "哪个泼水节日标志着泰国的传统新年？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "任天堂最初在京都生产手绘的花札纸牌。",
+      "id": "inv-0056",
+      "options": ["纸牌", "纸灯笼", "木制玩具", "收音机"],
+      "question": "在做电子游戏之前，1889年成立的任天堂生产什么？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "这个“透气孔”让外层玻璃承受客舱压力，中间那层玻璃则作为备用。",
+      "id": "avi-0043",
+      "options": ["排出雨水", "测量空速", "引入新鲜空气", "平衡气压"],
+      "question": "客机舷窗上的小孔有什么用？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "聚合物钞票比纸币更耐用，也更难伪造；如今很多国家都在使用。",
+      "id": "misc-0044",
+      "options": ["澳大利亚", "日本", "加拿大", "新加坡"],
+      "question": "1988年，哪个国家第一个发行了塑料（聚合物）钞票？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "传说一位埃塞俄比亚牧羊人发现，山羊吃了咖啡果后变得格外活跃。",
+      "id": "food-0009",
+      "options": ["巴西", "越南", "哥伦比亚", "埃塞俄比亚"],
+      "question": "阿拉比卡咖啡树原产于哪个国家的高原？"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "巴布亚新几内亚山区的许多山谷都有自己的语言，有些只有几百人使用。",
+      "id": "lang-0036",
+      "options": ["巴西", "巴布亚新几内亚", "印度", "刚果民主共和国"],
+      "question": "哪个国家现存的语言最多，约有840种？"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "西伯利亚的贝加尔湖深逾1600米，蓄积了全球约五分之一未冻结的地表淡水。",
+      "id": "geo-0024",
+      "options": ["坦噶尼喀湖", "里海", "苏必利尔湖", "贝加尔湖"],
+      "question": "世界上最深的湖是哪个？"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "长颈鹿的颈椎数量和人类一样，只是每节可长达25厘米。",
+      "id": "nat-0009",
+      "options": ["二十四节", "十二节", "十八节", "七节"],
+      "question": "长颈鹿的脖子有几节颈椎？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "空气分子对波长较短的蓝光的散射远强于红光，这叫瑞利散射。",
+      "id": "sci-0036",
+      "options": [
+        "臭氧是蓝色的",
+        "空气散射蓝光",
+        "阳光本身是蓝的",
+        "海洋倒映上去"
+      ],
+      "question": "白天的天空为什么是蓝色的？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "波利尼西亚航海者约在公元1300年乘大型独木舟到达；他们的后代就是毛利人。",
+      "id": "his-0051",
+      "options": ["阿伊努人", "密克罗尼西亚人", "波利尼西亚人", "美拉尼西亚人"],
+      "question": "最早在新西兰定居的是哪些人？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "从空中看，卢西奥·科斯塔规划的巴西利亚形似飞机或飞鸟，建筑则出自奥斯卡·尼迈耶之手。",
+      "id": "cul-0057",
+      "options": ["伊斯兰堡", "堪培拉", "阿布贾", "巴西利亚"],
+      "question": "哪座首都是平地新建、于1960年落成启用的？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "铜珠从龙口落入蟾蜍口中，就能指示远方地震的方向。这就是候风地动仪。",
+      "id": "inv-0060",
+      "options": ["时辰", "风向", "降雨", "地震"],
+      "question": "公元132年，张衡那件龙口吐珠的铜器是用来测什么的？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "这个数字是磁航向除以十，所以27号跑道大致朝向正西（270°）。",
+      "id": "avi-0046",
+      "options": ["最大起飞重量", "跑道磁方向", "跑道长度", "建造顺序"],
+      "question": "跑道尽头漆着的大数字（如27）告诉飞行员什么？"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "长城只有几米宽；即使从近地轨道看，不借助工具也极难辨认。",
+      "id": "misc-0048",
+      "options": ["不能，太窄了", "只有夜里能看到", "能，天晴时", "能，很容易"],
+      "question": "宇航员在月球上能用肉眼看到长城吗？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "每个腰果梨只结一颗腰果；腰果都是去壳出售的，因为果壳里含有刺激性油脂。",
+      "id": "food-0076",
+      "options": ["带刺的豆荚", "木质的球果", "地下的块根", "肉质的假果"],
+      "question": "腰果长在什么的下方，像挂着一样？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "莱索托是唯一一个全境海拔都在1000米以上的国家，因此被称为“天空王国”。",
+      "id": "geo-0033",
+      "options": ["莱索托", "博茨瓦纳", "纳米比亚", "斯威士兰"],
+      "question": "哪个国家被南非完全包围？"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "让一半大脑轮流休息，海豚就能继续浮出水面换气，并警惕危险。",
+      "id": "nat-0057",
+      "options": [
+        "裹着海藻睡",
+        "静躺在海底",
+        "左右脑轮流休息",
+        "连续深睡8小时"
+      ],
+      "question": "海豚是怎么睡觉的？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "土星的平均密度比水小，理论上放进足够大的浴缸里会浮起来。",
+      "id": "sci-0051",
+      "options": ["土星", "天王星", "海王星", "木星"],
+      "question": "哪颗行星的密度比水还小？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "1324年曼萨·穆萨朝圣途经开罗时散发了大量黄金，导致埃及金价多年低迷。",
+      "id": "his-0067",
+      "options": ["阿克苏姆王国", "加纳帝国", "桑海帝国", "马里帝国"],
+      "question": "以富有闻名的曼萨·穆萨统治的是哪个西非帝国？"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "西塔琴除了弹奏用的弦，还有会自己共振的“共鸣弦”，发出闪烁般的音色。",
+      "id": "cul-0061",
+      "options": ["塔布拉鼓", "西塔琴", "萨罗德琴", "维纳琴"],
+      "question": "印度音乐家拉维·香卡让哪种乐器闻名世界？"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "研究人员不用走到咖啡室，就能先看看咖啡壶里还有没有咖啡。",
+      "id": "inv-0066",
+      "options": ["一壶咖啡", "繁忙的街道", "鱼缸", "风向标"],
+      "question": "1991年剑桥大学架设的世界上第一个网络摄像头拍的是什么？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "这些动物在凡尔赛当着国王路易十六的面飞了约8分钟，安全着陆。",
+      "id": "avi-0035",
+      "options": [
+        "山羊、母鸡和猴子",
+        "狗、鹅和兔子",
+        "绵羊、鸭子和公鸡",
+        "猪、鹦鹉和小猫"
+      ],
+      "question": "在让人乘坐之前，蒙戈尔菲耶兄弟先用热气球送上天的“乘客”是哪些？"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "这家日本公司由同一家族经营了1400多年，2006年才并入一家更大的企业。",
+      "id": "misc-0080",
+      "options": ["船只", "刀剑", "寺庙", "桥梁"],
+      "question": "金刚组是世界上最古老的公司之一（创立于578年），它建造什么？"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "夏威夷的冒纳凯阿火山从洋底拔地而起逾1万米，但露出海面的只有约4200米。",
+      "id": "geo-0101",
+      "options": ["德纳里山", "冒纳凯阿火山", "珠穆朗玛峰", "乞力马扎罗山"],
+      "question": "如果从海底的山脚算起，地球上最高的山是哪座？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "它其实是一颗长得过长的犬齿，可达约3米，内含数百万个神经末梢。",
+      "id": "nat-0080",
+      "options": ["角", "牙齿", "鳍刺", "鼻骨"],
+      "question": "一角鲸那根螺旋状的长“角”其实是什么？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "数一数闪电和雷声之间隔了几秒，再除以三，就能估算出雷暴离你有几公里。",
+      "id": "sci-0077",
+      "options": ["10秒", "30秒", "1秒", "3秒"],
+      "question": "每隔一公里距离，闪电之后大约几秒能听到雷声？"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "新阿姆斯特丹是荷兰殖民地；华尔街的名字来自荷兰定居者修建的一道木墙。",
+      "id": "his-0072",
+      "options": ["新阿姆斯特丹", "新鹿特丹", "哈德逊堡", "新荷兰"],
+      "question": "纽约在1664年改名之前叫什么？"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "萨克斯管像单簧管一样靠单簧片发声，所以属于木管乐器。",
+      "id": "cul-0074",
+      "options": ["打击乐器", "弦乐器", "铜管乐器", "木管乐器"],
+      "question": "萨克斯管是黄铜做的，但它属于哪个乐器家族？"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "《直指》的印刷比古腾堡圣经早了78年。",
+      "id": "inv-0086",
+      "options": ["日本", "蒙古", "中国", "高丽"],
+      "question": "现存最古老的金属活字印刷书《直指》（1377年）来自哪里？"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "雨后，一层薄薄的水让乌尤尼变成一面映照天空的巨大镜子。",
+      "id": "geo-0110",
+      "options": ["秘鲁", "智利", "玻利维亚", "阿根廷"],
+      "question": "世界上最大的盐沼乌尤尼盐沼位于哪个国家？"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "北美林蛙会在细胞里积存糖分作为“防冻剂”，春天解冻后便复活过来。",
+      "id": "nat-0082",
+      "options": ["雪鸮", "北美林蛙", "北极兔", "岩雷鸟"],
+      "question": "哪种动物能全身冻僵、心脏停跳地度过冬天？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "火星的细尘会把蓝光向前散射，所以在火星车的相机里，落日周围的光晕是蓝色的。",
+      "id": "sci-0064",
+      "options": ["深红色", "金黄色", "亮橙色", "偏蓝色"],
+      "question": "火星上的日落通常看起来是什么颜色？"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "海尔达尔和五名船员用101天从秘鲁漂流约6900公里到达法属波利尼西亚。",
+      "id": "his-0092",
+      "options": ["南森", "塞维林", "库斯托", "海尔达尔"],
+      "question": "1947年，是谁乘轻木木筏“康提基号”横渡太平洋？"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "澳大利亚原住民用被白蚁蛀空的桉树枝制作；演奏者用循环呼吸法让声音持续不断。",
+      "id": "cul-0091",
+      "options": [
+        "编织的芦苇",
+        "雕刻的水牛角",
+        "被白蚁蛀空的木头",
+        "烧制的陶土管"
+      ],
+      "question": "传统的迪吉里杜管是用什么做的？"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "北大西洋的马尾藻海仅由洋流围成，以漂浮的马尾藻闻名。",
+      "id": "geo-0038",
+      "options": ["马尾藻海", "塔斯曼海", "珊瑚海", "威德尔海"],
+      "question": "哪片海是唯一没有任何陆地海岸线的海？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "奇普用绳结以十进制记录数字；有些可能还记录了故事。",
+      "id": "his-0102",
+      "options": ["手抄本", "计数木签", "奇普", "算盘"],
+      "question": "印加人用打结的绳子记录信息的工具叫什么？"
+    }
+  ]
+}

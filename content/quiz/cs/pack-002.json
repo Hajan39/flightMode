@@ -1,0 +1,2636 @@
+{
+  "id": "pack-002",
+  "lang": "cs",
+  "questions": [
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Odchylky v oběhu Uranu umožnily astronomům spočítat, kde musí být neviděná planeta; nalezena byla v roce 1846.",
+      "id": "sci-0070",
+      "options": ["Mars", "Neptun", "Uran", "Saturn"],
+      "question": "Která planeta byla matematicky předpovězena dřív, než ji kdokoli uviděl?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Na rozdíl od filmů je pás planetek převážně prázdný prostor; sondy jím proletí, aniž by se musely vyhýbat kamenům.",
+      "id": "sci-0054",
+      "options": [
+        "Mars a Jupiter",
+        "Země a Mars",
+        "Jupiter a Saturn",
+        "Venuše a Země"
+      ],
+      "question": "Mezi drahami kterých dvou planet leží hlavní pás planetek?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Měření slabého dosvitu velkého třesku, reliktního mikrovlnného záření, dávají stáří asi 13,8 miliardy let.",
+      "id": "sci-0059",
+      "options": [
+        "25 miliard let",
+        "100 miliard let",
+        "4,6 miliardy let",
+        "13,8 miliardy let"
+      ],
+      "question": "Jak starý je zhruba vesmír?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Nabité částice ze Slunce usměrňuje magnetické pole Země a ty rozzáří molekuly vzduchu zeleně, červeně nebo fialově.",
+      "id": "sci-0057",
+      "options": [
+        "Odrazy od polárního ledu",
+        "Částice ze Slunce",
+        "Blesky ve vysoké atmosféře",
+        "Měsíční svit na ledových krystalech"
+      ],
+      "question": "Co způsobuje polární záři?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Marsovský den se nazývá sol; týmy misí někdy žijí podle „marsovského času“ a každý den si posouvají program o 40 minut.",
+      "id": "sci-0063",
+      "options": [
+        "10 hodin 30 minut",
+        "6 hodin 15 minut",
+        "24 hodin 40 minut",
+        "58 pozemských dní"
+      ],
+      "question": "Jak dlouho zhruba trvá den na Marsu?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Hliník tvoří asi 8 % zemské kůry, ale jeho výroba byla kdysi vzácnější než zlato; Napoleon III. nechával hostům prostírat hliníkové příbory.",
+      "id": "sci-0072",
+      "options": ["Měď", "Hliník", "Vápník", "Železo"],
+      "question": "Který kov je v zemské kůře nejhojnější?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Nejstarší známá zrna minerálů, zirkony z Austrálie, jsou stará asi 4,4 miliardy let.",
+      "id": "sci-0058",
+      "options": [
+        "Asi 450 milionů let",
+        "Asi 10 miliard let",
+        "Asi 1 miliarda let",
+        "Asi 4,5 miliardy let"
+      ],
+      "question": "Jak stará je zhruba Země?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Zpoza horizontu událostí nemůže uniknout ani světlo, a proto černé díry vypadají černě.",
+      "id": "sci-0065",
+      "options": ["Horizont událostí", "Akreční disk", "Koróna", "Singularita"],
+      "question": "Jak se nazývá hranice kolem černé díry, za kterou nic nemůže uniknout?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Supernova může na krátko zastínit celou galaxii; v takových explozích vznikla řada prvků, z nichž jsme složeni.",
+      "id": "sci-0062",
+      "options": [
+        "Novorozená planeta",
+        "Vybuchující hvězda",
+        "Velmi jasná kometa",
+        "Obří galaxie"
+      ],
+      "question": "Co je supernova?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Koperníkova kniha vyšla v roce jeho smrti a podle legendy uviděl první výtisk na smrtelné posteli.",
+      "id": "sci-0067",
+      "options": [
+        "Johannes Kepler",
+        "Klaudios Ptolemaios",
+        "Galileo Galilei",
+        "Mikuláš Koperník"
+      ],
+      "question": "Kdo v roce 1543 publikoval heliocentrický model Sluneční soustavy?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Litr osmia by vážil asi 22,6 kg, zhruba dvakrát víc než litr olova.",
+      "id": "sci-0075",
+      "options": ["Zlato", "Olovo", "Uran", "Osmium"],
+      "question": "Který přirozeně se vyskytující prvek má největší hustotu?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Newtonova Principia vysvětlila padající jablka i obíhající měsíce jediným gravitačním zákonem.",
+      "id": "sci-0066",
+      "options": [
+        "Johannes Kepler",
+        "Mikuláš Koperník",
+        "Galileo Galilei",
+        "Isaac Newton"
+      ],
+      "question": "Kdo zformuloval pohybové zákony a gravitační zákon, publikované v roce 1687?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Blesk může zahřát vzduch asi na 30 000 °C; prudké rozpínání tohoto vzduchu slyšíme jako hrom.",
+      "id": "sci-0076",
+      "options": [
+        "Zhruba stejně",
+        "Asi 100krát teplejší",
+        "Asi o polovinu chladnější",
+        "Asi pětkrát teplejší"
+      ],
+      "question": "Jak horký může být blesk ve srovnání s povrchem Slunce?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Io, Europě, Ganymedu a Callisto se dodnes říká Galileovy měsíce.",
+      "id": "sci-0068",
+      "options": [
+        "Isaac Newton",
+        "Tycho Brahe",
+        "Galileo Galilei",
+        "Johannes Kepler"
+      ],
+      "question": "Kdo v roce 1610 objevil dalekohledem čtyři velké měsíce Jupiteru?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Otřesy půdy rostou s každým stupněm asi 10krát, ale energie asi 32krát; magnitudo 7 uvolní asi 1 000krát víc energie než magnitudo 5.",
+      "id": "sci-0086",
+      "options": ["Asi 32krát", "Asi 2krát", "Asi 100krát", "Asi 10krát"],
+      "question": "Kolikrát víc energie zhruba uvolní zemětřesení o magnitudu vyšší o jedna?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Každý plyn svítí svou barvou; „neony“ jiných barev často obsahují jiné plyny nebo trubice s povlakem.",
+      "id": "sci-0071",
+      "options": ["Neon", "Helium", "Argon", "Xenon"],
+      "question": "Který plyn svítí červenooranžově v klasických reklamních trubicích?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Kumulonimby se mohou tyčit do výšky 12 km i víc a dopravní letadla je obletují.",
+      "id": "sci-0079",
+      "options": ["Stratus", "Altokumulus", "Kumulonimbus", "Cirrus"],
+      "question": "Který typ oblaku přináší bouřky?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Rez potřebuje kyslík i vodu; sůl ji jen urychluje, a proto auta u moře rezaví rychleji.",
+      "id": "sci-0073",
+      "options": ["Se solí", "Se slunečním světlem", "S vodou", "S dusíkem"],
+      "question": "Železo rezaví, když reaguje s kyslíkem a čím ještě?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Teplota byla naměřena v roce 1913 ve Furnace Creek; Světová meteorologická organizace ji stále uznává, i když někteří meteorologové její přesnost zpochybňují.",
+      "id": "sci-0080",
+      "options": [
+        "Dallol, Etiopie",
+        "Údolí smrti, USA",
+        "Poušť Lút, Írán",
+        "Kuvajt, Kuvajt"
+      ],
+      "question": "Kde byla naměřena oficiálně rekordní teplota vzduchu 56,7 °C?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Gejzíry pocházejí ze skrytého slaného oceánu pod ledovou kůrou Enceladu, a proto je cílem pátrání po životě.",
+      "id": "sci-0090",
+      "options": ["Jupiter", "Uran", "Saturn", "Neptun"],
+      "question": "Kolem které planety obíhá Enceladus, měsíc, který chrlí do vesmíru gejzíry vody?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Suchý led se při asi −78,5 °C mění přímo z pevné látky v plyn bez tání, a vytváří tak strašidelnou jevištní mlhu.",
+      "id": "sci-0074",
+      "options": ["Metanu", "Oxidu uhelnatého", "Dusíku", "Oxidu uhličitého"],
+      "question": "Suchý led je pevnou formou které látky?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Rekord padl v červenci 1983 na ruské výzkumné stanici Vostok vysoko na antarktickém ledovém štítu.",
+      "id": "sci-0081",
+      "options": ["Verchojansk", "Ojmjakon", "Stanice Vostok", "Jižní pól"],
+      "question": "Kde byla naměřena nejnižší přirozená teplota vzduchu na zemském povrchu, −89,2 °C?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Vodní pára je neviditelná; mraky vznikají, když kondenzuje na drobné kapičky nebo ledové krystalky kolem zrnek prachu.",
+      "id": "sci-0078",
+      "options": [
+        "Z neviditelné vodní páry",
+        "Z prachu a kouře",
+        "Z páry stoupající z moře",
+        "Z kapiček vody či ledu"
+      ],
+      "question": "Z čeho jsou převážně mraky?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Coriolisova síla způsobená rotací Země roztáčí tyto bouře na severu proti směru hodinových ručiček a na jihu po směru.",
+      "id": "sci-0084",
+      "options": [
+        "Po směru hodinových ručiček",
+        "Oběma směry stejně často",
+        "Neotáčejí se",
+        "Proti směru hodinových ručiček"
+      ],
+      "question": "Kterým směrem se otáčejí tropické cyklóny na jižní polokouli?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Modul Philae z mise Rosetta se od povrchu komety dvakrát odrazil, než se zastavil na zastíněném místě.",
+      "id": "sci-0092",
+      "options": ["Stardust", "Deep Impact", "Rosetta", "Giotto"],
+      "question": "Která mise jako první dopravila v roce 2014 přistávací modul na kometu?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Hurikány a tajfuny jsou tentýž druh bouře – tropická cyklóna –, jen se v různých oblastech jinak nazývají.",
+      "id": "sci-0082",
+      "options": ["Tornáda", "Tajfuny", "Vánice", "Monzuny"],
+      "question": "Jak se říká hurikánům v severozápadním Tichém oceánu?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Obsidián vzniká, když láva chladne příliš rychle na to, aby narostly krystaly; jeho hrany mohou být ostřejší než ocelové skalpely.",
+      "id": "sci-0087",
+      "options": ["Zkamenělé dřevo", "Meteorit", "Druh uhlí", "Sopečné sklo"],
+      "question": "Co je obsidián?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Oko může být široké desítky kilometrů; nejprudší větry vanou ve stěně oka kolem něj.",
+      "id": "sci-0083",
+      "options": [
+        "Nejsilnější vítr",
+        "Silné krupobití a sníh",
+        "Hustá mlha a mrholení",
+        "Klid a často jasno"
+      ],
+      "question": "Jaké počasí bývá obvykle v oku hurikánu?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Modrý korund se nazývá safír; červenou barvu rubínu způsobují stopy chromu.",
+      "id": "sci-0088",
+      "options": ["Křemene", "Granátu", "Berylu", "Korundu"],
+      "question": "Rubín je červenou odrůdou kterého nerostu?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Nižší tlak vzduchu snižuje bod varu, takže těstoviny se ve velké výšce vaří velmi pomalu.",
+      "id": "sci-0098",
+      "options": ["Asi 70 °C", "Asi 120 °C", "Asi 50 °C", "Asi 100 °C"],
+      "question": "Při jaké teplotě zhruba vře voda na vrcholu Mount Everestu?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Roztavené hornině se pod zemí říká magma, a když vyvře na povrch, láva.",
+      "id": "sci-0085",
+      "options": ["Obsidián", "Čedič", "Láva", "Magma"],
+      "question": "Jak se nazývá roztavená hornina pod zemským povrchem?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Voyager 1, vypuštěný v roce 1977, vstoupil v roce 2012 do mezihvězdného prostoru a veze zlatou desku se zvuky Země.",
+      "id": "sci-0091",
+      "options": ["Pioneer 10", "New Horizons", "Voyager 1", "Voyager 2"],
+      "question": "Která kosmická sonda je nejvzdálenějším lidským výtvorem od Země?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Jantar dokáže miliony let do detailu uchovat hmyz, peří, a dokonce i části ocasů dinosaurů.",
+      "id": "sci-0089",
+      "options": [
+        "Zkamenělá pryskyřice",
+        "Zkamenělý med",
+        "Zkamenělá kost",
+        "Zkamenělé mušle"
+      ],
+      "question": "Co je jantar?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Slunce obsahuje asi 99,8 % veškeré hmoty Sluneční soustavy; většina zbytku připadá na Jupiter.",
+      "id": "sci-0095",
+      "options": ["Asi 90 %", "Přes 99 %", "Asi 50 %", "Asi 75 %"],
+      "question": "Jaký podíl hmotnosti Sluneční soustavy připadá zhruba na Slunce?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Díky této roztažnosti led plave a mrznoucí voda dokáže roztrhnout potrubí i rozštípnout skály.",
+      "id": "sci-0101",
+      "options": ["Asi o 1 %", "Asi o 50 %", "Asi o 25 %", "Asi o 9 %"],
+      "question": "O kolik zhruba vzroste objem vody, když zmrzne?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Slunce je hvězda hlavní posloupnosti spektrální třídy G ve středním věku: je staré asi 4,6 miliardy let a má za sebou zhruba polovinu života.",
+      "id": "sci-0096",
+      "options": [
+        "Červený obr",
+        "Modrý obr",
+        "Bílý trpaslík",
+        "Žlutý trpaslík"
+      ],
+      "question": "Jakým typem hvězdy je Slunce?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Neptun oběhne Slunce asi za 165 pozemských let; první oběh od svého objevu dokončil teprve v roce 2011.",
+      "id": "sci-0094",
+      "options": ["Jupiter", "Uran", "Neptun", "Saturn"],
+      "question": "Která planeta je nejdál od Slunce?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Stříbro vede o něco lépe než měď, ale do vodičů se používá měď, protože je mnohem levnější.",
+      "id": "sci-0097",
+      "options": ["Stříbro", "Hliník", "Zlato", "Měď"],
+      "question": "Který kov nejlépe vede elektřinu?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Yttrium, ytterbium, terbium a erbium jsou pojmenovány po Ytterby, vesnici u Stockholmu s lomem bohatým na minerály.",
+      "id": "sci-0102",
+      "options": ["Polsko", "Německo", "Švédsko", "Skotsko"],
+      "question": "Jediná vesnice ve které zemi dala jméno čtyřem chemickým prvkům?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Ozon je forma kyslíku se třemi atomy; pohlcuje většinu škodlivého slunečního záření UV-B a UV-C.",
+      "id": "sci-0099",
+      "options": ["Argon", "Dusík", "Ozon", "Metan"],
+      "question": "Který plyn ve vysoké atmosféře nás chrání před většinou ultrafialového záření?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Při rychlosti asi 28 000 km/h zažije loď v této výšce zhruba 16 východů a západů slunce denně.",
+      "id": "sci-0100",
+      "options": [
+        "Asi 24 hodin",
+        "Asi 90 minut",
+        "Asi 12 hodin",
+        "Asi 10 minut"
+      ],
+      "question": "Jak dlouho zhruba trvá jeden oběh Země ve výšce ISS, tedy asi 400 km?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Většina padajících hvězd jsou prachová zrnka ne větší než zrnka písku, která shoří asi 80–100 km nad zemí.",
+      "id": "sci-0107",
+      "options": [
+        "Shořívající meteoroid",
+        "Družice odrážející světlo",
+        "Ohon komety",
+        "Hvězda padající na Zemi"
+      ],
+      "question": "Co je ve skutečnosti „padající hvězda“?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Curie pojmenovala polonium v roce 1898, kdy Polsko neexistovalo jako samostatný stát, aby na něj upozornila.",
+      "id": "sci-0104",
+      "options": ["Germanium", "Radium", "Polonium", "Francium"],
+      "question": "Který prvek pojmenovala Marie Curie-Skłodowská po své vlasti?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Seléné byla řecká bohyně Měsíce; dříve objevený tellur byl pojmenován po Tellus, Zemi.",
+      "id": "sci-0103",
+      "options": ["Selen", "Cer", "Helium", "Tellur"],
+      "question": "Který chemický prvek je pojmenován po Měsíci?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Elektrony jsou asi 1 800krát lehčí než protony, takže téměř celá hmotnost atomu je v jeho malém jádře.",
+      "id": "sci-0109",
+      "options": ["Proton", "Neutron", "Elektron", "Foton"],
+      "question": "Která částice v atomu nese záporný náboj?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Vzduch na Marsu tvoří asi z 95 % oxid uhličitý a je tak řídký, že tlak dosahuje méně než 1 % tlaku na Zemi.",
+      "id": "sci-0105",
+      "options": ["Metan", "Dusík", "Oxid uhelnatý", "Oxid uhličitý"],
+      "question": "Který plyn převládá v atmosféře Marsu?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Protože c² je obrovské číslo, i nepatrné množství hmoty obsahuje obrovské množství energie, která pohání Slunce.",
+      "id": "sci-0110",
+      "options": [
+        "Rychlost světla",
+        "Coulombovu konstantu",
+        "Rychlost zvuku",
+        "Hmotnost uhlíku"
+      ],
+      "question": "Co znamená „c“ v rovnici E = mc²?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Perseidy jsou úlomky komety Swift-Tuttle; v maximu lze z temného místa vidět desítky meteorů za hodinu.",
+      "id": "sci-0108",
+      "options": ["V dubnu", "V říjnu", "V prosinci", "V srpnu"],
+      "question": "Ve kterém měsíci obvykle vrcholí meteorický roj Perseidy?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Každá strana Saturnova šestiúhelníku je delší než průměr Země; poprvé ho zachytily sondy Voyager.",
+      "id": "sci-0106",
+      "options": ["Neptun", "Saturn", "Uran", "Jupiter"],
+      "question": "Která planeta má na severním pólu obří bouři ve tvaru šestiúhelníku?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Červené krvinky skupiny 0 negativní nemají znaky A, B ani RhD, a proto se používají v naléhavých případech, kdy není čas na testy.",
+      "id": "body-0007",
+      "options": ["A negativní", "0 negativní", "B pozitivní", "AB pozitivní"],
+      "question": "Kterou krevní skupinu lze jako červené krvinky podat téměř komukoli („univerzální dárce“)?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Britští námořníci dostávali proti kurdějím citronovou nebo limetkovou šťávu, a vysloužili si tak přezdívku „limeys“.",
+      "id": "body-0009",
+      "options": ["Beri-beri", "Křivici", "Kurděje", "Pelagru"],
+      "question": "Kterou nemoc, kdysi postrach námořníků, způsobuje dlouhodobý nedostatek vitaminu C?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Třmínek ve středním uchu měří jen asi 3 mm a předává zvukové vibrace do vnitřního ucha.",
+      "id": "body-0003",
+      "options": ["V prstu ruky", "V uchu", "V prstu nohy", "V nose"],
+      "question": "Kde je nejmenší kost lidského těla?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Stehenní kost tvoří asi čtvrtinu výšky člověka a patří také k nejpevnějším kostem.",
+      "id": "body-0004",
+      "options": [
+        "Lýtková kost",
+        "Stehenní kost",
+        "Holenní kost",
+        "Pažní kost"
+      ],
+      "question": "Která kost lidského těla je nejdelší?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Vzory na duhovce jsou tak jedinečné, že se podobně jako otisky prstů používají k biometrické identifikaci.",
+      "id": "body-0010",
+      "options": ["Duhovka", "Čočka", "Rohovka", "Sítnice"],
+      "question": "Která barevná část oka řídí, kolik světla do něj vnikne?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Dvě síně krev přijímají a dvě komory ji vypuzují – do plic a do zbytku těla.",
+      "id": "body-0005",
+      "options": ["Šest", "Čtyři", "Dva", "Tři"],
+      "question": "Kolik oddílů má lidské srdce?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Hemoglobin po navázání kyslíku jasně zčervená, a proto je tepenná krev světlejší než žilní.",
+      "id": "body-0012",
+      "options": ["Inzulin", "Keratin", "Kolagen", "Hemoglobin"],
+      "question": "Který protein s obsahem železa v červených krvinkách přenáší kyslík?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Levá plíce má jen dva laloky, aby zbylo místo pro srdce.",
+      "id": "body-0030",
+      "options": ["Pět", "Tři", "Čtyři", "Dva"],
+      "question": "Kolik laloků má pravá plíce člověka?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Inzulin byl k léčbě cukrovky poprvé použit v roce 1922, kdy v Torontu dostal injekci čtrnáctiletý chlapec.",
+      "id": "body-0006",
+      "options": ["Slinivka", "Slezina", "Ledviny", "Játra"],
+      "question": "Který orgán vytváří inzulin?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Velký sval hýžďový drží tělo vzpřímené a dodává sílu při chůzi do schodů a běhu.",
+      "id": "body-0014",
+      "options": [
+        "Široký sval zádový",
+        "Velký sval hýžďový",
+        "Velký sval prsní",
+        "Dvojhlavý sval pažní"
+      ],
+      "question": "Který sval lidského těla je největší?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Vitamin D pomáhá tělu vstřebávat vápník pro pevné kosti; mnoho lidí ve vyšších zeměpisných šířkách ho v zimě získá méně.",
+      "id": "body-0008",
+      "options": ["Vitamin D", "Vitamin A", "Vitamin K", "Vitamin C"],
+      "question": "Který vitamin vytváří kůže, když je vystavena slunci?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Mnoho kostí miminka, například části lebky, s růstem dítěte srůstá.",
+      "id": "body-0016",
+      "options": ["Asi 300", "Asi 150", "Asi 500", "Asi 206"],
+      "question": "Kolik kostí má zhruba novorozenec?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Červovitý výběžek býval považován za zbytečný, ale možná slouží jako úkryt pro užitečné střevní bakterie.",
+      "id": "body-0032",
+      "options": [
+        "K tenkému střevu",
+        "K tlustému střevu",
+        "K žaludku",
+        "K játrům"
+      ],
+      "question": "Ke kterému orgánu je připojen červovitý výběžek (slepé střevo)?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Bílé krvinky tvoří méně než 1 % krve, ale patří k nim buňky, které si choroboplodné zárodky „pamatují“ celé roky.",
+      "id": "body-0011",
+      "options": [
+        "Bílé krvinky",
+        "Kožní buňky",
+        "Červené krvinky",
+        "Krevní destičky"
+      ],
+      "question": "Které krvinky jsou hlavními obránci proti infekci?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Brnění způsobuje loketní nerv, který v lokti vede těsně pod kůží.",
+      "id": "body-0018",
+      "options": ["Do nervu", "Do kosti", "Do šlachy", "Do svalu"],
+      "question": "Když se uhodíš do „brňavky“ v lokti, do čeho se ve skutečnosti trefíš?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Ledviny denně přefiltrují asi 180 litrů krevní plazmy a téměř všechnu vrátí zpět do těla.",
+      "id": "body-0013",
+      "options": ["Játra", "Slezina", "Ledviny", "Plíce"],
+      "question": "Které orgány filtrují krev a tvoří moč?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Žluč pomáhá trávit tuky; žlučník ji po tučném jídle vytlačí do střeva.",
+      "id": "body-0021",
+      "options": ["Slezina", "Slinivka", "Slepé střevo", "Žlučník"],
+      "question": "Který malý orgán uchovává žluč tvořenou játry?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Navzdory názvu je tenké střevo mnohem delší než tlusté; „tenké“ je jen svou šířkou.",
+      "id": "body-0033",
+      "options": ["Asi 50 cm", "Asi 1 m", "Asi 6 m", "Asi 15 m"],
+      "question": "Jak dlouhé je zhruba tenké střevo dospělého člověka?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Miminka jsou asi ze 75 % voda; mozek a srdce obsahují kolem 73 % vody.",
+      "id": "body-0015",
+      "options": ["Asi 60 %", "Asi 30 %", "Asi 45 %", "Asi 90 %"],
+      "question": "Kolik procent těla dospělého člověka zhruba tvoří voda?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Drobné vláskové buňky v hlemýždi reagují na různé výšky tónů; když se poškodí, už nedorostou.",
+      "id": "body-0022",
+      "options": [
+        "Vyrovnává tlak vzduchu",
+        "Udržuje rovnováhu",
+        "Vytváří ušní maz",
+        "Mění zvuk na signály"
+      ],
+      "question": "Co dělá hlemýžď, spirálovitá část vnitřního ucha?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Sklovina je asi z 96 % minerální, ale neobsahuje žádné živé buňky, takže se nedokáže sama opravit.",
+      "id": "body-0017",
+      "options": ["Zubní sklovina", "Chrupavka", "Nehet", "Stehenní kost"],
+      "question": "Která látka je v lidském těle nejtvrdší?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Mozeček obsahuje víc než polovinu neuronů mozku v pouhé desetině jeho objemu.",
+      "id": "body-0023",
+      "options": ["Hipokampus", "Mozeček", "Čelní lalok", "Podvěsek mozkový"],
+      "question": "Která část mozku hlavně koordinuje rovnováhu a pohyb?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "V místě, kde zrakový nerv opouští oko, nejsou žádné buňky citlivé na světlo; mozek mezeru doplní, takže si jí nevšimneme.",
+      "id": "body-0035",
+      "options": [
+        "Vystupuje tam zrakový nerv",
+        "Zakrývá ji duhovka",
+        "Čočka je tam nejtlustší",
+        "Hromadí se tam slzy"
+      ],
+      "question": "Proč má každé lidské oko malou „slepou skvrnu“?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Člověk může darovat část jater a játra dárce i příjemce během několika měsíců dorostou.",
+      "id": "body-0019",
+      "options": ["Plíce", "Srdce", "Játra", "Mozek"],
+      "question": "Který orgán dokáže po odebrání části dorůst do plné velikosti?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Za život srdce udeří víc než 2,5 miliardykrát bez jediné přestávky.",
+      "id": "body-0024",
+      "options": [
+        "Asi 100 000krát",
+        "Asi milionkrát",
+        "Asi 1 000krát",
+        "Asi 10 000krát"
+      ],
+      "question": "Kolikrát zhruba za den udeří srdce dospělého v klidu?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Mnoha lidem nevyrostou všechny čtyři zuby moudrosti, takže běžných je i 28 zubů.",
+      "id": "body-0020",
+      "options": ["24", "36", "28", "32"],
+      "question": "Kolik zubů má úplný chrup dospělého včetně zubů moudrosti?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Kikunae Ikeda popsal umami v roce 1908 při zkoumání vývaru z řasy kombu; je to chuť glutamátu.",
+      "id": "body-0027",
+      "options": ["Pálivou", "Umami", "Kovovou", "Mátovou"],
+      "question": "Kterou základní chuť, často popisovanou jako masovou, poprvé popsal japonský vědec?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Landsteinerův objev umožnil bezpečné krevní transfuze a v roce 1930 mu vynesl Nobelovu cenu.",
+      "id": "body-0042",
+      "options": [
+        "Joseph Lister",
+        "Robert Koch",
+        "Alexander Fleming",
+        "Karl Landsteiner"
+      ],
+      "question": "Kdo v roce 1901 objevil hlavní lidské krevní skupiny?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Tělesná teplota během dne přirozeně kolísá: nejnižší je časně ráno a nejvyšší pozdě odpoledne.",
+      "id": "body-0025",
+      "options": ["Asi 37 °C", "Asi 39 °C", "Asi 35 °C", "Asi 40 °C"],
+      "question": "Jaká je průměrná normální teplota lidského těla?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Kapsaicin dráždí stejné nervové receptory jako skutečné horko; ptáci ho necítí, a tak chilli rádi jedí a roznášejí semena.",
+      "id": "body-0028",
+      "options": ["Kofein", "Mentol", "Kapsaicin", "Tanin"],
+      "question": "Která látka dává chilli papričkám pálivou chuť?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Vlasy a nehty nad kůží tvoří odumřelé buňky, a proto stříhání nebolí.",
+      "id": "body-0026",
+      "options": ["Kolagen", "Melanin", "Hemoglobin", "Keratin"],
+      "question": "Ze kterého proteinu jsou hlavně vlasy a nehty?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Mozek tvoří jen asi 2 % hmotnosti těla, ale v klidu spotřebuje zhruba pětinu jeho energie.",
+      "id": "body-0029",
+      "options": ["Asi 75 %", "Asi 20 %", "Asi 50 %", "Asi 2 %"],
+      "question": "Kolik zhruba klidové energie těla spotřebuje mozek?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Před Harveyem mnozí věřili, že krev neustále vytvářejí játra a tělo ji spotřebovává.",
+      "id": "body-0043",
+      "options": [
+        "Hippokratés",
+        "Galénos",
+        "Andreas Vesalius",
+        "William Harvey"
+      ],
+      "question": "Kdo v roce 1628 jako první správně popsal krevní oběh?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Průdušnici drží otevřenou chrupavčité prstence ve tvaru písmene C, které nahmatáš na přední straně krku.",
+      "id": "body-0031",
+      "options": ["Larynx", "Pharynx", "Trachea", "Oesophagus"],
+      "question": "Jak se odborně nazývá průdušnice?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Sítnice má kolem 120 milionů tyčinek pro šero, ale jen asi 6 milionů čípků pro barvy.",
+      "id": "body-0034",
+      "options": ["Sítnice", "Bělima", "Rohovka", "Duhovka"],
+      "question": "Která vrstva na zadní straně oka obsahuje tyčinky a čípky citlivé na světlo?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Aorta, největší tepna, je široká zhruba jako zahradní hadice; vlásečnice jsou tenčí než vlas.",
+      "id": "body-0037",
+      "options": ["Vlásečnice", "Žíly", "Tepny", "Mízní cévy"],
+      "question": "Které cévy vedou krev ze srdce?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "U našich chlupatých předků zježené chlupy zadržovaly teplý vzduch nebo je dělaly většími v očích soupeřů.",
+      "id": "body-0036",
+      "options": [
+        "K nervovým zakončením",
+        "K potním žlázám",
+        "K vlasovým váčkům",
+        "K cévám"
+      ],
+      "question": "K čemu jsou připojeny drobné svaly, které způsobují husí kůži?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Tělo každou sekundu vytvoří miliony nových červených krvinek, které nahrazují ty staré.",
+      "id": "body-0047",
+      "options": ["Asi dva roky", "Asi 120 dní", "Asi 7 dní", "Asi 1 den"],
+      "question": "Jak dlouho zhruba žije červená krvinka?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Krevní destičky jsou drobné úlomky buněk, které se nahrnou k ráně a shluknou se, aby ji ucpaly.",
+      "id": "body-0038",
+      "options": [
+        "Přenos kyslíku",
+        "Srážení krve",
+        "Tvorba hormonů",
+        "Boj s choroboplodnými zárodky"
+      ],
+      "question": "Jaký je hlavní úkol krevních destiček?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Jenner použil materiál z puchýřů kravských neštovic; slovo vakcína pochází z latinského vacca, kráva.",
+      "id": "body-0040",
+      "options": [
+        "Edward Jenner",
+        "Louis Pasteur",
+        "Robert Koch",
+        "Joseph Lister"
+      ],
+      "question": "Kdo v roce 1796 vyvinul první vakcínu, a to proti pravým neštovicím?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Fleming si všiml, že plíseň rostoucí na zapomenuté misce zahubila bakterie kolem sebe.",
+      "id": "body-0039",
+      "options": [
+        "Alexander Fleming",
+        "Ignác Semmelweis",
+        "Louis Pasteur",
+        "Edward Jenner"
+      ],
+      "question": "Kdo objevil v roce 1928 penicilin?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Světová zdravotnická organizace prohlásila pravé neštovice za vymýcené v roce 1980 po celosvětové očkovací kampani.",
+      "id": "body-0041",
+      "options": ["Spalničky", "Pravé neštovice", "Dětská obrna", "Malárie"],
+      "question": "Která lidská nemoc jako jediná byla celosvětově zcela vymýcena?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Rychlá nervová vlákna obaluje tuková myelinová pochva, po které signály přeskakují rychlostí přes 400 km/h.",
+      "id": "body-0049",
+      "options": [
+        "Až asi 120 m/s",
+        "Skoro rychlostí světla",
+        "Asi 1 m/s",
+        "Asi 3 000 m/s"
+      ],
+      "question": "Jak rychle se mohou šířit nejrychlejší nervové signály v těle?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Asi 99 % vápníku v těle je uloženo v kostech a zubech.",
+      "id": "body-0046",
+      "options": ["Draslík", "Vápník", "Železo", "Sodík"],
+      "question": "Který minerál je hlavním stavebním kamenem kostí a zubů?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Rozprostřené alveoly by pokryly zhruba 70 m² i víc – obrovskou plochu, kudy se kyslík dostává do krve.",
+      "id": "body-0044",
+      "options": ["V ledvinách", "V plicích", "Ve střevech", "V játrech"],
+      "question": "Ve kterém orgánu jsou miliony drobných vzduchových váčků zvaných alveoly?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Měkká dřeň uvnitř velkých kostí, jako jsou pánev a hrudní kost, je krvetvornou továrnou těla.",
+      "id": "body-0048",
+      "options": [
+        "V srdečním svalu",
+        "V žaludku",
+        "V kostní dřeni",
+        "V játrech"
+      ],
+      "question": "Kde se u dospělých tvoří červené krvinky?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Mnoho zemí přidává jód do kuchyňské soli, aby předešlo potížím se štítnou žlázou.",
+      "id": "body-0045",
+      "options": ["Železo", "Vápník", "Jód", "Zinek"],
+      "question": "Který prvek potřebuje štítná žláza k tvorbě hormonů?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Název pochází z řeckého slova pro mořského koníka; londýnští taxikáři, kteří se učí ulice města, mají větší hipokampus.",
+      "id": "body-0055",
+      "options": ["Mozeček", "Hipokampus", "Amygdala", "Talamus"],
+      "question": "Která oblast mozku ve tvaru mořského koníka je klíčová pro tvorbu nových vzpomínek?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Zvuk „hik“ vzniká, když se hlasivky prudce sevřou těsně po škubnutí bránice.",
+      "id": "body-0053",
+      "options": ["Jazyka", "Žaludku", "Srdce", "Bránice"],
+      "question": "Škytavka jsou náhlé stahy kterého svalu?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Jasné světlo, zvlášť ráno, potlačuje melatonin, a proto denní světlo pomáhá seřídit vnitřní hodiny po jet lagu.",
+      "id": "body-0050",
+      "options": ["Adrenalin", "Kortizol", "Inzulin", "Melatonin"],
+      "question": "Který hormon, vylučovaný ve tmě, pomáhá řídit spánek?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Játra váží asi 1,5 kg a plní stovky úkolů, od ukládání energie po čištění krve.",
+      "id": "body-0054",
+      "options": ["Žaludek", "Srdce", "Mozek", "Játra"],
+      "question": "Který vnitřní orgán lidského těla je největší?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Jazylku ve tvaru písmene U na krku drží na místě svaly a podpírá jazyk.",
+      "id": "body-0058",
+      "options": ["Čéška", "Jazylka", "Klíční kost", "Kostrč"],
+      "question": "Která kost jako jediná v těle není spojena s žádnou jinou kostí?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Jeden chromozom z každého páru pochází od každého z rodičů; 23. pár určuje biologické pohlaví.",
+      "id": "body-0056",
+      "options": ["46", "21", "23", "25"],
+      "question": "Kolik párů chromozomů má většina lidských buněk?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Polknutí nebo zívnutí otevře Eustachovu trubici a vyrovná tlak vzduchu, když letadlo stoupá nebo klesá.",
+      "id": "body-0052",
+      "options": [
+        "Eustachova trubice",
+        "Polokruhovitý kanálek",
+        "Slzovod",
+        "Zvukovod"
+      ],
+      "question": "Která trubice spojuje střední ucho s hrdlem a způsobuje „lupnutí“ v uších?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Krev tvoří asi 7–8 % hmotnosti těla a srdce v klidu přečerpá celý její objem zhruba jednou za minutu.",
+      "id": "body-0057",
+      "options": ["Asi 1 litr", "Asi 5 litrů", "Asi 2 litry", "Asi 10 litrů"],
+      "question": "Kolik krve má zhruba průměrný dospělý?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Guacamole sahá až k Aztékům; název pochází z nahuatlských slov pro „avokádo“ a „omáčku“.",
+      "id": "food-0002",
+      "options": ["Avokádo", "Okurka", "Rajče", "Hrášek"],
+      "question": "Co je hlavní surovinou guacamole?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Tradiční valencijská paella obsahuje králíka, kuře a fazole a zlatou barvu dodává rýži šafrán.",
+      "id": "food-0001",
+      "options": ["Galicie", "Andalusie", "Katalánsko", "Valencie"],
+      "question": "Ze kterého španělského regionu původně pochází paella, vařená na široké ploché pánvi?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Klasický hummus se mixuje z cizrny, tahini (sezamové pasty), citronové šťávy a česneku.",
+      "id": "food-0003",
+      "options": ["Z bobů", "Z cizrny", "Z bílých fazolí", "Z čočky"],
+      "question": "Z čeho se hlavně vyrábí hummus?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Cukr a mléko přidali až Evropané; Aztékové navíc používali kakaové boby jako peníze.",
+      "id": "food-0012",
+      "options": ["Mléko", "Cukr", "Mátu", "Chilli"],
+      "question": "Aztékové pili čokoládu jako hořký nápoj. Co do ní často přidávali?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Rajčata, mozzarella a bazalka prý zrcadlí červenou, bílou a zelenou barvu italské vlajky.",
+      "id": "food-0004",
+      "options": ["Řím", "Neapol", "Milán", "Florencie"],
+      "question": "S kterým italským městem se tradičně spojuje pizza Margherita?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Rodiny tradičně před zimou společně připravují obrovské množství kimči; tento zvyk se nazývá kimdžang.",
+      "id": "food-0005",
+      "options": ["Japonské", "Thajské", "Vietnamské", "Korejské"],
+      "question": "Kimči, pikantní kvašená zelenina, je základem které kuchyně?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Květy podzemnice se ohnou k zemi a zatlačí lusky do půdy, kde arašídy dozrávají pod zemí.",
+      "id": "food-0014",
+      "options": [
+        "Obilniny",
+        "Kořenová zelenina",
+        "Luštěniny",
+        "Stromové ořechy"
+      ],
+      "question": "Arašídy z botanického hlediska nejsou ořechy. Co tedy jsou?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Pečivo zpopularizovali ve 30. letech 19. století vídeňští pekaři v Paříži; později se začalo dělat z listového máslového těsta.",
+      "id": "food-0019",
+      "options": ["Belgie", "Švýcarsko", "Rakousko", "Německo"],
+      "question": "Croissant pochází z kipferlu, pečiva ve tvaru půlměsíce z které země?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Pesto alla genovese se mixuje z bazalky, piniových oříšků, česneku, tvrdého sýra a olivového oleje; název pochází ze slova „tlouct“.",
+      "id": "food-0015",
+      "options": ["Vlašské ořechy", "Mandle", "Piniové oříšky", "Kešu"],
+      "question": "Které ořechy se používají v tradičním janovském pestu?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Tofu vzniká srážením sójového mléka a lisováním sraženiny, podobně jako při výrobě sýra.",
+      "id": "food-0008",
+      "options": [
+        "Z fazolí ledvinových",
+        "Ze sójových bobů",
+        "Z fazolí mungo",
+        "Z cizrny"
+      ],
+      "question": "Z jakých bobů se vyrábí tofu?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Ve městě Gouda se po staletí koná tradiční sýrový trh, kde farmáři obchodují s bochníky sýra.",
+      "id": "food-0018",
+      "options": ["Nizozemsko", "Dánsko", "Švýcarsko", "Belgie"],
+      "question": "Po městě ve které zemi je pojmenován sýr gouda?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Portugalští misionáři a obchodníci připluli v 16. století; slovo tempura možná pochází z latinského „tempora“.",
+      "id": "food-0024",
+      "options": ["Angličané", "Nizozemci", "Španělé", "Portugalci"],
+      "question": "Kteří evropští obchodníci přinesli do Japonska techniku smažení, z níž vzniklo tempura?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Kyselina z limetkové šťávy mění bílkoviny ryby podobně jako teplo; Peru slaví národní den ceviche.",
+      "id": "food-0027",
+      "options": [
+        "V octě",
+        "V citrusové šťávě",
+        "Ve slané vodě",
+        "V horkém oleji"
+      ],
+      "question": "V čem se u ceviche „vaří“ syrová ryba?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Kakaové plody rostou přímo na kmeni stromu a každý obsahuje kolem 30–50 bobů.",
+      "id": "food-0011",
+      "options": ["Kávovníku", "Vanilky", "Kakaovníku", "Rohovníku"],
+      "question": "Z bobů které rostliny se vyrábí čokoláda?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Kuskus jsou drobné kuličky z krupice vařené v páře; v roce 2020 ho UNESCO zapsalo jako společné dědictví čtyř severoafrických zemí.",
+      "id": "food-0028",
+      "options": [
+        "Z dlouhozrnné rýže",
+        "Z ovsa",
+        "Z tvrdé pšenice",
+        "Z kukuřice"
+      ],
+      "question": "Z jakého obilí se tradičně vyrábí kuskus?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Muškátový květ je krajkovitý červený obal semene muškátového oříšku; obojí pochází ze stromu původem z indonéských Bandských ostrovů.",
+      "id": "food-0033",
+      "options": ["Hřebíček", "Kardamom", "Muškátový květ", "Nové koření"],
+      "question": "Které koření pochází ze stejného plodu jako muškátový oříšek?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Za jeho zakladatelku se považuje Anna, vévodkyně z Bedfordu, která tak vyplnila dlouhou pauzu mezi obědem a pozdní večeří.",
+      "id": "food-0029",
+      "options": ["Čína", "Indie", "Nizozemsko", "Anglie"],
+      "question": "Ve které zemi začal ve 40. letech 19. století zvyk „odpoledního čaje“?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Pravá feta se vyrábí hlavně z ovčího mléka a má chráněný název EU, který smějí používat jen řečtí výrobci.",
+      "id": "food-0016",
+      "options": ["Řecko", "Španělsko", "Francie", "Itálie"],
+      "question": "Ze které země tradičně pochází sýr feta?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Ovoce známé jako čínský angrešt bylo přejmenováno po novozélandském ptáku kivi, když se v 50. letech začalo vyvážet.",
+      "id": "food-0036",
+      "options": ["Chile", "Nový Zéland", "Austrálie", "Čína"],
+      "question": "Ze které země původně pochází kiwi?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Pepř byl ve starověku tak cenný, že se mu říkalo „černé zlato“ a někdy se jím platilo i nájemné.",
+      "id": "food-0034",
+      "options": ["Indie", "Brazílie", "Madagaskar", "Mexiko"],
+      "question": "Odkud pochází pepř černý?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Díry neboli „oka“ tvoří bublinky oxidu uhličitého, které uvolňují bakterie při zrání sýra.",
+      "id": "food-0017",
+      "options": ["Čedar", "Ementál", "Brie", "Gruyère"],
+      "question": "Který švýcarský sýr je proslulý velkými dírami?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Sevillské pomeranče jsou na syrové jídlo příliš kyselé, ale plné pektinu, takže jsou ideální na pevnou marmeládu.",
+      "id": "food-0037",
+      "options": [
+        "Z citronů",
+        "Z meruněk",
+        "Z lesních jahod",
+        "Z hořkých pomerančů"
+      ],
+      "question": "Z jakého ovoce se tradičně vyrábí britská marmeláda?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Námořníci kdysi brali kysané zelí na dlouhé plavby, protože vydrží měsíce a obsahuje vitamin C.",
+      "id": "food-0020",
+      "options": ["Z okurky", "Ze zelí", "Z vodnice", "Z cibule"],
+      "question": "Ze které kvašené zeleniny se dělá kysané zelí?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Název (doslova „vytáhni mě nahoru“) nejspíš odkazuje na kávu a kakao v tomto vrstveném dezertu ze severovýchodní Itálie.",
+      "id": "food-0038",
+      "options": ["Krémový obláček", "Malý dortík", "Povzbuď mě", "Sladký sen"],
+      "question": "Co znamená název italského dezertu tiramisu?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Podle legendy nalil císař cestující v přestrojení čaj svému sluhovi, a ten zaťukal prsty jako tajnou úklonu.",
+      "id": "food-0042",
+      "options": ["Přidej cukr", "Přestaň nalévat", "Čaj je studený", "Děkuji"],
+      "question": "Co v některých částech Číny znamená, když při nalévání čaje zaťukáš dvěma prsty o stůl?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Boršč se jí v celé východní Evropě, často se lžící zakysané smetany navrchu.",
+      "id": "food-0021",
+      "options": ["Červená řepa", "Rajče", "Červené zelí", "Červená paprika"],
+      "question": "Která zelenina dává boršči sytě červenou barvu?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Na mnoha švédských pracovištích mají pravidelné přestávky na fiku a klasickým doprovodem jsou skořicové šneky.",
+      "id": "food-0039",
+      "options": ["Finsko", "Dánsko", "Norsko", "Švédsko"],
+      "question": "Ve které zemi je „fika“, přestávka na kávu a koláč, oblíbeným každodenním zvykem?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Vývar na pho se vaří celé hodiny s kořením, jako je badyán, skořice a opečený zázvor.",
+      "id": "food-0022",
+      "options": ["Vietnam", "Kambodža", "Thajsko", "Laos"],
+      "question": "Ze které země pochází nudlová polévka pho?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Znamená to zhruba „pokorně přijímám“ a vyjadřuje vděk všem a všemu, co jídlo umožnilo.",
+      "id": "food-0040",
+      "options": ["Sajónara", "Konničiwa", "Arigató", "Itadakimasu"],
+      "question": "Co se v Japonsku tradičně říká před začátkem jídla?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Většina světového javorového sirupu pochází z Québecu, který udržuje strategickou rezervu sudů se sirupem.",
+      "id": "food-0046",
+      "options": ["Asi 10", "Asi 4", "Asi 200", "Asi 40"],
+      "question": "Kolik litrů javorové mízy se zhruba svaří na 1 litr javorového sirupu?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Slovo sushi označuje rýži s octem, takže samotné plátky syrové ryby jsou sašimi.",
+      "id": "food-0023",
+      "options": ["Onigiri", "Rámen", "Tempura", "Sašimi"],
+      "question": "Které japonské jídlo tvoří tenké plátky syrové ryby podávané bez rýže?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Rýže se svisle zapíchnutými hůlkami se na pohřbech obětuje zemřelým; vyhýbají se i podávání jídla z hůlek do hůlek.",
+      "id": "food-0041",
+      "options": [
+        "Uráží to kuchaře",
+        "Znamená to, že jsi dojedl",
+        "Připomíná to pohřební rituál",
+        "Znamená to, že chceš přidat"
+      ],
+      "question": "Proč je v Japonsku nezdvořilé zapíchnout hůlky svisle do misky s rýží?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Haggis se tradičně jí o Burnsově noci 25. ledna, poté co je mu přednesena báseň.",
+      "id": "food-0025",
+      "options": ["Skotsko", "Norsko", "Wales", "Irsko"],
+      "question": "Haggis je národním jídlem které země?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Každá kulička má přinést štěstí na jeden měsíc nového roku a davy se scházejí na madridském náměstí Puerta del Sol.",
+      "id": "food-0043",
+      "options": ["Itálie", "Španělsko", "Řecko", "Portugalsko"],
+      "question": "Ze které země pochází tradice jíst o silvestrovské půlnoci 12 kuliček hroznů, jednu s každým úderem?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Dim sum patří ke kantonské tradici „jum čcha“ – dopolednímu pití čaje s malými pokrmy.",
+      "id": "food-0053",
+      "options": ["Šantungská", "Kantonská", "Chunanská", "Sečuánská"],
+      "question": "S kterou regionální čínskou kuchyní je nejvíce spojeno dim sum?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Název pochází z maďarského „gulyás“, tedy pastevec dobytka; pastevci ho vařili v kotlících nad otevřeným ohněm.",
+      "id": "food-0026",
+      "options": ["Maďarsko", "Řecko", "Polsko", "Rumunsko"],
+      "question": "Ve které zemi vznikl guláš, dušené maso s hojností papriky?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Cukry a přirozená kyselost medu brání růstu mikrobů; nádoby s medem se dokonce dávaly do staroegyptských hrobek.",
+      "id": "food-0047",
+      "options": ["Olivový olej", "Chléb", "Sýr", "Med"],
+      "question": "Která potravina vydrží uzavřená díky nízkému obsahu vody desítky let, aniž by se zkazila?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Čajovníky na matchu se před sklizní zastiňují, takže listy jsou zelenější a sladší.",
+      "id": "food-0030",
+      "options": [
+        "Fermentovaný černý čaj",
+        "Pražený ječný čaj",
+        "Práškový zelený čaj",
+        "Sušený mátový čaj"
+      ],
+      "question": "Co je matcha?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Indžera se peče z teffu, drobného obilí; slouží jako talíř i lžíce a strávníci si z ní trhají kousky, kterými nabírají jídlo.",
+      "id": "food-0048",
+      "options": ["Etiopie", "Maroko", "Keňa", "Nigérie"],
+      "question": "Indžera, houbovitá placka z kvásku, je základem kuchyně které země?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Sušené katsuobushi patří k nejtvrdším potravinám na světě – je tak tvrdé, že se hobluje jako dřevo.",
+      "id": "food-0055",
+      "options": ["Tuňák pruhovaný", "Sardinka", "Makrela", "Losos obecný"],
+      "question": "Z jaké ryby se vyrábějí katsuobushi, uzené vločky do japonského vývaru?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Kurkuma je oddenek příbuzný zázvoru a používá se k barvení látek i jídla.",
+      "id": "food-0031",
+      "options": ["Paprika", "Kmín římský", "Kurkuma", "Zázvor"],
+      "question": "Které koření dává mnoha kari žlutou barvu?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Inkové nazývali quinou „matkou všech zrn“; ve skutečnosti je to semeno příbuzné špenátu.",
+      "id": "food-0049",
+      "options": ["Inků", "Olméků", "Mayů", "Aztéků"],
+      "question": "Quinoa byla základní plodinou které starověké civilizace?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Proužky vnitřní kůry se při sušení stáčejí do svitků; pravá skořice pochází ze Srí Lanky.",
+      "id": "food-0032",
+      "options": ["Hřebíček", "Pepř", "Skořice", "Muškátový oříšek"],
+      "question": "Které koření se vyrábí z kůry stromu?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Španělská tortilla je silná omeleta, často podávaná v plátcích jako tapas při pokojové teplotě.",
+      "id": "food-0051",
+      "options": [
+        "Z vajec a brambor",
+        "Z rýže a fazolí",
+        "Z kukuřičné mouky a sádla",
+        "Z pšeničné mouky"
+      ],
+      "question": "Španělská „tortilla“ je úplně jiná než mexická. Z čeho se dělá?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Každá rostlina obvykle nese jen jeden ananas najednou, který vzniká srůstem desítek květů.",
+      "id": "food-0059",
+      "options": [
+        "Asi za dva měsíce",
+        "Asi za šest měsíců",
+        "Asi za deset let",
+        "Asi za dva roky"
+      ],
+      "question": "Za jak dlouho zhruba vytvoří rostlina ananasu první plod?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Znecitlivění způsobuje sečuánský pepř, po kterém brní rty; pálivost dodávají chilli papričky.",
+      "id": "food-0054",
+      "options": ["Fuťienská", "Sečuánská", "Ťiangsuská", "Kantonská"],
+      "question": "Která regionální čínská kuchyně je proslulá chutí „mala“, znecitlivující a pálivou?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Podle tradice nesmí „uslyšet polední zvony“; podává se se sladkou hořčicí a měkkým preclíkem.",
+      "id": "food-0044",
+      "options": ["Hamburk", "Berlín", "Mnichov", "Vídeň"],
+      "question": "Ze kterého města pochází Weißwurst, bílá telecí klobása, která se tradičně jí před polednem?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Český název hřebíček i latinské clavus (hřebík) vycházejí z tvaru poupěte, které hřebík připomíná.",
+      "id": "food-0057",
+      "options": ["Muškátový oříšek", "Skořice", "Badyán", "Hřebíček"],
+      "question": "Které koření je sušené poupě květu stromu?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Změna v „Den H“ proběhla 3. září 1967 v 5 hodin ráno; doprava se zastavila a auta se přesunula do druhého pruhu.",
+      "id": "food-0065",
+      "options": ["Finsko", "Norsko", "Švédsko", "Dánsko"],
+      "question": "Která země v roce 1967 přes noc přešla z jízdy vlevo na jízdu vpravo?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Podle tradice musí ten, komu chleba spadne do hrnce s fondue, zaplatit trest, třeba další rundu.",
+      "id": "food-0045",
+      "options": ["Rakousko", "Švýcarsko", "Francie", "Lichtenštejnsko"],
+      "question": "Fondue, rozpuštěný sýr ze společného hrnce, je národním jídlem které země?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Oranžovou mrkev vyšlechtili nizozemští pěstitelé v 17. století.",
+      "id": "food-0060",
+      "options": ["Dýně", "Mrkev", "Brambora", "Kukuřice"],
+      "question": "Která zelenina bývala běžně fialová nebo žlutá, než se rozšířily oranžové odrůdy?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Každé zrno obsahuje kapku vody, která se změní v páru a roztrhne tvrdý obal; popcorn byl nalezen i ve starověkých lokalitách v Peru.",
+      "id": "food-0050",
+      "options": ["Z rýže", "Z kukuřice", "Z pšenice", "Z ječmene"],
+      "question": "Z jakého obilí se dělá popcorn?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Pecky avokáda jsou tak velké, že je možná kdysi roznášela obří, dnes vyhynulá zvířata.",
+      "id": "food-0061",
+      "options": ["Mexiko", "Keňa", "Izrael", "Španělsko"],
+      "question": "Ze které země pochází avokádo?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Maté se v Argentině, Uruguayi, Paraguayi a jižní Brazílii pije z jedné tykve, která koluje v kruhu přátel.",
+      "id": "food-0068",
+      "options": ["Horchata", "Maté", "Chicha morada", "Atole"],
+      "question": "Který nápoj se tradičně pije kovovým brčkem zvaným „bombilla“?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Těsto se plácne na horkou hliněnou stěnu tandúru, kde se asi za minutu nafoukne.",
+      "id": "food-0052",
+      "options": ["Dosa", "Naan", "Čapátí", "Púrí"],
+      "question": "Který indický chléb se tradičně peče na stěně pece tandúr?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Maorské hongi symbolizuje sdílení dechu života mezi dvěma lidmi.",
+      "id": "food-0063",
+      "options": ["Fidži", "Nový Zéland", "Samoa", "Papua Nová Guinea"],
+      "question": "Ve které zemi je tradicí „hongi“, pozdrav přitisknutím nosů?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "„Wiener“ znamená „vídeňský“ a podle rakouského zákona smí název Wiener Schnitzel nést jen řízek z telecího.",
+      "id": "food-0056",
+      "options": ["Maďarsko", "Švýcarsko", "Německo", "Rakousko"],
+      "question": "Vídeňský řízek, obalovaný telecí řízek, je klasikou které země?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Asi třetina lidí na světě žije v zemích, kde se jezdí vlevo, včetně Indie, Spojeného království a Austrálie.",
+      "id": "food-0064",
+      "options": ["Jižní Korea", "Japonsko", "Čína", "Německo"],
+      "question": "Která z těchto zemí jezdí vlevo?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Umeboši jsou nesmírně kyselé a slané a často se dávají doprostřed rýžové koule.",
+      "id": "food-0069",
+      "options": ["Juzu", "Kaki", "Meruňky ume", "Třešně"],
+      "question": "Japonské umeboši jsou nasolené a naložené plody kterého ovoce?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Každé „semínko“ jahody je ve skutečnosti drobný plod (nažka), který obsahuje semeno.",
+      "id": "food-0058",
+      "options": ["Jahoda", "Fík", "Kiwi", "Malina"],
+      "question": "Které ovoce nese semena na povrchu?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "K zvykům Hogmanay patří „first-footing“: být prvním návštěvníkem v novém roce, ideálně s uhlím nebo máslovým pečivem.",
+      "id": "food-0066",
+      "options": ["Svatojánský den", "Silvestr", "Boží hod vánoční", "Dožínky"],
+      "question": "Co je ve Skotsku „Hogmanay“?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Namasté pochází ze sanskrtu a znamená zhruba „klaním se ti“; dlaně se drží spojené u hrudi.",
+      "id": "food-0062",
+      "options": [
+        "Polibkem na obě tváře",
+        "Sepjetím dlaní",
+        "Hlubokou úklonou",
+        "Pevným stiskem ruky"
+      ],
+      "question": "Jakým gestem se doprovází pozdrav „namasté“?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Dobrá obsluha se v Japonsku považuje za součást práce a spropitné na stole ti mohou zdvořile vrátit.",
+      "id": "food-0067",
+      "options": [
+        "Není zvykem",
+        "Bere se jen v hotovosti",
+        "Očekává se 20 %",
+        "Očekává se 10 %"
+      ],
+      "question": "Jak se v Japonsku obecně pohlíží na spropitné v restauracích?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Lassi může být slané, kořeněné nebo sladké; v mnoha restauracích je oblíbené mangové lassi.",
+      "id": "food-0071",
+      "options": [
+        "Z čočky",
+        "Z kokosové vody",
+        "Z čajových lístků",
+        "Z jogurtu"
+      ],
+      "question": "Z čeho se hlavně připravuje lassi, oblíbený jihoasijský nápoj?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Pibimpap se podává se zeleninou, chilli pastou a často s vejcem a těsně před jídlem se promíchá.",
+      "id": "food-0070",
+      "options": ["Tteokbokki", "Pulgogi", "Čapčhe", "Pibimpap"],
+      "question": "Název kterého korejského jídla znamená „míchaná rýže“?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Poutine vzniklo v 50. letech na venkově v Québecu; čerstvý sýr by měl při kousnutí „vrzat“.",
+      "id": "food-0073",
+      "options": ["Belgie", "Irsko", "Kanada", "Francie"],
+      "question": "Ze které země pochází poutine, hranolky se sýrovými kousky a omáčkou?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Feijoada se tradičně jí ve středu nebo v sobotu a podává se s rýží, plátky pomeranče a opraženou maniokovou moukou.",
+      "id": "food-0072",
+      "options": ["Brazílie", "Mexiko", "Kolumbie", "Kuba"],
+      "question": "Feijoada, dušené černé fazole s vepřovým, je národním jídlem které země?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Omáčku poprvé prodávali dva lékárníci ve Worcesteru v Anglii ve 30. letech 19. století a před plněním do lahví zraje.",
+      "id": "food-0078",
+      "options": ["Z makrely", "Ze sledě", "Ze sardinek", "Z ančoviček"],
+      "question": "Ze které kvašené ryby získává worcesterská omáčka část své plné chuti?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Rajčata se vyvíjejí z květu a obsahují semena, takže je botanici řadí mezi plody, i když je kuchaři berou jako zeleninu.",
+      "id": "food-0075",
+      "options": ["Kořenem", "Zeleninou", "Plodem", "Luštěninou"],
+      "question": "Čím je rajče z botanického hlediska?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Smørrebrød znamená „máslo a chléb“; tradiční pravidla určují i pořadí obložení, které začíná sleděm.",
+      "id": "food-0074",
+      "options": ["Švédsko", "Island", "Norsko", "Dánsko"],
+      "question": "Smørrebrød, otevřené chlebíčky na žitném chlebu, jsou klasikou které země?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "„Wagyu“ znamená prostě „japonská kráva“; slavným druhem wagyu je hovězí Kobe z prefektury Hjógo.",
+      "id": "food-0080",
+      "options": ["Japonsko", "Argentina", "Austrálie", "Francie"],
+      "question": "Z plemen skotu které země pochází wagyu, hovězí proslulé mramorováním?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Kořeny manioku jsou syrové jedovaté a musí se zpracovat; tapiokové perly proslavil po celém světě bubble tea.",
+      "id": "food-0077",
+      "options": ["Rýže", "Maniok", "Pšenice", "Brambory"],
+      "question": "Ze škrobu které rostliny se vyrábějí tapiokové perly?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Za jeho autora se považuje restauratér italského původu Caesar Cardini, který ho ve 20. letech vytvořil v Tijuaně.",
+      "id": "food-0079",
+      "options": ["Mexiko", "Itálie", "Řecko", "Španělsko"],
+      "question": "Ve které zemi vznikl Caesar salát?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Dne 17. prosince 1903 vykonal Wright Flyer čtyři lety; nejdelší trval 59 sekund.",
+      "id": "avi-0001",
+      "options": ["1927", "1903", "1891", "1911"],
+      "question": "Ve kterém roce uskutečnili bratři Wrightové první let motorového letadla?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Bratři si vybrali větrné duny na pobřeží Severní Karolíny kvůli stálému větru a měkkému písku pro přistání.",
+      "id": "avi-0002",
+      "options": ["Wichita", "Kitty Hawk", "Cape Canaveral", "Dayton"],
+      "question": "U kterého amerického městečka uskutečnili bratři Wrightové první motorové lety?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Lindbergh letěl z New Yorku do Paříže asi 33,5 hodiny v letadle Spirit of St. Louis, které nemělo přední okno.",
+      "id": "avi-0004",
+      "options": [
+        "Charles Lindbergh",
+        "Antoine de Saint-Exupéry",
+        "Amelia Earhartová",
+        "Louis Blériot"
+      ],
+      "question": "Kdo v roce 1927 jako první přeletěl sám a bez mezipřistání Atlantik?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Rutan Voyager letěl 9 dní; nesl tolik paliva, že při vzletu drhl konci křídel o ranvej.",
+      "id": "avi-0032",
+      "options": [
+        "Double Eagle",
+        "Solar Impulse 2",
+        "Spirit of St. Louis",
+        "Voyager"
+      ],
+      "question": "Jak se jmenovalo první letadlo, které v roce 1986 obletělo svět bez mezipřistání a bez doplnění paliva?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Concorde zvládl let z Londýna do New Yorku asi za 3,5 hodiny a cestující mohli vidět zakřivení Země.",
+      "id": "avi-0007",
+      "options": ["Itálie", "Německo", "Francie", "Spojené státy"],
+      "question": "Nadzvukový dopravní letoun Concorde vyvinulo Spojené království společně s kterou zemí?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Blériotův let z Calais do Doveru trval asi 37 minut a vynesl mu novinovou cenu 1 000 liber.",
+      "id": "avi-0005",
+      "options": [
+        "Louis Blériot",
+        "Charles Lindbergh",
+        "Wilbur Wright",
+        "Henri Farman"
+      ],
+      "question": "Kdo v roce 1909 jako první přeletěl letadlem kanál La Manche?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Při rychlosti Mach 2 se drak letadla zahříval natolik, že se Concorde za letu prodloužil až asi o 30 cm.",
+      "id": "avi-0008",
+      "options": [
+        "Těsně pod rychlostí zvuku",
+        "Dvojnásobnou rychlostí zvuku",
+        "Pětinásobnou rychlostí zvuku",
+        "Trojnásobnou rychlostí zvuku"
+      ],
+      "question": "Jakou rychlostí zhruba létal Concorde v cestovním režimu?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Earhartová mířila do Paříže, ale po téměř 15 hodinách přistála na pastvině v Severním Irsku.",
+      "id": "avi-0006",
+      "options": [
+        "Jacqueline Cochranová",
+        "Amy Johnsonová",
+        "Amelia Earhartová",
+        "Bessie Colemanová"
+      ],
+      "question": "Která žena v roce 1932 jako první přeletěla sama a bez mezipřistání Atlantik?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Slavný „hrb“ Boeingu 747 vznikl proto, aby se příď dala kvůli nákladu odklopit, a kokpit tak skončil nahoře.",
+      "id": "avi-0011",
+      "options": [
+        "Airbus A380",
+        "McDonnell Douglas DC-10",
+        "Boeing 747",
+        "Lockheed L-1011"
+      ],
+      "question": "Které dopravní letadlo dostalo přezdívku „Jumbo Jet“?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Concorde vozil cestující 27 let; dochované stroje jsou dnes vystaveny v muzeích v Evropě a Severní Americe.",
+      "id": "avi-0009",
+      "options": ["2010", "1989", "2003", "1996"],
+      "question": "Ve kterém roce uskutečnil Concorde poslední obchodní lety?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Dvoupatrový A380 má certifikaci až pro 853 cestujících; jeho křídla mají plochu asi 845 m², víc než tři tenisové kurty.",
+      "id": "avi-0012",
+      "options": [
+        "Boeing 747-8",
+        "Airbus A350-1000",
+        "Boeing 777-300ER",
+        "Airbus A380"
+      ],
+      "question": "Které dopravní letadlo v historii je největší podle kapacity cestujících?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Britský Comet zkrátil cestovní časy oproti vrtulovým letadlům na polovinu a létal vysoko nad většinou špatného počasí.",
+      "id": "avi-0010",
+      "options": [
+        "Boeing 707",
+        "Tupolev Tu-104",
+        "Sud Aviation Caravelle",
+        "De Havilland Comet"
+      ],
+      "question": "Které bylo první proudové dopravní letadlo na světě, nasazené do provozu v roce 1952?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Zeppeliny společnosti DELAG před rokem 1914 přepravily tisíce cestujících na vyhlídkových i meziměstských letech.",
+      "id": "avi-0037",
+      "options": [
+        "V dvouplošnících",
+        "V kluzácích",
+        "Ve vzducholodích",
+        "V hydroplánech"
+      ],
+      "question": "V čem vozila cestující první letecká společnost světa DELAG, založená v roce 1909?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Díly přijížděly z celé Evropy loděmi, čluny a silničními konvoji – některé byly tak velké, že jinak přepravit nešly.",
+      "id": "avi-0013",
+      "options": ["Toulouse", "Marseille", "Lyon", "Bordeaux"],
+      "question": "Ve kterém francouzském městě probíhala finální montáž Airbusu A380?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Machovo číslo je pojmenováno po rakouském fyzikovi Ernstu Machovi; Mach 1 je v letové hladině dopravních letadel asi 1 060 km/h.",
+      "id": "avi-0015",
+      "options": ["Rotace Země", "Tryskového proudění", "Zvuku", "Světla"],
+      "question": "Let rychlostí Mach 1 znamená let rychlostí čeho?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Yeager letěl s raketovým Bell X-1, který byl vypuštěn zpod bombardéru a teprve pak zažehl motor.",
+      "id": "avi-0016",
+      "options": [
+        "John Glenn",
+        "Chuck Yeager",
+        "Jurij Gagarin",
+        "Neil Armstrong"
+      ],
+      "question": "Kdo byl v roce 1947 prvním pilotem, který prokazatelně překonal zvukovou bariéru ve vodorovném letu?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Whittle podal patent ve 22 letech; prvním proudovým letadlem, které vzlétlo (1939), se ale stala německá konstrukce Hanse von Ohaina.",
+      "id": "avi-0040",
+      "options": [
+        "Henry Royce",
+        "Frank Whittle",
+        "Hans von Ohain",
+        "Geoffrey de Havilland"
+      ],
+      "question": "Který britský inženýr si v roce 1930 patentoval proudový motor?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Mezinárodní pravidla vyžadují, aby piloti a řídící na mezinárodních letech ovládali angličtinu na stanovené úrovni.",
+      "id": "avi-0017",
+      "options": ["Španělština", "Angličtina", "Francouzština", "Ruština"],
+      "question": "Který jazyk se celosvětově používá v mezinárodním řízení letového provozu?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Pochází z „venez m'aider“, tedy „pojďte mi pomoci“, a vždy se opakuje třikrát za sebou.",
+      "id": "avi-0018",
+      "options": ["Latina", "Němčina", "Španělština", "Francouzština"],
+      "question": "Z fráze ve kterém jazyce pochází nouzové volání „Mayday“?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Řídký vzduch tam nahoře klade menší odpor, takže letadla spálí méně paliva než níže.",
+      "id": "avi-0020",
+      "options": ["Asi 10–12 km", "Asi 25–30 km", "Asi 50 km", "Asi 2–3 km"],
+      "question": "V jaké výšce obvykle létají proudová dopravní letadla?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Je to jako být na vysoké hoře, a proto se sáčky s pochutinami nafukují a na dlouhých letech se můžeš rychleji unavit.",
+      "id": "avi-0019",
+      "options": [
+        "Asi 4 500–5 000 m",
+        "Hladině moře (0 m)",
+        "Asi 1 800–2 400 m",
+        "Asi 9 000–10 000 m"
+      ],
+      "question": "Jaké výšce zhruba odpovídá tlak v kabině dopravního letadla?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "He 178 poprvé vzlétl 27. srpna 1939 v Německu s motorem Hanse von Ohaina.",
+      "id": "avi-0041",
+      "options": [
+        "Messerschmitt Me 262",
+        "Bell X-1",
+        "Heinkel He 178",
+        "Gloster Meteor"
+      ],
+      "question": "Které proudové letadlo vzlétlo jako první, v roce 1939?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Tryskové proudění může vát rychlostí přes 300 km/h a letové trasy se denně plánují tak, aby ho využily, nebo se mu vyhnuly.",
+      "id": "avi-0021",
+      "options": ["Golfský proud", "Tryskové proudění", "Pasáty", "Monzun"],
+      "question": "Který rychlý výškový vítr často zkracuje lety přes Atlantik směrem na východ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Na glóbu je nejkratší trasou mezi dvěma městy hlavní kružnice (ortodroma), která na většině plochých map vypadá zakřiveně.",
+      "id": "avi-0022",
+      "options": [
+        "Hlavní kružnice je nejkratší",
+        "Magnetická síla Země",
+        "Letadla se vyhýbají oceánům",
+        "Vítr vždy vane tím směrem"
+      ],
+      "question": "Proč trasy dálkových letů vypadají na plochých mapách zakřiveně?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Jeho krátká ranvej stoupá do kopce asi o 12 %, což letadlům pomáhá zpomalit při přistání a zrychlit při vzletu.",
+      "id": "avi-0023",
+      "options": ["Kančendženga", "K2", "Annapurna", "Mount Everest"],
+      "question": "Letiště Tenzing-Hillary v nepálské Lukle je branou k trekům ke které hoře?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Pláž leží přímo na konci ranveje Mezinárodního letiště princezny Juliany a je oblíbeným místem spotterů.",
+      "id": "avi-0025",
+      "options": ["Svatý Martin", "Aruba", "Barbados", "Antigua a Barbuda"],
+      "question": "Na kterém karibském ostrově je pláž Maho, nad kterou těsně prolétají přistávající letadla?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Křidélka se vychylují opačně: vztlak jednoho křídla roste, druhého klesá, a letadlo se nakloní.",
+      "id": "avi-0048",
+      "options": ["Výškovka", "Vztlakové klapky", "Směrovka", "Křidélka"],
+      "question": "Které kormidelní plochy na křídlech naklánějí letadlo na stranu?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Skok mezi ostrovy Westray a Papa Westray měří necelé 3 km; při příznivém větru trval i méně než minutu.",
+      "id": "avi-0031",
+      "options": [
+        "Řecké ostrovy",
+        "Orkneje, Skotsko",
+        "Norské fjordy",
+        "Maledivy"
+      ],
+      "question": "Kde se létá jeden z nejkratších pravidelných letů světa, trvající asi 1–2 minuty?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Ostrov v Ósacké zátoce vznikl z milionů metrů krychlových navezeného materiálu a stále pomalu klesá.",
+      "id": "avi-0026",
+      "options": [
+        "Na umělém ostrově",
+        "Na dně bývalého jezera",
+        "Na plovoucích pontonech",
+        "Na vrcholu hory"
+      ],
+      "question": "Na čem je postavené japonské mezinárodní letiště Kansai?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Přes 17 000 solárních článků přes den nabíjelo baterie, aby letadlo mohlo letět i v noci.",
+      "id": "avi-0033",
+      "options": [
+        "Slunečním světlem",
+        "Větrnými turbínami",
+        "Biopalivem",
+        "Vodíkem"
+      ],
+      "question": "Čím jediným bylo poháněno letadlo Solar Impulse 2, které v roce 2016 obletělo svět?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Válečný nedostatek hliníku si vynutil dřevěnou konstrukci; letadlo vzlétlo jen jednou, v roce 1947, na necelou minutu.",
+      "id": "avi-0050",
+      "options": ["Smrk", "Balsa", "Dub", "Bříza"],
+      "question": "Z jakého dřeva byl ve skutečnosti převážně postaven obří létající člun „Spruce Goose“ (Smrková husa)?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Rain Vortex v komplexu Jewel na letišti Changi lije dešťovou vodu ze skleněné kopule a obklopuje ho vnitřní les.",
+      "id": "avi-0027",
+      "options": ["Dauhá", "Hongkong", "Singapur", "Dubaj"],
+      "question": "Letiště kterého města má komplex „Jewel“ se 40 m vysokým vnitřním vodopádem?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Sikorského VS-300 zavedl uspořádání, které dnes používá většina vrtulníků: jeden hlavní rotor a malý ocasní rotor.",
+      "id": "avi-0038",
+      "options": [
+        "Frank Piasecki",
+        "Igor Sikorsky",
+        "Lawrence Bell",
+        "Juan de la Cierva"
+      ],
+      "question": "Kdo zkonstruoval první prakticky použitelný vrtulník s jedním nosným rotorem, který vzlétl v roce 1939?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Heathrow začínalo jako malé letiště a jméno má po osadě, která byla kvůli jeho stavbě zbořena.",
+      "id": "avi-0028",
+      "options": ["Edinburgh", "Manchester", "Londýn", "Dublin"],
+      "question": "Které město obsluhují letiště Heathrow a Gatwick?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Jeho kresba z 80. let 15. století ukazuje spirálový šroub z plátna, který se měl odlepit od země otáčením ve vzduchu.",
+      "id": "avi-0039",
+      "options": [
+        "Kluzák",
+        "Vrtulník",
+        "Proudové letadlo",
+        "Horkovzdušný balon"
+      ],
+      "question": "Za ranou myšlenku kterého letadla se často považuje návrh „vzdušného šroubu“ Leonarda da Vinci?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Žádná americká letecká škola ji nechtěla přijmout, a tak se naučila francouzsky a výcvik absolvovala ve Francii.",
+      "id": "avi-0059",
+      "options": ["Spojené státy", "Francie", "Německo", "Spojené království"],
+      "question": "Ve které zemi získala průkopnice letectví Bessie Colemanová v roce 1921 pilotní průkaz?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Leonardo kreslil létající stroje včetně ornitoptéry a „vzdušného šroubu“ asi 400 let před prvními letadly.",
+      "id": "avi-0029",
+      "options": ["Benátky", "Florencie", "Milán", "Řím"],
+      "question": "Které město obsluhuje letiště Fiumicino, pojmenované po Leonardu da Vinci?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Jeho motto „Above us only sky“ (Nad námi jen nebe) je verš z Lennonovy písně „Imagine“.",
+      "id": "avi-0030",
+      "options": ["Liverpool", "Londýn", "Manchester", "Glasgow"],
+      "question": "Letiště kterého britského města nese jméno Johna Lennona?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Červená je vlevo a zelená vpravo, stejně jako u lodí, takže piloti poznají, kterým směrem jiné letadlo letí.",
+      "id": "avi-0045",
+      "options": [
+        "Na konci pravého křídla",
+        "Na vrcholu ocasu",
+        "Na konci levého křídla",
+        "Pod přídí"
+      ],
+      "question": "Na které straně letadla je červené poziční světlo?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Santos-Dumont je spojován i s náramkovými hodinkami: jeho přítel Louis Cartier mu je prý vyrobil, aby mohl držet řízení oběma rukama.",
+      "id": "avi-0060",
+      "options": [
+        "Santos-Dumont",
+        "Louis Blériot",
+        "Henri Farman",
+        "Gabriel Voisin"
+      ],
+      "question": "Který brazilský průkopník letectví létal v roce 1906 v Paříži se strojem 14-bis?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Balon bratrů Montgolfierů nesl dva muže nad Paříží asi 25 minut.",
+      "id": "avi-0034",
+      "options": ["Německo", "Francie", "Itálie", "Anglie"],
+      "question": "Ve které zemi se v roce 1783 uskutečnil první let horkovzdušného balonu s lidskou posádkou?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "První tuhá vzducholoď hraběte Ferdinanda von Zeppelina vzlétla v roce 1900 nad Bodamským jezerem.",
+      "id": "avi-0036",
+      "options": ["Itálie", "Francie", "Německo", "Spojené království"],
+      "question": "Ve které zemi byly poprvé postaveny vzducholodě zeppelin?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "SR-71 letěl rychlostí asi 3 530 km/h; jeho palivové nádrže na zemi prosakovaly, dokud je teplo za letu neutěsnilo.",
+      "id": "avi-0049",
+      "options": ["SR-71 Blackbird", "MiG-25 Foxbat", "F-15 Eagle", "Concorde"],
+      "question": "Které letadlo drží od roku 1976 oficiální rychlostní rekord pro pilotovaný letoun s proudovým motorem?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Ellen Churchová, zdravotní sestra a pilotka, přesvědčila společnost Boeing Air Transport, že sestry uklidní nervózní cestující.",
+      "id": "avi-0062",
+      "options": ["Učitelky", "Pilotky", "Kuchařky", "Zdravotnice"],
+      "question": "Jako co musely být vyškolené první letušky, přijaté v roce 1930?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Před železnicí měla města vlastní místní sluneční čas, takže hodiny v městech vzdálených jen kousek od sebe se mohly lišit o mnoho minut.",
+      "id": "avi-0051",
+      "options": ["Telegrafu", "Lodní dopravy", "Železnice", "Letecké dopravy"],
+      "question": "Kvůli plánování čeho byla standardní časová pásma zavedena především?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Tunel dlouhý asi 50 km má nejdelší podmořský úsek ze všech tunelů na světě, zhruba 38 km.",
+      "id": "avi-0053",
+      "options": ["1994", "2001", "1984", "1975"],
+      "question": "Ve kterém roce byl otevřen tunel pod kanálem La Manche mezi Anglií a Francií?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Dráha dlouhá 537 m stoupá se sklonem asi 18,5 %, takže letadla přistávají do kopce a vzlétají z kopce.",
+      "id": "avi-0065",
+      "options": ["Rakousko", "Itálie", "Francie", "Švýcarsko"],
+      "question": "Ve které zemi je altiport Courchevel, proslulý strmou a krátkou dráhou?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Vítr proudící přes křídla zvyšuje rychlost vůči vzduchu, takže letadlo dosáhne vzletové rychlosti dříve.",
+      "id": "avi-0047",
+      "options": [
+        "Potřebují kratší dráhu",
+        "Později ušetří palivo",
+        "Motory jsou tišší",
+        "Zabrání to námraze"
+      ],
+      "question": "Proč letadla obvykle startují proti větru?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Tunel měří asi 54 km a zhruba 23 km z nich vede pod dnem Cugarského průlivu.",
+      "id": "avi-0055",
+      "options": ["Šikoku", "Kjúšú", "Okinawa", "Hokkaidó"],
+      "question": "S kterým ostrovem spojuje japonský železniční tunel Seikan, vedoucí částečně pod mořem, ostrov Honšú?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Když ji přeletíš z Asie směrem na východ, můžeš přistát v předchozím kalendářním dni – dřív, než jsi vzlétl.",
+      "id": "avi-0052",
+      "options": [
+        "Rovník",
+        "Severní polární kruh",
+        "Nultý poledník",
+        "Datová hranice"
+      ],
+      "question": "Po překročení které linie během letu se změní kalendářní datum o den?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Cesta trvá asi osm hodin a vede přes 291 mostů, a proto se vlaku přezdívá nejpomalejší expres na světě.",
+      "id": "avi-0056",
+      "options": ["Svatý Mořic", "Gstaad", "Interlaken", "Lucern"],
+      "question": "Panoramatický vlak Glacier Express jezdí mezi Zermattem a kterým švýcarským letoviskem?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Letiště společně provozují Francie a Švýcarsko, má oddělený francouzský a švýcarský sektor a celní silnici do Basileje.",
+      "id": "avi-0066",
+      "options": ["Rakousko", "Německo", "Švýcarsko", "Francie"],
+      "question": "Na území které země leží celé letiště EuroAirport Basilej-Mylhúzy-Freiburg?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Hlavní trasa měří asi 9 300 km, protíná osm časových pásem a cesta bez přestávek trvá zhruba týden.",
+      "id": "avi-0054",
+      "options": ["Irkutsk", "Novosibirsk", "Murmansk", "Vladivostok"],
+      "question": "Do kterého města vede Transsibiřská magistrála z Moskvy?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Prvním letadlem Williama Boeinga byl malý hydroplán; firma dodnes staví dopravní letadla v oblasti Seattlu.",
+      "id": "avi-0058",
+      "options": ["Detroit", "Seattle", "Chicago", "Wichita"],
+      "question": "Ve kterém městě byla v roce 1916 založena společnost Boeing?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Když byla v roce 1868 otevřena jeho železná nástupištní hala, měla největší jednolodní střechu na světě.",
+      "id": "avi-0057",
+      "options": ["Londýn", "Paříž", "Brusel", "Amsterdam"],
+      "question": "Ve kterém městě je nádraží St Pancras International, konečná vlaků Eurostar?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Fotografie Lilienthalových letů na kluzácích inspirovaly bratry Wrightovy.",
+      "id": "avi-0061",
+      "options": [
+        "V motorových letadlech",
+        "V kluzácích",
+        "V balonech",
+        "Ve vzducholodích"
+      ],
+      "question": "V čem uskutečnil německý průkopník Otto Lilienthal v 90. letech 19. století kolem 2 000 letů?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "A300, který poprvé vzlétl v roce 1972, byl prvním dvoumotorovým širokotrupým dopravním letadlem na světě.",
+      "id": "avi-0069",
+      "options": ["A310", "A340", "A300", "A320"],
+      "question": "Které bylo první dopravní letadlo Airbusu?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Winglety oslabují vzdušné víry na koncích křídel, což může snížit spotřebu paliva o několik procent.",
+      "id": "avi-0067",
+      "options": [
+        "Snižují odpor a šetří palivo",
+        "Nesou přistávací světla",
+        "Zlepšují rádiový příjem",
+        "Pomáhají řídit na zemi"
+      ],
+      "question": "K čemu hlavně slouží vzhůru zahnuté „winglety“ na koncích křídel mnoha letadel?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Vyrobilo se přes 16 000 kusů DC-3 a jeho vojenských verzí a některé létají i po více než 80 letech.",
+      "id": "avi-0063",
+      "options": [
+        "Douglas DC-3",
+        "Ford Trimotor",
+        "Boeing 247",
+        "Junkers Ju 52"
+      ],
+      "question": "Které vrtulové dopravní letadlo z 30. let učinilo osobní leteckou dopravu ziskovou a některé kusy létají dodnes?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Bílá barva udržuje letadlo na rozpálené ploše chladnější a při kontrolách se na ní snáz najdou praskliny, promáčkliny nebo úniky.",
+      "id": "avi-0068",
+      "options": [
+        "Zlepšuje to radar",
+        "Vyžaduje to zákon",
+        "Odráží to sluneční světlo",
+        "Snižuje to odpor"
+      ],
+      "question": "Proč je většina dopravních letadel natřena převážně bíle?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Na letišti Le Bourget také v roce 1927 přistál Charles Lindbergh na konci svého transatlantického letu.",
+      "id": "avi-0064",
+      "options": ["Beauvais", "Le Bourget", "Orly", "Charles de Gaulle"],
+      "question": "Na kterém letišti se koná pařížský aerosalon?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Piloti řídí A320 malou boční pákou místo klasického kniplu a počítače ho udržují v bezpečných mezích.",
+      "id": "avi-0073",
+      "options": ["Boeing 757", "Concorde", "Boeing 777", "Airbus A320"],
+      "question": "Které dopravní letadlo, zavedené do provozu v roce 1988, jako první mělo digitální řízení fly-by-wire?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Přechod začíná jako most a přes umělý ostrov se noří do tunelu, takže neblokuje lodě ani letadla.",
+      "id": "avi-0070",
+      "options": ["Norsko", "Švédsko", "Německo", "Finsko"],
+      "question": "S kterou zemí spojuje Dánsko Öresundský most?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Tunel byl otevřen v roce 2016 a vlaky jím projíždějí pod horami rychlostí až asi 250 km/h, s nadložím až 2 300 m skály.",
+      "id": "avi-0071",
+      "options": ["Itálie", "Rakousko", "Švýcarsko", "Lichtenštejnsko"],
+      "question": "Ve které zemi je Gotthardský úpatní tunel, 57 km dlouhý železniční tunel pod Alpami?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Speciálně upravená souprava TGV v roce 2007 vytvořila rychlostní rekord klasického kolového vlaku: 574,8 km/h.",
+      "id": "avi-0072",
+      "options": ["Francie", "Itálie", "Španělsko", "Německo"],
+      "question": "Ve které zemi jezdí vysokorychlostní vlaky TGV?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Kompozity nekorodují jako kov, takže v kabině 787 může být vyšší vlhkost a tlak odpovídající nižší výšce.",
+      "id": "avi-0074",
+      "options": [
+        "Z titanového plechu",
+        "Z nerezové oceli",
+        "Ze slitiny hliníku a lithia",
+        "Z uhlíkových kompozitů"
+      ],
+      "question": "Z čeho je z velké části vyroben trup a křídla Boeingu 787 Dreamliner?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Ostrov nemá přistávací dráhu; plavba z Kapského Města trvá asi šest dní a lodě připlouvají jen zhruba osmkrát až desetkrát ročně.",
+      "id": "avi-0076",
+      "options": ["Týdenními lety", "Hydroplánem", "Jedině lodí", "Vrtulníkem"],
+      "question": "Jak se mohou návštěvníci dostat na Tristan da Cunha, jeden z nejodlehlejších obydlených ostrovů?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Rané čínské draky byly z hedvábí a bambusu a sloužily k signalizaci a měření vzdáleností.",
+      "id": "avi-0075",
+      "options": ["Egypt", "Čína", "Řecko", "Indie"],
+      "question": "Kde lidé poprvé pouštěli draky, před více než 2 000 lety?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Na jezeře Haarlemmermeer, kde dnes pojíždějí letadla, kdysi pluly lodě; vysušeno bylo v 50. letech 19. století.",
+      "id": "avi-0078",
+      "options": ["Kodaň-Kastrup", "Brusel", "Amsterdam-Schiphol", "Hamburk"],
+      "question": "Které velké evropské letiště leží asi 3 m pod hladinou moře, na dně vysušeného jezera?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Každý oblouk přinese asi 20–25 sekund vznášení, které využívají astronauti při výcviku.",
+      "id": "avi-0079",
+      "options": [
+        "Nadzvukovou rychlost",
+        "Výškovou nemoc",
+        "Silné turbulence",
+        "Beztížný stav"
+      ],
+      "question": "Co mohou cestující krátce zažít při parabolických letech, které stoupají a klesají v obloucích?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Námořní míle původně vycházela z jedné úhlové minuty zeměpisné šířky, což ji dělá praktickou pro navigaci podle map.",
+      "id": "avi-0080",
+      "options": ["2 000 m", "1 000 m", "1 852 m", "1 609 m"],
+      "question": "Uzel je jedna námořní míle za hodinu. Jak dlouhá je námořní míle?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Irské letiště Shannon bylo zastávkou pro doplnění paliva na transatlantických letech a obchod vznikl pro tranzitní cestující.",
+      "id": "avi-0077",
+      "options": ["Schiphol", "Heathrow", "Shannon", "Frankfurt"],
+      "question": "Které letiště otevřelo v roce 1947 první bezcelní obchod na světě?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "O rovnodennosti vrhá slunce na schodiště El Castilla stín, který vypadá jako had sklouzávající dolů.",
+      "id": "his-0020",
+      "options": ["Inkové", "Aztékové", "Mayové", "Olmékové"],
+      "question": "Která civilizace postavila stupňovitou pyramidu El Castillo v Chichén Itzá?"
+    }
+  ]
+}

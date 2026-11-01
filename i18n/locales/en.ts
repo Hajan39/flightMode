@@ -347,6 +347,15 @@ export const en = {
   quizFinished: "Quiz finished",
   quizResult: "Score: {{score}}\nCorrect: {{correct}}/{{total}}",
   quizPlayAgain: "Play again",
+  quizModeLabel: "Questions",
+  quizModeMix: "Mix",
+  quizModeMixHint: "World + flying",
+  quizModeWorld: "World",
+  quizModeWorldHint: "General knowledge",
+  quizModeAviation: "Aviation",
+  quizModeAviationHint: "Flying & travel",
+  quizDidYouKnow: "Did you know?",
+  quizNext: "Next",
   // Quiz Questions
   quizQ1:
     "When should you usually arrive at the airport for an international flight?",

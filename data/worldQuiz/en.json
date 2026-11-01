@@ -1,0 +1,1106 @@
+{
+  "fallback": false,
+  "lang": "en",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Canberra was purpose-built as a compromise between rivals Sydney and Melbourne and became the seat of parliament in 1927.",
+      "id": "geo-0002",
+      "options": ["Melbourne", "Sydney", "Perth", "Canberra"],
+      "question": "What is the capital of Australia?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Bats make up about a fifth of all mammal species; 'flying' squirrels and colugos can only glide.",
+      "id": "nat-0006",
+      "options": ["Bat", "Flying squirrel", "Sugar glider", "Colugo"],
+      "question": "Which is the only mammal capable of true powered flight?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Au comes from the Latin word aurum; gold is so malleable that 1 g can be beaten into a sheet about 1 m² in size.",
+      "id": "sci-0005",
+      "options": ["Gd", "Go", "Au", "Ag"],
+      "question": "What is the chemical symbol for gold?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "The Great Pyramid is the oldest of the seven wonders and the only one that is still largely intact.",
+      "id": "his-0001",
+      "options": [
+        "Great Pyramid of Giza",
+        "Temple of Artemis",
+        "Lighthouse of Alexandria",
+        "Colossus of Rhodes"
+      ],
+      "question": "Which of the Seven Wonders of the Ancient World still largely stands today?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "The Mona Lisa is painted on a poplar wood panel, not canvas, and has hung in the Louvre since the French Revolution.",
+      "id": "cul-0001",
+      "options": [
+        "Leonardo da Vinci",
+        "Raphael",
+        "Sandro Botticelli",
+        "Michelangelo"
+      ],
+      "question": "Who painted the Mona Lisa?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Berners-Lee created the Web at CERN near Geneva to help scientists share documents; the first website is still online.",
+      "id": "inv-0003",
+      "options": [
+        "Steve Jobs",
+        "Tim Berners-Lee",
+        "Marc Andreessen",
+        "Vint Cerf"
+      ],
+      "question": "Who invented the World Wide Web in 1989?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The orange paint and reflective strips make them easier to find; they are built to survive extreme impacts and fire.",
+      "id": "avi-0014",
+      "options": [
+        "Bright orange",
+        "Metallic silver",
+        "Dark navy blue",
+        "Matt black"
+      ],
+      "question": "What colour are aircraft 'black box' flight recorders?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Nepal's flag is made of two stacked triangular pennants, and its constitution gives exact geometric instructions for drawing it.",
+      "id": "misc-0002",
+      "options": ["Nepal", "Bhutan", "Mongolia", "Sri Lanka"],
+      "question": "Which country's national flag is not a rectangle or a square?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Each flower gives only three tiny stigmas, picked by hand; it takes about 150 flowers to make 1 g of saffron.",
+      "id": "food-0006",
+      "options": ["Saffron", "Vanilla", "Cardamom", "Cinnamon"],
+      "question": "Which spice, taken from crocus flowers, is the most expensive by weight?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "In Swahili \"safari\" simply means any journey; the word came into Swahili from Arabic.",
+      "id": "lang-0003",
+      "options": ["Hunting trip", "Journey", "Wild animal", "Grassland"],
+      "question": "What does the Swahili word \"safari\" mean?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "More than half of those bones are in the hands and feet: each hand alone has 27.",
+      "id": "body-0001",
+      "options": ["256", "226", "206", "186"],
+      "question": "How many bones are in the typical adult human skeleton?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "The odd distance was set at the 1908 London Olympics so the race could finish in front of the royal box.",
+      "id": "sport-0004",
+      "options": ["39.750 km", "45.500 km", "40.000 km", "42.195 km"],
+      "question": "How long is a marathon?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Vatican City covers only about 0.49 km², small enough to fit inside many city parks.",
+      "id": "geo-0006",
+      "options": ["San Marino", "Liechtenstein", "Vatican City", "Monaco"],
+      "question": "What is the smallest country in the world by area?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "The platypus is one of only a few egg-laying mammals, and males have venomous spurs on their back legs.",
+      "id": "nat-0018",
+      "options": ["Sea otter", "Wombat", "Beaver", "Platypus"],
+      "question": "Which of these mammals lays eggs?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Light covers the 150 million km from the Sun in about 8 minutes 20 seconds, so we always see the Sun as it was moments ago.",
+      "id": "sci-0009",
+      "options": [
+        "About 8 seconds",
+        "About 1 hour",
+        "About 1 day",
+        "About 8 minutes"
+      ],
+      "question": "Roughly how long does sunlight take to reach Earth?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Magellan did not survive the trip; Juan Sebastián Elcano brought the ship Victoria home to Spain in 1522.",
+      "id": "his-0004",
+      "options": [
+        "James Cook",
+        "Christopher Columbus",
+        "Ferdinand Magellan",
+        "Vasco da Gama"
+      ],
+      "question": "Whose expedition was the first to sail all the way around the world (1519–1522)?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Holi celebrates the arrival of spring, and people of all ages throw coloured powder and water at each other.",
+      "id": "cul-0006",
+      "options": ["Onam", "Holi", "Diwali", "Pongal"],
+      "question": "Which Indian spring festival is famous for throwing coloured powder?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "The name comes from the Danish \"leg godt\", meaning \"play well\"; bricks from 1958 still fit today's bricks.",
+      "id": "inv-0006",
+      "options": ["Denmark", "Netherlands", "Germany", "Sweden"],
+      "question": "LEGO bricks come from which country?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "The runways are marked out on the sand and disappear under the sea at high tide, so flight times follow the tides.",
+      "id": "avi-0024",
+      "options": ["A beach", "A motorway", "A frozen lake", "A glacier"],
+      "question": "At Barra Airport in Scotland, scheduled flights land on what?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "The statue was shiny brown copper when unveiled in 1886; it took about 30 years to turn completely green.",
+      "id": "misc-0010",
+      "options": [
+        "Its copper skin oxidised",
+        "Algae from New York Harbor",
+        "It was painted green",
+        "It is covered in moss"
+      ],
+      "question": "Why is the Statue of Liberty green?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Tea was drunk in China thousands of years ago; for centuries it was even pressed into bricks and used as money.",
+      "id": "food-0010",
+      "options": ["England", "India", "China", "Japan"],
+      "question": "Which country is credited with being the first to drink tea?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Cyrillic is also used for Bulgarian, Serbian, Ukrainian and more; it was developed in the First Bulgarian Empire.",
+      "id": "lang-0005",
+      "options": ["Cyrillic", "Greek", "Latin", "Glagolitic"],
+      "question": "Which alphabet is used to write Russian?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "An adult's skin covers about 1.5-2 m² and is constantly renewed: the outer layer replaces itself every few weeks.",
+      "id": "body-0002",
+      "options": ["Liver", "Skin", "Brain", "Lungs"],
+      "question": "Which is the largest organ of the human body?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Coubertin chose the colours so that every nation's flag contained at least one of them, including the white background.",
+      "id": "sport-0006",
+      "options": ["Seven", "Six", "Four", "Five"],
+      "question": "How many interlocking rings are on the Olympic flag?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Russia covers over 17 million km², about one-ninth of Earth's land, and spans 11 time zones.",
+      "id": "geo-0007",
+      "options": ["China", "Canada", "Russia", "Brazil"],
+      "question": "Which is the largest country in the world by area?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Hummingbirds beat their wings dozens of times per second and can hover, fly backwards and even briefly upside down.",
+      "id": "nat-0022",
+      "options": ["Kingfisher", "Sparrow", "Hummingbird", "Barn swallow"],
+      "question": "Which bird can fly backwards?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "A light-year is the distance light travels in a year: about 9.46 trillion km.",
+      "id": "sci-0023",
+      "options": ["Brightness", "Time", "Distance", "Speed"],
+      "question": "What does a light-year measure?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "The army has thousands of life-size soldiers, and no two faces are exactly the same.",
+      "id": "his-0021",
+      "options": [
+        "Qin Shi Huang",
+        "Genghis Khan",
+        "Kublai Khan",
+        "Emperor Wu of Han"
+      ],
+      "question": "The Terracotta Army was made to guard the tomb of which ruler?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "The tower was meant to stand for only 20 years but was kept partly because it was useful as a radio antenna.",
+      "id": "cul-0010",
+      "options": [
+        "A king's coronation",
+        "A World's Fair",
+        "A royal wedding",
+        "The Olympic Games"
+      ],
+      "question": "For which event was the Eiffel Tower built in 1889?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Engineer Percy Spencer noticed the melted bar in 1945; the first microwave oven was almost 1.8 m tall.",
+      "id": "inv-0013",
+      "options": [
+        "Electric kettle",
+        "Dishwasher",
+        "Microwave oven",
+        "Electric toaster"
+      ],
+      "question": "Which appliance was invented after a chocolate bar melted near a radar device?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Sharp corners concentrate stress as the cabin is pressurised on every flight; rounded corners spread the load.",
+      "id": "avi-0042",
+      "options": [
+        "To reduce glare",
+        "To spread stress evenly",
+        "To make cleaning easier",
+        "To give a wider view"
+      ],
+      "question": "Why are airliner windows rounded rather than square?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "The tower began to lean during construction in the 12th century; engineers have since stabilised it.",
+      "id": "misc-0011",
+      "options": [
+        "An earthquake",
+        "Soft ground beneath it",
+        "A lightning strike",
+        "A deliberate design choice"
+      ],
+      "question": "Why does the Leaning Tower of Pisa lean?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "People in the Andes of Peru and Bolivia grew potatoes about 7,000-10,000 years ago, and thousands of varieties still exist there.",
+      "id": "food-0013",
+      "options": [
+        "West Africa",
+        "Central Asia",
+        "South America",
+        "Southern Europe"
+      ],
+      "question": "Potatoes were first domesticated in which part of the world?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Arabic letters change shape depending on whether they are at the start, middle or end of a word.",
+      "id": "lang-0006",
+      "options": ["Hindi", "Thai", "Georgian", "Arabic"],
+      "question": "Which of these languages is written from right to left?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Flying east shortens the day, and the body clock finds it harder to advance than to delay.",
+      "id": "body-0051",
+      "options": ["Flying west", "Flying north", "Flying east", "Flying south"],
+      "question": "For most travellers, which flight direction usually causes worse jet lag?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Only 13 teams took part; several European teams travelled to Uruguay by ship, a trip of about two weeks.",
+      "id": "sport-0035",
+      "options": ["Argentina", "Italy", "Uruguay", "Brazil"],
+      "question": "Which country hosted and won the first FIFA World Cup, in 1930?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Greenland covers about 2.1 million km², and around four-fifths of it is buried under an ice sheet.",
+      "id": "geo-0025",
+      "options": ["Borneo", "Greenland", "Madagascar", "New Guinea"],
+      "question": "Which is the largest island in the world that is not a continent?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Flamingos get carotenoid pigments from algae and brine shrimp; chicks are born grey.",
+      "id": "nat-0060",
+      "options": [
+        "Mud that they bathe in",
+        "Their blood vessels",
+        "Pigments in their food",
+        "Strong sunlight"
+      ],
+      "question": "What gives flamingos their pink colour?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Earth's axis is tilted about 23.4°, so each hemisphere leans towards the Sun for part of the year.",
+      "id": "sci-0042",
+      "options": [
+        "The tilt of Earth's axis",
+        "Earth's distance from the Sun",
+        "The Moon's gravity",
+        "Changes in the Sun's heat"
+      ],
+      "question": "What causes Earth's seasons?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Amundsen's Norwegian team used skis and sled dogs and reached the pole on 14 December 1911.",
+      "id": "his-0023",
+      "options": [
+        "Ernest Shackleton",
+        "Fridtjof Nansen",
+        "Robert Falcon Scott",
+        "Roald Amundsen"
+      ],
+      "question": "Who led the first expedition to reach the South Pole, in 1911?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "The Little Prince is one of the most translated books in the world, available in hundreds of languages.",
+      "id": "cul-0038",
+      "options": [
+        "Jean-Paul Sartre",
+        "Jules Verne",
+        "Marguerite Yourcenar",
+        "Antoine de Saint-Exupéry"
+      ],
+      "question": "Which author, also a pilot, wrote \"The Little Prince\"?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Ernő Rubik, an architecture professor, made it to teach 3D thinking; it took him over a month to solve it himself.",
+      "id": "inv-0018",
+      "options": ["Czechoslovakia", "Hungary", "Austria", "Japan"],
+      "question": "The Rubik's Cube was invented in 1974 in which country?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Water vapour in hot engine exhaust freezes almost instantly in the very cold air at cruising height.",
+      "id": "avi-0044",
+      "options": ["Fuel vapour", "Exhaust smoke", "Dust", "Ice crystals"],
+      "question": "What are the white trails (contrails) behind high-flying jets mostly made of?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Dimples create a thin layer of turbulent air that reduces drag; a smooth ball would travel much less far.",
+      "id": "misc-0019",
+      "options": [
+        "To fly farther",
+        "To look nicer",
+        "To float in water",
+        "To grip the club"
+      ],
+      "question": "Why do golf balls have dimples?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Durian is often called the 'king of fruits'; fans love its creamy flesh, but many hotels also ban it.",
+      "id": "food-0035",
+      "options": ["Rambutan", "Durian", "Jackfruit", "Mangosteen"],
+      "question": "Which spiky Southeast Asian fruit is so smelly that it is banned on Singapore's trains?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Zamenhof published it in 1887 in Warsaw; \"Esperanto\" means \"one who hopes\".",
+      "id": "lang-0022",
+      "options": [
+        "L. L. Zamenhof",
+        "Otto Jespersen",
+        "Johann Schleyer",
+        "J. R. R. Tolkien"
+      ],
+      "question": "Who created the international language Esperanto?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "The inner ear senses motion; on a ship or plane, looking at the horizon can help the eyes agree with it.",
+      "id": "body-0059",
+      "options": [
+        "The heart",
+        "The stomach lining",
+        "The nose",
+        "The inner ear"
+      ],
+      "question": "Motion sickness comes from a mismatch between signals from the eyes and which organ?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "A curved parabolic mirror focuses the sun's rays to light the torch, a ceremony held since 1936.",
+      "id": "sport-0045",
+      "options": [
+        "With sunlight and a mirror",
+        "From an ancient oil lamp",
+        "From a flame kept in Athens",
+        "With a match from Athens"
+      ],
+      "question": "How is the Olympic flame lit in Olympia, Greece?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "The Bosphorus strait runs through the middle of Istanbul, so people commute between continents every day.",
+      "id": "geo-0045",
+      "options": [
+        "Asia and Oceania",
+        "Asia and Africa",
+        "Europe and Asia",
+        "Europe and Africa"
+      ],
+      "question": "The city of Istanbul lies on which two continents?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Fat in the hump is an energy reserve; concentrating it in one place helps the rest of the body stay cool.",
+      "id": "nat-0068",
+      "options": ["Air", "Muscle", "Fat", "Water"],
+      "question": "What does a camel store in its hump?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "A person who weighs 60 kg on Earth would feel as light as 10 kg on the Moon.",
+      "id": "sci-0093",
+      "options": [
+        "About one-tenth",
+        "About the same",
+        "About one-sixth",
+        "About half"
+      ],
+      "question": "Roughly how strong is gravity on the Moon compared with Earth?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "The Rapa Nui people carved nearly 1,000 moai, mostly from volcanic tuff at the Rano Raraku quarry.",
+      "id": "his-0034",
+      "options": ["Sicily", "Easter Island", "Bali", "New Caledonia"],
+      "question": "On which island are the giant moai statues found?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "New Zealand's rugby team performs a haka before matches, a tradition dating back to 1905.",
+      "id": "cul-0040",
+      "options": ["Inuit", "Hawaiians", "Māori", "Aboriginal Australians"],
+      "question": "The haka is a traditional dance of which people?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "The Tokaido Shinkansen opened just before the 1964 Tokyo Olympics and is known for its punctuality.",
+      "id": "inv-0021",
+      "options": ["Nagoya", "Hiroshima", "Osaka", "Kyoto"],
+      "question": "Japan's first Shinkansen \"bullet train\" line opened in 1964 between Tokyo and which city?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Orville Wright flew about 37 m, less than the wingspan of many modern airliners.",
+      "id": "avi-0003",
+      "options": [
+        "About 1 hour",
+        "About 1 minute",
+        "About 2 minutes",
+        "About 12 seconds"
+      ],
+      "question": "How long did the very first powered aeroplane flight last?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "China spans five geographical time zones but uses Beijing time everywhere, so in the far west the winter sun can rise as late as 10 a.m.",
+      "id": "misc-0038",
+      "options": ["Two", "Five", "One", "Three"],
+      "question": "How many official time zones does China use?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Real wasabi is a rare, hard-to-grow plant; most restaurant wasabi is horseradish, mustard and green colouring.",
+      "id": "food-0007",
+      "options": [
+        "Pickled ginger",
+        "Ground seaweed",
+        "Coloured horseradish",
+        "Green chilli paste"
+      ],
+      "question": "Outside Japan, the 'wasabi' served with sushi is often actually what?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Xhosa has around 15 click sounds; Nelson Mandela's mother tongue was Xhosa.",
+      "id": "lang-0032",
+      "options": ["Xhosa", "Amharic", "Swahili", "Yoruba"],
+      "question": "Which of these languages is famous for its click consonants?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Being free of blood vessels keeps the cornea perfectly clear, which is also why corneal transplants are rarely rejected.",
+      "id": "body-0060",
+      "options": ["Cornea", "Iris", "Tongue", "Retina"],
+      "question": "Which part of the body has no blood vessels and takes oxygen directly from the air?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Swimming comes first mainly for safety, so athletes are not in the water when they are most tired.",
+      "id": "sport-0046",
+      "options": [
+        "Run, cycle, swim",
+        "Swim, cycle, run",
+        "Swim, run, cycle",
+        "Cycle, swim, run"
+      ],
+      "question": "What is the usual order of events in a triathlon?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Reykjavík lies at about 64°N, just south of the Arctic Circle, yet warm ocean currents keep its winters fairly mild.",
+      "id": "geo-0016",
+      "options": ["Oslo", "Reykjavík", "Helsinki", "Tallinn"],
+      "question": "Which is the northernmost capital city of a sovereign state?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Two hearts pump blood through the gills and a third pumps it around the body; the main heart stops while the octopus swims.",
+      "id": "nat-0004",
+      "options": ["Two", "Three", "Four", "One"],
+      "question": "How many hearts does an octopus have?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Venus spins so slowly, and backwards, that one rotation takes 243 Earth days, while its orbit takes only 225.",
+      "id": "sci-0014",
+      "options": ["Venus", "Neptune", "Mercury", "Mars"],
+      "question": "On which planet is a single day longer than its whole year?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "The story says Archimedes realised that the water his body displaced could measure the volume of a crown.",
+      "id": "his-0036",
+      "options": ["Archimedes", "Pythagoras", "Thales", "Euclid"],
+      "question": "Which ancient Greek reportedly shouted \"Eureka!\" in his bath?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Songkran falls in April, the hottest time of year, so a friendly water fight is a welcome way to cool down.",
+      "id": "cul-0050",
+      "options": ["Yi Peng", "Songkran", "Loy Krathong", "Phi Ta Khon"],
+      "question": "Which water-splashing festival marks the traditional Thai New Year?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Nintendo began by making hand-painted hanafuda cards in Kyoto.",
+      "id": "inv-0056",
+      "options": ["Playing cards", "Paper lanterns", "Wooden toys", "Radios"],
+      "question": "Before making video games, Nintendo was founded in 1889 to make what?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The 'breather hole' lets the outer pane carry the cabin pressure while the middle pane acts as a backup.",
+      "id": "avi-0043",
+      "options": [
+        "To drain rainwater",
+        "To measure the airspeed",
+        "To let in fresh air",
+        "To balance air pressure"
+      ],
+      "question": "What is the tiny hole in an airliner's cabin window for?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Polymer notes last longer than paper and are harder to forge; many countries now use them.",
+      "id": "misc-0044",
+      "options": ["Australia", "Japan", "Canada", "Singapore"],
+      "question": "Which country was the first to issue plastic (polymer) banknotes, in 1988?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Legend says an Ethiopian goat herder noticed his goats became lively after eating coffee berries.",
+      "id": "food-0009",
+      "options": ["Brazil", "Vietnam", "Colombia", "Ethiopia"],
+      "question": "The Arabica coffee plant is native to the highlands of which country?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Many valleys in Papua New Guinea's mountains have their own language, some spoken by only a few hundred people.",
+      "id": "lang-0036",
+      "options": [
+        "Brazil",
+        "Papua New Guinea",
+        "India",
+        "Democratic Republic of the Congo"
+      ],
+      "question": "Which country has more living languages than any other, about 840?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Siberia's Lake Baikal is over 1,600 m deep and holds about a fifth of the world's unfrozen fresh surface water.",
+      "id": "geo-0024",
+      "options": [
+        "Lake Tanganyika",
+        "Caspian Sea",
+        "Lake Superior",
+        "Lake Baikal"
+      ],
+      "question": "Which is the deepest lake in the world?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Giraffes have the same number of neck bones as humans; each one is just up to 25 cm long.",
+      "id": "nat-0009",
+      "options": ["Twenty-four", "Twelve", "Eighteen", "Seven"],
+      "question": "How many vertebrae are in a giraffe's neck?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Air molecules scatter short blue wavelengths much more than red ones, an effect called Rayleigh scattering.",
+      "id": "sci-0036",
+      "options": [
+        "Ozone gas is blue",
+        "Air scatters blue light",
+        "Sunlight is mostly blue",
+        "The ocean reflects onto it"
+      ],
+      "question": "Why is the daytime sky blue?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Polynesian voyagers arrived around 1300 AD in large canoes; their descendants are the Māori.",
+      "id": "his-0051",
+      "options": ["The Ainu", "Micronesians", "Polynesians", "Melanesians"],
+      "question": "Who were the first humans to settle New Zealand?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Seen from above, Brasília's plan by Lúcio Costa looks like an airplane or a bird, with buildings by Oscar Niemeyer.",
+      "id": "cul-0057",
+      "options": ["Islamabad", "Canberra", "Abuja", "Brasília"],
+      "question": "Which capital city was built from scratch and inaugurated in 1960?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "A ball fell from a dragon's mouth into a toad's mouth, showing the direction of a distant earthquake.",
+      "id": "inv-0060",
+      "options": ["Time of day", "Wind direction", "Rainfall", "Earthquakes"],
+      "question": "In 132 AD, Zhang Heng's bronze vessel with dragons dropping balls detected what?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "The number is the magnetic heading divided by ten, so runway 27 points roughly west (270°).",
+      "id": "avi-0046",
+      "options": [
+        "Its maximum aircraft weight",
+        "Its compass direction",
+        "Its length in hundreds of metres",
+        "The order it was built"
+      ],
+      "question": "What does the large number painted at a runway's end, such as 27, tell pilots?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "The wall is only a few metres wide; even from low Earth orbit it is extremely hard to spot without help.",
+      "id": "misc-0048",
+      "options": [
+        "No, it is far too narrow",
+        "Only at night",
+        "Yes, but only on a clear day",
+        "Yes, very easily"
+      ],
+      "question": "Can astronauts on the Moon see the Great Wall of China with the naked eye?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Each cashew apple carries a single nut; cashews are sold shelled because the shell contains an irritating oil.",
+      "id": "food-0076",
+      "options": [
+        "A spiny seed pod",
+        "A woody cone",
+        "An underground root",
+        "A fleshy 'apple'"
+      ],
+      "question": "A cashew nut grows hanging from the bottom of what?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Lesotho is the only country lying entirely above 1,000 m, earning it the nickname 'Kingdom in the Sky'.",
+      "id": "geo-0033",
+      "options": ["Lesotho", "Botswana", "Namibia", "Eswatini"],
+      "question": "Which country is completely surrounded by South Africa?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Resting one half of the brain lets dolphins keep surfacing to breathe and watch for danger.",
+      "id": "nat-0057",
+      "options": [
+        "Wrapped in seaweed",
+        "Lying still on the sea floor",
+        "One brain half at a time",
+        "In 8-hour deep sleeps"
+      ],
+      "question": "How do dolphins manage to sleep?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Saturn's average density is lower than water's, so in theory it would float in a big enough bathtub.",
+      "id": "sci-0051",
+      "options": ["Saturn", "Uranus", "Neptune", "Jupiter"],
+      "question": "Which planet is less dense than water?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Mansa Musa's pilgrimage through Cairo in 1324 spread so much gold that its value in Egypt fell for years.",
+      "id": "his-0067",
+      "options": [
+        "Kingdom of Aksum",
+        "Ghana Empire",
+        "Songhai Empire",
+        "Mali Empire"
+      ],
+      "question": "Which West African empire was ruled by Mansa Musa, famed for his wealth?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "A sitar has playing strings plus extra \"sympathetic\" strings that vibrate on their own and give a shimmering sound.",
+      "id": "cul-0061",
+      "options": ["Tabla", "Sitar", "Sarod", "Veena"],
+      "question": "Which instrument did Indian musician Ravi Shankar make famous worldwide?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Scientists could check whether the pot was full before walking to the coffee room.",
+      "id": "inv-0066",
+      "options": [
+        "A coffee pot",
+        "A busy street",
+        "A fish tank",
+        "A weather vane"
+      ],
+      "question": "What did the world's first webcam, set up at Cambridge University in 1991, show?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "The animals flew for about 8 minutes in front of King Louis XVI at Versailles and landed safely.",
+      "id": "avi-0035",
+      "options": [
+        "A goat, hen and monkey",
+        "A dog, goose and rabbit",
+        "A sheep, duck and rooster",
+        "A pig, parrot and kitten"
+      ],
+      "question": "Before risking people, the Montgolfier brothers sent which passengers up in a balloon?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "The Japanese company was run by the same family for over 1,400 years before becoming part of a larger firm in 2006.",
+      "id": "misc-0080",
+      "options": ["Ships", "Swords", "Temples", "Bridges"],
+      "question": "Kongō Gumi, one of the world's oldest companies (founded in 578), built what?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Hawaii's Mauna Kea rises over 10,000 m from the ocean floor, though only about 4,200 m is above sea level.",
+      "id": "geo-0101",
+      "options": ["Denali", "Mauna Kea", "Mount Everest", "Kilimanjaro"],
+      "question": "Measured from its base on the sea floor, which is the tallest mountain on Earth?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "The tusk is an overgrown canine tooth that can reach about 3 m, packed with millions of nerve endings.",
+      "id": "nat-0080",
+      "options": ["A horn", "A tooth", "A fin spine", "A nose bone"],
+      "question": "The narwhal's long spiral tusk is actually what?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Count the seconds between flash and bang and divide by three to estimate the storm's distance in kilometres.",
+      "id": "sci-0077",
+      "options": ["10 seconds", "30 seconds", "1 second", "3 seconds"],
+      "question": "Roughly how many seconds after lightning does thunder arrive for each kilometre of distance?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "New Amsterdam was a Dutch colony; Wall Street takes its name from a wooden wall built by the Dutch settlers.",
+      "id": "his-0072",
+      "options": [
+        "New Amsterdam",
+        "New Rotterdam",
+        "Fort Hudson",
+        "New Holland"
+      ],
+      "question": "What was New York called before it was renamed in 1664?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "The saxophone counts as a woodwind because its sound is made with a single reed, like a clarinet.",
+      "id": "cul-0074",
+      "options": ["Percussion", "Strings", "Brass", "Woodwind"],
+      "question": "The saxophone is made of brass, but which instrument family does it belong to?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Jikji was printed 78 years before the Gutenberg Bible.",
+      "id": "inv-0086",
+      "options": ["Japan", "Mongolia", "China", "Korea"],
+      "question": "Jikji, the oldest surviving book printed with movable metal type (1377), is from where?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "After rain, a thin layer of water turns Uyuni into a giant mirror reflecting the sky.",
+      "id": "geo-0110",
+      "options": ["Peru", "Chile", "Bolivia", "Argentina"],
+      "question": "Salar de Uyuni, the world's largest salt flat, is in which country?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "North American wood frogs fill their cells with sugar as antifreeze and thaw back to life in spring.",
+      "id": "nat-0082",
+      "options": ["Snowy owl", "Wood frog", "Arctic hare", "Ptarmigan"],
+      "question": "Which animal can survive the winter frozen solid, with its heart stopped?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Fine Martian dust scatters blue light forward, so the glow around the setting Sun looks blue to rovers' cameras.",
+      "id": "sci-0064",
+      "options": ["Deep red", "Golden yellow", "Bright orange", "Bluish"],
+      "question": "What colour do sunsets usually look on Mars?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Heyerdahl and five crew drifted about 6,900 km from Peru to French Polynesia in 101 days.",
+      "id": "his-0092",
+      "options": [
+        "Fridtjof Nansen",
+        "Tim Severin",
+        "Jacques Cousteau",
+        "Thor Heyerdahl"
+      ],
+      "question": "Who sailed across the Pacific on the balsa-wood raft Kon-Tiki in 1947?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Aboriginal Australians use eucalyptus branches hollowed out by termites; players use circular breathing to keep a note going.",
+      "id": "cul-0091",
+      "options": [
+        "Woven river reeds",
+        "Carved water-buffalo horn",
+        "Termite-hollowed wood",
+        "A fired clay tube"
+      ],
+      "question": "Traditionally, a didgeridoo is made from what?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "The Sargasso Sea in the North Atlantic is bounded only by ocean currents and is famous for its floating seaweed.",
+      "id": "geo-0038",
+      "options": ["Sargasso Sea", "Tasman Sea", "Coral Sea", "Weddell Sea"],
+      "question": "Which sea is the only one with no land coastline at all?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Quipus recorded numbers using knots in a base-10 system; some may also have recorded stories.",
+      "id": "his-0102",
+      "options": ["Codex", "Tally stick", "Quipu", "Abacus"],
+      "question": "What was the Inca recording device made of knotted strings called?"
+    }
+  ]
+}

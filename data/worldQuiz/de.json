@@ -1,0 +1,1121 @@
+{
+  "fallback": false,
+  "lang": "de",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Canberra wurde als Kompromiss zwischen den Rivalen Sydney und Melbourne eigens neu gebaut und ist seit 1927 Parlamentssitz.",
+      "id": "geo-0002",
+      "options": ["Melbourne", "Sydney", "Perth", "Canberra"],
+      "question": "Wie heißt die Hauptstadt Australiens?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Fledermäuse machen etwa ein Fünftel aller Säugetierarten aus; Gleithörnchen und Riesengleiter können nur gleiten.",
+      "id": "nat-0006",
+      "options": [
+        "Fledermaus",
+        "Gleithörnchen",
+        "Kurzkopfgleitbeutler",
+        "Riesengleiter"
+      ],
+      "question": "Welches ist das einzige Säugetier, das aktiv fliegen kann?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Au kommt vom lateinischen aurum; Gold ist so formbar, dass sich 1 g zu einer Folie von etwa 1 m² aushämmern lässt.",
+      "id": "sci-0005",
+      "options": ["Gd", "Go", "Au", "Ag"],
+      "question": "Wie lautet das chemische Symbol für Gold?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Die Große Pyramide ist das älteste der sieben Weltwunder und das einzige, das noch weitgehend erhalten ist.",
+      "id": "his-0001",
+      "options": [
+        "Große Pyramide von Gizeh",
+        "Tempel der Artemis",
+        "Leuchtturm von Alexandria",
+        "Koloss von Rhodos"
+      ],
+      "question": "Welches der Sieben Weltwunder der Antike steht heute noch weitgehend?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Die Mona Lisa ist auf eine Pappelholztafel gemalt, nicht auf Leinwand, und hängt seit der Französischen Revolution im Louvre.",
+      "id": "cul-0001",
+      "options": [
+        "Leonardo da Vinci",
+        "Raffael",
+        "Sandro Botticelli",
+        "Michelangelo"
+      ],
+      "question": "Wer malte die Mona Lisa?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Berners-Lee entwickelte das Web am CERN bei Genf, damit Forscher Dokumente teilen konnten; die erste Website ist noch online.",
+      "id": "inv-0003",
+      "options": [
+        "Steve Jobs",
+        "Tim Berners-Lee",
+        "Marc Andreessen",
+        "Vint Cerf"
+      ],
+      "question": "Wer erfand 1989 das World Wide Web?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Orange Farbe und Reflexstreifen machen sie leichter auffindbar; sie sind dafür gebaut, extreme Aufpralle und Feuer zu überstehen.",
+      "id": "avi-0014",
+      "options": [
+        "Leuchtend orange",
+        "Metallisch silbern",
+        "Dunkles Marineblau",
+        "Mattschwarz"
+      ],
+      "question": "Welche Farbe haben die Flugschreiber („Blackbox“) von Flugzeugen?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Nepals Flagge besteht aus zwei übereinanderliegenden dreieckigen Wimpeln; die Verfassung schreibt die Konstruktion geometrisch genau vor.",
+      "id": "misc-0002",
+      "options": ["Nepal", "Bhutan", "Mongolei", "Sri Lanka"],
+      "question": "Die Nationalflagge welches Landes ist weder rechteckig noch quadratisch?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Jede Blüte liefert nur drei winzige Narbenfäden, die von Hand gepflückt werden; für 1 g Safran braucht man etwa 150 Blüten.",
+      "id": "food-0006",
+      "options": ["Safran", "Vanille", "Kardamom", "Zimt"],
+      "question": "Welches Gewürz aus Krokusblüten ist nach Gewicht das teuerste?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Auf Swahili bezeichnet „Safari“ einfach jede Reise; das Wort kam aus dem Arabischen ins Swahili.",
+      "id": "lang-0003",
+      "options": ["Jagdausflug", "Reise", "Wildtier", "Grasland"],
+      "question": "Was bedeutet das Swahili-Wort „Safari“?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Mehr als die Hälfte dieser Knochen steckt in Händen und Füßen: Jede Hand allein hat 27.",
+      "id": "body-0001",
+      "options": ["256", "226", "206", "186"],
+      "question": "Wie viele Knochen hat das Skelett eines erwachsenen Menschen normalerweise?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Die krumme Distanz wurde bei den Olympischen Spielen 1908 in London festgelegt, damit das Rennen vor der königlichen Loge enden konnte.",
+      "id": "sport-0004",
+      "options": ["39,750 km", "45,500 km", "40,000 km", "42,195 km"],
+      "question": "Wie lang ist ein Marathon?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Die Vatikanstadt ist nur etwa 0,49 km² groß – sie würde in so manchen Stadtpark passen.",
+      "id": "geo-0006",
+      "options": ["San Marino", "Liechtenstein", "Vatikanstadt", "Monaco"],
+      "question": "Welches ist das flächenmäßig kleinste Land der Welt?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Das Schnabeltier gehört zu den wenigen eierlegenden Säugetieren, und die Männchen haben Giftsporne an den Hinterbeinen.",
+      "id": "nat-0018",
+      "options": ["Seeotter", "Wombat", "Biber", "Schnabeltier"],
+      "question": "Welches dieser Säugetiere legt Eier?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Licht legt die 150 Millionen km von der Sonne in etwa 8 Minuten und 20 Sekunden zurück – wir sehen die Sonne also immer so, wie sie kurz zuvor war.",
+      "id": "sci-0009",
+      "options": [
+        "Etwa 8 Sekunden",
+        "Etwa 1 Stunde",
+        "Etwa 1 Tag",
+        "Etwa 8 Minuten"
+      ],
+      "question": "Wie lange braucht Sonnenlicht ungefähr bis zur Erde?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Magellan überlebte die Reise nicht; Juan Sebastián Elcano brachte das Schiff Victoria 1522 nach Spanien zurück.",
+      "id": "his-0004",
+      "options": [
+        "James Cook",
+        "Christoph Kolumbus",
+        "Ferdinand Magellan",
+        "Vasco da Gama"
+      ],
+      "question": "Wessen Expedition umsegelte als erste die ganze Welt (1519–1522)?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Holi feiert die Ankunft des Frühlings: Menschen jeden Alters bewerfen sich mit Farbpulver und Wasser.",
+      "id": "cul-0006",
+      "options": ["Onam", "Holi", "Diwali", "Pongal"],
+      "question": "Welches indische Frühlingsfest ist für das Werfen von Farbpulver berühmt?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Der Name kommt vom dänischen „leg godt“, „spiel gut“; Steine von 1958 passen noch heute auf aktuelle Steine.",
+      "id": "inv-0006",
+      "options": ["Dänemark", "Niederlande", "Deutschland", "Schweden"],
+      "question": "Aus welchem Land stammen LEGO-Steine?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Die Pisten sind im Sand markiert und verschwinden bei Flut unter dem Meer – die Flugzeiten richten sich daher nach den Gezeiten.",
+      "id": "avi-0024",
+      "options": [
+        "Auf dem Strand",
+        "Auf einer Autobahn",
+        "Auf einem zugefrorenen See",
+        "Auf einem Gletscher"
+      ],
+      "question": "Worauf landen Linienflüge am Flughafen Barra in Schottland?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Bei der Enthüllung 1886 war die Statue glänzend kupferbraun; es dauerte etwa 30 Jahre, bis sie ganz grün war.",
+      "id": "misc-0010",
+      "options": [
+        "Ihre Kupferhaut oxidierte",
+        "Algen aus dem Hafen",
+        "Sie wurde grün gestrichen",
+        "Sie ist mit Moos bedeckt"
+      ],
+      "question": "Warum ist die Freiheitsstatue grün?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "In China wurde schon vor Jahrtausenden Tee getrunken; jahrhundertelang presste man ihn sogar zu Ziegeln und nutzte ihn als Geld.",
+      "id": "food-0010",
+      "options": ["England", "Indien", "China", "Japan"],
+      "question": "Welchem Land wird zugeschrieben, als erstes Tee getrunken zu haben?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Kyrillisch wird auch für Bulgarisch, Serbisch, Ukrainisch und weitere Sprachen genutzt; es entstand im Ersten Bulgarischen Reich.",
+      "id": "lang-0005",
+      "options": ["Kyrillisch", "Griechisch", "Lateinisch", "Glagolitisch"],
+      "question": "Mit welchem Alphabet wird Russisch geschrieben?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Die Haut eines Erwachsenen bedeckt etwa 1,5–2 m² und erneuert sich ständig: Die äußere Schicht ersetzt sich alle paar Wochen.",
+      "id": "body-0002",
+      "options": ["Leber", "Haut", "Gehirn", "Lunge"],
+      "question": "Welches ist das größte Organ des menschlichen Körpers?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Coubertin wählte die Farben so, dass jede Nationalflagge mindestens eine davon enthielt – den weißen Hintergrund eingeschlossen.",
+      "id": "sport-0006",
+      "options": ["Sieben", "Sechs", "Vier", "Fünf"],
+      "question": "Wie viele ineinander verschlungene Ringe zeigt die olympische Flagge?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Russland umfasst über 17 Millionen km², etwa ein Neuntel der Landfläche der Erde, und erstreckt sich über 11 Zeitzonen.",
+      "id": "geo-0007",
+      "options": ["China", "Kanada", "Russland", "Brasilien"],
+      "question": "Welches ist das flächenmäßig größte Land der Welt?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Kolibris schlagen dutzende Male pro Sekunde mit den Flügeln; sie können schweben, rückwärts und kurz sogar kopfüber fliegen.",
+      "id": "nat-0022",
+      "options": ["Eisvogel", "Spatz", "Kolibri", "Rauchschwalbe"],
+      "question": "Welcher Vogel kann rückwärts fliegen?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Ein Lichtjahr ist die Strecke, die Licht in einem Jahr zurücklegt: etwa 9,46 Billionen km.",
+      "id": "sci-0023",
+      "options": ["Helligkeit", "Zeit", "Entfernung", "Geschwindigkeit"],
+      "question": "Was misst ein Lichtjahr?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Die Armee umfasst Tausende lebensgroße Soldaten, und keine zwei Gesichter sind genau gleich.",
+      "id": "his-0021",
+      "options": [
+        "Qin Shihuangdi",
+        "Dschingis Khan",
+        "Kublai Khan",
+        "Kaiser Wu von Han"
+      ],
+      "question": "Das Grab welches Herrschers sollte die Terrakotta-Armee bewachen?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Der Turm sollte nur 20 Jahre stehen, blieb aber unter anderem erhalten, weil er sich als Funkantenne bewährte.",
+      "id": "cul-0010",
+      "options": [
+        "Eine Königskrönung",
+        "Eine Weltausstellung",
+        "Eine königliche Hochzeit",
+        "Die Olympischen Spiele"
+      ],
+      "question": "Für welches Ereignis wurde der Eiffelturm 1889 gebaut?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Ingenieur Percy Spencer bemerkte 1945 den geschmolzenen Riegel; der erste Mikrowellenherd war fast 1,8 m hoch.",
+      "id": "inv-0013",
+      "options": ["Wasserkocher", "Geschirrspüler", "Mikrowelle", "Toaster"],
+      "question": "Welches Gerät wurde erfunden, nachdem ein Schokoriegel neben einem Radargerät geschmolzen war?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Scharfe Ecken bündeln Spannungen, wenn die Kabine bei jedem Flug unter Druck gesetzt wird; runde Ecken verteilen die Last.",
+      "id": "avi-0042",
+      "options": [
+        "Weniger Blendwirkung",
+        "Bessere Lastverteilung",
+        "Einfachere Reinigung",
+        "Ein breiteres Sichtfeld"
+      ],
+      "question": "Warum sind Flugzeugfenster abgerundet statt eckig?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Der Turm begann sich schon während des Baus im 12. Jahrhundert zu neigen; Ingenieure haben ihn inzwischen stabilisiert.",
+      "id": "misc-0011",
+      "options": [
+        "Ein Erdbeben",
+        "Weicher Untergrund",
+        "Ein Blitzeinschlag",
+        "Absicht der Erbauer"
+      ],
+      "question": "Warum ist der Schiefe Turm von Pisa schief?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "In den Anden Perus und Boliviens bauten Menschen schon vor etwa 7.000–10.000 Jahren Kartoffeln an; dort gibt es noch heute Tausende Sorten.",
+      "id": "food-0013",
+      "options": ["Westafrika", "Zentralasien", "Südamerika", "Südeuropa"],
+      "question": "In welcher Weltregion wurden Kartoffeln zuerst kultiviert?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Arabische Buchstaben ändern ihre Form, je nachdem, ob sie am Anfang, in der Mitte oder am Ende eines Wortes stehen.",
+      "id": "lang-0006",
+      "options": ["Hindi", "Thai", "Georgisch", "Arabisch"],
+      "question": "Welche dieser Sprachen wird von rechts nach links geschrieben?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Ein Flug nach Osten verkürzt den Tag, und die innere Uhr lässt sich schwerer vor- als zurückstellen.",
+      "id": "body-0051",
+      "options": [
+        "Flug nach Westen",
+        "Flug nach Norden",
+        "Flug nach Osten",
+        "Flug nach Süden"
+      ],
+      "question": "Welche Flugrichtung verursacht bei den meisten Reisenden den schlimmeren Jetlag?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Nur 13 Mannschaften nahmen teil; mehrere europäische Teams reisten per Schiff nach Uruguay – etwa zwei Wochen lang.",
+      "id": "sport-0035",
+      "options": ["Argentinien", "Italien", "Uruguay", "Brasilien"],
+      "question": "Welches Land richtete 1930 die erste Fußball-Weltmeisterschaft aus und gewann sie?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Grönland umfasst etwa 2,1 Millionen km², rund vier Fünftel davon liegen unter einem Eisschild.",
+      "id": "geo-0025",
+      "options": ["Borneo", "Grönland", "Madagaskar", "Neuguinea"],
+      "question": "Welche ist die größte Insel der Welt, die kein Kontinent ist?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Flamingos nehmen Karotinoide aus Algen und Salinenkrebsen auf; die Küken kommen grau zur Welt.",
+      "id": "nat-0060",
+      "options": [
+        "Schlamm, in dem sie baden",
+        "Ihre Blutgefäße",
+        "Pigmente in der Nahrung",
+        "Starkes Sonnenlicht"
+      ],
+      "question": "Woher haben Flamingos ihre rosa Farbe?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Die Erdachse ist um etwa 23,4° geneigt, sodass jede Erdhälfte einen Teil des Jahres der Sonne zugewandt ist.",
+      "id": "sci-0042",
+      "options": [
+        "Neigung der Erdachse",
+        "Abstand der Erde zur Sonne",
+        "Schwerkraft des Mondes",
+        "Schwankende Sonnenwärme"
+      ],
+      "question": "Wodurch entstehen die Jahreszeiten auf der Erde?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Amundsens norwegisches Team nutzte Skier und Schlittenhunde und erreichte den Pol am 14. Dezember 1911.",
+      "id": "his-0023",
+      "options": [
+        "Ernest Shackleton",
+        "Fridtjof Nansen",
+        "Robert Falcon Scott",
+        "Roald Amundsen"
+      ],
+      "question": "Wer leitete 1911 die erste Expedition, die den Südpol erreichte?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "„Der kleine Prinz“ gehört zu den meistübersetzten Büchern der Welt und ist in Hunderten Sprachen erhältlich.",
+      "id": "cul-0038",
+      "options": [
+        "Jean-Paul Sartre",
+        "Jules Verne",
+        "Marguerite Yourcenar",
+        "Antoine de Saint-Exupéry"
+      ],
+      "question": "Welcher Autor, zugleich Pilot, schrieb „Der kleine Prinz“?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Ernő Rubik, Architekturprofessor, baute ihn, um räumliches Denken zu lehren; er brauchte selbst über einen Monat, um ihn zu lösen.",
+      "id": "inv-0018",
+      "options": ["Tschechoslowakei", "Ungarn", "Österreich", "Japan"],
+      "question": "In welchem Land wurde 1974 der Zauberwürfel (Rubik’s Cube) erfunden?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Wasserdampf im heißen Triebwerksabgas gefriert in der sehr kalten Luft in Reiseflughöhe fast augenblicklich.",
+      "id": "avi-0044",
+      "options": ["Treibstoffdampf", "Abgasrauch", "Staub", "Eiskristalle"],
+      "question": "Woraus bestehen die weißen Kondensstreifen hinter hoch fliegenden Jets hauptsächlich?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Die Dellen erzeugen eine dünne Schicht verwirbelter Luft, die den Widerstand senkt; ein glatter Ball flöge viel weniger weit.",
+      "id": "misc-0019",
+      "options": [
+        "Damit sie weiter fliegen",
+        "Damit sie schöner aussehen",
+        "Damit sie schwimmen",
+        "Für besseren Griff am Schläger"
+      ],
+      "question": "Warum haben Golfbälle Dellen?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Die Durian wird oft „König der Früchte“ genannt; Fans lieben ihr cremiges Fruchtfleisch, doch auch viele Hotels verbieten sie.",
+      "id": "food-0035",
+      "options": ["Rambutan", "Durian", "Jackfrucht", "Mangostane"],
+      "question": "Welche stachelige Frucht aus Südostasien riecht so stark, dass sie in Singapurs Bahnen verboten ist?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Zamenhof veröffentlichte sie 1887 in Warschau; „Esperanto“ bedeutet „einer, der hofft“.",
+      "id": "lang-0022",
+      "options": [
+        "L. L. Zamenhof",
+        "Otto Jespersen",
+        "Johann Schleyer",
+        "J. R. R. Tolkien"
+      ],
+      "question": "Wer schuf die Plansprache Esperanto?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Das Innenohr nimmt Bewegung wahr; auf einem Schiff oder im Flugzeug hilft der Blick zum Horizont, die Augen mit ihm in Einklang zu bringen.",
+      "id": "body-0059",
+      "options": [
+        "Des Herzens",
+        "Der Magenschleimhaut",
+        "Der Nase",
+        "Des Innenohrs"
+      ],
+      "question": "Reisekrankheit entsteht durch widersprüchliche Signale der Augen und welches Organs?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Ein gewölbter Parabolspiegel bündelt die Sonnenstrahlen und entzündet die Fackel – eine Zeremonie, die es seit 1936 gibt.",
+      "id": "sport-0045",
+      "options": [
+        "Mit Sonnenlicht und Spiegel",
+        "Mit einer antiken Öllampe",
+        "Mit einer Flamme aus Athen",
+        "Mit einem Streichholz aus Athen"
+      ],
+      "question": "Wie wird das olympische Feuer im griechischen Olympia entzündet?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Der Bosporus verläuft mitten durch Istanbul – viele Menschen pendeln täglich zwischen zwei Kontinenten.",
+      "id": "geo-0045",
+      "options": [
+        "Asien und Ozeanien",
+        "Asien und Afrika",
+        "Europa und Asien",
+        "Europa und Afrika"
+      ],
+      "question": "Auf welchen zwei Kontinenten liegt Istanbul?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Das Fett im Höcker ist eine Energiereserve; weil es an einer Stelle gebündelt ist, bleibt der restliche Körper kühler.",
+      "id": "nat-0068",
+      "options": ["Luft", "Muskeln", "Fett", "Wasser"],
+      "question": "Was speichert ein Kamel in seinem Höcker?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Ein Mensch, der auf der Erde 60 kg wiegt, würde sich auf dem Mond so leicht fühlen wie 10 kg.",
+      "id": "sci-0093",
+      "options": [
+        "Etwa ein Zehntel",
+        "Ungefähr gleich stark",
+        "Etwa ein Sechstel",
+        "Etwa die Hälfte"
+      ],
+      "question": "Wie stark ist die Schwerkraft auf dem Mond ungefähr im Vergleich zur Erde?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Die Rapa Nui meißelten fast 1.000 Moai, meist aus vulkanischem Tuff aus dem Steinbruch Rano Raraku.",
+      "id": "his-0034",
+      "options": ["Sizilien", "Osterinsel", "Bali", "Neukaledonien"],
+      "question": "Auf welcher Insel stehen die riesigen Moai-Statuen?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Neuseelands Rugbymannschaft führt vor Spielen einen Haka auf – eine Tradition, die bis 1905 zurückreicht.",
+      "id": "cul-0040",
+      "options": ["Inuit", "Hawaiianer", "Māori", "Aborigines"],
+      "question": "Der Haka ist ein traditioneller Tanz welches Volkes?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Der Tōkaidō-Shinkansen ging kurz vor den Olympischen Spielen 1964 in Tokio in Betrieb und ist für seine Pünktlichkeit bekannt.",
+      "id": "inv-0021",
+      "options": ["Nagoya", "Hiroshima", "Osaka", "Kyōto"],
+      "question": "Japans erste Shinkansen-Strecke wurde 1964 zwischen Tokio und welcher Stadt eröffnet?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Orville Wright flog etwa 37 m weit – weniger als die Spannweite vieler heutiger Verkehrsflugzeuge.",
+      "id": "avi-0003",
+      "options": [
+        "Etwa 1 Stunde",
+        "Etwa 1 Minute",
+        "Etwa 2 Minuten",
+        "Etwa 12 Sekunden"
+      ],
+      "question": "Wie lange dauerte der allererste Motorflug?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "China erstreckt sich über fünf geografische Zeitzonen, nutzt aber überall die Pekinger Zeit – im äußersten Westen geht die Wintersonne daher erst gegen 10 Uhr auf.",
+      "id": "misc-0038",
+      "options": ["Zwei", "Fünf", "Eine", "Drei"],
+      "question": "Wie viele offizielle Zeitzonen nutzt China?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Echter Wasabi ist eine seltene, schwer anzubauende Pflanze; der meiste Restaurant-Wasabi besteht aus Meerrettich, Senf und grüner Farbe.",
+      "id": "food-0007",
+      "options": [
+        "Eingelegter Ingwer",
+        "Gemahlener Seetang",
+        "Gefärbter Meerrettich",
+        "Grüne Chilipaste"
+      ],
+      "question": "Was ist der „Wasabi“, den es außerhalb Japans zu Sushi gibt, oft in Wahrheit?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Xhosa hat rund 15 Klicklaute; Nelson Mandelas Muttersprache war Xhosa.",
+      "id": "lang-0032",
+      "options": ["Xhosa", "Amharisch", "Swahili", "Yoruba"],
+      "question": "Welche dieser Sprachen ist für ihre Klicklaute berühmt?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Ohne Blutgefäße bleibt die Hornhaut völlig klar – deshalb werden Hornhauttransplantate auch nur selten abgestoßen.",
+      "id": "body-0060",
+      "options": ["Hornhaut", "Iris", "Zunge", "Netzhaut"],
+      "question": "Welcher Körperteil hat keine Blutgefäße und nimmt Sauerstoff direkt aus der Luft auf?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Schwimmen kommt vor allem aus Sicherheitsgründen zuerst, damit die Athleten nicht im erschöpftesten Zustand im Wasser sind.",
+      "id": "sport-0046",
+      "options": [
+        "Laufen, Rad, Schwimmen",
+        "Schwimmen, Rad, Laufen",
+        "Schwimmen, Laufen, Rad",
+        "Rad, Schwimmen, Laufen"
+      ],
+      "question": "In welcher Reihenfolge finden die Disziplinen eines Triathlons üblicherweise statt?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Reykjavík liegt auf etwa 64° Nord, knapp südlich des Polarkreises, doch warme Meeresströmungen halten die Winter recht mild.",
+      "id": "geo-0016",
+      "options": ["Oslo", "Reykjavík", "Helsinki", "Tallinn"],
+      "question": "Welches ist die nördlichste Hauptstadt eines souveränen Staates?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Zwei Herzen pumpen Blut durch die Kiemen, ein drittes durch den Körper; das Hauptherz setzt aus, während der Oktopus schwimmt.",
+      "id": "nat-0004",
+      "options": ["Zwei", "Drei", "Vier", "Eins"],
+      "question": "Wie viele Herzen hat ein Oktopus?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Die Venus dreht sich so langsam – und rückwärts –, dass eine Umdrehung 243 Erdtage dauert, ein Umlauf aber nur 225.",
+      "id": "sci-0014",
+      "options": ["Venus", "Neptun", "Merkur", "Mars"],
+      "question": "Auf welchem Planeten dauert ein Tag länger als ein ganzes Jahr?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Der Geschichte nach erkannte Archimedes, dass das von seinem Körper verdrängte Wasser das Volumen einer Krone messen konnte.",
+      "id": "his-0036",
+      "options": ["Archimedes", "Pythagoras", "Thales", "Euklid"],
+      "question": "Welcher antike Grieche soll in seiner Badewanne „Heureka!“ gerufen haben?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Songkran fällt in den April, die heißeste Zeit des Jahres – eine freundliche Wasserschlacht ist da eine willkommene Abkühlung.",
+      "id": "cul-0050",
+      "options": ["Yi Peng", "Songkran", "Loy Krathong", "Phi Ta Khon"],
+      "question": "Welches Fest mit Wasserschlachten markiert das traditionelle thailändische Neujahr?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Nintendo begann in Kyōto mit der Herstellung handbemalter Hanafuda-Karten.",
+      "id": "inv-0056",
+      "options": ["Spielkarten", "Papierlaternen", "Holzspielzeug", "Radios"],
+      "question": "Wofür wurde Nintendo 1889 gegründet, lange vor den Videospielen?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Durch das „Atemloch“ trägt die äußere Scheibe den Kabinendruck, während die mittlere Scheibe als Reserve dient.",
+      "id": "avi-0043",
+      "options": [
+        "Um Regenwasser abzuleiten",
+        "Um die Geschwindigkeit zu messen",
+        "Um Frischluft hereinzulassen",
+        "Für den Druckausgleich"
+      ],
+      "question": "Wozu dient das winzige Loch im Kabinenfenster eines Verkehrsflugzeugs?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Polymer-Banknoten halten länger als Papier und sind schwerer zu fälschen; viele Länder nutzen sie heute.",
+      "id": "misc-0044",
+      "options": ["Australien", "Japan", "Kanada", "Singapur"],
+      "question": "Welches Land gab 1988 als erstes Banknoten aus Kunststoff (Polymer) aus?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Der Legende nach bemerkte ein äthiopischer Ziegenhirte, dass seine Ziegen nach dem Fressen von Kaffeekirschen munter wurden.",
+      "id": "food-0009",
+      "options": ["Brasilien", "Vietnam", "Kolumbien", "Äthiopien"],
+      "question": "Im Hochland welches Landes ist die Arabica-Kaffeepflanze heimisch?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Viele Täler im Gebirge Papua-Neuguineas haben ihre eigene Sprache, manche mit nur wenigen Hundert Sprechern.",
+      "id": "lang-0036",
+      "options": [
+        "Brasilien",
+        "Papua-Neuguinea",
+        "Indien",
+        "Demokratische Republik Kongo"
+      ],
+      "question": "Welches Land hat mit etwa 840 die meisten lebenden Sprachen?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Der Baikalsee in Sibirien ist über 1.600 m tief und enthält etwa ein Fünftel des nicht gefrorenen Oberflächensüßwassers der Erde.",
+      "id": "geo-0024",
+      "options": [
+        "Tanganjikasee",
+        "Kaspisches Meer",
+        "Oberer See",
+        "Baikalsee"
+      ],
+      "question": "Welcher ist der tiefste See der Welt?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Giraffen haben genauso viele Halswirbel wie Menschen; jeder einzelne ist allerdings bis zu 25 cm lang.",
+      "id": "nat-0009",
+      "options": ["Vierundzwanzig", "Zwölf", "Achtzehn", "Sieben"],
+      "question": "Wie viele Wirbel hat der Hals einer Giraffe?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Luftmoleküle streuen kurzwelliges blaues Licht viel stärker als rotes – die sogenannte Rayleigh-Streuung.",
+      "id": "sci-0036",
+      "options": [
+        "Ozon ist blau",
+        "Luft streut blaues Licht",
+        "Sonnenlicht ist meist blau",
+        "Das Meer spiegelt sich darin"
+      ],
+      "question": "Warum ist der Himmel tagsüber blau?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Polynesische Seefahrer kamen um 1300 n. Chr. in großen Kanus an; ihre Nachfahren sind die Māori.",
+      "id": "his-0051",
+      "options": ["Die Ainu", "Mikronesier", "Polynesier", "Melanesier"],
+      "question": "Wer besiedelte Neuseeland als Erstes?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Von oben sieht Brasílias Stadtplan von Lúcio Costa wie ein Flugzeug oder ein Vogel aus; die Bauten stammen von Oscar Niemeyer.",
+      "id": "cul-0057",
+      "options": ["Islamabad", "Canberra", "Abuja", "Brasília"],
+      "question": "Welche Hauptstadt wurde komplett neu gebaut und 1960 eingeweiht?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Eine Kugel fiel aus einem Drachenmaul in das Maul einer Kröte und zeigte so die Richtung eines fernen Erdbebens an.",
+      "id": "inv-0060",
+      "options": ["Tageszeit", "Windrichtung", "Niederschlag", "Erdbeben"],
+      "question": "Was zeigte im Jahr 132 Zhang Hengs Bronzegefäß an, bei dem Drachen Kugeln fallen ließen?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Die Zahl ist der magnetische Kurs geteilt durch zehn – Piste 27 zeigt also ungefähr nach Westen (270°).",
+      "id": "avi-0046",
+      "options": [
+        "Höchstes Flugzeuggewicht",
+        "Die Kompassrichtung",
+        "Länge in Hundert Metern",
+        "Reihenfolge des Baus"
+      ],
+      "question": "Was verrät Piloten die große Zahl am Pistenende, etwa 27?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Die Mauer ist nur wenige Meter breit; selbst aus einer niedrigen Erdumlaufbahn ist sie ohne Hilfsmittel kaum zu erkennen.",
+      "id": "misc-0048",
+      "options": [
+        "Nein, sie ist viel zu schmal",
+        "Nur nachts",
+        "Ja, aber nur bei klarem Wetter",
+        "Ja, ganz leicht"
+      ],
+      "question": "Können Astronauten auf dem Mond die Chinesische Mauer mit bloßem Auge sehen?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Jeder Cashewapfel trägt eine einzige Nuss; Cashews werden geschält verkauft, weil die Schale ein reizendes Öl enthält.",
+      "id": "food-0076",
+      "options": [
+        "An einer stacheligen Samenkapsel",
+        "An einem holzigen Zapfen",
+        "An einer unterirdischen Wurzel",
+        "An einem fleischigen „Apfel“"
+      ],
+      "question": "Woran hängt eine Cashewnuss nach unten?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Lesotho ist das einzige Land, das komplett über 1.000 m liegt – daher der Spitzname „Königreich im Himmel“.",
+      "id": "geo-0033",
+      "options": ["Lesotho", "Botswana", "Namibia", "Eswatini"],
+      "question": "Welches Land ist vollständig von Südafrika umschlossen?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Weil jeweils nur eine Hirnhälfte ruht, können Delfine weiter zum Atmen auftauchen und auf Gefahren achten.",
+      "id": "nat-0057",
+      "options": [
+        "In Seetang gewickelt",
+        "Reglos am Meeresgrund",
+        "Mit je einer Hirnhälfte",
+        "Im 8-Stunden-Tiefschlaf"
+      ],
+      "question": "Wie schaffen es Delfine zu schlafen?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Saturns mittlere Dichte ist geringer als die von Wasser – theoretisch würde er in einer ausreichend großen Badewanne schwimmen.",
+      "id": "sci-0051",
+      "options": ["Saturn", "Uranus", "Neptun", "Jupiter"],
+      "question": "Welcher Planet hat eine geringere Dichte als Wasser?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Auf Mansa Musas Pilgerreise durch Kairo 1324 floss so viel Gold, dass sein Wert in Ägypten jahrelang sank.",
+      "id": "his-0067",
+      "options": [
+        "Reich von Aksum",
+        "Ghana-Reich",
+        "Songhai-Reich",
+        "Mali-Reich"
+      ],
+      "question": "Welches westafrikanische Reich regierte Mansa Musa, berühmt für seinen Reichtum?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Eine Sitar hat Spielsaiten und zusätzliche Resonanzsaiten, die von selbst mitschwingen und einen schimmernden Klang erzeugen.",
+      "id": "cul-0061",
+      "options": ["Tabla", "Sitar", "Sarod", "Veena"],
+      "question": "Welches Instrument machte der indische Musiker Ravi Shankar weltberühmt?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "So konnten Forscher prüfen, ob die Kanne voll war, bevor sie zum Kaffeeraum gingen.",
+      "id": "inv-0066",
+      "options": [
+        "Eine Kaffeekanne",
+        "Eine belebte Straße",
+        "Ein Aquarium",
+        "Eine Wetterfahne"
+      ],
+      "question": "Was zeigte die erste Webcam der Welt, 1991 an der Universität Cambridge eingerichtet?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Die Tiere flogen vor König Ludwig XVI. in Versailles etwa 8 Minuten lang und landeten sicher.",
+      "id": "avi-0035",
+      "options": [
+        "Ziege, Henne und Affe",
+        "Hund, Gans und Kaninchen",
+        "Schaf, Ente und Hahn",
+        "Schwein, Papagei und Kätzchen"
+      ],
+      "question": "Welche Passagiere schickten die Brüder Montgolfier in einem Ballon hinauf, bevor sie Menschen riskierten?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Das japanische Unternehmen wurde über 1.400 Jahre von derselben Familie geführt, bevor es 2006 Teil eines größeren Konzerns wurde.",
+      "id": "misc-0080",
+      "options": ["Schiffe", "Schwerter", "Tempel", "Brücken"],
+      "question": "Was baute Kongō Gumi, eines der ältesten Unternehmen der Welt (gegründet 578)?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Der Mauna Kea auf Hawaii ragt über 10.000 m vom Meeresboden auf, davon nur etwa 4.200 m über den Meeresspiegel.",
+      "id": "geo-0101",
+      "options": ["Denali", "Mauna Kea", "Mount Everest", "Kilimandscharo"],
+      "question": "Welches ist – vom Fuß am Meeresboden gemessen – der höchste Berg der Erde?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Der Stoßzahn ist ein überlanger Eckzahn, der etwa 3 m lang werden kann und Millionen Nervenenden enthält.",
+      "id": "nat-0080",
+      "options": [
+        "Ein Horn",
+        "Ein Zahn",
+        "Ein Flossenstachel",
+        "Ein Nasenknochen"
+      ],
+      "question": "Was ist der lange, gedrehte Stoßzahn des Narwals eigentlich?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Zähle die Sekunden zwischen Blitz und Donner und teile durch drei – so schätzt du die Entfernung des Gewitters in Kilometern.",
+      "id": "sci-0077",
+      "options": ["10 Sekunden", "30 Sekunden", "1 Sekunde", "3 Sekunden"],
+      "question": "Wie viele Sekunden nach dem Blitz kommt der Donner ungefähr pro Kilometer Entfernung an?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Neu-Amsterdam war eine niederländische Kolonie; die Wall Street ist nach einer Holzmauer der niederländischen Siedler benannt.",
+      "id": "his-0072",
+      "options": [
+        "Neu-Amsterdam",
+        "Neu-Rotterdam",
+        "Fort Hudson",
+        "Neu-Holland"
+      ],
+      "question": "Wie hieß New York, bevor es 1664 umbenannt wurde?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Das Saxofon zählt zu den Holzblasinstrumenten, weil sein Ton wie bei der Klarinette mit einem einfachen Rohrblatt erzeugt wird.",
+      "id": "cul-0074",
+      "options": [
+        "Schlaginstrumente",
+        "Saiteninstrumente",
+        "Blechblasinstrumente",
+        "Holzblasinstrumente"
+      ],
+      "question": "Das Saxofon besteht aus Messing – doch zu welcher Instrumentenfamilie gehört es?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Jikji wurde 78 Jahre vor der Gutenberg-Bibel gedruckt.",
+      "id": "inv-0086",
+      "options": ["Japan", "Mongolei", "China", "Korea"],
+      "question": "Woher stammt Jikji, das älteste erhaltene Buch, das mit beweglichen Metalllettern gedruckt wurde (1377)?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Nach Regen verwandelt eine dünne Wasserschicht den Salar in einen riesigen Spiegel, der den Himmel reflektiert.",
+      "id": "geo-0110",
+      "options": ["Peru", "Chile", "Bolivien", "Argentinien"],
+      "question": "In welchem Land liegt der Salar de Uyuni, die größte Salzpfanne der Welt?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Nordamerikanische Waldfrösche füllen ihre Zellen mit Zucker als Frostschutz und tauen im Frühling wieder lebendig auf.",
+      "id": "nat-0082",
+      "options": ["Schnee-Eule", "Waldfrosch", "Schneehase", "Schneehuhn"],
+      "question": "Welches Tier kann den Winter steif gefroren und mit stillstehendem Herzen überleben?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Feiner Marsstaub streut blaues Licht nach vorn, sodass der Schein um die untergehende Sonne in den Kameras der Rover blau wirkt.",
+      "id": "sci-0064",
+      "options": ["Tiefrot", "Goldgelb", "Leuchtend orange", "Bläulich"],
+      "question": "Welche Farbe haben Sonnenuntergänge auf dem Mars meist?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Heyerdahl und fünf Mann Besatzung trieben in 101 Tagen etwa 6.900 km von Peru nach Französisch-Polynesien.",
+      "id": "his-0092",
+      "options": [
+        "Fridtjof Nansen",
+        "Tim Severin",
+        "Jacques Cousteau",
+        "Thor Heyerdahl"
+      ],
+      "question": "Wer überquerte 1947 auf dem Balsaholzfloß Kon-Tiki den Pazifik?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Aborigines verwenden von Termiten ausgehöhlte Eukalyptusäste; mit Zirkularatmung halten die Spieler einen Ton ununterbrochen.",
+      "id": "cul-0091",
+      "options": [
+        "Geflochtenes Flussschilf",
+        "Geschnitztes Wasserbüffelhorn",
+        "Von Termiten gehöhltes Holz",
+        "Ein gebranntes Tonrohr"
+      ],
+      "question": "Woraus wird ein Didgeridoo traditionell hergestellt?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Die Sargassosee im Nordatlantik wird nur von Meeresströmungen begrenzt und ist für ihren treibenden Seetang berühmt.",
+      "id": "geo-0038",
+      "options": ["Sargassosee", "Tasmansee", "Korallenmeer", "Weddellmeer"],
+      "question": "Welches Meer ist das einzige ganz ohne Landküste?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Quipus hielten Zahlen mit Knoten in einem Zehnersystem fest; manche zeichneten womöglich auch Geschichten auf.",
+      "id": "his-0102",
+      "options": ["Codex", "Kerbholz", "Quipu", "Abakus"],
+      "question": "Wie hieß das Aufzeichnungsmittel der Inka aus geknoteten Schnüren?"
+    }
+  ]
+}

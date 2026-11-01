@@ -328,6 +328,15 @@
   quizFinished: "Quiz beendet",
   quizResult: "Punkte: {{score}}\nRichtig: {{correct}}/{{total}}",
   quizPlayAgain: "Nochmal spielen",
+  quizModeLabel: "Fragen",
+  quizModeMix: "Mix",
+  quizModeMixHint: "Welt + Fliegen",
+  quizModeWorld: "Welt",
+  quizModeWorldHint: "Allgemeinwissen",
+  quizModeAviation: "Luftfahrt",
+  quizModeAviationHint: "Fliegen & Reisen",
+  quizDidYouKnow: "Schon gewusst?",
+  quizNext: "Weiter",
   // Quiz Questions
   quizQ1:
     "Wann sollte man normalerweise für einen internationalen Flug am Flughafen sein?",
