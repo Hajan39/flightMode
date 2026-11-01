@@ -1,0 +1,2591 @@
+{
+  "id": "pack-001",
+  "lang": "pl",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Pacyfik zajmuje około jednej trzeciej powierzchni Ziemi – więcej niż wszystkie lądy planety razem wzięte.",
+      "id": "geo-0001",
+      "options": [
+        "Ocean Południowy",
+        "Ocean Indyjski",
+        "Ocean Atlantycki",
+        "Ocean Spokojny"
+      ],
+      "question": "Który ocean jest największy na Ziemi?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Około jednej trzeciej Australii to pustynia, a znacznie większa część jest półpustynna; suchsza jest tylko Antarktyda, która nie ma stałych mieszkańców.",
+      "id": "geo-0008",
+      "options": ["Afryka", "Ameryka Południowa", "Australia", "Azja"],
+      "question": "Który zamieszkany kontynent jest najsuchszy?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Andy ciągną się przez około 7000 km wzdłuż zachodniego skraju Ameryki Południowej, przez siedem krajów.",
+      "id": "geo-0011",
+      "options": ["Andy", "Ural", "Himalaje", "Góry Skaliste"],
+      "question": "Jakie jest najdłuższe kontynentalne pasmo górskie świata?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Dzięki Gujanie Francuskiej Francja ma z Brazylią około 730 km granicy – więcej niż z Hiszpanią (około 620 km).",
+      "id": "geo-0003",
+      "options": ["Francja", "Hiszpania", "Portugalia", "Holandia"],
+      "question": "Dla którego kraju najdłuższą granicą lądową jest granica z Brazylią?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Everest, mierzący około 8849 m, to najwyższy punkt nad poziomem morza; Himalaje wciąż rosną o kilka milimetrów rocznie.",
+      "id": "geo-0004",
+      "options": ["Alpy", "Himalaje", "Karakorum", "Andy"],
+      "question": "W jakim paśmie górskim leży Mount Everest?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Titicaca, położone około 3800 m n.p.m., często nazywa się najwyżej położonym żeglownym jeziorem świata.",
+      "id": "geo-0014",
+      "options": ["Chile", "Argentyny", "Ekwadoru", "Boliwii"],
+      "question": "Jezioro Titicaca leży na terenie Peru i którego jeszcze kraju?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Nil płynie na północ przez Kair aż do Morza Śródziemnego; niemal wszyscy Egipcjanie mieszkają blisko jego brzegów.",
+      "id": "geo-0005",
+      "options": ["Niger", "Nil", "Eufrat", "Kongo"],
+      "question": "Jaka rzeka przepływa przez Kair?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Glony żyjące w bardzo słonej wodzie barwią jezioro na różowo, a miejscowi robotnicy ręcznie wydobywają sól z jego dna.",
+      "id": "geo-0012",
+      "options": ["Mali", "Czad", "Senegal", "Niger"],
+      "question": "W jakim kraju leży Retba – różowe jezioro niedaleko Dakaru?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Kanada ma setki tysięcy jezior większych niż 10 hektarów; wiele z nich wyrzeźbiły lodowce epoki lodowcowej.",
+      "id": "geo-0017",
+      "options": ["Szwecja", "Rosja", "Finlandia", "Kanada"],
+      "question": "Który kraj ma najwięcej jezior na świecie?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Kioto było siedzibą cesarza od 794 do 1868 roku, kiedy dwór przeniósł się do Edo, przemianowanego na Tokio.",
+      "id": "geo-0018",
+      "options": ["Kamakura", "Nara", "Osaka", "Kioto"],
+      "question": "Które japońskie miasto przez ponad 1000 lat było stolicą cesarską, zanim stało się nią Tokio?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Obie rzeki płyną obok siebie w różnych kolorach, zanim się zmieszają; w porze wylewów większość wody niesie Nil Błękitny.",
+      "id": "geo-0037",
+      "options": ["Kair", "Addis Abeba", "Chartum", "Dżuba"],
+      "question": "W której stolicy łączą się Nil Błękitny i Nil Biały?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Wenecja rozciąga się na 118 wyspach połączonych około 400 mostami, a jej budynki stoją na drewnianych palach wbitych w muł.",
+      "id": "geo-0009",
+      "options": ["Wenecja", "Genua", "Triest", "Neapol"],
+      "question": "Które włoskie miasto zbudowano na ponad 100 wysepkach w lagunie?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Wołga płynie przez Rosję na długości około 3530 km i uchodzi do Morza Kaspijskiego, a nie do żadnego oceanu.",
+      "id": "geo-0019",
+      "options": ["Wołga", "Dniepr", "Ren", "Dunaj"],
+      "question": "Jaka jest najdłuższa rzeka Europy?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Wielka Rafa Koralowa ciągnie się przez ponad 2300 km; to największy system raf koralowych na świecie, widoczny nawet z kosmosu.",
+      "id": "geo-0010",
+      "options": ["Australii", "Indonezji", "Filipin", "Nowej Zelandii"],
+      "question": "U wybrzeży którego kraju leży Wielka Rafa Koralowa?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Dunaj płynie przez 10 krajów lub wzdłuż ich granic i mija cztery stolice: Wiedeń, Bratysławę, Budapeszt i Belgrad.",
+      "id": "geo-0020",
+      "options": ["Ren", "Dunaj", "Wołga", "Łaba"],
+      "question": "Która europejska rzeka przepływa przez najwięcej krajów?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "W najwęższym miejscu Cieśnina Gibraltarska ma tylko około 14 km szerokości; w pogodne dni z Hiszpanii widać Maroko.",
+      "id": "geo-0013",
+      "options": [
+        "Cieśnina Ormuz",
+        "Cieśnina Mesyńska",
+        "Cieśnina Gibraltarska",
+        "Bosfor"
+      ],
+      "question": "Która cieśnina oddziela Europę od Afryki w miejscu, gdzie są najbliżej siebie?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Salto Ángel spada z wysokości 979 m ze stołowej góry; duża część wody zamienia się w mgiełkę, zanim dotrze na dół.",
+      "id": "geo-0023",
+      "options": ["Gujana", "Wenezuela", "Kolumbia", "Brazylia"],
+      "question": "W którym kraju jest Salto Ángel, najwyższy nieprzerwany wodospad świata?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Sahara ma mniej więcej powierzchnię Stanów Zjednoczonych lub Chin; większe są tylko zimne pustynie Antarktyki i Arktyki.",
+      "id": "geo-0015",
+      "options": ["Kalahari", "Atakama", "Gobi", "Sahara"],
+      "question": "Jaka jest największa gorąca pustynia świata?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Szwajcaria nie ma ustawowo określonej stolicy; Berno jest siedzibą rządu i nazywa się je „miastem federalnym”.",
+      "id": "geo-0052",
+      "options": ["Berno", "Genewa", "Bazylea", "Zurych"],
+      "question": "Które miasto jest „miastem federalnym” i siedzibą rządu Szwajcarii?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Kilimandżaro wznosi się na 5895 m i jest najwyższą samotną górą świata, z lodowcami tuż na południe od równika.",
+      "id": "geo-0021",
+      "options": ["Tanzania", "Etiopia", "Uganda", "Kenia"],
+      "question": "W jakim kraju leży Kilimandżaro, najwyższa góra Afryki?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Pretoria jest siedzibą rządu, w Kapsztadzie obraduje parlament, a w Bloemfontein mieści się Najwyższy Sąd Apelacyjny.",
+      "id": "geo-0029",
+      "options": ["Nigeria", "RPA", "Kenia", "Egipt"],
+      "question": "Który kraj ma trzy stolice – osobno dla rządu, parlamentu i sądów?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Machu Picchu leży na wysokości około 2430 m na grzbiecie nad rzeką Urubamba; aż do 1911 roku świat zewnętrzny mało o nim wiedział.",
+      "id": "geo-0022",
+      "options": ["Boliwia", "Peru", "Kolumbia", "Ekwador"],
+      "question": "W jakim kraju leży Machu Picchu, piętnastowieczna twierdza Inków?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Struktura Richat uchodziła kiedyś za krater meteorytowy; dziś uważa się ją za zerodowaną kopułę, której warstwy skalne tworzą olbrzymie pierścienie.",
+      "id": "geo-0030",
+      "options": ["Mali", "Mauretania", "Niger", "Algieria"],
+      "question": "W jakim kraju jest „Oko Sahary” – skalny pierścień o średnicy 40 km, który służy astronautom za punkt orientacyjny?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Najbliższy ląd leży około 2700 km dalej, a stacja kosmiczna krąży tylko około 400 km nad Ziemią – gdy przelatuje nad tym punktem, to jej załoga jest najbliżej.",
+      "id": "geo-0054",
+      "options": [
+        "Astronauci na orbicie",
+        "Pasażerowie wycieczkowca",
+        "Załogi kutrów rybackich",
+        "Latarnicy"
+      ],
+      "question": "Kto często jest najbliżej Punktu Nemo, czyli miejsca w oceanie najbardziej oddalonego od lądu?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Wellington leży na około 41° szerokości południowej i słynie z silnych wiatrów wiejących przez Cieśninę Cooka.",
+      "id": "geo-0031",
+      "options": ["Buenos Aires", "Wellington", "Montevideo", "Canberra"],
+      "question": "Która stolica niepodległego państwa leży najdalej na południe?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Wyspy Indonezji rozciągają się na około 5000 km ze wschodu na zachód – więcej niż kontynentalna część USA.",
+      "id": "geo-0026",
+      "options": ["Malezja", "Filipiny", "Japonia", "Indonezja"],
+      "question": "Który kraj, liczący około 17 000 wysp, jest największym państwem archipelagowym świata?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Jego wyspy są rozrzucone na około 3,5 mln km² oceanu; w 1995 roku przesunięto linię zmiany daty, by cały kraj żył tym samym dniem kalendarzowym.",
+      "id": "geo-0055",
+      "options": ["Tuvalu", "Fidżi", "Samoa", "Kiribati"],
+      "question": "Które wyspiarskie państwo Pacyfiku leży zarówno na równiku, jak i na południku 180°?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Królowa Wiktoria wybrała Ottawę na stolicę w 1857 roku, częściowo dlatego, że leżała między anglojęzyczną a francuskojęzyczną Kanadą.",
+      "id": "geo-0027",
+      "options": ["Toronto", "Vancouver", "Montreal", "Ottawa"],
+      "question": "Jaka jest stolica Kanady?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "San Marino uważa się za najstarszą istniejącą republikę świata; według tradycji powstało w 301 roku.",
+      "id": "geo-0034",
+      "options": ["Malta", "Andora", "Monako", "San Marino"],
+      "question": "Która mała republika jest całkowicie otoczona przez Włochy?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ankara zastąpiła Stambuł jako stolica w 1923 roku, gdy powstała Republika Turcji.",
+      "id": "geo-0028",
+      "options": ["Izmir", "Bursa", "Ankara", "Stambuł"],
+      "question": "Jaka jest stolica Turcji?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Niektóre stacje meteorologiczne na Atakamie nigdy nie zarejestrowały deszczu, a NASA testuje tam łaziki marsjańskie.",
+      "id": "geo-0035",
+      "options": ["W Chile", "W Argentynie", "W Peru", "W Boliwii"],
+      "question": "W którym kraju leży głównie Atakama, najsuchsza pozapolarna pustynia na Ziemi?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Żyją tam setki gatunków kolorowych pielęgnic, z których niemal żaden nie występuje nigdzie indziej; wiele akwariowych pielęgnic pochodzi właśnie stąd.",
+      "id": "geo-0056",
+      "options": [
+        "Jezioro Malawi",
+        "Jezioro Wiktorii",
+        "Jezioro Czad",
+        "Jezioro Wolta"
+      ],
+      "question": "Które afrykańskie jezioro ma więcej gatunków ryb niż jakiekolwiek inne jezioro na Ziemi?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "„Ecuador” to po prostu hiszpańskie słowo oznaczające równik, który przecina kraj tuż na północ od stolicy, Quito.",
+      "id": "geo-0032",
+      "options": [
+        "Od zwrotnika Raka",
+        "Od południka zerowego",
+        "Od równika",
+        "Od zwrotnika Koziorożca"
+      ],
+      "question": "Od jakiej linii geograficznej pochodzi nazwa Ekwadoru?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Głębia Challengera ma około 10 900 m; gdyby umieścić w niej Everest, jego szczyt wciąż znajdowałby się ponad 2 km pod wodą.",
+      "id": "geo-0043",
+      "options": [
+        "Rów Tonga",
+        "Rów Portorykański",
+        "Rów Mariański",
+        "Rów Jawajski"
+      ],
+      "question": "W którym rowie oceanicznym leży Głębia Challengera, najgłębszy znany punkt oceanów?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Brazylia zajmuje prawie połowę Ameryki Południowej i graniczy z każdym krajem kontynentu poza Chile i Ekwadorem.",
+      "id": "geo-0036",
+      "options": ["Kolumbia", "Brazylia", "Peru", "Argentyna"],
+      "question": "Który kraj Ameryki Południowej jest największy pod względem powierzchni?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Stolica Andory, Andora la Vella, leży na wysokości około 1023 m – to najwyżej położona stolica Europy.",
+      "id": "geo-0046",
+      "options": ["Andora", "San Marino", "Monako", "Liechtenstein"],
+      "question": "Które miniaturowe państwo leży wysoko w Pirenejach?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Rzeka Okawango rozlewa się i paruje na Kalahari, tworząc sezonowe mokradła pełne dzikich zwierząt.",
+      "id": "geo-0060",
+      "options": ["Angola", "Zambia", "Botswana", "Namibia"],
+      "question": "W jakim kraju leży delta Okawango – śródlądowa delta, która nigdy nie dociera do morza?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Jezioro Wiktorii, dzielone przez Ugandę, Kenię i Tanzanię, to największe jezioro tropikalne świata.",
+      "id": "geo-0039",
+      "options": [
+        "Jezioro Malawi",
+        "Jezioro Wiktorii",
+        "Jezioro Tanganika",
+        "Jezioro Czad"
+      ],
+      "question": "Jakie jest największe jezioro Afryki?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Wyspa Wielkanocna leży około 3500 km od wybrzeży Ameryki Południowej; to jedna z najbardziej odludnych zamieszkanych wysp na Ziemi.",
+      "id": "geo-0048",
+      "options": ["Ekwadoru", "Peru", "Chile", "Nowej Zelandii"],
+      "question": "Do którego kraju należy Wyspa Wielkanocna (Rapa Nui) na południowym Pacyfiku?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Amazonka wlewa do Atlantyku tyle słodkiej wody, że morze jest wyraźnie mniej słone daleko od brzegu.",
+      "id": "geo-0040",
+      "options": ["Nil", "Jangcy", "Amazonka", "Kongo"],
+      "question": "Która rzeka niesie więcej wody niż jakakolwiek inna na Ziemi?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Pangea obejmowała niemal cały ląd Ziemi; pasujące do siebie wybrzeża Afryki i Ameryki Południowej są pozostałym po niej śladem.",
+      "id": "geo-0049",
+      "options": ["Gondwana", "Laurazja", "Rodinia", "Pangea"],
+      "question": "Jak nazywa się superkontynent, który zaczął się rozpadać około 200 mln lat temu?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Kraj podwójnie śródlądowy jest otoczony wyłącznie przez inne kraje bez dostępu do morza, więc by dotrzeć do morza, trzeba przekroczyć dwie granice.",
+      "id": "geo-0061",
+      "options": ["Andora", "Austria", "Liechtenstein", "Szwajcaria"],
+      "question": "Uzbekistan to jeden z zaledwie dwóch krajów podwójnie śródlądowych. Jaki jest drugi?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Pochodzi od Geysiru w południowo-zachodniej Islandii; jego nazwa jest spokrewniona z islandzkim czasownikiem „tryskać”.",
+      "id": "geo-0041",
+      "options": ["Islandii", "Nowej Zelandii", "Norwegii", "Japonii"],
+      "question": "Od gorącego źródła w którym kraju pochodzi słowo „gejzer”?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Konstytucyjną stolicą Holandii jest Amsterdam, ale parlament, rząd i miejsce pracy króla znajdują się w Hadze.",
+      "id": "geo-0051",
+      "options": ["Rotterdam", "Utrecht", "Haga", "Amsterdam"],
+      "question": "W którym holenderskim mieście obradują parlament i rząd?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Sognefjord wcina się w ląd na ponad 200 km i miejscami ma ponad 1300 m głębokości.",
+      "id": "geo-0042",
+      "options": ["W Danii", "W Islandii", "W Szwecji", "W Norwegii"],
+      "question": "W którym kraju leżą Geirangerfjord i Sognefjord?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Jangcy, licząca około 6300 km, to najdłuższa rzeka płynąca w całości przez jeden kraj – Chiny.",
+      "id": "geo-0053",
+      "options": ["Ganges", "Huang He", "Jangcy", "Mekong"],
+      "question": "Jaka jest najdłuższa rzeka Azji?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Nazwa opisuje huczący pył wodny, który w porze deszczowej wznosi się ponad 400 m w górę.",
+      "id": "geo-0065",
+      "options": [
+        "Lśniąca mgła",
+        "Spadająca rzeka",
+        "Grzmiący dym",
+        "Śpiewająca woda"
+      ],
+      "question": "Co oznacza Mosi-oa-Tunya, miejscowa nazwa wodospadu Wiktorii?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Afryka ma 54 uznane międzynarodowo suwerenne państwa – ponad jedną czwartą wszystkich krajów świata.",
+      "id": "geo-0044",
+      "options": ["W Europie", "W Azji", "W Ameryce Południowej", "W Afryce"],
+      "question": "Na którym kontynencie jest najwięcej państw?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Adriatyk to najdalej na północ wysunięta odnoga Morza Śródziemnego, słynąca z bardzo czystej wody u wybrzeży Chorwacji.",
+      "id": "geo-0057",
+      "options": [
+        "Morze Tyrreńskie",
+        "Morze Jońskie",
+        "Morze Egejskie",
+        "Morze Adriatyckie"
+      ],
+      "question": "Jakie morze leży między Włochami a Półwyspem Bałkańskim?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Historyczne centrum Pragi przetrwało XX wiek w dużej mierze nienaruszone i jest wpisane na listę światowego dziedzictwa UNESCO.",
+      "id": "geo-0058",
+      "options": ["Brugię", "Pragę", "Wiedeń", "Kraków"],
+      "question": "Którą europejską stolicę nazywa się „miastem stu wież”?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Kanał Kiloński łączy Morze Północne z Bałtykiem i oszczędza statkom około 460 km rejsu dookoła Półwyspu Jutlandzkiego.",
+      "id": "geo-0079",
+      "options": ["W Niemczech", "W Danii", "W Holandii", "W Szwecji"],
+      "question": "W jakim kraju jest Kanał Kiloński, jedna z najruchliwszych sztucznych dróg wodnych świata?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Wyspy leżą około 1000 km od wybrzeża, a ich niezwykła przyroda zainspirowała teorię ewolucji Karola Darwina.",
+      "id": "geo-0047",
+      "options": ["Chile", "Kolumbii", "Ekwadoru", "Peru"],
+      "question": "Do którego kraju należą Wyspy Galapagos?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Płyty północnoamerykańska i eurazjatycka rozsuwają się na Islandii o około 2 cm rocznie; w Thingvellir można przejść między nimi.",
+      "id": "geo-0059",
+      "options": [
+        "Wielkie Rowy Afrykańskie",
+        "Pas alpejski",
+        "Grzbiet Śródatlantycki",
+        "Pacyficzny Pierścień Ognia"
+      ],
+      "question": "Na jakiej strukturze tektonicznej leży Islandia?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Międzynarodowa konferencja w 1884 roku wybrała Królewskie Obserwatorium w Greenwich na punkt odniesienia długości geograficznej.",
+      "id": "geo-0050",
+      "options": ["Westminster", "Camden", "Richmond", "Greenwich"],
+      "question": "Przez którą część Londynu przechodzi południk zerowy (0° długości geograficznej)?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Aconcagua w Argentynie wznosi się na około 6961 m – to najwyższy szczyt poza Azją.",
+      "id": "geo-0064",
+      "options": ["Chimborazo", "Huascarán", "Aconcagua", "Illimani"],
+      "question": "Jaki jest najwyższy szczyt Ameryki Południowej?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Droga biegnie przez około 30 000 km z Alaski do Argentyny, ale na około 100 km bagien i lasu deszczowego między Panamą a Kolumbią nie ma jezdni.",
+      "id": "geo-0083",
+      "options": [
+        "Szosa Transsyberyjska",
+        "Droga Panamerykańska",
+        "Route 66",
+        "Jedwabny Szlak"
+      ],
+      "question": "Ciągłość której drogi przerywa jedynie Przesmyk Darién, pas bezdrożnej dżungli?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ocean Arktyczny jest też najpłytszy, a przez większą część roku w dużej mierze pokrywa go lód morski.",
+      "id": "geo-0062",
+      "options": [
+        "Ocean Indyjski",
+        "Ocean Atlantycki",
+        "Ocean Południowy",
+        "Ocean Arktyczny"
+      ],
+      "question": "Który z pięciu oceanów świata jest najmniejszy?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Grecy nazywają swój kraj Hellas lub Elláda; nazwa „Grecja” pochodzi od łacińskiego Graecia.",
+      "id": "geo-0066",
+      "options": ["Malta", "Grecja", "Albania", "Cypr"],
+      "question": "Który kraj nosi oficjalną nazwę „Republika Helleńska”?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Mont Blanc (około 4806 m) leży na granicy francusko-włoskiej; tunel pod nim łączy oba kraje.",
+      "id": "geo-0063",
+      "options": ["Grossglockner", "Mont Blanc", "Eiger", "Matterhorn"],
+      "question": "Jaki jest najwyższy szczyt Alp?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Nepal przeszedł na UTC+5:45 w 1986 roku; to jedno z nielicznych miejsc na świecie z zegarami przesuniętymi o 45 minut.",
+      "id": "geo-0069",
+      "options": ["Indie", "Sri Lanka", "Nepal", "Bhutan"],
+      "question": "Który kraj ma czas urzędowy wyprzedzający UTC o 5 godzin i 45 minut?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Według legendy syrena z Lorelei wabiła flisaków na zgubę; rzeka jest tam wąska i ma silne prądy.",
+      "id": "geo-0084",
+      "options": ["Łaba", "Ren", "Dunaj", "Mozela"],
+      "question": "Jaka rzeka płynie u stóp słynnej skały Lorelei w Niemczech?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "„Nippon” znaczy mniej więcej „źródło słońca” – stąd Japonię nazywa się Krajem Wschodzącego Słońca.",
+      "id": "geo-0067",
+      "options": ["Chin", "Korei", "Wietnamu", "Japonii"],
+      "question": "Do którego kraju należy rodzima nazwa „Nippon”?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Cedr libański od tysięcy lat jest symbolem tego regionu i pojawia się w starożytnych tekstach.",
+      "id": "geo-0070",
+      "options": ["Libanu", "Jordanii", "Cypru", "Kanady"],
+      "question": "Na fladze którego kraju widnieje zielony cedr?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "To przydomek mocno zaniżony: Finlandia ma około 188 000 jezior większych niż 500 m².",
+      "id": "geo-0068",
+      "options": ["Kanada", "Szkocja", "Szwecja", "Finlandia"],
+      "question": "Który kraj bywa nazywany „krajem tysiąca jezior”?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Pamukkale znaczy „bawełniany zamek”; tarasy to trawertyn, który przez tysiące lat osadzała bogata w wapń woda źródlana.",
+      "id": "geo-0074",
+      "options": ["W Turcji", "W Grecji", "W Gruzji", "W Iranie"],
+      "question": "W jakim kraju leży Pamukkale z białymi tarasami ciepłych basenów mineralnych?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Amazonka zaczyna się jako woda z topniejącego śniegu wysoko w peruwiańskich Andach, niecałe 200 km od wybrzeża Pacyfiku.",
+      "id": "geo-0086",
+      "options": ["W Brazylii", "W Peru", "W Boliwii", "W Kolumbii"],
+      "question": "W którym kraju ma swoje źródła Amazonka?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "W porze monsunowej Mekong cofa wodę w górę rzeki Tonle Sap, a jezioro rośnie do kilkukrotności swojej powierzchni z pory suchej.",
+      "id": "geo-0071",
+      "options": ["W Tajlandii", "W Kambodży", "W Laosie", "W Mjanmie"],
+      "question": "W jakim kraju leży Tonle Sap – jezioro, które w porze deszczowej ogromnie przybiera?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Algieria zajmuje około 2,38 mln km², a ponad cztery piąte jej terytorium leży na Saharze.",
+      "id": "geo-0075",
+      "options": ["Algieria", "Sudan", "DR Konga", "Libia"],
+      "question": "Który kraj Afryki jest największy pod względem powierzchni?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Góry z piaskowca i granitu wyrastają tu z czerwonawego piasku; kręcono tu sceny do filmu „Marsjanin”.",
+      "id": "geo-0072",
+      "options": ["W Arabii Saudyjskiej", "W Syrii", "W Jordanii", "W Egipcie"],
+      "question": "W jakim kraju leży Wadi Rum – czerwona pustynna dolina, która w filmach grała Marsa?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Na szczyt wchodzi się między dwiema olbrzymimi łapami lwa – to wszystko, co zostało z ogromnej bramy w kształcie lwa.",
+      "id": "geo-0081",
+      "options": ["Sri Lanka", "Indie", "Mauritius", "Mjanma"],
+      "question": "W jakim kraju leży Sigiriya, pałac z V wieku zbudowany na szczycie ogromnej skały?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Brazylia jest tak duża, że rozciąga się od około 5° szerokości północnej do 34° południowej, obejmując obie linie.",
+      "id": "geo-0091",
+      "options": ["Indonezję", "Peru", "Brazylię", "Australię"],
+      "question": "Przez który kraj jako jedyny przechodzą zarówno równik, jak i zwrotnik Koziorożca?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ha Long znaczy „zstępujący smok”; według legendy wyspy powstały, gdy smok smagał ogonem ziemię.",
+      "id": "geo-0073",
+      "options": ["W Wietnamie", "W Tajlandii", "W Malezji", "Na Filipinach"],
+      "question": "W jakim kraju jest zatoka Ha Long z około 1600 wapiennymi wyspami?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Średni poziom gruntu na Malediwach to tylko około 1,5 m nad morzem, więc podnoszenie się oceanu jest dla tych wysp poważnym zagrożeniem.",
+      "id": "geo-0082",
+      "options": ["Bangladesz", "Malediwy", "Tuvalu", "Holandia"],
+      "question": "Który kraj świata ma najniższą średnią wysokość terenu?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Przed otwarciem Kanału Panamskiego statki musiały opływać przylądek Horn, którego wody słyną ze sztormów i ogromnych fal.",
+      "id": "geo-0076",
+      "options": [
+        "Ameryki Południowej",
+        "Australii i Oceanii",
+        "Antarktydy",
+        "Afryki"
+      ],
+      "question": "Przylądek Horn wyznacza południowy kraniec którego kontynentu?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Etna to najwyższy czynny wulkan Europy, a jej żyzne zbocza pokrywają winnice i sady.",
+      "id": "geo-0085",
+      "options": ["Na Korsyce", "Na Sycylii", "Na Krecie", "Na Sardynii"],
+      "question": "Na której wyspie leży Etna, jeden z najaktywniejszych wulkanów świata?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Dorzecze Konga leży po obu stronach równika, więc w jakiejś jego części zawsze trwa pora deszczowa; to także najgłębsza zmierzona rzeka – ponad 220 m.",
+      "id": "geo-0093",
+      "options": [
+        "Zwrotnik Raka",
+        "Południk zerowy",
+        "Zwrotnik Koziorożca",
+        "Równik"
+      ],
+      "question": "Którą linię Kongo jako jedyna wielka rzeka przecina dwukrotnie?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Śluzy podnoszą statki o około 26 m, by mogły przepłynąć przez jezioro Gatún, a po drugiej stronie znów je opuszczają.",
+      "id": "geo-0077",
+      "options": ["Południowym", "Atlantyckim", "Arktycznym", "Indyjskim"],
+      "question": "Kanał Panamski łączy Ocean Spokojny z którym oceanem?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Stolica Etiopii, Addis Abeba, leży na wysokości około 2350 m i jest siedzibą Unii Afrykańskiej.",
+      "id": "geo-0088",
+      "options": ["Sudan", "Erytreę", "Somalię", "Etiopię"],
+      "question": "Który kraj afrykański nazywano dawniej Abisynią?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Kanał Sueski, otwarty w 1869 roku, nie ma śluz, bo oba morza leżą niemal na tym samym poziomie.",
+      "id": "geo-0078",
+      "options": ["Kaspijskim", "Czarnym", "Arabskim", "Czerwonym"],
+      "question": "Kanał Sueski łączy Morze Śródziemne z którym morzem?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Borneo to trzecia co do wielkości wyspa świata i jedyna podzielona między trzy państwa.",
+      "id": "geo-0095",
+      "options": ["Brunei", "Timor Wschodni", "Filipiny", "Singapur"],
+      "question": "Borneo dzielą Indonezja, Malezja i który jeszcze kraj?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Nad tym wenezuelskim jeziorem burze błyskają godzinami przez około 140–160 nocy w roku; żeglarze używali kiedyś tej poświaty jak naturalnej latarni.",
+      "id": "geo-0094",
+      "options": ["Titicaca", "Maracaibo", "Nikaragua", "Atitlán"],
+      "question": "Nad którym jeziorem „błyskawice Catatumbo” dają największe na świecie zagęszczenie wyładowań?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Choć nazywa się morzem, Morze Kaspijskie zwykle uznaje się za największe jezioro świata; jego woda ma około jednej trzeciej zasolenia oceanu.",
+      "id": "geo-0080",
+      "options": [
+        "Morze Kaspijskie",
+        "Jezioro Wiktorii",
+        "Jezioro Górne",
+        "Bajkał"
+      ],
+      "question": "Jaki jest największy śródlądowy zbiornik wodny na Ziemi?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Na Hispanioli (po polsku nazywanej też Haiti) wznosi się najwyższy szczyt Karaibów, Pico Duarte, mierzący około 3100 m.",
+      "id": "geo-0096",
+      "options": ["Portoryko", "Jamajkę", "Kubę", "Hispaniolę"],
+      "question": "Którą wyspę dzielą Haiti i Dominikana?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ural ciągnie się przez około 2500 km od Oceanu Arktycznego do Kazachstanu i należy do najstarszych gór na Ziemi.",
+      "id": "geo-0087",
+      "options": ["Ałtaj", "Karpaty", "Ural", "Kaukaz"],
+      "question": "Które góry umownie uznaje się za granicę między Europą a Azją?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Do delty należą Sundarbany, największy las namorzynowy na Ziemi i ostoja tygrysa bengalskiego.",
+      "id": "geo-0099",
+      "options": ["W Indiach", "W Mjanmie", "W Bangladeszu", "W Nepalu"],
+      "question": "W którym kraju leży większa część delty Gangesu i Brahmaputry, największej delty rzecznej świata?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Średnia roczna w stolicy Mongolii wynosi nieco poniżej 0 °C, a zimowe noce bywają zimniejsze niż −30 °C.",
+      "id": "geo-0098",
+      "options": ["Ułan Bator", "Moskwa", "Helsinki", "Ottawa"],
+      "question": "Która stolica państwa ma najniższą średnią roczną temperaturę?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "W 1935 roku rząd poprosił inne państwa o używanie rodzimej nazwy Iran, oznaczającej „kraj Ariów” (Irańczyków).",
+      "id": "geo-0089",
+      "options": ["Afganistan", "Irak", "Turcję", "Iran"],
+      "question": "Który kraj do 1935 roku nazywano Persją?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Choć nazywa się pustynią, niektóre części Kalahari dostają dość deszczu, by rosły tam trawy i drzewa, a żyły duże zwierzęta.",
+      "id": "geo-0100",
+      "options": ["Namib", "Kalahari", "Karru", "Sahara"],
+      "question": "Jaka pustynia pokrywa dużą część Botswany?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Jego woda jest prawie dziesięć razy bardziej słona niż ocean, a brzeg, około 430 m p.p.m., to najniżej położony suchy ląd na Ziemi.",
+      "id": "geo-0090",
+      "options": [
+        "Unosić się bez wysiłku",
+        "Oddychać pod wodą",
+        "Chodzić po wodzie",
+        "Oglądać dno morza"
+      ],
+      "question": "Morze Martwe jest tak słone, że co można w nim robić?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Sanskryckie „Sindhu” stało się w perskim „Hindu”, a w greckim „Indos”; Rzymianie nazwą „India” określali całą krainę za tą rzeką.",
+      "id": "geo-0102",
+      "options": ["Gangesu", "Brahmaputry", "Narmady", "Indusu"],
+      "question": "Od nazwy której rzeki pochodzi nazwa „Indie”?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Klify na zachodnim wybrzeżu Irlandii ciągną się przez około 14 km i są domem tysięcy gniazdujących ptaków morskich.",
+      "id": "geo-0092",
+      "options": ["W Islandii", "W Norwegii", "W Szkocji", "W Irlandii"],
+      "question": "W jakim kraju są klify Moher, wznoszące się ponad 200 m nad Atlantykiem?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Wyspy Sztokholmu leżą tam, gdzie jezioro Melar spotyka się z Bałtykiem; łączy je około 50 mostów.",
+      "id": "geo-0106",
+      "options": ["Oslo", "Helsinki", "Kopenhaga", "Sztokholm"],
+      "question": "Która skandynawska stolica jest zbudowana na 14 wyspach?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Zamek Bran leży w Siedmiogrodzie, choć niewiele wskazuje na to, by Wład Palownik kiedykolwiek tam mieszkał.",
+      "id": "geo-0097",
+      "options": ["W Serbii", "W Bułgarii", "W Rumunii", "Na Węgrzech"],
+      "question": "W jakim kraju jest zamek Bran, reklamowany jako „zamek Drakuli”?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Na Wyspach Owczych żyje około 70 000 owiec, a ich nazwa najpewniej oznacza właśnie „owcze wyspy”.",
+      "id": "geo-0108",
+      "options": ["Wielkiej Brytanii", "Szwecji", "Norwegii", "Danii"],
+      "question": "Wyspy Owcze to autonomiczna część którego królestwa?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Na Samoa po czwartku od razu nastała sobota, by tydzień pracy pokrywał się z tygodniem głównych partnerów handlowych: Australii i Nowej Zelandii.",
+      "id": "geo-0103",
+      "options": ["Fidżi", "Tonga", "Tuvalu", "Samoa"],
+      "question": "Który kraj Pacyfiku całkowicie pominął 30 grudnia 2011 roku, przechodząc na drugą stronę linii zmiany daty?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Po płaskim szczycie często spływa warstwa chmur, którą miejscowi nazywają „obrusem”.",
+      "id": "geo-0105",
+      "options": ["Nairobi", "Durban", "Johannesburg", "Kapsztad"],
+      "question": "Które miasto leży u stóp płaskiej Góry Stołowej?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Na Svalbardzie działa Globalny Bank Nasion – zapasowy magazyn nasion roślin uprawnych wydrążony głęboko w wiecznej zmarzlinie.",
+      "id": "geo-0109",
+      "options": ["Islandii", "Norwegii", "Finlandii", "Danii"],
+      "question": "Do którego kraju należy arktyczny archipelag Svalbard?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Nazwa wysp pochodzi od łacińskiego canis („pies”), a nie od kanarków – to ptaki nazwano od wysp.",
+      "id": "geo-0107",
+      "options": ["Maroka", "Włoch", "Hiszpanii", "Portugalii"],
+      "question": "Do którego kraju należą Wyspy Kanaryjskie?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Nurkujące haenyeo zbierają owoce morza bez sprzętu do oddychania; UNESCO wpisało tę tradycję na listę dziedzictwa kulturowego.",
+      "id": "geo-0104",
+      "options": ["Korei Południowej", "Chin", "Korei Północnej", "Japonii"],
+      "question": "Do którego kraju należy Czedżu, wulkaniczna wyspa słynąca z nurkujących kobiet?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Płetwal błękitny może mieć około 30 m długości i ważyć ponad 150 ton; sam jego język może ważyć tyle co słoń.",
+      "id": "nat-0001",
+      "options": [
+        "Rekin wielorybi",
+        "Kaszalot",
+        "Płetwal błękitny",
+        "Słoń afrykański"
+      ],
+      "question": "Jakie jest największe żyjące dziś zwierzę?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Gepard w krótkim sprincie osiąga około 100 km/h i przyspiesza szybciej niż większość samochodów sportowych.",
+      "id": "nat-0002",
+      "options": ["Widłoróg", "Gepard", "Chart angielski", "Lew"],
+      "question": "Jakie jest najszybsze zwierzę lądowe?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Futro niedźwiedzia polarnego jest w rzeczywistości przezroczyste i tylko wygląda na białe; czarna skóra pod spodem pomaga pochłaniać ciepło słońca.",
+      "id": "nat-0005",
+      "options": ["Czarnego", "Białego", "Różowego", "Szarego"],
+      "question": "Jakiego koloru jest skóra niedźwiedzia polarnego pod futrem?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Kwiaty storczyka wanilii otwierają się tylko na mniej więcej jeden dzień, a poza Meksykiem zapyla się je zwykle ręcznie.",
+      "id": "nat-0016",
+      "options": ["Rośliny strączkowej", "Palmy", "Lilii", "Storczyka"],
+      "question": "Wanilia pochodzi ze strąków jakiej rośliny?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "W stromym locie nurkowym sokół wędrowny może przekroczyć 300 km/h, co czyni go najszybszym zwierzęciem na Ziemi.",
+      "id": "nat-0003",
+      "options": [
+        "Albatros wędrowny",
+        "Orzeł przedni",
+        "Sokół wędrowny",
+        "Jerzyk zwyczajny"
+      ],
+      "question": "Który ptak jest najszybszym zwierzęciem podczas łowieckiego lotu nurkowego?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Kąt tańca wskazuje kierunek względem słońca, a jego długość – odległość do pożywienia.",
+      "id": "nat-0012",
+      "options": [
+        "Tańcem wywijanym",
+        "Kolorami skrzydeł",
+        "Wyłącznie śladami zapachu",
+        "Brzęczącymi tonami"
+      ],
+      "question": "Jak pszczoły miodne pokazują sobie nawzajem, gdzie szukać kwiatów?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Holenderscy odkrywcy wzięli kuoki za olbrzymie szczury i nazwali wyspę „Rotte nest”, czyli „szczurze gniazdo”.",
+      "id": "nat-0028",
+      "options": [
+        "K'gari (Wyspa Fraser)",
+        "Wyspa Rottnest",
+        "Tasmania",
+        "Wyspa Kangura"
+      ],
+      "question": "Która australijska wyspa jest głównym domem uśmiechniętej kuoki?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Bambus jest tak ubogi w składniki odżywcze, że panda może zjeść go ponad 10 kg dziennie, choć jej przewód pokarmowy jest zbudowany jak u drapieżnika.",
+      "id": "nat-0007",
+      "options": ["Bambus", "Owoce", "Ryby", "Owady"],
+      "question": "Co jedzą pandy wielkie nawet przez 14 godzin dziennie?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Najwyższe znane drzewo, sekwoja wieczniezielona z Kalifornii nazwana Hyperion, ma około 116 m wysokości.",
+      "id": "nat-0015",
+      "options": [
+        "Sekwoja wieczniezielona",
+        "Eukaliptus królewski",
+        "Mamutowiec olbrzymi",
+        "Daglezja zielona"
+      ],
+      "question": "Który gatunek drzewa dorasta do największej wysokości?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Struś może mieć 2,7 m wzrostu, biegać z prędkością około 70 km/h, a jego oczy są większe niż mózg.",
+      "id": "nat-0008",
+      "options": ["Emu", "Struś", "Kazuar", "Kondor wielki"],
+      "question": "Jaki jest największy żyjący ptak?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Kwiat bukietnicy może mieć około 1 m średnicy; roślina nie ma liści ani korzeni i pachnie gnijącym mięsem, by zwabić muchy.",
+      "id": "nat-0017",
+      "options": [
+        "Słonecznik",
+        "Dziwidło olbrzymie",
+        "Bukietnica Arnolda",
+        "Wiktoria amazońska"
+      ],
+      "question": "Która roślina ma największy pojedynczy kwiat na świecie?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Kakapo to najcięższa papuga świata, która może żyć 60 lat i dłużej; każdy żyjący osobnik jest znany i monitorowany.",
+      "id": "nat-0029",
+      "options": ["Takahe", "Kakapo", "Kiwi", "Kea"],
+      "question": "Jak nazywa się nielotna, nocna papuga z Nowej Zelandii?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Rekiny wielorybie mogą przekraczać 12 m długości, a mimo to żywią się drobnym planktonem odfiltrowywanym z wody.",
+      "id": "nat-0010",
+      "options": ["Rekin wielorybi", "Żarłacz biały", "Długoszpar", "Samogłów"],
+      "question": "Jaki jest największy gatunek ryby?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Samce krokodyla różańcowatego mogą mieć ponad 6 m i 1000 kg, a między wyspami potrafią wypływać daleko w morze.",
+      "id": "nat-0020",
+      "options": [
+        "Krokodyl różańcowaty",
+        "Żółw skórzasty",
+        "Krokodyl nilowy",
+        "Waran z Komodo"
+      ],
+      "question": "Jaki jest największy żyjący gad?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Kameleony zmieniają barwę głównie, by sygnalizować nastrój i regulować temperaturę, a nie tylko po to, by się ukryć; potrafią patrzeć w dwie strony naraz.",
+      "id": "nat-0011",
+      "options": ["Legwan", "Kameleon", "Waran", "Gekon"],
+      "question": "Który gad potrafi poruszać każdym okiem niezależnie i zmieniać kolor?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Oko kałamarnicy Hamiltona może mieć około 27 cm średnicy – mniej więcej tyle co piłka nożna.",
+      "id": "nat-0023",
+      "options": [
+        "Płetwal błękitny",
+        "Struś",
+        "Wyrak",
+        "Kałamarnica Hamiltona"
+      ],
+      "question": "Które zwierzę ma największe oczy w całym królestwie zwierząt?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Kliknięcia kaszalota osiągają pod wodą około 230 decybeli; służą mu do wyszukiwania kałamarnic w ciemnych głębinach.",
+      "id": "nat-0031",
+      "options": [
+        "Wyjec",
+        "Krewetka pistoletowa",
+        "Kaszalot",
+        "Płetwal błękitny"
+      ],
+      "question": "Które zwierzę wydaje najgłośniejszy dźwięk ze wszystkich zwierząt?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Duży samiec słonia afrykańskiego (sawannowego) może ważyć około 6 ton i zjada do 150 kg roślin dziennie.",
+      "id": "nat-0013",
+      "options": [
+        "Słoń afrykański",
+        "Słoń indyjski",
+        "Hipopotam nilowy",
+        "Nosorożec biały"
+      ],
+      "question": "Jakie jest największe żyjące zwierzę lądowe?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Słonie mają najdłuższą ciążę spośród ssaków lądowych, a nowo narodzone słoniątko waży już około 100 kg.",
+      "id": "nat-0025",
+      "options": [
+        "Około 9 miesięcy",
+        "Około 16 miesięcy",
+        "Około 12 miesięcy",
+        "Około 22 miesięcy"
+      ],
+      "question": "Ile mniej więcej trwa ciąża słonicy?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Duże samce tygrysa mogą ważyć około 300 kg, a żadne dwa tygrysy nie mają takiego samego wzoru pasów.",
+      "id": "nat-0014",
+      "options": ["Lew", "Jaguar", "Tygrys", "Lampart"],
+      "question": "Jaki jest największy gatunek dzikiego kota?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Wydry morskie mają do około 150 000 włosów na centymetr kwadratowy i – w przeciwieństwie do większości ssaków morskich – nie mają ogrzewającej warstwy tłuszczu.",
+      "id": "nat-0026",
+      "options": [
+        "Niedźwiedź polarny",
+        "Lis polarny",
+        "Wydra morska",
+        "Piżmowół"
+      ],
+      "question": "Które zwierzę ma najgęstsze futro ze wszystkich zwierząt?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "W 2022 roku szlamnik z nadajnikiem przeleciał z Alaski na Tasmanię w około 11 dni, nie lądując, nie jedząc i nie pijąc.",
+      "id": "nat-0038",
+      "options": [
+        "Rybitwa popielata",
+        "Jaskółka dymówka",
+        "Albatros wędrowny",
+        "Szlamnik"
+      ],
+      "question": "Który ptak ma rekord najdłuższego lotu bez przerwy – ponad 13 000 km?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Rybitwy popielate co roku lecą z Arktyki do Antarktyki i z powrotem, widząc więcej światła dziennego niż jakiekolwiek inne zwierzę.",
+      "id": "nat-0037",
+      "options": [
+        "Rybitwa popielata",
+        "Bocian biały",
+        "Jaskółka dymówka",
+        "Kukułka zwyczajna"
+      ],
+      "question": "Który ptak odbywa najdłuższą znaną coroczną wędrówkę?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Pająki to pajęczaki, nie owady; owady mają sześć nóg, a pająki osiem – i zwykle także osiem oczu.",
+      "id": "nat-0019",
+      "options": ["Dwanaście", "Sześć", "Dziesięć", "Osiem"],
+      "question": "Ile nóg ma pająk?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Niesporczaki potrafią wyschnąć i przejść w stan uśpienia (tzw. „baryłkę”), w którym znoszą skrajny mróz, promieniowanie i próżnię kosmiczną.",
+      "id": "nat-0040",
+      "options": ["Nicienie", "Niesporczaki", "Widłonogi", "Wrotki"],
+      "question": "Które maleńkie zwierzęta, zwane „wodnymi niedźwiadkami”, przetrwały pobyt w otwartej przestrzeni kosmicznej?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Jerzyki jedzą, piją, a nawet śpią w locie; niektóre młode ptaki mogą nie lądować przez kilka lat.",
+      "id": "nat-0039",
+      "options": [
+        "Albatros",
+        "Jerzyk zwyczajny",
+        "Fregata",
+        "Rybitwa popielata"
+      ],
+      "question": "Który ptak potrafi spędzić w powietrzu około 10 miesięcy bez lądowania?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Warany z Komodo dorastają do około 3 m długości i na wolności żyją tylko na kilku indonezyjskich wyspach.",
+      "id": "nat-0021",
+      "options": [
+        "Waran z Komodo",
+        "Agama kołnierzasta",
+        "Heloderma arizońska",
+        "Legwan zielony"
+      ],
+      "question": "Jaka jest największa żyjąca jaszczurka?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Hatterie to ostatni przedstawiciele pradawnego rzędu gadów i mogą żyć ponad 100 lat.",
+      "id": "nat-0041",
+      "options": [
+        "W Nowej Zelandii",
+        "W Australii",
+        "Na Madagaskarze",
+        "W Indonezji"
+      ],
+      "question": "W którym kraju żyje hatteria – gad „żywa skamieniałość”, którego krewni żyli obok dinozaurów?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Aksolotle przez całe życie zachowują pierzaste skrzela i potrafią regenerować kończyny, części serca, a nawet mózgu.",
+      "id": "nat-0042",
+      "options": ["Peru", "Meksyku", "Brazylii", "Japonii"],
+      "question": "Z jezior którego kraju pochodzi aksolotl, salamandra potrafiąca odtwarzać utracone kończyny?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Wymóg dwóch dotknięć sprawia, że pułapka nie marnuje energii na krople deszczu czy spadające drobne szczątki.",
+      "id": "nat-0046",
+      "options": ["Dwa", "Jedno", "Trzy", "Pięć"],
+      "question": "Ile dotknięć włosków czuciowych w ciągu około 20 sekund sprawia, że muchołówka zatrzaskuje pułapkę?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Ludzie mają około 98–99% DNA wspólnego z szympansami i ich bliskimi kuzynami, bonobo.",
+      "id": "nat-0024",
+      "options": ["Gibon", "Szympans", "Goryl", "Orangutan"],
+      "question": "Która z tych małp człekokształtnych jest najbliżej spokrewniona z człowiekiem?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Sosny długowieczne rosną w surowych warunkach w górach USA; wiek jednej z nich oszacowano na około 4800 lat.",
+      "id": "nat-0047",
+      "options": [
+        "Baobab",
+        "Mamutowiec olbrzymi",
+        "Sosna długowieczna",
+        "Oliwka europejska"
+      ],
+      "question": "Do jakiego gatunku należą najstarsze znane żyjące drzewa, liczące niemal 5000 lat?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Diabły tasmańskie mają jedno z najsilniejszych ugryzień wśród ssaków w stosunku do wielkości ciała i potrafią zjadać całe kości.",
+      "id": "nat-0027",
+      "options": ["Jamraj długonosy", "Wombat", "Diabeł tasmański", "Kuoka"],
+      "question": "Który drapieżny torbacz żyje na wolności tylko na dużej wyspie na południe od kontynentu australijskiego?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Duży baobab może zgromadzić ponad 100 000 litrów wody, co pomaga mu przetrwać długie pory suche.",
+      "id": "nat-0048",
+      "options": ["Marula", "Mopane", "Baobab", "Akacja"],
+      "question": "Które afrykańskie drzewo słynie z magazynowania ogromnych ilości wody w grubym pniu?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Oprócz dwóch dużych oczu złożonych pszczoły mają na czubku głowy trzy proste oczka (przyoczka), które pomagają im w nawigacji.",
+      "id": "nat-0050",
+      "options": ["Cztery", "Pięć", "Dwa", "Osiem"],
+      "question": "Ile oczu ma pszczoła miodna?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Pingwiny cesarskie potrafią nurkować głębiej niż 500 m i rozmnażają się w czasie antarktycznej zimy, gdy temperatura spada poniżej −40 °C.",
+      "id": "nat-0030",
+      "options": [
+        "Pingwin białooki",
+        "Pingwin białobrewy",
+        "Pingwin cesarski",
+        "Pingwin królewski"
+      ],
+      "question": "Jaki jest największy gatunek pingwina?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Monarchy, które jesienią docierają do Meksyku, są o kilka pokoleń młodsze od motyli, które opuściły go poprzedniej wiosny.",
+      "id": "nat-0049",
+      "options": ["Meksyku", "Brazylii", "Indii", "Hiszpanii"],
+      "question": "W lasach którego kraju zimują miliony motyli monarchów?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Większość rozgwiazd ma pięć ramion, potrafi odtwarzać utracone i ma proste oko na końcu każdego z nich.",
+      "id": "nat-0032",
+      "options": ["Sześć", "Osiem", "Pięć", "Cztery"],
+      "question": "Ile ramion ma większość rozgwiazd?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Chrząstka jest lżejsza i bardziej giętka niż kość, co pomaga rekinom oszczędzać energię i szybko skręcać.",
+      "id": "nat-0051",
+      "options": ["Z keratyny", "Z chityny", "Z kości", "Z chrząstki"],
+      "question": "Z czego zbudowany jest szkielet rekina?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Rekin polarny rośnie około 1 cm rocznie; datowanie radiowęglowe jego oczu sugeruje, że niektóre osobniki mają kilkaset lat.",
+      "id": "nat-0053",
+      "options": ["Karp koi", "Rekin polarny", "Hatteria", "Żółw słoniowy"],
+      "question": "Który kręgowiec żyje prawdopodobnie najdłużej – być może ponad 250 lat?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Rozdymki połykają wodę, żeby się napompować, a wiele gatunków zawiera toksynę znacznie silniejszą niż cyjanek.",
+      "id": "nat-0033",
+      "options": ["Ptaszor", "Rozdymka", "Błazenek", "Barakuda"],
+      "question": "Która ryba w razie zagrożenia potrafi zamienić się w kolczastą kulę?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Stare groty harpunów znalezione w żywych walach grenlandzkich pomogły naukowcom potwierdzić ich niezwykły wiek.",
+      "id": "nat-0052",
+      "options": [
+        "Słoń afrykański",
+        "Płetwal błękitny",
+        "Wal grenlandzki",
+        "Orka"
+      ],
+      "question": "Który ssak żyje prawdopodobnie najdłużej – być może ponad 200 lat?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Uważa się, że łososie po latach odnajdują rodzinną rzekę częściowo dzięki jej niepowtarzalnemu zapachowi.",
+      "id": "nat-0034",
+      "options": ["Dorsz", "Makrela", "Tuńczyk", "Łosoś"],
+      "question": "Która ryba wraca w górę rzeki, w której się wykluła, aby złożyć ikrę?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Samce lirogona wspaniałego układają swoje pieśni z głosów innych ptaków i niemal każdego dźwięku, jaki usłyszą.",
+      "id": "nat-0054",
+      "options": ["Emu", "Lirogon", "Kakadu", "Kukabura"],
+      "question": "Który australijski ptak potrafi naśladować piłę łańcuchową i migawkę aparatu?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Ryjówka etruska waży około 1,8 g i musi jeść niemal bez przerwy; jej serce może bić ponad 1000 razy na minutę.",
+      "id": "nat-0062",
+      "options": [
+        "Skoczek karłowaty",
+        "Marmozeta karłowata",
+        "Badylarka",
+        "Ryjówka etruska"
+      ],
+      "question": "Który znany ssak jest najmniejszy pod względem masy ciała?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Byk łosia może mieć ponad 2 m w kłębie, a rozpiętość jego poroża sięga około 1,8 m.",
+      "id": "nat-0035",
+      "options": ["Łoś", "Renifer", "Jeleń wirginijski", "Jeleń szlachetny"],
+      "question": "Jaki jest największy żyjący gatunek jelenia?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Ten „krwawy pot” nie jest ani krwią, ani potem; działa jak naturalny filtr przeciwsłoneczny i może też zwalczać zarazki.",
+      "id": "nat-0056",
+      "options": [
+        "Wabi partnera",
+        "Znaczy terytorium",
+        "Odstrasza krokodyle",
+        "Działa jak filtr UV"
+      ],
+      "question": "Hipopotamy wydzielają na skórę czerwonawy oleisty płyn. Do czego służy?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Skrzydła albatrosa wędrownego mogą mieć do około 3,5 m rozpiętości, dzięki czemu godzinami szybuje nad oceanem bez machania nimi.",
+      "id": "nat-0036",
+      "options": [
+        "Bielik olbrzymi",
+        "Albatros wędrowny",
+        "Marabut afrykański",
+        "Kondor wielki"
+      ],
+      "question": "Który żyjący ptak ma największą rozpiętość skrzydeł?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Kustoszka muzeum w RPA dostrzegła ją wśród ryb złowionych przez rybaka; znano ją wcześniej tylko ze skamieniałości starszych niż 66 mln lat.",
+      "id": "nat-0064",
+      "options": ["Arapaimę", "Jesiotra", "Latimerię", "Rybę dwudyszną"],
+      "question": "Którą „żywą skamieniałość”, uważaną za wymarłą od milionów lat, odkryto żywą w 1938 roku?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Pszczoły odparowują wodę z nektaru, wachlując go skrzydłami – dlatego miód tak długo się nie psuje.",
+      "id": "nat-0043",
+      "options": ["Nektar", "Pyłek", "Rosę", "Sok z łodyg"],
+      "question": "Co pszczoły miodne zbierają z kwiatów, by zrobić miód?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Wydry morskie owijają się też wodorostami, żeby nie dryfować, gdy unoszą się na plecach.",
+      "id": "nat-0058",
+      "options": [
+        "By się nawzajem ogrzać",
+        "By nie odpłynąć od siebie",
+        "By odstraszyć drapieżniki",
+        "By znaleźć jedzenie"
+      ],
+      "question": "Dlaczego wydry morskie czasem trzymają się za łapki podczas snu?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Niektóre gatunki bambusa potrafią urosnąć prawie 1 m w ciągu jednego dnia.",
+      "id": "nat-0044",
+      "options": ["Słonecznik", "Eukaliptus", "Bambus", "Bluszcz"],
+      "question": "Która roślina jest rekordzistką najszybszego wzrostu na Ziemi?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Koliberek hawański z Kuby ma około 5–6 cm długości i waży mniej niż 2 g; jego jaja są wielkości ziaren kawy.",
+      "id": "nat-0063",
+      "options": [
+        "Koliberek hawański",
+        "Strzyżyk",
+        "Mysikrólik",
+        "Nektarnik szkarłatny"
+      ],
+      "question": "Jaki jest najmniejszy ptak na świecie?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Koale wykształciły odciski palców niezależnie od naczelnych, prawdopodobnie by lepiej chwytać gałęzie i liście eukaliptusa.",
+      "id": "nat-0065",
+      "options": ["Szop pracz", "Wombat", "Kangur", "Koala"],
+      "question": "Które zwierzę ma odciski palców zadziwiająco podobne do ludzkich, nawet pod mikroskopem?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Duży dąb w dobrym roku może wydać tysiące żołędzi, a sójki pomagają sadzić nowe dęby, zakopując je w ziemi.",
+      "id": "nat-0045",
+      "options": ["Buk", "Dąb", "Kasztanowiec", "Klon"],
+      "question": "Które drzewo rodzi żołędzie?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Odnóże rawki przyspiesza jak pocisk małego kalibru i wytwarza pęcherzyki, które zapadają się z błyskiem światła.",
+      "id": "nat-0066",
+      "options": ["Krab palmowy", "Ośmiornica zwyczajna", "Rawka", "Homar"],
+      "question": "Które morskie stworzenie uderza tak szybko, że może rozbić szybę akwarium?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Kukabury to duże zimorodki; całe rodziny „śmieją się” razem o świcie i o zmierzchu, by oznaczyć swoje terytorium.",
+      "id": "nat-0055",
+      "options": ["Maskonur", "Tukan", "Pelikan", "Kukabura"],
+      "question": "Który ptak słynie z głosu przypominającego głośny ludzki śmiech?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "To około 135° w każdą stronę. Oczy sowy są nieruchome w oczodołach, więc obraca ona całą głowę – pomagają jej w tym dodatkowe kręgi szyjne.",
+      "id": "nat-0069",
+      "options": ["270 stopni", "360 stopni", "180 stopni", "90 stopni"],
+      "question": "O ile mniej więcej łącznie sowa może obrócić głowę z jednej strony na drugą?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Węgorze elektryczne wytwarzają wyładowania do około 860 woltów, by ogłuszyć zdobycz i się bronić.",
+      "id": "nat-0067",
+      "options": ["Strętwokształtną", "Murenowatą", "Płaszczką", "Minogiem"],
+      "question": "Węgorz elektryczny nie jest prawdziwym węgorzem. Jaką rybą jest?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Samica składa jaja do torby samca konika morskiego, a on później wypuszcza od kilkudziesięciu do kilkuset maleńkich młodych.",
+      "id": "nat-0059",
+      "options": ["U kraba", "U ośmiornicy", "U żółwia", "U konika morskiego"],
+      "question": "U którego zwierzęcia to samiec nosi jaja i „rodzi” młode?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Kiwi wywąchują dżdżownice w glebie; samice składają też jedno z największych jaj w stosunku do wielkości ciała spośród wszystkich ptaków.",
+      "id": "nat-0070",
+      "options": ["Pelikan", "Kiwi", "Tukan", "Dzioborożec"],
+      "question": "Który ptak ma nozdrza na samym końcu dzioba?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Turritopsis dohrnii pod wpływem stresu lub urazu potrafi z powrotem zmienić się w polip i zacząć cykl życiowy od nowa.",
+      "id": "nat-0072",
+      "options": [
+        "Pewien gatunek meduzy",
+        "Pewien gatunek żółwia",
+        "Pewien gatunek żółwia morskiego",
+        "Pewien gatunek gąbki"
+      ],
+      "question": "Które zwierzę bywa nazywane „nieśmiertelnym”, bo potrafi wrócić do wcześniejszego stadium życia?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Słonie, manaty, diugonie i małe, żyjące wśród skał góralki mają wspólnego przodka.",
+      "id": "nat-0075",
+      "options": ["Nosorożec", "Hipopotam", "Tapir", "Manat"],
+      "question": "Które z tych zwierząt jest jednym z najbliższych żyjących krewnych słonia?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Kapibary z Ameryki Południowej mogą ważyć ponad 60 kg i świetnie pływają dzięki lekko spłetwionym łapom.",
+      "id": "nat-0061",
+      "options": ["Bóbr", "Świstak", "Jeżozwierz", "Kapibara"],
+      "question": "Jaki jest największy gryzoń na świecie?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Opisano około 400 000 gatunków chrząszczy – mniej więcej jedną czwartą wszystkich znanych gatunków zwierząt.",
+      "id": "nat-0074",
+      "options": ["Muchówki", "Mrówki i pszczoły", "Motyle", "Chrząszcze"],
+      "question": "Która grupa zwierząt ma najwięcej opisanych gatunków?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Ponad milion gnu co roku podąża za deszczami w wielkiej pętli, przekraczając rzeki pełne krokodyli.",
+      "id": "nat-0077",
+      "options": [
+        "Zebra stepowa",
+        "Gnu",
+        "Gazela Thomsona",
+        "Bawół afrykański"
+      ],
+      "question": "Które zwierzę stanowi większość wielkiej migracji między Serengeti a Masai Mara?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Hipopotamy i walenie mają wspólnego przodka, który żył około 55 mln lat temu.",
+      "id": "nat-0076",
+      "options": ["Walenie", "Nosorożce", "Słonie i góralki", "Świnie i dziki"],
+      "question": "Które zwierzęta są najbliższymi żyjącymi krewnymi hipopotamów?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Meduzy składają się w około 95% z wody, a zamiast mózgu mają prostą sieć nerwową.",
+      "id": "nat-0071",
+      "options": ["Meduza", "Żółw morski", "Ośmiornica", "Kałamarnica"],
+      "question": "Które morskie stworzenie nie ma mózgu, serca ani kości?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Irbisy wydają zamiast tego prychające „chuff” i inne dźwięki; gruby ogon pomaga im utrzymać równowagę i służy jak szalik.",
+      "id": "nat-0078",
+      "options": [
+        "Irbis śnieżny",
+        "Tygrys bengalski",
+        "Jaguar",
+        "Lew afrykański"
+      ],
+      "question": "Który wielki kot nie potrafi ryczeć?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Młode słoneczniki wędrują za słońcem po niebie; dojrzałe kwiaty zostają zwrócone na wschód, przez co rano szybciej się nagrzewają.",
+      "id": "nat-0073",
+      "options": ["Stokrotka", "Róża", "Słonecznik", "Tulipan"],
+      "question": "Który kwiat, gdy jest młodą rośliną, o świcie zwraca się na wschód, a o zmierzchu na zachód?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Orki żyją w grupach rodzinnych, które mają własne techniki polowania i „dialekty” odgłosów.",
+      "id": "nat-0079",
+      "options": ["Delfinowatych", "Fiszbinowców", "Morświnowatych", "Rekinów"],
+      "question": "Orka jest największym przedstawicielem której rodziny?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Pisklęta kukułki często wypychają z gniazda jaja gospodarza i są wychowywane przez przybranych rodziców dużo od siebie mniejszych.",
+      "id": "nat-0081",
+      "options": ["Jaskółka", "Kukułka", "Rudzik", "Dzięcioł"],
+      "question": "Który ptak słynie z podrzucania jaj do gniazd innych ptaków?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Niektóre bambusy kwitną tylko raz na kilkadziesiąt lat, a wszystkie rośliny danego gatunku mogą zakwitnąć jednocześnie.",
+      "id": "nat-0087",
+      "options": ["Drzew", "Traw", "Pnączy", "Paproci"],
+      "question": "Bambus to olbrzymi przedstawiciel której grupy roślin?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Dzięki receptorom smaku na nogach motyl, po prostu stając na liściu, sprawdza, czy nadaje się on do złożenia jaj.",
+      "id": "nat-0083",
+      "options": ["Oczami", "Czułkami", "Nogami", "Skrzydłami"],
+      "question": "Którą częścią ciała motyle potrafią wyczuwać smak?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Nasiono lodoicji seszelskiej, w kształcie podwójnego kokosa, może ważyć nawet około 25 kg.",
+      "id": "nat-0088",
+      "options": ["Lodoicja seszelska", "Palma kokosowa", "Mango", "Awokado"],
+      "question": "Która roślina ma największe nasiono na świecie?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Dorosłe samce goryli, zwane srebrnogrzbietymi, mogą ważyć ponad 200 kg, a żywią się głównie roślinami.",
+      "id": "nat-0091",
+      "options": ["Orangutan", "Goryl", "Szympans", "Pawian"],
+      "question": "Jaki jest największy żyjący naczelny?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Mrówki grzybiarki uprawiały ogródki grzybowe miliony lat przed tym, jak ludzie wynaleźli rolnictwo.",
+      "id": "nat-0084",
+      "options": ["Nasiona", "Glony", "Grzyb", "Mech"],
+      "question": "Co hodują mrówki tnące liście (Atta) na liściach znoszonych do gniazda?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Kur domowych jest kilkadziesiąt miliardów – znacznie więcej niż ptaków jakiegokolwiek dzikiego gatunku.",
+      "id": "nat-0096",
+      "options": ["Szpaka", "Gołębia", "Wróbla", "Kury"],
+      "question": "Jakiego ptaka jest najwięcej na Ziemi?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Świetliki wytwarzają światło w reakcji chemicznej, która prawie nie traci energii w postaci ciepła.",
+      "id": "nat-0085",
+      "options": ["Do os", "Do much", "Do ciem", "Do chrząszczy"],
+      "question": "Do jakich owadów należą w rzeczywistości świetliki?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Ta zmiana pomaga reniferom zbierać więcej światła podczas długiej polarnej nocy.",
+      "id": "nat-0093",
+      "options": [
+        "Sowy śnieżnej",
+        "Lisa polarnego",
+        "Niedźwiedzia polarnego",
+        "Renifera"
+      ],
+      "question": "Oczy którego zwierzęcia zmieniają kolor ze złotego latem na niebieski zimą?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Ochronna warstwa śluzu sprawia, że błazenek nie zostaje poparzony, a w zamian broni ukwiału.",
+      "id": "nat-0098",
+      "options": ["Meduzy", "Ukwiału", "Korala", "Jeżowca"],
+      "question": "Wśród parzących czułków jakiego zwierzęcia bezpiecznie żyją błazenki?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Wombaty znaczą sześciennymi odchodami terytorium; kostki nie staczają się z kamieni i pni.",
+      "id": "nat-0086",
+      "options": ["Dziobak", "Wombat", "Koala", "Kangur"],
+      "question": "Które zwierzę słynie z odchodów w kształcie sześcianów?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Samce humbaków w danym regionie śpiewają tę samą pieśń, która powoli zmienia się z czasem i rozprzestrzenia się po oceanach.",
+      "id": "nat-0101",
+      "options": ["Pływacz szary", "Wal biskajski", "Kaszalot", "Humbak"],
+      "question": "Który wal słynie przede wszystkim z długich, złożonych pieśni?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Botanicy zaliczają banany do jagód; truskawki i maliny nie są prawdziwymi jagodami, a wiśnie to pestkowce.",
+      "id": "nat-0089",
+      "options": ["Malina", "Banan", "Wiśnia", "Truskawka"],
+      "question": "Który z tych owoców jest botanicznie jagodą?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Nasiona wywiezione z Brazylii w 1876 roku dały początek ogromnym plantacjom kauczuku w Azji Południowo-Wschodniej.",
+      "id": "nat-0094",
+      "options": [
+        "Z dorzecza Amazonki",
+        "Z subkontynentu indyjskiego",
+        "Z dorzecza Konga",
+        "Z Borneo"
+      ],
+      "question": "Z jakiego regionu pochodzą kauczukowce, drzewa dające naturalny kauczuk?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Koralowce to kolonie maleńkich zwierząt zwanych polipami, w których często żyją glony dające im kolor i pożywienie.",
+      "id": "nat-0102",
+      "options": ["Skałą", "Rośliną", "Zwierzęciem", "Grzybem"],
+      "question": "Czym jest koral?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Mimo pasiastych nóg jak u zebry okapi należy do rodziny żyrafowatych i ma długi język do zrywania liści.",
+      "id": "nat-0090",
+      "options": ["Antylopy", "Konia", "Zebry", "Żyrafy"],
+      "question": "Okapi z Afryki Środkowej jest najbliższym żyjącym krewnym którego zwierzęcia?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Psy były pierwszymi udomowionymi zwierzętami; pochodzą od dawnej populacji wilków sprzed ponad 15 000 lat.",
+      "id": "nat-0103",
+      "options": [
+        "Lisa rudego",
+        "Kojota",
+        "Wilka szarego",
+        "Szakala złocistego"
+      ],
+      "question": "Od jakiego dzikiego zwierzęcia pochodzą psy domowe?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Orangutany spędzają większość życia na drzewach i niemal każdej nocy budują sobie nowe gniazdo do spania z gałęzi.",
+      "id": "nat-0092",
+      "options": ["Orangutan", "Goryl", "Bonobo", "Szympans"],
+      "question": "Która małpa człekokształtna żyje na wolności tylko na Borneo i Sumatrze?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Samce zbierają pióra, kwiaty, a coraz częściej także kapsle i słomki, by zaimponować samicom, które odwiedzają kilka altanek, zanim wybiorą partnera.",
+      "id": "nat-0100",
+      "options": ["Czerwony", "Żółty", "Biały", "Niebieski"],
+      "question": "Jaki kolor przeważa wśród przedmiotów, którymi samce altannika lśniącego zdobią swoje tokowisko?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Kokon jedwabnika to jedna nieprzerwana nić, która może mieć kilkaset metrów długości.",
+      "id": "nat-0104",
+      "options": ["Chrząszcza", "Jedwabnika", "Pająka", "Pszczoły miodnej"],
+      "question": "Z kokonów jakiego stworzenia pochodzi głównie jedwab na tkaniny?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Dębów korkowych się nie ścina: korę zdziera się z nich mniej więcej co dziewięć lat, a ona odrasta.",
+      "id": "nat-0095",
+      "options": [
+        "Dębu korkowego",
+        "Brzozy brodawkowatej",
+        "Buka zwyczajnego",
+        "Sosny zwyczajnej"
+      ],
+      "question": "Z kory którego drzewa robi się zatyczki do butelek wina?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Łuski łuskowców są zbudowane z keratyny, a w razie zagrożenia zwierzę zwija się w ciasną kulę.",
+      "id": "nat-0105",
+      "options": ["Łuskowiec", "Jeż", "Mrówkojad", "Mrównik"],
+      "question": "Który ssak jest pokryty ochronnym pancerzem z rogowych płytek?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Dodo był olbrzymim krewnym gołębi i zniknął w ciągu mniej więcej stulecia od przybycia żeglarzy.",
+      "id": "nat-0097",
+      "options": [
+        "Na Reunionie",
+        "Na Madagaskarze",
+        "Na Mauritiusie",
+        "Na Sri Lance"
+      ],
+      "question": "Nielotny ptak dodo żył tylko na jednej wyspie. Na której?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Palma daktylowa nazwana Matuzalemem wykiełkowała w 2005 roku z nasiona znalezionego w starożytnej twierdzy Masada.",
+      "id": "nat-0107",
+      "options": ["Oliwki", "Figowca", "Palmy daktylowej", "Dębu szypułkowego"],
+      "question": "Z nasion jakiej rośliny po około 2000 lat wyhodowano zdrowe rośliny?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "W poczwarce ciało gąsienicy w dużej mierze się rozpada i zostaje przebudowane w dorosłego motyla.",
+      "id": "nat-0109",
+      "options": ["Zapylenie", "Przeobrażenie", "Fotosynteza", "Hibernacja"],
+      "question": "Jak nazywa się proces, w którym gąsienica staje się motylem?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Poskoczki oddychają częściowo przez skórę i poza wodą muszą utrzymywać ją wilgotną.",
+      "id": "nat-0099",
+      "options": ["Ptaszor", "Poskoczek", "Błazenek", "Samogłów"],
+      "question": "Która ryba potrafi przemieszczać się po odsłoniętym przez odpływ mule, a nawet wspinać się na korzenie namorzynów?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Wartownik wspina się na wysokie miejsce i cicho nawołuje, dopóki wszystko jest w porządku; gdy dostrzeże drapieżnika, wszczyna alarm i wszyscy pędzą do kryjówki.",
+      "id": "nat-0110",
+      "options": [
+        "Śpi w norze",
+        "Kopie fałszywą norę",
+        "Zbiera wodę",
+        "Stoi na czatach"
+      ],
+      "question": "Co często robi jeden członek grupy surykatek, gdy pozostałe szukają jedzenia?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Leniwce poruszają się tak wolno, że w ich futrze żyją glony, a nawet ćmy, co pomaga im się maskować.",
+      "id": "nat-0106",
+      "options": ["Grzyby", "Glony", "Mech", "Porosty"],
+      "question": "Co często rośnie w futrze leniwca, nadając mu zielonkawy odcień?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Miłorzęby są bardzo wytrzymałe: kilka z nich przetrwało blisko epicentrum wybuchu w Hiroszimie i rośnie do dziś.",
+      "id": "nat-0108",
+      "options": ["Brzoza", "Miłorząb", "Oliwka", "Baobab"],
+      "question": "Które drzewo bywa nazywane „żywą skamieniałością”, bo prawie się nie zmieniło od około 200 mln lat?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Merkury okrąża Słońce w zaledwie 88 dni ziemskich – to najkrótszy rok spośród wszystkich planet.",
+      "id": "sci-0001",
+      "options": ["Merkury", "Wenus", "Ziemia", "Mars"],
+      "question": "Która planeta jest najbliżej Słońca?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Gęsta atmosfera Wenus z dwutlenku węgla zatrzymuje ciepło, więc jej powierzchnia nagrzewa się do około 465 °C – bardziej niż Merkury.",
+      "id": "sci-0004",
+      "options": ["Wenus", "Mars", "Merkury", "Jowisz"],
+      "question": "Która planeta Układu Słonecznego jest najgorętsza?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Jowisz ma ponad dwa razy większą masę niż wszystkie pozostałe planety razem; zmieściłoby się w nim około 1300 Ziem.",
+      "id": "sci-0002",
+      "options": ["Neptun", "Uran", "Saturn", "Jowisz"],
+      "question": "Która planeta Układu Słonecznego jest największa?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Przy prędkości około 300 000 km/s światło mogłoby okrążyć Ziemię mniej więcej siedem i pół raza w ciągu sekundy.",
+      "id": "sci-0010",
+      "options": [
+        "3 mln km na sekundę",
+        "30 000 km na sekundę",
+        "300 000 km na sekundę",
+        "3000 km na sekundę"
+      ],
+      "question": "Z jaką mniej więcej prędkością światło porusza się w próżni?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Księżyc Jowisza Io ma setki czynnych wulkanów, rozgrzewanych pływowym ściskaniem wywołanym grawitacją Jowisza.",
+      "id": "sci-0019",
+      "options": ["Io", "Kallisto", "Fobos", "Europa"],
+      "question": "Które ciało Układu Słonecznego jest najbardziej aktywne wulkanicznie?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Mars wygląda na czerwony, bo jego zapylona powierzchnia jest bogata w tlenek żelaza – czyli po prostu rdzę.",
+      "id": "sci-0003",
+      "options": ["Wenus", "Merkurego", "Marsa", "Jowisza"],
+      "question": "Którą planetę nazywa się Czerwoną Planetą?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Proxima Centauri jest oddalona o około 4,2 roku świetlnego, więc jej światło leci do nas ponad cztery lata.",
+      "id": "sci-0012",
+      "options": [
+        "Syriusz",
+        "Gwiazda Polarna",
+        "Betelgeza",
+        "Proxima Centauri"
+      ],
+      "question": "Która gwiazda jest najbliżej Słońca?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Oś Urana jest nachylona o około 98°, więc każdy biegun ma około 42 lat światła słonecznego, a potem 42 lata ciemności.",
+      "id": "sci-0013",
+      "options": ["Saturn", "Wenus", "Neptun", "Uran"],
+      "question": "Która planeta obraca się przewrócona na bok?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Sagittarius A* ma masę około 4 mln mas Słońca; jego pierwszy obraz opublikowano w 2022 roku.",
+      "id": "sci-0021",
+      "options": [
+        "Najjaśniejszą gwiazdą Strzelca",
+        "Mgławicą widoczną gołym okiem",
+        "Czarną dziurą w centrum Galaktyki",
+        "Sondą, która opuściła Układ Słoneczny"
+      ],
+      "question": "Czym jest Sagittarius A*?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Fe pochodzi od łacińskiego ferrum; żelazo jest najpowszechniejszym pierwiastkiem Ziemi jako całości pod względem masy – głównie w jądrze.",
+      "id": "sci-0006",
+      "options": ["Ołów", "Żelazo", "Fluor", "Frans"],
+      "question": "Który pierwiastek ma symbol chemiczny Fe?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Rośliny łączą dwutlenek węgla z wodą dzięki energii światła, wytwarzając cukier i uwalniając tlen jako produkt uboczny.",
+      "id": "sci-0007",
+      "options": ["Tlenek węgla", "Azot", "Tlen", "Dwutlenek węgla"],
+      "question": "Jaki gaz rośliny pobierają z powietrza do fotosyntezy?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Księżyc Jowisza Ganimedes jest większy od planety Merkury i jako jedyny znany księżyc ma własne pole magnetyczne.",
+      "id": "sci-0016",
+      "options": ["Tytan", "Kallisto", "Io", "Ganimedes"],
+      "question": "Jaki jest największy księżyc w Układzie Słonecznym?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "W 1868 roku astronomowie dostrzegli w świetle słonecznym nieznaną żółtą linię; pierwiastek nazwano od Heliosa, greckiego boga słońca.",
+      "id": "sci-0025",
+      "options": [
+        "W świetle Słońca",
+        "W gazach wulkanicznych",
+        "W meteorycie",
+        "W wodzie morskiej"
+      ],
+      "question": "Gdzie po raz pierwszy wykryto hel, zanim znaleziono go na Ziemi?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Azot to około 78% powietrza, którym oddychamy; tlen – około 21%.",
+      "id": "sci-0008",
+      "options": ["Dwutlenek węgla", "Argon", "Tlen", "Azot"],
+      "question": "Jaki gaz stanowi większość atmosfery Ziemi?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Tytan, księżyc Saturna, to jedyne poza Ziemią znane miejsce ze stabilnymi jeziorami cieczy na powierzchni.",
+      "id": "sci-0017",
+      "options": ["Io", "Tytan", "Europa", "Tryton"],
+      "question": "Który księżyc ma gęstą atmosferę i jeziora ciekłego metanu?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Olympus Mons jest około dwa i pół raza wyższy od Everestu i ma około 600 km średnicy.",
+      "id": "sci-0020",
+      "options": ["Na Ziemi", "Na Marsie", "Na Wenus", "Na Merkurym"],
+      "question": "Na której planecie jest Olympus Mons, jeden z najwyższych wulkanów Układu Słonecznego?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Ziemia osiąga najbliższy punkt orbity, peryhelium, na początku stycznia – w czasie zimy na półkuli północnej.",
+      "id": "sci-0043",
+      "options": ["W marcu", "W styczniu", "W lipcu", "W październiku"],
+      "question": "W którym miesiącu Ziemia jest najbliżej Słońca?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Apollo 11 wylądował 20 lipca 1969 roku; na Księżycu nie ma wiatru, więc ślady astronautów mogą przetrwać miliony lat.",
+      "id": "sci-0011",
+      "options": ["1969", "1972", "1961", "1965"],
+      "question": "W którym roku ludzie po raz pierwszy chodzili po Księżycu?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Galaktyka Andromedy jest oddalona o około 2,5 mln lat świetlnych i jest najdalszym obiektem łatwo widocznym gołym okiem.",
+      "id": "sci-0022",
+      "options": ["Andromeda", "Sombrero", "Wiatraczek", "Wir"],
+      "question": "Która duża galaktyka spiralna jest najbliżej Drogi Mlecznej?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Od 2006 roku Pluton jest klasyfikowany jako planeta karłowata, więc zostało osiem planet: od Merkurego do Neptuna.",
+      "id": "sci-0015",
+      "options": ["Osiem", "Dziewięć", "Dziesięć", "Siedem"],
+      "question": "Ile planet jest w naszym Układzie Słonecznym?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "pH 7 jest obojętne; każdy stopień w dół skali pH oznacza dziesięć razy bardziej kwaśny odczyn.",
+      "id": "sci-0030",
+      "options": ["0", "5", "7", "14"],
+      "question": "Jakie pH ma czysta woda w temperaturze 25 °C?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Astronauci zostawili na Księżycu lustra, a odbite od nich wiązki lasera pozwalają naukowcom dokładnie mierzyć to oddalanie.",
+      "id": "sci-0046",
+      "options": [
+        "O około 3,8 cm",
+        "O około 3,8 m",
+        "O około 38 cm",
+        "O około 3,8 mm"
+      ],
+      "question": "O ile mniej więcej Księżyc oddala się od Ziemi każdego roku?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Wielka Czerwona Plama to burza szersza od Ziemi, która trwa od co najmniej 150 lat.",
+      "id": "sci-0018",
+      "options": ["Na Saturnie", "Na Neptunie", "Na Jowiszu", "Na Marsie"],
+      "question": "Na której planecie szaleje ogromna burza zwana Wielką Czerwoną Plamą?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Francis Beaufort opracował ją w 1805 roku dla żeglarzy, opisując wiatr przez jego wpływ na morze i żagle.",
+      "id": "sci-0031",
+      "options": [
+        "Skala Kelvina",
+        "Skala Mohsa",
+        "Skala Richtera",
+        "Skala Beauforta"
+      ],
+      "question": "Która skala opisuje siłę wiatru od ciszy (0) do huraganu (12)?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Szereguje minerały według tego, który może zarysować który – od talku (1) do diamentu (10).",
+      "id": "sci-0032",
+      "options": [
+        "Kwasowość wody",
+        "Prędkość wiatru",
+        "Twardość minerałów",
+        "Siłę trzęsień ziemi"
+      ],
+      "question": "Co mierzy skala Mohsa?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Wiatry na Neptunie mogą wiać z prędkością ponad 2000 km/h – szybciej niż dźwięk na Ziemi.",
+      "id": "sci-0052",
+      "options": ["Na Saturnie", "Na Jowiszu", "Na Neptunie", "Na Uranie"],
+      "question": "Na której planecie wieją najszybsze wiatry w Układzie Słonecznym?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Wodór to najlżejszy i najpowszechniejszy pierwiastek we Wszechświecie – stanowi około trzech czwartych zwykłej materii.",
+      "id": "sci-0024",
+      "options": ["Węgiel", "Tlen", "Hel", "Wodór"],
+      "question": "Który pierwiastek ma liczbę atomową 1?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Zero bezwzględne to najniższa możliwa temperatura; naukowcom udało się schłodzić atomy do jednej miliardowej stopnia powyżej niego.",
+      "id": "sci-0033",
+      "options": ["−273,15 °C", "−173,15 °C", "−373,15 °C", "−233,15 °C"],
+      "question": "Ile wynosi zero bezwzględne w skali Celsjusza?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Rtęć zamarza w około −39 °C, dlatego przez długi czas używano jej w termometrach.",
+      "id": "sci-0026",
+      "options": ["Ołów", "Rtęć", "Cynk", "Cyna"],
+      "question": "Który metal jest ciekły w temperaturze pokojowej?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "−40 °C to dokładnie −40 °F – jedyny punkt, w którym obie skale się spotykają.",
+      "id": "sci-0034",
+      "options": ["−32 stopnie", "0 stopni", "−40 stopni", "100 stopni"],
+      "question": "Przy jakiej temperaturze skale Celsjusza i Fahrenheita pokazują tę samą liczbę?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Ceres jest klasyfikowana jako planeta karłowata i skupia sporą część całkowitej masy pasa planetoid.",
+      "id": "sci-0055",
+      "options": ["Westa", "Ceres", "Pallas", "Eros"],
+      "question": "Jaki jest największy obiekt w głównym pasie planetoid?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Diament zajmuje szczyt skali twardości Mohsa z wartością 10 i zarysować go może tylko inny diament.",
+      "id": "sci-0027",
+      "options": ["Topaz", "Diament", "Kwarc", "Korund"],
+      "question": "Jaki jest najtwardszy materiał naturalny?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Różnią się tylko ułożeniem atomów węgla: w diamencie tworzą sztywną sieć przestrzenną, a w graficie z ołówka – przesuwające się warstwy.",
+      "id": "sci-0028",
+      "options": ["Z siarki", "Z krzemu", "Z boru", "Z węgla"],
+      "question": "Z jakiego pierwiastka zbudowane są zarówno diament, jak i grafit?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "W stali dźwięk biegnie z prędkością około 5900 m/s – mniej więcej 17 razy szybciej niż w powietrzu.",
+      "id": "sci-0037",
+      "options": ["Powietrze", "Hel", "Stal", "Wodę"],
+      "question": "Przez który z tych ośrodków dźwięk rozchodzi się najszybciej?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Choć Neptun leży dalej, Uran wydziela bardzo mało ciepła wewnętrznego, a jego atmosfera schłodziła się do około −224 °C.",
+      "id": "sci-0060",
+      "options": ["Na Uranie", "Na Merkurym", "Na Saturnie", "Na Neptunie"],
+      "question": "Na której planecie zmierzono najniższą temperaturę atmosfery w Układzie Słonecznym?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Chlorek sodu składa się z sodu – metalu, który gwałtownie reaguje z wodą – i chloru, trującego gazu.",
+      "id": "sci-0029",
+      "options": ["NaOH", "CaCl2", "NaCl", "KCl"],
+      "question": "Jaki jest wzór chemiczny soli kuchennej?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Jądro wewnętrzne jest mniej więcej tak gorące jak powierzchnia Słońca, ale pozostaje stałe z powodu ogromnego ciśnienia.",
+      "id": "sci-0039",
+      "options": [
+        "Ze złota i srebra",
+        "Z ołowiu i cyny",
+        "Z miedzi i cynku",
+        "Z żelaza i niklu"
+      ],
+      "question": "Z jakich metali składa się głównie jądro Ziemi?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Jeden niuton to mniej więcej ciężar małego jabłka trzymanego w dłoni.",
+      "id": "sci-0035",
+      "options": ["Niuton", "Paskal", "Wat", "Dżul"],
+      "question": "Jaka jest jednostka siły w układzie SI?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Troposfera sięga około 8–18 km w górę i zawiera mniej więcej trzy czwarte masy atmosfery.",
+      "id": "sci-0040",
+      "options": [
+        "W mezosferze",
+        "W troposferze",
+        "W termosferze",
+        "W stratosferze"
+      ],
+      "question": "W której warstwie atmosfery zachodzą niemal wszystkie zjawiska pogodowe?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Merkury i Wenus są zbyt blisko Słońca, by łatwo utrzymać księżyce; Ziemia ma jeden, a Mars dwa.",
+      "id": "sci-0061",
+      "options": [
+        "Merkury i Wenus",
+        "Wenus i Uran",
+        "Merkury i Mars",
+        "Mars i Wenus"
+      ],
+      "question": "Które dwie planety nie mają księżyców?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Einstein opublikował ogólną teorię względności w 1915 roku; satelity GPS muszą korygować jej efekty, by pozostać dokładne.",
+      "id": "sci-0038",
+      "options": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Niels Bohr",
+        "Max Planck"
+      ],
+      "question": "Który naukowiec stworzył ogólną teorię względności?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Gdyby cały ozon sprowadzić do ciśnienia panującego przy ziemi, utworzyłby warstwę grubości zaledwie około 3 mm.",
+      "id": "sci-0041",
+      "options": [
+        "W stratosferze",
+        "W troposferze",
+        "W mezosferze",
+        "W egzosferze"
+      ],
+      "question": "W której warstwie atmosfery leży głównie warstwa ozonowa?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "To tzw. obrót synchroniczny; niewidoczna strona dostaje tyle samo światła słonecznego, ale sfotografowano ją dopiero w 1959 roku.",
+      "id": "sci-0045",
+      "options": [
+        "Ziemia zasłania drugą stronę",
+        "W ogóle się nie obraca",
+        "Obraca się raz na okrążenie",
+        "Druga strona jest zawsze ciemna"
+      ],
+      "question": "Dlaczego zawsze widzimy tę samą stronę Księżyca?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Słońce także przyciąga oceany; gdy Słońce i Księżyc ustawiają się w linii, występują wyjątkowo wysokie pływy syzygijne.",
+      "id": "sci-0044",
+      "options": [
+        "Pole magnetyczne Ziemi",
+        "Wiatr nad oceanem",
+        "Grawitacja Księżyca",
+        "Podwodne trzęsienia ziemi"
+      ],
+      "question": "Co jest główną przyczyną pływów oceanicznych?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Krzyż Południa (Crux) to najmniejszy z 88 gwiazdozbiorów; żeglarze od dawna wyznaczają według niego kierunek południowy.",
+      "id": "sci-0047",
+      "options": [
+        "Orion",
+        "Krzyż Południa",
+        "Wielka Niedźwiedzica",
+        "Skorpion"
+      ],
+      "question": "Który gwiazdozbiór widnieje na flagach Australii, Nowej Zelandii, Brazylii i Samoa?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Pierwsze zdjęcia Hubble'a były rozmyte przez wadę lustra, którą załoga promu kosmicznego usunęła w 1993 roku.",
+      "id": "sci-0048",
+      "options": ["Kepler", "Hubble", "James Webb", "Spitzer"],
+      "question": "Który teleskop kosmiczny wystrzelono w 1990 roku, a później naprawiali go astronauci?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Uran był pierwszą planetą odkrytą za pomocą teleskopu; Herschel był też zawodowym muzykiem i kompozytorem.",
+      "id": "sci-0069",
+      "options": [
+        "Giovanni Cassini",
+        "Galileusz",
+        "William Herschel",
+        "Edmond Halley"
+      ],
+      "question": "Kto odkrył planetę Uran w 1781 roku?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Sputnik 1 był metalową kulą o średnicy około 58 cm, która nadawała sygnały radiowe – „bip-bip” mógł odebrać każdy.",
+      "id": "sci-0049",
+      "options": ["Sputnik 1", "Explorer 1", "Wostok 1", "Telstar 1"],
+      "question": "Jak nazywał się pierwszy sztuczny satelita, wystrzelony w 1957 roku?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Kometa Halleya pojawiła się ostatnio w 1986 roku i wróci w 2061; widać ją gołym okiem.",
+      "id": "sci-0053",
+      "options": ["Co 1000 lat", "Co 150 lat", "Co 12 lat", "Co 75–76 lat"],
+      "question": "Co ile mniej więcej lat kometa Halleya wraca na nasze niebo?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Gagarin okrążył Ziemię raz 12 kwietnia 1961 roku; lot trwał około 108 minut.",
+      "id": "sci-0050",
+      "options": [
+        "John Glenn",
+        "Neil Armstrong",
+        "Aleksiej Leonow",
+        "Jurij Gagarin"
+      ],
+      "question": "Kto jako pierwszy człowiek poleciał w kosmos?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Ich nazwy znaczą „strach” i „trwoga”; Fobos powoli zbliża się spiralnie do planety i za kilkadziesiąt milionów lat się rozpadnie.",
+      "id": "sci-0056",
+      "options": ["Jowisza", "Saturna", "Marsa", "Neptuna"],
+      "question": "Fobos i Deimos to księżyce której planety?"
+    }
+  ]
+}

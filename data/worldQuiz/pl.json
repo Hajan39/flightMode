@@ -86,8 +86,8 @@
       "difficulty": 1,
       "explanation": "Flaga Nepalu to dwa ułożone jeden na drugim trójkątne proporce, a konstytucja dokładnie opisuje, jak ją narysować.",
       "id": "misc-0002",
-      "options": ["Nepalu", "Bhutanu", "Mongolii", "Sri Lanki"],
-      "question": "Flaga którego kraju nie jest ani prostokątem, ani kwadratem?"
+      "options": ["Nepal", "Bhutan", "Mongolia", "Sri Lanka"],
+      "question": "Który kraj ma flagę narodową, która nie jest ani prostokątem, ani kwadratem?"
     },
     {
       "answer": 0,
@@ -111,7 +111,7 @@
       "answer": 2,
       "category": "human body & health",
       "difficulty": 1,
-      "explanation": "Ponad połowa tych kości znajduje się w dłoniach i stopach: sama jedna dłoń ma ich 27.",
+      "explanation": "Ponad połowa tych kości znajduje się w dłoniach i stopach: każda dłoń ma ich aż 27.",
       "id": "body-0001",
       "options": ["256", "226", "206", "186"],
       "question": "Ile kości ma zwykle szkielet dorosłego człowieka?"
@@ -207,7 +207,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "W 1886 roku statua miała kolor lśniącej, brązowej miedzi; całkowite zzielenienie zajęło około 30 lat.",
+      "explanation": "W chwili odsłonięcia w 1886 roku statua miała kolor lśniącej, brązowej miedzi; całkowite zzielenienie zajęło około 30 lat.",
       "id": "misc-0010",
       "options": [
         "Jej miedź utleniła się",
@@ -340,7 +340,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "Wieża zaczęła się przechylać już podczas budowy w XII wieku; od tego czasu inżynierowie ją ustabilizowali.",
+      "explanation": "Wieża zaczęła się przechylać już podczas budowy w XII wieku; później inżynierowie ją ustabilizowali.",
       "id": "misc-0011",
       "options": [
         "Przez trzęsienie ziemi",
@@ -354,7 +354,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "W Andach Peru i Boliwii uprawiano ziemniaki już 7–10 tys. lat temu i wciąż rosną tam tysiące odmian.",
+      "explanation": "W Andach Peru i Boliwii uprawiano ziemniaki już około 7–10 tys. lat temu i wciąż rosną tam tysiące odmian.",
       "id": "food-0013",
       "options": [
         "W Afryce Zachodniej",
@@ -566,7 +566,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Osoba, która na Ziemi waży 60 kg, na Księżycu czułaby się lekka jak 10 kg.",
+      "explanation": "Osoba, która na Ziemi waży 60 kg, na Księżycu czułaby się, jakby ważyła 10 kg.",
       "id": "sci-0093",
       "options": [
         "Około jednej dziesiątej",
@@ -739,7 +739,7 @@
         "Drewniane zabawki",
         "Radioodbiorniki"
       ],
-      "question": "Co produkowało Nintendo, zanim zajęło się grami wideo, po założeniu w 1889 roku?"
+      "question": "Co produkowało założone w 1889 roku Nintendo, zanim zajęło się grami wideo?"
     },
     {
       "answer": 3,
@@ -762,7 +762,7 @@
       "explanation": "Banknoty polimerowe są trwalsze od papierowych i trudniej je podrobić; dziś używa ich wiele krajów.",
       "id": "misc-0044",
       "options": ["Australia", "Japonia", "Kanada", "Singapur"],
-      "question": "Który kraj jako pierwszy wprowadził plastikowe (polimerowe) banknoty, w 1988 roku?"
+      "question": "Który kraj w 1988 roku jako pierwszy wprowadził plastikowe (polimerowe) banknoty?"
     },
     {
       "answer": 3,
@@ -916,7 +916,7 @@
       "options": [
         "Owinięte wodorostami",
         "Leżąc na dnie morza",
-        "Połową mózgu naraz",
+        "Półkulami mózgu na zmianę",
         "Po 8 godzin bez przerwy"
       ],
       "question": "Jak śpią delfiny?"
@@ -934,7 +934,7 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Pielgrzymka Mansy Musy przez Kair w 1324 roku rozdała tyle złota, że jego wartość w Egipcie spadła na lata.",
+      "explanation": "Podczas pielgrzymki w 1324 roku Mansa Musa, przejeżdżając przez Kair, rozdał tyle złota, że wartość kruszcu w Egipcie spadła na lata.",
       "id": "his-0067",
       "options": [
         "Królestwem Aksum",
@@ -951,7 +951,7 @@
       "explanation": "Sitar ma struny, na których się gra, oraz dodatkowe struny „rezonansowe”, które drgają same i dają mieniący się dźwięk.",
       "id": "cul-0061",
       "options": ["Tabla", "Sitar", "Sarod", "Wina"],
-      "question": "Na jakim instrumencie grał indyjski muzyk Ravi Shankar, który rozsławił go na cały świat?"
+      "question": "Jaki instrument rozsławił na całym świecie indyjski muzyk Ravi Shankar?"
     },
     {
       "answer": 0,
