@@ -10,6 +10,8 @@ on:
     paths-ignore:
       - 'content/**'
       - 'docs/**'
+      # CI / review configuration only — the app is unchanged.
+      - '.github/**'
       - 'services/**'
   workflow_dispatch:
 
