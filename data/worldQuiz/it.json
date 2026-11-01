@@ -97,7 +97,7 @@
       "explanation": "La bandiera del Nepal è formata da due gagliardetti triangolari sovrapposti, e la Costituzione spiega con precisione geometrica come disegnarla.",
       "id": "misc-0002",
       "options": ["Nepal", "Bhutan", "Mongolia", "Sri Lanka"],
-      "question": "Quale Paese ha una bandiera che non è né rettangolare né quadrata?"
+      "question": "Quale paese ha una bandiera che non è né rettangolare né quadrata?"
     },
     {
       "answer": 0,
@@ -152,7 +152,7 @@
         "Città del Vaticano",
         "Monaco"
       ],
-      "question": "Qual è il Paese più piccolo del mondo per superficie?"
+      "question": "Qual è il paese più piccolo del mondo per superficie?"
     },
     {
       "answer": 3,
@@ -189,7 +189,7 @@
         "Quella di Magellano",
         "Quella di Vasco da Gama"
       ],
-      "question": "Quale spedizione fu la prima a circumnavigare il globo (1519-1522)?"
+      "question": "Quale spedizione fu la prima a circumnavigare il globo (1519–1522)?"
     },
     {
       "answer": 1,
@@ -207,7 +207,7 @@
       "explanation": "Il nome viene dal danese «leg godt», «gioca bene»; i mattoncini del 1958 si incastrano ancora con quelli di oggi.",
       "id": "inv-0006",
       "options": ["Danimarca", "Paesi Bassi", "Germania", "Svezia"],
-      "question": "Da quale Paese vengono i mattoncini LEGO?"
+      "question": "Da quale paese vengono i mattoncini LEGO?"
     },
     {
       "answer": 0,
@@ -227,7 +227,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "Nel 1886 la statua era di rame marrone lucido; ci vollero circa 30 anni perché diventasse del tutto verde.",
+      "explanation": "All'inaugurazione, nel 1886, la statua era di rame marrone lucido; ci vollero circa 30 anni perché diventasse del tutto verde.",
       "id": "misc-0010",
       "options": [
         "Il suo rame si è ossidato",
@@ -244,7 +244,7 @@
       "explanation": "In Cina il tè si beveva migliaia di anni fa; per secoli fu persino pressato in mattonelle usate come moneta.",
       "id": "food-0010",
       "options": ["Inghilterra", "India", "Cina", "Giappone"],
-      "question": "In quale Paese si è cominciato a bere il tè?"
+      "question": "In quale paese si è cominciato a bere il tè?"
     },
     {
       "answer": 0,
@@ -259,7 +259,7 @@
       "answer": 1,
       "category": "human body & health",
       "difficulty": 1,
-      "explanation": "La pelle di un adulto copre circa 1,5-2 m² e si rinnova di continuo: lo strato esterno si sostituisce in poche settimane.",
+      "explanation": "La pelle di un adulto copre circa 1,5–2 m² e si rinnova di continuo: lo strato esterno si sostituisce in poche settimane.",
       "id": "body-0002",
       "options": ["Fegato", "Pelle", "Cervello", "Polmoni"],
       "question": "Qual è l'organo più grande del corpo umano?"
@@ -280,7 +280,7 @@
       "explanation": "La Russia supera i 17 milioni di km², circa un nono delle terre emerse, e copre 11 fusi orari.",
       "id": "geo-0007",
       "options": ["Cina", "Canada", "Russia", "Brasile"],
-      "question": "Qual è il Paese più grande del mondo per superficie?"
+      "question": "Qual è il paese più grande del mondo per superficie?"
     },
     {
       "answer": 2,
@@ -360,7 +360,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "La torre cominciò a pendere già durante la costruzione nel XII secolo; da allora gli ingegneri l'hanno stabilizzata.",
+      "explanation": "La torre cominciò a pendere già durante la costruzione nel XII secolo; in seguito gli ingegneri l'hanno stabilizzata.",
       "id": "misc-0011",
       "options": [
         "Per un terremoto",
@@ -374,7 +374,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Sulle Ande di Perù e Bolivia si coltivavano patate 7.000-10.000 anni fa, e lì esistono ancora migliaia di varietà.",
+      "explanation": "Sulle Ande di Perù e Bolivia si coltivavano patate circa 7.000–10.000 anni fa, e lì esistono ancora migliaia di varietà.",
       "id": "food-0013",
       "options": [
         "Africa occidentale",
@@ -409,7 +409,7 @@
       "explanation": "Parteciparono solo 13 squadre; diverse nazionali europee raggiunsero l'Uruguay in nave, un viaggio di circa due settimane.",
       "id": "sport-0035",
       "options": ["Argentina", "Italia", "Uruguay", "Brasile"],
-      "question": "Quale Paese ospitò e vinse il primo Mondiale di calcio, nel 1930?"
+      "question": "Quale paese ospitò e vinse il primo Mondiale di calcio, nel 1930?"
     },
     {
       "answer": 1,
@@ -483,7 +483,7 @@
       "explanation": "Ernő Rubik, professore di architettura, lo creò per insegnare a pensare in 3D; lui stesso impiegò più di un mese a risolverlo.",
       "id": "inv-0018",
       "options": ["Cecoslovacchia", "Ungheria", "Austria", "Giappone"],
-      "question": "In quale Paese fu inventato il cubo di Rubik nel 1974?"
+      "question": "In quale paese fu inventato il cubo di Rubik nel 1974?"
     },
     {
       "answer": 3,
@@ -540,7 +540,7 @@
       "answer": 3,
       "category": "human body & health",
       "difficulty": 2,
-      "explanation": "L'orecchio interno percepisce il movimento; in nave o in aereo, guardare l'orizzonte aiuta gli occhi a «mettersi d'accordo» con lui.",
+      "explanation": "L'orecchio interno percepisce il movimento; in nave o in aereo, guardare l'orizzonte aiuta gli occhi a «mettersi d'accordo» con l'orecchio.",
       "id": "body-0059",
       "options": [
         "Il cuore",
@@ -591,7 +591,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Una persona che sulla Terra pesa 60 kg sulla Luna si sentirebbe leggera come 10 kg.",
+      "explanation": "Una persona che sulla Terra pesa 60 kg sulla Luna avrebbe la sensazione di pesarne appena 10.",
       "id": "sci-0093",
       "options": [
         "Circa un decimo",
@@ -774,10 +774,10 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 2,
-      "explanation": "Le banconote in polimero durano più di quelle di carta e sono più difficili da falsificare; oggi le usano molti Paesi.",
+      "explanation": "Le banconote in polimero durano più di quelle di carta e sono più difficili da falsificare; oggi le usano molti paesi.",
       "id": "misc-0044",
       "options": ["Australia", "Giappone", "Canada", "Singapore"],
-      "question": "Quale Paese emise per primo banconote di plastica (polimero), nel 1988?"
+      "question": "Quale paese emise per primo banconote di plastica (polimero), nel 1988?"
     },
     {
       "answer": 3,
@@ -786,7 +786,7 @@
       "explanation": "Una leggenda narra che un pastore etiope notò che le sue capre diventavano vivacissime dopo aver mangiato bacche di caffè.",
       "id": "food-0009",
       "options": ["Brasile", "Vietnam", "Colombia", "Etiopia"],
-      "question": "La pianta del caffè arabica è originaria degli altopiani di quale Paese?"
+      "question": "La pianta del caffè arabica è originaria degli altopiani di quale paese?"
     },
     {
       "answer": 1,
@@ -800,7 +800,7 @@
         "India",
         "Repubblica Democratica del Congo"
       ],
-      "question": "Quale Paese ha più lingue vive di qualsiasi altro, circa 840?"
+      "question": "Quale paese ha più lingue vive di qualsiasi altro, circa 840?"
     },
     {
       "answer": 3,
@@ -820,7 +820,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Le giraffe hanno lo stesso numero di vertebre cervicali degli esseri umani; solo che ognuna può essere lunga fino a 25 cm.",
+      "explanation": "Le giraffe hanno lo stesso numero di vertebre cervicali degli esseri umani, ma ognuna può essere lunga fino a 25 cm.",
       "id": "nat-0009",
       "options": ["Ventiquattro", "Dodici", "Diciotto", "Sette"],
       "question": "Quante vertebre ha il collo di una giraffa?"
@@ -874,7 +874,7 @@
         "La pioggia",
         "I terremoti"
       ],
-      "question": "Nel 132, che cosa rilevava il vaso di bronzo di Zhang Heng con draghi che lasciavano cadere palline?"
+      "question": "Nel 132 d.C., che cosa rilevava il vaso di bronzo di Zhang Heng con draghi che lasciavano cadere palline?"
     },
     {
       "answer": 1,
@@ -884,7 +884,7 @@
       "id": "avi-0046",
       "options": [
         "Il peso massimo",
-        "La direzione bussola",
+        "La direzione magnetica",
         "La lunghezza",
         "L'ordine di costruzione"
       ],
@@ -922,10 +922,10 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Il Lesotho è l'unico Paese interamente sopra i 1.000 m di quota, da cui il soprannome di «Regno nel cielo».",
+      "explanation": "Il Lesotho è l'unico paese interamente sopra i 1.000 m di quota, da cui il soprannome di «Regno nel cielo».",
       "id": "geo-0033",
       "options": ["Lesotho", "Botswana", "Namibia", "eSwatini"],
-      "question": "Quale Paese è completamente circondato dal Sudafrica?"
+      "question": "Quale paese è completamente circondato dal Sudafrica?"
     },
     {
       "answer": 2,
@@ -954,7 +954,7 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Il pellegrinaggio di Mansa Musa attraverso Il Cairo nel 1324 diffuse così tanto oro che il suo valore in Egitto calò per anni.",
+      "explanation": "Durante il pellegrinaggio del 1324, passando per Il Cairo, Mansa Musa distribuì così tanto oro che in Egitto il valore del metallo calò per anni.",
       "id": "his-0067",
       "options": [
         "Regno di Axum",
@@ -1081,7 +1081,7 @@
       "explanation": "Dopo la pioggia, un velo d'acqua trasforma Uyuni in uno specchio gigantesco che riflette il cielo.",
       "id": "geo-0110",
       "options": ["Perù", "Cile", "Bolivia", "Argentina"],
-      "question": "In quale Paese si trova il Salar de Uyuni, la più grande distesa di sale del mondo?"
+      "question": "In quale paese si trova il Salar de Uyuni, la più grande distesa di sale del mondo?"
     },
     {
       "answer": 1,
@@ -1103,7 +1103,7 @@
       "difficulty": 3,
       "explanation": "La finissima polvere marziana diffonde in avanti la luce blu, così l'alone intorno al Sole al tramonto appare blu alle fotocamere dei rover.",
       "id": "sci-0064",
-      "options": ["Rosso scuro", "Giallo dorato", "Arancione", "Bluastri"],
+      "options": ["Rosso scuro", "Giallo dorato", "Arancione", "Bluastro"],
       "question": "Di che colore appaiono di solito i tramonti su Marte?"
     },
     {

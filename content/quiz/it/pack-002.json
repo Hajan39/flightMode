@@ -1,0 +1,2667 @@
+{
+  "id": "pack-002",
+  "lang": "it",
+  "questions": [
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Le irregolarità nell'orbita di Urano permisero agli astronomi di calcolare dove doveva trovarsi un pianeta invisibile; fu trovato nel 1846.",
+      "id": "sci-0070",
+      "options": ["Marte", "Nettuno", "Urano", "Saturno"],
+      "question": "Quale pianeta fu previsto con la matematica prima che qualcuno lo vedesse?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "A dispetto dei film, la fascia degli asteroidi è per lo più spazio vuoto; le sonde la attraversano senza dover schivare rocce.",
+      "id": "sci-0054",
+      "options": [
+        "Marte e Giove",
+        "Terra e Marte",
+        "Giove e Saturno",
+        "Venere e Terra"
+      ],
+      "question": "La fascia principale degli asteroidi si trova tra le orbite di quali due pianeti?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Le misure del debole bagliore residuo del Big Bang, la radiazione cosmica di fondo, indicano un'età di circa 13,8 miliardi di anni.",
+      "id": "sci-0059",
+      "options": [
+        "25 miliardi di anni",
+        "100 miliardi di anni",
+        "4,6 miliardi di anni",
+        "13,8 miliardi di anni"
+      ],
+      "question": "Quanti anni ha all'incirca l'universo?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Le particelle cariche del Sole vengono deviate dal campo magnetico terrestre e fanno brillare le molecole dell'aria di verde, rosso o viola.",
+      "id": "sci-0057",
+      "options": [
+        "Riflessi del ghiaccio polare",
+        "Particelle provenienti dal Sole",
+        "Fulmini nell'alta atmosfera",
+        "La luce lunare sui cristalli di ghiaccio"
+      ],
+      "question": "Che cosa causa l'aurora boreale?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Un giorno marziano si chiama sol; i team delle missioni a volte vivono con l'«ora di Marte», spostando i propri orari di 40 minuti al giorno.",
+      "id": "sci-0063",
+      "options": [
+        "10 ore e 30 minuti",
+        "6 ore e 15 minuti",
+        "24 ore e 40 minuti",
+        "58 giorni terrestri"
+      ],
+      "question": "Quanto dura all'incirca un giorno su Marte?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "L'alluminio costituisce circa l'8% della crosta, ma un tempo era così difficile da produrre da risultare più raro dell'oro; Napoleone III serviva gli ospiti con posate di alluminio.",
+      "id": "sci-0072",
+      "options": ["Rame", "Alluminio", "Calcio", "Ferro"],
+      "question": "Qual è il metallo più abbondante nella crosta terrestre?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "I granuli minerali più antichi conosciuti, zirconi australiani, hanno circa 4,4 miliardi di anni.",
+      "id": "sci-0058",
+      "options": [
+        "Circa 450 milioni di anni",
+        "Circa 10 miliardi di anni",
+        "Circa 1 miliardo di anni",
+        "Circa 4,5 miliardi di anni"
+      ],
+      "question": "Quanti anni ha all'incirca la Terra?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Nemmeno la luce può sfuggire dall'interno dell'orizzonte degli eventi, ed è per questo che i buchi neri appaiono neri.",
+      "id": "sci-0065",
+      "options": [
+        "Orizzonte degli eventi",
+        "Disco di accrescimento",
+        "Corona",
+        "Singolarità"
+      ],
+      "question": "Come si chiama il confine attorno a un buco nero oltre il quale nulla può sfuggire?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Una supernova può brillare per breve tempo più di un'intera galassia; esplosioni simili hanno forgiato molti degli elementi del nostro corpo.",
+      "id": "sci-0062",
+      "options": [
+        "Un pianeta appena nato",
+        "Una stella che esplode",
+        "Una cometa molto luminosa",
+        "Una galassia gigante"
+      ],
+      "question": "Che cos'è una supernova?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Il libro di Copernico uscì nell'anno della sua morte, e la leggenda vuole che ne abbia visto la prima copia stampata sul letto di morte.",
+      "id": "sci-0067",
+      "options": [
+        "Giovanni Keplero",
+        "Claudio Tolomeo",
+        "Galileo Galilei",
+        "Niccolò Copernico"
+      ],
+      "question": "Chi pubblicò nel 1543 il modello del Sistema solare con il Sole al centro?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Un litro di osmio peserebbe circa 22,6 kg, quasi il doppio di un litro di piombo.",
+      "id": "sci-0075",
+      "options": ["Oro", "Piombo", "Uranio", "Osmio"],
+      "question": "Qual è l'elemento naturale più denso?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "I Principia di Newton spiegavano con la stessa legge di gravità sia la caduta delle mele sia l'orbita delle lune.",
+      "id": "sci-0066",
+      "options": [
+        "Giovanni Keplero",
+        "Niccolò Copernico",
+        "Galileo Galilei",
+        "Isaac Newton"
+      ],
+      "question": "Chi formulò le leggi del moto e della gravitazione universale, pubblicate nel 1687?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Un fulmine può riscaldare l'aria fino a circa 30.000 °C; l'espansione improvvisa di quell'aria è il tuono che sentiamo.",
+      "id": "sci-0076",
+      "options": [
+        "Più o meno uguale",
+        "Circa 100 volte di più",
+        "Circa la metà",
+        "Circa cinque volte di più"
+      ],
+      "question": "Quanto può essere caldo un fulmine rispetto alla superficie del Sole?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Io, Europa, Ganimede e Callisto sono chiamate ancora oggi satelliti medicei o galileiani.",
+      "id": "sci-0068",
+      "options": [
+        "Isaac Newton",
+        "Tycho Brahe",
+        "Galileo Galilei",
+        "Giovanni Keplero"
+      ],
+      "question": "Chi scoprì quattro grandi lune di Giove con un telescopio nel 1610?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Lo scuotimento del suolo cresce di circa 10 volte per grado, ma l'energia di circa 32; un terremoto di magnitudo 7 libera circa 1.000 volte più energia di uno di 5.",
+      "id": "sci-0086",
+      "options": [
+        "Circa 32 volte",
+        "Circa 2 volte",
+        "Circa 100 volte",
+        "Circa 10 volte"
+      ],
+      "question": "Ogni grado in più sulla scala di magnitudo dei terremoti libera all'incirca quanta energia in più?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Ogni gas brilla di un colore proprio; le insegne «al neon» di altri colori usano spesso altri gas o tubi rivestiti.",
+      "id": "sci-0071",
+      "options": ["Neon", "Elio", "Argon", "Xeno"],
+      "question": "Quale gas emette una luce rosso-arancio nelle classiche insegne pubblicitarie?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "I cumulonembi possono torreggiare fino a 12 km o più, e gli aerei di linea li aggirano.",
+      "id": "sci-0079",
+      "options": ["Strato", "Altocumulo", "Cumulonembo", "Cirro"],
+      "question": "Quale tipo di nube produce i temporali?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La ruggine richiede sia ossigeno sia acqua; il sale la accelera soltanto, ed è per questo che le auto arrugginiscono prima vicino al mare.",
+      "id": "sci-0073",
+      "options": ["Sale", "Luce solare", "Acqua", "Azoto"],
+      "question": "Il ferro arrugginisce quando reagisce con l'ossigeno e con cos'altro?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "La misura fu presa nel 1913 a Furnace Creek; l'OMM la riconosce ancora, anche se alcuni meteorologi ne mettono in dubbio l'accuratezza.",
+      "id": "sci-0080",
+      "options": [
+        "Dallol, Etiopia",
+        "Death Valley, USA",
+        "Deserto del Lut, Iran",
+        "Kuwait City, Kuwait"
+      ],
+      "question": "Quale luogo detiene il record mondiale ufficiale della temperatura dell'aria più alta, 56,7 °C?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "I getti provengono da un oceano salato nascosto sotto la crosta ghiacciata di Encelado, che ne fa un obiettivo nella ricerca della vita.",
+      "id": "sci-0090",
+      "options": ["Giove", "Urano", "Saturno", "Nettuno"],
+      "question": "Encelado, una luna che spruzza getti d'acqua nello spazio, orbita attorno a quale pianeta?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Il ghiaccio secco passa direttamente da solido a gas a circa −78,5 °C senza fondere, creando la nebbia spettrale degli effetti scenici.",
+      "id": "sci-0074",
+      "options": [
+        "Metano",
+        "Monossido di carbonio",
+        "Azoto",
+        "Anidride carbonica"
+      ],
+      "question": "Il ghiaccio secco è la forma solida di quale sostanza?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Il record fu stabilito nel luglio 1983 alla stazione di ricerca russa Vostok, in alto sulla calotta glaciale antartica.",
+      "id": "sci-0081",
+      "options": ["Verchojansk", "Ojmjakon", "Stazione Vostok", "Polo Sud"],
+      "question": "Dove fu misurata la temperatura naturale dell'aria più bassa sulla superficie terrestre, −89,2 °C?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Il vapore acqueo è invisibile; le nuvole si formano quando condensa in minuscole goccioline o cristalli di ghiaccio attorno a granelli di polvere.",
+      "id": "sci-0078",
+      "options": [
+        "Vapore acqueo invisibile",
+        "Particelle di polvere e fumo",
+        "Vapore che sale dal mare",
+        "Goccioline d'acqua o ghiaccio"
+      ],
+      "question": "Di che cosa sono fatte soprattutto le nuvole?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "L'effetto Coriolis, dovuto alla rotazione terrestre, fa ruotare queste tempeste in senso antiorario a nord e orario a sud.",
+      "id": "sci-0084",
+      "options": [
+        "In senso orario",
+        "In entrambi i sensi",
+        "Non ruotano",
+        "In senso antiorario"
+      ],
+      "question": "Nell'emisfero australe, in che senso ruotano i cicloni tropicali?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Philae, il lander di Rosetta, rimbalzò due volte sulla superficie della cometa prima di fermarsi in un punto in ombra.",
+      "id": "sci-0092",
+      "options": ["Stardust", "Deep Impact", "Rosetta", "Giotto"],
+      "question": "Quale missione fece atterrare il primo lander su una cometa, nel 2014?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Uragani e tifoni sono lo stesso tipo di tempesta, un ciclone tropicale, chiamato in modo diverso a seconda della regione.",
+      "id": "sci-0082",
+      "options": ["Tornado", "Tifoni", "Bufere di neve", "Monsoni"],
+      "question": "Come si chiamano gli uragani nel Pacifico nord-occidentale?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "L'ossidiana si forma quando la lava si raffredda troppo in fretta perché crescano cristalli; i suoi bordi possono essere più affilati dei bisturi d'acciaio.",
+      "id": "sci-0087",
+      "options": [
+        "Legno fossile",
+        "Un meteorite",
+        "Un tipo di carbone",
+        "Vetro vulcanico"
+      ],
+      "question": "Che cos'è l'ossidiana?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "L'occhio può essere largo decine di chilometri; i venti più violenti soffiano nella parete che lo circonda.",
+      "id": "sci-0083",
+      "options": [
+        "I venti più forti",
+        "Grandine e neve fitta",
+        "Nebbia fitta e pioviggine",
+        "Calma, spesso sereno"
+      ],
+      "question": "Che tempo fa di solito nell'occhio di un uragano?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Il corindone blu si chiama zaffiro; il colore rosso del rubino deriva da tracce di cromo.",
+      "id": "sci-0088",
+      "options": ["Quarzo", "Granato", "Berillo", "Corindone"],
+      "question": "Il rubino è una varietà rossa di quale minerale?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "La pressione atmosferica più bassa abbassa il punto di ebollizione, quindi in alta quota la pasta cuoce molto lentamente.",
+      "id": "sci-0098",
+      "options": ["Circa 70 °C", "Circa 120 °C", "Circa 50 °C", "Circa 100 °C"],
+      "question": "Sulla vetta dell'Everest, a quale temperatura bolle all'incirca l'acqua?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La roccia fusa si chiama magma sottoterra e lava quando erutta in superficie.",
+      "id": "sci-0085",
+      "options": ["Ossidiana", "Basalto", "Lava", "Magma"],
+      "question": "Come si chiama la roccia fusa sotto la superficie terrestre?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Lanciata nel 1977, la Voyager 1 è entrata nello spazio interstellare nel 2012 e porta un disco d'oro con suoni della Terra.",
+      "id": "sci-0091",
+      "options": ["Pioneer 10", "New Horizons", "Voyager 1", "Voyager 2"],
+      "question": "Quale veicolo spaziale è l'oggetto costruito dall'uomo più lontano dalla Terra?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "L'ambra può conservare insetti, piume e perfino parti di code di dinosauro in dettaglio perfetto per milioni di anni.",
+      "id": "sci-0089",
+      "options": ["Resina d'albero", "Miele", "Osso animale", "Conchiglie"],
+      "question": "L'ambra è la forma fossile di che cosa?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Il Sole contiene circa il 99,8% di tutta la massa del Sistema solare; Giove ha la maggior parte del resto.",
+      "id": "sci-0095",
+      "options": [
+        "Circa il 90%",
+        "Oltre il 99%",
+        "Circa il 50%",
+        "Circa il 75%"
+      ],
+      "question": "Quale percentuale della massa del Sistema solare si trova, all'incirca, nel Sole?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Questa espansione è il motivo per cui il ghiaccio galleggia e l'acqua che gela può far scoppiare i tubi e spaccare le rocce.",
+      "id": "sci-0101",
+      "options": ["Circa l'1%", "Circa il 50%", "Circa il 25%", "Circa il 9%"],
+      "question": "Di quanto aumenta all'incirca il volume dell'acqua quando gela?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Il Sole è una stella di sequenza principale di tipo G di mezza età: ha circa 4,6 miliardi di anni ed è più o meno a metà della sua vita.",
+      "id": "sci-0096",
+      "options": [
+        "Una gigante rossa",
+        "Una gigante blu",
+        "Una nana bianca",
+        "Una nana gialla"
+      ],
+      "question": "Che tipo di stella è il Sole?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Nettuno impiega circa 165 anni terrestri per girare attorno al Sole; ha completato la prima orbita dalla sua scoperta solo nel 2011.",
+      "id": "sci-0094",
+      "options": ["Giove", "Urano", "Nettuno", "Saturno"],
+      "question": "Quale pianeta è il più lontano dal Sole?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "L'argento conduce un po' meglio del rame, ma per i cavi si usa il rame perché costa molto meno.",
+      "id": "sci-0097",
+      "options": ["Argento", "Alluminio", "Oro", "Rame"],
+      "question": "Quale metallo conduce meglio l'elettricità?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Ittrio, itterbio, terbio ed erbio prendono tutti il nome da Ytterby, un villaggio vicino a Stoccolma con una ricca cava di minerali.",
+      "id": "sci-0102",
+      "options": ["Polonia", "Germania", "Svezia", "Scozia"],
+      "question": "In quale paese si trova il villaggio che ha dato il nome a quattro elementi chimici?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "L'ozono è una forma di ossigeno con tre atomi; assorbe la maggior parte dei dannosi raggi UV-B e UV-C del Sole.",
+      "id": "sci-0099",
+      "options": ["Argon", "Azoto", "Ozono", "Metano"],
+      "question": "Quale gas dell'alta atmosfera ci protegge dalla maggior parte delle radiazioni ultraviolette?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "A circa 28.000 km/h, un veicolo a quell'altezza vede circa 16 albe e tramonti al giorno.",
+      "id": "sci-0100",
+      "options": [
+        "Circa 24 ore",
+        "Circa 90 minuti",
+        "Circa 12 ore",
+        "Circa 10 minuti"
+      ],
+      "question": "All'altezza della ISS, circa 400 km, quanto dura all'incirca un'orbita attorno alla Terra?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La maggior parte delle stelle cadenti sono granelli di polvere non più grandi della sabbia, che bruciano a circa 80–100 km dal suolo.",
+      "id": "sci-0107",
+      "options": [
+        "Un meteoroide che brucia",
+        "Un satellite che riflette luce",
+        "La coda di una cometa",
+        "Una stella che cade sulla Terra"
+      ],
+      "question": "Che cos'è in realtà una «stella cadente»?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Curie battezzò il polonio nel 1898, quando la Polonia non esisteva come Stato indipendente, per richiamare l'attenzione sulla causa polacca.",
+      "id": "sci-0104",
+      "options": ["Germanio", "Radio", "Polonio", "Francio"],
+      "question": "A quale elemento Marie Curie diede il nome della sua patria?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Selene era la dea greca della Luna; il tellurio, scoperto prima, prese il nome da Tellus, la Terra.",
+      "id": "sci-0103",
+      "options": ["Selenio", "Cerio", "Elio", "Tellurio"],
+      "question": "Quale elemento chimico prende il nome dalla Luna?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Gli elettroni sono circa 1.800 volte più leggeri dei protoni, quindi quasi tutta la massa di un atomo è nel suo minuscolo nucleo.",
+      "id": "sci-0109",
+      "options": ["Protone", "Neutrone", "Elettrone", "Fotone"],
+      "question": "Quale particella dell'atomo ha carica negativa?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "L'aria di Marte è composta per circa il 95% da anidride carbonica ed è così rarefatta che la pressione è meno dell'1% di quella terrestre.",
+      "id": "sci-0105",
+      "options": [
+        "Metano",
+        "Azoto",
+        "Monossido di carbonio",
+        "Anidride carbonica"
+      ],
+      "question": "Qual è il gas principale dell'atmosfera di Marte?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Poiché c² è enorme, una minima quantità di massa racchiude un'enorme quantità di energia, che alimenta il Sole.",
+      "id": "sci-0110",
+      "options": [
+        "La velocità della luce",
+        "La costante di Coulomb",
+        "La velocità del suono",
+        "La massa del carbonio"
+      ],
+      "question": "Nell'equazione E = mc², che cosa indica la «c»?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Le Perseidi sono detriti della cometa Swift-Tuttle; al picco, da un luogo buio, si possono vedere decine di meteore all'ora.",
+      "id": "sci-0108",
+      "options": ["Aprile", "Ottobre", "Dicembre", "Agosto"],
+      "question": "In quale mese raggiunge di solito il picco lo sciame meteorico delle Perseidi?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Ogni lato dell'esagono di Saturno è più lungo del diametro terrestre; fu avvistato per la prima volta dalle sonde Voyager.",
+      "id": "sci-0106",
+      "options": ["Nettuno", "Saturno", "Urano", "Giove"],
+      "question": "Quale pianeta ha al polo nord una gigantesca struttura nuvolosa a forma di esagono?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "I globuli rossi 0 negativo sono privi degli antigeni A, B e RhD, quindi si usano nelle emergenze quando non c'è tempo per i test.",
+      "id": "body-0007",
+      "options": ["A negativo", "0 negativo", "B positivo", "AB positivo"],
+      "question": "Quale gruppo sanguigno, il «donatore universale», può essere trasfuso come globuli rossi quasi a chiunque?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Ai marinai britannici veniva dato succo di limone o di lime per prevenire lo scorbuto, da cui il soprannome «limeys».",
+      "id": "body-0009",
+      "options": ["Beriberi", "Rachitismo", "Scorbuto", "Pellagra"],
+      "question": "Una carenza prolungata di vitamina C causa quale malattia, un tempo temuta dai marinai?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "La staffa, nell'orecchio medio, è lunga solo circa 3 mm e trasmette le vibrazioni sonore all'orecchio interno.",
+      "id": "body-0003",
+      "options": ["Nel dito", "Nell'orecchio", "Nell'alluce", "Nel naso"],
+      "question": "Dove si trova l'osso più piccolo del corpo umano?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "L'osso della coscia corrisponde a circa un quarto dell'altezza di una persona ed è anche una delle ossa più robuste.",
+      "id": "body-0004",
+      "options": ["Perone", "Femore", "Tibia", "Omero"],
+      "question": "Qual è l'osso più lungo del corpo umano?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "I disegni dell'iride sono così individuali che, come le impronte digitali, si usano per l'identificazione biometrica.",
+      "id": "body-0010",
+      "options": ["Iride", "Cristallino", "Cornea", "Retina"],
+      "question": "Quale parte colorata dell'occhio regola la quantità di luce che entra?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Due atri ricevono il sangue e due ventricoli lo pompano fuori, verso i polmoni e verso il resto del corpo.",
+      "id": "body-0005",
+      "options": ["Sei", "Quattro", "Due", "Tre"],
+      "question": "Quante cavità ha il cuore umano?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "L'emoglobina diventa rosso vivo quando lega l'ossigeno, ed è per questo che il sangue arterioso è più chiaro di quello venoso.",
+      "id": "body-0012",
+      "options": ["Insulina", "Cheratina", "Collagene", "Emoglobina"],
+      "question": "Quale proteina contenente ferro trasporta l'ossigeno nei globuli rossi?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Il polmone sinistro ha solo due lobi, lasciando spazio al cuore.",
+      "id": "body-0030",
+      "options": ["Cinque", "Tre", "Quattro", "Due"],
+      "question": "Quanti lobi ha il polmone destro?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "L'insulina fu usata per la prima volta contro il diabete nel 1922, quando un ragazzo di 14 anni a Toronto ricevette un'iniezione.",
+      "id": "body-0006",
+      "options": ["Pancreas", "Milza", "Reni", "Fegato"],
+      "question": "Quale organo produce l'insulina?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Il grande gluteo, nella natica, mantiene il corpo eretto e dà forza nell'arrampicata e nella corsa.",
+      "id": "body-0014",
+      "options": [
+        "Gran dorsale",
+        "Grande gluteo",
+        "Grande pettorale",
+        "Bicipite brachiale"
+      ],
+      "question": "Qual è il muscolo più grande del corpo umano?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "La vitamina D aiuta il corpo ad assorbire il calcio per avere ossa forti; molte persone alle alte latitudini ne producono meno d'inverno.",
+      "id": "body-0008",
+      "options": ["Vitamina D", "Vitamina A", "Vitamina K", "Vitamina C"],
+      "question": "Quale vitamina produce la tua pelle quando è esposta al sole?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Molte ossa del neonato, come parti del cranio, si fondono tra loro durante la crescita.",
+      "id": "body-0016",
+      "options": ["Circa 300", "Circa 150", "Circa 500", "Circa 206"],
+      "question": "Quante ossa ha all'incirca un neonato?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Un tempo ritenuta inutile, l'appendice potrebbe fungere da rifugio per i batteri intestinali benefici.",
+      "id": "body-0032",
+      "options": ["Intestino tenue", "Intestino crasso", "Stomaco", "Fegato"],
+      "question": "A quale organo è attaccata l'appendice?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "I globuli bianchi sono meno dell'1% del sangue, ma includono cellule che «ricordano» i germi per anni.",
+      "id": "body-0011",
+      "options": [
+        "Globuli bianchi",
+        "Cellule della pelle",
+        "Globuli rossi",
+        "Piastrine"
+      ],
+      "question": "Quali cellule del sangue sono le principali difese contro le infezioni?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Il formicolio viene dal nervo ulnare, che al gomito passa molto vicino alla pelle.",
+      "id": "body-0018",
+      "options": ["Un nervo", "Un osso", "Un tendine", "Un muscolo"],
+      "question": "Quando batti il gomito e senti una scossa lungo il braccio, che cosa stai colpendo davvero?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "I reni filtrano circa 180 litri di plasma sanguigno ogni giorno, restituendone quasi tutto al corpo.",
+      "id": "body-0013",
+      "options": ["Fegato", "Milza", "Reni", "Polmoni"],
+      "question": "Quali organi filtrano il sangue per produrre l'urina?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "La bile aiuta a digerire i grassi; la cistifellea la spreme nell'intestino dopo un pasto grasso.",
+      "id": "body-0021",
+      "options": ["Milza", "Pancreas", "Appendice", "Cistifellea"],
+      "question": "Quale piccolo organo immagazzina la bile prodotta dal fegato?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Nonostante il nome, l'intestino tenue è molto più lungo dell'intestino crasso; è «tenue» solo per il diametro.",
+      "id": "body-0033",
+      "options": ["Circa 50 cm", "Circa 1 m", "Circa 6 m", "Circa 15 m"],
+      "question": "Quanto è lungo all'incirca l'intestino tenue di un adulto?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "I neonati sono composti per circa il 75% d'acqua; cervello e cuore lo sono per circa il 73%.",
+      "id": "body-0015",
+      "options": [
+        "Circa il 60%",
+        "Circa il 30%",
+        "Circa il 45%",
+        "Circa il 90%"
+      ],
+      "question": "Quale percentuale all'incirca del corpo di un adulto è acqua?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Minuscole cellule ciliate nella coclea rispondono a diverse altezze di suono; una volta danneggiate, non ricrescono.",
+      "id": "body-0022",
+      "options": [
+        "Equilibra la pressione dell'aria",
+        "Mantiene il corpo in equilibrio",
+        "Produce il cerume",
+        "Trasforma i suoni in segnali"
+      ],
+      "question": "Che cosa fa la coclea, a forma di chiocciola, nel tuo orecchio interno?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Lo smalto è composto per circa il 96% da minerali, ma non contiene cellule vive, quindi non può ripararsi da solo.",
+      "id": "body-0017",
+      "options": ["Smalto dentale", "Cartilagine", "Unghia", "Femore"],
+      "question": "Qual è la sostanza più dura del corpo umano?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Il cervelletto, cioè «piccolo cervello», contiene più della metà dei neuroni dell'encefalo in un decimo del suo volume.",
+      "id": "body-0023",
+      "options": ["Ippocampo", "Cervelletto", "Lobo frontale", "Ipofisi"],
+      "question": "Quale parte dell'encefalo coordina principalmente equilibrio e movimento?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Dove il nervo ottico lascia l'occhio non ci sono cellule sensibili alla luce; il cervello riempie il vuoto e non ce ne accorgiamo.",
+      "id": "body-0035",
+      "options": [
+        "Lì esce il nervo ottico",
+        "L'iride lo copre",
+        "Lì il cristallino è più spesso",
+        "Lì si raccolgono le lacrime"
+      ],
+      "question": "Perché ogni occhio umano ha un piccolo «punto cieco»?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Una persona può donare una parte del fegato, e sia il fegato del donatore sia quello del ricevente ricrescono nel giro di mesi.",
+      "id": "body-0019",
+      "options": ["Polmoni", "Cuore", "Fegato", "Cervello"],
+      "question": "Quale organo può ricrescere fino a dimensioni normali dopo che ne è stata asportata una parte?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Nel corso della vita il cuore batte più di 2,5 miliardi di volte senza mai fermarsi.",
+      "id": "body-0024",
+      "options": [
+        "Circa 100.000",
+        "Circa 1 milione",
+        "Circa 1.000",
+        "Circa 10.000"
+      ],
+      "question": "Quante volte batte all'incirca in un giorno il cuore di un adulto a riposo?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Molte persone non sviluppano tutti e quattro i denti del giudizio, quindi è comune anche una dentatura di 28 denti.",
+      "id": "body-0020",
+      "options": ["24", "36", "28", "32"],
+      "question": "Quanti denti ha una dentatura adulta completa, compresi i denti del giudizio?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Kikunae Ikeda identificò l'umami nel 1908 studiando il brodo di alga kombu; è il gusto del glutammato.",
+      "id": "body-0027",
+      "options": ["Piccante", "Umami", "Metallico", "Mentolato"],
+      "question": "Quale gusto fondamentale, spesso descritto come sapido, fu identificato per primo da uno scienziato giapponese?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "La scoperta di Landsteiner rese possibili trasfusioni sicure e gli valse il premio Nobel nel 1930.",
+      "id": "body-0042",
+      "options": [
+        "Joseph Lister",
+        "Robert Koch",
+        "Alexander Fleming",
+        "Karl Landsteiner"
+      ],
+      "question": "Chi scoprì i principali gruppi sanguigni umani nel 1901?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "La temperatura corporea varia naturalmente durante il giorno: è più bassa al primo mattino e più alta nel tardo pomeriggio.",
+      "id": "body-0025",
+      "options": ["Circa 37 °C", "Circa 39 °C", "Circa 35 °C", "Circa 40 °C"],
+      "question": "Qual è la temperatura corporea media normale dell'uomo?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "La capsaicina attiva gli stessi recettori nervosi del calore vero; gli uccelli non la percepiscono, quindi mangiano volentieri i peperoncini e ne spargono i semi.",
+      "id": "body-0028",
+      "options": ["Caffeina", "Mentolo", "Capsaicina", "Tannino"],
+      "question": "Quale composto rende piccanti i peperoncini?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Capelli e unghie al di sopra della pelle sono fatti di cellule morte, ed è per questo che tagliarli non fa male.",
+      "id": "body-0026",
+      "options": ["Collagene", "Melanina", "Emoglobina", "Cheratina"],
+      "question": "Capelli e unghie sono fatti soprattutto di quale proteina?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Il cervello è solo circa il 2% del peso corporeo ma usa circa un quinto dell'energia del corpo a riposo.",
+      "id": "body-0029",
+      "options": [
+        "Circa il 75%",
+        "Circa il 20%",
+        "Circa il 50%",
+        "Circa il 2%"
+      ],
+      "question": "Quanta parte dell'energia del corpo a riposo usa all'incirca il cervello?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Prima di Harvey molti credevano che il sangue fosse prodotto di continuo dal fegato e consumato dal corpo.",
+      "id": "body-0043",
+      "options": ["Ippocrate", "Galeno", "Andrea Vesalio", "William Harvey"],
+      "question": "Chi descrisse per primo correttamente la circolazione del sangue nel corpo, nel 1628?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "La trachea è tenuta aperta da anelli di cartilagine a forma di C, che puoi sentire sul davanti del collo.",
+      "id": "body-0031",
+      "options": ["Laringe", "Faringe", "Trachea", "Esofago"],
+      "question": "Qual è il nome medico del condotto che porta l'aria ai polmoni?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "La retina ha circa 120 milioni di bastoncelli per la luce fioca ma solo circa 6 milioni di coni per i colori.",
+      "id": "body-0034",
+      "options": ["Retina", "Sclera", "Cornea", "Iride"],
+      "question": "Quale strato sul fondo dell'occhio contiene i bastoncelli e i coni sensibili alla luce?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "L'aorta, l'arteria più grande, è larga più o meno come un tubo da giardino; i capillari sono più sottili di un capello.",
+      "id": "body-0037",
+      "options": ["Capillari", "Vene", "Arterie", "Vasi linfatici"],
+      "question": "Quali vasi sanguigni portano il sangue lontano dal cuore?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Negli antenati pelosi, rizzare i peli tratteneva aria calda o li faceva sembrare più grandi agli occhi dei rivali.",
+      "id": "body-0036",
+      "options": [
+        "Terminazioni nervose",
+        "Ghiandole sudoripare",
+        "Follicoli piliferi",
+        "Vasi sanguigni"
+      ],
+      "question": "La pelle d'oca è causata da minuscoli muscoli attaccati a che cosa?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Il tuo corpo produce milioni di nuovi globuli rossi ogni secondo per sostituire quelli vecchi.",
+      "id": "body-0047",
+      "options": [
+        "Circa 2 anni",
+        "Circa 120 giorni",
+        "Circa 7 giorni",
+        "Circa 1 giorno"
+      ],
+      "question": "Quanto vive all'incirca un globulo rosso?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Le piastrine sono minuscoli frammenti di cellule che accorrono su una ferita e si aggregano per chiuderla.",
+      "id": "body-0038",
+      "options": [
+        "Trasportare l'ossigeno",
+        "Favorire la coagulazione",
+        "Produrre ormoni",
+        "Combattere i germi"
+      ],
+      "question": "Qual è il compito principale delle piastrine nel sangue?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Jenner usò materiale prelevato dalle pustole del vaiolo bovino; la parola vaccino deriva dal latino vacca.",
+      "id": "body-0040",
+      "options": [
+        "Edward Jenner",
+        "Louis Pasteur",
+        "Robert Koch",
+        "Joseph Lister"
+      ],
+      "question": "Chi sviluppò il primo vaccino, contro il vaiolo, nel 1796?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Fleming notò che una muffa cresciuta su una piastra dimenticata aveva ucciso i batteri attorno a sé.",
+      "id": "body-0039",
+      "options": [
+        "Alexander Fleming",
+        "Ignaz Semmelweis",
+        "Louis Pasteur",
+        "Edward Jenner"
+      ],
+      "question": "Chi scoprì la penicillina nel 1928?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "L'Organizzazione mondiale della sanità dichiarò eradicato il vaiolo nel 1980, dopo una campagna di vaccinazione globale.",
+      "id": "body-0041",
+      "options": ["Morbillo", "Vaiolo", "Poliomielite", "Malaria"],
+      "question": "Qual è l'unica malattia umana completamente eradicata in tutto il mondo?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Le fibre nervose rapide sono avvolte da uno strato grasso di mielina che permette ai segnali di propagarsi a salti lungo di esse a oltre 400 km/h.",
+      "id": "body-0049",
+      "options": [
+        "Fino a circa 120 m/s",
+        "Quasi alla velocità della luce",
+        "Circa 1 m/s",
+        "Circa 3.000 m/s"
+      ],
+      "question": "A che velocità possono viaggiare i segnali nervosi più rapidi del corpo?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Circa il 99% del calcio del corpo è immagazzinato in ossa e denti.",
+      "id": "body-0046",
+      "options": ["Potassio", "Calcio", "Ferro", "Sodio"],
+      "question": "Quale minerale è il principale costituente di ossa e denti?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Distesi, gli alveoli coprirebbero circa 70 m² o più, un'enorme superficie attraverso cui l'ossigeno entra nel sangue.",
+      "id": "body-0044",
+      "options": ["Reni", "Polmoni", "Intestino", "Fegato"],
+      "question": "Milioni di minuscole sacche d'aria dette alveoli si trovano in quale organo?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Il midollo morbido all'interno delle ossa grandi, come le ossa dell'anca e lo sterno, è la fabbrica del sangue del corpo.",
+      "id": "body-0048",
+      "options": [
+        "Nel muscolo cardiaco",
+        "Nello stomaco",
+        "Nel midollo osseo",
+        "Nel fegato"
+      ],
+      "question": "Dove vengono prodotti i globuli rossi negli adulti?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Molti paesi aggiungono iodio al sale da cucina per prevenire i disturbi della tiroide.",
+      "id": "body-0045",
+      "options": ["Ferro", "Calcio", "Iodio", "Zinco"],
+      "question": "Di quale elemento ha bisogno la tiroide per produrre i suoi ormoni?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Il nome deriva dal greco per cavalluccio marino, a cui somiglia; i tassisti londinesi che imparano le strade della città hanno un ippocampo più grande.",
+      "id": "body-0055",
+      "options": ["Cervelletto", "Ippocampo", "Amigdala", "Talamo"],
+      "question": "Quale regione del cervello è fondamentale per formare nuovi ricordi?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Il suono «hic» si produce quando le corde vocali si chiudono di colpo subito dopo la contrazione del diaframma.",
+      "id": "body-0053",
+      "options": ["Lingua", "Stomaco", "Cuore", "Diaframma"],
+      "question": "Il singhiozzo è dato da spasmi improvvisi di quale muscolo?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "La luce intensa, soprattutto al mattino, inibisce la melatonina: per questo la luce del giorno aiuta a rimettere in sesto l'orologio biologico dopo il jet lag.",
+      "id": "body-0050",
+      "options": ["Adrenalina", "Cortisolo", "Insulina", "Melatonina"],
+      "question": "Quale ormone, rilasciato al buio, aiuta a regolare il sonno?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Il fegato pesa circa 1,5 kg e svolge centinaia di funzioni, dall'immagazzinare energia al ripulire il sangue.",
+      "id": "body-0054",
+      "options": ["Stomaco", "Cuore", "Cervello", "Fegato"],
+      "question": "Qual è l'organo interno più grande del corpo umano?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "L'ioide, a forma di U, si trova nel collo, è tenuto in posizione dai muscoli e sostiene la lingua.",
+      "id": "body-0058",
+      "options": ["Rotula", "Ioide", "Clavicola", "Coccige"],
+      "question": "Quale osso è l'unico del corpo non collegato a nessun altro osso?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Un cromosoma di ogni coppia proviene da ciascun genitore; la 23ª coppia determina il sesso biologico.",
+      "id": "body-0056",
+      "options": ["46", "21", "23", "25"],
+      "question": "Quante coppie di cromosomi ha la maggior parte delle cellule umane?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Deglutire o sbadigliare apre la tromba di Eustachio per equilibrare la pressione quando l'aereo sale o scende.",
+      "id": "body-0052",
+      "options": [
+        "Tromba di Eustachio",
+        "Canale semicircolare",
+        "Dotto lacrimale",
+        "Condotto uditivo"
+      ],
+      "question": "Quale condotto collega l'orecchio medio alla gola e ti fa «stappare» le orecchie?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Il sangue costituisce circa il 7–8% del peso corporeo, e a riposo il cuore ne pompa l'intero volume all'incirca una volta al minuto.",
+      "id": "body-0057",
+      "options": [
+        "Circa 1 litro",
+        "Circa 5 litri",
+        "Circa 2 litri",
+        "Circa 10 litri"
+      ],
+      "question": "Quanto sangue ha all'incirca un adulto medio?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Il guacamole risale agli Aztechi; il nome deriva da parole nahuatl per «avocado» e «salsa».",
+      "id": "food-0002",
+      "options": ["Avocado", "Cetriolo", "Pomodoro", "Pisello"],
+      "question": "Qual è l'ingrediente principale del guacamole?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "La paella valenciana tradizionale prevede coniglio, pollo e fagioli, e lo zafferano dà al riso il suo colore dorato.",
+      "id": "food-0001",
+      "options": ["Galizia", "Andalusia", "Catalogna", "Valencia"],
+      "question": "La paella, cotta in una larga padella piatta, è originaria di quale regione spagnola?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "L'hummus classico frulla i ceci con tahina (pasta di sesamo), succo di limone e aglio.",
+      "id": "food-0003",
+      "options": ["Fave", "Ceci", "Fagioli bianchi", "Lenticchie"],
+      "question": "L'hummus è fatto soprattutto con quale ingrediente?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Zucchero e latte furono aggiunti più tardi dagli europei; gli Aztechi usavano anche le fave di cacao come moneta.",
+      "id": "food-0012",
+      "options": ["Latte", "Zucchero", "Menta", "Peperoncino"],
+      "question": "Gli Aztechi bevevano la cioccolata come bevanda amara. Quale ingrediente aggiungevano spesso?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Si dice che pomodoro, mozzarella e basilico richiamino il rosso, il bianco e il verde della bandiera italiana.",
+      "id": "food-0004",
+      "options": ["Roma", "Napoli", "Milano", "Firenze"],
+      "question": "La pizza Margherita è tradizionalmente legata a quale città italiana?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Tradizionalmente le famiglie preparano insieme enormi quantità di kimchi prima dell'inverno, un'usanza chiamata kimjang.",
+      "id": "food-0005",
+      "options": ["Giapponese", "Thailandese", "Vietnamita", "Coreana"],
+      "question": "Il kimchi, verdure fermentate piccanti, è un alimento base di quale cucina?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "I fiori dell'arachide si piegano verso il basso e spingono i baccelli nel terreno, dove le arachidi maturano sottoterra.",
+      "id": "food-0014",
+      "options": ["Cereali", "Ortaggi a radice", "Legumi", "Frutta a guscio"],
+      "question": "Dal punto di vista botanico le arachidi non sono frutta secca a guscio. Che cosa sono?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Negli anni '30 dell'Ottocento alcuni fornai viennesi a Parigi contribuirono a diffondere il dolce, poi realizzato con una pasta sfogliata al burro.",
+      "id": "food-0019",
+      "options": ["Belgio", "Svizzera", "Austria", "Germania"],
+      "question": "Il croissant discende dal kipferl, un dolce a forma di mezzaluna di quale paese?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Il pesto alla genovese unisce basilico, pinoli, aglio, formaggio stagionato e olio d'oliva; il nome deriva da un verbo genovese che significa «pestare».",
+      "id": "food-0015",
+      "options": ["Noci", "Mandorle", "Pinoli", "Anacardi"],
+      "question": "Quale frutta secca si usa nel tradizionale pesto genovese?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Il tofu si ottiene facendo cagliare il latte di soia e pressando la cagliata, un po' come si fa con il formaggio.",
+      "id": "food-0008",
+      "options": ["Fagioli rossi", "Soia", "Fagioli mungo", "Ceci"],
+      "question": "Con quali legumi si fa il tofu?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Da secoli la città di Gouda ospita un mercato tradizionale del formaggio, dove gli allevatori commerciano le forme.",
+      "id": "food-0018",
+      "options": ["Paesi Bassi", "Danimarca", "Svizzera", "Belgio"],
+      "question": "Il formaggio Gouda prende il nome da una città di quale paese?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Missionari e mercanti portoghesi arrivarono nel XVI secolo; la parola tempura potrebbe derivare dal latino «tempora».",
+      "id": "food-0024",
+      "options": [
+        "Gli inglesi",
+        "Gli olandesi",
+        "Gli spagnoli",
+        "I portoghesi"
+      ],
+      "question": "Quali mercanti europei portarono in Giappone la tecnica di frittura alla base della tempura?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "L'acido del succo di lime modifica le proteine del pesce in modo simile al calore; il Perù celebra una giornata nazionale del ceviche.",
+      "id": "food-0027",
+      "options": ["Aceto", "Succo di agrumi", "Acqua salata", "Olio bollente"],
+      "question": "Nel ceviche il pesce crudo viene «cotto» lasciandolo in ammollo in che cosa?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "I frutti del cacao crescono direttamente sul tronco dell'albero, e ciascuno contiene circa 30–50 semi.",
+      "id": "food-0011",
+      "options": [
+        "Pianta del caffè",
+        "Orchidea della vaniglia",
+        "Albero del cacao",
+        "Carrubo"
+      ],
+      "question": "Il cioccolato si ricava dai semi di quale pianta?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Il cuscus è fatto di minuscole palline di semola cotte al vapore; nel 2020 l'UNESCO lo ha riconosciuto patrimonio condiviso di quattro paesi nordafricani.",
+      "id": "food-0028",
+      "options": ["Riso a chicco lungo", "Avena", "Grano duro", "Mais"],
+      "question": "Con quale cereale si prepara tradizionalmente il cuscus?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Il macis è il rivestimento rosso a rete che avvolge il seme della noce moscata; entrambi provengono da un albero originario delle isole Banda, in Indonesia.",
+      "id": "food-0033",
+      "options": ["Chiodo di garofano", "Cardamomo", "Macis", "Pimento"],
+      "question": "Quale spezia proviene dallo stesso frutto della noce moscata?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Si attribuisce ad Anna, duchessa di Bedford, l'idea di colmare così il lungo intervallo tra il pranzo e una cena tardiva.",
+      "id": "food-0029",
+      "options": ["Cina", "India", "Paesi Bassi", "Inghilterra"],
+      "question": "L'usanza del «tè del pomeriggio» nacque in quale paese negli anni '40 dell'Ottocento?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "La vera feta si fa soprattutto con latte di pecora e ha un nome protetto nell'UE che solo i produttori greci possono usare.",
+      "id": "food-0016",
+      "options": ["Grecia", "Spagna", "Francia", "Italia"],
+      "question": "La feta è tradizionalmente originaria di quale paese?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Noto come «uva spina cinese», fu ribattezzato con il nome dell'uccello kiwi della Nuova Zelanda quando iniziò a essere esportato negli anni '50.",
+      "id": "food-0036",
+      "options": ["Cile", "Nuova Zelanda", "Australia", "Cina"],
+      "question": "Da quale paese proviene in origine il kiwi?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Originario della costa del Malabar, in India, il pepe era un tempo così prezioso da essere chiamato «oro nero» e talvolta usato per pagare l'affitto.",
+      "id": "food-0034",
+      "options": ["India", "Brasile", "Madagascar", "Messico"],
+      "question": "Il pepe nero è originario di quale paese?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "I buchi, o «occhi», sono prodotti da bolle di anidride carbonica liberate dai batteri durante la stagionatura.",
+      "id": "food-0017",
+      "options": ["Cheddar", "Emmental", "Brie", "Gruviera"],
+      "question": "Quale formaggio svizzero è famoso per i suoi grandi buchi?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Le arance di Siviglia sono troppo aspre da mangiare crude ma ricche di pectina, ideali per una marmellata compatta.",
+      "id": "food-0037",
+      "options": ["Limoni", "Albicocche", "Fragoline di bosco", "Arance amare"],
+      "question": "Con quale frutto si prepara la marmellata tradizionale inglese, la «marmalade»?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Un tempo i marinai portavano i crauti nei lunghi viaggi perché si conservano per mesi e contengono vitamina C.",
+      "id": "food-0020",
+      "options": ["Cetriolo", "Cavolo", "Rapa", "Cipolla"],
+      "question": "I crauti si fanno con quale ortaggio fermentato?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Secondo la leggenda, un imperatore in viaggio in incognito versò il tè al suo servitore, che batté le dita come inchino segreto.",
+      "id": "food-0042",
+      "options": [
+        "Aggiungi zucchero",
+        "Smetti di versare",
+        "Il tè è freddo",
+        "Grazie"
+      ],
+      "question": "In alcune zone della Cina, che cosa significa battere due dita sul tavolo quando ti versano il tè?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Il boršč si mangia in tutta l'Europa orientale, spesso con una cucchiaiata di panna acida.",
+      "id": "food-0021",
+      "options": ["Barbabietola", "Pomodoro", "Cavolo rosso", "Peperone rosso"],
+      "question": "Quale ortaggio dà al boršč il suo colore rosso intenso?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Il brodo del pho sobbolle per ore con spezie come anice stellato, cannella e zenzero abbrustolito.",
+      "id": "food-0022",
+      "options": ["Vietnam", "Cambogia", "Thailandia", "Laos"],
+      "question": "Il pho è una zuppa di noodle di quale paese?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Significa all'incirca «ricevo umilmente» ed esprime gratitudine verso tutti e tutto ciò che ha reso possibile il pasto.",
+      "id": "food-0040",
+      "options": ["Sayōnara", "Konnichiwa", "Arigatō", "Itadakimasu"],
+      "question": "Che cosa si dice tradizionalmente in Giappone prima di iniziare un pasto?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Gran parte dello sciroppo d'acero del mondo viene dal Québec, che mantiene una riserva strategica di barili di sciroppo.",
+      "id": "food-0046",
+      "options": ["Circa 10", "Circa 4", "Circa 200", "Circa 40"],
+      "question": "Quanti litri di linfa d'acero si fanno bollire all'incirca per ottenere 1 litro di sciroppo d'acero?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Il termine sushi si riferisce al riso condito con aceto, quindi le fettine di pesce crudo da sole sono sashimi.",
+      "id": "food-0023",
+      "options": ["Onigiri", "Ramen", "Tempura", "Sashimi"],
+      "question": "Quale piatto giapponese consiste in pesce crudo tagliato a fettine servito senza riso?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Il riso con le bacchette piantate dritte si offre ai defunti ai funerali; si evita anche di passare il cibo da bacchetta a bacchetta.",
+      "id": "food-0041",
+      "options": [
+        "Offende il cuoco",
+        "Indica che hai finito",
+        "Ricorda un rito funebre",
+        "Significa che ne vuoi ancora"
+      ],
+      "question": "Perché in Giappone è scortese piantare le bacchette dritte in una ciotola di riso?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "L'haggis si mangia tradizionalmente nella Burns Night, il 25 gennaio, dopo che gli è stata recitata una poesia.",
+      "id": "food-0025",
+      "options": ["Scozia", "Norvegia", "Galles", "Irlanda"],
+      "question": "L'haggis è il piatto nazionale di quale paese?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Si dice che ogni acino porti fortuna per un mese dell'anno nuovo, e la folla si raduna alla Puerta del Sol di Madrid.",
+      "id": "food-0043",
+      "options": ["Italia", "Spagna", "Grecia", "Portogallo"],
+      "question": "Mangiare 12 acini d'uva a mezzanotte di San Silvestro, uno per ogni rintocco, è una tradizione di quale paese?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Il dim sum fa parte della tradizione cantonese dello «yum cha», bere il tè con piccoli piatti al mattino.",
+      "id": "food-0053",
+      "options": ["Shandong", "Cantonese", "Hunan", "Sichuan"],
+      "question": "A quale cucina regionale cinese è più legato il dim sum?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Il nome viene dall'ungherese «gulyás», cioè mandriano; i pastori lo cucinavano in paioli sul fuoco all'aperto.",
+      "id": "food-0026",
+      "options": ["Ungheria", "Grecia", "Polonia", "Romania"],
+      "question": "Il gulasch, uno stufato ricco di paprica, è nato in quale paese?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Gli zuccheri e l'acidità naturale del miele impediscono la crescita dei microbi; vasetti di miele venivano persino deposti nelle tombe dell'antico Egitto.",
+      "id": "food-0047",
+      "options": ["Olio d'oliva", "Pane", "Formaggio", "Miele"],
+      "question": "Quale alimento, tenuto sigillato, può durare decenni senza guastarsi grazie al basso contenuto d'acqua?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le piante di tè per il matcha vengono ombreggiate prima del raccolto, il che rende le foglie più verdi e dolci.",
+      "id": "food-0030",
+      "options": [
+        "Tè nero fermentato",
+        "Tè d'orzo tostato",
+        "Tè verde in polvere",
+        "Tè di menta essiccata"
+      ],
+      "question": "Che cos'è il matcha?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "L'injera si fa con il teff, un cereale minuscolo; fa da piatto e da cucchiaio, e i commensali ne strappano pezzi per raccogliere il cibo.",
+      "id": "food-0048",
+      "options": ["Etiopia", "Marocco", "Kenya", "Nigeria"],
+      "question": "L'injera, una focaccia spugnosa a lievitazione naturale, è centrale nella cucina di quale paese?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Il katsuobushi essiccato è uno degli alimenti più duri al mondo, così duro che si rade con una pialla come il legno.",
+      "id": "food-0055",
+      "options": [
+        "Tonnetto striato",
+        "Sardina",
+        "Sgombro",
+        "Salmone atlantico"
+      ],
+      "question": "Il katsuobushi, le scaglie affumicate usate nel brodo giapponese, si ricava da quale pesce?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "La curcuma è una radice imparentata con lo zenzero ed è usata come colorante sia per i tessuti sia per i cibi.",
+      "id": "food-0031",
+      "options": ["Paprica", "Cumino", "Curcuma", "Zenzero"],
+      "question": "Quale spezia dà a molti curry il loro colore giallo?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Gli Inca chiamavano la quinoa «madre di tutti i cereali»; in realtà è un seme imparentato con gli spinaci.",
+      "id": "food-0049",
+      "options": ["Gli Inca", "Gli Olmechi", "I Maya", "Gli Aztechi"],
+      "question": "La quinoa era una coltura base di quale antica civiltà?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le strisce di corteccia interna si arrotolano in «bastoncini» mentre seccano; la vera cannella viene dallo Sri Lanka.",
+      "id": "food-0032",
+      "options": ["Chiodo di garofano", "Pepe", "Cannella", "Noce moscata"],
+      "question": "Quale spezia si ricava dalla corteccia di un albero?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "La tortilla spagnola è una frittata alta, spesso servita a fette come tapa a temperatura ambiente.",
+      "id": "food-0051",
+      "options": [
+        "Uova e patate",
+        "Riso e fagioli",
+        "Farina di mais e strutto",
+        "Farina di frumento"
+      ],
+      "question": "La «tortilla» spagnola è molto diversa da quella messicana. Di che cosa è fatta?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Di solito ogni pianta produce un ananas alla volta, che si forma da decine di fiori fusi insieme.",
+      "id": "food-0059",
+      "options": [
+        "Circa due mesi",
+        "Circa sei mesi",
+        "Circa dieci anni",
+        "Circa due anni"
+      ],
+      "question": "Quanto tempo impiega all'incirca una pianta di ananas a produrre il primo frutto?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "L'intorpidimento viene dal pepe di Sichuan, che fa formicolare le labbra; il piccante viene dai peperoncini.",
+      "id": "food-0054",
+      "options": ["Fujian", "Sichuan", "Jiangsu", "Cantonese"],
+      "question": "Quale cucina regionale cinese è famosa per il «mala», un sapore piccante che intorpidisce?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Tipica di Monaco di Baviera, secondo la tradizione non deve mai «sentire le campane di mezzogiorno»; si serve con senape dolce e un brezel morbido.",
+      "id": "food-0044",
+      "options": ["Amburgo", "Berlino", "Monaco", "Vienna"],
+      "question": "La Weisswurst, una salsiccia bianca di vitello che tradizionalmente si mangia prima di mezzogiorno, viene da quale città?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Il nome deriva dal latino clavus, «chiodo», per la forma del bocciolo.",
+      "id": "food-0057",
+      "options": [
+        "Noce moscata",
+        "Cannella",
+        "Anice stellato",
+        "Chiodo di garofano"
+      ],
+      "question": "Quale spezia è il bocciolo essiccato del fiore di un albero?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Il cambio, nel «Dagen H», avvenne alle 5 del mattino del 3 settembre 1967; il traffico si fermò mentre le auto passavano dall'altra parte.",
+      "id": "food-0065",
+      "options": ["Finlandia", "Norvegia", "Svezia", "Danimarca"],
+      "question": "Quale paese passò da un giorno all'altro dalla guida a sinistra a quella a destra nel 1967?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Secondo la tradizione, chi lascia cadere il pane nella fondue deve pagare pegno, per esempio offrire il giro successivo.",
+      "id": "food-0045",
+      "options": ["Austria", "Svizzera", "Francia", "Liechtenstein"],
+      "question": "La fondue, formaggio fuso servito in un unico pentolino da condividere, è un piatto nazionale di quale paese?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Le carote arancioni furono sviluppate da coltivatori olandesi nel XVII secolo.",
+      "id": "food-0060",
+      "options": ["Zucca", "Carota", "Patata", "Mais dolce"],
+      "question": "Quale ortaggio era comunemente viola o giallo prima che si diffondessero le varietà arancioni?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Ogni chicco contiene una goccia d'acqua che diventa vapore e fa scoppiare l'involucro duro; sono stati trovati popcorn in antichi siti del Perù.",
+      "id": "food-0050",
+      "options": ["Riso", "Mais", "Frumento", "Orzo"],
+      "question": "Con quale cereale si fanno i popcorn?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "I semi di avocado sono così grandi che forse un tempo erano dispersi da animali giganti oggi estinti.",
+      "id": "food-0061",
+      "options": ["Messico", "Kenya", "Israele", "Spagna"],
+      "question": "In quale paese ha avuto origine l'avocado?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Il mate si condivide da un'unica zucca in Argentina, Uruguay, Paraguay e Brasile meridionale, facendolo girare in cerchio tra amici.",
+      "id": "food-0068",
+      "options": ["Horchata", "Mate", "Chicha morada", "Atole"],
+      "question": "Quale bevanda si sorseggia tradizionalmente con una cannuccia di metallo chiamata «bombilla»?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "L'impasto viene sbattuto sulla parete di argilla rovente del tandoor, dove si gonfia in circa un minuto.",
+      "id": "food-0052",
+      "options": ["Dosa", "Naan", "Chapati", "Puri"],
+      "question": "Quale pane indiano si cuoce tradizionalmente sulla parete del forno tandoor?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "L'hongi dei Māori simboleggia la condivisione del soffio vitale tra due persone.",
+      "id": "food-0063",
+      "options": ["Figi", "Nuova Zelanda", "Samoa", "Papua Nuova Guinea"],
+      "question": "In quale paese è tradizione l'«hongi», un saluto in cui ci si preme il naso a vicenda?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "«Wiener» significa «di Vienna», e per legge austriaca il nome Wiener Schnitzel è riservato alla carne di vitello.",
+      "id": "food-0056",
+      "options": ["Ungheria", "Svizzera", "Germania", "Austria"],
+      "question": "La Wiener Schnitzel, una cotoletta di vitello impanata, è un classico di quale paese?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Circa un terzo della popolazione mondiale vive in paesi con guida a sinistra, tra cui India, Regno Unito e Australia.",
+      "id": "food-0064",
+      "options": ["Corea del Sud", "Giappone", "Cina", "Germania"],
+      "question": "Quale di questi paesi guida a sinistra?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Gli umeboshi, fatti con le prugne ume, sono intensamente aspri e salati e spesso si mettono al centro di una polpetta di riso.",
+      "id": "food-0069",
+      "options": ["Agrumi yuzu", "Cachi", "Prugne", "Ciliegie"],
+      "question": "Gli umeboshi giapponesi sono la versione salata e in salamoia di quale frutto?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Ognuno dei «semi» della fragola è in realtà un minuscolo frutto che contiene un seme.",
+      "id": "food-0058",
+      "options": ["Fragola", "Fico", "Kiwi", "Lampone"],
+      "question": "Quale frutto porta i semi all'esterno?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Tra le usanze dell'Hogmanay c'è il «first-footing»: essere il primo visitatore dell'anno, portando possibilmente carbone o shortbread.",
+      "id": "food-0066",
+      "options": [
+        "La festa di mezza estate",
+        "San Silvestro",
+        "Il giorno di Natale",
+        "Una festa del raccolto"
+      ],
+      "question": "In Scozia, che cos'è l'«Hogmanay»?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Namaste viene dal sanscrito e significa all'incirca «mi inchino a te»; i palmi si tengono uniti vicino al petto.",
+      "id": "food-0062",
+      "options": [
+        "Un bacio su ogni guancia",
+        "Palmi uniti",
+        "Un profondo inchino",
+        "Una stretta di mano decisa"
+      ],
+      "question": "Con quale gesto si fa il saluto «namaste»?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "In Giappone il buon servizio è considerato parte del lavoro, e una mancia lasciata sul tavolo può esserti restituita con gentilezza.",
+      "id": "food-0067",
+      "options": [
+        "Non è un'usanza",
+        "Si accetta solo in contanti",
+        "Ci si aspetta il 20%",
+        "Ci si aspetta il 10%"
+      ],
+      "question": "In Giappone, come viene considerata in genere la mancia al ristorante?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Il lassi può essere salato, speziato o dolce; il lassi al mango è uno dei preferiti in molti ristoranti.",
+      "id": "food-0071",
+      "options": ["Lenticchie", "Acqua di cocco", "Foglie di tè", "Yogurt"],
+      "question": "Il lassi, una bevanda popolare dell'Asia meridionale, si fa soprattutto con che cosa?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Il bibimbap si serve con verdure, pasta di peperoncino e spesso un uovo, e si mescola tutto appena prima di mangiare.",
+      "id": "food-0070",
+      "options": ["Tteokbokki", "Bulgogi", "Japchae", "Bibimbap"],
+      "question": "Il nome di quale piatto coreano significa «riso misto»?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "La poutine nacque nelle campagne del Québec negli anni '50; la cagliata fresca dovrebbe «scricchiolare» sotto i denti.",
+      "id": "food-0073",
+      "options": ["Belgio", "Irlanda", "Canada", "Francia"],
+      "question": "La poutine, patatine fritte con cagliata di formaggio e salsa gravy, viene da quale paese?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "La feijoada si mangia tradizionalmente il mercoledì o il sabato e si serve con riso, fette d'arancia e farina di manioca tostata.",
+      "id": "food-0072",
+      "options": ["Brasile", "Messico", "Colombia", "Cuba"],
+      "question": "La feijoada, uno stufato di fagioli neri e maiale, è un piatto nazionale di quale paese?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "La salsa fu venduta per la prima volta da due farmacisti di Worcester, in Inghilterra, negli anni '30 dell'Ottocento, e viene fatta invecchiare prima dell'imbottigliamento.",
+      "id": "food-0078",
+      "options": ["Sgombro", "Aringa", "Sardine", "Acciughe"],
+      "question": "La salsa Worcestershire deve parte del suo sapore sapido a quale pesce fermentato?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Il pomodoro si sviluppa da un fiore e contiene semi, quindi i botanici lo classificano come frutto, anche se in cucina si usa come ortaggio.",
+      "id": "food-0075",
+      "options": ["Una radice", "Un ortaggio", "Un frutto", "Un legume"],
+      "question": "Dal punto di vista botanico, che cos'è un pomodoro?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Smørrebrød significa «burro e pane»; esistono regole tradizionali sull'ordine delle guarnizioni, a cominciare dall'aringa.",
+      "id": "food-0074",
+      "options": ["Svezia", "Islanda", "Norvegia", "Danimarca"],
+      "question": "Lo smørrebrød, tartine aperte su pane di segale, è un classico di quale paese?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "«Wagyu» significa semplicemente «bovino giapponese»; il manzo di Kobe è un famoso tipo di wagyu della prefettura di Hyogo.",
+      "id": "food-0080",
+      "options": ["Giappone", "Argentina", "Australia", "Francia"],
+      "question": "Il wagyu, manzo famoso per la marezzatura, proviene da razze bovine di quale paese?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Le radici di manioca crude sono tossiche e devono essere lavorate; le perle di tapioca sono diventate famose in tutto il mondo con il bubble tea.",
+      "id": "food-0077",
+      "options": ["Riso", "Manioca", "Frumento", "Patata"],
+      "question": "Le perle di tapioca si fanno con l'amido di quale pianta?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Si attribuisce la sua creazione al ristoratore di origine italiana Caesar Cardini, a Tijuana, negli anni '20.",
+      "id": "food-0079",
+      "options": ["Messico", "Italia", "Grecia", "Spagna"],
+      "question": "In quale paese fu inventata l'insalata Caesar?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il 17 dicembre 1903 il Wright Flyer compì quattro voli; il più lungo durò 59 secondi.",
+      "id": "avi-0001",
+      "options": ["1927", "1903", "1891", "1911"],
+      "question": "In quale anno i fratelli Wright compirono il primo volo con un aeroplano a motore?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "I fratelli scelsero le dune ventose degli Outer Banks della Carolina del Nord per i venti costanti e la sabbia morbida su cui atterrare.",
+      "id": "avi-0002",
+      "options": ["Wichita", "Kitty Hawk", "Cape Canaveral", "Dayton"],
+      "question": "Vicino a quale località americana i fratelli Wright compirono i primi voli a motore?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Lindbergh volò da New York a Parigi in circa 33 ore e mezza sullo «Spirit of St. Louis», privo di finestrino frontale.",
+      "id": "avi-0004",
+      "options": [
+        "Charles Lindbergh",
+        "Antoine de Saint-Exupéry",
+        "Amelia Earhart",
+        "Louis Blériot"
+      ],
+      "question": "Chi compì nel 1927 la prima traversata aerea dell'Atlantico in solitaria e senza scalo?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Il Rutan Voyager impiegò 9 giorni; trasportava così tanto carburante che al decollo le estremità delle ali strisciarono sulla pista.",
+      "id": "avi-0032",
+      "options": [
+        "Double Eagle",
+        "Solar Impulse 2",
+        "Spirit of St. Louis",
+        "Voyager"
+      ],
+      "question": "Come si chiamava il primo aereo a fare il giro del mondo senza scalo e senza rifornimento, nel 1986?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il Concorde poteva volare da Londra a New York in circa 3 ore e mezza, e i passeggeri potevano vedere la curvatura della Terra.",
+      "id": "avi-0007",
+      "options": ["Italia", "Germania", "Francia", "Stati Uniti"],
+      "question": "Il Concorde, l'aereo di linea supersonico, fu sviluppato dal Regno Unito insieme a quale paese?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il volo di Blériot da Calais a Dover durò circa 37 minuti e gli fece vincere un premio di 1.000 sterline offerto da un giornale.",
+      "id": "avi-0005",
+      "options": [
+        "Louis Blériot",
+        "Charles Lindbergh",
+        "Wilbur Wright",
+        "Henri Farman"
+      ],
+      "question": "Chi compì nel 1909 il primo volo in aeroplano attraverso la Manica?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "A Mach 2 la struttura si scaldava così tanto che in volo il Concorde si allungava fino a circa 30 cm.",
+      "id": "avi-0008",
+      "options": [
+        "Poco meno",
+        "Circa il doppio",
+        "Cinque volte tanto",
+        "Tre volte tanto"
+      ],
+      "question": "A quale velocità volava all'incirca in crociera il Concorde, rispetto a quella del suono?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Earhart puntava a Parigi ma atterrò in un pascolo dell'Irlanda del Nord dopo quasi 15 ore.",
+      "id": "avi-0006",
+      "options": [
+        "Jacqueline Cochran",
+        "Amy Johnson",
+        "Amelia Earhart",
+        "Bessie Coleman"
+      ],
+      "question": "Nel 1932, chi divenne la prima donna a sorvolare l'Atlantico in solitaria e senza scalo?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "La famosa gobba del 747 fu progettata perché il muso potesse aprirsi per caricare le merci, con la cabina di pilotaggio in alto.",
+      "id": "avi-0011",
+      "options": [
+        "Airbus A380",
+        "McDonnell Douglas DC-10",
+        "Boeing 747",
+        "Lockheed L-1011"
+      ],
+      "question": "Quale aereo di linea fu soprannominato «Jumbo Jet»?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il Concorde trasportò passeggeri per 27 anni; gli esemplari rimasti sono oggi esposti in musei d'Europa e del Nord America.",
+      "id": "avi-0009",
+      "options": ["2010", "1989", "2003", "1996"],
+      "question": "In quale anno il Concorde effettuò i suoi ultimi voli commerciali?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "L'A380 a due ponti è certificato per un massimo di 853 passeggeri; le sue ali coprono circa 845 m², più di tre campi da tennis.",
+      "id": "avi-0012",
+      "options": [
+        "Boeing 747-8",
+        "Airbus A350-1000",
+        "Boeing 777-300ER",
+        "Airbus A380"
+      ],
+      "question": "Per capacità di passeggeri, qual è l'aereo di linea più grande mai costruito?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il britannico Comet dimezzò i tempi di viaggio rispetto agli aerei a elica e volava ben al di sopra della maggior parte del maltempo.",
+      "id": "avi-0010",
+      "options": [
+        "Boeing 707",
+        "Tupolev Tu-104",
+        "Sud Aviation Caravelle",
+        "de Havilland Comet"
+      ],
+      "question": "Quale fu il primo aereo di linea commerciale a reazione al mondo, entrato in servizio nel 1952?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Gli Zeppelin della DELAG trasportarono migliaia di passeggeri in voli turistici e tra città prima del 1914.",
+      "id": "avi-0037",
+      "options": ["Biplani", "Alianti", "Dirigibili", "Idrovolanti"],
+      "question": "La prima compagnia aerea del mondo, la DELAG, fondata nel 1909, trasportava passeggeri su che cosa?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "I componenti arrivavano da tutta Europa via nave, chiatta e convogli stradali, alcuni troppo grandi per viaggiare in altro modo.",
+      "id": "avi-0013",
+      "options": ["Tolosa", "Marsiglia", "Lione", "Bordeaux"],
+      "question": "In quale città francese Airbus effettuava l'assemblaggio finale dell'A380?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il numero di Mach prende il nome dal fisico austriaco Ernst Mach; Mach 1 corrisponde a circa 1.060 km/h alla quota di crociera degli aerei di linea.",
+      "id": "avi-0015",
+      "options": [
+        "La rotazione terrestre",
+        "La corrente a getto",
+        "Il suono",
+        "La luce"
+      ],
+      "question": "Volare a Mach 1 significa volare alla velocità di che cosa?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Yeager pilotava il Bell X-1 a razzo, che veniva sganciato da sotto un bombardiere prima di accendere il motore.",
+      "id": "avi-0016",
+      "options": [
+        "John Glenn",
+        "Chuck Yeager",
+        "Jurij Gagarin",
+        "Neil Armstrong"
+      ],
+      "question": "Chi fu il primo pilota a superare in modo documentato la barriera del suono in volo livellato, nel 1947?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Whittle depositò il brevetto a 22 anni; un progetto tedesco di Hans von Ohain fu il primo jet a volare, nel 1939.",
+      "id": "avi-0040",
+      "options": [
+        "Henry Royce",
+        "Frank Whittle",
+        "Hans von Ohain",
+        "Geoffrey de Havilland"
+      ],
+      "question": "Quale ingegnere britannico brevettò il motore turbogetto nel 1930?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le norme internazionali richiedono che piloti e controllori dei voli internazionali sappiano parlare inglese a un livello stabilito.",
+      "id": "avi-0017",
+      "options": ["Spagnolo", "Inglese", "Francese", "Russo"],
+      "question": "Quale lingua si usa in tutto il mondo per il controllo del traffico aereo internazionale?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Deriva da «venez m'aider», cioè «venite ad aiutarmi», e si ripete sempre tre volte di seguito.",
+      "id": "avi-0018",
+      "options": ["Latino", "Tedesco", "Spagnolo", "Francese"],
+      "question": "Il segnale di soccorso «Mayday» deriva da una frase in quale lingua?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Lassù l'aria rarefatta oppone meno resistenza, quindi gli aerei consumano meno carburante che a quote più basse.",
+      "id": "avi-0020",
+      "options": [
+        "Circa 10–12 km",
+        "Circa 25–30 km",
+        "Circa 50 km",
+        "Circa 2–3 km"
+      ],
+      "question": "A quale quota volano di solito in crociera gli aerei di linea a reazione?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "È come stare su un'alta montagna: per questo i sacchetti degli snack si gonfiano e nei voli lunghi ci si può stancare prima.",
+      "id": "avi-0019",
+      "options": [
+        "Circa 4.500–5.000 m",
+        "Livello del mare (0 m)",
+        "Circa 1.800–2.400 m",
+        "Circa 9.000–10.000 m"
+      ],
+      "question": "A quale quota corrisponde di solito la pressurizzazione della cabina di un aereo di linea?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "L'He 178 volò per la prima volta il 27 agosto 1939 in Germania, spinto dal motore di Hans von Ohain.",
+      "id": "avi-0041",
+      "options": [
+        "Messerschmitt Me 262",
+        "Bell X-1",
+        "Heinkel He 178",
+        "Gloster Meteor"
+      ],
+      "question": "Quale fu il primo aereo a reazione a volare, nel 1939?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le correnti a getto possono soffiare a oltre 300 km/h, e ogni giorno le rotte vengono pianificate per sfruttarle o evitarle.",
+      "id": "avi-0021",
+      "options": [
+        "La Corrente del Golfo",
+        "La corrente a getto",
+        "Gli alisei",
+        "Il monsone"
+      ],
+      "question": "Quale vento veloce d'alta quota rende spesso più brevi i voli verso est sull'Atlantico?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Sul globo la rotta più breve tra due città è un arco di cerchio massimo, che sulla maggior parte delle mappe piane appare curvo.",
+      "id": "avi-0022",
+      "options": [
+        "Seguono i cerchi massimi",
+        "Per l'attrazione magnetica",
+        "Gli aerei evitano gli oceani",
+        "Il vento soffia sempre così"
+      ],
+      "question": "Perché sulle mappe piane le rotte a lungo raggio appaiono curve?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "La sua pista corta sale con una pendenza di circa il 12%, che aiuta gli aerei a rallentare all'atterraggio e ad accelerare al decollo.",
+      "id": "avi-0023",
+      "options": ["Kangchenjunga", "K2", "Annapurna", "Everest"],
+      "question": "L'aeroporto Tenzing-Hillary di Lukla, in Nepal, è la porta d'accesso ai trekking verso quale montagna?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "La spiaggia si trova proprio alla fine della pista dell'aeroporto internazionale Princess Juliana, luogo famoso tra gli appassionati di aerei.",
+      "id": "avi-0025",
+      "options": ["Saint Martin", "Aruba", "Barbados", "Antigua e Barbuda"],
+      "question": "Maho Beach, dove i jet in atterraggio passano appena sopra le teste, si trova su quale isola caraibica?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Gli alettoni si muovono in direzioni opposte: la portanza di un'ala aumenta mentre quella dell'altra diminuisce, inclinando l'aereo.",
+      "id": "avi-0048",
+      "options": ["Equilibratori", "Flap", "Timone", "Alettoni"],
+      "question": "Quali superfici di comando sulle ali fanno inclinare l'aereo su un lato?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il breve volo tra Westray e Papa Westray copre meno di 3 km; con vento favorevole è durato meno di un minuto.",
+      "id": "avi-0031",
+      "options": [
+        "Isole greche",
+        "Orcadi, Scozia",
+        "Fiordi norvegesi",
+        "Maldive"
+      ],
+      "question": "Dove si effettua uno dei voli di linea più brevi del mondo, che dura circa 1–2 minuti?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "L'isola nella baia di Osaka fu costruita con milioni di metri cubi di materiale di riporto e sta ancora lentamente sprofondando.",
+      "id": "avi-0026",
+      "options": [
+        "Un'isola artificiale",
+        "L'ex fondale di un lago",
+        "Pontoni d'acciaio galleggianti",
+        "La cima di una montagna"
+      ],
+      "question": "Su che cosa è costruito l'aeroporto internazionale del Kansai, in Giappone?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Oltre 17.000 celle solari caricavano di giorno le batterie, così l'aereo poteva continuare a volare durante la notte.",
+      "id": "avi-0033",
+      "options": [
+        "Luce solare",
+        "Turbine eoliche",
+        "Biocarburante",
+        "Idrogeno"
+      ],
+      "question": "Nel 2016 il Solar Impulse 2 fece il giro del mondo alimentato soltanto da che cosa?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "La scarsità di alluminio in tempo di guerra impose un progetto in legno; volò una sola volta, nel 1947, per meno di un minuto.",
+      "id": "avi-0050",
+      "options": ["Abete rosso", "Balsa", "Quercia", "Betulla"],
+      "question": "Il gigantesco idrovolante «Spruce Goose» fu costruito in realtà soprattutto con quale legno?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il Rain Vortex del Jewel di Changi riversa acqua piovana da una cupola di vetro, circondato da una foresta al coperto.",
+      "id": "avi-0027",
+      "options": ["Doha", "Hong Kong", "Singapore", "Dubai"],
+      "question": "L'aeroporto di quale città ospita il «Jewel», con una cascata interna di 40 m?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il VS-300 di Sikorsky stabilì lo schema usato oggi dalla maggior parte degli elicotteri: un rotore principale e un piccolo rotore di coda.",
+      "id": "avi-0038",
+      "options": [
+        "Frank Piasecki",
+        "Igor Sikorsky",
+        "Lawrence Bell",
+        "Juan de la Cierva"
+      ],
+      "question": "Chi progettò il primo elicottero pratico a rotore singolo, che volò nel 1939?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Heathrow nacque come piccolo campo d'aviazione, e il nome viene da un borgo che fu demolito per costruirlo.",
+      "id": "avi-0028",
+      "options": ["Edimburgo", "Manchester", "Londra", "Dublino"],
+      "question": "Gli aeroporti di Heathrow e Gatwick servono quale città?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il suo disegno degli anni '80 del Quattrocento mostra una vite elicoidale di lino pensata per sollevarsi ruotando nell'aria.",
+      "id": "avi-0039",
+      "options": ["Aliante", "Elicottero", "Aereo a reazione", "Mongolfiera"],
+      "question": "La «vite aerea» di Leonardo da Vinci è spesso considerata un'anticipazione di quale velivolo?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Nessuna scuola di volo americana volle accettarla, così imparò il francese e si addestrò in Francia.",
+      "id": "avi-0059",
+      "options": ["Stati Uniti", "Francia", "Germania", "Regno Unito"],
+      "question": "In quale paese la pioniera dell'aviazione Bessie Coleman ottenne il brevetto di pilota nel 1921?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il principale aeroporto di Roma onora Leonardo, che disegnò macchine volanti, tra cui un ornitottero simile a un uccello, circa 400 anni prima dei primi aerei.",
+      "id": "avi-0029",
+      "options": ["Venezia", "Firenze", "Milano", "Roma"],
+      "question": "L'aeroporto di Fiumicino, intitolato a Leonardo da Vinci, serve quale città?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il suo motto, «Above us only sky», è un verso della canzone di Lennon «Imagine».",
+      "id": "avi-0030",
+      "options": ["Liverpool", "Londra", "Manchester", "Glasgow"],
+      "question": "L'aeroporto di quale città britannica è intitolato a John Lennon?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il rosso è a sinistra e il verde a destra, come sulle navi, così i piloti capiscono in che direzione va un altro aereo.",
+      "id": "avi-0045",
+      "options": [
+        "Estremità dell'ala destra",
+        "In cima alla coda",
+        "Estremità dell'ala sinistra",
+        "Sotto il muso"
+      ],
+      "question": "Su quale lato di un aereo si trova la luce di navigazione rossa?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Santos-Dumont è legato anche all'orologio da polso: si dice che l'amico Louis Cartier gliene abbia fatto uno perché potesse tenere entrambe le mani sui comandi.",
+      "id": "avi-0060",
+      "options": [
+        "Santos-Dumont",
+        "Louis Blériot",
+        "Henri Farman",
+        "Gabriel Voisin"
+      ],
+      "question": "Quale pioniere brasiliano dell'aviazione volò con il 14-bis a Parigi nel 1906?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il pallone dei fratelli Montgolfier trasportò due uomini sopra Parigi per circa 25 minuti.",
+      "id": "avi-0034",
+      "options": ["Germania", "Francia", "Italia", "Inghilterra"],
+      "question": "Il primo volo con equipaggio su un pallone ad aria calda, nel 1783, avvenne in quale paese?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il primo dirigibile rigido del conte Ferdinand von Zeppelin volò sul lago di Costanza nel 1900.",
+      "id": "avi-0036",
+      "options": ["Italia", "Francia", "Germania", "Regno Unito"],
+      "question": "I dirigibili Zeppelin furono costruiti per la prima volta in quale paese?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "L'SR-71 volava a circa 3.530 km/h; a terra i serbatoi perdevano carburante finché il calore del volo non li sigillava.",
+      "id": "avi-0049",
+      "options": ["SR-71 Blackbird", "MiG-25 Foxbat", "F-15 Eagle", "Concorde"],
+      "question": "Quale aereo detiene dal 1976 il record ufficiale di velocità per un jet con equipaggio ad aspirazione atmosferica?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Ellen Church, infermiera e pilota, convinse la Boeing Air Transport che le infermiere avrebbero rassicurato i passeggeri nervosi.",
+      "id": "avi-0062",
+      "options": ["Insegnanti", "Piloti", "Cuoche", "Infermiere"],
+      "question": "Le prime assistenti di volo, assunte nel 1930, dovevano essere formate come che cosa?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Prima delle ferrovie ogni città seguiva la propria ora solare locale, e gli orologi di città vicine potevano differire di molti minuti.",
+      "id": "avi-0051",
+      "options": ["Telegrafi", "Navigazione", "Ferrovie", "Compagnie aeree"],
+      "question": "I fusi orari standard furono adottati inizialmente soprattutto per organizzare gli orari di che cosa?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il tunnel è lungo circa 50 km, e il suo tratto sottomarino di circa 38 km è il più lungo del mondo.",
+      "id": "avi-0053",
+      "options": ["1994", "2001", "1984", "1975"],
+      "question": "In quale anno fu inaugurato il tunnel della Manica tra Inghilterra e Francia?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "La pista di 537 m sale con una pendenza di circa il 18,5%, quindi gli aerei atterrano in salita e decollano in discesa.",
+      "id": "avi-0065",
+      "options": ["Austria", "Italia", "Francia", "Svizzera"],
+      "question": "L'altiporto di Courchevel, famoso per la sua pista corta e ripida, si trova in quale paese?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il vento che soffia sulle ali si somma alla velocità rispetto all'aria, quindi l'aereo raggiunge prima la velocità di decollo.",
+      "id": "avi-0047",
+      "options": [
+        "Serve meno pista",
+        "Si risparmia carburante dopo",
+        "I motori sono più silenziosi",
+        "Evita il ghiaccio sulle ali"
+      ],
+      "question": "Perché gli aerei di solito decollano controvento?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il tunnel è lungo circa 54 km, di cui circa 23 sotto il fondale dello Stretto di Tsugaru.",
+      "id": "avi-0055",
+      "options": ["Shikoku", "Kyushu", "Okinawa", "Hokkaido"],
+      "question": "Il tunnel ferroviario giapponese Seikan, in parte sottomarino, collega Honshu con quale isola?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Attraversandola verso est dall'Asia, puoi atterrare nel giorno di calendario precedente, prima ancora di essere decollato.",
+      "id": "avi-0052",
+      "options": [
+        "Equatore",
+        "Circolo polare artico",
+        "Meridiano di Greenwich",
+        "Linea del cambio di data"
+      ],
+      "question": "Superando quale frontiera immaginaria durante un volo il calendario avanza o arretra di un giorno?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il viaggio dura circa otto ore e attraversa 291 ponti, per questo il treno è soprannominato l'espresso più lento del mondo.",
+      "id": "avi-0056",
+      "options": ["St. Moritz", "Gstaad", "Interlaken", "Lucerna"],
+      "question": "Il treno panoramico Glacier Express collega Zermatt con quale località svizzera?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "È gestito congiuntamente da Francia e Svizzera e ha settori francese e svizzero separati, con una strada doganale verso Basilea.",
+      "id": "avi-0066",
+      "options": ["Austria", "Germania", "Svizzera", "Francia"],
+      "question": "L'EuroAirport Basilea-Mulhouse-Friburgo si trova interamente in quale paese?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il percorso principale è lungo circa 9.300 km, attraversa otto fusi orari e richiede circa una settimana senza soste.",
+      "id": "avi-0054",
+      "options": ["Irkutsk", "Novosibirsk", "Murmansk", "Vladivostok"],
+      "question": "La Transiberiana va da Mosca a quale città?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Il primo aereo di William Boeing fu un piccolo idrovolante; l'azienda costruisce ancora aerei di linea nell'area di Seattle.",
+      "id": "avi-0058",
+      "options": ["Detroit", "Seattle", "Chicago", "Wichita"],
+      "question": "In quale città fu fondata la Boeing nel 1916?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Quando la sua tettoia in ferro fu inaugurata nel 1868, aveva il tetto a campata unica più grande del mondo.",
+      "id": "avi-0057",
+      "options": ["Londra", "Parigi", "Bruxelles", "Amsterdam"],
+      "question": "St Pancras International, capolinea dei treni Eurostar, si trova in quale città?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le fotografie dei voli in aliante di Lilienthal ispirarono i fratelli Wright.",
+      "id": "avi-0061",
+      "options": ["Aerei a motore", "Alianti", "Palloni", "Dirigibili"],
+      "question": "Il pioniere tedesco Otto Lilienthal compì circa 2.000 voli negli anni '90 dell'Ottocento con che cosa?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "L'A300, che volò per la prima volta nel 1972, fu il primo aereo di linea bimotore a fusoliera larga del mondo.",
+      "id": "avi-0069",
+      "options": ["A310", "A340", "A300", "A320"],
+      "question": "Quale fu il primo aereo di linea Airbus?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le winglet indeboliscono i vortici alle estremità delle ali, il che può ridurre i consumi di qualche punto percentuale.",
+      "id": "avi-0067",
+      "options": [
+        "Ridurre la resistenza e i consumi",
+        "Alloggiare le luci di atterraggio",
+        "Migliorare la ricezione radio",
+        "Aiutare a sterzare a terra"
+      ],
+      "question": "A che cosa servono principalmente le «winglet» rivolte verso l'alto all'estremità delle ali di molti aerei di linea?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Furono costruiti oltre 16.000 DC-3 e versioni militari, e alcuni volano ancora più di 80 anni dopo.",
+      "id": "avi-0063",
+      "options": [
+        "Douglas DC-3",
+        "Ford Trimotor",
+        "Boeing 247",
+        "Junkers Ju 52"
+      ],
+      "question": "Quale aereo di linea a elica degli anni '30, di cui alcuni esemplari volano ancora oggi, rese redditizio il trasporto passeggeri?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Il bianco mantiene l'aereo più fresco sui piazzali roventi e rende più facile individuare crepe, ammaccature o perdite durante le ispezioni.",
+      "id": "avi-0068",
+      "options": [
+        "Migliora il radar",
+        "Lo impone la legge",
+        "Riflette la luce solare",
+        "Riduce la resistenza"
+      ],
+      "question": "Perché la maggior parte degli aerei di linea è dipinta soprattutto di bianco?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "A Le Bourget atterrò anche Charles Lindbergh nel 1927, al termine della sua trasvolata atlantica.",
+      "id": "avi-0064",
+      "options": ["Beauvais", "Le Bourget", "Orly", "Charles de Gaulle"],
+      "question": "Il Salone internazionale dell'aeronautica e dello spazio di Parigi si tiene in quale aeroporto?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "I piloti governano l'A320 con una piccola barra laterale invece della cloche, e i computer lo mantengono entro limiti sicuri.",
+      "id": "avi-0073",
+      "options": ["Boeing 757", "Concorde", "Boeing 777", "Airbus A320"],
+      "question": "Quale aereo di linea, entrato in servizio nel 1988, fu il primo con comandi di volo digitali fly-by-wire?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "L'attraversamento inizia come ponte e poi si immerge in un tunnel passando per un'isola artificiale, così non ostacola né navi né aerei.",
+      "id": "avi-0070",
+      "options": ["Norvegia", "Svezia", "Germania", "Finlandia"],
+      "question": "Il ponte di Øresund collega la Danimarca con quale paese?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Inaugurata nel 2016, permette ai treni di passare sotto le montagne fino a circa 250 km/h, sotto una copertura di roccia che arriva a 2.300 m.",
+      "id": "avi-0071",
+      "options": ["Italia", "Austria", "Svizzera", "Liechtenstein"],
+      "question": "La galleria di base del San Gottardo, un tunnel ferroviario di 57 km sotto le Alpi, si trova in quale paese?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Un TGV appositamente modificato stabilì nel 2007 il record di velocità per un treno convenzionale su ruote: 574,8 km/h.",
+      "id": "avi-0072",
+      "options": ["Francia", "Italia", "Spagna", "Germania"],
+      "question": "In quale paese circolano i treni ad alta velocità TGV?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "I compositi non si corrodono come il metallo, quindi la cabina del 787 può essere mantenuta più umida e pressurizzata a una quota più bassa.",
+      "id": "avi-0074",
+      "options": [
+        "Lamiera di titanio",
+        "Acciaio inossidabile",
+        "Lega alluminio-litio",
+        "Fibra di carbonio"
+      ],
+      "question": "Fusoliera e ali del Boeing 787 Dreamliner sono fatte in gran parte di che cosa?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "L'isola non ha piste d'atterraggio; la traversata da Città del Capo dura circa sei giorni, e le navi vi fanno scalo solo da otto a dieci volte l'anno circa.",
+      "id": "avi-0076",
+      "options": [
+        "Con voli settimanali",
+        "In idrovolante",
+        "Solo via nave",
+        "In elicottero"
+      ],
+      "question": "Come si può raggiungere Tristan da Cunha, una delle isole abitate più remote?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "I primi aquiloni cinesi erano di seta e bambù e servivano a inviare segnali e misurare distanze.",
+      "id": "avi-0075",
+      "options": ["Egitto", "Cina", "Grecia", "India"],
+      "question": "Dove si fecero volare per la prima volta gli aquiloni, più di 2.000 anni fa?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Dove oggi rullano gli aerei un tempo navigavano le barche sul lago Haarlemmermeer, prosciugato negli anni '50 dell'Ottocento.",
+      "id": "avi-0078",
+      "options": [
+        "Copenaghen-Kastrup",
+        "Bruxelles",
+        "Amsterdam-Schiphol",
+        "Amburgo"
+      ],
+      "question": "Quale grande aeroporto europeo si trova circa 3 m sotto il livello del mare, sul fondo di un lago prosciugato?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Ogni arco offre circa 20–25 secondi di fluttuazione, che gli astronauti sfruttano per l'addestramento.",
+      "id": "avi-0079",
+      "options": [
+        "La velocità supersonica",
+        "Il mal di montagna",
+        "Forti turbolenze",
+        "L'assenza di peso"
+      ],
+      "question": "I voli parabolici, che salgono e scendono ad arco, fanno provare brevemente ai passeggeri che cosa?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "La lunghezza di 1.852 m fu concordata a livello internazionale nel 1929; aviazione e navigazione misurano ancora le distanze in miglia nautiche e la velocità in nodi.",
+      "id": "avi-0080",
+      "options": ["2.000 m", "1.000 m", "1.852 m", "1.609 m"],
+      "question": "Un nodo equivale a un miglio nautico all'ora. Quanto è lungo un miglio nautico?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Shannon, in Irlanda, era uno scalo di rifornimento per i voli transatlantici, e il negozio fu aperto per i passeggeri in transito.",
+      "id": "avi-0077",
+      "options": ["Schiphol", "Heathrow", "Shannon", "Francoforte"],
+      "question": "Quale aeroporto aprì il primo negozio duty-free del mondo, nel 1947?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Agli equinozi il sole proietta sulla scalinata di El Castillo un'ombra che sembra un serpente che scivola verso il basso.",
+      "id": "his-0020",
+      "options": ["Inca", "Aztechi", "Maya", "Olmechi"],
+      "question": "Quale civiltà costruì la piramide a gradoni di El Castillo a Chichén Itzá?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Machu Picchu fu costruita nel XV secolo in alto sulle Ande peruviane, probabilmente come tenuta dell'imperatore inca Pachacútec.",
+      "id": "his-0002",
+      "options": ["Aztechi", "Inca", "Olmechi", "Maya"],
+      "question": "Quale civiltà costruì la cittadella di montagna di Machu Picchu?"
+    }
+  ]
+}
