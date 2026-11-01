@@ -17,12 +17,14 @@ import { useAchievementStore } from "@/store/useAchievementStore";
 import { useGameStore } from "@/store/useGameStore";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { KIDS_ANIMALS, KIDS_SIMON_PADS } from "@/utils/kidsGames";
+import { generateMaze, solveMaze } from "@/utils/kidsMaze";
 import {
   type Harness,
   labelOf,
   mountGame,
   must,
   repeat,
+  touchEvent,
 } from "./helpers/gameHarness";
 import { solveSlidingPuzzle } from "./helpers/gameSolvers";
 
@@ -37,6 +39,16 @@ const SLOT = /^kids-slot-(\d+)-(\d+)$/;
 const ITEM_LANE = /^kids-item-lane-(\d+)$/;
 const RULES_OR_COUNTDOWN = /Rules|gameCountdown|GO/;
 const SCORE_UI = /gameBest|gameLast|gameStreak|\d{2,}/;
+const MAZE_BOARD = /^kids-maze-(\d+)-(\d+)$/;
+const MAZE_CELL = /^kids-maze-cell-(\d+)$/;
+const SHAPE_PIECE = /^kids-shape-piece-(\w+)$/;
+const COUNT_TRAY = /^kids-count-(\d)$/;
+const DOT = /^kidsA11yDot\(n=(\d+)\)$/;
+const PART = /^kidsA11yPart/;
+const EMPTY_REGION = /^kids-region-\d+-empty$/;
+const MAZE_ANIMAL = /🐶|🐰|🐵|🐭/;
+const SHADOW_ANIMAL = /^kids-shadow-animal$/;
+const ANY_OUTLINE = /^kids-shape-target-/;
 
 beforeAll(() => {
   (
@@ -58,9 +70,26 @@ afterEach(() => {
 
 const celebrating = (h: Harness) => h.has(AGAIN) && h.has(HOME);
 
-/** Game controls on screen (Simon's pads are disabled while it shows). */
+/**
+ * Game controls on screen (Simon's pads are disabled while it shows): tap
+ * targets plus drag surfaces (maze board, shape pieces).
+ */
 const controls = (h: Harness) =>
-  h.r.root.findAll((n: Node) => typeof n.props.onPress === "function").length;
+  h.r.root.findAll(
+    (n: Node) =>
+      typeof n.props.onPress === "function" ||
+      typeof n.props.onResponderGrant === "function"
+  ).length;
+
+/** Host-ish nodes whose testID matches (the first one with handlers wins). */
+const byTestId = (h: Harness, re: RegExp) =>
+  h.r.root.findAll(
+    (n: Node) => typeof n.props.testID === "string" && re.test(n.props.testID)
+  );
+
+/** Flattened style of a node (arrays / nested arrays / falsy entries). */
+const flatStyle = (n: Node): Record<string, number> =>
+  Object.assign({}, ...[n.props.style].flat(3).filter(Boolean));
 
 /** Runs `body` until the celebration shows (or `times` runs out). */
 const untilCelebration = (h: Harness, times: number, body: () => unknown) =>
@@ -225,10 +254,214 @@ function playCargoCatch(h: Harness) {
   });
 }
 
+/** Drags through the first maze, then walks the rest square by square. */
+async function playMaze(h: Harness) {
+  let dragged = false;
+  await untilCelebration(h, 20, async () => {
+    const board = byTestId(h, MAZE_BOARD).find(
+      (n) => typeof n.props.onResponderGrant === "function"
+    );
+    if (!board) {
+      await h.advance(300);
+      return;
+    }
+    const [, size, seed] = (MAZE_BOARD.exec(board.props.testID) ?? []).map(
+      Number
+    );
+    const maze = generateMaze(size, seed);
+    const path = must(solveMaze(maze), "maze path");
+    if (dragged) {
+      // Screen-reader style: activate each next open square.
+      for (const cell of path.slice(1)) {
+        const node = must(
+          byTestId(h, MAZE_CELL).find(
+            (n) =>
+              n.props.testID === `kids-maze-cell-${String(cell)}` &&
+              typeof n.props.onAccessibilityAction === "function"
+          ),
+          `maze cell ${String(cell)}`
+        );
+        h.pressNode(node);
+      }
+    } else {
+      dragged = true;
+      const cellPx = flatStyle(board).width / size;
+      const at = (c: number) =>
+        touchEvent(
+          ((c % size) + 0.5) * cellPx,
+          (Math.floor(c / size) + 0.5) * cellPx
+        );
+      // A diagonal jump is ignored (the animal stays on the start square).
+      h.act(() => {
+        board.props.onResponderGrant(at(0));
+        board.props.onResponderMove(at(size + 1));
+      });
+      must(
+        byTestId(h, MAZE_CELL).some(
+          (n) =>
+            n.props.testID === "kids-maze-cell-0" &&
+            MAZE_ANIMAL.test(labelOf(n))
+        ),
+        "a diagonal drag must not move the animal"
+      );
+      h.act(() => {
+        for (const cell of path) {
+          board.props.onResponderMove(at(cell));
+        }
+        board.props.onResponderRelease(at(path.at(-1) as number));
+      });
+      await h.advance(1200);
+      must(
+        byTestId(h, MAZE_BOARD).some((n) =>
+          n.props.testID.startsWith("kids-maze-5-")
+        ),
+        "dragging along the path solves the first maze"
+      );
+      return;
+    }
+    await h.advance(1200);
+  });
+}
+
+/** Paints every part (switching crayons), then taps ✓. */
+async function playColouring(h: Harness) {
+  must(!h.has("kidsA11yDone"), "✓ stays off until something is coloured");
+  const parts = h.findAll(PART);
+  must(parts.length >= 3, "colouring parts");
+  for (const [i, part] of parts.entries()) {
+    h.press(["kidsPaintRed", "kidsPaintGreen", "kidsPaintBlue"][i % 3]);
+    h.pressNode(part);
+  }
+  must(byTestId(h, EMPTY_REGION).length === 0, "every part coloured");
+  h.press("kidsA11yDone");
+  await h.advance(300);
+}
+
+/** Drops one piece on a wrong outline (it comes back), then places all. */
+async function playShapes(h: Harness) {
+  let triedWrong = false;
+  await untilCelebration(h, 20, async () => {
+    const pieces = byTestId(h, SHAPE_PIECE).filter(
+      (n) => typeof n.props.onResponderGrant === "function"
+    );
+    const [piece] = pieces;
+    if (!piece) {
+      await h.advance(300);
+      return;
+    }
+    const shape = SHAPE_PIECE.exec(piece.props.testID)?.[1] ?? "";
+    const targetOf = (s: string) =>
+      must(
+        byTestId(h, new RegExp(`^kids-shape-target-${s}$`))[0],
+        `outline for ${s}`
+      );
+    const drag = (s: string) => {
+      const from = flatStyle(piece);
+      const to = flatStyle(targetOf(s));
+      const dx = to.left - from.left;
+      const dy = to.top - from.top;
+      h.act(() => {
+        piece.props.onResponderGrant(touchEvent(0, 0));
+        piece.props.onResponderMove(touchEvent(dx / 2, dy / 2));
+        piece.props.onResponderMove(touchEvent(dx, dy));
+        piece.props.onResponderRelease(touchEvent(dx, dy));
+      });
+    };
+    if (!triedWrong) {
+      triedWrong = true;
+      const other = byTestId(h, ANY_OUTLINE)
+        .map((n) => n.props.testID.replace("kids-shape-target-", ""))
+        .find((s: string) => s !== shape);
+      drag(must(other, "another outline"));
+      must(
+        byTestId(h, SHAPE_PIECE).some(
+          (n) => n.props.testID === piece.props.testID
+        ),
+        "a wrong outline sends the piece back"
+      );
+    }
+    drag(shape);
+    await h.advance(1000);
+  });
+}
+
+/** Taps a wrong silhouette once, then the animal's own shadow. */
+async function playShadows(h: Harness) {
+  let triedWrong = false;
+  await untilCelebration(h, 30, async () => {
+    const [hero] = byTestId(h, SHADOW_ANIMAL);
+    if (!hero) {
+      await h.advance(300);
+      return;
+    }
+    const right = `kidsA11yShadow(animal=${hero.props.accessibilityLabel})`;
+    if (!triedWrong) {
+      triedWrong = true;
+      const wrong = must(
+        h.find((l) => l.startsWith("kidsA11yShadow") && l !== right),
+        "a wrong shadow"
+      );
+      h.pressNode(wrong);
+      await h.advance(600);
+      must(!celebrating(h), "a wrong shadow must not end the game");
+    }
+    must(h.press(right), "the right shadow");
+    await h.advance(1000);
+  });
+}
+
+/** Reads how many pictures are shown and taps that many dots (one miss). */
+async function playCounting(h: Harness) {
+  let triedWrong = false;
+  await untilCelebration(h, 30, async () => {
+    const [tray] = byTestId(h, COUNT_TRAY);
+    if (!tray) {
+      await h.advance(300);
+      return;
+    }
+    const count = Number(COUNT_TRAY.exec(tray.props.testID)?.[1]);
+    if (!triedWrong) {
+      triedWrong = true;
+      h.press(String((count % 5) + 1));
+      await h.advance(600);
+      must(!celebrating(h), "a wrong count must not end the game");
+    }
+    must(h.press(String(count)), `button ${String(count)}`);
+    await h.advance(1000);
+  });
+}
+
+/** Taps a wrong dot (wiggle), then 1, 2, 3… in order. */
+async function playDotToDot(h: Harness) {
+  let triedWrong = false;
+  await untilCelebration(h, 10, async () => {
+    const total = h.findAll(DOT).length;
+    if (total === 0) {
+      await h.advance(300);
+      return;
+    }
+    if (!triedWrong) {
+      triedWrong = true;
+      h.press("kidsA11yDot(n=3)");
+      await h.advance(500);
+    }
+    for (let n = 1; n <= total; n += 1) {
+      must(h.press(`kidsA11yDot(n=${String(n)})`), `dot ${String(n)}`);
+    }
+    await h.advance(1700);
+  });
+}
+
 const DRIVERS: Record<string, (h: Harness) => Promise<unknown>> = {
   "cargo-catch": playCargoCatch,
+  colouring: playColouring,
+  counting: playCounting,
+  "dot-to-dot": playDotToDot,
+  maze: playMaze,
   memory: playMemory,
   "odd-one-out": playOddOneOut,
+  shadows: playShadows,
+  shapes: playShapes,
   "simon-says": playSimonSays,
   "sliding-puzzle": playSlidingPuzzle,
   "whack-mole": playWhackMole,

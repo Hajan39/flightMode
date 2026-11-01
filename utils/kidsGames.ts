@@ -249,3 +249,277 @@ export const KIDS_CATCH_ITEMS = ["🎁", "🍎", "🧸", "🍓", "⭐", "🎈"] 
 export function catchFallProgress(spawnAt: number, now: number): number {
   return Math.max(0, (now - spawnAt) / KIDS_CATCH_FALL_MS);
 }
+
+/* ------------------------------------------------------------- colouring */
+
+/**
+ * Six big crayons. Fixed picture colours (content, not theme): they are
+ * painted on the picture's white paper, so they look the same in every theme.
+ */
+export const KIDS_PAINTS = [
+  "#e53935",
+  "#fb8c00",
+  "#fdd835",
+  "#43a047",
+  "#1e88e5",
+  "#8e24aa",
+] as const;
+
+/** Paint index per region (null = still white paper). */
+export type KidsFills = readonly (number | null)[];
+
+export const emptyFills = (regions: number): (number | null)[] =>
+  new Array<number | null>(regions).fill(null);
+
+/** Paints `region` with `paint` (any order, repaint allowed — nothing is wrong). */
+export function fillRegion(
+  fills: KidsFills,
+  region: number,
+  paint: number
+): (number | null)[] {
+  if (region < 0 || region >= fills.length || paint < 0) {
+    return [...fills];
+  }
+  const next = [...fills];
+  next[region] = Math.min(paint, KIDS_PAINTS.length - 1);
+  return next;
+}
+
+export const filledCount = (fills: KidsFills) =>
+  fills.filter((f) => f !== null).length;
+
+/** The ✓ appears once anything is coloured (no "wrong" picture). */
+export const canFinishColouring = (fills: KidsFills) => filledCount(fills) > 0;
+
+/* ---------------------------------------------------------------- shapes */
+
+export const KIDS_SHAPES = ["circle", "square", "triangle", "star"] as const;
+export type KidsShape = (typeof KIDS_SHAPES)[number];
+export const KIDS_SHAPE_ROUNDS = 3;
+
+export interface KidsShapeRound {
+  /** Pieces in the tray, left to right. */
+  pieces: KidsShape[];
+  /** Outlines on the board, left to right. */
+  targets: KidsShape[];
+}
+
+/** Round 0: three shapes, later all four; tray order differs from the board. */
+export function makeShapeRound(round: number, rnd: Rnd): KidsShapeRound {
+  const count = round === 0 ? 3 : 4;
+  const targets = shuffleWith(KIDS_SHAPES, rnd).slice(0, count);
+  let pieces = shuffleWith(targets, rnd);
+  if (pieces.every((p, i) => p === targets[i])) {
+    pieces = [...pieces.slice(1), pieces[0]];
+  }
+  return { pieces, targets };
+}
+
+export interface KidsDropTarget {
+  cx: number;
+  cy: number;
+  filled: boolean;
+  shape: KidsShape;
+}
+
+export type KidsDropDecision =
+  | { kind: "snap"; target: number }
+  | { kind: "return"; wrong: boolean };
+
+/**
+ * Where a dropped piece goes: it snaps into the nearest free outline within
+ * `radius` when the shape matches; otherwise it glides back to the tray
+ * (`wrong` when it was dropped on another shape — a gentle "not this one").
+ */
+export function decideDrop(
+  shape: KidsShape,
+  x: number,
+  y: number,
+  targets: readonly KidsDropTarget[],
+  radius: number
+): KidsDropDecision {
+  let best = -1;
+  let bestDist = Number.POSITIVE_INFINITY;
+  for (const [i, target] of targets.entries()) {
+    if (target.filled) {
+      continue;
+    }
+    const dist = Math.hypot(target.cx - x, target.cy - y);
+    if (dist <= radius && dist < bestDist) {
+      best = i;
+      bestDist = dist;
+    }
+  }
+  if (best < 0) {
+    return { kind: "return", wrong: false };
+  }
+  return targets[best].shape === shape
+    ? { kind: "snap", target: best }
+    : { kind: "return", wrong: true };
+}
+
+/* --------------------------------------------------------------- shadows */
+
+/** Whole-body animals with clearly different outlines. */
+export const KIDS_SHADOW_ANIMALS = [
+  "🐘",
+  "🦒",
+  "🐢",
+  "🦋",
+  "🐌",
+  "🐓",
+  "🦀",
+  "🐟",
+  "🐇",
+  "🦆",
+  "🐎",
+  "🐙",
+] as const;
+export const KIDS_SHADOW_ROUNDS = 5;
+export const KIDS_SHADOW_OPTIONS = 3;
+
+export interface KidsShadowRound {
+  animal: string;
+  answerIndex: number;
+  options: string[];
+}
+
+/** One animal + three different silhouettes; never the same animal twice in a row. */
+export function makeShadowRound(
+  previous: string | null,
+  rnd: Rnd
+): KidsShadowRound {
+  const animal = pick(
+    KIDS_SHADOW_ANIMALS.filter((a) => a !== previous),
+    rnd
+  );
+  const others = shuffleWith(
+    KIDS_SHADOW_ANIMALS.filter((a) => a !== animal),
+    rnd
+  ).slice(0, KIDS_SHADOW_OPTIONS - 1);
+  const answerIndex = Math.floor(rnd() * KIDS_SHADOW_OPTIONS);
+  const options = [...others];
+  options.splice(answerIndex, 0, animal);
+  return { animal, answerIndex, options };
+}
+
+/* -------------------------------------------------------------- counting */
+
+export const KIDS_COUNT_ROUNDS = 5;
+export const KIDS_COUNT_MAX = 5;
+export const KIDS_COUNT_OBJECTS = ["🍎", "⭐", "🎈", "🐤", "🌸", "🍓"] as const;
+
+export interface KidsCountRound {
+  count: number;
+  emoji: string;
+}
+
+/** Rounds 0–1 count to 3, later to 5; never the same number twice in a row. */
+export function makeCountRound(
+  round: number,
+  previous: number | null,
+  rnd: Rnd
+): KidsCountRound {
+  const max = round < 2 ? 3 : KIDS_COUNT_MAX;
+  const counts = Array.from({ length: max }, (_, i) => i + 1).filter(
+    (n) => n !== previous
+  );
+  return { count: pick(counts, rnd), emoji: pick(KIDS_COUNT_OBJECTS, rnd) };
+}
+
+/** Dice-face dot positions (3×3 grid cells 0…8) for 1–5. */
+export function countDots(n: number): number[] {
+  const faces: Record<number, number[]> = {
+    1: [4],
+    2: [0, 8],
+    3: [0, 4, 8],
+    4: [0, 2, 6, 8],
+    5: [0, 2, 4, 6, 8],
+  };
+  return faces[n] ?? [];
+}
+
+/* ------------------------------------------------------------ dot to dot */
+
+export interface KidsDotPicture {
+  /** Revealed when the outline is closed. */
+  emoji: string;
+  id: string;
+  /** Dots in tap order (1, 2, 3…), as 0…1 fractions of a square canvas. */
+  points: readonly (readonly [number, number])[];
+}
+
+const starPoints = (): [number, number][] =>
+  Array.from({ length: 5 }, (_, i) => {
+    const angle = ((-90 + i * 144) * Math.PI) / 180;
+    return [0.5 + 0.4 * Math.cos(angle), 0.53 + 0.4 * Math.sin(angle)];
+  });
+
+export const KIDS_DOT_PICTURES_SMALL: readonly KidsDotPicture[] = [
+  {
+    emoji: "🏠",
+    id: "house",
+    points: [
+      [0.2, 0.86],
+      [0.2, 0.46],
+      [0.5, 0.12],
+      [0.8, 0.46],
+      [0.8, 0.86],
+    ],
+  },
+  { emoji: "⭐", id: "star", points: starPoints() },
+];
+
+export const KIDS_DOT_PICTURES_BIG: readonly KidsDotPicture[] = [
+  {
+    emoji: "🐟",
+    id: "fish",
+    points: [
+      [0.08, 0.24],
+      [0.3, 0.38],
+      [0.55, 0.18],
+      [0.92, 0.5],
+      [0.55, 0.82],
+      [0.3, 0.62],
+      [0.08, 0.76],
+    ],
+  },
+  {
+    emoji: "🚀",
+    id: "rocket",
+    points: [
+      [0.5, 0.08],
+      [0.7, 0.36],
+      [0.7, 0.66],
+      [0.88, 0.9],
+      [0.12, 0.9],
+      [0.3, 0.66],
+      [0.3, 0.36],
+    ],
+  },
+];
+
+export const KIDS_DOT_ROUNDS = 3;
+
+/** Two 5-dot pictures (random order), then one 7-dot picture. */
+export function pickDotPictures(rnd: Rnd): KidsDotPicture[] {
+  return [
+    ...shuffleWith(KIDS_DOT_PICTURES_SMALL, rnd),
+    pick(KIDS_DOT_PICTURES_BIG, rnd),
+  ];
+}
+
+/**
+ * Tapping dot `tapped` when dot `next` is expected: the right one advances
+ * (`complete` after the last one); any other dot just wiggles (`ok: false`).
+ */
+export function tapDot(
+  next: number,
+  tapped: number,
+  total: number
+): { complete: boolean; next: number; ok: boolean } {
+  if (tapped !== next || next >= total) {
+    return { complete: next >= total, next, ok: false };
+  }
+  return { complete: next + 1 >= total, next: next + 1, ok: true };
+}

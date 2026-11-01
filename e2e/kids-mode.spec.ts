@@ -1,5 +1,6 @@
 import type { Locator, Page } from "@playwright/test";
 
+import { generateMaze, solveMaze } from "../utils/kidsMaze";
 import {
   expect,
   pathOf,
@@ -9,13 +10,20 @@ import {
   test,
 } from "./fixtures";
 
+/** Kids home tiles, simplest first (`data/kidsGames.ts`). */
 const KIDS_TILES = [
-  "Pairs",
-  "Find it",
-  "Repeat",
   "Peekaboo",
-  "Puzzle",
+  "Colours",
+  "Find it",
+  "Shadows",
+  "Count",
+  "Pairs",
+  "Shapes",
   "Catch",
+  "Dots",
+  "Repeat",
+  "Maze",
+  "Puzzle",
 ] as const;
 
 /** Persisted state kids mode must never touch (see CLAUDE.md "Kids mode"). */
@@ -167,6 +175,31 @@ async function readSlideBoard(page: Page): Promise<number[]> {
   }
   return board;
 }
+
+/** Drags the mouse through the centres of `points` (a finger on a phone). */
+async function dragThrough(page: Page, points: { x: number; y: number }[]) {
+  const [first, ...rest] = points;
+  await page.mouse.move(first.x, first.y);
+  await page.mouse.down();
+  for (const p of rest) {
+    await page.mouse.move(p.x, p.y, { steps: 4 });
+  }
+  await page.mouse.up();
+}
+
+async function centerOf(locator: Locator) {
+  const box = await locator.boundingBox();
+  if (!box) {
+    throw new Error("element not laid out");
+  }
+  return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+}
+
+/** The maze board (`kids-maze-<size>-<seed>`), not its squares. */
+const mazeBoard = (page: Page) =>
+  page.locator(
+    '[data-testid^="kids-maze-"]:not([data-testid^="kids-maze-cell-"])'
+  );
 
 /* --------------------------------------------------------------- tests */
 
@@ -399,6 +432,146 @@ test.describe("kids mode", () => {
       await lanes.nth(lane).click();
       await expect(lanes.nth(lane)).toContainText("🧺");
       await expect.poll(() => litStars(page), { timeout: 15_000 }).toBe(1);
+      await backToKidsHome(page);
+    });
+
+    test("Maze: drag the animal along the path → next maze", async ({
+      page,
+    }) => {
+      await openKidsGame(page, "Maze", "maze");
+      const board = mazeBoard(page);
+      const id = (await board.getAttribute("data-testid")) ?? "";
+      const [size, seed] = id.split("-").slice(2).map(Number);
+      expect(size).toBe(4);
+      // Same seeded generator as the app → the solution path.
+      const path = solveMaze(generateMaze(size, seed)) as number[];
+      expect(path.length).toBeGreaterThan(1);
+      const box = await board.boundingBox();
+      if (!box) {
+        throw new Error("maze not laid out");
+      }
+      const cell = box.width / size;
+      await dragThrough(
+        page,
+        path.map((c) => ({
+          x: box.x + ((c % size) + 0.5) * cell,
+          y: box.y + (Math.floor(c / size) + 0.5) * cell,
+        }))
+      );
+      await expect(board).toHaveAttribute("data-testid", /^kids-maze-5-/);
+      expect(await litStars(page)).toBe(1);
+      await backToKidsHome(page);
+    });
+
+    test("Colours: pick a crayon, paint a part, ✓ → celebration", async ({
+      page,
+    }) => {
+      await openKidsGame(page, "Colours", "colouring");
+      const done = page.getByRole("button", { exact: true, name: "Done" });
+      await expect(done).toBeDisabled();
+      await page.getByRole("button", { exact: true, name: "Green" }).click();
+      await page.getByRole("button", { exact: true, name: "Part 1" }).click();
+      await expect(page.getByTestId("kids-region-0-3")).toBeVisible();
+      await page.getByRole("button", { exact: true, name: "Blue" }).click();
+      await page.getByRole("button", { exact: true, name: "Part 2" }).click();
+      await expect(page.getByTestId("kids-region-1-4")).toBeVisible();
+      await done.click();
+      await expect(celebration(page)).toBeVisible();
+      await backToKidsHome(page);
+    });
+
+    test("Shapes: a wrong outline sends it back, the right one keeps it", async ({
+      page,
+    }) => {
+      await openKidsGame(page, "Shapes", "shapes");
+      const pieces = page.locator('[data-testid^="kids-shape-piece-"]');
+      await expect(pieces).toHaveCount(3);
+      const id = (await pieces.first().getAttribute("data-testid")) ?? "";
+      const shape = id.replace("kids-shape-piece-", "");
+      const piece = page.getByTestId(id);
+      const outlines = await page
+        .locator('[data-testid^="kids-shape-target-"]')
+        .evaluateAll((els) => els.map((el) => el.getAttribute("data-testid")));
+      const wrong = outlines.find((o) => o !== `kids-shape-target-${shape}`);
+
+      const home = await centerOf(piece);
+      await dragThrough(page, [
+        home,
+        await centerOf(page.getByTestId(wrong as string)),
+      ]);
+      await expect(pieces).toHaveCount(3);
+      // It glides back to its place in the tray.
+      await expect
+        .poll(async () => {
+          const at = await centerOf(piece);
+          return Math.round(Math.hypot(at.x - home.x, at.y - home.y));
+        })
+        .toBeLessThan(2);
+
+      await dragThrough(page, [
+        await centerOf(piece),
+        await centerOf(page.getByTestId(`kids-shape-target-${shape}`)),
+      ]);
+      await expect(pieces).toHaveCount(2);
+      await backToKidsHome(page);
+    });
+
+    test("Shadows: tap the animal's own shadow → a star", async ({ page }) => {
+      await openKidsGame(page, "Shadows", "shadows");
+      const animal =
+        (await page
+          .getByTestId("kids-shadow-animal")
+          .getAttribute("aria-label")) ?? "";
+      await expect(gameButtons(page)).toHaveCount(3);
+      await page
+        .getByRole("button", { exact: true, name: `Shadow ${animal}` })
+        .click();
+      await expect.poll(() => litStars(page)).toBe(1);
+      await backToKidsHome(page);
+    });
+
+    test("Count: tap the matching number of dots → next round", async ({
+      page,
+    }) => {
+      await openKidsGame(page, "Count", "counting");
+      await expect(gameButtons(page)).toHaveCount(5);
+      const tray = page.locator('[data-testid^="kids-count-"]');
+      const count = Number(
+        ((await tray.getAttribute("data-testid")) ?? "").split("-").pop()
+      );
+      expect(count).toBeGreaterThanOrEqual(1);
+      expect(count).toBeLessThanOrEqual(3);
+      const wrong = (count % 3) + 1;
+      await page
+        .getByRole("button", { exact: true, name: String(wrong) })
+        .click();
+      await expect(tray).toHaveAttribute("data-testid", `kids-count-${count}`);
+      await page
+        .getByRole("button", { exact: true, name: String(count) })
+        .click();
+      // The next round never repeats the same number.
+      await expect(tray).not.toHaveAttribute(
+        "data-testid",
+        `kids-count-${count}`
+      );
+      await backToKidsHome(page);
+    });
+
+    test("Dots: connect 1→5 in order → the picture, then the next one", async ({
+      page,
+    }) => {
+      await openKidsGame(page, "Dots", "dot-to-dot");
+      const dots = page.getByRole("button", { name: /^Dot \d$/ });
+      await expect(dots).toHaveCount(5);
+      const canvas = page.locator('[data-testid^="kids-dots-"]');
+      const first = (await canvas.getAttribute("data-testid")) ?? "";
+      await page.getByRole("button", { exact: true, name: "Dot 3" }).click();
+      for (let n = 1; n <= 5; n += 1) {
+        await page
+          .getByRole("button", { exact: true, name: `Dot ${n}` })
+          .click();
+      }
+      await expect(canvas).not.toHaveAttribute("data-testid", first);
       await backToKidsHome(page);
     });
   });
