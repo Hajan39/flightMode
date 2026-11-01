@@ -990,6 +990,8 @@
   sdkMedium: "मध्यम",
   sdkHard: "कठिन",
   sdkCongrats: "बधाई हो!",
+  sdkFixErrors:
+    "बोर्ड भर गया — {{count}} गलत अंक लाल रंग में हैं। पूरा करने के लिए उन्हें ठीक करें।",
   sdkSolve: "हल करें",
   sdkSelectDifficulty: "कठिनाई चुनें",
 

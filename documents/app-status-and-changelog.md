@@ -130,6 +130,10 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 4. Changelog
 
+## 2026-11-01
+
+- opravy z testovani: sudoku hlasi plnou plochu se spatnymi cisly; prevodnik prohodi meny pri vyberu meny z druhe rady, cipy reaguji pri otevrene klavesnici
+
 ## 2026-10-31
 
 - volitelne vyhledani letu podle cisla ("Doplnit" v editaci letu): Cloudflare Worker `services/flight-lookup` (proxy na AeroDataBox pres API.Market, KV cache `v1:{CISLO}:{DATUM}`, rate limit binding per klient, denni strop volani pres Durable Object, zadne logy) + klient `utils/flightLookup.ts` / `hooks/useFlightLookup.ts`; vyplni odlet (UTC → mistni cas zarizeni), delku a cil podle letiste (`data/destinationAirports.ts`, 44 destinaci); respektuje Online Sync; event `flight_lookup_result` bez cisla/data; v produkci VYPNUTO (bez `EXPO_PUBLIC_FLIGHT_LOOKUP_URL`) do prechodu na placeny plan; privacy policy 3.7; deploy workflow `deploy-flight-lookup.yml`, `release-main` ignoruje `services/**`

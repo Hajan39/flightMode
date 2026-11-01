@@ -232,3 +232,22 @@ function parseSingleSeparator(
   }
   return toNumber(sign, parts[0], parts[1]);
 }
+
+/**
+ * Picks `code` for one side of the converter. Choosing the currency already
+ * on the other side swaps the pair instead of producing e.g. CZK → CZK.
+ */
+export function pickCurrencyPair(
+  side: "from" | "to",
+  code: string,
+  pair: { from: string; to: string }
+): { from: string; to: string } {
+  if (side === "from") {
+    return code === pair.to
+      ? { from: code, to: pair.from }
+      : { ...pair, from: code };
+  }
+  return code === pair.from
+    ? { from: pair.to, to: code }
+    : { ...pair, to: code };
+}

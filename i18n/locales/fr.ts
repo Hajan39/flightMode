@@ -1045,6 +1045,8 @@
   sdkMedium: "Moyen",
   sdkHard: "Difficile",
   sdkCongrats: "Félicitations !",
+  sdkFixErrors:
+    "Grille pleine — {{count}} chiffre(s) faux en rouge. Corrige-les pour terminer.",
   sdkSolve: "Résoudre",
   sdkSelectDifficulty: "Choisir la difficulté",
 

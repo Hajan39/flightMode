@@ -1053,6 +1053,8 @@
   sdkMedium: "Mittel",
   sdkHard: "Schwer",
   sdkCongrats: "Herzlichen Glückwunsch!",
+  sdkFixErrors:
+    "Feld voll — {{count}} falsche Zahl(en) in Rot. Korrigiere sie, um fertig zu werden.",
   sdkSolve: "Lösen",
   sdkSelectDifficulty: "Schwierigkeit wählen",
 

@@ -35,6 +35,7 @@ import {
   formatCurrency,
   formatUnit,
   parseAmount,
+  pickCurrencyPair,
   type UnitDirection,
   type UnitKind,
   unitLabels,
@@ -166,6 +167,18 @@ export default function ConverterScreen() {
       Platform.OS === "ios" ? "numbers-and-punctuation" : "numeric";
   }
 
+  // Picking the currency already shown in the other row swaps the two —
+  // otherwise e.g. USD→CZK, then CZK as "from", gives CZK→CZK and nothing
+  // visibly changes.
+  const applyPair = (next: { from: string; to: string }) => {
+    setFrom(next.from);
+    setTo(next.to);
+  };
+  const selectFrom = (code: string) =>
+    applyPair(pickCurrencyPair("from", code, { from, to }));
+  const selectTo = (code: string) =>
+    applyPair(pickCurrencyPair("to", code, { from, to }));
+
   const swap = () => {
     haptic.tap();
     if (kind === "currency") {
@@ -288,7 +301,7 @@ export default function ConverterScreen() {
               <Text style={[styles.label, { color: theme.mutedText }]}>
                 {t("converterFrom")}
               </Text>
-              <CurrencyPicker onSelect={setFrom} selected={from} />
+              <CurrencyPicker onSelect={selectFrom} selected={from} />
             </>
           ) : null}
 
@@ -312,7 +325,7 @@ export default function ConverterScreen() {
               <Text style={[styles.label, { color: theme.mutedText }]}>
                 {t("converterTo")}
               </Text>
-              <CurrencyPicker onSelect={setTo} selected={to} />
+              <CurrencyPicker onSelect={selectTo} selected={to} />
             </>
           ) : null}
 

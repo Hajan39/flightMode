@@ -334,3 +334,30 @@ describe("dates", () => {
     expect(toLocalDateKey(addDays(d, -31))).toBe("2025-12-31");
   });
 });
+
+describe("pickCurrencyPair", () => {
+  const { pickCurrencyPair } = require("@/utils/convert");
+  test("picking the other side's currency swaps the pair", () => {
+    expect(pickCurrencyPair("from", "CZK", { from: "USD", to: "CZK" })).toEqual(
+      { from: "CZK", to: "USD" }
+    );
+    expect(pickCurrencyPair("to", "USD", { from: "USD", to: "CZK" })).toEqual({
+      from: "CZK",
+      to: "USD",
+    });
+  });
+  test("picking a third currency only changes that side", () => {
+    expect(pickCurrencyPair("from", "EUR", { from: "USD", to: "CZK" })).toEqual(
+      { from: "EUR", to: "CZK" }
+    );
+    expect(pickCurrencyPair("to", "EUR", { from: "USD", to: "CZK" })).toEqual({
+      from: "USD",
+      to: "EUR",
+    });
+  });
+  test("re-picking the same side's currency is a no-op", () => {
+    expect(pickCurrencyPair("from", "USD", { from: "USD", to: "CZK" })).toEqual(
+      { from: "USD", to: "CZK" }
+    );
+  });
+});

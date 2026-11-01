@@ -1029,6 +1029,8 @@ export const en = {
   sdkMedium: "Medium",
   sdkHard: "Hard",
   sdkCongrats: "Puzzle Solved!",
+  sdkFixErrors:
+    "Board full — {{count}} wrong number(s) in red. Fix them to finish.",
   sdkSolve: "Use Hint",
   sdkSelectDifficulty: "Select Difficulty",
   // Snake

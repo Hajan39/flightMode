@@ -737,6 +737,19 @@ export default function SudokuGame() {
             </BouncyPressable>
           </RNView>
 
+          {/* A full board that isn't solved waits silently otherwise — say so. */}
+          {phase === "playing" &&
+          errors.size > 0 &&
+          board.length === 81 &&
+          board.every((v) => v !== 0) ? (
+            <Text
+              accessibilityLiveRegion="polite"
+              style={[styles.fixErrors, { color: theme.danger }]}
+            >
+              {t("sdkFixErrors", { count: errors.size })}
+            </Text>
+          ) : null}
+
           {/* ── Hint button ── */}
           <Pressable
             disabled={!isInteractive || hintsLeft <= 0}
@@ -845,6 +858,12 @@ const styles = StyleSheet.create({
   diffRow: {
     flexDirection: "row",
     gap: Spacing.md,
+  },
+  fixErrors: {
+    fontSize: FontSize.sm,
+    fontWeight: FontWeight.semibold,
+    marginTop: Spacing.sm,
+    textAlign: "center",
   },
   grid: {
     flexDirection: "row",
