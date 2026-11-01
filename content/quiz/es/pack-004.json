@@ -1,0 +1,2590 @@
+{
+  "id": "pack-004",
+  "lang": "es",
+  "questions": [
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "El tornillo que gira dentro de un tubo aún se usa hoy para mover agua y grano, e incluso en algunas bombas que no dañan a los peces.",
+      "id": "inv-0022",
+      "options": ["Pesar oro", "Moler grano", "Elevar agua", "Medir el tiempo"],
+      "question": "¿Para qué se diseñó el tornillo de Arquímedes?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Torricelli, discípulo de Galileo, demostró que la presión del aire sostiene una columna de mercurio de unos 76 cm.",
+      "id": "inv-0050",
+      "options": [
+        "Galileo Galilei",
+        "Otto von Guericke",
+        "Evangelista Torricelli",
+        "Blaise Pascal"
+      ],
+      "question": "¿Quién inventó el barómetro de mercurio en 1643?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "George de Mestral examinó los frutos de bardana al microscopio y vio diminutos ganchos que se enganchaban en bucles.",
+      "id": "inv-0044",
+      "options": ["Liechtenstein", "Noruega", "Suecia", "Suiza"],
+      "question": "El velcro se inspiró en los frutos de bardana que se pegaban al pelo de un perro. ¿De qué país era su inventor?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "George Eastman eligió el nombre Kodak porque le gustaba la letra K y quería un nombre fácil de pronunciar en cualquier idioma.",
+      "id": "inv-0053",
+      "options": ["Leica", "Nikon", "Canon", "Kodak"],
+      "question": "¿Qué empresa lanzó en 1888 una cámara con el lema «Usted aprieta el botón, nosotros hacemos el resto»?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Lo diseñó el ingeniero de Volvo Nils Bohlin, y la empresa permitió que otros fabricantes usaran la patente gratis.",
+      "id": "inv-0027",
+      "options": ["Ford", "Mercedes-Benz", "Volvo", "Saab"],
+      "question": "¿Qué fabricante de coches introdujo en 1959 el moderno cinturón de seguridad de tres puntos?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "El nombre «radar» era originalmente un acrónimo del inglés «radio detection and ranging» (detección y medición de distancias por radio).",
+      "id": "inv-0020",
+      "options": [
+        "Campos magnéticos",
+        "Ondas de radio",
+        "Luz infrarroja",
+        "Ondas sonoras"
+      ],
+      "question": "¿Qué utiliza el radar para detectar objetos?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "El prototipo tenía dos ruedas metálicas debajo y un solo botón encima.",
+      "id": "inv-0062",
+      "options": ["Acero", "Plástico", "Goma", "Madera"],
+      "question": "¿De qué era la carcasa del primer ratón de ordenador de Douglas Engelbart (1964)?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Las tarjetas perforadas de Jacquard inspiraron a Babbage y, más tarde, a los primeros ordenadores.",
+      "id": "inv-0046",
+      "options": [
+        "Engranajes de latón",
+        "Cinta magnética",
+        "Clavijas de madera",
+        "Tarjetas perforadas"
+      ],
+      "question": "¿Qué usaba el telar de Jacquard de 1804 para controlar sus dibujos?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Lo creó Denso Wave para seguir piezas de coche; QR significa «quick response» (respuesta rápida).",
+      "id": "inv-0055",
+      "options": ["Japón", "China", "Estados Unidos", "Corea del Sur"],
+      "question": "¿En qué país se inventó el código QR, en 1994?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Los primeros trenes del metro de Londres los arrastraban locomotoras de vapor; Budapest inauguró en 1896 la primera línea de metro eléctrico de la Europa continental.",
+      "id": "inv-0023",
+      "options": ["París", "Budapest", "Nueva York", "Londres"],
+      "question": "¿En qué ciudad se inauguró en 1863 el primer ferrocarril subterráneo del mundo?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Una de las primeras películas de los Lumière muestra un tren que llega a una estación, una breve escena que asombró al público de la época.",
+      "id": "inv-0017",
+      "options": ["Francia", "Reino Unido", "Estados Unidos", "Alemania"],
+      "question": "¿En qué país hicieron los hermanos Lumière su famosa primera proyección pública de cine, en 1895?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Los muros de puertos romanos hechos con ceniza volcánica han resistido unos 2000 años de agua de mar.",
+      "id": "inv-0048",
+      "options": [
+        "Conchas trituradas",
+        "Ceniza volcánica",
+        "Sangre animal",
+        "Sal marina"
+      ],
+      "question": "¿Qué ingrediente ayudaba a que el hormigón romano fraguara incluso bajo el agua?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Cochrane quería una máquina que lavara sus platos sin desportillar su fina porcelana.",
+      "id": "inv-0083",
+      "options": [
+        "Margaret Knight",
+        "Josephine Cochrane",
+        "Beulah Louise Henry",
+        "Mary Anderson"
+      ],
+      "question": "¿Quién inventó, en 1886, el primer lavavajillas con éxito comercial?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "El sistema binario usa solo los dígitos 0 y 1, que corresponden a los estados «apagado» y «encendido» de los interruptores electrónicos.",
+      "id": "inv-0024",
+      "options": ["Números romanos", "Binario", "Base doce", "Decimal"],
+      "question": "¿Qué sistema numérico usan los ordenadores para almacenar datos?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Impreso con bloques de madera tallados, se encontró en una cueva cerca de Dunhuang (China) y hoy está en la Biblioteca Británica.",
+      "id": "inv-0085",
+      "options": [
+        "Plantillas",
+        "Tipos móviles de metal",
+        "Bloques de madera",
+        "Planchas de cobre"
+      ],
+      "question": "El libro impreso fechado más antiguo, el Sutra del diamante de 868, ¿con qué se imprimió?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Las primeras palabras que grabó Edison fueron la canción infantil «Mary Had a Little Lamb», en papel de estaño enrollado en un cilindro.",
+      "id": "inv-0012",
+      "options": [
+        "Alexander Graham Bell",
+        "Emile Berliner",
+        "Nikola Tesla",
+        "Thomas Edison"
+      ],
+      "question": "¿Qué inventor presentó en 1877 el fonógrafo, un aparato que grababa sonido?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Faraday apenas tuvo educación formal y empezó su carrera como ayudante de Humphry Davy.",
+      "id": "inv-0047",
+      "options": [
+        "Michael Faraday",
+        "Lord Kelvin",
+        "Humphry Davy",
+        "James Clerk Maxwell"
+      ],
+      "question": "¿Qué científico británico construyó la primera dinamo eléctrica en 1831?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "«Vista desde la ventana en Le Gras» pudo necesitar una exposición de varias horas o incluso días.",
+      "id": "inv-0052",
+      "options": [
+        "Louis Daguerre",
+        "Nicéphore Niépce",
+        "George Eastman",
+        "Henry Fox Talbot"
+      ],
+      "question": "¿Quién tomó la fotografía con cámara más antigua que se conserva, hacia 1826?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "En teoría bastan tres satélites para dar una posición, pero hace falta un cuarto para corregir el reloj del receptor.",
+      "id": "inv-0054",
+      "options": [
+        "Al menos cuatro",
+        "Al menos seis",
+        "Al menos tres",
+        "Al menos dos"
+      ],
+      "question": "¿Cuántos satélites debe captar un receptor GPS para fijar una posición en 3D?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Se conservan unos 650 de sus instrumentos, y los mejores violines Stradivarius están entre los instrumentos más valiosos del mundo.",
+      "id": "inv-0030",
+      "options": [
+        "Instrumentos de viento metal",
+        "Relojes",
+        "Instrumentos de cuerda",
+        "Pianos"
+      ],
+      "question": "Antonio Stradivari fue un famoso fabricante de ¿qué instrumentos?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Las primeras gafas se hicieron probablemente en Pisa o cerca de allí, en Italia, y servían para leer.",
+      "id": "inv-0071",
+      "options": ["Inglaterra", "Alemania", "Italia", "China"],
+      "question": "¿Dónde se fabricaron las primeras gafas, hacia 1290?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El alfabeto fenicio tenía 22 letras, todas consonantes; los griegos añadieron letras para las vocales.",
+      "id": "lang-0029",
+      "options": ["Demótico egipcio", "Sánscrito", "Cuneiforme", "Fenicio"],
+      "question": "¿Qué alfabeto antiguo es el antepasado de las escrituras griega, latina y árabe?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "El taíno lo hablaba el pueblo que Colón encontró en 1492; «barbacoa» y «canoa» también proceden de lenguas caribeñas.",
+      "id": "lang-0058",
+      "options": ["Náhuatl", "Quechua", "Guaraní", "Taíno"],
+      "question": "¿Qué lengua caribeña dio al mundo las palabras «huracán» y «hamaca»?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Brasil es el mayor país de habla portuguesa, con muchos más hablantes que el propio Portugal.",
+      "id": "lang-0007",
+      "options": ["Español", "Italiano", "Portugués", "Francés"],
+      "question": "¿Cuál es el idioma oficial de Brasil?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Apareció por primera vez en la obra de teatro R.U.R. de Karel Čapek, de 1920; «robota» significa trabajo forzado, y fue su hermano Josef quien sugirió la palabra.",
+      "id": "lang-0002",
+      "options": ["Polaco", "Checo", "Alemán", "Ruso"],
+      "question": "¿Desde qué idioma se dio a conocer al mundo la palabra «robot»?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El náhuatl era la lengua de los aztecas; «tomatl» dio tomate y «ahuacatl», aguacate.",
+      "id": "lang-0024",
+      "options": ["Quechua", "Taíno", "Guaraní", "Náhuatl"],
+      "question": "Las palabras «tomate», «aguacate» y «chocolate» llegaron a las lenguas europeas desde ¿qué lengua?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "A Leibniz le fascinó encontrar patrones parecidos en los hexagramas del antiguo «I Ching» chino.",
+      "id": "inv-0096",
+      "options": [
+        "Gottfried Leibniz",
+        "René Descartes",
+        "Isaac Newton",
+        "Christiaan Huygens"
+      ],
+      "question": "En 1703, ¿qué pensador publicó un influyente artículo sobre la aritmética binaria?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Combina las palabras japonesas «e» (imagen) y «moji» (carácter); su parecido con «emoción» es pura casualidad.",
+      "id": "lang-0026",
+      "options": ["Coreano", "Japonés", "Inglés", "Cantonés"],
+      "question": "¿De qué idioma se tomó la palabra «emoji»?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Volta apiló discos de zinc y cobre separados por tela empapada en agua salada; el voltio lleva su nombre.",
+      "id": "inv-0039",
+      "options": [
+        "André-Marie Ampère",
+        "Michael Faraday",
+        "Luigi Galvani",
+        "Alessandro Volta"
+      ],
+      "question": "¿Quién construyó la primera batería eléctrica, la pila voltaica, en 1800?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "El trabajo de Appert ganó un premio del gobierno francés, que quería mejores alimentos para los viajes largos.",
+      "id": "inv-0076",
+      "options": [
+        "Liofilización",
+        "Salazón en barriles",
+        "Sellado en tarros calentados",
+        "Ahumado sobre fuego de leña"
+      ],
+      "question": "¿Qué método de conservación de alimentos inauguró Nicolas Appert hacia 1810?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "«Orang» significa persona y «hutan», bosque; los orangutanes comparten alrededor del 97 % de su ADN con los humanos.",
+      "id": "lang-0028",
+      "options": [
+        "Mono rojo",
+        "Persona del bosque",
+        "Trepador de árboles",
+        "Escalador de copas"
+      ],
+      "question": "En malayo, ¿qué significa «orangután»?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Spencer Silver, químico de 3M, creó el pegamento de baja adherencia en 1968; más tarde un compañero lo usó para sujetar los marcapáginas de su himnario.",
+      "id": "inv-0100",
+      "options": [
+        "Un pegamento débil reutilizable",
+        "Un papel impermeable",
+        "Un superpegamento muy potente",
+        "Una tinta que secaba muy rápido"
+      ],
+      "question": "Los pósits (Post-it) surgieron del descubrimiento accidental de ¿qué?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "En 1866, un cable tendido en el fondo del Atlántico ya unía Europa y Norteamérica por telégrafo.",
+      "id": "inv-0032",
+      "options": [
+        "Hilos conductores",
+        "Ondas de radio",
+        "Haces de luz",
+        "Tubos de aire comprimido"
+      ],
+      "question": "¿A través de qué enviaba mensajes el primer telégrafo eléctrico?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Los pescadores volvían y encontraban sus puertos destruidos, aunque en alta mar no habían notado grandes olas.",
+      "id": "lang-0021",
+      "options": [
+        "Temblor de la tierra",
+        "Mar enfadado",
+        "Ola de puerto",
+        "Agua grande"
+      ],
+      "question": "¿Qué significa literalmente la palabra japonesa «tsunami»?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "La Rocket ganó las pruebas de Rainhill, un concurso para elegir la mejor locomotora para el nuevo ferrocarril Liverpool–Mánchester.",
+      "id": "inv-0068",
+      "options": ["Flying Scotsman", "Rocket", "Mallard", "Puffing Billy"],
+      "question": "¿Qué famosa locomotora de 1829 construyeron George y Robert Stephenson?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Los extranjeros usaban «taikun», que significa «gran señor», para referirse al sogún japonés.",
+      "id": "lang-0059",
+      "options": ["Tailandés", "Cantonés", "Japonés", "Vietnamita"],
+      "question": "La palabra inglesa «tycoon» (magnate) procede de un antiguo título honorífico de ¿qué idioma?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Los operadores leían con catalejos las posiciones de unos brazos de madera en torres situadas en colinas y transmitían los mensajes por toda Francia.",
+      "id": "inv-0095",
+      "options": [
+        "Palomas mensajeras",
+        "Cables eléctricos",
+        "Espejos que reflejan el sol",
+        "Torres con brazos móviles"
+      ],
+      "question": "¿Con qué enviaba mensajes la red de Claude Chappe en la Francia de la década de 1790?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "La máquina de Booth, apodada «Puffing Billy», se aparcaba delante de los edificios y se metían largas mangueras por las ventanas.",
+      "id": "inv-0072",
+      "options": ["Aspiradora", "Cortacésped", "Lavadora", "Frigorífico"],
+      "question": "El invento de Hubert Cecil Booth de 1901, tirado por caballos, era una versión temprana de ¿qué aparato doméstico?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Un periscopio sencillo tiene dos espejos inclinados a 45°, uno en cada extremo de un tubo.",
+      "id": "inv-0033",
+      "options": [
+        "Señales de radio",
+        "Solo lentes",
+        "Espejos o prismas",
+        "Sensores magnéticos"
+      ],
+      "question": "¿Qué usa un periscopio para permitirte ver por encima de los obstáculos?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Entre los parientes lejanos del húngaro están el finés y el estonio, además de pequeñas lenguas habladas en Siberia occidental.",
+      "id": "lang-0060",
+      "options": ["Túrquica", "Urálica", "Germánica", "Eslava"],
+      "question": "¿A qué familia de lenguas pertenece el húngaro?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Dewar nunca lo patentó; más tarde una empresa alemana lo comercializó con el nombre Thermos.",
+      "id": "inv-0074",
+      "options": [
+        "Conservar químicos fríos",
+        "Transportar peces vivos",
+        "Guardar el café caliente",
+        "Llevar sopa"
+      ],
+      "question": "¿Para qué inventó James Dewar el termo en 1892?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "El aire caliente de un horno circulaba por espacios bajo el suelo, que descansaba sobre pequeños pilares de piedra.",
+      "id": "inv-0079",
+      "options": ["Impluvium", "Acueducto", "Atrio", "Hipocausto"],
+      "question": "¿Qué usaban los romanos para calentar los suelos desde abajo?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Equipos de calculadores humanos, a menudo mujeres, hacían los cálculos para la astronomía, las tablas de navegación y los primeros vuelos espaciales.",
+      "id": "inv-0045",
+      "options": [
+        "Un ábaco",
+        "Una persona que calcula",
+        "Una sumadora de relojería",
+        "Un tipo de reloj"
+      ],
+      "question": "Antes de que las máquinas tomaran el nombre, ¿qué significaba la palabra inglesa «computer»?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Finlandia tiene unos 3 millones de saunas para unos 5,6 millones de habitantes, y la palabra se usa en idiomas de todo el mundo.",
+      "id": "lang-0008",
+      "options": ["Finés", "Ruso", "Estonio", "Sueco"],
+      "question": "¿Qué idioma dio al mundo la palabra «sauna»?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El mandarín tiene cerca de mil millones de hablantes nativos; el inglés se aprende más como segunda lengua.",
+      "id": "lang-0001",
+      "options": [
+        "Español",
+        "Chino mandarín",
+        "Árabe estándar moderno",
+        "Hindi"
+      ],
+      "question": "¿Qué idioma del mundo tiene más hablantes nativos?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Combinando luz roja, verde y azul con distintas intensidades, una pantalla puede mostrar millones de colores.",
+      "id": "inv-0034",
+      "options": [
+        "Rojo, verde y azul",
+        "Naranja, morado y verde",
+        "Cian, magenta y amarillo",
+        "Rojo, amarillo y azul"
+      ],
+      "question": "Cada píxel de una pantalla típica mezcla luz de ¿qué tres colores?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "El primer cajero daba billetes a cambio de unos cheques especiales de papel, porque aún no existían las tarjetas bancarias.",
+      "id": "inv-0077",
+      "options": ["París", "Fráncfort", "Londres", "Nueva York"],
+      "question": "¿Dónde se instaló el primer cajero automático, en 1967?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "El paquete de chicles de frutas, escaneado en Ohio, se exhibe hoy en un museo.",
+      "id": "inv-0094",
+      "options": [
+        "Una lata de sopa",
+        "Una caja de cereales",
+        "Una barra de pan de molde",
+        "Un paquete de chicles"
+      ],
+      "question": "¿Cuál fue el primer producto que se vendió escaneando un código de barras UPC, en 1974?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "El rey Harald «Diente Azul» Gormsson unificó a las tribus danesas; el logotipo combina sus iniciales en runas nórdicas.",
+      "id": "inv-0067",
+      "options": ["Noruega", "Dinamarca", "Islandia", "Suecia"],
+      "question": "La tecnología Bluetooth debe su nombre a un rey de ¿qué país?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Un reloj preciso permite comparar el mediodía local con la hora del puerto de origen; cada hora de diferencia equivale a 15° de longitud.",
+      "id": "inv-0070",
+      "options": [
+        "Corredera y cordel",
+        "Sextante",
+        "Cronómetro marino",
+        "Barómetro"
+      ],
+      "question": "¿Qué invento de John Harrison resolvió el problema de calcular la longitud en el mar?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "A Shaw se le ocurrió la idea al ver de noche la luz reflejada en los ojos de un gato; los reflectores se limpian solos cuando los coches pasan por encima.",
+      "id": "inv-0065",
+      "options": ["En minas", "En barcos", "En carreteras", "En bicicletas"],
+      "question": "¿Dónde se usan los «cat’s eyes» («ojos de gato»), inventados por Percy Shaw en 1934?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "El laboratorio de Edison en Menlo Park fue uno de los primeros laboratorios de investigación dedicados a inventar.",
+      "id": "inv-0031",
+      "options": [
+        "Alexander Graham Bell",
+        "Thomas Edison",
+        "Nikola Tesla",
+        "Benjamin Franklin"
+      ],
+      "question": "¿Qué inventor tuvo más de 1000 patentes en Estados Unidos?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Funcionaba en la pantalla de un osciloscopio durante una jornada de puertas abiertas de un laboratorio estadounidense y es uno de los primeros videojuegos.",
+      "id": "inv-0098",
+      "options": [
+        "Una máquina lanzapelotas",
+        "Una regla de puntuación",
+        "Un videojuego pionero",
+        "Un diseño de raqueta"
+      ],
+      "question": "¿Qué era «Tennis for Two», creado en 1958?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Los karakuri del período Edo usaban muelles y engranajes para avanzar con una taza de té y volver atrás cuando alguien tomaba la taza.",
+      "id": "inv-0097",
+      "options": ["Daruma", "Kokeshi", "Hina-ningyō", "Karakuri"],
+      "question": "¿Cómo se llaman en japonés los muñecos mecánicos, como los que sirven el té?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "La baquelita fue el primer plástico totalmente sintético y se usó en teléfonos, radios y joyas.",
+      "id": "inv-0073",
+      "options": [
+        "Un tipo de caucho",
+        "Un plástico pionero",
+        "Una aleación metálica",
+        "Un tipo de vidrio"
+      ],
+      "question": "¿Qué era la baquelita, inventada en 1907?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Al principio, «champú» significaba un masaje en la cabeza, que ofrecía Sake Dean Mahomed en baños británicos del siglo XIX.",
+      "id": "lang-0057",
+      "options": [
+        "Espuma de jabón",
+        "Lavar el pelo",
+        "Aclarar con agua tibia",
+        "Presionar o masajear"
+      ],
+      "question": "La palabra «champú» procede de una palabra hindi que significa ¿qué?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "En devanagari, la mayoría de las letras cuelgan de una línea horizontal trazada a lo largo de la parte superior de la palabra.",
+      "id": "lang-0030",
+      "options": ["Devanagari", "Tamil", "Bengalí", "Persoárabe"],
+      "question": "¿Qué escritura se usa para escribir el hindi?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "El primer hotel cápsula abrió en Osaka; cada cápsula es justo lo bastante grande para sentarse, con una luz y un pequeño televisor.",
+      "id": "inv-0099",
+      "options": ["Corea del Sur", "Japón", "China", "Singapur"],
+      "question": "¿En qué país se abrió el primer hotel cápsula, en 1979?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "En cuevas del sur de Alemania se han encontrado flautas hechas de hueso de ave y de marfil de mamut.",
+      "id": "inv-0069",
+      "options": ["Arpa", "Flauta", "Tambor", "Sonajero"],
+      "question": "¿Qué tipo de instrumento está entre los más antiguos conocidos, hechos de huesos de unos 40 000 años?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Los lápices nunca llevaron plomo; antes se creía que el grafito era un tipo de plomo, de ahí su nombre en inglés, «lead».",
+      "id": "inv-0029",
+      "options": [
+        "Grafito y arcilla",
+        "Plomo",
+        "Carbón en polvo y cera",
+        "Carbón vegetal"
+      ],
+      "question": "¿De qué está hecha en realidad la «mina» de un lápiz?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Al mirar por las rendijas de un tambor que gira, una tira de dibujos parecía moverse.",
+      "id": "inv-0078",
+      "options": [
+        "Una caja de música",
+        "Un catalejo",
+        "Un juguete de animación",
+        "Un instrumento meteorológico"
+      ],
+      "question": "¿Qué tipo de aparato es un zoótropo, popular en el siglo XIX?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Friedrich Fröbel acuñó la palabra en 1840, imaginando a los niños creciendo como plantas en un jardín.",
+      "id": "lang-0004",
+      "options": ["Neerlandés", "Danés", "Sueco", "Alemán"],
+      "question": "La palabra «kindergarten», que significa «jardín de niños», se tomó prestada de ¿qué idioma?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "El Seiko Astron usaba un diminuto cristal de cuarzo vibrante y era mucho más preciso que los relojes mecánicos.",
+      "id": "inv-0093",
+      "options": ["Sony", "Casio", "Citizen", "Seiko"],
+      "question": "¿Qué empresa japonesa lanzó el primer reloj de pulsera de cuarzo, en 1969?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El japonés adoptó los caracteres chinos hacia el siglo V; en coreano se llaman «hanja».",
+      "id": "lang-0054",
+      "options": ["Tailandés", "Vietnamita", "Coreano", "Japonés"],
+      "question": "¿En qué idioma se llaman «kanji» los caracteres chinos?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El suajili lo hablan decenas de millones de personas como primera o segunda lengua, y es lengua oficial de la Unión Africana.",
+      "id": "lang-0013",
+      "options": [
+        "África oriental",
+        "Asia meridional",
+        "África occidental",
+        "África del Norte"
+      ],
+      "question": "El suajili es una lengua importante de ¿qué región?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "En árabe, «ṣaḥrāʾ» significa desierto, así que «desierto del Sahara» significa literalmente «desierto del desierto».",
+      "id": "lang-0051",
+      "options": ["Desierto", "Sol", "Arena", "Mar de dunas"],
+      "question": "En árabe, ¿qué significa la palabra «Sahara»?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Jano tenía dos caras, una que miraba al pasado y otra al futuro, algo muy apropiado para el comienzo del año.",
+      "id": "lang-0017",
+      "options": ["Juno", "Júpiter", "Marte", "Jano"],
+      "question": "El mes de enero debe su nombre a ¿qué dios romano?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El euskera es una «lengua aislada»: ya se hablaba en la región antes de que llegaran las lenguas derivadas del latín.",
+      "id": "lang-0033",
+      "options": ["Andorra", "Portugal", "Francia", "Italia"],
+      "question": "El euskera, sin parentesco con ninguna otra lengua viva, se habla en España y en ¿qué otro país?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El rumano desciende del latín que se hablaba en la provincia romana de Dacia, así que está emparentado con el italiano y el español.",
+      "id": "lang-0012",
+      "options": ["Báltica", "Romance", "Eslava", "Germánica"],
+      "question": "¿A qué familia de lenguas pertenece el rumano?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Viene de «al-jabr», del título de un libro del siglo IX del matemático al-Juarismi.",
+      "id": "lang-0023",
+      "options": ["Latín", "Árabe", "Persa", "Griego"],
+      "question": "«Álgebra» procede del título de un libro escrito en ¿qué idioma?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Refleja una antigua creencia según la cual las desgracias se debían a una posición desfavorable de las estrellas y los planetas.",
+      "id": "lang-0062",
+      "options": [
+        "Mala estrella",
+        "Cielo oscuro",
+        "Gran incendio",
+        "Barco roto"
+      ],
+      "question": "La palabra «desastre» procede de palabras que significan ¿qué?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El finés y el estonio son lenguas fínicas; ninguna de las dos está emparentada con el sueco, el ruso o el letón, sus vecinos.",
+      "id": "lang-0035",
+      "options": ["Lituano", "Ruso", "Estonio", "Sueco"],
+      "question": "¿Con qué idioma está más estrechamente emparentado el finés?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El latín sigue siendo la lengua oficial de la Santa Sede, que incluso publica un diccionario de palabras latinas modernas.",
+      "id": "lang-0011",
+      "options": ["Hebreo", "Griego antiguo", "Arameo", "Latín"],
+      "question": "¿En qué lengua antigua se pueden leer las instrucciones de un cajero automático de la Ciudad del Vaticano?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Se decía que Pan, dios de la naturaleza salvaje, causaba un miedo repentino a los viajeros en lugares solitarios.",
+      "id": "lang-0044",
+      "options": ["Hermes", "Ares", "Dioniso", "Pan"],
+      "question": "¿Qué dios griego dio su nombre a la palabra «pánico»?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "En Suiza y Liechtenstein el alemán se escribe sin ß; en su lugar se usa «ss».",
+      "id": "lang-0018",
+      "options": ["Neerlandés", "Polaco", "Alemán", "Danés"],
+      "question": "¿Qué idioma usa la letra ß, llamada «Eszett»?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "A los romanos un músculo en tensión les parecía un ratoncito moviéndose bajo la piel.",
+      "id": "lang-0061",
+      "options": [
+        "Cuerda anudada",
+        "Cordón móvil",
+        "Brazo fuerte",
+        "Ratoncito"
+      ],
+      "question": "La palabra «músculo» procede de una palabra latina que significa ¿qué?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "El criollo haitiano lo habla casi toda la población de Haití y es lengua oficial junto al francés.",
+      "id": "lang-0070",
+      "options": ["Francés", "Portugués", "Español", "Inglés"],
+      "question": "¿En qué idioma se basa principalmente el criollo haitiano?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El rey Sejong introdujo el hangul en 1443; la forma de sus consonantes se basa en la posición de la boca y la lengua.",
+      "id": "lang-0031",
+      "options": ["Hangul", "Kanji", "Hiragana", "Hanja"],
+      "question": "¿Cómo se llama el alfabeto coreano?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Andorra es el único país del mundo donde el catalán es la única lengua oficial.",
+      "id": "lang-0045",
+      "options": ["Catalán", "Español", "Occitano", "Francés"],
+      "question": "¿Cuál es la única lengua oficial de Andorra?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Alfa y beta procedían a su vez de letras fenicias que significaban «buey» y «casa».",
+      "id": "lang-0010",
+      "options": ["Hebreo", "Griego", "Cirílico", "Latino"],
+      "question": "La palabra «alfabeto» procede de las dos primeras letras de ¿qué alfabeto?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "«Astron» significa estrella y «nautes», marinero: la misma raíz que «náutico».",
+      "id": "lang-0042",
+      "options": [
+        "Viajero lunar",
+        "Navegante estelar",
+        "Caminante del cielo",
+        "Piloto espacial"
+      ],
+      "question": "La palabra «astronauta» procede de palabras griegas que significan ¿qué?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "«Hima» significa nieve y «ālaya», hogar o morada.",
+      "id": "lang-0052",
+      "options": [
+        "Hogar del viento",
+        "Morada de nieve",
+        "Piedra alta",
+        "Techo del mundo"
+      ],
+      "question": "En sánscrito, ¿qué significa «Himalaya»?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "La ciudad creció en la confluencia de los ríos Klang y Gombak, donde los mineros del estaño acamparon en la década de 1850.",
+      "id": "lang-0067",
+      "options": [
+        "Confluencia fangosa",
+        "Río dorado",
+        "Valle verde",
+        "Ciudad real de las colinas"
+      ],
+      "question": "¿Qué significa en malayo el nombre «Kuala Lumpur»?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "El neerlandés «koekje» significa «pastelito»; lo llevaron consigo los colonos neerlandeses de Nueva Ámsterdam.",
+      "id": "lang-0069",
+      "options": ["Sueco", "Francés", "Neerlandés", "Alemán"],
+      "question": "La palabra «cookie» (galleta) llegó al inglés estadounidense desde ¿qué idioma?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El título alemán «Kaiser» procede del mismo nombre.",
+      "id": "lang-0050",
+      "options": ["Nerón", "César", "Constantino", "Augusto"],
+      "question": "El título ruso «zar» procede de ¿qué nombre romano?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "En turco, «yoğurt» está relacionado con un verbo que significa «espesar» o «amasar».",
+      "id": "lang-0027",
+      "options": ["Árabe", "Griego", "Turco", "Búlgaro"],
+      "question": "¿De qué idioma procede la palabra «yogur»?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El vietnamita moderno usa el alfabeto latino con muchos diacríticos; cinco marcas de tono más el tono llano sin marca dan seis tonos.",
+      "id": "lang-0055",
+      "options": [
+        "Escritura tailandesa",
+        "Escritura jemer",
+        "Alfabeto latino",
+        "Caracteres chinos"
+      ],
+      "question": "¿Con qué tipo de alfabeto se escribe hoy el vietnamita?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Muchos lugares de trabajo suecos hacen pausas de fika a diario; la palabra es una inversión juguetona de las sílabas de una antigua palabra para «café».",
+      "id": "lang-0038",
+      "options": ["Finés", "Noruego", "Danés", "Sueco"],
+      "question": "«Fika», una pausa para tomar café con algo dulce, es una palabra de ¿qué idioma?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "El mjedruli tradicionalmente no tiene mayúsculas; las tres escrituras históricas de Georgia figuran en la lista de patrimonio cultural de la UNESCO.",
+      "id": "lang-0068",
+      "options": ["Glagolítico", "Ge’ez", "Mjedruli", "Hangul"],
+      "question": "¿Cómo se llama la escritura única con la que se escribe el georgiano?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Vulcano era el dios romano del fuego y de la forja; la isla italiana de Vulcano también lleva su nombre.",
+      "id": "lang-0016",
+      "options": ["Neptuno", "Marte", "Júpiter", "Vulcano"],
+      "question": "La palabra «volcán» procede del nombre de ¿qué dios romano?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El nuevo alfabeto latino de Turquía añadió letras como ç, ş, ğ y la ı sin punto.",
+      "id": "lang-0056",
+      "options": ["Armenio", "Latino", "Cirílico", "Griego"],
+      "question": "En 1928, Turquía pasó de la escritura árabe a ¿qué alfabeto?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Surinam fue colonia neerlandesa hasta 1975; la mayoría de la gente habla además sranan tongo, una lengua criolla local.",
+      "id": "lang-0047",
+      "options": ["Inglés", "Neerlandés", "Español", "Portugués"],
+      "question": "¿Cuál es el idioma oficial de Surinam, en Sudamérica?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Braille perdió la vista de niño y publicó su sistema de puntos en relieve en 1829, con unos 20 años.",
+      "id": "lang-0037",
+      "options": ["Alemania", "Francia", "Suiza", "Bélgica"],
+      "question": "Louis Braille, creador de un sistema de lectura para personas ciegas, ¿de qué país era?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "La «hora sexta» era la sexta hora contada desde el amanecer: hacia el mediodía, el momento más caluroso del día.",
+      "id": "lang-0039",
+      "options": [
+        "Rato de calma",
+        "La hora sexta",
+        "Sueño corto",
+        "Calor de la tarde"
+      ],
+      "question": "La palabra «siesta» procede de una expresión latina que significa ¿qué?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El quechua lo siguen hablando millones de personas en los Andes; de él proceden palabras como «llama» y «cóndor».",
+      "id": "lang-0019",
+      "options": ["Quechua", "Guaraní", "Aimara", "Náhuatl"],
+      "question": "¿Cuál era la lengua principal del Imperio inca?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Navegantes del Sudeste Asiático se asentaron en Madagascar hace más de 1000 años, aunque África está mucho más cerca.",
+      "id": "lang-0065",
+      "options": ["Zanzíbar", "Sri Lanka", "Borneo", "Sicilia"],
+      "question": "El malgache, que se habla en Madagascar, está más emparentado con lenguas de ¿qué isla?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Los primeros táleros se acuñaron hacia 1520 en Joachimsthal, hoy Jáchymov, en la República Checa.",
+      "id": "lang-0063",
+      "options": ["Bohemia", "Tirol", "Sajonia", "Baviera"],
+      "question": "La palabra «dólar» viene de «tálero», monedas de plata acuñadas por primera vez en ¿qué región?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "Singapur tiene cuatro lenguas oficiales: inglés, malayo, mandarín y tamil.",
+      "id": "lang-0064",
+      "options": ["Hong Kong", "Brunéi", "Singapur", "Macao"],
+      "question": "El tamil es lengua oficial en la India, en Sri Lanka y en ¿qué ciudad-Estado?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 3,
+      "explanation": "El nombre viene del ojibwe «misi-ziibi»; el río recoge agua de partes de 32 estados de EE. UU.",
+      "id": "lang-0066",
+      "options": ["Gran río", "Muchos peces", "Agua fangosa", "Camino largo"],
+      "question": "En la lengua ojibwe, ¿qué significa el nombre «Misisipi»?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "«Kara» significa vacío y «oke» es la abreviatura de «ōkesutora», orquesta: la música suena sin cantante.",
+      "id": "lang-0025",
+      "options": [
+        "Música nocturna",
+        "Amigos que cantan",
+        "Orquesta vacía",
+        "Voz alegre"
+      ],
+      "question": "«Karaoke» combina dos palabras japonesas. ¿Qué significa literalmente?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "Los primeros exploradores esperaban encontrar plata en la región; el Río de la Plata tiene un origen parecido.",
+      "id": "lang-0053",
+      "options": ["Cobre", "Oro", "Estaño", "Plata"],
+      "question": "El nombre del país «Argentina» procede de la palabra latina de ¿qué metal?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Los islandeses todavía pueden leer con relativa facilidad sagas medievales escritas hace más de 700 años.",
+      "id": "lang-0034",
+      "options": ["Noruego", "Danés", "Sueco", "Islandés"],
+      "question": "¿Qué lengua moderna es la más cercana al nórdico antiguo, la lengua de los vikingos?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "«Shāh māt» pasó al árabe y luego a las lenguas europeas junto con el juego del ajedrez.",
+      "id": "lang-0041",
+      "options": [
+        "La partida ha terminado",
+        "El rey está indefenso",
+        "Tu ejército ha caído",
+        "La reina ha ganado"
+      ],
+      "question": "La expresión ajedrecística «jaque mate» procede de palabras persas que significan ¿qué?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "Los kayaks inuit se hacían con madera de deriva o hueso de ballena cubiertos de piel de foca, y se ajustaban a la medida de su remero.",
+      "id": "lang-0043",
+      "options": ["Maoríes", "Sami", "Ainu", "Inuit"],
+      "question": "La palabra «kayak» procede de las lenguas de ¿qué pueblo?"
+    },
+    {
+      "answer": 3,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El Sputnik 1, lanzado en 1957, dio fama mundial a esta palabra rusa corriente.",
+      "id": "lang-0049",
+      "options": [
+        "Bola de hierro",
+        "Mensajero del cielo",
+        "Estrella brillante",
+        "Compañero de viaje"
+      ],
+      "question": "¿Qué significa la palabra rusa «sputnik»?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El romanche desciende del latín y lo habla menos del 1 % de la población suiza, sobre todo en los Grisones.",
+      "id": "lang-0046",
+      "options": ["Friulano", "Occitano", "Romanche", "Ladino"],
+      "question": "Además del alemán, el francés y el italiano, ¿cuál es la cuarta lengua nacional de Suiza?"
+    },
+    {
+      "answer": 0,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "El déjà vu es la extraña sensación de haber vivido ya un momento presente.",
+      "id": "lang-0015",
+      "options": [
+        "Ya visto",
+        "Visto dos veces",
+        "Nunca visto",
+        "Visto en un sueño"
+      ],
+      "question": "¿Qué significa literalmente la expresión francesa «déjà vu»?"
+    },
+    {
+      "answer": 1,
+      "category": "languages",
+      "difficulty": 1,
+      "explanation": "La palabra procede del dharug, la lengua que se hablaba en la zona de Sídney; no todos los bumeranes están diseñados para volver.",
+      "id": "lang-0009",
+      "options": [
+        "Papú de Nueva Guinea",
+        "Aborigen australiano",
+        "Hawaiano",
+        "Maorí"
+      ],
+      "question": "¿De qué grupo de lenguas procede la palabra «bumerán»?"
+    },
+    {
+      "answer": 2,
+      "category": "languages",
+      "difficulty": 2,
+      "explanation": "El afrikáans surgió del neerlandés de los colonos del siglo XVII en El Cabo; los hablantes de neerlandés y de afrikáans se entienden en parte.",
+      "id": "lang-0048",
+      "options": ["Alemán", "Portugués", "Neerlandés", "Inglés"],
+      "question": "¿De qué idioma se desarrolló principalmente el afrikáans, que se habla en Sudáfrica?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "La leyenda cuenta que en 1823 un alumno de la escuela de Rugby, William Webb Ellis, tomó el balón con las manos y echó a correr.",
+      "id": "sport-0009",
+      "options": ["Escocia", "Gales", "Irlanda", "Inglaterra"],
+      "question": "El rugby debe su nombre a un colegio de ¿qué país?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Participaron unos 240 atletas de 14 países; para los Juegos se restauró el Estadio Panatenaico, de mármol.",
+      "id": "sport-0005",
+      "options": ["París", "Londres", "Roma", "Atenas"],
+      "question": "¿En qué ciudad se celebraron los primeros Juegos Olímpicos modernos, en 1896?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "El Old Course de St Andrews suele llamarse «la cuna del golf»; allí se juega al golf desde el siglo XV.",
+      "id": "sport-0010",
+      "options": ["Inglaterra", "Escocia", "Países Bajos", "Irlanda"],
+      "question": "¿En qué país se desarrolló el golf moderno?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Los jugadores atrapan y lanzan la pelota con una cesta curva de mimbre, sujeta a la muñeca.",
+      "id": "sport-0058",
+      "options": ["Cataluña", "Andalucía", "País Vasco", "Islas Baleares"],
+      "question": "El jai alai (cesta punta), a menudo considerado el juego de pelota más rápido, ¿de qué región procede?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "La «maglia rosa» combina con el papel rosa de La Gazzetta dello Sport, el periódico que fundó la carrera en 1909.",
+      "id": "sport-0027",
+      "options": ["Verde", "Rosa", "Amarillo", "Azul"],
+      "question": "¿De qué color es el maillot del líder del Giro de Italia?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "El nombre procede de una necrológica en broma del críquet inglés de 1882; la diminuta urna contiene cenizas que serían de un travesaño (bail) quemado.",
+      "id": "sport-0030",
+      "options": ["Tenis", "Críquet", "Golf", "Rugby a 15"],
+      "question": "The Ashes es una famosa serie de enfrentamientos de ¿qué deporte?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Una teoría popular dice que «love» viene del francés «l’œuf», «el huevo», por su forma parecida a un cero.",
+      "id": "sport-0013",
+      "options": ["Love", "Blank", "Nil", "Duck"],
+      "question": "¿Cómo se llama en inglés la puntuación de cero en el tenis?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "El evento se llamó primero «Semana Internacional de los Deportes de Invierno» y solo más tarde se reconoció como los primeros Juegos de Invierno.",
+      "id": "sport-0037",
+      "options": ["Chamonix", "St. Moritz", "Innsbruck", "Oslo"],
+      "question": "¿Dónde se celebraron los primeros Juegos Olímpicos de Invierno, en 1924?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Kanō Jigorō creó el judo en 1882; el nombre significa «el camino suave». Se convirtió en deporte olímpico en 1964.",
+      "id": "sport-0002",
+      "options": ["Corea", "Tailandia", "Japón", "China"],
+      "question": "¿En qué país se originó el judo?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Los arqueros olímpicos disparan a una diana situada a 70 m; el anillo central dorado mide unos 12 cm.",
+      "id": "sport-0041",
+      "options": ["Oro", "Azul", "Rojo", "Negro"],
+      "question": "En el tiro con arco olímpico, ¿de qué color es el centro de la diana?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Los jugadores de campo no pueden tocar el fondo de la piscina, así que tienen que mantenerse a flote durante todo el partido.",
+      "id": "sport-0054",
+      "options": ["Seis", "Cinco", "Siete", "Ocho"],
+      "question": "¿Cuántos jugadores por equipo hay en el agua en el waterpolo, incluido el portero?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Esta pequeña isla deshabitada es también una reserva de aves, hogar de decenas de miles de alcatraces.",
+      "id": "sport-0052",
+      "options": ["Irlanda del Norte", "Canadá", "Escocia", "Noruega"],
+      "question": "Muchas piedras de curling olímpicas son de granito de Ailsa Craig, una isla frente a la costa de ¿qué país?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Los rings de sumo son de arcilla y paja; un luchador pierde si cualquier parte de su cuerpo, salvo los pies, toca el suelo.",
+      "id": "sport-0014",
+      "options": ["Japón", "China", "Mongolia", "Corea del Sur"],
+      "question": "La lucha sumo es el deporte nacional tradicional de ¿qué país?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "El juego se practicaba hace más de 3000 años; algunas pelotas de caucho macizo pesaban varios kilos.",
+      "id": "sport-0057",
+      "options": ["Los pies", "Las manos", "Las caderas", "Bates de madera"],
+      "question": "En el antiguo juego de pelota mesoamericano, ¿con qué golpeaban sobre todo los jugadores la pelota de caucho?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Desde 1994, Canadá tiene dos deportes nacionales: el lacrosse en verano y el hockey sobre hielo en invierno.",
+      "id": "sport-0051",
+      "options": ["Piragüismo", "Curling", "Béisbol", "Lacrosse"],
+      "question": "¿Qué deporte, basado en un juego indígena, es el deporte nacional oficial de verano de Canadá?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "El taekwondo es famoso por sus patadas altas y giratorias; se convirtió en deporte olímpico de pleno derecho en 2000.",
+      "id": "sport-0008",
+      "options": ["Corea", "Vietnam", "Japón", "China"],
+      "question": "¿En qué país se originó el taekwondo?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Los jugadores de hockey sobre hielo hacen cambios «al vuelo» durante el juego, a menudo tras turnos de menos de un minuto.",
+      "id": "sport-0028",
+      "options": ["Seis", "Cinco", "Siete", "Once"],
+      "question": "¿Cuántos jugadores por equipo hay en el hielo en el hockey sobre hielo, incluido el portero?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Los jugadores hacen acrobáticos remates con el pie por encima de la cabeza; la pelota se tejía tradicionalmente con ratán.",
+      "id": "sport-0042",
+      "options": [
+        "Cuenca mediterránea",
+        "Sudamérica",
+        "Sudeste Asiático",
+        "Escandinavia"
+      ],
+      "question": "El sepak takraw, un juego parecido al voleibol que se juega con los pies, es popular en ¿qué región?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Naismith inventó el juego en 1891 en Massachusetts, con cestas de melocotones como primeras canastas.",
+      "id": "sport-0025",
+      "options": ["Escocia", "Estados Unidos", "Canadá", "Inglaterra"],
+      "question": "¿De qué país era James Naismith, el inventor del baloncesto?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "El jugador debe meter las 15 rojas, cada una seguida de la negra, y luego todas las de color, sin ceder el turno.",
+      "id": "sport-0031",
+      "options": ["155", "100", "147", "180"],
+      "question": "¿Cuál es la puntuación de una tacada máxima estándar en snooker?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "En sable se puede puntuar tocando con el filo de la hoja, además de con la punta.",
+      "id": "sport-0034",
+      "options": ["Sable", "Katana", "Alfanje", "Estoque"],
+      "question": "La esgrima olímpica usa el florete, la espada y ¿qué otra arma?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "En 1858, a un lanzador que eliminó a tres bateadores con tres bolas seguidas se le regaló un sombrero comprado con dinero recaudado entre los espectadores.",
+      "id": "sport-0040",
+      "options": [
+        "Carreras de caballos",
+        "Fútbol",
+        "Hockey sobre hielo",
+        "Críquet"
+      ],
+      "question": "La expresión «hat-trick» procede originalmente de ¿qué deporte?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Un volante de máxima calidad lleva 16 plumas de ganso, tradicionalmente todas de la misma ala.",
+      "id": "sport-0003",
+      "options": ["Squash", "Bádminton", "Tenis de mesa", "Lacrosse"],
+      "question": "¿Qué deporte se juega con un volante?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Una piscina olímpica contiene unos 2,5 millones de litros de agua.",
+      "id": "sport-0018",
+      "options": ["50 metros", "25 metros", "75 metros", "100 metros"],
+      "question": "¿Cuánto mide de largo una piscina olímpica?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "En Persia se jugaba al polo hace más de 2000 años; el juego moderno se extendió desde Manipur (India) gracias a oficiales británicos en el siglo XIX.",
+      "id": "sport-0050",
+      "options": ["Persia", "China", "Egipto", "Grecia"],
+      "question": "¿En qué tierra antigua se cree en general que se originó el polo?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "El kárate surgió de artes de lucha locales de Okinawa influidas por las artes marciales chinas, y llegó a las islas principales de Japón en los años veinte.",
+      "id": "sport-0033",
+      "options": ["Taiwán", "Honshu", "Hokkaido", "Okinawa"],
+      "question": "El kárate, que significa «mano vacía», se desarrolló en ¿qué isla?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "En las pruebas de estilo libre se permite cualquier estilo, así que los nadadores casi siempre eligen el crol porque es el más rápido.",
+      "id": "sport-0019",
+      "options": ["Braza", "Mariposa", "Crol", "Espalda"],
+      "question": "¿Qué estilo de natación es el más rápido?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "El rugby league, una modalidad distinta que se separó en 1895, juega con 13 jugadores por equipo.",
+      "id": "sport-0029",
+      "options": ["12", "11", "13", "15"],
+      "question": "¿Cuántos jugadores tiene en el campo un equipo de rugby union (rugby a 15)?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Los jugadores rotan sus posiciones en el sentido de las agujas del reloj cada vez que su equipo recupera el saque.",
+      "id": "sport-0015",
+      "options": ["Seis", "Cinco", "Cuatro", "Siete"],
+      "question": "¿Cuántos jugadores de cada equipo hay a la vez en una pista de voleibol?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "St Andrews redujo su recorrido de 22 a 18 hoyos en 1764, y los demás campos siguieron su ejemplo.",
+      "id": "sport-0011",
+      "options": ["9", "12", "18", "20"],
+      "question": "¿Cuántos hoyos tiene un campo de golf estándar?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "El maillot amarillo data de 1919; el periódico del organizador de la carrera, L’Auto, se imprimía en papel amarillo.",
+      "id": "sport-0016",
+      "options": ["Rojo", "Amarillo", "Rosa", "De lunares"],
+      "question": "¿De qué color es el maillot del líder de la general del Tour de Francia?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Hoy los overs de seis lanzamientos son la norma, pero Australia usó overs de ocho en muchas temporadas hasta 1979.",
+      "id": "sport-0026",
+      "options": ["Ocho", "Cinco", "Diez", "Seis"],
+      "question": "En el críquet, ¿cuántos lanzamientos válidos tiene un over?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "El doctor Ludwig Guttmann organizó los primeros juegos para atletas en silla de ruedas el mismo día en que se inauguraron los Juegos Olímpicos de Londres 1948.",
+      "id": "sport-0053",
+      "options": [
+        "St Thomas’",
+        "Stoke Mandeville",
+        "Great Ormond Street",
+        "Addenbrooke’s"
+      ],
+      "question": "El movimiento paralímpico surgió de unos juegos celebrados en 1948 en ¿qué hospital inglés?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Wimbledon, celebrado por primera vez en 1877, es el torneo de tenis más antiguo del mundo.",
+      "id": "sport-0007",
+      "options": ["Tierra batida", "Moqueta", "Pista dura", "Hierba"],
+      "question": "¿En qué superficie se juega el torneo de tenis de Wimbledon?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "El primer partido organizado de hockey sobre hielo bajo techo se jugó en Montreal en 1875.",
+      "id": "sport-0017",
+      "options": ["Finlandia", "Canadá", "Suecia", "Rusia"],
+      "question": "¿En qué país se desarrolló principalmente el hockey sobre hielo moderno?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Los primeros jugadores usaban libros como red, una pelota de golf o un corcho de champán como pelota y tapas de cajas de puros como palas.",
+      "id": "sport-0038",
+      "options": ["Inglaterra", "Suiza", "China", "Japón"],
+      "question": "El tenis de mesa empezó como un juego de salón de sobremesa en ¿qué país?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Un albatros es mucho más raro que un hoyo en uno; un «cóndor», cuatro bajo par, es más raro todavía.",
+      "id": "sport-0056",
+      "options": ["Busardo", "Albatros", "Pajarito (birdie)", "Águila (eagle)"],
+      "question": "¿Con qué nombre de ave llaman los golfistas a un resultado de tres bajo par en un hoyo?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Según una teoría, los tantos seguían la esfera de un reloj (15, 30, 45), y el 45 se acortó a 40.",
+      "id": "sport-0012",
+      "options": ["45", "50", "40", "35"],
+      "question": "En el tenis, ¿qué puntuación viene después de 15 y 30?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Tres dardos en el triple 20 suman 60 cada uno; la diana central solo vale 50.",
+      "id": "sport-0032",
+      "options": ["200", "180", "170", "150"],
+      "question": "¿Cuál es la puntuación más alta posible con tres dardos?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "William G. Morgan lo creó en Massachusetts como un juego de interior más suave que el baloncesto.",
+      "id": "sport-0049",
+      "options": ["Mintonette", "Balonmano", "Netball", "Voley-tenis"],
+      "question": "¿Cómo se llamaba originalmente el voleibol cuando se inventó en 1895?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Coubertin, un pedagogo francés, fundó el Comité Olímpico Internacional en 1894.",
+      "id": "sport-0036",
+      "options": [
+        "Avery Brundage",
+        "Pierre de Coubertin",
+        "Demetrios Vikelas",
+        "Juan Antonio Samaranch"
+      ],
+      "question": "¿Quién fundó los Juegos Olímpicos modernos?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "El juego se practicaba en Badminton House, residencia del duque de Beaufort en Gloucestershire, en las décadas de 1860 y 1870.",
+      "id": "sport-0039",
+      "options": [
+        "Un famoso jugador danés",
+        "Una mansión de Inglaterra",
+        "Un fabricante de volantes",
+        "Una ciudad de la India"
+      ],
+      "question": "¿De dónde toma su nombre el bádminton?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Significa «Más rápido, más alto, más fuerte»; en 2021 se añadió la palabra «Communiter» («juntos»).",
+      "id": "sport-0020",
+      "options": ["Latín", "Italiano", "Francés", "Griego"],
+      "question": "¿En qué idioma está el lema olímpico «Citius, Altius, Fortius»?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "El pitch mide 20,12 m (22 yardas), lo mismo que una cadena, una antigua unidad de agrimensura.",
+      "id": "sport-0055",
+      "options": ["Unos 25 m", "Unos 30 m", "Unos 15 m", "Unos 20 m"],
+      "question": "¿Cuánto mide aproximadamente el pitch de críquet, la franja entre los dos juegos de palos?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Los jugadores usan un palo de madera llamado hurley para golpear una pelota pequeña, el sliotar, a mucho más de 100 km/h.",
+      "id": "sport-0044",
+      "options": ["Gales", "Noruega", "Escocia", "Irlanda"],
+      "question": "El hurling, uno de los deportes de campo más rápidos del mundo, es tradicional de ¿qué país?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Un partido no puede continuar si un equipo tiene menos de siete jugadores en el campo.",
+      "id": "sport-0001",
+      "options": ["Doce", "Once", "Nueve", "Diez"],
+      "question": "¿Cuántos jugadores tiene cada equipo de fútbol en el campo?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "El atacante debe repetir «kabaddi, kabaddi» sin tomar aire mientras intenta tocar a sus rivales.",
+      "id": "sport-0043",
+      "options": ["Egipto", "India", "Indonesia", "Irán"],
+      "question": "El kabaddi, un deporte de equipo que combina el pillapilla y la lucha, ¿en qué país se originó?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Gracias a sus territorios desde el Pacífico hasta el océano Índico, Francia abarca 12 husos horarios, o 13 si se cuenta su reclamación antártica.",
+      "id": "misc-0071",
+      "options": ["Estados Unidos", "Rusia", "Francia", "Reino Unido"],
+      "question": "Contando sus territorios de ultramar, ¿qué país tiene más husos horarios?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "La petanca se inventó en 1907 en La Ciotat; su nombre viene del provenzal y significa «pies juntos».",
+      "id": "sport-0022",
+      "options": ["Bélgica", "Italia", "Francia", "España"],
+      "question": "La petanca, que se juega lanzando bolas metálicas hacia una pequeña bola que hace de objetivo, ¿de qué país procede?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "En la lengua local, Bután se llama «Druk Yul», la Tierra del Dragón del Trueno.",
+      "id": "misc-0039",
+      "options": ["Nepal", "Sri Lanka", "Bután", "Mongolia"],
+      "question": "¿Qué país tiene en su bandera nacional un «dragón del trueno» blanco?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La forma octogonal permite a los conductores reconocer una señal de stop incluso por detrás o cuando está cubierta de nieve.",
+      "id": "misc-0003",
+      "options": ["Seis", "Diez", "Siete", "Ocho"],
+      "question": "¿Cuántos lados tiene la señal de stop estándar que se usa en la mayoría de los países?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Los marineros de Génova llevaban pantalones de algodón resistente; «denim», por su parte, viene de «de Nîmes», una ciudad francesa.",
+      "id": "misc-0052",
+      "options": ["Venecia", "Génova", "Nápoles", "Nimes"],
+      "question": "La palabra «jeans» procede del nombre de ¿qué ciudad?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Algunos edificios de Asia oriental se saltan la cuarta planta, mientras que el ocho se considera de muy buena suerte porque suena como «prosperar».",
+      "id": "misc-0004",
+      "options": ["Ocho", "Siete", "Nueve", "Cuatro"],
+      "question": "¿Qué número se considera a menudo de mala suerte en China porque suena como «muerte»?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "El calendario etíope tiene 12 meses de 30 días más un decimotercer mes corto de cinco o seis días.",
+      "id": "misc-0043",
+      "options": ["Tailandia", "Irán", "Etiopía", "Nepal"],
+      "question": "¿Qué país tiene un calendario tradicional de 13 meses?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Un tablero tiene 8 × 8 casillas; una famosa leyenda sobre granos de arroz que se duplican en cada casilla muestra lo rápido que crecen los números.",
+      "id": "misc-0001",
+      "options": ["64", "49", "81", "100"],
+      "question": "¿Cuántas casillas tiene un tablero de ajedrez?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "El pueblo, cerca de Rovaniemi, en Laponia, recibe cientos de miles de cartas a Papá Noel de todo el mundo.",
+      "id": "misc-0015",
+      "options": ["Finlandia", "Noruega", "Suecia", "Islandia"],
+      "question": "El Pueblo de Papá Noel, justo sobre el círculo polar ártico, ¿en qué país está?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "El nombre latino evita tener que elegir entre las cuatro lenguas nacionales de Suiza.",
+      "id": "misc-0045",
+      "options": [
+        "Communitas Helvetiae Liberae",
+        "Corona Helvetiae",
+        "Civitas Helvetiorum",
+        "Confoederatio Helvetica"
+      ],
+      "question": "El código de país de Suiza, «CH», ¿a qué nombre latino corresponde?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La torre pasó a llamarse Torre Isabel en 2012; Big Ben es la campana de 13,7 toneladas que hay en su interior.",
+      "id": "misc-0012",
+      "options": [
+        "La esfera del reloj",
+        "La gran campana",
+        "El minutero",
+        "La torre"
+      ],
+      "question": "En Londres, «Big Ben» es en realidad el apodo de ¿qué?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La estatua tiene un vestuario de unos 1000 trajes y la visten para ocasiones especiales.",
+      "id": "misc-0016",
+      "options": ["Viena", "Copenhague", "Ámsterdam", "Bruselas"],
+      "question": "¿En qué ciudad está la pequeña estatua de bronce del Manneken Pis?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La baraja tiene cuatro palos de 13 cartas; los cuatro palos que conocemos hoy surgieron en la Francia del siglo XV.",
+      "id": "misc-0006",
+      "options": ["48", "54", "56", "52"],
+      "question": "¿Cuántas cartas tiene una baraja francesa (de póquer) estándar, sin comodines?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Como una milla náutica equivale a un minuto de arco, los navegantes pueden medir distancias directamente en la escala de latitud de una carta.",
+      "id": "misc-0076",
+      "options": [
+        "La vista desde un mástil",
+        "Un minuto de latitud",
+        "1000 pasos de marinero",
+        "Un grado de longitud"
+      ],
+      "question": "¿En qué se basaba originalmente la milla náutica?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Barrer calienta un poco el hielo, lo que hace que la piedra avance más y se desvíe menos.",
+      "id": "sport-0024",
+      "options": ["Curling", "Hockey sobre hielo", "Bandy", "Bobsleigh"],
+      "question": "¿En qué deporte los jugadores deslizan «piedras» de granito mientras sus compañeros barren el hielo?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "Lanzar sal es un ritual de purificación; los luchadores de la máxima categoría pueden lanzar puñados varias veces antes de un combate.",
+      "id": "sport-0048",
+      "options": ["Arroz", "Sal", "Pétalos de flores", "Arena"],
+      "question": "Antes de un combate de sumo, ¿qué lanzan los luchadores al ring?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "El dragón rojo, «Y Ddraig Goch», está ligado a Gales desde hace muchos siglos.",
+      "id": "misc-0013",
+      "options": [
+        "Un león dorado",
+        "Un unicornio blanco",
+        "Un águila negra",
+        "Un dragón rojo"
+      ],
+      "question": "¿Qué criatura aparece en la bandera nacional de Gales?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Los alemanes decoraban árboles en sus casas desde el siglo XVI; la costumbre se extendió ampliamente en el siglo XIX.",
+      "id": "misc-0014",
+      "options": ["Alemania", "Inglaterra", "Rusia", "Suecia"],
+      "question": "¿En qué país empezó la tradición del árbol de Navidad decorado?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Unos estudiantes de EE. UU. se lanzaban los moldes vacíos de las tartas de la Frisbie Pie Company, de Connecticut.",
+      "id": "misc-0041",
+      "options": [
+        "Un disco griego",
+        "Unos moldes de tarta",
+        "Una playa de California",
+        "El perro de su inventor"
+      ],
+      "question": "¿De dónde viene el nombre del frisbee?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Lleva el nombre del papa Gregorio XIII y corrigió el lento desfase del calendario juliano respecto a las estaciones.",
+      "id": "misc-0008",
+      "options": ["Cuenta larga maya", "Gregoriano", "Hégira lunar", "Juliano"],
+      "question": "¿Qué calendario, introducido en 1582, se usa hoy en la mayor parte del mundo?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Una viñeta de 1902 mostraba al presidente estadounidense Theodore «Teddy» Roosevelt negándose a disparar a un oso atado, lo que inspiró a un fabricante de juguetes.",
+      "id": "misc-0007",
+      "options": [
+        "El rey Eduardo VII",
+        "Theodor Herzl",
+        "El príncipe Eduardo de Gales",
+        "Theodore Roosevelt"
+      ],
+      "question": "El «teddy bear», el osito de peluche, debe su nombre a ¿qué personaje famoso?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "En España, Italia y Portugal, al jueves 4 de octubre de 1582 le siguió el viernes 15 de octubre.",
+      "id": "misc-0074",
+      "options": ["12", "14", "10", "7"],
+      "question": "¿Cuántos días se saltaron al introducir el calendario gregoriano en 1582?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "El nombre lo inventó un niño de 9 años, Milton Sirotta, sobrino de un matemático estadounidense.",
+      "id": "misc-0050",
+      "options": ["10", "1000", "100", "1 millón"],
+      "question": "Un «gúgol» es el número 1 seguido de ¿cuántos ceros?"
+    },
+    {
+      "answer": 0,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "Los biatletas deben calmar rápidamente su corazón acelerado para acertar en blancos situados a 50 m.",
+      "id": "sport-0023",
+      "options": [
+        "Tiro con carabina",
+        "Snowboard estilo libre",
+        "Tiro con arco",
+        "Salto de esquí"
+      ],
+      "question": "El biatlón combina el esquí de fondo con ¿qué otra disciplina?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Su letra data del siglo XVI, aunque no se convirtió en himno oficial hasta 1932.",
+      "id": "misc-0078",
+      "options": ["Dinamarca", "Suiza", "Suecia", "Países Bajos"],
+      "question": "El «Wilhelmus», a menudo considerado el himno nacional más antiguo, ¿de qué país es?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "La bandera de Suiza es oficialmente cuadrada, aunque en los barcos se usa una versión rectangular.",
+      "id": "misc-0037",
+      "options": ["Liechtenstein", "Dinamarca", "Suiza", "Austria"],
+      "question": "Además de la Ciudad del Vaticano, ¿qué país tiene una bandera nacional cuadrada?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Al doblar por la mitad cualquier hoja de la serie A se obtiene el tamaño siguiente con las mismas proporciones, gracias a una relación de 1 a la raíz cuadrada de 2.",
+      "id": "misc-0040",
+      "options": [
+        "220 × 310 mm",
+        "216 × 279 mm",
+        "200 × 300 mm",
+        "210 × 297 mm"
+      ],
+      "question": "¿Qué tamaño tiene una hoja de papel A4?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Unos científicos franceses definieron así el metro en la década de 1790; hoy se basa en la velocidad de la luz.",
+      "id": "misc-0051",
+      "options": ["Pie", "Metro", "Milla", "Braza"],
+      "question": "¿Qué unidad se definió originalmente como la diezmillonésima parte de la distancia entre el Polo Norte y el ecuador?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Sudán tiene más de 200 pirámides, más pequeñas y empinadas que las egipcias, muchas de ellas en el yacimiento de Meroe.",
+      "id": "misc-0049",
+      "options": ["Libia", "Sudán", "Chad", "Etiopía"],
+      "question": "El antiguo reino de Kush construyó más pirámides que Egipto. ¿En qué país actual están?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Esta diminuta nación del Pacífico obtiene una parte importante de sus ingresos con la licencia de su dominio «.tv».",
+      "id": "misc-0046",
+      "options": ["Tuvalu", "Trinidad y Tobago", "Tayikistán", "Tonga"],
+      "question": "¿A qué país pertenece el dominio de internet «.tv», popular entre sitios de televisión y vídeo?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Bakken, al norte de Copenhague, surgió en torno a un manantial natural que atraía a multitudes de visitantes.",
+      "id": "misc-0073",
+      "options": ["Dinamarca", "Inglaterra", "Alemania", "Austria"],
+      "question": "Bakken, considerado el parque de atracciones en funcionamiento más antiguo del mundo (1583), ¿en qué país está?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Las primeras postales eran tarjetas sencillas con espacio para una dirección y un mensaje breve, con una tarifa postal más barata.",
+      "id": "misc-0077",
+      "options": [
+        "Estados Unidos",
+        "Austria-Hungría",
+        "Reino Unido",
+        "Reino de Prusia"
+      ],
+      "question": "¿Qué país emitió la primera tarjeta postal oficial del mundo, en 1869?"
+    },
+    {
+      "answer": 3,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "El trofeo lleva el nombre del colegial que, según la leyenda, inventó el rugby al correr con el balón en las manos.",
+      "id": "sport-0060",
+      "options": [
+        "Copa Calcuta",
+        "Copa Bledisloe",
+        "Trofeo Seis Naciones",
+        "Copa Webb Ellis"
+      ],
+      "question": "¿Qué trofeo recibe el ganador de la Copa Mundial de Rugby masculina?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Desde la India el juego pasó a Persia, donde nació la expresión «shāh māt» (jaque mate).",
+      "id": "misc-0042",
+      "options": ["India", "Egipto", "China", "Persia"],
+      "question": "El ajedrez surgió del chaturanga, un juego de ¿qué país?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "El papel moneda se extendió en China durante la dinastía Song, hace unos 1000 años, mucho antes de que se usara en Europa.",
+      "id": "misc-0009",
+      "options": ["Italia", "Inglaterra", "Países Bajos", "China"],
+      "question": "¿En qué tierra se asombró Marco Polo al ver a la gente pagar con papel moneda?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Se cree que el go es el juego de tablero más antiguo que se sigue jugando sin interrupción; tiene más posiciones posibles que átomos hay en el universo.",
+      "id": "misc-0005",
+      "options": ["Xiangqi", "Go", "Shogi", "Mahjong"],
+      "question": "¿Qué juego de tablero, practicado en China desde hace más de 2500 años, usa piedras blancas y negras?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "El A0 se define como un metro cuadrado; el A4 es la dieciseisava parte.",
+      "id": "misc-0072",
+      "options": [
+        "0,5 metros cuadrados",
+        "1,5 metros cuadrados",
+        "2 metros cuadrados",
+        "1 metro cuadrado"
+      ],
+      "question": "¿Qué superficie tiene una hoja de papel A0?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 3,
+      "explanation": "Los alumnos descubrieron que una pelota pinchada, más blanda, se «aplastaba» («squash») al golpear, lo que exigía golpes más variados.",
+      "id": "sport-0059",
+      "options": ["Eton", "Winchester", "Harrow", "Rugby"],
+      "question": "¿En qué famoso colegio inglés se desarrolló el squash en el siglo XIX?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Cada repintado usa unas 60 toneladas de pintura; además, la torre de hierro puede crecer unos 15 cm con el calor del verano.",
+      "id": "misc-0047",
+      "options": ["Cada año", "Cada 25 años", "Cada 7 años", "Cada 50 años"],
+      "question": "¿Aproximadamente cada cuánto se vuelve a pintar la torre Eiffel?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "El electro es una mezcla natural de oro y plata; Lidia estaba en lo que hoy es el oeste de Turquía.",
+      "id": "misc-0075",
+      "options": ["Oro puro", "Bronce", "Electro", "Plata pura"],
+      "question": "Las primeras monedas, acuñadas en Lidia hacia el 600 a. C., ¿de qué estaban hechas?"
+    },
+    {
+      "answer": 1,
+      "category": "sport",
+      "difficulty": 2,
+      "explanation": "El punto de penalti está a 11 m (12 yardas) de la línea de gol; el borde del área está a 16,5 m.",
+      "id": "sport-0047",
+      "options": ["12 metros", "11 metros", "9 metros", "16,5 metros"],
+      "question": "¿Desde qué distancia se lanza un penalti en el fútbol?"
+    },
+    {
+      "answer": 2,
+      "category": "sport",
+      "difficulty": 1,
+      "explanation": "El término procede de la jerga estadounidense de la década de 1890, en la que «bird» significaba algo excelente.",
+      "id": "sport-0021",
+      "options": ["Bogey", "Eagle", "Birdie", "Albatros"],
+      "question": "En golf, ¿cómo se llama un resultado de uno bajo par en un hoyo?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "El queso Double Gloucester puede alcanzar unos 100 km/h, así que atraparlo es casi imposible.",
+      "id": "misc-0036",
+      "options": [
+        "Una rueda de queso",
+        "Un barril de cerveza",
+        "Una bala de heno suelta",
+        "Un huevo gigante"
+      ],
+      "question": "En la carrera de Cooper’s Hill, en Inglaterra, ¿qué persiguen los participantes cuesta abajo por una colina empinada?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "La amilopectina, un almidón del arroz, hacía el mortero de cal más duradero y menos permeable al agua; se usó en murallas, pagodas y tumbas.",
+      "id": "misc-0086",
+      "options": ["Leche de cabra", "Arroz glutinoso", "Yema de huevo", "Miel"],
+      "question": "¿Qué ingrediente sorprendente se mezclaba en el mortero de algunas murallas chinas de la época Ming?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "La bandera de Dominica es una de las poquísimas banderas nacionales que incluyen el color morado.",
+      "id": "misc-0082",
+      "options": ["Barbados", "Dominica", "Granada", "Jamaica"],
+      "question": "¿Qué país tiene en su bandera un loro morado llamado sisserou?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Sinterklaas llega en barco de vapor a mediados de noviembre; la noche principal de regalos es el 5 de diciembre.",
+      "id": "misc-0064",
+      "options": ["España", "Suiza", "Países Bajos", "Italia"],
+      "question": "¿En qué país los niños dejan sus zapatos para Sinterklaas con la esperanza de recibir dulces?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "El unicornio es un símbolo escocés desde el siglo XII y aparece en el escudo de armas real.",
+      "id": "misc-0053",
+      "options": [
+        "Vaca de las Tierras Altas",
+        "Águila real",
+        "Ciervo rojo",
+        "Unicornio"
+      ],
+      "question": "¿Cuál es el animal nacional de Escocia?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Cada 23 de diciembre, los artistas tallan rábanos gigantes formando escenas detalladas de personas, animales y edificios.",
+      "id": "misc-0083",
+      "options": ["Puebla", "Mérida", "Oaxaca", "Guadalajara"],
+      "question": "La «Noche de Rábanos» de México, un concurso de rábanos tallados, ¿en qué ciudad se celebra?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Lo mismo ocurre en España; en Italia, en cambio, el día de mala suerte es el viernes 17.",
+      "id": "misc-0067",
+      "options": ["Domingo 13", "Jueves 13", "Martes 13", "Lunes 13"],
+      "question": "En Grecia, ¿qué día se considera tradicionalmente de mala suerte en lugar del viernes 13?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "La «Marcha Real» es uno de los pocos himnos nacionales del mundo que se interpretan sin letra oficial.",
+      "id": "misc-0054",
+      "options": ["Francia", "España", "Portugal", "Italia"],
+      "question": "¿Qué país tiene un himno nacional sin letra oficial?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "El «Himno a la Libertad» es un poema de Dionisios Solomós; normalmente solo se cantan las dos primeras estrofas.",
+      "id": "misc-0084",
+      "options": ["Uruguay", "Argentina", "Grecia", "Turquía"],
+      "question": "¿Qué himno nacional tiene más estrofas, 158 en su versión completa?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "El Campeonato del Mundo se celebra en Sonkajärvi (Finlandia), en un recorrido de 253,5 m con un obstáculo de agua.",
+      "id": "misc-0068",
+      "options": ["Estonia", "Noruega", "Finlandia", "Suecia"],
+      "question": "¿En qué país nació la carrera con la esposa a cuestas, una prueba de obstáculos?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Son 24 horas × 60 minutos, o 86 400 segundos al día.",
+      "id": "misc-0090",
+      "options": ["1840", "1640", "1440", "1240"],
+      "question": "¿Cuántos minutos tiene un día?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La mayoría de las estatuas barrocas originales se han sustituido por copias; los originales se guardan en museos.",
+      "id": "misc-0035",
+      "options": ["Unas 3", "Unas 30", "Unas 3000", "Unas 300"],
+      "question": "El puente de Carlos de Praga, iniciado en 1357, está flanqueado por ¿cuántas estatuas?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La gente excavó casas, iglesias e incluso ciudades subterráneas enteras en la blanda roca volcánica de la Capadocia.",
+      "id": "misc-0030",
+      "options": ["Jordania", "Turquía", "Marruecos", "Grecia"],
+      "question": "La Capadocia, famosa por los paseos en globo sobre rocas con forma de «chimeneas de hadas», ¿en qué país está?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Nollywood produce un número muy elevado de películas cada año, muchas rodadas deprisa y con poco presupuesto.",
+      "id": "misc-0065",
+      "options": ["Bollywood", "Tollywood", "Nollywood", "Lollywood"],
+      "question": "¿Con qué apodo se conoce la enorme industria cinematográfica de Nigeria?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "El anverso muestra el escudo nacional y el reverso, el sello de Hacienda con un león.",
+      "id": "misc-0070",
+      "options": ["Uruguay", "Guatemala", "Paraguay", "Perú"],
+      "question": "¿Qué país tiene una bandera distinta por delante y por detrás?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "El rey de Bután introdujo la idea en los años setenta, afirmando que la felicidad importa más que la renta nacional.",
+      "id": "misc-0018",
+      "options": ["Nepal", "Bután", "Dinamarca", "Islandia"],
+      "question": "¿Qué país es famoso por medir la «Felicidad Nacional Bruta»?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Algunas aerolíneas también omiten la fila 13 en sus aviones, mientras que en partes de Asia oriental los edificios se saltan la cuarta planta.",
+      "id": "misc-0025",
+      "options": ["17", "7", "4", "13"],
+      "question": "Muchos edificios occidentales se saltan ¿qué número de planta porque se considera de mala suerte?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La caldera en forma de media luna de Santorini adquirió su forma actual tras una enorme erupción volcánica hace unos 3600 años.",
+      "id": "misc-0031",
+      "options": ["Cefalonia", "Santorini", "Corfú", "Creta"],
+      "question": "¿Qué isla griega es famosa por sus casas blancas con cúpulas azules sobre una caldera volcánica?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Chefchaouen está en las montañas del Rif; Marrakech, en cambio, es conocida como la «Ciudad Roja».",
+      "id": "misc-0066",
+      "options": ["Chefchaouen", "Fez", "Marrakech", "Rabat"],
+      "question": "¿Qué ciudad marroquí es famosa por sus calles pintadas en tonos azules?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Un operario italiano lo escondió bajo su bata; se recuperó en Florencia dos años después.",
+      "id": "misc-0055",
+      "options": [
+        "La balsa de la Medusa",
+        "Las bodas de Caná",
+        "La Libertad guiando al pueblo",
+        "La Gioconda"
+      ],
+      "question": "¿Qué cuadro se hizo mucho más famoso después de que lo robaran del Louvre en 1911?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "El nombre combina Bombay, el antiguo nombre de la ciudad, con Hollywood.",
+      "id": "misc-0029",
+      "options": ["Delhi", "Chennai", "Calcuta", "Mumbai"],
+      "question": "Bollywood, la industria del cine en hindi, tiene su sede en ¿qué ciudad?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Construido en 1923 para anunciar una urbanización, el letrero perdió sus cuatro últimas letras en 1949.",
+      "id": "misc-0063",
+      "options": [
+        "Hollywood Hills",
+        "Hollywood Studios",
+        "Holly Woods",
+        "Hollywoodland"
+      ],
+      "question": "¿Qué ponía originalmente el letrero de Hollywood?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Así, el 1 está frente al 6, el 2 frente al 5 y el 3 frente al 4; todos los puntos de un dado suman 21.",
+      "id": "misc-0089",
+      "options": ["Seis", "Ocho", "Doce", "Siete"],
+      "question": "En un dado estándar de seis caras, ¿cuánto suman siempre las caras opuestas?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Un orden fijo, con el rojo arriba, permite que los conductores daltónicos también interpreten la señal por la posición de la luz.",
+      "id": "misc-0021",
+      "options": ["Amarillo", "Rojo", "Azul", "Verde"],
+      "question": "En un semáforo vertical, ¿qué color suele estar arriba?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Los trulli se construyen con piedra en seco y tienen tejados cónicos de losas de caliza apiladas.",
+      "id": "misc-0087",
+      "options": [
+        "Chalés de madera pintados",
+        "Trulli con tejado cónico",
+        "Viviendas en cuevas",
+        "Casas sobre pilotes"
+      ],
+      "question": "La localidad italiana de Alberobello es famosa por ¿qué tipo de casas?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "En el hemisferio norte, la sombra de un reloj de sol se mueve en el mismo sentido en que hoy giran las agujas de los relojes.",
+      "id": "misc-0056",
+      "options": [
+        "Lo ordenó un papa medieval",
+        "Siguen el sentido de la escritura",
+        "Por el magnetismo terrestre",
+        "Imitan a los relojes de sol"
+      ],
+      "question": "¿Por qué las agujas del reloj giran hacia la derecha (en sentido horario)?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Se dice que la pata levantada invita a entrar a los clientes y a la buena suerte.",
+      "id": "misc-0024",
+      "options": [
+        "Un espíritu de zorro danzante",
+        "Un gato de la suerte que saluda",
+        "Una rana de tres patas de la suerte",
+        "Un dragón que guarda la puerta"
+      ],
+      "question": "¿Qué es la figura japonesa «maneki-neko», que se ve a menudo en las tiendas?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La bandera se llama «Hinomaru», que significa «círculo del sol».",
+      "id": "misc-0023",
+      "options": ["Palaos", "Japón", "Laos", "Bangladés"],
+      "question": "¿Qué país tiene como bandera un círculo rojo sobre fondo blanco?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Los artesanos de la Selva Negra fabrican relojes de cuco desde el siglo XVIII, aunque mucha gente cree que son suizos.",
+      "id": "misc-0069",
+      "options": [
+        "La Selva Negra alemana",
+        "Los Alpes suizos",
+        "El Tirol austriaco",
+        "La región de los lagos bávaros"
+      ],
+      "question": "¿De qué región proceden los relojes de cuco tradicionales?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "La réplica se inauguró en la provincia de Cantón en 2012; el Hallstatt auténtico es Patrimonio de la Humanidad de la UNESCO.",
+      "id": "misc-0088",
+      "options": ["Austria", "Eslovenia", "Suiza", "Alemania"],
+      "question": "En China se construyó una copia a tamaño real de Hallstatt, pueblo a orillas de un lago de ¿qué país?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "En muchos países, los 25 años son las bodas de plata y los 60, las bodas de diamante.",
+      "id": "misc-0034",
+      "options": ["40", "60", "25", "50"],
+      "question": "¿Cuántos años de matrimonio se celebran en las bodas de oro?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "El caballo se mueve en forma de L y es la única pieza que puede saltar sobre las demás.",
+      "id": "misc-0020",
+      "options": ["Caballo", "Alfil", "Rey", "Torre"],
+      "question": "En el ajedrez, ¿qué pieza puede saltar por encima de otras piezas?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Cuando el semáforo se pone en rojo para los coches, los peatones cruzan en todas las direcciones a la vez, a veces miles al mismo tiempo.",
+      "id": "misc-0027",
+      "options": [
+        "Un puente de cristal giratorio",
+        "Un pasillo rodante",
+        "Un cruce peatonal múltiple",
+        "Un mercado flotante"
+      ],
+      "question": "El barrio tokiota de Shibuya es famoso por ¿qué elemento urbano?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La estatua se encontró en 1820 en la isla de Milos; sus brazos perdidos nunca han aparecido.",
+      "id": "misc-0028",
+      "options": ["Prado", "Museos Vaticanos", "Museo Británico", "Louvre"],
+      "question": "¿En qué museo está la antigua estatua griega de la Venus de Milo?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Cada hora, figuras de los doce apóstoles aparecen en unas ventanitas sobre la esfera del reloj.",
+      "id": "misc-0060",
+      "options": ["Cracovia", "Viena", "Estrasburgo", "Praga"],
+      "question": "¿Qué ciudad tiene el reloj astronómico más antiguo que aún funciona, instalado en 1410?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Se eligió este color porque armoniza con el paisaje y a la vez destaca en la frecuente niebla.",
+      "id": "misc-0032",
+      "options": [
+        "Rojo ladrillo",
+        "Naranja internacional",
+        "Amarillo dorado",
+        "Oro amapola de California"
+      ],
+      "question": "¿Cómo se llama oficialmente el color del puente Golden Gate de San Francisco?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "La mayoría de las hojas de trébol tienen tres folíolos; un cuarto es una rara variación genética, por eso se convirtió en símbolo de buena suerte.",
+      "id": "misc-0062",
+      "options": [
+        "Uno de cada 5000",
+        "Uno de cada 500",
+        "Uno de cada 5 millones",
+        "Uno de cada 50"
+      ],
+      "question": "¿Con qué frecuencia aproximada aparece un trébol de cuatro hojas?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Botín sirve comidas desde 1725, y se dice que su horno de leña nunca se ha apagado.",
+      "id": "misc-0079",
+      "options": ["Viena", "París", "Roma", "Madrid"],
+      "question": "Sobrino de Botín, considerado el restaurante más antiguo del mundo, ¿en qué ciudad está?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "La tradición dice que lanzar una moneda por encima del hombro garantiza que volverás a Roma; el dinero se recoge con fines benéficos.",
+      "id": "misc-0017",
+      "options": ["Monedas", "Arroz", "Pan", "Flores"],
+      "question": "¿Qué lanzan tradicionalmente los visitantes a la Fontana di Trevi de Roma?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "El árbol es un agradecimiento de la ciudad de Oslo por el apoyo británico durante los años cuarenta.",
+      "id": "misc-0057",
+      "options": ["Finlandia", "Dinamarca", "Noruega", "Suecia"],
+      "question": "¿Qué país regala cada año desde 1947 a Londres un árbol de Navidad para Trafalgar Square?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Recuerda la leyenda azteca según la cual su capital debía fundarse donde se viera un águila comiéndose una serpiente sobre un nopal.",
+      "id": "misc-0022",
+      "options": [
+        "Un águila con una serpiente",
+        "Un sol con rostro",
+        "Una serpiente emplumada",
+        "Un jaguar bajo el sol naciente"
+      ],
+      "question": "¿Qué hay posado sobre un nopal en la bandera de México?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Tiene 12 pentágonos negros y 20 hexágonos blancos, un diseño que se usó por primera vez en el Mundial de 1970.",
+      "id": "misc-0059",
+      "options": ["32", "36", "24", "28"],
+      "question": "Un balón de fútbol clásico de paneles blancos y negros, ¿cuántos paneles tiene en total?"
+    },
+    {
+      "answer": 3,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "El rey Luis II de Baviera lo construyó en el siglo XIX como refugio de cuento de hadas, no para la defensa.",
+      "id": "misc-0033",
+      "options": ["Austria", "Suiza", "Francia", "Alemania"],
+      "question": "¿En qué país está el castillo de Neuschwanstein, que inspiró un famoso castillo de Disney?"
+    },
+    {
+      "answer": 1,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Se eligió SOS porque su código morse (tres puntos, tres rayas, tres puntos) es fácil de enviar y de reconocer.",
+      "id": "misc-0061",
+      "options": [
+        "Envíen ayuda",
+        "Nada en absoluto",
+        "Salven nuestras almas",
+        "Salven nuestro barco"
+      ],
+      "question": "¿Qué significan las letras de la señal de socorro SOS?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Albert Einstein vivía a pocos pasos de la Zytglogge mientras trabajaba en su teoría de la relatividad especial.",
+      "id": "misc-0085",
+      "options": ["Zytglogge", "Glockenspiel", "Torre dell’Orologio", "Orloj"],
+      "question": "¿Cómo se llama la torre del reloj medieval de Berna, con figuras móviles?"
+    },
+    {
+      "answer": 2,
+      "category": "curiosities",
+      "difficulty": 2,
+      "explanation": "Las carpas nadan río arriba contra fuertes corrientes, y simbolizan la fuerza y el éxito para los niños.",
+      "id": "misc-0058",
+      "options": ["Salmón", "Pez de colores", "Carpa", "Atún"],
+      "question": "En el Día de los Niños de Japón, las familias izan banderolas con forma de ¿qué pez?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 1,
+      "explanation": "Venecia tiene más de 400 puentes; la gente se desplaza a pie o en barco, incluso las ambulancias y la recogida de basura.",
+      "id": "misc-0026",
+      "options": ["Coches", "Iglesias", "Puentes", "Tiendas"],
+      "question": "¿Cuál de estas cosas no se encuentra en las calles del centro histórico de Venecia?"
+    },
+    {
+      "answer": 0,
+      "category": "curiosities",
+      "difficulty": 3,
+      "explanation": "Cada muchacho llega una noche distinta antes de Navidad, con nombres como «Lamecucharas» o «Portazos».",
+      "id": "misc-0081",
+      "options": ["Islandia", "Estonia", "Noruega", "Islas Feroe"],
+      "question": "¿En qué país aparecen en Navidad 13 traviesos «muchachos de Yule»?"
+    }
+  ]
+}

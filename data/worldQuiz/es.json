@@ -15,7 +15,7 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Los murciélagos son casi una quinta parte de todas las especies de mamíferos; las ardillas «voladoras» y los colugos solo planean.",
+      "explanation": "Los murciélagos son alrededor de una quinta parte de todas las especies de mamíferos; las ardillas «voladoras» y los colugos solo planean.",
       "id": "nat-0006",
       "options": [
         "Murciélago",
@@ -179,7 +179,7 @@
         "La de Magallanes",
         "La de Vasco da Gama"
       ],
-      "question": "¿Qué expedición fue la primera en dar la vuelta al mundo navegando (1519-1522)?"
+      "question": "¿Qué expedición fue la primera en dar la vuelta al mundo navegando (1519–1522)?"
     },
     {
       "answer": 1,
@@ -212,7 +212,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "La estatua era de cobre marrón brillante en 1886; tardó unos 30 años en volverse completamente verde.",
+      "explanation": "Cuando se inauguró en 1886, la estatua era de un cobre marrón brillante; tardó unos 30 años en volverse completamente verde.",
       "id": "misc-0010",
       "options": [
         "Su cobre se oxidó",
@@ -244,7 +244,7 @@
       "answer": 1,
       "category": "human body & health",
       "difficulty": 1,
-      "explanation": "La piel de un adulto cubre unos 1,5-2 m² y se renueva sin parar: la capa exterior se reemplaza cada pocas semanas.",
+      "explanation": "La piel de un adulto cubre unos 1,5–2 m² y se renueva sin parar: la capa exterior se reemplaza cada pocas semanas.",
       "id": "body-0002",
       "options": ["Hígado", "Piel", "Cerebro", "Pulmones"],
       "question": "¿Cuál es el órgano más grande del cuerpo humano?"
@@ -262,7 +262,7 @@
       "answer": 2,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Rusia ocupa más de 17 millones de km², casi una novena parte de la tierra firme, y abarca 11 husos horarios.",
+      "explanation": "Rusia ocupa más de 17 millones de km², alrededor de una novena parte de la tierra firme, y abarca 11 husos horarios.",
       "id": "geo-0007",
       "options": ["China", "Canadá", "Rusia", "Brasil"],
       "question": "¿Cuál es el país más grande del mundo por superficie?"
@@ -359,7 +359,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "En los Andes de Perú y Bolivia ya se cultivaban papas hace 7000-10 000 años, y allí aún existen miles de variedades.",
+      "explanation": "En los Andes de Perú y Bolivia ya se cultivaban patatas (papas) hace 7000–10 000 años, y allí aún existen miles de variedades.",
       "id": "food-0013",
       "options": [
         "África occidental",
@@ -367,7 +367,7 @@
         "Sudamérica",
         "Sur de Europa"
       ],
-      "question": "¿En qué parte del mundo se domesticó primero la papa?"
+      "question": "¿En qué parte del mundo se domesticó primero la patata?"
     },
     {
       "answer": 3,
@@ -390,7 +390,7 @@
         "Hacia el este",
         "Hacia el sur"
       ],
-      "question": "Para la mayoría de los viajeros, ¿qué dirección de vuelo suele causar peor jet lag?"
+      "question": "Para la mayoría de los viajeros, ¿qué dirección de vuelo suele causar peor desfase horario (jet lag)?"
     },
     {
       "answer": 2,
@@ -538,7 +538,7 @@
         "La nariz",
         "El oído interno"
       ],
-      "question": "El mareo surge de un desajuste entre las señales de los ojos y ¿qué órgano?"
+      "question": "El mareo surge de un desajuste entre las señales de los ojos y las de ¿qué órgano?"
     },
     {
       "answer": 0,
@@ -773,7 +773,7 @@
       "answer": 3,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Cuenta la leyenda que un pastor etíope notó que sus cabras se volvían muy activas tras comer granos de café.",
+      "explanation": "Cuenta la leyenda que un pastor etíope notó que sus cabras se volvían muy activas tras comer los frutos del cafeto.",
       "id": "food-0009",
       "options": ["Brasil", "Vietnam", "Colombia", "Etiopía"],
       "question": "La planta del café arábica es originaria de las tierras altas de ¿qué país?"
@@ -796,7 +796,7 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "El lago Baikal, en Siberia, tiene más de 1600 m de profundidad y guarda una quinta parte del agua dulce superficial no congelada del mundo.",
+      "explanation": "El lago Baikal, en Siberia, tiene más de 1600 m de profundidad y guarda alrededor de una quinta parte del agua dulce superficial no congelada del mundo.",
       "id": "geo-0024",
       "options": [
         "Lago Tanganica",
@@ -858,7 +858,12 @@
       "difficulty": 2,
       "explanation": "Una bola caía de la boca de un dragón a la de un sapo e indicaba la dirección de un terremoto lejano.",
       "id": "inv-0060",
-      "options": ["La hora del día", "El viento", "La lluvia", "Terremotos"],
+      "options": [
+        "La hora del día",
+        "El viento",
+        "La lluvia",
+        "Los terremotos"
+      ],
       "question": "En el año 132, ¿qué detectaba la vasija de bronce de Zhang Heng con dragones que soltaban bolas?"
     },
     {
@@ -867,7 +872,12 @@
       "difficulty": 2,
       "explanation": "El número es el rumbo magnético dividido entre diez: la pista 27 apunta más o menos al oeste (270°).",
       "id": "avi-0046",
-      "options": ["Su peso máximo", "Su rumbo", "Su longitud", "Su orden"],
+      "options": [
+        "Su peso máximo",
+        "Su rumbo",
+        "Su longitud",
+        "Su orden de construcción"
+      ],
       "question": "¿Qué indica a los pilotos el gran número pintado en el extremo de una pista, como 27?"
     },
     {
@@ -896,7 +906,7 @@
         "Una raíz subterránea",
         "Una «manzana» carnosa"
       ],
-      "question": "¿De la parte inferior de qué cuelga el anacardo cuando crece?"
+      "question": "Cuando crece, el anacardo cuelga de la parte inferior de ¿qué?"
     },
     {
       "answer": 0,
@@ -942,7 +952,7 @@
         "Imperio songhai",
         "Imperio de Malí"
       ],
-      "question": "¿Qué imperio de África occidental gobernó Mansa Musa, famoso por su riqueza?"
+      "question": "¿Sobre qué imperio de África occidental reinó Mansa Musa, famoso por su riqueza?"
     },
     {
       "answer": 1,
@@ -1056,7 +1066,7 @@
       "explanation": "Tras la lluvia, una fina capa de agua convierte Uyuni en un espejo gigante que refleja el cielo.",
       "id": "geo-0110",
       "options": ["Perú", "Chile", "Bolivia", "Argentina"],
-      "question": "¿En qué país está el Salar de Uyuni, el mayor desierto de sal del mundo?"
+      "question": "¿En qué país está el salar de Uyuni, el mayor desierto de sal del mundo?"
     },
     {
       "answer": 1,
@@ -1073,7 +1083,7 @@
       "difficulty": 3,
       "explanation": "El fino polvo marciano dispersa la luz azul hacia delante, así que el brillo alrededor del Sol poniente se ve azul en las cámaras de los rovers.",
       "id": "sci-0064",
-      "options": ["Rojo intenso", "Amarillo dorado", "Naranja", "Azuladas"],
+      "options": ["Rojo intenso", "Amarillo dorado", "Naranja vivo", "Azulado"],
       "question": "¿De qué color suelen verse las puestas de sol en Marte?"
     },
     {
@@ -1088,7 +1098,7 @@
         "Jacques Cousteau",
         "Thor Heyerdahl"
       ],
-      "question": "¿Quién cruzó el Pacífico en la balsa de madera de balsa Kon-Tiki en 1947?"
+      "question": "¿Quién cruzó el Pacífico en 1947 en la Kon-Tiki, una balsa hecha de madera de balsa?"
     },
     {
       "answer": 2,

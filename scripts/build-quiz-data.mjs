@@ -53,10 +53,20 @@ const APP_LANGUAGES = [
   "pt",
   "zh",
 ];
+/**
+ * Languages whose full pool is translated: every app language with an
+ * `i18n/<lang>/` folder in the quiz workspace. They get remote packs, and
+ * their bundled set is taken from that translation.
+ */
+const POOL_TRANSLATED = new Set(
+  quizDir && fs.existsSync(path.join(quizDir, "i18n"))
+    ? fs
+        .readdirSync(path.join(quizDir, "i18n"))
+        .filter((lang) => APP_LANGUAGES.includes(lang) && lang !== "en")
+    : []
+);
 /** Languages with a translated full pool → remote packs. */
-const REMOTE_LANGUAGES = ["en", "cs", "de"];
-/** Languages whose bundled set comes from the full-pool translation. */
-const POOL_TRANSLATED = new Set(["cs", "de"]);
+const REMOTE_LANGUAGES = ["en", ...[...POOL_TRANSLATED].sort()];
 const PACK_SIZE = 250;
 const BUNDLED_COUNT = 100;
 /** Up to this share of the remote pool may be missing in a translation. */
@@ -211,6 +221,14 @@ function loadTranslations(lang) {
     map.set(q.id, q);
   };
   if (POOL_TRANSLATED.has(lang)) {
+    // The bundled translation is the baseline, so a pool translation still in
+    // progress never pushes English into the app; the pool overrides it.
+    const bundledFile = path.join(quizDir, "bundled", `${lang}.json`);
+    if (fs.existsSync(bundledFile)) {
+      for (const raw of readJson(bundledFile)) {
+        add(raw, `bundled/${lang}.json`);
+      }
+    }
     for (const file of batchFiles(path.join(quizDir, "i18n", lang))) {
       let items;
       try {

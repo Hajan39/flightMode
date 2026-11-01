@@ -1,0 +1,2747 @@
+{
+  "id": "pack-003",
+  "lang": "es",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Los siete viajes de Zheng He llegaron hasta África oriental, con algunos barcos mucho más grandes que los europeos de la época.",
+      "id": "his-0063",
+      "options": ["Zhang Qian", "Faxian", "Xuanzang", "Zheng He"],
+      "question": "¿Qué almirante chino dirigió enormes «flotas del tesoro» a principios del siglo XV?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Angkor Wat, construido en el siglo XII, es tan emblemático que aparece en la bandera nacional de Camboya.",
+      "id": "his-0012",
+      "options": ["Tailandia", "Camboya", "Laos", "Vietnam"],
+      "question": "¿En qué país están las ruinas del templo de Angkor Wat?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Stonehenge está en Wiltshire, pero sus «piedras azules», más pequeñas, se trajeron de las colinas Preseli, en Gales, a más de 200 km.",
+      "id": "his-0019",
+      "options": ["Gales", "Inglaterra", "Escocia", "Irlanda"],
+      "question": "¿En qué país está el monumento prehistórico de Stonehenge?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "La tumba de Tutankamón contenía más de 5000 objetos, entre ellos su famosa máscara funeraria de oro macizo.",
+      "id": "his-0011",
+      "options": [
+        "La de Akenatón",
+        "La de Tutankamón",
+        "La de Keops",
+        "La de Ramsés II"
+      ],
+      "question": "¿Qué tumba casi intacta descubrió Howard Carter en Egipto en 1922?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Los acueductos romanos tenían una pendiente muy suave; algunos, como el Aqua Virgo, todavía alimentan fuentes de Roma.",
+      "id": "his-0013",
+      "options": ["Canales", "Viaductos", "Zigurats", "Acueductos"],
+      "question": "¿Qué construyeron los antiguos romanos para llevar agua potable a sus ciudades?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "El Fram, que significa «adelante», tenía un casco redondeado para que el hielo lo empujara hacia arriba en vez de aplastarlo. Hoy es un museo en Oslo.",
+      "id": "his-0105",
+      "options": ["Terra Nova", "Discovery", "Fram", "Endurance"],
+      "question": "¿Cómo se llamaba el barco polar de Fridtjof Nansen, que más tarde usó Amundsen?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Las fachadas de Petra, como la famosa del Tesoro, se tallaron directamente en acantilados de arenisca hace unos 2000 años.",
+      "id": "his-0005",
+      "options": ["Egipto", "Turquía", "Jordania", "Líbano"],
+      "question": "¿En qué país puedes visitar Petra, una ciudad tallada en roca de color rosado?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "La seda era solo una de muchas mercancías; por estas rutas viajaron también ideas, cultivos y técnicas como la fabricación del papel.",
+      "id": "his-0018",
+      "options": [
+        "Ruta del Ámbar",
+        "Ruta de la Seda",
+        "Ruta del Té y los Caballos",
+        "Ruta del Incienso"
+      ],
+      "question": "¿Cómo se llamaba la red de rutas comerciales que unía China con el Mediterráneo?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Cartago, en la actual Túnez, la fundaron colonos de la ciudad fenicia de Tiro.",
+      "id": "his-0052",
+      "options": ["Griegos", "Antiguos egipcios", "Romanos", "Fenicios"],
+      "question": "¿Qué antiguo pueblo de navegantes fundó la ciudad de Cartago?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "La estatua la diseñó Frédéric Auguste Bartholdi, y su estructura interna de hierro la proyectó Gustave Eiffel.",
+      "id": "his-0016",
+      "options": ["España", "Países Bajos", "Francia", "Reino Unido"],
+      "question": "¿Qué país regaló la Estatua de la Libertad a Estados Unidos?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Heródoto escribió sus «Historias» en el siglo V a. C., describiendo pueblos y costumbres de todo el mundo conocido.",
+      "id": "his-0057",
+      "options": ["Heródoto", "Homero", "Plutarco", "Tucídides"],
+      "question": "¿A qué escritor griego se le llama a menudo el «padre de la Historia»?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Los pilares tallados de Göbekli Tepe son más de 6000 años anteriores a Stonehenge y se levantaron antes de que la agricultura se generalizara.",
+      "id": "his-0106",
+      "options": ["Göbekli Tepe", "Çatalhöyük", "Hattusa", "Troya"],
+      "question": "¿Qué yacimiento de Turquía tiene recintos de templos de piedra de unos 11 000 años de antigüedad?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Los vikingos eran navegantes de lo que hoy son Dinamarca, Noruega y Suecia, activos aproximadamente entre los siglos VIII y XI.",
+      "id": "his-0007",
+      "options": [
+        "Escandinavia",
+        "Los Balcanes",
+        "Península ibérica",
+        "Anatolia"
+      ],
+      "question": "¿De qué región de Europa procedían los vikingos?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Los jeroglíficos egipcios se usaron durante más de 3000 años y combinan signos para sonidos con signos para palabras enteras.",
+      "id": "his-0006",
+      "options": [
+        "Romanos",
+        "Celtas",
+        "Antiguos babilonios",
+        "Antiguos egipcios"
+      ],
+      "question": "¿Qué civilización antigua escribía con jeroglíficos sobre papiro?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Tradicionalmente se atribuye a Cai Lun, funcionario de la dinastía Han, el perfeccionamiento de la fabricación de papel hacia el año 105 d. C.",
+      "id": "his-0003",
+      "options": ["China", "India", "Egipto", "Grecia"],
+      "question": "¿En qué país se inventó el papel?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Las familias de Tombuctú aún conservan decenas de miles de manuscritos antiguos sobre astronomía, medicina y derecho.",
+      "id": "his-0068",
+      "options": ["Tombuctú", "Bamako", "Kayes", "Gao"],
+      "question": "¿Qué ciudad de Malí fue un famoso centro medieval del saber y de los manuscritos?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Vasco da Gama rodeó África y desembarcó en Calicut, abriendo una ruta marítima entre Europa y Asia.",
+      "id": "his-0017",
+      "options": [
+        "Pedro Cabral",
+        "Vasco da Gama",
+        "Bartolomeu Dias",
+        "Enrique el Navegante"
+      ],
+      "question": "¿Qué navegante fue el primer europeo en llegar a la India por mar, en 1498?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Colón zarpó con la Niña, la Pinta y la Santa María, que encalló el día de Navidad de 1492.",
+      "id": "his-0050",
+      "options": ["San Gabriel", "Trinidad", "Victoria", "Santa María"],
+      "question": "¿Cómo se llamaba el barco más grande de Colón en su viaje de 1492?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Ibn Battuta partió de Tánger en 1325 y recorrió unos 120 000 km a lo largo de casi 30 años.",
+      "id": "his-0053",
+      "options": ["Arabia Saudí", "Marruecos", "Egipto", "Irán"],
+      "question": "El gran viajero Ibn Battuta procedía de ¿qué país actual?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Algunos muros de esta ciudad medieval del sur de África superan los 10 m de altura y se sostienen solo gracias a un apilado cuidadoso.",
+      "id": "his-0099",
+      "options": [
+        "Adobes secados al sol",
+        "Con mortero de cal",
+        "Sobre armazones de madera",
+        "En seco, sin mortero"
+      ],
+      "question": "¿Cómo se construyeron las grandes murallas de piedra del Gran Zimbabue?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "La estatua sedente del escultor Fidias medía unos 12 m de altura y se construyó sobre un armazón de madera.",
+      "id": "his-0097",
+      "options": [
+        "Coloso de Rodas",
+        "Jardines Colgantes",
+        "Estatua de Zeus en Olimpia",
+        "Mausoleo de Halicarnaso"
+      ],
+      "question": "¿Qué maravilla de la Antigüedad estaba hecha sobre todo de marfil y oro?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "La piedra contiene el mismo decreto en jeroglíficos, en demótico y en griego antiguo, lo que permitió a los estudiosos comparar los textos.",
+      "id": "his-0010",
+      "options": [
+        "Jeroglíficos egipcios",
+        "Lineal B",
+        "Cuneiforme mesopotámico",
+        "Escritura maya"
+      ],
+      "question": "¿Qué sistema de escritura ayudó a descifrar la piedra de Rosetta?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Con unos 146 m, la Gran Pirámide fue la estructura más alta construida por el ser humano durante casi 4000 años.",
+      "id": "his-0064",
+      "options": ["Zoser", "Kefrén", "Micerino", "Keops"],
+      "question": "¿Para qué faraón se construyó la Gran Pirámide de Guiza?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Los minoicos construyeron el enorme palacio de Cnosos, vinculado a la leyenda del Minotauro y el laberinto.",
+      "id": "his-0055",
+      "options": ["Creta", "Rodas", "Chipre", "Sicilia"],
+      "question": "¿En qué isla floreció la civilización minoica?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "La Liga unía ciudades comerciales como Lübeck, Hamburgo y Bergen en torno a los mares Báltico y del Norte.",
+      "id": "his-0056",
+      "options": [
+        "Familias de la realeza",
+        "Universidades",
+        "Ciudades mercantiles",
+        "Monasterios"
+      ],
+      "question": "¿Qué agrupaba la Liga Hanseática medieval?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Mohenjo-Daro tenía calles en cuadrícula y desagües cubiertos, algo notable para una ciudad de unos 4500 años.",
+      "id": "his-0054",
+      "options": ["Egipcia", "Del Indo", "Minoica", "Mesopotámica"],
+      "question": "¿Qué civilización antigua construyó la ciudad de Mohenjo-Daro?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "El Código de Hammurabi, grabado en una estela de basalto hacia 1754 a. C., se expone hoy en el Louvre de París.",
+      "id": "his-0065",
+      "options": [
+        "Nabucodonosor II",
+        "Sargón de Acad",
+        "Hammurabi",
+        "Gilgamesh"
+      ],
+      "question": "¿Qué rey babilonio es famoso por uno de los primeros códigos de leyes escritos?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Los viajes de Marco Polo los puso por escrito Rustichello de Pisa mientras ambos estaban presos en Génova.",
+      "id": "his-0009",
+      "options": [
+        "Juan Caboto",
+        "Américo Vespucio",
+        "Marco Polo",
+        "Giovanni da Verrazzano"
+      ],
+      "question": "¿Qué mercader veneciano hizo en el siglo XIII un viaje a China que se convirtió en un libro famoso?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Constantino refundó la antigua ciudad griega de Bizancio como su nueva capital en el año 330 d. C.; hoy es Estambul.",
+      "id": "his-0049",
+      "options": ["Augusto", "Constantino I", "Teodosio I", "Justiniano I"],
+      "question": "¿Qué emperador dio su nombre a la ciudad de Constantinopla?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Balboa cruzó el istmo de Panamá y llamó al océano «Mar del Sur».",
+      "id": "his-0100",
+      "options": [
+        "Vasco Núñez de Balboa",
+        "Francisco Pizarro",
+        "Hernán Cortés",
+        "Ponce de León"
+      ],
+      "question": "¿Quién fue el primer europeo que vio el océano Pacífico desde América, en 1513?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "La flota de Cabral se dirigía a la India, pero se desvió mucho hacia el oeste cruzando el Atlántico y llegó a la costa brasileña.",
+      "id": "his-0101",
+      "options": [
+        "Francisco de Orellana",
+        "Pedro Álvares Cabral",
+        "Bartolomeu Dias",
+        "Américo Vespucio"
+      ],
+      "question": "¿Quién reclamó Brasil para Portugal en 1500?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El Coloso medía unos 33 m y se alzaba en el puerto de Rodas; su fama convirtió «coloso» en una palabra para cualquier cosa gigantesca.",
+      "id": "his-0014",
+      "options": [
+        "Estatua de Zeus",
+        "Coloso de Rodas",
+        "Faro de Alejandría",
+        "Mausoleo"
+      ],
+      "question": "¿Qué maravilla de la Antigüedad era una estatua gigante del dios del sol Helios?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Construida hacia 2650 a. C., se considera el edificio de piedra tallada a gran escala más antiguo del mundo.",
+      "id": "his-0098",
+      "options": ["Imhotep", "Hemiunu", "Amenhotep", "Senenmut"],
+      "question": "¿Qué arquitecto diseñó la pirámide escalonada de Zoser, en Egipto?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "El Endeavour, el barco de Cook, fondeó en Botany Bay, llamada así por las muchas plantas nuevas que se encontraron allí.",
+      "id": "his-0058",
+      "options": [
+        "William Dampier",
+        "Matthew Flinders",
+        "Abel Tasman",
+        "James Cook"
+      ],
+      "question": "¿Qué explorador cartografió la costa este de Australia en 1770?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "La escritura cuneiforme se hacía presionando un punzón de caña sobre arcilla húmeda, lo que dejaba marcas en forma de cuña.",
+      "id": "his-0066",
+      "options": ["Hititas", "Fenicios", "Egipcios", "Sumerios"],
+      "question": "¿Qué pueblo antiguo inventó la escritura cuneiforme, uno de los primeros sistemas de escritura?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Los antiguos Juegos de Olimpia se celebraron cada cuatro años al menos desde el 776 a. C. en honor a Zeus.",
+      "id": "his-0008",
+      "options": ["Olimpia", "Maratón", "Esparta", "Atenas"],
+      "question": "¿En qué santuario de la antigua Grecia se celebraban los Juegos Olímpicos originales?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "El arquitecto Michael Ventris demostró que las tablillas de arcilla micénicas estaban escritas en griego siglos antes de Homero.",
+      "id": "his-0104",
+      "options": ["Fenicio", "Griego", "Egipcio", "Latín"],
+      "question": "El lineal B, descifrado en 1952, resultó ser una forma antigua de ¿qué idioma?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "La tumba se construyó para Mausolo, gobernante de Caria (en la actual Turquía), y su nombre se convirtió en la palabra «mausoleo».",
+      "id": "his-0060",
+      "options": [
+        "Templo de Artemisa en Éfeso",
+        "Faro de Alejandría",
+        "Coloso de Rodas",
+        "Mausoleo de Halicarnaso"
+      ],
+      "question": "¿Qué maravilla de la Antigüedad nos dio la palabra para una tumba monumental?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Sus 37 libros abarcaban desde la astronomía hasta el arte, y se usó como obra de consulta durante más de 1500 años.",
+      "id": "his-0103",
+      "options": [
+        "Plinio el Viejo",
+        "Séneca el Joven",
+        "Tácito",
+        "Marco Terencio Varrón"
+      ],
+      "question": "¿Qué romano escribió la enorme enciclopedia «Historia natural»?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Abel Tasman avistó la isla en 1642 para la Compañía Neerlandesa de las Indias Orientales y la llamó Tierra de Van Diemen.",
+      "id": "his-0059",
+      "options": ["Gran Bretaña", "Portugal", "España", "Países Bajos"],
+      "question": "La isla de Tasmania debe su nombre a un explorador de ¿qué país?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Cleopatra fue la primera de su dinastía de habla griega de la que se sabe que aprendió la lengua egipcia.",
+      "id": "his-0015",
+      "options": [
+        "Hatshepsut",
+        "Cleopatra VII",
+        "Nefertari",
+        "Reina Nefertiti"
+      ],
+      "question": "¿Quién fue la última soberana efectiva del reino ptolemaico de Egipto?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Un asentamiento nórdico en L’Anse aux Meadows, en Terranova (Canadá), confirma visitas vikingas unos 500 años antes de Colón.",
+      "id": "his-0061",
+      "options": [
+        "Leif Erikson",
+        "Ragnar Lodbrok",
+        "Erik el Rojo",
+        "Harald Hardrada"
+      ],
+      "question": "¿Qué explorador nórdico llegó a Norteamérica hacia el año 1000?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Mientras los emperadores seguían en Kioto como gobernantes simbólicos, los sogunes tenían el poder político real.",
+      "id": "his-0078",
+      "options": ["Daimio", "Samurái", "Ninja", "Sogún"],
+      "question": "¿Qué título tenían los gobernantes militares de Japón desde 1192 hasta 1867?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Dejima era una diminuta isla artificial en el puerto de Nagasaki, el único lugar donde los comerciantes neerlandeses podían hacer negocios.",
+      "id": "his-0116",
+      "options": ["Tsushima", "Dejima", "Okinawa", "Sado"],
+      "question": "¿Qué isla de Japón, gestionada por los neerlandeses, fue durante 200 años el único puesto comercial europeo en el país?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Según se cuenta, a los barcos que llegaban a Alejandría se les copiaban los libros para la biblioteca, que aspiraba a reunir todo el saber conocido.",
+      "id": "his-0024",
+      "options": ["Atenas", "Constantinopla", "Alejandría", "Babilonia"],
+      "question": "¿Qué ciudad antigua albergaba una gran biblioteca fundada bajo los Ptolomeos?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Los nabateos se enriquecieron con el comercio del incienso y eran maestros en recoger y almacenar el agua de lluvia en el desierto.",
+      "id": "his-0113",
+      "options": ["Fenicios", "Sumerios", "Hititas", "Nabateos"],
+      "question": "¿Qué pueblo antiguo construyó Petra, en la actual Jordania?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Los Jardines Colgantes son la única maravilla antigua cuya ubicación exacta nunca han confirmado los arqueólogos.",
+      "id": "his-0027",
+      "options": [
+        "Templo de Artemisa",
+        "Coloso",
+        "Mausoleo",
+        "Jardines Colgantes"
+      ],
+      "question": "¿Qué maravilla de la Antigüedad se decía que estaba en Babilonia?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Los corredores de relevos incas, llamados chasquis, llevaban mensajes por los caminos y recorrían hasta 240 km al día.",
+      "id": "his-0114",
+      "options": ["Azteca", "Inca", "Maya", "Muisca"],
+      "question": "¿Qué imperio construyó el Qhapaq Ñan, una red de caminos de unos 30 000 km?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El mármol blanco del Taj Mahal parece cambiar de color, de rosado al amanecer a dorado al atardecer.",
+      "id": "his-0032",
+      "options": ["Taj Mahal", "Qutb Minar", "Hawa Mahal", "Fuerte Rojo"],
+      "question": "¿Qué monumento indio construyó Sha Jahan en memoria de su esposa Mumtaz Mahal?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Luis XIV reinó 72 años (1643–1715), el reinado más largo registrado de un soberano de un gran país europeo.",
+      "id": "his-0039",
+      "options": ["Enrique IV", "Luis XVI", "Luis XIV", "Luis IX"],
+      "question": "¿Qué rey francés era conocido como el «Rey Sol»?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Los Médici apoyaron a artistas como Botticelli y Miguel Ángel, y su colección de arte dio origen a la Galería de los Uffizi.",
+      "id": "his-0081",
+      "options": ["Sforza", "Fugger", "Médici", "Borgia"],
+      "question": "¿Qué familia de banqueros fue famosa por su mecenazgo artístico en la Florencia del Renacimiento?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Julio César nunca tuvo el título de emperador; su heredero adoptivo, Octavio, se convirtió en Augusto en el 27 a. C.",
+      "id": "his-0029",
+      "options": ["Calígula", "Nerón", "Julio César", "Augusto"],
+      "question": "¿Quién fue el primer emperador de Roma?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Un mapamundi de 1507 de Martin Waldseemüller usó por primera vez el nombre «América», por el florentino Américo Vespucio.",
+      "id": "his-0077",
+      "options": [
+        "Cristóbal Colón",
+        "Américo Vespucio",
+        "Juan Caboto",
+        "Juan de la Cosa"
+      ],
+      "question": "¿A qué explorador debe su nombre el continente americano?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Una reconstrucción de la puerta de Ishtar, construida bajo Nabucodonosor II, se alza en el Museo de Pérgamo de Berlín.",
+      "id": "his-0084",
+      "options": ["Babilonia", "Nínive", "Ur", "Uruk"],
+      "question": "¿Qué ciudad antigua era famosa por su puerta de Ishtar, de ladrillo vidriado azul?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "El nombre de París viene de los parisios, una tribu gala; Londinium era Londres; Aquincum, Budapest, y Vindobona, Viena.",
+      "id": "his-0110",
+      "options": ["Londinium", "Aquincum", "Lutecia", "Vindobona"],
+      "question": "¿Cuál era el nombre romano del asentamiento que se convirtió en París?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Hatshepsut gobernó unos 20 años y en las estatuas aparecía a menudo con la barba postiza de los reyes.",
+      "id": "his-0107",
+      "options": ["Nefertiti", "Cleopatra VII", "Nefertari", "Hatshepsut"],
+      "question": "¿Qué mujer faraón construyó un gran templo en Deir el-Bahari?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Las ruinas de Éfeso están cerca de la costa egea de la actual Turquía; del templo solo queda una columna, vuelta a levantar.",
+      "id": "his-0069",
+      "options": ["Corinto", "Éfeso", "Atenas", "Troya"],
+      "question": "¿En qué ciudad antigua se alzaba el templo de Artemisa, una de las maravillas del mundo?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Fátima al-Fihri la fundó en Fez en 859; la UNESCO y el Libro Guinness de los récords la citan como la institución educativa en funcionamiento continuo más antigua.",
+      "id": "his-0111",
+      "options": ["Túnez", "Marruecos", "Egipto", "Irak"],
+      "question": "¿En qué país está Al Qarawiyyin, considerada la universidad más antigua que existe?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Tenochtitlan se construyó en una isla del lago de Texcoco y cultivaba alimentos en huertos flotantes llamados chinampas.",
+      "id": "his-0026",
+      "options": ["Incas", "Mayas", "Aztecas", "Zapotecas"],
+      "question": "¿Qué pueblo fundó Tenochtitlan, la ciudad que hay bajo la actual Ciudad de México?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Los jóvenes nobles recorrían ciudades como París, Venecia, Florencia y Roma para completar su formación en arte y cultura.",
+      "id": "his-0070",
+      "options": [
+        "Un viaje de jóvenes aristócratas",
+        "Una ruta postal nacional",
+        "Un desfile militar real",
+        "Una peregrinación medieval a España"
+      ],
+      "question": "¿Qué era el «Grand Tour» en la Europa de los siglos XVII y XVIII?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "En Turquía, a Solimán se le conoce como «Kanuni», el Legislador, por su reforma de las leyes del imperio.",
+      "id": "his-0086",
+      "options": ["Bizantino", "Otomano", "Safávida", "Mogol"],
+      "question": "¿Qué imperio gobernó Solimán el Magnífico?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Una empresa francesa empezó el canal en la década de 1880, pero desistió; Estados Unidos tomó el relevo y lo terminó.",
+      "id": "his-0085",
+      "options": ["EE. UU.", "Reino Unido", "España", "Francia"],
+      "question": "¿Qué país terminó el canal de Panamá en 1914?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "La dinastía Ming (1368–1644) reconstruyó la muralla con ladrillo y piedra; las murallas anteriores eran sobre todo de tierra apisonada.",
+      "id": "his-0075",
+      "options": ["Han", "Ming", "Qin", "Tang"],
+      "question": "¿Bajo qué dinastía se construyó la mayor parte de la Gran Muralla que ven hoy los visitantes?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "La ciudad de Quebec la fundó Samuel de Champlain; sus murallas son las únicas murallas urbanas fortificadas que se conservan al norte de México.",
+      "id": "his-0071",
+      "options": ["Países Bajos", "Inglaterra", "Francia", "España"],
+      "question": "¿Exploradores de qué país fundaron la ciudad de Quebec en 1608?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El Renacimiento empezó en la Florencia del siglo XIV, donde ricos mecenas financiaban a artistas, arquitectos y eruditos.",
+      "id": "his-0038",
+      "options": ["Italia", "Países Bajos", "Francia", "España"],
+      "question": "¿En qué país empezó el Renacimiento?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El reinado de Victoria dio nombre a toda una época; fue la monarca británica con el reinado más largo hasta Isabel II.",
+      "id": "his-0028",
+      "options": ["Reina Isabel I", "Jorge III", "Reina Ana", "Reina Victoria"],
+      "question": "¿Qué monarca británico reinó más de 63 años, de 1837 a 1901?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Slocum recorrió unos 74 000 km en el Spray, un viejo barco ostrero que él mismo reconstruyó, y su libro sobre el viaje se convirtió en un clásico.",
+      "id": "his-0108",
+      "options": [
+        "Joshua Slocum",
+        "Bernard Moitessier",
+        "Francis Chichester",
+        "Robin Knox-Johnston"
+      ],
+      "question": "¿Quién fue la primera persona en dar la vuelta al mundo navegando en solitario, en 1895–1898?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El Coliseo tenía un toldo retráctil llamado velarium que protegía del sol a los espectadores.",
+      "id": "his-0025",
+      "options": ["Panteón", "Coliseo", "Circo Máximo", "Foro Romano"],
+      "question": "¿Qué anfiteatro romano, terminado en el año 80 d. C., podía albergar a unos 50 000 espectadores?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Desde mediados del siglo XVIII, las fábricas textiles, el carbón y las máquinas de vapor británicas transformaron la forma de producir bienes.",
+      "id": "his-0031",
+      "options": ["Francia", "Gran Bretaña", "Estados Unidos", "Alemania"],
+      "question": "¿En qué país empezó la Revolución Industrial?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El viaje del Beagle (1831–1836) duró casi cinco años y llevó a Darwin a las islas Galápagos.",
+      "id": "his-0033",
+      "options": ["HMS Endeavour", "HMS Victory", "HMS Beagle", "HMS Bounty"],
+      "question": "¿Cómo se llamaba el barco en el que Charles Darwin dio la vuelta al mundo?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Aristóteles fue maestro de Alejandro durante unos tres años en Macedonia, desde que el príncipe tenía 13 años.",
+      "id": "his-0080",
+      "options": ["Sócrates", "Pitágoras", "Platón", "Aristóteles"],
+      "question": "¿Qué filósofo fue tutor del joven Alejandro Magno?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Durante casi mil años, Santa Sofía fue la catedral más grande del mundo; su cúpula parece flotar sobre un anillo de ventanas.",
+      "id": "his-0115",
+      "options": ["Constantino I", "Teodosio II", "Basilio II", "Justiniano I"],
+      "question": "¿Qué emperador bizantino construyó Santa Sofía en su forma actual, en 537?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Persépolis es famosa por sus relieves en piedra de pueblos de todo el imperio que llevan regalos al rey.",
+      "id": "his-0109",
+      "options": ["Artajerjes I", "Ciro el Grande", "Darío I", "Jerjes I"],
+      "question": "¿Qué rey persa empezó a construir la ciudad palaciega de Persépolis?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Tenzing Norgay, un sherpa de Nepal, y el neozelandés Hillary llegaron a la cima el 29 de mayo de 1953.",
+      "id": "his-0035",
+      "options": [
+        "George Mallory",
+        "Tenzing Norgay",
+        "Reinhold Messner",
+        "Ang Rita"
+      ],
+      "question": "¿Qué alpinista alcanzó la cima del Everest con Edmund Hillary en 1953?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Marie Curie ganó el Nobel de Física en 1903 y el de Química en 1911: es la única persona premiada en dos ciencias distintas.",
+      "id": "his-0022",
+      "options": [
+        "Marie Curie",
+        "Florence Nightingale",
+        "Lise Meitner",
+        "Ada Lovelace"
+      ],
+      "question": "¿Quién fue la primera mujer en ganar un Premio Nobel?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El pergamino fino de piel de ternero se llama vitela; una Biblia grande podía necesitar las pieles de cientos de animales.",
+      "id": "his-0030",
+      "options": ["Pergamino", "Papel de arroz", "Corteza de abedul", "Papiro"],
+      "question": "¿Cómo se llamaba el material de escritura hecho de piel de animal que se usaba en los libros medievales?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Se dice que Champollion gritó «Je tiens l’affaire!» («¡Lo tengo!») y luego se desmayó.",
+      "id": "his-0082",
+      "options": [
+        "Karl Richard Lepsius",
+        "Giovanni Battista Belzoni",
+        "Auguste Mariette",
+        "Jean-François Champollion"
+      ],
+      "question": "¿Quién descifró los jeroglíficos egipcios en 1822?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "En su apogeo, el Imperio aqueménida se extendía desde Egipto y los Balcanes hasta el valle del Indo.",
+      "id": "his-0073",
+      "options": ["Bizantino", "Neoasirio", "Otomano", "Aqueménida"],
+      "question": "¿Qué imperio fundó Ciro el Grande en el siglo VI a. C.?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "El Código napoleónico sigue siendo la base del derecho civil en Francia, Bélgica, Luxemburgo y muchos otros países.",
+      "id": "his-0087",
+      "options": ["Napoleón", "Carlomagno", "Luis XIV", "Luis Felipe"],
+      "question": "¿De quién era el código civil de 1804 que influyó en las leyes de muchos países?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Carlomagno fue coronado por el papa en Roma; más tarde muchas familias reales europeas remontaron a él su linaje.",
+      "id": "his-0088",
+      "options": ["Clodoveo I", "Carlomagno", "Pipino el Breve", "Otón I"],
+      "question": "¿Quién fue coronado emperador de los romanos el día de Navidad del año 800?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "El yacimiento de Hisarlik tiene al menos nueve ciudades construidas unas sobre otras a lo largo de unos 4000 años.",
+      "id": "his-0074",
+      "options": ["Grecia", "Italia", "Turquía", "Chipre"],
+      "question": "¿En qué país actual se encuentra el yacimiento arqueológico de la antigua Troya?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Algunos tramos del Gran Canal tienen más de 2000 años; su longitud total es de unos 1800 km.",
+      "id": "his-0112",
+      "options": ["Cantón", "Xi’an", "Hangzhou", "Shanghái"],
+      "question": "El Gran Canal de China, el canal antiguo más largo, une Pekín con ¿qué ciudad?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "La Alhambra de Granada la construyó principalmente la dinastía nazarí; su nombre viene del árabe y significa «la roja».",
+      "id": "his-0040",
+      "options": ["España", "Italia", "Marruecos", "Portugal"],
+      "question": "¿En qué país está la Alhambra, palacio y fortaleza?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El calendario maya simplemente completaba un gran ciclo el 21 de diciembre de 2012; los especialistas en la cultura maya nunca predijeron un apocalipsis.",
+      "id": "his-0037",
+      "options": ["Inca", "Maya", "Olmeca", "Azteca"],
+      "question": "¿El calendario de cuenta larga de qué civilización desató los mitos del «fin del mundo en 2012»?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Dias lo llamó «cabo de las Tormentas»; más tarde se le dio el nombre, más esperanzador, de cabo de Buena Esperanza.",
+      "id": "his-0076",
+      "options": [
+        "Pedro Cabral",
+        "Fernando de Magallanes",
+        "Vasco da Gama",
+        "Bartolomeu Dias"
+      ],
+      "question": "¿Qué explorador portugués dobló por primera vez el cabo de Buena Esperanza, en 1488?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Las líneas de Nazca incluyen un colibrí, un mono y una araña, y se aprecian mejor desde el aire.",
+      "id": "his-0079",
+      "options": ["Inca", "Moche", "Nazca", "Chavín"],
+      "question": "¿Qué antigua cultura peruana trazó enormes dibujos lineales en el desierto?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Los 28 tripulantes sobrevivieron; el pecio se encontró en 2022 a unos 3000 m de profundidad en el mar de Weddell.",
+      "id": "his-0083",
+      "options": ["Terra Nova", "Discovery", "Endurance", "Fram"],
+      "question": "¿Cómo se llamaba el barco de Shackleton que quedó atrapado y aplastado por el hielo antártico?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Tailandia es el único país del Sudeste Asiático que nunca fue colonizado por una potencia europea.",
+      "id": "his-0042",
+      "options": ["Tailandia", "Birmania", "Laos", "Camboya"],
+      "question": "¿Qué país actual se conocía como Siam hasta 1939?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Van Gogh la pintó de memoria, a partir de la vista desde su ventana en un sanatorio de Saint-Rémy-de-Provence.",
+      "id": "cul-0003",
+      "options": [
+        "Paul Gauguin",
+        "Vincent van Gogh",
+        "Claude Monet",
+        "Henri de Toulouse-Lautrec"
+      ],
+      "question": "¿Quién pintó «La noche estrellada» en 1889?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "El tren de lujo empezó a circular en 1883; desde 1889 los pasajeros podían llegar en tren hasta Constantinopla.",
+      "id": "his-0093",
+      "options": ["Estambul", "San Petersburgo", "Atenas", "El Cairo"],
+      "question": "La ruta clásica del Orient Express unía París con ¿qué ciudad?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Xuanzang viajó durante unos 16 años y trajo cientos de textos budistas; la novela convierte su viaje en una aventura con el Rey Mono.",
+      "id": "his-0120",
+      "options": ["Jianzhen", "Faxian", "Xuanzang", "Zhang Qian"],
+      "question": "¿Qué monje chino del siglo VII hizo un viaje a la India que inspiró la novela «Viaje al Oeste»?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Los tejados en forma de vela de Utzon están cubiertos con más de un millón de azulejos fabricados en Suecia; Utzon nunca llegó a ver en persona el edificio terminado.",
+      "id": "cul-0045",
+      "options": ["Finlandia", "Dinamarca", "Suecia", "Noruega"],
+      "question": "Jørn Utzon, arquitecto de la Ópera de Sídney, ¿de qué país era?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Aksum, centrado en el norte de las actuales Etiopía y Eritrea, fue uno de los primeros Estados africanos en emitir moneda; su obelisco más alto mide más de 30 m.",
+      "id": "his-0119",
+      "options": ["Aksum", "Malí", "Songhai", "Kanem-Bornu"],
+      "question": "¿Qué antiguo reino africano acuñaba sus propias monedas y levantaba gigantescos obeliscos de piedra?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Emitido en 1840, el Penny Black muestra a la reina Victoria; los sellos británicos siguen sin llevar el nombre del país.",
+      "id": "his-0048",
+      "options": ["Francia", "Reino Unido", "Estados Unidos", "Suiza"],
+      "question": "El primer sello postal adhesivo, el Penny Black, ¿de qué país era?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "En Mesopotamia, situada en su mayor parte en el actual Irak, surgieron algunas de las primeras ciudades, escrituras y vehículos con ruedas.",
+      "id": "his-0046",
+      "options": [
+        "Nilo y Jordán",
+        "Danubio y Rin",
+        "Indo y Brahmaputra",
+        "Tigris y Éufrates"
+      ],
+      "question": "Mesopotamia, «la tierra entre ríos», estaba entre ¿qué dos ríos?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El tango nació en Buenos Aires y Montevideo a finales del siglo XIX, entre inmigrantes y población local.",
+      "id": "cul-0046",
+      "options": ["Magdalena", "Orinoco", "Amazonas", "Río de la Plata"],
+      "question": "El tango se desarrolló en las ciudades portuarias del estuario de ¿qué río?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Poirot apareció por primera vez en 1920 y es famoso por sus «pequeñas células grises» y su bigote cuidadosamente encerado.",
+      "id": "cul-0047",
+      "options": ["Belga", "Luxemburgués", "Francés", "Suizo"],
+      "question": "¿De qué nacionalidad es Hércules Poirot, el detective de Agatha Christie?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "La mayoría de las óperas de la época de Mozart eran en italiano, pero «La flauta mágica» (1791) se escribió en alemán para un teatro de Viena.",
+      "id": "cul-0093",
+      "options": ["Latín", "Francés", "Italiano", "Alemán"],
+      "question": "¿En qué idioma se canta la ópera de Mozart «La flauta mágica»?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Stanley encontró a Livingstone en 1871 en Ujiji, cerca del lago Tanganica, tras una larga búsqueda.",
+      "id": "his-0096",
+      "options": [
+        "John Speke",
+        "Henry Morton Stanley",
+        "Richard Burton",
+        "Mungo Park"
+      ],
+      "question": "¿Quién, según se cuenta, saludó al explorador Livingstone con «Doctor Livingstone, supongo»?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "La novela sigue a siete generaciones de la familia Buendía en el pueblo imaginario de Macondo.",
+      "id": "cul-0052",
+      "options": [
+        "Isabel Allende",
+        "Jorge Luis Borges",
+        "Mario Vargas Llosa",
+        "Gabriel García Márquez"
+      ],
+      "question": "¿Quién escribió «Cien años de soledad»?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "El festival Duanwu (de los Barcos Dragón) cae el quinto día del quinto mes lunar, y se comen bolas de arroz glutinoso envueltas en hojas.",
+      "id": "cul-0092",
+      "options": [
+        "Festival de Qingming",
+        "Festival del Medio Otoño",
+        "Festival Duanwu",
+        "Festival de los Faroles"
+      ],
+      "question": "¿Durante qué festividad china se celebran tradicionalmente las regatas de barcos dragón?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Las obras empezaron en 1882 y Gaudí les dedicó más de 40 años; está enterrado en la cripta de la basílica.",
+      "id": "cul-0011",
+      "options": [
+        "Antoni Gaudí",
+        "Rafael Moneo",
+        "Ricardo Bofill",
+        "Santiago Calatrava"
+      ],
+      "question": "¿Qué arquitecto diseñó la Sagrada Familia de Barcelona?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Los romanos llamaban Caledonia a Escocia, Hibernia a Irlanda y Gallia a Francia; Britannia se convirtió después en una personificación nacional.",
+      "id": "his-0117",
+      "options": ["Hibernia", "Britannia", "Caledonia", "Gallia"],
+      "question": "¿Cuál era el nombre romano antiguo de Gran Bretaña?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Kate Sheppard encabezó la campaña; las neozelandesas votaron por primera vez en unas elecciones generales en noviembre de 1893.",
+      "id": "his-0095",
+      "options": ["Noruega", "Nueva Zelanda", "Reino Unido", "Finlandia"],
+      "question": "¿Cuál fue el primer país autónomo que dio el voto a todas las mujeres adultas, en 1893?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Nightingale fue también una estadística pionera que usó diagramas para mostrar cómo la higiene salvaba vidas.",
+      "id": "his-0047",
+      "options": [
+        "Mary Seacole",
+        "Florence Nightingale",
+        "Edith Cavell",
+        "Elizabeth Garrett Anderson"
+      ],
+      "question": "¿Qué famosa enfermera británica era conocida como «la dama de la lámpara»?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Las máscaras permitían a los venecianos de cualquier clase mezclarse libremente; la fabricación de máscaras sigue siendo un oficio importante en la ciudad.",
+      "id": "cul-0051",
+      "options": ["Río de Janeiro", "Colonia", "Niza", "Venecia"],
+      "question": "¿El carnaval de qué ciudad es famoso por máscaras elaboradas como la bauta?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Dante escribió en su toscano natal en lugar de en latín, lo que ayudó a que el toscano se convirtiera en la base del italiano moderno.",
+      "id": "cul-0053",
+      "options": ["Occitano", "Francés", "Italiano", "Latín"],
+      "question": "¿En qué idioma escribió Dante «La Divina Comedia»?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 3,
+      "explanation": "Juan Caboto, nacido Giovanni Caboto, zarpó de Bristol en el pequeño barco Matthew; aún se discute si tocó tierra en Terranova o en Cabo Bretón.",
+      "id": "his-0118",
+      "options": [
+        "Jacques Cartier",
+        "Juan Caboto",
+        "Martin Frobisher",
+        "Henry Hudson"
+      ],
+      "question": "¿Qué navegante nacido en Venecia llegó a Norteamérica para Inglaterra en 1497?"
+    },
+    {
+      "answer": 3,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Luxor se alza donde estaba la antigua Tebas; el complejo de Karnak es uno de los mayores recintos religiosos jamás construidos.",
+      "id": "his-0090",
+      "options": ["Alejandría", "El Cairo", "Asuán", "Luxor"],
+      "question": "¿En qué ciudad egipcia actual están los grandes templos de Karnak?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Una tradición japonesa popular dice que doblar 1000 grullas de papel hace que se cumpla un deseo.",
+      "id": "cul-0012",
+      "options": ["Origami", "Ikebana", "Bonsái", "Kintsugi"],
+      "question": "¿Cómo se llama el arte japonés de doblar papel para crear figuras?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El kabuki nació hacia 1603; tradicionalmente todos los actores son hombres, también los que interpretan papeles femeninos.",
+      "id": "cul-0048",
+      "options": ["Kyogen", "Noh", "Kabuki", "Bunraku"],
+      "question": "¿Qué estilo de teatro japonés es conocido por un maquillaje llamativo llamado kumadori?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El Muro de Adriano recorría unos 117 km de costa a costa, con pequeños fortines aproximadamente cada milla romana.",
+      "id": "his-0041",
+      "options": ["Trajano", "Adriano", "Claudio", "Augusto"],
+      "question": "¿Qué emperador romano mandó construir una muralla a lo ancho del norte de Inglaterra en el año 122 d. C.?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Macao estuvo administrado por Portugal hasta 1999, y el portugués sigue siendo una de sus lenguas oficiales.",
+      "id": "his-0089",
+      "options": ["España", "Países Bajos", "Portugal", "Gran Bretaña"],
+      "question": "¿Qué país europeo estableció Macao como puesto comercial en la década de 1550?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "La góndola se construye ligeramente asimétrica para que un solo remero de pie en la popa pueda hacerla avanzar en línea recta.",
+      "id": "cul-0008",
+      "options": ["Junco", "Faluca", "Góndola", "Dhow"],
+      "question": "¿Cómo se llama la barca de remos tradicional de fondo plano de Venecia?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El éxito del museo al revitalizar Bilbao inspiró la expresión «efecto Bilbao» para las ciudades que construyen museos emblemáticos.",
+      "id": "cul-0056",
+      "options": ["Frank Gehry", "Renzo Piano", "Norman Foster", "Zaha Hadid"],
+      "question": "¿Qué arquitecto diseñó el Museo Guggenheim de Bilbao, revestido de titanio?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "El Quijote, publicado en dos partes en 1605 y 1615, suele considerarse la primera novela moderna.",
+      "id": "cul-0009",
+      "options": [
+        "Gabriel García Márquez",
+        "Federico García Lorca",
+        "Miguel de Cervantes",
+        "Lope de Vega"
+      ],
+      "question": "¿Quién escribió la novela «Don Quijote»?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "Vitus Bering era un navegante danés al servicio de Rusia; el estrecho mide solo unos 82 km de ancho.",
+      "id": "his-0091",
+      "options": ["Henry Hudson", "James Cook", "Vitus Bering", "Abel Tasman"],
+      "question": "¿Qué explorador dio su nombre al estrecho que separa Asia de Norteamérica?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "La historia transcurre en Verona (Italia), donde un balcón de la «casa de Julieta» atrae a muchos visitantes.",
+      "id": "cul-0005",
+      "options": [
+        "Charles Dickens",
+        "William Shakespeare",
+        "Christopher Marlowe",
+        "Geoffrey Chaucer"
+      ],
+      "question": "¿Quién escribió la obra de teatro «Romeo y Julieta»?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Construida sobre terreno pantanoso en la desembocadura del Neva, fue la capital de Rusia durante unos dos siglos.",
+      "id": "his-0044",
+      "options": ["Nizhni Nóvgorod", "Arcángel", "San Petersburgo", "Moscú"],
+      "question": "¿Qué ciudad fundó Pedro el Grande en 1703?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Vivaldi publicó junto a los conciertos unos sonetos que describen cantos de pájaros, tormentas e inviernos que hacen tiritar.",
+      "id": "cul-0004",
+      "options": [
+        "Antonio Vivaldi",
+        "Georg Friedrich Händel",
+        "Johann Sebastian Bach",
+        "Wolfgang Amadeus Mozart"
+      ],
+      "question": "¿Qué compositor escribió los conciertos para violín «Las cuatro estaciones»?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Inmigrantes portugueses de Madeira llegaron en 1879 con pequeños instrumentos parecidos a la guitarra, como el machete.",
+      "id": "cul-0090",
+      "options": ["México", "Japón", "Filipinas", "Madeira"],
+      "question": "El ukelele se desarrolló en Hawái a partir de instrumentos traídos por inmigrantes de ¿dónde?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Las escuelas de samba pasan todo el año preparando carrozas, disfraces y canciones para el desfile en el Sambódromo.",
+      "id": "cul-0007",
+      "options": ["Salsa", "Flamenco", "Tango", "Samba"],
+      "question": "¿Por qué baile son famosos los desfiles del Carnaval de Río de Janeiro?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Cada agosto se lanzan por las calles más de 100 toneladas de tomates muy maduros; la fiesta se remonta a 1945.",
+      "id": "cul-0049",
+      "options": ["Pamplona", "Valencia", "Buñol", "Sevilla"],
+      "question": "¿En qué localidad española se celebra La Tomatina, la fiesta en la que se lanzan tomates?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Dvořák la escribió en 1893 mientras trabajaba en Nueva York; una grabación viajó a la Luna con los astronautas del Apolo 11.",
+      "id": "cul-0055",
+      "options": ["Nuevo Mundo", "Heroica", "Inacabada", "Pastoral"],
+      "question": "¿Qué sobrenombre tiene la Sinfonía n.º 9 de Antonín Dvořák?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Munch hizo varias versiones de «El grito», entre ellas pinturas, pasteles y grabados.",
+      "id": "cul-0002",
+      "options": [
+        "El beso",
+        "La ronda de noche",
+        "La gitana dormida",
+        "El grito"
+      ],
+      "question": "¿Qué cuadro de Edvard Munch muestra a una figura que se lleva las manos a la cara bajo un cielo rojo?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "El nombre de Ceilán sobrevive en el «té de Ceilán», que sigue siendo una exportación de Sri Lanka famosa en todo el mundo.",
+      "id": "his-0043",
+      "options": ["Sri Lanka", "Madagascar", "Maldivas", "Mauricio"],
+      "question": "¿Qué país insular se llamaba antes Ceilán?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "La pieza sigue al río desde dos pequeños manantiales a través del campo hasta Praga.",
+      "id": "cul-0054",
+      "options": [
+        "Antonín Dvořák",
+        "Bohuslav Martinů",
+        "Leoš Janáček",
+        "Bedřich Smetana"
+      ],
+      "question": "¿Qué compositor checo escribió «Vltava» («El Moldava»)?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Escrita hace unos 1000 años por una dama de la corte imperial, suele considerarse una de las primeras novelas del mundo.",
+      "id": "cul-0094",
+      "options": [
+        "Murasaki Shikibu",
+        "Sei Shōnagon",
+        "Princesa Shikishi",
+        "Akiko Yosano"
+      ],
+      "question": "¿Quién escribió el clásico japonés «La historia de Genji»?"
+    },
+    {
+      "answer": 0,
+      "category": "history",
+      "difficulty": 2,
+      "explanation": "En su punto álgido, se dice que un solo bulbo de tulipán raro se vendió por más de diez veces el salario anual de un artesano cualificado.",
+      "id": "his-0094",
+      "options": ["Países Bajos", "Suiza", "Francia", "Inglaterra"],
+      "question": "¿En qué país se produjo en la década de 1630 la «tulipomanía», una de las primeras burbujas financieras?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Livingstone llegó a las cataratas en 1855 y les puso el nombre de la reina Victoria; miden alrededor de 1,7 km de ancho.",
+      "id": "his-0045",
+      "options": [
+        "Salto Ángel",
+        "Cataratas del Niágara",
+        "Cataratas Victoria",
+        "Cataratas Murchison"
+      ],
+      "question": "¿Qué cataratas del Zambeze bautizó David Livingstone en honor a su reina?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Al final del desfile se prende fuego en Lerwick a una réplica a tamaño real de un barco vikingo.",
+      "id": "cul-0089",
+      "options": ["Islas Feroe", "Hébridas", "Orcadas", "Shetland"],
+      "question": "¿En qué archipiélago se celebra el festival del fuego Up Helly Aa?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "La novela tiene más de 500 personajes, y algunas partes están escritas en francés, como hablaba la nobleza rusa.",
+      "id": "cul-0022",
+      "options": [
+        "Fiódor Dostoievski",
+        "Antón Chéjov",
+        "León Tolstói",
+        "Iván Turguénev"
+      ],
+      "question": "¿Quién escribió la novela «Guerra y paz»?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Las 953 ventanitas del Hawa Mahal permitían a las mujeres de la realeza observar la vida de la calle sin ser vistas, mientras la brisa refrescaba el edificio.",
+      "id": "cul-0102",
+      "options": ["Agra", "Udaipur", "Delhi", "Jaipur"],
+      "question": "¿En qué ciudad india está el Hawa Mahal, el «palacio de los Vientos»?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "El jazz mezcló el blues y el ragtime afroamericanos con la música de las bandas de metales, y la improvisación es su esencia.",
+      "id": "cul-0030",
+      "options": ["Reggae", "Bossa nova", "Jazz", "Flamenco"],
+      "question": "¿Qué género musical nació en Nueva Orleans a principios del siglo XX?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "El espejo refleja dos figuras más en la puerta; encima, el artista firmó «Jan van Eyck estuvo aquí. 1434».",
+      "id": "cul-0099",
+      "options": [
+        "Rogier van der Weyden",
+        "Hans Holbein",
+        "Jan van Eyck",
+        "Hans Memling"
+      ],
+      "question": "¿Qué pintor creó «El matrimonio Arnolfini», con su diminuto espejo convexo?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "«Hamlet» es la obra más larga de Shakespeare y transcurre en Elsinor, inspirado en el castillo de Kronborg, en Dinamarca.",
+      "id": "cul-0014",
+      "options": ["Otelo", "El rey Lear", "Macbeth", "Hamlet"],
+      "question": "¿En qué obra de Shakespeare aparece la frase «Ser o no ser»?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "La Scala se inauguró en 1778; Venecia tiene La Fenice y Nápoles el Teatro di San Carlo, el más antiguo de los tres.",
+      "id": "cul-0073",
+      "options": ["Turín", "Milán", "Venecia", "Nápoles"],
+      "question": "¿En qué ciudad está el teatro de ópera La Scala?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "«El lago de los cisnes» se estrenó en Moscú en 1877 y al principio no tuvo éxito; se hizo famoso tras una reposición en 1895.",
+      "id": "cul-0021",
+      "options": ["Rimski-Kórsakov", "Chaikovski", "Stravinski", "Rajmáninov"],
+      "question": "¿Qué compositor ruso escribió el ballet «El lago de los cisnes»?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "La puerta, terminada en 1791, está coronada por la Cuadriga, un carro tirado por cuatro caballos.",
+      "id": "cul-0031",
+      "options": [
+        "Puerta de Brandeburgo",
+        "Puerta de la India",
+        "Arco de Triunfo de París",
+        "Arco de Wellington"
+      ],
+      "question": "¿Qué puerta neoclásica es un famoso símbolo de Berlín?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El Prado abrió en 1819 y tiene la mayor colección del mundo de obras de Velázquez y Goya.",
+      "id": "cul-0059",
+      "options": ["Sevilla", "Lisboa", "Barcelona", "Madrid"],
+      "question": "¿En qué ciudad está el Museo del Prado?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Construida en Pensilvania en los años treinta, la casa tiene terrazas que se proyectan sobre el arroyo.",
+      "id": "cul-0064",
+      "options": [
+        "Frank Lloyd Wright",
+        "Walter Gropius",
+        "Ludwig Mies van der Rohe",
+        "Le Corbusier"
+      ],
+      "question": "¿Qué arquitecto diseñó la Casa de la Cascada (Fallingwater), construida sobre un salto de agua?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Pese a su nombre, la Oktoberfest empieza en septiembre; nació con la celebración de una boda real en 1810.",
+      "id": "cul-0019",
+      "options": ["Múnich", "Hamburgo", "Berlín", "Viena"],
+      "question": "¿En qué ciudad se celebra la Oktoberfest?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "El flamenco procede de Andalucía, en el sur de España, y combina cante, toque de guitarra, baile y palmas.",
+      "id": "cul-0016",
+      "options": ["Portugal", "España", "Italia", "México"],
+      "question": "¿En qué país se desarrolló el flamenco?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "La familia real española todavía usa las plantas altas del Real Alcázar de Sevilla cuando visita la ciudad.",
+      "id": "cul-0103",
+      "options": ["Sevilla", "Córdoba", "Valencia", "Toledo"],
+      "question": "¿Qué ciudad española alberga un Alcázar, palacio-fortaleza de estilo mudéjar que sigue siendo residencia real?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El padre de Klimt era grabador de oro, y en su «período dorado» el pintor usó pan de oro auténtico en muchas obras.",
+      "id": "cul-0069",
+      "options": [
+        "Gustav Klimt",
+        "Alfons Mucha",
+        "Egon Schiele",
+        "Oskar Kokoschka"
+      ],
+      "question": "¿Qué pintor vienés creó «El beso», decorado con pan de oro?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Bashō escribió también un famoso diario de viaje, «Sendas de Oku», sobre su recorrido a pie por Japón.",
+      "id": "cul-0095",
+      "options": [
+        "Matsuo Bashō",
+        "Kobayashi Issa",
+        "Masaoka Shiki",
+        "Yosa Buson"
+      ],
+      "question": "¿Qué poeta escribió el famoso haiku de la rana que salta a un viejo estanque?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Los constructores de Harbin cortan bloques de hielo del río Songhua congelado para levantar castillos enteros iluminados.",
+      "id": "cul-0076",
+      "options": [
+        "Vuelo de cometas gigantes",
+        "Farolillos de papel flotantes",
+        "Regatas de barcos dragón",
+        "Esculturas de hielo y nieve"
+      ],
+      "question": "¿Por qué es famoso el festival de invierno de Harbin, en China?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "La melodía de la «Oda a la alegría» procede del final de la sinfonía, que Beethoven escribió cuando estaba casi completamente sordo.",
+      "id": "cul-0028",
+      "options": [
+        "Wolfgang Amadeus Mozart",
+        "Franz Schubert",
+        "Joseph Haydn",
+        "Ludwig van Beethoven"
+      ],
+      "question": "El himno europeo se basa en música de la Novena Sinfonía de ¿qué compositor?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "El reggae surgió del ska y el rocksteady a finales de los años sesenta y fue incluido en la lista de patrimonio de la UNESCO en 2018.",
+      "id": "cul-0029",
+      "options": ["Puerto Rico", "Cuba", "Jamaica", "Barbados"],
+      "question": "¿En qué país se originó el reggae?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Terminada en 1561, en realidad son nueve capillas agrupadas, cada una coronada por su propia cúpula.",
+      "id": "cul-0066",
+      "options": ["Cristo Salvador", "Santa Sofía", "San Basilio", "San Isaac"],
+      "question": "¿Qué iglesia de la Plaza Roja de Moscú es famosa por sus coloridas cúpulas de bulbo?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "La gran gaita de las Tierras Altas tiene tres roncones que tocan una nota continua por debajo de la melodía.",
+      "id": "cul-0015",
+      "options": ["Gaita", "Banjo", "Mandolina", "Acordeón"],
+      "question": "¿Qué instrumento es un famoso símbolo de Escocia?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El cuadro, de la década de 1480, cuelga en la Galería de los Uffizi de Florencia.",
+      "id": "cul-0058",
+      "options": [
+        "Rafael",
+        "Tiziano",
+        "Sandro Botticelli",
+        "Domenico Ghirlandaio"
+      ],
+      "question": "¿Quién pintó «El nacimiento de Venus»?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Probablemente las epopeyas se transmitieron oralmente durante generaciones antes de ponerse por escrito.",
+      "id": "cul-0023",
+      "options": ["Sófocles", "Ovidio", "Homero", "Virgilio"],
+      "question": "¿A qué poeta de la antigua Grecia se atribuyen la «Ilíada» y la «Odisea»?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Las tuberías del edificio están por fuera y tienen colores según su función: azul para el aire, verde para el agua y amarillo para la electricidad.",
+      "id": "cul-0096",
+      "options": ["Jean Nouvel", "Renzo Piano", "Norman Foster", "Frank Gehry"],
+      "question": "¿Qué arquitecto diseñó el Centro Pompidou de París junto con Richard Rogers?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El gran tríptico, lleno de criaturas extrañas y frutas gigantes, cuelga en el Prado de Madrid.",
+      "id": "cul-0070",
+      "options": [
+        "Alberto Durero",
+        "El Bosco",
+        "Jan van Eyck",
+        "Pieter Brueghel el Viejo"
+      ],
+      "question": "¿Quién pintó «El jardín de las delicias»?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Las familias montan altares llamados ofrendas, y se dice que los pétalos naranjas del cempasúchil guían a los espíritus a casa.",
+      "id": "cul-0017",
+      "options": [
+        "Día de la Independencia",
+        "Las Posadas",
+        "Día de Muertos",
+        "Cinco de Mayo"
+      ],
+      "question": "¿Qué celebración mexicana honra a los seres queridos fallecidos con altares coloridos y flores de cempasúchil?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Los cuadros cubistas muestran los objetos desde varios puntos de vista a la vez, descompuestos en formas geométricas.",
+      "id": "cul-0026",
+      "options": [
+        "Marc Chagall",
+        "Pablo Picasso",
+        "Amedeo Modigliani",
+        "Henri Matisse"
+      ],
+      "question": "¿Qué pintor fundó el cubismo junto con Georges Braque?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Los arbotantes desvían hacia fuera el peso de la cubierta, lo que permite muros altos con enormes vidrieras.",
+      "id": "cul-0032",
+      "options": ["Art nouveau", "Barroco", "Gótico", "Románico"],
+      "question": "Los arcos apuntados y los arbotantes son típicos de ¿qué estilo arquitectónico?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "El lapislázuli procedía sobre todo de minas de Afganistán; en el Renacimiento, el azul ultramar podía ser más caro que el oro.",
+      "id": "cul-0097",
+      "options": ["Turquesa", "Jade", "Zafiro azul", "Lapislázuli"],
+      "question": "El valioso pigmento azul ultramar se obtenía originalmente de ¿qué piedra?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Los primeros steelpans se fabricaron con bidones de petróleo en los años treinta y cuarenta, y el steelpan es el instrumento nacional de Trinidad y Tobago.",
+      "id": "cul-0062",
+      "options": [
+        "Antigua y Barbuda",
+        "San Cristóbal y Nieves",
+        "Jamaica",
+        "Trinidad y Tobago"
+      ],
+      "question": "¿En qué país se inventó el steelpan, el tambor de acero?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Mucha se hizo famoso de la noche a la mañana en 1895 con un cartel para la actriz Sarah Bernhardt en París.",
+      "id": "cul-0100",
+      "options": ["Art nouveau", "Expresionismo", "Arte pop", "Cubismo"],
+      "question": "¿Por qué estilo es más conocido el artista checo Alfons Mucha?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Händel escribió la obra entera en unos 24 días en 1741; se estrenó en Dublín en 1742.",
+      "id": "cul-0071",
+      "options": [
+        "Georg Philipp Telemann",
+        "Georg Friedrich Händel",
+        "J. S. Bach",
+        "Joseph Haydn"
+      ],
+      "question": "¿Qué compositor escribió el oratorio «El Mesías», estrenado en Dublín?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El estilo de Mondrian inspiró moda, muebles e incluso un famoso vestido de Yves Saint Laurent en 1965.",
+      "id": "cul-0068",
+      "options": [
+        "Kazimir Malévich",
+        "Piet Mondrian",
+        "Paul Klee",
+        "Vasili Kandinski"
+      ],
+      "question": "¿Qué artista es conocido por sus cuadrículas de líneas negras y bloques de colores primarios?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Ibsen es uno de los dramaturgos más representados del mundo; según muchos recuentos, solo lo supera Shakespeare.",
+      "id": "cul-0060",
+      "options": [
+        "Knut Hamsun",
+        "Bjørnstjerne Bjørnson",
+        "August Strindberg",
+        "Henrik Ibsen"
+      ],
+      "question": "¿Qué dramaturgo noruego escribió «Casa de muñecas»?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Este pequeño cuadro de 1931 mide solo unos 24 × 33 cm y cuelga en el Museo de Arte Moderno de Nueva York.",
+      "id": "cul-0025",
+      "options": ["Salvador Dalí", "René Magritte", "Max Ernst", "Joan Miró"],
+      "question": "¿Quién pintó «La persistencia de la memoria», con sus relojes blandos?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Miguel Ángel talló el David en un único bloque de mármol que otros escultores habían abandonado décadas antes.",
+      "id": "cul-0020",
+      "options": ["Miguel Ángel", "Antonio Canova", "Rafael", "Auguste Rodin"],
+      "question": "¿Quién esculpió el David de mármol de 5 metros terminado en 1504?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "«La chica de Ipanema», que debe su nombre a una playa de Río de Janeiro, se convirtió en una de las canciones más grabadas de la historia.",
+      "id": "cul-0063",
+      "options": ["Brasil", "Argentina", "Cuba", "Portugal"],
+      "question": "¿En qué país surgió la bossa nova a finales de los años cincuenta?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "El Greco empezó como pintor de iconos en Creta y trabajó después en Venecia y Roma antes de instalarse en Toledo, en España.",
+      "id": "cul-0098",
+      "options": ["Sicilia", "Chipre", "Rodas", "Creta"],
+      "question": "¿En qué isla nació el pintor El Greco?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Chopin dejó Polonia a los 20 años y nunca volvió, pero tras su muerte su corazón fue llevado a una iglesia de Varsovia.",
+      "id": "cul-0024",
+      "options": ["Francia", "Austria", "Polonia", "Hungría"],
+      "question": "¿En qué país nació el compositor Frédéric Chopin?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Un crítico usó el título en tono de burla en 1874, pero los artistas adoptaron el nombre encantados.",
+      "id": "cul-0027",
+      "options": ["Romanticismo", "Impresionismo", "Expresionismo", "Fauvismo"],
+      "question": "El cuadro de Monet «Impresión, sol naciente» dio nombre a ¿qué movimiento artístico?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Con casi 1900 años, la cúpula mide unos 43 m de diámetro, y su única luz entra por una abertura de unos 8–9 m, el óculo.",
+      "id": "cul-0065",
+      "options": [
+        "Domus Aurea",
+        "Termas de Caracalla",
+        "Basílica de Majencio",
+        "Panteón"
+      ],
+      "question": "¿Qué edificio romano tiene la mayor cúpula del mundo de hormigón sin armar?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "En las ciudades suecas, una «Lucía» encabeza una procesión de cantores vestidos de blanco que llevan luz a las oscuras mañanas de invierno.",
+      "id": "cul-0075",
+      "options": ["Suecia", "Países Bajos", "Austria", "Escocia"],
+      "question": "¿En qué país las niñas llevan coronas de velas el día de Santa Lucía, el 13 de diciembre?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "«Carmen» transcurre en Sevilla; Bizet murió solo tres meses después del estreno, antes de que se convirtiera en un éxito mundial.",
+      "id": "cul-0072",
+      "options": [
+        "Gioachino Rossini",
+        "Giuseppe Verdi",
+        "Georges Bizet",
+        "Giacomo Puccini"
+      ],
+      "question": "¿Quién compuso la ópera «Carmen»?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Escher no tenía formación académica en matemáticas, pero a los matemáticos les encanta su obra.",
+      "id": "cul-0067",
+      "options": ["El Bosco", "M. C. Escher", "Piet Mondrian", "Rembrandt"],
+      "question": "¿Qué artista neerlandés es conocido por sus escaleras imposibles y sus teselados?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Se regalan sobres rojos con dinero, y se cree que los adornos rojos ahuyentan a Nian, una bestia mítica.",
+      "id": "cul-0018",
+      "options": ["Verde", "Rojo", "Blanco", "Azul"],
+      "question": "¿Qué color se asocia tradicionalmente con la suerte en el Año Nuevo chino?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "«Cuadrado negro» se convirtió en el icono del suprematismo, un movimiento artístico basado en formas geométricas simples.",
+      "id": "cul-0104",
+      "options": [
+        "Kazimir Malévich",
+        "El Lisitski",
+        "Marc Chagall",
+        "Vasili Kandinski"
+      ],
+      "question": "¿Qué artista pintó «Cuadrado negro» en 1915?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Vermeer vivía en Delft y se cree que pintó menos de 40 obras en toda su vida.",
+      "id": "cul-0013",
+      "options": [
+        "Rembrandt van Rijn",
+        "Johannes Vermeer",
+        "Jan Steen",
+        "Frans Hals"
+      ],
+      "question": "¿Qué pintor neerlandés creó «La joven de la perla»?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Los ritmos y la danza, tan insólitos, escandalizaron tanto al público de París que los músicos apenas se oían entre sí.",
+      "id": "cul-0101",
+      "options": [
+        "Maurice Ravel",
+        "Claude Debussy",
+        "Ígor Stravinski",
+        "Serguéi Prokófiev"
+      ],
+      "question": "¿Qué compositor escribió «La consagración de la primavera», cuyo estreno en 1913 casi provocó un disturbio?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "En el Kalevala, el héroe Väinämöinen construye el primer kantele con la mandíbula de un lucio gigante.",
+      "id": "cul-0109",
+      "options": ["Finlandia", "Lituania", "Letonia", "Estonia"],
+      "question": "¿De qué país es el kantele, instrumento popular que ocupa un lugar central en su epopeya nacional?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Pooh debe su nombre en parte a una osa de verdad, Winnie, del zoo de Londres, que había llegado de Canadá.",
+      "id": "cul-0082",
+      "options": [
+        "Roald Dahl",
+        "Kenneth Grahame",
+        "Beatrix Potter",
+        "A. A. Milne"
+      ],
+      "question": "¿Qué escritor inglés creó a Winnie the Pooh?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Sax patentó el saxofón en 1846; su ciudad natal, Dinant, en Bélgica, tiene esculturas gigantes de saxofones.",
+      "id": "inv-0035",
+      "options": ["Francia", "Alemania", "Bélgica", "Austria"],
+      "question": "¿De qué país era Adolphe Sax, el inventor del saxofón?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "En el libro original de 1883, a Pinocho le crece la nariz cuando miente, y está tallado en un trozo de madera que habla.",
+      "id": "cul-0041",
+      "options": ["Italia", "Suiza", "Francia", "Alemania"],
+      "question": "¿De qué país era Carlo Collodi, el autor de «Pinocho»?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "La Mezquita tiene más de 850 columnas de jaspe, mármol y granito que sostienen arcos con franjas rojas y blancas.",
+      "id": "cul-0106",
+      "options": ["Córdoba", "Granada", "Sevilla", "Málaga"],
+      "question": "¿En qué ciudad española está la Mezquita, una famosa mezquita-catedral?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "El fado está ligado a la palabra portuguesa «saudade», una profunda añoranza de algo o alguien ausente.",
+      "id": "cul-0077",
+      "options": ["España", "Brasil", "Cabo Verde", "Portugal"],
+      "question": "El fado, un estilo de canción melancólica, ¿de qué país procede?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Astrid Lindgren inventó a Pippi en 1941 como cuento para dormir para su hija, que estaba enferma en cama.",
+      "id": "cul-0042",
+      "options": ["Noruega", "Finlandia", "Suecia", "Dinamarca"],
+      "question": "Pippi Calzaslargas fue creada por una autora de ¿qué país?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "En 1888 su esposa, Bertha Benz, lo condujo unos 100 km para demostrar que funcionaba, y compró combustible en una farmacia por el camino.",
+      "id": "inv-0005",
+      "options": [
+        "Una locomotora de vapor",
+        "Un tranvía eléctrico",
+        "Un tractor de vapor",
+        "Un coche de gasolina"
+      ],
+      "question": "¿Qué patentó Karl Benz en 1886, considerado a menudo el primero de su clase?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Una de las primeras radiografías que hizo Röntgen mostraba la mano de su esposa, con el anillo de boda claramente visible.",
+      "id": "inv-0008",
+      "options": [
+        "Thomas Edison",
+        "Wilhelm Röntgen",
+        "Marie Curie",
+        "Ernest Rutherford"
+      ],
+      "question": "¿Quién descubrió los rayos X en 1895?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "La novela transcurre en el calor del verano de San Petersburgo, y todavía se puede visitar la calle y el edificio del protagonista.",
+      "id": "cul-0079",
+      "options": [
+        "Mijaíl Bulgákov",
+        "Nikolái Gógol",
+        "Fiódor Dostoievski",
+        "Aleksandr Pushkin"
+      ],
+      "question": "¿Qué autor ruso escribió «Crimen y castigo»?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Velázquez se pintó a sí mismo en el cuadro, de pie ante un gran lienzo y mirando hacia el espectador.",
+      "id": "cul-0087",
+      "options": [
+        "Bartolomé Murillo",
+        "Francisco de Goya",
+        "Diego Velázquez",
+        "El Greco"
+      ],
+      "question": "¿Quién pintó «Las meninas»?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Los coloridos cuadros de Gauguin sobre Tahití influyeron mucho en artistas modernos como Matisse y Picasso.",
+      "id": "cul-0084",
+      "options": ["Sri Lanka", "Tahití", "Bali", "Hawái"],
+      "question": "¿A qué isla se trasladó el pintor Paul Gauguin en la década de 1890?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Leonardo probó una técnica experimental sobre la pared seca, y la pintura empezó a desconcharse cuando él aún vivía.",
+      "id": "cul-0088",
+      "options": ["Roma", "Milán", "Florencia", "Venecia"],
+      "question": "¿En qué ciudad se puede ver el mural «La última cena» de Leonardo da Vinci?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Se le ocurrió la idea viajando en un tranvía de Nueva York, cuyo conductor tenía que abrir la ventanilla una y otra vez para quitar la nieve.",
+      "id": "inv-0043",
+      "options": [
+        "El limpiaparabrisas",
+        "El cinturón de seguridad",
+        "La bocina",
+        "El retrovisor"
+      ],
+      "question": "¿Qué accesorio para coches patentó Mary Anderson en 1903?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Kafka vivía en Praga y pidió a un amigo que quemara sus manuscritos tras su muerte; el amigo se negó.",
+      "id": "cul-0080",
+      "options": [
+        "Thomas Mann",
+        "Franz Kafka",
+        "Hermann Hesse",
+        "Stefan Zweig"
+      ],
+      "question": "¿Quién escribió «La metamorfosis», en la que un hombre se despierta convertido en un insecto gigante?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "El danzón surgió de la contradanza europea en Matanzas; la primera pieza, «Las alturas de Simpson», se estrenó allí en 1879.",
+      "id": "cul-0108",
+      "options": ["Rumba", "Salsa", "Danzón", "Merengue"],
+      "question": "¿Qué baile es oficialmente el baile nacional de Cuba?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "El kintsugi trata la rotura como parte de la historia del objeto en lugar de algo que hay que ocultar.",
+      "id": "cul-0107",
+      "options": ["Kintsugi", "Sumi-e", "Kirigami", "Ikebana"],
+      "question": "¿Cómo se llama el arte japonés de reparar cerámica rota con oro?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Fahrenheit nació en Dánzig (hoy Gdańsk) y pasó la mayor parte de su vida laboral en los Países Bajos.",
+      "id": "inv-0038",
+      "options": [
+        "Ole Christensen Rømer",
+        "Galileo Galilei",
+        "Daniel Fahrenheit",
+        "Lord Kelvin"
+      ],
+      "question": "¿Qué científico inventó el termómetro de mercurio y propuso una escala de temperatura en 1724?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Toda la novela sucede en un solo día, el 16 de junio de 1904, que los aficionados celebran cada año como el «Bloomsday».",
+      "id": "cul-0081",
+      "options": ["Londres", "París", "Trieste", "Dublín"],
+      "question": "¿En qué ciudad transcurre la novela «Ulises» de James Joyce?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Nobel usó la fortuna que le dieron la dinamita y otros inventos para financiar los Premios Nobel, concedidos por primera vez en 1901.",
+      "id": "inv-0007",
+      "options": [
+        "Alfred Nobel",
+        "Anders Celsius",
+        "Jöns Jacob Berzelius",
+        "Carlos Linneo"
+      ],
+      "question": "¿Qué químico sueco inventó la dinamita?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "La señal, la letra «S» en morse, viajó de Cornualles a Terranova, unos 3500 km.",
+      "id": "inv-0040",
+      "options": [
+        "Reginald Fessenden",
+        "Heinrich Hertz",
+        "Nikola Tesla",
+        "Guglielmo Marconi"
+      ],
+      "question": "¿Quién logró la primera transmisión de radio transatlántica, en 1901?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "De los cerca de 140 cuadros de Frida Kahlo, alrededor de 55 son autorretratos.",
+      "id": "cul-0034",
+      "options": [
+        "Leonora Carrington",
+        "Georgia O’Keeffe",
+        "Tamara de Lempicka",
+        "Frida Kahlo"
+      ],
+      "question": "¿Qué pintora mexicana es famosa por sus vívidos autorretratos?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Fíjate bien: el pequeño pico que se ve al fondo del grabado es el monte Fuji.",
+      "id": "cul-0086",
+      "options": ["Okinawa", "Hokkaido", "Kanagawa", "Kyushu"],
+      "question": "¿Frente a qué costa se sitúa el famoso grabado de Hokusai «La gran ola»?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "El primer libro de los Mumin apareció en 1945; Tove Jansson escribía en sueco, la lengua de su familia.",
+      "id": "cul-0043",
+      "options": ["Snorks", "Wombles", "Pitufos", "Mumin"],
+      "question": "¿Cómo se llaman las criaturas blancas y redondas, parecidas a troles, creadas por la escritora finlandesa Tove Jansson?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "La escala de Celsius iba «al revés»; poco después de su muerte se invirtió y quedó como la que usamos hoy.",
+      "id": "inv-0080",
+      "options": [
+        "Punto de ebullición del agua",
+        "Temperatura corporal",
+        "Punto de congelación del agua",
+        "Cero absoluto"
+      ],
+      "question": "En la escala original de Anders Celsius, de 1742, ¿qué marcaban los 0 grados?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "Brueghel la pintó como parte de una serie sobre las estaciones; cuelga en el Museo de Historia del Arte de Viena.",
+      "id": "cul-0110",
+      "options": [
+        "Pedro Pablo Rubens",
+        "Brueghel el Viejo",
+        "Jacob Jordaens",
+        "Antoon van Dyck"
+      ],
+      "question": "¿Qué pintor flamenco creó la escena invernal «Cazadores en la nieve» (1565)?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Las primeras brújulas chinas usaban una cuchara de magnetita que giraba sobre una placa lisa de bronce para señalar el sur.",
+      "id": "inv-0004",
+      "options": ["China", "Persia", "Grecia", "Egipto"],
+      "question": "¿Dónde se fabricaron las primeras brújulas, que usaban una cuchara de magnetita?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "La primera imagen televisiva de Baird fue la cabeza de un muñeco de ventrílocuo al que llamaba «Stooky Bill».",
+      "id": "inv-0041",
+      "options": [
+        "Philo Farnsworth",
+        "John Logie Baird",
+        "Paul Nipkow",
+        "Vladímir Zworykin"
+      ],
+      "question": "¿Quién hizo la primera demostración pública de un televisor en funcionamiento, en Londres en 1926?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "En un auténtico fresco, el pigmento pasa a formar parte de la pared al secarse el yeso, y por eso los frescos duran siglos.",
+      "id": "cul-0085",
+      "options": ["Fresco", "Gouache", "Mosaico", "Témpera"],
+      "question": "¿Cómo se llama la pintura hecha sobre una capa de yeso todavía húmeda?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Lipperhey era un fabricante de gafas neerlandés; un año después, Galileo construyó su propio telescopio mejorado.",
+      "id": "inv-0081",
+      "options": [
+        "Isaac Newton",
+        "Hans Lipperhey",
+        "Christiaan Huygens",
+        "Galileo Galilei"
+      ],
+      "question": "¿Quién solicitó en 1608 la primera patente conocida de un telescopio?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "La pirámide se inauguró en 1989 como nueva entrada principal del museo y causó polémica antes de convertirse en un emblema.",
+      "id": "cul-0083",
+      "options": ["Renzo Piano", "I. M. Pei", "Norman Foster", "Jean Nouvel"],
+      "question": "¿Qué arquitecto diseñó la pirámide de cristal del Louvre?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 2,
+      "explanation": "Sherezade deja cada noche la historia en vilo para que el rey la mantenga con vida y así pueda oír el final.",
+      "id": "cul-0078",
+      "options": [
+        "Aladino",
+        "El califa Harún al-Rashid",
+        "Simbad",
+        "Sherezade"
+      ],
+      "question": "¿Quién cuenta las historias de «Las mil y una noches»?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "En la novela de 1873, Phileas Fogg gana su apuesta porque, al dar la vuelta al mundo hacia el este, gana un día.",
+      "id": "cul-0039",
+      "options": [
+        "Julio Verne",
+        "H. G. Wells",
+        "Alejandro Dumas",
+        "Émile Zola"
+      ],
+      "question": "¿Quién escribió «La vuelta al mundo en ochenta días»?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Su máquina diferencial n.º 2 se construyó por fin a partir de sus planos en 1991, y funcionó.",
+      "id": "inv-0036",
+      "options": [
+        "Un telégrafo eléctrico",
+        "Un ordenador mecánico",
+        "Una turbina de vapor",
+        "Una máquina de escribir"
+      ],
+      "question": "¿Qué diseñó Charles Babbage en el siglo XIX?"
+    },
+    {
+      "answer": 0,
+      "category": "culture",
+      "difficulty": 3,
+      "explanation": "El apodo «Claro de luna» se lo puso un crítico tras la muerte de Beethoven; él la llamó simplemente Sonata quasi una fantasia.",
+      "id": "cul-0105",
+      "options": ["Beethoven", "Mozart", "Mendelssohn", "Chopin"],
+      "question": "¿Qué compositor escribió la sonata «Claro de luna»?"
+    },
+    {
+      "answer": 1,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Las columnas del Partenón se ensanchan ligeramente en el centro, un truco llamado éntasis que hace que parezcan perfectamente rectas.",
+      "id": "cul-0033",
+      "options": [
+        "Templo de Zeus Olímpico",
+        "Partenón",
+        "Panteón",
+        "Templo de Hefesto"
+      ],
+      "question": "¿Qué templo de la Acrópolis de Atenas estaba dedicado a la diosa Atenea?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "El arte pop usaba imágenes cotidianas de la publicidad y los cómics; Warhol pintó 32 latas de sopa, una por cada sabor.",
+      "id": "cul-0035",
+      "options": ["Futurismo", "Surrealismo", "Arte pop", "Cubismo"],
+      "question": "¿A qué movimiento artístico pertenecen los cuadros de latas de sopa de Andy Warhol?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Tintín apareció por primera vez en 1929; Bruselas tiene toda una ruta de murales de cómic del tamaño de edificios.",
+      "id": "cul-0044",
+      "options": ["Suiza", "Países Bajos", "Bélgica", "Francia"],
+      "question": "Tintín, el héroe de cómic, fue creado por Hergé, un artista de ¿qué país?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Hizo su primer filtro con una hoja del papel secante del cuaderno escolar de su hijo y un cazo de latón agujereado.",
+      "id": "inv-0042",
+      "options": [
+        "El hervidor eléctrico",
+        "El molinillo de café eléctrico",
+        "La cafetera exprés",
+        "El filtro de café de papel"
+      ],
+      "question": "¿Qué inventó Melitta Bentz en Alemania en 1908?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "El vehículo de tres ruedas de Cugnot se construyó para arrastrar cañones y alcanzaba más o menos la velocidad de una persona caminando.",
+      "id": "inv-0075",
+      "options": ["Vapor", "Caballos", "Electricidad", "Gasolina"],
+      "question": "¿Qué impulsaba el vehículo de carretera de Nicolas-Joseph Cugnot de 1769?"
+    },
+    {
+      "answer": 2,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Cuando se escribieron las historias, el 221B no existía; hoy el Museo de Sherlock Holmes muestra ese número.",
+      "id": "cul-0037",
+      "options": [
+        "Downing Street",
+        "Oxford Street",
+        "Baker Street",
+        "Fleet Street"
+      ],
+      "question": "¿En qué calle de Londres vivía Sherlock Holmes, en el número 221B?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Según se cuenta, las primeras palabras de Bell por teléfono fueron: «Señor Watson, venga aquí, quiero verle».",
+      "id": "inv-0002",
+      "options": [
+        "Thomas Edison",
+        "Samuel Finley Breese Morse",
+        "Alexander Graham Bell",
+        "Guglielmo Marconi"
+      ],
+      "question": "¿Quién recibió en 1876 la primera patente estadounidense del teléfono?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Philips permitió a otros fabricantes usar el formato gratis, lo que ayudó a que se extendiera por todo el mundo.",
+      "id": "inv-0082",
+      "options": ["BASF", "Philips", "Grundig", "Sony"],
+      "question": "¿Qué empresa presentó en 1963 el casete de audio compacto?"
+    },
+    {
+      "answer": 3,
+      "category": "culture",
+      "difficulty": 1,
+      "explanation": "Los servicios meteorológicos de Japón publican cada año una previsión del «frente de los cerezos» a medida que la floración avanza hacia el norte.",
+      "id": "cul-0036",
+      "options": ["Tanabata", "Obon", "Setsubun", "Hanami"],
+      "question": "¿Qué costumbre japonesa consiste en hacer pícnics bajo los cerezos en flor en primavera?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Se imprimieron unos 180 ejemplares de la Biblia de Gutenberg; se conservan 49, algunos solo en parte.",
+      "id": "inv-0001",
+      "options": [
+        "Laurens Janszoon Coster",
+        "Johannes Gutenberg",
+        "William Caxton",
+        "Aldo Manucio"
+      ],
+      "question": "¿Quién introdujo en Europa, hacia 1450, la imprenta de tipos móviles de metal?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Hallado en un naufragio en 1901, tenía engranajes de bronce que podían predecir eclipses y las posiciones del Sol y la Luna.",
+      "id": "inv-0037",
+      "options": [
+        "Pila de Bagdad",
+        "Eolípila de Herón",
+        "Órgano hidráulico (hydraulis)",
+        "Mecanismo de Anticitera"
+      ],
+      "question": "¿Qué dispositivo de la antigua Grecia se considera el ordenador analógico más antiguo que se conoce?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Lo llamó «gravicembalo col piano e forte»: un clavicémbalo que podía tocar tanto suave como fuerte.",
+      "id": "inv-0092",
+      "options": [
+        "Domenico Scarlatti",
+        "Bartolomeo Cristofori",
+        "Giovanni Battista Martini",
+        "Antonio Stradivari"
+      ],
+      "question": "¿Qué fabricante de instrumentos italiano inventó el piano hacia 1700?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "La polilla quedó pegada con cinta en el cuaderno de registro del Harvard Mark II; el equipo de Grace Hopper ayudó a hacer famosa la historia.",
+      "id": "inv-0028",
+      "options": ["Un escarabajo", "Una polilla", "Una cucaracha", "Una araña"],
+      "question": "En 1947, unos ingenieros encontraron un «bug» (en inglés, «bicho») real que causaba un fallo en un ordenador. ¿Qué era?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Zuse construyó su primer ordenador, la Z1, en el salón de la casa de sus padres en Berlín.",
+      "id": "inv-0089",
+      "options": [
+        "Konrad Zuse",
+        "Howard Aiken",
+        "John von Neumann",
+        "Alan Turing"
+      ],
+      "question": "¿Quién construyó en 1941 la Z3, el primer ordenador programable y totalmente automático que funcionó?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "La pascalina podía sumar y restar; hoy se conservan unas nueve.",
+      "id": "inv-0051",
+      "options": [
+        "Un telescopio",
+        "Una calculadora mecánica",
+        "Una máquina de vapor",
+        "Un reloj de péndulo mecánico"
+      ],
+      "question": "¿Qué construyó Blaise Pascal de adolescente para ayudar a su padre, recaudador de impuestos?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Dunlop era veterinario en Belfast y quería que el triciclo de su hijo rodara con más suavidad por las calles llenas de baches; patentó la idea en 1888.",
+      "id": "inv-0084",
+      "options": ["Caballito de balancín", "Cochecito", "Triciclo", "Carreta"],
+      "question": "John Boyd Dunlop desarrolló en 1888 un neumático práctico lleno de aire para ¿qué vehículo de su hijo?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "En una feria de Nueva York en 1854, Otis mandó cortar el cable de su plataforma mientras estaba subido en ella, y esta se detuvo sin peligro.",
+      "id": "inv-0058",
+      "options": [
+        "El ascensor",
+        "La escalera mecánica",
+        "La puerta giratoria",
+        "La grúa"
+      ],
+      "question": "¿Qué máquina hizo segura Elisha Otis en la década de 1850 con un freno automático?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "ENIAC llenaba una sala grande y usaba unas 18 000 válvulas de vacío.",
+      "id": "inv-0088",
+      "options": [
+        "Unas 27 toneladas",
+        "Unas 100 toneladas",
+        "Unas 3 toneladas",
+        "Unos 300 kg"
+      ],
+      "question": "¿Cuánto pesaba aproximadamente ENIAC, el pionero ordenador electrónico terminado en 1945?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Una malla metálica alrededor de la llama impedía que esta prendiera el gas inflamable de la mina.",
+      "id": "inv-0087",
+      "options": [
+        "Fareros",
+        "Buzos",
+        "Maquinistas de tren",
+        "Mineros del carbón"
+      ],
+      "question": "¿Para quién se diseñó la lámpara de seguridad de Humphry Davy de 1815?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "El péndulo hizo que los relojes tuvieran un error de unos 15 segundos al día, en lugar de unos 15 minutos.",
+      "id": "inv-0049",
+      "options": [
+        "Galileo Galilei",
+        "Antonie van Leeuwenhoek",
+        "Robert Hooke",
+        "Christiaan Huygens"
+      ],
+      "question": "¿Qué científico neerlandés construyó el primer reloj de péndulo, en 1656?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Eligió la @ porque se usaba poco y separaba claramente el nombre del usuario del nombre del ordenador.",
+      "id": "inv-0063",
+      "options": ["% (porcentaje)", "@ (arroba)", "# (almohadilla)", "& (et)"],
+      "question": "¿Qué símbolo incorporó Ray Tomlinson a las direcciones de correo electrónico en 1971?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "El primer walkman tenía dos tomas de auriculares para que dos personas pudieran escuchar a la vez.",
+      "id": "inv-0010",
+      "options": ["Toshiba", "Panasonic", "Sony", "Philips"],
+      "question": "¿Qué empresa lanzó en 1979 el walkman, el reproductor portátil de casetes?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Diesel patentó su motor en 1892, y este tipo de motor aún lleva su nombre; en la Exposición Universal de París de 1900, uno funcionó con aceite de cacahuete.",
+      "id": "inv-0014",
+      "options": [
+        "Nikolaus Otto",
+        "Rudolf Diesel",
+        "Gottlieb Daimler",
+        "Wilhelm Maybach"
+      ],
+      "question": "¿Quién inventó en la década de 1890 el motor que enciende el combustible solo por compresión?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Una esclusa es una cámara con compuertas en la que se sube o se baja el nivel del agua para elevar o descender un barco.",
+      "id": "inv-0025",
+      "options": ["Una esclusa", "Un embarcadero", "Una presa", "Un muelle"],
+      "question": "¿Qué permite a los barcos pasar de un nivel de agua a otro en un canal?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Un pararrayos ofrece al rayo un camino seguro hasta el suelo a través de un cable metálico.",
+      "id": "inv-0019",
+      "options": [
+        "El pararrayos",
+        "La veleta",
+        "La contraventana",
+        "La alarma de incendios"
+      ],
+      "question": "¿Qué inventó Benjamin Franklin para proteger los edificios durante las tormentas?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "La señal de gas, cerca del Parlamento, la accionaba a mano un agente de policía.",
+      "id": "inv-0064",
+      "options": ["París", "Nueva York", "Londres", "Berlín"],
+      "question": "¿En qué ciudad se instalaron los primeros semáforos, en 1868?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Pázhitnov hizo el Tetris en un ordenador Elektronika 60; el nombre combina «tetra» (cuatro) con el tenis, su deporte favorito.",
+      "id": "inv-0057",
+      "options": ["Tokio", "Kiev", "Budapest", "Moscú"],
+      "question": "¿En qué ciudad creó Alekséi Pázhitnov el Tetris en 1984?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "La cadena de montaje redujo el tiempo de fabricación de un Modelo T de unas 12 horas a unos 90 minutos.",
+      "id": "inv-0015",
+      "options": ["Modelo T", "Mustang", "Modelo A", "Thunderbird"],
+      "question": "¿Para qué coche introdujo Henry Ford la cadena de montaje móvil en 1913?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Quien la montaba se impulsaba con los pies, igual que en las bicicletas sin pedales de los niños de hoy.",
+      "id": "inv-0059",
+      "options": ["Ruedas", "Pedales", "Sillín", "Manillar"],
+      "question": "¿Qué le faltaba a la «máquina andante» de Karl Drais de 1817, antecesora de la bicicleta?"
+    },
+    {
+      "answer": 1,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "En 1843, Lovelace predijo además que algún día esas máquinas podrían componer música.",
+      "id": "inv-0009",
+      "options": [
+        "Mary Somerville",
+        "Ada Lovelace",
+        "Grace Hopper",
+        "Hedy Lamarr"
+      ],
+      "question": "¿Quién escribió lo que suele considerarse el primer programa informático, para la máquina analítica de Babbage?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 2,
+      "explanation": "Tesla también desarrolló partes clave del sistema de corriente alterna (CA) que se usa en todo el mundo.",
+      "id": "inv-0061",
+      "options": [
+        "Michael Faraday",
+        "George Westinghouse",
+        "Nikola Tesla",
+        "Thomas Edison"
+      ],
+      "question": "La unidad del SI de densidad de flujo magnético lleva el nombre de ¿qué inventor?"
+    },
+    {
+      "answer": 3,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "El condensador separado de Watt hizo las máquinas de vapor mucho más eficientes; la unidad de potencia, el vatio, lleva su nombre.",
+      "id": "inv-0011",
+      "options": [
+        "La hiladora Jenny",
+        "La imprenta",
+        "El telégrafo",
+        "La máquina de vapor"
+      ],
+      "question": "¿Qué invento mejoró mucho James Watt en las décadas de 1760 y 1770?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Las llaves de Johansson se vendieron en todo el mundo con la marca Bahco; décadas antes, un inglés había patentado una llave ajustable anterior.",
+      "id": "inv-0091",
+      "options": ["Noruega", "Finlandia", "Suecia", "Dinamarca"],
+      "question": "¿En qué país patentó Johan Petter Johansson en 1891 su famosa llave ajustable?"
+    },
+    {
+      "answer": 2,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Sus diminutas lentes hechas a mano aumentaban más de 200 veces, y fue el primero en ver bacterias.",
+      "id": "inv-0016",
+      "options": ["Termómetro", "Barómetro", "Microscopio", "Telescopio"],
+      "question": "Antonie van Leeuwenhoek es famoso por perfeccionar ¿qué instrumento?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 3,
+      "explanation": "Una moneda que caía sobre una pequeña placa abría una válvula que soltaba una cantidad medida de agua.",
+      "id": "inv-0090",
+      "options": ["Agua", "Grano", "Aceite de oliva", "Vino"],
+      "question": "¿Qué dispensaba la máquina de monedas de Herón de Alejandría en el siglo I?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Los molinos bombeaban el agua de los pólderes, situados a poca altura; los 19 molinos de Kinderdijk son Patrimonio de la Humanidad de la UNESCO.",
+      "id": "inv-0026",
+      "options": [
+        "Drenar el agua de la tierra",
+        "Generar electricidad",
+        "Hacer señales a los barcos",
+        "Alimentar las luces del puerto"
+      ],
+      "question": "¿Cuál era la función principal de la mayoría de los molinos de viento históricos de los Países Bajos?"
+    }
+  ]
+}

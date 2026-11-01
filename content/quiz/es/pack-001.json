@@ -1,0 +1,2551 @@
+{
+  "id": "pack-001",
+  "lang": "es",
+  "questions": [
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El Pacífico cubre alrededor de un tercio de la superficie terrestre, más que toda la tierra firme del planeta junta.",
+      "id": "geo-0001",
+      "options": [
+        "Océano Austral",
+        "Océano Índico",
+        "Océano Atlántico",
+        "Océano Pacífico"
+      ],
+      "question": "¿Cuál es el océano más grande de la Tierra?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Alrededor de un tercio de Australia es desierto y otra gran parte es semiárida; solo la Antártida, sin habitantes permanentes, es más seca.",
+      "id": "geo-0008",
+      "options": ["África", "Sudamérica", "Australia", "Asia"],
+      "question": "¿Cuál es el continente habitado más seco?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Los Andes recorren unos 7000 km a lo largo del lado occidental de Sudamérica, atravesando siete países.",
+      "id": "geo-0011",
+      "options": ["Andes", "Urales", "Himalaya", "Montañas Rocosas"],
+      "question": "¿Cuál es la cordillera continental más larga del mundo?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "A través de la Guayana Francesa, Francia comparte unos 730 km de frontera con Brasil, más que con España (unos 620 km).",
+      "id": "geo-0003",
+      "options": ["Francia", "España", "Portugal", "Países Bajos"],
+      "question": "¿Qué país tiene con Brasil su frontera terrestre más larga?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El Everest, con unos 8849 m, es el punto más alto sobre el nivel del mar; el Himalaya todavía crece unos milímetros al año.",
+      "id": "geo-0004",
+      "options": ["Alpes", "Himalaya", "Karakórum", "Andes"],
+      "question": "¿En qué cordillera está el monte Everest?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "A unos 3800 m sobre el nivel del mar, el Titicaca suele considerarse el lago navegable más alto del mundo.",
+      "id": "geo-0014",
+      "options": ["Chile", "Argentina", "Ecuador", "Bolivia"],
+      "question": "El lago Titicaca lo comparten Perú y ¿qué otro país?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El Nilo fluye hacia el norte a través de El Cairo hasta el Mediterráneo; casi toda la población de Egipto vive cerca de sus orillas.",
+      "id": "geo-0005",
+      "options": ["Níger", "Nilo", "Éufrates", "Congo"],
+      "question": "¿Qué río atraviesa El Cairo?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Las algas que prosperan en su agua tan salada tiñen el lago de rosa, y los trabajadores locales extraen a mano la sal de su fondo.",
+      "id": "geo-0012",
+      "options": ["Malí", "Chad", "Senegal", "Níger"],
+      "question": "El lago Retba, un lago rosa cerca de Dakar, ¿en qué país está?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Canadá tiene cientos de miles de lagos de más de 10 hectáreas, muchos de ellos excavados por los glaciares de la Edad de Hielo.",
+      "id": "geo-0017",
+      "options": ["Suecia", "Rusia", "Finlandia", "Canadá"],
+      "question": "¿Qué país tiene más lagos que ningún otro?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Kioto fue la residencia del emperador desde 794 hasta 1868, cuando la corte se trasladó a Edo, que pasó a llamarse Tokio.",
+      "id": "geo-0018",
+      "options": ["Kamakura", "Nara", "Osaka", "Kioto"],
+      "question": "¿Qué ciudad japonesa fue la capital imperial durante más de 1000 años antes que Tokio?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Los dos ríos fluyen uno junto al otro con colores distintos antes de mezclarse; en la época de crecidas, el Nilo Azul aporta la mayor parte del agua.",
+      "id": "geo-0037",
+      "options": ["El Cairo", "Adís Abeba", "Jartum", "Yuba"],
+      "question": "¿En qué capital se unen el Nilo Azul y el Nilo Blanco?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Venecia se extiende sobre 118 islas unidas por unos 400 puentes, y sus edificios se apoyan en pilotes de madera clavados en el fango.",
+      "id": "geo-0009",
+      "options": ["Venecia", "Génova", "Trieste", "Nápoles"],
+      "question": "¿Qué ciudad italiana está construida sobre más de 100 islotes en una laguna?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El Volga recorre unos 3530 km por Rusia y desemboca en el mar Caspio, no en ningún océano.",
+      "id": "geo-0019",
+      "options": ["Volga", "Dniéper", "Rin", "Danubio"],
+      "question": "¿Cuál es el río más largo de Europa?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Con más de 2300 km de longitud, la Gran Barrera de Coral es el mayor sistema de arrecifes del mundo y puede verse desde el espacio.",
+      "id": "geo-0010",
+      "options": ["Australia", "Indonesia", "Filipinas", "Nueva Zelanda"],
+      "question": "¿Frente a la costa de qué país se encuentra la Gran Barrera de Coral?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El Danubio pasa por 10 países o junto a ellos, y por cuatro capitales: Viena, Bratislava, Budapest y Belgrado.",
+      "id": "geo-0020",
+      "options": ["Rin", "Danubio", "Volga", "Elba"],
+      "question": "¿Qué río europeo atraviesa más países?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "En su parte más angosta, el estrecho de Gibraltar mide solo unos 14 km, y en días despejados se ve Marruecos desde España.",
+      "id": "geo-0013",
+      "options": [
+        "Estrecho de Ormuz",
+        "Estrecho de Mesina",
+        "Estrecho de Gibraltar",
+        "Estrecho del Bósforo"
+      ],
+      "question": "¿Qué estrecho separa Europa de África en su punto más cercano?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El salto Ángel cae 979 m desde una montaña de cima plana; gran parte del agua se convierte en bruma antes de llegar abajo.",
+      "id": "geo-0023",
+      "options": ["Guyana", "Venezuela", "Colombia", "Brasil"],
+      "question": "El salto Ángel, la cascada ininterrumpida más alta del mundo, ¿en qué país está?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El Sahara tiene aproximadamente el tamaño de Estados Unidos o China; solo los desiertos fríos de la Antártida y el Ártico son mayores.",
+      "id": "geo-0015",
+      "options": ["Kalahari", "Atacama", "Gobi", "Sahara"],
+      "question": "¿Cuál es el desierto cálido más grande del mundo?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Por ley, Suiza no tiene capital oficial; Berna es la sede del gobierno y se la conoce como la «ciudad federal».",
+      "id": "geo-0052",
+      "options": ["Berna", "Ginebra", "Basilea", "Zúrich"],
+      "question": "¿Qué ciudad es la «ciudad federal» y sede del gobierno de Suiza?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El Kilimanjaro alcanza 5895 m y es la montaña aislada más alta del mundo, con glaciares justo al sur del ecuador.",
+      "id": "geo-0021",
+      "options": ["Tanzania", "Etiopía", "Uganda", "Kenia"],
+      "question": "El Kilimanjaro, la montaña más alta de África, ¿en qué país está?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Abuya, una ciudad planificada en el centro del país, sustituyó oficialmente a la costera Lagos como capital en 1991.",
+      "id": "geo-0029",
+      "options": ["Lagos", "Abuya", "Ibadán", "Kano"],
+      "question": "¿Cuál es la capital de Nigeria?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Machu Picchu se alza a unos 2430 m sobre una cresta junto al río Urubamba y fue poco conocida fuera de la región hasta 1911.",
+      "id": "geo-0022",
+      "options": ["Bolivia", "Perú", "Colombia", "Ecuador"],
+      "question": "Machu Picchu, la ciudadela inca del siglo XV, ¿en qué país está?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Aunque Casablanca es la mayor ciudad de Marruecos y su centro de negocios, el palacio real y el parlamento están en Rabat.",
+      "id": "geo-0030",
+      "options": ["Marrakech", "Rabat", "Casablanca", "Fez"],
+      "question": "¿Cuál es la capital de Marruecos?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El Tigris y el Éufrates se unen más adelante para formar el Shatt al-Arab; la tierra entre ambos es Mesopotamia, «entre ríos».",
+      "id": "geo-0054",
+      "options": ["Tigris", "Indo", "Éufrates", "Jordán"],
+      "question": "¿Qué río atraviesa la ciudad de Bagdad?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Wellington está a unos 41° S y es famosa por los fuertes vientos que se encajonan en el estrecho de Cook.",
+      "id": "geo-0031",
+      "options": ["Buenos Aires", "Wellington", "Montevideo", "Canberra"],
+      "question": "¿Cuál es la capital de un Estado soberano situada más al sur?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Las islas de Indonesia se extienden unos 5000 km de este a oeste, más que el ancho de la parte continental de Estados Unidos.",
+      "id": "geo-0026",
+      "options": ["Malasia", "Filipinas", "Japón", "Indonesia"],
+      "question": "¿Qué país es el mayor Estado archipelágico del mundo, con unas 17 000 islas?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El monte Fuji, de 3776 m, es un volcán activo cuya última erupción fue en 1707; en días despejados se ve desde Tokio.",
+      "id": "geo-0055",
+      "options": ["Kyushu", "Shikoku", "Hokkaido", "Honshu"],
+      "question": "¿En cuál de las islas principales de Japón está el monte Fuji?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "La reina Victoria eligió Ottawa como capital en 1857, en parte porque estaba entre el Canadá anglófono y el francófono.",
+      "id": "geo-0027",
+      "options": ["Toronto", "Vancouver", "Montreal", "Ottawa"],
+      "question": "¿Cuál es la capital de Canadá?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "San Marino afirma ser la república más antigua que aún existe; según la tradición, se fundó en el año 301.",
+      "id": "geo-0034",
+      "options": ["Malta", "Andorra", "Mónaco", "San Marino"],
+      "question": "¿Qué pequeña república está totalmente rodeada por Italia?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ankara sustituyó a Estambul como capital en 1923, cuando se fundó la República de Turquía.",
+      "id": "geo-0028",
+      "options": ["Esmirna", "Bursa", "Ankara", "Estambul"],
+      "question": "¿Cuál es la capital de Turquía?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Algunas estaciones meteorológicas del Atacama nunca han registrado lluvia, y la NASA prueba allí sus vehículos para Marte.",
+      "id": "geo-0035",
+      "options": ["Chile", "Argentina", "Perú", "Bolivia"],
+      "question": "El Atacama, el desierto no polar más seco de la Tierra, ¿en qué país está principalmente?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El lago Ladoga, cerca de San Petersburgo, ocupa unos 17 700 km² y tiene alrededor de 660 islas.",
+      "id": "geo-0056",
+      "options": ["Lago Ladoga", "Lago Vänern", "Lago Lemán", "Lago Onega"],
+      "question": "Sin contar el mar Caspio, ¿cuál es el lago más grande de Europa?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "La línea del ecuador cruza el país justo al norte de su capital, Quito; en español el país y la línea llevan el mismo nombre.",
+      "id": "geo-0032",
+      "options": [
+        "El trópico de Cáncer",
+        "El meridiano de Greenwich",
+        "El ecuador",
+        "El trópico de Capricornio"
+      ],
+      "question": "Un país sudamericano toma su nombre de una línea geográfica que lo atraviesa. ¿Cuál es esa línea?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El abismo Challenger tiene unos 10 900 m de profundidad; si se colocara allí el Everest, su cima quedaría a más de 2 km bajo el agua.",
+      "id": "geo-0043",
+      "options": [
+        "Fosa de Tonga",
+        "Fosa de Puerto Rico",
+        "Fosa de las Marianas",
+        "Fosa de Java"
+      ],
+      "question": "El punto más profundo conocido de los océanos, el abismo Challenger, ¿en qué fosa se encuentra?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Brasil ocupa casi la mitad de Sudamérica y limita con todos los países sudamericanos excepto Chile y Ecuador.",
+      "id": "geo-0036",
+      "options": ["Colombia", "Brasil", "Perú", "Argentina"],
+      "question": "¿Cuál es el país más grande de Sudamérica por superficie?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "La capital de Andorra, Andorra la Vieja, está a unos 1023 m de altitud, lo que la convierte en la capital más alta de Europa.",
+      "id": "geo-0046",
+      "options": ["Andorra", "San Marino", "Mónaco", "Liechtenstein"],
+      "question": "¿Qué microestado se encuentra en lo alto de los Pirineos?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El río Okavango se dispersa y se evapora en el Kalahari, creando un humedal estacional repleto de fauna.",
+      "id": "geo-0060",
+      "options": ["Angola", "Zambia", "Botsuana", "Namibia"],
+      "question": "El delta del Okavango, un delta interior que nunca llega al mar, ¿en qué país está?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El lago Victoria, compartido por Uganda, Kenia y Tanzania, es el lago tropical más grande del mundo.",
+      "id": "geo-0039",
+      "options": [
+        "Lago Malaui",
+        "Lago Victoria",
+        "Lago Tanganica",
+        "Lago Chad"
+      ],
+      "question": "¿Cuál es el lago más grande de África?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "La isla de Pascua está a unos 3500 km de la costa de Sudamérica, una de las islas habitadas más remotas de la Tierra.",
+      "id": "geo-0048",
+      "options": ["Ecuador", "Perú", "Chile", "Nueva Zelanda"],
+      "question": "La isla de Pascua (Rapa Nui), en el Pacífico Sur, ¿a qué país pertenece?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El Amazonas vierte tanta agua dulce en el Atlántico que el mar es notablemente menos salado lejos de la costa.",
+      "id": "geo-0040",
+      "options": ["Nilo", "Yangtsé", "Amazonas", "Congo"],
+      "question": "¿Qué río lleva más agua que ningún otro en la Tierra?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Pangea reunía casi toda la tierra firme del planeta; las costas de África y Sudamérica, que encajan entre sí, son un vestigio de aquella unión.",
+      "id": "geo-0049",
+      "options": ["Gondwana", "Laurasia", "Rodinia", "Pangea"],
+      "question": "¿Cómo se llama el supercontinente que empezó a fragmentarse hace unos 200 millones de años?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Un país doblemente sin litoral solo está rodeado por otros países sin salida al mar, así que para llegar al mar hay que cruzar dos fronteras.",
+      "id": "geo-0061",
+      "options": ["Andorra", "Austria", "Liechtenstein", "Suiza"],
+      "question": "Uzbekistán es uno de los dos únicos países doblemente sin litoral. ¿Cuál es el otro?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Viene de Geysir, en el suroeste de Islandia; su nombre está emparentado con un verbo islandés que significa «brotar a chorros».",
+      "id": "geo-0041",
+      "options": ["Islandia", "Nueva Zelanda", "Noruega", "Japón"],
+      "question": "La palabra «géiser» procede de una fuente termal de ¿qué país?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Ámsterdam es la capital constitucional de los Países Bajos, pero el parlamento, el gobierno y el despacho del rey están en La Haya.",
+      "id": "geo-0051",
+      "options": ["Róterdam", "Utrecht", "La Haya", "Ámsterdam"],
+      "question": "¿En qué ciudad neerlandesa tienen su sede el parlamento y el gobierno del país?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El Sognefjord penetra más de 200 km tierra adentro y en algunos puntos supera los 1300 m de profundidad.",
+      "id": "geo-0042",
+      "options": ["Dinamarca", "Islandia", "Suecia", "Noruega"],
+      "question": "¿En qué país están el Geirangerfjord y el Sognefjord?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Con unos 6300 km, el Yangtsé es el río más largo que discurre por completo dentro de un solo país, China.",
+      "id": "geo-0053",
+      "options": ["Ganges", "Río Amarillo", "Yangtsé", "Mekong"],
+      "question": "¿Cuál es el río más largo de Asia?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El nombre describe la rugiente nube de agua pulverizada, que en la estación de lluvias puede elevarse más de 400 m.",
+      "id": "geo-0065",
+      "options": [
+        "La niebla que brilla",
+        "El río que cae",
+        "El humo que truena",
+        "El agua que canta"
+      ],
+      "question": "¿Qué significa Mosi-oa-Tunya, el nombre local de las cataratas Victoria?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "África tiene 54 Estados soberanos reconocidos internacionalmente, más de la cuarta parte de todos los países.",
+      "id": "geo-0044",
+      "options": ["Europa", "Asia", "Sudamérica", "África"],
+      "question": "¿Qué continente tiene más países?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El Adriático es el brazo más septentrional del Mediterráneo y es conocido por sus aguas muy cristalinas en la costa croata.",
+      "id": "geo-0057",
+      "options": ["Mar Tirreno", "Mar Jónico", "Mar Egeo", "Mar Adriático"],
+      "question": "¿Qué mar se encuentra entre Italia y la península balcánica?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El centro histórico de Praga sobrevivió casi intacto al siglo XX y es Patrimonio de la Humanidad de la UNESCO.",
+      "id": "geo-0058",
+      "options": ["Brujas", "Praga", "Viena", "Cracovia"],
+      "question": "¿Qué capital europea es conocida como la «ciudad de las cien torres»?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El canal de Kiel une el mar del Norte con el Báltico y ahorra a los barcos unos 460 km de rodeo por la península danesa.",
+      "id": "geo-0079",
+      "options": ["Alemania", "Dinamarca", "Países Bajos", "Suecia"],
+      "question": "El canal de Kiel, una de las vías navegables artificiales más transitadas del mundo, ¿en qué país está?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Las islas están a unos 1000 km de la costa, y su fauna única inspiró las ideas de Charles Darwin sobre la evolución.",
+      "id": "geo-0047",
+      "options": ["Chile", "Colombia", "Ecuador", "Perú"],
+      "question": "¿A qué país pertenecen las islas Galápagos?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Las placas norteamericana y euroasiática se separan a través de Islandia unos 2 cm al año, y en Thingvellir se puede caminar entre ellas.",
+      "id": "geo-0059",
+      "options": [
+        "Gran Valle del Rift",
+        "Cinturón alpino",
+        "Dorsal mesoatlántica",
+        "Anillo de Fuego"
+      ],
+      "question": "¿Sobre qué estructura tectónica se asienta Islandia?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Una conferencia internacional de 1884 eligió el Real Observatorio de Greenwich como punto de partida de la longitud mundial.",
+      "id": "geo-0050",
+      "options": ["Westminster", "Camden", "Richmond", "Greenwich"],
+      "question": "El meridiano cero (0° de longitud), ¿por qué barrio de Londres pasa?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El Aconcagua, en Argentina, alcanza unos 6961 m: es la cumbre más alta fuera de Asia.",
+      "id": "geo-0064",
+      "options": ["Chimborazo", "Huascarán", "Aconcagua", "Illimani"],
+      "question": "¿Cuál es la montaña más alta de Sudamérica?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Fundada en 1804, Hobart es la segunda capital más antigua de Australia y una puerta de entrada para las expediciones a la Antártida.",
+      "id": "geo-0083",
+      "options": ["Devonport", "Hobart", "Launceston", "Darwin"],
+      "question": "¿Cuál es la capital del estado australiano de Tasmania?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El océano Ártico es también el menos profundo, y gran parte de él está cubierto de hielo marino durante casi todo el año.",
+      "id": "geo-0062",
+      "options": [
+        "Océano Índico",
+        "Océano Atlántico",
+        "Océano Austral",
+        "Océano Ártico"
+      ],
+      "question": "¿Cuál es el más pequeño de los cinco océanos del mundo?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Los griegos llaman a su país Hellas o Elláda; «Grecia» viene del nombre latino Graecia.",
+      "id": "geo-0066",
+      "options": ["Malta", "Grecia", "Albania", "Chipre"],
+      "question": "¿Qué país se llama oficialmente «República Helénica»?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El Mont Blanc, de unos 4806 m, está en la frontera franco-italiana; un túnel bajo la montaña une ambos países.",
+      "id": "geo-0063",
+      "options": ["Grossglockner", "Mont Blanc", "Eiger", "Cervino"],
+      "question": "¿Cuál es la montaña más alta de los Alpes?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Nepal adoptó UTC+5:45 en 1986; es uno de los pocos lugares del mundo cuyos relojes tienen un desfase de 45 minutos.",
+      "id": "geo-0069",
+      "options": ["India", "Sri Lanka", "Nepal", "Bután"],
+      "question": "¿Qué país tiene una hora oficial adelantada 5 horas y 45 minutos respecto a UTC?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Según la leyenda, una sirena en la Loreley atraía a los barqueros hacia su perdición; allí el río es estrecho y tiene fuertes corrientes.",
+      "id": "geo-0084",
+      "options": ["Elba", "Rin", "Danubio", "Mosela"],
+      "question": "¿Qué río pasa junto a la famosa roca de Loreley, en Alemania?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "«Nippon» significa aproximadamente «origen del sol», y por eso a Japón se le llama el País del Sol Naciente.",
+      "id": "geo-0067",
+      "options": ["China", "Corea", "Vietnam", "Japón"],
+      "question": "¿A qué país pertenece el nombre nativo «Nippon»?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El cedro del Líbano es símbolo de la región desde hace miles de años y se menciona en textos antiguos.",
+      "id": "geo-0070",
+      "options": ["Líbano", "Jordania", "Chipre", "Canadá"],
+      "question": "¿En la bandera de qué país aparece un cedro verde?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El apodo se queda corto: Finlandia tiene unos 188 000 lagos de más de 500 m².",
+      "id": "geo-0068",
+      "options": ["Canadá", "Escocia", "Suecia", "Finlandia"],
+      "question": "¿Qué país es conocido como el «país de los mil lagos»?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Pamukkale significa «castillo de algodón»; sus terrazas son de travertino, formado durante miles de años por agua de manantial rica en calcio.",
+      "id": "geo-0074",
+      "options": ["Turquía", "Grecia", "Georgia", "Irán"],
+      "question": "Pamukkale, con sus terrazas blancas de pozas minerales templadas, ¿en qué país está?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El Amazonas nace como agua de deshielo en lo alto de los Andes peruanos, a menos de 200 km de la costa del Pacífico.",
+      "id": "geo-0086",
+      "options": ["Brasil", "Perú", "Bolivia", "Colombia"],
+      "question": "¿En qué país nace el río Amazonas?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Durante el monzón, el Mekong empuja el agua río arriba por el Tonlé Sap, y el lago llega a multiplicar varias veces su tamaño de la estación seca.",
+      "id": "geo-0071",
+      "options": ["Tailandia", "Camboya", "Laos", "Birmania"],
+      "question": "El Tonlé Sap, un lago que crece enormemente en la estación de lluvias, ¿en qué país está?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Argelia ocupa unos 2,38 millones de km², y más de cuatro quintas partes de su territorio están en el Sahara.",
+      "id": "geo-0075",
+      "options": ["Argelia", "Sudán", "RD del Congo", "Libia"],
+      "question": "¿Cuál es el país más grande de África por superficie?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Las montañas de arenisca y granito de Wadi Rum se alzan sobre arena rojiza; allí se rodaron escenas de la película «Marte (The Martian)».",
+      "id": "geo-0072",
+      "options": ["Arabia Saudí", "Siria", "Jordania", "Egipto"],
+      "question": "Wadi Rum, un valle desértico rojo que ha hecho de Marte en el cine, ¿en qué país está?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Los visitantes suben a la cima entre dos enormes garras de león, lo único que queda de una gran puerta con forma de león.",
+      "id": "geo-0081",
+      "options": ["Sri Lanka", "India", "Mauricio", "Birmania"],
+      "question": "Sigiriya, un palacio del siglo V construido sobre una roca gigante, ¿en qué país está?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Brasil es tan grande que se extiende desde unos 5° N hasta 34° S, abarcando ambas líneas.",
+      "id": "geo-0091",
+      "options": ["Indonesia", "Perú", "Brasil", "Australia"],
+      "question": "¿Cuál es el único país atravesado a la vez por el ecuador y por el trópico de Capricornio?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Ha Long significa «dragón descendente»; la leyenda cuenta que un dragón formó las islas al sacudir la cola.",
+      "id": "geo-0073",
+      "options": ["Vietnam", "Tailandia", "Malasia", "Filipinas"],
+      "question": "La bahía de Ha Long, salpicada de unas 1600 islas de caliza, ¿en qué país está?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El nivel medio del suelo de las Maldivas está solo a unos 1,5 m sobre el mar, así que la subida del nivel del mar es una grave amenaza para sus islas.",
+      "id": "geo-0082",
+      "options": ["Bangladés", "Maldivas", "Tuvalu", "Países Bajos"],
+      "question": "¿Qué país es el más bajo del mundo por altitud media?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Antes de que se abriera el canal de Panamá, los barcos tenían que doblar el cabo de Hornos, cuyas aguas son famosas por sus tormentas y olas enormes.",
+      "id": "geo-0076",
+      "options": ["Sudamérica", "Australia", "Antártida", "África"],
+      "question": "El cabo de Hornos marca el extremo sur de ¿qué continente?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El Etna es el volcán activo más alto de Europa, y sus fértiles laderas están cubiertas de viñedos y huertos.",
+      "id": "geo-0085",
+      "options": ["Córcega", "Sicilia", "Creta", "Cerdeña"],
+      "question": "El Etna, uno de los volcanes más activos del mundo, ¿en qué isla está?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Suva está en la isla más grande, Viti Levu; muchos visitantes llegan en avión a Nadi, al otro lado de la isla.",
+      "id": "geo-0093",
+      "options": ["Lautoka", "Nadi", "Apia", "Suva"],
+      "question": "¿Cuál es la capital de Fiyi?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Las esclusas elevan los barcos unos 26 m para cruzar el lago Gatún y luego los bajan al otro lado.",
+      "id": "geo-0077",
+      "options": [
+        "Océano Austral",
+        "Océano Atlántico",
+        "Océano Ártico",
+        "Océano Índico"
+      ],
+      "question": "El canal de Panamá une el océano Pacífico con ¿qué otro océano?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "La capital de Etiopía, Adís Abeba, está a unos 2350 m de altitud y alberga la sede de la Unión Africana.",
+      "id": "geo-0088",
+      "options": ["Sudán", "Eritrea", "Somalia", "Etiopía"],
+      "question": "¿Qué país africano se conocía históricamente como Abisinia?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Inaugurado en 1869, el canal de Suez no tiene esclusas porque ambos mares están casi al mismo nivel.",
+      "id": "geo-0078",
+      "options": ["Mar Caspio", "Mar Negro", "Mar Arábigo", "Mar Rojo"],
+      "question": "El canal de Suez une el mar Mediterráneo con ¿qué otro mar?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Borneo es la tercera isla más grande del mundo y la única dividida entre tres países.",
+      "id": "geo-0095",
+      "options": ["Brunéi", "Timor Oriental", "Filipinas", "Singapur"],
+      "question": "Borneo se reparte entre Indonesia, Malasia y ¿qué otro país?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El Kinabalu alcanza 4095 m en el estado malasio de Sabah y alberga miles de especies de plantas, entre ellas muchas orquídeas.",
+      "id": "geo-0094",
+      "options": ["Java", "Borneo", "Sumatra", "Célebes"],
+      "question": "El monte Kinabalu, una de las cumbres más altas del Sudeste Asiático, ¿en qué isla está?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Aunque se le llame mar, el Caspio suele clasificarse como el lago más grande del mundo; su agua tiene alrededor de un tercio de la salinidad del océano.",
+      "id": "geo-0080",
+      "options": [
+        "Mar Caspio",
+        "Lago Victoria",
+        "Lago Superior",
+        "Lago Baikal"
+      ],
+      "question": "¿Cuál es la mayor masa de agua interior de la Tierra?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "La Española tiene la cumbre más alta del Caribe, el pico Duarte, de unos 3100 m.",
+      "id": "geo-0096",
+      "options": ["Puerto Rico", "Jamaica", "Cuba", "La Española"],
+      "question": "¿Qué isla comparten Haití y la República Dominicana?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Los Urales recorren unos 2500 km desde el océano Ártico hasta Kazajistán y están entre las montañas más antiguas de la Tierra.",
+      "id": "geo-0087",
+      "options": ["Altái", "Cárpatos", "Urales", "Cáucaso"],
+      "question": "¿Qué cordillera se usa por convención como límite entre Europa y Asia?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "El delta incluye los Sundarbans, el mayor manglar de la Tierra y hogar del tigre de Bengala.",
+      "id": "geo-0099",
+      "options": ["India", "Birmania", "Bangladés", "Nepal"],
+      "question": "La mayor parte del delta del Ganges y el Brahmaputra, el mayor delta fluvial del mundo, ¿en qué país está?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "La capital de Mongolia tiene una media anual algo inferior a 0 °C, y en invierno las noches bajan a menudo de −30 °C.",
+      "id": "geo-0098",
+      "options": ["Ulán Bator", "Moscú", "Helsinki", "Ottawa"],
+      "question": "¿Qué capital nacional tiene la temperatura media anual más baja?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "En 1935 el gobierno pidió a otros países que usaran el nombre nativo Irán, que significa «tierra de los arios» (iranios).",
+      "id": "geo-0089",
+      "options": ["Afganistán", "Irak", "Turquía", "Irán"],
+      "question": "¿Qué país se conocía como Persia hasta 1935?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Aunque se le llame desierto, algunas zonas del Kalahari reciben lluvia suficiente para mantener pastos, árboles y grandes animales.",
+      "id": "geo-0100",
+      "options": ["Namib", "Kalahari", "Karoo", "Sahara"],
+      "question": "¿Qué desierto cubre gran parte de Botsuana?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Están en el mar de Andamán, donde abruptas islas de caliza se alzan directamente sobre aguas turquesas.",
+      "id": "geo-0090",
+      "options": ["Tailandia", "Camboya", "Laos", "Birmania"],
+      "question": "¿En qué país están las islas de Phuket y Ko Phi Phi?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El golfo de Botnia tiene tan poca sal que se congela en invierno, y la tierra que lo rodea sigue elevándose desde la Edad de Hielo.",
+      "id": "geo-0102",
+      "options": [
+        "Skagerrak",
+        "Golfo de Riga",
+        "Golfo de Finlandia",
+        "Golfo de Botnia"
+      ],
+      "question": "¿Qué golfo se encuentra entre Suecia y Finlandia?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Los acantilados de la costa oeste de Irlanda se extienden unos 14 km y albergan miles de aves marinas que anidan en ellos.",
+      "id": "geo-0092",
+      "options": ["Islandia", "Noruega", "Escocia", "Irlanda"],
+      "question": "Los acantilados de Moher, que se alzan más de 200 m sobre el Atlántico, ¿en qué país están?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Las islas de Estocolmo están donde el lago Mälaren se une al mar Báltico, y unos 50 puentes las conectan.",
+      "id": "geo-0106",
+      "options": ["Oslo", "Helsinki", "Copenhague", "Estocolmo"],
+      "question": "¿Qué capital escandinava está construida sobre 14 islas?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "El castillo de Bran está en Transilvania, aunque hay pocas pruebas de que Vlad el Empalador viviera allí alguna vez.",
+      "id": "geo-0097",
+      "options": ["Serbia", "Bulgaria", "Rumanía", "Hungría"],
+      "question": "El castillo de Bran, promocionado como el «castillo de Drácula», ¿en qué país está?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "Las Feroe tienen unas 70 000 ovejas, y se cree que su nombre significa «islas de las ovejas».",
+      "id": "geo-0108",
+      "options": ["Reino Unido", "Suecia", "Noruega", "Dinamarca"],
+      "question": "Las islas Feroe son una parte autónoma de ¿qué reino?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "El estrecho de Malaca es una de las rutas marítimas más transitadas del mundo y une el océano Índico con el Pacífico.",
+      "id": "geo-0103",
+      "options": ["Célebes", "Borneo", "Java", "Sumatra"],
+      "question": "El estrecho de Malaca separa la península malaya de ¿qué isla?"
+    },
+    {
+      "answer": 3,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "A menudo una capa de nubes se derrama sobre la cima plana; los lugareños la llaman «el mantel».",
+      "id": "geo-0105",
+      "options": ["Nairobi", "Durban", "Johannesburgo", "Ciudad del Cabo"],
+      "question": "¿Qué urbe se extiende a los pies de la montaña de la Mesa, de cima plana?"
+    },
+    {
+      "answer": 1,
+      "category": "geography",
+      "difficulty": 2,
+      "explanation": "En Svalbard está la Bóveda Global de Semillas, un depósito de reserva de semillas de cultivos excavado en el permafrost.",
+      "id": "geo-0109",
+      "options": ["Islandia", "Noruega", "Finlandia", "Dinamarca"],
+      "question": "¿A qué país pertenece el archipiélago ártico de Svalbard?"
+    },
+    {
+      "answer": 2,
+      "category": "geography",
+      "difficulty": 1,
+      "explanation": "Las islas deben su nombre a la palabra latina para perro, canis, no a los canarios; fueron los pájaros los que tomaron el nombre de las islas.",
+      "id": "geo-0107",
+      "options": ["Marruecos", "Italia", "España", "Portugal"],
+      "question": "¿A qué país pertenecen las islas Canarias?"
+    },
+    {
+      "answer": 0,
+      "category": "geography",
+      "difficulty": 3,
+      "explanation": "Las haenyeo de Jeju recogen marisco sin equipo de respiración, una tradición reconocida por la UNESCO como patrimonio cultural.",
+      "id": "geo-0104",
+      "options": ["Corea del Sur", "China", "Taiwán", "Japón"],
+      "question": "Jeju, una isla volcánica famosa por sus buceadoras a pulmón, ¿a qué país pertenece?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Una ballena azul puede medir unos 30 m y pesar más de 150 toneladas; solo su lengua puede pesar tanto como un elefante.",
+      "id": "nat-0001",
+      "options": [
+        "Tiburón ballena",
+        "Cachalote",
+        "Ballena azul",
+        "Elefante africano"
+      ],
+      "question": "¿Cuál es el animal más grande que existe hoy?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Un guepardo puede alcanzar unos 100 km/h en un sprint corto y acelera más rápido que la mayoría de los deportivos.",
+      "id": "nat-0002",
+      "options": ["Berrendo", "Guepardo", "Galgo", "León"],
+      "question": "¿Cuál es el animal terrestre más rápido?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "El pelo del oso polar es en realidad translúcido y solo parece blanco; la piel negra de debajo ayuda a absorber el calor del sol.",
+      "id": "nat-0005",
+      "options": ["Negra", "Blanca", "Rosa", "Gris"],
+      "question": "¿De qué color es la piel del oso polar bajo su pelaje?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Las flores de la orquídea de la vainilla solo se abren durante un día aproximadamente, y fuera de México suelen polinizarse a mano.",
+      "id": "nat-0016",
+      "options": ["Leguminosa", "Palmera", "Lirio", "Orquídea"],
+      "question": "La vainilla procede de las vainas de ¿qué tipo de planta?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "En un picado vertiginoso, el halcón peregrino puede superar los 300 km/h, lo que lo convierte en el animal más rápido de la Tierra.",
+      "id": "nat-0003",
+      "options": [
+        "Albatros viajero",
+        "Águila real",
+        "Halcón peregrino",
+        "Vencejo común"
+      ],
+      "question": "¿Qué ave es el animal más rápido en un picado de caza?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "El ángulo de la danza indica la dirección respecto al sol, y su duración, la distancia hasta el alimento.",
+      "id": "nat-0012",
+      "options": [
+        "Con la danza del meneo",
+        "Con el color de sus alas",
+        "Solo con rastros de olor",
+        "Con tonos de zumbido"
+      ],
+      "question": "¿Cómo se indican las abejas melíferas unas a otras dónde hay flores?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Los exploradores neerlandeses creyeron que los quokkas eran ratas gigantes y llamaron a la isla «Rotte nest», que significa «nido de ratas».",
+      "id": "nat-0028",
+      "options": [
+        "K’gari (isla Fraser)",
+        "Isla Rottnest",
+        "Tasmania",
+        "Isla Canguro"
+      ],
+      "question": "El sonriente quokka vive principalmente en ¿qué isla australiana?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "El bambú es tan pobre en nutrientes que un panda puede comer más de 10 kg al día, aunque su aparato digestivo es como el de un carnívoro.",
+      "id": "nat-0007",
+      "options": ["Bambú", "Fruta", "Pescado", "Insectos"],
+      "question": "Los pandas gigantes pasan hasta 14 horas al día comiendo ¿qué?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "El árbol más alto conocido, una secuoya roja de California apodada Hyperion, mide unos 116 m.",
+      "id": "nat-0015",
+      "options": [
+        "Secuoya roja",
+        "Eucalipto (E. regnans)",
+        "Secuoya gigante",
+        "Abeto de Douglas"
+      ],
+      "question": "¿Qué especie de árbol alcanza mayor altura?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Un avestruz puede medir 2,7 m de alto, correr a unos 70 km/h y tiene los ojos más grandes que el cerebro.",
+      "id": "nat-0008",
+      "options": ["Emú", "Avestruz", "Casuario", "Cóndor andino"],
+      "question": "¿Cuál es el ave viva más grande?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Las flores de Rafflesia pueden medir alrededor de 1 m de diámetro; la planta no tiene hojas ni raíces y huele a carne podrida para atraer moscas.",
+      "id": "nat-0017",
+      "options": [
+        "Girasol",
+        "Aro gigante de Sumatra",
+        "Rafflesia arnoldii",
+        "Victoria amazónica"
+      ],
+      "question": "¿Qué planta produce la flor individual más grande del mundo?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "El kakapo es el loro más pesado del mundo y puede vivir 60 años o más; cada ejemplar superviviente está identificado y monitorizado.",
+      "id": "nat-0029",
+      "options": ["Takahē", "Kakapo", "Kiwi", "Kea"],
+      "question": "¿Cómo se llama el loro nocturno y no volador de Nueva Zelanda?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los tiburones ballena pueden superar los 12 m de longitud y, sin embargo, se alimentan filtrando del agua el diminuto plancton.",
+      "id": "nat-0010",
+      "options": [
+        "Tiburón ballena",
+        "Tiburón blanco",
+        "Tiburón peregrino",
+        "Pez luna"
+      ],
+      "question": "¿Cuál es la especie de pez más grande?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los machos de cocodrilo marino pueden superar los 6 m y los 1000 kg, y nadan mar adentro de una isla a otra.",
+      "id": "nat-0020",
+      "options": [
+        "Cocodrilo marino",
+        "Tortuga laúd",
+        "Cocodrilo del Nilo",
+        "Dragón de Komodo"
+      ],
+      "question": "¿Cuál es el reptil vivo más grande?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los camaleones cambian de color sobre todo para mostrar su estado de ánimo y regular su temperatura, no solo para esconderse; pueden mirar en dos direcciones a la vez.",
+      "id": "nat-0011",
+      "options": ["Iguana", "Camaleón", "Varano", "Salamanquesa"],
+      "question": "¿Qué reptil puede mover cada ojo por separado y cambiar de color?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "El ojo del calamar colosal puede medir unos 27 cm de diámetro, más o menos el tamaño de un balón de fútbol.",
+      "id": "nat-0023",
+      "options": ["Ballena azul", "Avestruz", "Tarsero", "Calamar colosal"],
+      "question": "¿Qué animal tiene los ojos más grandes del reino animal?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Los chasquidos del cachalote pueden alcanzar unos 230 decibelios bajo el agua; los usa para localizar calamares en la oscuridad de las profundidades.",
+      "id": "nat-0031",
+      "options": [
+        "Mono aullador",
+        "Camarón pistola",
+        "Cachalote",
+        "Ballena azul"
+      ],
+      "question": "¿Qué animal produce el sonido más fuerte de todos?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Un gran macho de elefante africano de sabana puede pesar unas 6 toneladas y come hasta 150 kg de plantas al día.",
+      "id": "nat-0013",
+      "options": [
+        "Elefante de sabana",
+        "Elefante asiático",
+        "Hipopótamo",
+        "Rinoceronte blanco"
+      ],
+      "question": "¿Cuál es el animal terrestre vivo más grande?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los elefantes tienen la gestación más larga de todos los mamíferos terrestres, y una cría recién nacida ya pesa unos 100 kg.",
+      "id": "nat-0025",
+      "options": [
+        "Unos 9 meses",
+        "Unos 16 meses",
+        "Unos 12 meses",
+        "Unos 22 meses"
+      ],
+      "question": "¿Cuánto dura aproximadamente la gestación de un elefante?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los tigres macho grandes pueden pesar unos 300 kg, y no hay dos tigres con el mismo dibujo de rayas.",
+      "id": "nat-0014",
+      "options": ["León", "Jaguar", "Tigre", "Leopardo"],
+      "question": "¿Cuál es la especie de felino salvaje más grande?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Las nutrias marinas tienen hasta unos 150 000 pelos por centímetro cuadrado y, a diferencia de casi todos los mamíferos marinos, no tienen grasa que las abrigue.",
+      "id": "nat-0026",
+      "options": [
+        "Oso polar",
+        "Zorro ártico",
+        "Nutria marina",
+        "Buey almizclero"
+      ],
+      "question": "¿Qué animal tiene el pelaje más denso de todos?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "En 2022, una aguja colipinta marcada voló de Alaska a Tasmania en unos 11 días sin posarse, comer ni beber.",
+      "id": "nat-0038",
+      "options": [
+        "Charrán ártico",
+        "Golondrina común",
+        "Albatros viajero",
+        "Aguja colipinta"
+      ],
+      "question": "¿Qué ave tiene el récord del vuelo sin escalas más largo, de más de 13 000 km?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los charranes árticos vuelan cada año del Ártico a la Antártida y vuelta, y ven más horas de luz que ningún otro animal.",
+      "id": "nat-0037",
+      "options": [
+        "Charrán ártico",
+        "Cigüeña blanca",
+        "Golondrina común",
+        "Cuco común"
+      ],
+      "question": "¿Qué ave tiene la migración anual más larga que se conoce?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Las arañas son arácnidos, no insectos; los insectos tienen seis patas, mientras que las arañas tienen ocho y normalmente también ocho ojos.",
+      "id": "nat-0019",
+      "options": ["Doce", "Seis", "Diez", "Ocho"],
+      "question": "¿Cuántas patas tiene una araña?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los tardígrados pueden deshidratarse y entrar en un estado latente llamado «tonel», y así resisten frío extremo, radiación y el vacío del espacio.",
+      "id": "nat-0040",
+      "options": ["Nematodos", "Tardígrados", "Copépodos", "Rotíferos"],
+      "question": "¿Qué diminutos animales, apodados «osos de agua», han sobrevivido a la exposición al espacio exterior?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Los vencejos comunes comen, beben e incluso duermen en vuelo, y algunos jóvenes pueden pasar años sin posarse.",
+      "id": "nat-0039",
+      "options": ["Albatros", "Vencejo común", "Rabihorcado", "Charrán ártico"],
+      "question": "¿Qué ave puede permanecer en el aire unos 10 meses sin posarse?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los dragones de Komodo pueden llegar a medir unos 3 m y solo viven en libertad en unas pocas islas de Indonesia.",
+      "id": "nat-0021",
+      "options": [
+        "Dragón de Komodo",
+        "Lagarto de gorguera",
+        "Monstruo de Gila",
+        "Iguana verde"
+      ],
+      "question": "¿Cuál es el lagarto vivo más grande?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los tuátaras son los últimos supervivientes de un antiguo orden de reptiles y pueden vivir más de 100 años.",
+      "id": "nat-0041",
+      "options": ["Nueva Zelanda", "Australia", "Madagascar", "Indonesia"],
+      "question": "El tuátara, un reptil «fósil viviente» cuyos parientes convivieron con los dinosaurios, ¿en qué país vive exclusivamente?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los ajolotes conservan toda la vida sus branquias plumosas y pueden regenerar extremidades, partes del corazón e incluso del cerebro.",
+      "id": "nat-0042",
+      "options": ["Perú", "México", "Brasil", "Japón"],
+      "question": "El ajolote, una salamandra capaz de regenerar las extremidades perdidas, procede de lagos de ¿qué país?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Necesitar dos toques evita que la trampa gaste energía en gotas de lluvia o restos que caen.",
+      "id": "nat-0046",
+      "options": ["Dos", "Uno", "Tres", "Cinco"],
+      "question": "¿Cuántos toques en sus pelos sensoriales en unos 20 segundos hacen que una dionea atrapamoscas se cierre?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los humanos compartimos aproximadamente el 98–99 % del ADN con los chimpancés y sus primos cercanos, los bonobos.",
+      "id": "nat-0024",
+      "options": ["Gibón", "Chimpancé", "Gorila", "Orangután"],
+      "question": "¿Cuál de estos simios es el pariente más cercano del ser humano?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los pinos longevos de la Gran Cuenca crecen en duras condiciones de montaña en EE. UU.; uno de ellos se ha datado en unos 4800 años.",
+      "id": "nat-0047",
+      "options": ["Baobab", "Secuoya gigante", "Pino longevo", "Olivo"],
+      "question": "¿A qué tipo de árbol pertenecen los ejemplares vivos más antiguos conocidos, de casi 5000 años?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "El demonio de Tasmania tiene una de las mordeduras más potentes para su tamaño de todos los mamíferos y puede comerse los huesos enteros.",
+      "id": "nat-0027",
+      "options": [
+        "Bandicut de nariz larga",
+        "Wómbat común",
+        "Demonio de Tasmania",
+        "Quokka"
+      ],
+      "question": "¿Qué marsupial carnívoro vive en libertad solo en una gran isla al sur del continente australiano?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Un baobab grande puede almacenar más de 100 000 litros de agua, lo que le ayuda a sobrevivir a las largas estaciones secas.",
+      "id": "nat-0048",
+      "options": ["Marula", "Mopane", "Baobab", "Acacia"],
+      "question": "¿Qué árbol africano es famoso por almacenar enormes cantidades de agua en su tronco hinchado?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Además de dos grandes ojos compuestos, las abejas tienen tres ojos simples llamados ocelos en lo alto de la cabeza que les ayudan a orientarse.",
+      "id": "nat-0050",
+      "options": ["Cuatro", "Cinco", "Dos", "Ocho"],
+      "question": "¿Cuántos ojos tiene una abeja melífera?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los pingüinos emperador pueden bucear a más de 500 m y crían durante el invierno antártico, con temperaturas por debajo de −40 °C.",
+      "id": "nat-0030",
+      "options": [
+        "Pingüino de Adelia",
+        "Pingüino papúa",
+        "Pingüino emperador",
+        "Pingüino rey"
+      ],
+      "question": "¿Cuál es la especie de pingüino más grande?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Las monarcas que llegan a México en otoño están separadas por varias generaciones de las mariposas que salieron de allí la primavera anterior.",
+      "id": "nat-0049",
+      "options": ["México", "Brasil", "India", "España"],
+      "question": "Millones de mariposas monarca pasan el invierno en los bosques de ¿qué país?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "La mayoría de las estrellas de mar tienen cinco brazos, pueden regenerar los que pierden y tienen un ojo simple en la punta de cada uno.",
+      "id": "nat-0032",
+      "options": ["Seis", "Ocho", "Cinco", "Cuatro"],
+      "question": "¿Cuántos brazos tienen la mayoría de las estrellas de mar?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "El cartílago es más ligero y flexible que el hueso, lo que ayuda a los tiburones a ahorrar energía y girar con rapidez.",
+      "id": "nat-0051",
+      "options": ["Queratina", "Quitina", "Hueso", "Cartílago"],
+      "question": "¿De qué está hecho el esqueleto de un tiburón?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "El tiburón de Groenlandia crece alrededor de 1 cm al año; la datación por radiocarbono de sus ojos indica que algunos tienen varios siglos.",
+      "id": "nat-0053",
+      "options": [
+        "Carpa koi",
+        "Tiburón de Groenlandia",
+        "Tuátara",
+        "Tortuga gigante de Galápagos"
+      ],
+      "question": "¿Qué vertebrado se cree que es el más longevo, con una vida de posiblemente más de 250 años?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "El pez globo traga agua para inflarse, y muchas especies contienen una toxina mucho más venenosa que el cianuro.",
+      "id": "nat-0033",
+      "options": ["Pez volador", "Pez globo", "Pez payaso", "Barracuda"],
+      "question": "¿Qué pez puede hincharse hasta convertirse en una bola de pinchos cuando se siente amenazado?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Viejas puntas de arpón halladas en ballenas boreales vivas ayudaron a los científicos a confirmar su asombrosa edad.",
+      "id": "nat-0052",
+      "options": [
+        "Elefante africano",
+        "Ballena azul",
+        "Ballena boreal",
+        "Orca"
+      ],
+      "question": "¿Qué mamífero se cree que vive más tiempo, posiblemente más de 200 años?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Se cree que los salmones encuentran su río natal años después, en parte gracias a su olor único.",
+      "id": "nat-0034",
+      "options": ["Bacalao", "Caballa", "Atún", "Salmón"],
+      "question": "¿Qué pez remonta el río donde nació para desovar?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los machos de ave lira soberbia componen sus cantos con las llamadas de otras aves y casi cualquier sonido que oyen.",
+      "id": "nat-0054",
+      "options": ["Emú", "Ave lira", "Cacatúa", "Cucaburra"],
+      "question": "¿Qué ave australiana es capaz de imitar motosierras y obturadores de cámara?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "El musgaño enano pesa unos 1,8 g y tiene que comer casi sin parar; su corazón puede latir más de 1000 veces por minuto.",
+      "id": "nat-0062",
+      "options": [
+        "Jerbo pigmeo",
+        "Tití pigmeo",
+        "Ratón espiguero",
+        "Musgaño enano"
+      ],
+      "question": "Por peso, ¿cuál es el mamífero más pequeño que se conoce?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Un alce macho puede superar los 2 m de altura hasta la cruz, y su cornamenta puede abarcar unos 1,8 m.",
+      "id": "nat-0035",
+      "options": ["Alce", "Reno", "Ciervo de cola blanca", "Ciervo rojo"],
+      "question": "¿Cuál es la especie de cérvido viva más grande?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Este «sudor de sangre» no es ni sangre ni sudor; funciona como protector solar natural y quizá también combate los gérmenes.",
+      "id": "nat-0056",
+      "options": [
+        "Atrae a una pareja",
+        "Marca su territorio",
+        "Ahuyenta a los cocodrilos",
+        "Es un protector solar"
+      ],
+      "question": "Los hipopótamos segregan sobre la piel un líquido aceitoso rojizo. ¿Para qué sirve?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Las alas del albatros viajero pueden alcanzar unos 3,5 m de envergadura, lo que le permite planear horas sobre el océano sin batirlas.",
+      "id": "nat-0036",
+      "options": [
+        "Pigargo de Steller",
+        "Albatros viajero",
+        "Marabú africano",
+        "Cóndor andino"
+      ],
+      "question": "¿Qué ave tiene la mayor envergadura de todas las aves vivas?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Una conservadora de museo de Sudáfrica lo vio en la captura de un pescador; solo se conocía por fósiles de más de 66 millones de años.",
+      "id": "nat-0064",
+      "options": ["Arapaima", "Esturión", "Celacanto", "Pez pulmonado"],
+      "question": "¿Qué pez «fósil viviente», que se creía extinguido desde hacía millones de años, se encontró vivo en 1938?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Las abejas reducen el agua del néctar abanicándolo con las alas, y por eso la miel se conserva tanto tiempo.",
+      "id": "nat-0043",
+      "options": ["Néctar", "Polen", "Rocío", "Savia"],
+      "question": "¿Qué recogen las abejas melíferas de las flores para hacer miel?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Las nutrias marinas también se envuelven en algas kelp para quedar ancladas mientras flotan boca arriba.",
+      "id": "nat-0058",
+      "options": [
+        "Para darse calor",
+        "Para no irse a la deriva",
+        "Para asustar a depredadores",
+        "Para encontrar comida"
+      ],
+      "question": "¿Por qué las nutrias marinas a veces se dan la mano mientras duermen?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Algunas especies de bambú pueden crecer casi 1 m en un solo día.",
+      "id": "nat-0044",
+      "options": ["Girasol", "Eucalipto", "Bambú", "Hiedra"],
+      "question": "¿Qué planta tiene el récord de crecimiento más rápido de la Tierra?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "El colibrí abeja o zunzuncito de Cuba mide unos 5–6 cm y pesa menos de 2 g; sus huevos son del tamaño de un grano de café.",
+      "id": "nat-0063",
+      "options": [
+        "Colibrí abeja",
+        "Chochín",
+        "Reyezuelo sencillo",
+        "Suimanga carmesí"
+      ],
+      "question": "¿Cuál es el ave más pequeña del mundo?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Los koalas desarrollaron sus huellas dactilares independientemente de los primates, probablemente para agarrarse a las ramas y manipular las hojas de eucalipto.",
+      "id": "nat-0065",
+      "options": ["Mapache", "Wómbat", "Canguro", "Koala"],
+      "question": "¿Qué animal tiene huellas dactilares asombrosamente parecidas a las humanas, incluso al microscopio?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Un roble grande puede producir miles de bellotas en un buen año, y los arrendajos ayudan a plantar nuevos robles al enterrarlas.",
+      "id": "nat-0045",
+      "options": ["Haya", "Roble", "Castaño", "Arce"],
+      "question": "¿Qué árbol produce bellotas?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "La maza del camarón mantis acelera como una bala de pequeño calibre y crea burbujas que estallan con un destello de luz.",
+      "id": "nat-0066",
+      "options": [
+        "Cangrejo de los cocoteros",
+        "Pulpo común",
+        "Camarón mantis",
+        "Bogavante"
+      ],
+      "question": "¿Qué criatura marina golpea tan rápido que puede romper el cristal de un acuario?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Las cucaburras son grandes martines pescadores; las familias «ríen» juntas al amanecer y al anochecer para marcar su territorio.",
+      "id": "nat-0055",
+      "options": ["Frailecillo", "Tucán", "Pelícano", "Cucaburra"],
+      "question": "¿Qué ave es famosa por un reclamo que suena como una sonora carcajada humana?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Eso supone unos 135° hacia cada lado. Los ojos de los búhos están fijos en sus órbitas, así que giran toda la cabeza, ayudados por vértebras cervicales adicionales.",
+      "id": "nat-0069",
+      "options": ["270 grados", "360 grados", "180 grados", "90 grados"],
+      "question": "En total, ¿aproximadamente cuánto puede girar un búho la cabeza de un lado a otro?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Las anguilas eléctricas pueden producir descargas de hasta unos 860 voltios para aturdir a sus presas y defenderse.",
+      "id": "nat-0067",
+      "options": [
+        "Un pez cuchillo",
+        "Una morena",
+        "Una raya",
+        "Una lamprea marina"
+      ],
+      "question": "La anguila eléctrica no es una verdadera anguila. ¿Qué tipo de pez es?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "La hembra deposita los huevos en la bolsa del caballito de mar macho, que más tarde libera de docenas a cientos de crías diminutas.",
+      "id": "nat-0059",
+      "options": ["Cangrejo", "Pulpo", "Tortuga", "Hipocampo"],
+      "question": "¿En qué animal es el macho quien lleva los huevos y da a luz?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los kiwis olfatean gusanos en el suelo; las hembras ponen además uno de los huevos más grandes en proporción a su cuerpo de todas las aves.",
+      "id": "nat-0070",
+      "options": ["Pelícano", "Kiwi", "Tucán", "Cálao"],
+      "question": "¿Qué ave tiene los orificios nasales en la misma punta del pico?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Turritopsis dohrnii puede volver a convertirse en pólipo cuando sufre estrés o una lesión, y reinicia así su ciclo vital.",
+      "id": "nat-0072",
+      "options": [
+        "Una especie de medusa",
+        "Una especie de tortuga",
+        "Una especie de tortuga marina",
+        "Una especie de esponja"
+      ],
+      "question": "¿Qué animal es apodado «inmortal» porque puede volver a una fase anterior de su vida?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Los elefantes, los manatíes, los dugongos y los pequeños damanes que viven entre las rocas comparten un antepasado común.",
+      "id": "nat-0075",
+      "options": ["Rinoceronte", "Hipopótamo", "Tapir", "Manatí"],
+      "question": "¿Cuál de estos es uno de los parientes vivos más cercanos del elefante?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los capibaras de Sudamérica pueden pesar más de 60 kg y son excelentes nadadores, con patas ligeramente palmeadas.",
+      "id": "nat-0061",
+      "options": ["Castor", "Marmota", "Puercoespín", "Capibara"],
+      "question": "¿Cuál es el roedor más grande del mundo?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Se han descrito unas 400 000 especies de escarabajos, aproximadamente una cuarta parte de todas las especies animales conocidas.",
+      "id": "nat-0074",
+      "options": [
+        "Moscas",
+        "Hormigas y abejas",
+        "Mariposas y polillas",
+        "Escarabajos"
+      ],
+      "question": "¿Qué grupo de animales tiene más especies descritas?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Más de un millón de ñus siguen cada año las lluvias en un enorme circuito, cruzando ríos llenos de cocodrilos.",
+      "id": "nat-0077",
+      "options": ["Cebra común", "Ñu", "Gacela de Thomson", "Búfalo cafre"],
+      "question": "¿Qué animal forma la mayor parte de la gran migración entre el Serengueti y el Masái Mara?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Los hipopótamos y las ballenas comparten un antepasado común que vivió hace unos 55 millones de años.",
+      "id": "nat-0076",
+      "options": [
+        "Ballenas y delfines",
+        "Rinocerontes",
+        "Elefantes y damanes",
+        "Cerdos y jabalíes"
+      ],
+      "question": "¿Qué animales son los parientes vivos más cercanos de los hipopótamos?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Las medusas son agua en un 95 % aproximadamente y usan una sencilla red de nervios en lugar de un cerebro.",
+      "id": "nat-0071",
+      "options": ["Medusa", "Tortuga marina", "Pulpo", "Calamar"],
+      "question": "¿Qué criatura marina no tiene cerebro, corazón ni huesos?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "El leopardo nival emite en su lugar un resoplido y otras llamadas; su gruesa cola le ayuda a mantener el equilibrio y le sirve de bufanda.",
+      "id": "nat-0078",
+      "options": [
+        "Leopardo nival",
+        "Tigre de Bengala",
+        "Jaguar",
+        "León africano"
+      ],
+      "question": "¿Qué gran felino no puede rugir?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Así lo hacen los girasoles jóvenes; las flores maduras se quedan mirando al este, por lo que se calientan antes por la mañana.",
+      "id": "nat-0073",
+      "options": ["Margarita", "Rosa", "Girasol", "Tulipán"],
+      "question": "¿Qué flor, cuando es joven, se orienta al este al amanecer y va mirando hacia el oeste al caer la tarde?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Las orcas viven en grupos familiares con sus propias técnicas de caza y sus propios «dialectos» de llamadas.",
+      "id": "nat-0079",
+      "options": ["Delfines", "Ballenas barbadas", "Marsopas", "Tiburones"],
+      "question": "La orca, o ballena asesina, es el miembro más grande de ¿qué familia?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los polluelos de cuco suelen empujar los huevos del anfitrión fuera del nido y los crían padres adoptivos mucho más pequeños que ellos.",
+      "id": "nat-0081",
+      "options": ["Golondrina", "Cuco", "Petirrojo", "Pájaro carpintero"],
+      "question": "¿Qué ave es famosa por poner sus huevos en nidos de otras aves?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Algunos bambúes solo florecen una vez cada varias décadas, y todas las plantas de esa especie pueden florecer a la vez.",
+      "id": "nat-0087",
+      "options": ["Árboles", "Gramíneas", "Enredaderas", "Helechos"],
+      "question": "El bambú es un miembro gigante de ¿qué familia de plantas?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los sensores del gusto de sus patas permiten a las mariposas comprobar si una hoja sirve para poner huevos con solo posarse en ella.",
+      "id": "nat-0083",
+      "options": ["Los ojos", "Las antenas", "Las patas", "Las alas"],
+      "question": "¿Con qué parte del cuerpo pueden saborear las mariposas?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "La semilla del coco de mar de las Seychelles, con forma de coco doble, puede pesar hasta unos 25 kg.",
+      "id": "nat-0088",
+      "options": ["Coco de mar", "Palmera cocotera", "Mango", "Aguacate"],
+      "question": "¿Qué planta produce la semilla más grande del mundo?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los gorilas macho adultos, llamados espaldas plateadas, pueden pesar más de 200 kg, pero se alimentan sobre todo de plantas.",
+      "id": "nat-0091",
+      "options": ["Orangután", "Gorila", "Chimpancé", "Babuino"],
+      "question": "¿Cuál es el primate vivo más grande?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Las hormigas cortadoras de hojas ya cultivaban jardines de hongos millones de años antes de que los humanos inventaran la agricultura.",
+      "id": "nat-0084",
+      "options": ["Semillas", "Algas", "Un hongo", "Musgo"],
+      "question": "Las hormigas cortadoras de hojas llevan hojas a su nido para cultivar ¿qué?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Hay decenas de miles de millones de gallinas domésticas, muchas más que ejemplares de cualquier especie de ave silvestre.",
+      "id": "nat-0096",
+      "options": ["Estornino", "Paloma", "Gorrión común", "Gallina"],
+      "question": "¿Qué ave es la más numerosa de la Tierra?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Las luciérnagas producen luz mediante una reacción química que apenas desperdicia energía en forma de calor.",
+      "id": "nat-0085",
+      "options": ["Avispas", "Moscas", "Mariposas nocturnas", "Escarabajos"],
+      "question": "¿Qué tipo de insecto son en realidad las luciérnagas?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "El cambio ayuda a los renos a captar más luz durante la larga oscuridad del invierno ártico.",
+      "id": "nat-0093",
+      "options": ["Búho nival", "Zorro ártico", "Oso polar", "Reno"],
+      "question": "¿Qué animal tiene los ojos dorados en verano y azules en invierno?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Una capa protectora de mucosidad impide que al pez payaso le piquen, y a cambio él defiende a la anémona.",
+      "id": "nat-0098",
+      "options": ["Medusa", "Anémona", "Coral", "Erizo de mar"],
+      "question": "El pez payaso vive a salvo entre los tentáculos urticantes de ¿qué animal?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los wómbats marcan su territorio con sus excrementos cúbicos; los cubos no ruedan y se quedan sobre rocas y troncos.",
+      "id": "nat-0086",
+      "options": ["Ornitorrinco", "Wómbat", "Koala", "Canguro"],
+      "question": "¿Qué animal es famoso por producir excrementos con forma de cubo?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los machos de jorobada de una misma región cantan la misma canción, que cambia poco a poco con el tiempo y se extiende por los océanos.",
+      "id": "nat-0101",
+      "options": [
+        "Ballena gris",
+        "Ballena franca glacial",
+        "Cachalote",
+        "Ballena jorobada"
+      ],
+      "question": "¿Qué ballena es más conocida por sus cantos largos y complejos?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los botánicos consideran bayas a los plátanos; las fresas y las frambuesas no son bayas verdaderas, y las cerezas son frutos de hueso.",
+      "id": "nat-0089",
+      "options": ["Frambuesa", "Plátano", "Cereza", "Fresa"],
+      "question": "¿Cuál de estas frutas es, botánicamente, una baya?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Las semillas sacadas de Brasil en 1876 dieron origen a las enormes plantaciones de caucho del Sudeste Asiático.",
+      "id": "nat-0094",
+      "options": [
+        "La cuenca del Amazonas",
+        "El subcontinente indio",
+        "La cuenca del Congo",
+        "Borneo"
+      ],
+      "question": "¿De qué región proceden originalmente los árboles del caucho natural?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los corales son colonias de diminutos animales llamados pólipos, que a menudo albergan algas que les dan color y alimento.",
+      "id": "nat-0102",
+      "options": ["Una roca", "Una planta", "Un animal", "Un hongo"],
+      "question": "¿Qué tipo de ser vivo es un coral?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "A pesar de sus patas con rayas de cebra, el okapi pertenece a la familia de las jirafas y tiene una lengua larga para arrancar hojas.",
+      "id": "nat-0090",
+      "options": ["Antílope", "Caballo", "Cebra", "Jirafa"],
+      "question": "El okapi de África central es el pariente vivo más cercano de ¿qué animal?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Los perros fueron los primeros animales domesticados y descienden de una antigua población de lobos de hace más de 15 000 años.",
+      "id": "nat-0103",
+      "options": ["Zorro rojo", "Coyote", "Lobo gris", "Chacal dorado"],
+      "question": "¿De qué animal salvaje descienden los perros domésticos?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los orangutanes pasan casi toda su vida en los árboles y se construyen un nuevo nido de ramas para dormir casi cada noche.",
+      "id": "nat-0092",
+      "options": ["Orangután", "Gorila", "Bonobo", "Chimpancé"],
+      "question": "¿Qué gran simio vive en libertad solo en las islas de Borneo y Sumatra?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Un pez luna de cabeza abultada hallado frente a las Azores pesaba 2744 kg, y una hembra de pez luna puede llevar unos 300 millones de huevos.",
+      "id": "nat-0100",
+      "options": ["Atún rojo", "Marlín negro", "Mero gigante", "Pez luna"],
+      "question": "¿Qué pez tiene el récord del pez óseo más pesado jamás medido?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Cada capullo de gusano de seda está hecho de un único hilo continuo que puede medir cientos de metros.",
+      "id": "nat-0104",
+      "options": ["Escarabajo", "Gusano de seda", "Araña", "Abeja melífera"],
+      "question": "La seda para tejidos procede sobre todo de los capullos de ¿qué criatura?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los alcornoques no se talan: su corteza se extrae aproximadamente cada nueve años y vuelve a crecer.",
+      "id": "nat-0095",
+      "options": ["Alcornoque", "Abedul", "Haya", "Pino"],
+      "question": "Los tapones de corcho para el vino se fabrican con la corteza de ¿qué árbol?"
+    },
+    {
+      "answer": 0,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Las escamas del pangolín son de queratina, y cuando se siente amenazado se enrolla formando una bola apretada.",
+      "id": "nat-0105",
+      "options": ["Pangolín", "Erizo", "Oso hormiguero", "Cerdo hormiguero"],
+      "question": "¿Qué mamífero está cubierto de escamas protectoras?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "El dodo era un pariente gigante de las palomas y desapareció en apenas un siglo tras la llegada de los marineros.",
+      "id": "nat-0097",
+      "options": ["Reunión", "Madagascar", "Mauricio", "Sri Lanka"],
+      "question": "El dodo, un ave no voladora, vivía solo en ¿qué isla?"
+    },
+    {
+      "answer": 2,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Una palmera datilera apodada Matusalén brotó en 2005 de una semilla hallada en la antigua fortaleza de Masada.",
+      "id": "nat-0107",
+      "options": ["Olivo", "Higuera", "Datilera", "Roble común"],
+      "question": "¿De qué planta eran las semillas que dieron plantas sanas tras unos 2000 años?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "Dentro de la crisálida, el cuerpo de la oruga se descompone en gran parte y se reconstruye como mariposa adulta.",
+      "id": "nat-0109",
+      "options": [
+        "Polinización",
+        "Metamorfosis",
+        "Fotosíntesis",
+        "Hibernación"
+      ],
+      "question": "¿Cómo se llama el proceso por el que una oruga se convierte en mariposa?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los saltafangos respiran en parte a través de la piel y deben mantenerla húmeda mientras están fuera del agua.",
+      "id": "nat-0099",
+      "options": ["Pez volador", "Saltafangos", "Pez payaso", "Pez luna"],
+      "question": "¿Qué pez puede moverse fuera del agua por las llanuras de marea e incluso trepar a las raíces de los manglares?"
+    },
+    {
+      "answer": 3,
+      "category": "nature & animals",
+      "difficulty": 1,
+      "explanation": "El macho es el pavo real y la hembra, la pava real; los machos sacuden su cola para hacer una exhibición sonora.",
+      "id": "nat-0110",
+      "options": [
+        "Solo los polluelos",
+        "La hembra",
+        "Ambos por igual",
+        "El macho"
+      ],
+      "question": "En la especie del pavo real, ¿qué ejemplar luce la larga y colorida cola?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 2,
+      "explanation": "Los perezosos se mueven tan despacio que en su pelaje viven algas e incluso polillas, lo que les ayuda a camuflarse.",
+      "id": "nat-0106",
+      "options": ["Setas", "Algas", "Musgo", "Líquenes"],
+      "question": "¿Qué crece a menudo en el pelaje de un perezoso y le da un tono verdoso?"
+    },
+    {
+      "answer": 1,
+      "category": "nature & animals",
+      "difficulty": 3,
+      "explanation": "Los ginkgos son muy resistentes: varios sobrevivieron cerca del centro de la explosión de Hiroshima y aún siguen creciendo.",
+      "id": "nat-0108",
+      "options": ["Abedul", "Ginkgo", "Olivo", "Baobab"],
+      "question": "¿Qué árbol se llama «fósil viviente» porque apenas ha cambiado en unos 200 millones de años?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Mercurio da la vuelta al Sol en solo 88 días terrestres, el año más corto de todos los planetas.",
+      "id": "sci-0001",
+      "options": ["Mercurio", "Venus", "Tierra", "Marte"],
+      "question": "¿Qué planeta es el más cercano al Sol?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "La densa atmósfera de dióxido de carbono de Venus atrapa el calor, y su superficie alcanza unos 465 °C, más que la de Mercurio.",
+      "id": "sci-0004",
+      "options": ["Venus", "Marte", "Mercurio", "Júpiter"],
+      "question": "¿Cuál es el planeta más caliente del sistema solar?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Júpiter tiene más del doble de masa que todos los demás planetas juntos; en su interior cabrían unas 1300 Tierras.",
+      "id": "sci-0002",
+      "options": ["Neptuno", "Urano", "Saturno", "Júpiter"],
+      "question": "¿Cuál es el planeta más grande del sistema solar?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "A unos 300 000 km/s, la luz podría dar la vuelta a la Tierra unas siete veces y media en un solo segundo.",
+      "id": "sci-0010",
+      "options": [
+        "3 millones de km/s",
+        "30 000 km/s",
+        "300 000 km/s",
+        "3000 km/s"
+      ],
+      "question": "¿A qué velocidad viaja aproximadamente la luz en el vacío?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Ío, luna de Júpiter, tiene cientos de volcanes activos, calentados por el efecto de marea que ejerce la gravedad de Júpiter.",
+      "id": "sci-0019",
+      "options": ["Ío", "Calisto", "Fobos", "Europa"],
+      "question": "¿Cuál es el cuerpo con más actividad volcánica del sistema solar?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Marte parece rojo porque su superficie polvorienta es rica en óxido de hierro, es decir, herrumbre.",
+      "id": "sci-0003",
+      "options": ["Venus", "Mercurio", "Marte", "Júpiter"],
+      "question": "¿Qué planeta es conocido como el planeta rojo?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Próxima Centauri está a unos 4,2 años luz, así que su luz tarda más de cuatro años en llegarnos.",
+      "id": "sci-0012",
+      "options": ["Sirio", "Estrella Polar", "Betelgeuse", "Próxima Centauri"],
+      "question": "¿Qué estrella es la más cercana al Sol?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "El eje de Urano está inclinado unos 98°, así que cada polo recibe unos 42 años de luz solar seguidos de 42 años de oscuridad.",
+      "id": "sci-0013",
+      "options": ["Saturno", "Venus", "Neptuno", "Urano"],
+      "question": "¿Qué planeta gira inclinado de lado?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Sagitario A* tiene unos 4 millones de veces la masa del Sol; su primera imagen se publicó en 2022.",
+      "id": "sci-0021",
+      "options": [
+        "La estrella más brillante de Sagitario",
+        "Una nebulosa visible a simple vista",
+        "El agujero negro del centro galáctico",
+        "Una sonda que salió del sistema solar"
+      ],
+      "question": "¿Qué es Sagitario A*?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Fe viene del latín ferrum; en masa, el hierro es el elemento más abundante de la Tierra en su conjunto, sobre todo en el núcleo.",
+      "id": "sci-0006",
+      "options": ["Plomo", "Hierro", "Flúor", "Francio"],
+      "question": "¿Qué elemento tiene el símbolo químico Fe?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Las plantas combinan dióxido de carbono y agua usando la luz solar para fabricar azúcar, y liberan oxígeno como subproducto.",
+      "id": "sci-0007",
+      "options": [
+        "Monóxido de carbono",
+        "Nitrógeno",
+        "Oxígeno",
+        "Dióxido de carbono"
+      ],
+      "question": "¿Qué gas toman las plantas del aire para la fotosíntesis?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Ganímedes, luna de Júpiter, es más grande que el planeta Mercurio y es la única luna conocida con campo magnético propio.",
+      "id": "sci-0016",
+      "options": ["Titán", "Calisto", "Ío", "Ganímedes"],
+      "question": "¿Cuál es la luna más grande del sistema solar?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "En 1868 los astrónomos vieron una línea amarilla desconocida en la luz solar; el elemento recibió su nombre de Helios, el dios griego del Sol.",
+      "id": "sci-0025",
+      "options": [
+        "En la luz del Sol",
+        "En gases volcánicos",
+        "En un meteorito",
+        "En el agua de mar"
+      ],
+      "question": "¿Dónde se detectó el helio por primera vez, antes de encontrarlo en la Tierra?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "El nitrógeno es alrededor del 78 % del aire que respiramos; el oxígeno, alrededor del 21 %.",
+      "id": "sci-0008",
+      "options": ["Dióxido de carbono", "Argón", "Oxígeno", "Nitrógeno"],
+      "question": "¿Qué gas forma la mayor parte de la atmósfera terrestre?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Titán, luna de Saturno, es el único lugar conocido aparte de la Tierra con lagos líquidos estables en su superficie.",
+      "id": "sci-0017",
+      "options": ["Ío", "Titán", "Europa", "Tritón"],
+      "question": "¿Qué luna tiene una atmósfera densa y lagos de metano líquido?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "El monte Olimpo es unas dos veces y media más alto que el Everest y mide unos 600 km de diámetro.",
+      "id": "sci-0020",
+      "options": ["Tierra", "Marte", "Venus", "Mercurio"],
+      "question": "El monte Olimpo, uno de los volcanes más altos del sistema solar, ¿en qué planeta está?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "La Tierra alcanza su punto más cercano, el perihelio, a principios de enero, durante el invierno del hemisferio norte.",
+      "id": "sci-0043",
+      "options": ["Marzo", "Enero", "Julio", "Octubre"],
+      "question": "¿En qué mes está la Tierra más cerca del Sol?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "El Apolo 11 alunizó el 20 de julio de 1969; como en la Luna no hay viento, las huellas de los astronautas pueden durar millones de años.",
+      "id": "sci-0011",
+      "options": ["1969", "1972", "1961", "1965"],
+      "question": "¿En qué año caminaron los humanos por primera vez sobre la Luna?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Andrómeda está a unos 2,5 millones de años luz y es el objeto más lejano que se ve fácilmente a simple vista.",
+      "id": "sci-0022",
+      "options": ["Andrómeda", "Sombrero", "Molinete", "Remolino"],
+      "question": "¿Cuál es la gran galaxia espiral más cercana a la Vía Láctea?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Desde 2006, Plutón se clasifica como planeta enano, lo que deja ocho planetas, de Mercurio a Neptuno.",
+      "id": "sci-0015",
+      "options": ["Ocho", "Nueve", "Diez", "Siete"],
+      "question": "¿Cuántos planetas hay en nuestro sistema solar?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Un pH de 7 es neutro; cada punto que se baja en la escala de pH significa diez veces más acidez.",
+      "id": "sci-0030",
+      "options": ["0", "5", "7", "14"],
+      "question": "¿Cuál es el pH del agua pura a 25 °C?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Los astronautas dejaron espejos en la Luna, y los láseres que rebotan en ellos permiten a los científicos medir ese alejamiento con precisión.",
+      "id": "sci-0046",
+      "options": ["Unos 3,8 cm", "Unos 3,8 m", "Unos 38 cm", "Unos 3,8 mm"],
+      "question": "¿Aproximadamente cuánto se aleja la Luna de la Tierra cada año?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La Gran Mancha Roja es una tormenta más ancha que la Tierra que lleva activa al menos 150 años.",
+      "id": "sci-0018",
+      "options": ["Saturno", "Neptuno", "Júpiter", "Marte"],
+      "question": "¿En qué planeta está la tormenta gigante llamada Gran Mancha Roja?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Francis Beaufort la creó en 1805 para los marinos; describe el viento por su efecto sobre el mar y las velas.",
+      "id": "sci-0031",
+      "options": [
+        "Escala Kelvin",
+        "Escala de Mohs",
+        "Escala de Richter",
+        "Escala Beaufort"
+      ],
+      "question": "¿Qué escala describe la fuerza del viento desde la calma (0) hasta huracán (12)?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Ordena los minerales según cuál puede rayar a cuál, desde el talco (1) hasta el diamante (10).",
+      "id": "sci-0032",
+      "options": [
+        "La acidez del agua",
+        "La velocidad del viento",
+        "La dureza de los minerales",
+        "La fuerza de los terremotos"
+      ],
+      "question": "¿Qué mide la escala de Mohs?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "En Neptuno los vientos pueden superar los 2000 km/h, más que la velocidad del sonido en la Tierra.",
+      "id": "sci-0052",
+      "options": ["Saturno", "Júpiter", "Neptuno", "Urano"],
+      "question": "¿Qué planeta tiene los vientos más rápidos del sistema solar?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "El hidrógeno es el elemento más ligero y abundante del universo: forma alrededor de tres cuartas partes de la materia ordinaria.",
+      "id": "sci-0024",
+      "options": ["Carbono", "Oxígeno", "Helio", "Hidrógeno"],
+      "question": "¿Qué elemento tiene el número atómico 1?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "El cero absoluto es la temperatura más baja posible; los científicos han enfriado átomos hasta quedarse a una milmillonésima de grado de él.",
+      "id": "sci-0033",
+      "options": ["−273,15 °C", "−173,15 °C", "−373,15 °C", "−233,15 °C"],
+      "question": "¿A cuánto equivale el cero absoluto en la escala Celsius?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "El mercurio se congela a unos −39 °C, y por eso se usó durante mucho tiempo en los termómetros.",
+      "id": "sci-0026",
+      "options": ["Plomo", "Mercurio", "Zinc", "Estaño"],
+      "question": "¿Qué metal es líquido a temperatura ambiente?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "−40 °C equivalen a −40 °F, el único punto en que coinciden ambas escalas.",
+      "id": "sci-0034",
+      "options": ["−32 grados", "0 grados", "−40 grados", "100 grados"],
+      "question": "¿A qué temperatura marcan el mismo número las escalas Celsius y Fahrenheit?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Ceres está clasificado como planeta enano y concentra una gran parte de la masa total del cinturón de asteroides.",
+      "id": "sci-0055",
+      "options": ["Vesta", "Ceres", "Palas", "Eros"],
+      "question": "¿Cuál es el objeto más grande del cinturón principal de asteroides?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "El diamante encabeza la escala de dureza de Mohs con un 10, y solo otro diamante puede rayarlo.",
+      "id": "sci-0027",
+      "options": ["Topacio", "Diamante", "Cuarzo", "Corindón"],
+      "question": "¿Cuál es el material natural más duro?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La única diferencia es cómo se ordenan los átomos de carbono: redes rígidas en 3D en el diamante y láminas que se deslizan en el grafito del lápiz.",
+      "id": "sci-0028",
+      "options": ["Azufre", "Silicio", "Boro", "Carbono"],
+      "question": "El diamante y el grafito están formados por ¿qué elemento?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "El sonido se propaga a unos 5900 m/s en el acero, unas 17 veces más rápido que en el aire.",
+      "id": "sci-0037",
+      "options": ["Aire", "Gas helio", "Acero", "Agua"],
+      "question": "¿Por cuál de estos medios viaja más rápido el sonido?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Aunque Neptuno está más lejos, Urano desprende muy poco calor interno, y su atmósfera ha llegado a unos −224 °C.",
+      "id": "sci-0060",
+      "options": ["Urano", "Mercurio", "Saturno", "Neptuno"],
+      "question": "¿En qué planeta se ha medido la temperatura atmosférica más baja del sistema solar?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "El cloruro de sodio está formado por sodio, un metal que reacciona violentamente con el agua, y cloro, un gas venenoso.",
+      "id": "sci-0029",
+      "options": ["NaOH", "CaCl₂", "NaCl", "KCl"],
+      "question": "¿Cuál es la fórmula química de la sal de mesa?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "El núcleo interno está casi tan caliente como la superficie del Sol, pero sigue siendo sólido debido a la enorme presión.",
+      "id": "sci-0039",
+      "options": [
+        "Oro y plata",
+        "Plomo y estaño",
+        "Cobre y zinc",
+        "Hierro y níquel"
+      ],
+      "question": "¿De qué metales está compuesto principalmente el núcleo de la Tierra?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Un newton equivale aproximadamente al peso de una manzana pequeña sostenida en la mano.",
+      "id": "sci-0035",
+      "options": ["Newton", "Pascal", "Vatio", "Julio"],
+      "question": "¿Cuál es la unidad de fuerza del SI?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "La troposfera llega hasta unos 8–18 km de altura y contiene unas tres cuartas partes de la masa de la atmósfera.",
+      "id": "sci-0040",
+      "options": ["Mesosfera", "Troposfera", "Termosfera", "Estratosfera"],
+      "question": "¿En qué capa de la atmósfera ocurren casi todos los fenómenos meteorológicos?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Mercurio y Venus están demasiado cerca del Sol para retener lunas con facilidad; la Tierra tiene una y Marte, dos.",
+      "id": "sci-0061",
+      "options": [
+        "Mercurio y Venus",
+        "Venus y Urano",
+        "Mercurio y Marte",
+        "Marte y Venus"
+      ],
+      "question": "¿Qué dos planetas no tienen lunas?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Einstein publicó la relatividad general en 1915; los satélites GPS deben corregir sus efectos para mantener la precisión.",
+      "id": "sci-0038",
+      "options": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Niels Bohr",
+        "Max Planck"
+      ],
+      "question": "¿Qué científico desarrolló la teoría de la relatividad general?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Si todo el ozono se llevara a la presión del nivel del suelo, formaría una capa de solo unos 3 mm de grosor.",
+      "id": "sci-0041",
+      "options": ["Estratosfera", "Troposfera", "Mesosfera", "Exosfera"],
+      "question": "¿En qué capa de la atmósfera se encuentra principalmente la capa de ozono?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Es lo que se llama acoplamiento de marea; la cara oculta recibe la misma luz solar, pero no se fotografió hasta 1959.",
+      "id": "sci-0045",
+      "options": [
+        "La Tierra tapa la otra cara",
+        "No gira en absoluto",
+        "Gira una vez por órbita",
+        "La cara oculta siempre está oscura"
+      ],
+      "question": "¿Por qué vemos siempre la misma cara de la Luna?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "El Sol también atrae los océanos; cuando el Sol y la Luna se alinean, se producen las «mareas vivas», especialmente altas.",
+      "id": "sci-0044",
+      "options": [
+        "El campo magnético terrestre",
+        "El viento sobre el océano",
+        "La gravedad de la Luna",
+        "Los terremotos submarinos"
+      ],
+      "question": "¿Qué causa principalmente las mareas oceánicas?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "La Unión Astronómica Internacional fijó las 88 constelaciones y sus límites en la década de 1920.",
+      "id": "sci-0047",
+      "options": ["112", "88", "64", "48"],
+      "question": "¿Cuántas constelaciones reconocen oficialmente los astrónomos?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Las primeras imágenes del Hubble salieron borrosas por un defecto del espejo, que corrigió una tripulación del transbordador espacial en 1993.",
+      "id": "sci-0048",
+      "options": ["Kepler", "Hubble", "James Webb", "Spitzer"],
+      "question": "¿Qué telescopio espacial se lanzó en 1990 y fue reparado después por astronautas?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Urano fue el primer planeta descubierto con telescopio; Herschel era además músico y compositor profesional.",
+      "id": "sci-0069",
+      "options": [
+        "Giovanni Cassini",
+        "Galileo Galilei",
+        "William Herschel",
+        "Edmond Halley"
+      ],
+      "question": "¿Quién descubrió el planeta Urano en 1781?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "El Sputnik 1 era una esfera metálica de unos 58 cm de diámetro que emitía pitidos de radio que cualquiera podía captar.",
+      "id": "sci-0049",
+      "options": ["Sputnik 1", "Explorer 1", "Vostok 1", "Telstar 1"],
+      "question": "¿Cuál fue el primer satélite artificial, lanzado en 1957?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "El cometa Halley apareció por última vez en 1986 y volverá en 2061; se puede ver a simple vista.",
+      "id": "sci-0053",
+      "options": [
+        "Cada 1000 años",
+        "Cada 150 años",
+        "Cada 12 años",
+        "Cada 75–76 años"
+      ],
+      "question": "¿Aproximadamente cada cuánto vuelve el cometa Halley a los cielos de la Tierra?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Gagarin dio una vuelta a la Tierra el 12 de abril de 1961; el vuelo duró unos 108 minutos.",
+      "id": "sci-0050",
+      "options": [
+        "John Glenn",
+        "Neil Armstrong",
+        "Alexéi Leónov",
+        "Yuri Gagarin"
+      ],
+      "question": "¿Quién fue el primer ser humano en viajar al espacio?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Sus nombres significan «miedo» y «terror»; Fobos se acerca lentamente en espiral y se desintegrará dentro de decenas de millones de años.",
+      "id": "sci-0056",
+      "options": ["Júpiter", "Saturno", "Marte", "Neptuno"],
+      "question": "Fobos y Deimos son las lunas de ¿qué planeta?"
+    }
+  ]
+}
