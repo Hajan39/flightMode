@@ -3,15 +3,6 @@
   "lang": "de",
   "questions": [
     {
-      "answer": 1,
-      "category": "history",
-      "difficulty": 1,
-      "explanation": "Machu Picchu entstand im 15. Jahrhundert hoch in den peruanischen Anden, vermutlich als Landsitz des Inka-Herrschers Pachacútec.",
-      "id": "his-0002",
-      "options": ["Azteken", "Inka", "Olmeken", "Maya"],
-      "question": "Welche Kultur erbaute die Bergfestung Machu Picchu?"
-    },
-    {
       "answer": 3,
       "category": "history",
       "difficulty": 2,
@@ -269,7 +260,7 @@
         "Handelsstädten",
         "Klöstern"
       ],
-      "question": "Die mittelalterliche Hanse war ein Bündnis von was?"
+      "question": "Die mittelalterliche Hanse war ein Bündnis von …?"
     },
     {
       "answer": 1,
@@ -289,7 +280,7 @@
       "answer": 2,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Der Codex Hammurapi, um 1754 v. Chr. in eine Basaltstele gemeißelt, ist heute im Louvre in Paris ausgestellt.",
+      "explanation": "Der Codex Hammurabi, um 1754 v. Chr. in eine Basaltstele gemeißelt, ist heute im Louvre in Paris ausgestellt.",
       "id": "his-0065",
       "options": [
         "Nebukadnezar II.",
@@ -421,7 +412,7 @@
       "explanation": "Der Architekt Michael Ventris zeigte, dass die mykenischen Tontafeln Griechisch festhielten – Jahrhunderte vor Homer.",
       "id": "his-0104",
       "options": ["Phönizisch", "Griechisch", "Ägyptisch", "Latein"],
-      "question": "Linear B, 1952 entziffert, erwies sich als frühe Form welcher Sprache?"
+      "question": "Die 1952 entzifferte Schrift Linear B erwies sich als frühe Form welcher Sprache?"
     },
     {
       "answer": 3,
@@ -572,7 +563,7 @@
       "explanation": "Die Medici förderten Künstler wie Botticelli und Michelangelo; aus ihrer Kunstsammlung wurden die Uffizien.",
       "id": "his-0081",
       "options": ["Sforza", "Fugger", "Medici", "Borgia"],
-      "question": "Welche Bankiersfamilie war im Florenz der Renaissance als Kunstmäzen berühmt?"
+      "question": "Welche Bankiersfamilie war im Florenz der Renaissance für ihre Kunstförderung berühmt?"
     },
     {
       "answer": 3,
@@ -784,7 +775,7 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Aristoteles unterrichtete Alexander etwa drei Jahre lang in Makedonien, beginnend, als der Prinz 13 war.",
+      "explanation": "Aristoteles unterrichtete Alexander etwa drei Jahre lang in Makedonien, ab dem 13. Lebensjahr des Prinzen.",
       "id": "his-0080",
       "options": ["Sokrates", "Pythagoras", "Platon", "Aristoteles"],
       "question": "Welcher Philosoph unterrichtete den jungen Alexander den Großen?"
@@ -941,7 +932,7 @@
       "answer": 1,
       "category": "history",
       "difficulty": 1,
-      "explanation": "Der Maya-Kalender schloss am 21. Dezember 2012 lediglich einen großen Zyklus ab; die Maya selbst sagten nie einen Weltuntergang voraus.",
+      "explanation": "Der Maya-Kalender schloss am 21. Dezember 2012 lediglich einen großen Zyklus ab; Maya-Forscher haben nie einen Weltuntergang vorhergesagt.",
       "id": "his-0037",
       "options": ["Inka", "Maya", "Olmeken", "Azteken"],
       "question": "Der Kalender welcher Kultur („Lange Zählung“) löste Mythen vom „Weltuntergang 2012“ aus?"
@@ -1089,15 +1080,6 @@
       "question": "Welche Nationalität hat Agatha Christies Detektiv Hercule Poirot?"
     },
     {
-      "answer": 3,
-      "category": "culture",
-      "difficulty": 3,
-      "explanation": "Die meisten Opern zu Mozarts Zeit waren italienisch, doch „Die Zauberflöte“ (1791) entstand auf Deutsch für ein Wiener Theater.",
-      "id": "cul-0093",
-      "options": ["Latein", "Französisch", "Italienisch", "Deutsch"],
-      "question": "In welcher Sprache wird Mozarts Oper „Die Zauberflöte“ gesungen?"
-    },
-    {
       "answer": 1,
       "category": "history",
       "difficulty": 2,
@@ -1194,7 +1176,7 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Masken erlaubten Venezianern jedes Standes, sich frei unter die Leute zu mischen; Maskenmacher sind bis heute ein wichtiges Handwerk der Stadt.",
+      "explanation": "Masken erlaubten Venezianern jedes Standes, sich frei unter die Leute zu mischen; die Maskenherstellung ist bis heute ein wichtiges Handwerk der Stadt.",
       "id": "cul-0051",
       "options": ["Rio de Janeiro", "Köln", "Nizza", "Venedig"],
       "question": "Der Karneval welcher Stadt ist für kunstvolle Masken wie die Bauta berühmt?"
@@ -1357,7 +1339,7 @@
       "explanation": "Portugiesische Einwanderer aus Madeira kamen 1879 mit kleinen gitarrenähnlichen Instrumenten wie der Machete an.",
       "id": "cul-0090",
       "options": ["Mexiko", "Japan", "Philippinen", "Madeira"],
-      "question": "Die Ukulele entstand auf Hawaii aus Instrumenten, die Einwanderer von wo mitbrachten?"
+      "question": "Woher kamen die Einwanderer, aus deren Instrumenten auf Hawaii die Ukulele entstand?"
     },
     {
       "answer": 3,
@@ -1445,7 +1427,7 @@
       "answer": 2,
       "category": "history",
       "difficulty": 1,
-      "explanation": "Der einheimische Name Mosi-oa-Tunya bedeutet wegen der riesigen Gischtwolke „der donnernde Rauch“.",
+      "explanation": "Livingstone erreichte die Fälle 1855 und benannte sie nach Königin Victoria; sie sind etwa 1,7 km breit.",
       "id": "his-0045",
       "options": [
         "Salto Ángel",
@@ -1821,7 +1803,7 @@
         "J. S. Bach",
         "Joseph Haydn"
       ],
-      "question": "Welcher Komponist schrieb das Oratorium „Messiah“, das in Dublin uraufgeführt wurde?"
+      "question": "Welcher Komponist schrieb das Oratorium „Der Messias“ („Messiah“), das in Dublin uraufgeführt wurde?"
     },
     {
       "answer": 1,
@@ -2106,7 +2088,7 @@
         "Marie Curie",
         "Ernest Rutherford"
       ],
-      "question": "Wer entdeckte 1895 die Strahlen, die ihr Entdecker selbst „X-Strahlen“ nannte?"
+      "question": "Wer entdeckte 1895 die „X-Strahlen“, wie er sie selbst nannte?"
     },
     {
       "answer": 2,
@@ -2212,7 +2194,7 @@
         "Daniel Fahrenheit",
         "Lord Kelvin"
       ],
-      "question": "Welcher Wissenschaftler schuf 1724 eine Temperaturskala und das Quecksilberthermometer?"
+      "question": "Welcher Wissenschaftler erfand das Quecksilberthermometer und schlug 1724 eine Temperaturskala vor?"
     },
     {
       "answer": 3,
@@ -2429,7 +2411,7 @@
         "Pantheon",
         "Hephaistostempel"
       ],
-      "question": "Welcher Tempel auf der Akropolis von Athen war Athena Parthenos geweiht?"
+      "question": "Welcher Tempel auf der Akropolis von Athen war der Göttin Athena geweiht?"
     },
     {
       "answer": 2,
@@ -2679,7 +2661,7 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 1,
-      "explanation": "Ein Dieselmotor zündet seinen Kraftstoff, indem er Luft so stark zusammenpresst, bis sie heiß genug ist.",
+      "explanation": "Diesel ließ seinen Motor 1892 patentieren, und der Motortyp trägt bis heute seinen Namen; auf der Pariser Weltausstellung 1900 lief einer mit Erdnussöl.",
       "id": "inv-0014",
       "options": [
         "Nikolaus Otto",
@@ -2821,6 +2803,20 @@
       "id": "inv-0090",
       "options": ["Wasser", "Getreide", "Olivenöl", "Wein"],
       "question": "Was gab der Münzautomat des Heron von Alexandria im 1. Jahrhundert aus?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Windmühlen pumpten Wasser aus tief liegenden Poldern; die 19 Mühlen von Kinderdijk sind UNESCO-Welterbe.",
+      "id": "inv-0026",
+      "options": [
+        "Entwässerung von Land",
+        "Stromerzeugung",
+        "Signale für Schiffe",
+        "Antrieb von Leuchtfeuern"
+      ],
+      "question": "Was war die Hauptaufgabe der meisten historischen Windmühlen in den Niederlanden?"
     }
   ]
 }

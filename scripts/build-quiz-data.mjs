@@ -191,6 +191,11 @@ for (const id of bundledIds) {
 function loadTranslations(lang) {
   const map = new Map();
   const add = (raw, where) => {
+    // Reviewers mark questions that don't work in one language (e.g. the
+    // answer hides in the translated wording) as `<lang>_drop`.
+    if (raw?.[`${lang}_drop`] === true) {
+      return;
+    }
     const q = toAppQuestion(raw);
     const en = q && poolById.get(q.id);
     if (!(q && en)) {

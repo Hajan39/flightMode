@@ -3,19 +3,10 @@
   "lang": "en",
   "questions": [
     {
-      "answer": 1,
-      "category": "history",
-      "difficulty": 1,
-      "explanation": "Machu Picchu was built in the 15th century high in the Peruvian Andes, probably as an estate for the Inca emperor Pachacuti.",
-      "id": "his-0002",
-      "options": ["Aztec", "Inca", "Olmec", "Maya"],
-      "question": "Which civilisation built the mountain citadel of Machu Picchu?"
-    },
-    {
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Zheng He's seven voyages reached as far as East Africa, with some ships far larger than European ships of the time.",
+      "explanation": "Zheng He's seven voyages reached as far as East Africa, with some ships far larger than any European vessel of the time.",
       "id": "his-0063",
       "options": ["Zhang Qian", "Faxian", "Xuanzang", "Zheng He"],
       "question": "Which Chinese admiral led huge \"treasure fleets\" in the early 1400s?"
@@ -600,7 +591,7 @@
       "answer": 2,
       "category": "history",
       "difficulty": 3,
-      "explanation": "The name Paris comes from the Parisii, a Gaulish tribe; Londinium was London, Aquincum Budapest, and Vindobona Vienna.",
+      "explanation": "The name Paris comes from the Parisii, a Gaulish tribe; Londinium was London, Aquincum Budapest and Vindobona Vienna.",
       "id": "his-0110",
       "options": ["Londinium", "Aquincum", "Lutetia", "Vindobona"],
       "question": "What was the Roman name for the settlement that became Paris?"
@@ -653,7 +644,7 @@
         "A royal military parade",
         "A medieval pilgrimage to Spain"
       ],
-      "question": "What was the \"Grand Tour\" in 17th–18th century Europe?"
+      "question": "What was the \"Grand Tour\" in 17th- and 18th-century Europe?"
     },
     {
       "answer": 1,
@@ -900,7 +891,7 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Dias called it the \"Cape of Storms\"; it was renamed to the more hopeful Cape of Good Hope.",
+      "explanation": "Dias called it the \"Cape of Storms\"; it was later renamed the more hopeful Cape of Good Hope.",
       "id": "his-0076",
       "options": [
         "Pedro Cabral",
@@ -964,7 +955,7 @@
       "answer": 2,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Xuanzang walked about 16 years and brought back hundreds of Buddhist texts; the novel turns his trip into an adventure with the Monkey King.",
+      "explanation": "Xuanzang travelled for about 16 years and brought back hundreds of Buddhist texts; the novel turns his trip into an adventure with the Monkey King.",
       "id": "his-0120",
       "options": ["Jianzhen", "Faxian", "Xuanzang", "Zhang Qian"],
       "question": "Which Chinese monk's 7th-century journey to India inspired the novel \"Journey to the West\"?"
@@ -1134,7 +1125,7 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Masks let Venetians of any class mingle freely; mask makers are still an important craft in the city.",
+      "explanation": "Masks let Venetians of any class mingle freely; mask making is still an important craft in the city.",
       "id": "cul-0051",
       "options": ["Rio de Janeiro", "Cologne", "Nice", "Venice"],
       "question": "Which city's carnival is famous for elaborate masks such as the bauta?"
@@ -1312,7 +1303,7 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Over 100 tonnes of over-ripe tomatoes are thrown in the streets each August; the festival dates back to 1945.",
+      "explanation": "More than 100 tonnes of overripe tomatoes are thrown in the streets each August; the festival dates back to 1945.",
       "id": "cul-0049",
       "options": ["Pamplona", "Valencia", "Buñol", "Seville"],
       "question": "In which Spanish town is the tomato-throwing festival La Tomatina held?"
@@ -1390,7 +1381,7 @@
       "answer": 2,
       "category": "history",
       "difficulty": 1,
-      "explanation": "The local name, Mosi-oa-Tunya, means \"the smoke that thunders\" because of its huge cloud of spray.",
+      "explanation": "Livingstone reached the falls in 1855 and named them after Queen Victoria; they are about 1.7 km wide.",
       "id": "his-0045",
       "options": [
         "Angel Falls",
@@ -1812,7 +1803,7 @@
       "explanation": "Michelangelo carved David from a single block of marble that other sculptors had abandoned decades earlier.",
       "id": "cul-0020",
       "options": ["Michelangelo", "Antonio Canova", "Raphael", "Auguste Rodin"],
-      "question": "Who sculpted the 5-metre marble David completed in 1504?"
+      "question": "Who sculpted the 5-metre marble David, completed in 1504?"
     },
     {
       "answer": 0,
@@ -2152,7 +2143,7 @@
         "Daniel Fahrenheit",
         "Lord Kelvin"
       ],
-      "question": "Which scientist created a temperature scale in 1724 and the mercury thermometer?"
+      "question": "Which scientist invented the mercury thermometer and proposed a temperature scale in 1724?"
     },
     {
       "answer": 3,
@@ -2369,7 +2360,7 @@
         "Pantheon",
         "Temple of Hephaestus"
       ],
-      "question": "Which temple on the Athens Acropolis was dedicated to Athena Parthenos?"
+      "question": "Which temple on the Athens Acropolis was dedicated to the goddess Athena?"
     },
     {
       "answer": 2,
@@ -2624,7 +2615,7 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 1,
-      "explanation": "A diesel engine ignites its fuel simply by squeezing air until it becomes hot enough.",
+      "explanation": "Diesel patented his engine in 1892, and the engine type still bears his name; at the 1900 Paris World's Fair one ran on peanut oil.",
       "id": "inv-0014",
       "options": [
         "Nikolaus Otto",
@@ -2761,6 +2752,20 @@
       "id": "inv-0090",
       "options": ["Water", "Grain", "Olive oil", "Wine"],
       "question": "What did Hero of Alexandria's coin-operated machine dispense in the 1st century?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Windmills pumped water out of low-lying polders; the 19 mills at Kinderdijk are a UNESCO World Heritage Site.",
+      "id": "inv-0026",
+      "options": [
+        "Draining water from land",
+        "Generating electricity",
+        "Signalling to ships",
+        "Powering harbour beacon lights"
+      ],
+      "question": "What was the main job of most historic windmills in the Netherlands?"
     }
   ]
 }

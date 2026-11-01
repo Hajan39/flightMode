@@ -3,20 +3,6 @@
   "lang": "en",
   "questions": [
     {
-      "answer": 0,
-      "category": "inventions",
-      "difficulty": 1,
-      "explanation": "Windmills pumped water out of low-lying polders; the 19 mills at Kinderdijk are a UNESCO World Heritage Site.",
-      "id": "inv-0026",
-      "options": [
-        "Draining water from land",
-        "Generating electricity",
-        "Signalling to ships",
-        "Powering harbour beacon lights"
-      ],
-      "question": "What was the main job of most historic windmills in the Netherlands?"
-    },
-    {
       "answer": 2,
       "category": "inventions",
       "difficulty": 1,
@@ -166,7 +152,7 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "It was found in a cave near Dunhuang, China, and is now in the British Library.",
+      "explanation": "Printed from carved woodblocks, it was found in a cave near Dunhuang, China, and is now in the British Library.",
       "id": "inv-0085",
       "options": [
         "Stencils",
@@ -312,7 +298,7 @@
         "Isaac Newton",
         "Christiaan Huygens"
       ],
-      "question": "In 1703, which thinker published a European study of binary arithmetic?"
+      "question": "In 1703, which thinker published an influential paper on binary arithmetic?"
     },
     {
       "answer": 1,
@@ -355,7 +341,7 @@
       "answer": 1,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "\"Orang\" means person and \"hutan\" means forest; orangutans share about 97 % of their DNA with humans.",
+      "explanation": "\"Orang\" means person and \"hutan\" means forest; orangutans share about 97% of their DNA with humans.",
       "id": "lang-0028",
       "options": [
         "Red monkey",
@@ -451,7 +437,7 @@
         "Washing machine",
         "Refrigerator"
       ],
-      "question": "Which household device did Hubert Cecil Booth invent in 1901, pulled by horses?"
+      "question": "Hubert Cecil Booth's horse-drawn invention of 1901 was an early version of which household device?"
     },
     {
       "answer": 2,
@@ -544,8 +530,8 @@
       "id": "inv-0034",
       "options": [
         "Red, green and blue",
-        "Orange, purple, green",
-        "Cyan, magenta, yellow",
+        "Orange, purple and green",
+        "Cyan, magenta and yellow",
         "Red, yellow and blue"
       ],
       "question": "Each pixel on a typical screen mixes light of which three colours?"
@@ -765,7 +751,7 @@
       "answer": 0,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "So \"Sahara Desert\" actually means \"Desert Desert\"; Arabic \"ṣaḥrāʾ\" means desert.",
+      "explanation": "Arabic \"ṣaḥrāʾ\" means desert, so \"Sahara Desert\" literally means \"Desert Desert\".",
       "id": "lang-0051",
       "options": ["Desert", "Sun", "Sand", "Dune sea"],
       "question": "In Arabic, what does the word \"Sahara\" mean?"
@@ -1160,7 +1146,7 @@
       "answer": 3,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "Inuit kayaks were made of driftwood or whalebone covered with sealskin, and were made to fit their paddler.",
+      "explanation": "Inuit kayaks were made of driftwood or whalebone covered with sealskin, and were built to fit their paddler.",
       "id": "lang-0043",
       "options": ["Māori", "Sámi", "Ainu", "Inuit"],
       "question": "The word \"kayak\" comes from the languages of which people?"
@@ -1192,7 +1178,7 @@
       "answer": 2,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "Romansh descends from Latin and is spoken by less than 1 % of the Swiss population, mostly in Graubünden.",
+      "explanation": "Romansh descends from Latin and is spoken by less than 1% of the Swiss population, mostly in Graubünden.",
       "id": "lang-0046",
       "options": ["Friulian", "Occitan", "Romansh", "Ladin"],
       "question": "Besides German, French and Italian, what is Switzerland's fourth national language?"
@@ -1308,7 +1294,7 @@
       "difficulty": 2,
       "explanation": "The event was first called \"International Winter Sports Week\" and was only later recognised as the first Winter Olympics.",
       "id": "sport-0037",
-      "options": ["Chamonix", "St. Moritz", "Innsbruck", "Oslo"],
+      "options": ["Chamonix", "St Moritz", "Innsbruck", "Oslo"],
       "question": "Where were the first Winter Olympics held, in 1924?"
     },
     {
@@ -1494,7 +1480,7 @@
       "explanation": "Rugby league, a separate code that split off in 1895, uses 13 players per side.",
       "id": "sport-0029",
       "options": ["12", "11", "13", "15"],
-      "question": "How many players are on a rugby union team on the field?"
+      "question": "How many players does a rugby union team have on the field?"
     },
     {
       "answer": 0,
@@ -1650,7 +1636,7 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "The pitch is 22 yards (20.12 m) long — the same length as a chain, an old surveying unit.",
+      "explanation": "The pitch is 20.12 m (22 yards) long — the same length as a chain, an old surveying unit.",
       "id": "sport-0055",
       "options": ["About 25 m", "About 30 m", "About 15 m", "About 20 m"],
       "question": "Roughly how long is a cricket pitch between the two sets of stumps?"
@@ -1716,7 +1702,7 @@
       "explanation": "The octagon shape lets drivers recognise a stop sign even from behind or when it is covered in snow.",
       "id": "misc-0003",
       "options": ["Six", "Ten", "Seven", "Eight"],
-      "question": "How many sides does a standard octagonal stop sign have?"
+      "question": "How many sides does the standard stop sign used in most countries have?"
     },
     {
       "answer": 1,
@@ -1813,12 +1799,12 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "One nautical mile is defined today as exactly 1,852 metres, close to one minute of arc along a meridian.",
+      "explanation": "Because a nautical mile matches one minute of arc, navigators can measure distances directly on the latitude scale of a chart.",
       "id": "misc-0076",
       "options": [
         "The view from a mast",
         "One minute of latitude",
-        "1,000 sailor's paces",
+        "1,000 sailors' paces",
         "One degree of longitude"
       ],
       "question": "The nautical mile was originally based on what?"
@@ -1882,7 +1868,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "It is named after Pope Gregory XIII and fixed a drift that had moved the calendar about 10 days away from the seasons.",
+      "explanation": "It is named after Pope Gregory XIII and corrected the Julian calendar's slow drift away from the seasons.",
       "id": "misc-0008",
       "options": ["Maya Long Count", "Gregorian", "Lunar Hijri", "Julian"],
       "question": "Which calendar, introduced in 1582, is used by most of the world today?"
@@ -2313,7 +2299,7 @@
         "Liberty Leading the People",
         "Mona Lisa"
       ],
-      "question": "Which famous painting became much more famous after it was stolen from the Louvre in 1911?"
+      "question": "Which painting became far more famous after it was stolen from the Louvre in 1911?"
     },
     {
       "answer": 3,
@@ -2571,7 +2557,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 2,
-      "explanation": "SOS was chosen because its Morse code, three dots, three dashes, three dots, is easy to send and recognise.",
+      "explanation": "SOS was chosen because its Morse code (three dots, three dashes, three dots) is easy to send and recognise.",
       "id": "misc-0061",
       "options": [
         "Send out help",
@@ -2585,7 +2571,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Albert Einstein lived just down the street while working on his theory of relativity.",
+      "explanation": "Albert Einstein lived just down the street from the Zytglogge while working on his special theory of relativity.",
       "id": "misc-0085",
       "options": ["Zytglogge", "Glockenspiel", "Torre dell'Orologio", "Orloj"],
       "question": "What is the name of Bern's medieval clock tower with moving figures?"

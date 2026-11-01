@@ -178,10 +178,10 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Switzerland has no official capital by law; Bern is the seat of government and is known as the 'federal city'.",
+      "explanation": "Switzerland has no official capital by law; Bern is the seat of government and is known as the \"federal city\".",
       "id": "geo-0052",
       "options": ["Bern", "Geneva", "Basel", "Zurich"],
-      "question": "Which city serves as the 'federal city' and seat of government of Switzerland?"
+      "question": "Which city serves as the \"federal city\" and seat of government of Switzerland?"
     },
     {
       "answer": 0,
@@ -223,7 +223,7 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "The Tigris and Euphrates later join to form the Shatt al-Arab; the land between them is Mesopotamia, 'between the rivers'.",
+      "explanation": "The Tigris and Euphrates later join to form the Shatt al-Arab; the land between them is Mesopotamia, \"between the rivers\".",
       "id": "geo-0054",
       "options": ["Tigris", "Indus", "Euphrates", "Jordan"],
       "question": "Which river flows through the city of Baghdad?"
@@ -271,7 +271,7 @@
       "explanation": "San Marino claims to be the world's oldest surviving republic, traditionally founded in the year 301.",
       "id": "geo-0034",
       "options": ["Malta", "Andorra", "Monaco", "San Marino"],
-      "question": "Which small republic is entirely surrounded by Italy, apart from Vatican City?"
+      "question": "Which small republic is completely surrounded by Italy?"
     },
     {
       "answer": 2,
@@ -304,7 +304,7 @@
       "answer": 2,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "'Ecuador' is simply the Spanish word for equator, which crosses the country just north of the capital, Quito.",
+      "explanation": "\"Ecuador\" is simply the Spanish word for equator, which crosses the country just north of the capital, Quito.",
       "id": "geo-0032",
       "options": [
         "The Tropic of Cancer",
@@ -409,10 +409,10 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "It comes from Geysir in south-west Iceland; its name is related to an Icelandic verb meaning 'to gush'.",
+      "explanation": "It comes from Geysir in south-west Iceland; its name is related to an Icelandic verb meaning \"to gush\".",
       "id": "geo-0041",
       "options": ["Iceland", "New Zealand", "Norway", "Japan"],
-      "question": "The English word 'geyser' comes from a hot spring in which country?"
+      "question": "The English word \"geyser\" comes from a hot spring in which country?"
     },
     {
       "answer": 2,
@@ -480,7 +480,7 @@
       "explanation": "Prague's historic centre survived largely intact through the 20th century and is a UNESCO World Heritage Site.",
       "id": "geo-0058",
       "options": ["Bruges", "Prague", "Vienna", "Kraków"],
-      "question": "Which European capital is nicknamed the 'City of a Hundred Spires'?"
+      "question": "Which European capital is nicknamed the \"City of a Hundred Spires\"?"
     },
     {
       "answer": 0,
@@ -559,16 +559,16 @@
       "answer": 1,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Greeks call their country Hellas or Elláda; 'Greece' comes from the Latin name Graecia.",
+      "explanation": "Greeks call their country Hellas or Elláda; \"Greece\" comes from the Latin name Graecia.",
       "id": "geo-0066",
       "options": ["Malta", "Greece", "Albania", "Cyprus"],
-      "question": "Which country's official name is the 'Hellenic Republic'?"
+      "question": "Which country's official name is the \"Hellenic Republic\"?"
     },
     {
       "answer": 1,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Mont Blanc, about 4,806 m, sits on the French-Italian border; a tunnel under it links the two countries.",
+      "explanation": "Mont Blanc, about 4,806 m, sits on the French–Italian border; a tunnel under it links the two countries.",
       "id": "geo-0063",
       "options": ["Grossglockner", "Mont Blanc", "Eiger", "Matterhorn"],
       "question": "Which is the highest mountain in the Alps?"
@@ -595,10 +595,10 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "'Nippon' roughly means 'origin of the sun', which is why Japan is called the Land of the Rising Sun.",
+      "explanation": "\"Nippon\" roughly means \"origin of the sun\", which is why Japan is called the Land of the Rising Sun.",
       "id": "geo-0067",
       "options": ["China", "Korea", "Vietnam", "Japan"],
-      "question": "The native name 'Nippon' belongs to which country?"
+      "question": "The native name \"Nippon\" belongs to which country?"
     },
     {
       "answer": 0,
@@ -616,13 +616,13 @@
       "explanation": "The nickname undersells it: Finland has roughly 188,000 lakes larger than 500 m².",
       "id": "geo-0068",
       "options": ["Canada", "Scotland", "Sweden", "Finland"],
-      "question": "Which country is nicknamed the 'Land of a Thousand Lakes'?"
+      "question": "Which country is nicknamed the \"Land of a Thousand Lakes\"?"
     },
     {
       "answer": 0,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Pamukkale means 'cotton castle'; its terraces are travertine, built up by calcium-rich spring water over thousands of years.",
+      "explanation": "Pamukkale means \"cotton castle\"; its terraces are travertine, built up by calcium-rich spring water over thousands of years.",
       "id": "geo-0074",
       "options": ["Turkey", "Greece", "Georgia", "Iran"],
       "question": "Pamukkale, with its white terraces of warm mineral pools, is in which country?"
@@ -658,7 +658,7 @@
       "answer": 2,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Wadi Rum's sandstone and granite mountains rise from reddish sand; scenes for the film 'The Martian' were shot there.",
+      "explanation": "Wadi Rum's sandstone and granite mountains rise from reddish sand; scenes for the film \"The Martian\" were shot there.",
       "id": "geo-0072",
       "options": ["Saudi Arabia", "Syria", "Jordan", "Egypt"],
       "question": "Wadi Rum, a red desert valley that has stood in for Mars in films, is in which country?"
@@ -685,7 +685,7 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Ha Long means 'descending dragon'; legend says a dragon formed the islands by thrashing its tail.",
+      "explanation": "Ha Long means \"descending dragon\"; legend says a dragon formed the islands by thrashing its tail.",
       "id": "geo-0073",
       "options": ["Vietnam", "Thailand", "Malaysia", "Philippines"],
       "question": "Ha Long Bay, dotted with about 1,600 limestone islands, is in which country?"
@@ -697,7 +697,7 @@
       "explanation": "The Maldives' average ground level is only about 1.5 m above the sea, so rising sea levels are a serious concern for its islands.",
       "id": "geo-0082",
       "options": ["Bangladesh", "Maldives", "Tuvalu", "Netherlands"],
-      "question": "Which country is the world's lowest-lying by average elevation?"
+      "question": "Which is the world's lowest-lying country by average elevation?"
     },
     {
       "answer": 0,
@@ -803,7 +803,7 @@
       "answer": 2,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "The Urals run about 2,500 km from the Arctic Ocean to Kazakhstan, and are among the oldest mountains on Earth.",
+      "explanation": "The Urals run about 2,500 km from the Arctic Ocean to Kazakhstan and are among the oldest mountains on Earth.",
       "id": "geo-0087",
       "options": [
         "Altai Mountains",
@@ -835,7 +835,7 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "In 1935 the government asked other countries to use the native name Iran, meaning 'land of the Aryans' (Iranians).",
+      "explanation": "In 1935 the government asked other countries to use the native name Iran, meaning \"land of the Aryans\" (Iranians).",
       "id": "geo-0089",
       "options": ["Afghanistan", "Iraq", "Turkey", "Iran"],
       "question": "Which country was known as Persia until 1935?"
@@ -897,13 +897,13 @@
       "explanation": "Bran Castle sits in Transylvania, though there is little evidence that Vlad the Impaler ever lived there.",
       "id": "geo-0097",
       "options": ["Serbia", "Bulgaria", "Romania", "Hungary"],
-      "question": "Bran Castle, marketed as 'Dracula's Castle', is in which country?"
+      "question": "Bran Castle, marketed as \"Dracula's Castle\", is in which country?"
     },
     {
       "answer": 3,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "The Faroes have about 70,000 sheep, and the name is thought to mean 'sheep islands'.",
+      "explanation": "The Faroes have about 70,000 sheep, and the name is thought to mean \"sheep islands\".",
       "id": "geo-0108",
       "options": ["United Kingdom", "Sweden", "Norway", "Denmark"],
       "question": "The Faroe Islands are a self-governing part of which kingdom?"
@@ -921,7 +921,7 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "A layer of cloud often pours over the flat summit; locals call it the 'tablecloth'.",
+      "explanation": "A layer of cloud often pours over the flat summit; locals call it the \"tablecloth\".",
       "id": "geo-0105",
       "options": ["Nairobi", "Durban", "Johannesburg", "Cape Town"],
       "question": "Which city lies beneath the flat-topped Table Mountain?"
@@ -939,7 +939,7 @@
       "answer": 2,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "The islands are named after the Latin for dogs, canis, not after canary birds; the birds were named after the islands.",
+      "explanation": "The islands are named after the Latin word for dog, canis, not after canary birds; the birds were named after the islands.",
       "id": "geo-0107",
       "options": ["Morocco", "Italy", "Spain", "Portugal"],
       "question": "The Canary Islands belong to which country?"
@@ -1026,7 +1026,7 @@
       "answer": 1,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Dutch explorers thought quokkas were giant rats and named the island 'Rotte nest', meaning rat's nest.",
+      "explanation": "Dutch explorers thought quokkas were giant rats and named the island \"Rotte nest\", meaning rat's nest.",
       "id": "nat-0028",
       "options": [
         "K'gari (Fraser Island)",
@@ -1238,10 +1238,10 @@
       "answer": 1,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Tardigrades can dry out into a dormant 'tun' state and survive extreme cold, radiation and the vacuum of space.",
+      "explanation": "Tardigrades can dry out into a dormant \"tun\" state and survive extreme cold, radiation and the vacuum of space.",
       "id": "nat-0040",
       "options": ["Nematodes", "Tardigrades", "Copepods", "Rotifers"],
-      "question": "Which tiny animals, nicknamed 'water bears', have survived exposure to outer space?"
+      "question": "Which tiny animals, nicknamed \"water bears\", have survived exposure to outer space?"
     },
     {
       "answer": 1,
@@ -1273,7 +1273,7 @@
       "explanation": "Tuatara are the last survivors of an ancient reptile order and can live for over 100 years.",
       "id": "nat-0041",
       "options": ["New Zealand", "Australia", "Madagascar", "Indonesia"],
-      "question": "The tuatara, a 'living fossil' reptile whose relatives lived alongside the dinosaurs, is found only where?"
+      "question": "The tuatara, a \"living fossil\" reptile whose relatives lived alongside the dinosaurs, is found only in which country?"
     },
     {
       "answer": 1,
@@ -1297,7 +1297,7 @@
       "answer": 1,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Humans share roughly 98-99% of their DNA with chimpanzees and their close cousins, bonobos.",
+      "explanation": "Humans share roughly 98–99% of their DNA with chimpanzees and their close cousins, bonobos.",
       "id": "nat-0024",
       "options": ["Gibbon", "Chimpanzee", "Gorilla", "Orangutan"],
       "question": "Which of these apes is most closely related to humans?"
@@ -1309,7 +1309,7 @@
       "explanation": "Great Basin bristlecone pines grow in harsh mountain conditions in the USA; one has been dated to about 4,800 years old.",
       "id": "nat-0047",
       "options": ["Baobab", "Giant sequoia", "Bristlecone pine", "Olive tree"],
-      "question": "Which kind of tree includes the oldest known living individual trees, nearly 5,000 years old?"
+      "question": "The oldest known living individual trees, nearly 5,000 years old, are of which kind?"
     },
     {
       "answer": 2,
@@ -1461,7 +1461,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "This 'blood sweat' is neither blood nor sweat; it works as a natural sunscreen and may also fight germs.",
+      "explanation": "This \"blood sweat\" is neither blood nor sweat; it works as a natural sunscreen and may also fight germs.",
       "id": "nat-0056",
       "options": [
         "Attracts a mate",
@@ -1492,7 +1492,7 @@
       "explanation": "A museum curator in South Africa spotted it in a fisherman's catch; it was known only from fossils over 66 million years old.",
       "id": "nat-0064",
       "options": ["Arapaima", "Sturgeon", "Coelacanth", "Lungfish"],
-      "question": "Which 'living fossil' fish, thought extinct for millions of years, was found alive in 1938?"
+      "question": "Which \"living fossil\" fish, thought extinct for millions of years, was found alive in 1938?"
     },
     {
       "answer": 0,
@@ -1530,7 +1530,7 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "The bee hummingbird of Cuba is about 5-6 cm long and weighs less than 2 g; its eggs are about the size of coffee beans.",
+      "explanation": "The bee hummingbird of Cuba is about 5–6 cm long and weighs less than 2 g; its eggs are about the size of coffee beans.",
       "id": "nat-0063",
       "options": ["Bee hummingbird", "Wren", "Goldcrest", "Crimson sunbird"],
       "question": "Which is the smallest bird in the world?"
@@ -1539,7 +1539,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Koala fingerprints look remarkably like ours, even under a microscope, though the two evolved separately.",
+      "explanation": "Koalas evolved their fingerprints independently of primates, probably to help them grip branches and handle eucalyptus leaves.",
       "id": "nat-0065",
       "options": ["Raccoon", "Wombat", "Kangaroo", "Koala"],
       "question": "Which animal has fingerprints remarkably similar to humans', even under a microscope?"
@@ -1566,7 +1566,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Kookaburras are large kingfishers; families 'laugh' together at dawn and dusk to mark their territory.",
+      "explanation": "Kookaburras are large kingfishers; families \"laugh\" together at dawn and dusk to mark their territory.",
       "id": "nat-0055",
       "options": ["Puffin", "Toucan", "Pelican", "Kookaburra"],
       "question": "Which bird is famous for a call that sounds like loud human laughter?"
@@ -1575,10 +1575,10 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Owls' eyes are fixed in their sockets, so they turn the whole head, helped by extra neck vertebrae.",
+      "explanation": "That is about 135° each way. Owls' eyes are fixed in their sockets, so they turn the whole head, helped by extra neck vertebrae.",
       "id": "nat-0069",
       "options": ["270 degrees", "360 degrees", "180 degrees", "90 degrees"],
-      "question": "About how far can an owl turn its head in either direction?"
+      "question": "In total, about how far can an owl turn its head from one side to the other?"
     },
     {
       "answer": 0,
@@ -1619,7 +1619,7 @@
         "A sea turtle species",
         "A sponge species"
       ],
-      "question": "Which animal is nicknamed 'immortal' because it can revert to an earlier life stage?"
+      "question": "Which animal is nicknamed \"immortal\" because it can revert to an earlier life stage?"
     },
     {
       "answer": 3,
@@ -1689,7 +1689,7 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Snow leopards make a puffing 'chuff' and other calls instead; their thick tail helps balance and works as a scarf.",
+      "explanation": "Snow leopards make a puffing \"chuff\" and other calls instead; their thick tail helps them balance and works as a scarf.",
       "id": "nat-0078",
       "options": ["Snow leopard", "Bengal tiger", "Jaguar", "African lion"],
       "question": "Which big cat cannot roar?"
@@ -1707,7 +1707,7 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Orcas live in family groups with their own hunting techniques and 'dialects' of calls.",
+      "explanation": "Orcas live in family groups with their own hunting techniques and \"dialects\" of calls.",
       "id": "nat-0079",
       "options": ["Dolphins", "Baleen whales", "Porpoises", "Sharks"],
       "question": "The orca, or killer whale, is the largest member of which family?"
@@ -1743,7 +1743,7 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "The double coconut-shaped seed of the coco de mer from the Seychelles can weigh up to about 25 kg.",
+      "explanation": "The seed of the coco de mer from the Seychelles, shaped like a double coconut, can weigh up to about 25 kg.",
       "id": "nat-0088",
       "options": ["Coco de mer", "Coconut palm", "Mango", "Avocado"],
       "question": "Which plant produces the largest seed in the world?"
@@ -1986,7 +1986,7 @@
       "explanation": "Ginkgo trees are very tough: several survived near the centre of the Hiroshima explosion and still grow today.",
       "id": "nat-0108",
       "options": ["Birch", "Ginkgo", "Olive", "Baobab"],
-      "question": "Which tree is called a 'living fossil' because it has barely changed for about 200 million years?"
+      "question": "Which tree is called a \"living fossil\" because it has barely changed for about 200 million years?"
     },
     {
       "answer": 0,
@@ -2083,7 +2083,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Fe comes from the Latin ferrum; iron is the most common element in Earth as a whole, mostly in the core.",
+      "explanation": "Fe comes from the Latin ferrum; iron is the most common element in Earth as a whole by mass, mostly in the core.",
       "id": "sci-0006",
       "options": ["Lead", "Iron", "Fluorine", "Francium"],
       "question": "Which element has the chemical symbol Fe?"
@@ -2110,7 +2110,7 @@
       "answer": 0,
       "category": "science & space",
       "difficulty": 3,
-      "explanation": "Astronomers spotted an unknown yellow line in sunlight in 1868; the element was named after Helios, the Greek Sun god.",
+      "explanation": "Astronomers spotted an unknown yellow line in sunlight in 1868; the element was named after Helios, the Greek sun god.",
       "id": "sci-0025",
       "options": [
         "In the Sun's light",
@@ -2341,7 +2341,7 @@
       "answer": 3,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "The inner core is solid and about as hot as the surface of the Sun, kept solid by enormous pressure.",
+      "explanation": "The inner core is about as hot as the surface of the Sun but stays solid because of the enormous pressure.",
       "id": "sci-0039",
       "options": [
         "Gold and silver",
@@ -2364,7 +2364,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "The troposphere reaches about 8-18 km up and contains about three-quarters of the atmosphere's mass.",
+      "explanation": "The troposphere reaches about 8–18 km up and contains about three-quarters of the atmosphere's mass.",
       "id": "sci-0040",
       "options": ["Mesosphere", "Troposphere", "Thermosphere", "Stratosphere"],
       "question": "In which layer of the atmosphere does almost all weather happen?"
@@ -2424,7 +2424,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "The Sun also pulls on the oceans; when Sun and Moon line up, we get extra-high 'spring tides'.",
+      "explanation": "The Sun also pulls on the oceans; when Sun and Moon line up, we get extra-high \"spring tides\".",
       "id": "sci-0044",
       "options": [
         "Earth's magnetic field",
@@ -2485,7 +2485,7 @@
         "Every 1,000 years",
         "Every 150 years",
         "Every 12 years",
-        "Every 75-76 years"
+        "Every 75–76 years"
       ],
       "question": "Roughly how often does Halley's Comet return to Earth's skies?"
     },
@@ -2507,7 +2507,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Their names mean 'fear' and 'dread'; Phobos is slowly spiralling inward and will break up in tens of millions of years.",
+      "explanation": "Their names mean \"fear\" and \"dread\"; Phobos is slowly spiralling inward and will break up in tens of millions of years.",
       "id": "sci-0056",
       "options": ["Jupiter", "Saturn", "Mars", "Neptune"],
       "question": "Phobos and Deimos are the moons of which planet?"

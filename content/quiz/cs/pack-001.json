@@ -41,7 +41,7 @@
       "explanation": "Díky Francouzské Guyaně sdílí Francie s Brazílií asi 730 km hranice, víc než se Španělskem (asi 620 km).",
       "id": "geo-0003",
       "options": ["Francie", "Španělsko", "Portugalsko", "Nizozemsko"],
-      "question": "Která země má nejdelší pozemní hranici právě s Brazílií?"
+      "question": "Pro kterou zemi je hranice s Brazílií její nejdelší pozemní hranicí?"
     },
     {
       "answer": 1,
@@ -59,7 +59,7 @@
       "explanation": "Titicaca leží asi 3 800 m nad mořem a často se o něm mluví jako o nejvýše položeném splavném jezeře světa.",
       "id": "geo-0014",
       "options": ["Chile", "Argentina", "Ekvádor", "Bolívie"],
-      "question": "Jezero Titicaca sdílí Peru s kterou další zemí?"
+      "question": "S kterou další zemí sdílí Peru jezero Titicaca?"
     },
     {
       "answer": 1,
@@ -271,7 +271,7 @@
       "explanation": "San Marino se považuje za nejstarší dosud existující republiku světa; podle tradice vzniklo v roce 301.",
       "id": "geo-0034",
       "options": ["Malta", "Andorra", "Monako", "San Marino"],
-      "question": "Která malá republika je kromě Vatikánu zcela obklopena Itálií?"
+      "question": "Která malá republika je zcela obklopena Itálií?"
     },
     {
       "answer": 2,
@@ -346,7 +346,7 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Hlavní město Andorra la Vella leží asi v 1 023 m, a je tak nejvýše položeným hlavním městem Evropy.",
+      "explanation": "Hlavní město Andorra la Vella leží v nadmořské výšce asi 1 023 m, a je tak nejvýše položeným hlavním městem Evropy.",
       "id": "geo-0046",
       "options": ["Andorra", "San Marino", "Monako", "Lichtenštejnsko"],
       "question": "Který ministát leží vysoko v Pyrenejích?"
@@ -358,7 +358,7 @@
       "explanation": "Řeka Okavango se rozlévá a vypařuje v Kalahari, kde vytváří sezónní mokřad plný zvěře.",
       "id": "geo-0060",
       "options": ["Angola", "Zambie", "Botswana", "Namibie"],
-      "question": "Ve které zemi leží delta Okavanga, vnitrozemská delta, která nikdy nedosáhne moře?"
+      "question": "Ve které zemi leží delta Okavanga, vnitrozemská delta, jež nikdy nedosáhne k moři?"
     },
     {
       "answer": 1,
@@ -366,7 +366,12 @@
       "difficulty": 1,
       "explanation": "Viktoriino jezero, které sdílejí Uganda, Keňa a Tanzanie, je největším tropickým jezerem světa.",
       "id": "geo-0039",
-      "options": ["Malawi", "Viktoriino jezero", "Tanganika", "Čadské jezero"],
+      "options": [
+        "Malawijské jezero",
+        "Viktoriino jezero",
+        "Tanganika",
+        "Čadské jezero"
+      ],
       "question": "Které jezero je největší v Africe?"
     },
     {
@@ -485,7 +490,7 @@
       "explanation": "Historické centrum Prahy přečkalo 20. století z velké části nedotčené a je zapsáno na seznamu světového dědictví UNESCO.",
       "id": "geo-0058",
       "options": ["Bruggy", "Praha", "Vídeň", "Krakov"],
-      "question": "Které evropské hlavní město se přezdívá „stověžaté“?"
+      "question": "Kterému evropskému hlavnímu městu se přezdívá „stověžaté“?"
     },
     {
       "answer": 0,
@@ -552,12 +557,7 @@
       "difficulty": 1,
       "explanation": "Severní ledový oceán je také nejmělčí a jeho velkou část po většinu roku pokrývá mořský led.",
       "id": "geo-0062",
-      "options": [
-        "Indický oceán",
-        "Atlantský oceán",
-        "Jižní oceán",
-        "Severní ledový"
-      ],
+      "options": ["Indický", "Atlantský", "Jižní", "Severní ledový"],
       "question": "Který z pěti světových oceánů je nejmenší?"
     },
     {
@@ -585,7 +585,7 @@
       "explanation": "Nepál přešel na UTC+5:45 v roce 1986; je jedním z mála míst na světě, kde se hodiny liší o 45 minut.",
       "id": "geo-0069",
       "options": ["Indie", "Srí Lanka", "Nepál", "Bhútán"],
-      "question": "Ve které zemi je standardní čas o 5 hodin a 45 minut napřed před UTC?"
+      "question": "Ve které zemi platí standardní čas, který předbíhá UTC o 5 hodin a 45 minut?"
     },
     {
       "answer": 1,
@@ -684,7 +684,7 @@
       "explanation": "Brazílie je tak velká, že sahá zhruba od 5° s. š. po 34° j. š., a pokrývá tak obě linie.",
       "id": "geo-0091",
       "options": ["Indonésie", "Peru", "Brazílie", "Austrálie"],
-      "question": "Která země jako jediná leží na rovníku i na obratníku Kozoroha?"
+      "question": "Kterou zemi jako jedinou protíná rovník i obratník Kozoroha?"
     },
     {
       "answer": 0,
@@ -737,12 +737,7 @@
       "difficulty": 1,
       "explanation": "Lodě jsou zdymadly vyzdviženy asi o 26 m, aby přepluly jezero Gatún, a na druhé straně zase spuštěny.",
       "id": "geo-0077",
-      "options": [
-        "Jižním oceánem",
-        "Atlantským oceánem",
-        "Severním ledovým",
-        "Indickým oceánem"
-      ],
+      "options": ["Jižním", "Atlantským", "Severním ledovým", "Indickým"],
       "question": "S kterým oceánem spojuje Panamský průplav Tichý oceán?"
     },
     {
@@ -775,13 +770,13 @@
       "explanation": "Borneo je třetím největším ostrovem světa a jediným ostrovem rozděleným mezi tři státy.",
       "id": "geo-0095",
       "options": ["Brunej", "Východní Timor", "Filipíny", "Singapur"],
-      "question": "Borneo sdílí Indonésie, Malajsie a která další země?"
+      "question": "O ostrov Borneo se dělí Indonésie, Malajsie a která další země?"
     },
     {
       "answer": 1,
       "category": "geography",
       "difficulty": 3,
-      "explanation": "Kinabalu se tyčí do výšky 4 095 m v malajsijském státě Sabah a roste na něm tisíce druhů rostlin včetně mnoha orchidejí.",
+      "explanation": "Kinabalu se tyčí do výšky 4 095 m v malajsijském státě Sabah a rostou na něm tisíce druhů rostlin včetně mnoha orchidejí.",
       "id": "geo-0094",
       "options": ["Jáva", "Borneo", "Sumatra", "Sulawesi"],
       "question": "Na kterém ostrově leží Kinabalu, jedna z nejvyšších hor jihovýchodní Asie?"
@@ -807,7 +802,7 @@
       "explanation": "Na Hispaniole je nejvyšší hora Karibiku, Pico Duarte, vysoká asi 3 100 m.",
       "id": "geo-0096",
       "options": ["Portoriko", "Jamajka", "Kuba", "Hispaniola"],
-      "question": "Který ostrov sdílí Haiti a Dominikánská republika?"
+      "question": "Na kterém ostrově leží Haiti i Dominikánská republika?"
     },
     {
       "answer": 2,
@@ -899,7 +894,7 @@
       "answer": 2,
       "category": "geography",
       "difficulty": 1,
-      "explanation": "Hrad Bran stojí v Transylvánii, i když jen málo dokládá, že by v něm Vlad Napichovač vůbec žil.",
+      "explanation": "Hrad Bran stojí v Transylvánii, i když jen málo svědčí o tom, že by v něm Vlad Napichovač vůbec žil.",
       "id": "geo-0097",
       "options": ["Srbsko", "Bulharsko", "Rumunsko", "Maďarsko"],
       "question": "Ve které zemi je hrad Bran, propagovaný jako „Drákulův hrad“?"
@@ -920,7 +915,7 @@
       "explanation": "Malacká úžina je jednou z nejrušnějších námořních tras světa a spojuje Indický oceán s Tichým.",
       "id": "geo-0103",
       "options": ["Sulawesi", "Borneo", "Jáva", "Sumatra"],
-      "question": "Od kterého ostrova odděluje Malackou úžinu Malajský poloostrov?"
+      "question": "Od kterého ostrova odděluje Malacká úžina Malajský poloostrov?"
     },
     {
       "answer": 3,
@@ -1020,7 +1015,7 @@
       "explanation": "Úhel tance ukazuje směr vzhledem ke slunci a jeho délka vzdálenost k potravě.",
       "id": "nat-0012",
       "options": [
-        "Kývavým tancem",
+        "Vrtivým tancem",
         "Barvou křídel",
         "Jen pachovými stopami",
         "Tóny bzučení"
@@ -1048,7 +1043,7 @@
       "explanation": "Bambus je tak chudý na živiny, že panda ho denně sní i přes 10 kg, ačkoli její trávicí trakt je stavěný jako u šelmy.",
       "id": "nat-0007",
       "options": ["Bambusu", "Ovoce", "Ryb", "Hmyzu"],
-      "question": "Pandy velké tráví až 14 hodin denně pojídáním čeho?"
+      "question": "Co pandy velké jedí až 14 hodin denně?"
     },
     {
       "answer": 0,
@@ -1256,13 +1251,13 @@
       "explanation": "Želvušky se umějí vysušit do klidového stadia „soudečku“ a přežít extrémní mráz, radiaci i vakuum vesmíru.",
       "id": "nat-0040",
       "options": ["Hlístice", "Želvušky", "Klanonožci", "Vířníci"],
-      "question": "Která drobná zvířata, přezdívaná „vodní medvídci“, přežila pobyt ve vesmíru?"
+      "question": "Která drobná zvířata, přezdívaná „vodní medvídci“, přežila vystavení otevřenému vesmíru?"
     },
     {
       "answer": 1,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Rorýsi obecní jedí, pijí, a dokonce i spí v letu a někteří mladí ptáci možná nepřistanou celé roky.",
+      "explanation": "Rorýsi obecní jedí, pijí, a dokonce i spí v letu; někteří mladí ptáci možná nepřistanou celé roky.",
       "id": "nat-0039",
       "options": ["Albatros", "Rorýs obecný", "Fregatka", "Rybák dlouhoocasý"],
       "question": "Který pták vydrží ve vzduchu asi 10 měsíců bez přistání?"
@@ -1279,7 +1274,7 @@
         "Korovec jedovatý",
         "Leguán zelený"
       ],
-      "question": "Která žijící ještěrka je největší?"
+      "question": "Který žijící ještěr je největší?"
     },
     {
       "answer": 0,
@@ -1288,7 +1283,7 @@
       "explanation": "Haterie jsou posledními přeživšími prastarého řádu plazů a mohou se dožít přes 100 let.",
       "id": "nat-0041",
       "options": ["Nový Zéland", "Austrálie", "Madagaskar", "Indonésie"],
-      "question": "Kde jedině žije haterie (tuatara), „živoucí fosilie“, jejíž příbuzní žili s dinosaury?"
+      "question": "Ve které zemi výhradně žije haterie (tuatara), „živoucí fosilie“, jejíž příbuzní žili s dinosaury?"
     },
     {
       "answer": 1,
@@ -1466,13 +1461,13 @@
         "Myška drobná",
         "Bělozubka nejmenší"
       ],
-      "question": "Který savec je podle hmotnosti nejmenší známý?"
+      "question": "Který známý savec je nejmenší podle hmotnosti?"
     },
     {
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Býk losa může mít v kohoutku přes 2 m a jeho paroží může mít rozpětí asi 1,8 m.",
+      "explanation": "Samec losa může mít v kohoutku přes 2 m a jeho paroží může mít rozpětí asi 1,8 m.",
       "id": "nat-0035",
       "options": ["Los", "Sob", "Jelenec běloocasý", "Jelen lesní"],
       "question": "Který žijící druh jelenovitých je největší?"
@@ -1530,7 +1525,7 @@
       "explanation": "Vydry mořské se také ovíjejí chaluhami, aby zůstaly ukotvené, když plují na zádech.",
       "id": "nat-0058",
       "options": [
-        "Aby se zahřály",
+        "Aby se navzájem hřály",
         "Aby je proud nerozdělil",
         "Aby zastrašily predátory",
         "Aby našly potravu"
@@ -1564,7 +1559,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Otisky prstů koaly vypadají jako naše i pod mikroskopem, přestože se u obou druhů vyvinuly nezávisle.",
+      "explanation": "Koaly si otisky prstů vyvinuly nezávisle na primátech, nejspíš proto, aby se lépe držely větví a uchopovaly eukalyptové listy.",
       "id": "nat-0065",
       "options": ["Mýval", "Vombat", "Klokan", "Koala"],
       "question": "Které zvíře má otisky prstů pozoruhodně podobné lidským, a to i pod mikroskopem?"
@@ -1600,10 +1595,10 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Oči sovy jsou v důlcích pevně usazené, a tak otáčí celou hlavou, k čemuž jí pomáhají obratle navíc v krku.",
+      "explanation": "To je asi 135° na každou stranu. Oči sovy jsou v důlcích pevně usazené, a tak otáčí celou hlavou, k čemuž jí pomáhají obratle navíc v krku.",
       "id": "nat-0069",
       "options": ["270 stupňů", "360 stupňů", "180 stupňů", "90 stupňů"],
-      "question": "O kolik stupňů zhruba dokáže sova otočit hlavu na každou stranu?"
+      "question": "Celkem o kolik stupňů zhruba dokáže sova otočit hlavu z jedné strany na druhou?"
     },
     {
       "answer": 0,
@@ -1621,7 +1616,7 @@
       "explanation": "Samice naklade vajíčka do vaku samce koníčka mořského, který později vypustí desítky až stovky drobných mláďat.",
       "id": "nat-0059",
       "options": ["Krab", "Chobotnice", "Želva", "Koníček mořský"],
-      "question": "U kterého živočicha nosí vajíčka samec a on také rodí?"
+      "question": "U kterého živočicha nosí vajíčka a rodí mláďata samec?"
     },
     {
       "answer": 1,
@@ -1642,7 +1637,7 @@
         "Jednomu druhu medúzy",
         "Jednomu druhu suchozemské želvy",
         "Jednomu druhu mořské želvy",
-        "Jednomu druhu houby"
+        "Jednomu druhu mořské houby"
       ],
       "question": "Kterému živočichovi se přezdívá „nesmrtelný“, protože se umí vrátit do dřívějšího stadia života?"
     },
@@ -1748,7 +1743,7 @@
       "explanation": "Některé bambusy kvetou jen jednou za několik desetiletí a všechny rostliny daného druhu mohou vykvést současně.",
       "id": "nat-0087",
       "options": ["Stromy", "Trávy", "Liány", "Kapradiny"],
-      "question": "Do které skupiny rostlin patří bambus jako obří zástupce?"
+      "question": "Bambus je obřím zástupcem které skupiny rostlin?"
     },
     {
       "answer": 2,
@@ -1816,13 +1811,13 @@
       "explanation": "Tato změna pomáhá sobům zachytit víc světla během dlouhé arktické zimní tmy.",
       "id": "nat-0093",
       "options": ["Sovice sněžná", "Liška polární", "Lední medvěd", "Sob"],
-      "question": "Kterému zvířeti se oči mění ze zlaté barvy v létě na modrou v zimě?"
+      "question": "Které zvíře má v létě zlaté oči a v zimě modré?"
     },
     {
       "answer": 1,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Ochranná vrstva slizu brání tomu, aby klauna sasanka požahala, a on ji na oplátku brání.",
+      "explanation": "Ochranná vrstva slizu brání tomu, aby klauna sasanka požahala, a klaun ji na oplátku chrání.",
       "id": "nat-0098",
       "options": ["Medúzy", "Sasanky", "Korálu", "Ježovky"],
       "question": "Mezi žahavými chapadly kterého živočicha bezpečně žijí klauni?"
@@ -1908,7 +1903,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Měsíčník Mola alexandrini ulovený u Azor vážil 2 744 kg a samice měsíčníku svítivého může nést asi 300 milionů jiker.",
+      "explanation": "Měsíčník Mola alexandrini nalezený u Azor vážil 2 744 kg a samice měsíčníku svítivého může nést asi 300 milionů jiker.",
       "id": "nat-0100",
       "options": ["Tuňák obecný", "Marlín černý", "Kanic obrovský", "Měsíčník"],
       "question": "Která ryba drží rekord jako nejtěžší kdy změřená kostnatá ryba?"
@@ -1947,7 +1942,7 @@
       "explanation": "Dronte mauricijský byl obří příbuzný holubů a vyhynul zhruba do sta let od příchodu námořníků.",
       "id": "nat-0097",
       "options": ["Réunion", "Madagaskar", "Mauricius", "Srí Lanka"],
-      "question": "Na kterém ostrově jedině žil nelétavý pták dronte (dodo)?"
+      "question": "Na kterém jediném ostrově žil nelétavý pták dronte (dodo)?"
     },
     {
       "answer": 2,
@@ -1956,7 +1951,7 @@
       "explanation": "Datlovník přezdívaný Metuzalém vyklíčil v roce 2005 ze semene nalezeného ve starověké pevnosti Masada.",
       "id": "nat-0107",
       "options": ["Olivovník", "Fíkovník", "Datlovník", "Dub letní"],
-      "question": "Semena které rostliny vyklíčila ve zdravé rostliny asi po 2 000 letech?"
+      "question": "Ze semen které rostliny vyrostly po asi 2 000 letech zdravé rostliny?"
     },
     {
       "answer": 1,
@@ -2103,7 +2098,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Fe pochází z latinského ferrum; železo je nejrozšířenějším prvkem Země jako celku, většinou v jádře.",
+      "explanation": "Fe pochází z latinského ferrum; železo je hmotnostně nejrozšířenějším prvkem Země jako celku, většinou v jádře.",
       "id": "sci-0006",
       "options": ["Olovo", "Železo", "Fluor", "Francium"],
       "question": "Který prvek má chemickou značku Fe?"
@@ -2267,7 +2262,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 3,
-      "explanation": "Větry na Neptunu mohou dosahovat přes 2 000 km/h, víc než je rychlost zvuku na Zemi.",
+      "explanation": "Větry na Neptunu mohou dosahovat přes 2 000 km/h, víc, než je rychlost zvuku na Zemi.",
       "id": "sci-0052",
       "options": ["Saturn", "Jupiter", "Neptun", "Uran"],
       "question": "Na které planetě vanou nejrychlejší větry ve Sluneční soustavě?"
@@ -2285,7 +2280,7 @@
       "answer": 0,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Absolutní nula je nejnižší možná teplota; vědci už ochladili atomy na pouhou miliardtinu stupně nad ni.",
+      "explanation": "Absolutní nula je nejnižší možná teplota; vědci už ochladili atomy na pouhou miliardtinu stupně nad ní.",
       "id": "sci-0033",
       "options": ["−273,15 °C", "−173,15 °C", "−373,15 °C", "−233,15 °C"],
       "question": "Kolik je absolutní nula ve stupních Celsia?"
@@ -2366,7 +2361,7 @@
       "answer": 3,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Vnitřní jádro je pevné a asi stejně horké jako povrch Slunce; pevné ho udržuje obrovský tlak.",
+      "explanation": "Vnitřní jádro je asi stejně horké jako povrch Slunce, ale kvůli obrovskému tlaku zůstává pevné.",
       "id": "sci-0039",
       "options": [
         "Zlato a stříbro",

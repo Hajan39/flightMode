@@ -3,15 +3,6 @@
   "lang": "cs",
   "questions": [
     {
-      "answer": 1,
-      "category": "history",
-      "difficulty": 1,
-      "explanation": "Machu Picchu vzniklo v 15. století vysoko v peruánských Andách, pravděpodobně jako sídlo inckého panovníka Pachacutiho.",
-      "id": "his-0002",
-      "options": ["Aztékové", "Inkové", "Olmékové", "Mayové"],
-      "question": "Která civilizace postavila horskou citadelu Machu Picchu?"
-    },
-    {
       "answer": 3,
       "category": "history",
       "difficulty": 2,
@@ -69,7 +60,7 @@
       "answer": 2,
       "category": "history",
       "difficulty": 1,
-      "explanation": "Petřiny průčelí, například slavná Pokladnice, byla vytesána přímo do pískovcových skal asi před 2 000 lety.",
+      "explanation": "Petřina průčelí, například slavná Pokladnice, byla vytesána přímo do pískovcových skal asi před 2 000 lety.",
       "id": "his-0005",
       "options": ["Egypt", "Turecko", "Jordánsko", "Libanon"],
       "question": "Ve které zemi můžeš navštívit Petru, město vytesané do růžově červené skály?"
@@ -101,7 +92,7 @@
       "answer": 2,
       "category": "history",
       "difficulty": 1,
-      "explanation": "Sochu navrhl Frédéric Auguste Bartholdi a její vnitřní železnou konstrukci navrhl Gustave Eiffel.",
+      "explanation": "Sochu navrhl Frédéric Auguste Bartholdi a její vnitřní železnou konstrukci zkonstruoval Gustave Eiffel.",
       "id": "his-0016",
       "options": ["Španělsko", "Nizozemsko", "Francie", "Spojené království"],
       "question": "Která země darovala Spojeným státům Sochu svobody?"
@@ -270,9 +261,9 @@
       "answer": 1,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Mohendžodáro mělo pravoúhlou síť ulic a krytou kanalizaci, což je u města starého asi 4 500 let pozoruhodné.",
+      "explanation": "Harappské Mohendžodáro v údolí Indu mělo pravoúhlou síť ulic a krytou kanalizaci, což je u města starého asi 4 500 let pozoruhodné.",
       "id": "his-0054",
-      "options": ["Egyptská", "Harappská (Indus)", "Mínojská", "Mezopotámská"],
+      "options": ["Egyptská", "Harappská", "Mínojská", "Mezopotámská"],
       "question": "Která starověká civilizace postavila město Mohendžodáro?"
     },
     {
@@ -494,7 +485,7 @@
       "explanation": "Dedžima byl malý umělý ostrov v přístavu Nagasaki, jediné místo, kde mohli nizozemští obchodníci obchodovat.",
       "id": "his-0116",
       "options": ["Cušima", "Dedžima", "Okinawa", "Sado"],
-      "question": "Který nizozemský ostrov v Japonsku byl 200 let jedinou evropskou obchodní stanicí v zemi?"
+      "question": "Který ostrov v Japonsku, spravovaný Nizozemci, byl 200 let jedinou evropskou obchodní stanicí v zemi?"
     },
     {
       "answer": 2,
@@ -557,7 +548,7 @@
       "explanation": "Medicejové podporovali umělce jako Botticelli a Michelangelo a z jejich sbírky vznikla galerie Uffizi.",
       "id": "his-0081",
       "options": ["Sforzové", "Fuggerové", "Medicejové", "Borgiové"],
-      "question": "Která bankéřská rodina proslula jako mecenáš umění v renesanční Florencii?"
+      "question": "Která bankéřská rodina proslula podporou umění v renesanční Florencii?"
     },
     {
       "answer": 3,
@@ -631,10 +622,10 @@
       "answer": 2,
       "category": "history",
       "difficulty": 1,
-      "explanation": "Tenochtitlan stál na ostrově v jezeře Texcoco a jídlo pěstoval na plovoucích zahradách zvaných chinampy.",
+      "explanation": "Tenochtitlan stál na ostrově v jezeře Texcoco a potraviny se v něm pěstovaly na plovoucích zahradách zvaných chinampy.",
       "id": "his-0026",
       "options": ["Inkové", "Mayové", "Aztékové", "Zapotékové"],
-      "question": "Který národ založil Tenochtitlan, město pod dnešním Mexikem?"
+      "question": "Který národ založil Tenochtitlan, město pod dnešním hlavním městem Mexika?"
     },
     {
       "answer": 0,
@@ -718,7 +709,7 @@
       "answer": 0,
       "category": "history",
       "difficulty": 3,
-      "explanation": "Slocum na své přestavěné lodi na lov ústřic Spray urazil asi 74 000 km a jeho kniha o cestě se stala klasikou.",
+      "explanation": "Slocum na svém přestavěném ústřicovém člunu Spray urazil asi 74 000 km a jeho kniha o cestě se stala klasikou.",
       "id": "his-0108",
       "options": [
         "Joshua Slocum",
@@ -854,7 +845,7 @@
       "explanation": "Napoleonův zákoník je dodnes základem občanského práva ve Francii, Belgii, Lucembursku a mnoha dalších zemích.",
       "id": "his-0087",
       "options": [
-        "Napoleonův",
+        "Napoleona",
         "Karla Velikého",
         "Ludvíka XIV.",
         "Ludvíka Filipa"
@@ -865,7 +856,7 @@
       "answer": 1,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Karla Velikého korunoval papež v Římě; mnoho evropských královských rodů se později hlásilo k jeho potomstvu.",
+      "explanation": "Karla Velikého korunoval papež v Římě; mnoho evropských královských rodů později odvozovalo svůj původ právě od něj.",
       "id": "his-0088",
       "options": ["Chlodvík I.", "Karel Veliký", "Pipin Krátký", "Ota I."],
       "question": "Kdo byl na Boží hod vánoční roku 800 korunován římským císařem?"
@@ -904,7 +895,7 @@
       "explanation": "Mayský kalendář 21. prosince 2012 jen uzavřel velký cyklus; mayští učenci žádnou apokalypsu nikdy nepředpovídali.",
       "id": "his-0037",
       "options": ["Inkové", "Mayové", "Olmékové", "Aztékové"],
-      "question": "Dlouhý počet kalendáře které civilizace dal vzniknout mýtům o „konci světa v roce 2012“?"
+      "question": "Kalendář „dlouhého počtu“ které civilizace dal vzniknout mýtům o „konci světa v roce 2012“?"
     },
     {
       "answer": 3,
@@ -968,7 +959,7 @@
       "explanation": "Luxusní vlak začal jezdit v roce 1883; od roku 1889 mohli cestující jet po železnici až do Konstantinopole.",
       "id": "his-0093",
       "options": ["Istanbul", "Petrohrad", "Athény", "Káhira"],
-      "question": "S kterým městem spojovala klasická trasa Orient Expressu Paříž?"
+      "question": "Klasická trasa Orient Expressu spojovala Paříž s kterým městem?"
     },
     {
       "answer": 2,
@@ -1377,7 +1368,7 @@
       "answer": 0,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Dílo, které asi před 1 000 lety napsala dvorní dáma na císařském dvoře, bývá označováno za jeden z prvních románů světa.",
+      "explanation": "Dílo, které asi před 1 000 lety napsala dvorní dáma císařského dvora, bývá označováno za jeden z prvních románů světa.",
       "id": "cul-0094",
       "options": [
         "Murasaki Šikibu",
@@ -1400,7 +1391,7 @@
       "answer": 2,
       "category": "history",
       "difficulty": 1,
-      "explanation": "Místní název Mosi-oa-Tunya znamená „dým, který hřmí“ – podle obrovského oblaku vodní tříště.",
+      "explanation": "Livingstone dorazil k vodopádům v roce 1855 a pojmenoval je po královně Viktorii; jsou široké asi 1,7 km.",
       "id": "his-0045",
       "options": [
         "Andělovy vodopády",
@@ -1757,7 +1748,7 @@
       "explanation": "Mucha se v roce 1895 v Paříži přes noc proslavil plakátem pro herečku Sarah Bernhardtovou.",
       "id": "cul-0100",
       "options": ["Secese", "Expresionismus", "Pop art", "Kubismus"],
-      "question": "Kterým stylem je nejznámější český umělec Alfons Mucha?"
+      "question": "S kterým uměleckým slohem je nejvíce spojen český umělec Alfons Mucha?"
     },
     {
       "answer": 1,
@@ -2157,7 +2148,7 @@
         "Daniel Fahrenheit",
         "Lord Kelvin"
       ],
-      "question": "Který vědec vytvořil v roce 1724 teplotní stupnici a rtuťový teploměr?"
+      "question": "Který vědec vynalezl rtuťový teploměr a v roce 1724 navrhl teplotní stupnici?"
     },
     {
       "answer": 3,
@@ -2369,7 +2360,7 @@
         "Pantheon",
         "Héfaistův chrám"
       ],
-      "question": "Který chrám na athénské Akropoli byl zasvěcen Athéně Parthenos?"
+      "question": "Který chrám na athénské Akropoli byl zasvěcen bohyni Athéně?"
     },
     {
       "answer": 2,
@@ -2398,7 +2389,7 @@
       "options": [
         "Rychlovarnou konvici",
         "Elektrický mlýnek na kávu",
-        "Espresso kávovar",
+        "Kávovar na espresso",
         "Papírový filtr na kávu"
       ],
       "question": "Co vynalezla Melitta Bentzová v Německu v roce 1908?"
@@ -2462,7 +2453,7 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 1,
-      "explanation": "Gutenbergovy bible se vytisklo asi 180 výtisků; dochovalo se jich 49, některé jen částečně.",
+      "explanation": "Gutenbergova bible vyšla asi ve 180 výtiscích; dochovalo se jich 49, některé jen částečně.",
       "id": "inv-0001",
       "options": [
         "Laurens Janszoon Coster",
@@ -2544,7 +2535,7 @@
       "explanation": "Dunlop byl veterinář v Belfastu a chtěl synovi zajistit hladší jízdu na tříkolce po hrbolatých ulicích; nápad si patentoval v roce 1888.",
       "id": "inv-0084",
       "options": ["Houpacího koně", "Kočárek", "Tříkolku", "Vozík"],
-      "question": "Pro co svého syna vyvinul John Boyd Dunlop v roce 1888 praktickou nafukovací pneumatiku?"
+      "question": "John Boyd Dunlop vyvinul v roce 1888 praktickou nafukovací pneumatiku pro svého syna. Na co ji nasadil?"
     },
     {
       "answer": 0,
@@ -2614,7 +2605,7 @@
       "answer": 1,
       "category": "inventions",
       "difficulty": 1,
-      "explanation": "Dieselový motor zapálí palivo prostě tím, že stlačí vzduch, až se dostatečně zahřeje.",
+      "explanation": "Diesel si motor nechal patentovat v roce 1892 a tento typ motoru dodnes nese jeho jméno; na pařížské světové výstavě v roce 1900 jeden jezdil na arašídový olej.",
       "id": "inv-0014",
       "options": [
         "Nikolaus Otto",
@@ -2751,6 +2742,20 @@
       "id": "inv-0090",
       "options": ["Vodu", "Obilí", "Olivový olej", "Víno"],
       "question": "Co vydával v 1. století mincovní automat Héróna Alexandrijského?"
+    },
+    {
+      "answer": 0,
+      "category": "inventions",
+      "difficulty": 1,
+      "explanation": "Větrné mlýny čerpaly vodu z nízko položených polderů; 19 mlýnů v Kinderdijku je zapsáno na seznamu světového dědictví UNESCO.",
+      "id": "inv-0026",
+      "options": [
+        "Odčerpávání vody z půdy",
+        "Výroba elektřiny",
+        "Signalizace lodím",
+        "Pohon přístavních majáků"
+      ],
+      "question": "Jaký byl hlavní úkol většiny historických větrných mlýnů v Nizozemsku?"
     }
   ]
 }

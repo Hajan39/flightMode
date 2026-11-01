@@ -43,7 +43,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Nabité částice ze Slunce usměrňuje magnetické pole Země a ty rozzáří molekuly vzduchu zeleně, červeně nebo fialově.",
+      "explanation": "Nabité částice ze Slunce, usměrňované magnetickým polem Země, rozzáří molekuly vzduchu zeleně, červeně nebo fialově.",
       "id": "sci-0057",
       "options": [
         "Odrazy od polárního ledu",
@@ -71,7 +71,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 3,
-      "explanation": "Hliník tvoří asi 8 % zemské kůry, ale jeho výroba byla kdysi vzácnější než zlato; Napoleon III. nechával hostům prostírat hliníkové příbory.",
+      "explanation": "Hliník tvoří asi 8 % zemské kůry, ale kvůli náročné výrobě byl kdysi vzácnější než zlato; Napoleon III. nechával hostům prostírat hliníkové příbory.",
       "id": "sci-0072",
       "options": ["Měď", "Hliník", "Vápník", "Železo"],
       "question": "Který kov je v zemské kůře nejhojnější?"
@@ -103,7 +103,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Supernova může na krátko zastínit celou galaxii; v takových explozích vznikla řada prvků, z nichž jsme složeni.",
+      "explanation": "Supernova může nakrátko zastínit celou galaxii; v takových explozích vznikla řada prvků, z nichž jsme složeni.",
       "id": "sci-0062",
       "options": [
         "Novorozená planeta",
@@ -185,7 +185,7 @@
       "explanation": "Otřesy půdy rostou s každým stupněm asi 10krát, ale energie asi 32krát; magnitudo 7 uvolní asi 1 000krát víc energie než magnitudo 5.",
       "id": "sci-0086",
       "options": ["Asi 32krát", "Asi 2krát", "Asi 100krát", "Asi 10krát"],
-      "question": "Kolikrát víc energie zhruba uvolní zemětřesení o magnitudu vyšší o jedna?"
+      "question": "Kolikrát víc energie zhruba uvolní zemětřesení, jehož magnitudo je o jedna vyšší?"
     },
     {
       "answer": 0,
@@ -226,13 +226,13 @@
         "Poušť Lút, Írán",
         "Kuvajt, Kuvajt"
       ],
-      "question": "Kde byla naměřena oficiálně rekordní teplota vzduchu 56,7 °C?"
+      "question": "Kde byla naměřena oficiální světová rekordní teplota vzduchu 56,7 °C?"
     },
     {
       "answer": 2,
       "category": "science & space",
       "difficulty": 3,
-      "explanation": "Gejzíry pocházejí ze skrytého slaného oceánu pod ledovou kůrou Enceladu, a proto je cílem pátrání po životě.",
+      "explanation": "Gejzíry pocházejí ze skrytého slaného oceánu pod ledovou kůrou Enceladu, a proto je tento měsíc cílem pátrání po životě.",
       "id": "sci-0090",
       "options": ["Jupiter", "Uran", "Saturn", "Neptun"],
       "question": "Kolem které planety obíhá Enceladus, měsíc, který chrlí do vesmíru gejzíry vody?"
@@ -296,7 +296,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Hurikány a tajfuny jsou tentýž druh bouře – tropická cyklóna –, jen se v různých oblastech jinak nazývají.",
+      "explanation": "Hurikány a tajfuny jsou tentýž druh bouře, tropická cyklóna; v různých oblastech se jen jinak nazývají.",
       "id": "sci-0082",
       "options": ["Tornáda", "Tajfuny", "Vánice", "Monzuny"],
       "question": "Jak se říká hurikánům v severozápadním Tichém oceánu?"
@@ -431,7 +431,7 @@
       "explanation": "Yttrium, ytterbium, terbium a erbium jsou pojmenovány po Ytterby, vesnici u Stockholmu s lomem bohatým na minerály.",
       "id": "sci-0102",
       "options": ["Polsko", "Německo", "Švédsko", "Skotsko"],
-      "question": "Jediná vesnice ve které zemi dala jméno čtyřem chemickým prvkům?"
+      "question": "Ve které zemi leží vesnice, po níž jsou pojmenovány hned čtyři chemické prvky?"
     },
     {
       "answer": 2,
@@ -446,7 +446,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Při rychlosti asi 28 000 km/h zažije loď v této výšce zhruba 16 východů a západů slunce denně.",
+      "explanation": "Při rychlosti asi 28 000 km/h zažije kosmická loď v této výšce zhruba 16 východů a západů slunce denně.",
       "id": "sci-0100",
       "options": [
         "Asi 24 hodin",
@@ -463,7 +463,7 @@
       "explanation": "Většina padajících hvězd jsou prachová zrnka ne větší než zrnka písku, která shoří asi 80–100 km nad zemí.",
       "id": "sci-0107",
       "options": [
-        "Shořívající meteoroid",
+        "Hořící meteoroid",
         "Družice odrážející světlo",
         "Ohon komety",
         "Hvězda padající na Zemi"
@@ -474,7 +474,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Curie pojmenovala polonium v roce 1898, kdy Polsko neexistovalo jako samostatný stát, aby na něj upozornila.",
+      "explanation": "Curie pojmenovala polonium v roce 1898, kdy Polsko neexistovalo jako samostatný stát, aby upozornila na osud Polska.",
       "id": "sci-0104",
       "options": ["Germanium", "Radium", "Polonium", "Francium"],
       "question": "Který prvek pojmenovala Marie Curie-Skłodowská po své vlasti?"
@@ -483,7 +483,7 @@
       "answer": 0,
       "category": "science & space",
       "difficulty": 3,
-      "explanation": "Seléné byla řecká bohyně Měsíce; dříve objevený tellur byl pojmenován po Tellus, Zemi.",
+      "explanation": "Seléné byla řecká bohyně Měsíce; dříve objevený tellur byl pojmenován podle Tellus, tedy Země.",
       "id": "sci-0103",
       "options": ["Selen", "Cer", "Helium", "Tellur"],
       "question": "Který chemický prvek je pojmenován po Měsíci?"
@@ -1076,7 +1076,7 @@
       "answer": 1,
       "category": "human body & health",
       "difficulty": 3,
-      "explanation": "Jazylku ve tvaru písmene U na krku drží na místě svaly a podpírá jazyk.",
+      "explanation": "Jazylka ve tvaru písmene U na krku podpírá jazyk a na místě ji drží jen svaly.",
       "id": "body-0058",
       "options": ["Čéška", "Jazylka", "Klíční kost", "Kostrč"],
       "question": "Která kost jako jediná v těle není spojena s žádnou jinou kostí?"
@@ -1185,7 +1185,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Pečivo zpopularizovali ve 30. letech 19. století vídeňští pekaři v Paříži; později se začalo dělat z listového máslového těsta.",
+      "explanation": "Ve 30. letech 19. století pomohli pečivo zpopularizovat vídeňští pekaři v Paříži; později se začalo dělat z listového máslového těsta.",
       "id": "food-0019",
       "options": ["Belgie", "Švýcarsko", "Rakousko", "Německo"],
       "question": "Croissant pochází z kipferlu, pečiva ve tvaru půlměsíce z které země?"
@@ -1194,7 +1194,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Pesto alla genovese se mixuje z bazalky, piniových oříšků, česneku, tvrdého sýra a olivového oleje; název pochází ze slova „tlouct“.",
+      "explanation": "Pesto alla genovese se mixuje z bazalky, piniových oříšků, česneku, tvrdého sýra a olivového oleje; název pochází z janovského slovesa ve významu „tlouct“.",
       "id": "food-0015",
       "options": ["Vlašské ořechy", "Mandle", "Piniové oříšky", "Kešu"],
       "question": "Které ořechy se používají v tradičním janovském pestu?"
@@ -1229,7 +1229,7 @@
       "explanation": "Portugalští misionáři a obchodníci připluli v 16. století; slovo tempura možná pochází z latinského „tempora“.",
       "id": "food-0024",
       "options": ["Angličané", "Nizozemci", "Španělé", "Portugalci"],
-      "question": "Kteří evropští obchodníci přinesli do Japonska techniku smažení, z níž vzniklo tempura?"
+      "question": "Kteří evropští obchodníci přinesli do Japonska techniku smažení, z níž vznikla tempura?"
     },
     {
       "answer": 1,
@@ -1308,10 +1308,10 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Pepř byl ve starověku tak cenný, že se mu říkalo „černé zlato“ a někdy se jím platilo i nájemné.",
+      "explanation": "Pepř pochází z indického Malabarského pobřeží a byl kdysi tak cenný, že se mu říkalo „černé zlato“ a někdy se jím platilo i nájemné.",
       "id": "food-0034",
       "options": ["Indie", "Brazílie", "Madagaskar", "Mexiko"],
-      "question": "Odkud pochází pepř černý?"
+      "question": "Ze které země pochází pepř černý?"
     },
     {
       "answer": 1,
@@ -1335,15 +1335,6 @@
         "Z hořkých pomerančů"
       ],
       "question": "Z jakého ovoce se tradičně vyrábí britská marmeláda?"
-    },
-    {
-      "answer": 1,
-      "category": "food & travel customs",
-      "difficulty": 1,
-      "explanation": "Námořníci kdysi brali kysané zelí na dlouhé plavby, protože vydrží měsíce a obsahuje vitamin C.",
-      "id": "food-0020",
-      "options": ["Z okurky", "Ze zelí", "Z vodnice", "Z cibule"],
-      "question": "Ze které kvašené zeleniny se dělá kysané zelí?"
     },
     {
       "answer": 2,
@@ -1371,15 +1362,6 @@
       "id": "food-0021",
       "options": ["Červená řepa", "Rajče", "Červené zelí", "Červená paprika"],
       "question": "Která zelenina dává boršči sytě červenou barvu?"
-    },
-    {
-      "answer": 3,
-      "category": "food & travel customs",
-      "difficulty": 2,
-      "explanation": "Na mnoha švédských pracovištích mají pravidelné přestávky na fiku a klasickým doprovodem jsou skořicové šneky.",
-      "id": "food-0039",
-      "options": ["Finsko", "Dánsko", "Norsko", "Švédsko"],
-      "question": "Ve které zemi je „fika“, přestávka na kávu a koláč, oblíbeným každodenním zvykem?"
     },
     {
       "answer": 0,
@@ -1465,7 +1447,7 @@
       "explanation": "Název pochází z maďarského „gulyás“, tedy pastevec dobytka; pastevci ho vařili v kotlících nad otevřeným ohněm.",
       "id": "food-0026",
       "options": ["Maďarsko", "Řecko", "Polsko", "Rumunsko"],
-      "question": "Ve které zemi vznikl guláš, dušené maso s hojností papriky?"
+      "question": "Ve které zemi vznikl guláš, dušené maso hojně kořeněné paprikou?"
     },
     {
       "answer": 3,
@@ -1594,7 +1576,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Změna v „Den H“ proběhla 3. září 1967 v 5 hodin ráno; doprava se zastavila a auta se přesunula do druhého pruhu.",
+      "explanation": "Přechod proběhl v takzvaný Den H (Dagen H) 3. září 1967 v 5 hodin ráno; doprava se zastavila a auta se přesunula na druhou stranu silnice.",
       "id": "food-0065",
       "options": ["Finsko", "Norsko", "Švédsko", "Dánsko"],
       "question": "Která země v roce 1967 přes noc přešla z jízdy vlevo na jízdu vpravo?"
@@ -1762,7 +1744,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Poutine vzniklo v 50. letech na venkově v Québecu; čerstvý sýr by měl při kousnutí „vrzat“.",
+      "explanation": "Poutine vzniklo v 50. letech na venkově v Québecu; čerstvý sýr by měl při kousnutí „skřípat“ mezi zuby.",
       "id": "food-0073",
       "options": ["Belgie", "Irsko", "Kanada", "Francie"],
       "question": "Ze které země pochází poutine, hranolky se sýrovými kousky a omáčkou?"
@@ -1818,8 +1800,8 @@
       "difficulty": 2,
       "explanation": "Kořeny manioku jsou syrové jedovaté a musí se zpracovat; tapiokové perly proslavil po celém světě bubble tea.",
       "id": "food-0077",
-      "options": ["Rýže", "Maniok", "Pšenice", "Brambory"],
-      "question": "Ze škrobu které rostliny se vyrábějí tapiokové perly?"
+      "options": ["Rýže", "Maniok", "Pšenice", "Brambor"],
+      "question": "Která rostlina dává škrob, z něhož se vyrábějí tapiokové perly?"
     },
     {
       "answer": 0,
@@ -1828,7 +1810,7 @@
       "explanation": "Za jeho autora se považuje restauratér italského původu Caesar Cardini, který ho ve 20. letech vytvořil v Tijuaně.",
       "id": "food-0079",
       "options": ["Mexiko", "Itálie", "Řecko", "Španělsko"],
-      "question": "Ve které zemi vznikl Caesar salát?"
+      "question": "Ve které zemi vznikl salát Caesar?"
     },
     {
       "answer": 1,
@@ -1962,7 +1944,7 @@
         "Boeing 777-300ER",
         "Airbus A380"
       ],
-      "question": "Které dopravní letadlo v historii je největší podle kapacity cestujících?"
+      "question": "Které z dosud postavených dopravních letadel má největší kapacitu cestujících?"
     },
     {
       "answer": 3,
@@ -2014,7 +1996,7 @@
       "answer": 1,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Yeager letěl s raketovým Bell X-1, který byl vypuštěn zpod bombardéru a teprve pak zažehl motor.",
+      "explanation": "Yeager pilotoval raketový Bell X-1, který byl vypuštěn zpod bombardéru a teprve pak zažehl motor.",
       "id": "avi-0016",
       "options": [
         "John Glenn",
@@ -2141,7 +2123,7 @@
       "explanation": "Křidélka se vychylují opačně: vztlak jednoho křídla roste, druhého klesá, a letadlo se nakloní.",
       "id": "avi-0048",
       "options": ["Výškovka", "Vztlakové klapky", "Směrovka", "Křidélka"],
-      "question": "Které kormidelní plochy na křídlech naklánějí letadlo na stranu?"
+      "question": "Které řídicí plochy na křídlech naklánějí letadlo na stranu?"
     },
     {
       "answer": 1,
@@ -2238,7 +2220,7 @@
         "Proudové letadlo",
         "Horkovzdušný balon"
       ],
-      "question": "Za ranou myšlenku kterého letadla se často považuje návrh „vzdušného šroubu“ Leonarda da Vinci?"
+      "question": "Za raný předobraz kterého létajícího stroje se často považuje „vzdušný šroub“ Leonarda da Vinci?"
     },
     {
       "answer": 1,
@@ -2253,7 +2235,7 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 1,
-      "explanation": "Leonardo kreslil létající stroje včetně ornitoptéry a „vzdušného šroubu“ asi 400 let před prvními letadly.",
+      "explanation": "Hlavní římské letiště nese jméno Leonarda, který asi 400 let před prvními letadly kreslil létající stroje, například ornitoptéru napodobující ptáka.",
       "id": "avi-0029",
       "options": ["Benátky", "Florencie", "Milán", "Řím"],
       "question": "Které město obsluhuje letiště Fiumicino, pojmenované po Leonardu da Vinci?"
@@ -2335,7 +2317,7 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Před železnicí měla města vlastní místní sluneční čas, takže hodiny v městech vzdálených jen kousek od sebe se mohly lišit o mnoho minut.",
+      "explanation": "Před železnicí měla města vlastní místní sluneční čas, takže hodiny ve městech vzdálených jen kousek od sebe se mohly lišit o mnoho minut.",
       "id": "avi-0051",
       "options": ["Telegrafu", "Lodní dopravy", "Železnice", "Letecké dopravy"],
       "question": "Kvůli plánování čeho byla standardní časová pásma zavedena především?"
@@ -2379,7 +2361,7 @@
       "explanation": "Tunel měří asi 54 km a zhruba 23 km z nich vede pod dnem Cugarského průlivu.",
       "id": "avi-0055",
       "options": ["Šikoku", "Kjúšú", "Okinawa", "Hokkaidó"],
-      "question": "S kterým ostrovem spojuje japonský železniční tunel Seikan, vedoucí částečně pod mořem, ostrov Honšú?"
+      "question": "Japonský železniční tunel Seikan, vedoucí částečně pod mořem, spojuje Honšú s kterým ostrovem?"
     },
     {
       "answer": 3,
@@ -2435,7 +2417,7 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 1,
-      "explanation": "Když byla v roce 1868 otevřena jeho železná nástupištní hala, měla největší jednolodní střechu na světě.",
+      "explanation": "Když byla v roce 1868 otevřena jeho železná nástupištní hala, měla střechu s největším volným rozpětím na světě.",
       "id": "avi-0057",
       "options": ["Londýn", "Paříž", "Brusel", "Amsterdam"],
       "question": "Ve kterém městě je nádraží St Pancras International, konečná vlaků Eurostar?"
@@ -2530,7 +2512,7 @@
       "explanation": "Přechod začíná jako most a přes umělý ostrov se noří do tunelu, takže neblokuje lodě ani letadla.",
       "id": "avi-0070",
       "options": ["Norsko", "Švédsko", "Německo", "Finsko"],
-      "question": "S kterou zemí spojuje Dánsko Öresundský most?"
+      "question": "Öresundský most spojuje Dánsko s kterou zemí?"
     },
     {
       "answer": 2,
@@ -2609,7 +2591,7 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Námořní míle původně vycházela z jedné úhlové minuty zeměpisné šířky, což ji dělá praktickou pro navigaci podle map.",
+      "explanation": "Délka 1 852 m byla mezinárodně dohodnuta v roce 1929; letectví i lodní doprava dodnes měří vzdálenost v námořních mílích a rychlost v uzlech.",
       "id": "avi-0080",
       "options": ["2 000 m", "1 000 m", "1 852 m", "1 609 m"],
       "question": "Uzel je jedna námořní míle za hodinu. Jak dlouhá je námořní míle?"
@@ -2631,6 +2613,15 @@
       "id": "his-0020",
       "options": ["Inkové", "Aztékové", "Mayové", "Olmékové"],
       "question": "Která civilizace postavila stupňovitou pyramidu El Castillo v Chichén Itzá?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Machu Picchu vzniklo v 15. století vysoko v peruánských Andách, pravděpodobně jako sídlo inckého panovníka Pachacutiho.",
+      "id": "his-0002",
+      "options": ["Aztékové", "Inkové", "Olmékové", "Mayové"],
+      "question": "Která civilizace postavila horskou citadelu Machu Picchu?"
     }
   ]
 }

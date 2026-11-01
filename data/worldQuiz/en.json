@@ -15,7 +15,7 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 1,
-      "explanation": "Bats make up about a fifth of all mammal species; 'flying' squirrels and colugos can only glide.",
+      "explanation": "Bats make up about a fifth of all mammal species; \"flying\" squirrels and colugos can only glide.",
       "id": "nat-0006",
       "options": ["Bat", "Flying squirrel", "Sugar glider", "Colugo"],
       "question": "Which is the only mammal capable of true powered flight?"
@@ -83,7 +83,7 @@
         "Dark navy blue",
         "Matt black"
       ],
-      "question": "What colour are aircraft 'black box' flight recorders?"
+      "question": "What colour are aircraft \"black box\" flight recorders?"
     },
     {
       "answer": 0,
@@ -239,7 +239,7 @@
       "answer": 1,
       "category": "human body & health",
       "difficulty": 1,
-      "explanation": "An adult's skin covers about 1.5-2 m² and is constantly renewed: the outer layer replaces itself every few weeks.",
+      "explanation": "An adult's skin covers about 1.5–2 m² and is constantly renewed: the outer layer replaces itself every few weeks.",
       "id": "body-0002",
       "options": ["Liver", "Skin", "Brain", "Lungs"],
       "question": "Which is the largest organ of the human body?"
@@ -354,7 +354,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "People in the Andes of Peru and Bolivia grew potatoes about 7,000-10,000 years ago, and thousands of varieties still exist there.",
+      "explanation": "People in the Andes of Peru and Bolivia grew potatoes about 7,000–10,000 years ago, and thousands of varieties still exist there.",
       "id": "food-0013",
       "options": [
         "West Africa",
@@ -492,7 +492,7 @@
       "answer": 1,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Durian is often called the 'king of fruits'; fans love its creamy flesh, but many hotels also ban it.",
+      "explanation": "Durian is often called the \"king of fruits\"; fans love its creamy flesh, but many hotels also ban it.",
       "id": "food-0035",
       "options": ["Rambutan", "Durian", "Jackfruit", "Mangosteen"],
       "question": "Which spiky Southeast Asian fruit is so smelly that it is banned on Singapore's trains?"
@@ -621,7 +621,7 @@
       "answer": 2,
       "category": "curiosities",
       "difficulty": 2,
-      "explanation": "China spans five geographical time zones but uses Beijing time everywhere, so in the far west the winter sun can rise as late as 10 a.m.",
+      "explanation": "China spans five geographical time zones but uses Beijing time everywhere, so in the far west the winter sun can rise as late as 10 am.",
       "id": "misc-0038",
       "options": ["Two", "Five", "One", "Three"],
       "question": "How many official time zones does China use?"
@@ -638,7 +638,7 @@
         "Coloured horseradish",
         "Green chilli paste"
       ],
-      "question": "Outside Japan, the 'wasabi' served with sushi is often actually what?"
+      "question": "Outside Japan, the \"wasabi\" served with sushi is often actually what?"
     },
     {
       "answer": 0,
@@ -730,7 +730,7 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "The 'breather hole' lets the outer pane carry the cabin pressure while the middle pane acts as a backup.",
+      "explanation": "The \"breather hole\" lets the outer pane carry the cabin pressure while the middle pane acts as a backup.",
       "id": "avi-0043",
       "options": [
         "To drain rainwater",
@@ -790,7 +790,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Giraffes have the same number of neck bones as humans; each one is just up to 25 cm long.",
+      "explanation": "Giraffes have the same number of neck bones as humans; each one can be up to 25 cm long.",
       "id": "nat-0009",
       "options": ["Twenty-four", "Twelve", "Eighteen", "Seven"],
       "question": "How many vertebrae are in a giraffe's neck?"
@@ -822,7 +822,7 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Seen from above, Brasília's plan by Lúcio Costa looks like an airplane or a bird, with buildings by Oscar Niemeyer.",
+      "explanation": "Seen from above, Brasília's plan by Lúcio Costa looks like an aeroplane or a bird, with buildings by Oscar Niemeyer.",
       "id": "cul-0057",
       "options": ["Islamabad", "Canberra", "Abuja", "Brasília"],
       "question": "Which capital city was built from scratch and inaugurated in 1960?"
@@ -874,7 +874,7 @@
         "A spiny seed pod",
         "A woody cone",
         "An underground root",
-        "A fleshy 'apple'"
+        "A fleshy \"apple\""
       ],
       "question": "A cashew nut grows hanging from the bottom of what?"
     },
@@ -882,7 +882,7 @@
       "answer": 0,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Lesotho is the only country lying entirely above 1,000 m, earning it the nickname 'Kingdom in the Sky'.",
+      "explanation": "Lesotho is the only country lying entirely above 1,000 m, earning it the nickname \"Kingdom in the Sky\".",
       "id": "geo-0033",
       "options": ["Lesotho", "Botswana", "Namibia", "Eswatini"],
       "question": "Which country is completely surrounded by South Africa?"

@@ -32,7 +32,7 @@
       "explanation": "Die Anden ziehen sich rund 7.000 km entlang der Westseite Südamerikas – durch sieben Länder.",
       "id": "geo-0011",
       "options": ["Anden", "Ural", "Himalaya", "Rocky Mountains"],
-      "question": "Welches ist das längste Gebirge auf einem Kontinent?"
+      "question": "Welches ist das längste kontinentale Gebirge der Welt?"
     },
     {
       "answer": 0,
@@ -271,7 +271,7 @@
       "explanation": "San Marino gilt als älteste noch bestehende Republik der Welt, der Überlieferung nach im Jahr 301 gegründet.",
       "id": "geo-0034",
       "options": ["Malta", "Andorra", "Monaco", "San Marino"],
-      "question": "Welche kleine Republik ist – neben der Vatikanstadt – vollständig von Italien umschlossen?"
+      "question": "Welche kleine Republik ist vollständig von Italien umschlossen?"
     },
     {
       "answer": 2,
@@ -297,7 +297,7 @@
       "difficulty": 3,
       "explanation": "Der Ladogasee bei Sankt Petersburg ist etwa 17.700 km² groß und hat rund 660 Inseln.",
       "id": "geo-0056",
-      "options": ["Ladogasee", "Vänern", "Genfersee", "Onegasee"],
+      "options": ["Ladogasee", "Vänern", "Genfer See", "Onegasee"],
       "question": "Welcher ist – ohne das Kaspische Meer – der größte See Europas?"
     },
     {
@@ -386,7 +386,7 @@
       "answer": 3,
       "category": "geography",
       "difficulty": 2,
-      "explanation": "Pangaea umfasste fast die gesamte Landmasse der Erde; die zueinander passenden Küsten Afrikas und Südamerikas sind ein Überbleibsel davon.",
+      "explanation": "Pangaea umfasste fast die gesamte Landmasse der Erde; die zueinander passenden Küsten Afrikas und Südamerikas sind bis heute ein Indiz dafür.",
       "id": "geo-0049",
       "options": ["Gondwana", "Laurasia", "Rodinia", "Pangaea"],
       "question": "Wie heißt der Superkontinent, der vor etwa 200 Millionen Jahren zu zerbrechen begann?"
@@ -823,7 +823,7 @@
       "difficulty": 3,
       "explanation": "Die Hauptstadt der Mongolei hat im Jahresmittel knapp unter 0 °C, Winternächte sind oft kälter als −30 °C.",
       "id": "geo-0098",
-      "options": ["Ulaanbaatar", "Moskau", "Helsinki", "Ottawa"],
+      "options": ["Ulan-Bator", "Moskau", "Helsinki", "Ottawa"],
       "question": "Welche Hauptstadt hat die niedrigste Jahresdurchschnittstemperatur?"
     },
     {
@@ -1258,7 +1258,7 @@
       "explanation": "Brückenechsen sind die letzten Überlebenden einer uralten Reptilienordnung und können über 100 Jahre alt werden.",
       "id": "nat-0041",
       "options": ["Neuseeland", "Australien", "Madagaskar", "Indonesien"],
-      "question": "Wo kommt die Brückenechse (Tuatara) vor, ein „lebendes Fossil“, dessen Verwandte zur Zeit der Dinosaurier lebten?"
+      "question": "In welchem Land kommt die Brückenechse (Tuatara) ausschließlich vor – ein „lebendes Fossil“, dessen Verwandte zur Zeit der Dinosaurier lebten?"
     },
     {
       "answer": 1,
@@ -1524,7 +1524,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 3,
-      "explanation": "Koala-Fingerabdrücke sehen unseren erstaunlich ähnlich, obwohl sie sich unabhängig voneinander entwickelt haben.",
+      "explanation": "Koalas haben ihre Fingerabdrücke unabhängig von den Primaten entwickelt – vermutlich, um Äste und Eukalyptusblätter besser greifen zu können.",
       "id": "nat-0065",
       "options": ["Waschbär", "Wombat", "Känguru", "Koala"],
       "question": "Welches Tier hat Fingerabdrücke, die selbst unter dem Mikroskop denen des Menschen verblüffend ähneln?"
@@ -1556,10 +1556,10 @@
       "answer": 0,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Eulenaugen sind in ihren Höhlen fixiert, deshalb drehen Eulen den ganzen Kopf – mithilfe zusätzlicher Halswirbel.",
+      "explanation": "Das sind etwa 135° zu jeder Seite. Eulenaugen sind in ihren Höhlen fixiert, deshalb drehen Eulen den ganzen Kopf – mithilfe zusätzlicher Halswirbel.",
       "id": "nat-0069",
       "options": ["270 Grad", "360 Grad", "180 Grad", "90 Grad"],
-      "question": "Wie weit kann eine Eule ihren Kopf ungefähr in jede Richtung drehen?"
+      "question": "Wie weit kann eine Eule ihren Kopf insgesamt ungefähr drehen – von einer Seite zur anderen?"
     },
     {
       "answer": 0,
@@ -1755,7 +1755,7 @@
       "explanation": "Blattschneiderameisen legten Pilzgärten an – Millionen Jahre bevor der Mensch die Landwirtschaft erfand.",
       "id": "nat-0084",
       "options": ["Samen", "Algen", "Einen Pilz", "Moos"],
-      "question": "Blattschneiderameisen tragen Blätter in ihr Nest, um darauf was zu züchten?"
+      "question": "Was züchten Blattschneiderameisen auf den Blättern, die sie in ihr Nest tragen?"
     },
     {
       "answer": 3,
@@ -2075,7 +2075,7 @@
       "options": [
         "Der hellste Stern im Schützen",
         "Ein mit bloßem Auge sichtbarer Nebel",
-        "Schwarzes Loch im Zentrum der Galaxis",
+        "Das zentrale Schwarze Loch der Galaxis",
         "Eine Sonde, die das Sonnensystem verließ"
       ],
       "question": "Was ist Sagittarius A*?"
@@ -2084,7 +2084,7 @@
       "answer": 1,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Fe kommt vom lateinischen ferrum; Eisen ist das häufigste Element der Erde insgesamt, vor allem im Kern.",
+      "explanation": "Fe kommt vom lateinischen ferrum; Eisen ist, gemessen an der Masse, das häufigste Element der Erde insgesamt, vor allem im Kern.",
       "id": "sci-0006",
       "options": ["Blei", "Eisen", "Fluor", "Francium"],
       "question": "Welches Element hat das chemische Symbol Fe?"
@@ -2173,7 +2173,7 @@
       "explanation": "Die Andromedagalaxie ist etwa 2,5 Millionen Lichtjahre entfernt und das fernste Objekt, das man leicht mit bloßem Auge sehen kann.",
       "id": "sci-0022",
       "options": ["Andromeda", "Sombrero", "Feuerrad", "Whirlpool"],
-      "question": "Welches ist die nächstgelegene große Spiralgalaxie zur Milchstraße?"
+      "question": "Welche große Spiralgalaxie liegt der Milchstraße am nächsten?"
     },
     {
       "answer": 0,
@@ -2188,7 +2188,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Ein pH-Wert von 7 ist neutral; jede Stufe darunter bedeutet eine zehnmal höhere Säure.",
+      "explanation": "Ein pH-Wert von 7 ist neutral; jede Stufe darunter ist zehnmal saurer.",
       "id": "sci-0030",
       "options": ["0", "5", "7", "14"],
       "question": "Welchen pH-Wert hat reines Wasser bei 25 °C?"
@@ -2229,7 +2229,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Sie ordnet Minerale danach, welches welches ritzen kann – von Talk (1) bis Diamant (10).",
+      "explanation": "Sie ordnet Minerale danach, welches Mineral welches andere ritzen kann – von Talk (1) bis Diamant (10).",
       "id": "sci-0032",
       "options": [
         "Säuregrad von Wasser",

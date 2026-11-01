@@ -80,7 +80,7 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 1,
-      "explanation": "Orange Farbe und Reflexstreifen machen sie leichter auffindbar; sie sind dafür gebaut, extreme Aufpralle und Feuer zu überstehen.",
+      "explanation": "Orange Farbe und Reflexstreifen machen sie leichter auffindbar; sie sind dafür gebaut, extreme Aufprallkräfte und Feuer zu überstehen.",
       "id": "avi-0014",
       "options": [
         "Leuchtend orange",
@@ -206,7 +206,7 @@
       "explanation": "Die Pisten sind im Sand markiert und verschwinden bei Flut unter dem Meer – die Flugzeiten richten sich daher nach den Gezeiten.",
       "id": "avi-0024",
       "options": [
-        "Auf dem Strand",
+        "Am Strand",
         "Auf einer Autobahn",
         "Auf einem zugefrorenen See",
         "Auf einem Gletscher"
@@ -423,7 +423,7 @@
       "answer": 0,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Die Erdachse ist um etwa 23,4° geneigt, sodass jede Erdhälfte einen Teil des Jahres der Sonne zugewandt ist.",
+      "explanation": "Die Erdachse ist um etwa 23,4° geneigt, sodass jede Erdhalbkugel einen Teil des Jahres der Sonne zugewandt ist.",
       "id": "sci-0042",
       "options": [
         "Neigung der Erdachse",
@@ -795,7 +795,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Giraffen haben genauso viele Halswirbel wie Menschen; jeder einzelne ist allerdings bis zu 25 cm lang.",
+      "explanation": "Giraffen haben genauso viele Halswirbel wie Menschen; jeder einzelne kann allerdings bis zu 25 cm lang sein.",
       "id": "nat-0009",
       "options": ["Vierundzwanzig", "Zwölf", "Achtzehn", "Sieben"],
       "question": "Wie viele Wirbel hat der Hals einer Giraffe?"
@@ -850,7 +850,7 @@
       "options": [
         "Höchstes Flugzeuggewicht",
         "Die Kompassrichtung",
-        "Länge in Hundert Metern",
+        "Länge in Hunderten von Metern",
         "Reihenfolge des Baus"
       ],
       "question": "Was verrät Piloten die große Zahl am Pistenende, etwa 27?"
@@ -927,7 +927,7 @@
         "Songhai-Reich",
         "Mali-Reich"
       ],
-      "question": "Welches westafrikanische Reich regierte Mansa Musa, berühmt für seinen Reichtum?"
+      "question": "Über welches westafrikanische Reich herrschte der für seinen Reichtum berühmte Mansa Musa?"
     },
     {
       "answer": 1,
@@ -950,7 +950,7 @@
         "Ein Aquarium",
         "Eine Wetterfahne"
       ],
-      "question": "Was zeigte die erste Webcam der Welt, 1991 an der Universität Cambridge eingerichtet?"
+      "question": "Was zeigte die erste Webcam der Welt, die 1991 an der Universität Cambridge eingerichtet wurde?"
     },
     {
       "answer": 2,

@@ -3,20 +3,6 @@
   "lang": "cs",
   "questions": [
     {
-      "answer": 0,
-      "category": "inventions",
-      "difficulty": 1,
-      "explanation": "Větrné mlýny čerpaly vodu z nízko položených polderů; 19 mlýnů v Kinderdijku je zapsáno na seznamu světového dědictví UNESCO.",
-      "id": "inv-0026",
-      "options": [
-        "Odčerpávání vody z půdy",
-        "Výroba elektřiny",
-        "Signalizace lodím",
-        "Pohon přístavních majáků"
-      ],
-      "question": "Jaký byl hlavní úkol většiny historických větrných mlýnů v Nizozemsku?"
-    },
-    {
       "answer": 2,
       "category": "inventions",
       "difficulty": 1,
@@ -176,7 +162,7 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Byla nalezena v jeskyni u Tun-chuangu v Číně a dnes je uložena v Britské knihovně.",
+      "explanation": "Byla vytištěna z vyřezávaných dřevěných desek, nalezena v jeskyni u Tun-chuangu v Číně a dnes je uložena v Britské knihovně.",
       "id": "inv-0085",
       "options": [
         "Šablonami",
@@ -327,7 +313,7 @@
         "Isaac Newton",
         "Christiaan Huygens"
       ],
-      "question": "Který myslitel publikoval v roce 1703 evropskou studii o dvojkové aritmetice?"
+      "question": "Který myslitel publikoval v roce 1703 vlivné pojednání o dvojkové aritmetice?"
     },
     {
       "answer": 1,
@@ -401,12 +387,12 @@
       "explanation": "Od roku 1866 spojoval kabel na dně Atlantiku Evropu a Severní Ameriku telegrafem.",
       "id": "inv-0032",
       "options": [
-        "Po elektrických drátech",
+        "Elektrickými dráty",
         "Rádiovými vlnami",
         "Světelnými paprsky",
         "Pneumatickou potrubní poštou"
       ],
-      "question": "Po čem posílal zprávy raný elektrický telegraf?"
+      "question": "Čím posílal zprávy raný elektrický telegraf?"
     },
     {
       "answer": 2,
@@ -461,7 +447,7 @@
       "explanation": "Boothův stroj, přezdívaný „Puffing Billy“, parkoval před budovami a dlouhé hadice se zaváděly okny dovnitř.",
       "id": "inv-0072",
       "options": ["Vysavač", "Sekačku na trávu", "Pračku", "Ledničku"],
-      "question": "Který spotřebič, tažený koňmi, vynalezl v roce 1901 Hubert Cecil Booth?"
+      "question": "Raná verze kterého domácího spotřebiče byl koňmi tažený vynález Huberta Cecila Boothe z roku 1901?"
     },
     {
       "answer": 2,
@@ -612,7 +598,12 @@
       "difficulty": 1,
       "explanation": "Shawa inspirovalo světlo odrážející se v noci v kočičích očích; odrazky se samy čistí, když přes ně přejedou auta.",
       "id": "inv-0065",
-      "options": ["V dolech", "Na lodích", "Na silnicích", "Na kolech"],
+      "options": [
+        "V dolech",
+        "Na lodích",
+        "Na silnicích",
+        "Na jízdních kolech"
+      ],
       "question": "Kde se používají „kočičí oči“, vynález Percyho Shawa z roku 1934?"
     },
     {
@@ -705,7 +696,7 @@
       "explanation": "Flétny z ptačích kostí a mamutí slonoviny byly nalezeny v jeskyních v jižním Německu.",
       "id": "inv-0069",
       "options": ["Harfa", "Flétna", "Buben", "Chrastítko"],
-      "question": "Který typ nástroje patří k nejstarším známým, z kostí starých asi 40 000 let?"
+      "question": "Který hudební nástroj patří k nejstarším známým? Jeho nálezy z kostí jsou staré asi 40 000 let."
     },
     {
       "answer": 0,
@@ -733,7 +724,7 @@
         "Animační hračka",
         "Měřič počasí"
       ],
-      "question": "Jakým zařízením je zoetrop, oblíbený v 19. století?"
+      "question": "Jaké zařízení je zoetrop, oblíbený v 19. století?"
     },
     {
       "answer": 3,
@@ -780,7 +771,7 @@
       "answer": 0,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "„Saharská poušť“ tedy vlastně znamená „pouštní poušť“; arabské „ṣaḥrāʾ“ znamená poušť.",
+      "explanation": "Arabské „ṣaḥrāʾ“ znamená poušť, takže spojení „poušť Sahara“ doslova znamená „poušť Poušť“.",
       "id": "lang-0051",
       "options": ["Poušť", "Slunce", "Písek", "Moře dun"],
       "question": "Co znamená v arabštině slovo „Sahara“?"
@@ -848,7 +839,7 @@
       "answer": 2,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "Finština a estonština jsou baltofinské jazyky; ani jedna není příbuzná se švédštinou, ruštinou či lotyštinou sousedů.",
+      "explanation": "Finština a estonština jsou baltofinské jazyky; ani jedna není příbuzná s jazyky svých sousedů – švédštinou, ruštinou či lotyštinou.",
       "id": "lang-0035",
       "options": ["Litevština", "Ruština", "Estonština", "Švédština"],
       "question": "Se kterým jazykem je finština nejblíže příbuzná?"
@@ -937,7 +928,7 @@
       "difficulty": 1,
       "explanation": "Alfa a beta byly samy převzaty z fénických písmen znamenajících „vůl“ a „dům“.",
       "id": "lang-0010",
-      "options": ["Hebrejské", "Řecké", "Cyrilice", "Latinské"],
+      "options": ["Hebrejské", "Řecké", "Cyrilské", "Latinské"],
       "question": "Slovo „alfabeta“ (abeceda) pochází z prvních dvou písmen které abecedy?"
     },
     {
@@ -1140,10 +1131,10 @@
       "answer": 0,
       "category": "languages",
       "difficulty": 3,
-      "explanation": "Název pochází z odžibwejského „misi-ziibi“; řeka odvodňuje části 32 států USA.",
+      "explanation": "Název pochází z odžibvejského „misi-ziibi“; řeka odvodňuje části 32 států USA.",
       "id": "lang-0066",
       "options": ["Velká řeka", "Mnoho ryb", "Kalná voda", "Dlouhá cesta"],
-      "question": "Co znamená v jazyce odžibwejů název „Mississippi“?"
+      "question": "Co znamená v odžibvejštině název „Mississippi“?"
     },
     {
       "answer": 2,
@@ -1204,7 +1195,7 @@
       "answer": 0,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "Latinské „salarium“ souvisí se slovem „sal“ (sůl); proč byl římský žold pojmenován po soli, se dodnes vedou spory.",
+      "explanation": "Latinské „salarium“ souvisí se slovem „sal“ (sůl); o tom, proč byl římský žold pojmenován po soli, se dodnes vedou spory.",
       "id": "lang-0040",
       "options": ["Sůl", "Chléb", "Voják", "Stříbro"],
       "question": "Od latinského slova pro co pochází anglické slovo „salary“ (plat)?"
@@ -1300,7 +1291,7 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Hráči chytají a hází míček zahnutým proutěným košíkem zvaným cesta, připevněným k zápěstí.",
+      "explanation": "Hráči chytají a házejí míček zahnutým proutěným košíkem zvaným cesta, připevněným k zápěstí.",
       "id": "sport-0058",
       "options": ["Katalánsko", "Andalusie", "Baskicko", "Baleáry"],
       "question": "Ze které oblasti pochází jai alai, často označovaná za nejrychlejší míčovou hru?"
@@ -1417,7 +1408,7 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Hokejisté střídají „za běhu“ během hry, často po střídání kratším než minuta.",
+      "explanation": "Hokejisté střídají „za běhu“ během hry, často už po necelé minutě na ledě.",
       "id": "sport-0028",
       "options": ["Šest", "Pět", "Sedm", "Jedenáct"],
       "question": "Kolik hráčů každého týmu je v ledním hokeji na ledě, včetně brankáře?"
@@ -1449,7 +1440,7 @@
       "answer": 2,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Hráč musí během jednoho náběhu potopit všech 15 červených, po každé černou, a pak všechny barevné koule.",
+      "explanation": "Hráč musí během jednoho náběhu potopit všech 15 červených, po každé z nich černou, a pak všechny barevné koule.",
       "id": "sport-0031",
       "options": ["155", "100", "147", "180"],
       "question": "Kolik bodů má standardní maximální break ve snookeru?"
@@ -1680,7 +1671,7 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Pitch měří 22 yardů (20,12 m) – stejně jako chain, stará zeměměřičská jednotka.",
+      "explanation": "Pitch měří 20,12 m (22 yardů) – stejně jako chain, stará zeměměřičská jednotka.",
       "id": "sport-0055",
       "options": ["Asi 25 m", "Asi 30 m", "Asi 15 m", "Asi 20 m"],
       "question": "Jak dlouhý je zhruba kriketový pitch mezi dvěma brankami?"
@@ -1689,7 +1680,7 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Hráči odpalují dřevěnou holí zvanou hurley malý míček sliotar rychlostí vysoko přes 100 km/h.",
+      "explanation": "Hráči odpalují dřevěnou holí zvanou hurley malý míček sliotar rychlostí výrazně přes 100 km/h.",
       "id": "sport-0044",
       "options": ["Wales", "Norsko", "Skotsko", "Irsko"],
       "question": "Ve které zemi je tradiční hurling, jeden z nejrychlejších polních sportů na světě?"
@@ -1746,7 +1737,7 @@
       "explanation": "Díky osmiúhelníkovému tvaru řidiči poznají značku STOP i zezadu nebo když je zasypaná sněhem.",
       "id": "misc-0003",
       "options": ["Šest", "Deset", "Sedm", "Osm"],
-      "question": "Kolik stran má standardní osmiúhelníková značka STOP?"
+      "question": "Kolik stran má standardní dopravní značka STOP používaná ve většině zemí?"
     },
     {
       "answer": 1,
@@ -1838,7 +1829,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Námořní míle je dnes definována jako přesně 1 852 metrů, což se blíží jedné úhlové minutě podél poledníku.",
+      "explanation": "Protože námořní míle odpovídá jedné úhlové minutě, mohou navigátoři měřit vzdálenosti přímo na stupnici zeměpisné šířky na mapě.",
       "id": "misc-0076",
       "options": [
         "Z výhledu ze stěžně",
@@ -1902,7 +1893,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "Je pojmenován po papeži Řehořovi XIII. a napravil posun, kvůli němuž se kalendář vzdálil ročním obdobím asi o 10 dní.",
+      "explanation": "Je pojmenován po papeži Řehořovi XIII. a napravil pomalý posun juliánského kalendáře vůči ročním obdobím.",
       "id": "misc-0008",
       "options": [
         "Mayský dlouhý počet",
@@ -2380,7 +2371,7 @@
       "explanation": "Naproti 1 je tedy 6, naproti 2 je 5 a naproti 3 je 4; všechny body na kostce dávají dohromady 21.",
       "id": "misc-0089",
       "options": ["Šest", "Osm", "Dvanáct", "Sedm"],
-      "question": "Kolik dává na standardní šestistěnné kostce vždy součet protilehlých stěn?"
+      "question": "Kolik vždy dává součet protilehlých stěn standardní šestistěnné hrací kostky?"
     },
     {
       "answer": 1,
@@ -2395,11 +2386,11 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Trully jsou stavěny nasucho z kamene a mají kuželové střechy z vrstvených vápencových desek.",
+      "explanation": "Trulli se stavějí nasucho z kamene a mají kuželové střechy z vrstvených vápencových desek.",
       "id": "misc-0087",
       "options": [
         "Malovanými dřevěnými chatami",
-        "Trully s kuželovou střechou",
+        "Kuželovými domky trulli",
         "Jeskynními obydlími",
         "Domy na kůlech"
       ],
@@ -2533,7 +2524,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 2,
-      "explanation": "Většina lístků jetele má tři lístky; čtvrtý je vzácná genetická odchylka, a proto se stal symbolem štěstí.",
+      "explanation": "Většina listů jetele má tři lístky; čtvrtý je vzácná genetická odchylka, a proto se stal symbolem štěstí.",
       "id": "misc-0062",
       "options": [
         "Asi 1 z 5 000",
@@ -2620,7 +2611,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Albert Einstein bydlel kousek odtud v téže ulici, když pracoval na teorii relativity.",
+      "explanation": "Albert Einstein bydlel kousek od Zytglogge v téže ulici, když pracoval na speciální teorii relativity.",
       "id": "misc-0085",
       "options": ["Zytglogge", "Glockenspiel", "Torre dell'Orologio", "Orloj"],
       "question": "Jak se jmenuje středověká hodinová věž v Bernu s pohyblivými figurami?"

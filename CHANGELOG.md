@@ -9,6 +9,7 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 
+- **World quiz — language review:** every English, Czech and German question was proofread by a separate reviewer against the English source (EN 149, CS 106, DE 63 questions corrected: grammar, typos, wording that gave answers away, a few meaning slips; no wrong answers found). A duplicate question was removed, and questions that reveal their answer in one language are skipped in that language only.
 - **Sudoku:** when the board is full but a number is wrong, the game now says so ("Board full — N wrong numbers in red") instead of silently waiting.
 - **Currency converter:** picking the currency that is already in the other row swaps the two (USD→CZK, then CZK as "from" gives CZK→USD instead of CZK→CZK). Currency chips also react on the first tap while the amount keyboard is open, and currencies are listed alphabetically (the selected one stays first in the chip row).
 

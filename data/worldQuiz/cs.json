@@ -80,7 +80,7 @@
       "options": [
         "Jasně oranžovou",
         "Stříbrnou metalízu",
-        "Tmavě námořnickou",
+        "Tmavě modrou",
         "Matně černou"
       ],
       "question": "Jakou barvu mají letové zapisovače, takzvané „černé skříňky“?"
@@ -101,7 +101,7 @@
       "explanation": "Každý květ dává jen tři drobné blizny, které se trhají ručně; na 1 g šafránu je potřeba asi 150 květů.",
       "id": "food-0006",
       "options": ["Šafrán", "Vanilka", "Kardamom", "Skořice"],
-      "question": "Které koření, získávané z květů šafránu, je hmotnostně nejdražší?"
+      "question": "Které koření, získávané z květů jednoho druhu krokusu, je hmotnostně nejdražší?"
     },
     {
       "answer": 1,
@@ -357,7 +357,7 @@
         "Jižní Amerika",
         "Jižní Evropa"
       ],
-      "question": "Ve které části světa byly brambory poprvé zdomácněny?"
+      "question": "Ve které části světa byly brambory poprvé domestikovány?"
     },
     {
       "answer": 3,
@@ -487,7 +487,7 @@
       "id": "misc-0019",
       "options": [
         "Aby letěly dál",
-        "Aby vypadaly hezčí",
+        "Aby vypadaly lépe",
         "Aby plavaly na vodě",
         "Aby lépe držely na holi"
       ],
@@ -528,7 +528,7 @@
         "Z nosu",
         "Z vnitřního ucha"
       ],
-      "question": "Nevolnost z pohybu (kinetóza) vzniká nesouladem mezi signály z očí a kterého orgánu?"
+      "question": "Nevolnost z pohybu (kinetóza) vzniká nesouladem mezi signály z očí a z kterého orgánu?"
     },
     {
       "answer": 0,
@@ -720,7 +720,7 @@
       "explanation": "Songkran připadá na duben, nejteplejší období roku, takže přátelská vodní bitva je vítaným osvěžením.",
       "id": "cul-0050",
       "options": ["Yi Peng", "Songkran", "Loy Krathong", "Phi Ta Khon"],
-      "question": "Který svátek s politím vodou zahajuje tradiční thajský Nový rok?"
+      "question": "Který svátek s poléváním vodou zahajuje tradiční thajský Nový rok?"
     },
     {
       "answer": 0,
@@ -740,7 +740,7 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Tento „dýchací otvor“ zajišťuje, že tlak v kabině nese vnější tabule, zatímco prostřední slouží jako záloha.",
+      "explanation": "Tento „dýchací otvor“ zajišťuje, že tlak v kabině nese vnější vrstva okna, zatímco prostřední slouží jako záloha.",
       "id": "avi-0043",
       "options": [
         "K odvodu dešťové vody",
@@ -763,7 +763,7 @@
       "answer": 3,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Podle legendy si etiopský pastevec všiml, že jeho kozy po spasení kávových plodů obživly.",
+      "explanation": "Podle legendy si etiopský pastevec všiml, že jeho kozy po spasení kávových plodů nápadně ožily.",
       "id": "food-0009",
       "options": ["Brazílie", "Vietnam", "Kolumbie", "Etiopie"],
       "question": "Z vysočin které země pochází kávovník arabský?"
@@ -795,7 +795,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "Žirafy mají stejný počet krčních obratlů jako lidé; každý je ale dlouhý až 25 cm.",
+      "explanation": "Žirafy mají stejný počet krčních obratlů jako lidé; každý ale může měřit až 25 cm.",
       "id": "nat-0009",
       "options": ["Dvacet čtyři", "Dvanáct", "Osmnáct", "Sedm"],
       "question": "Kolik obratlů má krk žirafy?"
@@ -995,7 +995,7 @@
       "explanation": "Spočítej sekundy mezi zábleskem a zahřměním a vyděl je třemi – dostaneš přibližnou vzdálenost bouřky v kilometrech.",
       "id": "sci-0077",
       "options": ["10 sekund", "30 sekund", "1 sekunda", "3 sekundy"],
-      "question": "Kolik sekund zhruba trvá, než hrom dorazí po blesku, na každý kilometr vzdálenosti?"
+      "question": "Kolik sekund zhruba uplyne mezi bleskem a hromem na každý kilometr vzdálenosti?"
     },
     {
       "answer": 0,
@@ -1017,12 +1017,7 @@
       "difficulty": 2,
       "explanation": "Saxofon se řadí mezi dřevěné dechové nástroje, protože tón vytváří jednoduchý plátek jako u klarinetu.",
       "id": "cul-0074",
-      "options": [
-        "Bicí nástroje",
-        "Smyčcové nástroje",
-        "Žesťové nástroje",
-        "Dřevěné dechové"
-      ],
+      "options": ["Bicí", "Smyčcové", "Žesťové", "Dřevěné dechové"],
       "question": "Saxofon je z mosazi, ale do které skupiny nástrojů patří?"
     },
     {

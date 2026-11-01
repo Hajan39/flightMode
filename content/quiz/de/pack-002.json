@@ -258,7 +258,7 @@
       "explanation": "Der Rekord wurde im Juli 1983 an der russischen Forschungsstation Wostok hoch auf dem antarktischen Eisschild aufgestellt.",
       "id": "sci-0081",
       "options": ["Werchojansk", "Oimjakon", "Wostok-Station", "Südpol"],
-      "question": "Wo wurde die tiefste natürliche Lufttemperatur an der Erdoberfläche gemessen, −89,2 °C?"
+      "question": "Wo wurde mit −89,2 °C die tiefste natürliche Lufttemperatur an der Erdoberfläche gemessen?"
     },
     {
       "answer": 3,
@@ -356,7 +356,7 @@
       "answer": 3,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Unterirdisch heißt geschmolzenes Gestein Magma, sobald es an der Oberfläche austritt, Lava.",
+      "explanation": "Unterirdisch heißt geschmolzenes Gestein Magma; sobald es an der Oberfläche austritt, heißt es Lava.",
       "id": "sci-0085",
       "options": ["Obsidian", "Basalt", "Lava", "Magma"],
       "question": "Wie heißt geschmolzenes Gestein unter der Erdoberfläche?"
@@ -377,7 +377,7 @@
       "explanation": "Bernstein kann Insekten, Federn und sogar Teile von Dinosaurierschwänzen über Jahrmillionen detailgetreu bewahren.",
       "id": "sci-0089",
       "options": ["Baumharz", "Honig", "Tierknochen", "Muscheln"],
-      "question": "Bernstein ist fossiles was?"
+      "question": "Woraus ist Bernstein entstanden?"
     },
     {
       "answer": 1,
@@ -479,7 +479,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 2,
-      "explanation": "Curie benannte das Polonium 1898, als Polen kein unabhängiger Staat war – um Aufmerksamkeit darauf zu lenken.",
+      "explanation": "Curie benannte das Polonium 1898, als Polen kein unabhängiger Staat war – um auf das Schicksal Polens aufmerksam zu machen.",
       "id": "sci-0104",
       "options": ["Germanium", "Radium", "Polonium", "Francium"],
       "question": "Welches Element benannte Marie Curie nach ihrer Heimat?"
@@ -550,7 +550,7 @@
       "explanation": "Rote Blutkörperchen der Gruppe 0 negativ tragen weder A-, B- noch RhD-Merkmale; sie kommen im Notfall zum Einsatz, wenn keine Zeit zum Testen bleibt.",
       "id": "body-0007",
       "options": ["A negativ", "0 negativ", "B positiv", "AB positiv"],
-      "question": "Welche Blutgruppe kann als rote Blutkörperchen fast jedem gegeben werden – der „Universalspender“?"
+      "question": "Rote Blutkörperchen welcher Blutgruppe kann fast jeder erhalten – der „Universalspender“?"
     },
     {
       "answer": 2,
@@ -559,7 +559,7 @@
       "explanation": "Britische Seeleute bekamen Zitronen- oder Limettensaft gegen Skorbut – daher ihr Spitzname „Limeys“.",
       "id": "body-0009",
       "options": ["Beriberi", "Rachitis", "Skorbut", "Pellagra"],
-      "question": "Ein langer Mangel an Vitamin C verursacht welche Krankheit, die einst von Seeleuten gefürchtet war?"
+      "question": "Ein langer Mangel an Vitamin C verursacht welche Krankheit, die Seeleute einst fürchteten?"
     },
     {
       "answer": 1,
@@ -709,7 +709,7 @@
       "explanation": "Galle hilft bei der Fettverdauung; nach einer fettreichen Mahlzeit presst die Gallenblase sie in den Darm.",
       "id": "body-0021",
       "options": ["Milz", "Pankreas", "Blinddarm", "Gallenblase"],
-      "question": "Welches kleine Organ speichert die von der Leber gebildete Galle?"
+      "question": "Welches kleine Organ speichert eine Verdauungsflüssigkeit, die von der Leber gebildet wird?"
     },
     {
       "answer": 2,
@@ -819,7 +819,7 @@
       "explanation": "Kikunae Ikeda identifizierte Umami 1908 bei der Untersuchung von Kombu-Brühe; es ist der Geschmack von Glutamat.",
       "id": "body-0027",
       "options": ["Scharf", "Umami", "Metallisch", "Minzig"],
-      "question": "Welche Grundgeschmacksrichtung, oft als herzhaft beschrieben, wurde zuerst von einem japanischen Forscher beschrieben?"
+      "question": "Welche Grundgeschmacksrichtung, oft als herzhaft beschrieben, wurde zuerst von einem japanischen Forscher identifiziert?"
     },
     {
       "answer": 3,
@@ -919,7 +919,7 @@
         "An Haarfollikeln",
         "An Blutgefäßen"
       ],
-      "question": "Gänsehaut entsteht durch winzige Muskeln, die woran befestigt sind?"
+      "question": "Woran sind die winzigen Muskeln befestigt, die Gänsehaut erzeugen?"
     },
     {
       "answer": 1,
@@ -1057,7 +1057,7 @@
       "explanation": "Das „Hicks“ entsteht, wenn sich die Stimmlippen direkt nach dem Zucken des Zwerchfells schlagartig schließen.",
       "id": "body-0053",
       "options": ["Zunge", "Magen", "Herz", "Zwerchfell"],
-      "question": "Schluckauf sind plötzliche Krämpfe welches Muskels?"
+      "question": "Schluckauf entsteht durch plötzliche Krämpfe welches Muskels?"
     },
     {
       "answer": 3,
@@ -1134,7 +1134,7 @@
       "explanation": "Die traditionelle valencianische Paella enthält Kaninchen, Huhn und Bohnen; Safran gibt dem Reis seine goldene Farbe.",
       "id": "food-0001",
       "options": ["Galicien", "Andalusien", "Katalonien", "Valencia"],
-      "question": "Aus welcher spanischen Region stammt die Paella, gekocht in einer weiten flachen Pfanne, ursprünglich?"
+      "question": "Die Paella wird in einer weiten, flachen Pfanne gekocht. Aus welcher spanischen Region stammt sie ursprünglich?"
     },
     {
       "answer": 1,
@@ -1195,7 +1195,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Wiener Bäcker in Paris machten das Gebäck in den 1830er-Jahren populär; später wurde es aus blättrigem Butterteig gemacht.",
+      "explanation": "Wiener Bäcker in Paris machten das Gebäck in den 1830er-Jahren populär; später backte man es aus buttrigem Blätterteig.",
       "id": "food-0019",
       "options": ["Belgien", "Schweiz", "Österreich", "Deutschland"],
       "question": "Das Croissant stammt vom Kipferl ab, einem Hörnchengebäck aus welchem Land?"
@@ -1204,10 +1204,10 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Pesto alla genovese besteht aus Basilikum, Pinienkernen, Knoblauch, Hartkäse und Olivenöl; der Name kommt von „zerstampfen“.",
+      "explanation": "Pesto alla genovese besteht aus Basilikum, Pinienkernen, Knoblauch, Hartkäse und Olivenöl; der Name kommt von einem genuesischen Verb für „zerstampfen“.",
       "id": "food-0015",
       "options": ["Walnüsse", "Mandeln", "Pinienkerne", "Cashewkerne"],
-      "question": "Welche Nüsse kommen in traditionelles Pesto aus Genua?"
+      "question": "Welche Nüsse gehören ins traditionelle Pesto aus Genua?"
     },
     {
       "answer": 1,
@@ -1248,7 +1248,7 @@
       "explanation": "Die Säure des Limettensafts verändert die Proteine des Fisches ähnlich wie Hitze; Peru feiert sogar einen nationalen Ceviche-Tag.",
       "id": "food-0027",
       "options": ["Essig", "Zitrussaft", "Salzwasser", "Heißes Öl"],
-      "question": "Beim Ceviche wird roher Fisch „gegart“, indem man ihn worin einlegt?"
+      "question": "Worin wird roher Fisch beim Ceviche eingelegt, um ihn zu „garen“?"
     },
     {
       "answer": 2,
@@ -1286,7 +1286,7 @@
       "answer": 3,
       "category": "food & travel customs",
       "difficulty": 2,
-      "explanation": "Anna, Herzogin von Bedford, soll ihn eingeführt haben, um die lange Pause zwischen Mittagessen und spätem Dinner zu überbrücken.",
+      "explanation": "Anna, Herzogin von Bedford, soll ihn eingeführt haben, um die lange Pause zwischen Mittagessen und spätem Abendessen zu überbrücken.",
       "id": "food-0029",
       "options": ["China", "Indien", "Niederlande", "England"],
       "question": "In welchem Land entstand in den 1840er-Jahren der Brauch des „Afternoon Tea“?"
@@ -1313,7 +1313,7 @@
       "answer": 0,
       "category": "food & travel customs",
       "difficulty": 3,
-      "explanation": "Pfeffer war im Altertum so wertvoll, dass man ihn „schwarzes Gold“ nannte und manchmal sogar die Miete damit bezahlte.",
+      "explanation": "Pfeffer stammt von der Malabarküste Indiens und war einst so wertvoll, dass man ihn „schwarzes Gold“ nannte und manchmal sogar die Miete damit bezahlte.",
       "id": "food-0034",
       "options": ["Indien", "Brasilien", "Madagaskar", "Mexiko"],
       "question": "In welchem Land ist schwarzer Pfeffer heimisch?"
@@ -1381,15 +1381,6 @@
       "id": "food-0021",
       "options": ["Rote Bete", "Tomate", "Rotkohl", "Rote Paprika"],
       "question": "Welches Gemüse gibt dem Borschtsch seine tiefrote Farbe?"
-    },
-    {
-      "answer": 3,
-      "category": "food & travel customs",
-      "difficulty": 2,
-      "explanation": "Viele schwedische Arbeitsplätze haben feste Fika-Pausen, und Zimtschnecken sind der klassische Begleiter.",
-      "id": "food-0039",
-      "options": ["Finnland", "Dänemark", "Norwegen", "Schweden"],
-      "question": "In welchem Land ist „Fika“, eine Pause mit Kaffee und Kuchen, ein geschätzter täglicher Brauch?"
     },
     {
       "answer": 0,
@@ -1586,7 +1577,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Der Tradition nach darf sie das Zwölfuhrläuten nicht hören; serviert wird sie mit süßem Senf und einer Brezn.",
+      "explanation": "Der Tradition nach darf sie das Zwölfuhrläuten nicht hören; serviert wird sie mit süßem Senf und einer Brezel.",
       "id": "food-0044",
       "options": ["Hamburg", "Berlin", "München", "Wien"],
       "question": "Aus welcher Stadt stammt die Weißwurst, eine Kalbswurst, die traditionell vor Mittag gegessen wird?"
@@ -1991,7 +1982,7 @@
         "Sud Aviation Caravelle",
         "de Havilland Comet"
       ],
-      "question": "Welches war das erste Düsenverkehrsflugzeug der Welt, 1952 in Dienst gestellt?"
+      "question": "Welches Düsenverkehrsflugzeug ging 1952 als erstes der Welt in Dienst?"
     },
     {
       "answer": 2,
@@ -2111,7 +2102,7 @@
         "Heinkel He 178",
         "Gloster Meteor"
       ],
-      "question": "Welches war 1939 das erste Flugzeug mit Strahlantrieb, das flog?"
+      "question": "Welches Flugzeug mit Strahlantrieb flog 1939 als erstes?"
     },
     {
       "answer": 1,
@@ -2283,7 +2274,7 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 1,
-      "explanation": "Leonardo skizzierte Flugmaschinen, darunter einen Schwingenflügler und eine „Luftschraube“ – rund 400 Jahre vor den ersten Flugzeugen.",
+      "explanation": "Roms Hauptflughafen ehrt Leonardo, der rund 400 Jahre vor den ersten Flugzeugen Flugmaschinen skizzierte, darunter einen vogelähnlichen Schwingenflügler.",
       "id": "avi-0029",
       "options": ["Venedig", "Florenz", "Mailand", "Rom"],
       "question": "Welche Stadt bedient der nach Leonardo da Vinci benannte Flughafen Fiumicino?"
@@ -2352,7 +2343,7 @@
       "answer": 0,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Die SR-71 flog etwa 3.530 km/h; am Boden leckten ihre Tanks, bis die Hitze im Flug sie abdichtete.",
+      "explanation": "Die SR-71 flog mit etwa 3.530 km/h; am Boden leckten ihre Tanks, bis die Hitze im Flug sie abdichtete.",
       "id": "avi-0049",
       "options": ["SR-71 Blackbird", "MiG-25 Foxbat", "F-15 Eagle", "Concorde"],
       "question": "Welches Flugzeug hält seit 1976 den offiziellen Geschwindigkeitsrekord für bemannte Flugzeuge mit Luftstrahltriebwerk?"
@@ -2369,7 +2360,7 @@
         "Köchinnen",
         "Krankenschwestern"
       ],
-      "question": "Als was mussten die ersten Flugbegleiterinnen, 1930 eingestellt, ausgebildet sein?"
+      "question": "Als was mussten die ersten, 1930 eingestellten Flugbegleiterinnen ausgebildet sein?"
     },
     {
       "answer": 2,
@@ -2561,7 +2552,7 @@
       "explanation": "Den A320 steuern Piloten mit einem kleinen Sidestick statt einer Steuersäule, und Computer halten ihn in sicheren Grenzen.",
       "id": "avi-0073",
       "options": ["Boeing 757", "Concorde", "Boeing 777", "Airbus A320"],
-      "question": "Welches Verkehrsflugzeug, 1988 in Dienst gestellt, hatte als erstes eine digitale Fly-by-Wire-Steuerung?"
+      "question": "Welches Verkehrsflugzeug ging 1988 als erstes mit digitaler Fly-by-Wire-Steuerung in Dienst?"
     },
     {
       "answer": 1,
@@ -2594,7 +2585,7 @@
       "answer": 3,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Verbundstoffe korrodieren nicht wie Metall, deshalb kann die Kabine der 787 feuchter gehalten und auf eine niedrigere Höhe bedruckt werden.",
+      "explanation": "Verbundstoffe korrodieren nicht wie Metall, deshalb kann die Kabinenluft der 787 feuchter sein, und der Kabinendruck entspricht einer geringeren Höhe.",
       "id": "avi-0074",
       "options": [
         "Titanblech",
@@ -2659,7 +2650,7 @@
       "answer": 2,
       "category": "aviation & travel",
       "difficulty": 2,
-      "explanation": "Die Seemeile beruhte ursprünglich auf einer Bogenminute der geografischen Breite – praktisch für die Navigation mit Seekarten.",
+      "explanation": "Die Länge von 1.852 m wurde 1929 international vereinbart; Luft- und Schifffahrt messen Entfernungen bis heute in Seemeilen und Geschwindigkeiten in Knoten.",
       "id": "avi-0080",
       "options": ["2.000 m", "1.000 m", "1.852 m", "1.609 m"],
       "question": "Ein Knoten ist eine Seemeile pro Stunde. Wie lang ist eine Seemeile?"
@@ -2681,6 +2672,15 @@
       "id": "his-0020",
       "options": ["Inka", "Azteken", "Maya", "Olmeken"],
       "question": "Welche Kultur erbaute die Stufenpyramide El Castillo in Chichén Itzá?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Machu Picchu entstand im 15. Jahrhundert hoch in den peruanischen Anden, vermutlich als Landsitz des Inka-Herrschers Pachacútec.",
+      "id": "his-0002",
+      "options": ["Azteken", "Inka", "Olmeken", "Maya"],
+      "question": "Welche Kultur erbaute die Bergfestung Machu Picchu?"
     }
   ]
 }

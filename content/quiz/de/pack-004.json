@@ -3,20 +3,6 @@
   "lang": "de",
   "questions": [
     {
-      "answer": 0,
-      "category": "inventions",
-      "difficulty": 1,
-      "explanation": "Windmühlen pumpten Wasser aus tief liegenden Poldern; die 19 Mühlen von Kinderdijk sind UNESCO-Welterbe.",
-      "id": "inv-0026",
-      "options": [
-        "Entwässerung von Land",
-        "Stromerzeugung",
-        "Signale für Schiffe",
-        "Antrieb von Leuchtfeuern"
-      ],
-      "question": "Was war die Hauptaufgabe der meisten historischen Windmühlen in den Niederlanden?"
-    },
-    {
       "answer": 2,
       "category": "inventions",
       "difficulty": 1,
@@ -60,7 +46,7 @@
       "explanation": "George Eastman wählte den Namen Kodak, weil er den Buchstaben K mochte und einen Namen wollte, der in jeder Sprache leicht auszusprechen ist.",
       "id": "inv-0053",
       "options": ["Leica", "Nikon", "Canon", "Kodak"],
-      "question": "Die Kamera welcher Firma kam 1888 mit dem Slogan „Sie drücken den Knopf, wir erledigen den Rest“?"
+      "question": "Die Kamera welcher Firma kam 1888 mit dem Slogan „Sie drücken den Knopf, wir erledigen den Rest“ auf den Markt?"
     },
     {
       "answer": 2,
@@ -176,7 +162,7 @@
       "answer": 2,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Es wurde in einer Höhle bei Dunhuang in China gefunden und befindet sich heute in der British Library.",
+      "explanation": "Es wurde mit geschnitzten Holzdruckstöcken gedruckt, in einer Höhle bei Dunhuang in China gefunden und befindet sich heute in der British Library.",
       "id": "inv-0085",
       "options": [
         "Schablonen",
@@ -327,13 +313,13 @@
         "Isaac Newton",
         "Christiaan Huygens"
       ],
-      "question": "Welcher Denker veröffentlichte 1703 eine europäische Abhandlung über das Rechnen im Binärsystem?"
+      "question": "Welcher Denker veröffentlichte 1703 eine einflussreiche Abhandlung über das Rechnen im Binärsystem?"
     },
     {
       "answer": 1,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "Es verbindet japanisch „e“ (Bild) und „moji“ (Schriftzeichen); die Ähnlichkeit zu „Emotion“ ist reiner Zufall.",
+      "explanation": "Es verbindet japanisch „e“ (Bild) und „moji“ (Schriftzeichen); die Ähnlichkeit mit „Emotion“ ist reiner Zufall.",
       "id": "lang-0026",
       "options": ["Koreanisch", "Japanisch", "Englisch", "Kantonesisch"],
       "question": "Aus welcher Sprache wurde das Wort „Emoji“ entlehnt?"
@@ -461,7 +447,7 @@
       "explanation": "Booths Maschine mit dem Spitznamen „Puffing Billy“ parkte vor Gebäuden; lange Schläuche wurden durch die Fenster geführt.",
       "id": "inv-0072",
       "options": ["Staubsauger", "Rasenmäher", "Waschmaschine", "Kühlschrank"],
-      "question": "Welches Haushaltsgerät erfand Hubert Cecil Booth 1901 – von Pferden gezogen?"
+      "question": "Hubert Cecil Booths von Pferden gezogene Erfindung von 1901 war eine frühe Form welches Haushaltsgeräts?"
     },
     {
       "answer": 2,
@@ -617,12 +603,7 @@
       "difficulty": 1,
       "explanation": "Shaw kam auf die Idee durch Licht, das sich nachts in Katzenaugen spiegelte; die Reflektoren reinigen sich selbst, wenn Autos darüberfahren.",
       "id": "inv-0065",
-      "options": [
-        "In Bergwerken",
-        "Auf Schiffen",
-        "Auf Straßen",
-        "An Fahrrädern"
-      ],
+      "options": ["In Bergwerken", "Auf Schiffen", "Auf Straßen", "An Ampeln"],
       "question": "Wo werden Percy Shaws „Cat’s Eyes“ von 1934 eingesetzt?"
     },
     {
@@ -657,7 +638,7 @@
       "answer": 3,
       "category": "inventions",
       "difficulty": 3,
-      "explanation": "Karakuri aus der Edo-Zeit liefen mithilfe von Federn und Zahnrädern mit einer Tasse Tee los und kehrten um, sobald man sie nahm.",
+      "explanation": "Karakuri aus der Edo-Zeit liefen mithilfe von Federn und Zahnrädern mit einer Tasse Tee los und kehrten um, sobald man die Tasse nahm.",
       "id": "inv-0097",
       "options": ["Daruma", "Kokeshi", "Hina-ningyō", "Karakuri"],
       "question": "Wie heißen japanische mechanische Puppen, etwa solche, die Tee servieren?"
@@ -743,7 +724,7 @@
         "Ein Animationsspielzeug",
         "Ein Wetter-Messinstrument"
       ],
-      "question": "Was für ein Gerät ist ein Zoetrop, im 19. Jahrhundert beliebt?"
+      "question": "Was für ein Gerät ist das im 19. Jahrhundert beliebte Zoetrop?"
     },
     {
       "answer": 3,
@@ -776,7 +757,7 @@
       "answer": 0,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "Die „Wüste Sahara“ ist also eigentlich die „Wüste Wüste“; arabisch „ṣaḥrāʾ“ bedeutet Wüste.",
+      "explanation": "Arabisch „ṣaḥrāʾ“ bedeutet Wüste – die „Wüste Sahara“ ist also wörtlich die „Wüste Wüste“.",
       "id": "lang-0051",
       "options": ["Wüste", "Sonne", "Sand", "Dünenmeer"],
       "question": "Was bedeutet das Wort „Sahara“ auf Arabisch?"
@@ -962,7 +943,7 @@
       "explanation": "Die Stadt entstand am Zusammenfluss von Klang und Gombak, wo Zinnschürfer in den 1850er-Jahren ihr Lager aufschlugen.",
       "id": "lang-0067",
       "options": [
-        "Schlammige Flussmündung",
+        "Schlammiger Zusammenfluss",
         "Goldener Fluss",
         "Grünes Tal",
         "Königliche Stadt der Hügel"
@@ -1204,7 +1185,7 @@
       "explanation": "Lateinisch „salarium“ hängt mit „sal“ (Salz) zusammen; warum genau der römische Sold nach Salz benannt war, ist bis heute umstritten.",
       "id": "lang-0040",
       "options": ["Salz", "Brot", "Soldat", "Silber"],
-      "question": "Das englische Wort „salary“ (Gehalt; vgl. dt. „Salär“) stammt vom lateinischen Wort für was?"
+      "question": "Das englische Wort „salary“ (Gehalt; vgl. dt. „Salär“) stammt von einem lateinischen Wort mit welcher Bedeutung?"
     },
     {
       "answer": 3,
@@ -1460,7 +1441,7 @@
       "answer": 0,
       "category": "sport",
       "difficulty": 2,
-      "explanation": "Beim Säbel zählen Treffer mit der Klinge ebenso wie mit der Spitze.",
+      "explanation": "Beim Säbel zählen Treffer mit der Schneide ebenso wie mit der Spitze.",
       "id": "sport-0034",
       "options": ["Säbel", "Katana", "Entermesser", "Rapier"],
       "question": "Im olympischen Fechten gibt es Florett, Degen und welche weitere Waffe?"
@@ -1508,7 +1489,7 @@
       "explanation": "Karate entstand aus okinawanischen Kampfkünsten mit chinesischem Einfluss und verbreitete sich in den 1920er-Jahren auf das japanische Festland.",
       "id": "sport-0033",
       "options": ["Taiwan", "Honshū", "Hokkaidō", "Okinawa"],
-      "question": "Auf welcher Insel entwickelte sich Karate, „leere Hand“?"
+      "question": "Auf welcher Insel entwickelte sich Karate („leere Hand“)?"
     },
     {
       "answer": 2,
@@ -1687,7 +1668,7 @@
       "answer": 3,
       "category": "sport",
       "difficulty": 3,
-      "explanation": "Der Pitch ist 22 Yards (20,12 m) lang – so lang wie eine Chain, eine alte Vermessungseinheit.",
+      "explanation": "Der Pitch ist 20,12 m (22 Yards) lang – so lang wie eine Chain, eine alte Vermessungseinheit.",
       "id": "sport-0055",
       "options": ["Etwa 25 m", "Etwa 30 m", "Etwa 15 m", "Etwa 20 m"],
       "question": "Wie lang ist ein Cricket-Pitch zwischen den beiden Wickets ungefähr?"
@@ -1699,7 +1680,7 @@
       "explanation": "Die Spieler schlagen mit einem Holzschläger, dem Hurley, einen kleinen Ball, den Sliotar, mit weit über 100 km/h.",
       "id": "sport-0044",
       "options": ["Wales", "Norwegen", "Schottland", "Irland"],
-      "question": "In welchem Land hat Hurling Tradition, eine der schnellsten Feldsportarten der Welt?"
+      "question": "Hurling, eine der schnellsten Feldsportarten der Welt, hat in welchem Land Tradition?"
     },
     {
       "answer": 1,
@@ -1758,7 +1739,7 @@
       "explanation": "Dank der Achteckform erkennt man ein Stoppschild sogar von hinten oder wenn es mit Schnee bedeckt ist.",
       "id": "misc-0003",
       "options": ["Sechs", "Zehn", "Sieben", "Acht"],
-      "question": "Wie viele Seiten hat ein Standard-Stoppschild?"
+      "question": "Wie viele Seiten hat das in den meisten Ländern übliche Stoppschild?"
     },
     {
       "answer": 1,
@@ -1855,7 +1836,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Eine Seemeile ist heute als genau 1.852 Meter definiert – nahe an einer Bogenminute entlang eines Meridians.",
+      "explanation": "Weil eine Seemeile einer Bogenminute entspricht, können Navigatoren Entfernungen direkt an der Breitenskala einer Seekarte abmessen.",
       "id": "misc-0076",
       "options": [
         "Die Sicht vom Mast",
@@ -1914,7 +1895,7 @@
       "id": "misc-0041",
       "options": [
         "Ein griechischer Diskus",
-        "Pie-Bleche einer Bäckerei",
+        "Kuchenformen einer Bäckerei",
         "Ein Strand in Kalifornien",
         "Der Hund des Erfinders"
       ],
@@ -1924,7 +1905,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "Er ist nach Papst Gregor XIII. benannt und korrigierte eine Verschiebung, die den Kalender etwa 10 Tage von den Jahreszeiten entfernt hatte.",
+      "explanation": "Er ist nach Papst Gregor XIII. benannt und korrigierte die langsame Verschiebung des julianischen Kalenders gegenüber den Jahreszeiten.",
       "id": "misc-0008",
       "options": [
         "Lange Zählung der Maya",
@@ -1964,7 +1945,7 @@
       "explanation": "Den Namen erfand ein neunjähriger Junge, Milton Sirotta, Neffe eines US-Mathematikers.",
       "id": "misc-0050",
       "options": ["10", "1.000", "100", "1 Million"],
-      "question": "Ein „Googol“ ist die Zahl 1 gefolgt von wie vielen Nullen?"
+      "question": "Wie viele Nullen folgen bei einem „Googol“ auf die 1?"
     },
     {
       "answer": 0,
@@ -2253,10 +2234,10 @@
       "answer": 2,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Der „Hymnos eis tin Eleftherian“ ist ein Gedicht von Dionysios Solomos; meist werden nur die ersten beiden Strophen gesungen.",
+      "explanation": "Die „Hymne an die Freiheit“ ist ein Gedicht von Dionysios Solomos; meist werden nur die ersten beiden Strophen gesungen.",
       "id": "misc-0084",
       "options": ["Uruguay", "Argentinien", "Griechenland", "Türkei"],
-      "question": "Die Nationalhymne welches Landes hat mit vollständig 158 Strophen die meisten Strophen?"
+      "question": "Die Nationalhymne welches Landes hat mit 158 Strophen in der vollständigen Fassung die meisten?"
     },
     {
       "answer": 2,
@@ -2424,7 +2405,7 @@
       "explanation": "Auf der Nordhalbkugel wandert der Schatten einer Sonnenuhr in dieselbe Richtung wie heute die Uhrzeiger.",
       "id": "misc-0056",
       "options": [
-        "Befehl eines Papstes im Mittelalter",
+        "Auf Geheiß eines Papstes im Mittelalter",
         "Passend zur Schreibrichtung",
         "Wegen des Erdmagnetismus",
         "Nach Sonnenuhr-Schatten"
@@ -2475,7 +2456,7 @@
       "explanation": "Die Nachbildung wurde 2012 in der Provinz Guangdong eröffnet; das echte Hallstatt ist UNESCO-Welterbe.",
       "id": "misc-0088",
       "options": ["Österreich", "Slowenien", "Schweiz", "Deutschland"],
-      "question": "Eine originalgetreue Kopie von Hallstatt, einem Dorf am See in welchem Land, wurde in China gebaut?"
+      "question": "In China wurde eine originalgetreue Kopie von Hallstatt gebaut. In welchem Land liegt das echte Dorf am See?"
     },
     {
       "answer": 3,
@@ -2516,7 +2497,7 @@
       "explanation": "Zu jeder vollen Stunde erscheinen in kleinen Fenstern über dem Zifferblatt Figuren der zwölf Apostel.",
       "id": "misc-0060",
       "options": ["Krakau", "Wien", "Straßburg", "Prag"],
-      "question": "Welche Stadt hat die älteste noch funktionierende astronomische Uhr, 1410 eingebaut?"
+      "question": "Welche Stadt hat die älteste noch funktionierende astronomische Uhr, die 1410 eingebaut wurde?"
     },
     {
       "answer": 1,
@@ -2623,7 +2604,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 3,
-      "explanation": "Albert Einstein wohnte nur ein paar Häuser weiter, während er an seiner Relativitätstheorie arbeitete.",
+      "explanation": "Albert Einstein wohnte nur ein paar Häuser von der Zytglogge entfernt, während er an seiner speziellen Relativitätstheorie arbeitete.",
       "id": "misc-0085",
       "options": ["Zytglogge", "Glockenspiel", "Torre dell’Orologio", "Orloj"],
       "question": "Wie heißt der mittelalterliche Uhrturm in Bern mit beweglichen Figuren?"
