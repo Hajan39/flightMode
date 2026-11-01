@@ -1,0 +1,34 @@
+{
+  "lang": "hi",
+  "packs": [
+    {
+      "bytes": 182222,
+      "count": 250,
+      "file": "pack-001.json",
+      "id": "pack-001",
+      "sha256": "6d94626d451fc8992efcd50d2ae85eec4e464f2b58f9d8d8cd71a40462f69d2c"
+    },
+    {
+      "bytes": 191226,
+      "count": 250,
+      "file": "pack-002.json",
+      "id": "pack-002",
+      "sha256": "74c06286007abcbcb89d4f24369ac4892b298893808dd6397e55171b53a77810"
+    },
+    {
+      "bytes": 194168,
+      "count": 250,
+      "file": "pack-003.json",
+      "id": "pack-003",
+      "sha256": "1f3e4f5d6f9c8670f163adff7febdc60db55b4990353cf373a76a31b28fcf51d"
+    },
+    {
+      "bytes": 180092,
+      "count": 246,
+      "file": "pack-004.json",
+      "id": "pack-004",
+      "sha256": "bf182d83e472edb36e0b8d978e56a68ea0160ce651cf767ac3f36e540845b050"
+    }
+  ],
+  "version": "26344fb585a6"
+}
