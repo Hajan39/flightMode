@@ -47,8 +47,12 @@ export default function CurrencyPicker({
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
 
+  // Alphabetical by code, in the chip row and the full list alike.
   const currencies = useMemo(
-    () => getEffectiveCurrencies(liveRates),
+    () =>
+      [...getEffectiveCurrencies(liveRates)].sort((a, b) =>
+        a.code.localeCompare(b.code)
+      ),
     [liveRates]
   );
   const chipSet = useMemo(

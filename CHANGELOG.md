@@ -10,7 +10,7 @@ and this project adheres to Semantic Versioning.
 ### Fixed
 
 - **Sudoku:** when the board is full but a number is wrong, the game now says so ("Board full — N wrong numbers in red") instead of silently waiting.
-- **Currency converter:** picking the currency that is already in the other row swaps the two (USD→CZK, then CZK as "from" gives CZK→USD instead of CZK→CZK). Currency chips also react on the first tap while the amount keyboard is open.
+- **Currency converter:** picking the currency that is already in the other row swaps the two (USD→CZK, then CZK as "from" gives CZK→USD instead of CZK→CZK). Currency chips also react on the first tap while the amount keyboard is open, and currencies are listed alphabetically (the selected one stays first in the chip row).
 
 ### Added
 
