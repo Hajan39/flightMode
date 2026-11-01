@@ -329,7 +329,7 @@
   quizModeWorldHint: "Culture générale",
   quizModeAviation: "Aviation",
   quizModeAviationHint: "Vol et voyage",
-  quizDidYouKnow: "Le saviez-vous ?",
+  quizDidYouKnow: "Le savais-tu ?",
   quizNext: "Suivant",
   quizQ1:
     "Quand dois-tu généralement arriver à l'aéroport pour un vol international ?",

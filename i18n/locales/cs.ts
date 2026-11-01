@@ -341,7 +341,7 @@ export const cs = {
   quizModeWorldHint: "Všeobecný přehled",
   quizModeAviation: "Letectví",
   quizModeAviationHint: "Létání a cestování",
-  quizDidYouKnow: "Věděli jste?",
+  quizDidYouKnow: "Víš, že…?",
   quizNext: "Další",
   // Quiz Questions
   quizQ1: "Kdy je obvykle dobré dorazit na letiště před mezinárodním letem?",
