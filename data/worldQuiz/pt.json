@@ -180,7 +180,7 @@
       "answer": 1,
       "category": "culture",
       "difficulty": 1,
-      "explanation": "O Holi celebra a chegada da primavera, e gente de todas as idades joga pó colorido e água umas nas outras.",
+      "explanation": "O Holi celebra a chegada da primavera, e pessoas de todas as idades jogam pó colorido e água umas nas outras.",
       "id": "cul-0006",
       "options": ["Onam", "Holi", "Diwali", "Pongal"],
       "question": "Qual festival indiano da primavera é famoso por jogar pó colorido?"
@@ -191,7 +191,7 @@
       "difficulty": 1,
       "explanation": "O nome vem do dinamarquês \"leg godt\", \"brinque bem\"; peças de 1958 ainda se encaixam nas de hoje.",
       "id": "inv-0006",
-      "options": ["Dinamarca", "Holanda", "Alemanha", "Suécia"],
+      "options": ["Dinamarca", "Países Baixos", "Alemanha", "Suécia"],
       "question": "De que país vêm os blocos LEGO?"
     },
     {
@@ -212,7 +212,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "Em 1886 a estátua era de cobre marrom brilhante; levou cerca de 30 anos para ficar totalmente verde.",
+      "explanation": "Quando foi inaugurada, em 1886, a estátua tinha o marrom brilhante do cobre; levou cerca de 30 anos para ficar totalmente verde.",
       "id": "misc-0010",
       "options": [
         "O cobre dela oxidou",
@@ -345,7 +345,7 @@
       "answer": 1,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "A torre começou a inclinar ainda durante a construção, no século XII; desde então engenheiros a estabilizaram.",
+      "explanation": "A torre começou a inclinar ainda durante a construção, no século XII; mais tarde, engenheiros a estabilizaram.",
       "id": "misc-0011",
       "options": [
         "Por causa de um terremoto",
@@ -359,7 +359,7 @@
       "answer": 2,
       "category": "food & travel customs",
       "difficulty": 1,
-      "explanation": "Nos Andes do Peru e da Bolívia, plantava-se batata há 7.000 a 10.000 anos, e milhares de variedades ainda existem lá.",
+      "explanation": "Nos Andes do Peru e da Bolívia, plantava-se batata há cerca de 7.000 a 10.000 anos, e milhares de variedades ainda existem lá.",
       "id": "food-0013",
       "options": [
         "África Ocidental",
@@ -576,7 +576,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Uma pessoa que pesa 60 kg na Terra se sentiria leve como 10 kg na Lua.",
+      "explanation": "Uma pessoa que pesa 60 kg na Terra se sentiria na Lua como se pesasse 10 kg.",
       "id": "sci-0093",
       "options": [
         "Cerca de um décimo",
@@ -777,7 +777,7 @@
       "answer": 1,
       "category": "languages",
       "difficulty": 2,
-      "explanation": "Muitos vales nas montanhas de Papua-Nova Guiné têm a própria língua, algumas faladas por só algumas centenas de pessoas.",
+      "explanation": "Muitos vales nas montanhas de Papua-Nova Guiné têm a própria língua, algumas faladas por apenas poucas centenas de pessoas.",
       "id": "lang-0036",
       "options": [
         "Brasil",
@@ -805,7 +805,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "As girafas têm o mesmo número de vértebras no pescoço que os humanos; cada uma só é bem maior, com até 25 cm.",
+      "explanation": "As girafas têm o mesmo número de vértebras no pescoço que os humanos, mas cada uma pode medir até 25 cm.",
       "id": "nat-0009",
       "options": ["Vinte e quatro", "Doze", "Dezoito", "Sete"],
       "question": "Quantas vértebras tem o pescoço de uma girafa?"
@@ -844,7 +844,7 @@
       "difficulty": 2,
       "explanation": "Vista de cima, o plano de Brasília, de Lúcio Costa, lembra um avião ou um pássaro, com prédios de Oscar Niemeyer.",
       "id": "cul-0057",
-      "options": ["Islamabad", "Camberra", "Abuja", "Brasília"],
+      "options": ["Islamabad", "Canberra", "Abuja", "Brasília"],
       "question": "Qual capital foi construída do zero e inaugurada em 1960?"
     },
     {
@@ -921,8 +921,8 @@
       "options": [
         "Enrolados em algas",
         "Parados no fundo do mar",
-        "Com metade do cérebro",
-        "8 horas seguidas"
+        "Com meio cérebro por vez",
+        "Em sono profundo de 8 h"
       ],
       "question": "Como os golfinhos conseguem dormir?"
     },
@@ -939,7 +939,7 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "A peregrinação de Mansa Musa pelo Cairo em 1324 espalhou tanto ouro que seu valor no Egito caiu por anos.",
+      "explanation": "A peregrinação de Mansa Musa pelo Cairo em 1324 espalhou tanto ouro que o valor do metal no Egito caiu por anos.",
       "id": "his-0067",
       "options": [
         "Reino de Axum",
