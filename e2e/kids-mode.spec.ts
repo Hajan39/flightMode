@@ -305,6 +305,13 @@ test.describe("kids mode", () => {
       // Peek in pairs (0,1), (2,3), (4,5); a mismatch turns back after 1.2 s.
       const matched = new Set<number>();
       for (let i = 0; i < 6; i += 2) {
+        if (matched.size === 4) {
+          // The last pair must match: flipping it ends the game at once, so
+          // the cards vanish before any label check could run.
+          await cards.nth(i).click();
+          await cards.nth(i + 1).click();
+          break;
+        }
         const a = await flip(i);
         const b = await flip(i + 1);
         if (a === b) {
