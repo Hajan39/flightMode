@@ -24,6 +24,11 @@ npm run e2e                         # Playwright E2E on a fresh web export (E2E_
 npm run e2e:build                   # just the web export into dist-e2e/
 ```
 
+**Git hooks** (`.githooks/`, no extra dependency): enable once per clone with `git config core.hooksPath .githooks`.
+- `pre-commit` — Ultracite on the staged files: auto-fixes formatting/safe fixes and re-stages them (files with unstaged edits are checked but not auto-fixed), then blocks the commit on remaining Biome errors.
+- `pre-push` — `tsc --noEmit` + Jest (≈1.5 min). E2E stays in CI.
+- Emergency bypass: `--no-verify` (CI still enforces the same gate).
+
 Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/` (locale parity, game-registry & achievement integrity, destinations, Sudoku puzzle validity) — run `npm test`. These do NOT render RN components. Linting is **Ultracite** (strict Biome preset, `biome.jsonc`) — run `npm run check`; also validate with `npx tsc --noEmit`. The biome.jsonc documents every deliberate deviation (React Compiler makes noJsxPropsBind moot, Expo Router filenames, bitwise math in game solvers, feature-grouped locale files); don't add new rule exceptions without a stated reason.
 
 ## Architecture
@@ -241,7 +246,7 @@ GitHub Actions in `.github/workflows/`:
 - **`e2e.yml`** — Playwright E2E on PRs and main.
 - **`static-analysis.yml`** — CodeQL (JavaScript/TypeScript, security-and-quality) on PRs, main and weekly; Dependency Review blocks PRs that add a dependency with a high/critical advisory. No AI tokens or secrets.
 - **Code review** is done by **GitHub Copilot** (enabled in repo settings → Rules) guided by `.github/copilot-instructions.md` (review checklist first; keep it under ~4,000 characters — Copilot code review reads only the start). There is no Claude review workflow.
-- `release-main.yml` ignores `.github/**`, `content/**`, `docs/**`, `services/**` (no app release for CI, content, website or Worker changes).
+- `release-main.yml` ignores `.github/**`, `.githooks/**`, `**/*.md`, `content/**`, `docs/**`, `services/**` (no app release for CI, content, website or Worker changes).
 
 **Implication: merging to `main` auto-releases.** So the OTA-vs-native-build safety decision is automated — you never need to hand-pick. Just make sure `CHANGELOG.md` `Unreleased` is current before merging (the OTA lane uses it as the update message). To release without merging to main, or to test first, use `npm run deploy:internal` (build → internal testing track → pre-launch report).
 
