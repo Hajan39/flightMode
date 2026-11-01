@@ -1,0 +1,2499 @@
+{
+  "id": "pack-002",
+  "lang": "ja",
+  "questions": [
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "天王星の軌道のずれから、天文学者は見えない惑星の位置を計算しました。その惑星は1846年に発見されました。",
+      "id": "sci-0070",
+      "options": ["火星", "海王星", "天王星", "土星"],
+      "question": "誰かが見つける前に、数学によって存在が予言された惑星はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "映画の描写とは違い、小惑星帯はほとんどが何もない空間で、探査機は岩をよけずに通り抜けられます。",
+      "id": "sci-0054",
+      "options": ["火星と木星", "地球と火星", "木星と土星", "金星と地球"],
+      "question": "小惑星帯は、どの2つの惑星の軌道の間にありますか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "ビッグバンのかすかな名残である宇宙マイクロ波背景放射の観測から、年齢は約138億年とされています。",
+      "id": "sci-0059",
+      "options": ["250億年", "1000億年", "46億年", "138億年"],
+      "question": "宇宙の年齢はおよそ何年ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "太陽からの荷電粒子が地球の磁場に導かれ、空気の分子を緑や赤、紫に光らせます。",
+      "id": "sci-0057",
+      "options": [
+        "極地の氷の反射",
+        "太陽からの粒子",
+        "上空の雷",
+        "氷の結晶に映る月光"
+      ],
+      "question": "オーロラ（北極光）は何によって起こりますか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "火星の1日は「ソル」と呼ばれます。探査チームは「火星時間」で暮らし、毎日予定を40分ずつずらすこともあります。",
+      "id": "sci-0063",
+      "options": ["10時間30分", "6時間15分", "24時間40分", "地球の58日"],
+      "question": "火星の1日はおよそどのくらいの長さですか？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "アルミニウムは地殻の約8%を占めますが、かつては金より作るのが難しく、ナポレオン3世は客にアルミの食器を出しました。",
+      "id": "sci-0072",
+      "options": ["銅", "アルミニウム", "カルシウム", "鉄"],
+      "question": "地殻に最も多く含まれる金属はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "知られている最古の鉱物の粒はオーストラリアのジルコンで、約44億年前のものです。",
+      "id": "sci-0058",
+      "options": ["約4億5000万年", "約100億年", "約10億年", "約45億年"],
+      "question": "地球の年齢はおよそ何年ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "事象の地平線の内側からは光さえ逃げ出せません。だからブラックホールは黒く見えるのです。",
+      "id": "sci-0065",
+      "options": ["事象の地平線", "降着円盤", "コロナ", "特異点"],
+      "question": "ブラックホールの周りにある、その内側からは何も逃げ出せない境界を何と呼びますか？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "超新星は一時的に銀河全体よりも明るく輝くことがあります。私たちの体をつくる元素の多くは、こうした爆発で生まれました。",
+      "id": "sci-0062",
+      "options": [
+        "生まれたての惑星",
+        "爆発する恒星",
+        "とても明るい彗星",
+        "巨大な銀河"
+      ],
+      "question": "超新星とは何ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "コペルニクスの本は彼が亡くなった年に出版され、死の床で刷り上がった最初の一冊を見たと伝えられています。",
+      "id": "sci-0067",
+      "options": [
+        "ヨハネス・ケプラー",
+        "プトレマイオス",
+        "ガリレオ・ガリレイ",
+        "コペルニクス"
+      ],
+      "question": "1543年に太陽を中心とする太陽系のモデルを発表したのは誰ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "オスミウム1リットルの重さは約22.6kgで、鉛1リットルのおよそ2倍です。",
+      "id": "sci-0075",
+      "options": ["金", "鉛", "ウラン", "オスミウム"],
+      "question": "天然に存在する元素で最も密度が高いのはどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "ニュートンの『プリンキピア』は、落ちるリンゴも回る月も同じ引力の法則で説明しました。",
+      "id": "sci-0066",
+      "options": [
+        "ヨハネス・ケプラー",
+        "コペルニクス",
+        "ガリレオ・ガリレイ",
+        "アイザック・ニュートン"
+      ],
+      "question": "1687年に発表された運動の法則と万有引力の法則を打ち立てたのは誰ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "雷は空気を約3万°Cまで熱することがあります。その空気が一気に膨張する音が、私たちの聞く雷鳴です。",
+      "id": "sci-0076",
+      "options": ["ほぼ同じ", "約100倍", "約半分", "約5倍"],
+      "question": "雷の温度は、太陽の表面と比べてどのくらいになることがありますか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "イオ、エウロパ、ガニメデ、カリストは今も「ガリレオ衛星」と呼ばれています。",
+      "id": "sci-0068",
+      "options": [
+        "アイザック・ニュートン",
+        "ティコ・ブラーエ",
+        "ガリレオ・ガリレイ",
+        "ヨハネス・ケプラー"
+      ],
+      "question": "1610年に望遠鏡で木星の4つの大きな衛星を発見したのは誰ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "揺れの大きさは1段階で約10倍ですが、エネルギーは約32倍になります。マグニチュード7は5の約1000倍のエネルギーを放出します。",
+      "id": "sci-0086",
+      "options": ["約32倍", "約2倍", "約100倍", "約10倍"],
+      "question": "地震のマグニチュードが1上がるごとに、放出されるエネルギーはおよそ何倍になりますか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "気体ごとに光る色は決まっています。ほかの色の「ネオンサイン」には、別の気体や内側を塗った管が使われていることがよくあります。",
+      "id": "sci-0071",
+      "options": ["ネオン", "ヘリウム", "アルゴン", "キセノン"],
+      "question": "昔ながらの広告看板で、赤みがかったオレンジ色に光る気体はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "積乱雲は高さ12km以上にもそびえることがあり、旅客機はそれを避けて飛びます。",
+      "id": "sci-0079",
+      "options": ["層雲", "高積雲", "積乱雲", "巻雲"],
+      "question": "雷雨をもたらす雲はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "さびには酸素と水の両方が必要です。塩は反応を速めるだけです。海の近くで車が早くさびるのはそのためです。",
+      "id": "sci-0073",
+      "options": ["塩", "日光", "水", "窒素"],
+      "question": "鉄がさびるのは、酸素と何に反応したときですか？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "この記録は1913年にファーニス・クリークで観測されました。一部の気象学者は正確さを疑っていますが、WMOは今も認めています。",
+      "id": "sci-0080",
+      "options": [
+        "エチオピアのダロル",
+        "米国のデスバレー",
+        "イランのルート砂漠",
+        "クウェート市"
+      ],
+      "question": "56.7°Cという気温の世界最高記録を公式に持つ場所はどこですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "噴出物は氷の地殻の下に隠れた塩辛い海から来ており、エンケラドスは生命探しの有力な候補になっています。",
+      "id": "sci-0090",
+      "options": ["木星", "天王星", "土星", "海王星"],
+      "question": "宇宙へ水を噴き出す衛星エンケラドスは、どの惑星を回っていますか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "ドライアイスは約-78.5°Cで溶けずに固体から直接気体になり、舞台の幻想的な霧の演出に使われます。",
+      "id": "sci-0074",
+      "options": ["メタン", "一酸化炭素", "窒素", "二酸化炭素"],
+      "question": "ドライアイスはどの物質が固体になったものですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "この記録は1983年7月、南極の氷床の高地にあるロシアのボストーク基地で観測されました。",
+      "id": "sci-0081",
+      "options": ["ベルホヤンスク", "オイミャコン", "ボストーク基地", "南極点"],
+      "question": "地表の自然の気温として最も低い-89.2°Cが観測されたのはどこですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "水蒸気は目に見えません。雲は、水蒸気がちりの粒を核にして小さな水滴や氷の結晶になってできます。",
+      "id": "sci-0078",
+      "options": [
+        "目に見えない水蒸気",
+        "ちりや煙の粒",
+        "海から立ち上る蒸気",
+        "水滴や氷の粒"
+      ],
+      "question": "雲は主に何でできていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "地球の自転によるコリオリの力で、こうした嵐は北半球では反時計回り、南半球では時計回りに回ります。",
+      "id": "sci-0084",
+      "options": ["時計回り", "どちらも同じくらい", "回転しない", "反時計回り"],
+      "question": "南半球では、熱帯低気圧はどちら向きに回転しますか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "ロゼッタの着陸機フィラエは彗星の表面で2回跳ねてから、日の当たらない場所で止まりました。",
+      "id": "sci-0092",
+      "options": [
+        "スターダスト",
+        "ディープ・インパクト",
+        "ロゼッタ",
+        "ジオット"
+      ],
+      "question": "2014年に初めて彗星に着陸機を降ろしたミッションはどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "ハリケーンと台風は同じ種類の嵐、つまり熱帯低気圧で、地域によって呼び名が違うだけです。",
+      "id": "sci-0082",
+      "options": ["竜巻", "台風", "猛吹雪", "モンスーン"],
+      "question": "北西太平洋では、ハリケーンは何と呼ばれますか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "黒曜石は溶岩が結晶の育つ間もないほど急に冷えてできます。その縁は鋼鉄のメスより鋭いこともあります。",
+      "id": "sci-0087",
+      "options": ["化石になった木", "隕石の一種", "石炭の一種", "火山ガラス"],
+      "question": "黒曜石とは何ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "目の直径は数十kmになることもあります。最も激しい風は、そのまわりの「アイウォール」で吹いています。",
+      "id": "sci-0083",
+      "options": [
+        "最も強い風",
+        "激しいひょうと雪",
+        "濃い霧と霧雨",
+        "穏やかで晴れが多い"
+      ],
+      "question": "ハリケーンの目の中は、ふつうどんな天気ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "青いコランダムはサファイアと呼ばれます。ルビーの赤い色は、ごく微量のクロムによるものです。",
+      "id": "sci-0088",
+      "options": ["石英", "ガーネット", "緑柱石", "コランダム"],
+      "question": "ルビーは、どの鉱物の赤い宝石の変種ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "気圧が低いと沸点も下がるため、高地ではパスタがなかなかゆで上がりません。",
+      "id": "sci-0098",
+      "options": ["約70°C", "約120°C", "約50°C", "約100°C"],
+      "question": "エベレストの山頂では、水はおよそ何度で沸騰しますか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "溶けた岩石は地下ではマグマ、地表に噴き出すと溶岩と呼ばれます。",
+      "id": "sci-0085",
+      "options": ["黒曜石", "玄武岩", "溶岩", "マグマ"],
+      "question": "地下にある、溶けた岩石を何と呼びますか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "1977年に打ち上げられたボイジャー1号は2012年に星間空間に入り、地球の音を収めた金色のレコードを積んでいます。",
+      "id": "sci-0091",
+      "options": [
+        "パイオニア10号",
+        "ニュー・ホライズンズ",
+        "ボイジャー1号",
+        "ボイジャー2号"
+      ],
+      "question": "地球から最も遠く離れた人工物である探査機はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "琥珀の中には、昆虫や羽、恐竜の尾の一部までもが何百万年も細部まで完全に保存されていることがあります。",
+      "id": "sci-0089",
+      "options": ["木の樹脂", "はちみつ", "動物の骨", "貝殻"],
+      "question": "琥珀は何が化石になったものですか？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "太陽は太陽系の全質量の約99.8%を占め、残りの大部分は木星です。",
+      "id": "sci-0095",
+      "options": ["約90%", "99%以上", "約50%", "約75%"],
+      "question": "太陽系の質量のうち、太陽が占める割合はおよそどれくらいですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "この膨張のせいで氷は水に浮き、凍った水が水道管を破裂させたり岩を割ったりします。",
+      "id": "sci-0101",
+      "options": ["約1%", "約50%", "約25%", "約9%"],
+      "question": "水が凍ると、体積はおよそどれくらい増えますか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "太陽はG型の主系列星で、年齢は約46億年の中年の星です。一生のおよそ半分を過ぎたところです。",
+      "id": "sci-0096",
+      "options": ["赤色巨星", "青色巨星", "白色矮星", "黄色矮星"],
+      "question": "太陽はどの種類の恒星ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "海王星は太陽を一周するのに地球の約165年かかり、発見後初めての一周を終えたのは2011年のことでした。",
+      "id": "sci-0094",
+      "options": ["木星", "天王星", "海王星", "土星"],
+      "question": "太陽から最も遠い惑星はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "銀は銅よりわずかに電気を通しやすいですが、ずっと安い銅が電線に使われています。",
+      "id": "sci-0097",
+      "options": ["銀", "アルミニウム", "金", "銅"],
+      "question": "電気を最もよく通す金属はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "イットリウム、イッテルビウム、テルビウム、エルビウムはどれも、鉱物の豊富な採石場があるストックホルム近郊の村イッテルビーにちなみます。",
+      "id": "sci-0102",
+      "options": ["ポーランド", "ドイツ", "スウェーデン", "スコットランド"],
+      "question": "ある国の一つの村が、4つの元素の名前の由来になりました。それはどこの国ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "オゾンは酸素原子3個からなる酸素の一形態で、太陽からの有害なUV-BとUV-Cの大部分を吸収します。",
+      "id": "sci-0099",
+      "options": ["アルゴン", "窒素", "オゾン", "メタン"],
+      "question": "上空の大気中で、紫外線の大部分から私たちを守っている気体はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "時速約2万8000kmで飛ぶため、その高さの宇宙船からは1日に約16回の日の出と日の入りが見えます。",
+      "id": "sci-0100",
+      "options": ["約24時間", "約90分", "約12時間", "約10分"],
+      "question": "高度約400kmを回るISSは、地球を1周するのにおよそどのくらいかかりますか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "流れ星のほとんどは砂粒ほどもないちりの粒で、地上約80〜100kmの高さで燃え尽きます。",
+      "id": "sci-0107",
+      "options": [
+        "大気で燃える宇宙の塵",
+        "光を反射する人工衛星",
+        "彗星の尾",
+        "地球に落ちてくる星"
+      ],
+      "question": "「流れ星」の正体は何ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "キュリーは1898年にポロニウムと名付けました。当時ポーランドは独立国ではなく、その苦境に世界の目を向けるためでした。",
+      "id": "sci-0104",
+      "options": ["ゲルマニウム", "ラジウム", "ポロニウム", "フランシウム"],
+      "question": "マリ・キュリーが祖国にちなんで名付けた元素はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "セレネはギリシャ神話の月の女神です。それより先に見つかったテルルは、大地を意味するテルスにちなんで名付けられました。",
+      "id": "sci-0103",
+      "options": ["セレン", "セリウム", "ヘリウム", "テルル"],
+      "question": "月にちなんで名付けられた元素はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "電子の重さは陽子の約1800分の1しかないので、原子の質量のほぼすべては小さな原子核にあります。",
+      "id": "sci-0109",
+      "options": ["陽子", "中性子", "電子", "光子"],
+      "question": "原子の中で、負の電荷を持つ粒子はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "火星の大気は約95%が二酸化炭素で、とても薄く、気圧は地球の1%にも届きません。",
+      "id": "sci-0105",
+      "options": ["メタン", "窒素", "一酸化炭素", "二酸化炭素"],
+      "question": "火星の大気の主な成分である気体はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "c²がとてつもなく大きいため、ごくわずかな質量にも莫大なエネルギーが秘められています。それが太陽を輝かせています。",
+      "id": "sci-0110",
+      "options": ["光の速さ", "クーロン定数", "音の速さ", "炭素の質量"],
+      "question": "E = mc²という式で、「c」は何を表していますか？"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "ペルセウス座流星群はスイフト・タットル彗星が残したちりです。極大のときは暗い場所で1時間に数十個の流星が見えることもあります。",
+      "id": "sci-0108",
+      "options": ["4月", "10月", "12月", "8月"],
+      "question": "ペルセウス座流星群がふつう極大を迎えるのは何月ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "土星の六角形の一辺は地球の直径より長く、ボイジャー探査機によって初めて発見されました。",
+      "id": "sci-0106",
+      "options": ["海王星", "土星", "天王星", "木星"],
+      "question": "北極に巨大な六角形の嵐の模様がある惑星はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "O型Rh−の赤血球にはA、B、RhDの目印がないため、検査の時間がない緊急時に使われます。",
+      "id": "body-0007",
+      "options": ["A型Rh−", "O型Rh−", "B型Rh＋", "AB型Rh＋"],
+      "question": "赤血球ならほぼ誰にでも輸血できる「万能供血者」の血液型はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "イギリスの船乗りは壊血病を防ぐためにレモンやライムの果汁を与えられ、「ライミー」というあだ名が付きました。",
+      "id": "body-0009",
+      "options": ["脚気", "くる病", "壊血病", "ペラグラ"],
+      "question": "かつて船乗りに恐れられた、ビタミンCの長期的な不足で起こる病気はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "中耳にあるあぶみ骨は長さ約3mmしかなく、音の振動を内耳に伝えています。",
+      "id": "body-0003",
+      "options": ["手の指", "耳の中", "足の指", "鼻の中"],
+      "question": "人体で最も小さな骨はどこにありますか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "太ももの骨は身長の約4分の1を占め、最も丈夫な骨の一つでもあります。",
+      "id": "body-0004",
+      "options": ["腓骨", "大腿骨", "脛骨", "上腕骨"],
+      "question": "人体で最も長い骨はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "虹彩の模様は一人ひとり違うので、指紋と同じように生体認証に使われています。",
+      "id": "body-0010",
+      "options": ["虹彩", "水晶体", "角膜", "網膜"],
+      "question": "目に入る光の量を調節している、目の色のついた部分はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "2つの心房が血液を受け取り、2つの心室が肺と全身へ血液を送り出します。",
+      "id": "body-0005",
+      "options": ["6つ", "4つ", "2つ", "3つ"],
+      "question": "ヒトの心臓にはいくつの部屋がありますか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "ヘモグロビンは酸素と結びつくと鮮やかな赤になります。だから動脈血は静脈血より明るい色をしています。",
+      "id": "body-0012",
+      "options": ["インスリン", "ケラチン", "コラーゲン", "ヘモグロビン"],
+      "question": "赤血球の中で酸素を運んでいる、鉄を含むたんぱく質はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "左の肺は2つの葉しかなく、そのぶん心臓の場所が空いています。",
+      "id": "body-0030",
+      "options": ["5つ", "3つ", "4つ", "2つ"],
+      "question": "ヒトの右の肺はいくつの「葉（よう）」に分かれていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "インスリンが初めて糖尿病の治療に使われたのは1922年で、トロントの14歳の少年に注射されました。",
+      "id": "body-0006",
+      "options": ["膵臓", "脾臓", "腎臓", "肝臓"],
+      "question": "インスリンをつくる臓器はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "お尻にある大殿筋は体をまっすぐに保ち、階段を上ったり走ったりする力を生み出します。",
+      "id": "body-0014",
+      "options": ["広背筋", "大殿筋", "大胸筋", "上腕二頭筋"],
+      "question": "人体で最も大きな筋肉はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "ビタミンDは丈夫な骨のためにカルシウムの吸収を助けます。高緯度地域では冬に不足しがちな人が多くいます。",
+      "id": "body-0008",
+      "options": ["ビタミンD", "ビタミンA", "ビタミンK", "ビタミンC"],
+      "question": "皮膚が日光を浴びるとつくられるビタミンはどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "頭蓋骨の一部など、赤ちゃんの骨の多くは成長とともにくっついて一つになります。",
+      "id": "body-0016",
+      "options": ["約300本", "約150本", "約500本", "約206本"],
+      "question": "生まれたばかりの赤ちゃんの骨はおよそ何本ありますか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "かつては役に立たないと考えられていた虫垂は、有益な腸内細菌の避難所の役割を果たしているのかもしれません。",
+      "id": "body-0032",
+      "options": ["小腸", "大腸", "胃", "肝臓"],
+      "question": "虫垂はどの臓器についていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "白血球は血液の1%にも満たない量ですが、病原体を何年も「記憶」する細胞も含まれています。",
+      "id": "body-0011",
+      "options": ["白血球", "皮膚の細胞", "赤血球", "血小板"],
+      "question": "感染から体を守る主役となる血液細胞はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "しびれはひじの皮膚のすぐ下を通る尺骨神経から来ます。英語ではこの場所を「funny bone（おかしな骨）」と呼びます。",
+      "id": "body-0018",
+      "options": ["神経", "骨", "腱", "筋肉"],
+      "question": "ひじをぶつけて「ジーン」としびれるとき、実際には何をぶつけていますか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "腎臓は毎日約180リットルの血漿をろ過し、そのほとんどを体に戻しています。",
+      "id": "body-0013",
+      "options": ["肝臓", "脾臓", "腎臓", "肺"],
+      "question": "血液をろ過して尿をつくる臓器はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "この消化液（胆汁）は脂肪の消化を助けます。脂っこい食事のあと、胆のうはそれを腸へ絞り出します。",
+      "id": "body-0021",
+      "options": ["脾臓", "膵臓", "虫垂", "胆のう"],
+      "question": "肝臓でつくられる消化液をためておく小さな臓器はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "名前とは裏腹に、小腸は大腸よりずっと長く、「小」なのは太さだけです。",
+      "id": "body-0033",
+      "options": ["約50cm", "約1m", "約6m", "約15m"],
+      "question": "大人の小腸の長さはおよそどのくらいですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "赤ちゃんの体は約75%が水で、脳や心臓も約73%が水です。",
+      "id": "body-0015",
+      "options": ["約60%", "約30%", "約45%", "約90%"],
+      "question": "大人の体のおよそ何%が水ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "蝸牛の中の小さな有毛細胞は音の高さごとに反応します。一度傷つくと元には戻りません。",
+      "id": "body-0022",
+      "options": [
+        "気圧を整える",
+        "体のバランスを保つ",
+        "耳あかをつくる",
+        "音を信号に変える"
+      ],
+      "question": "内耳にあるカタツムリのような形の「蝸牛」は、何をしていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "歯のエナメル質は約96%が鉱物ですが、生きた細胞を含まないため、自分で修復することができません。",
+      "id": "body-0017",
+      "options": ["エナメル質", "軟骨", "手の爪", "太ももの骨"],
+      "question": "人体で最も硬い物質は何ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "小脳は脳の体積の10分の1ほどしかありませんが、脳の神経細胞の半分以上がそこにあります。",
+      "id": "body-0023",
+      "options": ["海馬", "小脳", "前頭葉", "下垂体"],
+      "question": "主に体のバランスと運動の調整をつかさどる部位はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "視神経が目から出ていく所には光を感じる細胞がありません。脳がその穴を埋めるので、私たちは気づきません。",
+      "id": "body-0035",
+      "options": [
+        "視神経の出口だから",
+        "虹彩が覆っているから",
+        "水晶体が最も厚いから",
+        "涙がたまるから"
+      ],
+      "question": "ヒトの目に、小さな「盲点」があるのはなぜですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "肝臓の一部を提供しても、提供した人と受け取った人の肝臓はどちらも数か月のうちに再生します。",
+      "id": "body-0019",
+      "options": ["肺", "心臓", "肝臓", "脳"],
+      "question": "一部を切り取っても元の大きさまで再生できる臓器はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "一生のうちに、心臓は休むことなく25億回以上拍動します。",
+      "id": "body-0024",
+      "options": ["約10万回", "約100万回", "約1000回", "約1万回"],
+      "question": "安静にしている大人の心臓は、1日におよそ何回拍動しますか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "親知らずが4本すべて生えない人も多いので、大人の歯が28本というのもよくあることです。",
+      "id": "body-0020",
+      "options": ["24本", "36本", "28本", "32本"],
+      "question": "親知らずを含めると、大人の歯は全部で何本ありますか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "池田菊苗は1908年に昆布だしを研究していてうま味を発見しました。うま味はグルタミン酸の味です。",
+      "id": "body-0027",
+      "options": ["辛味", "うま味", "金属味", "ミント味"],
+      "question": "日本の科学者が初めて特定した、だしのような風味と表現されることの多い基本味はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "2018年の研究で、彼らの脾臓は近隣の人々より約50%大きいことがわかりました。脾臓は潜水中に酸素の多い血液を送り出します。",
+      "id": "body-0042",
+      "options": ["肺", "心臓", "肝臓", "脾臓"],
+      "question": "素潜りで有名な東南アジアの「海の遊牧民」バジャウの人々は、体のどこが特に大きいですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "体温は一日の中で自然に変化し、早朝に最も低く、夕方に最も高くなります。",
+      "id": "body-0025",
+      "options": ["約37°C", "約39°C", "約35°C", "約40°C"],
+      "question": "ヒトの平常時の平均体温はどれくらいですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "カプサイシンは本物の熱と同じ神経の受容体を刺激します。鳥はこれを感じないので、喜んで唐辛子を食べて種を広めます。",
+      "id": "body-0028",
+      "options": ["カフェイン", "メントール", "カプサイシン", "タンニン"],
+      "question": "唐辛子を辛く感じさせる化合物はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "皮膚の外に出ている髪や爪は死んだ細胞でできているので、切っても痛くありません。",
+      "id": "body-0026",
+      "options": ["コラーゲン", "メラニン", "ヘモグロビン", "ケラチン"],
+      "question": "髪の毛や爪は主にどのたんぱく質でできていますか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "脳の重さは体重の約2%にすぎませんが、安静時のエネルギーの約5分の1を使っています。",
+      "id": "body-0029",
+      "options": ["約75%", "約20%", "約50%", "約2%"],
+      "question": "安静時の体のエネルギーのうち、脳が使う割合はおよそどれくらいですか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "背骨を押し縮める重力がないため、椎骨の間の椎間板が膨らみます。身長は最大約3%伸びますが、地球に戻ると元に戻ります。",
+      "id": "body-0043",
+      "options": [
+        "骨の成長が速まるから",
+        "筋肉が伸びるから",
+        "気圧が低いから",
+        "椎間板が膨らむから"
+      ],
+      "question": "長期のミッションから戻った宇宙飛行士は、身長が数cm伸びていることがあります。なぜですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "膝の皿は柔らかい軟骨から始まり、ふつう3〜5歳ごろになってようやく骨に変わり始めます。",
+      "id": "body-0031",
+      "options": ["硬い骨", "脂肪", "軟骨", "筋肉"],
+      "question": "生まれたばかりの赤ちゃんの膝の皿は、主に何でできていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "網膜には薄暗い光を感じる桿体が約1億2000万個ありますが、色を感じる錐体は約600万個しかありません。",
+      "id": "body-0034",
+      "options": ["網膜", "強膜", "角膜", "虹彩"],
+      "question": "光を感じる桿体と錐体がある、目の奥の層はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "最も太い動脈である大動脈は庭のホースほどの太さがあり、毛細血管は髪の毛より細いです。",
+      "id": "body-0037",
+      "options": ["毛細血管", "静脈", "動脈", "リンパ管"],
+      "question": "心臓から送り出される血液が流れる血管はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "毛におおわれた祖先では、毛を逆立てることで暖かい空気をためたり、敵に体を大きく見せたりしていました。",
+      "id": "body-0036",
+      "options": ["神経の末端", "汗腺", "毛根", "血管"],
+      "question": "鳥肌は、何についている小さな筋肉によって起こりますか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "体は古い赤血球と入れ替えるため、毎秒数百万個もの新しい赤血球をつくっています。",
+      "id": "body-0047",
+      "options": ["約2年", "約120日", "約7日", "約1日"],
+      "question": "赤血球の寿命はおよそどのくらいですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "血小板は小さな細胞のかけらで、傷口に駆けつけて固まり、穴をふさぎます。",
+      "id": "body-0038",
+      "options": [
+        "酸素を運ぶ",
+        "血を固める",
+        "ホルモンをつくる",
+        "病原体と戦う"
+      ],
+      "question": "血液中の血小板の主な役割は何ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "ジェンナーは牛痘のできものから採った材料を使いました。ワクチンという言葉は牛を意味するラテン語「vacca」に由来します。",
+      "id": "body-0040",
+      "options": [
+        "エドワード・ジェンナー",
+        "ルイ・パスツール",
+        "ロベルト・コッホ",
+        "ジョゼフ・リスター"
+      ],
+      "question": "1796年に最初のワクチンである天然痘ワクチンを開発したのは誰ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "フレミングは、置き忘れていたシャーレに生えたカビが、その周りの細菌を殺しているのに気づきました。",
+      "id": "body-0039",
+      "options": [
+        "アレクサンダー・フレミング",
+        "イグナーツ・ゼンメルワイス",
+        "ルイ・パスツール",
+        "エドワード・ジェンナー"
+      ],
+      "question": "1928年にペニシリンを発見したのは誰ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "世界的な予防接種の取り組みの結果、世界保健機関は1980年に天然痘の根絶を宣言しました。",
+      "id": "body-0041",
+      "options": ["はしか", "天然痘", "ポリオ", "マラリア"],
+      "question": "世界中で完全に根絶された、唯一のヒトの病気はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "速い神経線維は脂肪でできたミエリンの層に包まれていて、信号が跳ぶように時速400km以上で伝わります。",
+      "id": "body-0049",
+      "options": ["秒速約120m", "ほぼ光の速さ", "秒速約1m", "秒速約3000m"],
+      "question": "体の中で最も速い神経信号は、どのくらいの速さで伝わりますか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "体内のカルシウムの約99%は骨と歯にたくわえられています。",
+      "id": "body-0046",
+      "options": ["カリウム", "カルシウム", "鉄", "ナトリウム"],
+      "question": "骨や歯をつくる主な材料となるミネラルはどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "この袋（肺胞）を平らに広げると約70m²以上になり、酸素が血液に入るための広大な面となります。",
+      "id": "body-0044",
+      "options": ["腎臓", "肺", "腸", "肝臓"],
+      "question": "何百万個もの小さな空気の袋が集まっている臓器はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "腰の骨や胸骨など大きな骨の中にある柔らかい骨髄が、体の血液工場です。",
+      "id": "body-0048",
+      "options": ["心筋の中", "胃の中", "骨髄の中", "肝臓の中"],
+      "question": "大人の場合、赤血球はどこでつくられますか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "多くの国では、甲状腺の病気を防ぐために食塩にヨウ素を加えています。",
+      "id": "body-0045",
+      "options": ["鉄", "カルシウム", "ヨウ素", "亜鉛"],
+      "question": "甲状腺がホルモンをつくるのに必要な元素はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "海馬はタツノオトシゴのような形で、名前もギリシャ語のタツノオトシゴに由来します。ロンドンの道を覚えたタクシー運転手は海馬が大きいそうです。",
+      "id": "body-0055",
+      "options": ["小脳", "海馬", "扁桃体", "視床"],
+      "question": "新しい記憶をつくるうえで重要な脳の部位はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "「ヒック」という音は、横隔膜がぴくっと動いた直後に声帯がぱちんと閉じることで出ます。",
+      "id": "body-0053",
+      "options": ["舌", "胃", "心臓", "横隔膜"],
+      "question": "しゃっくりは、どの筋肉が急にけいれんすることで起こりますか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "明るい光、特に朝の光はメラトニンを抑えます。だから日光は時差ぼけした体内時計を整えるのに役立ちます。",
+      "id": "body-0050",
+      "options": ["アドレナリン", "コルチゾール", "インスリン", "メラトニン"],
+      "question": "暗くなると分泌され、睡眠の調節を助けるホルモンはどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "肝臓の重さは約1.5kgで、エネルギーをたくわえることから血液をきれいにすることまで、何百もの仕事をしています。",
+      "id": "body-0054",
+      "options": ["胃", "心臓", "脳", "肝臓"],
+      "question": "人体の内臓で最も大きいのはどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "首にあるU字形の舌骨は筋肉によって支えられ、舌を支えています。",
+      "id": "body-0058",
+      "options": ["膝蓋骨", "舌骨", "鎖骨", "尾骨"],
+      "question": "ほかのどの骨ともつながっていない、体で唯一の骨はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "各対の染色体は両親から1本ずつ受け継ぎます。23番目の対が生物学的な性別を決めます。",
+      "id": "body-0056",
+      "options": ["46対", "21対", "23対", "25対"],
+      "question": "ヒトのほとんどの細胞には、染色体が何対ありますか？"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "つばを飲み込んだりあくびをしたりすると耳管が開き、飛行機の上昇中や降下中に気圧の差を整えます。",
+      "id": "body-0052",
+      "options": ["耳管", "三半規管", "涙管", "外耳道"],
+      "question": "中耳とのどをつなぎ、耳の詰まりを「ポン」と抜けさせる管はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "血液は体重の約7〜8%を占めます。安静時には、心臓が約1分で全血液を体中に一巡りさせます。",
+      "id": "body-0057",
+      "options": ["約1リットル", "約5リットル", "約2リットル", "約10リットル"],
+      "question": "平均的な大人の血液の量はおよそどのくらいですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "ワカモレの起源はアステカ時代にさかのぼり、名前はナワトル語の「アボカド」と「ソース」を意味する言葉から来ています。",
+      "id": "food-0002",
+      "options": ["アボカド", "キュウリ", "トマト", "グリーンピース"],
+      "question": "ワカモレの主な材料は何ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "伝統的なバレンシア風パエリアにはウサギ、鶏肉、豆が入り、サフランが米を金色に染めます。",
+      "id": "food-0001",
+      "options": ["ガリシア", "アンダルシア", "カタルーニャ", "バレンシア"],
+      "question": "平たく大きな鍋で作るパエリアは、もともとスペインのどの地方の料理ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "定番のフムスは、ヒヨコ豆にタヒニ（練りごま）、レモン汁、ニンニクを混ぜて作ります。",
+      "id": "food-0003",
+      "options": ["ソラマメ", "ヒヨコ豆", "白インゲン豆", "レンズ豆"],
+      "question": "フムスは主に何から作られますか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "砂糖や牛乳は後にヨーロッパ人が加えたものです。アステカではカカオ豆がお金としても使われていました。",
+      "id": "food-0012",
+      "options": ["牛乳", "砂糖", "ミント", "唐辛子"],
+      "question": "アステカの人々はチョコレートを苦い飲み物として飲んでいました。よく加えていた材料は何ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "トマト、モッツァレラ、バジルは、イタリア国旗の赤、白、緑を表しているといわれています。",
+      "id": "food-0004",
+      "options": ["ローマ", "ナポリ", "ミラノ", "フィレンツェ"],
+      "question": "マルゲリータ・ピザと伝統的に結びつけられるイタリアの都市はどこですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "冬を前に家族総出で大量のキムチを漬ける習慣があり、「キムジャン」と呼ばれています。",
+      "id": "food-0005",
+      "options": ["日本料理", "タイ料理", "ベトナム料理", "韓国料理"],
+      "question": "辛い発酵野菜のキムチは、どこの料理の定番ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "ピーナッツの花は下を向いてさやを土の中に押し込み、ピーナッツは地中で実ります。",
+      "id": "food-0014",
+      "options": ["穀物", "根菜", "マメ科", "木の実"],
+      "question": "ピーナッツは植物学的にはナッツではありません。何の仲間ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "1830年代にパリにいたウィーンのパン職人がこのパンを広め、のちにバターたっぷりのサクサクした層の生地で作られるようになりました。",
+      "id": "food-0019",
+      "options": ["ベルギー", "スイス", "オーストリア", "ドイツ"],
+      "question": "クロワッサンの祖先は、三日月形のパン「キプフェル」です。キプフェルはどこの国のものですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "ジェノベーゼはバジル、松の実、ニンニク、硬いチーズ、オリーブオイルを混ぜたもので、「ペスト」は「すりつぶす」という意味のジェノバの方言に由来します。",
+      "id": "food-0015",
+      "options": ["クルミ", "アーモンド", "松の実", "カシューナッツ"],
+      "question": "ジェノバの伝統的なソース「ペスト・ジェノベーゼ」に使われるナッツはどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "豆腐は豆乳を固めて、その固まりを押して作ります。チーズの作り方に少し似ています。",
+      "id": "food-0008",
+      "options": ["インゲン豆", "大豆", "緑豆", "ヒヨコ豆"],
+      "question": "豆腐はどの豆から作られますか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "ゴーダの町では何世紀も前から伝統的なチーズ市が開かれ、農家が丸いチーズを取引しています。",
+      "id": "food-0018",
+      "options": ["オランダ", "デンマーク", "スイス", "ベルギー"],
+      "question": "ゴーダチーズの名前の由来になった町は、どこの国にありますか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "ポルトガルの宣教師や商人は16世紀に来日しました。「天ぷら」という言葉はラテン語の「tempora」から来たのかもしれません。",
+      "id": "food-0024",
+      "options": ["イギリス人", "オランダ人", "スペイン人", "ポルトガル人"],
+      "question": "天ぷらのもとになった揚げる調理法を日本に伝えたのは、どのヨーロッパの商人ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "ライム果汁の酸が、熱と同じように魚のたんぱく質を変化させます。ペルーにはセビーチェの日という国の記念日があります。",
+      "id": "food-0027",
+      "options": ["酢", "柑橘の果汁", "塩水", "熱した油"],
+      "question": "セビーチェでは、生の魚を何に漬けて「火を通し」ますか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "カカオの実は木の幹に直接なり、1つの実には約30〜50個の豆が入っています。",
+      "id": "food-0011",
+      "options": ["コーヒーノキ", "バニラ", "カカオの木", "イナゴマメ"],
+      "question": "チョコレートはどの植物の豆から作られますか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "クスクスは蒸したセモリナの小さな粒です。2020年、ユネスコは北アフリカ4か国の共通の遺産として登録しました。",
+      "id": "food-0028",
+      "options": ["長粒米", "オーツ麦", "デュラム小麦", "トウモロコシ"],
+      "question": "クスクスは伝統的にどの穀物から作られますか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "メースはナツメグの種を包むレース状の赤い皮です。どちらもインドネシアのバンダ諸島原産の木から採れます。",
+      "id": "food-0033",
+      "options": ["クローブ", "カルダモン", "メース", "オールスパイス"],
+      "question": "ナツメグと同じ果実から採れるスパイスはどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "昼食から遅めの夕食までの長い空腹の時間を埋めるために、ベッドフォード公爵夫人アンナが始めたとされています。",
+      "id": "food-0029",
+      "options": ["中国", "インド", "オランダ", "イギリス"],
+      "question": "1840年代に「アフタヌーンティー」の習慣が始まった国はどこですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "本物のフェタは主に羊の乳から作られ、EUの保護名称としてギリシャの生産者しか名乗れません。",
+      "id": "food-0016",
+      "options": ["ギリシャ", "スペイン", "フランス", "イタリア"],
+      "question": "フェタチーズは伝統的にどこの国のものですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "「チャイニーズ・グーズベリー」と呼ばれていましたが、1950年代に輸出される際、ニュージーランドの鳥キーウィにちなんで改名されました。",
+      "id": "food-0036",
+      "options": ["チリ", "ニュージーランド", "オーストラリア", "中国"],
+      "question": "キウイフルーツはもともとどこの国の果物ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "インドのマラバール海岸原産のコショウはかつてとても貴重で、「黒い黄金」と呼ばれ、家賃の支払いに使われることもありました。",
+      "id": "food-0034",
+      "options": ["インド", "ブラジル", "マダガスカル", "メキシコ"],
+      "question": "コショウの原産国はどこですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "この穴は「チーズアイ」と呼ばれ、熟成中に細菌が出す二酸化炭素の泡でできます。",
+      "id": "food-0017",
+      "options": ["チェダー", "エメンタール", "ブリー", "グリュイエール"],
+      "question": "大きな穴があることで有名なスイスのチーズはどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "セビリアオレンジは酸っぱすぎて生では食べられませんが、ペクチンが豊富で、しっかり固まるマーマレードに最適です。",
+      "id": "food-0037",
+      "options": ["レモン", "アンズ", "野イチゴ", "ビターオレンジ"],
+      "question": "伝統的なマーマレードはどの果物で作られますか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "ザワークラウトは何か月も日持ちし、ビタミンCを含むため、かつて船乗りが長い航海に持って行きました。",
+      "id": "food-0020",
+      "options": ["キュウリ", "キャベツ", "カブ", "タマネギ"],
+      "question": "ザワークラウトはどの野菜を発酵させたものですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "この名前は、イタリア北東部生まれのこの層になったデザートに入るコーヒーとココアのことを指しているようです。",
+      "id": "food-0038",
+      "options": ["クリームの雲", "小さなケーキ", "私を元気にして", "甘い夢"],
+      "question": "イタリアのデザート「ティラミス」という名前はどんな意味ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "お忍びで旅をしていた皇帝が従者にお茶を注いだとき、従者がひそかなお辞儀の代わりに指でたたいたという伝説があります。",
+      "id": "food-0042",
+      "options": [
+        "砂糖を足して",
+        "注ぐのをやめて",
+        "お茶が冷めている",
+        "ありがとう"
+      ],
+      "question": "中国の一部の地域で、お茶を注いでもらうときに2本の指で机をたたくのはどんな意味ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "ボルシチは東ヨーロッパ各地で食べられ、よくサワークリームをひとさじのせて出されます。",
+      "id": "food-0021",
+      "options": ["ビーツ", "トマト", "紫キャベツ", "赤パプリカ"],
+      "question": "ボルシチの深い赤色のもとになっている野菜はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "名前はセネガルにあった古いウォロフ（ジョロフ）帝国に由来します。ナイジェリアとガーナはどちらが上手に作るか仲良く張り合っています。",
+      "id": "food-0022",
+      "options": ["西アフリカ", "南アメリカ", "中央アジア", "南ヨーロッパ"],
+      "question": "トマトとスパイスで一つの鍋で炊くジョロフライスは、どの地域で広く愛されていますか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "世界のメープルシロップの大部分はケベック州産で、州はシロップの樽を戦略的に備蓄しています。",
+      "id": "food-0046",
+      "options": [
+        "約10リットル",
+        "約4リットル",
+        "約200リットル",
+        "約40リットル"
+      ],
+      "question": "1リットルのメープルシロップを作るのに、およそ何リットルの樹液を煮詰めますか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "寿司とは酢飯のことを指すので、生の魚の切り身だけなら刺身です。",
+      "id": "food-0023",
+      "options": ["おにぎり", "ラーメン", "天ぷら", "刺身"],
+      "question": "ご飯を添えずに、薄く切った生の魚を出す日本料理はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "箸を立てたご飯は葬儀で故人に供えるものです。箸から箸へ食べ物を渡すことも避けられます。",
+      "id": "food-0041",
+      "options": [
+        "シェフに失礼だから",
+        "食べ終えた合図だから",
+        "弔いの作法に似るから",
+        "おかわりの合図だから"
+      ],
+      "question": "日本で、ご飯に箸を突き立てるのが失礼とされるのはなぜですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "ハギスは伝統的に1月25日のバーンズ・ナイトに、ハギスに捧げる詩が朗読されたあとで食べられます。",
+      "id": "food-0025",
+      "options": ["スコットランド", "ノルウェー", "ウェールズ", "アイルランド"],
+      "question": "ハギスはどこの国の国民食ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "1粒ごとに翌年の1か月分の幸運をもたらすとされ、マドリードのプエルタ・デル・ソルには大勢の人が集まります。",
+      "id": "food-0043",
+      "options": ["イタリア", "スペイン", "ギリシャ", "ポルトガル"],
+      "question": "大みそかの真夜中に、鐘の音に合わせて1粒ずつ12粒のブドウを食べるのはどこの国の伝統ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "ダーバンのインド系の人々が生み出しました。ウサギは入っておらず、「バニー」は商人カーストの「バニア」から来たのかもしれません。",
+      "id": "food-0053",
+      "options": ["インド", "南アフリカ", "モーリシャス", "ケニア"],
+      "question": "くり抜いたパンにカレーを詰めた「バニーチャウ」はどこの国の料理ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "名前は牛飼いを意味するハンガリー語「グヤーシュ」から来ています。牛飼いたちはたき火にかけた鍋でこれを作りました。",
+      "id": "food-0026",
+      "options": ["ハンガリー", "ギリシャ", "ポーランド", "ルーマニア"],
+      "question": "パプリカたっぷりの煮込み料理グヤーシュは、どこの国が発祥ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "はちみつの糖分と天然の酸性が微生物の繁殖を防ぎます。古代エジプトの墓にはちみつの壺が納められたこともありました。",
+      "id": "food-0047",
+      "options": ["オリーブオイル", "パン", "チーズ", "はちみつ"],
+      "question": "密閉しておけば、水分が少ないおかげで何十年も腐らない食べ物はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "抹茶用の茶の木は収穫前に日光を遮って育てられ、そのため葉がより緑色で甘くなります。",
+      "id": "food-0030",
+      "options": [
+        "発酵させた紅茶",
+        "焙じた麦茶",
+        "粉末の緑茶",
+        "乾燥ミントの茶"
+      ],
+      "question": "抹茶とは何ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "インジェラはテフという小さな穀物から作られ、皿にもスプーンにもなります。ちぎって料理をすくって食べます。",
+      "id": "food-0048",
+      "options": ["エチオピア", "モロッコ", "ケニア", "ナイジェリア"],
+      "question": "スポンジのような酸味のある平焼きパン、インジェラが食文化の中心にある国はどこですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "すりつぶしたカヴァの木の根を水と混ぜ、共有の器から出します。アルコールは含みませんが、唇や舌が少しの間しびれます。",
+      "id": "food-0055",
+      "options": [
+        "コショウの仲間の根",
+        "発酵ココナツ",
+        "サトウキビの汁",
+        "海藻"
+      ],
+      "question": "フィジー、トンガ、バヌアツで分かち合う儀式の飲み物カヴァは、何から作られますか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "ターメリック（ウコン）はショウガの仲間の根で、食べ物だけでなく布の染料としても使われてきました。",
+      "id": "food-0031",
+      "options": ["パプリカ", "クミン", "ターメリック", "ショウガ"],
+      "question": "多くのカレーの黄色のもとになっているスパイスはどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "インカの人々はキヌアを「すべての穀物の母」と呼びました。実はホウレンソウの仲間の種子です。",
+      "id": "food-0049",
+      "options": ["インカ", "オルメカ", "マヤ", "アステカ"],
+      "question": "キヌアを主要な作物にしていた古代文明はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "内側の樹皮をはいだものは乾くと丸まって筒状になります。本物のシナモンはスリランカ産です。",
+      "id": "food-0032",
+      "options": ["クローブ", "コショウ", "シナモン", "ナツメグ"],
+      "question": "木の皮から作られるスパイスはどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "スペインのトルティージャは厚いオムレツで、タパスとして常温で切り分けて出されることがよくあります。",
+      "id": "food-0051",
+      "options": [
+        "卵とジャガイモ",
+        "米と豆",
+        "トウモロコシ粉とラード",
+        "小麦粉"
+      ],
+      "question": "スペインの「トルティージャ」はメキシコのものとまったく違います。何で作られていますか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "1つの株がつける実はふつう一度に1個で、その実は何十もの花がくっついてできています。",
+      "id": "food-0059",
+      "options": ["約2か月", "約6か月", "約10年", "約2年"],
+      "question": "パイナップルの株が最初の実をつけるまでに、およそどのくらいかかりますか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "左手は洗うためのものとされるので、左手で食べ物やお金を渡すと失礼に思われることがあります。インドでは指先だけで食べることもよくあります。",
+      "id": "food-0054",
+      "options": ["左手", "右手", "どちらの手でも", "両手"],
+      "question": "インドや中東、アフリカの多くの地域で、伝統的に食事に使う手はどちらですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "伝統では「正午の鐘を聞かせてはいけない」とされ、甘いマスタードと柔らかいプレッツェルを添えて出されます。",
+      "id": "food-0044",
+      "options": ["ハンブルク", "ベルリン", "ミュンヘン", "ウィーン"],
+      "question": "伝統的に正午前に食べる、子牛肉の白いソーセージ「ヴァイスヴルスト」はどの都市のものですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "英語名はつぼみの形から、釘を意味するラテン語「clavus」に由来します。",
+      "id": "food-0057",
+      "options": ["ナツメグ", "シナモン", "八角", "クローブ"],
+      "question": "木の花のつぼみを乾燥させたスパイスはどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "「Hの日」と呼ばれるこの切り替えは1967年9月3日午前5時に行われ、車が反対側へ移る間、交通は止められました。",
+      "id": "food-0065",
+      "options": ["フィンランド", "ノルウェー", "スウェーデン", "デンマーク"],
+      "question": "1967年に、一晩で左側通行から右側通行に切り替えた国はどこですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "伝統では、パンをフォンデュの鍋に落とした人は、次の一杯をおごるなどの罰ゲームをしなければなりません。",
+      "id": "food-0045",
+      "options": ["オーストリア", "スイス", "フランス", "リヒテンシュタイン"],
+      "question": "鍋の溶けたチーズをみんなで分け合うフォンデュは、どこの国の国民食ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "オレンジ色のニンジンは17世紀にオランダの生産者によって作り出されました。",
+      "id": "food-0060",
+      "options": ["カボチャ", "ニンジン", "ジャガイモ", "スイートコーン"],
+      "question": "オレンジ色の品種が広まる前は、紫や黄色が一般的だった野菜はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "粒の中の水分が蒸気になって硬い皮を破裂させます。ペルーの古代遺跡からもポップコーンが見つかっています。",
+      "id": "food-0050",
+      "options": ["コメ", "トウモロコシ", "コムギ", "オオムギ"],
+      "question": "ポップコーンはどの穀物から作られますか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "アボカドの種はとても大きいので、かつては今では絶滅した巨大な動物が種を運んでいたのかもしれません。",
+      "id": "food-0061",
+      "options": ["メキシコ", "ケニア", "イスラエル", "スペイン"],
+      "question": "アボカドの原産国はどこですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "アルゼンチン、ウルグアイ、パラグアイ、ブラジル南部では、1つのひょうたんの容器でマテ茶を回し飲みします。",
+      "id": "food-0068",
+      "options": ["オルチャタ", "マテ茶", "チチャ・モラーダ", "アトーレ"],
+      "question": "「ボンビージャ」という金属のストローで飲むのが伝統の飲み物はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "生地を熱い粘土の窯の内壁にたたきつけるように貼ると、1分ほどでふっくら膨らみます。",
+      "id": "food-0052",
+      "options": ["ドーサ", "ナン", "チャパティ", "プーリー"],
+      "question": "伝統的にタンドール窯の内壁に貼りつけて焼くインドのパンはどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "マオリのホンギは、2人の間で命の息を分かち合うことを表しています。",
+      "id": "food-0063",
+      "options": [
+        "フィジー",
+        "ニュージーランド",
+        "サモア",
+        "パプアニューギニア"
+      ],
+      "question": "鼻と鼻を押し合わせるあいさつ「ホンギ」が伝統となっている国はどこですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "「ウィンナー」は「ウィーンの」という意味で、オーストリアの法律ではこの名前は子牛肉を使ったものに限られています。",
+      "id": "food-0056",
+      "options": ["ハンガリー", "スイス", "ドイツ", "オーストリア"],
+      "question": "衣をつけた子牛のカツレツ「ウィンナー・シュニッツェル」は、どこの国の定番料理ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "トウモロコシは豆がつるを巻く支柱になり、豆は土に窒素を加え、カボチャの大きな葉は日陰をつくって雑草を抑えます。",
+      "id": "food-0069",
+      "options": [
+        "米・茶・大豆",
+        "小麦・オリーブ・ブドウ",
+        "トウモロコシ・豆・カボチャ",
+        "ジャガイモ・キヌア・唐辛子"
+      ],
+      "question": "北アメリカの多くの先住民が「三姉妹」として一緒に植えた作物はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "イチゴの「種」の一つひとつは、実は種を1つ含んだ小さな果実です。",
+      "id": "food-0058",
+      "options": ["イチゴ", "イチジク", "キウイ", "ラズベリー"],
+      "question": "種が実の外側についている果物はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "ホグマネイには「ファースト・フッティング」という習慣があります。新年最初の訪問者になることで、石炭やショートブレッドを持って行くのが理想です。",
+      "id": "food-0066",
+      "options": ["夏至の日", "大みそか", "クリスマス", "収穫祭"],
+      "question": "スコットランドの「ホグマネイ」とは何ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "ナマステはサンスクリット語で、おおよそ「あなたに敬意を表します」という意味です。手のひらを胸の前で合わせます。",
+      "id": "food-0062",
+      "options": [
+        "両頬にキスする",
+        "手のひらを合わせる",
+        "深くお辞儀する",
+        "固く握手する"
+      ],
+      "question": "「ナマステ」のあいさつでは、どんなしぐさをしますか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "日本では良いサービスは仕事の一部と考えられており、テーブルに置いたチップは丁寧に返されることもあります。",
+      "id": "food-0067",
+      "options": ["習慣がない", "現金のみ受け付ける", "20%が当然", "10%が当然"],
+      "question": "日本では、レストランでのチップは一般にどう受け止められていますか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "ラッシーには塩味、スパイス入り、甘いものがあり、マンゴーラッシーは多くのレストランで人気です。",
+      "id": "food-0071",
+      "options": ["レンズ豆", "ココナツウォーター", "茶葉", "ヨーグルト"],
+      "question": "南アジアで人気の飲み物ラッシーは、主に何から作られますか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "主人は取っ手のない小さなカップに、ふつう3分の1ほどずつ、客がカップを軽く振るまで何度も注ぎ足します。",
+      "id": "food-0070",
+      "options": [
+        "カップを逆さにする",
+        "横に硬貨を置く",
+        "机を2回たたく",
+        "カップを軽く振る"
+      ],
+      "question": "湾岸諸国でアラビアコーヒーを出されたとき、客はどうやって「もう結構です」と伝えますか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "プーティンは1950年代にケベック州の田舎で生まれました。新鮮なチーズカードは、かむと「キュッキュッ」と鳴るのがよいとされます。",
+      "id": "food-0073",
+      "options": ["ベルギー", "アイルランド", "カナダ", "フランス"],
+      "question": "フライドポテトにチーズカードとグレイビーソースをかけたプーティンは、どこの国の料理ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "1926年に両国を巡業したロシアのバレリーナ、アンナ・パブロワにちなみます。どちらが先に作ったかは今も激しく議論されています。",
+      "id": "food-0072",
+      "options": ["ニュージーランド", "南アフリカ共和国", "ロシア", "カナダ"],
+      "question": "メレンゲのデザート「パブロバ」を、オーストラリアとともに国民的な料理だと主張している国はどこですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "このソースは1830年代にイギリスのウスターで2人の薬剤師が初めて売り出し、瓶詰め前に熟成させます。",
+      "id": "food-0078",
+      "options": ["サバ", "ニシン", "イワシ", "アンチョビ"],
+      "question": "ウスターソースのうま味の一部は、どの魚を発酵させたものから来ていますか？"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "トマトは花から育ち種を含むので、料理では野菜として扱われても、植物学者は果実に分類します。",
+      "id": "food-0075",
+      "options": ["根", "野菜", "果実", "豆"],
+      "question": "植物学的に言うと、トマトは何ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "スモーブローは「バターとパン」という意味です。具をのせる順番にはニシンから始まる伝統的な決まりがあります。",
+      "id": "food-0074",
+      "options": ["スウェーデン", "アイスランド", "ノルウェー", "デンマーク"],
+      "question": "ライ麦パンにのせるオープンサンド「スモーブロー」は、どこの国の定番料理ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "キャッサバの根は生のままでは有毒なので加工が必要です。タピオカパールはタピオカティーで世界的に有名になりました。",
+      "id": "food-0077",
+      "options": ["米", "キャッサバ", "小麦", "ジャガイモ"],
+      "question": "タピオカパールは、どの植物のでんぷんから作られますか？"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "イタリア生まれのレストラン経営者シーザー・カルディーニが、1920年代にティフアナで考案したとされています。",
+      "id": "food-0079",
+      "options": ["メキシコ", "イタリア", "ギリシャ", "スペイン"],
+      "question": "シーザーサラダが考案されたのはどこの国ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "1903年12月17日、ライトフライヤー号は4回飛行し、最も長い飛行は59秒でした。",
+      "id": "avi-0001",
+      "options": ["1927年", "1903年", "1891年", "1911年"],
+      "question": "ライト兄弟が初めて動力飛行機で飛んだのは何年ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "兄弟は、安定した風と着陸しやすい柔らかい砂を求めて、ノースカロライナ州アウターバンクスの風の強い砂丘を選びました。",
+      "id": "avi-0002",
+      "options": ["ウィチタ", "キティホーク", "ケープカナベラル", "デイトン"],
+      "question": "ライト兄弟が初めて動力飛行を行ったのは、アメリカのどの町の近くですか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "リンドバーグは「スピリット・オブ・セントルイス号」でニューヨークからパリまで約33.5時間で飛びました。機体には前方の窓がありませんでした。",
+      "id": "avi-0004",
+      "options": [
+        "チャールズ・リンドバーグ",
+        "サン＝テグジュペリ",
+        "アメリア・イアハート",
+        "ルイ・ブレリオ"
+      ],
+      "question": "1927年に初めて単独で大西洋無着陸横断飛行を成し遂げたのは誰ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "ルータン・ボイジャーは9日かけて飛びました。燃料を積みすぎて、離陸のとき翼の先が滑走路をこすりました。",
+      "id": "avi-0032",
+      "options": [
+        "ダブル・イーグル",
+        "ソーラー・インパルス2",
+        "スピリット・オブ・セントルイス",
+        "ボイジャー"
+      ],
+      "question": "1986年に、無着陸・無給油で世界一周を初めて達成した飛行機の名前は何ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "コンコルドはロンドンからニューヨークまで約3.5時間で飛び、乗客は地球の丸みを見ることができました。",
+      "id": "avi-0007",
+      "options": ["イタリア", "ドイツ", "フランス", "アメリカ"],
+      "question": "超音速旅客機コンコルドは、イギリスとどこの国が共同で開発しましたか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "ブレリオのカレーからドーバーまでの飛行は約37分で、新聞社の賞金1000ポンドを獲得しました。",
+      "id": "avi-0005",
+      "options": [
+        "ルイ・ブレリオ",
+        "チャールズ・リンドバーグ",
+        "ウィルバー・ライト",
+        "アンリ・ファルマン"
+      ],
+      "question": "1909年に飛行機で初めてイギリス海峡を横断したのは誰ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "マッハ2では機体がとても熱くなり、コンコルドは飛行中に最大約30cmも伸びました。",
+      "id": "avi-0008",
+      "options": ["音速よりやや遅い", "音速の約2倍", "音速の5倍", "音速の3倍"],
+      "question": "コンコルドの巡航速度はおよそどれくらいでしたか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "イアハートはパリを目指しましたが、15時間近く飛んだあと北アイルランドの牧草地に着陸しました。",
+      "id": "avi-0006",
+      "options": [
+        "ジャクリーン・コクラン",
+        "エイミー・ジョンソン",
+        "アメリア・イアハート",
+        "ベッシー・コールマン"
+      ],
+      "question": "1932年に女性として初めて単独で大西洋無着陸横断飛行をしたのは誰ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "747の有名なこぶは、貨物用に機首が開くよう操縦室を上に移した設計から生まれました。",
+      "id": "avi-0011",
+      "options": [
+        "エアバスA380",
+        "マクドネル・ダグラスDC-10",
+        "ボーイング747",
+        "ロッキードL-1011"
+      ],
+      "question": "「ジャンボジェット」の愛称で呼ばれた旅客機はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "パイロットは丘の斜面の赤白のチェッカーボードを目指し、九龍の屋根のすぐ上で約47度傾けて滑走路に機首を合わせました。",
+      "id": "avi-0009",
+      "options": [
+        "浮かぶ滑走路への着陸",
+        "凍った湖への着陸",
+        "街の上空での低空急旋回",
+        "干潮の砂浜への着陸"
+      ],
+      "question": "1998年に閉鎖された香港の旧啓徳空港は、どんな着陸で有名でしたか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "総2階建てのA380は最大853人の乗客を乗せる認定を受けています。翼の面積は約845m²で、テニスコート3面分より広いです。",
+      "id": "avi-0012",
+      "options": [
+        "ボーイング747-8",
+        "エアバスA350-1000",
+        "ボーイング777-300ER",
+        "エアバスA380"
+      ],
+      "question": "乗客の定員で比べると、これまでに造られた最大の旅客機はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "イギリスのコメットはプロペラ機に比べて所要時間を半分にし、ほとんどの悪天候のはるか上を飛びました。",
+      "id": "avi-0010",
+      "options": [
+        "ボーイング707",
+        "ツポレフTu-104",
+        "シュド・アビアシオン・カラベル",
+        "デ・ハビランド・コメット"
+      ],
+      "question": "1952年に就航した世界初のジェット旅客機はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "DELAGのツェッペリン飛行船は、1914年までに何千人もの乗客を遊覧飛行や都市間の飛行で運びました。",
+      "id": "avi-0037",
+      "options": ["複葉機", "グライダー", "飛行船", "水上飛行機"],
+      "question": "1909年に設立された世界初の航空会社DELAGは、何で乗客を運びましたか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "空気がとても薄いため、主滑走路は約4kmと長く、飛行機が離陸速度に達するまでの余裕を持たせています。",
+      "id": "avi-0013",
+      "options": ["ラパス", "キト", "クスコ", "ボゴタ"],
+      "question": "標高約4000mにあるエル・アルト国際空港は、どの都市の空港ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "マッハ数はオーストリアの物理学者エルンスト・マッハにちなみます。旅客機の巡航高度では、マッハ1は時速約1060kmです。",
+      "id": "avi-0015",
+      "options": ["地球の自転", "ジェット気流", "音", "光"],
+      "question": "マッハ1で飛ぶとは、何の速さで飛ぶことですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "イェーガーはロケットエンジンのベルX-1に乗りました。X-1は爆撃機の下から切り離されてからエンジンに点火しました。",
+      "id": "avi-0016",
+      "options": [
+        "ジョン・グレン",
+        "チャック・イェーガー",
+        "ユーリイ・ガガーリン",
+        "ニール・アームストロング"
+      ],
+      "question": "1947年に水平飛行で音速の壁を破ったことが初めて確認されたパイロットは誰ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "ホイットルは22歳で特許を出願しました。最初に飛んだジェット機は1939年、ドイツのハンス・フォン・オハインの設計でした。",
+      "id": "avi-0040",
+      "options": [
+        "ヘンリー・ロイス",
+        "フランク・ホイットル",
+        "ハンス・フォン・オハイン",
+        "ジェフリー・デ・ハビランド"
+      ],
+      "question": "1930年にターボジェットエンジンの特許を取ったイギリスの技術者は誰ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "国際ルールでは、国際線のパイロットと管制官は一定の基準以上の英語を話せることが求められています。",
+      "id": "avi-0017",
+      "options": ["スペイン語", "英語", "フランス語", "ロシア語"],
+      "question": "国際的な航空管制で世界共通に使われている言語はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "「助けに来て」を意味する「venez m'aider」に由来し、必ず3回続けて言います。",
+      "id": "avi-0018",
+      "options": ["ラテン語", "ドイツ語", "スペイン語", "フランス語"],
+      "question": "遭難信号「メーデー」は、どの言語の言い回しから来ていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "上空の薄い空気は抵抗が少ないため、低い高度を飛ぶより燃料が少なくてすみます。",
+      "id": "avi-0020",
+      "options": ["約10〜12km", "約25〜30km", "約50km", "約2〜3km"],
+      "question": "ジェット旅客機はふつう、およそどのくらいの高度を巡航しますか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "高い山の上にいるのと同じようなものです。だからお菓子の袋が膨らみ、長いフライトでは疲れやすくなることがあります。",
+      "id": "avi-0019",
+      "options": [
+        "約4500〜5000m",
+        "海面と同じ（0m）",
+        "約1800〜2400m",
+        "約9000m〜1万m"
+      ],
+      "question": "旅客機の客室は、ふつうおよそどのくらいの高度に相当する気圧に保たれていますか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "セントピーターズバーグ・タンパ・エアボート・ラインは1回に乗客1人を運びました。最初の座席は400ドルで競売にかけられました。",
+      "id": "avi-0041",
+      "options": [
+        "サンフランシスコ湾",
+        "チェサピーク湾",
+        "タンパ湾",
+        "ガルベストン湾"
+      ],
+      "question": "1914年に固定翼機による初の定期航空便が始まりました。その飛行艇が渡った湾はどこですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "ジェット気流は時速300kmを超えることがあり、飛行ルートはそれに乗るか避けるように毎日計画されます。",
+      "id": "avi-0021",
+      "options": ["メキシコ湾流", "ジェット気流", "貿易風", "モンスーン"],
+      "question": "大西洋を東へ向かう便の飛行時間をよく短くしてくれる、上空の速い風はどれですか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "地球儀の上では2つの都市を結ぶ最短ルートは大圏で、それはほとんどの平らな地図で曲線に見えます。",
+      "id": "avi-0022",
+      "options": [
+        "大圏航路が最短だから",
+        "地球の磁力のため",
+        "海を避ける必要があるから",
+        "風がいつもそう吹くから"
+      ],
+      "question": "長距離便の飛行ルートが平らな地図上で曲がって見えるのはなぜですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "短い滑走路は約12%の上り坂になっていて、着陸時には減速を、離陸時には加速を助けます。",
+      "id": "avi-0023",
+      "options": ["カンチェンジュンガ", "K2", "アンナプルナ", "エベレスト"],
+      "question": "ネパールのルクラにあるテンジン・ヒラリー空港は、どの山へのトレッキングの玄関口ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "このビーチはプリンセス・ジュリアナ国際空港の滑走路の端のすぐ先にあり、飛行機ファンの有名な撮影スポットです。",
+      "id": "avi-0025",
+      "options": [
+        "セント・マーチン島",
+        "アルバ島",
+        "バルバドス",
+        "アンティグア・バーブーダ"
+      ],
+      "question": "着陸するジェット機がすぐ頭上を通るマホ・ビーチは、どのカリブ海の島にありますか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "エルロン（補助翼）は左右で逆向きに動き、片方の翼の揚力が増え、もう片方が減ることで機体が傾きます。",
+      "id": "avi-0048",
+      "options": ["エレベーター", "フラップ", "ラダー", "エルロン"],
+      "question": "翼にある操縦翼面のうち、機体を左右に傾けるものはどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "ウェストレー島とパパ・ウェストレー島を結ぶこの便の距離は3km未満で、追い風なら1分かからなかったこともあります。",
+      "id": "avi-0031",
+      "options": [
+        "ギリシャの島々",
+        "英国オークニー諸島",
+        "ノルウェーのフィヨルド",
+        "モルディブ"
+      ],
+      "question": "飛行時間わずか1〜2分という世界有数の短い定期便は、どこで運航されていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "大阪湾のこの島は何百万m³もの埋め立て土砂で造られ、今もゆっくりと沈み続けています。",
+      "id": "avi-0026",
+      "options": ["人工島", "元の湖底", "浮かぶ鋼鉄の台", "山の頂上"],
+      "question": "日本の関西国際空港は何の上に造られていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "1万7000枚以上の太陽電池が昼間にバッテリーを充電し、夜の間も飛び続けることができました。",
+      "id": "avi-0033",
+      "options": ["太陽光", "風力タービン", "バイオ燃料", "水素"],
+      "question": "2016年、ソーラー・インパルス2は何だけを動力にして世界一周しましたか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "戦時中のアルミニウム不足で木製になりました。この機体は1947年に一度だけ、1分足らず飛んだだけでした。",
+      "id": "avi-0050",
+      "options": ["スプルース", "バルサ", "オーク", "カバノキ"],
+      "question": "巨大飛行艇「スプルース・グース」は、実際には主にどの木で造られていましたか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "チャンギ空港のジュエルにある「レイン・ボルテックス」は、屋内の森に囲まれ、ガラスのドームから雨水を流し落とします。",
+      "id": "avi-0027",
+      "options": ["ドーハ", "香港", "シンガポール", "ドバイ"],
+      "question": "高さ40mの屋内の滝がある「ジュエル」を持つのは、どの都市の空港ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "シコルスキーのVS-300は、大きなメインローター1つと小さなテールローターという、今のほとんどのヘリコプターの形を決めました。",
+      "id": "avi-0038",
+      "options": [
+        "フランク・パイアセッキ",
+        "イーゴリ・シコルスキー",
+        "ローレンス・ベル",
+        "フアン・デ・ラ・シエルバ"
+      ],
+      "question": "1939年に飛行した、実用的な初のシングルローター・ヘリコプターを設計したのは誰ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "QantasはQueensland and Northern Territory Aerial Servicesの略で、1920年に奥地の町ウィントンで設立されました。",
+      "id": "avi-0028",
+      "options": ["ニュージーランド", "カナダ", "オーストラリア", "南アフリカ"],
+      "question": "航空会社カンタスの名前は略語から生まれました。カンタスはどこの国の航空会社ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "1480年代の彼のスケッチには、空気をかき回すように回転して浮き上がるための、らせん状の亜麻布のスクリューが描かれています。",
+      "id": "avi-0039",
+      "options": ["グライダー", "ヘリコプター", "ジェット機", "熱気球"],
+      "question": "レオナルド・ダ・ヴィンチの「空気スクリュー」の設計は、どの航空機の初期のアイデアとされることが多いですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "アメリカの飛行学校はどこも彼女を受け入れなかったため、フランス語を学んでフランスで訓練を受けました。",
+      "id": "avi-0059",
+      "options": ["アメリカ", "フランス", "ドイツ", "イギリス"],
+      "question": "先駆的な飛行士ベッシー・コールマンが1921年にパイロット免許を取ったのはどこの国ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "ローマの主要空港は、最初の飛行機の約400年前に鳥のような羽ばたき機など空飛ぶ機械を描いたレオナルドを称えています。",
+      "id": "avi-0029",
+      "options": ["ヴェネツィア", "フィレンツェ", "ミラノ", "ローマ"],
+      "question": "レオナルド・ダ・ヴィンチの名を冠したフィウミチーノ空港は、どの都市の空港ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "空港のモットー「Above us only sky（頭上にはただ空だけ）」は、レノンの曲「イマジン」の一節です。",
+      "id": "avi-0030",
+      "options": ["リヴァプール", "ロンドン", "マンチェスター", "グラスゴー"],
+      "question": "ジョン・レノンの名前が付いた空港があるイギリスの都市はどこですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "船と同じく左が赤、右が緑なので、パイロットはほかの機体がどちらへ向かっているかがわかります。",
+      "id": "avi-0045",
+      "options": ["右の翼端", "尾翼の上", "左の翼端", "機首の下"],
+      "question": "飛行機の赤い航法灯はどこについていますか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "サントス＝デュモンは腕時計とも縁があります。友人のルイ・カルティエが、両手で操縦できるよう腕時計を作ったと言われています。",
+      "id": "avi-0060",
+      "options": [
+        "サントス＝デュモン",
+        "ルイ・ブレリオ",
+        "アンリ・ファルマン",
+        "ガブリエル・ヴォワザン"
+      ],
+      "question": "1906年にパリで「14-bis」を飛ばしたブラジルの航空の先駆者は誰ですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "モンゴルフィエ兄弟の気球は2人の男性を乗せ、パリ上空を約25分間飛びました。",
+      "id": "avi-0034",
+      "options": ["ドイツ", "フランス", "イタリア", "イギリス"],
+      "question": "1783年に人を乗せた初の熱気球飛行が行われたのはどこの国ですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "フェルディナント・フォン・ツェッペリン伯爵の最初の硬式飛行船は、1900年にボーデン湖の上空を飛びました。",
+      "id": "avi-0036",
+      "options": ["イタリア", "フランス", "ドイツ", "イギリス"],
+      "question": "ツェッペリン飛行船が最初に造られたのはどこの国ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "SR-71は時速約3530kmで飛びました。燃料タンクは地上では漏れていて、飛行中の熱で膨張してようやくふさがりました。",
+      "id": "avi-0049",
+      "options": [
+        "SR-71ブラックバード",
+        "MiG-25フォックスバット",
+        "F-15イーグル",
+        "コンコルド"
+      ],
+      "question": "1976年から、有人の吸気式ジェット機の公式速度記録を持っている機体はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "看護師でパイロットでもあったエレン・チャーチが、看護師なら不安な乗客を安心させられるとボーイング航空輸送を説得しました。",
+      "id": "avi-0062",
+      "options": ["教師", "パイロット", "料理人", "看護師"],
+      "question": "1930年に採用された最初の客室乗務員は、何の資格を持っていることが条件でしたか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "鉄道ができる前、町ごとに独自の地方太陽時を使っていたため、ほんの数町離れただけで時計が何分もずれていることがありました。",
+      "id": "avi-0051",
+      "options": ["電信", "海運", "鉄道", "航空便"],
+      "question": "標準時の時間帯が初めて採用されたのは、主に何の時刻表を組むためでしたか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "トロントはYYZ、バンクーバーはYVRです。Yはカナダの古い無線局や気象観測所のコードに由来するとされています。",
+      "id": "avi-0053",
+      "options": ["Y", "C", "K", "Q"],
+      "question": "トロントやバンクーバーなど、カナダの空港コードのほとんどはどの文字で始まりますか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "ジェット機は使えません。小型のプロペラ機が、崖と海に挟まれた約400mの滑走路に着陸します。",
+      "id": "avi-0065",
+      "options": ["約1200m", "約2000m", "約400m", "約100m"],
+      "question": "カリブ海のサバ島には、世界で最も短い部類の商業用滑走路があります。長さはおよそどのくらいですか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "翼の上を流れる風が対気速度に加わるので、飛行機はより早く離陸速度に達します。",
+      "id": "avi-0047",
+      "options": [
+        "滑走路が短くてすむから",
+        "後で燃料を節約できるから",
+        "エンジンが静かになるから",
+        "翼の着氷を防ぐから"
+      ],
+      "question": "飛行機がふつう向かい風で離陸するのはなぜですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "アル・ボラクはタンジェとカサブランカを結び、最高時速320kmで所要時間を約4時間45分から約2時間10分に縮めました。",
+      "id": "avi-0055",
+      "options": ["エジプト", "南アフリカ", "アルジェリア", "モロッコ"],
+      "question": "2018年に開業したアフリカ初の高速鉄道は、どこの国を走っていますか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "アジアからこの線を越えて東へ飛ぶと、出発したときより前の日に着陸することがあります。",
+      "id": "avi-0052",
+      "options": ["赤道", "北極線", "グリニッジ子午線", "国際日付変更線"],
+      "question": "飛行中にどの線を越えると、暦の上で1日ずれますか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "「ナラボー」はラテン語で「木がない」という意味です。大陸横断鉄道のこの区間では、線路が478kmにわたって一度も曲がりません。",
+      "id": "avi-0056",
+      "options": ["約478km", "約48km", "約150km", "約1500km"],
+      "question": "オーストラリアのナラボー平原を横断する列車は、世界最長の完全な直線の線路を走ります。長さはおよそどのくらいですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "フランスとスイスが共同で運営し、フランス側とスイス側に分かれていて、バーゼルへは税関道路が通じています。",
+      "id": "avi-0066",
+      "options": ["オーストリア", "ドイツ", "スイス", "フランス"],
+      "question": "バーゼル・ミュールーズ・フライブルク空港（ユーロエアポート）は、全体がどこの国の中にありますか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "本線は約9300kmあり、8つの時間帯をまたぎ、乗り通すと約1週間かかります。",
+      "id": "avi-0054",
+      "options": [
+        "イルクーツク",
+        "ノボシビルスク",
+        "ムルマンスク",
+        "ウラジオストク"
+      ],
+      "question": "シベリア鉄道はモスクワからどの都市まで走っていますか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "ウィリアム・ボーイングの最初の飛行機は小さな水上機でした。同社は今もシアトル周辺で旅客機を製造しています。",
+      "id": "avi-0058",
+      "options": ["デトロイト", "シアトル", "シカゴ", "ウィチタ"],
+      "question": "ボーイング社が1916年に創業したのはどの都市ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "1868年に鉄製の駅舎が開業したとき、柱のない一枚屋根として世界最大でした。",
+      "id": "avi-0057",
+      "options": ["ロンドン", "パリ", "ブリュッセル", "アムステルダム"],
+      "question": "ユーロスターの終着駅、セント・パンクラス・インターナショナル駅はどの都市にありますか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "リリエンタールのグライダー飛行の写真は、ライト兄弟に刺激を与えました。",
+      "id": "avi-0061",
+      "options": ["動力飛行機", "グライダー", "気球", "飛行船"],
+      "question": "ドイツの先駆者オットー・リリエンタールは、1890年代に何で約2000回の飛行をしましたか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "1947年のシドニー〜ロンドン初の全区間飛行は、シンガポール、カラチ、カイロなどを経由して93時間かかりました。今では1回の乗り継ぎで行けます。",
+      "id": "avi-0069",
+      "options": ["アメリカ", "インド", "イギリス", "南アフリカ"],
+      "question": "「カンガルー・ルート」と呼ばれる有名な航空路は、オーストラリアとどこの国を結んでいますか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "ウィングレットは翼端で渦巻く空気の渦を弱め、燃料の使用量を数%減らすことができます。",
+      "id": "avi-0067",
+      "options": [
+        "抵抗を減らし燃料を節約",
+        "着陸灯を取り付ける",
+        "無線の受信を良くする",
+        "地上での操舵を助ける"
+      ],
+      "question": "多くの旅客機の翼端で上に反り返っている「ウィングレット」の主な役割は何ですか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "DC-3とその軍用型は1万6000機以上造られ、80年以上たった今も飛んでいる機体があります。",
+      "id": "avi-0063",
+      "options": [
+        "ダグラスDC-3",
+        "フォード・トライモーター",
+        "ボーイング247",
+        "ユンカースJu 52"
+      ],
+      "question": "一部が今も飛んでいる、旅客輸送を採算の合うものにした1930年代のプロペラ旅客機はどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "白いと暑い駐機場でも機体が熱くなりにくく、点検の際にひび、へこみ、漏れも見つけやすくなります。",
+      "id": "avi-0068",
+      "options": [
+        "レーダーに映りやすい",
+        "法律で決まっている",
+        "日光を反射する",
+        "空気抵抗が減る"
+      ],
+      "question": "ほとんどの旅客機が主に白く塗られているのはなぜですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "ダンマーム近郊の敷地は約776km²ありますが、滑走路やターミナルに使われているのはそのごく一部です。",
+      "id": "avi-0064",
+      "options": ["カタール", "サウジアラビア", "アラブ首長国連邦", "オマーン"],
+      "question": "敷地面積で世界最大の空港、キング・ファハド国際空港はどこの国にありますか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "A320のパイロットは操縦桿の代わりに小さなサイドスティックで操縦し、コンピューターが機体を安全な範囲内に保ちます。",
+      "id": "avi-0073",
+      "options": [
+        "ボーイング757",
+        "コンコルド",
+        "ボーイング777",
+        "エアバスA320"
+      ],
+      "question": "1988年に就航し、初めてデジタル式フライ・バイ・ワイヤ操縦を採用した旅客機はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "この連絡路は橋として始まり、人工島を経て海底トンネルに潜るので、船や飛行機の邪魔になりません。",
+      "id": "avi-0070",
+      "options": ["ノルウェー", "スウェーデン", "ドイツ", "フィンランド"],
+      "question": "エーレスンド橋は、デンマークとどこの国を結んでいますか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "2016年に開通し、頭上に最大2300mの岩盤を抱えながら、列車が最高時速約250kmで山の下を通り抜けます。",
+      "id": "avi-0071",
+      "options": ["イタリア", "オーストリア", "スイス", "リヒテンシュタイン"],
+      "question": "アルプスの下を通る全長57kmの鉄道トンネル、ゴッタルドベーストンネルはどこの国にありますか？"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "特別に改造したTGVは2007年、車輪で走る一般的な列車の速度記録である時速574.8kmを樹立しました。",
+      "id": "avi-0072",
+      "options": ["フランス", "イタリア", "スペイン", "ドイツ"],
+      "question": "高速列車TGVが走っているのはどこの国ですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "複合材は金属のように腐食しないため、787の客室は湿度を高めに、気圧も低い高度相当に保つことができます。",
+      "id": "avi-0074",
+      "options": [
+        "チタンの板",
+        "ステンレス鋼",
+        "アルミリチウム合金",
+        "炭素繊維複合材"
+      ],
+      "question": "ボーイング787ドリームライナーの胴体と翼は、主に何でできていますか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "島には滑走路がありません。ケープタウンからの船旅は約6日かかり、船が寄るのは年に8〜10回ほどです。",
+      "id": "avi-0076",
+      "options": [
+        "毎週の定期便で",
+        "水上飛行機で",
+        "船でのみ",
+        "ヘリコプターで"
+      ],
+      "question": "世界で最も孤立した有人島の一つ、トリスタン・ダ・クーニャへはどうやって行けますか？"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "初期の中国の凧は絹と竹で作られ、合図を送ったり距離を測ったりするのに使われました。",
+      "id": "avi-0075",
+      "options": ["エジプト", "中国", "ギリシャ", "インド"],
+      "question": "2000年以上前に人々が初めて凧を揚げたのはどこですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "今飛行機が地上走行している場所には、かつてハールレメルメール湖があり船が行き交っていました。1850年代に干拓されました。",
+      "id": "avi-0078",
+      "options": [
+        "コペンハーゲン・カストルプ",
+        "ブリュッセル",
+        "アムステルダム・スキポール",
+        "ハンブルク"
+      ],
+      "question": "干拓された湖の底にあり、海面より約3m低いヨーロッパの主要空港はどれですか？"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "1回の弧で約20〜25秒間体が浮き、宇宙飛行士の訓練にも使われています。",
+      "id": "avi-0079",
+      "options": ["超音速", "高山病", "激しい乱気流", "無重力状態"],
+      "question": "弧を描いて上昇と降下を繰り返す放物線飛行では、乗客は短い間何を体験できますか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "1852mという長さは1929年に国際的に合意されました。航空や海運では今も距離を海里、速さをノットで表します。",
+      "id": "avi-0080",
+      "options": ["2000m", "1000m", "1852m", "1609m"],
+      "question": "1ノットは1時間に1海里進む速さです。1海里の長さはどれですか？"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "アイルランドのシャノン空港は大西洋横断便の給油地で、乗り継ぎ客のためにこの店が設けられました。",
+      "id": "avi-0077",
+      "options": ["スキポール", "ヒースロー", "シャノン", "フランクフルト"],
+      "question": "1947年に世界初の免税店を開いた空港はどこですか？"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "春分と秋分には、太陽がエル・カスティーヨの階段に、蛇が滑り降りるような影を落とします。",
+      "id": "his-0020",
+      "options": ["インカ", "アステカ", "マヤ", "オルメカ"],
+      "question": "チチェン・イッツァの階段ピラミッド「エル・カスティーヨ」を築いた文明はどれですか？"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "マチュピチュは15世紀にペルーのアンデス高地に築かれ、おそらくインカ皇帝パチャクティの離宮でした。",
+      "id": "his-0002",
+      "options": ["アステカ", "インカ", "オルメカ", "マヤ"],
+      "question": "山の上の城塞都市マチュピチュを築いた文明はどれですか？"
+    }
+  ]
+}
