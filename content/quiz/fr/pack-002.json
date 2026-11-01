@@ -1,0 +1,2727 @@
+{
+  "id": "pack-002",
+  "lang": "fr",
+  "questions": [
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Des irrégularités de l'orbite d'Uranus ont permis de calculer où devait se trouver une planète invisible ; elle fut découverte en 1846.",
+      "id": "sci-0070",
+      "options": ["Mars", "Neptune", "Uranus", "Saturne"],
+      "question": "Quelle planète a été prédite par les mathématiques avant que quiconque ne la voie ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Contrairement à ce que montrent les films, la ceinture d'astéroïdes est surtout du vide ; les sondes la traversent sans avoir à esquiver de rochers.",
+      "id": "sci-0054",
+      "options": [
+        "Mars et Jupiter",
+        "La Terre et Mars",
+        "Jupiter et Saturne",
+        "Vénus et la Terre"
+      ],
+      "question": "La ceinture principale d'astéroïdes se situe entre les orbites de quelles planètes ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Les mesures de la faible lueur résiduelle du Big Bang, le fond diffus cosmologique, donnent un âge d'environ 13,8 milliards d'années.",
+      "id": "sci-0059",
+      "options": [
+        "25 milliards d'années",
+        "100 milliards d'années",
+        "4,6 milliards d'années",
+        "13,8 milliards d'années"
+      ],
+      "question": "Quel âge a environ l'Univers ?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Des particules chargées venues du Soleil sont guidées par le champ magnétique terrestre et font briller les molécules de l'air en vert, rouge ou violet.",
+      "id": "sci-0057",
+      "options": [
+        "Des reflets de la glace polaire",
+        "Des particules venues du Soleil",
+        "Des éclairs dans la haute atmosphère",
+        "La Lune sur des cristaux de glace"
+      ],
+      "question": "Quelle est l'origine des aurores boréales ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Un jour martien s'appelle un sol ; les équipes de mission vivent parfois à « l'heure de Mars », en décalant leur emploi du temps de 40 minutes chaque jour.",
+      "id": "sci-0063",
+      "options": [
+        "10 h 30 min",
+        "6 h 15 min",
+        "24 h 40 min",
+        "58 jours terrestres"
+      ],
+      "question": "Combien de temps dure environ une journée sur Mars ?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "L'aluminium forme environ 8 % de la croûte, mais il fut un temps plus rare à produire que l'or ; Napoléon III servait ses invités avec des couverts en aluminium.",
+      "id": "sci-0072",
+      "options": ["Cuivre", "Aluminium", "Calcium", "Fer"],
+      "question": "Quel est le métal le plus abondant de la croûte terrestre ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Les plus anciens grains minéraux connus, des zircons d'Australie, ont environ 4,4 milliards d'années.",
+      "id": "sci-0058",
+      "options": [
+        "450 millions d'années",
+        "10 milliards d'années",
+        "1 milliard d'années",
+        "4,5 milliards d'années"
+      ],
+      "question": "Quel âge a environ la Terre ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Même la lumière ne peut s'échapper de l'intérieur de l'horizon des événements, c'est pourquoi les trous noirs paraissent noirs.",
+      "id": "sci-0065",
+      "options": [
+        "Horizon des événements",
+        "Disque d'accrétion",
+        "Couronne",
+        "Singularité"
+      ],
+      "question": "Comment s'appelle la limite autour d'un trou noir au-delà de laquelle rien ne peut s'échapper ?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Une supernova peut brièvement briller plus qu'une galaxie entière ; ces explosions ont forgé une grande partie des éléments de notre corps.",
+      "id": "sci-0062",
+      "options": [
+        "Une planète naissante",
+        "Une étoile qui explose",
+        "Une comète très brillante",
+        "Une galaxie géante"
+      ],
+      "question": "Qu'est-ce qu'une supernova ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Le livre de Copernic parut l'année de sa mort, et la légende dit qu'il en vit le premier exemplaire imprimé sur son lit de mort.",
+      "id": "sci-0067",
+      "options": [
+        "Johannes Kepler",
+        "Claude Ptolémée",
+        "Galilée",
+        "Nicolas Copernic"
+      ],
+      "question": "Qui a publié en 1543 le modèle du Système solaire centré sur le Soleil ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Un litre d'osmium pèserait environ 22,6 kg, à peu près deux fois plus qu'un litre de plomb.",
+      "id": "sci-0075",
+      "options": ["Or", "Plomb", "Uranium", "Osmium"],
+      "question": "Quel est l'élément naturel le plus dense ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Les Principia de Newton expliquaient à la fois la chute des pommes et l'orbite des lunes par la même loi de la gravitation.",
+      "id": "sci-0066",
+      "options": [
+        "Johannes Kepler",
+        "Nicolas Copernic",
+        "Galilée",
+        "Isaac Newton"
+      ],
+      "question": "Qui a formulé les lois du mouvement et de la gravitation universelle, publiées en 1687 ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "La foudre peut chauffer l'air à environ 30 000 °C ; la brusque dilatation de cet air est le tonnerre que l'on entend.",
+      "id": "sci-0076",
+      "options": [
+        "À peu près autant",
+        "Environ 100 fois plus chaud",
+        "Environ deux fois moins chaud",
+        "Environ cinq fois plus chaud"
+      ],
+      "question": "Quelle température un éclair peut-il atteindre par rapport à la surface du Soleil ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Io, Europe, Ganymède et Callisto sont toujours appelées les satellites galiléens.",
+      "id": "sci-0068",
+      "options": ["Isaac Newton", "Tycho Brahe", "Galilée", "Johannes Kepler"],
+      "question": "Qui a découvert quatre grandes lunes de Jupiter au télescope en 1610 ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Les secousses augmentent d'environ 10 fois par degré, mais l'énergie d'environ 32 fois ; un séisme de magnitude 7 libère environ 1 000 fois plus qu'un 5.",
+      "id": "sci-0086",
+      "options": [
+        "Environ 32 fois",
+        "Environ 2 fois",
+        "Environ 100 fois",
+        "Environ 10 fois"
+      ],
+      "question": "Chaque degré de plus sur l'échelle de magnitude des séismes libère environ combien de fois plus d'énergie ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Chaque gaz brille de sa propre couleur ; les enseignes « néon » d'autres couleurs utilisent souvent d'autres gaz ou des tubes revêtus.",
+      "id": "sci-0071",
+      "options": ["Néon", "Hélium", "Argon", "Xénon"],
+      "question": "Quel gaz brille d'un rouge orangé dans les enseignes lumineuses classiques ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Les cumulonimbus peuvent s'élever jusqu'à 12 km ou plus, et les avions de ligne les contournent.",
+      "id": "sci-0079",
+      "options": ["Stratus", "Altocumulus", "Cumulonimbus", "Cirrus"],
+      "question": "Quel type de nuage produit les orages ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La rouille a besoin d'oxygène et d'eau ; le sel ne fait que l'accélérer, c'est pourquoi les voitures rouillent plus vite au bord de la mer.",
+      "id": "sci-0073",
+      "options": ["Le sel", "La lumière du soleil", "L'eau", "L'azote"],
+      "question": "Le fer rouille quand il réagit avec l'oxygène et avec quoi d'autre ?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "La mesure a été prise en 1913 à Furnace Creek ; l'OMM la reconnaît toujours, même si certains météorologues doutent de sa précision.",
+      "id": "sci-0080",
+      "options": [
+        "Dallol, Éthiopie",
+        "Vallée de la Mort, É.-U.",
+        "Désert du Lout, Iran",
+        "Ville de Koweït, Koweït"
+      ],
+      "question": "Quel lieu détient le record mondial officiel de la plus haute température de l'air, 56,7 °C ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Les jets proviennent d'un océan salé caché sous la croûte glacée d'Encelade, ce qui en fait une cible de choix pour la recherche de vie.",
+      "id": "sci-0090",
+      "options": ["Jupiter", "Uranus", "Saturne", "Neptune"],
+      "question": "Encelade, une lune qui projette des jets d'eau dans l'espace, tourne autour de quelle planète ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La glace carbonique passe directement de l'état solide à l'état gazeux vers −78,5 °C sans fondre, ce qui crée le brouillard inquiétant des effets de scène.",
+      "id": "sci-0074",
+      "options": [
+        "Méthane",
+        "Monoxyde de carbone",
+        "Azote",
+        "Dioxyde de carbone"
+      ],
+      "question": "La « glace sèche » est la forme solide de quelle substance ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Le record a été établi en juillet 1983 à la station de recherche russe Vostok, en altitude sur la calotte glaciaire antarctique.",
+      "id": "sci-0081",
+      "options": ["Verkhoïansk", "Oïmiakon", "Station Vostok", "Pôle Sud"],
+      "question": "Où a-t-on mesuré la plus basse température naturelle de l'air à la surface de la Terre, −89,2 °C ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La vapeur d'eau est invisible ; les nuages se forment quand elle se condense en minuscules gouttelettes ou cristaux de glace autour de grains de poussière.",
+      "id": "sci-0078",
+      "options": [
+        "De vapeur d'eau invisible",
+        "De particules de poussière et de fumée",
+        "De buée montant de la mer",
+        "De gouttelettes d'eau ou de glace"
+      ],
+      "question": "De quoi les nuages sont-ils surtout constitués ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "La force de Coriolis due à la rotation de la Terre fait tourner ces tempêtes dans le sens antihoraire au nord et dans le sens horaire au sud.",
+      "id": "sci-0084",
+      "options": [
+        "Dans le sens horaire",
+        "Dans les deux sens",
+        "Ils ne tournent pas",
+        "Dans le sens antihoraire"
+      ],
+      "question": "Dans l'hémisphère Sud, dans quel sens tournent les cyclones tropicaux ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Philae, l'atterrisseur de Rosetta, a rebondi deux fois sur la surface de la comète avant de s'immobiliser dans un coin ombragé.",
+      "id": "sci-0092",
+      "options": ["Stardust", "Deep Impact", "Rosetta", "Giotto"],
+      "question": "Quelle mission a posé le premier atterrisseur sur une comète, en 2014 ?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Ouragans et typhons sont le même type de tempête, un cyclone tropical, nommé différemment selon la région.",
+      "id": "sci-0082",
+      "options": ["Tornades", "Typhons", "Blizzards", "Moussons"],
+      "question": "Comment appelle-t-on les ouragans dans le nord-ouest de l'océan Pacifique ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "L'obsidienne se forme quand la lave refroidit trop vite pour que des cristaux se développent ; ses arêtes peuvent être plus tranchantes qu'un scalpel en acier.",
+      "id": "sci-0087",
+      "options": [
+        "Du bois fossilisé",
+        "Une météorite",
+        "Une sorte de charbon",
+        "Du verre volcanique"
+      ],
+      "question": "Qu'est-ce que l'obsidienne ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "L'œil peut mesurer des dizaines de kilomètres de large ; les vents les plus violents soufflent dans le mur de l'œil qui l'entoure.",
+      "id": "sci-0083",
+      "options": [
+        "Les vents les plus forts",
+        "Grêle et neige abondantes",
+        "Brouillard épais et bruine",
+        "Calme et souvent dégagé"
+      ],
+      "question": "Quel temps fait-il généralement dans l'œil d'un ouragan ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Le corindon bleu s'appelle saphir ; la couleur rouge du rubis vient de traces de chrome.",
+      "id": "sci-0088",
+      "options": ["Quartz", "Grenat", "Béryl", "Corindon"],
+      "question": "Le rubis est une variété rouge de quel minéral ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Une pression de l'air plus faible abaisse le point d'ébullition : en haute altitude, les pâtes cuisent très lentement.",
+      "id": "sci-0098",
+      "options": [
+        "Environ 70 °C",
+        "Environ 120 °C",
+        "Environ 50 °C",
+        "Environ 100 °C"
+      ],
+      "question": "Au sommet de l'Everest, à quelle température environ l'eau bout-elle ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La roche en fusion s'appelle magma sous terre et lave une fois qu'elle a jailli à la surface.",
+      "id": "sci-0085",
+      "options": ["Obsidienne", "Basalte", "Lave", "Magma"],
+      "question": "Comment appelle-t-on la roche en fusion sous la surface de la Terre ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Lancée en 1977, Voyager 1 est entrée dans l'espace interstellaire en 2012 et transporte un disque d'or contenant des sons de la Terre.",
+      "id": "sci-0091",
+      "options": ["Pioneer 10", "New Horizons", "Voyager 1", "Voyager 2"],
+      "question": "Quel engin spatial est l'objet fabriqué par l'homme le plus éloigné de la Terre ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "L'ambre peut conserver des insectes, des plumes et même des morceaux de queue de dinosaure dans les moindres détails pendant des millions d'années.",
+      "id": "sci-0089",
+      "options": [
+        "De la résine d'arbre",
+        "Du miel",
+        "De l'os d'animal",
+        "Des coquillages"
+      ],
+      "question": "L'ambre est la forme fossilisée de quoi ?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Le Soleil concentre environ 99,8 % de toute la masse du Système solaire ; Jupiter détient l'essentiel du reste.",
+      "id": "sci-0095",
+      "options": [
+        "Environ 90 %",
+        "Plus de 99 %",
+        "Environ 50 %",
+        "Environ 75 %"
+      ],
+      "question": "Quelle part environ de la masse du Système solaire se trouve dans le Soleil ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Cette dilatation explique que la glace flotte et que l'eau qui gèle puisse faire éclater des tuyaux et fendre des roches.",
+      "id": "sci-0101",
+      "options": ["Environ 1 %", "Environ 50 %", "Environ 25 %", "Environ 9 %"],
+      "question": "De combien environ le volume de l'eau augmente-t-il quand elle gèle ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Le Soleil est une étoile de type G de la séquence principale, d'âge moyen : environ 4,6 milliards d'années, soit à peu près la moitié de sa vie.",
+      "id": "sci-0096",
+      "options": [
+        "Une géante rouge",
+        "Une géante bleue",
+        "Une naine blanche",
+        "Une naine jaune"
+      ],
+      "question": "Quel type d'étoile est le Soleil ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Neptune met environ 165 années terrestres à faire le tour du Soleil ; elle n'a bouclé sa première orbite depuis sa découverte qu'en 2011.",
+      "id": "sci-0094",
+      "options": ["Jupiter", "Uranus", "Neptune", "Saturne"],
+      "question": "Quelle planète est la plus éloignée du Soleil ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "L'argent conduit un peu mieux que le cuivre, mais on utilise le cuivre pour les câbles parce qu'il est bien moins cher.",
+      "id": "sci-0097",
+      "options": ["Argent", "Aluminium", "Or", "Cuivre"],
+      "question": "Quel métal conduit le mieux l'électricité ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "L'yttrium, l'ytterbium, le terbium et l'erbium doivent tous leur nom à Ytterby, un village près de Stockholm doté d'une carrière riche en minéraux.",
+      "id": "sci-0102",
+      "options": ["Pologne", "Allemagne", "Suède", "Écosse"],
+      "question": "Dans quel pays se trouve le village qui a donné son nom à quatre éléments chimiques ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "L'ozone est une forme d'oxygène à trois atomes ; il absorbe l'essentiel des UV-B et UV-C nocifs du Soleil.",
+      "id": "sci-0099",
+      "options": ["Argon", "Azote", "Ozone", "Méthane"],
+      "question": "Quel gaz de la haute atmosphère nous protège de la majeure partie du rayonnement ultraviolet ?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "À environ 28 000 km/h, un engin spatial à cette altitude voit quelque 16 levers et couchers de soleil par jour.",
+      "id": "sci-0100",
+      "options": [
+        "Environ 24 heures",
+        "Environ 90 minutes",
+        "Environ 12 heures",
+        "Environ 10 minutes"
+      ],
+      "question": "À l'altitude de l'ISS, environ 400 km, combien de temps dure à peu près un tour de la Terre ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "La plupart des étoiles filantes sont des grains de poussière pas plus gros que du sable, qui se consument à environ 80–100 km du sol.",
+      "id": "sci-0107",
+      "options": [
+        "Un météoroïde qui se consume",
+        "Un satellite qui reflète la lumière",
+        "La queue d'une comète",
+        "Une étoile qui tombe sur Terre"
+      ],
+      "question": "Qu'est-ce qu'une « étoile filante » en réalité ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Marie Curie a nommé le polonium en 1898, alors que la Pologne n'existait pas comme État indépendant, pour attirer l'attention sur la cause polonaise.",
+      "id": "sci-0104",
+      "options": ["Germanium", "Radium", "Polonium", "Francium"],
+      "question": "Quel élément Marie Curie a-t-elle nommé d'après sa patrie ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Séléné était la déesse grecque de la Lune ; le tellure, découvert plus tôt, doit son nom à Tellus, la Terre.",
+      "id": "sci-0103",
+      "options": ["Sélénium", "Cérium", "Hélium", "Tellure"],
+      "question": "Quel élément chimique doit son nom à la Lune ?"
+    },
+    {
+      "answer": 2,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Les électrons sont environ 1 800 fois plus légers que les protons : presque toute la masse d'un atome est dans son minuscule noyau.",
+      "id": "sci-0109",
+      "options": ["Proton", "Neutron", "Électron", "Photon"],
+      "question": "Quelle particule de l'atome porte une charge négative ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "L'air martien est composé à environ 95 % de dioxyde de carbone et il est si ténu que la pression y est inférieure à 1 % de celle de la Terre.",
+      "id": "sci-0105",
+      "options": [
+        "Méthane",
+        "Azote",
+        "Monoxyde de carbone",
+        "Dioxyde de carbone"
+      ],
+      "question": "Quel est le principal gaz de l'atmosphère de Mars ?"
+    },
+    {
+      "answer": 0,
+      "category": "science & space",
+      "difficulty": 1,
+      "explanation": "Comme c² est immense, une infime quantité de masse renferme une énorme quantité d'énergie, celle qui fait briller le Soleil.",
+      "id": "sci-0110",
+      "options": [
+        "La vitesse de la lumière",
+        "La constante de Coulomb",
+        "La vitesse du son",
+        "La masse du carbone"
+      ],
+      "question": "Dans l'équation E = mc², que représente le « c » ?"
+    },
+    {
+      "answer": 3,
+      "category": "science & space",
+      "difficulty": 2,
+      "explanation": "Les Perséides sont des débris de la comète Swift-Tuttle ; à leur maximum, on peut voir des dizaines de météores par heure depuis un endroit sombre.",
+      "id": "sci-0108",
+      "options": ["Avril", "Octobre", "Décembre", "Août"],
+      "question": "En quel mois la pluie d'étoiles filantes des Perséides atteint-elle généralement son maximum ?"
+    },
+    {
+      "answer": 1,
+      "category": "science & space",
+      "difficulty": 3,
+      "explanation": "Chaque côté de l'hexagone de Saturne est plus long que le diamètre de la Terre ; il a été repéré pour la première fois par les sondes Voyager.",
+      "id": "sci-0106",
+      "options": ["Neptune", "Saturne", "Uranus", "Jupiter"],
+      "question": "Quelle planète présente au pôle Nord une tempête géante en forme d'hexagone ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Les globules rouges O négatif n'ont ni les marqueurs A et B ni le RhD : on les utilise en urgence quand on n'a pas le temps de faire un test.",
+      "id": "body-0007",
+      "options": ["A négatif", "O négatif", "B positif", "AB positif"],
+      "question": "Quel groupe sanguin peut être transfusé en globules rouges à presque tout le monde, le « donneur universel » ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Les marins britanniques recevaient du jus de citron ou de citron vert contre le scorbut, ce qui leur valut le surnom de « limeys ».",
+      "id": "body-0009",
+      "options": ["Béribéri", "Rachitisme", "Scorbut", "Pellagre"],
+      "question": "Une carence prolongée en vitamine C provoque quelle maladie, autrefois redoutée des marins ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "L'étrier, dans l'oreille moyenne, ne mesure qu'environ 3 mm et transmet les vibrations sonores à l'oreille interne.",
+      "id": "body-0003",
+      "options": [
+        "Dans le doigt",
+        "Dans l'oreille",
+        "Dans l'orteil",
+        "Dans le nez"
+      ],
+      "question": "Où se trouve le plus petit os du corps humain ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "L'os de la cuisse représente environ un quart de la taille d'une personne et c'est aussi l'un des os les plus solides.",
+      "id": "body-0004",
+      "options": ["Péroné", "Fémur", "Tibia", "Humérus"],
+      "question": "Quel est l'os le plus long du corps humain ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Les motifs de l'iris sont si individuels que, comme les empreintes digitales, ils servent à l'identification biométrique.",
+      "id": "body-0010",
+      "options": ["Iris", "Cristallin", "Cornée", "Rétine"],
+      "question": "Quelle partie colorée de l'œil règle la quantité de lumière qui entre ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Deux oreillettes reçoivent le sang et deux ventricules l'expulsent, vers les poumons et vers le reste du corps.",
+      "id": "body-0005",
+      "options": ["Six", "Quatre", "Deux", "Trois"],
+      "question": "Combien de cavités compte le cœur humain ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "L'hémoglobine devient rouge vif en captant l'oxygène, c'est pourquoi le sang artériel est plus clair que le sang veineux.",
+      "id": "body-0012",
+      "options": ["Insuline", "Kératine", "Collagène", "Hémoglobine"],
+      "question": "Quelle protéine contenant du fer, présente dans les globules rouges, transporte l'oxygène ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Le poumon gauche n'a que deux lobes, ce qui laisse de la place au cœur.",
+      "id": "body-0030",
+      "options": ["Cinq", "Trois", "Quatre", "Deux"],
+      "question": "Combien de lobes compte le poumon droit humain ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "L'insuline a été utilisée pour la première fois contre le diabète en 1922, quand un garçon de 14 ans a reçu une injection à Toronto.",
+      "id": "body-0006",
+      "options": ["Pancréas", "Rate", "Reins", "Foie"],
+      "question": "Quel organe produit l'insuline ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Le grand fessier maintient le corps droit et fournit la puissance pour grimper et courir.",
+      "id": "body-0014",
+      "options": [
+        "Grand dorsal",
+        "Grand fessier",
+        "Grand pectoral",
+        "Biceps brachial"
+      ],
+      "question": "Quel est le plus grand muscle du corps humain ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "La vitamine D aide le corps à absorber le calcium pour des os solides ; aux hautes latitudes, beaucoup de gens en produisent moins en hiver.",
+      "id": "body-0008",
+      "options": ["Vitamine D", "Vitamine A", "Vitamine K", "Vitamine C"],
+      "question": "Quelle vitamine ta peau fabrique-t-elle quand elle est exposée au soleil ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Beaucoup d'os du bébé, comme certaines parties du crâne, se soudent entre eux à mesure que l'enfant grandit.",
+      "id": "body-0016",
+      "options": ["Environ 300", "Environ 150", "Environ 500", "Environ 206"],
+      "question": "Combien d'os environ possède un nouveau-né ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Longtemps jugé inutile, l'appendice servirait de refuge aux bonnes bactéries de l'intestin.",
+      "id": "body-0032",
+      "options": ["Intestin grêle", "Gros intestin", "Estomac", "Foie"],
+      "question": "L'appendice est rattaché à quel organe ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Les globules blancs représentent moins de 1 % du sang, mais certains « se souviennent » des microbes pendant des années.",
+      "id": "body-0011",
+      "options": [
+        "Globules blancs",
+        "Cellules de la peau",
+        "Globules rouges",
+        "Plaquettes"
+      ],
+      "question": "Quelles cellules sanguines sont les principales défenses contre les infections ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Le picotement vient du nerf ulnaire (cubital), qui passe tout près de la peau au niveau du coude.",
+      "id": "body-0018",
+      "options": ["Un nerf", "Un os", "Un tendon", "Un muscle"],
+      "question": "Quand tu te cognes le coude et ressens une décharge électrique, que touches-tu en réalité ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Les reins filtrent environ 180 litres de plasma sanguin chaque jour et en renvoient presque tout dans l'organisme.",
+      "id": "body-0013",
+      "options": ["Foie", "Rate", "Reins", "Poumons"],
+      "question": "Quels organes filtrent le sang pour produire l'urine ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "La bile aide à digérer les graisses ; la vésicule biliaire la chasse dans l'intestin après un repas gras.",
+      "id": "body-0021",
+      "options": ["Rate", "Pancréas", "Appendice", "Vésicule"],
+      "question": "Quel petit organe stocke un liquide digestif fabriqué par le foie ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Malgré son nom, l'intestin grêle est bien plus long que le gros intestin ; il n'est « grêle » que par sa largeur.",
+      "id": "body-0033",
+      "options": [
+        "Environ 50 cm",
+        "Environ 1 m",
+        "Environ 6 m",
+        "Environ 15 m"
+      ],
+      "question": "Quelle est la longueur approximative de l'intestin grêle chez l'adulte ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Les bébés sont constitués d'environ 75 % d'eau ; le cerveau et le cœur en contiennent environ 73 %.",
+      "id": "body-0015",
+      "options": [
+        "Environ 60 %",
+        "Environ 30 %",
+        "Environ 45 %",
+        "Environ 90 %"
+      ],
+      "question": "Quel pourcentage environ du corps d'un adulte est constitué d'eau ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "De minuscules cellules ciliées de la cochlée réagissent à différentes hauteurs de son ; une fois abîmées, elles ne repoussent pas.",
+      "id": "body-0022",
+      "options": [
+        "Égaliser la pression de l'air",
+        "Maintenir l'équilibre du corps",
+        "Produire le cérumen",
+        "Convertir le son en signaux"
+      ],
+      "question": "À quoi sert la cochlée, en forme d'escargot, dans ton oreille interne ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "L'émail est minéral à environ 96 %, mais il ne contient aucune cellule vivante et ne peut donc pas se réparer.",
+      "id": "body-0017",
+      "options": [
+        "L'émail dentaire",
+        "Le cartilage",
+        "L'ongle",
+        "L'os de la cuisse"
+      ],
+      "question": "Quelle est la substance la plus dure du corps humain ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Le cervelet, « petit cerveau », renferme plus de la moitié des neurones du cerveau dans un dixième de son volume.",
+      "id": "body-0023",
+      "options": ["Hippocampe", "Cervelet", "Lobe frontal", "Hypophyse"],
+      "question": "Quelle partie de l'encéphale coordonne principalement l'équilibre et les mouvements ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Il n'y a aucune cellule sensible à la lumière là où le nerf optique quitte l'œil ; le cerveau comble le vide, et on ne le remarque pas.",
+      "id": "body-0035",
+      "options": [
+        "Le nerf optique en sort",
+        "L'iris la recouvre",
+        "Le cristallin y est plus épais",
+        "Les larmes s'y accumulent"
+      ],
+      "question": "Pourquoi chaque œil humain a-t-il une petite « tache aveugle » ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "On peut donner une partie de son foie : le foie du donneur comme celui du receveur repoussent en quelques mois.",
+      "id": "body-0019",
+      "options": ["Poumons", "Cœur", "Foie", "Cerveau"],
+      "question": "Quel organe peut repousser jusqu'à sa taille normale après l'ablation d'une partie ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Au cours d'une vie, le cœur bat plus de 2,5 milliards de fois sans s'arrêter.",
+      "id": "body-0024",
+      "options": [
+        "Environ 100 000",
+        "Environ 1 million",
+        "Environ 1 000",
+        "Environ 10 000"
+      ],
+      "question": "Combien de fois environ le cœur d'un adulte au repos bat-il par jour ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Beaucoup de gens n'ont jamais leurs quatre dents de sagesse, si bien qu'une denture de 28 dents est aussi courante.",
+      "id": "body-0020",
+      "options": ["24", "36", "28", "32"],
+      "question": "Combien de dents compte une denture adulte complète, dents de sagesse comprises ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Kikunae Ikeda a identifié l'umami en 1908 en étudiant un bouillon d'algue kombu ; c'est le goût du glutamate.",
+      "id": "body-0027",
+      "options": ["Piquant", "Umami", "Métallique", "Mentholé"],
+      "question": "Quel goût de base, souvent décrit comme savoureux, a été identifié pour la première fois par un scientifique japonais ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "La découverte de Landsteiner a rendu possibles des transfusions sûres et lui a valu un prix Nobel en 1930.",
+      "id": "body-0042",
+      "options": [
+        "Joseph Lister",
+        "Robert Koch",
+        "Alexander Fleming",
+        "Karl Landsteiner"
+      ],
+      "question": "Qui a découvert les principaux groupes sanguins humains en 1901 ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "La température du corps varie naturellement au cours de la journée : plus basse tôt le matin, plus haute en fin d'après-midi.",
+      "id": "body-0025",
+      "options": [
+        "Environ 37 °C",
+        "Environ 39 °C",
+        "Environ 35 °C",
+        "Environ 40 °C"
+      ],
+      "question": "Quelle est la température corporelle normale moyenne de l'être humain ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "La capsaïcine active les mêmes récepteurs nerveux que la vraie chaleur ; les oiseaux n'y sont pas sensibles, ils mangent donc les piments et dispersent les graines.",
+      "id": "body-0028",
+      "options": ["Caféine", "Menthol", "Capsaïcine", "Tanin"],
+      "question": "Quel composé donne aux piments leur goût brûlant ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Les cheveux et les ongles hors de la peau sont faits de cellules mortes, c'est pourquoi les couper ne fait pas mal.",
+      "id": "body-0026",
+      "options": ["Collagène", "Mélanine", "Hémoglobine", "Kératine"],
+      "question": "Les cheveux et les ongles sont surtout faits de quelle protéine ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Le cerveau ne représente qu'environ 2 % du poids du corps, mais il consomme environ un cinquième de son énergie au repos.",
+      "id": "body-0029",
+      "options": [
+        "Environ 75 %",
+        "Environ 20 %",
+        "Environ 50 %",
+        "Environ 2 %"
+      ],
+      "question": "Quelle part environ de l'énergie du corps au repos le cerveau consomme-t-il ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Avant Harvey, beaucoup pensaient que le sang était sans cesse fabriqué par le foie et consommé par le corps.",
+      "id": "body-0043",
+      "options": ["Hippocrate", "Galien", "André Vésale", "William Harvey"],
+      "question": "Qui a décrit le premier correctement la circulation du sang dans le corps, en 1628 ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "La trachée est maintenue ouverte par des anneaux de cartilage en forme de C, que l'on sent à l'avant du cou.",
+      "id": "body-0031",
+      "options": ["Larynx", "Pharynx", "Trachée", "Œsophage"],
+      "question": "Quel est le nom médical du conduit qui mène l'air aux bronches ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "La rétine compte environ 120 millions de bâtonnets pour la faible lumière, mais seulement 6 millions de cônes environ pour les couleurs.",
+      "id": "body-0034",
+      "options": ["Rétine", "Sclérotique", "Cornée", "Iris"],
+      "question": "Quelle couche au fond de l'œil contient les bâtonnets et les cônes sensibles à la lumière ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "L'aorte, la plus grande artère, est à peu près aussi large qu'un tuyau d'arrosage ; les capillaires sont plus fins qu'un cheveu.",
+      "id": "body-0037",
+      "options": ["Capillaires", "Veines", "Artères", "Vaisseaux lymphatiques"],
+      "question": "Quels vaisseaux sanguins transportent le sang depuis le cœur vers le corps ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Chez nos ancêtres à fourrure, hérisser les poils retenait l'air chaud ou les faisait paraître plus gros face à leurs rivaux.",
+      "id": "body-0036",
+      "options": [
+        "Aux terminaisons nerveuses",
+        "Aux glandes sudoripares",
+        "Aux follicules pileux",
+        "Aux vaisseaux sanguins"
+      ],
+      "question": "La chair de poule est causée par de minuscules muscles attachés à quoi ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Ton corps fabrique des millions de nouveaux globules rouges chaque seconde pour remplacer les anciens.",
+      "id": "body-0047",
+      "options": [
+        "Environ 2 ans",
+        "Environ 120 jours",
+        "Environ 7 jours",
+        "Environ 1 jour"
+      ],
+      "question": "Combien de temps vit environ un globule rouge ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Les plaquettes sont de minuscules fragments de cellules qui affluent vers une plaie et s'agglutinent pour la boucher.",
+      "id": "body-0038",
+      "options": [
+        "Transporter l'oxygène",
+        "Faire coaguler le sang",
+        "Fabriquer des hormones",
+        "Combattre les microbes"
+      ],
+      "question": "Quel est le rôle principal des plaquettes dans le sang ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Jenner a utilisé du pus de lésions de vaccine (variole de la vache) ; le mot vaccin vient du latin vacca, qui signifie vache.",
+      "id": "body-0040",
+      "options": [
+        "Edward Jenner",
+        "Louis Pasteur",
+        "Robert Koch",
+        "Joseph Lister"
+      ],
+      "question": "Qui a mis au point le premier vaccin, contre la variole, en 1796 ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Fleming remarqua qu'une moisissure poussant dans une boîte oubliée avait tué les bactéries autour d'elle.",
+      "id": "body-0039",
+      "options": [
+        "Alexander Fleming",
+        "Ignace Semmelweis",
+        "Louis Pasteur",
+        "Edward Jenner"
+      ],
+      "question": "Qui a découvert la pénicilline en 1928 ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "L'Organisation mondiale de la santé a déclaré la variole éradiquée en 1980, après une campagne mondiale de vaccination.",
+      "id": "body-0041",
+      "options": ["Rougeole", "Variole", "Poliomyélite", "Paludisme"],
+      "question": "Quelle est la seule maladie humaine complètement éradiquée dans le monde ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Les fibres nerveuses rapides sont entourées d'une couche graisseuse de myéline qui permet aux signaux d'y progresser par bonds à plus de 400 km/h.",
+      "id": "body-0049",
+      "options": [
+        "Jusqu'à environ 120 m/s",
+        "Presque la vitesse de la lumière",
+        "Environ 1 m/s",
+        "Environ 3 000 m/s"
+      ],
+      "question": "À quelle vitesse les signaux nerveux les plus rapides circulent-ils dans le corps ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Environ 99 % du calcium du corps est stocké dans les os et les dents.",
+      "id": "body-0046",
+      "options": ["Potassium", "Calcium", "Fer", "Sodium"],
+      "question": "Quel minéral est le principal constituant des os et des dents ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Étalées à plat, les alvéoles couvriraient environ 70 m² ou plus, une immense surface pour faire passer l'oxygène dans le sang.",
+      "id": "body-0044",
+      "options": ["Reins", "Poumons", "Intestins", "Foie"],
+      "question": "Dans quel organe se trouvent des millions de minuscules sacs d'air appelés alvéoles ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "La moelle molle à l'intérieur des grands os, comme les os du bassin et le sternum, est l'usine à sang du corps.",
+      "id": "body-0048",
+      "options": [
+        "Dans le muscle cardiaque",
+        "Dans l'estomac",
+        "Dans la moelle osseuse",
+        "Dans le foie"
+      ],
+      "question": "Où sont fabriqués les globules rouges chez l'adulte ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "De nombreux pays ajoutent de l'iode au sel de table pour prévenir les troubles de la thyroïde.",
+      "id": "body-0045",
+      "options": ["Fer", "Calcium", "Iode", "Zinc"],
+      "question": "De quel élément la glande thyroïde a-t-elle besoin pour fabriquer ses hormones ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "Elle doit son nom à sa forme d'hippocampe, le « cheval de mer » ; les chauffeurs de taxi londoniens qui apprennent les rues de la ville ont un hippocampe plus gros.",
+      "id": "body-0055",
+      "options": ["Cervelet", "Hippocampe", "Amygdale", "Thalamus"],
+      "question": "Quelle région du cerveau est essentielle à la formation de nouveaux souvenirs ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Le « hic » se produit quand les cordes vocales se ferment brusquement juste après la secousse du diaphragme.",
+      "id": "body-0053",
+      "options": ["Langue", "Estomac", "Cœur", "Diaphragme"],
+      "question": "Le hoquet est une contraction soudaine de quel muscle ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Une lumière vive, surtout le matin, freine la mélatonine : c'est pourquoi la lumière du jour aide à recaler l'horloge interne après un décalage horaire.",
+      "id": "body-0050",
+      "options": ["Adrénaline", "Cortisol", "Insuline", "Mélatonine"],
+      "question": "Quelle hormone, libérée dans l'obscurité, aide à réguler le sommeil ?"
+    },
+    {
+      "answer": 3,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Le foie pèse environ 1,5 kg et remplit des centaines de fonctions, du stockage d'énergie à l'épuration du sang.",
+      "id": "body-0054",
+      "options": ["Estomac", "Cœur", "Cerveau", "Foie"],
+      "question": "Quel est le plus grand organe interne du corps humain ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 3,
+      "explanation": "L'os hyoïde, en forme de U, dans le cou, est maintenu par des muscles et soutient la langue.",
+      "id": "body-0058",
+      "options": ["Rotule", "Os hyoïde", "Clavicule", "Coccyx"],
+      "question": "Quel est le seul os du corps qui n'est relié à aucun autre os ?"
+    },
+    {
+      "answer": 2,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Dans chaque paire, un chromosome vient de chaque parent ; la 23e paire détermine le sexe biologique.",
+      "id": "body-0056",
+      "options": ["46", "21", "23", "25"],
+      "question": "Combien de paires de chromosomes possèdent la plupart des cellules humaines ?"
+    },
+    {
+      "answer": 0,
+      "category": "human body & health",
+      "difficulty": 2,
+      "explanation": "Avaler ou bâiller ouvre la trompe d'Eustache, ce qui équilibre la pression quand l'avion monte ou descend.",
+      "id": "body-0052",
+      "options": [
+        "Trompe d'Eustache",
+        "Canal semi-circulaire",
+        "Canal lacrymal",
+        "Conduit auditif"
+      ],
+      "question": "Quel conduit relie l'oreille moyenne à la gorge et fait « se déboucher » les oreilles ?"
+    },
+    {
+      "answer": 1,
+      "category": "human body & health",
+      "difficulty": 1,
+      "explanation": "Le sang représente environ 7–8 % du poids du corps, et au repos le cœur en fait circuler tout le volume à peu près une fois par minute.",
+      "id": "body-0057",
+      "options": [
+        "Environ 1 litre",
+        "Environ 5 litres",
+        "Environ 2 litres",
+        "Environ 10 litres"
+      ],
+      "question": "Quelle quantité de sang possède environ un adulte moyen ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le guacamole remonte aux Aztèques ; son nom vient de mots nahuatl signifiant « avocat » et « sauce ».",
+      "id": "food-0002",
+      "options": ["Avocat", "Concombre", "Tomate", "Petit pois"],
+      "question": "Quel est l'ingrédient principal du guacamole ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "La paella valencienne traditionnelle contient du lapin, du poulet et des haricots, et le safran donne au riz sa couleur dorée.",
+      "id": "food-0001",
+      "options": ["Galice", "Andalousie", "Catalogne", "Valence"],
+      "question": "La paella, cuite dans une large poêle plate, vient à l'origine de quelle région d'Espagne ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le houmous classique mélange pois chiches, tahini (purée de sésame), jus de citron et ail.",
+      "id": "food-0003",
+      "options": ["Fèves", "Pois chiches", "Haricots blancs", "Lentilles"],
+      "question": "Le houmous est principalement fait de quel ingrédient ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Le sucre et le lait ont été ajoutés plus tard par les Européens ; les Aztèques utilisaient aussi les fèves de cacao comme monnaie.",
+      "id": "food-0012",
+      "options": ["Du lait", "Du sucre", "De la menthe", "Du piment"],
+      "question": "Les Aztèques buvaient le chocolat sous forme de boisson amère. Quel ingrédient y ajoutaient-ils souvent ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Sa tomate, sa mozzarella et son basilic rappelleraient le rouge, le blanc et le vert du drapeau italien.",
+      "id": "food-0004",
+      "options": ["Rome", "Naples", "Milan", "Florence"],
+      "question": "La pizza Margherita est traditionnellement associée à quelle ville italienne ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Les familles préparent traditionnellement d'énormes quantités de kimchi ensemble avant l'hiver, une coutume appelée kimjang.",
+      "id": "food-0005",
+      "options": ["Japonaise", "Thaïlandaise", "Vietnamienne", "Coréenne"],
+      "question": "Le kimchi, des légumes fermentés épicés, est un pilier de quelle cuisine ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Les fleurs d'arachide se courbent et enfoncent leurs gousses dans le sol, où les cacahuètes mûrissent sous terre.",
+      "id": "food-0014",
+      "options": [
+        "Des céréales",
+        "Des légumes-racines",
+        "Des légumineuses",
+        "Des fruits à coque d'arbre"
+      ],
+      "question": "Au sens botanique, les cacahuètes ne sont pas de vraies noix. Que sont-elles ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Des boulangers viennois installés à Paris dans les années 1830 ont contribué à populariser la viennoiserie, plus tard faite d'une pâte feuilletée au beurre.",
+      "id": "food-0019",
+      "options": ["Belgique", "Suisse", "Autriche", "Allemagne"],
+      "question": "Le croissant descend du kipferl, une pâtisserie en forme de croissant venue de quel pays ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Le pesto alla genovese mélange basilic, pignons, ail, fromage à pâte dure et huile d'olive ; son nom vient d'un verbe génois qui signifie « piler ».",
+      "id": "food-0015",
+      "options": ["Noix", "Amandes", "Pignons", "Noix de cajou"],
+      "question": "Quels fruits à coque utilise-t-on dans le pesto traditionnel de Gênes ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le tofu s'obtient en faisant cailler du lait de soja puis en pressant le caillé, un peu comme on fait du fromage.",
+      "id": "food-0008",
+      "options": ["Haricots rouges", "Soja", "Haricots mungo", "Pois chiches"],
+      "question": "Le tofu est fabriqué à partir de quels haricots ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "La ville de Gouda accueille depuis des siècles un marché au fromage traditionnel, où les fermiers échangent des meules.",
+      "id": "food-0018",
+      "options": ["Pays-Bas", "Danemark", "Suisse", "Belgique"],
+      "question": "Le gouda doit son nom à une ville de quel pays ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Missionnaires et marchands portugais arrivèrent au XVIe siècle ; le mot tempura viendrait du latin « tempora ».",
+      "id": "food-0024",
+      "options": [
+        "Les Anglais",
+        "Les Néerlandais",
+        "Les Espagnols",
+        "Les Portugais"
+      ],
+      "question": "Quels marchands européens ont introduit au Japon la technique de friture à l'origine du tempura ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "L'acide du jus de citron vert modifie les protéines du poisson à peu près comme la chaleur ; le Pérou célèbre une journée nationale du ceviche.",
+      "id": "food-0027",
+      "options": [
+        "Du vinaigre",
+        "Du jus d'agrumes",
+        "De l'eau salée",
+        "De l'huile chaude"
+      ],
+      "question": "Dans le ceviche, le poisson cru est « cuit » en marinant dans quoi ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Les cabosses poussent directement sur le tronc de l'arbre, et chacune contient environ 30 à 50 fèves.",
+      "id": "food-0011",
+      "options": ["Caféier", "Vanillier", "Cacaoyer", "Caroubier"],
+      "question": "Le chocolat est fabriqué à partir des fèves de quelle plante ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Le couscous est fait de minuscules grains de semoule cuits à la vapeur ; en 2020, l'UNESCO l'a inscrit comme patrimoine commun de quatre pays d'Afrique du Nord.",
+      "id": "food-0028",
+      "options": ["Riz long", "Avoine", "Blé dur", "Maïs"],
+      "question": "Le couscous est traditionnellement fait avec quelle céréale ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Le macis est l'enveloppe rouge en dentelle qui entoure la graine de muscade ; tous deux viennent d'un arbre originaire des îles Banda, en Indonésie.",
+      "id": "food-0033",
+      "options": [
+        "Clou de girofle",
+        "Cardamome",
+        "Macis",
+        "Piment de la Jamaïque"
+      ],
+      "question": "Quelle épice provient du même fruit que la noix de muscade ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "On attribue ce rituel à Anna, duchesse de Bedford, qui voulait combler le long creux entre le déjeuner et un dîner tardif.",
+      "id": "food-0029",
+      "options": ["Chine", "Inde", "Pays-Bas", "Angleterre"],
+      "question": "La coutume de l'« afternoon tea » est née dans quel pays dans les années 1840 ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "La vraie feta est faite surtout de lait de brebis et porte un nom protégé dans l'UE que seuls les producteurs grecs peuvent utiliser.",
+      "id": "food-0016",
+      "options": ["Grèce", "Espagne", "France", "Italie"],
+      "question": "La feta vient traditionnellement de quel pays ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Connu sous le nom de « groseille de Chine », il a été rebaptisé d'après l'oiseau kiwi de Nouvelle-Zélande lors de son exportation dans les années 1950.",
+      "id": "food-0036",
+      "options": ["Chili", "Nouvelle-Zélande", "Australie", "Chine"],
+      "question": "De quel pays le kiwi est-il originaire ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Originaire de la côte de Malabar, en Inde, le poivre était autrefois si précieux qu'on l'appelait « or noir » et qu'il servait parfois à payer un loyer.",
+      "id": "food-0034",
+      "options": ["Inde", "Brésil", "Madagascar", "Mexique"],
+      "question": "De quel pays le poivre noir est-il originaire ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Les trous, ou « yeux », sont formés par des bulles de dioxyde de carbone libérées par des bactéries pendant l'affinage.",
+      "id": "food-0017",
+      "options": ["Cheddar", "Emmental", "Brie", "Gruyère"],
+      "question": "Quel fromage suisse est célèbre pour ses gros trous ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Les oranges de Séville sont trop acides pour être mangées crues mais riches en pectine, ce qui les rend idéales pour une marmelade ferme.",
+      "id": "food-0037",
+      "options": ["Citrons", "Abricots", "Fraises des bois", "Oranges amères"],
+      "question": "La marmelade britannique traditionnelle est faite avec quel fruit ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le Sauerkraut, c'est la choucroute : les marins en emportaient autrefois pour les longs voyages, car elle se conserve des mois et contient de la vitamine C.",
+      "id": "food-0020",
+      "options": ["Concombre", "Chou", "Navet", "Oignon"],
+      "question": "Le Sauerkraut, spécialité allemande, est fait à partir de quel légume fermenté ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Le nom fait sans doute allusion au café et au cacao de ce dessert en couches du nord-est de l'Italie.",
+      "id": "food-0038",
+      "options": ["Nuage de crème", "Petit gâteau", "Remonte-moi", "Doux rêve"],
+      "question": "Que signifie le nom du dessert italien « tiramisu » ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Selon la légende, un empereur voyageant incognito servit du thé à son serviteur, qui tapota des doigts en guise de révérence secrète.",
+      "id": "food-0042",
+      "options": [
+        "Rajoute du sucre",
+        "Arrête de verser",
+        "Le thé est froid",
+        "Merci"
+      ],
+      "question": "Dans certaines régions de Chine, que signifie le fait de tapoter deux doigts sur la table quand on te sert le thé ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le bortsch se mange dans toute l'Europe de l'Est, souvent garni d'une cuillerée de crème aigre.",
+      "id": "food-0021",
+      "options": ["Betterave", "Tomate", "Chou rouge", "Poivron rouge"],
+      "question": "Quel légume donne au bortsch sa couleur rouge foncé ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le bouillon du pho mijote pendant des heures avec des épices comme l'anis étoilé, la cannelle et du gingembre grillé.",
+      "id": "food-0022",
+      "options": ["Viêt Nam", "Cambodge", "Thaïlande", "Laos"],
+      "question": "Le pho est une soupe de nouilles de quel pays ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Cela signifie à peu près « je reçois humblement » et exprime la gratitude envers tous ceux et tout ce qui ont rendu le repas possible.",
+      "id": "food-0040",
+      "options": ["Sayōnara", "Konnichiwa", "Arigatō", "Itadakimasu"],
+      "question": "Que dit-on traditionnellement au Japon avant de commencer un repas ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "La majeure partie du sirop d'érable mondial vient du Québec, qui garde une réserve stratégique de barils de sirop.",
+      "id": "food-0046",
+      "options": ["Environ 10", "Environ 4", "Environ 200", "Environ 40"],
+      "question": "Combien de litres environ de sève d'érable faut-il faire bouillir pour obtenir 1 litre de sirop d'érable ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le mot sushi désigne le riz vinaigré ; des tranches de poisson cru seules sont donc des sashimis.",
+      "id": "food-0023",
+      "options": ["Onigiri", "Ramen", "Tempura", "Sashimi"],
+      "question": "Quel plat japonais se compose de fines tranches de poisson cru servies sans riz ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Lors des funérailles, on offre aux morts du riz avec des baguettes plantées ; on évite aussi de se passer un aliment d'une paire de baguettes à l'autre.",
+      "id": "food-0041",
+      "options": [
+        "Cela insulte le cuisinier",
+        "Cela signifie que tu as fini",
+        "Cela rappelle un rite funéraire",
+        "Cela veut dire que tu en veux encore"
+      ],
+      "question": "Pourquoi est-il impoli au Japon de planter ses baguettes à la verticale dans un bol de riz ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le haggis se mange traditionnellement lors de la Burns Night, le 25 janvier, après qu'on lui a récité un poème.",
+      "id": "food-0025",
+      "options": ["Écosse", "Norvège", "Pays de Galles", "Irlande"],
+      "question": "Le haggis est le plat national de quel pays ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Chaque grain porterait chance pour un mois de l'année à venir, et la foule se rassemble à la Puerta del Sol de Madrid.",
+      "id": "food-0043",
+      "options": ["Italie", "Espagne", "Grèce", "Portugal"],
+      "question": "Manger 12 raisins à minuit le soir du Nouvel An, un à chaque coup de cloche, est une tradition de quel pays ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Les dim sum font partie de la tradition cantonaise du « yum cha » : boire du thé le matin en dégustant de petits plats.",
+      "id": "food-0053",
+      "options": ["Shandong", "Cantonaise", "Hunan", "Sichuan"],
+      "question": "Les dim sum sont surtout associés à quelle cuisine régionale chinoise ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le nom vient du hongrois « gulyás », qui signifie bouvier ; les gardiens de troupeaux le cuisaient dans des chaudrons sur un feu de bois.",
+      "id": "food-0026",
+      "options": ["Hongrie", "Grèce", "Pologne", "Roumanie"],
+      "question": "Le goulasch, un ragoût riche en paprika, est originaire de quel pays ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Les sucres et l'acidité naturelle du miel empêchent les microbes de se développer ; on en a même déposé des pots dans des tombes de l'Égypte antique.",
+      "id": "food-0047",
+      "options": ["Huile d'olive", "Pain", "Fromage", "Miel"],
+      "question": "Quel aliment, gardé fermé, peut se conserver des décennies sans s'abîmer grâce à sa faible teneur en eau ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Les théiers destinés au matcha sont ombragés avant la récolte, ce qui rend les feuilles plus vertes et plus douces.",
+      "id": "food-0030",
+      "options": [
+        "Du thé noir fermenté",
+        "Du thé d'orge torréfié",
+        "Du thé vert en poudre",
+        "Du thé de menthe séchée"
+      ],
+      "question": "Qu'est-ce que le matcha ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "L'injera est faite de teff, une minuscule céréale ; elle sert à la fois d'assiette et de cuillère, et on en déchire des morceaux pour saisir la nourriture.",
+      "id": "food-0048",
+      "options": ["Éthiopie", "Maroc", "Kenya", "Nigeria"],
+      "question": "L'injera, une galette moelleuse au levain, est au cœur de la cuisine de quel pays ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Le katsuobushi séché est l'un des aliments les plus durs du monde, si dur qu'on le râpe au rabot comme du bois.",
+      "id": "food-0055",
+      "options": [
+        "Bonite (listao)",
+        "Sardine",
+        "Maquereau",
+        "Saumon atlantique"
+      ],
+      "question": "Le katsuobushi, les copeaux fumés utilisés dans le bouillon japonais, est fait à partir de quel poisson ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le curcuma est une racine apparentée au gingembre, utilisée pour teindre les tissus comme pour colorer les aliments.",
+      "id": "food-0031",
+      "options": ["Paprika", "Cumin", "Curcuma", "Gingembre"],
+      "question": "Quelle épice donne à de nombreux currys leur couleur jaune ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Les Incas appelaient le quinoa la « mère de toutes les céréales » ; c'est en fait une graine apparentée aux épinards.",
+      "id": "food-0049",
+      "options": ["Les Incas", "Les Olmèques", "Les Mayas", "Les Aztèques"],
+      "question": "Le quinoa était une culture de base de quelle civilisation ancienne ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "En séchant, des lanières d'écorce interne s'enroulent en « bâtons » ; la vraie cannelle vient du Sri Lanka.",
+      "id": "food-0032",
+      "options": ["Clou de girofle", "Poivre", "Cannelle", "Noix de muscade"],
+      "question": "Quelle épice est faite à partir de l'écorce d'un arbre ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "La tortilla espagnole est une omelette épaisse, souvent servie en parts comme tapa, à température ambiante.",
+      "id": "food-0051",
+      "options": [
+        "D'œufs et de pommes de terre",
+        "De riz et de haricots",
+        "De farine de maïs et de saindoux",
+        "De farine de blé"
+      ],
+      "question": "La « tortilla » espagnole est très différente de la mexicaine. De quoi est-elle faite ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Chaque plant produit en général un ananas à la fois, formé de dizaines de fleurs soudées.",
+      "id": "food-0059",
+      "options": [
+        "Environ deux mois",
+        "Environ six mois",
+        "Environ dix ans",
+        "Environ deux ans"
+      ],
+      "question": "Combien de temps faut-il environ à un plant d'ananas pour produire son premier fruit ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "L'engourdissement vient du poivre du Sichuan, qui fait picoter les lèvres ; le piquant vient des piments.",
+      "id": "food-0054",
+      "options": ["Fujian", "Sichuan", "Jiangsu", "Cantonaise"],
+      "question": "Quelle cuisine régionale chinoise est célèbre pour le « mala », une saveur épicée qui engourdit ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "La tradition veut qu'elle n'« entende » jamais les cloches de midi ; on la sert avec de la moutarde douce et un bretzel moelleux.",
+      "id": "food-0044",
+      "options": ["Hambourg", "Berlin", "Munich", "Vienne"],
+      "question": "La Weißwurst, une saucisse blanche de veau traditionnellement mangée avant midi, vient de quelle ville ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Son nom vient du latin clavus, « clou », à cause de la forme du bouton.",
+      "id": "food-0057",
+      "options": [
+        "Noix de muscade",
+        "Cannelle",
+        "Anis étoilé",
+        "Clou de girofle"
+      ],
+      "question": "Quelle épice est le bouton floral séché d'un arbre ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Le changement du « Dagen H » a eu lieu à 5 h le 3 septembre 1967 ; la circulation a été arrêtée pendant que les voitures changeaient de côté.",
+      "id": "food-0065",
+      "options": ["Finlande", "Norvège", "Suède", "Danemark"],
+      "question": "Quel pays est passé du jour au lendemain de la conduite à gauche à la conduite à droite en 1967 ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Selon la tradition, celui qui laisse tomber son pain dans le caquelon doit payer un gage, comme offrir la tournée suivante.",
+      "id": "food-0045",
+      "options": ["Autriche", "Suisse", "France", "Liechtenstein"],
+      "question": "La fondue, du fromage fondu partagé dans un caquelon, est un plat national de quel pays ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Les carottes orange ont été mises au point par des cultivateurs néerlandais au XVIIe siècle.",
+      "id": "food-0060",
+      "options": ["Citrouille", "Carotte", "Pomme de terre", "Maïs doux"],
+      "question": "Quel légume était couramment violet ou jaune avant que les variétés orange ne deviennent populaires ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Chaque grain contient une goutte d'eau qui se transforme en vapeur et fait éclater l'enveloppe dure ; on a trouvé du pop-corn dans des sites anciens au Pérou.",
+      "id": "food-0050",
+      "options": ["Riz", "Maïs", "Blé", "Orge"],
+      "question": "Le pop-corn est fait à partir de quelle céréale ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Les noyaux d'avocat sont si gros qu'ils étaient peut-être autrefois dispersés par des animaux géants aujourd'hui disparus.",
+      "id": "food-0061",
+      "options": ["Mexique", "Kenya", "Israël", "Espagne"],
+      "question": "De quel pays l'avocat est-il originaire ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Le maté se partage dans une seule calebasse en Argentine, en Uruguay, au Paraguay et dans le sud du Brésil, passée de main en main entre amis.",
+      "id": "food-0068",
+      "options": ["Horchata", "Maté", "Chicha morada", "Atole"],
+      "question": "Quelle boisson se sirote traditionnellement avec une paille en métal appelée « bombilla » ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "La pâte est plaquée contre la paroi d'argile brûlante du tandoor, où elle gonfle en une minute environ.",
+      "id": "food-0052",
+      "options": ["Dosa", "Naan", "Chapati", "Puri"],
+      "question": "Quel pain indien est traditionnellement cuit contre la paroi d'un four tandoor ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Le hongi maori symbolise le partage du souffle de vie entre deux personnes.",
+      "id": "food-0063",
+      "options": [
+        "Fidji",
+        "Nouvelle-Zélande",
+        "Samoa",
+        "Papouasie-Nouvelle-Guinée"
+      ],
+      "question": "Dans quel pays le « hongi », une salutation où l'on presse le nez l'un contre l'autre, est-il une tradition ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "« Wiener » signifie « de Vienne », et la loi autrichienne réserve le nom de Wiener Schnitzel à l'escalope de veau.",
+      "id": "food-0056",
+      "options": ["Hongrie", "Suisse", "Allemagne", "Autriche"],
+      "question": "Le Wiener Schnitzel, une escalope de veau panée, est un classique de quel pays ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Environ un tiers de la population mondiale vit dans des pays où l'on roule à gauche, dont l'Inde, le Royaume-Uni et l'Australie.",
+      "id": "food-0064",
+      "options": ["Corée du Sud", "Japon", "Chine", "Allemagne"],
+      "question": "Lequel de ces pays roule à gauche ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "Les umeboshi sont extrêmement acides et salés, et on les place souvent au milieu d'une boulette de riz.",
+      "id": "food-0069",
+      "options": [
+        "Agrumes yuzu",
+        "Kakis du Japon",
+        "Prunes japonaises",
+        "Cerises du Japon"
+      ],
+      "question": "Les umeboshi japonais sont la version salée et marinée de quel fruit ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Chacune des « graines » de la fraise est en réalité un minuscule fruit qui contient une graine.",
+      "id": "food-0058",
+      "options": ["Fraise", "Figue", "Kiwi", "Framboise"],
+      "question": "Quel fruit porte ses graines à l'extérieur ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Parmi les coutumes de Hogmanay, le « first-footing » : être le premier visiteur de l'année, idéalement avec du charbon ou du shortbread.",
+      "id": "food-0066",
+      "options": [
+        "La Saint-Jean",
+        "La Saint-Sylvestre",
+        "Le jour de Noël",
+        "Une fête des moissons"
+      ],
+      "question": "En Écosse, qu'est-ce que « Hogmanay » ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Namaste vient du sanskrit et signifie à peu près « je m'incline devant toi » ; on tient les paumes jointes près de la poitrine.",
+      "id": "food-0062",
+      "options": [
+        "Une bise sur chaque joue",
+        "Les paumes jointes",
+        "Une profonde révérence",
+        "Une franche poignée de main"
+      ],
+      "question": "La salutation « namaste » se fait avec quel geste ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Au Japon, un bon service fait partie du travail, et un pourboire laissé sur la table peut t'être poliment rendu.",
+      "id": "food-0067",
+      "options": [
+        "Ce n'est pas l'usage",
+        "Seul le liquide est accepté",
+        "20 % sont attendus",
+        "10 % sont attendus"
+      ],
+      "question": "Au Japon, comment le pourboire au restaurant est-il généralement perçu ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "Le lassi peut être salé, épicé ou sucré ; le lassi à la mangue est un favori de nombreux restaurants.",
+      "id": "food-0071",
+      "options": ["Lentilles", "Eau de coco", "Feuilles de thé", "Yaourt"],
+      "question": "Le lassi, une boisson populaire d'Asie du Sud, est principalement fait de quoi ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Le bibimbap est servi avec des légumes, de la pâte de piment et souvent un œuf, et on mélange le tout juste avant de manger.",
+      "id": "food-0070",
+      "options": ["Tteokbokki", "Bulgogi", "Japchae", "Bibimbap"],
+      "question": "Le nom de quel plat coréen signifie « riz mélangé » ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "La poutine est née dans le Québec rural dans les années 1950 ; le fromage en grains frais doit « couiner » sous la dent.",
+      "id": "food-0073",
+      "options": ["Belgique", "Irlande", "Canada", "France"],
+      "question": "La poutine, des frites garnies de fromage en grains et de sauce brune, vient de quel pays ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "La feijoada se mange traditionnellement le mercredi ou le samedi, avec du riz, des tranches d'orange et de la farine de manioc grillée.",
+      "id": "food-0072",
+      "options": ["Brésil", "Mexique", "Colombie", "Cuba"],
+      "question": "La feijoada, un ragoût de haricots noirs et de porc, est un plat national de quel pays ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "La sauce fut vendue pour la première fois par deux pharmaciens de Worcester, en Angleterre, dans les années 1830, et elle vieillit avant la mise en bouteille.",
+      "id": "food-0078",
+      "options": ["Maquereau", "Hareng", "Sardines", "Anchois"],
+      "question": "La sauce Worcestershire tire une partie de sa saveur de quel poisson fermenté ?"
+    },
+    {
+      "answer": 2,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "La tomate se développe à partir d'une fleur et contient des graines : les botanistes la classent parmi les fruits, même si les cuisiniers la traitent en légume.",
+      "id": "food-0075",
+      "options": ["Une racine", "Un légume", "Un fruit", "Une légumineuse"],
+      "question": "Au sens botanique, qu'est-ce qu'une tomate ?"
+    },
+    {
+      "answer": 3,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Smørrebrød signifie « beurre et pain » ; des règles traditionnelles fixent l'ordre des garnitures, en commençant par le hareng.",
+      "id": "food-0074",
+      "options": ["Suède", "Islande", "Norvège", "Danemark"],
+      "question": "Le smørrebrød, des tartines ouvertes sur pain de seigle, est un classique de quel pays ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 1,
+      "explanation": "« Wagyu » signifie simplement « bœuf japonais » ; le bœuf de Kobe est un célèbre wagyu de la préfecture de Hyōgo.",
+      "id": "food-0080",
+      "options": ["Japon", "Argentine", "Australie", "France"],
+      "question": "Le wagyu, un bœuf célèbre pour son persillé, provient de races bovines de quel pays ?"
+    },
+    {
+      "answer": 1,
+      "category": "food & travel customs",
+      "difficulty": 2,
+      "explanation": "Les racines de manioc sont toxiques crues et doivent être transformées ; les perles de tapioca sont devenues célèbres dans le monde entier grâce au bubble tea.",
+      "id": "food-0077",
+      "options": ["Riz", "Manioc", "Blé", "Pomme de terre"],
+      "question": "Les perles de tapioca sont faites à partir de l'amidon de quelle plante ?"
+    },
+    {
+      "answer": 0,
+      "category": "food & travel customs",
+      "difficulty": 3,
+      "explanation": "On en attribue la création au restaurateur d'origine italienne Caesar Cardini, à Tijuana, dans les années 1920.",
+      "id": "food-0079",
+      "options": ["Mexique", "Italie", "Grèce", "Espagne"],
+      "question": "La salade César a été inventée dans quel pays ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le 17 décembre 1903, le Wright Flyer effectua quatre vols ; le plus long dura 59 secondes.",
+      "id": "avi-0001",
+      "options": ["1927", "1903", "1891", "1911"],
+      "question": "En quelle année les frères Wright ont-ils réalisé le premier vol d'un avion motorisé ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Les frères choisirent les dunes ventées des Outer Banks, en Caroline du Nord, pour leurs vents réguliers et leur sable doux à l'atterrissage.",
+      "id": "avi-0002",
+      "options": ["Wichita", "Kitty Hawk", "Cap Canaveral", "Dayton"],
+      "question": "Près de quelle ville américaine les frères Wright ont-ils effectué leurs premiers vols motorisés ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Lindbergh relia New York à Paris en environ 33 heures et demie à bord du « Spirit of St. Louis », dépourvu de vitre avant.",
+      "id": "avi-0004",
+      "options": [
+        "Charles Lindbergh",
+        "Antoine de Saint-Exupéry",
+        "Amelia Earhart",
+        "Louis Blériot"
+      ],
+      "question": "Qui a réalisé le premier vol en solitaire sans escale au-dessus de l'Atlantique, en 1927 ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Le Rutan Voyager mit 9 jours ; il emportait tant de carburant que le bout de ses ailes racla la piste au décollage.",
+      "id": "avi-0032",
+      "options": [
+        "Double Eagle",
+        "Solar Impulse 2",
+        "Spirit of St. Louis",
+        "Voyager"
+      ],
+      "question": "Comment s'appelait le premier avion à faire le tour du monde sans escale ni ravitaillement, en 1986 ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le Concorde reliait Londres à New York en environ 3 h 30, et les passagers pouvaient voir la courbure de la Terre.",
+      "id": "avi-0007",
+      "options": ["Italie", "Allemagne", "France", "États-Unis"],
+      "question": "Le Concorde, l'avion de ligne supersonique, a été développé conjointement par le Royaume-Uni et quel pays ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le vol de Blériot, de Calais à Douvres, dura environ 37 minutes et lui valut le prix de 1 000 livres d'un journal.",
+      "id": "avi-0005",
+      "options": [
+        "Louis Blériot",
+        "Charles Lindbergh",
+        "Wilbur Wright",
+        "Henri Farman"
+      ],
+      "question": "Qui a réalisé la première traversée de la Manche en avion, en 1909 ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "À Mach 2, la cellule chauffait tant que le Concorde s'allongeait jusqu'à environ 30 cm en vol.",
+      "id": "avi-0008",
+      "options": [
+        "Juste sous la vitesse du son",
+        "Deux fois la vitesse du son",
+        "Cinq fois la vitesse du son",
+        "Trois fois la vitesse du son"
+      ],
+      "question": "À quelle vitesse environ le Concorde volait-il en croisière ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Earhart visait Paris mais se posa dans un pré d'Irlande du Nord après près de 15 heures de vol.",
+      "id": "avi-0006",
+      "options": [
+        "Jacqueline Cochran",
+        "Amy Johnson",
+        "Amelia Earhart",
+        "Bessie Coleman"
+      ],
+      "question": "En 1932, qui est devenue la première femme à traverser l'Atlantique en solitaire et sans escale ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "La célèbre bosse du 747 a été conçue afin que le nez puisse s'ouvrir pour le fret, d'où le poste de pilotage placé en hauteur.",
+      "id": "avi-0011",
+      "options": [
+        "Airbus A380",
+        "McDonnell Douglas DC-10",
+        "Boeing 747",
+        "Lockheed L-1011"
+      ],
+      "question": "Quel avion de ligne a été surnommé le « Jumbo Jet » ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le Concorde a transporté des passagers pendant 27 ans ; les appareils restants sont exposés dans des musées d'Europe et d'Amérique du Nord.",
+      "id": "avi-0009",
+      "options": ["2010", "1989", "2003", "1996"],
+      "question": "En quelle année le Concorde a-t-il effectué ses derniers vols commerciaux ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "L'A380 à deux ponts est certifié pour 853 passagers au maximum ; ses ailes couvrent environ 845 m², plus que trois courts de tennis.",
+      "id": "avi-0012",
+      "options": [
+        "Boeing 747-8",
+        "Airbus A350-1000",
+        "Boeing 777-300ER",
+        "Airbus A380"
+      ],
+      "question": "En capacité de passagers, quel est le plus grand avion de ligne jamais construit ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le Comet britannique divisa par deux les temps de trajet par rapport aux avions à hélices et volait bien au-dessus de la plupart des intempéries.",
+      "id": "avi-0010",
+      "options": [
+        "Boeing 707",
+        "Tupolev Tu-104",
+        "Sud Aviation Caravelle",
+        "de Havilland Comet"
+      ],
+      "question": "Quel fut le premier avion de ligne à réaction commercial au monde, entré en service en 1952 ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Les zeppelins de la DELAG transportèrent des milliers de passagers en vols touristiques et entre villes avant 1914.",
+      "id": "avi-0037",
+      "options": ["Biplans", "Planeurs", "Dirigeables", "Hydravions"],
+      "question": "La première compagnie aérienne du monde, la DELAG, fondée en 1909, transportait ses passagers à bord de quoi ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Les pièces arrivaient de toute l'Europe par navire, barge et convois routiers, certaines trop grandes pour voyager autrement.",
+      "id": "avi-0013",
+      "options": ["Toulouse", "Marseille", "Lyon", "Bordeaux"],
+      "question": "Dans quelle ville française Airbus réalisait-il l'assemblage final de l'A380 ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le nombre de Mach doit son nom au physicien autrichien Ernst Mach ; Mach 1 correspond à environ 1 060 km/h à l'altitude de croisière des avions de ligne.",
+      "id": "avi-0015",
+      "options": [
+        "La rotation de la Terre",
+        "Le courant-jet",
+        "Le son",
+        "La lumière"
+      ],
+      "question": "Voler à Mach 1, c'est voler à la vitesse de quoi ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Yeager pilotait le Bell X-1, propulsé par un moteur-fusée, largué sous un bombardier avant d'allumer son moteur.",
+      "id": "avi-0016",
+      "options": [
+        "John Glenn",
+        "Chuck Yeager",
+        "Youri Gagarine",
+        "Neil Armstrong"
+      ],
+      "question": "Qui fut, de façon confirmée, le premier pilote à franchir le mur du son en vol en palier, en 1947 ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Whittle déposa son brevet à 22 ans ; un modèle allemand conçu par Hans von Ohain devint le premier avion à réaction à voler, en 1939.",
+      "id": "avi-0040",
+      "options": [
+        "Henry Royce",
+        "Frank Whittle",
+        "Hans von Ohain",
+        "Geoffrey de Havilland"
+      ],
+      "question": "Quel ingénieur britannique a breveté le turboréacteur en 1930 ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Les règles internationales exigent que pilotes et contrôleurs des vols internationaux sachent parler anglais à un niveau défini.",
+      "id": "avi-0017",
+      "options": ["Espagnol", "Anglais", "Français", "Russe"],
+      "question": "Quelle langue est utilisée dans le monde entier pour le contrôle aérien international ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "L'air raréfié offre moins de résistance, si bien que les avions consomment moins de carburant que plus bas.",
+      "id": "avi-0020",
+      "options": [
+        "Environ 10–12 km",
+        "Environ 25–30 km",
+        "Environ 50 km",
+        "Environ 2–3 km"
+      ],
+      "question": "À quelle altitude environ les avions de ligne à réaction volent-ils généralement en croisière ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "C'est comme être en haute montagne : voilà pourquoi les sachets de chips gonflent et qu'on peut se fatiguer plus vite sur les longs vols.",
+      "id": "avi-0019",
+      "options": [
+        "Environ 4 500–5 000 m",
+        "Niveau de la mer (0 m)",
+        "Environ 1 800–2 400 m",
+        "Environ 9 000–10 000 m"
+      ],
+      "question": "À quelle altitude environ correspond généralement la pressurisation des cabines d'avion de ligne ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Le He 178 vola pour la première fois le 27 août 1939 en Allemagne, propulsé par le moteur de Hans von Ohain.",
+      "id": "avi-0041",
+      "options": [
+        "Messerschmitt Me 262",
+        "Bell X-1",
+        "Heinkel He 178",
+        "Gloster Meteor"
+      ],
+      "question": "Quel fut le premier avion à réaction à voler, en 1939 ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Les courants-jets peuvent souffler à plus de 300 km/h, et les routes aériennes sont planifiées chaque jour pour en profiter ou les éviter.",
+      "id": "avi-0021",
+      "options": [
+        "Le Gulf Stream",
+        "Le courant-jet",
+        "Les alizés",
+        "La mousson"
+      ],
+      "question": "Quel vent rapide d'altitude raccourcit souvent les vols vers l'est au-dessus de l'Atlantique ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Sur un globe, la route la plus courte entre deux villes suit un grand cercle (orthodromie), qui paraît courbe sur la plupart des cartes planes.",
+      "id": "avi-0022",
+      "options": [
+        "Le grand cercle est le plus court",
+        "L'attraction magnétique terrestre",
+        "Les avions doivent éviter les océans",
+        "Le vent souffle toujours ainsi"
+      ],
+      "question": "Pourquoi les routes des vols long-courriers paraissent-elles courbes sur les cartes planes ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Sa courte piste monte avec une pente d'environ 12 %, ce qui aide les avions à ralentir à l'atterrissage et à accélérer au décollage.",
+      "id": "avi-0023",
+      "options": ["Kangchenjunga", "K2", "Annapurna", "Mont Everest"],
+      "question": "L'aéroport Tenzing-Hillary de Lukla, au Népal, est la porte d'entrée des treks vers quelle montagne ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "La plage se trouve juste au bout de la piste de l'aéroport international Princess Juliana, un haut lieu des passionnés d'avions.",
+      "id": "avi-0025",
+      "options": ["Saint-Martin", "Aruba", "Barbade", "Antigua-et-Barbuda"],
+      "question": "Maho Beach, où les avions à l'atterrissage passent juste au-dessus des têtes, se trouve sur quelle île des Caraïbes ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Les ailerons se braquent en sens opposés : la portance d'une aile augmente pendant que celle de l'autre diminue, ce qui incline l'avion.",
+      "id": "avi-0048",
+      "options": [
+        "Gouvernes de profondeur",
+        "Volets",
+        "Gouvernail de direction",
+        "Ailerons"
+      ],
+      "question": "Quelles gouvernes sur les ailes font s'incliner un avion sur le côté ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le saut de puce entre Westray et Papa Westray couvre moins de 3 km ; avec un bon vent, il a duré moins d'une minute.",
+      "id": "avi-0031",
+      "options": [
+        "Les îles grecques",
+        "Les Orcades, Écosse",
+        "Les fjords norvégiens",
+        "Les Maldives"
+      ],
+      "question": "Où opère l'un des vols réguliers les plus courts du monde, qui dure environ 1 à 2 minutes ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "L'île de la baie d'Osaka a été construite avec des millions de mètres cubes de remblai et s'enfonce encore lentement.",
+      "id": "avi-0026",
+      "options": [
+        "Une île artificielle",
+        "Un ancien lit de lac",
+        "Des pontons d'acier flottants",
+        "Un sommet de montagne"
+      ],
+      "question": "Sur quoi est construit l'aéroport international du Kansai, au Japon ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Plus de 17 000 cellules solaires chargeaient des batteries le jour pour que l'avion puisse continuer à voler la nuit.",
+      "id": "avi-0033",
+      "options": [
+        "La lumière du soleil",
+        "Des éoliennes",
+        "Des biocarburants",
+        "L'hydrogène"
+      ],
+      "question": "En 2016, Solar Impulse 2 a fait le tour du monde grâce à une seule source d'énergie. Laquelle ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "La pénurie d'aluminium en temps de guerre imposa une conception en bois ; il n'a volé qu'une fois, en 1947, pendant moins d'une minute.",
+      "id": "avi-0050",
+      "options": ["Épicéa", "Balsa", "Chêne", "Bouleau"],
+      "question": "Le gigantesque hydravion « Spruce Goose » (« l'oie en épicéa ») était en réalité construit surtout dans quel bois ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le Rain Vortex du Jewel de Changi déverse de l'eau de pluie depuis un dôme de verre, au milieu d'une forêt intérieure.",
+      "id": "avi-0027",
+      "options": ["Doha", "Hong Kong", "Singapour", "Dubaï"],
+      "question": "L'aéroport de quelle ville abrite le « Jewel », avec une cascade intérieure de 40 m ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le VS-300 de Sikorsky a fixé l'architecture de la plupart des hélicoptères actuels : un rotor principal et un petit rotor de queue.",
+      "id": "avi-0038",
+      "options": [
+        "Frank Piasecki",
+        "Igor Sikorsky",
+        "Lawrence Bell",
+        "Juan de la Cierva"
+      ],
+      "question": "Qui a conçu le premier hélicoptère monorotor réellement utilisable, qui a volé en 1939 ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Heathrow était à l'origine un petit aérodrome, et son nom vient d'un hameau démoli pour le construire.",
+      "id": "avi-0028",
+      "options": ["Édimbourg", "Manchester", "Londres", "Dublin"],
+      "question": "Les aéroports de Heathrow et de Gatwick desservent quelle ville ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Son dessin des années 1480 montre une vis hélicoïdale en lin censée s'élever en tournoyant dans l'air.",
+      "id": "avi-0039",
+      "options": ["Planeur", "Hélicoptère", "Avion à réaction", "Montgolfière"],
+      "question": "La « vis aérienne » de Léonard de Vinci est souvent vue comme une idée précoce de quel aéronef ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Aucune école de pilotage américaine ne voulait d'elle : elle apprit donc le français et se forma en France.",
+      "id": "avi-0059",
+      "options": ["États-Unis", "France", "Allemagne", "Royaume-Uni"],
+      "question": "La pionnière de l'aviation Bessie Coleman a obtenu son brevet de pilote en 1921 dans quel pays ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le principal aéroport de Rome rend hommage à Léonard, qui dessina des machines volantes, dont un ornithoptère imitant l'oiseau, environ 400 ans avant les premiers avions.",
+      "id": "avi-0029",
+      "options": ["Venise", "Florence", "Milan", "Rome"],
+      "question": "L'aéroport de Fiumicino, qui porte le nom de Léonard de Vinci, dessert quelle ville ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Sa devise, « Above us only sky », est un vers de la chanson « Imagine » de Lennon.",
+      "id": "avi-0030",
+      "options": ["Liverpool", "Londres", "Manchester", "Glasgow"],
+      "question": "L'aéroport de quelle ville britannique porte le nom de John Lennon ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le rouge est à gauche et le vert à droite, comme sur les navires, ce qui permet aux pilotes de savoir dans quel sens va un autre avion.",
+      "id": "avi-0045",
+      "options": [
+        "Bout de l'aile droite",
+        "Haut de la dérive",
+        "Bout de l'aile gauche",
+        "Sous le nez"
+      ],
+      "question": "De quel côté d'un avion se trouve le feu de navigation rouge ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Santos-Dumont est aussi lié à la montre-bracelet : son ami Louis Cartier lui en aurait fabriqué une pour qu'il garde les deux mains sur les commandes.",
+      "id": "avi-0060",
+      "options": [
+        "Santos-Dumont",
+        "Louis Blériot",
+        "Henri Farman",
+        "Gabriel Voisin"
+      ],
+      "question": "Quel pionnier brésilien de l'aviation a fait voler le 14-bis à Paris en 1906 ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le ballon des frères Montgolfier emporta deux hommes au-dessus de Paris pendant environ 25 minutes.",
+      "id": "avi-0034",
+      "options": ["Allemagne", "France", "Italie", "Angleterre"],
+      "question": "Le premier vol habité en ballon à air chaud, en 1783, a eu lieu dans quel pays ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le premier dirigeable rigide du comte Ferdinand von Zeppelin a survolé le lac de Constance en 1900.",
+      "id": "avi-0036",
+      "options": ["Italie", "France", "Allemagne", "Royaume-Uni"],
+      "question": "Les dirigeables Zeppelin ont d'abord été construits dans quel pays ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le SR-71 volait à environ 3 530 km/h ; ses réservoirs fuyaient au sol jusqu'à ce que la chaleur du vol les rende étanches.",
+      "id": "avi-0049",
+      "options": ["SR-71 Blackbird", "MiG-25 Foxbat", "F-15 Eagle", "Concorde"],
+      "question": "Quel avion détient depuis 1976 le record officiel de vitesse pour un avion à réaction aérobie piloté ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Ellen Church, infirmière et pilote, convainquit Boeing Air Transport que des infirmières rassureraient les passagers anxieux.",
+      "id": "avi-0062",
+      "options": ["Institutrices", "Pilotes", "Cuisinières", "Infirmières"],
+      "question": "Les premières hôtesses de l'air, embauchées en 1930, devaient avoir quelle formation ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Avant le chemin de fer, chaque ville gardait son heure solaire locale : les horloges de villes peu éloignées pouvaient différer de plusieurs minutes.",
+      "id": "avi-0051",
+      "options": [
+        "Télégraphes",
+        "Transports maritimes",
+        "Chemins de fer",
+        "Lignes aériennes"
+      ],
+      "question": "Les fuseaux horaires standard ont d'abord été adoptés surtout pour faciliter les horaires de quoi ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le tunnel mesure environ 50 km, et sa section sous-marine d'environ 38 km est la plus longue du monde.",
+      "id": "avi-0053",
+      "options": ["1994", "2001", "1984", "1975"],
+      "question": "En quelle année le tunnel sous la Manche entre l'Angleterre et la France a-t-il ouvert ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "La piste de 537 m présente une pente d'environ 18,5 % : les avions atterrissent en montée et décollent en descente.",
+      "id": "avi-0065",
+      "options": ["Autriche", "Italie", "France", "Suisse"],
+      "question": "L'altiport de Courchevel, célèbre pour sa piste courte et pentue, se trouve dans quel pays ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le vent qui souffle sur les ailes s'ajoute à la vitesse de l'air, si bien que l'avion atteint plus tôt sa vitesse de décollage.",
+      "id": "avi-0047",
+      "options": [
+        "Il faut moins de piste",
+        "Cela économise du carburant",
+        "Les moteurs sont plus silencieux",
+        "Cela évite le givrage des ailes"
+      ],
+      "question": "Pourquoi les avions décollent-ils généralement face au vent ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le tunnel mesure environ 54 km, dont environ 23 km sous le fond marin du détroit de Tsugaru.",
+      "id": "avi-0055",
+      "options": ["Shikoku", "Kyushu", "Okinawa", "Hokkaido"],
+      "question": "Le tunnel ferroviaire japonais du Seikan, en partie sous la mer, relie Honshu à quelle île ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "En la franchissant vers l'est depuis l'Asie, tu peux atterrir la veille du jour de ton départ, plus tôt que tu n'as décollé.",
+      "id": "avi-0052",
+      "options": [
+        "Équateur",
+        "Cercle arctique",
+        "Méridien d'origine de Greenwich",
+        "Ligne de changement de date"
+      ],
+      "question": "Quelle frontière imaginaire, franchie en vol, te fait gagner ou perdre un jour de calendrier ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le trajet dure environ huit heures et franchit 291 ponts, d'où son surnom d'express le plus lent du monde.",
+      "id": "avi-0056",
+      "options": ["Saint-Moritz", "Gstaad", "Interlaken", "Lucerne"],
+      "question": "Le train panoramique Glacier Express relie Zermatt à quelle station suisse ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Il est exploité conjointement par la France et la Suisse et possède des secteurs français et suisse distincts, avec une route douanière vers Bâle.",
+      "id": "avi-0066",
+      "options": ["Autriche", "Allemagne", "Suisse", "France"],
+      "question": "L'EuroAirport Bâle-Mulhouse-Fribourg se trouve entièrement dans quel pays ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "L'itinéraire principal mesure environ 9 300 km, traverse huit fuseaux horaires et dure environ une semaine sans arrêt.",
+      "id": "avi-0054",
+      "options": ["Irkoutsk", "Novossibirsk", "Mourmansk", "Vladivostok"],
+      "question": "Le Transsibérien relie Moscou à quelle ville ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Le premier avion de William Boeing était un petit hydravion ; l'entreprise construit toujours des avions de ligne dans la région de Seattle.",
+      "id": "avi-0058",
+      "options": ["Détroit", "Seattle", "Chicago", "Wichita"],
+      "question": "Dans quelle ville l'entreprise Boeing a-t-elle été fondée en 1916 ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "À son ouverture en 1868, sa halle en fer possédait la plus grande toiture d'une seule portée au monde.",
+      "id": "avi-0057",
+      "options": ["Londres", "Paris", "Bruxelles", "Amsterdam"],
+      "question": "La gare de St Pancras International, terminus des trains Eurostar, se trouve dans quelle ville ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Les photographies des vols en planeur de Lilienthal ont inspiré les frères Wright.",
+      "id": "avi-0061",
+      "options": [
+        "D'avions à moteur",
+        "De planeurs",
+        "De ballons",
+        "De dirigeables"
+      ],
+      "question": "Le pionnier allemand Otto Lilienthal a effectué environ 2 000 vols dans les années 1890 à bord de quoi ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "L'A300, qui vola pour la première fois en 1972, fut le premier avion de ligne gros-porteur biréacteur du monde.",
+      "id": "avi-0069",
+      "options": ["A310", "A340", "A300", "A320"],
+      "question": "Quel fut le premier avion de ligne d'Airbus ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Les winglets affaiblissent les tourbillons en bout d'aile, ce qui peut réduire la consommation de carburant de quelques pour cent.",
+      "id": "avi-0067",
+      "options": [
+        "Réduire traînée et consommation",
+        "Porter les phares d'atterrissage",
+        "Améliorer la réception radio",
+        "Aider à manœuvrer au sol"
+      ],
+      "question": "À quoi servent principalement les « winglets » relevés au bout des ailes de nombreux avions de ligne ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Plus de 16 000 DC-3 et versions militaires ont été construits, et certains volent encore plus de 80 ans après.",
+      "id": "avi-0063",
+      "options": [
+        "Douglas DC-3",
+        "Ford Trimotor",
+        "Boeing 247",
+        "Junkers Ju 52"
+      ],
+      "question": "Quel avion de ligne à hélices des années 1930, dont certains volent encore, a rendu le transport de passagers rentable ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Le blanc garde l'avion plus frais sur les tarmacs brûlants et rend les fissures, bosses ou fuites plus faciles à repérer lors des inspections.",
+      "id": "avi-0068",
+      "options": [
+        "Il améliore le radar",
+        "C'est imposé par la loi",
+        "Il réfléchit le soleil",
+        "Il réduit la traînée"
+      ],
+      "question": "Pourquoi la plupart des avions de ligne sont-ils peints surtout en blanc ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "C'est aussi au Bourget que Charles Lindbergh se posa en 1927, au terme de sa traversée de l'Atlantique.",
+      "id": "avi-0064",
+      "options": ["Beauvais", "Le Bourget", "Orly", "Charles-de-Gaulle"],
+      "question": "Le Salon international de l'aéronautique et de l'espace de Paris se tient sur quel aéroport ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Les pilotes de l'A320 utilisent un mini-manche latéral au lieu d'un manche classique, et les ordinateurs le maintiennent dans des limites sûres.",
+      "id": "avi-0073",
+      "options": ["Boeing 757", "Concorde", "Boeing 777", "Airbus A320"],
+      "question": "Quel avion de ligne, entré en service en 1988, fut le premier doté de commandes de vol électriques numériques ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "La traversée commence par un pont puis plonge dans un tunnel via une île artificielle, pour ne gêner ni les navires ni les avions.",
+      "id": "avi-0070",
+      "options": ["Norvège", "Suède", "Allemagne", "Finlande"],
+      "question": "Le pont de l'Øresund relie le Danemark à quel pays ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Ouvert en 2016, il permet aux trains de passer sous les montagnes jusqu'à environ 250 km/h, avec jusqu'à 2 300 m de roche au-dessus d'eux.",
+      "id": "avi-0071",
+      "options": ["Italie", "Autriche", "Suisse", "Liechtenstein"],
+      "question": "Le tunnel de base du Saint-Gothard, un tunnel ferroviaire de 57 km sous les Alpes, se trouve dans quel pays ?"
+    },
+    {
+      "answer": 0,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Une rame de TGV spécialement modifiée a établi en 2007 le record de vitesse d'un train classique sur roues : 574,8 km/h.",
+      "id": "avi-0072",
+      "options": ["France", "Italie", "Espagne", "Allemagne"],
+      "question": "Dans quel pays circulent les trains à grande vitesse TGV ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Les composites ne se corrodent pas comme le métal : la cabine du 787 peut être plus humide et pressurisée à une altitude plus basse.",
+      "id": "avi-0074",
+      "options": [
+        "Tôle de titane",
+        "Acier inoxydable",
+        "Alliage aluminium-lithium",
+        "Composites en carbone"
+      ],
+      "question": "Le fuselage et les ailes du Boeing 787 Dreamliner sont en grande partie faits de quoi ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "L'île n'a pas de piste ; la traversée depuis Le Cap dure environ six jours, et les navires n'y font escale qu'environ huit à dix fois par an.",
+      "id": "avi-0076",
+      "options": [
+        "Par des vols hebdomadaires",
+        "En hydravion",
+        "Uniquement par bateau",
+        "En hélicoptère"
+      ],
+      "question": "Comment peut-on rejoindre Tristan da Cunha, l'une des îles habitées les plus isolées ?"
+    },
+    {
+      "answer": 1,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Les premiers cerfs-volants chinois étaient faits de soie et de bambou et servaient à envoyer des signaux et à mesurer des distances.",
+      "id": "avi-0075",
+      "options": ["Égypte", "Chine", "Grèce", "Inde"],
+      "question": "Où a-t-on fait voler des cerfs-volants pour la première fois, il y a plus de 2 000 ans ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "Des navires voguaient autrefois sur le lac de Haarlem (Haarlemmermeer), là où roulent aujourd'hui les avions ; il a été asséché dans les années 1850.",
+      "id": "avi-0078",
+      "options": [
+        "Copenhague-Kastrup",
+        "Bruxelles",
+        "Amsterdam-Schiphol",
+        "Hambourg"
+      ],
+      "question": "Quel grand aéroport européen se trouve à environ 3 m sous le niveau de la mer, sur le fond d'un lac asséché ?"
+    },
+    {
+      "answer": 3,
+      "category": "aviation & travel",
+      "difficulty": 1,
+      "explanation": "Chaque arc offre environ 20 à 25 secondes de flottement, que les astronautes utilisent pour s'entraîner.",
+      "id": "avi-0079",
+      "options": [
+        "La vitesse supersonique",
+        "Le mal d'altitude",
+        "De fortes turbulences",
+        "L'apesanteur"
+      ],
+      "question": "Les vols paraboliques, qui montent et plongent en arcs, permettent aux passagers de ressentir brièvement quoi ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 2,
+      "explanation": "La longueur de 1 852 m a été adoptée internationalement en 1929 ; l'aviation et la marine mesurent toujours les distances en milles marins et la vitesse en nœuds.",
+      "id": "avi-0080",
+      "options": ["2 000 m", "1 000 m", "1 852 m", "1 609 m"],
+      "question": "Un nœud vaut un mille marin par heure. Combien mesure un mille marin ?"
+    },
+    {
+      "answer": 2,
+      "category": "aviation & travel",
+      "difficulty": 3,
+      "explanation": "Shannon, en Irlande, était une escale de ravitaillement pour les vols transatlantiques, et la boutique fut créée pour les passagers en transit.",
+      "id": "avi-0077",
+      "options": ["Schiphol", "Heathrow", "Shannon", "Francfort"],
+      "question": "Quel aéroport a ouvert la première boutique hors taxes du monde, en 1947 ?"
+    },
+    {
+      "answer": 2,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Aux équinoxes, le soleil projette sur l'escalier d'El Castillo une ombre qui ressemble à un serpent en train de descendre.",
+      "id": "his-0020",
+      "options": ["Incas", "Aztèques", "Mayas", "Olmèques"],
+      "question": "Quelle civilisation a bâti la pyramide à degrés El Castillo, à Chichén Itzá ?"
+    },
+    {
+      "answer": 1,
+      "category": "history",
+      "difficulty": 1,
+      "explanation": "Le Machu Picchu a été construit au XVe siècle, haut dans les Andes péruviennes, probablement comme domaine de l'empereur inca Pachacutec.",
+      "id": "his-0002",
+      "options": ["Aztèques", "Incas", "Olmèques", "Mayas"],
+      "question": "Quelle civilisation a bâti la citadelle de montagne du Machu Picchu ?"
+    }
+  ]
+}

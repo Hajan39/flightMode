@@ -179,7 +179,7 @@
         "Celle de Magellan",
         "Celle de Vasco de Gama"
       ],
-      "question": "Quelle expédition a été la première à faire le tour du monde en bateau (1519-1522) ?"
+      "question": "Quelle expédition a été la première à faire le tour du monde en bateau (1519–1522) ?"
     },
     {
       "answer": 1,
@@ -212,7 +212,7 @@
       "answer": 0,
       "category": "curiosities",
       "difficulty": 1,
-      "explanation": "En 1886, la statue était d'un cuivre brun brillant ; il a fallu environ 30 ans pour qu'elle devienne entièrement verte.",
+      "explanation": "Lors de son inauguration en 1886, la statue était d'un cuivre brun brillant ; il a fallu environ 30 ans pour qu'elle devienne entièrement verte.",
       "id": "misc-0010",
       "options": [
         "Son cuivre s'est oxydé",
@@ -581,7 +581,7 @@
       "answer": 2,
       "category": "science & space",
       "difficulty": 1,
-      "explanation": "Une personne de 60 kg sur Terre se sentirait aussi légère que 10 kg sur la Lune.",
+      "explanation": "Une personne de 60 kg sur Terre aurait l'impression de n'en peser que 10 sur la Lune.",
       "id": "sci-0093",
       "options": [
         "Environ un dixième",
@@ -820,7 +820,7 @@
       "answer": 3,
       "category": "nature & animals",
       "difficulty": 2,
-      "explanation": "La girafe a autant de vertèbres cervicales que l'humain ; chacune peut simplement mesurer jusqu'à 25 cm.",
+      "explanation": "La girafe a autant de vertèbres cervicales que l'humain, mais chacune peut mesurer jusqu'à 25 cm.",
       "id": "nat-0009",
       "options": ["Vingt-quatre", "Douze", "Dix-huit", "Sept"],
       "question": "Combien de vertèbres compte le cou d'une girafe ?"
@@ -954,7 +954,7 @@
       "answer": 3,
       "category": "history",
       "difficulty": 2,
-      "explanation": "Lors du pèlerinage de Mansa Moussa par Le Caire en 1324, il distribua tant d'or que son cours s'effondra en Égypte pendant des années.",
+      "explanation": "Lors de son pèlerinage en 1324, Mansa Moussa distribua tant d'or au Caire que le cours du métal s'effondra en Égypte pendant des années.",
       "id": "his-0067",
       "options": [
         "Le royaume d'Aksoum",
@@ -1060,7 +1060,7 @@
       "answer": 3,
       "category": "culture",
       "difficulty": 2,
-      "explanation": "Le saxophone fait partie des bois car son son est produit par une anche simple, comme la clarinette.",
+      "explanation": "Le saxophone fait partie des bois car le son y est produit par une anche simple, comme la clarinette.",
       "id": "cul-0074",
       "options": ["Les percussions", "Les cordes", "Les cuivres", "Les bois"],
       "question": "Le saxophone est en laiton, mais à quelle famille d'instruments appartient-il ?"
@@ -1103,7 +1103,7 @@
       "difficulty": 3,
       "explanation": "La fine poussière martienne diffuse la lumière bleue vers l'avant : le halo autour du Soleil couchant paraît bleu aux caméras des rovers.",
       "id": "sci-0064",
-      "options": ["Rouge foncé", "Jaune doré", "Orange vif", "Bleutés"],
+      "options": ["Rouge foncé", "Jaune doré", "Orange vif", "Bleuté"],
       "question": "De quelle couleur paraissent en général les couchers de soleil sur Mars ?"
     },
     {
@@ -1124,7 +1124,7 @@
       "answer": 2,
       "category": "culture",
       "difficulty": 3,
-      "explanation": "Les Aborigènes d'Australie utilisent des branches d'eucalyptus évidées par les termites ; on en joue en respiration circulaire.",
+      "explanation": "Les Aborigènes d'Australie utilisent des branches d'eucalyptus évidées par les termites ; on en joue en respiration circulaire pour tenir le son sans interruption.",
       "id": "cul-0091",
       "options": [
         "En roseaux de rivière tressés",
