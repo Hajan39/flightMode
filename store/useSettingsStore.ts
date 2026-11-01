@@ -26,6 +26,12 @@ interface SettingsState {
   homeCurrency: string | null;
   incrementAppOpenCount: () => number;
   isFirstLaunch: boolean;
+  /**
+   * Kids mode (ages 3–6, switched on by a parent): the app is locked to the
+   * `/kids` picture-game area; no analytics, purchases, links or recorded
+   * progress. See `utils/kidsMode.ts`.
+   */
+  kidsMode: boolean;
   language: Language | null;
   /** Last time we showed the rating dialog (ms); null = never. */
   lastReviewPromptAt: number | null;
@@ -39,6 +45,7 @@ interface SettingsState {
   reviewDone: boolean;
   setAnalyticsEnabled: (enabled: boolean) => void;
   setHomeCurrency: (code: string) => void;
+  setKidsMode: (on: boolean) => void;
   setLanguage: (language: Language) => void;
   setSyncNetworkPolicy: (policy: SyncNetworkPolicy) => void;
   setThemeMode: (mode: ThemeMode) => void;
@@ -64,6 +71,7 @@ export const useSettingsStore = create<SettingsState>()(
         return nextCount;
       },
       isFirstLaunch: true,
+      kidsMode: false,
       language: null,
       lastReviewPromptAt: null as number | null,
       markFirstSessionCompleted: () => set({ hasCompletedFirstSession: true }),
@@ -74,6 +82,7 @@ export const useSettingsStore = create<SettingsState>()(
       reviewDone: false,
       setAnalyticsEnabled: (analyticsEnabled) => set({ analyticsEnabled }),
       setHomeCurrency: (code) => set({ homeCurrency: code.toUpperCase() }),
+      setKidsMode: (kidsMode) => set({ kidsMode }),
       setLanguage: (language) => set({ language }),
       setSyncNetworkPolicy: (syncNetworkPolicy) => set({ syncNetworkPolicy }),
       setThemeMode: (themeMode) => set({ themeMode }),
@@ -90,3 +99,8 @@ export const useSettingsStore = create<SettingsState>()(
   )
 );
 enablePersistRecovery(useSettingsStore);
+
+/** Non-React read of kids mode (stores, analytics, prompts). */
+export function isKidsModeOn(): boolean {
+  return useSettingsStore.getState().kidsMode === true;
+}

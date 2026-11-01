@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 import { type AchievementState, achievements } from "@/data/achievements";
 import { getPlayGamesAchievementId } from "@/data/playGamesAchievements";
 import { useGameStore } from "@/store/useGameStore";
+import { isKidsModeOn } from "@/store/useSettingsStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { nextStreakState, toLocalDateKey } from "@/utils/dates";
 import {
@@ -54,6 +55,10 @@ export const useAchievementStore = create<AchievementStoreState>()(
       articlesRead: [],
 
       checkAndUnlock: () => {
+        // Kids mode: no unlocks (and so no toasts / Play Games pushes).
+        if (isKidsModeOn()) {
+          return;
+        }
         const state = get();
         const gameProgress = useGameStore.getState().progress;
         const evalState: AchievementState = {
@@ -168,6 +173,10 @@ export const useAchievementStore = create<AchievementStoreState>()(
       unlockedIds: [],
 
       updateStreak: (at, offsetMinutes) => {
+        // A child opening the app in kids mode is not the parent's streak.
+        if (isKidsModeOn()) {
+          return;
+        }
         const state = get();
         const now = at ?? new Date();
         const offset = offsetMinutes ?? -now.getTimezoneOffset();

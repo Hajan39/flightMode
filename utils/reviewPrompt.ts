@@ -45,7 +45,9 @@ export function maybeAskForReview(
   t: (key: TranslationKey) => string
 ): void {
   const settings = useSettingsStore.getState();
+  // Kids mode: never put a store dialog in front of a child.
   if (
+    settings.kidsMode ||
     !(
       isNetworkUsable(useNetworkStore.getState()) &&
       shouldAskForReview(

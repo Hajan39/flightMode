@@ -20,6 +20,8 @@ npm test                            # Jest (jest-expo) — pure logic/data tests
 npm run check / npm run lint        # Ultracite/Biome lint (strict preset; CI fails on errors)
 npm run typecheck                   # tsc --noEmit
 npm run fix                         # Ultracite/Biome lint with auto-fix
+npm run e2e                         # Playwright E2E on a fresh web export (E2E_SKIP_BUILD=1 reuses dist-e2e/)
+npm run e2e:build                   # just the web export into dist-e2e/
 ```
 
 Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/` (locale parity, game-registry & achievement integrity, destinations, Sudoku puzzle validity) — run `npm test`. These do NOT render RN components. Linting is **Ultracite** (strict Biome preset, `biome.jsonc`) — run `npm run check`; also validate with `npx tsc --noEmit`. The biome.jsonc documents every deliberate deviation (React Compiler makes noJsxPropsBind moot, Expo Router filenames, bitwise math in game solvers, feature-grouped locale files); don't add new rule exceptions without a stated reason.
@@ -157,6 +159,22 @@ Multiplayer (pass-and-play / shared-screen) components in `components/multiplaye
 **Screen size rule:** games must read size from `useGameDimensions()` (`hooks/useGameDimensions.ts`), never `useWindowDimensions` / `Dimensions`. The game host (`app/game/[id].tsx`) renders every game in a centred portrait column (width ≤ 0.75 × window height), so boards sized from the width fit on landscape tablets; fit tall grids to `height` too (see `games/memory`). Orientation: the manifest is not locked (Play flags locks on large screens); `components/OrientationPolicy.tsx` locks portrait at runtime only on phones (smallest side < 600 dp) and unlocks rotation on tablets/foldables. `tilt-balance` maps accelerometer axes to screen axes via `gravityTilt` (Android sign flip + `deviceToScreenTilt` for DeviceMotion's display rotation); `box-breaker` and `maze-muncher` reuse it.
 
 **Timer rule:** timed games must derive elapsed time from `Date.now()` wall-clock deadlines, not chained JS `setTimeout` ticks — fast taps can inflate tick-based timers.
+
+## E2E (Playwright, web export)
+
+`e2e/` drives the Expo **web** build in Chromium (`@playwright/test`, pinned to match the CI/sandbox browsers). `e2e/playwright.config.ts` webServer runs `expo export --platform web --output-dir dist-e2e` and serves it with `e2e/serve.mjs` (file → `.html` → `dir/index.html` → dynamic `[id].html` sibling → SPA fallback). Projects: `phone` 390×844 and `tablet` 820×1180; CI retries 1, trace on first retry. Workflow `.github/workflows/e2e.yml` (PRs + main) uploads `playwright-report/` on failure.
+- `e2e/fixtures.ts`: auto `guard` fixture blocks every non-localhost request (recorded in `guard.externalRequests`) and fails on uncaught page errors except `KNOWN_PAGE_ERRORS` (React #418 hydration mismatch of the static export — known, pre-existing). Console warnings never fail. `seedSettings(page, { kidsMode })` seeds `localStorage["settings"]` (onboarding done, `en`).
+- Specs: `onboarding` (skip / step-through, reload stays Home), `home-and-games` (Home sections, Games search, 2048 / Sudoku / Memory via UI, Settings rows), `kids-mode` (turn on via sheet, route lock + browser back, all 6 kid games — memory / odd-one-out / whack-mole / sliding-puzzle to the celebration — parent lock 1 s vs 3.2 s + reload, no external requests, `game_progress` / `achievements` / `analytics_hold_queue` unchanged).
+- Selectors: roles + accessibility labels (keep `accessibilityLabel`s stable — renaming one breaks e2e). Kids progress stars and the lit Simon pad are only observable via opacity (helpers in the kids spec). No fixed sleeps except the parent-lock hold.
+
+## Kids mode
+
+Parent feature for ages 3–6 (Settings → Kids mode). The app stays a general-audience app on Google Play — do not change the Play target audience.
+- State: `kidsMode` in `store/useSettingsStore.ts` (persisted) · `hooks/useKidsMode.ts` · `isKidsModeOn()` for non-React code.
+- Route lock: `app/_layout.tsx` applies `decideRootRedirect()` (`utils/kidsMode.ts`, pure, tested) — while on, every route goes to `/kids`; while off, `/kids` goes Home. Kids area: `app/kids/_layout.tsx` (stops audio), `app/kids/index.tsx` (picture tiles, Android back = background), `app/kids/[id].tsx` (game host). Exit = `components/kids/KidsParentLock.tsx`, hold 3 s (`parentHoldState`).
+- Games: registry `data/kidsGames.ts`; variants are separate files `games/<id>/kids.tsx` (memory, odd-one-out, simon-says, whack-mole, sliding-puzzle, cargo-catch) with pure logic in `utils/kidsGames.ts`. No rules / countdown / timer pressure / score / losing; end = `components/kids/KidsCelebration.tsx`. **Rules: adult game files stay unchanged; kids variants never call `updateProgress` / `recordMatch`.**
+- Central guards (tested in `__tests__/kidsMode.test.ts`): `captureAnalyticsEvent` no-op (nothing queued) + upload mode `hold`; `updateProgress`, `checkAndUnlock`, `updateStreak` write nothing; no review prompt, Play Games auto sign-in, `AchievementToast` or OTA dialog. Purchases, articles and links are unreachable via the route lock. Smoke: `__tests__/kidsGamesSmoke.test.ts`.
+- Colors: `kidsBackground`, `kidsTile1…6`, `kidsOnTile` in every palette (AA checked in `themeContrast.test.ts`).
 
 ## Content
 

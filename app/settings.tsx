@@ -1,10 +1,11 @@
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { useRouter } from "expo-router";
-import { type ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import {
   Alert,
   Linking,
+  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -22,6 +23,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { POPULAR_CURRENCIES } from "@/data/currencies";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useAudioStore } from "@/store/useAudioStore";
 import { useRatesStore } from "@/store/useRatesStore";
 import {
   type SyncNetworkPolicy,
@@ -76,8 +78,18 @@ export default function SettingsScreen() {
   const setHomeCurrency = useSettingsStore((s) => s.setHomeCurrency);
   const analyticsEnabled = useSettingsStore((s) => s.analyticsEnabled);
   const setAnalyticsEnabled = useSettingsStore((s) => s.setAnalyticsEnabled);
+  const setKidsMode = useSettingsStore((s) => s.setKidsMode);
+  const [kidsSheetOpen, setKidsSheetOpen] = useState(false);
   const hasTrackedOpenRef = useRef<boolean>(false);
   const router = useRouter();
+
+  // The root layout's route lock (utils/kidsMode.ts) moves to /kids as soon
+  // as the flag flips; music stops here so it never plays over the kids home.
+  const turnOnKidsMode = () => {
+    setKidsSheetOpen(false);
+    useAudioStore.getState().stopSound();
+    setKidsMode(true);
+  };
 
   // No mail app (common on tablets / de-Googled phones): show the address
   // so the traveller can still write to us.
@@ -162,6 +174,42 @@ export default function SettingsScreen() {
               selected={resolveHomeCurrency(homeCurrency, liveRates)}
             />
           </View>
+        </SettingsSection>
+
+        <SettingsSection theme={theme} title={t("kidsModeTitle")}>
+          <Pressable
+            accessibilityHint={t("kidsModeHint")}
+            accessibilityLabel={t("kidsModeTitle")}
+            accessibilityRole="button"
+            onPress={() => setKidsSheetOpen(true)}
+            style={({ pressed }) => [
+              styles.optionCard,
+              styles.kidsRow,
+              {
+                backgroundColor: theme.card,
+                borderColor: theme.border,
+                opacity: pressed ? 0.6 : 1,
+              },
+            ]}
+            testID="settings-kids-mode"
+          >
+            <Text style={styles.kidsRowEmoji}>🧸</Text>
+            <View
+              darkColor="transparent"
+              lightColor="transparent"
+              style={styles.kidsRowText}
+            >
+              <Text style={styles.optionRowTitle}>{t("kidsModeTitle")}</Text>
+              <Text style={[styles.optionRowHint, { color: theme.mutedText }]}>
+                {t("kidsModeHint")}
+              </Text>
+            </View>
+            <Ionicons
+              color={theme.mutedText}
+              name="chevron-forward"
+              size={16}
+            />
+          </Pressable>
         </SettingsSection>
 
         <SettingsSection theme={theme} title={t("settingsSync")}>
@@ -464,6 +512,66 @@ export default function SettingsScreen() {
           </View>
         </SettingsSection>
       </ScrollView>
+      <Modal
+        animationType="fade"
+        onRequestClose={() => setKidsSheetOpen(false)}
+        transparent
+        visible={kidsSheetOpen}
+      >
+        <View
+          darkColor="transparent"
+          lightColor="transparent"
+          style={styles.sheetBackdrop}
+        >
+          <View
+            style={[
+              styles.sheet,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
+          >
+            <Text style={styles.sheetEmoji}>🧸</Text>
+            <Text accessibilityRole="header" style={styles.sheetTitle}>
+              {t("kidsModeTitle")}
+            </Text>
+            <Text style={[styles.sheetBody, { color: theme.mutedText }]}>
+              {t("kidsModeSheetBody")}
+            </Text>
+            <View
+              darkColor="transparent"
+              lightColor="transparent"
+              style={styles.sheetButtons}
+            >
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => setKidsSheetOpen(false)}
+                style={({ pressed }) => [
+                  styles.sheetButton,
+                  { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
+                ]}
+              >
+                <Text style={styles.sheetButtonText}>{t("gameCancel")}</Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                onPress={turnOnKidsMode}
+                style={({ pressed }) => [
+                  styles.sheetButton,
+                  {
+                    backgroundColor: theme.tint,
+                    borderColor: theme.tint,
+                    opacity: pressed ? 0.75 : 1,
+                  },
+                ]}
+                testID="settings-kids-mode-on"
+              >
+                <Text style={[styles.sheetButtonText, { color: theme.onTint }]}>
+                  {t("kidsModeTurnOn")}
+                </Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -568,6 +676,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 14,
   },
+  kidsRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+  },
+  kidsRowEmoji: { fontSize: 26, lineHeight: 32 },
+  kidsRowText: { flex: 1 },
   optionCard: {
     borderRadius: 14,
     borderWidth: 1,
@@ -639,6 +756,40 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
     paddingHorizontal: 2,
   },
+  sheet: {
+    alignItems: "center",
+    borderRadius: 20,
+    borderWidth: 1,
+    maxWidth: 420,
+    padding: 22,
+    width: "100%",
+  },
+  sheetBackdrop: {
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.45)",
+    flex: 1,
+    justifyContent: "center",
+    padding: 20,
+  },
+  sheetBody: {
+    fontSize: 15,
+    lineHeight: 21,
+    marginTop: 8,
+    textAlign: "center",
+  },
+  sheetButton: {
+    alignItems: "center",
+    borderRadius: 14,
+    borderWidth: 1,
+    flex: 1,
+    justifyContent: "center",
+    minHeight: 48,
+    paddingHorizontal: 12,
+  },
+  sheetButtons: { flexDirection: "row", gap: 12, marginTop: 20, width: "100%" },
+  sheetButtonText: { fontSize: 15, fontWeight: "700" },
+  sheetEmoji: { fontSize: 48, lineHeight: 58 },
+  sheetTitle: { fontSize: 20, fontWeight: "800", marginTop: 4 },
   supportCard: {
     borderRadius: 14,
     borderWidth: 1,

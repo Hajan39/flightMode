@@ -23,6 +23,7 @@ import { initPlayGames, shouldAutoSignInPlayGames } from "@/utils/playGames";
 export default function PlayGamesBootstrap() {
   const segments = useSegments();
   const isFirstLaunch = useSettingsStore((s) => s.isFirstLaunch);
+  const kidsMode = useSettingsStore((s) => s.kidsMode);
   const [settingsHydrated, setSettingsHydrated] = useState(() =>
     useSettingsStore.persist.hasHydrated()
   );
@@ -37,6 +38,7 @@ export default function PlayGamesBootstrap() {
 
   const allowed = shouldAutoSignInPlayGames({
     isFirstLaunch,
+    kidsMode,
     routeSegment: segments[0],
     settingsHydrated,
   });

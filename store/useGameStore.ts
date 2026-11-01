@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { isKidsModeOn } from "@/store/useSettingsStore";
 import type { GameProgress, GameProgressUpdate } from "@/types/game";
 import { captureAnalyticsEvent } from "@/utils/analytics";
 import { trackFirstSessionCompleted } from "@/utils/firstSession";
@@ -98,6 +99,20 @@ export const useGameStore = create<GameState>()(
         const existing = normalizeStackSort(
           normalize(get().progress[gameId], gameId)
         );
+        if (isKidsModeOn()) {
+          // Kids mode: a child's play never touches the parent's stats,
+          // streaks, achievements or analytics. Kid variants don't call this
+          // at all; this is the safety net. Report the unchanged progress.
+          return {
+            best: existing.highScore,
+            bestStreak: existing.bestStreak,
+            currentStreak: existing.currentStreak,
+            isNewBest: false,
+            last: existing.lastScore,
+            previousBest: existing.highScore,
+            timesPlayed: existing.timesPlayed,
+          };
+        }
         const previousBest = existing.highScore;
         const isNewBest = score > previousBest;
         const won = opts?.won ?? score > 0;

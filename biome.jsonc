@@ -95,6 +95,20 @@
           }
         }
       }
+    },
+    {
+      // Playwright e2e specs drive one browser page: UI steps must run one
+      // after another (parallel awaits would race the app), and the inline
+      // regexes are URL/label matchers in assertions, not hot paths.
+      "includes": ["e2e/**"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noAwaitInLoops": "off",
+            "useTopLevelRegex": "off"
+          }
+        }
+      }
     }
   ]
 }

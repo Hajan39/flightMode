@@ -6,6 +6,8 @@ import {
 import { useEffect } from "react";
 import { Alert, Platform } from "react-native";
 
+import { isKidsModeOn } from "@/store/useSettingsStore";
+
 /**
  * Checks for OTA updates on mount (production builds only).
  * If an update is available, downloads it and prompts the user to restart.
@@ -32,6 +34,12 @@ export function useOTAUpdate(t: (key: string) => string) {
         if (Platform.OS === "web") {
           // Web: just reload
           reloadAsync();
+          return;
+        }
+
+        if (isKidsModeOn()) {
+          // No dialog in front of a child: the downloaded update applies on
+          // the next launch anyway.
           return;
         }
 

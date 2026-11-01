@@ -86,6 +86,24 @@ describe("theme palettes", () => {
     expect(failures).toEqual([]);
   });
 
+  it.each(schemes)("%s: kids tile labels read on every tile (AA)", (scheme) => {
+    const p = Colors[scheme];
+    const tiles = [
+      p.kidsTile1,
+      p.kidsTile2,
+      p.kidsTile3,
+      p.kidsTile4,
+      p.kidsTile5,
+      p.kidsTile6,
+    ];
+    for (const tile of tiles) {
+      expect(tile).toMatch(HEX_RE);
+    }
+    expect(
+      tiles.filter((tile) => contrast(p.kidsOnTile, tile) < AA_TEXT)
+    ).toEqual([]);
+  });
+
   it.each(schemes)("%s: text on status fills is AA", (scheme) => {
     const p = Colors[scheme];
     const failures = FILL_PAIRS.filter(
