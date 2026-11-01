@@ -1,0 +1,35 @@
+#!/bin/sh
+# Ultracite (Biome) on the staged files: auto-fix what it can, re-stage, then
+# fail the commit on remaining lint errors. Same rules as CI (`npx biome ci .`).
+# Enable once per clone:  git config core.hooksPath .githooks
+# Skip in an emergency:   git commit --no-verify
+set -e
+
+list=$(mktemp)
+trap 'rm -f "$list"' EXIT
+
+git diff --cached --name-only --diff-filter=ACMR \
+  | grep -E '\.(ts|tsx|js|jsx|mjs|cjs|json|jsonc|css|html)$' >"$list" || true
+[ -s "$list" ] || exit 0
+
+# Files that also have unstaged edits are checked but not auto-fixed:
+# re-staging them would sneak the unstaged edits into the commit.
+fixable=$(mktemp)
+trap 'rm -f "$list" "$fixable"' EXIT
+while IFS= read -r f; do
+  if git diff --quiet -- "$f"; then
+    printf '%s\n' "$f" >>"$fixable"
+  else
+    echo "pre-commit: not auto-fixing $f (it has unstaged changes)" >&2
+  fi
+done <"$list"
+
+if [ -s "$fixable" ]; then
+  tr '\n' '\0' <"$fixable" | xargs -0 npx --no-install ultracite fix >/dev/null 2>&1 || true
+  tr '\n' '\0' <"$fixable" | xargs -0 git add --
+fi
+
+if ! tr '\n' '\0' <"$list" | xargs -0 npx --no-install biome check --diagnostic-level=error --no-errors-on-unmatched; then
+  echo "pre-commit: Ultracite found errors (see above). Fix them or run 'npm run fix'." >&2
+  exit 1
+fi

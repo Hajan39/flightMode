@@ -7,6 +7,7 @@ Obsahuje pouze veci, ktere jsou aktivni, navrzene nebo cekaji na schvaleni.
 
 ### P0 (aktivni)
 
+- **Git hooky**: v kazdem klonu jednou spustit `git config core.hooksPath .githooks` (pre-commit = Ultracite na zmenenych souborech, pre-push = tsc + Jest)
 - **Copilot code review**: v GitHub repozitari zapnout Settings → Rules → Rulesets → New branch ruleset (main) → "Automatically request Copilot code review"; smazat secret `CLAUDE_CODE_OAUTH_TOKEN` (uz se nepouziva)
 - **World quiz (pool otazek)**: 1) nativni korektura prekladu pribalenych 100 otazek ve vsech 11 jazycich a cs/de serveroveho poolu (AI psane i kontrolovane); 2) vlny poolu: 1 000 (hotovo, 1 100 vc. pribalenych) → 3 000 → 10 000 — nove davky jako dalsi `checked/<SET>-batch-NN.json` (pripojuji se na konec, existujici packy se nemeni), pak `node scripts/build-quiz-data.mjs <quizDir>` a commit `content/quiz/**` (bez release); od ~3 000 zvazit `ASKED_HISTORY_CAP` a velikost `quiz_packs` souboru; 3) vzdalene packy pro dalsi jazyky (es/fr/it/pl/pt, pak ja/ko/zh/hi) — `QUIZ_REMOTE_LANGUAGES` + preklad poolu; 4) overit na zarizeni start obrazovku, "Vedeli jste?" kartu s velkym pismem a stazeni packu na pomale Wi-Fi
 
