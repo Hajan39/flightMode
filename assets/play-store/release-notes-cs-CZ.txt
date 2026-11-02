@@ -1,4 +1,4 @@
-Novinky: Rozbij krabice a Žrout v bludišti, hraj prstem nebo nakláněním telefonu (celkem 47 her).
-- Od verze 1.6 navíc: Palubní trojky, Nakládání kufrů, Pasiáns, Mahjong, velká osmisměrka
-- Hádej slovo česky a německy
-- Nová ikona aplikace
+Novinky ve verzi 1.8:
+- Dětský režim pro děti 3–6 let: 12 jednoduchých her (bludiště, omalovánky, tvary, pexeso a další), bez reklam a nákupů, ven jen podržením zámku
+- Světový kvíz: přes 1 000 otázek o světě ve 12 jazycích a zajímavost po každé odpovědi
+- Opravy: sudoku, převodník měn, ukládání dat a stabilita

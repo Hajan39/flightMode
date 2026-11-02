@@ -1,4 +1,4 @@
-New: Box Breaker and Maze Muncher, play by finger or by tilting the phone (47 games now).
-- Also new since 1.6: Sky Match, Cargo Blocks, Solitaire, Mahjong, big word search
-- Word Guess in Czech and German
-- New app icon
+New in 1.8:
+- Kids mode for ages 3–6: 12 simple games (maze, colouring, shapes, pairs and more), no ads or purchases, exit only by holding the parent lock
+- World quiz: over 1,000 questions about the world in 12 languages, with a fun fact after every answer
+- Fixes: Sudoku, currency converter, data saving and stability
