@@ -133,6 +133,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 
 ## 2026-11-02
 
+- verze 1.8.0: dětský režim (12 her), světový kvíz ve 12 jazycích, opravy sudoku a převodníku, bezpečné ukládání; nativní build + Play draft
 - code review: odstranen Claude review workflow i @claude bot (zadny Claude token); review dela GitHub Copilot (`.github/copilot-instructions.md` prepsan, checklist na zacatku) + `static-analysis.yml` (CodeQL + Dependency Review); `release-main` ignoruje `.github/**`
 - svetovy kviz: serverove balicky ve vsech 12 jazycich (preklad + nezavisla recenze kazdeho jazyka, `<lang>_drop` pro otazky prozrazujici odpoved nebo citlive v danem jazyce); fun pass nahradil 110 nejslabsich otazek
 
