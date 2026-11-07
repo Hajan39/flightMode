@@ -681,17 +681,16 @@
   profileMinutes: "分",
   profileStreak: "連続日数",
   plusSubtitle:
-    "FlightMode のすべては無料・オフラインのままです。Plus は一度きりの「ありがとう」で、いくつかの特典が解放され、新しいゲームやガイドの開発を支えます。",
+    "FlightModeの機能はすべて無料で、オフラインでも使えます。Plusは任意の買い切りで、ちょっとした癒しの特典が加わります。",
   plusPerkThemes: "ミッドナイト（完全な黒）とサンセットのテーマ",
   plusPerkBadge: "プロフィールに Plus バッジ",
-  plusPerkFuture: "今後の Plus 特典もすべて込み — サブスクなし",
-  plusPerkSupport: "個人開発者を応援、広告は一切なし",
+  plusPerkSupport: "個人開発者の応援になります",
   plusBuy: "Plus を入手 · {{price}}",
   plusUnavailable: "購入は Google Play 版で利用できます",
   plusOwned: "Plus をご利用中です — 応援ありがとうございます！",
-  plusTipTitle: "チップを送る",
+  plusTipTitle: "チップで感謝を伝える",
   plusTipHint:
-    "一度きりのお礼です。何も解放されませんが、アプリの継続を支えます。",
+    "チップで解放されるものはありませんが、FlightModeの成長を支えます。いつもありがとうございます。",
   plusTipThanks:
     "ありがとうございます！これまで {{count}} 回チップを送っていただきました。",
   plusTipSmall: "コーヒー",
@@ -703,8 +702,6 @@
   plusLevelBadge: "Plus",
   plusExpertPack: "Plus エキスパートパック",
   plusLevelA11y: "レベル {{level}}、FlightMode Plus",
-  plusPerkLevels:
-    "滑走路ジャム・スカイピクセル・太陽と月のエキスパートレベルパック",
   passportTitle: "フライトパスポート",
   passportHint: "FlightModeと一緒に乗ったフライトごとにスタンプ。",
   passportEmpty:
@@ -1780,4 +1777,33 @@
   kidsShapeSquare: "しかく",
   kidsShapeTriangle: "さんかく",
   kidsShapeStar: "ほし",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "呼吸パターン4種類を追加：4-7-8、コヒーレント呼吸、気持ちを落ち着ける呼吸、揺れのときの呼吸",
+  plusPerkArticles:
+    "詳しいガイド6本：長距離便での睡眠、時差ぼけ、乱気流、長い乗り継ぎ、子連れフライト、機内で快適に過ごすコツ",
+  plusPerkLevelPacks:
+    "滑走路ジャム、スカイピクセル、太陽と月のエキスパートレベルパック",
+  plusPromiseOneTime: "買い切り・サブスクなし",
+  plusPromiseFree: "広告は一切なし。無料の機能はずっと無料です。",
+  plusBadge: "Plus",
+  breathBoxDesc: "4秒ずつの4つの辺。さっとリセットできる安定したリズム。",
+  breath478: "眠りのための4-7-8",
+  breath478Desc:
+    "4秒吸って、7秒止めて、8秒吐く。ゆったり落ち着くためのリズム。",
+  breathCoherent: "コヒーレント呼吸",
+  breathCoherentDesc: "5.5秒吸って5.5秒吐く。1分間に約5.5回のなめらかな呼吸。",
+  breathSigh: "気持ちを落ち着ける",
+  breathSighDesc:
+    "息を吸い、さらに短くもう一度吸ってから、長くゆっくり吐きます。",
+  breathTurbulence: "揺れのときに",
+  breathTurbulenceDesc:
+    "4秒吸って6秒吐く。長めに吐いて揺れをやり過ごしましょう。",
+  breatheInAgain: "もう一度吸う",
+  a11yBreathPatternPlus: "{{name}}（Plusに含まれます）",
+  plusArticleLockedTitle: "続きはPlusで読めます",
+  plusArticleLockedBody:
+    "この詳しいガイドはPlusの特典です。一度の購入で6本すべてのガイドがオフラインでずっと読めます。",
+  plusArticleLockedCta: "Plusの内容を見る",
+  articleSources: "出典",
 } as const;

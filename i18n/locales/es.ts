@@ -699,17 +699,16 @@
   profileMinutes: "Minutos",
   profileStreak: "Racha diaria",
   plusSubtitle:
-    "Todo en FlightMode sigue siendo gratis y sin conexión. Plus es un agradecimiento único que desbloquea algunos extras y ayuda a crear más juegos y guías.",
+    "Todo en FlightMode es gratis y funciona sin conexión. Plus es una compra única y opcional que añade algunos extras tranquilos.",
   plusPerkThemes: "Temas Medianoche (negro puro) y Atardecer",
   plusPerkBadge: "Insignia Plus en tu perfil",
-  plusPerkFuture: "Todos los futuros extras Plus incluidos — sin suscripción",
-  plusPerkSupport: "Apoya a un desarrollador independiente, nunca anuncios",
+  plusPerkSupport: "Apoyas a un desarrollador independiente",
   plusBuy: "Obtener Plus · {{price}}",
   plusUnavailable: "Las compras están disponibles en la versión de Google Play",
   plusOwned: "Tienes Plus — ¡gracias por apoyar FlightMode!",
-  plusTipTitle: "Dejar una propina",
+  plusTipTitle: "Da las gracias con una propina",
   plusTipHint:
-    "Un agradecimiento puntual. No desbloquea nada: solo mantiene viva la app.",
+    "Las propinas no desbloquean nada: solo ayudan a que FlightMode siga creciendo. Agradecemos cada una.",
   plusTipThanks: "¡Gracias! Has dejado propina {{count}}×.",
   plusTipSmall: "Café",
   plusTipMedium: "Tentempié",
@@ -720,8 +719,6 @@
   plusLevelBadge: "Plus",
   plusExpertPack: "Paquete experto Plus",
   plusLevelA11y: "Nivel {{level}}, FlightMode Plus",
-  plusPerkLevels:
-    "Paquetes de niveles expertos para Pista bloqueada, Píxeles del cielo y Sol y luna",
   passportTitle: "Pasaporte de vuelo",
   passportHint: "Un sello por cada vuelo que has hecho con FlightMode.",
   passportEmpty:
@@ -1845,4 +1842,34 @@
   kidsShapeSquare: "Cuadrado",
   kidsShapeTriangle: "Triángulo",
   kidsShapeStar: "Estrella",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "4 patrones de respiración extra: 4-7-8, respiración coherente, calma los nervios y calma en turbulencias",
+  plusPerkArticles:
+    "6 guías detalladas: dormir en vuelos largos, jet lag, turbulencias, escalas largas, volar con niños y viajar cómodo",
+  plusPerkLevelPacks:
+    "Paquetes de niveles expertos para Pista bloqueada, Píxeles del cielo y Sol y luna",
+  plusPromiseOneTime: "Compra única, sin suscripción",
+  plusPromiseFree: "Nunca habrá anuncios. Lo gratis sigue siendo gratis.",
+  plusBadge: "Plus",
+  breathBoxDesc:
+    "Cuatro lados iguales de 4 segundos. Un ritmo estable para reiniciarte rápido.",
+  breath478: "4-7-8 para dormir",
+  breath478Desc: "Inhala 4, mantén 7, exhala 8. Un ritmo lento para relajarte.",
+  breathCoherent: "Respiración coherente",
+  breathCoherentDesc:
+    "Inhala 5,5 s, exhala 5,5 s: unas cinco respiraciones y media suaves por minuto.",
+  breathSigh: "Calma los nervios",
+  breathSighDesc:
+    "Inhala, añade una segunda inhalación corta y suelta el aire en una exhalación larga y lenta.",
+  breathTurbulence: "Calma en turbulencias",
+  breathTurbulenceDesc:
+    "Inhala 4, exhala 6. Una exhalación más larga para pasar los baches.",
+  breatheInAgain: "Inhala más",
+  a11yBreathPatternPlus: "{{name}} (incluido en Plus)",
+  plusArticleLockedTitle: "Lee el resto con Plus",
+  plusArticleLockedBody:
+    "Esta guía detallada es un extra de Plus. Una sola compra desbloquea las seis guías, sin conexión y para siempre.",
+  plusArticleLockedCta: "Ver qué incluye Plus",
+  articleSources: "Fuentes",
 } as const;

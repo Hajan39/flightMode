@@ -48,6 +48,7 @@ import {
   cancelFlightReadyReminder,
   cancelJetlagSleepReminder,
 } from "@/utils/notifications";
+import { isPlusContent } from "@/utils/plusContent";
 import { maybeAskForReview } from "@/utils/reviewPrompt";
 
 function getPlayModeLabelKey(playMode?: GamePlayMode) {
@@ -227,7 +228,11 @@ export default function HomeScreen() {
   }
 
   const featuredArticles: FeaturedArticle[] = articles
-    .filter((item) => preferredCategoriesEn.includes(item.category.en))
+    // Home teasers stay free articles (Plus guides live in Explore).
+    .filter(
+      (item) =>
+        !isPlusContent(item) && preferredCategoriesEn.includes(item.category.en)
+    )
     .slice(0, 2)
     .map((item) => ({
       categoryEn: item.category.en,

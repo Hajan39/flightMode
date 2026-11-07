@@ -32,11 +32,21 @@ const PERKS: Array<{
   icon: keyof typeof Ionicons.glyphMap;
   key: TranslationKey;
 }> = [
+  { icon: "leaf-outline", key: "plusPerkBreathing" },
+  { icon: "book-outline", key: "plusPerkArticles" },
+  { icon: "extension-puzzle-outline", key: "plusPerkLevelPacks" },
   { icon: "color-palette-outline", key: "plusPerkThemes" },
-  { icon: "extension-puzzle-outline", key: "plusPerkLevels" },
   { icon: "ribbon-outline", key: "plusPerkBadge" },
-  { icon: "sparkles-outline", key: "plusPerkFuture" },
+];
+
+/** The honest small print: how Plus works, shown under the perks. */
+const PROMISES: Array<{
+  icon: keyof typeof Ionicons.glyphMap;
+  key: TranslationKey;
+}> = [
+  { icon: "card-outline", key: "plusPromiseOneTime" },
   { icon: "heart-outline", key: "plusPerkSupport" },
+  { icon: "shield-checkmark-outline", key: "plusPromiseFree" },
 ];
 
 const TIP_LABELS: Record<(typeof TIP_SKUS)[number], TranslationKey> = {
@@ -268,6 +278,28 @@ export default function PlusScreen() {
           </View>
         ))}
 
+        <View
+          style={[
+            styles.promises,
+            { backgroundColor: theme.card, borderColor: theme.border },
+          ]}
+        >
+          {PROMISES.map((item) => (
+            <View
+              crazyColor="transparent"
+              darkColor="transparent"
+              key={item.key}
+              lightColor="transparent"
+              style={styles.promise}
+            >
+              <Ionicons color={theme.mutedText} name={item.icon} size={16} />
+              <Text style={[styles.promiseText, { color: theme.mutedText }]}>
+                {t(item.key)}
+              </Text>
+            </View>
+          ))}
+        </View>
+
         {purchaseBlock}
 
         {pendingSku ? (
@@ -371,6 +403,15 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.sm,
   },
   perkText: { flex: 1, fontSize: FontSize.base },
+  promise: { alignItems: "center", flexDirection: "row", gap: Spacing.sm },
+  promises: {
+    borderRadius: Radius.card,
+    borderWidth: 1,
+    gap: Spacing.sm,
+    marginTop: Spacing.md,
+    padding: Spacing.md,
+  },
+  promiseText: { flex: 1, fontSize: FontSize.sm, lineHeight: 18 },
   restore: { alignItems: "center", marginTop: Spacing.xl, padding: Spacing.sm },
   restoreText: { fontSize: FontSize.sm, textDecorationLine: "underline" },
   safe: { flex: 1 },

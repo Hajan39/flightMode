@@ -191,7 +191,23 @@ export function isContentItem(value: unknown): value is ContentItem {
     hasEnglish(item.title) &&
     hasEnglish(item.category) &&
     hasEnglish(item.body) &&
-    (item.image === undefined || typeof item.image === "string")
+    (item.image === undefined || typeof item.image === "string") &&
+    // Plus only when explicitly `true`; anything else non-boolean is invalid.
+    (item.plus === undefined || typeof item.plus === "boolean") &&
+    (item.sources === undefined || isSourceList(item.sources))
+  );
+}
+
+function isSourceList(value: unknown): boolean {
+  return (
+    Array.isArray(value) &&
+    value.every((s: unknown) => {
+      if (typeof s !== "object" || s === null) {
+        return false;
+      }
+      const { title, url } = s as Record<string, unknown>;
+      return typeof title === "string" && typeof url === "string";
+    })
   );
 }
 

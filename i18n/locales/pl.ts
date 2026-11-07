@@ -689,17 +689,16 @@
   profileMinutes: "Minuty",
   profileStreak: "Seria dni",
   plusSubtitle:
-    "Wszystko w FlightMode pozostaje darmowe i offline. Plus to jednorazowe podziękowanie, które odblokowuje kilka dodatków i wspiera nowe gry i przewodniki.",
+    "Wszystko w FlightMode jest darmowe i działa offline. Plus to opcjonalny jednorazowy zakup, który dodaje kilka spokojnych dodatków.",
   plusPerkThemes: "Motywy Północ (czysta czerń) i Zachód słońca",
   plusPerkBadge: "Odznaka Plus w profilu",
-  plusPerkFuture: "Wszystkie przyszłe dodatki Plus w cenie — bez subskrypcji",
-  plusPerkSupport: "Wspierasz niezależnego twórcę, nigdy reklam",
+  plusPerkSupport: "Wspierasz niezależnego twórcę",
   plusBuy: "Kup Plus · {{price}}",
   plusUnavailable: "Zakupy są dostępne w wersji z Google Play",
   plusOwned: "Masz Plus — dziękujemy za wsparcie FlightMode!",
-  plusTipTitle: "Zostaw napiwek",
+  plusTipTitle: "Podziękuj napiwkiem",
   plusTipHint:
-    "Jednorazowe podziękowanie. Niczego nie odblokowuje — po prostu wspiera aplikację.",
+    "Napiwki niczego nie odblokowują — po prostu pomagają FlightMode się rozwijać. Doceniamy każdy.",
   plusTipThanks: "Dziękujemy! Napiwek: {{count}}×.",
   plusTipSmall: "Kawa",
   plusTipMedium: "Przekąska",
@@ -710,8 +709,6 @@
   plusLevelBadge: "Plus",
   plusExpertPack: "Pakiet ekspercki Plus",
   plusLevelA11y: "Poziom {{level}}, FlightMode Plus",
-  plusPerkLevels:
-    "Eksperckie pakiety poziomów do gier Korek na pasie, Podniebne piksele i Słońce i księżyc",
   passportTitle: "Paszport lotów",
   passportHint: "Pieczątka za każdy lot z FlightMode.",
   passportEmpty:
@@ -1813,4 +1810,35 @@
   kidsShapeSquare: "Kwadrat",
   kidsShapeTriangle: "Trójkąt",
   kidsShapeStar: "Gwiazda",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "4 dodatkowe wzorce oddechu: 4-7-8, oddech koherentny, uspokój nerwy i spokój w turbulencjach",
+  plusPerkArticles:
+    "6 obszernych poradników: sen w długim locie, jet lag, turbulencje, długie przesiadki, lot z dziećmi i wygoda na pokładzie",
+  plusPerkLevelPacks:
+    "Eksperckie pakiety poziomów do gier Korek na pasie, Podniebne piksele i Słońce i księżyc",
+  plusPromiseOneTime: "Jednorazowy zakup, bez subskrypcji",
+  plusPromiseFree: "Nigdy żadnych reklam. Co darmowe, zostaje darmowe.",
+  plusBadge: "Plus",
+  breathBoxDesc:
+    "Cztery równe boki po 4 sekundy. Spokojny rytm na szybki reset.",
+  breath478: "4-7-8 na sen",
+  breath478Desc:
+    "Wdech 4, zatrzymanie 7, wydech 8. Powolny rytm na wyciszenie.",
+  breathCoherent: "Oddech koherentny",
+  breathCoherentDesc:
+    "Wdech 5,5 s, wydech 5,5 s — około pięciu i pół płynnego oddechu na minutę.",
+  breathSigh: "Uspokój nerwy",
+  breathSighDesc:
+    "Weź wdech, dodaj krótki drugi wdech, a potem zrób długi, powolny wydech.",
+  breathTurbulence: "Spokój w turbulencjach",
+  breathTurbulenceDesc:
+    "Wdech 4, wydech 6. Dłuższy wydech pomaga przetrwać wstrząsy.",
+  breatheInAgain: "Jeszcze wdech",
+  a11yBreathPatternPlus: "{{name}} (w ramach Plus)",
+  plusArticleLockedTitle: "Przeczytaj resztę z Plus",
+  plusArticleLockedBody:
+    "Ten obszerny poradnik to dodatek Plus. Jeden zakup odblokowuje wszystkie sześć poradników — offline i na stałe.",
+  plusArticleLockedCta: "Zobacz, co zawiera Plus",
+  articleSources: "Źródła",
 } as const;
