@@ -692,17 +692,16 @@
   profileMinutes: "Minutos",
   profileStreak: "Sequência diária",
   plusSubtitle:
-    "Tudo no FlightMode continua grátis e offline. O Plus é um agradecimento único que desbloqueia alguns extras e apoia novos jogos e guias.",
+    "Tudo no FlightMode é gratuito e funciona offline. O Plus é uma compra única e opcional que acrescenta alguns extras tranquilos.",
   plusPerkThemes: "Temas Meia-noite (preto puro) e Pôr do sol",
   plusPerkBadge: "Distintivo Plus no perfil",
-  plusPerkFuture: "Todos os futuros extras Plus incluídos — sem subscrição",
-  plusPerkSupport: "Apoia um programador independente, nunca anúncios",
+  plusPerkSupport: "Apoia um desenvolvedor independente",
   plusBuy: "Obter Plus · {{price}}",
   plusUnavailable: "As compras estão disponíveis na versão do Google Play",
   plusOwned: "Tem o Plus — obrigado por apoiar o FlightMode!",
-  plusTipTitle: "Deixar uma gorjeta",
+  plusTipTitle: "Agradeça com uma gorjeta",
   plusTipHint:
-    "Um agradecimento pontual. Não desbloqueia nada — só ajuda a app a continuar.",
+    "As gorjetas não desbloqueiam nada — só ajudam o FlightMode a continuar crescendo. Cada uma é muito apreciada.",
   plusTipThanks: "Obrigado! Deixou gorjeta {{count}}×.",
   plusTipSmall: "Café",
   plusTipMedium: "Lanche",
@@ -1824,4 +1823,34 @@
   kidsShapeSquare: "Quadrado",
   kidsShapeTriangle: "Triângulo",
   kidsShapeStar: "Estrela",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "4 padrões de respiração extra: 4-7-8, respiração coerente, acalmar os nervos e calma na turbulência",
+  plusPerkArticles:
+    "6 guias detalhados: dormir em voos longos, jet lag, turbulência, escalas longas, voar com crianças e conforto a bordo",
+  plusPerkLevelPacks:
+    "Pacotes de níveis especialistas para Pista congestionada, Pixels do céu e Sol e lua",
+  plusPromiseOneTime: "Compra única, sem assinatura",
+  plusPromiseFree: "Nunca haverá anúncios. O que é gratuito continua gratuito.",
+  plusBadge: "Plus",
+  breathBoxDesc:
+    "Quatro lados iguais de 4 segundos. Um ritmo estável para recomeçar.",
+  breath478: "4-7-8 para dormir",
+  breath478Desc: "Inspire 4, segure 7, expire 8. Um ritmo lento para relaxar.",
+  breathCoherent: "Respiração coerente",
+  breathCoherentDesc:
+    "Inspire 5,5 s, expire 5,5 s — cerca de cinco respirações e meia suaves por minuto.",
+  breathSigh: "Acalmar os nervos",
+  breathSighDesc:
+    "Inspire, acrescente uma segunda inspiração curta e solte o ar numa expiração longa e lenta.",
+  breathTurbulence: "Calma na turbulência",
+  breathTurbulenceDesc:
+    "Inspire 4, expire 6. Uma expiração mais longa ajuda a atravessar os solavancos.",
+  breatheInAgain: "Inspire mais",
+  a11yBreathPatternPlus: "{{name}} (incluído no Plus)",
+  plusArticleLockedTitle: "Leia o resto com o Plus",
+  plusArticleLockedBody:
+    "Este guia detalhado é um extra do Plus. Uma única compra desbloqueia os seis guias — offline e para sempre.",
+  plusArticleLockedCta: "Ver o que o Plus inclui",
+  articleSources: "Fontes",
 } as const;

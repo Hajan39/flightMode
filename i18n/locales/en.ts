@@ -725,17 +725,16 @@ export const en = {
   profileMinutes: "Minutes",
   profileStreak: "Day Streak",
   plusSubtitle:
-    "Everything in FlightMode stays free and offline. Plus is a one-time thank-you that unlocks a few extras and keeps new games and guides coming.",
+    "Everything in FlightMode is free and works offline. Plus is an optional one-time purchase that adds a few calm extras on top.",
   plusPerkThemes: "Midnight (true black) and Sunset themes",
   plusPerkBadge: "Plus badge in your profile",
-  plusPerkFuture: "Every future Plus extra included — no subscription",
-  plusPerkSupport: "Supports an indie developer, no ads ever",
+  plusPerkSupport: "Supports an independent developer",
   plusBuy: "Get Plus · {{price}}",
   plusUnavailable: "Purchases are available in the Google Play version",
   plusOwned: "You have Plus — thank you for supporting FlightMode!",
-  plusTipTitle: "Leave a tip",
+  plusTipTitle: "Say thanks with a tip",
   plusTipHint:
-    "A one-off thank-you. It doesn't unlock anything — it just keeps the lights on.",
+    "Tips don't unlock anything — they just help FlightMode keep growing. Every one is appreciated.",
   plusTipThanks: "Thank you! You've tipped {{count}}×.",
   plusTipSmall: "Coffee",
   plusTipMedium: "Snack",
@@ -1811,4 +1810,35 @@ export const en = {
   kidsShapeSquare: "Square",
   kidsShapeTriangle: "Triangle",
   kidsShapeStar: "Star",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "4 extra breathing patterns: 4-7-8, coherent breathing, calm the nerves and turbulence calm",
+  plusPerkArticles:
+    "6 in-depth guides: long-haul sleep, jet lag, turbulence, long layovers, flying with kids and staying comfortable",
+  plusPerkLevelPacks:
+    "Expert level packs for Runway Jam, Sky Pixels and Sun & Moon",
+  plusPromiseOneTime: "One-time purchase — no subscription",
+  plusPromiseFree: "No ads, ever. Everything free stays free.",
+  plusBadge: "Plus",
+  breathBoxDesc:
+    "Four equal sides of 4 seconds. A steady rhythm for a quick reset.",
+  breath478: "4-7-8 for sleep",
+  breath478Desc:
+    "In for 4, hold for 7, out for 8. A slow rhythm for winding down.",
+  breathCoherent: "Coherent breathing",
+  breathCoherentDesc:
+    "In for 5.5, out for 5.5 — about five and a half smooth breaths a minute.",
+  breathSigh: "Calm the nerves",
+  breathSighDesc:
+    "Inhale, add a short second inhale on top, then let out a long, slow exhale.",
+  breathTurbulence: "Turbulence calm",
+  breathTurbulenceDesc:
+    "In for 4, out for 6. A longer out-breath to help you ride out the bumps.",
+  breatheInAgain: "Inhale Again",
+  a11yBreathPatternPlus: "{{name}} (included with Plus)",
+  plusArticleLockedTitle: "Read the rest with Plus",
+  plusArticleLockedBody:
+    "This in-depth guide is a Plus extra. One purchase unlocks all six guides — offline, for good.",
+  plusArticleLockedCta: "See what Plus includes",
+  articleSources: "Sources",
 } as const;

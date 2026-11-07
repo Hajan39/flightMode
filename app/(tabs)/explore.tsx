@@ -11,6 +11,7 @@ import {
 
 import AnimatedPressable from "@/components/AnimatedPressable";
 import LanguageBadge from "@/components/LanguageBadge";
+import PlusBadge from "@/components/PlusBadge";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -19,6 +20,7 @@ import { useTabletLayout } from "@/hooks/useTabletLayout";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedText } from "@/i18n/translations";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import { isPlusContent } from "@/utils/plusContent";
 
 type SortMode = "recommended" | "read-short" | "read-long" | "title";
 
@@ -252,6 +254,7 @@ export default function ExploreScreen() {
                   <Text style={[styles.category, { color: theme.tint }]}>
                     {item.categoryText}
                   </Text>
+                  {isPlusContent(item) ? <PlusBadge /> : null}
                   {item.isFallback ? <LanguageBadge /> : null}
                 </View>
                 <Text style={styles.title}>{item.titleText}</Text>

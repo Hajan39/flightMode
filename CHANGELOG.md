@@ -7,6 +7,12 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+
+- **FlightMode Plus — breathing patterns:** the Relax tab gained a pattern picker. Box breathing (4-4-4-4) stays free and the default; Plus adds **4-7-8 for sleep** (in 4, hold 7, out 8), **Coherent breathing** (5.5 s in / 5.5 s out), **Calm the nerves** (physiological sigh: inhale 2 s, short second inhale 1 s, exhale 6 s) and **Turbulence calm** (in 4 / out 6). The circle and phase labels follow each pattern (new "Inhale Again" label for the top-up breath); timing is wall-clock based. Without Plus these show a Plus badge and open the Plus screen. Each has a one-line, wellbeing-only description (no medical claims). `relax_start` / `relax_finish` carry the pattern id as `exercise`.
+- **FlightMode Plus — six in-depth guides (en/cs/de, other languages in English):** "Sleep on a long-haul flight: a step-by-step plan", "Jet lag: a 3-day plan for flying east or west", "Fear of flying: what the bumps really are", "Layover survival: 8 hours or more", "Flying with kids: a calm checklist" and "Staying comfortable: legs, back and hydration on the plane". Each lists its sources (CDC, NHS, WHO, FAA, NTSB, TSA, 14 CFR, …) and health topics point to a doctor for personal questions. Explore marks them with a Plus badge; without Plus an article shows its intro and a "Read the rest with Plus" card. All 44 existing articles stay free. Articles have an optional `plus` field (and optional `sources`), validated in the remote feed — feed items are free unless they set `plus: true`.
+- **Plus screen:** rewritten so the offer is clear: what Plus includes now (breathing patterns, guides, expert level packs for Runway Jam / Sky Pixels / Sun & Moon, Midnight & Sunset themes, profile badge), one-time purchase, supports an independent developer, no ads ever, everything free stays free. Friendlier tip copy. All 12 languages.
+
 ## [1.8.0] - 2026-11-02
 
 ### Added
