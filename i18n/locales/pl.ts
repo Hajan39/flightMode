@@ -707,6 +707,11 @@
   plusRestore: "Przywróć zakupy",
   plusRestoreNone: "Nie znaleziono zakupów dla tego konta Google",
   profilePlusBadge: "Wsparcie Plus",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Pakiet ekspercki Plus",
+  plusLevelA11y: "Poziom {{level}}, FlightMode Plus",
+  plusPerkLevels:
+    "Eksperckie pakiety poziomów do gier Korek na pasie, Podniebne piksele i Słońce i księżyc",
   passportTitle: "Paszport lotów",
   passportHint: "Pieczątka za każdy lot z FlightMode.",
   passportEmpty:

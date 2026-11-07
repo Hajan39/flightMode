@@ -717,6 +717,11 @@
   plusRestore: "Restaurar compras",
   plusRestoreNone: "No se encontraron compras para esta cuenta de Google",
   profilePlusBadge: "Apoyo Plus",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Paquete experto Plus",
+  plusLevelA11y: "Nivel {{level}}, FlightMode Plus",
+  plusPerkLevels:
+    "Paquetes de niveles expertos para Pista bloqueada, Píxeles del cielo y Sol y luna",
   passportTitle: "Pasaporte de vuelo",
   passportHint: "Un sello por cada vuelo que has hecho con FlightMode.",
   passportEmpty:

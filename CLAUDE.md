@@ -126,9 +126,9 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `sliding-puzzle` | brain | medium | Classic 15-puzzle (4×4 sliding tiles) |
 | `cargo-catch` | reflex | medium | Catch falling cargo, dodge bombs; 60s |
 | `word-search` | brain | medium | Classic 8×8 (6 words) or big 10×10 osmisměrka whose leftover letters spell a hidden message (cs/de/en lists in `words.ts`); tap-tap or drag to select |
-| `runway-jam` | strategy | medium | Rush Hour-style sliding logic; 18 BFS-verified levels (expert tier 16–27 opt. moves), solver-powered hints, per-level stars |
-| `nonogram` | brain | hard | Picross "Sky Pixels"; 15 line-logic-solvable puzzles (5×5→10×10), forced-cell hints |
-| `sun-moon` | brain | medium | Takuzu/Binairo balance puzzle; 16 unique-solution levels (4×4→8×8), solution hints |
+| `runway-jam` | strategy | medium | Rush Hour-style sliding logic; 18 free BFS-verified levels (expert tier 16–27 opt. moves) + 12 Plus expert levels (19–30, 28–46 opt. moves), solver-powered hints, per-level stars |
+| `nonogram` | brain | hard | Picross "Sky Pixels"; 15 free line-logic-solvable puzzles (5×5→10×10) + 10 Plus travel pictures (16–25, 10×10→12×12; 12×12 is the phone-width cap), forced-cell hints |
+| `sun-moon` | brain | medium | Takuzu/Binairo balance puzzle; 16 free unique-solution levels (4×4→8×8) + 10 Plus 10×10 levels (17–26), solution hints |
 | `sky-match` | brain | easy | Match-3 (8×8, 6 travel icons); line/bomb/star specials, cascades; 30 move-limited levels with score targets + `levelStars`; greedy-bot test calibrates targets |
 | `cargo-blocks` | brain | medium | 1010!-style block puzzle: drag 3 pieces into an 8×8 hold, full rows/columns clear, combos + streaks |
 | `solitaire` | strategy | medium | Klondike, draw 1 / draw 3; tap-to-move + drag, unlimited undo, auto-complete |
@@ -212,7 +212,7 @@ Play Console's "deprecated edge-to-edge APIs" notice (`setStatusBarColor`, cutou
 
 ## Monetization (Plus + tips)
 
-Google Play Billing via `expo-iap`, wrapped in `utils/billing.ts` (guarded: no-op without the native module). Products (Play Console one-time products): `flightmode_plus` (non-consumable, acknowledged), `tip_small` / `tip_medium` / `tip_large` (consumed). UI: `app/plus.tsx`. Plus perks today: themes `midnight` + `sunset` (`PLUS_THEMES` in `components/useColorScheme.ts`; they fall back to the system scheme without Plus, and per-scheme `Themed` overrides resolve via `baseScheme()` → `dark`) and a profile badge. **Rule: never gate anything that is free today** — Plus only adds new extras. No receipt server: entitlement is trusted client-side (`ponytail:` note in `utils/billing.ts`).
+Google Play Billing via `expo-iap`, wrapped in `utils/billing.ts` (guarded: no-op without the native module). Products (Play Console one-time products): `flightmode_plus` (non-consumable, acknowledged), `tip_small` / `tip_medium` / `tip_large` (consumed). UI: `app/plus.tsx`. Plus perks today: themes `midnight` + `sunset` (`PLUS_THEMES` in `components/useColorScheme.ts`; they fall back to the system scheme without Plus, and per-scheme `Themed` overrides resolve via `baseScheme()` → `dark`) a profile badge, and expert level packs appended after the free levels of `runway-jam` / `nonogram` / `sun-moon` (levels flagged `plus: true`; pure gate `utils/plusLevels.ts`, picker hook `hooks/usePlusLevelGate.ts` → locked tap opens `/plus`, badge `components/PlusLevelBadge.tsx`). **Rule: never gate anything that is free today** — Plus only adds new extras. No receipt server: entitlement is trusted client-side (`ponytail:` note in `utils/billing.ts`).
 
 Rating prompt: `utils/reviewPrompt.ts` — own dialog (Rate / Later / No thanks) opening the Play listing; shown on Home focus only (never during a game), online only, after 4+ app opens and 8+ games; Later waits 30 days, Rate / No thanks never ask again. Wording stays neutral (Play forbids steering only happy users to the store).
 

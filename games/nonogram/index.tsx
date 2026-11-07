@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Fragment,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   Pressable,
   View as RNView,
@@ -6,14 +13,17 @@ import {
   StyleSheet,
 } from "react-native";
 
+import { PlusLevelBadge } from "@/components/PlusLevelBadge";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { FontSize, FontWeight } from "@/constants/Typography";
 import { useHaptic } from "@/hooks/useHaptic";
+import { usePlusLevelGate } from "@/hooks/usePlusLevelGate";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
+import { isPlusLevel } from "@/utils/plusLevels";
 
 import { NONOGRAM_LEVELS, type NonogramLevel } from "./levels";
 
@@ -142,6 +152,7 @@ export default function NonogramGame() {
   const { t } = useTranslation();
   const haptic = useHaptic();
   const { width: screenW } = useGameDimensions();
+  const { hasPlus, openLevel } = usePlusLevelGate();
   const updateProgress = useGameStore((state) => state.updateProgress);
   const levelStars =
     useGameStore((state) => state.progress.nonogram?.levelStars) ??
@@ -289,26 +300,47 @@ export default function NonogramGame() {
           contentContainerStyle={s.levelGrid}
           style={{ maxHeight: 300 }}
         >
-          {NONOGRAM_LEVELS.map((lvl) => (
-            <Pressable
-              accessibilityLabel={t("levelLabel", { level: lvl.id })}
-              accessibilityRole="button"
-              key={`level-${lvl.id}`}
-              onPress={() => startLevel(lvl)}
-              style={[
-                s.levelBtn,
-                { backgroundColor: theme.card, borderColor: theme.border },
-              ]}
-            >
-              <Text style={[s.levelBtnText, { color: theme.text }]}>
-                {lvl.id}
-              </Text>
-              <Stars count={levelStars[String(lvl.id)] ?? 0} size={10} />
-              <Text style={{ color: theme.mutedText, fontSize: 8 }}>
-                {lvl.size}×{lvl.size}
-              </Text>
-            </Pressable>
-          ))}
+          {NONOGRAM_LEVELS.map((lvl, i) => {
+            const plusLevel = isPlusLevel(lvl);
+            const locked = plusLevel && !hasPlus;
+            return (
+              <Fragment key={`level-${lvl.id}`}>
+                {plusLevel && !isPlusLevel(NONOGRAM_LEVELS[i - 1] ?? {}) && (
+                  <Text style={[s.packLabel, { color: theme.tint }]}>
+                    {t("plusExpertPack")}
+                  </Text>
+                )}
+                <Pressable
+                  accessibilityLabel={t(
+                    plusLevel ? "plusLevelA11y" : "levelLabel",
+                    { level: lvl.id }
+                  )}
+                  accessibilityRole="button"
+                  onPress={() => openLevel(lvl, () => startLevel(lvl))}
+                  style={[
+                    s.levelBtn,
+                    {
+                      backgroundColor: theme.card,
+                      borderColor: plusLevel ? theme.tint : theme.border,
+                    },
+                  ]}
+                >
+                  <Text style={[s.levelBtnText, { color: theme.text }]}>
+                    {lvl.id}
+                  </Text>
+                  {locked ? (
+                    <Text style={s.lockIcon}>🔒</Text>
+                  ) : (
+                    <Stars count={levelStars[String(lvl.id)] ?? 0} size={10} />
+                  )}
+                  <Text style={{ color: theme.mutedText, fontSize: 8 }}>
+                    {lvl.size}×{lvl.size}
+                  </Text>
+                  {plusLevel && <PlusLevelBadge />}
+                </Pressable>
+              </Fragment>
+            );
+          })}
         </ScrollView>
       </View>
     );
@@ -338,7 +370,7 @@ export default function NonogramGame() {
             <Pressable
               accessibilityLabel={t("nextLevel")}
               accessibilityRole="button"
-              onPress={() => startLevel(nextLevel)}
+              onPress={() => openLevel(nextLevel, () => startLevel(nextLevel))}
               style={[s.mainBtn, { backgroundColor: theme.tint }]}
             >
               <Text style={[s.mainBtnText, { color: theme.onTint }]}>
@@ -714,6 +746,7 @@ const s = StyleSheet.create({
     justifyContent: "center",
     paddingBottom: Spacing.lg,
   },
+  lockIcon: { fontSize: 10, marginVertical: 4 },
 
   mainBtn: {
     borderRadius: Radius.card,
@@ -737,6 +770,15 @@ const s = StyleSheet.create({
     flexDirection: "row",
     gap: Spacing.sm,
     marginTop: Spacing.lg,
+  },
+  packLabel: {
+    fontSize: FontSize.xs,
+    fontWeight: FontWeight.extrabold,
+    letterSpacing: 1,
+    marginTop: Spacing.sm,
+    textAlign: "center",
+    textTransform: "uppercase",
+    width: "100%",
   },
   root: {
     alignItems: "center",

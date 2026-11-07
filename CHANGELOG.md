@@ -7,6 +7,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+
+- **FlightMode Plus expert packs:** new levels added after the existing ones in three logic games. Every level that was free stays free. **Runway Jam** gets 12 expert levels (19–30, 28–46 optimal moves). Each is harder than level 18 (27 moves), its optimum is proven by the BFS solver, and stars use the same rule as the other levels. **Sky Pixels** gets 10 travel pictures (16–25, 10×10 → 12×12): anchor, passport, beach umbrella, rolling suitcase, globe, control tower, map pin, Eiffel Tower, compass and train. Each one can be solved by line logic alone, which also proves it has only one solution. **Sun & Moon** gets 10 levels on a 10×10 grid (17–26, 74–83 cells to fill), each with exactly one solution. In the level picker these levels sit under a "Plus expert pack" heading with a small Plus badge. Without Plus, a lock replaces the stars, and tapping the level (or "Next level" after the last free one) opens the Plus screen. With Plus they play like any other level, and stars are saved per level. The Plus screen lists the new perk. New strings are translated into all 12 languages.
+
 ## [1.8.0] - 2026-11-02
 
 ### Added

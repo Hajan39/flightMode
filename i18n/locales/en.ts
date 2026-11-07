@@ -743,6 +743,11 @@ export const en = {
   plusRestore: "Restore purchases",
   plusRestoreNone: "No purchases found for this Google account",
   profilePlusBadge: "Plus supporter",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Plus expert pack",
+  plusLevelA11y: "Level {{level}}, FlightMode Plus",
+  plusPerkLevels:
+    "Expert level packs for Runway Jam, Sky Pixels and Sun & Moon",
   passportTitle: "Flight Passport",
   passportHint: "A stamp for every flight you've taken with FlightMode.",
   passportEmpty:

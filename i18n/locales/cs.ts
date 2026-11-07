@@ -728,6 +728,11 @@ export const cs = {
   plusRestore: "Obnovit nákupy",
   plusRestoreNone: "Pro tento účet Google nebyly nalezeny žádné nákupy",
   profilePlusBadge: "Podporovatel Plus",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Expertní balíček Plus",
+  plusLevelA11y: "Úroveň {{level}}, FlightMode Plus",
+  plusPerkLevels:
+    "Expertní balíčky úrovní pro Ucpanou ranvej, Nebeské pixely a Slunce a měsíc",
   passportTitle: "Letový pas",
   passportHint: "Razítko za každý tvůj let s FlightMode.",
   passportEmpty: "Přidej svůj let a po vzletu sem dopadne první razítko.",

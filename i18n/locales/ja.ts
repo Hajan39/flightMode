@@ -700,6 +700,11 @@
   plusRestore: "購入を復元",
   plusRestoreNone: "この Google アカウントの購入は見つかりませんでした",
   profilePlusBadge: "Plus サポーター",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Plus エキスパートパック",
+  plusLevelA11y: "レベル {{level}}、FlightMode Plus",
+  plusPerkLevels:
+    "滑走路ジャム・スカイピクセル・太陽と月のエキスパートレベルパック",
   passportTitle: "フライトパスポート",
   passportHint: "FlightModeと一緒に乗ったフライトごとにスタンプ。",
   passportEmpty:

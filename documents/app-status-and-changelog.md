@@ -50,7 +50,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - airport detection nebo location permissions
 - sitovy multiplayer
 - serverovou personalizaci
-- monetization/premium unlock
+- monetization/premium unlock nad ramec FlightMode Plus (jednorazovy nakup: temata Midnight/Sunset, odznak v profilu, expertni level packy pro Ucpanou ranvej / Nebeske pixely / Slunce a mesic — nic z free verze se nezamyka)
 
 ### Dulezite implementacni fakty
 
@@ -130,6 +130,13 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - advanced personalization
 
 ## 4. Changelog
+
+## 2026-11-07
+
+- FlightMode Plus expertni level packy pro 3 logicke hry (jen NOVE levely za stavajicimi; vsechny drivejsi levely zustavaji zdarma): **Ucpana ranvej** +12 (levely 19–30, 28–46 optimalnich tahu, kazdy tezsi nez nejtezsi free level 18 s 27 tahy; BFS overuje resitelnost + presny optimalni pocet tahu, hvezdy podle stejneho pravidla 3★ = optimum / 2★ = ceil(1,5×)), **Nebeske pixely** +10 (levely 16–25, 10×10 → 12×12, cestovatelske motivy: kotva, pas, slunecnik, kufr na koleckach, globus, ridici vez, spendlik na mape, Eiffelovka, kompas, vlak; line-solver dokazuje resitelnost cistou logikou ⇒ unikatni reseni; 12×12 je maximum, ktere na 360dp telefonu jeste necha klepatelna policka), **Slunce a mesic** +10 (levely 17–26, 10×10, 74–83 prazdnych poli, presne jedno reseni overene `countSolutions`)
+- gating: `utils/plusLevels.ts` (cista funkce `canPlayLevel` / `levelTapAction`, testy v `__tests__/plusLevels.test.ts`) + `hooks/usePlusLevelGate.ts`; v level pickeru sekce „Expertni balicek Plus", odznak Plus (`components/PlusLevelBadge.tsx`), bez Plus zamek misto hvezd a klepnuti otevre `/plus` misto spusteni (i tlacitko „Dalsi level" za poslednim free levelem); s Plus se hraje normalne vc. `levelStars`
+- obrazovka Plus: novy perk „Expertni balicky levelu"; 4 nove klice × 12 jazyku (`plusLevelBadge`, `plusExpertPack`, `plusLevelA11y`, `plusPerkLevels`)
+- Runway Jam: hvezdickove pravidlo presunuto do `games/runway-jam/logic.ts` (`starThresholds`, `getStars`, `getFinalStars`) kvuli testum, chovani beze zmeny
 
 ## 2026-11-02
 
