@@ -33,6 +33,7 @@ const PERKS: Array<{
   key: TranslationKey;
 }> = [
   { icon: "color-palette-outline", key: "plusPerkThemes" },
+  { icon: "extension-puzzle-outline", key: "plusPerkLevels" },
   { icon: "ribbon-outline", key: "plusPerkBadge" },
   { icon: "sparkles-outline", key: "plusPerkFuture" },
   { icon: "heart-outline", key: "plusPerkSupport" },

@@ -118,9 +118,13 @@ describe("nonogram levels", () => {
     );
   });
 
-  test("there are 15 levels tiered 5×5 (1–4), 8×8 (5–7), 10×10 (8–15)", () => {
-    expect(NONOGRAM_LEVELS).toHaveLength(15);
-    for (const level of NONOGRAM_LEVELS) {
+  test("there are 15 free levels tiered 5×5 (1–4), 8×8 (5–7), 10×10 (8–15)", () => {
+    const free = NONOGRAM_LEVELS.filter((l) => !l.plus);
+    expect(free).toHaveLength(15);
+    expect(free.map((l) => l.id)).toEqual(
+      Array.from({ length: 15 }, (_, i) => i + 1)
+    );
+    for (const level of free) {
       let expectedSize = 10;
       if (level.id <= 4) {
         expectedSize = 5;
@@ -129,6 +133,28 @@ describe("nonogram levels", () => {
       }
       expect(level.size).toBe(expectedSize);
     }
+  });
+
+  test("Plus expert pack: 10 levels (16–25) after the free ones, 10×10 → 12×12, non-decreasing size", () => {
+    const pack = NONOGRAM_LEVELS.filter((l) => l.plus);
+    expect(pack).toHaveLength(10);
+    expect(pack.map((l) => l.id)).toEqual(
+      Array.from({ length: 10 }, (_, i) => i + 16)
+    );
+    for (let i = 0; i < pack.length; i += 1) {
+      expect([10, 12]).toContain(pack[i].size);
+      if (i > 0) {
+        expect(pack[i].size).toBeGreaterThanOrEqual(pack[i - 1].size);
+      }
+    }
+    // Every Plus level comes after every free level.
+    const firstPlus = NONOGRAM_LEVELS.findIndex((l) => l.plus);
+    expect(NONOGRAM_LEVELS.slice(firstPlus).every((l) => l.plus)).toBe(true);
+  });
+
+  test("Plus pictures are new (no duplicate of any other level)", () => {
+    const pictures = NONOGRAM_LEVELS.map((l) => l.solution.join("/"));
+    expect(new Set(pictures).size).toBe(pictures.length);
   });
 
   test.each(NONOGRAM_LEVELS.map((l) => [l.id, l] as const))(

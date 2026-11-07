@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import {
   Pressable,
   View as RNView,
@@ -6,13 +6,16 @@ import {
   StyleSheet,
 } from "react-native";
 
+import { PlusLevelBadge } from "@/components/PlusLevelBadge";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
 import { Radius, Spacing } from "@/constants/Spacing";
 import { useHaptic } from "@/hooks/useHaptic";
+import { usePlusLevelGate } from "@/hooks/usePlusLevelGate";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
+import { isPlusLevel } from "@/utils/plusLevels";
 import { LEVELS } from "./levels";
 
 // Stable fallback: returning a fresh `{}` from a Zustand selector makes
@@ -96,6 +99,7 @@ export default function SunMoonGame() {
     useGameStore((state) => state.progress["sun-moon"]?.levelStars) ??
     EMPTY_LEVEL_STARS;
   const { width: screenW } = useGameDimensions();
+  const { hasPlus, openLevel } = usePlusLevelGate();
 
   const [phase, setPhase] = useState<Phase>("menu");
   const [levelIdx, setLevelIdx] = useState(0);
@@ -252,26 +256,47 @@ export default function SunMoonGame() {
           contentContainerStyle={s.levelGrid}
           style={{ maxHeight: 300 }}
         >
-          {LEVELS.map((lvl, i) => (
-            <Pressable
-              accessibilityLabel={t("levelLabel", { level: lvl.id })}
-              accessibilityRole="button"
-              key={lvl.id}
-              onPress={() => startLevel(i)}
-              style={[
-                s.levelBtn,
-                { backgroundColor: theme.card, borderColor: theme.border },
-              ]}
-            >
-              <Text style={[s.levelBtnText, { color: theme.text }]}>
-                {lvl.id}
-              </Text>
-              <Stars count={levelStars[String(lvl.id)] ?? 0} size={10} />
-              <Text style={{ color: theme.mutedText, fontSize: 8 }}>
-                {lvl.size}×{lvl.size}
-              </Text>
-            </Pressable>
-          ))}
+          {LEVELS.map((lvl, i) => {
+            const plusLevel = isPlusLevel(lvl);
+            const locked = plusLevel && !hasPlus;
+            return (
+              <Fragment key={lvl.id}>
+                {plusLevel && !isPlusLevel(LEVELS[i - 1] ?? {}) && (
+                  <Text style={[s.packLabel, { color: theme.tint }]}>
+                    {t("plusExpertPack")}
+                  </Text>
+                )}
+                <Pressable
+                  accessibilityLabel={t(
+                    plusLevel ? "plusLevelA11y" : "levelLabel",
+                    { level: lvl.id }
+                  )}
+                  accessibilityRole="button"
+                  onPress={() => openLevel(lvl, () => startLevel(i))}
+                  style={[
+                    s.levelBtn,
+                    {
+                      backgroundColor: theme.card,
+                      borderColor: plusLevel ? theme.tint : theme.border,
+                    },
+                  ]}
+                >
+                  <Text style={[s.levelBtnText, { color: theme.text }]}>
+                    {lvl.id}
+                  </Text>
+                  {locked ? (
+                    <Text style={s.lockIcon}>🔒</Text>
+                  ) : (
+                    <Stars count={levelStars[String(lvl.id)] ?? 0} size={10} />
+                  )}
+                  <Text style={{ color: theme.mutedText, fontSize: 8 }}>
+                    {lvl.size}×{lvl.size}
+                  </Text>
+                  {plusLevel && <PlusLevelBadge />}
+                </Pressable>
+              </Fragment>
+            );
+          })}
         </ScrollView>
       </View>
     );
@@ -295,7 +320,9 @@ export default function SunMoonGame() {
             <Pressable
               accessibilityLabel={t("nextLevel")}
               accessibilityRole="button"
-              onPress={() => startLevel(levelIdx + 1)}
+              onPress={() =>
+                openLevel(LEVELS[levelIdx + 1], () => startLevel(levelIdx + 1))
+              }
               style={[s.mainBtn, { backgroundColor: theme.tint }]}
             >
               <Text style={[s.mainBtnText, { color: theme.onTint }]}>
@@ -537,6 +564,7 @@ const s = StyleSheet.create({
     justifyContent: "center",
     paddingBottom: Spacing.lg,
   },
+  lockIcon: { fontSize: 10, marginVertical: 4 },
   mainBtn: {
     alignItems: "center",
     borderRadius: Radius.card,
@@ -545,6 +573,15 @@ const s = StyleSheet.create({
     paddingVertical: 12,
   },
   mainBtnText: { fontSize: 15, fontWeight: "800" },
+  packLabel: {
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 1,
+    marginTop: Spacing.sm,
+    textAlign: "center",
+    textTransform: "uppercase",
+    width: "100%",
+  },
   pill: {
     borderRadius: Radius.pill,
     paddingHorizontal: Spacing.md,
