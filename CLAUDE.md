@@ -74,7 +74,7 @@ Jest (`jest-expo`) is configured for fast, pure-logic/data tests in `__tests__/`
 
 Theme modes: `system / light / dark / crazy` (free) + `midnight / sunset` (Plus). No NativeWind.
 
-**Localization:** `hooks/useTranslation.ts` → `i18n/locales/*.ts`. 12 languages (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`). Language preference order: stored > system > en. Content (`data/content.json`): all 44 articles in `en/cs/de`, the 14 Travel Tips + Health ones also in `es/fr/it/pl/pt`; other languages render articles in English with an `EN` badge (`hasLanguage()` in `hooks/useContentItems.ts`). Destination tip labels are localized via `labelKey`; tip text stays English.
+**Localization:** `hooks/useTranslation.ts` → `i18n/locales/*.ts`. 12 languages (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`). Language preference order: stored > system > en. Content (`data/content.json`): all 44 free articles + 6 Plus guides in `en/cs/de`, the 14 Travel Tips + Health ones also in `es/fr/it/pl/pt`; other languages render articles in English with an `EN` badge (`hasLanguage()` in `hooks/useContentItems.ts`). Destination tip labels are localized via `labelKey`; tip text stays English.
 
 **Types:** `types/game.ts` (GameProgress, GameConfig, GameCategory, GameDifficulty, GamePlayMode), `types/flight.ts` (Flight), `types/content.ts` (ContentItem).
 
@@ -126,9 +126,9 @@ Each game is a self-contained module at `games/<id>/index.tsx`. All games must c
 | `sliding-puzzle` | brain | medium | Classic 15-puzzle (4×4 sliding tiles) |
 | `cargo-catch` | reflex | medium | Catch falling cargo, dodge bombs; 60s |
 | `word-search` | brain | medium | Classic 8×8 (6 words) or big 10×10 osmisměrka whose leftover letters spell a hidden message (cs/de/en lists in `words.ts`); tap-tap or drag to select |
-| `runway-jam` | strategy | medium | Rush Hour-style sliding logic; 18 BFS-verified levels (expert tier 16–27 opt. moves), solver-powered hints, per-level stars |
-| `nonogram` | brain | hard | Picross "Sky Pixels"; 15 line-logic-solvable puzzles (5×5→10×10), forced-cell hints |
-| `sun-moon` | brain | medium | Takuzu/Binairo balance puzzle; 16 unique-solution levels (4×4→8×8), solution hints |
+| `runway-jam` | strategy | medium | Rush Hour-style sliding logic; 18 free BFS-verified levels (expert tier 16–27 opt. moves) + 12 Plus expert levels (19–30, 28–46 opt. moves), solver-powered hints, per-level stars |
+| `nonogram` | brain | hard | Picross "Sky Pixels"; 15 free line-logic-solvable puzzles (5×5→10×10) + 10 Plus travel pictures (16–25, 10×10→12×12; 12×12 is the phone-width cap), forced-cell hints |
+| `sun-moon` | brain | medium | Takuzu/Binairo balance puzzle; 16 free unique-solution levels (4×4→8×8) + 10 Plus 10×10 levels (17–26), solution hints |
 | `sky-match` | brain | easy | Match-3 (8×8, 6 travel icons); line/bomb/star specials, cascades; 30 move-limited levels with score targets + `levelStars`; greedy-bot test calibrates targets |
 | `cargo-blocks` | brain | medium | 1010!-style block puzzle: drag 3 pieces into an 8×8 hold, full rows/columns clear, combos + streaks |
 | `solitaire` | strategy | medium | Klondike, draw 1 / draw 3; tap-to-move + drag, unlimited undo, auto-complete |
@@ -183,11 +183,11 @@ Parent feature for ages 3–6 (Settings → Kids mode). The app stays a general-
 
 ## Content
 
-44 bundled articles in `data/content.json` (all in en/cs/de; the 14 Travel Tips + Health ones also in es/fr/it/pl/pt). Served through `hooks/useContentItems.ts` which merges bundled data with optional remote sync cache (`store/useContentStore.ts`).
+50 bundled articles in `data/content.json`: 44 free (all in en/cs/de; the 14 free Travel Tips + Health ones also in es/fr/it/pl/pt) + 6 Plus guides (en/cs/de). Served through `hooks/useContentItems.ts` which merges bundled data with optional remote sync cache (`store/useContentStore.ts`).
 
 Remote articles come from **`content/feed.json`** (`{ version, items: ContentItem[] }`) fetched from raw.githubusercontent.com on `main` (override via `EXPO_PUBLIC_CONTENT_FEED_URL`). Publishing = commit to that file and bump `version`; `release-main.yml` ignores `content/**`, and `__tests__/content.test.ts` validates the feed in CI. App is fully offline without it. Sync respects `syncNetworkPolicy` (wifi_only / wifi_and_mobile / off) and has a 30-minute cooldown between syncs.
 
-`utils/contentSync.ts` fetches and validates the feed (`parseContentFeed`); invalid items are dropped, remote items override bundled ones by id. Destination articles use the id `destination-<destinationId>` and are linked from the destination card.
+`utils/contentSync.ts` fetches and validates the feed (`parseContentFeed`); invalid items are dropped, remote items override bundled ones by id. Optional item fields: `image`, `plus` (boolean — an item is Plus only when it is exactly `true`, so feed articles stay free by default) and `sources` (`{ title, url }[]`, listed under the article when readable). The 6 Plus guides (`plus-*` ids) are en/cs/de only and exempt from the 8-language Travel Tips/Health rule. Destination articles use the id `destination-<destinationId>` and are linked from the destination card.
 
 ## Quiz pool (world quiz)
 
@@ -212,7 +212,8 @@ Play Console's "deprecated edge-to-edge APIs" notice (`setStatusBarColor`, cutou
 
 ## Monetization (Plus + tips)
 
-Google Play Billing via `expo-iap`, wrapped in `utils/billing.ts` (guarded: no-op without the native module). Products (Play Console one-time products): `flightmode_plus` (non-consumable, acknowledged), `tip_small` / `tip_medium` / `tip_large` (consumed). UI: `app/plus.tsx`. Plus perks today: themes `midnight` + `sunset` (`PLUS_THEMES` in `components/useColorScheme.ts`; they fall back to the system scheme without Plus, and per-scheme `Themed` overrides resolve via `baseScheme()` → `dark`) and a profile badge. **Rule: never gate anything that is free today** — Plus only adds new extras. No receipt server: entitlement is trusted client-side (`ponytail:` note in `utils/billing.ts`).
+Google Play Billing via `expo-iap`, wrapped in `utils/billing.ts` (guarded: no-op without the native module). Products (Play Console one-time products): `flightmode_plus` (non-consumable, acknowledged), `tip_small` / `tip_medium` / `tip_large` (consumed). UI: `app/plus.tsx`. Plus perks today: themes `midnight` + `sunset` (`PLUS_THEMES` in `components/useColorScheme.ts`; they fall back to the system scheme without Plus, and per-scheme `Themed` overrides resolve via `baseScheme()` → `dark`) a profile badge, and expert level packs appended after the free levels of `runway-jam` / `nonogram` / `sun-moon` (levels flagged `plus: true`; pure gate `utils/plusLevels.ts`, picker hook `hooks/usePlusLevelGate.ts` → locked tap opens `/plus`, badge `components/PlusLevelBadge.tsx`). **Rule: never gate anything that is free today** — Plus only adds new extras. No receipt server: entitlement is trusted client-side (`ponytail:` note in `utils/billing.ts`).
+Google Play Billing via `expo-iap`, wrapped in `utils/billing.ts` (guarded: no-op without the native module). Products (Play Console one-time products): `flightmode_plus` (non-consumable, acknowledged), `tip_small` / `tip_medium` / `tip_large` (consumed). UI: `app/plus.tsx`. Plus perks today: themes `midnight` + `sunset` (`PLUS_THEMES` in `components/useColorScheme.ts`; they fall back to the system scheme without Plus, and per-scheme `Themed` overrides resolve via `baseScheme()` → `dark`), a profile badge, 4 breathing patterns in Relax (`utils/breathing.ts`: 4-7-8, coherent 5.5/5.5, physiological sigh 2+1/6, turbulence 4/6 — box breathing stays free + default; locked chips show `components/PlusBadge.tsx` and open `/plus`) and 6 Plus guides (`plus: true` articles; gating in `utils/plusContent.ts`: without Plus only the intro + "Read the rest with Plus" card, no `markArticleRead` / `article_finish`). The Plus screen also lists expert level packs for Runway Jam / Sky Pixels / Sun & Moon (added on a separate branch). Plus content is unreachable in kids mode via the route lock. **Rule: never gate anything that is free today** — Plus only adds new extras. No receipt server: entitlement is trusted client-side (`ponytail:` note in `utils/billing.ts`).
 
 Rating prompt: `utils/reviewPrompt.ts` — own dialog (Rate / Later / No thanks) opening the Play listing; shown on Home focus only (never during a game), online only, after 4+ app opens and 8+ games; Later waits 30 days, Rate / No thanks never ask again. Wording stays neutral (Play forbids steering only happy users to the store).
 

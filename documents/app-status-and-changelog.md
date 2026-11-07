@@ -25,13 +25,14 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - settings kompaktne seskupene na app preferences, article sync a support
 - 45 offline miniher s centralni registry v `data/games.ts` (nejnovejsi: Mahjong, Palubni trojky / match-3, Nakladani kufru / blokova skladacka, Pasians / Klondike); 11 her pro vice hracu nad sdilenymi komponentami `components/multiplayer/`
 - cestovni nastroje offline: checklist per let (`app/checklist.tsx`), lokalni cas v destinaci + jet-lag karta na Home, fraznik 24 jazyku (`app/phrasebook.tsx`), prevodnik men a jednotek (`app/converter.tsx`)
-- 44 clanku v `data/content.json`
+- 50 clanku v `data/content.json` (44 free + 6 Plus pruvodcu en/cs/de se zdroji v poli `sources`)
 - content lokalizace kompletni pro `en/cs/de`; ostatni jazyky vidi clanky anglicky s badge `EN` (drive 0 clanku)
 - UI translation keys jsou kompletni napric vsemi podporovanymi jazyky (`en/cs/de/es/fr/hi/it/ja/ko/pl/pt/zh`)
 - games search + category filtry + intent filtry pro quick, play together a longer/deep hry
 - home dashboard s daily challenge, play together a flight utility kartou; navic flight-aware sekce "Games for your flight" (hry podle zbyvajiciho casu letu), "Jump back in" (naposledy hrane hry) a CTA na pre-flight readiness screen
 - pre-flight readiness screen (modal): potvrzeni offline dostupnosti (hry/clanky/relax s pocty), stav site a pri online rucni "Download latest content"
-- relax: breathing + ambient audio + sleep timer
+- relax: breathing (box breathing zdarma + 4 Plus vzorce: 4-7-8, koherentni, fyziologicky povzdech, turbulence; `utils/breathing.ts`) + ambient audio + sleep timer
+- FlightMode Plus (jednorazovy nakup): temata Midnight/Sunset, odznak v profilu, 4 dechove vzorce, 6 Plus pruvodcu (`plus: true` v `data/content.json`, bez Plus jen uvod + karta "Read the rest with Plus"; `utils/plusContent.ts`), v textu i expertni level packy (Runway Jam / Sky Pixels / Sun & Moon — pridava jina vetev); nic z free verze se nezamyka
 - detsky rezim (3–6 let, zapina rodic v Nastaveni): uzavreny prostor `app/kids/*` s 12 hrami (6 obrazkovych variant dospelych her + 6 ciste detskych: omalovanky, stiny, pocitani, tvary, tecky, bludiste), odchod jen pres rodicovsky zamek (drzet 3 s); bez analytiky, nakupu, odkazu a zaznamu postupu
 - PostHog SDK foundation pro anonymni produktovou analytiku, pokud je nakonfigurovany `EXPO_PUBLIC_POSTHOG_KEY`
 - Expo Network foundation pro online/offline stav v root bootstrapu
@@ -50,7 +51,7 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - airport detection nebo location permissions
 - sitovy multiplayer
 - serverovou personalizaci
-- monetization/premium unlock
+- monetization/premium unlock nad ramec FlightMode Plus (jednorazovy nakup: temata Midnight/Sunset, odznak v profilu, expertni level packy pro Ucpanou ranvej / Nebeske pixely / Slunce a mesic — nic z free verze se nezamyka)
 
 ### Dulezite implementacni fakty
 
@@ -130,6 +131,14 @@ Aktualne je nejsilnejsi implementovana vrstva:
 - advanced personalization
 
 ## 4. Changelog
+
+## 2026-11-07
+
+- FlightMode Plus expertni level packy pro 3 logicke hry (jen NOVE levely za stavajicimi; vsechny drivejsi levely zustavaji zdarma): **Ucpana ranvej** +12 (levely 19–30, 28–46 optimalnich tahu, kazdy tezsi nez nejtezsi free level 18 s 27 tahy; BFS overuje resitelnost + presny optimalni pocet tahu, hvezdy podle stejneho pravidla 3★ = optimum / 2★ = ceil(1,5×)), **Nebeske pixely** +10 (levely 16–25, 10×10 → 12×12, cestovatelske motivy: kotva, pas, slunecnik, kufr na koleckach, globus, ridici vez, spendlik na mape, Eiffelovka, kompas, vlak; line-solver dokazuje resitelnost cistou logikou ⇒ unikatni reseni; 12×12 je maximum, ktere na 360dp telefonu jeste necha klepatelna policka), **Slunce a mesic** +10 (levely 17–26, 10×10, 74–83 prazdnych poli, presne jedno reseni overene `countSolutions`)
+- gating: `utils/plusLevels.ts` (cista funkce `canPlayLevel` / `levelTapAction`, testy v `__tests__/plusLevels.test.ts`) + `hooks/usePlusLevelGate.ts`; v level pickeru sekce „Expertni balicek Plus", odznak Plus (`components/PlusLevelBadge.tsx`), bez Plus zamek misto hvezd a klepnuti otevre `/plus` misto spusteni (i tlacitko „Dalsi level" za poslednim free levelem); s Plus se hraje normalne vc. `levelStars`
+- obrazovka Plus: novy perk „Expertni balicky levelu"; 4 nove klice × 12 jazyku (`plusLevelBadge`, `plusExpertPack`, `plusLevelA11y`, `plusPerkLevels`)
+- Runway Jam: hvezdickove pravidlo presunuto do `games/runway-jam/logic.ts` (`starThresholds`, `getStars`, `getFinalStars`) kvuli testum, chovani beze zmeny
+- FlightMode Plus posilen: 4 dechove vzorce v Relax (box breathing zustava zdarma a vychozi), 6 dlouhych Plus pruvodcu (spanek na dlouhem letu, jet lag, turbulence, dlouhe prestupy, deti, pohodli) v en/cs/de se zdroji; Explore Plus badge, bez Plus nahled + upsell karta; `ContentItem.plus` / `sources` validovane ve feedu (feed je free, pokud `plus: true` nenastavi); Plus obrazovka prepsana (co Plus obsahuje, jednorazovy nakup, zadne reklamy, free zustava free) ve 12 jazycich
 
 ## 2026-11-02
 

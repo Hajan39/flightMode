@@ -677,17 +677,16 @@
   profileMinutes: "분",
   profileStreak: "연속 일수",
   plusSubtitle:
-    "FlightMode의 모든 기능은 계속 무료이며 오프라인으로 작동합니다. Plus는 몇 가지 추가 기능을 열어 주고 새 게임과 가이드를 만드는 데 힘이 되는 일회성 감사 표시입니다.",
+    "FlightMode의 모든 기능은 무료이며 오프라인에서도 작동합니다. Plus는 선택 사항인 1회 구매로, 편안한 추가 기능 몇 가지를 더해 줍니다.",
   plusPerkThemes: "미드나잇(완전한 검정)과 선셋 테마",
   plusPerkBadge: "프로필에 Plus 배지",
-  plusPerkFuture: "앞으로의 모든 Plus 혜택 포함 — 구독 없음",
-  plusPerkSupport: "인디 개발자 응원, 광고는 절대 없음",
+  plusPerkSupport: "독립 개발자를 응원합니다",
   plusBuy: "Plus 받기 · {{price}}",
   plusUnavailable: "구매는 Google Play 버전에서 가능합니다",
   plusOwned: "Plus 회원입니다 — FlightMode를 응원해 주셔서 감사합니다!",
-  plusTipTitle: "팁 남기기",
+  plusTipTitle: "팁으로 고마움 전하기",
   plusTipHint:
-    "일회성 감사 표시입니다. 잠금 해제되는 것은 없고 앱 유지에 도움이 됩니다.",
+    "팁으로 잠금 해제되는 것은 없지만 FlightMode가 계속 성장하는 데 도움이 됩니다. 정말 감사합니다.",
   plusTipThanks: "감사합니다! 팁을 {{count}}번 남기셨어요.",
   plusTipSmall: "커피",
   plusTipMedium: "간식",
@@ -695,6 +694,9 @@
   plusRestore: "구매 복원",
   plusRestoreNone: "이 Google 계정에서 구매 내역을 찾지 못했습니다",
   profilePlusBadge: "Plus 서포터",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Plus 전문가 팩",
+  plusLevelA11y: "레벨 {{level}}, FlightMode Plus",
   passportTitle: "비행 여권",
   passportHint: "FlightMode와 함께한 모든 비행에 도장을 찍어요.",
   passportEmpty: "비행을 추가하면 이륙 후 첫 도장이 여기에 찍혀요.",
@@ -1768,4 +1770,33 @@
   kidsShapeSquare: "네모",
   kidsShapeTriangle: "세모",
   kidsShapeStar: "별",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "호흡 패턴 4가지 추가: 4-7-8, 코히런트 호흡, 긴장 풀기, 난기류 진정",
+  plusPerkArticles:
+    "심층 가이드 6편: 장거리 비행 수면, 시차 적응, 난기류, 긴 경유, 아이와 함께 비행, 기내에서 편하게 지내기",
+  plusPerkLevelPacks: "활주로 잼, 스카이 픽셀, 해와 달의 전문가 레벨 팩",
+  plusPromiseOneTime: "1회 구매, 구독 없음",
+  plusPromiseFree: "광고는 절대 없습니다. 무료 기능은 계속 무료입니다.",
+  plusBadge: "Plus",
+  breathBoxDesc:
+    "4초씩 네 변이 같은 호흡. 빠르게 마음을 가다듬는 안정적인 리듬.",
+  breath478: "잠들기 위한 4-7-8",
+  breath478Desc: "4초 들이쉬고, 7초 멈추고, 8초 내쉬기. 긴장을 푸는 느린 리듬.",
+  breathCoherent: "코히런트 호흡",
+  breathCoherentDesc:
+    "5.5초 들이쉬고 5.5초 내쉬기. 1분에 약 5.5회의 부드러운 호흡.",
+  breathSigh: "긴장 풀기",
+  breathSighDesc:
+    "숨을 들이쉬고 짧게 한 번 더 들이쉰 다음, 길고 천천히 내쉽니다.",
+  breathTurbulence: "난기류 진정",
+  breathTurbulenceDesc:
+    "4초 들이쉬고 6초 내쉬기. 길게 내쉬며 흔들림을 넘겨 보세요.",
+  breatheInAgain: "한 번 더 들이쉬기",
+  a11yBreathPatternPlus: "{{name}} (Plus에 포함)",
+  plusArticleLockedTitle: "나머지는 Plus로 읽기",
+  plusArticleLockedBody:
+    "이 심층 가이드는 Plus 혜택입니다. 한 번 구매하면 가이드 6편 모두를 오프라인으로 계속 읽을 수 있습니다.",
+  plusArticleLockedCta: "Plus 혜택 보기",
+  articleSources: "출처",
 } as const;

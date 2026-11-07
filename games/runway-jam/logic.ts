@@ -19,6 +19,8 @@ export interface Level {
   /** Proven optimal number of moves (see solveBFS). */
   minMoves: number;
   pieces: Piece[];
+  /** True for the FlightMode Plus expert pack (see utils/plusLevels.ts). */
+  plus?: boolean;
 }
 
 export interface Move {
@@ -285,4 +287,37 @@ export function nextOptimalMove(pieces: Piece[]): Move | null {
   }
 
   return null;
+}
+
+/** ≤ ceil(minMoves × STAR_FACTOR) moves → 2★. Same rule for every level. */
+export const STAR_FACTOR = 1.5;
+
+/** Move thresholds for a level: 3★ at ≤ `three`, 2★ at ≤ `two`, else 1★. */
+export function starThresholds(minMoves: number): {
+  three: number;
+  two: number;
+} {
+  return { three: minMoves, two: Math.ceil(minMoves * STAR_FACTOR) };
+}
+
+/** Stars for finishing in `moves` (no hints). */
+export function getStars(moves: number, minMoves: number): number {
+  const { three, two } = starThresholds(minMoves);
+  if (moves <= three) {
+    return 3;
+  }
+  if (moves <= two) {
+    return 2;
+  }
+  return 1;
+}
+
+/** Star rule with hints: using any hint caps the result at 2★. */
+export function getFinalStars(
+  moves: number,
+  minMoves: number,
+  hintsUsed: number
+): number {
+  const stars = getStars(moves, minMoves);
+  return hintsUsed > 0 ? Math.min(stars, 2) : stars;
 }

@@ -671,16 +671,16 @@
   profileMinutes: "मिनट",
   profileStreak: "दैनिक श्रृंखला",
   plusSubtitle:
-    "FlightMode में सब कुछ मुफ़्त और ऑफ़लाइन रहेगा। Plus एक बार का धन्यवाद है जो कुछ अतिरिक्त चीज़ें खोलता है और नए गेम व गाइड लाने में मदद करता है।",
+    "FlightMode में सब कुछ मुफ़्त है और ऑफ़लाइन चलता है। Plus एक वैकल्पिक, एक बार की ख़रीद है जो कुछ सुकून भरे अतिरिक्त फ़ीचर जोड़ती है।",
   plusPerkThemes: "मिडनाइट (पूरा काला) और सनसेट थीम",
   plusPerkBadge: "प्रोफ़ाइल में Plus बैज",
-  plusPerkFuture: "आगे आने वाले सभी Plus एक्स्ट्रा शामिल — कोई सब्सक्रिप्शन नहीं",
-  plusPerkSupport: "एक इंडी डेवलपर का साथ, कभी विज्ञापन नहीं",
+  plusPerkSupport: "एक स्वतंत्र डेवलपर का साथ दें",
   plusBuy: "Plus लें · {{price}}",
   plusUnavailable: "ख़रीदारी Google Play संस्करण में उपलब्ध है",
   plusOwned: "आपके पास Plus है — FlightMode का साथ देने के लिए धन्यवाद!",
-  plusTipTitle: "टिप दें",
-  plusTipHint: "एक बार का धन्यवाद। इससे कुछ नहीं खुलता — बस ऐप चलता रहता है।",
+  plusTipTitle: "टिप देकर धन्यवाद कहें",
+  plusTipHint:
+    "टिप से कुछ अनलॉक नहीं होता — यह बस FlightMode को आगे बढ़ने में मदद करती है। हर टिप के लिए शुक्रिया।",
   plusTipThanks: "धन्यवाद! आपने {{count}}× टिप दी है।",
   plusTipSmall: "कॉफ़ी",
   plusTipMedium: "नाश्ता",
@@ -688,6 +688,9 @@
   plusRestore: "ख़रीदारी बहाल करें",
   plusRestoreNone: "इस Google खाते के लिए कोई ख़रीदारी नहीं मिली",
   profilePlusBadge: "Plus समर्थक",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Plus विशेषज्ञ पैक",
+  plusLevelA11y: "स्तर {{level}}, FlightMode Plus",
   passportTitle: "फ़्लाइट पासपोर्ट",
   passportHint: "FlightMode के साथ की गई हर उड़ान के लिए एक मोहर।",
   passportEmpty: "अपनी उड़ान जोड़ें — टेक-ऑफ़ के बाद पहली मोहर यहाँ लगेगी।",
@@ -1749,4 +1752,32 @@
   kidsShapeSquare: "वर्ग",
   kidsShapeTriangle: "त्रिभुज",
   kidsShapeStar: "तारा",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "4 अतिरिक्त साँस के पैटर्न: 4-7-8, कोहेरेंट ब्रीदिंग, घबराहट शांत करें और टर्बुलेंस में शांति",
+  plusPerkArticles:
+    "6 विस्तृत गाइड: लंबी उड़ान में नींद, जेट लैग, टर्बुलेंस, लंबे लेओवर, बच्चों के साथ उड़ान और आरामदायक सफ़र",
+  plusPerkLevelPacks: "रनवे जाम, आकाश पिक्सेल और सूरज और चाँद के लिए एक्सपर्ट लेवल पैक",
+  plusPromiseOneTime: "एक बार की ख़रीद — कोई सब्सक्रिप्शन नहीं",
+  plusPromiseFree: "कभी कोई विज्ञापन नहीं। जो मुफ़्त है, वह मुफ़्त ही रहेगा।",
+  plusBadge: "Plus",
+  breathBoxDesc:
+    "4-4 सेकंड की चार बराबर भुजाएँ। जल्दी तरोताज़ा होने के लिए एक स्थिर लय।",
+  breath478: "नींद के लिए 4-7-8",
+  breath478Desc: "4 तक साँस लें, 7 तक रोकें, 8 तक छोड़ें। आराम के लिए एक धीमी लय।",
+  breathCoherent: "कोहेरेंट ब्रीदिंग",
+  breathCoherentDesc:
+    "5.5 सेकंड साँस लें, 5.5 सेकंड छोड़ें — लगभग साढ़े पाँच सहज साँसें प्रति मिनट।",
+  breathSigh: "घबराहट शांत करें",
+  breathSighDesc: "साँस लें, ऊपर से एक छोटी दूसरी साँस लें, फिर धीरे-धीरे लंबी साँस छोड़ें।",
+  breathTurbulence: "टर्बुलेंस में शांति",
+  breathTurbulenceDesc:
+    "4 तक साँस लें, 6 तक छोड़ें। लंबी साँस छोड़ने से झटकों को पार करना आसान लगता है।",
+  breatheInAgain: "और साँस लें",
+  a11yBreathPatternPlus: "{{name}} (Plus में शामिल)",
+  plusArticleLockedTitle: "बाकी Plus के साथ पढ़ें",
+  plusArticleLockedBody:
+    "यह विस्तृत गाइड Plus का हिस्सा है। एक बार की ख़रीद से सभी छह गाइड हमेशा के लिए ऑफ़लाइन खुल जाती हैं।",
+  plusArticleLockedCta: "देखें Plus में क्या है",
+  articleSources: "स्रोत",
 } as const;

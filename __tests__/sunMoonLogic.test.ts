@@ -134,9 +134,13 @@ describe("sun-moon levels integrity", () => {
     expect(ids).toEqual(Array.from({ length: LEVELS.length }, (_, i) => i + 1));
   });
 
-  test("has 16 levels tiered 4x4 / 6x6 / 8x8", () => {
-    expect(LEVELS).toHaveLength(16);
-    for (const lvl of LEVELS) {
+  test("has 16 free levels tiered 4x4 / 6x6 / 8x8", () => {
+    const free = LEVELS.filter((lvl) => !lvl.plus);
+    expect(free).toHaveLength(16);
+    expect(free.map((lvl) => lvl.id)).toEqual(
+      Array.from({ length: 16 }, (_, i) => i + 1)
+    );
+    for (const lvl of free) {
       let expectedSize = 8;
       if (lvl.id <= 4) {
         expectedSize = 4;
@@ -189,6 +193,10 @@ describe("sun-moon levels integrity", () => {
       if (size === 8) {
         expect(blanks).toBeGreaterThanOrEqual(total * 0.5);
       }
+      // Plus expert pack: at least 70% blank.
+      if (lvl.plus) {
+        expect(blanks).toBeGreaterThanOrEqual(total * 0.7);
+      }
 
       // EXACTLY one solution.
       expect(countSolutions(givens, size, 2)).toBe(1);
@@ -217,12 +225,47 @@ describe("sun-moon levels integrity", () => {
         .join("")
         .split("")
         .filter((ch) => ch === ".").length;
-    const expansion = LEVELS.filter((lvl) => lvl.id >= 13);
+    const expansion = LEVELS.filter((lvl) => lvl.id >= 13 && !lvl.plus);
     expect(expansion).toHaveLength(4);
     for (const lvl of expansion) {
       expect(lvl.size).toBe(8);
       expect(blanksOf(lvl.givens)).toBeGreaterThan(44);
     }
+  });
+});
+
+describe("sun-moon Plus expert pack", () => {
+  const blanksOf = (rows: string[]) =>
+    rows
+      .join("")
+      .split("")
+      .filter((ch) => ch === ".").length;
+  const pack = LEVELS.filter((lvl) => lvl.plus);
+
+  test("10 levels (17-26) after every free level, all 10x10", () => {
+    expect(pack).toHaveLength(10);
+    expect(pack.map((lvl) => lvl.id)).toEqual(
+      Array.from({ length: 10 }, (_, i) => i + 17)
+    );
+    const firstPlus = LEVELS.findIndex((lvl) => lvl.plus);
+    expect(LEVELS.slice(firstPlus).every((lvl) => lvl.plus)).toBe(true);
+    for (const lvl of pack) {
+      expect(lvl.size).toBe(10);
+    }
+  });
+
+  test("more cells to deduce than any free level", () => {
+    const freeMax = Math.max(
+      ...LEVELS.filter((lvl) => !lvl.plus).map((lvl) => blanksOf(lvl.givens))
+    );
+    for (const lvl of pack) {
+      expect(blanksOf(lvl.givens)).toBeGreaterThan(freeMax);
+    }
+  });
+
+  test("solutions are distinct", () => {
+    const all = LEVELS.map((lvl) => lvl.solution.join("/"));
+    expect(new Set(all).size).toBe(all.length);
   });
 });
 

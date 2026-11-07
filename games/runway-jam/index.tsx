@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import {
   Pressable,
   View as RNView,
@@ -6,6 +6,7 @@ import {
   StyleSheet,
 } from "react-native";
 
+import { PlusLevelBadge } from "@/components/PlusLevelBadge";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -14,6 +15,7 @@ import {
   applyMove,
   buildGrid,
   GRID_SIZE,
+  getFinalStars,
   isSolved,
   type Move,
   nextOptimalMove,
@@ -22,8 +24,10 @@ import {
 } from "@/games/runway-jam/logic";
 import { useGameDimensions } from "@/hooks/useGameDimensions";
 import { useHaptic } from "@/hooks/useHaptic";
+import { usePlusLevelGate } from "@/hooks/usePlusLevelGate";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useGameStore } from "@/store/useGameStore";
+import { isPlusLevel } from "@/utils/plusLevels";
 
 // Stable fallback: returning a fresh `{}` from a Zustand selector makes
 // getSnapshot produce a new reference every call, which loops React's
@@ -36,7 +40,6 @@ const EMPTY_LEVEL_STARS: Record<string, number> = {};
 
 const CELL_GAP = 4;
 const BOARD_PADDING = 8;
-const STAR_FACTOR = 1.5; // ≤ ceil(minMoves * 1.5) → 2★
 
 /** Vehicle colors (mod palette, plane excluded — it uses the theme tint). */
 const VEHICLE_COLORS = [
@@ -59,26 +62,6 @@ function vehicleColor(id: number): string {
 
 function vehicleEmoji(piece: Piece): string {
   return piece.len === 3 ? "⛽" : "🧳";
-}
-
-function getStars(moves: number, minMoves: number): number {
-  if (moves <= minMoves) {
-    return 3;
-  }
-  if (moves <= Math.ceil(minMoves * STAR_FACTOR)) {
-    return 2;
-  }
-  return 1;
-}
-
-/** Star rule with hints: using any hint caps the result at 2★. */
-function getFinalStars(
-  moves: number,
-  minMoves: number,
-  hintsUsed: number
-): number {
-  const stars = getStars(moves, minMoves);
-  return hintsUsed > 0 ? Math.min(stars, 2) : stars;
 }
 
 /* ================================================================
@@ -111,6 +94,7 @@ export default function RunwayJamGame() {
     useGameStore((state) => state.progress["runway-jam"]?.levelStars) ??
     EMPTY_LEVEL_STARS;
   const { width: screenW } = useGameDimensions();
+  const { hasPlus, openLevel } = usePlusLevelGate();
 
   const [phase, setPhase] = useState<"menu" | "playing" | "won">("menu");
   const [levelIdx, setLevelIdx] = useState(0);
@@ -306,26 +290,47 @@ export default function RunwayJamGame() {
           contentContainerStyle={s.levelGrid}
           style={{ maxHeight: 300 }}
         >
-          {LEVELS.map((lvl, i) => (
-            <Pressable
-              accessibilityLabel={t("levelLabel", { level: lvl.id })}
-              accessibilityRole="button"
-              key={lvl.id}
-              onPress={() => startLevel(i)}
-              style={[
-                s.levelBtn,
-                { backgroundColor: theme.card, borderColor: theme.border },
-              ]}
-            >
-              <Text style={[s.levelBtnText, { color: theme.text }]}>
-                {lvl.id}
-              </Text>
-              <Stars count={levelStars[String(lvl.id)] ?? 0} size={10} />
-              <Text style={{ color: theme.mutedText, fontSize: 8 }}>
-                {lvl.minMoves}
-              </Text>
-            </Pressable>
-          ))}
+          {LEVELS.map((lvl, i) => {
+            const plusLevel = isPlusLevel(lvl);
+            const locked = plusLevel && !hasPlus;
+            return (
+              <Fragment key={lvl.id}>
+                {plusLevel && !isPlusLevel(LEVELS[i - 1] ?? {}) && (
+                  <Text style={[s.packLabel, { color: theme.tint }]}>
+                    {t("plusExpertPack")}
+                  </Text>
+                )}
+                <Pressable
+                  accessibilityLabel={t(
+                    plusLevel ? "plusLevelA11y" : "levelLabel",
+                    { level: lvl.id }
+                  )}
+                  accessibilityRole="button"
+                  onPress={() => openLevel(lvl, () => startLevel(i))}
+                  style={[
+                    s.levelBtn,
+                    {
+                      backgroundColor: theme.card,
+                      borderColor: plusLevel ? theme.tint : theme.border,
+                    },
+                  ]}
+                >
+                  <Text style={[s.levelBtnText, { color: theme.text }]}>
+                    {lvl.id}
+                  </Text>
+                  {locked ? (
+                    <Text style={s.lockIcon}>🔒</Text>
+                  ) : (
+                    <Stars count={levelStars[String(lvl.id)] ?? 0} size={10} />
+                  )}
+                  <Text style={{ color: theme.mutedText, fontSize: 8 }}>
+                    {lvl.minMoves}
+                  </Text>
+                  {plusLevel && <PlusLevelBadge />}
+                </Pressable>
+              </Fragment>
+            );
+          })}
         </ScrollView>
       </View>
     );
@@ -531,7 +536,11 @@ export default function RunwayJamGame() {
                 <Pressable
                   accessibilityLabel={t("nextLevel")}
                   accessibilityRole="button"
-                  onPress={() => startLevel(levelIdx + 1)}
+                  onPress={() =>
+                    openLevel(LEVELS[levelIdx + 1], () =>
+                      startLevel(levelIdx + 1)
+                    )
+                  }
                   style={[s.mainBtn, { backgroundColor: theme.tint }]}
                 >
                   <Text style={[s.mainBtnText, { color: theme.onTint }]}>
@@ -651,6 +660,7 @@ const s = StyleSheet.create({
     letterSpacing: 1,
     marginBottom: 6,
   },
+  lockIcon: { fontSize: 10, marginVertical: 4 },
   mainBtn: {
     alignItems: "center",
     borderRadius: 12,
@@ -679,6 +689,15 @@ const s = StyleSheet.create({
   },
   overlayMoves: { fontSize: 13, marginBottom: 12 },
   overlayTitle: { fontSize: 22, fontWeight: "900", marginBottom: 4 },
+  packLabel: {
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 1,
+    marginTop: 8,
+    textAlign: "center",
+    textTransform: "uppercase",
+    width: "100%",
+  },
   root: {
     alignItems: "center",
     flex: 1,
