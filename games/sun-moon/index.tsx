@@ -98,7 +98,7 @@ export default function SunMoonGame() {
   const levelStars =
     useGameStore((state) => state.progress["sun-moon"]?.levelStars) ??
     EMPTY_LEVEL_STARS;
-  const { width: screenW } = useGameDimensions();
+  const { width: screenW, height: screenH } = useGameDimensions();
   const { hasPlus, openLevel } = usePlusLevelGate();
 
   const [phase, setPhase] = useState<Phase>("menu");
@@ -254,7 +254,7 @@ export default function SunMoonGame() {
         </Text>
         <ScrollView
           contentContainerStyle={s.levelGrid}
-          style={{ maxHeight: 300 }}
+          style={{ maxHeight: Math.max(300, Math.round(screenH * 0.55)) }}
         >
           {LEVELS.map((lvl, i) => {
             const plusLevel = isPlusLevel(lvl);

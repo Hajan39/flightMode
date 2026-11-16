@@ -151,7 +151,7 @@ export default function NonogramGame() {
   const theme = Colors[colorScheme];
   const { t } = useTranslation();
   const haptic = useHaptic();
-  const { width: screenW } = useGameDimensions();
+  const { width: screenW, height: screenH } = useGameDimensions();
   const { hasPlus, openLevel } = usePlusLevelGate();
   const updateProgress = useGameStore((state) => state.updateProgress);
   const levelStars =
@@ -298,7 +298,7 @@ export default function NonogramGame() {
         </Text>
         <ScrollView
           contentContainerStyle={s.levelGrid}
-          style={{ maxHeight: 300 }}
+          style={{ maxHeight: Math.max(300, Math.round(screenH * 0.55)) }}
         >
           {NONOGRAM_LEVELS.map((lvl, i) => {
             const plusLevel = isPlusLevel(lvl);
