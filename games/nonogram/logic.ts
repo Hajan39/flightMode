@@ -82,7 +82,7 @@ export function isLineSatisfied(clue: number[], filled: boolean[]): boolean {
  * with the current `cells` (UNKNOWN / EMPTY / FILLED) and returns the
  * intersection — cells that are FILLED or EMPTY in ALL valid placements are
  * determined; the rest stay UNKNOWN. Returns null when no placement fits
- * (a contradiction). Lines are ≤ 10 cells, so direct enumeration is cheap.
+ * (a contradiction). Lines are ≤ 12 cells, so direct enumeration is cheap.
  */
 export function solveLine(
   clue: number[],

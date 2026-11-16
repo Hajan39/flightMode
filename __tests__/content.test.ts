@@ -6,7 +6,9 @@ interface ContentItem {
   category: LocalizedText;
   id: string;
   image?: string;
+  plus?: boolean;
   readTime: number;
+  sources?: { title: string; url: string }[];
   title: LocalizedText;
 }
 
@@ -71,6 +73,11 @@ describe("article translations", () => {
   test("Travel Tips and Health are localized into the Latin-script languages", () => {
     const required = ["en", "cs", "de", "es", "fr", "it", "pl", "pt"];
     for (const item of content) {
+      // Plus guides are written in en/cs/de only (other languages fall back to
+      // English with the EN badge) — the 8-language rule is for free articles.
+      if (item.plus === true) {
+        continue;
+      }
       if (item.category.en !== "Travel Tips" && item.category.en !== "Health") {
         continue;
       }

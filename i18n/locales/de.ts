@@ -712,17 +712,16 @@
   profileMinutes: "Minuten",
   profileStreak: "Tages-Serie",
   plusSubtitle:
-    "Alles in FlightMode bleibt kostenlos und offline. Plus ist ein einmaliges Dankeschön, das ein paar Extras freischaltet und neue Spiele und Guides ermöglicht.",
+    "Alles in FlightMode ist kostenlos und funktioniert offline. Plus ist ein freiwilliger Einmalkauf, der ein paar ruhige Extras hinzufügt.",
   plusPerkThemes: "Themes Mitternacht (echtes Schwarz) und Sonnenuntergang",
   plusPerkBadge: "Plus-Abzeichen im Profil",
-  plusPerkFuture: "Alle künftigen Plus-Extras inklusive — kein Abo",
-  plusPerkSupport: "Unterstützt einen Indie-Entwickler, niemals Werbung",
+  plusPerkSupport: "Unterstützt einen unabhängigen Entwickler",
   plusBuy: "Plus holen · {{price}}",
   plusUnavailable: "Käufe sind in der Google-Play-Version verfügbar",
   plusOwned: "Du hast Plus — danke für deine Unterstützung!",
-  plusTipTitle: "Trinkgeld geben",
+  plusTipTitle: "Sag Danke mit Trinkgeld",
   plusTipHint:
-    "Ein einmaliges Dankeschön. Es schaltet nichts frei — es hält die App am Leben.",
+    "Trinkgeld schaltet nichts frei – es hilft einfach, dass FlightMode weiter wächst. Wir freuen uns über jedes.",
   plusTipThanks: "Danke! Du hast {{count}}× Trinkgeld gegeben.",
   plusTipSmall: "Kaffee",
   plusTipMedium: "Snack",
@@ -730,6 +729,9 @@
   plusRestore: "Käufe wiederherstellen",
   plusRestoreNone: "Für dieses Google-Konto wurden keine Käufe gefunden",
   profilePlusBadge: "Plus-Unterstützer",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Plus-Expertenpaket",
+  plusLevelA11y: "Level {{level}}, FlightMode Plus",
   passportTitle: "Flugpass",
   passportHint: "Ein Stempel für jeden Flug mit FlightMode.",
   passportEmpty:
@@ -1852,4 +1854,35 @@
   kidsShapeSquare: "Quadrat",
   kidsShapeTriangle: "Dreieck",
   kidsShapeStar: "Stern",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "4 zusätzliche Atemmuster: 4-7-8, kohärentes Atmen, Nerven beruhigen und Ruhe bei Turbulenzen",
+  plusPerkArticles:
+    "6 ausführliche Ratgeber: Schlaf auf Langstrecken, Jetlag, Turbulenzen, lange Umstiege, Fliegen mit Kindern und bequem reisen",
+  plusPerkLevelPacks:
+    "Experten-Levelpakete für Rollfeld-Stau, Himmelspixel und Sonne & Mond",
+  plusPromiseOneTime: "Einmalkauf – kein Abo",
+  plusPromiseFree: "Niemals Werbung. Was kostenlos ist, bleibt kostenlos.",
+  plusBadge: "Plus",
+  breathBoxDesc:
+    "Vier gleiche Seiten zu je 4 Sekunden. Ein ruhiger Rhythmus für einen schnellen Reset.",
+  breath478: "4-7-8 zum Einschlafen",
+  breath478Desc:
+    "4 ein, 7 halten, 8 aus. Ein langsamer Rhythmus zum Runterkommen.",
+  breathCoherent: "Kohärentes Atmen",
+  breathCoherentDesc:
+    "5,5 s ein, 5,5 s aus – etwa fünfeinhalb ruhige Atemzüge pro Minute.",
+  breathSigh: "Nerven beruhigen",
+  breathSighDesc:
+    "Einatmen, kurz noch einmal nachatmen, dann lang und langsam ausatmen.",
+  breathTurbulence: "Ruhe bei Turbulenzen",
+  breathTurbulenceDesc:
+    "4 ein, 6 aus. Längeres Ausatmen hilft dir, das Rütteln auszusitzen.",
+  breatheInAgain: "Nachatmen",
+  a11yBreathPatternPlus: "{{name}} (in Plus enthalten)",
+  plusArticleLockedTitle: "Lies den Rest mit Plus",
+  plusArticleLockedBody:
+    "Dieser ausführliche Ratgeber ist ein Plus-Extra. Ein Kauf schaltet alle sechs Ratgeber frei – offline und dauerhaft.",
+  plusArticleLockedCta: "Sieh dir an, was Plus enthält",
+  articleSources: "Quellen",
 } as const;

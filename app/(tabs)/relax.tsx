@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useFocusEffect } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import Animated, {
@@ -11,6 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 import AnimatedPressable from "@/components/AnimatedPressable";
+import PlusBadge from "@/components/PlusBadge";
 import { Text, View } from "@/components/Themed";
 import { useColorScheme } from "@/components/useColorScheme";
 import Colors from "@/constants/Colors";
@@ -20,15 +21,23 @@ import { useTranslation } from "@/hooks/useTranslation";
 import type { TranslationKey } from "@/i18n/translations";
 import { useAchievementStore } from "@/store/useAchievementStore";
 import { useAudioStore } from "@/store/useAudioStore";
+import { useSupporterStore } from "@/store/useSupporterStore";
 import { captureAnalyticsEvent } from "@/utils/analytics";
+import {
+  BREATH_PATTERNS,
+  BREATH_PHASE_LABEL_KEY,
+  BREATH_PHASE_SCALE,
+  type BreathPattern,
+  type BreathPatternId,
+  canUseBreathPattern,
+  DEFAULT_BREATH_PATTERN_ID,
+  getBreathPattern,
+  getBreathPosition,
+} from "@/utils/breathing";
 import { trackFirstSessionCompleted } from "@/utils/firstSession";
 
-const BREATHING_PHASES = [
-  { duration: 4, key: "breatheIn" as TranslationKey },
-  { duration: 4, key: "hold" as TranslationKey },
-  { duration: 4, key: "breatheOut" as TranslationKey },
-  { duration: 4, key: "hold" as TranslationKey },
-] as const;
+/** Wall-clock poll for the breathing circle (timing never depends on it). */
+const BREATH_TICK_MS = 200;
 
 interface SoundscapeDef {
   icon: string;
@@ -71,13 +80,22 @@ export default function RelaxScreen() {
   const haptic = useHaptic();
   const { capStyle } = useTabletLayout();
 
-  // Breathing state
-  const [isActive, setIsActive] = useState(false);
-  const [phaseIndex, setPhaseIndex] = useState(0);
-  const [countdown, setCountdown] = useState<number>(
-    BREATHING_PHASES[0].duration
+  const router = useRouter();
+  const plus = useSupporterStore((s) => s.plus);
+
+  // Breathing state — wall-clock based: the phase is derived from
+  // `Date.now() - startedAt`, never from chained ticks.
+  const [patternId, setPatternId] = useState<BreathPatternId>(
+    DEFAULT_BREATH_PATTERN_ID
   );
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [startedAt, setStartedAt] = useState<number | null>(null);
+  const [breathNow, setBreathNow] = useState(Date.now());
+  const isActive = startedAt !== null;
+  // A Plus pattern picked earlier falls back to box breathing if Plus is gone.
+  const selectedPattern = getBreathPattern(patternId);
+  const pattern = canUseBreathPattern(selectedPattern, plus)
+    ? selectedPattern
+    : getBreathPattern(DEFAULT_BREATH_PATTERN_ID);
 
   // Soundscape state
   const activeSoundId = useAudioStore((s) => s.activeSoundId);
@@ -97,40 +115,30 @@ export default function RelaxScreen() {
   useFocusEffect(
     useCallback(
       () => () => {
-        setIsActive(false);
-        setPhaseIndex(0);
-        setCountdown(BREATHING_PHASES[0].duration);
+        setStartedAt(null);
       },
       []
     )
   );
 
-  // Breathing timer
+  // Breathing clock: only re-reads the wall clock; the phase maths lives in
+  // getBreathPosition().
   useEffect(() => {
-    if (!isActive) {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+    if (startedAt === null) {
       return;
     }
+    setBreathNow(Date.now());
+    const tick = setInterval(() => setBreathNow(Date.now()), BREATH_TICK_MS);
+    return () => clearInterval(tick);
+  }, [startedAt]);
 
-    intervalRef.current = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          setPhaseIndex((pi) => (pi + 1) % BREATHING_PHASES.length);
-          return BREATHING_PHASES[(phaseIndex + 1) % BREATHING_PHASES.length]
-            .duration;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isActive, phaseIndex]);
+  const position = getBreathPosition(
+    pattern,
+    startedAt === null ? 0 : breathNow - startedAt
+  );
+  const { phaseIndex } = position;
+  // Changes once per phase (including the same phase in the next cycle).
+  const phaseStep = position.cycle * pattern.phases.length + phaseIndex;
 
   useEffect(() => {
     if (!sleepTimerEndAt) {
@@ -159,24 +167,42 @@ export default function RelaxScreen() {
       return;
     }
     haptic.tap();
-    // Pulses once per phase change only: the deps are the phase, not the
-    // per-second countdown. `haptic` is omitted but harmless either way —
+    // Pulses once per phase change only: the deps are the phase step, not the
+    // wall-clock tick. `haptic` is omitted but harmless either way —
     // useHaptic() returns one stable module-level object.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phaseIndex, isActive]);
+  }, [phaseStep, isActive]);
 
   const handleBreathToggle = () => {
     haptic.tap();
     if (isActive) {
-      setIsActive(false);
-      setPhaseIndex(0);
-      setCountdown(BREATHING_PHASES[0].duration);
-      captureAnalyticsEvent("relax_finish", { exercise: "box_breathing" });
+      setStartedAt(null);
+      captureAnalyticsEvent("relax_finish", { exercise: pattern.analyticsId });
       trackFirstSessionCompleted("relax");
     } else {
-      setIsActive(true);
+      setStartedAt(Date.now());
       incrementRelax();
-      captureAnalyticsEvent("relax_start", { exercise: "box_breathing" });
+      captureAnalyticsEvent("relax_start", { exercise: pattern.analyticsId });
+    }
+  };
+
+  const handlePatternPress = (next: BreathPattern) => {
+    haptic.tap();
+    if (!canUseBreathPattern(next, plus)) {
+      captureAnalyticsEvent("premium_view", {
+        item: next.analyticsId,
+        placement: "breathing",
+      });
+      router.push("/plus" as never);
+      return;
+    }
+    if (next.id === pattern.id) {
+      return;
+    }
+    setPatternId(next.id);
+    // A running session restarts from the first inhale of the new pattern.
+    if (isActive) {
+      setStartedAt(Date.now());
     }
   };
 
@@ -206,30 +232,31 @@ export default function RelaxScreen() {
     ? Math.max(0, Math.ceil((sleepTimerEndAt - now) / 60_000))
     : 0;
 
-  const phase = BREATHING_PHASES[phaseIndex];
+  const phaseKind = pattern.phases[phaseIndex]?.kind ?? "in";
 
   // Breathing circle animation
   const breathScale = useSharedValue(1);
+  const phaseRemainingRef = useRef(position.remainingMs);
+  phaseRemainingRef.current = position.remainingMs;
 
+  // One key per phase of a session: a new phase (or a restarted session)
+  // starts a new animation, wall-clock ticks inside a phase do not.
+  const breathAnimKey = startedAt === null ? null : `${startedAt}:${phaseStep}`;
   useEffect(() => {
-    if (isActive) {
-      const dur = phase.duration * 1000;
-      // Inhale → grow, hold → stay, exhale → shrink, hold → stay
-      if (phase.key === ("breatheIn" as TranslationKey)) {
-        breathScale.value = withTiming(1.3, {
-          duration: dur,
-          easing: Easing.inOut(Easing.ease),
-        });
-      } else if (phase.key === ("breatheOut" as TranslationKey)) {
-        breathScale.value = withTiming(1, {
-          duration: dur,
-          easing: Easing.inOut(Easing.ease),
-        });
-      }
-    } else {
+    if (breathAnimKey === null) {
       breathScale.value = withTiming(1, { duration: 300 });
+      return;
     }
-  }, [isActive, phase.key, phase.duration, breathScale]);
+    // Inhale → grow, top-up inhale → grow a bit more, exhale → shrink,
+    // hold → stay. Animates over what is left of the phase (wall clock).
+    const target = BREATH_PHASE_SCALE[phaseKind];
+    if (target !== null) {
+      breathScale.value = withTiming(target, {
+        duration: phaseRemainingRef.current,
+        easing: Easing.inOut(Easing.ease),
+      });
+    }
+  }, [breathAnimKey, phaseKind, breathScale]);
 
   const breathCircleStyle = useAnimatedStyle(() => ({
     transform: [{ scale: breathScale.value }],
@@ -246,11 +273,55 @@ export default function RelaxScreen() {
         style={styles.breathingSection}
       >
         <Text style={styles.sectionTitle}>{t("breathingExercise")}</Text>
-        <Text style={[styles.subtitle, { color: theme.mutedText }]}>
-          {t("boxBreathing")}
-        </Text>
         <Text style={[styles.sectionHint, { color: theme.mutedText }]}>
           {t("relaxBreathingHint")}
+        </Text>
+        <ScrollView
+          contentContainerStyle={styles.patternRow}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.patternScroll}
+        >
+          {BREATH_PATTERNS.map((item) => {
+            const isSelected = item.id === pattern.id;
+            const locked = !canUseBreathPattern(item, plus);
+            return (
+              <Pressable
+                accessibilityLabel={
+                  locked
+                    ? t("a11yBreathPatternPlus", { name: t(item.nameKey) })
+                    : t(item.nameKey)
+                }
+                accessibilityRole="button"
+                accessibilityState={{ selected: isSelected }}
+                key={item.id}
+                onPress={() => handlePatternPress(item)}
+                style={[
+                  styles.patternChip,
+                  {
+                    backgroundColor: isSelected ? theme.tint : theme.card,
+                    borderColor: isSelected ? theme.tint : theme.border,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.patternChipText,
+                    { color: isSelected ? theme.onTint : theme.text },
+                  ]}
+                >
+                  {t(item.nameKey)}
+                </Text>
+                {locked ? <PlusBadge /> : null}
+              </Pressable>
+            );
+          })}
+        </ScrollView>
+        <Text style={[styles.subtitle, { color: theme.text }]}>
+          {t(pattern.nameKey)}
+        </Text>
+        <Text style={[styles.sectionHint, { color: theme.mutedText }]}>
+          {t(pattern.descriptionKey)}
         </Text>
 
         <Animated.View
@@ -261,10 +332,10 @@ export default function RelaxScreen() {
           ]}
         >
           <Text style={[styles.phaseLabel, { color: theme.tint }]}>
-            {isActive ? t(phase.key) : t("ready")}
+            {isActive ? t(BREATH_PHASE_LABEL_KEY[phaseKind]) : t("ready")}
           </Text>
           <Text style={[styles.countdown, { color: theme.tint }]}>
-            {isActive ? countdown : "—"}
+            {isActive ? position.secondsLeft : "—"}
           </Text>
         </Animated.View>
 
@@ -568,7 +639,21 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "700",
   },
-  phaseLabel: { fontSize: 18, fontWeight: "600" },
+  patternChip: {
+    alignItems: "center",
+    borderRadius: 999,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 6,
+    justifyContent: "center",
+    minHeight: 44,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  patternChipText: { fontSize: 12, fontWeight: "700" },
+  patternRow: { gap: 8, paddingHorizontal: 4 },
+  patternScroll: { alignSelf: "stretch", flexGrow: 0, marginBottom: 12 },
+  phaseLabel: { fontSize: 18, fontWeight: "600", textAlign: "center" },
   playingDot: {
     borderRadius: 4,
     height: 8,
@@ -652,7 +737,7 @@ const styles = StyleSheet.create({
   soundscapesSection: {
     marginTop: 32,
   },
-  subtitle: { fontSize: 14, marginBottom: 8 },
+  subtitle: { fontSize: 15, fontWeight: "600", marginBottom: 4 },
   volumeChip: {
     borderRadius: 10,
     borderWidth: 1,

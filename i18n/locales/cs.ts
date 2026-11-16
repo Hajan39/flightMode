@@ -710,17 +710,16 @@ export const cs = {
   profileMinutes: "Minuty",
   profileStreak: "Denní série",
   plusSubtitle:
-    "Všechno ve FlightMode zůstává zdarma a offline. Plus je jednorázové poděkování, které odemkne pár extra věcí a pomůže s dalšími hrami a průvodci.",
+    "Všechno ve FlightMode je zdarma a funguje offline. Plus je dobrovolný jednorázový nákup, který přidá pár klidných extra funkcí navíc.",
   plusPerkThemes: "Témata Půlnoc (čistě černé) a Západ slunce",
   plusPerkBadge: "Odznak Plus v profilu",
-  plusPerkFuture: "Všechny budoucí Plus novinky v ceně – žádné předplatné",
-  plusPerkSupport: "Podpoříš nezávislého vývojáře, nikdy žádné reklamy",
+  plusPerkSupport: "Podpoříš nezávislého vývojáře",
   plusBuy: "Získat Plus · {{price}}",
   plusUnavailable: "Nákupy jsou dostupné ve verzi z Google Play",
   plusOwned: "Máš Plus – díky, že podporuješ FlightMode!",
-  plusTipTitle: "Nechat spropitné",
+  plusTipTitle: "Poděkuj spropitným",
   plusTipHint:
-    "Jednorázové poděkování. Nic neodemyká – jen pomáhá, aby aplikace žila dál.",
+    "Spropitné nic neodemyká – jen pomáhá, aby FlightMode mohl dál růst. Moc si toho vážíme.",
   plusTipThanks: "Děkujeme! Tvoje spropitné: {{count}}×.",
   plusTipSmall: "Káva",
   plusTipMedium: "Svačina",
@@ -728,6 +727,9 @@ export const cs = {
   plusRestore: "Obnovit nákupy",
   plusRestoreNone: "Pro tento účet Google nebyly nalezeny žádné nákupy",
   profilePlusBadge: "Podporovatel Plus",
+  plusLevelBadge: "Plus",
+  plusExpertPack: "Expertní balíček Plus",
+  plusLevelA11y: "Úroveň {{level}}, FlightMode Plus",
   passportTitle: "Letový pas",
   passportHint: "Razítko za každý tvůj let s FlightMode.",
   passportEmpty: "Přidej svůj let a po vzletu sem dopadne první razítko.",
@@ -1807,4 +1809,35 @@ export const cs = {
   kidsShapeSquare: "Čtverec",
   kidsShapeTriangle: "Trojúhelník",
   kidsShapeStar: "Hvězda",
+  // FlightMode Plus: breathing patterns + premium articles
+  plusPerkBreathing:
+    "4 další dechová cvičení: 4-7-8, koherentní dýchání, zklidnění nervů a klid při turbulencích",
+  plusPerkArticles:
+    "6 podrobných průvodců: spánek na dlouhém letu, jet lag, turbulence, dlouhé přestupy, let s dětmi a pohodlí na palubě",
+  plusPerkLevelPacks:
+    "Expertní balíčky úrovní pro Ucpanou ranvej, Nebeské pixely a Slunce a měsíc",
+  plusPromiseOneTime: "Jednorázový nákup – žádné předplatné",
+  plusPromiseFree: "Nikdy žádné reklamy. Co je zdarma, zůstane zdarma.",
+  plusBadge: "Plus",
+  breathBoxDesc:
+    "Čtyři stejné strany po 4 sekundách. Klidný rytmus pro rychlý reset.",
+  breath478: "4-7-8 na spaní",
+  breath478Desc:
+    "Nádech na 4, zadržení na 7, výdech na 8. Pomalý rytmus na zklidnění.",
+  breathCoherent: "Koherentní dýchání",
+  breathCoherentDesc:
+    "Nádech 5,5 s, výdech 5,5 s – zhruba pět a půl plynulých nádechů za minutu.",
+  breathSigh: "Zklidni nervy",
+  breathSighDesc:
+    "Nadechni se, přidej krátký druhý nádech a pak pomalu a dlouze vydechni.",
+  breathTurbulence: "Klid při turbulencích",
+  breathTurbulenceDesc:
+    "Nádech na 4, výdech na 6. Delší výdech ti pomůže přečkat drncání.",
+  breatheInAgain: "Ještě nádech",
+  a11yBreathPatternPlus: "{{name}} (součást Plus)",
+  plusArticleLockedTitle: "Zbytek si přečti s Plus",
+  plusArticleLockedBody:
+    "Tento podrobný průvodce je součástí Plus. Jeden nákup odemkne všech šest průvodců – offline a natrvalo.",
+  plusArticleLockedCta: "Co všechno Plus obsahuje",
+  articleSources: "Zdroje",
 } as const;
